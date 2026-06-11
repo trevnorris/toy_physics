@@ -1,0 +1,558 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b8_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '225'
+- '232'
+- '240'
+- '242'
+- '245'
+- '246'
+- '247'
+- '248'
+- '249'
+- '250'
+- '251'
+- '252'
+- '253'
+candidates:
+- candidate_key: stage225_K_compat_P0_target_pin
+  modality: existing_provenance
+  anchor_stage: '225'
+  parameter_names:
+  - K_compat
+  - P_0_target
+  - D_0
+  - D_2
+  - D_4
+  reason: The compatibility branch is pinned by a stiffness K_compat chosen so P_0 hits a named decimal "target" (0.00206979231806289)
+    whose derivation lives outside this band; the in-band provenance (pass-2 report calls K_compat "the stiffness K that pins
+    the compatibility branch") never states how the target value originated, so the K-pinning is a plausible tuning point
+    for the whole 225-228 numeric family (D_0/D_2/D_4/u_2/u_4 all flow from it).
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+    line: 239
+    excerpt: assert_close(float(P0_target_compat.evalf()), 0.00206979231806289)
+    stage: '225'
+- candidate_key: stage232_theta_w_5pn_injection
+  modality: existing_provenance
+  anchor_stage: '232'
+  parameter_names:
+  - Theta_w_chi
+  - Theta_w_J
+  reason: Hardcoded 15-digit wall factors (4.06863235008162 / 0.927552032539308) injected as mp.mpf literals; the pass-2 report
+    marks them only "MATCH (imported)" without naming a source stage, and CHECKPOINT_CONSTANT_PROVENANCE has no Stage-232
+    entry, so the in-ledger provenance of these injected data values is missing.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 146
+    excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
+    stage: '232'
+- candidate_key: stage232_fom_prefactor_100
+  modality: existing_provenance
+  anchor_stage: '232'
+  parameter_names:
+  - Xi_prefactor_100
+  reason: The figure-of-merit prefactor 100 is a bare multiplicative literal; provenance history records it only as a stale-168-to-100
+    correction "dual-engine-anchored", but cross-engine agreement on multiplying by 100 is not a derivation of why 100 - no
+    doc in the named provenance sources derives the prefactor.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 149
+    excerpt: Xi_chi = 100 * Theta_w_chi * Lambda_ell**2
+    stage: '232'
+- candidate_key: stage232_lambda_ell_geometry_literals
+  modality: existing_provenance
+  anchor_stage: '232'
+  parameter_names:
+  - Lambda_ell
+  - kappa
+  - chi_s
+  reason: The structural literals 20 (in Lambda_ell = 20*sqrt(2)*pi/x01) and 9/5 (in kappa = (9/5)*Lambda_ell^2, line 54)
+    carry no recorded provenance in CHECKPOINT_CONSTANT_PROVENANCE or the pass-2 report (which lists only the resulting decimals
+    as MATCH); these coefficient choices set every downstream Pe/zeta margin and could have been tuned.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 50
+    excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
+    stage: '232'
+- candidate_key: stage240_rho_alpha_selected_demand
+  modality: existing_provenance
+  anchor_stage: '240'
+  parameter_names:
+  - rho_alpha
+  - Pi_tr_over_C_mix
+  reason: rho_alpha = 4/3 is consistently described as a "selected" support demand (selection language, not derivation); the
+    scripts verify identities CONDITIONAL on the demand (c0=1/rho, c1=(rho-1)/rho are consequences), so the choice rho_alpha=4/3
+    itself - which fixes the load-bearing twin window C_mix < Pi_tr < 2C_mix - is a plausible posited/tuned insertion point.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 782
+    excerpt: carried forward from the Stage 240 selected support demand
+    stage: '240'
+- candidate_key: stage242_placement_coeff_2_11
+  modality: existing_provenance
+  anchor_stage: '242'
+  parameter_names:
+  - placement_coeff_2_11
+  reason: The checkpoint provenance entry for the geometric coefficient 2/11 names no source stage ("the coherent local D/N
+    placement map" is vague); the script comment instead attributes it to Stages 026/027/030 - the attribution mismatch between
+    the two provenance records should be cross-checked at the upstream end before 2/11 is accepted as derived.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 779
+    excerpt: carried forward from the coherent local D/N placement map used in the Stage
+    stage: '242'
+- candidate_key: stage245_session1_readback
+  modality: existing_provenance
+  anchor_stage: '245'
+  parameter_names:
+  - U_obs
+  - V_obs
+  - eps_ref
+  reason: The Session-I benchmark packet (U=0.14313458, V=-0.03619791, eps_ref=0.3) enters as declared sp.Float literals with
+    provenance recorded only as "Session-I"; no named provenance source derives these readbacks, and eps_ref=0.3 in particular
+    looks like a hand-set reference dressing.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 209
+    excerpt: U_obs = sp.Float("0.14313458")
+    stage: '245'
+- candidate_key: stage246_session1_inputs
+  modality: existing_provenance
+  anchor_stage: '246'
+  parameter_names:
+  - a_0
+  - b_0
+  - r_sigma
+  - r_eval
+  reason: The Session-I evaluation point packet (a0=2.2, b0=-0.6, r_sigma=0.8, r_eval=1.00217028) is declared, not derived;
+    the oddly precise r_eval=1.00217028 (the report rationalizes it as 25054257/25000000) smells of a back-filled evaluation
+    point chosen so the sigma_min sign-change lands where the narrative needs it.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+    line: 230
+    excerpt: 'r: sp.Float("1.00217028"),'
+    stage: '246'
+- candidate_key: stage247_session1_packet
+  modality: existing_provenance
+  anchor_stage: '247'
+  parameter_names:
+  - Veff_obs
+  - Wsess_obs
+  - UVdrop_obs
+  - Rmix
+  - G_W
+  - beta_Q
+  - beta_U
+  - beta_W
+  - xi_R
+  - eta_leak
+  - mu_w
+  reason: The Stage-247 benchmark consists of a 23-entry hand-set substitution dict (Kstar=4.0, OmU2=9.0, OmW2=16.0, GW=1.25,
+    Rmix=1.35, betaQ=0.03, betaU=0.15, betaW=0.20, xi_R=0.9, eta_leak=0.03, mu_w=0.8, ...) plus three "observed" scalars (Veff_obs/Wsess_obs/UVdrop_obs)
+    with no in-ledger derivation in any named provenance source - the entire one-point decomposition could be a fitted slice.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 213
+    excerpt: Veff_obs = sp.Float("1.74701126")
+    stage: '247'
+- candidate_key: stage247_lambda_L_backsolve
+  modality: existing_provenance
+  anchor_stage: '247'
+  parameter_names:
+  - lambda_L
+  reason: lambda_L = 0.26971918 is literally back-solved from the declared benchmark target Veff_obs and then "verified" by
+    a forward closure that re-uses the same paper literal (lines 243-252) - a textbook back-fill loop; the paper carries 0.26971918
+    as if it were an independent quantity.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 238
+    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+    stage: '247'
+- candidate_key: stage248_session2_readback
+  modality: existing_provenance
+  anchor_stage: '248'
+  parameter_names:
+  - r_0
+  - r_c
+  - E_sub
+  - V_0
+  - V_peak
+  - r_peak
+  - r_turn_new
+  - r_inner
+  - I_new
+  - I_Coul_report
+  - v_cross
+  - r_coul_turn_report
+  reason: The checkpoint provenance itself classifies the entire Session-II packet (r0=5.0, rc=0.18, Esub=2.5, V0=0.19999794,
+    Vpeak=3.42933112, etc., script lines 235-251) as values "copied from the declared Session-II readback" - declared-but-underived
+    inside the ledger; the well-shape parameters that generate Vpeak/rpeak and the 23.3128% improvement headline number all
+    bottom out in this unexplained readback.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 892
+    excerpt: labeled benchmark-only numeric inputs copied from the declared Session-II
+    stage: '248'
+- candidate_key: stage249_session3_peak_readback
+  modality: existing_provenance
+  anchor_stage: '249'
+  parameter_names:
+  - peak_aligned
+  - peak_antialigned
+  - hint_aligned
+  - hint_antialigned
+  reason: The four aligned/anti-aligned peak and final-H readbacks (281.79830789 / 56.96878122 / 20.58070146 / 5.00843357)
+    are bare literals with no in-ledger derivation; the headline deliverables R_pk=4.94653917 and alpha_pk=0.66366992 are
+    just Mobius transforms of their ratios, so the stage's exported diagnostics inherit whatever fitting produced these four
+    numbers.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+    line: 167
+    excerpt: peak_aligned = 281.79830789
+    stage: '249'
+- candidate_key: stage250_goldilocks_inputs
+  modality: existing_provenance
+  anchor_stage: '250'
+  parameter_names:
+  - g_UV
+  - chi_peak
+  - chi_raw
+  - m_s_ratio_1836
+  reason: The Goldilocks-window benchmark hangs on declared inputs g_UV=0.95 (a suspiciously round coupling), chi_peak=21.73204372
+    and chi_raw=50.74399964 (no recorded origin), and m=1836.15267343 - the CODATA proton/electron mass ratio silently imported
+    as a toy-model literal; none of the named provenance sources derive these, and the safe-window margin v_safe/v_crit=1.259
+    is sensitive to all of them.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+    line: 176
+    excerpt: chi_num = 21.73204372
+    stage: '250'
+- candidate_key: stage251_session4_time_inputs
+  modality: existing_provenance
+  anchor_stage: '251'
+  parameter_names:
+  - t_cross
+  - t_collapse_0
+  - gamma_crit
+  - s_c
+  reason: s_c = 0.5489386551062235 - treated downstream (252/253) as a carried benchmark constant - is just 1/t_cross with
+    t_cross=1.82169718 a declared Session-IV literal, alongside tcollapse0=0.14402764 and gamma_crit=6.94311167; the script
+    asserts 1/tcollapse0 matches gamma_crit only to 1e-6 (a consistency between two declared numbers, not a derivation), so
+    the whole s_c/s_0 benchmark chain bottoms out in unexplained Session-IV readbacks.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+    line: 176
+    excerpt: t_cross_num = 1.82169718
+    stage: '251'
+- candidate_key: stage252_three_to_one_split
+  modality: existing_provenance
+  anchor_stage: '252'
+  parameter_names:
+  - lattice_vacuum_split_3
+  - phi
+  reason: The factor 3 in the "Session-IV 3:1 split" (equivalently f_lat = phi = 3/4) is a declared partition ratio, not a
+    derived one - the script only proves the iff between the split surface and f_lat(s_c)=3/4; since f_lat=0.75 feeds Stage-253's
+    lattice-safe rate 65.45193926 and hence the final material thresholds, a tuned 3:1 choice here propagates to the end of
+    the ladder.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+    line: 155
+    excerpt: split_surface = sp.simplify(sp.expand((G3l + G5l * sc**2) - 3 * (G3v + G5v * sc**2)))
+    stage: '252'
+- candidate_key: stage253_gamma_lattice_red
+  modality: existing_provenance
+  anchor_stage: '253'
+  parameter_names:
+  - gamma_lattice_red
+  reason: The provenance entry calls 4.79562976 "a carried forward legacy Session-V reduced lattice-rate input used only in
+    the declared legacy-slice recovery" - legacy + declared with no derivation anywhere in the named sources; it directly
+    sets Upsilon_lat^(sess) = 65.45193926/4.79562976 = 13.64824695, i.e. the stage's calibration recovery is anchored to an
+    unexplained literal.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+    line: 163
+    excerpt: gamma_lattice_legacy_num = 4.79562976
+    stage: '253'
+- candidate_key: stage253_upsilon_lat_calibration
+  modality: existing_provenance
+  anchor_stage: '253'
+  parameter_names:
+  - Upsilon_lat
+  reason: Upsilon_lat is declared by the provenance record itself to be "an explicit calibration parameter" - the canonical
+    fit-insertion point by construction; any physical-threshold claim downstream of Stage 253 can be moved by re-dialing it,
+    so its allowed range/justification needs adversarial scrutiny rather than the current honest-but-open-ended labeling.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 950
+    excerpt: '- `\Upsilon_{\rm lat}` remains an explicit calibration parameter; it is not'
+    stage: '253'
+- candidate_key: stage253_K_turn_force_match
+  modality: existing_provenance
+  anchor_stage: '253'
+  parameter_names:
+  - K_turn
+  reason: K_turn=2.73855812 is a "benchmark-only turning-point/force-match input carried from the declared Session-V benchmark
+    slice" per the provenance entry - another declared readback with no in-ledger derivation; it fixes the stiffness coefficient
+    a_int = 4*K_turn = 10.95423248 and the r_turn coefficient 0.9128891530 that the card/notes present as stage outputs.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+    line: 166
+    excerpt: K_turn_num = 2.73855812
+    stage: '253'
+- candidate_key: stage253_stage252_slice_inputs
+  modality: existing_provenance
+  anchor_stage: '253'
+  parameter_names:
+  - f_lat
+  - mu_eta
+  reason: The provenance classifies f_lat=0.75 and mu_eta=1.0 (plus s_c, s_0) as "benchmark-only Stage 252 slice inputs",
+    but the chain of attributions ends in posited values - f_lat=0.75 is the Stage-252 3:1 split choice and mu_eta=1.0 is
+    a hand-set unit dial - so the "benchmark-only" label launders two postulated parameters into the final 119.23361317476524
+    micro-product threshold.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 954
+    excerpt: '- `0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+    stage: '253'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '225'
+  value: Xi_1 = N_01/N_0 - D_01/D_0 compiler family and the one-pole identities D_21=-u2*D_01, D_41=(D_4/D_0)*D_01 (plus all
+    37 reconciled deliverables that are algebraic consequences of the carried branch)
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_225.md
+    line: 166
+    excerpt: 'reconciliation: complete; 37 deliverable values checked, 0 misaligned.'
+  reason: Symbolic compiler identities forced by differentiation/algebra of the dressed branch; the only non-identity content
+    is the carried compatibility-branch pin flagged as candidate stage225_K_compat_P0_target_pin.
+- stage: '226'
+  value: K_1 and H_even compensation compiler closed forms and the derived sigma_even/sigma_transfer corridor numbers
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_226.md
+    line: 138
+    excerpt: 'reconciliation: complete; 23 deliverable values checked, 0 misaligned.'
+  reason: Algebraic consequences of the Stage-225 compiler under the carried branch values; no new free parameter is introduced
+    at this stage.
+- stage: '227'
+  value: Xi_1 = 2*delta*ln(Lambda) theorem, rigidity determinant factor 200+147*pi^2, sample fractions 3/16 and 25/(98*pi^2)
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_227.md
+    line: 123
+    excerpt: 'reconciliation: complete; 16 deliverable values checked, 0 misaligned.'
+  reason: Determinant and slope-law forms are algebraically forced and cross-engine corroborated (the +68/+51 stale-typo family
+    was a notes defect, not a constant move).
+- stage: '228'
+  value: delta_1 coefficient 196*pi^2/(98*pi^2-25), reduced determinant 196*(200+147*pi^2), rank/nullity ladder, omega and
+    R_Q roots
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_228.md
+    line: 135
+    excerpt: 'reconciliation: complete; 23 deliverable values checked, 0 misaligned.'
+  reason: Forced linear-algebra/polynomial consequences of the Stage-227 system; numeric roots are unique solutions, not pinned
+    literals.
+- stage: '229'
+  value: crossover cubic 121*xi^3+297*delta*xi^2+333*delta^2*xi+81*delta^3-72*delta^2 and threshold delta = 8/9; D/N constants
+    kappa_0^2=8/pi^2, kappa_1^2=16/(9*pi^2)
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_229.md
+    line: 150
+    excerpt: 'reconciliation: complete; 17 deliverable values checked, 0 misaligned.'
+  reason: The cubic and the 8/9 threshold drop out of exact polynomial algebra (P(0,delta)=9*delta^2*(9*delta-8)); the D/N
+    kernel constants are standard mode constants, not free dials.
+- stage: '230'
+  value: R_* = 1.229255438463336 and delta_*^dyn = 0.723111617875019 plus the dynamic/static budget ceilings
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_230.md
+    line: 164
+    excerpt: 'reconciliation: complete; 18 deliverable values checked, 0 misaligned. (The only paper_misalignment, F1, is
+      a prose verification-coverage claim, not a value mismatch.)'
+  reason: Unique real roots of the in-stage slope system; the transported budgets 0.367930328492646/0.737619063660757 are
+    carried imports specifically and consistently attributed to Stage 224 (origin outside this band - cross-band scanners
+    should own that anchor).
+- stage: '231'
+  value: carried R_*/delta_* re-derivations, dP_c/dxi and placement-map product law
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_231.md
+    line: 147
+    excerpt: 'reconciliation: complete; 13 deliverable values checked, 0 misaligned. (The only paper_misalignment, F1, is
+      a prose verification-coverage claim, not a value mismatch.)'
+  reason: Re-derivations and symbolic extensions of Stage-229/230 results; no new pinned constant.
+- stage: '233'
+  value: Xi_1 split/track-lock identities and the bar-P_0 gate forms
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_233.md
+    line: 108
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned'
+  reason: Pure symbolic identities; the numeric compat point and budgets are the same Stage-223/224 carried imports already
+    accounted at their origins.
+- stage: '234'
+  value: Xi_1 = -R_1 - c_eta*E_1 compiler, r_1-cancellation, balanced-family closed forms
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_234.md
+    line: 107
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 misaligned'
+  reason: Forced linear algebra in the (R_1,E_1) chart; c_eta is a defined function of eps_eta_star, not a free dial.
+- stage: '235'
+  value: M_rm involution, P_nt/P_eta projectors, codim-two orbit-lock
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_235.md
+    line: 112
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 value-mismatched (1 coverage-statement misalignment
+      folded into F1, not a value mismatch).'
+  reason: Fixed-matrix linear algebra; every value is an exact symbolic consequence.
+- stage: '236'
+  value: dependent-plane carriers S_rm_dep/C_rm_dep/L_rm_dep and equal-drift ray -q_eta*(0,1,1)
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_236.md
+    line: 117
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned'
+  reason: Exact symbolic matrices/vectors with no free numeric constants (report states this explicitly).
+- stage: '237'
+  value: q_nt/q_eta log-chart definitions, static-blind curve, micro compiler and drift extractor
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_237.md
+    line: 117
+    excerpt: 'reconciliation: complete; 7 deliverable values checked, 0 misaligned (1 doc status-field lag flagged separately
+      as F1).'
+  reason: Definitional/log-differential identities; support-blindness claims are genuine zero-derivative theorems.
+- stage: '238'
+  value: R_target*T^2 = Lambda0*(1-eps_eta) branch identity and the three-gate theorem
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_238.md
+    line: 117
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned.'
+  reason: Fully symbolic stage - emits no named numeric constants (report states this explicitly).
+- stage: '239'
+  value: checkpoint constants I_2, (0,-V,U-V), (0,1,1), U=0/V=0 orbit-lock
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 754
+    excerpt: '- The Stage 239 audits are symbolic and contain no probe numerics or free'
+  reason: All four reviewed checkpoint constants are derived-in-audit symbolic objects; provenance record is specific and
+    self-consistent (re-author was route-only, material_change false).
+- stage: '241'
+  value: varrho windows 1/3, 125/369, 2/3, 250/441 and the eps_*/sigma closed forms
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_241.md
+    line: 129
+    excerpt: The four ϱ windows `1/3, 125/369, 2/3, 250/441` fully reconcile across `.py`, `.wl` outputs, notes, and appendix;
+      the 193/369 -> 125/369 notes fix from pass-1 HOLDS (line 577).
+  reason: The window fractions are algebraically forced extrema of 2*(1+b^2)/(3*(2+b^2)) and 2*(1+b^2)/(3*(1+b+b^2)) - no
+    tunable freedom once the beta-parametrization is given.
+- stage: '242'
+  value: varrho_phys = 2*(1-eps)/3, eps-window forms 1/(2+beta^2) and beta/(1+beta+beta^2), strict twin window C_mix < Pi_tr
+    < 2*C_mix; probe sample eps=17/55 is declared probe-only
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_242.md
+    line: 129
+    excerpt: 'reconciliation: complete; 17 deliverable values checked, 0 misaligned.'
+  reason: Derived-in-audit substitution identities; the only carried non-identity inputs (2/11 and 4/3) are flagged as candidates
+    above.
+- stage: '243'
+  value: S_leak = -sqrt(2)/4 * l_w * j0 and W_w = sqrt(2*pi)/8 * l_w * j0 * E0; chi_lam/k_V ratio; vertex forms -a/(4b), 1-b-a^2/(8b)
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 828
+    excerpt: '- `-Sqrt[2] / 4` and `Sqrt[2] Sqrt[Pi] / 8`'
+  reason: Exact Gaussian integral values and quadratic-vertex algebra - forced by the integrals, dual-engine corroborated,
+    no probe numerics in the stage.
+- stage: '244'
+  value: leakage/work prefactors including W_bulk(varrho) = 128*sqrt(2)*eta^2*mu_w*q*rho_0/(pi^(9/2)*lambda^3)*Lambda^2*varrho^2
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_244.md
+    line: 124
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 misaligned. The flagged `128√2` reconciles (notes
+      line 366 now reads `128√2`, matching script line 106 and output line 55; the pass-1 `196√2→128√2` correction is present
+      and consistent across the (1−ε) and ϱ forms).'
+  reason: All prefactors are exact symbolic integral results in declared symbols; the 196->128 history was a notes typo corrected
+    to the engines, not a constant move.
+- stage: '245'
+  value: U = a_V*f_U/Delta_UV, V = chi_UV*f_U/Delta_UV solve identities and the R_1/Xi_1 compilers
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_245.md
+    line: 117
+    excerpt: 'reconciliation: complete; 18 deliverable values checked, 0 misaligned'
+  reason: The symbolic layer is forced linear algebra; only the Session-I numeric packet (flagged above) is non-derived.
+- stage: '246'
+  value: moment formulas g, S, det M_src = 14/425 and the exact inverse coefficients 85/42, 25/14, 425/42, 85/14
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_246.md
+    line: 116
+    excerpt: 'reconciliation: complete; 17 deliverable values checked, 0 misaligned (1 prose-only stale-field flagged separately
+      as F1).'
+  reason: Exact rational outputs of finite-domain moment integrals and a 2x2 inverse - algebraically forced; the evaluation-point
+    packet is the separate candidate.
+- stage: '247'
+  value: Delta = 142.1775 (= 9*16 - 1.35^2) and D0 = 3.76481862 as arithmetic consequences of the declared packet
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_247.md
+    line: 113
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned.'
+  reason: Pure arithmetic on the declared Session-I inputs - identity GIVEN the packet; the packet itself (and lambda_L) carry
+    the fit risk and are flagged as candidates.
+- stage: '248'
+  value: 1/E exact Coulomb outer turning point and pi near-top parabolic action; derived chain v_crit=sqrt(2*(Vpeak-V0)/m)
+    etc.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 882
+    excerpt: derived in the audit as the exact pure-Coulomb outer turning point
+  reason: 1/E and pi are forced closed-form integral results; the benchmark output chain (2.5413906350657705, 1.23312756,
+    23.3128, ...) is exact arithmetic on the Session-II readbacks - identities GIVEN the inputs flagged in stage248_session2_readback.
+- stage: '249'
+  value: Mobius forms R_pk = (1+alpha_h)/(1-alpha_h) and inverses; R_pk/alpha_pk/R_int/abar_h as ratios of the declared peak
+    readbacks
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_249.md
+    line: 127
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned. (Every emitted number lands in either
+      the card or the notes at matching precision. The only paper-side discrepancy is the prose "Mathematica audit: none yet"
+      line, captured as F1 — not a value mismatch.)'
+  reason: The transform layer is exact algebra (solve-derived inverses); fit risk sits entirely in the four readback literals
+    flagged as candidate.
+- stage: '250'
+  value: E_edge = Vpeak + m_s*g_UV*chi*lambda^2/(2*mu) and v_safe^2 = v_crit^2 + lambda^2*g*chi/mu symbolic closures
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_250.md
+    line: 141
+    excerpt: 'reconciliation: complete; 13 deliverable values checked, 0 numeric misaligned (1 paper-text coverage mismatch
+      → F1, the `.wl`-existence statement).'
+  reason: Symbolic identities proven by Resolve[ForAll] over the whole domain; numeric outputs are arithmetic on the declared
+    inputs flagged as candidate.
+- stage: '251'
+  value: K_exp(s) = Gamma_3*s^3 + Gamma_5*s^5 kernel, F(s) quintic, s_+ expansion, safe half-plane inequality; derived rhs
+    = 289.61004918, G5hat_safe = 961.09429528
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_251.md
+    line: 130
+    excerpt: 'reconciliation: complete; 16 deliverable values checked, 0 misaligned'
+  reason: Kernel/polynomial forms are exact symbolic derivations; the numeric safe-surface values are arithmetic on s_c/s_0,
+    whose Session-IV origin is the flagged candidate.
+- stage: '252'
+  value: f_lat drift form, E_exp_min^safe = (Vin^2/2)*(e^2-1)*mu_eta*(s0^2-sc^2), gamma_eff_safe^eq = mu_eta*(s0^2-sc^2)/s_c;
+    gamma_lat_safe^eq = 65.45193925961132
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_252.md
+    line: 125
+    excerpt: 'reconciliation: complete; 14 deliverable values checked, 0 numeric-value mismatches; 1 card-text-lag mismatch
+      (verification line) folded into F1.'
+  reason: Exact algebra given (s_c, s_0, mu_eta, phi); the partition ratio (3:1 / phi=3/4) carries the fit risk and is flagged
+    separately.
+- stage: '253'
+  value: threshold ladder formulas (Pi_ep product, chi_lambda = 2/r via D[Log[V[r]],r], T_max coefficient = s_c) and the benchmark-derived
+    outputs 65.45193925961132, 119.23361317476524, 13.64824695299483, 10.95423248
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 959
+    excerpt: '- `65.45193925961132`, `13.64824695299483`, `119.23361317476524`,'
+  reason: The provenance correctly classifies these as benchmark-derived outputs - exact arithmetic on the declared inputs;
+    all fit risk lives in the input candidates (Upsilon_lat, gamma_lattice_red, K_turn, f_lat/mu_eta, s_c chain) flagged above.
+    The 136/187->119 stale-value history was a docs defect, fully purged per the pass-2 grep.

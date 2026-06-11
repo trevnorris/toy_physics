@@ -1,0 +1,227 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b1_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 009
+- 018
+- 019
+- '022'
+- '025'
+- '026'
+- '030'
+candidates:
+- candidate_key: stage022_gamma_GR_quadrupole_target
+  modality: existing_provenance
+  anchor_stage: '022'
+  parameter_names:
+  - gamma_GR
+  - N_Q_target
+  reason: The external GR quadrupole constant 2G/(5c^5) is imposed as the matching target for the entire normalization chain,
+    and the checkpoint-provenance record (CHECKPOINT_CONSTANT_PROVENANCE.md:269-271) logs 54/6/8/15/5 as "derived by solving
+    the invariant normalization product against 2G/(5c^5)" without ever classifying the target itself — derived-given-target
+    labeled as derived is the canonical fit-insertion signature.
+  citation:
+    path: paper/stages/stage_022.tex
+    line: 121
+    excerpt: \gamma_{\rm GR}=\frac{2G}{5c^5}.
+    stage: '022'
+- candidate_key: stage019_P0_target_upstream_pin
+  modality: existing_provenance
+  anchor_stage: 019
+  parameter_names:
+  - P_0_target
+  reason: The 54 G c_s^5/(5 a^5 c^5) target value is already pinned at stage 019, upstream of stage 022 where the provenance
+    record says the 54/5 constants are derived from the gamma_GR solve — the constant appearing before its recorded derivation
+    stage smells of back-filled provenance.
+  citation:
+    path: paper/stages/stage_019.tex
+    line: 32
+    excerpt: P_{0,\rm target}=\frac{54Gc_s^5}{5a^5c^5\widehat m_0^{\,2}}.
+    stage: 019
+- candidate_key: stage022_mhat0_unity_branch
+  modality: existing_provenance
+  anchor_stage: '022'
+  parameter_names:
+  - mhat_0
+  reason: The branch selection mhat_0 -> 1 that converts the invariant product into a direct P_0 target is justified only
+    by the word "natural"; neither the checkpoint-provenance entry nor the pass-2 report records a derivation of this branch
+    choice, so the unity value could be posited.
+  citation:
+    path: paper/stages/stage_022.tex
+    line: 135
+    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+    stage: '022'
+- candidate_key: stage025_mhat_rad_tuned_to_target
+  modality: existing_provenance
+  anchor_stage: '025'
+  parameter_names:
+  - mhat_rad
+  reason: mhat_rad^2 is a free normalization knob fixed by equating the boxed P_0 product to N_Q^target (eq:app-stage025-normalization-target;
+    script sample witness mhat^2 = 162/5) — tuned to meet the external target rather than independently derived, which the
+    pass-2 report records only as MATCH.
+  citation:
+    path: paper/stages/stage_025.tex
+    line: 65
+    excerpt: \widehat m_{\rm rad}^{\,2}
+    stage: '025'
+- candidate_key: stage026_Kreq_solved_backward
+  modality: existing_provenance
+  anchor_stage: '026'
+  parameter_names:
+  - K_req
+  reason: The wall stiffness K_req is obtained by inverting the normalization gate (solve-to-meet-target), not from wall microphysics,
+    and the same requirement-style insertion recurs as K_req(theta) at stage 027 — a structural fit point that the reconciliation
+    tables classify only as MATCH.
+  citation:
+    path: paper/stages/stage_026.tex
+    line: 111
+    excerpt: Solving for the required wall stiffness gives
+    stage: '026'
+- candidate_key: stage030_lambda_req_target_ratio
+  modality: existing_provenance
+  anchor_stage: '030'
+  parameter_names:
+  - lambda_req
+  reason: The required selected eigenvalue is defined as a ratio against NQ_target and only printed, never asserted — the
+    script's own comment (lines 171-175) notes the gate identity collapses to 0 by construction — so the value is posited-to-meet-target
+    with no independent in-stage check.
+  citation:
+    path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+    line: 169
+    excerpt: lambda_req = sp.simplify(mhat**2 * beta0 * s_minus_closed / NQ_target)
+    stage: '030'
+- candidate_key: stage026_dn_mode_basis_kappa0
+  modality: existing_provenance
+  anchor_stage: '026'
+  parameter_names:
+  - kappa_0
+  - f_n
+  reason: The half-sine D/N ladder plus constant N/N profile is a posited basis whose overlap kappa_0 = 2*sqrt(2)/pi seeds
+    every downstream structural constant (88/(9 pi^2), 11/9, 2/11, alpha_crit), and the n=0 truncation ("The minimal branch
+    keeps n=0", line 36) is a selection — each value is forced given the basis, but the basis itself is the underived insertion
+    point.
+  citation:
+    path: paper/stages/stage_026.tex
+    line: 25
+    excerpt: f_n(s)=\sqrt{\frac2L}\sin\!\left(\frac{(n+1/2)\pi s}{L}\right),
+    stage: '026'
+- candidate_key: stage009_mu1_kernel_specialization
+  modality: existing_provenance
+  anchor_stage: 009
+  parameter_names:
+  - mu_1
+  - w_kernel
+  reason: The card's generic mouth first-moment mu_1 is never exercised generically — the scripts pin posited kernels (exponential
+    giving mu_1 = 1, gamma giving mu_1 = 2; the pass-2 report's own F1 MISSING-DELIVERABLE) — so the kernel choice that fixes
+    the O(ell) coefficient is unconstrained in the recorded provenance.
+  citation:
+    path: paper/stages/stage_009.tex
+    line: 28
+    excerpt: \mu_1=\int_0^\infty u\,w(u)\,du .
+    stage: 009
+- candidate_key: stage018_stale_provenance_anchor_9_11_8
+  modality: existing_provenance
+  anchor_stage: 018
+  parameter_names:
+  - coeff_9
+  - coeff_11
+  - coeff_8
+  reason: The stage-036 provenance entry anchors the carried 9/11/8 coefficients to "Stage-18 selected-branch D/N-normal-form",
+    but current stage 018 is the parent-throat action bundle master (M_Sigma/K_Sigma integrals) and the D/N selected-branch
+    normal form lives at stage 035 — a stale pre-renumber source anchor, i.e. the recorded provenance is self-contradictory
+    and the coefficients' true origin is currently untraceable from this record.
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 376
+    excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
+    stage: 018
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '001'
+  value: 1/(2 sqrt(pi)) and 2 sqrt(pi)
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 164
+    excerpt: '- `1/(2 sqrt(pi))`'
+  reason: Forced normalization of the real monopole harmonic Y_00 and its inverse mouth-average bridge; no tunable freedom.
+- stage: '001'
+  value: '6'
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 169
+    excerpt: '- `6`'
+  reason: Laplace-sphere eigenvalue l(l+1) specialized at l=2; arithmetically forced.
+- stage: '002'
+  value: 4 pi
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 198
+    excerpt: '- `4 pi`'
+  reason: Derived as (2 sqrt(pi))^2 from the Stage-001 bridge; forced.
+- stage: '022'
+  value: 27, 9, 81
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 266
+    excerpt: '- `27`, `9`, `81`'
+  reason: Coefficients of the outgoing l=2 spherical-Hankel fingerprint a^5/(27 c_s^5), a^2/(9 c_s^2), 4 a^4/(81 c_s^4); forced
+    by the series expansion (independently of the gamma_GR target flagged above).
+- stage: '023'
+  value: 5, 20, 4 (and 1/5, 2/5, 1/10, 1/2)
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 295
+    excerpt: '- `5`, `20`, `4`'
+  reason: Exact G_grp norms of the grouped (1,2,2) basis vectors and their projector weights; forced linear algebra.
+- stage: '024'
+  value: 4 pi/15 and 4 pi/105
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 338
+    excerpt: '- `4 pi / 15`, `4 pi / 105`'
+  reason: Unit-sphere fourth and sixth moments; forced integrals (the stale 4 pi/122 was a notes typo already corrected to
+    the script value in pass-2 II.1).
+- stage: '024'
+  value: lambda_(20,21,22) = (1, 1/2, -1) and weights (1/4, 3/4)
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 345
+    excerpt: '- `1`, `1/2`, `-1`'
+  reason: Grouped axisymmetric splitting signature read off the exact Y_20 triple-overlap matrix; forced (also carried at
+    stages 010/017).
+- stage: '027'
+  value: sin^2 theta_max = 2/11 and |kappa|_max = 2 sqrt(22)/(3 pi)
+  citation:
+    path: paper/stages/stage_027.tex
+    line: 93
+    excerpt: \sin^2\theta_{\max}=\frac{2}{11}}.
+  reason: Extremization of kappa(theta) built from kappa_0, kappa_1; forced given the stage-026 basis (the basis itself is
+    the flagged candidate).
+- stage: 028
+  value: alpha_crit = K0 K1/(K1 kappa_0^2 + K0 kappa_1^2)
+  citation:
+    path: paper/stages/stage_028.tex
+    line: 84
+    excerpt: \alpha_{\rm crit}
+  reason: Derived spectral threshold of the rank-one loaded stiffness matrix; closed-form forced given the kappa overlaps.
+- stage: 029
+  value: sigma = 88/(9 pi^2)
+  citation:
+    path: paper/stages/stage_029.tex
+    line: 36
+    excerpt: \kappa_1^2=\frac{88}{9\pi^2}.
+  reason: Arithmetic sum kappa_0^2 + kappa_1^2 = 8/pi^2 + 16/(9 pi^2); forced given the stage-026 basis.
+- stage: '032'
+  value: sigma/kappa_0^2 = 11/9
+  citation:
+    path: paper/stages/stage_032.tex
+    line: 46
+    excerpt: 1\leq\widehat m_-^{\,2}<\frac{\sigma}{\kappa_0^2}=\frac{11}{9}}.
+  reason: Forced ratio of the two overlap constants; the saturation window endpoints 1 and 11/9 are limits of the closed-form
+    s_-, verified in both engines.

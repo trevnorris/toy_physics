@@ -1,0 +1,429 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b1_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '001'
+- '002'
+- '003'
+- '006'
+- 008
+- 019
+- '020'
+- '022'
+- '024'
+- '025'
+- '026'
+- '027'
+- 028
+- 029
+- '030'
+- '031'
+- '032'
+candidates:
+- candidate_key: stage001_canonical_invariant_pair_determined
+  modality: claim_label
+  anchor_stage: '001'
+  parameter_names:
+  - Kbar_0
+  - Kbar_2
+  reason: Claims the mode-resolved response determines the canonical pair (Kbar_0, Kbar_2); "should determine" plus "canonical"
+    labels a not-yet-computed pair as forced, a place where target-matching values could later be back-filled.
+  citation:
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 471
+    excerpt: On the passive/outgoing isotropic quadrupole branch, the same mode-resolved response should determine the canonical
+      invariant pair
+    stage: '001'
+- candidate_key: stage002_overlap_factor_4pi_derived
+  modality: claim_label
+  anchor_stage: '002'
+  parameter_names:
+  - overlap_factor_4pi
+  reason: Labels the specific numeric overlap factor 4pi as "derived"; if the Y00 normalization convention were chosen to
+    produce it, the derived label would conceal a convention-tuned constant.
+  citation:
+    path: paper/stages/stage_002.tex
+    line: 11
+    excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py}.  Mathematica
+      audit: \StageFile{mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl}.  The audits check
+      the \(Y_{00}\) normalization bridge, the derived \(4\pi\) overlap factor, the conservative \((\delta a,\delta L)\) matrix
+      reduction, and the uncoupled grouped real \(P_2\) degeneracy.}'
+    stage: '002'
+- candidate_key: stage003_wall_self_energy_no_fitted_data
+  modality: claim_label
+  anchor_stage: '003'
+  parameter_names:
+  - wall_self_energy
+  - overlap_matrices
+  - support_spectrum
+  reason: Explicit "introduces no fitted numerical data" claim, followed by "the wall self-energy is forced by the exact Schur
+    complement" conditional on branch data that is itself posited, so the no-fit claim could shield upstream tuned inputs.
+  citation:
+    path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+    line: 85
+    excerpt: What matters for the present derivation is that this move introduces no fitted
+    stage: '003'
+- candidate_key: stage006_projected_vector_signs_fixed_by_audit
+  modality: claim_label
+  anchor_stage: '006'
+  parameter_names:
+  - faraday_sign
+  - ampere_sign
+  reason: The projected Maxwell signs are claimed "fixed by the audit" while resting on a stated convention F^{i0}=E_i; a
+    sign back-filled to make downstream channels match would carry the same label.
+  citation:
+    path: paper/stages/stage_006.tex
+    line: 32
+    excerpt: With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
+    stage: '006'
+- candidate_key: stage008_source_profile_must_match_weight
+  modality: claim_label
+  anchor_stage: 008
+  parameter_names:
+  - S_w
+  - Z_int
+  reason: A "must be matched" claim fixing the entire source profile S(w)=Z(w)/Z_int; the matching condition itself is asserted
+    rather than derived, making the profile a candidate tuned input.
+  citation:
+    path: paper/stages/stage_008.tex
+    line: 25
+    excerpt: 'The source profile \(S(w)\) must be matched to the localized Maxwell weight:'
+    stage: 008
+- candidate_key: stage019_K_Sigma_fixed_by_one_pole
+  modality: claim_label
+  anchor_stage: 019
+  parameter_names:
+  - K_Sigma
+  reason: Claims the parent wall stiffness K_Sigma is "fixed" by the one-pole surface condition; imposing a one-pole requirement
+    and solving for K_Sigma is structurally a constraint-fit labeled as forced.
+  citation:
+    path: paper/stages/stage_019.tex
+    line: 21
+    excerpt: The one-pole surface fixes
+    stage: 019
+- candidate_key: stage019_K_Sigma_fixed_by_outgoing_normalization
+  modality: claim_label
+  anchor_stage: 019
+  parameter_names:
+  - K_Sigma
+  - P_0_target
+  reason: Claims K_Sigma is "fixed" by an outgoing normalization equation containing P_{0,target}; the value is back-solved
+    from a target prefactor, i.e. the canonical shape of a fit presented as fixed.
+  citation:
+    path: paper/stages/stage_019.tex
+    line: 27
+    excerpt: The outgoing normalization fixes
+    stage: 019
+- candidate_key: stage020_wall_slopes_fixed_uniquely
+  modality: claim_label
+  anchor_stage: '020'
+  parameter_names:
+  - parent_wall_slopes
+  - Xi1
+  reason: Script-emitted prose claims the parent wall slopes are "fixed uniquely by the even gates"; the even-gate values
+    being solved against are imported targets, so uniqueness of the solve does not preclude tuning of the gates.
+  citation:
+    path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+    line: 76
+    excerpt: '    lines.append(''The parent wall slopes are fixed uniquely by the even gates, and the residual first-order'')'
+    stage: '020'
+- candidate_key: stage022_invariant_product_must_match_universal
+  modality: claim_label
+  anchor_stage: '022'
+  parameter_names:
+  - P_An
+  - u_n_A
+  - N_Q_universal
+  reason: Declares an "exact invariant product that must match the universal quadrupole normalization"; the must-match phrasing
+    defines a target-matching slot even though the claimstatus marks the equality Open.
+  citation:
+    path: paper/stages/stage_022.tex
+    line: 7
+    excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+      one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+      \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+      the exact invariant product that must match the universal quadrupole normalization.}
+    stage: '022'
+- candidate_key: stage024_mhat_ang_exactly_one
+  modality: claim_label
+  anchor_stage: '024'
+  parameter_names:
+  - mhat_ang
+  reason: Script asserts mhat_ang = 1 "exactly" on a "canonical" basis; the unity value removes one normalization degree of
+    freedom downstream and rests on the basis choice being labeled canonical.
+  citation:
+    path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+    line: 172
+    excerpt: '    print("Conclusion: on the canonical isotropic angular basis, mhat_ang = 1 exactly.")'
+    stage: '024'
+- candidate_key: stage024_b3a_signature_follows_directly
+  modality: claim_label
+  anchor_stage: '024'
+  parameter_names:
+  - b_over_a
+  - signature_1_half_minus1
+  reason: Claims the GR-matching line b=3a "follows directly" from a universal signature; the trace/anomaly map weights used
+    in the application are themselves a chosen convention that could be selected to land on b=3a.
+  citation:
+    path: paper/stages/stage_024.tex
+    line: 231
+    excerpt: \item The grouped line \(b=3a\) follows directly by applying the weighted trace/anomaly map to the signature
+      \((1,1/2,-1)\).
+    stage: '024'
+- candidate_key: stage024_grouped_bundle_forced_isotropic
+  modality: claim_label
+  anchor_stage: '024'
+  parameter_names:
+  - grouped_lane_coefficients_20_21_22
+  reason: '"Forced to collapse exactly" claim for the grouped lane equality is conditional on an O(3)-invariance hypothesis
+    that is assumed, not demonstrated, for the actual branch.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 329
+    excerpt: 'If the reference throat and reduced kernels are truly `O(3)` invariant, then the grouped real `20/21/22` bundle
+      is forced to collapse exactly:'
+    stage: '024'
+- candidate_key: stage025_mhat_ang_already_fixed
+  modality: claim_label
+  anchor_stage: '025'
+  parameter_names:
+  - mhat_ang
+  reason: Repeats the claim that mhat_ang=1 was "already fixed" upstream, using it to delete the angular source-map factor
+    from the normalization equation without re-deriving it in this closure.
+  citation:
+    path: paper/stages/stage_025.tex
+    line: 92
+    excerpt: \item The angular source map does not appear because Stage~024 already fixed \(\widehat m_{\rm ang}=1\).
+    stage: '025'
+- candidate_key: stage025_one_mode_normalization_target
+  modality: claim_label
+  anchor_stage: '025'
+  parameter_names:
+  - mhat_rad
+  - N_Q_target
+  reason: States the boxed one-mode equation that the branch combination must equal N_Q^target; the equation is a target-matching
+    condition in which mhat_rad remains an undetermined factor available to absorb mismatch.
+  citation:
+    path: paper/stages/stage_025.tex
+    line: 61
+    excerpt: Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
+    stage: '025'
+- candidate_key: stage026_kappa_exact_overlap
+  modality: claim_label
+  anchor_stage: '026'
+  parameter_names:
+  - kappa
+  - kappa_n
+  reason: kappa = 2*sqrt(2)/pi is labeled "exact", but it is exact only inside a hand-chosen interval/profile/mode family
+    (constant N/N profile, lowest D/N half-wave), so the exactness label can mask the selection freedom.
+  citation:
+    path: paper/stages/stage_026.tex
+    line: 36
+    excerpt: The minimal branch keeps \(n=0\).  The exact overlap is
+    stage: '026'
+- candidate_key: stage026_K_req_solved_exactly_from_target
+  modality: claim_label
+  anchor_stage: '026'
+  parameter_names:
+  - K_req
+  reason: The wall stiffness K_req is back-solved from the GR quadrupole target 54*G*c_s^5/(5*a^5*c^5) and labeled an exact
+    solution; this is the clearest fit-shaped move in the band, a parameter defined by the value needed to match the target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 212
+    excerpt: 'It can be solved exactly for the required wall stiffness:'
+    stage: '026'
+- candidate_key: stage026_dn_constants_exact_derived_downstream
+  modality: claim_label
+  anchor_stage: '026'
+  parameter_names:
+  - mhat_minus
+  - dn_branch_constants
+  reason: Claims downstream stages "fix" mhat_minus and use "exact D/N constants derived from this branch" while the branch
+    itself is one chosen axial family, propagating a derived label onto choice-dependent constants.
+  citation:
+    path: paper/stages/stage_026.tex
+    line: 141
+    excerpt: \stagefield{Downstream use}{Stage~027 tests nonconstant wall/brane profiles.  Stage~032 reuses the same finite-throat
+      D/N source overlap to fix \(\widehat m_-\).  Stages~035--036 use the exact D/N constants derived from this branch.}
+    stage: '026'
+- candidate_key: stage027_sin2_theta_max_exact_value
+  modality: claim_label
+  anchor_stage: '027'
+  parameter_names:
+  - sin2_theta_max
+  reason: Twin claims that theta is "derived dynamically rather than selecting it by hand" and that sin^2(theta_max)=2/11
+    is an "exact value" echoed downstream; both are derived-not-tuned labels on a branch-selection parameter.
+  citation:
+    path: paper/stages/stage_027.tex
+    line: 140
+    excerpt: \stagefield{Downstream use}{Stage~028 derives \(\theta\) dynamically rather than selecting it by hand.  The exact
+      value \(\sin^2\theta_{\max}=2/11\) is later echoed in the D/N branch constants used by the selected-mode formulas.}
+    stage: '027'
+- candidate_key: stage027_max_coupling_branch_not_free
+  modality: claim_label
+  anchor_stage: '027'
+  parameter_names:
+  - theta_max
+  - kappa_theta
+  reason: Section heading claims the max-coupling profile angle is "not free"; the constraint cited is a stiffness cost trade-off,
+    not a derivation, so the not-free label is doing fit-exclusion work.
+  citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 308
+    excerpt: '### 6.3 Max-coupling branch is allowed but not free'
+    stage: '027'
+- candidate_key: stage028_eigenvalues_exact
+  modality: claim_label
+  anchor_stage: 028
+  parameter_names:
+  - lambda_plus
+  - lambda_minus
+  - alpha_crit
+  reason: The eigenvalues and the softening threshold alpha_crit carry "exact" labels, but exactness is inside the posited
+    rank-one loading K_eff = K_bare - alpha*v*v^T whose form and positivity of alpha are assumed.
+  citation:
+    path: paper/stages/stage_028.tex
+    line: 60
+    excerpt: The exact eigenvalues are
+    stage: 028
+- candidate_key: stage028_theta_minus_sign_fixed
+  modality: claim_label
+  anchor_stage: 028
+  parameter_names:
+  - theta_minus
+  reason: Claims the selected-angle sign is "fixed" by the signs of kappa_0, kappa_1, which are themselves values inherited
+    from the chosen Stage 026/027 axial family rather than derived from the full PDE.
+  citation:
+    path: paper/stages/stage_028.tex
+    line: 93
+    excerpt: \item The sign of \(\theta_-\) is fixed because \(\kappa_0>0\) and \(\kappa_1<0\).
+    stage: 028
+- candidate_key: stage029_alpha_derived_dynamically
+  modality: claim_label
+  anchor_stage: 029
+  parameter_names:
+  - alpha
+  reason: Explicit claim that the loading strength alpha — the very knob the Stage 031 crossing theorem shows can reach any
+    target — is "derived dynamically" rather than tuned; this is the band's central derived-vs-fitted assertion.
+  citation:
+    path: paper/stages/stage_028.tex
+    line: 98
+    excerpt: \stagefield{Downstream use}{Stage~029 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed
+      Schur complement.  Stages~030--034 use the selected lower eigenvalue and eigenvector overlap to define \(\lambda_-\),
+      \(s_-\), and the softening-depth normal form.}
+    stage: 029
+- candidate_key: stage029_deltaK_algebraically_forced
+  modality: claim_label
+  anchor_stage: 029
+  parameter_names:
+  - DeltaK_ax
+  reason: Comment labels a check "algebraically forced by the construction" and demotes it to a typo guard; honest as written,
+    but a forced-by-construction label on a tautological identity is exactly where a vacuous check could substitute for a
+    real one.
+  citation:
+    path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+    line: 152
+    excerpt: '    # (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.'
+    stage: 029
+- candidate_key: stage030_selected_branch_target_equation
+  modality: claim_label
+  anchor_stage: '030'
+  parameter_names:
+  - N_Q_target
+  - mhat_minus
+  - P_0_minus
+  reason: Boxes the matching condition mhat_minus^2 * P_{0,-} = N_Q^target as the stage output; the equation is a target to
+    be hit, and which side is fitted to which is exactly the fit-vs-derive question.
+  citation:
+    path: paper/stages/stage_030.tex
+    line: 91
+    excerpt: The selected-branch target is
+    stage: '030'
+- candidate_key: stage031_unique_alpha_star_crossing
+  modality: claim_label
+  anchor_stage: '031'
+  parameter_names:
+  - alpha_star
+  - P_target
+  reason: The "unique stable crossing theorem" guarantees an alpha_* exists matching any admissible target; uniqueness of
+    the crossing is presented as a derivation result while it simultaneously certifies that alpha can always be tuned to the
+    GR target.
+  citation:
+    path: paper/stages/stage_031.tex
+    line: 60
+    excerpt: has a unique \(\alpha_*\in(0,\alpha_{\rm crit})\) such that \(P_{0,-}(\alpha_*)=P_{\rm target}\).  For the quadrupole
+      target,
+    stage: '031'
+- candidate_key: stage031_hf_identity_derived_not_assumed
+  modality: claim_label
+  anchor_stage: '031'
+  parameter_names:
+  - dlambda_minus_dalpha
+  - s_minus
+  reason: Script prints an explicit "(derived, not assumed)" provenance label for the Hellmann-Feynman identity; such self-certifying
+    labels in audit transcripts are prime places to assert derivation without independent evidence.
+  citation:
+    path: mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl
+    line: 138
+    excerpt: Print["  HF identity d lam_-/d alpha + s_- = 0 (derived, not assumed)"];
+    stage: '031'
+- candidate_key: stage031_alpha_crit_derived_directly
+  modality: claim_label
+  anchor_stage: '031'
+  parameter_names:
+  - alpha_crit
+  reason: Comment claims alpha_crit is "derived from the matrix directly"; the matrix entries are the inherited A, B, kappa_0,
+    kappa_1 branch values, so the derived label is only as strong as those inputs.
+  citation:
+    path: mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl
+    line: 97
+    excerpt: (* alpha_crit is the root of Det[M] = 0, derived from the matrix directly. *)
+    stage: '031'
+- candidate_key: stage032_kappa_values_exact
+  modality: claim_label
+  anchor_stage: '032'
+  parameter_names:
+  - kappa_0
+  - kappa_1
+  reason: Declares kappa_0 = 2*sqrt(2)/pi and kappa_1 = -4/(3*pi) as "the exact values"; exact within the chosen D/N half-wave
+    basis, so the label transfers basis-selection freedom into apparently forced constants.
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 65
+    excerpt: The exact values are
+    stage: '032'
+- candidate_key: stage032_mhat_minus_completely_fixed
+  modality: claim_label
+  anchor_stage: '032'
+  parameter_names:
+  - mhat_minus
+  - s_minus
+  reason: '"Completely fixed" claim eliminating the previously free source-map factor mhat_minus; the elimination holds only
+    on the "natural D/N source branch", so the non-tunable label depends on that branch choice being forced.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 208
+    excerpt: It is completely fixed by the same selected overlap `s_-` that already controls the wall loading.
+    stage: '032'
+- candidate_key: stage032_pattern_now_derived
+  modality: claim_label
+  anchor_stage: '032'
+  parameter_names:
+  - rank_one_loading_pattern
+  - v_overlap_vector
+  reason: Claims a previously assumed structure is "now derived"; an assumed-then-later-derived pattern is a classic back-fill
+    shape where the later derivation may have been constructed to reproduce the assumption.
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 130
+    excerpt: This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit
+      finite-throat basis and local isotropic kernels.
+    stage: '032'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

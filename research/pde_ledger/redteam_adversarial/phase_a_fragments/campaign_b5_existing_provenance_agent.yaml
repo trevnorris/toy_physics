@@ -1,0 +1,205 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b5_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '134'
+- '146'
+- '147'
+- '155'
+- '156'
+- '159'
+- '160'
+candidates:
+- candidate_key: stage146_aspect_ratio_37_20_primitive
+  modality: existing_provenance
+  anchor_stage: '146'
+  parameter_names:
+  - L_over_a
+  - r_F1
+  reason: The entire band's numeric tower (Pi_*, g_*, S_*, A_T/B_T, Sigma_0, the canonical point) descends from the bare aspect-ratio
+    literal 37/20, and the recorded provenance (CHECKPOINT_CONSTANT_PROVENANCE pass-2 IV.3 entry) only certifies that 100*pi^2/4107
+    is "arithmetically forced" GIVEN L/a=37/20 — the 37/20 primitive's own derivation is recorded nowhere in the band's provenance
+    sources, so it could be a tuned geometric input.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py
+    line: 71
+    excerpt: rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
+    stage: '146'
+- candidate_key: stage147_AT_BT_circular_paper_anchor
+  modality: existing_provenance
+  anchor_stage: '147'
+  parameter_names:
+  - A_T
+  - B_T
+  reason: CHECKPOINT_CONSTANT_PROVENANCE (batch-6/7 entries) declares A_T/B_T "GENUINE PAPER LITERALS sourced from part04:846,848"
+    while both engines in fact DERIVE them in-script (py:32-41) and then assert agreement back against the same appendix lines
+    (py:53-60, stage148 py:44-45) — a closed provenance loop in which the appendix values' own original derivation is recorded
+    nowhere, consistent with the paper literal having been back-filled from a script run.
+  citation:
+    path: research/pde_ledger/paper/appendices/stage_appendix_part04.tex
+    line: 846
+    excerpt: A_T\approx-4.27263956256927,
+    stage: '147'
+- candidate_key: stage147_AT_BT_ratio_31_6785_mislabel_history
+  modality: existing_provenance
+  anchor_stage: '147'
+  parameter_names:
+  - abs_A_T_over_B_T
+  reason: This ratio was previously MISLABELED "paper-quoted" when it is the script's own computed cross-check (the batch-6
+    FLAG in CHECKPOINT_CONSTANT_PROVENANCE records the relabel) — a documented instance of provenance back-filling at this
+    exact stage, and the low-precision pinned crosscheck literal 31.6785 persists in the script (py:55, tolerance 1e-3).
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 77
+    excerpt: \frac{|A_T|}{B_T}\approx 31.6785.
+    stage: '147'
+- candidate_key: stage156_mouth_bias_increase_224_59_pct
+  modality: existing_provenance
+  anchor_stage: '156'
+  parameter_names:
+  - mouth_bias_increase_pct
+  reason: The notes report a 224.59% mouth-bias increase that NEITHER engine emits (the scripts' Pi ratio - 1 is 156.59%);
+    the pass-2 stage-156 report explicitly left it outside reconciliation scope as a "notes-internal prose number", so it
+    is a numeric with no recorded computational source anywhere — unverified and possibly back-filled or stale.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 136
+    excerpt: '- and a \(224.59\%\) mouth-bias increase,'
+    stage: '156'
+- candidate_key: stage155_fixedpoint_expected_targets_json
+  modality: existing_provenance
+  anchor_stage: '155'
+  parameter_names:
+  - Sigma0_can_expected
+  - S_can_expected
+  - Pi_can_expected
+  - T_hat_can_expected
+  reason: The renormalized-canonical "expected" targets are pinned in a samples JSON with no record of which run produced
+    them, and the stage 155-157 harness checks the fixed-point iteration against these stored copies of (apparently) its own
+    prior output — a self-anchoring provenance pattern none of the existing provenance sources accounts for.
+  citation:
+    path: research/pde_ledger/scripts/numerical/stage155_156_fixedpoint_samples.json
+    line: 16
+    excerpt: '"Sigma0_can_expected": 4.651033550168867,'
+    stage: '155'
+- candidate_key: stage134_sq_spotcheck_anchor_literals
+  modality: existing_provenance
+  anchor_stage: '134'
+  parameter_names:
+  - S_q_at_half
+  - S_q_at_one
+  - S_q_at_two
+  reason: Three 30-digit spot-check anchor literals for the S_q kernel are pinned with no provenance comment on how they were
+    generated; the pass-2 report classifies them only as "INTERNAL scaffolding", so if they were originally produced by the
+    same kernel the anchor certifies reproducibility, not correctness — their independence is unverifiable from the recorded
+    provenance.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+    line: 61
+    excerpt: target_half = sp.Float("0.608336415687717065435990381419", 30)
+    stage: '134'
+- candidate_key: stage160_notes_only_slippage_numerics
+  modality: existing_provenance
+  anchor_stage: '160'
+  parameter_names:
+  - delta_BW_slip_coeff
+  - Delta_Q_dSigma0_coeff
+  - Delta_Q_dS_coeff
+  - Delta_Q_dThat_coeff
+  reason: Seven numeric slippage coefficients (0.240311770175051, 4.161261012190819, 1.80034014155495, 2.51482073756543, 11.5758539789133,
+    ...) live only in the notes — the pass-2 report confirms "they are not produced by either engine" — so these numbers carry
+    no script verification anywhere and are exactly the prose-only pattern a back-filled or hand-tuned value would leave.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+    line: 187
+    excerpt: 0.240311770175051\,\delta\mathfrak B_W.
+    stage: '160'
+- candidate_key: stage159_notes_only_numeric_illustrations
+  modality: existing_provenance
+  anchor_stage: '159'
+  parameter_names:
+  - delta_C_dg_coeff
+  - Delta_Q_dg_coeff
+  reason: Same notes-only pattern as stage 160 — the numeric coefficients 7.84345671020202 (notes:172) and 2.61448557006734
+    (notes:306) appear only in the notes; the pass-2 report states "the scripts do NOT emit" them, so their provenance rests
+    on unrecorded hand computation downstream of r_F1 and was never machine-checked.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 172
+    excerpt: 7.84345671020202\,\sigma_*\,\delta\mathfrak g.
+    stage: '159'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '131'
+  value: Pi_* = 1.50882951349316 (and S_q(Pi_*), Sigma_m^*)
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 1226
+    excerpt: '`Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605428`, and `Σ_m*≈0.451485277739090` are owned UPSTREAM'
+  reason: Derived root of g_Pi(Pi) = g_-^F1 (both engines re-solve via nsolve/FindRoot, e.g. stage147 py:24 "sp.nsolve(gPi
+    - gminus, 1.5)"); ownership at 130/131/133/135 is explicit, dual-engine, and carried (not pinned) throughout the band
+    — conditional only on the upstream g_-^F1 / 37:20 primitive flagged above.
+- stage: '142'
+  value: r_F1 = sqrt(4107 - 100*pi^2)/(10*pi)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+    line: 34
+    excerpt: r = sp.sqrt(sp.Integer(4107) - 100*pi**2)/(10*pi)
+  reason: The closed FORM is arithmetically forced given L/a=37/20 (12*(37/20)^2 = 4107/100; pass-2 IV.3 corrected the paper's
+    117*pi^2 typo TO the script); the residual freedom is entirely in the 37/20 primitive, which is the stage146 candidate
+    above, not in this identity.
+- stage: '138'
+  value: R_q = 1/4 on both compensation branches
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+    line: 31
+    excerpt: assert sp.simplify(sol_plus - sp.Rational(1,4)) == 0
+  reason: Exact algebraic collapse of (g_c - r)^2/(1 + r^2) at g_c = r +/- (1/2)sqrt(1+r^2), verified symbolically in both
+    engines for free r — no tunable content.
+- stage: '140'
+  value: Sigma_0 = (20/9) T_hat_m^2
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+    line: 16
+    excerpt: assert sp.simplify(Sigma0_hat - sp.Rational(20,9)*That**2) == 0
+  reason: Structural coefficient derived symbolically from the boxed Sigma_0 = 20*L*l^2*rho^2*T_m^2/(9*hbar^2*c_s^2) normalization;
+    exact symbolic residual, dual-engine.
+- stage: '148'
+  value: xi_* (Stage-126 closed form) = 1 - lambda_{Pi,0}, exact residual 0
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+    line: 93
+    excerpt: xi_star_closed = (-37*sp.sqrt(3) - 5*sp.pi**2 + 2*sp.sqrt(4107 - 100*sp.pi**2)) / (5*(8 - sp.pi**2))
+  reason: Exact symbolic identity asserted to residual 0 in both engines (the notes' 15th-digit divergence 0.183918405511538
+    vs ...540 is documented numerical noise, not a value defect).
+- stage: '159'
+  value: Delta_Q = -9 sigma_* delta_gamma_W/(1 - sigma_*) under the even gate; determinant -27 sigma_*
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+    line: 114
+    excerpt: 'final_defect = sp.simplify((deltaC - 27 * sigma0 * dgamma) / (3 * (1 - sigma0))).subs({deltaC: 0})'
+  reason: Fully symbolic linear-elimination identities in free symbols (sigma_*, drifts); the boxed Output is the symbolic
+    law, verified residual-0 in both engines — only the notes-side numeric illustrations (separate candidate above) are unverified.
+- stage: '152'
+  value: Stage-148 affine endpoints 1.69941496131430 / 2.08240814741023 / 0.508756302215085 / 0.625700104366894 (carried)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 112
+    excerpt: lam_Pi = (mp.mpf("1.69941496131430") - deltaPi) / mp.mpf("2.08240814741023")
+  reason: Carried-with-anchor rounded copies of the Stage-148 dual-engine outputs (correct 15-sig-fig roundings of 1.699414961314297
+    etc.); the .wl independently re-derives the equivalent endpoints analytically, so the literals are cross-engine corroborated,
+    not pinned.
+- stage: '133'
+  value: S(Pi,0) = 1 static-shell limit and the S(Pi,kappa) mouth kernel
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 1226
+    excerpt: '`Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605428`, and `Σ_m*≈0.451485277739090` are owned UPSTREAM (at 130/131/133/135)'
+  reason: Symbolic BVP-derived kernel (DSolve/DSolveValue independent routes after the IV.4 re-author); the kappa->0 limit
+    equals 1 exactly in both engines; no numeric freedom.

@@ -32,7 +32,9 @@ Run from either `/var/projects/toy_physics` or `/var/projects/toy_physics/resear
 
 - `init` creates `redteam_adversarial/`, `MANIFEST.yaml`, `fit_insertion_points.yaml`, `benchmarks.yaml`, `BATCHES.md`, and required subdirectories.
 - `render-phase-a-prompts --stages NNN ... [--prefix NAME]` renders the four blind Phase A modality prompts only, under `tmp_prompts/`.
-- `phase-a-scan --stages NNN ...` runs the broad mechanical Phase A modalities, writes YAML fragments, unions candidates, and renders all four modality prompts plus the completeness-critic prompt.
+- `phase-a-scan --stages NNN ... [--prefix NAME]` runs the broad mechanical Phase A modalities, writes YAML fragments, unions candidates, and renders all four modality prompts plus the completeness-critic prompt.
+- `phase-a-ingest <fragment.yaml> [<fragment.yaml> ...]` ingests agent-emitted Phase A fragments under the manifest lock and re-renders `fit_insertion_points.yaml` plus `BATCHES.md`.
+- `render-critic [--prefix NAME]` re-renders the completeness-critic prompt from the current manifest union and every fragment file under `phase_a_fragments/`.
 - `phase-b-build <candidate_id>` builds a mechanical parameter-value evidence bundle, renders the Phase B provenance-builder prompt, and updates manifest status to `provenance_built`.
 - `phase-c-render <candidate_id>` renders the adversarial prompt under `redteam_adversarial/tmp_prompts/` and updates status to `audit_pending`.
 - `set-status <candidate_id> <status> [--note TEXT]` advances a candidate through the state machine under the manifest lock; `blocked` is reachable from any state.
@@ -47,13 +49,41 @@ Run from either `/var/projects/toy_physics` or `/var/projects/toy_physics/resear
 
 ### Phase A Scan
 
-For Step 3 real campaign work, do not hand-select a family of stages or parameters. The real sweep is the full configured stage range, currently 001 through 253. Render the blind prompts for the campaign band first:
+For Step 3 real campaign work, do not hand-select a family of stages or parameters. The real sweep is the full configured stage range, currently 001 through 253. First run the mechanical scan for the full band:
+
+```bash
+$AA phase-a-scan --stages $(seq -f "%03g" 1 253) --prefix campaign_001_253
+```
+
+The scan writes per-modality mechanical fragments under `redteam_adversarial/phase_a_fragments/`, updates `MANIFEST.yaml`, renders `fit_insertion_points.yaml` and `BATCHES.md`, and renders the four blind modality prompts under `redteam_adversarial/tmp_prompts/`.
+
+If the blind prompts are needed without re-running the mechanical scan, render them explicitly:
 
 ```bash
 $AA render-phase-a-prompts --stages $(seq -f "%03g" 1 253) --prefix campaign_001_253
 ```
 
-Launch four clean agents, one per rendered prompt: numeric-literal, claim-label, graph, and existing-provenance. Each agent remains blind to the other modality outputs and emits only a YAML fragment. The mechanical `phase-a-scan` path is broad and not seeded to any parameter family; it provides the union baseline and records per-modality attribution. Agent fragment incorporation for Step 3 must preserve the same fragment schema and blindness rule.
+Launch four clean agents, one per rendered prompt: numeric-literal, claim-label, graph, and existing-provenance. Each agent remains blind to the other modality outputs and emits only a YAML fragment with `modality:` and `candidates:`. Ingest those fragments through the lock, never by hand-editing the manifest:
+
+```bash
+$AA phase-a-ingest redteam_adversarial/tmp_prompts/<agent_fragment_1>.yaml redteam_adversarial/tmp_prompts/<agent_fragment_2>.yaml
+```
+
+Agent fragments bypass the mechanical `candidate_parameters()` scan and denylist; their non-empty `parameter_names` are accepted verbatim. The ingest path merges by `candidate_key`, appends modality attribution and citations, creates new `fit_` candidates with status `scanned`, and never regresses an existing candidate already past `scanned`.
+
+After agent ingestion, render the critic from the current union:
+
+```bash
+$AA render-critic --prefix campaign_001_253
+```
+
+Launch a clean completeness-critic agent using the rendered prompt. Its findings are a fifth scan and must emit the same fragment schema with `modality: completeness_critic`. Ingest the critic YAML through the same command:
+
+```bash
+$AA phase-a-ingest redteam_adversarial/tmp_prompts/<critic_fragment>.yaml
+```
+
+The mechanical `phase-a-scan` path is broad and not seeded to any parameter family; it provides the union baseline and records per-modality attribution. Agent fragment incorporation for Step 3 must preserve the same fragment schema and blindness rule.
 
 For a bounded scan or dry-run fixture:
 

@@ -1,0 +1,739 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b4_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 097
+- 098
+- 099
+- '100'
+- '101'
+- '102'
+- '103'
+- '104'
+- '105'
+- '106'
+- '107'
+- '108'
+- '109'
+- '110'
+- '111'
+- '112'
+- '113'
+- '114'
+- '115'
+- '116'
+- '117'
+- '118'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+- '126'
+- '127'
+- '128'
+candidates:
+- candidate_key: stage097_yhatQcons_forced_carrier
+  modality: claim_label
+  anchor_stage: 097
+  parameter_names:
+  - Yhat_Q_cons
+  reason: The card labels the specific carrier form 3/4+(1/4)/(1-omega^2/Omega_Q^2) as "forced", a derivedness claim that
+    could conceal an upstream choice of split.
+  citation:
+    path: paper/stages/stage_097.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+    stage: 097
+- candidate_key: stage097_even_ledger_fixed
+  modality: claim_label
+  anchor_stage: 097
+  parameter_names:
+  - Kbar_0
+  - Omega_Q
+  reason: Claims the whole even ledger is fixed by two inputs whose own origin ("known") is not established in-stage, a classic
+    place to slot in tuned values.
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 38
+    excerpt: So once `Kbar_0` and `Omega_Q` are known, the entire even conservative ledger is fixed.
+    stage: 097
+- candidate_key: stage097_gamma5_fixed_algebraically
+  modality: claim_label
+  anchor_stage: 097
+  parameter_names:
+  - Gamma_5
+  reason: Asserts the odd coefficient was "already fixed algebraically" upstream; if the upstream fix was actually a matched/posited
+    value, the label launders it as derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 44
+    excerpt: On the minimal isotropic outgoing `l=2` branch, the 2.5PN audit already fixed the odd coefficient algebraically
+      as
+    stage: 097
+- candidate_key: stage098_support_demand_exact
+  modality: claim_label
+  anchor_stage: 098
+  parameter_names:
+  - zeta_max
+  - support_ratio
+  reason: Labels the support demand "exact" and the pass "automatic" while zeta_max itself is a carried-forward external value
+    whose origin could be tuned.
+  citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 18
+    excerpt: so even with finite blocking the exact support demand is so small that any explicit branch with support ceiling
+      `zeta_max > 1` already passes it throughout the admissible blocked regime.
+    stage: 098
+- candidate_key: stage098_forced_carrier_card
+  modality: claim_label
+  anchor_stage: 098
+  parameter_names:
+  - Yhat_Q_cons
+  reason: Repeats the "forced conservative carrier" derivedness claim on the stage card without in-card derivation support.
+  citation:
+    path: paper/stages/stage_098.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+    stage: 098
+- candidate_key: stage099_conservative_split_exact
+  modality: claim_label
+  anchor_stage: 099
+  parameter_names:
+  - Yhat_Q_cons
+  - conservative_split_3_4_1_4
+  reason: Declares the 3/4 + 1/4 conservative split "exactly" fixed inside the reduced hierarchy; an exactness label on a
+    specific rational split is a prime fit-masking pattern.
+  citation:
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 18
+    excerpt: 2. The conservative quadrupole module is exactly
+    stage: 099
+- candidate_key: stage099_forced_by_yhatQcons_script
+  modality: claim_label
+  anchor_stage: 099
+  parameter_names:
+  - K_0
+  - Gamma_5
+  reason: Script comment labels the structural relations "forced" by the carrier; if the carrier itself was matched rather
+    than derived, the forcing claim inherits the fit.
+  citation:
+    path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+    line: 63
+    excerpt: '# Conservative quadrupole structural relations (forced by Yhat_Q^cons):'
+    stage: 099
+- candidate_key: stage100_chiQ_fixed_downstream_card
+  modality: claim_label
+  anchor_stage: '100'
+  parameter_names:
+  - chi_Q
+  reason: States chi_Q=1 is "fixed downstream" by another stage; deferral-of-derivation labels can hide a value that was actually
+    selected to hit the GR target.
+  citation:
+    path: paper/stages/stage_100.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
+      condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+    stage: '100'
+- candidate_key: stage100_factorization_forced_script
+  modality: claim_label
+  anchor_stage: '100'
+  parameter_names:
+  - mhat_0
+  - chi_Q
+  - N_Q
+  reason: Script asserts the closure product equals 1 is "forced" by imposing the observable-side GR target, i.e. the condition
+    is matched to the target rather than independently derived.
+  citation:
+    path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+    line: 75
+    excerpt: '# the factorization mhat_0^2 chi_Q N_Q = 1 is forced.'
+    stage: '100'
+- candidate_key: stage101_stage105_fixes_by_matching
+  modality: claim_label
+  anchor_stage: '101'
+  parameter_names:
+  - chi_Q
+  - mhat_0
+  reason: Explicitly says the branch is fixed "by matching" a coefficient to a fingerprint - a matched-value claim that is
+    the textbook shape of a fit insertion point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 49
+    excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
+      giving
+    stage: '101'
+- candidate_key: stage102_everything_else_fixed
+  modality: claim_label
+  anchor_stage: '102'
+  parameter_names:
+  - higher_odd_coeff_omega7
+  - chi_Q
+  reason: Blanket claim that all remaining coefficients are "fixed" or irrelevant; the higher odd term's irrelevance cutoff
+    at O(omega^7) is itself a chosen order that could be back-filled.
+  citation:
+    path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+    line: 58
+    excerpt: Everything else that could have obstructed the reduced 2.5PN theorem has either been fixed or pushed above the
+      relevant order.
+    stage: '102'
+- candidate_key: stage103_split_exact_status
+  modality: claim_label
+  anchor_stage: '103'
+  parameter_names:
+  - conservative_split_3_4_1_4
+  reason: Status note re-asserts the rational split as exact within a list headed "the following are now fixed", consolidating
+    the exactness claim without new derivation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+    line: 8
+    excerpt: '- the conservative quadrupole split is exactly `3/4 + 1/4`,'
+    stage: '103'
+- candidate_key: stage104_gamma5_not_free
+  modality: claim_label
+  anchor_stage: '104'
+  parameter_names:
+  - Gamma_5_can
+  - xi_Q
+  reason: Direct "not free"/"fixed to" claim for Gamma_5,can = a^5/(27 c_s^5); the choice of the canonical one-pole DtN model
+    that produces it could itself be the tuned input.
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 87
+    excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch, the
+      leading odd quadrupole coefficient is fixed to
+    stage: '104'
+- candidate_key: stage104_chiQ_canonical_condition_card
+  modality: claim_label
+  anchor_stage: '104'
+  parameter_names:
+  - chi_Q
+  reason: Card labels chi_Q=1 the "canonical condition", a canonicality claim whose ultimate justification is the fingerprint
+    match rather than an independent derivation.
+  citation:
+    path: paper/stages/stage_104.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+    stage: '104'
+- candidate_key: stage105_chiQ_eq_1_by_matching_card
+  modality: claim_label
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  reason: The headline result chi_Q=1 is stated as obtained by "matching" to a branch, i.e. a matched value presented as exact/derived.
+  citation:
+    path: paper/stages/stage_105.tex
+    line: 16
+    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+    stage: '105'
+- candidate_key: stage105_last_scalar_fixed_exactly
+  modality: claim_label
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  - xi_Q
+  reason: Claims the last free normalization scalar is "fixed exactly" conditional on a branch choice; conditioning on the
+    favorable branch is where a fit could hide.
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 72
+    excerpt: So on the canonical compact passive/outgoing grouped-`P2` DtN branch, the last reduced normalization scalar is
+      fixed exactly.
+    stage: '105'
+- candidate_key: stage106_coeffs_fixed_to_targets
+  modality: claim_label
+  anchor_stage: '106'
+  parameter_names:
+  - K_2
+  - K_4
+  - Gamma_5
+  - N_Q
+  reason: Says the coefficients are "fixed to their target values" - fixing TO targets is literally the definition of matching,
+    yet it is presented under a closure/derivation heading.
+  citation:
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    line: 40
+    excerpt: 'With \(N_Q=1\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:'
+    stage: '106'
+- candidate_key: stage106_odd_exactly_gr_target
+  modality: claim_label
+  anchor_stage: '106'
+  parameter_names:
+  - Gamma_5_normalized
+  reason: Exact-agreement-with-GR claim for the normalized odd coefficient; agreement achieved via the canonical-branch assumption
+    could be back-filled from the target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    line: 53
+    excerpt: 'Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:'
+    stage: '106'
+- candidate_key: stage107_chiQ_canonical_normalization
+  modality: claim_label
+  anchor_stage: '107'
+  parameter_names:
+  - chi_Q
+  reason: Re-asserts chi_Q=1 as the canonical value from the exact DtN model before deriving the deformation map; the baseline
+    canonicality claim anchors all later "deviation" language.
+  citation:
+    path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+    line: 22
+    excerpt: so the canonical outgoing normalization is `chi_Q = 1`.
+    stage: '107'
+- candidate_key: stage108_beta_forced_positive_branch
+  modality: claim_label
+  anchor_stage: '108'
+  parameter_names:
+  - beta
+  reason: beta=1 is "forced" only after restricting to the "natural positive branch" - the branch-positivity restriction is
+    a discretionary choice that does the forcing.
+  citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 41
+    excerpt: which on the natural positive branch forces
+    stage: '108'
+- candidate_key: stage108_chiQ_robust_claim
+  modality: claim_label
+  anchor_stage: '108'
+  parameter_names:
+  - chi_Q
+  reason: Robustness/non-tunability claim for chi_Q=1; the classes against which robustness holds were selected in-stage,
+    so the claim's scope could be shaped around the result.
+  citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 102
+    excerpt: 'The canonical value `chi_Q = 1` is robust against:'
+    stage: '108'
+- candidate_key: stage109_linearized_condition_must_satisfy
+  modality: claim_label
+  anchor_stage: '109'
+  parameter_names:
+  - b
+  - a_0
+  - a_5
+  reason: States a forced linear constraint on the branch data (b, a_0, a_5); the constraint is derived from requiring the
+    canonical value, i.e. the target normalization is imposed, not tested.
+  citation:
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 62
+    excerpt: To keep the canonical outgoing normalization at first order, the deformation must satisfy
+    stage: '109'
+- candidate_key: stage110_chiQR_exact_factor
+  modality: claim_label
+  anchor_stage: '110'
+  parameter_names:
+  - chi_Q_R
+  - rho_R
+  reason: Labels the Robin-outlet normalization chi_Q^R = 3/(3-rho_R) "exact"; exactness of the factor rests on the specific
+    Robin model form posited in-stage.
+  citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 52
+    excerpt: the raw Robin outlet carries the exact normalization factor
+    stage: '110'
+- candidate_key: stage111_sigmaW_forced_to_zero
+  modality: claim_label
+  anchor_stage: '111'
+  parameter_names:
+  - sigma_W
+  - kappa_W
+  reason: No-go forcing sigma_W=0 is conditional on the "already-fixed" canonical even fingerprint; if that fingerprint was
+    matched upstream, the exclusion inherits the fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 55
+    excerpt: So a standalone isotropic hidden pole of this type cannot sit on the already-fixed canonical even branch unless
+      it is absent.
+    stage: '111'
+- candidate_key: stage112_exactly_two_branches
+  modality: claim_label
+  anchor_stage: '112'
+  parameter_names:
+  - rho_R
+  - sigma_W
+  - kappa_W
+  reason: Claims the canonical-even constraints yield exactly two solution branches (rho_R=sigma_W, kappa_W=0); the constraint
+    set imposed is the canonical fingerprint itself.
+  citation:
+    path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 41
+    excerpt: 'yields exactly two branches:'
+    stage: '112'
+- candidate_key: stage112_chiQhyb_exact_factor
+  modality: claim_label
+  anchor_stage: '112'
+  parameter_names:
+  - chi_Q_hyb
+  - sigma_W
+  - gamma_W
+  reason: '"Exact" label on the hybrid compensation factor chi_Q^hyb whose cancellation to 1 depends on the specific Robin-mixed
+    balance law selected in-stage.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 74
+    excerpt: So the exact outgoing-normalization factor is
+    stage: '112'
+- candidate_key: stage113_preserved_exactly_when
+  modality: claim_label
+  anchor_stage: '113'
+  parameter_names:
+  - chi_Q
+  - rho_R
+  - sigma_W
+  reason: Status note consolidates the compensated-outlet condition as an exact preservation law, propagating the exactness
+    claims of 110-112 without new derivation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+    line: 37
+    excerpt: '   and canonical outgoing normalization is preserved exactly when'
+    stage: '113'
+- candidate_key: stage114_exact_core_correction
+  modality: claim_label
+  anchor_stage: '114'
+  parameter_names:
+  - delta_Lambda_core
+  - r_c
+  - lambda
+  reason: '"Exact" Schur-complement core correction rests on the posited two-channel quadratic core model; the model class
+    choice determines the later balance surface.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 43
+    excerpt: Eliminating `(s,q)` gives the exact core correction
+    stage: '114'
+- candidate_key: stage115_gq_exact_two_branch_law
+  modality: claim_label
+  anchor_stage: '115'
+  parameter_names:
+  - g_q
+  - g_s
+  - K_s
+  reason: The mixed coupling g_q is presented as exactly determined by a balance law that was constructed to land on the Stage-112
+    compensated branch - solving for the coupling that hits the target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 49
+    excerpt: Solving for the mixed coupling gives the exact two-branch law
+    stage: '115'
+- candidate_key: stage116_LW_fixed_card
+  modality: claim_label
+  anchor_stage: '116'
+  parameter_names:
+  - L_W
+  - gamma_0_bare
+  reason: Card claims the half-wave condition "fixes" both the tube length and the bare outgoing scale; the bare scale gamma_0_bare=(1+r_c)/9
+    is elsewhere disclosed as an ansatz, not derived.
+  citation:
+    path: paper/stages/stage_116.tex
+    line: 16
+    excerpt: First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale.
+    stage: '116'
+- candidate_key: stage116_LW_fixed_note
+  modality: claim_label
+  anchor_stage: '116'
+  parameter_names:
+  - L_W
+  reason: L_W is "fixed" by requiring the tube to realize the compensation-selected kappa_0 - the length is solved backwards
+    from the value needed for compensation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 46
+    excerpt: So the auxiliary mixed-tube length is fixed to
+    stage: '116'
+- candidate_key: stage116_pure_scale_removed_exactly
+  modality: claim_label
+  anchor_stage: '116'
+  parameter_names:
+  - gamma_0_bare
+  - r_c
+  reason: The exact cancellation holds only under the posited pure-scale bare-outlet form gamma_0_bare=(1+r_c)/9; the "removed
+    exactly" label presents that posit's consequence as derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 70
+    excerpt: Then the hybridization factor `(1+r_c)` is removed exactly by the Stage-114 denominator renormalization, leaving
+      the canonical final coefficients
+    stage: '116'
+- candidate_key: stage117_formulas_derived_claim
+  modality: claim_label
+  anchor_stage: '117'
+  parameter_names:
+  - gamma_0_bare
+  - L_W
+  - r_c
+  reason: Status note blanket-labels the outlet formulas "derived" while the stage's own audit scripts state gamma_0_bare=(1+r_c)/9
+    is a pure-scale ANSATZ, not derived - a direct claim-vs-disclosure tension.
+  citation:
+    path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+    line: 26
+    excerpt: with explicit formulas derived in Stages 114–116.
+    stage: '117'
+- candidate_key: stage118_Kq_fixed_not_arbitrary
+  modality: claim_label
+  anchor_stage: '118'
+  parameter_names:
+  - K_q
+  reason: '"Not arbitrary / fixed by" claim for K_q; the localization norm and tube length it depends on are themselves compensation-selected
+    quantities.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 149
+    excerpt: 'So \(K_q\) is not arbitrary: it is fixed by one localization norm and the D/N tube length.'
+    stage: '118'
+- candidate_key: stage119_g_fixed_exactly_once_r
+  modality: claim_label
+  anchor_stage: '119'
+  parameter_names:
+  - mathfrak_g
+  - mathfrak_r
+  reason: Chains two fixedness claims - g is "fixed exactly" given r - while the law fixing g was solved from the requirement
+    to preserve the canonical fingerprint.
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 52
+    excerpt: Once \(\mathfrak r\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly.
+    stage: '119'
+- candidate_key: stage119_one_parameter_family_LW_fixed
+  modality: claim_label
+  anchor_stage: '119'
+  parameter_names:
+  - L_W
+  - mathfrak_g
+  reason: The "one-parameter parent family" summary fixes L_W and g from r; the residual one free parameter r is exactly the
+    dial that could be tuned to reach compensation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 162
+    excerpt: 2. then the D/N mixed-tube length is fixed by
+    stage: '119'
+- candidate_key: stage120_branch_exists_iff
+  modality: claim_label
+  anchor_stage: '120'
+  parameter_names:
+  - mathfrak_r
+  - mathfrak_g
+  reason: Status note states an exact iff existence condition on (r, g); the iff framing presents the compensation surface
+    as forced rather than as the locus a fit would target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+    line: 24
+    excerpt: The compensated canonical outgoing quadrupole branch exists **iff**
+    stage: '120'
+- candidate_key: stage121_r_geom_exact_branch
+  modality: claim_label
+  anchor_stage: '121'
+  parameter_names:
+  - mathfrak_r_geom
+  - L
+  - a
+  reason: The "exact" geometric value of r follows from the identification L_W=L, a modeling identification adopted in-stage
+    that could have been chosen because it yields a workable r.
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 37
+    excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
+    stage: '121'
+- candidate_key: stage121_r_not_tunable
+  modality: claim_label
+  anchor_stage: '121'
+  parameter_names:
+  - mathfrak_r
+  reason: Explicit non-tunability claim ("rather than a tunable small parameter") for r - the strongest possible claim-label
+    flag for a value whose geometric provenance should be independently checkable.
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 81
+    excerpt: So the first concrete moving-throat core solve already fixes the static/mixed hybridization to an `O(1)` value
+      rather than a tunable small parameter.
+    stage: '121'
+- candidate_key: stage122_g_pm_exact_values
+  modality: claim_label
+  anchor_stage: '122'
+  parameter_names:
+  - mathfrak_g_plus_F1
+  - mathfrak_g_minus_F1
+  reason: The closed forms g_pm = (2*sqrt(4107-100*pi^2) +/- 37*sqrt(3))/(20*pi) are labeled exact compensated values; they
+    are solved from the compensation requirement at the geometry-selected r.
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 51
+    excerpt: gives the two exact compensated mouth-coupling values
+    stage: '122'
+- candidate_key: stage122_rF1_geometry_fixes
+  modality: claim_label
+  anchor_stage: '122'
+  parameter_names:
+  - mathfrak_r_F1
+  reason: Claims geometry "fixes" r_F1 ~ 1.778; the fixing chain runs through the Stage-121 L_W=L identification and Family-1
+    aspect ratio, each a potential insertion point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 148
+    excerpt: '- the actual throat geometry fixes'
+    stage: '122'
+- candidate_key: stage123_exact_branch_law
+  modality: claim_label
+  anchor_stage: '123'
+  parameter_names:
+  - Xi_v
+  - Xi_T
+  reason: Parent-variable branch values are labeled exact laws; they translate the compensation-solved (r, g) into microscopic
+    ratios, propagating any upstream matching.
+  citation:
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 25
+    excerpt: Then the exact branch law is
+    stage: '123'
+- candidate_key: stage123_geometry_selected_hybridization
+  modality: claim_label
+  anchor_stage: '123'
+  parameter_names:
+  - mathfrak_r_F1
+  reason: '"Geometry-selected" label re-asserts the non-tunable provenance of r_F1 in the summary, anchoring downstream stages
+    on the Stage-121 identification.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 109
+    excerpt: '- the geometry-selected normalized hybridization is'
+    stage: '123'
+- candidate_key: stage124_what_is_now_fixed
+  modality: claim_label
+  anchor_stage: '124'
+  parameter_names:
+  - mathfrak_r_F1
+  - mathfrak_g_pm_F1
+  reason: Status note opens with a fixedness header consolidating the geometry-fixed r and exact compensated g values as settled,
+    with no new derivation in-stage.
+  citation:
+    path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+    line: 3
+    excerpt: '## What is now fixed'
+    stage: '124'
+- candidate_key: stage125_lower_branch_unique
+  modality: claim_label
+  anchor_stage: '125'
+  parameter_names:
+  - mathfrak_g_minus_F1
+  - branch_sign
+  reason: Uniqueness/forced-branch claim conditional on the positivity setup chosen in-stage; the positivity restriction is
+    the discretionary input that does the selecting.
+  citation:
+    path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 79
+    excerpt: \text{within this positive localized-source setup, the lower compensated branch is the unique physically admissible
+      compensated Family-1 branch.}
+    stage: '125'
+- candidate_key: stage126_g_match_pi_over_4_card
+  modality: claim_label
+  anchor_stage: '126'
+  parameter_names:
+  - mathfrak_g_match
+  reason: The clean closed form g=pi/4 is claimed to follow from the "self-matched" profile - the profile choice sigma(z)=k
+    cos(kz) is itself the naturalness posit producing the value.
+  citation:
+    path: paper/stages/stage_126.tex
+    line: 16
+    excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+    stage: '126'
+- candidate_key: stage126_xi_star_exact_solution
+  modality: claim_label
+  anchor_stage: '126'
+  parameter_names:
+  - xi_star
+  reason: xi_star is the admixture fraction solved backwards from the requirement g(xi)=g_minus_F1 - an explicitly target-matched
+    value labeled an exact solution.
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 93
+    excerpt: The exact solution is
+    stage: '126'
+- candidate_key: stage126_not_a_coefficient_fit
+  modality: claim_label
+  anchor_stage: '126'
+  parameter_names:
+  - mathfrak_g_minus_F1
+  - xi_star
+  reason: Direct prose denial that the result is a fit ("no longer looks like a delicate coefficient fit") - an explicit not-a-fit
+    claim is itself a primary claim-label target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 115
+    excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family
+      of positive localized mouth sources.
+    stage: '126'
+- candidate_key: stage127_slab_depth_unique
+  modality: claim_label
+  anchor_stage: '127'
+  parameter_names:
+  - x_star_slab
+  reason: x_star_slab ~ 0.7978 is labeled "unique" but is obtained by solving g_slab(x)=g_minus_F1 - the depth is tuned to
+    hit the target branch by construction.
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 37
+    excerpt: gives the unique Family-1 slab depth
+    stage: '127'
+- candidate_key: stage127_exp_depth_exact_branch
+  modality: claim_label
+  anchor_stage: '127'
+  parameter_names:
+  - x_star_exp
+  reason: The penetration depth x_star_exp ~ 0.6628 is solved from the compensation target; "reaches the exact lower compensated
+    branch" frames a fitted depth as a derived landing.
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 82
+    excerpt: So an exponentially localized mouth source with penetration depth about \(0.66L\) reaches the exact lower compensated
+      branch.
+    stage: '127'
+- candidate_key: stage128_branch_sign_fixed_card
+  modality: claim_label
+  anchor_stage: '128'
+  parameter_names:
+  - branch_sign
+  reason: Card asserts the branch sign is "fixed" while the fixing rests on the Stage-125 positivity setup; the card carries
+    the fixedness label downstream to Stages 133-145.
+  citation:
+    path: paper/stages/stage_128.tex
+    line: 16
+    excerpt: Branch sign is fixed; the open datum is the actual positive mouth-source shape.
+    stage: '128'
+- candidate_key: stage128_rF1_fixed_by_geometry
+  modality: claim_label
+  anchor_stage: '128'
+  parameter_names:
+  - mathfrak_r_F1
+  reason: Re-asserts r_F1 ~ 1.77799 as geometry-fixed in the consolidated status, the terminal claim-label for the Stage-121
+    identification chain.
+  citation:
+    path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 12
+    excerpt: is already fixed by geometry.
+    stage: '128'
+- candidate_key: stage128_lower_branch_uniquely_selected
+  modality: claim_label
+  anchor_stage: '128'
+  parameter_names:
+  - mathfrak_g_minus_F1
+  reason: Boxed uniqueness-plus-reachability claim; "easily reachable" leans on the Stage-126/127 depth values that were each
+    solved backwards from the target branch.
+  citation:
+    path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 75
+    excerpt: \text{Under positive localized mouth sourcing, the lower compensated branch is uniquely selected and is easily
+      reachable.}
+    stage: '128'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

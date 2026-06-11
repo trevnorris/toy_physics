@@ -1,0 +1,91 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: completeness_critic
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_critic_completeness_agent.yaml
+ingested_at: '2026-06-11T08:39:27Z'
+stages:
+- '152'
+- '155'
+- '158'
+- '248'
+candidates:
+- candidate_key: stage152_corrected_mouth_state_pi_corr_t_corr
+  modality: completeness_critic
+  anchor_stage: '152'
+  parameter_names:
+  - Pi_corr
+  - T_hat_m_corr
+  - delta_g_act
+  - delta_S_act
+  reason: The corrected mouth state (Pi_corr=2.41591392833607, T_hat_m,corr=1.17313803363654 at line 86, plus the delta_g/delta_S
+    pair) is the branch state quoted downstream in the stage153 status note and paper/parts/part04 as the basis for the co-evolution
+    decision, yet none of these values appears anywhere in the 917-candidate union in any truncation — missed by the numeric_literal
+    scan of band 5 notes and by the parts-blind mechanical sweep.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 78
+    excerpt: \approx 2.41591392833607,
+    stage: '152'
+- candidate_key: stage152_profile_correction_samples_expected_pins
+  modality: completeness_critic
+  anchor_stage: '152'
+  parameter_names:
+  - deltaPi_expected
+  - deltaT_expected
+  - cov_cR_expected
+  - cov_KR_expected
+  reason: 'The scripts/numerical samples JSON pins the entire stage150-152 correction family as bare expected constants (lines
+    17-26) with no derivation in the file, and the whole scripts/numerical tree was cited only once across all 36 fragments
+    — a source-type hole: expected-value pinning sites where a back-filled value would live were never scanned.'
+  citation:
+    path: research/pde_ledger/scripts/numerical/stage150_152_profile_correction_samples.json
+    line: 21
+    excerpt: '"deltaPi_expected": 0.907084414842908,'
+    stage: '152'
+- candidate_key: stage155_frozen_traction_fixed_point_pins
+  modality: completeness_critic
+  anchor_stage: '155'
+  parameter_names:
+  - g_fp
+  - S_fp
+  - R_fp
+  reason: The frozen-traction fixed-point triple (g_fp=0.693352419668063, S_fp=0.6216013167514007, R_fp=0.2827139049082381)
+    is asserted to 1e-12 in-script, quoted in the stage155/157 notes and paper/parts/part04, and inherits the carried Pi_star/Sigma0_star
+    literal provenance, yet no fragment carries any of the three values — the same pattern the union flagged at stage 135
+    was missed here by the band-5 numeric_literal scan.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+    line: 94
+    excerpt: assert abs(g_fp - 0.693352419668063) < 1e-12, ("g_fp mismatch", g_fp)
+    stage: '155'
+- candidate_key: stage158_linear_defect_transport_coefficients
+  modality: completeness_critic
+  anchor_stage: '158'
+  parameter_names:
+  - transport_coefficient_dR_dg
+  - slippage_coefficient_eps_perp
+  reason: The linearized defect-transport coefficients -0.490216044387626 (line 103) and 1.52843317823248 (lines 238/252,
+    reused verbatim in stages 163 and 168) define the transport law carried through the 158-170 chain but are numerically
+    located only (scripts/output txt), and neither value appears in the union at any precision — missed by both numeric_literal
+    and existing_provenance in band 5.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 103
+    excerpt: -0.490216044387626\,\delta\mathfrak g.
+    stage: '158'
+- candidate_key: stage248_xi_turn_lambda_th_carried_hardcodes
+  modality: completeness_critic
+  anchor_stage: '248'
+  parameter_names:
+  - Xi_turn
+  - lambda_th
+  reason: Xi_turn=0.34437471 and lambda_th=0.42826825 (line 248) are bare benchmark hardcodes re-typed independently in the
+    stage249 script (line 172) and re-quoted as lambda_eff in the stage250/253 notes (e.g. stage250 line 412), yet neither
+    appears in any fragment — the b8 scans flagged the neighboring Session-IV literals (t_cross, tcollapse0, gamma_crit) but
+    missed this carried pair on the same event chain.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 247
+    excerpt: Xi_turn_num = 0.34437471
+    stage: '248'

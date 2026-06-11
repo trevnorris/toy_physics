@@ -1,0 +1,185 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b7_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '193'
+- '194'
+- '195'
+- '196'
+- '222'
+- '223'
+- '224'
+candidates:
+- candidate_key: stage193_grouped_p2_target_surface_coefficients
+  modality: numeric_literal
+  anchor_stage: '193'
+  parameter_names:
+  - Y_asymptote_3_4
+  - Y_pole_weight_1_4
+  - Omega_Q
+  reason: The one-pole conservative target surface Y = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) is "frozen" as the theorem target
+    with the 3/4 and 1/4 weights imported from the upstream 5PN derivation rather than re-derived in-stage, so the split could
+    be back-filled to match the desired grouped-bundle fingerprint.
+  citation:
+    path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+    line: 112
+    excerpt: Y_pole = sp.simplify(sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2 / OmegaQ2))
+    stage: '193'
+- candidate_key: stage194_chi_Q_canonical_fixing
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - chi_Q
+  reason: chi_Q = 1 is declared "fixed exactly" by matching even coefficients to the canonical compact outgoing branch; if
+    the canonical moment data it is matched against were themselves chosen, this headline normalization is a prime fit-insertion
+    point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+    stage: '194'
+- candidate_key: stage194_canonical_even_moment_ratios
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - L2_over_L0_1_9
+  - L4_combination_4_81
+  - odd_scale_1_27
+  reason: The canonical even-moment fingerprint ratios 1/9, 4/81 and the odd scale 1/27 are asserted as the matching data
+    that force chi_Q = 1; if these rationals were transcribed/posited rather than independently derived from the spherical
+    DtN model, the chi_Q fixing is circular.
+  citation:
+    path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+    line: 158
+    excerpt: '        sp.Eq(-L2 / L0, sp.Rational(1, 9)),'
+    stage: '194'
+- candidate_key: stage195_omega_Q_pole_frequency
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - Omega_Q
+  reason: The canonical pole frequency Omega_Q = 3*c_s/(2*a) is hardcoded as an assignment with no in-script derivation; the
+    entire canonical fingerprint family (1/9, 4/81, 9/8, 1/27) descends from this value, so it is the single number most worth
+    provenance-checking.
+  citation:
+    path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+    line: 45
+    excerpt: Omega_Q = sp.simplify(sp.Integer(3) * c_s / (2 * a))
+    stage: '195'
+- candidate_key: stage196_sigma_Q_canonical_outgoing_scale
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - sigma_Q_can
+  reason: The canonical outgoing scale sigma_Q^can = 9/(8 Omega_Q^5) = 4a^5/(27 c_s^5) enters the higher-odd irrelevance theorem
+    as a fixed input labeled canonical; the 9/8 coefficient is asserted, not re-derived here, so a tuned value would propagate
+    undetected through the theorem.
+  citation:
+    path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+    line: 45
+    excerpt: sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
+    stage: '196'
+- candidate_key: stage222_numerical_primitive_slice
+  modality: numeric_literal
+  anchor_stage: '222'
+  parameter_names:
+  - lambda_B
+  - lambda_U
+  - lambda_W
+  - lambda_R
+  - Omega_U
+  - Omega_W
+  - varpi
+  - K
+  - M
+  reason: The "admissible sample branch" (0.5, 0.3, 0.4, 0.25, 1.0, 1.4, 2.0, 3.0, 1.0) is chosen with no stated selection
+    criterion, and the stage's headline pole-census/survival verdict (which R_Q,* values clear the threshold) is evaluated
+    only on this slice, so the slice could be tuned to produce surviving poles.
+  citation:
+    path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 137
+    excerpt: '        lam_B: sp.Rational(1, 2),'
+    stage: '222'
+- candidate_key: stage222_illustrative_barrier_benchmark
+  modality: numeric_literal
+  anchor_stage: '222'
+  parameter_names:
+  - V_known_x1
+  - epsilon_barrier
+  reason: The 13-digit barrier benchmark V_known(1) = 1.181909222592 and epsilon = 0.1 are hardcoded with provenance only
+    in the external barrier_audit ledger ("carry forward the same illustrative ... benchmark"); the survival threshold 21.85
+    that decides which poles fail is computed directly from these two transplanted numbers.
+  citation:
+    path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 213
+    excerpt: '    V_known = sp.Float(''1.181909222592'')'
+    stage: '222'
+- candidate_key: stage223_p0_target_calibration_coefficient
+  modality: numeric_literal
+  anchor_stage: '223'
+  parameter_names:
+  - P0_target
+  - coefficient_54_over_5
+  - mhat_0
+  reason: The outgoing-normalization target for the "fully calibrated moving-throat branch" carries the coefficient 54/5 asserted
+    from upstream calibration without in-stage derivation; if that calibration constant was fitted to the 5PN target, every
+    compatibility number downstream (P0_target_compat ~ 0.00207) inherits the fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 127
+    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+    stage: '223'
+- candidate_key: stage223_barrier_benchmark_and_eta_window
+  modality: numeric_literal
+  anchor_stage: '223'
+  parameter_names:
+  - V_known_x1
+  - barrier_floor
+  - eta_linewidth_window
+  reason: The same hardcoded barrier value plus barrier_floor = 0.1 and the chosen linewidth window eta in {0.1, 0.3} jointly
+    set the dynamic-survival thresholds; all three are posited inputs, and the stage's survival-window verdict flips if any
+    of them is moved.
+  citation:
+    path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+    line: 296
+    excerpt: '    V_known = sp.Float(''1.181909222592'')'
+    stage: '223'
+- candidate_key: stage224_weak_axisymmetric_lane_signature
+  modality: numeric_literal
+  anchor_stage: '224'
+  parameter_names:
+  - lambda_20
+  - lambda_21
+  - lambda_22
+  reason: The grouped lane signature (lambda_20, lambda_21, lambda_22) = (1, 1/2, -1) is imported from "the later grouped
+    moving-throat notes" with no in-stage derivation, and the entire weak-axisymmetric ceiling-transport law (bP = 3 aP, the
+    robust 1 + |eps Xi1| ceiling) is algebra downstream of this posited triple.
+  citation:
+    path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+    line: 66
+    excerpt: '    lam21 = sp.Rational(1, 2)'
+    stage: '224'
+- candidate_key: stage224_stage223_carryover_ceilings
+  modality: numeric_literal
+  anchor_stage: '224'
+  parameter_names:
+  - barP0_compat
+  - Pcrit_both_10
+  - Pcrit_one_10
+  - Pcrit_both_30
+  - Pcrit_one_30
+  reason: The compatibility point and all four kill-test ceilings are transplanted as hardcoded Decimals "carried from Stage
+    223" rather than recomputed, so the first actual branch-kill verdict rests on copied literals whose upstream values already
+    depend on the chosen slice and the illustrative barrier benchmark.
+  citation:
+    path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+    line: 134
+    excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
+    stage: '224'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

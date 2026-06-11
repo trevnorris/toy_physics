@@ -1,0 +1,141 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b5_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages: []
+candidates: []
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '129'
+  source: research/pde_ledger/paper/stages/stage_129.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '130'
+  source: research/pde_ledger/paper/stages/stage_130.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '131'
+  source: research/pde_ledger/paper/stages/stage_131.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '132'
+  source: research/pde_ledger/paper/stages/stage_132.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '133'
+  source: research/pde_ledger/paper/stages/stage_133.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '134'
+  source: research/pde_ledger/paper/stages/stage_134.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '135'
+  source: research/pde_ledger/paper/stages/stage_135.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '136'
+  source: research/pde_ledger/paper/stages/stage_136.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '137'
+  source: research/pde_ledger/paper/stages/stage_137.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '138'
+  source: research/pde_ledger/paper/stages/stage_138.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '139'
+  source: research/pde_ledger/paper/stages/stage_139.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '140'
+  source: research/pde_ledger/paper/stages/stage_140.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '141'
+  source: research/pde_ledger/paper/stages/stage_141.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '142'
+  source: research/pde_ledger/paper/stages/stage_142.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '143'
+  source: research/pde_ledger/paper/stages/stage_143.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '144'
+  source: research/pde_ledger/paper/stages/stage_144.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '145'
+  source: research/pde_ledger/paper/stages/stage_145.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '146'
+  source: research/pde_ledger/paper/stages/stage_146.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '147'
+  source: research/pde_ledger/paper/stages/stage_147.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '148'
+  source: research/pde_ledger/paper/stages/stage_148.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '149'
+  source: research/pde_ledger/paper/stages/stage_149.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '150'
+  source: research/pde_ledger/paper/stages/stage_150.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '151'
+  source: research/pde_ledger/paper/stages/stage_151.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '152'
+  source: research/pde_ledger/paper/stages/stage_152.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '153'
+  source: research/pde_ledger/paper/stages/stage_153.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '154'
+  source: research/pde_ledger/paper/stages/stage_154.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '155'
+  source: research/pde_ledger/paper/stages/stage_155.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '156'
+  source: research/pde_ledger/paper/stages/stage_156.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '157'
+  source: research/pde_ledger/paper/stages/stage_157.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '158'
+  source: research/pde_ledger/paper/stages/stage_158.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '159'
+  source: research/pde_ledger/paper/stages/stage_159.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).
+- stage: '160'
+  source: research/pde_ledger/paper/stages/stage_160.tex
+  reason: No graph node resolves to this stage; atlas graph only indexes pde_ledger stages 001-025 (source query returned
+    none).

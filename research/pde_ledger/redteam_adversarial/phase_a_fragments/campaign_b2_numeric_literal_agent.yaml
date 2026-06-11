@@ -1,0 +1,57 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b2_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 049
+- '062'
+- '064'
+candidates:
+- candidate_key: stage049_uniform_source_density
+  modality: numeric_literal
+  anchor_stage: 049
+  parameter_names:
+  - sigma_source_density
+  - zeta_0_twin
+  reason: The uniform source density sigma(s)=1 is introduced by choice rather than derivation, and it is exactly this choice
+    that fixes I_n/I_0 = 1/(2n+1) and the load-bearing value zeta_0^twin = 1 (hence S_0 = 2 in Stages 050-052), so the profile
+    could have been selected to make the lowest twin lane land exactly on the 2*C_mix threshold.
+  citation:
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 93
+    excerpt: '`sigma(s)=1.`'
+    stage: 049
+- candidate_key: stage062_n5_eos_exponent
+  modality: numeric_literal
+  anchor_stage: '062'
+  parameter_names:
+  - n_poly
+  - K_eos
+  reason: The polytropic exponent n=5 is declared "frozen" by the parent theory with no in-band derivation, yet it fixes the
+    compressional stiffness h'(rho_*) = 5*K*rho_*^3 and hence the entire magnitude of the parent-action gain G_micro, so the
+    exponent could plausibly have been posited or back-filled to make the microscopic gain reach the Stage-061 sufficiency
+    thresholds.
+  citation:
+    path: paper/stages/stage_062.tex
+    line: 18
+    excerpt: For the frozen \(n=5\) EOS,
+    stage: '062'
+- candidate_key: stage064_matched_layer_coherence
+  modality: numeric_literal
+  anchor_stage: '064'
+  parameter_names:
+  - C_sigma_phi_sq
+  reason: The matched-layer limit asserts the coherence factor saturates its upper bound at exactly 1 under the idealization
+    that H is "nearly constant" in a thin active layer, which maximizes the downstream gain G_eq fed to Stages 065-069; the
+    choice to evaluate on this saturating limit rather than a generic layer is a plausible back-fill point.
+  citation:
+    path: paper/stages/stage_064.tex
+    line: 51
+    excerpt: C_{\sigma\phi}^2=1,
+    stage: '064'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

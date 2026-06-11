@@ -1,0 +1,293 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b5_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '130'
+- '131'
+- '134'
+- '135'
+- '138'
+- '139'
+- '140'
+- '147'
+- '152'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+candidates:
+- candidate_key: stage130_g_minus_compensation_target
+  modality: numeric_literal
+  anchor_stage: '130'
+  parameter_names:
+  - g_minus_F1
+  - g_star
+  reason: The Family-1 lower-branch gain enters as a bare carried float and is the sole target that defines the "unique Family-1
+    point" Pi_*~1.5088 quoted in the stage-130 card, so a tuned upstream value propagates unexamined into every in-band compensation
+    claim.
+  citation:
+    path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+    line: 10
+    excerpt: g_minus = sp.Float("0.758035078944663")
+    stage: '130'
+- candidate_key: stage131_g_minus_closed_form_aspect_ratio
+  modality: numeric_literal
+  anchor_stage: '131'
+  parameter_names:
+  - g_minus_F1
+  - L_over_a
+  reason: The closed form hard-encodes the upstream geometric selection L/a = 37/20 (4107 = 12*37^2*100/400), so the entire
+    parent threshold T_m - q_*A'_0 = Pi_* Theta_sigma/L is downstream of one discretely selected aspect-ratio value whose
+    origin could be a fit.
+  citation:
+    path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+    line: 15
+    excerpt: g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+    stage: '131'
+- candidate_key: stage134_kappa_q_first_mode_choice
+  modality: numeric_literal
+  anchor_stage: '134'
+  parameter_names:
+  - kappa_q
+  reason: The q-channel kernel wavenumber is fixed to pi/2 (first mixed D/N mode) with no in-band derivation of why that mode
+    alone carries the projection; the discrete channel choice directly sets S_q(Pi_*) and hence the fixed point, so a different
+    mode pick would move the compensation landing.
+  citation:
+    path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+    line: 30
+    excerpt: S_q = sp.simplify(S(Pi, sp.pi/2))
+    stage: '134'
+- candidate_key: stage134_pi_star_carried_literal
+  modality: numeric_literal
+  anchor_stage: '134'
+  parameter_names:
+  - Pi_star
+  - S_q_star
+  reason: Pi_* is imported as a typed literal (the .wl mirror line 90 annotates it "imported literal; owned by stage 131 note")
+    and S_q(Pi_*)=0.658075937605428 is asserted against a notes-carried target, so the stage validates against carried numbers
+    rather than re-deriving them; recurs as the same literal at stages 135/142/144(.wl)/152/155/156.
+  citation:
+    path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+    line: 39
+    excerpt: Pi_star = sp.Float("1.50882951349316")
+    stage: '134'
+- candidate_key: stage135_outlet_gain_ratio
+  modality: numeric_literal
+  anchor_stage: '135'
+  parameter_names:
+  - M_s_over_Sigma_m
+  - M_q_over_Sigma_m
+  reason: The outlet-consistent reduction (M_s, M_q) = (4, -1)*Sigma_m is substituted, not derived, in this stage ("inheriting
+    the compensated outlet ratio" per the card); the integer ratio -4 is exactly what makes R_q = 1/4 downstream, so it is
+    a prime insertion point if the inherited ratio was tuned to land compensation.
+  citation:
+    path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+    line: 36
+    excerpt: 'reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})'
+    stage: '135'
+- candidate_key: stage135_pi_star_import_sigma_m_star
+  modality: numeric_literal
+  anchor_stage: '135'
+  parameter_names:
+  - Pi_star
+  - Sigma_m_star
+  reason: Sigma_m^* ~ 0.451485 (the card's headline number) is solved from a hardcoded carried Pi_* literal rather than from
+    an in-stage derivation, so the quoted closure value inherits whatever provenance the carried literal has.
+  citation:
+    path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+    line: 46
+    excerpt: Pi_star = sp.Float("1.50882951349316")
+    stage: '135'
+- candidate_key: stage138_compensation_quarter
+  modality: numeric_literal
+  anchor_stage: '138'
+  parameter_names:
+  - R_q_comp
+  reason: The "exact compensation gives R_q = 1/4" value is equivalent to defining the branch as g = r -/+ sqrt(1+r^2)/2;
+    the quarter is forced once the stage-135 outlet ratio 4 is accepted, so it is fitted-vs-derived exactly to the extent
+    that ratio is, and the card states it as a derived exact value.
+  citation:
+    path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+    line: 31
+    excerpt: assert sp.simplify(sol_plus - sp.Rational(1,4)) == 0
+    stage: '138'
+- candidate_key: stage139_aspect_ratio_literal
+  modality: numeric_literal
+  anchor_stage: '139'
+  parameter_names:
+  - L_over_a
+  - r_F1
+  reason: The explicit rational 37/20 (selected upstream as the geometric L/a) is the single tunable that fixes r_F1, g_-^F1,
+    and the actual gain magnitudes evaluated here; it recurs verbatim at stages 146:71, 147:22, and 148:22/102, making it
+    the band's deepest shared fit-insertion candidate.
+  citation:
+    path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+    line: 6
+    excerpt: rF = sp.N(sp.sqrt(sp.Rational(12,1)/sp.pi**2 * (sp.Rational(37,20))**2 - 1), 30)
+    stage: '139'
+- candidate_key: stage140_carried_gain_magnitudes
+  modality: numeric_literal
+  anchor_stage: '140'
+  parameter_names:
+  - M_s_nat
+  - M_s_comp
+  - Sigma_0
+  reason: While the 20/9 susceptibility coefficient is derived symbolically in-script, the natural and compensated gain magnitudes
+    (1.6685..., 1.80594111095636) are carried literals from stage 139, and the traction values T_hat and the 4.0% enhancement
+    asserted here are pure functions of those carried numbers.
+  citation:
+    path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+    line: 18
+    excerpt: Ms_nat = sp.N('1.6685425296562397', 30)
+    stage: '140'
+- candidate_key: stage147_AT_BT_paper_anchor
+  modality: numeric_literal
+  anchor_stage: '147'
+  parameter_names:
+  - A_T
+  - B_T
+  reason: The kernel coefficients are computed in-script then asserted to "match" recorded paper values; since the paper numbers
+    originated from an earlier run of the same projection, the match is recorded-output back-fill rather than an independent
+    check, fitting the prompt's matched/fixed inclusion clause.
+  citation:
+    path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+    line: 53
+    excerpt: AT_paper = sp.Float("-4.27263956256927", 30)
+    stage: '147'
+- candidate_key: stage152_carried_point_block
+  modality: numeric_literal
+  anchor_stage: '152'
+  parameter_names:
+  - Pi_star
+  - Sigma_m_star
+  - g_star
+  - S_star
+  - gprime_star
+  - A_T
+  - B_T
+  - T_star
+  reason: The full eight-constant Family-1 point is typed as opaque mpf literals (lines 27-34) with no in-stage derivation,
+    so the headline corrected point (Pi_corr, T_m_corr) is computed entirely from carried numbers that a tuned upstream value
+    would silently contaminate.
+  citation:
+    path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 28
+    excerpt: Sigma_m_star = mp.mpf("0.451485277739090")
+    stage: '152'
+- candidate_key: stage152_affine_law_endpoints
+  modality: numeric_literal
+  anchor_stage: '152'
+  parameter_names:
+  - lambda_eff_Pi
+  - lambda_eff_T
+  reason: The "Stage 148 affine laws" enter as four bare float endpoints (1.69941..., 2.08240..., 0.50875..., 0.62570...)
+    never recomputed here, and the effective-lambda agreement (~0.380 vs ~0.379) asserted at lines 117-120 is only as independent
+    as those typed endpoints.
+  citation:
+    path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 112
+    excerpt: lam_Pi = (mp.mpf("1.69941496131430") - deltaPi) / mp.mpf("2.08240814741023")
+    stage: '152'
+- candidate_key: stage155_carried_constants_block
+  modality: numeric_literal
+  anchor_stage: '155'
+  parameter_names:
+  - r_F1
+  - g_star
+  - S_star
+  - Pi_star
+  - Sigma_0_star
+  reason: The frozen-traction fixed point and the headline off-compensation value R_fp ~ 0.282714 are computed from a five-constant
+    block of plain Python floats (lines 25-29, duplicated in the .wl mirror lines 28-31) with no in-stage derivation or closed-form
+    cross-check.
+  citation:
+    path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+    line: 25
+    excerpt: rF1 = 1.77799353547498
+    stage: '155'
+- candidate_key: stage156_carried_constants_block
+  modality: numeric_literal
+  anchor_stage: '156'
+  parameter_names:
+  - T_hat_star
+  - Sigma_0_star
+  - Pi_star
+  - g_star
+  - r_F1
+  reason: The restored canonical point (Sigma_0_can ~ 4.65103, T_hat_can ~ 1.44671) advertised by the card is found by bisection
+    seeded entirely from this carried five-float block, so the "canonical" restoration inherits the provenance of typed literals
+    rather than re-derived inputs.
+  citation:
+    path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+    line: 28
+    excerpt: T_hat_star = 0.901484054174204
+    stage: '156'
+- candidate_key: stage157_expected_values_sidecar_json
+  modality: numeric_literal
+  anchor_stage: '157'
+  parameter_names:
+  - Sigma_0_can_expected
+  - S_can_expected
+  - Pi_can_expected
+  - T_hat_can_expected
+  reason: The status stage validates the canonical tuple against "*_expected" values stored in a sidecar JSON that was itself
+    produced by the stage-155/156 pipeline, a closed loop in which a back-filled expected value and the check that confirms
+    it share one origin.
+  citation:
+    path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+    line: 49
+    excerpt: data = json.loads((root / "scripts/numerical/stage155_156_fixedpoint_samples.json").read_text())
+    stage: '157'
+- candidate_key: stage158_canonical_quartet_literals
+  modality: numeric_literal
+  anchor_stage: '158'
+  parameter_names:
+  - r_F1
+  - Sigma_0_can
+  - S_can
+  - T_can
+  reason: The numeric leg of the defect-transport linearization evaluates all coefficients at a hardcoded canonical quartet
+    (lines 99-102) carried from stage 156; notably this literal ends ...876 while the stage-157 sidecar JSON records ...867,
+    a last-digit divergence showing the carried copies are hand-typed rather than sourced from one derivation.
+  citation:
+    path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+    line: 100
+    excerpt: Sigma0_can = sp.Float("4.651033550168876")
+    stage: '158'
+- candidate_key: stage159_canonical_even_baseline
+  modality: numeric_literal
+  anchor_stage: '159'
+  parameter_names:
+  - kappa_W
+  - gamma_W
+  reason: The linearization baseline (kappa_W, gamma_W) = (1/3, 1/9) and the matching even-moment offsets 1/9 and 4/81 (lines
+    43-44) are posited as the canonical W-state values; the 1/9 traces to the gamma_0 = (1+r_c)/9 ansatz family, so the card's
+    "even preservation forces" claim rests on an expansion point that could itself be a tuned ansatz.
+  citation:
+    path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+    line: 50
+    excerpt: 'gamma: sp.Rational(1, 9) + dgamma,'
+    stage: '159'
+- candidate_key: stage160_tangent_susceptibility_coefficients
+  modality: numeric_literal
+  anchor_stage: '160'
+  parameter_names:
+  - dPi_tan_coeff_Sigma0
+  - dPi_tan_coeff_S
+  reason: The tangential DtN susceptibility coefficients are typed as opaque floats (duplicated in the .wl mirror line 56)
+    with no in-script derivation; they are numerically consistent with 1 - S_can/4 and Sigma_0_can/4 from the stage-158 quartet,
+    so they silently inherit, and could mask tuning of, the carried canonical point.
+  citation:
+    path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+    line: 66
+    excerpt: dPi_tan = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+    stage: '160'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

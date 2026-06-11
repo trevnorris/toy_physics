@@ -1,0 +1,220 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b4_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 098
+- '105'
+- '112'
+- '114'
+- '116'
+- '118'
+- '121'
+- '122'
+- '126'
+- '127'
+candidates:
+- candidate_key: stage098_zeta_max_f1_imported_literal
+  modality: numeric_literal
+  anchor_stage: 098
+  parameter_names:
+  - zeta_max_F1
+  - zeta_edge_F1
+  - gap_F1
+  reason: The Family-1 constructive ceiling enters this band only as a bare 15-digit numeric literal (with companion 30-digit
+    expected-value floats at lines 31-32), imported from outside the band with no in-script derivation, so its provenance
+    could be back-filled rather than derived.
+  citation:
+    path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+    line: 26
+    excerpt: zmax_F1 = sp.N('2.46752922945601')
+    stage: 098
+- candidate_key: stage098_rho_alpha_selected_ratio
+  modality: numeric_literal
+  anchor_stage: 098
+  parameter_names:
+  - rho_alpha
+  reason: The support/source loading ratio 4/3 is described elsewhere in the band (stage 103 notes) as "the selected support/source
+    ratio" and is asserted here as the actual-branch value without in-band derivation, so it could be a chosen rather than
+    forced value.
+  citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 16
+    excerpt: '`rho_alpha = 4/3`,'
+    stage: 098
+- candidate_key: stage105_omega_q_pole_frequency
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - Omega_Q
+  reason: The quadrupole pole frequency 3c_s/(2a) is asserted as already "fixed" by a conservative moment match performed
+    outside this band; since sigma_Q_can and the entire chi_Q=1 match are powers of this value, a tuned Omega_Q would propagate
+    silently through the whole 2.5PN closure.
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 29
+    excerpt: \Omega_Q=\frac{3c_s}{2a}.
+    stage: '105'
+- candidate_key: stage105_chi_q_canonical_unity
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  reason: chi_Q=1 is obtained by matching the posited canonical one-pole-plus-contact module to the Stage-104 DtN fingerprint,
+    so the value is exactly as derived as the branch-selection assumption is; if the canonical compact completion was chosen
+    because it yields chi_Q=1 this is a fit insertion point (the actual-branch realization is acknowledged open downstream).
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 69
+    excerpt: \boxed{\chi_Q=1.}
+    stage: '105'
+- candidate_key: stage112_compensated_branch_coefficients
+  modality: numeric_literal
+  anchor_stage: '112'
+  parameter_names:
+  - rho_R
+  - sigma_W
+  - kappa_W
+  - gamma_W
+  reason: The compensated-branch values rho_R=4sigma_W, kappa_W=1/3 (and gamma_W=1/9 at line 102) are back-solved from the
+    requirement that the canonical even fingerprint and odd normalization be preserved, i.e. the target answer is the constraint
+    that generates these numbers.
+  citation:
+    path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 47
+    excerpt: \boxed{\rho_R=4\sigma_W,\qquad \kappa_W=\frac13.}
+    stage: '112'
+- candidate_key: stage114_bare_mixed_denominator_ansatz
+  modality: numeric_literal
+  anchor_stage: '114'
+  parameter_names:
+  - kappa_0
+  - gamma_0
+  reason: The bare mixed-channel low-frequency pair (kappa_0, gamma_0) is introduced as free ansatz data in a one-pole z^2+z^5
+    form that mirrors the target outgoing fingerprint, and both values are subsequently back-filled at Stages 115-116 to whatever
+    the compensation requires.
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 29
+    excerpt: D_W^{\rm bare}(z)=1-\kappa_0 z^2-i\gamma_0 z^5+O(z^6).
+    stage: '114'
+- candidate_key: stage116_gamma0_compensation_backfill
+  modality: numeric_literal
+  anchor_stage: '116'
+  parameter_names:
+  - gamma_0
+  reason: gamma_0=(1+r_c)/9 is not derived from the tube model; it is the value the compensation theorem "requires", and the
+    concrete realization is then posited as a pure-scale deformation of the canonical compact outgoing branch chosen specifically
+    so the canonical coefficients survive -- a textbook back-fill.
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 60
+    excerpt: \gamma_0=\frac{1+r_c}{9}.
+    stage: '116'
+- candidate_key: stage116_lw_compensation_selected_length
+  modality: numeric_literal
+  anchor_stage: '116'
+  parameter_names:
+  - L_W
+  reason: 'The auxiliary mixed-tube length is explicitly "compensation-selected": it is solved from the requirement kappa_0=(1+r_c)/3
+    imposed by Stage 115 rather than derived from independent throat physics, so it is tuned to the target.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 51
+    excerpt: \frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}}.
+    stage: '116'
+- candidate_key: stage121_aspect_ratio_37_over_20
+  modality: numeric_literal
+  anchor_stage: '121'
+  parameter_names:
+  - L_over_a
+  reason: The "carried preferred aspect ratio" 37/20 is a suspiciously precise rational imported from outside the band with
+    no in-band derivation, then hardcoded as sp.Rational(37,20) in the stage 121/122/123/125 SymPy scripts; every downstream
+    branch number (r_F1, g_-^F1, Xi values, penetration depths) inherits it.
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 60
+    excerpt: \frac{L}{a}=\frac{37}{20},
+    stage: '121'
+- candidate_key: stage121_lw_equals_l_identification
+  modality: numeric_literal
+  anchor_stage: '121'
+  parameter_names:
+  - L_W
+  reason: Identifying the auxiliary mixed D/N tube with the full throat axial span is a posited identification (self-described
+    as "the simplest honest ... identification"), and it is the step that converts the free hybridization ratio into the fixed
+    value r_F1 ~ 1.778; a different identification would give a different branch value.
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 26
+    excerpt: \boxed{L_W=L.}
+    stage: '121'
+- candidate_key: stage122_g_nat_equal_normalized_unity
+  modality: numeric_literal
+  anchor_stage: '122'
+  parameter_names:
+  - g_nat
+  reason: The "natural" equal-normalized mouth-source value g_nat=1 is a posited normalization choice, not a derived branch
+    value; the stage honestly reports it misses the compensated branch, but the posit anchors all subsequent "modest renormalization"
+    distance claims.
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 26
+    excerpt: \mathfrak g_{\rm nat}=1.
+    stage: '122'
+- candidate_key: stage126_xi_star_admixture_backsolve
+  modality: numeric_literal
+  anchor_stage: '126'
+  parameter_names:
+  - xi_star
+  reason: xi_star is solved from g_xi = g_-^F1, i.e. the admixture fraction is back-computed to land exactly on the target
+    compensated branch; the note's own closing line ("no longer looks like a delicate coefficient fit") flags that fit-vs-derive
+    is precisely the live question here.
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 101
+    excerpt: \approx 0.183918405511538.
+    stage: '126'
+- candidate_key: stage127_x_star_slab_backsolve
+  modality: numeric_literal
+  anchor_stage: '127'
+  parameter_names:
+  - x_star_slab
+  reason: The slab penetration depth is back-solved so the slab family's mouth-bias equals the target g_-^F1 exactly; it is
+    a tuned parameter demonstrating reachability, not a derived prediction.
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 40
+    excerpt: x_*^{\rm slab}\approx 0.797839360904564.
+    stage: '127'
+- candidate_key: stage127_x_star_exp_backsolve
+  modality: numeric_literal
+  anchor_stage: '127'
+  parameter_names:
+  - x_star_exp
+  reason: The exponential penetration depth is likewise solved backwards from the requirement that the family hit the lower
+    compensated branch, so the value is fitted to the target by construction.
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 78
+    excerpt: x_*^{\exp}\approx 0.662765402623161.
+    stage: '127'
+- candidate_key: stage118_frozen_n5_eos
+  modality: numeric_literal
+  anchor_stage: '118'
+  parameter_names:
+  - n_eos
+  reason: The EOS exponent n=5 is imported as "frozen" from the parent stack with no in-band justification; all overlap stiffness
+    formulas (K_s, wall moments I_f=1/3, I_g=4/15) sit on this posited equation-of-state choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 18
+    excerpt: '- a gauged 4D GNLS matter sector with confinement \(V_{\rm conf}(\mathbf X;a,L)\) and frozen \(n=5\) EOS, so
+      the bulk matter Hamiltonian has both gradient and compressional terms, fileciteturn33file4'
+    stage: '118'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

@@ -1,0 +1,186 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b2_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 038
+- '044'
+- '047'
+- 048
+candidates:
+- candidate_key: stage038_lambda_external_target_coefficient
+  modality: graph
+  anchor_stage: 038
+  parameter_names:
+  - Lambda
+  - G
+  - c_s
+  - K_W_eff
+  - mu_W
+  reason: The 27/20 (product-law 54/5) GR-match coefficient enters the placement map as graph node EQ_FULL_BUNDLE_TARGET_SURFACE
+    (expression mhat0^2 N0/D0 = 54Gc_s^5/(5a^5c^5)) whose only upstream support EQ_P0_TARGET carries status open_actual_branch_data,
+    so the external target scale the band normalizes against could be back-filled to match GR rather than derived from branch
+    data.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_038.tex
+    line: 28
+    excerpt: \Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
+    stage: 038
+- candidate_key: stage038_mhat_p0_fitted_scales
+  modality: graph
+  anchor_stage: 038
+  parameter_names:
+  - mhat_0
+  - P_0
+  reason: The atlas open-gate node itself states mhat and P0 are presently fitted scales, and the Stage 038 product law R_target*M_mix
+    = 54Gc_s^5K_W^eff(1-eps_W)/(5a^5c^5 mu_W) (stage_038.tex:49) is exactly the target surface those fitted scales feed, with
+    no derivation edge anywhere in the graph supplying them.
+  citation:
+    path: graph/fluid_universe_derivation_atlas_graph.yaml
+    line: null
+    excerpt: 'OPEN_SOURCE_PORT_NORMALIZATION (meaning: ''Derive mhat and P0 as branch data rather than fitted scales.'')'
+    stage: 038
+- candidate_key: stage044_rank2_inserted_direction_data
+  modality: graph
+  anchor_stage: '044'
+  parameter_names:
+  - delta
+  - M_supp
+  - R_phi
+  - t
+  reason: In the graph these quadratic-branch coefficients are anchored only by the future-paper section node SEC_5PN_STAGE24_26_PLACEMENT
+    (5pn_notes_full.md:1268, where the support-direction data are described as 'inserted' from the prior stage) with no derivation-layer
+    node or edge deriving delta, M_supp, R_phi, or t, so the inserted direction data could be tuned to make the softening-depth
+    quadratic land where needed.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_044.tex
+    line: 23
+    excerpt: =\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
+    stage: '044'
+- candidate_key: stage047_epsilon_support_saturation
+  modality: graph
+  anchor_stage: '047'
+  parameter_names:
+  - epsilon
+  reason: The saturation parameter epsilon controls the support-enhancement ceiling (zeta_crit = 1/epsilon in the SEC_5PN_STAGE31_SUPPORT-anchored
+    note section) yet appears in the stage with no stated origin in its Inputs field and has no deriving node or edge anywhere
+    in the atlas graph, making it a free dial on how much support boost is available.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_047.tex
+    line: 22
+    excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\epsilon\zeta}}.
+    stage: '047'
+- candidate_key: stage048_zeta_req_threshold
+  modality: graph
+  anchor_stage: 048
+  parameter_names:
+  - zeta_req
+  - S_req
+  reason: The no-support-no-go threshold is constructed so a branch point exists for every R_target > 1 while the graph marks
+    whether physical zeta reaches it as open (SEC_5PN_STAGE31_SUPPORT feeding CLAIM_STAGE025_031_SELECTED_BRANCH, a packet
+    claim whose '025--031' label does not even cover this stage), so a later physical zeta value could be back-filled against
+    this pre-positioned threshold and inherit packet-level 'exact' status.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_048.tex
+    line: 22
+    excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+    stage: 048
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '033'
+  source: research/pde_ledger/paper/stages/stage_033.tex
+  reason: No graph node references this stage by canonical number or content; atlas moving-throat chain ends at the 025-031
+    packet and graph searches for the microscopic normalization/stability-gate content return nothing.
+- stage: '034'
+  source: research/pde_ledger/paper/stages/stage_034.tex
+  reason: No graph node for the softening-depth normal form; 'softening' hits only V2-08 BdG audit nodes outside the band.
+- stage: '035'
+  source: research/pde_ledger/paper/stages/stage_035.tex
+  reason: No graph node for the D/N normalization locus (and its xi_req ~ eps_R/(1+8/(9 delta)) commitment at stage_035.tex:123
+    is graph-invisible).
+- stage: '036'
+  source: research/pde_ledger/paper/stages/stage_036.tex
+  reason: No graph node; searches for 'frontier' and feasibility content return none.
+- stage: '037'
+  source: research/pde_ledger/paper/stages/stage_037.tex
+  reason: No graph node for continuum-kernel extraction of selected-branch data; the similarly-named SEC_5PN_STAGE24_26_PLACEMENT
+    meaning refers to later-stage content.
+- stage: 039
+  source: research/pde_ledger/paper/stages/stage_039.tex
+  reason: Legacy 5PN note section exists (notes/5pn/5pn_notes_full.md:1232
+  Stage 22 first non-flat U doublet) but the graph has no section-anchor node for it; 'doublet' search returns none.: null
+- stage: '040'
+  source: research/pde_ledger/paper/stages/stage_040.tex
+  reason: Legacy 5PN note section exists (notes/5pn/5pn_notes_full.md:1249
+  Stage 23 generalized selected-branch normalization with source/loading mismatch q: null
+  t: null
+  R_U) but no graph node anchors it; 'mismatch' search returns none.: null
+- stage: '041'
+  source: research/pde_ledger/paper/stages/stage_041.tex
+  reason: No graph node; 'rank-2' and support-completion searches return none.
+- stage: '042'
+  source: research/pde_ledger/paper/stages/stage_042.tex
+  reason: No graph node for selected-mode normalization under rank-2 support completion.
+- stage: '043'
+  source: research/pde_ledger/paper/stages/stage_043.tex
+  reason: No graph node for the continuum extraction of the actual support/BdG loading direction
+  even though Stage 044's graph-anchored quadratic consumes its outputs.: null
+- stage: 049
+  source: research/pde_ledger/paper/stages/stage_049.tex
+  reason: Legacy 5PN note section exists (notes/5pn/5pn_notes_full.md:1404
+  Stage 32 explicit D/N overlap extraction of zeta) but the graph has no anchor node for it; 'zeta' search returns none.: null
+- stage: '050'
+  source: research/pde_ledger/paper/stages/stage_050.tex
+  reason: Legacy 5PN note section exists (notes/5pn/5pn_notes_full.md:1431
+  ? Stage 33 exact comparison of zeta_phys against zeta_req) but no graph node anchors this decisive threshold-comparison
+    stage.
+  : null
+- stage: '051'
+  source: research/pde_ledger/paper/stages/stage_051.tex
+  reason: No graph node; 'twin' search returns none.
+- stage: '052'
+  source: research/pde_ledger/paper/stages/stage_052.tex
+  reason: No graph node; 'asymmetry' search returns none.
+- stage: '053'
+  source: research/pde_ledger/paper/stages/stage_053.tex
+  reason: No graph node for the overlap-boost window.
+- stage: '054'
+  source: research/pde_ledger/paper/stages/stage_054.tex
+  reason: No graph node; 'Robin' search returns none.
+- stage: '055'
+  source: research/pde_ledger/paper/stages/stage_055.tex
+  reason: No graph node for reachability of the non-twin lowest support lane.
+- stage: '056'
+  source: research/pde_ledger/paper/stages/stage_056.tex
+  reason: No graph node; 'drift-diffusion' and 'transport' searches return no band-relevant nodes.
+- stage: '057'
+  source: research/pde_ledger/paper/stages/stage_057.tex
+  reason: No graph node; 'Peclet' search returns none despite the stage fixing a physical (Pe
+  kappa: null
+  eta) placement map.: null
+- stage: 058
+  source: research/pde_ledger/paper/stages/stage_058.tex
+  reason: No graph node for the coupled support/source operator or the Peclet branch equation.
+- stage: 059
+  source: research/pde_ledger/paper/stages/stage_059.tex
+  reason: No graph node for residual bounds on the operator-selected branch.
+- stage: '060'
+  source: research/pde_ledger/paper/stages/stage_060.tex
+  reason: No graph node; 'entropic' and 'gain' searches return no band-relevant nodes.
+- stage: '061'
+  source: research/pde_ledger/paper/stages/stage_061.tex
+  reason: No graph node; 'threshold' and 'phase diagram' searches return none despite the stage fixing gain thresholds.
+- stage: '062'
+  source: research/pde_ledger/paper/stages/stage_062.tex
+  reason: No graph node for the parent-action projection of the microscopic gain.
+- stage: '063'
+  source: research/pde_ledger/paper/stages/stage_063.tex
+  reason: No graph node for the parent-overlap threshold theorem / success-no-go tests.
+- stage: '064'
+  source: research/pde_ledger/paper/stages/stage_064.tex
+  reason: No graph node; 'parent equilibrium' search returns none.

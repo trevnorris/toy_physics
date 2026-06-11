@@ -1,0 +1,485 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b2_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '033'
+- '034'
+- '035'
+- '036'
+- '037'
+- 038
+- 039
+- '040'
+- '041'
+- '042'
+- '043'
+- '044'
+- '045'
+- '046'
+- '047'
+- 048
+- 049
+- '050'
+- '051'
+- '052'
+- '053'
+- '054'
+- '055'
+- '056'
+- '057'
+- 058
+- 059
+- '060'
+- '061'
+- '062'
+- '063'
+- '064'
+candidates:
+- candidate_key: stage033_dn_constants_exact
+  modality: claim_label
+  anchor_stage: '033'
+  parameter_names:
+  - kappa_0_sq
+  - kappa_1_sq
+  reason: The D/N overlap constants kappa_0^2=8/pi^2 and kappa_1^2=16/(9pi^2) are labeled exact at the point they enter the
+    weak-loading expansion, so a back-filled or tuned constant pair would be hidden behind an exactness claim.
+  citation:
+    path: paper/stages/stage_033.tex
+    line: 102
+    excerpt: With the exact D/N constants,
+    stage: '033'
+- candidate_key: stage034_normal_form_maps_fixed
+  modality: claim_label
+  anchor_stage: '034'
+  parameter_names:
+  - alpha_0
+  - s_minus
+  - N_minus
+  reason: The summary claims the loading, source map, and normalization product are all "fixed by" closed functions of the
+    softening depth x, asserting non-tunability of three quantities at once.
+  citation:
+    path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+    line: 183
+    excerpt: '- the total directional loading is fixed by `alpha_0(x)`,'
+    stage: '034'
+- candidate_key: stage035_xi_req_unique_locus
+  modality: claim_label
+  anchor_stage: '035'
+  parameter_names:
+  - xi_req
+  - R_target
+  reason: The claim that xi_req is the unique stable locus determined by F(xi,delta)=R_target asserts the normalization depth
+    is forced rather than chosen, making xi_req a prime spot for a back-filled placement.
+  citation:
+    path: paper/stages/stage_035.tex
+    line: 7
+    excerpt: Strict monotonicity of \(F\) upgrades the Stage~033 onset inequality into a unique stable normalization locus.}
+    stage: '035'
+- candidate_key: stage036_no_free_hidden_eigenvector_param
+  modality: claim_label
+  anchor_stage: '036'
+  parameter_names:
+  - g_B_req
+  reason: An explicit "no remaining free parameter" claim about the support/BdG eigenvector sector; if a hidden degree of
+    freedom were actually tuned, this label would conceal it.
+  citation:
+    path: paper/stages/stage_036.tex
+    line: 119
+    excerpt: \item The parametric map \((F,G)\) is one-dimensional at fixed \(\delta\), so the selected reduced branch has
+      no remaining free hidden eigenvector parameter at this order.
+    stage: '036'
+- candidate_key: stage037_branch_data_exact_kernel_functionals
+  modality: claim_label
+  anchor_stage: '037'
+  parameter_names:
+  - A
+  - beta_0
+  - M_mix
+  - Delta_K_ax
+  reason: Claims the previously abstract branch data are now exact functionals of a declared kernel; the kernel itself is
+    declared, so "exact" here can launder posited kernel choices into derived-looking branch values.
+  citation:
+    path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 37
+    excerpt: So the Stage-034/036 branch variables are no longer abstract. They are exact low-mode functionals of one explicit
+      continuum kernel.
+    stage: '037'
+- candidate_key: stage038_delta_fixed_by_eps_eta
+  modality: claim_label
+  anchor_stage: 038
+  parameter_names:
+  - delta
+  - epsilon_eta
+  - epsilon_W
+  - Lambda
+  reason: Prose claims the dimensionless placement is "fixed" by specific microscopic ratios, i.e. delta is not free; a tuned
+    epsilon_eta would masquerade as a geometric fixing.
+  citation:
+    path: paper/stages/stage_038.tex
+    line: 51
+    excerpt: Thus \((\epsilon_W,\Lambda)\) fix the product scale, \(\epsilon_\eta\) fixes the geometry lane through \(\delta\),
+      and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
+    stage: 038
+- candidate_key: stage039_delta_split_exact_value
+  modality: claim_label
+  anchor_stage: 039
+  parameter_names:
+  - delta_split
+  reason: The shifted anisotropy ratio is announced as a "new exact value," asserting derivation of delta_split where a tuned
+    shift would look identical.
+  citation:
+    path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 26
+    excerpt: 2. the bare anisotropy ratio shifts to a new exact value `delta_split`,
+    stage: 039
+- candidate_key: stage040_lambda_exact_closed_form
+  modality: claim_label
+  anchor_stage: '040'
+  parameter_names:
+  - lambda_minus
+  reason: Script header labels the selected eigenvalue and eigenvector as exact closed forms, a derivation claim for the selected-branch
+    value lambda_minus.
+  citation:
+    path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+    line: 8
+    excerpt: '   loading vector z has exact closed-form eigenvalue and eigenvector formulas.'
+    stage: '040'
+- candidate_key: stage041_n_req_exact_support_loading
+  modality: claim_label
+  anchor_stage: '041'
+  parameter_names:
+  - n_req
+  reason: The required support loading is labeled exact; if n_req were tuned to make the rank-2 branch close, the exactness
+    label would hide it.
+  citation:
+    path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+    line: 10
+    excerpt: 2. The exact required support loading n_req(xi,delta;m,q,r) is correct.
+    stage: '041'
+- candidate_key: stage042_overlaps_exact
+  modality: claim_label
+  anchor_stage: '042'
+  parameter_names:
+  - q
+  - r
+  reason: The outgoing/mixed and source overlap values feeding the generalized normalization law are claimed exact, a derived-not-tuned
+    assertion about the overlap inputs.
+  citation:
+    path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+    line: 9
+    excerpt: 2. The outgoing/mixed and source overlaps are exact and lead to a generalized
+    stage: '042'
+- candidate_key: stage043_support_direction_extracted_not_guessed
+  modality: claim_label
+  anchor_stage: '043'
+  parameter_names:
+  - R_phi
+  - sigma_0
+  reason: Explicit extracted-rather-than-guessed claim for the support direction R_phi; the extraction depends on the declared
+    sigma_0 coupling, so a chosen sigma_0 would still present as an exact extraction.
+  citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 13
+    excerpt: The first symmetry-allowed extension is to turn on the bilinear `U/phi` coupling. Once that is done, the support
+      direction can be extracted exactly from the continuum kernel rather than guessed.
+    stage: '043'
+- candidate_key: stage044_xi_no_longer_free
+  modality: claim_label
+  anchor_stage: '044'
+  parameter_names:
+  - xi
+  reason: Direct "no longer free / selected by an exact quadratic" claim for the physical softening depth xi - the canonical
+    place a fitted depth would be relabeled as forced.
+  citation:
+    path: paper/stages/stage_044.tex
+    line: 6
+    excerpt: \stagefield{Purpose}{Stage~044 turns the abstract rank--2 branch into a continuum-selected branch point.  The
+      physical softening depth is no longer free; it is selected by an exact quadratic.}
+    stage: '044'
+- candidate_key: stage045_tracking_forced
+  modality: claim_label
+  anchor_stage: '045'
+  parameter_names:
+  - R_tr
+  - R_U
+  - R_phi
+  reason: Claims the coherent kernel "forces exact tracking" (R_phi = R_U), removing a direction degree of freedom; the forcing
+    rests on the chosen kernel class.
+  citation:
+    path: paper/stages/stage_045.tex
+    line: 6
+    excerpt: \stagefield{Purpose}{Stage~045 checks the first coherent local D/N support kernel and proves that it does not
+      realize a generic rank--2 direction.  It forces exact tracking.}
+    stage: '045'
+- candidate_key: stage045_tracking_derived_not_postulated
+  modality: claim_label
+  anchor_stage: '045'
+  parameter_names:
+  - R_tr
+  reason: Explicit derived-rather-than-postulated upgrade claim for the tracking branch; the prior postulate is asserted retired,
+    which is exactly the move a back-fill would also make.
+  citation:
+    path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 206
+    excerpt: This is exactly the Stage-040 tracking/source-loading branch, now derived from a concrete local kernel rather
+      than postulated as a special surface.
+    stage: '045'
+- candidate_key: stage046_residual_comparison_exact
+  modality: claim_label
+  anchor_stage: '046'
+  parameter_names:
+  - N_tr
+  reason: The tracking-branch residual comparison is labeled exact, a derivation claim on the residual value that decides
+    whether the tracking branch meets the normalization target.
+  citation:
+    path: paper/stages/stage_046.tex
+    line: 28
+    excerpt: at fixed \((\xi,\delta)\).  The exact residual comparison can be written as
+    stage: '046'
+- candidate_key: stage047_R_target_zeta_invariance
+  modality: claim_label
+  anchor_stage: '047'
+  parameter_names:
+  - R_target
+  - zeta
+  reason: Asserts the demand ratio is exactly invariant under the support ratio, i.e. R_target is fixed by the mixed lane
+    alone; a hidden zeta dependence would falsify the non-tunability claim.
+  citation:
+    path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+    line: 191
+    excerpt: So `R_target` is exactly independent of `zeta`.
+    stage: '047'
+- candidate_key: stage048_zeta_req_unique
+  modality: claim_label
+  anchor_stage: 048
+  parameter_names:
+  - zeta_req
+  reason: Uniqueness claim for the required support ratio zeta_req from an "exact inverse"; uniqueness language presents the
+    threshold as forced rather than placed.
+  citation:
+    path: paper/stages/stage_048.tex
+    line: 24
+    excerpt: On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only
+      branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds
+      iff
+    stage: 048
+- candidate_key: stage049_zeta_phys_no_longer_free
+  modality: claim_label
+  anchor_stage: 049
+  parameter_names:
+  - zeta_n_phys
+  reason: Direct "no longer free ... exactly" claim for the physical support ratio; the result is conditioned on a chosen
+    common source density, so a tuned density choice would still yield this label.
+  citation:
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 13
+    excerpt: The main result is that, once the mixed lane `W` and the support lane `phi_n` are both generated by the **same
+      local throat source density** on the finite throat interval, the physical coherent support ratio is no longer free.
+      It is exactly
+    stage: 049
+- candidate_key: stage050_enhancement_factor_exact
+  modality: claim_label
+  anchor_stage: '050'
+  parameter_names:
+  - S_zeta_n
+  - zeta_req
+  reason: The lane-n support-enhancement factor and the resulting necessary condition zeta_req <= 1/(2n+1)^2 are labeled exact,
+    a derivation claim on the threshold values used to kill/keep lanes.
+  citation:
+    path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+    line: 27
+    excerpt: '   so its support-enhancement factor is exactly'
+    stage: '050'
+- candidate_key: stage051_xi_2x_closed_root
+  modality: claim_label
+  anchor_stage: '051'
+  parameter_names:
+  - xi_2x
+  reason: The twin-saturation depth is announced as an exact closed root, presenting the criterion boundary as derived; a
+    tuned saturation depth would carry the same label.
+  citation:
+    path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+    line: 158
+    excerpt: print("The exact twin-saturation depth at fixed M_mix is the closed root xi_(2x) above.")
+    stage: '051'
+- candidate_key: stage052_asymmetry_forced
+  modality: claim_label
+  anchor_stage: '052'
+  parameter_names:
+  - zeta_req
+  - Omega_asym
+  reason: A "forces" claim converting the support demand into a mandatory overlap asymmetry; the asymmetry magnitude is the
+    value whose forcing could instead be a fitted placement.
+  citation:
+    path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+    line: 165
+    excerpt: So any `zeta_req > 1` forces a true overlap asymmetry above the symmetric twin value.
+    stage: '052'
+- candidate_key: stage053_overlap_window_exact
+  modality: claim_label
+  anchor_stage: '053'
+  parameter_names:
+  - Omega_0
+  - A_I
+  reason: The boost window 0 <= Omega_0 <= pi/2 (hence A_I <= pi^2/4) is labeled exact; the pi^2/4 ceiling is a load-bearing
+    bound downstream, so an exactness claim here is a high-value fit-insertion cover.
+  citation:
+    path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+    line: 84
+    excerpt: So the overlap boost window is exactly
+    stage: '053'
+- candidate_key: stage054_robin_branch_determined
+  modality: claim_label
+  anchor_stage: '054'
+  parameter_names:
+  - mu_R
+  - A_K
+  reason: Summary asserts the Robin eigenvalue and softening factor are "determined by" the compliance parameter, a fixed-by
+    claim that would absorb any tuning of the Robin boundary constant.
+  citation:
+    path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+    line: 213
+    excerpt: '- the Robin-deformed lowest support branch is determined by'
+    stage: '054'
+- candidate_key: stage055_reachability_window_exact
+  modality: claim_label
+  anchor_stage: '055'
+  parameter_names:
+  - zeta_0_phys
+  - x
+  reason: The boxed reachability window 1 <= zeta_0_phys <= (pi^2/4)(4/(4-x)) is presented as an exact non-tunable ceiling
+    on every non-twin rescue; the combined ceiling is where a tuned compliance x would hide.
+  citation:
+    path: paper/stages/stage_055.tex
+    line: 24
+    excerpt: \frac{\pi^2}{4}\frac{4}{4-x}
+    stage: '055'
+- candidate_key: stage056_pe_identification
+  modality: claim_label
+  anchor_stage: '056'
+  parameter_names:
+  - Pe
+  - alpha
+  reason: Claims the formerly free bias alpha is exactly the Peclet number, i.e. identified rather than tuned; the identification
+    depends on the chosen minimal transport operator.
+  citation:
+    path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+    line: 28
+    excerpt: So the old abstract bias parameter is exactly the axial **Peclet number** of the lowest support-source transport
+      problem.
+    stage: '056'
+- candidate_key: stage057_x_identified_as_stiffness_ratio
+  modality: claim_label
+  anchor_stage: '057'
+  parameter_names:
+  - x
+  - kappa
+  reason: Claims the abstract branch parameter x is exactly a physical stiffness ratio, retiring it as a free knob; a fitted
+    x could be relabeled as a physical ratio this way.
+  citation:
+    path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+    line: 81
+    excerpt: Thus the old abstract `x` is exactly the inverse stiffness ratio of the physical support operator.
+    stage: '057'
+- candidate_key: stage058_bracket_derived_not_guessed
+  modality: claim_label
+  anchor_stage: 058
+  parameter_names:
+  - Pe_star
+  - Delta_0
+  - Delta_inf
+  reason: Explicit derived-versus-guessed contrast claim for the fixed-point bracket endpoints; precisely the rhetorical form
+    that would also be used to dress up a back-filled placement.
+  citation:
+    path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+    line: 289
+    excerpt: This is the first exact branch-point bracket derived from a coupled operator rather than imposed as a guessed
+      placement.
+    stage: 058
+- candidate_key: stage059_thresholds_exact
+  modality: claim_label
+  anchor_stage: 059
+  parameter_names:
+  - Xi_fail
+  - Xi_suff
+  - Pe_req
+  reason: The fail/sufficient coupling thresholds are labeled exact while the in-between band is admitted to need the full
+    root, so the exactness label on the endpoints is doing the load-bearing verdict work.
+  citation:
+    path: paper/stages/stage_059.tex
+    line: 13
+    excerpt: If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
+    stage: 059
+- candidate_key: stage060_gamma_derived_rate
+  modality: claim_label
+  anchor_stage: '060'
+  parameter_names:
+  - gamma
+  - Pe
+  reason: The script labels the Onsager rate gamma as a "derived rate" identified with Pe; if the closure constants were chosen
+    to reproduce the Stage-056 family, the derived label would conceal that.
+  citation:
+    path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+    line: 88
+    excerpt: expect_zero("Pe identification (derived rate)",
+    stage: '060'
+- candidate_key: stage061_gain_thresholds_exact
+  modality: claim_label
+  anchor_stage: '061'
+  parameter_names:
+  - G_fail
+  - G_suff
+  - kappa
+  reason: The microscopic gain phase diagram is labeled exact; the thresholds inherit kappa and the bracket endpoints, so
+    the exactness claim propagates any upstream tuning as derived.
+  citation:
+    path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+    line: 111
+    excerpt: print("2. The exact operator phase diagram is set by G_fail = Pe_req/[kappa Delta_inf] and G_suff = Pe_req/[kappa
+      Delta_0].")
+    stage: '061'
+- candidate_key: stage062_theta_not_free_entropy_constant
+  modality: claim_label
+  anchor_stage: '062'
+  parameter_names:
+  - Theta
+  reason: Strong "no longer free / fixed by" claim for Theta that simultaneously admits a "chosen transverse source normalization"
+    inside the same sentence - an acknowledged choice living under a fixedness label.
+  citation:
+    path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 176
+    excerpt: So the source compliance is no longer a free “entropy constant.” It is fixed by the local GNLS compressibility
+      of the parent medium, dressed only by the chosen transverse source normalization.
+    stage: '062'
+- candidate_key: stage063_amplitude_thresholds_exact
+  modality: claim_label
+  anchor_stage: '063'
+  parameter_names:
+  - g_phi_fail
+  - g_phi_suff
+  reason: The parent-amplitude fail/succeed surfaces are labeled exact "at fixed profile shapes" - the profile-shape conditioning
+    is a choice the exactness label rides on.
+  citation:
+    path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+    line: 102
+    excerpt: 'Then the fail/succeed thresholds on the parent loading amplitude are exact:'
+    stage: '063'
+- candidate_key: stage064_coherence_factor_derived
+  modality: claim_label
+  anchor_stage: '064'
+  parameter_names:
+  - C
+  reason: Direct "no longer free ... derived quantity" claim for the coherence factor C; the matched-layer limit that sends
+    C to 1 is the natural place a desired best-alignment gain could be back-filled.
+  citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 223
+    excerpt: The coherence factor is no longer free. It is a derived quantity,
+    stage: '064'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

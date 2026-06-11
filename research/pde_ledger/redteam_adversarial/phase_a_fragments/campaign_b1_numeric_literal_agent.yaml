@@ -1,0 +1,220 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b1_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '014'
+- '017'
+- 019
+- '020'
+- '023'
+- '024'
+- '025'
+- '026'
+- '027'
+- 028
+- 029
+- '030'
+- '032'
+candidates:
+- candidate_key: stage019_p0target_54_5_raw_retype
+  modality: numeric_literal
+  anchor_stage: 019
+  parameter_names:
+  - P0target
+  - mhat0
+  reason: The GR-quadrupole matching coefficient 54/5 is typed raw here, four stages before its claimed Stage-023 derivation,
+    and mhat0 is the free normalization solved to hit it, so the value could be back-filled rather than derived at this point
+    in the chain.
+  citation:
+    path: mathematica/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.wl
+    line: 50
+    excerpt: P0target = 54 G cs^5/(5 a^5 c^5 mhat0^2);
+    stage: 019
+- candidate_key: stage023_nq_target_gr_quadrupole_match
+  modality: numeric_literal
+  anchor_stage: '023'
+  parameter_names:
+  - N_Q_target
+  - mhat_0
+  - gamma_GR
+  reason: The boxed isotropic normalization test imposes the external GR quadrupole coefficient 2G/(5c^5) (times the port
+    factor) as a target that mhat_0 is required to satisfy, i.e. the normalization is fixed by matching to GR rather than
+    derived from the toy model.
+  citation:
+    path: paper/stages/stage_023.tex
+    line: 231
+    excerpt: =\frac{54Gc_s^5}{5a^5c^5}}.
+    stage: '023'
+- candidate_key: stage023_gamma5_port_27_coefficient
+  modality: numeric_literal
+  anchor_stage: '023'
+  parameter_names:
+  - Gamma5_port
+  reason: The 54 = 2*27 bundles gamma_GR = 2G/(5c^5) with the outgoing l=2 port factor a^5/(27 c_s^5); the script claims to
+    re-derive the 27 via the Hankel h2 route "instead of retyping" (line 346), but the combined literal could still encode
+    a back-filled match and warrants a derive-defense.
+  citation:
+    path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+    line: 339
+    excerpt: norm_abstract = mhat**2 * N0 / D0 - 54 * G * c_s**5 / (5 * a**5 * c**5)
+    stage: '023'
+- candidate_key: stage025_target_coefficient_54_5
+  modality: numeric_literal
+  anchor_stage: '025'
+  parameter_names:
+  - target
+  - mhat
+  reason: The 54/5 target is retyped as a literal with a comment claiming it is "carried forward" from Stage 023; mhat^2 is
+    then solved as target/P0, the canonical shape of fitting a free parameter to an externally imposed value.
+  citation:
+    path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+    line: 123
+    excerpt: target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+    stage: '025'
+- candidate_key: stage030_nq_target_retype_54_5
+  modality: numeric_literal
+  anchor_stage: '030'
+  parameter_names:
+  - NQ_target
+  - lambda_req
+  - mhat
+  reason: Another independent retype of the 54/5 GR-matching coefficient used to define lambda_req = mhat^2 beta0 s_-/NQ_target;
+    the selected-branch normalization is fixed by this imposed target rather than derived.
+  citation:
+    path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+    line: 158
+    excerpt: NQ_target = 54 * G * cs**5 / (5 * a**5 * c**5)
+    stage: '030'
+- candidate_key: stage026_kappa_overlap_2sqrt2_over_pi
+  modality: numeric_literal
+  anchor_stage: '026'
+  parameter_names:
+  - kappa
+  - kappa_n
+  - L
+  reason: kappa = 2 sqrt(2)/pi is exact only on a hand-chosen branch (finite interval, constant N/N wall profile, lowest D/N
+    half-wave per stage_026.tex line 7); the profile selection is a posited modeling choice that fixes this value and everything
+    downstream (88/(9 pi^2), 11/9).
+  citation:
+    path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+    line: 98
+    excerpt: kappa_n_expected = sp.sqrt(2) / ((n + sp.Rational(1, 2)) * sp.pi)
+    stage: '026'
+- candidate_key: stage027_sin2_theta_max_2_11
+  modality: numeric_literal
+  anchor_stage: '027'
+  parameter_names:
+  - sin2_theta_max
+  - theta
+  - kappa_max
+  reason: sin^2(theta_max) = 2/11 and |kappa|_max = 2 sqrt(22)/(3 pi) (notes line 115) are extrema of a postulated one-parameter
+    axial profile family; the family itself is an ansatz, so these closed-form constants are only as derived as the family
+    choice.
+  citation:
+    path: scripts/moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.py
+    line: 143
+    excerpt: expect_zero("sin^2(theta_max) - 2/11", sin2_max - sp.Rational(2, 11))
+    stage: '027'
+- candidate_key: stage028_alpha_loading_coefficient
+  modality: numeric_literal
+  anchor_stage: 028
+  parameter_names:
+  - alpha
+  reason: The loading coefficient alpha is introduced as a posited positive input whose sign/positivity drives the entire
+    selection result (rotation toward the max-coupling branch); the stage claims to stop "treating the wall-profile angle
+    as an external choice" but replaces it with this free knob.
+  citation:
+    path: paper/stages/stage_028.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and
+      a positive loading coefficient \(\alpha\).}
+    stage: 028
+- candidate_key: stage029_mixed_sign_convention_match
+  modality: numeric_literal
+  anchor_stage: 029
+  parameter_names:
+  - alpha_0
+  - lambda_B
+  reason: The sign entering the dynamic loading alpha_0 is selected for compatibility with an earlier convention rather than
+    independently derived, a chosen-to-match step that determines whether loading is attractive (and hence whether the selection
+    avoids the blind angle).
+  citation:
+    path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+    line: 87
+    excerpt: The last sign is the one compatible with the earlier conservative self-energy convention in which the mixed-sector
+      cross term enters with the *positive* `+ 2 G_U G_W R` numerator after elimination.
+    stage: 029
+- candidate_key: stage032_sigma_88_9pi2_and_mhat_limit_11_9
+  modality: numeric_literal
+  anchor_stage: '032'
+  parameter_names:
+  - sigma
+  - kappa_0
+  - kappa_1
+  - mhat_minus
+  reason: sigma = 88/(9 pi^2) and the bound mhat_-^2 -> 11/9 (line 196) are inherited entirely from the Stage-026 hand-chosen
+    mode profiles; if those profiles were tuned, these "exact" constants and the resulting mhat_- window are tuned with them.
+  citation:
+    path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+    line: 64
+    excerpt: expect_zero("sigma - 88/(9 pi^2)", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)
+    stage: '032'
+- candidate_key: stage024_quadrupole_splitting_signature
+  modality: numeric_literal
+  anchor_stage: '024'
+  parameter_names:
+  - lambda_20
+  - lambda_21
+  - lambda_22
+  - b_over_a
+  reason: The (1, 1/2, -1) splitting and b = 3a are claimed universal/canonical and gate downstream even-gate algebra; a claimed-forced
+    constant of this kind is exactly what the fit-vs-derive audit must confirm is harmonic algebra rather than a chosen normalization.
+  citation:
+    path: paper/stages/stage_024.tex
+    line: 7
+    excerpt: the first weak-axisymmetric quadrupole splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).
+    stage: '024'
+- candidate_key: stage014_even_gate_constants_2_3_1_27
+  modality: numeric_literal
+  anchor_stage: '014'
+  parameter_names:
+  - He_bundle_coefficients
+  reason: The even-gate combination uses the fixed rational weights 2/3 and 1/27 presented as forced; if these weights were
+    instead selected to make the gate vanish on the desired branch, the gate would be tautological, so their derivation needs
+    defending.
+  citation:
+    path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+    line: 96
+    excerpt: He_bundle = sp.simplify(-(z4d) + sp.Rational(2,3)*z2d - z0d/sp.Integer(27))
+    stage: '014'
+- candidate_key: stage017_even_gate_determinant_1_27
+  modality: numeric_literal
+  anchor_stage: '017'
+  parameter_names:
+  - wall_gate_determinant
+  reason: The audit asserts the gate determinant equals exactly 1/27, treating the value as forced; the same family of 2/3
+    and 1/27 weights recurs at Stages 014 and 020, so a single mis-derivation would propagate as a shared fitted constant.
+  citation:
+    path: scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py
+    line: 109
+    excerpt: assert_zero("wall-only even-gate determinant", wall_matrix.det() - sp.Rational(1, 27))
+    stage: '017'
+- candidate_key: stage020_even_gate_determinant_1_27
+  modality: numeric_literal
+  anchor_stage: '020'
+  parameter_names:
+  - even_gate_determinant
+  reason: Same shared 1/27 even-gate determinant asserted as exact at the packet level; included separately so the Stage-020
+    instance gets its own derive-defense rather than inheriting trust from Stage 017.
+  citation:
+    path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+    line: 39
+    excerpt: assert_zero('even-gate solve determinant', coeff_matrix.det() - sp.Rational(1, 27))
+    stage: '020'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

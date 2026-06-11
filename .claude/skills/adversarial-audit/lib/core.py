@@ -2,16 +2,14 @@
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import re
 import shutil
-import subprocess
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import yaml
 
@@ -37,6 +35,7 @@ class NoAliasDumper(yaml.SafeDumper):
 WRITE_COMMANDS = {
     "init",
     "phase-a-scan",
+    "phase-a-ingest",
     "phase-b-build",
     "phase-c-render",
     "set-status",
@@ -61,6 +60,8 @@ MODALITIES = [
     "graph",
     "existing_provenance",
 ]
+
+INGEST_MODALITIES = MODALITIES + ["completeness_critic"]
 
 CLAIM_KEYWORDS = [
     "fit",
@@ -692,18 +693,80 @@ def source_query_variants(env: Env, path: Path, role: str, stage: str) -> list[s
     return variants
 
 
+def graph_flatten_text(value: Any) -> Iterable[str]:
+    if value is None:
+        return
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield str(key)
+            yield from graph_flatten_text(child)
+        return
+    if isinstance(value, list):
+        for child in value:
+            yield from graph_flatten_text(child)
+        return
+    yield str(value)
+
+
+def graph_normalize_terms(query: str) -> list[str]:
+    return [term.lower() for term in re.split(r"\s+", query.strip()) if term]
+
+
+class GraphSourceIndex:
+    def __init__(self, graph: dict[str, Any]) -> None:
+        self.graph = graph
+        self.nodes = graph.get("nodes") or []
+
+    @classmethod
+    def load(cls, path: Path) -> "GraphSourceIndex":
+        text = path.read_text(encoding="utf-8")
+        if path.suffix.lower() in {".yaml", ".yml"}:
+            return cls(yaml.safe_load(text) or {})
+        return cls(yaml.safe_load(text) or {})
+
+    def source_nodes(self, query: str) -> list[dict[str, Any]]:
+        terms = graph_normalize_terms(query)
+        results = []
+        for node in self.nodes:
+            text = " ".join(
+                graph_flatten_text(
+                    {
+                        "file": node.get("file"),
+                        "files": node.get("files"),
+                        "sources": node.get("sources"),
+                        "legacy_sources": node.get("legacy_sources"),
+                        "legacy_file": node.get("legacy_file"),
+                        "source_note_files": node.get("source_note_files"),
+                        "canonical_target_files": node.get("canonical_target_files"),
+                    }
+                )
+            ).lower()
+            if text and all(term in text for term in terms):
+                results.append(node)
+        results.sort(key=lambda node: (node.get("layer", ""), node["id"]))
+        return results
+
+
+GRAPH_SOURCE_INDEX_CACHE: dict[Path, GraphSourceIndex] = {}
+
+
+def graph_source_index(env: Env) -> GraphSourceIndex:
+    graph_path = env.config_path_value("atlas_graph").resolve()
+    cached = GRAPH_SOURCE_INDEX_CACHE.get(graph_path)
+    if cached is None:
+        try:
+            cached = GraphSourceIndex.load(graph_path)
+        except OSError as exc:
+            raise SystemExit(f"error: cannot read atlas graph for source lookup: {graph_path}: {exc}") from exc
+        GRAPH_SOURCE_INDEX_CACHE[graph_path] = cached
+    return cached
+
+
 def query_graph_source(env: Env, source_queries: list[str]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    query_graph = env.config_path_value("query_graph")
-    graph_path = env.config_path_value("atlas_graph")
+    index = graph_source_index(env)
     errors: list[dict[str, Any]] = []
     for query in source_queries:
-        cmd = ["timeout", "600", "python3", str(query_graph), "--graph", str(graph_path), "source", query, "--format", "json"]
-        proc = subprocess.run(cmd, cwd=env.repo_root, text=True, capture_output=True, check=False)
-        if proc.returncode != 0:
-            errors.append({"source": query, "reason": f"query_graph exit {proc.returncode}", "stderr": proc.stderr.strip()[:500]})
-            continue
-        payload = json.loads(proc.stdout or "{}")
-        nodes = payload.get("nodes") or []
+        nodes = index.source_nodes(query)
         if nodes:
             return nodes, []
         errors.append({"source": query, "reason": "no atlas node tied to this source path"})
@@ -796,6 +859,16 @@ def merge_fragments(fragments: list[dict[str, Any]], *, dry_run: bool, dry_run_i
     return out
 
 
+def new_codex_session_record() -> dict[str, Any]:
+    return {
+        "session_id": None,
+        "log_paths": [],
+        "last_iter": None,
+        "last_exit": None,
+        "last_run": None,
+    }
+
+
 def initial_candidate_entry(candidate: dict[str, Any]) -> dict[str, Any]:
     ts = now_iso()
     params = candidate.get("parameter_names") or []
@@ -812,13 +885,7 @@ def initial_candidate_entry(candidate: dict[str, Any]) -> dict[str, Any]:
         "status_timestamps": {"pending": ts},
         "codex_session": {
             "by_parameter": {
-                param: {
-                    "session_id": None,
-                    "log_paths": [],
-                    "last_iter": None,
-                    "last_exit": None,
-                    "last_run": None,
-                }
+                param: new_codex_session_record()
                 for param in params
             }
         },
@@ -835,6 +902,53 @@ def initial_candidate_entry(candidate: dict[str, Any]) -> dict[str, Any]:
         },
         "modality_attribution": candidate.get("modality_attribution") or [],
         "modality_fragments": candidate.get("modality_fragments") or [],
+    }
+
+
+def append_unique_items(target: list[Any], values: list[Any]) -> None:
+    for value in values:
+        if value not in target:
+            target.append(value)
+
+
+def merge_candidate_into_manifest(manifest: dict[str, Any], candidate: dict[str, Any]) -> tuple[dict[str, Any], bool, str | None]:
+    candidates = manifest.setdefault("candidates", {})
+    entry = candidates.get(candidate["id"])
+    created = entry is None
+    old_status = None if created else entry.get("status")
+    if created:
+        entry = initial_candidate_entry(candidate)
+    else:
+        append_unique_items(entry.setdefault("anchor_stages", []), candidate.get("anchor_stages") or [])
+        append_unique_items(entry.setdefault("file_line_citations", []), candidate.get("citations") or [])
+        append_unique_items(entry.setdefault("parameter_names", []), candidate.get("parameter_names") or [])
+        append_unique_items(entry.setdefault("modality_attribution", []), candidate.get("modality_attribution") or [])
+        append_unique_items(entry.setdefault("modality_fragments", []), candidate.get("modality_fragments") or [])
+        entry["anchor_stages"] = sorted(entry.get("anchor_stages") or [])
+        entry["parameter_names"] = sorted(entry.get("parameter_names") or [])
+        entry["modality_attribution"] = sorted(entry.get("modality_attribution") or [])
+        by_param = entry.setdefault("codex_session", {}).setdefault("by_parameter", {})
+        for param in entry.get("parameter_names") or []:
+            by_param.setdefault(param, new_codex_session_record())
+    current = entry.get("status") or "pending"
+    if current not in STATE_MACHINE or STATE_MACHINE.index(current) < STATE_MACHINE.index("scanned"):
+        transition(entry, "scanned")
+    candidates[candidate["id"]] = entry
+    return entry, created, old_status
+
+
+def stage_results_from_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
+    stage_to_entries: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for entry in (manifest.get("candidates") or {}).values():
+        for stage in entry.get("anchor_stages") or []:
+            stage_to_entries[str(stage)].append(entry)
+    return {
+        stage: {
+            "candidate_count": len(entries),
+            "structurally_vacuous": len(entries) == 0,
+            "dry_run": all(bool(entry.get("dry_run")) for entry in entries),
+        }
+        for stage, entries in sorted(stage_to_entries.items())
     }
 
 
@@ -960,6 +1074,69 @@ def phase_a_stage_reports(env: Env, stages: list[str]) -> list[str]:
     return [env.rel(pass2_report_path(env, stage)) for stage in stages if pass2_report_path(env, stage).exists()]
 
 
+def critic_candidate_payload(manifest: dict[str, Any]) -> list[dict[str, Any]]:
+    candidates = []
+    for entry in (manifest.get("candidates") or {}).values():
+        candidates.append(
+            {
+                "id": entry.get("id"),
+                "candidate_key": entry.get("candidate_key"),
+                "dry_run": bool(entry.get("dry_run")),
+                "dry_run_id": entry.get("dry_run_id"),
+                "anchor_stages": entry.get("anchor_stages", []),
+                "parameter_names": entry.get("parameter_names", []),
+                "status": entry.get("status"),
+                "file_line_citations": entry.get("file_line_citations", []),
+                "modality_attribution": entry.get("modality_attribution", []),
+            }
+        )
+    candidates.sort(key=lambda item: str(item.get("id") or ""))
+    return candidates
+
+
+def fragment_paths_for_critic(env: Env) -> list[str]:
+    root = env.artifact_root / "phase_a_fragments"
+    return [env.rel(path) for path in sorted(root.glob("*.yaml"))]
+
+
+def stages_for_critic(fit_payload: dict[str, Any]) -> list[str]:
+    stages = set()
+    for candidate in fit_payload.get("candidates") or []:
+        stages.update(str(stage) for stage in candidate.get("anchor_stages") or [])
+    stages.update(str(stage) for stage in (fit_payload.get("stage_results") or {}).keys())
+    return sorted(stages)
+
+
+def render_critic_prompt(
+    env: Env,
+    *,
+    prefix: str,
+    manifest: dict[str, Any] | None = None,
+    fit_payload: dict[str, Any] | None = None,
+) -> str:
+    ensure_tree(env)
+    if manifest is None:
+        manifest = load_manifest(env)
+    if fit_payload is None:
+        fit_payload = {
+            "candidates": critic_candidate_payload(manifest),
+            "stage_results": stage_results_from_manifest(manifest),
+        }
+    stages = stages_for_critic(fit_payload)
+    critic_prompt = render_template(
+        env,
+        "phase_a_completeness_critic.md",
+        {
+            "STAGES": ", ".join(stages) if stages else "(none)",
+            "FIT_INSERTION_POINTS_YAML": yaml_block(fit_payload),
+            "MODALITY_FRAGMENT_PATHS": "\n".join(f"- {path}" for path in fragment_paths_for_critic(env)) or "- (none)",
+        },
+    )
+    critic_path = env.artifact_root / "tmp_prompts" / f"{prefix}_phase_a_completeness_critic.md"
+    write_text(critic_path, critic_prompt)
+    return env.rel(critic_path)
+
+
 def render_phase_a_modality_prompts(env: Env, stages: list[str], prefix: str, dry_run: bool = False) -> dict[str, str]:
     ensure_tree(env)
     stages = [f"{int(s):03d}" for s in stages]
@@ -999,10 +1176,10 @@ def render_phase_a_modality_prompts(env: Env, stages: list[str], prefix: str, dr
     return rendered
 
 
-def run_phase_a(env: Env, stages: list[str], dry_run: bool, dry_run_id: str | None) -> dict[str, Any]:
+def run_phase_a(env: Env, stages: list[str], dry_run: bool, dry_run_id: str | None, prefix: str | None = None) -> dict[str, Any]:
     ensure_tree(env)
     stages = [f"{int(s):03d}" for s in stages]
-    prefix = dry_run_id or "phase_a"
+    prefix = prefix or "phase_a"
     modality_prompts = render_phase_a_modality_prompts(env, stages, prefix=prefix, dry_run=dry_run)
     fragments_by_modality: dict[str, list[dict[str, Any]]] = {
         "numeric_literal": numeric_literal_scan(env, stages),
@@ -1040,13 +1217,7 @@ def run_phase_a(env: Env, stages: list[str], dry_run: bool, dry_run_id: str | No
         }
 
     for candidate in candidates:
-        entry = manifest["candidates"].get(candidate["id"]) or initial_candidate_entry(candidate)
-        entry["file_line_citations"] = candidate.get("citations", [])
-        entry["parameter_names"] = candidate.get("parameter_names", [])
-        entry["modality_attribution"] = candidate.get("modality_attribution", [])
-        entry["modality_fragments"] = candidate.get("modality_fragments", [])
-        transition(entry, "scanned")
-        manifest["candidates"][candidate["id"]] = entry
+        merge_candidate_into_manifest(manifest, candidate)
 
     stage_results = {}
     for stage in stages:
@@ -1062,19 +1233,12 @@ def run_phase_a(env: Env, stages: list[str], dry_run: bool, dry_run_id: str | No
     render_batches(env, manifest)
     save_manifest(env, manifest)
 
-    critic_prompt = render_template(
+    critic_prompt = render_critic_prompt(
         env,
-        "phase_a_completeness_critic.md",
-        {
-            "STAGES": ", ".join(stages),
-            "FIT_INSERTION_POINTS_YAML": yaml_block({"candidates": candidates, "stage_results": stage_results}),
-            "MODALITY_FRAGMENT_PATHS": "\n".join(
-                f"- {env.rel(env.artifact_root / 'phase_a_fragments' / f'{prefix}_{m}.yaml')}" for m in MODALITIES
-            ),
-        },
+        prefix=prefix,
+        manifest=manifest,
+        fit_payload={"candidates": candidates, "stage_results": stage_results},
     )
-    critic_path = env.artifact_root / "tmp_prompts" / f"{prefix}_phase_a_completeness_critic.md"
-    write_text(critic_path, critic_prompt)
 
     return {
         "stages": stages,
@@ -1082,7 +1246,254 @@ def run_phase_a(env: Env, stages: list[str], dry_run: bool, dry_run_id: str | No
         "stage_results": stage_results,
         "graph_gaps": graph_gaps,
         "modality_prompts": modality_prompts,
-        "critic_prompt": env.rel(critic_path),
+        "critic_prompt": critic_prompt,
+    }
+
+
+def resolve_input_path(env: Env, path_text: str) -> Path:
+    path = Path(path_text).expanduser()
+    if path.is_absolute():
+        return path
+    cwd_candidate = (Path.cwd() / path).resolve()
+    if cwd_candidate.exists():
+        return cwd_candidate
+    project_candidate = (env.project_root / path).resolve()
+    if project_candidate.exists():
+        return project_candidate
+    repo_candidate = (env.repo_root / path).resolve()
+    if repo_candidate.exists():
+        return repo_candidate
+    return cwd_candidate
+
+
+def candidate_error_label(index: int, candidate: Any) -> str:
+    key = None
+    if isinstance(candidate, dict):
+        key = candidate.get("candidate_key")
+    suffix = f" ({key})" if key else ""
+    return f"candidate[{index}]{suffix}"
+
+
+def require_candidate_field(
+    errors: list[str],
+    file_label: str,
+    candidate: dict[str, Any],
+    index: int,
+    field: str,
+) -> Any:
+    value = candidate.get(field)
+    if value is None or value == "":
+        errors.append(f"{file_label}: {candidate_error_label(index, candidate)} missing required field: {field}")
+    return value
+
+
+def normalize_agent_fragment_file(env: Env, source: Path) -> tuple[dict[str, Any] | None, list[str]]:
+    file_label = env.rel(source)
+    errors: list[str] = []
+    if not source.exists():
+        return None, [f"{file_label}: fragment file does not exist"]
+    try:
+        data = load_yaml(source)
+    except yaml.YAMLError as exc:
+        return None, [f"{file_label}: invalid YAML: {exc}"]
+    if not isinstance(data, dict):
+        return None, [f"{file_label}: top-level YAML must be a mapping"]
+    modality = data.get("modality")
+    if modality not in INGEST_MODALITIES:
+        errors.append(
+            f"{file_label}: modality must be one of {', '.join(INGEST_MODALITIES)}; got {modality!r}"
+        )
+    candidates_raw = data.get("candidates")
+    if candidates_raw is None:
+        errors.append(f"{file_label}: missing required top-level field: candidates")
+        candidates_raw = []
+    if not isinstance(candidates_raw, list):
+        errors.append(f"{file_label}: candidates must be a list")
+        candidates_raw = []
+    dry_run = bool(data.get("dry_run", False))
+    dry_run_id = data.get("dry_run_id")
+    if dry_run and not dry_run_id:
+        errors.append(f"{file_label}: dry_run: true fragments must include dry_run_id for purgeability")
+    dry_run_id_text = str(dry_run_id) if dry_run_id else None
+
+    normalized_candidates: list[dict[str, Any]] = []
+    for index, candidate in enumerate(candidates_raw, 1):
+        error_count_before_candidate = len(errors)
+        if not isinstance(candidate, dict):
+            errors.append(f"{file_label}: candidate[{index}] must be a mapping")
+            continue
+        candidate_key = require_candidate_field(errors, file_label, candidate, index, "candidate_key")
+        anchor_stage = require_candidate_field(errors, file_label, candidate, index, "anchor_stage")
+        parameter_names = candidate.get("parameter_names")
+        if not isinstance(parameter_names, list):
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} parameter_names must be a non-empty list")
+            parameter_names = []
+        elif not parameter_names:
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} parameter_names must be non-empty")
+        elif any(str(param).strip() == "" for param in parameter_names):
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} parameter_names contains an empty value")
+        citation = candidate.get("citation")
+        if not isinstance(citation, dict):
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} citation must be a mapping")
+            citation = {}
+        citation_path = citation.get("path")
+        if not citation_path:
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} citation missing required field: path")
+        if "line" not in citation:
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} citation missing required field: line")
+        citation_excerpt = citation.get("excerpt")
+        if not citation_excerpt:
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} citation missing required field: excerpt")
+        reason = require_candidate_field(errors, file_label, candidate, index, "reason")
+        try:
+            stage = f"{int(str(anchor_stage)):03d}"
+        except (TypeError, ValueError):
+            errors.append(f"{file_label}: {candidate_error_label(index, candidate)} anchor_stage is not a stage number: {anchor_stage!r}")
+            stage = str(anchor_stage or "")
+        if len(errors) != error_count_before_candidate:
+            continue
+        normalized_citation = dict(citation)
+        normalized_citation["path"] = str(citation_path)
+        normalized_citation["stage"] = str(normalized_citation.get("stage") or stage)
+        normalized = {
+            "candidate_key": str(candidate_key),
+            "modality": str(modality),
+            "anchor_stage": stage,
+            "parameter_names": [str(param) for param in parameter_names],
+            "reason": str(reason),
+            "citation": normalized_citation,
+        }
+        for optional_key in ("graph_node",):
+            if optional_key in candidate:
+                normalized[optional_key] = candidate[optional_key]
+        normalized_candidates.append(normalized)
+
+    if errors:
+        return None, errors
+
+    stages = sorted({candidate["anchor_stage"] for candidate in normalized_candidates})
+    payload: dict[str, Any] = {
+        "schema_version": int(data.get("schema_version") or 1),
+        "dry_run": dry_run,
+        "dry_run_id": dry_run_id_text,
+        "modality": str(modality),
+        "ingested_from": file_label,
+        "ingested_at": now_iso(),
+        "stages": stages,
+        "candidates": normalized_candidates,
+    }
+    if modality in MODALITIES:
+        payload["blind_to_modalities"] = [m for m in MODALITIES if m != modality]
+    if "graph_gaps" in data:
+        payload["graph_gaps"] = data.get("graph_gaps") or []
+    if "pure_identities" in data:
+        payload["pure_identities"] = data.get("pure_identities") or []
+    return payload, []
+
+
+def persisted_agent_fragment_path(env: Env, source: Path, payload: dict[str, Any]) -> Path:
+    fragment_root = env.artifact_root / "phase_a_fragments"
+    try:
+        if source.resolve().parent == fragment_root.resolve():
+            return source.resolve()
+    except OSError:
+        pass
+    dry_run_id = payload.get("dry_run_id")
+    prefix = str(dry_run_id) if payload.get("dry_run") and dry_run_id else "agent"
+    return fragment_root / f"{prefix}_{slug(source.stem)}_{payload['modality']}.yaml"
+
+
+def ingest_phase_a_fragments(env: Env, fragment_paths: list[str]) -> dict[str, Any]:
+    ensure_tree(env)
+    normalized_payloads: list[tuple[Path, Path, dict[str, Any]]] = []
+    errors: list[str] = []
+    for path_text in fragment_paths:
+        source = resolve_input_path(env, path_text)
+        payload, file_errors = normalize_agent_fragment_file(env, source)
+        errors.extend(file_errors)
+        if payload is not None:
+            normalized_payloads.append((source, persisted_agent_fragment_path(env, source, payload), payload))
+    if errors:
+        raise SystemExit("error: malformed Phase A fragment input:\n- " + "\n- ".join(errors))
+
+    for _source, dest, payload in normalized_payloads:
+        write_yaml(dest, payload)
+
+    manifest = load_manifest(env)
+    grouped_fragments: dict[tuple[bool, str | None], list[dict[str, Any]]] = defaultdict(list)
+    dry_run_fragments: dict[str, dict[str, Any]] = {}
+    persisted_paths = []
+    for _source, dest, payload in normalized_payloads:
+        persisted_paths.append(env.rel(dest))
+        dry_run = bool(payload.get("dry_run"))
+        dry_run_id = payload.get("dry_run_id")
+        grouped_fragments[(dry_run, dry_run_id)].extend(payload.get("candidates") or [])
+        if dry_run and dry_run_id:
+            record = dry_run_fragments.setdefault(
+                str(dry_run_id),
+                {
+                    "dry_run": True,
+                    "stages": set(),
+                    "ingested_fragments": [],
+                },
+            )
+            record["stages"].update(payload.get("stages") or [])
+            record["ingested_fragments"].append(env.rel(dest))
+
+    created_candidate_ids: list[str] = []
+    updated_candidate_ids: list[str] = []
+    status_preserved: dict[str, str] = {}
+    merged_candidate_ids: list[str] = []
+    dry_run_candidate_ids: dict[str, list[str]] = defaultdict(list)
+    for (dry_run, dry_run_id), fragments in grouped_fragments.items():
+        for candidate in merge_fragments(fragments, dry_run=dry_run, dry_run_id=dry_run_id):
+            entry, created, old_status = merge_candidate_into_manifest(manifest, candidate)
+            merged_candidate_ids.append(entry["id"])
+            if dry_run and dry_run_id:
+                dry_run_candidate_ids[str(dry_run_id)].append(entry["id"])
+            if created:
+                created_candidate_ids.append(entry["id"])
+            else:
+                updated_candidate_ids.append(entry["id"])
+                if old_status and old_status == entry.get("status"):
+                    status_preserved[entry["id"]] = old_status
+
+    for dry_run_id, record in dry_run_fragments.items():
+        manifest_record = manifest.setdefault("dry_runs", {}).setdefault(
+            dry_run_id,
+            {
+                "dry_run": True,
+                "started_at": now_iso(),
+            },
+        )
+        existing_stages = set(manifest_record.get("stages") or [])
+        existing_stages.update(record["stages"])
+        manifest_record["stages"] = sorted(existing_stages)
+        manifest_record["last_phase"] = "phase_a_ingest"
+        append_unique_items(manifest_record.setdefault("ingested_fragments", []), record["ingested_fragments"])
+        append_unique_items(manifest_record.setdefault("candidate_ids", []), dry_run_candidate_ids.get(dry_run_id, []))
+        manifest_record["stage_results"] = {
+            stage: {
+                "candidate_count": sum(
+                    1
+                    for cid in manifest_record.get("candidate_ids", [])
+                    if stage in ((manifest.get("candidates") or {}).get(cid, {}).get("anchor_stages") or [])
+                ),
+                "structurally_vacuous": False,
+                "dry_run": True,
+            }
+            for stage in manifest_record["stages"]
+        }
+
+    render_fit_file(env, manifest, stage_results=stage_results_from_manifest(manifest))
+    render_batches(env, manifest)
+    save_manifest(env, manifest)
+    return {
+        "ingested_fragment_paths": persisted_paths,
+        "candidate_ids": sorted(set(merged_candidate_ids)),
+        "created_candidate_ids": sorted(created_candidate_ids),
+        "updated_candidate_ids": sorted(set(updated_candidate_ids)),
+        "status_preserved": dict(sorted(status_preserved.items())),
     }
 
 
@@ -1447,8 +1858,26 @@ def cmd_render_phase_a_prompts(env: Env, args: argparse.Namespace) -> None:
 def cmd_phase_a_scan(env: Env, args: argparse.Namespace) -> None:
     if not args.stages:
         raise SystemExit("error: phase-a-scan requires --stages")
-    result = run_phase_a(env, args.stages, dry_run=args.dry_run, dry_run_id=args.dry_run_id)
+    result = run_phase_a(env, args.stages, dry_run=args.dry_run, dry_run_id=args.dry_run_id, prefix=args.prefix)
     print(yaml_block(result))
+
+
+def cmd_phase_a_ingest(env: Env, args: argparse.Namespace) -> None:
+    print(yaml_block(ingest_phase_a_fragments(env, args.fragments)))
+
+
+def cmd_render_critic(env: Env, args: argparse.Namespace) -> None:
+    manifest = load_manifest(env)
+    path = render_critic_prompt(env, prefix=args.prefix or "phase_a", manifest=manifest)
+    print(
+        yaml_block(
+            {
+                "critic_prompt": path,
+                "fragment_paths": fragment_paths_for_critic(env),
+                "candidate_count": len((manifest.get("candidates") or {})),
+            }
+        )
+    )
 
 
 def cmd_phase_b_build(env: Env, args: argparse.Namespace) -> None:
@@ -1483,7 +1912,7 @@ def cmd_render_defense_prompt(env: Env, args: argparse.Namespace) -> None:
 def cmd_dry_run(env: Env, args: argparse.Namespace) -> None:
     stages = args.stages or ["003", "104", "105"]
     dry_run_id = args.dry_run_id or "stages_003_104_105"
-    result = run_phase_a(env, stages, dry_run=True, dry_run_id=dry_run_id)
+    result = run_phase_a(env, stages, dry_run=True, dry_run_id=dry_run_id, prefix=dry_run_id)
     manifest = load_manifest(env)
     candidate_ids = result["candidate_ids"]
     for cid in candidate_ids:
@@ -1527,7 +1956,10 @@ def collect_dry_run_ids(env: Env, manifest: dict[str, Any]) -> set[str]:
         if entry.get("dry_run") and entry.get("dry_run_id"):
             ids.add(str(entry["dry_run_id"]))
     for path in (env.artifact_root / "phase_a_fragments").glob("*.yaml"):
-        data = load_yaml(path)
+        try:
+            data = load_yaml(path)
+        except (OSError, yaml.YAMLError):
+            continue
         if data.get("dry_run") and data.get("dry_run_id"):
             ids.add(str(data["dry_run_id"]))
     for path in (env.artifact_root / "tmp_prompts").glob("*_phase_a_*.md"):
@@ -1683,9 +2115,18 @@ def build_parser() -> argparse.ArgumentParser:
 
     pa = sub.add_parser("phase-a-scan")
     pa.add_argument("--stages", nargs="+", required=True)
+    pa.add_argument("--prefix", default="phase_a")
     pa.add_argument("--dry-run", action="store_true")
     pa.add_argument("--dry-run-id")
     pa.set_defaults(func=cmd_phase_a_scan)
+
+    ingest = sub.add_parser("phase-a-ingest")
+    ingest.add_argument("fragments", nargs="+")
+    ingest.set_defaults(func=cmd_phase_a_ingest)
+
+    critic = sub.add_parser("render-critic")
+    critic.add_argument("--prefix", default="phase_a")
+    critic.set_defaults(func=cmd_render_critic)
 
     pb = sub.add_parser("phase-b-build")
     pb.add_argument("candidate_id")

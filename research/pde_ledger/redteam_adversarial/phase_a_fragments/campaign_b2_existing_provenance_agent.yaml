@@ -1,0 +1,370 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b2_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '033'
+- '036'
+- '043'
+- 059
+- '060'
+candidates:
+- candidate_key: stage033_kappa_overlap_literals
+  modality: existing_provenance
+  anchor_stage: '033'
+  parameter_names:
+  - kappa_0_sq
+  - kappa_1_sq
+  - sigma
+  reason: The load-bearing finite-throat constants kappa_0^2=8/pi^2, kappa_1^2=16/(9 pi^2) (hence sigma=88/(9 pi^2) and every
+    9/11 coefficient downstream) are pinned as bare literals under only "# Finite-throat constants." with no source anchor,
+    and the stage notes (notes/stages line 63) say merely "already fixed exactly" without naming the deriving stage (the actual
+    overlap-integral derivation lives at stage 026), so the in-band recorded provenance is vague enough that a tuned value
+    could be substituted unnoticed.
+  citation:
+    path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+    line: 33
+    excerpt: kappa0_sq = sp.Rational(8) / sp.pi**2
+    stage: '033'
+- candidate_key: stage036_dn_coeffs_stale_stage18_anchor
+  modality: existing_provenance
+  anchor_stage: '036'
+  parameter_names:
+  - dn_coeff_9
+  - dn_coeff_11
+  - dn_scaling_8_over_pi2_A
+  reason: The checkpoint-provenance record attributes the 9/11/8 coefficients to "the Stage-18 selected-branch D/N-normal-form
+    coefficients", but canonical stage 018 (parent_throat_action_bundle_master) contains no D/N normal form and none of these
+    coefficients (the D/N selected-branch normal form lives at stages 034/035 per stage_035.tex:5-9), so the recorded source
+    anchor is stale/wrong and the claimed carry chain cannot be audited as written - a classic back-filled-provenance smell.
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 376
+    excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
+    stage: '036'
+- candidate_key: stage043_baseline_8_over_pi2_circular_derivation
+  modality: existing_provenance
+  anchor_stage: '043'
+  parameter_names:
+  - B_baseline
+  - kappa_0_sq
+  - sigma
+  reason: The script's comment (line 144) claims the literal 8/pi^2 is "PRODUCED, not assumed" by deriving B = (9/11)*sigma,
+    but both the ratio 9/11 and sigma_value = 88/(9 pi^2) are themselves frozen in-script literals that jointly encode kappa_0^2,
+    so the "derivation" is circular substitution rather than independent provenance (the pass-2 report's own F2 concedes it
+    is asserted-by-substitution), leaving the baseline a literal whose recorded origin overstates its independence.
+  citation:
+    path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+    line: 146
+    excerpt: B_value = sp.simplify(sp.Rational(9, 11) * sigma_value)
+    stage: '043'
+- candidate_key: stage059_pe_req_misattributed_carry
+  modality: existing_provenance
+  anchor_stage: 059
+  parameter_names:
+  - Pe_req
+  reason: The checkpoint-provenance record states Pe_req is "carried from stages 048/049/052", but grep over all band scripts/.wl/notes
+    shows stages 048/049/052 contain no Pe_req at all - the symbol first appears at stages 059/061/063 - so the recorded carry
+    chain is factually false and the parameter's true origin is undocumented, an insertion point that the provenance ledger
+    would not catch.
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 130
+    excerpt: '`Pe_req` carried from stages 048/049/052). The III.3 v2 sweep surfaced'
+    stage: 059
+- candidate_key: stage060_xi_micro_drop_prefactor_choice
+  modality: existing_provenance
+  anchor_stage: '060'
+  parameter_names:
+  - Xi_micro
+  - phi_drop_prefactor
+  reason: The script's own rigid-grounding BVP limit (lines 112-113) fixes the support-drop prefactor to 1/2, yet the headline
+    Xi_micro = Lambda^2 L^2/(Theta T_X) is built with prefactor 1 justified only as the "end-to-end drop" route convention,
+    so a factor-2 normalization choice that directly rescales every downstream G_fail/G_suff threshold is posited rather than
+    derived - the route giving the paper's coefficient was selected over the route giving 1/2.
+  citation:
+    path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+    line: 122
+    excerpt: 'phi_from_Phi = Lam * L**2 * Delta / T_X  # end-to-end drop only (see BVP check above)'
+    stage: '060'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '033'
+  value: remaining 16 reconciled deliverables (alpha_crit, N_-(0), weak-loading coefficients, onset gate, monotonicity formula)
+  citation:
+    path: redteam/pass2/reports/stage_033.md
+    line: 127
+    excerpt: 'reconciliation: complete; 16 deliverable values checked, 0 misaligned.'
+  reason: All deliverables are closed-form rational identities derived in-script from the (candidate-flagged) kappa inputs
+    and verified as exact zero residuals on both engines; conditional on those inputs there is no independent tunable value.
+- stage: '034'
+  value: all 8 reconciled deliverables (alpha_0(x), s_-(x), N_-(x), duality s_-*dalpha0/dx=1, support requirement)
+  citation:
+    path: redteam/pass2/reports/stage_034.md
+    line: 135
+    excerpt: 'reconciliation: complete; 8 values checked, 0 misaligned'
+  reason: Purely symbolic rational-function algebra with exact zero residuals in both engines; no numeric constant is pinned.
+- stage: '035'
+  value: all 9 reconciled deliverables (eta=2/9, F(xi,delta), C(delta), alpha_req, alpha_crit, near-onset series)
+  citation:
+    path: redteam/pass2/reports/stage_035.md
+    line: 132
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned.'
+  reason: Every value is an exact algebraic reduction of the Stage-034 normal form under the kappa substitution (eta = kappa_1^2/kappa_0^2
+    = 2/9 is forced arithmetic, not free); zero residual on both engines.
+- stage: '036'
+  value: remaining derived deliverables (G(xi,delta), dG/dxi, G_max, 18/81 internal factors, 2/9 near-onset coefficient)
+  citation:
+    path: redteam/pass2/reports/stage_036.md
+    line: 144
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned (R_target line is an intermediate defined
+      via Stage 035, treated INTERNAL; F is a verified Stage-035 carry-forward, MATCH).'
+  reason: The checkpoint-provenance entry's "derived algebraically" classifications for 18/81/2-over-9 check out in-script
+    (exact reductions of G); only the 9/11/8 carry anchor is defective (see candidate).
+- stage: '037'
+  value: all 12 reconciled deliverables (kappa_0=2*sqrt(2)/pi, kappa_1=-4/(3*pi), sigma, A, DeltaK_ax, beta_0, alpha_mix,
+    M_mix, delta, stability gates)
+  citation:
+    path: redteam/pass2/reports/stage_037.md
+    line: 155
+    excerpt: '`reconciliation: complete; 12 deliverable values checked, 0 misaligned`'
+  reason: This is the band's continuum-kernel stage where the overlap constants are recomputed from explicit bounded mode
+    integrals (int u_i f_0) rather than pinned; all Schur-route identities are exact-zero cross-multiplied residuals.
+- stage: 038
+  value: all 10 reconciled deliverables (placement map delta/M_mix/R_target/beta_0, Lambda=27 pi^2 G c_s^5 K_W_eff/(20 a^5
+    c^5 mu_W), product laws, 9 derivative signs)
+  citation:
+    path: redteam/pass2/reports/stage_038.md
+    line: 128
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 misaligned.'
+  reason: All closed forms are exact substitutional identities; the 27/20 in Lambda traces to the Stage-022 normalization
+    product (54, 5) whose derivation is independently logged in the checkpoint-provenance Stage 022 entry.
+- stage: 039
+  value: all 12 reconciled deliverables (delta_split, eps_W_split, R_U, D_dir, M_mix/R_target split forms, series)
+  citation:
+    path: redteam/pass2/reports/stage_039.md
+    line: 191
+    excerpt: 'reconciliation: complete; 12 deliverable values checked, 0 misaligned (every emitted value matches the .tex
+      card and/or notes). The two findings F1/F2 are NOT value mismatches - they are missing/tautological *assertions* over
+      values that are themselves correct.'
+  reason: All values are exact symbolic identities (lambda_0 = 2/9 is the forced ratio kappa_1^2/kappa_0^2); the F2 weakness
+    is an assertion-coverage gap over correct values, not a value-origin issue.
+- stage: '040'
+  value: all 10 reconciled deliverables (alpha_req, e1/e0, F_q_eta, G_q, split-U map q=-(sqrt(2)/3)R_U, F_U, G_U, H_F, H_G)
+  citation:
+    path: redteam/pass2/reports/stage_040.md
+    line: 150
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 misaligned'
+  reason: Rank-one perturbation algebra with the flat branch recovered exactly at R_U=1; every coefficient is an algebraic
+    consequence of lambda_0=2/9, no free value.
+- stage: '041'
+  value: all 8 reconciled deliverables (D_sel decomposition, n_req, dn_req/dm, source-tied n_req, pole/positivity thresholds)
+  citation:
+    path: redteam/pass2/reports/stage_041.md
+    line: 132
+    excerpt: 'reconciliation: complete; 8 deliverable values checked, 0 misaligned.'
+  reason: Purely symbolic determinant/eigenvector identities; lambda_0=2/9 enters as the inherited forced ratio only.
+- stage: '042'
+  value: all 14 reconciled deliverables (rank-2 overlaps, F closed forms, D_src, F_src, F_flat, H_n_src, H_F_src, linear laws)
+  citation:
+    path: redteam/pass2/reports/stage_042.md
+    line: 139
+    excerpt: '`reconciliation: complete; 14 values checked, 0 misaligned`'
+  reason: Exact symbolic collapse checks (r=q, R_U=1 endpoints reduce to zero residuals) on both engines; no pinned numeric
+    value.
+- stage: '043'
+  value: remaining 15 reconciled deliverables (y0/y1, R_phi, D_phi, v.D_U.v overlap, 2/11 ratio, eps_phi_split, M_supp structural
+    form, D_phiz, tracking condition, R_phi-R_U mismatch)
+  citation:
+    path: redteam/pass2/reports/stage_043.md
+    line: 168
+    excerpt: '`reconciliation: complete; 16 deliverable values checked, 0 misaligned`. Every emitted deliverable value reconciles
+      against the notes (the natural carrier). The only soft point is the in-script numeric baseline `8/pi^2`, which is consistent
+      with the notes but asserted by substitution rather than derived - captured as F2 (insufficient_verification), NOT a
+      value_mismatch, since both sides agree.'
+  reason: Apart from the candidate-flagged baseline literal, all deliverables are structural identities verified with a FREE
+    baseline symbol B, so they are insertion-proof by construction.
+- stage: '044'
+  value: all 9 reconciled deliverables (B_cont, C_cont, quadratic, xi_phys branch, F_cont gate, source-tied and tracking collapses,
+    mismatch penalty)
+  citation:
+    path: redteam/pass2/reports/stage_044.md
+    line: 135
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned.'
+  reason: Symbolic quadratic-closure algebra; the only constant is the forced lambda_0 = t^2 = 2/9.
+- stage: '045'
+  value: all 12 reconciled deliverables (coherence identity g_B g_R = g_W g_S, R_tr, range identities, M_mix/M_supp/M_tr,
+    G_tr, F_tr D/N forms)
+  citation:
+    path: redteam/pass2/reports/stage_045.md
+    line: 143
+    excerpt: '`reconciliation: complete; 12 values checked, 0 misaligned`'
+  reason: All exact symbolic identities; D/N coefficients 9/(9+2R^2) encode the forced lambda_0=2/9.
+- stage: '046'
+  value: all 13 reconciled deliverables (G_tr, F_tr, G_flat, F_flat, dG_tr/dR, dF_tr/dR, P_R/P1/P2 integer coefficient lists,
+    endpoints)
+  citation:
+    path: redteam/pass2/reports/stage_046.md
+    line: 126
+    excerpt: 'reconciliation: complete; 13 deliverable values checked, 0 misaligned.'
+  reason: The integer polynomial coefficient lists are exact factorization outputs reproduced on both engines (positivity
+    by coefficient sign + Reduce/ForAll), not tunable inputs.
+- stage: '047'
+  value: all 14 reconciled deliverables (S(zeta;eps), M_tr=M_mix*S, R_target, product law, dS/dzeta, chi_0, Lambda, sigma
+    carry)
+  citation:
+    path: redteam/pass2/reports/stage_047.md
+    line: 143
+    excerpt: 'reconciliation: complete; 14 deliverable values checked, 0 misaligned. Every emitted deliverable reconciles
+      to the card (boxed eqs -S/-Mtr/-Rtarget) or the notes 1-5; no MISMATCH or MISSING-DELIVERABLE, so no `value_mismatch`/`script_missing_paper_claim`
+      folded into Findings.'
+  reason: Pure symbolic factorization identities with a negative-control spoil probe; sigma enters symbolically (carried from
+    037 where it is derived).
+- stage: 048
+  value: all 13 reconciled deliverables (zeta_req, zeta_crit, G_tr, M_crit, S(zeta;eps), pole/branch margins, dxi_phys/dzeta)
+  citation:
+    path: redteam/pass2/reports/stage_048.md
+    line: 167
+    excerpt: '`reconciliation: complete; 13 values checked, 0 misaligned.`'
+  reason: Closed-form threshold algebra in free symbols (S_req, S_crit, eps); no numeric constant pinned anywhere in the stage.
+- stage: 049
+  value: all 10 reconciled deliverables (chi_n, k_n, I_n, I_n/I_0 = 1/(2n+1), zeta_n_phys, twin stiffness, x, zeta_n_twin,
+    zeta_0_twin = 1)
+  citation:
+    path: redteam/pass2/reports/stage_049.md
+    line: 132
+    excerpt: 'reconciliation: complete; 10 values checked, 0 misaligned'
+  reason: Every value is an exact bounded-interval eigenfunction integral or its algebraic ratio; the 1/(2n+1)^2 law is forced
+    by the Robin mode normalization.
+- stage: '050'
+  value: all 11 reconciled deliverables (S_0 = 2, zeta_req<=1 iff S_req<=2, x_max, exclusion law, S_n_max forms)
+  citation:
+    path: redteam/pass2/reports/stage_050.md
+    line: 163
+    excerpt: 'reconciliation: complete; 11 values checked, 0 misaligned'
+  reason: Exact algebraic consequences of the Stage-048/049 closed forms; the literal 2 in S_0 is S(1;eps) evaluated, not
+    inserted.
+- stage: '051'
+  value: all 9 reconciled deliverables (C_mix = 8 Lambda(1-eps)/pi^2, Pi_tr closed form and limits, Lambda_twin_req, M_mix_twin_req
+    = G_tr/2, Z_W_twin_req, xi_2x)
+  citation:
+    path: redteam/pass2/reports/stage_051.md
+    line: 211
+    excerpt: 'reconciliation: complete; 9 values checked, 0 misaligned'
+  reason: The 8/pi^2 and 16/pi^2 prefactors are algebraic consequences of the carried product law (8 Lambda(1-eps)/pi^2) and
+    the factor-2 twin criterion, all verified as exact residuals.
+- stage: '052'
+  value: all 12 reconciled deliverables (zeta_req map, boundaries 0/1, dzeta_req/dPi_tr, regime split, Delta_zeta, Omega_0_req,
+    K_phi0_req, softening fraction)
+  citation:
+    path: redteam/pass2/reports/stage_052.md
+    line: 132
+    excerpt: 'reconciliation: complete; 12 values checked, 0 misaligned'
+  reason: Pure rational-map algebra with boundary evaluations Pi_tr = C_mix and 2 C_mix reducing exactly; no pinned constant.
+- stage: '053'
+  value: all 11 reconciled deliverables (I_W = 2 sqrt(2L)/pi, max chi_0, Omega_max = pi/2, A_I_max = pi^2/4, I_alpha, Omega_exp,
+    limits, small-alpha slope (4-pi)/(2 pi), rescue criterion)
+  citation:
+    path: redteam/pass2/reports/stage_053.md
+    line: 136
+    excerpt: 'reconciliation: complete; 11 values checked, 0 misaligned'
+  reason: All constants are derived limits/integrals of explicit profiles over the bounded interval (pi/2 and pi^2/4 are computed
+    suprema, not posited bounds).
+- stage: '054'
+  value: all 14 reconciled deliverables (Robin root equation, K_W_eff, K_phi0_eff, x window 0<x<4, A_K, endpoints 1 and 4/(4-x),
+    y_req^2, x-floor, rescue criterion)
+  citation:
+    path: redteam/pass2/reports/stage_054.md
+    line: 157
+    excerpt: 'reconciliation: complete; 14 values checked, 0 misaligned'
+  reason: All values are exact solutions/limits of the explicit Robin boundary-value problem; the window constants are computed
+    endpoint evaluations.
+- stage: '055'
+  value: all 9 reconciled deliverables (zeta_family = Omega_exp^2 A_K, twin endpoints 1 and pi^2/(4-x), x_floor = 4 - pi^2/zeta_req,
+    stiffness ratio, regime split)
+  citation:
+    path: redteam/pass2/reports/stage_055.md
+    line: 153
+    excerpt: 'reconciliation: complete; 9 values checked, 0 misaligned'
+  reason: Direct algebraic combination of the Stage-053/054 derived factors; endpoints are computed limits.
+- stage: '056'
+  value: all 12 reconciled deliverables (zero-flux residual, sigma_Pe profile, I_W, I_Pe, Omega_Pe, limits 1 and pi/2, slope
+    (4-pi)/(2 pi), large-Pe coefficient -pi^3/8)
+  citation:
+    path: redteam/pass2/reports/stage_056.md
+    line: 135
+    excerpt: 'reconciliation: complete; 12 values checked, 0 misaligned'
+  reason: All constants are series/limit coefficients of explicitly integrated bounded-domain expressions, reproduced on both
+    engines.
+- stage: '057'
+  value: all 7 reconciled deliverables (x(kappa), A_K(eta;kappa), zeta_0 Pe+R form, partial_kappa zeta, zeta_max(kappa), kappa_max(zeta_req),
+    kappa_req)
+  citation:
+    path: redteam/pass2/reports/stage_057.md
+    line: 229
+    excerpt: 'reconciliation: complete; 7 values checked, 0 misaligned'
+  reason: Exact closed-form inversions cross-checked by solve-vs-closed-form zero residuals; no pinned numeric value.
+- stage: 058
+  value: all 11 reconciled deliverables (K kernel, dK/dx, Sigma_Pe, Ic/Is, Delta closed form, Delta_0, Delta_inf, fixed point,
+    bracket, weak-coupling slope)
+  citation:
+    path: redteam/pass2/reports/stage_058.md
+    line: 140
+    excerpt: 'reconciliation: complete; 11 values checked, 0 misaligned'
+  reason: Fully symbolic Green-function algebra; the removable Pe=alpha singularity is handled by limits, and endpoint anchors
+    are independent closed forms.
+- stage: 059
+  value: all 10 reconciled deliverables (zeta_-, zeta_+, R_-, R_+, Xi_fail = Pe_req/Delta_inf, Xi_suff = Pe_req/Delta_0, ordered
+    gap, weak-coupling linear coefficient (4-pi)/pi)
+  citation:
+    path: redteam/pass2/reports/stage_059.md
+    line: 145
+    excerpt: 'reconciliation: complete; 10 values checked, 0 misaligned'
+  reason: Symbolic threshold algebra in the free symbol Pe_req (probe constants kappa=2, y=1 etc. are labeled verification
+    scaffolding); the defect is the carry-chain record (see candidate), not the in-stage math.
+- stage: '060'
+  value: remaining 9 reconciled deliverables (chemical potential, support EL, Onsager current, Einstein relation, Sigma_Pe,
+    Pe map, Xi_micro three forms, passivity)
+  citation:
+    path: redteam/pass2/reports/stage_060.md
+    line: 181
+    excerpt: 'reconciliation: complete; 10 values checked, 0 misaligned'
+  reason: Conditional on the candidate-flagged drop-prefactor convention, the remaining identities are exact symbolic EL/Onsager
+    reductions verified to zero on both engines.
+- stage: '061'
+  value: all 12 reconciled deliverables (Xi_micro = kappa G_micro, G_fail, G_suff, phase diagram, threshold surfaces, soft/stiff-support
+    limits 1/2, 1, 2 Pe_req, Pe_req)
+  citation:
+    path: redteam/pass2/reports/stage_061.md
+    line: 113
+    excerpt: 'reconciliation: complete; 12 values checked, 0 misaligned.'
+  reason: The limiting literals are derived limits of the Stage-058 closed forms (sech/tanh asymptotics), computed not pinned.
+- stage: '062'
+  value: all 9 reconciled deliverables (h'(rho_*), polytrope forms, Theta_sigma, Lambda_phi, chi_sigma_eff, G_micro both forms,
+    C_sp^2 in [0,1], Xi_micro/kappa)
+  citation:
+    path: redteam/pass2/reports/stage_062.md
+    line: 164
+    excerpt: '`reconciliation: complete; 9 deliverable values checked, 0 misaligned.`'
+  reason: Fully symbolic microscopic identification with a wrong-exponent inconsistency probe; no numeric constant pinned.
+- stage: '063'
+  value: all 8 reconciled deliverables (g_phi_fail^2, g_phi_suff^2, C_fail^2, C_suff^2, G_max, G_micro, kappa-form thresholds)
+  citation:
+    path: redteam/pass2/reports/stage_063.md
+    line: 153
+    excerpt: 'reconciliation: complete; 8 deliverable values checked, 0 misaligned.'
+  reason: Pure symbolic solve-inversions of the Stage-061/062 threshold forms in free symbols; no numeric constant.
+- stage: '064'
+  value: all 7 reconciled deliverables (chi_sigma source profile, O_sigmaphi, N_sigmasigma, C_sigmaphi^2 <= 1, Delta K_X_eq,
+    G_eq, matched-layer G_eq)
+  citation:
+    path: redteam/pass2/reports/stage_064.md
+    line: 152
+    excerpt: 'reconciliation: complete; 7 deliverable values checked, 0 misaligned.'
+  reason: Cauchy-Schwarz coherence identities with even-integrand infinite-domain integrals; the hardcoded Gaussian/Lorentzian
+    comparison constants were independently re-derived by the pass-2 auditor and match.

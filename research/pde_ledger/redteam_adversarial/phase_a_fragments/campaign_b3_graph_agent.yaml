@@ -1,0 +1,114 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b3_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages: []
+candidates: []
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '065'
+  source: research/pde_ledger/paper/stages/stage_065.tex
+  reason: No atlas graph node anchors this stage; graph stage coverage (sources/legacy_sources/tex anchors) ends at stage_025
+    plus the Stages 025-031 packet claim.
+- stage: '066'
+  source: research/pde_ledger/paper/stages/stage_066.tex
+  reason: No atlas graph node anchors this stage; nearest topical nodes (wall-action/firewall family) source only stage_002
+    and audit notes.
+- stage: '067'
+  source: research/pde_ledger/paper/stages/stage_067.tex
+  reason: No atlas graph node anchors this stage; no node references the sech/Gaussian resonance content or its note moving_throat_pde_stage067_sech_gaussian_resonance.md.
+- stage: 068
+  source: research/pde_ledger/paper/stages/stage_068.tex
+  reason: No atlas graph node anchors this stage; wrapper source queries for stage_068 resolve to none.
+- stage: 069
+  source: research/pde_ledger/paper/stages/stage_069.tex
+  reason: No atlas graph node anchors this stage (final reduced verdict note is unreferenced by any node source list).
+- stage: '070'
+  source: research/pde_ledger/paper/stages/stage_070.tex
+  reason: No atlas graph node anchors this stage; GNLS nodes in the graph anchor only the parent-action papers (research/4d),
+    not the stage-070 wall-shell note.
+- stage: '071'
+  source: research/pde_ledger/paper/stages/stage_071.tex
+  reason: No atlas graph node anchors this stage; searches for tanh-wall content return no nodes.
+- stage: '072'
+  source: research/pde_ledger/paper/stages/stage_072.tex
+  reason: No atlas graph node anchors this stage; searches for explicit branch-threshold content return no nodes.
+- stage: '073'
+  source: research/pde_ledger/paper/stages/stage_073.tex
+  reason: No atlas graph node anchors this stage; no family-1 geometry-map node exists in the graph.
+- stage: '074'
+  source: research/pde_ledger/paper/stages/stage_074.tex
+  reason: No atlas graph node anchors this stage; healing-lock content is absent from all node text and source lists.
+- stage: '075'
+  source: research/pde_ledger/paper/stages/stage_075.tex
+  reason: No atlas graph node anchors this stage; wrapper source queries for stage_075 resolve to none.
+- stage: '076'
+  source: research/pde_ledger/paper/stages/stage_076.tex
+  reason: No atlas graph node anchors this stage; no node references the n5 wall-depth lock.
+- stage: '077'
+  source: research/pde_ledger/paper/stages/stage_077.tex
+  reason: No atlas graph node anchors this stage; theta-extraction content is absent from the graph.
+- stage: 078
+  source: research/pde_ledger/paper/stages/stage_078.tex
+  reason: No atlas graph node anchors this stage; family-1 branch-verdict content is absent from the graph.
+- stage: 079
+  source: research/pde_ledger/paper/stages/stage_079.tex
+  reason: No atlas graph node anchors this stage; quadrupole PE-map content is absent from all node source lists.
+- stage: 080
+  source: research/pde_ledger/paper/stages/stage_080.tex
+  reason: No atlas graph node anchors this stage; zeta-threshold content returns no graph matches.
+- stage: 081
+  source: research/pde_ledger/paper/stages/stage_081.tex
+  reason: No atlas graph node anchors this stage; pi-threshold content returns no graph matches.
+- stage: 082
+  source: research/pde_ledger/paper/stages/stage_082.tex
+  reason: No atlas graph node anchors this stage; master quadrupole-residual content returns no graph matches.
+- stage: 083
+  source: research/pde_ledger/paper/stages/stage_083.tex
+  reason: No atlas graph node anchors this stage; direct-operator-window content is absent from the graph.
+- stage: 084
+  source: research/pde_ledger/paper/stages/stage_084.tex
+  reason: No atlas graph node anchors this stage; the full reduced-PDE writeup note is not in any node source list.
+- stage: 085
+  source: research/pde_ledger/paper/stages/stage_085.tex
+  reason: No atlas graph node anchors this stage; demand-cancellation content is absent from the graph.
+- stage: 086
+  source: research/pde_ledger/paper/stages/stage_086.tex
+  reason: No atlas graph node anchors this stage; loading-ratio-window searches return no nodes.
+- stage: 087
+  source: research/pde_ledger/paper/stages/stage_087.tex
+  reason: No atlas graph node anchors this stage; outgoing-branch loading-ratio content is absent from the graph.
+- stage: 088
+  source: research/pde_ledger/paper/stages/stage_088.tex
+  reason: No atlas graph node anchors this stage; minimal-module loading-ratio content is absent from the graph.
+- stage: 089
+  source: research/pde_ledger/paper/stages/stage_089.tex
+  reason: No atlas graph node anchors this stage; family-1 minimal isotropic verdict is not referenced by any node.
+- stage: 090
+  source: research/pde_ledger/paper/stages/stage_090.tex
+  reason: No atlas graph node anchors this stage; the updated reduced-status note is not in any node source list.
+- stage: 091
+  source: research/pde_ledger/paper/stages/stage_091.tex
+  reason: No atlas graph node anchors this stage; grouped-P2 nodes (EQ_WALL_P2_STIFFNESS) source only stage_002.tex and pde_audit_full.md,
+    not stage 091.
+- stage: 092
+  source: research/pde_ledger/paper/stages/stage_092.tex
+  reason: No atlas graph node anchors this stage; dynamic geometry-obstruction searches return no nodes.
+- stage: 093
+  source: research/pde_ledger/paper/stages/stage_093.tex
+  reason: No atlas graph node anchors this stage; grouped-P2 status-update content is absent from the graph.
+- stage: 094
+  source: research/pde_ledger/paper/stages/stage_094.tex
+  reason: No atlas graph node anchors this stage; isotropic geometry-decoupling content is absent from the graph.
+- stage: 095
+  source: research/pde_ledger/paper/stages/stage_095.tex
+  reason: No atlas graph node anchors this stage; second-order geometry-contamination content is absent from the graph.
+- stage: 096
+  source: research/pde_ledger/paper/stages/stage_096.tex
+  reason: No atlas graph node anchors this stage; geometry-lane-check verdict content is absent from the graph; wrapper source
+    query resolves to none.

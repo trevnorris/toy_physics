@@ -1,0 +1,590 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b3_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '065'
+- '066'
+- '067'
+- 068
+- 069
+- '070'
+- '071'
+- '072'
+- '073'
+- '074'
+- '075'
+- '076'
+- '077'
+- 078
+- 079
+- 082
+- 083
+- 085
+- 086
+- 087
+- 088
+- 089
+- 090
+- 091
+- 092
+- 093
+- 094
+- 095
+- 096
+candidates:
+- candidate_key: stage065_canonical_normalization_fprime
+  modality: claim_label
+  anchor_stage: '065'
+  parameter_names:
+  - f_prime_0
+  - g_phi
+  reason: The wall-loading amplitude g_phi is anchored on a normalization labeled "canonical" rather than derived, so the
+    amplitude scale entering the fail/succeed surfaces could absorb tuning.
+  citation:
+    path: scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py
+    line: 118
+    excerpt: '# by the canonical normalization f''(0)=1 used by the docstring''s f. Verify the'
+    stage: '065'
+- candidate_key: stage066_exact_matched_verdict
+  modality: claim_label
+  anchor_stage: '066'
+  parameter_names:
+  - W_wall
+  - W_fail
+  - W_suff
+  reason: The W_wall threshold window is labeled an "exact" verdict, a claim that could mask tuned window edges if the matched-branch
+    premise was selected to produce them.
+  citation:
+    path: paper/stages/stage_066.tex
+    line: 19
+    excerpt: The exact matched-branch verdict is
+    stage: '066'
+- candidate_key: stage067_w_ratio_self_duality_forced
+  modality: claim_label
+  anchor_stage: '067'
+  parameter_names:
+  - w_g_over_w_f
+  reason: The resonance point w_g/w_f = sqrt(pi) is claimed "forced" by an exact self-duality, a derivation label that would
+    hide a hand-picked benchmark family if the family itself was chosen to make this work.
+  citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 20
+    excerpt: 2. that self-duality forces an exact stationary point at
+    stage: '067'
+- candidate_key: stage067_C_res_unique_global_max
+  modality: claim_label
+  anchor_stage: '067'
+  parameter_names:
+  - C_res_squared
+  - P_res
+  reason: The coherence value C_res^2 = 0.9944... is elevated to "unique global maximum" by a numerical audit, a uniqueness
+    claim that converts a sampled numeric into a canonical constant.
+  citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 108
+    excerpt: A numerical monotonicity audit then shows that this stationary point is the unique global maximum on the constructive
+      branch.
+    stage: '067'
+- candidate_key: stage068_W_res_derived_label
+  modality: claim_label
+  anchor_stage: 068
+  parameter_names:
+  - W_res
+  reason: W_res carries an explicit "derived" label resting on the matched-branch gain premise; if that premise was reverse-engineered,
+    the label launders a posited form.
+  citation:
+    path: mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl
+    line: 33
+    excerpt: '(* W_res derived from matched-branch gain decomposition (notes section 1): *)'
+    stage: 068
+- candidate_key: stage068_threshold_translation_not_postulated
+  modality: claim_label
+  anchor_stage: 068
+  parameter_names:
+  - P_res
+  - W_fail_res
+  - W_suff_res
+  reason: The explicit "derived ... not postulated" defense is exactly the kind of claim that marks a contested origin; the
+    resonance penalty P_res could have been back-filled to match the quoted 1.0056 value.
+  citation:
+    path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+    line: 104
+    excerpt: '# 2. Exact threshold translation (derived from W_res, not postulated)'
+    stage: 068
+- candidate_key: stage069_matched_window_exactly
+  modality: claim_label
+  anchor_stage: 069
+  parameter_names:
+  - W_fail_match
+  - W_suff_match
+  - P_res
+  reason: The final reduced verdict asserts the Stage-066 window is "exactly" [Pe_req/Delta_inf, Pe_req/Delta_0], an exactness
+    claim whose edges inherit any tuning upstream in Pe_req and the Delta kernels.
+  citation:
+    path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+    line: 9
+    excerpt: 1. The matched-branch Stage-066 window is exactly
+    stage: 069
+- candidate_key: stage070_wall_shell_fixes_quintuple
+  modality: claim_label
+  anchor_stage: '070'
+  parameter_names:
+  - T_X
+  - K_X
+  - kappa
+  - J_1
+  - W_wall
+  reason: Five branch quantities (T_X, K_X, kappa, J_1, W_wall=Xi) are claimed fixed at once by the GNLS shell reduction;
+    a bundled "fixes" claim is a natural place to slip in one tuned member among genuinely derived ones.
+  citation:
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 177
+    excerpt: After this stage, the first wall-shell branch fixes
+    stage: '070'
+- candidate_key: stage071_canonical_tanh_and_natural_closure
+  modality: claim_label
+  anchor_stage: '071'
+  parameter_names:
+  - tanh_wall_profile
+  - K_m
+  reason: A chosen profile and a chosen mouth closure K_m = T_X/ell are labeled "canonical" and "natural", converting selections
+    into apparent non-choices that determine all downstream branch constants.
+  citation:
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    line: 7
+    excerpt: The next honest step is to choose the first canonical wall profile and the first natural local mouth closure.
+    stage: '071'
+- candidate_key: stage072_canonical_controls_exact_thresholds
+  modality: claim_label
+  anchor_stage: '072'
+  parameter_names:
+  - chi_s
+  - Lambda_ell
+  - Upsilon_w
+  reason: The paper labels the three branch controls "canonical" and the inherited thresholds "exact", priming the reader
+    to treat later numeric freezes of these controls as non-tunable.
+  citation:
+    path: paper/stages/stage_072.tex
+    line: 7
+    excerpt: \stagefield{Inputs}{The canonical branch controls \(\chi_s\), \(\Lambda_\ell\), \(\Upsilon_w\) and the exact
+      thresholds from Stage~069.}
+    stage: '072'
+- candidate_key: stage073_Lambda_ell_fixed_37
+  modality: claim_label
+  anchor_stage: '073'
+  parameter_names:
+  - Lambda_ell
+  - L_over_a
+  - epsilon_r
+  reason: Lambda_ell = 37 is claimed "fixed" but is assembled from the carried aspect ratio L/a ~ 1.85 frozen as 37/20 and
+    the picked epsilon_r = 0.05 = 1/20 -- two upstream numbers whose tuning would silently move the "fixed" value.
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 72
+    excerpt: So the first explicit moving-throat branch fixes
+    stage: '073'
+- candidate_key: stage073_eta_pinned_37
+  modality: claim_label
+  anchor_stage: '073'
+  parameter_names:
+  - eta
+  reason: The Robin variable eta = 37 is described as "pinned", but it inherits the same Lambda_ell freeze plus the chosen
+    mouth closure, so the pin is only as derived as those selections.
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 94
+    excerpt: So the first explicit throat-support branch is now pinned to one concrete large-`eta` Robin regime.
+    stage: '073'
+- candidate_key: stage073_paper_fixes_geometry_ratios
+  modality: claim_label
+  anchor_stage: '073'
+  parameter_names:
+  - Lambda_ell
+  - eta
+  reason: The published purpose line says the stage "fixes" the geometry ratios, the strongest-audience surface for a freeze-presented-as-derivation;
+    the notes themselves admit it is a "reference-branch numerical freeze".
+  citation:
+    path: paper/stages/stage_073.tex
+    line: 6
+    excerpt: \stagefield{Purpose}{Stage~073 fixes the geometry ratios of the first explicit Family--1 branch.}
+    stage: '073'
+- candidate_key: stage074_natural_healing_closure
+  modality: claim_label
+  anchor_stage: '074'
+  parameter_names:
+  - ell
+  - ell_h
+  reason: The identification ell = ell_h is labeled the "natural next closure", an identification choice that could equally
+    have used a multiple of ell_h, directly setting chi_s and kappa downstream.
+  citation:
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 51
+    excerpt: 'The natural next closure is to identify that active support width with the local GNLS healing width on the wall-support
+      layer:'
+    stage: '074'
+- candidate_key: stage074_chi_s_now_fixes
+  modality: claim_label
+  anchor_stage: '074'
+  parameter_names:
+  - chi_s
+  reason: chi_s = 18.5 is claimed "fixed" by chaining the Stage-073 freeze through the healing-closure choice; both links
+    are selections, so the fix-claim compounds two potential tuning points.
+  citation:
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 73
+    excerpt: Since Stage 073 fixed `Lambda_ell = 37`, the same branch now fixes
+    stage: '074'
+- candidate_key: stage074_kappa_locked_reduction
+  modality: claim_label
+  anchor_stage: '074'
+  parameter_names:
+  - kappa
+  - chi_s
+  reason: The script asserts chi_s is "locked" to Lambda_ell/2 and kappa = 12321/5 follows; the lock label imports the closure
+    choice as if it were a theorem.
+  citation:
+    path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+    line: 46
+    excerpt: '# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to'
+    stage: '074'
+- candidate_key: stage075_triple_fixed_summary
+  modality: claim_label
+  anchor_stage: '075'
+  parameter_names:
+  - Lambda_ell
+  - chi_s
+  - kappa
+  reason: The stage summary declares geometry, support/healing, and operator scales all "fixed", upgrading the chained Stage-073/074
+    freezes into settled facts that downstream threshold numbers depend on.
+  citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 144
+    excerpt: '- the geometry ratio is fixed,'
+    stage: '075'
+- candidate_key: stage076_target_25_derived
+  modality: claim_label
+  anchor_stage: '076'
+  parameter_names:
+  - Theta_w
+  - ref_factor
+  reason: The factor 25 in Theta_w = 25 lambda_mu^2 rho_w^2 is labeled "derived", but it is (1/ref_factor)^2/16 with ref_factor
+    = 1/20 carried from the same reference-branch freeze, so the derivation bottoms out in a chosen number.
+  citation:
+    path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+    line: 89
+    excerpt: '# The "25" target is derived from ref_factor as (1/ref_factor)^2 / 16'
+    stage: '076'
+- candidate_key: stage076_wall_depth_exactly_square
+  modality: claim_label
+  anchor_stage: '076'
+  parameter_names:
+  - Theta_w
+  - lambda_mu
+  reason: The "exactly ... up to one local normalization factor" phrasing concentrates all residual freedom in lambda_mu while
+    presenting the rest as exact, making lambda_mu the explicit tunable disguised inside an exactness claim.
+  citation:
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 93
+    excerpt: '> the wall-depth datum is exactly the square of the active-shell density, measured in healing-width units, up
+      to the one local normalization factor `lambda_mu`.'
+    stage: '076'
+- candidate_key: stage077_If_exact_canonical
+  modality: claim_label
+  anchor_stage: '077'
+  parameter_names:
+  - I_f
+  reason: The support normalization I_f = 1/3 carries both "exact" and "canonical" labels; it depends on the chosen canonical
+    support weight, so the value tracks a profile selection rather than a forced result.
+  citation:
+    path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+    line: 7
+    excerpt: 2. Exact canonical support normalization If = 1/3.
+    stage: '077'
+- candidate_key: stage077_Theta_w_chi_derived_directly
+  modality: claim_label
+  anchor_stage: '077'
+  parameter_names:
+  - Theta_w_chi
+  reason: Theta_w^(chi) ~ 4.0686 lambda_mu^2 is claimed "derived directly", but it evaluates a chosen alpha_r = 10 Family-1
+    profile under the chosen canonical weight, so the numeric is profile-selection-dependent.
+  citation:
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 96
+    excerpt: This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather
+      than left symbolic.
+    stage: '077'
+- candidate_key: stage078_verdict_fixed_pair
+  modality: claim_label
+  anchor_stage: 078
+  parameter_names:
+  - Lambda_ell
+  - chi_s
+  reason: The branch verdict restates the geometry and healing/support scales as "fixed" before comparing against the threshold
+    window, so the pass/fail outcome is conditioned on the upstream freezes being treated as non-tunable.
+  citation:
+    path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 85
+    excerpt: '- the geometry is fixed,'
+    stage: 078
+- candidate_key: stage079_unique_constructive_Pe_req
+  modality: claim_label
+  anchor_stage: 079
+  parameter_names:
+  - Pe_req
+  reason: Uniqueness of the constructive Pe_req is asserted over a window whose edges (A_F1, zeta_max^(F1)) come from the
+    frozen branch, so "unique" could dress up a window arranged to contain the desired Pe_req.
+  citation:
+    path: scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
+    line: 76
+    excerpt: print("A unique constructive Pe_req exists iff A_F1 <= zeta_req <= zeta_max^(F1).")
+    stage: 079
+- candidate_key: stage082_first_exact_product_window
+  modality: claim_label
+  anchor_stage: 082
+  parameter_names:
+  - Pi_suff
+  - Pi_fail
+  reason: The product window (Pi_fail, Pi_suff) is labeled both "exact" and "derived directly", a double claim that invites
+    checking whether the operator route truly reproduces rather than re-imports the earlier bookkeeping values.
+  citation:
+    path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 204
+    excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator rather
+      than through the intermediate `Pe_req` bookkeeping.
+    stage: 082
+- candidate_key: stage083_windows_now_derived_directly
+  modality: claim_label
+  anchor_stage: 083
+  parameter_names:
+  - zeta_fail
+  - zeta_suff
+  reason: An "exactly ... now derived directly" agreement claim between two routes is a classic back-fill signature if the
+    second route's inputs were normalized to match the first.
+  citation:
+    path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+    line: 119
+    excerpt: These are exactly the Stage-078 transport windows, now derived directly from the master support/source operator.
+    stage: 083
+- candidate_key: stage085_unblocked_literal_law
+  modality: claim_label
+  anchor_stage: 085
+  parameter_names:
+  - zeta_req
+  - eps_blk
+  reason: The "literally just" claim holds only at eps_blk = 0; treating the unblocked branch as the operative law quietly
+    fixes the blocking parameter at its most favorable value.
+  citation:
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 136
+    excerpt: So on the unblocked branch the support-ratio demand is literally just the selected total loading divided by the
+      mixed baseline, minus one.
+    stage: 085
+- candidate_key: stage086_natural_lambda_mu_unblocked
+  modality: claim_label
+  anchor_stage: 086
+  parameter_names:
+  - lambda_mu
+  - eps_blk
+  reason: Both residual knobs (lambda_mu and eps_blk) are simultaneously set to their convenient values under a "natural"
+    label, exactly where the quoted Family-1 window numbers are produced.
+  citation:
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 152
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
+    stage: 086
+- candidate_key: stage087_natural_lambda_mu_unblocked
+  modality: claim_label
+  anchor_stage: 087
+  parameter_names:
+  - lambda_mu
+  - eps_blk
+  reason: The same "natural normalization plus unblocked limit" pairing recurs when finishing the loading-ratio criterion,
+    repeating the two-knob convenience setting as if it were forced.
+  citation:
+    path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    line: 57
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+    stage: 087
+- candidate_key: stage088_c0_c1_derived_not_defined
+  modality: claim_label
+  anchor_stage: 088
+  parameter_names:
+  - c0
+  - c1
+  reason: The "derived (not defined)" defense for c0 = 3/4, c1 = 1/4 hinges on the contact-plus-pole identification being
+    the unique reading of the module; if that identification was chosen, the constants are posited with extra steps.
+  citation:
+    path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+    line: 69
+    excerpt: '# With c0, c1 now derived (not defined), the contact-plus-pole reconstruction'
+    stage: 088
+- candidate_key: stage088_natural_identification_fixes_exactly
+  modality: claim_label
+  anchor_stage: 088
+  parameter_names:
+  - rho_alpha
+  - zeta_req
+  - c_contact
+  reason: rho_alpha = 4/3 and zeta_req = 1/3 are claimed fixed "exactly" by a "natural ... interpretation" -- an interpretation
+    label is the softest possible foundation for an exactness claim and a prime fit-insertion surface.
+  citation:
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 92
+    excerpt: 'So the natural contact-plus-pole interpretation of the minimal isotropic quadrupole branch fixes the explicit
+      support demand exactly:'
+    stage: 088
+- candidate_key: stage089_Pe_req_forced_not_assumed
+  modality: claim_label
+  anchor_stage: 089
+  parameter_names:
+  - Pe_req
+  reason: The capitalized "FORCED (not assumed)" defense for Pe_req = 0 rests on a positive margin computed from frozen Family-1
+    numbers, so the forcing inherits whatever tuning sits in those carried values.
+  citation:
+    path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 125
+    excerpt: '# Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 already exceeds the'
+    stage: 089
+- candidate_key: stage090_locked_triple_Pe_req
+  modality: claim_label
+  anchor_stage: 090
+  parameter_names:
+  - Pe_req
+  - rho_alpha
+  - zeta_req
+  reason: The status stage promotes (rho_alpha, zeta_req, Pe_req) = (4/3, 1/3, 0) to a "locked triple" verified only by a
+    carry-forward proxy inequality, hardening upstream identification-dependent values into canon.
+  citation:
+    path: mathematica/moving_throat_pde_stage090_updated_reduced_status_mathematica_audit.wl
+    line: 62
+    excerpt: '   above is the carry-forward proxy for the locked triple value Pe_req = 0'
+    stage: 090
+- candidate_key: stage091_module_forced_paper
+  modality: claim_label
+  anchor_stage: 091
+  parameter_names:
+  - Y_Q_cons
+  - rho_alpha
+  - zeta_req
+  reason: The paper states the 3/4+1/4 module and the 4/3, 1/3 values are "forced", but the forcing is conditional on the
+    one-pole and static-geometry premises; if those premises were selected to recover the previously quoted constants, this
+    is back-filling.
+  citation:
+    path: paper/stages/stage_091.tex
+    line: 16
+    excerpt: Static-geometry plus one-pole grouped carrier forces the \(3/4+1/4\) conservative quadrupole module and hence
+      \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\).
+    stage: 091
+- candidate_key: stage091_K_geom_forced_by_identity
+  modality: claim_label
+  anchor_stage: 091
+  parameter_names:
+  - K_geom
+  - K_pole
+  reason: K_geom = 3 K_pole is printed as "forced by branch identity"; the branch identity itself encodes the minimal-realization
+    choice, so the forced label transfers a modeling selection onto the split values K_pole = K0/4, K_geom = 3K0/4.
+  citation:
+    path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+    line: 62
+    excerpt: print("K_geom forced by branch identity =", Kgeom_sol)
+    stage: 091
+- candidate_key: stage092_forced_carrier_ledger_label
+  modality: claim_label
+  anchor_stage: 092
+  parameter_names:
+  - Y_Q_cons
+  - eps_2
+  - eps_4
+  reason: The ledger boilerplate (repeated verbatim in stages 091-096 tex line 13) names the carrier "forced" as a standing
+    label, institutionalizing the conditional forcing claim across the whole geometry-lane block.
+  citation:
+    path: paper/stages/stage_092.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+    stage: 092
+- candidate_key: stage092_no_longer_forced_unless
+  modality: claim_label
+  anchor_stage: 092
+  parameter_names:
+  - K_geom
+  - eps_2
+  - eps_4
+  reason: This line concedes the forcing fails unless eps_2 = eps_4 = 0, making the vanishing of the dynamic geometry moments
+    the precise condition a fitter would need to assert to keep the 3/4+1/4 module.
+  citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 68
+    excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
+    stage: 092
+- candidate_key: stage093_module_forced_statement
+  modality: claim_label
+  anchor_stage: 093
+  parameter_names:
+  - Y_Q_cons
+  - rho_alpha
+  - zeta_req
+  reason: The status update restates the conditional forcing as the settled chain producing rho_alpha = 4/3 and zeta_req =
+    1/3, demoting the one-pole and static-geometry premises to fine print.
+  citation:
+    path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+    line: 23
+    excerpt: then the conservative quadrupole module is forced to be
+    stage: 093
+- candidate_key: stage094_decoupling_kills_contamination
+  modality: claim_label
+  anchor_stage: 094
+  parameter_names:
+  - K_g2
+  - K_g4
+  reason: K_g2 = K_g4 = 0 is claimed impossible to avoid ("cannot feed"), but the conclusion holds only for the isotropic
+    quadratic wall theory -- the very modeling restriction that rescues the Stage-091 forced module after Stage 092 broke
+    it.
+  citation:
+    path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 101
+    excerpt: Because the isotropic quadratic wall theory has no `l=0 <-> l=2` bilinear mixing, the scalar geometry lane cannot
+      feed any dynamic even moments into the isotropic grouped-`P2` conservative quadrupole module.
+    stage: 094
+- candidate_key: stage095_forced_carrier_ledger_label
+  modality: claim_label
+  anchor_stage: 095
+  parameter_names:
+  - Y_Q_cons
+  - eps_2
+  - eps_4
+  reason: Stage 095's only claim-label surface is the same standing "forced conservative carrier" ledger boilerplate, applied
+    here to the second-order contamination check that the carrier label presumes resolved.
+  citation:
+    path: paper/stages/stage_095.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+    stage: 095
+- candidate_key: stage096_constants_derived_from_eps_zero
+  modality: claim_label
+  anchor_stage: 096
+  parameter_names:
+  - c0
+  - c1
+  - rho_alpha
+  - zeta_req
+  - eps_2
+  - eps_4
+  reason: The provenance block declares the four headline constants "derived ... from eps_2 = eps_4 = 0", openly conditioning
+    the entire derived status on the decoupling premise; if eps_2, eps_4 were set to zero to recover the constants, the derivation
+    is circular.
+  citation:
+    path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+    line: 16
+    excerpt: '- 1/4, 3/4, 4/3, and 1/3 are derived in this audit from eps_2 = eps_4 = 0 and'
+    stage: 096
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

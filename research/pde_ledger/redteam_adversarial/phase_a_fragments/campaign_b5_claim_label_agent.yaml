@@ -1,0 +1,351 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b5_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '129'
+- '130'
+- '131'
+- '132'
+- '133'
+- '134'
+- '135'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '144'
+- '148'
+- '150'
+- '151'
+- '152'
+- '154'
+- '156'
+- '160'
+candidates:
+- candidate_key: stage129_sigma_pi_derived_boundary_law
+  modality: claim_label
+  anchor_stage: '129'
+  parameter_names:
+  - sigma_Pi
+  reason: The exponential source profile sigma_Pi is claimed derived from an electrochemical balance, but the balance itself
+    rests on the throat-core ansatz, so the profile shape could be a posited family dressed as a derivation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+    line: 7
+    excerpt: boundary-layer law derived from a GNLS + localized-Maxwell electrochemical balance
+    stage: '129'
+- candidate_key: stage130_pi_star_exact_unique
+  modality: claim_label
+  anchor_stage: '130'
+  parameter_names:
+  - Pi_star
+  - g_Pi
+  reason: Pi_star approx 1.5088295 is labeled exact and unique, but uniqueness is relative to the chosen exponential family
+    and the imported g_minus target, either of which could have been tuned to land here.
+  citation:
+    path: paper/stages/stage_130.tex
+    line: 16
+    excerpt: Exact \(\mathfrak g_\Pi\), monotonicity, and unique Family--1 point \(\Pi_*\approx1.5088295\).
+    stage: '130'
+- candidate_key: stage130_x_star_penetration_depth_match
+  modality: claim_label
+  anchor_stage: '130'
+  parameter_names:
+  - x_star
+  reason: An exact match of x_star = 1/Pi_star to a previously found penetration-depth value is the classic signature of a
+    back-filled target rather than an independent derivation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 118
+    excerpt: which is exactly the penetration-depth value already found earlier for the
+    stage: '130'
+- candidate_key: stage131_parent_threshold_canonical
+  modality: claim_label
+  anchor_stage: '131'
+  parameter_names:
+  - T_m
+  - q_star
+  - A0_prime
+  - Pi_star
+  - Theta_sigma
+  reason: The parent micro-threshold combination is declared canonical; the specific threshold relation could be reverse-engineered
+    from the desired Pi_star rather than forced by the parent action.
+  citation:
+    path: paper/stages/stage_131.tex
+    line: 16
+    excerpt: Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+    stage: '131'
+- candidate_key: stage132_source_family_fixed_claim
+  modality: claim_label
+  anchor_stage: '132'
+  parameter_names:
+  - sigma_Pi
+  reason: Status card asserts the positive source family is fixed (non-tunable) by the boundary-layer law, upgrading a closure-internal
+    result to a fixed claim that could conceal a family choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+    line: 8
+    excerpt: 1. The actual positive source family is fixed by an explicit GNLS + localized-Maxwell
+    stage: '132'
+- candidate_key: stage133_residual_freedom_fixed
+  modality: claim_label
+  anchor_stage: '133'
+  parameter_names:
+  - kappa_plus
+  - kappa_minus
+  - M_plus
+  - M_minus
+  reason: Sweeping everything-else-is-fixed claim leaves only kappa_pm and M_pm nominally open, so any tuning hidden in the
+    source law or D/N response would be laundered as exact.
+  citation:
+    path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+    line: 197
+    excerpt: Everything else is fixed by the exact source law and the exact D/N response.
+    stage: '133'
+- candidate_key: stage134_bias_determined_by_fixedpoint
+  modality: claim_label
+  anchor_stage: '134'
+  parameter_names:
+  - Pi
+  - M_s
+  - M_q
+  reason: The source-shape bias Pi is claimed determined by the fixed-point law Pi = M_s + M_q*S_q(Pi), but the determining
+    gains M_s, M_q are themselves closure-dependent inputs that could be tuned.
+  citation:
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    line: 131
+    excerpt: bias is determined by
+    stage: '134'
+- candidate_key: stage135_exact_outlet_consistent_gain
+  modality: claim_label
+  anchor_stage: '135'
+  parameter_names:
+  - Sigma_0
+  reason: The canonical Family-1 gain value is labeled exact via the imposed outlet-consistency requirement; imposing the
+    Stage 115 outlet as a constraint is a matching condition that could function as a fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 83
+    excerpt: gives the exact outlet-consistent gain
+    stage: '135'
+- candidate_key: stage137_gains_from_derived_core_response
+  modality: claim_label
+  anchor_stage: '137'
+  parameter_names:
+  - M_s
+  - M_q
+  reason: The mouth gains are claimed derived by importing the already derived core response, chaining the derived label through
+    an upstream ansatz whose own parameters could be fitted.
+  citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 9
+    excerpt: The key idea is to use the already derived concrete two-channel core response from
+    stage: '137'
+- candidate_key: stage138_rq_quarter_derived_not_assumed
+  modality: claim_label
+  anchor_stage: '138'
+  parameter_names:
+  - R_q
+  reason: Explicit derived-rather-than-assumed claim for the closure ratio R_q = 1/4; the collapse to 1/4 holds only on the
+    exact compensated branch, so the branch restriction could be doing the fitting.
+  citation:
+    path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 106
+    excerpt: so the outlet-consistent mouth closure is derived rather than assumed.
+    stage: '138'
+- candidate_key: stage139_gains_land_exactly_on_canonical
+  modality: claim_label
+  anchor_stage: '139'
+  parameter_names:
+  - M_s_comp_star
+  - M_q_comp_star
+  reason: The compensated gain pair is claimed to reproduce the Stage 135 canonical branch exactly, while the natural branch
+    misses and the mixed gain must be rescaled by a factor 1.86 (line 136) to land there, suggesting the canonical match may
+    be enforced rather than emergent.
+  citation:
+    path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 120
+    excerpt: This is exactly the Stage 135 one-parameter canonical branch.
+    stage: '139'
+- candidate_key: stage140_theta_sigma_not_fitted_by_hand
+  modality: claim_label
+  anchor_stage: '140'
+  parameter_names:
+  - Theta_sigma
+  reason: The self-matched identification Theta_sigma = H_w*J_s is explicitly advertised as not fitting a coefficient by hand,
+    yet the same-layer identification is itself a discrete modeling choice that fixes the otherwise free scale.
+  citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 32
+    excerpt: 'This is a same-layer closure: it removes an otherwise free susceptibility scale by'
+    stage: '140'
+- candidate_key: stage140_sigma0_prefactor_fixed
+  modality: claim_label
+  anchor_stage: '140'
+  parameter_names:
+  - Sigma_0
+  reason: Sigma_0 with its 20/9 numerical prefactor is claimed fixed by one explicit traction scale, and the note itself concedes
+    the prefactor would change under a different microscopic layer choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 59
+    excerpt: 'So the overall mouth shell gain is no longer abstract: it is fixed by one explicit'
+    stage: '140'
+- candidate_key: stage141_gain_pair_no_longer_free
+  modality: claim_label
+  anchor_stage: '141'
+  parameter_names:
+  - M_s
+  - M_q
+  reason: Status card claims the gains are derived and (line 55) no longer a free gain pair, while simultaneously conceding
+    this is not a theorem excluding other microscopic realizations, leaving room for an ansatz-level fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+    line: 7
+    excerpt: '1. The actual mouth gains are derived from the explicit throat-core ansatz:'
+    stage: '141'
+- candidate_key: stage142_three_quantities_no_longer_free
+  modality: claim_label
+  anchor_stage: '142'
+  parameter_names:
+  - sigma_shape
+  - R_q
+  - T_m_hat
+  reason: Three formerly free quantities (source shape, gain ratio, shell traction) are declared no longer free in one stroke,
+    all conditional on assuming the explicit positive mouth layer, which could be the actual tuning dial.
+  citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 134
+    excerpt: '- the source shape is no longer free,'
+    stage: '142'
+- candidate_key: stage144_unique_regular_canonical_branch
+  modality: claim_label
+  anchor_stage: '144'
+  parameter_names:
+  - Pi_star
+  reason: Uniqueness of the canonical branch is claimed, but only inside the explicit exponential closure, so the branch-selection
+    result could be an artifact of the chosen family rather than a forced outcome.
+  citation:
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 105
+    excerpt: \text{inside the explicit Family-1 positive exponential mouth-layer closure, the canonical mouth branch is uniquely
+      selected as the regular finite positive-source branch.}
+    stage: '144'
+- candidate_key: stage148_canonical_first_order_shifts_exact
+  modality: claim_label
+  anchor_stage: '148'
+  parameter_names:
+  - delta_Pi_lambda
+  - delta_T_m_lambda
+  reason: First-order canonical shifts are presented as exact closed numbers, and the interpolation is claimed to reproduce
+    the earlier Stage 126 compensation fraction, a reproduce-the-earlier-value match that could be back-filled.
+  citation:
+    path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+    line: 96
+    excerpt: the canonical first-order shifts are exactly
+    stage: '148'
+- candidate_key: stage148_radical_constant_forced_by_rf1
+  modality: claim_label
+  anchor_stage: '148'
+  parameter_names:
+  - r_F1
+  - xi_star
+  reason: Script comment asserts the constant 100 in the xi_star closed form is FORCED by rF1 = 37/20-derived algebra, a non-tunable
+    claim that rests entirely on the provenance of the rational 37/20.
+  citation:
+    path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+    line: 91
+    excerpt: '# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so'
+    stage: '148'
+- candidate_key: stage150_residual_tangent_matched
+  modality: claim_label
+  anchor_stage: '150'
+  parameter_names:
+  - R_star
+  - Pi_star
+  reason: The residual is labeled exact and tangent-matched; the tangent-matching condition at the canonical point is a matching
+    constraint whose location was set upstream and could absorb tuning.
+  citation:
+    path: paper/stages/stage_150.tex
+    line: 16
+    excerpt: Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth.
+    stage: '150'
+- candidate_key: stage151_correction_fixed_by_covariances
+  modality: claim_label
+  anchor_stage: '151'
+  parameter_names:
+  - delta_Pi_act
+  - delta_S_act
+  reason: The selected first-order correction is claimed fixed by two covariances, but the choice of R_star as the actual
+    deformation and the projection kernel both encode prior selections that could be fit insertion points.
+  citation:
+    path: paper/stages/stage_151.tex
+    line: 16
+    excerpt: Actual selected deformation is the centered residual \(R_*\); correction is fixed by two covariances.
+    stage: '151'
+- candidate_key: stage152_retuned_canonical_point
+  modality: claim_label
+  anchor_stage: '152'
+  parameter_names:
+  - delta_Pi_act
+  - A_T
+  - B_T
+  - g_star_prime
+  reason: The new canonical point is openly labeled retuned while keeping the canonical name, using frozen upstream derivatives
+    A_T, B_T; a retuning step that preserves the canonical label is a natural place to absorb a fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 48
+    excerpt: '## 2. Retuned canonical point'
+    stage: '152'
+- candidate_key: stage154_coevolving_branch_determined
+  modality: claim_label
+  anchor_stage: '154'
+  parameter_names:
+  - Sigma_0
+  - Sigma_profile
+  reason: The co-evolving canonical branch is claimed determined by coupled self-consistency conditions whose functional form
+    (exponential Gibbs-type map) is itself an ansatz that could have been shaped to admit the desired branch.
+  citation:
+    path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+    line: 170
+    excerpt: Hence the co-evolving canonical branch is determined by the coupled conditions
+    stage: '154'
+- candidate_key: stage156_unique_traction_renormalization
+  modality: claim_label
+  anchor_stage: '156'
+  parameter_names:
+  - Sigma_0_can
+  - T_m_can
+  reason: Restoration of exact compensation at a new canonical pair, described in the script as a unique upward traction renormalization,
+    means the traction was moved until compensation held, which is operationally a one-parameter solve toward a target and
+    is claimed canonical afterwards.
+  citation:
+    path: paper/stages/stage_156.tex
+    line: 16
+    excerpt: Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\).
+    stage: '156'
+- candidate_key: stage160_canonical_branch_characterized_kappa_gamma
+  modality: claim_label
+  anchor_stage: '160'
+  parameter_names:
+  - kappa_0
+  - gamma_0
+  - r_c
+  reason: The canonical-branch identities kappa_0 = (1+r_c)/3 and gamma_0 = (1+r_c)/9 are imported as characterizing the canonical
+    branch; gamma_0 = (1+r_c)/9 is a known postulated ansatz value, so re-labeling it as a canonical characterization could
+    mask a posited input.
+  citation:
+    path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+    line: 73
+    excerpt: Stage 115 showed that the compensated canonical branch is characterized by
+    stage: '160'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

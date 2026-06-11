@@ -1,0 +1,290 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b4_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- 098
+- '105'
+- '115'
+- '121'
+- '122'
+- '128'
+candidates:
+- candidate_key: stage115_gamma_0_pure_scale_ansatz
+  modality: existing_provenance
+  anchor_stage: '115'
+  parameter_names:
+  - gamma_0
+  reason: 'gamma_0 = (1+r_c)/9 is openly POSTULATED, not derived — the stage-116 note ("Bare outgoing normalization", line
+    60) realizes it only via the assumed pure-scale-deformation form, and the stage-117 sympy audit docstring (scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:148-153)
+    states it "is NOT derived: it is a pure-scale ANSATZ ... carried as a hardcoded input at Stages 115/116" and that the
+    gamma_c = 1/9 check "cannot be de-tautologized while gamma_0 stays postulated"; unlike its partner kappa_0 = (1+r_c)/3
+    (forward-derived from the D/N half-wave eigenvalue at 116), gamma_0 is exactly the value needed to land the canonical
+    odd coefficient 1/9 — a prototypical fit-insertion point already in the ansatz catalog.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 69
+    excerpt: \gamma_0=\frac{1+r_c}{9}.
+    stage: '115'
+- candidate_key: stage121_aspect_ratio_37_20_reference_freeze
+  modality: existing_provenance
+  anchor_stage: '121'
+  parameter_names:
+  - L_over_a
+  reason: The "carried preferred aspect ratio" L/a = 37/20 has no in-band derivation; its recorded origin (notes/stages/moving_throat_pde_stage073_family1_geometry_map.md:48-56)
+    is "the lower-order stack already carries the preferred throat aspect ratio L/a ≈ 1.85" frozen to 37/20 as an explicit
+    "reference-branch numerical freeze, not a new theorem" with no stage-anchored upstream source for the 1.85 — yet this
+    single rational fixes the band's entire Family-1 numeric chain (r_F1 ≈ 1.77799353547498, r_c^F1 ≈ 3.16126101219081, g_-^F1
+    ≈ 0.758035078944663), making it a high-leverage tunable whose provenance is vague.
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 60
+    excerpt: \frac{L}{a}=\frac{37}{20},
+    stage: '121'
+- candidate_key: stage122_g_nat_unity_branch_ansatz
+  modality: existing_provenance
+  anchor_stage: '122'
+  parameter_names:
+  - g_nat
+  reason: The natural-loading value g_nat = 1 is declared in the notes (line 30) as "a concrete branch ansatz, not as a theorem
+    of the full PDE"; the compensation-defect and traction-ratio deliverables (C_nat ≈ 1.74016524722739, T ratios 1.31920016339112
+    / 0.357404273860789) are all conditional on this posited unity, so it is a candidate insertion point rather than a derived
+    input.
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 26
+    excerpt: \mathfrak g_{\rm nat}=1.
+    stage: '122'
+- candidate_key: stage105_chi_q_provenance_record_contradiction
+  modality: existing_provenance
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  reason: 'The recorded provenance is self-contradictory across the doc''s own layers: the IV.2/batch-2 records (lines 43
+    and 75, dated 2026-05-29, including "The IV.2 105 provenance entry below remains accurate") claim chi_Q = 1 was "derived
+    non-tautologically", but the doc''s later Pass-2 Batch IV.2 record (lines 1167-1175) concedes BOTH engines matched the
+    omega^5 coefficient to a HARDCODED copy of the same literal (chi_Q*K = K, true for any K) until 2026-06-06, when the Hankel-DtN
+    derivation was added — i.e. the canonical pin chi_Q = 1 was asserted for the project''s whole first pass and the genuine
+    derivation was supplied afterwards to the same value, the classic back-fill signature an adversarial audit must adjudicate
+    (the current script, .py:49-68, does now derive it).'
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 75
+    excerpt: '`chi_Q = 1` is derived non-tautologically via two independent paths: SymPy'
+    stage: '105'
+- candidate_key: stage105_carry_in_stale_multi_stage_attribution
+  modality: existing_provenance
+  anchor_stage: '105'
+  parameter_names:
+  - Lambda_out_fingerprint_coefficients
+  - sigma_Q_can
+  reason: The checkpoint-105 carry-in attribution names three different stages across one parenthetical ("stages 074/088 (now
+    104)") — pre-renumber labels patched in place and ambiguous about which constant comes from where — while the current
+    script anchors the pole scale to "Stage 088" (scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:31)
+    and the fingerprint to Stage 104; a vague/shifting source anchor on the checkpoint's only imported constants is precisely
+    where a fitted value could hide behind an unverifiable "imported with explicit provenance" claim.
+  citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 84
+    excerpt: imported with explicit provenance from stages 074/088 (now 104) on the
+    stage: '105'
+- candidate_key: stage098_zeta_max_f1_opaque_carried_ceiling
+  modality: existing_provenance
+  anchor_stage: 098
+  parameter_names:
+  - zeta_max_F1
+  reason: 'The 15-digit Family-1 support ceiling is consumed in-band purely as a declared external pin (pass-2 stage_098 report:
+    "declared external carry-forward"); its only recorded provenance is the out-of-band "Stage 63/64 ceiling packet" named
+    in the Stage 089/090 provenance entries, so nothing inside this band can distinguish a derived ceiling from a tuned one
+    — the fit-vs-derive status rests entirely on the unexamined upstream packet.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 22
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601 > 1`,'
+    stage: 098
+- candidate_key: stage128_traction_gap_downstream_attribution
+  modality: existing_provenance
+  anchor_stage: '128'
+  parameter_names:
+  - traction_gap_percent
+  reason: The recorded provenance for the 3.61% traction-gap figure carried by the stage-128 status card (notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md:49)
+    cites DOWNSTREAM stages 134/140 as its source — a later-stage output back-filled as support for an earlier consolidation
+    card — even though an in-band upstream source exists (stage 126's traction ratio ≈ 1.036097385480999, notes/stages/moving_throat_pde_stage126_positive_source_families.md:62);
+    the misdirected anchor is a provenance-record defect that should be re-pointed and adjudicated.
+  citation:
+    path: redteam/pass2/reports/stage_128.md
+    line: 105
+    excerpt: '| `3.61%` traction gap | stage134/140 sympy out | notes L49 `3.61\%` | MATCH |'
+    stage: '128'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: 097
+  value: Kbar_2 = Kbar_0/(4 Omega_Q^2) (and Kbar_4 = Kbar_0/(4 Omega_Q^4), Gammabar_5 = 9 Kbar_0/(32 Omega_Q^5), Kbar_0^target
+    = 64 G Omega_Q^5/(45 c^5))
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 34
+    excerpt: '`Kbar_2 = Kbar_0 / (4 Omega_Q^2),`'
+  reason: Series coefficients of the fixed one-pole module; forced algebraically, no free parameter (pass-2 097 report, 11/11
+    reconciled).
+- stage: 098
+  value: zeta_req^(act)(eps_blk) = 1/(3 - 2 eps_blk)
+  citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 40
+    excerpt: '`zeta_req^(act)(eps_blk) = (1/3)/(1 - (2/3) eps_blk) = 1/(3 - 2 eps_blk).`'
+  reason: Pure algebra from the carried rho_alpha = 4/3 (itself derived as 1/c_geom at 090/096); no tunable freedom.
+- stage: 099
+  value: Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2); pole residue -Omega_Q/8
+  citation:
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 20
+    excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+  reason: Partial-fraction identity of the derived 096 constants; residue is a hand-checkable identity (pass-2 verified).
+- stage: '100'
+  value: mhat_0^2 chi_Q N_Q = 1 (factorized odd normalization; chi_Q kept symbolic, pinned downstream at 105)
+  citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 91
+    excerpt: '`mhat_0^2 chi_Q N_Q = 1.`'
+  reason: Definitional factorization identity; card line 13 now correctly defers the chi_Q = 1 pin to Stage 105 (post-b052471
+    fix verified in paper/stages/stage_100.tex:13).
+- stage: '102'
+  value: tau_Q first surfaces at O(omega^7) (irrelevant at omega^5)
+  citation:
+    path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+    line: 30
+    excerpt: The extra `tau_Q` term does not appear until `O(omega^7)`.
+  reason: Series-order fact, derivative checked in both engines; no value freedom.
+- stage: '104'
+  value: Lambda_2^out(z) = -3 + z^2/3 + z^4/9 + i z^5/9 + ...; Y coefficients 1/9, 4/81, i/27
+  citation:
+    path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+    line: 53
+    excerpt: Lambda_out = sp.simplify(z_out * sp.diff(h2_out, z_out) / h2_out)
+  reason: Fingerprint coefficients are forced by the exact spherical Hankel h_2^(1) DtN log-derivative, now derived in-engine
+    (not typed) at the 105 audit; pure identity.
+- stage: '105'
+  value: chi_Q = 1 and sigma_Q^can = 4 a^5/(27 c_s^5)
+  citation:
+    path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+    line: 68
+    excerpt: chi_sol = sp.solve(sp.Eq(Yret_series.coeff(omega, 5)/sp.I, outgoing_omega5_coeff), chi_Q)[0]
+  reason: Post pass-2 fix the pin is forced by matching the retarded omega^5 coefficient to the independently DERIVED Hankel
+    fingerprint (the value itself is now a pure identity; the residual provenance-record concerns are filed as the two stage-105
+    candidates above).
+- stage: '106'
+  value: Kbar_0 = 54 G c_s^5/(5 a^5 c^5) (and the Kbar_2/Kbar_4/Gammabar_5/gamma_quad^eff set)
+  citation:
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    line: 43
+    excerpt: \overline K_0=\frac{54Gc_s^5}{5a^5c^5},
+  reason: Direct substitution of chi_Q = 1, N_Q = 1 into the 097/100 identities; arithmetically forced.
+- stage: '110'
+  value: chi_Q^R = 3/(3 - rho_R)
+  citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 55
+    excerpt: \chi_Q^{\rm R}=\frac{3}{3-\rho_R}.
+  reason: Closed form forced by the Robin-shifted DtN series; degenerates to canonical at rho_R = 0 (trivial-case checked
+    in pass-2).
+- stage: '111'
+  value: kappa_W = -1/9 and sigma_W = 0 (standalone mixed pole forced trivial)
+  citation:
+    path: paper/appendices/stage_appendix_part04.tex
+    line: 423
+    excerpt: The canonical even conditions force \(\kappa_W=-1/9\), and then \(\sigma_W=0\).
+  reason: Unique Solve outcome of the even-branch preservation conditions; both engines agree, no freedom.
+- stage: '112'
+  value: gamma_W = 1/9 (with compensated branch rho_R = 4 sigma_W, kappa_W = 1/3)
+  citation:
+    path: paper/stages/stage_112.tex
+    line: 16
+    excerpt: Nontrivial compensated branch has \(\rho_R=4\sigma_W\), \(\kappa_W=1/3\), and preserves odd normalization iff
+      \(\gamma_W=1/9\).
+  reason: Checkpoint-owned constant, forced by Reduce on the preservation condition sigma_W(1 - 9 gamma_W) = 0 with sigma_W
+    != 0; pass-2 cleared the higher bar with the .wl genuinely independent.
+- stage: '114'
+  value: r_c := lambda^2/(K_s K_q) and the Schur forms rho_c, sigma_c, kappa_c = kappa_0/(1+r_c), gamma_c = gamma_0/(1+r_c)
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 57
+    excerpt: r_c:=\frac{\lambda^2}{K_sK_q}.
+  reason: Exact Schur-complement algebra (definition plus elimination); note gamma_c inherits the stage-115 gamma_0 ansatz
+    flagged above, but the reduction itself is identity-level.
+- stage: '115'
+  value: coupling balance g_s^2(K_s K_q + lambda^2) = 4(K_s g_q - lambda g_s)^2; sigma_* = g_s^2/(4 K_s)
+  citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 60
+    excerpt: So the required Robin–mixed balance is not a mystery coefficient fit. It is an explicit codimension-one surface
+      in the concrete core-coupling space.
+  reason: The balance surface and sigma_* are exact algebra given the Schur forms; only the gamma_0 normalization (separate
+    candidate) is posited.
+- stage: '116'
+  value: kappa_0 = 4 L_W^2/(pi^2 a^2) and L_W = (pi a/2) sqrt((1+r_c)/3)
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 51
+    excerpt: \frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}}.
+  reason: kappa_0 is forward-derived from the D/N half-wave eigenvalue; L_W is the unique positive solve of the geometric
+    condition — definitional realization, not a tuned constant.
+- stage: '118'
+  value: I_f = 1/3, I_g = 4/15 and the microscopic K_s/K_q/g_q/g_s/lambda closed forms
+  citation:
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 84
+    excerpt: I_f=\int_{-\infty}^{\infty}\chi_s^2\,dy=\frac13,
+  reason: Explicit profile integrals and moment assemblies, dual-engine; pass-2 confirmed 15/15 reconciled with only a non-blocking
+    tautological K_q check (since de-tautologized).
+- stage: '119'
+  value: g = r +/- (1/2) sqrt(1 + r^2) (two-branch family law)
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 168
+    excerpt: \mathfrak g=\mathfrak r\pm \frac12\sqrt{1+\mathfrak r^2}.
+  reason: Quadratic-root identity of the stage-115 balance law; no freedom.
+- stage: '121'
+  value: r_geom(L/a) = sqrt(12(L/a)^2/pi^2 - 1); existence threshold pi/(2 sqrt 3)
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 50
+    excerpt: \frac{L}{a}\ge \frac{\pi}{2\sqrt3}\approx 0.9069,
+  reason: The closed-form law and threshold are identities given the stage-116 tube-length law; the only inserted number is
+    the 37/20 input (separate candidate).
+- stage: '123'
+  value: Xi_v = -(3 sqrt(30) pi^(3/2)/160) r and Xi_T = (3 sqrt(30)/(10 sqrt(pi)))/g
+  citation:
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 30
+    excerpt: -\frac{3\sqrt{30}\,\pi^{3/2}}{160}\,\mathfrak r.
+  reason: Coefficients forced by parent-formula cancellation (Reduce-based inversions, retro-sweep dual-engine); numeric readbacks
+    (Xi_v^F1 etc.) follow from the 37/20-chain inputs.
+- stage: '125'
+  value: 0 <= g[sigma] <= 1 (cosine-moment positivity bound; uniform moment 2/pi)
+  citation:
+    path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 53
+    excerpt: 0\le \mathfrak g[\sigma]\le 1.
+  reason: Kernel-range theorem on [0,1]; exact, no constants inserted.
+- stage: '126'
+  value: g_match = pi/4; xi_* = (-37 sqrt 3 - 5 pi^2 + 2 sqrt(4107 - 100 pi^2))/(5(8 - pi^2)) ~ 0.183918405511538
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 36
+    excerpt: \mathfrak g_{\rm match}=\frac{\pi}{4}\approx 0.785398163397448.
+  reason: pi/4 is the exact first cosine moment of the self-matched D/N source; xi_* is the exact solve of g_xi = g_-^F1 —
+    derived, though numerically downstream of the 37/20 chain.
+- stage: '127'
+  value: x_*^slab ~ 0.797839360904564 and x_*^exp ~ 0.662765402623161
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 40
+    excerpt: x_*^{\rm slab}\approx 0.797839360904564.
+  reason: Roots of the stated transcendental moment equations at g = g_-^F1, computed independently by both engines to ~80-digit
+    residuals; the 15th-digit notes typo was already fixed in pass-2 (correct-to-script).

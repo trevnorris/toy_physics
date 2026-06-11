@@ -1,0 +1,389 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b3_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '067'
+- '073'
+- 088
+- 089
+- 090
+- 093
+- 094
+candidates:
+- candidate_key: stage067_sech_gaussian_benchmark_constants
+  modality: existing_provenance
+  anchor_stage: '067'
+  parameter_names:
+  - C_res_sq
+  - P_res
+  - chi_sigma_profile
+  - chi_phi_profile
+  reason: The sech-Gaussian profile family that fixes the carried coherence constants C_res^2 = 0.994418836451529 and P_res
+    = 1.005612487760576 (consumed by stages 068/069 and logged in CHECKPOINT_CONSTANT_PROVENANCE.md:129-130 as a "sech-Gaussian
+    benchmark") originates from an externally supplied memo and is posited as a benchmark ansatz, never derived from the ledger's
+    own dynamics, so the downstream resonance-penalty numbers are tunable through the profile choice.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 6
+    excerpt: 'The memo you shared suggests a concrete transverse profile benchmark for the parent source/support coherence:'
+    stage: '067'
+- candidate_key: stage073_aspect_ratio_frozen
+  modality: existing_provenance
+  anchor_stage: '073'
+  parameter_names:
+  - Lambda_star
+  - L_over_a
+  reason: The Family-1 aspect ratio is recorded only as a "carried preferred" value "L/a ~ 1.85" then "frozen exactly" to
+    37/20 with no derivation and no specific upstream stage anchor, the classic signature of a tuned design parameter; it
+    drives Lambda_ell = 37 and hence every Family-1 threshold decimal in 074-090.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 48
+    excerpt: The lower-order stack already carries the preferred throat aspect ratio
+    stage: '073'
+- candidate_key: stage073_epsilon_r_posited
+  modality: existing_provenance
+  anchor_stage: '073'
+  parameter_names:
+  - epsilon_r
+  reason: The wall-width ratio 1/20 is stated as a "balanced thin-layer-consistent" identification with no derivation anywhere
+    in the recorded provenance; together with Lambda_star it fully determines kappa = 12321/5 and the Family-1 window, so
+    a fitted value inserted here would propagate silently through the whole band.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+    stage: '073'
+- candidate_key: stage088_minimal_module_coefficients_paper_quoted
+  modality: existing_provenance
+  anchor_stage: 088
+  parameter_names:
+  - c0
+  - c1
+  - c_contact
+  - c_pole
+  reason: The minimal-isotropic module split 3/4 + 1/4 enters this stage purely as "the paper form" with no upstream stage
+    anchor; the in-ledger derivations of that split (091 branch-identity solve, 092 obstruction formula) sit DOWNSTREAM of
+    088 in stage order, so at this point the recorded provenance is a bare quote that could equally cover a back-filled value.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+    line: 95
+    excerpt: Y_Q_paper = sp.Rational(3, 4) + sp.Rational(1, 4)/(1 - omega**2/Omega_Q**2)
+    stage: 088
+- candidate_key: stage089_pe_window_upstream_misattribution
+  modality: existing_provenance
+  anchor_stage: 089
+  parameter_names:
+  - Pe_suff_chi
+  - Pe_fail_chi
+  reason: The hardcoded literals Pe_suff_chi = 96.5285247264386 and Pe_fail_chi = 11220.5441626259 (pinned at lines 65-66,
+    "not rederived here") cite the stage 082 SymPy output as upstream source, but that output file contains neither value;
+    they actually originate in stage 078's output (moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt:5-6),
+    so the recorded provenance chain is mis-aimed and the literals are anchored to a file that cannot corroborate them.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 61
+    excerpt: '# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the'
+    stage: 089
+- candidate_key: stage089_provenance_record_misattribution
+  modality: existing_provenance
+  anchor_stage: 089
+  parameter_names:
+  - Pe_suff_chi
+  - Pe_fail_chi
+  reason: The checkpoint-provenance ledger itself records the stage 082 output as "the upstream source" for 089's Pe window
+    literals, repeating the script comment's mis-attribution (the values exist only in stage 078's output), i.e. the provenance
+    record was back-filled from the script comment rather than verified against the named source.
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 111
+    excerpt: naming `scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt` as the
+    stage: 089
+- candidate_key: stage090_minimal_module_upstream_contradiction
+  modality: existing_provenance
+  anchor_stage: 090
+  parameter_names:
+  - c_contact
+  - c_pole
+  reason: The docstring claims 3/4 and 1/4 are "fixed upstream in the Part IV / quadrupole packet", but Part IV (stages 091+)
+    is DOWNSTREAM of stage 090, so the recorded provenance is self-contradictory; the values are then hard-wired as sp.Rational
+    literals (lines 52-53) with no verifiable anchor at the point of use.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+    line: 15
+    excerpt: '- 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed'
+    stage: 090
+- candidate_key: stage093_static_limit_hardcoded
+  modality: existing_provenance
+  anchor_stage: 093
+  parameter_names:
+  - eps_2
+  - eps_4
+  reason: The static-limit inputs eps_2 = eps_4 = 0 are hardcoded in the .wl with no in-engine anchor to the stage 094 orthogonality
+    theorem that justifies them, so the obstruction formula is exercised only at the degenerate point where it collapses to
+    the target constants 1/4, 3/4, 4/3, 1/3 - the asserted values cannot fail and a back-filled static assumption would be
+    undetectable here.
+  citation:
+    path: research/pde_ledger/mathematica/moving_throat_pde_stage093_grouped_p2_status_update_mathematica_audit.wl
+    line: 28
+    excerpt: eps2 = 0;
+    stage: 093
+- candidate_key: stage094_static_split_assigned_not_derived
+  modality: existing_provenance
+  anchor_stage: 094
+  parameter_names:
+  - c_pole
+  - c_geom
+  reason: Although K_g2 = K_g4 = 0 is genuinely accumulated from the explicit S^2 integrals above (lines 67-70), the conservative
+    split itself is then ASSIGNED as Rational literals and trivially asserted (assert c_pole == 1/4) instead of being evaluated
+    from the stage 092 obstruction formula at the derived eps values, leaving an assignment point where the 1/4 + 3/4 split
+    is a readback rather than a computation.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 75
+    excerpt: c_pole = sp.Rational(1, 4)
+    stage: 094
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '065'
+  value: g_phi = V0/ell and the thin-wall closed forms I1, G_eq^tw, V0_fail^2 (all symbolic, no numeric constants)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py
+    line: 61
+    excerpt: g_phi = sp.simplify(V0 / ell)
+  reason: derived symbolically from the confinement potential definition; the stage emits no pinned numerics.
+- stage: '066'
+  value: W_wall = 4*pi*a^2*L^2*J1*V0^2/(T_X*ell) and the fail/suff window (symbolic; only geometric 4*pi)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+    line: 13
+    excerpt: '      W_wall = 4*pi*a^2*L^2*J1*V0^2 / (T_X*ell).'
+  reason: symbolic closed form assembled from stage 065 quantities; 4*pi is the sphere measure.
+- stage: '067'
+  value: r_* = sqrt(pi) (self-dual stationary point of the overlap integral)
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 106
+    excerpt: is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian
+      benchmark family.
+  reason: derived exactly from the overlap duality I(r) = (r/sqrt(pi)) I(pi/r); conditional on the (flagged) profile ansatz.
+- stage: 068
+  value: P_res = 1/C_res^2 amplification identity (symbolic in C_res)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+    line: 14
+    excerpt: '      P_res = 1 / C_res^2.'
+  reason: pure reciprocal identity; the numeric C_res itself is the stage 067 carry flagged above.
+- stage: 069
+  value: band-edge thresholds parameterized by free primitive Cres2 (no pinned decimals in scripts)
+  citation:
+    path: research/pde_ledger/mathematica/moving_throat_pde_stage069_final_reduced_verdict_mathematica_audit.wl
+    line: 46
+    excerpt: Cres2 = Cres2Prim;
+  reason: checkpoint scripts keep Cres2/Pres symbolic primitives; decimals appear only in notes with explicit stage 067 anchor.
+- stage: '070'
+  value: sech-profile moment I_f = 2/3 (cross-check)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+    line: 57
+    excerpt: expect_zero("sech-profile moment I_f = 2/3", sp.simplify(If_sym - sp.Rational(2, 3)))
+  reason: derived by direct integration of the concrete profile and asserted via expect_zero (post pass-2 fix).
+- stage: '071'
+  value: tanh-wall moments I_f = 1/3, I_g = 4/15 and kappa = 4*chi_s^2 + (4/5)*Lambda_ell^2
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py
+    line: 48
+    excerpt: expect_zero("I_f - 1/3", If - sp.Rational(1, 3))
+  reason: derived by direct symbolic integration of the tanh profile (I_g - 4/15 asserted at line 50).
+- stage: '072'
+  value: Upsilon_fail = Pe_req/(Lambda_ell^2 Delta_inf), Upsilon_suff = Pe_req/(Lambda_ell^2 Delta_0)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage072_explicit_branch_thresholds_sympy_audit.py
+    line: 42
+    excerpt: Upsilon_fail = sp.simplify(Pe_req / (Lambda_ell**2 * DeltaInf))
+  reason: pure substitution of carried stage 058/071 closed forms; no new constants.
+- stage: '073'
+  value: Lambda_ell = 37 = (37/20)/(1/20)
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 70
+    excerpt: '`Lambda_ell := L/ell = (L/a)/(ell/a) = (37/20)/(1/20) = 37.`'
+  reason: exact arithmetic ratio of the two (flagged) frozen inputs; the ratio itself is an identity.
+- stage: '074'
+  value: chi_s = Lambda_ell/2, kappa = (9/5)*Lambda_ell^2, kappa_ref = 12321/5
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+    line: 69
+    excerpt: expect_zero("kappa_ref - 12321/5", kappa_ref - sp.Rational(12321, 5))
+  reason: healing-length closure ell = hbar/(2 m c_s) plus algebra on the carried Lambda_ell = 37.
+- stage: '075'
+  value: Delta_0 = 1.73302079021525e-4, Delta_inf = 2.01447565540522e-2, Theta_fail/Pe_req = 3.62605617972939e-4, Theta_suff/Pe_req
+    = 4.21495341569977e-2
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+    line: 129
+    excerpt: expect_close("Delta_0", Delta0, "1.73302079021525e-4", "1e-14")
+  reason: numeric evaluations of the upstream stage 058/059 closed forms at (kappa, eta) = (12321/5, 37); the expect_close
+    literals are regression anchors against the in-script computation.
+- stage: '076'
+  value: Theta_w = 25 lambda_mu^2 rho_w^2 (the 25 derived from ref_factor (1/20))
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+    line: 91
+    excerpt: expect_zero("normalized reference factor", Theta_ref_norm - ref_target)
+  reason: the 25 is derived in-script as (1/ref_factor)^2/16 from the carried ell/a = 1/20 (itself flagged at 073).
+- stage: '077'
+  value: <rho>_chi = 0.192619005556493..., <rho^2>_chi = 0.162745294003265..., Theta_w^(chi) = 25*<rho^2>_chi, Theta_w^(J)
+    = 25*<rho>_chi^2
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+    line: 92
+    excerpt: '    mp.mpf(''0.19261900555649309777068139356018510792903510747507''),'
+  reason: live mpmath quadrature of the explicit tanh-derived profile with a high-precision regression anchor against the
+    integral.
+- stage: 078
+  value: Pe_suff^(chi) = 96.5285247264386, Pe_fail^(chi) = 11220.5441626259, Pe_suff^(J), Pe_fail^(J)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py
+    line: 41
+    excerpt: Pe_suff_chi = sp.simplify(Theta_chi / sp.Float("4.21495341569977e-2") / lambda_mu**2)
+  reason: derived as ratios of carried Theta values whose carries have explicit output-file source comments (lines 29 and
+    37 cite stage 077/075 output lines); this is the true origin of the Pe window decimals.
+- stage: 079
+  value: y_F1 = 1.52948248371470 (root of y tan y = 37), A_F1 = 1.00005192880220, zeta_max^(F1) = A_F1 pi^2/4 = 2.46752922945601
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
+    line: 36
+    excerpt: y_F1 = sp.nsolve(y * sp.tan(y) - eta_F1, 1.53, tol=1e-34, maxsteps=100)
+  reason: genuine numerical root of the Robin condition followed by closed-form evaluation (A_F1 at line 37, limit Pe->oo
+    for zeta_max).
+- stage: 080
+  value: zeta_suff^(chi) = 2.46622291347846, zeta_fail^(chi) = 2.46752913273870, zeta_suff^(J), zeta_fail^(J)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+    line: 41
+    excerpt: zeta_suff_chi = sp.simplify(zeta.subs(Pe, Pe_suff_chi))
+  reason: forward substitution of the stage 078 Pe values into the stage 079 transport map; no independent literal enters.
+- stage: 081
+  value: Pi/C_mix thresholds 3.46622291347846 / 3.46752913273870 / 3.46752922945601 and blocking ceiling 1/zeta_max
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+    line: 53
+    excerpt: expect_close("rho_suff^(chi) vs paper", rho_suff_chi, sp.Float("3.46622291347846", 30), sp.Float("1e-13", 30))
+  reason: each window marker is 1 + zeta under the unblocked inversion Q(zeta,0) = 1 + zeta; the same identities are re-derived
+    at 081/086 with paper anchors as regression checks.
+- stage: 082
+  value: zeta_phys(Pe->oo) ceiling 2.46752922945601 and the master residual R_quad = zeta_req - zeta_phys
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+    line: 110
+    excerpt: expect_zero("Omega_Pe -> pi/2 as Pe -> oo", Omega_Pe_limit - sp.pi / 2)
+  reason: ceiling reproduced in-script via the symbolic Pe->oo limit at Family-1 (eta, kappa); residual is a definition.
+- stage: 083
+  value: direct-operator window forms Delta_0(F1), Delta_inf(F1) and the four Pe windows
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+    line: 87
+    excerpt: (root residual check for y_F1; genuine root of y tan y = 37)
+  reason: re-evaluation of the stage 075/078 closed forms through the direct operator; pass-2 flagged the SymPy-side assertion
+    weakness (tautological Delta check) but the Mathematica numeric anchors carry the verification, and no new value enters.
+- stage: 084
+  value: zeta_phys(F1, Pe->oo) = 2.46752922945601 readback
+  citation:
+    path: research/pde_ledger/mathematica/moving_throat_pde_stage084_full_reduced_pde_writeup_mathematica_audit.wl
+    line: 71
+    excerpt: zetaMaxF1 = ToExpression["2.46752922945601`20"];
+  reason: status-consolidation pin compared against an independently recomputed limit of the closed form in the same script.
+- stage: 085
+  value: kappa0^2 = 8/pi^2 and the cancellation Pi_tr = NQ*alpha_req/beta0
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+    line: 24
+    excerpt: kappa0_sq = sp.Rational(8) / pi**2
+  reason: exact D/N constant carried with explicit stage 035/036 anchor in the notes; the cancellation itself is symbolic
+    algebra.
+- stage: 086
+  value: rho windows 3.46622291347846 / 3.46752913273870 / 3.44257571477179 / 3.46752922945601 and eps_blk cap 0.405263689711371
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+    line: 53
+    excerpt: expect_close("rho_suff^(chi) vs paper", rho_suff_chi, sp.Float("3.46622291347846", 30), sp.Float("1e-13", 30))
+  reason: derived as 1 + zeta from the stage 080 values; paper literals are regression anchors, and the cap is the reciprocal
+    of zeta_max.
+- stage: 087
+  value: rho_alpha window restatement (3.46622291347846 / 3.46752913273870 / 3.46752922945601)
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    line: 63
+    excerpt: '`rho_alpha < 3.46752922945601`   -> absolute constructive ceiling.'
+  reason: one-ratio finish line carrying the stage 086 window with explicit anchors; no new value.
+- stage: 088
+  value: rho_alpha = 4/3 = 1/c0 and zeta_req = 1/3 = c1/c0
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+    line: 77
+    excerpt: rho_from_c0 = sp.simplify(1/c0)
+  reason: arithmetic identities on the (flagged) module coefficients; c0/c1 are extracted from the quoted form by partial-fraction
+    limits rather than re-typed.
+- stage: 089
+  value: A_F1 (rederived in-script), zeta_max = limit_(Pe->oo) zeta_F1, rho/Delta margins, and Pe_req = 0
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 124
+    excerpt: '# Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 already exceeds the'
+  reason: Pe_req = 0 is established by the can-fail zero-bias margin check zeta_F1(0) - zeta_min > 0, and A_F1/zeta_max are
+    recomputed from the Robin root and limit; only the Pe window literals (flagged above) are carries.
+- stage: 090
+  value: rho_alpha = 4/3 and zeta_req = 1/3
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+    line: 55
+    excerpt: rho_alpha = sp.simplify(1 / c_contact)
+  reason: arithmetic identities derived in-script from the (flagged) carried module coefficients; Pe_req = 0 is an explicitly
+    labeled carry-forward proxy.
+- stage: 091
+  value: K_geom = 3*K_pole, K_pole = K0/4, Yhat = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2), rho_alpha = 4/3, zeta_req = 1/3
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+    line: 63
+    excerpt: expect_zero("K_geom - 3*K_pole", Kgeom_sol - 3 * Kpole)
+  reason: solved in-script from the branch identity K0*K4 = 4*K2^2; this is the in-band derivation that retro-justifies the
+    088/090 module coefficients.
+- stage: 092
+  value: c_pole = (1 + eps_4)/(4 (1 + eps_2)^2), static limit 1/4, first-order expansion
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+    line: 67
+    excerpt: expect_zero("c_pole - (1+eps4)/(4(1+eps2)^2)", cpole_dimless - cpole_expected)
+  reason: obstruction formula derived from the minimal-branch identity solved for K_g0 and checked against the notes closed
+    form.
+- stage: 094
+  value: K_g2 = K_g4 = 0 (and hence eps_2 = eps_4 = 0)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 67
+    excerpt: K_g2 = sp.simplify(Kg2_overlap)
+  reason: accumulated from the explicit S^2 orthogonality integrals computed above ("0 BECAUSE those integrals vanished, not
+    by assignment"); only the subsequent c_pole/c_geom assignment is flagged.
+- stage: 095
+  value: K_{g,0/2/4}^eff closed forms in chi^2 (Schur-complement expansion), c_pole deviation at O(chi^2)
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+    line: 39
+    excerpt: assert sp.simplify(K0corr - (-M0**2*chi**2/G0)) == 0
+  reason: derived via series expansion of the Schur complement with the closed forms asserted non-trivially; no pinned numerics.
+- stage: 096
+  value: c_pole = 1/4, c_geom = 3/4, rho_alpha = 4/3, zeta_req = 1/3 at the static limit
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+    line: 104
+    excerpt: 'c_pole = sp.simplify(c_pole_gen.subs({eps_2: eps_2_val, eps_4: eps_4_val}))'
+  reason: post pass-2-IV.1 fix the script evaluates the FREE-symbol obstruction formula (line 89) with two can-fail off-static
+    probes (1/2 and 1/16) before taking the static limit, so the constants are derived, not asserted; the pass-2 stage report's
+    tautology finding predates this fix.

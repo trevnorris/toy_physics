@@ -1,0 +1,163 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b3_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '070'
+- '071'
+- '073'
+- '074'
+- '075'
+- '076'
+- 088
+- 091
+candidates:
+- candidate_key: stage070_n5_eos_exponent
+  modality: numeric_literal
+  anchor_stage: '070'
+  parameter_names:
+  - n
+  reason: The polytropic exponent n=5 is declared "frozen" rather than derived in this band, and the exact enthalpy identity
+    h=mc_s^2/4 used by Stage 076 to lock Theta_w holds only at this special exponent, so the choice could have been tuned
+    to make the wall-depth lock close.
+  citation:
+    path: paper/stages/stage_070.tex
+    line: 7
+    excerpt: \stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and
+      frozen \(n=5\) compressional stiffness.}
+    stage: '070'
+- candidate_key: stage071_mouth_closure_Km
+  modality: numeric_literal
+  anchor_stage: '071'
+  parameter_names:
+  - K_m
+  - eta
+  reason: The "natural local mouth closure" K_m=T_X/ell is a posited unit-coefficient closure (the notes say it is the "first
+    natural" choice, not a derivation), and it is what forces eta=Lambda_ell=37 downstream, so the implicit coefficient 1
+    is a plausible back-filled tuning point.
+  citation:
+    path: paper/stages/stage_071.tex
+    line: 33
+    excerpt: K_m=\frac{T_X}{\ell},
+    stage: '071'
+- candidate_key: stage073_aspect_ratio_L_over_a
+  modality: numeric_literal
+  anchor_stage: '073'
+  parameter_names:
+  - L_over_a
+  - Lambda_ell
+  reason: The Family-1 aspect ratio 37/20 is only justified as "the carried preferred throat aspect ratio L/a ~ 1.85" from
+    an unspecified lower-order stack, yet it single-handedly fixes Lambda_ell=eta=37 and hence every downstream threshold
+    number, so it could be a fitted/chosen reference value rather than a derived one.
+  citation:
+    path: paper/stages/stage_073.tex
+    line: 17
+    excerpt: \frac{L}{a}=\frac{37}{20},
+    stage: '073'
+- candidate_key: stage073_wall_fraction_epsilon_r
+  modality: numeric_literal
+  anchor_stage: '073'
+  parameter_names:
+  - epsilon_r
+  - ell_over_a
+  reason: The radial wall-width fraction epsilon_r=1/20 is introduced as the "balanced thin-layer-consistent Family-1 radial
+    wall branch" with no derivation in this band, and combined with L/a=37/20 it produces the round value Lambda_ell=37, suggesting
+    the pair may have been chosen to land on a convenient branch point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+    stage: '073'
+- candidate_key: stage074_healing_lock_ell
+  modality: numeric_literal
+  anchor_stage: '074'
+  parameter_names:
+  - ell
+  - chi_s
+  - healing_lock_coefficient
+  reason: The healing lock is an identification ("if the active wall width ... is identified with" the healing width) rather
+    than a derivation, and the specific coefficient 1/2 in ell=hbar/(2mc) directly sets chi_s=37/2 and kappa=12321/5, so both
+    the identification and its numeric prefactor are plausible tuning points.
+  citation:
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 53
+    excerpt: '`ell = ell_h = hbar / (2 m c_(s,w)).`'
+    stage: '074'
+- candidate_key: stage075_alpha_r_wall_depth
+  modality: numeric_literal
+  anchor_stage: '075'
+  parameter_names:
+  - alpha_r
+  - Upsilon_w
+  reason: The wall-depth amplitude alpha_r=10 is described in the notes only as "the frozen reference value" with no in-band
+    derivation, yet it scales the entire Family-1 threshold window (Upsilon_w=100 Theta_w) and the Stage 077 profile moments,
+    making it a prime fitted-amplitude suspect.
+  citation:
+    path: paper/stages/stage_075.tex
+    line: 24
+    excerpt: With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), and \(\Upsilon_w=100\Theta_w\), the Family--1 threshold window is
+    stage: '075'
+- candidate_key: stage076_lambda_mu_normalization
+  modality: numeric_literal
+  anchor_stage: '076'
+  parameter_names:
+  - lambda_mu
+  - mu_star
+  reason: lambda_mu is introduced as a free normalization slip ("keeps track of whether one chooses the wall enthalpy itself
+    (lambda_mu = 1) or a nearby local chemical-potential normalization") and all quoted Stage 080/086 success windows are
+    evaluated at the chosen point lambda_mu=1, so the headline near-ceiling numbers depend on an undebited normalization choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 60
+    excerpt: '`mu_* = lambda_mu h_w,`'
+    stage: '076'
+- candidate_key: stage088_minimal_module_c0_c1
+  modality: numeric_literal
+  anchor_stage: 088
+  parameter_names:
+  - c_0
+  - c_1
+  - rho_alpha
+  - zeta_req
+  reason: Within this band the 3/4 + 1/4 contact-plus-pole split is taken as input ("the natural contact-plus-pole interpretation
+    of the minimal isotropic conservative quadrupole precursor") and directly yields the success-deciding rho_alpha=4/3 and
+    zeta_req=1/3; the claimed forcing derivation arrives only at Stage 091, so at 088 these coefficients function as posited
+    values.
+  citation:
+    path: paper/stages/stage_088.tex
+    line: 20
+    excerpt: c_0=\frac34,
+    stage: 088
+- candidate_key: stage088_pole_frequency_OmegaQ
+  modality: numeric_literal
+  anchor_stage: 088
+  parameter_names:
+  - Omega_Q
+  reason: The pole frequency Omega_Q=3c_s/(2a) is asserted as part of the minimal precursor with no in-band derivation of
+    the 3/2 coefficient, and although the loading ratio cancels it, the module's frequency placement is a parameter whose
+    origin could be back-filled.
+  citation:
+    path: paper/stages/stage_088.tex
+    line: 24
+    excerpt: \Omega_Q=\frac{3c_s}{2a}}.
+    stage: 088
+- candidate_key: stage091_branch_identity_factor4
+  modality: numeric_literal
+  anchor_stage: 091
+  parameter_names:
+  - K0_K4_over_K2sq
+  - u_4
+  reason: The factor 4 in the imported "minimal isotropic quadrupole branch identity" K0K4=4K2^2 is the single numeric input
+    that forces the 3/4 + 1/4 split (and hence rho_alpha=4/3); it is cited as already "fixed" by the 2.5PN program outside
+    this band, so if that upstream identity was tuned the entire forced-module claim inherits the fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 52
+    excerpt: '`K0 K4 = 4 K2^2`,'
+    stage: 091
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

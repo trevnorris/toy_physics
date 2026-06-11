@@ -1,9731 +1,62 @@
-schema_version: 1
-generated_at: '2026-06-11T08:39:39Z'
-dry_run_artifacts_present: false
-stage_results:
-  '001':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '002':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '003':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '004':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '005':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '006':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  008:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  009:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '010':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '011':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '012':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '014':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '015':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '016':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '017':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  018:
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  019:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '020':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '021':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '022':
-    candidate_count: 10
-    structurally_vacuous: false
-    dry_run: false
-  '023':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '024':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '025':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '026':
-    candidate_count: 9
-    structurally_vacuous: false
-    dry_run: false
-  '027':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  028:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  029:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '030':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '031':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '032':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '033':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '034':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '035':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '036':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '037':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  038:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  039:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '040':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '041':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '042':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '043':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '044':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '045':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '046':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '047':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  048:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  049:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '050':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '051':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '052':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '053':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '054':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '055':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '056':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '057':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  058:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  059:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '060':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '061':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '062':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '063':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '064':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '065':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '066':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '067':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  068:
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  069:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '070':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '071':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '072':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '073':
-    candidate_count: 9
-    structurally_vacuous: false
-    dry_run: false
-  '074':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '075':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '076':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '077':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  078:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  079:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  080:
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  081:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  082:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  083:
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  084:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  085:
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  086:
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  087:
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  088:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  089:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  090:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  091:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  092:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  093:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  094:
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  095:
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  096:
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  097:
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  098:
-    candidate_count: 11
-    structurally_vacuous: false
-    dry_run: false
-  099:
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '100':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '101':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '102':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '103':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '104':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '105':
-    candidate_count: 10
-    structurally_vacuous: false
-    dry_run: false
-  '106':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '107':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '108':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '109':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '110':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '111':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '112':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '113':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '114':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '115':
-    candidate_count: 8
-    structurally_vacuous: false
-    dry_run: false
-  '116':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '117':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '118':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '119':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '120':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '121':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '122':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '123':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '124':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '125':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '126':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '127':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '128':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '129':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '130':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '131':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '132':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '133':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '134':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '135':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '137':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '138':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '139':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '140':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '141':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '142':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '143':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '144':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '145':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '146':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '147':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '148':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '150':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '151':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '152':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '154':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '155':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '156':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '157':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '158':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '159':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '160':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '161':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '162':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '163':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '164':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '165':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '166':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '167':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '168':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '169':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '170':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '171':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '172':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '173':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '174':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '175':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '176':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '177':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '178':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '179':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '180':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '181':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '182':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '183':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '184':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '185':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '186':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '187':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '189':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '190':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '191':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '192':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '193':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '194':
-    candidate_count: 8
-    structurally_vacuous: false
-    dry_run: false
-  '195':
-    candidate_count: 10
-    structurally_vacuous: false
-    dry_run: false
-  '196':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '197':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '198':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '199':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '200':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '201':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '202':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '203':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '204':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '206':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '207':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '208':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '209':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '210':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '211':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '212':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '213':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '214':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '215':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '217':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '218':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '219':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '220':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '221':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '222':
-    candidate_count: 10
-    structurally_vacuous: false
-    dry_run: false
-  '223':
-    candidate_count: 8
-    structurally_vacuous: false
-    dry_run: false
-  '224':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '225':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '226':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '227':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '228':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '229':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '230':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '231':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '232':
-    candidate_count: 11
-    structurally_vacuous: false
-    dry_run: false
-  '233':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '234':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '235':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '236':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '237':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '238':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '239':
-    candidate_count: 2
-    structurally_vacuous: false
-    dry_run: false
-  '240':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '241':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '242':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '243':
-    candidate_count: 3
-    structurally_vacuous: false
-    dry_run: false
-  '244':
-    candidate_count: 1
-    structurally_vacuous: false
-    dry_run: false
-  '245':
-    candidate_count: 4
-    structurally_vacuous: false
-    dry_run: false
-  '246':
-    candidate_count: 5
-    structurally_vacuous: false
-    dry_run: false
-  '247':
-    candidate_count: 16
-    structurally_vacuous: false
-    dry_run: false
-  '248':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '249':
-    candidate_count: 7
-    structurally_vacuous: false
-    dry_run: false
-  '250':
-    candidate_count: 6
-    structurally_vacuous: false
-    dry_run: false
-  '251':
-    candidate_count: 9
-    structurally_vacuous: false
-    dry_run: false
-  '252':
-    candidate_count: 8
-    structurally_vacuous: false
-    dry_run: false
-  '253':
-    candidate_count: 19
-    structurally_vacuous: false
-    dry_run: false
+# Phase A Completeness Critic
+
+You are the completeness critic. This pass runs only after the four blind modalities have emitted independent YAML fragments.
+
+Stages: `001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 012, 013, 014, 015, 016, 017, 018, 019, 020, 021, 022, 023, 024, 025, 026, 027, 028, 029, 030, 031, 032, 033, 034, 035, 036, 037, 038, 039, 040, 041, 042, 043, 044, 045, 046, 047, 048, 049, 050, 051, 052, 053, 054, 055, 056, 057, 058, 059, 060, 061, 062, 063, 064, 065, 066, 067, 068, 069, 070, 071, 072, 073, 074, 075, 076, 077, 078, 079, 080, 081, 082, 083, 084, 085, 086, 087, 088, 089, 090, 091, 092, 093, 094, 095, 096, 097, 098, 099, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253`
+
+Modality fragment paths:
+- redteam_adversarial/phase_a_fragments/campaign_b1_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b1_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b1_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b1_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b2_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b2_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b2_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b2_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b3_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b3_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b3_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b3_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b4_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b4_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b4_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b4_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b5_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b5_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b5_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b5_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b6_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b6_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b6_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b6_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b7_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b7_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b7_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b7_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b8_claim_label_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b8_existing_provenance_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b8_graph_agent.yaml
+- redteam_adversarial/phase_a_fragments/campaign_b8_numeric_literal_agent.yaml
+- redteam_adversarial/phase_a_fragments/phase_a_claim_label.yaml
+- redteam_adversarial/phase_a_fragments/phase_a_existing_provenance.yaml
+- redteam_adversarial/phase_a_fragments/phase_a_graph.yaml
+- redteam_adversarial/phase_a_fragments/phase_a_numeric_literal.yaml
+
+Union output:
+
+```yaml
 candidates:
-- id: fit_stage001_canonical_invariant_pair_determined
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '001'
-  parameter_names:
-  - Kbar_0
-  - Kbar_2
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
-    line: 471
-    excerpt: On the passive/outgoing isotropic quadrupole branch, the same mode-resolved response should determine the canonical
-      invariant pair
-    stage: '001'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage001_wall_action_constitutive_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '001'
-  parameter_names:
-  - K_eta
-  - T_Omega
-  - T_w
-  - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_001.tex
-    line: 149
-    excerpt: 'The coefficients \(\mu_\eta,T_w,T_\Omega,K_\eta\) are branch constitutive functions. (graph: MT_STAGE1_GEOMETRY_LIFT
-      -[INTRODUCES]-> MATH_WALL_ACTION_S_ETA "new ansatz")'
-    stage: '001'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage002_grouped_p2_stiffness_gate
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '002'
-  parameter_names:
-  - K_2
-  - M_2
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_002.tex
-    line: 96
-    excerpt: K_2=\int dw\left[ ... (graph node EQ_WALL_P2_STIFFNESS, status effective_linear_wall_closure)
-    stage: '002'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage002_overlap_factor_4pi_derived
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '002'
-  parameter_names:
-  - overlap_factor_4pi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_002.tex
-    line: 11
-    excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py}.  Mathematica
-      audit: \StageFile{mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl}.  The audits check
-      the \(Y_{00}\) normalization bridge, the derived \(4\pi\) overlap factor, the conservative \((\delta a,\delta L)\) matrix
-      reduction, and the uncoupled grouped real \(P_2\) degeneracy.}'
-    stage: '002'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage003_wall_self_energy_no_fitted_data
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '003'
-  parameter_names:
-  - overlap_matrices
-  - support_spectrum
-  - wall_self_energy
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
-    line: 85
-    excerpt: What matters for the present derivation is that this move introduces no fitted
-    stage: '003'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage006_projected_vector_signs_fixed_by_audit
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '006'
-  parameter_names:
-  - ampere_sign
-  - faraday_sign
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_006.tex
-    line: 32
-    excerpt: With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
-    stage: '006'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage008_source_profile_must_match_weight
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 008
-  parameter_names:
-  - S_w
-  - Z_int
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_008.tex
-    line: 25
-    excerpt: 'The source profile \(S(w)\) must be matched to the localized Maxwell weight:'
-    stage: 008
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage009_mu1_kernel_specialization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 009
-  parameter_names:
-  - mu_1
-  - w_kernel
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_009.tex
-    line: 28
-    excerpt: \mu_1=\int_0^\infty u\,w(u)\,du .
-    stage: 009
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage014_even_gate_constants_2_3_1_27
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '014'
-  parameter_names:
-  - He_bundle_coefficients
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
-    line: 96
-    excerpt: He_bundle = sp.simplify(-(z4d) + sp.Rational(2,3)*z2d - z0d/sp.Integer(27))
-    stage: '014'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage017_even_gate_determinant_1_27
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '017'
-  parameter_names:
-  - wall_gate_determinant
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py
-    line: 109
-    excerpt: assert_zero("wall-only even-gate determinant", wall_matrix.det() - sp.Rational(1, 27))
-    stage: '017'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage018_stale_provenance_anchor_9_11_8
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 018
-  parameter_names:
-  - coeff_11
-  - coeff_8
-  - coeff_9
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 376
-    excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
-    stage: 018
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage019_K_Sigma_fixed_by_one_pole
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 019
-  parameter_names:
-  - K_Sigma
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_019.tex
-    line: 21
-    excerpt: The one-pole surface fixes
-    stage: 019
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage019_K_Sigma_fixed_by_outgoing_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 019
-  parameter_names:
-  - K_Sigma
-  - P_0_target
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_019.tex
-    line: 27
-    excerpt: The outgoing normalization fixes
-    stage: 019
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage019_P0_target_upstream_pin
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 019
-  parameter_names:
-  - P_0_target
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_019.tex
-    line: 32
-    excerpt: P_{0,\rm target}=\frac{54Gc_s^5}{5a^5c^5\widehat m_0^{\,2}}.
-    stage: 019
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage019_p0target_54_5_raw_retype
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 019
-  parameter_names:
-  - P0target
-  - mhat0
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.wl
-    line: 50
-    excerpt: P0target = 54 G cs^5/(5 a^5 c^5 mhat0^2);
-    stage: 019
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage020_even_gate_determinant_1_27
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '020'
-  parameter_names:
-  - even_gate_determinant
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
-    line: 39
-    excerpt: assert_zero('even-gate solve determinant', coeff_matrix.det() - sp.Rational(1, 27))
-    stage: '020'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage020_wall_slopes_fixed_uniquely
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '020'
-  parameter_names:
-  - Xi1
-  - parent_wall_slopes
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
-    line: 76
-    excerpt: '    lines.append(''The parent wall slopes are fixed uniquely by the even gates, and the residual first-order'')'
-    stage: '020'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage021_outgoing_fingerprint_omega5_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '021'
-  parameter_names:
-  - a
-  - c_s
-  - fingerprint_omega5_coeff_1_over_27
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_021.tex
-    line: 63
-    excerpt: 'eq:app-stage021-outgoing-fingerprint: \widehat Y_2^{out}=1+a^2\omega^2/(9c_s^2)+4a^4\omega^4/(81c_s^4)+i a^5\omega^5/(27c_s^5)+O(\omega^6)
-      (graph node EQ_COMPACT_L2_FINGERPRINT)'
-    stage: '021'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage021_retained_reduced_adapter_couplings
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '021'
-  parameter_names:
-  - Omega_A_l
-  - Omega_W_l
-  - R_l
-  - g_A_l
-  - g_W_l
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_021.tex
-    line: 43
-    excerpt: Outgoing transfer paragraph / eq:app-stage021-transfer-factor (graph node EQ_MAXWELL_MIXED_TRANSFER, parent MATH_MAXWELL_MIXED_KERNEL,
-      status retained_reduced_adapter)
-    stage: '021'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage022_gamma_GR_quadrupole_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '022'
-  parameter_names:
-  - N_Q_target
-  - gamma_GR
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_022.tex
-    line: 121
-    excerpt: \gamma_{\rm GR}=\frac{2G}{5c^5}.
-    stage: '022'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage022_invariant_product_must_match_universal
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '022'
-  parameter_names:
-  - N_Q_universal
-  - P_An
-  - u_n_A
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_022.tex
-    line: 7
-    excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
-      one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
-      \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
-      the exact invariant product that must match the universal quadrupole normalization.}
-    stage: '022'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage022_mhat0_unity_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '022'
-  parameter_names:
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_022.tex
-    line: 135
-    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
-    stage: '022'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage022_p0_quadrupole_normalization_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '022'
-  parameter_names:
-  - P_0
-  - gamma_GR
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_022.tex
-    line: 133
-    excerpt: \widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5} (graph node EQ_P0_TARGET, status open_actual_branch_data, anchors
-      OPEN_QUAD_NORMALIZATION)
-    stage: '022'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage022_source_map_branch_mhat0_unity
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '022'
-  parameter_names:
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_022.tex
-    line: 135
-    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
-    stage: '022'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage023_gamma5_port_27_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '023'
-  parameter_names:
-  - Gamma5_port
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
-    line: 339
-    excerpt: norm_abstract = mhat**2 * N0 / D0 - 54 * G * c_s**5 / (5 * a**5 * c**5)
-    stage: '023'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage023_nq_target_gr_quadrupole_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '023'
-  parameter_names:
-  - N_Q_target
-  - gamma_GR
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_023.tex
-    line: 231
-    excerpt: =\frac{54Gc_s^5}{5a^5c^5}}.
-    stage: '023'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage024_b3a_signature_follows_directly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '024'
-  parameter_names:
-  - b_over_a
-  - signature_1_half_minus1
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_024.tex
-    line: 231
-    excerpt: \item The grouped line \(b=3a\) follows directly by applying the weighted trace/anomaly map to the signature
-      \((1,1/2,-1)\).
-    stage: '024'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage024_grouped_bundle_forced_isotropic
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '024'
-  parameter_names:
-  - grouped_lane_coefficients_20_21_22
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
-    line: 329
-    excerpt: 'If the reference throat and reduced kernels are truly `O(3)` invariant, then the grouped real `20/21/22` bundle
-      is forced to collapse exactly:'
-    stage: '024'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage024_mhat_ang_exactly_one
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '024'
-  parameter_names:
-  - mhat_ang
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
-    line: 172
-    excerpt: '    print("Conclusion: on the canonical isotropic angular basis, mhat_ang = 1 exactly.")'
-    stage: '024'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage024_quadrupole_splitting_signature
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '024'
-  parameter_names:
-  - b_over_a
-  - lambda_20
-  - lambda_21
-  - lambda_22
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_024.tex
-    line: 7
-    excerpt: the first weak-axisymmetric quadrupole splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).
-    stage: '024'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage025_mhat_ang_already_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '025'
-  parameter_names:
-  - mhat_ang
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_025.tex
-    line: 92
-    excerpt: \item The angular source map does not appear because Stage~024 already fixed \(\widehat m_{\rm ang}=1\).
-    stage: '025'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage025_mhat_rad_tuned_to_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '025'
-  parameter_names:
-  - mhat_rad
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_025.tex
-    line: 65
-    excerpt: \widehat m_{\rm rad}^{\,2}
-    stage: '025'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage025_one_mode_normalization_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '025'
-  parameter_names:
-  - N_Q_target
-  - mhat_rad
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_025.tex
-    line: 61
-    excerpt: Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
-    stage: '025'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage025_radial_source_map_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '025'
-  parameter_names:
-  - N_Q_target
-  - mhat_rad
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_025.tex
-    line: 65
-    excerpt: \widehat m_{rad}^{\,2} ... = N_Q^{target} (graph node MT_STAGE025_MINIMAL_NORMALIZATION, status reduced_model)
-    stage: '025'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage025_target_coefficient_54_5
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '025'
-  parameter_names:
-  - mhat
-  - target
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
-    line: 123
-    excerpt: target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
-    stage: '025'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage026_K_req_solved_exactly_from_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - K_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
-    line: 212
-    excerpt: 'It can be solved exactly for the required wall stiffness:'
-    stage: '026'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage026_Kreq_solved_backward
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - K_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_026.tex
-    line: 111
-    excerpt: Solving for the required wall stiffness gives
-    stage: '026'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage026_dn_constants_exact_derived_downstream
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - dn_branch_constants
-  - mhat_minus
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_026.tex
-    line: 141
-    excerpt: \stagefield{Downstream use}{Stage~027 tests nonconstant wall/brane profiles.  Stage~032 reuses the same finite-throat
-      D/N source overlap to fix \(\widehat m_-\).  Stages~035--036 use the exact D/N constants derived from this branch.}
-    stage: '026'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage026_dn_mode_basis_kappa0
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - f_n
-  - kappa_0
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_026.tex
-    line: 25
-    excerpt: f_n(s)=\sqrt{\frac2L}\sin\!\left(\frac{(n+1/2)\pi s}{L}\right),
-    stage: '026'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage026_kappa_exact_overlap
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - kappa
-  - kappa_n
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_026.tex
-    line: 36
-    excerpt: The minimal branch keeps \(n=0\).  The exact overlap is
-    stage: '026'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage026_kappa_overlap_2sqrt2_over_pi
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '026'
-  parameter_names:
-  - L
-  - kappa
-  - kappa_n
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
-    line: 98
-    excerpt: kappa_n_expected = sp.sqrt(2) / ((n + sp.Rational(1, 2)) * sp.pi)
-    stage: '026'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage027_max_coupling_branch_not_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '027'
-  parameter_names:
-  - kappa_theta
-  - theta_max
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
-    line: 308
-    excerpt: '### 6.3 Max-coupling branch is allowed but not free'
-    stage: '027'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage027_sin2_theta_max_2_11
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '027'
-  parameter_names:
-  - kappa_max
-  - sin2_theta_max
-  - theta
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.py
-    line: 143
-    excerpt: expect_zero("sin^2(theta_max) - 2/11", sin2_max - sp.Rational(2, 11))
-    stage: '027'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage027_sin2_theta_max_exact_value
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '027'
-  parameter_names:
-  - sin2_theta_max
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_027.tex
-    line: 140
-    excerpt: \stagefield{Downstream use}{Stage~028 derives \(\theta\) dynamically rather than selecting it by hand.  The exact
-      value \(\sin^2\theta_{\max}=2/11\) is later echoed in the D/N branch constants used by the selected-mode formulas.}
-    stage: '027'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage028_alpha_loading_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 028
-  parameter_names:
-  - alpha
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_028.tex
-    line: 9
-    excerpt: \stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and
-      a positive loading coefficient \(\alpha\).}
-    stage: 028
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage028_eigenvalues_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 028
-  parameter_names:
-  - alpha_crit
-  - lambda_minus
-  - lambda_plus
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_028.tex
-    line: 60
-    excerpt: The exact eigenvalues are
-    stage: 028
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage028_theta_minus_sign_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 028
-  parameter_names:
-  - theta_minus
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_028.tex
-    line: 93
-    excerpt: \item The sign of \(\theta_-\) is fixed because \(\kappa_0>0\) and \(\kappa_1<0\).
-    stage: 028
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage029_alpha_derived_dynamically
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 029
-  parameter_names:
-  - alpha
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_028.tex
-    line: 98
-    excerpt: \stagefield{Downstream use}{Stage~029 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed
-      Schur complement.  Stages~030--034 use the selected lower eigenvalue and eigenvector overlap to define \(\lambda_-\),
-      \(s_-\), and the softening-depth normal form.}
-    stage: 029
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage029_deltaK_algebraically_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 029
-  parameter_names:
-  - DeltaK_ax
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
-    line: 152
-    excerpt: '    # (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.'
-    stage: 029
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage029_mixed_sign_convention_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 029
-  parameter_names:
-  - alpha_0
-  - lambda_B
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
-    line: 87
-    excerpt: The last sign is the one compatible with the earlier conservative self-energy convention in which the mixed-sector
-      cross term enters with the *positive* `+ 2 G_U G_W R` numerator after elimination.
-    stage: 029
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage030_lambda_req_target_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '030'
-  parameter_names:
-  - lambda_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
-    line: 169
-    excerpt: lambda_req = sp.simplify(mhat**2 * beta0 * s_minus_closed / NQ_target)
-    stage: '030'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage030_nq_target_retype_54_5
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '030'
-  parameter_names:
-  - NQ_target
-  - lambda_req
-  - mhat
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
-    line: 158
-    excerpt: NQ_target = 54 * G * cs**5 / (5 * a**5 * c**5)
-    stage: '030'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage030_selected_branch_target_equation
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '030'
-  parameter_names:
-  - N_Q_target
-  - P_0_minus
-  - mhat_minus
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_030.tex
-    line: 91
-    excerpt: The selected-branch target is
-    stage: '030'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage031_alpha_crit_derived_directly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '031'
-  parameter_names:
-  - alpha_crit
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl
-    line: 97
-    excerpt: (* alpha_crit is the root of Det[M] = 0, derived from the matrix directly. *)
-    stage: '031'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage031_hf_identity_derived_not_assumed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '031'
-  parameter_names:
-  - dlambda_minus_dalpha
-  - s_minus
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl
-    line: 138
-    excerpt: Print["  HF identity d lam_-/d alpha + s_- = 0 (derived, not assumed)"];
-    stage: '031'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage031_unique_alpha_star_crossing
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '031'
-  parameter_names:
-  - P_target
-  - alpha_star
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_031.tex
-    line: 60
-    excerpt: has a unique \(\alpha_*\in(0,\alpha_{\rm crit})\) such that \(P_{0,-}(\alpha_*)=P_{\rm target}\).  For the quadrupole
-      target,
-    stage: '031'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage032_kappa_values_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '032'
-  parameter_names:
-  - kappa_0
-  - kappa_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
-    line: 65
-    excerpt: The exact values are
-    stage: '032'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage032_mhat_minus_completely_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '032'
-  parameter_names:
-  - mhat_minus
-  - s_minus
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
-    line: 208
-    excerpt: It is completely fixed by the same selected overlap `s_-` that already controls the wall loading.
-    stage: '032'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage032_pattern_now_derived
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '032'
-  parameter_names:
-  - rank_one_loading_pattern
-  - v_overlap_vector
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
-    line: 130
-    excerpt: This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit
-      finite-throat basis and local isotropic kernels.
-    stage: '032'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '032'
-  parameter_names:
-  - kappa_0
-  - kappa_1
-  - mhat_minus
-  - sigma
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
-    line: 64
-    excerpt: expect_zero("sigma - 88/(9 pi^2)", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)
-    stage: '032'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage033_dn_constants_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '033'
-  parameter_names:
-  - kappa_0_sq
-  - kappa_1_sq
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_033.tex
-    line: 102
-    excerpt: With the exact D/N constants,
-    stage: '033'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage033_kappa_overlap_literals
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '033'
-  parameter_names:
-  - kappa_0_sq
-  - kappa_1_sq
-  - sigma
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
-    line: 33
-    excerpt: kappa0_sq = sp.Rational(8) / sp.pi**2
-    stage: '033'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage034_normal_form_maps_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '034'
-  parameter_names:
-  - N_minus
-  - alpha_0
-  - s_minus
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
-    line: 183
-    excerpt: '- the total directional loading is fixed by `alpha_0(x)`,'
-    stage: '034'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage035_xi_req_unique_locus
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '035'
-  parameter_names:
-  - R_target
-  - xi_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_035.tex
-    line: 7
-    excerpt: Strict monotonicity of \(F\) upgrades the Stage~033 onset inequality into a unique stable normalization locus.}
-    stage: '035'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage036_dn_coeffs_stale_stage18_anchor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '036'
-  parameter_names:
-  - dn_coeff_11
-  - dn_coeff_9
-  - dn_scaling_8_over_pi2_A
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 376
-    excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
-    stage: '036'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage036_no_free_hidden_eigenvector_param
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '036'
-  parameter_names:
-  - g_B_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_036.tex
-    line: 119
-    excerpt: \item The parametric map \((F,G)\) is one-dimensional at fixed \(\delta\), so the selected reduced branch has
-      no remaining free hidden eigenvector parameter at this order.
-    stage: '036'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage037_branch_data_exact_kernel_functionals
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '037'
-  parameter_names:
-  - A
-  - Delta_K_ax
-  - M_mix
-  - beta_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
-    line: 37
-    excerpt: So the Stage-034/036 branch variables are no longer abstract. They are exact low-mode functionals of one explicit
-      continuum kernel.
-    stage: '037'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage038_delta_fixed_by_eps_eta
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 038
-  parameter_names:
-  - Lambda
-  - delta
-  - epsilon_W
-  - epsilon_eta
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_038.tex
-    line: 51
-    excerpt: Thus \((\epsilon_W,\Lambda)\) fix the product scale, \(\epsilon_\eta\) fixes the geometry lane through \(\delta\),
-      and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
-    stage: 038
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage038_lambda_external_target_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 038
-  parameter_names:
-  - G
-  - K_W_eff
-  - Lambda
-  - c_s
-  - mu_W
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_038.tex
-    line: 28
-    excerpt: \Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
-    stage: 038
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage038_mhat_p0_fitted_scales
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 038
-  parameter_names:
-  - P_0
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: graph/fluid_universe_derivation_atlas_graph.yaml
-    line: null
-    excerpt: 'OPEN_SOURCE_PORT_NORMALIZATION (meaning: ''Derive mhat and P0 as branch data rather than fitted scales.'')'
-    stage: 038
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage039_delta_split_exact_value
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 039
-  parameter_names:
-  - delta_split
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
-    line: 26
-    excerpt: 2. the bare anisotropy ratio shifts to a new exact value `delta_split`,
-    stage: 039
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage040_lambda_exact_closed_form
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '040'
-  parameter_names:
-  - lambda_minus
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
-    line: 8
-    excerpt: '   loading vector z has exact closed-form eigenvalue and eigenvector formulas.'
-    stage: '040'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage041_n_req_exact_support_loading
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '041'
-  parameter_names:
-  - n_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
-    line: 10
-    excerpt: 2. The exact required support loading n_req(xi,delta;m,q,r) is correct.
-    stage: '041'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage042_overlaps_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '042'
-  parameter_names:
-  - q
-  - r
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
-    line: 9
-    excerpt: 2. The outgoing/mixed and source overlaps are exact and lead to a generalized
-    stage: '042'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage043_baseline_8_over_pi2_circular_derivation
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '043'
-  parameter_names:
-  - B_baseline
-  - kappa_0_sq
-  - sigma
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
-    line: 146
-    excerpt: B_value = sp.simplify(sp.Rational(9, 11) * sigma_value)
-    stage: '043'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage043_support_direction_extracted_not_guessed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '043'
-  parameter_names:
-  - R_phi
-  - sigma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
-    line: 13
-    excerpt: The first symmetry-allowed extension is to turn on the bilinear `U/phi` coupling. Once that is done, the support
-      direction can be extracted exactly from the continuum kernel rather than guessed.
-    stage: '043'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage044_rank2_inserted_direction_data
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '044'
-  parameter_names:
-  - M_supp
-  - R_phi
-  - delta
-  - t
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_044.tex
-    line: 23
-    excerpt: =\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
-    stage: '044'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage044_xi_no_longer_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '044'
-  parameter_names:
-  - xi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_044.tex
-    line: 6
-    excerpt: \stagefield{Purpose}{Stage~044 turns the abstract rank--2 branch into a continuum-selected branch point.  The
-      physical softening depth is no longer free; it is selected by an exact quadratic.}
-    stage: '044'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage045_tracking_derived_not_postulated
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '045'
-  parameter_names:
-  - R_tr
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
-    line: 206
-    excerpt: This is exactly the Stage-040 tracking/source-loading branch, now derived from a concrete local kernel rather
-      than postulated as a special surface.
-    stage: '045'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage045_tracking_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '045'
-  parameter_names:
-  - R_U
-  - R_phi
-  - R_tr
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_045.tex
-    line: 6
-    excerpt: \stagefield{Purpose}{Stage~045 checks the first coherent local D/N support kernel and proves that it does not
-      realize a generic rank--2 direction.  It forces exact tracking.}
-    stage: '045'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage046_residual_comparison_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '046'
-  parameter_names:
-  - N_tr
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_046.tex
-    line: 28
-    excerpt: at fixed \((\xi,\delta)\).  The exact residual comparison can be written as
-    stage: '046'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage047_R_target_zeta_invariance
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '047'
-  parameter_names:
-  - R_target
-  - zeta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
-    line: 191
-    excerpt: So `R_target` is exactly independent of `zeta`.
-    stage: '047'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage047_epsilon_support_saturation
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '047'
-  parameter_names:
-  - epsilon
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_047.tex
-    line: 22
-    excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\epsilon\zeta}}.
-    stage: '047'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage048_zeta_req_threshold
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 048
-  parameter_names:
-  - S_req
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_048.tex
-    line: 22
-    excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
-    stage: 048
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage048_zeta_req_unique
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 048
-  parameter_names:
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_048.tex
-    line: 24
-    excerpt: On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only
-      branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds
-      iff
-    stage: 048
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage049_uniform_source_density
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 049
-  parameter_names:
-  - sigma_source_density
-  - zeta_0_twin
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
-    line: 93
-    excerpt: '`sigma(s)=1.`'
-    stage: 049
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage049_zeta_phys_no_longer_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 049
-  parameter_names:
-  - zeta_n_phys
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
-    line: 13
-    excerpt: The main result is that, once the mixed lane `W` and the support lane `phi_n` are both generated by the **same
-      local throat source density** on the finite throat interval, the physical coherent support ratio is no longer free.
-      It is exactly
-    stage: 049
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage050_enhancement_factor_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '050'
-  parameter_names:
-  - S_zeta_n
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
-    line: 27
-    excerpt: '   so its support-enhancement factor is exactly'
-    stage: '050'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage051_xi_2x_closed_root
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '051'
-  parameter_names:
-  - xi_2x
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
-    line: 158
-    excerpt: print("The exact twin-saturation depth at fixed M_mix is the closed root xi_(2x) above.")
-    stage: '051'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage052_asymmetry_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '052'
-  parameter_names:
-  - Omega_asym
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
-    line: 165
-    excerpt: So any `zeta_req > 1` forces a true overlap asymmetry above the symmetric twin value.
-    stage: '052'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage053_overlap_window_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '053'
-  parameter_names:
-  - A_I
-  - Omega_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
-    line: 84
-    excerpt: So the overlap boost window is exactly
-    stage: '053'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage054_robin_branch_determined
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '054'
-  parameter_names:
-  - A_K
-  - mu_R
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
-    line: 213
-    excerpt: '- the Robin-deformed lowest support branch is determined by'
-    stage: '054'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage055_reachability_window_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '055'
-  parameter_names:
-  - x
-  - zeta_0_phys
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_055.tex
-    line: 24
-    excerpt: \frac{\pi^2}{4}\frac{4}{4-x}
-    stage: '055'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage056_pe_identification
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '056'
-  parameter_names:
-  - Pe
-  - alpha
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
-    line: 28
-    excerpt: So the old abstract bias parameter is exactly the axial **Peclet number** of the lowest support-source transport
-      problem.
-    stage: '056'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage057_x_identified_as_stiffness_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '057'
-  parameter_names:
-  - kappa
-  - x
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
-    line: 81
-    excerpt: Thus the old abstract `x` is exactly the inverse stiffness ratio of the physical support operator.
-    stage: '057'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage058_bracket_derived_not_guessed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 058
-  parameter_names:
-  - Delta_0
-  - Delta_inf
-  - Pe_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
-    line: 289
-    excerpt: This is the first exact branch-point bracket derived from a coupled operator rather than imposed as a guessed
-      placement.
-    stage: 058
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage059_pe_req_misattributed_carry
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 059
-  parameter_names:
-  - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 130
-    excerpt: '`Pe_req` carried from stages 048/049/052). The III.3 v2 sweep surfaced'
-    stage: 059
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage059_thresholds_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 059
-  parameter_names:
-  - Pe_req
-  - Xi_fail
-  - Xi_suff
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_059.tex
-    line: 13
-    excerpt: If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
-    stage: 059
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage060_gamma_derived_rate
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '060'
-  parameter_names:
-  - Pe
-  - gamma
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
-    line: 88
-    excerpt: expect_zero("Pe identification (derived rate)",
-    stage: '060'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage060_xi_micro_drop_prefactor_choice
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '060'
-  parameter_names:
-  - Xi_micro
-  - phi_drop_prefactor
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
-    line: 122
-    excerpt: 'phi_from_Phi = Lam * L**2 * Delta / T_X  # end-to-end drop only (see BVP check above)'
-    stage: '060'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage061_gain_thresholds_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '061'
-  parameter_names:
-  - G_fail
-  - G_suff
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
-    line: 111
-    excerpt: print("2. The exact operator phase diagram is set by G_fail = Pe_req/[kappa Delta_inf] and G_suff = Pe_req/[kappa
-      Delta_0].")
-    stage: '061'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage062_n5_eos_exponent
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '062'
-  parameter_names:
-  - K_eos
-  - n_poly
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_062.tex
-    line: 18
-    excerpt: For the frozen \(n=5\) EOS,
-    stage: '062'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage062_theta_not_free_entropy_constant
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '062'
-  parameter_names:
-  - Theta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
-    line: 176
-    excerpt: So the source compliance is no longer a free “entropy constant.” It is fixed by the local GNLS compressibility
-      of the parent medium, dressed only by the chosen transverse source normalization.
-    stage: '062'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage063_amplitude_thresholds_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '063'
-  parameter_names:
-  - g_phi_fail
-  - g_phi_suff
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
-    line: 102
-    excerpt: 'Then the fail/succeed thresholds on the parent loading amplitude are exact:'
-    stage: '063'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage064_coherence_factor_derived
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '064'
-  parameter_names:
-  - C
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
-    line: 223
-    excerpt: The coherence factor is no longer free. It is a derived quantity,
-    stage: '064'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage064_matched_layer_coherence
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '064'
-  parameter_names:
-  - C_sigma_phi_sq
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_064.tex
-    line: 51
-    excerpt: C_{\sigma\phi}^2=1,
-    stage: '064'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage065_canonical_normalization_fprime
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '065'
-  parameter_names:
-  - f_prime_0
-  - g_phi
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py
-    line: 118
-    excerpt: '# by the canonical normalization f''(0)=1 used by the docstring''s f. Verify the'
-    stage: '065'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage066_exact_matched_verdict
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '066'
-  parameter_names:
-  - W_fail
-  - W_suff
-  - W_wall
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_066.tex
-    line: 19
-    excerpt: The exact matched-branch verdict is
-    stage: '066'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage067_C_res_unique_global_max
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '067'
-  parameter_names:
-  - C_res_squared
-  - P_res
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
-    line: 108
-    excerpt: A numerical monotonicity audit then shows that this stationary point is the unique global maximum on the constructive
-      branch.
-    stage: '067'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage067_sech_gaussian_benchmark_constants
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '067'
-  parameter_names:
-  - C_res_sq
-  - P_res
-  - chi_phi_profile
-  - chi_sigma_profile
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
-    line: 6
-    excerpt: 'The memo you shared suggests a concrete transverse profile benchmark for the parent source/support coherence:'
-    stage: '067'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage067_w_ratio_self_duality_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '067'
-  parameter_names:
-  - w_g_over_w_f
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
-    line: 20
-    excerpt: 2. that self-duality forces an exact stationary point at
-    stage: '067'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage068_W_res_derived_label
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 068
-  parameter_names:
-  - W_res
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl
-    line: 33
-    excerpt: '(* W_res derived from matched-branch gain decomposition (notes section 1): *)'
-    stage: 068
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage068_threshold_translation_not_postulated
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 068
-  parameter_names:
-  - P_res
-  - W_fail_res
-  - W_suff_res
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
-    line: 104
-    excerpt: '# 2. Exact threshold translation (derived from W_res, not postulated)'
-    stage: 068
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage069_matched_window_exactly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 069
-  parameter_names:
-  - P_res
-  - W_fail_match
-  - W_suff_match
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
-    line: 9
-    excerpt: 1. The matched-branch Stage-066 window is exactly
-    stage: 069
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage070_n5_eos_exponent
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '070'
-  parameter_names:
-  - n
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_070.tex
-    line: 7
-    excerpt: \stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and
-      frozen \(n=5\) compressional stiffness.}
-    stage: '070'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage070_wall_shell_fixes_quintuple
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '070'
-  parameter_names:
-  - J_1
-  - K_X
-  - T_X
-  - W_wall
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
-    line: 177
-    excerpt: After this stage, the first wall-shell branch fixes
-    stage: '070'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage071_canonical_tanh_and_natural_closure
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '071'
-  parameter_names:
-  - K_m
-  - tanh_wall_profile
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
-    line: 7
-    excerpt: The next honest step is to choose the first canonical wall profile and the first natural local mouth closure.
-    stage: '071'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage071_mouth_closure_Km
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '071'
-  parameter_names:
-  - K_m
-  - eta
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_071.tex
-    line: 33
-    excerpt: K_m=\frac{T_X}{\ell},
-    stage: '071'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage072_canonical_controls_exact_thresholds
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '072'
-  parameter_names:
-  - Lambda_ell
-  - Upsilon_w
-  - chi_s
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_072.tex
-    line: 7
-    excerpt: \stagefield{Inputs}{The canonical branch controls \(\chi_s\), \(\Lambda_\ell\), \(\Upsilon_w\) and the exact
-      thresholds from Stage~069.}
-    stage: '072'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage073_Lambda_ell_fixed_37
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - L_over_a
-  - Lambda_ell
-  - epsilon_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
-    line: 72
-    excerpt: So the first explicit moving-throat branch fixes
-    stage: '073'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage073_aspect_ratio_L_over_a
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - L_over_a
-  - Lambda_ell
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_073.tex
-    line: 17
-    excerpt: \frac{L}{a}=\frac{37}{20},
-    stage: '073'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage073_aspect_ratio_frozen
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - L_over_a
-  - Lambda_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
-    line: 48
-    excerpt: The lower-order stack already carries the preferred throat aspect ratio
-    stage: '073'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage073_epsilon_r_posited
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - epsilon_r
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
-    line: 30
-    excerpt: '`epsilon_r = 0.05 = 1/20.`'
-    stage: '073'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage073_eta_pinned_37
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
-    line: 94
-    excerpt: So the first explicit throat-support branch is now pinned to one concrete large-`eta` Robin regime.
-    stage: '073'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage073_paper_fixes_geometry_ratios
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - Lambda_ell
-  - eta
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_073.tex
-    line: 6
-    excerpt: \stagefield{Purpose}{Stage~073 fixes the geometry ratios of the first explicit Family--1 branch.}
-    stage: '073'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage073_wall_fraction_epsilon_r
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '073'
-  parameter_names:
-  - ell_over_a
-  - epsilon_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
-    line: 30
-    excerpt: '`epsilon_r = 0.05 = 1/20.`'
-    stage: '073'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage074_chi_s_now_fixes
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '074'
-  parameter_names:
-  - chi_s
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
-    line: 73
-    excerpt: Since Stage 073 fixed `Lambda_ell = 37`, the same branch now fixes
-    stage: '074'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage074_healing_lock_ell
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '074'
-  parameter_names:
-  - chi_s
-  - ell
-  - healing_lock_coefficient
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
-    line: 53
-    excerpt: '`ell = ell_h = hbar / (2 m c_(s,w)).`'
-    stage: '074'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage074_kappa_locked_reduction
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '074'
-  parameter_names:
-  - chi_s
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
-    line: 46
-    excerpt: '# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to'
-    stage: '074'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage074_natural_healing_closure
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '074'
-  parameter_names:
-  - ell
-  - ell_h
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
-    line: 51
-    excerpt: 'The natural next closure is to identify that active support width with the local GNLS healing width on the wall-support
-      layer:'
-    stage: '074'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage075_alpha_r_wall_depth
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '075'
-  parameter_names:
-  - Upsilon_w
-  - alpha_r
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_075.tex
-    line: 24
-    excerpt: With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), and \(\Upsilon_w=100\Theta_w\), the Family--1 threshold window is
-    stage: '075'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage075_triple_fixed_summary
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '075'
-  parameter_names:
-  - Lambda_ell
-  - chi_s
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
-    line: 144
-    excerpt: '- the geometry ratio is fixed,'
-    stage: '075'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage076_lambda_mu_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '076'
-  parameter_names:
-  - lambda_mu
-  - mu_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
-    line: 60
-    excerpt: '`mu_* = lambda_mu h_w,`'
-    stage: '076'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage076_target_25_derived
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '076'
-  parameter_names:
-  - Theta_w
-  - ref_factor
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
-    line: 89
-    excerpt: '# The "25" target is derived from ref_factor as (1/ref_factor)^2 / 16'
-    stage: '076'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage076_wall_depth_exactly_square
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '076'
-  parameter_names:
-  - Theta_w
-  - lambda_mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
-    line: 93
-    excerpt: '> the wall-depth datum is exactly the square of the active-shell density, measured in healing-width units, up
-      to the one local normalization factor `lambda_mu`.'
-    stage: '076'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage077_If_exact_canonical
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '077'
-  parameter_names:
-  - I_f
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
-    line: 7
-    excerpt: 2. Exact canonical support normalization If = 1/3.
-    stage: '077'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage077_Theta_w_chi_derived_directly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '077'
-  parameter_names:
-  - Theta_w_chi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
-    line: 96
-    excerpt: This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather
-      than left symbolic.
-    stage: '077'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage078_verdict_fixed_pair
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 078
-  parameter_names:
-  - Lambda_ell
-  - chi_s
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
-    line: 85
-    excerpt: '- the geometry is fixed,'
-    stage: 078
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage079_unique_constructive_Pe_req
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 079
-  parameter_names:
-  - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
-    line: 76
-    excerpt: print("A unique constructive Pe_req exists iff A_F1 <= zeta_req <= zeta_max^(F1).")
-    stage: 079
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage082_first_exact_product_window
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 082
-  parameter_names:
-  - Pi_fail
-  - Pi_suff
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
-    line: 204
-    excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator rather
-      than through the intermediate `Pe_req` bookkeeping.
-    stage: 082
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage083_windows_now_derived_directly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 083
-  parameter_names:
-  - zeta_fail
-  - zeta_suff
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
-    line: 119
-    excerpt: These are exactly the Stage-078 transport windows, now derived directly from the master support/source operator.
-    stage: 083
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage085_unblocked_literal_law
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 085
-  parameter_names:
-  - eps_blk
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
-    line: 136
-    excerpt: So on the unblocked branch the support-ratio demand is literally just the selected total loading divided by the
-      mixed baseline, minus one.
-    stage: 085
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage086_natural_lambda_mu_unblocked
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 086
-  parameter_names:
-  - eps_blk
-  - lambda_mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
-    line: 152
-    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
-    stage: 086
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage087_natural_lambda_mu_unblocked
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 087
-  parameter_names:
-  - eps_blk
-  - lambda_mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
-    line: 57
-    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
-    stage: 087
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage088_c0_c1_derived_not_defined
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 088
-  parameter_names:
-  - c0
-  - c1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
-    line: 69
-    excerpt: '# With c0, c1 now derived (not defined), the contact-plus-pole reconstruction'
-    stage: 088
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage088_minimal_module_c0_c1
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 088
-  parameter_names:
-  - c_0
-  - c_1
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_088.tex
-    line: 20
-    excerpt: c_0=\frac34,
-    stage: 088
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage088_minimal_module_coefficients_paper_quoted
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 088
-  parameter_names:
-  - c0
-  - c1
-  - c_contact
-  - c_pole
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
-    line: 95
-    excerpt: Y_Q_paper = sp.Rational(3, 4) + sp.Rational(1, 4)/(1 - omega**2/Omega_Q**2)
-    stage: 088
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage088_natural_identification_fixes_exactly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 088
-  parameter_names:
-  - c_contact
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
-    line: 92
-    excerpt: 'So the natural contact-plus-pole interpretation of the minimal isotropic quadrupole branch fixes the explicit
-      support demand exactly:'
-    stage: 088
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage088_pole_frequency_OmegaQ
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 088
-  parameter_names:
-  - Omega_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_088.tex
-    line: 24
-    excerpt: \Omega_Q=\frac{3c_s}{2a}}.
-    stage: 088
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage089_Pe_req_forced_not_assumed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 089
-  parameter_names:
-  - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
-    line: 125
-    excerpt: '# Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 already exceeds the'
-    stage: 089
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage089_pe_window_upstream_misattribution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 089
-  parameter_names:
-  - Pe_fail_chi
-  - Pe_suff_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
-    line: 61
-    excerpt: '# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the'
-    stage: 089
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage089_provenance_record_misattribution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 089
-  parameter_names:
-  - Pe_fail_chi
-  - Pe_suff_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 111
-    excerpt: naming `scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt` as the
-    stage: 089
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage090_locked_triple_Pe_req
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 090
-  parameter_names:
-  - Pe_req
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage090_updated_reduced_status_mathematica_audit.wl
-    line: 62
-    excerpt: '   above is the carry-forward proxy for the locked triple value Pe_req = 0'
-    stage: 090
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage090_minimal_module_upstream_contradiction
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 090
-  parameter_names:
-  - c_contact
-  - c_pole
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
-    line: 15
-    excerpt: '- 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed'
-    stage: 090
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage091_K_geom_forced_by_identity
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 091
-  parameter_names:
-  - K_geom
-  - K_pole
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
-    line: 62
-    excerpt: print("K_geom forced by branch identity =", Kgeom_sol)
-    stage: 091
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage091_branch_identity_factor4
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 091
-  parameter_names:
-  - K0_K4_over_K2sq
-  - u_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
-    line: 52
-    excerpt: '`K0 K4 = 4 K2^2`,'
-    stage: 091
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage091_module_forced_paper
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 091
-  parameter_names:
-  - Y_Q_cons
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_091.tex
-    line: 16
-    excerpt: Static-geometry plus one-pole grouped carrier forces the \(3/4+1/4\) conservative quadrupole module and hence
-      \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\).
-    stage: 091
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage092_forced_carrier_ledger_label
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 092
-  parameter_names:
-  - Y_Q_cons
-  - eps_2
-  - eps_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_092.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
-      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
-      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-    stage: 092
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage092_no_longer_forced_unless
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 092
-  parameter_names:
-  - K_geom
-  - eps_2
-  - eps_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
-    line: 68
-    excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
-    stage: 092
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage093_module_forced_statement
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 093
-  parameter_names:
-  - Y_Q_cons
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
-    line: 23
-    excerpt: then the conservative quadrupole module is forced to be
-    stage: 093
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage093_static_limit_hardcoded
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 093
-  parameter_names:
-  - eps_2
-  - eps_4
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/mathematica/moving_throat_pde_stage093_grouped_p2_status_update_mathematica_audit.wl
-    line: 28
-    excerpt: eps2 = 0;
-    stage: 093
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage094_decoupling_kills_contamination
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 094
-  parameter_names:
-  - K_g2
-  - K_g4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
-    line: 101
-    excerpt: Because the isotropic quadratic wall theory has no `l=0 <-> l=2` bilinear mixing, the scalar geometry lane cannot
-      feed any dynamic even moments into the isotropic grouped-`P2` conservative quadrupole module.
-    stage: 094
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage094_static_split_assigned_not_derived
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 094
-  parameter_names:
-  - c_geom
-  - c_pole
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
-    line: 75
-    excerpt: c_pole = sp.Rational(1, 4)
-    stage: 094
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage095_forced_carrier_ledger_label
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 095
-  parameter_names:
-  - Y_Q_cons
-  - eps_2
-  - eps_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_095.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
-      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
-      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-    stage: 095
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage096_constants_derived_from_eps_zero
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 096
-  parameter_names:
-  - c0
-  - c1
-  - eps_2
-  - eps_4
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
-    line: 16
-    excerpt: '- 1/4, 3/4, 4/3, and 1/3 are derived in this audit from eps_2 = eps_4 = 0 and'
-    stage: 096
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage097_even_ledger_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 097
-  parameter_names:
-  - Kbar_0
-  - Omega_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
-    line: 38
-    excerpt: So once `Kbar_0` and `Omega_Q` are known, the entire even conservative ledger is fixed.
-    stage: 097
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage097_gamma5_fixed_algebraically
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 097
-  parameter_names:
-  - Gamma_5
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
-    line: 44
-    excerpt: On the minimal isotropic outgoing `l=2` branch, the 2.5PN audit already fixed the odd coefficient algebraically
-      as
-    stage: 097
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage097_yhatQcons_forced_carrier
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 097
-  parameter_names:
-  - Yhat_Q_cons
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_097.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
-      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
-      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-    stage: 097
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage098_forced_carrier_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 098
-  parameter_names:
-  - Yhat_Q_cons
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_098.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
-      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
-      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-    stage: 098
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage098_rho_alpha_selected_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 098
-  parameter_names:
-  - rho_alpha
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
-    line: 16
-    excerpt: '`rho_alpha = 4/3`,'
-    stage: 098
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage098_support_demand_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 098
-  parameter_names:
-  - support_ratio
-  - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
-    line: 18
-    excerpt: so even with finite blocking the exact support demand is so small that any explicit branch with support ceiling
-      `zeta_max > 1` already passes it throughout the admissible blocked regime.
-    stage: 098
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage098_zeta_max_f1_imported_literal
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 098
-  parameter_names:
-  - gap_F1
-  - zeta_edge_F1
-  - zeta_max_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
-    line: 26
-    excerpt: zmax_F1 = sp.N('2.46752922945601')
-    stage: 098
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage098_zeta_max_f1_opaque_carried_ceiling
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 098
-  parameter_names:
-  - zeta_max_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
-    line: 22
-    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601 > 1`,'
-    stage: 098
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage099_conservative_split_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 099
-  parameter_names:
-  - Yhat_Q_cons
-  - conservative_split_3_4_1_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
-    line: 18
-    excerpt: 2. The conservative quadrupole module is exactly
-    stage: 099
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage099_forced_by_yhatQcons_script
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - 099
-  parameter_names:
-  - Gamma_5
-  - K_0
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
-    line: 63
-    excerpt: '# Conservative quadrupole structural relations (forced by Yhat_Q^cons):'
-    stage: 099
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage100_chiQ_fixed_downstream_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '100'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_100.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
-      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
-      condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
-    stage: '100'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage100_factorization_forced_script
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '100'
-  parameter_names:
-  - N_Q
-  - chi_Q
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
-    line: 75
-    excerpt: '# the factorization mhat_0^2 chi_Q N_Q = 1 is forced.'
-    stage: '100'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage101_stage105_fixes_by_matching
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '101'
-  parameter_names:
-  - chi_Q
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
-    line: 49
-    excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
-      giving
-    stage: '101'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage102_everything_else_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '102'
-  parameter_names:
-  - chi_Q
-  - higher_odd_coeff_omega7
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
-    line: 58
-    excerpt: Everything else that could have obstructed the reduced 2.5PN theorem has either been fixed or pushed above the
-      relevant order.
-    stage: '102'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage103_split_exact_status
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '103'
-  parameter_names:
-  - conservative_split_3_4_1_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
-    line: 8
-    excerpt: '- the conservative quadrupole split is exactly `3/4 + 1/4`,'
-    stage: '103'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage104_chiQ_canonical_condition_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '104'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_104.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
-      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-    stage: '104'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage104_gamma5_not_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '104'
-  parameter_names:
-  - Gamma_5_can
-  - xi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
-    line: 87
-    excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch, the
-      leading odd quadrupole coefficient is fixed to
-    stage: '104'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage104_unit_product_m0hat2_chiQ_NQ
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '104'
-  parameter_names:
-  - N_Q
-  - chi_Q
-  - m0_hat
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_104.tex
-    line: 13
-    excerpt: The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).
-    stage: '104'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage105_carry_in_stale_multi_stage_attribution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - Lambda_out_fingerprint_coefficients
-  - sigma_Q_can
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 84
-    excerpt: imported with explicit provenance from stages 074/088 (now 104) on the
-    stage: '105'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage105_chiQ_eq_1_by_matching_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_105.tex
-    line: 16
-    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
-    stage: '105'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage105_chi_q_canonical_fix
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_105.tex
-    line: 16
-    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
-    stage: '105'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage105_chi_q_canonical_unity
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
-    line: 69
-    excerpt: \boxed{\chi_Q=1.}
-    stage: '105'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage105_chi_q_provenance_record_contradiction
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 75
-    excerpt: '`chi_Q = 1` is derived non-tautologically via two independent paths: SymPy'
-    stage: '105'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage105_last_scalar_fixed_exactly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - chi_Q
-  - xi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
-    line: 72
-    excerpt: So on the canonical compact passive/outgoing grouped-`P2` DtN branch, the last reduced normalization scalar is
-      fixed exactly.
-    stage: '105'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage105_omega_q_pole_frequency
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '105'
-  parameter_names:
-  - Omega_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
-    line: 29
-    excerpt: \Omega_Q=\frac{3c_s}{2a}.
-    stage: '105'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage106_coeffs_fixed_to_targets
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '106'
-  parameter_names:
-  - Gamma_5
-  - K_2
-  - K_4
-  - N_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
-    line: 40
-    excerpt: 'With \(N_Q=1\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:'
-    stage: '106'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage106_odd_exactly_gr_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '106'
-  parameter_names:
-  - Gamma_5_normalized
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
-    line: 53
-    excerpt: 'Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:'
-    stage: '106'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage107_chiQ_canonical_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '107'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
-    line: 22
-    excerpt: so the canonical outgoing normalization is `chi_Q = 1`.
-    stage: '107'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage108_beta_forced_positive_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '108'
-  parameter_names:
-  - beta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
-    line: 41
-    excerpt: which on the natural positive branch forces
-    stage: '108'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage108_chiQ_robust_claim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '108'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
-    line: 102
-    excerpt: 'The canonical value `chi_Q = 1` is robust against:'
-    stage: '108'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage109_linearized_condition_must_satisfy
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '109'
-  parameter_names:
-  - a_0
-  - a_5
-  - b
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
-    line: 62
-    excerpt: To keep the canonical outgoing normalization at first order, the deformation must satisfy
-    stage: '109'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage110_chiQR_exact_factor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '110'
-  parameter_names:
-  - chi_Q_R
-  - rho_R
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
-    line: 52
-    excerpt: the raw Robin outlet carries the exact normalization factor
-    stage: '110'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage111_sigmaW_forced_to_zero
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '111'
-  parameter_names:
-  - kappa_W
-  - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
-    line: 55
-    excerpt: So a standalone isotropic hidden pole of this type cannot sit on the already-fixed canonical even branch unless
-      it is absent.
-    stage: '111'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage112_chiQhyb_exact_factor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '112'
-  parameter_names:
-  - chi_Q_hyb
-  - gamma_W
-  - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
-    line: 74
-    excerpt: So the exact outgoing-normalization factor is
-    stage: '112'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage112_compensated_branch_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '112'
-  parameter_names:
-  - gamma_W
-  - kappa_W
-  - rho_R
-  - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
-    line: 47
-    excerpt: \boxed{\rho_R=4\sigma_W,\qquad \kappa_W=\frac13.}
-    stage: '112'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage112_exactly_two_branches
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '112'
-  parameter_names:
-  - kappa_W
-  - rho_R
-  - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
-    line: 41
-    excerpt: 'yields exactly two branches:'
-    stage: '112'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage113_preserved_exactly_when
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '113'
-  parameter_names:
-  - chi_Q
-  - rho_R
-  - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
-    line: 37
-    excerpt: '   and canonical outgoing normalization is preserved exactly when'
-    stage: '113'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage114_bare_mixed_denominator_ansatz
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '114'
-  parameter_names:
-  - gamma_0
-  - kappa_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
-    line: 29
-    excerpt: D_W^{\rm bare}(z)=1-\kappa_0 z^2-i\gamma_0 z^5+O(z^6).
-    stage: '114'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage114_exact_core_correction
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '114'
-  parameter_names:
-  - delta_Lambda_core
-  - lambda
-  - r_c
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
-    line: 43
-    excerpt: Eliminating `(s,q)` gives the exact core correction
-    stage: '114'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage115_gamma_0_pure_scale_ansatz
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '115'
-  parameter_names:
-  - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
-    line: 69
-    excerpt: \gamma_0=\frac{1+r_c}{9}.
-    stage: '115'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage115_gq_exact_two_branch_law
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '115'
-  parameter_names:
-  - K_s
-  - g_q
-  - g_s
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
-    line: 49
-    excerpt: Solving for the mixed coupling gives the exact two-branch law
-    stage: '115'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage116_LW_fixed_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '116'
-  parameter_names:
-  - L_W
-  - gamma_0_bare
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_116.tex
-    line: 16
-    excerpt: First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale.
-    stage: '116'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage116_LW_fixed_note
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '116'
-  parameter_names:
-  - L_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
-    line: 46
-    excerpt: So the auxiliary mixed-tube length is fixed to
-    stage: '116'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage116_gamma0_compensation_backfill
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '116'
-  parameter_names:
-  - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
-    line: 60
-    excerpt: \gamma_0=\frac{1+r_c}{9}.
-    stage: '116'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage116_lw_compensation_selected_length
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '116'
-  parameter_names:
-  - L_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
-    line: 51
-    excerpt: \frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}}.
-    stage: '116'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage116_pure_scale_removed_exactly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '116'
-  parameter_names:
-  - gamma_0_bare
-  - r_c
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
-    line: 70
-    excerpt: Then the hybridization factor `(1+r_c)` is removed exactly by the Stage-114 denominator renormalization, leaving
-      the canonical final coefficients
-    stage: '116'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage117_formulas_derived_claim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '117'
-  parameter_names:
-  - L_W
-  - gamma_0_bare
-  - r_c
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
-    line: 26
-    excerpt: with explicit formulas derived in Stages 114–116.
-    stage: '117'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage118_Kq_fixed_not_arbitrary
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '118'
-  parameter_names:
-  - K_q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
-    line: 149
-    excerpt: 'So \(K_q\) is not arbitrary: it is fixed by one localization norm and the D/N tube length.'
-    stage: '118'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage118_frozen_n5_eos
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '118'
-  parameter_names:
-  - n_eos
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
-    line: 18
-    excerpt: '- a gauged 4D GNLS matter sector with confinement \(V_{\rm conf}(\mathbf X;a,L)\) and frozen \(n=5\) EOS, so
-      the bulk matter Hamiltonian has both gradient and compressional terms, fileciteturn33file4'
-    stage: '118'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage119_g_fixed_exactly_once_r
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '119'
-  parameter_names:
-  - mathfrak_g
-  - mathfrak_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
-    line: 52
-    excerpt: Once \(\mathfrak r\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly.
-    stage: '119'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage119_one_parameter_family_LW_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '119'
-  parameter_names:
-  - L_W
-  - mathfrak_g
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
-    line: 162
-    excerpt: 2. then the D/N mixed-tube length is fixed by
-    stage: '119'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage120_branch_exists_iff
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '120'
-  parameter_names:
-  - mathfrak_g
-  - mathfrak_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
-    line: 24
-    excerpt: The compensated canonical outgoing quadrupole branch exists **iff**
-    stage: '120'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage121_aspect_ratio_37_20_reference_freeze
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '121'
-  parameter_names:
-  - L_over_a
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
-    line: 60
-    excerpt: \frac{L}{a}=\frac{37}{20},
-    stage: '121'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage121_aspect_ratio_37_over_20
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '121'
-  parameter_names:
-  - L_over_a
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
-    line: 60
-    excerpt: \frac{L}{a}=\frac{37}{20},
-    stage: '121'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage121_lw_equals_l_identification
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '121'
-  parameter_names:
-  - L_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
-    line: 26
-    excerpt: \boxed{L_W=L.}
-    stage: '121'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage121_r_geom_exact_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '121'
-  parameter_names:
-  - L
-  - a
-  - mathfrak_r_geom
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
-    line: 37
-    excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
-    stage: '121'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage121_r_not_tunable
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '121'
-  parameter_names:
-  - mathfrak_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
-    line: 81
-    excerpt: So the first concrete moving-throat core solve already fixes the static/mixed hybridization to an `O(1)` value
-      rather than a tunable small parameter.
-    stage: '121'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage122_g_nat_equal_normalized_unity
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '122'
-  parameter_names:
-  - g_nat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
-    line: 26
-    excerpt: \mathfrak g_{\rm nat}=1.
-    stage: '122'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage122_g_nat_unity_branch_ansatz
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '122'
-  parameter_names:
-  - g_nat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
-    line: 26
-    excerpt: \mathfrak g_{\rm nat}=1.
-    stage: '122'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage122_g_pm_exact_values
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '122'
-  parameter_names:
-  - mathfrak_g_minus_F1
-  - mathfrak_g_plus_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
-    line: 51
-    excerpt: gives the two exact compensated mouth-coupling values
-    stage: '122'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage122_rF1_geometry_fixes
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '122'
-  parameter_names:
-  - mathfrak_r_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
-    line: 148
-    excerpt: '- the actual throat geometry fixes'
-    stage: '122'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage123_exact_branch_law
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '123'
-  parameter_names:
-  - Xi_T
-  - Xi_v
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
-    line: 25
-    excerpt: Then the exact branch law is
-    stage: '123'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage123_geometry_selected_hybridization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '123'
-  parameter_names:
-  - mathfrak_r_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
-    line: 109
-    excerpt: '- the geometry-selected normalized hybridization is'
-    stage: '123'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage124_what_is_now_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '124'
-  parameter_names:
-  - mathfrak_g_pm_F1
-  - mathfrak_r_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
-    line: 3
-    excerpt: '## What is now fixed'
-    stage: '124'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage125_lower_branch_unique
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '125'
-  parameter_names:
-  - branch_sign
-  - mathfrak_g_minus_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
-    line: 79
-    excerpt: \text{within this positive localized-source setup, the lower compensated branch is the unique physically admissible
-      compensated Family-1 branch.}
-    stage: '125'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage126_g_match_pi_over_4_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '126'
-  parameter_names:
-  - mathfrak_g_match
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_126.tex
-    line: 16
-    excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
-    stage: '126'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage126_not_a_coefficient_fit
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '126'
-  parameter_names:
-  - mathfrak_g_minus_F1
-  - xi_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
-    line: 115
-    excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family
-      of positive localized mouth sources.
-    stage: '126'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage126_xi_star_admixture_backsolve
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '126'
-  parameter_names:
-  - xi_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
-    line: 101
-    excerpt: \approx 0.183918405511538.
-    stage: '126'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage126_xi_star_exact_solution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '126'
-  parameter_names:
-  - xi_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
-    line: 93
-    excerpt: The exact solution is
-    stage: '126'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage127_exp_depth_exact_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '127'
-  parameter_names:
-  - x_star_exp
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
-    line: 82
-    excerpt: So an exponentially localized mouth source with penetration depth about \(0.66L\) reaches the exact lower compensated
-      branch.
-    stage: '127'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage127_slab_depth_unique
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '127'
-  parameter_names:
-  - x_star_slab
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
-    line: 37
-    excerpt: gives the unique Family-1 slab depth
-    stage: '127'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage127_x_star_exp_backsolve
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '127'
-  parameter_names:
-  - x_star_exp
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
-    line: 78
-    excerpt: x_*^{\exp}\approx 0.662765402623161.
-    stage: '127'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage127_x_star_slab_backsolve
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '127'
-  parameter_names:
-  - x_star_slab
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
-    line: 40
-    excerpt: x_*^{\rm slab}\approx 0.797839360904564.
-    stage: '127'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage128_branch_sign_fixed_card
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '128'
-  parameter_names:
-  - branch_sign
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_128.tex
-    line: 16
-    excerpt: Branch sign is fixed; the open datum is the actual positive mouth-source shape.
-    stage: '128'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage128_lower_branch_uniquely_selected
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '128'
-  parameter_names:
-  - mathfrak_g_minus_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
-    line: 75
-    excerpt: \text{Under positive localized mouth sourcing, the lower compensated branch is uniquely selected and is easily
-      reachable.}
-    stage: '128'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage128_rF1_fixed_by_geometry
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '128'
-  parameter_names:
-  - mathfrak_r_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
-    line: 12
-    excerpt: is already fixed by geometry.
-    stage: '128'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage128_traction_gap_downstream_attribution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '128'
-  parameter_names:
-  - traction_gap_percent
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_128.md
-    line: 105
-    excerpt: '| `3.61%` traction gap | stage134/140 sympy out | notes L49 `3.61\%` | MATCH |'
-    stage: '128'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage129_sigma_pi_derived_boundary_law
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '129'
-  parameter_names:
-  - sigma_Pi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
-    line: 7
-    excerpt: boundary-layer law derived from a GNLS + localized-Maxwell electrochemical balance
-    stage: '129'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage130_g_minus_compensation_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '130'
-  parameter_names:
-  - g_minus_F1
-  - g_star
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
-    line: 10
-    excerpt: g_minus = sp.Float("0.758035078944663")
-    stage: '130'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage130_pi_star_exact_unique
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '130'
-  parameter_names:
-  - Pi_star
-  - g_Pi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_130.tex
-    line: 16
-    excerpt: Exact \(\mathfrak g_\Pi\), monotonicity, and unique Family--1 point \(\Pi_*\approx1.5088295\).
-    stage: '130'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage130_x_star_penetration_depth_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '130'
-  parameter_names:
-  - x_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
-    line: 118
-    excerpt: which is exactly the penetration-depth value already found earlier for the
-    stage: '130'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage131_g_minus_closed_form_aspect_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '131'
-  parameter_names:
-  - L_over_a
-  - g_minus_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
-    line: 15
-    excerpt: g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
-    stage: '131'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage131_parent_threshold_canonical
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '131'
-  parameter_names:
-  - A0_prime
-  - Pi_star
-  - T_m
-  - Theta_sigma
-  - q_star
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_131.tex
-    line: 16
-    excerpt: Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
-    stage: '131'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage132_source_family_fixed_claim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '132'
-  parameter_names:
-  - sigma_Pi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
-    line: 8
-    excerpt: 1. The actual positive source family is fixed by an explicit GNLS + localized-Maxwell
-    stage: '132'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage133_residual_freedom_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '133'
-  parameter_names:
-  - M_minus
-  - M_plus
-  - kappa_minus
-  - kappa_plus
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
-    line: 197
-    excerpt: Everything else is fixed by the exact source law and the exact D/N response.
-    stage: '133'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage134_bias_determined_by_fixedpoint
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '134'
-  parameter_names:
-  - M_q
-  - M_s
-  - Pi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
-    line: 131
-    excerpt: bias is determined by
-    stage: '134'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage134_kappa_q_first_mode_choice
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '134'
-  parameter_names:
-  - kappa_q
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
-    line: 30
-    excerpt: S_q = sp.simplify(S(Pi, sp.pi/2))
-    stage: '134'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage134_pi_star_carried_literal
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '134'
-  parameter_names:
-  - Pi_star
-  - S_q_star
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
-    line: 39
-    excerpt: Pi_star = sp.Float("1.50882951349316")
-    stage: '134'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage134_sq_spotcheck_anchor_literals
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '134'
-  parameter_names:
-  - S_q_at_half
-  - S_q_at_one
-  - S_q_at_two
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
-    line: 61
-    excerpt: target_half = sp.Float("0.608336415687717065435990381419", 30)
-    stage: '134'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage135_exact_outlet_consistent_gain
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '135'
-  parameter_names:
-  - Sigma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
-    line: 83
-    excerpt: gives the exact outlet-consistent gain
-    stage: '135'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage135_outlet_gain_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '135'
-  parameter_names:
-  - M_q_over_Sigma_m
-  - M_s_over_Sigma_m
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
-    line: 36
-    excerpt: 'reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})'
-    stage: '135'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage135_pi_star_import_sigma_m_star
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '135'
-  parameter_names:
-  - Pi_star
-  - Sigma_m_star
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
-    line: 46
-    excerpt: Pi_star = sp.Float("1.50882951349316")
-    stage: '135'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage137_gains_from_derived_core_response
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '137'
-  parameter_names:
-  - M_q
-  - M_s
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
-    line: 9
-    excerpt: The key idea is to use the already derived concrete two-channel core response from
-    stage: '137'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage138_compensation_quarter
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '138'
-  parameter_names:
-  - R_q_comp
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
-    line: 31
-    excerpt: assert sp.simplify(sol_plus - sp.Rational(1,4)) == 0
-    stage: '138'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage138_rq_quarter_derived_not_assumed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '138'
-  parameter_names:
-  - R_q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
-    line: 106
-    excerpt: so the outlet-consistent mouth closure is derived rather than assumed.
-    stage: '138'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage139_aspect_ratio_literal
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '139'
-  parameter_names:
-  - L_over_a
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
-    line: 6
-    excerpt: rF = sp.N(sp.sqrt(sp.Rational(12,1)/sp.pi**2 * (sp.Rational(37,20))**2 - 1), 30)
-    stage: '139'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage139_gains_land_exactly_on_canonical
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '139'
-  parameter_names:
-  - M_q_comp_star
-  - M_s_comp_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
-    line: 120
-    excerpt: This is exactly the Stage 135 one-parameter canonical branch.
-    stage: '139'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage140_carried_gain_magnitudes
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '140'
-  parameter_names:
-  - M_s_comp
-  - M_s_nat
-  - Sigma_0
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
-    line: 18
-    excerpt: Ms_nat = sp.N('1.6685425296562397', 30)
-    stage: '140'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage140_sigma0_prefactor_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '140'
-  parameter_names:
-  - Sigma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
-    line: 59
-    excerpt: 'So the overall mouth shell gain is no longer abstract: it is fixed by one explicit'
-    stage: '140'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage140_theta_sigma_not_fitted_by_hand
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '140'
-  parameter_names:
-  - Theta_sigma
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
-    line: 32
-    excerpt: 'This is a same-layer closure: it removes an otherwise free susceptibility scale by'
-    stage: '140'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage141_gain_pair_no_longer_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '141'
-  parameter_names:
-  - M_q
-  - M_s
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
-    line: 7
-    excerpt: '1. The actual mouth gains are derived from the explicit throat-core ansatz:'
-    stage: '141'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage142_three_quantities_no_longer_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '142'
-  parameter_names:
-  - R_q
-  - T_m_hat
-  - sigma_shape
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
-    line: 134
-    excerpt: '- the source shape is no longer free,'
-    stage: '142'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage144_unique_regular_canonical_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '144'
-  parameter_names:
-  - Pi_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
-    line: 105
-    excerpt: \text{inside the explicit Family-1 positive exponential mouth-layer closure, the canonical mouth branch is uniquely
-      selected as the regular finite positive-source branch.}
-    stage: '144'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage146_aspect_ratio_37_20_primitive
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '146'
-  parameter_names:
-  - L_over_a
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py
-    line: 71
-    excerpt: rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
-    stage: '146'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage147_AT_BT_circular_paper_anchor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '147'
-  parameter_names:
-  - A_T
-  - B_T
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/appendices/stage_appendix_part04.tex
-    line: 846
-    excerpt: A_T\approx-4.27263956256927,
-    stage: '147'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage147_AT_BT_paper_anchor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '147'
-  parameter_names:
-  - A_T
-  - B_T
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
-    line: 53
-    excerpt: AT_paper = sp.Float("-4.27263956256927", 30)
-    stage: '147'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage147_AT_BT_ratio_31_6785_mislabel_history
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '147'
-  parameter_names:
-  - abs_A_T_over_B_T
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
-    line: 77
-    excerpt: \frac{|A_T|}{B_T}\approx 31.6785.
-    stage: '147'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage148_canonical_first_order_shifts_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '148'
-  parameter_names:
-  - delta_Pi_lambda
-  - delta_T_m_lambda
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
-    line: 96
-    excerpt: the canonical first-order shifts are exactly
-    stage: '148'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage148_radical_constant_forced_by_rf1
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '148'
-  parameter_names:
-  - r_F1
-  - xi_star
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
-    line: 91
-    excerpt: '# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so'
-    stage: '148'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage150_residual_tangent_matched
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '150'
-  parameter_names:
-  - Pi_star
-  - R_star
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_150.tex
-    line: 16
-    excerpt: Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth.
-    stage: '150'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage151_correction_fixed_by_covariances
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '151'
-  parameter_names:
-  - delta_Pi_act
-  - delta_S_act
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_151.tex
-    line: 16
-    excerpt: Actual selected deformation is the centered residual \(R_*\); correction is fixed by two covariances.
-    stage: '151'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage152_affine_law_endpoints
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '152'
-  parameter_names:
-  - lambda_eff_Pi
-  - lambda_eff_T
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
-    line: 112
-    excerpt: lam_Pi = (mp.mpf("1.69941496131430") - deltaPi) / mp.mpf("2.08240814741023")
-    stage: '152'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage152_carried_point_block
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '152'
-  parameter_names:
-  - A_T
-  - B_T
-  - Pi_star
-  - S_star
-  - Sigma_m_star
-  - T_star
-  - g_star
-  - gprime_star
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
-    line: 28
-    excerpt: Sigma_m_star = mp.mpf("0.451485277739090")
-    stage: '152'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage152_corrected_mouth_state_pi_corr_t_corr
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '152'
-  parameter_names:
-  - Pi_corr
-  - T_hat_m_corr
-  - delta_S_act
-  - delta_g_act
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
-    line: 78
-    excerpt: \approx 2.41591392833607,
-    stage: '152'
-  modality_attribution:
-  - completeness_critic
-  batch_id: null
-- id: fit_stage152_profile_correction_samples_expected_pins
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '152'
-  parameter_names:
-  - cov_KR_expected
-  - cov_cR_expected
-  - deltaPi_expected
-  - deltaT_expected
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/numerical/stage150_152_profile_correction_samples.json
-    line: 21
-    excerpt: '"deltaPi_expected": 0.907084414842908,'
-    stage: '152'
-  modality_attribution:
-  - completeness_critic
-  batch_id: null
-- id: fit_stage152_retuned_canonical_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '152'
-  parameter_names:
-  - A_T
-  - B_T
-  - delta_Pi_act
-  - g_star_prime
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
-    line: 48
-    excerpt: '## 2. Retuned canonical point'
-    stage: '152'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage154_coevolving_branch_determined
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '154'
-  parameter_names:
-  - Sigma_0
-  - Sigma_profile
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
-    line: 170
-    excerpt: Hence the co-evolving canonical branch is determined by the coupled conditions
-    stage: '154'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage155_carried_constants_block
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '155'
-  parameter_names:
-  - Pi_star
-  - S_star
-  - Sigma_0_star
-  - g_star
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
-    line: 25
-    excerpt: rF1 = 1.77799353547498
-    stage: '155'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage155_fixedpoint_expected_targets_json
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '155'
-  parameter_names:
-  - Pi_can_expected
-  - S_can_expected
-  - Sigma0_can_expected
-  - T_hat_can_expected
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/numerical/stage155_156_fixedpoint_samples.json
-    line: 16
-    excerpt: '"Sigma0_can_expected": 4.651033550168867,'
-    stage: '155'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage155_frozen_traction_fixed_point_pins
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '155'
-  parameter_names:
-  - R_fp
-  - S_fp
-  - g_fp
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
-    line: 94
-    excerpt: assert abs(g_fp - 0.693352419668063) < 1e-12, ("g_fp mismatch", g_fp)
-    stage: '155'
-  modality_attribution:
-  - completeness_critic
-  batch_id: null
-- id: fit_stage156_carried_constants_block
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '156'
-  parameter_names:
-  - Pi_star
-  - Sigma_0_star
-  - T_hat_star
-  - g_star
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
-    line: 28
-    excerpt: T_hat_star = 0.901484054174204
-    stage: '156'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage156_mouth_bias_increase_224_59_pct
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '156'
-  parameter_names:
-  - mouth_bias_increase_pct
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
-    line: 136
-    excerpt: '- and a \(224.59\%\) mouth-bias increase,'
-    stage: '156'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage156_unique_traction_renormalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '156'
-  parameter_names:
-  - Sigma_0_can
-  - T_m_can
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_156.tex
-    line: 16
-    excerpt: Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\).
-    stage: '156'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage157_expected_values_sidecar_json
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '157'
-  parameter_names:
-  - Pi_can_expected
-  - S_can_expected
-  - Sigma_0_can_expected
-  - T_hat_can_expected
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
-    line: 49
-    excerpt: data = json.loads((root / "scripts/numerical/stage155_156_fixedpoint_samples.json").read_text())
-    stage: '157'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage158_canonical_quartet_literals
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '158'
-  parameter_names:
-  - S_can
-  - Sigma_0_can
-  - T_can
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
-    line: 100
-    excerpt: Sigma0_can = sp.Float("4.651033550168876")
-    stage: '158'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage158_linear_defect_transport_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '158'
-  parameter_names:
-  - slippage_coefficient_eps_perp
-  - transport_coefficient_dR_dg
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
-    line: 103
-    excerpt: -0.490216044387626\,\delta\mathfrak g.
-    stage: '158'
-  modality_attribution:
-  - completeness_critic
-  batch_id: null
-- id: fit_stage159_canonical_even_baseline
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '159'
-  parameter_names:
-  - gamma_W
-  - kappa_W
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
-    line: 50
-    excerpt: 'gamma: sp.Rational(1, 9) + dgamma,'
-    stage: '159'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage159_notes_only_numeric_illustrations
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '159'
-  parameter_names:
-  - Delta_Q_dg_coeff
-  - delta_C_dg_coeff
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
-    line: 172
-    excerpt: 7.84345671020202\,\sigma_*\,\delta\mathfrak g.
-    stage: '159'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage160_canonical_branch_characterized_kappa_gamma
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '160'
-  parameter_names:
-  - gamma_0
-  - kappa_0
-  - r_c
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
-    line: 73
-    excerpt: Stage 115 showed that the compensated canonical branch is characterized by
-    stage: '160'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage160_notes_only_slippage_numerics
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '160'
-  parameter_names:
-  - Delta_Q_dS_coeff
-  - Delta_Q_dSigma0_coeff
-  - Delta_Q_dThat_coeff
-  - delta_BW_slip_coeff
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
-    line: 187
-    excerpt: 0.240311770175051\,\delta\mathfrak B_W.
-    stage: '160'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage160_tangent_susceptibility_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '160'
-  parameter_names:
-  - dPi_tan_coeff_S
-  - dPi_tan_coeff_Sigma0
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
-    line: 66
-    excerpt: dPi_tan = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
-    stage: '160'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage161_delta_q_sigma_star_closure
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - Xi_slip
-  - sigma_star
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_161.tex
-    line: 16
-    excerpt: Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
-    stage: '161'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage161_dsigma0_dthat_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - dSigma0_per_dThat
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
-    line: 122
-    excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
-    stage: '161'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage161_dsigma0_dthat_conversion_ratio
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - dSigma0_over_dThat
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
-    line: 122
-    excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
-    stage: '161'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage161_gamma0_star_branch_value
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - gamma_0
-  - kappa_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
-    line: 65
-    excerpt: \gamma_0=\frac{1+r_c}{9},
-    stage: '161'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage161_rF1_family1_radius
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
-    line: 135
-    excerpt: rF1 = sp.Float("1.77799353547498")
-    stage: '161'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage161_stage159_tangential_transport_coeffs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - dPi_tan_coeff_dS
-  - dPi_tan_coeff_dSigma0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
-    line: 117
-    excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
-    stage: '161'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage161_upsilon_pi_one_ninth_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '161'
-  parameter_names:
-  - Upsilon_Pi
-  - r_c_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
-    line: 25
-    excerpt: \frac{1+r_{c,*}}{9}
-    stage: '161'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage162_gamma0_one_ninth_r_form
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '162'
-  parameter_names:
-  - gamma_0
-  - r_frak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
-    line: 61
-    excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
-    stage: '162'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage162_gamma0_similarity_law
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '162'
-  parameter_names:
-  - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
-    line: 15
-    excerpt: \gamma_0=\frac{4L_W^2}{3\pi^2 a^2}
-    stage: '162'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage162_rF1_family1_radius
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '162'
-  parameter_names:
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
-    line: 71
-    excerpt: rF1 = sp.Float("1.77799353547498", 30)
-    stage: '162'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage162_r_f1_family1_value
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '162'
-  parameter_names:
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
-    line: 155
-    excerpt: \mathfrak r_{F1}\approx 1.77799353547498,
-    stage: '162'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage163_Rstar_quarter
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '163'
-  parameter_names:
-  - R_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
-    line: 112
-    excerpt: Rstar = sp.Rational(1, 4)
-    stage: '163'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage163_delta_perp_exact_parent_expression
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '163'
-  parameter_names:
-  - delta_perp
-  - g_minus_prime_r_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
-    line: 21
-    excerpt: and that this scalar has an exact parent-variable expression in terms of the microscopic deformations of
-    stage: '163'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage163_family1_canonical_point_block
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '163'
-  parameter_names:
-  - S_can
-  - Sigma0_can
-  - g_F1
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
-    line: 123
-    excerpt: rf1 = sp.Float("1.77799353547498", 30)
-    stage: '163'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage163_family1_readback_misattribution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '163'
-  parameter_names:
-  - S_can
-  - Sigma0_can
-  - g_star
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
-    line: 18
-    excerpt: '- The Family-1 numbers at the end are carried readbacks from the Stage 162/146'
-    stage: '163'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage163_sigma0_can_digit_variant
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '163'
-  parameter_names:
-  - Sigma0_can
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
-    line: 125
-    excerpt: Sigma0_can = sp.Float("4.651033550168876", 30)
-    stage: '163'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage164_family1_point_injection
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '164'
-  parameter_names:
-  - g_star
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
-    line: 141
-    excerpt: g_num = sp.Float("0.758035078944663", 30)
-    stage: '164'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage164_log_channel_prefactors_27_40_27_320
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '164'
-  parameter_names:
-  - first_log_channel_prefactor
-  - second_log_channel_prefactor
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
-    line: 98
-    excerpt: first_expected = -sp.Rational(27,40) * sp.pi * mpsi**2 * Zq * csw**3 / (hbar * mu0 * qstar * rho_w * Tm * vw0
-      * a**2 * Lw**2)
-    stage: '164'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage164_quarter_sqrt_weight
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '164'
-  parameter_names:
-  - delta_perp_channel_weight
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
-    line: 12
-    excerpt: \frac{1}{4\sqrt{1+\mathfrak r_*^2}}\,
-    stage: '164'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage165_frozen_n5_wall_eos
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '165'
-  parameter_names:
-  - n_wall_eos
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
-    line: 27
-    excerpt: '4. and after the frozen `n=5` wall-EOS reduction the whole actual branch-drift problem collapses to only four
-      independent microscopic drifts:'
-    stage: '165'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage165_gstar_literal
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '165'
-  parameter_names:
-  - g_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
-    line: 110
-    excerpt: gstar = sp.Float("0.758035078944663", 30)
-    stage: '165'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage165_pinned_parent_ratios
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '165'
-  parameter_names:
-  - g_frak
-  - r_frak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
-    line: 44
-    excerpt: 'are pinned at first order on the exact lower branch:'
-    stage: '165'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage165_rstar_closed_form_4107
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '165'
-  parameter_names:
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
-    line: 109
-    excerpt: rstar = sp.sqrt(4107 - 100*sp.pi**2) / (10*sp.pi)
-    stage: '165'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage166_four_observables_determine_drifts
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '166'
-  parameter_names:
-  - K_q
-  - K_s
-  - P_0
-  - Theta_w
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
-    line: 16
-    excerpt: 'The right next move is **not** to guess them one by one.  The grouped wall/BdG/Maxwell/mixed bundle already
-      exposes four natural observables that determine them algebraically:'
-    stage: '166'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage166_theta_chi_wall_datum
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '166'
-  parameter_names:
-  - Theta_w_chi
-  - rho_w_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
-    line: 94
-    excerpt: Theta_chi = sp.Float("4.06863235008162", 30)
-    stage: '166'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage166_theta_chi_wall_temperature
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '166'
-  parameter_names:
-  - Theta_chi
-  - rho_w_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
-    line: 94
-    excerpt: Theta_chi = sp.Float("4.06863235008162", 30)
-    stage: '166'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage167_parent_ratios_first_order_invariants
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '167'
-  parameter_names:
-  - g_frak
-  - r_c
-  - r_frak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
-    line: 26
-    excerpt: 3. and, most importantly, the exact parent ratios
-    stage: '167'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage168_canonical_mouth_block
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '168'
-  parameter_names:
-  - S_can
-  - Sigma0_can
-  - g_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
-    line: 119
-    excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
-    stage: '168'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage168_eps_perp_exact_weights
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '168'
-  parameter_names:
-  - eps_perp
-  - g_star
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
-    line: 171
-    excerpt: +\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_L.
-    stage: '168'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage168_rexact_closed_form_4107
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '168'
-  parameter_names:
-  - r_F1
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/mathematica/moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl
-    line: 105
-    excerpt: rExact = Sqrt[4107 - 100*Pi^2]/(10*Pi);   (* canonical Family-1 radius = 1.77799353547498... *)
-    stage: '168'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage168_sigma0_num_digit_variant
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '168'
-  parameter_names:
-  - Sigma0_num
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
-    line: 119
-    excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
-    stage: '168'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage169_family1_point_injection
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '169'
-  parameter_names:
-  - g_star
-  - r_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
-    line: 127
-    excerpt: r_num = sp.Float('1.77799353547498', 30)
-    stage: '169'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage169_seven_tenths_invariant
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '169'
-  parameter_names:
-  - A_x_squared_coefficient
-  - b_x_over_a_x
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
-    line: 93
-    excerpt: \mathcal A_x^2=\frac{7}{10}\,\epsilon^2\,(x^{(1)})^2.
-    stage: '169'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage169_xi_perp_paper_targets
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '169'
-  parameter_names:
-  - Xi_perp_coeff_XiL
-  - Xi_perp_coeff_Xiv
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
-    line: 138
-    excerpt: ("Xi_perp coeff on Xiv", coeff_v, sp.Float('1.00314310113848', 20)),
-    stage: '169'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage170_canonical_isotropic_loading_u2_u4
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '170'
-  parameter_names:
-  - D2_over_D0
-  - D4_over_D0
-  - u2
-  - u4
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
-    line: 39
-    excerpt: u2 = sp.Rational(1, 9)
-    stage: '170'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage170_canonical_u2_u4
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '170'
-  parameter_names:
-  - u_2
-  - u_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
-    line: 90
-    excerpt: u_2=\frac19,
-    stage: '170'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage170_k_a_one_ninth_combination
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '170'
-  parameter_names:
-  - K_A_weight
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
-    line: 25
-    excerpt: '   \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},'
-    stage: '170'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage171_outlet_feed_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '171'
-  parameter_names:
-  - delta_gamma_W_coefficient
-  - delta_kappa_W_coefficient
-  - sigma_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
-    line: 16
-    excerpt: \frac{3(1-\sigma_*)}{\sigma_* D_0}\,\mathcal K_A,
-    stage: '171'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage172_canonical_branch_collapse
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '172'
-  parameter_names:
-  - G1_frak
-  - K1_frak
-  - u_2
-  - u_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
-    line: 238
-    excerpt: the first-order variation on the canonical branch \((u_2,u_4)=(1/9,4/81)\) is
-    stage: '172'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage172_canonical_even_collapse_u2_pin
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '172'
-  parameter_names:
-  - u2
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
-    line: 71
-    excerpt: banner("Canonical-even collapse at u2 = 1/9")
-    stage: '172'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage172_wl_canonical_banner
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '172'
-  parameter_names:
-  - u_2
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
-    line: 61
-    excerpt: banner["Canonical-even collapse at u2 = 1/9"];
-    stage: '172'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage173_canonical_loading_substitution
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '173'
-  parameter_names:
-  - D2_over_D0
-  - D4_over_D0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
-    line: 60
-    excerpt: u21_can = sp.simplify(u21.subs(D2, -sp.Rational(1,9)*D0))
-    stage: '173'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage173_slopes_fixed_by_d01
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '173'
-  parameter_names:
-  - D_01
-  - u_2_slope
-  - u_4_slope
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
-    line: 226
-    excerpt: 'So on the even-preserving branch, all three conservative grouped operator slopes are fixed by a single static
-      slope \(D_{01}\):'
-    stage: '173'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage173_stage024_signature_triple
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '173'
-  parameter_names:
-  - lambda_20
-  - lambda_21
-  - lambda_22
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
-    line: 23
-    excerpt: \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1,
-    stage: '173'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage174_self_similarity_weights
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '174'
-  parameter_names:
-  - omega_B
-  - omega_Z
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
-    line: 29
-    excerpt: \omega_B(\delta_B-\delta_K)
-    stage: '174'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage175_wall_normalized_factorization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '175'
-  parameter_names:
-  - B_0_alpha
-  - K_wall_baseline
-  - Z_0_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
-    line: 29
-    excerpt: B_{0,\alpha}=K\,\chi_\alpha^2,
-    stage: '175'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage176_square_root_mixed_leg_exponent
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '176'
-  parameter_names:
-  - G_W
-  - K_wall_baseline
-  - Omega_W
-  - mixed_leg_exponent_half
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
-    line: 21
-    excerpt: On branches where the last two are rigid, the entire remaining linear grouped `2.5`PN defect collapses to a single
-      square-root wall-loading law for the raw mixed leg.
-    stage: '176'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage177_xi1_exact_collapse
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '177'
-  parameter_names:
-  - P_0
-  - P_1
-  - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
-    line: 353
-    excerpt: So in the dominant-port rigid branch, zero defect is exactly the square-root mixed-leg slope condition
-    stage: '177'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage177_xi1_prefactor_slope_no_derives_edge
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '177'
-  parameter_names:
-  - P_0
-  - P_1
-  - Xi_1
-  - lambda_A
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
-    line: 67
-    excerpt: \Xi_1=\frac{P_1}{P_0}.
-    stage: '177'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage178_doubled_slope_factors
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '178'
-  parameter_names:
-  - kappa_1
-  - nu_r_factor_2
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
-    line: 97
-    excerpt: It says the static outgoing-transfer slope is simply the doubled numerator slope minus the doubled detuning slope.
-    stage: '178'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage179_xi1_factor_two_transfer_slopes
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '179'
-  parameter_names:
-  - Xi_1_prefactor_2
-  - rho_r_N
-  - tau_r
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
-    line: 43
-    excerpt: \Xi_1 = 2\sum_r \rho_r^{(N)}\,\tau_r,
-    stage: '179'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage180_beta0_continuum_import
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '180'
-  parameter_names:
-  - K_0
-  - Z_W
-  - beta_0
-  - epsilon_W
-  - rho
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
-    line: 21
-    excerpt: \frac{\mu_W}{\mu_\eta}\frac{K_\eta^{(\mathrm{eff})}}{K_W^{(\mathrm{eff})}}
-    stage: '180'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage181_eps_split_2_11_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '181'
-  parameter_names:
-  - eps_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
-    line: 41
-    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
-    stage: '181'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage181_lambda_prefactor_27pi2_20
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '181'
-  parameter_names:
-  - Lambda_prefactor
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
-    line: 40
-    excerpt: Lam = sp.simplify(sp.Rational(27) * sp.pi**2 * G * c_s**5 * OmegaW2 / (20 * a**5 * c**5))
-    stage: '181'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage181_split_blocking_two_elevenths
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '181'
-  parameter_names:
-  - eps_W_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
-    line: 29
-    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
-    stage: '181'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage181_transfer_shape_27pi2_over_20
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '181'
-  parameter_names:
-  - R_target
-  - T_A_squared_prefactor
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
-    line: 14
-    excerpt: \frac{27\pi^2Gc_s^5}{20a^5c^5}\,
-    stage: '181'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage181_two_elevenths_split_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '181'
-  parameter_names:
-  - delta_U
-  - epsilon_W_split_coefficient_2_11
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
-    line: 29
-    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
-    stage: '181'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage182_eps_split_2_11_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '182'
-  parameter_names:
-  - eps_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage182_microscopic_coherent_slippage_sympy_audit.py
-    line: 52
-    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
-    stage: '182'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage182_two_elevenths_carried_forward
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '182'
-  parameter_names:
-  - epsilon_W_split_coefficient_2_11
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
-    line: 14
-    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
-    stage: '182'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage183_canonical_sigma_nt
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '183'
-  parameter_names:
-  - Sigma_nt
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage183_triangular_normal_form_mathematica_audit.wl
-    line: 152
-    excerpt: expectZero["Canonical branch-adapted Sigma_nt", sigmaNTDerived - sigmaNTCanonical];
-    stage: '183'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage183_eps_split_2_11_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '183'
-  parameter_names:
-  - eps_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
-    line: 46
-    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
-    stage: '183'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage184_b_star_exponent
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '184'
-  parameter_names:
-  - B_star
-  - chi_0_star
-  - delta_U_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
-    line: 36
-    excerpt: B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}},
-    stage: '184'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage184_eps_split_2_11_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '184'
-  parameter_names:
-  - eps_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
-    line: 94
-    excerpt: \epsilon=\epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
-    stage: '184'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage185_frozen_reference_coefficients_E_star_F_star
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '185'
-  parameter_names:
-  - E_star
-  - F_star
-  - chi_0_star
-  - delta_U_star
-  - epsilon_W_star
-  - epsilon_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
-    line: 225
-    excerpt: F_*:= \frac{2\chi_{0,*}}{1+\delta_{U,*}} + \frac{4\epsilon_{W,*}\delta_{U,*}}{11(1-\epsilon_*)(1+\delta_{U,*})^2}.
-    stage: '185'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage185_monomial_exponents
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '185'
-  parameter_names:
-  - C_tr_star_exponents
-  - chi_0_star
-  - delta_U_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
-    line: 35
-    excerpt: \mathfrak C_{{\rm tr},*}:=\chi_0^{\,1+\delta_{U,*}}\,
-    stage: '185'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage186_not_fine_tuning_claim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '186'
-  parameter_names:
-  - Sigma_eta
-  - Sigma_nt
-  - Sigma_tr
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
-    line: 393
-    excerpt: '### 7.1 The zero-defect branch is not fine-tuning'
-    stage: '186'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage186_rank3_codimension_status_claim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '186'
-  parameter_names:
-  - chi_0_star
-  - rank_M_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
-    line: 194
-    excerpt: So the monomial-drift map has exact rank three on the constructive coherent branch \(\chi_{0,*}>0\).
-    stage: '186'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage186_wl_matches_reference_matrix
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '186'
-  parameter_names:
-  - M_star_matrix
-  status: scanned
-  file_line_citations:
-  - path: mathematica/moving_throat_pde_stage186_similarity_orbit_closure_mathematica_audit.wl
-    line: 83
-    excerpt: expectZero["M_* row 1 from C_tr monomial matches reference", Total[Abs[mMatDerived[[1]] - mMat[[1]]]]];
-    stage: '186'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage187_exact_level_set_orbit_identity
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '187'
-  parameter_names:
-  - C_nt_star
-  - C_tr_star
-  - epsilon_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
-    line: 33
-    excerpt: \text{the exact level sets of }
-    stage: '187'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage187_g2_common_tangent_lambda_1
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '187'
-  parameter_names:
-  - Lambda_1
-  status: scanned
-  file_line_citations:
-  - path: notes/g2/g2_full_output.md
-    line: 757
-    excerpt: \approx 0.279605891931464.
-    stage: '187'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage189_eps_split_2_11_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '189'
-  parameter_names:
-  - eps_split_coefficient
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
-    line: 110
-    excerpt: epssplit = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
-    stage: '189'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage189_lambda0_prefactor_27_20
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '189'
-  parameter_names:
-  - Lambda_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
-    line: 98
-    excerpt: Lambda0_val = sp.Rational(27, 20) * sp.pi**2 * G_II * cs_II**5 / (a_II**5 * c_II**5)
-    stage: '189'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage189_mhat0_quadrupole_normalization_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '189'
-  parameter_names:
-  - Gamma_5
-  - P_0
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
-    line: 84
-    excerpt: m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5};
-    stage: '189'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage189_normalization_target_2g_5c5
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '189'
-  parameter_names:
-  - Gamma_5_coefficient_1_27
-  - m_hat0_squared_Gamma_5
-  - normalization_54_5
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
-    line: 515
-    excerpt: m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
-    stage: '189'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage191_carried_coefficients_in_packet_interconversion
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '191'
-  parameter_names:
-  - B_star
-  - F_star
-  - chi_0_star
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
-    line: 253
-    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
-    stage: '191'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage191_fixed_by_previous_stages
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '191'
-  parameter_names:
-  - Delta_branch
-  - Delta_orbit
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
-    line: 341
-    excerpt: Everything else is compiler algebra already fixed by the previous stages.
-    stage: '191'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage192_canonical_quotient_section
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '192'
-  parameter_names:
-  - K_eta_eff
-  - T_U
-  - mu_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
-    line: 176
-    excerpt: Define the canonical quotient section
-    stage: '192'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage192_chi_q_unit_relations
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '192'
-  parameter_names:
-  - Delta_Q
-  - N_Q
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_192.tex
-    line: 21
-    excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
-    stage: '192'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage193_grouped_p2_target_surface_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '193'
-  parameter_names:
-  - Omega_Q
-  - Y_asymptote_3_4
-  - Y_pole_weight_1_4
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
-    line: 112
-    excerpt: Y_pole = sp.simplify(sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2 / OmegaQ2))
-    stage: '193'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage193_one_pole_carrier_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '193'
-  parameter_names:
-  - Delta_pole
-  - Omega_Q_sq
-  - a_2
-  - a_4
-  - b_2
-  - b_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
-    line: 217
-    excerpt: Once the isotropic one-pole surface is imposed, the common grouped conservative carrier is forced into a one-parameter
-      form.
-    stage: '193'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage193_p0_target_surface_frozen_without_derivation_edge
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '193'
-  parameter_names:
-  - P0_target
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_193.tex
-    line: 15
-    excerpt: \stagefield{Output}{Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry
-      lane enters the grouped carrier only at quadratic anisotropy order.}
-    stage: '193'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage194_canonical_even_moment_ratios
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '194'
-  parameter_names:
-  - L2_over_L0_1_9
-  - L4_combination_4_81
-  - odd_scale_1_27
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
-    line: 158
-    excerpt: '        sp.Eq(-L2 / L0, sp.Rational(1, 9)),'
-    stage: '194'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage194_chi_Q_canonical_fixing
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '194'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
-    line: 184
-    excerpt: \boxed{\chi_Q=1.}
-    stage: '194'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage194_chi_q_fixed_on_canonical_branch
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '194'
-  parameter_names:
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
-    line: 333
-    excerpt: The exact outgoing spherical `l=2` DtN model fixes the canonical odd coefficient directly. So `\chi_Q` is no
-      longer a placeholder on the compact passive/outgoing branch.
-    stage: '194'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage194_even_deformations_not_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '194'
-  parameter_names:
-  - Sigma_2
-  - Sigma_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
-    line: 272
-    excerpt: So the even deformations are not free once the canonical conservative moments are held fixed.
-    stage: '194'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage195_mhat0_natural_source_map
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '195'
-  parameter_names:
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
-    line: 108
-    excerpt: NQ_pt = sp.simplify(NQ_from_odd.subs(mhat0, 1))
-    stage: '195'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage195_natural_source_map_mhat0
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '195'
-  parameter_names:
-  - N_Q
-  - m_hat_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
-    line: 196
-    excerpt: No additional source-map ambiguity survives at this stage once the odd observable closure is enforced.
-    stage: '195'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage195_omega_Q_pole_frequency
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '195'
-  parameter_names:
-  - Omega_Q
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
-    line: 45
-    excerpt: Omega_Q = sp.simplify(sp.Integer(3) * c_s / (2 * a))
-    stage: '195'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage195_p0_target_canonical_value
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '195'
-  parameter_names:
-  - P0_target
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
-    line: 46
-    excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
-    stage: '195'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage196_sigma_Q_canonical_outgoing_scale
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '196'
-  parameter_names:
-  - sigma_Q_can
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
-    line: 45
-    excerpt: sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
-    stage: '196'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage197_chi_q_unity_packet_a_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '197'
-  parameter_names:
-  - Delta_Q
-  - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_197.tex
-    line: 15
-    excerpt: \stagefield{Output}{Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole
-      Packet-A scalar.}
-    stage: '197'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage197_p0_target_quadrupole_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '197'
-  parameter_names:
-  - Gamma5_target
-  - P0_target
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
-    line: 76
-    excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
-    stage: '197'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage200_mismatch_chart_rederived_not_posited
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '200'
-  parameter_names:
-  - M_star
-  - q_eta
-  - q_nt
-  - q_tr
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
-    line: 446
-    excerpt: print("   is re-derived from the exact dependent-triple orbit solve rather than posited.")
-    stage: '200'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage201_canonical_repair_vector
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '201'
-  parameter_names:
-  - Delta_x_rep
-  - Pi_can_orbit_projection
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_201.tex
-    line: 7
-    excerpt: \stagefield{Purpose}{Stage~201 turns the reference-free four-scalar home-stretch theorem into an executable realization
-      audit.  It defines intrinsic target ratios, the quotient coordinates \((q_{\rm tr},q_{\rm nt},q_\eta)\), the canonical
-      dependent-triple repair vector, and the same-free-quintuple orbit projection.}
-    stage: '201'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage202_split_u_ratio_uniquely_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '202'
-  parameter_names:
-  - C_tr_target
-  - delta_U_star_graph
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
-    line: 197
-    excerpt: So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice.
-    stage: '202'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage208_canonical_two_ray_screen
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '208'
-  parameter_names:
-  - a_i_equal_mix
-  - a_j_equal_mix
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_208.tex
-    line: 15
-    excerpt: \stagefield{Output}{Pairwise mixed-ray cone, gradient and off-diagonal Hessian synergy laws, canonical two-ray
-      screen, promotion/deferral rule, and minimal packet for the full ratio optimizer.}
-    stage: '208'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage210_canonical_triple_screens
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '210'
-  parameter_names:
-  - triple_screen_directions
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_210.tex
-    line: 15
-    excerpt: \stagefield{Output}{Boundary reduction for triples, three-coordinate gradient and curvature synergy, canonical
-      triple-screen audit, interior-screen dominance criterion, and non-improvement filter.}
-    stage: '210'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage212_evaluation_budget_600
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '212'
-  parameter_names:
-  - evaluation_budget_600
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_212.tex
-    line: 15
-    excerpt: \stagefield{Output}{Support-\(\le3\) finite search ledger, primitive-triple ranking theorem, global three-coordinate
-      improvement/no-improvement theorem, and finite evaluation budget \(600\).}
-    stage: '212'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage213_four_way_canonical_screens
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '213'
-  parameter_names:
-  - four_way_screen_directions
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_213.tex
-    line: 7
-    excerpt: \stagefield{Purpose}{Stage~213 opens the four-coordinate search by reducing every four-simplex face to a closed
-      triple packet and defining the four-way canonical screens.}
-    stage: '213'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage214_preferred_bound_54
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '214'
-  parameter_names:
-  - candidate_bound_54
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_214.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The derivation forms three stationary numerator equations, introduces one auxiliary
-      square-root variable, obtains a lifted degree pattern \((3,3,3,2)\), proves the \(54\)-candidate preferred bound, and
-      gives a square-root-free projected fallback.}
-    stage: '214'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage215_cumulative_budget_1140
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '215'
-  parameter_names:
-  - cumulative_budget_1140
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_215.tex
-    line: 15
-    excerpt: \stagefield{Output}{Support-\(\le4\) finite search ledger, primitive-quadruple winner theorem, global support-cardinality-four
-      improvement/no-improvement theorem, and preferred cumulative budget \(1140\).}
-    stage: '215'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage217_preferred_bound_162_budgets
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '217'
-  parameter_names:
-  - candidate_bound_162
-  - fallback_budget_1500
-  - preferred_budget_324
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_217.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The derivation writes the four stationary numerator equations, lifts by one auxiliary
-      square-root variable, obtains degree pattern \((3,3,3,3,2)\), proves the preferred \(162\)-candidate bound per envelope,
-      and gives a square-root-free fallback bound.}
-    stage: '217'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage218_total_budgets_1464_2640
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '218'
-  parameter_names:
-  - fallback_budget_2640
-  - preferred_total_budget_1464
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_218.tex
-    line: 15
-    excerpt: \stagefield{Output}{Final local mixed-ray closure theorem, certified support-\(\le5\) splice interval, preferred
-      total budget \(1464\), fallback budget \(2640\), and finite-candidate status of any remaining ambiguity.}
-    stage: '218'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage219_delta_v_mix_fixed_by_theorem
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '219'
-  parameter_names:
-  - alpha_2
-  - alpha_6
-  - delta_V_mix
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
-    line: 386
-    excerpt: with `\widetilde{\delta V}_{\rm mix}` fixed by the one-port susceptibility theorem above.
-    stage: '219'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage222_exact_overlap_constant_kappa
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '222'
-  parameter_names:
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
-    line: 81
-    excerpt: Then the exact overlap constant is
-    stage: '222'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage222_illustrative_barrier_benchmark
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '222'
-  parameter_names:
-  - V_known_x1
-  - epsilon_barrier
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
-    line: 213
-    excerpt: '    V_known = sp.Float(''1.181909222592'')'
-    stage: '222'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage222_numerical_primitive_slice
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '222'
-  parameter_names:
-  - K
-  - M
-  - Omega_U
-  - Omega_W
-  - lambda_B
-  - lambda_R
-  - lambda_U
-  - lambda_W
-  - varpi
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
-    line: 137
-    excerpt: '        lam_B: sp.Rational(1, 2),'
-    stage: '222'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage222_primitive_sample_slice
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '222'
-  parameter_names:
-  - K
-  - M
-  - Omega_U
-  - Omega_W
-  - a
-  - c_s
-  - lam_B
-  - lam_R
-  - lam_U
-  - lam_W
-  - varpi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
-    line: 135
-    excerpt: numerical_slice = {
-    stage: '222'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage222_vknown_barrier_benchmark
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '222'
-  parameter_names:
-  - DeltaV_req
-  - V_known
-  - epsilon
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
-    line: 213
-    excerpt: '    V_known = sp.Float(''1.181909222592'')'
-    stage: '222'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage223_barrier_benchmark_and_eta_window
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '223'
-  parameter_names:
-  - V_known_x1
-  - barrier_floor
-  - eta_linewidth_window
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
-    line: 296
-    excerpt: '    V_known = sp.Float(''1.181909222592'')'
-    stage: '223'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage223_lambda02_rq_dual_engine_overclaim
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '223'
-  parameter_names:
-  - R_Q_lower_wall_lambdaW_0p2
-  - R_Q_upper_wall_lambdaW_0p2
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 21
-    excerpt: '...the corrected upper-/wall `R_Q` figures `145.483858657863` (222, lambda_W=0.2), `138.814136942081` / `137.502546600713`
-      (223, lambda_W=0.2)... each NOW DUAL-ENGINE-ANCHORED - independently recomputed by the new `.wl` and corroborating the
-      verified SymPy script... [truncated line]'
-    stage: '223'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage223_p0_target_calibration_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '223'
-  parameter_names:
-  - P0_target
-  - coefficient_54_over_5
-  - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
-    line: 127
-    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
-    stage: '223'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage223_p0_target_import_unprovenanced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '223'
-  parameter_names:
-  - P0_target
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_223.tex
-    line: 9
-    excerpt: \stagefield{Inputs}{Imports the isotropic full-bundle moments $D_0,D_2,D_4,N_0,N_2,N_4$, the one-pole identity
-      $u_4=4u_2^2$, and the universal target $P_{0,{\rm target}}$.}
-    stage: '223'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage223_universal_p0_target
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '223'
-  parameter_names:
-  - P_0_target
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
-    line: 127
-    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
-    stage: '223'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage224_grouped_signature_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '224'
-  parameter_names:
-  - b_P0_slope
-  - lambda_20
-  - lambda_21
-  - lambda_22
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
-    line: 195
-    excerpt: The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude
-      with grouped signature
-    stage: '224'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage224_kill_test_budgets_slice_anchored
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '224'
-  parameter_names:
-  - P_crit_both_10
-  - P_crit_both_30
-  - P_crit_one_10
-  - P_crit_one_30
-  - barP0_compat
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
-    line: 134
-    excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
-    stage: '224'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage224_stage223_carryover_ceilings
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '224'
-  parameter_names:
-  - Pcrit_both_10
-  - Pcrit_both_30
-  - Pcrit_one_10
-  - Pcrit_one_30
-  - barP0_compat
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
-    line: 134
-    excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
-    stage: '224'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage224_t_quad_target_scale
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '224'
-  parameter_names:
-  - T_quad
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_224.tex
-    line: 9
-    excerpt: \stagefield{Inputs}{Imports the normalized prefactor packet $(\Delta_{\rm norm},a_{P_0},b_{P_0})$, the weak-axisymmetric
-      signature $(1,1/2,-1)$, the line $b_{P_0}=3a_{P_0}$, and the target scale $T_{\rm quad}=54Gc_s^5/(5a^5c^5)$.}
-    stage: '224'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage224_weak_axisymmetric_lane_signature
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '224'
-  parameter_names:
-  - lambda_20
-  - lambda_21
-  - lambda_22
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
-    line: 66
-    excerpt: '    lam21 = sp.Rational(1, 2)'
-    stage: '224'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage225_K_compat_P0_target_pin
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '225'
-  parameter_names:
-  - D_0
-  - D_2
-  - D_4
-  - K_compat
-  - P_0_target
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
-    line: 239
-    excerpt: assert_close(float(P0_target_compat.evalf()), 0.00206979231806289)
-    stage: '225'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage225_stage223_sample_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '225'
-  parameter_names:
-  - OmU
-  - OmW
-  - kappa
-  - lamB
-  - lamR
-  - lamU
-  - lamW
-  - varpi
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
-    line: 202
-    excerpt: 'lamB: sp.Rational(1, 2),'
-    stage: '225'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage225_stage224_xi_budgets
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '225'
-  parameter_names:
-  - B_xi_both_10
-  - B_xi_both_30
-  - B_xi_one_10
-  - B_xi_one_30
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
-    line: 399
-    excerpt: '"both_10": 0.367930328492646,'
-    stage: '225'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage225_xk_xm_forced_zero
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '225'
-  parameter_names:
-  - x_K
-  - x_M
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
-    line: 404
-    excerpt: the second equation forces
-    stage: '225'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage226_canonical_hidden_even_relation
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '226'
-  parameter_names:
-  - H_even
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_226.tex
-    line: 9
-    excerpt: \stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, and
-      the conservative-shape-preserving branch used by the grouped outlet package.}
-    stage: '226'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage226_d01_forced_zero
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '226'
-  parameter_names:
-  - D_01
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
-    line: 207
-    excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
-    stage: '226'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage226_k1_h_even_open_gates
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '226'
-  parameter_names:
-  - H_even
-  - K_1
-  - Xi_load
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_226.tex
-    line: 9
-    excerpt: \stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, ...}
-      (graph node OPEN_5PN_EVEN_GATES)
-    stage: '226'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage226_sigma_even_canonical_gain_scale
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '226'
-  parameter_names:
-  - sigma_even
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
-    line: 278
-    excerpt: That gives a canonical same-charge gain scale for unit microscopic mixed-sector drift amplitude.
-    stage: '226'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage227_kappa_exact_overlap_constant
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '227'
-  parameter_names:
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
-    line: 86
-    excerpt: '- exact overlap constant'
-    stage: '227'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage227_sample_branch_coefficients_exact
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '227'
-  parameter_names:
-  - H_coeff
-  - I_coeff
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
-    line: 256
-    excerpt: '### 3.1 Exact sample-branch coefficients'
-    stage: '227'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage227_xi1_sample_law_coefficients
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '227'
-  parameter_names:
-  - c_h
-  - c_i
-  - c_m
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
-    line: 201
-    excerpt: print("Xi_1 sample law =", sp.simplify(2 * m_expr + sp.Rational(6, 19) * i_expr + 50 * h_expr / (98 * sp.pi**2
-      - 25)))
-    stage: '227'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage228_k_compat_exact_stiffness
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '228'
-  parameter_names:
-  - K_compat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
-    line: 77
-    excerpt: '- and the exact isotropic compatibility wall stiffness'
-    stage: '228'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage228_primitive_parameter_tuple
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '228'
-  parameter_names:
-  - M
-  - Omega_U
-  - Omega_W
-  - lambda_B
-  - lambda_R
-  - lambda_U
-  - lambda_W
-  - varpi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
-    line: 72
-    excerpt: '- primitive parameters'
-    stage: '228'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage228_rq_requirement_threshold
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '228'
-  parameter_names:
-  - RQ_req
-  - threshold_eta_01
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
-    line: 432
-    excerpt: threshold_eta_01 = 21.854566296358396
-    stage: '228'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage229_delta_crossover_threshold
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '229'
-  parameter_names:
-  - delta
-  - xi_star
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_229.tex
-    line: 15
-    excerpt: '\stagefield{Output}{Selected-branch classifier theorem: the pure-transfer defect is denominator-like near softening,
-      with crossover controlled by the exact threshold $\delta=8/9$.}'
-    stage: '229'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage230_r_star_exact_threshold
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '230'
-  parameter_names:
-  - R_star
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
-    line: 224
-    excerpt: This gives the exact threshold
-    stage: '230'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage230_stage228_rigid_slope_carry
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '230'
-  parameter_names:
-  - s_minus_den
-  - s_minus_num
-  - s_plus_den
-  - s_plus_num
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
-    line: 77
-    excerpt: s_plus_den = sp.Rational("-0.301516097158113")
-    stage: '230'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage231_dynamic_budget_carry
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '231'
-  parameter_names:
-  - B_dyn_both_inf
-  - B_dyn_nonempty_inf
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
-    line: 272
-    excerpt: B_dyn_both_inf = 0.967282389363822
-    stage: '231'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage232_family1_geometry_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Lambda_ell
-  - Xi_drive_prefactor
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 50
-    excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
-    stage: '232'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage232_fom_prefactor_100
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Xi_prefactor_100
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 149
-    excerpt: Xi_chi = 100 * Theta_w_chi * Lambda_ell**2
-    stage: '232'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage232_injected_wall_depth_theta_w
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Theta_w_J
-  - Theta_w_chi
-  - Xi_J
-  - Xi_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 146
-    excerpt: Theta_w_chi = mp.mpf("4.06863235008162") / Theta_w_J = mp.mpf("0.927552032539308") (graph nodes OPEN_ACTUAL_BRANCH_EXPORTER
-      + MT_V2_16_NO_REFIT)
-    stage: '232'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage232_known_5pn_data_injection
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - rho_alpha_max
-  - zeta_phys
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
-    line: 23
-    excerpt: '> inject the known `5`PN support/source data into the same-charge audit chain and decide whether the live bottleneck
-      moves, or stays on the unresolved static orbit-lock / coherent placement packet.'
-    stage: '232'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage232_lambda_ell_geometry_literals
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Lambda_ell
-  - chi_s
-  - kappa
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 50
-    excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
-    stage: '232'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage232_nq_canonical_normalization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - N_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
-    line: 314
-    excerpt: together with the canonical outgoing-normalization condition
-    stage: '232'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage232_theta_w_5pn_injection
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Theta_w_J
-  - Theta_w_chi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 146
-    excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
-    stage: '232'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage232_wall_depth_thetas
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '232'
-  parameter_names:
-  - Theta_w_J
-  - Theta_w_chi
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
-    line: 146
-    excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
-    stage: '232'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage233_calibrated_branch_delta_norm
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '233'
-  parameter_names:
-  - Delta_norm
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
-    line: 203
-    excerpt: On a calibrated branch with
-    stage: '233'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage233_stage224_ceiling_carry
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '233'
-  parameter_names:
-  - Pbar
-  - Pcrit_nonempty
-  - Pcrit_robust
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
-    line: 115
-    excerpt: Pbar_num = sp.Float("0.002069792318062885")
-    stage: '233'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage234_canonical_least_deformation_family
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '234'
-  parameter_names:
-  - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
-    line: 372
-    excerpt: So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation
-      family that realizes any chosen \(\Xi_1\).
-    stage: '234'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage236_equal_drift_ray_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '236'
-  parameter_names:
-  - K_eta
-  - mu
-  - q_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
-    line: 369
-    excerpt: It only forces that correction to lie on a one-dimensional diagonal ray.
-    stage: '236'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage237_branch_sample_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '237'
-  parameter_names:
-  - Rratio_base
-  - Rtarget_base
-  - eps_base
-  - qeta_param_base
-  - ref_base
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
-    line: 17
-    excerpt: base[sym] = sp.Rational(1, 5)
-    stage: '237'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage239_exact_microscopic_correction
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '239'
-  parameter_names:
-  - Delta_K_eta
-  - Delta_T
-  - Delta_mu
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_239.tex
-    line: 13
-    excerpt: \stagefield{Derivation ledger}{The derivation diagonalizes the packet in $(U,V)$, derives the exact microscopic
-      correction $(\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V)$, and identifies the Cartesian orbit-lock point.}
-    stage: '239'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage240_loading_ratio_from_minimal_precursor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '240'
-  parameter_names:
-  - Pi_tr
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/paper/stages/stage_240.tex
-    line: 15
-    excerpt: 'Exact selected loading ratio: $\rho_\alpha=4/3$, $\zeta_{\rm req}=1/3$, ... (graph nodes MT_STAGE025_MINIMAL_NORMALIZATION
-      [reduced_model] / EQ_P0_TARGET [open_actual_branch_data])'
-    stage: '240'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage240_loading_ratio_not_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '240'
-  parameter_names:
-  - C_mix
-  - Pi_tr
-  - rho_alpha
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
-    line: 104
-    excerpt: This stage shows that the ratio is not free.
-    stage: '240'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage240_minimal_isotropic_precursor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '240'
-  parameter_names:
-  - c0_min
-  - c1_min
-  - rho_alpha
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
-    line: 137
-    excerpt: c0_min = sp.Rational(3, 4)
-    stage: '240'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage240_rho_alpha_selected_demand
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '240'
-  parameter_names:
-  - Pi_tr_over_C_mix
-  - rho_alpha
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 782
-    excerpt: carried forward from the Stage 240 selected support demand
-    stage: '240'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage240_zeta_req_fixed_exactly
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '240'
-  parameter_names:
-  - Pi_tr
-  - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
-    line: 277
-    excerpt: 'Then the selected demand product is fixed exactly:'
-    stage: '240'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage241_beta_window_endpoint
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '241'
-  parameter_names:
-  - beta_max
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
-    line: 180
-    excerpt: beta_max = sp.Rational(2, 11)
-    stage: '241'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage241_varrho_no_longer_free
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '241'
-  parameter_names:
-  - epsilon_star
-  - varrho
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
-    line: 83
-    excerpt: was no longer free. It was tied to the same selected branch by
-    stage: '241'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage242_placement_coeff_2_11
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '242'
-  parameter_names:
-  - placement_coeff_2_11
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 779
-    excerpt: carried forward from the coherent local D/N placement map used in the Stage
-    stage: '242'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage242_varrho_phys_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '242'
-  parameter_names:
-  - sigma_phys
-  - varrho_phys
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
-    line: 671
-    excerpt: It is fixed by
-    stage: '242'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage244_leakage_forced_through_fixed_demand
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '244'
-  parameter_names:
-  - Pi_tr
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
-    line: 557
-    excerpt: forces the entire leakage/work compiler through the same selected-support demand that Stage 242 already fixed.
-    stage: '244'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage245_eps_eta_session1_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '245'
-  parameter_names:
-  - epsilon_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
-    line: 516
-    excerpt: which matches the Session-I value.
-    stage: '245'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage245_session1_readback
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '245'
-  parameter_names:
-  - U_obs
-  - V_obs
-  - eps_ref
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
-    line: 209
-    excerpt: U_obs = sp.Float("0.14313458")
-    stage: '245'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage245_session1_readback_inputs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '245'
-  parameter_names:
-  - U_obs
-  - V_obs
-  - a_U
-  - a_V
-  - eps_eta_ref
-  - g_UV
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
-    line: 209
-    excerpt: U_obs = sp.Float("0.14313458")
-    stage: '245'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage246_lower_branch_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '246'
-  parameter_names:
-  - sigma_min
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
-    line: 387
-    excerpt: The positive-source theorem had forced the lower branch as the only admissible positive candidate.
-    stage: '246'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage246_rF1_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '246'
-  parameter_names:
-  - rF1
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
-    line: 145
-    excerpt: rF1 = sp.sqrt(sp.Rational(12, 1) / sp.pi**2 * (sp.Rational(37, 20))**2 - 1)
-    stage: '246'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage246_session1_inputs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '246'
-  parameter_names:
-  - a_0
-  - b_0
-  - r_eval
-  - r_sigma
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
-    line: 230
-    excerpt: 'r: sp.Float("1.00217028"),'
-    stage: '246'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage246_session1_readback_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '246'
-  parameter_names:
-  - a0
-  - b0
-  - r
-  - r_sigma
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
-    line: 230
-    excerpt: 'r: sp.Float("1.00217028"),'
-    stage: '246'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage246_two_moment_source_matrix
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '246'
-  parameter_names:
-  - M_src
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
-    line: 123
-    excerpt: M_src = sp.Matrix([[sp.Rational(1, 3), -sp.Rational(1, 15)],
-    stage: '246'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage247_benchmark_pinned_to_paper_figures
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - Lvar_soft
-  - lambda_L
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
-    line: 239
-    excerpt: '    # F5: pin independently derived benchmark quantities to the paper figures.'
-    stage: '247'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage247_lambda_L_backsolve
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - lambda_L
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
-    line: 238
-    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
-    stage: '247'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage247_lambda_L_closure
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - lambda_L
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
-    line: 238
-    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
-    stage: '247'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage247_lambda_l_fixed_by_recorded_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - lambda_L
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
-    line: 497
-    excerpt: 'which is fixed exactly by the recorded softening point:'
-    stage: '247'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage247_lambda_w_natural_specialization
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - lambda_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
-    line: 489
-    excerpt: Choose the natural Session-I work specialization
-    stage: '247'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage247_session1_packet
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - G_W
-  - Rmix
-  - UVdrop_obs
-  - Veff_obs
-  - Wsess_obs
-  - beta_Q
-  - beta_U
-  - beta_W
-  - eta_leak
-  - mu_w
-  - xi_R
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
-    line: 213
-    excerpt: Veff_obs = sp.Float("1.74701126")
-    stage: '247'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage247_session1_softening_point
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '247'
-  parameter_names:
-  - a0
-  - b0
-  - betaW
-  - eta_leak
-  - kappa
-  - lam
-  - mu_w
-  - rF1
-  - r_sigma
-  - r_soft
-  - xi_R
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
-    line: 204
-    excerpt: 'rF1: sp.Float("1.77799353547498"),'
-    stage: '247'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage248_chosen_contact_scale_benchmark
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '248'
-  parameter_names:
-  - r_contact
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
-    line: 538
-    excerpt: 'So the benchmark does exactly what Stage 248 needs it to do: it exhibits a concrete speed range where the lowered
-      branch reaches the chosen contact scale and the Coulomb comparison does not.'
-    stage: '248'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage248_session2_launch_parameters
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '248'
-  parameter_names:
-  - E_sub
-  - V0
-  - Vpeak
-  - m_s
-  - r0
-  - r_c
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
-    line: 237
-    excerpt: r0_num = 5.0
-    stage: '248'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage248_session2_readback
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '248'
-  parameter_names:
-  - E_sub
-  - I_Coul_report
-  - I_new
-  - V_0
-  - V_peak
-  - r_0
-  - r_c
-  - r_coul_turn_report
-  - r_inner
-  - r_peak
-  - r_turn_new
-  - v_cross
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 892
-    excerpt: labeled benchmark-only numeric inputs copied from the declared Session-II
-    stage: '248'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage248_v0_cross_benchmark_speed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '248'
-  parameter_names:
-  - v0_cross
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
-    line: 513
-    excerpt: The Session-II report also gave an explicit above-threshold demonstration speed
-    stage: '248'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage248_xi_turn_lambda_th_carried_hardcodes
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '248'
-  parameter_names:
-  - Xi_turn
-  - lambda_th
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
-    line: 247
-    excerpt: Xi_turn_num = 0.34437471
-    stage: '248'
-  modality_attribution:
-  - completeness_critic
-  batch_id: null
-- id: fit_stage249_helicity_ratio_matched
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '249'
-  parameter_names:
-  - H_sub_minus_final
-  - H_sub_plus_final
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
-    line: 486
-    excerpt: which matches the integrated ratio to displayed precision.
-    stage: '249'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage249_session2_helicity_readbacks
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '249'
-  parameter_names:
-  - H_int_aligned
-  - H_int_antialigned
-  - H_peak_aligned
-  - H_peak_antialigned
-  - alpha_h
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
-    line: 167
-    excerpt: peak_aligned = 281.79830789
-    stage: '249'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage249_session3_peak_readback
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '249'
-  parameter_names:
-  - hint_aligned
-  - hint_antialigned
-  - peak_aligned
-  - peak_antialigned
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
-    line: 167
-    excerpt: peak_aligned = 281.79830789
-    stage: '249'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage250_benchmark_masses_and_window
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '250'
-  parameter_names:
-  - E_max
-  - chi_peak
-  - chi_raw
-  - g_UV
-  - m_s
-  - mu_eta
-  - t_transit_max
-  - t_transit_min
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
-    line: 177
-    excerpt: m_num = 1836.15267343
-    stage: '250'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage250_goldilocks_edge_forced
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '250'
-  parameter_names:
-  - E_edge
-  - V_peak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
-    line: 585
-    excerpt: Inside the declared closure it is forced by the exact algebra
-    stage: '250'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage250_goldilocks_inputs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '250'
-  parameter_names:
-  - chi_peak
-  - chi_raw
-  - g_UV
-  - m_s_ratio_1836
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
-    line: 176
-    excerpt: chi_num = 21.73204372
-    stage: '250'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage251_gamma3_exact_cubic_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '251'
-  parameter_names:
-  - Gamma_3
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
-    line: 58
-    excerpt: 3. the derivative-coupled scalar outlet contributes the exact cubic coefficient
-    stage: '251'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage251_gamma5_exact_quintic_coefficient
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '251'
-  parameter_names:
-  - Gamma_5
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
-    line: 52
-    excerpt: 2. the selected mixed quadrupole lane contributes the exact quintic coefficient
-    stage: '251'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage251_gamma_safe_exact_replacement
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '251'
-  parameter_names:
-  - gamma_safe
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_251.tex
-    line: 97
-    excerpt: This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.
-    stage: '251'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage251_session4_rate_constants
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '251'
-  parameter_names:
-  - gamma_crit
-  - t_collapse0
-  - t_cross
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
-    line: 176
-    excerpt: t_cross_num = 1.82169718
-    stage: '251'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage251_session4_time_inputs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '251'
-  parameter_names:
-  - gamma_crit
-  - s_c
-  - t_collapse_0
-  - t_cross
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
-    line: 176
-    excerpt: t_cross_num = 1.82169718
-    stage: '251'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage252_e_exp_min_completely_fixed
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '252'
-  parameter_names:
-  - E_exp_min_safe
-  - V_in
-  - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
-    line: 330
-    excerpt: It says that once the event is pinned to the cold-survival edge, the **minimum total exported energy** is completely
-      fixed by
-    stage: '252'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage252_three_to_one_split
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '252'
-  parameter_names:
-  - f_lat
-  - lattice_vacuum_split_3
-  - phi
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
-    line: 155
-    excerpt: split_surface = sp.simplify(sp.expand((G3l + G5l * sc**2) - 3 * (G3v + G5v * sc**2)))
-    stage: '252'
-  - path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
-    line: 191
-    excerpt: 'phi_val = sp.Rational(3, 4)  # the speed-independent 3:1 microscopic family'
-    stage: '252'
-  modality_attribution:
-  - existing_provenance
-  - numeric_literal
-  batch_id: null
-- id: fit_stage252_vin_benchmark_calibration_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '252'
-  parameter_names:
-  - V_in_match
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
-    line: 482
-    excerpt: 'Then the Stage-252 channel formulas reproduce the Session-IV split exactly:'
-    stage: '252'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage253_K_turn_force_match
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - K_turn
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
-    line: 166
-    excerpt: K_turn_num = 2.73855812
-    stage: '253'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage253_calibration_slice_nominal_constants
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - K_turn
-  - f_lat
-  - gamma_lattice_legacy
-  - lambda_ref
-  - mu_eta
-  - r_turn
-  - s_0
-  - s_c
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
-    line: 161
-    excerpt: f_lat_num = 0.75 / mu_eta_num = 1.0 (Session-V / Stage 252 benchmark specialization block, lines 159-166; graph
-      nodes SEC_PDE_MATERIAL_GAP / OPEN_MATERIAL_CLOSURE)
-    stage: '253'
-  modality_attribution:
-  - graph
-  batch_id: null
-- id: fit_stage253_gamma_lattice_red
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - gamma_lattice_red
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
-    line: 163
-    excerpt: gamma_lattice_legacy_num = 4.79562976
-    stage: '253'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage253_k_eff_force_matched
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - k_eff_req
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_253.tex
-    line: 64
-    excerpt: This is only a geometric trigger.  The force-matched stiffness requires
-    stage: '253'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage253_legacy_lattice_rate_and_upsilon
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - Upsilon_lat_sess
-  - f_lat
-  - gamma_lattice_legacy
-  status: scanned
-  file_line_citations:
-  - path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
-    line: 163
-    excerpt: gamma_lattice_legacy_num = 4.79562976
-    stage: '253'
-  modality_attribution:
-  - numeric_literal
-  batch_id: null
-- id: fit_stage253_session5_calibration_slice_recovery
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - Upsilon_lat_sess
-  - gamma_lattice_red
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
-    line: 224
-    excerpt: The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice
-    stage: '253'
-  modality_attribution:
-  - claim_label
-  batch_id: null
-- id: fit_stage253_stage252_slice_inputs
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - f_lat
-  - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 954
-    excerpt: '- `0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
-    stage: '253'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage253_upsilon_lat_calibration
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - Upsilon_lat
-  status: scanned
-  file_line_citations:
-  - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
-    line: 950
-    excerpt: '- `\Upsilon_{\rm lat}` remains an explicit calibration parameter; it is not'
-    stage: '253'
-  modality_attribution:
-  - existing_provenance
-  batch_id: null
-- id: fit_stage253_upsilon_lat_calibration_factor
-  dry_run: false
-  dry_run_id: null
-  anchor_stages:
-  - '253'
-  parameter_names:
-  - Upsilon_lat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
-    line: 185
-    excerpt: This is a calibration factor, not a new dynamical degree of freedom.
-    stage: '253'
-  modality_attribution:
-  - claim_label
-  batch_id: null
 - id: fit_stage_001_k_l
+  candidate_key: stage_001_k_l
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '001'
   parameter_names:
   - K_l
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_001.md
+  citations:
+  - &id001
+    path: redteam/pass2/reports/stage_001.md
     line: 39
     role: pass2_stage_report
     stage: '001'
@@ -9740,17 +71,25 @@ candidates:
       against a hand-written target; the saved outputs show all residuals `= 0` and all `PASS`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_001_k_l
+    modality: existing_provenance
+    anchor_stage: '001'
+    parameter_names:
+    - K_l
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id001
 - id: fit_stage_002_gamma_ab
+  candidate_key: stage_002_gamma_ab
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '002'
   parameter_names:
   - Gamma_AB
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  citations:
+  - &id002
+    path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
     line: 112
     role: notes_stage
     stage: '002'
@@ -9758,8 +97,16 @@ candidates:
       channels.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_002_gamma_ab
+    modality: claim_label
+    anchor_stage: '002'
+    parameter_names:
+    - Gamma_AB
+    reason: claim label or status wording near target-related parameter
+    citation: *id002
 - id: fit_stage_004_i_ws_delta
+  candidate_key: stage_004_i_ws_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9769,9 +116,9 @@ candidates:
   - W_match
   - mu_proj_delta
   - mu_red
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_004.md
+  citations:
+  - &id003
+    path: redteam/pass2/reports/stage_004.md
     line: 83
     role: pass2_stage_report
     stage: '004'
@@ -9780,8 +127,19 @@ candidates:
       Same targets, independently assembled.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_004_i_ws_delta
+    modality: existing_provenance
+    anchor_stage: '004'
+    parameter_names:
+    - I_WS_delta
+    - W_match
+    - mu_proj_delta
+    - mu_red
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id003
 - id: fit_stage_004_statusexact
+  candidate_key: stage_004_statusexact
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9791,9 +149,9 @@ candidates:
   - partial_w
   - partial_wQ
   - partial_wW
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_004.md
+  citations:
+  - &id004
+    path: redteam/pass2/reports/stage_004.md
     line: 35
     role: pass2_stage_report
     stage: '004'
@@ -9813,8 +171,19 @@ candidates:
       the substance of the downstream 005–007 stages, previewed here as part of the index role.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_004_statusexact
+    modality: existing_provenance
+    anchor_stage: '004'
+    parameter_names:
+    - StatusExact
+    - partial_w
+    - partial_wQ
+    - partial_wW
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id004
 - id: fit_stage_005_assert_nonzero
+  candidate_key: stage_005_assert_nonzero
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9822,9 +191,9 @@ candidates:
   parameter_names:
   - assert_nonzero
   - assert_zero
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_005.md
+  citations:
+  - &id005
+    path: redteam/pass2/reports/stage_005.md
     line: 105
     role: pass2_stage_report
     stage: '005'
@@ -9845,17 +214,26 @@ candidates:
       `.txt` mtimes May 21 ≥ script mtimes May 4 / May 21). The script verifies exactly the paper''s claim, no more, no less.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_005_assert_nonzero
+    modality: existing_provenance
+    anchor_stage: '005'
+    parameter_names:
+    - assert_nonzero
+    - assert_zero
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id005
 - id: fit_stage_006_j_i
+  candidate_key: stage_006_j_i
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '006'
   parameter_names:
   - J_i
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_006.md
+  citations:
+  - &id006
+    path: redteam/pass2/reports/stage_006.md
     line: 99
     role: pass2_stage_report
     stage: '006'
@@ -9863,25 +241,41 @@ candidates:
       tensor → cannot independently pin curl-H sign vs card) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_006_j_i
+    modality: existing_provenance
+    anchor_stage: '006'
+    parameter_names:
+    - J_i
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id006
 - id: fit_stage_008_inv_xi
+  candidate_key: stage_008_inv_xi
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 008
   parameter_names:
   - inv_xi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_008.md
+  citations:
+  - &id007
+    path: redteam/pass2/reports/stage_008.md
     line: 88
     role: pass2_stage_report
     stage: 008
     excerpt: '| A1 | sympy | 74 | `inv_xi·xi - 1 == 0` | none (reciprocal bookkeeping) | no (self-labeled tautology) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_008_inv_xi
+    modality: existing_provenance
+    anchor_stage: 008
+    parameter_names:
+    - inv_xi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id007
 - id: fit_stage_008_z2_int
+  candidate_key: stage_008_z2_int
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9889,17 +283,26 @@ candidates:
   parameter_names:
   - Z2_int
   - Z_int
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_008.md
+  citations:
+  - &id008
+    path: redteam/pass2/reports/stage_008.md
     line: 205
     role: pass2_stage_report
     stage: 008
     excerpt: guard, intermediate Gaussian/Lorentzian benchmark numbers (Z_int, Z2_int, √2/2,
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_008_z2_int
+    modality: existing_provenance
+    anchor_stage: 008
+    parameter_names:
+    - Z2_int
+    - Z_int
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id008
 - id: fit_stage_009_matched_fingerprint_value
+  candidate_key: stage_009_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9908,9 +311,9 @@ candidates:
   - matched_fingerprint_value
   - mathematica_audit
   - sympy_audit
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_009.md
+  citations:
+  - &id009
+    path: redteam/pass2/reports/stage_009.md
     line: 40
     role: pass2_stage_report
     stage: 009
@@ -9925,7 +328,8 @@ candidates:
       and `⟨Z⟩_mouth = 1 − 2ℓ²/λ² + 12ℓ⁴/λ⁴ − 120ℓ⁶/λ⁶`. The Mathematica `.wl` independently re-verifies (i)–(v)''s core identities
       (M1–M5). The script''s docstring frames the whole thing as making the near-throat structure auditable, especially the
       surviving mixed flux derivative `∂_w(Z F^{wν})`.'
-  - path: redteam/pass2/reports/stage_009.md
+  - &id010
+    path: redteam/pass2/reports/stage_009.md
     line: 123
     role: pass2_stage_report
     stage: 009
@@ -9935,13 +339,15 @@ candidates:
       expansions (py §3 ↔ M1), even-kernel moments `q0+q2/2+q4/8` (py §2 ↔ M2), `μ_eff`/`ξ_eff` first-order series (py §4
       ↔ M3,M4), and Gaussian fingerprints `1−σ²/λ²+3σ⁴/(2λ⁴)` and `1−2ℓ²/λ²+12ℓ⁴/λ⁴−120ℓ⁶/λ⁶` (py §5 ↔ M5). No sign/factor
       disagreement.'
-  - path: redteam/pass2/reports/stage_009.md
+  - &id011
+    path: redteam/pass2/reports/stage_009.md
     line: 142
     role: pass2_stage_report
     stage: 009
     excerpt: '| Symmetric Gaussian fingerprint `⟨Z⟩ = 1 − σ²/λ² + 3σ⁴/(2λ⁴)` | py:232 / out §5 L108; wl M5a / out L10 | (illustrative
       example; not a card deliverable) | INTERNAL (example) |'
-  - path: redteam/pass2/reports/stage_009.md
+  - &id012
+    path: redteam/pass2/reports/stage_009.md
     line: 143
     role: pass2_stage_report
     stage: 009
@@ -9949,8 +355,39 @@ candidates:
       | (illustrative example; not a card deliverable) | INTERNAL (example) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_009_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: 009
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id009
+  - candidate_key: stage_009_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: 009
+    parameter_names:
+    - matched_fingerprint_value
+    - mathematica_audit
+    - sympy_audit
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id010
+  - candidate_key: stage_009_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: 009
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id011
+  - candidate_key: stage_009_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: 009
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id012
 - id: fit_stage_010_c_fixed
+  candidate_key: stage_010_c_fixed
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -9964,9 +401,9 @@ candidates:
   - compat_direct
   - dK_norm
   - dK_one_pole
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_010.md
+  citations:
+  - &id013
+    path: redteam/pass2/reports/stage_010.md
     line: 39
     role: pass2_stage_report
     stage: '010'
@@ -9979,7 +416,8 @@ candidates:
       the grouped trace anomaly. The primitive `Xi_static` is checked under `N0sym -> P^2/Delta^2`. Two `assert_nonzero` mutation
       guards confirm a sign-flipped `3S^2 z4/T^2` term yields the nonzero residual `6S^2 z4/T^2`. This is what the verdict
       applies to.
-  - path: redteam/pass2/reports/stage_010.md
+  - &id014
+    path: redteam/pass2/reports/stage_010.md
     line: 139
     role: pass2_stage_report
     stage: '010'
@@ -9991,17 +429,41 @@ candidates:
       `du4`, `dK_one_pole`, `delta C_fixed` signs, and the lane trace signature by hand and all matched the boxed card forms.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_010_c_fixed
+    modality: existing_provenance
+    anchor_stage: '010'
+    parameter_names:
+    - C_fixed
+    - C_tr
+    - Xi_static
+    - assert_nonzero
+    - compat_direct
+    - dK_norm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id013
+  - candidate_key: stage_010_c_fixed
+    modality: existing_provenance
+    anchor_stage: '010'
+    parameter_names:
+    - C_fixed
+    - assert_nonzero
+    - assert_zero
+    - dK_norm
+    - dK_one_pole
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id014
 - id: fit_stage_010_dk_norm
+  candidate_key: stage_010_dk_norm
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '010'
   parameter_names:
   - dK_norm
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_010.md
+  citations:
+  - &id015
+    path: redteam/pass2/reports/stage_010.md
     line: 105
     role: pass2_stage_report
     stage: '010'
@@ -10018,8 +480,16 @@ candidates:
       the paper''s deliverables exactly. No findings.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_010_dk_norm
+    modality: existing_provenance
+    anchor_stage: '010'
+    parameter_names:
+    - dK_norm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id015
 - id: fit_stage_010_r_fixed
+  candidate_key: stage_010_r_fixed
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10029,9 +499,9 @@ candidates:
   - R_tr
   - assert_nonzero
   - assert_zero
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_010.md
+  citations:
+  - &id016
+    path: redteam/pass2/reports/stage_010.md
     line: 101
     role: pass2_stage_report
     stage: '010'
@@ -10043,8 +513,19 @@ candidates:
       25 17:29 — both outputs newer than their scripts).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_010_r_fixed
+    modality: existing_provenance
+    anchor_stage: '010'
+    parameter_names:
+    - R_fixed
+    - R_tr
+    - assert_nonzero
+    - assert_zero
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id016
 - id: fit_stage_011_b_0
+  candidate_key: stage_011_b_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10057,9 +538,9 @@ candidates:
   - z_0
   - z_2
   - z_4
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_011.md
+  citations:
+  - &id017
+    path: redteam/pass2/reports/stage_011.md
     line: 39
     role: pass2_stage_report
     stage: '011'
@@ -10073,8 +554,22 @@ candidates:
       matches deliverables D1–D3 exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_011_b_0
+    modality: existing_provenance
+    anchor_stage: '011'
+    parameter_names:
+    - B_0
+    - N_0
+    - epsilon
+    - n_0
+    - z_0
+    - z_2
+    - z_4
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id017
 - id: fit_stage_012_assert_nonzero
+  candidate_key: stage_012_assert_nonzero
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10082,9 +577,9 @@ candidates:
   parameter_names:
   - assert_nonzero
   - dCompat_direct
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_012.md
+  citations:
+  - &id018
+    path: redteam/pass2/reports/stage_012.md
     line: 39
     role: pass2_stage_report
     stage: '012'
@@ -10100,8 +595,17 @@ candidates:
       The Mathematica `.wl` independently reproduces (a)-(g) under M1-M9 labels.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_012_assert_nonzero
+    modality: existing_provenance
+    anchor_stage: '012'
+    parameter_names:
+    - assert_nonzero
+    - dCompat_direct
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id018
 - id: fit_stage_012_delta
+  candidate_key: stage_012_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10112,9 +616,9 @@ candidates:
   - n_n
   - stage_012
   - z_n
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_012.md
+  citations:
+  - &id019
+    path: redteam/pass2/reports/stage_012.md
     line: 35
     role: pass2_stage_report
     stage: '012'
@@ -10131,7 +635,8 @@ candidates:
       from primitive slippages `q1,s1,h1,d1,p1,g1`; (D2) the fixed-target compatibility shift; (D3) the transported-target
       compatibility shift; (D4) the static `Xi1` (P1/P0) primitive contribution. The card states NO numeric constants — it
       is a purely algebraic-identity stage.'
-  - path: redteam/pass2/reports/stage_012.md
+  - &id020
+    path: redteam/pass2/reports/stage_012.md
     line: 115
     role: pass2_stage_report
     stage: '012'
@@ -10146,17 +651,39 @@ candidates:
       (which the scripts supply), there are no MISMATCH or MISSING-DELIVERABLE items.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_012_delta
+    modality: existing_provenance
+    anchor_stage: '012'
+    parameter_names:
+    - Delta
+    - S_2
+    - n_n
+    - stage_012
+    - z_n
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id019
+  - candidate_key: stage_012_delta
+    modality: existing_provenance
+    anchor_stage: '012'
+    parameter_names:
+    - Delta
+    - S_2
+    - n_n
+    - z_n
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id020
 - id: fit_stage_012_k_norm
+  candidate_key: stage_012_k_norm
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '012'
   parameter_names:
   - K_norm
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_012.md
+  citations:
+  - &id021
+    path: redteam/pass2/reports/stage_012.md
     line: 107
     role: pass2_stage_report
     stage: '012'
@@ -10170,8 +697,16 @@ candidates:
       numeric constants, so there is nothing to value-mismatch. Outputs are fresh. Both engines pass independently.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_012_k_norm
+    modality: existing_provenance
+    anchor_stage: '012'
+    parameter_names:
+    - K_norm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id021
 - id: fit_stage_012_n_n
+  candidate_key: stage_012_n_n
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10179,17 +714,26 @@ candidates:
   parameter_names:
   - n_n
   - z_n
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_012.tex
+  citations:
+  - &id022
+    path: paper/stages/stage_012.tex
     line: 20
     role: paper_stage_tex
     stage: '012'
     excerpt: of these primitives determine the \(z_n\) and \(n_n\) slots used in
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_012_n_n
+    modality: claim_label
+    anchor_stage: '012'
+    parameter_names:
+    - n_n
+    - z_n
+    reason: claim label or status wording near target-related parameter
+    citation: *id022
 - id: fit_stage_015_s_em
+  candidate_key: stage_015_s_em
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10197,9 +741,9 @@ candidates:
   parameter_names:
   - S_EM
   - S_total
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_015.md
+  citations:
+  - &id023
+    path: redteam/pass2/reports/stage_015.md
     line: 54
     role: pass2_stage_report
     stage: '015'
@@ -10207,17 +751,26 @@ candidates:
       statement, no independent identity to verify; not a deficiency |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_015_s_em
+    modality: existing_provenance
+    anchor_stage: '015'
+    parameter_names:
+    - S_EM
+    - S_total
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id023
 - id: fit_stage_016_boundary_value
+  candidate_key: stage_016_boundary_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '016'
   parameter_names:
   - boundary_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_016.md
+  citations:
+  - &id024
+    path: redteam/pass2/reports/stage_016.md
     line: 98
     role: pass2_stage_report
     stage: '016'
@@ -10229,25 +782,41 @@ candidates:
       independent claim in Mathematica, computing the exact value).
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_016_boundary_value
+    modality: existing_provenance
+    anchor_stage: '016'
+    parameter_names:
+    - boundary_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id024
 - id: fit_stage_017_paragraph
+  candidate_key: stage_017_paragraph
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '017'
   parameter_names:
   - paragraph
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_017.tex
+  citations:
+  - &id025
+    path: paper/stages/stage_017.tex
     line: 28
     role: paper_stage_tex
     stage: '017'
     excerpt: \paragraph{Wall-only obstruction.}
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_017_paragraph
+    modality: claim_label
+    anchor_stage: '017'
+    parameter_names:
+    - paragraph
+    reason: claim label or status wording near target-related parameter
+    citation: *id025
 - id: fit_stage_019_p0_target
+  candidate_key: stage_019_p0_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10256,9 +825,9 @@ candidates:
   - P0_target
   - assert_nonzero
   - const_prefactor_matrix
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_019.md
+  citations:
+  - &id026
+    path: redteam/pass2/reports/stage_019.md
     line: 44
     role: pass2_stage_report
     stage: 019
@@ -10272,7 +841,8 @@ candidates:
       stable-pole samples (lines 103–173); and anchors `M_Σ`,`K_Σ` against concrete Gaussian wall integrals (`√π`, `3√π/2`,
       lines 176–185). The Mathematica script (M1–M12) re-derives `u2,u4,P0,P2,P4` independently via `Series` expansion of
       `1/den` and `D0(N0+N2 x+N4 x²)/den²` (lines 71–82) and checks the same identities.'
-  - path: redteam/pass2/reports/stage_019.md
+  - &id027
+    path: redteam/pass2/reports/stage_019.md
     line: 99
     role: pass2_stage_report
     stage: 019
@@ -10291,8 +861,25 @@ candidates:
       (output mtimes newer than their scripts).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_019_p0_target
+    modality: existing_provenance
+    anchor_stage: 019
+    parameter_names:
+    - P0_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id026
+  - candidate_key: stage_019_p0_target
+    modality: existing_provenance
+    anchor_stage: 019
+    parameter_names:
+    - P0_target
+    - assert_nonzero
+    - const_prefactor_matrix
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id027
 - id: fit_stage_020_b_0
+  candidate_key: stage_020_b_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10305,9 +892,9 @@ candidates:
   - N_0
   - Z_0
   - paragraph
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_020.md
+  citations:
+  - &id028
+    path: redteam/pass2/reports/stage_020.md
     line: 35
     role: pass2_stage_report
     stage: '020'
@@ -10322,8 +909,22 @@ candidates:
       from the parent throat-action bundle."'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_020_b_0
+    modality: existing_provenance
+    anchor_stage: '020'
+    parameter_names:
+    - B_0
+    - D_0
+    - H_even
+    - K_1
+    - N_0
+    - Z_0
+    - paragraph
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id028
 - id: fit_stage_021_c_a
+  candidate_key: stage_021_c_a
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10336,9 +937,9 @@ candidates:
   - g_A
   - g_W
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_021.md
+  citations:
+  - &id029
+    path: redteam/pass2/reports/stage_021.md
     line: 35
     role: pass2_stage_report
     stage: '021'
@@ -10353,7 +954,8 @@ candidates:
       derivative-coupling compatibility check showing a derivative-coupled scalar outlet (`g_{W,0}=ηω`) pushes the dangerous
       odd scalar term from `iω` up to `iω³` at wall level. The appendix row (line 64) summarizes: "Retained reduced one-port
       self-energy, transfer factor, compact l=2 fingerprint, and scalar-compatibility criterion."'
-  - path: redteam/pass2/reports/stage_021.md
+  - &id030
+    path: redteam/pass2/reports/stage_021.md
     line: 39
     role: pass2_stage_report
     stage: '021'
@@ -10368,8 +970,33 @@ candidates:
       ends in `expect_zero` / `expectZero` residual checks; all are reported = 0 in both saved outputs.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_021_c_a
+    modality: existing_provenance
+    anchor_stage: '021'
+    parameter_names:
+    - C_a
+    - E_w
+    - N_l
+    - g_A
+    - g_W
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id029
+  - candidate_key: stage_021_c_a
+    modality: existing_provenance
+    anchor_stage: '021'
+    parameter_names:
+    - C_a
+    - E_w
+    - N_scalar
+    - g_A
+    - g_W
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id030
 - id: fit_stage_021_eq_compact_l2_fingerprint
+  candidate_key: stage_021_eq_compact_l2_fingerprint
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10380,20 +1007,46 @@ candidates:
   - equation_anchor
   - exact_reduced
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_021.tex
+  citations:
+  - &id031
+    path: paper/stages/stage_021.tex
     line: null
     role: paper_stage_tex
     excerpt: EQ_COMPACT_L2_FINGERPRINT
-  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  - &id032
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
     line: null
     role: notes_stage
     excerpt: EQ_COMPACT_L2_FINGERPRINT
   modality_attribution:
   - graph
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_021_eq_compact_l2_fingerprint
+    modality: graph
+    anchor_stage: '021'
+    parameter_names:
+    - EQ_COMPACT_L2_FINGERPRINT
+    - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+    - equation_anchor
+    - exact_reduced
+    - matched_fingerprint_value
+    reason: atlas graph node carries target-related text
+    citation: *id031
+    graph_node: EQ_COMPACT_L2_FINGERPRINT
+  - candidate_key: stage_021_eq_compact_l2_fingerprint
+    modality: graph
+    anchor_stage: '021'
+    parameter_names:
+    - EQ_COMPACT_L2_FINGERPRINT
+    - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+    - equation_anchor
+    - exact_reduced
+    - matched_fingerprint_value
+    reason: atlas graph node carries target-related text
+    citation: *id032
+    graph_node: EQ_COMPACT_L2_FINGERPRINT
 - id: fit_stage_021_gamma5_port
+  candidate_key: stage_021_gamma5_port
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10402,9 +1055,9 @@ candidates:
   - Gamma5_port
   - Y2_hat
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_021.md
+  citations:
+  - &id033
+    path: redteam/pass2/reports/stage_021.md
     line: 49
     role: pass2_stage_report
     stage: '021'
@@ -10412,44 +1065,59 @@ candidates:
       | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_021_gamma5_port
+    modality: existing_provenance
+    anchor_stage: '021'
+    parameter_names:
+    - Gamma5_port
+    - Y2_hat
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id033
 - id: fit_stage_021_matched_fingerprint_value
+  candidate_key: stage_021_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '021'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  citations:
+  - &id034
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
     line: 49
     role: notes_stage
     stage: '021'
     excerpt: '- the compact outgoing `l=2` fingerprint starts at `+ i ω^5`,'
-  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  - &id035
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
     line: 211
     role: notes_stage
     stage: '021'
     excerpt: '## 6. Compact outgoing `l=2` fingerprint'
-  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  - &id036
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
     line: 240
     role: notes_stage
     stage: '021'
     excerpt: 1. the compact outgoing branch supplies the universal `ω^5` fingerprint,
-  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  - &id037
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
     line: 284
     role: notes_stage
     stage: '021'
     excerpt: 3. and the **passive/outgoing quadrupole fingerprint** needed by the 2.5PN and 4PN bridges.
-  - path: redteam/pass2/reports/stage_021.md
+  - &id038
+    path: redteam/pass2/reports/stage_021.md
     line: 109
     role: pass2_stage_report
     stage: '021'
     excerpt: '- **Hankel fingerprint:** SymPy builds the `l=2` spherical functions by hand — `j2a = (3/za³ − 1/za)sin(za)
       − 3cos(za)/za²`, `y2a = …`, `h2a = j2a + I·y2a` (py 273–275). Mathematica uses the built-in `h2a = SphericalHankelH1[2,
       za]` (wl 155). Independent constructions of the same special function.'
-  - path: redteam/pass2/reports/stage_021.md
+  - &id039
+    path: redteam/pass2/reports/stage_021.md
     line: 143
     role: pass2_stage_report
     stage: '021'
@@ -10459,25 +1127,124 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id034
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id035
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id036
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id037
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 49
+      role: notes_stage
+      stage: '021'
+      excerpt: '- the compact outgoing `l=2` fingerprint starts at `+ i ω^5`,'
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 211
+      role: notes_stage
+      stage: '021'
+      excerpt: '## 6. Compact outgoing `l=2` fingerprint'
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 240
+      role: notes_stage
+      stage: '021'
+      excerpt: 1. the compact outgoing branch supplies the universal `ω^5` fingerprint,
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 284
+      role: notes_stage
+      stage: '021'
+      excerpt: 3. and the **passive/outgoing quadrupole fingerprint** needed by the 2.5PN and 4PN bridges.
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id038
+  - candidate_key: stage_021_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '021'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id039
 - id: fit_stage_021_paragraph
+  candidate_key: stage_021_paragraph
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '021'
   parameter_names:
   - paragraph
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_021.tex
+  citations:
+  - &id040
+    path: paper/stages/stage_021.tex
     line: 60
     role: paper_stage_tex
     stage: '021'
     excerpt: \paragraph{Compact outgoing fingerprint.}
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_021_paragraph
+    modality: claim_label
+    anchor_stage: '021'
+    parameter_names:
+    - paragraph
+    reason: claim label or status wording near target-related parameter
+    citation: *id040
 - id: fit_stage_022_d_0
+  candidate_key: stage_022_d_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10510,9 +1277,9 @@ candidates:
   - matched_fingerprint_value
   - u_2
   - u_4
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_022.md
+  citations:
+  - &id041
+    path: redteam/pass2/reports/stage_022.md
     line: 39
     role: pass2_stage_report
     stage: '022'
@@ -10528,8 +1295,42 @@ candidates:
       instead of explicit \(j_2/y_2\)). Every check is an `expect_zero`/`expectZero` of a residual.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_022_d_0
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - D_0
+    - Delta_0
+    - Delta_0_S_2omega
+    - G_5
+    - Gamma_5
+    - K_0
+    - K_2
+    - K_4
+    - N_0
+    - N_2
+    - N_4
+    - Omega_A
+    - Omega_A_Omega_W_R_g_A
+    - Omega_W
+    - P_0
+    - P_2
+    - P_4
+    - S_2
+    - a_x
+    - b_x
+    - bar
+    - g_A
+    - g_W
+    - iG_5
+    - matched_fingerprint_value
+    - u_2
+    - u_4
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id041
 - id: fit_stage_022_d_a
+  candidate_key: stage_022_d_a
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10538,9 +1339,9 @@ candidates:
   - D_A
   - N_A
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_022.tex
+  citations:
+  - &id042
+    path: paper/stages/stage_022.tex
     line: 9
     role: paper_stage_tex
     stage: '022'
@@ -10550,8 +1351,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_022_d_a
+    modality: numeric_literal
+    anchor_stage: '022'
+    parameter_names:
+    - D_A
+    - N_A
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id042
+  - candidate_key: stage_022_d_a
+    modality: claim_label
+    anchor_stage: '022'
+    parameter_names:
+    - D_A
+    - N_A
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_022.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '022'
+      excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+        transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\)
+        fingerprint, and the grouped trace/anomaly map.}
 - id: fit_stage_022_g_5
+  candidate_key: stage_022_g_5
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10560,9 +1387,9 @@ candidates:
   - G_5
   - Lambda_2_omega_h_2_h_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_022.md
+  citations:
+  - &id043
+    path: redteam/pass2/reports/stage_022.md
     line: 90
     role: pass2_stage_report
     stage: '022'
@@ -10574,8 +1401,18 @@ candidates:
       genuine cross-engine corroboration via independent function definitions.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_022_g_5
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - G_5
+    - Lambda_2_omega_h_2_h_2
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id043
 - id: fit_stage_022_matched_fingerprint_value
+  candidate_key: stage_022_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10583,51 +1420,59 @@ candidates:
   parameter_names:
   - matched_fingerprint_value
   - paragraph
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_022.tex
+  citations:
+  - &id044
+    path: paper/stages/stage_022.tex
     line: 86
     role: paper_stage_tex
     stage: '022'
     excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
-  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  - &id045
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
     line: 8
     role: notes_stage
     stage: '022'
     excerpt: '- to a passive/outgoing `l=2` fingerprint,'
-  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  - &id046
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
     line: 149
     role: notes_stage
     stage: '022'
     excerpt: '## 5. Multiplying by the compact outgoing `l=2` fingerprint'
-  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  - &id047
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
     line: 151
     role: notes_stage
     stage: '022'
     excerpt: The compact outgoing `l=2` branch already has the normalized fingerprint
-  - path: redteam/pass2/reports/stage_022.md
+  - &id048
+    path: redteam/pass2/reports/stage_022.md
     line: 52
     role: pass2_stage_report
     stage: '022'
     excerpt: '| fingerprint A,B,G5 (eq. abg) | sympy V L275-277 (re-derived from j2/y2); math V L154-156 (re-derived from
       Hankel) | match |'
-  - path: redteam/pass2/reports/stage_022.md
+  - &id049
+    path: redteam/pass2/reports/stage_022.md
     line: 64
     role: pass2_stage_report
     stage: '022'
     excerpt: '| A4 | sympy | 133-136 | `expect_zero(K0/K2/K4/Gamma5 - …)` from Pref·fingerprint | (4) | yes |'
-  - path: redteam/pass2/reports/stage_022.md
+  - &id050
+    path: redteam/pass2/reports/stage_022.md
     line: 106
     role: pass2_stage_report
     stage: '022'
     excerpt: '| A,B,G5 fingerprint | residual 0 (txt L152-154) | PASS (txt L63-68) |'
-  - path: redteam/pass2/reports/stage_022.md
+  - &id051
+    path: redteam/pass2/reports/stage_022.md
     line: 136
     role: pass2_stage_report
     stage: '022'
     excerpt: '| fingerprint A=a^2/(9 c_s^2), B=4 a^4/(81 c_s^4), G5=a^5/(27 c_s^5) | py L275-277 / wl L154-156; out txt L155-172
       | tex:97-100 (eq. abg); md:159-162 | MATCH |'
-  - path: redteam/pass2/reports/stage_022.md
+  - &id052
+    path: redteam/pass2/reports/stage_022.md
     line: 149
     role: pass2_stage_report
     stage: '022'
@@ -10637,8 +1482,122 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    - paragraph
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id044
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id045
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id046
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id047
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    - paragraph
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_022.tex
+      line: 86
+      role: paper_stage_tex
+      stage: '022'
+      excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 8
+      role: notes_stage
+      stage: '022'
+      excerpt: '- to a passive/outgoing `l=2` fingerprint,'
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 149
+      role: notes_stage
+      stage: '022'
+      excerpt: '## 5. Multiplying by the compact outgoing `l=2` fingerprint'
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 151
+      role: notes_stage
+      stage: '022'
+      excerpt: The compact outgoing `l=2` branch already has the normalized fingerprint
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id048
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id049
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id050
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id051
+  - candidate_key: stage_022_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id052
 - id: fit_stage_022_p_0
+  candidate_key: stage_022_p_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10646,9 +1605,9 @@ candidates:
   parameter_names:
   - P_0
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_022.md
+  citations:
+  - &id053
+    path: redteam/pass2/reports/stage_022.md
     line: 114
     role: pass2_stage_report
     stage: '022'
@@ -10668,8 +1627,17 @@ candidates:
       and could not.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_022_p_0
+    modality: existing_provenance
+    anchor_stage: '022'
+    parameter_names:
+    - P_0
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id053
 - id: fit_stage_023_b_0
+  candidate_key: stage_023_b_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10686,9 +1654,9 @@ candidates:
   - P_0
   - Z_0
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_023.md
+  citations:
+  - &id054
+    path: redteam/pass2/reports/stage_023.md
     line: 97
     role: pass2_stage_report
     stage: '023'
@@ -10708,8 +1676,26 @@ candidates:
       — see Self-test notes), which does not change the verdict.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_023_b_0
+    modality: existing_provenance
+    anchor_stage: '023'
+    parameter_names:
+    - B_0
+    - D_0
+    - N2_target
+    - N4_target
+    - N_0
+    - N_2
+    - N_4
+    - N_4_target_closed
+    - P_0
+    - Z_0
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id054
 - id: fit_stage_023_n_n
+  candidate_key: stage_023_n_n
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10717,9 +1703,9 @@ candidates:
   parameter_names:
   - N_n
   - Z_n
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_023.tex
+  citations:
+  - &id055
+    path: paper/stages/stage_023.tex
     line: 9
     role: paper_stage_tex
     stage: '023'
@@ -10729,8 +1715,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_023_n_n
+    modality: numeric_literal
+    anchor_stage: '023'
+    parameter_names:
+    - N_n
+    - Z_n
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id055
+  - candidate_key: stage_023_n_n
+    modality: claim_label
+    anchor_stage: '023'
+    parameter_names:
+    - N_n
+    - Z_n
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_023.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '023'
+      excerpt: \stagefield{Inputs}{The inputs are the Stage~003 BdG moments, the Stages~004--021 projected Maxwell-to-\(Z_n,N_n\)
+        packet and matched one-port conservative/transfer moments, the Stage~022 response/prefactor conversion, and the grouped
+        metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\).}
 - id: fit_stage_024_kappa
+  candidate_key: stage_024_kappa
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10740,9 +1750,9 @@ candidates:
   - pi
   - stale_output
   - value_mismatch
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_024.md
+  citations:
+  - &id056
+    path: redteam/pass2/reports/stage_024.md
     line: 163
     role: pass2_stage_report
     stage: '024'
@@ -10761,17 +1771,28 @@ candidates:
       exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_024_kappa
+    modality: existing_provenance
+    anchor_stage: '024'
+    parameter_names:
+    - kappa
+    - pi
+    - stale_output
+    - value_mismatch
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id056
 - id: fit_stage_024_matched_fingerprint_value
+  candidate_key: stage_024_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '024'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  citations:
+  - &id057
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
     line: 371
     role: notes_stage
     stage: '024'
@@ -10779,8 +1800,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_024_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '024'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id057
+  - candidate_key: stage_024_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '024'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 371
+      role: notes_stage
+      stage: '024'
+      excerpt: 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-024 angular
+        fingerprints.
 - id: fit_stage_025_d_0
+  candidate_key: stage_025_d_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10790,9 +1832,9 @@ candidates:
   - N_0
   - P_0
   - RG_U
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_025.md
+  citations:
+  - &id058
+    path: redteam/pass2/reports/stage_025.md
     line: 35
     role: pass2_stage_report
     stage: '025'
@@ -10810,17 +1852,28 @@ candidates:
       (Checks item 4).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_025_d_0
+    modality: existing_provenance
+    anchor_stage: '025'
+    parameter_names:
+    - D_0
+    - N_0
+    - P_0
+    - RG_U
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id058
 - id: fit_stage_025_p0_compact
+  candidate_key: stage_025_p0_compact
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '025'
   parameter_names:
   - P0_compact
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_025.md
+  citations:
+  - &id059
+    path: redteam/pass2/reports/stage_025.md
     line: 39
     role: pass2_stage_report
     stage: '025'
@@ -10835,17 +1888,25 @@ candidates:
       asserts each equals `∓N0/(K−X−Q/Δ)²`, that they sum to zero, and sign-checks them on the sample (sympy 191-213; wl 141-162).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_025_p0_compact
+    modality: existing_provenance
+    anchor_stage: '025'
+    parameter_names:
+    - P0_compact
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id059
 - id: fit_stage_026_a_w
+  candidate_key: stage_026_a_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '026'
   parameter_names:
   - A_w
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  citations:
+  - &id060
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
     line: 67
     role: notes_stage
     stage: '026'
@@ -10853,8 +1914,16 @@ candidates:
       ladder already isolated in the frozen-wall benchmark:'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_026_a_w
+    modality: claim_label
+    anchor_stage: '026'
+    parameter_names:
+    - A_w
+    reason: claim label or status wording near target-related parameter
+    citation: *id060
 - id: fit_stage_026_g_u
+  candidate_key: stage_026_g_u
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10864,9 +1933,9 @@ candidates:
   - G_W
   - K_req
   - f_n
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_026.md
+  citations:
+  - &id061
+    path: redteam/pass2/reports/stage_026.md
     line: 35
     role: pass2_stage_report
     stage: '026'
@@ -10881,7 +1950,8 @@ candidates:
       `K=K_η+6T_Ω` and the branch condition `K_η+6T_Ω=K_req`. The notes additionally pin the target constant `N_Q^target =
       54 G c_s⁵/(5 a⁵ c⁵)` (notes lines 7, 208, 214) and the numeric `κ≈0.900316316` (notes line 130); the `.tex` card carries
       the target only symbolically as `N_Q^{\rm target}`.'
-  - path: redteam/pass2/reports/stage_026.md
+  - &id062
+    path: redteam/pass2/reports/stage_026.md
     line: 39
     role: pass2_stage_report
     stage: '026'
@@ -10894,17 +1964,38 @@ candidates:
       the claim being exercised.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_026_g_u
+    modality: existing_provenance
+    anchor_stage: '026'
+    parameter_names:
+    - G_U
+    - G_W
+    - K_req
+    - f_n
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id061
+  - candidate_key: stage_026_g_u
+    modality: existing_provenance
+    anchor_stage: '026'
+    parameter_names:
+    - G_U
+    - G_W
+    - K_req
+    - f_n
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id062
 - id: fit_stage_026_k_req
+  candidate_key: stage_026_k_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '026'
   parameter_names:
   - K_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_026.md
+  citations:
+  - &id063
+    path: redteam/pass2/reports/stage_026.md
     line: 105
     role: pass2_stage_report
     stage: '026'
@@ -10918,17 +2009,25 @@ candidates:
       match all six paper deliverables.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_026_k_req
+    modality: existing_provenance
+    anchor_stage: '026'
+    parameter_names:
+    - K_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id063
 - id: fit_stage_028_det_eff
+  candidate_key: stage_028_det_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 028
   parameter_names:
   - det_eff
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_028.md
+  citations:
+  - &id064
+    path: redteam/pass2/reports/stage_028.md
     line: 92
     role: pass2_stage_report
     stage: 028
@@ -10936,17 +2035,25 @@ candidates:
       uses `sp.solve(sp.Eq(det_eff,0), alpha)[0]` (py L196).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_028_det_eff
+    modality: existing_provenance
+    anchor_stage: 028
+    parameter_names:
+    - det_eff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id064
 - id: fit_stage_030_beta_0s_lambda
+  candidate_key: stage_030_beta_0s_lambda
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '030'
   parameter_names:
   - beta_0s_lambda
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_030.tex
+  citations:
+  - &id065
+    path: paper/stages/stage_030.tex
     line: 103
     role: paper_stage_tex
     stage: '030'
@@ -10954,8 +2061,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_030_beta_0s_lambda
+    modality: numeric_literal
+    anchor_stage: '030'
+    parameter_names:
+    - beta_0s_lambda
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id065
+  - candidate_key: stage_030_beta_0s_lambda
+    modality: claim_label
+    anchor_stage: '030'
+    parameter_names:
+    - beta_0s_lambda
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_030.tex
+      line: 103
+      role: paper_stage_tex
+      stage: '030'
+      excerpt: \item The outgoing coefficient contains only \(\beta_0s_-/\lambda_-\), matching the selected projection of
+        Stage~029.
 - id: fit_stage_030_c_5
+  candidate_key: stage_030_c_5
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10966,9 +2094,9 @@ candidates:
   - D_0D_4
   - D_2
   - G5_phys
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_030.md
+  citations:
+  - &id066
+    path: redteam/pass2/reports/stage_030.md
     line: 39
     role: pass2_stage_report
     stage: '030'
@@ -10982,8 +2110,20 @@ candidates:
       independent at the matrix level (both route eigenvalues through the actual matrix rather than typing the closed form).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_030_c_5
+    modality: existing_provenance
+    anchor_stage: '030'
+    parameter_names:
+    - C_5
+    - D_0
+    - D_0D_4
+    - D_2
+    - G5_phys
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id066
 - id: fit_stage_030_m_eff
+  candidate_key: stage_030_m_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -10992,9 +2132,9 @@ candidates:
   - M_eff
   - lam_minus
   - s_minus_closed
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_030.md
+  citations:
+  - &id067
+    path: redteam/pass2/reports/stage_030.md
     line: 81
     role: pass2_stage_report
     stage: '030'
@@ -11007,7 +2147,8 @@ candidates:
       s_minus_closed) are identical between engines BECAUSE they are the paper''s claimed forms being tested — that is correct,
       not an echo. The comment at wl:48–54 explicitly documents the de-transliteration intent ("routing lamMinus/lamPlus through
       Eigenvalues[mMat] rather than through a typed closed form"). No `mathematica_transliteration` finding.'
-  - path: redteam/pass2/reports/stage_030.md
+  - &id068
+    path: redteam/pass2/reports/stage_030.md
     line: 94
     role: pass2_stage_report
     stage: '030'
@@ -11024,17 +2165,34 @@ candidates:
       track, not script-math.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_030_m_eff
+    modality: existing_provenance
+    anchor_stage: '030'
+    parameter_names:
+    - M_eff
+    - lam_minus
+    - s_minus_closed
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id067
+  - candidate_key: stage_030_m_eff
+    modality: existing_provenance
+    anchor_stage: '030'
+    parameter_names:
+    - M_eff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id068
 - id: fit_stage_031_delta_kappa
+  candidate_key: stage_031_delta_kappa
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '031'
   parameter_names:
   - delta_kappa
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_031.md
+  citations:
+  - &id069
+    path: redteam/pass2/reports/stage_031.md
     line: 87
     role: pass2_stage_report
     stage: '031'
@@ -11047,17 +2205,25 @@ candidates:
       convention difference is consistent and is itself evidence of independent derivation.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_031_delta_kappa
+    modality: existing_provenance
+    anchor_stage: '031'
+    parameter_names:
+    - delta_kappa
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id069
 - id: fit_stage_031_stale_output
+  candidate_key: stage_031_stale_output
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '031'
   parameter_names:
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_031.md
+  citations:
+  - &id070
+    path: redteam/pass2/reports/stage_031.md
     line: 123
     role: pass2_stage_report
     stage: '031'
@@ -11079,8 +2245,16 @@ candidates:
       and agree.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_031_stale_output
+    modality: existing_provenance
+    anchor_stage: '031'
+    parameter_names:
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id070
 - id: fit_stage_032_i_2
+  candidate_key: stage_032_i_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11091,9 +2265,9 @@ candidates:
   - kappa_0
   - kappa_0_kappa_1
   - kappa_1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_032.md
+  citations:
+  - &id071
+    path: redteam/pass2/reports/stage_032.md
     line: 35
     role: pass2_stage_report
     stage: '032'
@@ -11110,8 +2284,20 @@ candidates:
       (notes §6, line 252) — none of which the scripts compute.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_032_i_2
+    modality: existing_provenance
+    anchor_stage: '032'
+    parameter_names:
+    - I_2
+    - g_U
+    - kappa_0
+    - kappa_0_kappa_1
+    - kappa_1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id071
 - id: fit_stage_032_mhat_sq
+  candidate_key: stage_032_mhat_sq
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11120,9 +2306,9 @@ candidates:
   - mhat_sq
   - s_minus
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_032.md
+  citations:
+  - &id072
+    path: redteam/pass2/reports/stage_032.md
     line: 156
     role: pass2_stage_report
     stage: '032'
@@ -11136,8 +2322,18 @@ candidates:
       self-tests are not applicable.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_032_mhat_sq
+    modality: existing_provenance
+    anchor_stage: '032'
+    parameter_names:
+    - mhat_sq
+    - s_minus
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id072
 - id: fit_stage_033_k0_onset
+  candidate_key: stage_033_k0_onset
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11149,9 +2345,9 @@ candidates:
   - alpha_crit_mic
   - den_ratio
   - is_number
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_033.md
+  citations:
+  - &id073
+    path: redteam/pass2/reports/stage_033.md
     line: 39
     role: pass2_stage_report
     stage: '033'
@@ -11166,8 +2362,21 @@ candidates:
       of the monotonicity identity to 30 digits.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_033_k0_onset
+    modality: existing_provenance
+    anchor_stage: '033'
+    parameter_names:
+    - K0_onset
+    - alpha0_mic
+    - alpha_crit
+    - alpha_crit_mic
+    - den_ratio
+    - is_number
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id073
 - id: fit_stage_034_kappa0_sq
+  candidate_key: stage_034_kappa0_sq
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11177,9 +2386,9 @@ candidates:
   - kappa1_sq
   - s_x
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_034.md
+  citations:
+  - &id074
+    path: redteam/pass2/reports/stage_034.md
     line: 116
     role: pass2_stage_report
     stage: '034'
@@ -11196,8 +2405,19 @@ candidates:
       informational stale-output; mathematically this stage is clean.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_034_kappa0_sq
+    modality: existing_provenance
+    anchor_stage: '034'
+    parameter_names:
+    - kappa0_sq
+    - kappa1_sq
+    - s_x
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id074
 - id: fit_stage_034_pi_star
+  candidate_key: stage_034_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11205,9 +2425,9 @@ candidates:
   parameter_names:
   - Pi_star
   - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_034.md
+  citations:
+  - &id075
+    path: redteam/pass2/reports/stage_034.md
     line: 120
     role: pass2_stage_report
     stage: '034'
@@ -11216,8 +2436,17 @@ candidates:
       below.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_034_pi_star
+    modality: existing_provenance
+    anchor_stage: '034'
+    parameter_names:
+    - Pi_star
+    - gamma_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id075
 - id: fit_stage_035_f_target
+  candidate_key: stage_035_f_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11234,9 +2463,9 @@ candidates:
   - beta_0
   - eps_soft
   - kappa_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_035.md
+  citations:
+  - &id076
+    path: redteam/pass2/reports/stage_035.md
     line: 39
     role: pass2_stage_report
     stage: '035'
@@ -11250,7 +2479,8 @@ candidates:
       limit against typed forms and prints the support-coupling combination `alpha_req - alpha_mix`. Section 35.4 asserts
       the near-onset series of `F` (through `O(xi^2)`) and of `alpha_req` against typed forms. Each `expect_zero`/`expectZero`
       subtracts a from-construction expression from an independently typed target, so the checks are non-tautological.
-  - path: redteam/pass2/reports/stage_035.md
+  - &id077
+    path: redteam/pass2/reports/stage_035.md
     line: 156
     role: pass2_stage_report
     stage: '035'
@@ -11263,8 +2493,34 @@ candidates:
       only), so it introduces no new misalignment; all nine deliverables reconcile to the card/notes verbatim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_035_f_target
+    modality: existing_provenance
+    anchor_stage: '035'
+    parameter_names:
+    - F_target
+    - N_x
+    - R_target
+    - alpha_crit
+    - alpha_mix
+    - alpha_req
+    - alpha_x
+    - beta_0
+    - eps_soft
+    - kappa_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id076
+  - candidate_key: stage_035_f_target
+    modality: existing_provenance
+    anchor_stage: '035'
+    parameter_names:
+    - F_target
+    - N_x
+    - alpha_req_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id077
 - id: fit_stage_035_r_target
+  candidate_key: stage_035_r_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11272,9 +2528,9 @@ candidates:
   parameter_names:
   - R_target
   - xi_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  citations:
+  - &id078
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
     line: 211
     role: notes_stage
     stage: '035'
@@ -11282,8 +2538,30 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_035_r_target
+    modality: numeric_literal
+    anchor_stage: '035'
+    parameter_names:
+    - R_target
+    - xi_req
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id078
+  - candidate_key: stage_035_r_target
+    modality: claim_label
+    anchor_stage: '035'
+    parameter_names:
+    - R_target
+    - xi_req
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+      line: 211
+      role: notes_stage
+      stage: '035'
+      excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
 - id: fit_stage_035_to
+  candidate_key: stage_035_to
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11291,17 +2569,26 @@ candidates:
   parameter_names:
   - to
   - xi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_035.tex
+  citations:
+  - &id079
+    path: paper/stages/stage_035.tex
     line: 137
     role: paper_stage_tex
     stage: '035'
     excerpt: \item The divergence as \(\xi\to1^-\) matches the selected eigenvalue approaching zero.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_035_to
+    modality: claim_label
+    anchor_stage: '035'
+    parameter_names:
+    - to
+    - xi
+    reason: claim label or status wording near target-related parameter
+    citation: *id079
 - id: fit_stage_036_m_mix
+  candidate_key: stage_036_m_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11309,9 +2596,9 @@ candidates:
   parameter_names:
   - M_mix
   - R_target
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  citations:
+  - &id080
+    path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
     line: 151
     role: notes_stage
     stage: '036'
@@ -11319,8 +2606,17 @@ candidates:
       that
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_036_m_mix
+    modality: claim_label
+    anchor_stage: '036'
+    parameter_names:
+    - M_mix
+    - R_target
+    reason: claim label or status wording near target-related parameter
+    citation: *id080
 - id: fit_stage_037_deltak_ax
+  candidate_key: stage_037_deltak_ax
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11347,9 +2643,9 @@ candidates:
   - kappa_1
   - mu_W
   - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_037.md
+  citations:
+  - &id081
+    path: redteam/pass2/reports/stage_037.md
     line: 35
     role: pass2_stage_report
     stage: '037'
@@ -11367,8 +2663,36 @@ candidates:
       = Xi I_2 + alpha v v^T`, which the card states only structurally in \eqref{eq:app-stage037-schur-form}.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_037_deltak_ax
+    modality: existing_provenance
+    anchor_stage: '037'
+    parameter_names:
+    - DeltaK_ax
+    - Delta_0
+    - I_2
+    - K_0
+    - K_U
+    - K_W
+    - K_eta
+    - M_mix
+    - Omega_U
+    - Omega_W
+    - Sigma_wall
+    - T_w
+    - alpha_mix
+    - beta_0
+    - c_UW
+    - c_etaU
+    - c_etaW
+    - kappa_0
+    - kappa_1
+    - mu_W
+    - mu_eta
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id081
 - id: fit_stage_037_fix_loop
+  candidate_key: stage_037_fix_loop
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11376,9 +2700,9 @@ candidates:
   parameter_names:
   - fix_loop
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_037.md
+  citations:
+  - &id082
+    path: redteam/pass2/reports/stage_037.md
     line: 132
     role: pass2_stage_report
     stage: '037'
@@ -11399,8 +2723,17 @@ candidates:
       matches the paper''s stated claim exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_037_fix_loop
+    modality: existing_provenance
+    anchor_stage: '037'
+    parameter_names:
+    - fix_loop
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id082
 - id: fit_stage_037_m_mix
+  candidate_key: stage_037_m_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11413,9 +2746,9 @@ candidates:
   - kappa_1
   - u_0
   - u_1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_037.md
+  citations:
+  - &id083
+    path: redteam/pass2/reports/stage_037.md
     line: 39
     role: pass2_stage_report
     stage: '037'
@@ -11431,8 +2764,22 @@ candidates:
       against a derived (not hardcoded) target.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_037_m_mix
+    modality: existing_provenance
+    anchor_stage: '037'
+    parameter_names:
+    - M_mix
+    - alpha_mix
+    - f_0
+    - kappa_0
+    - kappa_1
+    - u_0
+    - u_1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id083
 - id: fit_stage_039_d_dir
+  candidate_key: stage_039_d_dir
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11455,9 +2802,9 @@ candidates:
   - lambda_0
   - mu_eta
   - rho_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_039.md
+  citations:
+  - &id084
+    path: redteam/pass2/reports/stage_039.md
     line: 39
     role: pass2_stage_report
     stage: 039
@@ -11471,8 +2818,32 @@ candidates:
       (e) **print** (no assertion) the placement map `M_mix, R_target` and the product; (f) print the small-`delta_U` series.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_039_d_dir
+    modality: existing_provenance
+    anchor_stage: 039
+    parameter_names:
+    - D_dir
+    - K_U
+    - K_U1
+    - K_eta_eff
+    - M_mix
+    - R_U
+    - R_target
+    - S_U
+    - delta_U
+    - delta_split
+    - eps_W
+    - eps_eta
+    - kappa_0
+    - kappa_1
+    - lambda_0
+    - mu_eta
+    - rho_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id084
 - id: fit_stage_041_d_sel
+  candidate_key: stage_041_d_sel
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11482,9 +2853,9 @@ candidates:
   - R_U
   - stale_output
   - tR_U
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_041.md
+  citations:
+  - &id085
+    path: redteam/pass2/reports/stage_041.md
     line: 109
     role: pass2_stage_report
     stage: '041'
@@ -11502,8 +2873,19 @@ candidates:
       deferred SCRIPT/OUTPUT-band numbering class and must not be hand-patched here. `material_change: false`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_041_d_sel
+    modality: existing_provenance
+    anchor_stage: '041'
+    parameter_names:
+    - D_sel
+    - R_U
+    - stale_output
+    - tR_U
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id085
 - id: fit_stage_042_f_src
+  candidate_key: stage_042_f_src
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11516,9 +2898,9 @@ candidates:
   - n_src
   - ratio_expected
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_042.md
+  citations:
+  - &id086
+    path: redteam/pass2/reports/stage_042.md
     line: 112
     role: pass2_stage_report
     stage: '042'
@@ -11536,8 +2918,22 @@ candidates:
       claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_042_f_src
+    modality: existing_provenance
+    anchor_stage: '042'
+    parameter_names:
+    - F_src
+    - R_U
+    - dR_U
+    - lambda_0
+    - n_src
+    - ratio_expected
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id086
 - id: fit_stage_043_d_phi
+  candidate_key: stage_043_d_phi
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11546,9 +2942,9 @@ candidates:
   - D_phi
   - R_U
   - R_phi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_043.md
+  citations:
+  - &id087
+    path: redteam/pass2/reports/stage_043.md
     line: 122
     role: pass2_stage_report
     stage: '043'
@@ -11562,8 +2958,18 @@ candidates:
       `mathematica_transliteration` finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_043_d_phi
+    modality: existing_provenance
+    anchor_stage: '043'
+    parameter_names:
+    - D_phi
+    - R_U
+    - R_phi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id087
 - id: fit_stage_043_d_u
+  candidate_key: stage_043_d_u
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11587,9 +2993,9 @@ candidates:
   - kappa_1
   - tR_U
   - tR_phi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_043.md
+  citations:
+  - &id088
+    path: redteam/pass2/reports/stage_043.md
     line: 35
     role: pass2_stage_report
     stage: '043'
@@ -11608,8 +3014,33 @@ candidates:
       decision."'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_043_d_u
+    modality: existing_provenance
+    anchor_stage: '043'
+    parameter_names:
+    - D_U
+    - D_phi
+    - M_mix
+    - M_supp
+    - R_U
+    - R_phi
+    - Z_phi
+    - delta_U
+    - eps_eta
+    - eps_phi
+    - g_B
+    - g_R
+    - g_S
+    - g_W
+    - kappa_0
+    - kappa_1
+    - tR_U
+    - tR_phi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id088
 - id: fit_stage_043_m_mix
+  candidate_key: stage_043_m_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11619,9 +3050,9 @@ candidates:
   - M_supp
   - R_U
   - R_phi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  citations:
+  - &id089
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
     line: 251
     role: notes_stage
     stage: '043'
@@ -11630,8 +3061,35 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_043_m_mix
+    modality: numeric_literal
+    anchor_stage: '043'
+    parameter_names:
+    - M_mix
+    - M_supp
+    - R_U
+    - R_phi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id089
+  - candidate_key: stage_043_m_mix
+    modality: claim_label
+    anchor_stage: '043'
+    parameter_names:
+    - M_mix
+    - M_supp
+    - R_U
+    - R_phi
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 251
+      role: notes_stage
+      stage: '043'
+      excerpt: '> insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-041/042 selected-branch
+        formulas and determine the physical selected branch.'
 - id: fit_stage_044_b_cont
+  candidate_key: stage_044_b_cont
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11646,9 +3104,9 @@ candidates:
   - R_U
   - R_phi
   - R_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_044.md
+  citations:
+  - &id090
+    path: redteam/pass2/reports/stage_044.md
     line: 35
     role: pass2_stage_report
     stage: '044'
@@ -11665,8 +3123,24 @@ candidates:
       Appendix row (line 66): "Physical softening depth fixed by a quadratic and selected normalization gate," `\StatusExactClosure{}`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_044_b_cont
+    modality: existing_provenance
+    anchor_stage: '044'
+    parameter_names:
+    - B_cont
+    - C_cont
+    - F_cont
+    - G_q
+    - M_mix
+    - M_supp
+    - R_U
+    - R_phi
+    - R_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id090
 - id: fit_stage_044_r_u
+  candidate_key: stage_044_r_u
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11674,9 +3148,9 @@ candidates:
   parameter_names:
   - R_U
   - phi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_044.tex
+  citations:
+  - &id091
+    path: paper/stages/stage_044.tex
     line: 37
     role: paper_stage_tex
     stage: '044'
@@ -11685,8 +3159,31 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_044_r_u
+    modality: numeric_literal
+    anchor_stage: '044'
+    parameter_names:
+    - R_U
+    - phi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id091
+  - candidate_key: stage_044_r_u
+    modality: claim_label
+    anchor_stage: '044'
+    parameter_names:
+    - R_U
+    - phi
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_044.tex
+      line: 37
+      role: paper_stage_tex
+      stage: '044'
+      excerpt: 'Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched
+        tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.'
 - id: fit_stage_045_f_tr
+  candidate_key: stage_045_f_tr
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11695,9 +3192,9 @@ candidates:
   - F_tr
   - R_target
   - branch_eq
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_045.md
+  citations:
+  - &id092
+    path: redteam/pass2/reports/stage_045.md
     line: 141
     role: pass2_stage_report
     stage: '045'
@@ -11707,17 +3204,27 @@ candidates:
       (drivers for assertions).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_045_f_tr
+    modality: existing_provenance
+    anchor_stage: '045'
+    parameter_names:
+    - F_tr
+    - R_target
+    - branch_eq
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id092
 - id: fit_stage_045_r_tr
+  candidate_key: stage_045_r_tr
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '045'
   parameter_names:
   - R_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_045.md
+  citations:
+  - &id093
+    path: redteam/pass2/reports/stage_045.md
     line: 47
     role: pass2_stage_report
     stage: '045'
@@ -11725,8 +3232,16 @@ candidates:
       pinning `1-R_tr` and `R_tr-1/(1+δ_U)` | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_045_r_tr
+    modality: existing_provenance
+    anchor_stage: '045'
+    parameter_names:
+    - R_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id093
 - id: fit_stage_046_e_flat
+  candidate_key: stage_046_e_flat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11746,9 +3261,9 @@ candidates:
   - R_tr
   - dF_tr
   - dG_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_046.md
+  citations:
+  - &id094
+    path: redteam/pass2/reports/stage_046.md
     line: 35
     role: pass2_stage_report
     stage: '046'
@@ -11766,8 +3281,29 @@ candidates:
       first split-`U` tracking worsens the target."'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_046_e_flat
+    modality: existing_provenance
+    anchor_stage: '046'
+    parameter_names:
+    - E_flat
+    - E_tr
+    - F_flat
+    - F_tr
+    - G_flat
+    - G_tr
+    - M_tr
+    - P_1
+    - P_2
+    - P_R
+    - R_target
+    - R_tr
+    - dF_tr
+    - dG_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id094
 - id: fit_stage_046_f_flat
+  candidate_key: stage_046_f_flat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11780,9 +3316,9 @@ candidates:
   - P_R
   - dF_tr
   - dG_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_046.md
+  citations:
+  - &id095
+    path: redteam/pass2/reports/stage_046.md
     line: 39
     role: pass2_stage_report
     stage: '046'
@@ -11798,8 +3334,22 @@ candidates:
       content is Stage 046.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_046_f_flat
+    modality: existing_provenance
+    anchor_stage: '046'
+    parameter_names:
+    - F_flat
+    - F_tr
+    - G_flat
+    - G_tr
+    - P_R
+    - dF_tr
+    - dG_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id095
 - id: fit_stage_048_f_tr
+  candidate_key: stage_048_f_tr
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11809,9 +3359,9 @@ candidates:
   - G_tr
   - zeta_crit
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_048.md
+  citations:
+  - &id096
+    path: redteam/pass2/reports/stage_048.md
     line: 143
     role: pass2_stage_report
     stage: 048
@@ -11826,17 +3376,28 @@ candidates:
       pass.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_048_f_tr
+    modality: existing_provenance
+    anchor_stage: 048
+    parameter_names:
+    - F_tr
+    - G_tr
+    - zeta_crit
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id096
 - id: fit_stage_048_zeta_rm
+  candidate_key: stage_048_zeta_rm
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 048
   parameter_names:
   - zeta_rm
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_048.md
+  citations:
+  - &id097
+    path: redteam/pass2/reports/stage_048.md
     line: 147
     role: pass2_stage_report
     stage: 048
@@ -11845,8 +3406,16 @@ candidates:
       so they are excluded as out-of-scope for this stage's reconciliation.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_048_zeta_rm
+    modality: existing_provenance
+    anchor_stage: 048
+    parameter_names:
+    - zeta_rm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id097
 - id: fit_stage_051_c_mix
+  candidate_key: stage_051_c_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11855,27 +3424,53 @@ candidates:
   - C_mix
   - Z_W
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_051.md
+  citations:
+  - &id098
+    path: redteam/pass2/reports/stage_051.md
     line: 51
     role: pass2_stage_report
     stage: '051'
     excerpt: Stage-048 map and asserts it vanishes at `Pi=C_mix`, equals 1 at `Pi=2 C_mix`, hence pins the threshold
-  - path: redteam/pass2/reports/stage_051.md
+  - &id099
+    path: redteam/pass2/reports/stage_051.md
     line: 102
     role: pass2_stage_report
     stage: '051'
     excerpt: (A5) plus the C_mix definition pin the same content. Not a separate finding given A5 covers the load-bearing
-  - path: redteam/pass2/reports/stage_051.md
+  - &id100
+    path: redteam/pass2/reports/stage_051.md
     line: 183
     role: pass2_stage_report
     stage: '051'
     excerpt: '`zeta_req<=1 <=> Pi<=2 C_mix` is pinned at the boundary in both engines; the `Z_W` consistency uses the anchored'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_051_c_mix
+    modality: existing_provenance
+    anchor_stage: '051'
+    parameter_names:
+    - C_mix
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id098
+  - candidate_key: stage_051_c_mix
+    modality: existing_provenance
+    anchor_stage: '051'
+    parameter_names:
+    - C_mix
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id099
+  - candidate_key: stage_051_c_mix
+    modality: existing_provenance
+    anchor_stage: '051'
+    parameter_names:
+    - C_mix
+    - Z_W
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id100
 - id: fit_stage_055_stale_output
+  candidate_key: stage_055_stale_output
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11884,9 +3479,9 @@ candidates:
   - stale_output
   - x_floor
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_055.md
+  citations:
+  - &id101
+    path: redteam/pass2/reports/stage_055.md
     line: 131
     role: pass2_stage_report
     stage: '055'
@@ -11904,8 +3499,18 @@ candidates:
       verified claim matches the paper''s stated claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_055_stale_output
+    modality: existing_provenance
+    anchor_stage: '055'
+    parameter_names:
+    - stale_output
+    - x_floor
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id101
 - id: fit_stage_056_i_w
+  candidate_key: stage_056_i_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11914,9 +3519,9 @@ candidates:
   - I_W
   - missing_branch
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_056.md
+  citations:
+  - &id102
+    path: redteam/pass2/reports/stage_056.md
     line: 39
     role: pass2_stage_report
     stage: '056'
@@ -11928,7 +3533,8 @@ candidates:
       = 0`; small-Pe linear coefficient `= (4−π)/(2π)`; and large-Pe asymptotic through `O(Pe⁻²)`. The Mathematica script
       verifies the identical set independently, additionally pinning the large-Pe coefficient via `Limit[pe²(omegaPe − π/2),
       pe→∞] = −π³/8`.'
-  - path: redteam/pass2/reports/stage_056.md
+  - &id103
+    path: redteam/pass2/reports/stage_056.md
     line: 110
     role: pass2_stage_report
     stage: '056'
@@ -11946,8 +3552,25 @@ candidates:
       defect; `material_change: false`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_056_i_w
+    modality: existing_provenance
+    anchor_stage: '056'
+    parameter_names:
+    - I_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id102
+  - candidate_key: stage_056_i_w
+    modality: existing_provenance
+    anchor_stage: '056'
+    parameter_names:
+    - I_W
+    - missing_branch
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id103
 - id: fit_stage_058_delta_0
+  candidate_key: stage_058_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -11957,9 +3580,9 @@ candidates:
   - Delta_inf
   - Sigma_Pe
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_058.md
+  citations:
+  - &id104
+    path: redteam/pass2/reports/stage_058.md
     line: 39
     role: pass2_stage_report
     stage: 058
@@ -11971,7 +3594,8 @@ candidates:
       closed form and its positivity; the `Delta_0 <= Delta(Pe) <= Delta_inf` monotonicity sweep; the `F`-sign IVT bracket
       existence sweep; the weak-coupling constant and nonvanishing first-order series coefficient; and the IFT branch slope
       `dPe_*/dXi|_0 = Delta_0`. The bottom line tested is exactly the paper''s fixed point + bracket + endpoint forms.'
-  - path: redteam/pass2/reports/stage_058.md
+  - &id105
+    path: redteam/pass2/reports/stage_058.md
     line: 117
     role: pass2_stage_report
     stage: 058
@@ -11988,8 +3612,26 @@ candidates:
       not a math problem.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_058_delta_0
+    modality: existing_provenance
+    anchor_stage: 058
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - Sigma_Pe
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id104
+  - candidate_key: stage_058_delta_0
+    modality: existing_provenance
+    anchor_stage: 058
+    parameter_names:
+    - Delta_0
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id105
 - id: fit_stage_061_delta_0
+  candidate_key: stage_061_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12006,9 +3648,9 @@ candidates:
   - Xi_micro
   - chi_fail
   - chi_suff
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_061.md
+  citations:
+  - &id106
+    path: redteam/pass2/reports/stage_061.md
     line: 39
     role: pass2_stage_report
     stage: '061'
@@ -12022,8 +3664,26 @@ candidates:
       and the Mathematica banner enumerate exactly these five ledger claims.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_061_delta_0
+    modality: existing_provenance
+    anchor_stage: '061'
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - G_fail
+    - G_micro
+    - G_suff
+    - K_X
+    - Pe_req
+    - T_X
+    - Xi_micro
+    - chi_fail
+    - chi_suff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id106
 - id: fit_stage_061_g_fail
+  candidate_key: stage_061_g_fail
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12034,9 +3694,9 @@ candidates:
   - G_suff
   - Pe_req
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_061.md
+  citations:
+  - &id107
+    path: redteam/pass2/reports/stage_061.md
     line: 105
     role: pass2_stage_report
     stage: '061'
@@ -12054,17 +3714,29 @@ candidates:
       claims match the paper''s claims.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_061_g_fail
+    modality: existing_provenance
+    anchor_stage: '061'
+    parameter_names:
+    - G_fail
+    - G_micro
+    - G_suff
+    - Pe_req
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id107
 - id: fit_stage_061_pe_req
+  candidate_key: stage_061_pe_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '061'
   parameter_names:
   - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_061.md
+  citations:
+  - &id108
+    path: redteam/pass2/reports/stage_061.md
     line: 115
     role: pass2_stage_report
     stage: '061'
@@ -12073,17 +3745,25 @@ candidates:
       paper card and/or notes.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_061_pe_req
+    modality: existing_provenance
+    anchor_stage: '061'
+    parameter_names:
+    - Pe_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id108
 - id: fit_stage_062_tautological_check
+  candidate_key: stage_062_tautological_check
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '062'
   parameter_names:
   - tautological_check
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_062.md
+  citations:
+  - &id109
+    path: redteam/pass2/reports/stage_062.md
     line: 81
     role: pass2_stage_report
     stage: '062'
@@ -12093,8 +3773,16 @@ candidates:
       noted only.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_062_tautological_check
+    modality: existing_provenance
+    anchor_stage: '062'
+    parameter_names:
+    - tautological_check
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id109
 - id: fit_stage_062_xi_micro
+  candidate_key: stage_062_xi_micro
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12102,9 +3790,9 @@ candidates:
   parameter_names:
   - Xi_micro
   - Xi_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_062.md
+  citations:
+  - &id110
+    path: redteam/pass2/reports/stage_062.md
     line: 140
     role: pass2_stage_report
     stage: '062'
@@ -12120,8 +3808,17 @@ candidates:
       on those; the physics is `aligned`.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_062_xi_micro
+    modality: existing_provenance
+    anchor_stage: '062'
+    parameter_names:
+    - Xi_micro
+    - Xi_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id110
 - id: fit_stage_063_g_fail
+  candidate_key: stage_063_g_fail
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12131,9 +3828,9 @@ candidates:
   - G_max
   - G_micro
   - G_suff
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_063.md
+  citations:
+  - &id111
+    path: redteam/pass2/reports/stage_063.md
     line: 39
     role: pass2_stage_report
     stage: '063'
@@ -12148,8 +3845,19 @@ candidates:
       directly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_063_g_fail
+    modality: existing_provenance
+    anchor_stage: '063'
+    parameter_names:
+    - G_fail
+    - G_max
+    - G_micro
+    - G_suff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id111
 - id: fit_stage_064_f_eff
+  candidate_key: stage_064_f_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12160,9 +3868,9 @@ candidates:
   - N_pp
   - N_ss
   - g_phi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_064.md
+  citations:
+  - &id112
+    path: redteam/pass2/reports/stage_064.md
     line: 144
     role: pass2_stage_report
     stage: '064'
@@ -12174,8 +3882,20 @@ candidates:
       this cross-check is read off the current script sources, which agree.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_064_f_eff
+    modality: existing_provenance
+    anchor_stage: '064'
+    parameter_names:
+    - F_eff
+    - G_eq
+    - N_pp
+    - N_ss
+    - g_phi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id112
 - id: fit_stage_064_g_eq
+  candidate_key: stage_064_g_eq
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12189,9 +3909,9 @@ candidates:
   - chi_phi
   - chi_sigma
   - g_phi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_064.md
+  citations:
+  - &id113
+    path: redteam/pass2/reports/stage_064.md
     line: 35
     role: pass2_stage_report
     stage: '064'
@@ -12208,8 +3928,23 @@ candidates:
       on `supp(chi_phi)` (§3, line 132).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_064_g_eq
+    modality: existing_provenance
+    anchor_stage: '064'
+    parameter_names:
+    - G_eq
+    - H_w
+    - I_1
+    - I_2
+    - K_X
+    - chi_phi
+    - chi_sigma
+    - g_phi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id113
 - id: fit_stage_064_h_w
+  candidate_key: stage_064_h_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12221,14 +3956,15 @@ candidates:
   - Npp_int
   - f_eff
   - sigma_stat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  citations:
+  - &id114
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
     line: 184
     role: notes_stage
     stage: '064'
     excerpt: In the matched-layer limit `H(y) ~ H_w`,
-  - path: redteam/pass2/reports/stage_064.md
+  - &id115
+    path: redteam/pass2/reports/stage_064.md
     line: 166
     role: pass2_stage_report
     stage: '064'
@@ -12239,8 +3975,28 @@ candidates:
   modality_attribution:
   - claim_label
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_064_h_w
+    modality: claim_label
+    anchor_stage: '064'
+    parameter_names:
+    - H_w
+    reason: claim label or status wording near target-related parameter
+    citation: *id114
+  - candidate_key: stage_064_h_w
+    modality: existing_provenance
+    anchor_stage: '064'
+    parameter_names:
+    - H_w
+    - I1_int
+    - I2_int
+    - Npp_int
+    - f_eff
+    - sigma_stat
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id115
 - id: fit_stage_065_v_0
+  candidate_key: stage_065_v_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12248,9 +4004,9 @@ candidates:
   parameter_names:
   - V_0
   - ell
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_065.tex
+  citations:
+  - &id116
+    path: paper/stages/stage_065.tex
     line: 18
     role: paper_stage_tex
     stage: '065'
@@ -12259,8 +4015,31 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_065_v_0
+    modality: numeric_literal
+    anchor_stage: '065'
+    parameter_names:
+    - V_0
+    - ell
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id116
+  - candidate_key: stage_065_v_0
+    modality: claim_label
+    anchor_stage: '065'
+    parameter_names:
+    - V_0
+    - ell
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_065.tex
+      line: 18
+      role: paper_stage_tex
+      stage: '065'
+      excerpt: Inserting this into the matched-layer gain yields thresholds directly in terms of \(V_0\), \(\ell\), support
+        stiffness, and wall geometry.  Stage~066 packages those quantities into the dimensionless wall figure of merit.
 - id: fit_stage_065_v_0f
+  candidate_key: stage_065_v_0f
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12268,9 +4047,9 @@ candidates:
   parameter_names:
   - V_0f
   - ell
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_065.tex
+  citations:
+  - &id117
+    path: paper/stages/stage_065.tex
     line: 7
     role: paper_stage_tex
     stage: '065'
@@ -12278,8 +4057,30 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_065_v_0f
+    modality: numeric_literal
+    anchor_stage: '065'
+    parameter_names:
+    - V_0f
+    - ell
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id117
+  - candidate_key: stage_065_v_0f
+    modality: claim_label
+    anchor_stage: '065'
+    parameter_names:
+    - V_0f
+    - ell
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_065.tex
+      line: 7
+      role: paper_stage_tex
+      stage: '065'
+      excerpt: \stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
 - id: fit_stage_066_delta_0
+  candidate_key: stage_066_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12296,15 +4097,16 @@ candidates:
   - T_X
   - W_H
   - W_wall
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  citations:
+  - &id118
+    path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
     line: 126
     role: notes_stage
     stage: '066'
     excerpt: So in the matched, constant-compressibility wall layer, the entire parent branch comparison is a direct contest
       between one support/loading number `W_H` and one demanded transport window set by the axial functions `Delta_inf`, `Delta_0`.
-  - path: redteam/pass2/reports/stage_066.md
+  - &id119
+    path: redteam/pass2/reports/stage_066.md
     line: 35
     role: pass2_stage_report
     stage: '066'
@@ -12321,17 +4123,44 @@ candidates:
   modality_attribution:
   - claim_label
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_066_delta_0
+    modality: claim_label
+    anchor_stage: '066'
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - W_H
+    reason: claim label or status wording near target-related parameter
+    citation: *id118
+  - candidate_key: stage_066_delta_0
+    modality: existing_provenance
+    anchor_stage: '066'
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - G_eq
+    - H_w
+    - I_f
+    - J_1
+    - K_X
+    - Pe_req
+    - T_X
+    - W_H
+    - W_wall
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id119
 - id: fit_stage_066_w_wall
+  candidate_key: stage_066_w_wall
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '066'
   parameter_names:
   - W_wall
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_066.md
+  citations:
+  - &id120
+    path: redteam/pass2/reports/stage_066.md
     line: 120
     role: pass2_stage_report
     stage: '066'
@@ -12347,8 +4176,16 @@ candidates:
       the math is clean and aligned.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_066_w_wall
+    modality: existing_provenance
+    anchor_stage: '066'
+    parameter_names:
+    - W_wall
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id120
 - id: fit_stage_067_c_res
+  candidate_key: stage_067_c_res
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12361,9 +4198,9 @@ candidates:
   - simeq
   - w_f
   - w_g
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_067.md
+  citations:
+  - &id121
+    path: redteam/pass2/reports/stage_067.md
     line: 35
     role: pass2_stage_report
     stage: '067'
@@ -12377,7 +4214,8 @@ candidates:
       sqrt(2 pi)]`, the exact overlap duality `I(r)=(r/sqrt(pi)) I(pi/r)` ⇒ `C^2(r)=C^2(pi/r)`, the shortfall `1-C_res^2 ≈
       0.56%`, and the explicit caveat that this benchmark does NOT prove threshold survival (which still depends on Stages
       061–066). The appendix row (line 112) summarizes: "Coherence resonance at `w_g/w_f=sqrt(pi)`."'
-  - path: redteam/pass2/reports/stage_067.md
+  - &id122
+    path: redteam/pass2/reports/stage_067.md
     line: 102
     role: pass2_stage_report
     stage: '067'
@@ -12385,8 +4223,29 @@ candidates:
       exceed script mtimes, and all PASS lines / numeric values are unchanged (C_res^2 = 0.994418836451529348…, P_res = 1.00561248776057621695…).
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_067_c_res
+    modality: existing_provenance
+    anchor_stage: '067'
+    parameter_names:
+    - C_res
+    - chi_phi
+    - chi_sigma
+    - simeq
+    - w_f
+    - w_g
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id121
+  - candidate_key: stage_067_c_res
+    modality: existing_provenance
+    anchor_stage: '067'
+    parameter_names:
+    - C_res
+    - P_res
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id122
 - id: fit_stage_067_iprime_dual
+  candidate_key: stage_067_iprime_dual
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12395,9 +4254,9 @@ candidates:
   - Iprime_dual
   - Iprime_left
   - dC2_selfdual
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_067.md
+  citations:
+  - &id123
+    path: redteam/pass2/reports/stage_067.md
     line: 106
     role: pass2_stage_report
     stage: '067'
@@ -12412,8 +4271,18 @@ candidates:
       is legitimate corroboration, not an echo of the `.py` algebra. Independent.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_067_iprime_dual
+    modality: existing_provenance
+    anchor_stage: '067'
+    parameter_names:
+    - Iprime_dual
+    - Iprime_left
+    - dC2_selfdual
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id123
 - id: fit_stage_068_c_res
+  candidate_key: stage_068_c_res
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12429,14 +4298,15 @@ candidates:
   - W_suff
   - W_wall
   - simeq
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  citations:
+  - &id124
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
     line: 23
     role: notes_stage
     stage: 068
     excerpt: '- on the independent sech–Gaussian benchmark family, the best possible coherence is `C_res^2`,'
-  - path: redteam/pass2/reports/stage_068.md
+  - &id125
+    path: redteam/pass2/reports/stage_068.md
     line: 35
     role: pass2_stage_report
     stage: 068
@@ -12454,8 +4324,44 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_068_c_res
+    modality: numeric_literal
+    anchor_stage: 068
+    parameter_names:
+    - C_res
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id124
+  - candidate_key: stage_068_c_res
+    modality: claim_label
+    anchor_stage: 068
+    parameter_names:
+    - C_res
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+      line: 23
+      role: notes_stage
+      stage: 068
+      excerpt: '- on the independent sech–Gaussian benchmark family, the best possible coherence is `C_res^2`,'
+  - candidate_key: stage_068_c_res
+    modality: existing_provenance
+    anchor_stage: 068
+    parameter_names:
+    - C_res
+    - Delta_0
+    - Delta_inf
+    - P_res
+    - Pe_req
+    - W_fail
+    - W_res
+    - W_suff
+    - W_wall
+    - simeq
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id125
 - id: fit_stage_068_delta_0
+  candidate_key: stage_068_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12464,9 +4370,9 @@ candidates:
   - Delta_0
   - Pe_req
   - W_wall
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  citations:
+  - &id126
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
     line: 71
     role: notes_stage
     stage: 068
@@ -12474,8 +4380,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_068_delta_0
+    modality: numeric_literal
+    anchor_stage: 068
+    parameter_names:
+    - Delta_0
+    - Pe_req
+    - W_wall
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id126
+  - candidate_key: stage_068_delta_0
+    modality: claim_label
+    anchor_stage: 068
+    parameter_names:
+    - Delta_0
+    - Pe_req
+    - W_wall
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+      line: 71
+      role: notes_stage
+      stage: 068
+      excerpt: '`W_wall >= Pe_req / Delta_0`    -> matched-branch succeed.'
 - id: fit_stage_068_delta_inf
+  candidate_key: stage_068_delta_inf
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12484,9 +4414,9 @@ candidates:
   - Delta_inf
   - Pe_req
   - W_wall
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  citations:
+  - &id127
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
     line: 69
     role: notes_stage
     stage: 068
@@ -12494,17 +4424,41 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_068_delta_inf
+    modality: numeric_literal
+    anchor_stage: 068
+    parameter_names:
+    - Delta_inf
+    - Pe_req
+    - W_wall
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id127
+  - candidate_key: stage_068_delta_inf
+    modality: claim_label
+    anchor_stage: 068
+    parameter_names:
+    - Delta_inf
+    - Pe_req
+    - W_wall
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+      line: 69
+      role: notes_stage
+      stage: 068
+      excerpt: '`W_wall <= Pe_req / Delta_inf`  -> matched-branch fail,'
 - id: fit_stage_068_p_res
+  candidate_key: stage_068_p_res
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 068
   parameter_names:
   - P_res
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  citations:
+  - &id128
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
     line: 119
     role: notes_stage
     stage: 068
@@ -12513,8 +4467,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_068_p_res
+    modality: numeric_literal
+    anchor_stage: 068
+    parameter_names:
+    - P_res
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id128
+  - candidate_key: stage_068_p_res
+    modality: claim_label
+    anchor_stage: 068
+    parameter_names:
+    - P_res
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+      line: 119
+      role: notes_stage
+      stage: 068
+      excerpt: Because the resonance family differs from the matched branch only by the factor `P_res = 1.005612...`, the
+        only region where profile choice can change the reduced verdict is a very narrow band.
 - id: fit_stage_069_c_res
+  candidate_key: stage_069_c_res
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12537,9 +4512,9 @@ candidates:
   - stale_output
   - v_fail
   - v_succ
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_069.md
+  citations:
+  - &id129
+    path: redteam/pass2/reports/stage_069.md
     line: 35
     role: pass2_stage_report
     stage: 069
@@ -12553,7 +4528,8 @@ candidates:
       preamble and the appendix row for stage 068 (`P_res ≃ 1.005612`); the stage-069 card itself states only the symbolic
       three-zone structure. No numeric constant is a stage-069 deliverable; the stage''s job is to assemble the symbolic verdict
       and the exact side-band geometry from the upstream forms.'
-  - path: redteam/pass2/reports/stage_069.md
+  - &id130
+    path: redteam/pass2/reports/stage_069.md
     line: 39
     role: pass2_stage_report
     stage: 069
@@ -12566,7 +4542,8 @@ candidates:
       `(1-C_res^2)/C_res^2 = P_res - 1`; (vi) ordering/positivity that places an interior point (parameterized by `v_fail`,`v_succ`
       via `u = v/(1+v)`) strictly inside each side-band. Everything is symbolic over free positive parameters (`Pe_req, Delta_0,
       Delta_gap, Pres_gap` in SymPy; `Cres2Prim` as the primitive in Mathematica). No numeric constants are pinned.'
-  - path: redteam/pass2/reports/stage_069.md
+  - &id131
+    path: redteam/pass2/reports/stage_069.md
     line: 108
     role: pass2_stage_report
     stage: 069
@@ -12581,13 +4558,15 @@ candidates:
       all symbols positive/real as the physics requires; `expect_positive` results (`Delta_gap`, `Pres_gap`, etc.) are genuinely
       positive under the declared assumptions. (d) paper-misalignment — every card/notes deliverable maps to a matching check.
       The only defect is the committed `.txt` banner self-label "STAGE 052", which the refresh corrects to "STAGE 069".'
-  - path: redteam/pass2/reports/stage_069.md
+  - &id132
+    path: redteam/pass2/reports/stage_069.md
     line: 116
     role: pass2_stage_report
     stage: 069
     excerpt: The scripts emit only **symbolic** deliverables (no pinned numeric constants — `C_res^2`/`P_res` are carried
       as the free symbols `Cres2Prim`/`Pres_gap`). The deliverable-level values are the threshold and side-band forms.
-  - path: redteam/pass2/reports/stage_069.md
+  - &id133
+    path: redteam/pass2/reports/stage_069.md
     line: 132
     role: pass2_stage_report
     stage: 069
@@ -12596,8 +4575,70 @@ candidates:
       in the stage-069 scripts (kept symbolic), so they are not stage-069 reconciliation items — no MISMATCH/MISSING-DELIVERABLE.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_069_c_res
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - C_res
+    - Delta_0
+    - Delta_inf
+    - P_res
+    - Pe_req
+    - W_wall
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id129
+  - candidate_key: stage_069_c_res
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - C_res
+    - Delta_0
+    - Delta_eff
+    - Delta_gap
+    - Delta_inf
+    - P_res
+    - Pe_req
+    - Pres_gap
+    - W_match
+    - Wfail_match
+    - Wsuff_match
+    - v_fail
+    - v_succ
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id130
+  - candidate_key: stage_069_c_res
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - C_res
+    - Delta_gap
+    - P_res
+    - Pres_from_ratio
+    - Pres_gap
+    - expect_positive
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id131
+  - candidate_key: stage_069_c_res
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - C_res
+    - P_res
+    - Pres_gap
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id132
+  - candidate_key: stage_069_c_res
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - C_res
+    - P_res
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id133
 - id: fit_stage_069_delta_0
+  candidate_key: stage_069_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12606,9 +4647,9 @@ candidates:
   - Delta_0
   - Rightarrow
   - mathrm
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_069.tex
+  citations:
+  - &id134
+    path: paper/stages/stage_069.tex
     line: 19
     role: paper_stage_tex
     stage: 069
@@ -12616,8 +4657,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_069_delta_0
+    modality: numeric_literal
+    anchor_stage: 069
+    parameter_names:
+    - Delta_0
+    - Rightarrow
+    - mathrm
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id134
+  - candidate_key: stage_069_delta_0
+    modality: claim_label
+    anchor_stage: 069
+    parameter_names:
+    - Delta_0
+    - Rightarrow
+    - mathrm
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_069.tex
+      line: 19
+      role: paper_stage_tex
+      stage: 069
+      excerpt: W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
 - id: fit_stage_069_delta_eff
+  candidate_key: stage_069_delta_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12629,9 +4694,9 @@ candidates:
   - dW_match
   - delta_fail
   - delta_succ
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_069.md
+  citations:
+  - &id135
+    path: redteam/pass2/reports/stage_069.md
     line: 112
     role: pass2_stage_report
     stage: 069
@@ -12643,17 +4708,30 @@ candidates:
       self-label, introducing no new constant or claim — alignment stays exact.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_069_delta_eff
+    modality: existing_provenance
+    anchor_stage: 069
+    parameter_names:
+    - Delta_eff
+    - Pres_gap
+    - dDelta_eff
+    - dW_match
+    - delta_fail
+    - delta_succ
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id135
 - id: fit_stage_069_p_res
+  candidate_key: stage_069_p_res
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 069
   parameter_names:
   - P_res
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  citations:
+  - &id136
+    path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
     line: 92
     role: notes_stage
     stage: 069
@@ -12662,8 +4740,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_069_p_res
+    modality: numeric_literal
+    anchor_stage: 069
+    parameter_names:
+    - P_res
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id136
+  - candidate_key: stage_069_p_res
+    modality: claim_label
+    anchor_stage: 069
+    parameter_names:
+    - P_res
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+      line: 92
+      role: notes_stage
+      stage: 069
+      excerpt: And even there, the explicit independent sech–Gaussian family changes the matched thresholds only by the tiny
+        factor `P_res = 1.005612...`.
 - id: fit_stage_070_i_f
+  candidate_key: stage_070_i_f
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12671,9 +4770,9 @@ candidates:
   parameter_names:
   - I_f
   - W_wall
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  citations:
+  - &id137
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
     line: 132
     role: notes_stage
     stage: '070'
@@ -12681,8 +4780,17 @@ candidates:
       wall-shape moment `I_f`.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_070_i_f
+    modality: claim_label
+    anchor_stage: '070'
+    parameter_names:
+    - I_f
+    - W_wall
+    reason: claim label or status wording near target-related parameter
+    citation: *id137
 - id: fit_stage_070_j_1
+  candidate_key: stage_070_j_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12690,17 +4798,26 @@ candidates:
   parameter_names:
   - J_1
   - T_X
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  citations:
+  - &id138
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
     line: 9
     role: notes_stage
     stage: '070'
     excerpt: but the actual branch data `(T_X, J_1, kappa, eta)` were still being treated as external inputs.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_070_j_1
+    modality: claim_label
+    anchor_stage: '070'
+    parameter_names:
+    - J_1
+    - T_X
+    reason: claim label or status wording near target-related parameter
+    citation: *id138
 - id: fit_stage_071_i_f
+  candidate_key: stage_071_i_f
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12716,9 +4833,9 @@ candidates:
   - W_wall
   - c_sw
   - chi_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_071.md
+  citations:
+  - &id139
+    path: redteam/pass2/reports/stage_071.md
     line: 39
     role: pass2_stage_report
     stage: '071'
@@ -12733,8 +4850,25 @@ candidates:
       laws.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_071_i_f
+    modality: existing_provenance
+    anchor_stage: '071'
+    parameter_names:
+    - I_f
+    - I_g
+    - J_1
+    - K_X
+    - K_m
+    - Lambda_ell
+    - T_X
+    - W_wall
+    - c_sw
+    - chi_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id139
 - id: fit_stage_073_k_m
+  candidate_key: stage_073_k_m
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12745,9 +4879,9 @@ candidates:
   - T_X
   - chi_s
   - epsilon_r
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_073.md
+  citations:
+  - &id140
+    path: redteam/pass2/reports/stage_073.md
     line: 39
     role: pass2_stage_report
     stage: '073'
@@ -12756,7 +4890,8 @@ candidates:
       = 37`; (3) under the Robin closure substitution `K_m → T_X/ell`, `eta = K_m L / T_X` collapses to `L/ell` (the `T_X`
       cancels); and (4) substituting `L/ell → 37` confirms `eta(reference) = 37`. The SymPy docstring and the Mathematica
       banner both state the intent as "the explicit Family-1 geometry map." These are exactly the paper''s four deliverables.'
-  - path: redteam/pass2/reports/stage_073.md
+  - &id141
+    path: redteam/pass2/reports/stage_073.md
     line: 73
     role: pass2_stage_report
     stage: '073'
@@ -12769,7 +4904,8 @@ candidates:
       is a single fraction and a single cancellation; both engines independently arrive at the same forced result. I tried
       to find a place where the `.wl` could plausibly have made an independent choice (a different elimination order, a different
       normalization) and there is none available. Not flagged.'
-  - path: redteam/pass2/reports/stage_073.md
+  - &id142
+    path: redteam/pass2/reports/stage_073.md
     line: 86
     role: pass2_stage_report
     stage: '073'
@@ -12786,17 +4922,46 @@ candidates:
       paper card, the notes, and the appendix rows, and the script''s verified claim matches the paper''s claim exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_073_k_m
+    modality: existing_provenance
+    anchor_stage: '073'
+    parameter_names:
+    - K_m
+    - Lambda_ell
+    - T_X
+    - epsilon_r
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id140
+  - candidate_key: stage_073_k_m
+    modality: existing_provenance
+    anchor_stage: '073'
+    parameter_names:
+    - K_m
+    - T_X
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id141
+  - candidate_key: stage_073_k_m
+    modality: existing_provenance
+    anchor_stage: '073'
+    parameter_names:
+    - K_m
+    - Lambda_ell
+    - T_X
+    - chi_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id142
 - id: fit_stage_073_t_x
+  candidate_key: stage_073_t_x
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '073'
   parameter_names:
   - T_X
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_073.md
+  citations:
+  - &id143
+    path: redteam/pass2/reports/stage_073.md
     line: 65
     role: pass2_stage_report
     stage: '073'
@@ -12809,8 +4974,16 @@ candidates:
       to a reportable category.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_073_t_x
+    modality: existing_provenance
+    anchor_stage: '073'
+    parameter_names:
+    - T_X
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id143
 - id: fit_stage_075_delta_0
+  candidate_key: stage_075_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12823,9 +4996,9 @@ candidates:
   - Xi_fail
   - alpha_r
   - stop_cold
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_075.md
+  citations:
+  - &id144
+    path: redteam/pass2/reports/stage_075.md
     line: 39
     role: pass2_stage_report
     stage: '075'
@@ -12837,7 +5010,8 @@ candidates:
       adds eight independent `expectApprox` numeric anchors that compare the computed `Delta_0`, `Delta_inf`, `Upsilon`, `Xi`,
       and `Theta` numerics against hardcoded literals matching the paper/notes values (the SymPy script only *prints* these
       numerics, it does not assert them).
-  - path: redteam/pass2/reports/stage_075.md
+  - &id145
+    path: redteam/pass2/reports/stage_075.md
     line: 135
     role: pass2_stage_report
     stage: '075'
@@ -12855,8 +5029,31 @@ candidates:
       claim matches the paper''s claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_075_delta_0
+    modality: existing_provenance
+    anchor_stage: '075'
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - Theta_fail
+    - Upsilon_fail
+    - Xi_fail
+    - alpha_r
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id144
+  - candidate_key: stage_075_delta_0
+    modality: existing_provenance
+    anchor_stage: '075'
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    - alpha_r
+    - stop_cold
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id145
 - id: fit_stage_075_pe_req
+  candidate_key: stage_075_pe_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12865,9 +5062,9 @@ candidates:
   - Pe_req
   - Theta_fail
   - Theta_suff
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_075.md
+  citations:
+  - &id146
+    path: redteam/pass2/reports/stage_075.md
     line: 100
     role: pass2_stage_report
     stage: '075'
@@ -12879,8 +5076,18 @@ candidates:
       is currently the sole assertion pinning those endpoints to the paper values.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_075_pe_req
+    modality: existing_provenance
+    anchor_stage: '075'
+    parameter_names:
+    - Pe_req
+    - Theta_fail
+    - Theta_suff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id146
 - id: fit_stage_077_i_f
+  candidate_key: stage_077_i_f
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12898,9 +5105,9 @@ candidates:
   - rho_w
   - stop_cold
   - xi_cut
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_077.md
+  citations:
+  - &id147
+    path: redteam/pass2/reports/stage_077.md
     line: 35
     role: pass2_stage_report
     stage: '077'
@@ -12914,7 +5121,8 @@ candidates:
       ≈ 0.192619005556493` and `<rho_r^2>_chi ≈ 0.162745294003265` (eq:app-stage077-rho-weights). The notes additionally pin
       the exact support cut point `xi_* = artanh(2/sqrt(alpha_r)-1) ≈ -0.3855810692` and the normalization `I_f = int chi^2
       = 1/3`, and assert `Theta_w^{(\chi)} >= Theta_w^{(J)}` (Jensen).'
-  - path: redteam/pass2/reports/stage_077.md
+  - &id148
+    path: redteam/pass2/reports/stage_077.md
     line: 131
     role: pass2_stage_report
     stage: '077'
@@ -12934,17 +5142,45 @@ candidates:
       — fixing it cannot change any result.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_077_i_f
+    modality: existing_provenance
+    anchor_stage: '077'
+    parameter_names:
+    - I_f
+    - Theta_w
+    - alpha_r
+    - chi
+    - chi_phi
+    - epsilon_r
+    - lambda_mu
+    - p_r
+    - rho_r
+    - rho_w
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id147
+  - candidate_key: stage_077_i_f
+    modality: existing_provenance
+    anchor_stage: '077'
+    parameter_names:
+    - I_f
+    - Theta_w
+    - chi
+    - stop_cold
+    - xi_cut
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id148
 - id: fit_stage_077_theta_w
+  candidate_key: stage_077_theta_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '077'
   parameter_names:
   - Theta_w
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  citations:
+  - &id149
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
     line: 115
     role: notes_stage
     stage: '077'
@@ -12952,17 +5188,25 @@ candidates:
       matching value.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_077_theta_w
+    modality: claim_label
+    anchor_stage: '077'
+    parameter_names:
+    - Theta_w
+    reason: claim label or status wording near target-related parameter
+    citation: *id149
 - id: fit_stage_078_pe_req
+  candidate_key: stage_078_pe_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 078
   parameter_names:
   - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  citations:
+  - &id150
+    path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
     line: 99
     role: notes_stage
     stage: 078
@@ -12970,8 +5214,16 @@ candidates:
       branch and compare it to the explicit success/failure bands above.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_078_pe_req
+    modality: claim_label
+    anchor_stage: 078
+    parameter_names:
+    - Pe_req
+    reason: claim label or status wording near target-related parameter
+    citation: *id150
 - id: fit_stage_079_a_f1
+  candidate_key: stage_079_a_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -12984,9 +5236,9 @@ candidates:
   - y_F1
   - zeta_F1
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_079.md
+  citations:
+  - &id151
+    path: redteam/pass2/reports/stage_079.md
     line: 101
     role: pass2_stage_report
     stage: 079
@@ -12996,7 +5248,8 @@ candidates:
       The root itself is accurate: Mathematica''s `WorkingPrecision -> 80` FindRoot drives the same residual to 2.27e-55 and
       asserts it (wl L46, PASS), and every downstream value built from `y_F1` (A_F1, zeta endpoints) matches the paper to
       the full quoted precision. Coverage is adequate.'
-  - path: redteam/pass2/reports/stage_079.md
+  - &id152
+    path: redteam/pass2/reports/stage_079.md
     line: 105
     role: pass2_stage_report
     stage: 079
@@ -13016,8 +5269,29 @@ candidates:
       matches the paper''s claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_079_a_f1
+    modality: existing_provenance
+    anchor_stage: 079
+    parameter_names:
+    - A_F1
+    - y_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id151
+  - candidate_key: stage_079_a_f1
+    modality: existing_provenance
+    anchor_stage: 079
+    parameter_names:
+    - A_F1
+    - expect_small
+    - expected_series
+    - kappa_F1
+    - zeta_F1
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id152
 - id: fit_stage_080_a_f1
+  candidate_key: stage_080_a_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13030,9 +5304,9 @@ candidates:
   - tautological_check
   - zeta_F1
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_080.md
+  citations:
+  - &id153
+    path: redteam/pass2/reports/stage_080.md
     line: 118
     role: pass2_stage_report
     stage: 080
@@ -13049,8 +5323,22 @@ candidates:
       fix; the math is clean and `paper_alignment` is `aligned`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_080_a_f1
+    modality: existing_provenance
+    anchor_stage: 080
+    parameter_names:
+    - A_F1
+    - eta_F1
+    - kappa_F1
+    - lambda_mu
+    - tautological_check
+    - zeta_F1
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id153
 - id: fit_stage_081_c_mix
+  candidate_key: stage_081_c_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13059,9 +5347,9 @@ candidates:
   - C_mix
   - zeta_expr
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_081.md
+  citations:
+  - &id154
+    path: redteam/pass2/reports/stage_081.md
     line: 112
     role: pass2_stage_report
     stage: 081
@@ -13076,17 +5364,27 @@ candidates:
       *more* than SymPy and via different mechanics, so it is functioning as an independent second engine, not an echo.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_081_c_mix
+    modality: existing_provenance
+    anchor_stage: 081
+    parameter_names:
+    - C_mix
+    - zeta_expr
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id154
 - id: fit_stage_081_eps_blk
+  candidate_key: stage_081_eps_blk
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 081
   parameter_names:
   - eps_blk
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_081.md
+  citations:
+  - &id155
+    path: redteam/pass2/reports/stage_081.md
     line: 94
     role: pass2_stage_report
     stage: 081
@@ -13097,17 +5395,25 @@ candidates:
       the stage''s primary deliverable; it relies on `solve` being right and on a human reading the printed form.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_081_eps_blk
+    modality: existing_provenance
+    anchor_stage: 081
+    parameter_names:
+    - eps_blk
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id155
 - id: fit_stage_082_pe_req
+  candidate_key: stage_082_pe_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 082
   parameter_names:
   - Pe_req
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  citations:
+  - &id156
+    path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
     line: 204
     role: notes_stage
     stage: 082
@@ -13115,17 +5421,25 @@ candidates:
       than through the intermediate `Pe_req` bookkeeping.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_082_pe_req
+    modality: claim_label
+    anchor_stage: 082
+    parameter_names:
+    - Pe_req
+    reason: claim label or status wording near target-related parameter
+    citation: *id156
 - id: fit_stage_082_zeta_max
+  candidate_key: stage_082_zeta_max
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 082
   parameter_names:
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_082.md
+  citations:
+  - &id157
+    path: redteam/pass2/reports/stage_082.md
     line: 134
     role: pass2_stage_report
     stage: 082
@@ -13133,8 +5447,16 @@ candidates:
       L144 (`2.46752922945601`) | MATCH (agree to 1e-10; recomputed not pinned) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_082_zeta_max
+    modality: existing_provenance
+    anchor_stage: 082
+    parameter_names:
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id157
 - id: fit_stage_083_a_f1
+  candidate_key: stage_083_a_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13144,9 +5466,9 @@ candidates:
   - Delta_0
   - Delta_inf
   - y_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_083.md
+  citations:
+  - &id158
+    path: redteam/pass2/reports/stage_083.md
     line: 183
     role: pass2_stage_report
     stage: 083
@@ -13166,8 +5488,19 @@ candidates:
       the paper, and the findings concern verification rigor, not correctness of the answer.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_083_a_f1
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - A_F1
+    - Delta_0
+    - Delta_inf
+    - y_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id158
 - id: fit_stage_083_c_mix
+  candidate_key: stage_083_c_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13181,9 +5514,9 @@ candidates:
   - zeta_F1
   - zeta_max
   - zeta_phys
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_083.md
+  citations:
+  - &id159
+    path: redteam/pass2/reports/stage_083.md
     line: 35
     role: pass2_stage_report
     stage: 083
@@ -13198,7 +5531,8 @@ candidates:
       windows directly from the coupled operator; (4) the natural branch already sits essentially at the hard Family-1 ceiling
       `zeta_max^(F1) ≈ 2.46752922945601`. The notes quote concrete numbers for every window (`Delta_0`, `Delta_inf`, `Xi^(chi)`,
       `Xi^(J)`, the four `Pe`, four `zeta`, four `Pi/C_mix`, and the ceiling).'
-  - path: redteam/pass2/reports/stage_083.md
+  - &id160
+    path: redteam/pass2/reports/stage_083.md
     line: 39
     role: pass2_stage_report
     stage: 083
@@ -13213,8 +5547,32 @@ candidates:
       value (`zeta`, `Pi/C_mix`, the four `Pe`) is **printed but never asserted** in SymPy.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_083_c_mix
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - C_mix
+    - Delta_0
+    - Delta_inf
+    - Xi_F1
+    - zeta_F1
+    - zeta_max
+    - zeta_phys
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id159
+  - candidate_key: stage_083_c_mix
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - C_mix
+    - Delta_0
+    - Delta_inf
+    - y_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id160
 - id: fit_stage_083_delta0_f1
+  candidate_key: stage_083_delta0_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13225,9 +5583,9 @@ candidates:
   - Delta_0
   - Delta_inf
   - expect_close
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_083.md
+  citations:
+  - &id161
+    path: redteam/pass2/reports/stage_083.md
     line: 95
     role: pass2_stage_report
     stage: 083
@@ -13237,7 +5595,8 @@ candidates:
       they express Delta_* as the unique solution of a linear equation, not as a chosen closed form."* That rationale is incorrect
       as implemented — the script never solves a linear equation for `Delta_*`; it pins `Delta_*` to a chosen closed form
       and then multiplies it back by its own denominator.'
-  - path: redteam/pass2/reports/stage_083.md
+  - &id162
+    path: redteam/pass2/reports/stage_083.md
     line: 105
     role: pass2_stage_report
     stage: 083
@@ -13247,7 +5606,8 @@ candidates:
       independently as boundary values of the linear ODE `u'''' - alpha² u = 0` with the stated Robin/edge conditions via
       `sp.dsolve`, then `expect_zero(Delta0_indep - Delta0_F1)`. Correct the comment at py:68-70 — it currently claims non-tautology
       that does not hold for the residual form.'
-  - path: redteam/pass2/reports/stage_083.md
+  - &id163
+    path: redteam/pass2/reports/stage_083.md
     line: 109
     role: pass2_stage_report
     stage: 083
@@ -13258,8 +5618,37 @@ candidates:
       should now flip a check from PASS to FAIL.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_083_delta0_f1
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - Delta0_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id161
+  - candidate_key: stage_083_delta0_f1
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - Delta0_F1
+    - Delta0_indep
+    - Delta_0
+    - Delta_inf
+    - expect_close
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id162
+  - candidate_key: stage_083_delta0_f1
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - Delta0_F1
+    - Delta_0
+    - Delta_inf
+    - expect_close
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id163
 - id: fit_stage_083_delta_0
+  candidate_key: stage_083_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13267,9 +5656,9 @@ candidates:
   parameter_names:
   - Delta_0
   - Delta_inf
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_083.md
+  citations:
+  - &id164
+    path: redteam/pass2/reports/stage_083.md
     line: 131
     role: pass2_stage_report
     stage: 083
@@ -13285,8 +5674,17 @@ candidates:
       Folded into F1.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_083_delta_0
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - Delta_0
+    - Delta_inf
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id164
 - id: fit_stage_083_pe_minus_j
+  candidate_key: stage_083_pe_minus_j
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13302,9 +5700,9 @@ candidates:
   - zeta_minus_chi
   - zeta_plus_J
   - zeta_plus_chi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_083.md
+  citations:
+  - &id165
+    path: redteam/pass2/reports/stage_083.md
     line: 124
     role: pass2_stage_report
     stage: 083
@@ -13316,8 +5714,25 @@ candidates:
       for Pe, 1e-12 for zeta). Add a small `expect_close` helper (the script currently has only `expect_zero`).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_083_pe_minus_j
+    modality: existing_provenance
+    anchor_stage: 083
+    parameter_names:
+    - Pe_minus_J
+    - Pe_minus_chi
+    - Pe_plus_J
+    - Pe_plus_chi
+    - expect_close
+    - zeta_max_F1
+    - zeta_minus_J
+    - zeta_minus_chi
+    - zeta_plus_J
+    - zeta_plus_chi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id165
 - id: fit_stage_084_c_mix
+  candidate_key: stage_084_c_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13334,9 +5749,9 @@ candidates:
   - zeta_max
   - zeta_phys
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_084.md
+  citations:
+  - &id166
+    path: redteam/pass2/reports/stage_084.md
     line: 39
     role: pass2_stage_report
     stage: 084
@@ -13351,8 +5766,26 @@ candidates:
       `\StatusOpen` on that piece.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_084_c_mix
+    modality: existing_provenance
+    anchor_stage: 084
+    parameter_names:
+    - C_mix
+    - Pi_tr
+    - StatusOpen
+    - Theta_w
+    - Upsilon_w
+    - eta_F1
+    - kappa_F1
+    - y_F1
+    - zeta_max
+    - zeta_phys
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id166
 - id: fit_stage_084_omega_pe
+  candidate_key: stage_084_omega_pe
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13363,9 +5796,9 @@ candidates:
   - y_F1
   - zeta_max
   - zeta_phys
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_084.md
+  citations:
+  - &id167
+    path: redteam/pass2/reports/stage_084.md
     line: 74
     role: pass2_stage_report
     stage: 084
@@ -13379,8 +5812,20 @@ candidates:
       a carried-forward number.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_084_omega_pe
+    modality: existing_provenance
+    anchor_stage: 084
+    parameter_names:
+    - Omega_Pe
+    - kappa_F1
+    - y_F1
+    - zeta_max
+    - zeta_phys
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id167
 - id: fit_stage_084_theta_w
+  candidate_key: stage_084_theta_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13390,9 +5835,9 @@ candidates:
   - Upsilon_w
   - hardcoded_result
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_084.md
+  citations:
+  - &id168
+    path: redteam/pass2/reports/stage_084.md
     line: 82
     role: pass2_stage_report
     stage: 084
@@ -13413,17 +5858,28 @@ candidates:
       to the notes'' §3 double-equality and would catch a typo there, so it is a weak-but-valid check, not a finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_084_theta_w
+    modality: existing_provenance
+    anchor_stage: 084
+    parameter_names:
+    - Theta_w
+    - Upsilon_w
+    - hardcoded_result
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id168
 - id: fit_stage_084_zeta_max
+  candidate_key: stage_084_zeta_max
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 084
   parameter_names:
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_084.md
+  citations:
+  - &id169
+    path: redteam/pass2/reports/stage_084.md
     line: 50
     role: pass2_stage_report
     stage: 084
@@ -13431,17 +5887,25 @@ candidates:
       pin to ~2e-15 | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_084_zeta_max
+    modality: existing_provenance
+    anchor_stage: 084
+    parameter_names:
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id169
 - id: fit_stage_085_rho_alpha
+  candidate_key: stage_085_rho_alpha
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 085
   parameter_names:
   - rho_alpha
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  citations:
+  - &id170
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
     line: 187
     role: notes_stage
     stage: 085
@@ -13449,25 +5913,41 @@ candidates:
       quadrupole branch.**'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_085_rho_alpha
+    modality: claim_label
+    anchor_stage: 085
+    parameter_names:
+    - rho_alpha
+    reason: claim label or status wording near target-related parameter
+    citation: *id170
 - id: fit_stage_089_a_f1
+  candidate_key: stage_089_a_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 089
   parameter_names:
   - A_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_089.md
+  citations:
+  - &id171
+    path: redteam/pass2/reports/stage_089.md
     line: 246
     role: pass2_stage_report
     stage: 089
     excerpt: ≈1.528 (confirmed by `A_F1` matching the paper to 14 digits); the fragile `Pe` re-derivation
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_089_a_f1
+    modality: existing_provenance
+    anchor_stage: 089
+    parameter_names:
+    - A_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id171
 - id: fit_stage_090_rho_alpha
+  candidate_key: stage_090_rho_alpha
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13476,9 +5956,9 @@ candidates:
   - rho_alpha
   - stage_090
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_090.md
+  citations:
+  - &id172
+    path: redteam/pass2/reports/stage_090.md
     line: 210
     role: pass2_stage_report
     stage: 090
@@ -13486,8 +5966,18 @@ candidates:
       in `3/4+1/4` (`stage_090.tex:25`); notes contact-plus-pole framing | MATCH (relation, not a pinned number) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_090_rho_alpha
+    modality: existing_provenance
+    anchor_stage: 090
+    parameter_names:
+    - rho_alpha
+    - stage_090
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id172
 - id: fit_stage_091_epsilon_2
+  candidate_key: stage_091_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13496,9 +5986,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_091.tex
+  citations:
+  - &id173
+    path: paper/stages/stage_091.tex
     line: 13
     role: paper_stage_tex
     stage: 091
@@ -13508,8 +5998,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_091_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 091
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id173
+  - candidate_key: stage_091_epsilon_2
+    modality: claim_label
+    anchor_stage: 091
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_091.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 091
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_091_k_geom
+  candidate_key: stage_091_k_geom
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13522,9 +6038,9 @@ candidates:
   - alpha_req
   - rho_alpha
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_091.md
+  citations:
+  - &id174
+    path: redteam/pass2/reports/stage_091.md
     line: 93
     role: pass2_stage_report
     stage: 091
@@ -13543,8 +6059,22 @@ candidates:
       and is non-tautological.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_091_k_geom
+    modality: existing_provenance
+    anchor_stage: 091
+    parameter_names:
+    - K_geom
+    - K_pole
+    - Yhat_expected
+    - alpha_mix
+    - alpha_req
+    - rho_alpha
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id174
 - id: fit_stage_092_epsilon_2
+  candidate_key: stage_092_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13553,9 +6083,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_092.tex
+  citations:
+  - &id175
+    path: paper/stages/stage_092.tex
     line: 13
     role: paper_stage_tex
     stage: 092
@@ -13565,25 +6095,59 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_092_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 092
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id175
+  - candidate_key: stage_092_epsilon_2
+    modality: claim_label
+    anchor_stage: 092
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_092.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 092
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_092_yhat_q
+  candidate_key: stage_092_yhat_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 092
   parameter_names:
   - Yhat_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  citations:
+  - &id176
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 95
     role: checkpoint_constant_provenance
     stage: 092
     excerpt: obstruction formula carried from stage 092. The `Yhat_Q^cons(omega) = 3/4 +
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_092_yhat_q
+    modality: existing_provenance
+    anchor_stage: 092
+    parameter_names:
+    - Yhat_Q
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id176
 - id: fit_stage_093_c_pole
+  candidate_key: stage_093_c_pole
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13593,9 +6157,9 @@ candidates:
   - eps_2
   - eps_4
   - value_mismatch
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_093.md
+  citations:
+  - &id177
+    path: redteam/pass2/reports/stage_093.md
     line: 75
     role: pass2_stage_report
     stage: 093
@@ -13611,7 +6175,8 @@ candidates:
       limit (and not for some other eps pair) or (b) the symbolic obstruction form matches what the notes state. This is the
       card''s stated static-limit target (Check 1) evaluated at one trivial point, which is necessary but weaker than the
       firewall block''s stated content.'
-  - path: redteam/pass2/reports/stage_093.md
+  - &id178
+    path: redteam/pass2/reports/stage_093.md
     line: 112
     role: pass2_stage_report
     stage: 093
@@ -13620,8 +6185,26 @@ candidates:
       — see F1, an `insufficient_verification` not a `value_mismatch`) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_093_c_pole
+    modality: existing_provenance
+    anchor_stage: 093
+    parameter_names:
+    - c_pole
+    - eps_2
+    - eps_4
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id177
+  - candidate_key: stage_093_c_pole
+    modality: existing_provenance
+    anchor_stage: 093
+    parameter_names:
+    - c_pole
+    - value_mismatch
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id178
 - id: fit_stage_093_eps_2
+  candidate_key: stage_093_eps_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13629,9 +6212,9 @@ candidates:
   parameter_names:
   - eps_2
   - eps_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  citations:
+  - &id179
+    path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
     line: 55
     role: notes_stage
     stage: 093
@@ -13639,8 +6222,17 @@ candidates:
       `eps_2` and `eps_4`, or prove that they vanish on the natural branch.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_093_eps_2
+    modality: claim_label
+    anchor_stage: 093
+    parameter_names:
+    - eps_2
+    - eps_4
+    reason: claim label or status wording near target-related parameter
+    citation: *id179
 - id: fit_stage_093_epsilon_2
+  candidate_key: stage_093_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13649,9 +6241,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_093.tex
+  citations:
+  - &id180
+    path: paper/stages/stage_093.tex
     line: 13
     role: paper_stage_tex
     stage: 093
@@ -13661,8 +6253,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_093_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 093
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id180
+  - candidate_key: stage_093_epsilon_2
+    modality: claim_label
+    anchor_stage: 093
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_093.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 093
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_094_c_geom
+  candidate_key: stage_094_c_geom
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13672,9 +6290,9 @@ candidates:
   - c_pole
   - eps_2
   - eps_4
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_094.md
+  citations:
+  - &id181
+    path: redteam/pass2/reports/stage_094.md
     line: 101
     role: pass2_stage_report
     stage: 094
@@ -13687,8 +6305,19 @@ candidates:
       even though the named deliverable is specifically `c_pole = 1/4`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_094_c_geom
+    modality: existing_provenance
+    anchor_stage: 094
+    parameter_names:
+    - c_geom
+    - c_pole
+    - eps_2
+    - eps_4
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id181
 - id: fit_stage_094_epsilon_2
+  candidate_key: stage_094_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13697,9 +6326,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_094.tex
+  citations:
+  - &id182
+    path: paper/stages/stage_094.tex
     line: 13
     role: paper_stage_tex
     stage: 094
@@ -13709,17 +6338,43 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_094_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 094
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id182
+  - candidate_key: stage_094_epsilon_2
+    modality: claim_label
+    anchor_stage: 094
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_094.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 094
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_095_c_pole
+  candidate_key: stage_095_c_pole
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 095
   parameter_names:
   - c_pole
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_095.md
+  citations:
+  - &id183
+    path: redteam/pass2/reports/stage_095.md
     line: 116
     role: pass2_stage_report
     stage: 095
@@ -13732,8 +6387,16 @@ candidates:
       No directive written (zero findings).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_095_c_pole
+    modality: existing_provenance
+    anchor_stage: 095
+    parameter_names:
+    - c_pole
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id183
 - id: fit_stage_095_epsilon_2
+  candidate_key: stage_095_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13742,9 +6405,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_095.tex
+  citations:
+  - &id184
+    path: paper/stages/stage_095.tex
     line: 13
     role: paper_stage_tex
     stage: 095
@@ -13754,8 +6417,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_095_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 095
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id184
+  - candidate_key: stage_095_epsilon_2
+    modality: claim_label
+    anchor_stage: 095
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_095.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 095
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_096_c_geom
+  candidate_key: stage_096_c_geom
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13768,9 +6457,9 @@ candidates:
   - eps_4
   - rho_alpha
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_096.md
+  citations:
+  - &id185
+    path: redteam/pass2/reports/stage_096.md
     line: 94
     role: pass2_stage_report
     stage: 096
@@ -13785,7 +6474,8 @@ candidates:
       eps_2 enters with the documented power). Then derive c_geom/rho_alpha/zeta_req/Yhat from `c_pole_gen` at eps=0 as now.
       Mirror in `.wl`. This makes the obstruction-formula structure load-bearing (a wrong power or factor now fails a concrete
       literal) while keeping the eps→0 deliverable values exactly as the card states.'
-  - path: redteam/pass2/reports/stage_096.md
+  - &id186
+    path: redteam/pass2/reports/stage_096.md
     line: 109
     role: pass2_stage_report
     stage: 096
@@ -13804,8 +6494,34 @@ candidates:
       rows before reading the scripts; the script''s verified claim matches the paper''s claim in target and value.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_096_c_geom
+    modality: existing_provenance
+    anchor_stage: 096
+    parameter_names:
+    - c_geom
+    - c_pole
+    - c_pole_gen
+    - eps_2
+    - eps_4
+    - rho_alpha
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id185
+  - candidate_key: stage_096_c_geom
+    modality: existing_provenance
+    anchor_stage: 096
+    parameter_names:
+    - c_geom
+    - c_pole
+    - eps_2
+    - eps_4
+    - rho_alpha
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id186
 - id: fit_stage_096_eps_2
+  candidate_key: stage_096_eps_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13813,9 +6529,9 @@ candidates:
   parameter_names:
   - eps_2
   - eps_4
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_096.md
+  citations:
+  - &id187
+    path: redteam/pass2/reports/stage_096.md
     line: 91
     role: pass2_stage_report
     stage: 096
@@ -13827,8 +6543,17 @@ candidates:
       the general structure is the documented `(1+eps_4)/(4(1+eps_2)^2)`.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_096_eps_2
+    modality: existing_provenance
+    anchor_stage: 096
+    parameter_names:
+    - eps_2
+    - eps_4
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id187
 - id: fit_stage_096_epsilon_2
+  candidate_key: stage_096_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13837,9 +6562,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_096.tex
+  citations:
+  - &id188
+    path: paper/stages/stage_096.tex
     line: 13
     role: paper_stage_tex
     stage: 096
@@ -13849,17 +6574,43 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_096_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 096
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id188
+  - candidate_key: stage_096_epsilon_2
+    modality: claim_label
+    anchor_stage: 096
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_096.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 096
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_096_numbering_script_output_band_plan
+  candidate_key: stage_096_numbering_script_output_band_plan
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 096
   parameter_names:
   - NUMBERING_SCRIPT_OUTPUT_BAND_PLAN
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_096.md
+  citations:
+  - &id189
+    path: redteam/pass2/reports/stage_096.md
     line: 125
     role: pass2_stage_report
     stage: 096
@@ -13870,8 +6621,16 @@ candidates:
       scope it is left for `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` rather than fixed here.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_096_numbering_script_output_band_plan
+    modality: existing_provenance
+    anchor_stage: 096
+    parameter_names:
+    - NUMBERING_SCRIPT_OUTPUT_BAND_PLAN
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id189
 - id: fit_stage_096_yhat_cons
+  candidate_key: stage_096_yhat_cons
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13885,9 +6644,9 @@ candidates:
   - eps_4
   - rho_alpha
   - zeta_req
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_096.md
+  citations:
+  - &id190
+    path: redteam/pass2/reports/stage_096.md
     line: 84
     role: pass2_stage_report
     stage: 096
@@ -13904,8 +6663,23 @@ candidates:
       non-tautological; the numeric coefficients sitting in front of it are not.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_096_yhat_cons
+    modality: existing_provenance
+    anchor_stage: 096
+    parameter_names:
+    - Yhat_cons
+    - Yhat_expected
+    - c_geom
+    - c_pole
+    - eps_2
+    - eps_4
+    - rho_alpha
+    - zeta_req
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id190
 - id: fit_stage_097_epsilon_2
+  candidate_key: stage_097_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13914,9 +6688,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_097.tex
+  citations:
+  - &id191
+    path: paper/stages/stage_097.tex
     line: 13
     role: paper_stage_tex
     stage: 097
@@ -13926,34 +6700,68 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_097_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 097
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id191
+  - candidate_key: stage_097_epsilon_2
+    modality: claim_label
+    anchor_stage: 097
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_097.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 097
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_097_kbar_0
+  candidate_key: stage_097_kbar_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 097
   parameter_names:
   - Kbar_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  citations:
+  - &id192
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
     line: 53
     role: notes_stage
     stage: 097
     excerpt: It is already determined by the same two quantities `(Kbar_0, Omega_Q)`.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_097_kbar_0
+    modality: claim_label
+    anchor_stage: 097
+    parameter_names:
+    - Kbar_0
+    reason: claim label or status wording near target-related parameter
+    citation: *id192
 - id: fit_stage_097_r_i
+  candidate_key: stage_097_r_i
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 097
   parameter_names:
   - R_i
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_097.md
+  citations:
+  - &id193
+    path: redteam/pass2/reports/stage_097.md
     line: 103
     role: pass2_stage_report
     stage: 097
@@ -13967,8 +6775,16 @@ candidates:
       all failed to find a defect.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_097_r_i
+    modality: existing_provenance
+    anchor_stage: 097
+    parameter_names:
+    - R_i
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id193
 - id: fit_stage_098_c_pole
+  candidate_key: stage_098_c_pole
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -13978,9 +6794,9 @@ candidates:
   - rho_alpha
   - zeta_req
   - zmax_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_098.md
+  citations:
+  - &id194
+    path: redteam/pass2/reports/stage_098.md
     line: 88
     role: pass2_stage_report
     stage: 098
@@ -13999,8 +6815,19 @@ candidates:
       present, independent, and agreeing.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_c_pole
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - c_pole
+    - rho_alpha
+    - zeta_req
+    - zmax_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id194
 - id: fit_stage_098_epsilon_2
+  candidate_key: stage_098_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14009,9 +6836,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_098.tex
+  citations:
+  - &id195
+    path: paper/stages/stage_098.tex
     line: 13
     role: paper_stage_tex
     stage: 098
@@ -14021,8 +6848,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 098
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id195
+  - candidate_key: stage_098_epsilon_2
+    modality: claim_label
+    anchor_stage: 098
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_098.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 098
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_098_gap_f1
+  candidate_key: stage_098_gap_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14033,9 +6886,9 @@ candidates:
   - zeta_max
   - zeta_req
   - zmax_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_098.md
+  citations:
+  - &id196
+    path: redteam/pass2/reports/stage_098.md
     line: 39
     role: pass2_stage_report
     stage: 098
@@ -14048,7 +6901,8 @@ candidates:
       and assert the edge demand `0.45673...` and margin `2.0108...` match pinned targets, with SymPy also asserting `gap_F1
       > 0`. The docstring's stated purpose ("actual isotropic branch support demand is automatic for any explicit family with
       zeta_max > 1 on the admissible blocked interval") matches the card.
-  - path: redteam/pass2/reports/stage_098.md
+  - &id197
+    path: redteam/pass2/reports/stage_098.md
     line: 48
     role: pass2_stage_report
     stage: 098
@@ -14056,8 +6910,28 @@ candidates:
       / wl L64-71 numeric pins + `gap_F1>0` | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_gap_f1
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - gap_F1
+    - zeta_edge
+    - zeta_max
+    - zeta_req
+    - zmax_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id196
+  - candidate_key: stage_098_gap_f1
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - gap_F1
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id197
 - id: fit_stage_098_gap_f1_target
+  candidate_key: stage_098_gap_f1_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14065,9 +6939,9 @@ candidates:
   parameter_names:
   - gap_F1_target
   - zeta_edge_F1_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_098.md
+  citations:
+  - &id198
+    path: redteam/pass2/reports/stage_098.md
     line: 105
     role: pass2_stage_report
     stage: 098
@@ -14075,8 +6949,17 @@ candidates:
       the `1e-15` tolerances, the cross-engine numeric-pin targets `zeta_edge_F1_target`/`gap_F1_target`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_gap_f1_target
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - gap_F1_target
+    - zeta_edge_F1_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id198
 - id: fit_stage_098_zeta_edge_f1
+  candidate_key: stage_098_zeta_edge_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14084,9 +6967,9 @@ candidates:
   parameter_names:
   - zeta_edge_F1
   - zmax_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_098.md
+  citations:
+  - &id199
+    path: redteam/pass2/reports/stage_098.md
     line: 102
     role: pass2_stage_report
     stage: 098
@@ -14094,17 +6977,26 @@ candidates:
       — derived margin `zmax_F1 - zeta_edge_F1`; cross-engine sync pin, not a stated deliverable |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_zeta_edge_f1
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - zeta_edge_F1
+    - zmax_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id199
 - id: fit_stage_098_zeta_max
+  candidate_key: stage_098_zeta_max
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - 098
   parameter_names:
   - zeta_max
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_098.md
+  citations:
+  - &id200
+    path: redteam/pass2/reports/stage_098.md
     line: 100
     role: pass2_stage_report
     stage: 098
@@ -14112,8 +7004,16 @@ candidates:
       |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_098_zeta_max
+    modality: existing_provenance
+    anchor_stage: 098
+    parameter_names:
+    - zeta_max
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id200
 - id: fit_stage_099_epsilon_2
+  candidate_key: stage_099_epsilon_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14122,9 +7022,9 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_099.tex
+  citations:
+  - &id201
+    path: paper/stages/stage_099.tex
     line: 13
     role: paper_stage_tex
     stage: 099
@@ -14134,8 +7034,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_099_epsilon_2
+    modality: numeric_literal
+    anchor_stage: 099
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id201
+  - candidate_key: stage_099_epsilon_2
+    modality: claim_label
+    anchor_stage: 099
+    parameter_names:
+    - epsilon_2
+    - epsilon_2_epsilon_4
+    - epsilon_4
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_099.tex
+      line: 13
+      role: paper_stage_tex
+      stage: 099
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+        computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+        or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
 - id: fit_stage_099_k0_sym
+  candidate_key: stage_099_k0_sym
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14143,9 +7069,9 @@ candidates:
   parameter_names:
   - K0_sym
   - K0_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_099.md
+  citations:
+  - &id202
+    path: redteam/pass2/reports/stage_099.md
     line: 89
     role: pass2_stage_report
     stage: 099
@@ -14162,8 +7088,17 @@ candidates:
       No findings.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_099_k0_sym
+    modality: existing_provenance
+    anchor_stage: 099
+    parameter_names:
+    - K0_sym
+    - K0_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id202
 - id: fit_stage_099_xi_t
+  candidate_key: stage_099_xi_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14174,9 +7109,9 @@ candidates:
   - r_F1
   - r_c
   - r_geom
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  citations:
+  - &id203
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 25
     role: checkpoint_constant_provenance
     stage: 099
@@ -14190,8 +7125,20 @@ candidates:
       standard); no checkpoint constant moved.** Previous V.3 entry retained below.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_099_xi_t
+    modality: existing_provenance
+    anchor_stage: 099
+    parameter_names:
+    - Xi_T
+    - Xi_v
+    - r_F1
+    - r_c
+    - r_geom
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id203
 - id: fit_stage_100_chi_q
+  candidate_key: stage_100_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14200,27 +7147,30 @@ candidates:
   - chi_Q
   - matched_fingerprint_value
   - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_100.tex
+  citations:
+  - &id204
+    path: paper/stages/stage_100.tex
     line: 13
     role: paper_stage_tex
     stage: '100'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
       condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
-  - path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  - &id205
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
     line: 79
     role: notes_stage
     stage: '100'
     excerpt: So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`.
-  - path: redteam/pass2/reports/stage_100.md
+  - &id206
+    path: redteam/pass2/reports/stage_100.md
     line: 84
     role: pass2_stage_report
     stage: '100'
     excerpt: '| Check (iii) DtN l=2 fingerprint + chi_Q=1 pin (card 24) | delegated to stage 097 (docstring sympy L11-14 /
       wl L30) | delegated (documented) |'
-  - path: redteam/pass2/reports/stage_100.md
+  - &id207
+    path: redteam/pass2/reports/stage_100.md
     line: 136
     role: pass2_stage_report
     stage: '100'
@@ -14241,8 +7191,69 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_100_chi_q
+    modality: numeric_literal
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id204
+  - candidate_key: stage_100_chi_q
+    modality: numeric_literal
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id205
+  - candidate_key: stage_100_chi_q
+    modality: claim_label
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_100.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '100'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic;
+        the canonical condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+  - candidate_key: stage_100_chi_q
+    modality: claim_label
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 79
+      role: notes_stage
+      stage: '100'
+      excerpt: So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`.
+  - candidate_key: stage_100_chi_q
+    modality: existing_provenance
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id206
+  - candidate_key: stage_100_chi_q
+    modality: existing_provenance
+    anchor_stage: '100'
+    parameter_names:
+    - chi_Q
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id207
 - id: fit_stage_100_gamma5_t
+  candidate_key: stage_100_gamma5_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14261,9 +7272,9 @@ candidates:
   - closure_ratio
   - matched_fingerprint_value
   - mhat_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_100.md
+  citations:
+  - &id208
+    path: redteam/pass2/reports/stage_100.md
     line: 65
     role: pass2_stage_report
     stage: '100'
@@ -14279,7 +7290,8 @@ candidates:
       (ii) higher odd terms beginning beyond the 2.5PN coefficient, and (iii) the DtN l=2 fingerprint vs the z-expansion;
       the scripts explicitly delegate (ii) to stage 102 and (iii)/the `chi_Q=1` pin to stage 097 (carry-forward annotations),
       and own (i)/the closure here.'
-  - path: redteam/pass2/reports/stage_100.md
+  - &id209
+    path: redteam/pass2/reports/stage_100.md
     line: 69
     role: pass2_stage_report
     stage: '100'
@@ -14291,17 +7303,50 @@ candidates:
       factorizes as the headline `mhat_0^2 chi_Q N_Q - 1`. `chi_Q` is carried as a free real symbol (not pinned to 1) by design.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_100_gamma5_t
+    modality: existing_provenance
+    anchor_stage: '100'
+    parameter_names:
+    - Gamma5_t
+    - Gammabar_5
+    - K0_t
+    - K2_t
+    - K4_t
+    - Kbar_0
+    - Kbar_2
+    - Kbar_4
+    - Yhat_Q
+    - chi_Q
+    - matched_fingerprint_value
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id208
+  - candidate_key: stage_100_gamma5_t
+    modality: existing_provenance
+    anchor_stage: '100'
+    parameter_names:
+    - Gamma5_t
+    - K0_t
+    - K2_t
+    - K4_t
+    - Yhat_Q
+    - chi_Q
+    - closure_ratio
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id209
 - id: fit_stage_100_matched_fingerprint_value
+  candidate_key: stage_100_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '100'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_100.tex
+  citations:
+  - &id210
+    path: paper/stages/stage_100.tex
     line: 24
     role: paper_stage_tex
     stage: '100'
@@ -14309,8 +7354,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_100_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '100'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id210
+  - candidate_key: stage_100_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '100'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_100.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '100'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
 - id: fit_stage_101_chi_q
+  candidate_key: stage_101_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14320,27 +7385,30 @@ candidates:
   - matched_fingerprint_value
   - mhat_0
   - to
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_101.tex
+  citations:
+  - &id211
+    path: paper/stages/stage_101.tex
     line: 13
     role: paper_stage_tex
     stage: '101'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
       condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
-  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  - &id212
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
     line: 13
     role: notes_stage
     stage: '101'
     excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer
       a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
-  - path: paper/stages/stage_101.tex
+  - &id213
+    path: paper/stages/stage_101.tex
     line: 16
     role: paper_stage_tex
     stage: '101'
     excerpt: On the natural point-particle source map, \(\widehat m_0\to1\), so the last obstruction is purely \(\chi_Q\).
-  - path: redteam/pass2/reports/stage_101.md
+  - &id214
+    path: redteam/pass2/reports/stage_101.md
     line: 39
     role: pass2_stage_report
     stage: '101'
@@ -14351,7 +7419,8 @@ candidates:
       `{mhat0=1, chiQ=1, NQ=1}` zeroes it; (A3) the candidate `{mhat0=1, chiQ=1+DeltaQ, NQ=1/(1+DeltaQ)}` zeroes it; (A4)
       the independently computed order-2 truncation of `1/(1+DeltaQ)-1` equals `-DeltaQ+DeltaQ^2`. The Mathematica script
       mirrors these with native `Solve`/`FullSimplify`/`Series` and an `expectZero` harness anchored to the same input factorization.'
-  - path: redteam/pass2/reports/stage_101.md
+  - &id215
+    path: redteam/pass2/reports/stage_101.md
     line: 102
     role: pass2_stage_report
     stage: '101'
@@ -14361,8 +7430,76 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_101_chi_q
+    modality: numeric_literal
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id211
+  - candidate_key: stage_101_chi_q
+    modality: numeric_literal
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id212
+  - candidate_key: stage_101_chi_q
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_101.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '101'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic;
+        the canonical condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+  - candidate_key: stage_101_chi_q
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    - to
+    reason: claim label or status wording near target-related parameter
+    citation: *id213
+  - candidate_key: stage_101_chi_q
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 13
+      role: notes_stage
+      stage: '101'
+      excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer
+        a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
+  - candidate_key: stage_101_chi_q
+    modality: existing_provenance
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id214
+  - candidate_key: stage_101_chi_q
+    modality: existing_provenance
+    anchor_stage: '101'
+    parameter_names:
+    - chi_Q
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id215
 - id: fit_stage_101_delta_q
+  candidate_key: stage_101_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14373,9 +7510,9 @@ candidates:
   - matched_fingerprint_value
   - mhat_0
   - to
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_101.md
+  citations:
+  - &id216
+    path: redteam/pass2/reports/stage_101.md
     line: 35
     role: pass2_stage_report
     stage: '101'
@@ -14389,7 +7526,8 @@ candidates:
       2.5PN coefficient, and (3) the outgoing l=2 DtN fingerprint vs the normalized `z = omega a/c_s` expansion — but the
       notes (authoritative intent for this stage) develop ONLY the factorization/defect content; (2) and (3) are carry-forward
       checklist items, not results this stage derives.'
-  - path: redteam/pass2/reports/stage_101.md
+  - &id217
+    path: redteam/pass2/reports/stage_101.md
     line: 94
     role: pass2_stage_report
     stage: '101'
@@ -14407,34 +7545,58 @@ candidates:
       are fresh (both .txt mtimes ~3h after their scripts). Both engines present, agree, and pass.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_101_delta_q
+    modality: existing_provenance
+    anchor_stage: '101'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    - mhat_0
+    - to
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id216
+  - candidate_key: stage_101_delta_q
+    modality: existing_provenance
+    anchor_stage: '101'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - mhat_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id217
 - id: fit_stage_101_matched_fingerprint_value
+  candidate_key: stage_101_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '101'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_101.tex
+  citations:
+  - &id218
+    path: paper/stages/stage_101.tex
     line: 24
     role: paper_stage_tex
     stage: '101'
     excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  - &id219
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
     line: 40
     role: notes_stage
     stage: '101'
     excerpt: 'Stage 097 reduced the actual isotropic passive/outgoing grouped-`P2` branch to a single normalization-defect
       context, and Stage 104 proves the exact compact outgoing `l=2` fingerprint matched by the canonical one-pole completion:'
-  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  - &id220
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
     line: 49
     role: notes_stage
     stage: '101'
     excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
       giving
-  - path: redteam/pass2/reports/stage_101.md
+  - &id221
+    path: redteam/pass2/reports/stage_101.md
     line: 50
     role: pass2_stage_report
     stage: '101'
@@ -14444,23 +7606,91 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id218
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id219
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id220
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_101.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '101'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 40
+      role: notes_stage
+      stage: '101'
+      excerpt: 'Stage 097 reduced the actual isotropic passive/outgoing grouped-`P2` branch to a single normalization-defect
+        context, and Stage 104 proves the exact compact outgoing `l=2` fingerprint matched by the canonical one-pole completion:'
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 49
+      role: notes_stage
+      stage: '101'
+      excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
+        giving
+  - candidate_key: stage_101_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '101'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id221
 - id: fit_stage_102_chi_q
+  candidate_key: stage_102_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '102'
   parameter_names:
   - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_102.tex
+  citations:
+  - &id222
+    path: paper/stages/stage_102.tex
     line: 13
     role: paper_stage_tex
     stage: '102'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-  - path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  - &id223
+    path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
     line: 13
     role: notes_stage
     stage: '102'
@@ -14468,8 +7698,49 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_102_chi_q
+    modality: numeric_literal
+    anchor_stage: '102'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id222
+  - candidate_key: stage_102_chi_q
+    modality: numeric_literal
+    anchor_stage: '102'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id223
+  - candidate_key: stage_102_chi_q
+    modality: claim_label
+    anchor_stage: '102'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_102.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '102'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition
+        \(\chi_Q=1\).}
+  - candidate_key: stage_102_chi_q
+    modality: claim_label
+    anchor_stage: '102'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+      line: 13
+      role: notes_stage
+      stage: '102'
+      excerpt: So the only live retarded obstruction at 2.5PN is the leading `omega^5` outgoing-normalization factor `chi_Q`.
 - id: fit_stage_102_gamma_5
+  candidate_key: stage_102_gamma_5
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14482,9 +7753,9 @@ candidates:
   - sigma_Q
   - stage_102
   - tau_Q
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_102.md
+  citations:
+  - &id224
+    path: redteam/pass2/reports/stage_102.md
     line: 35
     role: pass2_stage_report
     stage: '102'
@@ -14499,17 +7770,31 @@ candidates:
       (D2) `tau_Q` first surfaces at omega^7; (D3) the canonical omega^5 odd coefficient equals `chi_Q · 9/(32 Omega^5)`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_102_gamma_5
+    modality: existing_provenance
+    anchor_stage: '102'
+    parameter_names:
+    - Gamma_5
+    - K_0
+    - Yhat_Q
+    - chi_Q
+    - sigma_Q
+    - stage_102
+    - tau_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id224
 - id: fit_stage_102_matched_fingerprint_value
+  candidate_key: stage_102_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '102'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_102.tex
+  citations:
+  - &id225
+    path: paper/stages/stage_102.tex
     line: 24
     role: paper_stage_tex
     stage: '102'
@@ -14517,17 +7802,37 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_102_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '102'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id225
+  - candidate_key: stage_102_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '102'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_102.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '102'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
 - id: fit_stage_103_chi_q
+  candidate_key: stage_103_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '103'
   parameter_names:
   - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_103.tex
+  citations:
+  - &id226
+    path: paper/stages/stage_103.tex
     line: 13
     role: paper_stage_tex
     stage: '103'
@@ -14536,17 +7841,39 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_103_chi_q
+    modality: numeric_literal
+    anchor_stage: '103'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id226
+  - candidate_key: stage_103_chi_q
+    modality: claim_label
+    anchor_stage: '103'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_103.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '103'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition
+        \(\chi_Q=1\).}
 - id: fit_stage_103_matched_fingerprint_value
+  candidate_key: stage_103_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '103'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_103.tex
+  citations:
+  - &id227
+    path: paper/stages/stage_103.tex
     line: 24
     role: paper_stage_tex
     stage: '103'
@@ -14554,8 +7881,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_103_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '103'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id227
+  - candidate_key: stage_103_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '103'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_103.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '103'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
 - id: fit_stage_104_chi_q
+  candidate_key: stage_104_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14563,15 +7910,16 @@ candidates:
   parameter_names:
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_104.tex
+  citations:
+  - &id228
+    path: paper/stages/stage_104.tex
     line: 13
     role: paper_stage_tex
     stage: '104'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-  - path: redteam/pass2/reports/stage_104.md
+  - &id229
+    path: redteam/pass2/reports/stage_104.md
     line: 35
     role: pass2_stage_report
     stage: '104'
@@ -14587,7 +7935,8 @@ candidates:
       fingerprint. The `chi_Q=1` / `m̂_0^2 chi_Q N_Q = 1` framing in the card''s "Derivation ledger" and in appendix eq. `chiQ-equals-one`
       is the downstream comparison that USES this fingerprint (against the retarded one-pole form of an earlier stage); it
       is narrative, not this script''s own deliverable.'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id230
+    path: redteam/pass2/reports/stage_104.md
     line: 52
     role: pass2_stage_report
     stage: '104'
@@ -14599,8 +7948,46 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_104_chi_q
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id228
+  - candidate_key: stage_104_chi_q
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_104.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '104'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition
+        \(\chi_Q=1\).}
+  - candidate_key: stage_104_chi_q
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id229
+  - candidate_key: stage_104_chi_q
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id230
 - id: fit_stage_104_gamma_5
+  candidate_key: stage_104_gamma_5
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14609,9 +7996,9 @@ candidates:
   - Gamma_5
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_104.md
+  citations:
+  - &id231
+    path: redteam/pass2/reports/stage_104.md
     line: 39
     role: pass2_stage_report
     stage: '104'
@@ -14621,7 +8008,8 @@ candidates:
       and after the substitution `z -> a*omega/c_s` the ω-form coefficients at `omega^2 (a^2/9c_s^2)`, `omega^4 (4 a^4/81
       c_s^4)`, `omega^5 (i a^5/27 c_s^5)`. The final printed RESULT states the model reproduces the canonical fingerprint
       including the odd coefficient `a^5/(27 c_s^5)` (= `Gamma_5`).'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id232
+    path: redteam/pass2/reports/stage_104.md
     line: 98
     role: pass2_stage_report
     stage: '104'
@@ -14637,95 +8025,128 @@ candidates:
       comparison, not this script''s deliverable, so its absence is correct.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_104_gamma_5
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - Gamma_5
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id231
+  - candidate_key: stage_104_gamma_5
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - Gamma_5
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id232
 - id: fit_stage_104_matched_fingerprint_value
+  candidate_key: stage_104_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '104'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_104.tex
+  citations:
+  - &id233
+    path: paper/stages/stage_104.tex
     line: 24
     role: paper_stage_tex
     stage: '104'
     excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - &id234
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
     line: 1
     role: notes_stage
     stage: '104'
     excerpt: '# Moving-Throat PDE — Stage 104: Exact Outgoing `l=2` DtN Fingerprint'
-  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - &id235
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
     line: 83
     role: notes_stage
     stage: '104'
     excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
       directly from the explicit DtN model.
-  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - &id236
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
     line: 87
     role: notes_stage
     stage: '104'
     excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch, the
       leading odd quadrupole coefficient is fixed to
-  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - &id237
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
     line: 92
     role: notes_stage
     stage: '104'
     excerpt: So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity
       in the canonical outgoing `l=2` DtN model itself.
-  - path: redteam/pass2/reports/stage_104.md
+  - &id238
+    path: redteam/pass2/reports/stage_104.md
     line: 59
     role: pass2_stage_report
     stage: '104'
     excerpt: '| A2 | sympy | 38 | `Y[z^2] − 1/9 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id239
+    path: redteam/pass2/reports/stage_104.md
     line: 60
     role: pass2_stage_report
     stage: '104'
     excerpt: '| A3 | sympy | 39 | `Y[z^4] − 4/81 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id240
+    path: redteam/pass2/reports/stage_104.md
     line: 61
     role: pass2_stage_report
     stage: '104'
     excerpt: '| A4 | sympy | 40 | `Y[z^5]/I − 1/27 == 0` | Y fingerprint (odd) | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id241
+    path: redteam/pass2/reports/stage_104.md
     line: 62
     role: pass2_stage_report
     stage: '104'
     excerpt: '| A5 | sympy | 41 | `Y[z^6] + 11/729 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id242
+    path: redteam/pass2/reports/stage_104.md
     line: 63
     role: pass2_stage_report
     stage: '104'
     excerpt: '| A6 | sympy | 42 | `Y[z^7]/I + 1/243 == 0` | Y fingerprint (odd) | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id243
+    path: redteam/pass2/reports/stage_104.md
     line: 68
     role: pass2_stage_report
     stage: '104'
     excerpt: '| B2 | mathematica | 43 | `Y[z^2] − 1/9 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id244
+    path: redteam/pass2/reports/stage_104.md
     line: 69
     role: pass2_stage_report
     stage: '104'
     excerpt: '| B3 | mathematica | 44 | `Y[z^4] − 4/81 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id245
+    path: redteam/pass2/reports/stage_104.md
     line: 70
     role: pass2_stage_report
     stage: '104'
     excerpt: '| B4 | mathematica | 45 | `Y[z^5]/I − 1/27 == 0` | Y fingerprint (odd) | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id246
+    path: redteam/pass2/reports/stage_104.md
     line: 71
     role: pass2_stage_report
     stage: '104'
     excerpt: '| B5 | mathematica | 46 | `Y[z^6] + 11/729 == 0` | Y fingerprint | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id247
+    path: redteam/pass2/reports/stage_104.md
     line: 72
     role: pass2_stage_report
     stage: '104'
     excerpt: '| B6 | mathematica | 47 | `Y[z^7]/I + 1/243 == 0` | Y fingerprint (odd) | yes |'
-  - path: redteam/pass2/reports/stage_104.md
+  - &id248
+    path: redteam/pass2/reports/stage_104.md
     line: 90
     role: pass2_stage_report
     stage: '104'
@@ -14739,7 +8160,8 @@ candidates:
       Verdict: **independent** (the primitive and the static-slot mechanism differ; anchors are external literals, not cross-engine
       echoes). I considered `partial` because the mid-pipeline steps are textually similar, but the divergence at the two
       ends (primitive construction + slot mechanism) and the external anchoring place it on the independent side of the line.'
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  - &id249
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 86
     role: checkpoint_constant_provenance
     stage: '104'
@@ -14748,8 +8170,191 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id233
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id234
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id235
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id236
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id237
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_104.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '104'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 1
+      role: notes_stage
+      stage: '104'
+      excerpt: '# Moving-Throat PDE — Stage 104: Exact Outgoing `l=2` DtN Fingerprint'
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 83
+      role: notes_stage
+      stage: '104'
+      excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
+        directly from the explicit DtN model.
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 87
+      role: notes_stage
+      stage: '104'
+      excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch,
+        the leading odd quadrupole coefficient is fixed to
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 92
+      role: notes_stage
+      stage: '104'
+      excerpt: So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity
+        in the canonical outgoing `l=2` DtN model itself.
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id238
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id239
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id240
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id241
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id242
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id243
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id244
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id245
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id246
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id247
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id248
+  - candidate_key: stage_104_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '104'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id249
 - id: fit_stage_105_chi_q
+  candidate_key: stage_105_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14759,20 +8364,22 @@ candidates:
   - matched_fingerprint_value
   - sigma_Q
   - xi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_105.tex
+  citations:
+  - &id250
+    path: paper/stages/stage_105.tex
     line: 13
     role: paper_stage_tex
     stage: '105'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-  - path: paper/stages/stage_105.tex
+  - &id251
+    path: paper/stages/stage_105.tex
     line: 16
     role: paper_stage_tex
     stage: '105'
     excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
-  - path: redteam/pass2/reports/stage_105.md
+  - &id252
+    path: redteam/pass2/reports/stage_105.md
     line: 35
     role: pass2_stage_report
     stage: '105'
@@ -14789,7 +8396,8 @@ candidates:
       result `\chi_Q=\xi_Q` (the only remaining 2.5PN obstruction is the deviation of the actual branch from the canonical
       `\xi_Q=1`). Deliverables: (D1) `\sigma_Q^{can}=4a^5/(27c_s^5)`; (D2) the retarded series coefficients (z²,z⁴,z⁵); (D3)
       `\chi_Q=1` from the outgoing DtN fingerprint match; (D4) `\chi_Q=\xi_Q` general.'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id253
+    path: redteam/pass2/reports/stage_105.md
     line: 47
     role: pass2_stage_report
     stage: '105'
@@ -14797,12 +8405,14 @@ candidates:
       (py:49–55; wl:52–59) | **partial** — pins `\chi_Q=1` but matches against a HARDCODED literal `a^5/(27c_s^5)`, NOT the
       Hankel DtN value; the DtN fingerprint identity (`z d/dz ln h_2^{(1)}`) is never exercised (card Check #3 not performed)
       |'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id254
+    path: redteam/pass2/reports/stage_105.md
     line: 69
     role: pass2_stage_report
     stage: '105'
     excerpt: A5/B3 are the load-bearing `\chi_Q=1` pin and are the rows that fail the "Anchored?" test.
-  - path: redteam/pass2/reports/stage_105.md
+  - &id255
+    path: redteam/pass2/reports/stage_105.md
     line: 83
     role: pass2_stage_report
     stage: '105'
@@ -14811,7 +8421,8 @@ candidates:
       `\Lambda_2^{out}(z)=z\,d/dz\ln h_2^{(1)}(z)` (appendix `eq:app-part04-Lambda-out-dtn`/`eq:app-part04-Yout-dtn`), and
       the card''s Check #3 explicitly is "Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\)
       expansion."'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id256
+    path: redteam/pass2/reports/stage_105.md
     line: 96
     role: pass2_stage_report
     stage: '105'
@@ -14824,14 +8435,16 @@ candidates:
       Re-derived independently: yes, `chi_Q=1` is the *correct* value (the retarded ω⁵ coefficient is `i·chi_Q·a^5/(27c_s^5)`
       and the genuine normalized Hankel value is `i·a^5/(27c_s^5)`), but the script''s assertion does not *test* that the
       two agree — it asserts agreement by typing the same number on both sides.'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id257
+    path: redteam/pass2/reports/stage_105.md
     line: 98
     role: pass2_stage_report
     stage: '105'
     excerpt: 'Note the asymmetry: the deformed half (A6–A8 / B4) *does* derive its target coefficients from the operator (`-3/\Lambda`
       in SymPy; polynomial inversion of `\Lambda\cdot Y=-3` in Mathematica), so `\chi_Q=\xi_Q` is genuinely exercised. Only
       the canonical `\chi_Q=1` pin — the checkpoint''s headline result — is left self-referential.'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id258
+    path: redteam/pass2/reports/stage_105.md
     line: 102
     role: pass2_stage_report
     stage: '105'
@@ -14840,7 +8453,8 @@ candidates:
       be forced by the Hankel DtN identity, per Check #3. As written, a transcription error or sign error in the *true* DtN
       coefficient could not be caught here: the script would still "pass" because both sides carry the same literal. The pin
       is correct, but it is asserted, not verified.'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id259
+    path: redteam/pass2/reports/stage_105.md
     line: 167
     role: pass2_stage_report
     stage: '105'
@@ -14848,7 +8462,8 @@ candidates:
       re-derived), but the in-script assertion does not *exercise* the DtN-fingerprint identity — it self-matches a hardcoded
       copy of the target coefficient, so the canonical pin is asserted rather than forced. The higher bar (substantive, non-tautological,
       fingerprint actually exercised) is not met until F1 is fixed.'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id260
+    path: redteam/pass2/reports/stage_105.md
     line: 184
     role: pass2_stage_report
     stage: '105'
@@ -14858,8 +8473,123 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_105_chi_q
+    modality: numeric_literal
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id250
+  - candidate_key: stage_105_chi_q
+    modality: numeric_literal
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id251
+  - candidate_key: stage_105_chi_q
+    modality: claim_label
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_105.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '105'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition
+        \(\chi_Q=1\).}
+  - candidate_key: stage_105_chi_q
+    modality: claim_label
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_105.tex
+      line: 16
+      role: paper_stage_tex
+      stage: '105'
+      excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    - sigma_Q
+    - xi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id252
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id253
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id254
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id255
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id256
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - xi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id257
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id258
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id259
+  - candidate_key: stage_105_chi_q
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - chi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id260
 - id: fit_stage_105_matched_fingerprint_value
+  candidate_key: stage_105_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14867,38 +8597,43 @@ candidates:
   parameter_names:
   - matched_fingerprint_value
   - xi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_105.tex
+  citations:
+  - &id261
+    path: paper/stages/stage_105.tex
     line: 24
     role: paper_stage_tex
     stage: '105'
     excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  - &id262
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
     line: 5
     role: notes_stage
     stage: '105'
     excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
-  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  - &id263
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
     line: 98
     role: notes_stage
     stage: '105'
     excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual
       moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
-  - path: redteam/pass2/reports/stage_105.md
+  - &id264
+    path: redteam/pass2/reports/stage_105.md
     line: 106
     role: pass2_stage_report
     stage: '105'
     excerpt: 'Make the canonical match exercise the actual outgoing DtN fingerprint rather than a hardcoded literal, in BOTH
       engines. Construct the exact `l=2` outgoing DtN operator from the spherical Hankel function and take its series, then
       normalize and read off the imaginary z⁵ coefficient as the *target*, instead of typing `a^5/(27c_s^5)`:'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id265
+    path: redteam/pass2/reports/stage_105.md
     line: 110
     role: pass2_stage_report
     stage: '105'
     excerpt: '- assert `Lam_out_series == -3 + z^2/3 + z^4/9 + i z^5/9` (this is the genuine fingerprint exercise — Check
       #3);'
-  - path: redteam/pass2/reports/stage_105.md
+  - &id266
+    path: redteam/pass2/reports/stage_105.md
     line: 145
     role: pass2_stage_report
     stage: '105'
@@ -14912,8 +8647,90 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id261
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id262
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    - xi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id263
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_105.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '105'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 5
+      role: notes_stage
+      stage: '105'
+      excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    - xi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 98
+      role: notes_stage
+      stage: '105'
+      excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual
+        moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id264
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id265
+  - candidate_key: stage_105_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id266
 - id: fit_stage_105_t_dtn
+  candidate_key: stage_105_t_dtn
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14923,9 +8740,9 @@ candidates:
   - chi_Q
   - matched_fingerprint_value
   - outgoing_dtn_fingerprint
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_105.md
+  citations:
+  - &id267
+    path: redteam/pass2/reports/stage_105.md
     line: 114
     role: pass2_stage_report
     stage: '105'
@@ -14937,23 +8754,35 @@ candidates:
       is not self-referential.)
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_105_t_dtn
+    modality: existing_provenance
+    anchor_stage: '105'
+    parameter_names:
+    - T_dtn
+    - chi_Q
+    - matched_fingerprint_value
+    - outgoing_dtn_fingerprint
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id267
 - id: fit_stage_106_chi_q
+  candidate_key: stage_106_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '106'
   parameter_names:
   - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_106.tex
+  citations:
+  - &id268
+    path: paper/stages/stage_106.tex
     line: 13
     role: paper_stage_tex
     stage: '106'
     excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
       computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-  - path: redteam/pass2/reports/stage_106.md
+  - &id269
+    path: redteam/pass2/reports/stage_106.md
     line: 92
     role: pass2_stage_report
     stage: '106'
@@ -14965,7 +8794,8 @@ candidates:
       lists \(\chi_Q\) as an import while also naming "the canonical condition \(\chi_Q=1\)." The comment is merely slightly
       looser than the code. This is a cosmetic prose nit inside a script comment, below the threshold for a finding; I leave
       it rather than manufacture a finding.'
-  - path: redteam/pass2/reports/stage_106.md
+  - &id270
+    path: redteam/pass2/reports/stage_106.md
     line: 102
     role: pass2_stage_report
     stage: '106'
@@ -14975,8 +8805,44 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_106_chi_q
+    modality: numeric_literal
+    anchor_stage: '106'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id268
+  - candidate_key: stage_106_chi_q
+    modality: claim_label
+    anchor_stage: '106'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_106.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '106'
+      excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization}
+        block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition
+        \(\chi_Q=1\).}
+  - candidate_key: stage_106_chi_q
+    modality: existing_provenance
+    anchor_stage: '106'
+    parameter_names:
+    - chi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id269
+  - candidate_key: stage_106_chi_q
+    modality: existing_provenance
+    anchor_stage: '106'
+    parameter_names:
+    - chi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id270
 - id: fit_stage_106_delta_q
+  candidate_key: stage_106_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -14987,9 +8853,9 @@ candidates:
   - chi_Q
   - gamma_eff
   - overline
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_106.md
+  citations:
+  - &id271
+    path: redteam/pass2/reports/stage_106.md
     line: 108
     role: pass2_stage_report
     stage: '106'
@@ -15008,8 +8874,20 @@ candidates:
       I confirm I read the card, the notes, and the Part IV appendix rows before judging the scripts.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_106_delta_q
+    modality: existing_provenance
+    anchor_stage: '106'
+    parameter_names:
+    - Delta_Q
+    - Gamma_5
+    - chi_Q
+    - gamma_eff
+    - overline
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id271
 - id: fit_stage_106_gamma_5
+  candidate_key: stage_106_gamma_5
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15024,9 +8902,9 @@ candidates:
   - gamma_rm
   - matched_fingerprint_value
   - overline
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_106.md
+  citations:
+  - &id272
+    path: redteam/pass2/reports/stage_106.md
     line: 35
     role: pass2_stage_report
     stage: '106'
@@ -15045,28 +8923,46 @@ candidates:
       105, with 106 owning item (i) — factorization separability and the closure to \(N_Q=1\).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_106_gamma_5
+    modality: existing_provenance
+    anchor_stage: '106'
+    parameter_names:
+    - Gamma_5
+    - Gamma_5_2G_5c
+    - K_0
+    - K_2
+    - K_4
+    - chi_Q
+    - gamma_rm
+    - matched_fingerprint_value
+    - overline
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id272
 - id: fit_stage_106_matched_fingerprint_value
+  candidate_key: stage_106_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '106'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_106.tex
+  citations:
+  - &id273
+    path: paper/stages/stage_106.tex
     line: 24
     role: paper_stage_tex
     stage: '106'
     excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-  - path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  - &id274
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
     line: 75
     role: notes_stage
     stage: '106'
     excerpt: Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**,
       conditional on that branch realization and the strict point-particle limit.
-  - path: redteam/pass2/reports/stage_106.md
+  - &id275
+    path: redteam/pass2/reports/stage_106.md
     line: 51
     role: pass2_stage_report
     stage: '106'
@@ -15076,8 +8972,55 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_106_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '106'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id273
+  - candidate_key: stage_106_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '106'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id274
+  - candidate_key: stage_106_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '106'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_106.tex
+      line: 24
+      role: paper_stage_tex
+      stage: '106'
+      excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+  - candidate_key: stage_106_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '106'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 75
+      role: notes_stage
+      stage: '106'
+      excerpt: Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**,
+        conditional on that branch realization and the strict point-particle limit.
+  - candidate_key: stage_106_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '106'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id275
 - id: fit_stage_107_lambda_def
+  candidate_key: stage_107_lambda_def
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15086,9 +9029,9 @@ candidates:
   - Lambda_def
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_107.md
+  citations:
+  - &id276
+    path: redteam/pass2/reports/stage_107.md
     line: 97
     role: pass2_stage_report
     stage: '107'
@@ -15097,7 +9040,8 @@ candidates:
       The second-engine policy requires an independent route (e.g., derive `chi_Q` from `−L5/L0` via the geometric-series
       obstruction algebra without a `Series[]` on the identical ratio, or invert the normalized law symbolically rather than
       re-typing the same coefficient extraction).
-  - path: redteam/pass2/reports/stage_107.md
+  - &id277
+    path: redteam/pass2/reports/stage_107.md
     line: 122
     role: pass2_stage_report
     stage: '107'
@@ -15109,8 +9053,26 @@ candidates:
       the paper states (paper round-trip clean).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_107_lambda_def
+    modality: existing_provenance
+    anchor_stage: '107'
+    parameter_names:
+    - Lambda_def
+    - chi_Q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id276
+  - candidate_key: stage_107_lambda_def
+    modality: existing_provenance
+    anchor_stage: '107'
+    parameter_names:
+    - Lambda_def
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id277
 - id: fit_stage_108_chi_q
+  candidate_key: stage_108_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15119,22 +9081,41 @@ candidates:
   - chi_Q
   - chi_arg
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_108.md
+  citations:
+  - &id278
+    path: redteam/pass2/reports/stage_108.md
     line: 37
     role: pass2_stage_report
     stage: '108'
     excerpt: quadrupole fingerprint `chi_Q = 1` invariant and which genuinely shift it. The
-  - path: redteam/pass2/reports/stage_108.md
+  - &id279
+    path: redteam/pass2/reports/stage_108.md
     line: 42
     role: pass2_stage_report
     stage: '108'
     excerpt: even-fingerprint preservation forces `β=1`, hence `chi_Q=1`; with `chi_arg=β⁵`),
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_108_chi_q
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id278
+  - candidate_key: stage_108_chi_q
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - chi_Q
+    - chi_arg
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id279
 - id: fit_stage_108_matched_fingerprint_value
+  candidate_key: stage_108_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15145,37 +9126,42 @@ candidates:
   - stage_108
   - stage_appendix_part04
   - toy_physics
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  citations:
+  - &id280
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
     line: 105
     role: notes_stage
     stage: '108'
     excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
-  - path: redteam/pass2/reports/stage_108.md
+  - &id281
+    path: redteam/pass2/reports/stage_108.md
     line: 27
     role: pass2_stage_report
     stage: '108'
     excerpt: '- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex`
       (read §"Outlet DtN and Robin outlet tests" rows 345–397 + the canonical `Yout-dtn` fingerprint rows 305–338; the row
       at 1250 inputs `stage_108`)'
-  - path: redteam/pass2/reports/stage_108.md
+  - &id282
+    path: redteam/pass2/reports/stage_108.md
     line: 48
     role: pass2_stage_report
     stage: '108'
     excerpt: fingerprint `Ŷ_out = 1 + z²/9 + 4z⁴/81 + i z⁵/27` (eq:app-part04-Yout-dtn).
-  - path: redteam/pass2/reports/stage_108.md
+  - &id283
+    path: redteam/pass2/reports/stage_108.md
     line: 54
     role: pass2_stage_report
     stage: '108'
     excerpt: literal canonical fingerprint `1 + z²/9 + 4z⁴/81 + i z⁵/27` (a falsifiable external
-  - path: redteam/pass2/reports/stage_108.md
+  - &id284
+    path: redteam/pass2/reports/stage_108.md
     line: 69
     role: pass2_stage_report
     stage: '108'
     excerpt: '| Canonical fingerprint `Ŷ_out = 1+z²/9+4z⁴/81+i z⁵/27` (eq:app-part04-Yout-dtn) | py L31–33 / wl L35–38 anchor
       scaled response to literal canonical | match |'
-  - path: redteam/pass2/reports/stage_108.md
+  - &id285
+    path: redteam/pass2/reports/stage_108.md
     line: 194
     role: pass2_stage_report
     stage: '108'
@@ -15185,8 +9171,68 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id280
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 105
+      role: notes_stage
+      stage: '108'
+      excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    - pde_ledger
+    - stage_108
+    - stage_appendix_part04
+    - toy_physics
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id281
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id282
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id283
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id284
+  - candidate_key: stage_108_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - matched_fingerprint_value
+    - stage_appendix_part04
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id285
 - id: fit_stage_108_y_can_literal
+  candidate_key: stage_108_y_can_literal
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15195,17 +9241,27 @@ candidates:
   - Y_can_literal
   - Y_scale
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_108.md
+  citations:
+  - &id286
+    path: redteam/pass2/reports/stage_108.md
     line: 86
     role: pass2_stage_report
     stage: '108'
     excerpt: '| A1 | sympy | 33 | `expect_zero(Y_scale − Y_can_literal)` | Class A / canonical fingerprint | yes |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_108_y_can_literal
+    modality: existing_provenance
+    anchor_stage: '108'
+    parameter_names:
+    - Y_can_literal
+    - Y_scale
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id286
 - id: fit_stage_110_a_0
+  candidate_key: stage_110_a_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15215,9 +9271,9 @@ candidates:
   - a_5
   - chi_Q
   - rho_R
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_110.md
+  citations:
+  - &id287
+    path: redteam/pass2/reports/stage_110.md
     line: 134
     role: pass2_stage_report
     stage: '110'
@@ -15226,8 +9282,19 @@ candidates:
       deliverables and require no reconciliation.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_110_a_0
+    modality: existing_provenance
+    anchor_stage: '110'
+    parameter_names:
+    - a_0
+    - a_5
+    - chi_Q
+    - rho_R
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id287
 - id: fit_stage_110_chi_q
+  candidate_key: stage_110_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15235,9 +9302,9 @@ candidates:
   parameter_names:
   - chi_Q
   - rho_R
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_110.md
+  citations:
+  - &id288
+    path: redteam/pass2/reports/stage_110.md
     line: 51
     role: pass2_stage_report
     stage: '110'
@@ -15245,8 +9312,17 @@ candidates:
       deliverable — no finding |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_110_chi_q
+    modality: existing_provenance
+    anchor_stage: '110'
+    parameter_names:
+    - chi_Q
+    - rho_R
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id288
 - id: fit_stage_110_matched_fingerprint_value
+  candidate_key: stage_110_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15257,21 +9333,23 @@ candidates:
   - rho_R
   - stage_appendix_part04
   - toy_physics
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+  citations:
+  - &id289
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
     line: 48
     role: notes_stage
     stage: '110'
     excerpt: Relative to the canonical outgoing `l=2` fingerprint,
-  - path: redteam/pass2/reports/stage_110.md
+  - &id290
+    path: redteam/pass2/reports/stage_110.md
     line: 27
     role: pass2_stage_report
     stage: '110'
     excerpt: '- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex`
       (rows: §"Outlet DtN and Robin outlet tests" L345, "Robin and mixed-pole tests" L399–412, eq:app-part04-robin-outlet
       L405, eq:app-part04-chi-robin L410; canonical outgoing fingerprint L305–322)'
-  - path: redteam/pass2/reports/stage_110.md
+  - &id291
+    path: redteam/pass2/reports/stage_110.md
     line: 46
     role: pass2_stage_report
     stage: '110'
@@ -15280,17 +9358,55 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_110_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '110'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id289
+  - candidate_key: stage_110_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '110'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 48
+      role: notes_stage
+      stage: '110'
+      excerpt: Relative to the canonical outgoing `l=2` fingerprint,
+  - candidate_key: stage_110_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '110'
+    parameter_names:
+    - matched_fingerprint_value
+    - pde_ledger
+    - stage_appendix_part04
+    - toy_physics
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id290
+  - candidate_key: stage_110_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '110'
+    parameter_names:
+    - matched_fingerprint_value
+    - rho_R
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id291
 - id: fit_stage_110_p_2
+  candidate_key: stage_110_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '110'
   parameter_names:
   - P_2
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+  citations:
+  - &id292
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
     line: 78
     role: notes_stage
     stage: '110'
@@ -15299,8 +9415,16 @@ candidates:
       a Robin core must either be negligible or be compensated by additional outlet structure.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_110_p_2
+    modality: claim_label
+    anchor_stage: '110'
+    parameter_names:
+    - P_2
+    reason: claim label or status wording near target-related parameter
+    citation: *id292
 - id: fit_stage_111_a_0
+  candidate_key: stage_111_a_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15313,9 +9437,9 @@ candidates:
   - kappa_W
   - matched_fingerprint_value
   - sigma_W
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_111.md
+  citations:
+  - &id293
+    path: redteam/pass2/reports/stage_111.md
     line: 35
     role: pass2_stage_report
     stage: '111'
@@ -15331,8 +9455,22 @@ candidates:
       model and the `kappa_W=-1/9 ⟹ sigma_W=0` no-go verbatim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_111_a_0
+    modality: existing_provenance
+    anchor_stage: '111'
+    parameter_names:
+    - a_0
+    - a_5
+    - chi_Q
+    - gamma_W
+    - kappa_W
+    - matched_fingerprint_value
+    - sigma_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id293
 - id: fit_stage_111_a_w
+  candidate_key: stage_111_a_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15340,9 +9478,9 @@ candidates:
   parameter_names:
   - A_w
   - mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  citations:
+  - &id294
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
     line: 82
     role: notes_stage
     stage: '111'
@@ -15351,8 +9489,17 @@ candidates:
       survives on the actual branch, it must appear in a more structured, compensated outlet law.
   modality_attribution:
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_111_a_w
+    modality: numeric_literal
+    anchor_stage: '111'
+    parameter_names:
+    - A_w
+    - mu
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id294
 - id: fit_stage_111_chi_q
+  candidate_key: stage_111_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15360,9 +9507,9 @@ candidates:
   parameter_names:
   - chi_Q
   - chi_mix
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_111.md
+  citations:
+  - &id295
+    path: redteam/pass2/reports/stage_111.md
     line: 69
     role: pass2_stage_report
     stage: '111'
@@ -15373,8 +9520,17 @@ candidates:
       canonical claim, not a magic constant.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_111_chi_q
+    modality: existing_provenance
+    anchor_stage: '111'
+    parameter_names:
+    - chi_Q
+    - chi_mix
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id295
 - id: fit_stage_111_lambda_mix
+  candidate_key: stage_111_lambda_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15383,9 +9539,9 @@ candidates:
   - Lambda_mix
   - chi_mix
   - chi_mix_lin
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_111.md
+  citations:
+  - &id296
+    path: redteam/pass2/reports/stage_111.md
     line: 110
     role: pass2_stage_report
     stage: '111'
@@ -15397,23 +9553,34 @@ candidates:
       in both transcripts. No directive written (zero findings).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_111_lambda_mix
+    modality: existing_provenance
+    anchor_stage: '111'
+    parameter_names:
+    - Lambda_mix
+    - chi_mix
+    - chi_mix_lin
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id296
 - id: fit_stage_111_matched_fingerprint_value
+  candidate_key: stage_111_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '111'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  citations:
+  - &id297
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
     line: 5
     role: notes_stage
     stage: '111'
     excerpt: Build the first explicit isotropic hidden mixed-sector side-channel model and check whether it can preserve the
       already-fixed conservative even `l=2` fingerprint.
-  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  - &id298
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
     line: 41
     role: notes_stage
     stage: '111'
@@ -15421,8 +9588,48 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_111_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '111'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id297
+  - candidate_key: stage_111_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '111'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id298
+  - candidate_key: stage_111_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '111'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 5
+      role: notes_stage
+      stage: '111'
+      excerpt: Build the first explicit isotropic hidden mixed-sector side-channel model and check whether it can preserve
+        the already-fixed conservative even `l=2` fingerprint.
+  - candidate_key: stage_111_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '111'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 41
+      role: notes_stage
+      stage: '111'
+      excerpt: Demand that this branch preserve the canonical conservative even fingerprint. The `z^2` condition gives
 - id: fit_stage_112_gamma_w
+  candidate_key: stage_112_gamma_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15430,37 +9637,48 @@ candidates:
   parameter_names:
   - gamma_W
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_112.md
+  citations:
+  - &id299
+    path: redteam/pass2/reports/stage_112.md
     line: 50
     role: pass2_stage_report
     stage: '112'
     excerpt: '`gamma_W = 1/9` (notes line 89). Distinct deliverables: (D1) two-branch even-fingerprint solution; (D2)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_112_gamma_w
+    modality: existing_provenance
+    anchor_stage: '112'
+    parameter_names:
+    - gamma_W
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id299
 - id: fit_stage_112_matched_fingerprint_value
+  candidate_key: stage_112_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '112'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_112.md
+  citations:
+  - &id300
+    path: redteam/pass2/reports/stage_112.md
     line: 39
     role: pass2_stage_report
     stage: '112'
     excerpt: 'fingerprint (`-L2/L0 = 1/9`, `L2^2/L0^2 - L4/L0 = 4/81`). This yields exactly two branches:'
-  - path: redteam/pass2/reports/stage_112.md
+  - &id301
+    path: redteam/pass2/reports/stage_112.md
     line: 57
     role: pass2_stage_report
     stage: '112'
     excerpt: even-fingerprint equations, and assert the solution set is exactly `[{kappa:0, rho:sigma}, {kappa:1/3, rho:4
       sigma}]`.
-  - path: redteam/pass2/reports/stage_112.md
+  - &id302
+    path: redteam/pass2/reports/stage_112.md
     line: 70
     role: pass2_stage_report
     stage: '112'
@@ -15468,8 +9686,30 @@ candidates:
       asserted == the two explicit branches | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_112_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '112'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id300
+  - candidate_key: stage_112_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '112'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id301
+  - candidate_key: stage_112_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '112'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id302
 - id: fit_stage_114_k_s
+  candidate_key: stage_114_k_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15478,9 +9718,9 @@ candidates:
   - K_s
   - g_q
   - g_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_114.md
+  citations:
+  - &id303
+    path: redteam/pass2/reports/stage_114.md
     line: 86
     role: pass2_stage_report
     stage: '114'
@@ -15494,8 +9734,18 @@ candidates:
       hand rather than via `Inverse`.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_114_k_s
+    modality: existing_provenance
+    anchor_stage: '114'
+    parameter_names:
+    - K_s
+    - g_q
+    - g_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id303
 - id: fit_stage_115_k_q
+  candidate_key: stage_115_k_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15527,9 +9777,9 @@ candidates:
   - sigma_g_s
   - sigma_sigma_1_z
   - tfrac
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id304
+    path: redteam/pass2/reports/stage_115.md
     line: 35
     role: pass2_stage_report
     stage: '115'
@@ -15545,7 +9795,8 @@ candidates:
       and gives the equivalent parent-overlap reparametrization \(\mathfrak r:=\lambda/\sqrt{K_sK_q},\ \mathfrak g:=g_q\sqrt{K_s}/(g_s\sqrt{K_q})\)
       with parent family \(1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,\ \mathfrak g_\pm=\mathfrak r\pm\tfrac12\sqrt{1+\mathfrak
       r^2}\) (eqs r-g-parent-ratios, parent-compensation-family).'
-  - path: redteam/pass2/reports/stage_115.md
+  - &id305
+    path: redteam/pass2/reports/stage_115.md
     line: 102
     role: pass2_stage_report
     stage: '115'
@@ -15563,8 +9814,51 @@ candidates:
       appendix subsection; the scripts'' claims match the paper''s claims.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_k_q
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - K_q
+    - K_s
+    - K_sK_q
+    - K_sg_q
+    - Lambda_rm
+    - g_q
+    - g_s
+    - gamma_0
+    - gamma_0_1_r_c_9
+    - gamma_c
+    - gamma_c_1_9
+    - kappa_0
+    - kappa_0_1_r_c_3
+    - kappa_c
+    - kappa_c_1_3
+    - lambda
+    - matched_fingerprint_value
+    - mathfrak
+    - pm
+    - r_c
+    - rho_c
+    - rho_c_4sigma_c
+    - sigma_c
+    - sigma_g_s
+    - sigma_sigma_1_z
+    - tfrac
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id304
+  - candidate_key: stage_115_k_q
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - K_q
+    - K_s
+    - g_q
+    - g_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id305
 - id: fit_stage_115_k_s
+  candidate_key: stage_115_k_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15586,9 +9880,9 @@ candidates:
   - sigma_c
   - sigma_c_K_sg_q_lambda
   - target_delta
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id306
+    path: redteam/pass2/reports/stage_115.md
     line: 39
     role: pass2_stage_report
     stage: '115'
@@ -15604,45 +9898,92 @@ candidates:
       back to `g_q`, and re-verifies `sigma_c = sigma_*`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_k_s
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - K_s
+    - K_sK_q
+    - K_sg_q
+    - Lambda_out
+    - Y_target
+    - balance_eq
+    - g_q
+    - g_s
+    - lambda
+    - matched_fingerprint_value
+    - r_c
+    - rho_c
+    - rho_c_g_s
+    - sigma_c
+    - sigma_c_K_sg_q_lambda
+    - target_delta
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id306
 - id: fit_stage_115_matched_fingerprint_value
+  candidate_key: stage_115_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '115'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id307
+    path: redteam/pass2/reports/stage_115.md
     line: 50
     role: pass2_stage_report
     stage: '115'
     excerpt: '| Fingerprint \(\widehat Y_2=1+z^2/9+4z^4/81+iz^5/27\) | `expect_zero("normalized outgoing fingerprint preserved",
       ...)` (py L63-70; wl L99-103) | match |'
-  - path: redteam/pass2/reports/stage_115.md
+  - &id308
+    path: redteam/pass2/reports/stage_115.md
     line: 70
     role: pass2_stage_report
     stage: '115'
     excerpt: '| B8 | math | 99-103 | `expectZero(series(yEff) - yTarget)` | preserved fingerprint (claim 6) | yes |'
-  - path: redteam/pass2/reports/stage_115.md
+  - &id309
+    path: redteam/pass2/reports/stage_115.md
     line: 95
     role: pass2_stage_report
     stage: '115'
     excerpt: '- `normalized outgoing fingerprint preserved = 0`: both.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id307
+  - candidate_key: stage_115_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id308
+  - candidate_key: stage_115_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id309
 - id: fit_stage_115_sigma_c
+  candidate_key: stage_115_sigma_c
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '115'
   parameter_names:
   - sigma_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id310
+    path: redteam/pass2/reports/stage_115.md
     line: 80
     role: pass2_stage_report
     stage: '115'
@@ -15651,8 +9992,16 @@ candidates:
       by a structurally different algebra than the `.py`:'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_sigma_c
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - sigma_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id310
 - id: fit_stage_115_y_eff
+  candidate_key: stage_115_y_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15661,17 +10010,27 @@ candidates:
   - Y_eff
   - Y_target
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id311
+    path: redteam/pass2/reports/stage_115.md
     line: 61
     role: pass2_stage_report
     stage: '115'
     excerpt: '| A3 | sympy | 63-70 | `expect_zero(series(Y_eff) - Y_target)` | preserved fingerprint (claim 6) | yes |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_y_eff
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - Y_eff
+    - Y_target
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id311
 - id: fit_stage_115_y_target
+  candidate_key: stage_115_y_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15679,9 +10038,9 @@ candidates:
   parameter_names:
   - Y_target
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_115.md
+  citations:
+  - &id312
+    path: redteam/pass2/reports/stage_115.md
     line: 121
     role: pass2_stage_report
     stage: '115'
@@ -15689,8 +10048,17 @@ candidates:
       | notes L93-95 (boxed) | MATCH |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_115_y_target
+    modality: existing_provenance
+    anchor_stage: '115'
+    parameter_names:
+    - Y_target
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id312
 - id: fit_stage_116_l_w
+  candidate_key: stage_116_l_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15698,9 +10066,9 @@ candidates:
   parameter_names:
   - L_W
   - r_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_116.md
+  citations:
+  - &id313
+    path: redteam/pass2/reports/stage_116.md
     line: 127
     role: pass2_stage_report
     stage: '116'
@@ -15713,8 +10081,17 @@ candidates:
       live in the notes.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_116_l_w
+    modality: existing_provenance
+    anchor_stage: '116'
+    parameter_names:
+    - L_W
+    - r_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id313
 - id: fit_stage_117_l_w
+  candidate_key: stage_117_l_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15723,9 +10100,9 @@ candidates:
   - L_W
   - matched_fingerprint_value
   - r_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_117.md
+  citations:
+  - &id314
+    path: redteam/pass2/reports/stage_117.md
     line: 41
     role: pass2_stage_report
     stage: '117'
@@ -15741,17 +10118,27 @@ candidates:
       does NOT assert the microscopic realization (it prints the open question).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_117_l_w
+    modality: existing_provenance
+    anchor_stage: '117'
+    parameter_names:
+    - L_W
+    - matched_fingerprint_value
+    - r_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id314
 - id: fit_stage_117_matched_fingerprint_value
+  candidate_key: stage_117_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '117'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_117.md
+  citations:
+  - &id315
+    path: redteam/pass2/reports/stage_117.md
     line: 152
     role: pass2_stage_report
     stage: '117'
@@ -15761,8 +10148,16 @@ candidates:
       physics targets the notes/appendix state, not free hardcodes.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_117_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '117'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id315
 - id: fit_stage_118_a_q
+  candidate_key: stage_118_a_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15781,9 +10176,9 @@ candidates:
   - Z_q
   - g_q
   - g_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_118.md
+  citations:
+  - &id316
+    path: redteam/pass2/reports/stage_118.md
     line: 35
     role: pass2_stage_report
     stage: '118'
@@ -15799,17 +10194,37 @@ candidates:
       notes carry three boxed minus signs (lines 175-181, 194-198, 277-281).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_118_a_q
+    modality: existing_provenance
+    anchor_stage: '118'
+    parameter_names:
+    - A_q
+    - H_w
+    - I_f
+    - I_g
+    - I_q
+    - I_sq
+    - K_q
+    - K_s
+    - L_W
+    - T_m
+    - Z_q
+    - g_q
+    - g_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id316
 - id: fit_stage_119_mathfrak
+  candidate_key: stage_119_mathfrak
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '119'
   parameter_names:
   - mathfrak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  citations:
+  - &id317
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
     line: 143
     role: notes_stage
     stage: '119'
@@ -15817,8 +10232,16 @@ candidates:
       outgoing quadrupole fingerprint is fixed exactly.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_119_mathfrak
+    modality: claim_label
+    anchor_stage: '119'
+    parameter_names:
+    - mathfrak
+    reason: claim label or status wording near target-related parameter
+    citation: *id317
 - id: fit_stage_122_t_m
+  candidate_key: stage_122_t_m
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15830,9 +10253,9 @@ candidates:
   - g_nat
   - needs_user_resolution
   - r_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_122.md
+  citations:
+  - &id318
+    path: redteam/pass2/reports/stage_122.md
     line: 150
     role: pass2_stage_report
     stage: '122'
@@ -15854,8 +10277,21 @@ candidates:
       appendix rows, and that the scripts'' verified claim matches the notes (the authoritative carrier) exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_122_t_m
+    modality: existing_provenance
+    anchor_stage: '122'
+    parameter_names:
+    - T_m
+    - comp_def
+    - expect_nonzero
+    - g_nat
+    - needs_user_resolution
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id318
 - id: fit_stage_123_mathfrak
+  candidate_key: stage_123_mathfrak
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15864,9 +10300,9 @@ candidates:
   - mathfrak
   - stage121_geometric_r_selection
   - stage_123
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_123.md
+  citations:
+  - &id319
+    path: redteam/pass2/reports/stage_123.md
     line: 93
     role: pass2_stage_report
     stage: '123'
@@ -15878,8 +10314,18 @@ candidates:
       and notes reference `\mathfrak r_{F1}` symbolically and are clean.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_123_mathfrak
+    modality: existing_provenance
+    anchor_stage: '123'
+    parameter_names:
+    - mathfrak
+    - stage121_geometric_r_selection
+    - stage_123
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id319
 - id: fit_stage_124_g_nat
+  candidate_key: stage_124_g_nat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15887,9 +10333,9 @@ candidates:
   parameter_names:
   - g_nat
   - r_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_124.md
+  citations:
+  - &id320
+    path: redteam/pass2/reports/stage_124.md
     line: 64
     role: pass2_stage_report
     stage: '124'
@@ -15898,17 +10344,26 @@ candidates:
       a status statement requiring no new check |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_124_g_nat
+    modality: existing_provenance
+    anchor_stage: '124'
+    parameter_names:
+    - g_nat
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id320
 - id: fit_stage_124_r_f1
+  candidate_key: stage_124_r_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '124'
   parameter_names:
   - r_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_124.md
+  citations:
+  - &id321
+    path: redteam/pass2/reports/stage_124.md
     line: 110
     role: pass2_stage_report
     stage: '124'
@@ -15923,8 +10378,16 @@ candidates:
       of that self-label; no value mismatch, no missing-deliverable, no internal numeric inconsistency exists.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_124_r_f1
+    modality: existing_provenance
+    anchor_stage: '124'
+    parameter_names:
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id321
 - id: fit_stage_124_stage_141
+  candidate_key: stage_124_stage_141
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15932,9 +10395,9 @@ candidates:
   parameter_names:
   - stage_141
   - stage_appendix_part04
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_124.md
+  citations:
+  - &id322
+    path: redteam/pass2/reports/stage_124.md
     line: 89
     role: pass2_stage_report
     stage: '124'
@@ -15946,8 +10409,17 @@ candidates:
       gain selection ledger step." So 124''s "Stage~141" is a self-label that drifted, not a real cross-reference to 141.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_124_stage_141
+    modality: existing_provenance
+    anchor_stage: '124'
+    parameter_names:
+    - stage_141
+    - stage_appendix_part04
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id322
 - id: fit_stage_126_g_xi
+  candidate_key: stage_126_g_xi
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15955,9 +10427,9 @@ candidates:
   parameter_names:
   - g_xi
   - input
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_126.md
+  citations:
+  - &id323
+    path: redteam/pass2/reports/stage_126.md
     line: 113
     role: pass2_stage_report
     stage: '126'
@@ -15980,8 +10452,17 @@ candidates:
       with the notes (see below).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_126_g_xi
+    modality: existing_provenance
+    anchor_stage: '126'
+    parameter_names:
+    - g_xi
+    - input
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id323
 - id: fit_stage_126_mathfrak
+  candidate_key: stage_126_mathfrak
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -15989,19 +10470,21 @@ candidates:
   parameter_names:
   - mathfrak
   - pi
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_126.tex
+  citations:
+  - &id324
+    path: paper/stages/stage_126.tex
     line: 16
     role: paper_stage_tex
     stage: '126'
     excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
-  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  - &id325
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
     line: 112
     role: notes_stage
     stage: '126'
     excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
-  - path: redteam/pass2/reports/stage_126.md
+  - &id326
+    path: redteam/pass2/reports/stage_126.md
     line: 35
     role: pass2_stage_report
     stage: '126'
@@ -16020,17 +10503,68 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_126_mathfrak
+    modality: numeric_literal
+    anchor_stage: '126'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id324
+  - candidate_key: stage_126_mathfrak
+    modality: numeric_literal
+    anchor_stage: '126'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id325
+  - candidate_key: stage_126_mathfrak
+    modality: claim_label
+    anchor_stage: '126'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_126.tex
+      line: 16
+      role: paper_stage_tex
+      stage: '126'
+      excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+  - candidate_key: stage_126_mathfrak
+    modality: claim_label
+    anchor_stage: '126'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 112
+      role: notes_stage
+      stage: '126'
+      excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
+  - candidate_key: stage_126_mathfrak
+    modality: existing_provenance
+    anchor_stage: '126'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id326
 - id: fit_stage_129_stop_cold
+  candidate_key: stage_129_stop_cold
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '129'
   parameter_names:
   - stop_cold
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_129.md
+  citations:
+  - &id327
+    path: redteam/pass2/reports/stage_129.md
     line: 128
     role: pass2_stage_report
     stage: '129'
@@ -16046,8 +10580,16 @@ candidates:
       card, the notes, and the appendix; the script''s verified profile matches the paper''s boxed claim exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_129_stop_cold
+    modality: existing_provenance
+    anchor_stage: '129'
+    parameter_names:
+    - stop_cold
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id327
 - id: fit_stage_131_a_0
+  candidate_key: stage_131_a_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16059,9 +10601,9 @@ candidates:
   - T_m
   - Theta_sigma_L
   - pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_131.md
+  citations:
+  - &id328
+    path: redteam/pass2/reports/stage_131.md
     line: 39
     role: pass2_stage_report
     stage: '131'
@@ -16076,8 +10618,21 @@ candidates:
       with a bracketing seed pair.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_131_a_0
+    modality: existing_provenance
+    anchor_stage: '131'
+    parameter_names:
+    - A_0
+    - Delta
+    - Pi
+    - T_m
+    - Theta_sigma_L
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id328
 - id: fit_stage_131_pi_star
+  candidate_key: stage_131_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16085,9 +10640,9 @@ candidates:
   parameter_names:
   - Pi_star
   - g_minus
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_131.md
+  citations:
+  - &id329
+    path: redteam/pass2/reports/stage_131.md
     line: 71
     role: pass2_stage_report
     stage: '131'
@@ -16101,8 +10656,17 @@ candidates:
       a back-fit constant.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_131_pi_star
+    modality: existing_provenance
+    anchor_stage: '131'
+    parameter_names:
+    - Pi_star
+    - g_minus
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id329
 - id: fit_stage_131_pi_theta_sigma_l
+  candidate_key: stage_131_pi_theta_sigma_l
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16113,9 +10677,9 @@ candidates:
   - g_minus
   - g_nat
   - input
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_131.md
+  citations:
+  - &id330
+    path: redteam/pass2/reports/stage_131.md
     line: 106
     role: pass2_stage_report
     stage: '131'
@@ -16136,17 +10700,29 @@ candidates:
       a finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_131_pi_theta_sigma_l
+    modality: existing_provenance
+    anchor_stage: '131'
+    parameter_names:
+    - Pi_Theta_sigma_L
+    - T_m
+    - g_minus
+    - g_nat
+    - input
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id330
 - id: fit_stage_132_pi
+  candidate_key: stage_132_pi
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '132'
   parameter_names:
   - Pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_132.md
+  citations:
+  - &id331
+    path: redteam/pass2/reports/stage_132.md
     line: 83
     role: pass2_stage_report
     stage: '132'
@@ -16154,17 +10730,25 @@ candidates:
       to `1e-14`, so the carried value is dual-engine-consistent.)
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_132_pi
+    modality: existing_provenance
+    anchor_stage: '132'
+    parameter_names:
+    - Pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id331
 - id: fit_stage_133_s_target
+  candidate_key: stage_133_s_target
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '133'
   parameter_names:
   - S_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_133.md
+  citations:
+  - &id332
+    path: redteam/pass2/reports/stage_133.md
     line: 39
     role: pass2_stage_report
     stage: '133'
@@ -16175,7 +10759,8 @@ candidates:
       1. The Mathematica script instead solves the ODE from scratch with `DSolveValue`, then runs the identical residual/BC/kernel/limit
       checks. Neither script asserts the four-parameter fixed-point law (M_α, H_α, G_α, R are free symbols), which is a definitional
       recombination, not a falsifiable identity in this symbol set; both only print it.'
-  - path: redteam/pass2/reports/stage_133.md
+  - &id333
+    path: redteam/pass2/reports/stage_133.md
     line: 84
     role: pass2_stage_report
     stage: '133'
@@ -16192,8 +10777,23 @@ candidates:
       is correctly print-only; flagging it would be gold-plating, not a real defect.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_133_s_target
+    modality: existing_provenance
+    anchor_stage: '133'
+    parameter_names:
+    - S_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id332
+  - candidate_key: stage_133_s_target
+    modality: existing_provenance
+    anchor_stage: '133'
+    parameter_names:
+    - S_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id333
 - id: fit_stage_134_m_q
+  candidate_key: stage_134_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16217,9 +10817,9 @@ candidates:
   - pi
   - tanh
   - tfrac
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_134.md
+  citations:
+  - &id334
+    path: redteam/pass2/reports/stage_134.md
     line: 35
     role: pass2_stage_report
     stage: '134'
@@ -16234,7 +10834,8 @@ candidates:
       `S_q(\Pi_*)\approx0.658075937605428`; (D5) the canonical gain line. The card''s `\stagefield{Checks}` explicitly defers
       outlet consistency of `(M_s,M_q)` to Stage 135 and susceptibility closure to Stage 137 ("carried forward here"), and
       states the fixed points are "numerically located, not closed-form constants."'
-  - path: redteam/pass2/reports/stage_134.md
+  - &id335
+    path: redteam/pass2/reports/stage_134.md
     line: 39
     role: pass2_stage_report
     stage: '134'
@@ -16248,8 +10849,42 @@ candidates:
       135. The Mathematica script mirrors this exact choreography step-for-step.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_134_m_q
+    modality: existing_provenance
+    anchor_stage: '134'
+    parameter_names:
+    - M_q
+    - M_qS_q
+    - M_s
+    - Pi
+    - Pi_approx0_658075937605428
+    - Pi_approx1_50882951349316
+    - S_q
+    - approx
+    - kappa_q
+    - kappa_q_pi_2
+    - kappa_s
+    - kappa_s_0
+    - mathcal
+    - pi
+    - tanh
+    - tfrac
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id334
+  - candidate_key: stage_134_m_q
+    modality: existing_provenance
+    anchor_stage: '134'
+    parameter_names:
+    - M_q
+    - M_s
+    - Pi_star
+    - S_q
+    - S_shell
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id335
 - id: fit_stage_134_mathematica_mirror_policy
+  candidate_key: stage_134_mathematica_mirror_policy
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16259,9 +10894,9 @@ candidates:
   - MIRROR_POLICY
   - S_q
   - batch_IV4_paper_alignment
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_134.md
+  citations:
+  - &id336
+    path: redteam/pass2/reports/stage_134.md
     line: 83
     role: pass2_stage_report
     stage: '134'
@@ -16274,8 +10909,19 @@ candidates:
       `MIRROR_POLICY.md:48`.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_134_mathematica_mirror_policy
+    modality: existing_provenance
+    anchor_stage: '134'
+    parameter_names:
+    - MATHEMATICA_MIRROR_POLICY
+    - MIRROR_POLICY
+    - S_q
+    - batch_IV4_paper_alignment
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id336
 - id: fit_stage_134_s_q
+  candidate_key: stage_134_s_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16283,9 +10929,9 @@ candidates:
   parameter_names:
   - S_q
   - stop_cold
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_134.md
+  citations:
+  - &id337
+    path: redteam/pass2/reports/stage_134.md
     line: 114
     role: pass2_stage_report
     stage: '134'
@@ -16302,8 +10948,17 @@ candidates:
       Hence `verdict: findings`, `stop_cold: null`, `paper_alignment: aligned`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_134_s_q
+    modality: existing_provenance
+    anchor_stage: '134'
+    parameter_names:
+    - S_q
+    - stop_cold
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id337
 - id: fit_stage_135_m_q
+  candidate_key: stage_135_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16314,9 +10969,9 @@ candidates:
   - S_q
   - Sigma_m
   - approx
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_135.md
+  citations:
+  - &id338
+    path: redteam/pass2/reports/stage_135.md
     line: 35
     role: pass2_stage_report
     stage: '135'
@@ -16332,8 +10987,20 @@ candidates:
       theorem).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_135_m_q
+    modality: existing_provenance
+    anchor_stage: '135'
+    parameter_names:
+    - M_q
+    - M_s
+    - S_q
+    - Sigma_m
+    - approx
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id338
 - id: fit_stage_137_d_w_bare
+  candidate_key: stage_137_d_w_bare
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16363,9 +11030,9 @@ candidates:
   - rho_c_sigma_c
   - sigma_c
   - to
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_137.md
+  citations:
+  - &id339
+    path: redteam/pass2/reports/stage_137.md
     line: 95
     role: pass2_stage_report
     stage: '137'
@@ -16383,8 +11050,39 @@ candidates:
       values are independently pinned by F1. Paper, notes, and both scripts agree exactly on `(M_s, M_q, \rho_c, \sigma_c)`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_137_d_w_bare
+    modality: existing_provenance
+    anchor_stage: '137'
+    parameter_names:
+    - D_W_bare
+    - K_s
+    - K_sK_q
+    - K_sK_qD
+    - K_sg_q
+    - Lambda_schur
+    - M_core
+    - M_q
+    - M_s
+    - S_q
+    - g_q
+    - g_s
+    - gamma_c
+    - infty
+    - kappa_c
+    - kappa_c_gamma_c_r_c
+    - lambda
+    - neq
+    - r_c
+    - rho_c
+    - rho_c_K_sg_q_lambda
+    - rho_c_sigma_c
+    - sigma_c
+    - to
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id339
 - id: fit_stage_137_k_s
+  candidate_key: stage_137_k_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16415,9 +11113,9 @@ candidates:
   - sigma_c
   - sigma_c_K_sg_q_lambda
   - sigma_c_schur
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_137.md
+  citations:
+  - &id340
+    path: redteam/pass2/reports/stage_137.md
     line: 35
     role: pass2_stage_report
     stage: '137'
@@ -16431,13 +11129,15 @@ candidates:
       z^2-i\gamma_c z^5)` (md:62-63). The card''s Checks list three items: (1) gain pair vs outlet consistency, (2) self-matched
       susceptibility closure, (3) numerical fixed points recorded as numerically located (a documentation/recording directive,
       not a per-stage symbolic identity).'
-  - path: redteam/pass2/reports/stage_137.md
+  - &id341
+    path: redteam/pass2/reports/stage_137.md
     line: 45
     role: pass2_stage_report
     stage: '137'
     excerpt: '| `M_s = L g_s^2/(K_s\Theta_\sigma)` (tex:16, md:79/129) | py:30/42-46 `Ms==Ms_paper`; wl:51/60-62; underpinned
       by F1 `rho_c==rho_c_schur` py:26/wl:48 | match |'
-  - path: redteam/pass2/reports/stage_137.md
+  - &id342
+    path: redteam/pass2/reports/stage_137.md
     line: 46
     role: pass2_stage_report
     stage: '137'
@@ -16445,8 +11145,65 @@ candidates:
       wl:52/61-63; underpinned by F1 `sigma_c==sigma_c_schur` py:27/wl:49 | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_137_k_s
+    modality: existing_provenance
+    anchor_stage: '137'
+    parameter_names:
+    - K_s
+    - K_sK_q
+    - K_sg_q
+    - Lg_s
+    - M_q
+    - M_s
+    - Pi
+    - S_q
+    - Theta_sigma
+    - Theta_sigma_rho_c
+    - Theta_sigma_sigma_c
+    - g_s
+    - gamma_c
+    - kappa_c
+    - lambda
+    - mathcal
+    - rho_c
+    - rho_c_g_s
+    - rho_c_sigma_c_1_kappa_c
+    - sigma_c
+    - sigma_c_K_sg_q_lambda
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id340
+  - candidate_key: stage_137_k_s
+    modality: existing_provenance
+    anchor_stage: '137'
+    parameter_names:
+    - K_s
+    - M_s
+    - Ms_paper
+    - Theta_sigma
+    - g_s
+    - rho_c
+    - rho_c_schur
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id341
+  - candidate_key: stage_137_k_s
+    modality: existing_provenance
+    anchor_stage: '137'
+    parameter_names:
+    - K_s
+    - K_sK_q
+    - K_sg_q
+    - M_q
+    - Mq_paper
+    - Theta_sigma
+    - g_s
+    - lambda
+    - sigma_c
+    - sigma_c_schur
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id342
 - id: fit_stage_138_k_s
+  candidate_key: stage_138_k_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16461,9 +11218,9 @@ candidates:
   - g_c
   - g_q
   - g_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_138.md
+  citations:
+  - &id343
+    path: redteam/pass2/reports/stage_138.md
     line: 90
     role: pass2_stage_report
     stage: '138'
@@ -16480,8 +11237,24 @@ candidates:
       prints) are load-bearing inputs to the asserted `R_q` checks, so the coverage gap is cosmetic, not substantive.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_138_k_s
+    modality: existing_provenance
+    anchor_stage: '138'
+    parameter_names:
+    - K_s
+    - K_sK_q
+    - M_q
+    - M_s
+    - Ms_norm
+    - R_q
+    - g_c
+    - g_q
+    - g_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id343
 - id: fit_stage_139_m_q
+  candidate_key: stage_139_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16492,9 +11265,9 @@ candidates:
   - R_q
   - S_q
   - Sq_star
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_139.md
+  citations:
+  - &id344
+    path: redteam/pass2/reports/stage_139.md
     line: 122
     role: pass2_stage_report
     stage: '139'
@@ -16512,8 +11285,20 @@ candidates:
       exists), so no transliteration finding. Outputs are fresh (both `.txt` mtime 2026-05-29 18:02, both scripts 16:51/16:52).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_139_m_q
+    modality: existing_provenance
+    anchor_stage: '139'
+    parameter_names:
+    - M_q
+    - M_s
+    - R_q
+    - S_q
+    - Sq_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id344
 - id: fit_stage_140_j_s
+  candidate_key: stage_140_j_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16526,9 +11311,9 @@ candidates:
   - hbar
   - mathcal
   - rho
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_140.md
+  citations:
+  - &id345
+    path: redteam/pass2/reports/stage_140.md
     line: 116
     role: pass2_stage_report
     stage: '140'
@@ -16540,8 +11325,22 @@ candidates:
       all traps clear; verdict stands clean.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_140_j_s
+    modality: existing_provenance
+    anchor_stage: '140'
+    parameter_names:
+    - J_s
+    - Sigma_0
+    - T_m
+    - ell
+    - hbar
+    - mathcal
+    - rho
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id345
 - id: fit_stage_140_m_s
+  candidate_key: stage_140_m_s
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16557,9 +11356,9 @@ candidates:
   - hbar
   - mathcal
   - rho
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_140.md
+  citations:
+  - &id346
+    path: redteam/pass2/reports/stage_140.md
     line: 112
     role: pass2_stage_report
     stage: '140'
@@ -16576,25 +11375,50 @@ candidates:
       `.wl` is an independent derivation, not a port.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_140_m_s
+    modality: existing_provenance
+    anchor_stage: '140'
+    parameter_names:
+    - M_s
+    - R_q
+    - Sigma0_hat
+    - Sigma_0
+    - Sigma_0_M_s_20_9_widehat
+    - T_m
+    - ell
+    - hbar
+    - mathcal
+    - rho
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id346
 - id: fit_stage_140_theta_sigma
+  candidate_key: stage_140_theta_sigma
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '140'
   parameter_names:
   - Theta_sigma
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  citations:
+  - &id347
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
     line: 6
     role: notes_stage
     stage: '140'
     excerpt: source susceptibility `\Theta_\sigma` with the first self-matched mouth-layer closure.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_140_theta_sigma
+    modality: claim_label
+    anchor_stage: '140'
+    parameter_names:
+    - Theta_sigma
+    reason: claim label or status wording near target-related parameter
+    citation: *id347
 - id: fit_stage_142_m_q
+  candidate_key: stage_142_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16611,9 +11435,9 @@ candidates:
   - mathfrak
   - r_F1
   - stage_142
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_142.md
+  citations:
+  - &id348
+    path: redteam/pass2/reports/stage_142.md
     line: 35
     role: pass2_stage_report
     stage: '142'
@@ -16627,8 +11451,26 @@ candidates:
       3 requires fixed points be "numerically located, not closed-form constants."'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_142_m_q
+    modality: existing_provenance
+    anchor_stage: '142'
+    parameter_names:
+    - M_q
+    - M_s
+    - Pi
+    - R_q
+    - S_q
+    - Sigma_0
+    - Sigma_0_1_R_q_Pi_mathcal
+    - g_c
+    - mathfrak
+    - r_F1
+    - stage_142
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id348
 - id: fit_stage_142_r_q
+  candidate_key: stage_142_r_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16637,9 +11479,9 @@ candidates:
   - R_q
   - r_F1
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_142.md
+  citations:
+  - &id349
+    path: redteam/pass2/reports/stage_142.md
     line: 106
     role: pass2_stage_report
     stage: '142'
@@ -16653,8 +11495,18 @@ candidates:
       verified claim matches the paper''s stated claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_142_r_q
+    modality: existing_provenance
+    anchor_stage: '142'
+    parameter_names:
+    - R_q
+    - r_F1
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id349
 - id: fit_stage_143_m_q
+  candidate_key: stage_143_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16662,9 +11514,9 @@ candidates:
   parameter_names:
   - M_q
   - M_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_143.md
+  citations:
+  - &id350
+    path: redteam/pass2/reports/stage_143.md
     line: 110
     role: pass2_stage_report
     stage: '143'
@@ -16682,8 +11534,17 @@ candidates:
       script''s verified claim matches the paper''s claim.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_143_m_q
+    modality: existing_provenance
+    anchor_stage: '143'
+    parameter_names:
+    - M_q
+    - M_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id350
 - id: fit_stage_144_mathfrak
+  candidate_key: stage_144_mathfrak
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16691,9 +11552,9 @@ candidates:
   parameter_names:
   - mathfrak
   - pi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  citations:
+  - &id351
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
     line: 82
     role: notes_stage
     stage: '144'
@@ -16701,8 +11562,30 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_144_mathfrak
+    modality: numeric_literal
+    anchor_stage: '144'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id351
+  - candidate_key: stage_144_mathfrak
+    modality: claim_label
+    anchor_stage: '144'
+    parameter_names:
+    - mathfrak
+    - pi
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 82
+      role: notes_stage
+      stage: '144'
+      excerpt: For comparison, the self-matched derivative-profile point \(\mathfrak g=\pi/4\) occurs at
 - id: fit_stage_144_r_q
+  candidate_key: stage_144_r_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16713,9 +11596,9 @@ candidates:
   - g_c
   - r_F1
   - stage_144
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_144.md
+  citations:
+  - &id352
+    path: redteam/pass2/reports/stage_144.md
     line: 35
     role: pass2_stage_report
     stage: '144'
@@ -16732,7 +11615,8 @@ candidates:
       √(4107−100π²)/(10π) ≈ 1.77799` (appendix:560-563), `g_±(r) = r ± ½√(1+r²)` (appendix:542,570), `g_Π = 2Π(2Πe^Π+π)/((4Π²+π²)(e^Π−1))`
       (appendix:658), the S-kernel at κ=π/2 (appendix:692-694), `R_q = (g_Π−r_F1)²/(1+r_F1²)` (appendix:759), `Σ₀(Π)=Π/(1−R_q
       S_q)` (appendix:766), and `Σ₀ = (20/9) T̂_m²` (appendix:751).'
-  - path: redteam/pass2/reports/stage_144.md
+  - &id353
+    path: redteam/pass2/reports/stage_144.md
     line: 39
     role: pass2_stage_report
     stage: '144'
@@ -16746,8 +11630,29 @@ candidates:
       the uniqueness/ordering of the two fixed points, and the moderate finite values of the canonical-point quantities.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_144_r_q
+    modality: existing_provenance
+    anchor_stage: '144'
+    parameter_names:
+    - R_q
+    - S_q
+    - g_c
+    - r_F1
+    - stage_144
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id352
+  - candidate_key: stage_144_r_q
+    modality: existing_provenance
+    anchor_stage: '144'
+    parameter_names:
+    - R_q
+    - S_q
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id353
 - id: fit_stage_145_m_q
+  candidate_key: stage_145_m_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16757,9 +11662,9 @@ candidates:
   - M_s
   - Pi_widehat
   - stage_145
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_145.md
+  citations:
+  - &id354
+    path: redteam/pass2/reports/stage_145.md
     line: 35
     role: pass2_stage_report
     stage: '145'
@@ -16773,8 +11678,19 @@ candidates:
       actual-branch theorem" with a status tag that must be carried downstream (`stage_145.tex:27`).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_145_m_q
+    modality: existing_provenance
+    anchor_stage: '145'
+    parameter_names:
+    - M_q
+    - M_s
+    - Pi_widehat
+    - stage_145
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id354
 - id: fit_stage_145_r_q
+  candidate_key: stage_145_r_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16785,9 +11701,9 @@ candidates:
   - g_c
   - r_F1
   - stage_appendix_part04
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_145.md
+  citations:
+  - &id355
+    path: redteam/pass2/reports/stage_145.md
     line: 37
     role: pass2_stage_report
     stage: '145'
@@ -16802,8 +11718,20 @@ candidates:
       and the "Unique regular Family-1 canonical mouth branch" theorem (`:787-790`).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_145_r_q
+    modality: existing_provenance
+    anchor_stage: '145'
+    parameter_names:
+    - R_q
+    - S_q
+    - g_c
+    - r_F1
+    - stage_appendix_part04
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id355
 - id: fit_stage_147_a_t
+  candidate_key: stage_147_a_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16830,9 +11758,9 @@ candidates:
   - representative_positive_families
   - stage_appendix_part04
   - varsigma
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_147.md
+  citations:
+  - &id356
+    path: redteam/pass2/reports/stage_147.md
     line: 48
     role: pass2_stage_report
     stage: '147'
@@ -16844,7 +11772,8 @@ candidates:
       non-canonical deformation `\varsigma(x)=2x` (residual `<1e-22`); (4) the kernel is source-centered, `\int_0^1\Sigma_*W_*\,dx=0`
       (residual `<1e-22`); (5) `g_*,S_*` equal their source-moment quadratures `\int\Sigma_* c` and `\int\Sigma_* K_q` (residual
       `<1e-25`). The SymPy script also prints the symbolic `\delta T_m` and `W_*(x)`.'
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  - &id357
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 33
     role: checkpoint_constant_provenance
     stage: '147'
@@ -16869,8 +11798,44 @@ candidates:
       against escalation), recorded at `redteam/codex_reviews/_consult_batch7.md`. Previous batch-6 entry retained below.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_147_a_t
+    modality: existing_provenance
+    anchor_stage: '147'
+    parameter_names:
+    - A_T
+    - B_T
+    - K_q
+    - Pi
+    - Sigma
+    - Sigma_T
+    - Sigma_W_dx_0
+    - Sigma_dx
+    - T_m
+    - dT_m
+    - int
+    - int_0
+    - pi
+    - varsigma
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id356
+  - candidate_key: stage_147_a_t
+    modality: existing_provenance
+    anchor_stage: '147'
+    parameter_names:
+    - A_T
+    - B_T
+    - bundle_inversion_four_drifts
+    - codex_reviews
+    - core_mouth_coevolution_status
+    - full_profile_residual
+    - is_checkpoint
+    - representative_positive_families
+    - stage_appendix_part04
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id357
 - id: fit_stage_148_a_t
+  candidate_key: stage_148_a_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16883,9 +11848,9 @@ candidates:
   - T_star
   - r_F1
   - stage_appendix_part04
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_148.md
+  citations:
+  - &id358
+    path: redteam/pass2/reports/stage_148.md
     line: 70
     role: pass2_stage_report
     stage: '148'
@@ -16894,7 +11859,8 @@ candidates:
       anchor independently-derived `A_T`/`B_T` (different routes per engine) to EXTERNAL appendix literals (a dropped chain
       term would push `A_T` off `-4.2726...` and fail); A3/A6 assert an exact symbolic collapse of nested radicals that would
       be nonzero if the convex-family algebra or the `r_F1` constant were wrong.'
-  - path: redteam/pass2/reports/stage_148.md
+  - &id359
+    path: redteam/pass2/reports/stage_148.md
     line: 84
     role: pass2_stage_report
     stage: '148'
@@ -16902,7 +11868,8 @@ candidates:
       wl:51 `(9/(40*tStar))*pStar/(4*(1 - sStar/4)^2)`). This single quantity is structurally the same expression in both
       — acceptable, since it is the trivial closed-form S-derivative and both anchor it to the external appendix literal `0.1348...`;
       the independence that matters is on `A_T`, which carried the bug.
-  - path: redteam/pass2/reports/stage_148.md
+  - &id360
+    path: redteam/pass2/reports/stage_148.md
     line: 108
     role: pass2_stage_report
     stage: '148'
@@ -16921,17 +11888,48 @@ candidates:
       a wrong constant. Outputs are fresh (both `.txt` mtimes 1780117328 > both script mtimes 1780116764/1780116805).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_148_a_t
+    modality: existing_provenance
+    anchor_stage: '148'
+    parameter_names:
+    - A_T
+    - B_T
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id358
+  - candidate_key: stage_148_a_t
+    modality: existing_provenance
+    anchor_stage: '148'
+    parameter_names:
+    - A_T
+    - B_T
+    - Pi_star
+    - S_star
+    - T_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id359
+  - candidate_key: stage_148_a_t
+    modality: existing_provenance
+    anchor_stage: '148'
+    parameter_names:
+    - A_T
+    - B_T
+    - r_F1
+    - stage_appendix_part04
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id360
 - id: fit_stage_150_phi_x_pi_x
+  candidate_key: stage_150_phi_x_pi_x
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '150'
   parameter_names:
   - Phi_x_Pi_x
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_150.tex
+  citations:
+  - &id361
+    path: paper/stages/stage_150.tex
     line: 16
     role: paper_stage_tex
     stage: '150'
@@ -16939,8 +11937,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_150_phi_x_pi_x
+    modality: numeric_literal
+    anchor_stage: '150'
+    parameter_names:
+    - Phi_x_Pi_x
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id361
+  - candidate_key: stage_150_phi_x_pi_x
+    modality: claim_label
+    anchor_stage: '150'
+    parameter_names:
+    - Phi_x_Pi_x
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_150.tex
+      line: 16
+      role: paper_stage_tex
+      stage: '150'
+      excerpt: Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth.
 - id: fit_stage_150_s_q
+  candidate_key: stage_150_s_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16948,9 +11966,9 @@ candidates:
   parameter_names:
   - S_q
   - T_q
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_150.md
+  citations:
+  - &id362
+    path: redteam/pass2/reports/stage_150.md
     line: 114
     role: pass2_stage_report
     stage: '150'
@@ -16962,8 +11980,17 @@ candidates:
       introduced (no fix prescribed). No directive written — zero findings.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_150_s_q
+    modality: existing_provenance
+    anchor_stage: '150'
+    parameter_names:
+    - S_q
+    - T_q
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id362
 - id: fit_stage_151_a_t
+  candidate_key: stage_151_a_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -16974,9 +12001,9 @@ candidates:
   - Pi_star
   - r_1
   - r_2
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_151.md
+  citations:
+  - &id363
+    path: redteam/pass2/reports/stage_151.md
     line: 103
     role: pass2_stage_report
     stage: '151'
@@ -16987,8 +12014,20 @@ candidates:
       ≈ 1.508…` or `√(4107−100π²)/(10π)` radius) is expected here, and none appears — correctly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_151_a_t
+    modality: existing_provenance
+    anchor_stage: '151'
+    parameter_names:
+    - A_T
+    - B_T
+    - Pi_star
+    - r_1
+    - r_2
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id363
 - id: fit_stage_152_a_t
+  candidate_key: stage_152_a_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17006,9 +12045,9 @@ candidates:
   - expect_close
   - g_1
   - g_star
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_152.md
+  citations:
+  - &id364
+    path: redteam/pass2/reports/stage_152.md
     line: 39
     role: pass2_stage_report
     stage: '152'
@@ -17021,17 +12060,36 @@ candidates:
       `∫Σ_* c`.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_152_a_t
+    modality: existing_provenance
+    anchor_stage: '152'
+    parameter_names:
+    - A_T
+    - B_T
+    - Cov_cR
+    - K_q
+    - S_1
+    - T_1
+    - T_corr
+    - T_q
+    - T_s
+    - expect_close
+    - g_1
+    - g_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id364
 - id: fit_stage_154_g_star
+  candidate_key: stage_154_g_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '154'
   parameter_names:
   - g_star
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_154.md
+  citations:
+  - &id365
+    path: redteam/pass2/reports/stage_154.md
     line: 85
     role: pass2_stage_report
     stage: '154'
@@ -17040,17 +12098,25 @@ candidates:
       BOTH engines must encode them — re-typing a physical premise is not transliteration of a derivation.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_154_g_star
+    modality: existing_provenance
+    anchor_stage: '154'
+    parameter_names:
+    - g_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id365
 - id: fit_stage_154_r_f1
+  candidate_key: stage_154_r_f1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '154'
   parameter_names:
   - r_F1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_154.md
+  citations:
+  - &id366
+    path: redteam/pass2/reports/stage_154.md
     line: 39
     role: pass2_stage_report
     stage: '154'
@@ -17062,7 +12128,8 @@ candidates:
       The `R(g)` form itself is printed for display, not asserted (the `R(g_*)=1/4` and shift checks exercise it). All checks
       are fully symbolic in a free real symbol `r`; the script never pins the numeric `r_F1`, so it verifies the identities
       for ALL `r`, which is strictly stronger than checking the one numeric value.'
-  - path: redteam/pass2/reports/stage_154.md
+  - &id367
+    path: redteam/pass2/reports/stage_154.md
     line: 78
     role: pass2_stage_report
     stage: '154'
@@ -17070,8 +12137,23 @@ candidates:
       never pins `r_F1 ≈ 1.778`. So there is no literal-against-itself check and nothing to mis-reconcile numerically.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_154_r_f1
+    modality: existing_provenance
+    anchor_stage: '154'
+    parameter_names:
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id366
+  - candidate_key: stage_154_r_f1
+    modality: existing_provenance
+    anchor_stage: '154'
+    parameter_names:
+    - r_F1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id367
 - id: fit_stage_154_t_q
+  candidate_key: stage_154_t_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17081,9 +12163,9 @@ candidates:
   - T_s
   - r_F1
   - stage_154
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_154.md
+  citations:
+  - &id368
+    path: redteam/pass2/reports/stage_154.md
     line: 35
     role: pass2_stage_report
     stage: '154'
@@ -17103,25 +12185,44 @@ candidates:
       itself.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_154_t_q
+    modality: existing_provenance
+    anchor_stage: '154'
+    parameter_names:
+    - T_q
+    - T_s
+    - r_F1
+    - stage_154
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id368
 - id: fit_stage_155_g_star
+  candidate_key: stage_155_g_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '155'
   parameter_names:
   - g_star
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_155.md
+  citations:
+  - &id369
+    path: redteam/pass2/reports/stage_155.md
     line: 162
     role: pass2_stage_report
     stage: '155'
     excerpt: verified the pinned constants satisfy (|Δ|≈9e-16), so it ties together `g_star`, `rF1`, and the
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_155_g_star
+    modality: existing_provenance
+    anchor_stage: '155'
+    parameter_names:
+    - g_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id369
 - id: fit_stage_156_pi_can
+  candidate_key: stage_156_pi_can
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17137,9 +12238,9 @@ candidates:
   - T_hat_m
   - g_can
   - g_fp
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_156.md
+  citations:
+  - &id370
+    path: redteam/pass2/reports/stage_156.md
     line: 35
     role: pass2_stage_report
     stage: '156'
@@ -17155,8 +12256,25 @@ candidates:
       placement inside the exact map, not a closed-form PDE theorem.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_156_pi_can
+    modality: existing_provenance
+    anchor_stage: '156'
+    parameter_names:
+    - Pi_can
+    - R_can
+    - S_can
+    - Sigma0_can
+    - Sigma_0
+    - StatusNumerical
+    - T_hat
+    - T_hat_m
+    - g_can
+    - g_fp
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id370
 - id: fit_stage_156_statusnumerical
+  candidate_key: stage_156_statusnumerical
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17165,9 +12283,9 @@ candidates:
   - StatusNumerical
   - T_hat
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_156.md
+  citations:
+  - &id371
+    path: redteam/pass2/reports/stage_156.md
     line: 105
     role: pass2_stage_report
     stage: '156'
@@ -17184,47 +12302,81 @@ candidates:
       is not a value mismatch.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_156_statusnumerical
+    modality: existing_provenance
+    anchor_stage: '156'
+    parameter_names:
+    - StatusNumerical
+    - T_hat
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id371
 - id: fit_stage_157_delta_kappa_w
+  candidate_key: stage_157_delta_kappa_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '157'
   parameter_names:
   - delta_kappa_W
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_157.md
+  citations:
+  - &id372
+    path: redteam/pass2/reports/stage_157.md
     line: 59
     role: pass2_stage_report
     stage: '157'
     excerpt: keeps `delta R = 0`; (6) canonical-even preservation pins `deltaC = delta_kappa_W
-  - path: redteam/pass2/reports/stage_157.md
+  - &id373
+    path: redteam/pass2/reports/stage_157.md
     line: 76
     role: pass2_stage_report
     stage: '157'
     excerpt: '| Even-preservation pins `deltaC = delta_kappa_W = 0` | sympy:108-111 / wl:96-100 | match |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_157_delta_kappa_w
+    modality: existing_provenance
+    anchor_stage: '157'
+    parameter_names:
+    - delta_kappa_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id372
+  - candidate_key: stage_157_delta_kappa_w
+    modality: existing_provenance
+    anchor_stage: '157'
+    parameter_names:
+    - delta_kappa_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id373
 - id: fit_stage_157_statusopen
+  candidate_key: stage_157_statusopen
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '157'
   parameter_names:
   - StatusOpen
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_157.md
+  citations:
+  - &id374
+    path: redteam/pass2/reports/stage_157.md
     line: 170
     role: pass2_stage_report
     stage: '157'
     excerpt: normalization map is "deferred to Stage 158," matching the card's `\StatusOpen`
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_157_statusopen
+    modality: existing_provenance
+    anchor_stage: '157'
+    parameter_names:
+    - StatusOpen
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id374
 - id: fit_stage_158_delta_q
+  candidate_key: stage_158_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17244,9 +12396,9 @@ candidates:
   - a_0
   - chi
   - eps
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_158.md
+  citations:
+  - &id375
+    path: redteam/pass2/reports/stage_158.md
     line: 40
     role: pass2_stage_report
     stage: '158'
@@ -17260,17 +12412,38 @@ candidates:
       A non-asserted numerical block then prints all eight carry-forward coefficients.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_158_delta_q
+    modality: existing_provenance
+    anchor_stage: '158'
+    parameter_names:
+    - Delta_Q
+    - M_q
+    - Pi
+    - Sigma_0
+    - Sigma_0_R_dS_S_dR
+    - Sigma_0_dS_dg
+    - Sigma_0_dSigma_0_1_R_dR_S_dS
+    - Sigma_0_dSigma_0_R_dR
+    - Sigma_0_dg
+    - Sigma_5
+    - Sigma_5_3S_Sigma_0
+    - a_0
+    - chi
+    - eps
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id375
 - id: fit_stage_158_matched_fingerprint_value
+  candidate_key: stage_158_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '158'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  citations:
+  - &id376
+    path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
     line: 410
     role: notes_stage
     stage: '158'
@@ -17278,32 +12451,55 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_158_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '158'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id376
+  - candidate_key: stage_158_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '158'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 410
+      role: notes_stage
+      stage: '158'
+      excerpt: canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
 - id: fit_stage_159_matched_fingerprint_value
+  candidate_key: stage_159_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '159'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  citations:
+  - &id377
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
     line: 15
     role: notes_stage
     stage: '159'
     excerpt: to preserve the canonical even `l=2` fingerprint while still allowing a nontrivial odd
-  - path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  - &id378
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
     line: 29
     role: notes_stage
     stage: '159'
     excerpt: 3. exact preservation of the canonical even `l=2` fingerprint at first order forces
-  - path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  - &id379
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
     line: 322
     role: notes_stage
     stage: '159'
     excerpt: '> preserve the canonical conservative even `l=2` fingerprint at first order.'
-  - path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  - &id380
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
     line: 436
     role: notes_stage
     stage: '159'
@@ -17311,17 +12507,94 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id377
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id378
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id379
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id380
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 15
+      role: notes_stage
+      stage: '159'
+      excerpt: to preserve the canonical even `l=2` fingerprint while still allowing a nontrivial odd
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 29
+      role: notes_stage
+      stage: '159'
+      excerpt: 3. exact preservation of the canonical even `l=2` fingerprint at first order forces
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 322
+      role: notes_stage
+      stage: '159'
+      excerpt: '> preserve the canonical conservative even `l=2` fingerprint at first order.'
+  - candidate_key: stage_159_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '159'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 436
+      role: notes_stage
+      stage: '159'
+      excerpt: '1. the even fingerprint already fixes the direct loading projection:'
 - id: fit_stage_160_matched_fingerprint_value
+  candidate_key: stage_160_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '160'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  citations:
+  - &id381
+    path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
     line: 140
     role: notes_stage
     stage: '160'
@@ -17329,17 +12602,37 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_160_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '160'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id381
+  - candidate_key: stage_160_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '160'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 140
+      role: notes_stage
+      stage: '160'
+      excerpt: '`l=2` fingerprint forces'
 - id: fit_stage_162_g_lower
+  candidate_key: stage_162_g_lower
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '162'
   parameter_names:
   - g_lower
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_162.md
+  citations:
+  - &id382
+    path: redteam/pass2/reports/stage_162.md
     line: 99
     role: pass2_stage_report
     stage: '162'
@@ -17351,8 +12644,16 @@ candidates:
       machinery:'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_162_g_lower
+    modality: existing_provenance
+    anchor_stage: '162'
+    parameter_names:
+    - g_lower
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id382
 - id: fit_stage_164_l_w
+  candidate_key: stage_164_l_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17361,9 +12662,9 @@ candidates:
   - L_W
   - c_sw
   - v_w0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_164.md
+  citations:
+  - &id383
+    path: redteam/pass2/reports/stage_164.md
     line: 39
     role: pass2_stage_report
     stage: '164'
@@ -17375,8 +12676,18 @@ candidates:
       PLUS five `expectApprox` numeric checks on `A_*`, `B_*`, and the c_sw/v_w0/L_W coefficients (tol 1e-14).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_164_l_w
+    modality: existing_provenance
+    anchor_stage: '164'
+    parameter_names:
+    - L_W
+    - c_sw
+    - v_w0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id383
 - id: fit_stage_165_l_w
+  candidate_key: stage_165_l_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17389,9 +12700,9 @@ candidates:
   - rho_w
   - rho_w_deltaln
   - v_w0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_165.md
+  citations:
+  - &id384
+    path: redteam/pass2/reports/stage_165.md
     line: 35
     role: pass2_stage_report
     stage: '165'
@@ -17407,8 +12718,22 @@ candidates:
       deliverables are NOT mentioned on the card; the card''s load-bearing claim is the log-drift collapse.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_165_l_w
+    modality: existing_provenance
+    anchor_stage: '165'
+    parameter_names:
+    - L_W
+    - T_m
+    - Z_q
+    - mathcal
+    - rho_w
+    - rho_w_deltaln
+    - v_w0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id384
 - id: fit_stage_165_t_m_pref
+  candidate_key: stage_165_t_m_pref
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17419,9 +12744,9 @@ candidates:
   - prod_pref
   - ratio_pref
   - v_pref
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_165.md
+  citations:
+  - &id385
+    path: redteam/pass2/reports/stage_165.md
     line: 125
     role: pass2_stage_report
     stage: '165'
@@ -17433,8 +12758,20 @@ candidates:
       script-verified.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_165_t_m_pref
+    modality: existing_provenance
+    anchor_stage: '165'
+    parameter_names:
+    - T_m_pref
+    - expect_close
+    - prod_pref
+    - ratio_pref
+    - v_pref
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id385
 - id: fit_stage_166_k_q
+  candidate_key: stage_166_k_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17445,9 +12782,9 @@ candidates:
   - P_0
   - Theta_w
   - Theta_w_K_s_K_q_P_0
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_166.tex
+  citations:
+  - &id386
+    path: paper/stages/stage_166.tex
     line: 15
     role: paper_stage_tex
     stage: '166'
@@ -17455,17 +12792,29 @@ candidates:
       drifts.}
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_166_k_q
+    modality: claim_label
+    anchor_stage: '166'
+    parameter_names:
+    - K_q
+    - K_s
+    - P_0
+    - Theta_w
+    - Theta_w_K_s_K_q_P_0
+    reason: claim label or status wording near target-related parameter
+    citation: *id386
 - id: fit_stage_168_matched_fingerprint_value
+  candidate_key: stage_168_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '168'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  citations:
+  - &id387
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
     line: 374
     role: notes_stage
     stage: '168'
@@ -17473,8 +12822,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_168_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '168'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id387
+  - candidate_key: stage_168_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '168'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+      line: 374
+      role: notes_stage
+      stage: '168'
+      excerpt: Requiring preservation of the canonical conservative even \(l=2\) fingerprint means
 - id: fit_stage_168_s_can
+  candidate_key: stage_168_s_can
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17482,9 +12851,9 @@ candidates:
   parameter_names:
   - S_can
   - eps_perp
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_168.md
+  citations:
+  - &id388
+    path: redteam/pass2/reports/stage_168.md
     line: 132
     role: pass2_stage_report
     stage: '168'
@@ -17502,8 +12871,17 @@ candidates:
       calibrated Stage-165 transliteration finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_168_s_can
+    modality: existing_provenance
+    anchor_stage: '168'
+    parameter_names:
+    - S_can
+    - eps_perp
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id388
 - id: fit_stage_169_a_x
+  candidate_key: stage_169_a_x
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17512,9 +12890,9 @@ candidates:
   - a_x
   - b_x
   - r_num
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_169.md
+  citations:
+  - &id389
+    path: redteam/pass2/reports/stage_169.md
     line: 128
     role: pass2_stage_report
     stage: '169'
@@ -17530,17 +12908,27 @@ candidates:
       finding, no stop-cold.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_169_a_x
+    modality: existing_provenance
+    anchor_stage: '169'
+    parameter_names:
+    - a_x
+    - b_x
+    - r_num
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id389
 - id: fit_stage_169_engine_disagreement
+  candidate_key: stage_169_engine_disagreement
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '169'
   parameter_names:
   - engine_disagreement
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_169.md
+  citations:
+  - &id390
+    path: redteam/pass2/reports/stage_169.md
     line: 124
     role: pass2_stage_report
     stage: '169'
@@ -17550,17 +12938,25 @@ candidates:
       prints the 20-digit values, same). `<log...> = -e²/(8π) + log(X0)` in both. No `engine_disagreement`.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_169_engine_disagreement
+    modality: existing_provenance
+    anchor_stage: '169'
+    parameter_names:
+    - engine_disagreement
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id390
 - id: fit_stage_169_tautological_check
+  candidate_key: stage_169_tautological_check
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '169'
   parameter_names:
   - tautological_check
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_169.md
+  citations:
+  - &id391
+    path: redteam/pass2/reports/stage_169.md
     line: 66
     role: pass2_stage_report
     stage: '169'
@@ -17571,17 +12967,25 @@ candidates:
       `tautological_check` because A8 carries the real anchoring; noted for completeness.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_169_tautological_check
+    modality: existing_provenance
+    anchor_stage: '169'
+    parameter_names:
+    - tautological_check
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id391
 - id: fit_stage_172_matched_fingerprint_value
+  candidate_key: stage_172_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '172'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  citations:
+  - &id392
+    path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
     line: 396
     role: notes_stage
     stage: '172'
@@ -17589,8 +12993,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_172_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '172'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id392
+  - candidate_key: stage_172_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '172'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+      line: 396
+      role: notes_stage
+      stage: '172'
+      excerpt: 4. and once the even canonical fingerprint is preserved, the remaining linear grouped `2.5`PN defect is simply
 - id: fit_stage_173_xi_load
+  candidate_key: stage_173_xi_load
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17598,9 +13022,9 @@ candidates:
   parameter_names:
   - Xi_load
   - u21_zero_D21
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_173.md
+  citations:
+  - &id393
+    path: redteam/pass2/reports/stage_173.md
     line: 176
     role: pass2_stage_report
     stage: '173'
@@ -17613,8 +13037,17 @@ candidates:
       paper round-trip is preserved.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_173_xi_load
+    modality: existing_provenance
+    anchor_stage: '173'
+    parameter_names:
+    - Xi_load
+    - u21_zero_D21
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id393
 - id: fit_stage_175_sigma_n
+  candidate_key: stage_175_sigma_n
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17622,9 +13055,9 @@ candidates:
   parameter_names:
   - Sigma_N
   - subs_hat
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_175.md
+  citations:
+  - &id394
+    path: redteam/pass2/reports/stage_175.md
     line: 110
     role: pass2_stage_report
     stage: '175'
@@ -17642,8 +13075,17 @@ candidates:
       `.wl` 2026-05-29 23:44).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_175_sigma_n
+    modality: existing_provenance
+    anchor_stage: '175'
+    parameter_names:
+    - Sigma_N
+    - subs_hat
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id394
 - id: fit_stage_177_h_r
+  candidate_key: stage_177_h_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17677,9 +13119,9 @@ candidates:
   - sigma_r
   - sigma_r_2mathfrak
   - tfrac
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_177.md
+  citations:
+  - &id395
+    path: redteam/pass2/reports/stage_177.md
     line: 35
     role: pass2_stage_report
     stage: '177'
@@ -17697,8 +13139,43 @@ candidates:
       that follow algebraically and carry no new boxed identity.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_177_h_r
+    modality: existing_provenance
+    anchor_stage: '177'
+    parameter_names:
+    - H_r
+    - I_r
+    - M_r
+    - P_0
+    - P_1
+    - Sigma_A_r
+    - Xi
+    - Xi_1
+    - Xi_1Rightarrow
+    - Xi_1_P_1_P_0
+    - Xi_rm
+    - bar
+    - epsilon
+    - h_r
+    - i_r
+    - kappa_1
+    - lambda_20
+    - lambda_21
+    - lambda_22
+    - lambda_A
+    - lambda_Asigma_r
+    - m_r
+    - mathcal
+    - mathfrak
+    - r_r
+    - sigma_r
+    - sigma_r_2mathfrak
+    - tfrac
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id395
 - id: fit_stage_177_p_0
+  candidate_key: stage_177_p_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17712,9 +13189,9 @@ candidates:
   - lambda_20_21_22
   - sigma_r
   - tfrac
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_177.md
+  citations:
+  - &id396
+    path: redteam/pass2/reports/stage_177.md
     line: 94
     role: pass2_stage_report
     stage: '177'
@@ -17732,17 +13209,32 @@ candidates:
       matching the notes §6 Stage-173 carry. Outputs are fresh (txt mtimes 01:38-01:39 > script mtimes 01:09).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_177_p_0
+    modality: existing_provenance
+    anchor_stage: '177'
+    parameter_names:
+    - P_0
+    - P_1
+    - Xi_1
+    - Xi_1_Xi_rm
+    - Xi_rm
+    - lambda_20_21_22
+    - sigma_r
+    - tfrac
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id396
 - id: fit_stage_177_xi_1
+  candidate_key: stage_177_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '177'
   parameter_names:
   - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_177.md
+  citations:
+  - &id397
+    path: redteam/pass2/reports/stage_177.md
     line: 73
     role: pass2_stage_report
     stage: '177'
@@ -17750,8 +13242,16 @@ candidates:
       and is also independently re-derivable from the raw projections — acceptable as a redundant sanity check, not a finding.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_177_xi_1
+    modality: existing_provenance
+    anchor_stage: '177'
+    parameter_names:
+    - Xi_1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id397
 - id: fit_stage_178_d_from_series
+  candidate_key: stage_178_d_from_series
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17761,9 +13261,9 @@ candidates:
   - nu_bar
   - nu_from_series
   - p_from_series
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_178.md
+  citations:
+  - &id398
+    path: redteam/pass2/reports/stage_178.md
     line: 122
     role: pass2_stage_report
     stage: '178'
@@ -17773,8 +13273,19 @@ candidates:
       and `PASS:` flags.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_178_d_from_series
+    modality: existing_provenance
+    anchor_stage: '178'
+    parameter_names:
+    - d_from_series
+    - nu_bar
+    - nu_from_series
+    - p_from_series
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id398
 - id: fit_stage_178_d_r
+  candidate_key: stage_178_d_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17784,9 +13295,9 @@ candidates:
   - nu_r
   - p_r
   - sigma_r
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_178.md
+  citations:
+  - &id399
+    path: redteam/pass2/reports/stage_178.md
     line: 88
     role: pass2_stage_report
     stage: '178'
@@ -17794,8 +13305,19 @@ candidates:
       printed forms agree up to ordering/sign-grouping:'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_178_d_r
+    modality: existing_provenance
+    anchor_stage: '178'
+    parameter_names:
+    - d_r
+    - nu_r
+    - p_r
+    - sigma_r
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id399
 - id: fit_stage_178_delta
+  candidate_key: stage_178_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17806,9 +13328,9 @@ candidates:
   - neq
   - nu_r
   - rho
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_178.md
+  citations:
+  - &id400
+    path: redteam/pass2/reports/stage_178.md
     line: 96
     role: pass2_stage_report
     stage: '178'
@@ -17826,8 +13348,20 @@ candidates:
       mtimes 01:39 > script mtimes 01:15).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_178_delta
+    modality: existing_provenance
+    anchor_stage: '178'
+    parameter_names:
+    - Delta
+    - epsilon
+    - neq
+    - nu_r
+    - rho
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id400
 - id: fit_stage_179_nu_r
+  candidate_key: stage_179_nu_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17837,9 +13371,9 @@ candidates:
   - rho_r
   - sum_r
   - tau_r
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_179.md
+  citations:
+  - &id401
+    path: redteam/pass2/reports/stage_179.md
     line: 104
     role: pass2_stage_report
     stage: '179'
@@ -17851,8 +13385,19 @@ candidates:
       not a paper disagreement.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_179_nu_r
+    modality: existing_provenance
+    anchor_stage: '179'
+    parameter_names:
+    - nu_r
+    - rho_r
+    - sum_r
+    - tau_r
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id401
 - id: fit_stage_180_pi_star
+  candidate_key: stage_180_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17861,9 +13406,9 @@ candidates:
   - Pi_star
   - gamma_0
   - pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_180.md
+  citations:
+  - &id402
+    path: redteam/pass2/reports/stage_180.md
     line: 132
     role: pass2_stage_report
     stage: '180'
@@ -17873,8 +13418,18 @@ candidates:
       number.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_180_pi_star
+    modality: existing_provenance
+    anchor_stage: '180'
+    parameter_names:
+    - Pi_star
+    - gamma_0
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id402
 - id: fit_stage_182_sigma_z
+  candidate_key: stage_182_sigma_z
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17890,9 +13445,9 @@ candidates:
   - epsilon
   - epsilon_W
   - value_mismatch
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_182.md
+  citations:
+  - &id403
+    path: redteam/pass2/reports/stage_182.md
     line: 82
     role: pass2_stage_report
     stage: '182'
@@ -17903,17 +13458,34 @@ candidates:
       coeff(\(\Sigma_Z\))=1, coeff(\(\Sigma_\eta\))=0, constant term 0 — all match. No `value_mismatch`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_182_sigma_z
+    modality: existing_provenance
+    anchor_stage: '182'
+    parameter_names:
+    - Sigma_Z
+    - Sigma_Z_1
+    - Sigma_chi
+    - Sigma_delta
+    - Sigma_epsilon
+    - Sigma_eta_0
+    - delta_U
+    - epsilon
+    - epsilon_W
+    - value_mismatch
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id403
 - id: fit_stage_184_eps_eta_var
+  candidate_key: stage_184_eps_eta_var
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '184'
   parameter_names:
   - eps_eta_var
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_184.md
+  citations:
+  - &id404
+    path: redteam/pass2/reports/stage_184.md
     line: 188
     role: pass2_stage_report
     stage: '184'
@@ -17923,8 +13495,16 @@ candidates:
       scaffolding equal to 0.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_184_eps_eta_var
+    modality: existing_provenance
+    anchor_stage: '184'
+    parameter_names:
+    - eps_eta_var
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id404
 - id: fit_stage_184_lambda_0
+  candidate_key: stage_184_lambda_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17937,9 +13517,9 @@ candidates:
   - epsilon_eta_Sigma_eta
   - mathcal
   - mathfrak
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_184.md
+  citations:
+  - &id405
+    path: redteam/pass2/reports/stage_184.md
     line: 39
     role: pass2_stage_report
     stage: '184'
@@ -17952,8 +13532,22 @@ candidates:
       restatements (lines 94-96), and three zero-map substitutions (lines 100-105). The Mathematica `.wl` mirrors this exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_184_lambda_0
+    modality: existing_provenance
+    anchor_stage: '184'
+    parameter_names:
+    - Lambda_0
+    - Lambda_0_1_epsilon_eta
+    - Sigma_rm
+    - eps_eta_var
+    - epsilon_eta_Sigma_eta
+    - mathcal
+    - mathfrak
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id405
 - id: fit_stage_185_a_tr_star
+  candidate_key: stage_185_a_tr_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -17966,9 +13560,9 @@ candidates:
   - Theta_1
   - engines_agree
   - outputs_fresh
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_185.md
+  citations:
+  - &id406
+    path: redteam/pass2/reports/stage_185.md
     line: 92
     role: pass2_stage_report
     stage: '185'
@@ -17980,7 +13574,8 @@ candidates:
       on a wrong primitive exponent. The Ξ1 checks are genuinely substantive: `A_tr_star·Σ_tr + Σ_nt` requires the `2χ0/(1+δU)·Σ_δ`
       terms to cancel, which fails if `A_tr_star` or `F_star` is wrong. This is the minimal fix the first-pass directive authorized;
       resolved at the accepted level, hence no finding.'
-  - path: redteam/pass2/reports/stage_185.md
+  - &id407
+    path: redteam/pass2/reports/stage_185.md
     line: 106
     role: pass2_stage_report
     stage: '185'
@@ -18002,17 +13597,38 @@ candidates:
       true`; `outputs_fresh: true` (sympy .py 2026-05-30 09:03 < .txt 15:33; wl 2026-05-30 09:03 < .txt 15:34).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_185_a_tr_star
+    modality: existing_provenance
+    anchor_stage: '185'
+    parameter_names:
+    - A_tr_star
+    - C_tr_star
+    - F_star
+    - Sigma_tr_compiled
+    - Theta_1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id406
+  - candidate_key: stage_185_a_tr_star
+    modality: existing_provenance
+    anchor_stage: '185'
+    parameter_names:
+    - A_tr_star
+    - engines_agree
+    - outputs_fresh
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id407
 - id: fit_stage_186_mathcal
+  candidate_key: stage_186_mathcal
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '186'
   parameter_names:
   - mathcal
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  citations:
+  - &id408
+    path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
     line: 442
     role: notes_stage
     stage: '186'
@@ -18020,17 +13636,25 @@ candidates:
       similarity orbit \(\mathcal G_*\).'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_186_mathcal
+    modality: claim_label
+    anchor_stage: '186'
+    parameter_names:
+    - mathcal
+    reason: claim label or status wording near target-related parameter
+    citation: *id408
 - id: fit_stage_187_chi_0
+  candidate_key: stage_187_chi_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '187'
   parameter_names:
   - chi_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_187.md
+  citations:
+  - &id409
+    path: redteam/pass2/reports/stage_187.md
     line: 119
     role: pass2_stage_report
     stage: '187'
@@ -18038,8 +13662,16 @@ candidates:
       Reconciling each emitted closed-form result against the notes/`.tex`/appendix:'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_187_chi_0
+    modality: existing_provenance
+    anchor_stage: '187'
+    parameter_names:
+    - chi_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id409
 - id: fit_stage_187_ctr_ratio
+  candidate_key: stage_187_ctr_ratio
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18050,9 +13682,9 @@ candidates:
   - delta_U
   - expand_log
   - row_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_187.md
+  citations:
+  - &id410
+    path: redteam/pass2/reports/stage_187.md
     line: 115
     role: pass2_stage_report
     stage: '187'
@@ -18070,8 +13702,20 @@ candidates:
       the paper''s `\stagefield{Output}`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_187_ctr_ratio
+    modality: existing_provenance
+    anchor_stage: '187'
+    parameter_names:
+    - Ctr_ratio
+    - chi_0
+    - delta_U
+    - expand_log
+    - row_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id410
 - id: fit_stage_189_k_bl
+  candidate_key: stage_189_k_bl
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18079,9 +13723,9 @@ candidates:
   parameter_names:
   - K_bl
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_189.md
+  citations:
+  - &id411
+    path: redteam/pass2/reports/stage_189.md
     line: 39
     role: pass2_stage_report
     stage: '189'
@@ -18094,43 +13738,57 @@ candidates:
       (finite-log Jacobian, exponential-path slopes, `D[]` autodiff of the rational series, `Series`, `Coefficient`, `Solve`).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_189_k_bl
+    modality: existing_provenance
+    anchor_stage: '189'
+    parameter_names:
+    - K_bl
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id411
 - id: fit_stage_189_matched_fingerprint_value
+  candidate_key: stage_189_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '189'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  citations:
+  - &id412
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 79
     role: notes_stage
     stage: '189'
     excerpt: generated by multiplying the prefactor by the compact outgoing `l=2` fingerprint;
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - &id413
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 452
     role: notes_stage
     stage: '189'
     excerpt: '## 4. Compact outgoing `l=2` fingerprint and outgoing branch coefficients'
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - &id414
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 454
     role: notes_stage
     stage: '189'
     excerpt: '### 4.1 Compact outgoing fingerprint'
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - &id415
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 456
     role: notes_stage
     stage: '189'
     excerpt: Carry forward the normalized compact outgoing `l=2` branch fingerprint
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - &id416
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 566
     role: notes_stage
     stage: '189'
     excerpt: So the even branch fingerprint then comes entirely from the compact outgoing `l=2` factor, with no additional
       even prefactor distortion.
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - &id417
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 610
     role: notes_stage
     stage: '189'
@@ -18138,8 +13796,124 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id412
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id413
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id414
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id415
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id416
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id417
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 79
+      role: notes_stage
+      stage: '189'
+      excerpt: generated by multiplying the prefactor by the compact outgoing `l=2` fingerprint;
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 452
+      role: notes_stage
+      stage: '189'
+      excerpt: '## 4. Compact outgoing `l=2` fingerprint and outgoing branch coefficients'
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 454
+      role: notes_stage
+      stage: '189'
+      excerpt: '### 4.1 Compact outgoing fingerprint'
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 456
+      role: notes_stage
+      stage: '189'
+      excerpt: Carry forward the normalized compact outgoing `l=2` branch fingerprint
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 566
+      role: notes_stage
+      stage: '189'
+      excerpt: So the even branch fingerprint then comes entirely from the compact outgoing `l=2` factor, with no additional
+        even prefactor distortion.
+  - candidate_key: stage_189_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 610
+      role: notes_stage
+      stage: '189'
+      excerpt: and the compact outgoing `l=2` fingerprint then compiles these to
 - id: fit_stage_189_p_0
+  candidate_key: stage_189_p_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18148,9 +13922,9 @@ candidates:
   - P_0
   - P_2
   - P_4
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  citations:
+  - &id418
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 502
     role: notes_stage
     stage: '189'
@@ -18158,8 +13932,18 @@ candidates:
       even prefactor moments `\(P_2,P_4\)` change the even branch bookkeeping, but they do **not** enter the first odd coefficient.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_189_p_0
+    modality: claim_label
+    anchor_stage: '189'
+    parameter_names:
+    - P_0
+    - P_2
+    - P_4
+    reason: claim label or status wording near target-related parameter
+    citation: *id418
 - id: fit_stage_190_a_tr
+  candidate_key: stage_190_a_tr
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18174,9 +13958,9 @@ candidates:
   - b_x
   - stage_190
   - stage_appendix_part05
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_190.md
+  citations:
+  - &id419
+    path: redteam/pass2/reports/stage_190.md
     line: 35
     role: pass2_stage_report
     stage: '190'
@@ -18190,7 +13974,8 @@ candidates:
       The notes also pin the microscopic slippage ledger (`Σ_χ, Σ_δ, Σ_Z, Σ_ε, Σ_η`) and the explicit `Ξ₁` direct-defect law.
       The card''s body is terse (no equations); the notes and the Part-V appendix (eqs. app-part05-Xi1-slippage-law, -Sigma-tr-def,
       -Sigma-nt-def, -triangular-normal-form, -Ctr-Atr-defs) are the authoritative carriers of the closed forms.'
-  - path: redteam/pass2/reports/stage_190.md
+  - &id420
+    path: redteam/pass2/reports/stage_190.md
     line: 39
     role: pass2_stage_report
     stage: '190'
@@ -18205,17 +13990,42 @@ candidates:
       all results are derived in-script.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_190_a_tr
+    modality: existing_provenance
+    anchor_stage: '190'
+    parameter_names:
+    - A_tr
+    - C_tr
+    - R_target
+    - stage_190
+    - stage_appendix_part05
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id419
+  - candidate_key: stage_190_a_tr
+    modality: existing_provenance
+    anchor_stage: '190'
+    parameter_names:
+    - A_tr
+    - C_tr
+    - M_mix
+    - M_supp
+    - M_tr
+    - R_target
+    - b_x
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id420
 - id: fit_stage_190_b_x
+  candidate_key: stage_190_b_x
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '190'
   parameter_names:
   - b_x
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_190.md
+  citations:
+  - &id421
+    path: redteam/pass2/reports/stage_190.md
     line: 146
     role: pass2_stage_report
     stage: '190'
@@ -18226,8 +14036,16 @@ candidates:
       the Part-V APPENDIX are the natural carriers, and every deliverable lives there.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_190_b_x
+    modality: existing_provenance
+    anchor_stage: '190'
+    parameter_names:
+    - b_x
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id421
 - id: fit_stage_190_m_mix
+  candidate_key: stage_190_m_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18235,9 +14053,9 @@ candidates:
   parameter_names:
   - M_mix
   - M_supp
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_190.md
+  citations:
+  - &id422
+    path: redteam/pass2/reports/stage_190.md
     line: 130
     role: pass2_stage_report
     stage: '190'
@@ -18248,8 +14066,17 @@ candidates:
       falsification witness.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_190_m_mix
+    modality: existing_provenance
+    anchor_stage: '190'
+    parameter_names:
+    - M_mix
+    - M_supp
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id422
 - id: fit_stage_191_delta_branch
+  candidate_key: stage_191_delta_branch
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18259,9 +14086,9 @@ candidates:
   - Delta_norm
   - Delta_pole
   - P0_target
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_191.md
+  citations:
+  - &id423
+    path: redteam/pass2/reports/stage_191.md
     line: 103
     role: pass2_stage_report
     stage: '191'
@@ -18278,17 +14105,28 @@ candidates:
       that mirrors the notes'' "iff" and carries no physics weight.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_191_delta_branch
+    modality: existing_provenance
+    anchor_stage: '191'
+    parameter_names:
+    - Delta_branch
+    - Delta_norm
+    - Delta_pole
+    - P0_target
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id423
 - id: fit_stage_191_pi_star
+  candidate_key: stage_191_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '191'
   parameter_names:
   - Pi_star
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_191.md
+  citations:
+  - &id424
+    path: redteam/pass2/reports/stage_191.md
     line: 115
     role: pass2_stage_report
     stage: '191'
@@ -18298,8 +14136,16 @@ candidates:
       deliverable *names* only).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_191_pi_star
+    modality: existing_provenance
+    anchor_stage: '191'
+    parameter_names:
+    - Pi_star
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id424
 - id: fit_stage_192_delta_q
+  candidate_key: stage_192_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18308,9 +14154,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_192.tex
+  citations:
+  - &id425
+    path: paper/stages/stage_192.tex
     line: 13
     role: paper_stage_tex
     stage: '192'
@@ -18320,8 +14166,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_192_delta_q
+    modality: numeric_literal
+    anchor_stage: '192'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id425
+  - candidate_key: stage_192_delta_q
+    modality: claim_label
+    anchor_stage: '192'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_192.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '192'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_192_i_3
+  candidate_key: stage_192_i_3
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18329,9 +14201,9 @@ candidates:
   parameter_names:
   - I_3
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_192.md
+  citations:
+  - &id426
+    path: redteam/pass2/reports/stage_192.md
     line: 122
     role: pass2_stage_report
     stage: '192'
@@ -18347,8 +14219,17 @@ candidates:
       misalignment.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_192_i_3
+    modality: existing_provenance
+    anchor_stage: '192'
+    parameter_names:
+    - I_3
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id426
 - id: fit_stage_192_p_2
+  candidate_key: stage_192_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18356,9 +14237,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_192.tex
+  citations:
+  - &id427
+    path: paper/stages/stage_192.tex
     line: 9
     role: paper_stage_tex
     stage: '192'
@@ -18368,8 +14249,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_192_p_2
+    modality: numeric_literal
+    anchor_stage: '192'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id427
+  - candidate_key: stage_192_p_2
+    modality: claim_label
+    anchor_stage: '192'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_192.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '192'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_192_q_eta
+  candidate_key: stage_192_q_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18378,9 +14283,9 @@ candidates:
   - q_eta
   - q_nt
   - q_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_192.md
+  citations:
+  - &id428
+    path: redteam/pass2/reports/stage_192.md
     line: 150
     role: pass2_stage_report
     stage: '192'
@@ -18389,8 +14294,18 @@ candidates:
       Mathematica simplifiers, the formal symbols `Δ_λ…Δ_T` and `q_tr,q_nt,q_eta`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_192_q_eta
+    modality: existing_provenance
+    anchor_stage: '192'
+    parameter_names:
+    - q_eta
+    - q_nt
+    - q_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id428
 - id: fit_stage_193_delta_q
+  candidate_key: stage_193_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18399,9 +14314,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_193.tex
+  citations:
+  - &id429
+    path: paper/stages/stage_193.tex
     line: 13
     role: paper_stage_tex
     stage: '193'
@@ -18411,8 +14326,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_193_delta_q
+    modality: numeric_literal
+    anchor_stage: '193'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id429
+  - candidate_key: stage_193_delta_q
+    modality: claim_label
+    anchor_stage: '193'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_193.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '193'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_193_p_2
+  candidate_key: stage_193_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18420,9 +14361,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_193.tex
+  citations:
+  - &id430
+    path: paper/stages/stage_193.tex
     line: 9
     role: paper_stage_tex
     stage: '193'
@@ -18432,8 +14373,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_193_p_2
+    modality: numeric_literal
+    anchor_stage: '193'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id430
+  - candidate_key: stage_193_p_2
+    modality: claim_label
+    anchor_stage: '193'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_193.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '193'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_194_chi_q
+  candidate_key: stage_194_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18441,21 +14406,23 @@ candidates:
   parameter_names:
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_194.tex
+  citations:
+  - &id431
+    path: paper/stages/stage_194.tex
     line: 15
     role: paper_stage_tex
     stage: '194'
     excerpt: \stagefield{Output}{Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical
       compact branch.}
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id432
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 1
     role: notes_stage
     stage: '194'
     excerpt: '# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic
       Deformation Algebra'
-  - path: redteam/pass2/reports/stage_194.md
+  - &id433
+    path: redteam/pass2/reports/stage_194.md
     line: 35
     role: pass2_stage_report
     stage: '194'
@@ -18472,8 +14439,61 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_194_chi_q
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id431
+  - candidate_key: stage_194_chi_q
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id432
+  - candidate_key: stage_194_chi_q
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_194.tex
+      line: 15
+      role: paper_stage_tex
+      stage: '194'
+      excerpt: \stagefield{Output}{Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical
+        compact branch.}
+  - candidate_key: stage_194_chi_q
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 1
+      role: notes_stage
+      stage: '194'
+      excerpt: '# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic
+        Deformation Algebra'
+  - candidate_key: stage_194_chi_q
+    modality: existing_provenance
+    anchor_stage: '194'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id433
 - id: fit_stage_194_delta_q
+  candidate_key: stage_194_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18482,9 +14502,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_194.tex
+  citations:
+  - &id434
+    path: paper/stages/stage_194.tex
     line: 13
     role: paper_stage_tex
     stage: '194'
@@ -18494,48 +14514,80 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_194_delta_q
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id434
+  - candidate_key: stage_194_delta_q
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_194.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '194'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_194_matched_fingerprint_value
+  candidate_key: stage_194_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '194'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  citations:
+  - &id435
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 36
     role: notes_stage
     stage: '194'
     excerpt: 1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id436
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 90
     role: notes_stage
     stage: '194'
     excerpt: '## 2. Exact outgoing spherical `l=2` DtN fingerprint'
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id437
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 158
     role: notes_stage
     stage: '194'
     excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id438
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 186
     role: notes_stage
     stage: '194'
     excerpt: So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar
       is fixed exactly.
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id439
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 321
     role: notes_stage
     stage: '194'
     excerpt: '- the exact outgoing `l=2` fingerprint,'
-  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - &id440
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
     line: 361
     role: notes_stage
     stage: '194'
     excerpt: 2. keep the Stage 194 exact outgoing `l=2` fingerprint,
-  - path: redteam/pass2/reports/stage_194.md
+  - &id441
+    path: redteam/pass2/reports/stage_194.md
     line: 39
     role: pass2_stage_report
     stage: '194'
@@ -18545,13 +14597,15 @@ candidates:
       at `χ_Q=1`, and that odd-coefficient matching forces `χ_Q-1=0`. Section III builds the deformation `L₀..L₅`, the normalized
       compiler, solves the canonical-even constraints for `Σ₂,Σ₄`, and verifies the `χ_Q` and `χ_Q-1` deformation laws. Section
       IV reproduces the invariant tuple. All `expect_zero`/`expectZero` checks pass (per saved outputs).
-  - path: redteam/pass2/reports/stage_194.md
+  - &id442
+    path: redteam/pass2/reports/stage_194.md
     line: 45
     role: pass2_stage_report
     stage: '194'
     excerpt: '| (1) Λ₂^out / Ŷ₂^out fingerprint series | py:76–78, wl:91–93 (series vs boxed target + static slot) | match
       |'
-  - path: redteam/pass2/reports/stage_194.md
+  - &id443
+    path: redteam/pass2/reports/stage_194.md
     line: 115
     role: pass2_stage_report
     stage: '194'
@@ -18564,8 +14618,132 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id435
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id436
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id437
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id438
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id439
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id440
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 36
+      role: notes_stage
+      stage: '194'
+      excerpt: 1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 90
+      role: notes_stage
+      stage: '194'
+      excerpt: '## 2. Exact outgoing spherical `l=2` DtN fingerprint'
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 158
+      role: notes_stage
+      stage: '194'
+      excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 321
+      role: notes_stage
+      stage: '194'
+      excerpt: '- the exact outgoing `l=2` fingerprint,'
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 361
+      role: notes_stage
+      stage: '194'
+      excerpt: 2. keep the Stage 194 exact outgoing `l=2` fingerprint,
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id441
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id442
+  - candidate_key: stage_194_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '194'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id443
 - id: fit_stage_194_p_2
+  candidate_key: stage_194_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18573,9 +14751,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_194.tex
+  citations:
+  - &id444
+    path: paper/stages/stage_194.tex
     line: 9
     role: paper_stage_tex
     stage: '194'
@@ -18585,8 +14763,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_194_p_2
+    modality: numeric_literal
+    anchor_stage: '194'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id444
+  - candidate_key: stage_194_p_2
+    modality: claim_label
+    anchor_stage: '194'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_194.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '194'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_195_chi_q
+  candidate_key: stage_195_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18594,9 +14796,9 @@ candidates:
   parameter_names:
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  citations:
+  - &id445
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 38
     role: notes_stage
     stage: '195'
@@ -18605,8 +14807,31 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_chi_q
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id445
+  - candidate_key: stage_195_chi_q
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 38
+      role: notes_stage
+      stage: '195'
+      excerpt: '> once the isotropic grouped-real `P2` branch is already conservative one-pole and the outgoing `l=2` fingerprint
+        has fixed `\chi_Q`, how does the last observable normalization condition factor through the source map?'
 - id: fit_stage_195_delta_q
+  candidate_key: stage_195_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18615,9 +14840,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_195.tex
+  citations:
+  - &id446
+    path: paper/stages/stage_195.tex
     line: 13
     role: paper_stage_tex
     stage: '195'
@@ -18627,36 +14852,65 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_delta_q
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id446
+  - candidate_key: stage_195_delta_q
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_195.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '195'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_195_matched_fingerprint_value
+  candidate_key: stage_195_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '195'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  citations:
+  - &id447
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 5
     role: notes_stage
     stage: '195'
     excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
       `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
       natural point-particle source-map branch already isolated by the 2.5PN package.**'
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  - &id448
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 20
     role: notes_stage
     stage: '195'
     excerpt: and Stage 194 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical
       outgoing scalar
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  - &id449
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 388
     role: notes_stage
     stage: '195'
     excerpt: So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction,
       the Packet-A normalization residual of Stage 191 closes automatically.
-  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  - &id450
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 447
     role: notes_stage
     stage: '195'
@@ -18664,17 +14918,85 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id447
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id448
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id449
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id450
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 5
+      role: notes_stage
+      stage: '195'
+      excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+        `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+        natural point-particle source-map branch already isolated by the 2.5PN package.**'
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 388
+      role: notes_stage
+      stage: '195'
+      excerpt: So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction,
+        the Packet-A normalization residual of Stage 191 closes automatically.
+  - candidate_key: stage_195_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 447
+      role: notes_stage
+      stage: '195'
+      excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
 - id: fit_stage_195_nq_from_def
+  candidate_key: stage_195_nq_from_def
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '195'
   parameter_names:
   - NQ_from_def
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_195.md
+  citations:
+  - &id451
+    path: redteam/pass2/reports/stage_195.md
     line: 126
     role: pass2_stage_report
     stage: '195'
@@ -18687,8 +15009,16 @@ candidates:
       transcript-freshness issue only.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_nq_from_def
+    modality: existing_provenance
+    anchor_stage: '195'
+    parameter_names:
+    - NQ_from_def
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id451
 - id: fit_stage_195_p_2
+  candidate_key: stage_195_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18696,9 +15026,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_195.tex
+  citations:
+  - &id452
+    path: paper/stages/stage_195.tex
     line: 9
     role: paper_stage_tex
     stage: '195'
@@ -18708,17 +15038,41 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_p_2
+    modality: numeric_literal
+    anchor_stage: '195'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id452
+  - candidate_key: stage_195_p_2
+    modality: claim_label
+    anchor_stage: '195'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_195.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '195'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_195_stale_output
+  candidate_key: stage_195_stale_output
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '195'
   parameter_names:
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_195.md
+  citations:
+  - &id453
+    path: redteam/pass2/reports/stage_195.md
     line: 122
     role: pass2_stage_report
     stage: '195'
@@ -18736,17 +15090,25 @@ candidates:
       and fixed by a re-run. A directive is written for the re-run.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_195_stale_output
+    modality: existing_provenance
+    anchor_stage: '195'
+    parameter_names:
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id453
 - id: fit_stage_196_chi_q
+  candidate_key: stage_196_chi_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '196'
   parameter_names:
   - chi_Q
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  citations:
+  - &id454
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
     line: 368
     role: notes_stage
     stage: '196'
@@ -18754,8 +15116,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_chi_q
+    modality: numeric_literal
+    anchor_stage: '196'
+    parameter_names:
+    - chi_Q
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id454
+  - candidate_key: stage_196_chi_q
+    modality: claim_label
+    anchor_stage: '196'
+    parameter_names:
+    - chi_Q
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 368
+      role: notes_stage
+      stage: '196'
+      excerpt: So the only live retarded obstruction at reduced `2.5`PN order is still the single scalar `\chi_Q`.
 - id: fit_stage_196_delta_q
+  candidate_key: stage_196_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18764,9 +15146,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_196.tex
+  citations:
+  - &id455
+    path: paper/stages/stage_196.tex
     line: 13
     role: paper_stage_tex
     stage: '196'
@@ -18776,8 +15158,34 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_delta_q
+    modality: numeric_literal
+    anchor_stage: '196'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id455
+  - candidate_key: stage_196_delta_q
+    modality: claim_label
+    anchor_stage: '196'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_196.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '196'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_196_l7_coeff_in_y
+  candidate_key: stage_196_l7_coeff_in_y
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18786,9 +15194,9 @@ candidates:
   - L7_coeff_in_Y
   - assert_nonzero
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_196.md
+  citations:
+  - &id456
+    path: redteam/pass2/reports/stage_196.md
     line: 149
     role: pass2_stage_report
     stage: '196'
@@ -18804,24 +15212,35 @@ candidates:
       script-side fix for Codex to apply.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_l7_coeff_in_y
+    modality: existing_provenance
+    anchor_stage: '196'
+    parameter_names:
+    - L7_coeff_in_Y
+    - assert_nonzero
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id456
 - id: fit_stage_196_matched_fingerprint_value
+  candidate_key: stage_196_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '196'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  citations:
+  - &id457
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
     line: 5
     role: notes_stage
     stage: '196'
     excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
       `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
       the Stage 195 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**'
-  - path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  - &id458
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
     line: 23
     role: notes_stage
     stage: '196'
@@ -18829,8 +15248,49 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '196'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id457
+  - candidate_key: stage_196_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '196'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id458
+  - candidate_key: stage_196_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '196'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 5
+      role: notes_stage
+      stage: '196'
+      excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+        `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
+        the Stage 195 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**'
+  - candidate_key: stage_196_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '196'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 23
+      role: notes_stage
+      stage: '196'
+      excerpt: Stage 194 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
 - id: fit_stage_196_p_2
+  candidate_key: stage_196_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18838,9 +15298,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_196.tex
+  citations:
+  - &id459
+    path: paper/stages/stage_196.tex
     line: 9
     role: paper_stage_tex
     stage: '196'
@@ -18850,8 +15310,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_p_2
+    modality: numeric_literal
+    anchor_stage: '196'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id459
+  - candidate_key: stage_196_p_2
+    modality: claim_label
+    anchor_stage: '196'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_196.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '196'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_196_yhat_2
+  candidate_key: stage_196_yhat_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18859,9 +15343,9 @@ candidates:
   parameter_names:
   - Yhat_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_196.md
+  citations:
+  - &id460
+    path: redteam/pass2/reports/stage_196.md
     line: 35
     role: pass2_stage_report
     stage: '196'
@@ -18876,8 +15360,17 @@ candidates:
       not a second independent proof"); the notes are authoritative on the symbolic content.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_196_yhat_2
+    modality: existing_provenance
+    anchor_stage: '196'
+    parameter_names:
+    - Yhat_2
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id460
 - id: fit_stage_197_delta_q
+  candidate_key: stage_197_delta_q
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18886,9 +15379,9 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_197.tex
+  citations:
+  - &id461
+    path: paper/stages/stage_197.tex
     line: 13
     role: paper_stage_tex
     stage: '197'
@@ -18898,24 +15391,51 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_197_delta_q
+    modality: numeric_literal
+    anchor_stage: '197'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id461
+  - candidate_key: stage_197_delta_q
+    modality: claim_label
+    anchor_stage: '197'
+    parameter_names:
+    - Delta_Q
+    - chi_Q
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_197.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '197'
+      excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+        \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+        Packet A to \(\Delta_Q=\chi_Q-1\).}
 - id: fit_stage_197_matched_fingerprint_value
+  candidate_key: stage_197_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '197'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  citations:
+  - &id462
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
     line: 5
     role: notes_stage
     stage: '197'
     excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
       `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
       the Stage 195 exact source-map reduction, and the Stage 196 higher-odd irrelevance theorem.**'
-  - path: redteam/pass2/reports/stage_197.md
+  - &id463
+    path: redteam/pass2/reports/stage_197.md
     line: 105
     role: pass2_stage_report
     stage: '197'
@@ -18924,8 +15444,37 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_197_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '197'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id462
+  - candidate_key: stage_197_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '197'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+      line: 5
+      role: notes_stage
+      stage: '197'
+      excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+        `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
+        the Stage 195 exact source-map reduction, and the Stage 196 higher-odd irrelevance theorem.**'
+  - candidate_key: stage_197_matched_fingerprint_value
+    modality: existing_provenance
+    anchor_stage: '197'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id463
 - id: fit_stage_197_p_2
+  candidate_key: stage_197_p_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18933,9 +15482,9 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_197.tex
+  citations:
+  - &id464
+    path: paper/stages/stage_197.tex
     line: 9
     role: paper_stage_tex
     stage: '197'
@@ -18945,8 +15494,32 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_197_p_2
+    modality: numeric_literal
+    anchor_stage: '197'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id464
+  - candidate_key: stage_197_p_2
+    modality: claim_label
+    anchor_stage: '197'
+    parameter_names:
+    - P_2
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_197.tex
+      line: 9
+      role: paper_stage_tex
+      stage: '197'
+      excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+        \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+        line.}
 - id: fit_stage_197_y_stage194_hi
+  candidate_key: stage_197_y_stage194_hi
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18955,9 +15528,9 @@ candidates:
   - Y_stage194_hi
   - matched_fingerprint_value
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_197.md
+  citations:
+  - &id465
+    path: redteam/pass2/reports/stage_197.md
     line: 127
     role: pass2_stage_report
     stage: '197'
@@ -18976,8 +15549,18 @@ candidates:
       paper-card sync, not Codex.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_197_y_stage194_hi
+    modality: existing_provenance
+    anchor_stage: '197'
+    parameter_names:
+    - Y_stage194_hi
+    - matched_fingerprint_value
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id465
 - id: fit_stage_198_pi_star
+  candidate_key: stage_198_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -18985,9 +15568,9 @@ candidates:
   parameter_names:
   - Pi_star
   - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_198.md
+  citations:
+  - &id466
+    path: redteam/pass2/reports/stage_198.md
     line: 105
     role: pass2_stage_report
     stage: '198'
@@ -18996,8 +15579,17 @@ candidates:
       ones) the appendix.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_198_pi_star
+    modality: existing_provenance
+    anchor_stage: '198'
+    parameter_names:
+    - Pi_star
+    - gamma_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id466
 - id: fit_stage_199_m_k
+  candidate_key: stage_199_m_k
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19008,9 +15600,9 @@ candidates:
   - missing_verification_script
   - r_K
   - r_T
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_199.md
+  citations:
+  - &id467
+    path: redteam/pass2/reports/stage_199.md
     line: 170
     role: pass2_stage_report
     stage: '199'
@@ -19024,8 +15616,20 @@ candidates:
       both informational; a directive is written carrying only the F1 stale-output re-run note.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_199_m_k
+    modality: existing_provenance
+    anchor_stage: '199'
+    parameter_names:
+    - m_K
+    - m_T
+    - missing_verification_script
+    - r_K
+    - r_T
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id467
 - id: fit_stage_200_eps_beta
+  candidate_key: stage_200_eps_beta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19034,9 +15638,9 @@ candidates:
   - eps_beta
   - expand_log
   - expand_power_exp
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_200.md
+  citations:
+  - &id468
+    path: redteam/pass2/reports/stage_200.md
     line: 98
     role: pass2_stage_report
     stage: '200'
@@ -19057,17 +15661,27 @@ candidates:
       I re-derived it by hand independently (it matches).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_200_eps_beta
+    modality: existing_provenance
+    anchor_stage: '200'
+    parameter_names:
+    - eps_beta
+    - expand_log
+    - expand_power_exp
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id468
 - id: fit_stage_200_stale_output
+  candidate_key: stage_200_stale_output
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '200'
   parameter_names:
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_200.md
+  citations:
+  - &id469
+    path: redteam/pass2/reports/stage_200.md
     line: 106
     role: pass2_stage_report
     stage: '200'
@@ -19087,8 +15701,16 @@ candidates:
       and the first-pass F1/F2 de-fixes are confirmed sufficient.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_200_stale_output
+    modality: existing_provenance
+    anchor_stage: '200'
+    parameter_names:
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id469
 - id: fit_stage_201_delta
+  candidate_key: stage_201_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19110,15 +15732,16 @@ candidates:
   - mathfrak
   - mu
   - mu_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  citations:
+  - &id470
+    path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
     line: 420
     role: notes_stage
     stage: '201'
     excerpt: 'Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates are
       fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.'
-  - path: redteam/pass2/reports/stage_201.md
+  - &id471
+    path: redteam/pass2/reports/stage_201.md
     line: 35
     role: pass2_stage_report
     stage: '201'
@@ -19139,8 +15762,55 @@ candidates:
   - claim_label
   - existing_provenance
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_201_delta
+    modality: numeric_literal
+    anchor_stage: '201'
+    parameter_names:
+    - Delta
+    - mathbf
+    - mu
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id470
+  - candidate_key: stage_201_delta
+    modality: claim_label
+    anchor_stage: '201'
+    parameter_names:
+    - Delta
+    - mathbf
+    - mu
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+      line: 420
+      role: notes_stage
+      stage: '201'
+      excerpt: 'Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates
+        are fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.'
+  - candidate_key: stage_201_delta
+    modality: existing_provenance
+    anchor_stage: '201'
+    parameter_names:
+    - Delta
+    - Delta_rm
+    - I_3
+    - Pi
+    - Pi_mathcal
+    - T_U
+    - chi_0
+    - chi_Q
+    - iff
+    - m_K
+    - m_T
+    - mathbf
+    - mathcal
+    - mathfrak
+    - mu
+    - mu_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id471
 - id: fit_stage_201_i_3
+  candidate_key: stage_201_i_3
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19155,9 +15825,9 @@ candidates:
   - m_K
   - m_T
   - m_mu
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_201.md
+  citations:
+  - &id472
+    path: redteam/pass2/reports/stage_201.md
     line: 39
     role: pass2_stage_report
     stage: '201'
@@ -19171,8 +15841,24 @@ candidates:
       block] = 1+chi0_star` and an eta-only-perturbation nonzero-`Keta`-repair non-triviality check (M4/M6).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_201_i_3
+    modality: existing_provenance
+    anchor_stage: '201'
+    parameter_names:
+    - I_3
+    - K_eta
+    - chi0_star
+    - dx_dep
+    - dx_rep
+    - dx_rep_lin
+    - m_K
+    - m_T
+    - m_mu
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id472
 - id: fit_stage_203_beta_path
+  candidate_key: stage_203_beta_path
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19184,9 +15870,9 @@ candidates:
   - chi_from_stage197
   - closure_num_stage197
   - gamma_path
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_203.md
+  citations:
+  - &id473
+    path: redteam/pass2/reports/stage_203.md
     line: 143
     role: pass2_stage_report
     stage: '203'
@@ -19201,8 +15887,21 @@ candidates:
       pass and is worth noting here for that pass.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_203_beta_path
+    modality: existing_provenance
+    anchor_stage: '203'
+    parameter_names:
+    - beta_path
+    - cetaU_bar
+    - cetaU_path
+    - chi_from_stage197
+    - closure_num_stage197
+    - gamma_path
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id473
 - id: fit_stage_203_kw_t
+  candidate_key: stage_203_kw_t
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19215,9 +15914,9 @@ candidates:
   - q_eta
   - q_nt
   - q_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_203.md
+  citations:
+  - &id474
+    path: redteam/pass2/reports/stage_203.md
     line: 116
     role: pass2_stage_report
     stage: '203'
@@ -19236,8 +15935,22 @@ candidates:
       stated `Output`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_203_kw_t
+    modality: existing_provenance
+    anchor_stage: '203'
+    parameter_names:
+    - KW_t
+    - expect_positive
+    - hat_delta
+    - lam_t
+    - q_eta
+    - q_nt
+    - q_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id474
 - id: fit_stage_204_delta
+  candidate_key: stage_204_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19252,9 +15965,9 @@ candidates:
   - tau_log
   - tau_rm
   - y_i
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_204.md
+  citations:
+  - &id475
+    path: redteam/pass2/reports/stage_204.md
     line: 39
     role: pass2_stage_report
     stage: '204'
@@ -19269,8 +15982,24 @@ candidates:
       the differentiable scalar/predictor machinery it relies on).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_204_delta
+    modality: existing_provenance
+    anchor_stage: '204'
+    parameter_names:
+    - Delta
+    - mathbf
+    - partial_tauln_cdot
+    - s_i
+    - sigma_deltatau
+    - tau
+    - tau_log
+    - tau_rm
+    - y_i
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id475
 - id: fit_stage_206_mathbf
+  candidate_key: stage_206_mathbf
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19278,9 +16007,9 @@ candidates:
   parameter_names:
   - mathbf
   - mathcal
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  citations:
+  - &id476
+    path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
     line: 467
     role: notes_stage
     stage: '206'
@@ -19288,8 +16017,30 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_206_mathbf
+    modality: numeric_literal
+    anchor_stage: '206'
+    parameter_names:
+    - mathbf
+    - mathcal
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id476
+  - candidate_key: stage_206_mathbf
+    modality: claim_label
+    anchor_stage: '206'
+    parameter_names:
+    - mathbf
+    - mathcal
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+      line: 467
+      role: notes_stage
+      stage: '206'
+      excerpt: 3. among overlapping candidates, sort lexicographically by `\(\mathcal Q_{\mathbf s}\)`.
 - id: fit_stage_207_q_i
+  candidate_key: stage_207_q_i
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19297,9 +16048,9 @@ candidates:
   parameter_names:
   - Q_i
   - mathcal
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  citations:
+  - &id477
+    path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
     line: 375
     role: notes_stage
     stage: '207'
@@ -19307,17 +16058,39 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_207_q_i
+    modality: numeric_literal
+    anchor_stage: '207'
+    parameter_names:
+    - Q_i
+    - mathcal
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id477
+  - candidate_key: stage_207_q_i
+    modality: claim_label
+    anchor_stage: '207'
+    parameter_names:
+    - Q_i
+    - mathcal
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+      line: 375
+      role: notes_stage
+      stage: '207'
+      excerpt: 3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
 - id: fit_stage_207_stale_output
+  candidate_key: stage_207_stale_output
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '207'
   parameter_names:
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_207.md
+  citations:
+  - &id478
+    path: redteam/pass2/reports/stage_207.md
     line: 116
     role: pass2_stage_report
     stage: '207'
@@ -19334,17 +16107,25 @@ candidates:
       match the paper''s stated deliverables.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_207_stale_output
+    modality: existing_provenance
+    anchor_stage: '207'
+    parameter_names:
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id478
 - id: fit_stage_207_tau_lo
+  candidate_key: stage_207_tau_lo
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '207'
   parameter_names:
   - tau_lo
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_207.md
+  citations:
+  - &id479
+    path: redteam/pass2/reports/stage_207.md
     line: 104
     role: pass2_stage_report
     stage: '207'
@@ -19354,8 +16135,16 @@ candidates:
       `c<0` sign branches (Piecewise L160) — coverage the SymPy script does not attempt (it pins `cL,cU` positive).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_207_tau_lo
+    modality: existing_provenance
+    anchor_stage: '207'
+    parameter_names:
+    - tau_lo
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id479
 - id: fit_stage_209_k_i
+  candidate_key: stage_209_k_i
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19363,9 +16152,9 @@ candidates:
   parameter_names:
   - k_i
   - k_j
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_209.md
+  citations:
+  - &id480
+    path: redteam/pass2/reports/stage_209.md
     line: 39
     role: pass2_stage_report
     stage: '209'
@@ -19378,8 +16167,17 @@ candidates:
       A,B,C-coefficient form; `Phi''` from `sp.diff` checked against the manifest `N`).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_209_k_i
+    modality: existing_provenance
+    anchor_stage: '209'
+    parameter_names:
+    - k_i
+    - k_j
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id480
 - id: fit_stage_211_c_cross
+  candidate_key: stage_211_c_cross
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19390,9 +16188,9 @@ candidates:
   - N_r
   - S_r
   - tau_iso
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_211.md
+  citations:
+  - &id481
+    path: redteam/pass2/reports/stage_211.md
     line: 150
     role: pass2_stage_report
     stage: '211'
@@ -19404,8 +16202,20 @@ candidates:
       (F1), so this consistency does not constitute independent corroboration.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_211_c_cross
+    modality: existing_provenance
+    anchor_stage: '211'
+    parameter_names:
+    - C_cross
+    - Delta_iso
+    - N_r
+    - S_r
+    - tau_iso
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id481
 - id: fit_stage_211_l_r
+  candidate_key: stage_211_l_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19414,9 +16224,9 @@ candidates:
   - L_r
   - M_r
   - N_r
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_211.md
+  citations:
+  - &id482
+    path: redteam/pass2/reports/stage_211.md
     line: 146
     role: pass2_stage_report
     stage: '211'
@@ -19430,8 +16240,18 @@ candidates:
       by the same symbolic-differentiation operation in both.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_211_l_r
+    modality: existing_provenance
+    anchor_stage: '211'
+    parameter_names:
+    - L_r
+    - M_r
+    - N_r
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id482
 - id: fit_stage_211_s_r
+  candidate_key: stage_211_s_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19439,9 +16259,9 @@ candidates:
   parameter_names:
   - S_r
   - feedback_claude_reviews_codex_codes
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_211.md
+  citations:
+  - &id483
+    path: redteam/pass2/reports/stage_211.md
     line: 119
     role: pass2_stage_report
     stage: '211'
@@ -19457,8 +16277,17 @@ candidates:
       script.)
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_211_s_r
+    modality: existing_provenance
+    anchor_stage: '211'
+    parameter_names:
+    - S_r
+    - feedback_claude_reviews_codex_codes
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id483
 - id: fit_stage_213_s_quad
+  candidate_key: stage_213_s_quad
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19467,9 +16296,9 @@ candidates:
   - S_quad
   - beta_hi
   - beta_lo
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_213.md
+  citations:
+  - &id484
+    path: redteam/pass2/reports/stage_213.md
     line: 53
     role: pass2_stage_report
     stage: '213'
@@ -19477,7 +16306,8 @@ candidates:
       The script constructs and exercises both interior screen points (gradient + equal-mix) and the four-face interval Min
       in beta_lo/beta_hi; the tuple itself is just a bookkeeping container, so "partial" here is a labeling artifact, not
       a substantive gap — every component is checked. No finding.'
-  - path: redteam/pass2/reports/stage_213.md
+  - &id485
+    path: redteam/pass2/reports/stage_213.md
     line: 191
     role: pass2_stage_report
     stage: '213'
@@ -19486,8 +16316,27 @@ candidates:
       harness output, the `S_quad` packet tuple (bookkeeping container).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_213_s_quad
+    modality: existing_provenance
+    anchor_stage: '213'
+    parameter_names:
+    - S_quad
+    - beta_hi
+    - beta_lo
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id484
+  - candidate_key: stage_213_s_quad
+    modality: existing_provenance
+    anchor_stage: '213'
+    parameter_names:
+    - S_quad
+    - beta_hi
+    - beta_lo
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id485
 - id: fit_stage_214_l_r
+  candidate_key: stage_214_l_r
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19497,17 +16346,28 @@ candidates:
   - L_s
   - M_r
   - M_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_214.md
+  citations:
+  - &id486
+    path: redteam/pass2/reports/stage_214.md
     line: 177
     role: pass2_stage_report
     stage: '214'
     excerpt: not a re-typing of `M_s L_r − M_r L_s`; that the resultant reproduces the posited
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_214_l_r
+    modality: existing_provenance
+    anchor_stage: '214'
+    parameter_names:
+    - L_r
+    - L_s
+    - M_r
+    - M_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id486
 - id: fit_stage_217_k_lin
+  candidate_key: stage_217_k_lin
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19519,9 +16379,9 @@ candidates:
   - k_L
   - k_c
   - stale_output
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_217.md
+  citations:
+  - &id487
+    path: redteam/pass2/reports/stage_217.md
     line: 166
     role: pass2_stage_report
     stage: '217'
@@ -19534,8 +16394,21 @@ candidates:
       — the refreshed transcript will still print 162/750 and zero residuals, matching the card/appendix/notes.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_217_k_lin
+    modality: existing_provenance
+    anchor_stage: '217'
+    parameter_names:
+    - K_lin
+    - M_r
+    - M_x
+    - k_L
+    - k_c
+    - stale_output
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id487
 - id: fit_stage_219_c_2
+  candidate_key: stage_219_c_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19545,9 +16418,9 @@ candidates:
   - C_6
   - kappa
   - to
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_219.md
+  citations:
+  - &id488
+    path: redteam/pass2/reports/stage_219.md
     line: 113
     role: pass2_stage_report
     stage: '219'
@@ -19559,8 +16432,19 @@ candidates:
       So the `.wl` independently establishes the Output''s *suppression* clause, not merely the presence of the three families.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_219_c_2
+    modality: existing_provenance
+    anchor_stage: '219'
+    parameter_names:
+    - C_2
+    - C_6
+    - kappa
+    - to
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id488
 - id: fit_stage_220_d_pi
+  candidate_key: stage_220_d_pi
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19576,9 +16460,9 @@ candidates:
   - T_J
   - V_mix
   - chi_s
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_220.md
+  citations:
+  - &id489
+    path: redteam/pass2/reports/stage_220.md
     line: 35
     role: pass2_stage_report
     stage: '220'
@@ -19596,8 +16480,25 @@ candidates:
       ≥ 0`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_d_pi
+    modality: existing_provenance
+    anchor_stage: '220'
+    parameter_names:
+    - D_Pi
+    - Delta_Pi
+    - K_B
+    - K_dyn
+    - N_s
+    - P_abs
+    - Q_Pi
+    - T_J
+    - V_mix
+    - chi_s
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id489
 - id: fit_stage_220_delta_pi
+  candidate_key: stage_220_delta_pi
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19608,9 +16509,9 @@ candidates:
   - det
   - mathcal
   - times
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_220.tex
+  citations:
+  - &id490
+    path: paper/stages/stage_220.tex
     line: 13
     role: paper_stage_tex
     stage: '220'
@@ -19620,8 +16521,38 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_delta_pi
+    modality: numeric_literal
+    anchor_stage: '220'
+    parameter_names:
+    - Delta_Pi
+    - Pi
+    - det
+    - mathcal
+    - times
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id490
+  - candidate_key: stage_220_delta_pi
+    modality: claim_label
+    anchor_stage: '220'
+    parameter_names:
+    - Delta_Pi
+    - Pi
+    - det
+    - mathcal
+    - times
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_220.tex
+      line: 13
+      role: paper_stage_tex
+      stage: '220'
+      excerpt: \stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant
+        identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates
+        the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
 - id: fit_stage_220_im
+  candidate_key: stage_220_im
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19629,26 +16560,35 @@ candidates:
   parameter_names:
   - Im
   - mathfrak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  citations:
+  - &id491
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
     line: 219
     role: notes_stage
     stage: '220'
     excerpt: '- `\Im\,\mathfrak V_{\rm mix}` is the quadrature / pumping / leakage channel.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_im
+    modality: claim_label
+    anchor_stage: '220'
+    parameter_names:
+    - Im
+    - mathfrak
+    reason: claim label or status wording near target-related parameter
+    citation: *id491
 - id: fit_stage_220_matched_fingerprint_value
+  candidate_key: stage_220_matched_fingerprint_value
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '220'
   parameter_names:
   - matched_fingerprint_value
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  citations:
+  - &id492
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
     line: 114
     role: notes_stage
     stage: '220'
@@ -19656,8 +16596,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_matched_fingerprint_value
+    modality: numeric_literal
+    anchor_stage: '220'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id492
+  - candidate_key: stage_220_matched_fingerprint_value
+    modality: claim_label
+    anchor_stage: '220'
+    parameter_names:
+    - matched_fingerprint_value
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 114
+      role: notes_stage
+      stage: '220'
+      excerpt: On the outgoing `l=2` branch the first odd fingerprint begins at `i\omega^5`, not at an even static correction.
 - id: fit_stage_220_p_abs
+  candidate_key: stage_220_p_abs
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19667,9 +16627,9 @@ candidates:
   - T_J
   - T_J0
   - V_mix
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_220.md
+  citations:
+  - &id493
+    path: redteam/pass2/reports/stage_220.md
     line: 150
     role: pass2_stage_report
     stage: '220'
@@ -19683,8 +16643,19 @@ candidates:
       the self-test; the only issue is the doc staleness in F1.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_p_abs
+    modality: existing_provenance
+    anchor_stage: '220'
+    parameter_names:
+    - P_abs
+    - T_J
+    - T_J0
+    - V_mix
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id493
 - id: fit_stage_220_re
+  candidate_key: stage_220_re
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19692,17 +16663,26 @@ candidates:
   parameter_names:
   - Re
   - mathfrak
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  citations:
+  - &id494
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
     line: 218
     role: notes_stage
     stage: '220'
     excerpt: '- `\Re\,\mathfrak V_{\rm mix}` is the in-phase conservative barrier reshaping.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_220_re
+    modality: claim_label
+    anchor_stage: '220'
+    parameter_names:
+    - Re
+    - mathfrak
+    reason: claim label or status wording near target-related parameter
+    citation: *id494
 - id: fit_stage_221_f_0
+  candidate_key: stage_221_f_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19710,9 +16690,9 @@ candidates:
   parameter_names:
   - F_0
   - dD_Pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_221.md
+  citations:
+  - &id495
+    path: redteam/pass2/reports/stage_221.md
     line: 111
     role: pass2_stage_report
     stage: '221'
@@ -19730,17 +16710,26 @@ candidates:
       the paper''s claim exactly.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_221_f_0
+    modality: existing_provenance
+    anchor_stage: '221'
+    parameter_names:
+    - F_0
+    - dD_Pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id495
 - id: fit_stage_222_delta
+  candidate_key: stage_222_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '222'
   parameter_names:
   - Delta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  citations:
+  - &id496
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
     line: 436
     role: notes_stage
     stage: '222'
@@ -19749,8 +16738,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_222_delta
+    modality: numeric_literal
+    anchor_stage: '222'
+    parameter_names:
+    - Delta
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id496
+  - candidate_key: stage_222_delta
+    modality: claim_label
+    anchor_stage: '222'
+    parameter_names:
+    - Delta
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 436
+      role: notes_stage
+      stage: '222'
+      excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local
+        barrier requirement must be pulled back from the actual same-charge branch.
 - id: fit_stage_222_deltav_req
+  candidate_key: stage_222_deltav_req
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19758,9 +16768,9 @@ candidates:
   parameter_names:
   - DeltaV_req
   - V_known
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_222.md
+  citations:
+  - &id497
+    path: redteam/pass2/reports/stage_222.md
     line: 131
     role: pass2_stage_report
     stage: '222'
@@ -19768,8 +16778,17 @@ candidates:
       |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_222_deltav_req
+    modality: existing_provenance
+    anchor_stage: '222'
+    parameter_names:
+    - DeltaV_req
+    - V_known
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id497
 - id: fit_stage_222_lambda_b
+  candidate_key: stage_222_lambda_b
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19780,9 +16799,9 @@ candidates:
   - lambda_R
   - lambda_U
   - lambda_W
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  citations:
+  - &id498
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
     line: 434
     role: notes_stage
     stage: '222'
@@ -19791,8 +16810,37 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_222_lambda_b
+    modality: numeric_literal
+    anchor_stage: '222'
+    parameter_names:
+    - lambda_B
+    - lambda_B_lambda_U_lambda_W_lambda_R
+    - lambda_R
+    - lambda_U
+    - lambda_W
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id498
+  - candidate_key: stage_222_lambda_b
+    modality: claim_label
+    anchor_stage: '222'
+    parameter_names:
+    - lambda_B
+    - lambda_B_lambda_U_lambda_W_lambda_R
+    - lambda_R
+    - lambda_U
+    - lambda_W
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 434
+      role: notes_stage
+      stage: '222'
+      excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine
+        the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
 - id: fit_stage_222_n_star
+  candidate_key: stage_222_n_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19801,9 +16849,9 @@ candidates:
   - N_star
   - deg_y
   - lambda_W
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_222.md
+  citations:
+  - &id499
+    path: redteam/pass2/reports/stage_222.md
     line: 39
     role: pass2_stage_report
     stage: '222'
@@ -19817,8 +16865,18 @@ candidates:
       check).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_222_n_star
+    modality: existing_provenance
+    anchor_stage: '222'
+    parameter_names:
+    - N_star
+    - deg_y
+    - lambda_W
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id499
 - id: fit_stage_222_p_0
+  candidate_key: stage_222_p_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19827,9 +16885,9 @@ candidates:
   - P_0
   - lambda_W
   - mathcal
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  citations:
+  - &id500
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
     line: 391
     role: notes_stage
     stage: '222'
@@ -19837,8 +16895,18 @@ candidates:
       static prefactor \(P_0\) and upper-wall residue/linewidth figure \(\mathcal R_{Q,*}\) are:'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_222_p_0
+    modality: claim_label
+    anchor_stage: '222'
+    parameter_names:
+    - P_0
+    - lambda_W
+    - mathcal
+    reason: claim label or status wording near target-related parameter
+    citation: *id500
 - id: fit_stage_223_d0_compat
+  candidate_key: stage_223_d0_compat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19848,9 +16916,9 @@ candidates:
   - K_compat
   - P0_target
   - P0_target_compat
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_223.md
+  citations:
+  - &id501
+    path: redteam/pass2/reports/stage_223.md
     line: 139
     role: pass2_stage_report
     stage: '223'
@@ -19863,8 +16931,19 @@ candidates:
       selection is well-defined. No traps fired.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_223_d0_compat
+    modality: existing_provenance
+    anchor_stage: '223'
+    parameter_names:
+    - D0_compat
+    - K_compat
+    - P0_target
+    - P0_target_compat
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id501
 - id: fit_stage_223_k_norm
+  candidate_key: stage_223_k_norm
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19875,9 +16954,9 @@ candidates:
   - P0_target
   - R_Q
   - assert_close
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_223.md
+  citations:
+  - &id502
+    path: redteam/pass2/reports/stage_223.md
     line: 39
     role: pass2_stage_report
     stage: '223'
@@ -19890,17 +16969,29 @@ candidates:
       native primitives. Every block ends in an `assert`/`expectZero`/`expectClose`/`fail-Exit[1]`; no block is print-only.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_223_k_norm
+    modality: existing_provenance
+    anchor_stage: '223'
+    parameter_names:
+    - K_norm
+    - K_pole
+    - P0_target
+    - R_Q
+    - assert_close
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id502
 - id: fit_stage_223_mathrm
+  candidate_key: stage_223_mathrm
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '223'
   parameter_names:
   - mathrm
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  citations:
+  - &id503
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
     line: 130
     role: notes_stage
     stage: '223'
@@ -19909,8 +17000,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_223_mathrm
+    modality: numeric_literal
+    anchor_stage: '223'
+    parameter_names:
+    - mathrm
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id503
+  - candidate_key: stage_223_mathrm
+    modality: claim_label
+    anchor_stage: '223'
+    parameter_names:
+    - mathrm
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 130
+      role: notes_stage
+      stage: '223'
+      excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive
+        branch is compatibility rather than full calibration.
 - id: fit_stage_224_delta_rm
+  candidate_key: stage_224_delta_rm
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19938,9 +17050,9 @@ candidates:
   - max
   - tfrac
   - varepsilon
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_224.md
+  citations:
+  - &id504
+    path: redteam/pass2/reports/stage_224.md
     line: 35
     role: pass2_stage_report
     stage: '224'
@@ -19959,22 +17071,52 @@ candidates:
       the symbolic compiler is exact.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_224_delta_rm
+    modality: existing_provenance
+    anchor_stage: '224'
+    parameter_names:
+    - Delta_rm
+    - P_0
+    - P_A
+    - StatusNumerical
+    - Xi_1
+    - Xi_1_4
+    - Xi_1_P_rm
+    - Xi_1_bar
+    - Xi_1_hat
+    - approx
+    - bar
+    - epsilon
+    - ge
+    - hat
+    - lambda
+    - lambda_A
+    - lambda_AXi_1
+    - le
+    - mapsto
+    - max
+    - tfrac
+    - varepsilon
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id504
 - id: fit_stage_224_hat
+  candidate_key: stage_224_hat
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '224'
   parameter_names:
   - hat
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  citations:
+  - &id505
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
     line: 175
     role: notes_stage
     stage: '224'
     excerpt: '### 3.1 Calibrated-branch lower bound on `\hat m_0`'
-  - path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  - &id506
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
     line: 432
     role: notes_stage
     stage: '224'
@@ -19982,8 +17124,47 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_224_hat
+    modality: numeric_literal
+    anchor_stage: '224'
+    parameter_names:
+    - hat
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id505
+  - candidate_key: stage_224_hat
+    modality: numeric_literal
+    anchor_stage: '224'
+    parameter_names:
+    - hat
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id506
+  - candidate_key: stage_224_hat
+    modality: claim_label
+    anchor_stage: '224'
+    parameter_names:
+    - hat
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 175
+      role: notes_stage
+      stage: '224'
+      excerpt: '### 3.1 Calibrated-branch lower bound on `\hat m_0`'
+  - candidate_key: stage_224_hat
+    modality: claim_label
+    anchor_stage: '224'
+    parameter_names:
+    - hat
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 432
+      role: notes_stage
+      stage: '224'
+      excerpt: 7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
 - id: fit_stage_225_d_4
+  candidate_key: stage_225_d_4
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -19997,9 +17178,9 @@ candidates:
   - u2_1
   - u4_1
   - u_2
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_225.md
+  citations:
+  - &id507
+    path: redteam/pass2/reports/stage_225.md
     line: 39
     role: pass2_stage_report
     stage: '225'
@@ -20012,7 +17193,8 @@ candidates:
       Mathematica mirrors each deliverable with `expectZero/expectClose/expectTrue/expectVectorClose`, plus two extra controls:
       an `expectNonZero` negative control on the one-pole reduction (M2) and `NullSpace[wallMatrix]===\{\}` plus an `expectNonZero`
       on the BdG sample determinant (M6).'
-  - path: redteam/pass2/reports/stage_225.md
+  - &id508
+    path: redteam/pass2/reports/stage_225.md
     line: 119
     role: pass2_stage_report
     stage: '225'
@@ -20023,17 +17205,39 @@ candidates:
       `assert one_pole_D41-(-3*u2**2)*D01==0` (py:72). Fix holds on both engines.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_225_d_4
+    modality: existing_provenance
+    anchor_stage: '225'
+    parameter_names:
+    - D_4
+    - Xi_1
+    - assert_close
+    - sigma_1
+    - u2_1
+    - u4_1
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id507
+  - candidate_key: stage_225_d_4
+    modality: existing_provenance
+    anchor_stage: '225'
+    parameter_names:
+    - D_4
+    - one_pole_D41
+    - u_2
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id508
 - id: fit_stage_225_xi_1
+  candidate_key: stage_225_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '225'
   parameter_names:
   - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  citations:
+  - &id509
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
     line: 25
     role: notes_stage
     stage: '225'
@@ -20042,8 +17246,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_225_xi_1
+    modality: numeric_literal
+    anchor_stage: '225'
+    parameter_names:
+    - Xi_1
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id509
+  - candidate_key: stage_225_xi_1
+    modality: claim_label
+    anchor_stage: '225'
+    parameter_names:
+    - Xi_1
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 25
+      role: notes_stage
+      stage: '225'
+      excerpt: It is to compute `\Xi_1` **microscopically** on the explicit finite-throat one-port branch, while keeping track
+        of the conservative grouped-`P2` conditions that the `5`PN branch still has to respect.
 - id: fit_stage_226_k_1
+  candidate_key: stage_226_k_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20055,9 +17280,9 @@ candidates:
   - Xi_load
   - sigma_even
   - sigma_transfer
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_226.md
+  citations:
+  - &id510
+    path: redteam/pass2/reports/stage_226.md
     line: 39
     role: pass2_stage_report
     stage: '226'
@@ -20072,8 +17297,21 @@ candidates:
       but recomputes every quantity in its own kernel.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_226_k_1
+    modality: existing_provenance
+    anchor_stage: '226'
+    parameter_names:
+    - K_1
+    - Xi_1
+    - Xi_1_N_01
+    - Xi_load
+    - sigma_even
+    - sigma_transfer
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id510
 - id: fit_stage_226_k_compat
+  candidate_key: stage_226_k_compat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20082,9 +17320,9 @@ candidates:
   - K_compat
   - N01_coeff
   - Xi_coeff
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_226.md
+  citations:
+  - &id511
+    path: redteam/pass2/reports/stage_226.md
     line: 168
     role: pass2_stage_report
     stage: '226'
@@ -20095,8 +17333,18 @@ candidates:
       vectors.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_226_k_compat
+    modality: existing_provenance
+    anchor_stage: '226'
+    parameter_names:
+    - K_compat
+    - N01_coeff
+    - Xi_coeff
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id511
 - id: fit_stage_226_xi_1
+  candidate_key: stage_226_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20104,9 +17352,9 @@ candidates:
   parameter_names:
   - Xi_1
   - Xi_1_sigma_rm
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_226.md
+  citations:
+  - &id512
+    path: redteam/pass2/reports/stage_226.md
     line: 49
     role: pass2_stage_report
     stage: '226'
@@ -20114,17 +17362,26 @@ candidates:
       (M5) | match (wl pins fewer literals — see Independence) |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_226_xi_1
+    modality: existing_provenance
+    anchor_stage: '226'
+    parameter_names:
+    - Xi_1
+    - Xi_1_sigma_rm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id512
 - id: fit_stage_227_m_transfer
+  candidate_key: stage_227_m_transfer
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '227'
   parameter_names:
   - M_transfer
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_227.md
+  citations:
+  - &id513
+    path: redteam/pass2/reports/stage_227.md
     line: 95
     role: pass2_stage_report
     stage: '227'
@@ -20133,8 +17390,16 @@ candidates:
       {1,0}]` / `{0,1}` to pin the tail to identity (wl:228–235). Different basis-fixing route producing the same two vectors.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_227_m_transfer
+    modality: existing_provenance
+    anchor_stage: '227'
+    parameter_names:
+    - M_transfer
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id513
 - id: fit_stage_227_n_0
+  candidate_key: stage_227_n_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20144,9 +17409,9 @@ candidates:
   - Xi_1
   - assert_close
   - pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_227.md
+  citations:
+  - &id514
+    path: redteam/pass2/reports/stage_227.md
     line: 112
     role: pass2_stage_report
     stage: '227'
@@ -20163,8 +17428,19 @@ candidates:
       numbering/script-output-band plan, neither a math finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_227_n_0
+    modality: existing_provenance
+    anchor_stage: '227'
+    parameter_names:
+    - N_0
+    - Xi_1
+    - assert_close
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id514
 - id: fit_stage_227_xi_1
+  candidate_key: stage_227_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20172,9 +17448,9 @@ candidates:
   parameter_names:
   - Xi_1
   - pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_227.md
+  citations:
+  - &id515
+    path: redteam/pass2/reports/stage_227.md
     line: 39
     role: pass2_stage_report
     stage: '227'
@@ -20189,8 +17465,17 @@ candidates:
       line 250) rather than hard-pinning it.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_227_xi_1
+    modality: existing_provenance
+    anchor_stage: '227'
+    parameter_names:
+    - Xi_1
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id515
 - id: fit_stage_228_delta_1
+  candidate_key: stage_228_delta_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20198,9 +17483,9 @@ candidates:
   parameter_names:
   - delta_1
   - pi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_228.md
+  citations:
+  - &id516
+    path: redteam/pass2/reports/stage_228.md
     line: 102
     role: pass2_stage_report
     stage: '228'
@@ -20219,8 +17504,17 @@ candidates:
       notes, and appendix, and the scripts'' verified claims match the paper''s claims.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_228_delta_1
+    modality: existing_provenance
+    anchor_stage: '228'
+    parameter_names:
+    - delta_1
+    - pi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id516
 - id: fit_stage_229_kappa_0
+  candidate_key: stage_229_kappa_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20228,9 +17522,9 @@ candidates:
   parameter_names:
   - kappa_0
   - pi
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  citations:
+  - &id517
+    path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
     line: 143
     role: notes_stage
     stage: '229'
@@ -20238,8 +17532,17 @@ candidates:
       \(8/\pi^2=\kappa_0^2\) is a fixed D/N overlap constant and does not affect the classifier below.
   modality_attribution:
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_229_kappa_0
+    modality: numeric_literal
+    anchor_stage: '229'
+    parameter_names:
+    - kappa_0
+    - pi
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id517
 - id: fit_stage_232_a_k
+  candidate_key: stage_232_a_k
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20247,9 +17550,9 @@ candidates:
   parameter_names:
   - A_K
   - J_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_232.md
+  citations:
+  - &id518
+    path: redteam/pass2/reports/stage_232.md
     line: 35
     role: pass2_stage_report
     stage: '232'
@@ -20263,7 +17566,8 @@ candidates:
       the physical ratios ζ_phys/ρ_α,max for both branches (≈2.46753/3.46753), the margins against ζ_req=1/3, ρ_req=4/3, and
       the near-saturation ceiling gaps (≈9.78e-8, ≈1.94e-6). The appendix (L867–874) carries ζ_req=1/3, ρ_req=4/3, ζ_phys≈2.4675
       and the static-first verdict.'
-  - path: redteam/pass2/reports/stage_232.md
+  - &id519
+    path: redteam/pass2/reports/stage_232.md
     line: 39
     role: pass2_stage_report
     stage: '232'
@@ -20276,17 +17580,33 @@ candidates:
       back the bottom-line "safe by a large margin / non-bottlenecked" verdict.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_232_a_k
+    modality: existing_provenance
+    anchor_stage: '232'
+    parameter_names:
+    - A_K
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id518
+  - candidate_key: stage_232_a_k
+    modality: existing_provenance
+    anchor_stage: '232'
+    parameter_names:
+    - A_K
+    - J_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id519
 - id: fit_stage_232_lambda_mu_1
+  candidate_key: stage_232_lambda_mu_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '232'
   parameter_names:
   - lambda_mu_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  citations:
+  - &id520
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
     line: 149
     role: notes_stage
     stage: '232'
@@ -20294,8 +17614,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_232_lambda_mu_1
+    modality: numeric_literal
+    anchor_stage: '232'
+    parameter_names:
+    - lambda_mu_1
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id520
+  - candidate_key: stage_232_lambda_mu_1
+    modality: claim_label
+    anchor_stage: '232'
+    parameter_names:
+    - lambda_mu_1
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 149
+      role: notes_stage
+      stage: '232'
+      excerpt: for the benchmark \(\lambda_\mu=1\).
 - id: fit_stage_232_theta_w_j
+  candidate_key: stage_232_theta_w_j
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20303,9 +17643,9 @@ candidates:
   parameter_names:
   - Theta_w_J
   - Theta_w_chi
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_232.md
+  citations:
+  - &id521
+    path: redteam/pass2/reports/stage_232.md
     line: 96
     role: pass2_stage_report
     stage: '232'
@@ -20321,17 +17661,26 @@ candidates:
       script mtimes). Paper/notes/appendix read and aligned.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_232_theta_w_j
+    modality: existing_provenance
+    anchor_stage: '232'
+    parameter_names:
+    - Theta_w_J
+    - Theta_w_chi
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id521
 - id: fit_stage_235_q_eta
+  candidate_key: stage_235_q_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '235'
   parameter_names:
   - q_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  citations:
+  - &id522
+    path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
     line: 389
     role: notes_stage
     stage: '235'
@@ -20339,17 +17688,25 @@ candidates:
       problem is codimension two, and the entire post-static obstruction is the single dressing coordinate `q_eta`.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_235_q_eta
+    modality: claim_label
+    anchor_stage: '235'
+    parameter_names:
+    - q_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id522
 - id: fit_stage_236_epsilon_eta
+  candidate_key: stage_236_epsilon_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '236'
   parameter_names:
   - epsilon_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  citations:
+  - &id523
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
     line: 452
     role: notes_stage
     stage: '236'
@@ -20358,17 +17715,38 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_236_epsilon_eta
+    modality: numeric_literal
+    anchor_stage: '236'
+    parameter_names:
+    - epsilon_eta
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id523
+  - candidate_key: stage_236_epsilon_eta
+    modality: claim_label
+    anchor_stage: '236'
+    parameter_names:
+    - epsilon_eta
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 452
+      role: notes_stage
+      stage: '236'
+      excerpt: '> compute the actual dressing coordinate `q_\eta=\delta\ln\epsilon_\eta`, because after the first static gate
+        is cleared that single scalar is exactly the amplitude of the remaining equal-drift microscopic obstruction.'
 - id: fit_stage_236_mu
+  candidate_key: stage_236_mu
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '236'
   parameter_names:
   - mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  citations:
+  - &id524
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
     line: 448
     role: notes_stage
     stage: '236'
@@ -20377,8 +17755,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_236_mu
+    modality: numeric_literal
+    anchor_stage: '236'
+    parameter_names:
+    - mu
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id524
+  - candidate_key: stage_236_mu
+    modality: claim_label
+    anchor_stage: '236'
+    parameter_names:
+    - mu
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 448
+      role: notes_stage
+      stage: '236'
+      excerpt: 4. and the surviving same-charge obstruction after the static strip is cleared is therefore not generic throat
+        motion but one scalar `K_\eta`–`\mu` dressing amplitude.
 - id: fit_stage_236_t_u
+  candidate_key: stage_236_t_u
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20386,9 +17785,9 @@ candidates:
   parameter_names:
   - T_U
   - mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  citations:
+  - &id525
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
     line: 476
     role: notes_stage
     stage: '236'
@@ -20397,17 +17796,26 @@ candidates:
       `q_\eta` carried by an equal-drift `K_\eta`–`\mu` ray at fixed `T_U`.'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_236_t_u
+    modality: claim_label
+    anchor_stage: '236'
+    parameter_names:
+    - T_U
+    - mu
+    reason: claim label or status wording near target-related parameter
+    citation: *id525
 - id: fit_stage_237_epsilon_eta
+  candidate_key: stage_237_epsilon_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '237'
   parameter_names:
   - epsilon_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  citations:
+  - &id526
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
     line: 39
     role: notes_stage
     stage: '237'
@@ -20416,47 +17824,79 @@ candidates:
       support-blind.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_237_epsilon_eta
+    modality: claim_label
+    anchor_stage: '237'
+    parameter_names:
+    - epsilon_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id526
 - id: fit_stage_237_q_eta
+  candidate_key: stage_237_q_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '237'
   parameter_names:
   - q_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  citations:
+  - &id527
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
     line: 10
     role: notes_stage
     stage: '237'
     excerpt: '> it computes the surviving rigid-mouth dressing coordinate `q_eta` exactly in the actual branch observables
       and in the actual microscopic variables, and shows that this post-static obstruction is completely blind to the coherent
       support-enhancement sector.'
-  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  - &id528
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
     line: 29
     role: notes_stage
     stage: '237'
     excerpt: 'So after the first static gate is cleared, the entire unresolved same-charge obstruction is one scalar: the
       dressing coordinate `q_eta`.'
-  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  - &id529
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
     line: 385
     role: notes_stage
     stage: '237'
     excerpt: If no, the same-charge obstruction remains, and its exact amplitude is `q_eta`.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_237_q_eta
+    modality: claim_label
+    anchor_stage: '237'
+    parameter_names:
+    - q_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id527
+  - candidate_key: stage_237_q_eta
+    modality: claim_label
+    anchor_stage: '237'
+    parameter_names:
+    - q_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id528
+  - candidate_key: stage_237_q_eta
+    modality: claim_label
+    anchor_stage: '237'
+    parameter_names:
+    - q_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id529
 - id: fit_stage_237_q_nt
+  candidate_key: stage_237_q_nt
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '237'
   parameter_names:
   - q_nt
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  citations:
+  - &id530
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
     line: 13
     role: notes_stage
     stage: '237'
@@ -20465,8 +17905,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_237_q_nt
+    modality: numeric_literal
+    anchor_stage: '237'
+    parameter_names:
+    - q_nt
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id530
+  - candidate_key: stage_237_q_nt
+    modality: claim_label
+    anchor_stage: '237'
+    parameter_names:
+    - q_nt
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 13
+      role: notes_stage
+      stage: '237'
+      excerpt: Once the first static ceiling `q_nt = 0` has been cleared, the remaining obstruction is exactly the single
+        actual-branch scalar
 - id: fit_stage_238_pi_star
+  candidate_key: stage_238_pi_star
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20474,9 +17935,9 @@ candidates:
   parameter_names:
   - Pi_star
   - gamma_0
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_238.md
+  citations:
+  - &id531
+    path: redteam/pass2/reports/stage_238.md
     line: 99
     role: pass2_stage_report
     stage: '238'
@@ -20485,34 +17946,51 @@ candidates:
       verbatim in the notes/appendix.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_238_pi_star
+    modality: existing_provenance
+    anchor_stage: '238'
+    parameter_names:
+    - Pi_star
+    - gamma_0
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id531
 - id: fit_stage_238_q_eta
+  candidate_key: stage_238_q_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '238'
   parameter_names:
   - q_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  citations:
+  - &id532
+    path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
     line: 62
     role: notes_stage
     stage: '238'
     excerpt: So after the first static gate is cleared, the same-charge obstruction is indeed the dressing coordinate `q_eta`.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_238_q_eta
+    modality: claim_label
+    anchor_stage: '238'
+    parameter_names:
+    - q_eta
+    reason: claim label or status wording near target-related parameter
+    citation: *id532
 - id: fit_stage_239_mu
+  candidate_key: stage_239_mu
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '239'
   parameter_names:
   - mu
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  citations:
+  - &id533
+    path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
     line: 71
     role: notes_stage
     stage: '239'
@@ -20520,8 +17998,16 @@ candidates:
       ray.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_239_mu
+    modality: claim_label
+    anchor_stage: '239'
+    parameter_names:
+    - mu
+    reason: claim label or status wording near target-related parameter
+    citation: *id533
 - id: fit_stage_240_pi_rm
+  candidate_key: stage_240_pi_rm
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20537,9 +18023,9 @@ candidates:
   - to
   - varrho
   - zeta_rm
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_240.md
+  citations:
+  - &id534
+    path: redteam/pass2/reports/stage_240.md
     line: 103
     role: pass2_stage_report
     stage: '240'
@@ -20557,8 +18043,25 @@ candidates:
       engine disagreement (none). Verdict: findings (1, low, paper-side documentation only).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_240_pi_rm
+    modality: existing_provenance
+    anchor_stage: '240'
+    parameter_names:
+    - Pi_rm
+    - Y_support
+    - alpha_rm
+    - c0_static
+    - c1_static
+    - epsilon_3
+    - rho_alpha_4_3
+    - to
+    - varrho
+    - zeta_rm
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id534
 - id: fit_stage_241_epsilon
+  candidate_key: stage_241_epsilon
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20566,9 +18069,9 @@ candidates:
   parameter_names:
   - epsilon
   - varrho
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  citations:
+  - &id535
+    path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
     line: 707
     role: notes_stage
     stage: '241'
@@ -20576,8 +18079,17 @@ candidates:
       inside the selected curve.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_241_epsilon
+    modality: claim_label
+    anchor_stage: '241'
+    parameter_names:
+    - epsilon
+    - varrho
+    reason: claim label or status wording near target-related parameter
+    citation: *id535
 - id: fit_stage_242_c_mix
+  candidate_key: stage_242_c_mix
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20585,9 +18097,9 @@ candidates:
   parameter_names:
   - C_mix
   - Pi_tr
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_242.md
+  citations:
+  - &id536
+    path: redteam/pass2/reports/stage_242.md
     line: 95
     role: pass2_stage_report
     stage: '242'
@@ -20600,17 +18112,26 @@ candidates:
       different primitives (scalar compare vs quantifier-elimination certificate). Not a port.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_242_c_mix
+    modality: existing_provenance
+    anchor_stage: '242'
+    parameter_names:
+    - C_mix
+    - Pi_tr
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id536
 - id: fit_stage_242_epsilon
+  candidate_key: stage_242_epsilon
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '242'
   parameter_names:
   - epsilon
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  citations:
+  - &id537
+    path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
     line: 214
     role: notes_stage
     stage: '242'
@@ -20618,25 +18139,41 @@ candidates:
       support solve.
   modality_attribution:
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_242_epsilon
+    modality: numeric_literal
+    anchor_stage: '242'
+    parameter_names:
+    - epsilon
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id537
 - id: fit_stage_242_lambda_0
+  candidate_key: stage_242_lambda_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '242'
   parameter_names:
   - Lambda_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  citations:
+  - &id538
+    path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
     line: 375
     role: notes_stage
     stage: '242'
     excerpt: with the constant \(\Lambda_0\) dropping out of the quotient packet.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_242_lambda_0
+    modality: claim_label
+    anchor_stage: '242'
+    parameter_names:
+    - Lambda_0
+    reason: claim label or status wording near target-related parameter
+    citation: *id538
 - id: fit_stage_243_e_w
+  candidate_key: stage_243_e_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20644,9 +18181,9 @@ candidates:
   parameter_names:
   - E_w
   - S_leak
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_243.md
+  citations:
+  - &id539
+    path: redteam/pass2/reports/stage_243.md
     line: 87
     role: pass2_stage_report
     stage: '243'
@@ -20656,8 +18193,17 @@ candidates:
       `2∫_0^∞ j^w E_w` (wl:93-96, asserted wl:103).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_243_e_w
+    modality: existing_provenance
+    anchor_stage: '243'
+    parameter_names:
+    - E_w
+    - S_leak
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id539
 - id: fit_stage_243_k_turn
+  candidate_key: stage_243_k_turn
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20667,9 +18213,9 @@ candidates:
   - a_int
   - chi_lam
   - k_V
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  citations:
+  - &id540
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 17
     role: checkpoint_constant_provenance
     stage: '243'
@@ -20700,34 +18246,53 @@ candidates:
       closed, the first end-to-end red-team pass is COMPLETE (253/253 = 100%).** Previous VII.2 entry retained below.)'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_243_k_turn
+    modality: existing_provenance
+    anchor_stage: '243'
+    parameter_names:
+    - K_turn
+    - a_int
+    - chi_lam
+    - k_V
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id540
 - id: fit_stage_243_xi_1
+  candidate_key: stage_243_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '243'
   parameter_names:
   - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  citations:
+  - &id541
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
     line: 347
     role: notes_stage
     stage: '243'
     excerpt: So the later explicit `\Xi_1` bookkeeping belongs to the same lifted lane.
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_243_xi_1
+    modality: claim_label
+    anchor_stage: '243'
+    parameter_names:
+    - Xi_1
+    reason: claim label or status wording near target-related parameter
+    citation: *id541
 - id: fit_stage_245_xi_1
+  candidate_key: stage_245_xi_1
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '245'
   parameter_names:
   - Xi_1
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  citations:
+  - &id542
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
     line: 436
     role: notes_stage
     stage: '245'
@@ -20735,8 +18300,28 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_245_xi_1
+    modality: numeric_literal
+    anchor_stage: '245'
+    parameter_names:
+    - Xi_1
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id542
+  - candidate_key: stage_245_xi_1
+    modality: claim_label
+    anchor_stage: '245'
+    parameter_names:
+    - Xi_1
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 436
+      role: notes_stage
+      stage: '245'
+      excerpt: 3. and once `V` is activated, the target-ratio packet is no longer determined by `\Xi_1` alone.
 - id: fit_stage_247_a_2
+  candidate_key: stage_247_a_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20764,9 +18349,9 @@ candidates:
   - lambda_W
   - r_soft
   - xi_R
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id543
+    path: redteam/pass2/reports/stage_247.md
     line: 35
     role: pass2_stage_report
     stage: '247'
@@ -20785,8 +18370,37 @@ candidates:
       **notes** (md:406-409).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_a_2
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - A_2
+    - A_4
+    - A_6
+    - C_2
+    - C_4
+    - C_6
+    - D_UV
+    - DeltaE_UV
+    - M_sigma
+    - R_inf
+    - S_leak
+    - V_eff
+    - V_short
+    - W_w
+    - alpha_2
+    - alpha_6
+    - eta_UV
+    - g_inf
+    - lambda_L
+    - lambda_W
+    - r_soft
+    - xi_R
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id543
 - id: fit_stage_247_alpha_2
+  candidate_key: stage_247_alpha_2
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20795,9 +18409,9 @@ candidates:
   - alpha_2
   - alpha_6
   - alpha_6_alpha_2_0
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  citations:
+  - &id544
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
     line: 404
     role: notes_stage
     stage: '247'
@@ -20806,8 +18420,33 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_alpha_2
+    modality: numeric_literal
+    anchor_stage: '247'
+    parameter_names:
+    - alpha_2
+    - alpha_6
+    - alpha_6_alpha_2_0
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id544
+  - candidate_key: stage_247_alpha_2
+    modality: claim_label
+    anchor_stage: '247'
+    parameter_names:
+    - alpha_2
+    - alpha_6
+    - alpha_6_alpha_2_0
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 404
+      role: notes_stage
+      stage: '247'
+      excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline
+        gives
 - id: fit_stage_247_d_uv
+  candidate_key: stage_247_d_uv
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20826,9 +18465,9 @@ candidates:
   - g_soft
   - lambda_L
   - lambda_L_soft
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id545
+    path: redteam/pass2/reports/stage_247.md
     line: 39
     role: pass2_stage_report
     stage: '247'
@@ -20842,8 +18481,28 @@ candidates:
       `V_short - V_eff_session >= 0` (py:247). The `.wl` mirrors all eight checkpoints M1-M8 with independent techniques.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_d_uv
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - D_UV
+    - K_red
+    - Lvar_soft
+    - M_sigma
+    - S_leak
+    - S_soft
+    - V_eff_session
+    - V_short
+    - W_sess
+    - g_inf
+    - g_soft
+    - lambda_L
+    - lambda_L_soft
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id545
 - id: fit_stage_247_delta
+  candidate_key: stage_247_delta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20851,9 +18510,9 @@ candidates:
   parameter_names:
   - Delta
   - stage_247
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id546
+    path: redteam/pass2/reports/stage_247.md
     line: 77
     role: pass2_stage_report
     stage: '247'
@@ -20863,17 +18522,26 @@ candidates:
       correctly overruled by the orchestrator; the card is clean and is NOT flagged.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_delta
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - Delta
+    - stage_247
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id546
 - id: fit_stage_247_lambda_l_soft
+  candidate_key: stage_247_lambda_l_soft
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '247'
   parameter_names:
   - lambda_L_soft
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id547
+    path: redteam/pass2/reports/stage_247.md
     line: 85
     role: pass2_stage_report
     stage: '247'
@@ -20887,8 +18555,16 @@ candidates:
       parallel the physics, not the SymPy line sequence.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_lambda_l_soft
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - lambda_L_soft
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id547
 - id: fit_stage_247_lvar_from_w
+  candidate_key: stage_247_lvar_from_w
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20896,9 +18572,9 @@ candidates:
   parameter_names:
   - Lvar_from_W
   - lambda_L
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id548
+    path: redteam/pass2/reports/stage_247.md
     line: 93
     role: pass2_stage_report
     stage: '247'
@@ -20914,8 +18590,17 @@ candidates:
       method. I confirm I read the card, notes §1-6, and the part-08 appendix rows before opening the scripts.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_lvar_from_w
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - Lvar_from_W
+    - lambda_L
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id548
 - id: fit_stage_247_m_sigma
+  candidate_key: stage_247_m_sigma
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20925,17 +18610,28 @@ candidates:
   - S_soft
   - V_short
   - lambda_L_soft
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id549
+    path: redteam/pass2/reports/stage_247.md
     line: 68
     role: pass2_stage_report
     stage: '247'
     excerpt: '| A19-22 | sympy | 240-243 | pins `V_short,M_sigma,S_soft,lambda_L_soft` to paper | claim 6 | yes |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_m_sigma
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - M_sigma
+    - S_soft
+    - V_short
+    - lambda_L_soft
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id549
 - id: fit_stage_247_v_eff
+  candidate_key: stage_247_v_eff
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20943,9 +18639,9 @@ candidates:
   parameter_names:
   - V_eff
   - V_short
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id550
+    path: redteam/pass2/reports/stage_247.md
     line: 51
     role: pass2_stage_report
     stage: '247'
@@ -20953,8 +18649,17 @@ candidates:
       |'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_v_eff
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - V_eff
+    - V_short
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id550
 - id: fit_stage_247_vrebuild_soft
+  candidate_key: stage_247_vrebuild_soft
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20963,9 +18668,9 @@ candidates:
   - Vrebuild_soft
   - lambda_L
   - lambda_L_paper
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_247.md
+  citations:
+  - &id551
+    path: redteam/pass2/reports/stage_247.md
     line: 79
     role: pass2_stage_report
     stage: '247'
@@ -20974,8 +18679,18 @@ candidates:
       is genuinely falsifiable.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_247_vrebuild_soft
+    modality: existing_provenance
+    anchor_stage: '247'
+    parameter_names:
+    - Vrebuild_soft
+    - lambda_L
+    - lambda_L_paper
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id551
 - id: fit_stage_248_f_coul
+  candidate_key: stage_248_f_coul
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -20989,9 +18704,9 @@ candidates:
   - v_0
   - v_contact
   - v_crit
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_248.md
+  citations:
+  - &id552
+    path: redteam/pass2/reports/stage_248.md
     line: 39
     role: pass2_stage_report
     stage: '248'
@@ -21003,8 +18718,23 @@ candidates:
       window ordering, and the `I_Coul` exact-vs-report agreement.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_248_f_coul
+    modality: existing_provenance
+    anchor_stage: '248'
+    parameter_names:
+    - F_coul
+    - I_Coul
+    - T_Coul
+    - T_new
+    - r_turn
+    - v_0
+    - v_contact
+    - v_crit
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id552
 - id: fit_stage_248_i_coul
+  candidate_key: stage_248_i_coul
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21025,9 +18755,9 @@ candidates:
   - r_turn
   - v_contact
   - v_crit
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_248.md
+  citations:
+  - &id553
+    path: redteam/pass2/reports/stage_248.md
     line: 35
     role: pass2_stage_report
     stage: '248'
@@ -21042,7 +18772,8 @@ candidates:
       ΔE sqrt(m_s/K_peak)/ħ_eff`; (6) the carried diagnostics `Ξ_turn = Ξ1(r_+)`, `λ_th = |E/V''(r_+)|`; and (7) the Session-II
       benchmark numbers, including the boxed transmission increase `(T_new/T_Coul - 1)×100% ≈ 23.3128%` (notes §6.3, card
       via transmission-ratio eq).'
-  - path: redteam/pass2/reports/stage_248.md
+  - &id554
+    path: redteam/pass2/reports/stage_248.md
     line: 101
     role: pass2_stage_report
     stage: '248'
@@ -21054,17 +18785,48 @@ candidates:
       equal), which is the expected sign of independent simplification rather than a port. No `engine_disagreement`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_248_i_coul
+    modality: existing_provenance
+    anchor_stage: '248'
+    parameter_names:
+    - I_Coul
+    - I_new
+    - I_top
+    - K_peak
+    - T_Coul
+    - T_new
+    - V_eff
+    - V_peak
+    - m_s
+    - r_contact
+    - r_turn
+    - v_contact
+    - v_crit
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id553
+  - candidate_key: stage_248_i_coul
+    modality: existing_provenance
+    anchor_stage: '248'
+    parameter_names:
+    - I_Coul
+    - I_coul
+    - T_Coul
+    - T_new
+    - engine_disagreement
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id554
 - id: fit_stage_249_alpha_rm
+  candidate_key: stage_249_alpha_rm
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '249'
   parameter_names:
   - alpha_rm
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  citations:
+  - &id555
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
     line: 456
     role: notes_stage
     stage: '249'
@@ -21073,8 +18835,29 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_249_alpha_rm
+    modality: numeric_literal
+    anchor_stage: '249'
+    parameter_names:
+    - alpha_rm
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id555
+  - candidate_key: stage_249_alpha_rm
+    modality: claim_label
+    anchor_stage: '249'
+    parameter_names:
+    - alpha_rm
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 456
+      role: notes_stage
+      stage: '249'
+      excerpt: Thus the aligned branch carries about two-thirds of the instantaneous export asymmetry scale at the benchmark
+        peak, while the anti-aligned branch still remains positive because \(|\alpha_{\rm pk}|<1\).
 - id: fit_stage_249_c_sigma
+  candidate_key: stage_249_c_sigma
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21086,9 +18869,9 @@ candidates:
   - alpha_h
   - eq_sub
   - eq_sub_expected
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_249.md
+  citations:
+  - &id556
+    path: redteam/pass2/reports/stage_249.md
     line: 95
     role: pass2_stage_report
     stage: '249'
@@ -21104,8 +18887,21 @@ candidates:
       finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_249_c_sigma
+    modality: existing_provenance
+    anchor_stage: '249'
+    parameter_names:
+    - C_sigma
+    - Hdot_sigma
+    - Phi_sigma
+    - alpha_h
+    - eq_sub
+    - eq_sub_expected
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id556
 - id: fit_stage_249_gamma_0
+  candidate_key: stage_249_gamma_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21119,9 +18915,9 @@ candidates:
   - bar
   - eta_h
   - free_symbols
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_249.md
+  citations:
+  - &id557
+    path: redteam/pass2/reports/stage_249.md
     line: 39
     role: pass2_stage_report
     stage: '249'
@@ -21134,8 +18930,23 @@ candidates:
       < \alpha_pk < 1`. The `.wl` mirrors deliverables 1-5 with leaner, differently-structured checks (M1-M5).
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_249_gamma_0
+    modality: existing_provenance
+    anchor_stage: '249'
+    parameter_names:
+    - Gamma_0
+    - R_pk
+    - S_cov
+    - alpha_h
+    - alpha_pk
+    - bar
+    - eta_h
+    - free_symbols
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id557
 - id: fit_stage_249_r_int
+  candidate_key: stage_249_r_int
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21145,9 +18956,9 @@ candidates:
   - alpha_int
   - alpha_pk
   - engine_disagreement
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_249.md
+  citations:
+  - &id558
+    path: redteam/pass2/reports/stage_249.md
     line: 99
     role: pass2_stage_report
     stage: '249'
@@ -21157,8 +18968,19 @@ candidates:
       numerics to displayed precision and identical symbolic residuals (0). No `engine_disagreement`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_249_r_int
+    modality: existing_provenance
+    anchor_stage: '249'
+    parameter_names:
+    - R_int
+    - alpha_int
+    - alpha_pk
+    - engine_disagreement
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id558
 - id: fit_stage_250_chi_rm
+  candidate_key: stage_250_chi_rm
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21167,9 +18989,9 @@ candidates:
   - chi_rm
   - lambda_rm
   - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  citations:
+  - &id559
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
     line: 622
     role: notes_stage
     stage: '250'
@@ -21178,8 +19000,33 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_250_chi_rm
+    modality: numeric_literal
+    anchor_stage: '250'
+    parameter_names:
+    - chi_rm
+    - lambda_rm
+    - mu_eta
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id559
+  - candidate_key: stage_250_chi_rm
+    modality: claim_label
+    anchor_stage: '250'
+    parameter_names:
+    - chi_rm
+    - lambda_rm
+    - mu_eta
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 622
+      role: notes_stage
+      stage: '250'
+      excerpt: 4. The physical-unit mapping of \(\lambda_{\rm eff},\chi_{\rm peak},\mu_\eta\) into a material-specific device
+        remains downstream.
 - id: fit_stage_250_e_edge
+  candidate_key: stage_250_e_edge
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21193,9 +19040,9 @@ candidates:
   - t_collapse
   - t_collapse_raw
   - v_safe
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_250.md
+  citations:
+  - &id560
+    path: redteam/pass2/reports/stage_250.md
     line: 112
     role: pass2_stage_report
     stage: '250'
@@ -21204,7 +19051,8 @@ candidates:
       (py line 28 ≡ wl M3 Reduce line); `dt_cross/dE < 0` (py asserts, wl proves globally). Benchmark numerics agree across
       both within tol: `t_collapse≈9.43066476`, `E_safe,min≈5.32265943`, `v_safe,min≈0.07469791`, `ratio≈1.25948037`, `t_collapse_raw≈6.17163516`,
       `E_safe,min_raw≈27.53273095`, `S(E_edge)=1`. No disagreement.'
-  - path: redteam/pass2/reports/stage_250.md
+  - &id561
+    path: redteam/pass2/reports/stage_250.md
     line: 116
     role: pass2_stage_report
     stage: '250'
@@ -21220,17 +19068,41 @@ candidates:
       to the user. Verdict: `findings` (1, paper-side, user-gated).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_250_e_edge
+    modality: existing_provenance
+    anchor_stage: '250'
+    parameter_names:
+    - E_edge
+    - E_safe
+    - dt_cross
+    - min_raw
+    - t_collapse
+    - t_collapse_raw
+    - v_safe
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id560
+  - candidate_key: stage_250_e_edge
+    modality: existing_provenance
+    anchor_stage: '250'
+    parameter_names:
+    - E_edge
+    - m_s
+    - t_collapse
+    - v_safe
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id561
 - id: fit_stage_250_t_cross
+  candidate_key: stage_250_t_cross
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '250'
   parameter_names:
   - t_cross
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_250.md
+  citations:
+  - &id562
+    path: redteam/pass2/reports/stage_250.md
     line: 39
     role: pass2_stage_report
     stage: '250'
@@ -21242,8 +19114,16 @@ candidates:
       independently via `Solve`/`Reduce` and checks the same benchmark numerics.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_250_t_cross
+    modality: existing_provenance
+    anchor_stage: '250'
+    parameter_names:
+    - t_cross
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id562
 - id: fit_stage_251_cref
+  candidate_key: stage_251_cref
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21251,9 +19131,9 @@ candidates:
   parameter_names:
   - cref
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_251.tex
+  citations:
+  - &id563
+    path: paper/stages/stage_251.tex
     line: 92
     role: paper_stage_tex
     stage: '251'
@@ -21262,8 +19142,31 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_251_cref
+    modality: numeric_literal
+    anchor_stage: '251'
+    parameter_names:
+    - cref
+    - s_c
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id563
+  - candidate_key: stage_251_cref
+    modality: claim_label
+    anchor_stage: '251'
+    parameter_names:
+    - cref
+    - s_c
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: paper/stages/stage_251.tex
+      line: 92
+      role: paper_stage_tex
+      stage: '251'
+      excerpt: For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane
+        \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
 - id: fit_stage_251_delta_0
+  candidate_key: stage_251_delta_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21288,9 +19191,9 @@ candidates:
   - mu_eta
   - s_0
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_251.md
+  citations:
+  - &id564
+    path: redteam/pass2/reports/stage_251.md
     line: 35
     role: pass2_stage_report
     stage: '251'
@@ -21304,7 +19207,8 @@ candidates:
       (`\stagefield`-equivalent boxed): `Gamma3hat + s_c^2 Gamma5hat >= (s_0^2-s_c^2)/s_c^3`; (8) the Session-IV benchmark
       `Gamma3hat + 0.3013336471 Gamma5hat >= 289.61004918`, with `G5hat_safe ~ 961.09429528`. Appendix table row 100 and eqs
       `app-part08-main-kexp` / `app-part08-main-safe-half-plane` carry the same forms.'
-  - path: redteam/pass2/reports/stage_251.md
+  - &id565
+    path: redteam/pass2/reports/stage_251.md
     line: 39
     role: pass2_stage_report
     stage: '251'
@@ -21316,8 +19220,44 @@ candidates:
       have exactly one positive real root equal to `s_c` (224-227). The `.wl` mirrors these targets with native machinery.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_251_delta_0
+    modality: existing_provenance
+    anchor_stage: '251'
+    parameter_names:
+    - Delta_0
+    - G5hat_safe
+    - Gamma_3
+    - Gamma_5
+    - K_exp
+    - P_exp
+    - Pi_V
+    - Pi_V0
+    - beta_0
+    - eta_0
+    - gamma_1
+    - gamma_crit
+    - gamma_tot
+    - kappa_V
+    - mu_eta
+    - s_0
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id564
+  - candidate_key: stage_251_delta_0
+    modality: existing_provenance
+    anchor_stage: '251'
+    parameter_names:
+    - Delta_0
+    - Gamma_5
+    - Omega_U0
+    - P0_minus
+    - eta_0
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id565
 - id: fit_stage_251_s_0
+  candidate_key: stage_251_s_0
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21325,9 +19265,9 @@ candidates:
   parameter_names:
   - s_0
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_251.md
+  citations:
+  - &id566
+    path: redteam/pass2/reports/stage_251.md
     line: 128
     role: pass2_stage_report
     stage: '251'
@@ -21338,24 +19278,34 @@ candidates:
       guard ("only deliverables absent from BOTH count"), this is INTERNAL, not a MISSING-DELIVERABLE. No finding.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_251_s_0
+    modality: existing_provenance
+    anchor_stage: '251'
+    parameter_names:
+    - s_0
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id566
 - id: fit_stage_251_s_c
+  candidate_key: stage_251_s_c
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '251'
   parameter_names:
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_251.md
+  citations:
+  - &id567
+    path: redteam/pass2/reports/stage_251.md
     line: 97
     role: pass2_stage_report
     stage: '251'
     excerpt: '- Benchmark: `s_c=0.5489386551`, `s_c^2=0.3013336471`, `rhs=289.61004918`, `G5hat=961.09429528`, positive root
       = `0.5489386551` — both engines (py.txt:56-69, wl.txt:94-113). SymPy machine-precision vs Mathematica 50-digit, agree
       to displayed precision. No disagreement.'
-  - path: redteam/pass2/reports/stage_251.md
+  - &id568
+    path: redteam/pass2/reports/stage_251.md
     line: 134
     role: pass2_stage_report
     stage: '251'
@@ -21366,8 +19316,23 @@ candidates:
       forms are not self-referential. No directive written (zero findings).'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_251_s_c
+    modality: existing_provenance
+    anchor_stage: '251'
+    parameter_names:
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id567
+  - candidate_key: stage_251_s_c
+    modality: existing_provenance
+    anchor_stage: '251'
+    parameter_names:
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id568
 - id: fit_stage_252_engine_disagreement
+  candidate_key: stage_252_engine_disagreement
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21377,9 +19342,9 @@ candidates:
   - f_lat
   - f_vac
   - mu_eta
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_252.md
+  citations:
+  - &id569
+    path: redteam/pass2/reports/stage_252.md
     line: 97
     role: pass2_stage_report
     stage: '252'
@@ -21389,42 +19354,69 @@ candidates:
       ~1e-14 (M9 PASS lines 108-125). No `engine_disagreement`.
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_252_engine_disagreement
+    modality: existing_provenance
+    anchor_stage: '252'
+    parameter_names:
+    - engine_disagreement
+    - f_lat
+    - f_vac
+    - mu_eta
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id569
 - id: fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+  candidate_key: stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '252'
   parameter_names:
   - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  citations:
+  - &id570
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 942
     role: checkpoint_constant_provenance
     stage: '252'
     excerpt: '`mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl`'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+    modality: existing_provenance
+    anchor_stage: '252'
+    parameter_names:
+    - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id570
 - id: fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+  candidate_key: stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '252'
   parameter_names:
   - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
-  status: scanned
-  file_line_citations:
-  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  citations:
+  - &id571
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 940
     role: checkpoint_constant_provenance
     stage: '252'
     excerpt: '`scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py`'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+    modality: existing_provenance
+    anchor_stage: '252'
+    parameter_names:
+    - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+    reason: checkpoint provenance seed mentions a candidate parameter
+    citation: *id571
 - id: fit_stage_252_mu_eta
+  candidate_key: stage_252_mu_eta
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21432,9 +19424,9 @@ candidates:
   parameter_names:
   - mu_eta
   - safe_combo
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_252.md
+  citations:
+  - &id572
+    path: redteam/pass2/reports/stage_252.md
     line: 129
     role: pass2_stage_report
     stage: '252'
@@ -21447,17 +19439,26 @@ candidates:
       is resolved; only a low-severity card-text-lag remains.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_252_mu_eta
+    modality: existing_provenance
+    anchor_stage: '252'
+    parameter_names:
+    - mu_eta
+    - safe_combo
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id572
 - id: fit_stage_252_r_v
+  candidate_key: stage_252_r_v
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '252'
   parameter_names:
   - r_V
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_252.md
+  citations:
+  - &id573
+    path: redteam/pass2/reports/stage_252.md
     line: 39
     role: pass2_stage_report
     stage: '252'
@@ -21468,29 +19469,39 @@ candidates:
       benchmark (M9). All `assert`/`expectZero`/`expectApprox` pass in both saved outputs.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_252_r_v
+    modality: existing_provenance
+    anchor_stage: '252'
+    parameter_names:
+    - r_V
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id573
 - id: fit_stage_253_chi_lambda
+  candidate_key: stage_253_chi_lambda
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - chi_lambda
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  citations:
+  - &id574
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 62
     role: notes_stage
     stage: '253'
     excerpt: 3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  - &id575
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 555
     role: notes_stage
     stage: '253'
     excerpt: 'The \(\chi_\lambda\) condition only says whether the turning-point geometry sits inside the formal steep-trap
       regime. The explicit stiffness formula needs one more assumption: force matching to the reduced barrier force. Stage
       253 makes that separation exact.'
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  - &id576
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 376
     role: notes_stage
     stage: '253'
@@ -21499,8 +19510,56 @@ candidates:
   modality_attribution:
   - claim_label
   - numeric_literal
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_chi_lambda
+    modality: numeric_literal
+    anchor_stage: '253'
+    parameter_names:
+    - chi_lambda
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id574
+  - candidate_key: stage_253_chi_lambda
+    modality: numeric_literal
+    anchor_stage: '253'
+    parameter_names:
+    - chi_lambda
+    reason: target-related numerical literal or closed-form coefficient
+    citation: *id575
+  - candidate_key: stage_253_chi_lambda
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - chi_lambda
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 62
+      role: notes_stage
+      stage: '253'
+      excerpt: 3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
+  - candidate_key: stage_253_chi_lambda
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - chi_lambda
+    reason: claim label or status wording near target-related parameter
+    citation: *id576
+  - candidate_key: stage_253_chi_lambda
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - chi_lambda
+    reason: claim label or status wording near target-related parameter
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 555
+      role: notes_stage
+      stage: '253'
+      excerpt: 'The \(\chi_\lambda\) condition only says whether the turning-point geometry sits inside the formal steep-trap
+        regime. The explicit stiffness formula needs one more assumption: force matching to the reduced barrier force. Stage
+        253 makes that separation exact.'
 - id: fit_stage_253_f_lat
+  candidate_key: stage_253_f_lat
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21510,9 +19569,9 @@ candidates:
   - mu_eta
   - s_0
   - stage_253
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_253.md
+  citations:
+  - &id577
+    path: redteam/pass2/reports/stage_253.md
     line: 117
     role: pass2_stage_report
     stage: '253'
@@ -21526,8 +19585,19 @@ candidates:
       also asserted, present in both notes-implied and scripts), `mu_eta = 1.0`, `f_lat = 0.75` benchmark inputs.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_f_lat
+    modality: existing_provenance
+    anchor_stage: '253'
+    parameter_names:
+    - f_lat
+    - mu_eta
+    - s_0
+    - stage_253
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id577
 - id: fit_stage_253_k_corr
+  candidate_key: stage_253_k_corr
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21556,9 +19626,9 @@ candidates:
   - s_0
   - s_c
   - zeta_ep
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_253.md
+  citations:
+  - &id578
+    path: redteam/pass2/reports/stage_253.md
     line: 35
     role: pass2_stage_report
     stage: '253'
@@ -21576,8 +19646,38 @@ candidates:
       coeff `10.95423248`.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_k_corr
+    modality: existing_provenance
+    anchor_stage: '253'
+    parameter_names:
+    - K_corr
+    - K_turn
+    - Pi_T
+    - Pi_chi
+    - Pi_ep
+    - Pi_k
+    - T_max
+    - Upsilon_lat
+    - a_int
+    - chi_lambda
+    - f_lat
+    - gamma_lat
+    - gamma_lattice
+    - k_eff
+    - lambda_ep
+    - lambda_phys
+    - lambda_ref
+    - mu_eta
+    - omega_D
+    - r_turn
+    - s_0
+    - s_c
+    - zeta_ep
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id578
 - id: fit_stage_253_k_turn
+  candidate_key: stage_253_k_turn
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21598,9 +19698,9 @@ candidates:
   - r_turn
   - s_0
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_253.md
+  citations:
+  - &id579
+    path: redteam/pass2/reports/stage_253.md
     line: 39
     role: pass2_stage_report
     stage: '253'
@@ -21613,76 +19713,130 @@ candidates:
       benchmark) and so are legitimately literal here.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_k_turn
+    modality: existing_provenance
+    anchor_stage: '253'
+    parameter_names:
+    - K_turn
+    - Pi_T
+    - Pi_ep
+    - Pi_k
+    - a_int
+    - chi_lambda
+    - f_lat
+    - gamma_lat
+    - gamma_lattice_legacy
+    - k_eff
+    - lambda_ref
+    - mu_eta
+    - r_turn
+    - s_0
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id579
 - id: fit_stage_253_mathcal
+  candidate_key: stage_253_mathcal
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - mathcal
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  citations:
+  - &id580
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 559
     role: notes_stage
     stage: '253'
     excerpt: Once \(t_*\) and \(\mathcal K_{\rm corr}\) are fixed, the aligned-spin survival condition becomes the exact ceiling
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_mathcal
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - mathcal
+    reason: claim label or status wording near target-related parameter
+    citation: *id580
 - id: fit_stage_253_max
+  candidate_key: stage_253_max
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - max
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  citations:
+  - &id581
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 54
     role: notes_stage
     stage: '253'
     excerpt: '- or a Korringa-limited thermal spin-survival ceiling \(T_{\max}\).'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_max
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - max
+    reason: claim label or status wording near target-related parameter
+    citation: *id581
 - id: fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+  candidate_key: stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  citations:
+  - &id582
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 74
     role: notes_stage
     stage: '253'
     excerpt: '- `mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl`'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+    reason: claim label or status wording near target-related parameter
+    citation: *id582
 - id: fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+  candidate_key: stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
-  status: scanned
-  file_line_citations:
-  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  citations:
+  - &id583
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 69
     role: notes_stage
     stage: '253'
     excerpt: '- `scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py`'
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+    reason: claim label or status wording near target-related parameter
+    citation: *id583
 - id: fit_stage_253_pi_ep
+  candidate_key: stage_253_pi_ep
   dry_run: false
   dry_run_id: null
   anchor_stages:
@@ -21696,9 +19850,9 @@ candidates:
   - mu_eta
   - s_0
   - s_c
-  status: scanned
-  file_line_citations:
-  - path: redteam/pass2/reports/stage_253.md
+  citations:
+  - &id584
+    path: redteam/pass2/reports/stage_253.md
     line: 93
     role: pass2_stage_report
     stage: '253'
@@ -21709,21 +19863,1078 @@ candidates:
       a_int coeff `10.95423248`; `T_max coeff 0.5489386551062235`. Both scripts report all checks passed.'
   modality_attribution:
   - existing_provenance
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_pi_ep
+    modality: existing_provenance
+    anchor_stage: '253'
+    parameter_names:
+    - Pi_ep
+    - T_max
+    - a_int
+    - f_lat
+    - gamma_lat
+    - mu_eta
+    - s_0
+    - s_c
+    reason: pass-2 reconciliation or red-team provenance seed mentions a candidate value
+    citation: *id584
 - id: fit_stage_253_subsection
+  candidate_key: stage_253_subsection
   dry_run: false
   dry_run_id: null
   anchor_stages:
   - '253'
   parameter_names:
   - subsection
-  status: scanned
-  file_line_citations:
-  - path: paper/stages/stage_253.tex
+  citations:
+  - &id585
+    path: paper/stages/stage_253.tex
     line: 6
     role: paper_stage_tex
     stage: '253'
     excerpt: \subsection{Physical calibration dictionary}
   modality_attribution:
   - claim_label
-  batch_id: null
+  modality_fragments:
+  - candidate_key: stage_253_subsection
+    modality: claim_label
+    anchor_stage: '253'
+    parameter_names:
+    - subsection
+    reason: claim label or status wording near target-related parameter
+    citation: *id585
+stage_results:
+  '001':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '002':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '003':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '004':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '005':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '006':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '007':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  008:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  009:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '010':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '011':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '012':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '013':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '014':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '015':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '016':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '017':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  018:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  019:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '020':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '021':
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  '022':
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  '023':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '024':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '025':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '026':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '027':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  028:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  029:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '030':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '031':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '032':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '033':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '034':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '035':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '036':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '037':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  038:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  039:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '040':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '041':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '042':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '043':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '044':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '045':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '046':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '047':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  048:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  049:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '050':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '051':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '052':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '053':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '054':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '055':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '056':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '057':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  058:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  059:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '060':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '061':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '062':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '063':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '064':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '065':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '066':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '067':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  068:
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  069:
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '070':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '071':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '072':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '073':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '074':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '075':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '076':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '077':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  078:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  079:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  080:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  081:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  082:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  083:
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  084:
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  085:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  086:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  087:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  088:
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  089:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  090:
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  091:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  092:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  093:
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  094:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  095:
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  096:
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  097:
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  098:
+    candidate_count: 6
+    structurally_vacuous: false
+    dry_run: false
+  099:
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '100':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '101':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '102':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '103':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '104':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '105':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '106':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '107':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '108':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '109':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '110':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '111':
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  '112':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '113':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '114':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '115':
+    candidate_count: 6
+    structurally_vacuous: false
+    dry_run: false
+  '116':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '117':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '118':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '119':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '120':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '121':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '122':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '123':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '124':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '125':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '126':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '127':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '128':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '129':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '130':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '131':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '132':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '133':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '134':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '135':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '136':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '137':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '138':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '139':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '140':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '141':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '142':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '143':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '144':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '145':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '146':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '147':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '148':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '149':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '150':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '151':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '152':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '153':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '154':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '155':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '156':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '157':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '158':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '159':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '160':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '161':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '162':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '163':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '164':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '165':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '166':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '167':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '168':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '169':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '170':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '171':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '172':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '173':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '174':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '175':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '176':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '177':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '178':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '179':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '180':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '181':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '182':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '183':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '184':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '185':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '186':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '187':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '188':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '189':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '190':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '191':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '192':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '193':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '194':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '195':
+    candidate_count: 6
+    structurally_vacuous: false
+    dry_run: false
+  '196':
+    candidate_count: 6
+    structurally_vacuous: false
+    dry_run: false
+  '197':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '198':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '199':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '200':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '201':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '202':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '203':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '204':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '205':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '206':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '207':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '208':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '209':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '210':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '211':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '212':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '213':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '214':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '215':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '216':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '217':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '218':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '219':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '220':
+    candidate_count: 6
+    structurally_vacuous: false
+    dry_run: false
+  '221':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '222':
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  '223':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '224':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '225':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '226':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '227':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '228':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '229':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '230':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '231':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '232':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '233':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '234':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '235':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '236':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '237':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '238':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '239':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '240':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '241':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '242':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '243':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '244':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '245':
+    candidate_count: 1
+    structurally_vacuous: false
+    dry_run: false
+  '246':
+    candidate_count: 0
+    structurally_vacuous: true
+    dry_run: false
+  '247':
+    candidate_count: 9
+    structurally_vacuous: false
+    dry_run: false
+  '248':
+    candidate_count: 2
+    structurally_vacuous: false
+    dry_run: false
+  '249':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '250':
+    candidate_count: 3
+    structurally_vacuous: false
+    dry_run: false
+  '251':
+    candidate_count: 4
+    structurally_vacuous: false
+    dry_run: false
+  '252':
+    candidate_count: 5
+    structurally_vacuous: false
+    dry_run: false
+  '253':
+    candidate_count: 10
+    structurally_vacuous: false
+    dry_run: false
+```
+
+Task:
+Ask one question: which stage, value, parameter, or claim class did no modality cover? Do not re-score candidates already covered.
+
+If you identify a missing class with a source citation, emit it as a fifth-scan candidate using `modality: completeness_critic`. Use the same fragment schema as the blind modalities. If there are no missing candidates, emit an empty `candidates: []` list.
+
+Emit only YAML:
+
+```yaml
+modality: completeness_critic
+candidates:
+  - candidate_key:
+    anchor_stage:
+    parameter_names: []
+    citation:
+      path:
+      line:
+      excerpt:
+    reason:
+notes:
+```

@@ -1,0 +1,399 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b7_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '195'
+- '197'
+- '222'
+- '223'
+- '224'
+candidates:
+- candidate_key: stage197_p0_target_quadrupole_normalization
+  modality: existing_provenance
+  anchor_stage: '197'
+  parameter_names:
+  - P0_target
+  - Gamma5_target
+  reason: The recorded provenance ("carried with source anchor" from the Stage-022/194 invariant tuple) bottoms out in the
+    externally imposed GR 2.5PN quadrupole target Gamma5_target = 2G/(5c^5) that the normalization product was SOLVED against,
+    i.e. the framework is calibrated TO this target rather than deriving it, so the carried-literal record (pinned in the
+    .py, re-derived only from the same Gamma5 target in the .wl) can conceal a tuned normalization.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+    line: 76
+    excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+    stage: '197'
+- candidate_key: stage195_mhat0_natural_source_map
+  modality: existing_provenance
+  anchor_stage: '195'
+  parameter_names:
+  - mhat_0
+  reason: m_hat_0 -> 1 is a chosen normalization labeled "natural point-particle source map" with no derivation recorded anywhere
+    in the provenance chain, yet the headline Packet-A closure (Delta_branch=0 iff chi_Q=1, Stage 197) holds only on this
+    branch, making the unexplained unit choice a plausible posited/tuned insertion point.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+    line: 108
+    excerpt: NQ_pt = sp.simplify(NQ_from_odd.subs(mhat0, 1))
+    stage: '195'
+- candidate_key: stage222_primitive_sample_slice
+  modality: existing_provenance
+  anchor_stage: '222'
+  parameter_names:
+  - lam_B
+  - lam_U
+  - lam_W
+  - lam_R
+  - Omega_U
+  - Omega_W
+  - varpi
+  - K
+  - M
+  - a
+  - c_s
+  reason: The entire numeric deliverable ledger of Stages 222-224 (pole census, R_Q figures incl. 145.483858657863, survival
+    thresholds, the 223 compatibility point and the 224 kill-test budgets) is generated from this hand-chosen 11-value parameter
+    slice whose selection rationale is recorded nowhere ("the displayed slice is a numerical placement"), so a slice tuned
+    to produce favorable survival-window outcomes would be indistinguishable from the current record.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 135
+    excerpt: numerical_slice = {
+    stage: '222'
+- candidate_key: stage222_vknown_barrier_benchmark
+  modality: existing_provenance
+  anchor_stage: '222'
+  parameter_names:
+  - V_known
+  - epsilon
+  - DeltaV_req
+  reason: A pinned 13-digit decimal introduced only as "carry forward the same illustrative reduced barrier benchmark" with
+    NO named upstream owner stage (notes line 350; notes line 436 concedes the true requirement "must be pulled back from
+    the actual same-charge branch"), plus an unexplained epsilon=0.1 offset, sets the survival thresholds 21.8545662963584
+    / 7.86187368416853 - vague provenance with a back-filled smell.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 213
+    excerpt: '    V_known = sp.Float(''1.181909222592'')'
+    stage: '222'
+- candidate_key: stage223_lambda02_rq_dual_engine_overclaim
+  modality: existing_provenance
+  anchor_stage: '223'
+  parameter_names:
+  - R_Q_lower_wall_lambdaW_0p2
+  - R_Q_upper_wall_lambdaW_0p2
+  reason: The provenance ledger records the 223 lambda_W=0.2 figures 138.814136942081 / 137.502546600713 as "DUAL-ENGINE-ANCHORED
+    - independently recomputed by the new .wl", but the .wl scan is scanLambdas = {2/5, 3/5, 4/5, 1} (stage223 .wl line 301)
+    and never computes a lambda_W=0.2 row - the values exist only as SymPy-pinned expectations (stage223 .py line 372) and
+    the notes table, so the recorded cross-engine corroboration is self-contradictory/overstated (pass-2 report stage_223.md
+    line 123 already documents the gap the ledger ignores).
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 21
+    excerpt: '...the corrected upper-/wall `R_Q` figures `145.483858657863` (222, lambda_W=0.2), `138.814136942081` / `137.502546600713`
+      (223, lambda_W=0.2)... each NOW DUAL-ENGINE-ANCHORED - independently recomputed by the new `.wl` and corroborating the
+      verified SymPy script... [truncated line]'
+    stage: '223'
+- candidate_key: stage224_kill_test_budgets_slice_anchored
+  modality: existing_provenance
+  anchor_stage: '224'
+  parameter_names:
+  - barP0_compat
+  - P_crit_both_10
+  - P_crit_one_10
+  - P_crit_both_30
+  - P_crit_one_30
+  reason: The "first actual branch kill test" headroom budgets are computed entirely from these carried decimals, whose provenance
+    chain terminates in the Stage-222 hand-chosen sample slice and the unsourced V_known benchmark, so the stage's pass/fail
+    margin is set by tunable upstream choices while being presented as a branch-level verdict.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+    line: 134
+    excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
+    stage: '224'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '193'
+  value: all 7 reconciled deliverables (grouped trace/anomaly map + inverse, one-pole surface D0*D4+3*D2^2=0, Omega_Q^2=-D0/(4*D2),
+    carrier 3/4+(1/4)/(1-omega^2/Omega_Q^2), firewall Schur) - symbolic, derived in-script both engines
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_193.md
+    line: 139
+    excerpt: 'reconciliation: complete; 7 deliverable values checked, 0 misaligned.'
+  reason: No free numerics; every value is an in-script-derived closed form checked by two independent routes.
+- stage: '194'
+  value: all 14 reconciled deliverables (Hankel fingerprint series, Omega_Q=3c_s/(2a), sigma_Q_can=4a^5/(27c_s^5), chi_Q=1,
+    Sigma_2/Sigma_4 constraints, chi_Q map, invariant tuple Kbar0/Kbar2/Kbar4/Gamma5bar) - derived from the spherical Hankel
+    operator / Solve in at least one engine
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_194.md
+    line: 158
+    excerpt: 'reconciliation: complete; 14 deliverable values checked, 0 misaligned. [truncated line]'
+  reason: chi_Q=1 and the pole/sigma constants are forced by the Hankel fingerprint match (SymPy pin cross-checked by Mathematica
+    Solve); the Gamma5bar target itself is flagged separately at the 197 candidate.
+- stage: '195'
+  value: remaining 14 of 15 reconciled deliverables (odd-closure factorization mhat0^2*chi_Q*N_Q=1, Delta_norm collapse, deformation
+    laws, linearization, canonical closure) - symbolic identities; only the mhat0->1 branch choice is escalated as a candidate
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_195.md
+    line: 152
+    excerpt: 'reconciliation: complete; 15 deliverable values checked, 0 misaligned.'
+  reason: All values are algebraic consequences of Stage-194 carry-forwards; no free decimal literals.
+- stage: '196'
+  value: all 13 reconciled deliverables (higher-odd difference identities, L7-irrelevance derivatives, chi_Q/N_Q/Delta_norm
+    stability, -i/L0 first-entry coefficient) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_196.md
+    line: 173
+    excerpt: 'reconciliation: complete; 13 deliverable values checked, 0 misaligned.'
+  reason: Pure series-coefficient identities; no pinned numerics.
+- stage: '197'
+  value: remaining reconciled deliverables (chi_Q formula, closure gate 3S(beta^5-1)+Sigma_0+27*Sigma_5=0, iff equivalences,
+    linearized map; negative-control chi_Q=6/5 probe-only) - symbolic; P0_target escalated as a candidate
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_197.md
+    line: 135
+    excerpt: 'reconciliation: complete; 6 deliverable values checked, 0 misaligned.'
+  reason: Closure-theorem identities verified via Reduce/Equivalent + algebraic routes; only the carried normalization target
+    is fit-suspect.
+- stage: '198'
+  value: all 10 reconciled deliverables (finite orbit law closed forms, invariant ratios, log chart, M_* drift matrix, restoration
+    map, orbit-lock equivalence) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_198.md
+    line: 122
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 misaligned.'
+  reason: M_* is reconstructed as a Jacobian of the monomial laws in the .wl; no numeric constants emitted.
+- stage: '199'
+  value: all 16 reconciled deliverables (pairwise transport factors Phi_T/Phi_K/Phi_mu, mismatch triple, q-chart, projectors,
+    cocycle laws, det = 1+chi0) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_199.md
+    line: 166
+    excerpt: '`reconciliation: complete; 16 deliverables checked, 0 misaligned.` [truncated line]'
+  reason: Closed-form laws in exponent symbols only; transport factors derived by native Solve in the .wl.
+- stage: '200'
+  value: all 8 reconciled deliverables (M_* rows, chart conversions, four-scalar packet, Packet-A linearization coefficient
+    5*eps_beta + dSigma0/(3S) + 9*dSigma5/S) - symbolic, checkpoint
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_200.md
+    line: 131
+    excerpt: '**reconciliation: complete; 8 deliverable values checked, 0 misaligned.** [truncated line]'
+  reason: Checkpoint pins no numeric constant; M_* is CAS-derived as a Jacobian in both engines.
+- stage: '201'
+  value: all 11 reconciled deliverables (section S, repair vector, mismatch chart, projection, uniqueness triple, Det = 1+chi0_*)
+    - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_201.md
+    line: 156
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned.'
+  reason: Linear-algebra identities; section derived by independent augmented LinearSolve route.
+- stage: '202'
+  value: all 11 reconciled deliverables (graph map closed forms, L/pi-freeness, graph errors, repair vector, family packet
+    zero) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_202.md
+    line: 164
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned. [truncated line]'
+  reason: Graph solved by LinearSolve in .wl vs posited in .py - derive-vs-posit cross-check; no numerics.
+- stage: '203'
+  value: all 13 reconciled deliverables (hat-chi_Q composition, codim-1 slice, log tangents, kernel theorem, packet inverse,
+    IVT crossing; witness numbers -31/32, 31, tau=1/2, 32 internal-only) - symbolic, checkpoint
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_203.md
+    line: 141
+    excerpt: 'reconciliation: complete; 13 deliverable identities checked, 0 misaligned.'
+  reason: Crossing root tau=1/2 is derived in-script from the carried Stage-197 closure scalar; witness values are scaffolding,
+    absent from card/notes by design.
+- stage: '204'
+  value: all 16 reconciled deliverables (sigma exponents, monomial invariance, primitive table rows, tau_aff/tau_log predictors,
+    -eps^2/(2L0) agreement) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_204.md
+    line: 155
+    excerpt: 'reconciliation: complete; 16 deliverable values checked, 0 misaligned.'
+  reason: All exponent formulas recovered by log-derivative in the .wl; no pinned numerics.
+- stage: '205'
+  value: all 15 reconciled deliverables (L1/bridge identities, quadratic predictors, discriminants, turning criterion, tangency,
+    agreement cubic (L0^2+3L1)/(6L0^3)) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_205.md
+    line: 162
+    excerpt: 'reconciliation: complete; 15 deliverable values checked, 0 misaligned. [truncated line]'
+  reason: Predictor roots Solve-derived with branch selection in the .wl; no free numerics.
+- stage: '206'
+  value: all 10 reconciled deliverables (root map T, monotonicity, bracket endpoints, width laws, turning roots, pairwise
+    ordering, sieve tests) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_206.md
+    line: 175
+    excerpt: 'reconciliation: complete; 10 deliverable values checked, 0 value-mismatched (the lone discrepancy is a stage-number
+      *label*, F2, not a value).'
+  reason: Closed forms verified by Solve+QE; the only defect found was a stage-label drift, not a value.
+- stage: '207'
+  value: all 7 reconciled deliverables (diagonal Hessian reduction, mixed cross term 2H_ij, orientation law, drift rows, monotone/turning
+    root maps, widths) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_207.md
+    line: 124
+    excerpt: 'reconciliation: complete; 7 deliverable values checked, 0 misaligned.'
+  reason: Pure exact-closure compiler stage; no pinned floats.
+- stage: '208'
+  value: all 16 reconciled deliverables (cone, slope law, r_grad=k_j/k_i, curvature weights 2r/(1+r^2), canonical screens,
+    envelopes, certified bracket) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_208.md
+    line: 174
+    excerpt: 'reconciliation: complete; 16 deliverable values checked, 0 misaligned.'
+  reason: r_grad Solve-derived with uniqueness check; weights coefficient-extracted; only structural literals.
+- stage: '209'
+  value: all 13 reconciled deliverables (root function, A/B/C coefficients, Phi functional, stationary numerator N, quartic
+    Q deg 4, special reductions) - symbolic
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_209.md
+    line: 143
+    excerpt: 'reconciliation: complete; 13 deliverable values checked, 0 misaligned.'
+  reason: A/B/C extracted by CoefficientList and Q by Resultant in the .wl - derived, not posited; no numerics.
+- stage: '210'
+  value: all 18 reconciled deliverables (simplex, edge reductions, a_grad, w_Sigma=(Sum a)^2-1 <= 2, barycenter uniqueness,
+    A..F coefficients, tau form) - symbolic with structural integers only
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_210.md
+    line: 195
+    excerpt: 'reconciliation: complete; 18 deliverable values checked, 0 misaligned. [truncated line]'
+  reason: Gradient point Lagrange-solved and barycenter uniqueness Reduce-proven; literals 2/1/1-sqrt(3) structural.
+- stage: '211'
+  value: all 14 reconciled deliverables (N_r/N_s system, quartic C_cross deg 4, sextics S_r/S_s deg 6, Bezout 4*6=24, special
+    reductions) - symbolic; degrees computed not posited
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_211.md
+    line: 179
+    excerpt: 'reconciliation: complete; 14 deliverable values checked, 0 misaligned.'
+  reason: Values arithmetically forced from computed polynomial degrees; the known pass-2 transliteration finding (F1) was
+    an engine-independence defect, not a value-provenance defect.
+- stage: '212'
+  value: all 9 reconciled deliverables (10 pairs / 10 triples / incidence 3, nested-Min splice, budgets 120/480/600) - combinatorial,
+    derived from binomial products
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_212.md
+    line: 119
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned.'
+  reason: Counts computed by independent routes (combinations vs Binomial); budgets are factored products, not pinned.
+- stage: '213'
+  value: all 12 reconciled deliverables (quadruple ledger 5/2/4, a_grad, w_Sigma <= 3 ladder 3/2/1, ten discriminant coefficients,
+    tau bracket) - symbolic/combinatorial
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_213.md
+    line: 174
+    excerpt: 'reconciliation: complete; 12 deliverable values checked, 0 misaligned (the lone discrepancy is the verification-prose
+      line F1, which is a coverage statement, not a result value).'
+  reason: Leverage max 3 Maximize-derived; coefficients Coefficient-extracted; no free numerics.
+- stage: '214'
+  value: all 6 reconciled deliverables (degree pattern (3,3,3,2), Bezout 54, projected 150, eliminant degrees 5/6, gradient
+    ray, barycenter) - arithmetically forced; concrete probe point (3/2,5/2,7/2,29/2) internal
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_214.md
+    line: 226
+    excerpt: 'reconciliation: complete; 6 deliverable values checked, 0 misaligned.'
+  reason: 54 and 150 are products of computed degrees; eliminants Resultant-derived in the .wl; notes corrections 218->150
+    confirmed held.
+- stage: '215'
+  value: all 11 reconciled deliverables (ledger 10/5/4/2/4, per-envelope 54, budgets 540/600/1140) - combinatorial/arithmetic,
+    derived
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_215.md
+    line: 158
+    excerpt: '`reconciliation: complete; 11 deliverable values checked, 0 misaligned.` [truncated line]'
+  reason: Budgets reduce to factored products (5*2*54=540, 600+540=1140); interval theorems Resolve-proven over Reals.
+- stage: '216'
+  value: all 14 reconciled deliverables (a_5_grad, max slope, face gaps, w_Sigma <= 4 via eigenvalues, ladder 4/3/2/1, bracket,
+    screen rows 7, support ceiling 5) - symbolic/structural integers
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_216.md
+    line: 149
+    excerpt: 'reconciliation: complete; 14 deliverable values checked, 0 misaligned (the lone finding is the stale `.tex`
+      Verification-field metadata, F1, not a value mismatch).'
+  reason: The <= 4 bound is spectrally proven (Eigenvalues of J-I); no pinned numerics.
+- stage: '217'
+  value: all 11 reconciled deliverables (degree pattern (3,3,3,3,2), lifted Bezout 162=3^4*2, projected 750=5*5*5*6, budgets
+    324/1500 and Stage-218 totals as prose arithmetic, special reductions) - arithmetically forced
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_217.md
+    line: 162
+    excerpt: 'reconciliation: complete; 11 deliverable values checked, 0 misaligned.'
+  reason: 162 is a product of computed degrees in both engines (never hardcoded as the source); the pass-1 179/230 typos are
+    confirmed purged - provenance chain forced by 2x162=324 and 1140+324=1464.
+- stage: '218'
+  value: all 15 reconciled deliverables (strata 5+10+10+5=30=2^5-2, incidence 5-k, splice/ceiling theorems, budgets 162/324/750/1500/1140/1464/2640)
+    - combinatorial/arithmetic, checkpoint
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_218.md
+    line: 247
+    excerpt: 'reconciliation: complete; 15 deliverable values checked, 0 misaligned.'
+  reason: The only posited literal (1140) is owned and derived upstream at Stage 215 in-band (600+540); all other budget values
+    are products/sums of computed degrees.
+- stage: '219'
+  value: all 19 reconciled deliverables (det K_red = Delta*D0, Schur D0, six chi entries, collinear chi_s, Lambda/N0/P0 bridge,
+    C6/C4/C2, square-law product-family theorem) - symbolic; numeric slice K=11 etc. internal-only
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_219.md
+    line: 153
+    excerpt: 'reconciliation: complete; 19 deliverable values checked, 0 value-misaligned. (The one finding F1 is an engine-coverage
+      staleness in the card''s `Verification` field, not an emitted-value mismatch.)'
+  reason: All deliverables are closed forms from the paper's kernel matrix; the admissibility slice is positive-definiteness
+    scaffolding with no doc carrier.
+- stage: '220'
+  value: all 22 reconciled symbolic deliverables (dynamic coefficients/invariants, det identity, six chi entries, product-family
+    closure via Laurent support {{-6,0},{-4,1},{-2,2}}, phase-lag no-go, P_abs perfect square) - symbolic; off-pole sample
+    slice internal-only
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_220.md
+    line: 184
+    excerpt: '**reconciliation: 22 symbolic deliverables checked, 21 MATCH, 1 MISMATCH** [truncated line - the 1 MISMATCH
+      is the card''s stale engine-coverage label, not a value]'
+  reason: Family closure independently proven by CoefficientRules; only numerics are probe scaffolding.
+- stage: '221'
+  value: all 9 reconciled deliverables (Breit-Wigner normal form A_*/gamma_*, dD_Pi/dPi=-N perfect square, line shapes, max/low-loss
+    identities, Q bound, survival window) - symbolic, checkpoint; probe slice (Aabs=7, gamma=2, r=3, eta=1/4, ...) labeled
+    non-proof
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_221.md
+    line: 131
+    excerpt: 'reconciliation: complete; 9 deliverable values checked, 0 misaligned.'
+  reason: N is DERIVED via native D[QPi/DeltaPi,portPi] on the .wl side (output, not input); all numeric labels probe-only
+    per notes.
+- stage: '222'
+  value: the symbolic deliverables (kappa=2*sqrt(2)/pi overlap integral, quartic F(y), R_Q_* = 27c_s^5/(a^5 omega_*^5 N),
+    threshold formula) - derived in-script both engines; the numeric census/scan rows are classified under the two stage-222
+    candidates above
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_222.md
+    line: 138
+    excerpt: '**reconciliation: complete; 24 deliverable rows checked, 0 misaligned.**'
+  reason: The symbolic layer is exact and dual-engine; only the slice-seeded numerics and the V_known benchmark carry fit
+    risk (escalated as candidates).
+- stage: '223'
+  value: the symbolic deliverables (one-pole numerator identity, compatibility surface N0/P0_target = 3(M+B2+Z2)^2/(B4+Z4)
+    obtained by solving K_norm == K_pole in BOTH engines, primitive specialization) - derived; numeric rows inherit the stage-222
+    slice and the lambda_W=0.2 row is escalated as a candidate
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_223.md
+    line: 169
+    excerpt: 'reconciliation: complete; 19 deliverable values checked, 0 misaligned.'
+  reason: The compatibility surface is a genuine solve-then-match theorem (de-tautologized F2 confirmed); fit risk is confined
+    to the slice-derived numerics.
+- stage: '224'
+  value: the symbolic deliverables (grouped inverse map, normalization compiler, isotropic ceiling, WA lane law lambda=(1,1/2,-1),
+    a_P0/b_P0 compiler with b=3a, robust collapse) - derived (Solve/LinearSolve in .wl); the carried numeric budgets are escalated
+    as a candidate
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_224.md
+    line: 125
+    excerpt: 'reconciliation: complete; 12 deliverable values checked, 0 misaligned.'
+  reason: The compiler algebra is exact and dual-engine; only the slice-anchored kill-test decimals carry fit risk.

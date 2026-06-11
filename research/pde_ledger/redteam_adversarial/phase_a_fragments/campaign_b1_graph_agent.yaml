@@ -1,0 +1,199 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b1_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '001'
+- '002'
+- '021'
+- '022'
+- '025'
+candidates:
+- candidate_key: stage001_wall_action_constitutive_coefficients
+  modality: graph
+  anchor_stage: '001'
+  parameter_names:
+  - mu_eta
+  - T_w
+  - T_Omega
+  - K_eta
+  reason: The graph marks the quadratic wall action as a newly introduced ansatz with no derivation edge into its four coefficients,
+    and the atlas itself carries a negative query NEG_QUERY_WALL_COEFFS_ARE_FIT_KNOBS plus firewall FIREWALL_WALL_COEFFS_BRANCH_DATA
+    acknowledging these coefficients are the canonical place where stage-by-stage refitting could rescue normalization.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_001.tex
+    line: 149
+    excerpt: 'The coefficients \(\mu_\eta,T_w,T_\Omega,K_\eta\) are branch constitutive functions. (graph: MT_STAGE1_GEOMETRY_LIFT
+      -[INTRODUCES]-> MATH_WALL_ACTION_S_ETA "new ansatz")'
+    stage: '001'
+- candidate_key: stage002_grouped_p2_stiffness_gate
+  modality: graph
+  anchor_stage: '002'
+  parameter_names:
+  - K_2
+  - M_2
+  reason: K_2 and M_2 are integrals of the undetermined Stage 001 wall coefficients, so the graph's "grouped P2 stiffness
+    gate" inherits the same untraced freedom and any downstream numerical commitment through EQ_BDG_SCHUR_KERNEL can be absorbed
+    into them without a derivation edge.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_002.tex
+    line: 96
+    excerpt: K_2=\int dw\left[ ... (graph node EQ_WALL_P2_STIFFNESS, status effective_linear_wall_closure)
+    stage: '002'
+- candidate_key: stage021_retained_reduced_adapter_couplings
+  modality: graph
+  anchor_stage: '021'
+  parameter_names:
+  - g_A_l
+  - g_W_l
+  - R_l
+  - Omega_A_l
+  - Omega_W_l
+  reason: The one-port couplings and frequencies entering N_l(0) come from the earlier reduced model that the graph shows
+    is retained by fiat (MT_STAGE004_020_PROJECTED_MAXWELL -[CLOSED_BY]-> MT_STAGE021_REDUCED_ONE_PORT) rather than derived
+    from the projection-first packet, leaving them adjustable inputs to the downstream transfer factor.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_021.tex
+    line: 43
+    excerpt: Outgoing transfer paragraph / eq:app-stage021-transfer-factor (graph node EQ_MAXWELL_MIXED_TRANSFER, parent MATH_MAXWELL_MIXED_KERNEL,
+      status retained_reduced_adapter)
+    stage: '021'
+- candidate_key: stage021_outgoing_fingerprint_omega5_coefficient
+  modality: graph
+  anchor_stage: '021'
+  parameter_names:
+  - a
+  - c_s
+  - fingerprint_omega5_coeff_1_over_27
+  reason: The graph edge "EQ_COMPACT_L2_FINGERPRINT -[FEEDS]-> EQ_P0_TARGET (the i omega^5 coefficient sets the universal
+    quadrupole target)" makes this reduced-branch coefficient the sole carrier of the external 2.5PN match, so any tuning
+    of the reduced branch (status exact_reduced, not parent-exact) propagates directly into the headline normalization claim.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_021.tex
+    line: 63
+    excerpt: 'eq:app-stage021-outgoing-fingerprint: \widehat Y_2^{out}=1+a^2\omega^2/(9c_s^2)+4a^4\omega^4/(81c_s^4)+i a^5\omega^5/(27c_s^5)+O(\omega^6)
+      (graph node EQ_COMPACT_L2_FINGERPRINT)'
+    stage: '021'
+- candidate_key: stage022_p0_quadrupole_normalization_target
+  modality: graph
+  anchor_stage: '022'
+  parameter_names:
+  - mhat_0
+  - P_0
+  - gamma_GR
+  reason: This is an explicit external-match commitment to the GR quadrupole constant 2G/(5c^5) that the graph itself classifies
+    as an open gate (OPEN_QUAD_NORMALIZATION) with no derivation edge producing mhat_0^2 P_0; any later branch data chosen
+    to satisfy it would be a back-filled fit rather than a derivation.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_022.tex
+    line: 133
+    excerpt: \widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5} (graph node EQ_P0_TARGET, status open_actual_branch_data, anchors
+      OPEN_QUAD_NORMALIZATION)
+    stage: '022'
+- candidate_key: stage022_source_map_branch_mhat0_unity
+  modality: graph
+  anchor_stage: '022'
+  parameter_names:
+  - mhat_0
+  reason: Selecting the "leading natural source-map branch" mhat_0=1 is a branch choice with no supporting derivation edge
+    in the graph, and it is exactly the move that converts the invariant product into a pure P0 condition, so the unity choice
+    could be a convenience tuned to make the external target reachable.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_022.tex
+    line: 135
+    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+    stage: '022'
+- candidate_key: stage025_radial_source_map_normalization
+  modality: graph
+  anchor_stage: '025'
+  parameter_names:
+  - mhat_rad
+  - N_Q_target
+  reason: With mhat_ang fixed to 1 at Stage 024, the radial source-map factor mhat_rad is the last free normalization knob
+    in the graph's minimal scalar target equation (status reduced_model, fed by the open gate chain to OPEN_SOURCE_PORT_NORMALIZATION),
+    so a later numerical choice of mhat_rad satisfying the target would be a fit insertion rather than a derivation.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_025.tex
+    line: 65
+    excerpt: \widehat m_{rad}^{\,2} ... = N_Q^{target} (graph node MT_STAGE025_MINIMAL_NORMALIZATION, status reduced_model)
+    stage: '025'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '005'
+  source: research/pde_ledger/paper/stages/stage_005.tex
+  reason: no graph node resolves to this stage source; only the MT_STAGE004_020_PROJECTED_MAXWELL bundle exists and its sources
+    list only stage_004.tex and stage_020.tex
+- stage: '006'
+  source: research/pde_ledger/paper/stages/stage_006.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '007'
+  source: research/pde_ledger/paper/stages/stage_007.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: 008
+  source: research/pde_ledger/paper/stages/stage_008.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: 009
+  source: research/pde_ledger/paper/stages/stage_009.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '010'
+  source: research/pde_ledger/paper/stages/stage_010.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '011'
+  source: research/pde_ledger/paper/stages/stage_011.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '012'
+  source: research/pde_ledger/paper/stages/stage_012.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '013'
+  source: research/pde_ledger/paper/stages/stage_013.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '014'
+  source: research/pde_ledger/paper/stages/stage_014.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '015'
+  source: research/pde_ledger/paper/stages/stage_015.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '016'
+  source: research/pde_ledger/paper/stages/stage_016.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '017'
+  source: research/pde_ledger/paper/stages/stage_017.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: 018
+  source: research/pde_ledger/paper/stages/stage_018.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: 019
+  source: research/pde_ledger/paper/stages/stage_019.tex
+  reason: no graph node resolves to this stage source; covered only implicitly by the 004-020 bundle node
+- stage: '026'
+  source: research/pde_ledger/paper/stages/stage_026.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: '027'
+  source: research/pde_ledger/paper/stages/stage_027.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: 028
+  source: research/pde_ledger/paper/stages/stage_028.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: 029
+  source: research/pde_ledger/paper/stages/stage_029.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: '030'
+  source: research/pde_ledger/paper/stages/stage_030.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: '031'
+  source: research/pde_ledger/paper/stages/stage_031.tex
+  reason: no graph node resolves to this stage source; CLAIM_STAGE025_031_SELECTED_BRANCH covers 025-031 semantically but
+    does not list this tex file as a source
+- stage: '032'
+  source: research/pde_ledger/paper/stages/stage_032.tex
+  reason: no graph node resolves to this stage source and no claim node references Stage 032 sources at all in the atlas

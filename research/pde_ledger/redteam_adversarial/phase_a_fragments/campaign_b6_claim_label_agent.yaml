@@ -1,0 +1,586 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b6_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '161'
+- '162'
+- '163'
+- '164'
+- '165'
+- '166'
+- '167'
+- '168'
+- '169'
+- '170'
+- '171'
+- '172'
+- '173'
+- '174'
+- '175'
+- '176'
+- '177'
+- '178'
+- '179'
+- '180'
+- '181'
+- '182'
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+- '189'
+- '191'
+- '192'
+candidates:
+- candidate_key: stage161_upsilon_pi_one_ninth_coefficient
+  modality: claim_label
+  anchor_stage: '161'
+  parameter_names:
+  - Upsilon_Pi
+  - r_c_star
+  reason: The boxed claim that Upsilon_Pi is "the exact image" of a smaller defect rests on the coefficient (1+r_c,*)/9, the
+    same 1/9-family constant as the gamma_0 ansatz, whose derived-vs-posited origin is exactly what a fit insertion would
+    hide.
+  citation:
+    path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 25
+    excerpt: \frac{1+r_{c,*}}{9}
+    stage: '161'
+- candidate_key: stage161_delta_q_sigma_star_closure
+  modality: claim_label
+  anchor_stage: '161'
+  parameter_names:
+  - sigma_star
+  - Xi_slip
+  reason: Card asserts under StatusExactClosure that the last defect has the exact prefactor -sigma_*/(1-sigma_*) and weight
+    -2 on Xi_L, claiming these coefficients are forced rather than tuned.
+  citation:
+    path: paper/stages/stage_161.tex
+    line: 16
+    excerpt: Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
+    stage: '161'
+- candidate_key: stage162_gamma0_similarity_law
+  modality: claim_label
+  anchor_stage: '162'
+  parameter_names:
+  - gamma_0
+  reason: The compensated D/N similarity law with fixed coefficient 4/(3*pi^2) is presented as the exact law whose preservation
+    is "automatic," a claim that the constant is derived and not adjustable.
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 15
+    excerpt: \gamma_0=\frac{4L_W^2}{3\pi^2 a^2}
+    stage: '162'
+- candidate_key: stage162_gamma0_one_ninth_r_form
+  modality: claim_label
+  anchor_stage: '162'
+  parameter_names:
+  - gamma_0
+  - r_frak
+  reason: States gamma_0=(1+r^2)/9 as an exact identity along the parent family; this is the known ansatz-family value (1+r_c)/9
+    re-asserted as derived, a prime back-fill location.
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 61
+    excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
+    stage: '162'
+- candidate_key: stage162_r_f1_family1_value
+  modality: claim_label
+  anchor_stage: '162'
+  parameter_names:
+  - r_F1
+  reason: A 15-digit numeric "Family-1 value" is invoked as the branch-selected point at which rigidity is "numerically substantial";
+    the prose claims it is selected by the positive-source throat core, i.e. derived not fitted.
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 155
+    excerpt: \mathfrak r_{F1}\approx 1.77799353547498,
+    stage: '162'
+- candidate_key: stage163_delta_perp_exact_parent_expression
+  modality: claim_label
+  anchor_stage: '163'
+  parameter_names:
+  - delta_perp
+  - g_minus_prime_r_star
+  reason: Claims the off-family normal coordinate (including the slope weight g_-'(r_*)) has an exact microscopic expression,
+    labeling every weight in delta_perp as derived rather than chosen.
+  citation:
+    path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 21
+    excerpt: and that this scalar has an exact parent-variable expression in terms of the microscopic deformations of
+    stage: '163'
+- candidate_key: stage164_quarter_sqrt_weight
+  modality: claim_label
+  anchor_stage: '164'
+  parameter_names:
+  - delta_perp_channel_weight
+  - r_star
+  reason: The carry-forward asserts the second log-imbalance channel enters with the exact weight 1/(4*sqrt(1+r_*^2)); the
+    1/4 is presented as forced by Stage 163 algebra and would mask any tuning there.
+  citation:
+    path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+    line: 12
+    excerpt: \frac{1}{4\sqrt{1+\mathfrak r_*^2}}\,
+    stage: '164'
+- candidate_key: stage165_pinned_parent_ratios
+  modality: claim_label
+  anchor_stage: '165'
+  parameter_names:
+  - g_frak
+  - r_frak
+  reason: Explicit "pinned" claim-label asserting delta_g=0 and delta_r=0 are forced on the lower branch, i.e. that the parent
+    ratios are non-tunable there.
+  citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 44
+    excerpt: 'are pinned at first order on the exact lower branch:'
+    stage: '165'
+- candidate_key: stage165_frozen_n5_wall_eos
+  modality: claim_label
+  anchor_stage: '165'
+  parameter_names:
+  - n_wall_eos
+  reason: The wall equation-of-state index n=5 is labeled "frozen" and used to collapse the drift count from eight to four;
+    a fixed integer exponent imported as non-negotiable is a classic fit insertion point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 27
+    excerpt: '4. and after the frozen `n=5` wall-EOS reduction the whole actual branch-drift problem collapses to only four
+      independent microscopic drifts:'
+    stage: '165'
+- candidate_key: stage166_four_observables_determine_drifts
+  modality: claim_label
+  anchor_stage: '166'
+  parameter_names:
+  - Theta_w
+  - K_s
+  - K_q
+  - P_0
+  reason: Claims the four bundle observables uniquely determine the four remaining microscopic drifts ("determine them algebraically",
+    explicitly contrasted with guessing), a uniqueness/forcing claim.
+  citation:
+    path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+    line: 16
+    excerpt: 'The right next move is **not** to guess them one by one.  The grouped wall/BdG/Maxwell/mixed bundle already
+      exposes four natural observables that determine them algebraically:'
+    stage: '166'
+- candidate_key: stage167_parent_ratios_first_order_invariants
+  modality: claim_label
+  anchor_stage: '167'
+  parameter_names:
+  - r_c
+  - r_frak
+  - g_frak
+  reason: Asserts the exact parent ratios r_c, r, g are first-order invariants under arbitrary bundle drifts, i.e. that they
+    cannot be moved (not free) on the branch.
+  citation:
+    path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+    line: 26
+    excerpt: 3. and, most importantly, the exact parent ratios
+    stage: '167'
+- candidate_key: stage168_eps_perp_exact_weights
+  modality: claim_label
+  anchor_stage: '168'
+  parameter_names:
+  - eps_perp
+  - g_star
+  - r_star
+  reason: Boxed definition assigns exact rational weights (1/2, 3/4, factor 2) to the three slippages and the note then claims
+    delta_perp=-eps_perp exactly; these weights are presented as derived, not adjustable.
+  citation:
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 171
+    excerpt: +\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_L.
+    stage: '168'
+- candidate_key: stage169_seven_tenths_invariant
+  modality: claim_label
+  anchor_stage: '169'
+  parameter_names:
+  - A_x_squared_coefficient
+  - b_x_over_a_x
+  reason: Boxed exact values b_x=3a_x and the 7/10 quadratic-invariant coefficient on the weak-axisymmetric branch are claim-labeled
+    as forced by the grouped signature.
+  citation:
+    path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 93
+    excerpt: \mathcal A_x^2=\frac{7}{10}\,\epsilon^2\,(x^{(1)})^2.
+    stage: '169'
+- candidate_key: stage170_canonical_u2_u4
+  modality: claim_label
+  anchor_stage: '170'
+  parameter_names:
+  - u_2
+  - u_4
+  reason: States "On that branch the canonical values are" u_2=1/9, u_4=4/81 — a canonical-value claim whose provenance (derived
+    vs branch-fitted) is the load-bearing question for every downstream 1/9.
+  citation:
+    path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 90
+    excerpt: u_2=\frac19,
+    stage: '170'
+- candidate_key: stage170_k_a_one_ninth_combination
+  modality: claim_label
+  anchor_stage: '170'
+  parameter_names:
+  - K_A_weight
+  reason: The "exact microscopic combination" feeding delta_kappa_W carries the fixed weight 1/9, claimed forced by the canonical
+    branch rather than chosen.
+  citation:
+    path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 25
+    excerpt: '   \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},'
+    stage: '170'
+- candidate_key: stage171_outlet_feed_coefficients
+  modality: claim_label
+  anchor_stage: '171'
+  parameter_names:
+  - delta_kappa_W_coefficient
+  - delta_gamma_W_coefficient
+  - sigma_star
+  reason: The carry-forward asserts exact feed coefficients 3(1-sigma)/(sigma D0) and -(1-sigma)/(9 sigma N0) into the hidden
+    outlet deformations; the rational prefactors 3 and 1/9 are presented as derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+    line: 16
+    excerpt: \frac{3(1-\sigma_*)}{\sigma_* D_0}\,\mathcal K_A,
+    stage: '171'
+- candidate_key: stage172_canonical_branch_collapse
+  modality: claim_label
+  anchor_stage: '172'
+  parameter_names:
+  - u_2
+  - u_4
+  - K1_frak
+  - G1_frak
+  reason: The collapse K1=-D0*u2^(1), G1=D0*P1 is claimed to hold "on the canonical compensated branch" with (1/9,4/81) treated
+    as fixed canonical inputs, labeling those values non-tunable.
+  citation:
+    path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 238
+    excerpt: the first-order variation on the canonical branch \((u_2,u_4)=(1/9,4/81)\) is
+    stage: '172'
+- candidate_key: stage172_wl_canonical_banner
+  modality: claim_label
+  anchor_stage: '172'
+  parameter_names:
+  - u_2
+  reason: Script claim-label hard-codes u2=1/9 as "canonical" in the audit banner, so the verification itself presumes the
+    value is fixed rather than testing its origin.
+  citation:
+    path: mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
+    line: 61
+    excerpt: banner["Canonical-even collapse at u2 = 1/9"];
+    stage: '172'
+- candidate_key: stage173_stage024_signature_triple
+  modality: claim_label
+  anchor_stage: '173'
+  parameter_names:
+  - lambda_20
+  - lambda_21
+  - lambda_22
+  reason: The "exact Stage-024 axisymmetric grouped signature" (1, 1/2, -1) is imported as an exact fixed triple throughout
+    164-181; if the triple was ever calibrated rather than derived at Stage 024, every collapse here inherits the fit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 23
+    excerpt: \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1,
+    stage: '173'
+- candidate_key: stage173_slopes_fixed_by_d01
+  modality: claim_label
+  anchor_stage: '173'
+  parameter_names:
+  - D_01
+  - u_2_slope
+  - u_4_slope
+  reason: Explicit "fixed by" claim-label asserting three slopes are non-free once D_01 is given, a forcing claim that removes
+    apparent degrees of freedom.
+  citation:
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 226
+    excerpt: 'So on the even-preserving branch, all three conservative grouped operator slopes are fixed by a single static
+      slope \(D_{01}\):'
+    stage: '173'
+- candidate_key: stage174_self_similarity_weights
+  modality: claim_label
+  anchor_stage: '174'
+  parameter_names:
+  - omega_B
+  - omega_Z
+  reason: The boxed "exact collapse" of Xi_load introduces weighted defect families with weights omega_B, omega_Z claimed
+    exact; the weights' derivation is where a tuned decomposition could hide.
+  citation:
+    path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+    line: 29
+    excerpt: \omega_B(\delta_B-\delta_K)
+    stage: '174'
+- candidate_key: stage175_wall_normalized_factorization
+  modality: claim_label
+  anchor_stage: '175'
+  parameter_names:
+  - B_0_alpha
+  - Z_0_r
+  - K_wall_baseline
+  reason: Claims the Stage 174 defect families collapse exactly to wall-normalized shape/load variables with the wall baseline
+    K factored out; the exactness label asserts no residual freedom in the normalization.
+  citation:
+    path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+    line: 29
+    excerpt: B_{0,\alpha}=K\,\chi_\alpha^2,
+    stage: '175'
+- candidate_key: stage176_square_root_mixed_leg_exponent
+  modality: claim_label
+  anchor_stage: '176'
+  parameter_names:
+  - mixed_leg_exponent_half
+  - G_W
+  - Omega_W
+  - K_wall_baseline
+  reason: The exponent 1/2 in G_W/Omega_W^2 ~ sqrt(K) is claimed to be forced by zero-defect on rigid branches; an exponent
+    claimed forced is a canonical fit-insertion shape.
+  citation:
+    path: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+    line: 21
+    excerpt: On branches where the last two are rigid, the entire remaining linear grouped `2.5`PN defect collapses to a single
+      square-root wall-loading law for the raw mixed leg.
+    stage: '176'
+- candidate_key: stage177_xi1_exact_collapse
+  modality: claim_label
+  anchor_stage: '177'
+  parameter_names:
+  - Xi_1
+  - P_1
+  - P_0
+  reason: '"Exactly" claim that all weak-axisymmetric outgoing slippages collapse to the single amplitude Xi_1=P_1/P_0 with
+    the same fixed signature, asserting no port-level freedom survives.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+    line: 353
+    excerpt: So in the dominant-port rigid branch, zero defect is exactly the square-root mixed-leg slope condition
+    stage: '177'
+- candidate_key: stage178_doubled_slope_factors
+  modality: claim_label
+  anchor_stage: '178'
+  parameter_names:
+  - nu_r_factor_2
+  - kappa_1
+  reason: The factor-2 doublings in the co-loading law (nu_r = 2p_r - 2d_r) are claim-labeled "simply" forced by the squared
+    port form; the fixed integer factors carry the whole theorem.
+  citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 97
+    excerpt: It says the static outgoing-transfer slope is simply the doubled numerator slope minus the doubled detuning slope.
+    stage: '178'
+- candidate_key: stage179_xi1_factor_two_transfer_slopes
+  modality: claim_label
+  anchor_stage: '179'
+  parameter_names:
+  - Xi_1_prefactor_2
+  - rho_r_N
+  - tau_r
+  reason: Boxed exact factorization N_A0 = K_A T^2 forces the prefactor 2 in the final defect formula; both the factorization
+    exactness and the weights rho_r^(N) are claimed derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 43
+    excerpt: \Xi_1 = 2\sum_r \rho_r^{(N)}\,\tau_r,
+    stage: '179'
+- candidate_key: stage180_beta0_continuum_import
+  modality: claim_label
+  anchor_stage: '180'
+  parameter_names:
+  - beta_0
+  - K_0
+  - Z_W
+  - rho
+  - epsilon_W
+  reason: The "explicit one-port isotropic moving-throat branch" composite beta_0 with its (1+rho)^2/(1-eps_W)^2 structure
+    is imported from earlier continuum-kernel stages as given; its claimed-derived form fixes the continuum slope law evaluated
+    here.
+  citation:
+    path: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+    line: 21
+    excerpt: \frac{\mu_W}{\mu_\eta}\frac{K_\eta^{(\mathrm{eff})}}{K_W^{(\mathrm{eff})}}
+    stage: '180'
+- candidate_key: stage181_transfer_shape_27pi2_over_20
+  modality: claim_label
+  anchor_stage: '181'
+  parameter_names:
+  - T_A_squared_prefactor
+  - R_target
+  reason: The transfer shape is equated to an explicit closed form with fixed constant 27*pi^2/20 and a target ratio R_target;
+    the constant is asserted as the "actual" branch value, exactly where a matched normalization could be back-filled.
+  citation:
+    path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 14
+    excerpt: \frac{27\pi^2Gc_s^5}{20a^5c^5}\,
+    stage: '181'
+- candidate_key: stage181_two_elevenths_split_coefficient
+  modality: claim_label
+  anchor_stage: '181'
+  parameter_names:
+  - epsilon_W_split_coefficient_2_11
+  - delta_U
+  reason: The split coefficient 2/11 is imported from "earlier coherent-kernel stages" as the actual tracking-branch value;
+    an isolated rational like 2/11 stated as given is a high-value provenance target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 29
+    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+    stage: '181'
+- candidate_key: stage182_two_elevenths_carried_forward
+  modality: claim_label
+  anchor_stage: '182'
+  parameter_names:
+  - epsilon_W_split_coefficient_2_11
+  reason: The 2/11 coefficient re-enters the exact tracking/nontracking split as fixed carried data, propagating the same
+    claimed-derived constant into the slippage decomposition.
+  citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 14
+    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+    stage: '182'
+- candidate_key: stage183_canonical_sigma_nt
+  modality: claim_label
+  anchor_stage: '183'
+  parameter_names:
+  - Sigma_nt
+  reason: Script claim-label calls one specific Sigma_nt form "canonical" and checks the derived form against it, presupposing
+    the canonical reference combination is itself non-tunable.
+  citation:
+    path: mathematica/moving_throat_pde_stage183_triangular_normal_form_mathematica_audit.wl
+    line: 152
+    excerpt: expectZero["Canonical branch-adapted Sigma_nt", sigmaNTDerived - sigmaNTCanonical];
+    stage: '183'
+- candidate_key: stage184_b_star_exponent
+  modality: claim_label
+  anchor_stage: '184'
+  parameter_names:
+  - B_star
+  - chi_0_star
+  - delta_U_star
+  reason: The exponent B_* in the "exact branch composite" N_* = T^2 R_tr^{B_*} is a reference-point-dependent constant claimed
+    exactly derived; a tuned exponent here would silently make the composite invariant by construction.
+  citation:
+    path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+    line: 36
+    excerpt: B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}},
+    stage: '184'
+- candidate_key: stage185_monomial_exponents
+  modality: claim_label
+  anchor_stage: '185'
+  parameter_names:
+  - C_tr_star_exponents
+  - delta_U_star
+  - chi_0_star
+  reason: Boxed claim that the branch coordinates are "exactly" the log drifts of monomials with exponents (1+delta_U,*, 1+chi_0,*);
+    the starred exponent values are frozen reference data whose origin could be fitted.
+  citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 35
+    excerpt: \mathfrak C_{{\rm tr},*}:=\chi_0^{\,1+\delta_{U,*}}\,
+    stage: '185'
+- candidate_key: stage186_not_fine_tuning_claim
+  modality: claim_label
+  anchor_stage: '186'
+  parameter_names:
+  - Sigma_tr
+  - Sigma_nt
+  - Sigma_eta
+  reason: Explicit anti-tuning claim-label asserting the zero-defect equations are structural (a five-parameter orbit) and
+    not a numerical accident; this is precisely the claim an adversary must test against the kernel dimension.
+  citation:
+    path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    line: 393
+    excerpt: '### 7.1 The zero-defect branch is not fine-tuning'
+    stage: '186'
+- candidate_key: stage186_wl_matches_reference_matrix
+  modality: claim_label
+  anchor_stage: '186'
+  parameter_names:
+  - M_star_matrix
+  reason: '"Matches reference" claim-label: the derived constraint matrix is checked against a hard-coded reference matrix
+    mMat, so the reference entries function as posited values the audit treats as ground truth.'
+  citation:
+    path: mathematica/moving_throat_pde_stage186_similarity_orbit_closure_mathematica_audit.wl
+    line: 83
+    excerpt: expectZero["M_* row 1 from C_tr monomial matches reference", Total[Abs[mMatDerived[[1]] - mMat[[1]]]]];
+    stage: '186'
+- candidate_key: stage187_exact_level_set_orbit_identity
+  modality: claim_label
+  anchor_stage: '187'
+  parameter_names:
+  - C_tr_star
+  - C_nt_star
+  - epsilon_eta
+  reason: Boxed claim that finite level sets of the three invariants are "precisely" the similarity orbits — an exactness/uniqueness
+    claim that elevates the three monomial invariants to canonical non-tunable coordinates.
+  citation:
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 33
+    excerpt: \text{the exact level sets of }
+    stage: '187'
+- candidate_key: stage189_normalization_target_2g_5c5
+  modality: claim_label
+  anchor_stage: '189'
+  parameter_names:
+  - m_hat0_squared_Gamma_5
+  - Gamma_5_coefficient_1_27
+  - normalization_54_5
+  reason: The "invariant odd normalization target" 2G/(5c^5) (and its equivalent 54Gc_s^5/(5a^5c^5) via Gamma_5=a^5 P_0/(27
+    c_s^5)) is the external GR-matching value the PDE "still has to hit"; a matched target stated as exact is the archetypal
+    fit insertion point.
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 515
+    excerpt: m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
+    stage: '189'
+- candidate_key: stage191_fixed_by_previous_stages
+  modality: claim_label
+  anchor_stage: '191'
+  parameter_names:
+  - Delta_branch
+  - Delta_orbit
+  reason: Blanket "already fixed" claim-label asserting that outside the two residual vectors nothing remains free; it converts
+    every upstream constant into claimed-derived data without re-deriving any of them.
+  citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 341
+    excerpt: Everything else is compiler algebra already fixed by the previous stages.
+    stage: '191'
+- candidate_key: stage192_chi_q_unit_relations
+  modality: claim_label
+  anchor_stage: '192'
+  parameter_names:
+  - chi_Q
+  - N_Q
+  - Delta_Q
+  reason: The card collapses Packet A to Delta_Q=chi_Q-1 and sets N_Q=chi_Q^{-1} under a "natural" reduction; chi_Q=1 has
+    a known contested provenance, so labeling these relations exact/natural is a prime back-fill claim.
+  citation:
+    path: paper/stages/stage_192.tex
+    line: 21
+    excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+    stage: '192'
+- candidate_key: stage192_canonical_quotient_section
+  modality: claim_label
+  anchor_stage: '192'
+  parameter_names:
+  - T_U
+  - K_eta_eff
+  - mu_W
+  reason: The pivot triple (T_U, K_eta_eff, mu_W) is claim-labeled the "exact canonical quotient section"; declaring one section
+    canonical fixes which microscopic variables absorb quotient failure, a choice that could be tuned to localize defects
+    conveniently.
+  citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 176
+    excerpt: Define the canonical quotient section
+    stage: '192'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

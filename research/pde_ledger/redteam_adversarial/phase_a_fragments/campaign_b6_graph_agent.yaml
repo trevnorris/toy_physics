@@ -1,0 +1,218 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b6_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '177'
+- '185'
+- '186'
+- '187'
+- '189'
+- '191'
+candidates:
+- candidate_key: stage189_mhat0_quadrupole_normalization_target
+  modality: graph
+  anchor_stage: '189'
+  parameter_names:
+  - mhat_0
+  - P_0
+  - Gamma_5
+  reason: Graph node EQ_P0_TARGET carries this as status open_actual_branch_data ("central remaining normalization target"),
+    i.e. mhat_0^2 is fixed by equivalence to the external GR quadrupole constant 2G/(5c^5) rather than exported from the actual
+    branch, yet stage 189 compiles it as an "exact normalization equivalence" -- a classic back-fill insertion point if any
+    downstream number uses mhat_0.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 84
+    excerpt: m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5};
+    stage: '189'
+  graph_node: EQ_P0_TARGET
+- candidate_key: stage187_g2_common_tangent_lambda_1
+  modality: graph
+  anchor_stage: '187'
+  parameter_names:
+  - Lambda_1
+  reason: Graph edge EQ_MONOMIAL_QUOTIENT -[FEEDS]-> EQ_G2_COMMON_TANGENT wires the stage 185-187 quotient coordinates into
+    a numeric tangent value whose graph meaning is literally "required ... to match the residual" (status conditional_open)
+    -- an external-match number that the band's quotient packet could be tuned toward rather than derived ahead of.
+  citation:
+    path: notes/g2/g2_full_output.md
+    line: 757
+    excerpt: \approx 0.279605891931464.
+    stage: '187'
+  graph_node: EQ_G2_COMMON_TANGENT
+- candidate_key: stage177_xi1_prefactor_slope_no_derives_edge
+  modality: graph
+  anchor_stage: '177'
+  parameter_names:
+  - Xi_1
+  - lambda_A
+  - P_1
+  - P_0
+  reason: MATH_XI1_PREF_SLOPE has no incoming DERIVES edge in the atlas (only ORGANIZES/PARAMETERIZES/ANCHORS) and its value
+    is an open export target (FEEDS OPEN_WEAK_AXISYM_ORBIT_LOCK); Xi_1 is normalized by dividing out the free loading parameter
+    lambda_A (epsilon*lambda_A in the EQ_XI1_PREF_SLOPE expression), so any later numeric commitment to Xi_1 or lambda_A would
+    enter without graph-recorded derivation support.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+    line: 67
+    excerpt: \Xi_1=\frac{P_1}{P_0}.
+    stage: '177'
+  graph_node: MATH_XI1_PREF_SLOPE
+- candidate_key: stage186_rank3_codimension_status_claim
+  modality: graph
+  anchor_stage: '186'
+  parameter_names:
+  - rank_M_star
+  - chi_0_star
+  reason: The numeric commitments rank(M_*)=3 and the five-parameter orbit in graph node EQ_MONOMIAL_QUOTIENT (status exact_within_coherent_branch)
+    hold only on the posited chi_{0,*}>0 constructive sector; the sign/positivity restriction that selects this sector is
+    itself an unproven branch choice the codimension-3 result is conditioned on, so the "exact" status is a potential overclaim
+    insertion point.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    line: 194
+    excerpt: So the monomial-drift map has exact rank three on the constructive coherent branch \(\chi_{0,*}>0\).
+    stage: '186'
+  graph_node: EQ_MONOMIAL_QUOTIENT
+- candidate_key: stage185_frozen_reference_coefficients_E_star_F_star
+  modality: graph
+  anchor_stage: '185'
+  parameter_names:
+  - E_star
+  - F_star
+  - chi_0_star
+  - delta_U_star
+  - epsilon_W_star
+  - epsilon_star
+  reason: The frozen reference-branch coefficients E_* and F_* embed hard rational structure (11, 9, 4, 2) and starred reference
+    values with no graph node or DERIVES edge anywhere in the atlas for this band; the only atlas object carrying an 11-structured
+    partition is the conditional lepton ledger EQ_LEPTON_MASS_PARTITION (11:2:5, future_paper_note source), so the provenance
+    of these embedded constants is graph-invisible and could conceal a tuned freeze point.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 225
+    excerpt: F_*:= \frac{2\chi_{0,*}}{1+\delta_{U,*}} + \frac{4\epsilon_{W,*}\delta_{U,*}}{11(1-\epsilon_*)(1+\delta_{U,*})^2}.
+    stage: '185'
+  graph_node: FILE_PDE_AUDIT
+- candidate_key: stage191_carried_coefficients_in_packet_interconversion
+  modality: graph
+  anchor_stage: '191'
+  parameter_names:
+  - chi_0_star
+  - F_star
+  - B_star
+  reason: The minimal data packet's "exact" interconversion laws (m_T, m_mu exponents) import chi_{0,*}, F_*, B_* as carried
+    coefficients while the atlas marks the whole packet layer open (TARGET_PACKET_A/B open_branch_realization, OPEN_WEAK_AXISYM_ORBIT_LOCK
+    open); if any of these carried values is ever instantiated numerically before the branch exporter exists, the packet becomes
+    a fit-insertion surface with no graph derivation backing.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 253
+    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+    stage: '191'
+  graph_node: TARGET_PACKET_A
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '161'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  reason: no dedicated atlas node; band covered only thematically via legacy-ledger anchors (FILE_PDE_AUDIT/FILE_5PN_FULL)
+- stage: '162'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  reason: no dedicated atlas node for this stage
+- stage: '163'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  reason: no dedicated atlas node for this stage
+- stage: '164'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  reason: no dedicated atlas node for this stage
+- stage: '165'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  reason: no dedicated atlas node for this stage
+- stage: '166'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  reason: no dedicated atlas node for this stage
+- stage: '167'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  reason: no dedicated atlas node for this stage
+- stage: '168'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  reason: no dedicated atlas node for this stage
+- stage: '169'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  reason: no dedicated atlas node for this stage
+- stage: '170'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  reason: no dedicated atlas node; "outlet" search returns only PHYS_OPEN_CONDUIT (unrelated boundary node)
+- stage: '171'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  reason: no dedicated atlas node for this stage
+- stage: '172'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  reason: no dedicated atlas node for this stage
+- stage: '173'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  reason: no dedicated atlas node for this stage
+- stage: '174'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  reason: no dedicated atlas node for this stage
+- stage: '175'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  reason: no dedicated atlas node for this stage
+- stage: '176'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+  reason: no dedicated atlas node for this stage
+- stage: '177'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  reason: no dedicated stage node; covered only thematically by MATH_XI1_PREF_SLOPE/EQ_XI1_PREF_SLOPE sourced from legacy
+    ledgers
+- stage: '178'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  reason: no dedicated atlas node for this stage
+- stage: '179'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+  reason: no dedicated stage node; transfer-shape language appears only in g2-side anchor SEC_G2_PREF_SLOPE
+- stage: '180'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+  reason: no dedicated atlas node for this stage
+- stage: '181'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  reason: no dedicated atlas node for this stage
+- stage: '182'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  reason: no dedicated atlas node for this stage
+- stage: '183'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  reason: no dedicated atlas node for this stage
+- stage: '184'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  reason: no dedicated atlas node for this stage
+- stage: '185'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+  reason: no dedicated stage node; covered only thematically by MT_V2_18_MONOMIAL_ORBIT and 5PN-ledger section anchors
+- stage: '186'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  reason: no dedicated stage node; covered only thematically by EQ_MONOMIAL_QUOTIENT/MT_V2_18_MONOMIAL_ORBIT
+- stage: '187'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  reason: no dedicated stage node; covered only thematically by MATH_MONOMIAL_QUOTIENT and the g2 tangent feed
+- stage: '188'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage188_branch_observables_completion.md
+  reason: no dedicated atlas node for this stage (B_* defined here is graph-invisible)
+- stage: '189'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  reason: no dedicated stage node; touched only via EQ_P0_TARGET and SEC_G2_PREF_SLOPE legacy anchors
+- stage: '190'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  reason: no dedicated atlas node for this stage
+- stage: '191'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  reason: no dedicated stage node; packet layer represented only by open-gate nodes TARGET_PACKET_A/TARGET_PACKET_B
+- stage: '192'
+  source: research/pde_ledger/notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  reason: no dedicated atlas node for this stage

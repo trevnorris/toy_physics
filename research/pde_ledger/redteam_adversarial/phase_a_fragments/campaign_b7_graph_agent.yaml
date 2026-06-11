@@ -1,0 +1,166 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b7_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '193'
+- '197'
+- '223'
+candidates:
+- candidate_key: stage193_p0_target_surface_frozen_without_derivation_edge
+  modality: graph
+  anchor_stage: '193'
+  parameter_names:
+  - P0_target
+  - mhat_0
+  reason: The graph object carrying this surface holds the numerical commitment mhat0^2 N0/D0 = 54 G c_s^5/(5 a^5 c^5), and
+    its freezing gate MT_V2_19_TARGET_SURFACE has zero incoming edges (no DERIVES lineage for the 54/5 prefactor), so the
+    universal target enters stage 193 as a frozen value the branch is later compared against.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_193.tex
+    line: 15
+    excerpt: \stagefield{Output}{Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry
+      lane enters the grouped carrier only at quadratic anisotropy order.}
+    stage: '193'
+  graph_node: MATH_FULL_BUNDLE_TARGET_SURFACE
+- candidate_key: stage197_chi_q_unity_packet_a_target
+  modality: graph
+  anchor_stage: '197'
+  parameter_names:
+  - chi_Q
+  - Delta_Q
+  reason: In the graph Packet A's normalization is fixed to D0*C/(3A^2)=1 inside an OPEN gate (status open_branch_realization)
+    whose exporter OPEN_ACTUAL_BRANCH_EXPORTER must supply data target-blind, so the chi_Q=1 match value stage 197 conditions
+    on is an external-match target with no DERIVES edge producing it — a natural place for back-filled tuning if the no-refit
+    freeze (SEC_PDE_BRANCH_FREEZE) is ever violated.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_197.tex
+    line: 15
+    excerpt: \stagefield{Output}{Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole
+      Packet-A scalar.}
+    stage: '197'
+  graph_node: TARGET_PACKET_A
+- candidate_key: stage223_p0_target_import_unprovenanced
+  modality: graph
+  anchor_stage: '223'
+  parameter_names:
+  - P0_target
+  reason: Stage 223 imports the universal target P_{0,target} as a bare input; its only graph lineage is the FREEZES edge
+    from MT_V2_19_TARGET_SURFACE (a node with no incoming derivation edges), so the value the primitive-compatibility surface
+    is tested against could be a posited rather than derived commitment.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_223.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{Imports the isotropic full-bundle moments $D_0,D_2,D_4,N_0,N_2,N_4$, the one-pole identity
+      $u_4=4u_2^2$, and the universal target $P_{0,{\rm target}}$.}
+    stage: '223'
+  graph_node: MATH_FULL_BUNDLE_TARGET_SURFACE
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: '193'
+  source: research/pde_ledger/paper/stages/stage_193.tex
+  reason: query_graph source lookup resolves no node anchored to this stage file; candidate above rests on the topical node
+    MATH_FULL_BUNDLE_TARGET_SURFACE whose anchors point to notes/pde_audit_full.md, not this stage
+- stage: '194'
+  source: research/pde_ledger/paper/stages/stage_194.tex
+  reason: no node anchored to this stage file; the topical fingerprint node MATH_COMPACT_L2_OUTGOING_FINGERPRINT anchors stage_021.tex
+    and carries a DERIVES edge (MT_V2_14), so no candidate
+- stage: '195'
+  source: research/pde_ledger/paper/stages/stage_195.tex
+  reason: no graph node found for this stage source; atlas pde_ledger anchors stop near stage 031
+- stage: '196'
+  source: research/pde_ledger/paper/stages/stage_196.tex
+  reason: no graph node found for this stage source
+- stage: '197'
+  source: research/pde_ledger/paper/stages/stage_197.tex
+  reason: no node anchored to this stage file; candidate above rests on the topical open-gate node TARGET_PACKET_A anchored
+    to notes/pde_audit_full.md:V2-26
+- stage: '198'
+  source: research/pde_ledger/paper/stages/stage_198.tex
+  reason: no graph node found for this stage source; nearest topical coverage is the open orbit-lock gate OPEN_WEAK_AXISYM_ORBIT_LOCK
+    with no per-stage anchor
+- stage: '199'
+  source: research/pde_ledger/paper/stages/stage_199.tex
+  reason: no graph node found for this stage source
+- stage: '200'
+  source: research/pde_ledger/paper/stages/stage_200.tex
+  reason: no graph node found for this stage source
+- stage: '201'
+  source: research/pde_ledger/paper/stages/stage_201.tex
+  reason: no graph node found for this stage source
+- stage: '202'
+  source: research/pde_ledger/paper/stages/stage_202.tex
+  reason: no graph node found for this stage source; graph has no free-quintuple coverage
+- stage: '203'
+  source: research/pde_ledger/paper/stages/stage_203.tex
+  reason: no graph node found for this stage source
+- stage: '204'
+  source: research/pde_ledger/paper/stages/stage_204.tex
+  reason: no graph node found for this stage source; 'log-ray' yields zero graph hits
+- stage: '205'
+  source: research/pde_ledger/paper/stages/stage_205.tex
+  reason: no graph node found for this stage source; 'Hessian' yields no substantive graph hits
+- stage: '206'
+  source: research/pde_ledger/paper/stages/stage_206.tex
+  reason: no graph node found for this stage source
+- stage: '207'
+  source: research/pde_ledger/paper/stages/stage_207.tex
+  reason: no graph node found for this stage source
+- stage: '208'
+  source: research/pde_ledger/paper/stages/stage_208.tex
+  reason: no graph node found for this stage source; 'mixed-ray' yields zero graph hits
+- stage: '209'
+  source: research/pde_ledger/paper/stages/stage_209.tex
+  reason: no graph node found for this stage source
+- stage: '210'
+  source: research/pde_ledger/paper/stages/stage_210.tex
+  reason: no graph node found for this stage source; 'simplex' yields zero graph hits
+- stage: '211'
+  source: research/pde_ledger/paper/stages/stage_211.tex
+  reason: no graph node found for this stage source
+- stage: '212'
+  source: research/pde_ledger/paper/stages/stage_212.tex
+  reason: no graph node found for this stage source
+- stage: '213'
+  source: research/pde_ledger/paper/stages/stage_213.tex
+  reason: no graph node found for this stage source
+- stage: '214'
+  source: research/pde_ledger/paper/stages/stage_214.tex
+  reason: no graph node found for this stage source
+- stage: '215'
+  source: research/pde_ledger/paper/stages/stage_215.tex
+  reason: no graph node found for this stage source
+- stage: '216'
+  source: research/pde_ledger/paper/stages/stage_216.tex
+  reason: no graph node found for this stage source; 'five-coordinate' yields zero graph hits
+- stage: '217'
+  source: research/pde_ledger/paper/stages/stage_217.tex
+  reason: no graph node found for this stage source
+- stage: '218'
+  source: research/pde_ledger/paper/stages/stage_218.tex
+  reason: no graph node found for this stage source
+- stage: '219'
+  source: research/pde_ledger/paper/stages/stage_219.tex
+  reason: no node anchored to this stage file; one-port kernel coverage in the graph anchors stage_021.tex only
+- stage: '220'
+  source: research/pde_ledger/paper/stages/stage_220.tex
+  reason: no graph node found for this stage source; 'phase-lag' yields zero graph hits
+- stage: '221'
+  source: research/pde_ledger/paper/stages/stage_221.tex
+  reason: no graph node found for this stage source; 'resonance' and 'linewidth' yield zero graph hits
+- stage: '222'
+  source: research/pde_ledger/paper/stages/stage_222.tex
+  reason: no graph node for this concrete-primitive-branch stage even though the graph marks the actual-branch exporter OPEN
+    (OPEN_ACTUAL_BRANCH_EXPORTER, status open) and demands target-blind no-refit export (SEC_PDE_BRANCH_FREEZE) — the graph
+    cannot confirm the no-refit discipline for this stage
+- stage: '223'
+  source: research/pde_ledger/paper/stages/stage_223.tex
+  reason: no node anchored to this stage file; candidate above rests on the topical node MATH_FULL_BUNDLE_TARGET_SURFACE
+- stage: '224'
+  source: research/pde_ledger/paper/stages/stage_224.tex
+  reason: no graph node found for this stage source; nearest topical node MT_V2_21_BRANCH_FIXTURE anchors notes/pde_audit_full.md

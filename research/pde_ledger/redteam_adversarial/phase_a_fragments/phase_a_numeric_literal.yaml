@@ -1,0 +1,2068 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance
+stages:
+- '001'
+- '002'
+- '003'
+- '004'
+- '005'
+- '006'
+- '007'
+- 008
+- 009
+- '010'
+- '011'
+- '012'
+- '013'
+- '014'
+- '015'
+- '016'
+- '017'
+- 018
+- 019
+- '020'
+- '021'
+- '022'
+- '023'
+- '024'
+- '025'
+- '026'
+- '027'
+- 028
+- 029
+- '030'
+- '031'
+- '032'
+- '033'
+- '034'
+- '035'
+- '036'
+- '037'
+- 038
+- 039
+- '040'
+- '041'
+- '042'
+- '043'
+- '044'
+- '045'
+- '046'
+- '047'
+- 048
+- 049
+- '050'
+- '051'
+- '052'
+- '053'
+- '054'
+- '055'
+- '056'
+- '057'
+- 058
+- 059
+- '060'
+- '061'
+- '062'
+- '063'
+- '064'
+- '065'
+- '066'
+- '067'
+- 068
+- 069
+- '070'
+- '071'
+- '072'
+- '073'
+- '074'
+- '075'
+- '076'
+- '077'
+- 078
+- 079
+- 080
+- 081
+- 082
+- 083
+- 084
+- 085
+- 086
+- 087
+- 088
+- 089
+- 090
+- 091
+- 092
+- 093
+- 094
+- 095
+- 096
+- 097
+- 098
+- 099
+- '100'
+- '101'
+- '102'
+- '103'
+- '104'
+- '105'
+- '106'
+- '107'
+- '108'
+- '109'
+- '110'
+- '111'
+- '112'
+- '113'
+- '114'
+- '115'
+- '116'
+- '117'
+- '118'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+- '126'
+- '127'
+- '128'
+- '129'
+- '130'
+- '131'
+- '132'
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+- '146'
+- '147'
+- '148'
+- '149'
+- '150'
+- '151'
+- '152'
+- '153'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+- '164'
+- '165'
+- '166'
+- '167'
+- '168'
+- '169'
+- '170'
+- '171'
+- '172'
+- '173'
+- '174'
+- '175'
+- '176'
+- '177'
+- '178'
+- '179'
+- '180'
+- '181'
+- '182'
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+- '188'
+- '189'
+- '190'
+- '191'
+- '192'
+- '193'
+- '194'
+- '195'
+- '196'
+- '197'
+- '198'
+- '199'
+- '200'
+- '201'
+- '202'
+- '203'
+- '204'
+- '205'
+- '206'
+- '207'
+- '208'
+- '209'
+- '210'
+- '211'
+- '212'
+- '213'
+- '214'
+- '215'
+- '216'
+- '217'
+- '218'
+- '219'
+- '220'
+- '221'
+- '222'
+- '223'
+- '224'
+- '225'
+- '226'
+- '227'
+- '228'
+- '229'
+- '230'
+- '231'
+- '232'
+- '233'
+- '234'
+- '235'
+- '236'
+- '237'
+- '238'
+- '239'
+- '240'
+- '241'
+- '242'
+- '243'
+- '244'
+- '245'
+- '246'
+- '247'
+- '248'
+- '249'
+- '250'
+- '251'
+- '252'
+- '253'
+candidates:
+- candidate_key: stage_021_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '021'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 49
+    role: notes_stage
+    stage: '021'
+    excerpt: '- the compact outgoing `l=2` fingerprint starts at `+ i ω^5`,'
+- candidate_key: stage_021_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '021'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 211
+    role: notes_stage
+    stage: '021'
+    excerpt: '## 6. Compact outgoing `l=2` fingerprint'
+- candidate_key: stage_021_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '021'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 240
+    role: notes_stage
+    stage: '021'
+    excerpt: 1. the compact outgoing branch supplies the universal `ω^5` fingerprint,
+- candidate_key: stage_021_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '021'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 284
+    role: notes_stage
+    stage: '021'
+    excerpt: 3. and the **passive/outgoing quadrupole fingerprint** needed by the 2.5PN and 4PN bridges.
+- candidate_key: stage_022_d_a
+  modality: numeric_literal
+  anchor_stage: '022'
+  parameter_names:
+  - D_A
+  - N_A
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_022.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '022'
+    excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+      transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\)
+      fingerprint, and the grouped trace/anomaly map.}
+- candidate_key: stage_022_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '022'
+  parameter_names:
+  - matched_fingerprint_value
+  - paragraph
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_022.tex
+    line: 86
+    role: paper_stage_tex
+    stage: '022'
+    excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- candidate_key: stage_022_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '022'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 8
+    role: notes_stage
+    stage: '022'
+    excerpt: '- to a passive/outgoing `l=2` fingerprint,'
+- candidate_key: stage_022_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '022'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 149
+    role: notes_stage
+    stage: '022'
+    excerpt: '## 5. Multiplying by the compact outgoing `l=2` fingerprint'
+- candidate_key: stage_022_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '022'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 151
+    role: notes_stage
+    stage: '022'
+    excerpt: The compact outgoing `l=2` branch already has the normalized fingerprint
+- candidate_key: stage_023_n_n
+  modality: numeric_literal
+  anchor_stage: '023'
+  parameter_names:
+  - N_n
+  - Z_n
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_023.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '023'
+    excerpt: \stagefield{Inputs}{The inputs are the Stage~003 BdG moments, the Stages~004--021 projected Maxwell-to-\(Z_n,N_n\)
+      packet and matched one-port conservative/transfer moments, the Stage~022 response/prefactor conversion, and the grouped
+      metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\).}
+- candidate_key: stage_024_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '024'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 371
+    role: notes_stage
+    stage: '024'
+    excerpt: 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-024 angular fingerprints.
+- candidate_key: stage_030_beta_0s_lambda
+  modality: numeric_literal
+  anchor_stage: '030'
+  parameter_names:
+  - beta_0s_lambda
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_030.tex
+    line: 103
+    role: paper_stage_tex
+    stage: '030'
+    excerpt: \item The outgoing coefficient contains only \(\beta_0s_-/\lambda_-\), matching the selected projection of Stage~029.
+- candidate_key: stage_035_r_target
+  modality: numeric_literal
+  anchor_stage: '035'
+  parameter_names:
+  - R_target
+  - xi_req
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 211
+    role: notes_stage
+    stage: '035'
+    excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
+- candidate_key: stage_043_m_mix
+  modality: numeric_literal
+  anchor_stage: '043'
+  parameter_names:
+  - M_mix
+  - M_supp
+  - R_U
+  - R_phi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 251
+    role: notes_stage
+    stage: '043'
+    excerpt: '> insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-041/042 selected-branch
+      formulas and determine the physical selected branch.'
+- candidate_key: stage_044_r_u
+  modality: numeric_literal
+  anchor_stage: '044'
+  parameter_names:
+  - R_U
+  - phi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_044.tex
+    line: 37
+    role: paper_stage_tex
+    stage: '044'
+    excerpt: 'Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched
+      tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.'
+- candidate_key: stage_065_v_0f
+  modality: numeric_literal
+  anchor_stage: '065'
+  parameter_names:
+  - V_0f
+  - ell
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_065.tex
+    line: 7
+    role: paper_stage_tex
+    stage: '065'
+    excerpt: \stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
+- candidate_key: stage_065_v_0
+  modality: numeric_literal
+  anchor_stage: '065'
+  parameter_names:
+  - V_0
+  - ell
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_065.tex
+    line: 18
+    role: paper_stage_tex
+    stage: '065'
+    excerpt: Inserting this into the matched-layer gain yields thresholds directly in terms of \(V_0\), \(\ell\), support
+      stiffness, and wall geometry.  Stage~066 packages those quantities into the dimensionless wall figure of merit.
+- candidate_key: stage_068_c_res
+  modality: numeric_literal
+  anchor_stage: 068
+  parameter_names:
+  - C_res
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    line: 23
+    role: notes_stage
+    stage: 068
+    excerpt: '- on the independent sech–Gaussian benchmark family, the best possible coherence is `C_res^2`,'
+- candidate_key: stage_068_delta_inf
+  modality: numeric_literal
+  anchor_stage: 068
+  parameter_names:
+  - Delta_inf
+  - Pe_req
+  - W_wall
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    line: 69
+    role: notes_stage
+    stage: 068
+    excerpt: '`W_wall <= Pe_req / Delta_inf`  -> matched-branch fail,'
+- candidate_key: stage_068_delta_0
+  modality: numeric_literal
+  anchor_stage: 068
+  parameter_names:
+  - Delta_0
+  - Pe_req
+  - W_wall
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    line: 71
+    role: notes_stage
+    stage: 068
+    excerpt: '`W_wall >= Pe_req / Delta_0`    -> matched-branch succeed.'
+- candidate_key: stage_068_p_res
+  modality: numeric_literal
+  anchor_stage: 068
+  parameter_names:
+  - P_res
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    line: 119
+    role: notes_stage
+    stage: 068
+    excerpt: Because the resonance family differs from the matched branch only by the factor `P_res = 1.005612...`, the only
+      region where profile choice can change the reduced verdict is a very narrow band.
+- candidate_key: stage_069_delta_0
+  modality: numeric_literal
+  anchor_stage: 069
+  parameter_names:
+  - Delta_0
+  - Rightarrow
+  - mathrm
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_069.tex
+    line: 19
+    role: paper_stage_tex
+    stage: 069
+    excerpt: W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
+- candidate_key: stage_069_p_res
+  modality: numeric_literal
+  anchor_stage: 069
+  parameter_names:
+  - P_res
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 92
+    role: notes_stage
+    stage: 069
+    excerpt: And even there, the explicit independent sech–Gaussian family changes the matched thresholds only by the tiny
+      factor `P_res = 1.005612...`.
+- candidate_key: stage_091_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 091
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_091.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 091
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_092_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 092
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_092.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 092
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_093_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 093
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_093.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 093
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_094_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 094
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_094.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 094
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_095_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 095
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_095.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 095
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_096_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 096
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_096.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 096
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_097_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 097
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_097.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 097
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_098_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 098
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_098.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 098
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_099_epsilon_2
+  modality: numeric_literal
+  anchor_stage: 099
+  parameter_names:
+  - epsilon_2
+  - epsilon_2_epsilon_4
+  - epsilon_4
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_099.tex
+    line: 13
+    role: paper_stage_tex
+    stage: 099
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The
+      computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or
+      the obstruction variables \((\epsilon_2,\epsilon_4)\).}
+- candidate_key: stage_100_chi_q
+  modality: numeric_literal
+  anchor_stage: '100'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_100.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '100'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
+      condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+- candidate_key: stage_100_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '100'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_100.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '100'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_100_chi_q
+  modality: numeric_literal
+  anchor_stage: '100'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 79
+    role: notes_stage
+    stage: '100'
+    excerpt: So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`.
+- candidate_key: stage_101_chi_q
+  modality: numeric_literal
+  anchor_stage: '101'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_101.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '101'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
+      condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+- candidate_key: stage_101_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '101'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_101.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '101'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_101_chi_q
+  modality: numeric_literal
+  anchor_stage: '101'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 13
+    role: notes_stage
+    stage: '101'
+    excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer
+      a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
+- candidate_key: stage_101_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '101'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 40
+    role: notes_stage
+    stage: '101'
+    excerpt: 'Stage 097 reduced the actual isotropic passive/outgoing grouped-`P2` branch to a single normalization-defect
+      context, and Stage 104 proves the exact compact outgoing `l=2` fingerprint matched by the canonical one-pole completion:'
+- candidate_key: stage_101_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '101'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 49
+    role: notes_stage
+    stage: '101'
+    excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
+      giving
+- candidate_key: stage_102_chi_q
+  modality: numeric_literal
+  anchor_stage: '102'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_102.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '102'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- candidate_key: stage_102_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '102'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_102.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '102'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_102_chi_q
+  modality: numeric_literal
+  anchor_stage: '102'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+    line: 13
+    role: notes_stage
+    stage: '102'
+    excerpt: So the only live retarded obstruction at 2.5PN is the leading `omega^5` outgoing-normalization factor `chi_Q`.
+- candidate_key: stage_103_chi_q
+  modality: numeric_literal
+  anchor_stage: '103'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_103.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '103'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- candidate_key: stage_103_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '103'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_103.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '103'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_104_chi_q
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_104.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '104'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- candidate_key: stage_104_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_104.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '104'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_104_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 1
+    role: notes_stage
+    stage: '104'
+    excerpt: '# Moving-Throat PDE — Stage 104: Exact Outgoing `l=2` DtN Fingerprint'
+- candidate_key: stage_104_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 83
+    role: notes_stage
+    stage: '104'
+    excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
+      directly from the explicit DtN model.
+- candidate_key: stage_104_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 87
+    role: notes_stage
+    stage: '104'
+    excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch, the
+      leading odd quadrupole coefficient is fixed to
+- candidate_key: stage_104_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '104'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 92
+    role: notes_stage
+    stage: '104'
+    excerpt: So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity
+      in the canonical outgoing `l=2` DtN model itself.
+- candidate_key: stage_105_chi_q
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_105.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '105'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- candidate_key: stage_105_chi_q
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_105.tex
+    line: 16
+    role: paper_stage_tex
+    stage: '105'
+    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+- candidate_key: stage_105_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_105.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '105'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_105_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 5
+    role: notes_stage
+    stage: '105'
+    excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+- candidate_key: stage_105_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '105'
+  parameter_names:
+  - matched_fingerprint_value
+  - xi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 98
+    role: notes_stage
+    stage: '105'
+    excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual
+      moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+- candidate_key: stage_106_chi_q
+  modality: numeric_literal
+  anchor_stage: '106'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_106.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '106'
+    excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+      computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- candidate_key: stage_106_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '106'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_106.tex
+    line: 24
+    role: paper_stage_tex
+    stage: '106'
+    excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- candidate_key: stage_106_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '106'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    line: 75
+    role: notes_stage
+    stage: '106'
+    excerpt: Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**,
+      conditional on that branch realization and the strict point-particle limit.
+- candidate_key: stage_108_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '108'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 105
+    role: notes_stage
+    stage: '108'
+    excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
+- candidate_key: stage_110_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '110'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 48
+    role: notes_stage
+    stage: '110'
+    excerpt: Relative to the canonical outgoing `l=2` fingerprint,
+- candidate_key: stage_111_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '111'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 5
+    role: notes_stage
+    stage: '111'
+    excerpt: Build the first explicit isotropic hidden mixed-sector side-channel model and check whether it can preserve the
+      already-fixed conservative even `l=2` fingerprint.
+- candidate_key: stage_111_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '111'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 41
+    role: notes_stage
+    stage: '111'
+    excerpt: Demand that this branch preserve the canonical conservative even fingerprint. The `z^2` condition gives
+- candidate_key: stage_111_a_w
+  modality: numeric_literal
+  anchor_stage: '111'
+  parameter_names:
+  - A_w
+  - mu
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 82
+    role: notes_stage
+    stage: '111'
+    excerpt: A naive passive mixed `A_w/F_{\mu w}` side-channel pole is **too rigid**. It generically shifts the outgoing
+      normalization and, more importantly, it cannot preserve the already-fixed canonical even `l=2` branch. If a mixed sector
+      survives on the actual branch, it must appear in a more structured, compensated outlet law.
+- candidate_key: stage_126_mathfrak
+  modality: numeric_literal
+  anchor_stage: '126'
+  parameter_names:
+  - mathfrak
+  - pi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_126.tex
+    line: 16
+    role: paper_stage_tex
+    stage: '126'
+    excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+- candidate_key: stage_126_mathfrak
+  modality: numeric_literal
+  anchor_stage: '126'
+  parameter_names:
+  - mathfrak
+  - pi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 112
+    role: notes_stage
+    stage: '126'
+    excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
+- candidate_key: stage_144_mathfrak
+  modality: numeric_literal
+  anchor_stage: '144'
+  parameter_names:
+  - mathfrak
+  - pi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 82
+    role: notes_stage
+    stage: '144'
+    excerpt: For comparison, the self-matched derivative-profile point \(\mathfrak g=\pi/4\) occurs at
+- candidate_key: stage_150_phi_x_pi_x
+  modality: numeric_literal
+  anchor_stage: '150'
+  parameter_names:
+  - Phi_x_Pi_x
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_150.tex
+    line: 16
+    role: paper_stage_tex
+    stage: '150'
+    excerpt: Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth.
+- candidate_key: stage_158_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '158'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 410
+    role: notes_stage
+    stage: '158'
+    excerpt: canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
+- candidate_key: stage_159_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '159'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 15
+    role: notes_stage
+    stage: '159'
+    excerpt: to preserve the canonical even `l=2` fingerprint while still allowing a nontrivial odd
+- candidate_key: stage_159_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '159'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 29
+    role: notes_stage
+    stage: '159'
+    excerpt: 3. exact preservation of the canonical even `l=2` fingerprint at first order forces
+- candidate_key: stage_159_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '159'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 322
+    role: notes_stage
+    stage: '159'
+    excerpt: '> preserve the canonical conservative even `l=2` fingerprint at first order.'
+- candidate_key: stage_159_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '159'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 436
+    role: notes_stage
+    stage: '159'
+    excerpt: '1. the even fingerprint already fixes the direct loading projection:'
+- candidate_key: stage_160_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '160'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+    line: 140
+    role: notes_stage
+    stage: '160'
+    excerpt: '`l=2` fingerprint forces'
+- candidate_key: stage_168_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '168'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 374
+    role: notes_stage
+    stage: '168'
+    excerpt: Requiring preservation of the canonical conservative even \(l=2\) fingerprint means
+- candidate_key: stage_172_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '172'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 396
+    role: notes_stage
+    stage: '172'
+    excerpt: 4. and once the even canonical fingerprint is preserved, the remaining linear grouped `2.5`PN defect is simply
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 79
+    role: notes_stage
+    stage: '189'
+    excerpt: generated by multiplying the prefactor by the compact outgoing `l=2` fingerprint;
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 452
+    role: notes_stage
+    stage: '189'
+    excerpt: '## 4. Compact outgoing `l=2` fingerprint and outgoing branch coefficients'
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 454
+    role: notes_stage
+    stage: '189'
+    excerpt: '### 4.1 Compact outgoing fingerprint'
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 456
+    role: notes_stage
+    stage: '189'
+    excerpt: Carry forward the normalized compact outgoing `l=2` branch fingerprint
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 566
+    role: notes_stage
+    stage: '189'
+    excerpt: So the even branch fingerprint then comes entirely from the compact outgoing `l=2` factor, with no additional
+      even prefactor distortion.
+- candidate_key: stage_189_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 610
+    role: notes_stage
+    stage: '189'
+    excerpt: and the compact outgoing `l=2` fingerprint then compiles these to
+- candidate_key: stage_192_p_2
+  modality: numeric_literal
+  anchor_stage: '192'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_192.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '192'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_192_delta_q
+  modality: numeric_literal
+  anchor_stage: '192'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_192.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '192'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_193_p_2
+  modality: numeric_literal
+  anchor_stage: '193'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_193.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '193'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_193_delta_q
+  modality: numeric_literal
+  anchor_stage: '193'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_193.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '193'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_194_p_2
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_194.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '194'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_194_delta_q
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_194.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '194'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_194_chi_q
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_194.tex
+    line: 15
+    role: paper_stage_tex
+    stage: '194'
+    excerpt: \stagefield{Output}{Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical
+      compact branch.}
+- candidate_key: stage_194_chi_q
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 1
+    role: notes_stage
+    stage: '194'
+    excerpt: '# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic
+      Deformation Algebra'
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 36
+    role: notes_stage
+    stage: '194'
+    excerpt: 1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 90
+    role: notes_stage
+    stage: '194'
+    excerpt: '## 2. Exact outgoing spherical `l=2` DtN fingerprint'
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 158
+    role: notes_stage
+    stage: '194'
+    excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 186
+    role: notes_stage
+    stage: '194'
+    excerpt: So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar
+      is fixed exactly.
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 321
+    role: notes_stage
+    stage: '194'
+    excerpt: '- the exact outgoing `l=2` fingerprint,'
+- candidate_key: stage_194_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '194'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 361
+    role: notes_stage
+    stage: '194'
+    excerpt: 2. keep the Stage 194 exact outgoing `l=2` fingerprint,
+- candidate_key: stage_195_p_2
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_195.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '195'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_195_delta_q
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_195.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '195'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_195_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 5
+    role: notes_stage
+    stage: '195'
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+      `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+      natural point-particle source-map branch already isolated by the 2.5PN package.**'
+- candidate_key: stage_195_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 20
+    role: notes_stage
+    stage: '195'
+    excerpt: and Stage 194 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical
+      outgoing scalar
+- candidate_key: stage_195_chi_q
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 38
+    role: notes_stage
+    stage: '195'
+    excerpt: '> once the isotropic grouped-real `P2` branch is already conservative one-pole and the outgoing `l=2` fingerprint
+      has fixed `\chi_Q`, how does the last observable normalization condition factor through the source map?'
+- candidate_key: stage_195_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 388
+    role: notes_stage
+    stage: '195'
+    excerpt: So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction,
+      the Packet-A normalization residual of Stage 191 closes automatically.
+- candidate_key: stage_195_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '195'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 447
+    role: notes_stage
+    stage: '195'
+    excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
+- candidate_key: stage_196_p_2
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_196.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '196'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_196_delta_q
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_196.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '196'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_196_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 5
+    role: notes_stage
+    stage: '196'
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+      `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
+      the Stage 195 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**'
+- candidate_key: stage_196_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 23
+    role: notes_stage
+    stage: '196'
+    excerpt: Stage 194 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
+- candidate_key: stage_196_chi_q
+  modality: numeric_literal
+  anchor_stage: '196'
+  parameter_names:
+  - chi_Q
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 368
+    role: notes_stage
+    stage: '196'
+    excerpt: So the only live retarded obstruction at reduced `2.5`PN order is still the single scalar `\chi_Q`.
+- candidate_key: stage_197_p_2
+  modality: numeric_literal
+  anchor_stage: '197'
+  parameter_names:
+  - P_2
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_197.tex
+    line: 9
+    role: paper_stage_tex
+    stage: '197'
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+- candidate_key: stage_197_delta_q
+  modality: numeric_literal
+  anchor_stage: '197'
+  parameter_names:
+  - Delta_Q
+  - chi_Q
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_197.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '197'
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+- candidate_key: stage_197_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '197'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 5
+    role: notes_stage
+    stage: '197'
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+      `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
+      the Stage 195 exact source-map reduction, and the Stage 196 higher-odd irrelevance theorem.**'
+- candidate_key: stage_201_delta
+  modality: numeric_literal
+  anchor_stage: '201'
+  parameter_names:
+  - Delta
+  - mathbf
+  - mu
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    line: 420
+    role: notes_stage
+    stage: '201'
+    excerpt: 'Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates are
+      fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.'
+- candidate_key: stage_206_mathbf
+  modality: numeric_literal
+  anchor_stage: '206'
+  parameter_names:
+  - mathbf
+  - mathcal
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    line: 467
+    role: notes_stage
+    stage: '206'
+    excerpt: 3. among overlapping candidates, sort lexicographically by `\(\mathcal Q_{\mathbf s}\)`.
+- candidate_key: stage_207_q_i
+  modality: numeric_literal
+  anchor_stage: '207'
+  parameter_names:
+  - Q_i
+  - mathcal
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    line: 375
+    role: notes_stage
+    stage: '207'
+    excerpt: 3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
+- candidate_key: stage_220_delta_pi
+  modality: numeric_literal
+  anchor_stage: '220'
+  parameter_names:
+  - Delta_Pi
+  - Pi
+  - det
+  - mathcal
+  - times
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_220.tex
+    line: 13
+    role: paper_stage_tex
+    stage: '220'
+    excerpt: \stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant
+      identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates
+      the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
+- candidate_key: stage_220_matched_fingerprint_value
+  modality: numeric_literal
+  anchor_stage: '220'
+  parameter_names:
+  - matched_fingerprint_value
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 114
+    role: notes_stage
+    stage: '220'
+    excerpt: On the outgoing `l=2` branch the first odd fingerprint begins at `i\omega^5`, not at an even static correction.
+- candidate_key: stage_222_lambda_b
+  modality: numeric_literal
+  anchor_stage: '222'
+  parameter_names:
+  - lambda_B
+  - lambda_B_lambda_U_lambda_W_lambda_R
+  - lambda_R
+  - lambda_U
+  - lambda_W
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 434
+    role: notes_stage
+    stage: '222'
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine
+      the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
+- candidate_key: stage_222_delta
+  modality: numeric_literal
+  anchor_stage: '222'
+  parameter_names:
+  - Delta
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 436
+    role: notes_stage
+    stage: '222'
+    excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local
+      barrier requirement must be pulled back from the actual same-charge branch.
+- candidate_key: stage_223_mathrm
+  modality: numeric_literal
+  anchor_stage: '223'
+  parameter_names:
+  - mathrm
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 130
+    role: notes_stage
+    stage: '223'
+    excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive
+      branch is compatibility rather than full calibration.
+- candidate_key: stage_224_hat
+  modality: numeric_literal
+  anchor_stage: '224'
+  parameter_names:
+  - hat
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 175
+    role: notes_stage
+    stage: '224'
+    excerpt: '### 3.1 Calibrated-branch lower bound on `\hat m_0`'
+- candidate_key: stage_224_hat
+  modality: numeric_literal
+  anchor_stage: '224'
+  parameter_names:
+  - hat
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 432
+    role: notes_stage
+    stage: '224'
+    excerpt: 7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
+- candidate_key: stage_225_xi_1
+  modality: numeric_literal
+  anchor_stage: '225'
+  parameter_names:
+  - Xi_1
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 25
+    role: notes_stage
+    stage: '225'
+    excerpt: It is to compute `\Xi_1` **microscopically** on the explicit finite-throat one-port branch, while keeping track
+      of the conservative grouped-`P2` conditions that the `5`PN branch still has to respect.
+- candidate_key: stage_229_kappa_0
+  modality: numeric_literal
+  anchor_stage: '229'
+  parameter_names:
+  - kappa_0
+  - pi
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+    line: 143
+    role: notes_stage
+    stage: '229'
+    excerpt: So the same universal selected-branch function \(F\) still controls the normalization product; the extra factor
+      \(8/\pi^2=\kappa_0^2\) is a fixed D/N overlap constant and does not affect the classifier below.
+- candidate_key: stage_232_lambda_mu_1
+  modality: numeric_literal
+  anchor_stage: '232'
+  parameter_names:
+  - lambda_mu_1
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 149
+    role: notes_stage
+    stage: '232'
+    excerpt: for the benchmark \(\lambda_\mu=1\).
+- candidate_key: stage_236_mu
+  modality: numeric_literal
+  anchor_stage: '236'
+  parameter_names:
+  - mu
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 448
+    role: notes_stage
+    stage: '236'
+    excerpt: 4. and the surviving same-charge obstruction after the static strip is cleared is therefore not generic throat
+      motion but one scalar `K_\eta`–`\mu` dressing amplitude.
+- candidate_key: stage_236_epsilon_eta
+  modality: numeric_literal
+  anchor_stage: '236'
+  parameter_names:
+  - epsilon_eta
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 452
+    role: notes_stage
+    stage: '236'
+    excerpt: '> compute the actual dressing coordinate `q_\eta=\delta\ln\epsilon_\eta`, because after the first static gate
+      is cleared that single scalar is exactly the amplitude of the remaining equal-drift microscopic obstruction.'
+- candidate_key: stage_237_q_nt
+  modality: numeric_literal
+  anchor_stage: '237'
+  parameter_names:
+  - q_nt
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    line: 13
+    role: notes_stage
+    stage: '237'
+    excerpt: Once the first static ceiling `q_nt = 0` has been cleared, the remaining obstruction is exactly the single actual-branch
+      scalar
+- candidate_key: stage_242_epsilon
+  modality: numeric_literal
+  anchor_stage: '242'
+  parameter_names:
+  - epsilon
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    line: 214
+    role: notes_stage
+    stage: '242'
+    excerpt: So once the coherent branch returns \(\epsilon\), the Stage-241 primitive ranking is fixed with no additional
+      support solve.
+- candidate_key: stage_245_xi_1
+  modality: numeric_literal
+  anchor_stage: '245'
+  parameter_names:
+  - Xi_1
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 436
+    role: notes_stage
+    stage: '245'
+    excerpt: 3. and once `V` is activated, the target-ratio packet is no longer determined by `\Xi_1` alone.
+- candidate_key: stage_247_alpha_2
+  modality: numeric_literal
+  anchor_stage: '247'
+  parameter_names:
+  - alpha_2
+  - alpha_6
+  - alpha_6_alpha_2_0
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 404
+    role: notes_stage
+    stage: '247'
+    excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline
+      gives
+- candidate_key: stage_249_alpha_rm
+  modality: numeric_literal
+  anchor_stage: '249'
+  parameter_names:
+  - alpha_rm
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 456
+    role: notes_stage
+    stage: '249'
+    excerpt: Thus the aligned branch carries about two-thirds of the instantaneous export asymmetry scale at the benchmark
+      peak, while the anti-aligned branch still remains positive because \(|\alpha_{\rm pk}|<1\).
+- candidate_key: stage_250_chi_rm
+  modality: numeric_literal
+  anchor_stage: '250'
+  parameter_names:
+  - chi_rm
+  - lambda_rm
+  - mu_eta
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 622
+    role: notes_stage
+    stage: '250'
+    excerpt: 4. The physical-unit mapping of \(\lambda_{\rm eff},\chi_{\rm peak},\mu_\eta\) into a material-specific device
+      remains downstream.
+- candidate_key: stage_251_cref
+  modality: numeric_literal
+  anchor_stage: '251'
+  parameter_names:
+  - cref
+  - s_c
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: paper/stages/stage_251.tex
+    line: 92
+    role: paper_stage_tex
+    stage: '251'
+    excerpt: For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane
+      \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
+- candidate_key: stage_253_chi_lambda
+  modality: numeric_literal
+  anchor_stage: '253'
+  parameter_names:
+  - chi_lambda
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 62
+    role: notes_stage
+    stage: '253'
+    excerpt: 3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
+- candidate_key: stage_253_chi_lambda
+  modality: numeric_literal
+  anchor_stage: '253'
+  parameter_names:
+  - chi_lambda
+  reason: target-related numerical literal or closed-form coefficient
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 555
+    role: notes_stage
+    stage: '253'
+    excerpt: 'The \(\chi_\lambda\) condition only says whether the turning-point geometry sits inside the formal steep-trap
+      regime. The explicit stiffness formula needs one more assumption: force matching to the reduced barrier force. Stage
+      253 makes that separation exact.'

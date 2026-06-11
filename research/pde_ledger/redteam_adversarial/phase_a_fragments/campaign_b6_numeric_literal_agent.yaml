@@ -1,0 +1,331 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b6_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '161'
+- '162'
+- '163'
+- '164'
+- '165'
+- '166'
+- '168'
+- '169'
+- '170'
+- '172'
+- '173'
+- '181'
+- '182'
+- '183'
+- '184'
+- '189'
+candidates:
+- candidate_key: stage161_stage159_tangential_transport_coeffs
+  modality: numeric_literal
+  anchor_stage: '161'
+  parameter_names:
+  - dPi_tan_coeff_dSigma0
+  - dPi_tan_coeff_dS
+  reason: The Stage-159 tangential mouth-transport coefficients are injected as bare decimal literals with no in-band derivation,
+    so they could be back-filled to make the collapsed Delta_Q law come out.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+    line: 117
+    excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+    stage: '161'
+- candidate_key: stage161_dsigma0_dthat_conversion_ratio
+  modality: numeric_literal
+  anchor_stage: '161'
+  parameter_names:
+  - dSigma0_over_dThat
+  reason: The dSigma0-to-dThat conversion factor 6.42981496203006 is substituted as an unexplained decimal literal (note line
+    367 echoes it), a classic tuned-coupling insertion point.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+    line: 122
+    excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
+    stage: '161'
+- candidate_key: stage161_rF1_family1_radius
+  modality: numeric_literal
+  anchor_stage: '161'
+  parameter_names:
+  - r_F1
+  reason: The Family-1 identification r_c*=r_F1^2 with r_F1 given only as a decimal literal drives the boxed 0.462362334687869
+    prefactor; the value is carried in rather than derived in-band.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+    line: 135
+    excerpt: rF1 = sp.Float("1.77799353547498")
+    stage: '161'
+- candidate_key: stage162_rF1_family1_radius
+  modality: numeric_literal
+  anchor_stage: '162'
+  parameter_names:
+  - r_F1
+  reason: The canonical Family-1 radius enters the rigidity check as a high-precision decimal literal whose origin is upstream
+    and unverified here, so it could be a fitted anchor value.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+    line: 71
+    excerpt: rF1 = sp.Float("1.77799353547498", 30)
+    stage: '162'
+- candidate_key: stage163_Rstar_quarter
+  modality: numeric_literal
+  anchor_stage: '163'
+  parameter_names:
+  - R_star
+  reason: The canonical-point value R_*=1/4 (note line 308 states it as canonical) is posited as a fixed rational without
+    an in-band derivation, making the tangent/normal split coefficients depend on a possibly tuned value.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 112
+    excerpt: Rstar = sp.Rational(1, 4)
+    stage: '163'
+- candidate_key: stage163_family1_canonical_point_block
+  modality: numeric_literal
+  anchor_stage: '163'
+  parameter_names:
+  - r_F1
+  - g_F1
+  - Sigma0_can
+  - S_can
+  reason: A four-constant canonical Family-1 block (r, g, Sigma0, S as 30-digit decimal literals, lines 123-126) sets every
+    numeric carry-forward coefficient; all four are injected, not derived, so any of them could be back-filled.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 123
+    excerpt: rf1 = sp.Float("1.77799353547498", 30)
+    stage: '163'
+- candidate_key: stage164_log_channel_prefactors_27_40_27_320
+  modality: numeric_literal
+  anchor_stage: '164'
+  parameter_names:
+  - first_log_channel_prefactor
+  - second_log_channel_prefactor
+  reason: The expected microscopic log-channel prefactors -27pi/40 and 27pi^3/320 (lines 98-99) are stated as the matched
+    closed forms but the note does not display these fractions, so the targets could be back-filled from script output.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+    line: 98
+    excerpt: first_expected = -sp.Rational(27,40) * sp.pi * mpsi**2 * Zq * csw**3 / (hbar * mu0 * qstar * rho_w * Tm * vw0
+      * a**2 * Lw**2)
+    stage: '164'
+- candidate_key: stage164_family1_point_injection
+  modality: numeric_literal
+  anchor_stage: '164'
+  parameter_names:
+  - g_star
+  - r_star
+  reason: The renormalized Family-1 point (g, r) enters the numeric channel coefficients as decimal literals carried from
+    upstream, a per-stage fit-insertion point for the canonical pair.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+    line: 141
+    excerpt: g_num = sp.Float("0.758035078944663", 30)
+    stage: '164'
+- candidate_key: stage165_rstar_closed_form_4107
+  modality: numeric_literal
+  anchor_stage: '165'
+  parameter_names:
+  - r_star
+  reason: The closed-form radius sqrt(4107-100*pi^2)/(10*pi) hinges on the bare integer 4107 whose provenance is not established
+    in-band; a tuned integer inside a radical is a strong fit-insertion candidate.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+    line: 109
+    excerpt: rstar = sp.sqrt(4107 - 100*sp.pi**2) / (10*sp.pi)
+    stage: '165'
+- candidate_key: stage165_gstar_literal
+  modality: numeric_literal
+  anchor_stage: '165'
+  parameter_names:
+  - g_star
+  reason: g_star is injected as a decimal literal (not closed form like r_star alongside it) and directly sets the four boxed
+    branch-drift prefactors checked at lines 117-120, so it could be tuned to make those targets match.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+    line: 110
+    excerpt: gstar = sp.Float("0.758035078944663", 30)
+    stage: '165'
+- candidate_key: stage166_theta_chi_wall_datum
+  modality: numeric_literal
+  anchor_stage: '166'
+  parameter_names:
+  - Theta_w_chi
+  - rho_w_chi
+  reason: The Stage-77 explicit wall datum Theta_w^(chi) is imported as a decimal literal (yielding rho_w ~ 0.403417 via sqrt(Theta/25)),
+    and the note claims it as the fixed explicit-branch value without in-band derivation.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+    line: 94
+    excerpt: Theta_chi = sp.Float("4.06863235008162", 30)
+    stage: '166'
+- candidate_key: stage168_rexact_closed_form_4107
+  modality: numeric_literal
+  anchor_stage: '168'
+  parameter_names:
+  - r_F1
+  reason: The source itself labels Sqrt[4107-100 Pi^2]/(10 Pi) as the canonical Family-1 radius; the unexplained integer 4107
+    inside the closed form is a prime suspect for a back-filled constant.
+  citation:
+    path: research/pde_ledger/mathematica/moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl
+    line: 105
+    excerpt: rExact = Sqrt[4107 - 100*Pi^2]/(10*Pi);   (* canonical Family-1 radius = 1.77799353547498... *)
+    stage: '168'
+- candidate_key: stage168_canonical_mouth_block
+  modality: numeric_literal
+  anchor_stage: '168'
+  parameter_names:
+  - g_star
+  - Sigma0_can
+  - S_can
+  reason: The canonical mouth data (g, Sigma0, S at lines 115-120) are decimal literals feeding every numeric slippage coefficient;
+    none is re-derived in-band, so each is a potential tuned input.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+    line: 119
+    excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
+    stage: '168'
+- candidate_key: stage169_family1_point_injection
+  modality: numeric_literal
+  anchor_stage: '169'
+  parameter_names:
+  - r_star
+  - g_star
+  reason: The no-slippage coefficient targets (0.758..., 1.00314..., 1.88373...) are generated from injected r/g decimal literals,
+    so the entire numeric conclusion rests on possibly fitted canonical-point values.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+    line: 127
+    excerpt: r_num = sp.Float('1.77799353547498', 30)
+    stage: '169'
+- candidate_key: stage170_canonical_isotropic_loading_u2_u4
+  modality: numeric_literal
+  anchor_stage: '170'
+  parameter_names:
+  - u2
+  - u4
+  - D2_over_D0
+  - D4_over_D0
+  reason: The note declares u2=1/9, u4=4/81 (with D2=-D0/9, D4=-D0/27) as "the canonical values" of the isotropic compensated
+    branch without an in-band derivation, so the canonical loading rationals could be posited rather than derived.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+    line: 39
+    excerpt: u2 = sp.Rational(1, 9)
+    stage: '170'
+- candidate_key: stage172_canonical_even_collapse_u2_pin
+  modality: numeric_literal
+  anchor_stage: '172'
+  parameter_names:
+  - u2
+  reason: The physical-slope collapse is evaluated only at the pinned canonical value u2=1/9 carried from Stage 170, so the
+    collapse result inherits whatever tuning sits in that canonical loading value.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+    line: 71
+    excerpt: banner("Canonical-even collapse at u2 = 1/9")
+    stage: '172'
+- candidate_key: stage173_canonical_loading_substitution
+  modality: numeric_literal
+  anchor_stage: '173'
+  parameter_names:
+  - D2_over_D0
+  - D4_over_D0
+  reason: The canonical-branch formulas are obtained by substituting the fixed loading ratios D2=-D0/9 and D4=-D0/27 (lines
+    60-61), values asserted canonical upstream and never re-derived here.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+    line: 60
+    excerpt: u21_can = sp.simplify(u21.subs(D2, -sp.Rational(1,9)*D0))
+    stage: '173'
+- candidate_key: stage181_lambda_prefactor_27pi2_20
+  modality: numeric_literal
+  anchor_stage: '181'
+  parameter_names:
+  - Lambda_prefactor
+  reason: The closed-form transfer prefactor 27 pi^2/20 is asserted as the selected-branch constant with no in-band derivation,
+    and the same 27-family fraction recurs across stages, so it could be a back-filled normalization.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+    line: 40
+    excerpt: Lam = sp.simplify(sp.Rational(27) * sp.pi**2 * G * c_s**5 * OmegaW2 / (20 * a**5 * c**5))
+    stage: '181'
+- candidate_key: stage181_eps_split_2_11_coefficient
+  modality: numeric_literal
+  anchor_stage: '181'
+  parameter_names:
+  - eps_split_coefficient
+  reason: The 2/11 splitting coefficient in eps_W^(split) is taken as given from "earlier coherent-kernel stages" (note line
+    29) and is never derived in-band, making it a plausible tuned dressing coefficient.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+    line: 41
+    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+    stage: '181'
+- candidate_key: stage182_eps_split_2_11_coefficient
+  modality: numeric_literal
+  anchor_stage: '182'
+  parameter_names:
+  - eps_split_coefficient
+  reason: The microscopic coherent-slippage law re-injects the underived 2/11 split coefficient as a fixed rational, propagating
+    a possibly fitted value into the slippage decomposition.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage182_microscopic_coherent_slippage_sympy_audit.py
+    line: 52
+    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+    stage: '182'
+- candidate_key: stage183_eps_split_2_11_coefficient
+  modality: numeric_literal
+  anchor_stage: '183'
+  parameter_names:
+  - eps_split_coefficient
+  reason: The triangular normal form again presupposes the fixed 2/11 dressing rational; if that coefficient were tuned upstream
+    the normal-form coefficients inherit the tuning.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+    line: 46
+    excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+    stage: '183'
+- candidate_key: stage184_eps_split_2_11_coefficient
+  modality: numeric_literal
+  anchor_stage: '184'
+  parameter_names:
+  - eps_split_coefficient
+  reason: The branch-invariant coordinates are defined directly in terms of the fixed 2/11 split coefficient stated without
+    derivation, so the invariance claims rest on that possibly fitted rational.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+    line: 94
+    excerpt: \epsilon=\epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
+    stage: '184'
+- candidate_key: stage189_lambda0_prefactor_27_20
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - Lambda_0
+  reason: The transfer-shape compiler fixes Lambda_0 = (27/20) pi^2 G c_s^5/(a^5 c^5) as the canonical prefactor without in-band
+    derivation of the 27/20 fraction, a candidate back-filled normalization constant.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+    line: 98
+    excerpt: Lambda0_val = sp.Rational(27, 20) * sp.pi**2 * G_II * cs_II**5 / (a_II**5 * c_II**5)
+    stage: '189'
+- candidate_key: stage189_eps_split_2_11_coefficient
+  modality: numeric_literal
+  anchor_stage: '189'
+  parameter_names:
+  - eps_split_coefficient
+  reason: The compiled prefactor package hardwires the same underived 2/11 split rational into the coherent specialization,
+    so the compiler output inherits any tuning in that coefficient.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+    line: 110
+    excerpt: epssplit = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+    stage: '189'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

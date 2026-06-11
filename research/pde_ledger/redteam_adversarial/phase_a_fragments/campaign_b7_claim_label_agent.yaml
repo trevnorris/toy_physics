@@ -1,0 +1,323 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b7_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '193'
+- '194'
+- '195'
+- '200'
+- '201'
+- '202'
+- '208'
+- '210'
+- '212'
+- '213'
+- '214'
+- '215'
+- '217'
+- '218'
+- '219'
+- '222'
+- '223'
+- '224'
+candidates:
+- candidate_key: stage193_one_pole_carrier_forced
+  modality: claim_label
+  anchor_stage: '193'
+  parameter_names:
+  - Omega_Q_sq
+  - a_2
+  - b_2
+  - a_4
+  - b_4
+  - Delta_pole
+  reason: The "forced" label rides on the imposed surface a2=b2=a4=b4=0, Delta_pole=0, so the surface choice itself (declared
+    the exact target) is where the carrier form could have been back-filled rather than derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 217
+    excerpt: Once the isotropic one-pole surface is imposed, the common grouped conservative carrier is forced into a one-parameter
+      form.
+    stage: '193'
+- candidate_key: stage194_chi_q_fixed_on_canonical_branch
+  modality: claim_label
+  anchor_stage: '194'
+  parameter_names:
+  - chi_Q
+  reason: chi_Q=1 is claimed fixed/derived, but only on the branch labeled canonical (beta=1, Sigma_0=Sigma_5=0); the canonicality
+    label on that branch selection is the plausible insertion point for tuning chi_Q to the desired unit value.
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 333
+    excerpt: The exact outgoing spherical `l=2` DtN model fixes the canonical odd coefficient directly. So `\chi_Q` is no
+      longer a placeholder on the compact passive/outgoing branch.
+    stage: '194'
+- candidate_key: stage194_even_deformations_not_free
+  modality: claim_label
+  anchor_stage: '194'
+  parameter_names:
+  - Sigma_2
+  - Sigma_4
+  reason: Sigma_2 and Sigma_4 are claimed non-free conditional on "canonical conservative moments are held fixed", so the
+    held-fixed moment values (labeled canonical, not re-derived here) could conceal a fitted choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 272
+    excerpt: So the even deformations are not free once the canonical conservative moments are held fixed.
+    stage: '194'
+- candidate_key: stage195_natural_source_map_mhat0
+  modality: claim_label
+  anchor_stage: '195'
+  parameter_names:
+  - m_hat_0
+  - N_Q
+  reason: The source-map branch m_hat_0=1+O(a^2/r^2) is labeled "natural" and the no-residual-ambiguity claim makes N_Q=1/(m_hat_0^2
+    chi_Q) look forced, but the naturalness of m_hat_0=1 is asserted rather than derived and is a plausible normalization
+    back-fill.
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 196
+    excerpt: No additional source-map ambiguity survives at this stage once the odd observable closure is enforced.
+    stage: '195'
+- candidate_key: stage195_p0_target_canonical_value
+  modality: claim_label
+  anchor_stage: '195'
+  parameter_names:
+  - P0_target
+  reason: The script treats 54 G c_s^5/(5 a^5 c^5) as the canonical normalization target that the canonical branch is then
+    shown to hit exactly, so the matched target value could have been chosen to make the canonical-branch check close.
+  citation:
+    path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+    line: 46
+    excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+    stage: '195'
+- candidate_key: stage200_mismatch_chart_rederived_not_posited
+  modality: claim_label
+  anchor_stage: '200'
+  parameter_names:
+  - M_star
+  - q_tr
+  - q_nt
+  - q_eta
+  reason: Explicit derived-not-posited claim for the mismatch chart and M_star; an adversary should verify the orbit solve
+    actually produces these coefficients rather than reproducing a previously posited chart.
+  citation:
+    path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+    line: 446
+    excerpt: print("   is re-derived from the exact dependent-triple orbit solve rather than posited.")
+    stage: '200'
+- candidate_key: stage201_canonical_repair_vector
+  modality: claim_label
+  anchor_stage: '201'
+  parameter_names:
+  - Delta_x_rep
+  - Pi_can_orbit_projection
+  reason: The repair vector and orbit projection are labeled canonical while the stage's own checklist admits the free/dependent
+    split is a convention that changes the projection chart, so the canonicality claim could mask a chart choice tuned to
+    land on the target orbit.
+  citation:
+    path: paper/stages/stage_201.tex
+    line: 7
+    excerpt: \stagefield{Purpose}{Stage~201 turns the reference-free four-scalar home-stretch theorem into an executable realization
+      audit.  It defines intrinsic target ratios, the quotient coordinates \((q_{\rm tr},q_{\rm nt},q_\eta)\), the canonical
+      dependent-triple repair vector, and the same-free-quintuple orbit projection.}
+    stage: '201'
+- candidate_key: stage202_split_u_ratio_uniquely_fixed
+  modality: claim_label
+  anchor_stage: '202'
+  parameter_names:
+  - delta_U_star_graph
+  - C_tr_target
+  reason: The unique-fixing claim is conditional on the imported target monomial value C_tr_target; uniqueness of the solve
+    does not preclude the target value itself being a fitted input.
+  citation:
+    path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+    line: 197
+    excerpt: So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice.
+    stage: '202'
+- candidate_key: stage208_canonical_two_ray_screen
+  modality: claim_label
+  anchor_stage: '208'
+  parameter_names:
+  - a_i_equal_mix
+  - a_j_equal_mix
+  reason: The gradient-optimal and equal-mix screen rays are labeled canonical although they are chosen probe directions;
+    the promotion/deferral rule keyed to these screens could bias which mixed sectors are searched.
+  citation:
+    path: paper/stages/stage_208.tex
+    line: 15
+    excerpt: \stagefield{Output}{Pairwise mixed-ray cone, gradient and off-diagonal Hessian synergy laws, canonical two-ray
+      screen, promotion/deferral rule, and minimal packet for the full ratio optimizer.}
+    stage: '208'
+- candidate_key: stage210_canonical_triple_screens
+  modality: claim_label
+  anchor_stage: '210'
+  parameter_names:
+  - triple_screen_directions
+  reason: Same canonical label applied to chosen gradient/equal-mix triple screen directions; the non-improvement filter inherits
+    whatever bias the screen choice carries.
+  citation:
+    path: paper/stages/stage_210.tex
+    line: 15
+    excerpt: \stagefield{Output}{Boundary reduction for triples, three-coordinate gradient and curvature synergy, canonical
+      triple-screen audit, interior-screen dominance criterion, and non-improvement filter.}
+    stage: '210'
+- candidate_key: stage212_evaluation_budget_600
+  modality: claim_label
+  anchor_stage: '212'
+  parameter_names:
+  - evaluation_budget_600
+  reason: The specific count 600 is presented as an exact finite budget; the claim implies it is derived combinatorics, but
+    the number could be back-computed from the implemented enumeration rather than proven.
+  citation:
+    path: paper/stages/stage_212.tex
+    line: 15
+    excerpt: \stagefield{Output}{Support-\(\le3\) finite search ledger, primitive-triple ranking theorem, global three-coordinate
+      improvement/no-improvement theorem, and finite evaluation budget \(600\).}
+    stage: '212'
+- candidate_key: stage213_four_way_canonical_screens
+  modality: claim_label
+  anchor_stage: '213'
+  parameter_names:
+  - four_way_screen_directions
+  reason: Third occurrence of the canonical label on chosen screen directions, now in the four-coordinate gate that decides
+    whether support-4 sectors are promoted at all.
+  citation:
+    path: paper/stages/stage_213.tex
+    line: 7
+    excerpt: \stagefield{Purpose}{Stage~213 opens the four-coordinate search by reducing every four-simplex face to a closed
+      triple packet and defining the four-way canonical screens.}
+    stage: '213'
+- candidate_key: stage214_preferred_bound_54
+  modality: claim_label
+  anchor_stage: '214'
+  parameter_names:
+  - candidate_bound_54
+  reason: The value 54 is claimed proven ("proves the 54-candidate preferred bound"); a Bezout-style count can silently become
+    a posited number if the degree pattern was adjusted to match it.
+  citation:
+    path: paper/stages/stage_214.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The derivation forms three stationary numerator equations, introduces one auxiliary
+      square-root variable, obtains a lifted degree pattern \((3,3,3,2)\), proves the \(54\)-candidate preferred bound, and
+      gives a square-root-free projected fallback.}
+    stage: '214'
+- candidate_key: stage215_cumulative_budget_1140
+  modality: claim_label
+  anchor_stage: '215'
+  parameter_names:
+  - cumulative_budget_1140
+  reason: The cumulative budget 1140 is presented as an exact derived count; it depends on the 54-per-envelope bound and the
+    quadruple multiplicity, either of which could have been back-filled.
+  citation:
+    path: paper/stages/stage_215.tex
+    line: 15
+    excerpt: \stagefield{Output}{Support-\(\le4\) finite search ledger, primitive-quadruple winner theorem, global support-cardinality-four
+      improvement/no-improvement theorem, and preferred cumulative budget \(1140\).}
+    stage: '215'
+- candidate_key: stage217_preferred_bound_162_budgets
+  modality: claim_label
+  anchor_stage: '217'
+  parameter_names:
+  - candidate_bound_162
+  - preferred_budget_324
+  - fallback_budget_1500
+  reason: The 162-candidate bound and the derived budgets 324/1500 are claimed proven from a degree pattern; the exactness
+    claim makes these specific integers worth re-deriving independently.
+  citation:
+    path: paper/stages/stage_217.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The derivation writes the four stationary numerator equations, lifts by one auxiliary
+      square-root variable, obtains degree pattern \((3,3,3,3,2)\), proves the preferred \(162\)-candidate bound per envelope,
+      and gives a square-root-free fallback bound.}
+    stage: '217'
+- candidate_key: stage218_total_budgets_1464_2640
+  modality: claim_label
+  anchor_stage: '218'
+  parameter_names:
+  - preferred_total_budget_1464
+  - fallback_budget_2640
+  reason: The closure theorem records "the exact evaluation budget" 1464/2640; these totals inherit every lower-level bound,
+    so an error or back-fill anywhere upstream would be laundered into an exactness claim here.
+  citation:
+    path: paper/stages/stage_218.tex
+    line: 15
+    excerpt: \stagefield{Output}{Final local mixed-ray closure theorem, certified support-\(\le5\) splice interval, preferred
+      total budget \(1464\), fallback budget \(2640\), and finite-candidate status of any remaining ambiguity.}
+    stage: '218'
+- candidate_key: stage219_delta_v_mix_fixed_by_theorem
+  modality: claim_label
+  anchor_stage: '219'
+  parameter_names:
+  - delta_V_mix
+  - alpha_6
+  - alpha_2
+  reason: The mixed-sector correction and its effective coefficients are claimed fixed by theorem, but the theorem operates
+    inside the declared one-port bundle with the chosen primitive source profiles (x^-3 and e^-2kx/x), so the fixedness is
+    conditional on profile selections that could be tuned.
+  citation:
+    path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+    line: 386
+    excerpt: with `\widetilde{\delta V}_{\rm mix}` fixed by the one-port susceptibility theorem above.
+    stage: '219'
+- candidate_key: stage222_exact_overlap_constant_kappa
+  modality: claim_label
+  anchor_stage: '222'
+  parameter_names:
+  - kappa
+  reason: kappa=2*sqrt(2)/pi is labeled exact, but its value follows from the hand-picked lowest N/N and D/N mode profiles
+    labeled "primitive"; choosing different admissible profiles changes kappa, so the exactness label can disguise a favorable
+    mode selection.
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 81
+    excerpt: Then the exact overlap constant is
+    stage: '222'
+- candidate_key: stage223_universal_p0_target
+  modality: claim_label
+  anchor_stage: '223'
+  parameter_names:
+  - P_0_target
+  reason: The stage card calls this "the universal target"; the universality claim for the 54/5 normalization is imported
+    rather than re-derived in this band, making it a candidate matched value the compatibility surface is steered toward.
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 127
+    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+    stage: '223'
+- candidate_key: stage224_grouped_signature_exact
+  modality: claim_label
+  anchor_stage: '224'
+  parameter_names:
+  - lambda_20
+  - lambda_21
+  - lambda_22
+  - b_P0_slope
+  reason: The specific signature (1, 1/2, -1) is headlined as "the exact grouped signature" and forces b_P0=3a_P0, but it
+    is imported by citation to other notes with no in-band derivation, so the exactness claim could cover a posited signature.
+  citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 195
+    excerpt: The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude
+      with grouped signature
+    stage: '224'
+- candidate_key: stage224_t_quad_target_scale
+  modality: claim_label
+  anchor_stage: '224'
+  parameter_names:
+  - T_quad
+  reason: T_quad is presented as a fixed target scale with the same 54/5 coefficient family as P_0_target; the kill-test verdict
+    is directly sensitive to this matched value, so its claimed fixedness is a high-leverage potential insertion point.
+  citation:
+    path: paper/stages/stage_224.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{Imports the normalized prefactor packet $(\Delta_{\rm norm},a_{P_0},b_{P_0})$, the weak-axisymmetric
+      signature $(1,1/2,-1)$, the line $b_{P_0}=3a_{P_0}$, and the target scale $T_{\rm quad}=54Gc_s^5/(5a^5c^5)$.}
+    stage: '224'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

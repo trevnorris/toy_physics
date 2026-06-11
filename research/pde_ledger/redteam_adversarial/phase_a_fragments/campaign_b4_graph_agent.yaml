@@ -1,0 +1,172 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b4_graph_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '104'
+- '105'
+candidates:
+- candidate_key: stage105_chi_q_canonical_fix
+  modality: graph
+  anchor_stage: '105'
+  parameter_names:
+  - chi_Q
+  reason: chi_Q has no node or derivation edge anywhere in the atlas graph, while the graph's nearest related gates (OPEN_QUAD_NORMALIZATION,
+    status open_actual_branch_data; CLAIM_25PN_QUAD_NARROWING, status conditional_theorem_open_normalization) still mark the
+    outgoing quadrupole normalization as open branch data — so the stage-105 'canonical condition chi_Q=1' could be a posited/back-filled
+    fix rather than a derived closure.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_105.tex
+    line: 16
+    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+    stage: '105'
+- candidate_key: stage104_unit_product_m0hat2_chiQ_NQ
+  modality: graph
+  anchor_stage: '104'
+  parameter_names:
+  - m0_hat
+  - chi_Q
+  - N_Q
+  reason: The unit-product commitment m0_hat^2 * chi_Q * N_Q = 1 has no derivation edge in the atlas graph; the graph instead
+    carries open normalization gates (OPEN_SOURCE_PORT_NORMALIZATION, status open; OPEN_QUAD_NORMALIZATION, status open_actual_branch_data)
+    for exactly this source/conservative/outgoing factor split, making the =1 commitment a plausible tuning target.
+  citation:
+    path: research/pde_ledger/paper/stages/stage_104.tex
+    line: 13
+    excerpt: The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).
+    stage: '104'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+graph_gaps:
+- stage: 097
+  source: research/pde_ledger/paper/stages/stage_097.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: 098
+  source: research/pde_ledger/paper/stages/stage_098.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: 099
+  source: research/pde_ledger/paper/stages/stage_099.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '100'
+  source: research/pde_ledger/paper/stages/stage_100.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '101'
+  source: research/pde_ledger/paper/stages/stage_101.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '102'
+  source: research/pde_ledger/paper/stages/stage_102.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '103'
+  source: research/pde_ledger/paper/stages/stage_103.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '104'
+  source: research/pde_ledger/paper/stages/stage_104.tex
+  reason: No atlas graph node anchors this stage; nearest content-related nodes (EQ_COMPACT_L2_FINGERPRINT, MT_V2_14_L2_OUTGOING)
+    anchor the l=2 fingerprint to stage_021.tex, not stage 104.
+- stage: '105'
+  source: research/pde_ledger/paper/stages/stage_105.tex
+  reason: No atlas graph node anchors this stage; chi_Q itself has zero graph presence (searches chi_Q/chiQ/DtN/MTDC all return
+    none).
+- stage: '106'
+  source: research/pde_ledger/paper/stages/stage_106.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '107'
+  source: research/pde_ledger/paper/stages/stage_107.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '108'
+  source: research/pde_ledger/paper/stages/stage_108.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '109'
+  source: research/pde_ledger/paper/stages/stage_109.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '110'
+  source: research/pde_ledger/paper/stages/stage_110.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '111'
+  source: research/pde_ledger/paper/stages/stage_111.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '112'
+  source: research/pde_ledger/paper/stages/stage_112.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '113'
+  source: research/pde_ledger/paper/stages/stage_113.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '114'
+  source: research/pde_ledger/paper/stages/stage_114.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '115'
+  source: research/pde_ledger/paper/stages/stage_115.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '116'
+  source: research/pde_ledger/paper/stages/stage_116.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '117'
+  source: research/pde_ledger/paper/stages/stage_117.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '118'
+  source: research/pde_ledger/paper/stages/stage_118.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '119'
+  source: research/pde_ledger/paper/stages/stage_119.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '120'
+  source: research/pde_ledger/paper/stages/stage_120.tex
+  reason: No atlas graph node anchors this stage; note the source itself carries a stale internal label ('Stage~137' in the
+    Purpose field at line 8, a +17 pre-renumber remnant).
+- stage: '121'
+  source: research/pde_ledger/paper/stages/stage_121.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '122'
+  source: research/pde_ledger/paper/stages/stage_122.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '123'
+  source: research/pde_ledger/paper/stages/stage_123.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '124'
+  source: research/pde_ledger/paper/stages/stage_124.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '125'
+  source: research/pde_ledger/paper/stages/stage_125.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '126'
+  source: research/pde_ledger/paper/stages/stage_126.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '127'
+  source: research/pde_ledger/paper/stages/stage_127.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.
+- stage: '128'
+  source: research/pde_ledger/paper/stages/stage_128.tex
+  reason: No atlas graph node anchors this stage; graph coverage of the pde_ledger stops at stages 001-031 plus the V2-xx
+    audit layer.

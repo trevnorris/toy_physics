@@ -9,6 +9,8 @@
 #   candidate-info <ID>          Dump one candidate entry.
 #   render-phase-a-prompts       Render blind Phase A modality prompts only.
 #   phase-a-scan --stages ...    Run the blind Phase A modalities and union them.
+#   phase-a-ingest <YAML...>     Ingest agent-emitted Phase A fragments.
+#   render-critic [--prefix N]   Render the Phase A completeness-critic prompt.
 #   phase-b-build <ID>           Build one parameter-value provenance slice.
 #   phase-c-render <ID>          Render the adversarial prompt for one candidate.
 #   set-status <ID> <STATUS>     Advance one candidate status under the manifest lock.
@@ -83,6 +85,16 @@ cmd_render_phase_a_prompts() {
 cmd_phase_a_scan() {
   ensure_config_loaded
   _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-a-scan "$@"
+}
+
+cmd_phase_a_ingest() {
+  ensure_config_loaded
+  _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-a-ingest "$@"
+}
+
+cmd_render_critic() {
+  ensure_config_loaded
+  _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" render-critic "$@"
 }
 
 cmd_phase_b_build() {
@@ -170,6 +182,8 @@ main() {
     candidate-info)    cmd_candidate_info "$@" ;;
     render-phase-a-prompts) cmd_render_phase_a_prompts "$@" ;;
     phase-a-scan)      cmd_phase_a_scan "$@" ;;
+    phase-a-ingest)    cmd_phase_a_ingest "$@" ;;
+    render-critic)     cmd_render_critic "$@" ;;
     phase-b-build)     cmd_phase_b_build "$@" ;;
     phase-c-render)    cmd_phase_c_render "$@" ;;
     set-status)        cmd_set_status "$@" ;;

@@ -1,0 +1,410 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: numeric_literal
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b8_numeric_literal_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '225'
+- '227'
+- '228'
+- '230'
+- '231'
+- '232'
+- '233'
+- '237'
+- '240'
+- '241'
+- '245'
+- '246'
+- '247'
+- '248'
+- '249'
+- '250'
+- '251'
+- '252'
+- '253'
+candidates:
+- candidate_key: stage225_stage223_sample_point
+  modality: numeric_literal
+  anchor_stage: '225'
+  parameter_names:
+  - lamB
+  - lamU
+  - lamW
+  - lamR
+  - OmU
+  - OmW
+  - varpi
+  - kappa
+  reason: The "concrete Stage 223 compatibility point" (lamB=1/2, lamU=3/10, lamW=2/5, lamR=1/4, OmW=7/5, varpi=2) is a posited
+    evaluation point with no in-band derivation, and the survival-sieve null bases, Xi1 values, and headroom numbers of stages
+    225-228 are all computed at exactly this point.
+  citation:
+    path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+    line: 202
+    excerpt: 'lamB: sp.Rational(1, 2),'
+    stage: '225'
+- candidate_key: stage225_stage224_xi_budgets
+  modality: numeric_literal
+  anchor_stage: '225'
+  parameter_names:
+  - B_xi_both_10
+  - B_xi_one_10
+  - B_xi_both_30
+  - B_xi_one_30
+  reason: The carried Stage 224 static budgets (0.367930328492646 / 0.737619063660757 / 2.94889585703134 / 4.63505472371892)
+    are injected as bare literals with no in-band derivation and recur verbatim through stages 226, 227, 228, 230, 231, 233,
+    and 234, so any upstream tuning propagates silently through the whole band.
+  citation:
+    path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+    line: 399
+    excerpt: '"both_10": 0.367930328492646,'
+    stage: '225'
+- candidate_key: stage227_xi1_sample_law_coefficients
+  modality: numeric_literal
+  anchor_stage: '227'
+  parameter_names:
+  - c_m
+  - c_i
+  - c_h
+  reason: The Xi_1 sample-law coefficients 2, 6/19, and 50/(98*pi^2-25) are asserted against the specialized expression rather
+    than derived symbolically in general, and they hold only at the posited Stage 223 sample point, so they could be back-filled
+    from a numeric session.
+  citation:
+    path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+    line: 201
+    excerpt: print("Xi_1 sample law =", sp.simplify(2 * m_expr + sp.Rational(6, 19) * i_expr + 50 * h_expr / (98 * sp.pi**2
+      - 25)))
+    stage: '227'
+- candidate_key: stage228_rq_requirement_threshold
+  modality: numeric_literal
+  anchor_stage: '228'
+  parameter_names:
+  - threshold_eta_01
+  - RQ_req
+  reason: The dynamic-window requirement threshold 21.854566296358396 enters as a bare high-precision literal with no in-script
+    derivation and directly sets the pass/fail boundary of the "first actual dynamic window test"; it recurs as RQ_req in
+    stage 230.
+  citation:
+    path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+    line: 432
+    excerpt: threshold_eta_01 = 21.854566296358396
+    stage: '228'
+- candidate_key: stage230_stage228_rigid_slope_carry
+  modality: numeric_literal
+  anchor_stage: '230'
+  parameter_names:
+  - s_plus_den
+  - s_minus_den
+  - s_plus_num
+  - s_minus_num
+  reason: The four "exact Stage 228 per-unit-Xi rigid dynamic slopes" are injected as decimal literals promoted to exact Rationals,
+    and the static-first theorem's sign structure is proven on these carried numbers rather than on symbolically derived quantities.
+  citation:
+    path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+    line: 77
+    excerpt: s_plus_den = sp.Rational("-0.301516097158113")
+    stage: '230'
+- candidate_key: stage231_dynamic_budget_carry
+  modality: numeric_literal
+  anchor_stage: '231'
+  parameter_names:
+  - B_dyn_both_inf
+  - B_dyn_nonempty_inf
+  reason: The asymptotic dynamic budgets 0.967282389363822 and 0.990581810705233 appear only as injected literals with no
+    in-band derivation, and the continuum class-map placement conclusions are scored against them.
+  citation:
+    path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+    line: 272
+    excerpt: B_dyn_both_inf = 0.967282389363822
+    stage: '231'
+- candidate_key: stage232_wall_depth_thetas
+  modality: numeric_literal
+  anchor_stage: '232'
+  parameter_names:
+  - Theta_w_chi
+  - Theta_w_J
+  reason: The wall-depth figures of merit Theta_w_chi=4.06863235008162 and Theta_w_J=0.927552032539308 are the core "known
+    5PN data" being injected, with no in-script derivation or external citation, so the branch verdict's large safety margin
+    rests entirely on their unverified provenance.
+  citation:
+    path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 146
+    excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
+    stage: '232'
+- candidate_key: stage232_family1_geometry_normalization
+  modality: numeric_literal
+  anchor_stage: '232'
+  parameter_names:
+  - Lambda_ell
+  - kappa
+  - Xi_drive_prefactor
+  reason: The Family-1 geometry normalizations (the factor 20 in Lambda_ell, kappa=(9/5)*Lambda_ell^2, and the prefactor 100
+    in Xi=100*Theta*Lambda_ell^2 at line 149) are fixed numeric choices presented as refreshed geometry without in-band derivation,
+    and the fixed-point roots scale directly with them.
+  citation:
+    path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 50
+    excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
+    stage: '232'
+- candidate_key: stage233_stage224_ceiling_carry
+  modality: numeric_literal
+  anchor_stage: '233'
+  parameter_names:
+  - Pbar
+  - Pcrit_robust
+  - Pcrit_nonempty
+  reason: The static-turbulence gate is evaluated on injected literals Pbar=0.002069792318062885 and Pcrit values copied from
+    the Stage 224 ceilings dict (per the in-file comment), so the calibrated-branch gate verdict depends on carried numbers
+    whose origin is outside this band.
+  citation:
+    path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+    line: 115
+    excerpt: Pbar_num = sp.Float("0.002069792318062885")
+    stage: '233'
+- candidate_key: stage237_branch_sample_point
+  modality: numeric_literal
+  anchor_stage: '237'
+  parameter_names:
+  - eps_base
+  - Rratio_base
+  - Rtarget_base
+  - ref_base
+  - qeta_param_base
+  reason: The dressing-compiler identities are certified only on two hand-assigned rational sample points (1/5, 7/6, 7/5,
+    6/5, 1/10, 3/2 keyed by symbol-name substring), a posited evaluation set that could mask coefficients tuned to hold only
+    there.
+  citation:
+    path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+    line: 17
+    excerpt: base[sym] = sp.Rational(1, 5)
+    stage: '237'
+- candidate_key: stage240_minimal_isotropic_precursor
+  modality: numeric_literal
+  anchor_stage: '240'
+  parameter_names:
+  - c0_min
+  - c1_min
+  - rho_alpha
+  - zeta_req
+  reason: The "minimal isotropic" module values c0=3/4, c1=1/4 are selected rather than derived in-script, yet they fix the
+    load-bearing selected-branch ratio rho_alpha=4/3 (and Pi_tr=(4/3)C_mix) that stages 241, 242, and 244 then treat as canonical.
+  citation:
+    path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+    line: 137
+    excerpt: c0_min = sp.Rational(3, 4)
+    stage: '240'
+- candidate_key: stage241_beta_window_endpoint
+  modality: numeric_literal
+  anchor_stage: '241'
+  parameter_names:
+  - beta_max
+  reason: The window endpoint beta_max=2/11 is asserted as the upper bound of the admissible anisotropy interval without an
+    in-script derivation, and the quoted numeric window values (125/369, 250/441) follow from this posited bound; the same
+    2/11 reappears as a structural factor in stage 242.
+  citation:
+    path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
+    line: 180
+    excerpt: beta_max = sp.Rational(2, 11)
+    stage: '241'
+- candidate_key: stage245_session1_readback_inputs
+  modality: numeric_literal
+  anchor_stage: '245'
+  parameter_names:
+  - U_obs
+  - V_obs
+  - eps_eta_ref
+  - a_U
+  - a_V
+  - g_UV
+  reason: The Session-I readback block injects U_obs, V_obs and the toy parameters eps_ref=0.3, a_U=2.5, a_V=3.0, g_UV=0.95
+    as unexplained literals; chi_UV, Delta_UV and f_U are then inferred backwards from these numbers, the signature pattern
+    of a back-filled rather than derived parameter point.
+  citation:
+    path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 209
+    excerpt: U_obs = sp.Float("0.14313458")
+    stage: '245'
+- candidate_key: stage246_two_moment_source_matrix
+  modality: numeric_literal
+  anchor_stage: '246'
+  parameter_names:
+  - M_src
+  reason: The two-moment source map entries (1/3, -1/15, 1/5, 1/17) and hence det=14/425 and the inverse coefficients 85/42,
+    25/14, 425/42, 85/14 are posited in-script without derivation from the underlying integrals, so the entire compensated-source
+    inversion law rests on these unexplained rationals.
+  citation:
+    path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+    line: 123
+    excerpt: M_src = sp.Matrix([[sp.Rational(1, 3), -sp.Rational(1, 15)],
+    stage: '246'
+- candidate_key: stage246_rF1_coefficient
+  modality: numeric_literal
+  anchor_stage: '246'
+  parameter_names:
+  - rF1
+  reason: The Family-1 shell ratio rF1 is built from the unexplained rational 37/20 (and prefactor 12/pi^2) with no in-band
+    derivation, and the mixed-to-shell loading ratio R_sigma and its sign-change thresholds inherit this choice directly.
+  citation:
+    path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+    line: 145
+    excerpt: rF1 = sp.sqrt(sp.Rational(12, 1) / sp.pi**2 * (sp.Rational(37, 20))**2 - 1)
+    stage: '246'
+- candidate_key: stage246_session1_readback_point
+  modality: numeric_literal
+  anchor_stage: '246'
+  parameter_names:
+  - a0
+  - b0
+  - r_sigma
+  - r
+  reason: The Session-I readback point (a0=2.2, b0=-0.6, r_sigma=0.8, r=1.00217028) injects an eight-digit loading value with
+    no derivation, and the headline sign-change conclusion (sigma_min<0) is demonstrated only at this externally supplied
+    point.
+  citation:
+    path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+    line: 230
+    excerpt: 'r: sp.Float("1.00217028"),'
+    stage: '246'
+- candidate_key: stage247_session1_softening_point
+  modality: numeric_literal
+  anchor_stage: '247'
+  parameter_names:
+  - rF1
+  - betaW
+  - eta_leak
+  - mu_w
+  - xi_R
+  - r_soft
+  - r_sigma
+  - a0
+  - b0
+  - kappa
+  - lam
+  reason: The strongest-softening benchmark substitutes a fully hand-assigned parameter dictionary (betaW=0.20, r=0.18, eta_leak=0.03,
+    mu_w=0.8, xi_R=0.9, rF1=1.77799353547498, etc.) whose values have no in-band derivation, and the paper's Session-I barrier
+    decomposition (stage_247.tex lines 78-91) is computed entirely at this point.
+  citation:
+    path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 204
+    excerpt: 'rF1: sp.Float("1.77799353547498"),'
+    stage: '247'
+- candidate_key: stage247_lambda_L_closure
+  modality: numeric_literal
+  anchor_stage: '247'
+  parameter_names:
+  - lambda_L
+  reason: lambda_L=0.26971918 is back-solved as exactly the residual that makes the benchmark barrier decomposition close
+    onto the recorded Veff_obs, then re-used "forward" as the paper value -- a textbook fitted closure parameter rather than
+    a derived constant.
+  citation:
+    path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 238
+    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+    stage: '247'
+- candidate_key: stage248_session2_launch_parameters
+  modality: numeric_literal
+  anchor_stage: '248'
+  parameter_names:
+  - r0
+  - r_c
+  - E_sub
+  - m_s
+  - V0
+  - Vpeak
+  reason: The Session-II event-chain benchmark fixes launch and geometry parameters (m=1, r0=5.0, rc=0.18, Esub=2.5) by hand
+    alongside carried readbacks (V0=0.19999794, Vpeak=3.42933112, ...), so the headline threshold speeds and WKB improvement
+    percentage are properties of a chosen parameter point, not derived invariants.
+  citation:
+    path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 237
+    excerpt: r0_num = 5.0
+    stage: '248'
+- candidate_key: stage249_session2_helicity_readbacks
+  modality: numeric_literal
+  anchor_stage: '249'
+  parameter_names:
+  - H_peak_aligned
+  - H_peak_antialigned
+  - H_int_aligned
+  - H_int_antialigned
+  - alpha_h
+  reason: The aligned/anti-aligned helicity peaks and integrals (281.79830789, 56.96878122, 20.58070146, 5.00843357) are injected
+    session readbacks with no in-band provenance, and the exported asymmetry parameter alpha_h (0.6637 peak / 0.6085 integrated,
+    echoed in stage_249.tex's benchmark packet) is computed solely from them.
+  citation:
+    path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+    line: 167
+    excerpt: peak_aligned = 281.79830789
+    stage: '249'
+- candidate_key: stage250_benchmark_masses_and_window
+  modality: numeric_literal
+  anchor_stage: '250'
+  parameter_names:
+  - m_s
+  - mu_eta
+  - chi_peak
+  - g_UV
+  - E_max
+  - t_transit_min
+  - t_transit_max
+  - chi_raw
+  reason: The Goldilocks-window verdict is computed on injected benchmark values -- notably m=mu=1836.15267343 (the proton-electron
+    mass ratio silently imported as the probe mass), chi_peak=21.73204372 vs chi_raw=50.74399964, g=0.95, Emax=80.93332737,
+    and the aligned transit bounds 0.204/4.054 at line 180 -- none derived in-band, so the crossing-vs-collapse margin could
+    be a product of this parameter selection.
+  citation:
+    path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+    line: 177
+    excerpt: m_num = 1836.15267343
+    stage: '250'
+- candidate_key: stage251_session4_rate_constants
+  modality: numeric_literal
+  anchor_stage: '251'
+  parameter_names:
+  - t_cross
+  - t_collapse0
+  - gamma_crit
+  reason: The Session-IV benchmark rates t_cross=1.82169718, t_collapse0=0.14402764, gamma_crit=6.94311167 are injected without
+    in-band derivation and fully determine the paper's safe-half-plane numbers (weight 0.3013336471 and rhs 289.61004918 in
+    stage_251.tex line 95), i.e. the quantitative content of the new "microscopic" kernel law is pinned by carried session
+    constants.
+  citation:
+    path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+    line: 176
+    excerpt: t_cross_num = 1.82169718
+    stage: '251'
+- candidate_key: stage252_three_to_one_split
+  modality: numeric_literal
+  anchor_stage: '252'
+  parameter_names:
+  - phi
+  - f_lat
+  reason: The vacuum-vs-lattice heat partition f_lat=3/4 is selected as "the Session-IV 3:1 split" -- the script proves the
+    split is equivalent to choosing the phi=3/4 family but never derives 3/4 itself -- and this fraction, plus the injected
+    E_diss=0.01033460 at line 199, drives the cold-survival rates carried into stage 253.
+  citation:
+    path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+    line: 191
+    excerpt: 'phi_val = sp.Rational(3, 4)  # the speed-independent 3:1 microscopic family'
+    stage: '252'
+- candidate_key: stage253_legacy_lattice_rate_and_upsilon
+  modality: numeric_literal
+  anchor_stage: '253'
+  parameter_names:
+  - gamma_lattice_legacy
+  - Upsilon_lat_sess
+  - f_lat
+  reason: The physical-calibration thresholds hinge on the injected legacy rate gamma_lattice=4.79562976 and on Upsilon_lat^sess
+    (line 169) which the paper says is "recovered by choosing" it as the ratio that reproduces the legacy Session-V slice
+    -- an explicitly calibrated, not derived, projection factor that sets the benchmark product 119.23361317476524.
+  citation:
+    path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+    line: 163
+    excerpt: gamma_lattice_legacy_num = 4.79562976
+    stage: '253'
+blind_to_modalities:
+- claim_label
+- graph
+- existing_provenance

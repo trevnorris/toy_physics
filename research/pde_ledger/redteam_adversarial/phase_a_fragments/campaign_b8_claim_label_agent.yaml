@@ -1,0 +1,526 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: claim_label
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b8_claim_label_agent.yaml
+ingested_at: '2026-06-11T08:21:44Z'
+stages:
+- '225'
+- '226'
+- '227'
+- '228'
+- '229'
+- '230'
+- '232'
+- '233'
+- '234'
+- '236'
+- '239'
+- '240'
+- '241'
+- '242'
+- '244'
+- '245'
+- '246'
+- '247'
+- '248'
+- '249'
+- '250'
+- '251'
+- '252'
+- '253'
+candidates:
+- candidate_key: stage225_xk_xm_forced_zero
+  modality: claim_label
+  anchor_stage: '225'
+  parameter_names:
+  - x_K
+  - x_M
+  reason: Claims x_K=0 and then x_M=0 are forced ("triviality" of wall-only compensated deformations), but only under the
+    unexamined genericity condition D_4/D_0 != 0, so the forced-value label could mask a chosen branch.
+  citation:
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 404
+    excerpt: the second equation forces
+    stage: '225'
+- candidate_key: stage226_canonical_hidden_even_relation
+  modality: claim_label
+  anchor_stage: '226'
+  parameter_names:
+  - H_even
+  reason: Labels the imported hidden-even relation "canonical," asserting non-tunable status for an upstream relation whose
+    origin could instead be a chosen branch.
+  citation:
+    path: paper/stages/stage_226.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, and
+      the conservative-shape-preserving branch used by the grouped outlet package.}
+    stage: '226'
+- candidate_key: stage226_sigma_even_canonical_gain_scale
+  modality: claim_label
+  anchor_stage: '226'
+  parameter_names:
+  - sigma_even
+  reason: Declares the numeric gain scale sigma_even ~ 2.67386816837173 "canonical" even though it is computed on a hand-picked
+    noncanonical sample branch, a classic spot to back-fill a wanted magnitude.
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 278
+    excerpt: That gives a canonical same-charge gain scale for unit microscopic mixed-sector drift amplitude.
+    stage: '226'
+- candidate_key: stage226_d01_forced_zero
+  modality: claim_label
+  anchor_stage: '226'
+  parameter_names:
+  - D_01
+  reason: Claims the combined gates force D_01=0 exactly on the concrete sample branch, so the zero could be a property of
+    the chosen branch rather than a derived constraint.
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 207
+    excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+    stage: '226'
+- candidate_key: stage227_kappa_exact_overlap_constant
+  modality: claim_label
+  anchor_stage: '227'
+  parameter_names:
+  - kappa
+  reason: kappa = 2*sqrt(2)/pi is labeled an "exact overlap constant" but it is exact only for the specific lowest-mode sample
+    branch carried from Stage 223, i.e. the exactness label rides on a modeling choice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+    line: 86
+    excerpt: '- exact overlap constant'
+    stage: '227'
+- candidate_key: stage227_sample_branch_coefficients_exact
+  modality: claim_label
+  anchor_stage: '227'
+  parameter_names:
+  - I_coeff
+  - H_coeff
+  reason: I = 3/16 and H = 25/(98*pi^2) are headlined "Exact sample-branch coefficients," an exactness claim attached to values
+    that exist only on the posited concrete branch.
+  citation:
+    path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+    line: 256
+    excerpt: '### 3.1 Exact sample-branch coefficients'
+    stage: '227'
+- candidate_key: stage228_primitive_parameter_tuple
+  modality: claim_label
+  anchor_stage: '228'
+  parameter_names:
+  - lambda_B
+  - lambda_U
+  - lambda_W
+  - lambda_R
+  - Omega_U
+  - Omega_W
+  - varpi
+  - M
+  reason: A full numeric tuple (1/2, 3/10, 2/5, 1/4, 1, 7/5, 2, 1) is carried inside an "Exact within" claim banner with no
+    derivation stated at point of use, so the exactness vocabulary can launder hand-picked inputs.
+  citation:
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 72
+    excerpt: '- primitive parameters'
+    stage: '228'
+- candidate_key: stage228_k_compat_exact_stiffness
+  modality: claim_label
+  anchor_stage: '228'
+  parameter_names:
+  - K_compat
+  reason: K_compat ~ 24.473754879290965 is labeled "exact" while being a long decimal carried from upstream; the exact label
+    invites treating an inherited numeric as non-tunable without re-derivation here.
+  citation:
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 77
+    excerpt: '- and the exact isotropic compatibility wall stiffness'
+    stage: '228'
+- candidate_key: stage229_delta_crossover_threshold
+  modality: claim_label
+  anchor_stage: '229'
+  parameter_names:
+  - delta
+  - xi_star
+  reason: Claims the crossover threshold delta = 8/9 is exact and forced by the classifier algebra; a specific rational threshold
+    presented as exact is a prime spot for a back-filled value.
+  citation:
+    path: paper/stages/stage_229.tex
+    line: 15
+    excerpt: '\stagefield{Output}{Selected-branch classifier theorem: the pure-transfer defect is denominator-like near softening,
+      with crossover controlled by the exact threshold $\delta=8/9$.}'
+    stage: '229'
+- candidate_key: stage230_r_star_exact_threshold
+  modality: claim_label
+  anchor_stage: '230'
+  parameter_names:
+  - R_star
+  reason: R_star ~ 1.229255438463336 is presented as an "exact threshold" though it is a numeric root evaluated on the carried
+    sample branch, so the exactness claim could conceal branch-dependent tuning.
+  citation:
+    path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 224
+    excerpt: This gives the exact threshold
+    stage: '230'
+- candidate_key: stage232_known_5pn_data_injection
+  modality: claim_label
+  anchor_stage: '232'
+  parameter_names:
+  - zeta_phys
+  - rho_alpha_max
+  reason: The injected support/source numbers are repeatedly labeled "known" and "numerically located," asserting derived
+    status for imported numerics whose own provenance (fit vs derive) is not re-established in this stage.
+  citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 23
+    excerpt: '> inject the known `5`PN support/source data into the same-charge audit chain and decide whether the live bottleneck
+      moves, or stays on the unresolved static orbit-lock / coherent placement packet.'
+    stage: '232'
+- candidate_key: stage232_nq_canonical_normalization
+  modality: claim_label
+  anchor_stage: '232'
+  parameter_names:
+  - N_Q
+  reason: N_Q = 1 is declared a "canonical" normalization condition; calling a unit normalization canonical is exactly the
+    kind of label that can hide a convenience choice that absorbs an otherwise-free amplitude.
+  citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 314
+    excerpt: together with the canonical outgoing-normalization condition
+    stage: '232'
+- candidate_key: stage233_calibrated_branch_delta_norm
+  modality: claim_label
+  anchor_stage: '233'
+  parameter_names:
+  - Delta_norm
+  reason: Setting Delta_norm = 0 is described as "a calibrated branch," a calibration label that turns a chosen simplifying
+    value into the headline gate inequality.
+  citation:
+    path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+    line: 203
+    excerpt: On a calibrated branch with
+    stage: '233'
+- candidate_key: stage234_canonical_least_deformation_family
+  modality: claim_label
+  anchor_stage: '234'
+  parameter_names:
+  - Xi_1
+  reason: Labels the minimal-norm family "canonical" while simultaneously admitting Xi_1 itself is "any chosen" value — a
+    canonical label wrapped around a free, choosable target.
+  citation:
+    path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    line: 372
+    excerpt: So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation
+      family that realizes any chosen \(\Xi_1\).
+    stage: '234'
+- candidate_key: stage236_equal_drift_ray_forced
+  modality: claim_label
+  anchor_stage: '236'
+  parameter_names:
+  - q_eta
+  - K_eta
+  - mu
+  reason: Claims the microscopic correction is forced onto an exact equal-drift K_eta-mu ray with exact norm 2*q_eta^2; the
+    forced-structure claim depends on the rigid-mouth posit and could over-assert non-tunability.
+  citation:
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 369
+    excerpt: It only forces that correction to lie on a one-dimensional diagonal ray.
+    stage: '236'
+- candidate_key: stage239_exact_microscopic_correction
+  modality: claim_label
+  anchor_stage: '239'
+  parameter_names:
+  - Delta_T
+  - Delta_K_eta
+  - Delta_mu
+  reason: Claims the specific correction triple (0, -V, U-V) is derived exactly; the simple closed form is the kind of result
+    that could equally be posited and then verified, so the derive label is a fit-vs-derive pressure point.
+  citation:
+    path: paper/stages/stage_239.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The derivation diagonalizes the packet in $(U,V)$, derives the exact microscopic
+      correction $(\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V)$, and identifies the Cartesian orbit-lock point.}
+    stage: '239'
+- candidate_key: stage240_loading_ratio_not_free
+  modality: claim_label
+  anchor_stage: '240'
+  parameter_names:
+  - rho_alpha
+  - Pi_tr
+  - C_mix
+  reason: Explicit non-tunability claim — the loading ratio Pi_tr/C_mix = 4/3 is declared "not free," but it follows from
+    the "minimal isotropic quadrupole precursor," itself a minimality choice that could have been selected to land on 4/3.
+  citation:
+    path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+    line: 104
+    excerpt: This stage shows that the ratio is not free.
+    stage: '240'
+- candidate_key: stage240_zeta_req_fixed_exactly
+  modality: claim_label
+  anchor_stage: '240'
+  parameter_names:
+  - zeta_req
+  - Pi_tr
+  reason: zeta_req = 1/3 and Pi_tr = (4/3) C_mix are claimed "fixed exactly" from the weights c_0 = 3/4, c_1 = 1/4 of the
+    chosen precursor family, so the exact-fix label rests on posited weights.
+  citation:
+    path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+    line: 277
+    excerpt: 'Then the selected demand product is fixed exactly:'
+    stage: '240'
+- candidate_key: stage241_varrho_no_longer_free
+  modality: claim_label
+  anchor_stage: '241'
+  parameter_names:
+  - varrho
+  - epsilon_star
+  reason: Claims the support selector varrho "was no longer free," yet the same note's open-items section (line 707) concedes
+    varrho is still not pinned to a unique value — a tension that flags the not-free label as potentially overclaimed.
+  citation:
+    path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+    line: 83
+    excerpt: was no longer free. It was tied to the same selected branch by
+    stage: '241'
+- candidate_key: stage242_varrho_phys_fixed
+  modality: claim_label
+  anchor_stage: '242'
+  parameter_names:
+  - varrho_phys
+  - sigma_phys
+  reason: Declares the selected same-charge point "no longer a free parameter" with varrho_phys = (2/3)(1-epsilon) and sigma_phys
+    = 2*epsilon/(1-epsilon); the fix is conditional on the coherent branch returning epsilon, relocating rather than removing
+    the freedom.
+  citation:
+    path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    line: 671
+    excerpt: It is fixed by
+    stage: '242'
+- candidate_key: stage244_leakage_forced_through_fixed_demand
+  modality: claim_label
+  anchor_stage: '244'
+  parameter_names:
+  - Pi_tr
+  reason: Stacks a "forces" claim on top of a prior "fixed" claim, asserting the leakage/work lane has no independent freedom
+    — a compounding non-tunability assertion worth provenance scrutiny.
+  citation:
+    path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+    line: 557
+    excerpt: forces the entire leakage/work compiler through the same selected-support demand that Stage 242 already fixed.
+    stage: '244'
+- candidate_key: stage245_eps_eta_session1_match
+  modality: claim_label
+  anchor_stage: '245'
+  parameter_names:
+  - epsilon_eta
+  reason: epsilon_eta(r_eval) = 0.3*exp(-0.03619791) ~ 0.28933482 is claimed to match the legacy Session-I value, with the
+    0.3 amplitude appearing as an unexplained input — a match claim that could be the residue of tuning to the old benchmark.
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 516
+    excerpt: which matches the Session-I value.
+    stage: '245'
+- candidate_key: stage246_lower_branch_forced
+  modality: claim_label
+  anchor_stage: '246'
+  parameter_names:
+  - sigma_min
+  reason: Claims branch selection was "forced" by the positivity theorem; if positivity is itself a modeling restriction being
+    relaxed in this very stage, the historical forced label marks a selection point rather than a derivation.
+  citation:
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 387
+    excerpt: The positive-source theorem had forced the lower branch as the only admissible positive candidate.
+    stage: '246'
+- candidate_key: stage247_lambda_w_natural_specialization
+  modality: claim_label
+  anchor_stage: '247'
+  parameter_names:
+  - lambda_W
+  reason: lambda_W = 1 is an explicitly chosen value dressed with the word "natural," the canonical-by-assertion pattern for
+    a tunable embedding coefficient.
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 489
+    excerpt: Choose the natural Session-I work specialization
+    stage: '247'
+- candidate_key: stage247_lambda_l_fixed_by_recorded_point
+  modality: claim_label
+  anchor_stage: '247'
+  parameter_names:
+  - lambda_L
+  reason: lambda_L = 0.26971918 is claimed "fixed exactly," but it is solved backward from the recorded Session-I benchmark
+    decomposition — i.e. by construction it absorbs whatever residual is needed, the textbook back-fill signature.
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+    stage: '247'
+- candidate_key: stage247_benchmark_pinned_to_paper_figures
+  modality: claim_label
+  anchor_stage: '247'
+  parameter_names:
+  - Lvar_soft
+  - lambda_L
+  reason: Script comment asserts the benchmark quantities are "independently derived" while the assertions literally pin them
+    to paper-stated decimals (e.g. Lvar = 20.01677473), a derived-status claim coupled to value matching.
+  citation:
+    path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 239
+    excerpt: '    # F5: pin independently derived benchmark quantities to the paper figures.'
+    stage: '247'
+- candidate_key: stage248_v0_cross_benchmark_speed
+  modality: claim_label
+  anchor_stage: '248'
+  parameter_names:
+  - v0_cross
+  reason: v0_cross = 2.59221845 is imported from a session report and then shown to lie "inside the exact window"; the exact-window
+    framing certifies an inherited demonstration value whose original selection criteria are not re-derived.
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 513
+    excerpt: The Session-II report also gave an explicit above-threshold demonstration speed
+    stage: '248'
+- candidate_key: stage248_chosen_contact_scale_benchmark
+  modality: claim_label
+  anchor_stage: '248'
+  parameter_names:
+  - r_contact
+  reason: The success claim "does exactly what Stage 248 needs" is conditioned on a "chosen contact scale" (0.18 in the WKB
+    evaluation), openly acknowledging a tunable scale inside an exactness-vocabulary verdict.
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 538
+    excerpt: 'So the benchmark does exactly what Stage 248 needs it to do: it exhibits a concrete speed range where the lowered
+      branch reaches the chosen contact scale and the Coulomb comparison does not.'
+    stage: '248'
+- candidate_key: stage249_helicity_ratio_matched
+  modality: claim_label
+  anchor_stage: '249'
+  parameter_names:
+  - H_sub_plus_final
+  - H_sub_minus_final
+  reason: The final-load ratio 20.58070146/5.00843357 ~ 4.10920923 is claimed to match the integrated ratio "to displayed
+    precision" against Session-II reported outputs — a matched-value claim where the comparison target is a prior benchmark.
+  citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 486
+    excerpt: which matches the integrated ratio to displayed precision.
+    stage: '249'
+- candidate_key: stage250_goldilocks_edge_forced
+  modality: claim_label
+  anchor_stage: '250'
+  parameter_names:
+  - E_edge
+  - V_peak
+  reason: The survival edge E_edge is claimed "forced by the exact algebra" but only "inside the declared closure" — the forced
+    label is explicitly conditional on a declared (chosen) closure.
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 585
+    excerpt: Inside the declared closure it is forced by the exact algebra
+    stage: '250'
+- candidate_key: stage251_gamma5_exact_quintic_coefficient
+  modality: claim_label
+  anchor_stage: '251'
+  parameter_names:
+  - Gamma_5
+  reason: Gamma_5 is claimed an "exact" microscopic coefficient replacing a phenomenological law; the replacement narrative
+    makes the derived status of this coefficient load-bearing and worth provenance audit.
+  citation:
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 52
+    excerpt: 2. the selected mixed quadrupole lane contributes the exact quintic coefficient
+    stage: '251'
+- candidate_key: stage251_gamma3_exact_cubic_coefficient
+  modality: claim_label
+  anchor_stage: '251'
+  parameter_names:
+  - Gamma_3
+  reason: Gamma_3 is likewise claimed exact from the scalar outlet; together with Gamma_5 it must reproduce the old envelope
+    behavior, so an exactness label here could paper over coefficients tuned to recover Session-IV phenomenology.
+  citation:
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 58
+    excerpt: 3. the derivative-coupled scalar outlet contributes the exact cubic coefficient
+    stage: '251'
+- candidate_key: stage251_gamma_safe_exact_replacement
+  modality: claim_label
+  anchor_stage: '251'
+  parameter_names:
+  - gamma_safe
+  reason: Claims the previously phenomenological gamma_safe inequality now has an "exact" microscopic replacement — a derive-over-fit
+    upgrade claim that is precisely what this audit must test.
+  citation:
+    path: paper/stages/stage_251.tex
+    line: 97
+    excerpt: This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.
+    stage: '251'
+- candidate_key: stage252_e_exp_min_completely_fixed
+  modality: claim_label
+  anchor_stage: '252'
+  parameter_names:
+  - E_exp_min_safe
+  - V_in
+  - mu_eta
+  reason: '"Completely fixed" claim for the minimum exported energy, conditional on pinning to the cold-survival edge and
+    on inputs (V_in, mu_eta) whose own values are calibrated elsewhere in the same stage.'
+  citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 330
+    excerpt: It says that once the event is pinned to the cold-survival edge, the **minimum total exported energy** is completely
+      fixed by
+    stage: '252'
+- candidate_key: stage252_vin_benchmark_calibration_match
+  modality: claim_label
+  anchor_stage: '252'
+  parameter_names:
+  - V_in_match
+  reason: V_in_match ~ 8.21771260e-3 is solved backward from the Session-IV benchmark energy and then the split is claimed
+    reproduced "exactly" — with V_in fitted to the benchmark, the exact reproduction is partially circular.
+  citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 482
+    excerpt: 'Then the Stage-252 channel formulas reproduce the Session-IV split exactly:'
+    stage: '252'
+- candidate_key: stage253_upsilon_lat_calibration_factor
+  modality: claim_label
+  anchor_stage: '253'
+  parameter_names:
+  - Upsilon_lat
+  reason: Explicitly denies that Upsilon_lat is a degree of freedom while it is an unconstrained multiplicative factor connecting
+    two rates — the denial-of-tunability claim is itself the fit-insertion flag.
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 185
+    excerpt: This is a calibration factor, not a new dynamical degree of freedom.
+    stage: '253'
+- candidate_key: stage253_session5_calibration_slice_recovery
+  modality: claim_label
+  anchor_stage: '253'
+  parameter_names:
+  - Upsilon_lat_sess
+  - gamma_lattice_red
+  reason: The legacy phenomenological rate gamma_lattice_red ~ 4.79562976 is recovered only "if one chooses the calibration
+    slice" Upsilon_lat_sess — an exact-map claim whose agreement with the old number is by construction of the chosen slice.
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 224
+    excerpt: The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice
+    stage: '253'
+- candidate_key: stage253_k_eff_force_matched
+  modality: claim_label
+  anchor_stage: '253'
+  parameter_names:
+  - k_eff_req
+  reason: k_eff is labeled "force-matched," i.e. defined by matching a force condition at the turning point; a matched parameter
+    in the physical-calibration companion is a direct candidate for tuned rather than derived status.
+  citation:
+    path: paper/stages/stage_253.tex
+    line: 64
+    excerpt: This is only a geometric trigger.  The force-matched stiffness requires
+    stage: '253'
+blind_to_modalities:
+- numeric_literal
+- graph
+- existing_provenance

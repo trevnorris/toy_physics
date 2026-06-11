@@ -1,0 +1,4520 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: graph
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- existing_provenance
+stages:
+- '001'
+- '002'
+- '003'
+- '004'
+- '005'
+- '006'
+- '007'
+- 008
+- 009
+- '010'
+- '011'
+- '012'
+- '013'
+- '014'
+- '015'
+- '016'
+- '017'
+- 018
+- 019
+- '020'
+- '021'
+- '022'
+- '023'
+- '024'
+- '025'
+- '026'
+- '027'
+- 028
+- 029
+- '030'
+- '031'
+- '032'
+- '033'
+- '034'
+- '035'
+- '036'
+- '037'
+- 038
+- 039
+- '040'
+- '041'
+- '042'
+- '043'
+- '044'
+- '045'
+- '046'
+- '047'
+- 048
+- 049
+- '050'
+- '051'
+- '052'
+- '053'
+- '054'
+- '055'
+- '056'
+- '057'
+- 058
+- 059
+- '060'
+- '061'
+- '062'
+- '063'
+- '064'
+- '065'
+- '066'
+- '067'
+- 068
+- 069
+- '070'
+- '071'
+- '072'
+- '073'
+- '074'
+- '075'
+- '076'
+- '077'
+- 078
+- 079
+- 080
+- 081
+- 082
+- 083
+- 084
+- 085
+- 086
+- 087
+- 088
+- 089
+- 090
+- 091
+- 092
+- 093
+- 094
+- 095
+- 096
+- 097
+- 098
+- 099
+- '100'
+- '101'
+- '102'
+- '103'
+- '104'
+- '105'
+- '106'
+- '107'
+- '108'
+- '109'
+- '110'
+- '111'
+- '112'
+- '113'
+- '114'
+- '115'
+- '116'
+- '117'
+- '118'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+- '126'
+- '127'
+- '128'
+- '129'
+- '130'
+- '131'
+- '132'
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+- '146'
+- '147'
+- '148'
+- '149'
+- '150'
+- '151'
+- '152'
+- '153'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+- '164'
+- '165'
+- '166'
+- '167'
+- '168'
+- '169'
+- '170'
+- '171'
+- '172'
+- '173'
+- '174'
+- '175'
+- '176'
+- '177'
+- '178'
+- '179'
+- '180'
+- '181'
+- '182'
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+- '188'
+- '189'
+- '190'
+- '191'
+- '192'
+- '193'
+- '194'
+- '195'
+- '196'
+- '197'
+- '198'
+- '199'
+- '200'
+- '201'
+- '202'
+- '203'
+- '204'
+- '205'
+- '206'
+- '207'
+- '208'
+- '209'
+- '210'
+- '211'
+- '212'
+- '213'
+- '214'
+- '215'
+- '216'
+- '217'
+- '218'
+- '219'
+- '220'
+- '221'
+- '222'
+- '223'
+- '224'
+- '225'
+- '226'
+- '227'
+- '228'
+- '229'
+- '230'
+- '231'
+- '232'
+- '233'
+- '234'
+- '235'
+- '236'
+- '237'
+- '238'
+- '239'
+- '240'
+- '241'
+- '242'
+- '243'
+- '244'
+- '245'
+- '246'
+- '247'
+- '248'
+- '249'
+- '250'
+- '251'
+- '252'
+- '253'
+candidates:
+- candidate_key: stage_021_eq_compact_l2_fingerprint
+  modality: graph
+  anchor_stage: '021'
+  parameter_names:
+  - EQ_COMPACT_L2_FINGERPRINT
+  - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+  - equation_anchor
+  - exact_reduced
+  - matched_fingerprint_value
+  reason: atlas graph node carries target-related text
+  citation:
+    path: paper/stages/stage_021.tex
+    line: null
+    role: paper_stage_tex
+    excerpt: EQ_COMPACT_L2_FINGERPRINT
+  graph_node: EQ_COMPACT_L2_FINGERPRINT
+- candidate_key: stage_021_eq_compact_l2_fingerprint
+  modality: graph
+  anchor_stage: '021'
+  parameter_names:
+  - EQ_COMPACT_L2_FINGERPRINT
+  - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+  - equation_anchor
+  - exact_reduced
+  - matched_fingerprint_value
+  reason: atlas graph node carries target-related text
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: null
+    role: notes_stage
+    excerpt: EQ_COMPACT_L2_FINGERPRINT
+  graph_node: EQ_COMPACT_L2_FINGERPRINT
+graph_gaps:
+- stage: '005'
+  source: paper/stages/stage_005.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_005.tex
+  - research/pde_ledger/paper/stages/stage_005.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '006'
+  source: paper/stages/stage_006.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_006.tex
+  - research/pde_ledger/paper/stages/stage_006.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '007'
+  source: paper/stages/stage_007.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_007.tex
+  - research/pde_ledger/paper/stages/stage_007.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 008
+  source: paper/stages/stage_008.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_008.tex
+  - research/pde_ledger/paper/stages/stage_008.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 009
+  source: paper/stages/stage_009.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_009.tex
+  - research/pde_ledger/paper/stages/stage_009.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '010'
+  source: paper/stages/stage_010.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_010.tex
+  - research/pde_ledger/paper/stages/stage_010.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '011'
+  source: paper/stages/stage_011.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_011.tex
+  - research/pde_ledger/paper/stages/stage_011.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '012'
+  source: paper/stages/stage_012.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_012.tex
+  - research/pde_ledger/paper/stages/stage_012.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '013'
+  source: paper/stages/stage_013.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_013.tex
+  - research/pde_ledger/paper/stages/stage_013.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '014'
+  source: paper/stages/stage_014.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_014.tex
+  - research/pde_ledger/paper/stages/stage_014.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '015'
+  source: paper/stages/stage_015.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_015.tex
+  - research/pde_ledger/paper/stages/stage_015.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '016'
+  source: paper/stages/stage_016.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_016.tex
+  - research/pde_ledger/paper/stages/stage_016.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '017'
+  source: paper/stages/stage_017.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_017.tex
+  - research/pde_ledger/paper/stages/stage_017.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 018
+  source: paper/stages/stage_018.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_018.tex
+  - research/pde_ledger/paper/stages/stage_018.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 019
+  source: paper/stages/stage_019.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_019.tex
+  - research/pde_ledger/paper/stages/stage_019.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '026'
+  source: paper/stages/stage_026.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_026.tex
+  - research/pde_ledger/paper/stages/stage_026.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '026'
+  source: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  - paper/stages/stage_026.tex
+  - research/pde_ledger/paper/stages/stage_026.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '027'
+  source: paper/stages/stage_027.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_027.tex
+  - research/pde_ledger/paper/stages/stage_027.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '027'
+  source: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  - paper/stages/stage_027.tex
+  - research/pde_ledger/paper/stages/stage_027.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 028
+  source: paper/stages/stage_028.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_028.tex
+  - research/pde_ledger/paper/stages/stage_028.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 028
+  source: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  - paper/stages/stage_028.tex
+  - research/pde_ledger/paper/stages/stage_028.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 029
+  source: paper/stages/stage_029.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_029.tex
+  - research/pde_ledger/paper/stages/stage_029.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 029
+  source: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  - paper/stages/stage_029.tex
+  - research/pde_ledger/paper/stages/stage_029.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '030'
+  source: paper/stages/stage_030.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_030.tex
+  - research/pde_ledger/paper/stages/stage_030.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '030'
+  source: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  - paper/stages/stage_030.tex
+  - research/pde_ledger/paper/stages/stage_030.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '031'
+  source: paper/stages/stage_031.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_031.tex
+  - research/pde_ledger/paper/stages/stage_031.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '031'
+  source: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  - paper/stages/stage_031.tex
+  - research/pde_ledger/paper/stages/stage_031.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '032'
+  source: paper/stages/stage_032.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_032.tex
+  - research/pde_ledger/paper/stages/stage_032.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '032'
+  source: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  - paper/stages/stage_032.tex
+  - research/pde_ledger/paper/stages/stage_032.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '033'
+  source: paper/stages/stage_033.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_033.tex
+  - research/pde_ledger/paper/stages/stage_033.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '033'
+  source: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  - paper/stages/stage_033.tex
+  - research/pde_ledger/paper/stages/stage_033.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '034'
+  source: paper/stages/stage_034.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_034.tex
+  - research/pde_ledger/paper/stages/stage_034.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '034'
+  source: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+  - paper/stages/stage_034.tex
+  - research/pde_ledger/paper/stages/stage_034.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '035'
+  source: paper/stages/stage_035.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_035.tex
+  - research/pde_ledger/paper/stages/stage_035.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '035'
+  source: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  - paper/stages/stage_035.tex
+  - research/pde_ledger/paper/stages/stage_035.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '036'
+  source: paper/stages/stage_036.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_036.tex
+  - research/pde_ledger/paper/stages/stage_036.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '036'
+  source: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  - paper/stages/stage_036.tex
+  - research/pde_ledger/paper/stages/stage_036.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '037'
+  source: paper/stages/stage_037.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_037.tex
+  - research/pde_ledger/paper/stages/stage_037.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '037'
+  source: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  - paper/stages/stage_037.tex
+  - research/pde_ledger/paper/stages/stage_037.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 038
+  source: paper/stages/stage_038.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_038.tex
+  - research/pde_ledger/paper/stages/stage_038.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 038
+  source: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  - paper/stages/stage_038.tex
+  - research/pde_ledger/paper/stages/stage_038.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 039
+  source: paper/stages/stage_039.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_039.tex
+  - research/pde_ledger/paper/stages/stage_039.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 039
+  source: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  - paper/stages/stage_039.tex
+  - research/pde_ledger/paper/stages/stage_039.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '040'
+  source: paper/stages/stage_040.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_040.tex
+  - research/pde_ledger/paper/stages/stage_040.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '040'
+  source: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  - paper/stages/stage_040.tex
+  - research/pde_ledger/paper/stages/stage_040.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '041'
+  source: paper/stages/stage_041.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_041.tex
+  - research/pde_ledger/paper/stages/stage_041.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '041'
+  source: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  - paper/stages/stage_041.tex
+  - research/pde_ledger/paper/stages/stage_041.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '042'
+  source: paper/stages/stage_042.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_042.tex
+  - research/pde_ledger/paper/stages/stage_042.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '042'
+  source: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  - paper/stages/stage_042.tex
+  - research/pde_ledger/paper/stages/stage_042.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '043'
+  source: paper/stages/stage_043.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_043.tex
+  - research/pde_ledger/paper/stages/stage_043.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '043'
+  source: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  - paper/stages/stage_043.tex
+  - research/pde_ledger/paper/stages/stage_043.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '044'
+  source: paper/stages/stage_044.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_044.tex
+  - research/pde_ledger/paper/stages/stage_044.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '044'
+  source: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  - paper/stages/stage_044.tex
+  - research/pde_ledger/paper/stages/stage_044.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '045'
+  source: paper/stages/stage_045.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_045.tex
+  - research/pde_ledger/paper/stages/stage_045.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '045'
+  source: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  - paper/stages/stage_045.tex
+  - research/pde_ledger/paper/stages/stage_045.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '046'
+  source: paper/stages/stage_046.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_046.tex
+  - research/pde_ledger/paper/stages/stage_046.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '046'
+  source: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  - paper/stages/stage_046.tex
+  - research/pde_ledger/paper/stages/stage_046.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '047'
+  source: paper/stages/stage_047.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_047.tex
+  - research/pde_ledger/paper/stages/stage_047.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '047'
+  source: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  - paper/stages/stage_047.tex
+  - research/pde_ledger/paper/stages/stage_047.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 048
+  source: paper/stages/stage_048.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_048.tex
+  - research/pde_ledger/paper/stages/stage_048.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 048
+  source: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  - paper/stages/stage_048.tex
+  - research/pde_ledger/paper/stages/stage_048.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 049
+  source: paper/stages/stage_049.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_049.tex
+  - research/pde_ledger/paper/stages/stage_049.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 049
+  source: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+  - paper/stages/stage_049.tex
+  - research/pde_ledger/paper/stages/stage_049.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '050'
+  source: paper/stages/stage_050.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_050.tex
+  - research/pde_ledger/paper/stages/stage_050.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '050'
+  source: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  - paper/stages/stage_050.tex
+  - research/pde_ledger/paper/stages/stage_050.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '051'
+  source: paper/stages/stage_051.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_051.tex
+  - research/pde_ledger/paper/stages/stage_051.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '051'
+  source: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  - paper/stages/stage_051.tex
+  - research/pde_ledger/paper/stages/stage_051.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '052'
+  source: paper/stages/stage_052.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_052.tex
+  - research/pde_ledger/paper/stages/stage_052.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '052'
+  source: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+  - paper/stages/stage_052.tex
+  - research/pde_ledger/paper/stages/stage_052.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '053'
+  source: paper/stages/stage_053.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_053.tex
+  - research/pde_ledger/paper/stages/stage_053.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '053'
+  source: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  - paper/stages/stage_053.tex
+  - research/pde_ledger/paper/stages/stage_053.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '054'
+  source: paper/stages/stage_054.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_054.tex
+  - research/pde_ledger/paper/stages/stage_054.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '054'
+  source: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  - paper/stages/stage_054.tex
+  - research/pde_ledger/paper/stages/stage_054.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '055'
+  source: paper/stages/stage_055.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_055.tex
+  - research/pde_ledger/paper/stages/stage_055.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '055'
+  source: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  - paper/stages/stage_055.tex
+  - research/pde_ledger/paper/stages/stage_055.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '056'
+  source: paper/stages/stage_056.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_056.tex
+  - research/pde_ledger/paper/stages/stage_056.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '056'
+  source: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  - paper/stages/stage_056.tex
+  - research/pde_ledger/paper/stages/stage_056.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '057'
+  source: paper/stages/stage_057.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_057.tex
+  - research/pde_ledger/paper/stages/stage_057.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '057'
+  source: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  - paper/stages/stage_057.tex
+  - research/pde_ledger/paper/stages/stage_057.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 058
+  source: paper/stages/stage_058.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_058.tex
+  - research/pde_ledger/paper/stages/stage_058.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 058
+  source: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+  - paper/stages/stage_058.tex
+  - research/pde_ledger/paper/stages/stage_058.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 059
+  source: paper/stages/stage_059.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_059.tex
+  - research/pde_ledger/paper/stages/stage_059.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 059
+  source: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+  - paper/stages/stage_059.tex
+  - research/pde_ledger/paper/stages/stage_059.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '060'
+  source: paper/stages/stage_060.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_060.tex
+  - research/pde_ledger/paper/stages/stage_060.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '060'
+  source: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  - paper/stages/stage_060.tex
+  - research/pde_ledger/paper/stages/stage_060.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '061'
+  source: paper/stages/stage_061.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_061.tex
+  - research/pde_ledger/paper/stages/stage_061.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '061'
+  source: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  - paper/stages/stage_061.tex
+  - research/pde_ledger/paper/stages/stage_061.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '062'
+  source: paper/stages/stage_062.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_062.tex
+  - research/pde_ledger/paper/stages/stage_062.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '062'
+  source: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  - paper/stages/stage_062.tex
+  - research/pde_ledger/paper/stages/stage_062.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '063'
+  source: paper/stages/stage_063.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_063.tex
+  - research/pde_ledger/paper/stages/stage_063.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '063'
+  source: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  - paper/stages/stage_063.tex
+  - research/pde_ledger/paper/stages/stage_063.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '064'
+  source: paper/stages/stage_064.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_064.tex
+  - research/pde_ledger/paper/stages/stage_064.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '064'
+  source: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  - paper/stages/stage_064.tex
+  - research/pde_ledger/paper/stages/stage_064.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '065'
+  source: paper/stages/stage_065.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_065.tex
+  - research/pde_ledger/paper/stages/stage_065.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '065'
+  source: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+  - paper/stages/stage_065.tex
+  - research/pde_ledger/paper/stages/stage_065.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '066'
+  source: paper/stages/stage_066.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_066.tex
+  - research/pde_ledger/paper/stages/stage_066.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '066'
+  source: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  - paper/stages/stage_066.tex
+  - research/pde_ledger/paper/stages/stage_066.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '067'
+  source: paper/stages/stage_067.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_067.tex
+  - research/pde_ledger/paper/stages/stage_067.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '067'
+  source: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  - paper/stages/stage_067.tex
+  - research/pde_ledger/paper/stages/stage_067.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 068
+  source: paper/stages/stage_068.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_068.tex
+  - research/pde_ledger/paper/stages/stage_068.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 068
+  source: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  - paper/stages/stage_068.tex
+  - research/pde_ledger/paper/stages/stage_068.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 069
+  source: paper/stages/stage_069.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_069.tex
+  - research/pde_ledger/paper/stages/stage_069.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 069
+  source: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  - paper/stages/stage_069.tex
+  - research/pde_ledger/paper/stages/stage_069.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '070'
+  source: paper/stages/stage_070.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_070.tex
+  - research/pde_ledger/paper/stages/stage_070.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '070'
+  source: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  - paper/stages/stage_070.tex
+  - research/pde_ledger/paper/stages/stage_070.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '071'
+  source: paper/stages/stage_071.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_071.tex
+  - research/pde_ledger/paper/stages/stage_071.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '071'
+  source: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+  - paper/stages/stage_071.tex
+  - research/pde_ledger/paper/stages/stage_071.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '072'
+  source: paper/stages/stage_072.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_072.tex
+  - research/pde_ledger/paper/stages/stage_072.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '072'
+  source: notes/stages/moving_throat_pde_stage072_explicit_branch_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage072_explicit_branch_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage072_explicit_branch_thresholds.md
+  - paper/stages/stage_072.tex
+  - research/pde_ledger/paper/stages/stage_072.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '073'
+  source: paper/stages/stage_073.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_073.tex
+  - research/pde_ledger/paper/stages/stage_073.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '073'
+  source: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  - paper/stages/stage_073.tex
+  - research/pde_ledger/paper/stages/stage_073.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '074'
+  source: paper/stages/stage_074.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_074.tex
+  - research/pde_ledger/paper/stages/stage_074.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '074'
+  source: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  - paper/stages/stage_074.tex
+  - research/pde_ledger/paper/stages/stage_074.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '075'
+  source: paper/stages/stage_075.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_075.tex
+  - research/pde_ledger/paper/stages/stage_075.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '075'
+  source: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  - paper/stages/stage_075.tex
+  - research/pde_ledger/paper/stages/stage_075.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '076'
+  source: paper/stages/stage_076.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_076.tex
+  - research/pde_ledger/paper/stages/stage_076.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '076'
+  source: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  - paper/stages/stage_076.tex
+  - research/pde_ledger/paper/stages/stage_076.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '077'
+  source: paper/stages/stage_077.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_077.tex
+  - research/pde_ledger/paper/stages/stage_077.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '077'
+  source: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  - paper/stages/stage_077.tex
+  - research/pde_ledger/paper/stages/stage_077.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 078
+  source: paper/stages/stage_078.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_078.tex
+  - research/pde_ledger/paper/stages/stage_078.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 078
+  source: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  - paper/stages/stage_078.tex
+  - research/pde_ledger/paper/stages/stage_078.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 079
+  source: paper/stages/stage_079.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_079.tex
+  - research/pde_ledger/paper/stages/stage_079.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 079
+  source: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  - paper/stages/stage_079.tex
+  - research/pde_ledger/paper/stages/stage_079.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 080
+  source: paper/stages/stage_080.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_080.tex
+  - research/pde_ledger/paper/stages/stage_080.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 080
+  source: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+  - paper/stages/stage_080.tex
+  - research/pde_ledger/paper/stages/stage_080.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 081
+  source: paper/stages/stage_081.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_081.tex
+  - research/pde_ledger/paper/stages/stage_081.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 081
+  source: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  - paper/stages/stage_081.tex
+  - research/pde_ledger/paper/stages/stage_081.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 082
+  source: paper/stages/stage_082.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_082.tex
+  - research/pde_ledger/paper/stages/stage_082.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 082
+  source: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  - paper/stages/stage_082.tex
+  - research/pde_ledger/paper/stages/stage_082.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 083
+  source: paper/stages/stage_083.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_083.tex
+  - research/pde_ledger/paper/stages/stage_083.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 083
+  source: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  - paper/stages/stage_083.tex
+  - research/pde_ledger/paper/stages/stage_083.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 084
+  source: paper/stages/stage_084.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_084.tex
+  - research/pde_ledger/paper/stages/stage_084.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 084
+  source: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  - paper/stages/stage_084.tex
+  - research/pde_ledger/paper/stages/stage_084.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 085
+  source: paper/stages/stage_085.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_085.tex
+  - research/pde_ledger/paper/stages/stage_085.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 085
+  source: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  - paper/stages/stage_085.tex
+  - research/pde_ledger/paper/stages/stage_085.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 086
+  source: paper/stages/stage_086.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_086.tex
+  - research/pde_ledger/paper/stages/stage_086.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 086
+  source: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  - paper/stages/stage_086.tex
+  - research/pde_ledger/paper/stages/stage_086.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 087
+  source: paper/stages/stage_087.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_087.tex
+  - research/pde_ledger/paper/stages/stage_087.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 087
+  source: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  - paper/stages/stage_087.tex
+  - research/pde_ledger/paper/stages/stage_087.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 088
+  source: paper/stages/stage_088.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_088.tex
+  - research/pde_ledger/paper/stages/stage_088.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 088
+  source: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  - paper/stages/stage_088.tex
+  - research/pde_ledger/paper/stages/stage_088.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 089
+  source: paper/stages/stage_089.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_089.tex
+  - research/pde_ledger/paper/stages/stage_089.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 089
+  source: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  - paper/stages/stage_089.tex
+  - research/pde_ledger/paper/stages/stage_089.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 090
+  source: paper/stages/stage_090.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_090.tex
+  - research/pde_ledger/paper/stages/stage_090.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 090
+  source: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  - paper/stages/stage_090.tex
+  - research/pde_ledger/paper/stages/stage_090.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 091
+  source: paper/stages/stage_091.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_091.tex
+  - research/pde_ledger/paper/stages/stage_091.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 091
+  source: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  - paper/stages/stage_091.tex
+  - research/pde_ledger/paper/stages/stage_091.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 092
+  source: paper/stages/stage_092.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_092.tex
+  - research/pde_ledger/paper/stages/stage_092.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 092
+  source: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  - paper/stages/stage_092.tex
+  - research/pde_ledger/paper/stages/stage_092.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 093
+  source: paper/stages/stage_093.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_093.tex
+  - research/pde_ledger/paper/stages/stage_093.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 093
+  source: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  - paper/stages/stage_093.tex
+  - research/pde_ledger/paper/stages/stage_093.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 094
+  source: paper/stages/stage_094.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_094.tex
+  - research/pde_ledger/paper/stages/stage_094.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 094
+  source: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  - paper/stages/stage_094.tex
+  - research/pde_ledger/paper/stages/stage_094.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 095
+  source: paper/stages/stage_095.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_095.tex
+  - research/pde_ledger/paper/stages/stage_095.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 095
+  source: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  - paper/stages/stage_095.tex
+  - research/pde_ledger/paper/stages/stage_095.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 096
+  source: paper/stages/stage_096.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_096.tex
+  - research/pde_ledger/paper/stages/stage_096.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 096
+  source: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  - paper/stages/stage_096.tex
+  - research/pde_ledger/paper/stages/stage_096.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 097
+  source: paper/stages/stage_097.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_097.tex
+  - research/pde_ledger/paper/stages/stage_097.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 097
+  source: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  - paper/stages/stage_097.tex
+  - research/pde_ledger/paper/stages/stage_097.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 098
+  source: paper/stages/stage_098.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_098.tex
+  - research/pde_ledger/paper/stages/stage_098.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 098
+  source: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  - paper/stages/stage_098.tex
+  - research/pde_ledger/paper/stages/stage_098.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 099
+  source: paper/stages/stage_099.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_099.tex
+  - research/pde_ledger/paper/stages/stage_099.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: 099
+  source: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  - paper/stages/stage_099.tex
+  - research/pde_ledger/paper/stages/stage_099.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '100'
+  source: paper/stages/stage_100.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_100.tex
+  - research/pde_ledger/paper/stages/stage_100.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '100'
+  source: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  - paper/stages/stage_100.tex
+  - research/pde_ledger/paper/stages/stage_100.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '101'
+  source: paper/stages/stage_101.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_101.tex
+  - research/pde_ledger/paper/stages/stage_101.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '101'
+  source: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  - paper/stages/stage_101.tex
+  - research/pde_ledger/paper/stages/stage_101.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '102'
+  source: paper/stages/stage_102.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_102.tex
+  - research/pde_ledger/paper/stages/stage_102.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '102'
+  source: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  - paper/stages/stage_102.tex
+  - research/pde_ledger/paper/stages/stage_102.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '103'
+  source: paper/stages/stage_103.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_103.tex
+  - research/pde_ledger/paper/stages/stage_103.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '103'
+  source: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  - paper/stages/stage_103.tex
+  - research/pde_ledger/paper/stages/stage_103.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '104'
+  source: paper/stages/stage_104.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_104.tex
+  - research/pde_ledger/paper/stages/stage_104.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '104'
+  source: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  - paper/stages/stage_104.tex
+  - research/pde_ledger/paper/stages/stage_104.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '105'
+  source: paper/stages/stage_105.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_105.tex
+  - research/pde_ledger/paper/stages/stage_105.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '105'
+  source: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  - paper/stages/stage_105.tex
+  - research/pde_ledger/paper/stages/stage_105.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '106'
+  source: paper/stages/stage_106.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_106.tex
+  - research/pde_ledger/paper/stages/stage_106.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '106'
+  source: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  - paper/stages/stage_106.tex
+  - research/pde_ledger/paper/stages/stage_106.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '107'
+  source: paper/stages/stage_107.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_107.tex
+  - research/pde_ledger/paper/stages/stage_107.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '107'
+  source: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  - paper/stages/stage_107.tex
+  - research/pde_ledger/paper/stages/stage_107.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '108'
+  source: paper/stages/stage_108.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_108.tex
+  - research/pde_ledger/paper/stages/stage_108.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '108'
+  source: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  - paper/stages/stage_108.tex
+  - research/pde_ledger/paper/stages/stage_108.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '109'
+  source: paper/stages/stage_109.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_109.tex
+  - research/pde_ledger/paper/stages/stage_109.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '109'
+  source: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  - paper/stages/stage_109.tex
+  - research/pde_ledger/paper/stages/stage_109.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '110'
+  source: paper/stages/stage_110.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_110.tex
+  - research/pde_ledger/paper/stages/stage_110.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '110'
+  source: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+  - paper/stages/stage_110.tex
+  - research/pde_ledger/paper/stages/stage_110.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '111'
+  source: paper/stages/stage_111.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_111.tex
+  - research/pde_ledger/paper/stages/stage_111.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '111'
+  source: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+  - paper/stages/stage_111.tex
+  - research/pde_ledger/paper/stages/stage_111.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '112'
+  source: paper/stages/stage_112.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_112.tex
+  - research/pde_ledger/paper/stages/stage_112.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '112'
+  source: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  - paper/stages/stage_112.tex
+  - research/pde_ledger/paper/stages/stage_112.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '113'
+  source: paper/stages/stage_113.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_113.tex
+  - research/pde_ledger/paper/stages/stage_113.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '113'
+  source: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+  - paper/stages/stage_113.tex
+  - research/pde_ledger/paper/stages/stage_113.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '114'
+  source: paper/stages/stage_114.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_114.tex
+  - research/pde_ledger/paper/stages/stage_114.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '114'
+  source: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  - paper/stages/stage_114.tex
+  - research/pde_ledger/paper/stages/stage_114.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '115'
+  source: paper/stages/stage_115.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_115.tex
+  - research/pde_ledger/paper/stages/stage_115.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '115'
+  source: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  - paper/stages/stage_115.tex
+  - research/pde_ledger/paper/stages/stage_115.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '116'
+  source: paper/stages/stage_116.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_116.tex
+  - research/pde_ledger/paper/stages/stage_116.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '116'
+  source: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  - paper/stages/stage_116.tex
+  - research/pde_ledger/paper/stages/stage_116.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '117'
+  source: paper/stages/stage_117.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_117.tex
+  - research/pde_ledger/paper/stages/stage_117.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '117'
+  source: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+  - paper/stages/stage_117.tex
+  - research/pde_ledger/paper/stages/stage_117.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '118'
+  source: paper/stages/stage_118.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_118.tex
+  - research/pde_ledger/paper/stages/stage_118.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '118'
+  source: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  - paper/stages/stage_118.tex
+  - research/pde_ledger/paper/stages/stage_118.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '119'
+  source: paper/stages/stage_119.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_119.tex
+  - research/pde_ledger/paper/stages/stage_119.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '119'
+  source: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  - paper/stages/stage_119.tex
+  - research/pde_ledger/paper/stages/stage_119.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '120'
+  source: paper/stages/stage_120.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_120.tex
+  - research/pde_ledger/paper/stages/stage_120.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '120'
+  source: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  - paper/stages/stage_120.tex
+  - research/pde_ledger/paper/stages/stage_120.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '121'
+  source: paper/stages/stage_121.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_121.tex
+  - research/pde_ledger/paper/stages/stage_121.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '121'
+  source: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  - paper/stages/stage_121.tex
+  - research/pde_ledger/paper/stages/stage_121.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '122'
+  source: paper/stages/stage_122.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_122.tex
+  - research/pde_ledger/paper/stages/stage_122.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '122'
+  source: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  - paper/stages/stage_122.tex
+  - research/pde_ledger/paper/stages/stage_122.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '123'
+  source: paper/stages/stage_123.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_123.tex
+  - research/pde_ledger/paper/stages/stage_123.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '123'
+  source: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  - paper/stages/stage_123.tex
+  - research/pde_ledger/paper/stages/stage_123.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '124'
+  source: paper/stages/stage_124.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_124.tex
+  - research/pde_ledger/paper/stages/stage_124.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '124'
+  source: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  - paper/stages/stage_124.tex
+  - research/pde_ledger/paper/stages/stage_124.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '125'
+  source: paper/stages/stage_125.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_125.tex
+  - research/pde_ledger/paper/stages/stage_125.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '125'
+  source: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  - paper/stages/stage_125.tex
+  - research/pde_ledger/paper/stages/stage_125.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '126'
+  source: paper/stages/stage_126.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_126.tex
+  - research/pde_ledger/paper/stages/stage_126.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '126'
+  source: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  - paper/stages/stage_126.tex
+  - research/pde_ledger/paper/stages/stage_126.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '127'
+  source: paper/stages/stage_127.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_127.tex
+  - research/pde_ledger/paper/stages/stage_127.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '127'
+  source: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage127_penetration_families.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage127_penetration_families.md
+  - paper/stages/stage_127.tex
+  - research/pde_ledger/paper/stages/stage_127.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '128'
+  source: paper/stages/stage_128.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_128.tex
+  - research/pde_ledger/paper/stages/stage_128.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '128'
+  source: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+  - paper/stages/stage_128.tex
+  - research/pde_ledger/paper/stages/stage_128.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '129'
+  source: paper/stages/stage_129.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_129.tex
+  - research/pde_ledger/paper/stages/stage_129.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '129'
+  source: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  - paper/stages/stage_129.tex
+  - research/pde_ledger/paper/stages/stage_129.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '130'
+  source: paper/stages/stage_130.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_130.tex
+  - research/pde_ledger/paper/stages/stage_130.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '130'
+  source: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+  - paper/stages/stage_130.tex
+  - research/pde_ledger/paper/stages/stage_130.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '131'
+  source: paper/stages/stage_131.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_131.tex
+  - research/pde_ledger/paper/stages/stage_131.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '131'
+  source: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  - paper/stages/stage_131.tex
+  - research/pde_ledger/paper/stages/stage_131.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '132'
+  source: paper/stages/stage_132.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_132.tex
+  - research/pde_ledger/paper/stages/stage_132.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '132'
+  source: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  - paper/stages/stage_132.tex
+  - research/pde_ledger/paper/stages/stage_132.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '133'
+  source: paper/stages/stage_133.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_133.tex
+  - research/pde_ledger/paper/stages/stage_133.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '133'
+  source: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+  - paper/stages/stage_133.tex
+  - research/pde_ledger/paper/stages/stage_133.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '134'
+  source: paper/stages/stage_134.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_134.tex
+  - research/pde_ledger/paper/stages/stage_134.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '134'
+  source: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  - paper/stages/stage_134.tex
+  - research/pde_ledger/paper/stages/stage_134.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '135'
+  source: paper/stages/stage_135.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_135.tex
+  - research/pde_ledger/paper/stages/stage_135.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '135'
+  source: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  - paper/stages/stage_135.tex
+  - research/pde_ledger/paper/stages/stage_135.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '136'
+  source: paper/stages/stage_136.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_136.tex
+  - research/pde_ledger/paper/stages/stage_136.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '136'
+  source: notes/stages/moving_throat_pde_stage136_coupled_mouth_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage136_coupled_mouth_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage136_coupled_mouth_status.md
+  - paper/stages/stage_136.tex
+  - research/pde_ledger/paper/stages/stage_136.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '137'
+  source: paper/stages/stage_137.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_137.tex
+  - research/pde_ledger/paper/stages/stage_137.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '137'
+  source: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  - paper/stages/stage_137.tex
+  - research/pde_ledger/paper/stages/stage_137.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '138'
+  source: paper/stages/stage_138.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_138.tex
+  - research/pde_ledger/paper/stages/stage_138.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '138'
+  source: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  - paper/stages/stage_138.tex
+  - research/pde_ledger/paper/stages/stage_138.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '139'
+  source: paper/stages/stage_139.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_139.tex
+  - research/pde_ledger/paper/stages/stage_139.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '139'
+  source: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  - paper/stages/stage_139.tex
+  - research/pde_ledger/paper/stages/stage_139.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '140'
+  source: paper/stages/stage_140.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_140.tex
+  - research/pde_ledger/paper/stages/stage_140.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '140'
+  source: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  - paper/stages/stage_140.tex
+  - research/pde_ledger/paper/stages/stage_140.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '141'
+  source: paper/stages/stage_141.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_141.tex
+  - research/pde_ledger/paper/stages/stage_141.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '141'
+  source: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  - paper/stages/stage_141.tex
+  - research/pde_ledger/paper/stages/stage_141.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '142'
+  source: paper/stages/stage_142.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_142.tex
+  - research/pde_ledger/paper/stages/stage_142.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '142'
+  source: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  - paper/stages/stage_142.tex
+  - research/pde_ledger/paper/stages/stage_142.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '143'
+  source: paper/stages/stage_143.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_143.tex
+  - research/pde_ledger/paper/stages/stage_143.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '143'
+  source: notes/stages/moving_throat_pde_stage143_equal_normalized_singular_limit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage143_equal_normalized_singular_limit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage143_equal_normalized_singular_limit.md
+  - paper/stages/stage_143.tex
+  - research/pde_ledger/paper/stages/stage_143.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '144'
+  source: paper/stages/stage_144.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_144.tex
+  - research/pde_ledger/paper/stages/stage_144.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '144'
+  source: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  - paper/stages/stage_144.tex
+  - research/pde_ledger/paper/stages/stage_144.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '145'
+  source: paper/stages/stage_145.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_145.tex
+  - research/pde_ledger/paper/stages/stage_145.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '145'
+  source: notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+  - paper/stages/stage_145.tex
+  - research/pde_ledger/paper/stages/stage_145.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '146'
+  source: paper/stages/stage_146.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_146.tex
+  - research/pde_ledger/paper/stages/stage_146.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '146'
+  source: notes/stages/moving_throat_pde_stage146_positive_deformation_expansion.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage146_positive_deformation_expansion.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage146_positive_deformation_expansion.md
+  - paper/stages/stage_146.tex
+  - research/pde_ledger/paper/stages/stage_146.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '147'
+  source: paper/stages/stage_147.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_147.tex
+  - research/pde_ledger/paper/stages/stage_147.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '147'
+  source: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  - paper/stages/stage_147.tex
+  - research/pde_ledger/paper/stages/stage_147.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '148'
+  source: paper/stages/stage_148.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_148.tex
+  - research/pde_ledger/paper/stages/stage_148.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '148'
+  source: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  - paper/stages/stage_148.tex
+  - research/pde_ledger/paper/stages/stage_148.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '149'
+  source: paper/stages/stage_149.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_149.tex
+  - research/pde_ledger/paper/stages/stage_149.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '149'
+  source: notes/stages/moving_throat_pde_stage149_mouth_rigidity_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage149_mouth_rigidity_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage149_mouth_rigidity_status.md
+  - paper/stages/stage_149.tex
+  - research/pde_ledger/paper/stages/stage_149.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '150'
+  source: paper/stages/stage_150.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_150.tex
+  - research/pde_ledger/paper/stages/stage_150.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '150'
+  source: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  - paper/stages/stage_150.tex
+  - research/pde_ledger/paper/stages/stage_150.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '151'
+  source: paper/stages/stage_151.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_151.tex
+  - research/pde_ledger/paper/stages/stage_151.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '151'
+  source: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  - paper/stages/stage_151.tex
+  - research/pde_ledger/paper/stages/stage_151.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '152'
+  source: paper/stages/stage_152.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_152.tex
+  - research/pde_ledger/paper/stages/stage_152.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '152'
+  source: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  - paper/stages/stage_152.tex
+  - research/pde_ledger/paper/stages/stage_152.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '153'
+  source: paper/stages/stage_153.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_153.tex
+  - research/pde_ledger/paper/stages/stage_153.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '153'
+  source: notes/stages/moving_throat_pde_stage153_full_mouth_correction_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage153_full_mouth_correction_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage153_full_mouth_correction_status.md
+  - paper/stages/stage_153.tex
+  - research/pde_ledger/paper/stages/stage_153.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '154'
+  source: paper/stages/stage_154.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_154.tex
+  - research/pde_ledger/paper/stages/stage_154.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '154'
+  source: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  - paper/stages/stage_154.tex
+  - research/pde_ledger/paper/stages/stage_154.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '155'
+  source: paper/stages/stage_155.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_155.tex
+  - research/pde_ledger/paper/stages/stage_155.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '155'
+  source: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  - paper/stages/stage_155.tex
+  - research/pde_ledger/paper/stages/stage_155.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '156'
+  source: paper/stages/stage_156.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_156.tex
+  - research/pde_ledger/paper/stages/stage_156.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '156'
+  source: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  - paper/stages/stage_156.tex
+  - research/pde_ledger/paper/stages/stage_156.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '157'
+  source: paper/stages/stage_157.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_157.tex
+  - research/pde_ledger/paper/stages/stage_157.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '157'
+  source: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  - paper/stages/stage_157.tex
+  - research/pde_ledger/paper/stages/stage_157.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '158'
+  source: paper/stages/stage_158.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_158.tex
+  - research/pde_ledger/paper/stages/stage_158.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '158'
+  source: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  - paper/stages/stage_158.tex
+  - research/pde_ledger/paper/stages/stage_158.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '159'
+  source: paper/stages/stage_159.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_159.tex
+  - research/pde_ledger/paper/stages/stage_159.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '159'
+  source: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  - paper/stages/stage_159.tex
+  - research/pde_ledger/paper/stages/stage_159.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '160'
+  source: paper/stages/stage_160.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_160.tex
+  - research/pde_ledger/paper/stages/stage_160.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '160'
+  source: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  - paper/stages/stage_160.tex
+  - research/pde_ledger/paper/stages/stage_160.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '161'
+  source: paper/stages/stage_161.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_161.tex
+  - research/pde_ledger/paper/stages/stage_161.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '161'
+  source: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  - paper/stages/stage_161.tex
+  - research/pde_ledger/paper/stages/stage_161.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '162'
+  source: paper/stages/stage_162.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_162.tex
+  - research/pde_ledger/paper/stages/stage_162.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '162'
+  source: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  - paper/stages/stage_162.tex
+  - research/pde_ledger/paper/stages/stage_162.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '163'
+  source: paper/stages/stage_163.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_163.tex
+  - research/pde_ledger/paper/stages/stage_163.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '163'
+  source: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  - paper/stages/stage_163.tex
+  - research/pde_ledger/paper/stages/stage_163.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '164'
+  source: paper/stages/stage_164.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_164.tex
+  - research/pde_ledger/paper/stages/stage_164.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '164'
+  source: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  - paper/stages/stage_164.tex
+  - research/pde_ledger/paper/stages/stage_164.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '165'
+  source: paper/stages/stage_165.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_165.tex
+  - research/pde_ledger/paper/stages/stage_165.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '165'
+  source: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  - paper/stages/stage_165.tex
+  - research/pde_ledger/paper/stages/stage_165.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '166'
+  source: paper/stages/stage_166.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_166.tex
+  - research/pde_ledger/paper/stages/stage_166.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '166'
+  source: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  - paper/stages/stage_166.tex
+  - research/pde_ledger/paper/stages/stage_166.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '167'
+  source: paper/stages/stage_167.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_167.tex
+  - research/pde_ledger/paper/stages/stage_167.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '167'
+  source: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  - paper/stages/stage_167.tex
+  - research/pde_ledger/paper/stages/stage_167.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '168'
+  source: paper/stages/stage_168.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_168.tex
+  - research/pde_ledger/paper/stages/stage_168.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '168'
+  source: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  - paper/stages/stage_168.tex
+  - research/pde_ledger/paper/stages/stage_168.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '169'
+  source: paper/stages/stage_169.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_169.tex
+  - research/pde_ledger/paper/stages/stage_169.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '169'
+  source: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  - paper/stages/stage_169.tex
+  - research/pde_ledger/paper/stages/stage_169.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '170'
+  source: paper/stages/stage_170.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_170.tex
+  - research/pde_ledger/paper/stages/stage_170.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '170'
+  source: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  - paper/stages/stage_170.tex
+  - research/pde_ledger/paper/stages/stage_170.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '171'
+  source: paper/stages/stage_171.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_171.tex
+  - research/pde_ledger/paper/stages/stage_171.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '171'
+  source: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  - paper/stages/stage_171.tex
+  - research/pde_ledger/paper/stages/stage_171.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '172'
+  source: paper/stages/stage_172.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_172.tex
+  - research/pde_ledger/paper/stages/stage_172.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '172'
+  source: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  - paper/stages/stage_172.tex
+  - research/pde_ledger/paper/stages/stage_172.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '173'
+  source: paper/stages/stage_173.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_173.tex
+  - research/pde_ledger/paper/stages/stage_173.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '173'
+  source: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  - paper/stages/stage_173.tex
+  - research/pde_ledger/paper/stages/stage_173.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '174'
+  source: paper/stages/stage_174.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_174.tex
+  - research/pde_ledger/paper/stages/stage_174.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '174'
+  source: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  - paper/stages/stage_174.tex
+  - research/pde_ledger/paper/stages/stage_174.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '175'
+  source: paper/stages/stage_175.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_175.tex
+  - research/pde_ledger/paper/stages/stage_175.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '175'
+  source: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  - paper/stages/stage_175.tex
+  - research/pde_ledger/paper/stages/stage_175.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '176'
+  source: paper/stages/stage_176.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_176.tex
+  - research/pde_ledger/paper/stages/stage_176.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '176'
+  source: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+  - paper/stages/stage_176.tex
+  - research/pde_ledger/paper/stages/stage_176.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '177'
+  source: paper/stages/stage_177.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_177.tex
+  - research/pde_ledger/paper/stages/stage_177.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '177'
+  source: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  - paper/stages/stage_177.tex
+  - research/pde_ledger/paper/stages/stage_177.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '178'
+  source: paper/stages/stage_178.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_178.tex
+  - research/pde_ledger/paper/stages/stage_178.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '178'
+  source: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  - paper/stages/stage_178.tex
+  - research/pde_ledger/paper/stages/stage_178.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '179'
+  source: paper/stages/stage_179.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_179.tex
+  - research/pde_ledger/paper/stages/stage_179.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '179'
+  source: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+  - paper/stages/stage_179.tex
+  - research/pde_ledger/paper/stages/stage_179.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '180'
+  source: paper/stages/stage_180.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_180.tex
+  - research/pde_ledger/paper/stages/stage_180.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '180'
+  source: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+  - paper/stages/stage_180.tex
+  - research/pde_ledger/paper/stages/stage_180.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '181'
+  source: paper/stages/stage_181.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_181.tex
+  - research/pde_ledger/paper/stages/stage_181.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '181'
+  source: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  - paper/stages/stage_181.tex
+  - research/pde_ledger/paper/stages/stage_181.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '182'
+  source: paper/stages/stage_182.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_182.tex
+  - research/pde_ledger/paper/stages/stage_182.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '182'
+  source: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  - paper/stages/stage_182.tex
+  - research/pde_ledger/paper/stages/stage_182.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '183'
+  source: paper/stages/stage_183.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_183.tex
+  - research/pde_ledger/paper/stages/stage_183.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '183'
+  source: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  - paper/stages/stage_183.tex
+  - research/pde_ledger/paper/stages/stage_183.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '184'
+  source: paper/stages/stage_184.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_184.tex
+  - research/pde_ledger/paper/stages/stage_184.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '184'
+  source: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  - paper/stages/stage_184.tex
+  - research/pde_ledger/paper/stages/stage_184.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '185'
+  source: paper/stages/stage_185.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_185.tex
+  - research/pde_ledger/paper/stages/stage_185.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '185'
+  source: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+  - paper/stages/stage_185.tex
+  - research/pde_ledger/paper/stages/stage_185.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '186'
+  source: paper/stages/stage_186.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_186.tex
+  - research/pde_ledger/paper/stages/stage_186.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '186'
+  source: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  - paper/stages/stage_186.tex
+  - research/pde_ledger/paper/stages/stage_186.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '187'
+  source: paper/stages/stage_187.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_187.tex
+  - research/pde_ledger/paper/stages/stage_187.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '187'
+  source: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  - paper/stages/stage_187.tex
+  - research/pde_ledger/paper/stages/stage_187.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '188'
+  source: paper/stages/stage_188.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_188.tex
+  - research/pde_ledger/paper/stages/stage_188.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '188'
+  source: notes/stages/moving_throat_pde_stage188_branch_observables_completion.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage188_branch_observables_completion.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage188_branch_observables_completion.md
+  - paper/stages/stage_188.tex
+  - research/pde_ledger/paper/stages/stage_188.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '189'
+  source: paper/stages/stage_189.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_189.tex
+  - research/pde_ledger/paper/stages/stage_189.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '189'
+  source: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  - paper/stages/stage_189.tex
+  - research/pde_ledger/paper/stages/stage_189.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '190'
+  source: paper/stages/stage_190.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_190.tex
+  - research/pde_ledger/paper/stages/stage_190.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '190'
+  source: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  - paper/stages/stage_190.tex
+  - research/pde_ledger/paper/stages/stage_190.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '191'
+  source: paper/stages/stage_191.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_191.tex
+  - research/pde_ledger/paper/stages/stage_191.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '191'
+  source: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  - paper/stages/stage_191.tex
+  - research/pde_ledger/paper/stages/stage_191.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '192'
+  source: paper/stages/stage_192.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_192.tex
+  - research/pde_ledger/paper/stages/stage_192.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '192'
+  source: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  - paper/stages/stage_192.tex
+  - research/pde_ledger/paper/stages/stage_192.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '193'
+  source: paper/stages/stage_193.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_193.tex
+  - research/pde_ledger/paper/stages/stage_193.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '193'
+  source: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  - paper/stages/stage_193.tex
+  - research/pde_ledger/paper/stages/stage_193.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '194'
+  source: paper/stages/stage_194.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_194.tex
+  - research/pde_ledger/paper/stages/stage_194.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '194'
+  source: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  - paper/stages/stage_194.tex
+  - research/pde_ledger/paper/stages/stage_194.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '195'
+  source: paper/stages/stage_195.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_195.tex
+  - research/pde_ledger/paper/stages/stage_195.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '195'
+  source: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  - paper/stages/stage_195.tex
+  - research/pde_ledger/paper/stages/stage_195.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '196'
+  source: paper/stages/stage_196.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_196.tex
+  - research/pde_ledger/paper/stages/stage_196.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '196'
+  source: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  - paper/stages/stage_196.tex
+  - research/pde_ledger/paper/stages/stage_196.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '197'
+  source: paper/stages/stage_197.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_197.tex
+  - research/pde_ledger/paper/stages/stage_197.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '197'
+  source: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  - paper/stages/stage_197.tex
+  - research/pde_ledger/paper/stages/stage_197.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '198'
+  source: paper/stages/stage_198.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_198.tex
+  - research/pde_ledger/paper/stages/stage_198.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '198'
+  source: notes/stages/moving_throat_pde_stage198_exact_finite_orbit_law.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage198_exact_finite_orbit_law.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage198_exact_finite_orbit_law.md
+  - paper/stages/stage_198.tex
+  - research/pde_ledger/paper/stages/stage_198.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '199'
+  source: paper/stages/stage_199.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_199.tex
+  - research/pde_ledger/paper/stages/stage_199.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '199'
+  source: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  - paper/stages/stage_199.tex
+  - research/pde_ledger/paper/stages/stage_199.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '200'
+  source: paper/stages/stage_200.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_200.tex
+  - research/pde_ledger/paper/stages/stage_200.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '200'
+  source: notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  - paper/stages/stage_200.tex
+  - research/pde_ledger/paper/stages/stage_200.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '201'
+  source: paper/stages/stage_201.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_201.tex
+  - research/pde_ledger/paper/stages/stage_201.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '201'
+  source: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  - paper/stages/stage_201.tex
+  - research/pde_ledger/paper/stages/stage_201.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '202'
+  source: paper/stages/stage_202.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_202.tex
+  - research/pde_ledger/paper/stages/stage_202.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '202'
+  source: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  - paper/stages/stage_202.tex
+  - research/pde_ledger/paper/stages/stage_202.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '203'
+  source: paper/stages/stage_203.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_203.tex
+  - research/pde_ledger/paper/stages/stage_203.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '203'
+  source: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  - paper/stages/stage_203.tex
+  - research/pde_ledger/paper/stages/stage_203.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '204'
+  source: paper/stages/stage_204.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_204.tex
+  - research/pde_ledger/paper/stages/stage_204.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '204'
+  source: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  - paper/stages/stage_204.tex
+  - research/pde_ledger/paper/stages/stage_204.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '205'
+  source: paper/stages/stage_205.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_205.tex
+  - research/pde_ledger/paper/stages/stage_205.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '205'
+  source: notes/stages/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement.md
+  - paper/stages/stage_205.tex
+  - research/pde_ledger/paper/stages/stage_205.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '206'
+  source: paper/stages/stage_206.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_206.tex
+  - research/pde_ledger/paper/stages/stage_206.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '206'
+  source: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  - paper/stages/stage_206.tex
+  - research/pde_ledger/paper/stages/stage_206.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '207'
+  source: paper/stages/stage_207.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_207.tex
+  - research/pde_ledger/paper/stages/stage_207.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '207'
+  source: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  - paper/stages/stage_207.tex
+  - research/pde_ledger/paper/stages/stage_207.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '208'
+  source: paper/stages/stage_208.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_208.tex
+  - research/pde_ledger/paper/stages/stage_208.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '208'
+  source: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  - paper/stages/stage_208.tex
+  - research/pde_ledger/paper/stages/stage_208.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '209'
+  source: paper/stages/stage_209.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_209.tex
+  - research/pde_ledger/paper/stages/stage_209.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '209'
+  source: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  - paper/stages/stage_209.tex
+  - research/pde_ledger/paper/stages/stage_209.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '210'
+  source: paper/stages/stage_210.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_210.tex
+  - research/pde_ledger/paper/stages/stage_210.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '210'
+  source: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  - paper/stages/stage_210.tex
+  - research/pde_ledger/paper/stages/stage_210.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '211'
+  source: paper/stages/stage_211.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_211.tex
+  - research/pde_ledger/paper/stages/stage_211.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '211'
+  source: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  - paper/stages/stage_211.tex
+  - research/pde_ledger/paper/stages/stage_211.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '212'
+  source: paper/stages/stage_212.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_212.tex
+  - research/pde_ledger/paper/stages/stage_212.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '212'
+  source: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  - paper/stages/stage_212.tex
+  - research/pde_ledger/paper/stages/stage_212.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '213'
+  source: paper/stages/stage_213.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_213.tex
+  - research/pde_ledger/paper/stages/stage_213.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '213'
+  source: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  - paper/stages/stage_213.tex
+  - research/pde_ledger/paper/stages/stage_213.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '214'
+  source: paper/stages/stage_214.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_214.tex
+  - research/pde_ledger/paper/stages/stage_214.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '214'
+  source: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  - paper/stages/stage_214.tex
+  - research/pde_ledger/paper/stages/stage_214.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '215'
+  source: paper/stages/stage_215.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_215.tex
+  - research/pde_ledger/paper/stages/stage_215.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '215'
+  source: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  - paper/stages/stage_215.tex
+  - research/pde_ledger/paper/stages/stage_215.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '216'
+  source: paper/stages/stage_216.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_216.tex
+  - research/pde_ledger/paper/stages/stage_216.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '216'
+  source: notes/stages/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
+  - paper/stages/stage_216.tex
+  - research/pde_ledger/paper/stages/stage_216.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '217'
+  source: paper/stages/stage_217.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_217.tex
+  - research/pde_ledger/paper/stages/stage_217.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '217'
+  source: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  - paper/stages/stage_217.tex
+  - research/pde_ledger/paper/stages/stage_217.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '218'
+  source: paper/stages/stage_218.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_218.tex
+  - research/pde_ledger/paper/stages/stage_218.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '218'
+  source: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  - paper/stages/stage_218.tex
+  - research/pde_ledger/paper/stages/stage_218.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '219'
+  source: paper/stages/stage_219.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_219.tex
+  - research/pde_ledger/paper/stages/stage_219.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '219'
+  source: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  - paper/stages/stage_219.tex
+  - research/pde_ledger/paper/stages/stage_219.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '220'
+  source: paper/stages/stage_220.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_220.tex
+  - research/pde_ledger/paper/stages/stage_220.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '220'
+  source: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  - paper/stages/stage_220.tex
+  - research/pde_ledger/paper/stages/stage_220.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '221'
+  source: paper/stages/stage_221.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_221.tex
+  - research/pde_ledger/paper/stages/stage_221.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '221'
+  source: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  - paper/stages/stage_221.tex
+  - research/pde_ledger/paper/stages/stage_221.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '222'
+  source: paper/stages/stage_222.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_222.tex
+  - research/pde_ledger/paper/stages/stage_222.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '222'
+  source: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  - paper/stages/stage_222.tex
+  - research/pde_ledger/paper/stages/stage_222.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '223'
+  source: paper/stages/stage_223.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_223.tex
+  - research/pde_ledger/paper/stages/stage_223.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '223'
+  source: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  - paper/stages/stage_223.tex
+  - research/pde_ledger/paper/stages/stage_223.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '224'
+  source: paper/stages/stage_224.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_224.tex
+  - research/pde_ledger/paper/stages/stage_224.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '224'
+  source: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  - paper/stages/stage_224.tex
+  - research/pde_ledger/paper/stages/stage_224.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '225'
+  source: paper/stages/stage_225.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_225.tex
+  - research/pde_ledger/paper/stages/stage_225.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '225'
+  source: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  - paper/stages/stage_225.tex
+  - research/pde_ledger/paper/stages/stage_225.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '226'
+  source: paper/stages/stage_226.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_226.tex
+  - research/pde_ledger/paper/stages/stage_226.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '226'
+  source: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  - paper/stages/stage_226.tex
+  - research/pde_ledger/paper/stages/stage_226.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '227'
+  source: paper/stages/stage_227.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_227.tex
+  - research/pde_ledger/paper/stages/stage_227.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '227'
+  source: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  - paper/stages/stage_227.tex
+  - research/pde_ledger/paper/stages/stage_227.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '228'
+  source: paper/stages/stage_228.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_228.tex
+  - research/pde_ledger/paper/stages/stage_228.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '228'
+  source: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  - paper/stages/stage_228.tex
+  - research/pde_ledger/paper/stages/stage_228.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '229'
+  source: paper/stages/stage_229.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_229.tex
+  - research/pde_ledger/paper/stages/stage_229.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '229'
+  source: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  - paper/stages/stage_229.tex
+  - research/pde_ledger/paper/stages/stage_229.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '230'
+  source: paper/stages/stage_230.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_230.tex
+  - research/pde_ledger/paper/stages/stage_230.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '230'
+  source: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  - paper/stages/stage_230.tex
+  - research/pde_ledger/paper/stages/stage_230.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '231'
+  source: paper/stages/stage_231.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_231.tex
+  - research/pde_ledger/paper/stages/stage_231.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '231'
+  source: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  - paper/stages/stage_231.tex
+  - research/pde_ledger/paper/stages/stage_231.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '232'
+  source: paper/stages/stage_232.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_232.tex
+  - research/pde_ledger/paper/stages/stage_232.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '232'
+  source: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  - paper/stages/stage_232.tex
+  - research/pde_ledger/paper/stages/stage_232.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '233'
+  source: paper/stages/stage_233.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_233.tex
+  - research/pde_ledger/paper/stages/stage_233.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '233'
+  source: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  - paper/stages/stage_233.tex
+  - research/pde_ledger/paper/stages/stage_233.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '234'
+  source: paper/stages/stage_234.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_234.tex
+  - research/pde_ledger/paper/stages/stage_234.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '234'
+  source: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  - paper/stages/stage_234.tex
+  - research/pde_ledger/paper/stages/stage_234.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '235'
+  source: paper/stages/stage_235.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_235.tex
+  - research/pde_ledger/paper/stages/stage_235.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '235'
+  source: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  - paper/stages/stage_235.tex
+  - research/pde_ledger/paper/stages/stage_235.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '236'
+  source: paper/stages/stage_236.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_236.tex
+  - research/pde_ledger/paper/stages/stage_236.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '236'
+  source: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  - paper/stages/stage_236.tex
+  - research/pde_ledger/paper/stages/stage_236.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '237'
+  source: paper/stages/stage_237.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_237.tex
+  - research/pde_ledger/paper/stages/stage_237.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '237'
+  source: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  - paper/stages/stage_237.tex
+  - research/pde_ledger/paper/stages/stage_237.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '238'
+  source: paper/stages/stage_238.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_238.tex
+  - research/pde_ledger/paper/stages/stage_238.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '238'
+  source: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  - paper/stages/stage_238.tex
+  - research/pde_ledger/paper/stages/stage_238.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '239'
+  source: paper/stages/stage_239.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_239.tex
+  - research/pde_ledger/paper/stages/stage_239.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '239'
+  source: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  - paper/stages/stage_239.tex
+  - research/pde_ledger/paper/stages/stage_239.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '240'
+  source: paper/stages/stage_240.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_240.tex
+  - research/pde_ledger/paper/stages/stage_240.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '240'
+  source: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  - paper/stages/stage_240.tex
+  - research/pde_ledger/paper/stages/stage_240.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '241'
+  source: paper/stages/stage_241.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_241.tex
+  - research/pde_ledger/paper/stages/stage_241.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '241'
+  source: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  - paper/stages/stage_241.tex
+  - research/pde_ledger/paper/stages/stage_241.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '242'
+  source: paper/stages/stage_242.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_242.tex
+  - research/pde_ledger/paper/stages/stage_242.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '242'
+  source: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  - paper/stages/stage_242.tex
+  - research/pde_ledger/paper/stages/stage_242.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '243'
+  source: paper/stages/stage_243.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_243.tex
+  - research/pde_ledger/paper/stages/stage_243.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '243'
+  source: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  - paper/stages/stage_243.tex
+  - research/pde_ledger/paper/stages/stage_243.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '244'
+  source: paper/stages/stage_244.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_244.tex
+  - research/pde_ledger/paper/stages/stage_244.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '244'
+  source: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+  - paper/stages/stage_244.tex
+  - research/pde_ledger/paper/stages/stage_244.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '245'
+  source: paper/stages/stage_245.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_245.tex
+  - research/pde_ledger/paper/stages/stage_245.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '245'
+  source: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  - paper/stages/stage_245.tex
+  - research/pde_ledger/paper/stages/stage_245.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '246'
+  source: paper/stages/stage_246.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_246.tex
+  - research/pde_ledger/paper/stages/stage_246.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '246'
+  source: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  - paper/stages/stage_246.tex
+  - research/pde_ledger/paper/stages/stage_246.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '247'
+  source: paper/stages/stage_247.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_247.tex
+  - research/pde_ledger/paper/stages/stage_247.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '247'
+  source: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  - paper/stages/stage_247.tex
+  - research/pde_ledger/paper/stages/stage_247.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '248'
+  source: paper/stages/stage_248.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_248.tex
+  - research/pde_ledger/paper/stages/stage_248.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '248'
+  source: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  - paper/stages/stage_248.tex
+  - research/pde_ledger/paper/stages/stage_248.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '249'
+  source: paper/stages/stage_249.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_249.tex
+  - research/pde_ledger/paper/stages/stage_249.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '249'
+  source: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  - paper/stages/stage_249.tex
+  - research/pde_ledger/paper/stages/stage_249.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '250'
+  source: paper/stages/stage_250.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_250.tex
+  - research/pde_ledger/paper/stages/stage_250.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '250'
+  source: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  - paper/stages/stage_250.tex
+  - research/pde_ledger/paper/stages/stage_250.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '251'
+  source: paper/stages/stage_251.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_251.tex
+  - research/pde_ledger/paper/stages/stage_251.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '251'
+  source: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  - paper/stages/stage_251.tex
+  - research/pde_ledger/paper/stages/stage_251.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '252'
+  source: paper/stages/stage_252.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_252.tex
+  - research/pde_ledger/paper/stages/stage_252.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '252'
+  source: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  - paper/stages/stage_252.tex
+  - research/pde_ledger/paper/stages/stage_252.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '253'
+  source: paper/stages/stage_253.tex
+  graph_gap: true
+  attempted_sources:
+  - paper/stages/stage_253.tex
+  - research/pde_ledger/paper/stages/stage_253.tex
+  reason: no atlas node tied to this source path
+  stderr: ''
+- stage: '253'
+  source: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  graph_gap: true
+  attempted_sources:
+  - notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  - research/pde_ledger/notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  - paper/stages/stage_253.tex
+  - research/pde_ledger/paper/stages/stage_253.tex
+  reason: no atlas node tied to this source path
+  stderr: ''

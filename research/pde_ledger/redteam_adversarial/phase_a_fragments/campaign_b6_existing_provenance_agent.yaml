@@ -1,0 +1,205 @@
+schema_version: 1
+dry_run: false
+dry_run_id: null
+modality: existing_provenance
+ingested_from: redteam_adversarial/phase_a_fragments/campaign_b6_existing_provenance_agent.yaml
+ingested_at: '2026-06-11T08:21:43Z'
+stages:
+- '161'
+- '163'
+- '166'
+- '168'
+- '169'
+- '181'
+candidates:
+- candidate_key: stage163_sigma0_can_digit_variant
+  modality: existing_provenance
+  anchor_stage: '163'
+  parameter_names:
+  - Sigma0_can
+  reason: The carried readback 4.651033550168876 contradicts the OWNING stage-156 value 4.651033550168867 (stage156 script
+    self-asserts 867 at lines 127-128; SymPy output ...168867, Mathematica output ...168874) — a terminal-digit transposition
+    (67->76) that was propagated to stages 158/168 and into paper/appendices/stage_appendix_part04.tex:956 and part04_geometry_retarded_mouth.tex:970,
+    and is recorded uncritically as the carried value in CHECKPOINT_CONSTANT_PROVENANCE.md:518 — the pattern of a transcribed/back-filled
+    literal never reconciled against its upstream derivation.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 125
+    excerpt: Sigma0_can = sp.Float("4.651033550168876", 30)
+    stage: '163'
+- candidate_key: stage163_family1_readback_misattribution
+  modality: existing_provenance
+  anchor_stage: '163'
+  parameter_names:
+  - r_star
+  - g_star
+  - Sigma0_can
+  - S_can
+  reason: The script's only recorded provenance for the four pinned Family-1 readbacks names a "Stage 162/146 benchmark branch",
+    but stage-146 sources contain NONE of the four literals (actual numeric owners are stage 156 for Sigma0_can/S_can and
+    the 121/139 canonical packet for r_star/g_star), and the CHECKPOINT_CONSTANT_PROVENANCE.md:518-525 entry says only "carried
+    Family-1 readbacks" with no upstream stage at all — a vague/mis-attributed provenance chain consistent with values inserted
+    first and sourced afterwards.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 18
+    excerpt: '- The Family-1 numbers at the end are carried readbacks from the Stage 162/146'
+    stage: '163'
+- candidate_key: stage168_sigma0_num_digit_variant
+  modality: existing_provenance
+  anchor_stage: '168'
+  parameter_names:
+  - Sigma0_num
+  reason: Second in-band carrier of the 4.651033550168876 variant that disagrees with the owning stage-156 value 4.651033550168867
+    in the last two digits; the pass-2 stage_168 report reconciled it only against the (equally drifted) 158/163-family notes,
+    never against the stage-156 owner, so the recorded provenance is internally circular.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+    line: 119
+    excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
+    stage: '168'
+- candidate_key: stage161_dsigma0_dthat_coefficient
+  modality: existing_provenance
+  anchor_stage: '161'
+  parameter_names:
+  - dSigma0_per_dThat
+  reason: The substitution coefficient 6.42981496203006 is introduced with only the bare comment "Use dSigma0 ~ 6.42981496203006
+    dThat" — no owning stage is named in the script, the stage-161 notes, the pass-2 report, or CHECKPOINT_CONSTANT_PROVENANCE
+    (the adjacent 0.832409471081635/1.16275838754222 pair IS anchored to Stage 159) — and it is numerically built from the
+    contradicted 4.651033550168876 Sigma0 variant, so its provenance is both unanchored and downstream of a drifted literal.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+    line: 122
+    excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
+    stage: '161'
+- candidate_key: stage161_gamma0_star_branch_value
+  modality: existing_provenance
+  anchor_stage: '161'
+  parameter_names:
+  - gamma_0
+  - kappa_0
+  reason: The branch-defining substitution gamma_0* = (1+r_c)/9 (and kappa_0 = (1+r_c)/3) that the whole eps_gamma/Upsilon_Pi
+    similarity-defect structure is linearized around is carried by pointer only ("compensated canonical branch of Stages 115-116");
+    none of the in-scope provenance sources (checkpoint provenance doc, pass-2 stage_161 report) classifies the 9-normalization
+    as derived vs posited, and the project's own ansatz catalog flags gamma_0=(1+r_c)/9 as a postulated value — a prime fit-insertion
+    point.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 65
+    excerpt: \gamma_0=\frac{1+r_c}{9},
+    stage: '161'
+- candidate_key: stage166_theta_chi_wall_temperature
+  modality: existing_provenance
+  anchor_stage: '166'
+  parameter_names:
+  - Theta_chi
+  - rho_w_chi
+  reason: The explicit Family-1 wall-temperature constant is pinned bare (no in-script source comment, no owning stage named
+    in the stage-166 notes or pass-2 report, which reconciles it only against stage 166's own notes lines 180-181, and no
+    entry in CHECKPOINT_CONSTANT_PROVENANCE despite 166 being a batch-7 remediation stage); the literal actually originates
+    at stages 077/078, so its recorded provenance is missing entirely and the derived rho_w_chi = 0.403417022451042 inherits
+    that gap.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+    line: 94
+    excerpt: Theta_chi = sp.Float("4.06863235008162", 30)
+    stage: '166'
+- candidate_key: stage181_split_blocking_two_elevenths
+  modality: existing_provenance
+  anchor_stage: '181'
+  parameter_names:
+  - eps_W_split_coefficient
+  reason: The load-bearing split-blocking coefficient 2/11 (which generates the 11/9/4 coefficient family carried through
+    183 into checkpoint 185 and onward to 242) enters the band with the attribution "earlier coherent-kernel stages already
+    gave..." — no stage number — while the CHECKPOINT_CONSTANT_PROVENANCE Stage-185 entry declares 2/11/9/4 "source-anchored"
+    at Stage 183, which itself merely imports them from 181; the actual derivation lives unreferenced at stage 039, so the
+    recorded chain is vague and circular even though a derivation exists.
+  citation:
+    path: research/pde_ledger/notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 29
+    excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+    stage: '181'
+- candidate_key: stage169_xi_perp_paper_targets
+  modality: existing_provenance
+  anchor_stage: '169'
+  parameter_names:
+  - Xi_perp_coeff_Xiv
+  - Xi_perp_coeff_XiL
+  reason: The three comparison targets (0.758035078944663 / 1.00314310113848 / 1.88373219118005) are recorded in CHECKPOINT_CONSTANT_PROVENANCE.md:1295-1296
+    only as "paper-comparison TARGET literals ... preserved unchanged as paper-side values" with no owning stage; the actual
+    derivation is the stage-164 coefficient output, so the recorded provenance is a script->notes->script loop whose anchor
+    is "the paper says so" — a classic back-fill signature even though an upstream derivation exists.
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+    line: 138
+    excerpt: ("Xi_perp coeff on Xiv", coeff_v, sp.Float('1.00314310113848', 20)),
+    stage: '169'
+blind_to_modalities:
+- numeric_literal
+- claim_label
+- graph
+pure_identities:
+- stage: '161'
+  value: 0.832409471081635, 1.16275838754222
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+    line: 117
+    excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+  reason: Explicitly anchored in-script ("Insert the Stage 159 tangential mouth transport"); literals confirmed present in
+    the stage 159/160 notes and stage-160 output.
+- stage: '162'
+  value: r_F1 = 1.77799353547498
+  citation:
+    path: research/pde_ledger/scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+    line: 71
+    excerpt: rF1 = sp.Float("1.77799353547498", 30)
+  reason: Canonical Family-1 radius with recorded closed-form owner sqrt(4107-100*pi^2)/(10*pi) owned upstream at stage 121
+    per CHECKPOINT_CONSTANT_PROVENANCE.md:1293-1295; consistent everywhere in the band.
+- stage: '163'
+  value: 4*sqrt(1+r_*^2), -1/sqrt(1+r_*^2), 1/(4*sqrt(1+r_*^2)), 16/sqrt(1+r_*^2)
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 522
+    excerpt: '- the derived readback coefficients'
+  reason: Derived in-script from the branch slope dF/dg; explanatory numeric readbacks, not theorem inputs, exactly as the
+    checkpoint entry classifies them.
+- stage: '165'
+  value: Tm_pref 1.2715890393387603, v_pref 1.1428896163056477, ratio_pref 0.8987885086678338, prod_pref 1.4532859092683434
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 1291
+    excerpt: 165's F2 prefactor checks [`Tm_pref≈1.2715890393387603`, `v_pref≈1.1428896163056477`,
+  reason: Re-derived cross-check targets recomputed in-script from g_star; recorded as such in the pass-2 V.1 provenance entry,
+    not carried constants.
+- stage: '172'
+  value: u_2 = 1/9, u_4 = 4/81
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_172.md
+    line: 153
+    excerpt: numeric figures-of-merit; the only numeric constants are the canonical `u_2=1/9`, `u_4=4/81`,
+  reason: Deformed-branch coefficients whose derivation (series inversion of -3/Lambda_def) is recorded at the checkpoint-105
+    provenance entry; structural carries, not tunable.
+- stage: '180'
+  value: 27*pi^2/20 selected-branch prefactor
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_180.md
+    line: 132
+    excerpt: All deliverables of stage 180 are **symbolic closed forms**; there are no pinned numeric figures-of-merit
+  reason: Structural dimensionless front factor of a symbolic deliverable (Lambda_0 = 27*pi^2*G*c_s^5/(20*a^5*c^5)), carried
+    unchanged through 181/184; not a standalone computed number.
+- stage: '185'
+  value: E_*, F_*, exponents 1+deltaU_*, 1+chi0_*
+  citation:
+    path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 552
+    excerpt: '- `1 + deltaU_*`, `1 + chi0_*`'
+  reason: Carried fully symbolic from the Stage-183 compilers, never numerically specialized in either engine; pass-2 V.2
+    re-verification confirmed no constant moved (the 2/11-rooted coefficient family is flagged separately at the 181 candidate).
+- stage: '187'
+  value: 1+chi_{0,*} determinant
+  citation:
+    path: research/pde_ledger/redteam/pass2/reports/stage_187.md
+    line: 119
+    excerpt: The stage's deliverables are symbolic (no numeric constants are pinned beyond the structural `1+\chi_{0,*}`).
+  reason: Structural symbolic determinant of the selected 3x3 minor; no numeric pin. Representative of stages 170-179 and
+    186-192, whose scripts contain no decimal literals at all (verified by grep over all band scripts).

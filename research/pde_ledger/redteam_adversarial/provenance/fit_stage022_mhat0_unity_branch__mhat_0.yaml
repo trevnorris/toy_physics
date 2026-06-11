@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_mhat0_unity_branch__phase_b__mhat_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -117,9 +117,41 @@ source_evidence:
   line: 355
   role: sympy_script
   excerpt: print("    (or P0 itself when mhat = 1 on the natural source-map branch).")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mhat_0
+  introduced_at_stage: 18
+  introduced_at_line: 279
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 279
+    excerpt: On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target
+constraints:
+- parameter: mhat_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 279
+    excerpt: On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: mhat_0 = 1 is a BRANCH/convention selection ('the natural source-map branch mhat_0 = 1 + O(a^2/r^2)'), used to
+    reduce the invariant product mhat_0^2 P_0 to a direct target for P_0. It is not derived from ledger quantities nor matched
+    to an external number; it is a posited leading-order source-map normalization, classified free_choice. (Stage 024 later
+    supplies the partial derivation mhat_0 = mhat_rad * mhat_ang with mhat_ang = 1 exact, but the mhat_0 = 1 unity branch
+    at stage 022 is a convenience branch choice, not yet a derivation.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 74
+    excerpt: '`mhat_0 = mhat_rad * mhat_ang`,'
+  - path: paper/stages/stage_022.tex
+    line: 135
+    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+downstream_dependents:
+- 019
+- '020'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage022_mhat0_unity_branch__mhat_0.yaml

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_164_l_w
+parameter_name: L_W
+origin_claims:
+  - parameter: L_W
+    introduced_at_stage: 164
+    introduced_at_line: 31
+    citation:
+      path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+      line: 31
+      excerpt: "(a,L_W,\\rho_w,c_{s,w},c_s,\\mathcal Z_q,\\mathcal T_m,v_{w0}),"
+constraints:
+  - parameter: L_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+      line: 101
+      excerpt: "K_q=\\frac{\\mathcal Z_q}{\\mu_0}\\frac{\\pi^2 c_s^2}{4L_W^2},"
+downstream_dependents: [165, 166, 167, 168]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "L_W is a parent-action wall-geometry coordinate entering the Stage-118 coupling formulas (g_q, K_q, J_s); 164 uses it as a microscopic drift variable but cross-references its defining D/N selection law (L_W=(pi a/2) sqrt((1+r^2)/3), Stage 116) and the L_W=L identification (Stage 121) only as 'Stage 118' notation, not per-line origins."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md, line: 90, excerpt: "## 2. Exact parent-action formulas on the explicit throat-core branch" }

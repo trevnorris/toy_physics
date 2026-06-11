@@ -1,0 +1,25 @@
+candidate_id: fit_stage082_first_exact_product_window
+parameter_name: Pi_fail
+origin_claims:
+  - parameter: Pi_fail
+    introduced_at_stage: 082
+    introduced_at_line: 202
+    citation:
+      path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+      line: 202
+      excerpt: "`Pi_fail := C_mix Q( zeta_+(Xi,eta;kappa) ; eps_blk ).`"
+constraints:
+  - parameter: Pi_fail
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+      line: 204
+      excerpt: "This is the first exact product-window theorem derived directly from the coupled support/source operator rather than through the intermediate `Pe_req` bookkeeping."
+downstream_dependents: [083, 084, 085, 086, 087]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Pi_fail := C_mix Q(zeta_+(Xi,eta;kappa); eps_blk) is the guaranteed-failure product threshold derived at stage 082 directly from the coupled support/source operator: zeta_+ is the upper operator bracket zeta_phys(Xi Delta_inf(kappa,eta), eta; kappa) (Stage-058 bound) and Q is the exact Stage-052 inverse map. All inputs are ledger-internal, so internal_consistency, not a fit; the notes explicitly call it 'the first exact product-window theorem derived directly from the coupled operator'. The script verifies zeta_req(Pi_fail) - zeta_+ == 0. (No fixed numerical value -- it is a function of the operator inputs.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md, line: 165, excerpt: "`: = zeta_+(Xi,eta;kappa).`" }
+      - { path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py, line: 60, excerpt: "expect_zero(\"zeta_req(Pi_fail)-zeta_+\", zeta_req.subs(Pi_tr, Pi_fail) - zeta_plus)" }

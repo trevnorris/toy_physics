@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage185_frozen_reference_coefficients_e_star_f_star__phase_b__e_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -95,9 +95,27 @@ source_evidence:
   line: 232
   role: sympy_script
   excerpt: mu_sol = sp.simplify(keta + 2 * kW - 2 * lam1 - E_star * Sigma_eps + F_star * Sigma_delta)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: E_star
+  introduced_at_stage: 185
+  introduced_at_line: 218
+  citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 218
+    excerpt: E_*:=\frac{2\epsilon_{W,*}}{1-\epsilon_*}\,\frac{11+9\delta_{U,*}}{11(1+\delta_{U,*})},
+constraints:
+- parameter: E_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 215
+    excerpt: 'Freeze the reference-branch coefficients:'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '186'
+- '187'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage185_frozen_reference_coefficients_e_star_f_star__e_star.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage248_session2_readback
+parameter_name: E_sub
+origin_claims:
+  - parameter: E_sub
+    introduced_at_stage: 248
+    introduced_at_line: 417
+    citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 417
+      excerpt: "E_{\\rm sub}=2.5."
+constraints:
+  - parameter: E_sub
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 470
+      excerpt: "At the fixed subbarrier energy \\(E_{\\rm sub}=2.5\\), the launch speed is"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "E_sub=2.5 is a fixed/declared subbarrier energy chosen for the Session-II benchmark (notes line 407-417 'The Session-II run used ... E_sub=2.5'; readback at line 470 'At the fixed subbarrier energy E_sub=2.5'). It is a posited benchmark input (free_choice), not derived and not an external published target. The 'readback' candidate reuses the same fixed E_sub=2.5 set by the launch-parameters candidate; both reference the identical declared value, so the readback adds no independent constraint. No notes text justifies why 2.5 (other than V(r_0)<E<V_peak, i.e. it must lie in the subbarrier window 0.2<E<3.43)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md, line: 417, excerpt: "E_{\\rm sub}=2.5." }
+      - { path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py, line: 239, excerpt: "Esub_num = 2.5" }

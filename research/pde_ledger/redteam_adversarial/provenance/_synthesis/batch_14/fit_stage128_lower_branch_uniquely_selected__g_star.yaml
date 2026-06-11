@@ -1,0 +1,19 @@
+candidate_id: fit_stage128_lower_branch_uniquely_selected
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 122
+    introduced_at_line: 63
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 63
+      excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+      line: 35
+      excerpt: "is the unique physically admissible canonical branch under positive mouth sourcing."
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

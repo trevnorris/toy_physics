@@ -1,0 +1,12 @@
+candidate_id: fit_stage_252_engine_disagreement
+parameter_name: engine_disagreement
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Not a parameter value. 'engine_disagreement' is an audit-meta target (SymPy-vs-Mathematica engine disagreement marker); the bundle carries an empty source_evidence list and the stage-252 notes document no parameter of this name. No value genealogy to classify (excluded layer: result/stage provenance without value genealogy)."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage_252_engine_disagreement__engine_disagreement.yaml, line: 17, excerpt: "source_evidence: []" }
+      - { path: paper/stages/stage_252.tex, line: 4, excerpt: "\\stagefield{Verification}{SymPy audit: ... Mathematica audit: none yet.}" }

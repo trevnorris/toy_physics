@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage076_lambda_mu_normalization__phase_b__lambda_mu.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -93,9 +93,40 @@ source_evidence:
   line: 90
   role: sympy_script
   excerpt: ref_target = sp.simplify((1 / ref_factor)**2 / 16) * lambda_mu**2 * rho_w**2
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_mu
+  introduced_at_stage: 62
+  introduced_at_line: 60
+  citation:
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 60
+    excerpt: '`mu_* = lambda_mu h_w,`'
+constraints:
+- parameter: lambda_mu
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 66
+    excerpt: and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local
+      chemical-potential normalization.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: lambda_mu is introduced as a normalization-tracking convention factor relating the chemical-potential scale mu_*
+    to the wall enthalpy h_w (mu_* = lambda_mu h_w). The notes explicitly state it merely 'keeps track of whether one chooses
+    the wall enthalpy itself (lambda_mu = 1) or a nearby local chemical-potential normalization' -- i.e. a convention/gauge
+    choice with no derivation and no external anchor; it is carried symbolically (Theta_w ~ lambda_mu^2) rather than fixed
+    numerically.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 66
+    excerpt: and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local
+      chemical-potential normalization.
+downstream_dependents:
+- '063'
+- 078
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage076_lambda_mu_normalization__lambda_mu.yaml

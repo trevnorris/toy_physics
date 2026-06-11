@@ -1,0 +1,25 @@
+candidate_id: fit_stage_151_a_t
+parameter_name: A_T
+origin_claims:
+  - parameter: A_T
+    introduced_at_stage: 147
+    introduced_at_line: 48
+    citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 48
+      excerpt: "A_T"
+constraints:
+  - parameter: A_T
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 34
+      excerpt: "Substituting the Stage 146 retuning formulas gives"
+downstream_dependents: [148, 150, 151, 152, 154, 155]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 151 CARRIES A_T from its origin at Stage 147:48 (derived closed form in the canonical-branch quantities — internal_consistency). At Stage 151 A_T is kept purely SYMBOLIC (the script declares AT, BT = sp.symbols('A_T B_T'); the traction shift is deltaT = AT*dg + BT*dS), so no numeric value is introduced or back-solved here — the M7 cross-check is symbolic in A_T. No new provenance content at this stage beyond the carry; no published-target fit."
+    citations:
+      - { path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py, line: 49, excerpt: "AT, BT = sp.symbols(\"A_T B_T\", real=True)" }
+      - { path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md, line: 119, excerpt: "it is the projection of the exact residual \\(R_*(x)\\) against the same rigidity" }

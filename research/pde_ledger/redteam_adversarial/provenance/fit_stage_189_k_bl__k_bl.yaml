@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_189_k_bl__phase_b__k_bl.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,40 @@ source_evidence:
   line: 164
   role: sympy_script
   excerpt: expect_zero("P0 - (K_bl/D0) T_eff^2", P0 - (Kbl / D0) * Teff2)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_bl
+  introduced_at_stage: 180
+  introduced_at_line: 80
+  citation:
+    path: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+    line: 80
+    excerpt: \frac{N_{A,0}}{K_A}.
+constraints:
+- parameter: K_bl
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 345
+    excerpt: denote the static baseline wall coefficient by
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K_bl (K_A^(bl), the static baseline wall coefficient) is documented in Stage 189 notes line 345-351 as a renaming,
+    to avoid letter collision, of the wall baseline K_A that defines the effective transfer shape T_eff^2 = N_0/K (Stage 180
+    line 80/393, where K_A=K_{0,A}=K_eta^eff/mu_eta). It is a ledger-internal stiffness baseline -> internal_consistency.
+    The bundle's source_evidence held only sympy_script entries (Kbl = symbols('K_bl'); P0 = (K_bl/D0) T_eff^2); the binding
+    notes/ rule is nonetheless satisfied via Stage 189 line 345 + Stage 180 line 80. Low gap logged only because the bundle
+    itself carried no notes_stage pointer for K_bl.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_189_k_bl__k_bl.yaml
+    line: 1
+    excerpt: 'candidate_id: fit_stage_189_k_bl'
+  - path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+    line: 162
+    excerpt: Kbl = sp.symbols("K_bl", nonzero=True, real=True)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_189_k_bl__k_bl.yaml

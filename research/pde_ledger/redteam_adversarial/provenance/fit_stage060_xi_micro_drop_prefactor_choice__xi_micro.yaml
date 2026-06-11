@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage060_xi_micro_drop_prefactor_choice__phase_b__xi_micro.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -164,9 +164,40 @@ source_evidence:
   role: sympy_script
   excerpt: print("4. The microscopic support/source gain is Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X) = chi_sigma Lambda_phi^2
     L^2/T_X.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_micro
+  introduced_at_stage: 60
+  introduced_at_line: 203
+  citation:
+    path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+    line: 203
+    excerpt: '`Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X).`'
+constraints:
+- parameter: Xi_micro
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+    line: 217
+    excerpt: So the apparent mobility/diffusion ambiguity is gone. The coupling is one entropic-support gain.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Candidate id references a 'drop prefactor choice' and the script comment '#  so the headline Xi_micro value below
+    has a physical basis'; this is not a posited numeric value but a symbolic derivation. Xi_micro = Lambda_phi^2 L^2/(Theta_sigma
+    T_X) is derived from the free-energy/Onsager closure via the Einstein relation D_sigma=M_sigma Theta_sigma — no scalar
+    'headline value' is fitted. No notes text posits a prefactor 'choice'; the prefactor is forced by the closure.
+  citations:
+  - path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+    line: 92
+    excerpt: '#      so the headline Xi_micro value below has a physical basis.'
+  - path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+    line: 213
+    excerpt: 'And because `D_sigma = M_sigma Theta_sigma`, this also reproduces the Stage-058 phenomenological form:'
+downstream_dependents:
+- '061'
+- '062'
+synthesis_ingested_at: '2026-06-11T18:26:14Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage060_xi_micro_drop_prefactor_choice__xi_micro.yaml

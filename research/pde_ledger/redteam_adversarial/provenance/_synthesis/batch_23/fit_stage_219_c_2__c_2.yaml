@@ -1,0 +1,19 @@
+candidate_id: fit_stage_219_c_2
+parameter_name: C_2
+origin_claims:
+  - parameter: C_2
+    introduced_at_stage: 219
+    introduced_at_line: 329
+    citation:
+      path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+      line: 330
+      excerpt: "\\chi_{UU}\\,\\beta_U^2"
+constraints:
+  - parameter: C_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+      line: 303
+      excerpt: "Then the exact static mixed correction is"
+downstream_dependents: []
+provenance_findings: []

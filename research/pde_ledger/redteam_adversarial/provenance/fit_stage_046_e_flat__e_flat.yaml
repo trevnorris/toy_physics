@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_046_e_flat__phase_b__e_flat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,25 @@ source_evidence:
   line: 93
   role: sympy_script
   excerpt: delta_G = sp.factor(sp.simplify(G_tr - G_flat))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: E_flat
+  introduced_at_stage: 46
+  introduced_at_line: 181
+  citation:
+    path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 181
+    excerpt: '`E_flat(xi) := R_target - F_flat(xi,delta).`'
+constraints:
+- parameter: E_flat
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 185
+    excerpt: '`E_tr - E_flat = F_flat - F_tr > 0`'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_046_e_flat__e_flat.yaml

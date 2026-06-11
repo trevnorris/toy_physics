@@ -1,0 +1,25 @@
+candidate_id: fit_stage_191_delta_branch
+parameter_name: Delta_branch
+origin_claims:
+  - parameter: Delta_branch
+    introduced_at_stage: 191
+    introduced_at_line: 200
+    citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 200
+      excerpt: "\\Delta_{\\rm branch}"
+constraints:
+  - parameter: Delta_branch
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 203
+      excerpt: " a_2,\\ b_2,\\ a_4,\\ b_4,\\ a_{P_0},\\ b_{P_0},\\ \\Delta_{\\rm pole},\\ \\Delta_{\\rm norm}"
+downstream_dependents: [192, 193, 195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_branch is not a fitted scalar value; it is the exact branch-side verdict VECTOR (a_2,b_2,a_4,b_4,a_P0,b_P0,Delta_pole,Delta_norm) assembled at 191 lines 200-205 by collecting already-defined moments. Its zero-set is the closure test; it is an internal_consistency compiler construction, not a posited or externally-targeted number. One of its components (Delta_norm, 191 lines 187-191) DOES embed the external GR normalization target 54 G c_s^5/(5 a^5 c^5); that external content is carried in the Delta_norm / P0_target genealogy, not in Delta_branch as a whole."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 187, excerpt: "\\Delta_{\\rm norm}" }
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 190, excerpt: " \\frac{54Gc_s^5}{5a^5c^5}." }

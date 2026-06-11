@@ -1,0 +1,24 @@
+candidate_id: fit_stage_065_v_0f
+parameter_name: V_0f
+origin_claims:
+  - parameter: V_0f
+    introduced_at_stage: 65
+    introduced_at_line: 23
+    citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 23
+      excerpt: "- `V0` is the wall amplitude,"
+constraints:
+  - parameter: V_0f
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 89
+      excerpt: "`V_conf(r;a) = V0 f((r-a)/ell),`"
+downstream_dependents: [66]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'V_0f' is a tokenization artifact: the scanner concatenated the TeX 'V_0f((r-a)/\\ell)' in the Stage-065 card Inputs line (V_{\\rm conf}=V_0 f(...)) into a single symbol. The real parameter is the wall amplitude V_0 multiplied by the wall-shape function f; there is no distinct parameter 'V_0f'. Classified identically to V_0: a free_choice (posited) branch amplitude of the declared thin-wall family, no numeric value or derivation."
+    citations:
+      - { path: paper/stages/stage_065.tex, line: 7, excerpt: "\\stagefield{Inputs}{Thin-wall confinement \\(V_{\\rm conf}(r;a)=V_0f((r-a)/\\ell)\\) and matched active layer.}" }

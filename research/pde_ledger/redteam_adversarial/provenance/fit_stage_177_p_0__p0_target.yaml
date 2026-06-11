@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_177_p_0__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,33 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'No notes/, card, or script in stage 177 documents a parameter ''P0_target'' with the scanner-extracted value ''38''.
+    The string ''38'' appears nowhere in notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md, paper/stages/stage_177.tex,
+    or the stage 177 sympy_audit / output transcript. In stage 177, P_0 is purely the SYMBOLIC outgoing prefactor P_0 = N_0/D_0
+    (sympy_audit line 114: P0_exact = N0/D0) carried from Stage 173; it is never given a numeric value. No internal_consistency
+    / published_target / free_choice classification is possible for a non-existent value.'
+  citations:
+  - path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+    line: 114
+    excerpt: P0_exact = N0 / D0
+  - path: redteam_adversarial/provenance/fit_stage_177_p_0__p0_target.yaml
+    line: 21
+    excerpt: 'source_evidence: []'
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'Scanner artifact, not a real fit: the extracted value ''38'' for ''P0_target'' is a false-positive numeric pull.
+    The candidate''s Phase-B input (tmp_prompts/fit_stage_177_p_0__phase_b__p0_target.md) shows the only nearby ''38'' tokens
+    are a pass-2 report''s file mtimes (''txt mtimes 01:38-01:39'') and appendix row pointers (''85, 644-653'') — neither
+    is a P_0 value. Flagged so the ingest does not mistake ''38'' for an external target P_0 was fitted to. There is NO back-solve
+    to 38 anywhere in stage 177; the genuine P_0 = N_0/D_0 identity is internal.'
+  citations:
+  - path: redteam_adversarial/tmp_prompts/fit_stage_177_p_0__phase_b__p0_target.md
+    line: 42
+    excerpt: '    Outputs are fresh (txt mtimes 01:38-01:39 > script mtimes 01:09).'''
+downstream_dependents:
+- '178'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_177_p_0__p0_target.yaml

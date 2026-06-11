@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_140_m_s__phase_b__m_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,45 @@ source_evidence:
   line: 21
   role: sympy_script
   excerpt: That_comp = sp.N(sp.sqrt(9*Ms_comp/20), 30)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_s
+  introduced_at_stage: 138
+  introduced_at_line: 25
+  citation:
+    path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 25
+    excerpt: \boxed{M_s=\Sigma_0.}
+constraints:
+- parameter: M_s
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 139
+    excerpt: M_s=\Sigma_0=\frac{20}{9}\widehat T_m^2.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'M_s = Sigma_0 originates as an identity at Stage 138 (M_s = Sigma_0, the overall shell-gain amplitude). At Stage
+    140 it becomes fully explicit, M_s = Sigma_0 = (20/9) T_hat_m^2, via the self-matched susceptibility closure (notes line
+    139). internal_consistency: M_s = L g_s^2/(K_s Theta_sigma) is an algebraic reduction over ledger-internal microscopic
+    inputs (healing-locked K_s, self-matched Theta_sigma, g_s = T_m J_s); its branch values M_s^{nat,*} approx 1.66854 and
+    M_s^{comp,*} approx 1.80594 are solved from the fixed-point law, not fitted. Gap flagged only to note the 20/9 prefactor
+    is conditional on the same-layer ansatz (notes lines 34-35), as for Sigma_0.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 81
+    excerpt: M_s = \frac{20}{9}\widehat T_m^2,
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 100
+    excerpt: M_s^{\rm comp,*}\approx 1.80594111095636,
+downstream_dependents:
+- '141'
+- '142'
+- '146'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_140_m_s__m_s.yaml

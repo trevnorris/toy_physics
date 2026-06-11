@@ -1,0 +1,19 @@
+candidate_id: fit_stage201_canonical_repair_vector
+parameter_name: Delta_x_rep
+origin_claims:
+  - parameter: Delta_x_rep
+    introduced_at_stage: 201
+    introduced_at_line: 274
+    citation:
+      path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+      line: 274
+      excerpt: "\\Delta\\mathbf x_{\\rm rep}:=-S_{(T,K_\\eta,\\mu)}\\,\\mathbf q."
+constraints:
+  - parameter: Delta_x_rep
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+      line: 305
+      excerpt: "M_*S_{(T,K_\\eta,\\mu)}=I_3,"
+downstream_dependents: [202]
+provenance_findings: []

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_unique_traction_renormalization__phase_b__sigma0_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,45 @@ source_evidence:
   line: 103
   role: sympy_script
   excerpt: Sigma0_can = bisect(3.0, 6.0, g_star, 55)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma0_can
+  introduced_at_stage: 156
+  introduced_at_line: 31
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 31
+    excerpt: \approx 4.651033550168867.
+constraints:
+- parameter: Sigma0_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 23
+    excerpt: \mathfrak g_{\rm fp}(\Sigma_0)=\mathfrak g_*
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Sigma0_can = 4.651033550168867 is the unique positive root of g_fp(Sigma0) = g_* on the analyzed monotone bracket
+    (compensation-restoration condition among ledger-internal quantities) -> genuine internal_consistency. Minor cross-source
+    value-tail discrepancy: notes/scripts give ...168867 (line 31) while the carried tuple in stage157/158 notes uses ...168876
+    (last two digits swapped). Below the 1e-10 audit tolerance asserted in the stage156 script, so non-substantive, but flagged
+    for the value-reconciliation pass.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 31
+    excerpt: \approx 4.651033550168867.
+  - path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 30
+    excerpt: \Sigma_0^{\rm can}
+  - path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+    line: 127
+    excerpt: 'if abs(Sigma0_can - 4.651033550168867) > 1e-10:'
+downstream_dependents:
+- '157'
+- '158'
+- '159'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage156_unique_traction_renormalization__sigma0_can.yaml

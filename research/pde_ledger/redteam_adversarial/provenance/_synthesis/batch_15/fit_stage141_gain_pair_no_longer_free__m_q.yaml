@@ -1,0 +1,25 @@
+candidate_id: fit_stage141_gain_pair_no_longer_free
+parameter_name: M_q
+origin_claims:
+  - parameter: M_q
+    introduced_at_stage: 137
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+      line: 65
+      excerpt: "-\\frac{L (K_sg_q-\\lambda g_s)^2}{K_s(K_sK_q+\\lambda^2)\\Theta_\\sigma}."
+constraints:
+  - parameter: M_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+      line: 7
+      excerpt: "1. The actual mouth gains are derived from the explicit throat-core ansatz:"
+downstream_dependents: [142, 143, 144, 145, 146]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Stage 141 is a STATUS-UPDATE note that restates M_q (no new value); origin is Stage 137. It is internal_consistency (derived from the Schur-complement core map). The 141 note itself is appropriately HEDGED -- 'The actual mouth gains are derived from the explicit throat-core ansatz... it is not yet a theorem that the full PDE admits no other microscopic realization' (notes lines 7,13-15) -- so the candidate-id phrase 'gain pair no longer free' is true only WITHIN the explicit throat-core + self-matched closure of Stages 137-140, not unconditionally. Logged low so downstream consumers carry the within-closure qualifier and do not read M_q as an unconditional PDE theorem; the note text supports this, but the candidate-id slogan could be mis-read as unconditional."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md, line: 13, excerpt: "Stages 137--140; it is not yet a theorem that the full PDE admits no other" }
+      - { path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md, line: 11, excerpt: "M_q=-\\frac{L (K_sg_q-\\lambda g_s)^2}{K_s(K_sK_q+\\lambda^2)\\Theta_\\sigma}." }

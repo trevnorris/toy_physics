@@ -1,0 +1,19 @@
+candidate_id: fit_stage_199_m_k
+parameter_name: m_K
+origin_claims:
+  - parameter: m_K
+    introduced_at_stage: 199
+    introduced_at_line: 288
+    citation:
+      path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+      line: 288
+      excerpt: "m_K^{(2\\leftarrow1)}:=\\frac{\\mathfrak r_K}{\\Phi_K^{(2\\leftarrow1)}},"
+constraints:
+  - parameter: m_K
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+      line: 59
+      excerpt: "m_T^{(2\\leftarrow1)}=m_K^{(2\\leftarrow1)}=m_\\mu^{(2\\leftarrow1)}=1"
+downstream_dependents: [200]
+provenance_findings: []

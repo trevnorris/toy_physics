@@ -1,0 +1,11 @@
+candidate_id: fit_stage_099_xi_t
+parameter_name: Xi_T
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No parameter named Xi_T (or XiT / Xi_T) exists anywhere in Stage 099. The mechanical bundle had EMPTY source_evidence. Grepped notes/stages/moving_throat_pde_stage099_reduced_finish_line.md, paper/stages/stage_099.tex, and the stage099 sympy audit — Xi_T appears in none. This is a scanner mis-resolution / phantom target with no ledger backing; nothing to classify."
+    citations:
+      - { path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py, line: 42, excerpt: "G, c, c_s, a, Omega_Q = sp.symbols(\"G c c_s a Omega_Q\", positive=True, real=True)" }

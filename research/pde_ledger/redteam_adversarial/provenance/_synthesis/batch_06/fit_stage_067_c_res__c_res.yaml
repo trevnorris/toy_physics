@@ -1,0 +1,24 @@
+candidate_id: fit_stage_067_c_res
+parameter_name: C_res
+origin_claims:
+  - parameter: C_res
+    introduced_at_stage: 67
+    introduced_at_line: 116
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 116
+      excerpt: "`C_res^2 := C^2(sqrt(pi))`"
+constraints:
+  - parameter: C_res
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 117
+      excerpt: "`        = 0.9944188364515293487...`"
+downstream_dependents: [68, 69]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The bundle's extracted value for 'C_res' (0.994418836451529348) is in fact C_res^2 (the notes give C_res^2 = 0.9944188364515293487, NOT C_res). The label/value mismatch is minor (the squared coherence is the headline quantity); the value is internal_consistency — computed inside the sech-Gaussian benchmark at the self-dual point, with no external target. Same number as the two C_res_sq candidates."
+    citations:
+      - { path: paper/stages/stage_067.tex, line: 23, excerpt: "C_{\\rm res}^2\\simeq0.994418836451529}." }

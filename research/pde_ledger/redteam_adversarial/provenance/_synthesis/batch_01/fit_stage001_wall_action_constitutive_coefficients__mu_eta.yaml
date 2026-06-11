@@ -1,0 +1,25 @@
+candidate_id: fit_stage001_wall_action_constitutive_coefficients
+parameter_name: mu_eta
+origin_claims:
+  - parameter: mu_eta
+    introduced_at_stage: 1
+    introduced_at_line: 201
+    citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 201
+      excerpt: "`           [ mu_eta(w) (partial_t eta)^2`"
+constraints:
+  - parameter: mu_eta
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 214
+      excerpt: "At this stage these are fixed effective constitutive functions of the chosen"
+downstream_dependents: [2, 3]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "mu_eta (effective wall inertia density) is one of four coefficients of the 'Minimal distributed geometry action (new ansatz)' (notes lines 194-196). It is a POSITED effective constitutive function of a freely chosen reference throat profile, not derived or externally anchored. The paper card (stage_001.tex:149) calls these 'branch constitutive functions' without flagging the whole quadratic wall action as an ansatz."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage001_geometry_lift.md, line: 194, excerpt: "## 5. Minimal distributed geometry action (new ansatz)" }
+      - { path: paper/stages/stage_001.tex, line: 149, excerpt: "The coefficients \\(\\mu_\\eta,T_w,T_\\Omega,K_\\eta\\) are branch constitutive functions." }

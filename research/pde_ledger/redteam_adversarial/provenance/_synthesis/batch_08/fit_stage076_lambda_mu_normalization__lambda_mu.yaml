@@ -1,0 +1,24 @@
+candidate_id: fit_stage076_lambda_mu_normalization
+parameter_name: lambda_mu
+origin_claims:
+  - parameter: lambda_mu
+    introduced_at_stage: 076
+    introduced_at_line: 60
+    citation:
+      path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+      line: 60
+      excerpt: "`mu_* = lambda_mu h_w,`"
+constraints:
+  - parameter: lambda_mu
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+      line: 66
+      excerpt: "and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local chemical-potential normalization."
+downstream_dependents: [077, 078]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "lambda_mu is introduced as a normalization-tracking convention factor relating the chemical-potential scale mu_* to the wall enthalpy h_w (mu_* = lambda_mu h_w). The notes explicitly state it merely 'keeps track of whether one chooses the wall enthalpy itself (lambda_mu = 1) or a nearby local chemical-potential normalization' -- i.e. a convention/gauge choice with no derivation and no external anchor; it is carried symbolically (Theta_w ~ lambda_mu^2) rather than fixed numerically."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md, line: 66, excerpt: "and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local chemical-potential normalization." }

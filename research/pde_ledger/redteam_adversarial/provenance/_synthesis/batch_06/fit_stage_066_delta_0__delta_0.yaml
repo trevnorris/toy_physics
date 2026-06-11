@@ -1,0 +1,24 @@
+candidate_id: fit_stage_066_delta_0
+parameter_name: Delta_0
+origin_claims:
+  - parameter: Delta_0
+    introduced_at_stage: 58
+    introduced_at_line: 231
+    citation:
+      path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+      line: 231
+      excerpt: "`Delta_0(kappa,eta)`"
+constraints:
+  - parameter: Delta_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+      line: 71
+      excerpt: "`W_suff = Pe_req / Delta_0(kappa,eta).`"
+downstream_dependents: [67, 68, 69]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 066 Delta_0 is carried from its Stage-058 origin (the uniform-source endpoint function); 066 only consumes it inside the wall-threshold W_suff = Pe_req/Delta_0. Origin is 058. The scanner's literal '0' is the '_0' subscript, not a posited value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md, line: 65, excerpt: "`G_suff = Pe_req / [ kappa Delta_0(kappa,eta) ].`" }

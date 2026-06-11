@@ -1,0 +1,19 @@
+candidate_id: fit_stage134_pi_star_carried_literal
+parameter_name: Pi_star
+origin_claims:
+  - parameter: Pi_star
+    introduced_at_stage: 130
+    introduced_at_line: 108
+    citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 108
+      excerpt: "\\Pi_* \\approx 1.50882951349316."
+constraints:
+  - parameter: Pi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 70
+      excerpt: "Stage 130 already fixed the exact source-shape compensation point"
+downstream_dependents: [135, 137, 140, 146, 147, 148, 149, 150, 151, 152, 153]
+provenance_findings: []

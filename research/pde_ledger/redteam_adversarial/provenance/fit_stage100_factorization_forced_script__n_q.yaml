@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage100_factorization_forced_script__phase_b__n_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,42 @@ source_evidence:
   line: 76
   role: sympy_script
   excerpt: 'print(''\nClosure ledger: mhat_0^2 * Gamma_5 = Gamma_5_target  <=>  mhat_0^2 chi_Q N_Q = 1'')'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: N_Q
+  introduced_at_stage: 97
+  introduced_at_line: 88
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 88
+    excerpt: '`N_Q := Kbar_0 / Kbar_0^target`.'
+constraints:
+- parameter: N_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 91
+    excerpt: '`mhat_0^2 chi_Q N_Q = 1.`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: This candidate concerns the FACTORIZATION mhat_0^2 chi_Q N_Q = 1, which is forced algebraically by substituting
+    the renormalized one-pole branch into the odd normalization condition mhat_0^2 Gammabar_5 = 2G/(5c^5) (internal_consistency
+    — this candidate's mechanism, script line 75 'the factorization ... is forced'). However the closure condition's right-hand
+    side 2G/(5c^5) is the published GR 2.5PN coefficient, and N_Q=1 (with chi_Q=1) is the open match-to-GR gate (published_target
+    flavor). The factorization structure is internal; the absolute normalization anchor is external GR. Value '1' for N_Q
+    is the unresolved theorem gate, not a derived result — honestly disclosed (card claimstatus ExactClosure/Open).
+  citations:
+  - path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+    line: 75
+    excerpt: '# the factorization mhat_0^2 chi_Q N_Q = 1 is forced.'
+  - path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 87
+    excerpt: '`mhat_0^2 Gammabar_5 = 2 G/(5 c^5)`.'
+downstream_dependents:
+- '105'
+- '106'
+synthesis_ingested_at: '2026-06-11T18:51:38Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage100_factorization_forced_script__n_q.yaml

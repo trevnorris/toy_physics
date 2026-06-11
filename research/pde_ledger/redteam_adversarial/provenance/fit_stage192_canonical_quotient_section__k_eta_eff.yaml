@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage192_canonical_quotient_section__phase_b__k_eta_eff.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,37 @@ source_evidence:
   line: 59
   role: sympy_script
   excerpt: Pdep = sp.Matrix.hstack(Mstar[:, T_idx], Mstar[:, Keta_idx], Mstar[:, mu_idx])
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_eta_eff
+  introduced_at_stage: 192
+  introduced_at_line: 81
+  citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 81
+    excerpt: (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+constraints:
+- parameter: K_eta_eff
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 314
+    excerpt: \boxed{(\Delta_{K_\eta})_{\rm orbit}=2\Delta_c-\Delta_U,}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K_eta_eff (K_eta^{(eff)}) is one of the eight drift-basis microscopic coordinates (192 line 81); it is a dependent-triple
+    coordinate whose drift Delta_{K_eta} is fixed by the exact orbit/quotient projector calculus (orbit law Delta_{K_eta}=2
+    Delta_c - Delta_U at line 314; quotient-failure component -q_eta at line 278). It is not a fitted scalar value at stage
+    192 — the stage manipulates its log-drift, not a numeric value. Its constitutive value as an effective wall stiffness
+    originates far upstream (the wall-action constitutive coefficients, ~stage 001), not in batch 21; no stage-192 notes/
+    line assigns it a number, so only the internal_consistency role within the projector calculus is established here.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 278
+    excerpt: \boxed{(\Delta_{K_\eta})_{\rm fail}=-q_\eta,}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage192_canonical_quotient_section__k_eta_eff.yaml

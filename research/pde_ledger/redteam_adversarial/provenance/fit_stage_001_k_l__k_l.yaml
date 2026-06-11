@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_001_k_l__phase_b__k_l.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -27,9 +27,38 @@ source_evidence:
   line: 182
   role: sympy_script
   excerpt: expect_zero("K_l at ell=2", sp.simplify(k_l.subs(ell, 2) - (k_eta + 6 * t_omega)))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_l
+  introduced_at_stage: 1
+  introduced_at_line: 239
+  citation:
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 239
+    excerpt: '`mu_eta q_{lm,tt} - partial_w( T_w partial_w q_{lm} ) + [ K_eta + l(l+1) T_Omega ] q_{lm}`'
+constraints:
+- parameter: K_l
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 239
+    excerpt: '`mu_eta q_{lm,tt} - partial_w( T_w partial_w q_{lm} ) + [ K_eta + l(l+1) T_Omega ] q_{lm}`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K_l is not an independent fitted value; it is the modal restoring coefficient K_l(l) = K_eta + l(l+1)*T_Omega obtained
+    algebraically by projecting the posited quadratic wall action onto the spherical-harmonic eigenvalue l(l+1) (notes line
+    239). The scanner's extracted value '0' comes from the stage-001 sympy audit's residual checks (K_l|l=0 - K_eta == 0 and
+    K_l|l=2 - (K_eta+6 T_Omega) == 0), which are consistency identities, not a numeric fit. The constant '6' is the l(l+1)
+    specialization at l=2, not an unexplained literal. K_l therefore inherits its status from K_eta/T_Omega (both free_choice
+    ansatz coefficients); the combination itself is exact internal algebra.
+  citations:
+  - path: scripts/moving_throat_pde_stage001_geometry_lift_sympy_audit.py
+    line: 182
+    excerpt: expect_zero("K_l at ell=2", sp.simplify(k_l.subs(ell, 2) - (k_eta + 6 * t_omega)))
+downstream_dependents:
+- '002'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_001_k_l__k_l.yaml

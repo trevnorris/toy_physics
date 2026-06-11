@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_rf1_family1_radius__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,40 @@ source_evidence:
   line: 137
   role: sympy_script
   excerpt: print("(1+r_F1^2)/9 =", Upsilon_prefactor)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 121
+  introduced_at_line: 70
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 70
+    excerpt: \approx 1.77799353547498.
+constraints:
+- parameter: r_F1
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 60
+    excerpt: \frac{L}{a}=\frac{37}{20},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: Stage161 carries r_F1 ~1.77799353547498 via the Family-1 identification r_{c,*} = r_F1^2 (notes lines 247-249),
+    giving 1+r_{c,*} ~4.161261012190819 used in the Upsilon_Pi prefactor. Its true origin (Stage 121) is r_F1 = sqrt((12/pi^2)(37/20)^2
+    - 1), a deterministic geometric function of the POSITED preferred aspect ratio L/a = 37/20, a flagged carried/external
+    fit target. The closed forms in Stage 161 (the D/N similarity law gamma_0 = 4 L_W^2/(3 pi^2 a^2)) are consistent with
+    that geometric origin, but the underlying scale 37/20 is the fit insertion point. classifying r_F1 as internal_consistency
+    would overstate.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 250
+    excerpt: \mathfrak r_{F1}\approx 1.77799353547498,
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 67
+    excerpt: \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage161_rf1_family1_radius__r_f1.yaml

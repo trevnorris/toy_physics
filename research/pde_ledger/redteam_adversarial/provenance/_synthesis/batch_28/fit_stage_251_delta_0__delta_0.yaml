@@ -1,0 +1,25 @@
+candidate_id: fit_stage_251_delta_0
+parameter_name: Delta_0
+origin_claims:
+  - parameter: Delta_0
+    introduced_at_stage: 251
+    introduced_at_line: 141
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 141
+      excerpt: "\\Delta_0:=\\Omega_{U,0}^2\\Omega_{W,0}^2-R_0^2,"
+constraints:
+  - parameter: Delta_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 141
+      excerpt: "\\Delta_0:=\\Omega_{U,0}^2\\Omega_{W,0}^2-R_0^2,"
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_0 := Omega_{U,0}^2 Omega_{W,0}^2 - R_0^2 is a DEFINITION (the zero-frequency determinant of the Stage-021 coupled scalar transfer factor); it is internal_consistency by construction. It carries no independent numeric value here -- it is a symbolic combination of the upstream resonance frequencies and cross-coupling, undetermined on the realized branch."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 132, excerpt: " N_0(\\omega)=" }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 43, excerpt: "Delta0 = sp.simplify(OmU0**2 * OmW0**2 - R0**2)" }

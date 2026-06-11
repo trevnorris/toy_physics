@@ -1,0 +1,19 @@
+candidate_id: fit_stage_247_alpha_2
+parameter_name: alpha_2
+origin_claims:
+  - parameter: alpha_2
+    introduced_at_stage: 247
+    introduced_at_line: 404
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 404
+      excerpt: "and taking the session specialization `\\alpha_6=\\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline gives"
+constraints:
+  - parameter: alpha_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 404
+      excerpt: "and taking the session specialization `\\alpha_6=\\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline gives"
+downstream_dependents: [ 248 ]
+provenance_findings: []

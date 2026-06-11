@@ -1,0 +1,25 @@
+candidate_id: fit_stage_168_s_can
+parameter_name: S_can
+origin_claims:
+  - parameter: S_can
+    introduced_at_stage: 156
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 69
+      excerpt: "\\approx 0.6703621156734617,"
+constraints:
+  - parameter: S_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 53
+      excerpt: "At that renormalized traction, the exact self-consistent fixed point satisfies"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "168 carries S_can as a symbolic mouth-bias coefficient (script line 83) and in the delta Pi transport with no origin pointer; the value is the self-consistent mixed response solved at Stage 156. Read-back without origin cross-reference."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md, line: 228, excerpt: "\\left(1-\\frac14\\mathcal S_{\\rm can}\\right)\\delta\\Sigma_0" }
+      - { path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py, line: 83, excerpt: "Sigma0, S_can, dSigma0, dS = sp.symbols(\"Sigma0 S_can dSigma0 dS\", real=True)" }

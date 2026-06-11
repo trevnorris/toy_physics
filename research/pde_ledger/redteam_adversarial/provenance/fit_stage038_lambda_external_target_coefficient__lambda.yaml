@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage038_lambda_external_target_coefficient__phase_b__lambda.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,46 @@ source_evidence:
   line: 226
   role: sympy_script
   excerpt: print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda
+  introduced_at_stage: 038
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 69
+    excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+constraints:
+- parameter: Lambda
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 67
+    excerpt: and the radiative demand scale
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: published_target
+  severity: high
+  summary: 'Lambda is the radiative demand scale that PACKAGES the external 2.5PN GR quadrupole target into the dimensionless
+    placement map. Its 27/20 coefficient is exactly (pi^2/8) x (54/5): the audit substitutes G = 20 Lambda a^5 c^5 mu_W/(27
+    pi^2 c_s^5 K_W^eff) (line 90) so that the product law R_target M_mix = 8 Lambda(1-eps_W)/pi^2 equals N_Q^target K_W^eff(1-eps_W)/mu_W
+    with N_Q^target = 54 G c_s^5/(5 a^5 c^5) hardcoded (lines 140-143). This is a FIT to an external published number (the
+    5-coefficient 2.5PN energy-flux / 54-numerator quadrupole result), exactly the load-bearing case. NOTE: this is correctly
+    DISCLOSED — the notes openly call Lambda ''the radiative demand scale'' (lines 67-69) and never claim it is internally
+    derived, so there is no derive_vs_fit_mismatch; the candidate id itself names it ''external_target_coefficient''.'
+  citations:
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 90
+    excerpt: 'G: 20 * Lambda * a**5 * c_light**5 * mu_W / (27 * sp.pi**2 * c_s**5 * KWeff),'
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 140
+    excerpt: NQ = 54 * G * c_s**5 / (5 * a**5 * c_light**5)
+  - path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 39
+    excerpt: '`= 54 G c_s^5 K_W^(eff) (1 - eps_W) / (5 a^5 c^5 mu_W).`'
+downstream_dependents:
+- '032'
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage038_lambda_external_target_coefficient__lambda.yaml

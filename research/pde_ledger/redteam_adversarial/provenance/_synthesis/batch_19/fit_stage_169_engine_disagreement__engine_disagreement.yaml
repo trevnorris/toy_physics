@@ -1,0 +1,16 @@
+candidate_id: fit_stage_169_engine_disagreement
+parameter_name: engine_disagreement
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'engine_disagreement' is not a ledger parameter value with a genealogy; it is an audit-process artifact (the SymPy-vs-Mathematica dual-engine cross-check status). The candidate bundle carries empty source_evidence, and no per-stage notes (notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md) document any value named engine_disagreement. The only ledger occurrence of the term is in the audit-policy tracker notes/MATHEMATICA_MIRROR_POLICY.md, which describes engine-mirroring policy, not a constrained physical value. Nothing to classify as internal_consistency / published_target / free_choice."
+    citations:
+      - path: redteam_adversarial/provenance/fit_stage_169_engine_disagreement__engine_disagreement.yaml
+        line: 21
+        excerpt: "source_evidence: []"
+      - path: notes/MATHEMATICA_MIRROR_POLICY.md
+        line: 1
+        excerpt: "# Mathematica Mirror Policy"

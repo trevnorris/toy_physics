@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_eps_split_2_11_coefficient__phase_b__eps_split_coefficient.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,47 @@ source_evidence:
   line: 240
   role: notes_stage
   excerpt: \epsilon_1
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_split_coefficient
+  introduced_at_stage: 27
+  introduced_at_line: 151
+  citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 151
+    excerpt: '`sin^2(theta_max) = 2 / 11`,'
+constraints:
+- parameter: eps_split_coefficient
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 123
+    excerpt: '`eps_W_split = eps_W [ 1 - (2/11) delta_U / (1 + delta_U) ].`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Stage 181 presents the 2/11 split-blocking coefficient as already given by ''earlier coherent-kernel stages''
+    but cites no stage number. The 2/11 originates upstream: it is the max-coupling axial-gradient occupancy sin^2(theta_max)=2/11
+    first derived at Stage 027, then assembled into eps_W^(split) at Stage 039 (and carried at 047). The in-stage 181 anchor
+    is generic, not pinned to its true origin.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 18
+    excerpt: Earlier coherent-kernel stages already gave the **actual** one-port tracking branch
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 157
+    excerpt: the price paid is a fixed axial-gradient occupancy of `2/11`.
+downstream_dependents:
+- 039
+- '047'
+- '182'
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage181_eps_split_2_11_coefficient__eps_split_coefficient.yaml

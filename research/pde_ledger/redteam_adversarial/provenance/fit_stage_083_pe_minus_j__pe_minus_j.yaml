@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_pe_minus_j__phase_b__pe_minus_j.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,40 @@ source_evidence:
   line: 164
   role: sympy_script
   excerpt: print("Pi_suff^(J)/C_mix at eps_blk=0   =", sp.N(1 + zeta_minus_J, 30))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pe_minus_J
+  introduced_at_stage: 078
+  introduced_at_line: 54
+  citation:
+    path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 54
+    excerpt: '`Pe_suff^(J) := Theta_w^(J) / 4.21495341569977e-2`'
+constraints:
+- parameter: Pe_minus_J
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+    line: 115
+    excerpt: '`Pe_-^(J)   ≈ 22.0062226330754,`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: Pe_-^(J) ~ 22.0062226330754 is the lower operator-selected transport bias for the conservative Jensen wall datum,
+    computed at stage 083 as Xi_F1^(J) * Delta_0(kappa_F1,eta_F1) -- a product of ledger-internal quantities (the operator
+    bracket). The notes state these reproduce the Stage-078 transport windows directly from the master operator; the value
+    22.0062226330754 first entered the ledger at stage 078 as Pe_suff^(J). internal_consistency, not a fit. (Bundle cited
+    only the script; notes line 115 documents the value.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+    line: 119
+    excerpt: These are exactly the Stage-078 transport windows, now derived directly from the master support/source operator.
+  - path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+    line: 120
+    excerpt: expect_close("Pe_-^(J) numeric check", Pe_minus_J, sp.Float("22.0062226330754"), 1e-10)
+downstream_dependents:
+- 084
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_083_pe_minus_j__pe_minus_j.yaml

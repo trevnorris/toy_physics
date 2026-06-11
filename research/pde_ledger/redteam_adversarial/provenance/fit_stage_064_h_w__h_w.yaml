@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_064_h_w__phase_b__h_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -125,8 +125,21 @@ source_evidence:
   line: 122
   role: sympy_script
   excerpt: expect_zero("matched-layer gain vs Stage-062 best-alignment formula", Geq_const - g_phi**2 * Npp / (KX * Hw))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: H_w
+  introduced_at_stage: 64
+  introduced_at_line: 136
+  citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 136
+    excerpt: '`H(y) ~ H_w,`'
+constraints:
+- parameter: H_w
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 194
+    excerpt: '`H_w = h''(rho_w) = m c_(s,w)^2 / rho_w,`'
 graph_context:
   contexts: []
   graph_gaps:
@@ -151,3 +164,8 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_064.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+downstream_dependents:
+- '065'
+- '066'
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage_064_h_w__h_w.yaml

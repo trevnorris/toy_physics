@@ -1,0 +1,19 @@
+candidate_id: fit_stage227_xi1_sample_law_coefficients
+parameter_name: c_h
+origin_claims:
+  - parameter: c_h
+    introduced_at_stage: 227
+    introduced_at_line: 269
+    citation:
+      path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+      line: 269
+      excerpt: "2m+\\frac{6}{19}i+\\frac{50}{98\\pi^2-25}\\,h"
+constraints:
+  - parameter: c_h
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+      line: 264
+      excerpt: "So the exact Stage-227 load law is"
+downstream_dependents: [228]
+provenance_findings: []

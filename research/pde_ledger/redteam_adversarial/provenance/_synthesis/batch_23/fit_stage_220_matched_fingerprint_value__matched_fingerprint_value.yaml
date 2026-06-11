@@ -1,0 +1,25 @@
+candidate_id: fit_stage_220_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 220
+    introduced_at_line: 114
+    citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 114
+      excerpt: "On the outgoing `l=2` branch the first odd fingerprint begins at `i\\omega^5`, not at an even static correction."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 115
+      excerpt: "So the same reduced sector that can carry dynamic pumping is also the sector that carries the radiative quadrupole bridge."
+downstream_dependents: []
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Stage 220 does NOT introduce a new matched-fingerprint value; it only REFERENCES the canonical outgoing l=2 quadrupole fingerprint (the odd i*omega^5 / i*z^5 term) whose value-genealogy originates upstream at Stage 104/107 (the iz^5/27 odd term of the canonical outgoing branch, see batch_12 fit_stage_115_matched_fingerprint_value). The only script anchor here is the inverse-matrix consistency check (assert all inverse_checks == 0), i.e. a verification fingerprint rather than a freshly-introduced value. Classified internal_consistency: the fingerprint is the ledger-internal canonical outgoing branch, not an external/fitted target. Scanner logged a graph_gap (no atlas node for the stage-220 source)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py, line: 100, excerpt: "assert all(v == 0 for v in inverse_checks.values())" }
+      - { path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md, line: 20, excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6)," }

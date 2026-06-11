@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage055_reachability_window_exact__phase_b__x.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,37 @@ source_evidence:
   line: 116
   role: notes_stage
   excerpt: The explicit family can satisfy that exactly when
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: x
+  introduced_at_stage: 49
+  introduced_at_line: 131
+  citation:
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 131
+    excerpt: '`x := pi^2 T_X / [ L^2 K_W^(eff) ].`'
+constraints:
+- parameter: x
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+    line: 109
+    excerpt: '`x := pi^2 T_X / (L^2 K_W^(eff)).`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: x is a DEFINED dimensionless stiffness/tension ratio (pi^2 T_X/(L^2 K_W^eff)), introduced upstream at Stage 049
+    (line 131) and Stage 054 (line 109); Stage 055 only USES it in the reachability window pi^2/(4-x). It has no single fitted
+    value -- it is a free operator-input ratio constrained only to the range 0<x<4 (Stage 054 line 117). Classified internal_consistency
+    as a definition of ledger-internal operator quantities, not an external target or posited convention. Origin attributed
+    to Stage 049; Stage 055 carries it.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+    line: 117
+    excerpt: '`0 < x < 4.`'
+downstream_dependents:
+- '055'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage055_reachability_window_exact__x.yaml

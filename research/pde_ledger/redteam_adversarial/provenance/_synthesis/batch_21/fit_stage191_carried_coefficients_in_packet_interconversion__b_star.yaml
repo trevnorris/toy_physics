@@ -1,0 +1,25 @@
+candidate_id: fit_stage191_carried_coefficients_in_packet_interconversion
+parameter_name: B_star
+origin_claims:
+  - parameter: B_star
+    introduced_at_stage: 190
+    introduced_at_line: 78
+    citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 78
+      excerpt: "B_*:=\\frac{2(1+\\chi_{0,*}+\\delta_{U,*})}{\\delta_{U,*}}."
+constraints:
+  - parameter: B_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 78
+      excerpt: "B_*:=\\frac{2(1+\\chi_{0,*}+\\delta_{U,*})}{\\delta_{U,*}}."
+downstream_dependents: [191]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "B_star (B_*) is anchored to stage 191 by the candidate id, but the value/definition B_*:=2(1+chi_0,*+delta_U,*)/delta_U,* ENTERS the ledger at stage 190 (line 78), inside the corrected nontracking branch observable N_*:=T^2 R_tr^{B_*}. Stage 191 only CARRIES it (it appears at 191 line 18 reusing N_*). It is an exact algebraic definition of the branch-exponent, so internal_consistency, not a fitted value. Origin is 190, not 191."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 18, excerpt: "\\mathfrak N_*:=\\mathcal T^2 R_{\\rm tr}^{B_*}," }
+      - { path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md, line: 78, excerpt: "B_*:=\\frac{2(1+\\chi_{0,*}+\\delta_{U,*})}{\\delta_{U,*}}." }

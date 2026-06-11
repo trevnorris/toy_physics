@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_eps_eta_session1_match__phase_b__epsilon_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,48 @@ source_evidence:
   line: 452
   role: notes_stage
   excerpt: \epsilon_\eta,\qquad
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_eta
+  introduced_at_stage: 245
+  introduced_at_line: 510
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 510
+    excerpt: '\epsilon_\eta(r_{\rm eval})
+
+      =
+
+      0.3\,e^{-0.03619791}
+
+      \approx 0.28933482,'
+constraints:
+- parameter: epsilon_eta
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 497
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: 'epsilon_eta(r_eval) ~ 0.28933482 is computed by the exact Stage-245 compiler eps_eta = eps_eta,ref e^V = 0.3 e^{-0.03619791}
+    (notes line 510-516) and then stated to ''match the Session-I value''. The inputs (V = -0.03619791, eps_eta,ref = 0.3)
+    are imported from the barrier ''Session-I write-up'' as a ''representative relaxed-rigid-mouth point'' (notes line 497-505)
+    -- i.e. a probe/sample point, not derived from ledger-internal first principles. Classification recorded as free_choice
+    (posited representative sample evaluation point) rather than internal_consistency, because the load-bearing inputs are
+    imported sample numbers, not solved from ledger quantities. It is NOT a published_target either: the matched ''Session-I''
+    source is an INTERNAL barrier-session run of the same toy program, not an EXTERNAL published number (GR/CODATA/PN). Ambiguity
+    (free_choice vs published_target) logged because the value is a consistency MATCH to a recorded internal-session number.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 516
+    excerpt: which matches the Session-I value.
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 241
+    excerpt: assert abs(float(eps_eta_obs) - 0.28933482) < 5e-9
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_eps_eta_session1_match__epsilon_eta.yaml

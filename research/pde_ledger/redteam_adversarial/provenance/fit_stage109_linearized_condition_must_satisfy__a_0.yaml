@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage109_linearized_condition_must_satisfy__phase_b__a_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -90,9 +90,57 @@ source_evidence:
   line: 53
   role: sympy_script
   excerpt: expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_0
+  introduced_at_stage: 109
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 15
+    excerpt: \Sigma_0=\varepsilon a_0,
+constraints:
+- parameter: a_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 57
+    excerpt: \boxed{(b,\,a_0,\,a_5).}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: Stage 109 attributes the exact chi_Q formula to 'the exact Stage-90 formula' (line 21) and the exact nonlinear
+    branch-selection condition to 'Stage 91' (line 79). Stage 90 is the grouped-P2 reduced-status update and Stage 91 is the
+    3/4+1/4 module derivation; neither contains the chi_Q deformation formula. That formula chi_Q=3(S*beta^5+9*Sigma5)/(3S-Sigma0)
+    and the exact deformation algebra originate at Stage 107/108. This is the +17/+18 EM-extension renumber drift; the cross-references
+    should read Stage 107/108.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 21
+    excerpt: Then the exact Stage-90 formula
+  - path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 79
+    excerpt: '> compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact
+      nonlinear condition of Stage 91, or at least the linearized condition above.'
+  - path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+    line: 32
+    excerpt: 'S\,\Lambda_2^{\rm out}(\beta z)
+
+      +\Sigma_0+\Sigma_2 z^2+\Sigma_4 z^4+i\Sigma_5 z^5+O(z^6).'
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: a_0 itself is a free deformation coordinate (one slot of the symbolic branch-selection triple (b,a_0,a_5)), so
+    its VALUE is free_choice; the linearized condition 5b+a_0/3+9a_5=0 that constrains it is internal_consistency. The candidate
+    id names 'the linearized condition must satisfy', i.e. a constraint on a_0, not a fixed a_0 value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 65
+    excerpt: 5b+\frac{a_0}{3}+9a_5=0.
+downstream_dependents:
+- '110'
+- '111'
+- '112'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage109_linearized_condition_must_satisfy__a_0.yaml

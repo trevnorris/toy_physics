@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_048_zeta_rm__phase_b__zeta_rm.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -193,4 +193,21 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No source under notes/ (nor the paper card nor the sympy script) documents a parameter named 'zeta_rm', and the
+    scanner-attributed value '1/3' appears nowhere in Stage 048's notes, card, or script (grep for 'zeta_rm', '1/3', 'frac{1}{3}'
+    returns empty). The bundle's evidence is a verbatim copy of the zeta_req evidence; the intended parameter is almost certainly
+    zeta_req (handled by fit_stage048_zeta_req_threshold / _unique), but the value 1/3 cannot be confirmed and must not be
+    fabricated. Logged as a gap.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 99
+    excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+  - path: paper/stages/stage_048.tex
+    line: 22
+    excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_048_zeta_rm__zeta_rm.yaml

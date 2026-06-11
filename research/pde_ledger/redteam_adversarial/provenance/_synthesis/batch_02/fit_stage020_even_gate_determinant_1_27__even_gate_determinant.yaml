@@ -1,0 +1,13 @@
+candidate_id: fit_stage020_even_gate_determinant_1_27
+parameter_name: even_gate_determinant
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The even-gate determinant value 1/27 at stage 020 (the H_even = D_41 - (2/3)D_21 - D_01/27 even-compensation gate and its wall-slope solve delta_K_Sigma=B01+Z01+27(B41+Z41)) is a structural algebraic coefficient asserted only in the stage_020 paper card and the sympy audit (cf. the sibling wall-only even-gate determinant assert == 1/27 at stage 017). No file under notes/ documents this value's origin or constraint: stage 020 has no per-stage notes/stages/ file, and its STAGE_PROVENANCE_INDEX note source notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md (line 30) is absent from the repo. constraint_kind cannot be assigned without a notes/ citation. (Mechanism appears internal_consistency — the determinant is forced by the even-gate operator algebra — but that cannot be attributed from notes/.)"
+    citations:
+      - { path: notes/STAGE_PROVENANCE_INDEX.md, line: 30, excerpt: "| 020 | `paper/stages/stage_020.tex` | `notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md` |" }
+      - { path: paper/stages/stage_020.tex, line: 31, excerpt: "H_{\\rm even}=D_{41}-\\frac23D_{21}-\\frac{D_{01}}{27}," }
+      - { path: paper/stages/stage_020.tex, line: 42, excerpt: "\\delta K_\\Sigma=B_{01}+Z_{01}+27(B_{41}+Z_{41})," }

@@ -1,0 +1,19 @@
+candidate_id: fit_stage130_pi_star_exact_unique
+parameter_name: Pi_star
+origin_claims:
+  - parameter: Pi_star
+    introduced_at_stage: 130
+    introduced_at_line: 108
+    citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 108
+      excerpt: "\\Pi_* \\approx 1.50882951349316."
+constraints:
+  - parameter: Pi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 103
+      excerpt: "\\mathfrak g_{\\Pi}=\\mathfrak g_-^{F1}"
+downstream_dependents: [131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_138_k_s
+parameter_name: K_s
+origin_claims:
+  - parameter: K_s
+    introduced_at_stage: 114
+    introduced_at_line: 18
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 18
+      excerpt: "K_s & \\lambda\\\\[2pt]"
+constraints:
+  - parameter: K_s
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 97
+      excerpt: "- one static shell stiffness `K_s`,"
+downstream_dependents: [115, 116, 117, 119, 120, 121, 122, 123, 137, 138]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 138 K_s is not fixed or fitted; it only appears inside the normalized parent variables r = lambda/sqrt(K_s K_q), g_c = g_q sqrt(K_s)/(g_s sqrt(K_q)), and Sigma_0 = L g_s^2/(K_s Theta_sigma) (notes lines 16-20), carried verbatim from the Stage-114 core stiffness matrix. It is a posited symbolic primitive (the static shell stiffness of 'the simplest concrete isotropic core model', Stage 114 notes lines 36,97), hence free_choice. The whole point of Stage 138 is that K_s (and the other core primitives) DROP OUT of the gain ratio R_q on the compensated branch, leaving R_q = 1/4 independent of K_s — so K_s carries no fitted numeric value here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md, line: 16, excerpt: "\\mathfrak r:=\\frac{\\lambda}{\\sqrt{K_sK_q}}," }
+      - { path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md, line: 36, excerpt: "This is the simplest concrete isotropic core model that contains:" }

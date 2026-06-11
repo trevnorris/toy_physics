@@ -1,0 +1,25 @@
+candidate_id: fit_stage138_compensation_quarter
+parameter_name: R_q_comp
+origin_claims:
+  - parameter: R_q_comp
+    introduced_at_stage: 138
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+      line: 69
+      excerpt: "\\boxed{R_q=\\frac14.}"
+constraints:
+  - parameter: R_q_comp
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+      line: 60
+      excerpt: "Stage 115 already fixed the core-balance family"
+downstream_dependents: [139, 140, 141, 142, 144, 145, 146]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "POSITIVE genealogy finding (claim SUPPORTED): R_q_comp = 1/4 (the compensated-branch value of the mixed-to-shell gain ratio) is DERIVED, not posited. Substituting the Stage-115 core-balance family g_c = r +/- (1/2)sqrt(1+r^2) into R_q = (g_c - r)^2/(1+r^2) collapses it to exactly 1/4 for all r (notes lines 60-69), so M_s = Sigma_0, M_q = -Sigma_0/4, reproducing the Stage-135 closure M_s=4 Sigma_m, M_q=-Sigma_m with Sigma_m = Sigma_0/4 (notes lines 71-86). The 1/2 prefactor inside the core-balance family is the load-bearing input; its own provenance is Stage 115 (core balance compensation), which this synthesis treats as the cited upstream origin. Logged low-severity informational so the audit credits the DERIVED status of the 1/4 to Stage 138 + Stage 115, and does not mis-read the Stage-135 imposition of the same ratio as the derivation."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md, line: 64, excerpt: "\\mathfrak r\\pm \\frac12\\sqrt{1+\\mathfrak r^2}." }
+      - { path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md, line: 88, excerpt: "So the Stage 135 closure is not independent bookkeeping. It is the normalized image of" }

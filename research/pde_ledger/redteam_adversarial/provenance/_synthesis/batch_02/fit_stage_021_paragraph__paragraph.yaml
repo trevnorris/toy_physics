@@ -1,0 +1,12 @@
+candidate_id: fit_stage_021_paragraph
+parameter_name: paragraph
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "'paragraph' is a false-positive scanner artifact: it matched the LaTeX sectioning macro \\paragraph{...} in the stage_021 paper card (lines 7, 14, 25, 43, 60: 'Source and audit', 'Mixed gauge invariants', 'Reduced lane', 'Outgoing transfer', 'Compact outgoing fingerprint'). It is not a physical parameter and carries no numeric value or value genealogy. No file under notes/ documents it as a parameter because it is not one; constraint_kind is not applicable."
+    citations:
+      - { path: paper/stages/stage_021.tex, line: 7, excerpt: "\\paragraph{Source and audit.}" }
+      - { path: paper/stages/stage_021.tex, line: 60, excerpt: "\\paragraph{Compact outgoing fingerprint.}" }

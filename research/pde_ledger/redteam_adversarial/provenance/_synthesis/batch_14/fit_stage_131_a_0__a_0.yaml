@@ -1,0 +1,24 @@
+candidate_id: fit_stage_131_a_0
+parameter_name: A_0
+origin_claims:
+  - parameter: A_0
+    introduced_at_stage: 129
+    introduced_at_line: 14
+    citation:
+      path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+      line: 14
+      excerpt: "- a localized Maxwell scalar potential \\(A_0\\),"
+constraints:
+  - parameter: A_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+      line: 70
+      excerpt: "- \\(T_m\\) and \\(A_0'\\) may each vary,"
+downstream_dependents: [129, 131, 133, 134]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "A_0 (the localized Maxwell scalar potential) is a posited parent field carried into stage 131 from the GNLS+localized-Maxwell stack (introduced at stage 129); it has no assigned value and only enters via its mouth gradient A_0' inside the constrained combination T_m - q_* A_0'. No value-level genealogy exists for A_0 itself."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md, line: 53, excerpt: "q_*\\left.\\partial_z A_0\\right|_{\\rm m}." }

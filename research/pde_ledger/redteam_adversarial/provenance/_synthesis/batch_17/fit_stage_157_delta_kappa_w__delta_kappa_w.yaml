@@ -1,0 +1,25 @@
+candidate_id: fit_stage_157_delta_kappa_w
+parameter_name: delta_kappa_W
+origin_claims:
+  - parameter: delta_kappa_W
+    introduced_at_stage: 159
+    introduced_at_line: 33
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 33
+      excerpt: "\\delta\\kappa_W = 0,"
+constraints:
+  - parameter: delta_kappa_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 348
+      excerpt: "\\delta\\kappa_W=0."
+downstream_dependents: [159, 160]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "delta_kappa_W = 0 as the stage157 audit target is the canonical-even-preservation result: the script (py:106-111) solves {dE2=0, dE4=0} and asserts the unique kernel {deltaC:0, dkappa:0}, det = -27*sigma_star. Stage157's own NOTES (v59 status) do not state delta_kappa_W=0; the result is fully written up in the Stage 159 notes (canonical-even gate, lines 345-349). It is FORCED by the non-degenerate even-fingerprint linear system among carried projection coefficients -> internal_consistency. Origin cited under Stage 159 notes because the stage157 notes do not document this value; the stage157 SCRIPT carries the projection coefficients (a carried, not newly-derived, even-projection)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py, line: 110, excerpt: "if even_preservation != [{deltaC: 0, dkappa: 0}]:" }
+      - { path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md, line: 346, excerpt: "\\delta\\mathcal C=0," }

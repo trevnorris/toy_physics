@@ -1,0 +1,25 @@
+candidate_id: fit_stage100_factorization_forced_script
+parameter_name: N_Q
+origin_claims:
+  - parameter: N_Q
+    introduced_at_stage: 97
+    introduced_at_line: 88
+    citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 88
+      excerpt: "`N_Q := Kbar_0 / Kbar_0^target`."
+constraints:
+  - parameter: N_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 91
+      excerpt: "`mhat_0^2 chi_Q N_Q = 1.`"
+downstream_dependents: [105, 106]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "This candidate concerns the FACTORIZATION mhat_0^2 chi_Q N_Q = 1, which is forced algebraically by substituting the renormalized one-pole branch into the odd normalization condition mhat_0^2 Gammabar_5 = 2G/(5c^5) (internal_consistency — this candidate's mechanism, script line 75 'the factorization ... is forced'). However the closure condition's right-hand side 2G/(5c^5) is the published GR 2.5PN coefficient, and N_Q=1 (with chi_Q=1) is the open match-to-GR gate (published_target flavor). The factorization structure is internal; the absolute normalization anchor is external GR. Value '1' for N_Q is the unresolved theorem gate, not a derived result — honestly disclosed (card claimstatus ExactClosure/Open)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py, line: 75, excerpt: "# the factorization mhat_0^2 chi_Q N_Q = 1 is forced." }
+      - { path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md, line: 87, excerpt: "`mhat_0^2 Gammabar_5 = 2 G/(5 c^5)`." }

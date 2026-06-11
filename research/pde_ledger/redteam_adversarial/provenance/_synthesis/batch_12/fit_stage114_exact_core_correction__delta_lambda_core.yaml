@@ -1,0 +1,25 @@
+candidate_id: fit_stage114_exact_core_correction
+parameter_name: delta_Lambda_core
+origin_claims:
+  - parameter: delta_Lambda_core
+    introduced_at_stage: 114
+    introduced_at_line: 33
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 33
+      excerpt: "\\delta\\Lambda_{\\rm core}(z)\\,u = g_s s + g_q q."
+constraints:
+  - parameter: delta_Lambda_core
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 43
+      excerpt: "Eliminating `(s,q)` gives the exact core correction"
+downstream_dependents: [115]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. delta_Lambda_core is the exact Schur-complement core correction obtained by ELIMINATING the internal core variables (s,q) from the posited 2x2 linear core system; the result delta_Lambda_core = g_s^2/K_s - (K_s g_q - lambda g_s)^2 / (K_s(K_s K_q D_W^bare + lambda^2)) is a mechanical algebraic consequence (internal_consistency). The UNDERLYING core model (matrix M, couplings g_s,g_q, denominator D_W^bare) is a posited ansatz, but delta_Lambda_core itself is derived from it. Verified by the script's 'Schur form identity' zero-check. Recorded as positive control."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md, line: 91, excerpt: "So the concrete core model reproduces the full reduced Robin–mixed hybrid outlet with no extra assumptions." }
+      - { path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py, line: 42, excerpt: "expect_zero(\"Schur form identity\", delta_D - target_D)" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -94,8 +94,21 @@ source_evidence:
   line: 346
   role: sympy_script
   excerpt: print("  • multiplying by the outgoing l=2 fingerprint gives the branch coefficients")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 17
+  introduced_at_line: 219
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 219
+    excerpt: '`= 1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5) + O(ω^6)`.'
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 151
+    excerpt: The compact outgoing `l=2` branch already has the normalized fingerprint
 graph_context:
   contexts:
   - source: paper/stages/stage_022.tex
@@ -269,4 +282,21 @@ graph_context:
         match_score: 0.655
         confidence: medium
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: '''matched_fingerprint_value'' at stage 022 is the compact outgoing l=2 fingerprint (A=a^2/9c_s^2, B=4a^4/81c_s^4,
+    G5=a^5/27c_s^5) carried in from stage 021, where it is DERIVED from the outgoing spherical Hankel solution. Stage 022
+    ''multiplies by'' it (note section 5) but does not introduce or fit it. internal_consistency (derived, matched as an internal
+    cross-check, not fitted to an external published number). Origin properly belongs to stage 021.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 162
+    excerpt: '`G5 = a^5 / (27 c_s^5)`.'
+  - path: paper/stages/stage_022.tex
+    line: 91
+    excerpt: =1+A\omega^2+B\omega^4+iG_5\omega^5+O(\omega^6),
+downstream_dependents:
+- 019
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_022_matched_fingerprint_value__matched_fingerprint_value.yaml

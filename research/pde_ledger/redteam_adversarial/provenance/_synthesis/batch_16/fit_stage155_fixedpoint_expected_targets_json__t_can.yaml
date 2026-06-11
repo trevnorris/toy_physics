@@ -1,0 +1,31 @@
+candidate_id: fit_stage155_fixedpoint_expected_targets_json
+parameter_name: T_can
+origin_claims:
+  - parameter: T_can
+    introduced_at_stage: 156
+    introduced_at_line: 43
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 43
+      excerpt: "\\approx 1.4467083664567613."
+constraints:
+  - parameter: T_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 37
+      excerpt: "\\Sigma_0=\\frac{20}{9}\\widehat T_m^2,"
+downstream_dependents: [156, 157, 158, 163]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "T_can = 1.4467083664567613 (T_hat_can_expected in the fixture) is the renormalized canonical traction, derived from Sigma0_can via the self-matched susceptibility closure Sigma_0 = (20/9) T_hat_m^2 (Stage 156:37; internal_consistency). STAGE 156 quantity documented in the Stage 156 notes (line 43); keyed to Stage 155 only via the shared fixture scripts/numerical/stage155_156_fixedpoint_samples.json (T_hat_can_expected, line 19). No Stage 155 notes file documents it."
+    citations:
+      - { path: scripts/numerical/stage155_156_fixedpoint_samples.json, line: 19, excerpt: "\"T_hat_can_expected\": 1.4467083664567613" }
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 42, excerpt: "\\widehat T_{m,\\rm can}" }
+  - type: paper_card_overclaim
+    severity: low
+    summary: "PRECISION DRIFT: appendix part04 line 958 gives T_hat_can approx 1.446708366456762; notes + fixture give 1.4467083664567613 (the appendix truncates/rounds to ...62 at fewer digits while notes/fixture carry ...613). Sub-1e-13 notes-vs-published presentation mismatch; companion to the Sigma0_can / Pi_can drifts."
+    citations:
+      - { path: paper/appendices/stage_appendix_part04.tex, line: 958, excerpt: "\\widehat T_{m,{\\rm can}}\\approx1.446708366456762," }
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 43, excerpt: "\\approx 1.4467083664567613." }

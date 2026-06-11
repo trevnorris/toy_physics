@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage134_pi_star_carried_literal__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -67,9 +67,36 @@ source_evidence:
   line: 79
   role: sympy_script
   excerpt: 'print("OK: S_q(Pi_star) matches notes value 0.658075937605428")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_star
+  introduced_at_stage: 130
+  introduced_at_line: 108
+  citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 108
+    excerpt: \Pi_* \approx 1.50882951349316.
+constraints:
+- parameter: Pi_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    line: 70
+    excerpt: Stage 130 already fixed the exact source-shape compensation point
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '135'
+- '137'
+- '140'
+- '146'
+- '147'
+- '148'
+- '149'
+- '150'
+- '151'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:17Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage134_pi_star_carried_literal__pi_star.yaml

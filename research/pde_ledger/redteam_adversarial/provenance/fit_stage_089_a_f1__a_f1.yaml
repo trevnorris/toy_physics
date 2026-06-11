@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_089_a_f1__phase_b__a_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,39 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: print("  zeta_min < A_F1      -> Pe_req = 0 on the explicit Family-1 transport map")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_F1
+  introduced_at_stage: 89
+  introduced_at_line: 94
+  citation:
+    path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+    line: 94
+    excerpt: '`A_F1 ≈ 1.00005192880220,`'
+constraints:
+- parameter: A_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+    line: 90
+    excerpt: '`zeta_F1(Pe) = A_F1 Omega_Pe^2,`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: A_F1 is genuinely DERIVED in-script (internal_consistency) from ledger quantities kappa_F1=12321/5, eta_F1=37,
+    and y_F1 solved from y*tan(y)=37, via A_F1=(kappa_F1+pi^2/4)/(kappa_F1+y_F1^2) — origin is the Stage 079 Family-1 transport
+    map, carried into 089. Stage 089's notes present A_F1 as a Stage-079 carry-in (transport map) while the script's comment
+    labels the related zeta_max line 'Stage-080'; both are upstream of 089. Minor stale labelling (079 vs 080), no value contradiction.
+  citations:
+  - path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 40
+    excerpt: A_F1 = sp.simplify((kappa_F1 + sp.pi**2 / 4) / (kappa_F1 + y_F1**2))
+  - path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 77
+    excerpt: expect_zero("Stage-080 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
+downstream_dependents:
+- 090
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage_089_a_f1__a_f1.yaml

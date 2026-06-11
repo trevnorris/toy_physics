@@ -1,0 +1,25 @@
+candidate_id: fit_stage152_corrected_mouth_state_pi_corr_t_corr
+parameter_name: Pi_corr
+origin_claims:
+  - parameter: Pi_corr
+    introduced_at_stage: 152
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 75
+      excerpt: "\\Pi_{\\rm corr}"
+constraints:
+  - parameter: Pi_corr
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 77
+      excerpt: "\\Pi_*+\\delta\\Pi_{\\rm act}"
+downstream_dependents: [154, 155, 156, 157]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Pi_corr = 2.41591392833607 is the corrected canonical mouth bias, DERIVED at Stage 152:75-78 as Pi_corr = Pi_* + delta_Pi_act (script:89, Pi_star + deltaPi). internal_consistency: it is the sum of the carried canonical Pi_* and the residual-projection retuning delta_Pi_act (Stage 151), all ledger-internal. No posit, no external target. Inherits the same posited-L/a=37/20 dependence through Pi_* as the rest of the canonical chain."
+    citations:
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 89, excerpt: "print(\"Pi_corr           =\", Pi_star + deltaPi)" }
+      - { path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md, line: 78, excerpt: "\\approx 2.41591392833607," }

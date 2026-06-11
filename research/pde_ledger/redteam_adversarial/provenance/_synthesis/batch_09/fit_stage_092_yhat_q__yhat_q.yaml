@@ -1,0 +1,25 @@
+candidate_id: fit_stage_092_yhat_q
+parameter_name: Yhat_Q
+origin_claims:
+  - parameter: Yhat_Q
+    introduced_at_stage: 91
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 32
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`."
+constraints:
+  - parameter: Yhat_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+      line: 107
+      excerpt: "`c_pole = 1/4`,"
+downstream_dependents: [93, 94, 96]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "The candidate value 3/4 for Yhat_Q is the static-limit contact fraction c_geom of the normalized module Yhat_Q^cons. At Stage 092 it is recovered (internal_consistency) only in the strict static limit eps_2=eps_4=0 of the obstruction formula c_pole=(1+eps_4)/[4(1+eps_2)^2]; generically the fraction is eps-dependent. Origin of the 3/4+1/4 form is Stage 091; Stage 092 confirms it as the eps->0 special case. Conditional, not a free posit nor an external fit."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md, line: 101, excerpt: "In the strict static-geometry limit" }
+      - { path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md, line: 109, excerpt: "`c_geom = 3/4`." }

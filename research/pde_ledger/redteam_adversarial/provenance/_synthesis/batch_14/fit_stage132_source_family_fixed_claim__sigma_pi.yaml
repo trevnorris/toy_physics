@@ -1,0 +1,19 @@
+candidate_id: fit_stage132_source_family_fixed_claim
+parameter_name: sigma_Pi
+origin_claims:
+  - parameter: sigma_Pi
+    introduced_at_stage: 129
+    introduced_at_line: 114
+    citation:
+      path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+      line: 114
+      excerpt: "\\sigma_{\\Pi}(z)"
+constraints:
+  - parameter: sigma_Pi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+      line: 8
+      excerpt: "The actual positive source family is fixed by an explicit GNLS + localized-Maxwell"
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

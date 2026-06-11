@@ -1,0 +1,25 @@
+candidate_id: fit_stage_245_xi_1
+parameter_name: Xi_1
+origin_claims:
+  - parameter: Xi_1
+    introduced_at_stage: 245
+    introduced_at_line: 409
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 409
+      excerpt: "\\Xi_1^{\\rm nr}=u_1,"
+constraints:
+  - parameter: Xi_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 389
+      excerpt: "\\delta\\ln\\mathcal T^2=u_1,"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Xi_1 is NOT a posited numeric constant. At Stage 245 the non-rigid weak-axisymmetric scalar is the derived first-order identity Xi_1^nr = u_1 = delta ln T^2 (notes line 389, 409), obtained by linearizing the exact finite (U,V) compiler. This is internal_consistency. The numeric readback Xi_1^nr ~ 0.14313458 (notes line 546) merely reuses the imported Session-I sample U value (the U_obs probe point); it is not an independent fitted constant. The first-order identity is the load-bearing content. Logged for transparency since the scanner candidate has no genuine numeric target of its own."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 371, excerpt: "\\delta\\ln\\mathcal T^2=\\Xi_1," }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 546, excerpt: "\\Xi_1^{\\rm nr}\\approx 0.14313458," }

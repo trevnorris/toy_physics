@@ -1,0 +1,19 @@
+candidate_id: fit_stage_131_pi_star
+parameter_name: Pi_star
+origin_claims:
+  - parameter: Pi_star
+    introduced_at_stage: 130
+    introduced_at_line: 108
+    citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 108
+      excerpt: "\\Pi_* \\approx 1.50882951349316."
+constraints:
+  - parameter: Pi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+      line: 30
+      excerpt: "\\Pi_m=\\Pi_*."
+downstream_dependents: [132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

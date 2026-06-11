@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage230_r_star_exact_threshold__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,9 +24,45 @@ source_evidence:
   role: notes_stage
   excerpt: '> once the Stage-229 classifier is known, the selected-branch dynamic response is completely determined inside
     the rigid-split compiler.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 230
+  introduced_at_line: 227
+  citation:
+    path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 227
+    excerpt: \mathcal R_*=
+constraints:
+- parameter: r_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 220
+    excerpt: So the lower wall-like pole flips sign exactly once, at
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'The bundle''s parameter_name ''r_F1'' does not appear verbatim in the Stage-230 notes or script; the candidate
+    id (''r_star_exact_threshold'') and target value 1.229255438463336 unambiguously identify it as the sign-flip threshold
+    R_* (notes lines 227/229: ''R_* = s_-^(den)/(-s_-^(num)) ~ 1.229255438463336''; script line 111-112 ''R_star = s_minus_den/(-s_minus_num)'').
+    The scanner symbol ''r_F1'' is a naming-map artifact, not a ledger symbol. The value is FORCED internally: R_* is the
+    unique zero of the lower-pole dynamic-sign function S_-(R_ND)=0, computed from two ledger-internal dynamic slopes s_-^(den)
+    and s_-^(num) -> internal_consistency. No external target; classification fully supported.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 229
+    excerpt: '\frac{s_-^{(\rm den)}}{-s_-^{(\rm num)}}
+
+      \approx 1.229255438463336.'
+  - path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+    line: 111
+    excerpt: R_star = sp.simplify(s_minus_den / (-s_minus_num))
+downstream_dependents:
+- '231'
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage230_r_star_exact_threshold__r_f1.yaml

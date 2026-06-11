@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage028_alpha_loading_coefficient__phase_b__alpha.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -188,9 +188,44 @@ source_evidence:
   line: 112
   role: sympy_script
   excerpt: disc = sp.simplify((DeltaK + alpha * (kappa0**2 - kappa1**2))**2 + 4 * alpha**2 * kappa0**2 * kappa1**2)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: alpha
+  introduced_at_stage: 28
+  introduced_at_line: 94
+  citation:
+    path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+    line: 94
+    excerpt: with one positive loading susceptibility
+constraints:
+- parameter: alpha
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+    line: 96
+    excerpt: '`alpha > 0`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: 'At stage 028 alpha is a posited free parameter (a ''minimal reduced model'' loading susceptibility, only its SIGN
+    alpha>0 is assumed; its magnitude is explicitly deferred: ''the real PDE now needs to tell us only how large the effective
+    loading is''). The card correctly lists it as an INPUT (''a positive loading coefficient alpha'') and notes Stage 029
+    derives it dynamically. So free_choice is correct for stage 028. Low-severity note: the card''s \StatusExactClosure framing
+    applies to the eigenproblem GIVEN alpha, not to alpha itself; readers should not infer alpha is derived at this stage
+    (it is not until 029).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+    line: 28
+    excerpt: and the real PDE now needs to tell us only how large the effective loading is and whether it stays in the same
+      sign/class as this minimal model.
+  - path: paper/stages/stage_028.tex
+    line: 98
+    excerpt: Stage~029 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed Schur complement.
+downstream_dependents:
+- 029
+- '030'
+- '031'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage028_alpha_loading_coefficient__alpha.yaml

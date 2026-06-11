@@ -1,0 +1,25 @@
+candidate_id: fit_stage152_profile_correction_samples_expected_pins
+parameter_name: cov_KR_expected
+origin_claims:
+  - parameter: cov_KR_expected
+    introduced_at_stage: 152
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 30
+      excerpt: "\\operatorname{Cov}_*(K_q,R_*)\\approx 0.0388718368650403."
+constraints:
+  - parameter: cov_KR_expected
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 22
+      excerpt: "the exact weighted residual covariances are"
+downstream_dependents: [154, 155]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "cov_KR_expected = 0.0388718368650403 is the exact weighted residual covariance Cov_*(K_q, R_*), DERIVED at Stage 152:30 by numerical quadrature of the Stage 150/151 residual R_*(x) against the mixed-channel kernel K_q on the canonical Sigma_* weight (script:70-76, cov()). internal_consistency: a computed covariance from ledger-internal profiles; the script's expected* pin is a self-consistency cross-check, not an external target. (Paper card check at line 22: deformations are centered before covariance formulas are used — confirms the centering convention, not a posit.)"
+    citations:
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 76, excerpt: "Cov_SR = cov(S_q_kernel, R_star)" }
+      - { path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md, line: 25, excerpt: "\\operatorname{Cov}_*(c,R_*)\\approx 0.0648069687666328," }

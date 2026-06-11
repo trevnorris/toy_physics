@@ -1,0 +1,25 @@
+candidate_id: fit_stage249_session3_peak_readback
+parameter_name: hint_aligned
+origin_claims:
+  - parameter: hint_aligned
+    introduced_at_stage: 249
+    introduced_at_line: 419
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 419
+      excerpt: "\\max\\dot H_{{\\rm sub},+}"
+constraints:
+  - parameter: hint_aligned
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 416
+      excerpt: "The reported helicity-export outputs were"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The script symbol hint_aligned (=20.58070146, the aligned final unresolved-helicity load max\\dot H_{sub,+}/H_{sub,+}^final) is a hardcoded numerical readback from the external Session-II benchmark run; no in-ledger derivation supports the run output. Note the script variable name 'hint_aligned' (20.58) labels the FINAL load, while peak_aligned (281.80) labels the peak rate -- a naming overlap to watch."
+    citations:
+      - { path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py, line: 169, excerpt: "hint_aligned = 20.58070146" }
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 416, excerpt: "The reported helicity-export outputs were" }

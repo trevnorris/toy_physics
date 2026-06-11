@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_189_p_0__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -173,8 +173,21 @@ source_evidence:
   line: 234
   role: sympy_script
   excerpt: print("4. The universal normalization target is exactly equivalent to")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 22
+  introduced_at_line: 256
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 256
+    excerpt: The universal GR quadrupole target is
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 525
+    excerpt: m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
 graph_context:
   contexts: []
   graph_gaps:
@@ -199,3 +212,33 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_189.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: published_target
+  severity: needs_triage
+  summary: Duplicate-target candidate (same resolved parameter_name P0_target as fit_stage189_normalization_target_2g_5c5).
+    The static outgoing prefactor target m_hat_0^2 P_0 = 54 G c_s^5/(5 a^5 c^5) is back-solved against the EXTERNAL GR quadrupole
+    coefficient 2G/(5c^5) (Stage 022 origin line 256-266; carried Stage 189 line 525/620). Fit to a published external target
+    -> published_target. P_0 = N_0/D_0 itself (the isotropic static outgoing prefactor compiler output, stage189 line 386)
+    is an internal compiler quantity, but the load-bearing TARGET value it must hit is the external GR number, which is what
+    this candidate concerns.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 258
+    excerpt: '`gamma_GR = 2 G / (5 c^5)`.'
+  - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    line: 515
+    excerpt: m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
+- type: provenance_gap
+  severity: low
+  summary: Two batch-20 candidates (fit_stage189_normalization_target_2g_5c5 and fit_stage_189_p_0) resolve to the SAME parameter_name
+    P0_target at the same stage; they are duplicate scanner hits on the one normalization-target object. Recorded so the ingest
+    does not double-count a single fit insertion point.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage189_normalization_target_2g_5c5__p0_target.yaml
+    line: 3
+    excerpt: 'parameter_name: P0_target'
+  - path: redteam_adversarial/provenance/fit_stage_189_p_0__p0_target.yaml
+    line: 3
+    excerpt: 'parameter_name: P0_target'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_189_p_0__p0_target.yaml

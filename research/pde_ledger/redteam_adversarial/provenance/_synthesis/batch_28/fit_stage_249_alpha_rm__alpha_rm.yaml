@@ -1,0 +1,25 @@
+candidate_id: fit_stage_249_alpha_rm
+parameter_name: alpha_rm
+origin_claims:
+  - parameter: alpha_rm
+    introduced_at_stage: 249
+    introduced_at_line: 229
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 229
+      excerpt: "\\alpha_h(t;E):=\\frac{\\Gamma_1(t;E)}{\\Gamma_0(t;E)}."
+constraints:
+  - parameter: alpha_rm
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 372
+      excerpt: "\\frac{R_{\\rm int}(E)-1}{R_{\\rm int}(E)+1}."
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "alpha_h is exactly Mobius-inverted from the export ratio (alpha = (R-1)/(R+1)), so as an algebraic relation it is internal_consistency; but the numerical benchmark value (alpha_pk ~= 0.6637, bar_alpha_h ~= 0.6085) is only as well-founded as the upstream reported readbacks (R_pk, R_int) it is computed from, which are themselves un-derived Session-II run outputs."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 449, excerpt: "\\alpha_{\\rm pk}" }
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 416, excerpt: "The reported helicity-export outputs were" }

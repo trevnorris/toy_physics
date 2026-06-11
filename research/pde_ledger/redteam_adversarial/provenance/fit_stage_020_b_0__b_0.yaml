@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_020_b_0__phase_b__b_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -55,9 +55,44 @@ source_evidence:
   line: 53
   role: sympy_script
   excerpt: assert_zero('compensated Xi1', Xi1_comp - (N01/N0 - 27*(B41 + Z41)/(KSigma - B0 - Z0)))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_0
+  introduced_at_stage: 19
+  introduced_at_line: 144
+  citation:
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 144
+    excerpt: '`B_(A,0) = sum_alpha c_(A,alpha)^2 / varpi_(A,alpha)^2`,'
+constraints:
+- parameter: B_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 150
+    excerpt: These are just the Stage-3 conservative support moments collected lane by lane.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'B_0 at stage 020 is not a value but a carried symbolic structural object: it is the static BdG-support conservative
+    moment B_0=sum_alpha c_alpha^2/varpi_alpha^2 (Stage-3 Schur-complement moment, defined explicitly at stage 023/024). At
+    stage 020 it appears only inside the residual obstruction denominator K_Sigma-B_0-Z_0; stage 020 has no per-stage notes/stages/
+    file and its STAGE_PROVENANCE_INDEX note source (notes/em_projected/step_18...) is absent. The constraint_kind is logged
+    as free_choice because B_0 is a defined-by-formula microscopic moment whose numeric value is left open (no derivation
+    to a target and no external anchor at the structural level); origin/constraint are cited from the stage 023 note that
+    defines it, not a stage-020 note.'
+  citations:
+  - path: notes/STAGE_PROVENANCE_INDEX.md
+    line: 30
+    excerpt: '| 020 | `paper/stages/stage_020.tex` | `notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md`
+      |'
+  - path: paper/stages/stage_020.tex
+    line: 50
+    excerpt: -\frac{27(B_{41}+Z_{41})}{K_\Sigma-B_0-Z_0}.
+downstream_dependents:
+- 019
+- '020'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_020_b_0__b_0.yaml

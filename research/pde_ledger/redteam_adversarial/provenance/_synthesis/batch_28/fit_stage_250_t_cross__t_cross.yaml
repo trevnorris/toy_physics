@@ -1,0 +1,25 @@
+candidate_id: fit_stage_250_t_cross
+parameter_name: t_cross
+origin_claims:
+  - parameter: t_cross
+    introduced_at_stage: 250
+    introduced_at_line: 140
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 140
+      excerpt: " t_{\\rm cross}(E)"
+constraints:
+  - parameter: t_cross
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 144
+      excerpt: " \\lambda_{\\rm eff}\\sqrt{\\frac{m_s}{2(E-V_{\\rm peak})}}."
+downstream_dependents: [251]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "t_cross = lambda_eff/v_bar = lambda_eff*sqrt(m_s/(2(E-Vpeak))) is derived by construction from the Stage-248 peak-over-barrier kinetic speed within the declared characteristic-width closure -- internal_consistency for the FORM. The notes are explicit it is 'a reduced timescale closure, not a replacement for the exact path integral', i.e. the choice to use lambda_eff/v_bar rather than the exact path-time T_traj is itself a declared closure assumption (posited reduction)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 126, excerpt: "Session III did not use the full path-time integral as its stress-test clock." }
+      - { path: paper/stages/stage_250.tex, line: 22, excerpt: "This is a reduced timescale closure, not a replacement for the exact path integral." }

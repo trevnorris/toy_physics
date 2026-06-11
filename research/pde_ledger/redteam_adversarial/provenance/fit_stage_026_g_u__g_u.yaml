@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_026_g_u__phase_b__g_u.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,39 @@ source_evidence:
   line: 165
   role: sympy_script
   excerpt: print("G_U   =", GU)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: G_U
+  introduced_at_stage: 26
+  introduced_at_line: 170
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 170
+    excerpt: '`G_U = lambda_U`,'
+constraints:
+- parameter: G_U
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 160
+    excerpt: '`G_U = lambda_U I_(eta,u)`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'G_U = lambda_U is an EXACT algebraic substitution: G_U = lambda_U I_(eta,u) with I_(eta,u) = int u0 u0 = 1 (computed
+    exactly), so G_U reduces to lambda_U on the concrete branch -> internal_consistency for the reduction step. The free coupling
+    lambda_U it equals is itself not pinned from first principles (a free parameter), so G_U''s NUMBER is open; the relation
+    G_U = lambda_U is the exact ledger-internal result this stage establishes.'
+  citations:
+  - path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+    line: 149
+    excerpt: GU = sp.simplify(lambda_U * I_eta_u)
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 136
+    excerpt: '`I_(eta,u)   = int_0^L ds u_0 u_0 = 1`,'
+downstream_dependents:
+- '027'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage_026_g_u__g_u.yaml

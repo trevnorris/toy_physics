@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_benchmark_masses_and_window__phase_b__g_uv.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,41 @@ source_evidence:
   line: 275
   role: notes_stage
   excerpt: \sqrt{\frac{2(E_{\rm edge}-V(r_0))}{m_s}}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_UV
+  introduced_at_stage: 250
+  introduced_at_line: 415
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 415
+    excerpt: ' g_{UV}=0.95,'
+constraints:
+- parameter: g_UV
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 172
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: The SYMBOL g_UV is introduced at Stage 245 (chi_UV := g_UV*chi_lambda), but the NUMERIC value g_UV=0.95 first enters
+    the ledger at Stage 250 as a benchmark input. The notes say it is 'carried from Stage 245', yet no numeric 0.95 appears
+    anywhere in the Stage 245 notes (grep of notes/stages/stage245 finds only the symbol). So 0.95 is a posited near-unity
+    coupling with no derivation and no external published anchor; the 'carried from Stage 245' phrasing is a mild stale/over-attributed
+    provenance pointer for the numeric value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 172
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 134
+    excerpt: \chi_{UV}(r):=g_{UV}\,\chi_\lambda(r),
+downstream_dependents:
+- '251'
+- '253'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage250_benchmark_masses_and_window__g_uv.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_189_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 22
+    introduced_at_line: 262
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 262
+      excerpt: "`Gamma_5 = P_0 * a^5 / (27 c_s^5)`."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 471
+      excerpt: "G_5=\\frac{a^5}{27c_s^5}."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "matched_fingerprint_value is the compact outgoing l=2 branch fingerprint (Y_hat_2^out = 1 + A omega^2 + B omega^4 + i G_5 omega^5) with A = a^2/9c_s^2, B = 4a^4/81c_s^4, G_5 = a^5/27c_s^5 (Stage 189 line 466-471). Per CHECKPOINT_CONSTANT_PROVENANCE (Stage 022 entry, line 266-268), the 27/9/81 fingerprint constants are DERIVED in the compact outgoing l=2 fingerprint (not imported) -> internal_consistency. Stage 189 carries the fingerprint forward ('Carry forward the normalized compact outgoing l=2 branch fingerprint', line 456); its derivation lives upstream (Stage 021/022). Low gap: the bundle held no notes_stage pointer to the fingerprint's DERIVATION origin, only carry-forward use; the binding rule is met via the notes citations here."
+    citations:
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 266, excerpt: "- `27`, `9`, `81` derived in the compact outgoing `l=2` fingerprint" }
+      - { path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md, line: 456, excerpt: "Carry forward the normalized compact outgoing `l=2` branch fingerprint" }

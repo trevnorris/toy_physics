@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_084_omega_pe__phase_b__omega_pe.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,39 @@ source_evidence:
   line: 62
   role: notes_stage
   excerpt: '`Omega_0 = 1,`'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Omega_Pe
+  introduced_at_stage: 46
+  introduced_at_line: 119
+  citation:
+    path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+    line: 119
+    excerpt: '`Omega_Pe := I_Pe / I_W`'
+constraints:
+- parameter: Omega_Pe
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+    line: 58
+    excerpt: '`Omega_Pe`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: Omega_Pe is the exact constructive transport overlap factor, defined at stage 056 as the integral ratio I_Pe/I_W
+    = pi Pe(2 Pe exp(Pe)+pi)/[(4 Pe^2+pi^2)(exp(Pe)-1)] with continuous extension Omega_0 = 1; its monotonicity and 1 <= Omega_Pe
+    <= pi/2 bounds are SymPy-backed. At stage 084 it is carried verbatim inside zeta_phys. A derived closed form of ledger-internal
+    integrals -> internal_consistency, not a fit or posit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+    line: 62
+    excerpt: '`Omega_0 = 1,`'
+  - path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+    line: 163
+    excerpt: '`Omega_Pe(0) = 1,`'
+downstream_dependents:
+- 085
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_084_omega_pe__omega_pe.yaml

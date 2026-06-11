@@ -1,0 +1,25 @@
+candidate_id: fit_stage111_sigmaW_forced_to_zero
+parameter_name: sigma_W
+origin_claims:
+  - parameter: sigma_W
+    introduced_at_stage: 111
+    introduced_at_line: 21
+    citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 21
+      excerpt: "- `sigma_W > 0` the static mixed loading,"
+constraints:
+  - parameter: sigma_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 53
+      excerpt: "\\boxed{\\sigma_W=0.}"
+downstream_dependents: [112]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. sigma_W=0 is FORCED: requiring the standalone mixed pole to preserve the already-fixed canonical even l=2 fingerprint, the z^2 condition forces kappa_W=-1/9 (already incompatible with a passive kappa_W>0), and the z^4 condition then forces sigma_W=0. This is a genuine no-go derivation entirely from ledger-internal even-moment matching; no external target. Classified internal_consistency. Recorded as positive control confirming the value is derived, not posited."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 49, excerpt: "Even if one formally inserts that value, the `z^4` condition becomes" }
+      - { path: scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py, line: 33, excerpt: "assert sp.simplify(sigma_match) == 0" }

@@ -1,0 +1,31 @@
+candidate_id: fit_stage228_rq_requirement_threshold
+parameter_name: RQ_req
+origin_claims:
+  - parameter: RQ_req
+    introduced_at_stage: 222
+    introduced_at_line: 360
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 360
+      excerpt: "\\mathcal R_{Q,*}^{\\rm req}(\\eta=0.1)"
+constraints:
+  - parameter: RQ_req
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 352
+      excerpt: "V_{\\rm known}(1)\\approx 1.181909222592,"
+downstream_dependents: [230]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 228 prints R_{Q,req}=21.8545662963584 (notes line 361) and frames it as 'the same local wall-like survival threshold carried from the earlier stages' (notes line 358). The value originates upstream at Stage 222 (notes line 360-361), back-computed from the externally-known reduced barrier V_known(1)=1.181909222592 and the eta=0.1 (10%-loss) benchmark via Delta V_req(1)=V_known(1)-epsilon (Stage 222 line 356). Stage 228 carries it without re-deriving; the origin attribution belongs to 222, not 228."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md, line: 358, excerpt: "Use the same local wall-like survival threshold carried from the earlier stages." }
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 356, excerpt: "\\Delta V_{\\rm req}(1)=V_{\\rm known}(1)-\\epsilon\\approx 1.081909222592." }
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "RQ_req is a survival threshold derived from the externally-imported V_known barrier (published_target per the audit taxonomy's '222-224 V_known' example), but Stage 222 repeatedly labels this benchmark 'illustrative' (line 350 'Carry forward the same illustrative reduced barrier benchmark'; line 436 'The benchmark Delta V_req(1) used here is illustrative'). It is therefore an external-anchored value used as a comparison benchmark rather than a hard back-solve target -- competing reading: free_choice illustrative placeholder vs published_target external anchor. Best-supported call is published_target because the numeric threshold is computed FROM the external V_known number, but the illustrative caveat should be tracked before any claim that it is a binding external constraint."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 350, excerpt: "Carry forward the same illustrative reduced barrier benchmark at \\(x=1\\):" }
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 436, excerpt: "3. **Actual barrier data.** The benchmark \\(\\Delta V_{\\rm req}(1)\\) used here is illustrative. The true local barrier requirement must be pulled back from the actual same-charge branch." }

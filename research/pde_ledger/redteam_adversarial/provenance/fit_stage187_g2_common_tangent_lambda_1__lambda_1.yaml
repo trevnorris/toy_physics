@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage187_g2_common_tangent_lambda_1__phase_b__lambda_1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -96,9 +96,41 @@ source_evidence:
   line: 142
   role: sympy_script
   excerpt: print("              - E_*(2 Delta_gamma + 2 Delta_lambda - Delta_U - Delta_W)")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda_1
+  introduced_at_stage: 187
+  introduced_at_line: 217
+  citation:
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 217
+    excerpt: Choose the five free finite log-ratios
+constraints:
+- parameter: Lambda_1
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 218
+    excerpt: (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W)
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Resolved parameter_name ''Lambda_1'' maps to the lambda_W co-scaling/drift direction: Delta_lambda = ln(lambda_W~/lambda_W)
+    (finite) and lambda_1 = delta ln lambda_W (infinitesimal), the FIRST of the five FREE logarithmic co-scalings (Delta_lambda,Delta_c,Delta_gamma,Delta_U,Delta_W)
+    that parametrize the similarity orbit G_* (Stage 186 free params Lambda,C,Gamma,U,W for lambda_W,c_etaU,gamma,K_U,K_W).
+    It is an explicitly FREE branch/gauge direction inside the reduced coherent quotient -> free_choice (a posited free co-scaling,
+    neither derived nor matched to an external target). The candidate label ''g2_common_tangent'' refers to the tangent space
+    T_id G_* of which lambda_1 is one basis direction. Low gap logged to record the id-to-variable mapping ambiguity (Lambda_1
+    vs lambda_W drift vs the Stage-186 free param Lambda).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    line: 207
+    excerpt: Choose five free logarithmic co-scaling parameters
+  - path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 358
+    excerpt: the five free microscopic co-scalings are **pure gauge/similarity directions** inside the reduced coherent hierarchy
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage187_g2_common_tangent_lambda_1__lambda_1.yaml

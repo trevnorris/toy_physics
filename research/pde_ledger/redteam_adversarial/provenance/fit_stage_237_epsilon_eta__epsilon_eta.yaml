@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_237_epsilon_eta__phase_b__epsilon_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -189,8 +189,21 @@ source_evidence:
   line: 195
   role: notes_stage
   excerpt: q_\eta=-\frac{R_1}{c_\eta}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_eta
+  introduced_at_stage: 237
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    line: 15
+    excerpt: q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+constraints:
+- parameter: epsilon_eta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    line: 117
+    excerpt: \epsilon_\eta=\epsilon_{\eta,\rm ref}e^{q_\eta},
 graph_context:
   contexts: []
   graph_gaps:
@@ -215,3 +228,23 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_237.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: 'epsilon_eta is NOT a fixed value at Stage 237: it is the dressing observable, and the stage derives that the surviving
+    post-static obstruction is the pure dressing log-ratio q_eta = ln(epsilon_eta/epsilon_{eta,ref}) (notes line 15/65), with
+    the static-blind curve parametrized by epsilon_eta = epsilon_{eta,ref} e^{q_eta} (line 117). These are EXACT derived relations
+    (internal_consistency). The orbit-lock point is epsilon_eta = epsilon_{eta,ref} (line 150). NOTE: the script uses an arbitrary
+    sample epsilon_eta = 1/5 (script line 17) purely to verify the symbolic identities -- that 1/5 is a free verification
+    sample with no notes documentation, not a physical value. The candidate keys the symbolic dressing observable; classified
+    internal_consistency for the derived relation it satisfies. No fitted value constrained.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    line: 150
+    excerpt: \ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+  - path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+    line: 17
+    excerpt: base[sym] = sp.Rational(1, 5)
+downstream_dependents:
+- '238'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage_237_epsilon_eta__epsilon_eta.yaml

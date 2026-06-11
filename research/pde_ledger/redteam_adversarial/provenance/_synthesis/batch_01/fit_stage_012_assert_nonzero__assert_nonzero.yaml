@@ -1,0 +1,11 @@
+candidate_id: fit_stage_012_assert_nonzero
+parameter_name: assert_nonzero
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "assert_nonzero is not a parameter value: it is the name of a SymPy audit helper function defined in the stage-012 projected-Maxwell primitive-bridge audit script. The scanner captured the function identifier. There is no fitted/posited numeric parameter and no notes/ source documents an 'assert_nonzero' value because none exists. Logged as a gap (scanner false-positive). The same false-positive occurs at stage 005."
+    citations:
+      - { path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py, line: 32, excerpt: "def assert_nonzero(label: str, expr: sp.Expr) -> None:" }

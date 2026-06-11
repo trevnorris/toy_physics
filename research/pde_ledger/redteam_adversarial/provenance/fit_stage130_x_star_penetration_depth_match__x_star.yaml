@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage130_x_star_penetration_depth_match__phase_b__x_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,39 @@ source_evidence:
   line: 106
   role: sympy_script
   excerpt: print("g'(Pi_*) =", sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: x_star
+  introduced_at_stage: 127
+  introduced_at_line: 78
+  citation:
+    path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 78
+    excerpt: x_*^{\exp}\approx 0.662765402623161.
+constraints:
+- parameter: x_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 118
+    excerpt: which is exactly the penetration-depth value already found earlier for the
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '130'
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage130_x_star_penetration_depth_match__x_star.yaml

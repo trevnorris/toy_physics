@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_165_t_m_pref__phase_b__t_m_pref.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -61,9 +61,39 @@ source_evidence:
   line: 120
   role: sympy_script
   excerpt: expect_close("prod_pref", prod_pref, sp.Float("1.4532859092683434", 30))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: T_m_pref
+  introduced_at_stage: 165
+  introduced_at_line: 212
+  citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 212
+    excerpt: \frac{3\sqrt{10}\,3^{3/4}}{5\pi\mathfrak g_*(1+\mathfrak r_*^2)^{1/4}}
+constraints:
+- parameter: T_m_pref
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 207
+    excerpt: Substituting this into the explicit throat-core formulas yields
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The scanned target value '3' is the leading integer in the derived mouth-traction prefactor 3*sqrt(10)*3^(3/4)/(5*pi*g_*(1+r^2)^(1/4))
+    (~1.2715890393387603), not an independent posited constant; the prefactor is an algebraic consequence of substituting
+    the D/N law into the Stage-118 throat-core traction formula. Bundle listed no notes_stage citation; notes line 212 documents
+    it.
+  citations:
+  - path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+    line: 112
+    excerpt: Tm_pref = 3*sp.sqrt(10)*sp.Integer(3)**sp.Rational(3, 4) / (5*sp.pi*gstar*(1 + rstar**2)**sp.Rational(1, 4))
+  - path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+    line: 117
+    excerpt: expect_close("Tm_pref", Tm_pref, sp.Float("1.2715890393387603", 30))
+downstream_dependents:
+- '167'
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage_165_t_m_pref__t_m_pref.yaml

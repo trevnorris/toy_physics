@@ -1,0 +1,25 @@
+candidate_id: fit_stage161_delta_q_sigma_star_closure
+parameter_name: sigma_star
+origin_claims:
+  - parameter: sigma_star
+    introduced_at_stage: 159
+    introduced_at_line: 83
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 83
+      excerpt: "\\sigma_*=\\frac{\\Xi\\Sigma_0^{\\rm can}}{4},"
+constraints:
+  - parameter: sigma_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 74
+      excerpt: "At the renormalized canonical Family-1 point of Stage 156,"
+downstream_dependents: [160, 161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "sigma_star (the compensated hybrid branch weight) is the surviving free parameter in the stage161 final defect law Delta_Q = -[sigma_*/(1-sigma_*)] Xi_slip delta_Pi_tan. It is DEFINED at Stage 159 as sigma_* = Xi Sigma0_can/4 (notes line 83) from the actual mouth gains M_s,*=Sigma0_can, M_q,*=-Sigma0_can/4 via the Stage 137-138 loadings -> internal_consistency relation, but its numeric VALUE is left symbolic (depends on Xi = Theta_sigma/L, not pinned in stages 159-161). Stage161 carries it symbolically. No external target; no fixed numeric value to reconcile."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 325, excerpt: "1. the hybrid branch weight `\\sigma_*`," }
+      - { path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md, line: 80, excerpt: "so the compensated hybrid branch parameter is" }

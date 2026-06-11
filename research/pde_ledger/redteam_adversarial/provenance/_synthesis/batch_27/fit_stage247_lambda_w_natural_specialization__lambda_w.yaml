@@ -1,0 +1,19 @@
+candidate_id: fit_stage247_lambda_w_natural_specialization
+parameter_name: lambda_W
+origin_claims:
+  - parameter: lambda_W
+    introduced_at_stage: 247
+    introduced_at_line: 491
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 491
+      excerpt: "\\lambda_W=1."
+constraints:
+  - parameter: lambda_W
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 489
+      excerpt: "Choose the natural Session-I work specialization"
+downstream_dependents: [ 248 ]
+provenance_findings: []

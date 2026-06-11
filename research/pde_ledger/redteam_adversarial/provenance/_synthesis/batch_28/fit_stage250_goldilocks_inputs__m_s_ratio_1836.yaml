@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_goldilocks_inputs
+parameter_name: m_s_ratio_1836
+origin_claims:
+  - parameter: m_s_ratio_1836
+    introduced_at_stage: 250
+    introduced_at_line: 419
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 419
+      excerpt: " m_s=\\mu_\\eta=1836.15267343."
+constraints:
+  - parameter: m_s_ratio_1836
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 423
+      excerpt: "### 7.1 Proton-proxy classical threshold speed"
+downstream_dependents: [251, 253]
+provenance_findings:
+  - type: published_target
+    severity: high
+    summary: "1836.15267343 is the CODATA proton-to-electron mass ratio, imported into the ledger as the 'proton-proxy' benchmark mass (set for both m_s and mu_eta). This is the load-bearing external-target import flagged for this batch: a known published constant fitted in as a benchmark, with the script labelling it an 'Imported benchmark value'. The notes are honest that it is a 'proton-proxy', so there is no derive-vs-fit overclaim -- but it IS an external published number, not a ledger-derived quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 419, excerpt: " m_s=\\mu_\\eta=1836.15267343." }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 171, excerpt: "# Imported benchmark values from the barrier-session write-up." }

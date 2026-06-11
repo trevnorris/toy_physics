@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage086_natural_lambda_mu_unblocked__phase_b__eps_blk.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,37 @@ source_evidence:
   line: 62
   role: sympy_script
   excerpt: Qmax_eps = sp.simplify(Q.subs(zeta, zeta_max))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_blk
+  introduced_at_stage: 86
+  introduced_at_line: 81
+  citation:
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 81
+    excerpt: '`eps_blk = 0,`'
+constraints:
+- parameter: eps_blk
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 24
+    excerpt: At `eps_blk = 0` and `lambda_mu = 1`, the natural shell-weighted Family-1 window is simply
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: eps_blk=0 is the 'unblocked limit' — a posited limiting-case/convention selection, not derived nor matched to an
+    external number (free_choice). The general blocking map Q(zeta;eps_blk) originates upstream at Stage 081; Stage 086 specializes
+    to eps_blk=0.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 85
+    excerpt: '`Q(zeta;0) = 1 + zeta.`'
+downstream_dependents:
+- 087
+- 088
+- 089
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage086_natural_lambda_mu_unblocked__eps_blk.yaml

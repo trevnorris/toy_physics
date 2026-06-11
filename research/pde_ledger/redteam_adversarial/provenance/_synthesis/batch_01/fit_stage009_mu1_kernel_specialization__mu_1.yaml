@@ -1,0 +1,25 @@
+candidate_id: fit_stage009_mu1_kernel_specialization
+parameter_name: mu_1
+origin_claims:
+  - parameter: mu_1
+    introduced_at_stage: 9
+    introduced_at_line: 202
+    citation:
+      path: notes/em_projected/step_07_projected_maxwell_near_throat_notes.md
+      line: 202
+      excerpt: "Q_0+\\ell Q_1+\\ell^2 Q_2+\\ell^3 Q_3+\\cdots,"
+constraints:
+  - parameter: mu_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_07_projected_maxwell_near_throat_notes.md
+      line: 194
+      excerpt: "W_\\ell(w)=\\frac{1}{\\ell}e^{-w/\\ell}."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "mu_1 is the first moment mu_1 = integral_0^inf u w(u) du of the one-sided mouth averaging kernel; for the normalized one-sided exponential/Gamma kernel W_ell(w)=(1/ell)e^{-w/ell} it evaluates EXACTLY to 2 (stage-009 sympy: assert_zero('Gamma one-sided first moment', gamma_mu1 - 2)). It is the coefficient of the ell*Q'(0) term in the near-mouth average expansion (notes step_07 line 200). This is an exact analytic moment of the chosen kernel, not a fitted value -> internal_consistency. The per-stage notes (step_07) document the kernel and the moment-expansion structure but use the symbol Q_1/the expansion rather than the symbol 'mu_1' (which is the paper card's notation, stage_009.tex), hence the low-severity gap note."
+    citations:
+      - { path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py, line: 126, excerpt: "assert_zero(\"Gamma one-sided first moment\", gamma_mu1 - 2)" }
+      - { path: paper/stages/stage_009.tex, line: 35, excerpt: "\\mu_1=\\int_0^\\infty u\\,w(u)\\,du ." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage064_matched_layer_coherence__phase_b__c_sigma_phi_sq.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,38 @@ source_evidence:
   line: 126
   role: notes_stage
   excerpt: '`I_1^2 <= N_(phi phi) I_2,`'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_sigma_phi_sq
+  introduced_at_stage: 64
+  introduced_at_line: 146
+  citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 146
+    excerpt: '`C_(sigma phi)^2 = 1.`'
+constraints:
+- parameter: C_sigma_phi_sq
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 132
+    excerpt: 'The equality condition is also exact: `C_(sigma phi)^2 = 1` if and only if `1/H(y)` is constant on the support
+      of `chi_phi(y)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The matched-layer value C_sigma_phi^2 = 1 is the exact Cauchy-Schwarz equality case, attained when 1/H(y) is constant
+    across the thin active layer (H(y)~H_w). It is a derived limit of the equilibrium-aligned coherence I_1^2/(N_phiphi I_2),
+    not a posited number; the literal '1' is the saturated upper bound, not a free constant.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 124
+    excerpt: By Cauchy–Schwarz,
+downstream_dependents:
+- '065'
+- '066'
+- '067'
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage064_matched_layer_coherence__c_sigma_phi_sq.yaml

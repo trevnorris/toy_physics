@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage176_square_root_mixed_leg_exponent__phase_b__g_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -88,9 +88,42 @@ source_evidence:
   line: 118
   role: sympy_script
   excerpt: print("  obeys the square-root wall-loading law G_W / Omega_W^2 ∝ sqrt(K).")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: G_W
+  introduced_at_stage: 176
+  introduced_at_line: 56
+  citation:
+    path: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+    line: 56
+    excerpt: \mathcal M_r:=\frac{G_{W,r}}{\Omega_{W,r}^2\sqrt K},
+constraints:
+- parameter: G_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+    line: 234
+    excerpt: \frac{G_{W,r}}{\Omega_{W,r}^2}\propto \sqrt K.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'G_W (the raw mixed-leg outgoing transfer amplitude) is not assigned a numeric value; it enters as a free microscopic
+    port input. The load-bearing extracted value is the square-root (exponent 1/2) wall-loading SCALING G_W/Omega_W^2 ∝ sqrt(K)
+    (notes line 234), which is DERIVED, not fit: the sqrt(K) is built into the normalized mixed-leg load definition M_r :=
+    G_{W,r}/(Omega_{W,r}^2 sqrt(K)) (notes line 56), and the law follows from imposing Sigma_r^(N) = 0 => Xi_load = 0 (notes
+    lines 219-229). The 1/2 surfaces in the script as dlnM = dGW - dOW - (1/2)dK (sympy_audit line 75). Internal_consistency,
+    no external (GR/PN/CODATA) target. Low severity (gap noted because G_W itself carries no value-genealogy).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage176_outgoing_load_factorization.md
+    line: 219
+    excerpt: \delta\ln\!\left(\frac{G_{W,r}}{\Omega_{W,r}^2\sqrt K}\right)=0,
+  - path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+    line: 75
+    excerpt: dlnM = dGW - dOW - sp.Rational(1, 2) * dK
+downstream_dependents:
+- '177'
+- '178'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage176_square_root_mixed_leg_exponent__g_w.yaml

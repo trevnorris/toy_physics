@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage128_branch_sign_fixed_card__phase_b__branch_sign.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -90,9 +90,39 @@ source_evidence:
   role: notes_stage
   excerpt: So the remaining PDE-facing question is not branch sign. It is the detailed shape of the actual mouth source profile
     \(\sigma(z)\), or equivalently the exact amount of positive mouth broadening away from the point-source limit.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: branch_sign
+  introduced_at_stage: 128
+  introduced_at_line: 75
+  citation:
+    path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 75
+    excerpt: \text{Under positive localized mouth sourcing, the lower compensated branch is uniquely selected and is easily
+      reachable.}
+constraints:
+- parameter: branch_sign
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 29
+    excerpt: is ruled out by positivity alone.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage128_branch_sign_fixed_card__branch_sign.yaml

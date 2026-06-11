@@ -1,0 +1,25 @@
+candidate_id: fit_stage_079_a_f1
+parameter_name: A_F1
+origin_claims:
+  - parameter: A_F1
+    introduced_at_stage: 079
+    introduced_at_line: 57
+    citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 57
+      excerpt: "`A_F1 := (kappa_F1 + pi^2/4) / (kappa_F1 + y_F1^2).`"
+constraints:
+  - parameter: A_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 55
+      excerpt: "Then the exact Robin support factor carried from Stage 057 is"
+downstream_dependents: [080, 081, 082, 083, 084, 085]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "A_F1 ~ 1.00005192880220 is the exact Stage-057 Robin support factor (kappa_F1 + pi^2/4)/(kappa_F1 + y_F1^2) evaluated on the ledger-fixed Family-1 branch: kappa_F1 = 12321/5 (fixed Stages 073-075) and y_F1 the unique Robin root of y tan y = 37, 0 < y < pi/2. Both inputs are ledger-internal; the value is a deterministic evaluation of a derived formula, so internal_consistency, not a fit or posit."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md, line: 17, excerpt: "`A_F1 = (kappa_F1 + pi^2/4)/(kappa_F1 + y_F1^2),`" }
+      - { path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md, line: 63, excerpt: "`A_F1 ≈ 1.00005192880220.`" }

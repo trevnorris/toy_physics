@@ -1,0 +1,12 @@
+candidate_id: fit_stage_034_pi_star
+parameter_name: Pi_star
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No parameter named Pi_star (or Pi*, Pi_star, Pistar) appears anywhere in the stage-034 sources: not in notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md, not in paper/stages/stage_034.tex, and not in scripts/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py. The bundle's sole source_evidence pointer (notes line 62) is prose about the softening-depth coordinate x ('The selected branch starts at x=0 ... as x -> A^-'), which does not introduce or value any Pi_star. Treated as a scanner false-positive; no origin or constraint can be attributed. Searched: the three stage-034 sources via case-insensitive grep for pi_star/pi\\*/Pistar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md, line: 62, excerpt: "The selected branch starts at `x=0` when the directional loading vanishes and approaches softening as `x -> A^-`." }
+      - { path: scripts/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py, line: 32, excerpt: "ks0, ks1 = sp.symbols(\"kappa0_sq kappa1_sq\", positive=True, real=True)" }

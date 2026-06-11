@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage052_asymmetry_forced__phase_b__omega_asym.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,38 @@ source_evidence:
   line: 92
   role: sympy_script
   excerpt: sp.simplify(sol_Omega0_sq[0] - Omega0_req_sq),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Omega_asym
+  introduced_at_stage: 52
+  introduced_at_line: 109
+  citation:
+    path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+    line: 109
+    excerpt: '`Omega_0 := I_(phi,0) / I_W,`'
+constraints:
+- parameter: Omega_asym
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+    line: 163
+    excerpt: '`Omega_0 >= sqrt(zeta_req).`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Bundle parameter_name ''Omega_asym'' maps to the relative overlap boost Omega_0 = I_(phi,0)/I_W of Stage 052.
+    The candidate''s ''asymmetry_forced'' claim is the DERIVED requirement: once zeta_req>1 the symmetric twin (Omega_0=1)
+    fails identically and a true overlap asymmetry Omega_0 >= sqrt(zeta_req) is forced (notes lines 155-165) -- an internal_consistency
+    threshold solved from zeta_0^phys = (K_W/K_phi0) Omega_0^2 >= zeta_req. Note Omega_0 itself is a free operator-shape input
+    whose physical realizability is bounded in Stage 053 (Omega_0<=pi/2) and given a transport origin in Stage 056.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+    line: 165
+    excerpt: So any `zeta_req > 1` forces a true overlap asymmetry above the symmetric twin value.
+downstream_dependents:
+- '053'
+- '055'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage052_asymmetry_forced__omega_asym.yaml

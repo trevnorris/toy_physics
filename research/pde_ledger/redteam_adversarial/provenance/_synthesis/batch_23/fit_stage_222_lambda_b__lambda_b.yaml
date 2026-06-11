@@ -1,0 +1,25 @@
+candidate_id: fit_stage_222_lambda_b
+parameter_name: lambda_B
+origin_claims:
+  - parameter: lambda_B
+    introduced_at_stage: 222
+    introduced_at_line: 289
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 289
+      excerpt: "(\\lambda_B,\\lambda_U,\\lambda_W,\\lambda_R,\\Omega_U,\\Omega_W,\\varpi,K,M)"
+constraints:
+  - parameter: lambda_B
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 434
+      excerpt: "1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level overlap data \\(\\lambda_B,\\lambda_U,\\lambda_W,\\lambda_R\\) on the actual branch."
+downstream_dependents: [223]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "lambda_B=0.5 (the BdG-leg overlap coupling) is one of the ILLUSTRATIVE sample couplings posited at line 289-293 to evaluate the exact survival formulas on one admissible slice. The notes explicitly flag these as illustrative and not branch-derived (line 434). constraint_kind free_choice (posited sample value). The card itself carries the honest caveat that the actual overlap data must be determined by the real PDE -- so this is properly disclaimed, not a hidden overclaim; recorded for completeness."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 287, excerpt: "Take the admissible sample branch" }
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 291, excerpt: "(0.5,\\,0.3,\\,0.4,\\,0.25,\\,1.0,\\,1.4,\\,2.0,\\,3.0,\\,1.0)" }

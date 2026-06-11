@@ -1,0 +1,25 @@
+candidate_id: fit_stage_243_xi_1
+parameter_name: Xi_1
+origin_claims:
+  - parameter: Xi_1
+    introduced_at_stage: 243
+    introduced_at_line: 344
+    citation:
+      path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+      line: 344
+      excerpt: "\\Xi_1 = \\delta U."
+constraints:
+  - parameter: Xi_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+      line: 341
+      excerpt: "At infinitesimal order, this lane is the relaxed continuation of the compact transfer-shape scalar:"
+downstream_dependents: [245]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Xi_1 is NOT a numeric constant. At Stage 243 it is identified as the infinitesimal transfer-shape component of the non-rigid U lane, Xi_1 = delta U (notes line 344), carried from the compact weak-axisymmetric front end. This is internal_consistency (a derived/carried first-order identity, not an inserted fit), and it has no fixed numeric target at this stage. It is consumed at Stage 245 where Xi_1^nr = u_1 (Stage 245 notes line 409). Logged for transparency since the scanner candidate has no numeric target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md, line: 634, excerpt: "If the linear weak-axisymmetric packet is being used, then `\\Xi_1` is simply the infinitesimal transfer-shape component of the same `U` lane." }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 409, excerpt: "\\Xi_1^{\\rm nr}=u_1," }

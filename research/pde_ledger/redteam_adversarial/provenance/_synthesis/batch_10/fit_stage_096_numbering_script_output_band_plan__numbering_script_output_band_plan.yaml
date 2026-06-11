@@ -1,0 +1,11 @@
+candidate_id: fit_stage_096_numbering_script_output_band_plan
+parameter_name: NUMBERING_SCRIPT_OUTPUT_BAND_PLAN
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "NUMBERING_SCRIPT_OUTPUT_BAND_PLAN is not a physics parameter value; it is the filename of a red-team numbering-reconciliation planning document (redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md). The scanner mis-resolved a doc reference as a parameter target. No notes line documents it as a ledger quantity, and none should. Searched stage096 notes and script; the only band-plan-shaped tokens are the script-backed-status pointers, not a parameter."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md, line: 11, excerpt: "Script-backed status:" }

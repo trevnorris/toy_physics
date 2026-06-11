@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage252_three_to_one_split__phase_b__f_lat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,38 @@ source_evidence:
   line: 183
   role: notes_stage
   excerpt: \frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: f_lat
+  introduced_at_stage: 252
+  introduced_at_line: 385
+  citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 385
+    excerpt: ' f_{\rm lat}=\frac34.'
+constraints:
+- parameter: f_lat
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 78
+    excerpt: '- Session IV used a by-hand vacuum/lattice split to estimate exported energies and cold-event rescue.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: f_lat=3/4 is the legacy Session-IV by-hand split carried forward as a benchmark convention; the card presents it
+    as a coefficient-surface condition without flagging that the 3/4 value itself is a posited (by-hand) split, not derived.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 496
+    excerpt: This is a calibration consistency check, not a theorem that the realized branch must use the speed-independent
+      `3:1` family.
+  - path: paper/stages/stage_252.tex
+    line: 79
+    excerpt: f_{\rm lat}(s_c)=\frac34
+downstream_dependents:
+- '253'
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage252_three_to_one_split__f_lat.yaml

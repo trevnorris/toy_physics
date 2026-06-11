@@ -1,0 +1,25 @@
+candidate_id: fit_stage_196_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 194
+    introduced_at_line: 184
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 184
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 273
+      excerpt: "\\chi_Q=-27\\,\\frac{L_5}{L_0}"
+downstream_dependents: [197]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "chi_Q is the outgoing-normalization scalar. In the modern Packet-A line it is fixed at Stage 194 (notes line 162 'Exact fixing of chi_Q on the canonical compact branch', boxed chi_Q=1 at line 184) by matching the O(omega^5)/z^5 coefficient against the canonical compact outgoing l=2 branch; Stage 196 only proves higher-odd retarded data cannot change it (notes lines 273-278: chi_Q=-27 L_5/L_0 = 3(S beta^5 + 9 Sigma_5)/(3S - Sigma_0), compiled only from z^5). This is the SAME conceptual scalar earlier fixed at Stage 105 (chi_Q=1), so the canonical-unity provenance is dual-anchored (105 in the original line, 194 in the rebuilt Stage 191-196 line); not a contradiction in value (both give chi_Q=1) but a numbering/anchor duplication worth flagging. constraint_kind internal_consistency: forced by z^5-coefficient matching among ledger-internal DtN data, not an external number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 162, excerpt: "## 3. Exact fixing of `\\chi_Q` on the canonical compact branch" }
+      - { path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md, line: 69, excerpt: "\\boxed{\\chi_Q=1.}" }

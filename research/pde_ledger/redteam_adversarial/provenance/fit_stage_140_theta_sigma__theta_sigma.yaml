@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_140_theta_sigma__phase_b__theta_sigma.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -111,8 +111,21 @@ source_evidence:
   line: 16
   role: sympy_script
   excerpt: assert sp.simplify(Sigma0_hat - sp.Rational(20,9)*That**2) == 0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Theta_sigma
+  introduced_at_stage: 140
+  introduced_at_line: 29
+  citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 29
+    excerpt: \Theta_\sigma = H_w J_s.
+constraints:
+- parameter: Theta_sigma
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 32
+    excerpt: 'This is a same-layer closure: it removes an otherwise free susceptibility scale by'
 graph_context:
   contexts: []
   graph_gaps:
@@ -137,3 +150,24 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_140.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'Duplicate-target candidate for the same Theta_sigma = H_w J_s self-matched closure (see fit_stage140_theta_sigma_not_fitted_by_hand).
+    It is the Stage-43-type susceptibility specialized to the mouth layer by identifying N_sigma_sigma^(m) = J_s = 4 pi a^2
+    ell/3 (notes lines 15-29). internal_consistency: solved from ledger-internal layer quantities, framed as ''rather than
+    fitting a new branch-dependent coefficient by hand'' (notes lines 32-34). Competing free_choice reading: the same-layer
+    identification is itself a microscopic choice that the note admits would change the derived prefactor if the source lived
+    on a different layer (notes line 34-35). Recorded so the closure is not overstated as an unconditional derivation.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 15
+    excerpt: Take the mouth source to live on the same active shell layer as the shell/compliance mode.
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 34
+    excerpt: fitting a new branch-dependent coefficient by hand. If the actual mouth source
+downstream_dependents:
+- '146'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_140_theta_sigma__theta_sigma.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_201_delta__phase_b__delta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,8 +183,21 @@ source_evidence:
   line: 249
   role: sympy_script
   excerpt: '"Delta_lambda Delta_c Delta_gamma Delta_U Delta_Keta Delta_W Delta_mu Delta_T",'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta
+  introduced_at_stage: 195
+  introduced_at_line: 185
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 185
+    excerpt: \boxed{\Delta_Q:=\chi_Q-1.}
+constraints:
+- parameter: Delta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    line: 151
+    excerpt: \Delta_Q(\mathbf x):=\chi_Q(\mathbf x)-1.
 graph_context:
   contexts: []
   graph_gaps:
@@ -209,3 +222,24 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_201.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: The scanner extracted a bare 'Delta' for Stage 201; the bundle's notes evidence spans several distinct Delta-family
+    realization-packet quantities and there is no single canonical 'Delta' value. I resolved it to the Packet-A scalar Delta_Q(x)
+    := chi_Q(x)-1 (notes line 151), which is the only value-bearing member (carried from its Stage 195 definition); it is
+    internal_consistency (a definition tied to the ledger-internal chi_Q). The other Delta-symbols in the bundle -- Delta_full=0
+    (line 16, the four-scalar verdict vanishing condition), Delta x_rep (line 35, the repair vector, classified separately
+    under candidate fit_stage201_canonical_repair_vector), and Delta_real^int (line 158, the intrinsic four-scalar realization
+    packet) -- are all derived/defined consistency objects (also internal_consistency), so the classification is robust under
+    any of the readings, but the exact referent of the bare 'Delta' is ambiguous.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    line: 16
+    excerpt: \Delta_{\rm full}=0
+  - path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    line: 158
+    excerpt: \Delta_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+downstream_dependents:
+- '202'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_201_delta__delta.yaml

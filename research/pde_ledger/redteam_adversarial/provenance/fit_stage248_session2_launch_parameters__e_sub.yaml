@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_session2_launch_parameters__phase_b__e_sub.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -180,9 +180,25 @@ source_evidence:
   line: 234
   role: sympy_script
   excerpt: section("5. Session-II benchmark specialization")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: E_sub
+  introduced_at_stage: 248
+  introduced_at_line: 417
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 417
+    excerpt: E_{\rm sub}=2.5.
+constraints:
+- parameter: E_sub
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 234
+    excerpt: If one wants the reduced trajectory to have energy \(E_{\rm sub}\) at launch radius \(r_0\), then
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage248_session2_launch_parameters__e_sub.yaml

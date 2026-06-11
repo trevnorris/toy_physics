@@ -1,0 +1,19 @@
+candidate_id: fit_stage_131_pi_theta_sigma_l
+parameter_name: Pi_Theta_sigma_L
+origin_claims:
+  - parameter: Pi_Theta_sigma_L
+    introduced_at_stage: 131
+    introduced_at_line: 39
+    citation:
+      path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+      line: 39
+      excerpt: "\\frac{\\Pi_*\\,\\Theta_\\sigma}{L}"
+constraints:
+  - parameter: Pi_Theta_sigma_L
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+      line: 27
+      excerpt: "So the explicit canonical branch condition is simply"
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

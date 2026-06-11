@@ -1,0 +1,25 @@
+candidate_id: fit_stage113_preserved_exactly_when
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 105
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 69
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+      line: 37
+      excerpt: "and canonical outgoing normalization is preserved exactly when"
+downstream_dependents: [114, 115]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Stage 113 is a status-only summary (card declares 'SymPy audit: none yet. Mathematica audit: none yet.' and claimstatus ExactClosure/Open). It restates the three checked outlet classes and that chi_Q=1 is preserved exactly when gamma_W=1/9 on the compensated branch; it introduces no new value. chi_Q=1 origin is Stage 105; the compensated-branch results (rho_R=4*sigma_W, kappa_W=1/3, gamma_W=1/9) are carried from Stage 112. Card correctly carries the not-an-unconditional-theorem caveat. Recorded so ingest treats this as a carry/summary node, not an origin or an independently-verified value."
+    citations:
+      - { path: paper/stages/stage_113.tex, line: 11, excerpt: "\\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: none yet.}" }
+      - { path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md, line: 5, excerpt: "The abstract isotropic branch-selection triple `(b,a_0,a_5)` is no longer just symbolic. Three explicit outlet classes have now been checked:" }

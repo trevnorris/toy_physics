@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage137_gains_from_derived_core_response__phase_b__m_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -131,9 +131,31 @@ source_evidence:
   line: 89
   role: sympy_script
   excerpt: '"outlet check is vacuous: +M_q and -M_q both pass"'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q
+  introduced_at_stage: 137
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 65
+    excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+constraints:
+- parameter: M_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 47
+    excerpt: Stage 114 already gave the concrete two-channel core outlet in the form
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage137_gains_from_derived_core_response__m_q.yaml

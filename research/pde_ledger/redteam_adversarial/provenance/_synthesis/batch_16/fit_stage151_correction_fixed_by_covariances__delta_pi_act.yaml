@@ -1,0 +1,19 @@
+candidate_id: fit_stage151_correction_fixed_by_covariances
+parameter_name: delta_Pi_act
+origin_claims:
+  - parameter: delta_Pi_act
+    introduced_at_stage: 151
+    introduced_at_line: 96
+    citation:
+      path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+      line: 96
+      excerpt: "\\delta\\Pi_{\\rm act}"
+constraints:
+  - parameter: delta_Pi_act
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+      line: 42
+      excerpt: "So the actual selected deformation is not free:"
+downstream_dependents: [152, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163]
+provenance_findings: []

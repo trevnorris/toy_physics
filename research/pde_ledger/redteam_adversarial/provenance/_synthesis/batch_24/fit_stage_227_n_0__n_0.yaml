@@ -1,0 +1,19 @@
+candidate_id: fit_stage_227_n_0
+parameter_name: N_0
+origin_claims:
+  - parameter: N_0
+    introduced_at_stage: 227
+    introduced_at_line: 111
+    citation:
+      path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+      line: 111
+      excerpt: "N_0=\\frac{P^2}{\\Delta^2}."
+constraints:
+  - parameter: N_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+      line: 145
+      excerpt: "\\frac{N_{01}}{N_0}=2\\frac{P_{01}}{P}-2\\frac{\\Delta_{01}}{\\Delta}."
+downstream_dependents: [228]
+provenance_findings: []

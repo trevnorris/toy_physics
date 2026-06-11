@@ -1,0 +1,24 @@
+candidate_id: fit_stage_249_c_sigma
+parameter_name: C_sigma
+origin_claims:
+  - parameter: C_sigma
+    introduced_at_stage: 249
+    introduced_at_line: 204
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 204
+      excerpt: "\\mathcal C_{h,\\sigma}(t;E)=\\mathcal C_{h,0}(t;E)+\\sigma\\,\\mathcal C_{h,1}(t;E)."
+constraints:
+  - parameter: C_sigma
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 198
+      excerpt: "The minimal closure assumption is that the hidden-sector helicity export is linear in this two-state label:"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "C_sigma is a purely symbolic closure object, not a numeric value: it is the POSITED linear-in-sigma decomposition C_{h,sigma}=C_{h,0}+sigma*C_{h,1} ('the minimal closure assumption'). It carries no number and no derivation -- an ansatz on the orientation dependence -- so no numeric provenance exists to classify."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 198, excerpt: "The minimal closure assumption is that the hidden-sector helicity export is linear in this two-state label:" }

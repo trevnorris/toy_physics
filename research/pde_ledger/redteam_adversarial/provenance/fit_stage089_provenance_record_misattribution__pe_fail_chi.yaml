@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage089_provenance_record_misattribution__phase_b__pe_fail_chi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,44 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: '# success margin below is the can-fail assertion establishing the boxed Output'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pe_fail_chi
+  introduced_at_stage: 78
+  introduced_at_line: 42
+  citation:
+    path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 42
+    excerpt: '`Pe_req >= Pe_fail^(chi) := Theta_w^(chi) / 3.62605617972939e-4`'
+constraints:
+- parameter: Pe_fail_chi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+    line: 47
+    excerpt: '`Pe_fail^(chi) = 11220.5441626259 lambda_mu^2,`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: self_contradictory_origin
+  severity: high
+  summary: The provenance RECORD for Pe_fail_chi is internally contradictory. The CHECKPOINT_CONSTANT_PROVENANCE tracker states
+    089's Pe_fail_chi is 'now anchored by an explicit provenance comment naming scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt
+    as the upstream source' — but that Stage-082 file does not contain the value (verified absent). The Stage 089 notes themselves
+    attribute the rho window to 'From Stage 086' (notes line 28), not 082. The true first-introduction is Stage 078 (line
+    42), carried through Stage 080. So three records (089 notes -> 086, 089 script/tracker -> 082, actual origin -> 078/080)
+    disagree on the value's upstream stage.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 109
+    excerpt: 'checkpoints**: 089''s `Pe_suff_chi = 96.5285247264386` and `Pe_fail_chi ='
+  - path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+    line: 28
+    excerpt: From Stage 086, at the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 42
+    excerpt: '`Pe_req >= Pe_fail^(chi) := Theta_w^(chi) / 3.62605617972939e-4`'
+downstream_dependents:
+- 089
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage089_provenance_record_misattribution__pe_fail_chi.yaml

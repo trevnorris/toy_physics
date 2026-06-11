@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage236_equal_drift_ray_forced__phase_b__k_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,42 @@ source_evidence:
   line: 311
   role: notes_stage
   excerpt: '- `y_eta`: the equal-drift dressing ray that remains after that strip is cleared.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_eta
+  introduced_at_stage: 236
+  introduced_at_line: 102
+  citation:
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 102
+    excerpt: \Delta_{K_\eta}^{(q)}=-q_\eta,
+constraints:
+- parameter: K_eta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 184
+    excerpt: \Delta_{K_\eta}^{(q)}=-E_1=-\delta\ln\epsilon_\eta,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'K_eta is NOT a fixed numeric value: at Stage 236 it is one axis of the microscopic dependent triple (T_U, K_eta^(eff),
+    mu_W) (card line 9), and its first-order drift is DERIVED as Delta_K_eta^(q) = -q_eta = -delta ln epsilon_eta (notes lines
+    102/184) via the dependent-plane compiler. The ''equal_drift_ray_forced'' candidate refers to the static-blind residue
+    being the equal-drift K_eta-mu ray Delta_mu = Delta_K_eta (notes line 326/447), an EXACT derived relation in the microscopic
+    plane (internal_consistency). No specific value for K_eta is constrained; the candidate keys the microscopic drift coordinate
+    / its forced equal-drift relation. Logged low-severity: K_eta is a symbolic drift coordinate, not a fitted scalar.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    line: 447
+    excerpt: 3. the static-blind residue is exactly the diagonal equal-drift ray `\Delta_\mu=\Delta_{K_\eta}`,
+  - path: scripts/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py
+    line: 136
+    excerpt: '# Static strip q_nt = 0 iff Delta_mu = Delta_Keta.'
+downstream_dependents:
+- '237'
+- '238'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage236_equal_drift_ray_forced__k_eta.yaml

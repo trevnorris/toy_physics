@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_carried_constants_block__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,39 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: raise AssertionError("Sigma0_can deviates from notes value 4.651033550168867.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_star
+  introduced_at_stage: 156
+  introduced_at_line: 106
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 106
+    excerpt: (\Pi_*,\widehat T_{m,*})
+constraints:
+- parameter: Pi_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 104
+    excerpt: Relative to the original canonical point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Pi_star (the ORIGINAL frozen canonical mouth bias ~1.5088) is only quoted as a comparison reference in stage156
+    notes; its first-entry derivation lives upstream (frozen Family-1 fixed point, stages 134/155). Stage156 carries it as
+    a baseline for the renormalization ratios, not as a value it constrains.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 104
+    excerpt: Relative to the original canonical point
+  - path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+    line: 26
+    excerpt: Pi_star = 1.50882951349316
+downstream_dependents:
+- '157'
+- '158'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage156_carried_constants_block__pi_star.yaml

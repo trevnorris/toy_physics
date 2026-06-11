@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_252_r_v__phase_b__r_v.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,26 @@ source_evidence:
   line: 125
   role: sympy_script
   excerpt: fvac_sc = sp.simplify(fv.subs(rV, sc**2))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_V
+  introduced_at_stage: 252
+  introduced_at_line: 152
+  citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 152
+    excerpt: \mathfrak r_V(T):=\frac{\mathcal I_3(T)}{\mathcal I_2(T)}.
+constraints:
+- parameter: r_V
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 240
+    excerpt: \mathfrak r_V=s^2.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '253'
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage_252_r_v__r_v.yaml

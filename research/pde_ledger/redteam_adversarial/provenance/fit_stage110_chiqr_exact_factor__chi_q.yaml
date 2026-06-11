@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage110_chiqr_exact_factor__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -79,9 +79,39 @@ source_evidence:
   line: 30
   role: sympy_script
   excerpt: assert sp.simplify(chi_R_lin - (1 + rho/3 + rho**2/9)) == 0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 110
+  introduced_at_line: 55
+  citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 55
+    excerpt: \chi_Q^{\rm R}=rac{3}{3-\rho_R}.
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 52
+    excerpt: the raw Robin outlet carries the exact normalization factor
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: NOT a fit. chi_Q^R=3/(3-rho_R) is the exact outgoing-normalization factor algebraically derived from the posited
+    Robin deformation Lambda_2^R=Lambda_2^out+rho_R, measured relative to the ledger-internal canonical fingerprint. Inputs
+    (Lambda_2^out, the canonical fingerprint) are all ledger-internal; no external published number is targeted. Classified
+    internal_consistency. Recorded only to confirm the candidate is genuinely derived (the audit's expected positive control),
+    not back-solved to an external target.
+  citations:
+  - path: scripts/moving_throat_pde_stage110_robin_outlet_model_sympy_audit.py
+    line: 29
+    excerpt: assert sp.simplify(chi_R - 3/(3 - rho)) == 0
+downstream_dependents:
+- '111'
+- '112'
+- '113'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage110_chiqr_exact_factor__chi_q.yaml

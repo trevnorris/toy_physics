@@ -1,0 +1,29 @@
+candidate_id: fit_stage_178_delta
+parameter_name: Delta
+origin_claims:
+  - parameter: Delta
+    introduced_at_stage: 178
+    introduced_at_line: 178
+    citation:
+      path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+      line: 178
+      excerpt: "\\Delta_r=\\Omega_{U,r}^2\\Omega_{W,r}^2-R_r^2."
+constraints:
+  - parameter: Delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+      line: 178
+      excerpt: "\\Delta_r=\\Omega_{U,r}^2\\Omega_{W,r}^2-R_r^2."
+downstream_dependents: [179]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta is not a fitted value but a structural definition: the static port detuning determinant Delta_r = Omega_{U,r}^2 Omega_{W,r}^2 - R_r^2 (notes line 178), built entirely from ledger-internal squared frequencies and the coupling R_r. It enters the outgoing-transfer coefficient via N_{A,0}^(r) = P_{A,r}^2 / Delta_{A,r}^2 (notes line 85). Internal_consistency (a defined determinant of ledger quantities), no posited number and no external target. Low severity (scanner target is a structural definition rather than a constrained value)."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+        line: 85
+        excerpt: "N_{A,0}^{(r)}=\\frac{P_{A,r}^2}{\\Delta_{A,r}^2}."
+      - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+        line: 87
+        excerpt: "Delta = OU2 * OW2 - R**2"

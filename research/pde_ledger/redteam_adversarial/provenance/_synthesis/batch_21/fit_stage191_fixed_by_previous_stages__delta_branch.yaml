@@ -1,0 +1,24 @@
+candidate_id: fit_stage191_fixed_by_previous_stages
+parameter_name: Delta_branch
+origin_claims:
+  - parameter: Delta_branch
+    introduced_at_stage: 191
+    introduced_at_line: 200
+    citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 200
+      excerpt: "\\Delta_{\\rm branch}"
+constraints:
+  - parameter: Delta_branch
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 197
+      excerpt: "Collecting the previous quantities gives the exact branch-side verdict vector"
+downstream_dependents: [192, 193, 195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Duplicate candidate (same parameter Delta_branch at stage 191 as fit_stage_191_delta_branch); the id 'fixed_by_previous_stages' matches the notes statement (191 line 197) that Delta_branch is COLLECTED/compiled from previously-defined quantities, i.e. internal_consistency. It is the verdict vector (a_2,b_2,a_4,b_4,a_P0,b_P0,Delta_pole,Delta_norm), not a fitted value. The external GR target lives inside the Delta_norm component (191 line 190), not in the vector definition itself."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 190, excerpt: " \\frac{54Gc_s^5}{5a^5c^5}." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_zeta_max_f1_imported_literal__phase_b__zeta_max_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,39 @@ source_evidence:
   line: 38
   role: sympy_script
   excerpt: print('zeta_edge =', zeta_edge)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_max_F1
+  introduced_at_stage: 79
+  introduced_at_line: 35
+  citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 35
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+constraints:
+- parameter: zeta_max_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 451
+    excerpt: carried forward as `zeta_max^(F1)` from the Stage 63/64 support ceiling
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'At stage 098 zeta_max_F1 is an imported literal, NOT introduced here: the script comments it as ''an external
+    carry-forward; not derived in this stage''. It is a ledger-internal Family-1 constructive support ceiling (zeta_max^(F1)
+    := A_F1 pi^2/4) originating at stage 079 from the Stage 63/64 ceiling packet — internal_consistency, carried forward.
+    Not a published/external physics target. The stage098 notes restate it (line 22) but do not derive it.'
+  citations:
+  - path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+    line: 24
+    excerpt: '# zeta_max^(F1) is an external carry-forward; not derived in this stage.'
+  - path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 31
+    excerpt: '`zeta_req <= zeta_max^(F1) := A_F1 pi^2 / 4`'
+downstream_dependents:
+- 099
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage098_zeta_max_f1_imported_literal__zeta_max_f1.yaml

@@ -1,0 +1,24 @@
+candidate_id: fit_stage086_natural_lambda_mu_unblocked
+parameter_name: eps_blk
+origin_claims:
+  - parameter: eps_blk
+    introduced_at_stage: 86
+    introduced_at_line: 81
+    citation:
+      path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+      line: 81
+      excerpt: "`eps_blk = 0,`"
+constraints:
+  - parameter: eps_blk
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+      line: 24
+      excerpt: "At `eps_blk = 0` and `lambda_mu = 1`, the natural shell-weighted Family-1 window is simply"
+downstream_dependents: [87, 88, 89]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "eps_blk=0 is the 'unblocked limit' — a posited limiting-case/convention selection, not derived nor matched to an external number (free_choice). The general blocking map Q(zeta;eps_blk) originates upstream at Stage 081; Stage 086 specializes to eps_blk=0."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md, line: 85, excerpt: "`Q(zeta;0) = 1 + zeta.`" }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_142_m_q
+parameter_name: M_q
+origin_claims:
+  - parameter: M_q
+    introduced_at_stage: 137
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+      line: 65
+      excerpt: "-\\frac{L (K_sg_q-\\lambda g_s)^2}{K_s(K_sK_q+\\lambda^2)\\Theta_\\sigma}."
+constraints:
+  - parameter: M_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+      line: 16
+      excerpt: "M_q=-M_s\\,\\frac{(\\mathfrak g_c-\\mathfrak r)^2}{1+\\mathfrak r^2},"
+downstream_dependents: [143, 144, 145, 146]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 142 M_q is restated, not introduced; origin is Stage 137. The NEW step at 142 is the self-consistent closure g_c = g_Pi (identifying the branch label with the explicit positive mouth-layer source function), which 'removes the last free branch label g_c from the mouth problem' (notes line 23) and makes R_q = -M_q/M_s a function of Pi alone: R_q(Pi) = (g_Pi - r_F1)^2/(1+r_F1^2) (notes lines 36-38). internal_consistency: M_q is solved through the coupled fixed-point law Pi = M_s + M_q S_q(Pi). Gap flagged only to note M_q itself is carried (137) while the de-freeing of g_c is the 142 contribution."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md, line: 23, excerpt: "This removes the last free branch label \\(\\mathfrak g_c\\) from the mouth problem." }
+      - { path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md, line: 36, excerpt: "R_q(\\Pi):=-\\frac{M_q}{M_s}" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_105_t_dtn__phase_b__t_dtn.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -88,4 +88,23 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No symbol literally named 'T_dtn' appears in any stage-105 source (notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md,
+    paper/stages/stage_105.tex, or the sympy audit script), nor anywhere under notes/ in the ledger. A repo-wide search finds
+    'T_dtn' only inside redteam-audit metadata files (MANIFEST/fit_insertion_points/phase_a fragments), not in the derivation
+    sources. The bundle's notes citations point at generic DtN-fingerprint/deformation prose (e.g. 'Use the explicit DtN fingerprint
+    to determine the last reduced 2.5PN scalar', line 5), none of which define or value a parameter 'T_dtn'. T_dtn appears
+    to be a scanner-derived pseudo-parameter (likely a tokenization of 'DtN' text) with no genuine ledger value; no notes/
+    text supports an origin or constraint, so none is fabricated.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 5
+    excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+  - path: redteam_adversarial/provenance/fit_stage_105_t_dtn__t_dtn.yaml
+    line: 3
+    excerpt: 'parameter_name: T_dtn'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:54:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage_105_t_dtn__t_dtn.yaml

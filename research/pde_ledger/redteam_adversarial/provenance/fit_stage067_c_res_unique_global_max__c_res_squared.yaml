@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage067_c_res_unique_global_max__phase_b__c_res_squared.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -188,9 +188,42 @@ source_evidence:
   line: 168
   role: notes_stage
   excerpt: '> the first explicit independent-profile family almost saturates the ideal matched source/support branch.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_res_squared
+  introduced_at_stage: 67
+  introduced_at_line: 116
+  citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 116
+    excerpt: '`C_res^2 := C^2(sqrt(pi))`'
+constraints:
+- parameter: C_res_squared
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 108
+    excerpt: A numerical monotonicity audit then shows that this stationary point is the unique global maximum on the constructive
+      branch.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: C_res^2 = 0.994418836451529... is computed by evaluating the family's own coherence C^2(r)=I(r)^2/[r sqrt(2pi)]
+    at the self-dual stationary point r=sqrt(pi); it is internal to the sech-Gaussian benchmark (no external target). NOTE
+    the upstream profile family itself (sech source / Gaussian support) is a USER-SUGGESTED benchmark ('The memo you shared
+    suggests...'), i.e. an externally-introduced ansatz — but the derived value C_res^2 given that family is forced by self-duality
+    and a numerical max scan, classified internal_consistency. Card honestly marks the numeric value StatusNumerical (no overclaim).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 6
+    excerpt: 'The memo you shared suggests a concrete transverse profile benchmark for the parent source/support coherence:'
+  - path: paper/stages/stage_067.tex
+    line: 5
+    excerpt: \claimstatus{\StatusExactClosure{} for the benchmark family; \StatusNumerical{} for the quoted coherence value.}
+downstream_dependents:
+- 068
+- 069
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage067_c_res_unique_global_max__c_res_squared.yaml

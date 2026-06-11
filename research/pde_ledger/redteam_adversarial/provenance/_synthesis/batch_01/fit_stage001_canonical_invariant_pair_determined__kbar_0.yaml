@@ -1,0 +1,25 @@
+candidate_id: fit_stage001_canonical_invariant_pair_determined
+parameter_name: Kbar_0
+origin_claims:
+  - parameter: Kbar_0
+    introduced_at_stage: 1
+    introduced_at_line: 473
+    citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 473
+      excerpt: "- `Kbar_0`,"
+constraints:
+  - parameter: Kbar_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 471
+      excerpt: "On the passive/outgoing isotropic quadrupole branch, the same mode-resolved response should determine the canonical invariant pair"
+downstream_dependents: [22, 23]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "At stage 001 Kbar_0 is only NAMED as a target of the canonical invariant pair (Kbar_0, Kbar_2) that the mode-resolved DtN/response operator 'should determine' on the passive/outgoing quadrupole branch; no scalar value is assigned at stage 001. Its actual numeric constraint is deferred to the downstream outgoing-normalization product (stages 022-023). Classified internal_consistency on the strength of the stage-001 notes' framing (response-operator-determined), but the value-fixing mechanism is not present at the anchor stage, so the constraint_kind of the eventual VALUE must be re-confirmed against the stage 022/023 notes."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage001_geometry_lift.md, line: 436, excerpt: "- and the canonical pair `(Kbar_0, Kbar_2)` on the passive/outgoing quadrupole branch." }
+      - { path: paper/stages/stage_001.tex, line: 232, excerpt: "Stages~022--023 use the grouped real \\(P_2\\) response operator to formulate the outgoing-normalization product." }

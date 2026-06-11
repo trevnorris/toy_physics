@@ -1,0 +1,24 @@
+candidate_id: fit_stage065_canonical_normalization_fprime
+parameter_name: f_prime_0
+origin_claims:
+  - parameter: f_prime_0
+    introduced_at_stage: 65
+    introduced_at_line: 24
+    citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 24
+      excerpt: "- and `f` is a fixed dimensionless wall-shape profile."
+constraints:
+  - parameter: f_prime_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 108
+      excerpt: "`chi_phi(y) = f'(xi)`"
+downstream_dependents: [66]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The specific canonical normalization f'(0)=1 appears ONLY in the SymPy audit (comment 'the canonical normalization f'(0)=1 used by the docstring's f'); it is not stated in the per-stage notes, which fix only that 'f is a fixed dimensionless wall-shape profile' with chi_phi=f'(xi). The convention is a free_choice normalization of the wall-shape function; the exact numeric f'(0)=1 is a script-level convention, undocumented in notes/."
+    citations:
+      - { path: scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py, line: 118, excerpt: "# by the canonical normalization f'(0)=1 used by the docstring's f. Verify the" }

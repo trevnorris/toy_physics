@@ -1,0 +1,25 @@
+candidate_id: fit_stage157_expected_values_sidecar_json
+parameter_name: Pi_can
+origin_claims:
+  - parameter: Pi_can
+    introduced_at_stage: 156
+    introduced_at_line: 71
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 71
+      excerpt: "\\Pi_{\\rm can}"
+constraints:
+  - parameter: Pi_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+      line: 36
+      excerpt: "The numerics below are carried directly from Stage 155 for the frozen canonical"
+downstream_dependents: [158]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage157's Pi_can (3.871564377479002, notes line 65) is explicitly CARRIED from Stage 156 (notes line 38: 'and from Stage 156 for the renormalized canonical branch'); the stage157 sympy audit loads it from an expected-values sidecar (Pi_can_expected) and re-verifies the identity Pi_can = Sigma0_can*(1 - (1/4)*S_can). Origin is the Stage 156 fixed-point read; classification internal_consistency follows from that identity check among ledger-internal quantities. No external target involved."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md, line: 65, excerpt: "\\Pi_{\\rm can}\\approx 3.871564377479002." }
+      - { path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py, line: 83, excerpt: "expect_close(\"Pi_can identity\", Pi_can, Sigma0_can * (1 - sp.Rational(1, 4) * S_can))" }

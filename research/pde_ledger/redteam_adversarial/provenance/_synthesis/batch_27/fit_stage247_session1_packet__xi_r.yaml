@@ -1,0 +1,19 @@
+candidate_id: fit_stage247_session1_packet
+parameter_name: xi_R
+origin_claims:
+  - parameter: xi_R
+    introduced_at_stage: 247
+    introduced_at_line: 476
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 476
+      excerpt: "\\xi_R=0.9,"
+constraints:
+  - parameter: xi_R
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 467
+      excerpt: "For the compensated source packet, using"
+downstream_dependents: [ 248 ]
+provenance_findings: []

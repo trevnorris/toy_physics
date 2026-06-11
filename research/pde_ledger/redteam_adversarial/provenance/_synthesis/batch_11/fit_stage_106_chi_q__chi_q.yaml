@@ -1,0 +1,24 @@
+candidate_id: fit_stage_106_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 105
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 69
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 73
+      excerpt: "5. and the explicit compact passive/outgoing grouped-`P2` DtN model gives \\(\\chi_Q=1\\)."
+downstream_dependents: [107]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 106 notes line 28 cite 'From Stage 88' for the chi_Q=1 result carried in; canonical source is Stage 105 (chiQ_fix_from_outgoing_dtn). The stage 106 sympy script (line 10) correctly credits stage 105; only the notes prose retains the unrenumbered 'Stage 88' reference."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md, line: 28, excerpt: "From Stage 88, the canonical compact passive/outgoing grouped-`P2` DtN model gives" }

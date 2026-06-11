@@ -1,0 +1,26 @@
+candidate_id: fit_stage026_K_req_solved_exactly_from_target
+parameter_name: K_req
+origin_claims:
+  - parameter: K_req
+    introduced_at_stage: 26
+    introduced_at_line: 214
+    citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 214
+      excerpt: "`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`"
+constraints:
+  - parameter: K_req
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 218
+      excerpt: "So on this branch the GR quadrupole target is equivalent to one concrete statement:"
+downstream_dependents: [27]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "K_req is solved exactly so the one-mode prefactor equals the external GR quadrupole target 54/5 G c_s^5/(5 a^5 c^5): the script computes K_req = solve(mhat^2 N0/D0 - target = 0, K), and the closed form K_req = B0 + Q/Delta + mhat^2 kappa^2 (...)^2 / (target Delta^2) carries the external target in its denominator. So K_req's value is defined by back-solving to the published GR number, not derived from ledger-internal stiffness physics. The algebra is exact, but the constraint that fixes the VALUE is the external target. The card frames this as 'solving for the required wall stiffness' (line 111), which is accurate, but the genealogy is published_target, not an independent derivation."
+    citations:
+      - { path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py, line: 197, excerpt: "K_req = sp.solve(sp.Eq(residual, 0), K)[0]" }
+      - { path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py, line: 210, excerpt: "/ (target * Delta**2)" }
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 7, excerpt: "`mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`." }

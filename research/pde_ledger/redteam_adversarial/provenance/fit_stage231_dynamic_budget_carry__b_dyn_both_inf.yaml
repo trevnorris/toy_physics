@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage231_dynamic_budget_carry__phase_b__b_dyn_both_inf.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -192,9 +192,44 @@ source_evidence:
   line: 180
   role: sympy_script
   excerpt: '# Carried from Stage 230 selected-branch sign-flip data: s_minus_den/s_minus_num in scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_dyn_both_inf
+  introduced_at_stage: 230
+  introduced_at_line: 447
+  citation:
+    path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 447
+    excerpt: \approx 0.967282389363822
+constraints:
+- parameter: B_dyn_both_inf
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+    line: 446
+    excerpt: \inf_{\mathcal R_{ND}\ge 0} B_{\rm dyn}^{(\rm both)}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'inf B_dyn^(both) ~ 0.967282389363822 is the infimum of the both-poles-survive dynamic budget over the selected-branch
+    classifier half-line. The Stage-231 notes themselves attribute it upstream: ''Stage 230 already proved the global inequalities
+    ... inf B_dyn^(both) ~ 0.967282389363822 > 0.367930328492646 = B_stat^(both)'' (notes 231 line 529-536), and the script
+    comment confirms ''Carried from Stage 230 selected-branch sign-flip data'' (script line 180). Origin is Stage 230 (notes
+    230 line 406 lim_{R_ND->inf} = line 447 inf_{R_ND>=0}). The value is computed as a limit/infimum of the dynamic budget
+    from ledger-internal dynamic slopes (internal_consistency); no external anchor. Stage 231 only carries and pulls it back
+    through the placement map.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+    line: 529
+    excerpt: Stage 230 already proved the global inequalities
+  - path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+    line: 180
+    excerpt: '# Carried from Stage 230 selected-branch sign-flip data: s_minus_den/s_minus_num in scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py.'
+downstream_dependents:
+- '232'
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage231_dynamic_budget_carry__b_dyn_both_inf.yaml

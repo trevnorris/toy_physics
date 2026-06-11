@@ -1,0 +1,24 @@
+candidate_id: fit_stage056_pe_identification
+parameter_name: Pe
+origin_claims:
+  - parameter: Pe
+    introduced_at_stage: 56
+    introduced_at_line: 84
+    citation:
+      path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+      line: 84
+      excerpt: "`Pe := v_sigma L / D_sigma.`"
+constraints:
+  - parameter: Pe
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+      line: 86
+      excerpt: "So the Stage-053 constructive family is exactly the stationary zero-flux branch of the minimal transport operator."
+downstream_dependents: [57]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Pe (the axial Peclet number v_sigma L/D_sigma) is INTRODUCED at Stage 056 as the physical identity of the abstract Stage-053 source-bias parameter alpha (notes line 28 'the old abstract bias parameter is exactly the axial Peclet number'; line 31 alpha=Pe). The identification alpha=Pe is derived from the drift-diffusion zero-flux solution, so it is internal_consistency. Pe itself is a free physical transport input (range Pe>=0 on the constructive branch); the candidate is the identification, not a fixed value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md, line: 28, excerpt: "So the old abstract bias parameter is exactly the axial **Peclet number** of the lowest support-source transport problem." }

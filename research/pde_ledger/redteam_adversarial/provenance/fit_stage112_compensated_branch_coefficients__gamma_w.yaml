@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage112_compensated_branch_coefficients__phase_b__gamma_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -112,9 +112,41 @@ source_evidence:
   line: 63
   role: sympy_script
   excerpt: scaled_identity = sp.expand((Lambda_hyb.subs(sols[1]) - (1 - sigma)*Lambda_out).subs(gamma, sp.Rational(1, 9)))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_W
+  introduced_at_stage: 111
+  introduced_at_line: 23
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 23
+    excerpt: '- `gamma_W > 0` the hidden odd outgoing coefficient.'
+constraints:
+- parameter: gamma_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 84
+    excerpt: \boxed{\gamma_W=\frac19.}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'NOT a fit. gamma_W=1/9 is FORCED: on the nontrivial compensated branch chi_Q^hyb=(1-9*sigma_W*gamma_W)/(1-sigma_W),
+    canonical outgoing normalization (chi_Q^hyb=1) is preserved iff sigma_W*(1-9*gamma_W)=0, i.e. gamma_W=1/9 for sigma_W
+    != 0. Confirmed independently by the linearized condition a_0/3+9a_5=sigma_W(1-9*gamma_W)=0. Both routes are ledger-internal
+    even/odd-moment matching, no external target. Classified internal_consistency; recorded as positive control.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 102
+    excerpt: \frac{a_0}{3}+9a_5=\sigma_W(1-9\gamma_W)=0,
+  - path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+    line: 59
+    excerpt: sp.together(chi_B_general - 1).as_numer_denom()[0] - sigma*(1 - 9*gamma))
+downstream_dependents:
+- '113'
+- '114'
+- '115'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage112_compensated_branch_coefficients__gamma_w.yaml

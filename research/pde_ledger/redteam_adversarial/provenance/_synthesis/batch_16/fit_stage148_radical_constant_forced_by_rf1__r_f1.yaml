@@ -1,0 +1,27 @@
+candidate_id: fit_stage148_radical_constant_forced_by_rf1
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 37
+      excerpt: "Imposing \\(L_W=L\\) gives the exact geometric hybridization branch"
+downstream_dependents: [122, 123, 126, 127, 142, 143, 148, 154, 155]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "r_F1 = sqrt((12/pi^2)(L/a)^2 - 1) is genuinely DERIVED at Stage 121 by imposing the geometric matching L_W=L (internal_consistency for the radical form — the '100 under the radical' GUARD in the Stage 148 script confirms it is arithmetically forced by 12*(37/20)^2=4107/100). BUT the chain's lone free input L/a=37/20 is NOT derived: Stage 073:56 declares it 'a reference-branch numerical freeze, not a new theorem' carried as 'L/a approx 1.85' (free_choice). So the apparently-forced radical constant ultimately rests on a posited aspect ratio. No external published target is named for 37/20 in the notes, so this is free_choice (ansatz), not published_target — but it is NOT an internal derivation either. Flagged so the carried-as-forced framing is not mistaken for a first-principles result."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 50, excerpt: "`L / a ≈ 1.85.`" }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }
+      - { path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py, line: 91, excerpt: "# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so" }

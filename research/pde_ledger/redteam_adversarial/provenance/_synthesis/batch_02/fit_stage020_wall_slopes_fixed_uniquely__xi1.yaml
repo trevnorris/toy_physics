@@ -1,0 +1,13 @@
+candidate_id: fit_stage020_wall_slopes_fixed_uniquely
+parameter_name: Xi1
+origin_claims: []
+constraints: []
+downstream_dependents: [024, 177, 189]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Xi1 (the residual prefactor obstruction Xi_1 = N_01/N_0 - D_01/D_0, evaluated after the unique wall-slope solve to Xi_1 = N_01/N_0 - 27(B41+Z41)/(K_Sigma-B0-Z0)) is defined only in the stage_020 paper card and sympy audit. No file under notes/ documents its origin or constraint: stage 020 has no per-stage notes/stages/ file and its STAGE_PROVENANCE_INDEX note source (notes/em_projected/step_18...) is absent from the repo. The downstream Xi_1=P_1/P_0 reinterpretation is documented later (stage 024 card 'Downstream use'; stages 177/189 notes), but the stage-020 origin/constraint has no notes/ support, so constraint_kind cannot be assigned. (Mechanism appears internal_consistency: the wall slopes delta_K_Sigma, delta_M_Sigma are fixed uniquely by solving the even gates K_1=0, H_even=0, leaving Xi_1 as the determined residual.)"
+    citations:
+      - { path: notes/STAGE_PROVENANCE_INDEX.md, line: 30, excerpt: "| 020 | `paper/stages/stage_020.tex` | `notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md` |" }
+      - { path: paper/stages/stage_020.tex, line: 35, excerpt: "\\Xi_1=\\frac{N_{01}}{N_0}-\\frac{D_{01}}{D_0}." }
+      - { path: paper/stages/stage_020.tex, line: 49, excerpt: "\\Xi_1=\\frac{N_{01}}{N_0}" }

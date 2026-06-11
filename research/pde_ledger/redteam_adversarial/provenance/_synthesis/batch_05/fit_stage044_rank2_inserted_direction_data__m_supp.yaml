@@ -1,0 +1,24 @@
+candidate_id: fit_stage044_rank2_inserted_direction_data
+parameter_name: M_supp
+origin_claims:
+  - parameter: M_supp
+    introduced_at_stage: 43
+    introduced_at_line: 8
+    citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 8
+      excerpt: "- and the physical support baseline `M_supp`."
+constraints:
+  - parameter: M_supp
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 10
+      excerpt: "That means the Stage-041/042 rank-2 problem is no longer a family of possible closures. The continuum kernel now supplies the data needed to write the **actual physical selected-branch equations**."
+downstream_dependents: [44, 45, 47]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 044 inserts M_supp but its value is extracted at Stage 043 (notes 044 lines 5-8 explicitly attribute it: 'Stage 043 extracted the actual support/BdG loading data ... the physical support baseline M_supp'). Origin attributed to Stage 043; Stage 044 carries it. No contradiction."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md, line: 5, excerpt: "Stage 043 extracted the actual support/BdG loading data from the continuum operator:" }

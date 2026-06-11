@@ -1,0 +1,25 @@
+candidate_id: fit_stage_015_s_em
+parameter_name: S_EM
+origin_claims:
+  - parameter: S_EM
+    introduced_at_stage: 15
+    introduced_at_line: 35
+    citation:
+      path: notes/em_projected/step_13_parent_throat_action_master_notes.md
+      line: 35
+      excerpt: "S_{\\rm total}=S_\\psi[\\psi,A;\\Sigma]+S_{\\rm EM}[A]+S_\\Sigma[R]"
+constraints:
+  - parameter: S_EM
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/em_projected/step_13_parent_throat_action_master_notes.md
+      line: 35
+      excerpt: "S_{\\rm total}=S_\\psi[\\psi,A;\\Sigma]+S_{\\rm EM}[A]+S_\\Sigma[R]"
+downstream_dependents: [16, 17]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "S_EM[A] is the localized Maxwell action term in the promoted parent total action S_total = S_psi + S_EM + S_Sigma (notes step_13 line 35; paper card stage_015.tex:29). It is NOT a fitted/posited numeric value and has no scalar to classify; the mechanical bundle's source_evidence is empty. It is an imported parent-theory structural action functional (the stage 'imports the exact (4+1)-dimensional parent theory' including the localized Maxwell field). Classified free_choice in the sense of a posited/imported action ansatz term (neither derived within the ledger nor an external numeric anchor), and flagged as a provenance_gap because the candidate is a structural functional, not a value-bearing parameter, and the scanner attached no evidence."
+    citations:
+      - { path: paper/stages/stage_015.tex, line: 29, excerpt: "S_{\\rm total}=S_\\psi[\\psi,A;\\Sigma]+S_{\\rm EM}[A]+S_\\Sigma[R]." }
+      - { path: paper/stages/stage_001.tex, line: 9, excerpt: "\\stagefield{Inputs}{The stage imports the exact \\((4+1)\\)-dimensional parent theory: gauged GNLS matter, localized Maxwell field, corrected charge ontology, and confinement potential." }

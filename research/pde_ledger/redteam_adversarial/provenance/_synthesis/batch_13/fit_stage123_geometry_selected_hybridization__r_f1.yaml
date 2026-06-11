@@ -1,0 +1,25 @@
+candidate_id: fit_stage123_geometry_selected_hybridization
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+      line: 34
+      excerpt: "On the explicit Family-1 geometric branch,"
+downstream_dependents: [124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 123 CARRIES the geometry-selected r_F1 (origin Stage 121) to compute the parent-normalized flow Xi_v^F1 = -(3 sqrt30 pi^(3/2)/160) r_F1 ~ -1.017 (notes lines 36-41). r_F1's value rests on the posited L_W=L identification and the carried L/a=37/20 freeze (free_choice upstream, see fit_stage121_r_not_tunable / fit_stage121_aspect_ratio_37_20_reference_freeze); the bundle's only notes pointer was line 155 (a generic 'determined immediately' sentence), so the load-bearing anchor is line 34. No external target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md, line: 39, excerpt: "-\\frac{3\\sqrt{30}\\,\\pi^{3/2}}{160}\\,\\mathfrak r_{F1}" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage133_residual_freedom_fixed
+parameter_name: M_minus
+origin_claims:
+  - parameter: M_minus
+    introduced_at_stage: 133
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+      line: 185
+      excerpt: "M_\\alpha:=\\frac{L\\,H_\\alpha G_\\alpha}{\\Theta_\\sigma}."
+constraints:
+  - parameter: M_minus
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+      line: 216
+      excerpt: "quadruple** \\((M_+,M_-,\\kappa_+,\\kappa_-)\\)."
+downstream_dependents: [146, 147, 148, 149, 150, 151, 152, 153]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Candidate id is 'residual_freedom_fixed', but M_- is NOT fixed at stage 133 — the notes explicitly close by stating the remaining ambiguity IS the free dimensionless gain/stiffness quadruple (M_+, M_-, kappa_+, kappa_-). M_- is a posited free channel gain here, not a derived value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md, line: 195, excerpt: "2. the two dimensionless channel gains \\(M_\\pm\\)." }

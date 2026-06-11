@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage251_session4_time_inputs__phase_b__s_c.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,38 @@ source_evidence:
   role: notes_stage
   excerpt: The session write-up was explicit that this was only an **envelope closure**, not a microscopic theorem of the
     completed PDE.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: s_c
+  introduced_at_stage: 251
+  introduced_at_line: 382
+  citation:
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 382
+    excerpt: ' s_c:=\frac{1}{t_{\rm cross}}'
+constraints:
+- parameter: s_c
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 382
+    excerpt: ' s_c:=\frac{1}{t_{\rm cross}}'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: s_c := 1/t_cross is a definitional crossing-rate (internal_consistency relation to the Stage-250 crossing-time).
+    Its benchmark NUMBER s_c ~= 0.5489386551 is computed from the Session-IV readback t_cross ~= 1.82169718, which is itself
+    an un-derived reported benchmark input, so the value's provenance bottoms out in a reported run number.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 459
+    excerpt: ' s_c=\frac{1}{t_{\rm cross}}\approx 0.5489386551,'
+  - path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+    line: 180
+    excerpt: sc_num = 1.0 / t_cross_num
+downstream_dependents:
+- '252'
+synthesis_ingested_at: '2026-06-11T19:37:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage251_session4_time_inputs__s_c.yaml

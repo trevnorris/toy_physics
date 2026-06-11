@@ -1,0 +1,25 @@
+candidate_id: fit_stage156_carried_constants_block
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 122
+    introduced_at_line: 63
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 63
+      excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 51
+      excerpt: "gives the two exact compensated mouth-coupling values"
+downstream_dependents: [156, 157, 158, 159]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "g_star = g_*_can ~0.758035 is the compensation target the stage156 root-solve drives g_fp(Sigma0) toward; stage156 notes (line 58) restate it as the restored canonical moment but do NOT establish its origin. The originating derivation is the Stage 122 minus-root of the exact compensation family at r=r_F1 (solved internal-consistency condition), which is itself downstream of the geometric r_F1 (=> 37/20). Carried at stage156."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 58, excerpt: "\\mathfrak g_{\\rm can}=\\mathfrak g_*" }
+      - { path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md, line: 34, excerpt: "Stage 119 already showed that the compensated canonical outgoing branch requires" }

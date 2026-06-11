@@ -1,0 +1,24 @@
+candidate_id: fit_stage_011_b_0
+parameter_name: B_0
+origin_claims:
+  - parameter: B_0
+    introduced_at_stage: 10
+    introduced_at_line: 53
+    citation:
+      path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+      line: 53
+      excerpt: "K=B_0+Z_0+\\varepsilon z_0+D_{0,\\mathrm{target}},"
+constraints:
+  - parameter: B_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/em_projected/step_09_projected_maxwell_p2_bridge_notes.md
+      line: 50
+      excerpt: "D_0=K-B_0-Z_0,\\qquad"
+downstream_dependents: [12]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "B_0 is the reduced-bundle isotropic-branch baseline appearing in the denominator D_0 = K - B_0 - Z_0 (notes step_09 line 50) and the normalization K-surface K = B_0 + Z_0 + eps*z_0 + ... (notes step_08 line 54). The candidate is keyed to stage 011, but B_0 first enters the ledger one stage earlier at stage 010 (step_08); stage 011 only carries it. It is a FREE symbolic input (declared as a free positive symbol 'B0' in the stage-011 sympy audit, line 34) with no value, no derivation, and no external anchor at these stages -> free_choice (posited reduced-bundle baseline). It carries no numeric target."
+    citations:
+      - { path: scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py, line: 34, excerpt: "K, B0, Z0slot, N0, Ptarget, S, T = sp.symbols(\"K B0 Z0slot N0 Ptarget S T\", nonzero=True)" }

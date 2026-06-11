@@ -1,0 +1,24 @@
+candidate_id: fit_stage_061_delta_0
+parameter_name: Delta_0
+origin_claims:
+  - parameter: Delta_0
+    introduced_at_stage: 58
+    introduced_at_line: 231
+    citation:
+      path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+      line: 231
+      excerpt: "`Delta_0(kappa,eta)`"
+constraints:
+  - parameter: Delta_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 172
+      excerpt: "`lim_(kappa->0+) Delta_0 = 1/2,`"
+downstream_dependents: [62, 63, 65, 66]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 061 Delta_0 is carried from its Stage-058 origin (the uniform-source endpoint function); 061 only re-uses it inside G_suff and evaluates its soft-support limit Delta_0->1/2. No origin originates here; the scanner's literal '0' is the '_0' subscript, not a posited value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md, line: 162, excerpt: "`Delta_0(kappa,eta)`" }

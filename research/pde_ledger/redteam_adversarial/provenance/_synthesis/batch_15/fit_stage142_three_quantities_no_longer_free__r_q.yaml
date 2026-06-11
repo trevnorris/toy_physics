@@ -1,0 +1,25 @@
+candidate_id: fit_stage142_three_quantities_no_longer_free
+parameter_name: R_q
+origin_claims:
+  - parameter: R_q
+    introduced_at_stage: 138
+    introduced_at_line: 45
+    citation:
+      path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+      line: 45
+      excerpt: "R_q:=-\\frac{M_q}{M_s}=\\frac{(\\mathfrak g_c-\\mathfrak r)^2}{1+\\mathfrak r^2}."
+constraints:
+  - parameter: R_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+      line: 112
+      excerpt: "R_q(\\Pi_*)=\\frac14,"
+downstream_dependents: [143, 144, 145, 146]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 142 R_q is made a self-consistent function R_q(Pi) = (g_Pi - r_F1)^2/(1+r_F1^2) by identifying g_c = g_Pi (notes lines 33-38); the canonical value R_q(Pi_*) = 1/4 (notes line 112) reproduces the Stage-138 derived ratio. internal_consistency: at Pi_* the self-consistent branch lands on g_-^{F1} = r_F1 - (1/2)sqrt(1+r_F1^2), forcing R_q = 1/4, and Sigma_0(Pi_*) approx 1.80594, T_hat_m(Pi_*) approx 0.901484 'reproduces the earlier outlet-consistent canonical branch exactly, but now from the fully self-consistent positive mouth-layer + core map' (notes lines 125-127). Gap flagged only to note R_q originates at Stage 138 and is here promoted to a Pi-function; the candidate-id 'three quantities no longer free' (source shape, gain ratio, shell traction) is supported by the notes' Meaning section, conditional on 'Once this explicit positive mouth layer is ASSUMED' (notes line 138)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md, line: 125, excerpt: "This reproduces the earlier outlet-consistent canonical branch exactly, but now from the" }
+      - { path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md, line: 36, excerpt: "R_q(\\Pi):=-\\frac{M_q}{M_s}" }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage088_natural_identification_fixes_exactly
+parameter_name: c_contact
+origin_claims:
+  - parameter: c_contact
+    introduced_at_stage: 88
+    introduced_at_line: 60
+    citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 60
+      excerpt: "`c0 = 1/rho_alpha,`"
+constraints:
+  - parameter: c_contact
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 83
+      excerpt: "`c0 = 3/4,`"
+downstream_dependents: [89, 90, 91, 96]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "Stage 088 card/notes claim the contact-plus-pole identification 'fixes the explicit support demand exactly' (c_contact=3/4 -> rho_alpha=4/3). The forcing is real but CONDITIONAL: c_contact=3/4 is the posited minimal-module contact coefficient (free_choice), not an internal-consistency solve at 088; it is matched to the imported 'minimal isotropic' module. The exactness is in the algebraic map rho_alpha=1/c_contact, not in the value 3/4. No external published target is involved, so this is NOT a published_target fit — the 'exact closure' status correctly hinges on the minimal-module hypothesis, which the paper card flags."
+    citations:
+      - { path: paper/stages/stage_088.tex, line: 5, excerpt: "\\claimstatus{\\StatusExactClosure{} under the natural contact-plus-pole interpretation of the minimal isotropic conservative quadrupole precursor.}" }
+      - { path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md, line: 92, excerpt: "So the natural contact-plus-pole interpretation of the minimal isotropic quadrupole branch fixes the explicit support demand exactly:" }

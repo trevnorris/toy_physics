@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage047_epsilon_support_saturation__phase_b__epsilon.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,40 @@ source_evidence:
   line: 28
   role: paper_stage_tex
   excerpt: R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon
+  introduced_at_stage: 47
+  introduced_at_line: 136
+  citation:
+    path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+    line: 136
+    excerpt: '`eps = eps_W^(split)`'
+constraints:
+- parameter: epsilon
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+    line: 137
+    excerpt: '`    = eps_W [ 1 - (2/11) delta_U/(1+delta_U) ],`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: Scanner attributed value '1' to epsilon. epsilon (=eps_W^split) is a derived dimensionless blocking ratio built
+    from upstream couplings (eps_W = gamma^2 lambda_W^2 sigma/(K_U K_W^eff), notes line 98); the '1' is the upper edge of
+    its stability window 0<eps<1 (Stage 048 notes line 79), not a fitted value. The bundle carried no notes_stage anchor (only
+    the paper card); the notes nonetheless define epsilon at lines 136-137, satisfying the binding rule. No fitted scalar
+    exists to ingest.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 79
+    excerpt: '`0 < eps < 1,`'
+downstream_dependents:
+- 048
+- '050'
+- '051'
+- '052'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage047_epsilon_support_saturation__epsilon.yaml

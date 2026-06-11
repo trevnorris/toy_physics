@@ -1,0 +1,19 @@
+candidate_id: fit_stage_126_g_xi
+parameter_name: g_xi
+origin_claims:
+  - parameter: g_xi
+    introduced_at_stage: 126
+    introduced_at_line: 82
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 82
+      excerpt: "(1-\\xi)\\frac{\\pi}{4}+\\xi\\frac{2}{\\pi}."
+constraints:
+  - parameter: g_xi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 80
+      excerpt: "\\mathfrak g_\\xi"
+downstream_dependents: [126]
+provenance_findings: []

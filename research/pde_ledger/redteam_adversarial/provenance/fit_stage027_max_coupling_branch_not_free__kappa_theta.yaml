@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage027_max_coupling_branch_not_free__phase_b__kappa_theta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,43 @@ source_evidence:
   line: 75
   role: notes_stage
   excerpt: '`u = chi_theta`,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_theta
+  introduced_at_stage: 27
+  introduced_at_line: 100
+  citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 100
+    excerpt: '`             = kappa_0 cos(theta) + kappa_1 sin(theta)`'
+constraints:
+- parameter: kappa_theta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 99
+    excerpt: '`kappa(theta) = int_0^L ds chi_theta f_0`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'kappa(theta) = kappa_0 cos(theta) + kappa_1 sin(theta) is an EXACT overlap law derived by integrating the coherent
+    N/N profile family chi_theta against the lowest D/N half-wave f0 (kappa_0 = 2 sqrt2/pi, kappa_1 = -4/(3 pi)) -> internal_consistency
+    as a derived function. The candidate framing ''max_coupling_branch_not_free'' is correct: the profile ANGLE theta is a
+    free parameter (a hand-chosen profile family, declared so in the notes), and the max-coupling member is ''allowed but
+    not free'' because it carries a fixed axial-gradient penalty. So kappa(theta) the law is internal_consistency; the angle
+    theta it depends on is a free_choice until the real eigenproblem fixes it. No external number is matched.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 62
+    excerpt: '`chi_theta(s) = cos(theta) u_0(s) + sin(theta) u_1(s)`.'
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 342
+    excerpt: The next honest derivation step is therefore to stop choosing the profile family by hand and solve the first
+      actual axial wall eigenproblem with the matter/gauge loading included, so that the profile angle `theta` is no longer
+      free but is an output of the reduced moving-throat operator itself.
+downstream_dependents:
+- 028
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage027_max_coupling_branch_not_free__kappa_theta.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage031_alpha_crit_derived_directly
+parameter_name: alpha_crit
+origin_claims:
+  - parameter: alpha_crit
+    introduced_at_stage: 28
+    introduced_at_line: 240
+    citation:
+      path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+      line: 240
+      excerpt: "`alpha_crit = K_0 K_1 / ( K_1 kappa_0^2 + K_0 kappa_1^2 )`."
+constraints:
+  - parameter: alpha_crit
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+      line: 112
+      excerpt: "`alpha_crit = A B / ( B kappa_0^2 + A kappa_1^2 )`,"
+downstream_dependents: [33]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The scanner attached the literal value '0' to alpha_crit. alpha_crit is not zero; it is the exact softening threshold alpha_crit = AB/(B kappa_0^2 + A kappa_1^2) (with A=K_0-Xi_0, B=K_1-Xi_0), the loading at which lambda_-=0 from the determinant identity lambda_- lambda_+ = AB - alpha_0(B kappa_0^2 + A kappa_1^2). The '0' is the RHS of lambda_-(alpha_crit)=0 (the threshold CONDITION), not the value of alpha_crit. Origin is stage 028 (first stated K_0 K_1/(...)); stage 029 refines it with Xi_0; stage 031 restates it in A,B notation. internal_consistency: exact algebra from the ledger-internal 2x2 block."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md, line: 116, excerpt: "`lambda_-(alpha_crit) = 0`," }
+      - { path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md, line: 177, excerpt: "`alpha_crit`" }

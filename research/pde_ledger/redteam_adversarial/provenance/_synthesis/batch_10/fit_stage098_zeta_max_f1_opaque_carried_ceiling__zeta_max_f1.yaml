@@ -1,0 +1,25 @@
+candidate_id: fit_stage098_zeta_max_f1_opaque_carried_ceiling
+parameter_name: zeta_max_F1
+origin_claims:
+  - parameter: zeta_max_F1
+    introduced_at_stage: 79
+    introduced_at_line: 35
+    citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 35
+      excerpt: "`zeta_max^(F1) ≈ 2.46752922945601.`"
+constraints:
+  - parameter: zeta_max_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 451
+      excerpt: "carried forward as `zeta_max^(F1)` from the Stage 63/64 support ceiling"
+downstream_dependents: [99]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "This 'opaque_carried_ceiling' candidate flags that zeta_max_F1 enters stage 098 as a bare decimal literal (2.46752922945601) with no in-stage derivation; the value is opaque at the point of use. It is, however, a genuine ledger-internal Family-1 constructive ceiling (stage 079, ultimately Stage 63/64), so the carry is sound (internal_consistency) — the only weakness is that neither the stage098 card nor the local script re-states its upstream provenance node beyond a comment that it is 'not derived in this stage'."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md, line: 22, excerpt: "`zeta_max^(F1) ≈ 2.46752922945601 > 1`," }
+      - { path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py, line: 26, excerpt: "zmax_F1 = sp.N('2.46752922945601')" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_016_boundary_value__phase_b__boundary_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -160,4 +160,23 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'boundary_value is not a fitted/posited parameter: it is the name of a SymPy helper function (''def boundary_value(expr,
+    var)'') in the stage-016 parent-throat-action-candidate audit that evaluates integration-by-parts endpoint discharges.
+    The scanner''s extracted value ''20'' is the DEFINITION LINE NUMBER (line 20), not a parameter value. The substantive
+    boundary checks are consistency assertions (linear/quadratic IBP discharges vanish to 0 on decaying Gaussian/Lorentzian
+    profiles; a Lorentzian finite-endpoint probe gives -2; arctan(w) gives a nonzero discharge as a negative control) -- all
+    internal-consistency verifications, none a fitted value. No notes/ source documents a numeric ''boundary_value'' parameter
+    because none exists. Logged as a gap (scanner false-positive on a helper-function identifier).'
+  citations:
+  - path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+    line: 20
+    excerpt: 'def boundary_value(expr: sp.Expr, var: sp.Symbol) -> sp.Expr:'
+  - path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+    line: 107
+    excerpt: assert_zero('lorentzian finite-endpoint boundary discharge', linear_boundary_lorentz_endpoint + 2)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_016_boundary_value__boundary_value.yaml

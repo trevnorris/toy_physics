@@ -1,0 +1,19 @@
+candidate_id: fit_stage_196_l7_coeff_in_y
+parameter_name: L7_coeff_in_Y
+origin_claims:
+  - parameter: L7_coeff_in_Y
+    introduced_at_stage: 196
+    introduced_at_line: 178
+    citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 178
+      excerpt: "So the first place the extra higher odd tail can appear is exactly `\\omega^7`."
+constraints:
+  - parameter: L7_coeff_in_Y
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 268
+      excerpt: "These formulas do not contain any higher odd coefficient."
+downstream_dependents: []
+provenance_findings: []

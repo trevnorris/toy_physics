@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_nq_from_def__phase_b__n_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,43 @@ source_evidence:
   line: 88
   role: sympy_script
   excerpt: (mhat0**2 * Gamma5 - Gamma5_target).subs(P0, N_Q * P0_target)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: N_Q
+  introduced_at_stage: 195
+  introduced_at_line: 103
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 103
+    excerpt: N_Q:=\frac{\bar P_0}{P_0^{\rm target}}.
+constraints:
+- parameter: N_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 139
+    excerpt: \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: 'N_Q is DEFINED at 195 line 103 as N_Q:=P_bar_0/P0_target (the candidate id ''nq_from_def'' matches), and FORCED
+    by the observable odd-closure factorization m_hat_0^2 chi_Q N_Q=1 (line 139) to N_Q=1/(m_hat_0^2 chi_Q) (line 145). On
+    its own that solve is internal_consistency (forced by a ledger-internal odd-closure condition). HOWEVER N_Q''s DENOMINATOR
+    is the external GR target P0_target=54 G c_s^5/(5 a^5 c^5): closure N_Q=1 is exactly the statement that P_bar_0 hits the
+    published GR-quadrupole normalization. So N_Q is the dimensionless ratio-to-external-target; classified internal_consistency
+    for the forcing relation, but flagged because the closure it enforces (N_Q=1) IS the fit to the external P0_target — the
+    genuine external dependency sits in P0_target (see fit_stage195_p0_target_canonical_value).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 145
+    excerpt: N_Q=\frac{1}{m_{\hat 0}^{\,2}\chi_Q},
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 71
+    excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_195_nq_from_def__n_q.yaml

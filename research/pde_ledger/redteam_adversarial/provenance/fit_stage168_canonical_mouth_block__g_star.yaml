@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage168_canonical_mouth_block__phase_b__g_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -92,9 +92,33 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: Pi_epsL = -Sigma0_num * S_num * C_num / s_num
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_star
+  introduced_at_stage: 122
+  introduced_at_line: 63
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 63
+    excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663,
+constraints:
+- parameter: g_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 190
+    excerpt: On the renormalized co-evolving canonical point,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 168 reads back g_star~0.758035078944663 (line 194) as a canonical-point coefficient with no origin pointer; it
+    is g_-(r_F1) first pinned at Stage 122. Read-back without origin cross-reference.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 194
+    excerpt: \mathfrak g_*\approx 0.758035078944663.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage168_canonical_mouth_block__g_star.yaml

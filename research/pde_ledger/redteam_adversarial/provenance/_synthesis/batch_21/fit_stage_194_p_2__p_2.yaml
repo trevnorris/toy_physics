@@ -1,0 +1,17 @@
+candidate_id: fit_stage_194_p_2
+parameter_name: P_2
+origin_claims: []
+constraints:
+  - parameter: P_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 5
+      excerpt: "**Exact within the carried Stage 193 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing compiler, and the canonical compact passive/outgoing `l=2` DtN closure already isolated in the 5PN notes.**"
+downstream_dependents: [195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "P_2 (extracted literal '2') is the l=2 multipole/sector label of the carried grouped-real P2 module, not a fitted scalar. Stage 194 carries the grouped-P2 retarded module (notes lines 48-86) and matches it to the l=2 outgoing DtN fingerprint; the '2' is the multipole-order convention. constraint_kind free_choice (sector/branch convention). No stage-194 notes/ line assigns P_2 a derived or external numeric value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 51, excerpt: "The corresponding retarded grouped-`P2` one-pole-plus-contact module is written as" }

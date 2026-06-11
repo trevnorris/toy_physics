@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_243_e_w__phase_b__e_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,42 @@ source_evidence:
   line: 48
   role: sympy_script
   excerpt: print("Field     E_w(w)      =", E_w)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: E_w
+  introduced_at_stage: 243
+  introduced_at_line: 220
+  citation:
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 220
+    excerpt: E_w(w)=E_0\,w e^{-w^2}.
+constraints:
+- parameter: E_w
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 217
+    excerpt: To accompany it, take the first parity-matched transverse electric field profile
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: E_w is NOT a numeric constant. It is a CHOSEN test profile E_w(w) = E_0 w e^{-w^2} introduced at Stage 243 as 'the
+    first parity-matched transverse electric field profile' (notes line 217-220) to make the open-system scalar-photon work
+    channel concrete. The amplitude E_0 is a free parameter and the Gaussian-odd shape is a convenience ansatz (free_choice),
+    used to evaluate the exact work integral W_w = sqrt(2pi)/8 * ell_w j0 E0. It carries no inserted value to classify as
+    a fit; the constraint_kind free_choice records that the profile is posited for the lift, not derived. Stage 244 later
+    promotes this to E_w = -E0 phi_lambda with the same posited-profile character. Logged for transparency since the scanner
+    candidate has no fixed numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 231
+    excerpt: \frac{\sqrt{2\pi}}{8}\,\ell_w j_0 E_0.
+  - path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+    line: 158
+    excerpt: E_w(w;r)=-\mathcal E_0(r)\,\phi_\lambda(w),
+downstream_dependents:
+- '244'
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage_243_e_w__e_w.yaml

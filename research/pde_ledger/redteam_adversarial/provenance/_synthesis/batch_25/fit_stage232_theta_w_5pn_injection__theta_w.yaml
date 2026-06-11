@@ -1,0 +1,31 @@
+candidate_id: fit_stage232_theta_w_5pn_injection
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 77
+    introduced_at_line: 94
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 94
+      excerpt: "`             ≈ 4.06863235008162 lambda_mu^2.`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 96
+      excerpt: "This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather than left symbolic."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Candidate name 'theta_w_5pn_injection' and Stage-232 title 'Known 5PN Data Injection' frame Theta_w as externally-injected 5PN data (would-be published_target). The actual value 4.06863235008162*lambda_mu^2 is DERIVED upstream at Stage 077 from shell-weighted integrals <rho_r^2>_chi over the explicit Family-1 wall-support profile (077 line 93-96) -- ledger-internal, no external publication matched. The '5PN stack' is the ledger's own EM-projected derivation chain. Classified internal_consistency; flagged needs_triage so the audit confirms the 'injection' language does not conceal an external anchor (none found)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 32, excerpt: "## 1. What is already numerically known from the `5`PN stack" }
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 93, excerpt: "`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`" }
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 232 hardcodes Theta_w as mp.mpf literals (script 146-147) with no in-stage derivation; origin is Stage 077 (extraction) with scaling locked at Stage 076. Origin attribution belongs to 077, not 232."
+    citations:
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 146, excerpt: "Theta_w_chi = mp.mpf(\"4.06863235008162\")" }
+      - { path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 076" }

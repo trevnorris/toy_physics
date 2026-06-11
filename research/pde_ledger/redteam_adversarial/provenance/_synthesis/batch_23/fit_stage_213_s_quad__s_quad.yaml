@@ -1,0 +1,19 @@
+candidate_id: fit_stage_213_s_quad
+parameter_name: S_quad
+origin_claims:
+  - parameter: S_quad
+    introduced_at_stage: 213
+    introduced_at_line: 538
+    citation:
+      path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+      line: 538
+      excerpt: "So the exact Stage 213 quadruple-screen packet is"
+constraints:
+  - parameter: S_quad
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+      line: 30
+      excerpt: "6. the exact **canonical quadruple-screen audit** consisting of four imported triple faces plus two interior canonical rows,"
+downstream_dependents: [214]
+provenance_findings: []

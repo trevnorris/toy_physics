@@ -1,0 +1,19 @@
+candidate_id: fit_stage_175_sigma_n
+parameter_name: Sigma_N
+origin_claims:
+  - parameter: Sigma_N
+    introduced_at_stage: 175
+    introduced_at_line: 41
+    citation:
+      path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+      line: 41
+      excerpt: "\\Sigma_r^{(N)}=\\delta\\ln\\!\\left(\\frac{\\Lambda_r^2}{K}\\right)."
+constraints:
+  - parameter: Sigma_N
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+      line: 223
+      excerpt: "\\Sigma_r^{(N)}=2\\,\\delta\\ln\\Lambda_r-\\delta_K"
+downstream_dependents: [177, 178]
+provenance_findings: []

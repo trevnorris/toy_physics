@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_204_delta__phase_b__delta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,43 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: '* delta_graph_0**Fstar'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta
+  introduced_at_stage: 195
+  introduced_at_line: 185
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 185
+    excerpt: \boxed{\Delta_Q:=\chi_Q-1.}
+constraints:
+- parameter: Delta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+    line: 365
+    excerpt: \Delta_{\mathbf s}(\tau):=\Phi_{\mathbf s}(\tau)-1.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: The scanner extracted a bare 'Delta' for Stage 204; the bundle evidence centers on the sweep increment Delta tau
+    in the log-ray Taylor expansion y(tau_0 + Delta tau) = y(tau_0) ⊙ e^{Delta tau s} + O(Delta tau^2) (notes lines 152-154),
+    which is a free differential coordinate increment of the ray sweep (a convention, free_choice). But the only value-BEARING
+    Delta-symbol at Stage 204 is the ray scalar residual Delta_s(tau) := Phi_s(tau) - 1 = chi_Q(y_s(tau)) - 1 (notes line
+    365), i.e. the carried Packet-A scalar Delta_Q := chi_Q-1 evaluated along a ray; that is internal_consistency (a residual
+    defined from the ledger-internal chi_Q, originating at Stage 195). I classify against the value-bearing residual; the
+    bundle's Delta-tau increment referent is a free_choice coordinate, hence the ambiguity. Under either reading no external
+    fit is involved.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+    line: 152
+    excerpt: \mathbf y(\tau_0+\Delta\tau)
+  - path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+    line: 373
+    excerpt: \Delta_{\mathbf s}(\tau)=0.
+downstream_dependents:
+- '205'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_204_delta__delta.yaml

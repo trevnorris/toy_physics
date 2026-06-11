@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_096_c_geom__phase_b__c_geom.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -145,9 +145,29 @@ source_evidence:
   line: 133
   role: sympy_script
   excerpt: print("  c_geom = 3/4,")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: c_geom
+  introduced_at_stage: 96
+  introduced_at_line: 43
+  citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 43
+    excerpt: '`c_geom = 3/4`.'
+constraints:
+- parameter: c_geom
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 39
+    excerpt: With the contamination numbers zero, the Stage-75 obstruction formula collapses to
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- 097
+- 098
+- 099
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_096_c_geom__c_geom.yaml

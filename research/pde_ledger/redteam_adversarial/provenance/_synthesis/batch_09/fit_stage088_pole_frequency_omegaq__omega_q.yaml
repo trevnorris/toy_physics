@@ -1,0 +1,24 @@
+candidate_id: fit_stage088_pole_frequency_OmegaQ
+parameter_name: Omega_Q
+origin_claims:
+  - parameter: Omega_Q
+    introduced_at_stage: 88
+    introduced_at_line: 19
+    citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 19
+      excerpt: "`Omega_Q = 3 c_s / (2 a).`"
+constraints:
+  - parameter: Omega_Q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 13
+      excerpt: "`Y_Q^cons(omega) = c0 + c1 / (1 - omega^2 / Omega_Q^2),`"
+downstream_dependents: [89, 91, 92, 105]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Omega_Q=3 c_s/(2a) is quoted at Stage 088 as part of the imported minimal isotropic precursor (free_choice import). The 088 note does not derive Omega_Q; it is the effective grouped-P2 pole frequency carried in with the module. (Its pole-scale identity sigma_Q^can=(9/8)/Omega_Q^5 is exercised later at Stage 105 per CHECKPOINT_CONSTANT_PROVENANCE.) Note Omega_Q is a symbolic frequency expression in c_s,a, not a fitted number; it cancels out of the dimensionless contact/pole split that fixes rho_alpha."
+    citations:
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 72, excerpt: "identity `sigma_Q^can = (9/8)/Omega_Q^5` with `Omega_Q = 3 c_s/(2 a)`," }

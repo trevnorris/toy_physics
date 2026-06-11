@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_142_r_q__phase_b__r_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -131,9 +131,44 @@ source_evidence:
   line: 106
   role: sympy_script
   excerpt: print("  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_q
+  introduced_at_stage: 138
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 69
+    excerpt: \boxed{R_q=\frac14.}
+constraints:
+- parameter: R_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 112
+    excerpt: R_q(\Pi_*)=\frac14,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Scanner extracted the literal value R_q = 1/4. At Stage 142 R_q(Pi_*) = 1/4 (notes line 112) is DERIVED, not posited:
+    the self-consistent branch g_c = g_Pi evaluated at the canonical bias Pi_* approx 1.50882951349316 (where g_Pi = g_-^{F1}
+    approx 0.758035) forces R_q = (g_-^{F1} - r_F1)^2/(1+r_F1^2) = 1/4, matching the Stage-138 algebraic result that the core-balance
+    family g_c = r +/- (1/2)sqrt(1+r^2) collapses R_q to exactly 1/4. internal_consistency. Gap flagged only because the 1/4
+    value originates at Stage 138 (the algebraic derivation) and is reproduced at 142 via the self-consistent route -- the
+    audit should credit the derivation to 138, with 142 as an independent confirmation.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 106
+    excerpt: \Pi_*\approx 1.50882951349316.
+  - path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 64
+    excerpt: \mathfrak r\pm \frac12\sqrt{1+\mathfrak r^2}.
+downstream_dependents:
+- '143'
+- '144'
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_142_r_q__r_q.yaml

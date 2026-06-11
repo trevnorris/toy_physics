@@ -1,0 +1,24 @@
+candidate_id: fit_stage_114_k_s
+parameter_name: K_s
+origin_claims:
+  - parameter: K_s
+    introduced_at_stage: 114
+    introduced_at_line: 18
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 18
+      excerpt: "K_s & \\lambda\\\\[2pt]"
+constraints:
+  - parameter: K_s
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 97
+      excerpt: "- one static shell stiffness `K_s`,"
+downstream_dependents: [115]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "K_s (static shell stiffness) is a POSITED structural parameter of the concrete two-channel core model — one of the free core-coupling data {K_s, K_q, lambda, g_s, g_q, kappa_0, gamma_0}. It carries no value at Stage 114; it is a model degree of freedom. Classified free_choice (ansatz). It later enters the Stage-115 coupling-balance surface and sigma_*=g_s^2/(4 K_s) but is never itself pinned to a number."
+    citations:
+      - { path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py, line: 20, excerpt: "K_s, K_q, lam = sp.symbols(\"K_s K_q lam\", positive=True, real=True)" }

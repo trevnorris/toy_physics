@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_lambda_ell_geometry_literals__phase_b__l_over_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -32,9 +32,41 @@ source_evidence:
   line: 190
   role: sympy_script
   excerpt: '# 6. Overlap boost and physical support ratios'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L_over_a
+  introduced_at_stage: 73
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+constraints:
+- parameter: L_over_a
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Duplicate scanner candidate for the same geometric literal as fit_stage232_family1_geometry_normalization. The
+    value 20 (in Stage 232 Lambda_ell = 20*sqrt(2)*pi/x01, script line 50) is the inverse thin-wall ratio a/ell = 20 from
+    the Stage-073 lock ell/a = 1/20 (epsilon_r = 0.05, 073 line 30). Stage 073 posits it as a 'reference-branch numerical
+    freeze' (073 line 56) -> free_choice. Origin is 073, not 232. The carried L/a aspect ratio (37/20) is a separately posited
+    reference freeze on the same branch (073 line 50-54).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 38
+    excerpt: \frac{\ell}{a}=\frac1{20},
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 42
+    excerpt: '`ell / a = 1/20.`'
+downstream_dependents:
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage232_lambda_ell_geometry_literals__l_over_a.yaml

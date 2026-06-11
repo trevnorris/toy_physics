@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_rf1_coefficient__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,55 @@ source_evidence:
   line: 162
   role: sympy_script
   excerpt: print("g_plus(r_F1)          =", sp.N(g_plus, 16))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 121
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 65
+    excerpt: '\mathfrak r_{F1}
+
+      =
+
+      \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}'
+constraints:
+- parameter: r_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 37
+    excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: 'r_F1 = sqrt((12/pi^2)(37/20)^2 - 1) ~ 1.77799 is CARRIED into Stage 246 (notes line 130-135) as ''the fixed Family-1
+    geometric constant'' and reused in the loading law R = (g - r_F1)^2/(1 + r_F1^2). The sqrt FORMULA r_geom(L/a) = sqrt((12/pi^2)(L/a)^2
+    - 1) is DERIVED upstream at Stage 121 by imposing L_W = L (internal_consistency, Stage 121 notes line 37-42). BUT its
+    load-bearing input L/a = 37/20 is a POSITED ''carried preferred aspect ratio'' (Stage 121 notes line 58-60; Stage 073
+    line 54 ''Lambda_* := L/a = 37/20''), itself a rationalization of the carried constructive hierarchy value L/a ~ 1.85
+    (Stage 121 line 18-21) -- i.e. a free_choice geometry literal. So r_F1''s constraint is internal_consistency CONDITIONAL
+    on a posited aspect ratio. NOTE on the audit taxonomy: the Phase-B prompt lists ''37/20'' as a published_target example,
+    but the Stage-121/073 notes document 37/20 as a posited toy-geometry preferred aspect ratio, NOT a back-solve to an EXTERNAL
+    published number (no GR/CODATA/PN target named). Ambiguity logged: the ''fixed geometric constant'' framing rests on a
+    posited 37/20, and the published_target label is not supported by the stage notes.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 60
+    excerpt: \frac{L}{a}=\frac{37}{20},
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 54
+    excerpt: '`Lambda_* := L/a = 37/20.`'
+  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 131
+    excerpt: '\mathfrak r_{F1}
+
+      =
+
+      \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}.'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage246_rf1_coefficient__r_f1.yaml

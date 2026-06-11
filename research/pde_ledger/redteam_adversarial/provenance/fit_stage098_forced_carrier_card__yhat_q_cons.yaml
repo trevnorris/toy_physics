@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_forced_carrier_card__phase_b__yhat_q_cons.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -30,9 +30,36 @@ source_evidence:
   role: notes_stage
   excerpt: '> for the actual isotropic branch with `rho_alpha = 4/3`, any explicit support/source family whose constructive
     ceiling satisfies `zeta_max > 1` already passes the support test throughout the full admissible blocked regime.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Yhat_Q_cons
+  introduced_at_stage: 96
+  introduced_at_line: 47
+  citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 47
+    excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+constraints:
+- parameter: Yhat_Q_cons
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 14
+    excerpt: On the actual isotropic branch,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage 098 only carries Yhat_Q_cons (via the derivation-ledger card label); it is not introduced or re-derived in
+    the stage098 notes (which concern the Family-1 support test). Origin cited at the stage096 geometry-lane verdict where
+    the conservative module first closes; the stage098 note merely fixes rho_alpha=4/3 on that branch.
+  citations:
+  - path: paper/stages/stage_098.tex
+    line: 13
+    excerpt: isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
+downstream_dependents:
+- 099
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage098_forced_carrier_card__yhat_q_cons.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage014_even_gate_constants_2_3_1_27__phase_b__he_bundle_coefficients.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,42 @@ source_evidence:
   line: 127
   role: sympy_script
   excerpt: print("2) Primitive-to-bundle mouth-derivative map (divide out mu1)")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: He_bundle_coefficients
+  introduced_at_stage: 14
+  introduced_at_line: 135
+  citation:
+    path: notes/em_projected/step_12_projected_maxwell_mouth_taylor_gate_bridge_notes.md
+    line: 135
+    excerpt: H_{\rm even}=D_{41}-\frac23 D_{21}-\frac{D_{01}}{27}.
+constraints:
+- parameter: He_bundle_coefficients
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_12_projected_maxwell_mouth_taylor_gate_bridge_notes.md
+    line: 131
+    excerpt: Use the existing weak-axisymmetric bottlenecks
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'The He_bundle coefficients are the rational weights (1/9, 2/3, 1/27) in the even-gate combinations K_1 = D_21
+    + D_01/9 and H_even = D_41 - (2/3)D_21 - D_01/27 (notes step_12 lines 134-135). The stage-014 sympy reconstructs them
+    from the primitive-to-bundle mouth-derivative map: K1_bundle = -(z2d + z0d/9), He_bundle = -(z4d) + (2/3)z2d - z0d/27,
+    and asserts these MATCH the independently computed K1/He (assert_zero consistency). The constants are fixed multipole/denominator-slope
+    structure of the l=2 even gates (the 9=3^2, 27=3^3 hierarchy), an exact algebraic feature, not a fit -> internal_consistency.
+    Note step_12 (stage 014) USES these bottlenecks as ''existing''; their wall-side reduction (-deltaM + deltaK/9, (2/3)deltaM
+    - deltaK/27) is spelled out at stage 017 (step_15 lines 127-130).'
+  citations:
+  - path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+    line: 96
+    excerpt: He_bundle = sp.simplify(-(z4d) + sp.Rational(2,3)*z2d - z0d/sp.Integer(27))
+  - path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+    line: 97
+    excerpt: assert_zero("H_even bundle pull-back consistency", He - He_bundle)
+downstream_dependents:
+- '017'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage014_even_gate_constants_2_3_1_27__he_bundle_coefficients.yaml

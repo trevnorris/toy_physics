@@ -1,0 +1,25 @@
+candidate_id: fit_stage_021_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 021
+    introduced_at_line: 219
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 219
+      excerpt: "`= 1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5) + O(ω^6)`."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 225
+      excerpt: "This is exactly the coefficient already isolated in the 2.5PN referee audit."
+downstream_dependents: [022, 023]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "'matched_fingerprint_value' is a scanner placeholder for the matched compact outgoing l=2 fingerprint Yhat_2^out and its coefficients (A=a^2/9c_s^2, B=4a^4/81c_s^4, G5=a^5/27c_s^5). It is DERIVED from the outgoing spherical Hankel solution and matched (cross-checked) against the previously-isolated 2.5PN audit fingerprint, an internal consistency match, not a fit to an external published number. No distinct numeric value beyond the fingerprint coefficients is introduced, so logged as a low gap."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md, line: 213, excerpt: "The 2.5PN audit already isolated the compact outgoing `l=2` branch as the universal quadrupole route." }
+      - { path: paper/stages/stage_021.tex, line: 64, excerpt: "\\widehat Y_2^{\\rm out}(\\omega)" }

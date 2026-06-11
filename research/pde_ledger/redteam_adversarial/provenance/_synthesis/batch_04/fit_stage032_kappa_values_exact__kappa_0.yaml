@@ -1,0 +1,25 @@
+candidate_id: fit_stage032_kappa_values_exact
+parameter_name: kappa_0
+origin_claims:
+  - parameter: kappa_0
+    introduced_at_stage: 032
+    introduced_at_line: 67
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 67
+      excerpt: "`kappa_0 = 2 sqrt(2) / pi`,"
+constraints:
+  - parameter: kappa_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 63
+      excerpt: "`v_i = int_0^L u_i(s) f_0(s) ds`."
+downstream_dependents: [033, 034, 035, 036, 037, 038, 039, 040, 041, 042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "kappa_0 = 2 sqrt(2)/pi is the exact wall-to-D/N mode overlap integral int_0^L u_0(s) f_0(s) ds of the closed-form N/N wall mode u_0 = 1/sqrt(L) and D/N half-wave f_0 = sqrt(2/L) sin(pi s/2L). It is a forced consequence of the finite-throat basis (computed symbolically by sp.integrate at script line 46), not a fit or a posit. Logged informationally: no external target and no free choice are involved; pure internal_consistency."
+    citations:
+      - { path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py, line: 46, excerpt: "kappa0 = sp.simplify(sp.integrate(u0 * f0, (s, 0, L)))" }
+      - { path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md, line: 79, excerpt: "`kappa_0^2 = 8 / pi^2`," }

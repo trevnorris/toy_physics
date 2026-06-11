@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage168_eps_perp_exact_weights__phase_b__eps_perp.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,25 @@ source_evidence:
   line: 328
   role: notes_stage
   excerpt: -\frac{16\sigma_*}{\sqrt{1+\mathfrak r_*^2}}\,\varepsilon_\perp,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_perp
+  introduced_at_stage: 168
+  introduced_at_line: 166
+  citation:
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 166
+    excerpt: \varepsilon_\perp
+constraints:
+- parameter: eps_perp
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 151
+    excerpt: into the Stage 164 formula gives the exact identity
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage168_eps_perp_exact_weights__eps_perp.yaml

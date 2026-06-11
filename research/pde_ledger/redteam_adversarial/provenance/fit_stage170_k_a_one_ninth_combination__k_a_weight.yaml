@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage170_k_a_one_ninth_combination__phase_b__k_a_weight.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -19,9 +19,42 @@ anchor_stages:
 - '170'
 notes_source_opened: true
 source_evidence: []
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_A_weight
+  introduced_at_stage: 170
+  introduced_at_line: 25
+  citation:
+    path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 25
+    excerpt: \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},
+constraints:
+- parameter: K_A_weight
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 25
+    excerpt: \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Bundle source_evidence was empty; resolved by opening notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md.
+    The '1/9' weight in the even combination K_A := dD_{A,2} + (1/9) dD_{A,0} (notes line 25, restated line 102) is the linearization
+    of the canonical even fingerprint D_2 = -D_0/9 (i.e. u_2 = 1/9); it is forced internally by requiring K_A to be the even
+    pole deformation that preserves u_2 = 1/9 (delta u_2 = -(dD_2 + (1/9)dD_0)/D_0, notes line 102). The numeric 1/9 traces
+    upstream to the Stage 104 DtN admittance (z^2/9). Internal_consistency, no external target. Low severity (gap noted only
+    because the mechanical bundle carried no evidence).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 102
+    excerpt: -\frac{\delta D_{A,2}+\frac19\,\delta D_{A,0}}{D_0},
+  - path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+    line: 57
+    excerpt: expect_zero("delta u2 + (dD2 + dD0/9)/D0", du2 + (dD2 + dD0/9)/D0)
+downstream_dependents:
+- '171'
+- '172'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage170_k_a_one_ninth_combination__k_a_weight.yaml

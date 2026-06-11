@@ -1,0 +1,25 @@
+candidate_id: fit_stage_075_pe_req
+parameter_name: Pe_req
+origin_claims:
+  - parameter: Pe_req
+    introduced_at_stage: 059
+    introduced_at_line: 52
+    citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 52
+      excerpt: "5. inside the reachable Stage-057 window, define the unique constructive branch point `Pe_req` by"
+constraints:
+  - parameter: Pe_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 54
+      excerpt: "`Omega_(Pe_req)^2 = zeta_req (kappa + y^2)/(kappa + pi^2/4)`"
+downstream_dependents: [078, 079]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "At stage 075 Pe_req is carried purely symbolically (the threshold window is expressed proportional to Pe_req, e.g. Theta_fail ~ 3.626e-4 * Pe_req); no numerical value is set here. Pe_req's value first entered the ledger at stage 059 as the unique constructive root of Omega_(Pe_req)^2 = zeta_req (kappa+y^2)/(kappa+pi^2/4) -- a matching condition among already-derived ledger quantities (zeta_req, kappa, y), so internal_consistency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md, line: 45, excerpt: "`Upsilon_fail ≈ 0.0362605617972939 * Pe_req,`" }
+      - { path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md, line: 56, excerpt: "(`Pe_req` exists exactly when the Stage-057 ceiling holds);" }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_077_i_f
+parameter_name: I_f
+origin_claims:
+  - parameter: I_f
+    introduced_at_stage: 071
+    introduced_at_line: 21
+    citation:
+      path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+      line: 21
+      excerpt: "`I_f = int dxi f'(xi)^2 = 1/3,`"
+constraints:
+  - parameter: I_f
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 59
+      excerpt: "`I_f = int dxi chi_phi(xi)^2 = 1/3.`"
+downstream_dependents: [077]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Duplicate candidate for the same I_f = 1/3 datum at stage 077. It is the exact definite integral of the canonical wall-support weight chi_phi = (1/2) sech^2(xi), a derived value (internal_consistency), not a fit. Value originally established at stage 071 (line 21); carried/restated at 077."
+    citations:
+      - { path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py, line: 40, excerpt: "expect_zero(\"I_f - 1/3\", If - sp.Rational(1, 3))" }

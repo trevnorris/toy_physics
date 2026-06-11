@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage043_baseline_8_over_pi2_circular_derivation__phase_b__b_baseline.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -88,9 +88,39 @@ source_evidence:
   line: 185
   role: sympy_script
   excerpt: print("5. The exact physical support baseline is")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_baseline
+  introduced_at_stage: 43
+  introduced_at_line: 149
+  citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 149
+    excerpt: '`sigma = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2),`'
+constraints:
+- parameter: B_baseline
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 149
+    excerpt: '`sigma = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2),`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: Candidate id frames B_baseline=8/pi^2 as a 'circular derivation'; the notes/script in fact PRODUCE it from the
+    upstream-frozen overlap sigma=88/(9 pi^2) via B=kappa0^2=(9/11)sigma, so it is genuinely internal_consistency, not circular.
+    The value rests on the frozen D/N overlap (kappa_0,kappa_1) imported from the earlier modal projection (Stages 20-22),
+    which is itself a ledger-internal geometric output, not an external target.
+  citations:
+  - path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+    line: 144
+    excerpt: '# the frozen overlap sigma = 88/(9 pi^2), so the literal 8/pi^2 is PRODUCED, not assumed.'
+  - path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+    line: 148
+    excerpt: expect_zero("baseline B = 8/pi^2 from frozen sigma", B_value - sp.Rational(8, 1) / sp.pi**2)
+downstream_dependents:
+- '044'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage043_baseline_8_over_pi2_circular_derivation__b_baseline.yaml

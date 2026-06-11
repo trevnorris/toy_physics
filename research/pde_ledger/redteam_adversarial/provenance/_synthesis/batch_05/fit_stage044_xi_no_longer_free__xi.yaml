@@ -1,0 +1,19 @@
+candidate_id: fit_stage044_xi_no_longer_free
+parameter_name: xi
+origin_claims:
+  - parameter: xi
+    introduced_at_stage: 44
+    introduced_at_line: 101
+    citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 101
+      excerpt: "`xi^2 + B_cont xi + C_cont = 0,`"
+constraints:
+  - parameter: xi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 14
+      excerpt: "The main result is that the continuum-selected wall branch is pinned by one exact quadratic equation for the softening depth `xi`, and the 2.5PN normalization test then becomes one exact residual equation evaluated on that root."
+downstream_dependents: [45, 46, 48]
+provenance_findings: []

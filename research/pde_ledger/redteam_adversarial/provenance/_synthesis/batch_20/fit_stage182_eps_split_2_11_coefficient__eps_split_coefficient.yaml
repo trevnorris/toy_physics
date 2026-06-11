@@ -1,0 +1,19 @@
+candidate_id: fit_stage182_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+origin_claims:
+  - parameter: eps_split_coefficient
+    introduced_at_stage: 27
+    introduced_at_line: 151
+    citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 151
+      excerpt: "`sin^2(theta_max) = 2 / 11`,"
+constraints:
+  - parameter: eps_split_coefficient
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 14
+      excerpt: "\\epsilon_W\\!\\left[1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right],"
+downstream_dependents: [183, 184, 185, 186, 187, 189]
+provenance_findings: []

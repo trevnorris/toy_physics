@@ -1,0 +1,25 @@
+candidate_id: fit_stage_097_kbar_0
+parameter_name: Kbar_0
+origin_claims:
+  - parameter: Kbar_0
+    introduced_at_stage: 97
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 30
+      excerpt: "`= Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`."
+constraints:
+  - parameter: Kbar_0
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 61
+      excerpt: "`Kbar_0^target = 64 G Omega_Q^5 / (45 c^5),`"
+downstream_dependents: [99, 100]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Kbar_0 (the actual-branch normalization) is a free symbol whose only numerical anchor is the GR target Kbar_0^target = 64 G Omega_Q^5/(45 c^5); the program's closure condition is the defect N_Q := Kbar_0/Kbar_0^target = 1 (match to GR). Classified published_target because the load-bearing value is an external GR coefficient. NOTE no overclaim: the notes/card honestly state N_Q=1 is the OPEN remaining theorem gate, not a derived result (card claimstatus is ExactClosure/Open)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 88, excerpt: "`N_Q := Kbar_0 / Kbar_0^target`." }
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 100, excerpt: "`N_Q = 1`." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_203_kw_t__phase_b__kw_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,41 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: '* ((gamma_t**2 * lam_t**2 * sigma) / (KU_t * KW_t)) ** (-Estar)'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: KW_t
+  introduced_at_stage: 203
+  introduced_at_line: 456
+  citation:
+    path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+    line: 456
+    excerpt: be a continuous free-quintuple path, and let
+constraints:
+- parameter: KW_t
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+    line: 493
+    excerpt: The graph residual `\(\widehat\Delta_Q(\tau)\)` is continuous because both the free path and the graph lift are
+      continuous and `\(\chi_Q\)` is continuous on the carried reduced branch.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'KW_t is a script-only illustrative path coordinate: KW_t = KW0 * exp(t * kapW) (sympy audit line 126), the K_W^(eff)
+    component of the continuous one-parameter free-quintuple path used to drive the Stage 203 crossing/IVT demonstration.
+    It is not a fitted/derived value but a parameterized example path (an exponential ramp with a free rate kapW and free
+    base KW0) -> constraint_kind free_choice (convention/example, no derivation or external anchor). The notes document the
+    general continuous-path object (line 456, 493) but not this specific exponential parameterization, which is a free worked-example
+    choice; gap logged because the literal construction lives only in the script.'
+  citations:
+  - path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+    line: 126
+    excerpt: KW_t = KW0 * sp.exp(t * kapW)
+  - path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+    line: 456
+    excerpt: be a continuous free-quintuple path, and let
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_203_kw_t__kw_t.yaml

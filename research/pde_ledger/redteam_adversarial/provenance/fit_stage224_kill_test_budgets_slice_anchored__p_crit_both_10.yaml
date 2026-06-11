@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_kill_test_budgets_slice_anchored__phase_b__p_crit_both_10.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -196,9 +196,29 @@ source_evidence:
   line: 307
   role: notes_stage
   excerpt: '|a_{P_0}|\le \frac{P_{\rm crit}-\bar P_0}{4},'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P_crit_both_10
+  introduced_at_stage: 223
+  introduced_at_line: 373
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 373
+    excerpt: '  \lesssim 0.00283133168555932,'
+constraints:
+- parameter: P_crit_both_10
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 115
+    excerpt: These are still transported primitive-family ceilings, not final full-PDE theorems. But they are the first exact
+      dynamic windows available, so they are the right actual-branch kill test to carry forward.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '225'
+- '226'
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage224_kill_test_budgets_slice_anchored__p_crit_both_10.yaml

@@ -1,0 +1,13 @@
+candidate_id: fit_stage_198_pi_star
+parameter_name: Pi_star
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No Pi_star (Pi_*) value is introduced, carried, or constrained at Stage 198. Pi_star is the frozen canonical mouth-bias fixed point (~1.50882951, fam_0209_pi_star, originating at the Family-1 frozen fixed point stages 130/134/155 and quoted as a baseline at 156); it appears nowhere in Stage 198. The Stage 198 bundle carried ONLY script evidence and no notes_stage line for Pi_star. I opened the Stage 198 notes (moving_throat_pde_stage198_exact_finite_orbit_law.md), the Stage 198 paper card (stage_198.tex), and the Stage 198 sympy audit: the stage's actual orbit constants are (chi0_*, delta_U_*, E_*, F_*) and the invariant triple (C_tr_*, C_nt_*, epsEta_*) with compiler matrix M_*; there is no Pi_star symbol. I grep'd all of notes/ for Pi_star/\\Pi_* and found no Stage-198 occurrence. This is a scanner parameter mis-attribution: the candidate target 'Pi_star' does not resolve to any Stage 198 quantity. constraint_kind cannot be classified; logged as a gap (param-name does not exist at this stage)."
+    citations:
+      - { path: paper/stages/stage_198.tex, line: 11, excerpt: "This stage imports Packet A, the coherent orbit quotient, and the finite similarity-orbit law." }
+      - { path: notes/stages/moving_throat_pde_stage198_exact_finite_orbit_law.md, line: 88, excerpt: "Let the carried coherent-branch constants be \\chi_{0,*},\\qquad \\delta_{U,*},\\qquad E_*,\\qquad F_*," }
+      - { path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py, line: 46, excerpt: "chi0s, deltaUs, Estar, Fstar = sp.symbols(" }

@@ -1,0 +1,19 @@
+candidate_id: fit_stage_043_d_u
+parameter_name: D_U
+origin_claims:
+  - parameter: D_U
+    introduced_at_stage: 43
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 75
+      excerpt: "`D_U = diag( 1/K_U, 1/[K_U(1+delta_U)] ).`"
+constraints:
+  - parameter: D_U
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 71
+      excerpt: "`y = g_B v + g_U g_S D_U v,`"
+downstream_dependents: [44]
+provenance_findings: []

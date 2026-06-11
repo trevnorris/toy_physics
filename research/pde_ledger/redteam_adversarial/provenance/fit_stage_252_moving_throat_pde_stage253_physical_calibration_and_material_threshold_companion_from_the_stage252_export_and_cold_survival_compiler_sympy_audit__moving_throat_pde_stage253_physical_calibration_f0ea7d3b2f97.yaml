@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit__phase_b__moving_throat_pde_stage253_physical_ca_f0ea7d3b2f97.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -192,4 +192,21 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'Not a parameter value. The ''parameter_name'' is a SymPy-audit-script file/result name (file/source provenance),
+    an excluded layer in this audit. No numeric parameter value is associated; the notes document no parameter of this name.
+    (The bundle is also mis-stem keyed: the named audit script belongs to Stage 253, but the candidate is anchored at stage
+    252.)'
+  citations:
+  - path: paper/stages/stage_252.tex
+    line: 4
+    excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py}.  Mathematica
+      audit: none yet.}'
+  - path: redteam_adversarial/provenance/fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit__moving_throat_pde_stage253_physical_calibration_f0ea7d3b2f97.yaml
+    line: 3
+    excerpt: 'parameter_name: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit__moving_throat_pde_stage253_physical_calibration_f0ea7d3b2f97.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_225_d_4__phase_b__d_4.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,39 @@ source_evidence:
   line: 247
   role: sympy_script
   excerpt: print("D4                     =", sp.N(D4_s, 16))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_4
+  introduced_at_stage: 225
+  introduced_at_line: 260
+  citation:
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 260
+    excerpt: \boxed{D_{41}=-3u_2^2 D_{01}.}
+constraints:
+- parameter: D_4
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 254
+    excerpt: On a one-pole branch,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The flagged value '-3' for 'D_4' is the integer coefficient in the first-order compensation surface D_41 = -3 u_2^2
+    D_01, which is FORCED by the one-pole identity u_4=4u_2^2 (substituting D_4/D_0 = u_2^2 - u_4 = -3u_2^2). It is a derived
+    structural coefficient (internal_consistency), not a standalone fitted D_4 value; the base-branch D_4 itself is the numeric
+    -0.173991572849491 (notes line 131), also internally computed.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 256
+    excerpt: u_4=4u_2^2,
+  - path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    line: 247
+    excerpt: \frac{D_4}{D_0}=u_2^2-u_4,
+downstream_dependents:
+- '226'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage_225_d_4__d_4.yaml

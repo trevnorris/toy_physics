@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_p_2__phase_b__p_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -58,7 +58,15 @@ source_evidence:
   role: sympy_script
   excerpt: print("1. The isotropic retarded grouped-P2 one-pole branch carries the exact odd ratio")
 origin_claims: []
-constraints: []
+constraints:
+- parameter: P_2
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 5
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+      `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+      natural point-particle source-map branch already isolated by the 2.5PN package.**'
 graph_context:
   contexts: []
   graph_gaps:
@@ -79,3 +87,18 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_195.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: P_2 (extracted literal '2') is the l=2 multipole/sector label of the carried grouped-real P2 branch, not a fitted
+    scalar. Stage 195 carries the isotropic grouped-real P2 invariant tuple (P_bar_0,P_bar_2,P_bar_4) from 193/194 (notes
+    lines 91-95); the '2' indexes the even-z^2 moment / multipole order. constraint_kind free_choice (sector/branch convention).
+    No stage-195 notes/ line assigns P_2 a derived or external numeric value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 93
+    excerpt: \boxed{\bar P_2=\frac{\bar P_0}{4\Omega_Q^2},}
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_195_p_2__p_2.yaml

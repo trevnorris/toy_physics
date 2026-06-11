@@ -1,0 +1,25 @@
+candidate_id: fit_stage_137_k_s
+parameter_name: K_s
+origin_claims:
+  - parameter: K_s
+    introduced_at_stage: 114
+    introduced_at_line: 18
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 18
+      excerpt: "K_s & \\lambda\\\\[2pt]"
+constraints:
+  - parameter: K_s
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 97
+      excerpt: "- one static shell stiffness `K_s`,"
+downstream_dependents: [115, 116, 117, 119, 120, 121, 122, 123, 137, 138]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K_s (shell stiffness) is a POSITED symbolic primitive of the Stage-114 concrete two-channel core stiffness matrix [[K_s, lambda],[lambda, -K_q D_W^bare]] (notes lines 16-26), one of the 'simplest concrete isotropic core model' inputs. At Stage 137 it is merely carried as the denominator of rho_c = g_s^2/K_s and inside M_s = L g_s^2/(K_s Theta_sigma) and M_q (notes lines 48,60-65); the 137 note itself lists 'the shell stiffness K_s' as remaining mouth-core DATA to be supplied on a branch, not derived (notes 'Once these are known on a branch, (M_s,M_q) are fixed'). K_s is a free symbolic stiffness, not a fitted number; classified free_choice. (Numeric branch values for K_s etc. are pinned later at Stages 119-123, the parent-balance/normalized-branch family, not at 114 or 137.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md, line: 113, excerpt: "1. the shell stiffness `K_s`," }
+      - { path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md, line: 36, excerpt: "This is the simplest concrete isotropic core model that contains:" }

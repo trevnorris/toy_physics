@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage092_no_longer_forced_unless__phase_b__k_geom.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -178,9 +178,41 @@ source_evidence:
   line: 85
   role: sympy_script
   excerpt: print("With dynamic geometry contamination,")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_geom
+  introduced_at_stage: 91
+  introduced_at_line: 70
+  citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 70
+    excerpt: '- `K_geom` is the static geometry completion,'
+constraints:
+- parameter: K_geom
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 68
+    excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'Candidate-id ''no_longer_forced_unless'' is CONFIRMED: Stage 092 shows K_geom (=K_g,0) is NO LONGER forced to
+    3*K_pole once the geometry lane carries dynamic moments — it becomes a free function of (eps_2,eps_4) via K_g0 = 4(K_g2+K_pole/Omega_Q^2)^2/(K_g4+K_pole/Omega_Q^4)
+    - K_pole. So at 092 K_geom is generically UNCONSTRAINED (free_choice), in tension with the Stage 091 internal_consistency
+    forcing, which holds only in the static limit. The tension is resolved at Stage 094 (orthogonality -> eps=0 -> K_geom=3K_pole
+    again). Logged as ambiguous because the same parameter is internal_consistency at 091/094 but free at 092.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 72
+    excerpt: '`K_(g,0)`'
+  - path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 68
+    excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
+downstream_dependents:
+- 093
+- 094
+synthesis_ingested_at: '2026-06-11T18:26:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage092_no_longer_forced_unless__k_geom.yaml

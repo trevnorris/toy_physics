@@ -1,0 +1,25 @@
+candidate_id: fit_stage006_projected_vector_signs_fixed_by_audit
+parameter_name: ampere_sign
+origin_claims:
+  - parameter: ampere_sign
+    introduced_at_stage: 6
+    introduced_at_line: 60
+    citation:
+      path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+      line: 60
+      excerpt: "\\nabla\\times H_{\\rm flux}"
+constraints:
+  - parameter: ampere_sign
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+      line: 68
+      excerpt: "\\mu_0J_{\\rm proj}."
+downstream_dependents: [8]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "ampere_sign is not a numeric value but the sign convention of the projected Ampere/curl-H law. The notes (step_03) derive the projected inhomogeneous vector law directly from the projected bulk equation with F=dA, so the relative signs of curl(H_flux), d_t(D_flux), Leak_vec and mu0*J_proj are forced by the algebra given the field-strength convention F^{i0}=E_i (paper card stage_006.tex:32). The stage-006 sympy audit confirms each Ampere residue vanishes and that a mutated Faraday sign FAILS (negative control). Classified internal_consistency: the sign is an exact algebraic consequence of the projection given a stated index/field convention, not a free parameter or external fit. (The F^{i0}=E_i convention itself is a textbook gauge/index choice carried in from the parent EM theory.)"
+    citations:
+      - { path: paper/stages/stage_006.tex, line: 32, excerpt: "With the convention \\(F^{i0}=E_i\\), the projected Faraday and Ampere signs are" }
+      - { path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py, line: 159, excerpt: "assert_zero(f\"Ampere component {i}\", residue)" }

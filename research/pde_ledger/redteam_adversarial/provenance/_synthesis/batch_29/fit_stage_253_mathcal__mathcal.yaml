@@ -1,0 +1,12 @@
+candidate_id: fit_stage_253_mathcal
+parameter_name: mathcal
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Not a real parameter. 'mathcal' is a LaTeX-token scanner false-positive (from \\mathcal{K_turn}/\\mathcal{K_corr} macros in the card); it is not a named parameter value. The notes document no parameter called 'mathcal'. No value genealogy to classify."
+    citations:
+      - { path: paper/stages/stage_253.tex, line: 77, excerpt: "\\mathcal K_{\\rm turn}=\\frac{\\lambda_{\\rm ref}^{2}}{r_{\\rm turn}}|V_{\\rm red}'(r_{\\rm turn})|." }
+      - { path: paper/stages/stage_253.tex, line: 88, excerpt: "T_1T=\\mathcal K_{\\rm corr}," }

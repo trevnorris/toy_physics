@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_calibration_slice_nominal_constants__phase_b__k_turn.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,25 @@ source_evidence:
   line: 7
   role: notes_stage
   excerpt: 1. the Stage-252 channel-resolved microscopic export / cold-survival compiler,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_turn
+  introduced_at_stage: 253
+  introduced_at_line: 403
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 403
+    excerpt: \boxed{\mathcal K_{\rm turn}\approx 2.73855812,}
+constraints:
+- parameter: K_turn
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 956
+    excerpt: '`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_calibration_slice_nominal_constants__k_turn.yaml

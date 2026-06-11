@@ -1,0 +1,25 @@
+candidate_id: fit_stage_190_b_x
+parameter_name: b_x
+origin_claims:
+  - parameter: b_x
+    introduced_at_stage: 190
+    introduced_at_line: 547
+    citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 547
+      excerpt: " b_x=\\frac{x_{21}-x_{22}}{2}."
+constraints:
+  - parameter: b_x
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 574
+      excerpt: "b_x=3a_x,"
+downstream_dependents: [191, 193]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "b_x is the grouped real-P2 anomaly variable b_x:=(x21-x22)/2, an exact definition (190 line 547); the scanner-extracted literal value '3' is the FORCED ratio b_x=3a_x on the weak-axisymmetric Y20 branch (190 line 574), not an independent fitted constant. It is internal_consistency, fixed by the branch parametrization x21=x(0)+(eps/2)x(1), x22=x(0)-eps x(1) (lines 565-567)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md, line: 565, excerpt: " x_{20}=x^{(0)}+\\varepsilon x^{(1)}," }
+      - { path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md, line: 574, excerpt: "b_x=3a_x," }

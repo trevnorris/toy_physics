@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_session4_time_inputs
+parameter_name: t_collapse_0
+origin_claims:
+  - parameter: t_collapse_0
+    introduced_at_stage: 251
+    introduced_at_line: 453
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 453
+      excerpt: " t_{\\rm collapse,0}\\approx 0.14402764,"
+constraints:
+  - parameter: t_collapse_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 449
+      excerpt: "The Session-IV cold aligned event used the characteristic data"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "t_collapse,0 ~= 0.14402764 is a Session-IV cold-event characteristic-data readback (the undamped collapse time, = 1/s_0). It is a reported benchmark input, not derived in-ledger; the notes (line 463) explicitly note its rounded inverse agrees with gamma_crit only 'to the displayed report precision', confirming it is a printed/reported number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 463, excerpt: "(The inverse of the rounded printed `t_{\\rm collapse,0}` agrees only to the displayed report precision.)" }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 177, excerpt: "tcollapse0_num = 0.14402764" }

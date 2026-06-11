@@ -1,0 +1,19 @@
+candidate_id: fit_stage_214_l_r
+parameter_name: L_r
+origin_claims:
+  - parameter: L_r
+    introduced_at_stage: 214
+    introduced_at_line: 197
+    citation:
+      path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 199
+      excerpt: "(1+r^2+s^2+t^2)\\partial_r\\Delta^{\\sharp}_{Q,\\star}-2r\\Delta^{\\sharp}_{Q,\\star},"
+constraints:
+  - parameter: L_r
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 194
+      excerpt: "Also define the exact discriminant-transport numerators"
+downstream_dependents: [215]
+provenance_findings: []

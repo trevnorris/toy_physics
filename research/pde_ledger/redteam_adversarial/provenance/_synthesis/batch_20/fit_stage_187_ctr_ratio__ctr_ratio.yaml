@@ -1,0 +1,25 @@
+candidate_id: fit_stage_187_ctr_ratio
+parameter_name: Ctr_ratio
+origin_claims:
+  - parameter: Ctr_ratio
+    introduced_at_stage: 185
+    introduced_at_line: 159
+    citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 159
+      excerpt: "\\mathfrak C_{{\\rm tr},*}:=\\chi_0^{\\,1+\\delta_{U,*}}\\,\\delta_U^{\\,1+\\chi_{0,*}}."
+constraints:
+  - parameter: Ctr_ratio
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+      line: 83
+      excerpt: "\\mathfrak C_{{\\rm tr},*}"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Ctr_ratio is the tracking monomial / finite log-ratio invariant C_tr,* = chi_0^(1+delta_U,*) delta_U^(1+chi_0,*), introduced as a direct microscopic monomial at Stage 185 (its underlying tracking coefficient C_tr was defined at Stage 183 line 151). Stage 187 uses it as a finite-log-ratio quotient invariant (the level-set/orbit identity). internal_consistency; carried, not introduced, at 187."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md, line: 151, excerpt: "C_{\\rm tr}:=\\frac{\\chi_0\\delta_U}{(1+\\chi_0)(1+\\delta_U)(1+\\chi_0+\\delta_U)}." }
+      - { path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md, line: 159, excerpt: "\\mathfrak C_{{\\rm tr},*}:=\\chi_0^{\\,1+\\delta_{U,*}}\\,\\delta_U^{\\,1+\\chi_{0,*}}." }

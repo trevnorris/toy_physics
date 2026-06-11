@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: chi_raw
+origin_claims:
+  - parameter: chi_raw
+    introduced_at_stage: 250
+    introduced_at_line: 526
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 526
+      excerpt: "\\chi_{\\rm peak}^{\\rm raw}\\approx 50.74399964."
+constraints:
+  - parameter: chi_raw
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 518
+      excerpt: "Session III also repeated the same calculation using the raw model width"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "chi_raw = chi_peak^raw = 50.74399964 is the steepest log-gradient evaluated with the raw model width lambda=1 (the sensitivity-test variant). It is a Session-III readback off the barrier profile; the notes document the variant condition (lambda=1) but the numeric value is a hardcoded benchmark readback, not derived in-ledger."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 521, excerpt: "\\lambda=1" }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 218, excerpt: "chi_raw = 50.74399964" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage076_wall_depth_exactly_square__phase_b__theta_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -145,9 +145,41 @@ source_evidence:
   line: 91
   role: sympy_script
   excerpt: expect_zero("normalized reference factor", Theta_ref_norm - ref_target)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Theta_w
+  introduced_at_stage: 61
+  introduced_at_line: 104
+  citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 104
+    excerpt: '`Theta_w := 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2).`'
+constraints:
+- parameter: Theta_w
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 93
+    excerpt: '> the wall-depth datum is exactly the square of the active-shell density, measured in healing-width units, up
+      to the one local normalization factor `lambda_mu`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: 'The ''wall-depth exactly square'' result Theta_w = lambda_mu^2 rho_w^2/(16 ell^2) is derived, not posited: it
+    follows by inserting the Stage-074 healing lock m c_sw/hbar = 1/(2 ell) into the n=5 enthalpy-lock form Theta_w = lambda_mu^2
+    m^2 rho_w^2 c_sw^2/(4 hbar^2). All inputs are already-carried ledger identities, so internal_consistency; the script verifies
+    both reductions via expect_zero.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 85
+    excerpt: '`m c_(s,w) / hbar = 1 / (2 ell),`'
+  - path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+    line: 76
+    excerpt: expect_zero("healing-lock reduction", Theta_w_in_ell - Theta_heal_target)
+downstream_dependents:
+- '063'
+- 078
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage076_wall_depth_exactly_square__theta_w.yaml

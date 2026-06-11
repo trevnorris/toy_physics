@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_paragraph__phase_b__paragraph.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -159,4 +159,20 @@ graph_context:
       - moving_throat_pde_stage021_reduced_one_port_normal_form.md
       - moving_throat_pde_program_compact.md
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: '''paragraph'' is a false-positive scanner artifact: it matched the LaTeX sectioning macro \paragraph{...} in the
+    stage_021 paper card (lines 7, 14, 25, 43, 60: ''Source and audit'', ''Mixed gauge invariants'', ''Reduced lane'', ''Outgoing
+    transfer'', ''Compact outgoing fingerprint''). It is not a physical parameter and carries no numeric value or value genealogy.
+    No file under notes/ documents it as a parameter because it is not one; constraint_kind is not applicable.'
+  citations:
+  - path: paper/stages/stage_021.tex
+    line: 7
+    excerpt: \paragraph{Source and audit.}
+  - path: paper/stages/stage_021.tex
+    line: 60
+    excerpt: \paragraph{Compact outgoing fingerprint.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_021_paragraph__paragraph.yaml

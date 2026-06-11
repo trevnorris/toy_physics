@@ -1,0 +1,24 @@
+candidate_id: fit_stage_253_k_corr
+parameter_name: K_corr
+origin_claims:
+  - parameter: K_corr
+    introduced_at_stage: 253
+    introduced_at_line: 432
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 432
+      excerpt: "\\boxed{T_1 T = \\mathcal K_{\\rm corr}.}"
+constraints:
+  - parameter: K_corr
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 576
+      excerpt: "3. the material-dependent constants \\(\\zeta_{\\rm ep}\\) and \\(\\mathcal K_{\\rm corr}\\),"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K_corr is the Korringa material constant (T_1*T = K_corr); it is kept symbolic and explicitly listed among the open material-dependent constants to be supplied later. No numeric value is fitted or pinned in-stage, so no value genealogy exists. It is intended as an external material input but the stage chooses/back-solves no value (so not published_target); classified free_choice (open, to-be-supplied material parameter)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 559, excerpt: "Once \\(t_*\\) and \\(\\mathcal K_{\\rm corr}\\) are fixed, the aligned-spin survival condition becomes the exact ceiling" }

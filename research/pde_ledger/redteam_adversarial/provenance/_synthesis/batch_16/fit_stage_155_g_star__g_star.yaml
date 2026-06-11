@@ -1,0 +1,26 @@
+candidate_id: fit_stage_155_g_star
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 142
+    introduced_at_line: 97
+    citation:
+      path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+      line: 97
+      excerpt: "\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 58
+      excerpt: "\\mathfrak g_{\\Pi_*}=\\mathfrak g_-^{F1}."
+downstream_dependents: [156, 157, 158]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Duplicate of the carried_constants_block g_star at Stage 155 (same hardcoded float 0.758035078944663 at script:26, used as the compensation target for delta_g_fp = g_fp - g_star). internal_consistency at the solve level (lower-compensation root g_-^{F1}), but rests on r_F1 / the posited L/a=37/20 (Stage 073:56). Flagged so carried g_* is not read as first-principles."
+    citations:
+      - { path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py, line: 26, excerpt: "g_star = 0.758035078944663" }
+      - { path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md, line: 57, excerpt: "\\mathfrak g_{\\rm fp}-\\mathfrak g_*" }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage161_dsigma0_dthat_coefficient
+parameter_name: dSigma0_per_dThat
+origin_claims:
+  - parameter: dSigma0_per_dThat
+    introduced_at_stage: 158
+    introduced_at_line: 178
+    citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 178
+      excerpt: "6.42981496203006\\,\\delta\\widehat T_m."
+constraints:
+  - parameter: dSigma0_per_dThat
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 169
+      excerpt: "one also has the traction-level transport"
+downstream_dependents: [161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "dSigma0_per_dThat ~6.42981496203006 is the traction-level transport coefficient delta_Sigma0 = (40/9) T_hat_can delta_T_hat (= 6.4298... delta_T_hat), DERIVED at Stage 158 (notes lines 173-178) by differentiating the exact closure Sigma0 = (20/9) T_hat^2 at the canonical point -> internal_consistency. The stage161 bundle's source_evidence lists only paper-card pointers (no notes_stage entry), but the value IS documented in notes -- carried into Stage 161 at line 366 (delta_Sigma0 ~6.42981496203006 delta_T_hat). Origin cited under Stage 158. Numeric inherits T_hat_can (internal)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 368, excerpt: "6.42981496203006\\,\\delta\\widehat T_m," }
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 175, excerpt: "\\frac{40}{9}\\widehat T_{m,\\rm can}\\,\\delta\\widehat T_m" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_033_k0_onset__phase_b__k0_onset.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -100,9 +100,43 @@ source_evidence:
   line: 99
   role: sympy_script
   excerpt: K0_onset - (gU**2 / OmegaU**2 + kappa0_sq * Chi**2 / (NQ * Delta0**2)),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K0_onset
+  introduced_at_stage: 27
+  introduced_at_line: 185
+  citation:
+    path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+    line: 185
+    excerpt: '`K_0 >= g_U^2 / Omega_U^2 + kappa_0^2 Chi^2 / ( N_Q^(target) Delta_0^2 )`.'
+constraints:
+- parameter: K0_onset
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+    line: 175
+    excerpt: Because `N_-` only increases with positive loading, a necessary condition for the physical natural branch to
+      hit the universal target is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: 'K0_onset is the onset stiffness bound obtained by solving N_-(0) = N_Q^target for K_0 (audit line 87: K0_onset
+    = sp.solve(sp.Eq(N0_mic, NQ), K0)[0]). The ALGEBRA is an exact internal rearrangement justified by the exact monotonicity
+    of N_- (internal_consistency). BUT the threshold''s numerical content is anchored to N_Q^target = 54 G c_s^5/(5 a^5 c^5),
+    the EXTERNAL 2.5PN GR quadrupole target. The bound is carried symbolically in N_Q here, so no numeric back-solve is committed
+    at 033; it becomes a true published_target dependency only when N_Q is given its external value (see Stage 038 Lambda/R_target).
+    Classified internal_consistency for the 033 algebra, tension recorded against published_target.'
+  citations:
+  - path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+    line: 87
+    excerpt: K0_onset = sp.simplify(sp.solve(sp.Eq(N0_mic, NQ), K0)[0])
+  - path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+    line: 86
+    excerpt: '`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`.'
+downstream_dependents:
+- 028
+- 029
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_033_k0_onset__k0_onset.yaml

@@ -1,0 +1,19 @@
+candidate_id: fit_stage210_canonical_triple_screens
+parameter_name: triple_screen_directions
+origin_claims:
+  - parameter: triple_screen_directions
+    introduced_at_stage: 210
+    introduced_at_line: 432
+    citation:
+      path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+      line: 432
+      excerpt: "So the exact Stage 210 triple-screen packet is"
+constraints:
+  - parameter: triple_screen_directions
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+      line: 296
+      excerpt: "maximizes the total three-way off-diagonal leverage, with"
+downstream_dependents: []
+provenance_findings: []

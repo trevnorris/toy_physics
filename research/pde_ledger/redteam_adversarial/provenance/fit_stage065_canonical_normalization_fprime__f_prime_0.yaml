@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage065_canonical_normalization_fprime__phase_b__f_prime_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -27,9 +27,36 @@ source_evidence:
   line: 102
   role: sympy_script
   excerpt: '# Independent assertion: the relative correction matches (ell/a)^2 * J3/J1.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: f_prime_0
+  introduced_at_stage: 65
+  introduced_at_line: 24
+  citation:
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    line: 24
+    excerpt: '- and `f` is a fixed dimensionless wall-shape profile.'
+constraints:
+- parameter: f_prime_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    line: 108
+    excerpt: '`chi_phi(y) = f''(xi)`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The specific canonical normalization f'(0)=1 appears ONLY in the SymPy audit (comment 'the canonical normalization
+    f'(0)=1 used by the docstring's f'); it is not stated in the per-stage notes, which fix only that 'f is a fixed dimensionless
+    wall-shape profile' with chi_phi=f'(xi). The convention is a free_choice normalization of the wall-shape function; the
+    exact numeric f'(0)=1 is a script-level convention, undocumented in notes/.
+  citations:
+  - path: scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py
+    line: 118
+    excerpt: '# by the canonical normalization f''(0)=1 used by the docstring''s f. Verify the'
+downstream_dependents:
+- '066'
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage065_canonical_normalization_fprime__f_prime_0.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage182_two_elevenths_carried_forward__phase_b__epsilon_w_split_coefficient_2_11.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,43 @@ source_evidence:
   line: 322
   role: notes_stage
   excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_W_split_coefficient_2_11
+  introduced_at_stage: 27
+  introduced_at_line: 151
+  citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 151
+    excerpt: '`sin^2(theta_max) = 2 / 11`,'
+constraints:
+- parameter: epsilon_W_split_coefficient_2_11
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 20
+    excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 182 carries the 2/11 split coefficient forward from Stage 181 without naming a numeric origin; its true source
+    is the Stage-027 max-coupling axial-gradient occupancy sin^2(theta_max)=2/11, assembled into eps_W^(split) at Stage 039.
+    Carried, not introduced, at 182.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 6
+    excerpt: Stage 181 reduced the coherent weak-axisymmetric grouped defect on the actual coherent local D/N tracking branch
+  - path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 123
+    excerpt: '`eps_W_split = eps_W [ 1 - (2/11) delta_U / (1 + delta_U) ].`'
+downstream_dependents:
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage182_two_elevenths_carried_forward__epsilon_w_split_coefficient_2_11.yaml

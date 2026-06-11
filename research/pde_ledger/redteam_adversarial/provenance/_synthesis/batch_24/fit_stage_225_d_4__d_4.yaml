@@ -1,0 +1,25 @@
+candidate_id: fit_stage_225_d_4
+parameter_name: D_4
+origin_claims:
+  - parameter: D_4
+    introduced_at_stage: 225
+    introduced_at_line: 260
+    citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 260
+      excerpt: "\\boxed{D_{41}=-3u_2^2 D_{01}.}"
+constraints:
+  - parameter: D_4
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 254
+      excerpt: "On a one-pole branch,"
+downstream_dependents: [226]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The flagged value '-3' for 'D_4' is the integer coefficient in the first-order compensation surface D_41 = -3 u_2^2 D_01, which is FORCED by the one-pole identity u_4=4u_2^2 (substituting D_4/D_0 = u_2^2 - u_4 = -3u_2^2). It is a derived structural coefficient (internal_consistency), not a standalone fitted D_4 value; the base-branch D_4 itself is the numeric -0.173991572849491 (notes line 131), also internally computed."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md, line: 256, excerpt: "u_4=4u_2^2," }
+      - { path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md, line: 247, excerpt: "\\frac{D_4}{D_0}=u_2^2-u_4," }

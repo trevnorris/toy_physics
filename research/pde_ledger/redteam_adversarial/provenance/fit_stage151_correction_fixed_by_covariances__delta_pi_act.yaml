@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage151_correction_fixed_by_covariances__phase_b__delta_pi_act.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,36 @@ source_evidence:
   line: 162
   role: sympy_script
   excerpt: f"[Pi={Pi_star}] M3 int delta_Sigma dx",
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_Pi_act
+  introduced_at_stage: 151
+  introduced_at_line: 96
+  citation:
+    path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+    line: 96
+    excerpt: \delta\Pi_{\rm act}
+constraints:
+- parameter: delta_Pi_act
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+    line: 42
+    excerpt: 'So the actual selected deformation is not free:'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '152'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage151_correction_fixed_by_covariances__delta_pi_act.yaml

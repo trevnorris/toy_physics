@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage027_sin2_theta_max_2_11__phase_b__kappa_max.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,41 @@ source_evidence:
   line: 119
   role: notes_stage
   excerpt: '`kappa_0 = 2 sqrt(2) / pi ~= 0.900316`.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_max
+  introduced_at_stage: 27
+  introduced_at_line: 115
+  citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 115
+    excerpt: '`|kappa|_max = 2 sqrt(22) / (3 pi) ~= 0.994031`.'
+constraints:
+- parameter: kappa_max
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 111
+    excerpt: '`rho = sqrt(kappa_0^2 + kappa_1^2) = 2 sqrt(22) / (3 pi)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: kappa_max = 2 sqrt(22)/(3 pi) is the EXACT amplitude rho = sqrt(kappa_0^2 + kappa_1^2) of the overlap law kappa(theta)
+    = rho cos(theta - theta_max) -> internal_consistency (pure trig/algebra from the two computed overlaps kappa_0, kappa_1).
+    The associated sin^2(theta_max) = 2/11 (the candidate's '2_11' tag) is likewise an exact consequence of tan(theta_max)
+    = kappa_1/kappa_0 = -sqrt2/3. No external number is fit; the value is forced by the chosen N/N + D/N basis. As with kappa_theta,
+    the underlying profile family is a hand-chosen ansatz (theta free), so the MAXIMIZING angle is a branch selection, but
+    the maximum VALUE is derived exactly.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 151
+    excerpt: '`sin^2(theta_max) = 2 / 11`,'
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 143
+    excerpt: '`tan(theta_max) = kappa_1 / kappa_0 = - sqrt(2) / 3`,'
+downstream_dependents:
+- 028
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage027_sin2_theta_max_2_11__kappa_max.yaml

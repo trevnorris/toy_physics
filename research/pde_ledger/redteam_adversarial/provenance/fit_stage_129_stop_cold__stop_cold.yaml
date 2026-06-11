@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_129_stop_cold__phase_b__stop_cold.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,19 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No physics parameter 'stop_cold' exists in any stage 129 source. The mechanical bundle has empty source_evidence,
+    and 'stop_cold' appears only as red-team pipeline status vocabulary (a script-stops-cold audit outcome) in notes/ trackers,
+    never in stage 129 notes/card/script. Scanner artifact, not a fitted/posited ledger value.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_129_stop_cold__stop_cold.yaml
+    line: 1
+    excerpt: 'source_evidence: []'
+  - path: notes/EM_PROJECTED_INTEGRATION_TRACKER.md
+    line: 12
+    excerpt: 0 stop-cold, 0 ultimately-blocked
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage_129_stop_cold__stop_cold.yaml

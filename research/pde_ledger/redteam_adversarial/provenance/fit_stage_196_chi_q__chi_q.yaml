@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_196_chi_q__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -189,8 +189,21 @@ source_evidence:
   role: sympy_script
   excerpt: expected_Y5_through5 = sp.expand(1 + omega**2 / (4 * Omega_Q**2) + omega**4 / (4 * Omega_Q**4) + sp.I * chi_Q *
     9 * omega**5 / (32 * Omega_Q**5))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 194
+  introduced_at_line: 184
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 273
+    excerpt: \chi_Q=-27\,\frac{L_5}{L_0}
 graph_context:
   contexts: []
   graph_gaps:
@@ -215,3 +228,24 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_196.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'chi_Q is the outgoing-normalization scalar. In the modern Packet-A line it is fixed at Stage 194 (notes line 162
+    ''Exact fixing of chi_Q on the canonical compact branch'', boxed chi_Q=1 at line 184) by matching the O(omega^5)/z^5 coefficient
+    against the canonical compact outgoing l=2 branch; Stage 196 only proves higher-odd retarded data cannot change it (notes
+    lines 273-278: chi_Q=-27 L_5/L_0 = 3(S beta^5 + 9 Sigma_5)/(3S - Sigma_0), compiled only from z^5). This is the SAME conceptual
+    scalar earlier fixed at Stage 105 (chi_Q=1), so the canonical-unity provenance is dual-anchored (105 in the original line,
+    194 in the rebuilt Stage 191-196 line); not a contradiction in value (both give chi_Q=1) but a numbering/anchor duplication
+    worth flagging. constraint_kind internal_consistency: forced by z^5-coefficient matching among ledger-internal DtN data,
+    not an external number.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 162
+    excerpt: '## 3. Exact fixing of `\chi_Q` on the canonical compact branch'
+  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 69
+    excerpt: \boxed{\chi_Q=1.}
+downstream_dependents:
+- '197'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_196_chi_q__chi_q.yaml

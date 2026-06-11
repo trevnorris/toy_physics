@@ -1,0 +1,25 @@
+candidate_id: fit_stage165_gstar_literal
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 122
+    introduced_at_line: 63
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 63
+      excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+      line: 200
+      excerpt: "\\mathfrak g_* \\approx 0.758035078944663,"
+downstream_dependents: [167, 168]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "165 hardcodes g_star=sp.Float('0.758035078944663') as a script literal (line 110) and quotes it in notes (line 200) as 'the fixed lower compensated Family-1 value' with no origin cross-reference; it is g_-(r_F1) first pinned at Stage 122. Literal injection without origin anchor."
+    citations:
+      - { path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py, line: 110, excerpt: "gstar = sp.Float(\"0.758035078944663\", 30)" }
+      - { path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md, line: 200, excerpt: "\\mathfrak g_* \\approx 0.758035078944663," }

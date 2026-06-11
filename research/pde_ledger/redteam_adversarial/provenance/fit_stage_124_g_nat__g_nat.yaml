@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_124_g_nat__phase_b__g_nat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -32,9 +32,39 @@ source_evidence:
   role: notes_stage
   excerpt: the lower branch `(-)`, requiring only a `31.9%` traction enhancement relative to the natural equal-normalized
     source branch.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_nat
+  introduced_at_stage: 122
+  introduced_at_line: 26
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 26
+    excerpt: \mathfrak g_{\rm nat}=1.
+constraints:
+- parameter: g_nat
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 30
+    excerpt: 'This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same
+      mouth source, same normalized loading” core closure.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage 124 (status card) carries g_nat=1 (notes line 20) as one of the tabulated branch values. Origin is Stage
+    122, where it is explicitly a posited 'concrete branch ansatz, not a theorem of the full PDE' (free_choice). No new constraint
+    at Stage 124.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+    line: 18
+    excerpt: 2. **Natural equal-normalized mouth-source branch**
+  - path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+    line: 20
+    excerpt: \mathfrak g_{\rm nat}=1.
+downstream_dependents:
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage_124_g_nat__g_nat.yaml

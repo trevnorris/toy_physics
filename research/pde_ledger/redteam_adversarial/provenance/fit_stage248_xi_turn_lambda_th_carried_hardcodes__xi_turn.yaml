@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_xi_turn_lambda_th_carried_hardcodes__phase_b__xi_turn.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,57 @@ source_evidence:
   line: 468
   role: notes_stage
   excerpt: '### 6.2 Subbarrier launch speed and Coulomb turning point'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_turn
+  introduced_at_stage: 248
+  introduced_at_line: 436
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 436
+    excerpt: \Xi_{\rm turn}=0.34437471,
+constraints:
+- parameter: Xi_turn
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 419
+    excerpt: The reported lowered-branch dynamic observables were
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: published_target
+  severity: needs_triage
+  summary: Xi_turn=0.34437471 is a 'reported lowered-branch dynamic observable' carried in as a hardcode (notes line 419-436;
+    script line 247 Xi_turn_num = 0.34437471). The symbolic definition Xi_turn(E)=Xi_1(r_+(E)) is verified only structurally
+    (script line 200 'carried tag sampled at r_+(E)') and the numeric value is checked only for positivity (line 311 assert
+    Xi_turn_num > 0); the script never recomputes 0.34437471 from the lowered branch. So the NUMBER is an imported recorded
+    figure (published_target), not derived at stage 248. The companion lambda_th=0.42826825 (notes line 438, script line 248)
+    is the same kind of carried hardcode.
+  citations:
+  - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 247
+    excerpt: Xi_turn_num = 0.34437471
+  - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 311
+    excerpt: assert Xi_turn_num > 0
+  - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 419
+    excerpt: The reported lowered-branch dynamic observables were
+- type: paper_card_overclaim
+  severity: low
+  summary: 'The paper card presents Xi_turn(E)=Xi_1(r_+(E)) and lambda_th(E)=|E/V''(r_+(E))| as ''dynamic diagnostics carried
+    forward'' (stage_248.tex line 82-89) without disclosing that their benchmark numbers are imported Session-II report figures
+    rather than recomputed; the notes (line 419 ''The reported ... observables'') and script (positivity-only check) are clearer
+    that these are carried hardcodes. Low severity: the card frames them as carried tags, but a reader could assume the numbers
+    were derived at stage 248.'
+  citations:
+  - path: paper/stages/stage_248.tex
+    line: 89
+    excerpt: These tags are later used in the helicity and Goldilocks compilers; they do not alter the scalar event chain.
+  - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 436
+    excerpt: \Xi_{\rm turn}=0.34437471,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage248_xi_turn_lambda_th_carried_hardcodes__xi_turn.yaml

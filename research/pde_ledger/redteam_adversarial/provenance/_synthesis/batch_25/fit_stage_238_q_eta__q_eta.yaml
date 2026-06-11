@@ -1,0 +1,30 @@
+candidate_id: fit_stage_238_q_eta
+parameter_name: q_eta
+origin_claims:
+  - parameter: q_eta
+    introduced_at_stage: 235
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+      line: 92
+      excerpt: "q_\\eta=E_1,"
+constraints:
+  - parameter: q_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+      line: 205
+      excerpt: "q_\\eta=d\\ln\\epsilon_\\eta."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "q_eta is NOT a fixed numeric value: at Stage 238 it is the post-static dressing obstruction, DERIVED via the exact transfer-shape identity R_target*T^2 = Lambda_0(1-epsilon_eta) (notes lines 95/130) as q_eta = ln(epsilon_eta/epsilon_{eta,ref}) = d ln epsilon_eta (lines 32/205/231). All exact derived relations -> internal_consistency. The coordinate's ORIGIN as a named packet axis is upstream Stage 235 (q_eta = E_1). The orbit-lock condition is q_eta = 0 (line 307). No specific value constrained; logged low-severity that q_eta is a derived coordinate / the residual dressing obstruction, not a fitted scalar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md, line: 95, excerpt: "R_{\\rm target}\\,\\mathcal T^2 = \\Lambda_0(1-\\epsilon_\\eta)." }
+      - { path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md, line: 307, excerpt: "q_\\eta=0" }
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage-238 notes path (carried from the mechanical bundle's graph_gaps); downstream enumeration relied on notes/card reading."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md, line: 32, excerpt: "q_\\eta = \\ln\\!\\left(\\frac{\\epsilon_\\eta}{\\epsilon_{\\eta,\\mathrm{ref}}}\\right)," }

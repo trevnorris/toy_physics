@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_family1_geometry_normalization__phase_b__l_over_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -36,9 +36,43 @@ source_evidence:
   line: 190
   role: sympy_script
   excerpt: '# 6. Overlap boost and physical support ratios'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L_over_a
+  introduced_at_stage: 73
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+constraints:
+- parameter: L_over_a
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: 'The scanner''s parameter ''L_over_a'' with value 20 maps to the geometric literal 20 in Stage 232''s Lambda_ell
+    = 20*sqrt(2)*pi/x01 (script line 50), which encodes the thin-wall lock ell/a = 1/20 (notes 232 line 38). That lock originates
+    at Stage 073: epsilon_r = 0.05 = 1/20 posited on the ''chosen balanced reference branch'' (073 line 30/40), explicitly
+    labelled ''a reference-branch numerical freeze, not a new theorem'' (073 line 56) -> free_choice. NAMING CAVEAT: ''L_over_a''
+    literally is L/a = 37/20 ~ 1.85 (073 line 54), NOT 20; the value 20 is a/ell = (ell/a)^-1. The candidate label conflates
+    the aspect ratio L/a with the inverse thin-wall ratio. Both are chosen reference-branch freezes (free_choice), so the
+    classification is unchanged, but the symbol-to-value mapping is loose.'
+  citations:
+  - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 50
+    excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 54
+    excerpt: '`Lambda_* := L/a = 37/20.`'
+downstream_dependents:
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage232_family1_geometry_normalization__l_over_a.yaml

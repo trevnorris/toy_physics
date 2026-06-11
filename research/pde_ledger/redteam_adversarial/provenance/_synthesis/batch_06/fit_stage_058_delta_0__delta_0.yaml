@@ -1,0 +1,25 @@
+candidate_id: fit_stage_058_delta_0
+parameter_name: Delta_0
+origin_claims:
+  - parameter: Delta_0
+    introduced_at_stage: 58
+    introduced_at_line: 231
+    citation:
+      path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+      line: 231
+      excerpt: "`Delta_0(kappa,eta)`"
+constraints:
+  - parameter: Delta_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+      line: 232
+      excerpt: "`:= Delta(0;kappa,eta)`"
+downstream_dependents: [59, 61, 63, 66]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Scanner extracted the literal value '0' for Delta_0; that is a false positive from the '_0' subscript / the Pe=0 evaluation point, not a posited numeric constant. Delta_0 is the exact uniform-source (Pe=0) limit of the operator-derived support drop, eta(cosh alpha-1)/[alpha^2(alpha sinh alpha+eta cosh alpha)], an analytic function of (kappa,eta) — not a fitted scalar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md, line: 234, excerpt: "`= eta (cosh(alpha)-1)`" }
+      - { path: scripts/moving_throat_pde_stage058_coupled_support_source_sympy_audit.py, line: 83, excerpt: "Delta0 = sp.simplify(sp.limit(Delta, Pe, 0))" }

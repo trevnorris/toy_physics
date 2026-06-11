@@ -1,0 +1,25 @@
+candidate_id: fit_stage030_lambda_req_target_ratio
+parameter_name: lambda_req
+origin_claims:
+  - parameter: lambda_req
+    introduced_at_stage: 30
+    introduced_at_line: 187
+    citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 187
+      excerpt: "`lambda_- = mhat_-^2 beta_0 s_- / N_Q^(target)`,"
+constraints:
+  - parameter: lambda_req
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 185
+      excerpt: "Equivalently, the target becomes a direct conservative spectral condition:"
+downstream_dependents: [31, 33]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "lambda_req is the conservative selected eigenvalue REQUIRED so the selected-mode prefactor hits the external GR target: lambda_- = mhat_-^2 beta_0 s_- / N_Q^target with N_Q^target = 54/5 G c_s^5/(5 a^5 c^5) (the external Einstein-quadrupole number imported at stage 022). At leading order lambda_- = beta_0 s_- * 5 a^5 c^5/(54 G c_s^5). So the 'required eigenvalue' is back-solved from the published GR target, not produced by the spectral problem; the notes frame it as the value the physical branch must REACH ('does their ratio land on the universal target'). Classification published_target. The card flags this as StatusOpen (whether the physical branch can reach it), consistent with a target rather than a derived output."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md, line: 191, excerpt: "`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`." }
+      - { path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md, line: 225, excerpt: "> what conservative selected eigenvalue `lambda_-` and selected overlap `s_-` does the physical moving-throat branch produce, and does their ratio land on the universal target before the wall mode softens?" }

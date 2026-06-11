@@ -1,0 +1,25 @@
+candidate_id: fit_stage_247_vrebuild_soft
+parameter_name: Vrebuild_soft
+origin_claims:
+  - parameter: Vrebuild_soft
+    introduced_at_stage: 247
+    introduced_at_line: 522
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 522
+      excerpt: "So the benchmark decomposition is"
+constraints:
+  - parameter: Vrebuild_soft
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 620
+      excerpt: "and the Session-I strongest-softening point is reproduced by the concrete benchmark decomposition above."
+downstream_dependents: [ 248 ]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "Scanner-extracted target value '251' is the script line number (line 251: Vrebuild_soft = Vshort_num - lambda_L_soft*S_soft - Wsess_obs - UVdrop_obs - M_sigma_num), not a parameter value; the real value is 1.74701126. Vrebuild_soft is a tautological closure: it rebuilds V_eff using lambda_L_soft, which was itself back-solved from Veff_obs=1.74701126 (script line 238). It therefore equals the recorded softening point by construction and cannot independently confirm the decomposition. Classified published_target because the reproduced number is the recorded benchmark target; the rebuild is not an independent derivation."
+    citations:
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 251, excerpt: "Vrebuild_soft = sp.N(Vshort_num - lambda_L_soft * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)" }
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 238, excerpt: "lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)" }

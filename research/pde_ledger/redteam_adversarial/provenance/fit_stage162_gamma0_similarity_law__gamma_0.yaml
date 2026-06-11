@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage162_gamma0_similarity_law__phase_b__gamma_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -104,9 +104,34 @@ source_evidence:
   line: 79
   role: sympy_script
   excerpt: 'print("  On the exact parent family: d ln gamma0 = 2 d ln(L_W/a), so Xi_slip = 0.")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_0
+  introduced_at_stage: 162
+  introduced_at_line: 61
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 61
+    excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
+constraints:
+- parameter: gamma_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 100
+    excerpt: 'So the Stage 161 similarity-slippage scalar vanishes identically on the exact parent family:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: The D/N similarity law delta ln gamma_0 - 2 delta ln(L_W/a)=0 is derived at 162, but gamma_0 itself originates
+    upstream at Stages 115-116; notes restate the formula without citing the 115/116 origin line.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 58
+    excerpt: And Stages 115–116 fix the bare odd normalization by
+downstream_dependents:
+- '163'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage162_gamma0_similarity_law__gamma_0.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage217_preferred_bound_162_budgets__phase_b__candidate_bound_162.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -201,9 +201,26 @@ source_evidence:
   line: 166
   role: sympy_script
   excerpt: print(f"Projected one-chart Bezout bound = {bezout_proj}")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: candidate_bound_162
+  introduced_at_stage: 217
+  introduced_at_line: 409
+  citation:
+    path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 409
+    excerpt: \boxed{3\cdot 3\cdot 3\cdot 3\cdot 2 = 162.}
+constraints:
+- parameter: candidate_bound_162
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 407
+    excerpt: Hence the lifted Bézout candidate bound is
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '218'
+synthesis_ingested_at: '2026-06-11T19:17:32Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage217_preferred_bound_162_budgets__candidate_bound_162.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage125_lower_branch_unique__phase_b__branch_sign.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -109,9 +109,50 @@ source_evidence:
   line: 98
   role: sympy_script
   excerpt: print("the upper compensated branch is impossible and the lower branch is unique.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: branch_sign
+  introduced_at_stage: 125
+  introduced_at_line: 76
+  citation:
+    path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 76
+    excerpt: '0<\mathfrak g_-^{F1}<1
+
+      \quad\Rightarrow\quad
+
+      \text{within this positive localized-source setup, the lower compensated branch is the unique physically admissible
+      compensated Family-1 branch.}'
+constraints:
+- parameter: branch_sign
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 52
+    excerpt: 0\le \mathfrak g[\sigma]\le 1.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'The lower (-) compensation branch is SELECTED, not posited: Stage 125 proves the positivity theorem 0 <= g[sigma]
+    <= 1 (notes line 52) for any nonnegative normalized localized source profile (mouth-bias = first cosine moment, lines
+    32-41), since 0 <= cos(pi z/2L) <= 1. Because g_+^F1 ~ 2.798 > 1 it is ruled out, while 0 < g_-^F1 ~ 0.758 < 1 is admissible,
+    so the lower branch is the unique candidate (lines 67-79). The selection is forced by a genuine constraint (source positivity
+    + the internal g_pm^F1 values), so internal_consistency. CAVEAT: this is a selection within the localized-positive-source
+    MODEL class (an assumed setup, notes lines 28-30); the branch SIGN selection itself is a derivation. No external published
+    target.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 57
+    excerpt: This immediately selects the physically admissible compensation branch.
+  - path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+    line: 68
+    excerpt: '\mathfrak g_+^{F1}>1
+
+      \quad\Rightarrow\quad
+
+      \text{the upper compensated branch is impossible for any positive localized source law.}'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage125_lower_branch_unique__branch_sign.yaml

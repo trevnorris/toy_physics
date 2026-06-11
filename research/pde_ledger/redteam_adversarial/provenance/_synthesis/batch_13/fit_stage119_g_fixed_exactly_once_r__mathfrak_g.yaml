@@ -1,0 +1,25 @@
+candidate_id: fit_stage119_g_fixed_exactly_once_r
+parameter_name: mathfrak_g
+origin_claims:
+  - parameter: mathfrak_g
+    introduced_at_stage: 119
+    introduced_at_line: 15
+    citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 15
+      excerpt: "\\mathfrak g := \\frac{g_q\\sqrt{K_s}}{g_s\\sqrt{K_q}}."
+constraints:
+  - parameter: mathfrak_g
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 52
+      excerpt: "Once \\(\\mathfrak r\\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly."
+downstream_dependents: [120, 121, 122, 123, 124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "mathfrak_g = r +/- (1/2)sqrt(1+r^2) is FORCED by the exact Stage-115 core-balance theorem g_s^2(K_sK_q+lambda^2)=4(K_s g_q - lambda g_s)^2, which collapses (in the normalized parent ratios) to 1+r^2 = 4(g-r)^2 and is solved for g (notes lines 19-43). All inputs are ledger-internal (the balance theorem + the definition of r), so this is internal_consistency, not an external fit. The two-branch +/- is a genuine algebraic consequence, not a free choice of value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 26, excerpt: "1+\\mathfrak r^2 = 4(\\mathfrak g-\\mathfrak r)^2." }
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 37, excerpt: "\\mathfrak g" }

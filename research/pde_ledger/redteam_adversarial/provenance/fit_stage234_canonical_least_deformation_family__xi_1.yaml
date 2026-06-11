@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage234_canonical_least_deformation_family__phase_b__xi_1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -149,9 +149,47 @@ source_evidence:
   line: 200
   role: sympy_script
   excerpt: 'assert_zero(sp.simplify(Xi1_twoobs.subs({R1: R1_bal, E1: E1_bal}) - xi))'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_1
+  introduced_at_stage: 234
+  introduced_at_line: 328
+  citation:
+    path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    line: 328
+    excerpt: \Xi_1 = \xi,
+constraints:
+- parameter: Xi_1
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    line: 372
+    excerpt: So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation
+      family that realizes any chosen \(\Xi_1\).
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'At Stage 234 Xi_1 is NOT a fixed numeric value: it is a PRESCRIBED first-order defect target ''Xi_1 = xi'' (notes
+    line 328), and the stage builds a ''canonical least-deformation family that realizes any chosen Xi_1'' (line 372). Two
+    readings compete: (a) free_choice -- Xi_1 is a free input/target the observable chart is parametrized over, and the ''canonical
+    least-deformation'' (minimum-norm R_1^2+E_1^2) family is itself a chosen convention (line 352-368); (b) internal_consistency
+    -- the EXACT IDENTITY Xi_1 = -R_1 - c_eta*E_1 and the cancellation d Xi_1/d(ln R_tr)=0 (line 211/273) are derived structural
+    facts about how Xi_1 relates to the observables. Best-supported call for THIS candidate (which keys the ''canonical least-deformation
+    family'' realizing ''any chosen Xi_1'') is free_choice: Xi_1 enters as a free chosen target, not a forced value. The structural
+    relation it satisfies is derived, but no specific Xi_1 value is constrained here.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    line: 273
+    excerpt: \boxed{\Xi_1 = -R_1 - c_\eta E_1.}
+  - path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    line: 364
+    excerpt: 'R_1=-\frac{\xi}{1+c_\eta^2},
+
+      \qquad
+
+      E_1=-\frac{c_\eta\,\xi}{1+c_\eta^2}.'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage234_canonical_least_deformation_family__xi_1.yaml

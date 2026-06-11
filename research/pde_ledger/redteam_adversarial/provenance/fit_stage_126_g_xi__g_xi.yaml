@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_126_g_xi__phase_b__g_xi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,26 @@ source_evidence:
   line: 85
   role: sympy_script
   excerpt: 'if sp.simplify(g_xi_star) != 0:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_xi
+  introduced_at_stage: 126
+  introduced_at_line: 82
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 82
+    excerpt: (1-\xi)\frac{\pi}{4}+\xi\frac{2}{\pi}.
+constraints:
+- parameter: g_xi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 80
+    excerpt: \mathfrak g_\xi
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '126'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage_126_g_xi__g_xi.yaml

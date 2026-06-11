@@ -1,0 +1,25 @@
+candidate_id: fit_stage245_session1_readback_inputs
+parameter_name: V_obs
+origin_claims:
+  - parameter: V_obs
+    introduced_at_stage: 245
+    introduced_at_line: 502
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 502
+      excerpt: "V(r_{\\rm eval})\\approx -0.03619791,"
+constraints:
+  - parameter: V_obs
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 497
+      excerpt: "The session write-up records the representative relaxed-rigid-mouth point"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "V_obs = -0.03619791 is a probe/sample input imported from the barrier Session-I write-up (notes line 497-505) and used as the Stage-245 readback point (script line 210). It is a posited representative sample value (free_choice), not derived from ledger-internal quantities and not an external published target. It drives the matched dressing readback eps_eta = 0.3 e^{-0.03619791}. Logged at low severity to record its sample-probe character."
+    citations:
+      - { path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py, line: 210, excerpt: "V_obs = sp.Float(\"-0.03619791\")" }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 510, excerpt: "\\epsilon_\\eta(r_{\\rm eval})\n=\n0.3\\,e^{-0.03619791}" }

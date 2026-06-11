@@ -1,0 +1,25 @@
+candidate_id: fit_stage186_not_fine_tuning_claim
+parameter_name: Sigma_eta
+origin_claims:
+  - parameter: Sigma_eta
+    introduced_at_stage: 182
+    introduced_at_line: 251
+    citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 251
+      excerpt: "\\Sigma_\\eta:=2c_1-\\kappa_U-\\kappa_\\eta=\\frac{\\eta_1}{\\epsilon_\\eta},"
+constraints:
+  - parameter: Sigma_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 66
+      excerpt: "\\delta\\ln \\epsilon_\\eta=\\Sigma_\\eta,"
+downstream_dependents: [187]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The candidate is the Stage-186 'not fine-tuning' claim: Section 7.1 asserts the zero-defect set 'is not fine-tuning' / 'a substantial orbit of allowed co-scalings rather than a one-shot numerical accident' (codim-3, dim ker M_*=5). The claim is hedged in-notes to 'within the coherent reduced hierarchy', but the unqualified card/notes phrasing 'is not fine-tuning' is broader than the proof supports: it is a statement about the REDUCED coherent monomial structure only, and (per Section 9.3 / Stage 187 Sec 9.3) does NOT establish that the actual moving-throat PDE branch lies on the orbit. Sigma_eta itself is a derived dressing slippage (origin Stage 182) and is internal_consistency; the finding flags the surrounding claim, not Sigma_eta's classification."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md, line: 393, excerpt: "### 7.1 The zero-defect branch is not fine-tuning" }
+      - { path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md, line: 395, excerpt: "So within the coherent reduced hierarchy, exact first-order defect cancellation is a substantial orbit of allowed co-scalings rather than a one-shot numerical accident." }

@@ -1,0 +1,19 @@
+candidate_id: fit_stage048_zeta_req_threshold
+parameter_name: zeta_req
+origin_claims:
+  - parameter: zeta_req
+    introduced_at_stage: 48
+    introduced_at_line: 99
+    citation:
+      path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+      line: 99
+      excerpt: "`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`"
+constraints:
+  - parameter: zeta_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+      line: 97
+      excerpt: "The inverse map is exact. If `S_req > 1`, then the unique support ratio producing that enhancement is"
+downstream_dependents: [49, 50, 51, 52]
+provenance_findings: []

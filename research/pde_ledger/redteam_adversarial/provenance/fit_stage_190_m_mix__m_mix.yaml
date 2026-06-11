@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_190_m_mix__phase_b__m_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -39,9 +39,36 @@ source_evidence:
   line: 85
   role: sympy_script
   excerpt: Rtarget_spoiled = sp.simplify(8 * Lambda0 * OmW2 * (1 - eps) / sp.pi**2 * Ssupport / (Mmix + Msupp_spoiled))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_mix
+  introduced_at_stage: 190
+  introduced_at_line: 138
+  citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 138
+    excerpt: M_{\rm tr}=M_{\rm mix}\,S(\zeta;\epsilon),
+constraints:
+- parameter: M_mix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 140
+    excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: M_mix is the carried mixing/baseline mouth-loading mass entering the support-enhancement factorization M_tr=M_mix*S(zeta;eps)
+    (190 line 138). The notes use it only structurally to prove support-blindness of the transfer shape; they do not state
+    a closed-form value or back-solve it to an external number, so within stage 190 it is a carried/structural quantity (internal_consistency
+    role, used not fitted). The script line 53 closed form Mmix=8 ZW (1+chi0)^2/(pi^2 (1-epseta)(1-eps)) is in scripts/ only;
+    no notes/ line gives that value, so the numeric closed form has no notes anchor at this stage.
+  citations:
+  - path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+    line: 53
+    excerpt: Mmix = sp.simplify(8 * ZW * (1 + chi0) ** 2 / (sp.pi**2 * (1 - epseta) * (1 - eps)))
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_190_m_mix__m_mix.yaml

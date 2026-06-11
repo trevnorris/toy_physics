@@ -1,0 +1,19 @@
+candidate_id: fit_stage163_delta_perp_exact_parent_expression
+parameter_name: delta_perp
+origin_claims:
+  - parameter: delta_perp
+    introduced_at_stage: 163
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 65
+      excerpt: "\\delta_\\perp"
+constraints:
+  - parameter: delta_perp
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 163
+      excerpt: "Substituting into the definition of \\(\\delta_\\perp\\) and simplifying gives the exact microscopic residual"
+downstream_dependents: [164, 165, 167, 168]
+provenance_findings: []

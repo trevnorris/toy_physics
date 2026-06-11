@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_173_xi_load__phase_b__xi_load.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -143,9 +143,27 @@ source_evidence:
   line: 119
   role: sympy_script
   excerpt: print("  remaining defect Xi_load = N01/N0 - D01/D0")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_load
+  introduced_at_stage: 173
+  introduced_at_line: 278
+  citation:
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 278
+    excerpt: \Xi_{\rm load}:=\delta_N-\delta_D.
+constraints:
+- parameter: Xi_load
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 441
+    excerpt: \Xi_{\rm load}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '174'
+- '177'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_173_xi_load__xi_load.yaml

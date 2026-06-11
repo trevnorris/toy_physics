@@ -1,0 +1,25 @@
+candidate_id: fit_stage_084_theta_w
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 075
+    introduced_at_line: 104
+    citation:
+      path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+      line: 104
+      excerpt: "`Theta_w := 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2).`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+      line: 121
+      excerpt: "Using the exact Stage-077 wall-depth extraction from the frozen `n=5` branch, the"
+downstream_dependents: [085]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "At stage 084 (write-up skeleton) Theta_w is carried symbolically inside Xi_F1 = 136900 Theta_w; no value is set here. The microscopic wall-depth datum Theta_w was defined at stage 075 (4 rho_w^2 mu_*^2/(hbar^2 c_sw^2)), algebraically reduced to 25 lambda_mu^2 rho_w^2 at stage 076, and given its concrete shell-weighted value ~ 4.069 lambda_mu^2 at stage 077 -- all by internal derivation from ledger-internal identities, so internal_consistency. The stage explicitly attributes the value to the Stage-077 extraction."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md, line: 119, excerpt: "`Xi_F1 = 1369 Upsilon_w = 136900 Theta_w.`" }
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 96, excerpt: "This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather than left symbolic." }

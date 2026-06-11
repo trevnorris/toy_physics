@@ -1,0 +1,25 @@
+candidate_id: fit_stage189_lambda0_prefactor_27_20
+parameter_name: Lambda_0
+origin_claims:
+  - parameter: Lambda_0
+    introduced_at_stage: 38
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+      line: 32
+      excerpt: "`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`"
+constraints:
+  - parameter: Lambda_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 144
+      excerpt: "\\Lambda_0:=\\frac{27\\pi^2Gc_s^5}{20a^5c^5}."
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Lambda_0 = 27pi^2 G c_s^5/(20 a^5 c^5) (the 27/20 prefactor of the candidate value) is the inert scalar front factor of the selected-branch identity R_target T^2 = Lambda_0(1-eps_eta); it first enters as the radiative demand scale Lambda at Stage 038 line 32. Stage 189 carries it. Its G/c^5 structure is on the chain that must hit the EXTERNAL GR quadrupole target 2G/(5c^5); the actual external-fit load is borne downstream by m_hat_0^2 P_0 = 54 G c_s^5/(5 a^5 c^5) (this same Stage 189), NOT by the carried Lambda_0 prefactor -> Lambda_0 itself is internal_consistency (a derived/carried algebraic composite)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md, line: 282, excerpt: "\\Lambda_0\\,\\frac{1-\\epsilon_\\eta}{R_{\\rm target}}." }
+      - { path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md, line: 69, excerpt: "`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`" }

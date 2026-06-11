@@ -1,0 +1,25 @@
+candidate_id: fit_stage_251_s_c
+parameter_name: s_c
+origin_claims:
+  - parameter: s_c
+    introduced_at_stage: 251
+    introduced_at_line: 382
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 382
+      excerpt: " s_c:=\\frac{1}{t_{\\rm cross}}"
+constraints:
+  - parameter: s_c
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 382
+      excerpt: " s_c:=\\frac{1}{t_{\\rm cross}}"
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "s_c := 1/t_cross (crossing-rate target) is a definitional internal_consistency relation. Its benchmark number ~= 0.5489386551 is inherited from the Session-IV readback t_cross ~= 1.82169718 (un-derived reported input). Duplicate candidate of fit_stage251_session4_time_inputs for the same parameter s_c."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 459, excerpt: " s_c=\\frac{1}{t_{\\rm cross}}\\approx 0.5489386551," }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 199, excerpt: "assert abs(sc_num - 0.5489386551062235) < 1e-12" }

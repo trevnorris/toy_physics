@@ -1,0 +1,24 @@
+candidate_id: fit_stage_224_hat
+parameter_name: hat
+origin_claims:
+  - parameter: hat
+    introduced_at_stage: 224
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 70
+      excerpt: "\\hat m_0^{\\,2}\\,\\bar P_0-"
+constraints:
+  - parameter: hat
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 189
+      excerpt: "So the same-charge corridor places a direct lower bound on the source-map factor of the actual calibrated branch."
+downstream_dependents: [225]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'hat' is not a real parameter — it is a LaTeX-command fragment the scanner extracted from \\hat m_0 (the source-map factor mhat_0). At stage 224 mhat_0 is an undetermined branch quantity: the same-charge corridor only places a lower bound mhat_0^2 >= T_quad(1+|eps Xi_1|)/P_crit on it (free_choice / open branch factor, not a fixed or derived value). Treat parameter_name as a scanner false-positive for mhat_0."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md, line: 289, excerpt: "\\frac{T_{\\rm quad}(1+|\\epsilon\\Xi_1|)}{P_{\\rm crit}}." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_124_stage_141__phase_b__stage_141.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -84,4 +84,25 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: 'The scanner extracted ''141'' as a candidate value for Stage 124, but ''141'' is NOT a physical parameter value:
+    it is a STALE numbering self-label in the Stage-124 paper card. The card''s \stagefield{Purpose} reads ''Stage~141 is
+    a core outlet realization ledger step'' (paper/stages/stage_124.tex:7) — a +17 \stagefield{Purpose} drift (124+17=141)
+    from the EM-extension renumber, the exact class flagged in PAPER_CLEANUP_TRACKER P5-12 (''\stagefield{Purpose} card self-labels
+    drift +17 ... 124 "Stage 141"'', a class the numbering reconciliation MISSED because it keyed on \section/\label, not
+    \stagefield{Purpose}). No notes/ value-genealogy exists or is needed; logged as a numbering-drift finding only (no origin/constraint).
+    Recommend the deferred numbering pass fix 141->124 in the card Purpose field.'
+  citations:
+  - path: paper/stages/stage_124.tex
+    line: 7
+    excerpt: \stagefield{Purpose}{Stage~141 is a core outlet realization ledger step.  Its audit target is the verification
+      output quoted below.}
+  - path: notes/PAPER_CLEANUP_TRACKER.md
+    line: 637
+    excerpt: '**⚠️ DISCOVERY** — `\stagefield{Purpose}` card self-labels drift +17 (117 "Stage 134", 119 "Stage 136", 120
+      "Stage 137", 124 "Stage 141")'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage_124_stage_141__stage_141.yaml

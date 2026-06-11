@@ -1,0 +1,25 @@
+candidate_id: fit_stage_025_p0_compact
+parameter_name: P0_target
+origin_claims:
+  - parameter: P0_target
+    introduced_at_stage: 22
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: P0_target
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+      line: 101
+      excerpt: "`mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`."
+downstream_dependents: [26, 30, 31, 33]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "P0_compact is the closed one-mode expression for the static prefactor (P^2/[Delta(K Delta - Delta C^2/varpi^2 - Q)]) — that expression itself is an internal_consistency derivation. But the candidate's target VALUE (the RHS the prefactor is required to equal) is the external GR coefficient 54/5 G c_s^5/(5 a^5 c^5) imported at stage 022. The classification published_target reflects the constrained value (the GR target), since the bundle's parameter_name is P0_target. The card's StatusOpen note (whether the branch realizes the required value) is consistent with the value being an external target, not a derived output."
+    citations:
+      - { path: paper/stages/stage_025.tex, line: 5, excerpt: "Whether the actual branch realizes the formula at the required value is \\StatusOpen{}." }
+      - { path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py, line: 119, excerpt: "# target coefficient 54/5 is carried forward from" }

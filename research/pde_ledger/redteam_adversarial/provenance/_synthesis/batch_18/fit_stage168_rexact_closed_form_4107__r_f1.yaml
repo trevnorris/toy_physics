@@ -1,0 +1,30 @@
+candidate_id: fit_stage168_rexact_closed_form_4107
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 69
+      excerpt: "\\frac{\\sqrt{4107-100\\pi^2}}{10\\pi}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 60
+      excerpt: "\\frac{L}{a}=\\frac{37}{20},"
+downstream_dependents: []
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "168 encodes r_F1 as both the decimal 1.77799353547498 and the Mathematica closed form Sqrt[4107-100*Pi^2]/(10*Pi). The surd 4107/100=12*(37/20)^2 is arithmetically forced by r_geom at the POSITED aspect ratio L/a=37/20 (Stage 073/121); the closed form reads as a derivation but its numeric content is the posited 37/20, not an internally forced quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md, line: 192, excerpt: "\\mathfrak r_*=\\mathfrak r_{F1}\\approx 1.77799353547498," }
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 1203, excerpt: "`100π²` is arithmetically forced (`r_geom=√((12/π²)(L/a)²−1)`, `L/a=37/20` ⟹ `12·(37/20)²=4107/100`)" }
+  - type: provenance_gap
+    severity: low
+    summary: "Pending bundle source_evidence was empty for this candidate; the closed form and decimal are documented in the 168 notes (line 192) and the canonical radius is owned upstream at Stage 121."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage168_rexact_closed_form_4107__r_f1.yaml, line: 22, excerpt: "source_evidence: []" }

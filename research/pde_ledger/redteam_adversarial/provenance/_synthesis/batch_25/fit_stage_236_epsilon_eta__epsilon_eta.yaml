@@ -1,0 +1,25 @@
+candidate_id: fit_stage_236_epsilon_eta
+parameter_name: epsilon_eta
+origin_claims:
+  - parameter: epsilon_eta
+    introduced_at_stage: 236
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 46
+      excerpt: "q_\\eta=\\delta\\ln\\epsilon_\\eta"
+constraints:
+  - parameter: epsilon_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 89
+      excerpt: "c_\\eta:=\\frac{\\epsilon_{\\eta,*}}{1-\\epsilon_{\\eta,*}}."
+downstream_dependents: [237, 238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon_eta is NOT a fixed numeric value at Stage 236: it is the dressing observable whose log-derivative is the surviving post-static dressing coordinate q_eta = delta ln epsilon_eta (notes line 46). Its base point epsilon_{eta,*} enters only through the derived coefficient c_eta = epsilon_{eta,*}/(1-epsilon_{eta,*}) (line 89), with no numeric value assigned in this stage. It is a symbolic perturbation/observable variable parametrizing the orbit-lock packet -> the only constraint documented is the DERIVED relation linking it to q_eta and c_eta (internal_consistency). No fitted value; logged low-severity that epsilon_eta is a free symbolic observable here, its value to be determined by the as-yet-unselected PDE branch (line 452 'compute the actual dressing coordinate ...')."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 452, excerpt: "> compute the actual dressing coordinate `q_\\eta=\\delta\\ln\\epsilon_\\eta`, because after the first static gate is cleared that single scalar is exactly the amplitude of the remaining equal-drift microscopic obstruction." }
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 184, excerpt: "\\Delta_{K_\\eta}^{(q)}=-E_1=-\\delta\\ln\\epsilon_\\eta," }

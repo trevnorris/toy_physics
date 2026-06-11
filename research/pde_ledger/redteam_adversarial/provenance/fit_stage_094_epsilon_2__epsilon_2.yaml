@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_094_epsilon_2__phase_b__epsilon_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,8 +29,21 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_2
+  introduced_at_stage: 92
+  introduced_at_line: 23
+  citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 23
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,'
+constraints:
+- parameter: epsilon_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 114
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2) / K_pole = 0`,'
 graph_context:
   contexts: []
   graph_gaps:
@@ -51,3 +64,20 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_094.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'Unlike at Stages 091/093 (where eps_2=0 was a posited static-limit hypothesis, free_choice), at Stage 094 eps_2=0
+    is genuinely DERIVED (internal_consistency): it follows directly from K_g2=0, which is forced by the exact l=0/l=2 orthogonality
+    selection rule of the isotropic quadratic wall theory. So Stage 094 is where the working hypothesis becomes a theorem
+    on the isotropic branch. Symbol originated at Stage 092; value forced to 0 here.'
+  citations:
+  - path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 71
+    excerpt: eps_2 = sp.simplify(Omega_Q**2 * K_g2 / K_pole)
+  - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 31
+    excerpt: '`eps_2 = eps_4 = 0`'
+downstream_dependents:
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage_094_epsilon_2__epsilon_2.yaml

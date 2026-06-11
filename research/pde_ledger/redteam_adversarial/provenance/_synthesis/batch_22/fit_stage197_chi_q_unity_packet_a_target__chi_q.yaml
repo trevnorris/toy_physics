@@ -1,0 +1,25 @@
+candidate_id: fit_stage197_chi_q_unity_packet_a_target
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 194
+    introduced_at_line: 184
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 184
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+      line: 194
+      excerpt: "\\chi_Q=1."
+downstream_dependents: [198]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "chi_Q (outgoing-normalization scalar) is not introduced at Stage 197; it is carried. Stage 197 proves the conditional closure Delta_branch=0 <=> chi_Q=1 (notes lines 188-206): because P0_target>0, the last Packet-A slot Delta_norm = P0_target(chi_Q^{-1}-1) vanishes iff chi_Q=1. The chi_Q value is fixed at Stage 194 (boxed chi_Q=1 at line 184) by O(omega^5)/z^5 matching against the canonical compact outgoing branch; the same canonical-unity also has the older Stage 105 anchor (dual-anchored across the original and rebuilt Stage 191-197 line). constraint_kind internal_consistency: chi_Q=1 is forced by requiring the ledger-internal branch residual Delta_branch to vanish, not by any external number (the external number lives in P0_target, a separate parameter)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md, line: 188, excerpt: "\\Delta_{\\rm branch}=0" }
+      - { path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md, line: 69, excerpt: "\\boxed{\\chi_Q=1.}" }

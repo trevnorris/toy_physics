@@ -1,0 +1,12 @@
+candidate_id: fit_stage_037_fix_loop
+parameter_name: fix_loop
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No parameter, symbol, or variable named 'fix_loop' exists anywhere in the stage-037 sources (notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, paper/stages/stage_037.tex, scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py — all three return zero hits on case-insensitive grep for 'fix_loop'). The mechanical bundle's source_evidence is empty. Scanner false-positive; no origin or constraint attributable."
+    citations:
+      - { path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py, line: 51, excerpt: "banner(\"STAGE 37 — CONTINUUM-KERNEL EXTRACTION AUDIT\")" }
+      - { path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 037: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`" }

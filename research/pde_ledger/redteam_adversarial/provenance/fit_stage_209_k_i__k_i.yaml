@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_209_k_i__phase_b__k_i.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -135,9 +135,26 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: 'Qorig = sp.expand(Q.subs({A: ki**2 - 2 * H0 * u, B: 2 * ki * kj - 4 * H0 * v, C: kj**2 - 2 * H0 * w}))'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: k_i
+  introduced_at_stage: 207
+  introduced_at_line: 248
+  citation:
+    path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    line: 248
+    excerpt: \boxed{k_i:=|\Gamma_i|>0.}
+constraints:
+- parameter: k_i
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+    line: 62
+    excerpt: k_{ij}(r)=\frac{k_i+r k_j}{\sqrt{1+r^2}}.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '210'
+synthesis_ingested_at: '2026-06-11T19:17:21Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_209_k_i__k_i.yaml

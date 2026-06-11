@@ -1,0 +1,25 @@
+candidate_id: fit_stage225_xk_xm_forced_zero
+parameter_name: x_K
+origin_claims:
+  - parameter: x_K
+    introduced_at_stage: 225
+    introduced_at_line: 407
+    citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 407
+      excerpt: "x_K=0,"
+constraints:
+  - parameter: x_K
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 400
+      excerpt: "So whenever"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "x_K is a free microscopic logarithmic-slope variable, not a posited constant; its value 0 in this candidate is FORCED, not chosen: in the wall-only family the conservative compensation equation -(D_4/D_0)K x_K=0 with D_4/D_0!=0 on the compatibility branch forces x_K=0 (and then x_M=0). The 'forced zero' is therefore an internal-consistency consequence (a no-go), documented at notes lines 401-411. No fitted value exists to provenance."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md, line: 398, excerpt: "-\\frac{D_4}{D_0}Kx_K = 0." }
+      - { path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md, line: 414, excerpt: "\\boxed{\\text{wall-only compensated deformations are generically trivial.}}" }

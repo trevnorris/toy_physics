@@ -1,0 +1,19 @@
+candidate_id: fit_stage196_sigma_Q_canonical_outgoing_scale
+parameter_name: sigma_Q_can
+origin_claims:
+  - parameter: sigma_Q_can
+    introduced_at_stage: 194
+    introduced_at_line: 74
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 74
+      excerpt: "\\sigma_Q^{\\rm can}=\\frac{9}{8\\Omega_Q^5}=\\frac{4a^5}{27c_s^5}."
+constraints:
+  - parameter: sigma_Q_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 69
+      excerpt: "Matching the even coefficients of Stage 193 to the canonical compact outgoing `l=2` branch fixes"
+downstream_dependents: [197]
+provenance_findings: []

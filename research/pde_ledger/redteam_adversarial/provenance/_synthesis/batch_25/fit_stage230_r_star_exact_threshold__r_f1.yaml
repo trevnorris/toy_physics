@@ -1,0 +1,25 @@
+candidate_id: fit_stage230_r_star_exact_threshold
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 230
+    introduced_at_line: 227
+    citation:
+      path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+      line: 227
+      excerpt: "\\mathcal R_*="
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+      line: 220
+      excerpt: "So the lower wall-like pole flips sign exactly once, at"
+downstream_dependents: [231, 233, 234]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The bundle's parameter_name 'r_F1' does not appear verbatim in the Stage-230 notes or script; the candidate id ('r_star_exact_threshold') and target value 1.229255438463336 unambiguously identify it as the sign-flip threshold R_* (notes lines 227/229: 'R_* = s_-^(den)/(-s_-^(num)) ~ 1.229255438463336'; script line 111-112 'R_star = s_minus_den/(-s_minus_num)'). The scanner symbol 'r_F1' is a naming-map artifact, not a ledger symbol. The value is FORCED internally: R_* is the unique zero of the lower-pole dynamic-sign function S_-(R_ND)=0, computed from two ledger-internal dynamic slopes s_-^(den) and s_-^(num) -> internal_consistency. No external target; classification fully supported."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md, line: 229, excerpt: "\\frac{s_-^{(\\rm den)}}{-s_-^{(\\rm num)}}\n\\approx 1.229255438463336." }
+      - { path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py, line: 111, excerpt: "R_star = sp.simplify(s_minus_den / (-s_minus_num))" }

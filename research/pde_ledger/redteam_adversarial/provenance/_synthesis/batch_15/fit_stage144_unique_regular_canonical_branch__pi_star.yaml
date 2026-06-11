@@ -1,0 +1,25 @@
+candidate_id: fit_stage144_unique_regular_canonical_branch
+parameter_name: Pi_star
+origin_claims:
+  - parameter: Pi_star
+    introduced_at_stage: 130
+    introduced_at_line: 108
+    citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 108
+      excerpt: "\\Pi_* \\approx 1.50882951349316."
+constraints:
+  - parameter: Pi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 49
+      excerpt: "there exists a unique positive finite \\(\\Pi_*\\) such that"
+downstream_dependents: [145, 146, 152, 156]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 144 Pi_* = 1.50882951349316 is RE-DERIVED (existence + uniqueness), not re-imported as a bare number: the note proves g_Pi is strictly monotone increasing with range 2/pi < g_Pi < 1, and since 2/pi approx 0.6366 < g_-^{F1} approx 0.7580 < 1, a UNIQUE finite Pi_* solves g_{Pi_*} = g_-^{F1} (notes lines 43-54). internal_consistency: a monotone-existence/uniqueness argument among ledger-internal quantities. Origin of the numerical value is still Stage 130 (the original solve of g_Pi = g_-^{F1}). Gap flagged only because the load-bearing input g_-^{F1} approx 0.758035 traces back to the Stage-115 core-balance family + Stage-121 geometric r_F1, not to a 144-local definition; 144 is a branch-SELECTION theorem (upper branch impossible, equal-normalized singular, lower branch the unique regular one)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md, line: 68, excerpt: "positive mouth family it is the **unique finite-bias** compensated branch." }
+      - { path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md, line: 43, excerpt: "From Stage 130, \\(\\mathfrak g_\\Pi\\) is strictly monotone increasing in \\(\\Pi\\), with range" }

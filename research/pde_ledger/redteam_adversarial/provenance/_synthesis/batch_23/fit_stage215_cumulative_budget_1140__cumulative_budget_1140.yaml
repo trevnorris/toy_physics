@@ -1,0 +1,19 @@
+candidate_id: fit_stage215_cumulative_budget_1140
+parameter_name: cumulative_budget_1140
+origin_claims:
+  - parameter: cumulative_budget_1140
+    introduced_at_stage: 215
+    introduced_at_line: 440
+    citation:
+      path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+      line: 440
+      excerpt: "\\boxed{600+540=1140}"
+constraints:
+  - parameter: cumulative_budget_1140
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+      line: 438
+      excerpt: "Therefore the entire local search up through four active primitive coordinates has the exact finite budget"
+downstream_dependents: [217, 218]
+provenance_findings: []

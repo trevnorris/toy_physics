@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage108_beta_forced_positive_branch__phase_b__beta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -144,9 +144,50 @@ source_evidence:
   line: 109
   role: sympy_script
   excerpt: (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: beta
+  introduced_at_stage: 107
+  introduced_at_line: 38
+  citation:
+    path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+    line: 38
+    excerpt: '- `beta` rescales the effective outgoing argument,'
+- parameter: beta
+  introduced_at_stage: 108
+  introduced_at_line: 43
+  citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 43
+    excerpt: \boxed{\beta=1.}
+constraints:
+- parameter: beta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 37
+    excerpt: \beta^2=1,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: beta magnitude is forced by internal consistency (preserving canonical even moments forces beta^2=1, beta^4=1),
+    but the choice beta=+1 over beta=-1 is a positive-branch convention (free_choice overlay), not itself forced.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 41
+    excerpt: which on the natural positive branch forces
+  - path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+    line: 47
+    excerpt: 'if {sol[beta] for sol in sol_beta} != {sp.Integer(-1), sp.Integer(1)}:'
+downstream_dependents:
+- '109'
+- '110'
+- '111'
+- '112'
+- '113'
+- '114'
+- '115'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage108_beta_forced_positive_branch__beta.yaml

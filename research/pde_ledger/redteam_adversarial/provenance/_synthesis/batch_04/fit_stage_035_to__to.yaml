@@ -1,0 +1,12 @@
+candidate_id: fit_stage_035_to
+parameter_name: to
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'to' is not a ledger parameter. Every source_evidence pointer in the bundle is ordinary English prose containing the word 'to' (e.g. notes line 8 'therefore to pass to the exact D/N ... constants', line 12 'collapses to one equation', line 15 'maps the stable branch exactly from 1 to +infinity'). No symbol, variable, or value named 'to' exists in the stage-035 notes, paper card, or sympy audit (confirmed via word-boundary grep for a 'to' token assignment). Scanner tokenization false-positive; no origin or constraint attributable."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md, line: 8, excerpt: "The next step is therefore to pass to the exact D/N finite-throat constants and reduce the entire problem to a **dimensionless shape function**." }
+      - { path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md, line: 15, excerpt: "3. it maps the stable branch exactly from `1` to `+infinity`," }

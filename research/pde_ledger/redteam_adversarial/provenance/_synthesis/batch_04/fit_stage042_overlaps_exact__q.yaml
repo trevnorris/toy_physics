@@ -1,0 +1,25 @@
+candidate_id: fit_stage042_overlaps_exact
+parameter_name: q
+origin_claims:
+  - parameter: q
+    introduced_at_stage: 040
+    introduced_at_line: 57
+    citation:
+      path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+      line: 57
+      excerpt: "`q := z_1 / z_0.`"
+constraints:
+  - parameter: q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+      line: 77
+      excerpt: "So the normalization data no longer factor through one direction only. The mixed/outgoing overlap and the source overlap are deformed differently once `q != r`."
+downstream_dependents: [042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "q is the mixed-loading direction ratio q := z_1/z_0, first defined at stage 040. At stage 042 it parameterizes the exact selected-mode overlaps (z.e_-)^2/z_0^2 and (s.e_-)^2/s_0^2 (notes lines 64-75) and the rank-2 normalization function F_(q,r,t). For the physical split-U continuum it equals q = t R_U = -(sqrt(2)/3) R_U where t^2 = lambda_0 = kappa_1^2/kappa_0^2 = 2/9 (stage 040 line 121). It is internal_consistency — fixed by the D/N overlaps and the split-U direction ratio R_U, not a fit/posit. The candidate captures the exact overlap algebra, not a tuned constant."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md, line: 64, excerpt: "`(z.e_-)^2 / z_0^2`" }
+      - { path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md, line: 121, excerpt: "`q = - sqrt(lambda_0) R_U = - (sqrt(2)/3) R_U,`" }

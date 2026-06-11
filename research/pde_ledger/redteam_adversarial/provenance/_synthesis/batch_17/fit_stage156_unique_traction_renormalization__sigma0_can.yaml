@@ -1,0 +1,26 @@
+candidate_id: fit_stage156_unique_traction_renormalization
+parameter_name: Sigma0_can
+origin_claims:
+  - parameter: Sigma0_can
+    introduced_at_stage: 156
+    introduced_at_line: 31
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 31
+      excerpt: "\\approx 4.651033550168867."
+constraints:
+  - parameter: Sigma0_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 23
+      excerpt: "\\mathfrak g_{\\rm fp}(\\Sigma_0)=\\mathfrak g_*"
+downstream_dependents: [157, 158, 159]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Sigma0_can = 4.651033550168867 is the unique positive root of g_fp(Sigma0) = g_* on the analyzed monotone bracket (compensation-restoration condition among ledger-internal quantities) -> genuine internal_consistency. Minor cross-source value-tail discrepancy: notes/scripts give ...168867 (line 31) while the carried tuple in stage157/158 notes uses ...168876 (last two digits swapped). Below the 1e-10 audit tolerance asserted in the stage156 script, so non-substantive, but flagged for the value-reconciliation pass."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 31, excerpt: "\\approx 4.651033550168867." }
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 30, excerpt: "\\Sigma_0^{\\rm can}" }
+      - { path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py, line: 127, excerpt: "if abs(Sigma0_can - 4.651033550168867) > 1e-10:" }

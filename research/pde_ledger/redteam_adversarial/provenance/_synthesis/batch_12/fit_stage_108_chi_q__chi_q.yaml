@@ -1,0 +1,25 @@
+candidate_id: fit_stage_108_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 105
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 69
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 67
+      excerpt: "Matching the \\(O(\\omega^5)\\) coefficient yields"
+downstream_dependents: [109, 110, 111, 112, 113, 114, 115, 141]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 108's chi_Q=1 is carried/restated from its true origin at Stage 105 (matched to the ledger-internal outgoing DtN fingerprint of Stage 87/104); stage 108 only re-derives robustness, it does not introduce the value. No mis-attribution in the card itself, but graph atlas has no node for this source path (see graph_gap class)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md, line: 57, excerpt: "From Stage 87, the explicit outgoing DtN branch gives" }
+      - { path: notes/stages/moving_throat_pde_stage108_robustness_classes.md, line: 102, excerpt: "The canonical value `chi_Q = 1` is robust against:" }

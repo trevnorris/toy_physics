@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage166_four_observables_determine_drifts__phase_b__k_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -106,9 +106,35 @@ source_evidence:
   line: 102
   role: sympy_script
   excerpt: print("  delta ln Z_q   = delta ln K_q - 2/5 delta ln P_0")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_q
+  introduced_at_stage: 166
+  introduced_at_line: 72
+  citation:
+    path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+    line: 72
+    excerpt: K_q \propto \mathcal Z_q\,\frac{c_s^2}{L_W^2},
+constraints:
+- parameter: K_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+    line: 79
+    excerpt: \delta\ln K_q = \delta\ln \mathcal Z_q + 2\,\delta\ln c_s - 2\,\delta\ln a.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: K_q (one of the four bundle observables whose drift inverts the four microscopic drifts) is the mixed side-channel
+    stiffness defined at Stage 118 (K_q=(Z_q/mu_0)(pi^2 c_s^2/(4 L_W^2))); 166 uses K_q propto Z_q c_s^2/L_W^2 without citing
+    the Stage-118 origin line.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+    line: 70
+    excerpt: On the exact lower compensated D/N branch,
+downstream_dependents:
+- '167'
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage166_four_observables_determine_drifts__k_q.yaml

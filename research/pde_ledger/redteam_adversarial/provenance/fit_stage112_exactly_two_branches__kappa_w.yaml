@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage112_exactly_two_branches__phase_b__kappa_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -72,9 +72,41 @@ source_evidence:
   line: 43
   role: sympy_script
   excerpt: 'assert sols == [{kappa: 0, rho: sigma}, {kappa: sp.Rational(1, 3), rho: 4*sigma}]'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_W
+  introduced_at_stage: 111
+  introduced_at_line: 22
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 22
+    excerpt: '- `kappa_W > 0` the hidden even dispersion scale,'
+constraints:
+- parameter: kappa_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 47
+    excerpt: \boxed{\rho_R=4\sigma_W,\qquad \kappa_W=\frac13.}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'NOT a fit. Imposing the canonical conservative even fingerprint (-L2/L0=1/9 and L2^2/L0^2-L4/L0=4/81) on the hybrid
+    outlet yields EXACTLY two algebraic branches: (rho_R=sigma_W, kappa_W=0) trivial, and (rho_R=4*sigma_W, kappa_W=1/3) nontrivial.
+    kappa_W=1/3 is forced by ledger-internal even-moment matching, not back-solved to an external number. Classified internal_consistency;
+    positive control. (Note kappa_W>0 here is consistent, in contrast to the Stage-111 standalone-pole no-go that forced kappa_W=-1/9.)'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+    line: 35
+    excerpt: Imposing the canonical conservative even fingerprint,
+  - path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+    line: 43
+    excerpt: 'assert sols == [{kappa: 0, rho: sigma}, {kappa: sp.Rational(1, 3), rho: 4*sigma}]'
+downstream_dependents:
+- '113'
+- '114'
+- '115'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage112_exactly_two_branches__kappa_w.yaml

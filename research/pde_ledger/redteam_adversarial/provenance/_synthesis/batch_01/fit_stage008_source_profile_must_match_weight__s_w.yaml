@@ -1,0 +1,19 @@
+candidate_id: fit_stage008_source_profile_must_match_weight
+parameter_name: S_w
+origin_claims:
+  - parameter: S_w
+    introduced_at_stage: 8
+    introduced_at_line: 220
+    citation:
+      path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+      line: 220
+      excerpt: "S(w)=\\frac{Z(w)}{Z_{\\rm int}},"
+constraints:
+  - parameter: S_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+      line: 213
+      excerpt: "so matching depends on the **source profile** \\(S(w)\\)."
+downstream_dependents: [9, 10]
+provenance_findings: []

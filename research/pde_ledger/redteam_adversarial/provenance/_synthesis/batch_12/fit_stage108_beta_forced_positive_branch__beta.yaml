@@ -1,0 +1,32 @@
+candidate_id: fit_stage108_beta_forced_positive_branch
+parameter_name: beta
+origin_claims:
+  - parameter: beta
+    introduced_at_stage: 107
+    introduced_at_line: 38
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 38
+      excerpt: "- `beta` rescales the effective outgoing argument,"
+  - parameter: beta
+    introduced_at_stage: 108
+    introduced_at_line: 43
+    citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 43
+      excerpt: "\\boxed{\\beta=1.}"
+constraints:
+  - parameter: beta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 37
+      excerpt: "\\beta^2=1,"
+downstream_dependents: [109, 110, 111, 112, 113, 114, 115]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "beta magnitude is forced by internal consistency (preserving canonical even moments forces beta^2=1, beta^4=1), but the choice beta=+1 over beta=-1 is a positive-branch convention (free_choice overlay), not itself forced."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage108_robustness_classes.md, line: 41, excerpt: "which on the natural positive branch forces" }
+      - { path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py, line: 47, excerpt: "if {sol[beta] for sol in sol_beta} != {sp.Integer(-1), sp.Integer(1)}:" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_192_i_3__phase_b__i_3.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -27,9 +27,35 @@ source_evidence:
   line: 110
   role: sympy_script
   excerpt: expect_zero("M_* S - I_3", sp.simplify(Mstar * Sdep) - sp.eye(3))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: I_3
+  introduced_at_stage: 192
+  introduced_at_line: 200
+  citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 200
+    excerpt: \boxed{M_*S_{(T,K_\eta,\mu)}=I_3.}
+constraints:
+- parameter: I_3
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 202
+    excerpt: So `\(S_{(T,K_\eta,\mu)}\)` is an exact right inverse of the quotient map.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: I_3 is not a fitted parameter — it is the 3x3 identity matrix appearing in the exact right-inverse identity M_*
+    S = I_3 (192 line 200), proving S_{(T,K_eta,mu)} is the canonical quotient section. It is a mathematical constant (identity
+    matrix), classified internal_consistency (a proven algebraic identity), with no value to fit. Logged as a low-severity
+    gap only to flag it as a non-parameter / scanner family token rather than an ansatz value.
+  citations:
+  - path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+    line: 110
+    excerpt: expect_zero("M_* S - I_3", sp.simplify(Mstar * Sdep) - sp.eye(3))
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_192_i_3__i_3.yaml

@@ -1,0 +1,19 @@
+candidate_id: fit_stage_031_delta_kappa
+parameter_name: delta_kappa
+origin_claims:
+  - parameter: delta_kappa
+    introduced_at_stage: 28
+    introduced_at_line: 137
+    citation:
+      path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+      line: 137
+      excerpt: "`kappa_0^2 - kappa_1^2 = 56 / (9 pi^2) > 0`,"
+constraints:
+  - parameter: delta_kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 55
+      excerpt: "`delta_kappa = kappa_0^2 - kappa_1^2`,"
+downstream_dependents: [33]
+provenance_findings: []

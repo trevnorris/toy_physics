@@ -1,0 +1,24 @@
+candidate_id: fit_stage_111_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 107
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 20
+      excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6),"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 41
+      excerpt: "Demand that this branch preserve the canonical conservative even fingerprint. The `z^2` condition gives"
+downstream_dependents: [112]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage 111 notes path (carried from the mechanical bundle). The canonical conservative even fingerprint that the mixed pole is matched against is the ledger-internal outgoing branch (Stage 104/107), not an external target; value provenance is sound, only the atlas node is missing."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 41, excerpt: "Demand that this branch preserve the canonical conservative even fingerprint." }

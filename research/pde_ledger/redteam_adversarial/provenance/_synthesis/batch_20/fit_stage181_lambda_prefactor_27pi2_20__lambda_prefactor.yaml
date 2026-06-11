@@ -1,0 +1,25 @@
+candidate_id: fit_stage181_lambda_prefactor_27pi2_20
+parameter_name: Lambda_prefactor
+origin_claims:
+  - parameter: Lambda_prefactor
+    introduced_at_stage: 38
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+      line: 32
+      excerpt: "`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`"
+constraints:
+  - parameter: Lambda_prefactor
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+      line: 132
+      excerpt: "\\frac{27\\pi^2Gc_s^5}{20a^5c^5}\\,\\Omega_W^2."
+downstream_dependents: [180, 182, 183, 184, 189]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 181 uses Lambda = 27pi^2 G c_s^5/(20 a^5 c^5) * Omega_W^2 without naming its origin; the prefactor (the radiative demand scale Lambda) first enters as a derived continuum-kernel composite at Stage 038 line 32. Note: the 27pi^2/20 prefactor and its G/c^5 structure sit on the chain that ultimately must hit the EXTERNAL GR quadrupole target 2G/(5c^5) (Stage 022 line 258); the external-fit pressure is realized downstream in m_hat_0^2 P_0 (Stage 189), not in this carried prefactor itself."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md, line: 130, excerpt: "\\Lambda" }
+      - { path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md, line: 32, excerpt: "`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`" }

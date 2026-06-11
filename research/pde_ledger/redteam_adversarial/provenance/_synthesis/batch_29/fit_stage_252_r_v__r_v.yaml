@@ -1,0 +1,19 @@
+candidate_id: fit_stage_252_r_v
+parameter_name: r_V
+origin_claims:
+  - parameter: r_V
+    introduced_at_stage: 252
+    introduced_at_line: 152
+    citation:
+      path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+      line: 152
+      excerpt: "\\mathfrak r_V(T):=\\frac{\\mathcal I_3(T)}{\\mathcal I_2(T)}."
+constraints:
+  - parameter: r_V
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+      line: 240
+      excerpt: "\\mathfrak r_V=s^2."
+downstream_dependents: [253]
+provenance_findings: []

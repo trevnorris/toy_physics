@@ -1,0 +1,25 @@
+candidate_id: fit_stage_024_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 024
+    introduced_at_line: 183
+    citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 183
+      excerpt: "`D_(20,n) = D_(21,n) = D_(22,n) = D_n`,"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 70
+      excerpt: "So on the natural isotropic source map the **angular** matching matrix is exactly the identity."
+downstream_dependents: [025, 026]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At stage 024 'matched_fingerprint_value' refers to the angular matching being exactly the identity and the grouped lanes collapsing to one common scalar value on the isotropic branch — a DERIVED consequence of real-STF orthonormality and O(3) invariance, not a fit. internal_consistency. No distinct numeric value is introduced (the 'matched' fingerprint is the carried derived l=2 fingerprint plus the identity angular map); logged low gap accordingly."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md, line: 130, excerpt: "So on the isotropic branch the full Stage-023 coefficients become true scalar lane-independent objects:" }
+      - { path: paper/stages/stage_024.tex, line: 52, excerpt: "S_A^{\\rm port}=\\int_{S^2}Y_A(n)S(n)\\,d\\Omega=S_A}." }

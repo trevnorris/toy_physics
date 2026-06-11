@@ -1,0 +1,16 @@
+candidate_id: fit_stage_031_stale_output
+parameter_name: stale_output
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "stale_output is not a fitted/posited parameter and carries no value genealogy. It is a generic scanner meta-candidate (the same pattern recurs at stages 055/195/200/207) that flags the paper card's Verification/Output fields pointing at committed transcript files. The stage-031 card states no free numeric constants, so there is nothing to value-classify. No notes/ source documents any 'stale_output' value, so no origin or constraint_kind can be asserted; logged as a gap per the binding rule."
+    citations:
+      - { path: paper/stages/stage_031.tex, line: 5, excerpt: "\\claimstatus{\\StatusExactClosure{} inside the selected lower-mode branch.}" }
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Informational staleness signal only (no math impact): the SymPy script mtime is newer than its committed .txt transcript; git shows the sole post-output change was a banner-string edit 'STAGE 14 AUDIT COMPLETE' -> 'STAGE 31 AUDIT COMPLETE' (commit e2a4780). No equation, value, assertion, or symbol changed, so the captured numeric/symbolic content remains faithful; the orchestrator's independent re-run refreshes the banner line. Recorded as a low-severity anchor note, not a value finding."
+    citations:
+      - { path: paper/stages/stage_031.tex, line: 11, excerpt: "transcript: \\StageFile{scripts/output/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.txt}." }

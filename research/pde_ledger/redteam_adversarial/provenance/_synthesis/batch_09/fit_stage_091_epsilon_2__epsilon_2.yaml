@@ -1,0 +1,25 @@
+candidate_id: fit_stage_091_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 92
+    introduced_at_line: 23
+    citation:
+      path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+      line: 23
+      excerpt: "`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 22
+      excerpt: "- and if the 3PN geometry completion is genuinely static through `O(omega^4)`,"
+downstream_dependents: [92, 93, 94]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The symbol epsilon_2 (geometry-contamination parameter) is NOT named in the Stage 091 note at all; 091 instead posits the equivalent static-geometry hypothesis 'geometry completion is genuinely static through O(omega^4)' (i.e. eps_2=0 implicitly), an ansatz (free_choice). The parameter eps_2 is first defined at Stage 092 (line 23); its value is later forced to 0 by the orthogonality theorem at Stage 094. At 091 it is an implicit posited-zero, not a derived quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md, line: 22, excerpt: "- and if the 3PN geometry completion is genuinely static through `O(omega^4)`," }
+      - { path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md, line: 31, excerpt: "`eps_2 = eps_4 = 0`" }

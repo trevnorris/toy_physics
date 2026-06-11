@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_d_uv__phase_b__d_uv.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,39 @@ source_evidence:
   line: 143
   role: sympy_script
   excerpt: print("D_UV                  =", D_UV)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_UV
+  introduced_at_stage: 245
+  introduced_at_line: 350
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 350
+    excerpt: The exact `U/V` drain term is
+constraints:
+- parameter: D_UV
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 217
+    excerpt: \mathcal D_{UV}(r)=\frac{\chi_{UV}(r)^2 a_V f_U(r)^2}{\Delta_{UV}(r)^2},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Scanner-extracted target value ''0'' for D_UV is not a parameter value: it is the nonnegativity floor of the symbolic
+    drain (script asserts sp.ask(sp.Q.nonnegative(D_UV)) and D_UV_probe >= 0). D_UV is a symbolic derived formula carried
+    from Stage 245 (origin notes line 350-354: chi_UV*U*V drain), specialized to the stage 247 compiler as eta_UV*D_UV. There
+    is no scalar ''0'' value of D_UV to classify; mechanism is internal_consistency (derived drain expression).'
+  citations:
+  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 133
+    excerpt: assert sp.ask(sp.Q.nonnegative(D_UV)) in (True, None)
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 354
+    excerpt: \mathcal D_{UV}:=\chi_{UV}UV
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:43Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage_247_d_uv__d_uv.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage246_session1_inputs
+parameter_name: a_0
+origin_claims:
+  - parameter: a_0
+    introduced_at_stage: 246
+    introduced_at_line: 474
+    citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 474
+      excerpt: "a_0=2.2,"
+constraints:
+  - parameter: a_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 472
+      excerpt: "Use the recorded Session-I source-side parameters"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "a_0 = 2.2 is a probe/sample input IMPORTED from the barrier Session-I write-up as a 'recorded Session-I source-side parameter' (notes line 472-474), the cos(pi x) mode amplitude of the transported compensated source a(r) = a_0 s(r). It is a posited representative sample value (free_choice), not derived from ledger-internal quantities and not an external published target. It is used only to reproduce the sampled Session-I mouth/source diagnostics (g, S, R, sign-change) as a readback consistency check. Logged at low severity to record its sample-probe character."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 396, excerpt: "a(r)=a_0\\,s(r)," }
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 530, excerpt: "The last three values reproduce the sampled Session-I mouth/source diagnostics exactly at the precision reported in the session table." }

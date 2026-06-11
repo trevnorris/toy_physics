@@ -1,0 +1,24 @@
+candidate_id: fit_stage_111_a_0
+parameter_name: a_0
+origin_claims:
+  - parameter: a_0
+    introduced_at_stage: 109
+    introduced_at_line: 15
+    citation:
+      path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+      line: 15
+      excerpt: "\\Sigma_0=\\varepsilon a_0,"
+constraints:
+  - parameter: a_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 77
+      excerpt: "\\boxed{(b,a_0,a_5)=(0,-\\sigma_W,-\\sigma_W\\gamma_W).}"
+downstream_dependents: [112]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "At Stage 111 the static slot a_0 is identified with the (negative) mixed loading a_0=-sigma_W via the linearized branch-selection triple; the identification is internal_consistency (the mixed model's static slot maps onto the a_0 coordinate). a_0 has no fixed numeric value here; it tracks the posited mixed-loading parameter sigma_W (whose own preservation value is forced to 0 — see fit_stage111_sigmaW_forced_to_zero)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 75, excerpt: "So the linearized branch-selection triple is" }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage049_uniform_source_density
+parameter_name: sigma_source_density
+origin_claims:
+  - parameter: sigma_source_density
+    introduced_at_stage: 49
+    introduced_at_line: 93
+    citation:
+      path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+      line: 93
+      excerpt: "`sigma(s)=1.`"
+constraints:
+  - parameter: sigma_source_density
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+      line: 91
+      excerpt: "For the first explicit local kernel, choose the uniform source density"
+downstream_dependents: [50, 53]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "sigma(s)=1 is an explicitly POSITED ansatz ('choose the uniform source density') selecting the simplest source profile, hence free_choice. The downstream overlap hierarchy I_n/I_0=1/(2n+1) and zeta_n^phys are then derived FROM this choice, so they are internal_consistency conditional on the posited sigma. (Stages 053/056 later generalize sigma to a transport-derived exponential family, retroactively giving the asymmetry parameter a physical origin, but at Stage 049 the uniform profile is an ansatz.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md, line: 26, excerpt: "For the first uniform local source density `sigma(s)=1`, the overlap hierarchy is exact:" }

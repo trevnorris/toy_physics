@@ -1,0 +1,19 @@
+candidate_id: fit_stage_064_f_eff
+parameter_name: F_eff
+origin_claims:
+  - parameter: F_eff
+    introduced_at_stage: 64
+    introduced_at_line: 164
+    citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 164
+      excerpt: "`F_eff(phi) = (1/2) [ K_X - Lambda^2 / Theta ] phi^2.`"
+constraints:
+  - parameter: F_eff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 160
+      excerpt: "`sigma_stat = Lambda phi / Theta,`"
+downstream_dependents: [65, 66]
+provenance_findings: []

@@ -1,0 +1,16 @@
+candidate_id: fit_stage_169_tautological_check
+parameter_name: tautological_check
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'tautological_check' is not a ledger parameter value; it is an audit-machinery concept (the red-team test for tautological/circular assertions in a verification script). The bundle's only source_evidence is the stage 169 paper card's verification checklist (paper/stages/stage_169.tex:19-22) and the script's 'Checks:' header — none of which posit, derive, or fit a numeric value. No per-stage notes document a value named tautological_check, so there is no value genealogy to classify."
+    citations:
+      - path: paper/stages/stage_169.tex
+        line: 19
+        excerpt: "\\stagefield{Checks}{\\begin{verificationchecklist}"
+      - path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+        line: 7
+        excerpt: "Checks:"

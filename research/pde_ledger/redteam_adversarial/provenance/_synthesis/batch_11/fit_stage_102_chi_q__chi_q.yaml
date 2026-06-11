@@ -1,0 +1,24 @@
+candidate_id: fit_stage_102_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 101
+    introduced_at_line: 13
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 13
+      excerpt: "This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`."
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+      line: 28
+      excerpt: "`  + i chi_Q 9/(32 Omega_Q^5) omega^5 + O(omega^6).`"
+downstream_dependents: [103, 104, 105, 106, 107]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 102 notes carry a stale pre-renumber cross-reference 'Stage 84 reduced ...'; canonical predecessor that reduced the 2.5PN question to chi_Q is Stage 101, not Stage 84."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md, line: 5, excerpt: "Stage 84 reduced the last finite reduced 2.5PN question to one outgoing-normalization factor `chi_Q`." }

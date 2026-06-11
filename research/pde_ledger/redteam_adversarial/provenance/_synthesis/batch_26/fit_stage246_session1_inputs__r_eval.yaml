@@ -1,0 +1,25 @@
+candidate_id: fit_stage246_session1_inputs
+parameter_name: r_eval
+origin_claims:
+  - parameter: r_eval
+    introduced_at_stage: 246
+    introduced_at_line: 480
+    citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 480
+      excerpt: "r_{\\rm eval}=1.00217028,"
+constraints:
+  - parameter: r_eval
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 472
+      excerpt: "Use the recorded Session-I source-side parameters"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "r_eval = 1.00217028 is a probe/sample evaluation radius imported from the barrier Session-I write-up (notes line 472-480), the radius at which the transported source moments are read back. It is a posited representative sample evaluation point (free_choice), not derived from ledger-internal quantities and not an external published target. At r_eval the attenuation s = 0.38921266 and the compilers reproduce the sampled Session-I g/S/R/sign-change diagnostics. Logged at low severity to record its sample-probe character."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 489, excerpt: "s(r_{\\rm eval})\n=\n\\frac{r_\\sigma^2}{r_{\\rm eval}^2+r_\\sigma^2}\n\\approx 0.38921266210419." }
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 530, excerpt: "The last three values reproduce the sampled Session-I mouth/source diagnostics exactly at the precision reported in the session table." }

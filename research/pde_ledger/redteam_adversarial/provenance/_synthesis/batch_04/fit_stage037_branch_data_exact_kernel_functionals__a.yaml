@@ -1,0 +1,25 @@
+candidate_id: fit_stage037_branch_data_exact_kernel_functionals
+parameter_name: A
+origin_claims:
+  - parameter: A
+    introduced_at_stage: 033
+    introduced_at_line: 44
+    citation:
+      path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+      line: 44
+      excerpt: "`A = K_0 - g_U^2 / Omega_U^2`,"
+constraints:
+  - parameter: A
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+      line: 233
+      excerpt: "`A = [ K_U K_eta^(eff) - c_(eta U)^2 ] / ( mu_eta K_U ),`"
+downstream_dependents: [038, 039, 040, 041, 042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "A (the baseline flat-branch scalar stiffness) is defined abstractly at stage 033 as A = K_0 - g_U^2/Omega_U^2, then given its exact closed continuum-kernel form at stage 037 (A = [K_U K_eta^eff - c_etaU^2]/(mu_eta K_U), notes line 233; audit verifies the continuum extraction). Pure internal_consistency — a Schur-complement functional of the explicit continuum operator, neither fit nor posited. Logged informationally: 037 is the value-form origin, 033 the symbolic origin."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, line: 207, excerpt: "`A = K_0 - g_U^2 / Omega_U^2,`" }
+      - { path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, line: 281, excerpt: "`K_U K_eta^(eff) > c_(eta U)^2.`" }

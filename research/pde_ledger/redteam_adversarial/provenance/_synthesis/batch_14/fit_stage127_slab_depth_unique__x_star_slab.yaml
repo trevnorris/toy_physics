@@ -1,0 +1,19 @@
+candidate_id: fit_stage127_slab_depth_unique
+parameter_name: x_star_slab
+origin_claims:
+  - parameter: x_star_slab
+    introduced_at_stage: 127
+    introduced_at_line: 40
+    citation:
+      path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+      line: 40
+      excerpt: "x_*^{\\rm slab}\\approx 0.797839360904564."
+constraints:
+  - parameter: x_star_slab
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+      line: 35
+      excerpt: "\\mathfrak g_{\\rm slab}(x)=\\mathfrak g_-^{F1}"
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage162_gamma0_one_ninth_r_form__phase_b__gamma_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -104,9 +104,46 @@ source_evidence:
   line: 79
   role: sympy_script
   excerpt: 'print("  On the exact parent family: d ln gamma0 = 2 d ln(L_W/a), so Xi_slip = 0.")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_0
+  introduced_at_stage: 162
+  introduced_at_line: 61
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 61
+    excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
+constraints:
+- parameter: gamma_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 58
+    excerpt: And Stages 115–116 fix the bare odd normalization by
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: gamma_0=(1+r^2)/9 is restated at 162 but originates at Stages 115-116; the script comment correctly anchors it
+    there but the notes never cite the originating line in 115/116.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 58
+    excerpt: And Stages 115–116 fix the bare odd normalization by
+  - path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+    line: 39
+    excerpt: '# Exact parent family formulas from Stage 119 (with gamma0 from Stages 115-116).'
+- type: paper_card_overclaim
+  severity: needs_triage
+  summary: gamma_0=(1+r_c)/9 is recorded in the ansatz catalog as a POSTULATED pure-scale ANSATZ (not derived), yet 162 carries
+    it inside an Exact-Closure derivation-ledger card without the ansatz tag.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 1210
+    excerpt: '`γ₀ = (1+r_c)/9` is a POSTULATED pure-scale ANSATZ, NOT derived (117 §5 / 116 "Bare outgoing normalization"
+      note)'
+downstream_dependents:
+- '163'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage162_gamma0_one_ninth_r_form__gamma_0.yaml

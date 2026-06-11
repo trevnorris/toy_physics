@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage039_delta_split_exact_value__phase_b__delta_split.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,41 @@ source_evidence:
   line: 129
   role: notes_stage
   excerpt: '`eps_W_split = eps_W [ 1 - (2/11) delta_U ] + O(delta_U^2).`'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_split
+  introduced_at_stage: 039
+  introduced_at_line: 97
+  citation:
+    path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 97
+    excerpt: '`delta_split = [ delta_0 + eps_eta delta_U / (1 + delta_U) ] / (1 - eps_eta).`'
+constraints:
+- parameter: delta_split
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 89
+    excerpt: After exact rearrangement,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'delta_split is the shifted bare anisotropy ratio once the first axial U structure is turned on: A_1 = A_0(1 +
+    delta_split) with delta_split = [delta_0 + eps_eta delta_U/(1+delta_U)]/(1-eps_eta) (notes line 97, an exact rearrangement
+    of the split direct-softening A_0, A_1). Internal_consistency — a derived functional of the continuum kernel ratios (delta_0,
+    eps_eta, delta_U); collapses to delta_0/(1-eps_eta) when delta_U=0, recovering stage 038. No fit/posit/external target.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 93
+    excerpt: '`A_1 = A_0 (1 + delta_split),`'
+  - path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+    line: 103
+    excerpt: '`delta_split = delta_0/(1 - eps_eta) + [eps_eta/(1 - eps_eta)] delta_U + O(delta_U^2).`'
+downstream_dependents:
+- '032'
+- '033'
+- '034'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage039_delta_split_exact_value__delta_split.yaml

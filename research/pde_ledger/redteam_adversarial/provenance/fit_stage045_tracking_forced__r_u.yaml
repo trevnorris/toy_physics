@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage045_tracking_forced__phase_b__r_u.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -127,9 +127,37 @@ source_evidence:
   line: 197
   role: sympy_script
   excerpt: / (81 * (1 - xi) * (9 * delta ** 2 + 18 * delta * xi + (9 + 2 * R_U ** 2) * xi ** 2) ** 2)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_U
+  introduced_at_stage: 39
+  introduced_at_line: 23
+  citation:
+    path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 23
+    excerpt: '`R_tr = R_U = R_phi`.'
+constraints:
+- parameter: R_U
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 89
+    excerpt: '`g_B g_R - g_W g_S = 0`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: The R_U VALUE originates upstream (Stage 039 mixed-direction factor); what Stage 045 establishes is the FORCING
+    R_U=R_phi=R_tr, derived because the coherent local kernel makes g_B g_R = g_W g_S identically (notes lines 81-91). Origin
+    of the value attributed to Stage 039; the tracking-forcing is an internal_consistency derivation at Stage 045.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 75
+    excerpt: Stage 043 proved that support and mixed directions coincide iff
+downstream_dependents:
+- '046'
+- '047'
+- 048
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage045_tracking_forced__r_u.yaml

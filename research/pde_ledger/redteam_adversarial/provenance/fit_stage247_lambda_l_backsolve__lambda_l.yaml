@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_lambda_l_backsolve__phase_b__lambda_l.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -163,9 +163,43 @@ source_evidence:
   line: 268
   role: sympy_script
   excerpt: assert lambda_L_soft > 0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_L
+  introduced_at_stage: 247
+  introduced_at_line: 493
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 493
+    excerpt: Then the Stage-247 compiler requires only one additional leakage embedding coefficient,
+constraints:
+- parameter: lambda_L
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: lambda_L is back-solved (closed-form algebraic inversion in notes lines 499-518; script line 238 lambda_L_soft
+    = (Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs)/S_soft) to reproduce the recorded Session-I softening
+    V_eff^sess(r_soft)=1.74701126. Notes word it as 'fixed exactly by the recorded softening point' which correctly signals
+    a fit; no overclaim of derivation. Logged at low severity only to flag that 'fixed exactly' could be misread as a derivation;
+    the paper card (stage_247.tex line 78) is explicitly cautious ('useful as an audit point, not as a general theorem').
+  citations:
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 238
+    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+  - path: paper/stages/stage_247.tex
+    line: 78
+    excerpt: The Session-I benchmark is useful as an audit point, not as a general theorem.
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage247_lambda_l_backsolve__lambda_l.yaml

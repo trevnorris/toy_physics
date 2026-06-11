@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_goldilocks_inputs__phase_b__g_uv.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -180,9 +180,39 @@ source_evidence:
   line: 397
   role: notes_stage
   excerpt: \bigl(\lambda_{\rm eff},\chi_{\rm peak}\bigr).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_UV
+  introduced_at_stage: 250
+  introduced_at_line: 415
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 415
+    excerpt: ' g_{UV}=0.95,'
+constraints:
+- parameter: g_UV
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 172
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: g_UV=0.95 is described as 'carried from Stage 245', but the numeric value 0.95 appears nowhere in the Stage 245
+    notes (only the symbol chi_UV := g_UV*chi_lambda). The number first enters the ledger here at stage 250 as a posited near-unity
+    benchmark coupling (free_choice). The 'carried from Stage 245' attribution applies to the symbol, not the value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 172
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 134
+    excerpt: \chi_{UV}(r):=g_{UV}\,\chi_\lambda(r),
+downstream_dependents:
+- '251'
+- '253'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage250_goldilocks_inputs__g_uv.yaml

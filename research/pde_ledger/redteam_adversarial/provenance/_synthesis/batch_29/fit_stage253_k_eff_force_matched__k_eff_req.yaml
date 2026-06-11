@@ -1,0 +1,24 @@
+candidate_id: fit_stage253_k_eff_force_matched
+parameter_name: k_eff_req
+origin_claims:
+  - parameter: k_eff_req
+    introduced_at_stage: 253
+    introduced_at_line: 344
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 344
+      excerpt: "k_{\\rm eff,req}"
+constraints:
+  - parameter: k_eff_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 338
+      excerpt: "Force matching against the harmonic trap"
+downstream_dependents: []
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: needs_triage
+    summary: "k_eff_req is a derived symbolic stiffness compiler (k_eff,req = K_turn*E_*/lambda_phys^2), but it is only derived AFTER adding the force-matching assumption against the harmonic trap; the notes flag it is NOT a pure consequence of the geometric chi_lambda trigger. Its numeric realization also inherits the posited benchmark K_turn=2.73855812. Classified internal_consistency (the formula is a forced force-balance) but its value rests on an added modeling assumption plus a benchmark input."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 376, excerpt: "So the stiffness formula is an exact companion of the reduced barrier force **only after** one adds the force-matching assumption. It is not a pure consequence of the geometric \\(\\chi_\\lambda\\) trigger." }

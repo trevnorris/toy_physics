@@ -1,0 +1,25 @@
+candidate_id: fit_stage_186_mathcal
+parameter_name: mathcal
+origin_claims:
+  - parameter: mathcal
+    introduced_at_stage: 186
+    introduced_at_line: 262
+    citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 262
+      excerpt: "Call the resulting five-parameter multiplicative family \\(\\mathcal G_*\\)."
+constraints:
+  - parameter: mathcal
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 301
+      excerpt: "So \\(\\mathcal G_*\\) is an exact monomial-preserving similarity orbit, not merely a first-order ansatz."
+downstream_dependents: [187]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The bundle's resolved parameter_name is the bare token 'mathcal' — a scanner artifact from the LaTeX \\mathcal G_* (the five-parameter monomial-preserving similarity orbit, the central construct of Stage 186). The referent is unambiguous from the source_evidence excerpts (all point at \\mathcal G_*), and it is internally derived (constructed by exact monomial preservation, with the orbit transformations solved for K_eta^eff, T_U, mu_W), so internal_consistency. Logged as a low gap solely to flag the malformed/non-physical parameter_name string."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage_186_mathcal__mathcal.yaml, line: 3, excerpt: "parameter_name: mathcal" }
+      - { path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md, line: 52, excerpt: "where \\(\\mathcal G_*\\) is the exact five-parameter monomial-preserving similarity orbit" }

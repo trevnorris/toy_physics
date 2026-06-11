@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_082_zeta_max__phase_b__zeta_max.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -187,4 +187,25 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: Scanner resolved parameter zeta_max with value '71' for the stage-082 candidate, but neither the stage-082 notes
+    nor the stage-082 paper card mention zeta_max at all, and no quantity equal to 71 appears in either. Stage 082 works in
+    zeta_req / zeta_phys / zeta_+ / zeta_- / R_quad and the only numerics present are the carried Family-1 data (kappa=12321/5,
+    eta=37) and Xi_F1 = 1369 Upsilon_w = 136900 Theta_w. The hard support-ratio ceiling zeta_max^(F1) ~ 2.46752922945601 lives
+    at stages 079-081, not 082, and is never 71. The '71' target value appears to be a scanner mis-extraction; no origin or
+    constraint for a zeta_max = 71 datum can be asserted from stage-082 notes.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 18
+    excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 218
+    excerpt: '`Xi_F1 = W_wall = Upsilon_w Lambda_ell^2 = 1369 Upsilon_w = 136900 Theta_w.`'
+  - path: paper/stages/stage_082.tex
+    line: 46
+    excerpt: \Xi_{\rm F1}=W_{\rm wall}=1369\Upsilon_w=136900\Theta_w.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_082_zeta_max__zeta_max.yaml

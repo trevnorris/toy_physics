@@ -1,0 +1,25 @@
+candidate_id: fit_stage152_carried_point_block
+parameter_name: B_T
+origin_claims:
+  - parameter: B_T
+    introduced_at_stage: 147
+    introduced_at_line: 58
+    citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 58
+      excerpt: "B_T"
+constraints:
+  - parameter: B_T
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 34
+      excerpt: "Substituting the Stage 146 retuning formulas gives"
+downstream_dependents: [154, 155, 156, 157, 158, 159, 160, 161, 162, 163]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "B_T = 0.134875005736706 is DERIVED at Stage 147:58 from the closed form B_T = (9/40 T_m_*)*Pi_*/(4(1-S_*/4)^2), built from ledger-internal canonical-branch quantities (internal_consistency). Stage 152 CARRIES it as a frozen mpf literal (script:33), labeled 'previously frozen' at notes:50. No new value introduced or back-solved at this stage; no external target named."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md, line: 56, excerpt: "B_T\\approx 0.134875005736706," }
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 33, excerpt: "BT = mp.mpf(\"0.134875005736706\")" }

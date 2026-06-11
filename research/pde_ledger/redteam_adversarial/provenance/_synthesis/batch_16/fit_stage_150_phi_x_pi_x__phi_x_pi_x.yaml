@@ -1,0 +1,25 @@
+candidate_id: fit_stage_150_phi_x_pi_x
+parameter_name: Phi_x_Pi_x
+origin_claims:
+  - parameter: Phi_x_Pi_x
+    introduced_at_stage: 150
+    introduced_at_line: 12
+    citation:
+      path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+      line: 12
+      excerpt: "\\Phi_{\\rm lin}(x)=\\Pi_* x."
+constraints:
+  - parameter: Phi_x_Pi_x
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+      line: 10
+      excerpt: "its tangent"
+downstream_dependents: [151, 152, 154, 155]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Carried forward from the mechanical bundle: the atlas graph wrapper returned no source node tied to paper/stages/stage_150.tex. No value-genealogy impact — Phi_x_Pi_x (the linear tangent potential Phi_lin(x)=Pi_* x) is a DERIVED structural definition: it is the tangent of the full mouth potential, the exponential source branch's linearization, with all content set by the carried Pi_star. Not a fitted constant of its own."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md, line: 9, excerpt: "The canonical exponential branch came from replacing the full mouth potential by" }
+      - { path: paper/stages/stage_150.tex, line: 16, excerpt: "Exact residual \\(R_*(x)=\\Phi_*(x)-\\Pi_*x\\) is tangent-matched but has negative curvature at the mouth." }

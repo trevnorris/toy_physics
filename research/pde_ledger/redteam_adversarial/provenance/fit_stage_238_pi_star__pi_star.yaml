@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_238_pi_star__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,24 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'No source for parameter ''Pi_star'' (Pi_*) could be located. The mechanical bundle (fit_stage_238_pi_star__pi_star.yaml)
+    has an EMPTY source_evidence list. Direct searches for ''Pi_star'', ''Pistar'', ''Pi_*'', ''\Pi_*'' across the Stage-238
+    notes (moving_throat_pde_stage238_...md), the Stage-238 SymPy script, and the Stage-238 paper card (paper/stages/stage_238.tex)
+    all return nothing -- a broader sweep of stages 235-239 notes/scripts/cards is also empty. Stage 238''s actual symbols
+    are T^2 (transfer-shape), Lambda_0, R_target, R_tr, epsilon_eta (script symbols: chi0, deltaU, ZW, OmegaW2, eps, eps_eta,
+    Lambda0, zeta, M_mix, ...). ''Pi_star'' appears to be a scanner naming artifact with no corresponding ledger quantity.
+    Per the binding rule, no notes/ (or any) source documents this parameter, so it is logged as a provenance_gap rather than
+    attributed. Cannot classify constraint_kind.'
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_238_pi_star__pi_star.yaml
+    line: 21
+    excerpt: 'source_evidence: []'
+  - path: paper/stages/stage_238.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{Imports $\mathcal T^2$, $R_{\rm target}$, $\epsilon_\eta$, and the constant $\Lambda_0$.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage_238_pi_star__pi_star.yaml

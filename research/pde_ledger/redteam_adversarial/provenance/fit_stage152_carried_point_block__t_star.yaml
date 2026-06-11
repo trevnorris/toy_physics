@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_carried_point_block__phase_b__t_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,43 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: T_star
+  introduced_at_stage: 142
+  introduced_at_line: 121
+  citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 121
+    excerpt: \widehat T_m(\Pi_*)\approx 0.901484054174205.
+constraints:
+- parameter: T_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 74
+    excerpt: \Sigma_0=\frac{20}{9}\,\widehat T_m^2.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'T_star = 0.901484054174205 is the normalized mouth traction T_hat_m at the canonical Pi_*, first quoted at Stage
+    142:121 (also Stage 144:78). internal_consistency: it is T_m=sqrt(9*Sigma_0/20) evaluated at the canonical branch (Sigma_0(Pi_*)=1.80594...).
+    Stage 152 carries it as a frozen mpf literal (script:34, ''Tstar'').'
+  citations:
+  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 34
+    excerpt: Tstar = mp.mpf("0.901484054174205")
+  - path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 78
+    excerpt: \widehat T_m(\Pi_*)\approx 0.901484054174205.
+downstream_dependents:
+- '144'
+- '147'
+- '148'
+- '152'
+- '154'
+- '155'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage152_carried_point_block__t_star.yaml

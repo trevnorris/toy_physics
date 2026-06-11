@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_110_a_0__phase_b__a_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -28,9 +28,39 @@ source_evidence:
   line: 69
   role: notes_stage
   excerpt: \boxed{(b,a_0,a_5)=(0,\rho_R,0).}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_0
+  introduced_at_stage: 109
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 15
+    excerpt: \Sigma_0=\varepsilon a_0,
+constraints:
+- parameter: a_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 68
+    excerpt: \boxed{(b,a_0,a_5)=(0,\rho_R,0).}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: 'At Stage 110 the abstract a_0 slot is identified with the Robin core strength rho_R (a_0=rho_R); the identification
+    is internal_consistency (the Robin model''s static slot maps onto the a_0 branch coordinate), but rho_R:=a*h_R is itself
+    a posited ansatz model parameter (free_choice), not a fixed number. Logged for accuracy: this candidate''s a_0 has no
+    fixed value, only the symbolic identification a_0=rho_R.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 18
+    excerpt: '\boxed{\Lambda_2^{\rm R}(z)=\Lambda_2^{\rm out}(z)+\rho_R,}
+
+      \qquad \rho_R:=a h_R.'
+downstream_dependents:
+- '111'
+- '112'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_110_a_0__a_0.yaml

@@ -1,0 +1,12 @@
+candidate_id: fit_stage_253_max
+parameter_name: max
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Not a real parameter. 'max' is a scanner false-positive from the subscript of the ceiling temperature T_max (\\T_{\\max}); it is not a named parameter value of its own. The genuine quantity T_max is a derived Korringa ceiling (T_max = K_corr / t_cross^phys), but 'max' alone has no value genealogy."
+    citations:
+      - { path: paper/stages/stage_253.tex, line: 95, excerpt: "T_{\\max}=\\frac{\\mathcal K_{\\rm corr}}{t_{\\rm cross}^{\\rm phys}}" }
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 441, excerpt: "T_{\\max}" }

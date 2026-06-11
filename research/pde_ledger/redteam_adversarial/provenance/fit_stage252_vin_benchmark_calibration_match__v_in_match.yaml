@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage252_vin_benchmark_calibration_match__phase_b__v_in_match.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -90,9 +90,39 @@ source_evidence:
   line: 229
   role: sympy_script
   excerpt: assert abs(Vin_match_num - 0.008217712598897912) < 1e-15
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: V_in_match
+  introduced_at_stage: 252
+  introduced_at_line: 476
+  citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 476
+    excerpt: V_{\rm in,match}
+constraints:
+- parameter: V_in_match
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 474
+    excerpt: If one uses this only as a **benchmark calibration** of the initial active-leg amplitude, the safe-edge energy
+      theorem gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: V_in,match is back-solved from the safe-energy theorem to reproduce the Session-IV reported dissipated energy E_diss=0.01033460.
+    The target is a ledger-internal prior-session benchmark (not an external published constant), so it is classified internal_consistency,
+    but it is a calibration back-solve rather than a forced normalization (could be read as free_choice of a calibration amplitude).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 472
+    excerpt: E_{\rm diss,total}^{\rm sess}\approx 0.01033460.
+  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 496
+    excerpt: This is a calibration consistency check, not a theorem that the realized branch must use the speed-independent
+      `3:1` family.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage252_vin_benchmark_calibration_match__v_in_match.yaml

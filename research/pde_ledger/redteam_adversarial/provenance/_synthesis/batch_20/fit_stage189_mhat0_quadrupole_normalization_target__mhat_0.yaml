@@ -1,0 +1,26 @@
+candidate_id: fit_stage189_mhat0_quadrupole_normalization_target
+parameter_name: mhat_0
+origin_claims:
+  - parameter: mhat_0
+    introduced_at_stage: 22
+    introduced_at_line: 264
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 264
+      excerpt: "Including the source-map factor `mhat_0`, the invariant normalization condition is therefore"
+constraints:
+  - parameter: mhat_0
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 515
+      excerpt: "m_{\\hat 0}^{\\,2}\\,\\Gamma_5=\\frac{2G}{5c^5}."
+downstream_dependents: []
+provenance_findings:
+  - type: published_target
+    severity: needs_triage
+    summary: "mhat_0 (the source-map normalization factor) is fixed by the requirement that the invariant odd normalization product m_hat_0^2 Gamma_5 EQUAL the EXTERNAL GR quadrupole-radiation coefficient 2G/(5c^5). Stage 022 (the origin) names it explicitly: 'The universal GR quadrupole target is gamma_GR = 2 G / (5 c^5)' (line 258), then sets m_hat_0^2 P_0 a^5/(27 c_s^5) = 2G/(5c^5). Stage 189 carries this exact equivalence (m_hat_0^2 Gamma_5 = 2G/5c^5 <=> m_hat_0^2 P_0 = 54 G c_s^5/(5 a^5 c^5)). This is a FIT to an external published GR number, not an internally-forced value -> published_target. The closure is honestly framed as a 'target the completed PDE still has to hit' (the value of m_hat_0^2 P_0 is left to be computed), so this is the legitimate layer-2 published-target case, flagged for triage."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 258, excerpt: "`gamma_GR = 2 G / (5 c^5)`." }
+      - { path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md, line: 525, excerpt: "m_{\\hat 0}^{\\,2}P_0=\\frac{54Gc_s^5}{5a^5c^5}." }
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 269, excerpt: "- `54`, `6`, `8`, `15`, `5` derived by solving the invariant normalization product against `2 G / (5 c^5)`" }

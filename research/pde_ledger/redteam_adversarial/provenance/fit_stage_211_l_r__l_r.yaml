@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_211_l_r__phase_b__l_r.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,26 @@ source_evidence:
   line: 84
   role: sympy_script
   excerpt: Sr = sp.expand(Lr**2 - 4 * Mr**2 * Delta)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L_r
+  introduced_at_stage: 211
+  introduced_at_line: 165
+  citation:
+    path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 167
+    excerpt: (1+r^2+s^2)\,\partial_r\Delta^{\sharp}_{ijk,\star}(r,s)-2r\,\Delta^{\sharp}_{ijk,\star}(r,s),
+constraints:
+- parameter: L_r
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 162
+    excerpt: Also define the exact discriminant-transport numerators
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '212'
+synthesis_ingested_at: '2026-06-11T19:17:32Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_211_l_r__l_r.yaml

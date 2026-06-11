@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage197_chi_q_unity_packet_a_target__phase_b__delta_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,26 @@ source_evidence:
   line: 235
   role: notes_stage
   excerpt: \chi_Q-1
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_Q
+  introduced_at_stage: 195
+  introduced_at_line: 185
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 185
+    excerpt: \boxed{\Delta_Q:=\chi_Q-1.}
+constraints:
+- parameter: Delta_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 217
+    excerpt: \Delta_Q:=\chi_Q-1=0.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '198'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage197_chi_q_unity_packet_a_target__delta_q.yaml

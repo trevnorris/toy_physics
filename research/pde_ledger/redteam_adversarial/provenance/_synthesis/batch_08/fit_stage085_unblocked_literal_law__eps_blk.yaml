@@ -1,0 +1,25 @@
+candidate_id: fit_stage085_unblocked_literal_law
+parameter_name: eps_blk
+origin_claims:
+  - parameter: eps_blk
+    introduced_at_stage: 081
+    introduced_at_line: 41
+    citation:
+      path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+      line: 41
+      excerpt: "with `eps_blk` the blocking ratio carried from the selected quadrupole branch."
+constraints:
+  - parameter: eps_blk
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+      line: 132
+      excerpt: "In the unblocked limit `eps_blk = 0`, this collapses to the especially simple law"
+downstream_dependents: [086]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "eps_blk is the carried support-blocking ratio of the selected quadrupole branch; stage 085 keeps its full dependence symbolic in zeta_req(rho_alpha, eps_blk) = (rho_alpha-1)/[1-eps_blk(2-rho_alpha)]. The candidate value '0' is the illustrative unblocked limit eps_blk = 0 giving the simple law zeta_req = rho_alpha - 1 -- a convenience/branch-selection convention, not a derived or externally-anchored value. free_choice. (Same carried free parameter classified at stage 081; concept descends from the Stage-043 support-blocking ratio.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md, line: 134, excerpt: "`zeta_req = rho_alpha - 1.`" }
+      - { path: paper/stages/stage_085.tex, line: 36, excerpt: "In the unblocked limit, \\(\\zeta_{\\rm req}=\\rho_\\alpha-1\\)." }

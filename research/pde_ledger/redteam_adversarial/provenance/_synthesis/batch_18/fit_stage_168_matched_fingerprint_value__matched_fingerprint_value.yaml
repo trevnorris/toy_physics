@@ -1,0 +1,25 @@
+candidate_id: fit_stage_168_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 168
+    introduced_at_line: 374
+    citation:
+      path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+      line: 374
+      excerpt: "Requiring preservation of the canonical conservative even \\(l=2\\) fingerprint means"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+      line: 381
+      excerpt: "Using the formulas above, the same determinant argument as in Stage 159 gives"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The candidate 'matched_fingerprint_value' has no numeric value: the cited line 374 is the even-preservation CONDITION (delta E_2=0, delta E_4=0) which forces eps_perp=0 and delta kappa_W=0 via the Stage-159 determinant argument. There is no fitted/posited fingerprint NUMBER introduced at 168 — the canonical conservative even l=2 fingerprint is an upstream object preserved here, not a value-genealogy entry. Scanner flagged a target-related literal that does not resolve to a distinct numeric value."
+    citations:
+      - { path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py, line: 95, excerpt: "dE2 = sigma * (16 * delta_perp_slip / s - 9 * dkappaW) / (27 * (1 - sigma))" }
+      - { path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md, line: 384, excerpt: "\\varepsilon_\\perp=0," }

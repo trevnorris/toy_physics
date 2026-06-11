@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage239_exact_microscopic_correction__phase_b__delta_k_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,41 @@ source_evidence:
   role: notes_stage
   excerpt: So a pure dressing defect is carried microscopically by the exact equal-drift `K_\eta^{(\mathrm{eff})}`–`\mu_W`
     ray.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_K_eta
+  introduced_at_stage: 239
+  introduced_at_line: 244
+  citation:
+    path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 522
+    excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V).
+constraints:
+- parameter: Delta_K_eta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 237
+    excerpt: Substituting the physical coordinates `q_{\rm nt}=U`, `q_\eta=V` gives the exact rigid-mouth dependent correction
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Delta_K_eta is NOT a posited numeric constant. It is the exact symbolic dependent-plane correction component Delta_{K_eta}
+    = -V = -q_eta = -ln(eps_eta/eps_eta,ref), derived at Stage 239 by substituting the Stage-238 physical coordinates (q_nt=U,
+    q_eta=V) into the Stage-236 dependent-plane carriers y_eta = -q_eta (0,1,1)^T. It carries no fixed target value; the constraint_kind
+    reflects that it is a derived symbolic identity from ledger-internal projector calculus (internal_consistency), not an
+    inserted fit point. Logged for transparency since the scanner candidate has no numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 235
+    excerpt: \mathbf y_\eta=-q_\eta\begin{pmatrix}0\\1\\1\end{pmatrix}.
+  - path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 288
+    excerpt: V=-\Delta_{K_\eta}.
+downstream_dependents:
+- '240'
+- '245'
+synthesis_ingested_at: '2026-06-11T19:37:30Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage239_exact_microscopic_correction__delta_k_eta.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_a_2__phase_b__a_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,26 @@ source_evidence:
   line: 97
   role: sympy_script
   excerpt: print("A2                    =", A2)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_2
+  introduced_at_stage: 247
+  introduced_at_line: 154
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 154
+    excerpt: A_2=\alpha_2+\frac12\mathcal C_2,
+constraints:
+- parameter: A_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 154
+    excerpt: A_2=\alpha_2+\frac12\mathcal C_2,
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:43Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage_247_a_2__a_2.yaml

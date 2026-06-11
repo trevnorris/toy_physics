@@ -1,0 +1,19 @@
+candidate_id: fit_stage247_session1_packet
+parameter_name: eta_leak
+origin_claims:
+  - parameter: eta_leak
+    introduced_at_stage: 247
+    introduced_at_line: 445
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 445
+      excerpt: "\\eta_{\\rm leak}=0.03,"
+constraints:
+  - parameter: eta_leak
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 441
+      excerpt: "with the Session-I parameters"
+downstream_dependents: [ 248 ]
+provenance_findings: []

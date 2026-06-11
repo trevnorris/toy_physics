@@ -1,0 +1,25 @@
+candidate_id: fit_stage_037_deltak_ax
+parameter_name: DeltaK_ax
+origin_claims:
+  - parameter: DeltaK_ax
+    introduced_at_stage: 037
+    introduced_at_line: 139
+    citation:
+      path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+      line: 139
+      excerpt: "`DeltaK_ax = pi^2 T_w / (mu_eta L^2),`"
+constraints:
+  - parameter: DeltaK_ax
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+      line: 235
+      excerpt: "`DeltaK_ax = pi^2 T_w / ( mu_eta L^2 ),`"
+downstream_dependents: [038, 039, 040, 041, 042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "DeltaK_ax (the axial stiffness gap) is the exact mass-normalized modal kernel pi^2 T_w/(mu_eta L^2), arising directly from the (T_w/2)(eta')^2 wall-gradient term projected onto the second N/N mode (notes lines 56, 139, 235; audit line 102). Internal_consistency — a forced continuum-operator functional, not a fit or posit."
+    citations:
+      - { path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py, line: 102, excerpt: "DeltaK_ax = sp.simplify(sp.pi**2 * T_w / (mu_eta * L**2))" }
+      - { path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, line: 215, excerpt: "`delta = DeltaK_ax / A.`" }

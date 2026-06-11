@@ -1,0 +1,19 @@
+candidate_id: fit_stage_247_m_sigma
+parameter_name: M_sigma
+origin_claims:
+  - parameter: M_sigma
+    introduced_at_stage: 247
+    introduced_at_line: 247
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 247
+      excerpt: "\\mathcal M_\\sigma(r):=\\xi_R\\bigl[\\mathcal R_\\infty-\\mathcal R(r)\\bigr],"
+constraints:
+  - parameter: M_sigma
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 247
+      excerpt: "\\mathcal M_\\sigma(r):=\\xi_R\\bigl[\\mathcal R_\\infty-\\mathcal R(r)\\bigr],"
+downstream_dependents: [ 248 ]
+provenance_findings: []

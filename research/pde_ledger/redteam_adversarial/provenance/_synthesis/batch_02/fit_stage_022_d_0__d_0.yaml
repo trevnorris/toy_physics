@@ -1,0 +1,25 @@
+candidate_id: fit_stage_022_d_0
+parameter_name: D_0
+origin_claims:
+  - parameter: D_0
+    introduced_at_stage: 022
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 30
+      excerpt: "`D_A^(cons)(omega) = D_{A0} + D_{A2} omega^2 + D_{A4} omega^4 + O(omega^6)`."
+constraints:
+  - parameter: D_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 74
+      excerpt: "- `D_{A0}, D_{A2}, D_{A4}` are the conservative operator moments,"
+downstream_dependents: [023, 024]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "D_0 (= D_{A0}, the static conservative grouped-lane operator moment) is not a numeric value; it is a carried structural object D_0 = K - B_0 - Z_0 (defined explicitly at stage 023/024). At stage 022 it is the symbolic conservative front end used to build u_2, u_4, P_0 = N_0/D_0; its actual value on the moving-throat branch is explicitly left OPEN ('the only internal quantity that matters is the isotropic static outgoing prefactor P_0 = N_0/D_0' — value to be supplied by the unsolved PDE). Classified free_choice (open structural moment, neither derived to a target nor externally anchored). No distinct stage-022 value genealogy to report beyond the structural definition."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md, line: 210, excerpt: "`D_(A,0) = K_A - B_(A,0) - Z_(A,0)`," }
+      - { path: paper/stages/stage_022.tex, line: 19, excerpt: "D_A^{\\rm cons}(\\omega)=D_{A0}+D_{A2}\\omega^2+D_{A4}\\omega^4+O(\\omega^6)." }

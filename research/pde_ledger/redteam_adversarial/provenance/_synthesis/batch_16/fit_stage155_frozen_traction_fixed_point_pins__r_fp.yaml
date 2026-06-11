@@ -1,0 +1,25 @@
+candidate_id: fit_stage155_frozen_traction_fixed_point_pins
+parameter_name: R_fp
+origin_claims:
+  - parameter: R_fp
+    introduced_at_stage: 155
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+      line: 69
+      excerpt: "\\mathcal R_{\\rm fp}"
+constraints:
+  - parameter: R_fp
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+      line: 66
+      excerpt: "Feeding that back into the exact Family-1 core law gives"
+downstream_dependents: [156, 157]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "R_fp = 0.2827139049082381 is the co-evolving core loading ratio at the frozen-traction fixed point, COMPUTED at Stage 155:69 by feeding the numerically-located fixed-point profile Sigma_fp through the exact Family-1 core law R[Sigma]=(g[Sigma]-r_F1)^2/(1+r_F1^2) (script:84, R_fp = R(sig)). internal_consistency: a derived output of the nonlinear fixed-point solve, NOT a posit or external target. The script's assert(abs(R_fp - 0.2827139049082381) < 1e-12) is a self-consistency pin against the notes value, and Stage 155:111-130 independently corroborates it via the Stage 154 transport law (delta_R_pred matches direct R_fp - 1/4)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py, line: 84, excerpt: "R_fp = R(sig)" }
+      - { path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md, line: 72, excerpt: "\\approx 0.2827139049082381." }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage253_calibration_slice_nominal_constants
+parameter_name: s_0
+origin_claims:
+  - parameter: s_0
+    introduced_at_stage: 251
+    introduced_at_line: 461
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 461
+      excerpt: " s_0\\approx \\gamma_{\\rm crit}\\approx 6.94311167."
+constraints:
+  - parameter: s_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+      line: 300
+      excerpt: "s_0:=\\frac{1}{t_{\\rm collapse,0}}=\\sqrt{\\kappa_V/\\mu_\\eta},"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "s_0=6.94311167 (=gamma_crit) is a reduced-model rate carried into Stage 253 from the Session-IV cold-event data via Stage 251 (notes:461) and Stage 252 (notes:445); its definition s_0=sqrt(kappa_V/mu_eta) ties it to ledger-internal dynamics. Origin is upstream (Stage 251 / Session-IV), not Stage 253."
+    citations:
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 954, excerpt: "`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only" }
+      - { path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md, line: 445, excerpt: " s_0\\approx \\gamma_{\\rm crit}\\approx 6.94311167," }

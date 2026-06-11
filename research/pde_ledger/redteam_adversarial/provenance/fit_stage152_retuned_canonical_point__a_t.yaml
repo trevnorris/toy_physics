@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_retuned_canonical_point__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,47 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 48
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 48
+    excerpt: A_T
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 50
+    excerpt: Using the previously frozen canonical derivatives and rigidity coefficients,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Same A_T literal (-4.27263956256927) as the other two Stage-152 A_T candidates; carried from its derivation origin
+    at Stage 147:48 (internal_consistency). In the 'retuned canonical point' use it multiplies delta_g to form deltaT (script:81).
+    No new value or external target at this stage; duplicate carry of the frozen rigidity coefficient.
+  citations:
+  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 81
+    excerpt: deltaT = AT * delta_g + BT * delta_S
+  - path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 54
+    excerpt: A_T\approx -4.27263956256927,
+downstream_dependents:
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage152_retuned_canonical_point__a_t.yaml

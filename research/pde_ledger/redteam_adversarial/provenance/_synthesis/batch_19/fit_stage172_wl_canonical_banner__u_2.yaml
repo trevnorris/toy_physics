@@ -1,0 +1,29 @@
+candidate_id: fit_stage172_wl_canonical_banner
+parameter_name: u_2
+origin_claims:
+  - parameter: u_2
+    introduced_at_stage: 104
+    introduced_at_line: 58
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 58
+      excerpt: "1+\\frac{z^2}{9}"
+constraints:
+  - parameter: u_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+      line: 73
+      excerpt: "On the canonical compensated even branch we carry"
+downstream_dependents: [173]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Same canonical fingerprint as fit_stage172_canonical_even_collapse_u2_pin, surfaced via the Mathematica/SymPy 'Canonical-even collapse at u2 = 1/9' banner. Stage 172 notes carry u_2 = 1/9 on the canonical compensated even branch (notes lines 73-75; '(u_2,u_4)=(1/9,4/81)', line 238); the value is not originated here. First derivation is the Stage 104 outgoing-DtN admittance (z^2/9, stage 104 notes line 58). Internal_consistency, no external target. Low severity."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+        line: 238
+        excerpt: "the first-order variation on the canonical branch \\((u_2,u_4)=(1/9,4/81)\\) is"
+      - path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+        line: 71
+        excerpt: "banner(\"Canonical-even collapse at u2 = 1/9\")"

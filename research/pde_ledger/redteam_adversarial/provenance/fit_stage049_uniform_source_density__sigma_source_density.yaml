@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage049_uniform_source_density__phase_b__sigma_source_density.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -107,9 +107,38 @@ source_evidence:
   line: 7
   role: sympy_script
   excerpt: 2. Exact uniform-source overlap integral on the D/N ladder.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: sigma_source_density
+  introduced_at_stage: 49
+  introduced_at_line: 93
+  citation:
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 93
+    excerpt: '`sigma(s)=1.`'
+constraints:
+- parameter: sigma_source_density
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 91
+    excerpt: For the first explicit local kernel, choose the uniform source density
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: sigma(s)=1 is an explicitly POSITED ansatz ('choose the uniform source density') selecting the simplest source
+    profile, hence free_choice. The downstream overlap hierarchy I_n/I_0=1/(2n+1) and zeta_n^phys are then derived FROM this
+    choice, so they are internal_consistency conditional on the posited sigma. (Stages 053/056 later generalize sigma to a
+    transport-derived exponential family, retroactively giving the asymmetry parameter a physical origin, but at Stage 049
+    the uniform profile is an ansatz.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    line: 26
+    excerpt: 'For the first uniform local source density `sigma(s)=1`, the overlap hierarchy is exact:'
+downstream_dependents:
+- '050'
+- '053'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage049_uniform_source_density__sigma_source_density.yaml

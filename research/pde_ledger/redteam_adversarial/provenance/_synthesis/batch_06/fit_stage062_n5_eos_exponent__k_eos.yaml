@@ -1,0 +1,25 @@
+candidate_id: fit_stage062_n5_eos_exponent
+parameter_name: K_eos
+origin_claims:
+  - parameter: K_eos
+    introduced_at_stage: 0
+    introduced_at_line: 12
+    citation:
+      path: notes/stages/moving_throat_pde_phase0_spec.md
+      line: 12
+      excerpt: "- P(rho) = K_EOS rho^5,"
+constraints:
+  - parameter: K_eos
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_phase0_spec.md
+      line: 3
+      excerpt: "## 1. Parent equations already frozen by the current stack"
+downstream_dependents: [63, 64, 65, 76]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The n=5 stiff EOS (U = K rho^5/4, exponent n=5 and coefficient K) is a pre-frozen parent-ontology choice, documented as 'already frozen by the current stack' in the Phase-0 spec (P(rho)=K_EOS rho^5). Stage 062 carries it in ('The parent 4D theory already fixes the matter sector ... the frozen stiff EOS') and derives the compressional identity h'(rho_*)=m c_s^2/rho from it; the value does not originate at 062. Constraint is free_choice (frozen ansatz), not a derivation introduced here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md, line: 88, excerpt: "The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen stiff EOS," }
+      - { path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md, line: 92, excerpt: "`U(rho) = K rho^5 / 4,`" }

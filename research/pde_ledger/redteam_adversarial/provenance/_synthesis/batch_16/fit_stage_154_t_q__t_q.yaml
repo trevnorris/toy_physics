@@ -1,0 +1,25 @@
+candidate_id: fit_stage_154_t_q
+parameter_name: T_q
+origin_claims:
+  - parameter: T_q
+    introduced_at_stage: 154
+    introduced_at_line: 51
+    citation:
+      path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+      line: 51
+      excerpt: "\\mathcal T_q[\\Sigma](x)"
+constraints:
+  - parameter: T_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+      line: 49
+      excerpt: "and for the first mixed D/N half-wave,"
+downstream_dependents: [155, 156, 157]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "T_q[Sigma](x) is the first mixed-D/N-half-wave channel propagator (the Green's-function integral operator at notes:51-56). It is a STRUCTURAL DEFINITION fixed by the channel boundary-value problem (the sinh/cosh kernel of the pi/2 half-wave), not a fitted numeric constant — internal_consistency / definitional. No posit, no external target; the kernel form is the explicit Family-1 mixed channel already used at Stage 150 (T_q(x;Pi_*))."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md, line: 54, excerpt: "\\frac{\\sinh\\!\\left(\\frac{\\pi}{2}\\min(x,y)\\right)" }
+      - { path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md, line: 43, excerpt: "T_q(x;\\Pi_*)" }

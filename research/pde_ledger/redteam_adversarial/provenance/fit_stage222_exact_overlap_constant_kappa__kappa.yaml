@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage222_exact_overlap_constant_kappa__phase_b__kappa.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,26 @@ source_evidence:
   line: 136
   role: sympy_script
   excerpt: 'kap: kappa_primitive,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa
+  introduced_at_stage: 222
+  introduced_at_line: 83
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 83
+    excerpt: \kappa:=\int_0^L u_0(s)f_0(s)\,ds=\frac{2\sqrt2}{\pi}.
+constraints:
+- parameter: kappa
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 81
+    excerpt: Then the exact overlap constant is
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '223'
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage222_exact_overlap_constant_kappa__kappa.yaml

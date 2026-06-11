@@ -1,0 +1,19 @@
+candidate_id: fit_stage218_total_budgets_1464_2640
+parameter_name: fallback_budget_2640
+origin_claims:
+  - parameter: fallback_budget_2640
+    introduced_at_stage: 218
+    introduced_at_line: 354
+    citation:
+      path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+      line: 354
+      excerpt: "1140+1500=2640."
+constraints:
+  - parameter: fallback_budget_2640
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+      line: 351
+      excerpt: "candidate evaluations, giving the fallback total"
+downstream_dependents: []
+provenance_findings: []

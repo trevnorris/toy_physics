@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_096_numbering_script_output_band_plan__phase_b__numbering_script_output_band_plan.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -46,4 +46,17 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: NUMBERING_SCRIPT_OUTPUT_BAND_PLAN is not a physics parameter value; it is the filename of a red-team numbering-reconciliation
+    planning document (redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md). The scanner mis-resolved a doc reference as a parameter
+    target. No notes line documents it as a ledger quantity, and none should. Searched stage096 notes and script; the only
+    band-plan-shaped tokens are the script-backed-status pointers, not a parameter.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 11
+    excerpt: 'Script-backed status:'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_096_numbering_script_output_band_plan__numbering_script_output_band_plan.yaml

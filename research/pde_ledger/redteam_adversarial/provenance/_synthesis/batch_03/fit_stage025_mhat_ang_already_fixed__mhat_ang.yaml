@@ -1,0 +1,19 @@
+candidate_id: fit_stage025_mhat_ang_already_fixed
+parameter_name: mhat_ang
+origin_claims:
+  - parameter: mhat_ang
+    introduced_at_stage: 24
+    introduced_at_line: 78
+    citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 78
+      excerpt: "`mhat_ang = 1`"
+constraints:
+  - parameter: mhat_ang
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+      line: 95
+      excerpt: "Because Stage 024 already proved `mhat_ang = 1`, the remaining source normalization is purely radial/axial:"
+downstream_dependents: [26, 30, 31, 33]
+provenance_findings: []

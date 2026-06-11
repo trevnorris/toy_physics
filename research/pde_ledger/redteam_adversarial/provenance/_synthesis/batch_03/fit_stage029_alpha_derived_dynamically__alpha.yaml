@@ -1,0 +1,19 @@
+candidate_id: fit_stage029_alpha_derived_dynamically
+parameter_name: alpha
+origin_claims:
+  - parameter: alpha
+    introduced_at_stage: 29
+    introduced_at_line: 115
+    citation:
+      path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+      line: 115
+      excerpt: "`alpha(omega) = lambda_B^2 / A_phi(omega)`"
+constraints:
+  - parameter: alpha
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+      line: 133
+      excerpt: "It is the exact first Schur complement of the reduced wall/BdG/Maxwell/mixed operator."
+downstream_dependents: [30, 33]
+provenance_findings: []

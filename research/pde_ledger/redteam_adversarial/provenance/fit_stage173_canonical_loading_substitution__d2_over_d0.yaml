@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage173_canonical_loading_substitution__phase_b__d2_over_d0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -19,9 +19,40 @@ anchor_stages:
 - '173'
 notes_source_opened: true
 source_evidence: []
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D2_over_D0
+  introduced_at_stage: 104
+  introduced_at_line: 58
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 58
+    excerpt: 1+\frac{z^2}{9}
+constraints:
+- parameter: D2_over_D0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 178
+    excerpt: u_2=\frac19,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Bundle source_evidence was empty; resolved by reading notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md.
+    The canonical ratio D_2/D_0 = -u_2 = -1/9 is carried forward via u_2^(A) = -D_{A,2}/D_{A,0} (notes line 118) on the canonical
+    branch (u_2,u_4)=(1/9,4/81) (notes line 48; u_2=1/9 line 178). It is the substitution that fixes D_21 = -D_01/9 and D_41
+    = -D_01/27 under even-preservation. The numeric 1/9 is not originated at stage 173; it traces to the Stage 104 outgoing-DtN
+    admittance (z^2/9, stage 104 notes line 58). Internal_consistency, no external target. Low severity.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 48
+    excerpt: \text{on the canonical branch }(u_2,u_4)=\left(\frac19,\frac{4}{81}\right),
+  - path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+    line: 94
+    excerpt: expect_zero("D21 + D01/9", u21_zero_D21 + D01/9)
+downstream_dependents:
+- '177'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage173_canonical_loading_substitution__d2_over_d0.yaml

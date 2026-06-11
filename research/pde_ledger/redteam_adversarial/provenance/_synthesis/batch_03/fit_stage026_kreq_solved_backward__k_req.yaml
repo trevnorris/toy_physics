@@ -1,0 +1,25 @@
+candidate_id: fit_stage026_Kreq_solved_backward
+parameter_name: K_req
+origin_claims:
+  - parameter: K_req
+    introduced_at_stage: 26
+    introduced_at_line: 214
+    citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 214
+      excerpt: "`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`"
+constraints:
+  - parameter: K_req
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 212
+      excerpt: "It can be solved exactly for the required wall stiffness:"
+downstream_dependents: [27]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Duplicate-target view of K_req: the candidate name 'solved_backward' is accurate. K_req is obtained by inverting the normalization equation so the prefactor matches the external GR target; the K_req formula contains the GR target 54/5 in its denominator. Genealogy is published_target (back-solve to external GR number), not a forward derivation of wall stiffness. Note this is the same parameter as fit_stage026_K_req_solved_exactly_from_target — two candidate ids resolve to the same K_req back-solve."
+    citations:
+      - { path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py, line: 195, excerpt: "# Solve exactly for the required wall stiffness and verify by back-substitution" }
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 218, excerpt: "So on this branch the GR quadrupole target is equivalent to one concrete statement:" }

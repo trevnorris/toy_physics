@@ -1,0 +1,25 @@
+candidate_id: fit_stage106_coeffs_fixed_to_targets
+parameter_name: Gamma_5
+origin_claims:
+  - parameter: Gamma_5
+    introduced_at_stage: 106
+    introduced_at_line: 49
+    citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 49
+      excerpt: "\\overline \\Gamma_5=\\frac{2G}{5c^5}."
+constraints:
+  - parameter: Gamma_5
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 40
+      excerpt: "With \\(N_Q=1\\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:"
+downstream_dependents: [107]
+provenance_findings:
+  - type: published_target
+    severity: low
+    summary: "Gamma_5 = 2G/5c^5 is the external GR/Burke-Thorne quadrupole radiation-reaction coefficient, imported as the target value the canonical branch is required to reproduce. The notes and card are HONEST about this (notes line 40 'fixed to their target values'; line 53 'exactly the GR/Burke-Thorne target'; the closure is tagged StatusExactClosure/StatusOpen, conditional on branch realization), so this is a clean published_target, not a disguised derivation. The script hardcodes Gamma5_target = 2*G/(5*c**5)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md, line: 53, excerpt: "Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:" }
+      - { path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py, line: 53, excerpt: "Gamma5_target = sp.simplify(2 * G / (5 * c**5))" }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_195_delta_q
+parameter_name: Delta_Q
+origin_claims:
+  - parameter: Delta_Q
+    introduced_at_stage: 195
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+constraints:
+  - parameter: Delta_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 192
+      excerpt: "-\\,P_0^{\\rm target}\\,\\frac{\\Delta_Q}{1+\\Delta_Q}."
+downstream_dependents: [196, 197]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_Q is genuinely DEFINED at stage 195 line 185 (boxed Delta_Q:=chi_Q-1) — this is the correct, well-anchored origin (unlike the 192/193/194 Delta_Q candidates, which had only card-boilerplate references). It is internal_consistency: an algebraic relabeling of the outgoing-normalization defect, with chi_Q itself fixed at 194. Through it the Packet-A normalization residual collapses to Delta_norm=-P0_target*Delta_Q/(1+Delta_Q) (195 line 192). The external content lives in P0_target (the prefactor), not in Delta_Q itself."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md, line: 185, excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}" }

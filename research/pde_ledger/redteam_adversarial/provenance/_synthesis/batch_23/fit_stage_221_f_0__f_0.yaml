@@ -1,0 +1,19 @@
+candidate_id: fit_stage_221_f_0
+parameter_name: F_0
+origin_claims:
+  - parameter: F_0
+    introduced_at_stage: 221
+    introduced_at_line: 149
+    citation:
+      path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+      line: 149
+      excerpt: "F_0:=F_\\Pi\\big|_{\\Pi=0}."
+constraints:
+  - parameter: F_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+      line: 143
+      excerpt: "Suppose the conservative branch has a simple real pole at \\(\\omega=\\omega_*\\):"
+downstream_dependents: [222]
+provenance_findings: []

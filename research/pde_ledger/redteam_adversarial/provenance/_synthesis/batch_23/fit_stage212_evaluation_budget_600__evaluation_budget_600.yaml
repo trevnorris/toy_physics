@@ -1,0 +1,19 @@
+candidate_id: fit_stage212_evaluation_budget_600
+parameter_name: evaluation_budget_600
+origin_claims:
+  - parameter: evaluation_budget_600
+    introduced_at_stage: 212
+    introduced_at_line: 460
+    citation:
+      path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+      line: 460
+      excerpt: "120+480=600"
+constraints:
+  - parameter: evaluation_budget_600
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+      line: 457
+      excerpt: "Therefore the entire local search up through three active primitive coordinates has the exact finite budget"
+downstream_dependents: [215]
+provenance_findings: []

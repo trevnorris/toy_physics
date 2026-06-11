@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage038_mhat_p0_fitted_scales__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -143,9 +143,54 @@ source_evidence:
   line: 226
   role: sympy_script
   excerpt: print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 038
+  introduced_at_line: 91
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 91
+    excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 115
+    excerpt: '`R_target M_mix = N_Q^(target) Delta_0 / Omega_U^2.`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: self_contradictory_origin
+  severity: needs_triage
+  summary: 'Parameter-name mismatch: the bundle''s parameter_name is ''P0_target'', but NO symbol named P0_target / P_{0,-}
+    / p0_target appears anywhere in stage 038 (notes, paper card, or sympy audit). Every source_evidence pointer is about
+    R_target. The object the candidate actually captures is R_target (the normalization demand ratio) carrying the external
+    2.5PN GR target N_Q^target = 54 G c_s^5/(5 a^5 c^5), hardcoded in the audit at lines 65 and 140. The closest historical
+    ''P_{0,-}'' object is the outgoing transfer product from stages 030/032/033, which is NOT what stage 038 manipulates.
+    Treat ''P0_target'' as a stale/mislabeled scanner target.'
+  citations:
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 64
+    excerpt: R_target = sp.simplify(
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 65
+    excerpt: (54 * G * c_s**5 / (5 * a**5 * c_light**5)) * A / ((8 / sp.pi**2) * beta0)
+- type: published_target
+  severity: high
+  summary: 'Whatever name is used, the value captured here is a FIT to the external 2.5PN GR quadrupole target: R_target is
+    back-anchored to N_Q^target = 54 G c_s^5/(5 a^5 c^5) (the 54/5 coefficient), committed numerically in the stage-038 audit.
+    published_target, openly disclosed in the notes (R_target M_mix = 54 G c_s^5 K_W^eff(1-eps_W)/(5 a^5 c^5 mu_W)).'
+  citations:
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 140
+    excerpt: NQ = 54 * G * c_s**5 / (5 * a**5 * c_light**5)
+  - path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 38
+    excerpt: '`R_target M_mix = 8 Lambda (1 - eps_W) / pi^2`'
+downstream_dependents:
+- '032'
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage038_mhat_p0_fitted_scales__p0_target.yaml

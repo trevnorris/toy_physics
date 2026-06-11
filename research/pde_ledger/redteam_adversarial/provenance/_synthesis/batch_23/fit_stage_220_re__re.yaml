@@ -1,0 +1,19 @@
+candidate_id: fit_stage_220_re
+parameter_name: Re
+origin_claims:
+  - parameter: Re
+    introduced_at_stage: 220
+    introduced_at_line: 420
+    citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 420
+      excerpt: "\\Re\\,\\delta\\mathfrak V_{\\rm mix}^{(1)}=0,"
+constraints:
+  - parameter: Re
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 425
+      excerpt: "So the first outgoing correction is **purely phase-lag / pumping** at linear order."
+downstream_dependents: []
+provenance_findings: []

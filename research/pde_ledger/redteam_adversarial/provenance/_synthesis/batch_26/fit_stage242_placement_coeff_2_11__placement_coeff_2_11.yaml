@@ -1,0 +1,25 @@
+candidate_id: fit_stage242_placement_coeff_2_11
+parameter_name: placement_coeff_2_11
+origin_claims:
+  - parameter: placement_coeff_2_11
+    introduced_at_stage: 181
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+      line: 29
+      excerpt: "\\epsilon_W\\!\\left[1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right],"
+constraints:
+  - parameter: placement_coeff_2_11
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+      line: 117
+      excerpt: "\\epsilon\n=\n\\epsilon_W\\left(1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right)."
+downstream_dependents: [244, 245]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The placement coefficient 2/11 in the coherent support variable eps = eps_W(1 - (2/11) delta_U/(1+delta_U)) is RESTATED at Stage 242 (notes line 117-121) but ORIGINATES upstream in the coherent-tracking closure: it first enters as the split-blocking coefficient at Stage 181 (notes line 29: 'earlier coherent-kernel stages already gave' this map), and recurs at Stage 182 line 14 and Stage 184 line 94. Stage 242 carries it, not derives it. Classification internal_consistency: it is a structural coefficient of the carried coherent local D/N kernel reduction, not an inserted fit (the CHECKPOINT_CONSTANT_PROVENANCE tracker records that Stage 242 'retains its carried 2/11'). True origin is the coherent-kernel stage upstream of 181."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md, line: 18, excerpt: "Earlier coherent-kernel stages already gave the **actual** one-port tracking branch of the first local D/N throat kernel:" }
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 19, excerpt: "242 retains its carried `2/11`, `4/3`, `8/π²`, `2/3`, beta-window, and probe-only labels" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage062_n5_eos_exponent__phase_b__k_eos.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -45,9 +45,44 @@ source_evidence:
   line: 33
   role: sympy_script
   excerpt: '# EOS identities'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_eos
+  introduced_at_stage: 0
+  introduced_at_line: 12
+  citation:
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    line: 12
+    excerpt: '- P(rho) = K_EOS rho^5,'
+constraints:
+- parameter: K_eos
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    line: 3
+    excerpt: '## 1. Parent equations already frozen by the current stack'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: The n=5 stiff EOS (U = K rho^5/4, exponent n=5 and coefficient K) is a pre-frozen parent-ontology choice, documented
+    as 'already frozen by the current stack' in the Phase-0 spec (P(rho)=K_EOS rho^5). Stage 062 carries it in ('The parent
+    4D theory already fixes the matter sector ... the frozen stiff EOS') and derives the compressional identity h'(rho_*)=m
+    c_s^2/rho from it; the value does not originate at 062. Constraint is free_choice (frozen ansatz), not a derivation introduced
+    here.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 88
+    excerpt: The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen
+      stiff EOS,
+  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 92
+    excerpt: '`U(rho) = K rho^5 / 4,`'
+downstream_dependents:
+- '063'
+- '064'
+- '065'
+- '076'
+synthesis_ingested_at: '2026-06-11T18:26:14Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage062_n5_eos_exponent__k_eos.yaml

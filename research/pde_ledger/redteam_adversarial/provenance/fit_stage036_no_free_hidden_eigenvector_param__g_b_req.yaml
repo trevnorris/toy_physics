@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage036_no_free_hidden_eigenvector_param__phase_b__g_b_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,41 @@ source_evidence:
   line: 89
   role: sympy_script
   excerpt: xi_req = sp.symbols("xi_req", nonnegative=True, real=True)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_B_req
+  introduced_at_stage: 28
+  introduced_at_line: 165
+  citation:
+    path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+    line: 165
+    excerpt: '`g_B,req^2 / varpi^2 = alpha_0(x) - alpha_mix`'
+constraints:
+- parameter: g_B_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    line: 66
+    excerpt: '`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'g_B_req (the required support/BdG loading g_B,req^2/varpi^2) is not a free or hidden eigenvector parameter — the
+    candidate id itself asserts ''no_free_hidden_eigenvector_param''. It is the EXACT residual support loading forced by the
+    branch: g_B,req^2/varpi^2 = alpha_req(xi_req,delta) - alpha_mix (origin at stage 034 line 165; rewritten at 036 as (pi^2
+    A/8)[G(xi_req,delta) - M_mix]). Internal_consistency, fully determined once xi_req and the mixed baseline are known; the
+    only freedom is the feasibility gate g_B,req^2 >= 0, an inequality not a tuned value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    line: 14
+    excerpt: '`g_B,req^2 >= 0`.'
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 145
+    excerpt: '`g_B,req^2 / varpi^2 = alpha_req(xi_req,delta) - alpha_mix`'
+downstream_dependents:
+- '031'
+- 038
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage036_no_free_hidden_eigenvector_param__g_b_req.yaml

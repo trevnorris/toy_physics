@@ -1,0 +1,25 @@
+candidate_id: fit_stage075_alpha_r_wall_depth
+parameter_name: alpha_r
+origin_claims:
+  - parameter: alpha_r
+    introduced_at_stage: 075
+    introduced_at_line: 91
+    citation:
+      path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+      line: 91
+      excerpt: "`alpha_r = 10.`"
+constraints:
+  - parameter: alpha_r
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+      line: 89
+      excerpt: "But on the actual Family-1 wall branch the radial soft-wall profile already carries a fixed dimensionless depth parameter"
+downstream_dependents: [076, 077]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "alpha_r = 10 is posited as a fixed dimensionless wall-depth parameter of the radial soft-wall profile with no derivation or external anchor; the notes call it a 'fixed dimensionless depth parameter' that the profile 'already carries'. The script hard-asserts alpha_r^2 == 100 as a 'paper Inputs line lock', i.e. a posited convention, not a derived value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md, line: 91, excerpt: "`alpha_r = 10.`" }
+      - { path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py, line: 28, excerpt: "assert alpha_r**2 == 100, \"paper Inputs line lock: alpha_r^2 must equal 100\"" }

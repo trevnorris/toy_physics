@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_187_ctr_ratio__phase_b__ctr_ratio.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -104,9 +104,38 @@ source_evidence:
   line: 134
   role: sympy_script
   excerpt: print("M_* Delta x = 0, but now Delta x is a finite log-ratio vector rather than an")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Ctr_ratio
+  introduced_at_stage: 185
+  introduced_at_line: 159
+  citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 159
+    excerpt: \mathfrak C_{{\rm tr},*}:=\chi_0^{\,1+\delta_{U,*}}\,\delta_U^{\,1+\chi_{0,*}}.
+constraints:
+- parameter: Ctr_ratio
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 83
+    excerpt: \mathfrak C_{{\rm tr},*}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Ctr_ratio is the tracking monomial / finite log-ratio invariant C_tr,* = chi_0^(1+delta_U,*) delta_U^(1+chi_0,*),
+    introduced as a direct microscopic monomial at Stage 185 (its underlying tracking coefficient C_tr was defined at Stage
+    183 line 151). Stage 187 uses it as a finite-log-ratio quotient invariant (the level-set/orbit identity). internal_consistency;
+    carried, not introduced, at 187.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+    line: 151
+    excerpt: C_{\rm tr}:=\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}.
+  - path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 159
+    excerpt: \mathfrak C_{{\rm tr},*}:=\chi_0^{\,1+\delta_{U,*}}\,\delta_U^{\,1+\chi_{0,*}}.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_187_ctr_ratio__ctr_ratio.yaml

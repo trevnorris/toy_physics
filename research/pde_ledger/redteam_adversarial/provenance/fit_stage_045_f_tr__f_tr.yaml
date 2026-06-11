@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_045_f_tr__phase_b__f_tr.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -63,9 +63,29 @@ source_evidence:
   line: 200
   role: sympy_script
   excerpt: print("coherent normalization residual =", sp.simplify(R_target - F_tr_from_stage044))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: F_tr
+  introduced_at_stage: 45
+  introduced_at_line: 218
+  citation:
+    path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 218
+    excerpt: '`F_tr(xi,delta;R)`'
+constraints:
+- parameter: F_tr
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 212
+    excerpt: 'Because the coherent local kernel lands on the tracking surface, the Stage-044 normalization residual also collapses
+      to the Stage-040 tracking form:'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '046'
+- 048
+- '051'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_045_f_tr__f_tr.yaml

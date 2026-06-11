@@ -1,0 +1,19 @@
+candidate_id: fit_stage_043_d_phi
+parameter_name: D_phi
+origin_claims:
+  - parameter: D_phi
+    introduced_at_stage: 43
+    introduced_at_line: 119
+    citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 119
+      excerpt: "`D_phi := kappa_0 y_1 - kappa_1 y_0`"
+constraints:
+  - parameter: D_phi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 125
+      excerpt: "`D_phi = 0  <=>  sigma_0 = 0  or  delta_U = 0.`"
+downstream_dependents: [44]
+provenance_findings: []

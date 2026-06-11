@@ -1,0 +1,25 @@
+candidate_id: fit_stage159_notes_only_numeric_illustrations
+parameter_name: Delta_Q_dg_coeff
+origin_claims:
+  - parameter: Delta_Q_dg_coeff
+    introduced_at_stage: 159
+    introduced_at_line: 306
+    citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 306
+      excerpt: "\\frac{2.61448557006734\\,\\sigma_*}{1-\\sigma_*}\\,\\delta\\mathfrak g"
+constraints:
+  - parameter: Delta_Q_dg_coeff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+      line: 294
+      excerpt: "\\frac{16\\sigma_*}{3\\sqrt{1+\\mathfrak r_{F1}^2}\\,(1-\\sigma_*)}\\,"
+downstream_dependents: [160, 161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_Q_dg_coeff is the delta-g coefficient in the stage159 outlet defect law Delta_Q = [16 sigma_*/(3 sqrt(1+r_F1^2)(1-sigma_*))] delta_g - [9 sigma_*/(1-sigma_*)] delta_gamma_W, with numerical form 2.61448557006734 sigma_*/(1-sigma_*) (notes line 306). It is a DERIVED coefficient: exact outlet algebra (linearizing Lambda_2^hyb about the compensated branch) composed with the Stage 158 transport delta C = 16 sigma_*/sqrt(1+r_F1^2) delta_g -> internal_consistency. The numeric 2.6145 inherits the r_F1<-37/20 fit dependence through sqrt(1+r_F1^2)~2.0399. notes-only numeric (no script literal); no external target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md, line: 238, excerpt: "\\frac{\\delta\\mathcal C-27\\sigma_*\\,\\delta\\gamma_W}" }
+      - { path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md, line: 257, excerpt: "\\frac{16\\sigma_*}{\\sqrt{1+\\mathfrak r_{F1}^2}}\\," }

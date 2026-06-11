@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_200_stale_output__phase_b__stale_output.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,4 +47,23 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: '''stale_output'' is not a fitted/posited parameter and no source under notes/ documents any such value. The bundle''s
+    only evidence is the Stage 200 paper card Purpose/Output fields and two generic Stage 200 notes lines (''The main outputs
+    are:'' / the next-step list that feeds actual PDE output into the compilers). This is a meta-candidate flagging a possible
+    stale committed output transcript, not a parameter-value provenance item; there is nothing in the value-genealogy layer
+    to classify. No notes anchor exists for a value, so it is logged as a gap rather than fabricated. (Whether the stage_200
+    output transcript is actually stale is a re-run/reliability question outside this layer-2 value-provenance scope.)'
+  citations:
+  - path: paper/stages/stage_200.tex
+    line: 15
+    excerpt: \stagefield{Output}{Combines Packet A and Packet B into the four-scalar final verdict packet \((\Delta_Q,q_{\rm
+      tr},q_{\rm nt},q_\eta)\).}
+  - path: notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+    line: 442
+    excerpt: 1. feed the actual completed moving-throat PDE output into the Packet-A compiler to extract `\(\chi_Q\)`,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_200_stale_output__stale_output.yaml

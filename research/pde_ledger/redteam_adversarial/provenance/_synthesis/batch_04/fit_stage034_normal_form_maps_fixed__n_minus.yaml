@@ -1,0 +1,25 @@
+candidate_id: fit_stage034_normal_form_maps_fixed
+parameter_name: N_minus
+origin_claims:
+  - parameter: N_minus
+    introduced_at_stage: 032
+    introduced_at_line: 34
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 34
+      excerpt: "`mhat_-^2 P_{0,-} = beta_0 s_-^2 / (kappa_0^2 lambda_-)`,"
+constraints:
+  - parameter: N_minus
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+      line: 185
+      excerpt: "- the normalization product is fixed by `N_-(x)`,"
+downstream_dependents: [035, 036]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "N_minus (N_-) is the selected-branch normalization product. It first enters as a defined quantity at stage 032 (N_- := mhat_-^2 P_{0,-} = beta_0 s_-^2/(kappa_0^2 lambda_-)) and is rewritten at stage 034 in softening-depth normal form N_-(x), an exact algebraic substitution lambda_- = A - x with the exact overlap formula (internal_consistency). No fit/posit; it is a derived functional of ledger-internal spectral data. The target N_-(x) = N_Q^target couples it to the external 2.5PN target downstream, but N_- itself is a derived expression."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md, line: 119, excerpt: "`N_-(x) = beta_0 [ kappa_0^2 (x + DeltaK_ax) + kappa_1^2 x ]^4`" }
+      - { path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md, line: 125, excerpt: "`N_-(x) = N_Q^(target)`." }

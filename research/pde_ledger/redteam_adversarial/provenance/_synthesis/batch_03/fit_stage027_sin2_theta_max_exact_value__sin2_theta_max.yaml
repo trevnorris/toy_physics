@@ -1,0 +1,19 @@
+candidate_id: fit_stage027_sin2_theta_max_exact_value
+parameter_name: sin2_theta_max
+origin_claims:
+  - parameter: sin2_theta_max
+    introduced_at_stage: 27
+    introduced_at_line: 151
+    citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 151
+      excerpt: "`sin^2(theta_max) = 2 / 11`,"
+constraints:
+  - parameter: sin2_theta_max
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 143
+      excerpt: "`tan(theta_max) = kappa_1 / kappa_0 = - sqrt(2) / 3`,"
+downstream_dependents: [28]
+provenance_findings: []

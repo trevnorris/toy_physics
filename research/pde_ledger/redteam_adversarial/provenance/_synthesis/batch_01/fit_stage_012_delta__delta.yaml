@@ -1,0 +1,25 @@
+candidate_id: fit_stage_012_delta
+parameter_name: Delta
+origin_claims:
+  - parameter: Delta
+    introduced_at_stage: 12
+    introduced_at_line: 21
+    citation:
+      path: notes/em_projected/step_10_projected_maxwell_stage4_primitive_bridge_notes.md
+      line: 21
+      excerpt: "Z_0=\\frac{Q}{\\Delta},\\qquad"
+constraints:
+  - parameter: Delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_10_projected_maxwell_stage4_primitive_bridge_notes.md
+      line: 19
+      excerpt: "primitive data**:"
+downstream_dependents: [13, 14]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta is the primitive reduced-packet denominator Delta = A*W - R^2 (paper card stage_012.tex:16), the determinant-like combination of the primitive variables (A, W, R) from which all bundle slots Z_0..N_4 are built (notes step_10 lines 21-32). It is an exact algebraic combination of ledger-internal primitives, not a fitted or externally anchored value -> internal_consistency. The stage-012 sympy declares Delta as a free nonzero symbol; the per-stage notes use it definitionally as the primitive denominator. No scalar value / no external target; gap-tagged as symbolic-denominator."
+    citations:
+      - { path: paper/stages/stage_012.tex, line: 16, excerpt: "\\Delta=A\\,W-R^2," }
+      - { path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py, line: 51, excerpt: "Q, S2, H, Delta, P, Gw = sp.symbols(\"Q S2 H Delta P Gw\", nonzero=True)" }

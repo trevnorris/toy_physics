@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage041_n_req_exact_support_loading__phase_b__n_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -148,9 +148,39 @@ source_evidence:
   line: 152
   role: sympy_script
   excerpt: print("      n_req = G_q - m.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: n_req
+  introduced_at_stage: 33
+  introduced_at_line: 82
+  citation:
+    path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+    line: 82
+    excerpt: '`n_req(xi,delta;m,q,r)`'
+constraints:
+- parameter: n_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+    line: 80
+    excerpt: Solving the determinant condition for the support loading gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: n_req is the exact required support loading, obtained by solving the rank-2 selected-branch determinant condition
+    D_sel = 0 for the support loading n (notes lines 80-84; the audit literally does n_req = sp.solve(sp.Eq(Det_expected,
+    0), n)[0]). It is internal_consistency — a forced rational function of (xi, delta, m, q, r), with an exact monotonicity
+    theorem d n_req/d m < 0. No fit/posit; collapses to G_q - m when r=q (support tracks mixed direction).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+    line: 96
+    excerpt: '`d n_req / d m`'
+  - path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+    line: 120
+    excerpt: '`      = G_q(xi,delta) - m.`'
+downstream_dependents:
+- '034'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage041_n_req_exact_support_loading__n_req.yaml

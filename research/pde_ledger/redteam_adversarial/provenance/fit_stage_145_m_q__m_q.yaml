@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_145_m_q__phase_b__m_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -23,9 +23,42 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q
+  introduced_at_stage: 137
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 65
+    excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+constraints:
+- parameter: M_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+    line: 26
+    excerpt: R_q(\Pi)=\frac{(\mathfrak g_\Pi-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: At Stage 145 M_q is NOT documented by name in the notes -- it enters only through R_q(Pi) = -M_q/M_s (notes line
+    26). The candidate bundle's only M_q source_evidence is the paper card check-list line 'Check the gain pair (M_s,M_q)
+    against outlet consistency' (stage_145.tex), which is NOT a notes/ origin. Origin recovered from Stage 137 (Schur-complement
+    core map). Stage 145 is a status restatement; M_q carries no new value. internal_consistency. needs_triage flag records
+    that the 145 bundle has no notes/ M_q line, so the per-stage origin rests on the upstream 137 note.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+    line: 24
+    excerpt: \Pi=\Sigma_0\bigl[1-R_q(\Pi)\mathcal S_q(\Pi)\bigr],
+  - path: paper/stages/stage_145.tex
+    line: 22
+    excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+downstream_dependents:
+- '146'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_145_m_q__m_q.yaml

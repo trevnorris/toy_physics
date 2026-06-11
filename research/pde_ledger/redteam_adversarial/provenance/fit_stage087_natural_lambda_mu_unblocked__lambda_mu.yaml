@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage087_natural_lambda_mu_unblocked__phase_b__lambda_mu.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -76,9 +76,36 @@ source_evidence:
   line: 63
   role: sympy_script
   excerpt: 'zeta_max = sp.N(zeta_req.subs({rho_alpha: rho_max, eps_blk: 0}), 25)'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_mu
+  introduced_at_stage: 87
+  introduced_at_line: 57
+  citation:
+    path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    line: 57
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+constraints:
+- parameter: lambda_mu
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    line: 57
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage 087 only restates lambda_mu=1 as 'the natural shell-weighted normalization' (a convention/gauge choice, free_choice).
+    The value's true origin is the Stage 080/081 normalization; Stage 087 carries it, does not derive it.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 95
+    excerpt: Using the Stage-080/081 values at `lambda_mu = 1`,
+downstream_dependents:
+- 088
+- 089
+- 090
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage087_natural_lambda_mu_unblocked__lambda_mu.yaml

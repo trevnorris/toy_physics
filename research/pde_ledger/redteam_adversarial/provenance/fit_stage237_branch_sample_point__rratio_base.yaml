@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage237_branch_sample_point__phase_b__rratio_base.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -144,8 +144,35 @@ source_evidence:
   role: sympy_script
   excerpt: assert_zero(sp.simplify(qeta_from_Rratio.subs(Rratio, 1)))
 origin_claims: []
-constraints: []
+constraints:
+- parameter: Rratio_base
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    line: 108
+    excerpt: \frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'Rratio_base = 7/6 is a SCRIPT-ONLY arbitrary numerical sample value (script line 18-19: ''elif Rratio in name:
+    base[sym] = sp.Rational(7,6)''), one of two arbitrary substitution points in the ''samples'' list used to numerically
+    verify symbolic identities -- NOT a physically constrained or derived value. The underlying symbol Rratio is the static-blind
+    transfer ratio Rratio = (1-epsilon_eta)/(1-epsilon_{eta,ref}) (notes line 108, a DERIVED relation), but the specific BASE
+    value 7/6 has NO notes/ documentation -- it does not appear in the Stage-237 notes at all (the notes treat Rratio symbolically).
+    Per the binding rule, no notes/ source assigns the value 7/6; it is a free verification-sample choice -> free_choice with
+    a documentation gap on the specific base value. evidence_citation points to the notes definition of the Rratio symbol
+    (the closest notes anchor); the 7/6 base itself is undocumented in notes.'
+  citations:
+  - path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+    line: 19
+    excerpt: base[sym] = sp.Rational(7, 6)
+  - path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+    line: 30
+    excerpt: samples.append(base)
+downstream_dependents:
+- '238'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage237_branch_sample_point__rratio_base.yaml

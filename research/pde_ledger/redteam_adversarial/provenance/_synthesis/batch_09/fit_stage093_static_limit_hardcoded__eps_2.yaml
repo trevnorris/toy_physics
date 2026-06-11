@@ -1,0 +1,25 @@
+candidate_id: fit_stage093_static_limit_hardcoded
+parameter_name: eps_2
+origin_claims:
+  - parameter: eps_2
+    introduced_at_stage: 92
+    introduced_at_line: 23
+    citation:
+      path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+      line: 23
+      excerpt: "`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,"
+constraints:
+  - parameter: eps_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+      line: 21
+      excerpt: "- and if the geometry lane is static through `O(omega^4)`,"
+downstream_dependents: [94]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "Candidate-id 'static_limit_hardcoded' is CONFIRMED at the script level: the Stage 093 Mathematica audit hardcodes eps2=0 (and eps4=0) then derives c_pole=1/4 from the obstruction formula. At Stage 093 eps_2=0 is a POSITED static-limit hypothesis (free_choice), explicitly conditional ('if the geometry lane is static'); it is NOT yet derived here. The 093 script does add a genuine eps-dependent probe (off-static e2=1 -> c_pole=1/16) to avoid spurious eps-independence, but the value eps_2=0 itself is assumed until proven by orthogonality at Stage 094."
+    citations:
+      - { path: mathematica/moving_throat_pde_stage093_grouped_p2_status_update_mathematica_audit.wl, line: 28, excerpt: "eps2 = 0;" }
+      - { path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md, line: 55, excerpt: "It is to determine the two geometry-contamination numbers `eps_2` and `eps_4`, or prove that they vanish on the natural branch." }

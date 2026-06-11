@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_098_gap_f1_target__phase_b__gap_f1_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -72,9 +72,39 @@ source_evidence:
   line: 41
   role: sympy_script
   excerpt: print('Family-1 margin =', gap_F1)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gap_F1_target
+  introduced_at_stage: 98
+  introduced_at_line: 92
+  citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 92
+    excerpt: '`zeta_req^(act) < zeta_max^(F1)`.'
+constraints:
+- parameter: gap_F1_target
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 64
+    excerpt: which is true for every `zeta_max > 1`.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: gap_F1_target (2.01079823834804688464927835412) is a 30-digit numeric self-pin used by the script to lock the computed
+    gap_F1 against itself (and to mirror the Mathematica expectApprox target). It is NOT an external/published target despite
+    the '_target' suffix; it is the analytically expected value of the internally-derived Family-1 margin. No notes line carries
+    this literal; the margin theorem it pins is documented at stage098 notes lines 56-64. Internal_consistency self-consistency
+    pin.
+  citations:
+  - path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+    line: 32
+    excerpt: gap_F1_target = sp.Float('2.01079823834804688464927835412', 30)
+  - path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+    line: 30
+    excerpt: '# Numeric pin (matches Mathematica''s expectApprox targets):'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_098_gap_f1_target__gap_f1_target.yaml

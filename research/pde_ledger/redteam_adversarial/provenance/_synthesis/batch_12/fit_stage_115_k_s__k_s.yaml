@@ -1,0 +1,24 @@
+candidate_id: fit_stage_115_k_s
+parameter_name: K_s
+origin_claims:
+  - parameter: K_s
+    introduced_at_stage: 114
+    introduced_at_line: 18
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 18
+      excerpt: "K_s & \\lambda\\\\[2pt]"
+constraints:
+  - parameter: K_s
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 33
+      excerpt: "\\rho_c=\\frac{g_s^2}{K_s},"
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "K_s (static shell stiffness) is a POSITED core-model parameter carried from Stage 114 into the Stage-115 identifications rho_c=g_s^2/K_s, r_c=lambda^2/(K_s K_q), sigma_*=g_s^2/(4 K_s) and the coupling-balance law. It is never assigned a number; it stays a free core-coupling degree of freedom. Classified free_choice (ansatz)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 40, excerpt: "sigma_star = sp.simplify((g_s**2) / (4 * K_s))" }

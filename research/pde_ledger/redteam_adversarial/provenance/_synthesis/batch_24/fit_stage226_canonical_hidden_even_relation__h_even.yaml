@@ -1,0 +1,25 @@
+candidate_id: fit_stage226_canonical_hidden_even_relation
+parameter_name: H_even
+origin_claims:
+  - parameter: H_even
+    introduced_at_stage: 226
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+      line: 29
+      excerpt: "H_{\\rm even}=D_{41}-\\frac{2}{3}D_{21}-\\frac{D_{01}}{27}."
+constraints:
+  - parameter: H_even
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+      line: 175
+      excerpt: "H_{\\rm even}=D_{41}-\\frac{2}{3}D_{21}-\\frac{D_{01}}{27}."
+downstream_dependents: [227]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "H_even (the 'canonical hidden-even relation') is a structural even-gate combination of the ledger's own first-order D-moments (D_41 - (2/3)D_21 - D_01/27); its coefficients (2/3, 1/27, and the companion K_1's 1/9) trace to the ledger-internal canonical 5PN even-sector deformation algebra (the gamma_0=(1+r_c)/9 family, stages ~107-119), so it is classified internal_consistency. BUT the stage 226 card and notes repeatedly call it the 'imported strict 5PN even-gate package' / 'canonical hidden-even relation', which could be read as a published_target (matching the external 5PN even sector). Competing citations recorded; the relation itself is among internal moments rather than a back-solve to an external number."
+    citations:
+      - { path: paper/stages/stage_226.tex, line: 9, excerpt: "\\stagefield{Inputs}{Imports $\\Xi_{\\rm load}$, $K_1$, $H_{\\rm even}$, the canonical hidden-even relation, and the conservative-shape-preserving branch used by the grouped outlet package.}" }
+      - { path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md, line: 171, excerpt: "Insert this into the stricter imported `5`PN even gates:" }

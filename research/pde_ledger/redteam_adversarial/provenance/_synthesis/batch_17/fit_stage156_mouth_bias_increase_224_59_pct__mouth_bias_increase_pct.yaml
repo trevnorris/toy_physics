@@ -1,0 +1,24 @@
+candidate_id: fit_stage156_mouth_bias_increase_224_59_pct
+parameter_name: mouth_bias_increase_pct
+origin_claims:
+  - parameter: mouth_bias_increase_pct
+    introduced_at_stage: 156
+    introduced_at_line: 136
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 136
+      excerpt: "- and a \\(224.59\\%\\) mouth-bias increase,"
+constraints:
+  - parameter: mouth_bias_increase_pct
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 120
+      excerpt: "\\frac{\\Pi_{\\rm can}}{\\Pi_*}-1"
+downstream_dependents: []
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "224.59% is a DERIVED diagnostic ratio Pi_can/Pi_star - 1 (= 1.5659... at line 121), reported in prose as a percentage. It is fully determined by two already-fixed canonical points, so internal_consistency is correct. Minor note: the rounded 224.59% reads like a headline figure but is a pure consequence of Pi_can and Pi_star; it is not an independently constrained quantity and should not be cited as a standalone result."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 121, excerpt: "\\approx 1.5659389234213572," }

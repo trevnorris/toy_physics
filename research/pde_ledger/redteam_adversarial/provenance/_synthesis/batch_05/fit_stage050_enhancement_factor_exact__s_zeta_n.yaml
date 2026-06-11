@@ -1,0 +1,24 @@
+candidate_id: fit_stage050_enhancement_factor_exact
+parameter_name: S_zeta_n
+origin_claims:
+  - parameter: S_zeta_n
+    introduced_at_stage: 50
+    introduced_at_line: 168
+    citation:
+      path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+      line: 168
+      excerpt: "`= 1 + zeta_n^(twin) (1-eps) / (1 - eps zeta_n^(twin)).`"
+constraints:
+  - parameter: S_zeta_n
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+      line: 89
+      excerpt: "`S_0 = S(1;eps)`"
+downstream_dependents: [51, 52]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Bundle parameter_name 'S_zeta_n' maps to the support-enhancement factor S(zeta_n;eps) of Stage 050; the symbol in the notes is S_n^twin (and S_0 for the lowest twin). The exact value S_0=2 is DERIVED by substituting the Stage-049 result zeta_0^twin=1 into S(zeta;eps)=1+zeta(1-eps)/(1-eps zeta) (notes lines 85-92), independent of eps, so it is internal_consistency. Symbol-name mapping recorded; no fit to an external target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md, line: 183, excerpt: "`S_0^(twin) = 2`" }

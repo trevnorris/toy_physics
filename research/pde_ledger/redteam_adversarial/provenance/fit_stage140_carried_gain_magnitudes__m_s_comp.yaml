@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage140_carried_gain_magnitudes__phase_b__m_s_comp.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -85,9 +85,45 @@ source_evidence:
   line: 27
   role: sympy_script
   excerpt: assert sp.Abs(sp.N(That_comp/That_nat - 1, 30) - sp.Float('0.0403588161624', 30)) < sp.Float('1e-12', 30)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_s_comp
+  introduced_at_stage: 139
+  introduced_at_line: 110
+  citation:
+    path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 110
+    excerpt: \approx 1.80594111095636,
+constraints:
+- parameter: M_s_comp
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 93
+    excerpt: On the exact compensated family,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'M_s_comp = M_s^{comp,*} approx 1.80594111095636 is CARRIED into Stage 140 (notes line 100) from Stage 139, where
+    it is solved as M_s^{comp,*} = Pi_*/(1 - S_q(Pi_*)/4) on the exact compensated branch R_q = 1/4 (Stage 139 notes lines
+    93-110). internal_consistency: fixed-point solve over ledger-internal inputs (Pi_* from 130/134, S_q from 134, R_q=1/4
+    from 138). It equals the Stage-135 canonical M_s^* exactly (cross-check, not back-fit). At Stage 140 it is used only to
+    back out the required normalized traction T_hat_m^{comp,*} approx 0.901484 (notes line 116-ff). Gap flagged only to record
+    that the value is an evaluation carried from 139, not introduced at 140.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 100
+    excerpt: M_s^{\rm comp,*}\approx 1.80594111095636,
+  - path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 120
+    excerpt: This is exactly the Stage 135 one-parameter canonical branch.
+downstream_dependents:
+- '141'
+- '142'
+- '146'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage140_carried_gain_magnitudes__m_s_comp.yaml

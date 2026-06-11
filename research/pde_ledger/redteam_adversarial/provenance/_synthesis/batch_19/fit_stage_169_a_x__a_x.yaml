@@ -1,0 +1,29 @@
+candidate_id: fit_stage_169_a_x
+parameter_name: a_x
+origin_claims:
+  - parameter: a_x
+    introduced_at_stage: 169
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+      line: 54
+      excerpt: "a_x=\\frac{2x_{20}-x_{21}-x_{22}}{10},"
+constraints:
+  - parameter: a_x
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+      line: 54
+      excerpt: "a_x=\\frac{2x_{20}-x_{21}-x_{22}}{10},"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "a_x is not a fitted numeric value but a defined trace/anomaly decomposition variable: the l=2 quadrupole-anisotropy projection a_x = (2 x_20 - x_21 - x_22)/10 of the grouped lane data, defined in-stage at notes line 54. Its only numeric specialization (a_x = eps x^(1)/4 on the weak-axisymmetric branch, with the consequence b_x = 3 a_x at line 90) is forced algebraically from the fixed grouped signature (1,1/2,-1) and metric G_grp = diag(1,2,2) — internal consistency, no external anchor. Logged low-severity because the scanner target 'a_x' is a structural definition rather than a constrained value."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+        line: 90
+        excerpt: "\\boxed{b_x=3a_x,}"
+      - path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+        line: 46
+        excerpt: "ax = (2*xb20 - xb21 - xb22) / 10"

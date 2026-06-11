@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_239_mu__phase_b__mu.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -152,8 +152,21 @@ source_evidence:
   line: 260
   role: sympy_script
   excerpt: assert_zero(sp.diff(T2_stage238, M_mix), "Stage 238 branch formula for T^2 is support-blind w.r.t. M_mix")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mu
+  introduced_at_stage: 239
+  introduced_at_line: 245
+  citation:
+    path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 522
+    excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V).
+constraints:
+- parameter: mu
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 286
+    excerpt: U=\Delta_\mu-\Delta_{K_\eta},
 graph_context:
   contexts: []
   graph_gaps:
@@ -178,3 +191,22 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_239.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: mu (the mu_W microscopic correction) is NOT a posited numeric constant. At Stage 239 the mu_W-slot correction is
+    the derived symbolic component Delta_mu = U - V, obtained by pushing the Stage-238 physical coordinates through the Stage-236
+    dependent-plane carriers. The static-only correction changes only mu_W (notes line 524) and the post-static dressing correction
+    is the equal K_eta-mu_W shift (notes line 525). It carries no fixed target value; classification is internal_consistency
+    (a derived symbolic identity), not a fit. Logged for transparency since the scanner candidate has no numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 524
+    excerpt: 4. The static-only correction changes only `\mu_W`.
+  - path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    line: 525
+    excerpt: 5. The post-static dressing correction is the equal `K_\eta`-`\mu_W` shift.
+downstream_dependents:
+- '240'
+- '245'
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage_239_mu__mu.yaml

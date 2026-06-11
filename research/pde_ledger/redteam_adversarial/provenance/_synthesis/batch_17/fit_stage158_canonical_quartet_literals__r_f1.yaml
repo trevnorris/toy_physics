@@ -1,0 +1,25 @@
+candidate_id: fit_stage158_canonical_quartet_literals
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 70
+      excerpt: "\\approx 1.77799353547498."
+constraints:
+  - parameter: r_F1
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 60
+      excerpt: "\\frac{L}{a}=\\frac{37}{20},"
+downstream_dependents: [159, 160, 161]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Stage158 carries r_F1 as a base-point literal (notes line 53: r_F1 ~1.77799353547498, with sqrt(1+r_F1^2) ~2.039916913060632) and treats it as the fixed Family-1 core parameter. Its true origin (Stage 121) is r_F1 = sqrt((12/pi^2)(37/20)^2 - 1), a deterministic geometric function of the POSITED preferred aspect ratio L/a = 37/20 (a flagged carried/external fit target). Anything built on r_F1 inside the linear defect transport (e.g. the 1/sqrt(1+r_F1^2) coefficients) inherits this fit dependence. internal_consistency would overstate; the originating choice is L/a=37/20."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 53, excerpt: "\\mathfrak r_{F1}\\approx 1.77799353547498," }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 67, excerpt: "\\sqrt{\\frac{12}{\\pi^2}\\left(\\frac{37}{20}\\right)^2-1}" }

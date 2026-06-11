@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_143_m_q__phase_b__m_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -23,9 +23,44 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q
+  introduced_at_stage: 137
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 65
+    excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+constraints:
+- parameter: M_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage143_equal_normalized_singular_limit.md
+    line: 83
+    excerpt: R_q(\Pi)=\frac{(\mathfrak g_\Pi-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: At Stage 143 M_q is NOT documented by name in the notes -- the 143 note discusses the equal-normalized branch g_c=1
+    entirely through R_q(Pi) = -M_q/M_s = (g_Pi - r_F1)^2/(1+r_F1^2) (notes lines 81-83). The candidate bundle's only source_evidence
+    for M_q is the paper card's check-list line 'Check the gain pair (M_s,M_q) against outlet consistency' (stage_143.tex:22),
+    which is NOT a notes/ origin. Origin recovered from Stage 137. The 143 RESULT is a sign/limit theorem (it proves 0 < g_Pi
+    < 1 for finite Pi, so the equal-normalized branch g_c=1 is a singular Pi->infinity point-source limit at which T_hat_m
+    diverges) -- M_q carries no new value here. internal_consistency for M_q (Schur-derived); needs_triage flag records that
+    the 143 bundle has no notes/ M_q line, so the per-stage origin claim rests on the upstream 137 note, not a 143 note.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage143_equal_normalized_singular_limit.md
+    line: 54
+    excerpt: So the equal-normalized branch \(\mathfrak g_c=1\) does **not** occur at finite positive bias.
+  - path: paper/stages/stage_143.tex
+    line: 22
+    excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+downstream_dependents:
+- '144'
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_143_m_q__m_q.yaml

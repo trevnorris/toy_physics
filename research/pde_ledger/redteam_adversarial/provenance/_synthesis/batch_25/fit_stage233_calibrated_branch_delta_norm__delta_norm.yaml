@@ -1,0 +1,25 @@
+candidate_id: fit_stage233_calibrated_branch_delta_norm
+parameter_name: Delta_norm
+origin_claims:
+  - parameter: Delta_norm
+    introduced_at_stage: 233
+    introduced_at_line: 205
+    citation:
+      path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+      line: 205
+      excerpt: "\\Delta_{\\rm norm}=0,"
+constraints:
+  - parameter: Delta_norm
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+      line: 203
+      excerpt: "On a calibrated branch with"
+downstream_dependents: [234]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_norm is the normalization-defect term in the static survival gate (P_crit*mhat0^2)/(Delta_norm + T_quad) - 1 (notes line 189/199). Its value 0 is NOT derived: it is a CALIBRATION/branch selection -- 'On a calibrated branch with Delta_norm=0, this becomes ...' (notes line 203-205); the script verifies the simplification gate_rhs.subs({Delta_norm:0}) (script line 94). Setting Delta_norm=0 selects the calibrated branch where the gate reduces to P_crit*mhat0^2/T_quad - 1 -> free_choice (a branch/calibration convention, not a forced or external value). Delta_norm itself is otherwise a free symbol in the script (line 83). Classification well-supported; logged for completeness."
+    citations:
+      - { path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py, line: 94, excerpt: "gate_rhs_cal = sp.simplify(gate_rhs.subs({Delta_norm: 0}))" }
+      - { path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md, line: 388, excerpt: "6. its calibrated-branch simplification" }

@@ -1,0 +1,12 @@
+candidate_id: fit_stage_243_k_turn
+parameter_name: K_turn
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "K_turn does not exist as a parameter at Stage 243. The mechanical bundle's source_evidence matches only the SUBSTRING 'turn' in narrative phrases ('turned selected support placement', 'turn on', 'turning on J^w') -- there is no parameter named K_turn in the Stage-243 notes, paper card, or script. The genuine Stage-243 non-rigid free-energy parameters are the stiffnesses k_U, k_V, the mouth coupling chi_lambda, and the forcing f_U (notes line 269-272; card line 89). A real K_turn parameter exists at OTHER stages (the CHECKPOINT_CONSTANT_PROVENANCE tracker records a_int = 4 K_turn at the 247/253 lattice-turnover block), not at 243. This is a scanner false-positive keyed on the 'turn' substring; logged as a provenance_gap because no notes/ file documents a K_turn at Stage 243."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md, line: 269, excerpt: "- `k_U > 0` is the transfer-shape stiffness," }
+      - { path: paper/stages/stage_243.tex, line: 89, excerpt: "\\frac12k_UU^2+\\frac12k_VV^2-\\chi_\\lambda UV-f_UU." }

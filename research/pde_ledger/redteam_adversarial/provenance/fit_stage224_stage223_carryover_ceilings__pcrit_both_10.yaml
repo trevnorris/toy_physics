@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_stage223_carryover_ceilings__phase_b__pcrit_both_10.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -103,9 +103,28 @@ source_evidence:
   line: 156
   role: sympy_script
   excerpt: assert_close(float(barP0_compat + Decimal(4) * a_budget), float(Pcrit_val))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pcrit_both_10
+  introduced_at_stage: 223
+  introduced_at_line: 373
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 373
+    excerpt: '  \lesssim 0.00283133168555932,'
+constraints:
+- parameter: Pcrit_both_10
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 103
+    excerpt: P_{\rm both}^{(10)}=0.0028313316855593175,
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '225'
+- '226'
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage224_stage223_carryover_ceilings__pcrit_both_10.yaml

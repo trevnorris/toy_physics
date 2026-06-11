@@ -1,0 +1,25 @@
+candidate_id: fit_stage033_dn_constants_exact
+parameter_name: kappa_0_sq
+origin_claims:
+  - parameter: kappa_0_sq
+    introduced_at_stage: 032
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 79
+      excerpt: "`kappa_0^2 = 8 / pi^2`,"
+constraints:
+  - parameter: kappa_0_sq
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+      line: 63
+      excerpt: "- and the finite-throat overlap constants `kappa_0`, `kappa_1`, `sigma` already fixed exactly."
+downstream_dependents: [034, 035, 036, 037, 038]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate keyed to stage 033, but kappa_0^2 = 8/pi^2 first enters the ledger at stage 032 (the exact D/N overlap mode integral). Stage 033 only carries it as an already-fixed constant ('finite-throat overlap constants kappa_0, kappa_1, sigma already fixed exactly', notes line 63), and the audit script hardcodes the value (kappa0_sq = sp.Rational(8)/sp.pi**2) rather than re-deriving it. Constraint kind = internal_consistency (forced by the mode integral, not fit/posited)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py, line: 33, excerpt: "kappa0_sq = sp.Rational(8) / sp.pi**2" }
+      - { path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md, line: 79, excerpt: "`kappa_0^2 = 8 / pi^2`," }

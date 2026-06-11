@@ -1,0 +1,25 @@
+candidate_id: fit_stage104_chiQ_canonical_condition_card
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 101
+    introduced_at_line: 13
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 13
+      excerpt: "This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`."
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 5
+      excerpt: "Compute the canonical compact passive/outgoing quadrupole normalization directly from an explicit outgoing `l=2` Dirichlet-to-Neumann model instead of carrying the coefficient `chi_Q` symbolically."
+downstream_dependents: [105, 106, 107]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: needs_triage
+    summary: "Stage 104 card 'Derivation ledger' (line 13) uses the shared boilerplate '...isolates the reduced product m_hat0^2 chi_Q N_Q=1 and the canonical condition chi_Q=1.' Stage 104 derives the outgoing DtN fingerprint but keeps chi_Q symbolic; the canonical condition chi_Q=1 is actually isolated at stage 105 (notes line 5: '...instead of carrying the coefficient chi_Q symbolically'). This is the same boilerplate overclaim pattern that was corrected on the stage 100/101 cards (Q3 consult, commit b052471) but was NOT corrected on the stage 104 card."
+    citations:
+      - { path: paper/stages/stage_104.tex, line: 13, excerpt: "The computation isolates the reduced product \\(\\widehat m_0^{\\,2}\\chi_QN_Q=1\\) and the canonical condition \\(\\chi_Q=1\\)." }
+      - { path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md, line: 5, excerpt: "Compute the canonical compact passive/outgoing quadrupole normalization directly from an explicit outgoing `l=2` Dirichlet-to-Neumann model instead of carrying the coefficient `chi_Q` symbolically." }

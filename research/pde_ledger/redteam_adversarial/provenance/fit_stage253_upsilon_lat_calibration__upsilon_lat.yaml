@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_upsilon_lat_calibration__phase_b__upsilon_lat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,25 @@ source_evidence:
   line: 156
   role: notes_stage
   excerpt: f_{\rm lat}(s_c)\,\mu_\eta\,\frac{s_0^2-s_c^2}{s_c}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Upsilon_lat
+  introduced_at_stage: 253
+  introduced_at_line: 161
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 161
+    excerpt: \boxed{\Upsilon_{\rm lat}>0}
+constraints:
+- parameter: Upsilon_lat
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 185
+    excerpt: This is a calibration factor, not a new dynamical degree of freedom.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:11Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_upsilon_lat_calibration__upsilon_lat.yaml

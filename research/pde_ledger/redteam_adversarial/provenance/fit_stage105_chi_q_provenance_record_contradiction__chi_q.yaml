@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage105_chi_q_provenance_record_contradiction__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -118,9 +118,52 @@ source_evidence:
   line: 86
   role: sympy_script
   excerpt: print("  More generally, chi_Q is just the leading imaginary DtN deformation coefficient xi_Q.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 105
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 69
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 67
+    excerpt: Matching the \(O(\omega^5)\) coefficient yields
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: self_contradictory_origin
+  severity: low
+  summary: 'The chi_Q=1 origin attribution was previously self-contradictory (the ''097 vs 105'' bug: stage100/101 scripts+notes
+    credited the chi_Q identification to stage 097 ''upstream'', which both pre-dates the matching and conflicts with stage
+    106 crediting 105). This was adjudicated and FIXED (Q3 Claude+Codex consult, commit b052471): canonical genealogy is 097
+    = single-defect branch CONTEXT only, 104 = exact DtN fingerprint, 105 = chi_Q=1 fixed by the omega^5 match. Current sources
+    are consistent (stage 106 sympy script line 10 credits 105). Logged as resolved so re-ingest records the audit trail and
+    does not re-open it as live.'
+  citations:
+  - path: redteam/codex_reviews/_consult_q3_chiQ_provenance.md
+    line: 8
+    excerpt: 'A carry-forward annotation in stage100/stage101 (scripts + stage100 `.wl`) and the stage101 notes attributes
+      **"the chi_Q = 1 identification by DtN comparison" to stage 097 (single_normalization_defect), calling it UPSTREAM.**
+      That is wrong on two counts, verified by content:'
+  - path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+    line: 10
+    excerpt: '* Stage 105 (chiQ_fix_from_outgoing_dtn) fixes chi_Q = 1 from that fingerprint'
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 105 notes line 57 cite 'From Stage 87' for the outgoing DtN branch; canonical source is Stage 104. Unrenumbered
+    pre-renumber reference.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 57
+    excerpt: From Stage 87, the explicit outgoing DtN branch gives
+downstream_dependents:
+- '106'
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage105_chi_q_provenance_record_contradiction__chi_q.yaml

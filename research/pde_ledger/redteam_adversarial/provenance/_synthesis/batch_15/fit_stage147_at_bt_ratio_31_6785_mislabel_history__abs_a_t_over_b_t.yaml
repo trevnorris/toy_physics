@@ -1,0 +1,25 @@
+candidate_id: fit_stage147_AT_BT_ratio_31_6785_mislabel_history
+parameter_name: abs_A_T_over_B_T
+origin_claims:
+  - parameter: abs_A_T_over_B_T
+    introduced_at_stage: 147
+    introduced_at_line: 77
+    citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 77
+      excerpt: "\\frac{|A_T|}{B_T}\\approx 31.6785."
+constraints:
+  - parameter: abs_A_T_over_B_T
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 35
+      excerpt: "the `|A_T|/B_T` ratio `31.6785` is a SCRIPT-DERIVED cross-check value, NOT a paper constant; it had been MISLABELED \"paper-quoted\" and is now correctly relabeled as the script's own computed ratio (paper quotes only `A_T`/`B_T`)."
+downstream_dependents: [148]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "DOCUMENTED MISLABEL HISTORY (already corrected; residual low-precision literal). The ratio |A_T|/B_T approx 31.6785 (notes line 77) is a DERIVED consequence of the two kernel coefficients (internal_consistency), NOT an independent fitted constant and NOT a paper literal. History: it had been MISLABELED 'paper-quoted' and was CORRECTLY RELABELED in the batch-6 red-team as 'the script's own computed ratio' -- the paper appendix quotes only A_T and B_T, never the ratio (notes/CHECKPOINT_CONSTANT_PROVENANCE.md:35, item FLAG(147)). The current script reflects the fix: it computes the ratio (print |A_T|/B_T, script line 50) and the assert comment explicitly states it is 'computed ratio cross-check (not a paper literal)' (script line 64). RESIDUAL: the low-precision literal ratio_crosscheck = 31.6785 with tolerance 1e-3 still persists as a pinned cross-check target in the script (line 55), i.e. a coarse hard-coded anchor for a quantity that is fully determined by A_T/B_T to 30 digits. severity low: no value is wrong, the label is now correct; flagged so the audit records the back-fill episode and the lingering coarse literal."
+    citations:
+      - { path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py, line: 64, excerpt: "print(\"PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to 1e-3\")" }
+      - { path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py, line: 55, excerpt: "ratio_crosscheck = sp.Float(\"31.6785\", 20)" }

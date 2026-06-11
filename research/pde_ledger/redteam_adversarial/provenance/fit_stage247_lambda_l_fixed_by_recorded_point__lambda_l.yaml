@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_lambda_l_fixed_by_recorded_point__phase_b__lambda_l.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,43 @@ source_evidence:
   line: 243
   role: sympy_script
   excerpt: assert abs(float(lambda_L_soft) - 0.26971918) < 1e-6
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_L
+  introduced_at_stage: 247
+  introduced_at_line: 22
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 22
+    excerpt: The **Session-I benchmark specialization** used below additionally sets the work-channel embedding to unit weight
+      and reads the weighted `U/V` lowering directly from the recorded stationary run.
+constraints:
+- parameter: lambda_L
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: published_target
+  severity: needs_triage
+  summary: lambda_L=0.26971918 is fixed by inverting the reduced barrier so V_eff(r_soft) reproduces the recorded Session-I
+    softening V_eff^sess(r_soft)=1.74701126 (notes lines 368, 497-518). The 'recorded stationary run' (Appendix B.2 of the
+    barrier write-up, notes line 65/368) is the target. This is a single-point fit to a recorded benchmark figure, not a derivation
+    from a pole/normalization among ledger-internal derived quantities; the notes explicitly say it 'reads the weighted U/V
+    lowering directly from the recorded stationary run' (line 22) and is 'fixed exactly by the recorded softening point' (line
+    497).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 368
+    excerpt: r_{\rm soft}=0.18,
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 22
+    excerpt: The **Session-I benchmark specialization** used below additionally sets the work-channel embedding to unit weight
+      and reads the weighted `U/V` lowering directly from the recorded stationary run.
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage247_lambda_l_fixed_by_recorded_point__lambda_l.yaml

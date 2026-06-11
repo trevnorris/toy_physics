@@ -1,0 +1,24 @@
+candidate_id: fit_stage_063_g_fail
+parameter_name: G_fail
+origin_claims:
+  - parameter: G_fail
+    introduced_at_stage: 61
+    introduced_at_line: 124
+    citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 124
+      excerpt: "`G_fail(kappa,eta) = Pe_req / [ kappa Delta_inf(kappa,eta) ],`"
+constraints:
+  - parameter: G_fail
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+      line: 184
+      excerpt: "`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`"
+downstream_dependents: [64, 65, 66]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 063 G_fail is carried from its Stage-061 origin (the microscopic-gain fail threshold Pe_req/[kappa Delta_inf]); 063 only substitutes it into the parent g_phi amplitude thresholds. Origin is 061, not 063."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md, line: 182, excerpt: "Stage 061 already gave" }

@@ -1,0 +1,11 @@
+candidate_id: fit_stage_195_stale_output
+parameter_name: stale_output
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'stale_output' is not a physical parameter — it is a scanner meta-token. The bundle's only source_evidence is the generic stage_195.tex card 'Purpose' boilerplate (line 7), which contains no value, no equation, and no parameter. There is no notes/ documentation of any quantity named stale_output at stage 195. No origin or constraint can be asserted (binding notes-citation rule cannot be met for a non-parameter). Likely a scanner family-map/dedup artifact flagging a stale output cross-reference rather than a fitted value; should be dropped or routed to numbering/dedup triage, not provenance classification."
+    citations:
+      - { path: paper/stages/stage_195.tex, line: 7, excerpt: "\\stagefield{Purpose}{Stage~195 is the original-stage audit card for \\emph{Source-map reduction}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}" }

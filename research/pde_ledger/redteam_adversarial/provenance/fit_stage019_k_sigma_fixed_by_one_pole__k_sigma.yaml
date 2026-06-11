@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage019_k_sigma_fixed_by_one_pole__phase_b__k_sigma.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,47 @@ source_evidence:
   line: 184
   role: sympy_script
   excerpt: assert_zero('concrete wall inertia integral', MSigma_example - sp.sqrt(sp.pi))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_Sigma
+  introduced_at_stage: 019
+  introduced_at_line: 132
+  citation:
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 210
+    excerpt: '`D_(A,0) = K_A - B_(A,0) - Z_(A,0)`,'
+constraints:
+- parameter: K_Sigma
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 296
+    excerpt: '`P_0 = N_0 / D_0`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: Stage 019 (the stage that solves K_Sigma from the one-pole surface u4=4*u2^2, equivalently D0*(B4+Z4)=3*(M_Sigma+B2+Z2)^2)
+    has no per-stage notes/stages/ file, and its listed note source notes/em_projected/step_17_parent_throat_action_isotropic_bundle_notes.md
+    (STAGE_PROVENANCE_INDEX:29) is absent from the repo. The one-pole closed form K_Sigma=B0+Z0+3(M_Sigma+B2+Z2)^2/(B4+Z4)
+    is verifiable only from the stage_019 card/script; the binding notes/ citation above is the equivalent full-bundle stiffness
+    relation D0=K-B0-Z0 / P0=N0/D0 documented at stage 023, not a stage-019 note. Classification internal_consistency (K_Sigma
+    solved purely from ledger-internal grouped-bundle moments) rests on stage 023 notes plus the stage_019 script back-solve.
+  citations:
+  - path: notes/STAGE_PROVENANCE_INDEX.md
+    line: 29
+    excerpt: '| 019 | `paper/stages/stage_019.tex` | `notes/em_projected/step_17_parent_throat_action_isotropic_bundle_notes.md`
+      |'
+  - path: paper/stages/stage_019.tex
+    line: 24
+    excerpt: K_\Sigma=B_0+Z_0+
+  - path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+    line: 49
+    excerpt: K_from_one_pole = sp.simplify(sp.solve(sp.Eq(one_pole_defect, 0), KSigma)[0])
+downstream_dependents:
+- '016'
+- 018
+- 019
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage019_k_sigma_fixed_by_one_pole__k_sigma.yaml

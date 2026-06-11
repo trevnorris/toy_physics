@@ -1,0 +1,25 @@
+candidate_id: fit_stage_004_i_ws_delta
+parameter_name: I_WS_delta
+origin_claims:
+  - parameter: I_WS_delta
+    introduced_at_stage: 4
+    introduced_at_line: 106
+    citation:
+      path: notes/em_projected/step_04_projection_reduction_comparison_notes.md
+      line: 106
+      excerpt: "I_{WS}=W(0)=\\frac{1}{\\sqrt{\\pi}\\lambda},"
+constraints:
+  - parameter: I_WS_delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_04_projection_reduction_comparison_notes.md
+      line: 100
+      excerpt: "I_{WZ}=\\frac{1}{\\sqrt2}."
+downstream_dependents: [5, 7]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "I_WS_delta (= W(0) = 1/(sqrt(pi)*lambda), the delta-localized-source projection kernel value) is exercised by the stage-004 sympy audit, but the documenting notes prose for this quantity and the sqrt(2) projection-vs-reduction ratio it feeds lives in step_04_projection_reduction_comparison_notes.md (which the STAGE_PROVENANCE_INDEX maps to stage 007, note source for stage 004 is listed as step_01 readme). The step_01 readme (stage-004 note source) only summarizes the mismatch; the explicit I_WS=W(0) value and the mu_proj/mu_red = sqrt(2) result are in step_04. The value is an exact algebraic property of the matched Gaussian kernel, not a fit."
+    citations:
+      - { path: notes/em_projected/step_01_projected_maxwell_readme.md, line: 24, excerpt: "- compares projection-first and reduction-first zero-mode couplings" }
+      - { path: scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py, line: 99, excerpt: "assert_zero(\"delta-source projection/reduction ratio\", mu_proj_delta / mu_red - sp.sqrt(2))" }

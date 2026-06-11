@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_193_p_2__phase_b__p_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -70,7 +70,14 @@ source_evidence:
   role: sympy_script
   excerpt: banner("STAGE 193 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL")
 origin_claims: []
-constraints: []
+constraints:
+- parameter: P_2
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 5
+    excerpt: '**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 191, the microscopic orbit/quotient split
+      of Stage 192, and the reduced 5PN isotropic grouped-real `P2` closure.**'
 graph_context:
   contexts: []
   graph_gaps:
@@ -91,3 +98,19 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_193.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: P_2 (extracted literal '2') is the angular multipole label l=2 of the 'grouped real P2' sector, not a fitted scalar.
+    Stage 193 works entirely with the grouped-real P2 conservative carrier (notes lines 33-35, 105-149); the '2' is the multipole-order
+    convention chosen for the moving-throat analysis (the l=2 / quadrupole sector). constraint_kind free_choice (sector/branch
+    convention). No notes/ line at stage 193 assigns P_2 a derived or externally-fit numeric value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 35
+    excerpt: That surface is the real front-end theorem target. It is where the grouped `20/21/22` bundle stops being an arbitrary
+      three-lane packet and becomes the minimal isotropic one-pole conservative carrier needed by the higher-order chain.
+downstream_dependents:
+- '194'
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_193_p_2__p_2.yaml

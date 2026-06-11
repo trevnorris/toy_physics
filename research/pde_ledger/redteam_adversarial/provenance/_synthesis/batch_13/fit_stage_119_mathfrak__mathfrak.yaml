@@ -1,0 +1,26 @@
+candidate_id: fit_stage_119_mathfrak
+parameter_name: mathfrak
+origin_claims:
+  - parameter: mathfrak
+    introduced_at_stage: 119
+    introduced_at_line: 11
+    citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 11
+      excerpt: "Define the two dimensionless parent ratios"
+constraints:
+  - parameter: mathfrak
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 52
+      excerpt: "Once \\(\\mathfrak r\\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly."
+downstream_dependents: [120, 121, 122, 123, 124, 125]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "The scanner's parameter 'mathfrak' conflates the TWO dimensionless parent ratios r := lambda/sqrt(K_s K_q) and g := g_q sqrt(K_s)/(g_s sqrt(K_q)) defined together at Stage 119 (notes lines 13/15). Their constraint kinds DIFFER: at Stage 119, g is FORCED by the balance law (internal_consistency, classified above), while r is at this stage still a FREE control to be 'chosen' ('choose the normalized mixed background flow r', line 161) — r only becomes fixed downstream at Stage 121 via the geometric L_W=L identification, which itself rests on the carried 37/20 aspect-ratio freeze (free_choice upstream). Recorded as ambiguous because a single constraint_kind cannot cover both members; the dominant/load-bearing classification for the relation g(r) at this stage is internal_consistency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 161, excerpt: "1. choose the normalized mixed background flow \\(\\mathfrak r\\)," }
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 13, excerpt: "\\mathfrak r := \\frac{\\lambda}{\\sqrt{K_sK_q}}," }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 97, excerpt: "- before Stage 121, the normalized hybridization \\(\\mathfrak r\\) was free;" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_194_chi_q__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -192,8 +192,21 @@ source_evidence:
   line: 368
   role: notes_stage
   excerpt: \chi_Q=1.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 194
+  introduced_at_line: 184
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 182
+    excerpt: Matching the leading odd coefficient yields
 graph_context:
   contexts: []
   graph_gaps:
@@ -230,3 +243,20 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_194.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: Duplicate chi_Q candidate at stage 194 (target value '1'). chi_Q=1 is fixed (194 line 184) by matching the leading
+    odd omega^5 coefficient of the retarded grouped-P2 module to the exact compact outgoing spherical-Hankel l=2 DtN fingerprint
+    (Y_2^out=...+i z^5/27, derived from h_2^{(1)}, 194 lines 96-158). The matched object is a derived special-function expansion,
+    so internal_consistency, not an external published number. Equivalently a deformed branch gives chi_Q=xi_Q (194 line 196),
+    confirming it is the outgoing-normalization scalar of the canonical branch.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 196
+    excerpt: \boxed{\chi_Q=\xi_Q.}
+downstream_dependents:
+- '195'
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_194_chi_q__chi_q.yaml

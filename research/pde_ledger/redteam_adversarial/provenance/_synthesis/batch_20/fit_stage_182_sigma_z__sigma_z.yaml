@@ -1,0 +1,19 @@
+candidate_id: fit_stage_182_sigma_z
+parameter_name: Sigma_Z
+origin_claims:
+  - parameter: Sigma_Z
+    introduced_at_stage: 182
+    introduced_at_line: 241
+    citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 241
+      excerpt: "\\Sigma_Z:=2\\lambda_1+\\mu_1-\\kappa_\\eta-2\\kappa_W=\\zeta_Z-\\omega_W,"
+constraints:
+  - parameter: Sigma_Z
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 241
+      excerpt: "\\Sigma_Z:=2\\lambda_1+\\mu_1-\\kappa_\\eta-2\\kappa_W=\\zeta_Z-\\omega_W,"
+downstream_dependents: [183, 184, 185, 186, 187]
+provenance_findings: []

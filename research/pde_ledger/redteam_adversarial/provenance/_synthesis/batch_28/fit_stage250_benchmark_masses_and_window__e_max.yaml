@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: E_max
+origin_claims:
+  - parameter: E_max
+    introduced_at_stage: 250
+    introduced_at_line: 486
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 486
+      excerpt: "E_{\\rm max,scan}=80.93332737,"
+constraints:
+  - parameter: E_max
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 483
+      excerpt: "The Session-III scan did not find an upper collapse edge before the top of the sampled band,"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "E_max = E_max,scan = 80.93332737 is the top of the Session-III sampled energy band -- a scan-window readback (the largest energy actually sampled), not a derived edge. It is a posited scan upper bound; the notes are explicit that no upper collapse edge was found within it, so it carries no derivation."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 483, excerpt: "The Session-III scan did not find an upper collapse edge before the top of the sampled band," }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 179, excerpt: "Emax_num = 80.93332737" }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_249_gamma_0
+parameter_name: Gamma_0
+origin_claims:
+  - parameter: Gamma_0
+    introduced_at_stage: 249
+    introduced_at_line: 220
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 220
+      excerpt: "\\Gamma_0:=-\\Phi_{h,0}-2\\mathcal C_{h,0},"
+constraints:
+  - parameter: Gamma_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 220
+      excerpt: "\\Gamma_0:=-\\Phi_{h,0}-2\\mathcal C_{h,0},"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Gamma_0 is a symbolic DEFINITION (Gamma_0 := -Phi_{h,0} - 2*C_{h,0}), the orientation-even part of the export rate, derived by construction from the (posited) linear closure; it carries no independent numeric value of its own. Classified internal_consistency as a definitional identity, but its numeric content is downstream of the free_choice linear closure, not of any derived ledger quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 198, excerpt: "The minimal closure assumption is that the hidden-sector helicity export is linear in this two-state label:" }

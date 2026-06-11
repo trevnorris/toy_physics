@@ -1,0 +1,24 @@
+candidate_id: fit_stage_096_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 96
+    introduced_at_line: 31
+    citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 31
+      excerpt: "`eps_2 = eps_4 = 0`"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 27
+      excerpt: "So the geometry lane cannot contribute dynamic `omega^2` or `omega^4` moments to the isotropic quadrupole module."
+downstream_dependents: [97, 99]
+provenance_findings:
+  - type: graph_gap
+    severity: low
+    summary: "Carried from the mechanical bundle: atlas graph wrapper returned no source node for paper/stages/stage_096.tex. Notes origin (stage096 line 31) is sound; the gap is an atlas-node coverage issue only, not a provenance failure."
+    citations:
+      - { path: paper/stages/stage_096.tex, line: 13, excerpt: "\\stagefield{Derivation ledger}{The verification step belongs to the \\emph{Geometry-lane firewall} block." }

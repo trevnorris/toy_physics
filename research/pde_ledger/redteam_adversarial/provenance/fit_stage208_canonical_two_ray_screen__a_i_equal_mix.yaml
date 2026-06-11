@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage208_canonical_two_ray_screen__phase_b__a_i_equal_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -194,9 +194,27 @@ source_evidence:
   line: 382
   role: notes_stage
   excerpt: The gradient-optimal and equal-mix rays coincide iff
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_i_equal_mix
+  introduced_at_stage: 208
+  introduced_at_line: 221
+  citation:
+    path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+    line: 221
+    excerpt: \widehat{\mathbf s}_{ij}^{\rm eq}:=\frac{\widehat{\mathbf e}_i+\widehat{\mathbf e}_j}{\sqrt2}
+constraints:
+- parameter: a_i_equal_mix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+    line: 224
+    excerpt: maximizes the absolute leverage of the off-diagonal Hessian entry inside the pairwise cone.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '209'
+- '210'
+synthesis_ingested_at: '2026-06-11T19:17:21Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage208_canonical_two_ray_screen__a_i_equal_mix.yaml

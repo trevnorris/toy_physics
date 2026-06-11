@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_p0_quadrupole_normalization_target__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -157,9 +157,42 @@ source_evidence:
   line: 353
   role: sympy_script
   excerpt: print("  • the 2.5PN target is now the invariant normalization product")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 18
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 256
+    excerpt: The universal GR quadrupole target is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: high
+  summary: 'Stage 022 is the ORIGIN of P0_target: the note back-solves the GR target gamma_GR=2G/(5c^5) through the fingerprint
+    coefficient a^5/(27c_s^5) to get P_0 = 54Gc_s^5/(5a^5c^5) on the mhat_0=1 branch. The ''54/5'' is therefore a published_target
+    (fit to the external GR quadrupole normalization), not a ledger-internal derivation. Disclosure is honest (card line 143
+    calls it ''a branch test, not a proof of branch realization''), so no paper_card_overclaim; but the constraint is published_target.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 281
+    excerpt: '`P_0 = 54 G c_s^5 / (5 a^5 c^5)`'
+  - path: paper/stages/stage_022.tex
+    line: 133
+    excerpt: \widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}}
+downstream_dependents:
+- '016'
+- 019
+- '025'
+- '191'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage022_p0_quadrupole_normalization_target__p0_target.yaml

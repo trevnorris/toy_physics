@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_091_epsilon_2__phase_b__epsilon_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,8 +29,21 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_2
+  introduced_at_stage: 92
+  introduced_at_line: 23
+  citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 23
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,'
+constraints:
+- parameter: epsilon_2
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 22
+    excerpt: '- and if the 3PN geometry completion is genuinely static through `O(omega^4)`,'
 graph_context:
   contexts: []
   graph_gaps:
@@ -51,3 +64,22 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_091.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: The symbol epsilon_2 (geometry-contamination parameter) is NOT named in the Stage 091 note at all; 091 instead
+    posits the equivalent static-geometry hypothesis 'geometry completion is genuinely static through O(omega^4)' (i.e. eps_2=0
+    implicitly), an ansatz (free_choice). The parameter eps_2 is first defined at Stage 092 (line 23); its value is later
+    forced to 0 by the orthogonality theorem at Stage 094. At 091 it is an implicit posited-zero, not a derived quantity.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 22
+    excerpt: '- and if the 3PN geometry completion is genuinely static through `O(omega^4)`,'
+  - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 31
+    excerpt: '`eps_2 = eps_4 = 0`'
+downstream_dependents:
+- 092
+- 093
+- 094
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage_091_epsilon_2__epsilon_2.yaml

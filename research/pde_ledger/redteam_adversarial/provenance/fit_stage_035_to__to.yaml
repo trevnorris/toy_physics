@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_035_to__phase_b__to.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -212,3 +212,21 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_035.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: needs_triage
+  summary: '''to'' is not a ledger parameter. Every source_evidence pointer in the bundle is ordinary English prose containing
+    the word ''to'' (e.g. notes line 8 ''therefore to pass to the exact D/N ... constants'', line 12 ''collapses to one equation'',
+    line 15 ''maps the stable branch exactly from 1 to +infinity''). No symbol, variable, or value named ''to'' exists in
+    the stage-035 notes, paper card, or sympy audit (confirmed via word-boundary grep for a ''to'' token assignment). Scanner
+    tokenization false-positive; no origin or constraint attributable.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 8
+    excerpt: The next step is therefore to pass to the exact D/N finite-throat constants and reduce the entire problem to
+      a **dimensionless shape function**.
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 15
+    excerpt: 3. it maps the stable branch exactly from `1` to `+infinity`,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_035_to__to.yaml

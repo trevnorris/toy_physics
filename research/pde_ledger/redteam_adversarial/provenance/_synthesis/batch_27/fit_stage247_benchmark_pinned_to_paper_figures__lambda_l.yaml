@@ -1,0 +1,26 @@
+candidate_id: fit_stage247_benchmark_pinned_to_paper_figures
+parameter_name: lambda_L
+origin_claims:
+  - parameter: lambda_L
+    introduced_at_stage: 247
+    introduced_at_line: 518
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 518
+      excerpt: "\\lambda_L=0.26971918."
+constraints:
+  - parameter: lambda_L
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 497
+      excerpt: "which is fixed exactly by the recorded softening point:"
+downstream_dependents: [ 248 ]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "This candidate framing ('benchmark pinned to paper figures') describes lambda_L=0.26971918 as 'independently derived benchmark quantities pinned to the paper figures' in the audit script (line 239), but lambda_L is itself back-solved from the recorded target V_eff^sess(r_soft)=1.74701126; the 'pin' asserts the back-solved value matches the recorded benchmark, which is the fit, not an independent derivation. The notes are honest about this (line 497), so the mismatch is between the script comment's 'independently derived' wording and the actual back-solve, not between notes and mechanism."
+    citations:
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 239, excerpt: "# F5: pin independently derived benchmark quantities to the paper figures." }
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 238, excerpt: "lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)" }
+      - { path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md, line: 497, excerpt: "which is fixed exactly by the recorded softening point:" }

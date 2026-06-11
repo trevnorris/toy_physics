@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage170_canonical_u2_u4__phase_b__u_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -111,9 +111,45 @@ source_evidence:
   line: 152
   role: sympy_script
   excerpt: 'dkW[A] = dkappa_from_du2.subs({dD2: eps_l*lam*D2_1, dD0: eps_l*lam*D0_1})'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: u_2
+  introduced_at_stage: 104
+  introduced_at_line: 58
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 58
+    excerpt: 1+\frac{z^2}{9}
+constraints:
+- parameter: u_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 83
+    excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
+      directly from the explicit DtN model.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Stage 170 notes attribute the canonical moments u_2=1/9, u_4=4/81 to ''Stages 022/023'' (notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md:71,
+    ''\nStages 022/023 already gave the normalized conservative response moments''). Stages 022/023 give the MOMENT DEFINITIONS
+    u_2^(A) = -D_{A,2}/D_{A,0} (verified: stage 022 notes line 65) but do not pin the numeric 1/9. The numeric canonical value
+    u_2=1/9 (and u_4=4/81) is first DERIVED at Stage 104 from the normalized outgoing l=2 DtN/Hankel admittance (z^2/9 coefficient,
+    stage 104 notes lines 58-59; ''derived directly from the explicit DtN model'', line 83). The 022/023 anchor is for the
+    definition, not the value — a soft cross-reference imprecision, not a substantive error. Stage 170 itself only carries
+    the value (''linearize around an isotropic compensated canonical branch'', notes line 82).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 71
+    excerpt: Stages 022/023 already gave the normalized conservative response moments
+  - path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 59
+    excerpt: +\frac{4z^4}{81}
+downstream_dependents:
+- '171'
+- '172'
+- '173'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage170_canonical_u2_u4__u_2.yaml

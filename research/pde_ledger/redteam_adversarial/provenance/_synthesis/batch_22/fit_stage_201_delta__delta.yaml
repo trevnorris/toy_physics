@@ -1,0 +1,25 @@
+candidate_id: fit_stage_201_delta
+parameter_name: Delta
+origin_claims:
+  - parameter: Delta
+    introduced_at_stage: 195
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+constraints:
+  - parameter: Delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+      line: 151
+      excerpt: "\\Delta_Q(\\mathbf x):=\\chi_Q(\\mathbf x)-1."
+downstream_dependents: [202]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "The scanner extracted a bare 'Delta' for Stage 201; the bundle's notes evidence spans several distinct Delta-family realization-packet quantities and there is no single canonical 'Delta' value. I resolved it to the Packet-A scalar Delta_Q(x) := chi_Q(x)-1 (notes line 151), which is the only value-bearing member (carried from its Stage 195 definition); it is internal_consistency (a definition tied to the ledger-internal chi_Q). The other Delta-symbols in the bundle -- Delta_full=0 (line 16, the four-scalar verdict vanishing condition), Delta x_rep (line 35, the repair vector, classified separately under candidate fit_stage201_canonical_repair_vector), and Delta_real^int (line 158, the intrinsic four-scalar realization packet) -- are all derived/defined consistency objects (also internal_consistency), so the classification is robust under any of the readings, but the exact referent of the bare 'Delta' is ambiguous."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md, line: 16, excerpt: "\\Delta_{\\rm full}=0" }
+      - { path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md, line: 158, excerpt: "\\Delta_{\\rm real}^{\\rm int}(\\mathbf x\\mid \\mathcal Z_*)" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_162_g_lower__phase_b__g_lower.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -85,9 +85,34 @@ source_evidence:
   line: 80
   role: sympy_script
   excerpt: 'print("  On the lower branch: delta g = (dg/dr) delta r with dg/dr > 0.")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_lower
+  introduced_at_stage: 162
+  introduced_at_line: 50
+  citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 50
+    excerpt: \mathfrak g_\pm(\mathfrak r)=\mathfrak r\pm\frac12\sqrt{1+\mathfrak r^2}.
+constraints:
+- parameter: g_lower
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 48
+    excerpt: 1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: g_lower (the lower compensated branch g_-(r)=r-sqrt(1+r^2)/2) is solved from the Stage-119 exact balance law; 162
+    restates the balance law and branch root but does not cite the originating Stage-119 line where the family was first written.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 40
+    excerpt: Stage 119 rewrote the compensated throat-core condition in terms of the normalized parent ratios
+downstream_dependents:
+- '163'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage_162_g_lower__g_lower.yaml

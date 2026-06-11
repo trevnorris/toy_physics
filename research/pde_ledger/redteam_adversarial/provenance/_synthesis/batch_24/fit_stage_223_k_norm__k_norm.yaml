@@ -1,0 +1,24 @@
+candidate_id: fit_stage_223_k_norm
+parameter_name: K_norm
+origin_claims:
+  - parameter: K_norm
+    introduced_at_stage: 223
+    introduced_at_line: 144
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 144
+      excerpt: "K_{\\mathrm{norm}}"
+constraints:
+  - parameter: K_norm
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 142
+      excerpt: "The outgoing-normalization condition solves for the same wall stiffness as"
+downstream_dependents: [225]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "K_norm is the algebraic solve of the wall stiffness from the outgoing-normalization condition (K_norm=N_0/P0_target+B_0+Z_0), an internal-consistency derivation step. But it is parameterized by the external P0_target (a published_target); the numeric compatibility stiffness K_compat is fixed from the one-pole (K_pole) side, not from inserting an external P0_target value. Classified internal_consistency because K_norm is a derived expression, with the external dependence noted."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md, line: 146, excerpt: "\\frac{N_0}{P_{0,\\mathrm{target}}}+B_0+Z_0." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_046_f_flat__phase_b__f_flat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,36 @@ source_evidence:
   line: 93
   role: sympy_script
   excerpt: delta_G = sp.factor(sp.simplify(G_tr - G_flat))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: F_flat
+  introduced_at_stage: 46
+  introduced_at_line: 54
+  citation:
+    path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 54
+    excerpt: '`F_flat(xi,delta) = F_tr(xi,delta;1)`'
+constraints:
+- parameter: F_flat
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 46
+    excerpt: The old flat branch is recovered at
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: Scanner attributed value '1' to F_flat. The '1' is not a value of F_flat itself; it is the substitution R=1 that
+    DEFINES the flat branch as the R=1 specialization of F_tr (notes line 54 'F_flat = F_tr(xi,delta;1)'). F_flat is a rational
+    function of (xi,delta), not the scalar 1. Recorded so the literal '1' is not mis-ingested as a fit value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 48
+    excerpt: '`R = 1,`'
+downstream_dependents:
+- 048
+- '051'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_046_f_flat__f_flat.yaml

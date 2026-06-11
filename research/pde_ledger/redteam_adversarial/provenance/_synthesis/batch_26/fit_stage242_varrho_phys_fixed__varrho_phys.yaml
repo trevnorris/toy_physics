@@ -1,0 +1,25 @@
+candidate_id: fit_stage242_varrho_phys_fixed
+parameter_name: varrho_phys
+origin_claims:
+  - parameter: varrho_phys
+    introduced_at_stage: 242
+    introduced_at_line: 141
+    citation:
+      path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+      line: 143
+      excerpt: "\\frac23(1-\\epsilon)."
+constraints:
+  - parameter: varrho_phys
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+      line: 137
+      excerpt: "\\varrho_{\\rm phys}\n:=\n\\frac{\\pi^2\\Pi_{\\rm tr}}{16\\Lambda}\n=\n\\frac{\\pi^2}{16\\Lambda}\\cdot\\frac43\\cdot\\frac{8\\Lambda(1-\\epsilon)}{\\pi^2}\n=\n\\boxed{\n\\frac23(1-\\epsilon)."
+downstream_dependents: [244]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "varrho_phys carries no fixed numeric target; it is the realized selected-branch coordinate varrho_phys = (2/3)(1-eps), DERIVED at Stage 242 by substituting the carried Stage-240 demand Pi_tr = (4/3) C_mix and C_mix = 8 Lambda(1-eps)/pi^2 into varrho = pi^2 Pi_tr/(16 Lambda) (notes line 137-143). This is internal_consistency (CHECKPOINT_CONSTANT_PROVENANCE line 789: 'derived in the audit by substituting the selected support demand into varrho_phys = Pi^2 Pi_tr/(16 Lambda)'). It remains a function of the running coherent support variable eps, not a single value. Logged for transparency since the scanner candidate has no numeric target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md, line: 127, excerpt: "\\Pi_{\\rm tr}=\\frac43\\,C_{\\rm mix}," }
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 789, excerpt: "derived in the audit by substituting the selected support demand into `varrho_phys = Pi^2 Pi_tr / (16 Lambda)`" }

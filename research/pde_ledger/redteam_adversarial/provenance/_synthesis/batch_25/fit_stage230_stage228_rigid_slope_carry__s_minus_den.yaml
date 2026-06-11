@@ -1,0 +1,25 @@
+candidate_id: fit_stage230_stage228_rigid_slope_carry
+parameter_name: s_minus_den
+origin_claims:
+  - parameter: s_minus_den
+    introduced_at_stage: 230
+    introduced_at_line: 89
+    citation:
+      path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+      line: 89
+      excerpt: "s_{-}^{(\\rm den)}\\approx +0.411024574532864."
+constraints:
+  - parameter: s_minus_den
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+      line: 84
+      excerpt: "So per unit \\(\\Xi_1\\), the **denominator-carried** dynamic slopes are"
+downstream_dependents: [231, 233, 234]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "s_-^(den) ~ +0.411024574532864 is the denominator-carried lower-pole per-unit-Xi_1 dynamic slope. Stage 230 derives it (notes line 84-89) by dividing the carried Stage-228 wall-like dynamic slopes (delta ln R_Q,- ~ +0.71358484, notes 230 line 82 = Stage 228 line 321) by the Stage-228 unit-direction Xi_1 ~ 1.73611235. So the ORIGIN of the underlying dynamic data is Stage 228 (the 'Frozen input carried forward / Stage-228 rigid dynamic data' block, notes 230 line 62); Stage 230 merely re-expresses it per unit Xi_1. The value is computed entirely from ledger-internal pole-census slopes (internal_consistency), no external anchor. Origin attribution: the per-unit slope is first written at 230, but its dynamic-slope content is carried from 228."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md, line: 62, excerpt: "### 1.1 Stage-228 rigid dynamic data" }
+      - { path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md, line: 321, excerpt: "\\delta\\ln \\mathcal R_{Q,-} \\approx +0.71358484," }

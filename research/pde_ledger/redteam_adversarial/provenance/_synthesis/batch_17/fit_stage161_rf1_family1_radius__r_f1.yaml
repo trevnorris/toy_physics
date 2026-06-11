@@ -1,0 +1,25 @@
+candidate_id: fit_stage161_rF1_family1_radius
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 70
+      excerpt: "\\approx 1.77799353547498."
+constraints:
+  - parameter: r_F1
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 60
+      excerpt: "\\frac{L}{a}=\\frac{37}{20},"
+downstream_dependents: []
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Stage161 carries r_F1 ~1.77799353547498 via the Family-1 identification r_{c,*} = r_F1^2 (notes lines 247-249), giving 1+r_{c,*} ~4.161261012190819 used in the Upsilon_Pi prefactor. Its true origin (Stage 121) is r_F1 = sqrt((12/pi^2)(37/20)^2 - 1), a deterministic geometric function of the POSITED preferred aspect ratio L/a = 37/20, a flagged carried/external fit target. The closed forms in Stage 161 (the D/N similarity law gamma_0 = 4 L_W^2/(3 pi^2 a^2)) are consistent with that geometric origin, but the underlying scale 37/20 is the fit insertion point. classifying r_F1 as internal_consistency would overstate."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 250, excerpt: "\\mathfrak r_{F1}\\approx 1.77799353547498," }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 67, excerpt: "\\sqrt{\\frac{12}{\\pi^2}\\left(\\frac{37}{20}\\right)^2-1}" }

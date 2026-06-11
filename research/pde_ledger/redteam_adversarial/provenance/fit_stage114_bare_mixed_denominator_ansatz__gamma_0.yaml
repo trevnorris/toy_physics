@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage114_bare_mixed_denominator_ansatz__phase_b__gamma_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -60,9 +60,37 @@ source_evidence:
   line: 55
   role: sympy_script
   excerpt: print("gamma_c =", sp.simplify(gamma_c))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_0
+  introduced_at_stage: 114
+  introduced_at_line: 29
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 29
+    excerpt: D_W^{\rm bare}(z)=1-\kappa_0 z^2-i\gamma_0 z^5+O(z^6).
+constraints:
+- parameter: gamma_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 101
+    excerpt: '- plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'At Stage 114 gamma_0 is a POSITED bare-mixed-denominator coefficient (free_choice ansatz): D_W^bare(z)=1-kappa_0
+    z^2 - i gamma_0 z^5 is the assumed low-frequency form of the internal mixed channel, listed explicitly as surviving free
+    data ''(kappa_0,gamma_0)''. It carries no value at Stage 114. (It is only later, at Stage 115, that landing on the compensated
+    branch FORCES gamma_0=(1+r_c)/9 by internal consistency — see fit_stage115_gamma_0_pure_scale_ansatz.) Recorded so the
+    two stages are not conflated: free_choice ansatz here, forced value at 115.'
+  citations:
+  - path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+    line: 44
+    excerpt: D_bare = 1 - kappa0 * z**2 - sp.I * gamma0 * z**5
+downstream_dependents:
+- '115'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage114_bare_mixed_denominator_ansatz__gamma_0.yaml

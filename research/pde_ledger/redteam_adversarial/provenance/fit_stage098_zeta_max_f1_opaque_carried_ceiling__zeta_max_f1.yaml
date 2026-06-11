@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_zeta_max_f1_opaque_carried_ceiling__phase_b__zeta_max_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,40 @@ source_evidence:
   line: 37
   role: sympy_script
   excerpt: print('d zeta_req / d eps =', dz)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_max_F1
+  introduced_at_stage: 79
+  introduced_at_line: 35
+  citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 35
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+constraints:
+- parameter: zeta_max_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 451
+    excerpt: carried forward as `zeta_max^(F1)` from the Stage 63/64 support ceiling
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: This 'opaque_carried_ceiling' candidate flags that zeta_max_F1 enters stage 098 as a bare decimal literal (2.46752922945601)
+    with no in-stage derivation; the value is opaque at the point of use. It is, however, a genuine ledger-internal Family-1
+    constructive ceiling (stage 079, ultimately Stage 63/64), so the carry is sound (internal_consistency) — the only weakness
+    is that neither the stage098 card nor the local script re-states its upstream provenance node beyond a comment that it
+    is 'not derived in this stage'.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 22
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601 > 1`,'
+  - path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+    line: 26
+    excerpt: zmax_F1 = sp.N('2.46752922945601')
+downstream_dependents:
+- 099
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage098_zeta_max_f1_opaque_carried_ceiling__zeta_max_f1.yaml

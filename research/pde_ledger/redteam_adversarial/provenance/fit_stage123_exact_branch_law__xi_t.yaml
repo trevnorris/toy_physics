@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage123_exact_branch_law__phase_b__xi_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -123,9 +123,55 @@ source_evidence:
   line: 62
   role: sympy_script
   excerpt: print("Xi_T(+) =", Xi_T_plus, "≈", sp.N(Xi_T_plus, 20))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_T
+  introduced_at_stage: 123
+  introduced_at_line: 57
+  citation:
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 57
+    excerpt: '\Xi_T
+
+      :=
+
+      \mathcal T_m\,
+
+      \frac{a\sqrt{\mu_0\rho_wL\ell}}
+
+      {\sqrt{\mathcal Z_q m_\psi}}.'
+constraints:
+- parameter: Xi_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 66
+    excerpt: Then the exact branch law is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Xi_T (parent-normalized mouth-traction number) is DEFINED at Stage 123 (notes line 57) and obeys the exact branch
+    law Xi_T = (3 sqrt30/(10 sqrt pi)) (1/g) (line 67). Its branch VALUES Xi_T^nat~0.927 (at g_nat=1), Xi_T^(-)~1.223, Xi_T^(+)~0.331
+    (at g_pm^F1) follow algebraically from already-derived g values (notes lines 75-100), so internal_consistency. CAVEAT:
+    Xi_T^(pm) inherit the carried 37/20 freeze via g_pm^F1; the branch-law RELATION Xi_T(g) is genuinely forced. No external
+    published target is matched.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 78
+    excerpt: '\Xi_T^{\rm nat}
+
+      =
+
+      \frac{3\sqrt{30}}{10\sqrt{\pi}}
+
+      \approx 0.927058084855655.'
+  - path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    line: 97
+    excerpt: \Xi_T^{(-)}\approx 1.22297517701464,
+downstream_dependents:
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage123_exact_branch_law__xi_t.yaml

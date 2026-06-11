@@ -1,0 +1,25 @@
+candidate_id: fit_stage225_K_compat_P0_target_pin
+parameter_name: P0_target
+origin_claims:
+  - parameter: P0_target
+    introduced_at_stage: 223
+    introduced_at_line: 252
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 253
+      excerpt: "\\approx 0.00206979231806289."
+constraints:
+  - parameter: P0_target
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 144
+      excerpt: "The same branch reproduces the carried compatibility prefactor"
+downstream_dependents: [226, 227]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "This candidate's 'P0_target' is the branch-compatible compatibility prefactor P_{0,target,compat}=N_0/D_0~0.00207 pinned by K_compat — an internal-consistency value (computed from the one-pole/normalization compatibility solve), NOT the external universal P0_target=54Gc_s^5/(5...). Note the same symbol 'P0_target' is used by the other stage-223 candidates for the EXTERNAL GR target (published_target); here at the K_compat pin it denotes the internally-induced compatibility target. Classified internal_consistency on that basis."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md, line: 148, excerpt: "\\frac{N_0}{D_0}" }
+      - { path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md, line: 161, excerpt: "Equivalently, the primitive branch itself induces the unique branch-compatible target" }

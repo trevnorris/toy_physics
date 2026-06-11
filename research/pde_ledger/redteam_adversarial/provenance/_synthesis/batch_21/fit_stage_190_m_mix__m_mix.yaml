@@ -1,0 +1,24 @@
+candidate_id: fit_stage_190_m_mix
+parameter_name: M_mix
+origin_claims:
+  - parameter: M_mix
+    introduced_at_stage: 190
+    introduced_at_line: 138
+    citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 138
+      excerpt: "M_{\\rm tr}=M_{\\rm mix}\\,S(\\zeta;\\epsilon),"
+constraints:
+  - parameter: M_mix
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+      line: 140
+      excerpt: "S(\\zeta;\\epsilon)=1+\\frac{\\zeta(1-\\epsilon)}{1-\\zeta\\epsilon}."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "M_mix is the carried mixing/baseline mouth-loading mass entering the support-enhancement factorization M_tr=M_mix*S(zeta;eps) (190 line 138). The notes use it only structurally to prove support-blindness of the transfer shape; they do not state a closed-form value or back-solve it to an external number, so within stage 190 it is a carried/structural quantity (internal_consistency role, used not fitted). The script line 53 closed form Mmix=8 ZW (1+chi0)^2/(pi^2 (1-epseta)(1-eps)) is in scripts/ only; no notes/ line gives that value, so the numeric closed form has no notes anchor at this stage."
+    citations:
+      - { path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py, line: 53, excerpt: "Mmix = sp.simplify(8 * ZW * (1 + chi0) ** 2 / (sp.pi**2 * (1 - epseta) * (1 - eps)))" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage031_unique_alpha_star_crossing__phase_b__alpha_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,44 @@ source_evidence:
   line: 8
   role: sympy_script
   excerpt: 3. Initial-value formulas at alpha = 0.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: alpha_star
+  introduced_at_stage: 31
+  introduced_at_line: 147
+  citation:
+    path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+    line: 147
+    excerpt: '> for every target value `P_target > P_{0,-}(0)`, there exists a **unique** stable-side loading `alpha_*` with
+      `0 < alpha_* < alpha_crit` such that `P_{0,-}(alpha_*) = P_target`.'
+constraints:
+- parameter: alpha_star
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+    line: 151
+    excerpt: '`P_target = N_Q^(target) / mhat_-^2`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: 'alpha_star is the unique stable-side loading defined by P_{0,-}(alpha_*) = P_target, where P_target = N_Q^target/mhat_-^2
+    and N_Q^target = 54/5 G c_s^5/(5 a^5 c^5) is the external GR quadrupole number. So alpha_star''s VALUE is whatever loading
+    makes the selected prefactor hit the external target: it is back-solved from the published GR number via the monotone
+    crossing. The stage''s content (existence + uniqueness of the crossing) is an internal_consistency theorem about the monotone
+    P_{0,-}(alpha_0), but the alpha_star VALUE the candidate names is fixed by the external target -> published_target. Note
+    the value is not numerically pinned in-stage (depends on the physical branch data Xi_0, beta_0, A, B not yet computed);
+    it is the target-matching root.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+    line: 155
+    excerpt: '`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`,'
+  - path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+    line: 160
+    excerpt: The only remaining question is whether the physical moving-throat branch puts the system in the right region
+      of parameter space so that the crossing occurs on the natural passive/outgoing branch before other approximations fail.
+downstream_dependents:
+- '033'
+synthesis_ingested_at: '2026-06-11T18:25:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage031_unique_alpha_star_crossing__alpha_star.yaml

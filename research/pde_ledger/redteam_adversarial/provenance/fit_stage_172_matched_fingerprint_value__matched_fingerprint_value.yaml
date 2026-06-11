@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_172_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,8 +43,21 @@ source_evidence:
   line: 396
   role: notes_stage
   excerpt: 4. and once the even canonical fingerprint is preserved, the remaining linear grouped `2.5`PN defect is simply
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 104
+  introduced_at_line: 58
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 58
+    excerpt: 1+\frac{z^2}{9}
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 322
+    excerpt: Once the hidden-even canonical fingerprint is preserved, one imposes
 graph_context:
   contexts: []
   graph_gaps:
@@ -69,3 +82,26 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_172.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: '''matched_fingerprint_value'' is the scanner''s name for the hidden-even canonical fingerprint that Stage 172
+    preserves (u_2,u_4)=(1/9,4/81); it is a preservation CONDITION (delta kappa_W = 0 <=> delta u_2 = 0, notes lines 322-330)
+    rather than a newly posited number. The fingerprint value itself is internal_consistency, originating at Stage 104 (z^2/9,
+    z^4·4/81 from the normalized outgoing l=2 DtN admittance, notes line 58-59). No external target is matched. Low severity.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 328
+    excerpt: \delta u_2^{(A)}=0,
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source node for notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    or paper/stages/stage_172.tex (propagated from the mechanical bundle). Stage 172's notes/card exist and were read directly,
+    so this is a missing-atlas-node defect, not a missing source.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_172_matched_fingerprint_value__matched_fingerprint_value.yaml
+    line: 60
+    excerpt: 'summary: The atlas graph wrapper returned no source nodes for one or more primary sources.'
+downstream_dependents:
+- '173'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_172_matched_fingerprint_value__matched_fingerprint_value.yaml

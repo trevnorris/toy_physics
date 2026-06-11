@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage138_rq_quarter_derived_not_assumed__phase_b__r_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,50 @@ source_evidence:
   line: 30
   role: sympy_script
   excerpt: print('R_q on - branch =', sol_minus)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_q
+  introduced_at_stage: 138
+  introduced_at_line: 45
+  citation:
+    path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 45
+    excerpt: R_q:=-\frac{M_q}{M_s}=\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2}.
+constraints:
+- parameter: R_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 60
+    excerpt: Stage 115 already fixed the core-balance family
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'POSITIVE genealogy finding (claim is SUPPORTED, not overstated): R_q = 1/4 is genuinely DERIVED at Stage 138,
+    not fitted. The ratio R_q = (g_c - r)^2/(1 + r^2) (notes line 45) plus the Stage-115 core-balance family g_c = r +/- (1/2)sqrt(1+r^2)
+    (notes lines 60-66) algebraically forces R_q = 1/4 (notes line 69), independent of the values of r, g_c. This RETROACTIVELY
+    upgrades the Stage-135 4:-1 outlet ratio (which the 135 note had called ''not yet a theorem... the cleanest way'', i.e.
+    free_choice there) to a derived consequence: the note states ''the Stage 135 closure is not independent bookkeeping. It
+    is the normalized image of Stage 137 plus the exact core-balance compensation surface'' and ''so the outlet-consistent
+    mouth closure is derived rather than assumed'' (notes lines 88-90, 106). Recorded as a low-severity informational mismatch
+    so the genealogy reflects that the SAME ratio is free_choice at 135 and internal_consistency at 138 — the audit must credit
+    the derived status to 138, not 135.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 106
+    excerpt: so the outlet-consistent mouth closure is derived rather than assumed.
+  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 41
+    excerpt: This is not yet a theorem of the full PDE. It is the cleanest way to make the
+downstream_dependents:
+- '139'
+- '140'
+- '141'
+- '142'
+- '144'
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage138_rq_quarter_derived_not_assumed__r_q.yaml

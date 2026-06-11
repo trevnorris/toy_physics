@@ -1,0 +1,19 @@
+candidate_id: fit_stage_220_p_abs
+parameter_name: P_abs
+origin_claims:
+  - parameter: P_abs
+    introduced_at_stage: 220
+    introduced_at_line: 433
+    citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 433
+      excerpt: "-\\omega\\,\\Im\\mathfrak V_{\\rm mix}(x,\\omega)."
+constraints:
+  - parameter: P_abs
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 441
+      excerpt: "\\frac{\\omega\\Gamma(\\omega)}{2}\\,\\mathcal T_J(\\omega)^2"
+downstream_dependents: []
+provenance_findings: []

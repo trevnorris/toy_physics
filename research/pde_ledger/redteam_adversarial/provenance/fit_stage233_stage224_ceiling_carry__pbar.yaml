@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage233_stage224_ceiling_carry__phase_b__pbar.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,42 @@ source_evidence:
   line: 130
   role: sympy_script
   excerpt: print("Pbar compatibility point =", Pbar_num)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pbar
+  introduced_at_stage: 228
+  introduced_at_line: 307
+  citation:
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 307
+    excerpt: P_0\approx 0.002069792318062885.
+constraints:
+- parameter: Pbar
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+    line: 248
+    excerpt: At the Stage-223 compatibility point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Pbar (P-bar_0) ~ 0.002069792318062885 is the static-load value at the Stage-223 compatibility point, transported
+    by Stage 224''s same-charge window (notes 233 line 183 ''Stage 224 already transported ...''; line 248-250 ''At the Stage-223
+    compatibility point Pbar_0 ~ 0.002069792318062885''). The identical value appears at Stage 228 (P_0 ~ 0.002069792318062885,
+    undeformed compatibility-branch pole census, 228 line 307). So the value ORIGINATES on the Stage-223 compatibility branch
+    (computed in the pole census, first displayed numerically at 228), is transported as a ceiling at 224, and is carried
+    into 233 (script hardcodes Pbar_num = 0.002069792318062885, line 115). It is a ledger-internal pole-census quantity ->
+    internal_consistency; no external anchor. Origin attribution: upstream (223/228), not 233.'
+  citations:
+  - path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+    line: 115
+    excerpt: Pbar_num = sp.Float("0.002069792318062885")
+  - path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+    line: 183
+    excerpt: 'Stage 224 already transported the primitive-family same-charge window onto the actual branch packet:'
+downstream_dependents:
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage233_stage224_ceiling_carry__pbar.yaml

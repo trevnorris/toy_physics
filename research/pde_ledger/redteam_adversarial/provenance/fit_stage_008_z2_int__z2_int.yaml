@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_008_z2_int__phase_b__z2_int.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,42 @@ source_evidence:
   line: 108
   role: sympy_script
   excerpt: print("Case H = 1 (unweighted gauge fixing):")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Z2_int
+  introduced_at_stage: 8
+  introduced_at_line: 222
+  citation:
+    path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+    line: 222
+    excerpt: Z_{\rm int}=\int Z(w)\,dw,
+constraints:
+- parameter: Z2_int
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+    line: 220
+    excerpt: S(w)=\frac{Z(w)}{Z_{\rm int}},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Z2_int is the localization-profile normalization integral Z_int = integral Z(w) dw (and its quadratic partner integral
+    Z^2 dw), used to define the matched source profile S(w)=Z(w)/Z_int and the projected effective coupling mu_eff_proj =
+    mu0/Z_int. It is a definitional normalization integral over the chosen localization weight, evaluated exactly (e.g. sqrt(pi)*lambda
+    for the Gaussian benchmark in the stage-004/008 audits), not a fitted value. Classified internal_consistency. Logged as
+    a gap-tagged finding only because the per-stage notes prose calls it Z_int (the scanner's 'Z2' label conflates Z_int with
+    the Z^2 integral); the underlying quantity is an exact integral of the posited localization kernel.
+  citations:
+  - path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+    line: 49
+    excerpt: Zint, IWZ = sp.symbols("Z_int I_WZ", positive=True, nonzero=True)
+  - path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+    line: 287
+    excerpt: Choose the matched observer kernel
+downstream_dependents:
+- 009
+- '010'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_008_z2_int__z2_int.yaml

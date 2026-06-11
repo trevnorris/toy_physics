@@ -1,0 +1,24 @@
+candidate_id: fit_stage_126_mathfrak
+parameter_name: mathfrak
+origin_claims:
+  - parameter: mathfrak
+    introduced_at_stage: 126
+    introduced_at_line: 36
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 36
+      excerpt: "\\mathfrak g_{\\rm match}=\\frac{\\pi}{4}\\approx 0.785398163397448."
+constraints:
+  - parameter: mathfrak
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 115
+      excerpt: "So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of positive localized mouth sources."
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source nodes for stage_126 paper card or notes (carried from mechanical bundle)."
+    citations:
+      - { path: paper/stages/stage_126.tex, line: 16, excerpt: "Self-matched derivative profile gives \\(\\mathfrak g=\\pi/4\\); a positive convex family hits the lower branch." }

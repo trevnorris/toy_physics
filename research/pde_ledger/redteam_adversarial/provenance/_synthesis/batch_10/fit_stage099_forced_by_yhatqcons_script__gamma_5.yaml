@@ -1,0 +1,25 @@
+candidate_id: fit_stage099_forced_by_yhatQcons_script
+parameter_name: Gamma_5
+origin_claims:
+  - parameter: Gamma_5
+    introduced_at_stage: 97
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 46
+      excerpt: "`Gammabar_5 = 9 Kbar_2^(5/2) / Kbar_0^(3/2)`."
+constraints:
+  - parameter: Gamma_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+      line: 76
+      excerpt: "- compute `Gammabar_5` on that branch,"
+downstream_dependents: [100]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "At stage 099 Gammabar_5 = 9 K0_sym/(32 Omega_Q^5) is forced structurally from the one-pole conservative coefficients with K0_sym a free symbol (internal_consistency, this candidate). The script additionally checks Gamma5_struct(K0=N_Q*K0_target)/(2G/(5c^5)) = N_Q, tying the normalization to the published GR 2.5PN coefficient 2G/(5c^5). The structural force is internal; the absolute value anchor is the external GR target (published_target), but N_Q=1 remains the honestly-open gate."
+    citations:
+      - { path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py, line: 80, excerpt: "Gamma5_struct.subs(K0_sym, N_Q * K0_target) / (2 * G / (5 * c**5)) - N_Q)" }
+      - { path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md, line: 77, excerpt: "- or compute the scalar defect `N_Q - 1`." }

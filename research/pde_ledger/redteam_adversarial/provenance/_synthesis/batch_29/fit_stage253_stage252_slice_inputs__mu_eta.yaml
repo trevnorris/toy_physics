@@ -1,0 +1,25 @@
+candidate_id: fit_stage253_stage252_slice_inputs
+parameter_name: mu_eta
+origin_claims:
+  - parameter: mu_eta
+    introduced_at_stage: 253
+    introduced_at_line: 260
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 260
+      excerpt: " \\mu_\\eta=1,"
+constraints:
+  - parameter: mu_eta
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 954
+      excerpt: "`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "mu_eta=1 is a Stage-252 benchmark slice input carried into Stage 253 (notes label it 'the Stage-252 benchmark slice'); its value-as-1 originates as the Session-IV benchmark normalization at Stage 252 (notes:447), not a Stage-253 choice."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 253, excerpt: "Use the Stage-252 benchmark slice" }
+      - { path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md, line: 447, excerpt: "\\mu_\\eta=1." }

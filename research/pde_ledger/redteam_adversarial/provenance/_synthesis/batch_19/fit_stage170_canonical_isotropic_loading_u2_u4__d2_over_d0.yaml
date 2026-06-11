@@ -1,0 +1,29 @@
+candidate_id: fit_stage170_canonical_isotropic_loading_u2_u4
+parameter_name: D2_over_D0
+origin_claims:
+  - parameter: D2_over_D0
+    introduced_at_stage: 104
+    introduced_at_line: 58
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 58
+      excerpt: "1+\\frac{z^2}{9}"
+constraints:
+  - parameter: D2_over_D0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+      line: 90
+      excerpt: "u_2=\\frac19,"
+downstream_dependents: [171, 172, 173]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The scanner target D2_over_D0 is the canonical even ratio D_2/D_0 = -u_2 = -1/9. Stage 170 carries it forward via the moment definition u_2^(A) = -D_{A,2}/D_{A,0} (notes line 73) and the canonical branch value u_2 = 1/9 (notes line 90, surrounding text 'linearize around an isotropic compensated canonical branch' line 82). The value 1/9 is NOT originated at stage 170 — stage 170 explicitly attributes it upstream ('Stages 022/023 already gave the normalized conservative response moments', notes line 71), and its true source is the Stage 104 outgoing-DtN/Hankel expansion where z^2/9 (=> u_2=1/9) is derived from the normalized l=2 admittance. Origin therefore set to Stage 104. Internal_consistency: forced by the DtN normalization, no external target. Low severity."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+        line: 71
+        excerpt: "Stages 022/023 already gave the normalized conservative response moments"
+      - path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+        line: 43
+        excerpt: "D2 = -u2 * D0"

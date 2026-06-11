@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage101_stage105_fixes_by_matching__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -145,9 +145,41 @@ source_evidence:
   line: 46
   role: sympy_script
   excerpt: 'assert sp.simplify((mhat0**2 * chiQ * NQ - 1).subs({mhat0: 1, chiQ: 1 + DeltaQ, NQ: 1/(1 + DeltaQ)})) == 0, \'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 101
+  introduced_at_line: 13
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 13
+    excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer
+      a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 49
+    excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
+      giving
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 101 notes carry a stale pre-renumber cross-reference 'Stage 83 showed ...' for the upstream m_hat0^2 chi_Q
+    N_Q = 1 factorization; canonical predecessor is the stage-100 odd-normalization factorization, not Stage 83.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 5
+    excerpt: Stage 83 showed that the full odd normalization condition factorizes exactly as
+downstream_dependents:
+- '102'
+- '103'
+- '104'
+- '105'
+- '106'
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage101_stage105_fixes_by_matching__chi_q.yaml

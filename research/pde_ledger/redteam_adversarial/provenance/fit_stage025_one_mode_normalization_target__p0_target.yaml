@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage025_one_mode_normalization_target__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,9 +110,43 @@ source_evidence:
   line: 148
   role: sympy_script
   excerpt: expect_zero("(mhat^2*P0 - target) at P=0 equals -target", residual_at_Pzero + target)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 22
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 256
+    excerpt: The universal GR quadrupole target is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: The stage-025 'normalization target' P0_target = 54/5 G c_s^5/(5 a^5 c^5) is the external GR quadrupole-luminosity
+    number (gamma_GR = 2 G/(5 c^5), the standard Einstein quadrupole 2/5 coefficient) imported at stage 022, not derived inside
+    the ledger. Stage 025 carries it as the right-hand side the one-mode formula must equal; the script comment explicitly
+    says it is 'carried forward'. The card presents an 'exact closure' framing without flagging the RHS as an external fit
+    target.
+  citations:
+  - path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+    line: 119
+    excerpt: '# target coefficient 54/5 is carried forward from'
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 258
+    excerpt: '`gamma_GR = 2 G / (5 c^5)`.'
+downstream_dependents:
+- '026'
+- '030'
+- '031'
+- '033'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage025_one_mode_normalization_target__p0_target.yaml

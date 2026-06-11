@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_008_inv_xi__phase_b__inv_xi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -37,9 +37,36 @@ source_evidence:
   line: 90
   role: sympy_script
   excerpt: print("  1/xi_eff_proj =", sp.sstr(inv_xi_eff_proj))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: inv_xi
+  introduced_at_stage: 8
+  introduced_at_line: 137
+  citation:
+    path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+    line: 137
+    excerpt: \frac{1}{\xi_{\rm eff}^{\rm proj}}=\frac{I_{WH}}{\xi I_{WZ}},
+constraints:
+- parameter: inv_xi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_05_projected_maxwell_extension_notes.md
+    line: 139
+    excerpt: \xi_{\rm eff}^{\rm proj}=\xi\frac{I_{WZ}}{I_{WH}}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'inv_xi (= 1/xi_eff_proj = I_WH/(xi*I_WZ)) is the projection-induced effective inverse gauge parameter, derived
+    exactly from the projection overlap integrals. The scanner''s ''0'' / tautology comes from the stage-008 sympy check ''reciprocal
+    consistency (tautology by construction)'' that asserts inv_xi_eff_proj * xi_eff_proj - 1 == 0, i.e. a definitional reciprocal,
+    not a numeric fit. Classified internal_consistency: it is an exact algebraic consequence of the projection (notes lines
+    137-139). No external target is involved.'
+  citations:
+  - path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+    line: 35
+    excerpt: assert_zero("reciprocal consistency (tautology by construction)", inv_xi_eff_proj * xi_eff_proj - 1)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_008_inv_xi__inv_xi.yaml

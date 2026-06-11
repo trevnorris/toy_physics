@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage035_xi_req_unique_locus__phase_b__xi_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,45 @@ source_evidence:
   line: 99
   role: sympy_script
   excerpt: sp.pprint(gBreq_sq_over_varpi2)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: xi_req
+  introduced_at_stage: 29
+  introduced_at_line: 110
+  citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 110
+    excerpt: '- if `R_target > 1`, there is one and only one stable selected-branch softening depth `xi_req` that hits the
+      target.'
+constraints:
+- parameter: xi_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 112
+    excerpt: So the Stage-033 onset inequality is now upgraded to a full uniqueness theorem for the selected normalization
+      locus.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: xi_req is the unique stable softening-depth locus solving F(xi,delta) = R_target. It is not a fitted or posited
+    value; it is the EXISTENCE/UNIQUENESS solution forced by the exact strict monotonicity of F on [0,1) (notes lines 90,
+    110-112). Pure internal_consistency at the theorem level. Its numeric value inherits the external dependency only through
+    R_target (which carries the external 2.5PN target) and delta; at stage 035 it remains a symbolic locus, so no numeric
+    fit is committed here.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 90
+    excerpt: So `F` is strictly monotone increasing on the entire stable branch `0 <= xi < 1`.
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 211
+    excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
+downstream_dependents:
+- '030'
+- '032'
+- '033'
+- '034'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage035_xi_req_unique_locus__xi_req.yaml

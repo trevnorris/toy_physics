@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage024_mhat_ang_exactly_one__phase_b__mhat_ang.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -195,9 +195,40 @@ source_evidence:
   line: 76
   role: sympy_script
   excerpt: 'for i in range(1, len(lst)):'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mhat_ang
+  introduced_at_stage: 20
+  introduced_at_line: 78
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 78
+    excerpt: '`mhat_ang = 1`'
+constraints:
+- parameter: mhat_ang
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 68
+    excerpt: '`S_A^(port) = int dOmega Y_A(n) S(n) = sum_B S_B int dOmega Y_A Y_B = S_A`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'mhat_ang = 1 is DERIVED exactly: the angular source-map matching matrix is the identity because the real-STF harmonics
+    are orthonormal (int Y_A Y_B = delta_AB, from the fourth-moment identity on S^2), so S_A^(port)=S_A and hence mhat_0 factors
+    as mhat_rad * mhat_ang with mhat_ang=1 on the canonical isotropic branch. Pure internal_consistency (derived from orthonormality),
+    no fit, no external anchor. Logged low gap (exact derived constant, no further value).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 70
+    excerpt: So on the natural isotropic source map the **angular** matching matrix is exactly the identity.
+  - path: paper/stages/stage_024.tex
+    line: 59
+    excerpt: \boxed{\widehat m_{\rm ang}=1}
+downstream_dependents:
+- '021'
+- '022'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage024_mhat_ang_exactly_one__mhat_ang.yaml

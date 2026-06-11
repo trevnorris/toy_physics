@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage053_overlap_window_exact__phase_b__a_i.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -76,9 +76,26 @@ source_evidence:
   line: 87
   role: sympy_script
   excerpt: print("  A_I = Omega_0^2 is therefore bounded by pi^2/4.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_I
+  introduced_at_stage: 53
+  introduced_at_line: 66
+  citation:
+    path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+    line: 66
+    excerpt: '`A_I := Omega_0^2.`'
+constraints:
+- parameter: A_I
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+    line: 90
+    excerpt: '`0 <= A_I <= pi^2/4.`'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '055'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage053_overlap_window_exact__a_i.yaml

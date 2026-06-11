@@ -1,0 +1,25 @@
+candidate_id: fit_stage_033_k0_onset
+parameter_name: K0_onset
+origin_claims:
+  - parameter: K0_onset
+    introduced_at_stage: 033
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+      line: 185
+      excerpt: "`K_0 >= g_U^2 / Omega_U^2 + kappa_0^2 Chi^2 / ( N_Q^(target) Delta_0^2 )`."
+constraints:
+  - parameter: K0_onset
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+      line: 175
+      excerpt: "Because `N_-` only increases with positive loading, a necessary condition for the physical natural branch to hit the universal target is"
+downstream_dependents: [034, 035]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "K0_onset is the onset stiffness bound obtained by solving N_-(0) = N_Q^target for K_0 (audit line 87: K0_onset = sp.solve(sp.Eq(N0_mic, NQ), K0)[0]). The ALGEBRA is an exact internal rearrangement justified by the exact monotonicity of N_- (internal_consistency). BUT the threshold's numerical content is anchored to N_Q^target = 54 G c_s^5/(5 a^5 c^5), the EXTERNAL 2.5PN GR quadrupole target. The bound is carried symbolically in N_Q here, so no numeric back-solve is committed at 033; it becomes a true published_target dependency only when N_Q is given its external value (see Stage 038 Lambda/R_target). Classified internal_consistency for the 033 algebra, tension recorded against published_target."
+    citations:
+      - { path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py, line: 87, excerpt: "K0_onset = sp.simplify(sp.solve(sp.Eq(N0_mic, NQ), K0)[0])" }
+      - { path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md, line: 86, excerpt: "`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`." }

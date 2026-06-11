@@ -1,0 +1,29 @@
+candidate_id: fit_stage172_canonical_even_collapse_u2_pin
+parameter_name: u2
+origin_claims:
+  - parameter: u2
+    introduced_at_stage: 104
+    introduced_at_line: 58
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 58
+      excerpt: "1+\\frac{z^2}{9}"
+constraints:
+  - parameter: u2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+      line: 73
+      excerpt: "On the canonical compensated even branch we carry"
+downstream_dependents: [173]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "u2 = 1/9 is the canonical-even fingerprint pinned in the stage 172 audit script ('Canonical-even collapse at u2 = 1/9', sympy_audit line 71; u2_star = sp.Rational(1,9), line 83). Stage 172 notes carry the value forward ('On the canonical compensated even branch we carry u_2=1/9', notes lines 73-75; '(u_2,u_4)=(1/9,4/81)', line 238) and do not originate it. The numeric 1/9 is first derived at Stage 104 from the normalized outgoing l=2 DtN admittance (z^2/9, stage 104 notes line 58). Internal_consistency: the pin enforces preservation of a ledger-derived fingerprint, not a match to any external number. Low severity (gap noted because the bundle's evidence was script-only)."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+        line: 75
+        excerpt: "u_2=\\frac19,"
+      - path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+        line: 83
+        excerpt: "u2_star = sp.Rational(1, 9)"

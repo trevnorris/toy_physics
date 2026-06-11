@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_151_a_t__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,44 @@ source_evidence:
   line: 185
   role: sympy_script
   excerpt: deltaT + AT * CovcR + BT * CovKR,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 48
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 48
+    excerpt: A_T
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 34
+    excerpt: Substituting the Stage 146 retuning formulas gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage 151 CARRIES A_T from its origin at Stage 147:48 (derived closed form in the canonical-branch quantities —
+    internal_consistency). At Stage 151 A_T is kept purely SYMBOLIC (the script declares AT, BT = sp.symbols('A_T B_T'); the
+    traction shift is deltaT = AT*dg + BT*dS), so no numeric value is introduced or back-solved here — the M7 cross-check
+    is symbolic in A_T. No new provenance content at this stage beyond the carry; no published-target fit.
+  citations:
+  - path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+    line: 49
+    excerpt: AT, BT = sp.symbols("A_T B_T", real=True)
+  - path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+    line: 119
+    excerpt: it is the projection of the exact residual \(R_*(x)\) against the same rigidity
+downstream_dependents:
+- '148'
+- '150'
+- '151'
+- '152'
+- '154'
+- '155'
+synthesis_ingested_at: '2026-06-11T18:52:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage_151_a_t__a_t.yaml

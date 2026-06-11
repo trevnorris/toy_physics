@@ -1,0 +1,19 @@
+candidate_id: fit_stage224_kill_test_budgets_slice_anchored
+parameter_name: barP0_compat
+origin_claims:
+  - parameter: barP0_compat
+    introduced_at_stage: 223
+    introduced_at_line: 252
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 253
+      excerpt: "\\approx 0.00206979231806289."
+constraints:
+  - parameter: barP0_compat
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 13
+      excerpt: "\\bar P_0=P_{0,\\mathrm{target,compat}}\\approx 0.002069792318062885."
+downstream_dependents: [225, 226, 227]
+provenance_findings: []

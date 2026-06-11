@@ -1,0 +1,12 @@
+candidate_id: fit_stage_017_paragraph
+parameter_name: paragraph
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "paragraph is not a parameter value: it is the LaTeX sectioning macro \\paragraph{...} used to title subsections of the stage-017 card ('Source and audit.', 'Lane signature.', 'Wall-only obstruction.', 'Output.'). The candidate scanner captured the macro token. There is no fitted/posited numeric parameter named 'paragraph' and no notes/ source documents such a value because none exists. Logged as a gap (scanner false-positive)."
+    citations:
+      - { path: paper/stages/stage_017.tex, line: 33, excerpt: "\\paragraph{Source and audit.}" }
+      - { path: paper/stages/stage_017.tex, line: 41, excerpt: "\\paragraph{Wall-only obstruction.}" }

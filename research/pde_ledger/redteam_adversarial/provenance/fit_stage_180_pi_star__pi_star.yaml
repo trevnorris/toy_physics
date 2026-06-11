@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_180_pi_star__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,24 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No notes/ source documents a parameter Pi_star (Pi_*) at Stage 180. The Stage 180 notes, paper card, SymPy audit,
+    .wl and output transcript contain no Pi_star / Pi_* occurrence. The bundle's source_evidence was empty. Pi_* in this ledger
+    is the threshold root OWNED by Stage 131 (per CHECKPOINT_CONSTANT_PROVENANCE / STAGE_VERIFICATION_COVERAGE), unrelated
+    to the Stage-180 transfer-shape collapse. The scanner appears to have mis-associated Pi_star with Stage 180. Cannot satisfy
+    the binding notes/ rule; logged as a gap.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_180_pi_star__pi_star.yaml
+    line: 31
+    excerpt: 'source_evidence: []'
+  - path: notes/STAGE_VERIFICATION_COVERAGE.md
+    line: 40
+    excerpt: 144 (threshold-Pi_* independence)
+  - path: paper/stages/stage_180.tex
+    line: 1
+    excerpt: 'Stage 180: Effective transfer-shape collapse'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_180_pi_star__pi_star.yaml

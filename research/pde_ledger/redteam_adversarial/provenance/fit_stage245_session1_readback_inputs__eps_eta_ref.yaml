@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback_inputs__phase_b__eps_eta_ref.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,39 @@ source_evidence:
   line: 124
   role: notes_stage
   excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_eta_ref
+  introduced_at_stage: 245
+  introduced_at_line: 504
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 504
+    excerpt: \epsilon_{\eta,\rm ref}=0.3.
+constraints:
+- parameter: eps_eta_ref
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 497
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: eps_eta_ref = 0.3 is the reference dressing value, imported as a probe/sample input from the barrier Session-I
+    write-up (notes line 504, script line 211 'eps_ref_obs = sp.Float(0.3)'). It is a posited representative sample value
+    (free_choice) defining the reference point of the logarithmic dressing chart V = ln(eps_eta/eps_eta,ref); it is not derived
+    from ledger-internal quantities and not an external published target. Logged at low severity to record its sample-probe
+    character.
+  citations:
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 211
+    excerpt: eps_ref_obs = sp.Float("0.3")
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 91
+    excerpt: V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_session1_readback_inputs__eps_eta_ref.yaml

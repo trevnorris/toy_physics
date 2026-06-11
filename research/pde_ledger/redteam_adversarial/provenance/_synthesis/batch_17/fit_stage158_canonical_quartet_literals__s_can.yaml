@@ -1,0 +1,25 @@
+candidate_id: fit_stage158_canonical_quartet_literals
+parameter_name: S_can
+origin_claims:
+  - parameter: S_can
+    introduced_at_stage: 156
+    introduced_at_line: 68
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 68
+      excerpt: "\\mathcal S_{\\rm can}"
+constraints:
+  - parameter: S_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 65
+      excerpt: "Its selected mixed response and mouth bias are"
+downstream_dependents: [159]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "S_can ~0.6703621156734617 (selected mixed response at the renormalized fixed point) originates at Stage 156 (line 68) as part of the restored canonical fixed point and is carried into stage158 as a base-point literal (notes line 42). It is read off the same self-consistent fixed-point solve -> internal_consistency. Stage158 notes restate it but do not establish origin; cited under Stage 156."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 42, excerpt: "\\mathcal S_{\\rm can}" }
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 68, excerpt: "\\mathcal S_{\\rm can}" }

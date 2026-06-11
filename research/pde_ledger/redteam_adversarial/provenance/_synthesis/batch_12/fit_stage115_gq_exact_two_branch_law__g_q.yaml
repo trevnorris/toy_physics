@@ -1,0 +1,25 @@
+candidate_id: fit_stage115_gq_exact_two_branch_law
+parameter_name: g_q
+origin_claims:
+  - parameter: g_q
+    introduced_at_stage: 114
+    introduced_at_line: 33
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 33
+      excerpt: "\\delta\\Lambda_{\\rm core}(z)\\,u = g_s s + g_q q."
+constraints:
+  - parameter: g_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 52
+      excerpt: "g_q="
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. g_q (mixed mouth coupling) is a free core-model coupling at Stage 114; at Stage 115 the compensated-branch requirement rho_c=4*sigma_c reduces to the exact coupling-balance g_s^2(K_s K_q+lambda^2)=4(K_s g_q-lambda g_s)^2, solved for g_q to give the exact two-branch law g_q=(g_s/2K_s)(2 lambda ± sqrt(K_s K_q+lambda^2)). The notes explicitly state this 'is not a mystery coefficient fit' but an explicit codimension-one surface. Internal_consistency (algebraic solve of a ledger-internal compensation condition); no external target. Positive control."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md, line: 60, excerpt: "So the required Robin–mixed balance is not a mystery coefficient fit. It is an explicit codimension-one surface in the concrete core-coupling space." }
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 32, excerpt: "gq_solutions = sp.solve(sp.Eq(balance_eq, 0), g_q)" }

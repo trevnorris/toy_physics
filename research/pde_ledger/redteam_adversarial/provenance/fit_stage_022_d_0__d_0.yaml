@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_d_0__phase_b__d_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -98,9 +98,42 @@ source_evidence:
   line: 345
   role: sympy_script
   excerpt: print("    P4 = (D0^2 N4 - 2 D0(D2 N2 + D4 N0) + 3 D2^2 N0)/D0^3;")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_0
+  introduced_at_stage: 18
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 30
+    excerpt: '`D_A^(cons)(omega) = D_{A0} + D_{A2} omega^2 + D_{A4} omega^4 + O(omega^6)`.'
+constraints:
+- parameter: D_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 74
+    excerpt: '- `D_{A0}, D_{A2}, D_{A4}` are the conservative operator moments,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: D_0 (= D_{A0}, the static conservative grouped-lane operator moment) is not a numeric value; it is a carried structural
+    object D_0 = K - B_0 - Z_0 (defined explicitly at stage 023/024). At stage 022 it is the symbolic conservative front end
+    used to build u_2, u_4, P_0 = N_0/D_0; its actual value on the moving-throat branch is explicitly left OPEN ('the only
+    internal quantity that matters is the isotropic static outgoing prefactor P_0 = N_0/D_0' — value to be supplied by the
+    unsolved PDE). Classified free_choice (open structural moment, neither derived to a target nor externally anchored). No
+    distinct stage-022 value genealogy to report beyond the structural definition.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 210
+    excerpt: '`D_(A,0) = K_A - B_(A,0) - Z_(A,0)`,'
+  - path: paper/stages/stage_022.tex
+    line: 19
+    excerpt: D_A^{\rm cons}(\omega)=D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6).
+downstream_dependents:
+- 019
+- '020'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_022_d_0__d_0.yaml

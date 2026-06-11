@@ -1,0 +1,19 @@
+candidate_id: fit_stage_217_k_lin
+parameter_name: K_lin
+origin_claims:
+  - parameter: K_lin
+    introduced_at_stage: 217
+    introduced_at_line: 286
+    citation:
+      path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 286
+      excerpt: "K_{\\rm lin}:=k_\\lambda+r k_c+s k_\\gamma+t k_U+u k_W."
+constraints:
+  - parameter: K_lin
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 289
+      excerpt: "Define the exact slope numerators"
+downstream_dependents: [218]
+provenance_findings: []

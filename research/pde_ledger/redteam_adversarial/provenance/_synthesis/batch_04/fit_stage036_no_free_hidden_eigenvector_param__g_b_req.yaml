@@ -1,0 +1,25 @@
+candidate_id: fit_stage036_no_free_hidden_eigenvector_param
+parameter_name: g_B_req
+origin_claims:
+  - parameter: g_B_req
+    introduced_at_stage: 034
+    introduced_at_line: 165
+    citation:
+      path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+      line: 165
+      excerpt: "`g_B,req^2 / varpi^2 = alpha_0(x) - alpha_mix`"
+constraints:
+  - parameter: g_B_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+      line: 66
+      excerpt: "`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`."
+downstream_dependents: [037, 038]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "g_B_req (the required support/BdG loading g_B,req^2/varpi^2) is not a free or hidden eigenvector parameter — the candidate id itself asserts 'no_free_hidden_eigenvector_param'. It is the EXACT residual support loading forced by the branch: g_B,req^2/varpi^2 = alpha_req(xi_req,delta) - alpha_mix (origin at stage 034 line 165; rewritten at 036 as (pi^2 A/8)[G(xi_req,delta) - M_mix]). Internal_consistency, fully determined once xi_req and the mixed baseline are known; the only freedom is the feasibility gate g_B,req^2 >= 0, an inequality not a tuned value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md, line: 14, excerpt: "`g_B,req^2 >= 0`." }
+      - { path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md, line: 145, excerpt: "`g_B,req^2 / varpi^2 = alpha_req(xi_req,delta) - alpha_mix`" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage100_chiq_fixed_downstream_card__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -158,9 +158,42 @@ source_evidence:
   line: 76
   role: sympy_script
   excerpt: 'print(''\nClosure ledger: mhat_0^2 * Gamma_5 = Gamma_5_target  <=>  mhat_0^2 chi_Q N_Q = 1'')'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 100
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 15
+    excerpt: Introduce one dimensionless outgoing-normalization factor `chi_Q` by writing the actual normalized retarded branch
+      as
+constraints:
+- parameter: chi_Q
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 111
+    excerpt: '`chi_Q`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'Candidate target value chi_Q=1 is NOT fixed at stage 100. At stage 100 chi_Q is INTRODUCED as a free symbolic
+    outgoing-normalization multiplier (notes line 15; script line 26 ''chi_Q is a free real parameter at this stage''); all
+    new retarded uncertainty ''sits in one number only: chi_Q'' (notes line 109-111). The value chi_Q=1 is fixed downstream
+    at Stage 105 from the Stage 104 outgoing fingerprint. This is correctly and explicitly disclosed by the card (line 13),
+    so there is NO live contradiction here — logged at low severity to record that the value ''1'' belongs to stage 105, not
+    100 (the previously-corrected chi_Q ''097-vs-105'' class of bug is now clean in this card).'
+  citations:
+  - path: paper/stages/stage_100.tex
+    line: 13
+    excerpt: the canonical condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.
+  - path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+    line: 26
+    excerpt: '# chi_Q is a free real parameter at this stage. Its pinning to 1 by the l=2'
+downstream_dependents:
+- '105'
+synthesis_ingested_at: '2026-06-11T18:51:38Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage100_chiq_fixed_downstream_card__chi_q.yaml

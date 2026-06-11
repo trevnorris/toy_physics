@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_035_r_target__phase_b__r_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -187,8 +187,21 @@ source_evidence:
   line: 74
   role: sympy_script
   excerpt: expect_zero("F(0,delta) - 1", sp.simplify(F_target.subs(xi, 0) - 1))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_target
+  introduced_at_stage: 29
+  introduced_at_line: 71
+  citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 71
+    excerpt: '`R_target := N_Q^(target) / N_-(0)`'
+constraints:
+- parameter: R_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 72
+    excerpt: '`          = N_Q^(target) A / ( beta_0 kappa_0^2 )`.'
 graph_context:
   contexts: []
   graph_gaps:
@@ -213,3 +226,26 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_035.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: 'R_target := N_Q^target / N_-(0) is a ratio of a ledger-internal onset value N_-(0) (= beta_0 kappa_0^2/A, internal_consistency)
+    to the EXTERNAL 2.5PN GR target N_Q^target = 54 G c_s^5/(5 a^5 c^5). At stage 035 R_target is carried symbolically (notes
+    line 75: ''All dependence ... has collapsed into the single dimensionless target ratio R_target''; line 201-203: ''The
+    completed moving-throat PDE has to determine the microscopic quantities entering R_target''), so it is not yet a numeric
+    back-solve. Classified published_target because its DEFINING role is to package the external radiative demand against
+    an internal scale; the competing reading is internal_consistency for the ratio''s algebra. The external value is committed
+    downstream (Stage 038 Lambda, script line 90/140).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 75
+    excerpt: All dependence on the microscopic transfer factor and the overall wall scale has collapsed into the single dimensionless
+      target ratio `R_target`.
+  - path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+    line: 65
+    excerpt: (54 * G * c_s**5 / (5 * a**5 * c_light**5)) * A / ((8 / sp.pi**2) * beta0)
+downstream_dependents:
+- '030'
+- 038
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_035_r_target__r_target.yaml

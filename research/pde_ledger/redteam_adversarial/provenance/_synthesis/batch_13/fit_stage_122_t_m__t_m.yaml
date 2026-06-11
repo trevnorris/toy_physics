@@ -1,0 +1,25 @@
+candidate_id: fit_stage_122_t_m
+parameter_name: T_m
+origin_claims:
+  - parameter: T_m
+    introduced_at_stage: 118
+    introduced_at_line: 212
+    citation:
+      path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+      line: 212
+      excerpt: "If the mouth forcing is a lip traction \\(\\mathcal T_m u\\), then the shell overlap gives"
+constraints:
+  - parameter: T_m
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 122
+      excerpt: "the traction amplitude required to move from the natural branch \\((\\mathfrak g=1)\\) to the compensated branches is"
+downstream_dependents: [123, 124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "T_m (mouth lip-traction amplitude, script symbol mathcal T_m) enters as a parent-action quantity at Stage 118 (g_s = T_m J_s, notes line 212; exact traction law at Stage 119 line 134). At Stage 122 the candidate value is the RATIO T_m^(pm)/T_m^nat = 1/g_pm^F1 (notes lines 124-128), i.e. the traction renormalization needed to reach a compensated branch, ~1.319 for the (-) branch (the '31.9% enhancement'). That ratio is FORCED by g propto 1/T_m (Stage 119) and the compensated g_pm^F1 (internal_consistency). The absolute T_m is left as a microscopic input; only the branch ratio is fixed here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md, line: 120, excerpt: "\\mathfrak g \\propto \\frac{1}{\\mathcal T_m}," }
+      - { path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md, line: 134, excerpt: "\\frac{\\mathcal T_m^{(-)}}{\\mathcal T_m^{\\rm nat}}\n\\approx 1.31920016339112," }

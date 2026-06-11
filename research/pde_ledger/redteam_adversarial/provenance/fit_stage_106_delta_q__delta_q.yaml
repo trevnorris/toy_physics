@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_106_delta_q__phase_b__delta_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -55,9 +55,40 @@ source_evidence:
   line: 95
   role: sympy_script
   excerpt: '"Delta_Q zeroth-order coefficient equals Gamma5_target",'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_Q
+  introduced_at_stage: 101
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 65
+    excerpt: '`Delta_Q := chi_Q - 1`.'
+constraints:
+- parameter: Delta_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 65
+    excerpt: '`Delta_Q := chi_Q - 1`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Delta_Q at stage 106 appears only in the audit script (a first-order sensitivity expansion gamma_eff around chi_Q
+    = 1 + Delta_Q); it is NOT mentioned in stage 106's own notes (moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md)
+    or card. Its definition/origin is the stage 101 notes (line 65, Delta_Q := chi_Q - 1); on the canonical branch Delta_Q
+    = 0. The binding notes/ citation is satisfied from stage 101, but stage 106 itself has no notes-level documentation of
+    the Delta_Q sensitivity exercise the script performs.
+  citations:
+  - path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+    line: 80
+    excerpt: '# F4: Delta_Q first-order sensitivity. On the natural branch (m0hat=1) we have'
+  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 65
+    excerpt: '`Delta_Q := chi_Q - 1`.'
+downstream_dependents:
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage_106_delta_q__delta_q.yaml

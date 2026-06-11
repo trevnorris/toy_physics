@@ -1,0 +1,25 @@
+candidate_id: fit_stage_108_y_can_literal
+parameter_name: Y_can_literal
+origin_claims:
+  - parameter: Y_can_literal
+    introduced_at_stage: 107
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 20
+      excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6),"
+constraints:
+  - parameter: Y_can_literal
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 35
+      excerpt: "So if the conservative even fingerprint is kept canonical,"
+downstream_dependents: [109, 110, 111, 112, 113, 114, 115]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The script comment anchors Y_can_literal to appendix eq:app-part04-Yout-dtn (the canonical outgoing DtN expansion). The literal value 1 + z^2/9 + 4z^4/81 + i z^5/27 is the ledger-internal outgoing-branch fingerprint first written at Stage 104/107, not a value introduced at Stage 108; Stage 108 only uses it as the falsifiable anchor for the Class-A invariance check. Origin attribution carried to Stage 107."
+    citations:
+      - { path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py, line: 30, excerpt: "# (appendix eq:app-part04-Yout-dtn) so the check is falsifiable, not a bare S-cancellation." }
+      - { path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py, line: 32, excerpt: "Y_can_literal = 1 + z**2/sp.Integer(9) + 4*z**4/sp.Integer(81) + I*z**5/sp.Integer(27)" }

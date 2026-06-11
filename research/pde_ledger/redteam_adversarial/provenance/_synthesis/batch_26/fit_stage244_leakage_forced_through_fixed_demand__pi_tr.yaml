@@ -1,0 +1,25 @@
+candidate_id: fit_stage244_leakage_forced_through_fixed_demand
+parameter_name: Pi_tr
+origin_claims:
+  - parameter: Pi_tr
+    introduced_at_stage: 240
+    introduced_at_line: 285
+    citation:
+      path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+      line: 285
+      excerpt: "\\frac43\\,C_{\\rm mix}."
+constraints:
+  - parameter: Pi_tr
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+      line: 282
+      excerpt: "\\Pi_{\\rm tr}=\n\\frac43\\,C_{\\rm mix},\n\\qquad\nC_{\\rm mix}=\n\\frac{8\\Lambda(1-\\epsilon)}{\\pi^2}."
+downstream_dependents: []
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "At Stage 244 Pi_tr carries no NEW value: it is the carried Stage-240/242 selected-support demand Pi_tr = (4/3) C_mix = 32 Lambda(1-eps)/(3 pi^2) = 16 Lambda varrho/pi^2 (Stage 244 notes line 282-310), used to force the leakage amplitude E0 = eta_leak * Pi_tr through the FIXED selected-support demand (candidate name 'leakage_forced_through_fixed_demand'). The relation is internal_consistency at Stage 244 (algebraic pullback of the carried demand). The 4/3 factor inside Pi_tr inherits the posited module c_0 = 3/4 from Stage 240 (free_choice; see fit_stage240_minimal_isotropic_precursor synthesis) -- flagged at low severity so the leakage lane's dependence on the upstream ansatz is recorded. Not an external published back-solve."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md, line: 309, excerpt: "\\Pi_{\\rm tr}(r)=\\frac{16}{\\pi^2}\\,\\Lambda(r)\\,\\varrho(r)." }
+      - { path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md, line: 317, excerpt: "\\mathcal E_0(r):=\\eta_{\\rm leak}\\,\\Pi_{\\rm tr}(r)," }

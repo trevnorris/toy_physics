@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_099_xi_t__phase_b__xi_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,16 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No parameter named Xi_T (or XiT / Xi_T) exists anywhere in Stage 099. The mechanical bundle had EMPTY source_evidence.
+    Grepped notes/stages/moving_throat_pde_stage099_reduced_finish_line.md, paper/stages/stage_099.tex, and the stage099 sympy
+    audit — Xi_T appears in none. This is a scanner mis-resolution / phantom target with no ledger backing; nothing to classify.
+  citations:
+  - path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+    line: 42
+    excerpt: G, c, c_s, a, Omega_Q = sp.symbols("G c c_s a Omega_Q", positive=True, real=True)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:51:38Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_099_xi_t__xi_t.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage227_sample_branch_coefficients_exact__phase_b__h_coeff.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,26 @@ source_evidence:
   line: 264
   role: sympy_script
   excerpt: sigma_transfer = float(sp.N(sp.sqrt((Xi_coeff.T * proj_transfer * Xi_coeff)[0]), 20))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: H_coeff
+  introduced_at_stage: 227
+  introduced_at_line: 262
+  citation:
+    path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+    line: 262
+    excerpt: H=\frac{25}{98\pi^2}.
+constraints:
+- parameter: H_coeff
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+    line: 258
+    excerpt: On the concrete sample branch,
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '228'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage227_sample_branch_coefficients_exact__h_coeff.yaml

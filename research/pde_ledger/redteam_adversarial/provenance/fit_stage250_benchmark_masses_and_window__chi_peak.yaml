@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_benchmark_masses_and_window__phase_b__chi_peak.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,39 @@ source_evidence:
   line: 275
   role: notes_stage
   excerpt: \sqrt{\frac{2(E_{\rm edge}-V(r_0))}{m_s}}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_peak
+  introduced_at_stage: 250
+  introduced_at_line: 417
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 417
+    excerpt: ' \chi_{\rm peak}=21.73204372,'
+constraints:
+- parameter: chi_peak
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 388
+    excerpt: \chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: chi_peak = 21.73204372 (steepest logarithmic barrier gradient, chi_peak = max chi_lambda(r) with the trigger width)
+    enters at stage 250 as a Session-II/III readback off the Stage-247/248 barrier profile. The notes give the DEFINING formula
+    (chi_lambda = lambda*|d_r ln V|) but the numeric 21.73 is a hardcoded benchmark readback with no in-ledger evaluation
+    shown; provenance of the number traces to an external session run, not a derivation in the notes.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 406
+    excerpt: Use the Session-II/III reduced benchmark values
+  - path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+    line: 176
+    excerpt: chi_num = 21.73204372
+downstream_dependents:
+- '251'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage250_benchmark_masses_and_window__chi_peak.yaml

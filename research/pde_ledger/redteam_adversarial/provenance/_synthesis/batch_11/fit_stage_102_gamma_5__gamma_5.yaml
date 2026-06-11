@@ -1,0 +1,13 @@
+candidate_id: fit_stage_102_gamma_5
+parameter_name: Gamma_5
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Gamma_5 is anchored to stage 102 but the parameter does not appear in stage 102's notes (moving_throat_pde_stage102_higher_odd_irrelevance.md mentions only chi_Q, tau_Q, sigma_Q^can) or in paper/stages/stage_102.tex; the bundle's source_evidence is empty. Gamma_5 is actually documented at stage 104 (Gamma_{5,can}^DtN = a^5/27 c_s^5, notes line 89) and at stage 106 (Gamma_5 = 2G/5c^5, notes line 49). No notes/ text supports a stage-102 origin/constraint for Gamma_5, so no attribution is made here."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage_102_gamma_5__gamma_5.yaml, line: 21, excerpt: "source_evidence: []" }
+      - { path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md, line: 13, excerpt: "So the only live retarded obstruction at 2.5PN is the leading `omega^5` outgoing-normalization factor `chi_Q`." }
+      - { path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md, line: 89, excerpt: "\\Gamma_{5,\\rm can}^{\\rm DtN}=\\frac{a^5}{27c_s^5}." }

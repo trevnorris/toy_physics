@@ -1,0 +1,26 @@
+candidate_id: fit_stage189_normalization_target_2g_5c5
+parameter_name: P0_target
+origin_claims:
+  - parameter: P0_target
+    introduced_at_stage: 22
+    introduced_at_line: 256
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 256
+      excerpt: "The universal GR quadrupole target is"
+constraints:
+  - parameter: P0_target
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 258
+      excerpt: "`gamma_GR = 2 G / (5 c^5)`."
+downstream_dependents: []
+provenance_findings:
+  - type: published_target
+    severity: needs_triage
+    summary: "P0_target (the value m_hat_0^2 P_0 = 54 G c_s^5/(5 a^5 c^5)) is DEFINED by back-solving the invariant normalization product against the EXTERNAL published GR quadrupole-radiation coefficient 2G/(5c^5). Stage 022 (origin) states the external anchor verbatim ('The universal GR quadrupole target is gamma_GR = 2 G / (5 c^5)', line 256-258) and derives the 54/5 form by equating m_hat_0^2 P_0 a^5/(27c_s^5) = 2G/5c^5. Stage 189 carries it (line 525, 620) as 'the exact normalization product that the completed PDE still has to hit'. This is a fit to an external published target, not internal_consistency -> published_target. The script builds P0_target = 54 G c_s^5/(5 a^5 c^5 mhat0^2) precisely to satisfy mhat0^2 Gamma5 - 2G/(5c^5)=0 (stage189 audit line 206-209)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 266, excerpt: "`mhat_0^2 * P_0 * a^5 / (27 c_s^5) = 2 G / (5 c^5)`." }
+      - { path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md, line: 620, excerpt: "m_{\\hat 0}^{\\,2}P_0=\\frac{54Gc_s^5}{5a^5c^5}." }
+      - { path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py, line: 206, excerpt: "P0_target = sp.simplify(54 * G * cs**5 / (5 * a**5 * c**5 * mhat0**2))" }

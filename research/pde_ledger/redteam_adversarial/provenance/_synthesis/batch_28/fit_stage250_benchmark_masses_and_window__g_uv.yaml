@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: g_UV
+origin_claims:
+  - parameter: g_UV
+    introduced_at_stage: 250
+    introduced_at_line: 415
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 415
+      excerpt: " g_{UV}=0.95,"
+constraints:
+  - parameter: g_UV
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 172
+      excerpt: "- \\(g_{UV}\\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,"
+downstream_dependents: [251, 253]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The SYMBOL g_UV is introduced at Stage 245 (chi_UV := g_UV*chi_lambda), but the NUMERIC value g_UV=0.95 first enters the ledger at Stage 250 as a benchmark input. The notes say it is 'carried from Stage 245', yet no numeric 0.95 appears anywhere in the Stage 245 notes (grep of notes/stages/stage245 finds only the symbol). So 0.95 is a posited near-unity coupling with no derivation and no external published anchor; the 'carried from Stage 245' phrasing is a mild stale/over-attributed provenance pointer for the numeric value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 172, excerpt: "- \\(g_{UV}\\) is the non-rigid transfer-to-dressing coupling carried from Stage 245," }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 134, excerpt: "\\chi_{UV}(r):=g_{UV}\\,\\chi_\\lambda(r)," }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage150_residual_tangent_matched
+parameter_name: Pi_star
+origin_claims:
+  - parameter: Pi_star
+    introduced_at_stage: 144
+    introduced_at_line: 62
+    citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 62
+      excerpt: "\\Pi_*\\approx 1.50882951349316."
+constraints:
+  - parameter: Pi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 58
+      excerpt: "\\mathfrak g_{\\Pi_*}=\\mathfrak g_-^{F1}."
+downstream_dependents: [146, 147, 148, 150, 151, 152, 154, 155]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Pi_star is the canonical mouth bias, FIRST solved at Stage 144:62 as the unique positive Pi satisfying g_{Pi_*}=g_-^{F1} (internal_consistency — the overlap-equation root, all inputs ledger-internal). Stage 150 merely CARRIES Pi_star into the full-profile residual R_*(x)=Phi_*(x)-Pi_* x. The Stage 150 bundle's only source_evidence pointer was the paper card line 16; the binding notes origin was located at Stage 144 (and re-stated at 150:71 via the fixed-point relation Pi_*=Sigma_m_*(4-S_q(Pi_*))). Chain ultimately rests on g_-^{F1}, which traces to r_F1 / the posited L/a=37/20 (see r_F1 candidate)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md, line: 71, excerpt: "\\Pi_*=\\Sigma_m^*\\left[4-\\mathcal S_q(\\Pi_*)\\right]." }
+      - { path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md, line: 52, excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663" }

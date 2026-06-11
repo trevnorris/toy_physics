@@ -1,0 +1,25 @@
+candidate_id: fit_stage_124_g_nat
+parameter_name: g_nat
+origin_claims:
+  - parameter: g_nat
+    introduced_at_stage: 122
+    introduced_at_line: 26
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 26
+      excerpt: "\\mathfrak g_{\\rm nat}=1."
+constraints:
+  - parameter: g_nat
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 30
+      excerpt: "This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized loading” core closure."
+downstream_dependents: [125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 124 (status card) carries g_nat=1 (notes line 20) as one of the tabulated branch values. Origin is Stage 122, where it is explicitly a posited 'concrete branch ansatz, not a theorem of the full PDE' (free_choice). No new constraint at Stage 124."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 18, excerpt: "2. **Natural equal-normalized mouth-source branch**" }
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 20, excerpt: "\\mathfrak g_{\\rm nat}=1." }

@@ -1,0 +1,12 @@
+candidate_id: fit_stage075_triple_fixed_summary
+parameter_name: L_over_a
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Scanner resolved parameter L_over_a for the stage-075 'triple_fixed_summary' candidate, but no notes/ or card text at stage 075 documents an L_over_a (loading-ratio L/a) value. The only 'triple' in the stage refers to the control triplet (chi_s, Lambda_ell, Upsilon_w); the bundle's sole notes excerpt (line 89) is about the wall-depth parameter alpha_r, not L_over_a. The stage's actual reference geometric ratio that is fixed here is ell/a = 1/20 (carried/used at stage 076), not L/a. No origin or constraint for L_over_a can be asserted from stage-075 notes."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md, line: 17, excerpt: "2. it shows that the only remaining unknown is one wall-depth amplitude datum, not the full triplet `(chi_s, Lambda_ell, Upsilon_w)`." }
+      - { path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md, line: 89, excerpt: "But on the actual Family-1 wall branch the radial soft-wall profile already carries a fixed dimensionless depth parameter" }

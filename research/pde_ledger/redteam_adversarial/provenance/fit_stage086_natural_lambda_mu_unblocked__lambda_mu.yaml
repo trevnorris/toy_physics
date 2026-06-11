@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage086_natural_lambda_mu_unblocked__phase_b__lambda_mu.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,38 @@ source_evidence:
   line: 62
   role: sympy_script
   excerpt: Qmax_eps = sp.simplify(Q.subs(zeta, zeta_max))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_mu
+  introduced_at_stage: 86
+  introduced_at_line: 95
+  citation:
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 95
+    excerpt: Using the Stage-080/081 values at `lambda_mu = 1`,
+constraints:
+- parameter: lambda_mu
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 152
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: lambda_mu=1 is the 'natural shell-weighted normalization' convention; Stage 086 carries it from Stage 080/081 but
+    no batch-09 note derives the value 1 from an internal condition or external target — it is a normalization/gauge choice
+    (free_choice), with true origin upstream at Stage 080/081.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    line: 95
+    excerpt: Using the Stage-080/081 values at `lambda_mu = 1`,
+downstream_dependents:
+- 087
+- 088
+- 089
+- 090
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage086_natural_lambda_mu_unblocked__lambda_mu.yaml

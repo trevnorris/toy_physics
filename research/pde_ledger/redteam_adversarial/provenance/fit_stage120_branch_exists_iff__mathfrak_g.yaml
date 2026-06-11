@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage120_branch_exists_iff__phase_b__mathfrak_g.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -39,9 +39,44 @@ source_evidence:
   line: 39
   role: notes_stage
   excerpt: '> “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core select?”'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathfrak_g
+  introduced_at_stage: 119
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 15
+    excerpt: \mathfrak g := \frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}.
+constraints:
+- parameter: mathfrak_g
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+    line: 24
+    excerpt: The compensated canonical outgoing quadrupole branch exists **iff**
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage 120 is a status/consolidation card. It restates the existence gate 1+r^2=4(g-r)^2 (notes line 26) — the same
+    Stage-115/119 balance law that forces g once r is set. The constraint on g is internal_consistency (an 'exists iff' relation
+    among ledger-internal quantities); the open question Stage 120 poses is which branch (r,g) the core SELECTS, deferred
+    downstream. mathfrak_g originated at Stage 119; Stage 120 only carries it.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+    line: 26
+    excerpt: 1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
+  - path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+    line: 39
+    excerpt: '> “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core
+      select?”'
+downstream_dependents:
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage120_branch_exists_iff__mathfrak_g.yaml

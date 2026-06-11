@@ -1,0 +1,25 @@
+candidate_id: fit_stage097_gamma5_fixed_algebraically
+parameter_name: Gamma_5
+origin_claims:
+  - parameter: Gamma_5
+    introduced_at_stage: 97
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 46
+      excerpt: "`Gammabar_5 = 9 Kbar_2^(5/2) / Kbar_0^(3/2)`."
+constraints:
+  - parameter: Gamma_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 53
+      excerpt: "It is already determined by the same two quantities `(Kbar_0, Omega_Q)`."
+downstream_dependents: [99, 100]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Gammabar_5 = 9 Kbar_2^(5/2)/Kbar_0^(3/2) = 9 Kbar_0/(32 Omega_Q^5) is fixed ALGEBRAICALLY from the conservative coefficients (internal_consistency, this candidate's mechanism). However the comparison target Gammabar_5^target = 2 G/(5 c^5) is the standard published GR 2.5PN Burke-Thorne coefficient (published_target); the closure Gammabar_5 = N_Q Gammabar_5^target with N_Q=1 is the match-to-GR condition. The structural form is internal; the value anchor is external GR. No overclaim: N_Q=1 is honestly the open gate."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 77, excerpt: "`Gammabar_5^target = 2 G / (5 c^5).`" }
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 96, excerpt: "`Gammabar_5 = N_Q Gammabar_5^target = N_Q * 2 G / (5 c^5).`" }

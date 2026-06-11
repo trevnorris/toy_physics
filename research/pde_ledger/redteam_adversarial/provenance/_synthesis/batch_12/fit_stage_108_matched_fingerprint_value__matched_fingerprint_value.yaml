@@ -1,0 +1,24 @@
+candidate_id: fit_stage_108_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 107
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 20
+      excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6),"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 21
+      excerpt: "Thus pure mouth normalization is invisible to the normalized outgoing quadrupole fingerprint."
+downstream_dependents: [109, 110, 111, 112, 113, 114, 115]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for notes/stages/moving_throat_pde_stage108_robustness_classes.md (carried forward from the mechanical bundle). The matched/canonical outgoing fingerprint itself is a ledger-internal derived quantity (Stage 104/107 outgoing DtN branch), not an external target, so the value provenance is sound; only the atlas node is missing."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage108_robustness_classes.md, line: 21, excerpt: "Thus pure mouth normalization is invisible to the normalized outgoing quadrupole fingerprint." }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_224_delta_rm
+parameter_name: Delta_rm
+origin_claims:
+  - parameter: Delta_rm
+    introduced_at_stage: 224
+    introduced_at_line: 68
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 68
+      excerpt: "\\Delta_{\\rm norm}"
+constraints:
+  - parameter: Delta_rm
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 177
+      excerpt: "If the real branch already hits the universal quadrupole normalization exactly,"
+downstream_dependents: [225, 226]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Scanner parameter_name 'Delta_rm' is a truncation of the normalization defect Delta_norm = mhat_0^2 P0bar - 54Gc_s^5/(5a^5c^5). The flagged value '0' is the conditional calibration assumption Delta_norm=0 ('if the real branch already hits the universal quadrupole normalization exactly'), i.e. a posited/hypothetical branch condition (free_choice), not a derived value; Delta_norm is otherwise an undetermined defect awaiting the actual PDE branch packet."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md, line: 179, excerpt: "\\Delta_{\\rm norm}=0," }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_calibration_slice_nominal_constants__phase_b__s_c.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,37 @@ source_evidence:
   line: 7
   role: notes_stage
   excerpt: 1. the Stage-252 channel-resolved microscopic export / cold-survival compiler,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: s_c
+  introduced_at_stage: 251
+  introduced_at_line: 459
+  citation:
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    line: 459
+    excerpt: ' s_c=\frac{1}{t_{\rm cross}}\approx 0.5489386551,'
+constraints:
+- parameter: s_c
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 298
+    excerpt: ' s_c:=\frac{1}{t_{\rm cross}},'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: s_c=0.5489386551 is the reduced crossing-rate (=1/t_cross) carried into Stage 253 from the Session-IV cold-event
+    benchmark via Stage 251 (notes:459) and Stage 252 (notes:440); it is a ledger-internal reduced-dynamics quantity. Origin
+    is upstream (Stage 251 / Session-IV), not Stage 253.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 954
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 440
+    excerpt: ' s_c=1/t_{\rm cross}\approx 0.5489386551,'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:11Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_calibration_slice_nominal_constants__s_c.yaml

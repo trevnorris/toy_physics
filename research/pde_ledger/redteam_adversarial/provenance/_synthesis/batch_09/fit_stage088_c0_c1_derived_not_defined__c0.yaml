@@ -1,0 +1,25 @@
+candidate_id: fit_stage088_c0_c1_derived_not_defined
+parameter_name: c0
+origin_claims:
+  - parameter: c0
+    introduced_at_stage: 88
+    introduced_at_line: 17
+    citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 17
+      excerpt: "`c0 = 3/4,`"
+constraints:
+  - parameter: c0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 81
+      excerpt: "The 2.5PN quadrupole audit already fixed the smallest viable isotropic conservative precursor to"
+downstream_dependents: [89, 90, 91, 96]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "At Stage 088 the value c0=3/4 is IMPORTED ('the 2.5PN quadrupole audit already fixed') with no stage-pinned anchor in the notes — the 088 note names no upstream stage where c0=3/4 was derived. The actual grouped-P2+static-geometry derivation of the 3/4 split lives DOWNSTREAM at Stages 091-094, so the 088 import is a forward reference. The candidate-id claim 'derived not defined' is true only for the in-script extraction path (c0 recovered from Y_rho by subtraction), not for the value 3/4 itself, which is posited as the minimal-module coefficient."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md, line: 11, excerpt: "The 2.5PN quadrupole audit had already isolated the smallest viable isotropic conservative precursor as" }
+      - { path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md, line: 34, excerpt: "So the `3/4 + 1/4` conservative module is no longer just a plausible parametrization. Under the minimal grouped-`P2` + static-geometry realization, it is forced." }

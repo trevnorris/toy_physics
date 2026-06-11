@@ -1,0 +1,25 @@
+candidate_id: fit_stage163_family1_canonical_point_block
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 60
+      excerpt: "\\frac{L}{a}=\\frac{37}{20},"
+downstream_dependents: [164, 168]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "163 reads back r_F1~1.77799353547498 (line 341) as the canonical Family-1 point coordinate; the numeric is r_geom(L/a) at the POSITED aspect ratio L/a=37/20 carried from Stage 073, not internally forced. The geometric relation is internal; the value is a free choice."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md, line: 341, excerpt: "\\mathfrak r_*\\approx 1.77799353547498," }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 58, excerpt: "Using the carried preferred aspect ratio" }

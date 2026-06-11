@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_v_eff__phase_b__v_eff.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -126,9 +126,41 @@ source_evidence:
   line: 264
   role: sympy_script
   excerpt: print("V_eff rebuilt         =", Vrebuild_soft)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: V_eff
+  introduced_at_stage: 247
+  introduced_at_line: 368
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 368
+    excerpt: r_{\rm soft}=0.18,
+constraints:
+- parameter: V_eff
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 367
+    excerpt: Appendix B.2 of the barrier-session write-up records the strongest stationary softening point at
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'Two distinct senses of V_eff: (a) the compiler FORMULA V_eff^(247)(r) = V_short - lambda_L S_leak - lambda_W W_sess
+    - DeltaE_UV - M_sigma (notes line 292) is an internally-defined construction; (b) the benchmark NUMBER V_eff(r_soft)=1.74701126
+    (notes line 372) is a recorded figure imported from the Session-I run (Appendix B.2, notes line 367), used as the target
+    that fixes lambda_L. The candidate''s value (1.74701126) is the recorded benchmark figure, so the value-level classification
+    is published_target (an imported recorded target, not derived). The formula itself would be internal_consistency. Recorded
+    as ambiguous because the genuine fit content is the back-solve of lambda_L to this V_eff target (see fit_stage247_lambda_*).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 372
+    excerpt: V_{\rm eff}(r_{\rm soft})=1.74701126,
+  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 213
+    excerpt: Veff_obs = sp.Float("1.74701126")
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage_247_v_eff__v_eff.yaml

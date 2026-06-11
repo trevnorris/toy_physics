@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage191_carried_coefficients_in_packet_interconversion__phase_b__b_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -63,9 +63,39 @@ source_evidence:
   line: 244
   role: sympy_script
   excerpt: sp.simplify(sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT)),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_star
+  introduced_at_stage: 190
+  introduced_at_line: 78
+  citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 78
+    excerpt: B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+constraints:
+- parameter: B_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 78
+    excerpt: B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: B_star (B_*) is anchored to stage 191 by the candidate id, but the value/definition B_*:=2(1+chi_0,*+delta_U,*)/delta_U,*
+    ENTERS the ledger at stage 190 (line 78), inside the corrected nontracking branch observable N_*:=T^2 R_tr^{B_*}. Stage
+    191 only CARRIES it (it appears at 191 line 18 reusing N_*). It is an exact algebraic definition of the branch-exponent,
+    so internal_consistency, not a fitted value. Origin is 190, not 191.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 18
+    excerpt: \mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+  - path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 78
+    excerpt: B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+downstream_dependents:
+- '191'
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage191_carried_coefficients_in_packet_interconversion__b_star.yaml

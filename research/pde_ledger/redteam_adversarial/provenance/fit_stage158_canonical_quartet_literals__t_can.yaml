@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage158_canonical_quartet_literals__phase_b__t_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,39 @@ source_evidence:
   line: 59
   role: sympy_script
   excerpt: 'Pi_lin = sp.expand(Pi).subs({dSigma0 * dR: 0, dSigma0 * dS: 0, dR * dS: 0})'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: T_can
+  introduced_at_stage: 156
+  introduced_at_line: 42
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 42
+    excerpt: \widehat T_{m,\rm can}
+constraints:
+- parameter: T_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 35
+    excerpt: Using the self-matched susceptibility closure,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'T_can = T_hat_m_can ~1.4467083664567 is determined from Sigma0_can by the exact self-matched closure Sigma0 =
+    (20/9) T_hat^2 (Stage 156 line 37) -> internal_consistency. Carried into stage158 (notes line 33). Value tail discrepancy
+    across carriers: stage156 line 43 = 1.4467083664567613 vs stage158 line 33 = 1.4467083664567624; sub-1e-10, flagged for
+    reconciliation.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 43
+    excerpt: \approx 1.4467083664567613.
+  - path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 33
+    excerpt: \widehat T_{m,\rm can}
+downstream_dependents:
+- '159'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage158_canonical_quartet_literals__t_can.yaml

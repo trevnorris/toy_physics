@@ -1,0 +1,25 @@
+candidate_id: fit_stage_115_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 107
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 20
+      excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6),"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 16
+      excerpt: "which is exactly the branch that preserves the canonical outgoing quadrupole fingerprint."
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The Stage-115 card's 'normalized core/mouth target values' language is grounded: the matched fingerprint is the ledger-internal canonical outgoing branch (Stage 104/107), and the card's own check 'Check parent overlap ratios before interpreting them as actual branch values' carries the actual-branch caveat. The matched value is a derived ledger quantity, not an external target. No overclaim — recorded as confirmation that the 'target values' are internal, not fitted to external data."
+    citations:
+      - { path: paper/stages/stage_115.tex, line: 24, excerpt: "\\item Check parent overlap ratios before interpreting them as actual branch values." }
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 66, excerpt: "Y_target = 1 + z**2 / 9 + 4 * z**4 / 81 + sp.I * z**5 / 27" }

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_115_k_q
+parameter_name: K_q
+origin_claims:
+  - parameter: K_q
+    introduced_at_stage: 114
+    introduced_at_line: 19
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 19
+      excerpt: "\\lambda & -K_q D_W^{\\rm bare}(z)"
+constraints:
+  - parameter: K_q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 98
+      excerpt: "- one mixed-channel stiffness `K_q`,"
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "K_q (mixed-channel stiffness) is a POSITED structural parameter of the concrete core model, introduced at Stage 114 and carried into the Stage-115 coupling-balance law and r_c=lambda^2/(K_s K_q). It is never pinned to a number; it remains a free core-coupling degree of freedom on the codimension-one balance surface. Classified free_choice (ansatz)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 20, excerpt: "K_s, K_q, lam = sp.symbols(\"K_s K_q lam\", positive=True, real=True)" }

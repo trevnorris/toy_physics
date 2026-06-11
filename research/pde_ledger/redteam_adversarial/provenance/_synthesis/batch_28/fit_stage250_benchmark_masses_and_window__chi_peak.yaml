@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: chi_peak
+origin_claims:
+  - parameter: chi_peak
+    introduced_at_stage: 250
+    introduced_at_line: 417
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 417
+      excerpt: " \\chi_{\\rm peak}=21.73204372,"
+constraints:
+  - parameter: chi_peak
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 388
+      excerpt: "\\chi_\\lambda(r)=\\lambda\\,\\bigl|\\partial_r\\ln V(r)\\bigr|,"
+downstream_dependents: [251]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "chi_peak = 21.73204372 (steepest logarithmic barrier gradient, chi_peak = max chi_lambda(r) with the trigger width) enters at stage 250 as a Session-II/III readback off the Stage-247/248 barrier profile. The notes give the DEFINING formula (chi_lambda = lambda*|d_r ln V|) but the numeric 21.73 is a hardcoded benchmark readback with no in-ledger evaluation shown; provenance of the number traces to an external session run, not a derivation in the notes."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 406, excerpt: "Use the Session-II/III reduced benchmark values" }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 176, excerpt: "chi_num = 21.73204372" }

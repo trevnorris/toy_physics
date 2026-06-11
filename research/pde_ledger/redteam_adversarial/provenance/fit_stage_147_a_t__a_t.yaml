@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_147_a_t__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -151,9 +151,52 @@ source_evidence:
   line: 124
   role: sympy_script
   excerpt: '# A_T*g_* + B_T*S_* != 0, so a missing-centering bug now fails here.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 67
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 67
+    excerpt: A_T \approx -4.27263956256927,
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 48
+    excerpt: A_T
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'This candidate''s scanner value Sqrt[(9/20)(p/(1-sFormula/4))] is the Mathematica T_m(p) expression, i.e. the
+    AUTODIFF-route primitive used to independently re-derive A_T (the .wl mirror of SymPy script line 73, Tm_of_Pi = sqrt((9/20)(Pi/(1-Sformula/4)))).
+    It is not a separate fitted constant -- it is the symbolic traction law on the canonical branch, from which A_T = -(dT_m/dPi)/(dg/dPi)
+    is obtained by D[] autodiff before anchoring to the appendix literal. A_T is therefore internal_consistency: derived (twice,
+    independently) from canonical-branch quantities. Gap flagged only to note the scanner captured the T_m EXPRESSION (a derivation
+    step) as if it were the A_T value; the actual A_T value is -4.27263956256927 (notes line 67), derived not fitted. See
+    fit_stage147_AT_BT_circular_paper_anchor for the full circularity-refutation.'
+  citations:
+  - path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+    line: 73
+    excerpt: Tm_of_Pi = sp.sqrt(sp.Rational(9, 20) * (Pi / (1 - Sformula/4)))
+  - path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 37
+    excerpt: \delta \widehat T_m
+downstream_dependents:
+- '148'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_147_a_t__a_t.yaml

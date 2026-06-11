@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage094_decoupling_kills_contamination__phase_b__k_g2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -48,9 +48,41 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: eps_2 = sp.simplify(Omega_Q**2 * K_g2 / K_pole)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_g2
+  introduced_at_stage: 94
+  introduced_at_line: 25
+  citation:
+    path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 25
+    excerpt: '`K_(g,2) = 0`,'
+constraints:
+- parameter: K_g2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 71
+    excerpt: So the quadratic wall action is block diagonal in the `(l=0)` and `(l=2)` sectors.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'K_g2=0 (and K_g4=0) is a GENUINE internal_consistency derivation, not a posit: it is forced by the exact l=0/l=2
+    angular orthogonality of the isotropic quadratic wall action (Y_00 orthogonal to every l=2 harmonic; grad Y_00 = 0; (-Delta_S2)Y_2A
+    = 6 Y_2A reduces back to the first). The script accumulates the overlap mode-by-mode (Kg2_overlap += I_mass) and asserts
+    K_g2==0 as a can-fail check. This is the load-bearing step that turns the conditional 091/093 module into an exact result
+    on the isotropic branch (eps_2=eps_4=0).'
+  citations:
+  - path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 69
+    excerpt: 'assert K_g2 == 0   # carries the orthogonality result, can fail if any overlap != 0'
+  - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 89
+    excerpt: This is stronger than a small-coupling statement. It is an exact linear selection rule of the isotropic quadratic
+      wall theory.
+downstream_dependents:
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage094_decoupling_kills_contamination__k_g2.yaml

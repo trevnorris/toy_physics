@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_084_zeta_max__phase_b__zeta_max.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -71,9 +71,40 @@ source_evidence:
   line: 144
   role: notes_stage
   excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_max
+  introduced_at_stage: 079
+  introduced_at_line: 35
+  citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 35
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+constraints:
+- parameter: zeta_max
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+    line: 142
+    excerpt: against the hard Stage-079 ceiling
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: zeta_max^(F1) ~ 2.46752922945601 is the hard Family-1 support-ratio ceiling = A_F1 pi^2/4 = lim_(Pe->inf) zeta_F1(Pe),
+    first derived at stage 079 from the ledger-internal branch factor A_F1 and the Omega_Pe -> pi/2 limit. At stage 084 it
+    is carried verbatim as 'the hard Stage-079 ceiling'. Deterministic consequence of derived ledger quantities -> internal_consistency,
+    not a fit. (Contrast the stage-082 zeta_max candidate, which was a scanner artifact; here zeta_max is genuinely documented.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+    line: 144
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+  - path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 31
+    excerpt: '`zeta_req <= zeta_max^(F1) := A_F1 pi^2 / 4`'
+downstream_dependents:
+- 085
+- 086
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_084_zeta_max__zeta_max.yaml

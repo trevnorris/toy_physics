@@ -1,0 +1,25 @@
+candidate_id: fit_stage_115_sigma_c
+parameter_name: sigma_c
+origin_claims:
+  - parameter: sigma_c
+    introduced_at_stage: 114
+    introduced_at_line: 78
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 78
+      excerpt: "\\sigma_c="
+constraints:
+  - parameter: sigma_c
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 35
+      excerpt: "\\sigma_c="
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. sigma_c=(K_s g_q - lambda g_s)^2/(K_s^2 K_q (1+r_c)) is the exact Schur-complement static mixed loading derived at Stage 114; on the Stage-115 coupling-balance surface it collapses to sigma_*=g_s^2/(4 K_s). Both forms are algebraic consequences of the posited core model (internal_consistency); no external target. Verified by the script 'sigma_c on balance surface' zero-check. Positive control."
+    citations:
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 43, excerpt: "sigma_c.subs(g_q, gq_branch) - sigma_star," }
+      - { path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md, line: 83, excerpt: "\\sigma_*=\\frac{g_s^2}{4K_s}." }

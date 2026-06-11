@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_048_f_tr__phase_b__f_tr.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,35 @@ source_evidence:
   line: 62
   role: sympy_script
   excerpt: '"(1-xi) F_tr softening coefficient",'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: F_tr
+  introduced_at_stage: 45
+  introduced_at_line: 218
+  citation:
+    path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 114
+    excerpt: '`F_tr(xi,delta;R)`'
+constraints:
+- parameter: F_tr
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 138
+    excerpt: '`F_tr(xi_req,delta;R_tr) = R_target.`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: F_tr is consumed at Stage 048 (existence-of-target argument) but its value/definition originates at Stage 045 (notes
+    045 line 218, the collapse of the Stage-044 F_cont onto the tracking surface). Origin attributed to Stage 045; Stage 048
+    carries it. No contradiction.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+    line: 218
+    excerpt: '`F_tr(xi,delta;R)`'
+downstream_dependents:
+- '051'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_048_f_tr__f_tr.yaml

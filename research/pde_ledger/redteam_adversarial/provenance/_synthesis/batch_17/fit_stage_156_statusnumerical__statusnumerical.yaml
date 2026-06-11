@@ -1,0 +1,25 @@
+candidate_id: fit_stage_156_statusnumerical
+parameter_name: StatusNumerical
+origin_claims:
+  - parameter: StatusNumerical
+    introduced_at_stage: 156
+    introduced_at_line: 27
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 27
+      excerpt: "That numerically located root is"
+constraints:
+  - parameter: StatusNumerical
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 19
+      excerpt: "Scanning the exact self-consistent Family-1 map shows that the fixed-point moment"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "StatusNumerical is a paper-card claim-status TAG (stage_156.tex:5, '\\StatusNumerical / \\StatusExactClosure'), not a fitted numeric parameter value, so it has no value genealogy in the value-provenance sense. The tag is, however, faithfully supported by the notes: the canonical Sigma0_can is a NUMERICALLY located root (line 27) of an otherwise exact self-consistent map (line 19), so StatusNumerical/StatusExactClosure is the honest status. Logged as a gap for the value-genealogy taxonomy; no card overclaim detected."
+    citations:
+      - { path: paper/stages/stage_156.tex, line: 5, excerpt: "\\claimstatus{\\StatusNumerical{} / \\StatusExactClosure{}.}" }
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 27, excerpt: "That numerically located root is" }

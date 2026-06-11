@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_frozen_traction_fixed_point_pins__phase_b__r_fp.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,42 @@ source_evidence:
   line: 102
   role: sympy_script
   excerpt: direct = sp.Float(R_fp - sp.Rational(1, 4), 30)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_fp
+  introduced_at_stage: 155
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 69
+    excerpt: \mathcal R_{\rm fp}
+constraints:
+- parameter: R_fp
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 66
+    excerpt: Feeding that back into the exact Family-1 core law gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'R_fp = 0.2827139049082381 is the co-evolving core loading ratio at the frozen-traction fixed point, COMPUTED at
+    Stage 155:69 by feeding the numerically-located fixed-point profile Sigma_fp through the exact Family-1 core law R[Sigma]=(g[Sigma]-r_F1)^2/(1+r_F1^2)
+    (script:84, R_fp = R(sig)). internal_consistency: a derived output of the nonlinear fixed-point solve, NOT a posit or
+    external target. The script''s assert(abs(R_fp - 0.2827139049082381) < 1e-12) is a self-consistency pin against the notes
+    value, and Stage 155:111-130 independently corroborates it via the Stage 154 transport law (delta_R_pred matches direct
+    R_fp - 1/4).'
+  citations:
+  - path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+    line: 84
+    excerpt: R_fp = R(sig)
+  - path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 72
+    excerpt: \approx 0.2827139049082381.
+downstream_dependents:
+- '156'
+- '157'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage155_frozen_traction_fixed_point_pins__r_fp.yaml

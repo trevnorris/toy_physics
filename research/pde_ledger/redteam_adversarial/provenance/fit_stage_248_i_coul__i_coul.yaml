@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_248_i_coul__phase_b__i_coul.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,42 @@ source_evidence:
   line: 506
   role: notes_stage
   excerpt: \left(\frac{T_{\rm new}}{T_{\rm Coul}}-1\right)\times 100\%
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: I_Coul
+  introduced_at_stage: 248
+  introduced_at_line: 290
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 290
+    excerpt: I_{\rm Coul}(E)
+constraints:
+- parameter: I_Coul
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 297
+    excerpt: 'The integral closes in elementary form for \(Er_{\rm contact}<1\):'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: I_Coul(E) is a closed-form Coulomb WKB action, derived internally by elementary integration of the standard Coulomb
+    integrand sqrt(1/r - E) (notes line 290-310; script verifies the antiderivative F_coul has the right derivative, dF_coul
+    == 0, and the endpoints reproduce the formula, I_coul_endpoints - I_coul_formula == 0, script lines 176-177). So the FORMULA
+    is internal_consistency. Separately, the Session-II benchmark hardcodes a reported NUMBER I_Coul=0.30222297 (script line
+    246 Icoul_report) and only checks the exact formula matches it within 1e-3 (script line 310). That reported number is
+    an imported figure, not derived, but it is used solely as a cross-check; the load-bearing object (the closed-form formula)
+    is genuinely derived. Recorded as ambiguous because the candidate's I_Coul has both a derived-formula sense and an imported-benchmark-number
+    sense.
+  citations:
+  - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 177
+    excerpt: assert sp.simplify(I_coul_endpoints - I_coul_formula) == 0
+  - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+    line: 246
+    excerpt: Icoul_report = 0.30222297
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage_248_i_coul__i_coul.yaml

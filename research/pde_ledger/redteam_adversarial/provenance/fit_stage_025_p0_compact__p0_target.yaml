@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_025_p0_compact__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,9 +110,44 @@ source_evidence:
   line: 148
   role: sympy_script
   excerpt: expect_zero("(mhat^2*P0 - target) at P=0 equals -target", residual_at_Pzero + target)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 22
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+    line: 101
+    excerpt: '`mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: P0_compact is the closed one-mode expression for the static prefactor (P^2/[Delta(K Delta - Delta C^2/varpi^2 -
+    Q)]) — that expression itself is an internal_consistency derivation. But the candidate's target VALUE (the RHS the prefactor
+    is required to equal) is the external GR coefficient 54/5 G c_s^5/(5 a^5 c^5) imported at stage 022. The classification
+    published_target reflects the constrained value (the GR target), since the bundle's parameter_name is P0_target. The card's
+    StatusOpen note (whether the branch realizes the required value) is consistent with the value being an external target,
+    not a derived output.
+  citations:
+  - path: paper/stages/stage_025.tex
+    line: 5
+    excerpt: Whether the actual branch realizes the formula at the required value is \StatusOpen{}.
+  - path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+    line: 119
+    excerpt: '# target coefficient 54/5 is carried forward from'
+downstream_dependents:
+- '026'
+- '030'
+- '031'
+- '033'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage_025_p0_compact__p0_target.yaml

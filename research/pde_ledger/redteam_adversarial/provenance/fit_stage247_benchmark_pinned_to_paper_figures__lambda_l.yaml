@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_benchmark_pinned_to_paper_figures__phase_b__lambda_l.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,43 @@ source_evidence:
   line: 249
   role: sympy_script
   excerpt: Veff_forward = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_L
+  introduced_at_stage: 247
+  introduced_at_line: 518
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 518
+    excerpt: \lambda_L=0.26971918.
+constraints:
+- parameter: lambda_L
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: This candidate framing ('benchmark pinned to paper figures') describes lambda_L=0.26971918 as 'independently derived
+    benchmark quantities pinned to the paper figures' in the audit script (line 239), but lambda_L is itself back-solved from
+    the recorded target V_eff^sess(r_soft)=1.74701126; the 'pin' asserts the back-solved value matches the recorded benchmark,
+    which is the fit, not an independent derivation. The notes are honest about this (line 497), so the mismatch is between
+    the script comment's 'independently derived' wording and the actual back-solve, not between notes and mechanism.
+  citations:
+  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 239
+    excerpt: '# F5: pin independently derived benchmark quantities to the paper figures.'
+  - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+    line: 238
+    excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 497
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:43Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage247_benchmark_pinned_to_paper_figures__lambda_l.yaml

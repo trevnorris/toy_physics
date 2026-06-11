@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_224_delta_rm__phase_b__delta_rm.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -133,9 +133,37 @@ source_evidence:
   line: 59
   role: sympy_script
   excerpt: 'print("Calibrated branch (Delta_norm = 0):  mhat0^2 >=", calibrated_lower_bound)'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_rm
+  introduced_at_stage: 224
+  introduced_at_line: 68
+  citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 68
+    excerpt: \Delta_{\rm norm}
+constraints:
+- parameter: Delta_rm
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 177
+    excerpt: If the real branch already hits the universal quadrupole normalization exactly,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Scanner parameter_name 'Delta_rm' is a truncation of the normalization defect Delta_norm = mhat_0^2 P0bar - 54Gc_s^5/(5a^5c^5).
+    The flagged value '0' is the conditional calibration assumption Delta_norm=0 ('if the real branch already hits the universal
+    quadrupole normalization exactly'), i.e. a posited/hypothetical branch condition (free_choice), not a derived value; Delta_norm
+    is otherwise an undetermined defect awaiting the actual PDE branch packet.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 179
+    excerpt: \Delta_{\rm norm}=0,
+downstream_dependents:
+- '225'
+- '226'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage_224_delta_rm__delta_rm.yaml

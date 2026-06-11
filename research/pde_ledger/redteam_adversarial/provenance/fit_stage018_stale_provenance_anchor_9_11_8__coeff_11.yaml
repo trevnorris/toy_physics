@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage018_stale_provenance_anchor_9_11_8__phase_b__coeff_11.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,42 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: high
+  summary: CHECKPOINT_CONSTANT_PROVENANCE records the carried coefficients 9/11/8 as anchored to a 'Stage-18 selected-branch
+    D/N-normal-form', but current stage 018 is the parent-throat action bundle master (M_Sigma/K_Sigma branch integrals) with
+    no D/N selected-branch normal form; the unpadded 'Stage-18' is a pre-renumber anchor (the D/N selected-branch normal form
+    lives near stage 035). The recorded source anchor for coeff_11 therefore points at the wrong stage.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 376
+    excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 377
+    excerpt: '  D/N-normal-form coefficients and the `8 / (pi^2 A)` dimensionless scaling'
+  - path: paper/stages/stage_018.tex
+    line: 1
+    excerpt: '\section[Stage 018]{Stage 018: Parent throat action bundle master}'
+  - path: scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py
+    line: 2
+    excerpt: '"""Master-note audit for step_16_parent_throat_action_bundle_master_notes.md."""'
+- type: provenance_gap
+  severity: needs_triage
+  summary: No file under notes/ establishes the origin or constraint of coeff_11 (the carried '9/11/8' coefficient) at stage
+    018. Stage 018 has no per-stage notes/stages/ file; its listed note source (notes/em_projected/step_16_parent_throat_action_bundle_master_notes.md
+    per STAGE_PROVENANCE_INDEX line 28) does not exist in the repo (notes/em_projected/ is absent). The only notes/ mention
+    (CHECKPOINT_CONSTANT_PROVENANCE.md:376) is the stale anchor itself and gives no clean value genealogy, so constraint_kind
+    cannot be assigned.
+  citations:
+  - path: notes/STAGE_PROVENANCE_INDEX.md
+    line: 28
+    excerpt: '| 018 | `paper/stages/stage_018.tex` | `notes/em_projected/step_16_parent_throat_action_bundle_master_notes.md`
+      |'
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 375
+    excerpt: '- `9`, `11`, `8`'
+downstream_dependents:
+- '030'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage018_stale_provenance_anchor_9_11_8__coeff_11.yaml

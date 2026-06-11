@@ -1,0 +1,25 @@
+candidate_id: fit_stage_021_c_a
+parameter_name: C_a
+origin_claims:
+  - parameter: C_a
+    introduced_at_stage: 021
+    introduced_at_line: 72
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 72
+      excerpt: "`C_a = ∂_a A_w - ∂_w A_a`,"
+constraints:
+  - parameter: C_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 74
+      excerpt: "are exactly gauge invariant."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "C_a is not a numeric value but a defined mixed gauge-invariant field strength, C_a = F_{aw} = partial_a A_w - partial_w A_a, introduced as a definition/convention from the parent-theory Maxwell sector and shown to be gauge-invariant. It carries no fitted or back-solved value; it is a structural definition (free_choice in the sense of a posited convention, not a constrained value). Logged with a low-severity gap because there is no value genealogy to classify."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md, line: 42, excerpt: "`C_a = F_{aw} = ∂_a A_w - ∂_w A_a`," }
+      - { path: paper/stages/stage_021.tex, line: 21, excerpt: "C_a=\\partial_aA_w-\\partial_wA_a" }

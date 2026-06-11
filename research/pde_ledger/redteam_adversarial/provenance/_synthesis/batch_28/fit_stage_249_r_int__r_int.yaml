@@ -1,0 +1,25 @@
+candidate_id: fit_stage_249_r_int
+parameter_name: R_int
+origin_claims:
+  - parameter: R_int
+    introduced_at_stage: 249
+    introduced_at_line: 463
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 463
+      excerpt: "R_{\\rm int}\\approx 4.10920923,"
+constraints:
+  - parameter: R_int
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 460
+      excerpt: "From the reported integrated ratio,"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The numeric R_int = 4.10920923 enters as a 'reported integrated ratio' (Session-II readback). The notes show it is internally consistent with the reported final-load ratio 20.58070146/5.00843357 = 4.10920923, but both inputs are un-derived run outputs; no in-ledger derivation produces R_int from first principles. The Mobius FORM R_int=(1+bar_alpha)/(1-bar_alpha) is internal_consistency, but the NUMBER is a posited benchmark readback."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 460, excerpt: "From the reported integrated ratio," }
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 486, excerpt: "which matches the integrated ratio to displayed precision." }

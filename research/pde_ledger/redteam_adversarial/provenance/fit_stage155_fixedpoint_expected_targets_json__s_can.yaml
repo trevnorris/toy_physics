@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_fixedpoint_expected_targets_json__phase_b__s_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -113,9 +113,44 @@ source_evidence:
   line: 109
   role: sympy_script
   excerpt: print("  At frozen canonical traction, the co-evolving fixed point remains close in Pi")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: S_can
+  introduced_at_stage: 156
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 69
+    excerpt: \approx 0.6703621156734617,
+constraints:
+- parameter: S_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 55
+    excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'S_can = 0.6703621156734617 is the renormalized canonical mixed-channel response S[Sigma_can] of the self-consistent
+    fixed point at the renormalized gain (internal_consistency, evaluated at the renormalized point). STAGE 156 quantity documented
+    in the Stage 156 notes (line 69); keyed to Stage 155 only via the shared fixture scripts/numerical/stage155_156_fixedpoint_samples.json
+    (S_can_expected, line 17). No Stage 155 notes file documents it. NOTE: the appendix value (part04 line 967, S_can approx
+    0.670362115673462) and notes/fixture (0.6703621156734617) agree to displayed precision here — no drift for S_can (unlike
+    Sigma0_can/Pi_can/T_hat_can).'
+  citations:
+  - path: scripts/numerical/stage155_156_fixedpoint_samples.json
+    line: 17
+    excerpt: '"S_can_expected": 0.6703621156734617,'
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 68
+    excerpt: \mathcal S_{\rm can}
+downstream_dependents:
+- '156'
+- '157'
+- '158'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage155_fixedpoint_expected_targets_json__s_can.yaml

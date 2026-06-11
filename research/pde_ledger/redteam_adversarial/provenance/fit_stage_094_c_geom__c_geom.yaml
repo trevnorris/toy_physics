@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_094_c_geom__phase_b__c_geom.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -148,9 +148,40 @@ source_evidence:
   line: 80
   role: sympy_script
   excerpt: print('eps_2 =', eps_2, '; eps_4 =', eps_4, '; c_pole =', c_pole, '; c_geom =', c_geom)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: c_geom
+  introduced_at_stage: 92
+  introduced_at_line: 99
+  citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 99
+    excerpt: '`c_geom = 1 - c_pole`.'
+constraints:
+- parameter: c_geom
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 122
+    excerpt: '`c_geom = 3/4`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'c_geom=3/4 at Stage 094 is internal_consistency: derived as 1-c_pole once eps_2=eps_4=0 (proven by l=0/l=2 orthogonality)
+    collapses the obstruction formula to c_pole=1/4. The scanner-listed value ''73'' for this candidate is a parser artifact
+    (no ''73'' appears for c_geom in the 094 note or script — the genuine value is 3/4, derived in notes line 122 and asserted
+    in script line 78). Same script-level assign-then-assert note as the sibling c_geom candidate, but the value and derivation
+    are sound.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+    line: 122
+    excerpt: '`c_geom = 3/4`.'
+  - path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 79
+    excerpt: assert c_pole + c_geom == 1
+downstream_dependents:
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage_094_c_geom__c_geom.yaml

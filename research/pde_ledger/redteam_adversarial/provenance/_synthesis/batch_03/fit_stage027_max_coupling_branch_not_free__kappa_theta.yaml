@@ -1,0 +1,25 @@
+candidate_id: fit_stage027_max_coupling_branch_not_free
+parameter_name: kappa_theta
+origin_claims:
+  - parameter: kappa_theta
+    introduced_at_stage: 27
+    introduced_at_line: 100
+    citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 100
+      excerpt: "`             = kappa_0 cos(theta) + kappa_1 sin(theta)`"
+constraints:
+  - parameter: kappa_theta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 99
+      excerpt: "`kappa(theta) = int_0^L ds chi_theta f_0`"
+downstream_dependents: [28]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "kappa(theta) = kappa_0 cos(theta) + kappa_1 sin(theta) is an EXACT overlap law derived by integrating the coherent N/N profile family chi_theta against the lowest D/N half-wave f0 (kappa_0 = 2 sqrt2/pi, kappa_1 = -4/(3 pi)) -> internal_consistency as a derived function. The candidate framing 'max_coupling_branch_not_free' is correct: the profile ANGLE theta is a free parameter (a hand-chosen profile family, declared so in the notes), and the max-coupling member is 'allowed but not free' because it carries a fixed axial-gradient penalty. So kappa(theta) the law is internal_consistency; the angle theta it depends on is a free_choice until the real eigenproblem fixes it. No external number is matched."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md, line: 62, excerpt: "`chi_theta(s) = cos(theta) u_0(s) + sin(theta) u_1(s)`." }
+      - { path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md, line: 342, excerpt: "The next honest derivation step is therefore to stop choosing the profile family by hand and solve the first actual axial wall eigenproblem with the matter/gauge loading included, so that the profile angle `theta` is no longer free but is an output of the reduced moving-throat operator itself." }

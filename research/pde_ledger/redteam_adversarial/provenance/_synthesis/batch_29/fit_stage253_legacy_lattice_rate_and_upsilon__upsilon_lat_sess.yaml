@@ -1,0 +1,25 @@
+candidate_id: fit_stage253_legacy_lattice_rate_and_upsilon
+parameter_name: Upsilon_lat_sess
+origin_claims:
+  - parameter: Upsilon_lat_sess
+    introduced_at_stage: 253
+    introduced_at_line: 227
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 227
+      excerpt: "\\Upsilon_{\\rm lat}^{\\rm(sess)}"
+constraints:
+  - parameter: Upsilon_lat_sess
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 224
+      excerpt: "The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice"
+downstream_dependents: []
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Upsilon_lat^(sess) is DEFINED as the ratio gamma_lat,safe^eq / gamma_lattice^red, back-solved so the exact Stage-253 map reproduces the legacy Session-V threshold. Both inputs are ledger-internal (gamma_lat,safe^eq derived, gamma_lattice^red a carried Session-V phenomenological input), so it is internal_consistency; but its purpose is a back-fit to recover a prior-session slice (could read as a free calibration choice). Its benchmark value 13.64824695 inherits the posited gamma_lattice^red=4.79562976."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 280, excerpt: "\\Upsilon_{\\rm lat}^{\\rm(sess)}\\approx\\frac{65.45193926}{4.79562976}\\approx 13.64824695." }
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 249, excerpt: "It is recovered as a definite calibration slice of the exact Stage-252/253 bridge." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_137_k_s__phase_b__k_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -83,9 +83,51 @@ source_evidence:
   line: 94
   role: sympy_script
   excerpt: expr_rc = sp.simplify((Ks*gq - lam*gs)**2 / (Ks**2*Kq*(1 + lam**2/(Ks*Kq))))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_s
+  introduced_at_stage: 114
+  introduced_at_line: 18
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 18
+    excerpt: K_s & \lambda\\[2pt]
+constraints:
+- parameter: K_s
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 97
+    excerpt: '- one static shell stiffness `K_s`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K_s (shell stiffness) is a POSITED symbolic primitive of the Stage-114 concrete two-channel core stiffness matrix
+    [[K_s, lambda],[lambda, -K_q D_W^bare]] (notes lines 16-26), one of the 'simplest concrete isotropic core model' inputs.
+    At Stage 137 it is merely carried as the denominator of rho_c = g_s^2/K_s and inside M_s = L g_s^2/(K_s Theta_sigma) and
+    M_q (notes lines 48,60-65); the 137 note itself lists 'the shell stiffness K_s' as remaining mouth-core DATA to be supplied
+    on a branch, not derived (notes 'Once these are known on a branch, (M_s,M_q) are fixed'). K_s is a free symbolic stiffness,
+    not a fitted number; classified free_choice. (Numeric branch values for K_s etc. are pinned later at Stages 119-123, the
+    parent-balance/normalized-branch family, not at 114 or 137.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 113
+    excerpt: 1. the shell stiffness `K_s`,
+  - path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 36
+    excerpt: 'This is the simplest concrete isotropic core model that contains:'
+downstream_dependents:
+- '115'
+- '116'
+- '117'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '137'
+- '138'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_137_k_s__k_s.yaml

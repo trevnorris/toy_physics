@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_037_m_mix__phase_b__m_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -148,9 +148,40 @@ source_evidence:
   line: 199
   role: sympy_script
   excerpt: print(f"M_mix     = {M_mix_expected}")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_mix
+  introduced_at_stage: 30
+  introduced_at_line: 56
+  citation:
+    path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    line: 56
+    excerpt: '`M_mix := 8 alpha_mix / (pi^2 A)`'
+constraints:
+- parameter: M_mix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 257
+    excerpt: '`M_mix`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Candidate keyed to stage 037, but M_mix is DEFINED at stage 036 (M_mix := 8 alpha_mix/(pi^2 A)). Stage 037 supplies
+    its exact closed continuum-kernel form M_mix = 8(K_U c_etaW + c_UW c_etaU)^2/[pi^2 (K_U K_eta^eff - c_etaU^2)(K_U K_W^eff
+    - c_UW^2 sigma)] (notes lines 257-260; audit verifies 'M_mix continuum formula'). Internal_consistency; this is a duplicate-parameter
+    scanner hit with fit_stage_036_m_mix (same M_mix, origin 036).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 213
+    excerpt: '`M_mix = 8 alpha_mix / (pi^2 A),`'
+  - path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+    line: 191
+    excerpt: expect_zero("M_mix continuum formula", M_mix - M_mix_expected)
+downstream_dependents:
+- 038
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_037_m_mix__m_mix.yaml

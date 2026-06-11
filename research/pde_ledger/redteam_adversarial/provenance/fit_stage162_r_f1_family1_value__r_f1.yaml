@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage162_r_f1_family1_value__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -40,9 +40,43 @@ source_evidence:
   line: 74
   role: sympy_script
   excerpt: print("r_F1 =", rF1)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 121
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 65
+    excerpt: \mathfrak r_{F1}
+constraints:
+- parameter: r_F1
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 60
+    excerpt: \frac{L}{a}=\frac{37}{20},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: 162 restates the Family-1 value r_F1~1.77799353547498 (line 155) as the fixed lower-branch hybridization; the value
+    is r_geom(L/a) at the POSITED L/a=37/20 carried from Stage 073, not an internally forced quantity. Same call as the radius
+    candidate.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    line: 155
+    excerpt: \mathfrak r_{F1}\approx 1.77799353547498,
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 58
+    excerpt: Using the carried preferred aspect ratio
+downstream_dependents:
+- '163'
+- '164'
+- '165'
+- '166'
+- '167'
+- '168'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage162_r_f1_family1_value__r_f1.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_238_q_eta__phase_b__q_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,8 +183,21 @@ source_evidence:
   line: 307
   role: notes_stage
   excerpt: q_\eta=0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: q_eta
+  introduced_at_stage: 235
+  introduced_at_line: 92
+  citation:
+    path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 92
+    excerpt: q_\eta=E_1,
+constraints:
+- parameter: q_eta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    line: 205
+    excerpt: q_\eta=d\ln\epsilon_\eta.
 graph_context:
   contexts: []
   graph_gaps:
@@ -209,3 +222,29 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_238.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: 'q_eta is NOT a fixed numeric value: at Stage 238 it is the post-static dressing obstruction, DERIVED via the exact
+    transfer-shape identity R_target*T^2 = Lambda_0(1-epsilon_eta) (notes lines 95/130) as q_eta = ln(epsilon_eta/epsilon_{eta,ref})
+    = d ln epsilon_eta (lines 32/205/231). All exact derived relations -> internal_consistency. The coordinate''s ORIGIN as
+    a named packet axis is upstream Stage 235 (q_eta = E_1). The orbit-lock condition is q_eta = 0 (line 307). No specific
+    value constrained; logged low-severity that q_eta is a derived coordinate / the residual dressing obstruction, not a fitted
+    scalar.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    line: 95
+    excerpt: R_{\rm target}\,\mathcal T^2 = \Lambda_0(1-\epsilon_\eta).
+  - path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    line: 307
+    excerpt: q_\eta=0
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source node for the Stage-238 notes path (carried from the mechanical bundle's
+    graph_gaps); downstream enumeration relied on notes/card reading.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    line: 32
+    excerpt: q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage_238_q_eta__q_eta.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage200_mismatch_chart_rederived_not_posited__phase_b__m_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -147,9 +147,43 @@ source_evidence:
   line: 331
   role: sympy_script
   excerpt: sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_star
+  introduced_at_stage: 192
+  introduced_at_line: 99
+  citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 99
+    excerpt: M_*=
+constraints:
+- parameter: M_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage198_exact_finite_orbit_law.md
+    line: 127
+    excerpt: These are the same exact monomials whose infinitesimal drift compiler was encoded by `\(M_*\)` in Stage 192.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'M_star (the 3x8 microscopic drift compiler matrix q = M_* Delta x) originates at Stage 192 (notes line 99, with
+    the eight-dim drift quotient projector calculus). Stage 200 carries it; the Stage 200 sympy audit RE-DERIVES it as the
+    Jacobian of the primitive monomial log-ratios (Mderived = q_pair.jacobian(Dvec)) and verifies Mderived equals the carried
+    Stage 192 matrix (script lines 154-167: expect_zero ''derived M_* - carried Stage 192 matrix''). So the candidate label
+    ''rederived_not_posited'' is accurate: M_* is forced by the ledger-internal monomial structure, not posited -> constraint_kind
+    internal_consistency. The Stage 200 notes do not print the M_* entries directly (they reference the carried compiler);
+    gap logged only to note the Stage-200 notes restate rather than re-display M_*, while the binding origin/justification
+    citations are under notes/ (Stage 192 line 99, Stage 198 line 127).'
+  citations:
+  - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+    line: 154
+    excerpt: Mderived = simplify_expr(q_pair.jacobian(Dvec))
+  - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+    line: 167
+    excerpt: expect_zero("derived M_* - carried Stage 192 matrix", Mderived - Mexpected)
+downstream_dependents:
+- '201'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage200_mismatch_chart_rederived_not_posited__m_star.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage058_bracket_derived_not_guessed__phase_b__delta_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,37 @@ source_evidence:
   line: 78
   role: sympy_script
   excerpt: Delta = sp.simplify(
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_0
+  introduced_at_stage: 58
+  introduced_at_line: 231
+  citation:
+    path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+    line: 231
+    excerpt: '`Delta_0(kappa,eta)`'
+constraints:
+- parameter: Delta_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+    line: 234
+    excerpt: '`= eta (cosh(alpha)-1)`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Candidate id 'bracket_derived_not_guessed' frames the Pe_* bracket as a whole, but the scanner resolved its primary
+    target to Delta_0; the companion endpoint Delta_inf is the other bracket leg and is not separately tracked here.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage058_coupled_support_source_operator.md
+    line: 269
+    excerpt: '`Xi Delta_0(kappa,eta) <= Pe_* <= Xi Delta_inf(kappa,eta).`'
+downstream_dependents:
+- 059
+- '061'
+- '063'
+- '066'
+synthesis_ingested_at: '2026-06-11T18:26:14Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage058_bracket_derived_not_guessed__delta_0.yaml

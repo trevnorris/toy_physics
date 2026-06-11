@@ -1,0 +1,25 @@
+candidate_id: fit_stage_194_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 194
+    introduced_at_line: 182
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 182
+      excerpt: "Matching the leading odd coefficient yields"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 158
+      excerpt: "This is the exact canonical compact outgoing `l=2` fingerprint."
+downstream_dependents: [195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "'matched_fingerprint_value' is a scanner family-token, not a literal named parameter in the notes (the bundle's source_evidence is the card boilerplate Purpose/Verification block of stage_194.tex). The underlying real object is the exact canonical compact outgoing l=2 DtN fingerprint Y_2^out=1+z^2/9+4z^4/81+i z^5/27+... (194 lines 136-158), DERIVED from the spherical Hankel h_2^{(1)}, against which the retarded grouped-P2 module is matched (194 lines 164-184) to fix chi_Q=1. Because the matched target is a derived special-function expansion, the 'matched fingerprint' is internal_consistency, not a fit to an external number. Logged as a low gap to flag the token is an alias for the 194 fingerprint match, not a standalone fitted value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 137, excerpt: "\\widehat Y_2^{\\rm out}(z)" }
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 184, excerpt: "\\boxed{\\chi_Q=1.}" }

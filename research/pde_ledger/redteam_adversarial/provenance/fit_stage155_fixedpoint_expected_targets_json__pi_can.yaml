@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_fixedpoint_expected_targets_json__phase_b__pi_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -113,9 +113,53 @@ source_evidence:
   line: 109
   role: sympy_script
   excerpt: print("  At frozen canonical traction, the co-evolving fixed point remains close in Pi")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_can
+  introduced_at_stage: 156
+  introduced_at_line: 72
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 72
+    excerpt: \approx 3.871564377479002.
+constraints:
+- parameter: Pi_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 55
+    excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Pi_can = 3.871564377479002 is the renormalized canonical mouth bias, the mouth slope of the self-consistent fixed
+    point at the renormalized gain Sigma0_can (internal_consistency, evaluated via the exact slope identity at the renormalized
+    point). STAGE 156 quantity documented in the Stage 156 notes (line 72); keyed to Stage 155 only via the shared fixture
+    scripts/numerical/stage155_156_fixedpoint_samples.json (Pi_can_expected, line 18). No Stage 155 notes file documents it.
+  citations:
+  - path: scripts/numerical/stage155_156_fixedpoint_samples.json
+    line: 18
+    excerpt: '"Pi_can_expected": 3.871564377479002,'
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 71
+    excerpt: \Pi_{\rm can}
+- type: paper_card_overclaim
+  severity: low
+  summary: 'PRECISION DRIFT: appendix part04 line 969 gives Pi_can approx 3.871564377479009; notes + fixture give 3.871564377479002
+    (last digits 02 vs 09). Sub-1e-13 notes-vs-published mismatch; companion to the Sigma0_can / T_hat_can drifts.'
+  citations:
+  - path: paper/appendices/stage_appendix_part04.tex
+    line: 969
+    excerpt: \Pi_{\rm can}\approx3.871564377479009.
+  - path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 72
+    excerpt: \approx 3.871564377479002.
+downstream_dependents:
+- '156'
+- '157'
+- '158'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage155_fixedpoint_expected_targets_json__pi_can.yaml

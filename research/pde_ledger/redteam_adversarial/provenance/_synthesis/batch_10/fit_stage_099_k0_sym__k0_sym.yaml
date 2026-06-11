@@ -1,0 +1,25 @@
+candidate_id: fit_stage_099_k0_sym
+parameter_name: K0_sym
+origin_claims:
+  - parameter: K0_sym
+    introduced_at_stage: 99
+    introduced_at_line: 43
+    citation:
+      path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+      line: 43
+      excerpt: "`Kbar_Q^cons(omega) = Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`."
+constraints:
+  - parameter: K0_sym
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+      line: 75
+      excerpt: "- compute `Kbar_0` on the actual passive/outgoing branch,"
+downstream_dependents: [100]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K0_sym is the SymPy symbol for the actual-branch normalization Kbar_0; the script declares it 'a *free* positive symbol — assertions are not forced by an N_Q recipe' (line 64-65). In the notes it is the OPEN unknown to be computed by the full PDE (line 75); its determination is precisely the unresolved N_Q=1 gate. Classified free_choice because at this stage Kbar_0 is an unfixed positive symbol (the open theorem unknown), not a derived or externally-matched value. No notes line names 'K0_sym' literally (a SymPy-symbol name); origin cited from the Kbar_0 it represents."
+    citations:
+      - { path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py, line: 64, excerpt: "# K0_sym is a *free* positive symbol — assertions are not forced by an N_Q recipe." }
+      - { path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py, line: 65, excerpt: "K0_sym = sp.symbols(\"K0_sym\", positive=True, real=True)" }

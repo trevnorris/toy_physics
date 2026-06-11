@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage163_rstar_quarter__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -19,9 +19,47 @@ anchor_stages:
 - '163'
 notes_source_opened: true
 source_evidence: []
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 163
+  introduced_at_line: 94
+  citation:
+    path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 94
+    excerpt: R_q=\frac14.
+constraints:
+- parameter: r_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 90
+    excerpt: R_q=\frac{(\mathfrak g-\mathfrak r)^2}{1+\mathfrak r^2},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: self_contradictory_origin
+  severity: high
+  summary: The scanner labeled the value 1/4 (script Rstar=sp.Rational(1,4)) as parameter r_F1, but 1/4 is the compensated
+    mouth gain ratio R_q (=R_star=R_*), NOT the parent geometric radius r_F1 (~1.778). R_q=1/4 is forced by the compensation
+    family (g-r)^2=(1+r^2)/4 from the Stage-119 balance law; it is a derived consequence, not the radius. Mislabeled candidate.
+  citations:
+  - path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 112
+    excerpt: Rstar = sp.Rational(1, 4)
+  - path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 308
+    excerpt: \mathcal R_* = \frac14,
+- type: provenance_gap
+  severity: low
+  summary: Pending bundle source_evidence was empty for this candidate; the value 1/4 is nevertheless documented in stage-163
+    notes (R_q=1/4, line 94) and the constraint is supported there.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage163_rstar_quarter__r_f1.yaml
+    line: 22
+    excerpt: 'source_evidence: []'
+downstream_dependents:
+- '164'
+- '168'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage163_rstar_quarter__r_f1.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_145_r_q
+parameter_name: R_q
+origin_claims:
+  - parameter: R_q
+    introduced_at_stage: 138
+    introduced_at_line: 45
+    citation:
+      path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+      line: 45
+      excerpt: "R_q:=-\\frac{M_q}{M_s}=\\frac{(\\mathfrak g_c-\\mathfrak r)^2}{1+\\mathfrak r^2}."
+constraints:
+  - parameter: R_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md
+      line: 26
+      excerpt: "R_q(\\Pi)=\\frac{(\\mathfrak g_\\Pi-\\mathfrak r_{F1})^2}{1+\\mathfrak r_{F1}^2},"
+downstream_dependents: [146, 152, 153]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 145 is a STATUS note restating the self-consistent gain law Pi = Sigma_0[1 - R_q(Pi) S_q(Pi)] with R_q(Pi) = (g_Pi - r_F1)^2/(1+r_F1^2) (notes lines 22-26); no new value for R_q. Origin Stage 138; promoted to Pi-function at 142. internal_consistency. Gap flagged only to mark 145 as a carry-forward restatement, with the within-explicit-family qualifier ('Inside the explicit positive exponential mouth-family reduction', notes header) preserved."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage145_mouth_branch_selection_status.md, line: 24, excerpt: "\\Pi=\\Sigma_0\\bigl[1-R_q(\\Pi)\\mathcal S_q(\\Pi)\\bigr]," }
+      - { path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md, line: 36, excerpt: "R_q(\\Pi):=-\\frac{M_q}{M_s}" }

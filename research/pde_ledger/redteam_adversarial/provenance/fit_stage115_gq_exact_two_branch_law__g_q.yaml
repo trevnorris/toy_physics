@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage115_gq_exact_two_branch_law__phase_b__g_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -85,9 +85,42 @@ source_evidence:
   line: 53
   role: sympy_script
   excerpt: 'g_q: gq_branch,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_q
+  introduced_at_stage: 114
+  introduced_at_line: 33
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 33
+    excerpt: \delta\Lambda_{\rm core}(z)\,u = g_s s + g_q q.
+constraints:
+- parameter: g_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 52
+    excerpt: g_q=
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: NOT a fit. g_q (mixed mouth coupling) is a free core-model coupling at Stage 114; at Stage 115 the compensated-branch
+    requirement rho_c=4*sigma_c reduces to the exact coupling-balance g_s^2(K_s K_q+lambda^2)=4(K_s g_q-lambda g_s)^2, solved
+    for g_q to give the exact two-branch law g_q=(g_s/2K_s)(2 lambda ± sqrt(K_s K_q+lambda^2)). The notes explicitly state
+    this 'is not a mystery coefficient fit' but an explicit codimension-one surface. Internal_consistency (algebraic solve
+    of a ledger-internal compensation condition); no external target. Positive control.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 60
+    excerpt: So the required Robin–mixed balance is not a mystery coefficient fit. It is an explicit codimension-one surface
+      in the concrete core-coupling space.
+  - path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+    line: 32
+    excerpt: gq_solutions = sp.solve(sp.Eq(balance_eq, 0), g_q)
+downstream_dependents:
+- '125'
+- '139'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage115_gq_exact_two_branch_law__g_q.yaml

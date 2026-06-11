@@ -1,0 +1,19 @@
+candidate_id: fit_stage_196_delta_q
+parameter_name: Delta_Q
+origin_claims:
+  - parameter: Delta_Q
+    introduced_at_stage: 195
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+constraints:
+  - parameter: Delta_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 54
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+downstream_dependents: [197]
+provenance_findings: []

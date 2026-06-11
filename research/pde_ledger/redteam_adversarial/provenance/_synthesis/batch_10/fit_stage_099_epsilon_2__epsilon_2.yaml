@@ -1,0 +1,24 @@
+candidate_id: fit_stage_099_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 96
+    introduced_at_line: 31
+    citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 31
+      excerpt: "`eps_2 = eps_4 = 0`"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+      line: 17
+      excerpt: "1. `eps_2 = eps_4 = 0`, so the geometry lane is dynamically inert through `O(omega^4)` with respect to the grouped real quadrupole carrier."
+downstream_dependents: [100]
+provenance_findings:
+  - type: graph_gap
+    severity: low
+    summary: "Carried from the mechanical bundle: atlas graph wrapper returned no source node for paper/stages/stage_099.tex. The notes origin (stage 096) and the stage099 restatement (line 17) are sound; gap is atlas-node coverage only."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md, line: 17, excerpt: "1. `eps_2 = eps_4 = 0`, so the geometry lane is dynamically inert through `O(omega^4)`" }

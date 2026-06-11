@@ -1,0 +1,19 @@
+candidate_id: fit_stage064_coherence_factor_derived
+parameter_name: C
+origin_claims:
+  - parameter: C
+    introduced_at_stage: 64
+    introduced_at_line: 115
+    citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 115
+      excerpt: "`C_(sigma phi)^2 = O_(sigma phi)^2 / [ N_(phi phi) N_(sigma sigma) ]`"
+constraints:
+  - parameter: C
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 118
+      excerpt: "This is already a strong theorem statement. The coherence is no longer an unconstrained branch datum. It is fixed by how much the compressional stiffness varies across the active support layer."
+downstream_dependents: [65, 66, 67]
+provenance_findings: []

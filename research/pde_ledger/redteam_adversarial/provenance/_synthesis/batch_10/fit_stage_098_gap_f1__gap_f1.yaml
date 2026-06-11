@@ -1,0 +1,24 @@
+candidate_id: fit_stage_098_gap_f1
+parameter_name: gap_F1
+origin_claims:
+  - parameter: gap_F1
+    introduced_at_stage: 98
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+      line: 92
+      excerpt: "`zeta_req^(act) < zeta_max^(F1)`."
+constraints:
+  - parameter: gap_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+      line: 62
+      excerpt: "`3 zeta_max (zeta_max - 1)/(3 zeta_max - 2) > 0,`"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "gap_F1 (Family-1 margin = zmax_F1 - zeta_edge_F1 = 2.01079823834804...) is a script-only numeric pin; the underlying margin theorem (gap = 3 zmax(zmax-1)/(3 zmax-2) > 0, evaluated at the carried Family-1 ceiling) IS documented in the stage098 notes, but the specific decimal literal 2.0108... appears only in the SymPy script, not in the notes. Origin/constraint cited from the notes margin theorem; the value is the internally-computed margin, internal_consistency."
+    citations:
+      - { path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py, line: 28, excerpt: "gap_F1 = sp.N(zmax_F1 - zeta_edge_F1, 30)" }

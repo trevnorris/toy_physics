@@ -1,0 +1,19 @@
+candidate_id: fit_stage253_upsilon_lat_calibration
+parameter_name: Upsilon_lat
+origin_claims:
+  - parameter: Upsilon_lat
+    introduced_at_stage: 253
+    introduced_at_line: 161
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 161
+      excerpt: "\\boxed{\\Upsilon_{\\rm lat}>0}"
+constraints:
+  - parameter: Upsilon_lat
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 185
+      excerpt: "This is a calibration factor, not a new dynamical degree of freedom."
+downstream_dependents: []
+provenance_findings: []

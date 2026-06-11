@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_157_delta_kappa_w__phase_b__delta_kappa_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -85,9 +85,42 @@ source_evidence:
   line: 134
   role: sympy_script
   excerpt: Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 delta_Sigma0 Sstar delta_S", real=True)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_kappa_W
+  introduced_at_stage: 159
+  introduced_at_line: 33
+  citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 33
+    excerpt: \delta\kappa_W = 0,
+constraints:
+- parameter: delta_kappa_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 348
+    excerpt: \delta\kappa_W=0.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'delta_kappa_W = 0 as the stage157 audit target is the canonical-even-preservation result: the script (py:106-111)
+    solves {dE2=0, dE4=0} and asserts the unique kernel {deltaC:0, dkappa:0}, det = -27*sigma_star. Stage157''s own NOTES
+    (v59 status) do not state delta_kappa_W=0; the result is fully written up in the Stage 159 notes (canonical-even gate,
+    lines 345-349). It is FORCED by the non-degenerate even-fingerprint linear system among carried projection coefficients
+    -> internal_consistency. Origin cited under Stage 159 notes because the stage157 notes do not document this value; the
+    stage157 SCRIPT carries the projection coefficients (a carried, not newly-derived, even-projection).'
+  citations:
+  - path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+    line: 110
+    excerpt: 'if even_preservation != [{deltaC: 0, dkappa: 0}]:'
+  - path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+    line: 346
+    excerpt: \delta\mathcal C=0,
+downstream_dependents:
+- '159'
+- '160'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage_157_delta_kappa_w__delta_kappa_w.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9
+parameter_name: sigma
+origin_claims:
+  - parameter: sigma
+    introduced_at_stage: 032
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 75
+      excerpt: "`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`."
+constraints:
+  - parameter: sigma
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 75
+      excerpt: "`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`."
+downstream_dependents: [033, 037, 038, 039]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "sigma = 88/(9 pi^2) is the squared norm v.v = kappa_0^2 + kappa_1^2 of the exact D/N overlap vector; it is forced by the mode integrals (kappa_0^2=8/pi^2, kappa_1^2=16/(9pi^2)), not fit or posited. The associated bound mhat_-^2 < sigma/kappa_0^2 = 11/9 is likewise an exact arithmetic consequence (script line 65). Pure internal_consistency; logged informationally — no external target or free choice."
+    citations:
+      - { path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py, line: 64, excerpt: "expect_zero(\"sigma - 88/(9 pi^2)\", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)" }
+      - { path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md, line: 83, excerpt: "`sigma / kappa_0^2 = 11 / 9`." }

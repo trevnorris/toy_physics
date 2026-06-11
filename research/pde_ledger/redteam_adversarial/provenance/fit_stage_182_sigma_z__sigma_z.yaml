@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_182_sigma_z__phase_b__sigma_z.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,30 @@ source_evidence:
   line: 372
   role: notes_stage
   excerpt: \Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma_Z
+  introduced_at_stage: 182
+  introduced_at_line: 241
+  citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 241
+    excerpt: \Sigma_Z:=2\lambda_1+\mu_1-\kappa_\eta-2\kappa_W=\zeta_Z-\omega_W,
+constraints:
+- parameter: Sigma_Z
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 241
+    excerpt: \Sigma_Z:=2\lambda_1+\mu_1-\kappa_\eta-2\kappa_W=\zeta_Z-\omega_W,
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_182_sigma_z__sigma_z.yaml

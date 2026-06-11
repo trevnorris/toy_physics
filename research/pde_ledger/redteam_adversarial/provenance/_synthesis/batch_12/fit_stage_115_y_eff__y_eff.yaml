@@ -1,0 +1,25 @@
+candidate_id: fit_stage_115_y_eff
+parameter_name: Y_eff
+origin_claims:
+  - parameter: Y_eff
+    introduced_at_stage: 115
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 92
+      excerpt: "gives a normalized response with exactly the same outgoing fingerprint:"
+constraints:
+  - parameter: Y_eff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 94
+      excerpt: "\\widehat Y_2(z)=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6)."
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. Y_eff is the normalized response Lambda_eff(0)/Lambda_eff computed from the concrete core outlet on the coupling-balance surface (plus bare-channel conditions); it is shown by the script to EQUAL the canonical Y_target fingerprint. This is internal_consistency: the equality is a derived collapse to the ledger-internal outgoing branch, not a back-solve to an external number. Verified by 'normalized outgoing fingerprint preserved' zero-check. Positive control."
+    citations:
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 65, excerpt: "Y_eff = sp.simplify(Lambda_eff.subs(z, 0) / Lambda_eff)" }
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 68, excerpt: "\"normalized outgoing fingerprint preserved\"," }

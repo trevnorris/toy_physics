@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_010_c_fixed__phase_b__c_fixed.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,41 @@ source_evidence:
   line: 138
   role: sympy_script
   excerpt: assert_zero("fixed-target compatibility z0 cancellation", sp.diff(dcompat_direct, z0))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_fixed
+  introduced_at_stage: 10
+  introduced_at_line: 37
+  citation:
+    path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+    line: 37
+    excerpt: '  \frac{N_0+\varepsilon n_0}{P_{0,\mathrm{target}}}'
+constraints:
+- parameter: C_fixed
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+    line: 26
+    excerpt: '- \(z_0\) shifts \(P_0\) directly but cancels out of the fixed-target Stage-18 compatibility relation,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: C_fixed is the fixed-target compatibility variation delta-C_fixed, a symbolic compatibility-surface object (not
+    a numeric value). The scanner's '0' comes from the stage-010 sympy guard assert_zero('fixed-target compatibility z0 cancellation',
+    diff(dcompat_direct, z0)) == 0, i.e. the exact result that z0 cancels from the fixed-target compatibility relation. It
+    is forced entirely by eliminating K between the ledger-internal one-pole and normalization equations -> internal_consistency.
+    No external target; no free parameter.
+  citations:
+  - path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+    line: 138
+    excerpt: assert_zero("fixed-target compatibility z0 cancellation", sp.diff(dcompat_direct, z0))
+  - path: paper/stages/stage_010.tex
+    line: 77
+    excerpt: \delta\mathcal C_{\rm fixed}
+downstream_dependents:
+- '011'
+- '012'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_010_c_fixed__c_fixed.yaml

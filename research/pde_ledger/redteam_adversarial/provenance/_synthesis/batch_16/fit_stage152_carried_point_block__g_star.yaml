@@ -1,0 +1,26 @@
+candidate_id: fit_stage152_carried_point_block
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 142
+    introduced_at_line: 97
+    citation:
+      path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+      line: 97
+      excerpt: "\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 58
+      excerpt: "\\mathfrak g_{\\Pi_*}=\\mathfrak g_-^{F1}."
+downstream_dependents: [144, 146, 147, 148, 150, 151, 152, 154, 155]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "g_star = 0.758035078944663 is the canonical overlap g_-^{F1}, the lower-compensated-branch root of the Family-1 compensation quadratic, first quoted at Stage 142:97 and used at Stage 144:58 to fix Pi_*. Its value is internal_consistency at the solve level (root of a ledger-internal quadratic), BUT the quadratic's coefficients depend on r_F1 = sqrt((12/pi^2)(L/a)^2 - 1) with L/a=37/20 a POSITED reference-branch freeze (Stage 073:56), not derived nor matched to an external number. So this load-bearing canonical constant ultimately rests on the same posited aspect ratio as r_F1; flagged so the carried g_* is not read as a first-principles result. Stage 152 carries g_* as a frozen mpf literal (script:29)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 29, excerpt: "g_star = mp.mpf(\"0.758035078944663\")" }
+      - { path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md, line: 21, excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663," }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }

@@ -1,0 +1,29 @@
+candidate_id: fit_stage170_k_a_one_ninth_combination
+parameter_name: K_A_weight
+origin_claims:
+  - parameter: K_A_weight
+    introduced_at_stage: 170
+    introduced_at_line: 25
+    citation:
+      path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+      line: 25
+      excerpt: "\\mathcal K_A:=\\delta D_{A,2}+\\frac19\\,\\delta D_{A,0},"
+constraints:
+  - parameter: K_A_weight
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+      line: 25
+      excerpt: "\\mathcal K_A:=\\delta D_{A,2}+\\frac19\\,\\delta D_{A,0},"
+downstream_dependents: [171, 172]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Bundle source_evidence was empty; resolved by opening notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md. The '1/9' weight in the even combination K_A := dD_{A,2} + (1/9) dD_{A,0} (notes line 25, restated line 102) is the linearization of the canonical even fingerprint D_2 = -D_0/9 (i.e. u_2 = 1/9); it is forced internally by requiring K_A to be the even pole deformation that preserves u_2 = 1/9 (delta u_2 = -(dD_2 + (1/9)dD_0)/D_0, notes line 102). The numeric 1/9 traces upstream to the Stage 104 DtN admittance (z^2/9). Internal_consistency, no external target. Low severity (gap noted only because the mechanical bundle carried no evidence)."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+        line: 102
+        excerpt: "-\\frac{\\delta D_{A,2}+\\frac19\\,\\delta D_{A,0}}{D_0},"
+      - path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+        line: 57
+        excerpt: "expect_zero(\"delta u2 + (dD2 + dD0/9)/D0\", du2 + (dD2 + dD0/9)/D0)"

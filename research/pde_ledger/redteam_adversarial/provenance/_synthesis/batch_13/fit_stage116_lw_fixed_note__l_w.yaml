@@ -1,0 +1,19 @@
+candidate_id: fit_stage116_LW_fixed_note
+parameter_name: L_W
+origin_claims:
+  - parameter: L_W
+    introduced_at_stage: 116
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+      line: 46
+      excerpt: "So the auxiliary mixed-tube length is fixed to"
+constraints:
+  - parameter: L_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+      line: 40
+      excerpt: "Stage 115 requires"
+downstream_dependents: [117, 118, 119, 120, 121, 122, 123, 124, 125]
+provenance_findings: []

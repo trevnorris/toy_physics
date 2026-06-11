@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_140_j_s__phase_b__j_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,44 @@ source_evidence:
   line: 10
   role: sympy_script
   excerpt: gs = Tm*Js
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: J_s
+  introduced_at_stage: 140
+  introduced_at_line: 22
+  citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 22
+    excerpt: N_{\sigma\sigma}^{(m)} = J_s = \frac{4\pi a^2\ell}{3},
+constraints:
+- parameter: J_s
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 15
+    excerpt: Take the mouth source to live on the same active shell layer as the shell/compliance mode.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'J_s = N_sigma_sigma^(m) = 4 pi a^2 ell/3 is the self-matched mouth-layer overlap norm: on the same-layer closure
+    the mouth source-source overlap N_sigma_sigma^(m) is identified with the shell overlap J_s, and given the geometric value
+    4 pi a^2 ell/3 (notes lines 15-22). Classified internal_consistency: it is a geometric overlap integral over the active
+    shell layer (a/ell are the carried throat geometry), used inside Theta_sigma = H_w J_s and g_s = T_m J_s, not a fitted
+    number nor an external target. Gap flagged ONLY because the 140 note quotes the 4 pi a^2 ell/3 value directly without
+    pinning the stage that computes that overlap integral; it depends on the same-layer ansatz (line 15) and on the carried
+    (a, ell) geometry.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 29
+    excerpt: \Theta_\sigma = H_w J_s.
+  - path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 22
+    excerpt: N_{\sigma\sigma}^{(m)} = J_s = \frac{4\pi a^2\ell}{3},
+downstream_dependents:
+- '146'
+- '152'
+- '153'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_140_j_s__j_s.yaml

@@ -1,0 +1,12 @@
+candidate_id: fit_stage_062_tautological_check
+parameter_name: tautological_check
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'tautological_check' is not a fitted/posited physical parameter value; it is a SymPy-audit sanity probe that deliberately verifies a WRONG EOS exponent is detected (assert residual_wrong != 0). There is no value genealogy and no notes/ source documents any parameter named 'tautological_check', so no origin or constraint_kind can be classified. The scanner surfaced a script-internal inconsistency probe as a parameter candidate."
+    citations:
+      - { path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py, line: 60, excerpt: "assert sp.simplify(residual_wrong) != 0, \"Inconsistency check failed to detect wrong exponent\"" }
+      - { path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py, line: 61, excerpt: "print(\"Inconsistency probe (n+1 in c_s^2 only):\", sp.simplify(residual_wrong))" }

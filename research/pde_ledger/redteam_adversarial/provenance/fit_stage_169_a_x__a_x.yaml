@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_169_a_x__phase_b__a_x.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -148,9 +148,39 @@ source_evidence:
   line: 149
   role: sympy_script
   excerpt: 'print("  Weak axisymmetric branch: b = 3 a and I[x,y] = (7/10) eps^2 x^(1) y^(1).")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_x
+  introduced_at_stage: 169
+  introduced_at_line: 54
+  citation:
+    path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 54
+    excerpt: a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+constraints:
+- parameter: a_x
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 54
+    excerpt: a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'a_x is not a fitted numeric value but a defined trace/anomaly decomposition variable: the l=2 quadrupole-anisotropy
+    projection a_x = (2 x_20 - x_21 - x_22)/10 of the grouped lane data, defined in-stage at notes line 54. Its only numeric
+    specialization (a_x = eps x^(1)/4 on the weak-axisymmetric branch, with the consequence b_x = 3 a_x at line 90) is forced
+    algebraically from the fixed grouped signature (1,1/2,-1) and metric G_grp = diag(1,2,2) — internal consistency, no external
+    anchor. Logged low-severity because the scanner target ''a_x'' is a structural definition rather than a constrained value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 90
+    excerpt: \boxed{b_x=3a_x,}
+  - path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+    line: 46
+    excerpt: ax = (2*xb20 - xb21 - xb22) / 10
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_169_a_x__a_x.yaml

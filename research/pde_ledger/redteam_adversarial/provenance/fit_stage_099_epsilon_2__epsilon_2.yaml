@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_099_epsilon_2__phase_b__epsilon_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,8 +29,22 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_2
+  introduced_at_stage: 96
+  introduced_at_line: 31
+  citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 31
+    excerpt: '`eps_2 = eps_4 = 0`'
+constraints:
+- parameter: epsilon_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 17
+    excerpt: 1. `eps_2 = eps_4 = 0`, so the geometry lane is dynamically inert through `O(omega^4)` with respect to the grouped
+      real quadrupole carrier.
 graph_context:
   contexts: []
   graph_gaps:
@@ -51,3 +65,15 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_099.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: low
+  summary: 'Carried from the mechanical bundle: atlas graph wrapper returned no source node for paper/stages/stage_099.tex.
+    The notes origin (stage 096) and the stage099 restatement (line 17) are sound; gap is atlas-node coverage only.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 17
+    excerpt: 1. `eps_2 = eps_4 = 0`, so the geometry lane is dynamically inert through `O(omega^4)`
+downstream_dependents:
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_099_epsilon_2__epsilon_2.yaml

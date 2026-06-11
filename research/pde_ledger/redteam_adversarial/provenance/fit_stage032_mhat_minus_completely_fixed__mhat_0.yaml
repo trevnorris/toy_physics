@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_mhat_minus_completely_fixed__phase_b__mhat_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -141,9 +141,40 @@ source_evidence:
   role: sympy_script
   excerpt: expect_zero("limit_{alpha->oo} mhat_-^2 - 11/9", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11,
     9)))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mhat_0
+  introduced_at_stage: 26
+  introduced_at_line: 201
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 201
+    excerpt: '`mhat_- = J_-(alpha_0) / J_-(0) = (v.e_-) / kappa_0`,'
+constraints:
+- parameter: mhat_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 208
+    excerpt: It is completely fixed by the same selected overlap `s_-` that already controls the wall loading.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The candidate target is mhat_0, but the parameter the notes/scripts actually fix is the source-map factor mhat_-
+    (mhat_minus), defined mhat_-^2 = s_-/kappa_0^2 with onset value mhat_-(alpha=0)=1. The previously abstract branch datum
+    is shown to be forced by the ledger's own selected overlap s_- (internal_consistency), not posited. No object literally
+    named 'mhat_0' appears in the stage-032 sources; the resolved value is the onset value mhat_-=1 / the squared map mhat_-^2
+    in [1, 11/9).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 207
+    excerpt: So on the natural D/N source branch the abstract factor `mhat_-` is gone.
+  - path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+    line: 195
+    excerpt: expect_zero("mhat_-^2(alpha=0) - 1", sp.simplify(mhat_sq.subs(alpha0, 0) - 1))
+downstream_dependents:
+- '027'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage032_mhat_minus_completely_fixed__mhat_0.yaml

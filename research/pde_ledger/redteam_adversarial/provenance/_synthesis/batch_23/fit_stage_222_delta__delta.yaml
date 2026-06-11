@@ -1,0 +1,25 @@
+candidate_id: fit_stage_222_delta
+parameter_name: Delta
+origin_claims:
+  - parameter: Delta
+    introduced_at_stage: 222
+    introduced_at_line: 107
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 107
+      excerpt: "\\Delta(\\omega)=A(\\omega)W(\\omega)-R^2,"
+constraints:
+  - parameter: Delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 113
+      excerpt: "D(\\omega)=K_B(\\omega)-\\frac{Q(\\omega)}{\\Delta(\\omega)}."
+downstream_dependents: [223]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Delta(omega)=A(omega)W(omega)-R^2 is the (U,W)-block determinant of the concrete primitive-branch bundle at Stage 222 (the same Delta_Pi structure carried from Stage 220, now specialized to the primitive finite-throat branch). Derived internally. The provenance scanner logged a graph_gap (no atlas node for the stage-222 notes/card source path); value-genealogy is fully documented in the notes."
+    citations:
+      - { path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py, line: 79, excerpt: "Delta = A * W - R**2" }
+      - { path: redteam_adversarial/provenance/fit_stage_222_delta__delta.yaml, line: 201, excerpt: "type: graph_gap" }

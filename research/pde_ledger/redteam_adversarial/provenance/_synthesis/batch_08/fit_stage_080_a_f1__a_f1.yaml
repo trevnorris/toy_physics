@@ -1,0 +1,25 @@
+candidate_id: fit_stage_080_a_f1
+parameter_name: A_F1
+origin_claims:
+  - parameter: A_F1
+    introduced_at_stage: 079
+    introduced_at_line: 57
+    citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 57
+      excerpt: "`A_F1 := (kappa_F1 + pi^2/4) / (kappa_F1 + y_F1^2).`"
+constraints:
+  - parameter: A_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+      line: 13
+      excerpt: "Stage 079 then replaced the abstract `Pe_req` by the exact Family-1 support-ratio map"
+downstream_dependents: [081, 082, 083, 084, 085]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Stage 080 carries A_F1 verbatim from stage 079 inside the zeta_F1(Pe) = A_F1 Omega_Pe^2 map; it is not re-introduced here. A_F1 = (kappa_F1 + pi^2/4)/(kappa_F1 + y_F1^2) with kappa_F1 = 12321/5 and y_F1 the Robin root -- a deterministic evaluation of ledger-internal quantities, so internal_consistency. The script even re-derives A_F1 independently as a cross-check."
+    citations:
+      - { path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py, line: 71, excerpt: "A_F1_recomputed = (sp.Rational(12321, 5) + sp.pi**2 / 4) / (sp.Rational(12321, 5) + y_F1**2)" }
+      - { path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md, line: 15, excerpt: "`zeta_F1(Pe) = A_F1 Omega_Pe^2.`" }

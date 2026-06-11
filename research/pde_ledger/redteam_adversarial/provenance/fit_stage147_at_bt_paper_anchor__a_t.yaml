@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage147_at_bt_paper_anchor__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -155,9 +155,57 @@ source_evidence:
   line: 124
   role: sympy_script
   excerpt: '# A_T*g_* + B_T*S_* != 0, so a missing-centering bug now fails here.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 67
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 67
+    excerpt: A_T \approx -4.27263956256927,
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 48
+    excerpt: A_T
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'ADVERSARIAL FLAG EVALUATED AND REFUTED. The candidate hypothesizes A_T approx -4.27263956256927 is a ''paper anchor''
+    (a value the script merely matches against the paper literal, i.e. potentially a published_target / circular import).
+    The evidence shows A_T is GENUINELY DERIVED, hence internal_consistency: the notes give the closed-form A_T = -(9/(40
+    T_hat_m,*))[1/(g''_*(1-S_*/4)) + Pi_* S''_*/(4 g''_*(1-S_*/4)^2)] (notes lines 48-56) in terms of canonical-branch quantities
+    (Pi_* from 130/134/144, S_*, g''_*, S''_*, T_hat_m,* all evaluated on the lower compensated branch). The SymPy audit COMPUTES
+    A_T from this formula (script lines 33-38) and INDEPENDENTLY re-derives it via autodiff A_T = -(dT_m/dPi)/(dg/dPi) at
+    Pi_* (script lines 66-80, residual < 1e-20), so a sign/power error cannot survive -- this BREAKS the suspected circularity.
+    The assert against AT_paper = -4.27263956256927 (script line 56) is a REGRESSION anchor, not the derivation. LABELING
+    TENSION worth flagging: CHECKPOINT_CONSTANT_PROVENANCE.md calls A_T/B_T ''GENUINE PAPER LITERALS sourced from paper/appendices/stage_appendix_part04.tex:846,848''
+    -- but that appendix is INTERNAL to this project and merely STATES the same derived constant (appendix only writes A_T
+    approx -4.27263956256927, no external GR/CODATA/PN target named), so this is NOT a published_target fit; the ''paper literal''
+    phrasing must not be misread as an external-target fit.'
+  citations:
+  - path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+    line: 76
+    excerpt: AT_autodiff = sp.N(-(dTm_dPi.subs(Pi, Pi_star)) / (dg_dPi.subs(Pi, Pi_star)), 30)
+  - path: paper/appendices/stage_appendix_part04.tex
+    line: 846
+    excerpt: A_T\approx-4.27263956256927,
+downstream_dependents:
+- '148'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage147_at_bt_paper_anchor__a_t.yaml

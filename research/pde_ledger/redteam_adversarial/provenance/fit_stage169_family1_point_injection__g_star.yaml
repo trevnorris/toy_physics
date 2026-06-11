@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage169_family1_point_injection__phase_b__g_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -33,4 +33,22 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No notes/ text in stage 169 (or carried-forward sources) documents a parameter-value 'g_star' with a literal value
+    or value-genealogy; the scanner target appears to be the symbolic compensated-isotropic drift coefficient g used in the
+    eps_perp combination, not a numerically constrained ledger parameter. The stage 169 card Output (paper/stages/stage_169.tex:15)
+    and notes (notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md:32) only establish the qualitative
+    result that scalar feed-down starts quadratically; no value for g_star is posited, derived, or fit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 32
+    excerpt: Its scalar feed-down starts only at quadratic order, through the grouped invariant bilinears.
+  - path: paper/stages/stage_169.tex
+    line: 15
+    excerpt: \stagefield{Output}{Pure grouped real \(P_2\) anisotropy cannot linearly source the scalar off-bundle slippages;
+      scalar feed-down starts quadratically.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage169_family1_point_injection__g_star.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage117_formulas_derived_claim__phase_b__l_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -60,9 +60,43 @@ source_evidence:
   role: sympy_script
   excerpt: 'print("carrying forward (Stage 116): L_W = pi a sqrt((1+r_c)/3)/2 -> kappa_0_bare = 4 L_W^2/(pi^2 a^2) -> kappa_c
     = 1/3")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L_W
+  introduced_at_stage: 116
+  introduced_at_line: 46
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 46
+    excerpt: So the auxiliary mixed-tube length is fixed to
+constraints:
+- parameter: L_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+    line: 26
+    excerpt: with explicit formulas derived in Stages 114–116.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Stage 117 only CARRIES/restates L_W; it explicitly attributes the formula to upstream (''explicit formulas derived
+    in Stages 114-116'', notes line 26) and re-states L_W=(pi a/2)sqrt((1+r_c)/3) at line 36. Origin is Stage 116, where L_W
+    is forced by the Stage-115 compensation requirement (internal_consistency). The candidate label ''formulas_derived_claim''
+    is consistent with the notes: the L_W formula IS derived internally upstream; no external target.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+    line: 36
+    excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}},
+downstream_dependents:
+- '118'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage117_formulas_derived_claim__l_w.yaml

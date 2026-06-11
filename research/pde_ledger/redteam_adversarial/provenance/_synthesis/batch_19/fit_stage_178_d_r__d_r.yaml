@@ -1,0 +1,29 @@
+candidate_id: fit_stage_178_d_r
+parameter_name: d_r
+origin_claims:
+  - parameter: d_r
+    introduced_at_stage: 178
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+      line: 79
+      excerpt: "\\delta\\ln \\Delta_{A,r}=\\epsilon\\lambda_A\\,\\mathfrak d_r."
+constraints:
+  - parameter: d_r
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+      line: 231
+      excerpt: "So \\(\\mathfrak d_r\\) measures how the static port detuning is changed by:"
+downstream_dependents: [179]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "d_r (notes: fraktur d_r) has no posited numeric value: it is DEFINED as the free weak-axisymmetric logarithmic slope of the actual static detuning, delta ln Delta_{A,r} = eps lambda_A d_r (notes line 79), measuring how the static port detuning drifts (notes lines 231-234). Classified free_choice as an unconstrained physical port input. The derived content is the exact closed form for d_r from port data (notes line 238) and the transfer-slope identity nu_r = 2(p_r - d_r) (notes line 92), which are internal_consistency. No external target."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+        line: 92
+        excerpt: "\\nu_r:=2(\\mathfrak p_r-\\mathfrak d_r)."
+      - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+        line: 104
+        excerpt: "expect_zero(\"d_r formula\", d_from_series - d_expected)"

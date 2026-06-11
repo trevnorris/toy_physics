@@ -1,0 +1,26 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: m_s
+origin_claims:
+  - parameter: m_s
+    introduced_at_stage: 250
+    introduced_at_line: 419
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 419
+      excerpt: " m_s=\\mu_\\eta=1836.15267343."
+constraints:
+  - parameter: m_s
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 423
+      excerpt: "### 7.1 Proton-proxy classical threshold speed"
+downstream_dependents: [251, 253]
+provenance_findings:
+  - type: published_target
+    severity: high
+    summary: "m_s (particle mass scale) is set to 1836.15267343, the CODATA proton-to-electron mass ratio, used as the 'proton-proxy' benchmark mass. This is an external published constant imported into the ledger as a benchmark input (script: 'Imported benchmark values'), not a value derived by the ledger."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 419, excerpt: " m_s=\\mu_\\eta=1836.15267343." }
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 428, excerpt: " v_{\\rm crit,p}" }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 177, excerpt: "m_num = 1836.15267343" }

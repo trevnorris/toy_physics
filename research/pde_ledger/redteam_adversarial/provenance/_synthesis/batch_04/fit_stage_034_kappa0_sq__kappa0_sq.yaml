@@ -1,0 +1,25 @@
+candidate_id: fit_stage_034_kappa0_sq
+parameter_name: kappa0_sq
+origin_claims:
+  - parameter: kappa0_sq
+    introduced_at_stage: 032
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 79
+      excerpt: "`kappa_0^2 = 8 / pi^2`,"
+constraints:
+  - parameter: kappa0_sq
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md
+      line: 70
+      excerpt: "`1 = alpha_0 [ kappa_0^2 / (A - lambda_-) + kappa_1^2 / (A + DeltaK_ax - lambda_-) ]`."
+downstream_dependents: [035, 036]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate keyed to stage 034, but kappa0_sq (=8/pi^2) originates at stage 032 as the exact D/N overlap mode integral. The stage-034 sympy audit declares it as a free positive symbol (ks0 = sp.symbols('kappa0_sq', positive=True)) and the notes carry kappa_0^2 only symbolically inside the secular law (line 70); the numeric value is not re-asserted at 034. Internal_consistency (forced by the upstream mode integral)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py, line: 32, excerpt: "ks0, ks1 = sp.symbols(\"kappa0_sq kappa1_sq\", positive=True, real=True)" }
+      - { path: notes/stages/moving_throat_pde_stage034_softening_depth_normal_form.md, line: 70, excerpt: "`1 = alpha_0 [ kappa_0^2 / (A - lambda_-) + kappa_1^2 / (A + DeltaK_ax - lambda_-) ]`." }

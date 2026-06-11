@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage126_not_a_coefficient_fit__phase_b__g_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,39 @@ source_evidence:
   line: 85
   role: sympy_script
   excerpt: 'if sp.simplify(g_xi_star) != 0:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_star
+  introduced_at_stage: 122
+  introduced_at_line: 63
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 63
+    excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663,
+constraints:
+- parameter: g_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 115
+    excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family
+      of positive localized mouth sources.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage126_not_a_coefficient_fit__g_star.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage134_sq_spotcheck_anchor_literals__phase_b__s_q_at_half.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -39,9 +39,39 @@ source_evidence:
   line: 65
   role: sympy_script
   excerpt: ("S_q(1/2)", S_q_at_half, target_half),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: S_q_at_half
+  introduced_at_stage: 134
+  introduced_at_line: 52
+  citation:
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    line: 52
+    excerpt: \mathcal S_q(\Pi)
+constraints:
+- parameter: S_q_at_half
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    line: 49
+    excerpt: Using the exact Stage 133 kernel,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: S_q_at_half = 0.608336415687717... is a script-only numeric spot-check of the derived S_q kernel at Pi=1/2 (an
+    independent mpmath anchor literal, script lines 58/61); it is a sampled value of the ledger-internal S_q(Pi) function,
+    not a standalone fitted/posited parameter. The S_q kernel itself is documented in notes; the specific Pi=1/2 sample value
+    has no per-stage notes line (it lives only in the SymPy audit as a tautology-avoidance anchor).
+  citations:
+  - path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+    line: 61
+    excerpt: target_half = sp.Float("0.608336415687717065435990381419", 30)
+  - path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+    line: 56
+    excerpt: '# Targets are NOT computed by re-typing S(Pi, pi/2) here; they are literals'
+downstream_dependents:
+- '134'
+synthesis_ingested_at: '2026-06-11T18:52:17Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage134_sq_spotcheck_anchor_literals__s_q_at_half.yaml

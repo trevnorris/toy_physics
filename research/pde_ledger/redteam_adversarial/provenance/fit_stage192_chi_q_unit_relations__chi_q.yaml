@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage192_chi_q_unit_relations__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -130,9 +130,59 @@ source_evidence:
   line: 199
   role: sympy_script
   excerpt: print("   with determinant 1 + chi0_* > 0.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 194
+  introduced_at_line: 184
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 182
+    excerpt: Matching the leading odd coefficient yields
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: high
+  summary: chi_Q does NOT appear anywhere in the stage-192 per-stage notes (notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    is a pure orbit/quotient projector-calculus stage; its only chi symbol is chi_0,* = chi-zero-star inside det P = 1+chi_0,*).
+    The scanner conflated chi_0,* with chi_Q. The ONLY chi_Q content attached to stage 192 lives in the paper card stage_192.tex
+    (boilerplate 'Derivation ledger' line 13 'collapses Packet A to Delta_Q=chi_Q-1' and Checks lines 20-21 'Delta_Q=chi_Q-1',
+    'N_Q=chi_Q^{-1}'). That boilerplate is copy-pasted identically into cards 192-195 and describes the isotropic-one-pole/outgoing-DtN
+    content of stages 193-195, NOT stage 192's projector calculus. chi_Q is genuinely introduced and fixed (=1) only at stage
+    194 (notes line 184) by matching the leading odd coefficient of the exact compact outgoing spherical Hankel l=2 DtN fingerprint.
+    The binding-rule notes citation cannot be satisfied at stage 192; origin/constraint are recorded at the true stage 194
+    origin.
+  citations:
+  - path: paper/stages/stage_192.tex
+    line: 13
+    excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+      \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+      Packet A to \(\Delta_Q=\chi_Q-1\).}
+  - path: paper/stages/stage_192.tex
+    line: 1
+    excerpt: '\section[Stage 192]{Stage 192: Orbit/quotient projectors}'
+  - path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 142
+    excerpt: \det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: The candidate anchors chi_Q to stage 192, but chi_Q's value (=1) is fixed at stage 194; the stage-192 anchor is
+    a card-boilerplate artifact (shared 192-195 ledger/checks block), an attribution drift.
+  citations:
+  - path: paper/stages/stage_192.tex
+    line: 20
+    excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+downstream_dependents:
+- '193'
+- '194'
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage192_chi_q_unit_relations__chi_q.yaml

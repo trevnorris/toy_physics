@@ -1,0 +1,30 @@
+candidate_id: fit_stage_229_kappa_0
+parameter_name: kappa_0
+origin_claims:
+  - parameter: kappa_0
+    introduced_at_stage: 229
+    introduced_at_line: 101
+    citation:
+      path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+      line: 101
+      excerpt: "\\kappa_0^2=\\frac{8}{\\pi^2},"
+constraints:
+  - parameter: kappa_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+      line: 143
+      excerpt: "So the same universal selected-branch function \\(F\\) still controls the normalization product; the extra factor \\(8/\\pi^2=\\kappa_0^2\\) is a fixed D/N overlap constant and does not affect the classifier below."
+downstream_dependents: [230]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "kappa_0^2 = 8/pi^2 is stated at Stage 229 (notes line 101) as one of the 'exact D/N constants' alongside kappa_1^2 = 16/(9*pi^2), and explicitly characterized at line 143 as 'a fixed D/N overlap constant' -- i.e. a closed-form mode-overlap integral fixed by the lowest D/N half-wave geometry, not a posited or externally-fitted number (internal_consistency). The originating overlap-integral computation is upstream of 229 (this stage carries it forward as a 'frozen input', line 95-104); the stage-229 notes assert the value and its geometric role but do not display the overlap integral itself. No external target is named. Logged as low-severity transparency note: the closed-form derivation lives upstream, not in this stage's notes."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md, line: 99, excerpt: "with exact D/N constants" }
+      - { path: scripts/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.py, line: 35, excerpt: "kappa0_sq = sp.Rational(8, 1) / sp.pi**2" }
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage-229 notes path (carried from the mechanical bundle's graph_gaps); downstream-dependent enumeration relied on notes/card reading rather than atlas edges."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md, line: 101, excerpt: "\\kappa_0^2=\\frac{8}{\\pi^2}," }

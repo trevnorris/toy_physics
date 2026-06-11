@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage226_d01_forced_zero__phase_b__d_01.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -125,9 +125,39 @@ source_evidence:
   line: 301
   role: sympy_script
   excerpt: assert_close(float(sp.N((coeff_vector(D01_mixed, mixed_vars).T * b)[0], 18)), 0.0, tol=1e-12)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_01
+  introduced_at_stage: 226
+  introduced_at_line: 207
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 214
+    excerpt: D_{01}=0.
+constraints:
+- parameter: D_01
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 205
+    excerpt: Both are nonzero. Therefore, on this noncanonical sample branch,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'D_01 is a free first-order static-loading slope, not a posited constant; its value 0 in this candidate is FORCED,
+    not chosen: on the noncanonical compatibility branch the K_1 and H_even coefficients in front of D_01 are both nonzero,
+    so imposing the Stage-225 compensation surface together with the strict 5PN even gates is equivalent to D_01=0 (notes
+    lines 205-208). The forced zero is an internal-consistency consequence; no fitted D_01 value exists to provenance.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 201
+    excerpt: K_1\approx 0.0621939470719309\,D_{01},
+  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 207
+    excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+downstream_dependents:
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage226_d01_forced_zero__d_01.yaml

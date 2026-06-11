@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage006_projected_vector_signs_fixed_by_audit__phase_b__ampere_sign.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -78,9 +78,42 @@ source_evidence:
   role: sympy_script
   excerpt: 'print("Concrete checks: Faraday/Ampere sign maps, explicit boundary discharge, E-vs-D distinction, and nonzero
     leakage all pass.")'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: ampere_sign
+  introduced_at_stage: 6
+  introduced_at_line: 60
+  citation:
+    path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+    line: 60
+    excerpt: \nabla\times H_{\rm flux}
+constraints:
+- parameter: ampere_sign
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+    line: 68
+    excerpt: \mu_0J_{\rm proj}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'ampere_sign is not a numeric value but the sign convention of the projected Ampere/curl-H law. The notes (step_03)
+    derive the projected inhomogeneous vector law directly from the projected bulk equation with F=dA, so the relative signs
+    of curl(H_flux), d_t(D_flux), Leak_vec and mu0*J_proj are forced by the algebra given the field-strength convention F^{i0}=E_i
+    (paper card stage_006.tex:32). The stage-006 sympy audit confirms each Ampere residue vanishes and that a mutated Faraday
+    sign FAILS (negative control). Classified internal_consistency: the sign is an exact algebraic consequence of the projection
+    given a stated index/field convention, not a free parameter or external fit. (The F^{i0}=E_i convention itself is a textbook
+    gauge/index choice carried in from the parent EM theory.)'
+  citations:
+  - path: paper/stages/stage_006.tex
+    line: 32
+    excerpt: With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
+  - path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+    line: 159
+    excerpt: assert_zero(f"Ampere component {i}", residue)
+downstream_dependents:
+- 008
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage006_projected_vector_signs_fixed_by_audit__ampere_sign.yaml

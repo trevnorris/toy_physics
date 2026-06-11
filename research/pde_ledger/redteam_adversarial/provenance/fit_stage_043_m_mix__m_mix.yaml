@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_043_m_mix__phase_b__m_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -85,8 +85,22 @@ source_evidence:
   line: 187
   role: sympy_script
   excerpt: print("6. The support vector tracks the mixed vector iff")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_mix
+  introduced_at_stage: 39
+  introduced_at_line: 173
+  citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 173
+    excerpt: So the support sector is now no longer just a direction question. Its actual baseline strength is an exact continuum
+      output, parallel to the mixed baseline `M_mix` of Stage 039.
+constraints:
+- parameter: M_mix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 105
+    excerpt: This is the exact support analogue of the mixed-direction factor from Stage 039,
 graph_context:
   contexts: []
   graph_gaps:
@@ -111,3 +125,18 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_043.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: M_mix is restated at Stage 043 but its value originates upstream at Stage 039 (notes line 105 'mixed-direction
+    factor from Stage 039'; line 173 'parallel to the mixed baseline M_mix of Stage 039'). Origin attributed to Stage 039
+    accordingly; the Stage-043 notes only carry/reference it. No contradiction, recorded for genealogy completeness.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 179
+    excerpt: Stage 039 already gave the mixed loading vector
+downstream_dependents:
+- '044'
+- '045'
+- '047'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_043_m_mix__m_mix.yaml

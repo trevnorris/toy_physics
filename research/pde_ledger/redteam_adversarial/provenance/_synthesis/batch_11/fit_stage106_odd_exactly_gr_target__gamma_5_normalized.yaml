@@ -1,0 +1,25 @@
+candidate_id: fit_stage106_odd_exactly_gr_target
+parameter_name: Gamma_5_normalized
+origin_claims:
+  - parameter: Gamma_5_normalized
+    introduced_at_stage: 106
+    introduced_at_line: 56
+    citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 53
+      excerpt: "Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:"
+constraints:
+  - parameter: Gamma_5_normalized
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+      line: 53
+      excerpt: "Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:"
+downstream_dependents: [107]
+provenance_findings:
+  - type: published_target
+    severity: low
+    summary: "The normalized odd coefficient gamma_quad^eff = m_hat0^2 Gamma_5 = 2G/5c^5 is set equal to the external GR/Burke-Thorne target. The chi_Q=1 -> N_Q=1 closure (internal, from 104/105) is what makes the EFFECTIVE coefficient land on this published number; the target value 2G/5c^5 itself is imported, not derived. The notes label it 'exactly the GR/Burke-Thorne target' and the closure is conditional (StatusOpen on actual branch realization), so the match is disclosed honestly -> clean published_target, no derive_vs_fit_mismatch."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md, line: 60, excerpt: "\\frac{2G}{5c^5}" }
+      - { path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py, line: 102, excerpt: "print(\"  The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.\")" }

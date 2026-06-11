@@ -1,0 +1,25 @@
+candidate_id: fit_stage_251_cref
+parameter_name: cref
+origin_claims:
+  - parameter: cref
+    introduced_at_stage: 251
+    introduced_at_line: 181
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 181
+      excerpt: "\\frac{a^5}{27c_s^5}P_{0,-},"
+constraints:
+  - parameter: cref
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 181
+      excerpt: "\\frac{a^5}{27c_s^5}P_{0,-},"
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "cref resolves to c_s, the reference/sound speed in the quintic coefficient Gamma_{5,-} = a^5/(27 c_s^5) * P_{0,-}. It is a purely SYMBOLIC parameter carried from the moving-throat outgoing program (selected mixed quadrupole lane, Stage-029/030); NO numeric value is assigned anywhere in Stage 251 (the script declares it as a free symbol 'c_s'). With no value and no in-stage derivation it is an undetermined upstream constant -- classified free_choice for lack of any value-level constraint here."
+    citations:
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 65, excerpt: "a, cs = sp.symbols(\"a c_s\", positive=True, real=True)" }
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 587, excerpt: "3. the actual selected-mode prefactor `P_{0,-}` and therefore `\\Gamma_{5,-}`," }

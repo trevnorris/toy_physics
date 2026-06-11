@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage128_rf1_fixed_by_geometry__phase_b__r_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -23,9 +23,31 @@ source_evidence:
   line: 45
   role: notes_stage
   excerpt: '- Self-matched D/N derivative source:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_F1
+  introduced_at_stage: 121
+  introduced_at_line: 70
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 70
+    excerpt: \approx 1.77799353547498.
+constraints:
+- parameter: r_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 12
+    excerpt: is already fixed by geometry.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '122'
+- '126'
+- '127'
+- '128'
+- '133'
+- '134'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage128_rf1_fixed_by_geometry__r_f1.yaml

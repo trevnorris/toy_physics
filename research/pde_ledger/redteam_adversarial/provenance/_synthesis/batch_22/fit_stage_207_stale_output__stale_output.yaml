@@ -1,0 +1,12 @@
+candidate_id: fit_stage_207_stale_output
+parameter_name: stale_output
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'stale_output' is not a fitted/posited parameter and no source under notes/ documents any such value. The bundle's only evidence is the Stage 207 paper card Output field and two generic Stage 207 notes lines ('The main outputs are:' and a certified-output table header). This is a meta-candidate flagging a possible stale committed output transcript, not a parameter-value provenance item; there is nothing in the value-genealogy layer to classify. No notes anchor exists for a value, so it is logged as a gap rather than fabricated. (Whether the stage_207 output transcript is actually stale is a re-run/reliability question outside this layer-2 value-provenance scope.)"
+    citations:
+      - { path: paper/stages/stage_207.tex, line: 15, excerpt: "\\stagefield{Output}{Exact primitive Hessian-envelope theorem, sign-adapted primitive drift table, certified primitive ray table, primitive elimination theorem, and primitive winner theorem.}" }
+      - { path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md, line: 299, excerpt: "| Row type | Input data | Certified output |" }

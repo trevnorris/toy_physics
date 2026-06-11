@@ -1,0 +1,19 @@
+candidate_id: fit_stage098_rho_alpha_selected_ratio
+parameter_name: rho_alpha
+origin_claims:
+  - parameter: rho_alpha
+    introduced_at_stage: 96
+    introduced_at_line: 51
+    citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 51
+      excerpt: "`rho_alpha = 4/3`,"
+constraints:
+  - parameter: rho_alpha
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 43
+      excerpt: "`c_geom = 3/4`."
+downstream_dependents: [99, 100, 101, 102, 103, 104, 105, 106]
+provenance_findings: []

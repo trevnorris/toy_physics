@@ -1,0 +1,25 @@
+candidate_id: fit_stage_242_epsilon
+parameter_name: epsilon
+origin_claims:
+  - parameter: epsilon
+    introduced_at_stage: 181
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+      line: 29
+      excerpt: "\\epsilon_W\\!\\left[1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right],"
+constraints:
+  - parameter: epsilon
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+      line: 117
+      excerpt: "\\epsilon\n=\n\\epsilon_W\\left(1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right)."
+downstream_dependents: [244, 245]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon at Stage 242 carries no fixed numeric target; it is the coherent support variable eps = eps_W(1 - (2/11) delta_U/(1+delta_U)) (Stage 242 notes line 117), an exact reduction of the carried coherent local D/N branch in the placement variables (delta_U, eps_W). This is internal_consistency. The defining map (with the 2/11 coefficient) originates upstream at Stage 181 (notes line 29; 'earlier coherent-kernel stages already gave' it). eps is the running coordinate that places the actual branch on the Stage-241 twin-support curve via varrho_phys = (2/3)(1-eps); it is not pinned to one value at 242. Logged for transparency since the scanner candidate has no numeric target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md, line: 162, excerpt: "So the Stage-241 support curve is no longer parametric once the completed PDE returns the coherent support pair \\((\\delta_U,\\epsilon_W)\\)." }
+      - { path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md, line: 18, excerpt: "Earlier coherent-kernel stages already gave the **actual** one-port tracking branch of the first local D/N throat kernel:" }

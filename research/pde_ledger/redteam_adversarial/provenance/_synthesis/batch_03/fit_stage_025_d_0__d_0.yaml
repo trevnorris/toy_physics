@@ -1,0 +1,25 @@
+candidate_id: fit_stage_025_d_0
+parameter_name: D_0
+origin_claims:
+  - parameter: D_0
+    introduced_at_stage: 25
+    introduced_at_line: 77
+    citation:
+      path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+      line: 77
+      excerpt: "`D_0 = K - C^2 / varpi^2 - Q / Delta`."
+constraints:
+  - parameter: D_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+      line: 77
+      excerpt: "`D_0 = K - C^2 / varpi^2 - Q / Delta`."
+downstream_dependents: [26]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The scanner extracted the literal value '0' for D_0, but D_0 is not posited to equal 0 anywhere. The '0' is the RHS of the stability/positivity inequality D_0 > 0 (the admissible-branch gate), not an assigned value. D_0 itself is an internal algebraic definition (the conservative wall operator K - C^2/varpi^2 - Q/Delta) carried from the Stage-023 D_0/N_0 definitions the card cites as inputs. Logged so the ingest does not misread D_0 as a posited-zero free choice."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md, line: 115, excerpt: "`D_0 > 0`." }
+      - { path: paper/stages/stage_025.tex, line: 9, excerpt: "the Stage~023 definitions of \\(D_0\\) and \\(N_0\\)" }

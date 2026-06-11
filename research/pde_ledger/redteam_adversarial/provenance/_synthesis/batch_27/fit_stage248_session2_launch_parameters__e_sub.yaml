@@ -1,0 +1,19 @@
+candidate_id: fit_stage248_session2_launch_parameters
+parameter_name: E_sub
+origin_claims:
+  - parameter: E_sub
+    introduced_at_stage: 248
+    introduced_at_line: 417
+    citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 417
+      excerpt: "E_{\\rm sub}=2.5."
+constraints:
+  - parameter: E_sub
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 234
+      excerpt: "If one wants the reduced trajectory to have energy \\(E_{\\rm sub}\\) at launch radius \\(r_0\\), then"
+downstream_dependents: []
+provenance_findings: []

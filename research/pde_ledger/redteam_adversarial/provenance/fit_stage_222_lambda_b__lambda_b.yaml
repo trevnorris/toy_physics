@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_lambda_b__phase_b__lambda_b.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -103,8 +103,22 @@ source_evidence:
   line: 267
   role: sympy_script
   excerpt: print('P0 increases monotonically with lambda_W, while the upper-wall R_Q,* decreases monotonically.')
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_B
+  introduced_at_stage: 222
+  introduced_at_line: 289
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 289
+    excerpt: (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,K,M)
+constraints:
+- parameter: lambda_B
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 434
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine
+      the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
 graph_context:
   contexts: []
   graph_gaps:
@@ -129,3 +143,21 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_222.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: paper_card_overclaim
+  severity: low
+  summary: lambda_B=0.5 (the BdG-leg overlap coupling) is one of the ILLUSTRATIVE sample couplings posited at line 289-293
+    to evaluate the exact survival formulas on one admissible slice. The notes explicitly flag these as illustrative and not
+    branch-derived (line 434). constraint_kind free_choice (posited sample value). The card itself carries the honest caveat
+    that the actual overlap data must be determined by the real PDE -- so this is properly disclaimed, not a hidden overclaim;
+    recorded for completeness.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 287
+    excerpt: Take the admissible sample branch
+  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 291
+    excerpt: (0.5,\,0.3,\,0.4,\,0.25,\,1.0,\,1.4,\,2.0,\,3.0,\,1.0)
+downstream_dependents:
+- '223'
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_222_lambda_b__lambda_b.yaml

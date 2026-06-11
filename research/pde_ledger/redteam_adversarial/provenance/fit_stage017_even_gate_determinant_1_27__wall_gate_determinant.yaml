@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage017_even_gate_determinant_1_27__phase_b__wall_gate_determinant.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,41 @@ source_evidence:
   line: 146
   role: sympy_script
   excerpt: lines.append(f"  K1_(20,21,22)   = ({sp.sstr(K1_gate_20)}, {sp.sstr(K1_gate_21)}, {sp.sstr(K1_gate_22)})\n")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: wall_gate_determinant
+  introduced_at_stage: 17
+  introduced_at_line: 153
+  citation:
+    path: notes/em_projected/step_15_parent_throat_action_weak_axisym_notes.md
+    line: 153
+    excerpt: checks that the resulting \(2\times 2\) coefficient matrix has determinant
+constraints:
+- parameter: wall_gate_determinant
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_15_parent_throat_action_weak_axisym_notes.md
+    line: 154
+    excerpt: \(1/27\), so only the trivial wall-only slope packet solves both at once. It
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: wall_gate_determinant = 1/27 is the determinant of the 2x2 wall-only even-gate coefficient matrix obtained by specializing
+    the weak-axisymmetric gate system (K_1 = D_21 + D_01/9, H_even = D_41 - (2/3)D_21 - D_01/27) to zero support/mixed slopes.
+    The nonzero determinant 1/27 proves only the trivial wall-only deformation (deltaK = deltaM = 0) closes both even gates
+    -- a linear-obstruction result, not a universal no-go (notes step_15 lines 150-156). It is an EXACT algebraic property
+    of the even-gate coefficient structure, verified by the stage-017 sympy (assert_zero('wall-only even-gate determinant',
+    wall_matrix.det() - 1/27) and a mutated negative control) -> internal_consistency. The notes explicitly disclaim over-interpretation
+    ('not being claimed here as a deeper universal no-go theorem'), so there is no paper_card_overclaim.
+  citations:
+  - path: scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py
+    line: 109
+    excerpt: assert_zero("wall-only even-gate determinant", wall_matrix.det() - sp.Rational(1, 27))
+  - path: notes/em_projected/step_15_parent_throat_action_weak_axisym_notes.md
+    line: 155
+    excerpt: is not being claimed here as a deeper universal no-go theorem detached from the
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage017_even_gate_determinant_1_27__wall_gate_determinant.yaml

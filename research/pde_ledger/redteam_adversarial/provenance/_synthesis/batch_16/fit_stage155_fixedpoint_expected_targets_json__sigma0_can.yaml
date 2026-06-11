@@ -1,0 +1,31 @@
+candidate_id: fit_stage155_fixedpoint_expected_targets_json
+parameter_name: Sigma0_can
+origin_claims:
+  - parameter: Sigma0_can
+    introduced_at_stage: 156
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 31
+      excerpt: "\\approx 4.651033550168867."
+constraints:
+  - parameter: Sigma0_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 23
+      excerpt: "\\mathfrak g_{\\rm fp}(\\Sigma_0)=\\mathfrak g_*"
+downstream_dependents: [156, 157, 158, 163]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Sigma0_can = 4.651033550168867 is the RENORMALIZED canonical gain, the numerically-located root of the compensation-restoration equation g_fp(Sigma_0)=g_* (internal_consistency). It is a STAGE 156 quantity, not Stage 155: it is documented in the Stage 156 notes (line 31) and computed by the Stage 156 solve; Stage 155 only establishes that the OLD frozen traction does NOT compensate and 'requires a retuned traction' (Stage 155 notes:154). The candidate is keyed to Stage 155 because the value lives in the SHARED machine fixture scripts/numerical/stage155_156_fixedpoint_samples.json (Sigma0_can_expected, line 16) used by both stages; the genuine origin/derivation is Stage 156. No notes/ file documents this value under Stage 155."
+    citations:
+      - { path: scripts/numerical/stage155_156_fixedpoint_samples.json, line: 16, excerpt: "\"Sigma0_can_expected\": 4.651033550168867," }
+      - { path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md, line: 154, excerpt: "requires a **retuned traction**, not just the old canonical value." }
+  - type: paper_card_overclaim
+    severity: needs_triage
+    summary: "PRECISION DRIFT: the published appendix gives Sigma_0^{can} approx 4.651033550168876 (part04 line 956), but the notes AND the numerical fixture both give 4.651033550168867 (last 2 digits 67 vs 76). The notes/fixture agree with each other; the appendix's last digits disagree. Low-stakes (sub-1e-13) but a real notes-vs-published mismatch on a load-bearing renormalized constant; companion drifts at Pi_can and T_hat_can (see those candidates)."
+    citations:
+      - { path: paper/appendices/stage_appendix_part04.tex, line: 956, excerpt: "\\Sigma_0^{\\rm can}\\approx4.651033550168876," }
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 31, excerpt: "\\approx 4.651033550168867." }

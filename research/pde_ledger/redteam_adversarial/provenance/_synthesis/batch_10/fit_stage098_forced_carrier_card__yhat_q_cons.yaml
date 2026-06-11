@@ -1,0 +1,24 @@
+candidate_id: fit_stage098_forced_carrier_card
+parameter_name: Yhat_Q_cons
+origin_claims:
+  - parameter: Yhat_Q_cons
+    introduced_at_stage: 96
+    introduced_at_line: 47
+    citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 47
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`."
+constraints:
+  - parameter: Yhat_Q_cons
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+      line: 14
+      excerpt: "On the actual isotropic branch,"
+downstream_dependents: [99, 100]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 098 only carries Yhat_Q_cons (via the derivation-ledger card label); it is not introduced or re-derived in the stage098 notes (which concern the Family-1 support test). Origin cited at the stage096 geometry-lane verdict where the conservative module first closes; the stage098 note merely fixes rho_alpha=4/3 on that branch."
+    citations:
+      - { path: paper/stages/stage_098.tex, line: 13, excerpt: "isolates the forced conservative carrier \\(\\widehat Y_Q^{\\rm cons}=3/4+(1/4)/(1-\\omega^2/\\Omega_Q^2)\\)" }

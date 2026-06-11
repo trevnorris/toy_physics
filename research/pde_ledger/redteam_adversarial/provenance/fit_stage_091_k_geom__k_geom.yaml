@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_091_k_geom__phase_b__k_geom.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -195,9 +195,42 @@ source_evidence:
   line: 65
   role: sympy_script
   excerpt: K0_on_branch = sp.simplify(K0.subs(Kgeom, Kgeom_sol))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_geom
+  introduced_at_stage: 91
+  introduced_at_line: 70
+  citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 70
+    excerpt: '- `K_geom` is the static geometry completion,'
+constraints:
+- parameter: K_geom
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 113
+    excerpt: '`K_geom = 3 K0 / 4`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: Duplicate-target of fit_stage091_K_geom_forced_by_identity. The candidate's listed values ['3','3/4'] correspond
+    to the two equivalent forms K_geom=3*K_pole and K_geom=3*K0/4. Both are FORCED (internal_consistency) by the branch identity
+    K0*K4=4*K2^2, conditional on the one-pole + static-geometry ansatze. Not posited, not externally fit. The conditional
+    nature is carried by the 091 paper card status tag.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 111
+    excerpt: '`K_pole = K0 / 4`,'
+  - path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+    line: 67
+    excerpt: expect_zero("K0 - 4*K_pole on branch", K0_on_branch - 4 * Kpole)
+downstream_dependents:
+- 092
+- 093
+- 094
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage_091_k_geom__k_geom.yaml

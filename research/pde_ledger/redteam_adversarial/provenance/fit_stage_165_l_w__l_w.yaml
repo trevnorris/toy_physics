@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_165_l_w__phase_b__l_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -168,9 +168,37 @@ source_evidence:
   line: 94
   role: sympy_script
   excerpt: print("  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L_W
+  introduced_at_stage: 165
+  introduced_at_line: 67
+  citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 67
+    excerpt: L_W=\frac{\pi a}2\sqrt{\frac{1+\mathfrak r^2}3}.
+constraints:
+- parameter: L_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 73
+    excerpt: \delta\ln L_W=\delta\ln a.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: The D/N co-transport law delta ln L_W = delta ln a is derived at 165 by differentiating the exact D/N mixed-tube
+    selection law at fixed r; the selection law L_W=(pi a/2)sqrt((1+r^2)/3) originates at Stage 116 but 165 restates it without
+    an origin cross-reference.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    line: 65
+    excerpt: The exact D/N mixed-tube selection law is
+downstream_dependents:
+- '166'
+- '167'
+- '168'
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage_165_l_w__l_w.yaml

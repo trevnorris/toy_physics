@@ -1,0 +1,25 @@
+candidate_id: fit_stage_023_n_n
+parameter_name: N_n
+origin_claims:
+  - parameter: N_n
+    introduced_at_stage: 023
+    introduced_at_line: 198
+    citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 198
+      excerpt: "`N_(A,n) = sum_r N_(A,n)^(r)`"
+constraints:
+  - parameter: N_n
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 288
+      excerpt: "`N_(20,n)=N_(21,n)=N_(22,n)=N_n`."
+downstream_dependents: [024]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "N_n (the isotropic outgoing-transfer moment, N_(20,n)=N_(21,n)=N_(22,n)=N_n on the O(3)-invariant branch) is a defined structural object N_(A,n)=sum_r P_(A,r)^2/Delta_(A,r)^2 (and higher orders) built from the reduced Maxwell/mixed port data. It carries no numeric value at stage 023 — its actual value on the true branch is OPEN (it is the N_0 in the open normalization test N_0/(K-B_0-Z_0)). Classified free_choice (open structural moment, no derivation-to-target, no external anchor)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md, line: 182, excerpt: "`N_(A,0)^(r) = [ Omega_(U,A,r)^2 g_(W,A,r) + R_(A,r) g_(U,A,r) ]^2 / Delta_(A,r)^2`." }
+      - { path: paper/stages/stage_023.tex, line: 206, excerpt: "N_{20,n}=N_{21,n}=N_{22,n}=N_n." }

@@ -1,0 +1,30 @@
+candidate_id: fit_stage_236_mu
+parameter_name: mu
+origin_claims:
+  - parameter: mu
+    introduced_at_stage: 236
+    introduced_at_line: 104
+    citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 104
+      excerpt: "\\Delta_\\mu^{(q)}=\\frac{F_*}{1+\\chi_{0,*}}q_{\\rm tr}+q_{\\rm nt}-q_\\eta."
+constraints:
+  - parameter: mu
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 141
+      excerpt: "\\Delta_\\mu^{(q)}=q_{\\rm nt}-q_\\eta."
+downstream_dependents: [237, 238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "mu (mu_W) is NOT a fixed numeric value: it is one axis of the microscopic dependent triple (T_U, K_eta^(eff), mu_W) (card line 9). At Stage 236 its first-order drift is DERIVED as Delta_mu^(q) = F_*/(1+chi_0,*) q_tr + q_nt - q_eta (notes line 104), reducing on the rigid-mouth slice to Delta_mu^(q) = q_nt - q_eta (line 141). The first static gate tests the mu - K_eta difference, cleared by changing only mu_W (line 407). These are EXACT derived relations among the microscopic drift coordinates (internal_consistency). No numeric value for mu is constrained; the candidate keys the microscopic mu drift coordinate. Logged low-severity: mu is a symbolic dependent-plane coordinate, not a fitted scalar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 407, excerpt: "So the first static ceiling is cleared by changing only `\\mu_W` inside the dependent triple." }
+      - { path: scripts/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py, line: 40, excerpt: "Delta_mu_q = F_star * q_tr / (1 + chi0_star) + q_nt - q_eta" }
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage-236 notes path (carried from the mechanical bundle's graph_gaps); downstream enumeration relied on notes/card reading."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 104, excerpt: "\\Delta_\\mu^{(q)}=\\frac{F_*}{1+\\chi_{0,*}}q_{\\rm tr}+q_{\\rm nt}-q_\\eta." }

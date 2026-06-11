@@ -1,0 +1,25 @@
+candidate_id: fit_stage222_primitive_sample_slice
+parameter_name: lam_B
+origin_claims:
+  - parameter: lam_B
+    introduced_at_stage: 222
+    introduced_at_line: 289
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 289
+      excerpt: "(\\lambda_B,\\lambda_U,\\lambda_W,\\lambda_R,\\Omega_U,\\Omega_W,\\varpi,K,M)"
+constraints:
+  - parameter: lam_B
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 434
+      excerpt: "1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level overlap data \\(\\lambda_B,\\lambda_U,\\lambda_W,\\lambda_R\\) on the actual branch."
+downstream_dependents: [223]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "lam_B = 0.5 is one of the ILLUSTRATIVE sample-slice values of the Stage-222 admissible sample branch (tuple posited at notes line 289-293; a=c_s=1 at line 293). The notes (line 7, 434) and the paper card (stage_222.tex line 15: 'the displayed slice is a numerical placement') explicitly mark the slice as illustrative / a numerical placement, not branch-derived and not an external target. constraint_kind free_choice (posited sample value). The exact survival formulas are evaluated ON this slice; only the slice numbers are free. Properly disclaimed by the card's own caveat, so not a hidden overclaim -- recorded for completeness."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 287, excerpt: "Take the admissible sample branch" }
+      - { path: paper/stages/stage_222.tex, line: 15, excerpt: "The pole polynomial and survival gate are exact in the primitive closure; the displayed slice is a numerical placement." }

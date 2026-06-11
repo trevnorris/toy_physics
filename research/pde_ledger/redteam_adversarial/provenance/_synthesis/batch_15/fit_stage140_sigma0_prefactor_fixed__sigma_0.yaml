@@ -1,0 +1,25 @@
+candidate_id: fit_stage140_sigma0_prefactor_fixed
+parameter_name: Sigma_0
+origin_claims:
+  - parameter: Sigma_0
+    introduced_at_stage: 140
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 75
+      excerpt: "\\Sigma_0 = \\frac{20}{9}\\widehat T_m^2."
+constraints:
+  - parameter: Sigma_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 42
+      excerpt: "and the healing-locked shell stiffness"
+downstream_dependents: [141, 142, 146, 152, 153]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Sigma_0 = M_s = (20/9) T_hat_m^2 has its 20/9 prefactor DERIVED at Stage 140: substituting g_s = T_m J_s (Stage 118), the healing-locked shell stiffness K_s = 3 pi a^2 hbar^2/(5 m_psi rho_w ell), J_s = 4 pi a^2 ell/3, and the self-matched Theta_sigma = H_w J_s into the Stage-138 formula Sigma_0 = L g_s^2/(K_s Theta_sigma) collapses to Sigma_0 = 20 L ell^2 rho_w^2 T_m^2/(9 hbar^2 c_sw^2) = (20/9) T_hat_m^2 (notes lines 36-75). This is internal_consistency (algebraic reduction over ledger-internal microscopic inputs). Gap flagged ONLY because two load-bearing inputs are themselves imported with no stage-pinned derivation in the 140 note: the healing-locked K_s (notes line 42, quoted as given) and the same-layer susceptibility closure (a layer-CHOICE that the note admits would change the prefactor: 'If the actual mouth source lives on a materially different layer, the numerical prefactor derived below would change'). So the 20/9 is derived CONDITIONAL on the same-layer ansatz, not unconditionally."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md, line: 55, excerpt: "\\frac{20L\\ell^2\\rho_w^2\\mathcal T_m^2}{9\\hbar^2 c_{s,w}^2}." }
+      - { path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md, line: 34, excerpt: "fitting a new branch-dependent coefficient by hand. If the actual mouth source" }

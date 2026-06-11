@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_114_k_s__phase_b__k_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -79,9 +79,36 @@ source_evidence:
   line: 36
   role: sympy_script
   excerpt: sigma_tilde = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_s
+  introduced_at_stage: 114
+  introduced_at_line: 18
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 18
+    excerpt: K_s & \lambda\\[2pt]
+constraints:
+- parameter: K_s
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 97
+    excerpt: '- one static shell stiffness `K_s`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: K_s (static shell stiffness) is a POSITED structural parameter of the concrete two-channel core model — one of
+    the free core-coupling data {K_s, K_q, lambda, g_s, g_q, kappa_0, gamma_0}. It carries no value at Stage 114; it is a
+    model degree of freedom. Classified free_choice (ansatz). It later enters the Stage-115 coupling-balance surface and sigma_*=g_s^2/(4
+    K_s) but is never itself pinned to a number.
+  citations:
+  - path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+    line: 20
+    excerpt: K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+downstream_dependents:
+- '115'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_114_k_s__k_s.yaml

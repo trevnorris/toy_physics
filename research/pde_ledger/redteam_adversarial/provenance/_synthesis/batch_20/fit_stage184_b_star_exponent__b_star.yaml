@@ -1,0 +1,19 @@
+candidate_id: fit_stage184_b_star_exponent
+parameter_name: B_star
+origin_claims:
+  - parameter: B_star
+    introduced_at_stage: 184
+    introduced_at_line: 218
+    citation:
+      path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+      line: 218
+      excerpt: "B_*:=\\frac{2(1+\\chi_{0,*}+\\delta_{U,*})}{\\delta_{U,*}}."
+constraints:
+  - parameter: B_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+      line: 213
+      excerpt: "\\Sigma_{\\rm nt}=\\Xi_1+\\frac{2(1+\\chi_0+\\delta_U)}{\\delta_U}\\,\\Theta_1."
+downstream_dependents: [185, 188, 189]
+provenance_findings: []

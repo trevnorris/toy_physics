@@ -1,0 +1,31 @@
+candidate_id: fit_stage_232_theta_w_j
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 77
+    introduced_at_line: 104
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 104
+      excerpt: "`Theta_w^(J) := 25 lambda_mu^2 <rho_r>_chi^2`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 115
+      excerpt: "So `Theta_w^(J)` can be used as a very conservative branch floor, while `Theta_w^(chi)` is the natural quadratic-energy matching value."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "This candidate keys the J-weighted wall depth Theta_w^(J)=0.927552032539308 (Jensen lower-envelope: 25*lambda_mu^2*<rho_r>_chi^2). Stage 232 injects it as a hardcoded literal (script line 147); origin is Stage 077 (077 line 104-105), where it is DERIVED from the same explicit Family-1 wall-support profile integrals as the chi variant, as a conservative branch floor. Origin attribution belongs to 077, not 232; internal_consistency (ledger-internal Jensen bound)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 147, excerpt: "\\Theta_w^{(J)}\\approx 0.927552032539308" }
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 147, excerpt: "Theta_w_J = mp.mpf(\"0.927552032539308\")" }
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Stage-232 'Known 5PN Data Injection' framing could be read as importing an external 5PN value; the J-weighted Theta_w is in fact the ledger's own Jensen lower-envelope of the Stage-077 shell-weighted extraction (077 line 109 '<rho_r^2>_chi >= <rho_r>_chi^2'). No external anchor -> internal_consistency. Logged needs_triage so the injection language is confirmed non-external."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 109, excerpt: "`<rho_r^2>_chi >= <rho_r>_chi^2,`" }
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 32, excerpt: "## 1. What is already numerically known from the `5`PN stack" }

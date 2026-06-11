@@ -1,0 +1,26 @@
+candidate_id: fit_stage194_canonical_even_moment_ratios
+parameter_name: L2_over_L0_1_9
+origin_claims:
+  - parameter: L2_over_L0_1_9
+    introduced_at_stage: 194
+    introduced_at_line: 260
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 260
+      excerpt: "-\\frac{L_2}{L_0}=\\frac19,"
+constraints:
+  - parameter: L2_over_L0_1_9
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 252
+      excerpt: "Demand that the deformed branch preserve the canonical even fingerprint"
+downstream_dependents: [195]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Two distinct objects share this candidate. (1) The CORE ratio -L_2/L_0=1/9 (194 line 260) is the canonical even fingerprint coefficient, DERIVED from the spherical-Hankel l=2 expansion Y_2^out=1+z^2/9+... (194 line 139): internal_consistency. (2) But the bundle's notes evidence actually points at the canonical INVARIANT MOMENT TUPLE K_bar_0=54 G c_s^5/(5 a^5 c^5), K_bar_2=6 G c_s^3/(5 a^3 c^5), K_bar_4=8 G c_s/(15 a c^5), Gamma_bar_5=2G/(5c^5) (194 lines 309-315). Those K_bar moments carry Newton's G and c and are the EXTERNAL GR/PN normalization targets the canonical branch returns — a published_target, returned as a 'corollary' (194 line 318) once chi_Q=1 and m_0->1 are carried. The even-moment RATIOS among them (K_2/K_0, K_4/K_0) are pure geometric ratios in c_s/a (G,c cancel) and so are internal_consistency, but the absolute scale K_bar_0 is the imported external target. Recorded constraint_kind=internal_consistency for the ratio that names the candidate (1/9), with this finding flagging that the bundle's cited K_bar tuple embeds the external 54/5 GR normalization (same family as P0_target)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 309, excerpt: "\\overline K_0=\\frac{54Gc_s^5}{5a^5c^5}," }
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 318, excerpt: "This is not a new theorem input in Stage 194. It is the immediate reduced corollary of:" }
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 139, excerpt: "1+\\frac{z^2}{9}" }

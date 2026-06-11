@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_168_s_can__phase_b__s_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -72,9 +72,36 @@ source_evidence:
   line: 88
   role: sympy_script
   excerpt: '- Sigma0 * S_can * eps_perp / s'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: S_can
+  introduced_at_stage: 156
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 69
+    excerpt: \approx 0.6703621156734617,
+constraints:
+- parameter: S_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 53
+    excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 168 carries S_can as a symbolic mouth-bias coefficient (script line 83) and in the delta Pi transport with no origin
+    pointer; the value is the self-consistent mixed response solved at Stage 156. Read-back without origin cross-reference.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    line: 228
+    excerpt: \left(1-\frac14\mathcal S_{\rm can}\right)\delta\Sigma_0
+  - path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+    line: 83
+    excerpt: Sigma0, S_can, dSigma0, dS = sp.symbols("Sigma0 S_can dSigma0 dS", real=True)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:42Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage_168_s_can__s_can.yaml

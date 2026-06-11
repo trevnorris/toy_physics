@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_207_q_i__phase_b__q_i.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -32,8 +32,21 @@ source_evidence:
   role: notes_stage
   excerpt: Those data determine the entire primitive certified ray table, the primitive eliminations, and—when brackets separate—the
     exact primitive winner.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Q_i
+  introduced_at_stage: 207
+  introduced_at_line: 367
+  citation:
+    path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    line: 367
+    excerpt: \mathcal Q_i:=(\tau_{i,\rm hi},W_i)
+constraints:
+- parameter: Q_i
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    line: 375
+    excerpt: 3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
 graph_context:
   contexts: []
   graph_gaps:
@@ -58,3 +71,21 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_207.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: needs_triage
+  summary: Q_i := (tau_{i,hi}, W_i) is the Stage 206 local priority pair used as a lexicographic tie-break sort key in the
+    certified primitive ray ranking (notes lines 364-375). It is a DERIVED ranking object built from the certified bracket
+    upper endpoint tau_{i,hi} and width W_i = tau_{i,hi} - tau_{i,lo}, both computed from local data (H_0, k_i) and the curvature
+    envelope; it is not a fitted/posited value -> constraint_kind internal_consistency. The provenance scanner logged a graph_gap
+    (no atlas node) for the Stage 207 source path.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    line: 268
+    excerpt: \boxed{W_i:=\tau_{i,\rm hi}-\tau_{i,\rm lo}.}
+  - path: redteam_adversarial/provenance/fit_stage_207_q_i__q_i.yaml
+    line: 39
+    excerpt: 'graph_gap: true'
+downstream_dependents:
+- '208'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_207_q_i__q_i.yaml

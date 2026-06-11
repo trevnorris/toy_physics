@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_032_i_2__phase_b__i_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,40 @@ source_evidence:
   line: 137
   role: sympy_script
   excerpt: Sigma_target = sp.simplify(Xi * I2 + alpha * (v * v.T))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: I_2
+  introduced_at_stage: 26
+  introduced_at_line: 146
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 146
+    excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
+constraints:
+- parameter: I_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 146
+    excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: I_2 is not a fitted/posited ledger value; it is the 2x2 identity matrix (sp.eye(2) in the audit script) appearing
+    in the Schur-complement wall self-energy decomposition Sigma_wall = Xi I_2 + alpha v v^T. It carries no parameter value
+    to classify as fit-vs-derive; recorded as internal_consistency on the structural identity but flagged as a scanner non-parameter
+    (a matrix constant, not a tunable scalar).
+  citations:
+  - path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+    line: 118
+    excerpt: I2 = sp.eye(2)
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 146
+    excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
+downstream_dependents:
+- '027'
+- '031'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_032_i_2__i_2.yaml

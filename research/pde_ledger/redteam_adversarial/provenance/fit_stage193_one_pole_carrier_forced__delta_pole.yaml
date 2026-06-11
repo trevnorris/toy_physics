@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage193_one_pole_carrier_forced__phase_b__delta_pole.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,40 @@ source_evidence:
   line: 114
   role: sympy_script
   excerpt: Y_expected = sp.expand(1 + nu2_common * omega**2 + nu4_common.subs(D4, D4_onepole) * omega**4)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_pole
+  introduced_at_stage: 191
+  introduced_at_line: 180
+  citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 180
+    excerpt: \boxed{\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}.}
+constraints:
+- parameter: Delta_pole
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 161
+    excerpt: \Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}=0.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Delta_pole (the one-pole conservative defect) is DEFINED at stage 191 line 180 (Delta_pole:=nu_4_bar - 4 nu_2_bar^2).
+    Stage 193 RESTATES it and imposes the one-pole surface Delta_pole=0 (line 161), which the notes derive to be exactly equivalent
+    to D_0 D_4 + 3 D_2^2 = 0 (line 183) — a pure internal-consistency condition among the ledger's own conservative moments.
+    So the value Delta_pole=0 is FORCED by requiring a one-pole conservative carrier, not posited and not externally fit.
+    Origin 191; the 'forced' imposition is at 193.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 183
+    excerpt: D_0D_4+3D_2^2=0.
+  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 180
+    excerpt: \boxed{\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}.}
+downstream_dependents:
+- '194'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage193_one_pole_carrier_forced__delta_pole.yaml

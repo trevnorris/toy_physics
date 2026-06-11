@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_178_d_from_series__phase_b__d_from_series.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,41 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: expect_zero("d_r formula", d_from_series - d_expected)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: d_from_series
+  introduced_at_stage: 178
+  introduced_at_line: 79
+  citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 79
+    excerpt: \delta\ln \Delta_{A,r}=\epsilon\lambda_A\,\mathfrak d_r.
+constraints:
+- parameter: d_from_series
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 238
+    excerpt: Combining the last two formulas with \(\nu_r=2(\mathfrak p_r-\mathfrak d_r)\) gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: '''d_from_series'' is an AUDIT-SCRIPT variable, not a distinct ledger parameter: d_from_series = (series(D_A/Delta,
+    eps).removeO() - 1)/(eps lam) (sympy_audit line 93), the first-order detuning slope extracted by independent Taylor expansion
+    and then checked equal to the separately-written closed form d_expected (sympy_audit line 104). It is the dual-derivation
+    (series-vs-closed-form) consistency check for the physical port slope d_r defined in the notes at line 79. Internal_consistency:
+    a self-consistency extraction, no posited value and no external target. Low severity (the scanner target is a verification
+    variable; the underlying value-genealogy is that of d_r).'
+  citations:
+  - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+    line: 93
+    excerpt: d_from_series = sp.simplify((sp.series(D_A / Delta, eps, 0, 2).removeO() - 1) / (eps * lam))
+  - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+    line: 104
+    excerpt: expect_zero("d_r formula", d_from_series - d_expected)
+downstream_dependents:
+- '179'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_178_d_from_series__d_from_series.yaml

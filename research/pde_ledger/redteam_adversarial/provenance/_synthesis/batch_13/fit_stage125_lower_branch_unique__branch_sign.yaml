@@ -1,0 +1,25 @@
+candidate_id: fit_stage125_lower_branch_unique
+parameter_name: branch_sign
+origin_claims:
+  - parameter: branch_sign
+    introduced_at_stage: 125
+    introduced_at_line: 76
+    citation:
+      path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+      line: 76
+      excerpt: "0<\\mathfrak g_-^{F1}<1\n\\quad\\Rightarrow\\quad\n\\text{within this positive localized-source setup, the lower compensated branch is the unique physically admissible compensated Family-1 branch.}"
+constraints:
+  - parameter: branch_sign
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+      line: 52
+      excerpt: "0\\le \\mathfrak g[\\sigma]\\le 1."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The lower (-) compensation branch is SELECTED, not posited: Stage 125 proves the positivity theorem 0 <= g[sigma] <= 1 (notes line 52) for any nonnegative normalized localized source profile (mouth-bias = first cosine moment, lines 32-41), since 0 <= cos(pi z/2L) <= 1. Because g_+^F1 ~ 2.798 > 1 it is ruled out, while 0 < g_-^F1 ~ 0.758 < 1 is admissible, so the lower branch is the unique candidate (lines 67-79). The selection is forced by a genuine constraint (source positivity + the internal g_pm^F1 values), so internal_consistency. CAVEAT: this is a selection within the localized-positive-source MODEL class (an assumed setup, notes lines 28-30); the branch SIGN selection itself is a derivation. No external published target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md, line: 57, excerpt: "This immediately selects the physically admissible compensation branch." }
+      - { path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md, line: 68, excerpt: "\\mathfrak g_+^{F1}>1\n\\quad\\Rightarrow\\quad\n\\text{the upper compensated branch is impossible for any positive localized source law.}" }

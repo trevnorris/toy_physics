@@ -1,0 +1,24 @@
+candidate_id: fit_stage_253_k_turn
+parameter_name: K_turn
+origin_claims:
+  - parameter: K_turn
+    introduced_at_stage: 253
+    introduced_at_line: 403
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 403
+      excerpt: "\\boxed{\\mathcal K_{\\rm turn}\\approx 2.73855812,}"
+constraints:
+  - parameter: K_turn
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 956
+      excerpt: "`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only"
+downstream_dependents: []
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "K_turn=2.73855812 is inserted as the Session-V force-matching benchmark (notes:401). Its symbolic definition K_turn=lambda_ref^2|V_red'(r_turn)|/r_turn is exact, but the numeric value is a benchmark-only carried input, not derived in-stage and not matched to an external published constant."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 401, excerpt: "If one inserts the Session-V force-matching benchmark" }

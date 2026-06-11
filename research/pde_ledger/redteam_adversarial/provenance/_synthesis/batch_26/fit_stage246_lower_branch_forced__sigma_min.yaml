@@ -1,0 +1,25 @@
+candidate_id: fit_stage246_lower_branch_forced
+parameter_name: sigma_min
+origin_claims:
+  - parameter: sigma_min
+    introduced_at_stage: 246
+    introduced_at_line: 202
+    citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 202
+      excerpt: "\\sigma_{\\min}(a,b)=\n\\begin{cases}\n1+b-|a|, & b\\le 0\\ \\text{or}\\ |a|\\ge 4b,"
+constraints:
+  - parameter: sigma_min
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 199
+      excerpt: "Hence the exact minimum is"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "sigma_min is NOT a posited numeric constant. It is the DERIVED exact minimum of the compensated two-mode source sigma(y) = 1 - b + a y + 2 b y^2 over y in [-1,1] (notes line 199-208), a piecewise closed form from boundary/vertex analysis. On the Session-I orientation (a_0>0, b_0<0) it reduces to sigma_min(r) = 1 - (a_0 - b_0) s(r) (notes line 452), giving the sign-change threshold. The candidate name 'lower_branch_forced' refers to the carried Family-1 quarter-ratio theorem that had forced the LOWER compensated branch g_- as the only admissible POSITIVE candidate (notes line 387); the compensated family keeps that quarter-ratio surface (R=1/4) but no longer enforces positivity, so sigma_min can go negative. This is internal_consistency (a derived extremum / sign-change test). The session readback sigma_min(r_eval) ~ -0.0898 (notes line 523) just evaluates it at the imported sample point. Logged for transparency since sigma_min is a derived function, not a single inserted value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 452, excerpt: "\\sigma_{\\min}(r)=1+b(r)-a(r)=1-(a_0-b_0)s(r)." }
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 387, excerpt: "The positive-source theorem had forced the lower branch as the only admissible positive candidate." }

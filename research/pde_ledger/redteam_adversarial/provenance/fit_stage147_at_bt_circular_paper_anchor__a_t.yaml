@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage147_at_bt_circular_paper_anchor__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -151,9 +151,55 @@ source_evidence:
   line: 124
   role: sympy_script
   excerpt: '# A_T*g_* + B_T*S_* != 0, so a missing-centering bug now fails here.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 67
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 67
+    excerpt: A_T \approx -4.27263956256927,
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 50
+    excerpt: -\frac{9}{40\widehat T_{m,*}}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'ADVERSARIAL ''circular paper anchor'' FLAG EVALUATED AND REFUTED. Concern: the audit asserts A_T equals the paper
+    literal -4.27263956256927 (script line 56), which would be circular if the only source of A_T were that literal. It is
+    NOT circular: A_T is built entirely from canonical-branch quantities -- the closed form A_T = -(9/(40 T_hat_m,*))[1/(g''_*(1-S_*/4))
+    + Pi_* S''_*/(4 g''_*(1-S_*/4)^2)] (notes lines 48-56), with every input (Pi_*, g''_*, S_*, S''_*, T_hat_m,*) computed
+    from first principles (Pi_* via nsolve of g_Pi=g_-^{F1}, derivatives via sp.diff). The script then provides a SECOND,
+    fully independent derivation: autodiff A_T = -(dT_m/dPi)/(dg/dPi) at Pi_* directly from T_m(Pi)=sqrt((9/20)(Pi/(1-S/4)))
+    and g_Pi (script lines 66-80), asserting agreement with the closed form to 1e-20 -- this regenerates the (1-S/4)^2 and
+    S'' factors automatically, so the literal cannot be the source. Conclusion: internal_consistency; the candidate-id''s
+    ''circular paper anchor'' does NOT stand. (Same internal-appendix labeling caveat as fit_stage147_AT_BT_paper_anchor:
+    the appendix value is the project''s own derived constant, not an external published target.)'
+  citations:
+  - path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+    line: 78
+    excerpt: assert abs(AT_autodiff - AT_30) < sp.Float("1e-20", 30), \
+  - path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+    line: 56
+    excerpt: assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
+downstream_dependents:
+- '148'
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage147_at_bt_circular_paper_anchor__a_t.yaml

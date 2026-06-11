@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_119_mathfrak__phase_b__mathfrak.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -116,8 +116,21 @@ source_evidence:
   line: 168
   role: notes_stage
   excerpt: \mathfrak g=\mathfrak r\pm \frac12\sqrt{1+\mathfrak r^2}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathfrak
+  introduced_at_stage: 119
+  introduced_at_line: 11
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 11
+    excerpt: Define the two dimensionless parent ratios
+constraints:
+- parameter: mathfrak
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 52
+    excerpt: Once \(\mathfrak r\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly.
 graph_context:
   contexts: []
   graph_gaps:
@@ -142,3 +155,31 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_119.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: 'The scanner''s parameter ''mathfrak'' conflates the TWO dimensionless parent ratios r := lambda/sqrt(K_s K_q)
+    and g := g_q sqrt(K_s)/(g_s sqrt(K_q)) defined together at Stage 119 (notes lines 13/15). Their constraint kinds DIFFER:
+    at Stage 119, g is FORCED by the balance law (internal_consistency, classified above), while r is at this stage still
+    a FREE control to be ''chosen'' (''choose the normalized mixed background flow r'', line 161) — r only becomes fixed downstream
+    at Stage 121 via the geometric L_W=L identification, which itself rests on the carried 37/20 aspect-ratio freeze (free_choice
+    upstream). Recorded as ambiguous because a single constraint_kind cannot cover both members; the dominant/load-bearing
+    classification for the relation g(r) at this stage is internal_consistency.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 161
+    excerpt: 1. choose the normalized mixed background flow \(\mathfrak r\),
+  - path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 13
+    excerpt: \mathfrak r := \frac{\lambda}{\sqrt{K_sK_q}},
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 97
+    excerpt: '- before Stage 121, the normalized hybridization \(\mathfrak r\) was free;'
+downstream_dependents:
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage_119_mathfrak__mathfrak.yaml

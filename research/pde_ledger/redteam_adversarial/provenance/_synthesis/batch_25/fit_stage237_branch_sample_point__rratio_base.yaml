@@ -1,0 +1,18 @@
+candidate_id: fit_stage237_branch_sample_point
+parameter_name: Rratio_base
+origin_claims: []
+constraints:
+  - parameter: Rratio_base
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 108
+      excerpt: "\\frac{1-\\epsilon_\\eta}{1-\\epsilon_{\\eta,\\rm ref}}."
+downstream_dependents: [238]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Rratio_base = 7/6 is a SCRIPT-ONLY arbitrary numerical sample value (script line 18-19: 'elif Rratio in name: base[sym] = sp.Rational(7,6)'), one of two arbitrary substitution points in the 'samples' list used to numerically verify symbolic identities -- NOT a physically constrained or derived value. The underlying symbol Rratio is the static-blind transfer ratio Rratio = (1-epsilon_eta)/(1-epsilon_{eta,ref}) (notes line 108, a DERIVED relation), but the specific BASE value 7/6 has NO notes/ documentation -- it does not appear in the Stage-237 notes at all (the notes treat Rratio symbolically). Per the binding rule, no notes/ source assigns the value 7/6; it is a free verification-sample choice -> free_choice with a documentation gap on the specific base value. evidence_citation points to the notes definition of the Rratio symbol (the closest notes anchor); the 7/6 base itself is undocumented in notes."
+    citations:
+      - { path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py, line: 19, excerpt: "base[sym] = sp.Rational(7, 6)" }
+      - { path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py, line: 30, excerpt: "samples.append(base)" }

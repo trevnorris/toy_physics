@@ -1,0 +1,24 @@
+candidate_id: fit_stage047_R_target_zeta_invariance
+parameter_name: R_target
+origin_claims:
+  - parameter: R_target
+    introduced_at_stage: 47
+    introduced_at_line: 37
+    citation:
+      path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+      line: 37
+      excerpt: "`R_target = Lambda (1 - eps_eta) (1 - eps)^2 / [ Z_W (1 + chi_0)^2 ].`"
+constraints:
+  - parameter: R_target
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+      line: 191
+      excerpt: "So `R_target` is exactly independent of `zeta`."
+downstream_dependents: [48, 51]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "This candidate covers only the zeta-invariance structural property (internal_consistency), which the Stage-047 notes derive. The absolute VALUE/locus of R_target as the normalization-demand ratio originates upstream (Stage 035/038 product law; a separate bundle fit_stage_035_r_target exists). Note also R_target here embeds the radiative-demand scale Lambda = 27 pi^2 G c_s^5 K_W^eff/(20 a^5 c^5 mu_W) (notes line 108), which carries external physical constants; the constant 27 pi^2/20 is an external transfer/PN coefficient flagged separately downstream (Stage 181). Within Stage 047 only the zeta-independence is asserted/derived."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md, line: 108, excerpt: "`Lambda  := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`" }

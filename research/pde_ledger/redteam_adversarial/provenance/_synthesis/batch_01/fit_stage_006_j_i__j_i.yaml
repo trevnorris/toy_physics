@@ -1,0 +1,25 @@
+candidate_id: fit_stage_006_j_i
+parameter_name: J_i
+origin_claims:
+  - parameter: J_i
+    introduced_at_stage: 6
+    introduced_at_line: 68
+    citation:
+      path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+      line: 68
+      excerpt: "\\mu_0J_{\\rm proj}."
+constraints:
+  - parameter: J_i
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_03_projected_maxwell_vector_notes.md
+      line: 109
+      excerpt: "\\(\\rho_{\\rm proj},J_{\\rm proj}\\), and verifies"
+downstream_dependents: [8]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "J_i (the spatial components of the projected source current J_proj) is a SYMBOLIC derived quantity, not a fitted/posited numeric value: the mechanical bundle has an empty source_evidence list. J_proj is obtained by direct symbolic projection of the explicit bulk potential in the stage-006 vector audit and appears in the projected Ampere law (notes step_03 line 68). There is no scalar ledger value to classify; the candidate has no numeric target. Classified internal_consistency on the basis that J_proj is a projection-derived field (the notes show it 'verified by direct symbolic projection'), but flagged as a gap because the scanner attached no value and no per-stage notes/ prose isolates a 'J_i' value."
+    citations:
+      - { path: notes/em_projected/step_03_projected_maxwell_vector_notes.md, line: 118, excerpt: "=\\mu_0J_{\\rm proj}" }
+      - { path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py, line: 163, excerpt: "print(\"  curl H - partial_t D + Leak_vec = mu0 J_proj\")" }

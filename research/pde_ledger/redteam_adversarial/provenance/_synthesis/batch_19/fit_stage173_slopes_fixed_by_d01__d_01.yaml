@@ -1,0 +1,29 @@
+candidate_id: fit_stage173_slopes_fixed_by_d01
+parameter_name: D_01
+origin_claims:
+  - parameter: D_01
+    introduced_at_stage: 173
+    introduced_at_line: 27
+    citation:
+      path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+      line: 27
+      excerpt: "D_{A,0}=D_0+\\epsilon\\,\\lambda_A D_{01}+O(\\epsilon^2),"
+constraints:
+  - parameter: D_01
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+      line: 226
+      excerpt: "So on the even-preserving branch, all three conservative grouped operator slopes are fixed by a single static slope \\(D_{01}\\):"
+downstream_dependents: [177]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "D_01 is NOT assigned a numeric value: it is the free first-order expansion amplitude of the actual weak-axisymmetric static operator slope (D_{A,0} = D_0 + eps lambda_A D_01, notes line 27), left to be computed from the real moving-throat branch downstream (notes line 446: 'compute the weak-axisymmetric static operator slope D_{01}/D_0 ... on the actual moving-throat branch'). Classified free_choice because it enters as an unconstrained physical input, not an ansatz number and not a back-solve. The DERIVED content of this candidate is the even-preserving slope LOCKING D_21 = -D_01/9 and D_41 = -D_01/27 (notes lines 215, 222), which is internal_consistency (forced by u_2^(1)=0, i.e. preservation of the 1/9 canonical fingerprint). No external target anywhere."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+        line: 215
+        excerpt: "D_{21}=-\\frac{D_{01}}{9}."
+      - path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+        line: 94
+        excerpt: "expect_zero(\"D21 + D01/9\", u21_zero_D21 + D01/9)"

@@ -1,0 +1,25 @@
+candidate_id: fit_stage119_one_parameter_family_LW_fixed
+parameter_name: L_W
+origin_claims:
+  - parameter: L_W
+    introduced_at_stage: 116
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+      line: 46
+      excerpt: "So the auxiliary mixed-tube length is fixed to"
+constraints:
+  - parameter: L_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 162
+      excerpt: "2. then the D/N mixed-tube length is fixed by"
+downstream_dependents: [120, 121, 122, 123, 124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 119 re-expresses L_W in the normalized parent ratio as L_W=(pi a/2)sqrt((1+r^2)/3) (notes line 164, using r_c=r^2), carrying the value originated at Stage 116. Within the one-parameter family, L_W is FIXED by the choice of r (internal_consistency relation), but r itself is still free at Stage 119 — so the NUMERICAL value of L_W is not yet pinned here. Origin remains Stage 116; relation is internal_consistency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 64, excerpt: "r_c=\\mathfrak r^2." }
+      - { path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md, line: 164, excerpt: "L_W=\\frac{\\pi a}{2}\\sqrt{\\frac{1+\\mathfrak r^2}{3}}," }

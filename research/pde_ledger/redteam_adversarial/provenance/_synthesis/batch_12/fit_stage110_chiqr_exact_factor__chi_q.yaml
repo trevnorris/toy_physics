@@ -1,0 +1,24 @@
+candidate_id: fit_stage110_chiQR_exact_factor
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 110
+    introduced_at_line: 55
+    citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 55
+      excerpt: "\\chi_Q^{\\rm R}=rac{3}{3-\\rho_R}."
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 52
+      excerpt: "the raw Robin outlet carries the exact normalization factor"
+downstream_dependents: [111, 112, 113]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "NOT a fit. chi_Q^R=3/(3-rho_R) is the exact outgoing-normalization factor algebraically derived from the posited Robin deformation Lambda_2^R=Lambda_2^out+rho_R, measured relative to the ledger-internal canonical fingerprint. Inputs (Lambda_2^out, the canonical fingerprint) are all ledger-internal; no external published number is targeted. Classified internal_consistency. Recorded only to confirm the candidate is genuinely derived (the audit's expected positive control), not back-solved to an external target."
+    citations:
+      - { path: scripts/moving_throat_pde_stage110_robin_outlet_model_sympy_audit.py, line: 29, excerpt: "assert sp.simplify(chi_R - 3/(3 - rho)) == 0" }

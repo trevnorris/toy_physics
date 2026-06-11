@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_eq_compact_l2_fingerprint__phase_b__eq_compact_l2_fingerprint.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -106,8 +106,21 @@ source_evidence:
   line: 372
   role: sympy_script
   excerpt: print("  • the compact outgoing l=2 branch has the normalized fingerprint")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: EQ_COMPACT_L2_FINGERPRINT
+  introduced_at_stage: 17
+  introduced_at_line: 219
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 219
+    excerpt: '`= 1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5) + O(ω^6)`.'
+constraints:
+- parameter: EQ_COMPACT_L2_FINGERPRINT
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 214
+    excerpt: The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution.
 graph_context:
   contexts:
   - source: paper/stages/stage_021.tex
@@ -315,4 +328,22 @@ graph_context:
       - moving_throat_pde_stage021_reduced_one_port_normal_form.md
       - moving_throat_pde_program_compact.md
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: graph_gap
+  severity: low
+  summary: The atlas node EQ_COMPACT_L2_FINGERPRINT lists legacy_sources notes/moving_throat_pde_program_compact.md and pde_audit_full.md
+    that do not exist in this checkout; the live notes/ source for the fingerprint is the per-stage note moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    (section 6, line 219). The fingerprint Yhat_2^out = 1 + a^2 omega^2/(9 c_s^2) + 4 a^4 omega^4/(81 c_s^4) + i a^5 omega^5/(27
+    c_s^5) is DERIVED from the outgoing spherical Hankel solution (internal_consistency), not fitted to an external number.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_021_eq_compact_l2_fingerprint__eq_compact_l2_fingerprint.yaml
+    line: 1
+    excerpt: 'legacy_sources: moving_throat_pde_stage021_reduced_one_port_normal_form.md / pde_audit_full.md'
+  - path: paper/stages/stage_021.tex
+    line: 64
+    excerpt: \widehat Y_2^{\rm out}(\omega)
+downstream_dependents:
+- 018
+- 019
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_021_eq_compact_l2_fingerprint__eq_compact_l2_fingerprint.yaml

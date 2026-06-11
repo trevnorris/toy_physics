@@ -1,0 +1,19 @@
+candidate_id: fit_stage122_g_nat_unity_branch_ansatz
+parameter_name: g_nat
+origin_claims:
+  - parameter: g_nat
+    introduced_at_stage: 122
+    introduced_at_line: 26
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 26
+      excerpt: "\\mathfrak g_{\\rm nat}=1."
+constraints:
+  - parameter: g_nat
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 30
+      excerpt: "This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized loading” core closure."
+downstream_dependents: [123, 124, 125]
+provenance_findings: []

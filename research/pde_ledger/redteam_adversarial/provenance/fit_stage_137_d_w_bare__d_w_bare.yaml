@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_137_d_w_bare__phase_b__d_w_bare.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,44 @@ source_evidence:
   line: 64
   role: sympy_script
   excerpt: '"reduced core susceptibility does not match the M_core Schur source on D_W_bare(z)"'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_W_bare
+  introduced_at_stage: 114
+  introduced_at_line: 29
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 29
+    excerpt: D_W^{\rm bare}(z)=1-\kappa_0 z^2-i\gamma_0 z^5+O(z^6).
+constraints:
+- parameter: D_W_bare
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 36
+    excerpt: 'This is the simplest concrete isotropic core model that contains:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'D_W_bare is a SCRIPT-only symbol at Stage 137: the 137 note never writes ''D_W_bare''; it appears only in the
+    audit (D_W_bare = 1 - kappa0*z**2 - sp.I*gamma0*z**5, used as the bare denominator for the matrix-route cross-check of
+    the Schur source). Its documented origin is Stage 114, where D_W^bare(z) = 1 - kappa_0 z^2 - i gamma_0 z^5 + O(z^6) is
+    POSITED as the bare mixed denominator of ''the simplest concrete isotropic core model'' (notes lines 27-39). It is a symbolic
+    structural object (its low-frequency pair kappa_0, gamma_0 are posited primitives, notes line 101), not a fitted number;
+    classified free_choice. No D_W_bare numeric value is fitted at 137 — the static point D_W_bare(0)=1 is a definitional
+    normalization, not a fit.'
+  citations:
+  - path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+    line: 58
+    excerpt: D_W_bare = 1 - kappa0*z_var**2 - sp.I*gamma0*z_var**5
+  - path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 101
+    excerpt: plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.
+downstream_dependents:
+- '115'
+- '116'
+- '137'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_137_d_w_bare__d_w_bare.yaml

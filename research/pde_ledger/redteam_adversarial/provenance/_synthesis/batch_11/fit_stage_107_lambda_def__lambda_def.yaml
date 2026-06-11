@@ -1,0 +1,25 @@
+candidate_id: fit_stage_107_lambda_def
+parameter_name: Lambda_def
+origin_claims:
+  - parameter: Lambda_def
+    introduced_at_stage: 107
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 31
+      excerpt: "S\\,\\Lambda_2^{\\rm out}(\\beta z)"
+constraints:
+  - parameter: Lambda_def
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 26
+      excerpt: "Take the first explicit isotropic moving-throat deformation family"
+downstream_dependents: []
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Lambda_def = S Lambda_2^out(beta z) + Sigma_0 + Sigma_2 z^2 + Sigma_4 z^4 + i Sigma_5 z^5 is a POSITED deformation ansatz family (free_choice: 'Take the first explicit isotropic moving-throat deformation family'; its parameters S, beta, Sigma_i are free deformation data, not derived or externally anchored). Its even-sector coefficients Sigma_2, Sigma_4 are subsequently CONSTRAINED by internal-consistency canonical-even matching (notes line 88-90, demanding the deformed branch preserve z^2/9 and 4z^4/81). So the operator is a free-choice ansatz whose even data is then forced internally; the odd outlet Sigma_5/beta remain free and parametrize chi_Q != 1. Classified at the operator level as free_choice (the dominant character of the introduced object)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md, line: 82, excerpt: "Demand that the deformed branch preserve the canonical conservative even fingerprint," }
+      - { path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md, line: 124, excerpt: "Overall scale `S` is not itself an independent obstruction; it only enters through the ratios above." }

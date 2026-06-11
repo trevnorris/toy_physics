@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_mhat0_natural_source_map__phase_b__mhat_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -67,9 +67,46 @@ source_evidence:
   line: 199
   role: sympy_script
   excerpt: print("4. On the natural point-particle source-map branch mhat_0 -> 1, the conservative")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mhat_0
+  introduced_at_stage: 195
+  introduced_at_line: 205
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 205
+    excerpt: m_{\hat 0}=1+O(a^2/r^2).
+constraints:
+- parameter: mhat_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 202
+    excerpt: The carried natural orbital/worldtube STF source-map branch is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: m_hat_0 is the natural point-particle source-map factor. At stage 195 it is declared as the 'carried natural orbital/worldtube
+    STF source-map branch' m_hat_0=1+O(a^2/r^2) (notes lines 202-205), and reduced to m_hat_0->1 in the strict point-particle
+    limit (line 210). The value m_hat_0=1 is POSITED as the natural/point-particle limit (a modeling choice that the source
+    map is trivial at leading order), not derived from a ledger-internal solve and not back-solved to an external number —
+    hence free_choice (carried convention/limit). Its real upstream origin is the '2.5PN package' / natural source-map branch
+    isolated before stage 195 (line 5 status), which is not pinned to a specific stage by the 195 notes; flagged for triage
+    to locate the upstream source-map derivation. NB second candidate fit_stage195_natural_source_map_mhat0 targets the same
+    parameter.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 210
+    excerpt: ' m_{\hat 0}\to 1.'
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 5
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+      `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+      natural point-particle source-map branch already isolated by the 2.5PN package.**'
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage195_mhat0_natural_source_map__mhat_0.yaml

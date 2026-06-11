@@ -1,0 +1,19 @@
+candidate_id: fit_stage224_kill_test_budgets_slice_anchored
+parameter_name: P_crit_both_10
+origin_claims:
+  - parameter: P_crit_both_10
+    introduced_at_stage: 223
+    introduced_at_line: 373
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 373
+      excerpt: "  \\lesssim 0.00283133168555932,"
+constraints:
+  - parameter: P_crit_both_10
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 115
+      excerpt: "These are still transported primitive-family ceilings, not final full-PDE theorems. But they are the first exact dynamic windows available, so they are the right actual-branch kill test to carry forward."
+downstream_dependents: [225, 226, 227]
+provenance_findings: []

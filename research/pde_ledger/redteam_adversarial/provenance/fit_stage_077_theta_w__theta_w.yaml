@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_077_theta_w__phase_b__theta_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -161,8 +161,22 @@ source_evidence:
   line: 114
   role: sympy_script
   excerpt: raise AssertionError("Expected Theta_w^(chi) >= Theta_w^(J) > 0")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Theta_w
+  introduced_at_stage: 63
+  introduced_at_line: 93
+  citation:
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 93
+    excerpt: '`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`'
+constraints:
+- parameter: Theta_w
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 96
+    excerpt: This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather
+      than left symbolic.
 graph_context:
   contexts: []
   graph_gaps:
@@ -187,3 +201,25 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_077.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: internal_consistency
+  severity: low
+  summary: Duplicate stage-077 Theta_w candidate. The concrete shell-weighted value Theta_w^(chi) ~ 4.06863 lambda_mu^2 (and
+    conservative Jensen floor Theta_w^(J) ~ 0.92755 lambda_mu^2) is derived by support-weighting the explicit Family-1 wall
+    profile with the canonical support weight; internal_consistency, not a fit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 125
+    excerpt: '`Theta_w^(chi) ≈ 4.06863235008162 lambda_mu^2`'
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source nodes for the stage-077 notes/card paths (carried forward from the mechanical
+    evidence bundle). No atlas node is tied to notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md or paper/stages/stage_077.tex;
+    provenance reasoning here rests on the notes/card themselves, which are present and sufficient.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 077: Shell-Weighted Extraction of `Theta_w` on the Explicit Family-1 Wall'
+downstream_dependents:
+- 078
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_077_theta_w__theta_w.yaml

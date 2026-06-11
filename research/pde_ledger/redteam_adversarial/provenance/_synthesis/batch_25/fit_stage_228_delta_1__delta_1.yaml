@@ -1,0 +1,25 @@
+candidate_id: fit_stage_228_delta_1
+parameter_name: delta_1
+origin_claims:
+  - parameter: delta_1
+    introduced_at_stage: 228
+    introduced_at_line: 121
+    citation:
+      path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+      line: 121
+      excerpt: "\\delta_1:=\\frac{\\Delta_{01}}{\\Delta}."
+constraints:
+  - parameter: delta_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+      line: 118
+      excerpt: "Define the exact static slopes"
+downstream_dependents: [229, 230]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "delta_1 is not a posited numeric constant: it is the exact static denominator log-slope defined at Stage 228 as delta_1 := Delta_01/Delta (notes line 45, 121), a ratio of already-derived branch quantities. Its 'values' are derived per branch (delta_1(v_num) ~ -0.86805617 at notes line 241; delta_1(v_den)=0 at notes line 264) by solving the rank/nullspace structure of the pure-transfer corridor (internal_consistency). The scanner's candidate has no fixed target value; the constraint_kind reflects that delta_1 is a defined/derived slope, not an inserted fit point. The notes establish definition and derivation but not a single numeric target -- logged for transparency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md, line: 45, excerpt: "\\delta_1:=\\frac{\\Delta_{01}}{\\Delta};" }
+      - { path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md, line: 264, excerpt: "\\delta_1(v_{\\rm den})=0," }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage182_two_elevenths_carried_forward
+parameter_name: epsilon_W_split_coefficient_2_11
+origin_claims:
+  - parameter: epsilon_W_split_coefficient_2_11
+    introduced_at_stage: 27
+    introduced_at_line: 151
+    citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 151
+      excerpt: "`sin^2(theta_max) = 2 / 11`,"
+constraints:
+  - parameter: epsilon_W_split_coefficient_2_11
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 20
+      excerpt: "\\left(1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right)\\varepsilon_W"
+downstream_dependents: [183, 184, 185, 186, 187, 189]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 182 carries the 2/11 split coefficient forward from Stage 181 without naming a numeric origin; its true source is the Stage-027 max-coupling axial-gradient occupancy sin^2(theta_max)=2/11, assembled into eps_W^(split) at Stage 039. Carried, not introduced, at 182."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md, line: 6, excerpt: "Stage 181 reduced the coherent weak-axisymmetric grouped defect on the actual coherent local D/N tracking branch" }
+      - { path: notes/stages/moving_throat_pde_stage039_split_u_sector.md, line: 123, excerpt: "`eps_W_split = eps_W [ 1 - (2/11) delta_U / (1 + delta_U) ].`" }

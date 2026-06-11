@@ -1,0 +1,19 @@
+candidate_id: fit_stage126_xi_star_exact_solution
+parameter_name: xi_star
+origin_claims:
+  - parameter: xi_star
+    introduced_at_stage: 126
+    introduced_at_line: 100
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 100
+      excerpt: "\\frac{-37\\sqrt3-5\\pi^2+2\\sqrt{4107-100\\pi^2}}{5(8-\\pi^2)}"
+constraints:
+  - parameter: xi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 98
+      excerpt: "\\frac{\\frac{\\pi}{4}-\\mathfrak g_-^{F1}}{\\frac{\\pi}{4}-\\frac{2}{\\pi}}"
+downstream_dependents: [126]
+provenance_findings: []

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_063_g_fail__phase_b__g_fail.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,36 @@ source_evidence:
   role: notes_stage
   excerpt: '> does the completed moving-throat branch generate sufficient **parent confinement loading** and sufficient **source/support
     coherence** to cross the explicit fail/succeed surfaces above?'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: G_fail
+  introduced_at_stage: 61
+  introduced_at_line: 124
+  citation:
+    path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+    line: 124
+    excerpt: '`G_fail(kappa,eta) = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+constraints:
+- parameter: G_fail
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+    line: 184
+    excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: At Stage 063 G_fail is carried from its Stage-061 origin (the microscopic-gain fail threshold Pe_req/[kappa Delta_inf]);
+    063 only substitutes it into the parent g_phi amplitude thresholds. Origin is 061, not 063.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+    line: 182
+    excerpt: Stage 061 already gave
+downstream_dependents:
+- '064'
+- '065'
+- '066'
+synthesis_ingested_at: '2026-06-11T18:26:14Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage_063_g_fail__g_fail.yaml

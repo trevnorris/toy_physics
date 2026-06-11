@@ -1,0 +1,19 @@
+candidate_id: fit_stage_134_s_q
+parameter_name: S_q
+origin_claims:
+  - parameter: S_q
+    introduced_at_stage: 134
+    introduced_at_line: 45
+    citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 45
+      excerpt: "\\mathcal S_q(\\Pi):=\\mathcal S\\!\\left(\\Pi,\\frac{\\pi}{2}\\right)."
+constraints:
+  - parameter: S_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 49
+      excerpt: "Using the exact Stage 133 kernel,"
+downstream_dependents: [135, 137, 140, 146, 147, 148, 149, 150, 151, 152, 153]
+provenance_findings: []

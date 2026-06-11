@@ -1,0 +1,25 @@
+candidate_id: fit_stage161_dsigma0_dthat_conversion_ratio
+parameter_name: dSigma0_over_dThat
+origin_claims:
+  - parameter: dSigma0_over_dThat
+    introduced_at_stage: 158
+    introduced_at_line: 178
+    citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 178
+      excerpt: "6.42981496203006\\,\\delta\\widehat T_m."
+constraints:
+  - parameter: dSigma0_over_dThat
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+      line: 363
+      excerpt: "Using"
+downstream_dependents: [161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "dSigma0_over_dThat is the same conversion ratio as dSigma0_per_dThat (= delta_Sigma0/delta_T_hat ~6.42981496203006), used in Stage 161 to rewrite Delta_Q in the traction variable delta_T_hat (notes lines 364-369, giving the 5.35223887169622 delta_T_hat coefficient). The stage161 conversion-ratio bundle carried EMPTY source_evidence (no notes_stage or paper pointers extracted by the scanner), but the value is genuinely documented in the Stage 161 notes (line 366) and originates at Stage 158 (the exact closure derivative (40/9) T_hat_can) -> internal_consistency. No external target. Duplicate of the dSigma0_per_dThat coefficient candidate; not an independent quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 368, excerpt: "6.42981496203006\\,\\delta\\widehat T_m," }
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 175, excerpt: "\\frac{40}{9}\\widehat T_{m,\\rm can}\\,\\delta\\widehat T_m" }

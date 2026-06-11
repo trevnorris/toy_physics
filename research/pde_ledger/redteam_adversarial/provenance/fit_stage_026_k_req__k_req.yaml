@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_026_k_req__phase_b__k_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -126,9 +126,47 @@ source_evidence:
   line: 213
   role: sympy_script
   excerpt: expect_zero("residual @ K_req", residual.subs(K, K_req))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_req
+  introduced_at_stage: 26
+  introduced_at_line: 214
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 214
+    excerpt: '`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`'
+constraints:
+- parameter: K_req
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 212
+    excerpt: 'It can be solved exactly for the required wall stiffness:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: Third candidate id resolving to the same K_req back-solve to the external GR target. K_req = B0 + Q/Delta + mhat^2
+    kappa^2 (...)^2/(target Delta^2); value fixed by the published GR quadrupole number, classification published_target.
+  citations:
+  - path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+    line: 197
+    excerpt: K_req = sp.solve(sp.Eq(residual, 0), K)[0]
+- type: provenance_gap
+  severity: needs_triage
+  summary: The scanner attached the literal value '8' to this K_req candidate, but no literal 8 appears anywhere in the stage-026
+    K_req definition; K_req is a symbolic three-term formula (B0 + Q/Delta + a target-dependent load), never the integer 8.
+    The '8' is a scanner mis-extraction (likely a stray token, not the parameter's value). Logged so ingest does not record
+    K_req=8.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 214
+    excerpt: '`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`'
+  - path: paper/stages/stage_026.tex
+    line: 115
+    excerpt: K_{\rm req}
+downstream_dependents:
+- '027'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage_026_k_req__k_req.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage024_quadrupole_splitting_signature
+parameter_name: b_over_a
+origin_claims:
+  - parameter: b_over_a
+    introduced_at_stage: 024
+    introduced_at_line: 255
+    citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 255
+      excerpt: "`b_x = 3 a_x`."
+constraints:
+  - parameter: b_over_a
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 211
+      excerpt: "Using the exact sixth moment of the unit sphere,"
+downstream_dependents: [164, 200]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Duplicate scanner angle (quadrupole-splitting signature) on the same b=3a result. The quadrupole splitting signature (1,1/2,-1) is computed from the exact axisymmetric overlap matrix M^(20)=kappa_* diag(1,1/2,1/2,-1,-1) via the sixth moment of S^2; regrouping the c/s pairs and applying the weighted trace/anomaly map yields b=3a. internal_consistency, fully derived, no fit. Logged low gap (derived ratio, no further value)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md, line: 217, excerpt: "`M^(20) = kappa_* diag(1, 1/2, 1/2, -1, -1)`," }
+      - { path: paper/stages/stage_024.tex, line: 231, excerpt: "The grouped line \\(b=3a\\) follows directly by applying the weighted trace/anomaly map to the signature \\((1,1/2,-1)\\)." }

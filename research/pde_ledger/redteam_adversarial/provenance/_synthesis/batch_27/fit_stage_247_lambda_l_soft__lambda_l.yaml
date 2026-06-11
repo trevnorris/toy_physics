@@ -1,0 +1,19 @@
+candidate_id: fit_stage_247_lambda_l_soft
+parameter_name: lambda_L
+origin_claims:
+  - parameter: lambda_L
+    introduced_at_stage: 247
+    introduced_at_line: 518
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 518
+      excerpt: "\\lambda_L=0.26971918."
+constraints:
+  - parameter: lambda_L
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 497
+      excerpt: "which is fixed exactly by the recorded softening point:"
+downstream_dependents: [ 248 ]
+provenance_findings: []

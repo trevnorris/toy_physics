@@ -1,0 +1,25 @@
+candidate_id: fit_stage165_frozen_n5_wall_eos
+parameter_name: n_wall_eos
+origin_claims:
+  - parameter: n_wall_eos
+    introduced_at_stage: 118
+    introduced_at_line: 18
+    citation:
+      path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+      line: 18
+      excerpt: "a gauged 4D GNLS matter sector with confinement \\(V_{\\rm conf}(\\mathbf X;a,L)\\) and frozen \\(n=5\\) EOS, so the bulk matter Hamiltonian has both gradient and compressional terms,"
+constraints:
+  - parameter: n_wall_eos
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+      line: 330
+      excerpt: "On the frozen GNLS branch,"
+downstream_dependents: [167]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The frozen n=5 wall EOS (giving c_{s,w}^2 propto rho_w^4, i.e. delta ln c_{s,w}=2 delta ln rho_w) is a POSITED parent-action ansatz introduced at Stage 118 (cited 'fileciteturn33file4' to the parent stack); 165 applies it as 'the frozen GNLS branch' without citing the Stage-118 origin line."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md, line: 337, excerpt: "\\delta\\ln c_{s,w} = 2\\,\\delta\\ln\\rho_w." }
+      - { path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md, line: 18, excerpt: "and frozen \\(n=5\\) EOS," }

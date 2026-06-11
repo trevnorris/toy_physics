@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage036_dn_coeffs_stale_stage18_anchor__phase_b__dn_coeff_11.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,34 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: The mechanical bundle for this candidate has EMPTY source_evidence, and no ledger parameter literally named 'dn_coeff_11'
+    exists in the stage-036 sources. The '11' is an arithmetic coefficient inside the derived branch functions F = (9 delta
+    + 11 xi)^4/... and G = 9 xi(xi+delta)/(9 delta + 11 xi) (stage-036 notes lines 21, 53; script line 53/79). That 11 is
+    forced by the exact D/N overlap constants kappa_0^2=8/pi^2 and kappa_1^2=16/(9 pi^2) (i.e. it is internal_consistency,
+    traceable to stage 032 / the eta=2/9 ratio), NOT a fit or posit. No value can be ingested for a non-existent named parameter,
+    hence a gap.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    line: 21
+    excerpt: '`G(xi,delta) = 9 xi (xi + delta) / (9 delta + 11 xi)`,'
+  - path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+    line: 53
+    excerpt: F = sp.simplify((9 * delta + 11 * xi) ** 4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2) **
+      2))
+- type: stale_provenance_anchor
+  severity: low
+  summary: The candidate id asserts a 'stale_stage18_anchor', but NO Stage-18 cross-reference exists anywhere in stage-036's
+    notes, paper card, or sympy audit (verified by case-insensitive grep for 'stage 18'/'stage018'). The hypothesized stale
+    anchor does not stand at stage 036. (A separate, legitimately stale Stage-18 anchor for the 9/11/8 D/N coefficients is
+    tracked under the distinct candidate fit_stage018_stale_provenance_anchor_9_11_8; that is the correct home for any 9/11/8-provenance
+    fix, not stage 036.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 036: Dimensionless Support-Feasibility Frontier for the Selected Quadrupole Branch'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage036_dn_coeffs_stale_stage18_anchor__dn_coeff_11.yaml

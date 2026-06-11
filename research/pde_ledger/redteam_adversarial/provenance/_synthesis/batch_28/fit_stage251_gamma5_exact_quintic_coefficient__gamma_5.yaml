@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_gamma5_exact_quintic_coefficient
+parameter_name: Gamma_5
+origin_claims:
+  - parameter: Gamma_5
+    introduced_at_stage: 251
+    introduced_at_line: 189
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 189
+      excerpt: "\\Gamma_5=\\Pi_{V-}^2\\,\\Gamma_{5,-}"
+constraints:
+  - parameter: Gamma_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 181
+      excerpt: "\\frac{a^5}{27c_s^5}P_{0,-},"
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Gamma_5 = Pi_V-^2 * (a^5/27 c_s^5) * P_{0,-} is DERIVED as the exact quintic (omega^5) coefficient from the selected mixed quadrupole outgoing branch (Stage-029/030) -- internal_consistency of the FORM. It carries NO numeric value: the notes (sec 9) list Pi_V-, P_{0,-} (hence Gamma_{5,-}) as 'still missing' realized-branch coefficients, so the quintic coefficient is symbolic-only at this stage."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 587, excerpt: "3. the actual selected-mode prefactor `P_{0,-}` and therefore `\\Gamma_{5,-}`," }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 71, excerpt: "Gamma5_minus = sp.simplify(Gamma2_port * P0_minus)" }

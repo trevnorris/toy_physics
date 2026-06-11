@@ -1,0 +1,24 @@
+candidate_id: fit_stage_253_chi_lambda
+parameter_name: chi_lambda
+origin_claims:
+  - parameter: chi_lambda
+    introduced_at_stage: 253
+    introduced_at_line: 312
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 312
+      excerpt: "\\chi_{\\lambda,\\rm lattice}(r_{\\rm turn})"
+constraints:
+  - parameter: chi_lambda
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 316
+      excerpt: "\\frac{2\\lambda_{\\rm ref}}{r_{\\rm turn}}."
+downstream_dependents: []
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "chi_lambda,lattice = 2*lambda_ref/r_turn is a derived geometric trigger ratio (internal_consistency); the notes correctly flag it 'fixes only a geometry ratio. It does NOT fix a stiffness by itself.' Its benchmark value 2.19084649 inherits the two carried Stage-248 benchmark inputs lambda_ref and r_turn."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 319, excerpt: "So the \\(\\chi_\\lambda\\) criterion fixes only a geometry ratio. It does **not** fix a stiffness by itself." }

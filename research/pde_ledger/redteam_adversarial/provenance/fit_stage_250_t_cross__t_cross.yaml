@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_250_t_cross__phase_b__t_cross.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,39 @@ source_evidence:
   line: 65
   role: sympy_script
   excerpt: print("dt_cross/dE (x=E-Vpeak) =", dtcross_dE_gap)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: t_cross
+  introduced_at_stage: 250
+  introduced_at_line: 140
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 140
+    excerpt: ' t_{\rm cross}(E)'
+constraints:
+- parameter: t_cross
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 144
+    excerpt: ' \lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: t_cross = lambda_eff/v_bar = lambda_eff*sqrt(m_s/(2(E-Vpeak))) is derived by construction from the Stage-248 peak-over-barrier
+    kinetic speed within the declared characteristic-width closure -- internal_consistency for the FORM. The notes are explicit
+    it is 'a reduced timescale closure, not a replacement for the exact path integral', i.e. the choice to use lambda_eff/v_bar
+    rather than the exact path-time T_traj is itself a declared closure assumption (posited reduction).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 126
+    excerpt: Session III did not use the full path-time integral as its stress-test clock.
+  - path: paper/stages/stage_250.tex
+    line: 22
+    excerpt: This is a reduced timescale closure, not a replacement for the exact path integral.
+downstream_dependents:
+- '251'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage_250_t_cross__t_cross.yaml

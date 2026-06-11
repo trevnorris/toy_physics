@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_session1_packet__phase_b__eta_leak.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,26 @@ source_evidence:
   line: 344
   role: notes_stage
   excerpt: '- `(S_{\rm leak},\mathcal W_w^{\rm sess})` are support-side / open-system objects,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eta_leak
+  introduced_at_stage: 247
+  introduced_at_line: 445
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 445
+    excerpt: \eta_{\rm leak}=0.03,
+constraints:
+- parameter: eta_leak
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 441
+    excerpt: with the Session-I parameters
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage247_session1_packet__eta_leak.yaml

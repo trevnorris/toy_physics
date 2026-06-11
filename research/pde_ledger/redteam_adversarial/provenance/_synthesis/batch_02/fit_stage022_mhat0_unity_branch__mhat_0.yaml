@@ -1,0 +1,25 @@
+candidate_id: fit_stage022_mhat0_unity_branch
+parameter_name: mhat_0
+origin_claims:
+  - parameter: mhat_0
+    introduced_at_stage: 022
+    introduced_at_line: 279
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 279
+      excerpt: "On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target"
+constraints:
+  - parameter: mhat_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 279
+      excerpt: "On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target"
+downstream_dependents: [023, 024]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "mhat_0 = 1 is a BRANCH/convention selection ('the natural source-map branch mhat_0 = 1 + O(a^2/r^2)'), used to reduce the invariant product mhat_0^2 P_0 to a direct target for P_0. It is not derived from ledger quantities nor matched to an external number; it is a posited leading-order source-map normalization, classified free_choice. (Stage 024 later supplies the partial derivation mhat_0 = mhat_rad * mhat_ang with mhat_ang = 1 exact, but the mhat_0 = 1 unity branch at stage 022 is a convenience branch choice, not yet a derivation.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md, line: 74, excerpt: "`mhat_0 = mhat_rad * mhat_ang`," }
+      - { path: paper/stages/stage_022.tex, line: 135, excerpt: "On the leading natural source-map branch \\(\\widehat m_0=1+O(a^2/r^2)\\), this reduces to a direct target for \\(P_0\\)." }

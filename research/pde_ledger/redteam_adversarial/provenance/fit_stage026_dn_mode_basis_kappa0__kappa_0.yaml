@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage026_dn_mode_basis_kappa0__phase_b__kappa_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,42 @@ source_evidence:
   line: 190
   role: notes_stage
   excerpt: '`B_0 = kappa^2 lambda_B^2 / varpi^2`,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_0
+  introduced_at_stage: 26
+  introduced_at_line: 126
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 126
+    excerpt: '`kappa = kappa_0 = 2 sqrt(2) / pi`.'
+constraints:
+- parameter: kappa_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 124
+    excerpt: So the lowest branch value is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: kappa_0 is the n=0 member of the kappa_n overlap family, kappa_0 = 2 sqrt(2)/pi. As a value it is an exact computed
+    overlap integral on the chosen D/N + N/N basis -> internal_consistency. The basis (lowest D/N half-wave f0 + constant
+    N/N zero mode u0) is a posited branch/profile selection (free_choice), declared 'not yet fixed from first principles'
+    in the notes. The numeric kappa_0 ~= 0.900316316 is a derived consequence, not a fit to any external number.
+  citations:
+  - path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+    line: 99
+    excerpt: kappa = sp.simplify(kappa_n.subs(n, 0))
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 49
+    excerpt: '`u_0(s) = 1 / sqrt(L)`.'
+downstream_dependents:
+- '027'
+- '032'
+- '035'
+- '036'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage026_dn_mode_basis_kappa0__kappa_0.yaml

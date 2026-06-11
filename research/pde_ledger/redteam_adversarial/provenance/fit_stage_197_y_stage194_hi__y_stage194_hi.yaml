@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_197_y_stage194_hi__phase_b__y_stage194_hi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -56,9 +56,47 @@ source_evidence:
   line: 93
   role: sympy_script
   excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Y_stage194_hi
+  introduced_at_stage: 194
+  introduced_at_line: 236
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 236
+    excerpt: \widehat Y_2^{\rm def}(z):=\frac{L_0}{L_0+L_2 z^2+L_4 z^4+iL_5 z^5}+O(z^6).
+constraints:
+- parameter: Y_stage194_hi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 202
+    excerpt: 'D_{\ge7}(z):=D_5(z)+\mathcal L_{\ge7}(z),
+
+      \qquad
+
+      \widehat Y_2^{\rm def,\ge7}(z):=\frac{L_0}{D_{\ge7}(z)}.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Y_stage194_hi is a script-internal symbol (stage197 sympy audit lines 85-88): the normalized Stage 194 DtN deformation
+    response L0/(L0 + L2 z^2 + L4 z^4 + i L5 z^5 + i L7 z^7) carried with the first higher-odd tail. It is not a fitted constant
+    but the derived response function whose conservative form is defined at Stage 194 (notes line 236) and whose higher-odd
+    (>=7) extension is exactly the Stage 196 generalized module Yhat_2^{def,>=7} = L0/D_{>=7}. constraint_kind internal_consistency:
+    a derived series object, not a posited value. The bundle carried only script evidence for this exact symbol name; the
+    underlying response is documented under notes/ (Stage 194 line 236 and Stage 196 lines 200-202), satisfying the binding
+    rule. Gap logged only because no notes/ line uses the literal script symbol ''Y_stage194_hi''.'
+  citations:
+  - path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+    line: 86
+    excerpt: L0_stage194 / (L0_stage194 + L2_stage194 * z**2 + L4_stage194 * z**4 + sp.I * L5_stage194 * z**5 + sp.I * L7
+      * z**7)
+  - path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 200
+    excerpt: D_{\ge7}(z):=D_5(z)+\mathcal L_{\ge7}(z),
+downstream_dependents:
+- '198'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_197_y_stage194_hi__y_stage194_hi.yaml

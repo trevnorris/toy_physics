@@ -1,0 +1,25 @@
+candidate_id: fit_stage249_session2_helicity_readbacks
+parameter_name: H_int_aligned
+origin_claims:
+  - parameter: H_int_aligned
+    introduced_at_stage: 249
+    introduced_at_line: 428
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 428
+      excerpt: "\\approx 20.58070146,"
+constraints:
+  - parameter: H_int_aligned
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 416
+      excerpt: "The reported helicity-export outputs were"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "H_sub,+^final (aligned final unresolved-helicity load) = 20.58070146 is a numerical readback ('reported helicity-export output') hardcoded from the external Session-II run; no in-ledger derivation exists for the run that produced it. It is consumed only to reconstruct the ratio R_int via Mobius inversion."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 416, excerpt: "The reported helicity-export outputs were" }
+      - { path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py, line: 169, excerpt: "hint_aligned = 20.58070146" }

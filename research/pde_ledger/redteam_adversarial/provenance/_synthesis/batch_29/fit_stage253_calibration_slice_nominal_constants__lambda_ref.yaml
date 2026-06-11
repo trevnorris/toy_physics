@@ -1,0 +1,25 @@
+candidate_id: fit_stage253_calibration_slice_nominal_constants
+parameter_name: lambda_ref
+origin_claims:
+  - parameter: lambda_ref
+    introduced_at_stage: 248
+    introduced_at_line: 438
+    citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 438
+      excerpt: "\\lambda_{\\rm th}=0.42826825."
+constraints:
+  - parameter: lambda_ref
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 384
+      excerpt: " \\lambda_{\\rm ref}=\\lambda_{\\rm th}(r_{\\rm turn})\\approx 0.42826825."
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "lambda_ref=0.42826825 is the Stage-248 threshold-speed benchmark lambda_th, renamed as the reference geometric scale; the script provenance note confirms it is 'the same carried Stage 248 threshold-speed benchmark often written there as lambda_th'. Its origin is Stage 248, not Stage 253; it is a reduced-model derived benchmark output (energy-conservation / WKB turning-point) carried forward as a benchmark input."
+    citations:
+      - { path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py, line: 17, excerpt: "`lambda_ref_num` in the benchmark block is the same carried Stage 248 threshold-speed benchmark often written there as `lambda_th`" }
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 956, excerpt: "`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_078_pe_req__phase_b__pe_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -111,8 +111,21 @@ source_evidence:
   line: 68
   role: sympy_script
   excerpt: '"(requires Theta_J < Theta_chi)"'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pe_req
+  introduced_at_stage: 059
+  introduced_at_line: 52
+  citation:
+    path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+    line: 52
+    excerpt: 5. inside the reachable Stage-057 window, define the unique constructive branch point `Pe_req` by
+constraints:
+- parameter: Pe_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+    line: 54
+    excerpt: '`Omega_(Pe_req)^2 = zeta_req (kappa + y^2)/(kappa + pi^2/4)`'
 graph_context:
   contexts: []
   graph_gaps:
@@ -137,3 +150,28 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_078.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: internal_consistency
+  severity: low
+  summary: 'At stage 078 Pe_req is carried symbolically: the verdict reports Pe_req success/failure bands (Pe_suff^(chi) ~
+    96.53 lambda_mu^2, Pe_fail^(chi) ~ 11220.5 lambda_mu^2, etc.) and names Pe_req as the remaining unresolved demand-side
+    quantity, but assigns it no value. Pe_req''s value first entered the ledger at stage 059 as the unique constructive root
+    of a matching equation among ledger quantities, so internal_consistency.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 89
+    excerpt: '- and the remaining unresolved quantity is now the quadrupole-side demand `Pe_req`, not the wall-depth supply.'
+  - path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+    line: 56
+    excerpt: (`Pe_req` exists exactly when the Stage-057 ceiling holds);
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source nodes for the stage-078 notes/card paths (carried forward from the mechanical
+    evidence bundle). Provenance reasoning rests on the notes/card themselves, which are present and sufficient.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 078: Explicit Family-1 Branch Comparison and Closing Verdict for This Subprogram'
+downstream_dependents:
+- 079
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_078_pe_req__pe_req.yaml

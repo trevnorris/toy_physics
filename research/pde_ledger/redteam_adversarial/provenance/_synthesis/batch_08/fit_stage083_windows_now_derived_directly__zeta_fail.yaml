@@ -1,0 +1,25 @@
+candidate_id: fit_stage083_windows_now_derived_directly
+parameter_name: zeta_fail
+origin_claims:
+  - parameter: zeta_fail
+    introduced_at_stage: 080
+    introduced_at_line: 95
+    citation:
+      path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+      line: 95
+      excerpt: "`zeta_fail^(chi)(1) ≈ 2.46752913273870.`"
+constraints:
+  - parameter: zeta_fail
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+      line: 91
+      excerpt: "`zeta_+^(F1)(Xi_F1) = zeta_phys(Pe_+^(F1),37;12321/5).`"
+downstream_dependents: [084, 085, 086, 087]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "The guaranteed-failure window zeta_fail (here zeta_+^(F1) ~ 2.46752913273870 for the chi datum) is computed as zeta_phys(Pe_+^(F1), 37; 12321/5), i.e. the explicit lowest-lane support ratio evaluated at the upper Stage-058 operator bracket Pe_+^(F1) = Xi_F1 Delta_inf. All inputs are ledger-internal (operator brackets + carried kappa_F1/eta_F1), so internal_consistency. Stage 083 explicitly re-derives these windows 'directly from the master support/source operator', reproducing the Stage-080 zeta_fail values; value first entered at stage 080."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md, line: 129, excerpt: "`zeta_+^(chi)(1) ≈ 2.46752913273870,`" }
+      - { path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md, line: 119, excerpt: "These are exactly the Stage-078 transport windows, now derived directly from the master support/source operator." }

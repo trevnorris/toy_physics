@@ -1,0 +1,25 @@
+candidate_id: fit_stage160_tangent_susceptibility_coefficients
+parameter_name: dPi_tan_coeff_S
+origin_claims:
+  - parameter: dPi_tan_coeff_S
+    introduced_at_stage: 158
+    introduced_at_line: 237
+    citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 236
+      excerpt: "1.16275838754222\\,\\delta\\mathcal S"
+constraints:
+  - parameter: dPi_tan_coeff_S
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 250
+      excerpt: "where the Stage 159 tangential mouth deformation is"
+downstream_dependents: [161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "dPi_tan_coeff_S = -1.16275838754222 is the delta-S coefficient of the tangential mouth deformation delta_Pi_tan = 0.832409471081635 delta_Sigma0 - 1.16275838754222 delta_S (stage160 notes line 257, with delta_g=0). It is DERIVED at Stage 158 as Sigma0_can/4 (the delta-S coefficient of delta Pi, line 221/237) and carried into Stage 159/160 as the tangential transport. internal_consistency: it is a linearization coefficient of the exact slope identity Pi=Sigma0(1-R S) at the canonical point. Value inherits Sigma0_can (internal). Stage160 carries it; origin at Stage 158."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md, line: 256, excerpt: "1.16275838754222\\,\\delta\\mathcal S" }
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 221, excerpt: "\\frac{\\Sigma_0^{\\rm can}}{4}\\,\\delta\\mathcal S" }

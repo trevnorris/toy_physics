@@ -1,0 +1,26 @@
+candidate_id: fit_stage146_aspect_ratio_37_20_primitive
+parameter_name: L_over_a
+origin_claims:
+  - parameter: L_over_a
+    introduced_at_stage: 73
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 54
+      excerpt: "`Lambda_* := L/a = 37/20.`"
+constraints:
+  - parameter: L_over_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 48
+      excerpt: "The lower-order stack already carries the preferred throat aspect ratio"
+downstream_dependents: [121, 124, 139, 146]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "L_over_a = 37/20 is a SCRIPT-only primitive at Stage 146: the 146 note never writes L/a or 37/20; it appears only in the audit as rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1) (script line 71), reconstructing r_F1 to evaluate the canonical mouth point. Its documented origin is Stage 073 sec.2, where the carried approx 1.85 is pinned to the rational 37/20 as 'the explicit reference branch' value (notes lines 48-54), and it is re-used at Stage 121 'Using the carried preferred aspect ratio L/a = 37/20'. Best-supported call: free_choice (a carried geometric convention, posited without derivation). TENSION: the project provenance memory groups '37/20' with the external-target (published_target) class alongside 54/5; the notes call it 'carried/preferred' but name no external published number, so published_target cannot be substantiated from notes/ here. Flagged needs_triage for adjudication of whether the carried approx 1.85 is an external geometric input or a free internal convention."
+    citations:
+      - { path: scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py, line: 71, excerpt: "rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)" }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 50, excerpt: "`L / a ≈ 1.85.`" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage032_pattern_now_derived
+parameter_name: rank_one_loading_pattern
+origin_claims:
+  - parameter: rank_one_loading_pattern
+    introduced_at_stage: 029
+    introduced_at_line: 130
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 130
+      excerpt: "This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit finite-throat basis and local isotropic kernels."
+constraints:
+  - parameter: rank_one_loading_pattern
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 130
+      excerpt: "This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit finite-throat basis and local isotropic kernels."
+downstream_dependents: [033, 037]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "rank_one_loading_pattern is not a scalar value but a structural form: the rank-1 self-energy Sigma_wall = Xi I_2 + alpha v v^T. The stage-032 notes explicitly state this pattern was POSITED abstractly at Stage 029 and is now DERIVED at 032 from the explicit finite-throat basis plus local isotropic kernels (a fit-to-derive UPGRADE, the honest direction). Classified internal_consistency at its derivation locus (032); no numeric parameter value to extract, so logged as a non-scalar structural candidate."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md, line: 17, excerpt: "In the first local isotropic kernel model built on the exact N/N wall basis and the exact D/N half-wave, every relevant wall–internal and source–wall coupling is determined by the same overlap vector" }
+      - { path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md, line: 270, excerpt: "1. it derives the Stage-029 loading structure from explicit local isotropic kernels," }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_017_paragraph__phase_b__paragraph.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -67,3 +67,19 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_017.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'paragraph is not a parameter value: it is the LaTeX sectioning macro \paragraph{...} used to title subsections
+    of the stage-017 card (''Source and audit.'', ''Lane signature.'', ''Wall-only obstruction.'', ''Output.''). The candidate
+    scanner captured the macro token. There is no fitted/posited numeric parameter named ''paragraph'' and no notes/ source
+    documents such a value because none exists. Logged as a gap (scanner false-positive).'
+  citations:
+  - path: paper/stages/stage_017.tex
+    line: 33
+    excerpt: \paragraph{Source and audit.}
+  - path: paper/stages/stage_017.tex
+    line: 41
+    excerpt: \paragraph{Wall-only obstruction.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_017_paragraph__paragraph.yaml

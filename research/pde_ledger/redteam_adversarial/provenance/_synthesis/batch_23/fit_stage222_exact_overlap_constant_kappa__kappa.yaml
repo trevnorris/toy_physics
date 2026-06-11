@@ -1,0 +1,19 @@
+candidate_id: fit_stage222_exact_overlap_constant_kappa
+parameter_name: kappa
+origin_claims:
+  - parameter: kappa
+    introduced_at_stage: 222
+    introduced_at_line: 83
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 83
+      excerpt: "\\kappa:=\\int_0^L u_0(s)f_0(s)\\,ds=\\frac{2\\sqrt2}{\\pi}."
+constraints:
+  - parameter: kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 81
+      excerpt: "Then the exact overlap constant is"
+downstream_dependents: [223]
+provenance_findings: []

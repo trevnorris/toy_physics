@@ -1,0 +1,25 @@
+candidate_id: fit_stage_203_beta_path
+parameter_name: beta_path
+origin_claims:
+  - parameter: beta_path
+    introduced_at_stage: 203
+    introduced_at_line: 456
+    citation:
+      path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+      line: 456
+      excerpt: "be a continuous free-quintuple path, and let"
+constraints:
+  - parameter: beta_path
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+      line: 334
+      excerpt: "be an arbitrary candidate family sharing the same free-quintuple path `\\(\\mathbf y(\\tau)\\)` as the graph family."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "beta_path is a script-only illustrative parameterization: beta_path = 2^(2*tau-1) (sympy audit line 282), an explicit continuous one-parameter path in beta used to demonstrate the Stage 203 graph-crossing (intermediate value) theorem (script subbanner 'Stage 197 scalar closure composed with an explicit Stage 202 graph path'). The scanner value '2' is the base of this illustrative exponential, NOT a fitted/derived physical constant. The notes document the GENERAL object (a continuous free-quintuple path y(tau), 'an arbitrary candidate family'); they do not pin the literal base 2 -- it is a free worked-example choice -> constraint_kind free_choice (convention/example, no derivation or external anchor). Gap logged because the specific literal lives only in the script while the binding notes citation covers the general path."
+    citations:
+      - { path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py, line: 282, excerpt: "beta_path = sp.simplify(sp.Integer(2) ** (2 * tau - 1))" }
+      - { path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md, line: 495, excerpt: "This is the first exact existence theorem for a closed reduced state along a one-parameter graph-aligned family." }

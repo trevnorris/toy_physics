@@ -1,0 +1,25 @@
+candidate_id: fit_stage_223_mathrm
+parameter_name: mathrm
+origin_claims:
+  - parameter: mathrm
+    introduced_at_stage: 22
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: mathrm
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 127
+      excerpt: "P_{0,\\mathrm{target}}=\\frac{54Gc_s^5}{5a^5c^5\\,\\hat m_0^{\\,2}}."
+downstream_dependents: [224, 225]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "'mathrm' is not a real parameter — it is a LaTeX-command fragment the scanner extracted from \\mathrm{...} inside P_{0,\\mathrm{target}}. The actual referent is P0_target (the 54/5 GR quadrupole external normalization target). Classified per its real referent (published_target); the candidate's parameter_name should be treated as a scanner false-positive for P0_target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md, line: 123, excerpt: "P_0=P_{0,\\mathrm{target}}," }
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 256, excerpt: "The universal GR quadrupole target is" }

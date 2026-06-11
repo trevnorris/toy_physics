@@ -1,0 +1,19 @@
+candidate_id: fit_stage_030_c_5
+parameter_name: C_5
+origin_claims:
+  - parameter: C_5
+    introduced_at_stage: 30
+    introduced_at_line: 116
+    citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 116
+      excerpt: "`C_{5,-} = beta_5 s_-`."
+constraints:
+  - parameter: C_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 114
+      excerpt: "Here the Stage-029 odd coefficient is"
+downstream_dependents: [31]
+provenance_findings: []

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_241_epsilon
+parameter_name: epsilon
+origin_claims:
+  - parameter: epsilon
+    introduced_at_stage: 241
+    introduced_at_line: 171
+    citation:
+      path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+      line: 171
+      excerpt: "\\epsilon_* = 1-\\frac{3\\varrho}{2}."
+constraints:
+  - parameter: epsilon
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+      line: 164
+      excerpt: "\\frac{2(1-\\epsilon_*)}{3}."
+downstream_dependents: [242]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon (eps_*) carries no fixed numeric target at Stage 241; it is the running selected-branch coordinate constrained by the exact support law eps_* = 1 - 3 varrho/2 (notes line 171), derived by substituting the Stage-240 demand Pi_tr/C_mix = 4/3 and C_mix = 8 Lambda(1-eps_*)/pi^2 into varrho = pi^2 Pi_tr/(16 Lambda) (notes line 158-165). This is internal_consistency (eps_* is tied to varrho by a ledger-derived relation), leaving eps_* free on the one-parameter curve 0<varrho<2/3 rather than fixed to a single value. Logged for transparency since the scanner candidate has no single numeric target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md, line: 178, excerpt: "0<\\varrho<\\frac23." }
+      - { path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md, line: 149, excerpt: "\\frac{\\Pi_{\\rm tr}}{C_{\\rm mix}}=\\frac43," }

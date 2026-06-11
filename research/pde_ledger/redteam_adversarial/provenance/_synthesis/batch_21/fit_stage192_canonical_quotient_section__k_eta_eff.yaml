@@ -1,0 +1,24 @@
+candidate_id: fit_stage192_canonical_quotient_section
+parameter_name: K_eta_eff
+origin_claims:
+  - parameter: K_eta_eff
+    introduced_at_stage: 192
+    introduced_at_line: 81
+    citation:
+      path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+      line: 81
+      excerpt: "(\\lambda_W,\\ c_{\\eta U},\\ \\gamma,\\ K_U,\\ K_\\eta^{(\\mathrm{eff})},\\ K_W^{(\\mathrm{eff})},\\ \\mu_W,\\ T_U)."
+constraints:
+  - parameter: K_eta_eff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+      line: 314
+      excerpt: "\\boxed{(\\Delta_{K_\\eta})_{\\rm orbit}=2\\Delta_c-\\Delta_U,}"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K_eta_eff (K_eta^{(eff)}) is one of the eight drift-basis microscopic coordinates (192 line 81); it is a dependent-triple coordinate whose drift Delta_{K_eta} is fixed by the exact orbit/quotient projector calculus (orbit law Delta_{K_eta}=2 Delta_c - Delta_U at line 314; quotient-failure component -q_eta at line 278). It is not a fitted scalar value at stage 192 — the stage manipulates its log-drift, not a numeric value. Its constitutive value as an effective wall stiffness originates far upstream (the wall-action constitutive coefficients, ~stage 001), not in batch 21; no stage-192 notes/ line assigns it a number, so only the internal_consistency role within the projector calculus is established here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md, line: 278, excerpt: "\\boxed{(\\Delta_{K_\\eta})_{\\rm fail}=-q_\\eta,}" }

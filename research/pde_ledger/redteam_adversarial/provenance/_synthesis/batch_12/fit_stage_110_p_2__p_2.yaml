@@ -1,0 +1,24 @@
+candidate_id: fit_stage_110_p_2
+parameter_name: P_2
+origin_claims:
+  - parameter: P_2
+    introduced_at_stage: 91
+    introduced_at_line: 1
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 1
+      excerpt: "# Moving-Throat PDE — Stage 091: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2` + Geometry Split"
+constraints:
+  - parameter: P_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 78
+      excerpt: "So if the already-fixed conservative grouped-`P_2` branch is to survive, a Robin core must either be negligible or be compensated by additional outlet structure."
+downstream_dependents: [111, 112, 113]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage 110 notes path (carried from the mechanical bundle). P_2 (the conservative grouped-P2 quadrupole branch) is not introduced at Stage 110 — it is carried as an already-fixed upstream input; its derivation is the grouped-P2 + geometry split at Stage 91 (out of this batch). Stage 110 only invokes it qualitatively as a survival constraint, with no P_2 value introduced here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md, line: 78, excerpt: "the already-fixed conservative grouped-`P_2` branch" }

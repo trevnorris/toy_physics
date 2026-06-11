@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage226_k1_h_even_open_gates__phase_b__h_even.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -195,9 +195,40 @@ source_evidence:
   line: 49
   role: sympy_script
   excerpt: H_even = D41 - sp.Rational(2, 3) * D21 - D01 / 27
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: H_even
+  introduced_at_stage: 226
+  introduced_at_line: 182
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 182
+    excerpt: \boxed{H_{\rm even}=\left(\frac{D_4}{D_0}+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+constraints:
+- parameter: H_even
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 201
+    excerpt: H_{\rm even}\approx -0.0116042611571584\,D_{01}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'This candidate reads H_even as an ''open gate'' on the noncanonical compatibility branch: inserting the Stage-225
+    compensation surface gives H_even = (-3u_2^2 + 2u_2/3 - 1/27) D_01 ~ -0.0116 D_01, nonzero, so the even gate is open and
+    (with K_1) forces D_01=0 in the survivor. That per-branch nonzero coefficient is an exact internal evaluation (internal_consistency).
+    Same imported-5PN-vs-internal ambiguity as the canonical_hidden_even_relation candidate is noted (the gate''s defining
+    relation is termed ''imported 5PN'' while its on-branch value is internally computed).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 194
+    excerpt: \boxed{H_{\rm even}=\left(-3u_2^2+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+  - path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 207
+    excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+downstream_dependents:
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage226_k1_h_even_open_gates__h_even.yaml

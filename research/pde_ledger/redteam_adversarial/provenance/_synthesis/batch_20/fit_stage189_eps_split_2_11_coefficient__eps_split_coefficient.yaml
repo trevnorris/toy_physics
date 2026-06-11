@@ -1,0 +1,25 @@
+candidate_id: fit_stage189_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+origin_claims:
+  - parameter: eps_split_coefficient
+    introduced_at_stage: 27
+    introduced_at_line: 151
+    citation:
+      path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+      line: 151
+      excerpt: "`sin^2(theta_max) = 2 / 11`,"
+constraints:
+  - parameter: eps_split_coefficient
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+      line: 273
+      excerpt: "\\epsilon=\\epsilon_W\\!\\left(1-\\frac{2}{11}\\frac{\\delta_U}{1+\\delta_U}\\right),"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 189 specializes the coherent transfer shape with epsilon = eps_W(1 - (2/11) delta_U/(1+delta_U)), carrying the 2/11 split coefficient from the earlier coherent-kernel stages without naming a numeric origin. True origin: the Stage-027 max-coupling axial-gradient occupancy sin^2(theta_max)=2/11, assembled into eps_W^(split) at Stage 039."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md, line: 265, excerpt: "On the coherent local D/N tracking branch the one-port continuum variables specialize to" }
+      - { path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md, line: 151, excerpt: "`sin^2(theta_max) = 2 / 11`," }

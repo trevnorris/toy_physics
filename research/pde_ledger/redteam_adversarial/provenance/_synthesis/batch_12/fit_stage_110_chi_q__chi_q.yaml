@@ -1,0 +1,24 @@
+candidate_id: fit_stage_110_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 105
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 69
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 55
+      excerpt: "\\chi_Q^{\\rm R}=rac{3}{3-\\rho_R}."
+downstream_dependents: [111, 112, 113]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Stage 110 does NOT establish chi_Q=1; it computes the DEFORMED Robin factor chi_Q^R=3/(3-rho_R) and explicitly notes it 'generically pushes the branch away from chi_Q=1'. The candidate scanner keyed chi_Q here, but the value at this stage is the rho_R-dependent deformed factor, not the canonical 1. chi_Q^R is internal_consistency (exactly derived from the posited Robin model); the canonical chi_Q=1 it is measured against originates at Stage 105. No card error — recorded so downstream ingest does not read a fixed chi_Q value out of this stage."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md, line: 63, excerpt: "So a pure isotropic Robin core generically pushes the branch away from `chi_Q=1`." }

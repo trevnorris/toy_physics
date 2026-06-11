@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_a_f1__phase_b__a_f1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -39,9 +39,40 @@ source_evidence:
   line: 136
   role: sympy_script
   excerpt: '# Monotonicity check: zeta_F1(Pe) = A_F1 * Omega(Pe)^2 should be monotone'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_F1
+  introduced_at_stage: 079
+  introduced_at_line: 57
+  citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 57
+    excerpt: '`A_F1 := (kappa_F1 + pi^2/4) / (kappa_F1 + y_F1^2).`'
+constraints:
+- parameter: A_F1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 55
+    excerpt: Then the exact Robin support factor carried from Stage 057 is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: At stage 083 A_F1 is used (zeta_F1 = A_F1 Omega^2, zeta_max_F1 = A_F1 pi^2/4) but appears only in the audit script,
+    not in the stage-083 prose notes; it is carried verbatim from stage 079, where it is the exact Robin support factor (kappa_F1
+    + pi^2/4)/(kappa_F1 + y_F1^2) on the ledger-fixed Family-1 branch. Deterministic evaluation of ledger-internal quantities
+    -> internal_consistency. The script re-derives it from kappa_F1 = 12321/5 and the verified Robin root y_F1.
+  citations:
+  - path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+    line: 85
+    excerpt: A_F1 = sp.simplify((kappa_F1 + pi**2 / 4) / (kappa_F1 + y_F1**2))
+  - path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 63
+    excerpt: '`A_F1 ≈ 1.00005192880220.`'
+downstream_dependents:
+- 084
+- 085
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_083_a_f1__a_f1.yaml

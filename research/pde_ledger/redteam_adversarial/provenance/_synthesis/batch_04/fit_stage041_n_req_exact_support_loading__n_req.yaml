@@ -1,0 +1,25 @@
+candidate_id: fit_stage041_n_req_exact_support_loading
+parameter_name: n_req
+origin_claims:
+  - parameter: n_req
+    introduced_at_stage: 041
+    introduced_at_line: 82
+    citation:
+      path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+      line: 82
+      excerpt: "`n_req(xi,delta;m,q,r)`"
+constraints:
+  - parameter: n_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+      line: 80
+      excerpt: "Solving the determinant condition for the support loading gives"
+downstream_dependents: [042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "n_req is the exact required support loading, obtained by solving the rank-2 selected-branch determinant condition D_sel = 0 for the support loading n (notes lines 80-84; the audit literally does n_req = sp.solve(sp.Eq(Det_expected, 0), n)[0]). It is internal_consistency — a forced rational function of (xi, delta, m, q, r), with an exact monotonicity theorem d n_req/d m < 0. No fit/posit; collapses to G_q - m when r=q (support tracks mixed direction)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md, line: 96, excerpt: "`d n_req / d m`" }
+      - { path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md, line: 120, excerpt: "`      = G_q(xi,delta) - m.`" }

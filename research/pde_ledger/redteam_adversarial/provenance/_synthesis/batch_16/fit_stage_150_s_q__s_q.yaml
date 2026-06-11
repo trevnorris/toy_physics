@@ -1,0 +1,25 @@
+candidate_id: fit_stage_150_s_q
+parameter_name: S_q
+origin_claims:
+  - parameter: S_q
+    introduced_at_stage: 150
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+      line: 92
+      excerpt: "Using the fixed-point relation \\(\\Pi_*=\\Sigma_m^*(4-\\mathcal S_q(\\Pi_*))\\), this can"
+constraints:
+  - parameter: S_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+      line: 98
+      excerpt: "4T_s(x;\\Pi_*)-T_q(x;\\Pi_*)-(4-\\mathcal S_q(\\Pi_*))x"
+downstream_dependents: [151, 152, 154, 155]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "S_q(Pi) is the mixed-D/N-channel overlap, DERIVED from the exact Family-1 channel profiles (S_q = A_q*k - C_q*Pi in the script; equivalently the T_q'(0) slope the script verifies via expect_zero('T_q'(0)-S_q')). internal_consistency: it is an explicit closed form in the channel constants A_q, C_q which are themselves built from Pi_* and pi/2 — no posit, no external target. The Stage 150 notes use S_q only inside the fixed-point relation Pi_*=Sigma_m_*(4-S_q(Pi_*)); S_q itself is fully determined by the channel construction of Stage 150 section 1."
+    citations:
+      - { path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py, line: 52, excerpt: "expect_zero(\"T_q'(0)-S_q\", sp.diff(Tq, x).subs(x, 0) - Sq)" }
+      - { path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md, line: 71, excerpt: "\\Pi_*=\\Sigma_m^*\\left[4-\\mathcal S_q(\\Pi_*)\\right]." }

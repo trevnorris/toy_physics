@@ -1,0 +1,25 @@
+candidate_id: fit_stage152_carried_point_block
+parameter_name: A_T
+origin_claims:
+  - parameter: A_T
+    introduced_at_stage: 147
+    introduced_at_line: 48
+    citation:
+      path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+      line: 48
+      excerpt: "A_T"
+constraints:
+  - parameter: A_T
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 50
+      excerpt: "Using the previously frozen canonical derivatives and rigidity coefficients,"
+downstream_dependents: [154, 155, 156, 157, 158, 159, 160, 161, 162, 163]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 152 CARRIES A_T as a frozen mpf literal (-4.27263956256927) from its derivation origin at Stage 147:48 (closed form in canonical-branch quantities — internal_consistency). The Stage 152 notes:50 explicitly label it a 'previously frozen' coefficient, confirming carry-not-introduce. NOTE: A_T appears in THREE batch-16 candidates at Stage 152 (fit_stage152_carried_point_block, fit_stage152_retuned_canonical_point, fit_stage_152_a_t) — all reference the same literal at notes:54 / script:32; same provenance for each."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md, line: 54, excerpt: "A_T\\approx -4.27263956256927," }
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 32, excerpt: "AT = mp.mpf(\"-4.27263956256927\")" }

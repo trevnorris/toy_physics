@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_natural_source_map_mhat0__phase_b__mhat_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -92,9 +92,42 @@ source_evidence:
   line: 199
   role: sympy_script
   excerpt: print("4. On the natural point-particle source-map branch mhat_0 -> 1, the conservative")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mhat_0
+  introduced_at_stage: 195
+  introduced_at_line: 205
+  citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 205
+    excerpt: m_{\hat 0}=1+O(a^2/r^2).
+constraints:
+- parameter: mhat_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 210
+    excerpt: ' m_{\hat 0}\to 1.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'Duplicate candidate for m_hat_0 at stage 195 (same parameter as fit_stage195_mhat0_natural_source_map). m_hat_0=1+O(a^2/r^2)
+    is the carried natural point-particle source-map branch (195 lines 202-205); the value m_hat_0->1 is posited as the strict
+    point-particle limit, a carried modeling convention (free_choice), not a ledger-internal solve or an external back-solve.
+    It enters the exact odd-closure factorization m_hat_0^2 chi_Q N_Q=1 (195 line 139) and drops out of Delta_norm once that
+    closure is imposed (195 line 181). Triage: the upstream stage that fixes the natural source-map branch is referenced only
+    as the ''2.5PN package'' and is not pinned by the 195 notes.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 139
+    excerpt: \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 202
+    excerpt: The carried natural orbital/worldtube STF source-map branch is
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage195_natural_source_map_mhat0__mhat_0.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage152_affine_law_endpoints
+parameter_name: lambda_eff_Pi
+origin_claims:
+  - parameter: lambda_eff_Pi
+    introduced_at_stage: 152
+    introduced_at_line: 137
+    citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 137
+      excerpt: "\\lambda_{\\rm eff}^{(\\Pi)}\\approx 0.380487632771110,"
+constraints:
+  - parameter: lambda_eff_Pi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+      line: 134
+      excerpt: "Comparing the actual first-order correction to the explicit positive-family"
+downstream_dependents: [154, 155]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "lambda_eff_Pi = 0.380487632771110 is the effective interpolation parameter obtained by INVERTING the Stage 148 affine law dPi_lambda/eps = 1.6994... - 2.0824...*lambda to match the actual computed correction delta_g_act (script:111-114 'Effective interpolation parameter from Stage 148 affine laws'). internal_consistency: it is a derived comparison number, fully fixed by the Stage 148 affine endpoints and the Stage 152 actual covariance; no posit, no external target. The expect_close pins at script:119 are self-consistency cross-checks against the notes value, not external anchors."
+    citations:
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 111, excerpt: "# Effective interpolation parameter from Stage 148 affine laws" }
+      - { path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py, line: 119, excerpt: "expect_close(\"lambda_eff^(Pi) scale\", float(lam_Pi), 0.380487632771110, tol=1e-6)" }

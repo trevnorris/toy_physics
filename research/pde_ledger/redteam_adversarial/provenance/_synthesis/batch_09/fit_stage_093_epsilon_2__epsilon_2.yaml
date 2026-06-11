@@ -1,0 +1,24 @@
+candidate_id: fit_stage_093_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 92
+    introduced_at_line: 23
+    citation:
+      path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+      line: 23
+      excerpt: "`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+      line: 55
+      excerpt: "It is to determine the two geometry-contamination numbers `eps_2` and `eps_4`, or prove that they vanish on the natural branch."
+downstream_dependents: [94]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon_2 (=eps_2 in the notes) at Stage 093 remains an undetermined geometry-contamination number; the static value 0 is a working hypothesis (free_choice), proven only at Stage 094. Symbol originated at Stage 092. Same finding as the sibling 093 eps_2 candidates."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md, line: 53, excerpt: "`c_pole = (1 + eps_4) / [ 4 (1 + eps_2)^2 ]`." }

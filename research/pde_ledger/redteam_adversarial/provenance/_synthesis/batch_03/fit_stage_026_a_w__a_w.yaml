@@ -1,0 +1,16 @@
+candidate_id: fit_stage_026_a_w
+parameter_name: A_w
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "A_w is not a fitted/posited numeric parameter at stage 026. It appears exactly once in the notes, as the NAME of the mixed gauge channel 'A_w / F_(mu w) / J^w' whose axial profile is taken to be the lowest D/N half-wave f0. No value is assigned to A_w anywhere in the stage-026 notes, paper card, or audit script, so there is no value genealogy to classify. The scanner candidate is a false positive (field-component label captured as a parameter). The atlas wrapper also returned a graph_gap (no node tied to the source path)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 67, excerpt: "For the trapped support channel and the mixed `A_w / F_(mu w) / J^w` channel, use the exact finite-throat D/N ladder already isolated in the frozen-wall benchmark:" }
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source nodes for notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md (carried over from the pending bundle)."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage_026_a_w__a_w.yaml, line: 44, excerpt: "reason: no atlas node tied to this source path" }

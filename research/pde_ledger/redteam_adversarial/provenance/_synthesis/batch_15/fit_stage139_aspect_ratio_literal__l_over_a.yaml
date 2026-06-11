@@ -1,0 +1,26 @@
+candidate_id: fit_stage139_aspect_ratio_literal
+parameter_name: L_over_a
+origin_claims:
+  - parameter: L_over_a
+    introduced_at_stage: 73
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 54
+      excerpt: "`Lambda_* := L/a = 37/20.`"
+constraints:
+  - parameter: L_over_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 48
+      excerpt: "The lower-order stack already carries the preferred throat aspect ratio"
+downstream_dependents: [121, 124, 139, 146]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "At Stage 139 L_over_a = 37/20 is NOT introduced or fitted; it enters only through r_F1 = sqrt((12/pi^2)(37/20)^2 - 1) approx 1.778 quoted 'From Stage 121' (notes lines 16-22). Its documented origin is Stage 073 sec.2: 'The lower-order stack already carries the preferred throat aspect ratio L/a approx 1.85. For the explicit reference branch used here, write that carried value as Lambda_* := L/a = 37/20' (notes lines 48-54). The 37/20 is the rational PIN of a carried approx 1.85, presented as a convention with no derivation and no NAMED external published target in the notes -> best-supported call is free_choice. TENSION: the project's own provenance memory groups '37/20' with the 54/5 external-target class (a published_target candidate). The notes call 1.85 'carried' from 'the lower-order stack / constructive hierarchy' with a filecite but do not name the external number it matches, so I cannot substantiate published_target from notes/ alone. Flagged needs_triage so an adjudicator can decide whether the carried approx 1.85 traces to an external geometric input (published_target) or is a free internal convention (free_choice). NOTE the SCANNER pointed the 139 bundle at no notes_stage line for L/a (only a script comment about Stage 140); the origin had to be recovered from Stages 073/121."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 50, excerpt: "`L / a ≈ 1.85.`" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 58, excerpt: "Using the carried preferred aspect ratio" }
+      - { path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md, line: 20, excerpt: "\\sqrt{\\frac{12}{\\pi^2}\\left(\\frac{37}{20}\\right)^2-1}" }

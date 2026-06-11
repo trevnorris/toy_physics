@@ -1,0 +1,25 @@
+candidate_id: fit_stage_232_a_k
+parameter_name: A_K
+origin_claims:
+  - parameter: A_K
+    introduced_at_stage: 232
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 75
+      excerpt: "A_K"
+constraints:
+  - parameter: A_K
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 67
+      excerpt: "On the Robin support side, the lowest support eigenvalue solves"
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "A_K ~ 1.0000521380385143 is the exact support-softening factor A_K = (kappa + pi^2/4)/(kappa + y^2), where y is the lowest root of the Robin support equation y*tan(y)=eta with eta=Lambda_ell (notes 232 lines 67-78; script lines 72-73 solve y by bisection then form A_K). All inputs (kappa, eta, y) are ledger-internal -- a value forced by the Robin eigenvalue/normalization condition -> internal_consistency. No external target. The value is computed at Stage 232 from the refreshed geometry; no separate upstream origin needed (geometry inputs kappa/eta themselves carry from the Family-1 lock). Logged low-severity for completeness."
+    citations:
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 73, excerpt: "A_K = (kappa + mp.pi**2 / 4) / (kappa + y**2)" }
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 77, excerpt: "A_K\n=\n\\frac{\\kappa+\\pi^2/4}{\\kappa+y^2}" }

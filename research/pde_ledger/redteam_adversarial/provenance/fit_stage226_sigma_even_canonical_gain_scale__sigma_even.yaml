@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage226_sigma_even_canonical_gain_scale__phase_b__sigma_even.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -195,9 +195,27 @@ source_evidence:
   line: 441
   role: notes_stage
   excerpt: 2. The Stage-225 compensation surface is weaker than the stricter imported `5`PN even-gate package.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: sigma_even
+  introduced_at_stage: 226
+  introduced_at_line: 276
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 276
+    excerpt: \boxed{\sigma_{\rm even}\approx 2.67386816837173.}
+constraints:
+- parameter: sigma_even
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 270
+    excerpt: Let `\Pi_{\rm even}` denote the ambient-Euclidean orthogonal projector onto this nullspace. Then the induced
+      operator norm of the same-charge functional on the strict corridor is
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage226_sigma_even_canonical_gain_scale__sigma_even.yaml

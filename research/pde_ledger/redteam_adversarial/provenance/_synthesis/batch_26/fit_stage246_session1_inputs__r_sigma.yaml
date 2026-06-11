@@ -1,0 +1,25 @@
+candidate_id: fit_stage246_session1_inputs
+parameter_name: r_sigma
+origin_claims:
+  - parameter: r_sigma
+    introduced_at_stage: 246
+    introduced_at_line: 478
+    citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 478
+      excerpt: "r_\\sigma=0.8,"
+constraints:
+  - parameter: r_sigma
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 472
+      excerpt: "Use the recorded Session-I source-side parameters"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "r_sigma = 0.8 is a probe/sample input imported from the barrier Session-I write-up (notes line 472-478), the radial attenuation scale in the minimal closure s(r) = r_sigma^2/(r^2 + r_sigma^2). It is a posited representative sample value (free_choice), not derived from ledger-internal quantities and not an external published target. It sets the same-charge contact window r < r_sigma sqrt(a_0 - b_0 - 1) in which the source becomes sign-changing. Used only for the readback consistency check. Logged at low severity to record its sample-probe character."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 401, excerpt: "s(r)=\\frac{r_\\sigma^2}{r^2+r_\\sigma^2}." }
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 462, excerpt: "r<r_\\sigma\\sqrt{a_0-b_0-1}." }

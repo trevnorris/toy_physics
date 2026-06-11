@@ -1,0 +1,25 @@
+candidate_id: fit_stage_022_g_5
+parameter_name: G_5
+origin_claims:
+  - parameter: G_5
+    introduced_at_stage: 021
+    introduced_at_line: 219
+    citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 219
+      excerpt: "`= 1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5) + O(ω^6)`."
+constraints:
+  - parameter: G_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      line: 214
+      excerpt: "The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution."
+downstream_dependents: [023]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate is keyed to stage 022, but G_5 = a^5/(27 c_s^5) (the imaginary omega^5 fingerprint coefficient) originates at stage 021 as the outgoing port coefficient Gamma_2^(port) derived from the spherical Hankel solution; stage 022 only restates it (notes line 162) as G5 inside the compact outgoing branch and uses it in the Gamma_5^(A)=G5*P_{A0} bridge. The value is DERIVED (internal_consistency), not fitted. The stage-022 script comment even notes the route reuses it 'instead of retyping a^5/(27 c_s^5)'."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 162, excerpt: "`G5 = a^5 / (27 c_s^5)`." }
+      - { path: paper/stages/stage_022.tex, line: 100, excerpt: "G_5=\\frac{a^5}{27c_s^5}." }

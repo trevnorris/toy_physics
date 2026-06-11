@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_178_delta__phase_b__delta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -112,9 +112,40 @@ source_evidence:
   line: 98
   role: sympy_script
   excerpt: zeta = sp.simplify(R**2 / Delta)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta
+  introduced_at_stage: 178
+  introduced_at_line: 178
+  citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 178
+    excerpt: \Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2.
+constraints:
+- parameter: Delta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 178
+    excerpt: \Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Delta is not a fitted value but a structural definition: the static port detuning determinant Delta_r = Omega_{U,r}^2
+    Omega_{W,r}^2 - R_r^2 (notes line 178), built entirely from ledger-internal squared frequencies and the coupling R_r.
+    It enters the outgoing-transfer coefficient via N_{A,0}^(r) = P_{A,r}^2 / Delta_{A,r}^2 (notes line 85). Internal_consistency
+    (a defined determinant of ledger quantities), no posited number and no external target. Low severity (scanner target is
+    a structural definition rather than a constrained value).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 85
+    excerpt: N_{A,0}^{(r)}=\frac{P_{A,r}^2}{\Delta_{A,r}^2}.
+  - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+    line: 87
+    excerpt: Delta = OU2 * OW2 - R**2
+downstream_dependents:
+- '179'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_178_delta__delta.yaml

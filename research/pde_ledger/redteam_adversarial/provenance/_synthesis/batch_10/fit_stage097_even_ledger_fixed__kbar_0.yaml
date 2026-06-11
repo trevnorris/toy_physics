@@ -1,0 +1,25 @@
+candidate_id: fit_stage097_even_ledger_fixed
+parameter_name: Kbar_0
+origin_claims:
+  - parameter: Kbar_0
+    introduced_at_stage: 97
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 30
+      excerpt: "`= Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`."
+constraints:
+  - parameter: Kbar_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+      line: 38
+      excerpt: "So once `Kbar_0` and `Omega_Q` are known, the entire even conservative ledger is fixed."
+downstream_dependents: [99, 100]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "This candidate (even-ledger-fixed) classifies the STRUCTURAL relation Kbar_2 = Kbar_0/(4 Omega_Q^2), Kbar_4 = Kbar_0/(4 Omega_Q^4) — these follow internally from the one-pole conservative module (internal_consistency). But the NUMERICAL fixing of Kbar_0 itself in this stage is a back-solve to the GR target Kbar_0^target = 64 G Omega_Q^5/(45 c^5) (published_target). The structural relation is internal; the value anchor is external. See companion candidate fit_stage_097_kbar_0."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 34, excerpt: "`Kbar_2 = Kbar_0 / (4 Omega_Q^2),`" }
+      - { path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md, line: 61, excerpt: "`Kbar_0^target = 64 G Omega_Q^5 / (45 c^5),`" }

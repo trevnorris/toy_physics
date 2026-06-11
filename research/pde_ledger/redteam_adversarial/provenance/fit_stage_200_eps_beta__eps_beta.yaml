@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_200_eps_beta__phase_b__eps_beta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -143,9 +143,45 @@ source_evidence:
   line: 441
   role: sympy_script
   excerpt: print("      (C_tr, C_nt, eps_eta)")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_beta
+  introduced_at_stage: 197
+  introduced_at_line: 265
+  citation:
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 265
+    excerpt: \beta=1+\varepsilon_\beta,
+constraints:
+- parameter: eps_beta
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 271
+    excerpt: with all three small. Then
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'eps_beta is a symbolic linearization (perturbation) coordinate, NOT a fitted/derived numeric value: in the Stage
+    200 sympy audit (script lines 406-421) it is the small expansion direction beta = 1 + eps*eps_beta used to linearize Delta_Q^lin
+    = eps(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S). It has no value to constrain; it is a free coordinate of the deformation
+    chart -> constraint_kind free_choice (a convention, no derivation or external anchor). The underlying linearization map
+    (beta = 1 + varepsilon_beta with chi_Q-1 = 5 varepsilon_beta + dSigma0/(3S) + 9 dSigma5/S) is documented at Stage 197
+    notes lines 263-278, satisfying the binding rule; the literal script symbol ''eps_beta'' is not used in the Stage 200
+    notes, hence the low-severity gap note.'
+  citations:
+  - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+    line: 412
+    excerpt: 'beta: 1 + eps * eps_beta,'
+  - path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 275
+    excerpt: '5\varepsilon_\beta
+
+      +\frac{\delta\Sigma_0}{3S}
+
+      +\frac{9\,\delta\Sigma_5}{S}'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_200_eps_beta__eps_beta.yaml

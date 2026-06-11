@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_carried_point_block__phase_b__sigma_m_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,47 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma_m_star
+  introduced_at_stage: 135
+  introduced_at_line: 86
+  citation:
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 89
+    excerpt: \approx 0.451485277739090.
+constraints:
+- parameter: Sigma_m_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 78
+    excerpt: Requiring the canonical compensation point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Sigma_m_star = 0.451485277739090 is the outlet-consistent mouth gain, first SOLVED at Stage 135:86-89 by imposing
+    the canonical compensation point on the M_s=4*Sigma_m / M_q=-Sigma_m outlet ratio (the ratio itself carried from the Stage
+    115/116 compensation law) — internal_consistency. Stage 152 carries it as a frozen mpf literal (script:28), re-quoted
+    at notes:16.
+  citations:
+  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 28
+    excerpt: Sigma_m_star = mp.mpf("0.451485277739090")
+  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 86
+    excerpt: \Sigma_m^*
+downstream_dependents:
+- '142'
+- '144'
+- '147'
+- '148'
+- '150'
+- '151'
+- '152'
+- '154'
+- '155'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage152_carried_point_block__sigma_m_star.yaml

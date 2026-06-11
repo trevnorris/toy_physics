@@ -1,0 +1,12 @@
+candidate_id: fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+parameter_name: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Not a parameter value. The 'parameter_name' is the Stage-253 Mathematica-audit-script file/result name (file/source provenance), an excluded layer in this audit. No numeric parameter value is associated; the notes document no parameter of this name. No value genealogy to classify."
+    citations:
+      - { path: paper/stages/stage_253.tex, line: 4, excerpt: "\\stagefield{Verification}{SymPy audit: ... Mathematica audit: \\StageFile{mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl}.}" }
+      - { path: redteam_adversarial/provenance/fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit__moving_throat_pde_stage253_physical_calib_2c39c327799b.yaml, line: 3, excerpt: "parameter_name: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit" }

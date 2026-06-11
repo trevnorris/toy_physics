@@ -1,0 +1,24 @@
+candidate_id: fit_stage194_even_deformations_not_free
+parameter_name: Sigma_2
+origin_claims:
+  - parameter: Sigma_2
+    introduced_at_stage: 194
+    introduced_at_line: 210
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 210
+      excerpt: "+\\Sigma_0+\\Sigma_2 z^2+\\Sigma_4 z^4+i\\Sigma_5 z^5+O(z^6)."
+constraints:
+  - parameter: Sigma_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 272
+      excerpt: "So the even deformations are not free once the canonical conservative moments are held fixed."
+downstream_dependents: [195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Sigma_2 is the even-z^2 isotropic core self-energy coefficient of the first DtN deformation family (194 line 210). It is NOT free: the canonical-even matching conditions -L_2/L_0=1/9, L_2^2/L_0^2-L_4/L_0=4/81 (194 lines 260-262) FORCE Sigma_2=-(3 S beta^2-3 S+Sigma_0)/9 (line 267). So Sigma_2 is fixed by internal-consistency (preserving the canonical even fingerprint), not posited or externally fit. The candidate id ('even_deformations_not_free') matches the notes verdict at line 272."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 267, excerpt: "\\Sigma_2=-\\frac{3S\\beta^2-3S+\\Sigma_0}{9}," }

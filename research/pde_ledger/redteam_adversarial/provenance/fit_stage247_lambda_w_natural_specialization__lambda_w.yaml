@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_lambda_w_natural_specialization__phase_b__lambda_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,26 @@ source_evidence:
   line: 243
   role: sympy_script
   excerpt: assert abs(float(lambda_L_soft) - 0.26971918) < 1e-6
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_W
+  introduced_at_stage: 247
+  introduced_at_line: 491
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 491
+    excerpt: \lambda_W=1.
+constraints:
+- parameter: lambda_W
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 489
+    excerpt: Choose the natural Session-I work specialization
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage247_lambda_w_natural_specialization__lambda_w.yaml

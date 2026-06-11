@@ -1,0 +1,25 @@
+candidate_id: fit_stage158_linear_defect_transport_coefficients
+parameter_name: slippage_coefficient_eps_perp
+origin_claims:
+  - parameter: slippage_coefficient_eps_perp
+    introduced_at_stage: 158
+    introduced_at_line: 151
+    citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 151
+      excerpt: "with numerical coefficient"
+constraints:
+  - parameter: slippage_coefficient_eps_perp
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+      line: 137
+      excerpt: "Using the exact `delta R` transport above,"
+downstream_dependents: [159, 160, 161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The stage158 linear-transport / slippage coefficients (the delta M_q, delta Pi, delta Sigma0 coefficients, and the final normal coordinate delta_perp the card calls out) are all DERIVED by linearizing the exact ledger identities M_s=Sigma0, M_q=-Sigma0 R, Pi=Sigma0(1-R S) about the renormalized canonical point, then substituting the exact delta R transport (notes section 2-4) -> internal_consistency. Coefficient values such as -0.490216044387626, 2.28001126927792, 6.42981496203006 are functions of the carried base-point literals (which themselves inherit the r_F1<-37/20 fit dependence). No separate origin or external target for the slippage coefficient itself; the audit script (py:84-91) verifies chi = 1 + (5b + a0/3 + 9a5) symbolically."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 159, excerpt: "2.28001126927792\\,\\delta\\mathfrak g." }
+      - { path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py, line: 52, excerpt: "expect_zero(\"delta Mq law\", (Mq_lin - Mq0) - (-Rstar * dSigma0 - Sigma0 * dR))" }

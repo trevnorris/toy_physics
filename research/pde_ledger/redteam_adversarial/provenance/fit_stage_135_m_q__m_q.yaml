@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_135_m_q__phase_b__m_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -107,9 +107,46 @@ source_evidence:
   line: 80
   role: sympy_script
   excerpt: print("M_q^* * S_q(Pi_*) =", mixed_correction)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q
+  introduced_at_stage: 135
+  introduced_at_line: 36
+  citation:
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 36
+    excerpt: M_q = -\Sigma_m,
+constraints:
+- parameter: M_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 99
+    excerpt: M_q^* = -\Sigma_m^*
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: M_q at Stage 135 carries two layers. Its FORM M_q = -Sigma_m (the -1 ratio) is the IMPOSED outlet-consistent closure
+    mirroring the Stage-115 4:-1 outlet ratio, which the note explicitly calls 'not yet a theorem... the cleanest way' (free_choice;
+    notes lines 30,41). Its NUMERICAL value M_q^* = -Sigma_m^* approx -0.451485277739090 then follows by internal_consistency
+    once Sigma_m^* = Pi_*/(4 - S_q(Pi_*)) is solved from the one-parameter fixed-point law (notes lines 86-101). Classified
+    internal_consistency for the value; the upstream free_choice in the ratio is recorded here so the genealogy is not overstated
+    as a clean derivation.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 41
+    excerpt: This is not yet a theorem of the full PDE. It is the cleanest way to make the
+  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 88
+    excerpt: \frac{\Pi_*}{4-\mathcal S_q(\Pi_*)}
+downstream_dependents:
+- '136'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_135_m_q__m_q.yaml

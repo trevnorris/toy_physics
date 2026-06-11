@@ -1,0 +1,24 @@
+candidate_id: fit_stage_001_k_l
+parameter_name: K_l
+origin_claims:
+  - parameter: K_l
+    introduced_at_stage: 1
+    introduced_at_line: 239
+    citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 239
+      excerpt: "`mu_eta q_{lm,tt} - partial_w( T_w partial_w q_{lm} ) + [ K_eta + l(l+1) T_Omega ] q_{lm}`"
+constraints:
+  - parameter: K_l
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+      line: 239
+      excerpt: "`mu_eta q_{lm,tt} - partial_w( T_w partial_w q_{lm} ) + [ K_eta + l(l+1) T_Omega ] q_{lm}`"
+downstream_dependents: [2]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K_l is not an independent fitted value; it is the modal restoring coefficient K_l(l) = K_eta + l(l+1)*T_Omega obtained algebraically by projecting the posited quadratic wall action onto the spherical-harmonic eigenvalue l(l+1) (notes line 239). The scanner's extracted value '0' comes from the stage-001 sympy audit's residual checks (K_l|l=0 - K_eta == 0 and K_l|l=2 - (K_eta+6 T_Omega) == 0), which are consistency identities, not a numeric fit. The constant '6' is the l(l+1) specialization at l=2, not an unexplained literal. K_l therefore inherits its status from K_eta/T_Omega (both free_choice ansatz coefficients); the combination itself is exact internal algebra."
+    citations:
+      - { path: scripts/moving_throat_pde_stage001_geometry_lift_sympy_audit.py, line: 182, excerpt: "expect_zero(\"K_l at ell=2\", sp.simplify(k_l.subs(ell, 2) - (k_eta + 6 * t_omega)))" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_two_moment_source_matrix__phase_b__m_src.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -55,9 +55,53 @@ source_evidence:
   line: 138
   role: sympy_script
   excerpt: assert det_M_src == sp.Rational(14, 425)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_src
+  introduced_at_stage: 246
+  introduced_at_line: 275
+  citation:
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 282
+    excerpt: '\dfrac13 & -\dfrac1{15}\\[8pt]
+
+      \dfrac15 & \dfrac1{17}'
+constraints:
+- parameter: M_src
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 294
+    excerpt: \det M_{\rm src}=\frac{14}{425}>0.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'M_src is NOT a posited numeric constant. It is the 2x2 two-moment source map [[1/3, -1/15],[1/5, 1/17]] (notes
+    line 282) whose entries are DERIVED by integrating the compensated two-mode source against the carried Family-1 kernels
+    c(x)=cos(pi x/2) and K_q(x) (notes line 229-256): the mouth-bias gives g = (2/pi)(1 + a/3 - b/15) and the shell-loading
+    gives S = (2 tanh(pi/2)/pi)(1 + a/5 + b/17), so the matrix entries 1/3, -1/15, 1/5, 1/17 are exact integration coefficients.
+    det M_src = 14/425 > 0 (notes line 294) is computed from those entries, proving exact invertibility. This is internal_consistency
+    (a derived integration matrix), not a fit. Logged for transparency since M_src is a derived structure, not a single inserted
+    value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 234
+    excerpt: '\mathfrak g(a,b)
+
+      =
+
+      \frac{2}{\pi}\left(1+\frac{a}{3}-\frac{b}{15}\right).'
+  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 253
+    excerpt: '\mathcal S(a,b)
+
+      =
+
+      \frac{2\tanh(\pi/2)}{\pi}
+
+      \left(1+\frac{a}{5}+\frac{b}{17}\right).'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage246_two_moment_source_matrix__m_src.yaml

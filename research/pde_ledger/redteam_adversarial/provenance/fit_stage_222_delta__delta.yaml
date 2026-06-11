@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_delta__phase_b__delta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,8 +184,21 @@ source_evidence:
   line: 217
   role: sympy_script
   excerpt: threshold_eta_01 = float(sp.N((2 * DeltaV_req_num * (1 + sp.Rational(1, 10) ** 2) / sp.Rational(1, 10)), 30))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta
+  introduced_at_stage: 222
+  introduced_at_line: 107
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 107
+    excerpt: \Delta(\omega)=A(\omega)W(\omega)-R^2,
+constraints:
+- parameter: Delta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 113
+    excerpt: D(\omega)=K_B(\omega)-\frac{Q(\omega)}{\Delta(\omega)}.
 graph_context:
   contexts: []
   graph_gaps:
@@ -210,3 +223,20 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_222.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: needs_triage
+  summary: Delta(omega)=A(omega)W(omega)-R^2 is the (U,W)-block determinant of the concrete primitive-branch bundle at Stage
+    222 (the same Delta_Pi structure carried from Stage 220, now specialized to the primitive finite-throat branch). Derived
+    internally. The provenance scanner logged a graph_gap (no atlas node for the stage-222 notes/card source path); value-genealogy
+    is fully documented in the notes.
+  citations:
+  - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 79
+    excerpt: Delta = A * W - R**2
+  - path: redteam_adversarial/provenance/fit_stage_222_delta__delta.yaml
+    line: 201
+    excerpt: 'type: graph_gap'
+downstream_dependents:
+- '223'
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_222_delta__delta.yaml

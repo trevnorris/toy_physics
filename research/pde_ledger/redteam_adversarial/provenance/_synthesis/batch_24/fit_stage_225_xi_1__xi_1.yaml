@@ -1,0 +1,19 @@
+candidate_id: fit_stage_225_xi_1
+parameter_name: Xi_1
+origin_claims:
+  - parameter: Xi_1
+    introduced_at_stage: 225
+    introduced_at_line: 220
+    citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 220
+      excerpt: "\\Xi_1=\\frac{P_1}{P_0}=\\frac{N_{01}}{N_0}-\\frac{D_{01}}{D_0}."
+constraints:
+  - parameter: Xi_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 224
+      excerpt: "So on any one-pole base branch the same-charge scalar is already a **static loading mismatch** between"
+downstream_dependents: [226, 227]
+provenance_findings: []

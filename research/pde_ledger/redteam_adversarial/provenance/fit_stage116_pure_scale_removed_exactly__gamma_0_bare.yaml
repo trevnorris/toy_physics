@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage116_pure_scale_removed_exactly__phase_b__gamma_0_bare.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,9 +110,49 @@ source_evidence:
   line: 86
   role: sympy_script
   excerpt: 'print("  Final coefficients: kappa_c =", kappa_c, ", gamma_c =", gamma_c)'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_0_bare
+  introduced_at_stage: 116
+  introduced_at_line: 62
+  citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 62
+    excerpt: 'A simple concrete realization is to take the bare mixed outlet to be a pure-scale deformation of the canonical
+      compact outgoing `l=2` branch:'
+constraints:
+- parameter: gamma_0_bare
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 62
+    excerpt: 'A simple concrete realization is to take the bare mixed outlet to be a pure-scale deformation of the canonical
+      compact outgoing `l=2` branch:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: 'gamma_0_bare is the bare outgoing normalization gamma_0=(1+r_c)/9 realized via a POSITED pure-scale deformation
+    D_W^bare(z)=(1+r_c)(1 - z^2/3 - i z^5/9). The notes word it as ''A simple concrete realization is to take...'', i.e. a
+    posited convenience ansatz; the (1+r_c) hybridization factor is then ''removed exactly'' by the Stage-114 denominator
+    renormalization to leave the canonical gamma_c=1/9. This is a free_choice realization (ansatz), not an internal derivation:
+    nothing forces the pure-scale FORM, only the resulting coefficient. The PAPER_CLEANUP_TRACKER independently records ''gamma0=(1+r_c)/9
+    re-confirmed a POSTULATED pure-scale ANSATZ (not derived)''.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    line: 70
+    excerpt: Then the hybridization factor `(1+r_c)` is removed exactly by the Stage-114 denominator renormalization, leaving
+      the canonical final coefficients
+  - path: notes/PAPER_CLEANUP_TRACKER.md
+    line: 637
+    excerpt: '**Ansatz catalog:** γ₀=(1+r_c)/9 re-confirmed a POSTULATED pure-scale ANSATZ (not derived; 117 §5 / 116 "Bare
+      outgoing normalization" note)'
+downstream_dependents:
+- '117'
+- '118'
+- '119'
+- '120'
+- '121'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage116_pure_scale_removed_exactly__gamma_0_bare.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_stage159_tangential_transport_coeffs__phase_b__dpi_tan_coeff_ds.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -171,9 +171,39 @@ source_evidence:
   line: 144
   role: sympy_script
   excerpt: print("5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: dPi_tan_coeff_dS
+  introduced_at_stage: 158
+  introduced_at_line: 237
+  citation:
+    path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 236
+    excerpt: 1.16275838754222\,\delta\mathcal S
+constraints:
+- parameter: dPi_tan_coeff_dS
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 329
+    excerpt: Using the Stage 159 tangential transport,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: dPi_tan_coeff_dS = -1.16275838754222 is the delta-S coefficient of the Stage 159 tangential mouth deformation delta_Pi_tan
+    = 0.832409471081635 delta_Sigma0 - 1.16275838754222 delta_S, carried into Stage 161 (notes lines 329-334) and used in
+    the final Delta_Q law. Origin is Stage 158, where it equals Sigma0_can/4 (the delta-S coefficient of delta Pi). DERIVED
+    by linearizing the exact slope identity Pi = Sigma0(1 - R S) at the canonical point -> internal_consistency. Value inherits
+    Sigma0_can (internal). No external target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 335
+    excerpt: 1.16275838754222\,\delta\mathcal S,
+  - path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 221
+    excerpt: \frac{\Sigma_0^{\rm can}}{4}\,\delta\mathcal S
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage161_stage159_tangential_transport_coeffs__dpi_tan_coeff_ds.yaml

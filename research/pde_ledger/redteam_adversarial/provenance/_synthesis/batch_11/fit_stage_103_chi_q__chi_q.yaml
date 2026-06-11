@@ -1,0 +1,19 @@
+candidate_id: fit_stage_103_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 101
+    introduced_at_line: 13
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 13
+      excerpt: "This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`."
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+      line: 20
+      excerpt: "- if the actual passive/outgoing grouped-`P2` quadrupole branch satisfies `chi_Q = 1`,"
+downstream_dependents: [104, 105, 106, 107]
+provenance_findings: []

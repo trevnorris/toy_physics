@@ -1,0 +1,24 @@
+candidate_id: fit_stage225_stage223_sample_point
+parameter_name: OmU
+origin_claims:
+  - parameter: OmU
+    introduced_at_stage: 223
+    introduced_at_line: 209
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 209
+      excerpt: "(0.5,\\,0.3,\\,0.4,\\,0.25,\\,1.0,\\,1.4,\\,2.0,\\,1.0),"
+constraints:
+  - parameter: OmU
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 119
+      excerpt: "\\left(\\frac12,\\frac3{10},\\frac25,\\frac14,1,\\frac75,2,1\\right),"
+downstream_dependents: [226, 227]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The OmU bundle's source_evidence lists only sympy_script entries (no notes_stage); the value Omega_U=1 (script line 206) is nonetheless documented in notes as the fifth entry of the Stage-222/223 illustrative sample slice (lambda_B,lambda_U,lambda_W,lambda_R,Omega_U,Omega_W,varpi,M)=(0.5,0.3,0.4,0.25,1.0,1.4,2.0,1.0). It is a posited illustrative sample-point coordinate (free_choice), not a fitted or derived quantity. The bundle's missing notes anchor is the only gap; the notes citation is supplied above."
+    citations:
+      - { path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py, line: 206, excerpt: "OmU: sp.Integer(1)," }

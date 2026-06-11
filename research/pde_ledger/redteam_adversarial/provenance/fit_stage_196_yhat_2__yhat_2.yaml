@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_196_yhat_2__phase_b__yhat_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -63,9 +63,26 @@ source_evidence:
   line: 198
   role: sympy_script
   excerpt: print("      Yhat_2^(def,>=7) - Yhat_2^(def,5) = -L0 L_{>=7}/(D5 D_{>=7}) = O(z^7).")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Yhat_2
+  introduced_at_stage: 194
+  introduced_at_line: 236
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 236
+    excerpt: \widehat Y_2^{\rm def}(z):=\frac{L_0}{L_0+L_2 z^2+L_4 z^4+iL_5 z^5}+O(z^6).
+constraints:
+- parameter: Yhat_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 192
+    excerpt: \widehat Y_2^{\rm def,5}(z):=\frac{L_0}{D_5(z)}.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '197'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_196_yhat_2__yhat_2.yaml

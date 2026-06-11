@@ -1,0 +1,24 @@
+candidate_id: fit_stage_098_zeta_max
+parameter_name: zeta_max
+origin_claims:
+  - parameter: zeta_max
+    introduced_at_stage: 79
+    introduced_at_line: 35
+    citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 35
+      excerpt: "`zeta_max^(F1) ≈ 2.46752922945601.`"
+constraints:
+  - parameter: zeta_max
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 451
+      excerpt: "carried forward as `zeta_max^(F1)` from the Stage 63/64 support ceiling"
+downstream_dependents: [99]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Candidate value '2.46752922945601' resolved to the generic symbol zeta_max; in stage 098 this is exactly zeta_max_F1, the Family-1 support ceiling. At stage 098 it appears as both a free symbol in the general theorem (any branch with zeta_max>1) and is specialized to the carried Family-1 literal. Internal_consistency carry from stage 079 (Stage 63/64 ceiling packet); not introduced or derived at stage 098."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md, line: 50, excerpt: "`0 <= eps_blk < 1/zeta_max`." }

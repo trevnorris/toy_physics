@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage026_kappa_overlap_2sqrt2_over_pi__phase_b__kappa.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -183,9 +183,42 @@ source_evidence:
   line: 190
   role: notes_stage
   excerpt: '`B_0 = kappa^2 lambda_B^2 / varpi^2`,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa
+  introduced_at_stage: 26
+  introduced_at_line: 122
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 122
+    excerpt: '`kappa_n = int_0^L ds u_0(s) f_n(s) = sqrt(2) / ( (n + 1/2) pi )`.'
+constraints:
+- parameter: kappa
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 257
+    excerpt: '- the minimal-branch value `kappa = 2 sqrt(2) / pi`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: Same parameter as fit_stage026_kappa_exact_overlap. The scanner's value token 'sp.sqrt(2)/((n+sp.Rational(1,2)'
+    is the general kappa_n = sqrt(2)/((n+1/2)pi); the minimal-branch n=0 value is 2 sqrt(2)/pi. Value is an exact computed
+    overlap integral -> internal_consistency. The underlying N/N + D/N mode basis is a posited branch (free_choice ansatz)
+    per notes line 294; recorded as the competing read.
+  citations:
+  - path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+    line: 98
+    excerpt: kappa_n_expected = sp.sqrt(2) / ((n + sp.Rational(1, 2)) * sp.pi)
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 262
+    excerpt: What is **not** yet fixed from first principles are the branch parameters
+downstream_dependents:
+- '027'
+- '032'
+- '035'
+- '036'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage026_kappa_overlap_2sqrt2_over_pi__kappa.yaml

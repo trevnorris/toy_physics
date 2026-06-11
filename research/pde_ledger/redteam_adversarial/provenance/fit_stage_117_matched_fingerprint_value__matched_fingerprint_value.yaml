@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_117_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -44,9 +44,48 @@ source_evidence:
   line: 172
   role: sympy_script
   excerpt: '#   L_W = pi a sqrt((1+r_c)/3) / 2   (forward, from the D/N half-wave eigenvalue),'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 104
+  introduced_at_line: 46
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 46
+    excerpt: \widehat Y_2^{\rm out}(z)
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+    line: 53
+    excerpt: \widehat Y_2(z)=1+\frac{z^2}{9}+\frac{4z^4}{81}+i\frac{z^5}{27}+O(z^6).
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The 'matched fingerprint' Stage 117 preserves is the canonical outgoing quadrupole DtN fingerprint Y2^out(z)=1+z^2/9+4z^4/81+i
+    z^5/27, which is an INTERNALLY-derived ledger quantity (the canonical compact outgoing l=2 branch, first established at
+    Stage 104, restated at Stage 110 line 50). The Stage-117 compensation surface is constructed to PRESERVE this internal
+    fingerprint (notes lines 42-55), so the match is internal_consistency, NOT a back-solve to an external GR/PN published
+    number. The scanner extracted a vague 'matched_fingerprint_value' parameter with no notes_stage pointer in the bundle;
+    the value it refers to is this canonical fingerprint series, not a fitted scalar.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+    line: 50
+    excerpt: \widehat Y_2^{\rm out}(z)=1+\frac{z^2}{9}+\frac{4z^4}{81}+i\frac{z^5}{27}+O(z^6),
+  - path: notes/stages/moving_throat_pde_stage117_outlet_core_status.md
+    line: 42
+    excerpt: On that surface the full outlet reduces to
+downstream_dependents:
+- '118'
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage_117_matched_fingerprint_value__matched_fingerprint_value.yaml

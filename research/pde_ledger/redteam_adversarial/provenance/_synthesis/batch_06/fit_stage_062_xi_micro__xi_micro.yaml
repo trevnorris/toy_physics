@@ -1,0 +1,25 @@
+candidate_id: fit_stage_062_xi_micro
+parameter_name: Xi_micro
+origin_claims:
+  - parameter: Xi_micro
+    introduced_at_stage: 60
+    introduced_at_line: 203
+    citation:
+      path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+      line: 203
+      excerpt: "`Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X).`"
+constraints:
+  - parameter: Xi_micro
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+      line: 245
+      excerpt: "`= rho_* g_phi^2 O_(sigma phi)^2 L^2 / [ m c_(s*)^2 T_X N_(sigma sigma) ].`"
+downstream_dependents: [63, 64, 65, 66]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 062 Xi_micro is carried from its Stage-060 origin (Xi_micro = kappa G_micro) and is here re-expressed entirely in parent-action overlap data (rho_*, g_phi, O_sigmaphi, N_sigmasigma, c_s*, T_X, L). This is a deepened internal-consistency projection of the same derived coupling, not a new posited value at 062."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md, line: 234, excerpt: "Stage 61 used" }
+      - { path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md, line: 236, excerpt: "`Xi_micro = kappa G_micro,`" }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage164_log_channel_prefactors_27_40_27_320
+parameter_name: first_log_channel_prefactor
+origin_claims:
+  - parameter: first_log_channel_prefactor
+    introduced_at_stage: 164
+    introduced_at_line: 226
+    citation:
+      path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+      line: 226
+      excerpt: "-\\frac{27\\pi m_\\psi^2}{40\\hbar\\mu_0 q_*}\\,"
+constraints:
+  - parameter: first_log_channel_prefactor
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+      line: 214
+      excerpt: "So on that branch"
+downstream_dependents: [165]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The 27/40 (and 27/320) prefactors are algebraic products of the Stage-118 parent-action formulas (g_s,g_q,K_q,lambda) substituted with the Stage-118 healing-lock shell branch (K_s=6 pi hbar/5 * a^2 c_sw/rho_w); 164 derives them but cross-references the inputs only as 'Stage 118' without per-line origin anchors."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md, line: 207, excerpt: "Stage 118 also recorded the carried healing-lock shell branch" }
+      - { path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md, line: 234, excerpt: "\\frac{27\\pi^3 m_\\psi^2}{320\\hbar\\mu_0 q_*^2}\\," }

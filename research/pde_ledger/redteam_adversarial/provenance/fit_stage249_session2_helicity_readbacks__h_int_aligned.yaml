@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage249_session2_helicity_readbacks__phase_b__h_int_aligned.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -189,9 +189,38 @@ source_evidence:
   line: 341
   role: notes_stage
   excerpt: 2\int_{I_E}\Gamma_0(t;E)\,dt.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: H_int_aligned
+  introduced_at_stage: 249
+  introduced_at_line: 428
+  citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 428
+    excerpt: \approx 20.58070146,
+constraints:
+- parameter: H_int_aligned
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 416
+    excerpt: The reported helicity-export outputs were
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: H_sub,+^final (aligned final unresolved-helicity load) = 20.58070146 is a numerical readback ('reported helicity-export
+    output') hardcoded from the external Session-II run; no in-ledger derivation exists for the run that produced it. It is
+    consumed only to reconstruct the ratio R_int via Mobius inversion.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 416
+    excerpt: The reported helicity-export outputs were
+  - path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+    line: 169
+    excerpt: hint_aligned = 20.58070146
+downstream_dependents:
+- '250'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage249_session2_helicity_readbacks__h_int_aligned.yaml

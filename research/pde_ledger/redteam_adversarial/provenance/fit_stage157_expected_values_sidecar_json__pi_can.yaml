@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage157_expected_values_sidecar_json__phase_b__pi_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -169,9 +169,40 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: 'print("dPi_tan at the renormalized canonical point =", dPi_expected.subs({Sigma0: Sigma0_can, Sstar: S_can}))'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_can
+  introduced_at_stage: 156
+  introduced_at_line: 71
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 71
+    excerpt: \Pi_{\rm can}
+constraints:
+- parameter: Pi_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+    line: 36
+    excerpt: The numerics below are carried directly from Stage 155 for the frozen canonical
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Stage157''s Pi_can (3.871564377479002, notes line 65) is explicitly CARRIED from Stage 156 (notes line 38: ''and
+    from Stage 156 for the renormalized canonical branch''); the stage157 sympy audit loads it from an expected-values sidecar
+    (Pi_can_expected) and re-verifies the identity Pi_can = Sigma0_can*(1 - (1/4)*S_can). Origin is the Stage 156 fixed-point
+    read; classification internal_consistency follows from that identity check among ledger-internal quantities. No external
+    target involved.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+    line: 65
+    excerpt: \Pi_{\rm can}\approx 3.871564377479002.
+  - path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+    line: 83
+    excerpt: expect_close("Pi_can identity", Pi_can, Sigma0_can * (1 - sp.Rational(1, 4) * S_can))
+downstream_dependents:
+- '158'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage157_expected_values_sidecar_json__pi_can.yaml

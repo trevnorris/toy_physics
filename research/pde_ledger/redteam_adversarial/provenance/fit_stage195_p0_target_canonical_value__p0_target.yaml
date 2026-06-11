@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_p0_target_canonical_value__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,47 @@ source_evidence:
   line: 158
   role: sympy_script
   excerpt: Delta_norm_linear = sp.simplify(P0_target * NQ_minus_1_linear)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 191
+  introduced_at_line: 190
+  citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 190
+    excerpt: ' \frac{54Gc_s^5}{5a^5c^5}.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 71
+    excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: high
+  summary: 'P0_target = 54 G c_s^5/(5 a^5 c^5) (extracted literal ''54/5'') is an EXTERNAL GR/PN normalization target, not
+    a ledger-internal derivation. It carries Newton''s G and c; it is explicitly named ''the exact Packet-A target scale''
+    (195 line 70-71); the normalization condition the PDE must satisfy is m_hat_0^2 P_bar_0 = P0_target (via Delta_norm, 191
+    lines 187-190 and 195 line 163), i.e. the ledger BACK-MATCHES P_bar_0 to this imported number. N_Q:=P_bar_0/P0_target
+    (195 line 103) measures the ratio to that target, and closure demands N_Q=1 (=> P_bar_0 hits the external value). This
+    is the load-bearing fit-vs-derive case: the 54/5 GR-quadrupole normalization is a published_target carried from 191 through
+    195, NOT derived from the toy superfluid PDE. The companion external target Gamma_bar_5_target=2G/(5c^5) (195 line 121)
+    is the odd-sector partner.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 71
+    excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 121
+    excerpt: \bar\Gamma_5^{\rm target}:=\frac{2G}{5c^5}.
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 103
+    excerpt: N_Q:=\frac{\bar P_0}{P_0^{\rm target}}.
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage195_p0_target_canonical_value__p0_target.yaml

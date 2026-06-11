@@ -1,0 +1,26 @@
+candidate_id: fit_stage_154_g_star
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 142
+    introduced_at_line: 97
+    citation:
+      path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+      line: 97
+      excerpt: "\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+      line: 100
+      excerpt: "\\mathfrak r_{F1}-\\frac12\\sqrt{1+\\mathfrak r_{F1}^2},"
+downstream_dependents: [155, 156, 157]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "g_star = 0.758035078944663 is the canonical overlap g_-^{F1}, first quoted at Stage 142:97. At Stage 154 it is RE-DERIVED in the script as g_star = r - sqrt(1+r^2)/2 (the lower-compensation root, with the script verifying R(g_star)-1/4=0 — confirming it is the R=1/4 compensation point). internal_consistency at the solve level, BUT it is built from r_F1 = sqrt((12/pi^2)(L/a)^2 - 1) whose L/a=37/20 is a POSITED reference-branch freeze (Stage 073:56), not derived nor external. Flagged so the carried g_* is not read as first-principles; same caveat as the Stage 148/152 g_* and r_F1 candidates."
+    citations:
+      - { path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py, line: 35, excerpt: "g_star = r - sp.sqrt(1 + r**2) / 2" }
+      - { path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py, line: 36, excerpt: "expect_zero(\"R(g_star) - 1/4\", R.subs(g, g_star) - sp.Rational(1, 4))" }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }

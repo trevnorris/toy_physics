@@ -1,0 +1,19 @@
+candidate_id: fit_stage225_stage224_xi_budgets
+parameter_name: B_xi_both_10
+origin_claims:
+  - parameter: B_xi_both_10
+    introduced_at_stage: 224
+    introduced_at_line: 318
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 318
+      excerpt: "\\lesssim 0.367930328492646,"
+constraints:
+  - parameter: B_xi_both_10
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+      line: 154
+      excerpt: "At the same compatibility point, the stricter weak-axisymmetric budgets carried from Stage 224 are"
+downstream_dependents: [226, 227]
+provenance_findings: []

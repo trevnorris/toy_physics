@@ -1,0 +1,25 @@
+candidate_id: fit_stage124_what_is_now_fixed
+parameter_name: mathfrak_g_pm_F1
+origin_claims:
+  - parameter: mathfrak_g_pm_F1
+    introduced_at_stage: 122
+    introduced_at_line: 53
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 53
+      excerpt: "\\mathfrak g_{\\pm}^{F1}\n=\n\\frac{2\\sqrt{4107-100\\pi^2}\\pm 37\\sqrt3}{20\\pi}."
+constraints:
+  - parameter: mathfrak_g_pm_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+      line: 23
+      excerpt: "3. **Canonical compensation family at that same \\(\\mathfrak r\\)**"
+downstream_dependents: [125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 124 is a STATUS/consolidation card (confirmed status-only: notes-only, both engines null, per PAPER_CLEANUP_TRACKER). It merely tabulates 'what is now fixed': g_-^F1~0.758035, g_+^F1~2.79795 (notes lines 25-27), originated at Stage 122 from the balance law at r=r_F1 (internal_consistency relation). The numerical values inherit the carried 37/20 freeze via r_F1 (free_choice upstream). No new derivation or external target at Stage 124."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 25, excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663," }
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 27, excerpt: "\\mathfrak g_+^{F1}\\approx 2.79795199200529." }

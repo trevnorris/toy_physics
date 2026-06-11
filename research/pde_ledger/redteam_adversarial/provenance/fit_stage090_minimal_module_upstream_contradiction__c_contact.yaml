@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage090_minimal_module_upstream_contradiction__phase_b__c_contact.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -67,9 +67,45 @@ source_evidence:
   line: 58
   role: sympy_script
   excerpt: print("c_contact =", c_contact)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: c_contact
+  introduced_at_stage: 88
+  introduced_at_line: 17
+  citation:
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 17
+    excerpt: '`c0 = 3/4,`'
+constraints:
+- parameter: c_contact
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+    line: 15
+    excerpt: Under the natural contact-plus-pole realization of the minimal isotropic conservative quadrupole precursor, it
+      selects
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: 'Candidate-id ''minimal_module_upstream_contradiction'' is partly borne out. Stage 090''s script comments c_contact=3/4
+    as ''carried from the minimal isotropic conservative module fixed upstream'', but the actual grouped-P2+static-geometry
+    DERIVATION of the 3/4 value occurs at DOWNSTREAM Stages 091-094, not upstream of 090. So ''fixed upstream'' is a forward-reference:
+    at 090 c_contact=3/4 is a posited paper-quoted import (free_choice), and its claimed derivation lives later. The 090 note
+    also uses the term ''contact-plus-pole''/''minimal module'' but the script symbol is c_contact while Stage 088/091 use
+    c0 / K_geom for the same fraction — a naming braid worth noting.'
+  citations:
+  - path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+    line: 15
+    excerpt: '- 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed'
+  - path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+    line: 52
+    excerpt: c_contact = sp.Rational(3, 4)
+  - path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 34
+    excerpt: So the `3/4 + 1/4` conservative module is no longer just a plausible parametrization. Under the minimal grouped-`P2`
+      + static-geometry realization, it is forced.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage090_minimal_module_upstream_contradiction__c_contact.yaml

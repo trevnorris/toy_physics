@@ -1,0 +1,19 @@
+candidate_id: fit_stage043_support_direction_extracted_not_guessed
+parameter_name: R_phi
+origin_claims:
+  - parameter: R_phi
+    introduced_at_stage: 43
+    introduced_at_line: 103
+    citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 103
+      excerpt: "`R_phi := [ 1 + sigma_0/(1+delta_U) ] / (1 + sigma_0).`"
+constraints:
+  - parameter: R_phi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+      line: 13
+      excerpt: "The first symmetry-allowed extension is to turn on the bilinear `U/phi` coupling. Once that is done, the support direction can be extracted exactly from the continuum kernel rather than guessed."
+downstream_dependents: [44, 45]
+provenance_findings: []

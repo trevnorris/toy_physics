@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_035_f_target__phase_b__f_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -187,9 +187,41 @@ source_evidence:
   line: 75
   role: sympy_script
   excerpt: soft_const = sp.simplify(sp.limit((1 - xi) * F_target, xi, 1, dir="-"))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: F_target
+  introduced_at_stage: 29
+  introduced_at_line: 61
+  citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 61
+    excerpt: '`F(xi,delta)`'
+constraints:
+- parameter: F_target
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    line: 59
+    excerpt: After inserting the D/N constants, the exact dimensionless shape function is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: F_target is the audit-script variable name for the dimensionless D/N shape function F(xi,delta) = (9 delta + 11
+    xi)^4 / [81 (1-xi)(9 delta^2 + 18 delta xi + 11 xi^2)^2]. It is DERIVED by substituting the exact D/N constants (kappa_0^2=8/pi^2,
+    kappa_1^2=16/9pi^2) into the Stage-034 softening-depth normalization product (notes lines 51-63; the script verifies F
+    - F_target == 0 at line 58). Internal_consistency; the suffix '_target' is a script label, not a fitted target value.
+  citations:
+  - path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+    line: 54
+    excerpt: F_target = sp.simplify((9 * delta + 11 * xi) ** 4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2)
+      ** 2))
+  - path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+    line: 74
+    excerpt: expect_zero("F(0,delta) - 1", sp.simplify(F_target.subs(xi, 0) - 1))
+downstream_dependents:
+- '030'
+- '032'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_035_f_target__f_target.yaml

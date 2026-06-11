@@ -1,0 +1,25 @@
+candidate_id: fit_stage_106_delta_q
+parameter_name: Delta_Q
+origin_claims:
+  - parameter: Delta_Q
+    introduced_at_stage: 101
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 65
+      excerpt: "`Delta_Q := chi_Q - 1`."
+constraints:
+  - parameter: Delta_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+      line: 65
+      excerpt: "`Delta_Q := chi_Q - 1`."
+downstream_dependents: [107]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_Q at stage 106 appears only in the audit script (a first-order sensitivity expansion gamma_eff around chi_Q = 1 + Delta_Q); it is NOT mentioned in stage 106's own notes (moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md) or card. Its definition/origin is the stage 101 notes (line 65, Delta_Q := chi_Q - 1); on the canonical branch Delta_Q = 0. The binding notes/ citation is satisfied from stage 101, but stage 106 itself has no notes-level documentation of the Delta_Q sensitivity exercise the script performs."
+    citations:
+      - { path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py, line: 80, excerpt: "# F4: Delta_Q first-order sensitivity. On the natural branch (m0hat=1) we have" }
+      - { path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md, line: 65, excerpt: "`Delta_Q := chi_Q - 1`." }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_session4_rate_constants
+parameter_name: gamma_crit
+origin_claims:
+  - parameter: gamma_crit
+    introduced_at_stage: 251
+    introduced_at_line: 455
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 455
+      excerpt: " \\gamma_{\\rm crit}\\approx 6.94311167,"
+constraints:
+  - parameter: gamma_crit
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 562
+      excerpt: "is not a theorem of the minimal microscopic kernel. It is a property of the Session-IV envelope closure."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "gamma_crit ~= 6.94311167 is a Session-IV ENVELOPE-CLOSURE benchmark readback (the finite unconditional shedding threshold of the phenomenological gamma_tot law). The notes are explicit it is NOT a theorem of the microscopic kernel -- 'a property of the Session-IV envelope closure'. So it is a posited/reported closure-specific number, not derived in-ledger and not an external published target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 350, excerpt: "the minimal microscopic export kernel does **not** admit a finite analogue of the Session-IV unconditional threshold `\\gamma_{\\rm crit}`." }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 178, excerpt: "gamma_crit_num = 6.94311167" }

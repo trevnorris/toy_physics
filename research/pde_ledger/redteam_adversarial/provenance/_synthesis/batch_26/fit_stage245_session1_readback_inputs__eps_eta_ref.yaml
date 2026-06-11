@@ -1,0 +1,25 @@
+candidate_id: fit_stage245_session1_readback_inputs
+parameter_name: eps_eta_ref
+origin_claims:
+  - parameter: eps_eta_ref
+    introduced_at_stage: 245
+    introduced_at_line: 504
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 504
+      excerpt: "\\epsilon_{\\eta,\\rm ref}=0.3."
+constraints:
+  - parameter: eps_eta_ref
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 497
+      excerpt: "The session write-up records the representative relaxed-rigid-mouth point"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "eps_eta_ref = 0.3 is the reference dressing value, imported as a probe/sample input from the barrier Session-I write-up (notes line 504, script line 211 'eps_ref_obs = sp.Float(0.3)'). It is a posited representative sample value (free_choice) defining the reference point of the logarithmic dressing chart V = ln(eps_eta/eps_eta,ref); it is not derived from ledger-internal quantities and not an external published target. Logged at low severity to record its sample-probe character."
+    citations:
+      - { path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py, line: 211, excerpt: "eps_ref_obs = sp.Float(\"0.3\")" }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 91, excerpt: "V:=\\ln\\!\\left(\\frac{\\epsilon_\\eta}{\\epsilon_{\\eta,\\rm ref}}\\right)." }

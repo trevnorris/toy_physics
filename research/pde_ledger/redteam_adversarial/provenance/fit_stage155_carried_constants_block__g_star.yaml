@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_carried_constants_block__phase_b__g_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,44 @@ source_evidence:
   line: 100
   role: sympy_script
   excerpt: r = sp.Float(rF1, 30)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_star
+  introduced_at_stage: 142
+  introduced_at_line: 97
+  citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 97
+    excerpt: \approx 0.758035078944663,
+constraints:
+- parameter: g_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 58
+    excerpt: \mathfrak g_{\Pi_*}=\mathfrak g_-^{F1}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: g_star = 0.758035078944663 is the canonical overlap g_-^{F1} (Stage 142:97). internal_consistency at the solve
+    level (lower-compensation root), BUT built from r_F1 whose L/a=37/20 is a POSITED reference-branch freeze (Stage 073:56).
+    Stage 155 carries it as a hardcoded float (script:26) and as the compensation-restoration target g_fp -> g_*. Same posited-aspect-ratio
+    caveat as the other g_*/r_F1 candidates in this batch; flagged so carried g_* is not read as first-principles.
+  citations:
+  - path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+    line: 26
+    excerpt: g_star = 0.758035078944663
+  - path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 50
+    excerpt: \mathfrak g_*\approx 0.758035078944663,
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+downstream_dependents:
+- '156'
+- '157'
+- '158'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage155_carried_constants_block__g_star.yaml

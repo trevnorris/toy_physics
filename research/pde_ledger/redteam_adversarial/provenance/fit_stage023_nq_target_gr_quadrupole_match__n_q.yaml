@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage023_nq_target_gr_quadrupole_match__phase_b__n_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -32,9 +32,44 @@ source_evidence:
   excerpt: \stagefield{Inputs}{The inputs are the Stage~003 BdG moments, the Stages~004--021 projected Maxwell-to-\(Z_n,N_n\)
     packet and matched one-port conservative/transfer moments, the Stage~022 response/prefactor conversion, and the grouped
     metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\).}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: N_Q
+  introduced_at_stage: 18
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: N_Q
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 308
+    excerpt: '`mhat_0^2 * N_0 / ( K - B_0 - Z_0 ) = 54 G c_s^5 / (5 a^5 c^5)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: high
+  summary: 'The stage-023 isotropic normalization test N_Q (mhat_0^2 N_0/(K-B_0-Z_0) = 54Gc_s^5/(5a^5c^5)) is the full-bundle
+    restatement of the GR quadrupole match: the right-hand side 54/5 descends from gamma_GR=2G/(5c^5) back-solved at stage
+    022. Stage 023 frames it as a TEST against ''the universal target'' and asks whether the true branch ''lands on'' it (note
+    line 314) — i.e. a fit to an external published number, classified published_target. The card claimstatus marks actual
+    branch values StatusOpen (stage_023.tex:5), so this is honestly disclosed, not overclaimed. The 54/5 target value''s origin
+    is stage 022, not 023.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    line: 314
+    excerpt: '> does the true moving-throat branch produce coupled bundle data `(K, M, B_n, Z_n, N_n)` whose isotropic static
+      ratio `N_0/(K-B_0-Z_0)` lands on the universal target?'
+  - path: paper/stages/stage_023.tex
+    line: 231
+    excerpt: =\frac{54Gc_s^5}{5a^5c^5}}
+downstream_dependents:
+- '020'
+- '025'
+- '191'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage023_nq_target_gr_quadrupole_match__n_q.yaml

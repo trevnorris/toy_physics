@@ -1,0 +1,19 @@
+candidate_id: fit_stage186_rank3_codimension_status_claim
+parameter_name: chi_0_star
+origin_claims:
+  - parameter: chi_0_star
+    introduced_at_stage: 47
+    introduced_at_line: 137
+    citation:
+      path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+      line: 87
+      excerpt: "\\chi_0=\\frac{\\gamma c_{\\eta U}}{K_U},"
+constraints:
+  - parameter: chi_0_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 191
+      excerpt: "\\det M_*^{(\\tau,\\kappa_\\eta,\\mu_1)} = 1+\\chi_{0,*} > 0."
+downstream_dependents: [187]
+provenance_findings: []

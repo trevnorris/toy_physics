@@ -1,0 +1,25 @@
+candidate_id: fit_stage_247_lvar_from_w
+parameter_name: Lvar_from_W
+origin_claims:
+  - parameter: Lvar_from_W
+    introduced_at_stage: 247
+    introduced_at_line: 204
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 204
+      excerpt: "\\mathcal W_w^{\\rm sess}(r)"
+constraints:
+  - parameter: Lvar_from_W
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 454
+      excerpt: "\\mathfrak L(r_{\\rm soft})=\\Lambda(r_{\\rm soft})\\varrho(r_{\\rm soft})"
+downstream_dependents: [ 248 ]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Scanner-extracted target value '122' is not a parameter value for Lvar_from_W. Lvar_from_W is the closed-form algebraic inversion of the Stage-244 work law W_sess = (512 eta^2 mu_w q rho_0 / pi^4 lam^2) L^2, solved for L (script line 113); the script proves it is identically equal to the symbol Lvar (assert Lvar_from_W - Lvar == 0, line 122) - a pure internal_consistency identity. On the Session-I benchmark slice the numeric value is 20.01677473 (notes lines 454-457), not 122. The '122' is a mis-extraction artifact and should be discarded."
+    citations:
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 122, excerpt: "assert sp.simplify(Lvar_from_W - Lvar) == 0" }
+      - { path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md, line: 457, excerpt: "=20.01677473," }

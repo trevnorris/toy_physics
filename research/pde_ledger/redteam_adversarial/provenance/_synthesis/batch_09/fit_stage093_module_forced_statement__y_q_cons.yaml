@@ -1,0 +1,25 @@
+candidate_id: fit_stage093_module_forced_statement
+parameter_name: Y_Q_cons
+origin_claims:
+  - parameter: Y_Q_cons
+    introduced_at_stage: 91
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 32
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`."
+constraints:
+  - parameter: Y_Q_cons
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+      line: 25
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`,"
+downstream_dependents: [94, 96]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 093 restates the forced module Y_Q_cons (internal_consistency, conditional on one-pole + static-geometry, with the conditional spelled out as 'if ... static through O(omega^4)'). The 093 note uses STALE pre-renumber cross-references ('Stages 74-75', 'Stage 73', 'Stage 76', 'Stage 71/72') for canonical Stages 091/092, 090, 093, 088/089 — the known +17 renumber drift. No value error; the module statement is faithful, only the upstream stage labels are stale."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md, line: 5, excerpt: "Stages 74–75 close the exact next step that was left open after Stage 73." }
+      - { path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md, line: 21, excerpt: "- and if the geometry lane is static through `O(omega^4)`," }

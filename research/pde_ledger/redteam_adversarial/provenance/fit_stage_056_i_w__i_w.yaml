@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_056_i_w__phase_b__i_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,38 @@ source_evidence:
   line: 79
   role: sympy_script
   excerpt: expect_zero("dOmega/dPe - Cov/I_W", sp.diff(Omega_Pe, Pe) - Cov / I_W)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: I_W
+  introduced_at_stage: 53
+  introduced_at_line: 48
+  citation:
+    path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+    line: 48
+    excerpt: '`I_W = int_0^L ds chi_0(s) = 2 sqrt(2L) / pi.`'
+constraints:
+- parameter: I_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+    line: 106
+    excerpt: '`I_W = int_0^L ds chi_0(s) = 2 sqrt(2L)/pi.`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: self_contradictory_origin
+  severity: needs_triage
+  summary: The scanner attributed value '0' to I_W, but I_W is the (strictly positive) lowest-mode uniform overlap integral
+    I_W = int_0^L chi_0(s) ds = 2 sqrt(2L)/pi, evaluated exactly in both the Stage-056 notes (line 106) and sympy script (line
+    49). It is nowhere zero -- the attributed value '0' is spurious and must not be ingested. I_W's value originates at Stage
+    053 (notes 053 line 48, same uniform-source overlap); Stage 056 restates it as the normalizing denominator of Omega_Pe.
+  citations:
+  - path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+    line: 49
+    excerpt: I_W = sp.simplify(sp.integrate(chi0, (s, 0, L)))
+  - path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+    line: 48
+    excerpt: '`I_W = int_0^L ds chi_0(s) = 2 sqrt(2L) / pi.`'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_056_i_w__i_w.yaml

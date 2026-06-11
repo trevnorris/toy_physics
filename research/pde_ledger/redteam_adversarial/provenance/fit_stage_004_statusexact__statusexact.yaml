@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_004_statusexact__phase_b__statusexact.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -30,4 +30,20 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'StatusExact is not a fitted/posited parameter value: it is the LaTeX claim-status macro \StatusExact{} used in
+    the stage card''s \claimstatus{...} line to label the stage''s algebraic-identity rigor tier. The candidate scanner picked
+    up the macro token as if it were a parameter. There is no parameter value to attribute a constraint_kind to; no notes/
+    source documents a numeric ''StatusExact'' value because none exists. Logged as a gap (scanner false-positive / non-parameter
+    candidate).'
+  citations:
+  - path: paper/stages/stage_004.tex
+    line: 5
+    excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+      data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+      closure, parent-action packet, or one-port normal form.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_004_statusexact__statusexact.yaml

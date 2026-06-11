@@ -1,0 +1,25 @@
+candidate_id: fit_stage029_mixed_sign_convention_match
+parameter_name: alpha_0
+origin_claims:
+  - parameter: alpha_0
+    introduced_at_stage: 29
+    introduced_at_line: 149
+    citation:
+      path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+      line: 149
+      excerpt: "`alpha_0 = lambda_B^2 / varpi^2`"
+constraints:
+  - parameter: alpha_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+      line: 150
+      excerpt: "`         + ( Omega_U^2 lambda_W + lambda_R lambda_U )^2 / ( Omega_U^2 Delta_0 )`."
+downstream_dependents: [30, 33]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "alpha_0 is the zero-frequency conservative value of the Schur-complement directional load -> internal_consistency (exact rational function of the reduced couplings, the Pi_out(0)=0 limit of the derived alpha(omega)). Caveat flagged by the candidate name 'mixed_sign_convention_match': the U-W coupling sign (-lambda_R(v.u)W) is CHOSEN to be 'the one compatible with the earlier conservative self-energy convention in which the mixed-sector cross term enters with the positive +2 G_U G_W R numerator' (notes line 87). That sign is a convention matched to earlier stages, not independently re-derived here; it determines the sign structure feeding alpha_0/Delta_0. The VALUE is still an internal_consistency derivation under the ledger's own fixed convention; the matched-sign is a low-severity caveat, not an external fit."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md, line: 85, excerpt: "- U–W:      `- lambda_R (v.u) W`." }
+      - { path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md, line: 87, excerpt: "The last sign is the one compatible with the earlier conservative self-energy convention in which the mixed-sector cross term enters with the *positive* `+ 2 G_U G_W R` numerator after elimination." }

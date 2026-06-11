@@ -1,0 +1,25 @@
+candidate_id: fit_stage163_family1_readback_misattribution
+parameter_name: S_can
+origin_claims:
+  - parameter: S_can
+    introduced_at_stage: 156
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 69
+      excerpt: "\\approx 0.6703621156734617,"
+constraints:
+  - parameter: S_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 53
+      excerpt: "At that renormalized traction, the exact self-consistent fixed point satisfies"
+downstream_dependents: [164, 168]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: needs_triage
+    summary: "S_can~0.6703621156734617 is read back at Stage 163 (line 339) and hardcoded as a script literal (S_can=sp.Float(...)) with NO origin cross-reference to Stage 156 where it is the self-consistent fixed-point mixed response; the read-back presents an upstream-solved value as a local canonical datum. This is the read-back-misattribution class the candidate name flags."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md, line: 339, excerpt: "\\mathcal S_{\\rm can}\\approx 0.6703621156734617," }
+      - { path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py, line: 126, excerpt: "S_can = sp.Float(\"0.6703621156734617\", 30)" }

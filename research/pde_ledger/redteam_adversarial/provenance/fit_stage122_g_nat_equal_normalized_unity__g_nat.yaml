@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage122_g_nat_equal_normalized_unity__phase_b__g_nat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -149,9 +149,43 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: expect_nonzero("natural off compensation", comp_def)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_nat
+  introduced_at_stage: 122
+  introduced_at_line: 26
+  citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 26
+    excerpt: \mathfrak g_{\rm nat}=1.
+constraints:
+- parameter: g_nat
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 30
+    excerpt: 'This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same
+      mouth source, same normalized loading” core closure.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: 'g_nat=1 is the ''natural equal-normalized local mouth source'' branch: g_s=g_m sqrt(K_s), g_q=g_m sqrt(K_q) gives
+    g_nat=1 (notes lines 15-26). The notes EXPLICITLY flag it as ''a concrete branch ansatz, not as a theorem of the full
+    PDE'' (line 30) — a posited convenience closure (free_choice), no derivation and no external anchor. Stage 122 then TESTS
+    it against the compensation family and finds it misses (defect ~1.74), so g_nat=1 is a candidate branch, not a forced
+    value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 21
+    excerpt: This is the simplest concrete local branch with **no channel favoritism** at the mouth.
+  - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    line: 91
+    excerpt: so the natural branch misses the compensated surface.
+downstream_dependents:
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage122_g_nat_equal_normalized_unity__g_nat.yaml

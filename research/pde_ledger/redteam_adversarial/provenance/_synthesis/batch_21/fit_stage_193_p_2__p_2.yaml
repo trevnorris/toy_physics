@@ -1,0 +1,17 @@
+candidate_id: fit_stage_193_p_2
+parameter_name: P_2
+origin_claims: []
+constraints:
+  - parameter: P_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+      line: 5
+      excerpt: "**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 191, the microscopic orbit/quotient split of Stage 192, and the reduced 5PN isotropic grouped-real `P2` closure.**"
+downstream_dependents: [194, 195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "P_2 (extracted literal '2') is the angular multipole label l=2 of the 'grouped real P2' sector, not a fitted scalar. Stage 193 works entirely with the grouped-real P2 conservative carrier (notes lines 33-35, 105-149); the '2' is the multipole-order convention chosen for the moving-throat analysis (the l=2 / quadrupole sector). constraint_kind free_choice (sector/branch convention). No notes/ line at stage 193 assigns P_2 a derived or externally-fit numeric value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md, line: 35, excerpt: "That surface is the real front-end theorem target. It is where the grouped `20/21/22` bundle stops being an arbitrary three-lane packet and becomes the minimal isotropic one-pole conservative carrier needed by the higher-order chain." }

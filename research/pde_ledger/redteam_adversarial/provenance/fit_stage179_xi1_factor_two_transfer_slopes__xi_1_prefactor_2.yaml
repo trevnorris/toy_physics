@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage179_xi1_factor_two_transfer_slopes__phase_b__xi_1_prefactor_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -19,9 +19,39 @@ anchor_stages:
 - '179'
 notes_source_opened: true
 source_evidence: []
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_1_prefactor_2
+  introduced_at_stage: 179
+  introduced_at_line: 251
+  citation:
+    path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 251
+    excerpt: 2\sum_r \rho_r^{(N)}\tau_r.
+constraints:
+- parameter: Xi_1_prefactor_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 227
+    excerpt: \kappa_1+2\tau_r.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Bundle source_evidence was empty; resolved by reading notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md.
+    The candidate is the factor-2 prefactor in Xi_1 = 2 sum_r rho_r^(N) tau_r (notes line 251), equivalently the 2 in nu_r
+    = kappa_1 + 2 tau_r (notes line 227). This 2 is DERIVED, not posited: it is the squaring exponent in the exact wall-normalized
+    factorization N_{A,0}^(r) = K_A T_{A,r}^2 (notes lines 29, 218), so the log-slope picks up 2 x tau_r. Internal_consistency,
+    no external (GR/PN) target. Low severity (gap noted because the mechanical bundle carried no evidence).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 230
+    excerpt: So the Stage 178 port slope is just the wall-baseline slope plus twice the transfer-shape slope.
+  - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 29
+    excerpt: N_{A,0}^{(r)} = K_A\,\mathcal T_{A,r}^2,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage179_xi1_factor_two_transfer_slopes__xi_1_prefactor_2.yaml

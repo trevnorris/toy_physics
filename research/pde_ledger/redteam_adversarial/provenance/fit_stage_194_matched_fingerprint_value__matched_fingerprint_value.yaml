@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_194_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -137,8 +137,21 @@ source_evidence:
   line: 224
   role: sympy_script
   excerpt: print("   canonical even fingerprint fixed are beta, Sigma_0, and Sigma_5.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 194
+  introduced_at_line: 182
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 182
+    excerpt: Matching the leading odd coefficient yields
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 158
+    excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
 graph_context:
   contexts: []
   graph_gaps:
@@ -163,3 +176,23 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_194.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: '''matched_fingerprint_value'' is a scanner family-token, not a literal named parameter in the notes (the bundle''s
+    source_evidence is the card boilerplate Purpose/Verification block of stage_194.tex). The underlying real object is the
+    exact canonical compact outgoing l=2 DtN fingerprint Y_2^out=1+z^2/9+4z^4/81+i z^5/27+... (194 lines 136-158), DERIVED
+    from the spherical Hankel h_2^{(1)}, against which the retarded grouped-P2 module is matched (194 lines 164-184) to fix
+    chi_Q=1. Because the matched target is a derived special-function expansion, the ''matched fingerprint'' is internal_consistency,
+    not a fit to an external number. Logged as a low gap to flag the token is an alias for the 194 fingerprint match, not
+    a standalone fitted value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 137
+    excerpt: \widehat Y_2^{\rm out}(z)
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+downstream_dependents:
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_194_matched_fingerprint_value__matched_fingerprint_value.yaml

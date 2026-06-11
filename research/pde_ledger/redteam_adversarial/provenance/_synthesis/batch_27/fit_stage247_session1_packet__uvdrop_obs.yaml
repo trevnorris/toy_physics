@@ -1,0 +1,25 @@
+candidate_id: fit_stage247_session1_packet
+parameter_name: UVdrop_obs
+origin_claims:
+  - parameter: UVdrop_obs
+    introduced_at_stage: 247
+    introduced_at_line: 431
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 431
+      excerpt: "\\Delta E_{UV}(r_{\\rm soft})=0.21064278."
+constraints:
+  - parameter: UVdrop_obs
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 427
+      excerpt: "The Session-I table also records"
+downstream_dependents: [ 248 ]
+provenance_findings:
+  - type: published_target
+    severity: needs_triage
+    summary: "UVdrop_obs (DeltaE_UV(r_soft))=0.21064278 is a recorded Session-I benchmark figure (notes line 427-431; script line 215 UVdrop_obs = sp.Float('0.21064278')). It is read directly from the recorded stationary run rather than recomputed from the Stage-245 drain formula on this slice, and enters the lambda_L back-solve numerator (script line 238). A hardcoded recorded target, not a stage-247 derivation."
+    citations:
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 215, excerpt: "UVdrop_obs = sp.Float(\"0.21064278\")" }
+      - { path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md, line: 431, excerpt: "\\Delta E_{UV}(r_{\\rm soft})=0.21064278." }

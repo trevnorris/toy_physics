@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_chi_q__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -192,8 +192,21 @@ source_evidence:
   line: 447
   role: notes_stage
   excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 194
+  introduced_at_line: 184
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 22
+    excerpt: \chi_Q=1.
 graph_context:
   contexts: []
   graph_gaps:
@@ -218,3 +231,21 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_195.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: chi_Q is anchored to stage 195 by the candidate id, but its value chi_Q=1 is fixed at stage 194 (line 184) by matching
+    the canonical compact outgoing l=2 DtN fingerprint (derived from the spherical Hankel h_2^{(1)}). Stage 195 CARRIES chi_Q=1
+    (line 22) into the factorization m_hat_0^2 chi_Q N_Q=1 (line 139) and the defect Delta_Q:=chi_Q-1 (line 185). internal_consistency
+    (matched to a derived special-function expansion, not an external number). Origin 194, carried at 195.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 139
+    excerpt: \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_195_chi_q__chi_q.yaml

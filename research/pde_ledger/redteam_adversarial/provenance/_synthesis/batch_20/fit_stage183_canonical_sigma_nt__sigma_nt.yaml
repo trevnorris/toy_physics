@@ -1,0 +1,19 @@
+candidate_id: fit_stage183_canonical_sigma_nt
+parameter_name: Sigma_nt
+origin_claims:
+  - parameter: Sigma_nt
+    introduced_at_stage: 183
+    introduced_at_line: 99
+    citation:
+      path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+      line: 99
+      excerpt: "\\Sigma_{\\rm nt}"
+constraints:
+  - parameter: Sigma_nt
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+      line: 97
+      excerpt: "This suggests defining the genuine nontracking transfer-shape slippage"
+downstream_dependents: [184, 185, 186, 187]
+provenance_findings: []

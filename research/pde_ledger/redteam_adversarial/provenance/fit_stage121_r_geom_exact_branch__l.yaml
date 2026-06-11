@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_r_geom_exact_branch__phase_b__l.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -153,9 +153,46 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: sp.simplify(r_geom_simplified.subs(L, a*threshold))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L
+  introduced_at_stage: 121
+  introduced_at_line: 26
+  citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 26
+    excerpt: \boxed{L_W=L.}
+constraints:
+- parameter: L
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 24
+    excerpt: 'So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 116 with the **actual
+      throat axial span**:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: 'The throat axial span L enters the outlet-core program at Stage 121 only through the POSITED identification L_W
+    = L (notes line 26): the auxiliary D/N tube is IDENTIFIED with the actual throat length. This is described as ''the first
+    concrete branch test'' / ''the simplest honest moving-throat core identification'' (lines 24/29), i.e. a chosen branch
+    ansatz (free_choice), not a forced equality. Its numerical content arrives via L/a=37/20 (carried freeze, see fit_stage121_aspect_ratio_37_20_reference_freeze).
+    The geometric branch law r_geom(L/a)=sqrt((12/pi^2)(L/a)^2 - 1) is then an exact algebraic consequence of L_W=L combined
+    with the Stage-116 L_W formula.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 29
+    excerpt: 'This is the simplest honest moving-throat core identification: the mixed side-channel is not a detached auxiliary
+      cavity but the same axial throat corridor already selected by the carried geometry branch.'
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 37
+    excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
+downstream_dependents:
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage121_r_geom_exact_branch__l.yaml

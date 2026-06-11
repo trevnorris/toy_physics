@@ -1,0 +1,19 @@
+candidate_id: fit_stage063_amplitude_thresholds_exact
+parameter_name: g_phi_fail
+origin_claims:
+  - parameter: g_phi_fail
+    introduced_at_stage: 63
+    introduced_at_line: 104
+    citation:
+      path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+      line: 104
+      excerpt: "`g_(phi,fail)^2`"
+constraints:
+  - parameter: g_phi_fail
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+      line: 105
+      excerpt: "`= m c_(s*)^2 K_X N_(sigma sigma) G_fail / [ rho_* O_(sigma phi)^2 ],`"
+downstream_dependents: [64, 65, 66]
+provenance_findings: []

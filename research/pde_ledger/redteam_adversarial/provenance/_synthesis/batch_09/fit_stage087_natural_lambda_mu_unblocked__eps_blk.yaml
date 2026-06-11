@@ -1,0 +1,24 @@
+candidate_id: fit_stage087_natural_lambda_mu_unblocked
+parameter_name: eps_blk
+origin_claims:
+  - parameter: eps_blk
+    introduced_at_stage: 87
+    introduced_at_line: 57
+    citation:
+      path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+      line: 57
+      excerpt: "At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,"
+constraints:
+  - parameter: eps_blk
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+      line: 55
+      excerpt: "`rho_alpha < rho_max^(F1)(eps_blk)`."
+downstream_dependents: [88, 89]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "eps_blk=0 ('unblocked limit') is a posited limiting case (free_choice). Stage 087 only carries the threshold window in eps_blk and specializes to the unblocked limit; the eps_blk parametrization itself originates upstream at Stage 081."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md, line: 57, excerpt: "At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit," }

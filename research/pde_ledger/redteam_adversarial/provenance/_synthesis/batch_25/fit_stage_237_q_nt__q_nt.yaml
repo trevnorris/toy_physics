@@ -1,0 +1,25 @@
+candidate_id: fit_stage_237_q_nt
+parameter_name: q_nt
+origin_claims:
+  - parameter: q_nt
+    introduced_at_stage: 237
+    introduced_at_line: 177
+    citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 177
+      excerpt: "q_{\\rm nt}=-R_1-c_\\eta E_1,"
+constraints:
+  - parameter: q_nt
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 13
+      excerpt: "Once the first static ceiling `q_nt = 0` has been cleared, the remaining obstruction is exactly the single actual-branch scalar"
+downstream_dependents: [238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "q_nt's value 0 is the static orbit-lock CONDITION, not a posited or external number: q_nt is the target-dressing mismatch coordinate, DERIVED as q_nt = -R_1 - c_eta E_1 = Xi_1 (notes lines 177/13), and 'q_nt = 0' is exactly the statement that the first static same-charge ceiling has been cleared (line 13, 147 'q_nt=0, q_eta=0' is the rigid-mouth orbit-lock point). It is forced by the internal static-gate / orbit-lock requirement (internal_consistency). The static-strip equivalence q_nt=0 <=> Delta_mu = Delta_K_eta (Stage 236) confirms it is an internal consistency condition. No external anchor; classification well-supported. Logged low-severity that q_nt is a derived condition coordinate."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md, line: 147, excerpt: "q_{\\rm nt}=0,\\ q_\\eta=0" }
+      - { path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py, line: 319, excerpt: "print(\"Rigid-mouth orbit-lock point occurs at q_nt = 0, q_eta = 0.\")" }

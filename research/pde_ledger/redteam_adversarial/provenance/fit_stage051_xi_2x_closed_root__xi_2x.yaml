@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage051_xi_2x_closed_root__phase_b__xi_2x.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,9 +31,26 @@ source_evidence:
   line: 147
   role: sympy_script
   excerpt: expect_zero("G_tr(xi_(2x)) - 2 M_mix", sp.simplify(Gtr.subs(xi, xi_2x) - 2 * Mmix))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: xi_2x
+  introduced_at_stage: 51
+  introduced_at_line: 161
+  citation:
+    path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+    line: 161
+    excerpt: '`xi_(2x)(M_mix,delta;R)`'
+constraints:
+- parameter: xi_2x
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+    line: 159
+    excerpt: Because `G_tr` is strictly increasing on the stable branch, this equation has a unique stable-side root. Solving
+      the resulting quadratic gives
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage051_xi_2x_closed_root__xi_2x.yaml

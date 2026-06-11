@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage019_p0target_54_5_raw_retype__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,52 @@ source_evidence:
   line: 200
   role: sympy_script
   excerpt: lines.append(f'P0_target = {P0_target}')
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 18
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 258
+    excerpt: '`gamma_GR = 2 G / (5 c^5)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: high
+  summary: 'The 54/5 in P0_target=54Gc_s^5/(5a^5c^5 mhat0^2) (stage_019 script line 47, sp.Rational(54)/sp.Rational(5)) is
+    not an independently derived ledger constant: it is the algebraic image of the external GR quadrupole coefficient gamma_GR=2G/(5c^5)
+    after dividing through by the outgoing fingerprint Gamma_5=a^5/(27c_s^5) (54=2*27). The ''54/5 raw retype'' is a hardcoded
+    restatement of a published-target value, classified published_target.'
+  citations:
+  - path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+    line: 47
+    excerpt: P0_target = sp.Rational(54) * G * cs**5 / (sp.Rational(5) * a**5 * c**5 * mhat0**2)
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 266
+    excerpt: '`mhat_0^2 * P_0 * a^5 / (27 c_s^5) = 2 G / (5 c^5)`.'
+- type: provenance_gap
+  severity: needs_triage
+  summary: Stage 019 has no per-stage notes/stages/ file and its STAGE_PROVENANCE_INDEX note source (notes/em_projected/step_17...)
+    is absent from the repo; the 54/5 value's notes/ provenance is the GR back-solve documented at stage 022, not a stage-019
+    note.
+  citations:
+  - path: notes/STAGE_PROVENANCE_INDEX.md
+    line: 29
+    excerpt: '| 019 | `paper/stages/stage_019.tex` | `notes/em_projected/step_17_parent_throat_action_isotropic_bundle_notes.md`
+      |'
+downstream_dependents:
+- '016'
+- 019
+- '025'
+- '191'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage019_p0target_54_5_raw_retype__p0_target.yaml

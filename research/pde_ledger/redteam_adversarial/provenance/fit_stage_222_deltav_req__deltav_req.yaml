@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_deltav_req__phase_b__deltav_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -114,9 +114,44 @@ source_evidence:
   line: 245
   role: sympy_script
   excerpt: coupled_scan = positive_frequency_roots(sp.expand(F_y.subs(scan_subs)), y)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: DeltaV_req
+  introduced_at_stage: 222
+  introduced_at_line: 356
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 356
+    excerpt: \Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
+constraints:
+- parameter: DeltaV_req
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 436
+    excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local
+      barrier requirement must be pulled back from the actual same-charge branch.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: needs_triage
+  summary: 'DeltaV_req(1)=V_known(1)-epsilon=1.081909222592 is the local barrier-reduction requirement entering the low-loss
+    survival gate. As a SYMBOL DeltaV_req(x) it is the abstract required barrier reduction (the survival inequality R_Q,*
+    >= 2 DeltaV_req (1+eta^2)/eta x^6 is internally derived, line 263). But the NUMERIC value used here is built from the
+    ILLUSTRATIVE V_known benchmark minus a posited epsilon=0.1; the notes explicitly disclaim its provenance (line 436: ''used
+    here is illustrative. The true local barrier requirement must be pulled back from the actual same-charge branch''). Classified
+    free_choice for the numeric (illustrative placeholder), not internal_consistency and not published_target -- there is
+    no external target it is back-solved to. If any downstream stage treats 1.0819... as a real barrier requirement rather
+    than an illustrative number, that is the overclaim to catch (stage 223 carries it forward verbatim, still ''illustrative'').'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 263
+    excerpt: \mathcal R_{Q,*}\ge 2\,\Delta V_{\rm req}(x)\frac{1+\eta^2}{\eta}\,x^6.
+  - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 215
+    excerpt: DeltaV_req_num = V_known - epsilon
+downstream_dependents:
+- '223'
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_222_deltav_req__deltav_req.yaml

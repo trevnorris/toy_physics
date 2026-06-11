@@ -1,0 +1,25 @@
+candidate_id: fit_stage091_module_forced_paper
+parameter_name: Y_Q_cons
+origin_claims:
+  - parameter: Y_Q_cons
+    introduced_at_stage: 91
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 32
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`."
+constraints:
+  - parameter: Y_Q_cons
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 115
+      excerpt: "Therefore the normalized conservative quadrupole response is forced to be"
+downstream_dependents: [92, 93, 94, 96]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "The 3/4 + 1/4 module Y_Q_cons is reconstructed and verified in-script (Yhat - [3/4 + (1/4)/(1-u)] = 0) as a CONSEQUENCE of the forced split K_geom=3K_pole (internal_consistency), conditional on the one-pole + static-geometry ansatze. The paper card correctly tags this as a derivation-ledger entry, 'not an unconditional actual-branch theorem'. So the module is forced-given-hypotheses, not posited and not fit to an external target."
+    citations:
+      - { path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py, line: 72, excerpt: "expect_zero(\"Yhat - [3/4 + 1/4/(1-omega^2/OmegaQ^2)]\", Yhat - Yhat_expected)" }
+      - { path: paper/stages/stage_091.tex, line: 27, excerpt: "the card is a derivation ledger entry, not an unconditional actual-branch theorem." }

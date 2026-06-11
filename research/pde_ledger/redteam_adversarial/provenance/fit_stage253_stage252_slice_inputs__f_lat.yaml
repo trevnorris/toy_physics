@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_stage252_slice_inputs__phase_b__f_lat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,33 @@ source_evidence:
   line: 156
   role: notes_stage
   excerpt: f_{\rm lat}(s_c)\,\mu_\eta\,\frac{s_0^2-s_c^2}{s_c}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: f_lat
+  introduced_at_stage: 253
+  introduced_at_line: 255
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 255
+    excerpt: ' f_{\rm lat}(s_c)=\frac34,'
+constraints:
+- parameter: f_lat
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 954
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: f_lat=3/4 is a Stage-252 benchmark slice input carried into Stage 253; its value-as-3/4 originates as the posited
+    Session-IV by-hand 3:1 split (Stage 252 notes:385), not a Stage-253 derivation.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    line: 385
+    excerpt: ' f_{\rm lat}=\frac34.'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:11Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_stage252_slice_inputs__f_lat.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_transfer_shape_27pi2_over_20__phase_b__r_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -135,9 +135,43 @@ source_evidence:
   line: 146
   role: sympy_script
   excerpt: print("  The coherent support ratio zeta drops out identically from T^2 and R_target.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_target
+  introduced_at_stage: 38
+  introduced_at_line: 28
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 28
+    excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ],`'
+constraints:
+- parameter: R_target
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 116
+    excerpt: \frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: R_target (the selected-branch demand ratio) is a derived placement coordinate first defined at Stage 038 line 28/91;
+    the 27pi^2/20 enters only through its Lambda prefactor (Stage 038 line 32). Stage 181 carries it as the coherent-branch
+    demand ratio. Origin is upstream (038), not in-stage. The carried '27pi^2/20' label in the candidate id describes the
+    Lambda prefactor, not R_target itself.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 114
+    excerpt: \Lambda\,
+  - path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 91
+    excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+downstream_dependents:
+- '180'
+- '182'
+- '183'
+- '184'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage181_transfer_shape_27pi2_over_20__r_target.yaml

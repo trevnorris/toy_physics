@@ -1,0 +1,24 @@
+candidate_id: fit_stage_044_r_u
+parameter_name: R_U
+origin_claims:
+  - parameter: R_U
+    introduced_at_stage: 39
+    introduced_at_line: 35
+    citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 35
+      excerpt: "`R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`"
+constraints:
+  - parameter: R_U
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+      line: 27
+      excerpt: "Collect the actual continuum outputs from Stages 22 and 26."
+downstream_dependents: [44, 45]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "R_U is the mixed-direction factor whose value originates upstream (Stage 039 per the Stage-043 cross-reference notes line 105/107, and the Stage-044 notes line 27 'continuum outputs from Stages 22 and 26'). Stage 044 only carries/inserts it. Origin attributed to Stage 039; recorded for genealogy."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md, line: 107, excerpt: "`R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`" }

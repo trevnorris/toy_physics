@@ -1,0 +1,30 @@
+candidate_id: fit_stage_232_lambda_mu_1
+parameter_name: lambda_mu_1
+origin_claims:
+  - parameter: lambda_mu_1
+    introduced_at_stage: 232
+    introduced_at_line: 149
+    citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 149
+      excerpt: "for the benchmark \\(\\lambda_\\mu=1\\)."
+constraints:
+  - parameter: lambda_mu_1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 149
+      excerpt: "for the benchmark \\(\\lambda_\\mu=1\\)."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "lambda_mu = 1 is set explicitly 'for the benchmark' (notes 232 line 149) -- a chosen evaluation point at which the wall-depth extractions Theta_w = (4.0686... or 0.9275...)*lambda_mu^2 are reduced to pure numbers. It is a benchmark/normalization convention with no derivation or external anchor -> free_choice. The wall-depth scaling Theta_w ~ lambda_mu^2 originates at Stage 076/077 (where lambda_mu remains a free amplitude); fixing lambda_mu=1 is a Stage-232 evaluation choice. Logged low-severity: classification well-supported as a benchmark."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 7, excerpt: "`Theta_w = 25 lambda_mu^2 rho_w^2`" }
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 149, excerpt: "for the benchmark \\(\\lambda_\\mu=1\\)." }
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Atlas graph wrapper returned no source node for the Stage-232 notes path (carried from the mechanical bundle's graph_gaps); downstream enumeration relied on notes/card reading."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 6, excerpt: "**Exact within the carried same-charge barrier chain plus the numerically located `5`PN Family-1 support/source branch on the refreshed `\\Lambda_{\\rm EM}` geometry.**" }

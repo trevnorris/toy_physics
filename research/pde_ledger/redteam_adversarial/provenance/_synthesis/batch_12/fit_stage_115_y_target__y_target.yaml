@@ -1,0 +1,24 @@
+candidate_id: fit_stage_115_y_target
+parameter_name: Y_target
+origin_claims:
+  - parameter: Y_target
+    introduced_at_stage: 107
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+      line: 20
+      excerpt: "=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6),"
+constraints:
+  - parameter: Y_target
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 94
+      excerpt: "\\widehat Y_2(z)=1+\\frac{z^2}{9}+\\frac{4z^4}{81}+i\\frac{z^5}{27}+O(z^6)."
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Y_target (the literal canonical outgoing fingerprint 1 + z^2/9 + 4z^4/81 + i z^5/27, coded in the Stage-115 script) is NOT introduced at Stage 115; it is the ledger-internal outgoing-branch fingerprint first established at Stage 104/107. Stage 115 uses it as the falsifiable target that the concrete core model must reproduce. It is a ledger-internal derived quantity, not an external published number. Origin attributed to Stage 107."
+    citations:
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 66, excerpt: "Y_target = 1 + z**2 / 9 + 4 * z**4 / 81 + sp.I * z**5 / 27" }

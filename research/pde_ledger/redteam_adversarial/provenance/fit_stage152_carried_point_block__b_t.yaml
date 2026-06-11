@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_carried_point_block__phase_b__b_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,48 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_T
+  introduced_at_stage: 147
+  introduced_at_line: 58
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 58
+    excerpt: B_T
+constraints:
+- parameter: B_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 34
+    excerpt: Substituting the Stage 146 retuning formulas gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: B_T = 0.134875005736706 is DERIVED at Stage 147:58 from the closed form B_T = (9/40 T_m_*)*Pi_*/(4(1-S_*/4)^2),
+    built from ledger-internal canonical-branch quantities (internal_consistency). Stage 152 CARRIES it as a frozen mpf literal
+    (script:33), labeled 'previously frozen' at notes:50. No new value introduced or back-solved at this stage; no external
+    target named.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 56
+    excerpt: B_T\approx 0.134875005736706,
+  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 33
+    excerpt: BT = mp.mpf("0.134875005736706")
+downstream_dependents:
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage152_carried_point_block__b_t.yaml

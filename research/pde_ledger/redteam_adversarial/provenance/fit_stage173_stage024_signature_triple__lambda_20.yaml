@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage173_stage024_signature_triple__phase_b__lambda_20.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -104,9 +104,42 @@ source_evidence:
   line: 348
   role: notes_stage
   excerpt: 'So the Stage 171 obstruction pair has now been rewritten in the sharpest static form yet:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: lambda_20
+  introduced_at_stage: 24
+  introduced_at_line: 231
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 231
+    excerpt: '`lambda_(20) = 1`,'
+constraints:
+- parameter: lambda_20
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 217
+    excerpt: '`M^(20) = kappa_* diag(1, 1/2, 1/2, -1, -1)`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'lambda_20 = 1 is the leading entry of the weak-axisymmetric grouped signature (1, 1/2, -1). Stage 173 explicitly
+    carries it from Stage 024 (''Using the exact Stage-024 axisymmetric grouped signature lambda_20=1, lambda_21=1/2, lambda_22=-1'',
+    notes lines 21-23). At Stage 024 the triple is DERIVED, not fit: it is the five-mode angular overlap M^(20) = kappa_*
+    diag(1,1/2,1/2,-1,-1) obtained from the exact sixth moment of the unit sphere (stage 024 notes lines 211-231) — a spherical-harmonic
+    geometry result. No external (GR/PN) target; internal_consistency. Low severity (gap recorded because the literal value
+    1 is a structural angular-overlap coefficient rather than a standing constrained parameter).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 213
+    excerpt: '`int dOmega n_i n_j n_k n_l n_m n_n = (4 pi / 105) sum_pairings delta delta delta`,'
+  - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    line: 23
+    excerpt: \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1,
+downstream_dependents:
+- '173'
+- '177'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage173_stage024_signature_triple__lambda_20.yaml

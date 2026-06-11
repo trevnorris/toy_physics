@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_102_chi_q__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -98,8 +98,22 @@ source_evidence:
   line: 54
   role: sympy_script
   excerpt: sp.im(Yser5.coeff(omega, 5)) - chiQ * sp.Rational(9, 32) / Omega**5)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 101
+  introduced_at_line: 13
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 13
+    excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer
+      a mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+    line: 28
+    excerpt: '`  + i chi_Q 9/(32 Omega_Q^5) omega^5 + O(omega^6).`'
 graph_context:
   contexts: []
   graph_gaps:
@@ -136,3 +150,19 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_102.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 102 notes carry a stale pre-renumber cross-reference 'Stage 84 reduced ...'; canonical predecessor that reduced
+    the 2.5PN question to chi_Q is Stage 101, not Stage 84.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+    line: 5
+    excerpt: Stage 84 reduced the last finite reduced 2.5PN question to one outgoing-normalization factor `chi_Q`.
+downstream_dependents:
+- '103'
+- '104'
+- '105'
+- '106'
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage_102_chi_q__chi_q.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_assert_nonzero__phase_b__assert_nonzero.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -153,4 +153,17 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'assert_nonzero is not a parameter value: it is the name of a SymPy audit helper function defined in the stage-012
+    projected-Maxwell primitive-bridge audit script. The scanner captured the function identifier. There is no fitted/posited
+    numeric parameter and no notes/ source documents an ''assert_nonzero'' value because none exists. Logged as a gap (scanner
+    false-positive). The same false-positive occurs at stage 005.'
+  citations:
+  - path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+    line: 32
+    excerpt: 'def assert_nonzero(label: str, expr: sp.Expr) -> None:'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_012_assert_nonzero__assert_nonzero.yaml

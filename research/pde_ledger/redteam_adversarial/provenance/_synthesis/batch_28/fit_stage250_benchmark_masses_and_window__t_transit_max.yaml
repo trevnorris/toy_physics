@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: t_transit_max
+origin_claims:
+  - parameter: t_transit_max
+    introduced_at_stage: 250
+    introduced_at_line: 506
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 506
+      excerpt: "4.054,"
+constraints:
+  - parameter: t_transit_max
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 502
+      excerpt: "The same aligned branch carried actual barrier-region transit times between about"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "t_transit_max = 4.054 is the max actual barrier-region transit time measured on the sampled aligned trajectories (a dynamic-run readback used only as a cross-check that transit < t_collapse). It is a reported measurement from the Session run, not derived in-ledger."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 502, excerpt: "The same aligned branch carried actual barrier-region transit times between about" }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 181, excerpt: "transit_max_num = 4.054" }

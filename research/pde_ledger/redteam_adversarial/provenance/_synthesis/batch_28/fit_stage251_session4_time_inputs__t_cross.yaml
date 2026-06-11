@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_session4_time_inputs
+parameter_name: t_cross
+origin_claims:
+  - parameter: t_cross
+    introduced_at_stage: 251
+    introduced_at_line: 451
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 451
+      excerpt: " t_{\\rm cross}\\approx 1.82169718,"
+constraints:
+  - parameter: t_cross
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 449
+      excerpt: "The Session-IV cold aligned event used the characteristic data"
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "t_cross ~= 1.82169718 is a Session-IV cold-event characteristic-data readback (the crossing time for the chosen cold event, feeding s_c = 1/t_cross). It is a reported benchmark input, not derived in-ledger. NOTE this is a DIFFERENT t_cross value from Stage 250's t_cross compiler -- it is the specific Session-IV cold-event instance, not the Stage-250 Session-III benchmark."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 449, excerpt: "The Session-IV cold aligned event used the characteristic data" }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 176, excerpt: "t_cross_num = 1.82169718" }

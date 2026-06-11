@@ -1,0 +1,19 @@
+candidate_id: fit_stage130_x_star_penetration_depth_match
+parameter_name: x_star
+origin_claims:
+  - parameter: x_star
+    introduced_at_stage: 127
+    introduced_at_line: 78
+    citation:
+      path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+      line: 78
+      excerpt: "x_*^{\\exp}\\approx 0.662765402623161."
+constraints:
+  - parameter: x_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 118
+      excerpt: "which is exactly the penetration-depth value already found earlier for the"
+downstream_dependents: [130, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

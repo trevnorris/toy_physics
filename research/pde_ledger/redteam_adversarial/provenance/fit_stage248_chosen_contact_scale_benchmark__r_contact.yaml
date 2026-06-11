@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_chosen_contact_scale_benchmark__phase_b__r_contact.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -190,9 +190,39 @@ source_evidence:
   line: 10
   role: sympy_script
   excerpt: 3. the exact Coulomb contact-threshold formula,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_contact
+  introduced_at_stage: 248
+  introduced_at_line: 415
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 415
+    excerpt: r_{\rm contact}=0.18,
+constraints:
+- parameter: r_contact
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 165
+    excerpt: the energy needed to reach a chosen contact radius \(r_{\rm contact}\) from the same \(r_0\) is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: r_contact=0.18 is a declared 'chosen contact radius' (notes line 165, 287) fixed by the Session-II benchmark specialization
+    (notes line 407-415 'The Session-II run used ... r_contact=0.18'). It is a posited benchmark scale, not derived and not
+    matched to an external published number, hence free_choice. Note it numerically coincides with the stage-247 benchmark
+    scale r_soft=0.18; the notes do not state whether this reuse is intentional or whether r_contact was independently chosen.
+    No notes text justifies the specific value 0.18 beyond 'the Session-II run used' it.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 407
+    excerpt: The Session-II run used
+  - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 368
+    excerpt: r_{\rm soft}=0.18,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage248_chosen_contact_scale_benchmark__r_contact.yaml

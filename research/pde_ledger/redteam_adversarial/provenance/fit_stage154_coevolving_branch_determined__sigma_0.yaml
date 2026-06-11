@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage154_coevolving_branch_determined__phase_b__sigma_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -180,9 +180,43 @@ source_evidence:
   line: 50
   role: sympy_script
   excerpt: 'dSigma0*dS: 0,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma_0
+  introduced_at_stage: 140
+  introduced_at_line: 75
+  citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 75
+    excerpt: \Sigma_0 = \frac{20}{9}\widehat T_m^2.
+constraints:
+- parameter: Sigma_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+    line: 32
+    excerpt: 'This is a same-layer closure: it removes an otherwise free susceptibility scale by'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Sigma_0 is the overall shell gain scale. Its closure Sigma_0 = (20/9) T_hat_m^2 ORIGINATES at Stage 140:75 (the
+    self-matched mouth-susceptibility closure, which Stage 140:32 explicitly says 'removes an otherwise free susceptibility
+    scale' — internal_consistency, NOT a posit). Stage 154 CARRIES this closure (notes:186 'Under the self-matched susceptibility
+    closure from Stage 140') and uses Sigma_0 symbolically in the co-evolving fixed-point map / linearized slope identity
+    (script keeps Sigma0, dSigma0 as free symbols). No numeric Sigma_0 value is fitted at Stage 154; the value is fixed downstream
+    once T_hat_m lands the fixed point on g_*.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+    line: 186
+    excerpt: \Sigma_0=\frac{20}{9}\widehat T_m^2.
+  - path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+    line: 183
+    excerpt: Under the self-matched susceptibility closure from Stage 140,
+downstream_dependents:
+- '155'
+- '156'
+- '157'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage154_coevolving_branch_determined__sigma_0.yaml

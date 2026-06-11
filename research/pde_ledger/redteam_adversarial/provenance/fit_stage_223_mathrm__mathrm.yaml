@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_223_mathrm__phase_b__mathrm.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,8 +185,21 @@ source_evidence:
   line: 466
   role: notes_stage
   excerpt: P_{0,\mathrm{target,compat}},
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathrm
+  introduced_at_stage: 22
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: mathrm
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 127
+    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
 graph_context:
   contexts: []
   graph_gaps:
@@ -211,3 +224,21 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_223.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: needs_triage
+  summary: '''mathrm'' is not a real parameter — it is a LaTeX-command fragment the scanner extracted from \mathrm{...} inside
+    P_{0,\mathrm{target}}. The actual referent is P0_target (the 54/5 GR quadrupole external normalization target). Classified
+    per its real referent (published_target); the candidate''s parameter_name should be treated as a scanner false-positive
+    for P0_target.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 123
+    excerpt: P_0=P_{0,\mathrm{target}},
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 256
+    excerpt: The universal GR quadrupole target is
+downstream_dependents:
+- '224'
+- '225'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage_223_mathrm__mathrm.yaml

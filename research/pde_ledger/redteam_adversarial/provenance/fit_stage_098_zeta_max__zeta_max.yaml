@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_098_zeta_max__phase_b__zeta_max.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,36 @@ source_evidence:
   line: 39
   role: sympy_script
   excerpt: print('zmax - zeta_edge =', gap_factored)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_max
+  introduced_at_stage: 79
+  introduced_at_line: 35
+  citation:
+    path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+    line: 35
+    excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+constraints:
+- parameter: zeta_max
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 451
+    excerpt: carried forward as `zeta_max^(F1)` from the Stage 63/64 support ceiling
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Candidate value '2.46752922945601' resolved to the generic symbol zeta_max; in stage 098 this is exactly zeta_max_F1,
+    the Family-1 support ceiling. At stage 098 it appears as both a free symbol in the general theorem (any branch with zeta_max>1)
+    and is specialized to the carried Family-1 literal. Internal_consistency carry from stage 079 (Stage 63/64 ceiling packet);
+    not introduced or derived at stage 098.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+    line: 50
+    excerpt: '`0 <= eps_blk < 1/zeta_max`.'
+downstream_dependents:
+- 099
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_098_zeta_max__zeta_max.yaml

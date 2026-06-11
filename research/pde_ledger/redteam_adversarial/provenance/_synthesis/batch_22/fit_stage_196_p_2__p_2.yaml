@@ -1,0 +1,25 @@
+candidate_id: fit_stage_196_p_2
+parameter_name: P_2
+origin_claims:
+  - parameter: P_2
+    introduced_at_stage: 91
+    introduced_at_line: 1
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 1
+      excerpt: "# Moving-Throat PDE — Stage 091: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2` + Geometry Split"
+constraints:
+  - parameter: P_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 22
+      excerpt: "Stage 193 froze the exact isotropic grouped-real `P2` conservative one-pole carrier,"
+downstream_dependents: [197]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "P_2 (the conservative grouped-P2 quadrupole module / l=2 branch, scanner value '2' = the multipole index l=2) is not introduced at Stage 196 — it is carried as the already-fixed upstream branch. Its derivation is the grouped-P2 + geometry '3/4 + 1/4' split at Stage 091; the isotropic one-pole carrier form used here was frozen at Stage 193 (Stage 196 notes line 22). Stage 196 only generalizes that module with a higher-odd tail and proves the tail is invisible at theorem order; no new P_2 value is introduced. constraint_kind internal_consistency: the grouped-P2 module is derived from the geometry split, not an external fit. The provenance scanner logged a graph_gap (no atlas node) for the Stage 196 source path."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md, line: 355, excerpt: "Let the isotropic grouped-real `P2` branch satisfy the carried Stage 193 conservative one-pole surface, the Stage 194 outgoing `l=2` compiler, and the Stage 195 source-map reduction." }
+      - { path: redteam_adversarial/provenance/fit_stage_196_p_2__p_2.yaml, line: 71, excerpt: "graph_gap" }

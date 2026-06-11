@@ -1,0 +1,25 @@
+candidate_id: fit_stage029_deltaK_algebraically_forced
+parameter_name: DeltaK_ax
+origin_claims:
+  - parameter: DeltaK_ax
+    introduced_at_stage: 28
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+      line: 70
+      excerpt: "`Delta K_ax = T_w pi^2 / L^2`."
+constraints:
+  - parameter: DeltaK_ax
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+      line: 64
+      excerpt: "`Delta K_ax = T_w pi^2 / L^2`."
+downstream_dependents: [30, 31]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The scanner attached the literal value '0' to DeltaK_ax, but DeltaK_ax is not posited to be zero; it is the exact axial-gradient stiffness penalty DeltaK_ax = T_w pi^2/L^2 (the K_1 - K_0 splitting of the two N/N wall modes), originated at stage 028 (from the wall operator -T_w d_s^2 acting on u_1) and carried unchanged into stage 029. DeltaK_ax = 0 only in the degenerate T_w=0 limit, which is not the branch. '0' is a scanner mis-extraction. Classification internal_consistency: it is an exact algebraic consequence of the N/N mode spectrum. Origin is stage 028, not 029 (current stage carries it)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md, line: 64, excerpt: "`Delta K_ax = T_w pi^2 / L^2`." }
+      - { path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md, line: 172, excerpt: "`             = K_eta + 6 T_Omega + T_w (pi^2 / L^2) sin^2(theta)`." }

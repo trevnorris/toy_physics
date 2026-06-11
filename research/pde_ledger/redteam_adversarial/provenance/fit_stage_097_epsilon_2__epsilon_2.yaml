@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_097_epsilon_2__phase_b__epsilon_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,8 +29,21 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_2
+  introduced_at_stage: 96
+  introduced_at_line: 31
+  citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 31
+    excerpt: '`eps_2 = eps_4 = 0`'
+constraints:
+- parameter: epsilon_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+    line: 27
+    excerpt: So the geometry lane cannot contribute dynamic `omega^2` or `omega^4` moments to the isotropic quadrupole module.
 graph_context:
   contexts: []
   graph_gaps:
@@ -51,3 +64,17 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_097.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: epsilon_2 is restated as a card check at stage 097 (eps_2=eps_4=0 returns c_pole=1/4) but is not introduced in
+    the stage097 notes; its origin is the geometry-lane verdict at stage 096 (and the stability theorem at stage 095). The
+    stage097 bundle had only paper-card source evidence with an atlas graph_gap; the binding notes citation is taken from
+    the upstream stage096 verdict note.
+  citations:
+  - path: paper/stages/stage_097.tex
+    line: 22
+    excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
+downstream_dependents:
+- 099
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_097_epsilon_2__epsilon_2.yaml

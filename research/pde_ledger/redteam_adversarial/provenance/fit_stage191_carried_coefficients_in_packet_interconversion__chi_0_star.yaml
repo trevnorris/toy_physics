@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage191_carried_coefficients_in_packet_interconversion__phase_b__chi_0_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -63,9 +63,39 @@ source_evidence:
   line: 244
   role: sympy_script
   excerpt: sp.simplify(sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT)),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_0_star
+  introduced_at_stage: 191
+  introduced_at_line: 253
+  citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 253
+    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+constraints:
+- parameter: chi_0_star
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 253
+    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'chi_0_star (chi_0,*) is declared at 191 line 253 as a ''carried coherent-branch coefficient'' (the reference/selected-branch
+    value of chi_0) and used only as an opaque symbol in the Packet-B interconversion (R_tr=m_T^{1+chi_0,*}, etc., 191 lines
+    256-276) and in the 192 quotient matrix M_* (det P = 1+chi_0,*). Stage 191 does NOT give it a value, derivation, or external
+    target; it is posited as carried. Its true upstream origin (the coherent reference branch where chi_0,* is fixed, stages
+    187-190) is not pinned by any notes/ line within batch 21 stages, so the constraint_kind is classified free_choice (carried
+    convention) on the available evidence rather than internal_consistency. Flagged for triage: locate the upstream stage
+    that actually constrains chi_0,*.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 256
+    excerpt: \boxed{\mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},
+downstream_dependents:
+- '192'
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage191_carried_coefficients_in_packet_interconversion__chi_0_star.yaml

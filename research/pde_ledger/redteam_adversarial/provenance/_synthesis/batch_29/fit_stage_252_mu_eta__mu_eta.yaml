@@ -1,0 +1,19 @@
+candidate_id: fit_stage_252_mu_eta
+parameter_name: mu_eta
+origin_claims:
+  - parameter: mu_eta
+    introduced_at_stage: 252
+    introduced_at_line: 447
+    citation:
+      path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+      line: 447
+      excerpt: "\\mu_\\eta=1."
+constraints:
+  - parameter: mu_eta
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+      line: 434
+      excerpt: "## 5. Session-IV benchmark specialization"
+downstream_dependents: [253]
+provenance_findings: []

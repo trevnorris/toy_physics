@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_235_q_eta__phase_b__q_eta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,8 +186,21 @@ source_evidence:
   line: 265
   role: notes_stage
   excerpt: \mathbf x_{\rm rm}=\mathbf x_\eta=
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: q_eta
+  introduced_at_stage: 235
+  introduced_at_line: 92
+  citation:
+    path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 92
+    excerpt: q_\eta=E_1,
+constraints:
+- parameter: q_eta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 226
+    excerpt: \mathbf q_{\rm rm}=(q_{\rm nt},q_\eta)^T=(\Xi_1,E_1)^T,
 graph_context:
   contexts: []
   graph_gaps:
@@ -212,3 +225,33 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_235.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: 'q_eta is NOT a fixed numeric value: at Stage 235 it is one component of the rigid-mouth packet coordinate vector
+    q_rm = (q_nt, q_eta) = (Xi_1, E_1) (notes line 226), defined as q_eta = E_1 = delta ln epsilon_eta (line 92), the dressing/selected-target
+    drift coordinate the static scalar cannot see (''x_eta: the pure dressing ... drift the static scalar cannot see'', line
+    218). It is a DERIVED differential coordinate (a defined log-derivative of the dressing observable), tied to the involutive
+    projector decomposition P_nt + P_eta = I_2 (line 173) -> internal_consistency as a definition/derived relation. No specific
+    value is constrained here; the candidate keys the coordinate itself. Logged low-severity transparency note that q_eta
+    is a symbolic coordinate, not a fitted scalar.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 120
+    excerpt: \boxed{E_1=q_\eta.}
+  - path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 218
+    excerpt: '- `x_eta`: the pure dressing / selected-target drift that the static scalar cannot see.'
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source node for the Stage-235 notes path (carried from the mechanical bundle's
+    graph_gaps); downstream enumeration relied on notes/card reading.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    line: 92
+    excerpt: q_\eta=E_1,
+downstream_dependents:
+- '236'
+- '237'
+- '238'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage_235_q_eta__q_eta.yaml

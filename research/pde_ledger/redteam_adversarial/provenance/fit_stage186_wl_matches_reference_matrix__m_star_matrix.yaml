@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage186_wl_matches_reference_matrix__phase_b__m_star_matrix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,26 @@ source_evidence:
   line: 52
   role: sympy_script
   excerpt: M = sp.Matrix([
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_star_matrix
+  introduced_at_stage: 186
+  introduced_at_line: 171
+  citation:
+    path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    line: 171
+    excerpt: M_*=
+constraints:
+- parameter: M_star_matrix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    line: 181
+    excerpt: The three rows are simply the logarithmic exponent vectors of
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '187'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage186_wl_matches_reference_matrix__m_star_matrix.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_237_q_eta
+parameter_name: q_eta
+origin_claims:
+  - parameter: q_eta
+    introduced_at_stage: 235
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+      line: 92
+      excerpt: "q_\\eta=E_1,"
+constraints:
+  - parameter: q_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 15
+      excerpt: "q_\\eta = \\ln\\!\\left(\\frac{\\epsilon_\\eta}{\\epsilon_{\\eta,\\mathrm{ref}}}\\right),"
+downstream_dependents: [238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "q_eta is NOT a fixed numeric value: at Stage 237 it is the surviving post-static dressing coordinate, DERIVED exactly as q_eta = ln(epsilon_eta/epsilon_{eta,ref}) = delta ln epsilon_eta (notes lines 15/159), equivalently q_eta = -R_1/c_eta (line 195). The Stage-237 card states the microscopic-variable derivation q_eta = 2c_1 - kappa_U - kappa_eta (card line 13). All are EXACT derived relations -> internal_consistency. The coordinate's ORIGIN as a named packet axis is upstream Stage 235 (q_eta = E_1, packet decomposition). No specific value constrained (the script uses an arbitrary sample q_eta_param = 1/10, line 25, for symbolic verification only). Logged low-severity: q_eta is a derived/defined coordinate, not a fitted scalar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md, line: 195, excerpt: "q_\\eta=-\\frac{R_1}{c_\\eta}." }
+      - { path: paper/stages/stage_237.tex, line: 13, excerpt: "\\stagefield{Derivation ledger}{The derivation derives $q_\\eta=2c_1-\\kappa_U-\\kappa_\\eta$, shows the finite static-blind curve is support-blind, and identifies the post-static orbit-lock correction.}" }

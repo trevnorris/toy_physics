@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_carried_point_block__phase_b__gprime_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,45 @@ source_evidence:
   line: 104
   role: sympy_script
   excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gprime_star
+  introduced_at_stage: 131
+  introduced_at_line: 92
+  citation:
+    path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+    line: 92
+    excerpt: \mathfrak g'(\Pi_*)\approx 0.0714453558083195.
+constraints:
+- parameter: gprime_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage146_positive_deformation_expansion.md
+    line: 125
+    excerpt: \mathfrak g'_* \approx 0.0714453558083195,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'gprime_star = 0.0714453558083195 is the slope g''(Pi_*) of the overlap function at the canonical point, first
+    quoted at Stage 131:92 and re-stated at Stage 146:125 as the rigidity-formula derivative input. internal_consistency:
+    it is the analytic derivative of the ledger''s g(Pi) closed form evaluated at Pi_*. Stage 152 carries it as a frozen mpf
+    literal (script:31). Like g_*, it inherits dependence on the posited L/a=37/20 via the canonical branch.'
+  citations:
+  - path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+    line: 31
+    excerpt: gprime_star = mp.mpf("0.0714453558083195")
+  - path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+    line: 52
+    excerpt: \mathfrak g_*' \approx 0.0714453558083195,
+downstream_dependents:
+- '146'
+- '147'
+- '148'
+- '151'
+- '152'
+- '154'
+- '155'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage152_carried_point_block__gprime_star.yaml

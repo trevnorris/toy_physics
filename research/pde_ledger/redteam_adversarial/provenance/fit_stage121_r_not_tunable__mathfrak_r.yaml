@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_r_not_tunable__phase_b__mathfrak_r.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -65,9 +65,51 @@ source_evidence:
   role: notes_stage
   excerpt: So the next question is no longer “what is \(\mathfrak r\)?” It is “what normalized mouth-coupling ratio \(\mathfrak
     g\) does the actual core pick at this geometrically fixed \(\mathfrak r\)?”
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathfrak_r
+  introduced_at_stage: 119
+  introduced_at_line: 13
+  citation:
+    path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+    line: 13
+    excerpt: \mathfrak r := \frac{\lambda}{\sqrt{K_sK_q}},
+constraints:
+- parameter: mathfrak_r
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 98
+    excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: 'Stage 121''s headline (''r_not_tunable'') is that the normalized hybridization r is no longer free: r_F1 = sqrt((12/pi^2)(L/a)^2
+    - 1) = 1.77799... at L/a=37/20 (notes lines 65-71). The card/notes PRESENT this as a derivation (''the geometric branch
+    value'', ''no longer free once the mixed tube is identified with the actual throat length''). But the only thing that
+    FORCES r is (a) the posited identification L_W=L (free_choice ansatz) and (b) the carried-and-frozen aspect ratio L/a=37/20
+    (free_choice, originating Stage 073 as a ''reference-branch numerical freeze, not a new theorem''). So r_F1 is NOT internally
+    derived nor matched to an external published number — it is the algebraic image of two free choices. Classified free_choice.
+    Flagged derive_vs_fit_mismatch (severity needs_triage rather than high, because it is a chained free_choice not a back-solve
+    to an external target): the ''no longer free'' framing overstates the epistemic status; r becomes a fixed branch value
+    only conditional on the frozen 37/20 and the L_W=L identification.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 46
+    excerpt: So the normalized shell/mixed hybridization is no longer free once the mixed tube is identified with the actual
+      throat length.
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 77
+    excerpt: r_c^{F1}=\mathfrak r_{F1}^2\approx 3.16126101219081.
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+downstream_dependents:
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage121_r_not_tunable__mathfrak_r.yaml

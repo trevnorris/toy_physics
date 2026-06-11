@@ -1,0 +1,19 @@
+candidate_id: fit_stage128_rF1_fixed_by_geometry
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 70
+      excerpt: "\\approx 1.77799353547498."
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+      line: 12
+      excerpt: "is already fixed by geometry."
+downstream_dependents: [122, 126, 127, 128, 133, 134]
+provenance_findings: []

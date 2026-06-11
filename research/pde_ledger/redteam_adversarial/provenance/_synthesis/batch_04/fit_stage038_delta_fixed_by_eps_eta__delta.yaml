@@ -1,0 +1,25 @@
+candidate_id: fit_stage038_delta_fixed_by_eps_eta
+parameter_name: delta
+origin_claims:
+  - parameter: delta
+    introduced_at_stage: 035
+    introduced_at_line: 39
+    citation:
+      path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+      line: 39
+      excerpt: "`delta := DeltaK_ax / A`."
+constraints:
+  - parameter: delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+      line: 87
+      excerpt: "`delta = delta_0 / (1 - eps_eta),`"
+downstream_dependents: [039, 040, 041, 042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "delta (the bare anisotropy ratio) is defined at stage 035 as delta := DeltaK_ax/A and recompressed at stage 038 into the dimensionless kernel ratios delta = delta_0/(1-eps_eta) (notes line 87; audit verifies 'delta - delta0/(1-eps_eta)' == 0 at line 109). It is an exact ratio of derived continuum-kernel quantities — internal_consistency, no fit/posit and no external target. Logged informationally."
+    citations:
+      - { path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py, line: 109, excerpt: "expect_zero(\"delta - delta0/(1-eps_eta)\", delta_dimless - delta0 / (1 - eps_eta))" }
+      - { path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md, line: 24, excerpt: "`delta = delta_0 / (1 - eps_eta),`" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage180_beta0_continuum_import__phase_b__beta_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -66,9 +66,31 @@ source_evidence:
   line: 66
   role: sympy_script
   excerpt: expect_zero("T^2 = beta0/K0 -> muW/KW form", T2_direct - T2_expected)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: beta_0
+  introduced_at_stage: 38
+  introduced_at_line: 97
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 97
+    excerpt: '`beta_0`'
+constraints:
+- parameter: beta_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md
+    line: 146
+    excerpt: \beta_{0,A}
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '181'
+- '182'
+- '183'
+- '184'
+- '185'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage180_beta0_continuum_import__beta_0.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_194_delta_q
+parameter_name: Delta_Q
+origin_claims:
+  - parameter: Delta_Q
+    introduced_at_stage: 195
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+constraints:
+  - parameter: Delta_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+downstream_dependents: [196, 197]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: high
+    summary: "Delta_Q does NOT appear in the stage-194 per-stage notes. Stage 194 fixes chi_Q=1 and develops the deformation algebra, but never writes the symbol Delta_Q; the boxed definition Delta_Q:=chi_Q-1 is at stage 195 line 185 (and again 196). The Delta_Q=chi_Q-1 reference at stage 194 comes only from the shared card boilerplate (stage_194.tex ledger line 13, Checks line 20), copied identically across cards 192-195. Binding notes citation for Delta_Q cannot be met at 194; recorded at the true stage-195 origin. internal_consistency (Delta_Q is an algebraic relabeling of the chi_Q outgoing-normalization defect, chi_Q itself fixed at 194)."
+    citations:
+      - { path: paper/stages/stage_194.tex, line: 13, excerpt: "...and collapses Packet A to \\(\\Delta_Q=\\chi_Q-1\\).}" }
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\\chi_Q`, and the Isotropic Deformation Algebra" }

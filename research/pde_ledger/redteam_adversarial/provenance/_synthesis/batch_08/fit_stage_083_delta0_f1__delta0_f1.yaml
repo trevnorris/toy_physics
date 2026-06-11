@@ -1,0 +1,25 @@
+candidate_id: fit_stage_083_delta0_f1
+parameter_name: Delta0_F1
+origin_claims:
+  - parameter: Delta0_F1
+    introduced_at_stage: 075
+    introduced_at_line: 39
+    citation:
+      path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+      line: 39
+      excerpt: "`Delta_0(12321/5,37) ≈ 1.73302079021525e-4,`"
+constraints:
+  - parameter: Delta0_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+      line: 81
+      excerpt: "`Delta_0(kappa_F1,eta_F1) ≈ 1.73302079021525e-4,`"
+downstream_dependents: [084, 085]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Delta0_F1 = Delta_0(kappa_F1, eta_F1) ~ 1.73302079021525e-4 is the exact Stage-058/072 kernel scale Delta_0 evaluated on the ledger-fixed Family-1 branch (kappa_F1 = 12321/5, eta_F1 = 37). It is a deterministic evaluation of an already-derived closed form (cosh/sinh kernel), not a fit; the script checks it against the same 1.73302079021525e-4 anchor that first appeared at stage 075. internal_consistency."
+    citations:
+      - { path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py, line: 74, excerpt: "expect_close(\"Delta_0(F1) numeric anchor\", Delta0_F1, sp.Float(\"1.73302079021525e-4\"), 1e-16)" }
+      - { path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md, line: 75, excerpt: "`Pe_-^(F1) = Xi_F1 Delta_0(kappa_F1,eta_F1),`" }

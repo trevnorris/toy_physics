@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_249_r_int__phase_b__r_int.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -187,9 +187,39 @@ source_evidence:
   line: 463
   role: notes_stage
   excerpt: R_{\rm int}\approx 4.10920923,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_int
+  introduced_at_stage: 249
+  introduced_at_line: 463
+  citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 463
+    excerpt: R_{\rm int}\approx 4.10920923,
+constraints:
+- parameter: R_int
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 460
+    excerpt: From the reported integrated ratio,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: The numeric R_int = 4.10920923 enters as a 'reported integrated ratio' (Session-II readback). The notes show it
+    is internally consistent with the reported final-load ratio 20.58070146/5.00843357 = 4.10920923, but both inputs are un-derived
+    run outputs; no in-ledger derivation produces R_int from first principles. The Mobius FORM R_int=(1+bar_alpha)/(1-bar_alpha)
+    is internal_consistency, but the NUMBER is a posited benchmark readback.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 460
+    excerpt: From the reported integrated ratio,
+  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 486
+    excerpt: which matches the integrated ratio to displayed precision.
+downstream_dependents:
+- '250'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage_249_r_int__r_int.yaml

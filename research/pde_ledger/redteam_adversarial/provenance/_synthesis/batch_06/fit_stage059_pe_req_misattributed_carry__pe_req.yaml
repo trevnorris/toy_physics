@@ -1,0 +1,25 @@
+candidate_id: fit_stage059_pe_req_misattributed_carry
+parameter_name: Pe_req
+origin_claims:
+  - parameter: Pe_req
+    introduced_at_stage: 59
+    introduced_at_line: 175
+    citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 175
+      excerpt: "Inside the Stage-057 reachability window, define `Pe_req` as the unique constructive solution of"
+constraints:
+  - parameter: Pe_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 177
+      excerpt: "`Omega_(Pe_req)^2 = zeta_req (kappa + y^2)/(kappa + pi^2/4).`"
+downstream_dependents: [60, 61, 62, 63, 64, 65, 66]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The Stage-059 card lists Pe_req under 'Inputs' (as if carried in), but the notes define Pe_req here at Stage 059 as the unique constructive root of an internal ledger equation in zeta_req,kappa,y. It is not carried from an upstream stage; the candidate id 'misattributed_carry' is the correct flag — origin is 059, not an earlier carry."
+    citations:
+      - { path: paper/stages/stage_059.tex, line: 7, excerpt: "\\stagefield{Inputs}{Required Peclet bias \\(\\mathrm{Pe}_{\\rm req}\\), endpoint functions \\(\\Delta_0,\\Delta_\\infty\\), and gain \\(\\Xi\\).}" }
+      - { path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md, line: 52, excerpt: "5. inside the reachable Stage-057 window, define the unique constructive branch point `Pe_req` by" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage130_pi_star_exact_unique__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,40 @@ source_evidence:
   line: 106
   role: sympy_script
   excerpt: print("g'(Pi_*) =", sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_star
+  introduced_at_stage: 130
+  introduced_at_line: 108
+  citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 108
+    excerpt: \Pi_* \approx 1.50882951349316.
+constraints:
+- parameter: Pi_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 103
+    excerpt: \mathfrak g_{\Pi}=\mathfrak g_-^{F1}
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '131'
+- '132'
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage130_pi_star_exact_unique__pi_star.yaml

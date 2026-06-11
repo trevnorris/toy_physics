@@ -1,0 +1,19 @@
+candidate_id: fit_stage_098_zeta_edge_f1
+parameter_name: zeta_edge_F1
+origin_claims:
+  - parameter: zeta_edge_F1
+    introduced_at_stage: 98
+    introduced_at_line: 96
+    citation:
+      path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+      line: 96
+      excerpt: "`zeta_req^(act) < 0.456730991107963 < 2.46752922945601`."
+constraints:
+  - parameter: zeta_edge_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+      line: 88
+      excerpt: "`eps_blk -> 1 / zeta_max^(F1)`,"
+downstream_dependents: []
+provenance_findings: []

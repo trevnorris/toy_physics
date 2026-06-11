@@ -1,0 +1,25 @@
+candidate_id: fit_stage_160_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 115
+    introduced_at_line: 25
+    citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 25
+      excerpt: "\\gamma_c=\\frac19."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 77
+      excerpt: "\\gamma_W=\\frac19,"
+downstream_dependents: [161]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Stage160 carries the matched canonical even l=2 fingerprint via the compensated branch values kappa_W=1/3, gamma_W=1/9 (notes lines 75-77), and works under the Stage 159 canonical-even gate (delta kappa_W=0). The matched fingerprint value (1/9 / canonical l=2) originates at Stage 115/112. Stage160 introduces no new fingerprint value; it uses it to define the bare slippage scalar delta_B_W. internal_consistency. Scanner logged graph_gap (no atlas node) for this candidate; documented in notes but un-noded."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md, line: 75, excerpt: "\\kappa_W=\\frac13," }
+      - { path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md, line: 16, excerpt: "which is exactly the branch that preserves the canonical outgoing quadrupole fingerprint." }

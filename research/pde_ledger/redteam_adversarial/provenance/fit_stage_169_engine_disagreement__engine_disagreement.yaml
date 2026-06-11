@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_169_engine_disagreement__phase_b__engine_disagreement.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -24,4 +24,22 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: '''engine_disagreement'' is not a ledger parameter value with a genealogy; it is an audit-process artifact (the
+    SymPy-vs-Mathematica dual-engine cross-check status). The candidate bundle carries empty source_evidence, and no per-stage
+    notes (notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md) document any value named engine_disagreement.
+    The only ledger occurrence of the term is in the audit-policy tracker notes/MATHEMATICA_MIRROR_POLICY.md, which describes
+    engine-mirroring policy, not a constrained physical value. Nothing to classify as internal_consistency / published_target
+    / free_choice.'
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage_169_engine_disagreement__engine_disagreement.yaml
+    line: 21
+    excerpt: 'source_evidence: []'
+  - path: notes/MATHEMATICA_MIRROR_POLICY.md
+    line: 1
+    excerpt: '# Mathematica Mirror Policy'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_169_engine_disagreement__engine_disagreement.yaml

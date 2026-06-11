@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage085_unblocked_literal_law__phase_b__zeta_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,44 @@ source_evidence:
   line: 52
   role: sympy_script
   excerpt: expect_zero("Pi_sel - mhat^2 s_- alpha_req/lambda_-", Pi_sel - mhat**2 * s_minus * alpha_req / lam_minus)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_req
+  introduced_at_stage: 42
+  introduced_at_line: 34
+  citation:
+    path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+    line: 34
+    excerpt: '`zeta_req = (Pi_tr - C_mix) / [ C_mix - eps (2 C_mix - Pi_tr) ].`'
+constraints:
+- parameter: zeta_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 116
+    excerpt: Using the cancellation identities above, the entire right-hand side reduces to
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: 'The unblocked literal law zeta_req = rho_alpha - 1 (general form (rho_alpha-1)/[1-eps_blk(2-rho_alpha)]) is an
+    exact algebraic reduction of the Stage-052 demand law using the Stage-085 cancellation identities Pi_tr/C_mix = alpha_req/alpha_mix
+    = rho_alpha; the SymPy audit verifies Pi_tr/C_mix - alpha_req/alpha_mix == 0. No fixed value is assigned and no back-solve
+    to an external number occurs, so internal_consistency. NOTE: stage 085 invokes the external GR quadrupole target 2G/(5
+    c^5) (= the published radiated-power normalization) as the condition the OUTGOING branch must hit, but the absolute normalization
+    factors (N_Q^target, mhat_-, beta_0) explicitly CANCEL in zeta_req -- the external anchor does not set zeta_req''s value,
+    so this is not a derive-vs-fit mismatch. The external target is recorded here for layer-2 transparency.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 41
+    excerpt: So once the outgoing quadrupole branch is required to hit the `2G/(5 c^5)` normalization target, the explicit
+      support theorem no longer depends separately on `(mhat_-, beta_0, s_-, lambda_-)`.
+  - path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+    line: 41
+    excerpt: expect_zero("Pi_tr/C_mix - alpha_req/alpha_mix", sp.simplify(Pi_tr / C_mix - alpha_req / alpha_mix))
+downstream_dependents:
+- 086
+- 087
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage085_unblocked_literal_law__zeta_req.yaml

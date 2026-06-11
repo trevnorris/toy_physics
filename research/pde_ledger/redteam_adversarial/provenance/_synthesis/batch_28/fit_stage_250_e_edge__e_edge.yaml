@@ -1,0 +1,25 @@
+candidate_id: fit_stage_250_e_edge
+parameter_name: E_edge
+origin_claims:
+  - parameter: E_edge
+    introduced_at_stage: 250
+    introduced_at_line: 229
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 229
+      excerpt: "E_{\\rm edge}"
+constraints:
+  - parameter: E_edge
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 224
+      excerpt: "\\mathcal S(E_{\\rm edge})=1."
+downstream_dependents: [251]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "E_edge (Goldilocks lower safe edge) is solved exactly from S(E_edge)=1 -> E_edge = Vpeak + lambda_eff^2 g_UV chi_peak m_s/(2 mu_eta), a genuine internal_consistency derivation. Its benchmark NUMBER inherits the imported/posited inputs (m_s=mu_eta=1836.15 CODATA, g_UV=0.95 free_choice, chi_peak readback). Duplicate candidate of fit_stage250_goldilocks_edge_forced for the same parameter."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 226, excerpt: "Solving gives" }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 103, excerpt: "assert sp.simplify(E_edge - (Vpeak + lam_eff**2 * gUV * chi_peak * m_s / (2 * mu_eta))) == 0" }

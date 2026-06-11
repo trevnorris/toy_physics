@@ -1,0 +1,25 @@
+candidate_id: fit_stage_220_im
+parameter_name: Im
+origin_claims:
+  - parameter: Im
+    introduced_at_stage: 220
+    introduced_at_line: 422
+    citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 422
+      excerpt: "\\Im\\,\\delta\\mathfrak V_{\\rm mix}^{(1)}=-\\frac12\\Gamma(\\omega)\\,\\mathcal T_J(\\omega)^2."
+constraints:
+  - parameter: Im
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+      line: 408
+      excerpt: "On the conservative off-pole branch, `\\mathcal K_{\\rm cons}(\\omega)` and the reduced source data are real, so `\\mathcal T_J(\\omega)` is real."
+downstream_dependents: []
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "Im (the imaginary part of the first dynamic correction, = -1/2 Gamma T_J^2, line 422) is a derived result of the phase-lag separation: the conservative kernel/source data are real (line 408), forcing the linear-order correction to be purely imaginary. Internal_consistency, not a posited or external value. Provenance scanner logged a graph_gap (no atlas node for the stage-220 notes/card source); value-genealogy is fully in the notes."
+    citations:
+      - { path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py, line: 203, excerpt: "print('Im(deltaV_linear) =', imag_part)" }
+      - { path: redteam_adversarial/provenance/fit_stage_220_im__im.yaml, line: 104, excerpt: "type: graph_gap" }

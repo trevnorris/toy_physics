@@ -1,0 +1,25 @@
+candidate_id: fit_stage_118_a_q
+parameter_name: A_q
+origin_claims:
+  - parameter: A_q
+    introduced_at_stage: 118
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+      line: 54
+      excerpt: "\\mathcal A_q(\\mathbf X)=\\Xi_q(\\Omega,w)\\,\\chi_{1/2}(z),"
+constraints:
+  - parameter: A_q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+      line: 52
+      excerpt: "For the mixed side-channel, use the first finite D/N half-wave on an auxiliary tube \\(z\\in[0,L_W]\\):"
+downstream_dependents: [119, 120, 121, 122, 123, 124, 125]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "A_q (script symbol mathcal A_q) is the mixed side-channel MODE-SHAPE ansatz delta A_w(X,t)=q(t) A_q(X), with A_q(X)=Xi_q(Omega,w) chi_1/2(z) where chi_1/2 is the first D/N half-wave sqrt(2/L_W) sin(pi z/2 L_W). It is a POSITED factorized closure ('use the first finite D/N half-wave', 'with all other fluctuating fields omitted at this first closure level'), i.e. a chosen first-closure ansatz (free_choice), not a derived field. Its half-wave FORM is consistent with the Stage-116 D/N tube, but the overall factorized single-mode reduction is an assumption."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md, line: 35, excerpt: "with all other fluctuating fields omitted at this first closure level." }
+      - { path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md, line: 56, excerpt: "\\chi_{1/2}(z)=\\sqrt{\\frac{2}{L_W}}\\sin\\!\\left(\\frac{\\pi z}{2L_W}\\right)." }

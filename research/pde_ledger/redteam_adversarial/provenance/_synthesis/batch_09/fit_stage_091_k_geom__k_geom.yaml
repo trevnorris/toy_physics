@@ -1,0 +1,25 @@
+candidate_id: fit_stage_091_k_geom
+parameter_name: K_geom
+origin_claims:
+  - parameter: K_geom
+    introduced_at_stage: 91
+    introduced_at_line: 70
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 70
+      excerpt: "- `K_geom` is the static geometry completion,"
+constraints:
+  - parameter: K_geom
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 113
+      excerpt: "`K_geom = 3 K0 / 4`."
+downstream_dependents: [92, 93, 94, 96]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "Duplicate-target of fit_stage091_K_geom_forced_by_identity. The candidate's listed values ['3','3/4'] correspond to the two equivalent forms K_geom=3*K_pole and K_geom=3*K0/4. Both are FORCED (internal_consistency) by the branch identity K0*K4=4*K2^2, conditional on the one-pole + static-geometry ansatze. Not posited, not externally fit. The conditional nature is carried by the 091 paper card status tag."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md, line: 111, excerpt: "`K_pole = K0 / 4`," }
+      - { path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py, line: 67, excerpt: "expect_zero(\"K0 - 4*K_pole on branch\", K0_on_branch - 4 * Kpole)" }

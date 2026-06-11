@@ -1,0 +1,25 @@
+candidate_id: fit_stage240_loading_ratio_not_free
+parameter_name: C_mix
+origin_claims:
+  - parameter: C_mix
+    introduced_at_stage: 240
+    introduced_at_line: 119
+    citation:
+      path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+      line: 301
+      excerpt: "C_{\\rm mix}=\\frac{8\\Lambda(1-\\epsilon_*)}{\\pi^2}."
+constraints:
+  - parameter: C_mix
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+      line: 117
+      excerpt: "C_{\\rm mix}"
+downstream_dependents: [241, 242, 244]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "C_mix is NOT a posited numeric constant. It is a carried selected-branch normalization quantity, given as the product identity C_mix = (N_Q^target / beta_0) alpha_mix (notes line 117-119) and equivalently the ledger-internal closed form C_mix = 8 Lambda (1-eps_*)/pi^2 (notes line 301). The candidate name 'loading_ratio_not_free' refers to the RATIO Pi_tr/C_mix = 4/3 being fixed (notes line 104 'the ratio is not free'); C_mix itself carries no fixed numeric target -- it is a derived/carried normalization (internal_consistency). Logged for transparency since the scanner candidate has no numeric target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md, line: 104, excerpt: "This stage shows that the ratio is not free." }
+      - { path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md, line: 32, excerpt: "S_{\\rm req}:=\\frac{\\Pi_{\\rm tr}}{C_{\\rm mix}}=\\frac43." }

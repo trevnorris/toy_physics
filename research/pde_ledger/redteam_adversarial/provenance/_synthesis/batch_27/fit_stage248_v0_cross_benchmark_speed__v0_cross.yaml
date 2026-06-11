@@ -1,0 +1,25 @@
+candidate_id: fit_stage248_v0_cross_benchmark_speed
+parameter_name: v0_cross
+origin_claims:
+  - parameter: v0_cross
+    introduced_at_stage: 248
+    introduced_at_line: 515
+    citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 515
+      excerpt: "v_{0,\\rm cross}=2.59221845."
+constraints:
+  - parameter: v0_cross
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 513
+      excerpt: "The Session-II report also gave an explicit above-threshold demonstration speed"
+downstream_dependents: []
+provenance_findings:
+  - type: published_target
+    severity: needs_triage
+    summary: "v0_cross=2.59221845 is a recorded figure imported from the Session-II report ('The Session-II report also gave an explicit above-threshold demonstration speed v0_cross=2.59221845', notes line 513-515; hardcoded in script line 249 vcross_num = 2.59221845). Stage 248 uses it only to demonstrate it falls inside the independently-computed classical window 2.54139063 < v0 < 3.27278339 (notes line 517-519) and to reproduce the reported Coulomb turning point 0.28091705. It is a recorded benchmark target the compiler is checked against, not a stage-248 derivation."
+    citations:
+      - { path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py, line: 249, excerpt: "vcross_num = 2.59221845" }
+      - { path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md, line: 513, excerpt: "The Session-II report also gave an explicit above-threshold demonstration speed" }

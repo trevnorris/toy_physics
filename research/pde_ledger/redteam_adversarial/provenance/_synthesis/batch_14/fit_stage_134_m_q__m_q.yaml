@@ -1,0 +1,19 @@
+candidate_id: fit_stage_134_m_q
+parameter_name: M_q
+origin_claims:
+  - parameter: M_q
+    introduced_at_stage: 134
+    introduced_at_line: 37
+    citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 37
+      excerpt: "M_q:=\\frac{L\\,H_qG_q}{\\Theta_\\sigma}."
+constraints:
+  - parameter: M_q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 145
+      excerpt: "free mouth slope: it is just the signed gain pair \\((M_s,M_q)\\)."
+downstream_dependents: [135, 137, 140, 146, 147, 148, 149, 150, 151, 152, 153]
+provenance_findings: []

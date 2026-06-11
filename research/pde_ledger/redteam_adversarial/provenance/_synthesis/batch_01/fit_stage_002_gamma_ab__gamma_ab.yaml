@@ -1,0 +1,25 @@
+candidate_id: fit_stage_002_gamma_ab
+parameter_name: Gamma_AB
+origin_claims:
+  - parameter: Gamma_AB
+    introduced_at_stage: 2
+    introduced_at_line: 108
+    citation:
+      path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+      line: 108
+      excerpt: "M_{AB}\\,\\ddot Q^B+\\Gamma_{AB}\\,\\dot Q^B=-\\frac{\\partial H_{\\rm tot}}{\\partial Q^A}."
+constraints:
+  - parameter: Gamma_AB
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+      line: 112
+      excerpt: "- any damping matrix `Gamma_AB` is an effective/open-system completion that would enter after coupling to matter/gauge/exterior channels."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Gamma_AB has no value derived or fixed at stage 002: the conservative reduction yields M_AB Q-ddot + K_AB Q = 0 (no damping term), and the notes explicitly flag Gamma_AB as an effective/open-system completion deferred to later matter/gauge/exterior coupling. Classified free_choice because at this stage it is a posited-deferred object (asserted to exist as a future completion, not derived and with no value). It is effectively set to zero at the conservative level by construction."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md, line: 104, excerpt: "M_{AB}\\,\\ddot Q^B+K_{AB}\\,Q^B=0." }
+      - { path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md, line: 111, excerpt: "- the conservative part comes directly from the wall action," }

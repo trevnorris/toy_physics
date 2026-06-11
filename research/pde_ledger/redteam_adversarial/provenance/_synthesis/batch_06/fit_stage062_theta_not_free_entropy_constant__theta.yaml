@@ -1,0 +1,19 @@
+candidate_id: fit_stage062_theta_not_free_entropy_constant
+parameter_name: Theta
+origin_claims:
+  - parameter: Theta
+    introduced_at_stage: 62
+    introduced_at_line: 153
+    citation:
+      path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+      line: 153
+      excerpt: "`Theta_sigma = h'(rho_*) N_(sigma sigma),`"
+constraints:
+  - parameter: Theta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+      line: 176
+      excerpt: "So the source compliance is no longer a free “entropy constant.” It is fixed by the local GNLS compressibility of the parent medium, dressed only by the chosen transverse source normalization."
+downstream_dependents: [63, 64]
+provenance_findings: []

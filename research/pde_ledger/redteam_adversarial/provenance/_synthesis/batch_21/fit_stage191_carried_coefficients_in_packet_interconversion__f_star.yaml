@@ -1,0 +1,24 @@
+candidate_id: fit_stage191_carried_coefficients_in_packet_interconversion
+parameter_name: F_star
+origin_claims:
+  - parameter: F_star
+    introduced_at_stage: 191
+    introduced_at_line: 253
+    citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 253
+      excerpt: "Let `\\(\\chi_{0,*}\\)` and `\\(F_*\\)` be the carried coherent-branch coefficients."
+constraints:
+  - parameter: F_star
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 253
+      excerpt: "Let `\\(\\chi_{0,*}\\)` and `\\(F_*\\)` be the carried coherent-branch coefficients."
+downstream_dependents: [192]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "F_star (F_*) is declared at 191 line 253 as a 'carried coherent-branch coefficient' and used only as an opaque symbol in the Packet-B interconversion (R_nt=m_mu/(m_K m_T^{F_*}), m_mu exponent, 191 lines 258/276) and in the 192 quotient matrix M_*. Stage 191 gives it no value/derivation/external target; it is posited as carried, so classified free_choice (carried convention) on available evidence. Triage: locate the upstream stage that fixes F_*."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 258, excerpt: "\\boxed{\\mathfrak R_{\\rm nt}=\\frac{m_\\mu}{m_K m_T^{F_*}}," }

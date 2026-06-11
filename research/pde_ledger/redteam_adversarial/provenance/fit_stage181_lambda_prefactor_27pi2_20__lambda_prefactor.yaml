@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_lambda_prefactor_27pi2_20__phase_b__lambda_prefactor.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -79,9 +79,44 @@ source_evidence:
   line: 327
   role: notes_stage
   excerpt: \epsilon\lambda_A\,\Theta_1,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda_prefactor
+  introduced_at_stage: 38
+  introduced_at_line: 32
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 32
+    excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+constraints:
+- parameter: Lambda_prefactor
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 132
+    excerpt: \frac{27\pi^2Gc_s^5}{20a^5c^5}\,\Omega_W^2.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Stage 181 uses Lambda = 27pi^2 G c_s^5/(20 a^5 c^5) * Omega_W^2 without naming its origin; the prefactor (the
+    radiative demand scale Lambda) first enters as a derived continuum-kernel composite at Stage 038 line 32. Note: the 27pi^2/20
+    prefactor and its G/c^5 structure sit on the chain that ultimately must hit the EXTERNAL GR quadrupole target 2G/(5c^5)
+    (Stage 022 line 258); the external-fit pressure is realized downstream in m_hat_0^2 P_0 (Stage 189), not in this carried
+    prefactor itself.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 130
+    excerpt: \Lambda
+  - path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 32
+    excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+downstream_dependents:
+- '180'
+- '182'
+- '183'
+- '184'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage181_lambda_prefactor_27pi2_20__lambda_prefactor.yaml

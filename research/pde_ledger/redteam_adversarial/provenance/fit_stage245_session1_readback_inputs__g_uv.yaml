@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback_inputs__phase_b__g_uv.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,40 @@ source_evidence:
   line: 124
   role: notes_stage
   excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: g_UV
+  introduced_at_stage: 245
+  introduced_at_line: 134
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 134
+    excerpt: \chi_{UV}(r):=g_{UV}\,\chi_\lambda(r),
+constraints:
+- parameter: g_UV
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 157
+    excerpt: '- `\chi_{UV}(r)` is the signed non-rigid mouth coupling,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: g_UV is the dimensionless non-rigid mouth-coupling factor in chi_UV(r) := g_UV chi_lambda(r) (notes line 134),
+    i.e. the session-notation rescaling of the Stage-243 mouth coupling chi_lambda. As a SYMBOL it is a free signed coefficient
+    (free_choice / posited closure parameter); the notes give no derived numeric value for g_UV. The only numeric appearance
+    is folded into the probe sample chi_UV = -0.76 used in the drain sign-check (script line 93), a representative Session-I-style
+    sample point. Classification free_choice. Logged at low severity since g_UV has no derived numeric value to classify;
+    its sign (and thus the sign of V/U = chi_UV/a_V) is the load-bearing physical content (V<0 branch <=> chi_UV<0).
+  citations:
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 93
+    excerpt: 'chi_UV: sp.Float("-0.76"), f_U: sp.Float("0.33")})'
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 235
+    excerpt: The Session-I branch with `U>0` and `V<0` is therefore the branch on which `\chi_{UV}<0`.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_session1_readback_inputs__g_uv.yaml

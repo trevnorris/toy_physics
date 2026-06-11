@@ -1,0 +1,26 @@
+candidate_id: fit_stage_123_mathfrak
+parameter_name: mathfrak
+origin_claims:
+  - parameter: mathfrak
+    introduced_at_stage: 119
+    introduced_at_line: 11
+    citation:
+      path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+      line: 11
+      excerpt: "Define the two dimensionless parent ratios"
+constraints:
+  - parameter: mathfrak
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+      line: 25
+      excerpt: "Then the exact branch law is"
+downstream_dependents: [124, 125]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "As in Stage 119, the scanner's 'mathfrak' conflates r and g. At Stage 123 both are CARRIED, not re-introduced: r=r_F1 (free_choice, rests on the 37/20 freeze) feeds the exact flow law Xi_v = -(3 sqrt30 pi^(3/2)/160) r (internal_consistency relation), and g=g_pm^F1 (internal_consistency, from the balance law) feeds Xi_T = (3 sqrt30/(10 sqrt pi))(1/g). Single constraint_kind cannot cover both members; recorded as ambiguous. The dominant Stage-123 deliverable (the exact branch LAWS Xi_v(r), Xi_T(g)) is internal_consistency, so that is the primary classification; the underlying r value is free_choice upstream."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md, line: 30, excerpt: "-\\frac{3\\sqrt{30}\\,\\pi^{3/2}}{160}\\,\\mathfrak r." }
+      - { path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md, line: 75, excerpt: "So the natural equal-normalized mouth-source branch \\(\\mathfrak g_{\\rm nat}=1\\) gives" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }

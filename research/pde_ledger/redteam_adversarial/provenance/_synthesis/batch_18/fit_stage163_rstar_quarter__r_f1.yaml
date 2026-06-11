@@ -1,0 +1,30 @@
+candidate_id: fit_stage163_Rstar_quarter
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 163
+    introduced_at_line: 94
+    citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 94
+      excerpt: "R_q=\\frac14."
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 90
+      excerpt: "R_q=\\frac{(\\mathfrak g-\\mathfrak r)^2}{1+\\mathfrak r^2},"
+downstream_dependents: [164, 168]
+provenance_findings:
+  - type: self_contradictory_origin
+    severity: high
+    summary: "The scanner labeled the value 1/4 (script Rstar=sp.Rational(1,4)) as parameter r_F1, but 1/4 is the compensated mouth gain ratio R_q (=R_star=R_*), NOT the parent geometric radius r_F1 (~1.778). R_q=1/4 is forced by the compensation family (g-r)^2=(1+r^2)/4 from the Stage-119 balance law; it is a derived consequence, not the radius. Mislabeled candidate."
+    citations:
+      - { path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py, line: 112, excerpt: "Rstar = sp.Rational(1, 4)" }
+      - { path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md, line: 308, excerpt: "\\mathcal R_* = \\frac14," }
+  - type: provenance_gap
+    severity: low
+    summary: "Pending bundle source_evidence was empty for this candidate; the value 1/4 is nevertheless documented in stage-163 notes (R_q=1/4, line 94) and the constraint is supported there."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage163_rstar_quarter__r_f1.yaml, line: 22, excerpt: "source_evidence: []" }

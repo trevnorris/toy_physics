@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_pattern_now_derived__phase_b__rank_one_loading_pattern.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -109,9 +109,44 @@ source_evidence:
   line: 175
   role: sympy_script
   excerpt: '# Identify the lower one by symbolic comparison at a probe point (alpha0=1, A=1, DK=1).'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: rank_one_loading_pattern
+  introduced_at_stage: 029
+  introduced_at_line: 130
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 130
+    excerpt: This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit
+      finite-throat basis and local isotropic kernels.
+constraints:
+- parameter: rank_one_loading_pattern
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 130
+    excerpt: This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit
+      finite-throat basis and local isotropic kernels.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'rank_one_loading_pattern is not a scalar value but a structural form: the rank-1 self-energy Sigma_wall = Xi I_2
+    + alpha v v^T. The stage-032 notes explicitly state this pattern was POSITED abstractly at Stage 029 and is now DERIVED
+    at 032 from the explicit finite-throat basis plus local isotropic kernels (a fit-to-derive UPGRADE, the honest direction).
+    Classified internal_consistency at its derivation locus (032); no numeric parameter value to extract, so logged as a non-scalar
+    structural candidate.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 17
+    excerpt: In the first local isotropic kernel model built on the exact N/N wall basis and the exact D/N half-wave, every
+      relevant wall–internal and source–wall coupling is determined by the same overlap vector
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 270
+    excerpt: 1. it derives the Stage-029 loading structure from explicit local isotropic kernels,
+downstream_dependents:
+- '027'
+- '031'
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage032_pattern_now_derived__rank_one_loading_pattern.yaml

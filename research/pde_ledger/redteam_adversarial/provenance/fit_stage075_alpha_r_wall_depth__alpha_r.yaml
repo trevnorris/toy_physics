@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage075_alpha_r_wall_depth__phase_b__alpha_r.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,40 @@ source_evidence:
   line: 79
   role: sympy_script
   excerpt: small_alpha_check_delta0 = sp.limit(Delta0_sym, alpha_sym, 0)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: alpha_r
+  introduced_at_stage: 61
+  introduced_at_line: 91
+  citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 91
+    excerpt: '`alpha_r = 10.`'
+constraints:
+- parameter: alpha_r
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 89
+    excerpt: But on the actual Family-1 wall branch the radial soft-wall profile already carries a fixed dimensionless depth
+      parameter
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: alpha_r = 10 is posited as a fixed dimensionless wall-depth parameter of the radial soft-wall profile with no derivation
+    or external anchor; the notes call it a 'fixed dimensionless depth parameter' that the profile 'already carries'. The
+    script hard-asserts alpha_r^2 == 100 as a 'paper Inputs line lock', i.e. a posited convention, not a derived value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 91
+    excerpt: '`alpha_r = 10.`'
+  - path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+    line: 28
+    excerpt: 'assert alpha_r**2 == 100, "paper Inputs line lock: alpha_r^2 must equal 100"'
+downstream_dependents:
+- '062'
+- '063'
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage075_alpha_r_wall_depth__alpha_r.yaml

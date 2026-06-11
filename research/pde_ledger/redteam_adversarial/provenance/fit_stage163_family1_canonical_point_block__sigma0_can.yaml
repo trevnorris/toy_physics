@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage163_family1_canonical_point_block__phase_b__sigma0_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -118,9 +118,35 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: print("Sigma0_can S_can / sqrt(1+r_*^2) =", coeff_Pi)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma0_can
+  introduced_at_stage: 156
+  introduced_at_line: 53
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 53
+    excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
+constraints:
+- parameter: Sigma0_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+    line: 28
+    excerpt: From Stage 156, the exact co-evolving compensated Family-1 point is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 163 reads back Sigma0_can~4.651033550168876 (line 337) with no origin pointer; the value is the self-consistent
+    canonical mouth strength solved at Stage 156 and carried via Stage 158. Read-back without an origin cross-reference.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 337
+    excerpt: \Sigma_0^{\rm can}\approx 4.651033550168876,
+downstream_dependents:
+- '164'
+- '168'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage163_family1_canonical_point_block__sigma0_can.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage131_g_minus_closed_form_aspect_ratio__phase_b__l_over_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -48,4 +48,21 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No parameter 'L_over_a' (aspect ratio L/a) exists anywhere in stage 131 sources — grep of the notes, paper card,
+    and SymPy audit for 'aspect', 'L_over_a', 'L/a', 'over_a' returns nothing. The candidate's source_evidence is entirely
+    script lines verifying the g_-^F1 closed form ((2*sqrt(4107-100*pi^2)-37*sqrt(3))/(20*pi)) and Pi_*; the 'aspect_ratio'/'L_over_a'
+    labeling is a scanner artifact with no notes/ support. The substance the candidate points at is g_-^F1 (origin stage 122)
+    and Pi_* (origin stage 130), already covered by their own batch-14 candidates.
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage131_g_minus_closed_form_aspect_ratio__l_over_a.yaml
+    line: 3
+    excerpt: 'parameter_name: L_over_a'
+  - path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+    line: 15
+    excerpt: g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage131_g_minus_closed_form_aspect_ratio__l_over_a.yaml

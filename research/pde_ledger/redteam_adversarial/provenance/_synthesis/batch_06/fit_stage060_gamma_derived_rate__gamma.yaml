@@ -1,0 +1,25 @@
+candidate_id: fit_stage060_gamma_derived_rate
+parameter_name: gamma
+origin_claims:
+  - parameter: gamma
+    introduced_at_stage: 60
+    introduced_at_line: 167
+    citation:
+      path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+      line: 167
+      excerpt: "`partial_s sigma = (Lambda_phi Delta phi)/(Theta_sigma L) sigma.`"
+constraints:
+  - parameter: gamma
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+      line: 180
+      excerpt: "`Pe = (Lambda_phi/Theta_sigma) Delta phi.`"
+downstream_dependents: [61]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The symbol 'gamma' is the exponential growth rate appearing only in the SymPy audit (gamma = Lambda*dphi/(Theta*L)), solved from the J=0 affine-drop ODE; the notes document the same quantity as the source-rate exponent (Lambda_phi Delta phi)/(Theta_sigma L) that yields the exact Peclet number Pe but never name it 'gamma'. The constraint classification (derived rate) is supported by notes; the literal symbol name is script-only."
+    citations:
+      - { path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py, line: 87, excerpt: "print(\"gamma_derived =\", gamma_derived)" }
+      - { path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py, line: 88, excerpt: "expect_zero(\"Pe identification (derived rate)\"," }

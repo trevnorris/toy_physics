@@ -1,0 +1,30 @@
+candidate_id: fit_stage_041_d_sel
+parameter_name: D_sel
+origin_claims:
+  - parameter: D_sel
+    introduced_at_stage: 041
+    introduced_at_line: 64
+    citation:
+      path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+      line: 64
+      excerpt: "`D_sel = xi (delta + xi)`"
+constraints:
+  - parameter: D_sel
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+      line: 62
+      excerpt: "Then the exact determinant condition is"
+downstream_dependents: [042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "D_sel is the rank-2 selected-branch determinant; its scanned 'value' 0 is the secular/eigenvalue CONDITION D_sel = 0 that DEFINES the selected lower branch (notes lines 62-68: D_sel = xi(delta+xi) - m[delta+(1+q^2)xi] - n[delta+(1+r^2)xi] + m n(q-r)^2 = 0). The '0' is not a fitted value — it is the determinant-vanishing condition of the loaded 2x2 wall operator, the standard internal_consistency mechanism. The structurally important fact is that the determinant stays LINEAR in the support loading n, which is what makes n_req solvable in closed form."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md, line: 68, excerpt: "`      = 0.`" }
+      - { path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md, line: 72, excerpt: "> even with two loading directions, the determinant remains **linear** in the support loading `n`." }
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Numbering-drift artifact in the stage-041 notes: line 29 reads 'Work in the 2D wall basis of Stages 22–23 and write the diagonal baseline as'. The 2D wall basis used here is the split-U continuum basis of Stages 039-040 (the +17 EM-extension renumber: 22-23 + 17 = 39-40). The cross-reference should point to Stages 039-040, not 22-23. Does not affect D_sel's classification; flagged for the numbering-reconciliation track."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md, line: 29, excerpt: "Work in the 2D wall basis of Stages 22–23 and write the diagonal baseline as" }

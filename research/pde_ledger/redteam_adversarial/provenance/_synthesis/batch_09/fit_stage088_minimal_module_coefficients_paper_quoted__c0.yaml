@@ -1,0 +1,24 @@
+candidate_id: fit_stage088_minimal_module_coefficients_paper_quoted
+parameter_name: c0
+origin_claims:
+  - parameter: c0
+    introduced_at_stage: 88
+    introduced_at_line: 17
+    citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 17
+      excerpt: "`c0 = 3/4,`"
+constraints:
+  - parameter: c0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+      line: 81
+      excerpt: "The 2.5PN quadrupole audit already fixed the smallest viable isotropic conservative precursor to"
+downstream_dependents: [89, 90, 91, 96]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The CHECKPOINT_CONSTANT_PROVENANCE tracker independently confirms c0=3/4 is a 'paper-quoted minimal-isotropic module coefficient' (free_choice import), corroborating that the candidate-id 'paper_quoted' label is correct: at Stage 088 c0=3/4 is quoted, not derived. The downstream rho_alpha=1/c0 and zeta_req=c1/c0 ARE derived from it."
+    citations:
+      - { path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md, line: 116, excerpt: "`c_contact = 3/4` and `c_pole = 1/4` are paper-quoted minimal-isotropic" }

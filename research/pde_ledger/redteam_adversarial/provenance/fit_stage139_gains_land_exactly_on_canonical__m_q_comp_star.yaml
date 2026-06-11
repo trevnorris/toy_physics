@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage139_gains_land_exactly_on_canonical__phase_b__m_q_comp_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,48 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: assert abs(Sq_recon - Sq_star) < tol_literal, (Sq_recon, Sq_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q_comp_star
+  introduced_at_stage: 139
+  introduced_at_line: 116
+  citation:
+    path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 116
+    excerpt: \approx -0.451485277739090.
+constraints:
+- parameter: M_q_comp_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 93
+    excerpt: On the exact compensated family,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'POSITIVE genealogy finding (claim SUPPORTED): M_q^{comp,*} approx -0.451485277739090 is DERIVED, not fitted to
+    match Stage 135. Evaluating the Stage-137/138 gain formulas on the Stage-121 geometric branch (r_F1 approx 1.778), then
+    taking the exact compensated family g_c = r_F1 - (1/2)sqrt(1+r_F1^2) approx 0.758035 so R_q = 1/4 (notes lines 93-100),
+    yields M_s^{comp,*} = Pi_*/(1 - S_q(Pi_*)/4) approx 1.80594 and M_q^{comp,*} = -M_s^{comp,*}/4 approx -0.451485 (notes
+    lines 105-116). The note states ''This is exactly the Stage 135 one-parameter canonical branch'' (notes line 120): the
+    agreement with Stage 135''s Sigma_m^* approx 0.451485 is an EARNED cross-check of two independent routes, not a back-fit.
+    Logged low-severity informational so the audit records the agreement as a consistency confirmation rather than a circular
+    import.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 120
+    excerpt: This is exactly the Stage 135 one-parameter canonical branch.
+  - path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+    line: 69
+    excerpt: \boxed{R_q=\frac14.}
+downstream_dependents:
+- '140'
+- '141'
+- '142'
+- '144'
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage139_gains_land_exactly_on_canonical__m_q_comp_star.yaml

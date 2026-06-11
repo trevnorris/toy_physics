@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_226_k_compat__phase_b__k_compat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -80,9 +80,28 @@ source_evidence:
   line: 182
   role: sympy_script
   excerpt: print("K_compat =", sp.N(K_compat, 16))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_compat
+  introduced_at_stage: 223
+  introduced_at_line: 260
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 260
+    excerpt: K_{\mathrm{compat}}
+constraints:
+- parameter: K_compat
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 256
+    excerpt: The corresponding compatibility wall stiffness is
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '225'
+- '226'
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage_226_k_compat__k_compat.yaml

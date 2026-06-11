@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_085_rho_alpha__phase_b__rho_alpha.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,8 +181,21 @@ source_evidence:
   line: 39
   role: sympy_script
   excerpt: expect_zero("Pi_tr - NQ*alpha_req/beta0", Pi_tr - NQ * alpha_req / beta0)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: rho_alpha
+  introduced_at_stage: 085
+  introduced_at_line: 130
+  citation:
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 130
+    excerpt: '`rho_alpha := alpha_req / alpha_mix`.'
+constraints:
+- parameter: rho_alpha
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 78
+    excerpt: '`Pi_tr / C_mix = alpha_req / alpha_mix.`'
 graph_context:
   contexts: []
   graph_gaps:
@@ -207,3 +220,35 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_085.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: internal_consistency
+  severity: low
+  summary: rho_alpha := alpha_req/alpha_mix (the selected-branch loading ratio) is DEFINED at stage 085 as the exact ratio
+    Pi_tr/C_mix that survives after the outgoing-normalization factors (N_Q^target, beta_0, mhat_-, s_-, lambda_-) cancel
+    via the Stage-035/036 + Stage-030 identities (SymPy-verified). As a defined ratio of ledger-internal loadings it is internal_consistency
+    framework; however its NUMERICAL value is NOT fixed at stage 085 -- the stage explicitly states the remaining theorem
+    gap is to determine rho_alpha from the actual outgoing branch (computed downstream at stage 088). So at 085 rho_alpha
+    is a derived definitional ratio left as an open quantity, not a fit or posit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 187
+    excerpt: '> **determine the normalized selected-branch loading ratio `rho_alpha` of the actual passive/outgoing moving-throat
+      quadrupole branch.**'
+  - path: paper/stages/stage_085.tex
+    line: 39
+    excerpt: \stagefield{Downstream use}{Stages~086--087 express the Family--1 support window entirely in \(\rho_\alpha\);
+      Stage~088 computes \(\rho_\alpha\) from the minimal module.}
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source nodes for the stage-085 notes/card paths (carried forward from the mechanical
+    evidence bundle). Provenance reasoning rests on the notes/card themselves, which are present and sufficient.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 085: Exact Cancellation of the Outgoing-Normalization Factors in the Selected Quadrupole-Demand
+      Product'
+downstream_dependents:
+- 086
+- 087
+- 088
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_085_rho_alpha__rho_alpha.yaml

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_095_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 95
+    introduced_at_line: 80
+    citation:
+      path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+      line: 80
+      excerpt: "`eps_2 = Omega_Q^2 K_(g,2)^eff / K_pole`,"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+      line: 86
+      excerpt: "`eps_2 = O(chi^2)`,"
+downstream_dependents: [96, 97, 99]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The bundle's source_evidence cites only the paper card lines (13, 22), not a notes line, for epsilon_2; the binding notes origin lives at stage095 notes lines 80/86 (Schur-complement contamination coefficient), located by reading the full per-stage note."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md, line: 80, excerpt: "`eps_2 = Omega_Q^2 K_(g,2)^eff / K_pole`," }

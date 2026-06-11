@@ -1,0 +1,25 @@
+candidate_id: fit_stage_144_r_q
+parameter_name: R_q
+origin_claims:
+  - parameter: R_q
+    introduced_at_stage: 138
+    introduced_at_line: 45
+    citation:
+      path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+      line: 45
+      excerpt: "R_q:=-\\frac{M_q}{M_s}=\\frac{(\\mathfrak g_c-\\mathfrak r)^2}{1+\\mathfrak r^2}."
+constraints:
+  - parameter: R_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+      line: 15
+      excerpt: "\\mathfrak g_\\pm^{F1}"
+downstream_dependents: [145, 146]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 144 R_q is SCRIPT-only (audit line 23: Rq = (gPi-r)**2/(1+r**2), used in Sigma0 = Pi/(1-Rq*Sq)); the 144 NOTE does not write 'R_q' explicitly -- it works with the compensated branches g_pm^{F1} directly. R_q is the same self-consistent mixed-to-shell gain ratio originating at Stage 138 (R_q = (g_c - r)^2/(1+r^2)) and promoted to R_q(Pi) at Stage 142. internal_consistency: derived from the gain map evaluated on the geometric r_F1 branch; at the canonical Pi_* it equals 1/4. Gap flagged because the 144 bundle has no notes/ line naming R_q (origin/constraint rest on the upstream 138/142 notes and the 144 branch-value g_pm^{F1} that R_q is built from)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py, line: 23, excerpt: "Rq = (gPi-r)**2/(1+r**2)" }
+      - { path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md, line: 21, excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663," }

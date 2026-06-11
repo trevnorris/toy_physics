@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_k_norm__phase_b__k_norm.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -106,9 +106,41 @@ source_evidence:
   line: 289
   role: sympy_script
   excerpt: '"  - (q1, d1, p1) are the first static normalization movers,\n"'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_norm
+  introduced_at_stage: 10
+  introduced_at_line: 53
+  citation:
+    path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+    line: 53
+    excerpt: K=B_0+Z_0+\varepsilon z_0+D_{0,\mathrm{target}},
+constraints:
+- parameter: K_norm
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_10_projected_maxwell_stage4_primitive_bridge_notes.md
+    line: 58
+    excerpt: z_0=\frac{\Delta q_1-Qd_1}{\Delta^2},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: K_norm is the normalization K-surface obtained by solving the ratio/normalization target equation for the wall
+    stiffness K; it first enters the ledger at stage 010 (step_08 K = B_0 + Z_0 + eps*z_0 + ...). The stage-012 candidate
+    re-expresses K_norm in the PRIMITIVE variables (substituting the derived z_0 = (Delta*q_1 - Q*d_1)/Delta^2 into K_norm
+    and K_one), verified by the stage-012 sympy round-trip checks. It is solved from ledger-internal one-pole + normalization
+    equations -> internal_consistency. Anchored to stage 012 but originates at stage 010; carries no numeric value (symbolic
+    surface).
+  citations:
+  - path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+    line: 198
+    excerpt: '# The derived z0 = (Delta*q1 - Q*d1)/Delta**2 enters K_norm_p and K_one_p'
+  - path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+    line: 58
+    excerpt: 'The audit now pins this as an explicit guard: differentiating the fixed-target'
+downstream_dependents:
+- '013'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_012_k_norm__k_norm.yaml

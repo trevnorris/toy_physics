@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage128_traction_gap_downstream_attribution__phase_b__traction_gap_percent.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -23,9 +23,27 @@ source_evidence:
   line: 49
   role: notes_stage
   excerpt: which is already only \(3.61\%\) away in traction from exact lower-branch compensation.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: traction_gap_percent
+  introduced_at_stage: 126
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 65
+    excerpt: So the exact Family-1 compensated branch is only a **3.61% traction enhancement** away from the self-matched
+      derivative profile.
+constraints:
+- parameter: traction_gap_percent
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 61
+    excerpt: \frac{\pi/4}{\mathfrak g_-^{F1}}
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '128'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage128_traction_gap_downstream_attribution__traction_gap_percent.yaml

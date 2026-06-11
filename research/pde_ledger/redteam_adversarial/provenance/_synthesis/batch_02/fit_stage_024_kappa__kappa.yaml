@@ -1,0 +1,25 @@
+candidate_id: fit_stage_024_kappa
+parameter_name: kappa
+origin_claims:
+  - parameter: kappa
+    introduced_at_stage: 024
+    introduced_at_line: 221
+    citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 221
+      excerpt: "`kappa_* = sqrt(5) / (7 sqrt(pi))`."
+constraints:
+  - parameter: kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+      line: 211
+      excerpt: "Using the exact sixth moment of the unit sphere,"
+downstream_dependents: [026]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "kappa_* = sqrt(5)/(7 sqrt(pi)) is DERIVED exactly as the common prefactor of the axisymmetric quadrupole triple-overlap matrix M^(20)=int Y_A Y_20 Y_B, evaluated with the exact sixth moment of the unit sphere. Pure internal_consistency (a Wigner-3j-type angular integral on S^2), no fit, no external published anchor. (kappa(s) as the radial perturbation profile delta_K=eps kappa(s) Y_20 is a free perturbation shape, but the constrained VALUE in this candidate is the derived constant kappa_*.) Logged low gap (derived constant)."
+    citations:
+      - { path: paper/stages/stage_024.tex, line: 164, excerpt: "M^{(20)}=\\frac{\\sqrt5}{7\\sqrt\\pi}\\operatorname{diag}\\left(1,\\frac12,\\frac12,-1,-1\\right)" }
+      - { path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md, line: 213, excerpt: "`int dOmega n_i n_j n_k n_l n_m n_n = (4 pi / 105) sum_pairings delta delta delta`," }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_081_eps_blk__phase_b__eps_blk.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,46 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: print("  Pi_max^(F1)/C_mix   =", sp.N(Pi_max_over_C.subs(eps_blk, 0), 20))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: eps_blk
+  introduced_at_stage: 081
+  introduced_at_line: 41
+  citation:
+    path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+    line: 41
+    excerpt: with `eps_blk` the blocking ratio carried from the selected quadrupole branch.
+constraints:
+- parameter: eps_blk
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+    line: 23
+    excerpt: At vanishing blocking (`eps_blk = 0`) and with the natural wall normalization `lambda_mu = 1`, the explicit branch
+      already gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: eps_blk is the support-blocking ratio carried from the selected quadrupole branch; stage 081 treats its full dependence
+    symbolically (Q(zeta;eps_blk), Pi_max^(F1)(eps_blk)). The candidate value '0' is the illustrative 'unblocked limit' eps_blk
+    = 0 in which Q(zeta;0) = 1+zeta and Pi_tr/C_mix = 1+zeta_req -- a convenience/branch-selection convention used for the
+    numerical illustration, not a derived or externally-anchored value. Classified free_choice. (The blocking-ratio concept
+    descends from the Stage-043 support-blocking ratio eps_phi; here it is a carried free branch parameter.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+    line: 124
+    excerpt: '## 4. Numerical illustration at `eps_blk = 0`'
+  - path: paper/stages/stage_081.tex
+    line: 18
+    excerpt: Solving for \(\Pi_{\rm tr}\) gives the equivalent product threshold.  In the unblocked limit, \(\epsilon_{\rm
+      blk}=0\), this reduces to
+downstream_dependents:
+- 082
+- 083
+- 084
+- 085
+- 086
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_081_eps_blk__eps_blk.yaml

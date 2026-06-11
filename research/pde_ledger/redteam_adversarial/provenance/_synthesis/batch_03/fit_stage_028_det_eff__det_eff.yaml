@@ -1,0 +1,24 @@
+candidate_id: fit_stage_028_det_eff
+parameter_name: det_eff
+origin_claims:
+  - parameter: det_eff
+    introduced_at_stage: 28
+    introduced_at_line: 119
+    citation:
+      path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+      line: 119
+      excerpt: "`det(K_eff) = K_0 K_1 - alpha ( K_1 kappa_0^2 + K_0 kappa_1^2 )`."
+constraints:
+  - parameter: det_eff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+      line: 234
+      excerpt: "The lower eigenvalue crosses zero when"
+downstream_dependents: [29]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The scanner attached the literal value '0' to det_eff. det_eff is not posited to be zero; det(K_eff) = K_0 K_1 - alpha(K_1 kappa_0^2 + K_0 kappa_1^2) is the exact determinant of the 2x2 loaded wall matrix. The '0' is the RHS of the softening CONDITION det(K_eff)=0 used to derive alpha_crit (the eigenvalue-crossing threshold), not an assigned value of det_eff. Classification internal_consistency: det_eff is an exact algebraic function of the ledger-internal matrix entries. Logged so ingest does not read det_eff as a posited-zero free choice."
+    citations:
+      - { path: paper/stages/stage_028.tex, line: 80, excerpt: "The lower eigenvalue reaches zero when \\(\\det K_{\\rm eff}=0\\)." }

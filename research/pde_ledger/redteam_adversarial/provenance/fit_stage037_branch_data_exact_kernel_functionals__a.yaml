@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage037_branch_data_exact_kernel_functionals__phase_b__a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,43 @@ source_evidence:
   line: 138
   role: sympy_script
   excerpt: alpha = sp.simplify(gB**2 / A_phi + (A_U * gW + gR * gU) ** 2 / (A_U * Delta_UW))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A
+  introduced_at_stage: 27
+  introduced_at_line: 44
+  citation:
+    path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+    line: 44
+    excerpt: '`A = K_0 - g_U^2 / Omega_U^2`,'
+constraints:
+- parameter: A
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 233
+    excerpt: '`A = [ K_U K_eta^(eff) - c_(eta U)^2 ] / ( mu_eta K_U ),`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'A (the baseline flat-branch scalar stiffness) is defined abstractly at stage 033 as A = K_0 - g_U^2/Omega_U^2,
+    then given its exact closed continuum-kernel form at stage 037 (A = [K_U K_eta^eff - c_etaU^2]/(mu_eta K_U), notes line
+    233; audit verifies the continuum extraction). Pure internal_consistency — a Schur-complement functional of the explicit
+    continuum operator, neither fit nor posited. Logged informationally: 037 is the value-form origin, 033 the symbolic origin.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 207
+    excerpt: '`A = K_0 - g_U^2 / Omega_U^2,`'
+  - path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+    line: 281
+    excerpt: '`K_U K_eta^(eff) > c_(eta U)^2.`'
+downstream_dependents:
+- '032'
+- '033'
+- '034'
+- 038
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage037_branch_data_exact_kernel_functionals__a.yaml

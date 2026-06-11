@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_re__phase_b__re.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -94,8 +94,21 @@ source_evidence:
   line: 202
   role: sympy_script
   excerpt: print('Re(deltaV_linear) =', real_part)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Re
+  introduced_at_stage: 220
+  introduced_at_line: 420
+  citation:
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 420
+    excerpt: \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+constraints:
+- parameter: Re
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 425
+    excerpt: So the first outgoing correction is **purely phase-lag / pumping** at linear order.
 graph_context:
   contexts: []
   graph_gaps:
@@ -120,3 +133,6 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_220.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_220_re__re.yaml

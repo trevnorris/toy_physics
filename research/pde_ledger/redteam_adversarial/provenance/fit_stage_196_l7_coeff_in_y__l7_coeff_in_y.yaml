@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_196_l7_coeff_in_y__phase_b__l7_coeff_in_y.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,25 @@ source_evidence:
   line: 194
   role: sympy_script
   excerpt: print("   So every coefficient through O(omega^5) is unchanged.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: L7_coeff_in_Y
+  introduced_at_stage: 196
+  introduced_at_line: 178
+  citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 178
+    excerpt: So the first place the extra higher odd tail can appear is exactly `\omega^7`.
+constraints:
+- parameter: L7_coeff_in_Y
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    line: 268
+    excerpt: These formulas do not contain any higher odd coefficient.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_196_l7_coeff_in_y__l7_coeff_in_y.yaml

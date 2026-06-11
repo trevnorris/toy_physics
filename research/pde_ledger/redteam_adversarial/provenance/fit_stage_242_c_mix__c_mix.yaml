@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_242_c_mix__phase_b__c_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -131,9 +131,40 @@ source_evidence:
   line: 308
   role: sympy_script
   excerpt: print("  M_mix        =", sp.simplify(M_mix.subs(sample)))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_mix
+  introduced_at_stage: 240
+  introduced_at_line: 301
+  citation:
+    path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+    line: 301
+    excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon_*)}{\pi^2}.
+constraints:
+- parameter: C_mix
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    line: 129
+    excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: C_mix at Stage 242 carries no fixed numeric target; it is the carried selected-branch normalization C_mix = 8 Lambda(1-eps)/pi^2
+    (Stage 242 notes line 129), restated from its Stage-240 origin (Stage 240 notes line 301) with the running support variable
+    eps in place of eps_*. This is internal_consistency (a ledger-derived/carried normalization, not an inserted fit). Stage
+    242 only uses it inside the carried demand Pi_tr = (4/3) C_mix to fix the realized placement varrho_phys = (2/3)(1-eps).
+    Logged for transparency since the scanner candidate has no numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    line: 127
+    excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+  - path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    line: 240
+    excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+downstream_dependents:
+- '244'
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage_242_c_mix__c_mix.yaml

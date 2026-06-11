@@ -1,0 +1,25 @@
+candidate_id: fit_stage_100_chi_q
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 100
+    introduced_at_line: 15
+    citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 15
+      excerpt: "Introduce one dimensionless outgoing-normalization factor `chi_Q` by writing the actual normalized retarded branch as"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 79
+      excerpt: "So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`."
+downstream_dependents: [105]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Scanner extracted target values ['1','9'] for chi_Q. Neither is chi_Q's value at stage 100: chi_Q is a FREE symbolic multiplier here (value 1 is set downstream at stage 105). The literal '9' is not chi_Q at all — it is the structural coefficient in Gammabar_5 = chi_Q * 9 Kbar_0/(32 Omega_Q^5) (notes lines 30/73), which the scanner grabbed as a neighboring numeral. chi_Q itself is free_choice at this stage."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md, line: 30, excerpt: "`Gammabar_5 = chi_Q * 9 Kbar_0/(32 Omega_Q^5).`" }
+      - { path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py, line: 30, excerpt: "chiQ = sp.symbols('chiQ', real=True)" }

@@ -1,0 +1,19 @@
+candidate_id: fit_stage185_monomial_exponents
+parameter_name: C_tr_star_exponents
+origin_claims:
+  - parameter: C_tr_star_exponents
+    introduced_at_stage: 185
+    introduced_at_line: 159
+    citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 159
+      excerpt: "\\mathfrak C_{{\\rm tr},*}:=\\chi_0^{\\,1+\\delta_{U,*}}\\,\\delta_U^{\\,1+\\chi_{0,*}}."
+constraints:
+  - parameter: C_tr_star_exponents
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 150
+      excerpt: "At first grouped weak-axisymmetric order on the coherent reference branch, the coefficients are frozen at"
+downstream_dependents: [186, 187]
+provenance_findings: []

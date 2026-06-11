@@ -1,0 +1,24 @@
+candidate_id: fit_stage223_lambda02_rq_dual_engine_overclaim
+parameter_name: R_Q_lower_wall_lambdaW_0p2
+origin_claims:
+  - parameter: R_Q_lower_wall_lambdaW_0p2
+    introduced_at_stage: 223
+    introduced_at_line: 351
+    citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 351
+      excerpt: "| 0.2 | 0.000576970879843 | 29.3158464872314 | 138.814136942081 | 137.502546600713 |"
+constraints:
+  - parameter: R_Q_lower_wall_lambdaW_0p2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+      line: 8
+      excerpt: "The compatibility equation, the compatible wall stiffness, the compatibility-branch pole census, and the finite dynamic survival windows below are exact inside that reduced closure. The numerical values are exact evaluations on one explicit admissible primitive slice of the same formulas."
+downstream_dependents: [224]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Candidate alleges a dual-engine (SymPy+Mathematica) overclaim on the lower-wall R_Q scan value at lambdaW=0.2, but the stage 223 card explicitly states 'Mathematica audit: none yet' — the value is single-engine SymPy only and the card does not overclaim dual-engine verification, so the suspected overclaim is unsubstantiated."
+    citations:
+      - { path: paper/stages/stage_223.tex, line: 11, excerpt: "\\stagefield{Verification}{SymPy audit: \\StageFile{scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}.  Mathematica audit: none yet.}" }

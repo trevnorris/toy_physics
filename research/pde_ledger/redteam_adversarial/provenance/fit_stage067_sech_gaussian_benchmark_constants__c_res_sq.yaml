@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage067_sech_gaussian_benchmark_constants__phase_b__c_res_sq.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,37 @@ source_evidence:
   line: 225
   role: sympy_script
   excerpt: print("  matched-layer ideal, but it does not by itself prove support-threshold survival.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_res_sq
+  introduced_at_stage: 67
+  introduced_at_line: 116
+  citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 116
+    excerpt: '`C_res^2 := C^2(sqrt(pi))`'
+constraints:
+- parameter: C_res_sq
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 117
+    excerpt: '`        = 0.9944188364515293487...`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Same value as fit_stage067_C_res_unique_global_max (C_res^2 = 0.994418836451529...). It is a benchmark constant
+    computed inside the sech-Gaussian family, not matched to any external published number. The family itself is a user-suggested
+    benchmark ('the memo you shared'); the value given that family is forced by the self-duality identity and the numerical
+    maximum scan.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 86
+    excerpt: '`C^2(r) = C^2(pi / r).`'
+downstream_dependents:
+- 068
+- 069
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage067_sech_gaussian_benchmark_constants__c_res_sq.yaml

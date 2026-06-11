@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_nq_canonical_normalization__phase_b__n_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,44 @@ source_evidence:
   line: 267
   role: sympy_script
   excerpt: print("4. The carried unresolved packet is (d ln R_tr, d ln R_target, d ln epsilon_eta), together with N_Q = 1.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: N_Q
+  introduced_at_stage: 232
+  introduced_at_line: 316
+  citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 316
+    excerpt: N_Q=1.
+constraints:
+- parameter: N_Q
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 314
+    excerpt: together with the canonical outgoing-normalization condition
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'N_Q=1 is stated at Stage 232 as ''the canonical outgoing-normalization condition'' (notes line 314-316; script
+    line 267 prints it as part of the carried unresolved packet). It is a normalization CONVENTION (set the outgoing mode
+    normalization to unity), not a derived or externally-anchored value -> free_choice. The Stage-232 notes only restate it
+    as a carried condition; the canonical N_Q=1 outgoing-normalization is a recurring ledger convention introduced upstream
+    (outgoing-normalization surface, ~stages 019/087/247 family). Logged low-severity: classification is well-supported as
+    a convention, but the originating stage of the N_Q=1 normalization choice is upstream and not pinned in this stage''s
+    notes.'
+  citations:
+  - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 267
+    excerpt: print("4. The carried unresolved packet is (d ln R_tr, d ln R_target, d ln epsilon_eta), together with N_Q =
+      1.")
+  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 316
+    excerpt: N_Q=1.
+downstream_dependents:
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage232_nq_canonical_normalization__n_q.yaml

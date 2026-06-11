@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback__phase_b__u_obs.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -158,9 +158,40 @@ source_evidence:
   line: 245
   role: sympy_script
   excerpt: assert abs(float(R1_obs) - (-0.12762119)) < 5e-9
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: U_obs
+  introduced_at_stage: 245
+  introduced_at_line: 500
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 500
+    excerpt: U(r_{\rm eval})\approx 0.14313458,
+constraints:
+- parameter: U_obs
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 497
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: U_obs = 0.14313458 is a probe/sample value IMPORTED from the barrier Session-I write-up as the 'representative
+    relaxed-rigid-mouth point' (notes line 497-505), then fed into the exact Stage-245 compiler as a readback consistency
+    check (script line 209 'U_obs = sp.Float(0.14313458)'). It is a posited sample evaluation point (free_choice), not derived
+    from ledger-internal quantities and not an external published target. The notes document it as a recorded session number,
+    so a notes/ citation exists. Logged at low severity to record that this is a sample probe value, not a constrained ledger
+    output.
+  citations:
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 209
+    excerpt: U_obs = sp.Float("0.14313458")
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 546
+    excerpt: \Xi_1^{\rm nr}\approx 0.14313458,
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_session1_readback__u_obs.yaml

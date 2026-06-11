@@ -1,0 +1,25 @@
+candidate_id: fit_stage022_invariant_product_must_match_universal
+parameter_name: N_Q_universal
+origin_claims:
+  - parameter: N_Q_universal
+    introduced_at_stage: 022
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: N_Q_universal
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 256
+      excerpt: "The universal GR quadrupole target is"
+downstream_dependents: [023]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: high
+    summary: "The invariant normalization product mhat_0^2 P_0 (= N_Q_universal) is REQUIRED to match the universal GR quadrupole value: the note defines gamma_GR = 2G/(5c^5) as 'The universal GR quadrupole target' and back-solves the product to mhat_0^2 P_0 = 54Gc_s^5/(5a^5c^5). The whole point of the candidate name ('invariant_product_must_match_universal') is the fit-to-external-target. This is a published_target constraint. It is honestly disclosed in the card claimstatus as a StatusOpen branch-realization test (stage_022.tex:5), so not overclaimed, but it must not be classed internal_consistency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 264, excerpt: "Including the source-map factor `mhat_0`, the invariant normalization condition is therefore" }
+      - { path: paper/stages/stage_022.tex, line: 5, excerpt: "The final equality to the universal normalization is a \\StatusOpen{} branch-realization test." }

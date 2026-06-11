@@ -1,0 +1,25 @@
+candidate_id: fit_stage202_split_u_ratio_uniquely_fixed
+parameter_name: C_tr_target
+origin_claims:
+  - parameter: C_tr_target
+    introduced_at_stage: 202
+    introduced_at_line: 137
+    citation:
+      path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+      line: 137
+      excerpt: "\\mathfrak C_{{\\rm tr},*}^{\\rm target},"
+constraints:
+  - parameter: C_tr_target
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+      line: 134
+      excerpt: "Fix the target orbit by the exact target values"
+downstream_dependents: [203]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "C_tr_target (the translational coherent-monomial target value 𝔠_{tr,*}^target) is a DECLARED target-orbit specification, not a derived or externally-anchored number at Stage 202. The notes 'Fix the target orbit by the exact target values 𝔠_{tr,*}^target, 𝔠_{nt,*}^target, ε_{η,*}^target' (lines 134-142) and the paper card 'target monomial ratios are formed against the declared target values' (stage_202.tex:20) treat it as a free symbolic specification that defines the target orbit O_*; the candidate's actual derived content is that the split-U ratio delta_{U,*}^graph is UNIQUELY FIXED from C_tr_target on every same-free-quintuple slice (notes lines 177-197) -- that uniqueness IS internal_consistency, but it constrains delta_U, not C_tr_target. So C_tr_target itself = free_choice (a posited comparison target). Ambiguity logged because the underlying coherent monomial 𝔠_{tr,*} was DERIVED at Stage 198 (line 100); if the 'target' value is meant to be the realized coherent value rather than a free declaration, the classification would shift toward internal_consistency. The notes/card phrasing ('declared'/'Fix ... by') supports free_choice."
+    citations:
+      - { path: paper/stages/stage_202.tex, line: 20, excerpt: "Check target monomial ratios are formed against the declared target values before taking logarithms." }
+      - { path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md, line: 197, excerpt: "So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice." }

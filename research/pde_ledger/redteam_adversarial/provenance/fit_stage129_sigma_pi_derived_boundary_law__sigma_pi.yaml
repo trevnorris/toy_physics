@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage129_sigma_pi_derived_boundary_law__phase_b__sigma_pi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -151,9 +151,39 @@ source_evidence:
   line: 31
   role: sympy_script
   excerpt: 'if sp.simplify(sp.integrate(sigma, (z, 0, L)) - 1) != 0:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: sigma_Pi
+  introduced_at_stage: 129
+  introduced_at_line: 114
+  citation:
+    path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+    line: 114
+    excerpt: \sigma_{\Pi}(z)
+constraints:
+- parameter: sigma_Pi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+    line: 122
+    excerpt: So the previously ad hoc truncated exponential family is now the exact zero-flux
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '132'
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage129_sigma_pi_derived_boundary_law__sigma_pi.yaml

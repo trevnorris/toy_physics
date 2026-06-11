@@ -1,0 +1,25 @@
+candidate_id: fit_stage_156_pi_can
+parameter_name: Pi_can
+origin_claims:
+  - parameter: Pi_can
+    introduced_at_stage: 156
+    introduced_at_line: 71
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 71
+      excerpt: "\\Pi_{\\rm can}"
+constraints:
+  - parameter: Pi_can
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 55
+      excerpt: "At that renormalized traction, the exact self-consistent fixed point satisfies"
+downstream_dependents: [157, 158]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Pi_can ~3.871564 is read off the restored self-consistent fixed point at Sigma0_can via Pi = Sigma0(1 - R*S) (script line 108: Pi_can = Sigma0_can * (1 - R_can * S_can)); fully determined by ledger-internal fixed-point quantities -> internal_consistency. Value-tail discrepancy across carriers (3.871564377479002 in stage156/157 vs 3.8715643774790087 in stage158 line 47); sub-tolerance, flagged for reconciliation only."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md, line: 72, excerpt: "\\approx 3.871564377479002." }
+      - { path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md, line: 47, excerpt: "\\approx 3.8715643774790087." }

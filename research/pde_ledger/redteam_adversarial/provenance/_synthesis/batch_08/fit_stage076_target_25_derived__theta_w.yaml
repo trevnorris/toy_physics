@@ -1,0 +1,26 @@
+candidate_id: fit_stage076_target_25_derived
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 075
+    introduced_at_line: 104
+    citation:
+      path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+      line: 104
+      excerpt: "`Theta_w := 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2).`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+      line: 17
+      excerpt: "The present stage does that by combining two already-carried exact identities:"
+downstream_dependents: [077, 078]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "The '25' in Theta_w = 25 lambda_mu^2 rho_w^2 is an algebraic reduction, not a fitted target despite the candidate name 'target_25_derived'. It is forced by combining the frozen n=5 GNLS identity h = m c_s^2/4 (stage 076 sec.1), the Stage-074 healing lock ell = hbar/(2 m c_sw), and the Family-1 reference ratio ell/a = 1/20 -> 1/ell^2 = 400, giving 400/16 = 25. All inputs are ledger-internal, so internal_consistency. (lambda_mu and rho_w remain symbolic carriers.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md, line: 89, excerpt: "`Theta_w = lambda_mu^2 rho_w^2 / (16 ell^2).`" }
+      - { path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md, line: 109, excerpt: "`1 / ell^2 = 400.`" }
+      - { path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md, line: 113, excerpt: "`Theta_w = 25 lambda_mu^2 rho_w^2.`" }

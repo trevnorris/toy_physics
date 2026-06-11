@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_111_lambda_mix__phase_b__lambda_mix.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -143,9 +143,39 @@ source_evidence:
   line: 35
   role: sympy_script
   excerpt: assert sp.simplify(chi_mix_lin - (1 - sigma*(sp.Rational(1,3) + 9*gamma))) == 0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda_mix
+  introduced_at_stage: 111
+  introduced_at_line: 12
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 12
+    excerpt: \Lambda_2^{\rm mix}(z)
+constraints:
+- parameter: Lambda_mix
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 9
+    excerpt: Take the canonical outgoing branch and add the first isotropic Schur-complement-style mixed side-channel
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'Lambda_mix(z) = Lambda_2^out(z) - sigma_W/(1 - kappa_W z^2 - i gamma_W z^5) is a POSITED model form (free_choice
+    ansatz: the Schur-complement single-pole side-channel structure is assumed), built ON TOP of the ledger-internal canonical
+    outgoing branch Lambda_2^out. Its low-frequency expansion (L0,L2,L4,L5) is then internal_consistency. Primary constraint
+    recorded as free_choice because the candidate names the model-form ansatz itself, not a derived coefficient.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 16
+    excerpt: \frac{\sigma_W}{1-\kappa_W z^2-i\gamma_W z^5}
+  - path: scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py
+    line: 9
+    excerpt: Lambda_mix = sp.expand(sp.series(Lambda_out - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())
+downstream_dependents:
+- '112'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_111_lambda_mix__lambda_mix.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_115_k_s__phase_b__k_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -79,9 +79,36 @@ source_evidence:
   line: 40
   role: sympy_script
   excerpt: sigma_star = sp.simplify((g_s**2) / (4 * K_s))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_s
+  introduced_at_stage: 114
+  introduced_at_line: 18
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 18
+    excerpt: K_s & \lambda\\[2pt]
+constraints:
+- parameter: K_s
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 33
+    excerpt: \rho_c=\frac{g_s^2}{K_s},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: K_s (static shell stiffness) is a POSITED core-model parameter carried from Stage 114 into the Stage-115 identifications
+    rho_c=g_s^2/K_s, r_c=lambda^2/(K_s K_q), sigma_*=g_s^2/(4 K_s) and the coupling-balance law. It is never assigned a number;
+    it stays a free core-coupling degree of freedom. Classified free_choice (ansatz).
+  citations:
+  - path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+    line: 40
+    excerpt: sigma_star = sp.simplify((g_s**2) / (4 * K_s))
+downstream_dependents:
+- '125'
+- '139'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_115_k_s__k_s.yaml

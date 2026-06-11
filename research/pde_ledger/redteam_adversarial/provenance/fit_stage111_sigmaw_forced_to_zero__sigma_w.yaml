@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage111_sigmaw_forced_to_zero__phase_b__sigma_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,9 +110,39 @@ source_evidence:
   line: 35
   role: sympy_script
   excerpt: assert sp.simplify(chi_mix_lin - (1 - sigma*(sp.Rational(1,3) + 9*gamma))) == 0
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: sigma_W
+  introduced_at_stage: 111
+  introduced_at_line: 21
+  citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 21
+    excerpt: '- `sigma_W > 0` the static mixed loading,'
+constraints:
+- parameter: sigma_W
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 53
+    excerpt: \boxed{\sigma_W=0.}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'NOT a fit. sigma_W=0 is FORCED: requiring the standalone mixed pole to preserve the already-fixed canonical even
+    l=2 fingerprint, the z^2 condition forces kappa_W=-1/9 (already incompatible with a passive kappa_W>0), and the z^4 condition
+    then forces sigma_W=0. This is a genuine no-go derivation entirely from ledger-internal even-moment matching; no external
+    target. Classified internal_consistency. Recorded as positive control confirming the value is derived, not posited.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 49
+    excerpt: Even if one formally inserts that value, the `z^4` condition becomes
+  - path: scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py
+    line: 33
+    excerpt: assert sp.simplify(sigma_match) == 0
+downstream_dependents:
+- '112'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage111_sigmaw_forced_to_zero__sigma_w.yaml

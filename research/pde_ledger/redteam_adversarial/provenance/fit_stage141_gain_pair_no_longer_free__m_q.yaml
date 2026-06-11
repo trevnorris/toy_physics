@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage141_gain_pair_no_longer_free__phase_b__m_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,46 @@ source_evidence:
   line: 45
   role: notes_stage
   excerpt: 5. Under the self-matched mouth susceptibility closure,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_q
+  introduced_at_stage: 137
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+    line: 65
+    excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+constraints:
+- parameter: M_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+    line: 7
+    excerpt: '1. The actual mouth gains are derived from the explicit throat-core ansatz:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: Stage 141 is a STATUS-UPDATE note that restates M_q (no new value); origin is Stage 137. It is internal_consistency
+    (derived from the Schur-complement core map). The 141 note itself is appropriately HEDGED -- 'The actual mouth gains are
+    derived from the explicit throat-core ansatz... it is not yet a theorem that the full PDE admits no other microscopic
+    realization' (notes lines 7,13-15) -- so the candidate-id phrase 'gain pair no longer free' is true only WITHIN the explicit
+    throat-core + self-matched closure of Stages 137-140, not unconditionally. Logged low so downstream consumers carry the
+    within-closure qualifier and do not read M_q as an unconditional PDE theorem; the note text supports this, but the candidate-id
+    slogan could be mis-read as unconditional.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+    line: 13
+    excerpt: Stages 137--140; it is not yet a theorem that the full PDE admits no other
+  - path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+    line: 11
+    excerpt: M_q=-\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+downstream_dependents:
+- '142'
+- '143'
+- '144'
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage141_gain_pair_no_longer_free__m_q.yaml

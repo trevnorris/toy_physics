@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_stale_output__phase_b__stale_output.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -38,4 +38,21 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: '''stale_output'' is not a physical parameter — it is a scanner meta-token. The bundle''s only source_evidence
+    is the generic stage_195.tex card ''Purpose'' boilerplate (line 7), which contains no value, no equation, and no parameter.
+    There is no notes/ documentation of any quantity named stale_output at stage 195. No origin or constraint can be asserted
+    (binding notes-citation rule cannot be met for a non-parameter). Likely a scanner family-map/dedup artifact flagging a
+    stale output cross-reference rather than a fitted value; should be dropped or routed to numbering/dedup triage, not provenance
+    classification.'
+  citations:
+  - path: paper/stages/stage_195.tex
+    line: 7
+    excerpt: \stagefield{Purpose}{Stage~195 is the original-stage audit card for \emph{Source-map reduction}.  Its purpose
+      is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+      citations.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_195_stale_output__stale_output.yaml

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_046_f_flat
+parameter_name: F_flat
+origin_claims:
+  - parameter: F_flat
+    introduced_at_stage: 46
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+      line: 54
+      excerpt: "`F_flat(xi,delta) = F_tr(xi,delta;1)`"
+constraints:
+  - parameter: F_flat
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+      line: 46
+      excerpt: "The old flat branch is recovered at"
+downstream_dependents: [48, 51]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Scanner attributed value '1' to F_flat. The '1' is not a value of F_flat itself; it is the substitution R=1 that DEFINES the flat branch as the R=1 specialization of F_tr (notes line 54 'F_flat = F_tr(xi,delta;1)'). F_flat is a rational function of (xi,delta), not the scalar 1. Recorded so the literal '1' is not mis-ingested as a fit value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md, line: 48, excerpt: "`R = 1,`" }

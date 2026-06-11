@@ -1,0 +1,26 @@
+candidate_id: fit_stage197_p0_target_quadrupole_normalization
+parameter_name: P0_target
+origin_claims:
+  - parameter: P0_target
+    introduced_at_stage: 22
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: P0_target
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 256
+      excerpt: "The universal GR quadrupole target is"
+downstream_dependents: [198]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: high
+    summary: "P0_target = 54 G c_s^5/(5 a^5 c^5) is an EXTERNAL fit target, not a ledger-internal derivation. The literal 54/5 is the algebraic image of the standard GR quadrupole-luminosity coefficient gamma_GR = 2 G/(5 c^5) (Einstein 2/5) divided by the stage-022 branch factor Gamma5_port = a^5/(27 c_s^5): (2/5)*27 = 54/5. The Stage 022 notes name it 'The universal GR quadrupole target'. Stage 197 hard-codes the same value (script line 76: P0_target = 54*G*c_s**5/(5*a**5*c**5)) and merely carries it into the Packet-A collapse Delta_norm = P0_target(chi_Q^{-1}-1). The Stage 197 paper card ('exact isotropic target surface ... source-map factor', stage_197.tex:13) presents the construction as exact-derived without naming that P0_target itself is an imported external GR number -> a (mild) paper-card overclaim layered on a published_target fit carried from Stage 022."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md, line: 152, excerpt: "P_0^{\\rm target}=\\frac{54Gc_s^5}{5a^5c^5}," }
+      - { path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py, line: 76, excerpt: "P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))" }
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 258, excerpt: "`gamma_GR = 2 G / (5 c^5)`." }

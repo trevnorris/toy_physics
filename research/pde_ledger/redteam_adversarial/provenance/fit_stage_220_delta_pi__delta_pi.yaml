@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_delta_pi__phase_b__delta_pi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,8 +182,21 @@ source_evidence:
   line: 72
   role: sympy_script
   excerpt: 'assert sp.simplify(Delta_Pi.subs({omega: 0, Pi: 0}) - Delta0) == 0'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_Pi
+  introduced_at_stage: 220
+  introduced_at_line: 147
+  citation:
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 147
+    excerpt: \Delta_\Pi(\omega):=A(\omega)W(\omega)-R^2,
+constraints:
+- parameter: Delta_Pi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 176
+    excerpt: \Delta_\Pi(\omega)\,D_\Pi(\omega).
 graph_context:
   contexts: []
   graph_gaps:
@@ -204,3 +217,19 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_220.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: needs_triage
+  summary: Delta_Pi is the dynamic (U,W)-block determinant Delta_Pi := A(omega)W(omega) - R^2, defined and derived internally
+    at Stage 220 (the frequency-dependent generalization of the Stage 219 static Delta); det K_dyn = Delta_Pi D_Pi is proved
+    at line 176/565. The provenance scanner logged a graph_gap (no atlas node tied to paper/stages/stage_220.tex); the value-genealogy
+    is fully documented in the per-stage notes, so this is an atlas-node gap only, not a notes gap.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    line: 565
+    excerpt: \det \mathcal K_{\rm dyn}=\Delta_\Pi D_\Pi,
+  - path: redteam_adversarial/provenance/fit_stage_220_delta_pi__delta_pi.yaml
+    line: 197
+    excerpt: 'type: graph_gap'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:33Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_220_delta_pi__delta_pi.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage160_notes_only_slippage_numerics
+parameter_name: Delta_Q_dS_coeff
+origin_claims:
+  - parameter: Delta_Q_dS_coeff
+    introduced_at_stage: 160
+    introduced_at_line: 345
+    citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 344
+      excerpt: "2.51482073756543\\,\\delta\\mathcal S"
+constraints:
+  - parameter: Delta_Q_dS_coeff
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 335
+      excerpt: "Substituting the explicit tangential transport,"
+downstream_dependents: [161]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_Q_dS_coeff (~2.51482073756543, the delta-S coefficient in Delta_Q ~ -[sigma_* Upsilon_Pi/(1-sigma_*)](1.80034 delta_Sigma0 - 2.51482 delta_S), notes line 340-345) is a DERIVED transport coefficient: the Stage 160 prefactor 9/(1+r_F1^2)~2.16280593 (line 313) times the Stage 159 tangential transport coefficient 1.16275838754222 for delta_S -> internal_consistency. Numerics inherit the r_F1<-37/20 dependence via 1+r_F1^2~4.16126. notes-only numeric; no external target; not independently constrained."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md, line: 313, excerpt: "\\frac{9}{1+\\mathfrak r_{F1}^2}" }
+      - { path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md, line: 256, excerpt: "1.16275838754222\\,\\delta\\mathcal S" }

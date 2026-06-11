@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback_inputs__phase_b__a_v.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,39 @@ source_evidence:
   line: 124
   role: notes_stage
   excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_V
+  introduced_at_stage: 245
+  introduced_at_line: 156
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 156
+    excerpt: '- `a_V>0` is the dressing-leg stiffness,'
+constraints:
+- parameter: a_V
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 156
+    excerpt: '- `a_V>0` is the dressing-leg stiffness,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: a_V is the dressing-leg stiffness in the Stage-245 reduced non-rigid free energy (notes line 143-156). As a SYMBOL
+    it is a free positive parameter (free_choice / posited closure coefficient); its only NUMERIC value is the probe sample
+    a_V = 3.0 in the drain sign-check (script line 92), a representative sample point, not a ledger-derived value. The notes
+    define a_V only structurally (a_V > 0 dressing-leg stiffness) with no derived target. Classification free_choice. Logged
+    at low severity since the parameter has no derived numeric value to classify.
+  citations:
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 92
+    excerpt: 'drain_neg_chi = D_expected.subs({a_U: sp.Float("2.5"), a_V: sp.Float("3.0"),'
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 212
+    excerpt: \Delta_{UV}:=a_U a_V-\chi_{UV}^2.
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_session1_readback_inputs__a_v.yaml

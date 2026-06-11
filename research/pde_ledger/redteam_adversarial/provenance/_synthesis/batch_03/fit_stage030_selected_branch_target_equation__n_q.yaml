@@ -1,0 +1,24 @@
+candidate_id: fit_stage030_selected_branch_target_equation
+parameter_name: N_Q
+origin_claims:
+  - parameter: N_Q
+    introduced_at_stage: 22
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: N_Q
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 244
+      excerpt: "`mhat_-^2 P_{0,-} = 54 G c_s^5 / (5 a^5 c^5)`."
+downstream_dependents: [31, 33]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Same N_Q external target as fit_stage030_nq_target_retype_54_5, viewed via the full selected-branch normalization equation mhat_-^2 P_{0,-} = 54/5 G c_s^5/(5 a^5 c^5). The RHS is the external GR quadrupole number; the selected-branch equation is the same published_target fit restated for the operator-selected mode. Two candidate ids resolve to the same N_Q target. published_target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md, line: 169, excerpt: "`mhat_-^2 Gamma_{5,-} = 2 G / (5 c^5)`." }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_100_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 100
+    introduced_at_line: 20
+    citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 20
+      excerpt: "where the canonical compact outgoing coefficient is"
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+      line: 79
+      excerpt: "So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`."
+downstream_dependents: [104, 105]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "'matched_fingerprint_value' is not a literal numeric parameter at stage 100; it refers to the outgoing l=2 DtN fingerprint that the canonical compact coefficient sigma_Q^can = 9/(8 Omega_Q^5) = 4 a^5/(27 c_s^5) reproduces. At stage 100 the branch is said to 'already match the canonical compact value' (notes line 9) with chi_Q=1; the ACTUAL fingerprint match is PROVED downstream at stage 104 (script lines 11-12), not in this stage. The canonical compact coefficient itself is a ledger-internal structural value (internal_consistency); the in-stage 'match' claim is a forward reference to stage 104, so no value is fixed here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md, line: 9, excerpt: "where the outgoing `l=2` odd coefficient already matches the canonical compact value." }
+      - { path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py, line: 12, excerpt: "expansion\" — stage 104 proves the exact outgoing fingerprint, and stage" }

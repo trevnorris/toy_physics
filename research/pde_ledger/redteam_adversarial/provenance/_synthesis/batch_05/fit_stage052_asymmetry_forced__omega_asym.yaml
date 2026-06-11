@@ -1,0 +1,24 @@
+candidate_id: fit_stage052_asymmetry_forced
+parameter_name: Omega_asym
+origin_claims:
+  - parameter: Omega_asym
+    introduced_at_stage: 52
+    introduced_at_line: 109
+    citation:
+      path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+      line: 109
+      excerpt: "`Omega_0 := I_(phi,0) / I_W,`"
+constraints:
+  - parameter: Omega_asym
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md
+      line: 163
+      excerpt: "`Omega_0 >= sqrt(zeta_req).`"
+downstream_dependents: [53, 55]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Bundle parameter_name 'Omega_asym' maps to the relative overlap boost Omega_0 = I_(phi,0)/I_W of Stage 052. The candidate's 'asymmetry_forced' claim is the DERIVED requirement: once zeta_req>1 the symmetric twin (Omega_0=1) fails identically and a true overlap asymmetry Omega_0 >= sqrt(zeta_req) is forced (notes lines 155-165) -- an internal_consistency threshold solved from zeta_0^phys = (K_W/K_phi0) Omega_0^2 >= zeta_req. Note Omega_0 itself is a free operator-shape input whose physical realizability is bounded in Stage 053 (Omega_0<=pi/2) and given a transport origin in Stage 056."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage052_nontwin_asymmetry_threshold.md, line: 165, excerpt: "So any `zeta_req > 1` forces a true overlap asymmetry above the symmetric twin value." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_024_kappa__phase_b__kappa.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -43,9 +43,40 @@ source_evidence:
   line: 403
   role: sympy_script
   excerpt: M_target = sp.diag(kappa_star, kappa_star / 2, kappa_star / 2, -kappa_star, -kappa_star)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa
+  introduced_at_stage: 20
+  introduced_at_line: 221
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 221
+    excerpt: '`kappa_* = sqrt(5) / (7 sqrt(pi))`.'
+constraints:
+- parameter: kappa
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 211
+    excerpt: Using the exact sixth moment of the unit sphere,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: kappa_* = sqrt(5)/(7 sqrt(pi)) is DERIVED exactly as the common prefactor of the axisymmetric quadrupole triple-overlap
+    matrix M^(20)=int Y_A Y_20 Y_B, evaluated with the exact sixth moment of the unit sphere. Pure internal_consistency (a
+    Wigner-3j-type angular integral on S^2), no fit, no external published anchor. (kappa(s) as the radial perturbation profile
+    delta_K=eps kappa(s) Y_20 is a free perturbation shape, but the constrained VALUE in this candidate is the derived constant
+    kappa_*.) Logged low gap (derived constant).
+  citations:
+  - path: paper/stages/stage_024.tex
+    line: 164
+    excerpt: M^{(20)}=\frac{\sqrt5}{7\sqrt\pi}\operatorname{diag}\left(1,\frac12,\frac12,-1,-1\right)
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 213
+    excerpt: '`int dOmega n_i n_j n_k n_l n_m n_n = (4 pi / 105) sum_pairings delta delta delta`,'
+downstream_dependents:
+- '022'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_024_kappa__kappa.yaml

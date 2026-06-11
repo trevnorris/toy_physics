@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage228_primitive_parameter_tuple__phase_b__m.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -184,9 +184,46 @@ source_evidence:
   line: 273
   role: sympy_script
   excerpt: v_num = orient_positive_xi(M_num.nullspace()[0])
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M
+  introduced_at_stage: 228
+  introduced_at_line: 74
+  citation:
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 74
+    excerpt: (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+constraints:
+- parameter: M
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 73
+    excerpt: '- primitive parameters'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: M=1 is one entry of the posited primitive-parameter tuple (lambda_B,...,M) = (1/2,3/10,2/5,1/4,1,7/5,2,1) (notes
+    line 74-76), carried unchanged from the explicit finite-throat sample branch used in Stages 223-227 (notes line 64). The
+    stage-228 notes posit this tuple as 'the same explicit finite-throat one-port branch' without deriving M's value or anchoring
+    it to an external target -- it is a sample/convention choice (free_choice). The originating stage where this tuple's M
+    was first fixed is upstream (>=222/223); stage 228 merely carries it. No notes line at 228 derives M, consistent with
+    a posited sample value rather than a gap in documentation.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    line: 64
+    excerpt: 'Keep the same explicit finite-throat one-port branch used in Stages 223-227:'
+  - path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+    line: 152
+    excerpt: 'M: sp.Integer(1),'
+downstream_dependents:
+- '229'
+- '230'
+- '231'
+- '232'
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage228_primitive_parameter_tuple__m.yaml

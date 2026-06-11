@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_calibration_slice_nominal_constants__phase_b__r_turn.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,33 @@ source_evidence:
   line: 7
   role: notes_stage
   excerpt: 1. the Stage-252 channel-resolved microscopic export / cold-survival compiler,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: r_turn
+  introduced_at_stage: 248
+  introduced_at_line: 428
+  citation:
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    line: 428
+    excerpt: r_{\rm turn,new}=0.39096144,
+constraints:
+- parameter: r_turn
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 382
+    excerpt: ' r_{\rm turn}\approx 0.39096144,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: r_turn=0.39096144 originates at Stage 248 as the reduced-branch outer turning point (r_turn,new), derived from
+    the dynamic event chain; Stage 253 carries it as a benchmark turning-point input. Its origin is Stage 248, not Stage 253.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 956
+    excerpt: '`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:10Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_calibration_slice_nominal_constants__r_turn.yaml

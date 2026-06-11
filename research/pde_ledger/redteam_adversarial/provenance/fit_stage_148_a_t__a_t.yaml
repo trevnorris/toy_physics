@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_148_a_t__phase_b__a_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,48 @@ source_evidence:
   line: 77
   role: sympy_script
   excerpt: dT_lam = sp.simplify(AT*(g_lam-g_star) + BT*(S_lam-S_star))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: A_T
+  introduced_at_stage: 147
+  introduced_at_line: 48
+  citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 48
+    excerpt: A_T
+constraints:
+- parameter: A_T
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+    line: 34
+    excerpt: Substituting the Stage 146 retuning formulas gives
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: A_T = -4.27263956256927 is DERIVED at Stage 147 from the closed form A_T = -(9/40 T_m_*)[1/(g'_*(1-S_*/4)) + Pi_*
+    S'_*/(4 g'_*(1-S_*/4)^2)], built entirely from ledger-internal canonical-branch quantities (T_m_*, g'_*, S_*, Pi_*, S'_*)
+    — internal_consistency. The Stage 148 audit script LABELS the assert against -4.27263956256927 as a 'Paper-literal anchor
+    (EXTERNAL, appendix part04:846/848)'; the word EXTERNAL is misleading here — it means external-to-the-script (the published
+    paper literal), NOT a fit to an outside published physics number. Per CHECKPOINT_CONSTANT_PROVENANCE the Mathematica side
+    re-derives aT/bT independently via D[] autodiff, confirming the literal is the formula's own output, not a back-solved
+    target. Flagged so the 'EXTERNAL' script label is not read as a published_target fit.
+  citations:
+  - path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+    line: 42
+    excerpt: '# Paper-literal anchor (EXTERNAL, appendix part04:846/848): AT/BT reproduce the published'
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 33
+    excerpt: the Mathematica side derives its `aT`/`bT` independently via `D[]` autodiff of `Tm[p]=Sqrt[(9/20)(p/(1−sFormula/4))]`
+      along the S(Π) curve before checking against the literals
+downstream_dependents:
+- '148'
+- '150'
+- '151'
+- '152'
+- '154'
+- '155'
+synthesis_ingested_at: '2026-06-11T18:52:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage_148_a_t__a_t.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage245_eps_eta_session1_match
+parameter_name: epsilon_eta
+origin_claims:
+  - parameter: epsilon_eta
+    introduced_at_stage: 245
+    introduced_at_line: 510
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 510
+      excerpt: "\\epsilon_\\eta(r_{\\rm eval})\n=\n0.3\\,e^{-0.03619791}\n\\approx 0.28933482,"
+constraints:
+  - parameter: epsilon_eta
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 497
+      excerpt: "The session write-up records the representative relaxed-rigid-mouth point"
+downstream_dependents: []
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "epsilon_eta(r_eval) ~ 0.28933482 is computed by the exact Stage-245 compiler eps_eta = eps_eta,ref e^V = 0.3 e^{-0.03619791} (notes line 510-516) and then stated to 'match the Session-I value'. The inputs (V = -0.03619791, eps_eta,ref = 0.3) are imported from the barrier 'Session-I write-up' as a 'representative relaxed-rigid-mouth point' (notes line 497-505) -- i.e. a probe/sample point, not derived from ledger-internal first principles. Classification recorded as free_choice (posited representative sample evaluation point) rather than internal_consistency, because the load-bearing inputs are imported sample numbers, not solved from ledger quantities. It is NOT a published_target either: the matched 'Session-I' source is an INTERNAL barrier-session run of the same toy program, not an EXTERNAL published number (GR/CODATA/PN). Ambiguity (free_choice vs published_target) logged because the value is a consistency MATCH to a recorded internal-session number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 516, excerpt: "which matches the Session-I value." }
+      - { path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py, line: 241, excerpt: "assert abs(float(eps_eta_obs) - 0.28933482) < 5e-9" }

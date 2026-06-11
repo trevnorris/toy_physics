@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage044_xi_no_longer_free__phase_b__xi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,29 @@ source_evidence:
   line: 71
   role: sympy_script
   excerpt: branch_expected = sp.expand(xi**2 + B_cont * xi + C_cont)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: xi
+  introduced_at_stage: 44
+  introduced_at_line: 101
+  citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 101
+    excerpt: '`xi^2 + B_cont xi + C_cont = 0,`'
+constraints:
+- parameter: xi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 14
+    excerpt: The main result is that the continuum-selected wall branch is pinned by one exact quadratic equation for the
+      softening depth `xi`, and the 2.5PN normalization test then becomes one exact residual equation evaluated on that root.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '045'
+- '046'
+- 048
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage044_xi_no_longer_free__xi.yaml

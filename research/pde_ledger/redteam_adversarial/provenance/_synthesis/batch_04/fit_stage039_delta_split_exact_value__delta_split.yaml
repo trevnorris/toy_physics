@@ -1,0 +1,25 @@
+candidate_id: fit_stage039_delta_split_exact_value
+parameter_name: delta_split
+origin_claims:
+  - parameter: delta_split
+    introduced_at_stage: 039
+    introduced_at_line: 97
+    citation:
+      path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+      line: 97
+      excerpt: "`delta_split = [ delta_0 + eps_eta delta_U / (1 + delta_U) ] / (1 - eps_eta).`"
+constraints:
+  - parameter: delta_split
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+      line: 89
+      excerpt: "After exact rearrangement,"
+downstream_dependents: [040, 041, 042]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "delta_split is the shifted bare anisotropy ratio once the first axial U structure is turned on: A_1 = A_0(1 + delta_split) with delta_split = [delta_0 + eps_eta delta_U/(1+delta_U)]/(1-eps_eta) (notes line 97, an exact rearrangement of the split direct-softening A_0, A_1). Internal_consistency — a derived functional of the continuum kernel ratios (delta_0, eps_eta, delta_U); collapses to delta_0/(1-eps_eta) when delta_U=0, recovering stage 038. No fit/posit/external target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage039_split_u_sector.md, line: 93, excerpt: "`A_1 = A_0 (1 + delta_split),`" }
+      - { path: notes/stages/moving_throat_pde_stage039_split_u_sector.md, line: 103, excerpt: "`delta_split = delta_0/(1 - eps_eta) + [eps_eta/(1 - eps_eta)] delta_U + O(delta_U^2).`" }

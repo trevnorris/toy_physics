@@ -1,0 +1,25 @@
+candidate_id: fit_stage026_kappa_exact_overlap
+parameter_name: kappa
+origin_claims:
+  - parameter: kappa
+    introduced_at_stage: 26
+    introduced_at_line: 126
+    citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 126
+      excerpt: "`kappa = kappa_0 = 2 sqrt(2) / pi`."
+constraints:
+  - parameter: kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 122
+      excerpt: "`kappa_n = int_0^L ds u_0(s) f_n(s) = sqrt(2) / ( (n + 1/2) pi )`."
+downstream_dependents: [27, 32, 35, 36]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "kappa = 2 sqrt(2)/pi is an EXACT geometric overlap integral (int_0^L u0 f0 ds, computed by sympy.integrate), so as a VALUE it is internal_consistency — no external number is matched and no value is posited. The tension is upstream: the mode BASIS that produces it (constant N/N zero mode u0 plus the lowest D/N half-wave f0) is itself a posited branch/profile choice (a free_choice ansatz), flagged in the notes as 'not yet fixed from first principles' and as a branch that 'can collapse' the overlaps. kappa's value is forced once that basis is chosen, but the basis choice is convention/convenience, not derived. Classified internal_consistency for the value; the basis ansatz is recorded here as the competing read."
+    citations:
+      - { path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py, line: 97, excerpt: "kappa_n = sp.simplify(sp.integrate(u0 * f_n, (s, 0, L)))" }
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 294, excerpt: "It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether a different wall-profile family is forced by the full PDE." }

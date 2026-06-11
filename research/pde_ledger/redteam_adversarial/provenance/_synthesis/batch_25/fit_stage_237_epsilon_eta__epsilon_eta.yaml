@@ -1,0 +1,25 @@
+candidate_id: fit_stage_237_epsilon_eta
+parameter_name: epsilon_eta
+origin_claims:
+  - parameter: epsilon_eta
+    introduced_at_stage: 237
+    introduced_at_line: 15
+    citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 15
+      excerpt: "q_\\eta = \\ln\\!\\left(\\frac{\\epsilon_\\eta}{\\epsilon_{\\eta,\\mathrm{ref}}}\\right),"
+constraints:
+  - parameter: epsilon_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+      line: 117
+      excerpt: "\\epsilon_\\eta=\\epsilon_{\\eta,\\rm ref}e^{q_\\eta},"
+downstream_dependents: [238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon_eta is NOT a fixed value at Stage 237: it is the dressing observable, and the stage derives that the surviving post-static obstruction is the pure dressing log-ratio q_eta = ln(epsilon_eta/epsilon_{eta,ref}) (notes line 15/65), with the static-blind curve parametrized by epsilon_eta = epsilon_{eta,ref} e^{q_eta} (line 117). These are EXACT derived relations (internal_consistency). The orbit-lock point is epsilon_eta = epsilon_{eta,ref} (line 150). NOTE: the script uses an arbitrary sample epsilon_eta = 1/5 (script line 17) purely to verify the symbolic identities -- that 1/5 is a free verification sample with no notes documentation, not a physical value. The candidate keys the symbolic dressing observable; classified internal_consistency for the derived relation it satisfies. No fitted value constrained."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md, line: 150, excerpt: "\\ \\epsilon_\\eta=\\epsilon_{\\eta,\\rm ref}." }
+      - { path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py, line: 17, excerpt: "base[sym] = sp.Rational(1, 5)" }

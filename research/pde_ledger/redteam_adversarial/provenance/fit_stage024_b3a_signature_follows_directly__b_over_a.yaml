@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage024_b3a_signature_follows_directly__phase_b__b_over_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -178,9 +178,40 @@ source_evidence:
   line: 483
   role: sympy_script
   excerpt: isotropic_overlap_moments()
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: b_over_a
+  introduced_at_stage: 20
+  introduced_at_line: 255
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 255
+    excerpt: '`b_x = 3 a_x`.'
+constraints:
+- parameter: b_over_a
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 249
+    excerpt: '`a_x = (eps/4) x^(1)`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'b_over_a = 3 (the line b=3a) is DERIVED: it follows by applying the weighted grouped trace/anomaly map (a_x=(2x20-x21-x22)/10,
+    b_x=(x21-x22)/2) to the exact weak-axisymmetric quadrupole signature lambda=(1,1/2,-1), giving a_x=(eps/4)x^(1), b_x=(3eps/4)x^(1),
+    hence b_x=3a_x. The signature itself comes from the exact sixth moment on S^2. Pure internal_consistency, no fit and no
+    external anchor. Logged low gap only because b_over_a is a derived ratio with no further numeric value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 251
+    excerpt: '`b_x = (3 eps / 4) x^(1)`.'
+  - path: paper/stages/stage_024.tex
+    line: 196
+    excerpt: b_x=3a_x}.
+downstream_dependents:
+- '164'
+- '200'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage024_b3a_signature_follows_directly__b_over_a.yaml

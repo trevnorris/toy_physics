@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_known_5pn_data_injection__phase_b__rho_alpha_max.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,49 @@ source_evidence:
   line: 121
   role: sympy_script
   excerpt: (mp.e**alpha - q) / (p + alpha) + (mp.e**(-alpha) - q) / (p - alpha)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: rho_alpha_max
+  introduced_at_stage: 232
+  introduced_at_line: 174
+  citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 174
+    excerpt: \rho_{\alpha,\max}^{(\chi)}
+constraints:
+- parameter: rho_alpha_max
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 176
+    excerpt: 1+\zeta_{\rm phys}^{(\chi)}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: 'rho_alpha_max^(chi) ~ 3.4675296478814376 (and ^(J) ~ 3.4675278051675084) is DERIVED at Stage 232 as 1 + zeta_phys,
+    where zeta_phys = A_K * Omega_{Pe_*}^2 is built from the numerically located fixed-point root Pe_* of the ledger''s own
+    support-drop fixed-point law Pe = Xi*Delta(Pe;kappa,eta) (notes lines 168-177). All inputs (A_K, the overlap-boost law
+    Omega_Pe, Xi = 100*Theta_w*Lambda_ell^2) are ledger-internal. The candidate name ''known_5pn_data_injection'' and stage
+    title suggest an externally-imported 5PN datum (published_target), but the 5PN stack is the ledger''s own derivation chain;
+    rho_alpha_max is computed, not matched to a publication. Classified internal_consistency; needs_triage so the ''injection''
+    framing is confirmed non-external. NOTE: the requirement it is COMPARED against, rho_alpha^req = 4/3 (line 223), is the
+    canonical isotropic demand and is the actual fixed target in this comparison, but rho_alpha_max itself is the derived
+    quantity.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 168
+    excerpt: '\zeta_{\rm phys}^{(\chi)}
+
+      =
+
+      A_K\,\Omega_{Pe_*^{(\chi)}}^2'
+  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 223
+    excerpt: \rho_\alpha^{\rm req}=\frac43.
+downstream_dependents:
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage232_known_5pn_data_injection__rho_alpha_max.yaml

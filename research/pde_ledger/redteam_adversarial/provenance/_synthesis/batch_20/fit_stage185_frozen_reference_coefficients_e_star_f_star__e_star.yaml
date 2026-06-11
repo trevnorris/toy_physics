@@ -1,0 +1,19 @@
+candidate_id: fit_stage185_frozen_reference_coefficients_E_star_F_star
+parameter_name: E_star
+origin_claims:
+  - parameter: E_star
+    introduced_at_stage: 185
+    introduced_at_line: 218
+    citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 218
+      excerpt: "E_*:=\\frac{2\\epsilon_{W,*}}{1-\\epsilon_*}\\,\\frac{11+9\\delta_{U,*}}{11(1+\\delta_{U,*})},"
+constraints:
+  - parameter: E_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 215
+      excerpt: "Freeze the reference-branch coefficients:"
+downstream_dependents: [186, 187]
+provenance_findings: []

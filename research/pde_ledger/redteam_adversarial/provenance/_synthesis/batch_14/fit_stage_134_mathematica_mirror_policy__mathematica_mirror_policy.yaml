@@ -1,0 +1,12 @@
+candidate_id: fit_stage_134_mathematica_mirror_policy
+parameter_name: MATHEMATICA_MIRROR_POLICY
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "MATHEMATICA_MIRROR_POLICY is not a fitted/posited physics parameter — it is red-team dual-engine process vocabulary (the .wl-vs-.py mirror policy tracked in notes/MATHEMATICA_MIRROR_POLICY.md / MEMORY). The candidate's sole source_evidence is the stage_134.tex Verification field listing the SymPy and Mathematica audit file paths; grep of the stage 134 notes/card/script/.wl for 'mirror' returns nothing. No notes/ line documents a parameter value, so no origin or constraint can be attributed. Scanner artifact."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage_134_mathematica_mirror_policy__mathematica_mirror_policy.yaml, line: 4, excerpt: "parameter_name: MATHEMATICA_MIRROR_POLICY" }
+      - { path: paper/stages/stage_134.tex, line: 11, excerpt: "\\stagefield{Verification}{SymPy audit: ...; Mathematica audit: ...}" }

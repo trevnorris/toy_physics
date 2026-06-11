@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_217_k_lin__phase_b__k_lin.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -111,9 +111,26 @@ source_evidence:
   line: 214
   role: sympy_script
   excerpt: expect_zero("L_u(diag) - 2 K_lin M_u", sp.simplify(Lu_diag - 2 * Klin_diag * Mu_diag))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_lin
+  introduced_at_stage: 217
+  introduced_at_line: 286
+  citation:
+    path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 286
+    excerpt: K_{\rm lin}:=k_\lambda+r k_c+s k_\gamma+t k_U+u k_W.
+constraints:
+- parameter: K_lin
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 289
+    excerpt: Define the exact slope numerators
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '218'
+synthesis_ingested_at: '2026-06-11T19:17:32Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_217_k_lin__k_lin.yaml

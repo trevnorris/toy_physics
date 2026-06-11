@@ -1,0 +1,25 @@
+candidate_id: fit_stage_196_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 115
+    introduced_at_line: 25
+    citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 25
+      excerpt: "\\gamma_c=\\frac19."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+      line: 254
+      excerpt: "Then the exact canonical-even matching conditions are still"
+downstream_dependents: [197]
+provenance_findings:
+  - type: graph_gap
+    severity: needs_triage
+    summary: "The 'matched fingerprint' Stage 196 preserves is the canonical even l=2 outgoing-quadrupole fingerprint: notes lines 254-266 restate the canonical-even matching conditions -L_2/L_0 = 1/9 and L_2^2/L_0^2 - L_4/L_0 = 4/81, the same canonical values (gamma_c = 1/9, with l=4 partner 4/81) introduced at Stage 115 (preserving the Stage-112 compensated outlet). Stage 196 only RE-USES the matching to show higher-odd data leave it untouched ('These formulas do not contain any higher odd coefficient', line 268); it introduces no new fingerprint value. constraint_kind internal_consistency: the 1/9 / 4/81 are forced by the canonical-even matching among ledger-internal DtN coefficients. The provenance scanner logged a graph_gap (no atlas node) for this candidate path."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md, line: 256, excerpt: "-\\frac{L_2}{L_0}=\\frac19," }
+      - { path: redteam_adversarial/provenance/fit_stage_196_matched_fingerprint_value__matched_fingerprint_value.yaml, line: 110, excerpt: "graph_gap" }

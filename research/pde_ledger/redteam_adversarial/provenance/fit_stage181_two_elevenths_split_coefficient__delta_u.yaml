@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_two_elevenths_split_coefficient__phase_b__delta_u.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,49 @@ source_evidence:
   line: 78
   role: sympy_script
   excerpt: '- (sp.Rational(2, 11) * epsW / (1 + deltaU)**2) * deltaU1'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_U
+  introduced_at_stage: 38
+  introduced_at_line: 20
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 20
+    excerpt: '`delta_0 = pi^2 T_w / ( L^2 K_eta^(eff) ).`'
+constraints:
+- parameter: delta_U
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 94
+    excerpt: \delta_U=\frac{\pi^2 T_U}{L^2 K_U},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The candidate id ('two_elevenths_split_coefficient') labels the 2/11 split coefficient, but the bundle's resolved
+    parameter_name is delta_U (the split-U axial ratio delta_U = pi^2 T_U/(L^2 K_U), the variable that the 2/11 multiplies
+    in eps_W^(split)). delta_U is a ledger-internal kernel ratio defined microscopically at Stage 047/182; its split-doublet
+    ancestor delta_0 enters at Stage 038. No external anchor; it is a stiffness/coupling ratio -> internal_consistency. The
+    2/11 itself (distinct from delta_U) originates at Stage 027 sin^2(theta_max)=2/11. Logged as a low gap to flag the id-vs-parameter_name
+    mismatch (the id names a coefficient, the target is the variable it scales).
+  citations:
+  - path: redteam_adversarial/provenance/fit_stage181_two_elevenths_split_coefficient__delta_u.yaml
+    line: 3
+    excerpt: 'parameter_name: delta_U'
+  - path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+    line: 151
+    excerpt: '`sin^2(theta_max) = 2 / 11`,'
+downstream_dependents:
+- 039
+- '047'
+- '181'
+- '182'
+- '183'
+- '184'
+- '185'
+- '186'
+- '187'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage181_two_elevenths_split_coefficient__delta_u.yaml

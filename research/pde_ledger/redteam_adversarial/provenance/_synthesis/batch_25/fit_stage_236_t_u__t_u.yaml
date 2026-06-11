@@ -1,0 +1,25 @@
+candidate_id: fit_stage_236_t_u
+parameter_name: T_U
+origin_claims:
+  - parameter: T_U
+    introduced_at_stage: 236
+    introduced_at_line: 200
+    citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 200
+      excerpt: "> on the rigid-mouth slice, the microscopic quotient correction never uses `T_U` at first order."
+constraints:
+  - parameter: T_U
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+      line: 22
+      excerpt: "> So after the static gate is cleared, the unresolved same-charge orbit defect is exactly an **equal-drift `K_\\eta`–`\\mu` dressing shift at fixed `T_U`**."
+downstream_dependents: [237, 238]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "T_U is NOT a fixed numeric value: it is one axis of the microscopic dependent triple (T_U, K_eta^(eff), mu_W) (card line 9). At Stage 236 it is explicitly HELD FIXED -- the surviving obstruction is an equal-drift K_eta-mu dressing shift 'at fixed T_U' (notes line 22), and 'the microscopic quotient correction never uses T_U at first order' (line 200, Delta_T^(q)=0 in the restoration direction, line 376). So T_U is a held-fixed / inactive coordinate in this stage (a branch-selection convention that T_U does not move) -> free_choice. No value is assigned or derived. Logged low-severity: T_U is a symbolic dependent-plane coordinate held fixed, not a fitted scalar."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 376, excerpt: "\\Delta_T^{(q)}=\\Delta_{K_\\eta}^{(q)}=\\Delta_\\mu^{(q)}=0." }
+      - { path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md, line: 476, excerpt: "> ... the entire post-static microscopic obstruction is the single dressing coordinate `q_\\eta` carried by an equal-drift `K_\\eta`–`\\mu` ray at fixed `T_U`." }

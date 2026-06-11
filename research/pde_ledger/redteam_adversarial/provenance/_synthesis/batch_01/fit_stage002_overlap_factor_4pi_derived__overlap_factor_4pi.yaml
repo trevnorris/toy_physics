@@ -1,0 +1,19 @@
+candidate_id: fit_stage002_overlap_factor_4pi_derived
+parameter_name: overlap_factor_4pi
+origin_claims:
+  - parameter: overlap_factor_4pi
+    introduced_at_stage: 2
+    introduced_at_line: 83
+    citation:
+      path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+      line: 83
+      excerpt: "4\\pi\\int dw\\,\\mu_\\eta(w)\\,\\alpha_A(w)\\alpha_B(w),"
+constraints:
+  - parameter: overlap_factor_4pi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+      line: 21
+      excerpt: "\\frac{1}{4\\pi}\\int_{S^2}Y_{00}\\,d\\Omega=\\frac{1}{2\\sqrt\\pi}."
+downstream_dependents: [3]
+provenance_findings: []

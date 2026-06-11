@@ -1,0 +1,25 @@
+candidate_id: fit_stage135_outlet_gain_ratio
+parameter_name: M_q_over_Sigma_m
+origin_claims:
+  - parameter: M_q_over_Sigma_m
+    introduced_at_stage: 135
+    introduced_at_line: 36
+    citation:
+      path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+      line: 36
+      excerpt: "M_q = -\\Sigma_m,"
+constraints:
+  - parameter: M_q_over_Sigma_m
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+      line: 30
+      excerpt: "As a first **outlet-consistent mouth closure**, impose the same ratio on the"
+downstream_dependents: [136, 139, 140, 141, 142]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "The gain ratio M_q/Sigma_m = -1 (i.e. the pair M_s=4 Sigma_m, M_q=-Sigma_m, the 4:-1 weighting) is IMPOSED at Stage 135 to mirror the Stage-115 compensated core outlet ratio delta-Lambda_core = 4 sigma_* - sigma_*/(1 - z^2/3 - i z^5/9), whose static-shell : mixed-pole weighting is 4:-1 (notes lines 17-28). It is motivated by an internal ledger quantity (so arguably internal_consistency-flavored), but the note itself denies it is forced: 'This is not yet a theorem of the full PDE. It is the cleanest way to make the mouth-layer solve and the outlet-core compensation law talk to each other.' That self-description is a POSITED closure, hence free_choice is the better-supported call. Competing citation for the internal_consistency reading: notes line 24-28 (the 4:-1 ratio is read off the Stage-115 outlet)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md, line: 41, excerpt: "This is not yet a theorem of the full PDE. It is the cleanest way to make the" }
+      - { path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md, line: 27, excerpt: "4 : -1." }

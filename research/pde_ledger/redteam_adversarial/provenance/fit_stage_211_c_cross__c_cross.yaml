@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_211_c_cross__phase_b__c_cross.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -61,9 +61,26 @@ source_evidence:
   line: 107
   role: sympy_script
   excerpt: raise AssertionError("C_cross is not quartic")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_cross
+  introduced_at_stage: 211
+  introduced_at_line: 238
+  citation:
+    path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 238
+    excerpt: M_s(r,s)L_{r,\star}(r,s)-M_r(r,s)L_{s,\star}(r,s).
+constraints:
+- parameter: C_cross
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+    line: 232
+    excerpt: Multiply the stationary numerators crosswise to remove the square root.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '212'
+synthesis_ingested_at: '2026-06-11T19:17:32Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_23/fit_stage_211_c_cross__c_cross.yaml

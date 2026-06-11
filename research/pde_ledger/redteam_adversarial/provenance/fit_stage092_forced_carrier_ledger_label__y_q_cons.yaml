@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage092_forced_carrier_ledger_label__phase_b__y_q_cons.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -64,9 +64,41 @@ source_evidence:
   line: 41
   role: sympy_script
   excerpt: print("K_Q^cons(omega) =", K)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Y_Q_cons
+  introduced_at_stage: 91
+  introduced_at_line: 32
+  citation:
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 32
+    excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+constraints:
+- parameter: Y_Q_cons
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 27
+    excerpt: So the `3/4 + 1/4` split is recovered **iff** the geometry lane is static at the relevant orders.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: low
+  summary: 'Stage 092 carries the ''forced conservative carrier Yhat_Q^cons=3/4+(1/4)/(1-u)'' (paper card ''Derivation ledger''
+    label), but its own result GENERALIZES it: with dynamic geometry the pole fraction becomes c_pole=(1+eps_4)/[4(1+eps_2)^2],
+    so Y_Q_cons is forced to the 3/4+1/4 form ONLY in the static limit eps_2=eps_4=0. The module is internal_consistency-conditional,
+    exactly as the card''s status tag states; no overclaim relative to the notes.'
+  citations:
+  - path: paper/stages/stage_092.tex
+    line: 16
+    excerpt: If geometry carries dynamic even moments, the pole fraction becomes \((1+\epsilon_4)/[4(1+\epsilon_2)^2]\).
+  - path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    line: 111
+    excerpt: So the `3/4 + 1/4` split is not a generic identity of “grouped-`P2` plus geometry” in the abstract.
+downstream_dependents:
+- 093
+- 094
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage092_forced_carrier_ledger_label__y_q_cons.yaml

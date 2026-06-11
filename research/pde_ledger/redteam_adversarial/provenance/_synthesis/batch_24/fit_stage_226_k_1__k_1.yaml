@@ -1,0 +1,24 @@
+candidate_id: fit_stage_226_k_1
+parameter_name: K_1
+origin_claims:
+  - parameter: K_1
+    introduced_at_stage: 226
+    introduced_at_line: 26
+    citation:
+      path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+      line: 26
+      excerpt: "K_1=D_{21}+\\frac{D_{01}}{9},"
+constraints:
+  - parameter: K_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+      line: 179
+      excerpt: "\\boxed{K_1=\\left(\\frac19-u_2\\right)D_{01},}"
+downstream_dependents: [227]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "K_1 = D_21 + D_01/9 is a strict first-order conservative even gate, a structural combination of the ledger's own first-order D-moments (internal_consistency). The 1/9 coefficient comes from the ledger-internal canonical even-sector / gamma_0=(1+r_c)/9 algebra. As with H_even, the stage labels it part of the 'imported strict 5PN even-gate package', which could be read as published_target; classified internal_consistency since it is a relation among internal moments, not a back-solve to an external number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md, line: 201, excerpt: "K_1\\approx 0.0621939470719309\\,D_{01}," }

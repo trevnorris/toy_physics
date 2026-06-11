@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage169_xi_perp_paper_targets__phase_b__xi_perp_coeff_xil.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -163,9 +163,40 @@ source_evidence:
   line: 150
   role: sympy_script
   excerpt: print("  Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_perp_coeff_XiL
+  introduced_at_stage: 169
+  introduced_at_line: 295
+  citation:
+    path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 295
+    excerpt: +1.88373219118005\,\Xi_L^{(XY)}.
+constraints:
+- parameter: Xi_perp_coeff_XiL
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 284
+    excerpt: +\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\Xi_L^{(XY)}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'The numeric Xi_perp coefficient on Xi_L (1.88373... = 2 g_* + 3/(4 sqrt(1+r_*^2))) is internal: it is the Stage
+    168 weighting (notes line 266/284) evaluated ''on the renormalized Family-1 point'' (notes line 288), i.e. by substituting
+    the upstream-derived g_* and r_* into a ledger-internal formula. No external (GR/CODATA/PN) target is named for this coefficient;
+    the script''s hardcoded 1.88373219118005 (sympy_audit line 139) is a self-consistency benchmark of the same computation,
+    not a back-solve to an outside number. Logged low-severity only because the value is a derived numeric benchmark, not
+    a standing posited parameter.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+    line: 288
+    excerpt: Numerically, on the renormalized Family-1 point,
+  - path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+    line: 139
+    excerpt: ("Xi_perp coeff on XiL", coeff_L, sp.Float('1.88373219118005', 20)),
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage169_xi_perp_paper_targets__xi_perp_coeff_xil.yaml

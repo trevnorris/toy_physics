@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_042_f_src__phase_b__f_src.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -143,9 +143,50 @@ source_evidence:
   line: 186
   role: sympy_script
   excerpt: print("   yields the exact source-tied normalization function F_src(xi,delta;m,R_U).")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: F_src
+  introduced_at_stage: 34
+  introduced_at_line: 145
+  citation:
+    path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+    line: 145
+    excerpt: '`F_src(xi,delta;m,R_U)`'
+constraints:
+- parameter: F_src
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+    line: 143
+    excerpt: Then the exact normalization function becomes
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'F_src is the exact source-tied rank-2 selected-mode normalization function. The scanned value ''2/9'' is lambda_0
+    = kappa_1^2/kappa_0^2 = t^2 (notes line 133), the D/N overlap ratio that enters F_src and D_src; it is forced by the exact
+    mode integrals (kappa_0^2=8/pi^2, kappa_1^2=16/9pi^2, traceable to stage 032), NOT a fit/posit. F_src itself is derived
+    from the exact selected eigenvector and overlaps (audit: F_src = a1^2 b1^2/((1-xi) D_src^2)); it collapses to the flat-U
+    F_flat when R_U=1. Internal_consistency.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+    line: 133
+    excerpt: '`t^2 = lambda_0 = 2/9.`'
+  - path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+    line: 166
+    excerpt: '`F_src(xi,delta;m,1) = F_flat(xi,delta),`'
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Numbering-drift artifact in the stage-042 notes: line 229 reads ''2. Stages 24–25 decide whether the support kernel
+    follows that deformation or resists it.'' The tracking-vs-source-tied support decision is the subject of Stages 041-042
+    (the +17 EM-extension renumber: 24-25 + 17 = 41-42). The cross-reference should point to Stages 041-042, not 24-25. Does
+    not affect F_src''s classification; flagged for the numbering-reconciliation track.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+    line: 229
+    excerpt: 2. Stages 24–25 decide whether the support kernel follows that deformation or resists it.
+downstream_dependents:
+- '034'
+synthesis_ingested_at: '2026-06-11T18:25:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage_042_f_src__f_src.yaml

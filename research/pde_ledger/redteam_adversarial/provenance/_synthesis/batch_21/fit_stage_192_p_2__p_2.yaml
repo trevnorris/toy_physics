@@ -1,0 +1,17 @@
+candidate_id: fit_stage_192_p_2
+parameter_name: P_2
+origin_claims: []
+constraints:
+  - parameter: P_2
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+      line: 5
+      excerpt: "**Exact within the carried Stage 187 coherent quotient closure and the finite-packet hierarchy isolated in Stage 191.**"
+downstream_dependents: [193, 194, 195]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "P_2 with extracted literal value '2' is NOT a fitted scalar — it is the angular-momentum / Legendre multipole label l=2 of the 'grouped real P_2' sector. At stage 192 it appears only in the card Inputs boilerplate ('isotropic grouped-P_2 one-pole front end', stage_192.tex line 9); the stage-192 notes are the orbit/quotient projector calculus and use the grouped real-P2 structure carried from Stage 191 (191 lines 72-73, the grouped bundle x=(x20,x21,x22)). The '2' is a structural sector convention (which multipole the moving-throat analysis targets), so constraint_kind is free_choice (convention/branch selection), not a derived or externally-fit number. No notes/ line at stage 192 assigns P_2 a numeric value; cited the carry-forward status line."
+    citations:
+      - { path: paper/stages/stage_192.tex, line: 9, excerpt: "\\stagefield{Inputs}{This stage imports the isotropic grouped-\\(P_2\\) one-pole front end, the compact outgoing \\(l=2\\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}" }

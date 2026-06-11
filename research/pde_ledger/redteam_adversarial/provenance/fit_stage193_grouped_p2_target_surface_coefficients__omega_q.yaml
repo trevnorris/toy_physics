@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage193_grouped_p2_target_surface_coefficients__phase_b__omega_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,39 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: 'D2blk = sp.symbols("D2blk", nonzero=True, real=True)         # leading isotropic grouped l=2 block D_2(omega)'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Omega_Q
+  introduced_at_stage: 193
+  introduced_at_line: 222
+  citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 222
+    excerpt: \Omega_Q^2:=-\frac{D_0}{4D_2}.
+constraints:
+- parameter: Omega_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 227
+    excerpt: \bar\nu_2=-\frac{D_2}{D_0}=\frac{1}{4\Omega_Q^2},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: At stage 193 Omega_Q is DEFINED as Omega_Q^2:=-D_0/(4 D_2) (line 222), an internal-consistency definition from
+    the ledger-internal conservative moments D_0,D_2 once the one-pole surface is imposed. Its numeric VALUE Omega_Q=3 c_s/(2a)
+    is NOT set at stage 193; it is fixed at stage 194 (line 72) by matching the even coefficients to the canonical compact
+    outgoing l=2 branch, then carried at 195 (line 85). So the 193 candidate captures the definition (internal_consistency),
+    and the value-fixing is a downstream stage-194 event. No external target is involved (3 c_s/2a is a geometric pole scale
+    of the throat, not an imported GR/PN number).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 72
+    excerpt: \Omega_Q=\frac{3c_s}{2a},
+downstream_dependents:
+- '194'
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage193_grouped_p2_target_surface_coefficients__omega_q.yaml

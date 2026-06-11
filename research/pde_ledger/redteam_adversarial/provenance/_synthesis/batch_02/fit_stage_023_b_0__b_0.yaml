@@ -1,0 +1,25 @@
+candidate_id: fit_stage_023_b_0
+parameter_name: B_0
+origin_claims:
+  - parameter: B_0
+    introduced_at_stage: 023
+    introduced_at_line: 144
+    citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 144
+      excerpt: "`B_(A,0) = sum_alpha c_(A,alpha)^2 / varpi_(A,alpha)^2`,"
+constraints:
+  - parameter: B_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 150
+      excerpt: "These are just the Stage-3 conservative support moments collected lane by lane."
+downstream_dependents: [024]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "B_0 (= B_{A,0}, the static BdG-support conservative moment B_0 = sum_alpha c_alpha^2/varpi_alpha^2) is a defined structural object collected lane-by-lane from the Stage-3 Schur-complement moments. It carries no numeric value at stage 023 — its actual value on the moving-throat branch is explicitly OPEN (it appears in the static stiffness D_0=K-B_0-Z_0 inside the open normalization test). Classified free_choice (open structural moment with no derivation-to-target and no external anchor). No value genealogy to assign beyond the structural definition."
+    citations:
+      - { path: paper/stages/stage_023.tex, line: 93, excerpt: "B_{A0}=\\sum_\\alpha\\frac{c_{A\\alpha}^2}{\\varpi_{A\\alpha}^2}," }
+      - { path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md, line: 210, excerpt: "`D_(A,0) = K_A - B_(A,0) - Z_(A,0)`," }

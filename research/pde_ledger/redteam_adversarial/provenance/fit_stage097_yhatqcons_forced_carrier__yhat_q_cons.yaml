@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage097_yhatqcons_forced_carrier__phase_b__yhat_q_cons.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -66,9 +66,37 @@ source_evidence:
   line: 26
   role: sympy_script
   excerpt: '# Actual branch conservative module coefficients.'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Yhat_Q_cons
+  introduced_at_stage: 97
+  introduced_at_line: 11
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 11
+    excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+constraints:
+- parameter: Yhat_Q_cons
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 9
+    excerpt: '- and the conservative module is therefore'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 097 notes attribute the conservative module closure to 'Stage 79' (line 5); this is a pre-renumber reference
+    from the EM-extension realignment, not the canonical card number. Yhat_Q_cons itself is correctly forced upstream (carried
+    in).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 5
+    excerpt: 'Stage 79 finished the last serious **conservative** ambiguity on the actual isotropic branch:'
+downstream_dependents:
+- 098
+- 099
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage097_yhatqcons_forced_carrier__yhat_q_cons.yaml

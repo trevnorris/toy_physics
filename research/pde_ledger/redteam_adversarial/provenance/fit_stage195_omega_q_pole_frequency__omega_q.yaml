@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_omega_q_pole_frequency__phase_b__omega_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -84,9 +84,41 @@ source_evidence:
   line: 62
   role: sympy_script
   excerpt: expect_zero("Gamma5 - chi_Q*9*P0/(32 Omega_Q^5)", Gamma5 - Gamma5_alt)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Omega_Q
+  introduced_at_stage: 193
+  introduced_at_line: 222
+  citation:
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 222
+    excerpt: \Omega_Q^2:=-\frac{D_0}{4D_2}.
+constraints:
+- parameter: Omega_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 85
+    excerpt: \Omega_Q=\frac{3c_s}{2a},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Omega_Q is anchored to stage 195 by the candidate id, but the pole-frequency symbol is DEFINED at stage 193 (Omega_Q^2:=-D_0/(4
+    D_2), line 222) and its VALUE Omega_Q=3 c_s/(2a) is fixed at stage 194 (line 72) by matching the even coefficients to
+    the canonical compact outgoing l=2 branch. Stage 195 only CARRIES the value (line 85) into the retarded invariant tuple.
+    It is internal_consistency (a geometric throat pole scale in c_s/a, no external G/c content). Origin 193 (definition)
+    / 194 (value), carried at 195.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 72
+    excerpt: \Omega_Q=\frac{3c_s}{2a},
+  - path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    line: 222
+    excerpt: \Omega_Q^2:=-\frac{D_0}{4D_2}.
+downstream_dependents:
+- '196'
+- '197'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage195_omega_q_pole_frequency__omega_q.yaml

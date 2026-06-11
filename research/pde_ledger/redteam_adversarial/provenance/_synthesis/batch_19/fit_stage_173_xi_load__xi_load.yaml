@@ -1,0 +1,19 @@
+candidate_id: fit_stage_173_xi_load
+parameter_name: Xi_load
+origin_claims:
+  - parameter: Xi_load
+    introduced_at_stage: 173
+    introduced_at_line: 278
+    citation:
+      path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+      line: 278
+      excerpt: "\\Xi_{\\rm load}:=\\delta_N-\\delta_D."
+constraints:
+  - parameter: Xi_load
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+      line: 441
+      excerpt: "\\Xi_{\\rm load}=\\frac{N_{01}}{N_0}-\\frac{D_{01}}{D_0}."
+downstream_dependents: [174, 177]
+provenance_findings: []

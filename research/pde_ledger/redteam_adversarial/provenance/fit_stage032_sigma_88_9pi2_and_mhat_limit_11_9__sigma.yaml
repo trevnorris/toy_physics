@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9__phase_b__sigma.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -120,9 +120,42 @@ source_evidence:
   line: 158
   role: sympy_script
   excerpt: 'sigma_sym: kappa0**2 + kappa1**2,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: sigma
+  introduced_at_stage: 26
+  introduced_at_line: 75
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 75
+    excerpt: '`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`.'
+constraints:
+- parameter: sigma
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 75
+    excerpt: '`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: sigma = 88/(9 pi^2) is the squared norm v.v = kappa_0^2 + kappa_1^2 of the exact D/N overlap vector; it is forced
+    by the mode integrals (kappa_0^2=8/pi^2, kappa_1^2=16/(9pi^2)), not fit or posited. The associated bound mhat_-^2 < sigma/kappa_0^2
+    = 11/9 is likewise an exact arithmetic consequence (script line 65). Pure internal_consistency; logged informationally
+    — no external target or free choice.
+  citations:
+  - path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+    line: 64
+    excerpt: expect_zero("sigma - 88/(9 pi^2)", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 83
+    excerpt: '`sigma / kappa_0^2 = 11 / 9`.'
+downstream_dependents:
+- '027'
+- '031'
+- 038
+- 039
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9__sigma.yaml

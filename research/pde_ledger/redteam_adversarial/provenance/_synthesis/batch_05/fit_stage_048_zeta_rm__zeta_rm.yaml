@@ -1,0 +1,12 @@
+candidate_id: fit_stage_048_zeta_rm
+parameter_name: zeta_rm
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No source under notes/ (nor the paper card nor the sympy script) documents a parameter named 'zeta_rm', and the scanner-attributed value '1/3' appears nowhere in Stage 048's notes, card, or script (grep for 'zeta_rm', '1/3', 'frac{1}{3}' returns empty). The bundle's evidence is a verbatim copy of the zeta_req evidence; the intended parameter is almost certainly zeta_req (handled by fit_stage048_zeta_req_threshold / _unique), but the value 1/3 cannot be confirmed and must not be fabricated. Logged as a gap."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md, line: 99, excerpt: "`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`" }
+      - { path: paper/stages/stage_048.tex, line: 22, excerpt: "\\zeta_{\\rm req}=\\frac{S_{\\rm req}-1}{1+\\epsilon(S_{\\rm req}-2)}}." }

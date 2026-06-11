@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage001_canonical_invariant_pair_determined__phase_b__kbar_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -56,9 +56,43 @@ source_evidence:
   line: 484
   role: notes_stage
   excerpt: '### Advantage 1 — it matches the actual ontology'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Kbar_0
+  introduced_at_stage: 1
+  introduced_at_line: 473
+  citation:
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 473
+    excerpt: '- `Kbar_0`,'
+constraints:
+- parameter: Kbar_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 471
+    excerpt: On the passive/outgoing isotropic quadrupole branch, the same mode-resolved response should determine the canonical
+      invariant pair
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: At stage 001 Kbar_0 is only NAMED as a target of the canonical invariant pair (Kbar_0, Kbar_2) that the mode-resolved
+    DtN/response operator 'should determine' on the passive/outgoing quadrupole branch; no scalar value is assigned at stage
+    001. Its actual numeric constraint is deferred to the downstream outgoing-normalization product (stages 022-023). Classified
+    internal_consistency on the strength of the stage-001 notes' framing (response-operator-determined), but the value-fixing
+    mechanism is not present at the anchor stage, so the constraint_kind of the eventual VALUE must be re-confirmed against
+    the stage 022/023 notes.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    line: 436
+    excerpt: '- and the canonical pair `(Kbar_0, Kbar_2)` on the passive/outgoing quadrupole branch.'
+  - path: paper/stages/stage_001.tex
+    line: 232
+    excerpt: Stages~022--023 use the grouped real \(P_2\) response operator to formulate the outgoing-normalization product.
+downstream_dependents:
+- '022'
+- '023'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage001_canonical_invariant_pair_determined__kbar_0.yaml

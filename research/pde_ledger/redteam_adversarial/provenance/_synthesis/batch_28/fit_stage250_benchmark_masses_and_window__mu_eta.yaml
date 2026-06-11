@@ -1,0 +1,26 @@
+candidate_id: fit_stage250_benchmark_masses_and_window
+parameter_name: mu_eta
+origin_claims:
+  - parameter: mu_eta
+    introduced_at_stage: 250
+    introduced_at_line: 419
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 419
+      excerpt: " m_s=\\mu_\\eta=1836.15267343."
+constraints:
+  - parameter: mu_eta
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 423
+      excerpt: "### 7.1 Proton-proxy classical threshold speed"
+downstream_dependents: [251, 253]
+provenance_findings:
+  - type: published_target
+    severity: high
+    summary: "mu_eta (wall-inertia scale) is set EQUAL to m_s = 1836.15267343, the CODATA proton-to-electron mass ratio, imported as the 'proton-proxy' benchmark. This is an external published constant fitted into the ledger, not an internally derived wall-inertia. The script labels it an 'Imported benchmark value'. The mu_eta = m_s = alpha*m_s (alpha=1) choice also activates the heavy-throat scaling theorem (sec 5)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 419, excerpt: " m_s=\\mu_\\eta=1836.15267343." }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 171, excerpt: "# Imported benchmark values from the barrier-session write-up." }
+      - { path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py, line: 178, excerpt: "mu_num = 1836.15267343" }

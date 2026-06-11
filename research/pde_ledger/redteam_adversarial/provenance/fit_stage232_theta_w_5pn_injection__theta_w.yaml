@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_theta_w_5pn_injection__phase_b__theta_w.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,53 @@ source_evidence:
   line: 150
   role: sympy_script
   excerpt: Xi_J = 100 * Theta_w_J * Lambda_ell**2
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Theta_w
+  introduced_at_stage: 77
+  introduced_at_line: 94
+  citation:
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 94
+    excerpt: '`             ≈ 4.06863235008162 lambda_mu^2.`'
+constraints:
+- parameter: Theta_w
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 96
+    excerpt: This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather
+      than left symbolic.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: needs_triage
+  summary: Candidate name 'theta_w_5pn_injection' and Stage-232 title 'Known 5PN Data Injection' frame Theta_w as externally-injected
+    5PN data (would-be published_target). The actual value 4.06863235008162*lambda_mu^2 is DERIVED upstream at Stage 077 from
+    shell-weighted integrals <rho_r^2>_chi over the explicit Family-1 wall-support profile (077 line 93-96) -- ledger-internal,
+    no external publication matched. The '5PN stack' is the ledger's own EM-projected derivation chain. Classified internal_consistency;
+    flagged needs_triage so the audit confirms the 'injection' language does not conceal an external anchor (none found).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    line: 32
+    excerpt: '## 1. What is already numerically known from the `5`PN stack'
+  - path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+    line: 93
+    excerpt: '`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`'
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 232 hardcodes Theta_w as mp.mpf literals (script 146-147) with no in-stage derivation; origin is Stage 077
+    (extraction) with scaling locked at Stage 076. Origin attribution belongs to 077, not 232.
+  citations:
+  - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+    line: 146
+    excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
+  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 076'
+downstream_dependents:
+- '233'
+- '234'
+synthesis_ingested_at: '2026-06-11T19:17:58Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_25/fit_stage232_theta_w_5pn_injection__theta_w.yaml

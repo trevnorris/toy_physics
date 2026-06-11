@@ -1,0 +1,25 @@
+candidate_id: fit_stage247_session1_softening_point
+parameter_name: a0
+origin_claims:
+  - parameter: a0
+    introduced_at_stage: 246
+    introduced_at_line: 474
+    citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 474
+      excerpt: "a_0=2.2,"
+constraints:
+  - parameter: a0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+      line: 472
+      excerpt: "Use the recorded Session-I source-side parameters"
+downstream_dependents: [ 247, 248 ]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "a0=2.2 enters as a 'recorded Session-I source-side parameter' (stage 246 line 472-474), carried into stage 247's benchmark slice (notes line 474 of stage 247). No notes file derives a0=2.2 or ties it to an external published number; it is a posited session input (ansatz). The originating 'Session-I run' (Appendix B.2) is an internal toy-model session, not an external target, so classified free_choice rather than published_target. Gap logged because no notes text states WHY a0=2.2 (vs any other positive value) was chosen for the session; it is taken as a given input."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md, line: 472, excerpt: "Use the recorded Session-I source-side parameters" }
+      - { path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md, line: 474, excerpt: "a_0=2.2," }

@@ -1,0 +1,26 @@
+candidate_id: fit_stage_154_r_f1
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 37
+      excerpt: "Imposing \\(L_W=L\\) gives the exact geometric hybridization branch"
+downstream_dependents: [122, 123, 126, 127, 142, 143, 148, 154, 155]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Stage 154 CARRIES r_F1 (notes:41, r_F1 approx 1.77799353547498) into the co-evolving core overlap law R[Sigma]=(g[Sigma]-r_F1)^2/(1+r_F1^2). r_F1 is genuinely DERIVED at Stage 121 from L_W=L (internal_consistency for the radical form), BUT its lone free input L/a=37/20 is a POSITED reference-branch freeze (Stage 073:56), not derived nor external. NOTE: the mechanical bundle for this candidate had EMPTY source_evidence; the binding notes citation was located independently at the Stage 154 notes line 41 and the Stage 121 origin. Same caveat as the Stage 148 r_F1 candidate."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md, line: 41, excerpt: "\\mathfrak r_{F1}\\approx 1.77799353547498." }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }

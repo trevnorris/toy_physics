@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage185_monomial_exponents__phase_b__c_tr_star_exponents.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,9 +110,27 @@ source_evidence:
   line: 232
   role: sympy_script
   excerpt: mu_sol = sp.simplify(keta + 2 * kW - 2 * lam1 - E_star * Sigma_eps + F_star * Sigma_delta)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: C_tr_star_exponents
+  introduced_at_stage: 185
+  introduced_at_line: 159
+  citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 159
+    excerpt: \mathfrak C_{{\rm tr},*}:=\chi_0^{\,1+\delta_{U,*}}\,\delta_U^{\,1+\chi_{0,*}}.
+constraints:
+- parameter: C_tr_star_exponents
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+    line: 150
+    excerpt: At first grouped weak-axisymmetric order on the coherent reference branch, the coefficients are frozen at
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '186'
+- '187'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage185_monomial_exponents__c_tr_star_exponents.yaml

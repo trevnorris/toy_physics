@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_197_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -49,8 +49,22 @@ source_evidence:
   line: 93
   role: sympy_script
   excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 115
+  introduced_at_line: 25
+  citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 25
+    excerpt: \gamma_c=\frac19.
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    line: 221
+    excerpt: This is the precise modern Packet-A version of the older statement that the last reduced `2.5`PN / `4`PN retarded
+      obstruction is the outgoing quadrupole normalization only.
 graph_context:
   contexts: []
   graph_gaps:
@@ -75,3 +89,22 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_197.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: needs_triage
+  summary: 'The ''matched fingerprint'' the Stage 197 closure preserves is the canonical even l=2 outgoing-quadrupole fingerprint
+    (-L_2/L_0 = 1/9 and the l=4 partner 4/81), whose canonical value gamma_c = 1/9 originates at Stage 115 (preserving the
+    Stage-112 compensated outlet). Stage 197 carries the matched even moments via the Sigma2/Sigma4 matching substitutions
+    (script lines 92-93) and re-uses the z^5 coefficient to extract chi_Q; it introduces no new fingerprint value. constraint_kind
+    internal_consistency: the canonical even moments are forced by matching among ledger-internal DtN coefficients. The provenance
+    scanner logged a graph_gap (no atlas node) for the Stage 197 source path.'
+  citations:
+  - path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+    line: 92
+    excerpt: 'Y_stage194_matched = sp.simplify(Y_stage194_hi_series.subs({Sigma2: Sigma2_match, Sigma4: Sigma4_match}))'
+  - path: redteam_adversarial/provenance/fit_stage_197_matched_fingerprint_value__matched_fingerprint_value.yaml
+    line: 56
+    excerpt: graph_gap
+downstream_dependents:
+- '198'
+synthesis_ingested_at: '2026-06-11T19:17:20Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_22/fit_stage_197_matched_fingerprint_value__matched_fingerprint_value.yaml

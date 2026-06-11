@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage135_pi_star_import_sigma_m_star__phase_b__pi_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -103,9 +103,57 @@ source_evidence:
   line: 86
   role: sympy_script
   excerpt: print("Pi_star - Sigma_star*(4 - S_star) =", residual)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pi_star
+  introduced_at_stage: 130
+  introduced_at_line: 108
+  citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 108
+    excerpt: \Pi_* \approx 1.50882951349316.
+constraints:
+- parameter: Pi_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 103
+    excerpt: \mathfrak g_{\Pi}=\mathfrak g_-^{F1}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'At Stage 135 Pi_* = 1.50882951349316 is an IMPORT, not an origin: it is requested ''Requiring the canonical compensation
+    point Pi = Pi_* approx 1.50882951349316'' (notes line 78-82) and hard-coded in the audit as Pi_star = sp.Float(''1.50882951349316'')
+    (script line 46). Its true origin is Stage 130 sec.3, where it is solved as ''the unique explicit compensation point''
+    from the matching condition g_Pi = g_-^{F1} with g_-^{F1} approx 0.758035078944663 ''already fixed from the earlier core
+    balance analysis'' (notes lines 95-110). That solve is internal_consistency: a fixed-point match among ledger-internal
+    quantities, cross-checked by x_* = 1/Pi_* approx 0.662765 ''exactly the penetration-depth value already found earlier''.
+    Gap flagged only because g_-^{F1} approx 0.758035 is itself imported into Stage 130 from an unnamed ''earlier core balance
+    analysis'' (notes line 95-98) with no stage pin, so the genealogy bottoms out at an un-pinned upstream value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    line: 78
+    excerpt: Requiring the canonical compensation point
+  - path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+    line: 46
+    excerpt: Pi_star = sp.Float("1.50882951349316")
+  - path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 95
+    excerpt: The explicit Family-1 lower compensated branch is already fixed from the earlier
+downstream_dependents:
+- '131'
+- '132'
+- '134'
+- '135'
+- '136'
+- '139'
+- '142'
+- '144'
+- '145'
+- '146'
+- '152'
+- '156'
+synthesis_ingested_at: '2026-06-11T18:52:28Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage135_pi_star_import_sigma_m_star__pi_star.yaml

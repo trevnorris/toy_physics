@@ -1,0 +1,25 @@
+candidate_id: fit_stage156_carried_constants_block
+parameter_name: Sigma0_star
+origin_claims:
+  - parameter: Sigma0_star
+    introduced_at_stage: 156
+    introduced_at_line: 113
+    citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 113
+      excerpt: "\\frac{\\Sigma_0^{\\rm can}}{\\Sigma_0^*}-1"
+constraints:
+  - parameter: Sigma0_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+      line: 104
+      excerpt: "Relative to the original canonical point"
+downstream_dependents: [157, 158]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Sigma0_star (~1.80594, the ORIGINAL frozen-traction canonical normalization) appears in stage156 only inside the renormalization-cost ratio Sigma0_can/Sigma0_star - 1; it first ENTERED the ledger upstream as the frozen Family-1 fixed point (stage 155 notes line 9). Stage156 carries it, does not constrain it. Its own derivation is the frozen fixed-point solve, internal to the ledger."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md, line: 9, excerpt: "\\approx 1.80594111095636" }
+      - { path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py, line: 27, excerpt: "Sigma0_star = 1.80594111095636" }

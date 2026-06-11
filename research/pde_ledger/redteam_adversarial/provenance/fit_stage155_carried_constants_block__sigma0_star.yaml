@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_carried_constants_block__phase_b__sigma0_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,41 @@ source_evidence:
   line: 100
   role: sympy_script
   excerpt: r = sp.Float(rF1, 30)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma0_star
+  introduced_at_stage: 142
+  introduced_at_line: 119
+  citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 119
+    excerpt: \Sigma_0(\Pi_*)\approx 1.80594111095636,
+constraints:
+- parameter: Sigma0_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    line: 74
+    excerpt: \Sigma_0=\frac{20}{9}\,\widehat T_m^2.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Sigma0_star = 1.80594111095636 is the canonical shell-gain scale Sigma_0(Pi_*), originating at Stage 142:119 (internal_consistency:
+    Sigma_0 = (20/9) T_hat_m^2 at the canonical branch, via the Stage 140 self-matched susceptibility closure). Stage 155
+    carries it as the FROZEN traction parameter (script:29) at which the co-evolving fixed point is solved (the whole point
+    of Stage 155 is to test the OLD frozen Sigma0_star, before Stage 156 renormalizes it to Sigma0_can=4.651...).'
+  citations:
+  - path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+    line: 29
+    excerpt: Sigma0_star = 1.80594111095636
+  - path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 9
+    excerpt: \approx 1.80594111095636
+downstream_dependents:
+- '156'
+- '157'
+- '158'
+synthesis_ingested_at: '2026-06-11T18:52:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage155_carried_constants_block__sigma0_star.yaml

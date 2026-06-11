@@ -1,0 +1,19 @@
+candidate_id: fit_stage253_session5_calibration_slice_recovery
+parameter_name: mu_eta
+origin_claims:
+  - parameter: mu_eta
+    introduced_at_stage: 253
+    introduced_at_line: 260
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 260
+      excerpt: " \\mu_\\eta=1,"
+constraints:
+  - parameter: mu_eta
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 954
+      excerpt: "`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only"
+downstream_dependents: []
+provenance_findings: []

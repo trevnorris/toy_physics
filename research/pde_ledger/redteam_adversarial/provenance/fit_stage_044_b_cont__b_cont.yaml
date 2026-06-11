@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_044_b_cont__phase_b__b_cont.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -187,9 +187,26 @@ source_evidence:
   line: 253
   role: notes_stage
   excerpt: '- the exact continuum-selected normalization function `F_cont`,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: B_cont
+  introduced_at_stage: 44
+  introduced_at_line: 105
+  citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 105
+    excerpt: '`B_cont`'
+constraints:
+- parameter: B_cont
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 97
+    excerpt: The key structural simplification is that the continuum-selected branch equation is exactly quadratic in `xi`.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '045'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_044_b_cont__b_cont.yaml

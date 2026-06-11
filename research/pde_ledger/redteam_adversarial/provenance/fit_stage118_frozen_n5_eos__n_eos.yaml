@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage118_frozen_n5_eos__phase_b__n_eos.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -28,9 +28,47 @@ source_evidence:
   line: 205
   role: notes_stage
   excerpt: 'Use one external mouth amplitude \(u\) and let it couple to:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: n_eos
+  introduced_at_stage: 0
+  introduced_at_line: 12
+  citation:
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    line: 12
+    excerpt: '- P(rho) = K_EOS rho^5,'
+constraints:
+- parameter: n_eos
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    line: 12
+    excerpt: '- P(rho) = K_EOS rho^5,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The 'frozen n=5 EOS' carried into Stage 118 (notes line 18) is a POSITED model equation of state of the whole toy
+    stack, P(rho)=K rho^5, fixed in the phase-0 specification (notes/stages/moving_throat_pde_phase0_spec.md:12) and used
+    as the 'frozen n=5 GNLS thermodynamic relation' at Stage 076. It is a model-defining ansatz / convention (free_choice),
+    not derived from a ledger pole/normalization nor back-solved to an external published value. Stage 118 merely carries
+    it. (introduced_at_stage encoded as 0 = phase-0 spec, which has no NNN per-stage file.)
+  citations:
+  - path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 18
+    excerpt: '- a gauged 4D GNLS matter sector with confinement \(V_{\rm conf}(\mathbf X;a,L)\) and frozen \(n=5\) EOS, so
+      the'
+  - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 076: Exact `n=5` Wall-Depth Lock for the Family-1 Branch'
+downstream_dependents:
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage118_frozen_n5_eos__n_eos.yaml

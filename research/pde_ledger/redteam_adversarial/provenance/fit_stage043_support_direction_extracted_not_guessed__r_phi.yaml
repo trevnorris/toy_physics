@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage043_support_direction_extracted_not_guessed__phase_b__r_phi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,28 @@ source_evidence:
   line: 53
   role: sympy_script
   excerpt: eps_eta, Zphi = sp.symbols("eps_eta Z_phi", real=True)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_phi
+  introduced_at_stage: 43
+  introduced_at_line: 103
+  citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 103
+    excerpt: '`R_phi := [ 1 + sigma_0/(1+delta_U) ] / (1 + sigma_0).`'
+constraints:
+- parameter: R_phi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 13
+    excerpt: The first symmetry-allowed extension is to turn on the bilinear `U/phi` coupling. Once that is done, the support
+      direction can be extracted exactly from the continuum kernel rather than guessed.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '044'
+- '045'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage043_support_direction_extracted_not_guessed__r_phi.yaml

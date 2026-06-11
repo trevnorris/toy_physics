@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage223_p0_target_import_unprovenanced__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -198,9 +198,41 @@ source_evidence:
   line: 459
   role: notes_stage
   excerpt: \frac{N_0}{P_{0,\mathrm{target,compat}}}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 22
+  introduced_at_line: 270
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 270
+    excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 256
+    excerpt: The universal GR quadrupole target is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Candidate alleges the P0_target import is unprovenanced at stage 223. The numerical form P0_target=54Gc_s^5/(5a^5c^5
+    mhat_0^2) is in fact provenanced upstream at stage 022 (back-solved to the universal GR quadrupole target gamma_GR=2G/5c^5);
+    stage 223 keeps it symbolic and the card flags it as an imported 'universal target', so the import is documented rather
+    than unprovenanced. The only gap is that stage 223 itself names no upstream stage anchor for the 54/5 form.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 130
+    excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive
+      branch is compatibility rather than full calibration.
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 281
+    excerpt: '`P_0 = 54 G c_s^5 / (5 a^5 c^5)`'
+downstream_dependents:
+- '224'
+- '225'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage223_p0_target_import_unprovenanced__p0_target.yaml

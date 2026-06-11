@@ -1,0 +1,25 @@
+candidate_id: fit_stage227_kappa_exact_overlap_constant
+parameter_name: kappa
+origin_claims:
+  - parameter: kappa
+    introduced_at_stage: 26
+    introduced_at_line: 126
+    citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 126
+      excerpt: "`kappa = kappa_0 = 2 sqrt(2) / pi`."
+constraints:
+  - parameter: kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 122
+      excerpt: "`kappa_n = int_0^L ds u_0(s) f_n(s) = sqrt(2) / ( (n + 1/2) pi )`."
+downstream_dependents: [222, 223, 224, 225, 226, 227, 228, 229]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "kappa=2sqrt2/pi is the exact value of the overlap integral int_0^L u_0 f_0 of the chosen lowest zero-mode and lowest D/N half-wave, a forced geometric/mathematical constant (internal_consistency) introduced at stage 026. The only free element upstream is the branch/mode SELECTION (lowest N/N zero mode + lowest D/N half-wave); given that selection the value 2sqrt2/pi is forced. Classified internal_consistency for the value; the mode-selection it rests on is a free branch choice."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md, line: 88, excerpt: "\\kappa=\\frac{2\\sqrt2}{\\pi}." }
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 20, excerpt: "The main result of this stage is that on the first natural mixed axial branch the whole overlap problem collapses to a single geometric constant" }

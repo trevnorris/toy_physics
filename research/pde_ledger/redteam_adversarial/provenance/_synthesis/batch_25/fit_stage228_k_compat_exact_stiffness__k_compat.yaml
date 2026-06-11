@@ -1,0 +1,25 @@
+candidate_id: fit_stage228_k_compat_exact_stiffness
+parameter_name: K_compat
+origin_claims:
+  - parameter: K_compat
+    introduced_at_stage: 228
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+      line: 79
+      excerpt: "K_{\\rm compat}\\approx 24.473754879290965."
+constraints:
+  - parameter: K_compat
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+      line: 77
+      excerpt: "- and the exact isotropic compatibility wall stiffness"
+downstream_dependents: [229, 230, 231, 232, 233, 234]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "K_compat is described as 'the exact isotropic compatibility wall stiffness' built on the Stage-223 compatibility branch (notes line 5/77); the numeric value 24.473754879290965 is computed in the script as K_compat = B0_s + Z0_s + D0_compat from already-derived ledger branch quantities (internal_consistency), but the stage-228 notes do not display the closed-form solving equation -- the originating compatibility-branch closure lives upstream at Stage 223. Classification rests on the notes' statement of provenance plus the script computation, not on an in-stage derivation display."
+    citations:
+      - { path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py, line: 166, excerpt: "K_compat = sp.simplify(B0_s + Z0_s + D0_compat)" }
+      - { path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md, line: 5, excerpt: "**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223 compatibility branch and the Stage-227 pure-transfer corridor.**" }

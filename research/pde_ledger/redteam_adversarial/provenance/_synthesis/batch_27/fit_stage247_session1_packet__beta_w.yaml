@@ -1,0 +1,19 @@
+candidate_id: fit_stage247_session1_packet
+parameter_name: beta_W
+origin_claims:
+  - parameter: beta_W
+    introduced_at_stage: 247
+    introduced_at_line: 400
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 400
+      excerpt: "\\beta_{W0}=0.20,"
+constraints:
+  - parameter: beta_W
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 381
+      excerpt: "Using the recorded one-port parameters"
+downstream_dependents: [ 248 ]
+provenance_findings: []

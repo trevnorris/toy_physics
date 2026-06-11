@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_126_mathfrak__phase_b__mathfrak.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -112,8 +112,22 @@ source_evidence:
   role: notes_stage
   excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of
     positive localized mouth sources.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathfrak
+  introduced_at_stage: 126
+  introduced_at_line: 36
+  citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 36
+    excerpt: \mathfrak g_{\rm match}=\frac{\pi}{4}\approx 0.785398163397448.
+constraints:
+- parameter: mathfrak
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 115
+    excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family
+      of positive localized mouth sources.
 graph_context:
   contexts: []
   graph_gaps:
@@ -150,3 +164,26 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_126.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source nodes for stage_126 paper card or notes (carried from mechanical bundle).
+  citations:
+  - path: paper/stages/stage_126.tex
+    line: 16
+    excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+downstream_dependents:
+- '133'
+- '134'
+- '135'
+- '136'
+- '137'
+- '138'
+- '139'
+- '140'
+- '141'
+- '142'
+- '143'
+- '144'
+- '145'
+synthesis_ingested_at: '2026-06-11T18:52:16Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_14/fit_stage_126_mathfrak__mathfrak.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage178_doubled_slope_factors__phase_b__kappa_1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -151,9 +151,42 @@ source_evidence:
   line: 142
   role: sympy_script
   excerpt: print("Hence Xi_1 = sum_r rho_r^(N) sigma_r = sum_r rho_r^(N)(nu_r-kappa1).")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_1
+  introduced_at_stage: 178
+  introduced_at_line: 70
+  citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 70
+    excerpt: \delta\ln K_A=\epsilon\lambda_A\,\kappa_1.
+constraints:
+- parameter: kappa_1
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 37
+    excerpt: '- \(\kappa_1\) is the weak-axisymmetric wall-baseline slope,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'kappa_1 has no posited numeric value: it is DEFINED as the free first-order weak-axisymmetric logarithmic slope
+    of the wall baseline, delta ln K_A = eps lambda_A kappa_1 (notes line 70), to be computed from the actual moving-throat
+    ports downstream (notes line 443: ''check whether their outgoing-weighted average equals kappa_1''). Classified free_choice
+    as an unconstrained physical input (not an ansatz number, not a back-solve). The DERIVED content of this candidate is
+    the slippage identity sigma_r = nu_r - kappa_1 and the collapse Xi_1 = nubar_N - kappa_1 (notes lines 301, 158), which
+    is internal_consistency. No external target. (Symbol kappa_1 also appears at stage 172 line 392 as the hidden-even pole
+    slope; same free-slope role.)'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 158
+    excerpt: \frac{P_1}{P_0}=\Xi_1=\bar\nu_N-\kappa_1.
+  - path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+    line: 67
+    excerpt: Xi = sp.expand(rho1 * (nu1 - kappa1) + rho2 * (nu2 - kappa1) + rho3 * (nu3 - kappa1))
+downstream_dependents:
+- '179'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage178_doubled_slope_factors__kappa_1.yaml

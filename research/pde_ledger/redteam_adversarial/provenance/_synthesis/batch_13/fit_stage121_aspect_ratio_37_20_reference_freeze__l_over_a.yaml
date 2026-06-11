@@ -1,0 +1,26 @@
+candidate_id: fit_stage121_aspect_ratio_37_20_reference_freeze
+parameter_name: L_over_a
+origin_claims:
+  - parameter: L_over_a
+    introduced_at_stage: 73
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 54
+      excerpt: "`Lambda_* := L/a = 37/20.`"
+constraints:
+  - parameter: L_over_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 56
+      excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE."
+downstream_dependents: [122, 123, 124, 125, 139]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: needs_triage
+    summary: "Stage 121 IMPORTS L/a=37/20 as 'the carried preferred aspect ratio' (notes lines 18-22, 59-61) but does NOT cite where it came from; the actual origin is Stage 073 (notes/stages/moving_throat_pde_stage073_family1_geometry_map.md:54), where L/a=37/20 is introduced as a 'reference-branch numerical freeze' carried from 'the lower-order stack' (L/a ~ 1.85). The value is therefore a POSITED reference-branch freeze (free_choice / ansatz): the notes explicitly say it is 'not a new theorem of the unsolved moving-throat PDE'. Stage 233 independently re-confirms 'the carried L/a lock is still a branch freeze, not a full-PDE theorem'. This is the load-bearing fit-vs-derive call for the batch: the O(1) hybridization r_F1~1.778 and all downstream g_pm^F1 / Xi values rest on this freely-frozen aspect ratio, NOT on a derivation."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 18, excerpt: "The carried constructive hierarchy also keeps the preferred aspect ratio" }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 50, excerpt: "`L / a ≈ 1.85.`" }
+      - { path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md, line: 64, excerpt: "### 1.2 The carried `L/a` lock is still a branch freeze, not a full-PDE theorem" }

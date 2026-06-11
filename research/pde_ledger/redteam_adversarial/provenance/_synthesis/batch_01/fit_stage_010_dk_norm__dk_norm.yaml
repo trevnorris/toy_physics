@@ -1,0 +1,24 @@
+candidate_id: fit_stage_010_dk_norm
+parameter_name: dK_norm
+origin_claims:
+  - parameter: dK_norm
+    introduced_at_stage: 10
+    introduced_at_line: 53
+    citation:
+      path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+      line: 53
+      excerpt: "K=B_0+Z_0+\\varepsilon z_0+D_{0,\\mathrm{target}},"
+constraints:
+  - parameter: dK_norm
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/em_projected/step_08_projected_maxwell_push_bundle_master_notes.md
+      line: 60
+      excerpt: "while differentiating the normalization \\(K\\)-surface still gives a nonzero"
+downstream_dependents: [11, 12]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "dK_norm is the first-order shift of the normalization K-surface; the stage-010 audit verifies assert_zero('normalization K shift', dK_norm - (z0 + n0/Ptarget)), i.e. dK_norm = z0 + n0/Ptarget exactly. This is the derivative w.r.t. eps of the K-surface solved from the normalization (ratio-target) equation, an exact algebraic shift among ledger-internal quantities -> internal_consistency. The notes (step_08) document that the K-surface, unlike the compatibility relation, retains a nonzero z0 dependence before elimination (line 60). No numeric value / no external target; gap-tagged as symbolic."
+    citations:
+      - { path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py, line: 125, excerpt: "assert_zero(\"normalization K shift\", dK_norm - (z0 + n0 / Ptarget))" }

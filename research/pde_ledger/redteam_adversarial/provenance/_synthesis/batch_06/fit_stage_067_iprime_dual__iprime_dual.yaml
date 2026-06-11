@@ -1,0 +1,25 @@
+candidate_id: fit_stage_067_iprime_dual
+parameter_name: Iprime_dual
+origin_claims:
+  - parameter: Iprime_dual
+    introduced_at_stage: 67
+    introduced_at_line: 82
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 82
+      excerpt: "`I(r) = (r / sqrt(pi)) I(pi / r).`"
+constraints:
+  - parameter: Iprime_dual
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 100
+      excerpt: "`dC^2/dr |_(r = sqrt(pi)) = 0.`"
+downstream_dependents: [68, 69]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "'Iprime_dual' is not a posited numeric value; it is a SymPy symbol (I_star, Iprime_left, Iprime_dual) standing for the dual-side overlap derivative I'(pi/r) used in the script's self-dual overlap-slope/tangent algebra that proves dC^2/dr=0 at r=sqrt(pi). The notes document the underlying duality I(r)=(r/sqrt(pi))I(pi/r) and its differentiated stationary-point consequence; the symbol name is script-only. Classified internal_consistency (a derivative quantity within the duality-forced stationary-point derivation)."
+    citations:
+      - { path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py, line: 105, excerpt: "Istar, Iprime_left, Iprime_dual = sp.symbols(" }
+      - { path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py, line: 119, excerpt: "\"self-dual overlap-slope relation\"," }

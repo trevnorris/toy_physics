@@ -1,0 +1,25 @@
+candidate_id: fit_stage_032_mhat_sq
+parameter_name: mhat_sq
+origin_claims:
+  - parameter: mhat_sq
+    introduced_at_stage: 032
+    introduced_at_line: 205
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 205
+      excerpt: "`mhat_-^2 = s_- / kappa_0^2`."
+constraints:
+  - parameter: mhat_sq
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 36
+      excerpt: "which is now completely determined by the conservative selected-mode spectral data and the outgoing transfer factor."
+downstream_dependents: [033]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "mhat_sq is the script variable for mhat_-^2 = s_-/kappa_0^2 (audit line 163). It is the squared selected-branch source-map factor, derived as a ratio of two ledger-internal overlaps (the loaded selected overlap s_- and the flat-branch kappa_0^2). Its exact onset value is 1 and its supremum is 11/9 (script lines 195-196). Pure internal_consistency; recorded informationally that mhat_sq is the same object as fit_stage032_mhat_minus_completely_fixed (mhat_-^2), i.e. a duplicate scanner hit, not an independent parameter."
+    citations:
+      - { path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py, line: 163, excerpt: "mhat_sq = sp.simplify(s_minus_nat / kappa0**2)" }
+      - { path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py, line: 196, excerpt: "expect_zero(\"limit_{alpha->oo} mhat_-^2 - 11/9\", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11, 9)))" }

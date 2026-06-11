@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage171_outlet_feed_coefficients__phase_b__delta_gamma_w_coefficient.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -180,9 +180,42 @@ source_evidence:
   role: notes_stage
   excerpt: So the support sector can source \(\gamma_W\) even when the outgoing transfer is perfectly isotropic, simply because
     the normalization quotient reweights any static conservative lane splitting.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_gamma_W_coefficient
+  introduced_at_stage: 170
+  introduced_at_line: 46
+  citation:
+    path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+    line: 46
+    excerpt: =-\frac{1-\sigma_*}{9\sigma_* N_0}\,\mathcal G_A.
+constraints:
+- parameter: delta_gamma_W_coefficient
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+    line: 18
+    excerpt: \delta\gamma_W^{(A)}=
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'The delta_gamma_W feed coefficient -(1-sigma_*)/(9 sigma_* N_0) (the prefactor mapping G_A into the hidden odd
+    normalization deformation) is ORIGINATED at Stage 170 (notes line 44-46), where the linear grouped-P2 outlet map delta
+    gamma_W^(A) = -(1-sigma_*)/(9 sigma_* N_0) G_A is derived. Stage 171 (notes lines 5-20) merely carries it forward as the
+    starting point (''Stage 170 proved that the entire linear grouped real P2 outlet problem collapses to the pair...'') before
+    decomposing G_A microscopically. The coefficient is internal: built from ledger-internal quantities sigma_*, N_0 and the
+    canonical 1/9 fingerprint, with no external (GR/PN/CODATA) anchor. Low severity (gap noted because the bundle''s evidence
+    list, though long, did not isolate the coefficient value).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+    line: 9
+    excerpt: \mathcal G_A:=\delta N_{A,0}-P_0\,\delta D_{A,0},
+  - path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+    line: 19
+    excerpt: -\frac{1-\sigma_*}{9\sigma_* N_0}\,\mathcal G_A.
+downstream_dependents:
+- '172'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage171_outlet_feed_coefficients__delta_gamma_w_coefficient.yaml

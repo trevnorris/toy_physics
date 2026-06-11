@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage118_kq_fixed_not_arbitrary__phase_b__k_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -75,9 +75,43 @@ source_evidence:
   line: 97
   role: sympy_script
   excerpt: expect_zero("K_q closed form", K_q - (Zq/mu0) * sp.pi**2 * c_s**2 / (4*L_W**2))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_q
+  introduced_at_stage: 118
+  introduced_at_line: 114
+  citation:
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 114
+    excerpt: '## 2. Mixed side-channel stiffness \(K_q\)'
+constraints:
+- parameter: K_q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 149
+    excerpt: 'So \(K_q\) is not arbitrary: it is fixed by one localization norm and the D/N tube length.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'K_q = (Z_q/mu0) pi^2 c_s^2/(4 L_W^2) is DERIVED by reducing the localized Maxwell action on the first D/N half-wave:
+    K_q = (Z_q/mu0) integral_0^L_W (chi''_1/2)^2 dz with integral (chi''_1/2)^2 = pi^2/(4 L_W^2). Inputs are the transverse
+    localization norm Z_q and the ledger-internal tube length L_W (from Stage 116), so this is internal_consistency. The notes
+    explicitly state K_q is ''not arbitrary''. (Note: K_q still depends on the localization norm Z_q, which the throat-core
+    model leaves as a microscopic input rather than a number, but K_q''s FORM and L_W-scaling are derived.)'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    line: 138
+    excerpt: \int_0^{L_W}(\chi'_{1/2})^2\,dz=\frac{\pi^2}{4L_W^2},
+downstream_dependents:
+- '119'
+- '120'
+- '121'
+- '122'
+- '123'
+- '124'
+- '125'
+synthesis_ingested_at: '2026-06-11T18:52:04Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_13/fit_stage118_kq_fixed_not_arbitrary__k_q.yaml

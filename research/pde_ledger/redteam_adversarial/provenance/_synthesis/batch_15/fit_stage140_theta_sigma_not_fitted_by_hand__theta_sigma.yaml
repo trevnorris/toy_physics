@@ -1,0 +1,25 @@
+candidate_id: fit_stage140_theta_sigma_not_fitted_by_hand
+parameter_name: Theta_sigma
+origin_claims:
+  - parameter: Theta_sigma
+    introduced_at_stage: 140
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 29
+      excerpt: "\\Theta_\\sigma = H_w J_s."
+constraints:
+  - parameter: Theta_sigma
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 32
+      excerpt: "This is a same-layer closure: it removes an otherwise free susceptibility scale by"
+downstream_dependents: [146, 152, 153]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Theta_sigma = H_w J_s is the self-matched mouth-susceptibility closure: it identifies the source channel with the already-active shell layer, with H_w = m_psi c_sw^2/rho_w and J_s = N_sigma_sigma^(m) = 4 pi a^2 ell/3 (notes lines 15-29). The note explicitly frames this as NOT a hand fit: 'it removes an otherwise free susceptibility scale by identifying the source channel with the already active shell layer, rather than fitting a new branch-dependent coefficient by hand' (notes lines 32-34) -> internal_consistency is the best-supported call, and the candidate-id claim 'not fitted by hand' is SUPPORTED. TENSION recorded: the closure is a same-LAYER identification, i.e. a microscopic CHOICE; the note concedes 'If the actual mouth source lives on a materially different layer, the numerical prefactor derived below would change with that microscopic choice' (notes line 34-35). So a competing free_choice reading exists for the layer selection itself. Classified internal_consistency (the susceptibility is solved from the ledger's own Stage-43-type quantity, not back-fit to an external number); the layer-choice caveat is logged so the derivation is not overstated as unconditional."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md, line: 34, excerpt: "fitting a new branch-dependent coefficient by hand. If the actual mouth source" }
+      - { path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md, line: 22, excerpt: "N_{\\sigma\\sigma}^{(m)} = J_s = \\frac{4\\pi a^2\\ell}{3}," }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_187_chi_0__phase_b__chi_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -99,9 +99,39 @@ source_evidence:
   line: 143
   role: sympy_script
   excerpt: print("              - F_*((1+deltaU_*)/(1+chi_*))(Delta_gamma + Delta_c - Delta_U)")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_0
+  introduced_at_stage: 47
+  introduced_at_line: 137
+  citation:
+    path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 87
+    excerpt: \chi_0=\frac{\gamma c_{\eta U}}{K_U},
+constraints:
+- parameter: chi_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    line: 95
+    excerpt: \epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{(\mathrm{eff})}}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: chi_0 (the common interference ratio chi_0 = gamma c_etaU / K_U) is a ledger-internal kernel ratio first expressed
+    microscopically via the Stage-047 coherent kernel map (stated at Stage 182 line 83 'Stage 047 already expressed the coherent
+    local D/N branch...chi_0'); on the coherent branch chi_0 = rho_0 = sigma_0 (Stage 181 line 102-104). Stage 187 carries
+    it as the reference-branch interference ratio inside the monomials without naming its 047 origin. internal_consistency,
+    no external anchor.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+    line: 104
+    excerpt: \rho_0=\sigma_0=\chi_0,
+  - path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+    line: 83
+    excerpt: Stage 047 already expressed the coherent local D/N branch in terms of the microscopic couplings
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_187_chi_0__chi_0.yaml

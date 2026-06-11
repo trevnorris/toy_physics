@@ -1,0 +1,25 @@
+candidate_id: fit_stage122_rF1_geometry_fixes
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 49
+      excerpt: "\\mathfrak r=\\mathfrak r_{F1}=\\frac{\\sqrt{4107-100\\pi^2}}{10\\pi}"
+downstream_dependents: [123, 124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 122 CARRIES r_F1 (the Stage-121 geometric value sqrt(4107-100 pi^2)/(10 pi) ~ 1.778, notes line 49) and uses it to evaluate the compensated branch. Origin is Stage 121, where r_F1 is the algebraic image of the posited L_W=L identification and the carried L/a=37/20 freeze (see fit_stage121_r_not_tunable). Classified free_choice because the numerical value rests on those upstream free choices, not on an internal pole/normalization solve nor an external published target. The bundle's source_evidence pointed only at the script print line 'r_F1 = rF'; the notes anchor is line 49."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 67, excerpt: "\\sqrt{\\frac{12}{\\pi^2}\\left(\\frac{37}{20}\\right)^2-1}" }
+      - { path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py, line: 29, excerpt: "print(\"r_F1 =\", rF)" }

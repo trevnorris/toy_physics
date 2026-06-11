@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_175_sigma_n__phase_b__sigma_n.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,27 @@ source_evidence:
   line: 170
   role: sympy_script
   excerpt: print("    Sigma_B = d ln chi^2")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Sigma_N
+  introduced_at_stage: 175
+  introduced_at_line: 41
+  citation:
+    path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+    line: 41
+    excerpt: \Sigma_r^{(N)}=\delta\ln\!\left(\frac{\Lambda_r^2}{K}\right).
+constraints:
+- parameter: Sigma_N
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+    line: 223
+    excerpt: \Sigma_r^{(N)}=2\,\delta\ln\Lambda_r-\delta_K
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '177'
+- '178'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_175_sigma_n__sigma_n.yaml

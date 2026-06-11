@@ -1,0 +1,26 @@
+candidate_id: fit_stage135_exact_outlet_consistent_gain
+parameter_name: Sigma_0
+origin_claims:
+  - parameter: Sigma_0
+    introduced_at_stage: 135
+    introduced_at_line: 89
+    citation:
+      path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+      line: 89
+      excerpt: "\\approx 0.451485277739090."
+constraints:
+  - parameter: Sigma_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+      line: 88
+      excerpt: "\\frac{\\Pi_*}{4-\\mathcal S_q(\\Pi_*)}"
+downstream_dependents: [136, 139, 140, 146, 152, 153]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The bundle's scanner-assigned parameter_name 'Sigma_0' does not match the symbol the Stage 135 note actually fixes. The note never writes 'Sigma_0'; the single residual outlet-consistent mouth gain is named Sigma_m (and its canonical value Sigma_m^* approx 0.451485277739090, notes line 86/89/153). The value itself IS internal_consistency: Sigma_m^* = Pi_*/(4 - S_q(Pi_*)) is solved from the reduced one-parameter fixed-point law Pi = Sigma_m[4 - S_q(Pi)] at the imported canonical point Pi_* (notes lines 57-89). The 4:-1 outlet ratio (M_s=4 Sigma_m, M_q=-Sigma_m) is itself INHERITED from the Stage 115 compensated core outlet delta-Lambda_core (notes lines 17-37), not derived here. Classification stands on the symbol Sigma_m^*; flagging the name mismatch only."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md, line: 86, excerpt: "\\Sigma_m^*" }
+      - { path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md, line: 39, excerpt: "with \\(\\Sigma_m>0\\) a single residual mouth-gain amplitude." }
+      - { path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md, line: 17, excerpt: "The exact compensated core outlet found in Stage 115 was" }

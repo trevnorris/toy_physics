@@ -1,0 +1,19 @@
+candidate_id: fit_stage130_g_minus_compensation_target
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 122
+    introduced_at_line: 63
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 63
+      excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663,"
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+      line: 95
+      excerpt: "The explicit Family-1 lower compensated branch is already fixed from the earlier"
+downstream_dependents: [130, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

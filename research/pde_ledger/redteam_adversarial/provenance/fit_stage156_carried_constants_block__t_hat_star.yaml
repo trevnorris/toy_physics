@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_carried_constants_block__phase_b__t_hat_star.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,39 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: raise AssertionError("Sigma0_can deviates from notes value 4.651033550168867.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: T_hat_star
+  introduced_at_stage: 156
+  introduced_at_line: 127
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 127
+    excerpt: \frac{\widehat T_{m,\rm can}}{\widehat T_{m,*}}-1
+constraints:
+- parameter: T_hat_star
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 104
+    excerpt: Relative to the original canonical point
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: T_hat_star (~0.90148, original frozen canonical mouth traction) appears in stage156 only inside the traction-renormalization
+    ratio T_hat_can/T_hat_star - 1. It is tied to Sigma0_star via the exact closure Sigma0 = (20/9) T_hat^2; first entered
+    upstream at the frozen fixed point (stage 155). Carried, not constrained, at stage156.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+    line: 13
+    excerpt: \approx 0.901484054174204
+  - path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+    line: 28
+    excerpt: T_hat_star = 0.901484054174204
+downstream_dependents:
+- '157'
+- '158'
+synthesis_ingested_at: '2026-06-11T18:52:53Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage156_carried_constants_block__t_hat_star.yaml

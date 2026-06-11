@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_097_r_i__phase_b__r_i.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -19,9 +19,37 @@ anchor_stages:
 - 097
 notes_source_opened: true
 source_evidence: []
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_i
+  introduced_at_stage: 97
+  introduced_at_line: 104
+  citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 104
+    excerpt: '`R_0 := Kbar_0 / Kbar_0^target - 1,`'
+constraints:
+- parameter: R_i
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 114
+    excerpt: '`R_0 = R_2 = R_4 = R_5 = N_Q - 1`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The mechanical bundle for fit_stage_097_r_i had EMPTY source_evidence. The parameter R_i resolves to the residual
+    defects R_0/R_2/R_4/R_5 := Kbar_i/Kbar_i^target - 1, documented at stage097 notes lines 104-114. Each R_i measures distance
+    from a GR target (published_target); the result that all four collapse to the single N_Q-1 is internal_consistency. Origin
+    and constraint supplied by opening the per-stage note despite the empty bundle.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    line: 110
+    excerpt: '`R_5 := Gammabar_5 / (2G/(5c^5)) - 1,`'
+downstream_dependents:
+- 099
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_097_r_i__r_i.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_190_b_x__phase_b__b_x.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,40 @@ source_evidence:
   line: 262
   role: sympy_script
   excerpt: expect_zero("b_x - 3 a_x", bx - 3 * ax)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: b_x
+  introduced_at_stage: 190
+  introduced_at_line: 547
+  citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 547
+    excerpt: ' b_x=\frac{x_{21}-x_{22}}{2}.'
+constraints:
+- parameter: b_x
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 574
+    excerpt: b_x=3a_x,
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: b_x is the grouped real-P2 anomaly variable b_x:=(x21-x22)/2, an exact definition (190 line 547); the scanner-extracted
+    literal value '3' is the FORCED ratio b_x=3a_x on the weak-axisymmetric Y20 branch (190 line 574), not an independent
+    fitted constant. It is internal_consistency, fixed by the branch parametrization x21=x(0)+(eps/2)x(1), x22=x(0)-eps x(1)
+    (lines 565-567).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 565
+    excerpt: ' x_{20}=x^{(0)}+\varepsilon x^{(1)},'
+  - path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+    line: 574
+    excerpt: b_x=3a_x,
+downstream_dependents:
+- '191'
+- '193'
+synthesis_ingested_at: '2026-06-11T19:18:44Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_190_b_x__b_x.yaml

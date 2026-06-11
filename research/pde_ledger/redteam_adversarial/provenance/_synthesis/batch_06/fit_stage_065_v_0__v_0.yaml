@@ -1,0 +1,24 @@
+candidate_id: fit_stage_065_v_0
+parameter_name: V_0
+origin_claims:
+  - parameter: V_0
+    introduced_at_stage: 65
+    introduced_at_line: 23
+    citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 23
+      excerpt: "- `V0` is the wall amplitude,"
+constraints:
+  - parameter: V_0
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 89
+      excerpt: "`V_conf(r;a) = V0 f((r-a)/ell),`"
+downstream_dependents: [66]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "V0 is a posited branch datum of the DECLARED explicit thin-wall confinement family V_conf=V0 f((r-a)/ell) (card claimstatus marks this StatusReduced for 'the declared thin-wall confinement branch'). It carries no numeric value and no derivation; the stage solves the V0_fail^2/V0_suff^2 thresholds FOR V0 rather than fixing it. Constraint is free_choice (an open wall-amplitude variable of the declared ansatz)."
+    citations:
+      - { path: paper/stages/stage_065.tex, line: 5, excerpt: "\\claimstatus{\\StatusExactClosure{} / \\StatusReduced{} for the declared thin-wall confinement branch.}" }

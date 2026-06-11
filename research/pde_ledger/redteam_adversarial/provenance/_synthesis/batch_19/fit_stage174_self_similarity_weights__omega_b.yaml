@@ -1,0 +1,19 @@
+candidate_id: fit_stage174_self_similarity_weights
+parameter_name: omega_B
+origin_claims:
+  - parameter: omega_B
+    introduced_at_stage: 174
+    introduced_at_line: 88
+    citation:
+      path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+      line: 88
+      excerpt: "\\omega_B:=\\frac{B_0}{D_0},"
+constraints:
+  - parameter: omega_B
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+      line: 111
+      excerpt: "\\omega_K-\\omega_B-\\omega_Z=1."
+downstream_dependents: [175]
+provenance_findings: []

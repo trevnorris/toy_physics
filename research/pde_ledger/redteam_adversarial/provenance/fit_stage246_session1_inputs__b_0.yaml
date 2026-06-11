@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_session1_inputs__phase_b__b_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,39 @@ source_evidence:
   line: 123
   role: notes_stage
   excerpt: \mathcal R[\sigma]
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: b_0
+  introduced_at_stage: 246
+  introduced_at_line: 476
+  citation:
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 476
+    excerpt: b_0=-0.6,
+constraints:
+- parameter: b_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 472
+    excerpt: Use the recorded Session-I source-side parameters
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: b_0 = -0.6 is a probe/sample input imported from the barrier Session-I write-up (notes line 472-476), the cos(2
+    pi x) mode amplitude of the transported compensated source b(r) = b_0 s(r). It is a posited representative sample value
+    (free_choice), not derived from ledger-internal quantities and not an external published target. Its sign (b_0 < 0, with
+    a_0 > 0) selects the boundary-minimum Session-I orientation. Used only for the readback consistency check. Logged at low
+    severity to record its sample-probe character.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 446
+    excerpt: a_0>0,\qquad b_0<0,
+  - path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    line: 397
+    excerpt: b(r)=b_0\,s(r),
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage246_session1_inputs__b_0.yaml

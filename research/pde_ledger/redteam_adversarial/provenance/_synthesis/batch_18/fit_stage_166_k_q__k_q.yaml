@@ -1,0 +1,24 @@
+candidate_id: fit_stage_166_k_q
+parameter_name: K_q
+origin_claims:
+  - parameter: K_q
+    introduced_at_stage: 166
+    introduced_at_line: 72
+    citation:
+      path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+      line: 72
+      excerpt: "K_q \\propto \\mathcal Z_q\\,\\frac{c_s^2}{L_W^2},"
+constraints:
+  - parameter: K_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+      line: 79
+      excerpt: "\\delta\\ln K_q = \\delta\\ln \\mathcal Z_q + 2\\,\\delta\\ln c_s - 2\\,\\delta\\ln a."
+downstream_dependents: [167]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "K_q (mixed side-channel stiffness) is a Stage-118 parent-action quantity; 166 inverts its drift as a bundle observable without an origin cross-reference to its Stage-118 closed form. (Same underlying parameter as the four_observables candidate; this candidate isolates K_q as one of the four observable inputs.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md, line: 31, excerpt: "\\(K_q\\) is the mixed side-channel stiffness," }

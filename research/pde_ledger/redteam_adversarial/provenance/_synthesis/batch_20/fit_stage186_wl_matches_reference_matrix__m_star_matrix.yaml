@@ -1,0 +1,19 @@
+candidate_id: fit_stage186_wl_matches_reference_matrix
+parameter_name: M_star_matrix
+origin_claims:
+  - parameter: M_star_matrix
+    introduced_at_stage: 186
+    introduced_at_line: 171
+    citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 171
+      excerpt: "M_*="
+constraints:
+  - parameter: M_star_matrix
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+      line: 181
+      excerpt: "The three rows are simply the logarithmic exponent vectors of"
+downstream_dependents: [187]
+provenance_findings: []

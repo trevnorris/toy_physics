@@ -1,0 +1,25 @@
+candidate_id: fit_stage077_Theta_w_chi_derived_directly
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 077
+    introduced_at_line: 93
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 93
+      excerpt: "`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 96
+      excerpt: "This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather than left symbolic."
+downstream_dependents: [078]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi ~ 4.06863 lambda_mu^2 is the first concrete branch value of Theta_w, computed by support-weighting the explicit Family-1 radial Thomas-Fermi wall profile rho_r(xi) = [1 - alpha_r S(xi)^2]_+^(1/4) (alpha_r=10) with the canonical support weight chi_phi^2. The 25 prefactor is the Stage-076 internal reduction; the weighted average <rho_r^2>_chi is a deterministic integral of ledger-internal quantities. Derived, not fitted -> internal_consistency. (Carries lambda_mu^2 symbolically.)"
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 89, excerpt: "`<rho_r^2>_chi ≈ 0.162745294003265.`" }
+      - { path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py, line: 77, excerpt: "Theta_chi = mp.mpf('25') * R2" }

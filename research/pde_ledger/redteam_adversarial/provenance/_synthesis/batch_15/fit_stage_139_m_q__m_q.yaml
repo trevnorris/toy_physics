@@ -1,0 +1,25 @@
+candidate_id: fit_stage_139_m_q
+parameter_name: M_q
+origin_claims:
+  - parameter: M_q
+    introduced_at_stage: 137
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+      line: 65
+      excerpt: "-\\frac{L (K_sg_q-\\lambda g_s)^2}{K_s(K_sK_q+\\lambda^2)\\Theta_\\sigma}."
+constraints:
+  - parameter: M_q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+      line: 93
+      excerpt: "On the exact compensated family,"
+downstream_dependents: [140, 141, 142, 143, 144, 145, 146]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "At Stage 139 M_q is EVALUATED, not introduced: the symbolic form M_q = -R_q M_s originates at Stage 137/138, and 139 plugs in the Stage-121 geometric branch to report two numeric values: the natural equal-normalized branch (g_c=1) gives M_q^{nat,*} approx -0.242696939724365 (notes lines 50-79), and the exact compensated branch (R_q=1/4) gives M_q^{comp,*} approx -0.451485277739090 (notes lines 93-116). Both are internal_consistency: solved from the fixed-point law Pi_* = M_s + M_q S_q(Pi_*) with ledger-internal inputs (Pi_* from 130/134, r_F1 from 121, R_q from 138). No fit to an external number. Gap flagged only to note that 'M_q' at 139 is a two-valued evaluation (natural vs compensated), not a single pinned constant; the canonical/compensated value is the one carried downstream."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md, line: 79, excerpt: "M_q^{\\rm nat,*}" }
+      - { path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md, line: 36, excerpt: "\\Pi_* = M_s + M_q\\,\\mathcal S_q(\\Pi_*)." }

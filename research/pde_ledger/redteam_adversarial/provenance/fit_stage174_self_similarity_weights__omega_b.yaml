@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage174_self_similarity_weights__phase_b__omega_b.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -148,9 +148,26 @@ source_evidence:
   line: 142
   role: sympy_script
   excerpt: print("  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: omega_B
+  introduced_at_stage: 174
+  introduced_at_line: 88
+  citation:
+    path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+    line: 88
+    excerpt: \omega_B:=\frac{B_0}{D_0},
+constraints:
+- parameter: omega_B
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+    line: 111
+    excerpt: \omega_K-\omega_B-\omega_Z=1.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '175'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage174_self_similarity_weights__omega_b.yaml

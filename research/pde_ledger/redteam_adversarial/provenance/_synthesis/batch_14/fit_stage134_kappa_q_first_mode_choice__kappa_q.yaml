@@ -1,0 +1,25 @@
+candidate_id: fit_stage134_kappa_q_first_mode_choice
+parameter_name: kappa_q
+origin_claims:
+  - parameter: kappa_q
+    introduced_at_stage: 134
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 29
+      excerpt: "\\boxed{\\kappa_q=\\frac{\\pi}{2},}"
+constraints:
+  - parameter: kappa_q
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+      line: 31
+      excerpt: "the first D/N half-wave on the actual throat span."
+downstream_dependents: [135, 137, 140, 146, 147, 148, 149, 150, 151, 152, 153]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "kappa_q = pi/2 straddles free_choice and internal_consistency: selecting the FIRST mixed D/N half-wave lane (over higher modes) is a modeling/branch selection (free_choice), but GIVEN that first-mode selection, pi/2 is the mathematically forced first Dirichlet/Neumann eigenvalue on the unit throat span (internal_consistency). Classified free_choice because the mode SELECTION is the load-bearing assumption; the numeric value is then forced."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md, line: 19, excerpt: "Take the two diagonal D/N channels to be" }
+      - { path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md, line: 27, excerpt: "- mixed localized-Maxwell lane:" }

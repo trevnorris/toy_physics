@@ -1,0 +1,26 @@
+candidate_id: fit_stage247_lambda_L_closure
+parameter_name: lambda_L
+origin_claims:
+  - parameter: lambda_L
+    introduced_at_stage: 247
+    introduced_at_line: 518
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 518
+      excerpt: "\\lambda_L=0.26971918."
+constraints:
+  - parameter: lambda_L
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 569
+      excerpt: "which is exactly what the leakage term closes when"
+downstream_dependents: [ 248 ]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "The 'closure' framing (script line 248 'forward benchmark decomposition with the paper's lambda_L (falsifiable closure)') presents the forward check Veff_forward == Veff_obs as a falsifiable closure. It is tautological for lambda_L: the same V_eff^sess(r_soft)=1.74701126 used to back-solve lambda_L (line 238) is the target the forward check reproduces (lines 249-250). The closure is genuine only for the OTHER hardcoded benchmark figures (Vshort, M_sigma, S_soft) that are checked independently; for lambda_L itself it cannot fail by construction. Notes line 569 'which is exactly what the leakage term closes when lambda_L=0.26971918' confirms lambda_L is the value that closes the gap, i.e. a fit."
+    citations:
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 248, excerpt: "# F5: forward benchmark decomposition with the paper's lambda_L (falsifiable closure)." }
+      - { path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py, line: 238, excerpt: "lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)" }
+      - { path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md, line: 569, excerpt: "which is exactly what the leakage term closes when" }

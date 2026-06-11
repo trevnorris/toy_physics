@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage024_grouped_bundle_forced_isotropic__phase_b__grouped_lane_coefficients_20_21_22.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -200,9 +200,41 @@ source_evidence:
   line: 10
   role: sympy_script
   excerpt: 'Stage-023 grouped bundle:'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: grouped_lane_coefficients_20_21_22
+  introduced_at_stage: 20
+  introduced_at_line: 183
+  citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 183
+    excerpt: '`D_(20,n) = D_(21,n) = D_(22,n) = D_n`,'
+constraints:
+- parameter: grouped_lane_coefficients_20_21_22
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 193
+    excerpt: So inside any truly `O(3)`-invariant reduced kernel, the grouped real `20/21/22` bundle is forced to be isotropic.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'The collapse of the grouped lane coefficients to common values (D_(20,n)=D_(21,n)=D_(22,n)=D_n, N likewise; a_(D,n)=b_(D,n)=0)
+    is DERIVED: on an O(3)-invariant reduced kernel every angular overlap collapses by orthonormality (int Y_A Y_B = delta_AB),
+    forcing lane-independence. This is the first PDE-side isotropy theorem, pure internal_consistency, no fit and no external
+    anchor. The lane coefficients themselves carry no numeric value (their actual values are the open branch data); logged
+    low gap accordingly.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    line: 106
+    excerpt: 'Then all angular overlaps collapse by orthonormality, and every microscopic coupling becomes lane-independent:'
+  - path: paper/stages/stage_024.tex
+    line: 147
+    excerpt: so every grouped anisotropy defect vanishes on a truly \(O(3)\)-invariant branch.
+downstream_dependents:
+- '021'
+- '022'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage024_grouped_bundle_forced_isotropic__grouped_lane_coefficients_20_21_22.yaml

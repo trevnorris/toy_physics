@@ -1,0 +1,19 @@
+candidate_id: fit_stage059_thresholds_exact
+parameter_name: Pe_req
+origin_claims:
+  - parameter: Pe_req
+    introduced_at_stage: 59
+    introduced_at_line: 175
+    citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 175
+      excerpt: "Inside the Stage-057 reachability window, define `Pe_req` as the unique constructive solution of"
+constraints:
+  - parameter: Pe_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 179
+      excerpt: "Because `Omega_Pe` is strictly increasing from `1` to `pi/2`, this `Pe_req` exists iff the Stage-057 ceiling is satisfied."
+downstream_dependents: [60, 61, 62, 63, 64, 65, 66]
+provenance_findings: []

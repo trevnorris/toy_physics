@@ -1,0 +1,19 @@
+candidate_id: fit_stage_103_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+origin_claims:
+  - parameter: matched_fingerprint_value
+    introduced_at_stage: 104
+    introduced_at_line: 89
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 89
+      excerpt: "\\Gamma_{5,\\rm can}^{\\rm DtN}=\\frac{a^5}{27c_s^5}."
+constraints:
+  - parameter: matched_fingerprint_value
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+      line: 29
+      excerpt: "> compute the leading outgoing `omega^5` normalization of the actual passive/outgoing grouped-`P2` quadrupole branch and determine whether it equals the canonical compact outgoing value."
+downstream_dependents: [105, 106, 107]
+provenance_findings: []

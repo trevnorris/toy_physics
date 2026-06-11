@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_099_k0_sym__phase_b__k0_sym.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -77,9 +77,40 @@ source_evidence:
   line: 80
   role: sympy_script
   excerpt: Gamma5_struct.subs(K0_sym, N_Q * K0_target) / (2 * G / (5 * c**5)) - N_Q)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K0_sym
+  introduced_at_stage: 99
+  introduced_at_line: 43
+  citation:
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 43
+    excerpt: '`Kbar_Q^cons(omega) = Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`.'
+constraints:
+- parameter: K0_sym
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    line: 75
+    excerpt: '- compute `Kbar_0` on the actual passive/outgoing branch,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K0_sym is the SymPy symbol for the actual-branch normalization Kbar_0; the script declares it 'a *free* positive
+    symbol — assertions are not forced by an N_Q recipe' (line 64-65). In the notes it is the OPEN unknown to be computed
+    by the full PDE (line 75); its determination is precisely the unresolved N_Q=1 gate. Classified free_choice because at
+    this stage Kbar_0 is an unfixed positive symbol (the open theorem unknown), not a derived or externally-matched value.
+    No notes line names 'K0_sym' literally (a SymPy-symbol name); origin cited from the Kbar_0 it represents.
+  citations:
+  - path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+    line: 64
+    excerpt: '# K0_sym is a *free* positive symbol — assertions are not forced by an N_Q recipe.'
+  - path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+    line: 65
+    excerpt: K0_sym = sp.symbols("K0_sym", positive=True, real=True)
+downstream_dependents:
+- '100'
+synthesis_ingested_at: '2026-06-11T18:51:38Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_099_k0_sym__k0_sym.yaml

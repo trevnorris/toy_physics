@@ -1,0 +1,24 @@
+candidate_id: fit_stage224_weak_axisymmetric_lane_signature
+parameter_name: lambda_20
+origin_claims:
+  - parameter: lambda_20
+    introduced_at_stage: 224
+    introduced_at_line: 200
+    citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 200
+      excerpt: "\\lambda_{20}=1,"
+constraints:
+  - parameter: lambda_20
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+      line: 195
+      excerpt: "The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude with grouped signature"
+downstream_dependents: [225]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "lambda_20=1 is one entry of the fixed weak-axisymmetric lane signature (lambda_20,lambda_21,lambda_22)=(1,1/2,-1). The notes present it as an imported grouped (l=2) lane-weight convention without an in-stage derivation; classified free_choice (posited convention/branch-signature). If the (1,1/2,-1) weights are shown elsewhere to be forced by the quadrupole harmonic decomposition it would instead be internal_consistency."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md, line: 416, excerpt: "\\lambda_{20}=1,\\quad \\lambda_{21}=\\frac12,\\quad \\lambda_{22}=-1," }

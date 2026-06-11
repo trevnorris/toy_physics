@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage023_gamma5_port_27_coefficient__phase_b__gamma_5.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -59,9 +59,39 @@ source_evidence:
   line: 361
   role: sympy_script
   excerpt: sp.pprint(Gamma5_port)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Gamma_5
+  introduced_at_stage: 17
+  introduced_at_line: 223
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 223
+    excerpt: '`Γ_2^(port) = a^5 / (27 c_s^5)`.'
+constraints:
+- parameter: Gamma_5
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 214
+    excerpt: The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Candidate keyed to stage 023, but Gamma_5 = a^5/(27 c_s^5) originates at stage 021 (derived from the outgoing spherical
+    Hankel fingerprint). The stage-023 sympy audit recomputes it from the fingerprint coefficient route (Gamma5_port = Y2_hat.coeff(omega,5)/I;
+    assert == a^5/(27 c_s^5)) and the script comment explicitly says it uses the derived route 'instead of retyping a^5/(27
+    c_s^5)' — i.e. internal_consistency, re-derived not retyped. Value is derived, not fitted. Origin stage is 021.
+  citations:
+  - path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+    line: 1
+    excerpt: '# route used in Stage 022 instead of retyping a^5/(27 c_s^5).'
+  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 221
+    excerpt: So the outgoing port coefficient is
+downstream_dependents:
+- '020'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage023_gamma5_port_27_coefficient__gamma_5.yaml

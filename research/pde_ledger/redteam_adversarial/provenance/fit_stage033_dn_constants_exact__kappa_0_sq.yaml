@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage033_dn_constants_exact__phase_b__kappa_0_sq.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -172,9 +172,43 @@ source_evidence:
   line: 99
   role: sympy_script
   excerpt: K0_onset - (gU**2 / OmegaU**2 + kappa0_sq * Chi**2 / (NQ * Delta0**2)),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: kappa_0_sq
+  introduced_at_stage: 26
+  introduced_at_line: 79
+  citation:
+    path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 79
+    excerpt: '`kappa_0^2 = 8 / pi^2`,'
+constraints:
+- parameter: kappa_0_sq
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+    line: 63
+    excerpt: '- and the finite-throat overlap constants `kappa_0`, `kappa_1`, `sigma` already fixed exactly.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Candidate keyed to stage 033, but kappa_0^2 = 8/pi^2 first enters the ledger at stage 032 (the exact D/N overlap
+    mode integral). Stage 033 only carries it as an already-fixed constant ('finite-throat overlap constants kappa_0, kappa_1,
+    sigma already fixed exactly', notes line 63), and the audit script hardcodes the value (kappa0_sq = sp.Rational(8)/sp.pi**2)
+    rather than re-deriving it. Constraint kind = internal_consistency (forced by the mode integral, not fit/posited).
+  citations:
+  - path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+    line: 33
+    excerpt: kappa0_sq = sp.Rational(8) / sp.pi**2
+  - path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+    line: 79
+    excerpt: '`kappa_0^2 = 8 / pi^2`,'
+downstream_dependents:
+- 028
+- 029
+- '030'
+- '031'
+- 038
+synthesis_ingested_at: '2026-06-11T18:25:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_04/fit_stage033_dn_constants_exact__kappa_0_sq.yaml

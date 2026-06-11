@@ -1,0 +1,25 @@
+candidate_id: fit_stage092_forced_carrier_ledger_label
+parameter_name: Y_Q_cons
+origin_claims:
+  - parameter: Y_Q_cons
+    introduced_at_stage: 91
+    introduced_at_line: 32
+    citation:
+      path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+      line: 32
+      excerpt: "`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`."
+constraints:
+  - parameter: Y_Q_cons
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+      line: 27
+      excerpt: "So the `3/4 + 1/4` split is recovered **iff** the geometry lane is static at the relevant orders."
+downstream_dependents: [93, 94, 96]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: low
+    summary: "Stage 092 carries the 'forced conservative carrier Yhat_Q^cons=3/4+(1/4)/(1-u)' (paper card 'Derivation ledger' label), but its own result GENERALIZES it: with dynamic geometry the pole fraction becomes c_pole=(1+eps_4)/[4(1+eps_2)^2], so Y_Q_cons is forced to the 3/4+1/4 form ONLY in the static limit eps_2=eps_4=0. The module is internal_consistency-conditional, exactly as the card's status tag states; no overclaim relative to the notes."
+    citations:
+      - { path: paper/stages/stage_092.tex, line: 16, excerpt: "If geometry carries dynamic even moments, the pole fraction becomes \\((1+\\epsilon_4)/[4(1+\\epsilon_2)^2]\\)." }
+      - { path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md, line: 111, excerpt: "So the `3/4 + 1/4` split is not a generic identity of “grouped-`P2` plus geometry” in the abstract." }

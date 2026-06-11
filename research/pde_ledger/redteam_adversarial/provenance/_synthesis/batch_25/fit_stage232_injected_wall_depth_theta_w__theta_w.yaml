@@ -1,0 +1,31 @@
+candidate_id: fit_stage232_injected_wall_depth_theta_w
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 77
+    introduced_at_line: 94
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 94
+      excerpt: "`             ≈ 4.06863235008162 lambda_mu^2.`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 96
+      excerpt: "This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather than left symbolic."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 232 treats Theta_w^(chi)=4.06863235008162 and Theta_w^(J)=0.927552032539308 as 'known 5PN data' INJECTED into the same-charge audit (notes 232 section 1.3 'Two explicit wall-depth extractions ... for the benchmark lambda_mu=1'; script hardcodes both as mp.mpf literals, lines 146-147 -- no in-stage derivation). The true ORIGIN is upstream Stage 077, where Theta_w^(chi)=25*lambda_mu^2*<rho_r^2>_chi is computed from shell-weighted integrals over the explicit Family-1 wall-support profile (Stage 076 fixed the 25*lambda_mu^2*rho_w^2 scaling). Origin attribution belongs to 077/076, not 232."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 145, excerpt: "\\Theta_w^{(\\chi)}\\approx 4.06863235008162," }
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 146, excerpt: "Theta_w_chi = mp.mpf(\"4.06863235008162\")" }
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Candidate framing/naming ('injected_wall_depth', stage title 'Known 5PN Data Injection') suggests an EXTERNAL published-5PN value imported as a fit target (published_target). The actual mechanism is internal: Theta_w is the ledger's OWN earlier-derived shell-weighted wall-depth from Stage 077 ('derived directly from an explicit wall-support profile', 077 line 96), i.e. the '5PN stack' is the ledger's own EM-projected derivation chain, not an external publication. Classified internal_consistency. Flagged needs_triage because the 'known 5PN data injection' wording is exactly the kind of phrasing that can be misread as an external anchor; the audit should confirm no external 5PN coefficient is being matched (none found in 077/232 notes)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 32, excerpt: "## 1. What is already numerically known from the `5`PN stack" }
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 93, excerpt: "`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`" }

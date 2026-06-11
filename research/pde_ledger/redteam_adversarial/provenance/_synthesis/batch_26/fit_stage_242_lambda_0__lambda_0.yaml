@@ -1,0 +1,25 @@
+candidate_id: fit_stage_242_lambda_0
+parameter_name: Lambda_0
+origin_claims:
+  - parameter: Lambda_0
+    introduced_at_stage: 188
+    introduced_at_line: 144
+    citation:
+      path: notes/stages/moving_throat_pde_stage188_branch_observables_completion.md
+      line: 144
+      excerpt: "\\Lambda_0:=\\frac{27\\pi^2Gc_s^5}{20a^5c^5},"
+constraints:
+  - parameter: Lambda_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+      line: 295
+      excerpt: "\\Lambda_0:=\\frac{27\\pi^2Gc_s^5}{20a^5c^5},"
+downstream_dependents: [245]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Lambda_0 = 27 pi^2 G c_s^5 / (20 a^5 c^5) is a microscopic-scale constant DEFINITION used at Stage 242 only as a reduced-state bridge (Zhat_W = Z_W Lambda_0/Lambda) that drops out of the quotient orbit packet (notes line 295-298, 375). It carries no inserted decimal target -- it is a closed-form combination of the carried microscopic scales (G, c_s, a, c) assembled in the transfer-shape collapse / coherent-tracking region (Stage 180 notes line 14, restated Stage 181 line 14, Stage 188). So it is internal_consistency (a carried/derived scale definition), with true origin upstream of 242. The aspect-ratio-like rational prefactor 27/20 is a carried geometry/normalization combination, not back-solved to an external published number on the evidence available in these notes. Origin anchored upstream; logged so the carry is recorded."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage180_effective_transfer_shape_collapse.md, line: 47, excerpt: "\\frac{27\\pi^2 G c_s^5}{20 a^5 c^5}\\," }
+      - { path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md, line: 375, excerpt: "with the constant \\(\\Lambda_0\\) dropping out of the quotient packet." }

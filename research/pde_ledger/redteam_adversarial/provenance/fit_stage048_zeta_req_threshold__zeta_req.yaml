@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage048_zeta_req_threshold__phase_b__zeta_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,9 +186,29 @@ source_evidence:
   line: 186
   role: notes_stage
   excerpt: '`S_req < S_crit := M_crit / M_mix,`'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: zeta_req
+  introduced_at_stage: 48
+  introduced_at_line: 99
+  citation:
+    path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 99
+    excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+constraints:
+- parameter: zeta_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+    line: 97
+    excerpt: The inverse map is exact. If `S_req > 1`, then the unique support ratio producing that enhancement is
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- 049
+- '050'
+- '051'
+- '052'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage048_zeta_req_threshold__zeta_req.yaml

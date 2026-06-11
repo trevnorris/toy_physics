@@ -1,0 +1,25 @@
+candidate_id: fit_stage122_g_pm_exact_values
+parameter_name: g_star
+origin_claims:
+  - parameter: g_star
+    introduced_at_stage: 122
+    introduced_at_line: 53
+    citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 53
+      excerpt: "\\mathfrak g_{\\pm}^{F1}\n=\n\\frac{2\\sqrt{4107-100\\pi^2}\\pm 37\\sqrt3}{20\\pi}."
+constraints:
+  - parameter: g_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+      line: 47
+      excerpt: "Inserting the Stage 121 geometric value"
+downstream_dependents: [123, 124, 125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The bundle for this candidate had EMPTY source_evidence; the value is the exact compensated mouth-coupling pair g_pm^F1 = (2 sqrt(4107-100 pi^2) +/- 37 sqrt3)/(20 pi), i.e. g_-^F1~0.758035, g_+^F1~2.79795 (notes lines 53-66). These are DERIVED by inserting the Stage-121 geometric r_F1 into the Stage-119 balance law g_comp^pm(r)=r +/- (1/2)sqrt(1+r^2) (notes lines 34-58) — pure algebra over ledger-internal quantities, so internal_consistency. CAVEAT: the numerical VALUE inherits the carried 37/20 aspect-ratio freeze (free_choice upstream) via r_F1; the +/- branch FORM is genuinely forced. The earlier-published surd typo (117 pi^2 vs 100 pi^2) was a paper-side error already resolved (PAPER_CLEANUP P5-12); scripts/notes were always correct at 100 pi^2."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md, line: 63, excerpt: "\\mathfrak g_-^{F1}\\approx 0.758035078944663," }
+      - { path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md, line: 41, excerpt: "\\mathfrak g_{\\rm comp}^{\\pm}(\\mathfrak r)\n=\n\\mathfrak r\\pm\\frac12\\sqrt{1+\\mathfrak r^2}." }

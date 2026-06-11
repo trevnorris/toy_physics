@@ -1,0 +1,25 @@
+candidate_id: fit_stage154_coevolving_branch_determined
+parameter_name: Sigma_0
+origin_claims:
+  - parameter: Sigma_0
+    introduced_at_stage: 140
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 75
+      excerpt: "\\Sigma_0 = \\frac{20}{9}\\widehat T_m^2."
+constraints:
+  - parameter: Sigma_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+      line: 32
+      excerpt: "This is a same-layer closure: it removes an otherwise free susceptibility scale by"
+downstream_dependents: [155, 156, 157]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Sigma_0 is the overall shell gain scale. Its closure Sigma_0 = (20/9) T_hat_m^2 ORIGINATES at Stage 140:75 (the self-matched mouth-susceptibility closure, which Stage 140:32 explicitly says 'removes an otherwise free susceptibility scale' — internal_consistency, NOT a posit). Stage 154 CARRIES this closure (notes:186 'Under the self-matched susceptibility closure from Stage 140') and uses Sigma_0 symbolically in the co-evolving fixed-point map / linearized slope identity (script keeps Sigma0, dSigma0 as free symbols). No numeric Sigma_0 value is fitted at Stage 154; the value is fixed downstream once T_hat_m lands the fixed point on g_*."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md, line: 186, excerpt: "\\Sigma_0=\\frac{20}{9}\\widehat T_m^2." }
+      - { path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md, line: 183, excerpt: "Under the self-matched susceptibility closure from Stage 140," }

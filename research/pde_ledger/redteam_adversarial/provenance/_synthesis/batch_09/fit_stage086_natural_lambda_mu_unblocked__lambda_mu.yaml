@@ -1,0 +1,24 @@
+candidate_id: fit_stage086_natural_lambda_mu_unblocked
+parameter_name: lambda_mu
+origin_claims:
+  - parameter: lambda_mu
+    introduced_at_stage: 86
+    introduced_at_line: 95
+    citation:
+      path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+      line: 95
+      excerpt: "Using the Stage-080/081 values at `lambda_mu = 1`,"
+constraints:
+  - parameter: lambda_mu
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+      line: 152
+      excerpt: "At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means"
+downstream_dependents: [87, 88, 89, 90]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "lambda_mu=1 is the 'natural shell-weighted normalization' convention; Stage 086 carries it from Stage 080/081 but no batch-09 note derives the value 1 from an internal condition or external target — it is a normalization/gauge choice (free_choice), with true origin upstream at Stage 080/081."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md, line: 95, excerpt: "Using the Stage-080/081 values at `lambda_mu = 1`," }

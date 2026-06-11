@@ -1,0 +1,25 @@
+candidate_id: fit_stage_192_delta_q
+parameter_name: Delta_Q
+origin_claims:
+  - parameter: Delta_Q
+    introduced_at_stage: 195
+    introduced_at_line: 185
+    citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+constraints:
+  - parameter: Delta_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+      line: 185
+      excerpt: "\\boxed{\\Delta_Q:=\\chi_Q-1.}"
+downstream_dependents: [196, 197]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: high
+    summary: "Delta_Q does NOT appear in the stage-192 per-stage notes (192 is the orbit/quotient projector calculus; it has Delta_orbit, Delta_T, Delta_{K_eta}, Delta_mu but no Delta_Q, no chi_Q). The Delta_Q=chi_Q-1 attribution to stage 192 comes ONLY from the card's shared boilerplate (stage_192.tex line 13 'collapses Packet A to Delta_Q=chi_Q-1' and Checks line 20), an identical block reused across cards 192-195. Delta_Q is genuinely DEFINED at stage 195 line 185 (boxed Delta_Q:=chi_Q-1), built on the chi_Q fixed at stage 194. The binding notes citation cannot be met at stage 192; recorded at the true stage-195 origin."
+    citations:
+      - { path: paper/stages/stage_192.tex, line: 13, excerpt: "...and collapses Packet A to \\(\\Delta_Q=\\chi_Q-1\\).}" }
+      - { path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 192: Exact Orbit/Quotient Projectors and the Microscopic Orbit-Lock Split" }

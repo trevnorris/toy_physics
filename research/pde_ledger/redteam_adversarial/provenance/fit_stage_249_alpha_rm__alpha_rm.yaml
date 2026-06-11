@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_249_alpha_rm__phase_b__alpha_rm.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -186,8 +186,21 @@ source_evidence:
   line: 541
   role: notes_stage
   excerpt: 5. and the comparison is a **hidden-channel unloading diagnostic**, not yet a theorem of microscopic spin support.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: alpha_rm
+  introduced_at_stage: 249
+  introduced_at_line: 229
+  citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 229
+    excerpt: \alpha_h(t;E):=\frac{\Gamma_1(t;E)}{\Gamma_0(t;E)}.
+constraints:
+- parameter: alpha_rm
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 372
+    excerpt: \frac{R_{\rm int}(E)-1}{R_{\rm int}(E)+1}.
 graph_context:
   contexts: []
   graph_gaps:
@@ -212,3 +225,19 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_249.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: alpha_h is exactly Mobius-inverted from the export ratio (alpha = (R-1)/(R+1)), so as an algebraic relation it
+    is internal_consistency; but the numerical benchmark value (alpha_pk ~= 0.6637, bar_alpha_h ~= 0.6085) is only as well-founded
+    as the upstream reported readbacks (R_pk, R_int) it is computed from, which are themselves un-derived Session-II run outputs.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 449
+    excerpt: \alpha_{\rm pk}
+  - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    line: 416
+    excerpt: The reported helicity-export outputs were
+downstream_dependents:
+- '250'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage_249_alpha_rm__alpha_rm.yaml

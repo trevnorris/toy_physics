@@ -1,0 +1,29 @@
+candidate_id: fit_stage171_outlet_feed_coefficients
+parameter_name: delta_gamma_W_coefficient
+origin_claims:
+  - parameter: delta_gamma_W_coefficient
+    introduced_at_stage: 170
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+      line: 46
+      excerpt: "=-\\frac{1-\\sigma_*}{9\\sigma_* N_0}\\,\\mathcal G_A."
+constraints:
+  - parameter: delta_gamma_W_coefficient
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+      line: 18
+      excerpt: "\\delta\\gamma_W^{(A)}="
+downstream_dependents: [172]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The delta_gamma_W feed coefficient -(1-sigma_*)/(9 sigma_* N_0) (the prefactor mapping G_A into the hidden odd normalization deformation) is ORIGINATED at Stage 170 (notes line 44-46), where the linear grouped-P2 outlet map delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_* N_0) G_A is derived. Stage 171 (notes lines 5-20) merely carries it forward as the starting point ('Stage 170 proved that the entire linear grouped real P2 outlet problem collapses to the pair...') before decomposing G_A microscopically. The coefficient is internal: built from ledger-internal quantities sigma_*, N_0 and the canonical 1/9 fingerprint, with no external (GR/PN/CODATA) anchor. Low severity (gap noted because the bundle's evidence list, though long, did not isolate the coefficient value)."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+        line: 9
+        excerpt: "\\mathcal G_A:=\\delta N_{A,0}-P_0\\,\\delta D_{A,0},"
+      - path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+        line: 19
+        excerpt: "-\\frac{1-\\sigma_*}{9\\sigma_* N_0}\\,\\mathcal G_A."

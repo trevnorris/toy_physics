@@ -1,0 +1,25 @@
+candidate_id: fit_stage229_delta_crossover_threshold
+parameter_name: delta
+origin_claims:
+  - parameter: delta
+    introduced_at_stage: 229
+    introduced_at_line: 62
+    citation:
+      path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+      line: 62
+      excerpt: "\\delta=\\frac89"
+constraints:
+  - parameter: delta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+      line: 239
+      excerpt: "\\mathcal R_{ND}(0,\\delta)=\\frac{8}{9\\delta}."
+downstream_dependents: [230]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The candidate's target 'delta' has two readings in the notes: (a) the dimensionless softening-depth variable delta := Delta_K_ax/A (line 58/116), a defined ratio of ledger branch quantities, and (b) the exact crossover THRESHOLD value delta=8/9 (line 62) which is the load-bearing fitted-value candidate. The threshold 8/9 is FORCED internally by setting the onset classifier R_ND(0,delta)=8/(9*delta) equal to 1 (balance point, lines 239-247): always-denominator for delta>=8/9, numerator-dominant onset for 0<delta<8/9. This is a derived crossover, not a posited or externally-anchored number -> internal_consistency. No external target is named; classification is fully supported by the notes."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md, line: 246, excerpt: "- exactly balanced if \\(\\delta=8/9\\)," }
+      - { path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md, line: 58, excerpt: "\\delta=\\frac{\\Delta K_{\\rm ax}}{A};" }

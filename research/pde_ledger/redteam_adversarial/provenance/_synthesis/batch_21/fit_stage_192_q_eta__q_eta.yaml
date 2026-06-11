@@ -1,0 +1,25 @@
+candidate_id: fit_stage_192_q_eta
+parameter_name: q_eta
+origin_claims:
+  - parameter: q_eta
+    introduced_at_stage: 191
+    introduced_at_line: 268
+    citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 268
+      excerpt: "\\boxed{q_\\eta=\\ln \\mathfrak R_\\eta.}"
+constraints:
+  - parameter: q_eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+      line: 93
+      excerpt: "=M_*\\,\\Delta\\mathbf x,"
+downstream_dependents: [192]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "q_eta is anchored to stage 192 by the candidate id, but the quotient coordinate q_eta:=ln R_eta (R_eta=1/m_K) ENTERS the ledger at stage 191 (line 268), as the third component of the orbit-lock packet Delta_orbit=(q_tr,q_nt,q_eta). Stage 192 only CARRIES it: q_eta is the third component of q=M_* Delta_x (192 line 91/93), and the quotient-failure projector gives (Delta_{K_eta})_fail=-q_eta (192 line 278). It is an internal_consistency log-ratio coordinate (a derived defect coordinate, not a fitted value). Origin 191, not 192."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md, line: 91, excerpt: "q_\\eta" }
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 268, excerpt: "\\boxed{q_\\eta=\\ln \\mathfrak R_\\eta.}" }

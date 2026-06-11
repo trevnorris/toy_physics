@@ -1,0 +1,19 @@
+candidate_id: fit_stage045_tracking_derived_not_postulated
+parameter_name: R_tr
+origin_claims:
+  - parameter: R_tr
+    introduced_at_stage: 45
+    introduced_at_line: 125
+    citation:
+      path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+      line: 125
+      excerpt: "`R_tr := R_U = R_phi`"
+constraints:
+  - parameter: R_tr
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+      line: 206
+      excerpt: "This is exactly the Stage-040 tracking/source-loading branch, now derived from a concrete local kernel rather than postulated as a special surface."
+downstream_dependents: [46, 47, 48]
+provenance_findings: []

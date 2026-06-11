@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage026_dn_constants_exact_derived_downstream__phase_b__dn_branch_constants.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -188,9 +188,46 @@ source_evidence:
   line: 107
   role: sympy_script
   excerpt: subbanner("II.2 — Lowest-branch overlap")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: dn_branch_constants
+  introduced_at_stage: 26
+  introduced_at_line: 166
+  citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 166
+    excerpt: On the concrete branch this becomes
+constraints:
+- parameter: dn_branch_constants
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 252
+    excerpt: 'The following are exact on the chosen finite-throat branch:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: 'The ''D/N branch constants'' (C = kappa lambda_B, G_U = lambda_U, G_W = kappa lambda_W, R = kappa lambda_R and
+    the derived Delta, Q, P, B0, Z0, N0, D0) are EXACT algebraic substitutions of the computed overlap kappa into the Stage-025
+    definitions -> internal_consistency as derivations. The notes explicitly list them as ''exact on the chosen finite-throat
+    branch''. Caveat: the reduced couplings lambda_B, lambda_U, lambda_W, lambda_R they are built from are ''not yet fixed
+    from first principles'' (free parameters), so the constants are exact FUNCTIONS of free inputs, not fully pinned numbers.
+    Classification internal_consistency reflects the exact derivation step performed in this stage.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 257
+    excerpt: '- the minimal-branch value `kappa = 2 sqrt(2) / pi`,'
+  - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    line: 262
+    excerpt: What is **not** yet fixed from first principles are the branch parameters
+  - path: paper/stages/stage_026.tex
+    line: 141
+    excerpt: Stages~035--036 use the exact D/N constants derived from this branch.
+downstream_dependents:
+- '027'
+- '035'
+- '036'
+synthesis_ingested_at: '2026-06-11T18:25:36Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_03/fit_stage026_dn_constants_exact_derived_downstream__dn_branch_constants.yaml

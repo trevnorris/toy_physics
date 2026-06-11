@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage089_pe_window_upstream_misattribution__phase_b__pe_fail_chi.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,44 @@ source_evidence:
   line: 128
   role: sympy_script
   excerpt: '# success margin below is the can-fail assertion establishing the boxed Output'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pe_fail_chi
+  introduced_at_stage: 78
+  introduced_at_line: 42
+  citation:
+    path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 42
+    excerpt: '`Pe_req >= Pe_fail^(chi) := Theta_w^(chi) / 3.62605617972939e-4`'
+constraints:
+- parameter: Pe_fail_chi
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+    line: 47
+    excerpt: '`Pe_fail^(chi) = 11220.5441626259 lambda_mu^2,`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: high
+  summary: 'MISATTRIBUTION CONFIRMED. Stage 089''s script anchors Pe_fail_chi=11220.5441626259 to ''Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt''
+    and labels the rho check ''Stage-082 quote'', but Stage 082 (master_quadrupole_residual) does NOT contain this value anywhere
+    in its script or output. The value first enters the ledger at Stage 078 (defined as Theta_w^(chi)/3.62605617972939e-4
+    = 11220.544...) and is carried via Stage 080 (family1_zeta_thresholds, whose own script comments it as ''Stage-078 numerical
+    Pe thresholds''). The 089 ''Stage-082'' anchor is a stale/wrong upstream pointer — the candidate-id ''pe_window_upstream_misattribution''
+    is borne out.'
+  citations:
+  - path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 62
+    excerpt: '# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the'
+  - path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+    line: 92
+    excerpt: expect_close("rho_fail vs Stage-082 quote", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-12", 30))
+  - path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+    line: 37
+    excerpt: Pe_fail_chi = sp.Float('11220.5441626259') * lam**2
+downstream_dependents:
+- 089
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage089_pe_window_upstream_misattribution__pe_fail_chi.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_115_k_q__phase_b__k_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,36 @@ source_evidence:
   line: 26
   role: sympy_script
   excerpt: sigma_c = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q * (1 + r_c))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_q
+  introduced_at_stage: 114
+  introduced_at_line: 19
+  citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 19
+    excerpt: \lambda & -K_q D_W^{\rm bare}(z)
+constraints:
+- parameter: K_q
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    line: 98
+    excerpt: '- one mixed-channel stiffness `K_q`,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: K_q (mixed-channel stiffness) is a POSITED structural parameter of the concrete core model, introduced at Stage
+    114 and carried into the Stage-115 coupling-balance law and r_c=lambda^2/(K_s K_q). It is never pinned to a number; it
+    remains a free core-coupling degree of freedom on the codimension-one balance surface. Classified free_choice (ansatz).
+  citations:
+  - path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+    line: 20
+    excerpt: K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+downstream_dependents:
+- '125'
+- '139'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_115_k_q__k_q.yaml

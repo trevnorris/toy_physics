@@ -1,0 +1,19 @@
+candidate_id: fit_stage214_preferred_bound_54
+parameter_name: candidate_bound_54
+origin_claims:
+  - parameter: candidate_bound_54
+    introduced_at_stage: 214
+    introduced_at_line: 317
+    citation:
+      path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 317
+      excerpt: "3\\cdot 3\\cdot 3\\cdot 2 = 54.}"
+constraints:
+  - parameter: candidate_bound_54
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 315
+      excerpt: "Therefore, whenever the lifted stationary set is zero-dimensional, Bézout gives the exact finite candidate bound"
+downstream_dependents: [215]
+provenance_findings: []

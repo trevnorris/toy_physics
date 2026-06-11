@@ -1,0 +1,25 @@
+candidate_id: fit_stage_124_r_f1
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+      line: 13
+      excerpt: "\\mathfrak r_{F1}\n=\n\\sqrt{\\frac{12}{\\pi^2}\\left(\\frac{L}{a}\\right)^2-1}"
+downstream_dependents: [125]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Stage 124 (status card) carries r_F1 ~ 1.77799 evaluated at L/a=37/20 (notes lines 11-16). The bundle had EMPTY source_evidence; the Stage-124 notes anchor is line 13 (which explicitly shows the |_{L/a=37/20} evaluation). Origin Stage 121; the value rests on the posited L_W=L identification and carried 37/20 freeze (free_choice upstream, see fit_stage121_r_not_tunable). No new constraint at Stage 124, no external target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 14, excerpt: "\\Bigg|_{L/a=37/20}" }
+      - { path: notes/stages/moving_throat_pde_stage124_core_branch_status.md, line: 15, excerpt: "\\approx 1.77799353547498." }

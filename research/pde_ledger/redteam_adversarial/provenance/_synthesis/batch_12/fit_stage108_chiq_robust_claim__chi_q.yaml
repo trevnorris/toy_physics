@@ -1,0 +1,25 @@
+candidate_id: fit_stage108_chiQ_robust_claim
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 105
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+      line: 69
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+      line: 102
+      excerpt: "The canonical value `chi_Q = 1` is robust against:"
+downstream_dependents: [109, 110, 111, 112, 113, 114, 115, 141]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The 'robust' claim is explicitly bounded by the notes and card: chi_Q=1 is robust only against (1) overall mouth normalization and (2) pure scale/argument rescaling, and is EXPLICITLY stated to be shifted by a genuine throat-core self-energy off the preservation submanifold. The card carries the matching status-tag caveat, so no actual overclaim — but any downstream cite that drops the 'robust against [these two classes only]' qualifier would overclaim. Recorded as low-severity watch item."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage108_robustness_classes.md, line: 107, excerpt: "It is shifted only by a genuine isotropic throat-core self-energy that is not on the exact preservation submanifold above." }
+      - { path: paper/stages/stage_108.tex, line: 27, excerpt: "the card is a derivation ledger entry, not an unconditional actual-branch theorem." }

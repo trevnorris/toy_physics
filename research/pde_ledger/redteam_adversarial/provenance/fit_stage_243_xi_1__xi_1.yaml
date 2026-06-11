@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_243_xi_1__phase_b__xi_1.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -53,8 +53,21 @@ source_evidence:
   line: 646
   role: notes_stage
   excerpt: Stage 243 closes four concrete bookkeeping gaps.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Xi_1
+  introduced_at_stage: 243
+  introduced_at_line: 344
+  citation:
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 344
+    excerpt: \Xi_1 = \delta U.
+constraints:
+- parameter: Xi_1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 341
+    excerpt: 'At infinitesimal order, this lane is the relaxed continuation of the compact transfer-shape scalar:'
 graph_context:
   contexts: []
   graph_gaps:
@@ -79,3 +92,22 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_243.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: Xi_1 is NOT a numeric constant. At Stage 243 it is identified as the infinitesimal transfer-shape component of
+    the non-rigid U lane, Xi_1 = delta U (notes line 344), carried from the compact weak-axisymmetric front end. This is internal_consistency
+    (a derived/carried first-order identity, not an inserted fit), and it has no fixed numeric target at this stage. It is
+    consumed at Stage 245 where Xi_1^nr = u_1 (Stage 245 notes line 409). Logged for transparency since the scanner candidate
+    has no numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    line: 634
+    excerpt: If the linear weak-axisymmetric packet is being used, then `\Xi_1` is simply the infinitesimal transfer-shape
+      component of the same `U` lane.
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 409
+    excerpt: \Xi_1^{\rm nr}=u_1,
+downstream_dependents:
+- '245'
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage_243_xi_1__xi_1.yaml

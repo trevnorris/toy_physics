@@ -1,0 +1,32 @@
+candidate_id: fit_stage019_K_Sigma_fixed_by_outgoing_normalization
+parameter_name: K_Sigma
+origin_claims:
+  - parameter: K_Sigma
+    introduced_at_stage: 019
+    introduced_at_line: 132
+    citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 210
+      excerpt: "`D_(A,0) = K_A - B_(A,0) - Z_(A,0)`,"
+constraints:
+  - parameter: K_Sigma
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+      line: 308
+      excerpt: "`mhat_0^2 * N_0 / ( K - B_0 - Z_0 ) = 54 G c_s^5 / (5 a^5 c^5)`."
+downstream_dependents: [020, 022, 023]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: high
+    summary: "The outgoing-normalization branch fixes K_Sigma by solving P0=N0/D0 against P0_target=54Gc_s^5/(5a^5c^5 mhat0^2) (stage_019 script: K_from_norm=solve(P0==P0_target,KSigma)). That P0_target is the GR quadrupole value 54/5, itself back-solved from the external target gamma_GR=2G/(5c^5) at stage 022. So on this branch K_Sigma is constrained by matching an EXTERNAL published GR coefficient, not by ledger-internal consistency. The stage card honestly labels K_Sigma's two closed forms as a 'compatibility' between the one-pole surface and the outgoing normalization (it does not claim K_Sigma is independently derived), but the outgoing-normalization route is a fit to a published target and should not be conflated with the genuinely internal one-pole route."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 256, excerpt: "The universal GR quadrupole target is" }
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 258, excerpt: "`gamma_GR = 2 G / (5 c^5)`." }
+      - { path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py, line: 50, excerpt: "K_from_norm = sp.simplify(sp.solve(sp.Eq(P0, P0_target), KSigma)[0])" }
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Stage 019 has no per-stage notes/stages/ file and its STAGE_PROVENANCE_INDEX note source (notes/em_projected/step_17...) is absent from the repo, so the published_target classification of the outgoing-normalization K_Sigma branch is supported via the stage 022/023 notes that carry the same GR-derived 54/5 target, not via a stage-019 note."
+    citations:
+      - { path: notes/STAGE_PROVENANCE_INDEX.md, line: 29, excerpt: "| 019 | `paper/stages/stage_019.tex` | `notes/em_projected/step_17_parent_throat_action_isotropic_bundle_notes.md` |" }
+      - { path: paper/stages/stage_019.tex, line: 30, excerpt: "K_\\Sigma=B_0+Z_0+\\frac{N_0}{P_{0,\\rm target}}," }

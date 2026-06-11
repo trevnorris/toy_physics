@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_100_gamma5_t__phase_b__gamma5_t.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -51,9 +51,41 @@ source_evidence:
   line: 70
   role: sympy_script
   excerpt: print('closure_residual / Gamma5_target =', closure_ratio)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Gamma5_t
+  introduced_at_stage: 100
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 69
+    excerpt: '`Gammabar_5^target = 2 G/(5 c^5)`.'
+constraints:
+- parameter: Gamma5_t
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    line: 68
+    excerpt: The 2.5PN target odd coefficient is
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: Gamma5_t = Gammabar_5^target = 2G/(5c^5) is the standard published GR 2.5PN (Burke-Thorne) radiation-reaction coefficient
+    — an external target, correctly used here as the matching benchmark. Notes label it 'The 2.5PN target odd coefficient'
+    (line 68). The script comment (line 62) describes the source-mapped factorization as matching 'the point-particle 2.5PN
+    coefficient ... the GR target'; this is an external anchor, not a ledger-internal derivation. Logged low to record the
+    external-target nature; no actual overclaim since the card frames N_Q/chi_Q closure as Open.
+  citations:
+  - path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+    line: 45
+    excerpt: Gamma5_t = sp.simplify(2*G/(5*c**5))
+  - path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+    line: 62
+    excerpt: '# (the point-particle 2.5PN coefficient with source-map factor mhat_0^2 matches'
+downstream_dependents:
+- '105'
+- '106'
+synthesis_ingested_at: '2026-06-11T18:51:38Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_100_gamma5_t__gamma5_t.yaml

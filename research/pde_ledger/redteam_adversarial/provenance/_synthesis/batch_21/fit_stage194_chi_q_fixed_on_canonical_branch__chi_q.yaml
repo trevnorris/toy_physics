@@ -1,0 +1,24 @@
+candidate_id: fit_stage194_chi_q_fixed_on_canonical_branch
+parameter_name: chi_Q
+origin_claims:
+  - parameter: chi_Q
+    introduced_at_stage: 194
+    introduced_at_line: 184
+    citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 184
+      excerpt: "\\boxed{\\chi_Q=1.}"
+constraints:
+  - parameter: chi_Q
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+      line: 186
+      excerpt: "So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar is fixed exactly."
+downstream_dependents: [195, 196, 197]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Third chi_Q candidate at stage 194 (canonical-branch fixing). Same genealogy: chi_Q=1 forced by matching the canonical compact outgoing l=2 DtN fingerprint's odd coefficient (194 line 182-186), derived from the spherical Hankel h_2^{(1)} expansion (194 section 2). internal_consistency (match to a derived special function), not published_target. The deformation algebra (194 section 4) shows the only data that can move chi_Q away from 1 are (beta,Sigma_0,Sigma_5), confirming the canonical branch value is the special point chi_Q=1, not a fit to an external number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md, line: 287, excerpt: "\\frac{3S(\\beta^5-1)+\\Sigma_0+27\\Sigma_5}{3S-\\Sigma_0}." }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_227_m_transfer__phase_b__m_transfer.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -190,9 +190,40 @@ source_evidence:
   line: 167
   role: sympy_script
   excerpt: '# 3. Exact pure-transfer theorem'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: M_transfer
+  introduced_at_stage: 226
+  introduced_at_line: 305
+  citation:
+    path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+    line: 305
+    excerpt: The intersection matrix has rank `3`, hence nullity `2`.
+constraints:
+- parameter: M_transfer
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+    line: 122
+    excerpt: D_{01}=D_{21}=D_{41}=0.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'M_transfer is NOT a parameter value — it is the SymPy variable name of the rank-3 pure-transfer corridor matrix
+    (script line 142: ''M_transfer = sp.Matrix([...])'') built from the Stage-226 D_01=D_21=D_41=0 compensation conditions.
+    The scanner-extracted value ''149'' does not appear anywhere in the stage 227 script or notes; it is spurious. The referent
+    (the pure-transfer matrix) is an internal-consistency construction, but no fitted/posited scalar named M_transfer with
+    value 149 exists to provenance.'
+  citations:
+  - path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+    line: 142
+    excerpt: M_transfer = sp.Matrix([
+  - path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+    line: 147
+    excerpt: assert M_transfer.rank() == 3
+downstream_dependents:
+- '228'
+synthesis_ingested_at: '2026-06-11T19:17:46Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage_227_m_transfer__m_transfer.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage079_unique_constructive_Pe_req
+parameter_name: Pe_req
+origin_claims:
+  - parameter: Pe_req
+    introduced_at_stage: 059
+    introduced_at_line: 52
+    citation:
+      path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+      line: 52
+      excerpt: "5. inside the reachable Stage-057 window, define the unique constructive branch point `Pe_req` by"
+constraints:
+  - parameter: Pe_req
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+      line: 104
+      excerpt: "`A_F1 Omega_(Pe_req)^2 = zeta_req.`"
+downstream_dependents: [080, 081, 082, 083, 084, 085, 087]
+provenance_findings:
+  - type: internal_consistency
+    severity: low
+    summary: "Stage 079 gives the exact Family-1 inversion that constrains Pe_req: it is the unique constructive root of A_F1 Omega_(Pe_req)^2 = zeta_req (equivalently Omega_(Pe_req)^2 = zeta_req/A_F1), existing iff A_F1 <= zeta_req <= A_F1 pi^2/4. This is the same internal-consistency mechanism by which Pe_req entered the ledger at stage 059, now specialized to the explicit Family-1 branch factor A_F1; no external target, so internal_consistency. Pe_req remains a function of the demand zeta_req, not a fixed number."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md, line: 102, excerpt: "Given a selected quadrupole-branch demand `zeta_req`, the required transport bias is the unique constructive root of" }
+      - { path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md, line: 117, excerpt: "- if `A_F1 <= zeta_req <= zeta_max^(F1)`, there is a unique constructive `Pe_req`;" }

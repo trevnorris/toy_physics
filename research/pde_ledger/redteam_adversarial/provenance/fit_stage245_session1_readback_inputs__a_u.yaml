@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback_inputs__phase_b__a_u.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -185,9 +185,44 @@ source_evidence:
   line: 124
   role: notes_stage
   excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_U
+  introduced_at_stage: 245
+  introduced_at_line: 155
+  citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 155
+    excerpt: '- `a_U>0` is the transfer-shape stiffness,'
+constraints:
+- parameter: a_U
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 155
+    excerpt: '- `a_U>0` is the transfer-shape stiffness,'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: a_U is the transfer-shape stiffness in the Stage-245 reduced non-rigid free energy F_nr = (1/2) a_U U^2 + ... (notes
+    line 143-155). As a SYMBOL it is a free positive parameter (free_choice / posited closure coefficient), with the only
+    NUMERIC value being the probe sample a_U = 2.5 used in the drain sign-check (script line 92) -- a representative Session-I-style
+    sample point, not a ledger-derived value. The notes define a_U only structurally (a_U > 0 transfer-shape stiffness) with
+    no derived target. Classification free_choice (posited stiffness / probe sample). Logged at low severity since the parameter
+    has no derived numeric value to classify.
+  citations:
+  - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+    line: 92
+    excerpt: 'drain_neg_chi = D_expected.subs({a_U: sp.Float("2.5"), a_V: sp.Float("3.0"),'
+  - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    line: 143
+    excerpt: '\frac12 a_U U^2
+
+      +
+
+      \frac12 a_V V^2'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:37:31Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_26/fit_stage245_session1_readback_inputs__a_u.yaml

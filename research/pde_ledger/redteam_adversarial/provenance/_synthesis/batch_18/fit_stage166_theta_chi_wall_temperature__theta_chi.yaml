@@ -1,0 +1,25 @@
+candidate_id: fit_stage166_theta_chi_wall_temperature
+parameter_name: Theta_chi
+origin_claims:
+  - parameter: Theta_chi
+    introduced_at_stage: 77
+    introduced_at_line: 94
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 94
+      excerpt: "`             ≈ 4.06863235008162 lambda_mu^2.`"
+constraints:
+  - parameter: Theta_chi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 93
+      excerpt: "`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`"
+downstream_dependents: [167]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: needs_triage
+    summary: "Theta_chi^(chi)~4.06863235008162 lambda_mu^2 is computed at Stage 77 as a shell-weighted average <rho_r^2>_chi of an explicit Family-1 wall profile (a genuine extraction = internal_consistency), but that profile is itself defined by POSITED reference-branch parameters alpha_r=10, epsilon_r=0.05, p_r=2 (free_choice). The numeric is a derivation built on a chosen profile; classified internal_consistency with the upstream free-choice of profile parameters recorded."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 21, excerpt: "`alpha_r = 10,`" }
+      - { path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md, line: 181, excerpt: "\\Theta_w^{(\\chi)} \\approx 4.06863235008162\\,\\lambda_\\mu^2." }

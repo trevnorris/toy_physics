@@ -1,0 +1,24 @@
+candidate_id: fit_stage191_carried_coefficients_in_packet_interconversion
+parameter_name: chi_0_star
+origin_claims:
+  - parameter: chi_0_star
+    introduced_at_stage: 191
+    introduced_at_line: 253
+    citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 253
+      excerpt: "Let `\\(\\chi_{0,*}\\)` and `\\(F_*\\)` be the carried coherent-branch coefficients."
+constraints:
+  - parameter: chi_0_star
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+      line: 253
+      excerpt: "Let `\\(\\chi_{0,*}\\)` and `\\(F_*\\)` be the carried coherent-branch coefficients."
+downstream_dependents: [192]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "chi_0_star (chi_0,*) is declared at 191 line 253 as a 'carried coherent-branch coefficient' (the reference/selected-branch value of chi_0) and used only as an opaque symbol in the Packet-B interconversion (R_tr=m_T^{1+chi_0,*}, etc., 191 lines 256-276) and in the 192 quotient matrix M_* (det P = 1+chi_0,*). Stage 191 does NOT give it a value, derivation, or external target; it is posited as carried. Its true upstream origin (the coherent reference branch where chi_0,* is fixed, stages 187-190) is not pinned by any notes/ line within batch 21 stages, so the constraint_kind is classified free_choice (carried convention) on the available evidence rather than internal_consistency. Flagged for triage: locate the upstream stage that actually constrains chi_0,*."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md, line: 256, excerpt: "\\boxed{\\mathfrak R_{\\rm tr}=m_T^{1+\\chi_{0,*}}," }

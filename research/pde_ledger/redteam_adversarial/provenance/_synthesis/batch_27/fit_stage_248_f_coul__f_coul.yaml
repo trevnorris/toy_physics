@@ -1,0 +1,19 @@
+candidate_id: fit_stage_248_f_coul
+parameter_name: F_coul
+origin_claims:
+  - parameter: F_coul
+    introduced_at_stage: 248
+    introduced_at_line: 290
+    citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 290
+      excerpt: "I_{\\rm Coul}(E)"
+constraints:
+  - parameter: F_coul
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+      line: 297
+      excerpt: "The integral closes in elementary form for \\(Er_{\\rm contact}<1\\):"
+downstream_dependents: []
+provenance_findings: []

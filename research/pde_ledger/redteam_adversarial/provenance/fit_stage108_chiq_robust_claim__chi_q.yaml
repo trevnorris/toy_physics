@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage108_chiq_robust_claim__phase_b__chi_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -151,9 +151,48 @@ source_evidence:
   line: 109
   role: sympy_script
   excerpt: (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: chi_Q
+  introduced_at_stage: 105
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 69
+    excerpt: \boxed{\chi_Q=1.}
+constraints:
+- parameter: chi_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 102
+    excerpt: 'The canonical value `chi_Q = 1` is robust against:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: low
+  summary: 'The ''robust'' claim is explicitly bounded by the notes and card: chi_Q=1 is robust only against (1) overall mouth
+    normalization and (2) pure scale/argument rescaling, and is EXPLICITLY stated to be shifted by a genuine throat-core self-energy
+    off the preservation submanifold. The card carries the matching status-tag caveat, so no actual overclaim — but any downstream
+    cite that drops the ''robust against [these two classes only]'' qualifier would overclaim. Recorded as low-severity watch
+    item.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    line: 107
+    excerpt: It is shifted only by a genuine isotropic throat-core self-energy that is not on the exact preservation submanifold
+      above.
+  - path: paper/stages/stage_108.tex
+    line: 27
+    excerpt: the card is a derivation ledger entry, not an unconditional actual-branch theorem.
+downstream_dependents:
+- '109'
+- '110'
+- '111'
+- '112'
+- '113'
+- '114'
+- '115'
+- '141'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage108_chiq_robust_claim__chi_q.yaml

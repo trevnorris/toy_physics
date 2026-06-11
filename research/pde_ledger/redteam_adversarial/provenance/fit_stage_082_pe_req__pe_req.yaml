@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_082_pe_req__phase_b__pe_req.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -159,8 +159,21 @@ source_evidence:
   line: 90
   role: sympy_script
   excerpt: '"denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))**2",'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Pe_req
+  introduced_at_stage: 059
+  introduced_at_line: 52
+  citation:
+    path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+    line: 52
+    excerpt: 5. inside the reachable Stage-057 window, define the unique constructive branch point `Pe_req` by
+constraints:
+- parameter: Pe_req
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage059_operator_branch_residual_bounds.md
+    line: 54
+    excerpt: '`Omega_(Pe_req)^2 = zeta_req (kappa + y^2)/(kappa + pi^2/4)`'
 graph_context:
   contexts: []
   graph_gaps:
@@ -185,3 +198,29 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_082.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: internal_consistency
+  severity: low
+  summary: 'At stage 082 Pe_req is not given a value and is in fact superseded: the master residual is rebuilt around the
+    operator-selected bias Pe_*(Xi,eta,kappa) and the notes describe the exact product-window theorem as derived ''directly
+    from the coupled support/source operator rather than through the intermediate Pe_req bookkeeping''. Pe_req''s value first
+    entered the ledger at stage 059 as the unique constructive root of a matching equation among ledger quantities -> internal_consistency.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 5
+    excerpt: The explicit Family-1 branch phase ended with a hard support ceiling in the selected-branch product variable
+      `Pi_tr`, but that result was still being carried through several intermediate variables (`Pe_req`, `zeta_req`, `Pi_tr/C_mix`).
+  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 204
+    excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator rather
+      than through the intermediate `Pe_req` bookkeeping.
+- type: graph_gap
+  severity: needs_triage
+  summary: Atlas graph wrapper returned no source nodes for the stage-082 notes/card paths (carried forward from the mechanical
+    evidence bundle). Provenance reasoning rests on the notes/card themselves, which are present and sufficient.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 082: Master Quadrupole Residual of the Full Reduced Moving-Throat PDE'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_082_pe_req__pe_req.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage078_verdict_fixed_pair__phase_b__l_over_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -37,4 +37,22 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: Scanner resolved parameter L_over_a for the stage-078 'verdict_fixed_pair' candidate, but no notes/ or card text
+    at stage 078 documents an L_over_a (loading-ratio L/a) value. Stage 078's content is a Pe_req-window verdict (Pe_suff/Pe_fail
+    for the chi and J data); the bundle's notes excerpt (line 99) is about determining Pe_req. The card's Downstream-use line
+    mentions 'the remaining loading ratio' as a future-stage (079-087) translation target, but no L/a value is set or constrained
+    here. No origin or constraint for L_over_a can be asserted from stage-078 notes.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+    line: 99
+    excerpt: '> determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization
+      branch and compare it to the explicit success/failure bands above.'
+  - path: paper/stages/stage_078.tex
+    line: 32
+    excerpt: \stagefield{Downstream use}{Stages~079--087 translate quadrupole demand into the remaining loading ratio.}
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage078_verdict_fixed_pair__l_over_a.yaml

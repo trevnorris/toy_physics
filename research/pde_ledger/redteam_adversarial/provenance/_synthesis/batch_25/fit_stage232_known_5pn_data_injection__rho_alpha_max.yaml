@@ -1,0 +1,25 @@
+candidate_id: fit_stage232_known_5pn_data_injection
+parameter_name: rho_alpha_max
+origin_claims:
+  - parameter: rho_alpha_max
+    introduced_at_stage: 232
+    introduced_at_line: 174
+    citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 174
+      excerpt: "\\rho_{\\alpha,\\max}^{(\\chi)}"
+constraints:
+  - parameter: rho_alpha_max
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 176
+      excerpt: "1+\\zeta_{\\rm phys}^{(\\chi)}"
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "rho_alpha_max^(chi) ~ 3.4675296478814376 (and ^(J) ~ 3.4675278051675084) is DERIVED at Stage 232 as 1 + zeta_phys, where zeta_phys = A_K * Omega_{Pe_*}^2 is built from the numerically located fixed-point root Pe_* of the ledger's own support-drop fixed-point law Pe = Xi*Delta(Pe;kappa,eta) (notes lines 168-177). All inputs (A_K, the overlap-boost law Omega_Pe, Xi = 100*Theta_w*Lambda_ell^2) are ledger-internal. The candidate name 'known_5pn_data_injection' and stage title suggest an externally-imported 5PN datum (published_target), but the 5PN stack is the ledger's own derivation chain; rho_alpha_max is computed, not matched to a publication. Classified internal_consistency; needs_triage so the 'injection' framing is confirmed non-external. NOTE: the requirement it is COMPARED against, rho_alpha^req = 4/3 (line 223), is the canonical isotropic demand and is the actual fixed target in this comparison, but rho_alpha_max itself is the derived quantity."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 168, excerpt: "\\zeta_{\\rm phys}^{(\\chi)}\n=\nA_K\\,\\Omega_{Pe_*^{(\\chi)}}^2" }
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 223, excerpt: "\\rho_\\alpha^{\\rm req}=\\frac43." }

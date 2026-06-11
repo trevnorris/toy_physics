@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_delta__phase_b__delta.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,41 @@ source_evidence:
   line: 277
   role: sympy_script
   excerpt: lines.append(line("delta Compat^(primitive) =", dCompat))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta
+  introduced_at_stage: 12
+  introduced_at_line: 21
+  citation:
+    path: notes/em_projected/step_10_projected_maxwell_stage4_primitive_bridge_notes.md
+    line: 21
+    excerpt: Z_0=\frac{Q}{\Delta},\qquad
+constraints:
+- parameter: Delta
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/em_projected/step_10_projected_maxwell_stage4_primitive_bridge_notes.md
+    line: 19
+    excerpt: 'primitive data**:'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Delta is the primitive reduced-packet denominator Delta = A*W - R^2 (paper card stage_012.tex:16), the determinant-like
+    combination of the primitive variables (A, W, R) from which all bundle slots Z_0..N_4 are built (notes step_10 lines 21-32).
+    It is an exact algebraic combination of ledger-internal primitives, not a fitted or externally anchored value -> internal_consistency.
+    The stage-012 sympy declares Delta as a free nonzero symbol; the per-stage notes use it definitionally as the primitive
+    denominator. No scalar value / no external target; gap-tagged as symbolic-denominator.
+  citations:
+  - path: paper/stages/stage_012.tex
+    line: 16
+    excerpt: \Delta=A\,W-R^2,
+  - path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+    line: 51
+    excerpt: Q, S2, H, Delta, P, Gw = sp.symbols("Q S2 H Delta P Gw", nonzero=True)
+downstream_dependents:
+- '013'
+- '014'
+synthesis_ingested_at: '2026-06-11T18:25:12Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_01/fit_stage_012_delta__delta.yaml

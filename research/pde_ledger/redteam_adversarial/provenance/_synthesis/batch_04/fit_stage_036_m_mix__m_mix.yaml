@@ -1,0 +1,25 @@
+candidate_id: fit_stage_036_m_mix
+parameter_name: M_mix
+origin_claims:
+  - parameter: M_mix
+    introduced_at_stage: 036
+    introduced_at_line: 56
+    citation:
+      path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+      line: 56
+      excerpt: "`M_mix := 8 alpha_mix / (pi^2 A)`"
+constraints:
+  - parameter: M_mix
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+      line: 54
+      excerpt: "Now define the dimensionless mixed baseline"
+downstream_dependents: [037, 038, 039]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "M_mix is the dimensionless mixed baseline, DEFINED at stage 036 as M_mix := 8 alpha_mix/(pi^2 A) (notes lines 54-57). It is a derived non-dimensionalization of the already-derived mixed loading alpha_mix = Chi^2/(Omega_U^2 Delta_0); internal_consistency, no fit/posit. Recorded informationally: same parameter is given its closed continuum-kernel form at stage 037 (see candidate fit_stage_037_m_mix), so 036 is its definitional origin and 037 supplies the functional."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md, line: 57, excerpt: "`      = 8 Chi^2 / (pi^2 A Omega_U^2 Delta_0 )`." }
+      - { path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md, line: 29, excerpt: "`M_mix = 8 alpha_mix / (pi^2 A)`" }

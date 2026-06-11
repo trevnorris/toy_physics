@@ -1,0 +1,31 @@
+candidate_id: fit_stage232_wall_depth_thetas
+parameter_name: Theta_w
+origin_claims:
+  - parameter: Theta_w
+    introduced_at_stage: 77
+    introduced_at_line: 94
+    citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 94
+      excerpt: "`             ≈ 4.06863235008162 lambda_mu^2.`"
+constraints:
+  - parameter: Theta_w
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+      line: 96
+      excerpt: "This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather than left symbolic."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Both wall depths Theta_w^(chi)=4.06863235008162 and Theta_w^(J)=0.927552032539308 (the 'wall_depth_thetas' tuple) are framed at Stage 232 as injected 'known 5PN data' but are ledger-internal derivations from Stage 077 (chi = 25*lambda_mu^2*<rho_r^2>_chi; J = 25*lambda_mu^2*<rho_r>_chi^2, a Jensen lower-envelope floor, 077 line 104-105). No external published value matched -> internal_consistency. needs_triage because the 'injection' framing invites a published_target misread."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 104, excerpt: "`Theta_w^(J) := 25 lambda_mu^2 <rho_r>_chi^2`" }
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 143, excerpt: "On the carried Family-1 branch, the two explicit wall-depth extractions are" }
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Stage 232 carries both Theta_w values as hardcoded literals (script 146-147); origin is upstream Stage 077 extraction (scaling locked Stage 076), not Stage 232."
+    citations:
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 147, excerpt: "Theta_w_J = mp.mpf(\"0.927552032539308\")" }
+      - { path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md, line: 5, excerpt: "Stage 076 reduced the explicit Family-1 wall-depth datum to" }

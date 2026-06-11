@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_075_delta_0__phase_b__delta_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -179,9 +179,39 @@ source_evidence:
   line: 94
   role: sympy_script
   excerpt: Upsilon_suff = sp.simplify(Pe_req / (Lambda_ell**2 * Delta0))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_0
+  introduced_at_stage: 61
+  introduced_at_line: 39
+  citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 39
+    excerpt: '`Delta_0(12321/5,37) ≈ 1.73302079021525e-4,`'
+constraints:
+- parameter: Delta_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 37
+    excerpt: Therefore the exact kernel scales are
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: internal_consistency
+  severity: low
+  summary: Delta_0(12321/5,37) is the exact Stage-072 kernel-scale function Delta_0(kappa,eta) evaluated numerically on the
+    ledger-fixed Family-1 branch (kappa=12321/5, eta=37, both fixed at Stages 056-057/073-075). It is a deterministic evaluation
+    of an already-derived closed form (cosh/sinh kernel), not a fitted or posited number; the audit script even proves the
+    algebraic identity for free alpha, eta.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    line: 27
+    excerpt: '`Upsilon_suff = Pe_req / [ Lambda_ell^2 Delta_0(kappa,eta) ].`'
+  - path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+    line: 65
+    excerpt: assert delta0_identity == 0
+downstream_dependents:
+- 078
+synthesis_ingested_at: '2026-06-11T18:26:27Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage_075_delta_0__delta_0.yaml

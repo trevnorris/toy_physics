@@ -1,0 +1,25 @@
+candidate_id: fit_stage121_lw_equals_l_identification
+parameter_name: L_W
+origin_claims:
+  - parameter: L_W
+    introduced_at_stage: 116
+    introduced_at_line: 46
+    citation:
+      path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+      line: 46
+      excerpt: "So the auxiliary mixed-tube length is fixed to"
+constraints:
+  - parameter: L_W
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 26
+      excerpt: "\\boxed{L_W=L.}"
+downstream_dependents: [122, 123, 124, 125]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "L_W's FORMULA (L_W=(pi a/2)sqrt((1+r_c)/3)) is internally derived at Stage 116, but at Stage 121 L_W is additionally CONSTRAINED by the posited identification L_W=L (notes line 26), tying it to the throat axial span. That identification is a chosen branch ansatz ('the first concrete branch test', 'the simplest honest core identification'), so the Stage-121 pinning of L_W to a concrete value is free_choice (it inherits the carried 37/20 freeze). NOTE the distinct constraint kinds across stages for the SAME L_W: internal_consistency at 116 (formula derived from the compensation requirement) vs free_choice at 121 (value pinned by the L_W=L branch ansatz + carried aspect ratio)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 24, excerpt: "So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 116 with the **actual throat axial span**:" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 85, excerpt: "With \\(L_W=L\\), the auxiliary mixed-tube pole is simply" }

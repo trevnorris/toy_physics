@@ -1,0 +1,18 @@
+candidate_id: fit_stage232_fom_prefactor_100
+parameter_name: Xi_prefactor_100
+origin_claims: []
+constraints:
+  - parameter: Xi_prefactor_100
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+      line: 153
+      excerpt: "\\Xi_\\chi = 100\\,\\Theta_w^{(\\chi)}\\Lambda_\\ell^2"
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The literal prefactor 100 in the wall/source figure of merit Xi = 100*Theta_w*Lambda_ell^2 (notes 232 line 153/157; script line 149-150) is stated at Stage 232 with no in-stage derivation. The figure-of-merit STRUCTURE (W_wall = kappa * G_eq^(tw)) traces to Stage 066 (notes 066 line 52, 'wall figure of merit'), but the specific numeric prefactor 100 does NOT appear in the FoM-defining stages 066-071 (grep empty). No notes/ file examined documents where the 100 originates or whether it is a derived combination (e.g. of chi_s/Lambda factors) or a posited scale. Best-supported call: free_choice (posited FoM normalization), but the 100 literal's provenance is a genuine documentation gap -- flagged needs_triage so the exact origin (derivation vs convention) can be pinned."
+    citations:
+      - { path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py, line: 149, excerpt: "Xi_chi = 100 * Theta_w_chi * Lambda_ell**2" }
+      - { path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md, line: 52, excerpt: "`W_wall := kappa G_eq^(tw)`" }

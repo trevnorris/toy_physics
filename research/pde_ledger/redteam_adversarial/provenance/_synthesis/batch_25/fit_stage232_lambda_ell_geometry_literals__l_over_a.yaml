@@ -1,0 +1,25 @@
+candidate_id: fit_stage232_lambda_ell_geometry_literals
+parameter_name: L_over_a
+origin_claims:
+  - parameter: L_over_a
+    introduced_at_stage: 73
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 30
+      excerpt: "`epsilon_r = 0.05 = 1/20.`"
+constraints:
+  - parameter: L_over_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 56
+      excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE."
+downstream_dependents: [233, 234]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Duplicate scanner candidate for the same geometric literal as fit_stage232_family1_geometry_normalization. The value 20 (in Stage 232 Lambda_ell = 20*sqrt(2)*pi/x01, script line 50) is the inverse thin-wall ratio a/ell = 20 from the Stage-073 lock ell/a = 1/20 (epsilon_r = 0.05, 073 line 30). Stage 073 posits it as a 'reference-branch numerical freeze' (073 line 56) -> free_choice. Origin is 073, not 232. The carried L/a aspect ratio (37/20) is a separately posited reference freeze on the same branch (073 line 50-54)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md, line: 38, excerpt: "\\frac{\\ell}{a}=\\frac1{20}," }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 42, excerpt: "`ell / a = 1/20.`" }

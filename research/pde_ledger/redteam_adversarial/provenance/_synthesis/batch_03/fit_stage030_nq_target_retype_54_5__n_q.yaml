@@ -1,0 +1,25 @@
+candidate_id: fit_stage030_nq_target_retype_54_5
+parameter_name: N_Q
+origin_claims:
+  - parameter: N_Q
+    introduced_at_stage: 22
+    introduced_at_line: 270
+    citation:
+      path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      line: 270
+      excerpt: "`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`."
+constraints:
+  - parameter: N_Q
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+      line: 191
+      excerpt: "`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`."
+downstream_dependents: [31, 33]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: high
+    summary: "N_Q^target = 54 G c_s^5/(5 a^5 c^5) is the same external GR quadrupole number (gamma_GR = 2 G/(5 c^5), Einstein quadrupole 2/5) re-typed at stage 030 for the selected branch. The candidate name 'nq_target_retype_54_5' is accurate: stage 030 restates the external target verbatim from the stage-022/025 isotropic branch ('the selected branch is required to hit exactly the same normalization stack'). Origin is the gamma_GR import at stage 022, not a derivation at stage 030. published_target."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md, line: 183, excerpt: "So the selected branch is required to hit exactly the same normalization stack as the isotropic Stage-022/025 branch, but now with the selected-mode prefactor in place of the old isotropic lane prefactor." }
+      - { path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md, line: 258, excerpt: "`gamma_GR = 2 G / (5 c^5)`." }

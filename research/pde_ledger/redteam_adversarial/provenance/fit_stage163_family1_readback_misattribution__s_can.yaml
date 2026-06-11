@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage163_family1_readback_misattribution__phase_b__s_can.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -74,9 +74,40 @@ source_evidence:
   line: 140
   role: sympy_script
   excerpt: print("Sigma0_can S_can / sqrt(1+r_*^2) =", coeff_Pi)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: S_can
+  introduced_at_stage: 156
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 69
+    excerpt: \approx 0.6703621156734617,
+constraints:
+- parameter: S_can
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+    line: 53
+    excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: needs_triage
+  summary: S_can~0.6703621156734617 is read back at Stage 163 (line 339) and hardcoded as a script literal (S_can=sp.Float(...))
+    with NO origin cross-reference to Stage 156 where it is the self-consistent fixed-point mixed response; the read-back
+    presents an upstream-solved value as a local canonical datum. This is the read-back-misattribution class the candidate
+    name flags.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+    line: 339
+    excerpt: \mathcal S_{\rm can}\approx 0.6703621156734617,
+  - path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+    line: 126
+    excerpt: S_can = sp.Float("0.6703621156734617", 30)
+downstream_dependents:
+- '164'
+- '168'
+synthesis_ingested_at: '2026-06-11T19:16:41Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_18/fit_stage163_family1_readback_misattribution__s_can.yaml

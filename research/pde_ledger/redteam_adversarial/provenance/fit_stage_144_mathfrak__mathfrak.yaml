@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_144_mathfrak__phase_b__mathfrak.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -71,8 +71,21 @@ source_evidence:
   line: 100
   role: notes_stage
   excerpt: branch that preserves the canonical outgoing quadrupole fingerprint.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: mathfrak
+  introduced_at_stage: 144
+  introduced_at_line: 17
+  citation:
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 17
+    excerpt: \mathfrak r_{F1}\pm\frac12\sqrt{1+\mathfrak r_{F1}^2},
+constraints:
+- parameter: mathfrak
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 21
+    excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663,
 graph_context:
   contexts: []
   graph_gaps:
@@ -97,3 +110,25 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_144.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'parameter_name ''mathfrak'' is a SCANNER ARTIFACT: it captured the LaTeX command \mathfrak rather than a physical
+    symbol. The actual quantities behind the bundle''s source_evidence are the Family-1 compensated branches g_pm^{F1} = r_F1
+    +/- (1/2)sqrt(1+r_F1^2), with g_-^{F1} approx 0.758035078944663 and g_+^{F1} approx 2.79795199200529 (notes lines 15-23).
+    These are DERIVED (internal_consistency): the core-balance family g_c = r +/- (1/2)sqrt(1+r^2) (Stage 115) evaluated at
+    the geometric r_F1 approx 1.778 (Stage 121). At Stage 144 they are USED to prove branch selection: g_+^{F1} > 1 so the
+    upper branch is impossible, while 2/pi < g_-^{F1} < 1 so the lower branch is uniquely reachable. classified internal_consistency.
+    needs_triage flag records the meaningless slug so the ingest/adjudication step can re-key it to g_pm^{F1} (mathfrak g)
+    rather than treat ''mathfrak'' as a real parameter.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 23
+    excerpt: \mathfrak g_+^{F1}\approx 2.79795199200529.
+  - path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+    line: 33
+    excerpt: \mathfrak g_+^{F1}>1
+downstream_dependents:
+- '145'
+- '146'
+synthesis_ingested_at: '2026-06-11T18:52:29Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_15/fit_stage_144_mathfrak__mathfrak.yaml

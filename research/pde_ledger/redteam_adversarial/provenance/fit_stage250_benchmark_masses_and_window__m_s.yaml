@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_benchmark_masses_and_window__phase_b__m_s.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -182,9 +182,42 @@ source_evidence:
   line: 275
   role: notes_stage
   excerpt: \sqrt{\frac{2(E_{\rm edge}-V(r_0))}{m_s}}.
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: m_s
+  introduced_at_stage: 250
+  introduced_at_line: 419
+  citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 419
+    excerpt: ' m_s=\mu_\eta=1836.15267343.'
+constraints:
+- parameter: m_s
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 423
+    excerpt: '### 7.1 Proton-proxy classical threshold speed'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: published_target
+  severity: high
+  summary: 'm_s (particle mass scale) is set to 1836.15267343, the CODATA proton-to-electron mass ratio, used as the ''proton-proxy''
+    benchmark mass. This is an external published constant imported into the ledger as a benchmark input (script: ''Imported
+    benchmark values''), not a value derived by the ledger.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 419
+    excerpt: ' m_s=\mu_\eta=1836.15267343.'
+  - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    line: 428
+    excerpt: ' v_{\rm crit,p}'
+  - path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+    line: 177
+    excerpt: m_num = 1836.15267343
+downstream_dependents:
+- '251'
+- '253'
+synthesis_ingested_at: '2026-06-11T19:37:57Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_28/fit_stage250_benchmark_masses_and_window__m_s.yaml

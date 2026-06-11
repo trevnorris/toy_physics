@@ -1,0 +1,25 @@
+candidate_id: fit_stage161_upsilon_pi_one_ninth_coefficient
+parameter_name: Upsilon_Pi
+origin_claims:
+  - parameter: Upsilon_Pi
+    introduced_at_stage: 160
+    introduced_at_line: 244
+    citation:
+      path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+      line: 245
+      excerpt: "\\delta\\mathfrak B_W"
+constraints:
+  - parameter: Upsilon_Pi
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+      line: 239
+      excerpt: "\\Upsilon_\\Pi"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Upsilon_Pi is the tangential mixed-port slippage susceptibility, DEFINED at Stage 160 (delta_B_W = Upsilon_Pi delta_Pi_tan, notes line 244) as a black box, then DECOMPOSED at Stage 161 to Upsilon_Pi = ((1+r_{c,*})/9)(Xi_gamma - 2 Xi_L), with the '1/9' prefactor and numeric ((1+r_F1^2)/9) ~0.462362334687869 (line 261). The decomposition is an exact algebraic identity among ledger-internal quantities -> internal_consistency. CRITICALLY, Upsilon_Pi remains UNDETERMINED: it depends on the still-uncomputed microscopic strains Xi_gamma, Xi_L (the next theorem gate). So this is a structural/symbolic susceptibility, not a fixed value; no numeric value to fit or reconcile, no external target. The 0.462 prefactor inherits the r_F1<-37/20 dependence via 1+r_F1^2."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 23, excerpt: "\\Upsilon_\\Pi" }
+      - { path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md, line: 261, excerpt: "0.462362334687869\\,\\bigl(\\Xi_\\gamma-2\\Xi_L\\bigr)." }

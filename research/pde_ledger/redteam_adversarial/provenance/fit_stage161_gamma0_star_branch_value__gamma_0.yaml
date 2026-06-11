@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_gamma0_star_branch_value__phase_b__gamma_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,39 @@ source_evidence:
   line: 14
   role: sympy_script
   excerpt: d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: gamma_0
+  introduced_at_stage: 115
+  introduced_at_line: 25
+  citation:
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    line: 25
+    excerpt: \gamma_c=\frac19.
+constraints:
+- parameter: gamma_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 65
+    excerpt: \gamma_0=\frac{1+r_c}{9},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: Stage161 carries the bare canonical branch value gamma_0 = (1+r_c)/9 (notes line 65, from Stages 115-116) and introduces
+    the exact similarity-defect parametrization gamma_0 = (1+r_c)/9 (1 + eps_gamma) (line 75) to measure deviation, plus the
+    D/N-tube similarity law gamma_0 = 4 L_W^2/(3 pi^2 a^2) (line 421). The branch VALUE (1+r_c)/9 is forced by the compensation
+    condition (gamma_W=1/9 at Stage 115) -> internal_consistency. No external target; eps_gamma is the perturbation variable,
+    not a posited value. r_c = r_F1^2 carries the 37/20 dependence (tracked under r_F1).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 75
+    excerpt: \gamma_0=\frac{1+r_c}{9}\,(1+\varepsilon_\gamma).
+  - path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+    line: 417
+    excerpt: \gamma_0
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:52:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_17/fit_stage161_gamma0_star_branch_value__gamma_0.yaml

@@ -1,0 +1,24 @@
+candidate_id: fit_stage_110_a_0
+parameter_name: a_0
+origin_claims:
+  - parameter: a_0
+    introduced_at_stage: 109
+    introduced_at_line: 15
+    citation:
+      path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+      line: 15
+      excerpt: "\\Sigma_0=\\varepsilon a_0,"
+constraints:
+  - parameter: a_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md
+      line: 68
+      excerpt: "\\boxed{(b,a_0,a_5)=(0,\\rho_R,0).}"
+downstream_dependents: [111, 112]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "At Stage 110 the abstract a_0 slot is identified with the Robin core strength rho_R (a_0=rho_R); the identification is internal_consistency (the Robin model's static slot maps onto the a_0 branch coordinate), but rho_R:=a*h_R is itself a posited ansatz model parameter (free_choice), not a fixed number. Logged for accuracy: this candidate's a_0 has no fixed value, only the symbolic identification a_0=rho_R."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage110_robin_outlet_model.md, line: 18, excerpt: "\\boxed{\\Lambda_2^{\\rm R}(z)=\\Lambda_2^{\\rm out}(z)+\\rho_R,}\n\\qquad \\rho_R:=a h_R." }

@@ -1,0 +1,25 @@
+candidate_id: fit_stage249_helicity_ratio_matched
+parameter_name: H_sub_minus_final
+origin_claims:
+  - parameter: H_sub_minus_final
+    introduced_at_stage: 249
+    introduced_at_line: 431
+    citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 431
+      excerpt: "\\approx 5.00843357."
+constraints:
+  - parameter: H_sub_minus_final
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+      line: 416
+      excerpt: "The reported helicity-export outputs were"
+downstream_dependents: [250]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "H_sub,-^final = 5.00843357 is a numerical readback ('reported helicity-export output') from the external Session-II benchmark run; the Stage 249 notes/script carry it as a hardcoded constant with no in-ledger derivation and no derivation source under notes/ for the run that produced it."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md, line: 416, excerpt: "The reported helicity-export outputs were" }
+      - { path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py, line: 170, excerpt: "hint_antialigned = 5.00843357" }

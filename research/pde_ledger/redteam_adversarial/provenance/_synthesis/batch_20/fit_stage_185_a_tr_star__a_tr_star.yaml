@@ -1,0 +1,19 @@
+candidate_id: fit_stage_185_a_tr_star
+parameter_name: A_tr_star
+origin_claims:
+  - parameter: A_tr_star
+    introduced_at_stage: 183
+    introduced_at_line: 118
+    citation:
+      path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+      line: 118
+      excerpt: "A_{\\rm tr}:=\\frac{2\\chi_0}{(1+\\chi_0)(1+\\delta_U)}."
+constraints:
+  - parameter: A_tr_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage185_microscopic_monomials.md
+      line: 340
+      excerpt: "A_{{\\rm tr},*}=\\frac{2\\chi_{0,*}}{(1+\\chi_{0,*})(1+\\delta_{U,*})}."
+downstream_dependents: [186, 187]
+provenance_findings: []

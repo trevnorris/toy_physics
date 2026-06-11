@@ -1,0 +1,19 @@
+candidate_id: fit_stage128_branch_sign_fixed_card
+parameter_name: branch_sign
+origin_claims:
+  - parameter: branch_sign
+    introduced_at_stage: 128
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+      line: 75
+      excerpt: "\\text{Under positive localized mouth sourcing, the lower compensated branch is uniquely selected and is easily reachable.}"
+constraints:
+  - parameter: branch_sign
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+      line: 29
+      excerpt: "is ruled out by positivity alone."
+downstream_dependents: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145]
+provenance_findings: []

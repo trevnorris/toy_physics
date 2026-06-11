@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_kill_test_budgets_slice_anchored__phase_b__barp0_compat.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -196,9 +196,28 @@ source_evidence:
   line: 307
   role: notes_stage
   excerpt: '|a_{P_0}|\le \frac{P_{\rm crit}-\bar P_0}{4},'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: barP0_compat
+  introduced_at_stage: 223
+  introduced_at_line: 252
+  citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 253
+    excerpt: \approx 0.00206979231806289.
+constraints:
+- parameter: barP0_compat
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    line: 13
+    excerpt: \bar P_0=P_{0,\mathrm{target,compat}}\approx 0.002069792318062885.
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '225'
+- '226'
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage224_kill_test_budgets_slice_anchored__barp0_compat.yaml

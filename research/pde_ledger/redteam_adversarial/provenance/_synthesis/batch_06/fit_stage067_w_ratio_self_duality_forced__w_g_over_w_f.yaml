@@ -1,0 +1,19 @@
+candidate_id: fit_stage067_w_ratio_self_duality_forced
+parameter_name: w_g_over_w_f
+origin_claims:
+  - parameter: w_g_over_w_f
+    introduced_at_stage: 67
+    introduced_at_line: 96
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 96
+      excerpt: "`r_* = sqrt(pi).`"
+constraints:
+  - parameter: w_g_over_w_f
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 106
+      excerpt: "is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian benchmark family."
+downstream_dependents: [68, 69]
+provenance_findings: []

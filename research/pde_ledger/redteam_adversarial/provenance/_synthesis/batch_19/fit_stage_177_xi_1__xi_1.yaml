@@ -1,0 +1,19 @@
+candidate_id: fit_stage_177_xi_1
+parameter_name: Xi_1
+origin_claims:
+  - parameter: Xi_1
+    introduced_at_stage: 177
+    introduced_at_line: 191
+    citation:
+      path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+      line: 191
+      excerpt: "\\Xi_1:=\\sum_r \\rho_r^{(N)}\\sigma_r."
+constraints:
+  - parameter: Xi_1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+      line: 262
+      excerpt: "\\frac{P_1}{P_0}=\\Xi_1."
+downstream_dependents: [178, 179]
+provenance_findings: []

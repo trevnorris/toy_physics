@@ -1,0 +1,24 @@
+candidate_id: fit_stage064_matched_layer_coherence
+parameter_name: C_sigma_phi_sq
+origin_claims:
+  - parameter: C_sigma_phi_sq
+    introduced_at_stage: 64
+    introduced_at_line: 146
+    citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 146
+      excerpt: "`C_(sigma phi)^2 = 1.`"
+constraints:
+  - parameter: C_sigma_phi_sq
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+      line: 132
+      excerpt: "The equality condition is also exact: `C_(sigma phi)^2 = 1` if and only if `1/H(y)` is constant on the support of `chi_phi(y)`."
+downstream_dependents: [65, 66, 67]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "The matched-layer value C_sigma_phi^2 = 1 is the exact Cauchy-Schwarz equality case, attained when 1/H(y) is constant across the thin active layer (H(y)~H_w). It is a derived limit of the equilibrium-aligned coherence I_1^2/(N_phiphi I_2), not a posited number; the literal '1' is the saturated upper bound, not a free constant."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md, line: 124, excerpt: "By Cauchy–Schwarz," }

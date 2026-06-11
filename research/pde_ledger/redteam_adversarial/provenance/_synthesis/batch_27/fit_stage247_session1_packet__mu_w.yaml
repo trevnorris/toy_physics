@@ -1,0 +1,19 @@
+candidate_id: fit_stage247_session1_packet
+parameter_name: mu_w
+origin_claims:
+  - parameter: mu_w
+    introduced_at_stage: 247
+    introduced_at_line: 447
+    citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 447
+      excerpt: "\\mu_w=0.8,"
+constraints:
+  - parameter: mu_w
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+      line: 441
+      excerpt: "with the Session-I parameters"
+downstream_dependents: [ 248 ]
+provenance_findings: []

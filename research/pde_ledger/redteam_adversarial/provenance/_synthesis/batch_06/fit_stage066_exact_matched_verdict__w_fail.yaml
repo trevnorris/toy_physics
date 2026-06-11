@@ -1,0 +1,19 @@
+candidate_id: fit_stage066_exact_matched_verdict
+parameter_name: W_fail
+origin_claims:
+  - parameter: W_fail
+    introduced_at_stage: 66
+    introduced_at_line: 69
+    citation:
+      path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+      line: 69
+      excerpt: "`W_fail = Pe_req / Delta_inf(kappa,eta),`"
+constraints:
+  - parameter: W_fail
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+      line: 67
+      excerpt: "Multiplying by `kappa` immediately yields the wall-threshold pair"
+downstream_dependents: [67, 68, 69]
+provenance_findings: []

@@ -1,0 +1,25 @@
+candidate_id: fit_stage_222_p_0
+parameter_name: P0_target
+origin_claims:
+  - parameter: P0_target
+    introduced_at_stage: 222
+    introduced_at_line: 314
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 314
+      excerpt: "P_0\\approx 0.0181527764203328."
+constraints:
+  - parameter: P0_target
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 391
+      excerpt: "Now scan the outgoing-leg coupling \\(\\lambda_W\\) while keeping all other sample parameters fixed. The resulting static prefactor \\(P_0\\) and upper-wall residue/linewidth figure \\(\\mathcal R_{Q,*}\\) are:"
+downstream_dependents: [223]
+provenance_findings:
+  - type: graph_gap
+    severity: low
+    summary: "P0_target here is the static outgoing-prefactor P_0 = N_0/D_0 (the outgoing-prefactor bridge imported into stage 222 from Stage 219, see stage_219.tex Inputs line 9). At Stage 222 P_0 is a COMPUTED quantity on the illustrative sample slice (P_0 ~ 0.0181..., line 314) and in the lambda_W scan table (line 393); its DEFINITION is the derived N_0/D_0 bridge, hence constraint_kind internal_consistency (a derived ledger quantity, not a posited or external target). The numeric value shown is an illustrative evaluation on the sample slice (line 7: 'illustrative evaluations on one admissible sample slice'); the formula is ledger-internal. NOTE: candidate parameter_name is 'P0_target' but P_0 at this stage is NOT back-solved to any external target -- it is the internal prefactor evaluated illustratively. Scanner logged a graph_gap (no atlas node for the stage-222 source)."
+    citations:
+      - { path: paper/stages/stage_219.tex, line: 9, excerpt: "the outgoing-prefactor bridge $P_0=N_0/D_0$." }
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 7, excerpt: "The explicit pole census and the outgoing-leg scan below are illustrative evaluations on one admissible sample slice of the same exact formulas." }

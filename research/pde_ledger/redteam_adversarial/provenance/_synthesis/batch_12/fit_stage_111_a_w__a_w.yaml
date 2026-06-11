@@ -1,0 +1,25 @@
+candidate_id: fit_stage_111_a_w
+parameter_name: A_w
+origin_claims:
+  - parameter: A_w
+    introduced_at_stage: 111
+    introduced_at_line: 9
+    citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 9
+      excerpt: "Take the canonical outgoing branch and add the first isotropic Schur-complement-style mixed side-channel"
+constraints:
+  - parameter: A_w
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 5
+      excerpt: "Build the first explicit isotropic hidden mixed-sector side-channel model and check whether it can preserve the already-fixed conservative even `l=2` fingerprint."
+downstream_dependents: [112]
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "A_w never appears as a parameter carrying a numeric value; it occurs only as the model-class label 'A_w/F_{mu w}-type side-channel pole' (the hidden mixed/EM-projected sector). The posited model is a free_choice ansatz (the side-channel STRUCTURE is assumed), realized through the actual parameters sigma_W, kappa_W, gamma_W. No notes/ line assigns A_w a value, so no value-genealogy exists to classify beyond the model-selection free_choice; logged as a gap on the value layer."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 111: Explicit Mixed `A_w/F_{\\mu w}`-Type Side-Channel Pole" }
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 82, excerpt: "A naive passive mixed `A_w/F_{\\mu w}` side-channel pole is **too rigid**." }

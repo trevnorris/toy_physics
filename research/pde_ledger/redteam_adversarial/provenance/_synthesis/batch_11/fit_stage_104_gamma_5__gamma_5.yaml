@@ -1,0 +1,25 @@
+candidate_id: fit_stage_104_gamma_5
+parameter_name: Gamma_5
+origin_claims:
+  - parameter: Gamma_5
+    introduced_at_stage: 104
+    introduced_at_line: 89
+    citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 89
+      excerpt: "\\Gamma_{5,\\rm can}^{\\rm DtN}=\\frac{a^5}{27c_s^5}."
+constraints:
+  - parameter: Gamma_5
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+      line: 83
+      excerpt: "This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived directly from the explicit DtN model."
+downstream_dependents: [105, 106, 107]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "At stage 104 the symbol Gamma_5 denotes the canonical DtN-derived odd coefficient Gamma_{5,can}^DtN = a^5/27 c_s^5 (internal_consistency, a special-function Hankel expansion, 'not free'). The same symbol Gamma_5 is reused at stage 106 to denote the GR/Burke-Thorne target 2G/5c^5 (a published_target). The two are distinct quantities sharing one name; the stage-104 instance is the derived one classified here."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md, line: 89, excerpt: "\\Gamma_{5,\\rm can}^{\\rm DtN}=\\frac{a^5}{27c_s^5}." }
+      - { path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md, line: 49, excerpt: "\\overline \\Gamma_5=\\frac{2G}{5c^5}." }

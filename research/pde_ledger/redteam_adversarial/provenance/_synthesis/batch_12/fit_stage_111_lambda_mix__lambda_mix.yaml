@@ -1,0 +1,25 @@
+candidate_id: fit_stage_111_lambda_mix
+parameter_name: Lambda_mix
+origin_claims:
+  - parameter: Lambda_mix
+    introduced_at_stage: 111
+    introduced_at_line: 12
+    citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 12
+      excerpt: "\\Lambda_2^{\\rm mix}(z)"
+constraints:
+  - parameter: Lambda_mix
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+      line: 9
+      excerpt: "Take the canonical outgoing branch and add the first isotropic Schur-complement-style mixed side-channel"
+downstream_dependents: [112]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "Lambda_mix(z) = Lambda_2^out(z) - sigma_W/(1 - kappa_W z^2 - i gamma_W z^5) is a POSITED model form (free_choice ansatz: the Schur-complement single-pole side-channel structure is assumed), built ON TOP of the ledger-internal canonical outgoing branch Lambda_2^out. Its low-frequency expansion (L0,L2,L4,L5) is then internal_consistency. Primary constraint recorded as free_choice because the candidate names the model-form ansatz itself, not a derived coefficient."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md, line: 16, excerpt: "\\frac{\\sigma_W}{1-\\kappa_W z^2-i\\gamma_W z^5}" }
+      - { path: scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py, line: 9, excerpt: "Lambda_mix = sp.expand(sp.series(Lambda_out - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())" }

@@ -1,0 +1,12 @@
+candidate_id: fit_stage_124_stage_141
+parameter_name: stage_141
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: needs_triage
+    summary: "The scanner extracted '141' as a candidate value for Stage 124, but '141' is NOT a physical parameter value: it is a STALE numbering self-label in the Stage-124 paper card. The card's \\stagefield{Purpose} reads 'Stage~141 is a core outlet realization ledger step' (paper/stages/stage_124.tex:7) — a +17 \\stagefield{Purpose} drift (124+17=141) from the EM-extension renumber, the exact class flagged in PAPER_CLEANUP_TRACKER P5-12 ('\\stagefield{Purpose} card self-labels drift +17 ... 124 \"Stage 141\"', a class the numbering reconciliation MISSED because it keyed on \\section/\\label, not \\stagefield{Purpose}). No notes/ value-genealogy exists or is needed; logged as a numbering-drift finding only (no origin/constraint). Recommend the deferred numbering pass fix 141->124 in the card Purpose field."
+    citations:
+      - { path: paper/stages/stage_124.tex, line: 7, excerpt: "\\stagefield{Purpose}{Stage~141 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}" }
+      - { path: notes/PAPER_CLEANUP_TRACKER.md, line: 637, excerpt: "**⚠️ DISCOVERY** — `\\stagefield{Purpose}` card self-labels drift +17 (117 \"Stage 134\", 119 \"Stage 136\", 120 \"Stage 137\", 124 \"Stage 141\")" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_179_nu_r__phase_b__nu_r.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,39 @@ source_evidence:
   line: 142
   role: sympy_script
   excerpt: print("  nu_r = kappa1 + 2 tau_r")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: nu_r
+  introduced_at_stage: 178
+  introduced_at_line: 90
+  citation:
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    line: 90
+    excerpt: \delta\ln N_{A,0}^{(r)}=\epsilon\lambda_A\,\nu_r,
+constraints:
+- parameter: nu_r
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 227
+    excerpt: \kappa_1+2\tau_r.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'nu_r is the weak-axisymmetric logarithmic slope of the actual static outgoing-transfer coefficient, nu_r = delta
+    ln N_{A,0}^(r)/(eps lambda_A) (defined at Stage 178 notes line 90; carried into Stage 179 notes line 13). It is not a
+    posited number. Stage 179 DERIVES the central identity nu_r = kappa_1 + 2 tau_r (notes line 227) from the exact wall-normalized
+    factorization N_{A,0}^(r) = K_A T_{A,r}^2 (notes line 218). Internal_consistency: built from ledger-internal port/wall
+    slopes, no external target. Origin set to Stage 178 (first definition); Stage 179 only re-expresses it. Low severity.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+    line: 218
+    excerpt: N_{A,0}^{(r)}=K_A\mathcal T_{A,r}^2.
+  - path: scripts/moving_throat_pde_stage179_transfer_shape_sympy_audit.py
+    line: 142
+    excerpt: print("  nu_r = kappa1 + 2 tau_r")
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage_179_nu_r__nu_r.yaml

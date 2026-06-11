@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_064_g_eq__phase_b__g_eq.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -67,9 +67,27 @@ source_evidence:
   line: 179
   role: sympy_script
   excerpt: print("3. The exact eliminated-source gain is G_eq = g_phi^2 I1/K_X.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: G_eq
+  introduced_at_stage: 64
+  introduced_at_line: 176
+  citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 176
+    excerpt: '`G_eq = Delta K_X^(eq) / K_X = g_phi^2 I_1 / K_X.`'
+constraints:
+- parameter: G_eq
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+    line: 172
+    excerpt: '`Delta K_X^(eq) = g_phi^2 I_1.`'
 graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings: []
+downstream_dependents:
+- '065'
+- '066'
+synthesis_ingested_at: '2026-06-11T18:26:15Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_06/fit_stage_064_g_eq__g_eq.yaml

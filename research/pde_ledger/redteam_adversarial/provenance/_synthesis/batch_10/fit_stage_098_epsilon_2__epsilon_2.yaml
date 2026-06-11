@@ -1,0 +1,24 @@
+candidate_id: fit_stage_098_epsilon_2
+parameter_name: epsilon_2
+origin_claims:
+  - parameter: epsilon_2
+    introduced_at_stage: 96
+    introduced_at_line: 31
+    citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 31
+      excerpt: "`eps_2 = eps_4 = 0`"
+constraints:
+  - parameter: epsilon_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+      line: 27
+      excerpt: "So the geometry lane cannot contribute dynamic `omega^2` or `omega^4` moments to the isotropic quadrupole module."
+downstream_dependents: [99]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "epsilon_2 at stage 098 is only a card check (eps_2=eps_4=0 returns c_pole=1/4); not introduced in stage098 notes. Bundle had only paper-card source evidence (atlas graph_gap). Origin/constraint cited from the upstream geometry-lane verdict (stage 096) which is where eps_2=0 is forced."
+    citations:
+      - { path: paper/stages/stage_098.tex, line: 22, excerpt: "\\item Check the static limit \\(\\epsilon_2=\\epsilon_4=0\\) returns \\(c_{\\rm pole}=1/4\\)." }

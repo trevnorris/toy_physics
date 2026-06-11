@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -55,8 +55,22 @@ source_evidence:
   line: 447
   role: notes_stage
   excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: matched_fingerprint_value
+  introduced_at_stage: 194
+  introduced_at_line: 182
+  citation:
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 182
+    excerpt: Matching the leading odd coefficient yields
+constraints:
+- parameter: matched_fingerprint_value
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 388
+    excerpt: So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction,
+      the Packet-A normalization residual of Stage 191 closes automatically.
 graph_context:
   contexts: []
   graph_gaps:
@@ -81,3 +95,22 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_195.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: '''matched_fingerprint_value'' is a scanner family-token (bundle source_evidence is the stage_195.tex card boilerplate
+    Purpose block), not a literal named parameter. The underlying object is the canonical outgoing l=2 DtN fingerprint MATCHED
+    at stage 194 (origin, line 182-184, fixing chi_Q=1) and CARRIED through the stage-195 source-map reduction (195 line 388:
+    the fingerprint carried through closes Delta_norm). internal_consistency (match to the derived spherical-Hankel fingerprint).
+    Logged as a low gap to flag the token is an alias for the 194 fingerprint match carried into 195, not a standalone fitted
+    value.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    line: 184
+    excerpt: \boxed{\chi_Q=1.}
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 447
+    excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
+downstream_dependents:
+- '196'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_195_matched_fingerprint_value__matched_fingerprint_value.yaml

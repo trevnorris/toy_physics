@@ -1,0 +1,24 @@
+candidate_id: fit_stage_045_r_tr
+parameter_name: R_tr
+origin_claims:
+  - parameter: R_tr
+    introduced_at_stage: 45
+    introduced_at_line: 125
+    citation:
+      path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+      line: 125
+      excerpt: "`R_tr := R_U = R_phi`"
+constraints:
+  - parameter: R_tr
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+      line: 126
+      excerpt: "`     = [ 1 + chi_0/(1+delta_U) ] / (1 + chi_0).`"
+downstream_dependents: [46, 47, 48]
+provenance_findings:
+  - type: self_contradictory_origin
+    severity: needs_triage
+    summary: "The scanner attributed value '94' to this R_tr candidate, but the literal '94' appears nowhere in stage 045 notes, paper card, or sympy script. R_tr is a symbolic direction factor [1+chi_0/(1+delta_U)]/(1+chi_0) with constructive range 1/(1+delta_U)<R_tr<1; it has no scalar value '94'. The extracted value is spurious and should not be ingested as a fit value. Duplicate target of fit_stage045_tracking_derived_not_postulated."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md, line: 138, excerpt: "`1/(1+delta_U) < R_tr < 1.`" }

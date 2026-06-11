@@ -1,0 +1,25 @@
+candidate_id: fit_stage250_goldilocks_inputs
+parameter_name: g_UV
+origin_claims:
+  - parameter: g_UV
+    introduced_at_stage: 250
+    introduced_at_line: 415
+    citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 415
+      excerpt: " g_{UV}=0.95,"
+constraints:
+  - parameter: g_UV
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+      line: 172
+      excerpt: "- \\(g_{UV}\\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,"
+downstream_dependents: [251, 253]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "g_UV=0.95 is described as 'carried from Stage 245', but the numeric value 0.95 appears nowhere in the Stage 245 notes (only the symbol chi_UV := g_UV*chi_lambda). The number first enters the ledger here at stage 250 as a posited near-unity benchmark coupling (free_choice). The 'carried from Stage 245' attribution applies to the symbol, not the value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md, line: 172, excerpt: "- \\(g_{UV}\\) is the non-rigid transfer-to-dressing coupling carried from Stage 245," }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 134, excerpt: "\\chi_{UV}(r):=g_{UV}\\,\\chi_\\lambda(r)," }

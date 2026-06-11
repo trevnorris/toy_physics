@@ -1,0 +1,19 @@
+candidate_id: fit_stage_209_k_i
+parameter_name: k_i
+origin_claims:
+  - parameter: k_i
+    introduced_at_stage: 207
+    introduced_at_line: 248
+    citation:
+      path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+      line: 248
+      excerpt: "\\boxed{k_i:=|\\Gamma_i|>0.}"
+constraints:
+  - parameter: k_i
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+      line: 62
+      excerpt: "k_{ij}(r)=\\frac{k_i+r k_j}{\\sqrt{1+r^2}}."
+downstream_dependents: [210]
+provenance_findings: []

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_192_p_2__phase_b__p_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -31,7 +31,14 @@ source_evidence:
     \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
     Packet A to \(\Delta_Q=\chi_Q-1\).}
 origin_claims: []
-constraints: []
+constraints:
+- parameter: P_2
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    line: 5
+    excerpt: '**Exact within the carried Stage 187 coherent quotient closure and the finite-packet hierarchy isolated in Stage
+      191.**'
 graph_context:
   contexts: []
   graph_gaps:
@@ -52,3 +59,24 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_192.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: P_2 with extracted literal value '2' is NOT a fitted scalar — it is the angular-momentum / Legendre multipole label
+    l=2 of the 'grouped real P_2' sector. At stage 192 it appears only in the card Inputs boilerplate ('isotropic grouped-P_2
+    one-pole front end', stage_192.tex line 9); the stage-192 notes are the orbit/quotient projector calculus and use the
+    grouped real-P2 structure carried from Stage 191 (191 lines 72-73, the grouped bundle x=(x20,x21,x22)). The '2' is a structural
+    sector convention (which multipole the moving-throat analysis targets), so constraint_kind is free_choice (convention/branch
+    selection), not a derived or externally-fit number. No notes/ line at stage 192 assigns P_2 a numeric value; cited the
+    carry-forward status line.
+  citations:
+  - path: paper/stages/stage_192.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+downstream_dependents:
+- '193'
+- '194'
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage_192_p_2__p_2.yaml

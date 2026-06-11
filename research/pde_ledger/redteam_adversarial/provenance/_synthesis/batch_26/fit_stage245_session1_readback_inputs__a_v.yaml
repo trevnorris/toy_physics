@@ -1,0 +1,25 @@
+candidate_id: fit_stage245_session1_readback_inputs
+parameter_name: a_V
+origin_claims:
+  - parameter: a_V
+    introduced_at_stage: 245
+    introduced_at_line: 156
+    citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 156
+      excerpt: "- `a_V>0` is the dressing-leg stiffness,"
+constraints:
+  - parameter: a_V
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+      line: 156
+      excerpt: "- `a_V>0` is the dressing-leg stiffness,"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "a_V is the dressing-leg stiffness in the Stage-245 reduced non-rigid free energy (notes line 143-156). As a SYMBOL it is a free positive parameter (free_choice / posited closure coefficient); its only NUMERIC value is the probe sample a_V = 3.0 in the drain sign-check (script line 92), a representative sample point, not a ledger-derived value. The notes define a_V only structurally (a_V > 0 dressing-leg stiffness) with no derived target. Classification free_choice. Logged at low severity since the parameter has no derived numeric value to classify."
+    citations:
+      - { path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py, line: 92, excerpt: "drain_neg_chi = D_expected.subs({a_U: sp.Float(\"2.5\"), a_V: sp.Float(\"3.0\")," }
+      - { path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md, line: 212, excerpt: "\\Delta_{UV}:=a_U a_V-\\chi_{UV}^2." }

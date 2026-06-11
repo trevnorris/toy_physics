@@ -1,0 +1,24 @@
+candidate_id: fit_stage253_calibration_slice_nominal_constants
+parameter_name: f_lat
+origin_claims:
+  - parameter: f_lat
+    introduced_at_stage: 253
+    introduced_at_line: 255
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 255
+      excerpt: " f_{\\rm lat}(s_c)=\\frac34,"
+constraints:
+  - parameter: f_lat
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 954
+      excerpt: "`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "The f_lat=3/4 benchmark value originates upstream as the Session-IV by-hand 3:1 split (carried via Stage 252 notes:385); Stage 253 restates it as a Stage-252 benchmark slice input. Its true origin is the posited Session-IV split, not a Stage-253 derivation."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md, line: 385, excerpt: " f_{\\rm lat}=\\frac34." }

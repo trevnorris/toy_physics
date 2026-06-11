@@ -1,0 +1,25 @@
+candidate_id: fit_stage115_gamma_0_pure_scale_ansatz
+parameter_name: gamma_0
+origin_claims:
+  - parameter: gamma_0
+    introduced_at_stage: 114
+    introduced_at_line: 29
+    citation:
+      path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+      line: 29
+      excerpt: "D_W^{\\rm bare}(z)=1-\\kappa_0 z^2-i\\gamma_0 z^5+O(z^6)."
+constraints:
+  - parameter: gamma_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+      line: 69
+      excerpt: "\\gamma_0=\\frac{1+r_c}{9}."
+downstream_dependents: [125, 139]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "gamma_0=(1+r_c)/9 is FORCED at Stage 115 as the bare-mixed-channel odd-preservation condition: landing the concrete core model on the compensated canonical branch requires gamma_c=1/9 with gamma_c=gamma_0/(1+r_c), giving gamma_0=(1+r_c)/9. This is internal_consistency (the bare channel must be a scale-deformed copy of the canonical compact outgoing branch). NOTE the project ansatz-value catalog lists 'gamma_0=(1+r_c)/9' as its first 'postulated/non-derived ansatz value'; the notes here present it as a DERIVED preservation condition, not a free ansatz. Flagging the catalog-vs-notes framing tension for the user, since the candidate id itself reads 'pure_scale_ansatz'. At Stage 114 gamma_0 IS a free ansatz coefficient; at Stage 115 it is constrained. Classified internal_consistency for the Stage-115 value."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md, line: 72, excerpt: "So the bare mixed side-channel must itself be a scale-deformed copy of the canonical compact outgoing branch." }
+      - { path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py, line: 47, excerpt: "gamma0_can = sp.simplify((1 + r_c) / 9)" }

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_095_epsilon_2__phase_b__epsilon_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,8 +29,21 @@ source_evidence:
   line: 22
   role: paper_stage_tex
   excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: epsilon_2
+  introduced_at_stage: 95
+  introduced_at_line: 80
+  citation:
+    path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+    line: 80
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2)^eff / K_pole`,'
+constraints:
+- parameter: epsilon_2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+    line: 86
+    excerpt: '`eps_2 = O(chi^2)`,'
 graph_context:
   contexts: []
   graph_gaps:
@@ -51,3 +64,18 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_095.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: The bundle's source_evidence cites only the paper card lines (13, 22), not a notes line, for epsilon_2; the binding
+    notes origin lives at stage095 notes lines 80/86 (Schur-complement contamination coefficient), located by reading the
+    full per-stage note.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+    line: 80
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2)^eff / K_pole`,'
+downstream_dependents:
+- 096
+- 097
+- 099
+synthesis_ingested_at: '2026-06-11T18:51:37Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_10/fit_stage_095_epsilon_2__epsilon_2.yaml

@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage046_residual_comparison_exact__phase_b__n_tr.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -29,4 +29,22 @@ constraints: []
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: No source under notes/ (nor the paper card nor the sympy script) documents a parameter named 'N_tr' at Stage 046.
+    The candidate's only evidence pointer is the card Purpose line; the bundle carries no notes_stage anchor for any value.
+    Stage 046's actual content is the residual-comparison theorem E_tr - E_flat = F_flat - F_tr > 0 (an internal_consistency
+    monotonicity result), not a fitted scalar 'N_tr'. The parameter name appears to be a spurious scanner resolution; nothing
+    to classify.
+  citations:
+  - path: paper/stages/stage_046.tex
+    line: 6
+    excerpt: \stagefield{Purpose}{Stage~046 determines whether the first coherent tracking deformation helps or hurts the
+      selected normalization target.}
+  - path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+    line: 185
+    excerpt: '`E_tr - E_flat = F_flat - F_tr > 0`'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage046_residual_comparison_exact__n_tr.yaml

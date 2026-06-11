@@ -1,0 +1,26 @@
+candidate_id: fit_stage155_carried_constants_block
+parameter_name: r_F1
+origin_claims:
+  - parameter: r_F1
+    introduced_at_stage: 121
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 65
+      excerpt: "\\mathfrak r_{F1}"
+constraints:
+  - parameter: r_F1
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+      line: 37
+      excerpt: "Imposing \\(L_W=L\\) gives the exact geometric hybridization branch"
+downstream_dependents: [156, 157, 158]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "r_F1 = 1.77799353547498 carried at Stage 155 (script:25) into the co-evolving core overlap law R(g)=(g-r_F1)^2/(1+r_F1^2). Genuinely DERIVED at Stage 121 from L_W=L (internal_consistency for the radical), but its lone free input L/a=37/20 is a POSITED reference-branch freeze (Stage 073:56). Same caveat as the Stage 148/154 r_F1 candidates."
+    citations:
+      - { path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py, line: 25, excerpt: "rF1 = 1.77799353547498" }
+      - { path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md, line: 60, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 56, excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE." }

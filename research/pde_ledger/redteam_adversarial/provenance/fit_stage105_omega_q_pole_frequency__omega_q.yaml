@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage105_omega_q_pole_frequency__phase_b__omega_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -169,9 +169,36 @@ source_evidence:
   line: 68
   role: sympy_script
   excerpt: chi_sol = sp.solve(sp.Eq(Yret_series.coeff(omega, 5)/sp.I, outgoing_omega5_coeff), chi_Q)[0]
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Omega_Q
+  introduced_at_stage: 88
+  introduced_at_line: 19
+  citation:
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 19
+    excerpt: '`Omega_Q = 3 c_s / (2 a).`'
+constraints:
+- parameter: Omega_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 29
+    excerpt: \Omega_Q=\frac{3c_s}{2a}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: 'Stage 105 notes line 57 cite ''From Stage 87'' for the outgoing DtN branch; canonical source is Stage 104. Omega_Q
+    itself originates upstream at stage 088 (conservative moment / minimal-isotropic pole scale); stage 105 carries it (notes
+    line 28-29: ''The conservative moment match already fixed Omega_Q=3c_s/2a'').'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 57
+    excerpt: From Stage 87, the explicit outgoing DtN branch gives
+downstream_dependents:
+- '106'
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage105_omega_q_pole_frequency__omega_q.yaml

@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_gamma_safe_exact_replacement
+parameter_name: gamma_safe
+origin_claims:
+  - parameter: gamma_safe
+    introduced_at_stage: 251
+    introduced_at_line: 393
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 393
+      excerpt: "\\Gamma_3 s_c^3+\\Gamma_5 s_c^5"
+constraints:
+  - parameter: gamma_safe
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 385
+      excerpt: " s_+\\le s_c\n \\iff\n F(s_c)\\ge 0."
+downstream_dependents: [252]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "gamma_safe is replaced by the exact event-level safe half-plane Gamma_3 s_c^3 + Gamma_5 s_c^5 >= mu_eta(s_0^2 - s_c^2), forced by strict monotonicity of F(s) on s>0 -- a genuine internal_consistency derivation. The benchmark numeric (G3hat_safe ~= 289.61, G5hat_safe ~= 961.09) inherits the Session-IV readback inputs s_c=1/t_cross and s_0=gamma_crit, so the surface NUMBER is only as anchored as those reported benchmark values."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 399, excerpt: "This is the stage’s third main theorem." }
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 480, excerpt: "\\widehat\\Gamma_{3,\\rm safe}\\approx 289.61004918," }

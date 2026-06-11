@@ -1,0 +1,26 @@
+candidate_id: fit_stage222_illustrative_barrier_benchmark
+parameter_name: V_known
+origin_claims:
+  - parameter: V_known
+    introduced_at_stage: 222
+    introduced_at_line: 352
+    citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 352
+      excerpt: "V_{\\rm known}(1)\\approx 1.181909222592,"
+constraints:
+  - parameter: V_known
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+      line: 350
+      excerpt: "Carry forward the same illustrative reduced barrier benchmark at \\(x=1\\):"
+downstream_dependents: [223]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: needs_triage
+    summary: "V_known(1)=1.181909222592 is named 'illustrative_barrier_benchmark' and the candidate-list hint flagged it as 'likely published_target' (external barrier import). The actual stage-222 notes REPEATEDLY and EXPLICITLY disclaim external provenance: it is an ILLUSTRATIVE benchmark, not an imported published number. Line 436 states the benchmark DeltaV_req(1) 'used here is illustrative. The true local barrier requirement must be pulled back from the actual same-charge branch.' The script hardcodes it as a bare float (V_known = sp.Float('1.181909222592'), no formula). There is NO notes text naming an external GR/PN/CODATA target it matches, and no back-solve. Classified free_choice (a posited illustrative placeholder ansatz), NOT published_target -- the evidence contradicts the published_target hint. Recording the hint-vs-notes tension here; if a downstream consumer ever treats this illustrative number as a real barrier requirement, that would be the overclaim to catch (stage 223 carries it forward verbatim, still labelled 'illustrative')."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md, line: 436, excerpt: "3. **Actual barrier data.** The benchmark \\(\\Delta V_{\\rm req}(1)\\) used here is illustrative. The true local barrier requirement must be pulled back from the actual same-charge branch." }
+      - { path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py, line: 213, excerpt: "V_known = sp.Float('1.181909222592')" }
+      - { path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md, line: 329, excerpt: "Carry forward the same illustrative local barrier benchmark from Stage 222 at \\(x=1\\):" }

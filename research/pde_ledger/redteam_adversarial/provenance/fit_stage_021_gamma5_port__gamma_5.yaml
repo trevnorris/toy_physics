@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_gamma5_port__phase_b__gamma_5.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -71,9 +71,42 @@ source_evidence:
   line: 346
   role: sympy_script
   excerpt: sp.simplify(deltaD0 - I * gamma1 * eta**2 * OA**4 * omega**3 / (OA**2 * OW**2 - R**2) ** 2),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Gamma_5
+  introduced_at_stage: 17
+  introduced_at_line: 223
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 223
+    excerpt: '`Γ_2^(port) = a^5 / (27 c_s^5)`.'
+constraints:
+- parameter: Gamma_5
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 214
+    excerpt: The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'Gamma_5 (here the outgoing port coefficient Gamma_2^(port) = a^5/(27 c_s^5)) is the omega^5 fingerprint coefficient
+    DERIVED from the outgoing spherical Hankel solution at stage 021 (notes section 6). It is internal_consistency at its
+    point of introduction. NOTE: this same Gamma_5 = a^5/(27 c_s^5) becomes the load-bearing factor in the downstream GR back-solve
+    at stage 022 (gamma_GR = mhat_0^2 P_0 Gamma_5 => P0_target = 54/5), but the coefficient itself is derived, not fitted;
+    the fit lives in the P_0/normalization target, not in Gamma_5. Logged low gap only because the value is a derived structural
+    coefficient with no further constraint at 021.'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 221
+    excerpt: So the outgoing port coefficient is
+  - path: paper/stages/stage_021.tex
+    line: 74
+    excerpt: =-iN_2(0)\frac{a^5}{27c_s^5}\omega^5+O(\omega^7).
+downstream_dependents:
+- 018
+- 019
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_021_gamma5_port__gamma_5.yaml

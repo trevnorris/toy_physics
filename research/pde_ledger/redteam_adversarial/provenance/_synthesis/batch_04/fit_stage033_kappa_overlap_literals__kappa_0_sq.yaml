@@ -1,0 +1,25 @@
+candidate_id: fit_stage033_kappa_overlap_literals
+parameter_name: kappa_0_sq
+origin_claims:
+  - parameter: kappa_0_sq
+    introduced_at_stage: 032
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+      line: 79
+      excerpt: "`kappa_0^2 = 8 / pi^2`,"
+constraints:
+  - parameter: kappa_0_sq
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+      line: 135
+      excerpt: "`kappa_0^2 = 8 / pi^2`,"
+downstream_dependents: [034, 035, 036, 037, 038]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Duplicate of fit_stage033_dn_constants_exact for the same parameter kappa_0_sq. The value 8/pi^2 is a finite-throat overlap literal carried into stage 033 from its stage-032 origin (mode integral); stage 033 restates it (notes line 135) and the audit script hardcodes it. Internal_consistency; same stale-anchor note as the sibling candidate (keyed to 033 but originating at 032)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md, line: 135, excerpt: "`kappa_0^2 = 8 / pi^2`," }
+      - { path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md, line: 137, excerpt: "`kappa_1^2 = 16 / (9 pi^2)`," }

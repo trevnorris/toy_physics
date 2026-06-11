@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage021_outgoing_fingerprint_omega5_coefficient__phase_b__a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,9 +181,42 @@ source_evidence:
   line: 46
   role: paper_stage_tex
   excerpt: \begin{equation}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a
+  introduced_at_stage: 17
+  introduced_at_line: 219
+  citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 219
+    excerpt: '`= 1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5) + O(ω^6)`.'
+constraints:
+- parameter: a
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 214
+    excerpt: The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: The candidate targets the omega^5 coefficient a^5/(27 c_s^5) of the compact outgoing l=2 fingerprint, in which
+    'a' is the throat-radius length scale, not a free fitted number; the coefficient structure (1, a^2/9c_s^2, 4a^4/81c_s^4,
+    i a^5/27c_s^5) is DERIVED from the outgoing spherical Hankel solution (notes line 214), so the omega^5 coefficient is
+    internal_consistency. The note states it 'is exactly the coefficient already isolated in the 2.5PN referee audit' (line
+    225), an internal cross-check rather than an external fit. 'a' itself is a free geometric length parameter carried from
+    the geometry stages, not constrained at 021.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    line: 225
+    excerpt: This is exactly the coefficient already isolated in the 2.5PN referee audit.
+  - path: paper/stages/stage_021.tex
+    line: 67
+    excerpt: +i\frac{a^5\omega^5}{27c_s^5}
+downstream_dependents:
+- 018
+- 019
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage021_outgoing_fingerprint_omega5_coefficient__a.yaml

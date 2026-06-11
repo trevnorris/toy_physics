@@ -1,0 +1,25 @@
+candidate_id: fit_stage_157_statusopen
+parameter_name: StatusOpen
+origin_claims:
+  - parameter: StatusOpen
+    introduced_at_stage: 157
+    introduced_at_line: 79
+    citation:
+      path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+      line: 79
+      excerpt: "This stage identifies the reduced co-evolving target. It does **not** yet prove that"
+constraints:
+  - parameter: StatusOpen
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+      line: 80
+      excerpt: "the full moving-throat PDE branch dynamically realizes that target without additional"
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "StatusOpen is a paper-card claim-status TAG (stage_157.tex:5, '\\StatusNumerical / \\StatusOpen'), not a fitted numeric parameter, so it has no value genealogy. The OPEN tag is well supported by the stage157 notes, which explicitly state the stage does NOT yet prove the full PDE realizes the reduced target (lines 79-81) and names the next serious step. No card overclaim; the card is appropriately weaker than a theorem. Logged as a gap for the value-provenance taxonomy."
+    citations:
+      - { path: paper/stages/stage_157.tex, line: 5, excerpt: "\\claimstatus{\\StatusNumerical{} / \\StatusOpen{}.}" }
+      - { path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md, line: 81, excerpt: "deviation analysis." }

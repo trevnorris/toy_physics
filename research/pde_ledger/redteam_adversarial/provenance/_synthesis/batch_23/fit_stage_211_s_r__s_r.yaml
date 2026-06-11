@@ -1,0 +1,19 @@
+candidate_id: fit_stage_211_s_r
+parameter_name: S_r
+origin_claims:
+  - parameter: S_r
+    introduced_at_stage: 211
+    introduced_at_line: 262
+    citation:
+      path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 262
+      excerpt: "L_{r,\\star}(r,s)^2-4M_r(r,s)^2\\,\\Delta^{\\sharp}_{ijk,\\star}(r,s),"
+constraints:
+  - parameter: S_r
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+      line: 324
+      excerpt: "Because `\\(\\mathcal C\\)` is quartic and `\\(\\mathcal S_r\\)` is sextic, this set is finite whenever the common zeros are isolated."
+downstream_dependents: [212]
+provenance_findings: []

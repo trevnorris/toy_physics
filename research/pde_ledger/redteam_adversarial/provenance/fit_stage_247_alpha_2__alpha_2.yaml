@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_alpha_2__phase_b__alpha_2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -110,8 +110,23 @@ source_evidence:
   line: 198
   role: sympy_script
   excerpt: 'alpha2: sp.Integer(0),'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: alpha_2
+  introduced_at_stage: 247
+  introduced_at_line: 404
+  citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 404
+    excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline
+      gives
+constraints:
+- parameter: alpha_2
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    line: 404
+    excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline
+      gives
 graph_context:
   contexts: []
   graph_gaps:
@@ -136,3 +151,7 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_247.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+downstream_dependents:
+- '248'
+synthesis_ingested_at: '2026-06-11T19:37:43Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_27/fit_stage_247_alpha_2__alpha_2.yaml

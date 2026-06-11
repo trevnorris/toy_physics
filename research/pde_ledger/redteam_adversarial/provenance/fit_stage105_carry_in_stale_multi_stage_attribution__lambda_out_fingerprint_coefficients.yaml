@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage105_carry_in_stale_multi_stage_attribution__phase_b__lambda_out_fingerprint_coefficients.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -170,9 +170,43 @@ source_evidence:
   line: 85
   role: sympy_script
   excerpt: print("  On the canonical compact passive/outgoing grouped-P2 branch, chi_Q = 1 exactly.")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda_out_fingerprint_coefficients
+  introduced_at_stage: 104
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 33
+    excerpt: -3+\frac{z^2}{3}+\frac{z^4}{9}
+constraints:
+- parameter: Lambda_out_fingerprint_coefficients
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 83
+    excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
+      directly from the explicit DtN model.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 105 carries in the Lambda_2^out fingerprint coefficients (-3, z^2/3, z^4/9, i z^5/9) but its notes (line
+    57) attribute the outgoing DtN branch to 'Stage 87', a pre-renumber reference; the canonical origin of these coefficients
+    is Stage 104 (outgoing_dtn_fingerprint), as the stage 105 script docstring itself correctly states ('inherited from the
+    Stage 104 exact fingerprint'). The notes prose and the script comment disagree on the source-stage number (87 vs 104)
+    for the same carried-in coefficients.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    line: 57
+    excerpt: From Stage 87, the explicit outgoing DtN branch gives
+  - path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+    line: 10
+    excerpt: coefficient inherited from the Stage 104 exact fingerprint.
+downstream_dependents:
+- '105'
+- '106'
+- '107'
+synthesis_ingested_at: '2026-06-11T18:54:50Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage105_carry_in_stale_multi_stage_attribution__lambda_out_fingerprint_coefficients.yaml

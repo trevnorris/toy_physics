@@ -1,0 +1,19 @@
+candidate_id: fit_stage164_quarter_sqrt_weight
+parameter_name: delta_perp_channel_weight
+origin_claims:
+  - parameter: delta_perp_channel_weight
+    introduced_at_stage: 163
+    introduced_at_line: 171
+    citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 171
+      excerpt: "\\frac{1}{4\\sqrt{1+\\mathfrak r_*^2}}\\,"
+constraints:
+  - parameter: delta_perp_channel_weight
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+      line: 163
+      excerpt: "Substituting into the definition of \\(\\delta_\\perp\\) and simplifying gives the exact microscopic residual"
+downstream_dependents: [165, 168]
+provenance_findings: []

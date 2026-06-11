@@ -1,0 +1,19 @@
+candidate_id: fit_stage_095_c_pole
+parameter_name: c_pole
+origin_claims:
+  - parameter: c_pole
+    introduced_at_stage: 95
+    introduced_at_line: 98
+    citation:
+      path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+      line: 98
+      excerpt: "`c_pole = (1 + eps_4) / [ 4 (1 + eps_2)^2 ]`."
+constraints:
+  - parameter: c_pole
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+      line: 104
+      excerpt: "Because both `eps_2` and `eps_4` are already `O(chi^2)`, the deviation from the `1/4` pole fraction is itself `O(chi^2)`."
+downstream_dependents: [96, 97, 99]
+provenance_findings: []

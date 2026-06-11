@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage148_canonical_first_order_shifts_exact__phase_b__delta_pi_lambda.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -123,9 +123,49 @@ source_evidence:
   line: 108
   role: sympy_script
   excerpt: print("(1-lambda_(Pi,0)) - xi_* =", residual)
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: delta_Pi_lambda
+  introduced_at_stage: 148
+  introduced_at_line: 99
+  citation:
+    path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+    line: 99
+    excerpt: \frac{\delta\Pi_\lambda}{\epsilon}
+constraints:
+- parameter: delta_Pi_lambda
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+    line: 95
+    excerpt: Because the first-order formulas are affine in \((\bar g_\varsigma,\bar S_\varsigma)\),
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: delta_Pi_lambda = 1.699414961314297 - 2.082408147410224*lambda is a DERIVED affine combination of the two endpoint
+    shifts dPi_u, dPi_d (themselves computed from the Stage 146/147 first-order retuning formulas evaluated at the canonical
+    Family-1 branch g_*, gp_*); it is forced by the affine structure of the first-order theory, so internal_consistency. The
+    entire chain rests on the canonical branch fixed by r_F1, whose underlying L/a=37/20 is a posited reference-branch freeze
+    (Stage 073:56), not derived nor external — recorded for the audit but not a contradiction at this stage.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+    line: 103
+    excerpt: 2.082408147410224\,\lambda,
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+downstream_dependents:
+- '154'
+- '155'
+- '156'
+- '157'
+- '158'
+- '159'
+- '160'
+- '161'
+- '162'
+- '163'
+synthesis_ingested_at: '2026-06-11T18:52:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_16/fit_stage148_canonical_first_order_shifts_exact__delta_pi_lambda.yaml

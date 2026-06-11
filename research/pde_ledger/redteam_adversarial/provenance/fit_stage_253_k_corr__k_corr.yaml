@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_253_k_corr__phase_b__k_corr.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -124,9 +124,35 @@ source_evidence:
   line: 187
   role: sympy_script
   excerpt: print(f"T_max coeff           = {T_max_coeff_num:.9f} * K_corr / t_*")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: K_corr
+  introduced_at_stage: 253
+  introduced_at_line: 432
+  citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 432
+    excerpt: \boxed{T_1 T = \mathcal K_{\rm corr}.}
+constraints:
+- parameter: K_corr
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 576
+    excerpt: 3. the material-dependent constants \(\zeta_{\rm ep}\) and \(\mathcal K_{\rm corr}\),
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: K_corr is the Korringa material constant (T_1*T = K_corr); it is kept symbolic and explicitly listed among the
+    open material-dependent constants to be supplied later. No numeric value is fitted or pinned in-stage, so no value genealogy
+    exists. It is intended as an external material input but the stage chooses/back-solves no value (so not published_target);
+    classified free_choice (open, to-be-supplied material parameter).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    line: 559
+    excerpt: Once \(t_*\) and \(\mathcal K_{\rm corr}\) are fixed, the aligned-spin survival condition becomes the exact ceiling
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T19:38:11Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage_253_k_corr__k_corr.yaml

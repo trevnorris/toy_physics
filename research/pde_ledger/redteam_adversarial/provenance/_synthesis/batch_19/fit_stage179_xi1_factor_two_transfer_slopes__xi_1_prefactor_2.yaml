@@ -1,0 +1,29 @@
+candidate_id: fit_stage179_xi1_factor_two_transfer_slopes
+parameter_name: Xi_1_prefactor_2
+origin_claims:
+  - parameter: Xi_1_prefactor_2
+    introduced_at_stage: 179
+    introduced_at_line: 251
+    citation:
+      path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+      line: 251
+      excerpt: "2\\sum_r \\rho_r^{(N)}\\tau_r."
+constraints:
+  - parameter: Xi_1_prefactor_2
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+      line: 227
+      excerpt: "\\kappa_1+2\\tau_r."
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Bundle source_evidence was empty; resolved by reading notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md. The candidate is the factor-2 prefactor in Xi_1 = 2 sum_r rho_r^(N) tau_r (notes line 251), equivalently the 2 in nu_r = kappa_1 + 2 tau_r (notes line 227). This 2 is DERIVED, not posited: it is the squaring exponent in the exact wall-normalized factorization N_{A,0}^(r) = K_A T_{A,r}^2 (notes lines 29, 218), so the log-slope picks up 2 x tau_r. Internal_consistency, no external (GR/PN) target. Low severity (gap noted because the mechanical bundle carried no evidence)."
+    citations:
+      - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+        line: 230
+        excerpt: "So the Stage 178 port slope is just the wall-baseline slope plus twice the transfer-shape slope."
+      - path: notes/stages/moving_throat_pde_stage179_transfer_shape_theorem.md
+        line: 29
+        excerpt: "N_{A,0}^{(r)} = K_A\\,\\mathcal T_{A,r}^2,"

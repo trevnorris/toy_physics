@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_184_lambda_0__phase_b__lambda_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -79,9 +79,41 @@ source_evidence:
   line: 130
   role: sympy_script
   excerpt: print("  delta ln[(R_target T^2)/Lambda0] = -(eps_eta/(1-eps_eta)) Sigma_eta")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Lambda_0
+  introduced_at_stage: 38
+  introduced_at_line: 32
+  citation:
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 32
+    excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+constraints:
+- parameter: Lambda_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+    line: 114
+    excerpt: \Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5},
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Lambda_0 = 27pi^2 G c_s^5/(20 a^5 c^5) is the scalar front factor of the radiative demand scale Lambda first introduced
+    at Stage 038; Stage 184 carries it as an inert front factor (R_target T^2 = Lambda_0(1-eps_eta)) without naming its 038
+    origin. Its G/c^5 structure sits on the chain that downstream (Stage 189) must land on the EXTERNAL GR quadrupole target
+    2G/(5c^5); the external-fit pressure is realized at m_hat_0^2 P_0, not in this carried prefactor.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+    line: 399
+    excerpt: \Lambda_0=\frac{27\pi^2Gc_s^5}{20a^5c^5},
+  - path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    line: 69
+    excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+downstream_dependents:
+- '180'
+- '181'
+- '189'
+synthesis_ingested_at: '2026-06-11T19:17:06Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_20/fit_stage_184_lambda_0__lambda_0.yaml

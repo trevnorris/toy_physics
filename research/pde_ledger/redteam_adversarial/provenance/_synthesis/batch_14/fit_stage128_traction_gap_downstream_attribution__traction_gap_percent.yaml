@@ -1,0 +1,19 @@
+candidate_id: fit_stage128_traction_gap_downstream_attribution
+parameter_name: traction_gap_percent
+origin_claims:
+  - parameter: traction_gap_percent
+    introduced_at_stage: 126
+    introduced_at_line: 65
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 65
+      excerpt: "So the exact Family-1 compensated branch is only a **3.61% traction enhancement** away from the self-matched derivative profile."
+constraints:
+  - parameter: traction_gap_percent
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 61
+      excerpt: "\\frac{\\pi/4}{\\mathfrak g_-^{F1}}"
+downstream_dependents: [128]
+provenance_findings: []

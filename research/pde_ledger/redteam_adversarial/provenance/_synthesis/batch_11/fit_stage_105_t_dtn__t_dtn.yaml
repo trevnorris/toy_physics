@@ -1,0 +1,12 @@
+candidate_id: fit_stage_105_t_dtn
+parameter_name: T_dtn
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "No symbol literally named 'T_dtn' appears in any stage-105 source (notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md, paper/stages/stage_105.tex, or the sympy audit script), nor anywhere under notes/ in the ledger. A repo-wide search finds 'T_dtn' only inside redteam-audit metadata files (MANIFEST/fit_insertion_points/phase_a fragments), not in the derivation sources. The bundle's notes citations point at generic DtN-fingerprint/deformation prose (e.g. 'Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar', line 5), none of which define or value a parameter 'T_dtn'. T_dtn appears to be a scanner-derived pseudo-parameter (likely a tokenization of 'DtN' text) with no genuine ledger value; no notes/ text supports an origin or constraint, so none is fabricated."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md, line: 5, excerpt: "Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar" }
+      - { path: redteam_adversarial/provenance/fit_stage_105_t_dtn__t_dtn.yaml, line: 3, excerpt: "parameter_name: T_dtn" }

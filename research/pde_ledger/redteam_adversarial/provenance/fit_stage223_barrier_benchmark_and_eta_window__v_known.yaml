@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage223_barrier_benchmark_and_eta_window__phase_b__v_known.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -47,9 +47,53 @@ source_evidence:
   line: 409
   role: sympy_script
   excerpt: print('30% loss benchmark:')
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: V_known
+  introduced_at_stage: 222
+  introduced_at_line: 352
+  citation:
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 352
+    excerpt: V_{\rm known}(1)\approx 1.181909222592,
+constraints:
+- parameter: V_known
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 329
+    excerpt: 'Carry forward the same illustrative local barrier benchmark from Stage 222 at \(x=1\):'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: The barrier benchmark value V_known(1)=1.181909222592 is hardcoded as an 'illustrative' Float in the stage 222/223
+    audit scripts; no notes/ or script text derives it or names an external published barrier height it matches. Its numerical
+    genealogy below stage 222 is undocumented.
+  citations:
+  - path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+    line: 296
+    excerpt: V_known = sp.Float('1.181909222592')
+  - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 213
+    excerpt: V_known = sp.Float('1.181909222592')
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: Phase-B taxonomy hint lists 'V_known barrier imported at 222-224' as a published_target example, but the notes
+    describe it only as an 'illustrative reduced barrier benchmark' with no external source named and no back-solve shown;
+    classified free_choice on the evidence (posited illustrative number) rather than published_target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    line: 350
+    excerpt: 'Carry forward the same illustrative reduced barrier benchmark at \(x=1\):'
+  - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    line: 334
+    excerpt: V_{\mathrm{known}}(1)\approx 1.181909222592,
+downstream_dependents:
+- '224'
+- '225'
+- '226'
+- '227'
+synthesis_ingested_at: '2026-06-11T19:17:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_24/fit_stage223_barrier_benchmark_and_eta_window__v_known.yaml

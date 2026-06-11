@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_101_delta_q__phase_b__delta_q.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -96,9 +96,37 @@ source_evidence:
   line: 51
   role: sympy_script
   excerpt: '''small-DeltaQ series does not match -DeltaQ + DeltaQ**2'''
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: Delta_Q
+  introduced_at_stage: 101
+  introduced_at_line: 65
+  citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 65
+    excerpt: '`Delta_Q := chi_Q - 1`.'
+constraints:
+- parameter: Delta_Q
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 65
+    excerpt: '`Delta_Q := chi_Q - 1`.'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Stage 101 notes carry a stale pre-renumber cross-reference 'Stage 83 showed ...' for the upstream factorization
+    that Delta_Q := chi_Q - 1 is built on; canonical predecessor is the stage-100 odd-normalization factorization, not Stage
+    83.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    line: 5
+    excerpt: Stage 83 showed that the full odd normalization condition factorizes exactly as
+downstream_dependents:
+- '102'
+- '103'
+- '106'
+synthesis_ingested_at: '2026-06-11T18:54:49Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_11/fit_stage_101_delta_q__delta_q.yaml

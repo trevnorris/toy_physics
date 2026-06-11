@@ -1,0 +1,24 @@
+candidate_id: fit_stage253_calibration_slice_nominal_constants
+parameter_name: gamma_lattice_legacy
+origin_claims:
+  - parameter: gamma_lattice_legacy
+    introduced_at_stage: 253
+    introduced_at_line: 222
+    citation:
+      path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+      line: 222
+      excerpt: "\\gamma_{\\rm lattice}^{\\rm red}\\approx 4.79562976."
+constraints:
+  - parameter: gamma_lattice_legacy
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+      line: 952
+      excerpt: "`4.79562976` is a carried forward legacy Session-V reduced lattice-rate input"
+downstream_dependents: []
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "gamma_lattice_legacy=4.79562976 is a carried-forward legacy Session-V phenomenological reduced lattice-rate; its true origin is the older Session-V envelope map, not a Stage-253 derivation. Stage 253 uses it only in the declared legacy-slice recovery (Upsilon_lat^(sess) = gamma_lat,safe^eq / gamma_lattice^red)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md, line: 220, excerpt: "Session V used the phenomenological reduced lattice rate" }

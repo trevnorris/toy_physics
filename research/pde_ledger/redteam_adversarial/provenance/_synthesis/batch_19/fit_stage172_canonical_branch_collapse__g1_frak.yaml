@@ -1,0 +1,19 @@
+candidate_id: fit_stage172_canonical_branch_collapse
+parameter_name: G1_frak
+origin_claims:
+  - parameter: G1_frak
+    introduced_at_stage: 172
+    introduced_at_line: 34
+    citation:
+      path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+      line: 34
+      excerpt: "\\mathfrak G_1=D_0\\,P_1,"
+constraints:
+  - parameter: G1_frak
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+      line: 166
+      excerpt: "So the Stage 171 outlet-obstruction pair has now been rewritten directly in the physical grouped response variables:"
+downstream_dependents: [173]
+provenance_findings: []

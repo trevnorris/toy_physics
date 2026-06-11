@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_111_a_0__phase_b__a_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -23,9 +23,36 @@ source_evidence:
   line: 77
   role: notes_stage
   excerpt: \boxed{(b,a_0,a_5)=(0,-\sigma_W,-\sigma_W\gamma_W).}
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: a_0
+  introduced_at_stage: 109
+  introduced_at_line: 15
+  citation:
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    line: 15
+    excerpt: \Sigma_0=\varepsilon a_0,
+constraints:
+- parameter: a_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 77
+    excerpt: \boxed{(b,a_0,a_5)=(0,-\sigma_W,-\sigma_W\gamma_W).}
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: At Stage 111 the static slot a_0 is identified with the (negative) mixed loading a_0=-sigma_W via the linearized
+    branch-selection triple; the identification is internal_consistency (the mixed model's static slot maps onto the a_0 coordinate).
+    a_0 has no fixed numeric value here; it tracks the posited mixed-loading parameter sigma_W (whose own preservation value
+    is forced to 0 — see fit_stage111_sigmaW_forced_to_zero).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    line: 75
+    excerpt: So the linearized branch-selection triple is
+downstream_dependents:
+- '112'
+synthesis_ingested_at: '2026-06-11T18:51:52Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_12/fit_stage_111_a_0__a_0.yaml

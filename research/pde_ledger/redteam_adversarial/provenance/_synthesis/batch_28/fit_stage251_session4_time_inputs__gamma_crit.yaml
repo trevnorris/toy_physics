@@ -1,0 +1,25 @@
+candidate_id: fit_stage251_session4_time_inputs
+parameter_name: gamma_crit
+origin_claims:
+  - parameter: gamma_crit
+    introduced_at_stage: 251
+    introduced_at_line: 455
+    citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 455
+      excerpt: " \\gamma_{\\rm crit}\\approx 6.94311167,"
+constraints:
+  - parameter: gamma_crit
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+      line: 562
+      excerpt: "is not a theorem of the minimal microscopic kernel. It is a property of the Session-IV envelope closure."
+downstream_dependents: []
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "gamma_crit ~= 6.94311167 is a Session-IV envelope-closure readback. At line 461 the notes IDENTIFY s_0 (the microscopic growth rate sqrt(kappa_V/mu_eta)=1/t_collapse,0) with gamma_crit, and the script (line 198) asserts 1/t_collapse_0 == gamma_crit to 1e-6. So the microscopic-derived growth scale s_0 is back-fitted to the phenomenological gamma_crit benchmark number rather than computed independently from kappa_V, mu_eta -- a derive-leaning quantity (s_0) anchored to a closure-specific reported value. The notes flag the agreement is 'only to displayed report precision'."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md, line: 461, excerpt: " s_0\\approx \\gamma_{\\rm crit}\\approx 6.94311167." }
+      - { path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py, line: 198, excerpt: "assert abs(s0_from_t_num - s0_num) < 1e-6" }

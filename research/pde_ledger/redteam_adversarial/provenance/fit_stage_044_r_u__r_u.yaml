@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_044_r_u__phase_b__r_u.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -181,8 +181,21 @@ source_evidence:
   line: 123
   role: sympy_script
   excerpt: (xi * (delta + xi) - Mmix * (delta + (1 + lambda0 * RU**2) * xi))
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: R_U
+  introduced_at_stage: 39
+  introduced_at_line: 35
+  citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 35
+    excerpt: '`R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`'
+constraints:
+- parameter: R_U
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+    line: 27
+    excerpt: Collect the actual continuum outputs from Stages 22 and 26.
 graph_context:
   contexts: []
   graph_gaps:
@@ -203,3 +216,17 @@ provenance_findings:
     - research/pde_ledger/paper/stages/stage_044.tex
     graph_gap: true
     reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: R_U is the mixed-direction factor whose value originates upstream (Stage 039 per the Stage-043 cross-reference
+    notes line 105/107, and the Stage-044 notes line 27 'continuum outputs from Stages 22 and 26'). Stage 044 only carries/inserts
+    it. Origin attributed to Stage 039; recorded for genealogy.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+    line: 107
+    excerpt: '`R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`'
+downstream_dependents:
+- '044'
+- '045'
+synthesis_ingested_at: '2026-06-11T18:26:02Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_05/fit_stage_044_r_u__r_u.yaml

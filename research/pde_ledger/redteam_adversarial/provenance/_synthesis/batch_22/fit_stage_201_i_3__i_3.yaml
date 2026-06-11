@@ -1,0 +1,19 @@
+candidate_id: fit_stage_201_i_3
+parameter_name: I_3
+origin_claims:
+  - parameter: I_3
+    introduced_at_stage: 192
+    introduced_at_line: 200
+    citation:
+      path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+      line: 200
+      excerpt: "\\boxed{M_*S_{(T,K_\\eta,\\mu)}=I_3.}"
+constraints:
+  - parameter: I_3
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+      line: 305
+      excerpt: "M_*S_{(T,K_\\eta,\\mu)}=I_3,"
+downstream_dependents: [202]
+provenance_findings: []

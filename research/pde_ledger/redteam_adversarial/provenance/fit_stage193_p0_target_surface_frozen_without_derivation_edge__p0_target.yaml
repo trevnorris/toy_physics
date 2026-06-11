@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage193_p0_target_surface_frozen_without_derivation_edge__phase_b__p0_target.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -130,9 +130,59 @@ source_evidence:
   line: 177
   role: sympy_script
   excerpt: print("5. Stage 193 therefore freezes the first new audited theorem target after Stage 192:")
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: P0_target
+  introduced_at_stage: 191
+  introduced_at_line: 190
+  citation:
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 190
+    excerpt: ' \frac{54Gc_s^5}{5a^5c^5}.'
+constraints:
+- parameter: P0_target
+  constraint_kind: published_target
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 71
+    excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: derive_vs_fit_mismatch
+  severity: high
+  summary: 'P0_target = 54 G c_s^5/(5 a^5 c^5) is an EXTERNAL GR/PN matching target, not a ledger-internal derivation: it
+    carries Newton''s constant G and the speed-of-light c, and it is the value the completed PDE must HIT (it is literally
+    named the ''Packet-A target scale'', 195 line 70-71, and is the subtrahend in the normalization defect Delta_norm:=m_0^2
+    P_bar_0 - 54 G c_s^5/(5 a^5 c^5), 191 line 187-190). It first enters at stage 191 (line 190). The candidate is anchored
+    to stage 193 (''frozen_without_derivation_edge''), and indeed the stage-193 PER-STAGE NOTES never define or state P0_target
+    — it appears at 193 ONLY in the card''s shared boilerplate (Inputs/ledger/checks reused across 192-195). So the 193 card
+    asserts a ''target surface'' whose actual target number has no derivation edge in the 193 notes; the number is a published_target
+    imported from the GR quadrupole/PN normalization, carried (not derived) through 191->195. The 54/5 structure is the same
+    external-target family flagged in the audit charter (P0_target / 54/5).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 187
+    excerpt: \Delta_{\rm norm}
+  - path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    line: 190
+    excerpt: ' \frac{54Gc_s^5}{5a^5c^5}.'
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 71
+    excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
+- type: paper_card_overclaim
+  severity: needs_triage
+  summary: Stage-193 card describes 'isotropic grouped target surface' and references the source-map/outgoing-DtN package,
+    but the 193 notes are purely the conservative isotropy + one-pole + Schur-firewall theorem; the concrete external target
+    P0_target is documented only at 191 (defect) and 195 (named scale). The 193 candidate's 'target surface frozen' framing
+    has no P0_target derivation edge in its own notes.
+  citations:
+  - path: paper/stages/stage_193.tex
+    line: 9
+    excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing
+      \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
+      line.}
+downstream_dependents:
+- '195'
+synthesis_ingested_at: '2026-06-11T19:18:45Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_21/fit_stage193_p0_target_surface_frozen_without_derivation_edge__p0_target.yaml

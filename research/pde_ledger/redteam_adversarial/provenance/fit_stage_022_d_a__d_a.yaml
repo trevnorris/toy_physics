@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_d_a__phase_b__d_a.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -72,8 +72,21 @@ source_evidence:
   line: 144
   role: notes_stage
   excerpt: '- `D_A^(cons)` tells us the grouped response moments `u_2^(A), u_4^(A)`,'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: D_A
+  introduced_at_stage: 18
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 30
+    excerpt: '`D_A^(cons)(omega) = D_{A0} + D_{A2} omega^2 + D_{A4} omega^4 + O(omega^6)`.'
+constraints:
+- parameter: D_A
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 47
+    excerpt: 1. the conservative operator `D_A^(cons)`,
 graph_context:
   contexts:
   - source: paper/stages/stage_022.tex
@@ -161,4 +174,23 @@ graph_context:
         match_score: 0.655
         confidence: medium
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: D_A (the conservative grouped-lane operator D_A^(cons)(omega) per lane A in {20,21,22}) is a carried symbolic structural
+    object, not a value. It is an INPUT to stage 022 ('Stage 022 does not reopen the earlier reductions. It takes them as
+    the conservative front end', note line 39) and its coefficients D_{A0},D_{A2},D_{A4} absorb the geometry/BdG/Maxwell-mixed
+    self-energy. No numeric value is assigned; constraint logged free_choice (open structural input). The only notes/ support
+    is the structural definition at stage 022 itself; the full-bundle definition is at stage 023/024.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    line: 39
+    excerpt: So Stage 022 does **not** reopen the earlier reductions. It takes them as the conservative front end.
+  - path: paper/stages/stage_022.tex
+    line: 9
+    excerpt: The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\)
+downstream_dependents:
+- 019
+- '020'
+synthesis_ingested_at: '2026-06-11T18:25:24Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_02/fit_stage_022_d_a__d_a.yaml

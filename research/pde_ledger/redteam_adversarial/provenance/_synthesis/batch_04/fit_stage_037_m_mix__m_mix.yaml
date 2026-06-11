@@ -1,0 +1,25 @@
+candidate_id: fit_stage_037_m_mix
+parameter_name: M_mix
+origin_claims:
+  - parameter: M_mix
+    introduced_at_stage: 036
+    introduced_at_line: 56
+    citation:
+      path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+      line: 56
+      excerpt: "`M_mix := 8 alpha_mix / (pi^2 A)`"
+constraints:
+  - parameter: M_mix
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+      line: 257
+      excerpt: "`M_mix`"
+downstream_dependents: [038, 039]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate keyed to stage 037, but M_mix is DEFINED at stage 036 (M_mix := 8 alpha_mix/(pi^2 A)). Stage 037 supplies its exact closed continuum-kernel form M_mix = 8(K_U c_etaW + c_UW c_etaU)^2/[pi^2 (K_U K_eta^eff - c_etaU^2)(K_U K_W^eff - c_UW^2 sigma)] (notes lines 257-260; audit verifies 'M_mix continuum formula'). Internal_consistency; this is a duplicate-parameter scanner hit with fit_stage_036_m_mix (same M_mix, origin 036)."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md, line: 213, excerpt: "`M_mix = 8 alpha_mix / (pi^2 A),`" }
+      - { path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py, line: 191, excerpt: "expect_zero(\"M_mix continuum formula\", M_mix - M_mix_expected)" }

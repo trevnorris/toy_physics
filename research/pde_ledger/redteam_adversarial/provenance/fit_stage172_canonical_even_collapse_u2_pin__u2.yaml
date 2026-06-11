@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage172_canonical_even_collapse_u2_pin__phase_b__u2.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -91,9 +91,41 @@ source_evidence:
   line: 117
   role: sympy_script
   excerpt: (delta_kappa + 3 * (1 - sigma) * delta_u2 / sigma).subs(u2, sp.Rational(1, 9)),
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: u2
+  introduced_at_stage: 104
+  introduced_at_line: 58
+  citation:
+    path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+    line: 58
+    excerpt: 1+\frac{z^2}{9}
+constraints:
+- parameter: u2
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 73
+    excerpt: On the canonical compensated even branch we carry
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: low
+  summary: 'u2 = 1/9 is the canonical-even fingerprint pinned in the stage 172 audit script (''Canonical-even collapse at
+    u2 = 1/9'', sympy_audit line 71; u2_star = sp.Rational(1,9), line 83). Stage 172 notes carry the value forward (''On the
+    canonical compensated even branch we carry u_2=1/9'', notes lines 73-75; ''(u_2,u_4)=(1/9,4/81)'', line 238) and do not
+    originate it. The numeric 1/9 is first derived at Stage 104 from the normalized outgoing l=2 DtN admittance (z^2/9, stage
+    104 notes line 58). Internal_consistency: the pin enforces preservation of a ledger-derived fingerprint, not a match to
+    any external number. Low severity (gap noted because the bundle''s evidence was script-only).'
+  citations:
+  - path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+    line: 75
+    excerpt: u_2=\frac19,
+  - path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+    line: 83
+    excerpt: u2_star = sp.Rational(1, 9)
+downstream_dependents:
+- '173'
+synthesis_ingested_at: '2026-06-11T19:16:54Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_19/fit_stage172_canonical_even_collapse_u2_pin__u2.yaml

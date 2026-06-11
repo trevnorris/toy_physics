@@ -1,0 +1,19 @@
+candidate_id: fit_stage126_xi_star_admixture_backsolve
+parameter_name: xi_star
+origin_claims:
+  - parameter: xi_star
+    introduced_at_stage: 126
+    introduced_at_line: 101
+    citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 101
+      excerpt: "\\approx 0.183918405511538."
+constraints:
+  - parameter: xi_star
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+      line: 91
+      excerpt: "\\mathfrak g_{\\xi_*}=\\mathfrak g_-^{F1}."
+downstream_dependents: [126]
+provenance_findings: []

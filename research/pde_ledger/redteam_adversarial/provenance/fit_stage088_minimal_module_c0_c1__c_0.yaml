@@ -5,7 +5,7 @@ dry_run: false
 dry_run_id: null
 non_binding: false
 generated_content_kind: mechanical_evidence_bundle
-synthesis_status: pending
+synthesis_status: complete
 agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage088_minimal_module_c0_c1__phase_b__c_0.md
 agent_synthesis_required: true
 dry_run_fixture: false
@@ -171,9 +171,38 @@ source_evidence:
   line: 103
   role: sympy_script
   excerpt: 'zeta_min = sp.simplify(zeta_from_c.subs({c0: c0_paper, c1: c1_paper}))'
-origin_claims: []
-constraints: []
+origin_claims:
+- parameter: c_0
+  introduced_at_stage: 88
+  introduced_at_line: 17
+  citation:
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 17
+    excerpt: '`c0 = 3/4,`'
+constraints:
+- parameter: c_0
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 83
+    excerpt: '`c0 = 3/4,`'
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: c_0=3/4 is the minimal isotropic module contact coefficient, posited at Stage 088 as 'already fixed' by the upstream
+    2.5PN quadrupole audit; the 088 note pins no stage where the value 3/4 was itself derived. (The grouped-P2+static-geometry
+    forcing of 3/4 is established later at Stages 091-094.) At Stage 088 it is a free_choice import.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 81
+    excerpt: The 2.5PN quadrupole audit already fixed the smallest viable isotropic conservative precursor to
+downstream_dependents:
+- 089
+- 090
+- 091
+- 096
+synthesis_ingested_at: '2026-06-11T18:26:39Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage088_minimal_module_c0_c1__c_0.yaml

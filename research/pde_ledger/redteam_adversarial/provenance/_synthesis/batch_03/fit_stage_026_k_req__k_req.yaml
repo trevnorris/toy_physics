@@ -1,0 +1,30 @@
+candidate_id: fit_stage_026_k_req
+parameter_name: K_req
+origin_claims:
+  - parameter: K_req
+    introduced_at_stage: 26
+    introduced_at_line: 214
+    citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 214
+      excerpt: "`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`"
+constraints:
+  - parameter: K_req
+    constraint_kind: published_target
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+      line: 212
+      excerpt: "It can be solved exactly for the required wall stiffness:"
+downstream_dependents: [27]
+provenance_findings:
+  - type: derive_vs_fit_mismatch
+    severity: needs_triage
+    summary: "Third candidate id resolving to the same K_req back-solve to the external GR target. K_req = B0 + Q/Delta + mhat^2 kappa^2 (...)^2/(target Delta^2); value fixed by the published GR quadrupole number, classification published_target."
+    citations:
+      - { path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py, line: 197, excerpt: "K_req = sp.solve(sp.Eq(residual, 0), K)[0]" }
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The scanner attached the literal value '8' to this K_req candidate, but no literal 8 appears anywhere in the stage-026 K_req definition; K_req is a symbolic three-term formula (B0 + Q/Delta + a target-dependent load), never the integer 8. The '8' is a scanner mis-extraction (likely a stray token, not the parameter's value). Logged so ingest does not record K_req=8."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md, line: 214, excerpt: "`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`" }
+      - { path: paper/stages/stage_026.tex, line: 115, excerpt: "K_{\\rm req}" }

@@ -10,7 +10,7 @@
 
 \stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage101_natural_source_map_reduction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage101_natural_source_map_reduction_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
 
 \begin{quote}
 On the natural point-particle source map, \(\widehat m_0\to1\), so the last obstruction is purely \(\chi_Q\).
@@ -25,4 +25,3 @@ On the natural point-particle source map, \(\widehat m_0\to1\), so the last obst
 \end{verificationchecklist}}
 
 \stagefield{Downstream use}{This stage feeds Stages~107--113, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
-

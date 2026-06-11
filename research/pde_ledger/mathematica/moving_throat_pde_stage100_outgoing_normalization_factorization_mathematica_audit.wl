@@ -27,11 +27,13 @@ banner["STAGE 100 — OUTGOING NORMALIZATION FACTORIZATION"];
 
 (* Carry-forward annotations (per batch-IV1-paper-alignment Cluster B (c)):
    - Check (ii) higher odd terms beyond 2.5PN: anchored at stage 102.
-   - Check (iii) DtN l=2 fingerprint pinning chi_Q = 1: anchored at stage 097.
+   - Check (iii) DtN l=2 fingerprint / chi_Q = 1 coefficient match:
+     exact fingerprint at stage 104; chi_Q fixed downstream at stage 105.
    This stage owns Check (i): the mhat_0^2 chi_Q N_Q = 1 closure derived below. *)
 
 Clear[gNewton, cLight, omegaQ, k0, mHat0, chiQ, omega];
-(* chi_Q is a free real parameter here; its pin to 1 is upstream (stage 097). *)
+(* chi_Q is a free real parameter here; its pin to 1 is downstream at stage 105
+   after the exact outgoing DtN fingerprint is proved at stage 104. *)
 $Assumptions =
   Element[{gNewton, cLight, omegaQ, k0, mHat0, omega}, Reals] &&
   Element[chiQ, Reals] &&

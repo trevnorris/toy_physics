@@ -37,7 +37,7 @@ So:
 
 ## 2. Canonical compact outgoing branch
 
-Stage 80 already fixed the unique minimal passive/outgoing grouped-`P2` one-pole completion that matches the exact compact outgoing `l=2` fingerprint:
+Stage 097 reduced the actual isotropic passive/outgoing grouped-`P2` branch to a single normalization-defect context, and Stage 104 proves the exact compact outgoing `l=2` fingerprint matched by the canonical one-pole completion:
 
 `Yhat_Q^ret(omega)`
 `= 3/4 + (1/4)/(1 - omega^2/Omega_Q^2 - i sigma_Q^can omega^5) + O(omega^6),`
@@ -46,7 +46,7 @@ with
 
 `sigma_Q^can = 9/(8 Omega_Q^5) = 4 a^5/(27 c_s^5)`.
 
-By definition, that canonical compact outgoing branch has
+Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint, giving
 
 `chi_Q = 1`.
 

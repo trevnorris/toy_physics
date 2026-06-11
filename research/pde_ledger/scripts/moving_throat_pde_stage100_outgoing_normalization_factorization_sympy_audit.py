@@ -9,9 +9,10 @@ Carry-forward annotations (per [[batch-IV1-paper-alignment]] Cluster B direction
        extension and the tauQ-derivative gate; this stage's series truncates
        at omega^5 by design.
   (iii) "outgoing l=2 DtN fingerprint against the normalized z=omega a/c_s
-       expansion" — the chi_Q = 1 identification by DtN comparison lives at
-       stage 097 (single_normalization_defect); this stage carries chi_Q as
-       a free real symbol.
+       expansion" — stage 104 proves the exact outgoing fingerprint, and stage
+       105 (chiQ_fix_from_outgoing_dtn) identifies chi_Q = 1 by DtN coefficient
+       matching. Both are downstream of this stage, so this stage carries chi_Q
+       as a free real symbol.
 This stage owns Check (i) — the `mhat_0^2 chi_Q N_Q = 1` closure — which is
 derived below by imposing the observable-side condition `mhat_0^2 * Gamma_5 =
 Gamma_5_target` on the script-derived Gamma_5(K_0, chi_Q, Omega).
@@ -23,8 +24,9 @@ G, c = sp.symbols('G c', positive=True, real=True)
 Omega = sp.symbols('Omega', positive=True, real=True)
 K0, mhat0 = sp.symbols('K0 mhat0', positive=True, real=True)
 # chi_Q is a free real parameter at this stage. Its pinning to 1 by the l=2
-# DtN fingerprint is upstream (stage 097). Declaring it positive would falsely
-# constrain the factorization assertion below.
+# DtN coefficient match is deferred downstream to stage 105, after the exact
+# outgoing fingerprint is proved at stage 104. Declaring it positive would
+# falsely constrain the factorization assertion below.
 chiQ = sp.symbols('chiQ', real=True)
 NQ = sp.symbols('N_Q', positive=True, real=True)
 omega = sp.symbols('omega', real=True)

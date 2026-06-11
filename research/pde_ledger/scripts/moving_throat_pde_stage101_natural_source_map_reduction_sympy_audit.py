@@ -9,10 +9,10 @@ Carry-forward annotations (per [[batch-IV1-paper-alignment]] Cluster B direction
       extension and tauQ-derivative gates verify the first non-(omega^2,
       omega^5) term sits at omega^7, in both engines.
   (3) "outgoing l=2 DtN fingerprint vs normalized z=omega a/c_s expansion"
-      — anchored at stage 097 (single_normalization_defect); the chi_Q = 1
-      identification by DtN comparison lives there. Notes line 41-51 of this
-      stage explicitly attributes the canonical compact branch's chi_Q = 1
-      to that upstream stage.
+      — exact fingerprint at stage 104 (outgoing_dtn_fingerprint), and the
+      chi_Q = 1 identification by DtN coefficient matching at stage 105
+      (chiQ_fix_from_outgoing_dtn). Stage 097 establishes the single-defect
+      branch context; it does not perform the chi_Q solve.
 This stage owns Check (1) — the factorization mhat_0^2 chi_Q N_Q = 1 keeping
 source, conservative, and outgoing factors separate — verified below via
 substantive input-equation anchors.

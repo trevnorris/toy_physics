@@ -1,2 +1,105 @@
 schema_version: 1
-entries: []
+entries:
+- family_id: fam_0457_m_s
+  claim: Ledger imports 1836.15267343 (stage 250 proton-proxy benchmark) as a match to the CODATA proton-to-electron mass
+    ratio m_p/m_e.
+  value: '1836.152 673 43(11)  [2018 CODATA: standard uncertainty 0.000 000 11, relative u_r = 6.0e-11]. Current 2022 CODATA
+    value: 1836.152 673 426(32), relative u_r = 1.7e-11.'
+  source_type: CODATA
+  source_citation: NIST CODATA, proton-electron mass ratio (m_p/m_e), https://physics.nist.gov/cgi-bin/cuu/Value?mpsme ; CODATA
+    Internationally recommended values of the fundamental physical constants (2018 and 2022 adjustments).
+  obtained_note: 'WebFetch of https://physics.nist.gov/cgi-bin/cuu/Value?mpsme on 2026-06-11 returned the current 2022 value
+    1836.152 673 426(32), u_r=1.7e-11. WebSearch (NIST/CODATA 2018 sources incl. physics.nist.gov/cuu/pdf/wallet_2018.pdf,
+    all_2018.pdf) confirmed the 2018 value 1836.152 673 43(11), u=0.000 000 11, u_r=6.0e-11. AGREEMENT: the ledger''s 1836.15267343
+    matches the 2018 CODATA value EXACTLY to all printed digits; it is the 2018 release (NOT 2014, NOT 2022). The 2022 value
+    shifted to 1836.152 673 426(32), still consistent within uncertainty but with more digits, so the ledger number is specifically
+    the 2018 CODATA recommended value.'
+  id: bench_051666ee239b
+  ingested_at: '2026-06-11T19:49:46Z'
+  ingested_from: redteam_adversarial/provenance/_benchmarks_sourced.yaml
+- family_id: fam_0187_p0_target
+  claim: Ledger back-solves P0_target to gamma_GR = 2 G / (5 c^5), the standard GR mass-quadrupole gravitational radiation-reaction
+    / luminosity normalization (the dimensionless 2/5; quadrupole luminosity coefficient G/(5 c^5)).
+  value: 'Quadrupole gravitational-wave luminosity L = dE/dt = (G / 5 c^5) < d^3 Q_ij/dt^3 . d^3 Q_ij/dt^3 > using the reduced
+    (traceless) mass quadrupole Q_ij. Coefficient = G/(5 c^5); equivalently G/(45 c^5) when written with the non-reduced quadrupole.
+    Circular-binary luminosity carries 32/5: L = (32/5)(G/c^5) mu^2 a^4 omega^6. The radiation-reaction normalization is the
+    2/5 factor.'
+  source_type: textbook
+  source_citation: 'P. C. Peters, ''Gravitational Radiation and the Motion of Two Point Masses'', Phys. Rev. 136, B1224 (1964),
+    DOI 10.1103/PhysRev.136.B1224 (ADS bibcode 1964PhRv..136.1224P); see also M. Maggiore, ''Gravitational Waves, Vol. 1:
+    Theory and Experiments'', Oxford Univ. Press (2007), ISBN 978-0-19-857074-5, Ch. 3 (quadrupole formula L = (G/5c^5)<dddQ_ij
+    dddQ_ij>).'
+  obtained_note: 'WebSearch on 2026-06-11 (queries on the quadrupole luminosity formula and Maggiore Vol.1) returned the explicit
+    formula L_GW = (1/5)(G/c^5)<d^3 Q_ij/dt^3 d^3 Q_ij/dt^3> with the reduced/traceless quadrupole, confirming the G/(5 c^5)
+    coefficient and hence the 2/5; the equivalent non-reduced form carries G/(45 c^5). The 32/5 circular-binary coefficient
+    was confirmed via the Peters & Mathews search (P0 = (32/5 c^5)... for a circular orbit). The primary paper Peters 1964
+    Phys. Rev. 136, B1224 was confirmed by WebSearch (Semantic Scholar + NASA ADS 1964PhRv..136.1224P + OSTI 4688457) with
+    DOI 10.1103/PhysRev.136.B1224; the APS full text (link.aps.org) returned HTTP 403 (paywall) so the coefficient itself
+    was confirmed from the open lecture/textbook search extractions, not the paywalled APS page. AGREEMENT: the ledger''s
+    gamma_GR = 2G/(5c^5) uses exactly the standard 2/5 / G/(5c^5) quadrupole radiation-reaction normalization.'
+  id: bench_2e5805a359c4
+  ingested_at: '2026-06-11T19:49:46Z'
+  ingested_from: redteam_adversarial/provenance/_benchmarks_sourced.yaml
+- family_id: fam_0458_m_s_ratio_1836
+  claim: Ledger imports 1836.15267343 (stage 250 proton-proxy benchmark) as a match to the CODATA proton-to-electron mass
+    ratio m_p/m_e.
+  value: '1836.152 673 43(11)  [2018 CODATA: standard uncertainty 0.000 000 11, relative u_r = 6.0e-11]. Current 2022 CODATA
+    value: 1836.152 673 426(32), relative u_r = 1.7e-11.'
+  source_type: CODATA
+  source_citation: NIST CODATA, proton-electron mass ratio (m_p/m_e), https://physics.nist.gov/cgi-bin/cuu/Value?mpsme ; CODATA
+    Internationally recommended values of the fundamental physical constants (2018 and 2022 adjustments).
+  obtained_note: 'WebFetch of https://physics.nist.gov/cgi-bin/cuu/Value?mpsme on 2026-06-11 returned the current 2022 value
+    1836.152 673 426(32), u_r=1.7e-11. WebSearch (NIST/CODATA 2018 sources incl. physics.nist.gov/cuu/pdf/wallet_2018.pdf,
+    all_2018.pdf) confirmed the 2018 value 1836.152 673 43(11), u=0.000 000 11, u_r=6.0e-11. AGREEMENT: the ledger''s 1836.15267343
+    matches the 2018 CODATA value EXACTLY to all printed digits; it is the 2018 release (NOT 2014, NOT 2022). The 2022 value
+    shifted to 1836.152 673 426(32), still consistent within uncertainty but with more digits, so the ledger number is specifically
+    the 2018 CODATA recommended value.'
+  id: bench_5d8d048b10f9
+  ingested_at: '2026-06-11T19:49:46Z'
+  ingested_from: redteam_adversarial/provenance/_benchmarks_sourced.yaml
+- family_id: fam_0174_n_q
+  claim: Ledger back-solves to gamma_GR = 2 G / (5 c^5), the standard GR mass-quadrupole gravitational radiation-reaction
+    / luminosity normalization (the dimensionless 2/5; quadrupole luminosity coefficient G/(5 c^5)).
+  value: 'Quadrupole gravitational-wave luminosity L = dE/dt = (G / 5 c^5) < d^3 Q_ij/dt^3 . d^3 Q_ij/dt^3 > using the reduced
+    (traceless) mass quadrupole Q_ij. Coefficient = G/(5 c^5); equivalently G/(45 c^5) when written with the non-reduced quadrupole.
+    Circular-binary luminosity carries 32/5: L = (32/5)(G/c^5) mu^2 a^4 omega^6. The radiation-reaction normalization is the
+    2/5 factor.'
+  source_type: textbook
+  source_citation: 'P. C. Peters, ''Gravitational Radiation and the Motion of Two Point Masses'', Phys. Rev. 136, B1224 (1964),
+    DOI 10.1103/PhysRev.136.B1224 (ADS bibcode 1964PhRv..136.1224P); see also M. Maggiore, ''Gravitational Waves, Vol. 1:
+    Theory and Experiments'', Oxford Univ. Press (2007), ISBN 978-0-19-857074-5, Ch. 3 (quadrupole formula L = (G/5c^5)<dddQ_ij
+    dddQ_ij>).'
+  obtained_note: 'WebSearch on 2026-06-11 (queries on the quadrupole luminosity formula and Maggiore Vol.1) returned the explicit
+    formula L_GW = (1/5)(G/c^5)<d^3 Q_ij/dt^3 d^3 Q_ij/dt^3> with the reduced/traceless quadrupole, confirming the G/(5 c^5)
+    coefficient and hence the 2/5; the equivalent non-reduced form carries G/(45 c^5). The 32/5 circular-binary coefficient
+    was confirmed via the Peters & Mathews search (P0 = (32/5 c^5)... for a circular orbit). The primary paper Peters 1964
+    Phys. Rev. 136, B1224 was confirmed by WebSearch (Semantic Scholar + NASA ADS 1964PhRv..136.1224P + OSTI 4688457) with
+    DOI 10.1103/PhysRev.136.B1224; the APS full text (link.aps.org) returned HTTP 403 (paywall) so the coefficient itself
+    was confirmed from the open lecture/textbook search extractions, not the paywalled APS page. AGREEMENT: the ledger''s
+    gamma_GR = 2G/(5c^5) uses exactly the standard 2/5 / G/(5c^5) quadrupole radiation-reaction normalization.'
+  id: bench_62250fff83d4
+  ingested_at: '2026-06-11T19:49:46Z'
+  ingested_from: redteam_adversarial/provenance/_benchmarks_sourced.yaml
+- family_id: fam_0093_gamma_5
+  claim: Ledger back-solves to gamma_GR = 2 G / (5 c^5), the standard GR mass-quadrupole gravitational radiation-reaction
+    / luminosity normalization (the dimensionless 2/5; quadrupole luminosity coefficient G/(5 c^5)).
+  value: 'Quadrupole gravitational-wave luminosity L = dE/dt = (G / 5 c^5) < d^3 Q_ij/dt^3 . d^3 Q_ij/dt^3 > using the reduced
+    (traceless) mass quadrupole Q_ij. Coefficient = G/(5 c^5); equivalently G/(45 c^5) when written with the non-reduced quadrupole.
+    Circular-binary luminosity carries 32/5: L = (32/5)(G/c^5) mu^2 a^4 omega^6. The radiation-reaction normalization is the
+    2/5 factor.'
+  source_type: textbook
+  source_citation: 'P. C. Peters, ''Gravitational Radiation and the Motion of Two Point Masses'', Phys. Rev. 136, B1224 (1964),
+    DOI 10.1103/PhysRev.136.B1224 (ADS bibcode 1964PhRv..136.1224P); see also M. Maggiore, ''Gravitational Waves, Vol. 1:
+    Theory and Experiments'', Oxford Univ. Press (2007), ISBN 978-0-19-857074-5, Ch. 3 (quadrupole formula L = (G/5c^5)<dddQ_ij
+    dddQ_ij>).'
+  obtained_note: 'WebSearch on 2026-06-11 (queries on the quadrupole luminosity formula and Maggiore Vol.1) returned the explicit
+    formula L_GW = (1/5)(G/c^5)<d^3 Q_ij/dt^3 d^3 Q_ij/dt^3> with the reduced/traceless quadrupole, confirming the G/(5 c^5)
+    coefficient and hence the 2/5; the equivalent non-reduced form carries G/(45 c^5). The 32/5 circular-binary coefficient
+    was confirmed via the Peters & Mathews search (P0 = (32/5 c^5)... for a circular orbit). The primary paper Peters 1964
+    Phys. Rev. 136, B1224 was confirmed by WebSearch (Semantic Scholar + NASA ADS 1964PhRv..136.1224P + OSTI 4688457) with
+    DOI 10.1103/PhysRev.136.B1224; the APS full text (link.aps.org) returned HTTP 403 (paywall) so the coefficient itself
+    was confirmed from the open lecture/textbook search extractions, not the paywalled APS page. AGREEMENT: the ledger''s
+    gamma_GR = 2G/(5c^5) uses exactly the standard 2/5 / G/(5c^5) quadrupole radiation-reaction normalization.'
+  id: bench_a187d7865e33
+  ingested_at: '2026-06-11T19:49:46Z'
+  ingested_from: redteam_adversarial/provenance/_benchmarks_sourced.yaml

@@ -1469,22 +1469,6 @@ def entries_have_adjacent_citation(left: dict[str, Any], right: dict[str, Any]) 
     return False
 
 
-def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
-    left_values = set(left.get("literal_values") or [])
-    right_values = set(right.get("literal_values") or [])
-    if not left_values or not right_values:
-        return True
-    return bool(left_values & right_values)
-
-
-def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
-    if not records_share_parameter(left, right):
-        return False
-    if entries_have_adjacent_citation(left["entry"], right["entry"]):
-        return True
-    return records_value_compatible(left, right)
-
-
 def citation_summary(citations: list[dict[str, Any]]) -> dict[str, Any]:
     paths = sorted({normalize_citation_path(c.get("path")) for c in citations if c.get("path")})
     lines = sorted({citation_line(c) for c in citations if citation_line(c) is not None})
@@ -2674,14 +2658,6 @@ def connected_components(
     return components
 
 
-def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
-    return connected_components(records, records_alias_adjacent)
-
-
-def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
-    return bool(set(left.get("parameter_family") or []) & set(right.get("parameter_family") or []))
-
-
 def component_parameter_family(component: list[dict[str, Any]]) -> list[str]:
     param_sets = [set(record.get("parameter_family") or []) for record in component]
     common = set.intersection(*param_sets) if param_sets else set()
@@ -2897,7 +2873,9 @@ def build_dedup_proposal(env: Env, out_path: Path) -> dict[str, Any]:
                 "with high confidence on both sides, and strict citation identity/adjacency"
             ),
             "adjacent_line_window": ALIAS_ADJACENT_LINE_WINDOW,
-            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+            "removed_fallbacks": (
+                "the value-compatibility / no-conflicting-value fallback and parameter-family union merging are disabled"
+            ),
             "canonical_selection": "highest modality-attribution count; ties by lexicographic candidate id",
             "deletion_policy": "no deletions; aliases keep manifest entries and point duplicate_of to the canonical when applied",
             "partition_invariant": "candidate ids may appear in exactly one of alias_groups, ambiguous, or standalone_canonical_ids",

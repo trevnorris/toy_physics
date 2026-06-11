@@ -1,0 +1,138 @@
+OpenAI Codex v0.139.0
+--------
+workdir: /var/projects/toy_physics
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019eb83c-dccb-7e02-a011-b1a8145fd5a3
+--------
+user
+# Step 4E close cleanup — remove orphaned unsound-merge dead code (Codex applies, Claude reviews)
+
+Context: the Step-4 strict-dedup revision (session 019eb73a) dropped the value-compatibility fallback but left its helper functions orphaned in `core.py`. These functions ARE the exact unsound-merge logic that produced the bad dedup proposal; leaving them invites accidental re-wiring. Remove them.
+
+## The change (one file: `.claude/skills/adversarial-audit/lib/core.py`)
+
+Delete these now-unreferenced functions (and any now-unused imports they alone needed):
+- `records_value_compatible`
+- `records_alias_adjacent`
+- `connected_alias_components`
+- `records_share_parameter`
+
+For EACH: before deleting, prove it is truly unreferenced — `grep -n` the whole `.claude/skills/adversarial-audit/` tree (core.py + adversarial.sh + any helper) for the name; the only hits must be the `def` line itself. If ANY function is still referenced anywhere, do NOT delete it — report which and stop.
+
+Do NOT change any other behavior. Do NOT touch dedup/family/target-resolve/phase-b logic, the seeded-chain coverage check, or the extractor. Do NOT touch `paper/`/`notes/`/`scripts/`/`graph/`; FROZEN directive unchanged. Do NOT commit; leave only the `core.py` deletion dirty.
+
+## Verification contract
+1. Show the grep transcript proving each of the 4 functions is referenced ONLY at its own `def` (then deleted).
+2. `python3 -m py_compile .claude/skills/adversarial-audit/lib/core.py` → exits 0.
+3. Smoke-test that the read-only generators still work unchanged: run `phase-b-build-all --dry` and confirm it still reports `target_set_size: 915`, `target_error_count: 0` (read-only, mutates nothing). Run `target-resolve --out /tmp/_tl_check.yaml` (or a throwaway path) and confirm it still produces a sidecar with the same high/low split, then purge that throwaway.
+4. Confirm `git status` shows only `.claude/skills/adversarial-audit/lib/core.py` dirty.
+
+Report: the 4 grep transcripts + deletions (line ranges removed), py_compile result, the `--dry` counts, and the clean-tree confirmation.
+
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+codex
+I’ll first verify the four symbols are only self-referenced under `.claude/skills/adversarial-audit/`, then I’ll make the scoped deletion in `core.py` and run the requested checks.
+  → Prove each helper is unreferenced in adversarial-audit tree
+  • Delete only the orphaned helpers from core.py
+  • Run py_compile and generator smoke tests
+  • Confirm only core.py is dirty
+hook: PostToolUse
+hook: PostToolUse Completed
+exec
+/bin/bash -lc 'rg -n "def (records_value_compatible|records_alias_adjacent|connected_alias_components|records_share_parameter)|records_value_compatible|records_alias_adjacent|connected_alias_components|records_share_parameter" .claude/skills/adversarial-audit/lib/core.py' in /var/projects/toy_physics
+ succeeded in 0ms:
+1472:def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+1480:def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+1481:    if not records_share_parameter(left, right):
+1485:    return records_value_compatible(left, right)
+2677:def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+2678:    return connected_components(records, records_alias_adjacent)
+2681:def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
+2900:            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+
+exec
+/bin/bash -lc 'git status --short -- .claude/skills/adversarial-audit/lib/core.py' in /var/projects/toy_physics
+ succeeded in 0ms:
+hook: PostToolUse
+hook: PostToolUse
+exec
+/bin/bash -lc 'for name in records_value_compatible records_alias_adjacent connected_alias_components records_share_parameter; do echo "### $name"; grep -R -n --include='"'*' --exclude-dir=.git --exclude-dir=__pycache__ \""'$name" .claude/skills/adversarial-audit/; done' in /var/projects/toy_physics
+ succeeded in 0ms:
+### records_value_compatible
+.claude/skills/adversarial-audit/lib/core.py:1472:def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:1485:    return records_value_compatible(left, right)
+.claude/skills/adversarial-audit/lib/core.py:2900:            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+### records_alias_adjacent
+.claude/skills/adversarial-audit/lib/core.py:1480:def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:2678:    return connected_components(records, records_alias_adjacent)
+### connected_alias_components
+.claude/skills/adversarial-audit/lib/core.py:2677:def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+### records_share_parameter
+.claude/skills/adversarial-audit/lib/core.py:1481:    if not records_share_parameter(left, right):
+.claude/skills/adversarial-audit/lib/core.py:2681:def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
+
+hook: PostToolUse
+hook: PostToolUse Completed
+hook: PostToolUse Completed
+hook: PostToolUse Completed
+codex
+The required pre-delete check failed: the names are not isolated to their own `def` lines. Per your stop condition, I’m not editing `core.py` or running the later verification steps.
+The pre-delete grep check found references beyond the def lines, so the user-specified stop condition applies and no file edits should be made.
+  ✓ Prove each helper is unreferenced in adversarial-audit tree
+  • Delete only the orphaned helpers from core.py
+  • Run py_compile and generator smoke tests
+  • Confirm only core.py is dirty
+hook: PostToolUse
+hook: PostToolUse Completed
+codex
+Stopped before editing because the required grep proof failed.
+
+```text
+### records_value_compatible
+.claude/skills/adversarial-audit/lib/core.py:1472:def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:1485:    return records_value_compatible(left, right)
+.claude/skills/adversarial-audit/lib/core.py:2900:            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+### records_alias_adjacent
+.claude/skills/adversarial-audit/lib/core.py:1480:def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:2678:    return connected_components(records, records_alias_adjacent)
+### connected_alias_components
+.claude/skills/adversarial-audit/lib/core.py:2677:def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+### records_share_parameter
+.claude/skills/adversarial-audit/lib/core.py:1481:    if not records_share_parameter(left, right):
+.claude/skills/adversarial-audit/lib/core.py:2681:def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
+```
+
+`records_value_compatible`, `records_alias_adjacent`, and `records_share_parameter` have hits beyond their own `def` lines, and `records_value_compatible` also appears in a status string. I made no changes and did not run the post-delete verification steps.
+hook: Stop
+hook: Stop Completed
+tokens used
+28,309
+Stopped before editing because the required grep proof failed.
+
+```text
+### records_value_compatible
+.claude/skills/adversarial-audit/lib/core.py:1472:def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:1485:    return records_value_compatible(left, right)
+.claude/skills/adversarial-audit/lib/core.py:2900:            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+### records_alias_adjacent
+.claude/skills/adversarial-audit/lib/core.py:1480:def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+.claude/skills/adversarial-audit/lib/core.py:2678:    return connected_components(records, records_alias_adjacent)
+### connected_alias_components
+.claude/skills/adversarial-audit/lib/core.py:2677:def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+### records_share_parameter
+.claude/skills/adversarial-audit/lib/core.py:1481:    if not records_share_parameter(left, right):
+.claude/skills/adversarial-audit/lib/core.py:2681:def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
+```
+
+`records_value_compatible`, `records_alias_adjacent`, and `records_share_parameter` have hits beyond their own `def` lines, and `records_value_compatible` also appears in a status string. I made no changes and did not run the post-delete verification steps.
+
+---
+codex_session_id: 019eb83c-dccb-7e02-a011-b1a8145fd5a3

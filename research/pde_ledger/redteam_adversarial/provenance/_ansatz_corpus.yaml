@@ -1,0 +1,2911 @@
+note: Phase B free_choice + published_target corpus consolidated by conceptual family, for ANSATZ_LEDGER sub-classification (a convention / b
+  branch-determinable / c external-fit).
+families:
+- family_id: fam_0187_p0_target
+  concept: P0_target
+  parameters:
+  - P0_target
+  kind: published_target
+  kind_counts:
+    published_target: 17
+  distinct_values:
+  - '54'
+  - 54/5
+  stages:
+  - 019
+  - '022'
+  - '025'
+  - 038
+  - '189'
+  - '193'
+  - '195'
+  - '197'
+  - '223'
+  origin_stages:
+  - 038
+  - '18'
+  - '191'
+  - '22'
+  n_carriers: 17
+  sample_excerpts:
+  - stage: '022'
+    line: 256
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: The universal GR quadrupole target is
+  - stage: '223'
+    line: 127
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+  - stage: '022'
+    line: 256
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: The universal GR quadrupole target is
+  - stage: '022'
+    line: 256
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: The universal GR quadrupole target is
+- family_id: fam_0493_r_f1
+  concept: r_F1
+  parameters:
+  - r_F1
+  kind: published_target
+  kind_counts:
+    free_choice: 7
+    published_target: 1
+  distinct_values:
+  - '1.77799353547498'
+  - Sqrt[4107-100*Pi^2]/(10*Pi)
+  - sp.sqrt(4107-100*sp.pi**2)/(10*sp.pi)
+  stages:
+  - '122'
+  - '123'
+  - '124'
+  - '161'
+  - '162'
+  - '165'
+  - '168'
+  origin_stages:
+  - '121'
+  n_carriers: 8
+  sample_excerpts:
+  - stage: '121'
+    line: 60
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \frac{L}{a}=\frac{37}{20},
+  - stage: '122'
+    line: 49
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    excerpt: \mathfrak r=\mathfrak r_{F1}=\frac{\sqrt{4107-100\pi^2}}{10\pi}
+  - stage: '123'
+    line: 34
+    path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+    excerpt: On the explicit Family-1 geometric branch,
+  - stage: '121'
+    line: 60
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \frac{L}{a}=\frac{37}{20},
+- family_id: fam_0446_lambda_l
+  concept: lambda_L
+  parameters:
+  - lambda_L
+  kind: published_target
+  kind_counts:
+    published_target: 5
+  distinct_values: []
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 5
+  sample_excerpts:
+  - stage: '247'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+  - stage: '247'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+  - stage: '247'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+  - stage: '247'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: 'which is fixed exactly by the recorded softening point:'
+- family_id: fam_0174_n_q
+  concept: N_Q
+  parameters:
+  - N_Q
+  kind: published_target
+  kind_counts:
+    published_target: 4
+    free_choice: 1
+  distinct_values:
+  - 54/5
+  stages:
+  - '023'
+  - '025'
+  - '030'
+  - '232'
+  origin_stages:
+  - '18'
+  - '22'
+  - '232'
+  n_carriers: 5
+  sample_excerpts:
+  - stage: '030'
+    line: 191
+    path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+    excerpt: '`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`.'
+  - stage: '030'
+    line: 244
+    path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+    excerpt: '`mhat_-^2 P_{0,-} = 54 G c_s^5 / (5 a^5 c^5)`.'
+  - stage: '023'
+    line: 308
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    excerpt: '`mhat_0^2 * N_0 / ( K - B_0 - Z_0 ) = 54 G c_s^5 / (5 a^5 c^5)`.'
+  - stage: '232'
+    line: 314
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    excerpt: together with the canonical outgoing-normalization condition
+- family_id: fam_0469_mhat_0
+  concept: mhat_0
+  parameters:
+  - mhat_0
+  kind: published_target
+  kind_counts:
+    free_choice: 3
+    published_target: 1
+  distinct_values:
+  - '1'
+  stages:
+  - '022'
+  - '189'
+  - '195'
+  origin_stages:
+  - '18'
+  - '195'
+  - '22'
+  n_carriers: 4
+  sample_excerpts:
+  - stage: '022'
+    line: 279
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target
+  - stage: '189'
+    line: 515
+    path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+    excerpt: m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
+  - stage: '195'
+    line: 210
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    excerpt: ' m_{\hat 0}\to 1.'
+  - stage: '195'
+    line: 202
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    excerpt: The carried natural orbital/worldtube STF source-map branch is
+- family_id: fam_0138_k_req
+  concept: K_req
+  parameters:
+  - K_req
+  kind: published_target
+  kind_counts:
+    published_target: 3
+  distinct_values:
+  - '8'
+  stages:
+  - '026'
+  origin_stages:
+  - '26'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '026'
+    line: 212
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    excerpt: 'It can be solved exactly for the required wall stiffness:'
+  - stage: '026'
+    line: 212
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    excerpt: 'It can be solved exactly for the required wall stiffness:'
+  - stage: '026'
+    line: 218
+    path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    excerpt: 'So on this branch the GR quadrupole target is equivalent to one concrete statement:'
+- family_id: fam_0093_gamma_5
+  concept: Gamma_5
+  parameters:
+  - Gamma_5
+  kind: published_target
+  kind_counts:
+    published_target: 3
+  distinct_values: []
+  stages:
+  - '022'
+  - '106'
+  origin_stages:
+  - '106'
+  - '18'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '022'
+    line: 256
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: The universal GR quadrupole target is
+  - stage: '106'
+    line: 40
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    excerpt: 'With \(N_Q=1\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:'
+  - stage: '106'
+    line: 40
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    excerpt: 'With \(N_Q=1\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:'
+- family_id: fam_0228_s_can
+  concept: S_can
+  parameters:
+  - r_F1
+  kind: published_target
+  kind_counts:
+    free_choice: 1
+    published_target: 1
+  distinct_values:
+  - '4.651033550168876'
+  stages:
+  - '158'
+  - '163'
+  origin_stages:
+  - '121'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '121'
+    line: 60
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \frac{L}{a}=\frac{37}{20},
+  - stage: '121'
+    line: 60
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \frac{L}{a}=\frac{37}{20},
+- family_id: fam_0148_lambda
+  concept: Lambda
+  parameters:
+  - Lambda
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - 038
+  origin_stages:
+  - 038
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 038
+    line: 67
+    path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+    excerpt: and the radiative demand scale
+- family_id: fam_0087_g_w
+  concept: G_W
+  parameters:
+  - G_W
+  - Rmix
+  - UVdrop_obs
+  - Veff_obs
+  - Wsess_obs
+  - beta_Q
+  - beta_U
+  - beta_W
+  - eta_leak
+  - mu_w
+  - xi_R
+  kind: published_target
+  kind_counts:
+    published_target: 3
+    free_choice: 8
+  distinct_values: []
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '247'
+    line: 427
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: The Session-I table also records
+  - stage: '247'
+    line: 467
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: For the compensated source packet, using
+  - stage: '247'
+    line: 427
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: The Session-I table also records
+  - stage: '247'
+    line: 381
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: Using the recorded one-port parameters
+- family_id: fam_0209_pi_star
+  concept: Pi_star
+  parameters:
+  - r_F1
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '156'
+  origin_stages:
+  - '121'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '121'
+    line: 60
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \frac{L}{a}=\frac{37}{20},
+- family_id: fam_0072_e_max
+  concept: E_max
+  parameters:
+  - E_max
+  - chi_peak
+  - chi_raw
+  - g_UV
+  - m_s
+  - mu_eta
+  - t_transit_max
+  - t_transit_min
+  kind: published_target
+  kind_counts:
+    free_choice: 6
+    published_target: 2
+  distinct_values: []
+  stages:
+  - '250'
+  origin_stages:
+  - '250'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 518
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: Session III also repeated the same calculation using the raw model width
+  - stage: '248'
+    line: 423
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: '### 7.1 Proton-proxy classical threshold speed'
+  - stage: '248'
+    line: 172
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
+  - stage: '248'
+    line: 483
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: The Session-III scan did not find an upper collapse edge before the top of the sampled band,
+- family_id: fam_0272_v_eff
+  concept: V_eff
+  parameters:
+  - V_eff
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '247'
+    line: 367
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: Appendix B.2 of the barrier-session write-up records the strongest stationary softening point at
+- family_id: fam_0217_r_i
+  concept: R_i
+  parameters:
+  - R_i
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - 097
+  origin_stages:
+  - '97'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 097
+    line: 114
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    excerpt: '`R_0 = R_2 = R_4 = R_5 = N_Q - 1`.'
+- family_id: fam_0277_vrebuild_soft
+  concept: Vrebuild_soft
+  parameters:
+  - Vrebuild_soft
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values:
+  - '251'
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '247'
+    line: 620
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: and the Session-I strongest-softening point is reproduced by the concrete benchmark decomposition above.
+- family_id: fam_0471_mhat_rad
+  concept: mhat_rad
+  parameters:
+  - mhat_rad
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '025'
+  origin_stages:
+  - '25'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '025'
+    line: 101
+    path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+    excerpt: '`mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`.'
+- family_id: fam_0455_lambda_req
+  concept: lambda_req
+  parameters:
+  - lambda_req
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '030'
+  origin_stages:
+  - '30'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '030'
+    line: 185
+    path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+    excerpt: 'Equivalently, the target becomes a direct conservative spectral condition:'
+- family_id: fam_0123_k_sigma
+  concept: K_Sigma
+  parameters:
+  - K_Sigma
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - 019
+  origin_stages:
+  - 019
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '023'
+    line: 308
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    excerpt: '`mhat_0^2 * N_0 / ( K - B_0 - Z_0 ) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- family_id: fam_0212_rq_req
+  concept: RQ_req
+  parameters:
+  - RQ_req
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '228'
+  origin_stages:
+  - '222'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '222'
+    line: 352
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: V_{\rm known}(1)\approx 1.181909222592,
+- family_id: fam_0258_t_quad
+  concept: T_quad
+  parameters:
+  - T_quad
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '224'
+  origin_stages:
+  - '22'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '224'
+    line: 79
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    excerpt: T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+- family_id: fam_0533_v0_cross
+  concept: v0_cross
+  parameters:
+  - v0_cross
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '248'
+  origin_stages:
+  - '248'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 513
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    excerpt: The Session-II report also gave an explicit above-threshold demonstration speed
+- family_id: fam_0222_r_target
+  concept: R_target
+  parameters:
+  - R_target
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '035'
+  origin_stages:
+  - '29'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '035'
+    line: 72
+    path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    excerpt: '`          = N_Q^(target) A / ( beta_0 kappa_0^2 )`.'
+- family_id: fam_0290_xi_turn
+  concept: Xi_turn
+  parameters:
+  - Xi_turn
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values:
+  - '0.34437471'
+  stages:
+  - '248'
+  origin_stages:
+  - '248'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 419
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    excerpt: The reported lowered-branch dynamic observables were
+- family_id: fam_0467_mathrm
+  concept: mathrm
+  parameters:
+  - mathrm
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '223'
+  origin_stages:
+  - '22'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '223'
+    line: 127
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+- family_id: fam_0175_n_q_universal
+  concept: N_Q_universal
+  parameters:
+  - N_Q_universal
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '022'
+  origin_stages:
+  - '18'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '022'
+    line: 256
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: The universal GR quadrupole target is
+- family_id: fam_0347_chi_peak
+  concept: chi_peak
+  parameters:
+  - chi_peak
+  - chi_raw
+  - g_UV
+  - m_s_ratio_1836
+  kind: published_target
+  kind_counts:
+    published_target: 1
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - '250'
+  origin_stages:
+  - '250'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 423
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: '### 7.1 Proton-proxy classical threshold speed'
+  - stage: '248'
+    line: 172
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: '- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 245,'
+  - stage: '248'
+    line: 518
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: Session III also repeated the same calculation using the raw model width
+  - stage: '248'
+    line: 388
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: \chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
+- family_id: fam_0095_gamma_5_normalized
+  concept: Gamma_5_normalized
+  parameters:
+  - Gamma_5_normalized
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '106'
+  origin_stages:
+  - '106'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '106'
+    line: 53
+    path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+    excerpt: 'Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:'
+- family_id: fam_0315_alpha_star
+  concept: alpha_star
+  parameters:
+  - alpha_star
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '031'
+  origin_stages:
+  - '31'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '031'
+    line: 151
+    path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+    excerpt: '`P_target = N_Q^(target) / mhat_-^2`'
+- family_id: fam_0141_kbar_0
+  concept: Kbar_0
+  parameters:
+  - Kbar_0
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - 097
+  origin_stages:
+  - '97'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 097
+    line: 61
+    path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+    excerpt: '`Kbar_0^target = 64 G Omega_Q^5 / (45 c^5),`'
+- family_id: fam_0090_gamma5_t
+  concept: Gamma5_t
+  parameters:
+  - Gamma5_t
+  kind: published_target
+  kind_counts:
+    published_target: 1
+  distinct_values: []
+  stages:
+  - '100'
+  origin_stages:
+  - '100'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '100'
+    line: 68
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    excerpt: The 2.5PN target odd coefficient is
+- family_id: fam_0146_l_over_a
+  concept: L_over_a
+  parameters:
+  - L_over_a
+  kind: free_choice
+  kind_counts:
+    free_choice: 9
+  distinct_values:
+  - '20'
+  - 37/20
+  - sp.sqrt(12***2/sp.pi**2-1)
+  stages:
+  - '073'
+  - '121'
+  - '139'
+  - '146'
+  - '232'
+  origin_stages:
+  - '59'
+  - '73'
+  n_carriers: 9
+  sample_excerpts:
+  - stage: '073'
+    line: 56
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+  - stage: '073'
+    line: 56
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+  - stage: '073'
+    line: 56
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+  - stage: '073'
+    line: 56
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+- family_id: fam_0385_eps_blk
+  concept: eps_blk
+  parameters:
+  - eps_blk
+  - lambda_mu
+  kind: free_choice
+  kind_counts:
+    free_choice: 6
+  distinct_values:
+  - '0'
+  - '1'
+  stages:
+  - 081
+  - 085
+  - 086
+  - 087
+  origin_stages:
+  - 081
+  - '86'
+  - '87'
+  n_carriers: 4
+  sample_excerpts:
+  - stage: 085
+    line: 132
+    path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+    excerpt: In the unblocked limit `eps_blk = 0`, this collapses to the especially simple law
+  - stage: 087
+    line: 57
+    path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+  - stage: 087
+    line: 55
+    path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+    excerpt: '`rho_alpha < rho_max^(F1)(eps_blk)`.'
+  - stage: 086
+    line: 152
+    path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+    excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
+- family_id: fam_0188_p_2
+  concept: P_2
+  parameters:
+  - P_2
+  kind: free_choice
+  kind_counts:
+    free_choice: 4
+  distinct_values:
+  - '2'
+  stages:
+  - '192'
+  - '193'
+  - '194'
+  - '195'
+  origin_stages: []
+  n_carriers: 4
+  sample_excerpts:
+  - stage: '193'
+    line: 5
+    path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+    excerpt: '**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 191, the microscopic orbit/quotient split of Stage 192, and
+      the reduced 5PN isotropic grouped-real `P2` closure.**'
+  - stage: '195'
+    line: 5
+    path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real `P2` conservative
+      surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformat'
+  - stage: '192'
+    line: 5
+    path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+    excerpt: '**Exact within the carried Stage 187 coherent quotient closure and the finite-packet hierarchy isolated in Stage 191.**'
+  - stage: '194'
+    line: 5
+    path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    excerpt: '**Exact within the carried Stage 193 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing compiler, and
+      the canonical compact passive/outgoing `l=2` DtN closure already isolate'
+- family_id: fam_0139_k_s
+  concept: K_s
+  parameters:
+  - K_s
+  kind: free_choice
+  kind_counts:
+    free_choice: 4
+  distinct_values: []
+  stages:
+  - '114'
+  - '115'
+  - '137'
+  - '138'
+  origin_stages:
+  - '114'
+  n_carriers: 4
+  sample_excerpts:
+  - stage: '114'
+    line: 97
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: '- one static shell stiffness `K_s`,'
+  - stage: '115'
+    line: 33
+    path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+    excerpt: \rho_c=\frac{g_s^2}{K_s},
+  - stage: '114'
+    line: 97
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: '- one static shell stiffness `K_s`,'
+  - stage: '114'
+    line: 97
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: '- one static shell stiffness `K_s`,'
+- family_id: fam_0409_g_nat
+  concept: g_nat
+  parameters:
+  - g_nat
+  kind: free_choice
+  kind_counts:
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - '122'
+  - '124'
+  origin_stages:
+  - '122'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '122'
+    line: 30
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    excerpt: 'This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized
+      loading” core closure.'
+  - stage: '122'
+    line: 30
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    excerpt: 'This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized
+      loading” core closure.'
+  - stage: '122'
+    line: 30
+    path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+    excerpt: 'This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized
+      loading” core closure.'
+- family_id: fam_0140_k_turn
+  concept: K_turn
+  parameters:
+  - K_turn
+  - f_lat
+  - gamma_lattice_legacy
+  - mu_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 6
+  distinct_values:
+  - '2.73855812'
+  stages:
+  - '253'
+  origin_stages:
+  - '253'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '?'
+    line: 952
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`4.79562976` is a carried forward legacy Session-V reduced lattice-rate input'
+  - stage: '?'
+    line: 956
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only'
+  - stage: '252'
+    line: 401
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    excerpt: If one inserts the Session-V force-matching benchmark
+  - stage: '?'
+    line: 954
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+- family_id: fam_0399_f_lat
+  concept: f_lat
+  parameters:
+  - f_lat
+  - mu_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 4
+  distinct_values: []
+  stages:
+  - '252'
+  - '253'
+  origin_stages:
+  - '252'
+  - '253'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '?'
+    line: 954
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+  - stage: '?'
+    line: 954
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+  - stage: '?'
+    line: 954
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+  - stage: '252'
+    line: 78
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    excerpt: '- Session IV used a by-hand vacuum/lattice split to estimate exported energies and cold-event rescue.'
+- family_id: fam_0135_k_m
+  concept: K_m
+  parameters:
+  - K_m
+  kind: free_choice
+  kind_counts:
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - '071'
+  - '073'
+  origin_stages:
+  - '57'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '071'
+    line: 95
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    excerpt: This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell
+      support scale.
+  - stage: '071'
+    line: 95
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    excerpt: This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell
+      support scale.
+  - stage: '071'
+    line: 95
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    excerpt: This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell
+      support scale.
+- family_id: fam_0415_gamma_0
+  concept: gamma_0
+  parameters:
+  - gamma_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - '114'
+  - '116'
+  - '162'
+  origin_stages:
+  - '114'
+  - '115'
+  - '162'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '162'
+    line: 58
+    path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+    excerpt: And Stages 115–116 fix the bare odd normalization by
+  - stage: '116'
+    line: 62
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    excerpt: 'A simple concrete realization is to take the bare mixed outlet to be a pure-scale deformation of the canonical compact outgoing
+      `l=2` branch:'
+  - stage: '114'
+    line: 101
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: '- plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.'
+- family_id: fam_0014_b_0
+  concept: B_0
+  parameters:
+  - B_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - '011'
+  - '020'
+  - '023'
+  origin_stages:
+  - '10'
+  - '19'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: '?'
+    line: 50
+    path: notes/em_projected/step_09_projected_maxwell_p2_bridge_notes.md
+    excerpt: D_0=K-B_0-Z_0,\qquad
+  - stage: '023'
+    line: 150
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    excerpt: These are just the Stage-3 conservative support moments collected lane by lane.
+  - stage: '023'
+    line: 150
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    excerpt: These are just the Stage-3 conservative support moments collected lane by lane.
+- family_id: fam_0391_epsilon_2
+  concept: epsilon_2
+  parameters:
+  - epsilon_2
+  kind: free_choice
+  kind_counts:
+    free_choice: 3
+  distinct_values: []
+  stages:
+  - 091
+  - 092
+  - 093
+  origin_stages:
+  - '92'
+  n_carriers: 3
+  sample_excerpts:
+  - stage: 092
+    line: 84
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    excerpt: '`eps_2 = Omega_Q^2 K_(g,2) / K_pole`,'
+  - stage: 091
+    line: 22
+    path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    excerpt: '- and if the 3PN geometry completion is genuinely static through `O(omega^4)`,'
+  - stage: 093
+    line: 55
+    path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+    excerpt: It is to determine the two geometry-contamination numbers `eps_2` and `eps_4`, or prove that they vanish on the natural branch.
+- family_id: fam_0074_e_sub
+  concept: E_sub
+  parameters:
+  - E_sub
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '248'
+  origin_stages:
+  - '248'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '248'
+    line: 470
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    excerpt: At the fixed subbarrier energy \(E_{\rm sub}=2.5\), the launch speed is
+  - stage: '248'
+    line: 234
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    excerpt: If one wants the reduced trajectory to have energy \(E_{\rm sub}\) at launch radius \(r_0\), then
+- family_id: fam_0161_m_q
+  concept: M_q
+  parameters:
+  - M_q
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '134'
+  origin_stages:
+  - '134'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '134'
+    line: 145
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    excerpt: 'free mouth slope: it is just the signed gain pair \((M_s,M_q)\).'
+  - stage: '134'
+    line: 145
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    excerpt: 'free mouth slope: it is just the signed gain pair \((M_s,M_q)\).'
+- family_id: fam_0115_k
+  concept: K
+  parameters:
+  - K
+  - M
+  - Omega_U
+  - Omega_W
+  - a
+  - c_s
+  - lam_B
+  - lam_R
+  - lam_U
+  - lam_W
+  - lambda_B
+  - lambda_R
+  - lambda_U
+  - lambda_W
+  - varpi
+  kind: free_choice
+  kind_counts:
+    free_choice: 20
+  distinct_values: []
+  stages:
+  - '222'
+  origin_stages:
+  - '222'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '222'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level
+      overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actu
+  - stage: '222'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level
+      overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actu
+  - stage: '222'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level
+      overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actu
+  - stage: '222'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level
+      overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actu
+- family_id: fam_0266_u_obs
+  concept: U_obs
+  parameters:
+  - U_obs
+  - V_obs
+  - a_U
+  - a_V
+  - eps_eta_ref
+  - g_UV
+  kind: free_choice
+  kind_counts:
+    free_choice: 7
+  distinct_values:
+  - '0.14313458'
+  stages:
+  - '245'
+  origin_stages:
+  - '245'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '245'
+    line: 156
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    excerpt: '- `a_V>0` is the dressing-leg stiffness,'
+  - stage: '245'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
+  - stage: '245'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
+  - stage: '245'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
+- family_id: fam_0303_a_0
+  concept: a_0
+  parameters:
+  - a_0
+  - b_0
+  - r_eval
+  - r_sigma
+  kind: free_choice
+  kind_counts:
+    free_choice: 5
+  distinct_values: []
+  stages:
+  - '109'
+  - '246'
+  origin_stages:
+  - '109'
+  - '246'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '109'
+    line: 57
+    path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+    excerpt: \boxed{(b,\,a_0,\,a_5).}
+  - stage: '246'
+    line: 472
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    excerpt: Use the recorded Session-I source-side parameters
+  - stage: '246'
+    line: 472
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    excerpt: Use the recorded Session-I source-side parameters
+  - stage: '246'
+    line: 472
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    excerpt: Use the recorded Session-I source-side parameters
+- family_id: fam_0418_gamma_crit
+  concept: gamma_crit
+  parameters:
+  - gamma_crit
+  - t_collapse_0
+  - t_cross
+  kind: free_choice
+  kind_counts:
+    free_choice: 4
+  distinct_values: []
+  stages:
+  - '251'
+  origin_stages:
+  - '251'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '251'
+    line: 449
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    excerpt: The Session-IV cold aligned event used the characteristic data
+  - stage: '251'
+    line: 562
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    excerpt: is not a theorem of the minimal microscopic kernel. It is a property of the Session-IV envelope closure.
+  - stage: '251'
+    line: 562
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    excerpt: is not a theorem of the minimal microscopic kernel. It is a property of the Session-IV envelope closure.
+  - stage: '251'
+    line: 449
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    excerpt: The Session-IV cold aligned event used the characteristic data
+- family_id: fam_0333_c0
+  concept: c0
+  parameters:
+  - c0
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - 088
+  origin_stages:
+  - '88'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: 088
+    line: 81
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    excerpt: The 2.5PN quadrupole audit already fixed the smallest viable isotropic conservative precursor to
+  - stage: 088
+    line: 81
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    excerpt: The 2.5PN quadrupole audit already fixed the smallest viable isotropic conservative precursor to
+- family_id: fam_0380_ell
+  concept: ell
+  parameters:
+  - ell
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '074'
+  origin_stages:
+  - '60'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '074'
+    line: 55
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    excerpt: This is a **controlled local closure**, not yet a theorem of the full moving-throat PDE, but it is the first honest way to tie the
+      support scale to the parent GNLS medium instead of leaving it free.
+  - stage: '074'
+    line: 55
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    excerpt: This is a **controlled local closure**, not yet a theorem of the full moving-throat PDE, but it is the first honest way to tie the
+      support scale to the parent GNLS medium instead of leaving it free.
+- family_id: fam_0382_eps_2
+  concept: eps_2
+  parameters:
+  - eps_2
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values:
+  - '0'
+  stages:
+  - 093
+  origin_stages:
+  - '92'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: 093
+    line: 21
+    path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+    excerpt: '- and if the geometry lane is static through `O(omega^4)`,'
+  - stage: 093
+    line: 55
+    path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+    excerpt: It is to determine the two geometry-contamination numbers `eps_2` and `eps_4`, or prove that they vanish on the natural branch.
+- family_id: fam_0302_a0
+  concept: a0
+  parameters:
+  - a0
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '246'
+  - '247'
+  origin_stages:
+  - '246'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '246'
+    line: 472
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    excerpt: Use the recorded Session-I source-side parameters
+  - stage: '246'
+    line: 472
+    path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+    excerpt: Use the recorded Session-I source-side parameters
+- family_id: fam_0268_upsilon_lat
+  concept: Upsilon_lat
+  parameters:
+  - Upsilon_lat
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '253'
+  origin_stages:
+  - '253'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '252'
+    line: 185
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    excerpt: This is a calibration factor, not a new dynamical degree of freedom.
+  - stage: '252'
+    line: 185
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    excerpt: This is a calibration factor, not a new dynamical degree of freedom.
+- family_id: fam_0336_c_contact
+  concept: c_contact
+  parameters:
+  - c_contact
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - 088
+  - 090
+  origin_stages:
+  - '88'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: 088
+    line: 83
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    excerpt: '`c0 = 3/4,`'
+  - stage: 090
+    line: 15
+    path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+    excerpt: Under the natural contact-plus-pole realization of the minimal isotropic conservative quadrupole precursor, it selects
+- family_id: fam_0345_chi_q
+  concept: chi_Q
+  parameters:
+  - chi_Q
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values:
+  - '1'
+  - '9'
+  stages:
+  - '100'
+  origin_stages:
+  - '100'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '100'
+    line: 111
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    excerpt: '`chi_Q`.'
+  - stage: '100'
+    line: 79
+    path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+    excerpt: So all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`.
+- family_id: fam_0274_v_known
+  concept: V_known
+  parameters:
+  - V_known
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values:
+  - '1.181909222592'
+  stages:
+  - '222'
+  - '223'
+  origin_stages:
+  - '222'
+  n_carriers: 2
+  sample_excerpts:
+  - stage: '223'
+    line: 329
+    path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    excerpt: 'Carry forward the same illustrative local barrier benchmark from Stage 222 at \(x=1\):'
+  - stage: '222'
+    line: 350
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 'Carry forward the same illustrative reduced barrier benchmark at \(x=1\):'
+- family_id: fam_0020_b_star
+  concept: B_star
+  parameters:
+  - F_star
+  - chi_0_star
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '191'
+  origin_stages:
+  - '191'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '191'
+    line: 253
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+  - stage: '191'
+    line: 253
+    path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+    excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+- family_id: fam_0271_v_0f
+  concept: V_0f
+  parameters:
+  - V_0f
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '065'
+  origin_stages:
+  - '65'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '065'
+    line: 89
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    excerpt: '`V_conf(r;a) = V0 f((r-a)/ell),`'
+- family_id: fam_0349_chi_rm
+  concept: chi_rm
+  parameters:
+  - chi_rm
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '250'
+  origin_stages:
+  - '250'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 388
+    path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    excerpt: \chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
+- family_id: fam_0163_m_q_over_sigma_m
+  concept: M_q_over_Sigma_m
+  parameters:
+  - M_q_over_Sigma_m
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '135'
+  origin_stages:
+  - '135'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '135'
+    line: 30
+    path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+    excerpt: As a first **outlet-consistent mouth closure**, impose the same ratio on the
+- family_id: fam_0218_r_int
+  concept: R_int
+  parameters:
+  - R_int
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '249'
+  origin_stages:
+  - '249'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '249'
+    line: 460
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    excerpt: From the reported integrated ratio,
+- family_id: fam_0226_rratio_base
+  concept: Rratio_base
+  parameters:
+  - Rratio_base
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '237'
+  origin_stages: []
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '237'
+    line: 108
+    path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    excerpt: \frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
+- family_id: fam_0040_d_0
+  concept: D_0
+  parameters:
+  - D_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '022'
+  origin_stages:
+  - '18'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '022'
+    line: 74
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: '- `D_{A0}, D_{A2}, D_{A4}` are the conservative operator moments,'
+- family_id: fam_0129_k_eta
+  concept: K_eta
+  parameters:
+  - K_eta
+  - T_Omega
+  - T_w
+  - mu_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 4
+  distinct_values: []
+  stages:
+  - '001'
+  origin_stages:
+  - '1'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '001'
+    line: 214
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    excerpt: At this stage these are fixed effective constitutive functions of the chosen
+  - stage: '001'
+    line: 214
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    excerpt: At this stage these are fixed effective constitutive functions of the chosen
+  - stage: '001'
+    line: 214
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    excerpt: At this stage these are fixed effective constitutive functions of the chosen
+  - stage: '001'
+    line: 214
+    path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+    excerpt: At this stage these are fixed effective constitutive functions of the chosen
+- family_id: fam_0334_c0_min
+  concept: c0_min
+  parameters:
+  - c0_min
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values:
+  - 3/4
+  stages:
+  - '240'
+  origin_stages:
+  - '240'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '240'
+    line: 249
+    path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+    excerpt: The minimal isotropic conservative quadrupole module is
+- family_id: fam_0118_k0_sym
+  concept: K0_sym
+  parameters:
+  - K0_sym
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 099
+  origin_stages:
+  - '99'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 099
+    line: 75
+    path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+    excerpt: '- compute `Kbar_0` on the actual passive/outgoing branch,'
+- family_id: fam_0075_e_w
+  concept: E_w
+  parameters:
+  - E_w
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '243'
+  origin_stages:
+  - '243'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '243'
+    line: 217
+    path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+    excerpt: To accompany it, take the first parity-matched transverse electric field profile
+- family_id: fam_0127_k_corr
+  concept: K_corr
+  parameters:
+  - K_corr
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '253'
+  origin_stages:
+  - '253'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '252'
+    line: 576
+    path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    excerpt: 3. the material-dependent constants \(\zeta_{\rm ep}\) and \(\mathcal K_{\rm corr}\),
+- family_id: fam_0289_xi_prefactor_100
+  concept: Xi_prefactor_100
+  parameters:
+  - Xi_prefactor_100
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '232'
+  origin_stages: []
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '232'
+    line: 153
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    excerpt: \Xi_\chi = 100\,\Theta_w^{(\chi)}\Lambda_\ell^2
+- family_id: fam_0481_n_eos
+  concept: n_eos
+  parameters:
+  - n_eos
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '118'
+  origin_stages: []
+  n_carriers: 1
+  sample_excerpts:
+  - stage: s/m
+    line: 12
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    excerpt: '- P(rho) = K_EOS rho^5,'
+- family_id: fam_0009_a_q
+  concept: A_q
+  parameters:
+  - A_q
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '118'
+  origin_stages:
+  - '118'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '118'
+    line: 52
+    path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+    excerpt: 'For the mixed side-channel, use the first finite D/N half-wave on an auxiliary tube \(z\in[0,L_W]\):'
+- family_id: fam_0311_alpha_2
+  concept: alpha_2
+  parameters:
+  - alpha_2
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '247'
+    line: 404
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline gives
+- family_id: fam_0250_t_u
+  concept: T_U
+  parameters:
+  - T_U
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '236'
+  origin_stages:
+  - '236'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '236'
+    line: 22
+    path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    excerpt: '> So after the static gate is cleared, the unresolved same-charge orbit defect is exactly an **equal-drift `K_\eta`–`\mu` dressing
+      shift at fixed `T_U`**.'
+- family_id: fam_0041_d_01
+  concept: D_01
+  parameters:
+  - D_01
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '173'
+  origin_stages:
+  - '173'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '173'
+    line: 226
+    path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+    excerpt: 'So on the even-preserving branch, all three conservative grouped operator slopes are fixed by a single static slope \(D_{01}\):'
+- family_id: fam_0269_upsilon_lat_sess
+  concept: Upsilon_lat_sess
+  parameters:
+  - gamma_lattice_red
+  - mu_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 2
+  distinct_values: []
+  stages:
+  - '253'
+  origin_stages:
+  - '253'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '?'
+    line: 954
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
+  - stage: '?'
+    line: 952
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`4.79562976` is a carried forward legacy Session-V reduced lattice-rate input'
+- family_id: fam_0362_d_r
+  concept: d_r
+  parameters:
+  - d_r
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '178'
+  origin_stages:
+  - '178'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '178'
+    line: 231
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    excerpt: 'So \(\mathfrak d_r\) measures how the static port detuning is changed by:'
+- family_id: fam_0145_l_w
+  concept: L_W
+  parameters:
+  - L_W
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '121'
+  origin_stages:
+  - '116'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '121'
+    line: 26
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: \boxed{L_W=L.}
+- family_id: fam_0025_c_a
+  concept: C_a
+  parameters:
+  - C_a
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '021'
+  origin_stages:
+  - '17'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '021'
+    line: 74
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    excerpt: are exactly gauge invariant.
+- family_id: fam_0452_lambda_mu
+  concept: lambda_mu
+  parameters:
+  - lambda_mu
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '076'
+  origin_stages:
+  - '62'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '076'
+    line: 66
+    path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+    excerpt: and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local chemical-potential
+      normalization.
+- family_id: fam_0177_n_n
+  concept: N_n
+  parameters:
+  - N_n
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '023'
+  origin_stages:
+  - '19'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '023'
+    line: 288
+    path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+    excerpt: '`N_(20,n)=N_(21,n)=N_(22,n)=N_n`.'
+- family_id: fam_0466_mathfrak_r
+  concept: mathfrak_r
+  parameters:
+  - mathfrak_r
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '121'
+  origin_stages:
+  - '119'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '121'
+    line: 98
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
+- family_id: fam_0445_lambda_b
+  concept: lambda_B
+  parameters:
+  - lambda_B
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '222'
+  origin_stages:
+  - '222'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '222'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level
+      overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actu
+- family_id: fam_0426_hat
+  concept: hat
+  parameters:
+  - hat
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '224'
+  origin_stages:
+  - '224'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '224'
+    line: 189
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    excerpt: So the same-charge corridor places a direct lower bound on the source-map factor of the actual calibrated branch.
+- family_id: fam_0043_d_a
+  concept: D_A
+  parameters:
+  - D_A
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '022'
+  origin_stages:
+  - '18'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '022'
+    line: 47
+    path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    excerpt: 1. the conservative operator `D_A^(cons)`,
+- family_id: fam_0354_cref
+  concept: cref
+  parameters:
+  - cref
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '251'
+  origin_stages:
+  - '251'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '251'
+    line: 181
+    path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+    excerpt: \frac{a^5}{27c_s^5}P_{0,-},
+- family_id: fam_0119_kw_t
+  concept: KW_t
+  parameters:
+  - KW_t
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '203'
+  origin_stages:
+  - '203'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '203'
+    line: 493
+    path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+    excerpt: The graph residual `\(\widehat\Delta_Q(\tau)\)` is continuous because both the free path and the graph lift are continuous and `\(\chi_Q\)`
+      is continuous on the carried reduced branch.
+- family_id: fam_0478_mu_eta
+  concept: mu_eta
+  parameters:
+  - mu_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '252'
+  origin_stages:
+  - '252'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '252'
+    line: 434
+    path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+    excerpt: '## 5. Session-IV benchmark specialization'
+- family_id: fam_0394_epsilon_r
+  concept: epsilon_r
+  parameters:
+  - epsilon_r
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values:
+  - 1/20
+  stages:
+  - '073'
+  origin_stages:
+  - '59'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '073'
+    line: 18
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    excerpt: '- the balanced thin-layer-consistent Family-1 radial wall branch'
+- family_id: fam_0453_lambda_mu_1
+  concept: lambda_mu_1
+  parameters:
+  - lambda_mu_1
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '232'
+  origin_stages:
+  - '232'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '232'
+    line: 149
+    path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    excerpt: for the benchmark \(\lambda_\mu=1\).
+- family_id: fam_0036_c_tr_target
+  concept: C_tr_target
+  parameters:
+  - C_tr_target
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '202'
+  origin_stages:
+  - '202'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '202'
+    line: 134
+    path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+    excerpt: Fix the target orbit by the exact target values
+- family_id: fam_0054_deltav_req
+  concept: DeltaV_req
+  parameters:
+  - DeltaV_req
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '222'
+  origin_stages:
+  - '222'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '222'
+    line: 436
+    path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local barrier requirement
+      must be pulled back from the actual same-charge branch.
+- family_id: fam_0416_gamma_0_bare
+  concept: gamma_0_bare
+  parameters:
+  - gamma_0_bare
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '116'
+  origin_stages:
+  - '116'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '116'
+    line: 62
+    path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+    excerpt: 'A simple concrete realization is to take the bare mixed outlet to be a pure-scale deformation of the canonical compact outgoing
+      `l=2` branch:'
+- family_id: fam_0180_omu
+  concept: OmU
+  parameters:
+  - OmU
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '225'
+  origin_stages:
+  - '223'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '225'
+    line: 119
+    path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+    excerpt: \left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right),
+- family_id: fam_0156_m
+  concept: M
+  parameters:
+  - M
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '228'
+  origin_stages:
+  - '228'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '228'
+    line: 73
+    path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+    excerpt: '- primitive parameters'
+- family_id: fam_0033_c_sigma
+  concept: C_sigma
+  parameters:
+  - C_sigma
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '249'
+  origin_stages:
+  - '249'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '249'
+    line: 198
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    excerpt: 'The minimal closure assumption is that the hidden-sector helicity export is linear in this two-state label:'
+- family_id: fam_0181_omega_a_l
+  concept: Omega_A_l
+  parameters:
+  - Omega_A_l
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '021'
+  origin_stages:
+  - '17'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '021'
+    line: 82
+    path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    excerpt: The smallest useful reduced model is one wall amplitude `Q_l`, one brane-like localized Maxwell coordinate `A_l`, and one mixed `A_w/F_{\mu
+      w}/J^w`-active coordinate `W_l`.
+- family_id: fam_0484_n_wall_eos
+  concept: n_wall_eos
+  parameters:
+  - n_wall_eos
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '165'
+  origin_stages:
+  - '118'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '165'
+    line: 330
+    path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+    excerpt: On the frozen GNLS branch,
+- family_id: fam_0400_f_prime_0
+  concept: f_prime_0
+  parameters:
+  - f_prime_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '065'
+  origin_stages:
+  - '65'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '065'
+    line: 108
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    excerpt: '`chi_phi(y) = f''(xi)`'
+- family_id: fam_0427_hint_aligned
+  concept: hint_aligned
+  parameters:
+  - hint_aligned
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '249'
+  origin_stages:
+  - '249'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '249'
+    line: 416
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    excerpt: The reported helicity-export outputs were
+- family_id: fam_0064_delta_norm
+  concept: Delta_norm
+  parameters:
+  - Delta_norm
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '233'
+  origin_stages:
+  - '233'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '233'
+    line: 203
+    path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+    excerpt: On a calibrated branch with
+- family_id: fam_0438_kappa_q
+  concept: kappa_q
+  parameters:
+  - kappa_q
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '134'
+  origin_stages:
+  - '134'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '134'
+    line: 31
+    path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+    excerpt: the first D/N half-wave on the actual throat span.
+- family_id: fam_0435_kappa_1
+  concept: kappa_1
+  parameters:
+  - kappa_1
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '178'
+  origin_stages:
+  - '178'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '178'
+    line: 37
+    path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+    excerpt: '- \(\kappa_1\) is the weak-axisymmetric wall-baseline slope,'
+- family_id: fam_0047_d_w_bare
+  concept: D_W_bare
+  parameters:
+  - D_W_bare
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '137'
+  origin_stages:
+  - '114'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '114'
+    line: 36
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: 'This is the simplest concrete isotropic core model that contains:'
+- family_id: fam_0283_xi_1
+  concept: Xi_1
+  parameters:
+  - Xi_1
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '234'
+  origin_stages:
+  - '234'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '234'
+    line: 372
+    path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+    excerpt: So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation family that
+      realizes any chosen \(\Xi_1\).
+- family_id: fam_0152_lambda_mix
+  concept: Lambda_mix
+  parameters:
+  - Lambda_mix
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '111'
+  origin_stages:
+  - '111'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '111'
+    line: 9
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    excerpt: Take the canonical outgoing branch and add the first isotropic Schur-complement-style mixed side-channel
+- family_id: fam_0066_delta_rm
+  concept: Delta_rm
+  parameters:
+  - Delta_rm
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values:
+  - '0'
+  stages:
+  - '224'
+  origin_stages:
+  - '224'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '224'
+    line: 177
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    excerpt: If the real branch already hits the universal quadrupole normalization exactly,
+- family_id: fam_0384_eps_beta
+  concept: eps_beta
+  parameters:
+  - eps_beta
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '200'
+  origin_stages:
+  - '197'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '197'
+    line: 271
+    path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+    excerpt: with all three small. Then
+- family_id: fam_0101_h_sub_minus_final
+  concept: H_sub_minus_final
+  parameters:
+  - H_sub_minus_final
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '249'
+  origin_stages:
+  - '249'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '249'
+    line: 416
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    excerpt: The reported helicity-export outputs were
+- family_id: fam_0480_n
+  concept: n
+  parameters:
+  - n
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values:
+  - '5'
+  stages:
+  - '070'
+  origin_stages:
+  - '50'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '062'
+    line: 88
+    path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    excerpt: The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen stiff EOS,
+- family_id: fam_0128_k_eos
+  concept: K_eos
+  parameters:
+  - K_eos
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '062'
+  origin_stages: []
+  n_carriers: 1
+  sample_excerpts:
+  - stage: s/m
+    line: 3
+    path: notes/stages/moving_throat_pde_phase0_spec.md
+    excerpt: '## 1. Parent equations already frozen by the current stack'
+- family_id: fam_0142_l
+  concept: L
+  parameters:
+  - L
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '121'
+  origin_stages:
+  - '121'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '121'
+    line: 24
+    path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    excerpt: 'So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 116 with the **actual throat axial span**:'
+- family_id: fam_0096_gamma_ab
+  concept: Gamma_AB
+  parameters:
+  - Gamma_AB
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '002'
+  origin_stages:
+  - '2'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '002'
+    line: 112
+    path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+    excerpt: '- any damping matrix `Gamma_AB` is an effective/open-system completion that would enter after coupling to matter/gauge/exterior
+      channels.'
+- family_id: fam_0495_r_contact
+  concept: r_contact
+  parameters:
+  - r_contact
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '248'
+  origin_stages:
+  - '248'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '248'
+    line: 165
+    path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+    excerpt: the energy needed to reach a chosen contact radius \(r_{\rm contact}\) from the same \(r_0\) is
+- family_id: fam_0309_alpha
+  concept: alpha
+  parameters:
+  - alpha
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 028
+  origin_stages:
+  - '28'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 028
+    line: 96
+    path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+    excerpt: '`alpha > 0`.'
+- family_id: fam_0512_sigma_source_density
+  concept: sigma_source_density
+  parameters:
+  - sigma_source_density
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 049
+  origin_stages:
+  - '49'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 049
+    line: 91
+    path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
+    excerpt: For the first explicit local kernel, choose the uniform source density
+- family_id: fam_0159_m_minus
+  concept: M_minus
+  parameters:
+  - M_minus
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '133'
+  origin_stages:
+  - '133'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '133'
+    line: 216
+    path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+    excerpt: quadruple** \((M_+,M_-,\kappa_+,\kappa_-)\).
+- family_id: fam_0132_k_geom
+  concept: K_geom
+  parameters:
+  - K_geom
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 092
+  origin_stages:
+  - '91'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 092
+    line: 68
+    path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+    excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
+- family_id: fam_0183_omega_q
+  concept: Omega_Q
+  parameters:
+  - Omega_Q
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 088
+  origin_stages:
+  - '88'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 088
+    line: 13
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    excerpt: '`Y_Q^cons(omega) = c0 + c1 / (1 - omega^2 / Omega_Q^2),`'
+- family_id: fam_0444_lambda_20
+  concept: lambda_20
+  parameters:
+  - lambda_20
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '224'
+  origin_stages:
+  - '224'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '224'
+    line: 195
+    path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+    excerpt: The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude with grouped
+      signature
+- family_id: fam_0227_s_em
+  concept: S_EM
+  parameters:
+  - S_EM
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '015'
+  origin_stages:
+  - '15'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '?'
+    line: 35
+    path: notes/em_projected/step_13_parent_throat_action_master_notes.md
+    excerpt: S_{\rm total}=S_\psi[\psi,A;\Sigma]+S_{\rm EM}[A]+S_\Sigma[R]
+- family_id: fam_0150_lambda_1
+  concept: Lambda_1
+  parameters:
+  - Lambda_1
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '187'
+  origin_stages:
+  - '187'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '187'
+    line: 218
+    path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+    excerpt: (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W)
+- family_id: fam_0335_c_0
+  concept: c_0
+  parameters:
+  - c_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - 088
+  origin_stages:
+  - '88'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: 088
+    line: 83
+    path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    excerpt: '`c0 = 3/4,`'
+- family_id: fam_0002_a0_prime
+  concept: A0_prime
+  parameters:
+  - A0_prime
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '131'
+  origin_stages:
+  - '131'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '131'
+    line: 70
+    path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+    excerpt: '- \(T_m\) and \(A_0''\) may each vary,'
+- family_id: fam_0270_v_0
+  concept: V_0
+  parameters:
+  - V_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '065'
+  origin_stages:
+  - '65'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '065'
+    line: 89
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    excerpt: '`V_conf(r;a) = V0 f((r-a)/ell),`'
+- family_id: fam_0449_lambda_w
+  concept: lambda_W
+  parameters:
+  - lambda_W
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '247'
+  origin_stages:
+  - '247'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '247'
+    line: 489
+    path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+    excerpt: Choose the natural Session-I work specialization
+- family_id: fam_0420_gamma_lattice_red
+  concept: gamma_lattice_red
+  parameters:
+  - gamma_lattice_red
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '253'
+  origin_stages:
+  - '253'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '?'
+    line: 952
+    path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    excerpt: '`4.79562976` is a carried forward legacy Session-V reduced lattice-rate input'
+- family_id: fam_0393_epsilon_eta
+  concept: epsilon_eta
+  parameters:
+  - epsilon_eta
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '245'
+  origin_stages:
+  - '245'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '245'
+    line: 497
+    path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    excerpt: The session write-up records the representative relaxed-rigid-mouth point
+- family_id: fam_0012_a_w
+  concept: A_w
+  parameters:
+  - A_w
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '111'
+  origin_stages:
+  - '111'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '111'
+    line: 5
+    path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
+    excerpt: Build the first explicit isotropic hidden mixed-sector side-channel model and check whether it can preserve the already-fixed conservative
+      even `l=2` fingerprint.
+- family_id: fam_0137_k_q
+  concept: K_q
+  parameters:
+  - K_q
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '115'
+  origin_stages:
+  - '114'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '114'
+    line: 98
+    path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+    excerpt: '- one mixed-channel stiffness `K_q`,'
+- family_id: fam_0313_alpha_r
+  concept: alpha_r
+  parameters:
+  - alpha_r
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '075'
+  origin_stages:
+  - '61'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '075'
+    line: 89
+    path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+    excerpt: But on the actual Family-1 wall branch the radial soft-wall profile already carries a fixed dimensionless depth parameter
+- family_id: fam_0003_a_0
+  concept: A_0
+  parameters:
+  - A_0
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '131'
+  origin_stages:
+  - '129'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '131'
+    line: 70
+    path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+    excerpt: '- \(T_m\) and \(A_0''\) may each vary,'
+- family_id: fam_0099_h_int_aligned
+  concept: H_int_aligned
+  parameters:
+  - H_int_aligned
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '249'
+  origin_stages:
+  - '249'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '249'
+    line: 416
+    path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    excerpt: The reported helicity-export outputs were
+- family_id: fam_0330_beta_path
+  concept: beta_path
+  parameters:
+  - beta_path
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values:
+  - '2'
+  stages:
+  - '203'
+  origin_stages:
+  - '203'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '203'
+    line: 334
+    path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+    excerpt: be an arbitrary candidate family sharing the same free-quintuple path `\(\mathbf y(\tau)\)` as the graph family.
+- family_id: fam_0151_lambda_def
+  concept: Lambda_def
+  parameters:
+  - Lambda_def
+  kind: free_choice
+  kind_counts:
+    free_choice: 1
+  distinct_values: []
+  stages:
+  - '107'
+  origin_stages:
+  - '107'
+  n_carriers: 1
+  sample_excerpts:
+  - stage: '107'
+    line: 26
+    path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+    excerpt: Take the first explicit isotropic moving-throat deformation family
+summary:
+  total_constraints: 276
+  free_choice_families: 103
+  published_target_families: 30

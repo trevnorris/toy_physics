@@ -6,7 +6,8 @@
 This appendix gives the reader build a compact view of the verification stack
 without embedding raw transcripts or a stage-by-stage file manifest.
 
-All repo paths below are relative to \ReaderPath{research/pde_ledger/}.
+PDE-ledger paths below are relative to \ReaderPath{research/pde_ledger/};
+\ReaderPath{docs/...} paths are repo-root relative.
 
 \section{Current baseline}
 
@@ -53,6 +54,32 @@ Mathematica audits & \ReaderPath{mathematica/}
 \addlinespace
 Verification trackers & repo-local control layer & Repo-level tracking of path
 inventory, trust, coverage, and cleanup sequencing. \\
+\bottomrule
+\end{longtable}
+
+\section{Falsification stack}
+
+The first two layers below establish internal consistency and value
+reconciliation.  They cannot, by themselves, detect a fit dressed as a
+derivation; the adversarial fit-vs-derive layer is designed for exactly that
+failure mode and has not yet been run.
+
+\begin{longtable}{L{0.38\textwidth}L{0.52\textwidth}}
+\toprule
+Layer & Status as of 2026-06-10 \\
+\midrule
+\endhead
+Internal-consistency red-team (SymPy + Mathematica dual-engine, script audit) &
+Complete: 253/253 stages, with two full independent passes. \\
+\addlinespace
+Script-to-doc value reconciliation (second-pass augmentation) & Complete. \\
+\addlinespace
+Adversarial fit-vs-derive audit & Designed in
+\ReaderPath{docs/adversarial_audit_deployment.md}; not yet run. \\
+\addlinespace
+Stage-1 branch realization (target-blind numerical PDE) & Gated on the
+adversarial layer by \ReaderPath{docs/branch_realization_execution_plan.md};
+not started. \\
 \bottomrule
 \end{longtable}
 

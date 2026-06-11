@@ -37,6 +37,52 @@ Status tag & Meaning \\
 
 These tags are mutually exclusive for a single atomic claim.  A paragraph may contain several claims with different statuses; in that case the paragraph must either split the claims or explicitly state the status of each part.
 
+\section{Audit-status vocabulary}
+\label{sec:audit-status-vocabulary}
+
+The six mathematical status tags above say how strongly a claim may be cited.
+The audit-status vocabulary below is a second, orthogonal axis: it says what
+verification evidence is attached to a stage, value, or audit record.  An audit
+status never promotes, demotes, or replaces the mathematical claim-status tag.
+
+\begin{longtable}{L{0.34\textwidth}L{0.57\textwidth}}
+\toprule
+Audit-status term & Definition \\
+\midrule
+\endhead
+\texttt{CAS-checked} & A stated algebraic, symbolic, or numerical step has
+been checked by a computer-algebra or script audit appropriate to that step. \\
+\addlinespace
+\texttt{dual-engine-checked} & The check has been replayed independently across
+the SymPy and Mathematica audit layers. \\
+\addlinespace
+\texttt{value-reconciled} & A reported document value has been compared against
+the script or notebook output that supplies it. \\
+\addlinespace
+\texttt{value-provenance-checked} & The source of a reported value has a
+recoverable provenance path through the stage record, notes, scripts, notebooks,
+or review trackers. \\
+\addlinespace
+\texttt{external-benchmark-sourced} & The value or comparison target is tied to
+an explicit external benchmark or source rather than only to internal ledger
+algebra. \\
+\addlinespace
+\texttt{fit-vs-derive-audited} & The adversarial audit has tested whether the
+claimed derivation is genuinely derived rather than fit to a target value or
+benchmark. \\
+\addlinespace
+\texttt{branch-realization-tested} & A target-blind numerical PDE branch
+realization test has been run for the stated branch or target. \\
+\bottomrule
+\end{longtable}
+
+Per-stage audit-status values are generated from machine-readable audit state:
+the red-team manifest, verification trackers, and future
+\texttt{redteam\_adversarial/} artifacts.  They are never hand-written into
+individual stage cards or inline theorem prose.  Hand-maintained inline tags
+are the stale-label failure mode that the numbering remediation already cleaned
+up; this section defines the vocabulary only.
+
 \section{Atomic claims and composite claims}
 \label{sec:atomic-composite-claims}
 

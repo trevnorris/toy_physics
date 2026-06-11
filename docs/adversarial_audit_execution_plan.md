@@ -28,7 +28,7 @@ Commit the revised deployment doc, the paper-integration directive, and this exe
 
 ## Step 1 — Paper integration (Codex applies, Claude reviews)
 
-**Status: PENDING**
+**Status: ✅ DONE (2026-06-10)** — Codex applied all three items (session `019eb50d-7f6d-7d42-a964-4ec7bf1a55ed`, log `research/pde_ledger/redteam_adversarial/codex_logs/step1_iter1.txt`); both builds exit 0 (orchestrator independent re-run; `pdflatex` — `latexmk` not installed, README-documented fallback); clean review agent verified all 14 acceptance criteria PASS, zero edits under `stages/`, two LOW cosmetic notes only (unedited adjacent table vocabulary; pre-existing path-convention mix in provenance summary). The canonical-source fix that gates Phase B is landed.
 
 - Entry: Step 0 committed.
 - Hand `docs/adversarial_audit_paper_integration_directive.md` to Codex. Three items: (1) resolve the canonical-source contradiction (two-layer structure; `notes/stages/` named decisive audit layer) — **this gates Phase B**; (2) falsification-stack disclosure table in the reader verification summary; (3) audit-status vocabulary defined next to the claim-status firewall, values generated never hand-tagged. Out-of-scope list in the directive is binding (no appendix stubs, no prose patching, no stage-card edits).

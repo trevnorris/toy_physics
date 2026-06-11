@@ -1,7 +1,7 @@
 # Moving-Throat PDE Derivation Companion
 
-This project now has two paper entry points built from the same theorem-block
-source:
+This project now has two paper entry points built from the same paper source
+hierarchy:
 
 - `pde_ledger.tex`: the authoritative archive ledger.
 - `pde_ledger_reader.tex`: the collaborator-facing reader ledger.
@@ -39,15 +39,26 @@ pdflatex pde_ledger_reader.tex
 - `main_parts.tex`: shared Part I--VIII include list.
 - `macros.tex`: theorem/status/stage macros.
 - `frontmatter/`: archive governance chapters plus reader-only orientation chapters.
-- `parts/`: eight main body parts.
-- `stages/`: generated or archival stage templates; not the active narrative source for either build.
-- `appendices/`: archive appendices plus compact reader-only summaries.
+- `parts/`: eight main body parts; this is the shared theorem-block
+  synthesis layer.
+- `stages/`: canonical per-stage stage cards, provenance anchors, and audit
+  anchors.
+- `appendices/`: archive appendices plus compact reader-only summaries.  The
+  archive stage appendices carry inline theorem-block synthesis narrative and
+  `\input` all 253 stage cards from `stages/`.
 
 ## Current source rule
 
-The canonical stage narrative currently lives in
-`appendices/stage_appendix_part*.tex`. The `stages/` directory should be treated
-as template inventory unless and until an explicit generation pipeline is put
-back in charge of the appendix text.
+The active paper source is two-layered.  The theorem-block synthesis layer
+lives inline in `parts/` and in `appendices/stage_appendix_part*.tex`; the stage
+appendices are not mere input wrappers.  The stage-card layer lives in
+`stages/stage_NNN.tex`; those files are the canonical per-stage provenance and
+audit anchors.  All 253 stage cards are `\input` into the archive stage
+appendices.
+
+For provenance disputes beneath either paper layer, escalate to the
+PDE-ledger-relative per-stage notes and audit record, especially
+`notes/stages/` and its review/per-stage notes subtrees, plus the associated
+script and notebook evidence.
 
 Generated stage count: 253.

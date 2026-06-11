@@ -21,11 +21,17 @@ Reader paper build & \ReaderPath{research/pde_ledger/paper/pde_ledger_reader.tex
 & Readable theorem-block path through Parts I--VIII plus compact provenance and
 verification notes. \\
 \addlinespace
-Canonical stage files & \ReaderPath{paper/stages/stage_NNN.tex} &
-Authoritative per-stage derivation source. \\
+Theorem-block synthesis layer & \ReaderPath{paper/parts/} and
+\ReaderPath{paper/appendices/stage_appendix_part*.tex} & Inline narrative that
+organizes Parts I--VIII and the archive stage appendices. \\
 \addlinespace
-Stage appendices & \ReaderPath{paper/appendices/stage_appendix_part*.tex} &
-Stage-ordered archive assembly over the canonical stage files. \\
+Stage-card layer & \ReaderPath{paper/stages/stage_NNN.tex} & Canonical
+per-stage provenance and audit anchors; all 253 cards are assembled into the
+archive stage appendices by \texttt{\textbackslash input}. \\
+\addlinespace
+Per-stage notes and audit layer & \ReaderPath{notes/stages/} and
+\ReaderPath{notes/stages/review/} & Decisive provenance authority beneath both
+paper layers when origin, value, or audit-history questions arise. \\
 \addlinespace
 SymPy audits & \ReaderPath{research/pde_ledger/scripts/} & Primary symbolic
 verification corpus and numerical stress harnesses. \\
@@ -37,16 +43,25 @@ Mathematica audits & \ReaderPath{research/pde_ledger/mathematica/}
 
 \section{Current stage-source rule}
 
-The canonical narrative source is now the per-stage \TeX{} tree under
-\ReaderPath{paper/stages/}.  The archive appendices assemble those stage files
-in stage order, while the main parts provide the theorem-block synthesis layer.
+The paper source is two-layered, not a single assembly tree.  The
+theorem-block synthesis layer is inline in \ReaderPath{paper/parts/} and in
+\ReaderPath{paper/appendices/stage_appendix_part*.tex}.  The stage-card layer
+is \ReaderPath{paper/stages/}; those cards are the canonical per-stage
+provenance and audit anchors, and the archive appendices input them in stage
+order.  For provenance questions beneath either paper layer, the decisive
+audit record is the per-stage notes layer, especially \ReaderPath{notes/stages/}
+and \ReaderPath{notes/stages/review/}, read together with the relevant scripts,
+notebooks, and trackers.
 
 \section{Escalation path}
 
 When a chapter in the reader build is not enough, the escalation path is:
 \begin{enumerate}[leftmargin=2.2em]
   \item reader chapter and its stage range;
-  \item archive stage appendices for the matching part;
-  \item canonical stage file plus the matching SymPy/Mathematica audit scripts;
+  \item theorem-block synthesis in the matching main part or archive stage
+  appendix;
+  \item canonical stage card plus the matching SymPy/Mathematica audit scripts;
+  \item \ReaderPath{notes/stages/}, \ReaderPath{notes/stages/review/}, and any
+  matching per-stage notes tree for decisive provenance questions;
   \item verification trackers for cross-layer audit status.
 \end{enumerate}

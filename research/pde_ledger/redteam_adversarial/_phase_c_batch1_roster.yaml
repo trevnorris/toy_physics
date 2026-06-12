@@ -1,0 +1,155 @@
+# Phase C batch 1 roster (generated; orchestrator bookkeeping)
+# 28 families = union(published_target, HIGH). representative = lowest-stage member.
+batch: batch_c1_external_fit_and_high
+candidate_count: 65
+families:
+  chain_aspect_37_20:
+    members:
+    - fit_stage156_carried_constants_block
+    - fit_stage158_canonical_quartet_literals
+    - fit_stage161_rF1_family1_radius
+    - fit_stage163_Rstar_quarter
+    representative: fit_stage156_carried_constants_block
+  chain_barrier_222_224:
+    members:
+    - fit_stage224_t_quad_target_scale
+    representative: fit_stage224_t_quad_target_scale
+  chain_calibration_245_253:
+    members:
+    - fit_stage247_benchmark_pinned_to_paper_figures
+    - fit_stage247_lambda_L_backsolve
+    - fit_stage247_lambda_L_closure
+    - fit_stage247_lambda_l_fixed_by_recorded_point
+    - fit_stage_247_lambda_l_soft
+    - fit_stage250_benchmark_masses_and_window
+    representative: fit_stage247_benchmark_pinned_to_paper_figures
+  chain_chi_Q_norm:
+    members:
+    - fit_stage023_nq_target_gr_quadrupole_match
+    - fit_stage025_radial_source_map_normalization
+    - fit_stage030_nq_target_retype_54_5
+    - fit_stage030_selected_branch_target_equation
+    - fit_stage189_mhat0_quadrupole_normalization_target
+    - fit_stage192_chi_q_unit_relations
+    representative: fit_stage023_nq_target_gr_quadrupole_match
+  chain_quad_54_5:
+    members:
+    - fit_stage019_P0_target_upstream_pin
+    - fit_stage019_p0target_54_5_raw_retype
+    - fit_stage_019_p0_target
+    - fit_stage022_gamma_GR_quadrupole_target
+    - fit_stage022_p0_quadrupole_normalization_target
+    - fit_stage_022_p_0
+    - fit_stage025_one_mode_normalization_target
+    - fit_stage025_target_coefficient_54_5
+    - fit_stage_025_p0_compact
+    - fit_stage038_mhat_p0_fitted_scales
+    - fit_stage106_coeffs_fixed_to_targets
+    - fit_stage_106_gamma_5
+    - fit_stage189_normalization_target_2g_5c5
+    - fit_stage_189_p_0
+    - fit_stage193_p0_target_surface_frozen_without_derivation_edge
+    - fit_stage195_p0_target_canonical_value
+    - fit_stage197_p0_target_quadrupole_normalization
+    - fit_stage223_p0_target_calibration_coefficient
+    - fit_stage223_p0_target_import_unprovenanced
+    - fit_stage223_universal_p0_target
+    representative: fit_stage019_P0_target_upstream_pin
+  chain_wall_action:
+    members:
+    - fit_stage019_K_Sigma_fixed_by_outgoing_normalization
+    representative: fit_stage019_K_Sigma_fixed_by_outgoing_normalization
+  fam_0058_delta_q:
+    members:
+    - fit_stage_192_delta_q
+    - fit_stage_193_delta_q
+    - fit_stage_194_delta_q
+    representative: fit_stage_192_delta_q
+  fam_0087_g_w:
+    members:
+    - fit_stage247_session1_packet
+    representative: fit_stage247_session1_packet
+  fam_0090_gamma5_t:
+    members:
+    - fit_stage_100_gamma5_t
+    representative: fit_stage_100_gamma5_t
+  fam_0095_gamma_5_normalized:
+    members:
+    - fit_stage106_odd_exactly_gr_target
+    representative: fit_stage106_odd_exactly_gr_target
+  fam_0138_k_req:
+    members:
+    - fit_stage026_K_req_solved_exactly_from_target
+    - fit_stage026_Kreq_solved_backward
+    - fit_stage_026_k_req
+    representative: fit_stage026_K_req_solved_exactly_from_target
+  fam_0141_kbar_0:
+    members:
+    - fit_stage_097_kbar_0
+    representative: fit_stage_097_kbar_0
+  fam_0148_lambda:
+    members:
+    - fit_stage038_lambda_external_target_coefficient
+    representative: fit_stage038_lambda_external_target_coefficient
+  fam_0175_n_q_universal:
+    members:
+    - fit_stage022_invariant_product_must_match_universal
+    representative: fit_stage022_invariant_product_must_match_universal
+  fam_0198_pe_fail_chi:
+    members:
+    - fit_stage089_pe_window_upstream_misattribution
+    - fit_stage089_provenance_record_misattribution
+    representative: fit_stage089_pe_window_upstream_misattribution
+  fam_0212_rq_req:
+    members:
+    - fit_stage228_rq_requirement_threshold
+    representative: fit_stage228_rq_requirement_threshold
+  fam_0217_r_i:
+    members:
+    - fit_stage_097_r_i
+    representative: fit_stage_097_r_i
+  fam_0222_r_target:
+    members:
+    - fit_stage_035_r_target
+    representative: fit_stage_035_r_target
+  fam_0272_v_eff:
+    members:
+    - fit_stage_247_v_eff
+    representative: fit_stage_247_v_eff
+  fam_0277_vrebuild_soft:
+    members:
+    - fit_stage_247_vrebuild_soft
+    representative: fit_stage_247_vrebuild_soft
+  fam_0290_xi_turn:
+    members:
+    - fit_stage248_xi_turn_lambda_th_carried_hardcodes
+    representative: fit_stage248_xi_turn_lambda_th_carried_hardcodes
+  fam_0315_alpha_star:
+    members:
+    - fit_stage031_unique_alpha_star_crossing
+    representative: fit_stage031_unique_alpha_star_crossing
+  fam_0347_chi_peak:
+    members:
+    - fit_stage250_goldilocks_inputs
+    representative: fit_stage250_goldilocks_inputs
+  fam_0351_coeff_11:
+    members:
+    - fit_stage018_stale_provenance_anchor_9_11_8
+    representative: fit_stage018_stale_provenance_anchor_9_11_8
+  fam_0455_lambda_req:
+    members:
+    - fit_stage030_lambda_req_target_ratio
+    representative: fit_stage030_lambda_req_target_ratio
+  fam_0467_mathrm:
+    members:
+    - fit_stage_223_mathrm
+    representative: fit_stage_223_mathrm
+  fam_0471_mhat_rad:
+    members:
+    - fit_stage025_mhat_rad_tuned_to_target
+    representative: fit_stage025_mhat_rad_tuned_to_target
+  fam_0533_v0_cross:
+    members:
+    - fit_stage248_v0_cross_benchmark_speed
+    representative: fit_stage248_v0_cross_benchmark_speed
+family_count: 28

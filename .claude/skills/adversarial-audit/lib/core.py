@@ -3962,7 +3962,29 @@ def ingest_benchmarks(env: Env, benchmark_paths: list[str]) -> dict[str, Any]:
 
 def load_benchmarks_for_candidate(env: Env, candidate_id: str) -> list[dict[str, Any]]:
     data = ensure_benchmarks_file(env)
-    return [e for e in data.get("entries", []) if e.get("candidate_id") == candidate_id]
+    family_map = load_yaml(env.artifact_root / "provenance" / "_family_map.yaml")
+    family_ids: set[str] = set()
+
+    def add_family_ids(value: Any) -> None:
+        if isinstance(value, str):
+            if value:
+                family_ids.add(value)
+            return
+        if isinstance(value, (list, tuple, set)):
+            for item in value:
+                if item:
+                    family_ids.add(str(item))
+
+    for map_name in ("primary_candidate_family_map", "candidate_family_map"):
+        candidate_map = family_map.get(map_name) or {}
+        if isinstance(candidate_map, dict):
+            add_family_ids(candidate_map.get(candidate_id))
+
+    return [
+        e
+        for e in data.get("entries", [])
+        if e.get("candidate_id") == candidate_id or (e.get("family_id") in family_ids)
+    ]
 
 
 def render_phase_c(env: Env, candidate_id: str) -> dict[str, Any]:

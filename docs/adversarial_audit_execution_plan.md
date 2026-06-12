@@ -117,9 +117,7 @@ Part 2 TODO (4C then 4D): (1) per-family genealogy synthesis (agents read `notes
 
 ## Step 7 — Handoff to layer 3
 
-**Status: PENDING**
-
-Layer 2 passed = the program is cleared for Stage-1 branch realization (`docs/branch_realization_execution_plan.md`, its own plan — not driven by this file). The methodology paper remains gated on at least one Stage-1 result.
+**Status: 🔄 IN PROGRESS (2026-06-12)** — Layer 2 passed = program cleared for Stage-1 branch realization (`docs/branch_realization_execution_plan.md`, its own plan — not driven by this file). Handoff work so far: (1) parent-operator readiness assessed — found genuinely **unfrozen**; (2) parent-status **DECIDED** via Claude+Codex consult = `effective_closure` (Path B scoped to Stage 1; Path A `S_Sigma[R]` promotion preserved as a separate future program) — `docs/branch_realization_parent_status_decision.md` (codex `019ebd26`); (3) **Stage-1 pre-registration** drafted + Codex fidelity-reviewed + fit-to-freeze = `docs/stage1_preregistration.md` (codex `019ebd6d`), awaiting USER freeze sign-off (§L). **Remaining:** user freezes the pre-registration, then **BUILD the Stage-1 solver (does not exist yet)** per branch-realization plan §7. The methodology paper remains gated on ≥1 Stage-1 result. See `[[project-branch-realization-stage1]]`.
 
 ---
 

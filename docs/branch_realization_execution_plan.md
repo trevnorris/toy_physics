@@ -1,8 +1,10 @@
 # Branch-Realization Execution Plan
 
-**Companion to:** [`docs/branch_realization_brief.md`](branch_realization_brief.md) (currently at `notes/branch_realization_brief.md`; user plans to move it to `docs/`).
+**Companion to:** [`docs/branch_realization_brief.md`](branch_realization_brief.md). (Now at `docs/`.)
 
 **Status:** Forward plan, written 2026-05-27, based on a working-conversation review of the brief, prior-attempt lessons, and the current PDE-ledger red-team. Pre-execution: the parent operator is not yet frozen (waiting on the active red-team to land its remaining batches). This doc fixes the *shape* of the work so a future session can pick it up cold.
+
+**Status update (2026-06-12) — Step-7 handoff IN PROGRESS.** Layer 2 (adversarial audit) is COMPLETE. The "parent operator not yet frozen" note above is now resolved by an explicit decision: **`parent_action_status = effective_closure`** (Path B, scoped to Stage 1; Path A = `S_Sigma[R]` promotion preserved as a separate future program) — see `docs/branch_realization_parent_status_decision.md`. The **Stage-1 pre-registration record** (`docs/stage1_preregistration.md`) is drafted, Codex fidelity-reviewed, and fit-to-freeze, **awaiting the user's freeze sign-off** (its §L block). ⚠️ **NEXT CONCRETE WORK once frozen = BUILD the Stage-1 solver per §7 below — it does not exist yet** (the current `research/pde_audit/simulation/` scripts are only the reduced-FEM negative control + readiness guards that emit no physical packets). Compute spend remains a user gate. See `[[project-branch-realization-stage1]]` in auto-memory.
 
 **Read this if you are:** a future session that needs to know how Stage 1 will actually be run, what tooling to use, why the framing is what it is, and what *not* to repeat from prior failed attempts.
 

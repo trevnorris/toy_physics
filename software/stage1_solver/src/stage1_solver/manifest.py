@@ -8,7 +8,7 @@ import subprocess
 from typing import Any
 
 from .backend import library_versions
-from .config import stable_hash
+from .config import config_hash_from_dict
 
 
 def git_revision() -> dict[str, str]:
@@ -32,6 +32,7 @@ def write_manifest(
     config: dict[str, Any],
     mesh: dict[str, Any],
     results: dict[str, Any],
+    config_hash: str | None = None,
 ) -> Path:
     run_dir = Path(run_root) / benchmark_name / grid_name
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -42,7 +43,8 @@ def write_manifest(
         "device": config["backend"]["device"],
         "solver_controls": config["newton"],
         "mesh": mesh,
-        "config_hash": stable_hash(config),
+        "config_hash": config_hash or config_hash_from_dict(config),
+        "config": config,
         "git": git_revision(),
         "library_versions": library_versions(),
         "results": results,

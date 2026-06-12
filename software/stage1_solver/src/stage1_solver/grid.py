@@ -14,7 +14,7 @@ import numpy as np
 import torch
 
 from .backend import tensor
-from .config import RadialGridSpec, TensorGridSpec
+from .config import RadialGridSpec, TensorGridSpec, WallGridSpec
 
 
 @dataclass(frozen=True)
@@ -112,5 +112,41 @@ class TensorProductGrid:
     def to_dict(self) -> dict[str, float | int | str]:
         data = asdict(self.spec)
         data["dr"] = self.dr
+        data["dw"] = self.dw
+        return data
+
+
+@dataclass(frozen=True)
+class WallGrid:
+    spec: WallGridSpec
+    dtype: torch.dtype
+    device: str
+    w_faces: torch.Tensor
+    w_centers: torch.Tensor
+    cell_widths: torch.Tensor
+    dw: float
+
+    @staticmethod
+    def create(spec: WallGridSpec, *, dtype: torch.dtype, device: str) -> "WallGrid":
+        if spec.nw < 4:
+            raise ValueError("Need at least 4 wall cells")
+        if spec.w_max <= spec.w_min:
+            raise ValueError("Wall grid requires w_max > w_min")
+        w_faces_np = np.linspace(spec.w_min, spec.w_max, spec.nw + 1, dtype=np.float64)
+        dw = float(w_faces_np[1] - w_faces_np[0])
+        w_centers_np = 0.5 * (w_faces_np[:-1] + w_faces_np[1:])
+        cell_widths_np = np.full(spec.nw, dw, dtype=np.float64)
+        return WallGrid(
+            spec=spec,
+            dtype=dtype,
+            device=device,
+            w_faces=tensor(w_faces_np, dtype=dtype, device=device),
+            w_centers=tensor(w_centers_np, dtype=dtype, device=device),
+            cell_widths=tensor(cell_widths_np, dtype=dtype, device=device),
+            dw=dw,
+        )
+
+    def to_dict(self) -> dict[str, float | int | str]:
+        data = asdict(self.spec)
         data["dw"] = self.dw
         return data

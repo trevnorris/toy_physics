@@ -7,7 +7,7 @@ import math
 import torch
 
 from .boundaries import BoundaryCondition
-from .config import CubicGPEConfig, LinearEigenConfig
+from .config import CubicGPEConfig, LinearEigenConfig, QuinticMatterMMSConfig
 from .grid import RadialGrid
 from .operators import integrate, radial_laplacian
 
@@ -41,6 +41,26 @@ def cubic_gpe_residual(
     pde = -0.5 * lap + potential * field + config.coupling_g * field**3 - mu * field
     mass_residual = integrate(field * field, grid) - config.mass
     return torch.cat([pde, mass_residual.reshape(1)])
+
+
+def quintic_enthalpy(density: torch.Tensor, eos_K: float) -> torch.Tensor:
+    return (5.0 * eos_K / 4.0) * density**4
+
+
+def quintic_gnls_operator(
+    field: torch.Tensor,
+    grid: RadialGrid,
+    config: QuinticMatterMMSConfig,
+    outer_bc: BoundaryCondition,
+) -> torch.Tensor:
+    """Stationary gauged-GNLS block with ``A=0`` and quintic EOS."""
+
+    lap = radial_laplacian(field, grid, outer_bc)
+    potential = harmonic_potential(grid.r_centers, config.trap_omega)
+    density = torch.real(torch.conj(field) * field)
+    kinetic = -(config.hbar**2 / (2.0 * config.particle_mass)) * lap
+    nonlinear = quintic_enthalpy(density, config.eos_K) * field
+    return kinetic + potential * field + nonlinear - config.chemical_potential * field
 
 
 def gaussian_initial_state(grid: RadialGrid, config: CubicGPEConfig) -> torch.Tensor:

@@ -10,9 +10,16 @@ from .config import (
     CubicGPEConfig,
     HarnessConfig,
     LinearEigenConfig,
+    ManufacturedSolutionsConfig,
+    MaxwellMMSConfig,
     NewtonConfig,
+    CurrentMMSConfig,
+    QuinticMatterMMSConfig,
     RadialGridSpec,
+    TensorLaplacianMMSConfig,
     TensorGridSpec,
+    WallMMSConfig,
+    WallGridSpec,
 )
 
 __all__ = [
@@ -20,7 +27,14 @@ __all__ = [
     "CubicGPEConfig",
     "HarnessConfig",
     "LinearEigenConfig",
+    "ManufacturedSolutionsConfig",
+    "MaxwellMMSConfig",
     "NewtonConfig",
+    "CurrentMMSConfig",
+    "QuinticMatterMMSConfig",
     "RadialGridSpec",
+    "TensorLaplacianMMSConfig",
     "TensorGridSpec",
+    "WallMMSConfig",
+    "WallGridSpec",
 ]

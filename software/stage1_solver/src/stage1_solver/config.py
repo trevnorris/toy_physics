@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 import hashlib
 import json
+import subprocess
 from typing import Any
 
 
@@ -20,6 +21,31 @@ def stable_json(data: Any) -> str:
 
 def stable_hash(data: Any) -> str:
     return hashlib.sha256(stable_json(data).encode("utf-8")).hexdigest()[:16]
+
+
+def source_revision() -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unavailable"
+
+
+def config_hash_payload(config: dict[str, Any]) -> dict[str, Any]:
+    payload = {
+        key: value
+        for key, value in config.items()
+        if key not in {"run_root", "report_path"}
+    }
+    payload["source_revision"] = source_revision()
+    return payload
+
+
+def config_hash_from_dict(config: dict[str, Any]) -> str:
+    return stable_hash(config_hash_payload(config))
 
 
 @dataclass(frozen=True)
@@ -49,7 +75,7 @@ class NewtonConfig:
     line_search_shrink: float = 0.5
     max_line_search_iters: int = 16
     accept_best_line_search_decrease: bool = True
-    finite_difference_jvp_epsilon: float = 1.0e-6
+    finite_difference_jvp_epsilon: float = 1.0e-4
 
 
 @dataclass(frozen=True)
@@ -69,6 +95,14 @@ class TensorGridSpec:
     nw: int
     r_min: float = 0.0
     measure: str = "4*pi*r^2 dr dw"
+
+
+@dataclass(frozen=True)
+class WallGridSpec:
+    w_min: float
+    w_max: float
+    nw: int
+    measure: str = "flat dw"
 
 
 @dataclass(frozen=True)
@@ -106,13 +140,108 @@ class CubicGPEConfig:
 
 
 @dataclass(frozen=True)
+class QuinticMatterMMSConfig:
+    name: str = "mms_quintic_matter_radial"
+    r_max: float = 2.0
+    grid_levels: tuple[int, ...] = (32, 64, 128, 256)
+    hbar: float = 0.9
+    particle_mass: float = 1.2
+    eos_K: float = 0.37
+    trap_omega: float = 0.41
+    chemical_potential: float = 0.73
+    min_observed_order: float = 1.85
+    final_error_max: float = 5.0e-4
+
+
+@dataclass(frozen=True)
+class TensorLaplacianMMSConfig:
+    name: str = "mms_tensor_laplacian_2d"
+    r_max: float = 2.0
+    w_min: float = -0.75
+    w_max: float = 0.85
+    grid_levels: tuple[tuple[int, int], ...] = (
+        (24, 20),
+        (48, 40),
+        (96, 80),
+        (192, 160),
+        (384, 320),
+        (768, 640),
+    )
+    min_observed_order: float = 1.85
+    final_error_max: float = 2.0e-4
+
+
+@dataclass(frozen=True)
+class CurrentMMSConfig:
+    name: str = "mms_complex_current_radial"
+    r_max: float = 2.0
+    grid_levels: tuple[int, ...] = (32, 64, 128, 256, 512)
+    hbar: float = 0.9
+    particle_mass: float = 1.2
+    gauge_charge: float = 0.0
+    min_observed_order: float = 1.85
+    final_error_max: float = 2.0e-5
+    min_current_norm: float = 1.0e-1
+
+
+@dataclass(frozen=True)
+class MaxwellMMSConfig:
+    name: str = "mms_localized_maxwell_h_equals_z"
+    r_max: float = 2.0
+    w_min: float = -0.75
+    w_max: float = 0.85
+    grid_levels: tuple[tuple[int, int], ...] = (
+        (24, 20),
+        (48, 40),
+        (96, 80),
+        (192, 160),
+        (384, 320),
+    )
+    xi: float = 1.3
+    mu0: float = 1.0
+    localization_width: float = 0.9
+    min_observed_order: float = 1.75
+    final_error_max: float = 8.0e-3
+
+
+@dataclass(frozen=True)
+class WallMMSConfig:
+    name: str = "mms_wall_s_eta_2"
+    w_min: float = -0.75
+    w_max: float = 0.85
+    grid_levels: tuple[int, ...] = (32, 64, 128, 256, 512)
+    spherical_l: int = 2
+    # MMS-only structural-certification placeholders; NOT the physical wall
+    # packet, which is `free_choice` (prereg §E) and is frozen per-run at solve time.
+    mms_only_placeholder_mu_eta: float = 1.0
+    mms_only_placeholder_t_w_base: float = 1.1
+    mms_only_placeholder_t_w_sine_amp: float = 0.2
+    mms_only_placeholder_t_omega_base: float = 0.8
+    mms_only_placeholder_t_omega_cosine_amp: float = 0.1
+    mms_only_placeholder_k_eta_base: float = 0.9
+    mms_only_placeholder_k_eta_bump_amp: float = 0.15
+    min_observed_order: float = 1.85
+    final_error_max: float = 2.0e-4
+
+
+@dataclass(frozen=True)
+class ManufacturedSolutionsConfig:
+    matter: QuinticMatterMMSConfig = field(default_factory=QuinticMatterMMSConfig)
+    tensor: TensorLaplacianMMSConfig = field(default_factory=TensorLaplacianMMSConfig)
+    current: CurrentMMSConfig = field(default_factory=CurrentMMSConfig)
+    maxwell: MaxwellMMSConfig = field(default_factory=MaxwellMMSConfig)
+    wall: WallMMSConfig = field(default_factory=WallMMSConfig)
+
+
+@dataclass(frozen=True)
 class HarnessConfig:
     backend: BackendConfig = field(default_factory=BackendConfig)
     newton: NewtonConfig = field(default_factory=NewtonConfig)
     linear: LinearEigenConfig = field(default_factory=LinearEigenConfig)
     cubic: CubicGPEConfig = field(default_factory=CubicGPEConfig)
-    run_root: str = "software/stage1_solver/runs/step1_gpe_benchmark"
-    report_path: str = "software/stage1_solver/reports/step1_gpe_benchmark_validation.md"
+    mms: ManufacturedSolutionsConfig = field(default_factory=ManufacturedSolutionsConfig)
+    run_root: str = "software/stage1_solver/runs/step2_manufactured_solutions"
+    report_path: str = "software/stage1_solver/reports/step2_manufactured_solutions_validation.md"
     jacobian_check_seed: int = 1729
     jacobian_check_rel_tol: float = 1.0e-6
     jacobian_check_abs_tol: float = 2.0e-7
@@ -121,4 +250,4 @@ class HarnessConfig:
         return asdict(self)
 
     def config_hash(self) -> str:
-        return stable_hash(self.to_dict())
+        return config_hash_from_dict(self.to_dict())

@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T05:16:49Z'
+generated_at: '2026-06-12T05:47:31Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -1012,7 +1012,7 @@ candidates:
   - T_Omega
   - T_w
   - mu_eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_001.tex
     line: 149
@@ -1323,7 +1323,7 @@ candidates:
   - R_l
   - g_A_l
   - g_W_l
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_021.tex
     line: 43
@@ -1381,7 +1381,7 @@ candidates:
   - '022'
   parameter_names:
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_022.tex
     line: 135
@@ -1801,7 +1801,7 @@ candidates:
   - 028
   parameter_names:
   - alpha
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_028.tex
     line: 9
@@ -2559,7 +2559,7 @@ candidates:
   parameter_names:
   - sigma_source_density
   - zeta_0_twin
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage049_dn_overlap_zeta.md
     line: 93
@@ -2852,7 +2852,7 @@ candidates:
   parameter_names:
   - K_eos
   - n_poly
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_062.tex
     line: 18
@@ -2940,7 +2940,7 @@ candidates:
   parameter_names:
   - f_prime_0
   - g_phi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py
     line: 118
@@ -3087,7 +3087,7 @@ candidates:
   - '070'
   parameter_names:
   - n
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_070.tex
     line: 7
@@ -3127,7 +3127,7 @@ candidates:
   parameter_names:
   - K_m
   - tanh_wall_profile
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
     line: 7
@@ -3145,7 +3145,7 @@ candidates:
   parameter_names:
   - K_m
   - eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_071.tex
     line: 33
@@ -3184,7 +3184,7 @@ candidates:
   - L_over_a
   - Lambda_ell
   - epsilon_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
     line: 72
@@ -3202,7 +3202,7 @@ candidates:
   parameter_names:
   - L_over_a
   - Lambda_ell
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_073.tex
     line: 17
@@ -3220,7 +3220,7 @@ candidates:
   parameter_names:
   - L_over_a
   - Lambda_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
     line: 48
@@ -3238,7 +3238,7 @@ candidates:
   parameter_names:
   - ell_over_a
   - epsilon_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
     line: 30
@@ -3278,7 +3278,7 @@ candidates:
   parameter_names:
   - Lambda_ell
   - eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_073.tex
     line: 6
@@ -3332,7 +3332,7 @@ candidates:
   - chi_s
   - ell
   - healing_lock_coefficient
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
     line: 53
@@ -3368,7 +3368,7 @@ candidates:
   parameter_names:
   - ell
   - ell_h
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
     line: 51
@@ -3387,7 +3387,7 @@ candidates:
   parameter_names:
   - Upsilon_w
   - alpha_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_075.tex
     line: 24
@@ -3424,7 +3424,7 @@ candidates:
   parameter_names:
   - lambda_mu
   - mu_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
     line: 60
@@ -10271,7 +10271,7 @@ candidates:
   - '002'
   parameter_names:
   - Gamma_AB
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
     line: 112
@@ -10591,7 +10591,7 @@ candidates:
   - z_0
   - z_2
   - z_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_011.md
     line: 39
@@ -10736,7 +10736,7 @@ candidates:
   parameter_names:
   - S_EM
   - S_total
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_015.md
     line: 54
@@ -10848,7 +10848,7 @@ candidates:
   - N_0
   - Z_0
   - paragraph
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_020.md
     line: 35
@@ -10880,7 +10880,7 @@ candidates:
   - g_A
   - g_W
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_021.md
     line: 35
@@ -11059,7 +11059,7 @@ candidates:
   - matched_fingerprint_value
   - u_2
   - u_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_022.md
     line: 39
@@ -11088,7 +11088,7 @@ candidates:
   - D_A
   - N_A
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_022.tex
     line: 9
@@ -11240,7 +11240,7 @@ candidates:
   - P_0
   - Z_0
   - stale_output
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_023.md
     line: 97
@@ -11272,7 +11272,7 @@ candidates:
   parameter_names:
   - N_n
   - Z_n
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_023.tex
     line: 9
@@ -12856,7 +12856,7 @@ candidates:
   parameter_names:
   - V_0
   - ell
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_065.tex
     line: 18
@@ -12877,7 +12877,7 @@ candidates:
   parameter_names:
   - V_0f
   - ell
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_065.tex
     line: 7
@@ -13370,7 +13370,7 @@ candidates:
   - T_X
   - chi_s
   - epsilon_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_073.md
     line: 39

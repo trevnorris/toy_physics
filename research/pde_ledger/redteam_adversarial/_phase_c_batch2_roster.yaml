@@ -1,0 +1,107 @@
+# Phase C — Batch 2 roster (targeted free_choice sweep, stages 000-079)
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining ~190 free_choice ansaetze.
+# This is batch 2 of ~6: the 000-079 "foundations + early geometry/EOS/geometry-freeze" band.
+# 31 free_choice candidates (provenance_built) -> 14 disjoint stage-cluster/family units, per-member sub-verdicts.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+
+batch_id: batch_c2_freechoice_000_079
+band: '000-079'
+constraint_kind: free_choice
+candidate_count: 31
+unit_count: 14
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+units:
+  u01_stage001_wall_action_coeffs:
+    stages: ['001']
+    focus: Wall-action constitutive coefficients (K_eta, T_w, mu_eta, T_Omega) - posited material constants of the wall Lagrangian.
+    members:
+      - {id: fit_stage001_wall_action_constitutive_coefficients, params: [K_eta, T_w, mu_eta, T_Omega]}
+  u02_stage002_gamma_ab:
+    stages: ['002']
+    focus: Gamma_AB grouped-P2 coupling matrix entry.
+    members:
+      - {id: fit_stage_002_gamma_ab, params: [Gamma_AB]}
+  u03_b0_normalization_chain:
+    stages: ['011','020','023']
+    focus: B_0 normalization carried across 011->020->023 (same parameter, three anchors) - check for re-fit drift between anchors.
+    members:
+      - {id: fit_stage_011_b_0, params: [B_0]}
+      - {id: fit_stage_020_b_0, params: [B_0]}
+      - {id: fit_stage_023_b_0, params: [B_0]}
+  u04_stage015_s_em:
+    stages: ['015']
+    focus: S_EM EM-sector source amplitude.
+    members:
+      - {id: fit_stage_015_s_em, params: [S_EM]}
+  u05_stage021_adapter_couplings:
+    stages: ['021']
+    focus: Reduced adapter couplings C_a and Omega_A_l.
+    members:
+      - {id: fit_stage_021_c_a, params: [C_a]}
+      - {id: fit_stage021_retained_reduced_adapter_couplings, params: [Omega_A_l]}
+  u06_stage022_023_coeffs:
+    stages: ['022','023']
+    focus: Outgoing-normalization coefficients D_0, D_A, mhat_0 (unity-branch), N_n.
+    members:
+      - {id: fit_stage_022_d_0, params: [D_0]}
+      - {id: fit_stage_022_d_a, params: [D_A]}
+      - {id: fit_stage022_mhat0_unity_branch, params: [mhat_0]}
+      - {id: fit_stage_023_n_n, params: [N_n]}
+  u07_mid_loading_source:
+    stages: ['028','049']
+    focus: alpha loading coefficient (028) + uniform source density (049).
+    members:
+      - {id: fit_stage028_alpha_loading_coefficient, params: [alpha]}
+      - {id: fit_stage049_uniform_source_density, params: [sigma_source_density]}
+  u08_n5_eos_exponent:
+    stages: ['062','070']
+    focus: n=5 polytropic EOS exponent (K_eos at 062, n at 070) - same concept at two anchors; check it is posited not derived.
+    members:
+      - {id: fit_stage062_n5_eos_exponent, params: [K_eos]}
+      - {id: fit_stage070_n5_eos_exponent, params: [n]}
+  u09_stage065_canonical_normalization:
+    stages: ['065']
+    focus: Canonical normalization choices V_0, V_0f, f_prime_0.
+    members:
+      - {id: fit_stage_065_v_0, params: [V_0]}
+      - {id: fit_stage_065_v_0f, params: [V_0f]}
+      - {id: fit_stage065_canonical_normalization_fprime, params: [f_prime_0]}
+  u10_km_mouth_closure:
+    stages: ['071','073']
+    focus: K_m mouth-closure constant (canonical tanh / natural closure) carried 071->073.
+    members:
+      - {id: fit_stage071_mouth_closure_Km, params: [K_m]}
+      - {id: fit_stage071_canonical_tanh_and_natural_closure, params: [K_m]}
+      - {id: fit_stage_073_k_m, params: [K_m]}
+  u11_aspect_37_20_origin:
+    stages: ['073']
+    focus: |
+      L/a = 37/20 ORIGIN bundles. NOTE: classification ALREADY adjudicated in batch 1 = free_choice
+      (user-accepted 2026-06-11). Focus here is PURELY the card/notes overclaim test (stage_192 failure mode):
+      does any stage-073 card or notes line call 37/20 derived/forced/exact/a-theorem rather than a posited
+      reference-branch freeze? Classification is settled; report only disclosure adequacy.
+    members:
+      - {id: fit_stage073_Lambda_ell_fixed_37, params: [L_over_a]}
+      - {id: fit_stage073_aspect_ratio_frozen, params: [L_over_a]}
+      - {id: fit_stage073_aspect_ratio_L_over_a, params: [L_over_a]}
+      - {id: fit_stage073_paper_fixes_geometry_ratios, params: [L_over_a]}
+  u12_epsilon_r:
+    stages: ['073']
+    focus: epsilon_r = 1/20 posited wall fraction (an ANSATZ_LEDGER branch-determinable value).
+    members:
+      - {id: fit_stage073_epsilon_r_posited, params: [epsilon_r]}
+  u13_stage074_healing_ell:
+    stages: ['074']
+    focus: Healing length ell (natural healing closure / healing lock).
+    members:
+      - {id: fit_stage074_natural_healing_closure, params: [ell]}
+      - {id: fit_stage074_healing_lock_ell, params: [ell]}
+  u14_stage075_076_wall_norm:
+    stages: ['075','076']
+    focus: alpha_r wall depth (075) + lambda_mu normalization (076).
+    members:
+      - {id: fit_stage075_alpha_r_wall_depth, params: [alpha_r]}
+      - {id: fit_stage076_lambda_mu_normalization, params: [lambda_mu]}

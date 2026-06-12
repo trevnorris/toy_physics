@@ -212,7 +212,8 @@ provenance_findings:
     line: 28
     excerpt: 'assert alpha_r**2 == 100, "paper Inputs line lock: alpha_r^2 must equal 100"'
 downstream_dependents:
-- '062'
-- '063'
+- '076'
+- '077'
+- '078'
 synthesis_ingested_at: '2026-06-11T18:26:27Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage075_alpha_r_wall_depth__alpha_r.yaml

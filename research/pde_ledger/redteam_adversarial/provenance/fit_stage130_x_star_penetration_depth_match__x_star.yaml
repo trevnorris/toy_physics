@@ -65,7 +65,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(x_*=1/\Pi_*\) is the reciprocal image of the Stage 130 mouth-bias solve and matches the earlier Stage-127
+    truncated-exponential penetration depth; it is a cross-check, not a separate fitted value.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 118
+    excerpt: which is exactly the penetration-depth value already found earlier for the
 downstream_dependents:
 - '130'
 - '133'

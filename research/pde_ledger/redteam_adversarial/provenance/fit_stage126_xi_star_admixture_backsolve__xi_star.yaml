@@ -93,7 +93,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(\xi_*\) is solved by setting the explicit positive-family gain \(g_\xi\) equal to the carried lower Family-1 branch
+    value; the numeric is an internal backsolve inside that displayed family.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 91
+    excerpt: \mathfrak g_{\xi_*}=\mathfrak g_-^{F1}.
 downstream_dependents:
 - '126'
 synthesis_ingested_at: '2026-06-11T18:52:16Z'

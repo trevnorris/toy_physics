@@ -41,7 +41,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(g_*=\mathfrak g_-^{F1}\) is the carried lower compensated branch value, and Stage 128 records that positivity rules
+    out the upper branch; no new fitted \(g_*\) is introduced.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 35
+    excerpt: is the unique physically admissible canonical branch under positive mouth sourcing.
 downstream_dependents:
 - '133'
 - '134'

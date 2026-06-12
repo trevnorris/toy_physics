@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 71 extracted
+Stage 088 extracted
 
 `rho_alpha = 4/3`,
 
@@ -126,7 +126,7 @@ So the earlier `3/4 + 1/4` structure is now recovered directly from the grouped-
 
 ## 4. Immediate corollary for the support/source loading ratio
 
-Stage 71 already proved that on the explicit support/source branch the static contact fraction and the finite conservative pole map to the loading ratio as
+Stage 088 already proved that on the explicit support/source branch the static contact fraction and the finite conservative pole map to the loading ratio as
 
 `c0 = alpha_mix / alpha_req`,
 
@@ -152,7 +152,7 @@ and
 
 `zeta_req = (alpha_req - alpha_mix)/alpha_mix = 1/3`.
 
-So the Stage-71 loading-ratio extraction is now a direct corollary of the grouped-`P2` + static-geometry realization.
+So the Stage-088 loading-ratio extraction is now a direct corollary of the grouped-`P2` + static-geometry realization.
 
 ---
 

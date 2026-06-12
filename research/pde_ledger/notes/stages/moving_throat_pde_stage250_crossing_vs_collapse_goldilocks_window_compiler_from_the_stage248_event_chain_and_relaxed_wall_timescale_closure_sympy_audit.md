@@ -418,6 +418,10 @@ V(r_0=5)=0.19999794,
  \qquad
  m_s=\mu_\eta=1836.15267343.
 \]
+
+Provenance note. The numeric packet in this benchmark specialization is the Session-III readback/proxy slice used by the
+compiler; the exact formulas below are the stage result, while these floats are carried session inputs.
+
 Then:
 
 ### 7.1 Proton-proxy classical threshold speed

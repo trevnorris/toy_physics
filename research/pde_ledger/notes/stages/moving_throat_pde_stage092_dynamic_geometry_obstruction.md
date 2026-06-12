@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 74 showed that the grouped-`P2` + geometry split forces the `3/4 + 1/4` conservative quadrupole module **if**
+Stage 091 showed that the grouped-`P2` + geometry split forces the `3/4 + 1/4` conservative quadrupole module **if**
 
 - the grouped-`P2` side is one isotropic conservative pole,
 - and the geometry lane is static through `O(omega^4)`.
@@ -111,6 +111,9 @@ this reduces exactly to
 So the `3/4 + 1/4` split is not a generic identity of “grouped-`P2` plus geometry” in the abstract.
 It is the exact consequence of the **static-geometry** realization.
 
+Provenance note. Stage 091 forces \(K_{\rm geom}=3K_{\rm pole}\) only on the static-geometry slice
+\(\epsilon_2=\epsilon_4=0\); this stage deliberately frees the split unless those contamination variables vanish.
+
 ---
 
 ## 4. Small-contamination expansion
@@ -137,11 +140,11 @@ This is the cleanest reduced sensitivity formula for the next theorem gate.
 
 ## 5. What this changes
 
-Stage 74 already showed that the minimal isotropic `3/4 + 1/4` module is forced if the geometry lane is static.
+Stage 091 already showed that the minimal isotropic `3/4 + 1/4` module is forced if the geometry lane is static.
 
-Stage 75 sharpens the remaining gap:
+Stage 092 sharpens the remaining gap:
 
 > the real moving-throat derivation now only needs to answer whether the geometry lane is static through `O(omega^4)` on the natural isotropic branch, or else compute the two contamination numbers `(eps_2, eps_4)`.
 
-If both vanish, the Stage-74 result is exact.
+If both vanish, the Stage-091 result is exact.
 If they do not, the contact/pole fractions are still fixed — but by the obstruction formula above rather than by the simple `3/4 + 1/4` split.

@@ -78,6 +78,13 @@ provenance_findings:
   - path: paper/stages/stage_065.tex
     line: 7
     excerpt: \stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
+- type: alias_dedup
+  severity: low
+  summary: V_0f is a scanner alias for the product \(V_0 f(\cdot)\), not a standalone free-choice candidate distinct from \(V_0\).
+  citations:
+  - path: paper/stages/stage_065.tex
+    line: 7
+    excerpt: \stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
 downstream_dependents:
 - '066'
 synthesis_ingested_at: '2026-06-11T18:26:15Z'

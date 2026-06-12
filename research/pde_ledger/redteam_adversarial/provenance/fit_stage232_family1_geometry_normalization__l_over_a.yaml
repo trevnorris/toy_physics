@@ -63,7 +63,8 @@ provenance_findings:
     labelled ''a reference-branch numerical freeze, not a new theorem'' (073 line 56) -> free_choice. NAMING CAVEAT: ''L_over_a''
     literally is L/a = 37/20 ~ 1.85 (073 line 54), NOT 20; the value 20 is a/ell = (ell/a)^-1. The candidate label conflates
     the aspect ratio L/a with the inverse thin-wall ratio. Both are chosen reference-branch freezes (free_choice), so the
-    classification is unchanged, but the symbol-to-value mapping is loose.'
+    classification is unchanged, but the symbol-to-value mapping is loose. Duplicate of fit_stage232_lambda_ell_geometry_literals
+    for the same inverse thin-wall literal.'
   citations:
   - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
     line: 50

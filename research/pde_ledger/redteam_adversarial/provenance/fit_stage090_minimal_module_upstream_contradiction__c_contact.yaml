@@ -106,6 +106,20 @@ provenance_findings:
     line: 34
     excerpt: So the `3/4 + 1/4` conservative module is no longer just a plausible parametrization. Under the minimal grouped-`P2`
       + static-geometry realization, it is forced.
+- type: alias_dedup
+  severity: low
+  summary: The 3/4 contact fraction appears as \(c_0\) at Stage 088, \(c_{\rm contact}\) at Stage 090, and \(K_{\rm geom}/K_0\)
+    at Stages 091--092; these are naming variants for the same contact/pole split, not independent 3/4 candidates.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+    line: 17
+    excerpt: '`c0 = 3/4,`'
+  - path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+    line: 52
+    excerpt: c_contact = sp.Rational(3, 4)
+  - path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+    line: 113
+    excerpt: '`K_geom = 3 K0 / 4`.'
 downstream_dependents: []
 synthesis_ingested_at: '2026-06-11T18:26:39Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_09/fit_stage090_minimal_module_upstream_contradiction__c_contact.yaml

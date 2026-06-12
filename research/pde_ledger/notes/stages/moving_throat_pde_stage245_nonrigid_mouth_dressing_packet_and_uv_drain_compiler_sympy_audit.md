@@ -504,6 +504,9 @@ V(r_{\rm eval})\approx -0.03619791,
 \epsilon_{\eta,\rm ref}=0.3.
 \]
 
+Provenance note. The \(U,V,\epsilon_{\eta,\rm ref}\) numbers in this section are Session-I readback/sample values fed into
+the exact compiler; they are not newly derived constants of Stage 245.
+
 Feeding those numbers into the exact Stage-245 compiler gives
 
 \[

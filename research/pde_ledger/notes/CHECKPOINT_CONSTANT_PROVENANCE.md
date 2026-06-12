@@ -108,7 +108,7 @@ audit on stages 085-090. Checkpoint stages `089` and `090` (both in III.5)
 verified after first-pass cycle. **Constant provenance assessment for III.5
 checkpoints**: 089's `Pe_suff_chi = 96.5285247264386` and `Pe_fail_chi =
 11220.5441626259` are now anchored by an explicit provenance comment
-naming `scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt` as the
+naming `scripts/output/moving_throat_pde_stage086_*_sympy_audit.txt` as the
 upstream source (SymPy side; per pitfall #10 SymPy nsolve was not used).
 On the Mathematica side, the same Pe values are *rederived* via
 `FindRoot[zetaF1[pe] == zetaTarget, {pe, …}]` from notes-quoted
@@ -373,7 +373,7 @@ Audit note:
 Constants reviewed:
 
 - `9`, `11`, `8`
-  carried forward with source anchor from the Stage-18 selected-branch
+  carried forward with source anchor from the Stage 035 selected-branch
   D/N-normal-form coefficients and the `8 / (pi^2 A)` dimensionless scaling
 - `18`, `81`
   derived algebraically inside the derivative and endpoint reductions from the

@@ -70,6 +70,10 @@ with exact coefficients
 \frac{(K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)}.
 \]
 
+Provenance note. The SymPy audit names the unnormalized denominator
+\(D_W^{\rm bare}(z)=1-\kappa_c z^2-i\gamma_c z^5\) before the static normalization \(D_W^{\rm bare}(0)=1\). This is a
+script-side name for the same Schur-complement denominator, not an extra parameter.
+
 So the actual mouth-layer gains are
 \[
 \boxed{

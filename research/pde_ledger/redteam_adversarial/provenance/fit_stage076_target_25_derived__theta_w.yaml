@@ -181,7 +181,7 @@ provenance_findings:
     line: 113
     excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2.`'
 downstream_dependents:
-- '063'
-- 078
+- '077'
+- '078'
 synthesis_ingested_at: '2026-06-11T18:26:27Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage076_target_25_derived__theta_w.yaml

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 74–75 close the exact next step that was left open after Stage 73.
+Stages 091--092 close the exact next step that was left open after Stage 090.
 
 They do two things:
 
@@ -30,7 +30,7 @@ and therefore
 
 `zeta_req = 1/3`.
 
-So the Stage-71/72 Family-1 verdict is now a direct corollary of the grouped-`P2` + static-geometry realization rather than an additional standalone assumption.
+So the Stage-088/089 Family-1 verdict is now a direct corollary of the grouped-`P2` + static-geometry realization rather than an additional standalone assumption.
 
 ---
 
@@ -48,7 +48,7 @@ It is now exactly this:
 > - and a geometry lane that is static through `O(omega^4)`?
 
 If yes, the `3/4 + 1/4` split and the `rho_alpha = 4/3` verdict follow immediately.
-If not, the exact deviation is still controlled by the Stage-75 obstruction formula
+If not, the exact deviation is still controlled by the Stage-092 obstruction formula
 
 `c_pole = (1 + eps_4) / [ 4 (1 + eps_2)^2 ]`.
 
@@ -56,7 +56,7 @@ So the next real PDE-side task is no longer broad. It is to determine the two ge
 
 ---
 
-## 3. Best current expert verdict after Stage 76
+## 3. Best current expert verdict after Stage 093
 
 At this point the reduced program is in its sharpest state yet.
 

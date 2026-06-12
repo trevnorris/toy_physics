@@ -65,6 +65,20 @@ provenance_findings:
   - path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
     line: 20
     excerpt: \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
+- type: stale_provenance_anchor
+  severity: low
+  summary: Scanner evidence pointed the Stage 139 L/a bundle at a Stage 140 script comment instead of a Stage 139 notes line;
+    the load-bearing origin remains the Stage 073 reference-branch freeze carried through Stage 121.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 54
+    excerpt: '`Lambda_* := L/a = 37/20.`'
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 58
+    excerpt: Using the carried preferred aspect ratio
+  - path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+    line: 20
+    excerpt: \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
 downstream_dependents:
 - '121'
 - '124'

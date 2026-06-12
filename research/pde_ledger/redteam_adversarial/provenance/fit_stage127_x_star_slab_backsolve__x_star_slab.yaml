@@ -101,7 +101,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(x_*^{\rm slab}\) is the root of the displayed slab-source equation \(\mathfrak g_{\rm slab}(x)=\mathfrak g_-^{F1}\);
+    it is a numerical solve of an internal source-family equation.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 35
+    excerpt: \mathfrak g_{\rm slab}(x)=\mathfrak g_-^{F1}
 downstream_dependents:
 - '133'
 - '134'

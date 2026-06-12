@@ -192,7 +192,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(\mathfrak g_{\rm match}=\pi/4\) is obtained by integrating the self-matched D/N derivative profile, so the value is
+    ledger-internal analytic arithmetic rather than a posited coefficient.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 27
+    excerpt: \int_0^L \sigma_{\rm match}(z)\cos(kz)\,dz
 downstream_dependents:
 - '133'
 - '134'

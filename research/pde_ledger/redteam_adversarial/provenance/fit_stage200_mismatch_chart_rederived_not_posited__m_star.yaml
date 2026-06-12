@@ -183,6 +183,14 @@ provenance_findings:
   - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
     line: 167
     excerpt: expect_zero("derived M_* - carried Stage 192 matrix", Mderived - Mexpected)
+- type: provenance_display_gap
+  severity: low
+  summary: The Stage 200 record displays/uses \(M_*\) but its producing derivation is the script Jacobian rederivation against
+    the carried Stage 192 matrix; the notes restate the compiler rather than printing the full producing matrix entries.
+  citations:
+  - path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+    line: 154
+    excerpt: Mderived = simplify_expr(q_pair.jacobian(Dvec))
 downstream_dependents:
 - '201'
 synthesis_ingested_at: '2026-06-11T19:17:20Z'

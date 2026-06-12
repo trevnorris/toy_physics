@@ -57,7 +57,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(g_*=\mathfrak g_-^{F1}\) is a carried compensation target from the earlier Family-1 branch, used as the right-hand
+    side of the Stage 130 mouth-bias solve rather than newly fitted here.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 95
+    excerpt: The explicit Family-1 lower compensated branch is already fixed from the earlier
 downstream_dependents:
 - '130'
 - '133'

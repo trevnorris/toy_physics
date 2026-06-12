@@ -101,7 +101,14 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: alias_dedup
+  severity: low
+  summary: Duplicate Stage-127 slab-depth candidate for the same \(x_*^{\rm slab}\) root recorded by fit_stage127_x_star_slab_backsolve.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 37
+    excerpt: gives the unique Family-1 slab depth
 downstream_dependents:
 - '133'
 - '134'

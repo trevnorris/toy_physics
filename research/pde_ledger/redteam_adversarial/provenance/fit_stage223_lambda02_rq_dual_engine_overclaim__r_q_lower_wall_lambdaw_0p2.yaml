@@ -214,7 +214,7 @@ graph_context:
 provenance_findings:
 - type: paper_card_overclaim
   severity: low
-  summary: 'Candidate alleges a dual-engine (SymPy+Mathematica) overclaim on the lower-wall R_Q scan value at lambdaW=0.2,
+  summary: 'Candidate records the completeness-critic check for the lower-wall R_Q scan value at lambdaW=0.2,
     but the stage 223 card explicitly states ''Mathematica audit: none yet'' — the value is single-engine SymPy only and the
     card does not overclaim dual-engine verification, so the suspected overclaim is unsubstantiated.'
   citations:

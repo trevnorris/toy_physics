@@ -111,6 +111,9 @@ up to the overall sign convention of `chi_phi`.
 
 So the wall amplitude and wall thickness directly determine the parent loading strength.
 
+Provenance note. The SymPy audit's concrete-profile check uses the local normalization \(f'(0)=1\) only to normalize the sample
+profile used for \(g_\phi\). It is a script-side profile normalization, not an additional branch datum.
+
 ---
 
 ## 2. Exact shell integral for the equilibrium gain

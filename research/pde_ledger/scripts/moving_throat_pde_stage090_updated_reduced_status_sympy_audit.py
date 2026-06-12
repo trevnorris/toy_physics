@@ -12,8 +12,8 @@ and that the carried Family-1 thresholds already place this branch strictly
 inside the exact success region with zero required transport bias.
 
 Constant provenance:
-- 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed
-  upstream in the Part IV / quadrupole packet.
+- 3/4 and 1/4 are the minimal isotropic contact-plus-pole module used here;
+  the grouped-P2/static-geometry derivation is downstream at Stage 091.
 - rho_suff^(chi) is carried from the Stage 086 support window audit.
 - zeta_max^(F1) is carried from the Stage 080/081 support ceiling.
 - A_F1 is carried from the Stage 079 transport map.
@@ -46,9 +46,9 @@ def expect_true(name: str, cond: bool) -> None:
 
 banner("STAGE 090 — UPDATED REDUCED STATUS AFTER THE LOADING-RATIO EXTRACTION")
 
-# Minimal isotropic conservative module carried from the upstream quadrupole
-# packet. Stage 090 does not derive these coefficients again; it checks the
-# resulting reduced-status verdict.
+# Minimal isotropic conservative module used by this reduced-status check.
+# Stage 090 does not derive these coefficients again; the grouped-P2/static
+# geometry derivation is downstream at Stage 091.
 c_contact = sp.Rational(3, 4)
 c_pole = sp.Rational(1, 4)
 

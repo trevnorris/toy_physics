@@ -126,6 +126,14 @@ provenance_findings:
   - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 202
     excerpt: The carried natural orbital/worldtube STF source-map branch is
+- type: alias_dedup
+  severity: low
+  summary: Word-order duplicate of fit_stage195_mhat0_natural_source_map for the same \(m_{\hat 0}\) source-map factor; not a
+    second independent parameter candidate.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 205
+    excerpt: m_{\hat 0}=1+O(a^2/r^2).
 downstream_dependents:
 - '196'
 - '197'

@@ -158,6 +158,10 @@ The exact wall/source figures of merit are then
 \approx 1.2663707072528143\times 10^5.
 \]
 
+Provenance note. The prefactor \(100\) is the Stage 075/076 wall-control conversion
+\(\Upsilon_w=100\Theta_w\) carried into this figure-of-merit normalization; this stage does not introduce a new in-stage
+value for that coefficient.
+
 The numerically located fixed-point roots are:
 
 #### \(\chi\)-weighted extraction

@@ -41,7 +41,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(r_{F1}\) is carried from the Stage-121 geometric relation; the structural relation is internal, while the numeric
+    value still inherits the Stage-073 reference-branch \(L/a=37/20\) freeze.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 12
+    excerpt: is already fixed by geometry.
 downstream_dependents:
 - '122'
 - '126'

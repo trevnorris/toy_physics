@@ -194,6 +194,17 @@ origin_claims:
     path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
     line: 92
     excerpt: '`U(rho) = K rho^5 / 4,`'
+- type: stale_provenance_anchor
+  severity: low
+  summary: The scanner anchor at Stage 070 is metadata-only; the \(n=5\) value is inherited from Stage 062 / the phase-0 parent
+    EOS and is not introduced by Stage 070.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 39
+    excerpt: '`H_w := h''(rho_w) = m c_(s,w)^2 / rho_w.`'
+  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 86
+    excerpt: '## 1. Parent 4D matter energy and the `n=5` compressional stiffness'
 constraints:
 - parameter: n
   constraint_kind: free_choice
@@ -232,6 +243,17 @@ provenance_findings:
   - path: notes/stages/moving_throat_pde_handoff_full.md
     line: 154
     excerpt: The frozen stiff-polytropic equation of state is
+- type: stale_provenance_anchor
+  severity: low
+  summary: The scanner anchor at Stage 070 is metadata-only; the \(n=5\) value is inherited from Stage 062 / the phase-0 parent
+    EOS and is not introduced by Stage 070.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 39
+    excerpt: '`H_w := h''(rho_w) = m c_(s,w)^2 / rho_w.`'
+  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 86
+    excerpt: '## 1. Parent 4D matter energy and the `n=5` compressional stiffness'
 downstream_dependents:
 - '070'
 - '071'

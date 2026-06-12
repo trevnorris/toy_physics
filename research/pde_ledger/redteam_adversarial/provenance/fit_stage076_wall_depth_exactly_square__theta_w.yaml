@@ -179,7 +179,7 @@ provenance_findings:
     line: 76
     excerpt: expect_zero("healing-lock reduction", Theta_w_in_ell - Theta_heal_target)
 downstream_dependents:
-- '063'
-- 078
+- '077'
+- '078'
 synthesis_ingested_at: '2026-06-11T18:26:27Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage076_wall_depth_exactly_square__theta_w.yaml

@@ -61,7 +61,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(\Pi_*\) is the unique positive solve of the displayed mouth-bias equation \(g_\Pi=\mathfrak g_-^{F1}\), verified
+    numerically by the Stage 130 script.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage130_mouth_bias_map.md
+    line: 103
+    excerpt: \mathfrak g_{\Pi}=\mathfrak g_-^{F1}
 downstream_dependents:
 - '131'
 - '132'

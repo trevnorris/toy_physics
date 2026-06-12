@@ -68,7 +68,7 @@ expect_zero("positive slope decomposition", slope - slope_pos)
 print("The lower-branch slope is manifestly positive for all real r.")
 
 # 4. Numerical Family-1 rigidity factor.
-rF1 = sp.Float("1.77799353547498", 30)
+rF1 = sp.sqrt(4107 - 100 * pi**2) / (10 * pi)
 slope_num = sp.N(slope.subs(r, rF1), 30)
 inv_slope_num = sp.N(1 / slope_num, 30)
 print("r_F1 =", rF1)

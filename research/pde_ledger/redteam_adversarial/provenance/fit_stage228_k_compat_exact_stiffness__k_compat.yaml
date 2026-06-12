@@ -139,6 +139,14 @@ provenance_findings:
     line: 5
     excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the
       Stage-223 compatibility branch and the Stage-227 pure-transfer corridor.**'
+- type: provenance_display_gap
+  severity: low
+  summary: The Stage 228 notes display the compatibility stiffness as an exact carried object, while the producing arithmetic
+    \(K_{\rm compat}=B_0+Z_0+D_0^{\rm compat}\) is in the SymPy audit and the compatibility branch originates upstream at Stage 223.
+  citations:
+  - path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+    line: 166
+    excerpt: K_compat = sp.simplify(B0_s + Z0_s + D0_compat)
 downstream_dependents:
 - '229'
 - '230'

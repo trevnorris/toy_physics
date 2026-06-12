@@ -23,11 +23,10 @@ Item & Count \\
 \endhead
 Phase-A candidates & 922 \\
 constraint\_kind: internal\_consistency & 645 \\
-constraint\_kind: internal\_consistency+published\_target & 2 \\
-constraint\_kind: free\_choice & 158 \\
-constraint\_kind: free\_choice+internal\_consistency & 6 \\
+constraint\_kind: free\_choice & 159 \\
+constraint\_kind: free\_choice+internal\_consistency & 8 \\
 constraint\_kind: free\_choice+published\_target & 3 \\
-constraint\_kind: published\_target & 52 \\
+constraint\_kind: published\_target & 51 \\
 constraint\_kind: no\_constraint\_record & 56 \\
 MANIFEST status: audited & 324 \\
 MANIFEST status: provenance\_built & 589 \\
@@ -580,7 +579,7 @@ Stage & Candidate / parameter & Source anchor & constraint\_kind & Audit disposi
 155 & \AuditID{fit_stage155_fixedpoint_expected_targets_json}\newline \AuditID{Pi_can_expected}, \AuditID{S_can_expected}, \AuditID{Sigma0_can_expected}, \AuditID{T_hat_can_expected} & \AuditPath{research/pde_ledger/scripts/numerical/stage155_156_fixedpoint_samples.json}:16 & \AuditID{internal_consistency} & provenance\_built \\
 155 & \AuditID{fit_stage155_frozen_traction_fixed_point_pins}\newline \AuditID{R_fp}, \AuditID{S_fp}, \AuditID{g_fp} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py}:94 & \AuditID{internal_consistency} & provenance\_built \\
 155 & \AuditID{fit_stage_155_g_star}\newline \AuditID{g_star} & \AuditPath{redteam/pass2/reports/stage_155.md}:162 & \AuditID{internal_consistency} & provenance\_built \\
-156 & \AuditID{fit_stage156_carried_constants_block}\newline \AuditID{Pi_star}, \AuditID{Sigma_0_star}, \AuditID{T_hat_star}, \AuditID{g_star}, \AuditID{r_F1} & \AuditPath{scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py}:28 & \AuditID{internal_consistency+published_target} & audited \\
+156 & \AuditID{fit_stage156_carried_constants_block}\newline \AuditID{Pi_star}, \AuditID{Sigma_0_star}, \AuditID{T_hat_star}, \AuditID{g_star}, \AuditID{r_F1} & \AuditPath{scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py}:28 & \AuditID{free_choice+internal_consistency} & audited \\
 156 & \AuditID{fit_stage156_mouth_bias_increase_224_59_pct}\newline \AuditID{mouth_bias_increase_pct} & \AuditPath{research/pde_ledger/notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md}:136 & \AuditID{internal_consistency} & provenance\_built \\
 156 & \AuditID{fit_stage156_unique_traction_renormalization}\newline \AuditID{Sigma_0_can}, \AuditID{T_m_can} & \AuditPath{paper/stages/stage_156.tex}:16 & \AuditID{internal_consistency} & audited \\
 156 & \AuditID{fit_stage_156_pi_can}\newline \AuditID{Pi_can}, \AuditID{R_can}, \AuditID{S_can}, \AuditID{Sigma0_can}, \AuditID{Sigma_0}, \AuditID{StatusNumerical}, \AuditID{T_hat}, \AuditID{T_hat_m}, \AuditID{g_can}, \AuditID{g_fp} & \AuditPath{redteam/pass2/reports/stage_156.md}:35 & \AuditID{internal_consistency} & provenance\_built \\
@@ -588,7 +587,7 @@ Stage & Candidate / parameter & Source anchor & constraint\_kind & Audit disposi
 157 & \AuditID{fit_stage157_expected_values_sidecar_json}\newline \AuditID{Pi_can_expected}, \AuditID{S_can_expected}, \AuditID{Sigma_0_can_expected}, \AuditID{T_hat_can_expected} & \AuditPath{scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py}:49 & \AuditID{internal_consistency} & provenance\_built \\
 157 & \AuditID{fit_stage_157_delta_kappa_w}\newline \AuditID{delta_kappa_W} & \AuditPath{redteam/pass2/reports/stage_157.md}:59(2 manifest anchors) & \AuditID{internal_consistency} & provenance\_built \\
 157 & \AuditID{fit_stage_157_statusopen}\newline \AuditID{StatusOpen} & \AuditPath{redteam/pass2/reports/stage_157.md}:170 & \AuditID{internal_consistency} & provenance\_built \\
-158 & \AuditID{fit_stage158_canonical_quartet_literals}\newline \AuditID{S_can}, \AuditID{Sigma_0_can}, \AuditID{T_can}, \AuditID{r_F1} & \AuditPath{scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py}:100 & \AuditID{internal_consistency+published_target} & audited \\
+158 & \AuditID{fit_stage158_canonical_quartet_literals}\newline \AuditID{S_can}, \AuditID{Sigma_0_can}, \AuditID{T_can}, \AuditID{r_F1} & \AuditPath{scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py}:100 & \AuditID{free_choice+internal_consistency} & audited \\
 158 & \AuditID{fit_stage158_linear_defect_transport_coefficients}\newline \AuditID{slippage_coefficient_eps_perp}, \AuditID{transport_coefficient_dR_dg} & \AuditPath{research/pde_ledger/notes/stages/moving_throat_pde_stage158_linear_defect_transport.md}:103 & \AuditID{internal_consistency} & provenance\_built \\
 158 & \AuditID{fit_stage_158_delta_q}\newline \AuditID{Delta_Q}, \AuditID{M_q}, \AuditID{Pi}, \AuditID{Sigma_0}, \AuditID{Sigma_0_R_dS_S_dR}, \AuditID{Sigma_0_dS_dg}, \AuditID{Sigma_0_dSigma_0_1_R_dR_S_dS}, \AuditID{Sigma_0_dSigma_0_R_dR}, \AuditID{Sigma_0_dg}, \AuditID{Sigma_5}, \AuditID{Sigma_5_3S_Sigma_0}, \AuditID{a_0}, \AuditID{chi}, \AuditID{eps} & \AuditPath{redteam/pass2/reports/stage_158.md}:40 & \AuditID{internal_consistency} & provenance\_built \\
 158 & \AuditID{fit_stage_158_matched_fingerprint_value}\newline \AuditID{matched_fingerprint_value} & \AuditPath{notes/stages/moving_throat_pde_stage158_linear_defect_transport.md}:410 & \AuditID{internal_consistency} & provenance\_built \\
@@ -603,7 +602,7 @@ Stage & Candidate / parameter & Source anchor & constraint\_kind & Audit disposi
 161 & \AuditID{fit_stage161_dsigma0_dthat_coefficient}\newline \AuditID{dSigma0_per_dThat} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}:122 & \AuditID{internal_consistency} & provenance\_built \\
 161 & \AuditID{fit_stage161_dsigma0_dthat_conversion_ratio}\newline \AuditID{dSigma0_over_dThat} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}:122 & \AuditID{internal_consistency} & provenance\_built \\
 161 & \AuditID{fit_stage161_gamma0_star_branch_value}\newline \AuditID{gamma_0}, \AuditID{kappa_0} & \AuditPath{research/pde_ledger/notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md}:65 & \AuditID{internal_consistency} & provenance\_built \\
-161 & \AuditID{fit_stage161_rF1_family1_radius}\newline \AuditID{r_F1} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}:135 & \AuditID{published_target} & audited \\
+161 & \AuditID{fit_stage161_rF1_family1_radius}\newline \AuditID{r_F1} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}:135 & \AuditID{free_choice} & audited \\
 161 & \AuditID{fit_stage161_stage159_tangential_transport_coeffs}\newline \AuditID{dPi_tan_coeff_dS}, \AuditID{dPi_tan_coeff_dSigma0} & \AuditPath{research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}:117 & \AuditID{internal_consistency} & provenance\_built \\
 161 & \AuditID{fit_stage161_upsilon_pi_one_ninth_coefficient}\newline \AuditID{Upsilon_Pi}, \AuditID{r_c_star} & \AuditPath{notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md}:25 & \AuditID{internal_consistency} & provenance\_built \\
 162 & \AuditID{fit_stage162_gamma0_one_ninth_r_form}\newline \AuditID{gamma_0}, \AuditID{r_frak} & \AuditPath{notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md}:61 & \AuditID{free_choice} & verdict\_logged: PARTIAL non-fatal (CONVERGED Claude+Codex): card-badge/notes-wording over-scope, punch-list A8 (= A3 class), CONTINGENT on user ANSATZ\_LEDGER 5-1 gate; NOT FIND\_STANDS, no user gate \\

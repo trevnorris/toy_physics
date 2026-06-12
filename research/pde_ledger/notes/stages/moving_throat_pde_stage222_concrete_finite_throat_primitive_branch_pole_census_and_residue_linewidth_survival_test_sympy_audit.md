@@ -355,6 +355,10 @@ V_{\rm known}(1)\approx 1.181909222592,
 \qquad
 \Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
 \]
+
+Provenance note. The \(V_{\rm known}(1)\) float is an illustrative sample-slice barrier benchmark used to compute
+\(\Delta V_{\rm req}\); its genealogy is script/session-side, not an in-note derivation or external published target.
+
 Since \(S_Q(1)^2=1\), the exact low-loss thresholds are
 \[
 \mathcal R_{Q,*}^{\rm req}(\eta=0.1)

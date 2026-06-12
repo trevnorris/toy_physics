@@ -85,17 +85,13 @@ candidates:
   parameter_names:
   - R_Q_lower_wall_lambdaW_0p2
   - R_Q_upper_wall_lambdaW_0p2
-  reason: The provenance ledger records the 223 lambda_W=0.2 figures 138.814136942081 / 137.502546600713 as "DUAL-ENGINE-ANCHORED
-    - independently recomputed by the new .wl", but the .wl scan is scanLambdas = {2/5, 3/5, 4/5, 1} (stage223 .wl line 301)
-    and never computes a lambda_W=0.2 row - the values exist only as SymPy-pinned expectations (stage223 .py line 372) and
-    the notes table, so the recorded cross-engine corroboration is self-contradictory/overstated (pass-2 report stage_223.md
-    line 123 already documents the gap the ledger ignores).
+  reason: The Stage 223 lambda_W=0.2 figures 138.814136942081 / 137.502546600713 should be recorded as single-engine SymPy-only.
+    The stage card says Mathematica audit none yet; the .wl scan uses lambda_W values {2/5, 3/5, 4/5, 1} and never computes
+    a lambda_W=0.2 row, so these values rest on the SymPy expectations and notes table rather than dual-engine corroboration.
   citation:
     path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 21
-    excerpt: '...the corrected upper-/wall `R_Q` figures `145.483858657863` (222, lambda_W=0.2), `138.814136942081` / `137.502546600713`
-      (223, lambda_W=0.2)... each NOW DUAL-ENGINE-ANCHORED - independently recomputed by the new `.wl` and corroborating the
-      verified SymPy script... [truncated line]'
+    excerpt: Stage 223 lambda_W=0.2 R_Q values are single-engine SymPy-only; the card records Mathematica audit none yet.
     stage: '223'
 - candidate_key: stage224_kill_test_budgets_slice_anchored
   modality: existing_provenance

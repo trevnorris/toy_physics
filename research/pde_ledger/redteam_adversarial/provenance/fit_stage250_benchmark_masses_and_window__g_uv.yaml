@@ -201,8 +201,8 @@ graph_context:
   contexts: []
   graph_gaps: []
 provenance_findings:
-- type: provenance_gap
-  severity: needs_triage
+- type: stale_provenance_anchor
+  severity: low
   summary: The SYMBOL g_UV is introduced at Stage 245 (chi_UV := g_UV*chi_lambda), but the NUMERIC value g_UV=0.95 first enters
     the ledger at Stage 250 as a benchmark input. The notes say it is 'carried from Stage 245', yet no numeric 0.95 appears
     anywhere in the Stage 245 notes (grep of notes/stages/stage245 finds only the symbol). So 0.95 is a posited near-unity

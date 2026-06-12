@@ -236,7 +236,7 @@ def main() -> None:
     assert abs(float(Lvar_soft) - 20.01677473) < 1e-6
 
     lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
-    # F5: pin independently derived benchmark quantities to the paper figures.
+    # F5: pin compiler-rebuilt benchmark quantities to the paper figures.
     assert abs(float(Vshort_num) - 3.74163698) < 1e-6
     assert abs(float(M_sigma_num) - 0.18386120) < 1e-6
     assert abs(float(S_soft) - 0.31069599) < 1e-6
@@ -245,7 +245,7 @@ def main() -> None:
     # F4: lowered potential is below the baseline on the benchmark slice (lowering theorem).
     Veff_session = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
     assert float(Vshort_num - Veff_session) >= 0
-    # F5: forward benchmark decomposition with the paper's lambda_L (falsifiable closure).
+    # F5: forward benchmark decomposition with the paper's lambda_L (recorded-point closure check).
     Veff_forward = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
     assert abs(float(Veff_forward) - float(Veff_obs)) < 1e-6
     Vrebuild_soft = sp.N(Vshort_num - lambda_L_soft * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)

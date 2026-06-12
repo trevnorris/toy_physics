@@ -189,7 +189,7 @@ origin_claims:
     excerpt: \approx 1.77799353547498.
 constraints:
 - parameter: r_F1
-  constraint_kind: published_target
+  constraint_kind: free_choice
   evidence_citation:
     path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
     line: 60
@@ -203,7 +203,7 @@ provenance_findings:
   summary: r_F1 ~1.77799 is presented in the stage156 audit script as a bare carried literal (rF1 = 1.77799353547498) and
     the notes treat it as the fixed Family-1 core parameter, but its true origin (Stage 121) is r_F1 = sqrt((12/pi^2)(37/20)^2
     - 1), i.e. a deterministic geometric function of the POSITED preferred aspect ratio L/a = 37/20. The 37/20 is a flagged
-    external/carried fit target. r_F1's value is therefore only as derived as 37/20 is; classifying it (or anything built
+    carried free-choice reference value. r_F1's value is therefore only as derived as 37/20 is; classifying it (or anything built
     on it) as internal_consistency would overstate. The originating choice should be traced to L/a=37/20, not called a free
     geometric derivation.
   citations:

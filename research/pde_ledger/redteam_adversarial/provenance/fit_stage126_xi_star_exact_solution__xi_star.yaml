@@ -93,7 +93,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: Exact closed form for the same \(\xi_*\) admixture backsolve; it follows from the explicit convex interpolation between
+    \(\pi/4\) and \(2/\pi\), not from an external target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 98
+    excerpt: \frac{\frac{\pi}{4}-\mathfrak g_-^{F1}}{\frac{\pi}{4}-\frac{2}{\pi}}
 downstream_dependents:
 - '126'
 synthesis_ingested_at: '2026-06-11T18:52:16Z'

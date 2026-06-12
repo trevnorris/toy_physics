@@ -105,6 +105,14 @@ provenance_findings:
     excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
       `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
       natural point-particle source-map branch already isolated by the 2.5PN package.**'
+- type: alias_dedup
+  severity: low
+  summary: This bundle and fit_stage195_natural_source_map_mhat0 are word-order variants for the same \(m_{\hat 0}\) source-map
+    factor; they should be treated as one candidate, not two standalone free choices.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    line: 205
+    excerpt: m_{\hat 0}=1+O(a^2/r^2).
 downstream_dependents:
 - '196'
 - '197'

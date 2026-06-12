@@ -112,6 +112,9 @@ On the rigid-mouth branch this becomes the exact finite relation
 So the static-blind set is not just a tangent line.
 It is an exact one-parameter finite curve in the direct branch observables.
 
+Provenance note. The audit's \(R_{\rm target}/R_{\rm target,ref}=7/6\) sample is only a numerical substitution point used to
+exercise the symbolic identities on this curve. The note fixes the curve relation above, not that sample value.
+
 Parameterizing that curve by `q_eta`, we use
 \[
 \epsilon_\eta=\epsilon_{\eta,\rm ref}e^{q_\eta},

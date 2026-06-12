@@ -221,6 +221,10 @@ Session V used the phenomenological reduced lattice rate
 \[
 \gamma_{\rm lattice}^{\rm red}\approx 4.79562976.
 \]
+
+Provenance note. The legacy \(\gamma_{\rm lattice}^{\rm red}\) number is a Session-V readback carried into this bridge; this
+stage derives how to map it through \(\Upsilon_{\rm lat}\), not a new origin for the readback float.
+
 The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice
 \[
 \boxed{
@@ -260,6 +264,10 @@ Use the Stage-252 benchmark slice
  \qquad
  s_0\approx 6.94311167.
 \]
+
+Provenance note. The \(f_{\rm lat},\mu_\eta,s_c,s_0\) slice values are inherited from the Stage-252/Session-IV benchmark
+specialization; the calibration map below is the Stage-253 contribution.
+
 Then
 \[
 \boxed{
@@ -402,6 +410,8 @@ If one inserts the Session-V force-matching benchmark
 \[
 \boxed{\mathcal K_{\rm turn}\approx 2.73855812,}
 \]
+\(\mathcal K_{\rm turn}\) is used here as a carried Session-V benchmark input for the stiffness readback, not as a fresh
+Stage-253 derivation.
 then the stiffness formulas become
 \[
 \boxed{

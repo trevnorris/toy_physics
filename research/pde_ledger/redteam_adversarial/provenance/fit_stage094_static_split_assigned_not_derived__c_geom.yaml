@@ -185,6 +185,14 @@ provenance_findings:
   - path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
     line: 118
     excerpt: And the exact obstruction formula collapses back to
+- type: provenance_display_gap
+  severity: low
+  summary: The Stage 094 notes derive \(c_{\rm geom}=3/4\) from the static-geometry collapse, but the script displays it as a
+    literal assignment before asserting it; this is a script-display gap, not a claim-value change.
+  citations:
+  - path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+    line: 76
+    excerpt: c_geom = sp.Rational(3, 4)
 downstream_dependents:
 - 096
 synthesis_ingested_at: '2026-06-11T18:26:40Z'

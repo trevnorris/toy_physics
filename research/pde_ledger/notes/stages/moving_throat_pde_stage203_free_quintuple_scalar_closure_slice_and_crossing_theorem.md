@@ -492,6 +492,10 @@ such that
 
 The graph residual `\(\widehat\Delta_Q(\tau)\)` is continuous because both the free path and the graph lift are continuous and `\(\chi_Q\)` is continuous on the carried reduced branch. So the conclusion follows immediately from the intermediate value theorem.
 
+Provenance note. The SymPy audit's explicit \(K_W^{\rm eff}(\tau)=K_{W0}\exp(\kappa_W\tau)\) coordinate and
+\(\beta_{\rm path}(\tau)=2^{2\tau-1}\) path are worked examples for this continuous-path theorem. They are script-side
+parameterizations of a free path, not new physical constants fixed by this note.
+
 This is the first exact existence theorem for a closed reduced state along a one-parameter graph-aligned family.
 
 ---

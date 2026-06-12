@@ -10,18 +10,17 @@
 
 \stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses Packet A to \(\Delta_Q=\chi_Q-1\).}
+\stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and leaves the downstream Packet-A closure identities to Stages~194--195.}
 
 \stagefield{Output}{Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry lane enters the grouped carrier only at quadratic anisotropy order.}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
-\item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+\item Check the isotropic one-pole target surface before the downstream Stage~194 use of \(\Delta_Q=\chi_Q-1\).
+\item Check the natural source-map reduction before the downstream Stage~195 reduction of \(N_Q=\chi_Q^{-1}\).
 \item Check higher odd terms are ignored only through the point-particle \(2.5\)PN finish line.
 \item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
 \end{verificationchecklist}}
 
 \stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.5} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
-

@@ -42,7 +42,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: The 3.61 percent traction gap is inherited from the Stage-126 ratio \((\pi/4)/\mathfrak g_-^{F1}\); Stage 128 cites it
+    downstream rather than introducing a new parameter.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 61
+    excerpt: \frac{\pi/4}{\mathfrak g_-^{F1}}
 downstream_dependents:
 - '128'
 synthesis_ingested_at: '2026-06-11T18:52:16Z'

@@ -112,7 +112,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(x_*^{\exp}\) is the root of the displayed truncated-exponential source equation \(\mathfrak g_{\exp}(x)=\mathfrak g_-^{F1}\);
+    it is an internal source-family solve.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+    line: 73
+    excerpt: \mathfrak g_{\exp}(x)=\mathfrak g_-^{F1}
 downstream_dependents:
 - '133'
 - '134'

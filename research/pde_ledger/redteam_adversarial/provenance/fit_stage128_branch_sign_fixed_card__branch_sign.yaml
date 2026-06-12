@@ -109,7 +109,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: Branch sign is fixed by the positive-mouth-source admissibility argument; positivity rules out the upper compensated
+    branch and selects the lower one. This is a logical status result, not a numeric parameter fit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage128_mouth_source_bias_status.md
+    line: 29
+    excerpt: is ruled out by positivity alone.
 downstream_dependents:
 - '133'
 - '134'

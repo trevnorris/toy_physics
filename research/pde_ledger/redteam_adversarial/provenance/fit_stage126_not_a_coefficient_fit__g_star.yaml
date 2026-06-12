@@ -94,7 +94,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(g_*=\mathfrak g_-^{F1}\) is the carried exact lower compensated branch value from Stage 122; Stage 126 only shows
+    that a positive source family can reach it, so this is not a coefficient fit.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 115
+    excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of
 downstream_dependents:
 - '133'
 - '134'

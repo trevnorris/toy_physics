@@ -18,7 +18,7 @@ S=1+\varepsilon s,
 \]
 with the even slots adjusted to preserve the canonical conservative fingerprint.
 
-Then the exact Stage-90 formula
+Then the exact Stage 107 deformation formula
 \[
 \chi_Q=\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}
 \]
@@ -76,6 +76,6 @@ a_5=-\frac{5b}{9}-\frac{a_0}{27}.
 
 After the grouped-`P2` conservative split, geometry cleaning, and Family-1 support sufficiency results, the final reduced 2.5PN branch-selection problem can now be stated very sharply:
 
-> compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact nonlinear condition of Stage 91, or at least the linearized condition above.
+> compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact nonlinear condition of Stages 107--108, or at least the linearized condition above.
 
 So the remaining PDE-facing ambiguity is no longer an open-ended “deformed branch somehow.” It is a small explicit set of outgoing-branch deformation scalars.

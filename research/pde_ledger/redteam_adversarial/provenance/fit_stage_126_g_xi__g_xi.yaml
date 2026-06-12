@@ -61,7 +61,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: classification_rationale
+  severity: low
+  summary: \(g_\xi\) is the analytic gain of the explicit positive convex source family, computed from the displayed profile
+    integral; it is a derived family function, not a fitted numeric target.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    line: 80
+    excerpt: \mathfrak g_\xi
 downstream_dependents:
 - '126'
 synthesis_ingested_at: '2026-06-11T18:52:16Z'

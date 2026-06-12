@@ -55,10 +55,10 @@ zeta_F1_at_zero = sp.simplify(sp.limit(zeta_F1, Pe, 0))
 expect_zero("Omega(Pe -> 0) - 1", Omega_at_zero - 1, tol=1e-30)
 expect_zero("zeta_F1(Pe -> 0) - A_F1", zeta_F1_at_zero - A_F1, tol=1e-30)
 
-# Stage-082 (post-renumber) thresholds evaluated at lambda_mu = 1.
+# Stage-086 thresholds evaluated at lambda_mu = 1.
 # CARRY-FORWARD: Pe_suff_chi and Pe_fail_chi are the loading-ratio Pe values
 # that produce the upstream rho_suff^(chi) and rho_fail^(chi) thresholds.
-# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the
+# Source: scripts/output/moving_throat_pde_stage086_*_sympy_audit.txt and the
 # Stage 089 notes section 1. The literal values are not rederived here to
 # avoid sp.nsolve instability near the tan(y) singularity of the Stage 074
 # closed form (see notes/STAGE_VERIFICATION_COVERAGE.md pitfall #10).
@@ -85,12 +85,12 @@ def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: sp.Expr) -> No
         raise AssertionError(f"{name} exceeds tolerance {tol}: diff={diff}")
 
 
-# Cross-check rho_X against upstream Stage-082 quoted values. The previous
+# Cross-check rho_X against upstream Stage-086 quoted values. The previous
 # `rho_X - (1 + zeta_X) == 0` form was tautological because Q(zeta; eps=0) =
 # 1 + zeta is the algebraic structure of Q, not a check of the literals.
-expect_close("rho_suff vs Stage-082 quote", rho_suff, sp.Float("3.46622291347846", 30), sp.Float("1e-12", 30))
-expect_close("rho_fail vs Stage-082 quote", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-12", 30))
-expect_close("rho_max  vs Stage-082 quote", rho_max,  sp.Float("3.46752922945601", 30), sp.Float("1e-12", 30))
+expect_close("rho_suff vs Stage-086 quote", rho_suff, sp.Float("3.46622291347846", 30), sp.Float("1e-12", 30))
+expect_close("rho_fail vs Stage-086 quote", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-12", 30))
+expect_close("rho_max  vs Stage-086 quote", rho_max,  sp.Float("3.46752922945601", 30), sp.Float("1e-12", 30))
 
 Delta_suff = sp.N(rho_suff - rho_min, 25)
 Delta_fail = sp.N(rho_fail - rho_min, 25)

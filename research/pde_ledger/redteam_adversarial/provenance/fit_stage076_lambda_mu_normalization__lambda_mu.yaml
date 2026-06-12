@@ -126,7 +126,7 @@ provenance_findings:
     excerpt: and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local
       chemical-potential normalization.
 downstream_dependents:
-- '063'
-- 078
+- '077'
+- '078'
 synthesis_ingested_at: '2026-06-11T18:26:27Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_08/fit_stage076_lambda_mu_normalization__lambda_mu.yaml

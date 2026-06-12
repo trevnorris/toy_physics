@@ -199,7 +199,15 @@ constraints:
 graph_context:
   contexts: []
   graph_gaps: []
-provenance_findings: []
+provenance_findings:
+- type: alias_dedup
+  severity: low
+  summary: Duplicate Stage-253 scanner slug for \(K_{\rm turn}\); use fit_stage253_K_turn_force_match as the primary bundle for
+    the benchmark-only force-match input.
+  citations:
+  - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+    line: 956
+    excerpt: '`0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only'
 downstream_dependents: []
 synthesis_ingested_at: '2026-06-11T19:38:10Z'
 agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_29/fit_stage253_calibration_slice_nominal_constants__k_turn.yaml

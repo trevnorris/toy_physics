@@ -446,6 +446,10 @@ Use the Session-IV cold-event data carried into Stage 251:
  \qquad
  \mu_\eta=1.
 \]
+
+Provenance note. The Session-IV numbers in this benchmark specialization are carried readback inputs for the cold-event slice;
+the stage derives the event-equivalent export rates from them, rather than deriving the session floats themselves.
+
 Then the exact safe-edge event-equivalent export rate is
 \[
 \boxed{

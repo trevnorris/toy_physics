@@ -6,8 +6,10 @@ surfaced across Phase C batches + the Phase A/B tooling deferrals. **Append each
 sources — run it from this list.
 
 **Owner convention:** Codex APPLIES all content-bearing fixes (cards/notes/scripts/provenance YAML); Claude
-REVIEWS + owns this tracker. Items tagged `[USER-GATED ✅]` were already approved by the user; `[verdict_logged]`
-is the one PARTIAL finding with a manifest verdict.
+REVIEWS + owns this tracker. Items tagged `[USER-GATED ✅]` were already approved by the user. There are now TWO
+`verdict_logged` PARTIAL findings (both non-fatal, manifest verdict recorded): **A1** (stage_192 χ_Q/Δ_Q/N_Q
+re-attribution, batch 1) and **A8** (stage_162 γ₀ exact-family-formula scoping, batch 5 — Claude+Codex adjudicated
+non-fatal, contingent on the ANSATZ_LEDGER §5-1 user gate).
 
 **Status legend:** `[ ]` open · `[x]` done. Nothing here affects verification substance — all non-fatal
 (cosmetic / metadata / renumber / card-text scoping). No program revision required.
@@ -33,6 +35,12 @@ These all concern a card/badge implying more than the notes support. The blanket
   "selected/declared/reference" framing carries it). _[batch 2, u12]_
 - [ ] **A7.** `paper/stages/stage_115.tex:1` title "Exact Core-Balance Compensation **Theorem**" is borderline-strong
   wording (it's about the balance surface/law, not a value; notes re-disclose free data). LOW priority. _[batch 3, u08]_
+- [ ] **A8.** `paper/stages/stage_162.tex:5` `\StatusExactClosure` + `notes162:38/58/70` present γ₀=(1+𝔯²)/9 as one of
+  "the two **exact** parent-family formulas" / "Stages 115–116 **fix** the bare odd normalization" with no ansatz tag —
+  scope the badge + add a pure-scale-realization hedge distinguishing γ₀ (posited) from the genuinely-derived L_W/a
+  relation it is grouped with. **SAME class as A3** (stage_116 γ₀ badge). **CONTINGENT** on the user's
+  ANSATZ_LEDGER §5-item-1 call: if the user adopts the "derived (odd-preservation theorem)" reading, NO edit is owed
+  and the current wording is correct. _[batch 5, u02 — YES→PARTIAL, verdict_logged; Claude+Codex adjudicated non-fatal]_
 
 ## B. constraint_kind / classification relabels (provenance YAML, label-only)
 - [ ] **B1.** Relabel `constraint_kind` `published_target → free_choice` in the 3 stale r_F1 bundles:
@@ -76,6 +84,13 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
   (133, M_minus is OPEN), `bias_determined_by_fixedpoint` (134, M_q is FREE), `rf1_geometry_fixes`,
   `g_nat_equal_normalized_unity`, `parent_threshold_canonical`. These are audit-internal candidate_ids, NOT published
   paper/notes lines → **no paper fix required**; informational only (the slug-vs-content gap was batch 4's headline). _[batch 4]_
+- [ ] **D4.** `fit_stage195_mhat0_natural_source_map` and `fit_stage195_natural_source_map_mhat0` are word-order-permuted
+  slugs for the SAME parameter mhat_0 at stage 195 (the second bundle self-identifies "Duplicate candidate for m_hat_0
+  at stage 195") — mark as alias/dedup, not two standalone free_choice candidates. _[batch 5, u07]_
+- [ ] **D5.** Two more scanner-slug overstatements (audit-internal candidate_ids, NOT paper/notes lines → **no fix
+  required**): `g2_common_tangent` (187 — no literal in notes; denotes the tangent space T_id G_* of which Lambda_1 is
+  one free direction) and `doubled_slope_factors` (178 — the factor-2 lives in the derived identity ν_r=2(𝔭_r−𝔡_r),
+  not in κ_1/d_r being "doubled"). Informational only. _[batch 5, u04/u05]_
 
 ## E. Disclosure-completeness (optional notes additions)
 - [ ] **E1.** f'(0)=1 is documented only in the sympy script (`…stage065…:118`), absent from notes/ — optional notes mention. _[batch 2, u09]_
@@ -87,6 +102,9 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 ## F. Script wording
 - [ ] **F1.** `scripts/…stage247…` (":239 independently derived / :248 falsifiable") overstates the tautological
   λ_L closure — soften wording. _[batch 1]_
+- [ ] **F2.** `scripts/…stage162…sympy_audit.py` hardcodes the r_F1 DECIMAL (1.77799353547498) instead of the closed
+  form `sqrt(4107-100π²)/(10π)`; the de-transcription applied to 165/168/169 was not applied to 162 (already noted in
+  `CHECKPOINT_CONSTANT_PROVENANCE.md`). Cosmetic script-form consistency, not an overclaim. _[batch 5, u01]_
 
 ## G. Phase A/B tooling cosmetics (lower priority — superseded by genealogy; opportunistic)
 - [ ] **G1.** Seeded-chain coverage check should resolve aliases→canonicals before flagging missing (6 false alarms). _[exec plan §line 65]_
@@ -100,5 +118,6 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - Batch 2: `reports/_batch_c2_verdicts.md` §OPTIONAL (8 items)
 - Batch 3: `reports/_batch_c3_verdicts.md` §OPTIONAL (8 items)
 - Batch 4: `reports/_batch_c4_verdicts.md` §OPTIONAL (6 items: C12-C15, E3, D3)
+- Batch 5: `reports/_batch_c5_verdicts.md` §OPTIONAL (5 items: A8, F2, D4, D5, + the verdict_logged γ₀ PARTIAL = A8)
 - Tooling: `docs/adversarial_audit_execution_plan.md` line 65
-- _Batches 4-N (free_choice 120-259) + the internal_consistency completeness-critic: append here as they land._
+- _Batches 6-N (free_choice 200-259) + the internal_consistency completeness-critic: append here as they land._

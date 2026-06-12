@@ -1,0 +1,137 @@
+# Phase C — Batch 5 roster (targeted free_choice sweep, stages 160-199)
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining ~190 free_choice ansaetze.
+# This is batch 5 of ~6: the 160-199 "family-1 radius closure / multipole-convention / source-map" band.
+# 18 free_choice candidates (provenance_built, 19 param-checks) -> 7 disjoint stage-cluster units, per-member sub-verdicts.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable/fixed in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+#
+# THIS IS THE MOST SENSITIVE BAND OF THE SWEEP: it contains the stage 192/193/194/195 chain (literal
+# neighborhood of the canonical stage_192 posit-dressed-as-derived failure + the open PARTIAL punch-list A1),
+# AND two of the four ANSATZ_LEDGER borderline calls (gamma_0=(1+r_c)/9 at 162; n=5 wall EOS at 165), AND a
+# continuation of the batch-4 u03 r_F1 family (the closed-form-4107 radius at 162/163/165/168).
+#
+# IMPORTANT scoping nuance: P_2 here is the MULTIPOLE-ORDER CONVENTION (the '2' = l=2 quadrupole sector),
+# classified free_choice (sector/branch convention) -- the most benign subtype. This is NOT the stage_192
+# chi_Q/Delta_Q/N_Q attribution issue (that is punch-list A1, a separate already-logged PARTIAL/verdict_logged
+# finding about chi_Q/Delta_Q/N_Q being attributed to 192 when they originate downstream at 194/195). The P_2
+# free_choice candidates are just "which multipole = 2." Still treated maximally sensitive given the neighborhood.
+
+batch_id: batch_c5_freechoice_160_199
+band: '160-199'
+constraint_kind: free_choice
+candidate_count: 18          # 19 param-checks (stage191 carries chi_0_star + F_star)
+unit_count: 7
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+# SENSITIVE units flagged for mandatory orchestrator spot-check (distrust-all-clean backstop):
+#   u01_rF1_closed_form  - continuation of batch-4 u03 r_F1 family; "closed_form_4107" / "rexact" /
+#       "canonical_point_block" naming is overclaim-adjacent (could dress the carried radius as forced/exact).
+#   u02_gamma0_ninth     - ANSATZ_LEDGER borderline call gamma_0=(1+r_c)/9; "one_ninth_r_form" must be a
+#       posited form, not a derived identity (related to the global open ANSATZ borderline list).
+#   u03_n5_wall_eos      - ANSATZ_LEDGER borderline call n=5 EOS; "frozen_n5" naming -> verify "frozen" means
+#       a chosen freeze, not derived. (Same n=5 family as batch-2 u08 at stage 070.)
+#   u06_P2_chain         - MAXIMALLY SENSITIVE: stages 192-195 are the canonical stage_192 failure neighborhood
+#       and punch-list A1 (chi_Q/Delta_Q/N_Q attribution) is an OPEN PARTIAL here. Verify the P_2 multipole
+#       convention is honestly a sector/branch choice and that NO card/notes line in 191-195 dresses a chosen
+#       value (P_2, chi_0_star, F_star, mhat_0) as derived/forced. Orchestrator will read 191-195 cards+notes.
+
+units:
+  u01_rF1_closed_form:
+    stages: ['162','163','165','168']
+    sensitive: true
+    focus: |
+      The family-1 radius r_F1 closure carried 162 -> 163 -> 165 -> 168 (re-fit drift check). This is a direct
+      CONTINUATION of batch-4 u03 (r_F1 at 122/123/124), now at its "closed-form / canonical-point" anchors.
+      Naming is overclaim-adjacent: "r_f1_family1_value", "rF1_family1_radius", "family1_canonical_point_block",
+      "rstar_closed_form_4107", "rexact_closed_form_4107". Test = is r_F1 disclosed as a geometry-selected /
+      carried family-1 branch choice (the sqrt(4107-100 pi^2)/(10 pi) closed form evaluated at L/a=37/20), or is
+      it claimed forced/fixed/exact/canonical-as-unique by the geometry? "closed_form"/"rexact"/"4107" must label
+      the FORMULA/algebraic closure, not assert the VALUE is derived. "canonical_point" must mean a chosen
+      canonical reference point, not a uniqueness theorem. Check all anchors carry a NUMERICALLY IDENTICAL r_F1
+      (1.77799353547498 = sqrt(4107-100 pi^2)/(10 pi); a fit would drift). Note 163 bundle carries r_F1 only here
+      (its g_star/s_can/sigma0_can params are internal_consistency, out of scope). Orchestrator will spot-check
+      stage_162/163/165/168 cards + notes regardless of verdict.
+    members:
+      - {id: fit_stage162_r_f1_family1_value, params: [r_F1], files: [fit_stage162_r_f1_family1_value__r_f1.yaml]}
+      - {id: fit_stage162_rF1_family1_radius, params: [r_F1], files: [fit_stage162_rf1_family1_radius__r_f1.yaml]}
+      - {id: fit_stage163_family1_canonical_point_block, params: [r_F1], files: [fit_stage163_family1_canonical_point_block__r_f1.yaml]}
+      - {id: fit_stage165_rstar_closed_form_4107, params: [r_F1], files: [fit_stage165_rstar_closed_form_4107__r_f1.yaml]}
+      - {id: fit_stage168_rexact_closed_form_4107, params: [r_F1], files: [fit_stage168_rexact_closed_form_4107__r_f1.yaml]}
+  u02_gamma0_ninth:
+    stages: ['162']
+    sensitive: true
+    focus: |
+      gamma_0 = (1 + r_c)/9 "one-ninth r-form" (stage 162). SENSITIVE: this is one of the four open
+      ANSATZ_LEDGER borderline calls (gamma_0=(1+r_c)/9) awaiting a layer-3 user gate. The "one_ninth_r_form"
+      naming -> verify gamma_0 is disclosed as a posited concrete realization / a chosen form, NOT as a derived
+      identity or a forced consequence of rigidity. The /9 and the (1+r_c) structure must be presented as a
+      simple chosen realization (cf. the stage_116 gamma_0 "A simple concrete realization is to take..." framing,
+      punch-list A3), not a theorem. Check notes162 (parent_compensation_rigidity) for the label-word.
+    members:
+      - {id: fit_stage162_gamma0_one_ninth_r_form, params: [gamma_0], files: [fit_stage162_gamma0_one_ninth_r_form__gamma_0.yaml]}
+  u03_n5_wall_eos:
+    stages: ['165']
+    sensitive: true
+    focus: |
+      n_wall_eos = 5 "frozen n5 wall EOS" (stage 165). SENSITIVE: this is one of the four open ANSATZ_LEDGER
+      borderline calls (n=5 EOS) awaiting a layer-3 user gate; same n=5 EOS family batch-2 u08 examined at stage
+      070 (punch-list C8: 070 inherits n=5 from 062/Phase-0, no own provenance). The "frozen" naming -> verify
+      "frozen" means a CHOSEN freeze of a posited polytropic index, NOT a derived/forced value. Check notes165
+      (exact_branch_drifts) for how n=5 is labeled and whether it is honestly carried/posited.
+    members:
+      - {id: fit_stage165_frozen_n5_wall_eos, params: [n_wall_eos], files: [fit_stage165_frozen_n5_wall_eos__n_wall_eos.yaml]}
+  u04_slopes_doubling:
+    stages: ['173','178']
+    focus: |
+      Axisymmetric-loading slope data: D_01 (173) + doubled-slope kappa_1 and d_r (178). "slopes_fixed_by_d01"
+      is overclaim-adjacent -> verify D_01 is a posited slope datum that the other slopes are expressed in terms
+      of (a parameterization choice), NOT a value claimed derived/forced. "doubled_slope_factors" -> verify
+      kappa_1 / d_r are posited slope factors (free loading DOFs), honestly disclosed, not labeled derived. Check
+      notes173 (axisymmetric_loading_mismatch) + notes178 for the label-words.
+    members:
+      - {id: fit_stage173_slopes_fixed_by_d01, params: [D_01], files: [fit_stage173_slopes_fixed_by_d01__d_01.yaml]}
+      - {id: fit_stage178_doubled_slope_factors, params: [kappa_1], files: [fit_stage178_doubled_slope_factors__kappa_1.yaml]}
+      - {id: fit_stage_178_d_r, params: [d_r], files: [fit_stage_178_d_r__d_r.yaml]}
+  u05_g2_tangent:
+    stages: ['187']
+    focus: |
+      Lambda_1 g2 common-tangent value (stage 187, orbit-quotient closure). "g2_common_tangent_lambda_1" ->
+      verify Lambda_1 is a posited closure parameter / a chosen tangent condition value, NOT claimed derived or
+      forced by the orbit-quotient geometry. A "common tangent" CONDITION constrains a relation; check whether
+      Lambda_1's standalone value is presented as a choice or overclaimed as fixed. Check notes187
+      (orbit_quotient_closure) for the label-word.
+    members:
+      - {id: fit_stage187_g2_common_tangent_lambda_1, params: [Lambda_1], files: [fit_stage187_g2_common_tangent_lambda_1__lambda_1.yaml]}
+  u06_P2_chain:
+    stages: ['191','192','193','194','195']
+    sensitive: true
+    focus: |
+      MAXIMALLY SENSITIVE. The P_2 multipole-order convention carried 192 -> 193 -> 194 -> 195, plus the 191
+      carried packet coefficients chi_0_star + F_star. Stages 192-195 are the literal neighborhood of the
+      canonical stage_192 posit-dressed-as-derived failure, and punch-list A1 (chi_Q/Delta_Q/N_Q attributed to
+      192 when they originate downstream at 194/195) is an OPEN PARTIAL/verdict_logged finding here.
+      SCOPING: P_2 is the MULTIPOLE-ORDER CONVENTION (the '2' = l=2 quadrupole sector) per its own constraint
+      notes -- free_choice (sector/branch convention), the most benign subtype. The fit-vs-derive test: is the
+      P_2='2' convention honestly a sector/branch choice across 192-195, or is any card/notes line dressing it
+      (or chi_0_star / F_star) as derived/forced? chi_0_star + F_star are carried packet coefficients (191
+      b_star is internal_consistency, out of scope) -> verify they are honestly carried/posited. This unit is
+      DISTINCT from the A1 chi_Q overclaim (do not re-litigate A1; just confirm no NEW posit-as-derived on
+      P_2/chi_0_star/F_star). Orchestrator will independently read stage_191/192/193/194/195 cards + notes.
+    members:
+      - {id: fit_stage191_carried_coefficients_in_packet_interconversion, params: [chi_0_star, F_star], files: [fit_stage191_carried_coefficients_in_packet_interconversion__chi_0_star.yaml, fit_stage191_carried_coefficients_in_packet_interconversion__f_star.yaml]}
+      - {id: fit_stage_192_p_2, params: [P_2], files: [fit_stage_192_p_2__p_2.yaml]}
+      - {id: fit_stage_193_p_2, params: [P_2], files: [fit_stage_193_p_2__p_2.yaml]}
+      - {id: fit_stage_194_p_2, params: [P_2], files: [fit_stage_194_p_2__p_2.yaml]}
+      - {id: fit_stage_195_p_2, params: [P_2], files: [fit_stage_195_p_2__p_2.yaml]}
+  u07_mhat0_source_map:
+    stages: ['195']
+    focus: |
+      mhat_0 natural source-map value (stage 195). TWO candidate slugs for the SAME parameter at the SAME stage:
+      "fit_stage195_mhat0_natural_source_map" and "fit_stage195_natural_source_map_mhat0" are word-order
+      permutations -> almost certainly a scanner DEDUP artifact (flag as such; benign). Test = is mhat_0 disclosed
+      as a posited / natural source-map normalization choice, NOT claimed derived/forced. Confirm both slugs point
+      at the same honest disclosure (no divergence). Check notes195 (minimal source map) for the label-word.
+    members:
+      - {id: fit_stage195_mhat0_natural_source_map, params: [mhat_0], files: [fit_stage195_mhat0_natural_source_map__mhat_0.yaml]}
+      - {id: fit_stage195_natural_source_map_mhat0, params: [mhat_0], files: [fit_stage195_natural_source_map_mhat0__mhat_0.yaml]}

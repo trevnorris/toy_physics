@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T07:04:29Z'
+updated_at: '2026-06-12T07:35:41Z'
 state_machine:
 - pending
 - scanned
@@ -29682,11 +29682,13 @@ candidates:
     - p_r
     - sigma_r
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:16:54Z'
+      audit_pending: '2026-06-12T07:18:51Z'
+      audited: '2026-06-12T07:31:38Z'
     codex_session:
       by_parameter:
         d_r:
@@ -29743,6 +29745,13 @@ candidates:
         excerpt: 'Both engines pass all shared checks and emit consistent closed forms. The `nu_r`, `sigma_r`, `p_r`, `d_r`,
           `alpha/beta/chi/zeta` printed forms agree up to ordering/sign-grouping:'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:18:51Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:31:38Z'
   fit_stage_178_delta:
     id: fit_stage_178_delta
     candidate_key: stage_178_delta
@@ -31761,11 +31770,13 @@ candidates:
     - P_2
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:19:27Z'
+      audited: '2026-06-12T07:32:16Z'
     codex_session:
       by_parameter:
         P_2:
@@ -31825,6 +31836,13 @@ candidates:
           \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
           line.}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:19:27Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:32:16Z'
   fit_stage_192_q_eta:
     id: fit_stage_192_q_eta
     candidate_key: stage_192_q_eta
@@ -32020,11 +32038,13 @@ candidates:
     - P_2
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:19:39Z'
+      audited: '2026-06-12T07:32:28Z'
     codex_session:
       by_parameter:
         P_2:
@@ -32084,6 +32104,13 @@ candidates:
           \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
           line.}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:19:39Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:32:28Z'
   fit_stage_194_chi_q:
     id: fit_stage_194_chi_q
     candidate_key: stage_194_chi_q
@@ -32628,11 +32655,13 @@ candidates:
     - P_2
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:19:51Z'
+      audited: '2026-06-12T07:32:41Z'
     codex_session:
       by_parameter:
         P_2:
@@ -32692,6 +32721,13 @@ candidates:
           \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
           line.}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:19:51Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:32:41Z'
   fit_stage_195_chi_q:
     id: fit_stage_195_chi_q
     candidate_key: stage_195_chi_q
@@ -33104,11 +33140,13 @@ candidates:
     - P_2
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:20:03Z'
+      audited: '2026-06-12T07:32:53Z'
     codex_session:
       by_parameter:
         P_2:
@@ -33168,6 +33206,13 @@ candidates:
           \(l=2\) DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish
           line.}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:20:03Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:32:53Z'
   fit_stage_195_stale_output:
     id: fit_stage_195_stale_output
     candidate_key: stage_195_stale_output
@@ -63949,11 +63994,17 @@ candidates:
     - gamma_0
     - r_frak
     batch_id: null
-    status: provenance_built
+    status: verdict_logged
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:41Z'
+      audit_pending: '2026-06-12T07:18:03Z'
+      audited: '2026-06-12T07:34:49Z'
+      defense_pending: '2026-06-12T07:35:02Z'
+      defended: '2026-06-12T07:35:14Z'
+      adjudicating: '2026-06-12T07:35:26Z'
+      verdict_logged: '2026-06-12T07:35:38Z'
     codex_session:
       by_parameter:
         gamma_0:
@@ -63995,6 +64046,28 @@ candidates:
         excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
         stage: '162'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:18:03Z'
+    - status: audited
+      note: 'batch_c5 u02 audit: YES (posit-dressed-as-derived candidate) - gamma0=(1+r^2)/9 grouped as exact parent-family
+        formula at stage162'
+      at: '2026-06-12T07:34:49Z'
+    - status: defense_pending
+      note: defense dispatched (strongest good-faith rebuttal of the YES)
+      at: '2026-06-12T07:35:02Z'
+    - status: defended
+      note: 'defense REFUTED fatal: exact attaches to family LAW; result uses only functional form; ''115-116 fix'' back-refs
+        the upstream POSIT (116:62); gamma0 is ANSATZ_LEDGER §5-1 borderline'
+      at: '2026-06-12T07:35:14Z'
+    - status: adjudicating
+      note: Claude+Codex adjudication (codex exec -s read-only, _codex_b5_u02_adjudication.md)
+      at: '2026-06-12T07:35:26Z'
+    - status: verdict_logged
+      note: 'PARTIAL non-fatal (CONVERGED Claude+Codex): card-badge/notes-wording over-scope, punch-list A8 (= A3 class),
+        CONTINGENT on user ANSATZ_LEDGER §5-1 gate; NOT FIND_STANDS, no user gate'
+      at: '2026-06-12T07:35:38Z'
   fit_stage162_gamma0_similarity_law:
     id: fit_stage162_gamma0_similarity_law
     candidate_key: stage162_gamma0_similarity_law
@@ -64064,11 +64137,13 @@ candidates:
     parameter_names:
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:41Z'
+      audit_pending: '2026-06-12T07:17:15Z'
+      audited: '2026-06-12T07:30:06Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -64103,6 +64178,13 @@ candidates:
         excerpt: rF1 = sp.Float("1.77799353547498", 30)
         stage: '162'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:17:15Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:30:06Z'
   fit_stage162_r_f1_family1_value:
     id: fit_stage162_r_f1_family1_value
     candidate_key: stage162_r_f1_family1_value
@@ -64118,11 +64200,13 @@ candidates:
     parameter_names:
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:41Z'
+      audit_pending: '2026-06-12T07:17:03Z'
+      audited: '2026-06-12T07:29:54Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -64157,6 +64241,13 @@ candidates:
         excerpt: \mathfrak r_{F1}\approx 1.77799353547498,
         stage: '162'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:17:03Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:29:54Z'
   fit_stage163_Rstar_quarter:
     id: fit_stage163_Rstar_quarter
     candidate_key: stage163_Rstar_quarter
@@ -64300,11 +64391,13 @@ candidates:
     - g_F1
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:41Z'
+      audit_pending: '2026-06-12T07:17:27Z'
+      audited: '2026-06-12T07:30:19Z'
     codex_session:
       by_parameter:
         S_can:
@@ -64363,6 +64456,13 @@ candidates:
         excerpt: rf1 = sp.Float("1.77799353547498", 30)
         stage: '163'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:17:27Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:30:19Z'
   fit_stage163_family1_readback_misattribution:
     id: fit_stage163_family1_readback_misattribution
     candidate_key: stage163_family1_readback_misattribution
@@ -64705,11 +64805,13 @@ candidates:
     parameter_names:
     - n_wall_eos
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:42Z'
+      audit_pending: '2026-06-12T07:18:15Z'
+      audited: '2026-06-12T07:30:59Z'
     codex_session:
       by_parameter:
         n_wall_eos:
@@ -64745,6 +64847,13 @@ candidates:
           four independent microscopic drifts:'
         stage: '165'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:18:15Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:30:59Z'
   fit_stage165_gstar_literal:
     id: fit_stage165_gstar_literal
     candidate_key: stage165_gstar_literal
@@ -64876,11 +64985,13 @@ candidates:
     parameter_names:
     - r_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:42Z'
+      audit_pending: '2026-06-12T07:17:39Z'
+      audited: '2026-06-12T07:30:31Z'
     codex_session:
       by_parameter:
         r_star:
@@ -64915,6 +65026,13 @@ candidates:
         excerpt: rstar = sp.sqrt(4107 - 100*sp.pi**2) / (10*sp.pi)
         stage: '165'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:17:39Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:30:31Z'
   fit_stage166_four_observables_determine_drifts:
     id: fit_stage166_four_observables_determine_drifts
     candidate_key: stage166_four_observables_determine_drifts
@@ -65372,11 +65490,13 @@ candidates:
     parameter_names:
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:42Z'
+      audit_pending: '2026-06-12T07:17:51Z'
+      audited: '2026-06-12T07:30:43Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -65411,6 +65531,13 @@ candidates:
         excerpt: rExact = Sqrt[4107 - 100*Pi^2]/(10*Pi);   (* canonical Family-1 radius = 1.77799353547498... *)
         stage: '168'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:17:51Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:30:43Z'
   fit_stage168_sigma0_num_digit_variant:
     id: fit_stage168_sigma0_num_digit_variant
     candidate_key: stage168_sigma0_num_digit_variant
@@ -66186,11 +66313,13 @@ candidates:
     - u_2_slope
     - u_4_slope
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:54Z'
+      audit_pending: '2026-06-12T07:18:27Z'
+      audited: '2026-06-12T07:31:13Z'
     codex_session:
       by_parameter:
         D_01:
@@ -66240,6 +66369,13 @@ candidates:
           slope \(D_{01}\):'
         stage: '173'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:18:27Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:31:13Z'
   fit_stage173_stage024_signature_triple:
     id: fit_stage173_stage024_signature_triple
     candidate_key: stage173_stage024_signature_triple
@@ -66690,11 +66826,13 @@ candidates:
     - kappa_1
     - nu_r_factor_2
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:54Z'
+      audit_pending: '2026-06-12T07:18:39Z'
+      audited: '2026-06-12T07:31:26Z'
     codex_session:
       by_parameter:
         kappa_1:
@@ -66737,6 +66875,13 @@ candidates:
           slope.
         stage: '178'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:18:39Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:31:26Z'
   fit_stage179_xi1_factor_two_transfer_slopes:
     id: fit_stage179_xi1_factor_two_transfer_slopes
     candidate_key: stage179_xi1_factor_two_transfer_slopes
@@ -67964,11 +68109,13 @@ candidates:
     parameter_names:
     - Lambda_1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:06Z'
+      audit_pending: '2026-06-12T07:19:03Z'
+      audited: '2026-06-12T07:31:51Z'
     codex_session:
       by_parameter:
         Lambda_1:
@@ -68005,6 +68152,13 @@ candidates:
         stage: '187'
       graph_node: EQ_G2_COMMON_TANGENT
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:19:03Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:31:51Z'
   fit_stage189_eps_split_2_11_coefficient:
     id: fit_stage189_eps_split_2_11_coefficient
     candidate_key: stage189_eps_split_2_11_coefficient
@@ -68292,11 +68446,13 @@ candidates:
     - F_star
     - chi_0_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:44Z'
+      audit_pending: '2026-06-12T07:19:15Z'
+      audited: '2026-06-12T07:32:04Z'
     codex_session:
       by_parameter:
         B_star:
@@ -68350,6 +68506,13 @@ candidates:
         stage: '191'
       graph_node: TARGET_PACKET_A
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:19:15Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:32:04Z'
   fit_stage191_fixed_by_previous_stages:
     id: fit_stage191_fixed_by_previous_stages
     candidate_key: stage191_fixed_by_previous_stages
@@ -69080,11 +69243,13 @@ candidates:
     parameter_names:
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:20:15Z'
+      audited: '2026-06-12T07:33:05Z'
     codex_session:
       by_parameter:
         mhat_0:
@@ -69120,6 +69285,13 @@ candidates:
         excerpt: NQ_pt = sp.simplify(NQ_from_odd.subs(mhat0, 1))
         stage: '195'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:20:15Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:33:05Z'
   fit_stage195_natural_source_map_mhat0:
     id: fit_stage195_natural_source_map_mhat0
     candidate_key: stage195_natural_source_map_mhat0
@@ -69136,11 +69308,13 @@ candidates:
     - N_Q
     - m_hat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T07:20:28Z'
+      audited: '2026-06-12T07:33:17Z'
     codex_session:
       by_parameter:
         N_Q:
@@ -69183,6 +69357,13 @@ candidates:
         excerpt: No additional source-map ambiguity survives at this stage once the odd observable closure is enforced.
         stage: '195'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c5_freechoice_160_199 dispatch
+      at: '2026-06-12T07:20:28Z'
+    - status: audited
+      note: batch_c5_freechoice_160_199 NO (no fatal overclaim)
+      at: '2026-06-12T07:33:17Z'
   fit_stage195_omega_Q_pole_frequency:
     id: fit_stage195_omega_Q_pole_frequency
     candidate_key: stage195_omega_Q_pole_frequency

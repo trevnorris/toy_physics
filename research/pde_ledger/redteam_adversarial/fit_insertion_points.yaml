@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T07:04:26Z'
+generated_at: '2026-06-12T07:35:38Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -6541,7 +6541,7 @@ candidates:
   parameter_names:
   - gamma_0
   - r_frak
-  status: provenance_built
+  status: verdict_logged
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
     line: 61
@@ -6575,7 +6575,7 @@ candidates:
   - '162'
   parameter_names:
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
     line: 71
@@ -6592,7 +6592,7 @@ candidates:
   - '162'
   parameter_names:
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
     line: 155
@@ -6647,7 +6647,7 @@ candidates:
   - Sigma0_can
   - g_F1
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
     line: 123
@@ -6756,7 +6756,7 @@ candidates:
   - '165'
   parameter_names:
   - n_wall_eos
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
     line: 27
@@ -6809,7 +6809,7 @@ candidates:
   - '165'
   parameter_names:
   - r_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
     line: 109
@@ -6942,7 +6942,7 @@ candidates:
   - '168'
   parameter_names:
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/mathematica/moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl
     line: 105
@@ -7178,7 +7178,7 @@ candidates:
   - D_01
   - u_2_slope
   - u_4_slope
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
     line: 226
@@ -7313,7 +7313,7 @@ candidates:
   parameter_names:
   - kappa_1
   - nu_r_factor_2
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
     line: 97
@@ -7675,7 +7675,7 @@ candidates:
   - '187'
   parameter_names:
   - Lambda_1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/g2/g2_full_output.md
     line: 757
@@ -7766,7 +7766,7 @@ candidates:
   - B_star
   - F_star
   - chi_0_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
     line: 253
@@ -7972,7 +7972,7 @@ candidates:
   - '195'
   parameter_names:
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
     line: 108
@@ -7990,7 +7990,7 @@ candidates:
   parameter_names:
   - N_Q
   - m_hat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
     line: 196
@@ -18585,7 +18585,7 @@ candidates:
   - nu_r
   - p_r
   - sigma_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_178.md
     line: 88
@@ -19178,7 +19178,7 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_192.tex
     line: 9
@@ -19245,7 +19245,7 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_193.tex
     line: 9
@@ -19402,7 +19402,7 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_194.tex
     line: 9
@@ -19530,7 +19530,7 @@ candidates:
   parameter_names:
   - P_2
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_195.tex
     line: 9

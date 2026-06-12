@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T08:08:40Z'
+updated_at: '2026-06-12T08:51:28Z'
 state_machine:
 - pending
 - scanned
@@ -40212,11 +40212,13 @@ candidates:
     - E_w
     - S_leak
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:33:55Z'
+      audited: '2026-06-12T08:41:48Z'
     codex_session:
       by_parameter:
         E_w:
@@ -40261,6 +40263,13 @@ candidates:
           (wl:101) — an information flow absent from the `.py`. It further cross-checks the work integral by half-line symmetry
           `2∫_0^∞ j^w E_w` (wl:93-96, asserted wl:103).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:33:55Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:41:48Z'
   fit_stage_243_k_turn:
     id: fit_stage_243_k_turn
     candidate_key: stage_243_k_turn
@@ -40780,11 +40789,13 @@ candidates:
     - alpha_6
     - alpha_6_alpha_2_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:43Z'
+      audit_pending: '2026-06-12T08:35:30Z'
+      audited: '2026-06-12T08:43:22Z'
     codex_session:
       by_parameter:
         alpha_2:
@@ -40850,6 +40861,13 @@ candidates:
         excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247
           baseline gives
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:35:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:43:22Z'
   fit_stage_247_d_uv:
     id: fit_stage_247_d_uv
     candidate_key: stage_247_d_uv
@@ -41916,11 +41934,13 @@ candidates:
     - eq_sub
     - eq_sub_expected
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:36:54Z'
+      audited: '2026-06-12T08:44:43Z'
     codex_session:
       by_parameter:
         C_sigma:
@@ -41999,6 +42019,13 @@ candidates:
           `solve` route. The benchmark section (M5) is necessarily numeric-data-similar, but that is shared input data, not
           ported algebra. No `mathematica_transliteration` finding.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:36:54Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:44:43Z'
   fit_stage_249_gamma_0:
     id: fit_stage_249_gamma_0
     candidate_key: stage_249_gamma_0
@@ -42145,11 +42172,13 @@ candidates:
     - alpha_pk
     - engine_disagreement
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:37:06Z'
+      audited: '2026-06-12T08:44:55Z'
     codex_session:
       by_parameter:
         R_int:
@@ -42208,6 +42237,13 @@ candidates:
           = 4.109209231260703`, `abarBench = 0.6085499908172678`, M1-M4 all `= 0`, benchmark diffs all `~1e-9` < `1e-7` tol.
           Identical numerics to displayed precision and identical symbolic residuals (0). No `engine_disagreement`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:37:06Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:44:55Z'
   fit_stage_250_chi_rm:
     id: fit_stage_250_chi_rm
     candidate_key: stage_250_chi_rm
@@ -42227,11 +42263,13 @@ candidates:
     - lambda_rm
     - mu_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:37:18Z'
+      audited: '2026-06-12T08:45:07Z'
     codex_session:
       by_parameter:
         chi_rm:
@@ -42297,6 +42335,13 @@ candidates:
         excerpt: 4. The physical-unit mapping of \(\lambda_{\rm eff},\chi_{\rm peak},\mu_\eta\) into a material-specific device
           remains downstream.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:37:18Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:45:07Z'
   fit_stage_250_e_edge:
     id: fit_stage_250_e_edge
     candidate_key: stage_250_e_edge
@@ -42536,11 +42581,13 @@ candidates:
     - cref
     - s_c
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:58Z'
+      audit_pending: '2026-06-12T08:37:54Z'
+      audited: '2026-06-12T08:46:16Z'
     codex_session:
       by_parameter:
         cref:
@@ -42598,6 +42645,16 @@ candidates:
         excerpt: For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane
           \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:37:54Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:45:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:46:16Z'
   fit_stage_251_delta_0:
     id: fit_stage_251_delta_0
     candidate_key: stage_251_delta_0
@@ -43221,11 +43278,13 @@ candidates:
     - mu_eta
     - safe_combo
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:38:10Z'
+      audit_pending: '2026-06-12T08:38:17Z'
+      audited: '2026-06-12T08:47:02Z'
     codex_session:
       by_parameter:
         mu_eta:
@@ -43273,6 +43332,16 @@ candidates:
           — fractions sum to 1 and benchmark numerics reproduce the documented Session-IV split exactly. Conclusion: pass-1
           tautology is resolved; only a low-severity card-text-lag remains.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:38:17Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:46:27Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:02Z'
   fit_stage_252_r_v:
     id: fit_stage_252_r_v
     candidate_key: stage_252_r_v
@@ -43484,11 +43553,13 @@ candidates:
     - s_0
     - stage_253
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:40:37Z'
+      audited: '2026-06-12T08:50:50Z'
     codex_session:
       by_parameter:
         f_lat:
@@ -43552,6 +43623,22 @@ candidates:
           intermediate also asserted, present in both notes-implied and scripts), `mu_eta = 1.0`, `f_lat = 0.75` benchmark
           inputs.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:39:50Z'
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:40:37Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:49:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:50:05Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:50:50Z'
   fit_stage_253_k_corr:
     id: fit_stage_253_k_corr
     candidate_key: stage_253_k_corr
@@ -43601,11 +43688,13 @@ candidates:
     - s_c
     - zeta_ep
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:40:48Z'
+      audited: '2026-06-12T08:51:13Z'
     codex_session:
       by_parameter:
         K_corr:
@@ -43805,6 +43894,22 @@ candidates:
           `119.23361317/zeta_ep`, `Upsilon_lat^(sess) ≈ 13.64824695`, legacy product `8.73618521/zeta_ep`, `chi_lambda ≈ 2.19084649`,
           `K_turn ≈ 2.73855812`, a_int stiffness coeff `10.95423248`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:40:02Z'
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:40:48Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:49:53Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:50:39Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:51:13Z'
   fit_stage_253_k_turn:
     id: fit_stage_253_k_turn
     candidate_key: stage_253_k_turn
@@ -43841,11 +43946,13 @@ candidates:
     - s_0
     - s_c
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:41:00Z'
+      audited: '2026-06-12T08:51:25Z'
     codex_session:
       by_parameter:
         K_turn:
@@ -43984,6 +44091,22 @@ candidates:
           derived outputs (`gamma_lat,safe^eq`, products, Upsilon, chi, a_int coeff, V''). Inputs are carry-forward (Stage-252/Session-V
           benchmark) and so are legitimately literal here.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:40:14Z'
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:41:00Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:50:16Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:51:02Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:51:25Z'
   fit_stage_253_mathcal:
     id: fit_stage_253_mathcal
     candidate_key: stage_253_mathcal
@@ -74263,11 +74386,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:33:43Z'
+      audited: '2026-06-12T08:41:37Z'
     codex_session:
       by_parameter:
         c0_min:
@@ -74324,6 +74449,13 @@ candidates:
         excerpt: c0_min = sp.Rational(3, 4)
         stage: '240'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:33:43Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:41:37Z'
   fit_stage240_rho_alpha_selected_demand:
     id: fit_stage240_rho_alpha_selected_demand
     candidate_key: stage240_rho_alpha_selected_demand
@@ -74754,11 +74886,13 @@ candidates:
     parameter_names:
     - epsilon_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:34:06Z'
+      audited: '2026-06-12T08:42:00Z'
     codex_session:
       by_parameter:
         epsilon_eta:
@@ -74794,6 +74928,13 @@ candidates:
         excerpt: which matches the Session-I value.
         stage: '245'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:34:06Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:00Z'
   fit_stage245_session1_readback:
     id: fit_stage245_session1_readback
     candidate_key: stage245_session1_readback
@@ -74811,11 +74952,13 @@ candidates:
     - V_obs
     - eps_ref
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:34:19Z'
+      audited: '2026-06-12T08:42:12Z'
     codex_session:
       by_parameter:
         U_obs:
@@ -74865,6 +75008,13 @@ candidates:
         excerpt: U_obs = sp.Float("0.14313458")
         stage: '245'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:34:19Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:12Z'
   fit_stage245_session1_readback_inputs:
     id: fit_stage245_session1_readback_inputs
     candidate_key: stage245_session1_readback_inputs
@@ -74885,11 +75035,13 @@ candidates:
     - eps_eta_ref
     - g_UV
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:34:30Z'
+      audited: '2026-06-12T08:42:23Z'
     codex_session:
       by_parameter:
         U_obs:
@@ -74965,6 +75117,13 @@ candidates:
         excerpt: U_obs = sp.Float("0.14313458")
         stage: '245'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:34:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:23Z'
   fit_stage246_lower_branch_forced:
     id: fit_stage246_lower_branch_forced
     candidate_key: stage246_lower_branch_forced
@@ -75091,11 +75250,13 @@ candidates:
     - r_eval
     - r_sigma
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:34:42Z'
+      audited: '2026-06-12T08:42:35Z'
     codex_session:
       by_parameter:
         a_0:
@@ -75155,6 +75316,13 @@ candidates:
         excerpt: 'r: sp.Float("1.00217028"),'
         stage: '246'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:34:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:35Z'
   fit_stage246_session1_readback_point:
     id: fit_stage246_session1_readback_point
     candidate_key: stage246_session1_readback_point
@@ -75173,11 +75341,13 @@ candidates:
     - r
     - r_sigma
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T08:34:54Z'
+      audited: '2026-06-12T08:42:47Z'
     codex_session:
       by_parameter:
         a0:
@@ -75234,6 +75404,13 @@ candidates:
         excerpt: 'r: sp.Float("1.00217028"),'
         stage: '246'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:34:54Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:47Z'
   fit_stage246_two_moment_source_matrix:
     id: fit_stage246_two_moment_source_matrix
     candidate_key: stage246_two_moment_source_matrix
@@ -75563,11 +75740,13 @@ candidates:
     parameter_names:
     - lambda_W
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T08:35:06Z'
+      audited: '2026-06-12T08:42:58Z'
     codex_session:
       by_parameter:
         lambda_W:
@@ -75602,6 +75781,13 @@ candidates:
         excerpt: Choose the natural Session-I work specialization
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:35:06Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:42:58Z'
   fit_stage247_session1_packet:
     id: fit_stage247_session1_packet
     candidate_key: stage247_session1_packet
@@ -75779,11 +75965,13 @@ candidates:
     - r_soft
     - xi_R
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T08:35:18Z'
+      audited: '2026-06-12T08:43:10Z'
     codex_session:
       by_parameter:
         a0:
@@ -75889,6 +76077,13 @@ candidates:
         excerpt: 'rF1: sp.Float("1.77799353547498"),'
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:35:18Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:43:10Z'
   fit_stage248_chosen_contact_scale_benchmark:
     id: fit_stage248_chosen_contact_scale_benchmark
     candidate_key: stage248_chosen_contact_scale_benchmark
@@ -75905,11 +76100,13 @@ candidates:
     parameter_names:
     - r_contact
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T08:35:42Z'
+      audited: '2026-06-12T08:43:33Z'
     codex_session:
       by_parameter:
         r_contact:
@@ -75945,6 +76142,13 @@ candidates:
           lowered branch reaches the chosen contact scale and the Coulomb comparison does not.'
         stage: '248'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:35:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:43:33Z'
   fit_stage248_session2_launch_parameters:
     id: fit_stage248_session2_launch_parameters
     candidate_key: stage248_session2_launch_parameters
@@ -75965,11 +76169,13 @@ candidates:
     - r0
     - r_c
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T08:35:54Z'
+      audited: '2026-06-12T08:43:45Z'
     codex_session:
       by_parameter:
         E_sub:
@@ -76040,6 +76246,13 @@ candidates:
         excerpt: r0_num = 5.0
         stage: '248'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:35:54Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:43:45Z'
   fit_stage248_session2_readback:
     id: fit_stage248_session2_readback
     candidate_key: stage248_session2_readback
@@ -76066,11 +76279,13 @@ candidates:
     - r_turn_new
     - v_cross
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T08:36:06Z'
+      audited: '2026-06-12T08:43:57Z'
     codex_session:
       by_parameter:
         E_sub:
@@ -76184,6 +76399,13 @@ candidates:
         excerpt: labeled benchmark-only numeric inputs copied from the declared Session-II
         stage: '248'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:36:06Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:43:57Z'
   fit_stage248_v0_cross_benchmark_speed:
     id: fit_stage248_v0_cross_benchmark_speed
     candidate_key: stage248_v0_cross_benchmark_speed
@@ -76260,11 +76482,13 @@ candidates:
     - H_sub_minus_final
     - H_sub_plus_final
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:36:18Z'
+      audited: '2026-06-12T08:44:08Z'
     codex_session:
       by_parameter:
         H_sub_minus_final:
@@ -76306,6 +76530,13 @@ candidates:
         excerpt: which matches the integrated ratio to displayed precision.
         stage: '249'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:36:18Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:44:08Z'
   fit_stage249_session2_helicity_readbacks:
     id: fit_stage249_session2_helicity_readbacks
     candidate_key: stage249_session2_helicity_readbacks
@@ -76325,11 +76556,13 @@ candidates:
     - H_peak_antialigned
     - alpha_h
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:36:30Z'
+      audited: '2026-06-12T08:44:20Z'
     codex_session:
       by_parameter:
         H_int_aligned:
@@ -76393,6 +76626,13 @@ candidates:
         excerpt: peak_aligned = 281.79830789
         stage: '249'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:36:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:44:20Z'
   fit_stage249_session3_peak_readback:
     id: fit_stage249_session3_peak_readback
     candidate_key: stage249_session3_peak_readback
@@ -76411,11 +76651,13 @@ candidates:
     - peak_aligned
     - peak_antialigned
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T08:36:42Z'
+      audited: '2026-06-12T08:44:31Z'
     codex_session:
       by_parameter:
         hint_aligned:
@@ -76473,6 +76715,13 @@ candidates:
         excerpt: peak_aligned = 281.79830789
         stage: '249'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:36:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:44:31Z'
   fit_stage250_benchmark_masses_and_window:
     id: fit_stage250_benchmark_masses_and_window
     candidate_key: stage250_benchmark_masses_and_window
@@ -76931,11 +77180,13 @@ candidates:
     - t_collapse0
     - t_cross
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:58Z'
+      audit_pending: '2026-06-12T08:37:30Z'
+      audited: '2026-06-12T08:45:19Z'
     codex_session:
       by_parameter:
         gamma_crit:
@@ -76986,6 +77237,13 @@ candidates:
         excerpt: t_cross_num = 1.82169718
         stage: '251'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:37:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:45:19Z'
   fit_stage251_session4_time_inputs:
     id: fit_stage251_session4_time_inputs
     candidate_key: stage251_session4_time_inputs
@@ -77004,11 +77262,13 @@ candidates:
     - t_collapse_0
     - t_cross
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:58Z'
+      audit_pending: '2026-06-12T08:37:42Z'
+      audited: '2026-06-12T08:45:53Z'
     codex_session:
       by_parameter:
         gamma_crit:
@@ -77069,6 +77329,16 @@ candidates:
         excerpt: t_cross_num = 1.82169718
         stage: '251'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:37:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:45:30Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:45:53Z'
   fit_stage252_e_exp_min_completely_fixed:
     id: fit_stage252_e_exp_min_completely_fixed
     candidate_key: stage252_e_exp_min_completely_fixed
@@ -77162,11 +77432,13 @@ candidates:
     - lattice_vacuum_split_3
     - phi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:10Z'
+      audit_pending: '2026-06-12T08:38:05Z'
+      audited: '2026-06-12T08:46:38Z'
     codex_session:
       by_parameter:
         f_lat:
@@ -77231,6 +77503,16 @@ candidates:
         excerpt: 'phi_val = sp.Rational(3, 4)  # the speed-independent 3:1 microscopic family'
         stage: '252'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:38:05Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:46:04Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:46:38Z'
   fit_stage252_vin_benchmark_calibration_match:
     id: fit_stage252_vin_benchmark_calibration_match
     candidate_key: stage252_vin_benchmark_calibration_match
@@ -77300,11 +77582,13 @@ candidates:
     parameter_names:
     - K_turn
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:38:29Z'
+      audited: '2026-06-12T08:47:24Z'
     codex_session:
       by_parameter:
         K_turn:
@@ -77340,6 +77624,16 @@ candidates:
         excerpt: K_turn_num = 2.73855812
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:38:29Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:46:50Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:24Z'
   fit_stage253_calibration_slice_nominal_constants:
     id: fit_stage253_calibration_slice_nominal_constants
     candidate_key: stage253_calibration_slice_nominal_constants
@@ -77363,11 +77657,13 @@ candidates:
     - s_0
     - s_c
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:38:40Z'
+      audited: '2026-06-12T08:47:47Z'
     codex_session:
       by_parameter:
         K_turn:
@@ -77461,6 +77757,16 @@ candidates:
           graph nodes SEC_PDE_MATERIAL_GAP / OPEN_MATERIAL_CLOSURE)
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:38:40Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:13Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:47Z'
   fit_stage253_gamma_lattice_red:
     id: fit_stage253_gamma_lattice_red
     candidate_key: stage253_gamma_lattice_red
@@ -77476,11 +77782,13 @@ candidates:
     parameter_names:
     - gamma_lattice_red
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:38:52Z'
+      audited: '2026-06-12T08:48:10Z'
     codex_session:
       by_parameter:
         gamma_lattice_red:
@@ -77517,6 +77825,16 @@ candidates:
         excerpt: gamma_lattice_legacy_num = 4.79562976
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:38:52Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:36Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:48:10Z'
   fit_stage253_k_eff_force_matched:
     id: fit_stage253_k_eff_force_matched
     candidate_key: stage253_k_eff_force_matched
@@ -77658,11 +77976,13 @@ candidates:
     - Upsilon_lat_sess
     - gamma_lattice_red
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:39:04Z'
+      audited: '2026-06-12T08:48:33Z'
     codex_session:
       by_parameter:
         Upsilon_lat_sess:
@@ -77707,6 +78027,16 @@ candidates:
         excerpt: The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:39:04Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:47:59Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:48:33Z'
   fit_stage253_stage252_slice_inputs:
     id: fit_stage253_stage252_slice_inputs
     candidate_key: stage253_stage252_slice_inputs
@@ -77723,11 +78053,13 @@ candidates:
     - f_lat
     - mu_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:39:15Z'
+      audited: '2026-06-12T08:48:56Z'
     codex_session:
       by_parameter:
         f_lat:
@@ -77772,6 +78104,16 @@ candidates:
         excerpt: '- `0.5489386551062235`, `6.94311167`, `0.75`, and `1.0` are benchmark-only'
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:39:15Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:48:22Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:48:56Z'
   fit_stage253_upsilon_lat_calibration:
     id: fit_stage253_upsilon_lat_calibration
     candidate_key: stage253_upsilon_lat_calibration
@@ -77787,11 +78129,13 @@ candidates:
     parameter_names:
     - Upsilon_lat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:39:27Z'
+      audited: '2026-06-12T08:49:19Z'
     codex_session:
       by_parameter:
         Upsilon_lat:
@@ -77827,6 +78171,16 @@ candidates:
         excerpt: '- `\Upsilon_{\rm lat}` remains an explicit calibration parameter; it is not'
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:39:27Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:48:44Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:49:19Z'
   fit_stage253_upsilon_lat_calibration_factor:
     id: fit_stage253_upsilon_lat_calibration_factor
     candidate_key: stage253_upsilon_lat_calibration_factor
@@ -77842,11 +78196,13 @@ candidates:
     parameter_names:
     - Upsilon_lat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T08:40:25Z'
+      audited: '2026-06-12T08:50:27Z'
     codex_session:
       by_parameter:
         Upsilon_lat:
@@ -77881,6 +78237,22 @@ candidates:
         excerpt: This is a calibration factor, not a new dynamical degree of freedom.
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:39:39Z'
+    - status: audit_pending
+      note: 'batch7 dispatch: free_choice band 240-259'
+      at: '2026-06-12T08:40:25Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:49:07Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:49:42Z'
+    - status: audited
+      note: 'batch7 NO fatal flaw: free_choice honestly disclosed (240-259 session/calibration band)'
+      at: '2026-06-12T08:50:27Z'
   fit_stage152_corrected_mouth_state_pi_corr_t_corr:
     id: fit_stage152_corrected_mouth_state_pi_corr_t_corr
     candidate_key: stage152_corrected_mouth_state_pi_corr_t_corr

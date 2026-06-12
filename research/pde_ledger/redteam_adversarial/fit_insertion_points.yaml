@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T08:08:37Z'
+generated_at: '2026-06-12T08:51:25Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -9276,7 +9276,7 @@ candidates:
   - c1_min
   - rho_alpha
   - zeta_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
     line: 137
@@ -9416,7 +9416,7 @@ candidates:
   - '245'
   parameter_names:
   - epsilon_eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
     line: 516
@@ -9435,7 +9435,7 @@ candidates:
   - U_obs
   - V_obs
   - eps_ref
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
     line: 209
@@ -9457,7 +9457,7 @@ candidates:
   - a_V
   - eps_eta_ref
   - g_UV
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
     line: 209
@@ -9511,7 +9511,7 @@ candidates:
   - b_0
   - r_eval
   - r_sigma
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
     line: 230
@@ -9531,7 +9531,7 @@ candidates:
   - b0
   - r
   - r_sigma
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
     line: 230
@@ -9634,7 +9634,7 @@ candidates:
   - '247'
   parameter_names:
   - lambda_W
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
     line: 489
@@ -9688,7 +9688,7 @@ candidates:
   - r_sigma
   - r_soft
   - xi_R
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
     line: 204
@@ -9705,7 +9705,7 @@ candidates:
   - '248'
   parameter_names:
   - r_contact
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
     line: 538
@@ -9728,7 +9728,7 @@ candidates:
   - m_s
   - r0
   - r_c
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
     line: 237
@@ -9756,7 +9756,7 @@ candidates:
   - r_peak
   - r_turn_new
   - v_cross
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 892
@@ -9809,7 +9809,7 @@ candidates:
   parameter_names:
   - H_sub_minus_final
   - H_sub_plus_final
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
     line: 486
@@ -9830,7 +9830,7 @@ candidates:
   - H_peak_aligned
   - H_peak_antialigned
   - alpha_h
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
     line: 167
@@ -9850,7 +9850,7 @@ candidates:
   - hint_antialigned
   - peak_aligned
   - peak_antialigned
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
     line: 167
@@ -9982,7 +9982,7 @@ candidates:
   - gamma_crit
   - t_collapse0
   - t_cross
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
     line: 176
@@ -10002,7 +10002,7 @@ candidates:
   - s_c
   - t_collapse_0
   - t_cross
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
     line: 176
@@ -10041,7 +10041,7 @@ candidates:
   - f_lat
   - lattice_vacuum_split_3
   - phi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
     line: 155
@@ -10080,7 +10080,7 @@ candidates:
   - '253'
   parameter_names:
   - K_turn
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
     line: 166
@@ -10104,7 +10104,7 @@ candidates:
   - r_turn
   - s_0
   - s_c
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
     line: 161
@@ -10122,7 +10122,7 @@ candidates:
   - '253'
   parameter_names:
   - gamma_lattice_red
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
     line: 163
@@ -10176,7 +10176,7 @@ candidates:
   parameter_names:
   - Upsilon_lat_sess
   - gamma_lattice_red
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 224
@@ -10194,7 +10194,7 @@ candidates:
   parameter_names:
   - f_lat
   - mu_eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 954
@@ -10211,7 +10211,7 @@ candidates:
   - '253'
   parameter_names:
   - Upsilon_lat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 950
@@ -10228,7 +10228,7 @@ candidates:
   - '253'
   parameter_names:
   - Upsilon_lat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
     line: 185
@@ -21556,7 +21556,7 @@ candidates:
   parameter_names:
   - E_w
   - S_leak
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_243.md
     line: 87
@@ -21712,7 +21712,7 @@ candidates:
   - alpha_2
   - alpha_6
   - alpha_6_alpha_2_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
     line: 404
@@ -22014,7 +22014,7 @@ candidates:
   - alpha_h
   - eq_sub
   - eq_sub_expected
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_249.md
     line: 95
@@ -22075,7 +22075,7 @@ candidates:
   - alpha_int
   - alpha_pk
   - engine_disagreement
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_249.md
     line: 99
@@ -22098,7 +22098,7 @@ candidates:
   - chi_rm
   - lambda_rm
   - mu_eta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
     line: 622
@@ -22185,7 +22185,7 @@ candidates:
   parameter_names:
   - cref
   - s_c
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_251.tex
     line: 92
@@ -22373,7 +22373,7 @@ candidates:
   parameter_names:
   - mu_eta
   - safe_combo
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_252.md
     line: 129
@@ -22454,7 +22454,7 @@ candidates:
   - mu_eta
   - s_0
   - stage_253
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_253.md
     line: 117
@@ -22501,7 +22501,7 @@ candidates:
   - s_0
   - s_c
   - zeta_ep
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_253.md
     line: 35
@@ -22544,7 +22544,7 @@ candidates:
   - r_turn
   - s_0
   - s_c
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_253.md
     line: 39

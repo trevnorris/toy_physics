@@ -1,0 +1,239 @@
+# Phase C - Batch 7 roster (targeted free_choice sweep, stages 240-259) -- THE LAST free_choice batch
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining free_choice ansaetze.
+# This is batch 7 of 7: the 240-259 "interactive Session-1..5 readback / calibration-slice" band.
+# (The ledger ENDS at stage 253; nothing exists in 254-259.)
+# 34 free_choice candidates (provenance_built, ~50 free_choice param-checks across compound bundles)
+#   -> 6 disjoint stage-cluster units, per-member sub-verdicts.
+# 3 candidates in-band are ALREADY audited (excluded): 247 session1_packet (8 params),
+#   250 benchmark_masses_and_window (6), 250 goldilocks_inputs (3) -- done in batch 1's published_target U HIGH cluster.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable/fixed/canonical-as-unique in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+#
+# BAND CHARACTER (from the Phase-B synthesis read, grounding the focus blocks): this band is the FINAL
+# EM-projected interactive "Session" sweep (Sessions I-V, stages 245-253) plus the Stage-240 minimal-precursor
+# loading-ratio module and the Stage-253 physical-calibration slice. Its free_choice content is overwhelmingly
+# (a) SESSION READBACKS -- recorded values from an interactive run, fed back as consistency probes
+#     (U_obs, V_obs, helicity readbacks H_*, chi_rm, E_sub, the session1/2/4 input tuples), and
+# (b) POSITED SAMPLE/PROBE POINTS & STIFFNESSES (a_U,a_V,a_0,b_0,r_eval,r_sigma,a0,r_contact,g_UV), and
+# (c) CALIBRATION-SLICE NOMINAL CONSTANTS at 253 (f_lat=3/4 by-hand split, mu_eta, K_turn, gamma_lattice_*,
+#     Upsilon_lat, K_corr) -- "calibration consistency checks, not theorems that the realized branch must use them".
+# The Phase-B pre-screen confirms the recurring pattern of this whole campaign: the word "exact"/"theorem"/
+# "forced" attaches to the internal_consistency-DERIVED structure (the finite (U,V) compiler, the mouth-bias /
+# shell-loading functionals, the safe-edge exported-energy theorem, the lower-edge survival algebra), while the
+# free_choice params are disclosed as posited sample/benchmark/readback points. Several cards are even
+# self-hedged ("useful as an audit point, not as a general theorem" 247; "diagnostic rather than a spin theorem"
+# 249). The adversarial pass re-examines whether ANY free_choice value is dressed as derived.
+#
+# SCOPING NUANCES that the agents + orchestrator MUST honor (the traps in this band):
+#   (1) c0_min=3/4 at 240 (u01) -- THE BATCH'S FLAGGED RISK. The Stage-240 card line 15 OUTPUT field reads
+#       "Exact selected loading ratio: rho_alpha=4/3, zeta_req=1/3, Pi_tr=4 C_mix/3". The downstream chain
+#       (rho_alpha=1/c0=4/3 etc.) is an EXACT ALGEBRAIC CONSEQUENCE of the posited c0_min=3/4 module -- i.e.
+#       "exact" is honest-CONDITIONAL on a disclosed posit, the SAME shape as the batch-5 gamma_0 PARTIAL
+#       (non-fatal). The card ALSO carries explicit hedges: "should not be read as a second independent proof of
+#       actual nonlinear branch realization" and a Checks line "Check whether the row is algebraic, numerical
+#       placement, or open branch-realization". TEST: fatal ONLY if the card/notes dress c0_min ITSELF as
+#       derived/forced/non-tunable. If "exact" is genuinely algebraic-on-the-disclosed-posit and the posit is
+#       labeled posited/minimal-module/canonical-module (not derived), verdict is NO (or at most a gamma_0-style
+#       non-fatal PARTIAL on the bare "Exact selected loading ratio" wording lacking an inline "conditional on
+#       the c0 module" qualifier). c0_min is ALSO an ANSATZ_LEDGER section-5 borderline (c0/c0_min dedup) already
+#       awaiting a USER gate for its LAYER-3 disposition -- this audit only checks the overclaim FRAMING, it does
+#       NOT decide the dedup. SENSITIVE.
+#   (2) Stage-253 calibration slice (u06) -- the HEADLINE benchmark stage (the 119.2336... figure). Vocabulary
+#       traps: "K_turn_force_match" (slug says "force_match"), "calibration_slice_recovery", "calibration".
+#       f_lat=3/4 is OPENLY "a posited (by-hand) split, not derived ... a calibration consistency check, not a
+#       theorem that the realized branch must use the speed-independent split" (per Phase-B). TEST: "force_match"
+#       / "calibration" describe a FIT to reproduce a benchmark (free_choice, honest) UNLESS a card/notes line
+#       claims K_turn/mu_eta/gamma_lattice/Upsilon_lat are DERIVED/forced-by-first-principles. 253 has TRIPLE
+#       scanner duplication of K_turn (force_match / nominal_constants / _253_k_turn), f_lat (252 three_to_one /
+#       253 nominal / stage252_slice / _253_f_lat), mu_eta (4x) and Upsilon_lat (2x) -- duplicate scanner
+#       candidates for the same literals (dedup note, not a content fault). SENSITIVE.
+#   (3) Compound bundles carry NON-free_choice params that are OUT OF SCOPE (confirmed internal_consistency by
+#       direct constraint_kind read this batch): 251 session4_time_inputs s_c; 253 nominal_constants
+#       lambda_ref/r_turn/s_0/s_c; 253 session5_recovery upsilon_lat_sess. The roster lists ONLY the free_choice
+#       param files per member. The internal_consistency neighbors go to the completeness-critic, not here.
+#   (4) Several 245-250 bundles quote script comments "F5: pin independently derived benchmark quantities to the
+#       paper figures" / "F4 ... lowering theorem" -- these are comments about OTHER (lambda_L back-solve /
+#       potential-lowering) quantities, NOT about the free_choice readback params in this roster. Do not
+#       mis-attribute. The lambda_L back-solve candidates (247 benchmark_pinned/backsolve/fixed_by_recorded_point
+#       /closure) are NOT free_choice (published_target/internal back-solve to paper figures) -> out of scope,
+#       neighbors; the 247 card is itself cautious ("useful as an audit point, not as a general theorem").
+#
+# Internal_consistency / published_target neighbors LOGGED for the completeness-critic (NOT audited here):
+#   240 loading_ratio_not_free (C_mix), rho_alpha_selected_demand (rho_alpha), zeta_req_fixed_exactly (zeta_req),
+#       loading_ratio_from_minimal_precursor (Pi_tr) -- all internal_consistency derived FROM c0_min;
+#   246 lower_branch_forced (sigma_min, "derived exact minimum"; slug says "forced"), rf1_coefficient (R_f1);
+#   247 benchmark_pinned_to_paper_figures / lambda_l_backsolve / lambda_l_fixed_by_recorded_point /
+#       lambda_l_closure (lambda_L), d_uv (D_UV), vrebuild_soft;
+#   248 i_coul (I_Coul derived formula), xi_turn_lambda_th_carried_hardcodes (xi_turn published_target),
+#       session2_readback wsess_obs;
+#   249 alpha_rm, gamma_0 ("diagnostic, not a spin theorem");
+#   250 goldilocks_edge_forced / e_edge ("E_edge FORCED by survival algebra"; internal_consistency), t_cross;
+#   252 e_exp_min_completely_fixed (safe-edge theorem), vin_benchmark_calibration_match (v_in_match);
+#   251 session4_time_inputs s_c; 253 nominal lambda_ref/r_turn/s_0/s_c, session5 upsilon_lat_sess;
+#   253 the two ..._sympy_audit / ..._mathematica_audit MEGA-SLUGS (parameter_name = the whole audit-script
+#       filename) -- pure scanner artifacts (same class as batch-6 `hat`), LOG, do not audit.
+
+batch_id: batch_c7_freechoice_240_259
+band: '240-259'
+constraint_kind: free_choice
+candidate_count: 34
+unit_count: 6
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+# SENSITIVE units flagged for mandatory orchestrator spot-check (distrust-all-clean backstop):
+#   u01_precursor_loading_ratio  - c0_min=3/4 "Exact selected loading ratio" framing (gamma_0-shape; ANSATZ S5
+#       borderline). Orchestrator reads stage_240 card + notes for the label-word on c0_min itself.
+#   u06_session5_calibration_slice - the Stage-253 headline benchmark slice; "force_match"/"calibration"/
+#       "recovery" vocab. Orchestrator reads stage_252/253 cards + notes; confirms no calibration constant is
+#       dressed as derived/forced.
+
+units:
+  u01_precursor_loading_ratio:
+    stages: ['240','243']
+    sensitive: true
+    focus: |
+      The Stage-240 minimal-isotropic-precursor loading module and the Stage-243 lift profile amplitude.
+      c0_min=3/4 (240 minimal_isotropic_precursor; with c_1=1/4) is THE LOAD-BEARING POSITED INPUT: the entire
+      downstream "Exact selected loading ratio" chain rho_alpha=1/c0=4/3, zeta_req=c_1/c0=1/3, Pi_tr=4 C_mix/3 is
+      DERIVED from it by the inverse contact-plus-pole compiler. The Stage-240 card line 15 OUTPUT field labels
+      that chain "Exact selected loading ratio". CRUX: "exact" here is an EXACT ALGEBRAIC CONSEQUENCE of the
+      posited c0_min module (honest-conditional, the gamma_0 batch-5 shape) -- it is FATAL only if the card or
+      notes dress c0_min ITSELF as derived/forced/non-tunable/uniquely-determined. The card ALSO hedges
+      explicitly ("should not be read as a second independent proof of actual nonlinear branch realization";
+      Checks: "Check whether the row is algebraic, numerical placement, or open branch-realization"). Verify the
+      notes label c0_min as a posited "minimal isotropic module" / "canonical module value" (canonical=module
+      construction, NOT a forced number). If c0_min itself is honestly posited, verdict NO (or a gamma_0-style
+      non-fatal PARTIAL if you judge the bare "Exact selected loading ratio" wording overstates depth by lacking
+      an inline "conditional on the posited c0 module" qualifier -- report that as PARTIAL, not YES). Note c0_min
+      is an ANSATZ_LEDGER section-5 borderline (c0/c0_min dedup) already at USER gate for its layer-3 disposition;
+      do NOT decide the dedup, only the framing. E_w (243 e_w) is the posited weak-lift profile amplitude used to
+      evaluate the exact work integral W_w=sqrt(2 pi)/8 ell_w j0 E0; per Phase-B it "carries no inserted value to
+      classify as a fit ... the profile is posited for the lift, not derived" -> verify honest-posited. Read
+      stage_240 + stage_243 cards and notes for the exact label-words.
+    members:
+      - {id: fit_stage240_minimal_isotropic_precursor, params: [c0_min], files: [fit_stage240_minimal_isotropic_precursor__c0_min.yaml]}
+      - {id: fit_stage_243_e_w, params: [E_w], files: [fit_stage_243_e_w__e_w.yaml]}
+  u02_session1_readback_inputs:
+    stages: ['245','246']
+    focus: |
+      Session-I readback sample points, probe stiffnesses, and the logarithmic dressing-chart reference. ALL are
+      recorded interactive-run values or posited sample/probe inputs, fed back as consistency checks into the
+      EXACT Stage-245 finite (U,V) compiler (the compiler is internal_consistency-derived; the readback inputs
+      are free_choice). epsilon_eta(r_eval)~0.2893 (245 eps_eta_session1_match) is eps_eta=eps_eta_ref e^V
+      evaluated at a probe/sample point, not first-principles-derived. U_obs/V_obs (245 readback / readback_inputs)
+      are the recorded matched dressing readback (U_obs~0.1431 "relaxed-rigid-mouth point", script Float), not
+      ledger-derived. a_U,a_V (>0 transfer-shape / dressing-leg stiffnesses), eps_eta_ref (chart reference point
+      of V=ln(eps_eta/eps_eta_ref)), g_UV (posited closure parameter, no derived numeric value) -- all posited,
+      low-severity (no derived numeric value to classify). a_0,b_0,r_eval,r_sigma (246 session1_inputs) and a0
+      (246 readback_point) are representative Session-I mouth/source sample values reproducing the recorded
+      diagnostics. Test = every value is honestly an interactive readback / posited probe sample / chart
+      reference, and NO card or notes line claims any of them derived/forced/uniquely-determined. WATCH: do not
+      mis-read the script comments "F5 pin independently derived benchmark quantities" / "F4 lowering theorem" --
+      those are about OTHER (lambda_L / potential-lowering) quantities, not these readback inputs. Check
+      notes245/246 for the label-words.
+    members:
+      - {id: fit_stage245_eps_eta_session1_match, params: [epsilon_eta], files: [fit_stage245_eps_eta_session1_match__epsilon_eta.yaml]}
+      - {id: fit_stage245_session1_readback, params: [U_obs], files: [fit_stage245_session1_readback__u_obs.yaml]}
+      - {id: fit_stage245_session1_readback_inputs, params: [U_obs, V_obs, a_U, a_V, eps_eta_ref, g_UV], files: [fit_stage245_session1_readback_inputs__u_obs.yaml, fit_stage245_session1_readback_inputs__v_obs.yaml, fit_stage245_session1_readback_inputs__a_u.yaml, fit_stage245_session1_readback_inputs__a_v.yaml, fit_stage245_session1_readback_inputs__eps_eta_ref.yaml, fit_stage245_session1_readback_inputs__g_uv.yaml]}
+      - {id: fit_stage246_session1_inputs, params: [a_0, b_0, r_eval, r_sigma], files: [fit_stage246_session1_inputs__a_0.yaml, fit_stage246_session1_inputs__b_0.yaml, fit_stage246_session1_inputs__r_eval.yaml, fit_stage246_session1_inputs__r_sigma.yaml]}
+      - {id: fit_stage246_session1_readback_point, params: [a0], files: [fit_stage246_session1_readback_point__a0.yaml]}
+  u03_session1_couplings:
+    stages: ['247']
+    focus: |
+      Stage-247 Session-I softening/closure couplings. lambda_W (247 lambda_w_natural_specialization) -- the slug
+      says "natural_specialization"; VERIFY "natural" attaches to a specialization CHOICE of the carried lambda_W
+      coupling (a posited convention / natural value for the benchmark), NOT a claim that lambda_W is
+      derived/forced. a0 (247 session1_softening_point) is the strongest-softening sample evaluation point (do not
+      mis-attribute the nearby "F5 pin"/"F4 lowering theorem" script comments to a0; those concern lambda_L).
+      alpha_2 (247 alpha_2) is a posited closure/shape coefficient. NOTE the lambda_L back-solve candidates at 247
+      (benchmark_pinned_to_paper_figures, lambda_l_backsolve, lambda_l_fixed_by_recorded_point, lambda_l_closure)
+      are NOT in this unit -- they are published_target / internal back-solves to the paper figures (out of scope;
+      neighbors), and the Stage-247 card is itself cautious about them ("useful as an audit point, not as a
+      general theorem"). Test = lambda_W / a0 / alpha_2 are each honestly a posited specialization / sample point /
+      closure coefficient, NONE dressed as derived/forced. Check stage_247 card + notes for the label-words.
+    members:
+      - {id: fit_stage247_lambda_w_natural_specialization, params: [lambda_W], files: [fit_stage247_lambda_w_natural_specialization__lambda_w.yaml]}
+      - {id: fit_stage247_session1_softening_point, params: [a0], files: [fit_stage247_session1_softening_point__a0.yaml]}
+      - {id: fit_stage_247_alpha_2, params: [alpha_2], files: [fit_stage_247_alpha_2__alpha_2.yaml]}
+  u04_session2_3_helicity:
+    stages: ['248','249']
+    focus: |
+      Session-II/III launch scales and helicity/peak readbacks. r_contact=0.18 (248
+      chosen_contact_scale_benchmark) is a DECLARED "chosen contact radius" fixed by the Session-II benchmark
+      specialization -- a posited benchmark scale, explicitly not derived and not external. E_sub=2.5 (248
+      launch_parameters + readback, same value reused) is a posited sub-barrier launch energy ("not a new theorem
+      by itself"). The Stage-249 helicity quantities -- H_sub_minus_final (helicity_ratio_matched), H_int_aligned
+      (session2_helicity_readbacks), hint_aligned (session3_peak_readback) -- are UN-DERIVED Session-II/III run
+      OUTPUTS read back as diagnostics; the Stage-249 notes are explicit this is "diagnostic rather than a spin
+      theorem" / "does NOT prove intrinsic spin-1/2 ... not yet a theorem of microscopic spin support". C_sigma
+      (249 c_sigma) and R_int (249 r_int) are likewise reported run readbacks (R_int computed from un-derived
+      Session-II outputs R_pk/R_int). Vocabulary "matched"/"aligned"/"chosen benchmark" describes a
+      FIT/READBACK, not a derivation. Test = every value is honestly a chosen benchmark scale / posited launch
+      energy / un-derived run readback, and NO card or notes line upgrades any of them to a derived/forced
+      result or a "theorem". Check stage_248/249 cards + notes for the label-words.
+    members:
+      - {id: fit_stage248_chosen_contact_scale_benchmark, params: [r_contact], files: [fit_stage248_chosen_contact_scale_benchmark__r_contact.yaml]}
+      - {id: fit_stage248_session2_launch_parameters, params: [E_sub], files: [fit_stage248_session2_launch_parameters__e_sub.yaml]}
+      - {id: fit_stage248_session2_readback, params: [E_sub], files: [fit_stage248_session2_readback__e_sub.yaml]}
+      - {id: fit_stage249_helicity_ratio_matched, params: [H_sub_minus_final], files: [fit_stage249_helicity_ratio_matched__h_sub_minus_final.yaml]}
+      - {id: fit_stage249_session2_helicity_readbacks, params: [H_int_aligned], files: [fit_stage249_session2_helicity_readbacks__h_int_aligned.yaml]}
+      - {id: fit_stage249_session3_peak_readback, params: [hint_aligned], files: [fit_stage249_session3_peak_readback__hint_aligned.yaml]}
+      - {id: fit_stage_249_c_sigma, params: [C_sigma], files: [fit_stage_249_c_sigma__c_sigma.yaml]}
+      - {id: fit_stage_249_r_int, params: [R_int], files: [fit_stage_249_r_int__r_int.yaml]}
+  u05_session4_collapse:
+    stages: ['250','251']
+    focus: |
+      Session-IV collapse rate/time constants and one Stage-250 free_choice readback. chi_rm (250 chi_rm) is the
+      ONLY free_choice candidate left at Stage 250 (the benchmark_masses_and_window / goldilocks_inputs candidates
+      -- chi_peak,chi_raw,E_max,g_UV,mu_eta,t_transit_*,m_s -- were already audited in batch 1 as the
+      published_target/external cluster); chi_rm is a reported readback / posited scan quantity. gamma_crit (251
+      session4_rate_constants + session4_time_inputs, same value) is a posited critical collapse rate constant.
+      t_collapse_0 and t_cross (251 session4_time_inputs) are Session-IV time-input sample points (NOTE: the
+      separate candidate fit_stage_250_t_cross is "derived by construction" internal_consistency and is NOT in
+      this unit; here t_cross is the 251 free_choice time-input). cref (251 cref) is a posited reference speed/
+      coefficient. The s_c entry in session4_time_inputs is internal_consistency -> EXCLUDED. Test = each is
+      honestly a reported readback / posited rate or time constant / reference coefficient, NONE dressed as
+      derived/forced. Check stage_250/251 cards + notes for the label-words.
+    members:
+      - {id: fit_stage_250_chi_rm, params: [chi_rm], files: [fit_stage_250_chi_rm__chi_rm.yaml]}
+      - {id: fit_stage251_session4_rate_constants, params: [gamma_crit], files: [fit_stage251_session4_rate_constants__gamma_crit.yaml]}
+      - {id: fit_stage251_session4_time_inputs, params: [gamma_crit, t_collapse_0, t_cross], files: [fit_stage251_session4_time_inputs__gamma_crit.yaml, fit_stage251_session4_time_inputs__t_collapse_0.yaml, fit_stage251_session4_time_inputs__t_cross.yaml]}
+      - {id: fit_stage_251_cref, params: [cref], files: [fit_stage_251_cref__cref.yaml]}
+  u06_session5_calibration_slice:
+    stages: ['252','253']
+    sensitive: true
+    focus: |
+      The Stage-252 three-to-one split and the Stage-253 PHYSICAL-CALIBRATION SLICE -- the headline benchmark
+      stage (the 119.2336... figure). This is the campaign's final and most calibration-heavy unit; vocabulary
+      traps abound ("K_turn_force_match", "calibration_slice_recovery", "calibration"). f_lat=3/4 (252
+      three_to_one_split; also 253 nominal_constants, stage252_slice_inputs, _253_f_lat -- duplicate scanner
+      slugs for the SAME literal) is OPENLY "a posited (by-hand) split, not derived ... a calibration consistency
+      check, not a theorem that the realized branch must use the speed-independent split" (Phase-B). mu_eta (252
+      _252_mu_eta; also 253 nominal / session5_recovery / stage252_slice_inputs -- 4x scanner duplication) is a
+      posited material/effective coupling for the calibration slice. K_turn (253 k_turn_force_match,
+      nominal_constants, _253_k_turn -- triple scanner duplication; "force_match" in the slug) is force-MATCHED
+      to reproduce the benchmark turning point -- a CALIBRATION FIT (free_choice), fatal ONLY if a card/notes line
+      claims K_turn is derived/forced-by-first-principles rather than calibration-matched. gamma_lattice_legacy /
+      gamma_lattice_red (253 nominal / gamma_lattice_red / session5_recovery) are the legacy vs reduced lattice
+      damping calibration constants. Upsilon_lat (253 upsilon_lat_calibration + _calibration_factor, 2x) is the
+      lattice calibration factor. K_corr (253 _253_k_corr) is a posited correction coefficient. The two
+      ..._sympy_audit / ..._mathematica_audit MEGA-SLUGS at 252/253 (parameter_name = the whole audit-script
+      filename) are pure scanner artifacts -> not in this unit; LOG only. Test = every calibration-slice constant
+      is honestly a posited by-hand split / calibration fit / nominal slice constant / calibration factor, and
+      NO card or notes line dresses any of them as derived/forced/uniquely-determined/a-theorem. "force_match"
+      and "calibration" must denote a FIT, not a derivation. HIGH duplication -> note the triple/quad scanner
+      dups (dedup item, not a content fault). Orchestrator reads stage_252/253 cards + notes.
+    members:
+      - {id: fit_stage252_three_to_one_split, params: [f_lat], files: [fit_stage252_three_to_one_split__f_lat.yaml]}
+      - {id: fit_stage_252_mu_eta, params: [mu_eta], files: [fit_stage_252_mu_eta__mu_eta.yaml]}
+      - {id: fit_stage253_k_turn_force_match, params: [K_turn], files: [fit_stage253_k_turn_force_match__k_turn.yaml]}
+      - {id: fit_stage253_calibration_slice_nominal_constants, params: [f_lat, gamma_lattice_legacy, K_turn, mu_eta], files: [fit_stage253_calibration_slice_nominal_constants__f_lat.yaml, fit_stage253_calibration_slice_nominal_constants__gamma_lattice_legacy.yaml, fit_stage253_calibration_slice_nominal_constants__k_turn.yaml, fit_stage253_calibration_slice_nominal_constants__mu_eta.yaml]}
+      - {id: fit_stage253_gamma_lattice_red, params: [gamma_lattice_red], files: [fit_stage253_gamma_lattice_red__gamma_lattice_red.yaml]}
+      - {id: fit_stage253_session5_calibration_slice_recovery, params: [gamma_lattice_red, mu_eta], files: [fit_stage253_session5_calibration_slice_recovery__gamma_lattice_red.yaml, fit_stage253_session5_calibration_slice_recovery__mu_eta.yaml]}
+      - {id: fit_stage253_stage252_slice_inputs, params: [f_lat, mu_eta], files: [fit_stage253_stage252_slice_inputs__f_lat.yaml, fit_stage253_stage252_slice_inputs__mu_eta.yaml]}
+      - {id: fit_stage253_upsilon_lat_calibration, params: [Upsilon_lat], files: [fit_stage253_upsilon_lat_calibration__upsilon_lat.yaml]}
+      - {id: fit_stage253_upsilon_lat_calibration_factor, params: [Upsilon_lat], files: [fit_stage253_upsilon_lat_calibration_factor__upsilon_lat.yaml]}
+      - {id: fit_stage_253_f_lat, params: [f_lat], files: [fit_stage_253_f_lat__f_lat.yaml]}
+      - {id: fit_stage_253_k_corr, params: [K_corr], files: [fit_stage_253_k_corr__k_corr.yaml]}
+      - {id: fit_stage_253_k_turn, params: [K_turn], files: [fit_stage_253_k_turn__k_turn.yaml]}

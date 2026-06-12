@@ -41,6 +41,13 @@ These all concern a card/badge implying more than the notes support. The blanket
   relation it is grouped with. **SAME class as A3** (stage_116 γ₀ badge). **CONTINGENT** on the user's
   ANSATZ_LEDGER §5-item-1 call: if the user adopts the "derived (odd-preservation theorem)" reading, NO edit is owed
   and the current wording is correct. _[batch 5, u02 — YES→PARTIAL, verdict_logged; Claude+Codex adjudicated non-fatal]_
+- [ ] **A9.** `paper/stages/stage_240.tex:15` OUTPUT field bare-words "Exact selected loading ratio" (ρ_α=4/3, ζ_req=1/3,
+  Π_tr=4C_mix/3) WITHOUT an inline "(conditional on the posited c0=3/4 module)" qualifier. SAME γ₀ family as A3/A8 but
+  MILDER: unlike γ₀, the **same card** already hedges (`:17` "should not be read as a second independent proof of actual
+  nonlinear branch realization"; Checks `:21–22` "Check whether the row is algebraic, numerical placement, or open
+  branch-realization") and `notes240:6` frames it "Exact **within** the carried … precursor". Verdict stayed **NO**
+  (disclosure adequate → NOT a verdict_logged PARTIAL). OPTIONAL: add the inline qualifier on `:15` to match the notes.
+  **CONTINGENT** like A8 on the ANSATZ_LEDGER §5 c0/c0_min call (c0_min is that borderline). _[batch 7, u01 — NO; optional polish]_
 
 ## B. constraint_kind / classification relabels (provenance YAML, label-only)
 - [ ] **B1.** Relabel `constraint_kind` `published_target → free_choice` in the 3 stale r_F1 bundles:
@@ -99,6 +106,14 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
   `fit_stage232_lambda_ell_geometry_literals` are duplicate scanner candidates for the same literal `20`, and the param
   name `L_over_a` is a stale_provenance_anchor mislabel of the **inverse thin-wall ratio a/ℓ=20** (NOT the aspect ratio
   L/a=37/20). Audit-internal, **no content fix**; optional dedup/rename note. _[batch 6, u04]_
+- [ ] **D8.** Stage-253 triple/quad scanner duplication (same literals, multiple slugs → optional dedup, **no content fix**):
+  `f_lat` ×4 (252 three_to_one_split; 253 nominal_constants / stage252_slice_inputs / _253_f_lat), `mu_eta` ×4 (252
+  _252_mu_eta + the same three 253 slugs), `K_turn` ×3 (253 k_turn_force_match / nominal_constants / _253_k_turn),
+  `gamma_lattice_red` ×3 (253 gamma_lattice_red / session5_recovery / nominal-via-legacy), `Upsilon_lat` ×2 (calibration /
+  calibration_factor). All audited NO. _[batch 7, u06]_
+- [ ] **D9.** Two 252/253 MEGA-SLUG scanner artifacts whose `parameter_name` is the entire audit-script filename
+  (`fit_stage_25{2,3}_moving_throat_pde_stage253_physical_calibration_..._{sympy,mathematica}_audit`) — pure scanner
+  artifacts (SAME class as D6 `hat`), not real parameters → **no fix required**, log only. _[batch 7, u06]_
 
 ## E. Disclosure-completeness (optional notes additions)
 - [ ] **E1.** f'(0)=1 is documented only in the sympy script (`…stage065…:118`), absent from notes/ — optional notes mention. _[batch 2, u09]_
@@ -110,6 +125,10 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
   Ξ_χ=100·Θ_w·Λ_ℓ² has no in-stage derivation; FoM structure traces to Stage 066); `V_known` float genealogy below 222
   is undocumented (disclosed illustrative, so not an overclaim); `beta_path` (base-2) / `KW_t` (exp-ramp) / `Rratio_base`
   (=7/6) live only in scripts, not notes (script-only illustrative path/sample coordinates). _[batch 6, u01/u02/u04]_
+- [ ] **E5.** Batch-7 provenance-fill (non-overclaim, optional): the Session-I..V readback floats (U_obs=0.14313458,
+  V_obs=−0.03619791, helicity loads 5.00843357 / 20.58070146 / 281.79830789, chi_rm=21.73204372, K_turn≈2.73855812,
+  gamma_lattice_red≈4.79562976) have their genealogy in the interactive Session run logs, not the notes — disclosed
+  "recorded"/"reported"/"benchmark", so NOT overclaims; provenance-completeness only. _[batch 7, u02/u04/u05/u06]_
 
 ## F. Script wording
 - [ ] **F1.** `scripts/…stage247…` (":239 independently derived / :248 falsifiable") overstates the tautological
@@ -134,5 +153,27 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - Batch 6: `reports/_batch_c6_verdicts.md` §OPTIONAL (D6, D7, E4; NO new A-class — band 200–239 had zero card/notes
   overclaim. Also logged there: the in-band internal_consistency overclaim-flavored slugs = completeness-critic seed
   targets, NOT Step-6 fix items.)
+- Batch 7: `reports/_batch_c7_verdicts.md` §OPTIONAL (A9 + D8/D9 + E5; band 240–259 = the LAST free_choice band, 34/34 NO,
+  zero card/notes overclaim. Also logged there: the in-band internal_consistency overclaim-flavored slugs =
+  completeness-critic seed targets, NOT Step-6 fix items.) **The free_choice sweep (batches 1–7) is now COMPLETE.**
 - Tooling: `docs/adversarial_audit_execution_plan.md` line 65
-- _Batch 7 (free_choice 240-259) + the internal_consistency completeness-critic: append here as they land._
+- _Internal_consistency completeness-critic spot-check (the only remaining Phase-C step): append its items here as they land._
+
+---
+
+## Completeness-critic seed list (internal_consistency overclaim-flavored slugs, accumulated across batches 4–7)
+These are constraint_kind=internal_consistency candidates with overclaim-flavored SLUGS that fell OUT OF SCOPE of the
+free_choice sweep. They are the seed targets for the internal_consistency completeness-critic spot-check (NOT Step-6 fix
+items, NOT silently dropped). Newest band last.
+- **Batch 6 (200–239):** 223 `lambda02_rq_dual_engine_overclaim` (R_Q), 225 `xk_xm_forced_zero` (x_K), 224
+  `grouped_signature_exact` (b_P0_slope), 232 `known_5pn_data_injection` (rho_alpha_max — INTERNAL EM-projected chain,
+  not a publication), 200 `mismatch_chart_rederived_not_posited` (m_star), 236 `equal_drift_ray_forced` (k_eta), 228
+  `k_compat_exact_stiffness` (k_compat), 230 `rigid_slope_carry` (s_minus_den), 224 `kill_test_budgets_slice_anchored` /
+  `stage223_carryover_ceilings` (P_crit…).
+- **Batch 7 (240–259):** 240 `loading_ratio_not_free` (C_mix) / `rho_alpha_selected_demand` (rho_alpha) /
+  `zeta_req_fixed_exactly` (zeta_req) — the derived-from-c0_min chain; 246 `lower_branch_forced` (sigma_min, "derived
+  exact minimum"); 247 `benchmark_pinned_to_paper_figures` / `lambda_l_backsolve` / `lambda_l_fixed_by_recorded_point` /
+  `lambda_l_closure` (lambda_L back-solve to paper figures; card self-hedged "audit point, not a general theorem"); 248
+  `xi_turn_lambda_th_carried_hardcodes` (xi_turn, published_target); 250 `goldilocks_edge_forced` (e_edge, "FORCED by
+  survival algebra"); 252 `e_exp_min_completely_fixed` (safe-edge theorem) / `vin_benchmark_calibration_match`
+  (v_in_match); in-bundle internal_consistency params s_c (251/253), lambda_ref/r_turn/s_0 (253), upsilon_lat_sess (253).

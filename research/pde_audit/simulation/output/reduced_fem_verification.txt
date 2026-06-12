@@ -1,9 +1,0 @@
-PDE audit reduced FEM verification
-============================================
-pass: True
-checks_passed: 3/3
-failed_checks: none
-report_hash: e1f697cdcc366dcbd4a873b3568cc9125cb854d39ea0bac7a273d5a252e71a38
-PASS  matrix_structure
-PASS  manufactured_DN_halfwave
-PASS  open_shape_profile_smoke

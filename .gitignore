@@ -46,3 +46,71 @@ research/*/redteam/pass2/.manifest.lock
 research/*/redteam/pass2/fix_batch_*.log
 research/*/redteam/pass2/fix_batch_*.marker
 research/*/redteam/MORNING_SUMMARY.md
+
+# Adversarial-audit raw Codex session dumps (multi-MB; the redteam/ rule above
+# missed the redteam_adversarial/ path). Curated consult records are committed
+# explicitly with `git add -f` when they are genuine provenance.
+research/*/redteam_adversarial/codex_logs/
+
+# Verbose Codex apply-logs + raw review dumps (untracked 2026-06-12; history purge later).
+# The DISTILLED decisions live in docs/ and redteam/codex_reviews/*.md (kept tracked).
+research/*/redteam/resolutions/codex_apply_log_*.txt
+research/*/redteam/pass2/resolutions/codex_apply_log_*.txt
+research/*/redteam/codex_reviews/*.raw
+research/*/redteam_adversarial/codex_reviews/*.raw
+
+# Reduced-FEM negative-control generated output (V2-23 surrogate; regenerable, was 16M tracked)
+research/pde_audit/simulation/output/
+
+# =====================================================================
+# Layer-3 Stage-1 solver: generated-data firewall (added 2026-06-12)
+# The numerical branch-realization solver produces large mesh/field/
+# checkpoint data. To stop the repo from exploding, ALL run output goes
+# to gitignored directories; only code + small curated YAML/markdown
+# summaries are committed, and only ever via an explicit `git add <path>`
+# (never `git add -A`). To commit a deliberate binary fixture, force it:
+# `git add -f <path>`.
+# =====================================================================
+
+# Crash artifacts (core dumps are core.<pid>; do NOT use core.* -- core.py is tracked)
+core.[0-9]*
+vgcore.*
+*.stackdump
+
+# Solver home: ignore all run-output / scratch / figure trees inside it
+research/stage1_solver/runs/
+research/stage1_solver/data/
+research/stage1_solver/figures/
+research/stage1_solver/output/
+research/stage1_solver/_scratch/
+
+# Generic run-output / scratch trees anywhere under research/
+research/**/runs/
+research/**/_scratch/
+
+# Large numerical / serialized-data formats, wherever they land
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.vtk
+*.vtu
+*.vtr
+*.vti
+*.pvtu
+*.pvd
+*.xdmf
+*.bp
+*.zarr/
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.mat
+*.nc
+*.parquet
+*.feather
+*.tar.gz
+*.tgz

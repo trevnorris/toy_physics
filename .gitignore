@@ -78,13 +78,16 @@ vgcore.*
 *.stackdump
 
 # Solver home: ignore all run-output / scratch / figure trees inside it
-research/stage1_solver/runs/
-research/stage1_solver/data/
-research/stage1_solver/figures/
-research/stage1_solver/output/
-research/stage1_solver/_scratch/
+# (solver code lives under software/ — research/ is reserved for publication material)
+software/stage1_solver/runs/
+software/stage1_solver/data/
+software/stage1_solver/figures/
+software/stage1_solver/output/
+software/stage1_solver/_scratch/
 
-# Generic run-output / scratch trees anywhere under research/
+# Generic run-output / scratch trees anywhere under software/ (and research/ as a backstop)
+software/**/runs/
+software/**/_scratch/
 research/**/runs/
 research/**/_scratch/
 

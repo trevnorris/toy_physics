@@ -1,0 +1,104 @@
+# Phase C — Batch 4 roster (targeted free_choice sweep, stages 120-159)
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining ~190 free_choice ansaetze.
+# This is batch 4 of ~6: the 120-159 "geometry-selection / mouth-closure / gain-family" band.
+# 22 free_choice candidates (provenance_built) -> 6 disjoint stage-cluster units, per-member sub-verdicts.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable/fixed in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+
+batch_id: batch_c4_freechoice_120_159
+band: '120-159'
+constraint_kind: free_choice
+candidate_count: 22
+unit_count: 6
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+# SENSITIVE units flagged for mandatory orchestrator spot-check (distrust-all-clean backstop):
+#   u01_aspect_ratio_37_20 - carries the STRONGEST overclaim-loaded name in the batch
+#       ("r_not_tunable"); 37/20 is the same aspect-ratio value as batch-2 stage 073 (where punch-list
+#       items A5/A6 already flag boxing 37/20 under "Derivation" / missing "posited" tag).
+#   u03_rF1_geometry - r_F1 has batch-1 relabel history (punch-list B1: the 156/158/161 r_F1 bundles
+#       were stale published_target->free_choice). 122/123/124 are already free_choice; naming
+#       ("geometry_fixes", "geometry_selected_hybridization") is overclaim-adjacent.
+
+units:
+  u01_aspect_ratio_37_20:
+    stages: ['121','139','146']
+    sensitive: true
+    focus: |
+      The L/a = 37/20 aspect-ratio geometry family carried 121 -> 139 -> 146 (re-fit drift check)
+      plus the 121 geometry-selection siblings L_W, L, mathfrak_r. SENSITIVE: "r_not_tunable" is the
+      single strongest overclaim-loaded name in the batch -- a value literally named "not tunable" must
+      be checked against its card/notes label: is mathfrak_r (and the 37/20 ratio) disclosed as a
+      posited reference freeze / geometric selection, or claimed forced/exact/non-tunable/derived?
+      37/20 is the same value batch-2 flagged at stage 073 (punch-list A5/A6). "reference_freeze",
+      "exact_branch", "literal", "primitive" naming -> verify each is honestly a posited/selected
+      geometric choice, not a derived consequence. Check L_W=L identification is an identification, not
+      a derivation. Orchestrator will spot-check stage_121/139/146 cards + notes regardless of verdict.
+    members:
+      - {id: fit_stage121_aspect_ratio_37_20_reference_freeze, params: [L_over_a], files: [fit_stage121_aspect_ratio_37_20_reference_freeze__l_over_a.yaml]}
+      - {id: fit_stage121_lw_equals_l_identification, params: [L_W], files: [fit_stage121_lw_equals_l_identification__l_w.yaml]}
+      - {id: fit_stage121_r_geom_exact_branch, params: [L], files: [fit_stage121_r_geom_exact_branch__l.yaml]}
+      - {id: fit_stage121_r_not_tunable, params: [mathfrak_r], files: [fit_stage121_r_not_tunable__mathfrak_r.yaml]}
+      - {id: fit_stage139_aspect_ratio_literal, params: [L_over_a], files: [fit_stage139_aspect_ratio_literal__l_over_a.yaml]}
+      - {id: fit_stage146_aspect_ratio_37_20_primitive, params: [L_over_a], files: [fit_stage146_aspect_ratio_37_20_primitive__l_over_a.yaml]}
+  u02_g_nat_unity:
+    stages: ['122','124']
+    focus: |
+      g_nat natural-coupling carried 122 -> 124 (re-fit drift check; two 122 bundles + one 124).
+      "g_nat_equal_normalized_unity" / "g_nat_unity_branch_ansatz" naming -> verify g_nat=1 is disclosed
+      as a normalization / a chosen unity branch / an ansatz, NOT as a derived or forced value. Check the
+      two 122 bundles agree (no re-fit drift) and that 124 carries it as a branch status, not a new derivation.
+    members:
+      - {id: fit_stage122_g_nat_equal_normalized_unity, params: [g_nat], files: [fit_stage122_g_nat_equal_normalized_unity__g_nat.yaml]}
+      - {id: fit_stage122_g_nat_unity_branch_ansatz, params: [g_nat], files: [fit_stage122_g_nat_unity_branch_ansatz__g_nat.yaml]}
+      - {id: fit_stage_124_g_nat, params: [g_nat], files: [fit_stage_124_g_nat__g_nat.yaml]}
+  u03_rF1_geometry:
+    stages: ['122','123','124']
+    sensitive: true
+    focus: |
+      r_F1 family-1 radius carried 122 -> 123 -> 124 (re-fit drift check). SENSITIVE: r_F1 has batch-1
+      relabel history (punch-list B1: 156/158/161 r_F1 bundles were stale published_target, relabeled to
+      free_choice). The 122/123/124 bundles are already free_choice. Naming ("rF1_geometry_fixes",
+      "geometry_selected_hybridization") is overclaim-adjacent: "fixes" could dress a chosen radius as
+      forced. Test = is r_F1 disclosed as a geometry-selected / hybridization branch choice, or claimed
+      forced/fixed/derived by the geometry? Check the three anchors carry a consistent r_F1 (no re-fit
+      drift). Orchestrator will spot-check stage_122/123/124 cards + notes regardless of verdict.
+    members:
+      - {id: fit_stage122_rF1_geometry_fixes, params: [r_F1], files: [fit_stage122_rf1_geometry_fixes__r_f1.yaml]}
+      - {id: fit_stage123_geometry_selected_hybridization, params: [r_F1], files: [fit_stage123_geometry_selected_hybridization__r_f1.yaml]}
+      - {id: fit_stage_124_r_f1, params: [r_F1], files: [fit_stage_124_r_f1__r_f1.yaml]}
+  u04_threshold_residual:
+    stages: ['131','133']
+    focus: |
+      Parent-mouth threshold A0_prime/A_0 (131) + residual-freedom M_minus (133). "parent_threshold_canonical"
+      and "residual_freedom_fixed" naming -> verify A0_prime/A_0 are posited canonical-threshold choices (not
+      derived) and M_minus is honestly a residual free DOF that is then chosen/fixed-by-convention, NOT a value
+      labeled derived/forced. "canonical" must mean a chosen convention here, not a uniqueness theorem.
+    members:
+      - {id: fit_stage131_parent_threshold_canonical, params: [A0_prime], files: [fit_stage131_parent_threshold_canonical__a0_prime.yaml]}
+      - {id: fit_stage_131_a_0, params: [A_0], files: [fit_stage_131_a_0__a_0.yaml]}
+      - {id: fit_stage133_residual_freedom_fixed, params: [M_minus], files: [fit_stage133_residual_freedom_fixed__m_minus.yaml]}
+  u05_Mq_bias_outlet:
+    stages: ['134','135']
+    focus: |
+      Mouth bias M_q + kappa_q first-mode choice (134) + outlet gain ratio M_q_over_Sigma_m (135), with M_q
+      carried 134->135. "bias_determined_by_fixedpoint" is overclaim-loaded -> verify M_q is a posited bias
+      whose fixed-point CONDITION it must satisfy (the condition constrains a relation, not the standalone
+      value), NOT a value claimed derived/determined by a fixed point. "kappa_q_first_mode_choice" naming is
+      honest ("choice") -> confirm. Check the outlet gain ratio is a posited ratio, consistent with M_q.
+    members:
+      - {id: fit_stage134_bias_determined_by_fixedpoint, params: [M_q], files: [fit_stage134_bias_determined_by_fixedpoint__m_q.yaml]}
+      - {id: fit_stage134_kappa_q_first_mode_choice, params: [kappa_q], files: [fit_stage134_kappa_q_first_mode_choice__kappa_q.yaml]}
+      - {id: fit_stage_134_m_q, params: [M_q], files: [fit_stage_134_m_q__m_q.yaml]}
+      - {id: fit_stage135_outlet_gain_ratio, params: [M_q_over_Sigma_m], files: [fit_stage135_outlet_gain_ratio__m_q_over_sigma_m.yaml]}
+  u06_DW_Ks_stiffness:
+    stages: ['137','138']
+    focus: |
+      Core-to-mouth gain map: D_W_bare + K_s (137) and K_s carried 137->138 (re-fit drift check). Same K_s
+      stiffness family as batch-3 u08 (114/115). Verify D_W_bare and K_s are posited bare-gain / stiffness
+      choices (free core-coupling DOFs), consistent across the two K_s anchors, and not labeled derived/forced.
+    members:
+      - {id: fit_stage_137_d_w_bare, params: [D_W_bare], files: [fit_stage_137_d_w_bare__d_w_bare.yaml]}
+      - {id: fit_stage_137_k_s, params: [K_s], files: [fit_stage_137_k_s__k_s.yaml]}
+      - {id: fit_stage_138_k_s, params: [K_s], files: [fit_stage_138_k_s__k_s.yaml]}

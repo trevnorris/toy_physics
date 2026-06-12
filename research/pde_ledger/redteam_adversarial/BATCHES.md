@@ -1,13 +1,13 @@
 # Adversarial Audit Status
 
-Generated: 2026-06-12T06:24:51Z
+Generated: 2026-06-12T07:04:29Z
 Project: pde_ledger
 
 Authoritative consult record: `BATCHING_DECISIONS.md`.
 
 | Scope | Counts |
 |---|---|
-| all candidates | audited=126 provenance_built=788 scanned=7 verdict_logged=1 |
+| all candidates | audited=148 provenance_built=766 scanned=7 verdict_logged=1 |
 | dry-run candidates | none |
 | binding verdict fields populated | 0 |
 | dedup canonicals / aliases | canonical=915 aliases=7 alias_groups=6 |

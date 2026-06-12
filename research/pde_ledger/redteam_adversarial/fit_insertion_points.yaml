@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T06:24:48Z'
+generated_at: '2026-06-12T07:04:26Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -4981,7 +4981,7 @@ candidates:
   - '121'
   parameter_names:
   - L_over_a
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
     line: 60
@@ -5016,7 +5016,7 @@ candidates:
   - '121'
   parameter_names:
   - L_W
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
     line: 26
@@ -5035,7 +5035,7 @@ candidates:
   - L
   - a
   - mathfrak_r_geom
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
     line: 37
@@ -5052,7 +5052,7 @@ candidates:
   - '121'
   parameter_names:
   - mathfrak_r
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
     line: 81
@@ -5070,7 +5070,7 @@ candidates:
   - '122'
   parameter_names:
   - g_nat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
     line: 26
@@ -5087,7 +5087,7 @@ candidates:
   - '122'
   parameter_names:
   - g_nat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
     line: 26
@@ -5122,7 +5122,7 @@ candidates:
   - '122'
   parameter_names:
   - mathfrak_r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
     line: 148
@@ -5157,7 +5157,7 @@ candidates:
   - '123'
   parameter_names:
   - mathfrak_r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
     line: 109
@@ -5511,7 +5511,7 @@ candidates:
   - T_m
   - Theta_sigma
   - q_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_131.tex
     line: 16
@@ -5548,7 +5548,7 @@ candidates:
   - M_plus
   - kappa_minus
   - kappa_plus
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
     line: 197
@@ -5567,7 +5567,7 @@ candidates:
   - M_q
   - M_s
   - Pi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
     line: 131
@@ -5584,7 +5584,7 @@ candidates:
   - '134'
   parameter_names:
   - kappa_q
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
     line: 30
@@ -5656,7 +5656,7 @@ candidates:
   parameter_names:
   - M_q_over_Sigma_m
   - M_s_over_Sigma_m
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
     line: 36
@@ -5744,7 +5744,7 @@ candidates:
   parameter_names:
   - L_over_a
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
     line: 6
@@ -5888,7 +5888,7 @@ candidates:
   parameter_names:
   - L_over_a
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py
     line: 71
@@ -16624,7 +16624,7 @@ candidates:
   parameter_names:
   - g_nat
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_124.md
     line: 64
@@ -16644,7 +16644,7 @@ candidates:
   - '124'
   parameter_names:
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_124.md
     line: 110
@@ -16802,7 +16802,7 @@ candidates:
   - T_m
   - Theta_sigma_L
   - pi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_131.md
     line: 39
@@ -16965,7 +16965,7 @@ candidates:
   - pi
   - tanh
   - tfrac
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_134.md
     line: 35
@@ -17115,7 +17115,7 @@ candidates:
   - rho_c_sigma_c
   - sigma_c
   - to
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_137.md
     line: 95
@@ -17168,7 +17168,7 @@ candidates:
   - sigma_c
   - sigma_c_K_sg_q_lambda
   - sigma_c_schur
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_137.md
     line: 35
@@ -17215,7 +17215,7 @@ candidates:
   - g_c
   - g_q
   - g_s
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_138.md
     line: 90

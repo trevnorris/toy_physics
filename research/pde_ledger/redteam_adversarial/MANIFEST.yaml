@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T06:24:51Z'
+updated_at: '2026-06-12T07:04:29Z'
 state_machine:
 - pending
 - scanned
@@ -22606,11 +22606,13 @@ candidates:
     - g_nat
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:52:56Z'
+      audited: '2026-06-12T07:01:24Z'
     codex_session:
       by_parameter:
         g_nat:
@@ -22654,6 +22656,13 @@ candidates:
           (carry-forward) — all numeric inputs to this verdict verified upstream (121/122/125/126/127); the verdict itself
           is a status statement requiring no new check |'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:52:56Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:01:24Z'
   fit_stage_124_r_f1:
     id: fit_stage_124_r_f1
     candidate_key: stage_124_r_f1
@@ -22679,11 +22688,13 @@ candidates:
     parameter_names:
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:53:08Z'
+      audited: '2026-06-12T07:01:50Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -22727,6 +22738,13 @@ candidates:
           rather than `clean` solely because of that self-label; no value mismatch, no missing-deliverable, no internal numeric
           inconsistency exists.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:53:08Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:01:50Z'
   fit_stage_124_stage_141:
     id: fit_stage_124_stage_141
     candidate_key: stage_124_stage_141
@@ -23147,11 +23165,13 @@ candidates:
     - Theta_sigma_L
     - pi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T06:53:32Z'
+      audited: '2026-06-12T07:02:28Z'
     codex_session:
       by_parameter:
         A_0:
@@ -23229,6 +23249,13 @@ candidates:
           The Mathematica script mirrors the same physical claims but reaches \(\Pi_*\) by an independent denominator-cleared
           polynomial `FindRoot` with a bracketing seed pair.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:53:32Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:02:28Z'
   fit_stage_131_pi_star:
     id: fit_stage_131_pi_star
     candidate_key: stage_131_pi_star
@@ -23640,11 +23667,13 @@ candidates:
     - tanh
     - tfrac
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:17Z'
+      audit_pending: '2026-06-12T06:54:22Z'
+      audited: '2026-06-12T07:03:16Z'
     codex_session:
       by_parameter:
         M_q:
@@ -23829,6 +23858,13 @@ candidates:
           `intercept == Pi_*` / `slope == -S_q(Pi_*)` would be an X-X tautology and that outlet consistency is verified downstream
           at Stage 135. The Mathematica script mirrors this exact choreography step-for-step.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:54:22Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:03:16Z'
   fit_stage_134_mathematica_mirror_policy:
     id: fit_stage_134_mathematica_mirror_policy
     candidate_key: stage_134_mathematica_mirror_policy
@@ -24159,11 +24195,13 @@ candidates:
     - sigma_c
     - to
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T06:54:46Z'
+      audited: '2026-06-12T07:03:40Z'
     codex_session:
       by_parameter:
         D_W_bare:
@@ -24371,6 +24409,13 @@ candidates:
           the underlying values are independently pinned by F1. Paper, notes, and both scripts agree exactly on `(M_s, M_q,
           \rho_c, \sigma_c)`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:54:46Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:03:40Z'
   fit_stage_137_k_s:
     id: fit_stage_137_k_s
     candidate_key: stage_137_k_s
@@ -24432,11 +24477,13 @@ candidates:
     - sigma_c_K_sg_q_lambda
     - sigma_c_schur
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T06:54:57Z'
+      audited: '2026-06-12T07:03:51Z'
     codex_session:
       by_parameter:
         K_s:
@@ -24685,6 +24732,13 @@ candidates:
         excerpt: '| `M_q = -L(K_sg_q-\lambda g_s)^2/[K_s(K_sK_q+\lambda^2)\Theta_\sigma]` (tex:16, md:87/132) | py:31/43-45
           `Mq==Mq_paper`; wl:52/61-63; underpinned by F1 `sigma_c==sigma_c_schur` py:27/wl:49 | match |'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:54:57Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:03:51Z'
   fit_stage_138_k_s:
     id: fit_stage_138_k_s
     candidate_key: stage_138_k_s
@@ -24719,11 +24773,13 @@ candidates:
     - g_q
     - g_s
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T06:55:09Z'
+      audited: '2026-06-12T07:04:03Z'
     codex_session:
       by_parameter:
         K_s:
@@ -24825,6 +24881,13 @@ candidates:
           deliverables (`M_s`, `M_q` prints) are load-bearing inputs to the asserted `R_q` checks, so the coverage gap is
           cosmetic, not substantive.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:55:09Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:04:03Z'
   fit_stage_139_m_q:
     id: fit_stage_139_m_q
     candidate_key: stage_139_m_q
@@ -58548,11 +58611,13 @@ candidates:
     parameter_names:
     - L_over_a
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:51:13Z'
+      audited: '2026-06-12T06:56:15Z'
     codex_session:
       by_parameter:
         L_over_a:
@@ -58606,6 +58671,13 @@ candidates:
     alias_ids:
     - fit_stage121_aspect_ratio_37_over_20
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:51:13Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:56:15Z'
   fit_stage121_aspect_ratio_37_over_20:
     id: fit_stage121_aspect_ratio_37_over_20
     candidate_key: stage121_aspect_ratio_37_over_20
@@ -58678,11 +58750,13 @@ candidates:
     parameter_names:
     - L_W
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:51:27Z'
+      audited: '2026-06-12T06:56:57Z'
     codex_session:
       by_parameter:
         L_W:
@@ -58718,6 +58792,13 @@ candidates:
         excerpt: \boxed{L_W=L.}
         stage: '121'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:51:27Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:56:57Z'
   fit_stage121_r_geom_exact_branch:
     id: fit_stage121_r_geom_exact_branch
     candidate_key: stage121_r_geom_exact_branch
@@ -58735,11 +58816,13 @@ candidates:
     - a
     - mathfrak_r_geom
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:51:42Z'
+      audited: '2026-06-12T06:57:40Z'
     codex_session:
       by_parameter:
         L:
@@ -58788,6 +58871,13 @@ candidates:
         excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
         stage: '121'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:51:42Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:57:40Z'
   fit_stage121_r_not_tunable:
     id: fit_stage121_r_not_tunable
     candidate_key: stage121_r_not_tunable
@@ -58804,11 +58894,13 @@ candidates:
     parameter_names:
     - mathfrak_r
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:51:54Z'
+      audited: '2026-06-12T06:58:23Z'
     codex_session:
       by_parameter:
         mathfrak_r:
@@ -58844,6 +58936,13 @@ candidates:
           value rather than a tunable small parameter.
         stage: '121'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:51:54Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:58:23Z'
   fit_stage122_g_nat_equal_normalized_unity:
     id: fit_stage122_g_nat_equal_normalized_unity
     candidate_key: stage122_g_nat_equal_normalized_unity
@@ -58859,11 +58958,13 @@ candidates:
     parameter_names:
     - g_nat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:52:06Z'
+      audited: '2026-06-12T06:59:02Z'
     codex_session:
       by_parameter:
         g_nat:
@@ -58899,6 +59000,13 @@ candidates:
         excerpt: \mathfrak g_{\rm nat}=1.
         stage: '122'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:52:06Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:59:02Z'
   fit_stage122_g_nat_unity_branch_ansatz:
     id: fit_stage122_g_nat_unity_branch_ansatz
     candidate_key: stage122_g_nat_unity_branch_ansatz
@@ -58914,11 +59022,13 @@ candidates:
     parameter_names:
     - g_nat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:52:19Z'
+      audited: '2026-06-12T06:59:41Z'
     codex_session:
       by_parameter:
         g_nat:
@@ -58955,6 +59065,13 @@ candidates:
         excerpt: \mathfrak g_{\rm nat}=1.
         stage: '122'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:52:19Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T06:59:41Z'
   fit_stage122_g_pm_exact_values:
     id: fit_stage122_g_pm_exact_values
     candidate_key: stage122_g_pm_exact_values
@@ -59032,11 +59149,13 @@ candidates:
     parameter_names:
     - mathfrak_r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:52:32Z'
+      audited: '2026-06-12T07:00:20Z'
     codex_session:
       by_parameter:
         mathfrak_r_F1:
@@ -59071,6 +59190,13 @@ candidates:
         excerpt: '- the actual throat geometry fixes'
         stage: '122'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:52:32Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:00:20Z'
   fit_stage123_exact_branch_law:
     id: fit_stage123_exact_branch_law
     candidate_key: stage123_exact_branch_law
@@ -59148,11 +59274,13 @@ candidates:
     parameter_names:
     - mathfrak_r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:52:44Z'
+      audited: '2026-06-12T07:00:54Z'
     codex_session:
       by_parameter:
         mathfrak_r_F1:
@@ -59187,6 +59315,13 @@ candidates:
         excerpt: '- the geometry-selected normalized hybridization is'
         stage: '123'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:52:44Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:00:54Z'
   fit_stage124_what_is_now_fixed:
     id: fit_stage124_what_is_now_fixed
     candidate_key: stage124_what_is_now_fixed
@@ -60293,11 +60428,13 @@ candidates:
     - Theta_sigma
     - q_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T06:53:20Z'
+      audited: '2026-06-12T07:02:11Z'
     codex_session:
       by_parameter:
         A0_prime:
@@ -60360,6 +60497,13 @@ candidates:
         excerpt: Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
         stage: '131'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:53:20Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:02:11Z'
   fit_stage132_source_family_fixed_claim:
     id: fit_stage132_source_family_fixed_claim
     candidate_key: stage132_source_family_fixed_claim
@@ -60432,11 +60576,13 @@ candidates:
     - kappa_minus
     - kappa_plus
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:17Z'
+      audit_pending: '2026-06-12T06:53:47Z'
+      audited: '2026-06-12T07:02:41Z'
     codex_session:
       by_parameter:
         M_minus:
@@ -60492,6 +60638,13 @@ candidates:
         excerpt: Everything else is fixed by the exact source law and the exact D/N response.
         stage: '133'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:53:47Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:02:41Z'
   fit_stage134_bias_determined_by_fixedpoint:
     id: fit_stage134_bias_determined_by_fixedpoint
     candidate_key: stage134_bias_determined_by_fixedpoint
@@ -60509,11 +60662,13 @@ candidates:
     - M_s
     - Pi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:17Z'
+      audit_pending: '2026-06-12T06:53:59Z'
+      audited: '2026-06-12T07:02:52Z'
     codex_session:
       by_parameter:
         M_q:
@@ -60562,6 +60717,13 @@ candidates:
         excerpt: bias is determined by
         stage: '134'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:53:59Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:02:52Z'
   fit_stage134_kappa_q_first_mode_choice:
     id: fit_stage134_kappa_q_first_mode_choice
     candidate_key: stage134_kappa_q_first_mode_choice
@@ -60577,11 +60739,13 @@ candidates:
     parameter_names:
     - kappa_q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:17Z'
+      audit_pending: '2026-06-12T06:54:10Z'
+      audited: '2026-06-12T07:03:04Z'
     codex_session:
       by_parameter:
         kappa_q:
@@ -60617,6 +60781,13 @@ candidates:
         excerpt: S_q = sp.simplify(S(Pi, sp.pi/2))
         stage: '134'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:54:10Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:03:04Z'
   fit_stage134_pi_star_carried_literal:
     id: fit_stage134_pi_star_carried_literal
     candidate_key: stage134_pi_star_carried_literal
@@ -60822,11 +60993,13 @@ candidates:
     - M_q_over_Sigma_m
     - M_s_over_Sigma_m
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T06:54:34Z'
+      audited: '2026-06-12T07:03:28Z'
     codex_session:
       by_parameter:
         M_q_over_Sigma_m:
@@ -60869,6 +61042,13 @@ candidates:
         excerpt: 'reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})'
         stage: '135'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:54:34Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:03:28Z'
   fit_stage135_pi_star_import_sigma_m_star:
     id: fit_stage135_pi_star_import_sigma_m_star
     candidate_key: stage135_pi_star_import_sigma_m_star
@@ -61118,11 +61298,13 @@ candidates:
     - L_over_a
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T06:55:21Z'
+      audited: '2026-06-12T07:04:15Z'
     codex_session:
       by_parameter:
         L_over_a:
@@ -61165,6 +61347,13 @@ candidates:
         excerpt: rF = sp.N(sp.sqrt(sp.Rational(12,1)/sp.pi**2 * (sp.Rational(37,20))**2 - 1), 30)
         stage: '139'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:55:21Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:04:15Z'
   fit_stage139_gains_land_exactly_on_canonical:
     id: fit_stage139_gains_land_exactly_on_canonical
     candidate_key: stage139_gains_land_exactly_on_canonical
@@ -61611,11 +61800,13 @@ candidates:
     - L_over_a
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:29Z'
+      audit_pending: '2026-06-12T06:55:32Z'
+      audited: '2026-06-12T07:04:26Z'
     codex_session:
       by_parameter:
         L_over_a:
@@ -61659,6 +61850,13 @@ candidates:
         excerpt: rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
         stage: '146'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c4_freechoice_120_159 dispatch
+      at: '2026-06-12T06:55:32Z'
+    - status: audited
+      note: batch_c4 verdict NO (no fatal flaw); free_choice honestly disclosed
+      at: '2026-06-12T07:04:26Z'
   fit_stage147_AT_BT_circular_paper_anchor:
     id: fit_stage147_AT_BT_circular_paper_anchor
     candidate_key: stage147_AT_BT_circular_paper_anchor

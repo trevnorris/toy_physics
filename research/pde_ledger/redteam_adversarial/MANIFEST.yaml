@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-11T19:38:14Z'
+updated_at: '2026-06-12T05:16:52Z'
 state_machine:
 - pending
 - scanned
@@ -1786,11 +1786,13 @@ candidates:
     - assert_nonzero
     - const_prefactor_matrix
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:32:11Z'
+      audited: '2026-06-12T04:40:10Z'
     codex_session:
       by_parameter:
         P0_target:
@@ -1872,6 +1874,13 @@ candidates:
           absolute anchors. The script''s verified claims match the paper''s four boxed deliverables plus the two auxiliary
           criteria the card names. Both outputs are fresh (output mtimes newer than their scripts).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:32:11Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:40:10Z'
   fit_stage_020_b_0:
     id: fit_stage_020_b_0
     candidate_key: stage_020_b_0
@@ -3323,11 +3332,13 @@ candidates:
     - P_0
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:32:46Z'
+      audited: '2026-06-12T04:40:45Z'
     codex_session:
       by_parameter:
         P_0:
@@ -3382,6 +3393,13 @@ candidates:
           Per the freshness guard this does not warrant a finding (the math content does not disagree with what the current
           script produces). I tried to break the math and could not.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:32:46Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:40:45Z'
   fit_stage_023_b_0:
     id: fit_stage_023_b_0
     candidate_key: stage_023_b_0
@@ -3926,11 +3944,13 @@ candidates:
     parameter_names:
     - P0_compact
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:33:20Z'
+      audited: '2026-06-12T04:41:21Z'
     codex_session:
       by_parameter:
         P0_compact:
@@ -3974,6 +3994,13 @@ candidates:
           computes `∂P0/∂K` and `∂P0/∂X`, asserts each equals `∓N0/(K−X−Q/Δ)²`, that they sum to zero, and sign-checks them
           on the sample (sympy 191-213; wl 141-162).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:33:20Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:41:21Z'
   fit_stage_026_a_w:
     id: fit_stage_026_a_w
     candidate_key: stage_026_a_w
@@ -4185,11 +4212,13 @@ candidates:
     parameter_names:
     - K_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:48:49Z'
+      audited: '2026-06-12T05:12:09Z'
     codex_session:
       by_parameter:
         K_req:
@@ -4231,6 +4260,13 @@ candidates:
           symbolically). I confirmed I read the paper card, the notes, and the appendix row, and the scripts'' verified claims
           match all six paper deliverables.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 fam_0138_k_req
+      at: '2026-06-12T04:48:49Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:12:09Z'
   fit_stage_028_det_eff:
     id: fit_stage_028_det_eff
     candidate_key: stage_028_det_eff
@@ -5414,11 +5450,13 @@ candidates:
     - R_target
     - xi_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T04:50:27Z'
+      audited: '2026-06-12T05:13:41Z'
     codex_session:
       by_parameter:
         R_target:
@@ -5439,7 +5477,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_035_r_target__r_target.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_035_r_target__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -5474,6 +5512,10 @@ candidates:
         stage: '035'
         excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:13:41Z'
   fit_stage_035_to:
     id: fit_stage_035_to
     candidate_key: stage_035_to
@@ -15168,11 +15210,13 @@ candidates:
     parameter_names:
     - Kbar_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T04:49:02Z'
+      audited: '2026-06-12T05:12:20Z'
     codex_session:
       by_parameter:
         Kbar_0:
@@ -15187,7 +15231,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_097_kbar_0__kbar_0.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_097_kbar_0__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -15207,6 +15251,10 @@ candidates:
         stage: 097
         excerpt: It is already determined by the same two quantities `(Kbar_0, Omega_Q)`.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:12:20Z'
   fit_stage_097_r_i:
     id: fit_stage_097_r_i
     candidate_key: stage_097_r_i
@@ -15230,11 +15278,13 @@ candidates:
     parameter_names:
     - R_i
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T04:50:14Z'
+      audited: '2026-06-12T05:13:29Z'
     codex_session:
       by_parameter:
         R_i:
@@ -15249,7 +15299,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_097_r_i__r_i.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_097_r_i__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -15276,6 +15326,10 @@ candidates:
           `.txt` files are newer than their scripts (see Value Reconciliation). Attacks on tautology, transliteration, symbol
           domain, parity, and constants all failed to find a defect.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:13:29Z'
   fit_stage_098_c_pole:
     id: fit_stage_098_c_pole
     candidate_key: stage_098_c_pole
@@ -16295,11 +16349,13 @@ candidates:
     - matched_fingerprint_value
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T04:48:01Z'
+      audited: '2026-06-12T05:11:22Z'
     codex_session:
       by_parameter:
         Gamma5_t:
@@ -16386,7 +16442,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_100_gamma5_t__gamma5_t.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_100_gamma5_t__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -16453,6 +16509,10 @@ candidates:
           the closure residual factorizes as the headline `mhat_0^2 chi_Q N_Q - 1`. `chi_Q` is carried as a free real symbol
           (not pinned to 1) by design.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:11:22Z'
   fit_stage_100_matched_fingerprint_value:
     id: fit_stage_100_matched_fingerprint_value
     candidate_key: stage_100_matched_fingerprint_value
@@ -19107,11 +19167,13 @@ candidates:
     - matched_fingerprint_value
     - overline
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T04:33:55Z'
+      audited: '2026-06-12T04:41:56Z'
     codex_session:
       by_parameter:
         Gamma_5:
@@ -19215,6 +19277,13 @@ candidates:
           (ii)→Stage 102, (iii)→Stage 104, and the \(\chi_Q=1\) fix→Stage 105, with 106 owning item (i) — factorization separability
           and the closure to \(N_Q=1\).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:33:55Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:41:56Z'
   fit_stage_106_matched_fingerprint_value:
     id: fit_stage_106_matched_fingerprint_value
     candidate_key: stage_106_matched_fingerprint_value
@@ -30665,11 +30734,13 @@ candidates:
     - P_2
     - P_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:06Z'
+      audit_pending: '2026-06-12T04:34:18Z'
+      audited: '2026-06-12T04:42:21Z'
     codex_session:
       by_parameter:
         P_0:
@@ -30720,6 +30791,13 @@ candidates:
           even prefactor moments `\(P_2,P_4\)` change the even branch bookkeeping, but they do **not** enter the first odd
           coefficient.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:34:18Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:42:21Z'
   fit_stage_190_a_tr:
     id: fit_stage_190_a_tr
     candidate_key: stage_190_a_tr
@@ -31208,11 +31286,13 @@ candidates:
     - chi_Q
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:47:13Z'
+      audited: '2026-06-12T05:10:36Z'
     codex_session:
       by_parameter:
         Delta_Q:
@@ -31239,7 +31319,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_192_delta_q__delta_q.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_192_delta_q__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -31280,6 +31360,10 @@ candidates:
           \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
           Packet A to \(\Delta_Q=\chi_Q-1\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:36Z'
   fit_stage_192_i_3:
     id: fit_stage_192_i_3
     candidate_key: stage_192_i_3
@@ -31539,11 +31623,13 @@ candidates:
     - chi_Q
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:47:25Z'
+      audited: '2026-06-12T05:10:47Z'
     codex_session:
       by_parameter:
         Delta_Q:
@@ -31611,6 +31697,13 @@ candidates:
           \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
           Packet A to \(\Delta_Q=\chi_Q-1\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 fam_0058_delta_q
+      at: '2026-06-12T04:47:25Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:47Z'
   fit_stage_193_p_2:
     id: fit_stage_193_p_2
     candidate_key: stage_193_p_2
@@ -31863,11 +31956,13 @@ candidates:
     - chi_Q
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:47:37Z'
+      audited: '2026-06-12T05:10:59Z'
     codex_session:
       by_parameter:
         Delta_Q:
@@ -31935,6 +32030,13 @@ candidates:
           \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
           Packet A to \(\Delta_Q=\chi_Q-1\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 fam_0058_delta_q
+      at: '2026-06-12T04:47:37Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:59Z'
   fit_stage_194_matched_fingerprint_value:
     id: fit_stage_194_matched_fingerprint_value
     candidate_key: stage_194_matched_fingerprint_value
@@ -37060,11 +37162,13 @@ candidates:
     parameter_names:
     - mathrm
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T04:52:05Z'
+      audited: '2026-06-12T05:15:13Z'
     codex_session:
       by_parameter:
         mathrm:
@@ -37079,7 +37183,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_223_mathrm__mathrm.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_223_mathrm__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -37114,6 +37218,10 @@ candidates:
         excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the
           primitive branch is compatibility rather than full calibration.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:15:13Z'
   fit_stage_224_delta_rm:
     id: fit_stage_224_delta_rm
     candidate_key: stage_224_delta_rm
@@ -40577,11 +40685,13 @@ candidates:
     parameter_names:
     - lambda_L_soft
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:45:25Z'
+      audited: '2026-06-12T05:09:02Z'
     codex_session:
       by_parameter:
         lambda_L_soft:
@@ -40623,6 +40733,13 @@ candidates:
           (=0.26971918, wl:269-276); it does NOT replicate the SymPy self-solve `lambda_L_soft`, so it cannot inherit that
           round-trip. Variable choreography and section ordering parallel the physics, not the SymPy line sequence.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_calibration_245_253
+      at: '2026-06-12T04:45:25Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:09:02Z'
   fit_stage_247_lvar_from_w:
     id: fit_stage_247_lvar_from_w
     candidate_key: stage_247_lvar_from_w
@@ -40802,11 +40919,13 @@ candidates:
     - V_eff
     - V_short
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:50:39Z'
+      audited: '2026-06-12T05:13:52Z'
     codex_session:
       by_parameter:
         V_eff:
@@ -40827,7 +40946,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_247_v_eff__v_eff.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_247_v_eff__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -40849,6 +40968,10 @@ candidates:
         excerpt: '| (5) inequality `V_eff<=V_short` | py:247 (benchmark slice) / wl (M8 numeric forward) | match (numeric
           on branch) |'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:13:52Z'
   fit_stage_247_vrebuild_soft:
     id: fit_stage_247_vrebuild_soft
     candidate_key: stage_247_vrebuild_soft
@@ -40869,11 +40992,13 @@ candidates:
     - lambda_L
     - lambda_L_paper
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:50:51Z'
+      audited: '2026-06-12T05:14:04Z'
     codex_session:
       by_parameter:
         Vrebuild_soft:
@@ -40900,7 +41025,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage_247_vrebuild_soft__vrebuild_soft.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage_247_vrebuild_soft__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -40924,6 +41049,10 @@ candidates:
           asserted; the load-bearing benchmark closure is A24 (py:248-250) using the **paper literal** `lambda_L_paper=0.26971918`,
           which is genuinely falsifiable.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:14:04Z'
   fit_stage_248_f_coul:
     id: fit_stage_248_f_coul
     candidate_key: stage_248_f_coul
@@ -44483,11 +44612,13 @@ candidates:
     - coeff_8
     - coeff_9
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:51:39Z'
+      audited: '2026-06-12T05:14:50Z'
     codex_session:
       by_parameter:
         coeff_11:
@@ -44514,7 +44645,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage018_stale_provenance_anchor_9_11_8__coeff_11.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage018_stale_provenance_anchor_9_11_8__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -44538,6 +44669,10 @@ candidates:
         excerpt: '  carried forward with source anchor from the Stage-18 selected-branch'
         stage: 018
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:14:50Z'
   fit_stage019_K_Sigma_fixed_by_one_pole:
     id: fit_stage019_K_Sigma_fixed_by_one_pole
     candidate_key: stage019_K_Sigma_fixed_by_one_pole
@@ -44608,11 +44743,13 @@ candidates:
     - K_Sigma
     - P_0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:47:01Z'
+      audited: '2026-06-12T05:10:24Z'
     codex_session:
       by_parameter:
         K_Sigma:
@@ -44633,7 +44770,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage019_k_sigma_fixed_by_outgoing_normalization__k_sigma.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage019_K_Sigma_fixed_by_outgoing_normalization__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -44654,6 +44791,10 @@ candidates:
         excerpt: The outgoing normalization fixes
         stage: 019
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:24Z'
   fit_stage019_P0_target_upstream_pin:
     id: fit_stage019_P0_target_upstream_pin
     candidate_key: stage019_P0_target_upstream_pin
@@ -44669,11 +44810,13 @@ candidates:
     parameter_names:
     - P_0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:31:48Z'
+      audited: '2026-06-12T04:39:47Z'
     codex_session:
       by_parameter:
         P_0_target:
@@ -44688,7 +44831,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage019_p0_target_upstream_pin__p0_target.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage019_P0_target_upstream_pin__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -44709,6 +44852,13 @@ candidates:
         excerpt: P_{0,\rm target}=\frac{54Gc_s^5}{5a^5c^5\widehat m_0^{\,2}}.
         stage: 019
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:31:48Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:39:47Z'
   fit_stage019_p0target_54_5_raw_retype:
     id: fit_stage019_p0target_54_5_raw_retype
     candidate_key: stage019_p0target_54_5_raw_retype
@@ -44725,11 +44875,13 @@ candidates:
     - P0target
     - mhat0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:31:59Z'
+      audited: '2026-06-12T04:39:59Z'
     codex_session:
       by_parameter:
         P0target:
@@ -44772,6 +44924,13 @@ candidates:
         excerpt: P0target = 54 G cs^5/(5 a^5 c^5 mhat0^2);
         stage: 019
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:31:59Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:39:59Z'
   fit_stage020_even_gate_determinant_1_27:
     id: fit_stage020_even_gate_determinant_1_27
     candidate_key: stage020_even_gate_determinant_1_27
@@ -45067,11 +45226,13 @@ candidates:
     - N_Q_target
     - gamma_GR
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:32:22Z'
+      audited: '2026-06-12T04:40:22Z'
     codex_session:
       by_parameter:
         N_Q_target:
@@ -45115,6 +45276,13 @@ candidates:
         excerpt: \gamma_{\rm GR}=\frac{2G}{5c^5}.
         stage: '022'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:32:22Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:40:22Z'
   fit_stage022_invariant_product_must_match_universal:
     id: fit_stage022_invariant_product_must_match_universal
     candidate_key: stage022_invariant_product_must_match_universal
@@ -45135,11 +45303,13 @@ candidates:
     - P_An
     - u_n_A
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:49:26Z'
+      audited: '2026-06-12T05:12:43Z'
     codex_session:
       by_parameter:
         N_Q_universal:
@@ -45166,7 +45336,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage022_invariant_product_must_match_universal__n_q_universal.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage022_invariant_product_must_match_universal__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -45191,6 +45361,10 @@ candidates:
           \(P_{An}\), and isolates the exact invariant product that must match the universal quadrupole normalization.}
         stage: '022'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:12:43Z'
   fit_stage022_mhat0_unity_branch:
     id: fit_stage022_mhat0_unity_branch
     candidate_key: stage022_mhat0_unity_branch
@@ -45288,11 +45462,13 @@ candidates:
     - gamma_GR
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:32:34Z'
+      audited: '2026-06-12T04:40:34Z'
     codex_session:
       by_parameter:
         P_0:
@@ -45319,7 +45495,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage022_p0_quadrupole_normalization_target__p0_target.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage022_p0_quadrupole_normalization_target__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -45343,6 +45519,13 @@ candidates:
           anchors OPEN_QUAD_NORMALIZATION)
         stage: '022'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:32:34Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:40:34Z'
   fit_stage022_source_map_branch_mhat0_unity:
     id: fit_stage022_source_map_branch_mhat0_unity
     candidate_key: stage022_source_map_branch_mhat0_unity
@@ -45474,11 +45657,13 @@ candidates:
     - gamma_GR
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T04:45:49Z'
+      audited: '2026-06-12T05:09:26Z'
     codex_session:
       by_parameter:
         N_Q_target:
@@ -45505,7 +45690,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage023_nq_target_gr_quadrupole_match__n_q.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage023_nq_target_gr_quadrupole_match__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -45528,6 +45713,10 @@ candidates:
         excerpt: =\frac{54Gc_s^5}{5a^5c^5}}.
         stage: '023'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:09:26Z'
   fit_stage024_b3a_signature_follows_directly:
     id: fit_stage024_b3a_signature_follows_directly
     candidate_key: stage024_b3a_signature_follows_directly
@@ -45851,11 +46040,13 @@ candidates:
     parameter_names:
     - mhat_rad
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:52:17Z'
+      audited: '2026-06-12T05:15:24Z'
     codex_session:
       by_parameter:
         mhat_rad:
@@ -45870,7 +46061,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage025_mhat_rad_tuned_to_target__mhat_rad.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage025_mhat_rad_tuned_to_target__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -45891,6 +46082,10 @@ candidates:
         excerpt: \widehat m_{\rm rad}^{\,2}
         stage: '025'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:15:24Z'
   fit_stage025_one_mode_normalization_target:
     id: fit_stage025_one_mode_normalization_target
     candidate_key: stage025_one_mode_normalization_target
@@ -45907,11 +46102,13 @@ candidates:
     - N_Q_target
     - mhat_rad
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:32:57Z'
+      audited: '2026-06-12T04:40:57Z'
     codex_session:
       by_parameter:
         N_Q_target:
@@ -45953,6 +46150,13 @@ candidates:
         excerpt: Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
         stage: '025'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:32:57Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:40:57Z'
   fit_stage025_radial_source_map_normalization:
     id: fit_stage025_radial_source_map_normalization
     candidate_key: stage025_radial_source_map_normalization
@@ -45969,11 +46173,13 @@ candidates:
     - N_Q_target
     - mhat_rad
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:46:01Z'
+      audited: '2026-06-12T05:09:37Z'
     codex_session:
       by_parameter:
         N_Q_target:
@@ -46016,6 +46222,13 @@ candidates:
         excerpt: \widehat m_{rad}^{\,2} ... = N_Q^{target} (graph node MT_STAGE025_MINIMAL_NORMALIZATION, status reduced_model)
         stage: '025'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_chi_Q_norm
+      at: '2026-06-12T04:46:01Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:09:37Z'
   fit_stage025_target_coefficient_54_5:
     id: fit_stage025_target_coefficient_54_5
     candidate_key: stage025_target_coefficient_54_5
@@ -46032,11 +46245,13 @@ candidates:
     - mhat
     - target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:33:09Z'
+      audited: '2026-06-12T04:41:09Z'
     codex_session:
       by_parameter:
         mhat:
@@ -46078,6 +46293,13 @@ candidates:
         excerpt: target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
         stage: '025'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:33:09Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:41:09Z'
   fit_stage026_K_req_solved_exactly_from_target:
     id: fit_stage026_K_req_solved_exactly_from_target
     candidate_key: stage026_K_req_solved_exactly_from_target
@@ -46093,11 +46315,13 @@ candidates:
     parameter_names:
     - K_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:48:26Z'
+      audited: '2026-06-12T05:11:45Z'
     codex_session:
       by_parameter:
         K_req:
@@ -46112,7 +46336,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage026_k_req_solved_exactly_from_target__k_req.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage026_K_req_solved_exactly_from_target__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -46133,6 +46357,10 @@ candidates:
         excerpt: 'It can be solved exactly for the required wall stiffness:'
         stage: '026'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:11:45Z'
   fit_stage026_Kreq_solved_backward:
     id: fit_stage026_Kreq_solved_backward
     candidate_key: stage026_Kreq_solved_backward
@@ -46148,11 +46376,13 @@ candidates:
     parameter_names:
     - K_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T04:48:37Z'
+      audited: '2026-06-12T05:11:57Z'
     codex_session:
       by_parameter:
         K_req:
@@ -46188,6 +46418,13 @@ candidates:
         excerpt: Solving for the required wall stiffness gives
         stage: '026'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 fam_0138_k_req
+      at: '2026-06-12T04:48:37Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:11:57Z'
   fit_stage026_dn_constants_exact_derived_downstream:
     id: fit_stage026_dn_constants_exact_derived_downstream
     candidate_key: stage026_dn_constants_exact_derived_downstream
@@ -47012,11 +47249,13 @@ candidates:
     parameter_names:
     - lambda_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T04:51:52Z'
+      audited: '2026-06-12T05:15:01Z'
     codex_session:
       by_parameter:
         lambda_req:
@@ -47031,7 +47270,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage030_lambda_req_target_ratio__lambda_req.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage030_lambda_req_target_ratio__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -47052,6 +47291,10 @@ candidates:
         excerpt: lambda_req = sp.simplify(mhat**2 * beta0 * s_minus_closed / NQ_target)
         stage: '030'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:15:01Z'
   fit_stage030_nq_target_retype_54_5:
     id: fit_stage030_nq_target_retype_54_5
     candidate_key: stage030_nq_target_retype_54_5
@@ -47069,11 +47312,13 @@ candidates:
     - lambda_req
     - mhat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T04:46:13Z'
+      audited: '2026-06-12T05:09:49Z'
     codex_session:
       by_parameter:
         NQ_target:
@@ -47122,6 +47367,13 @@ candidates:
         excerpt: NQ_target = 54 * G * cs**5 / (5 * a**5 * c**5)
         stage: '030'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_chi_Q_norm
+      at: '2026-06-12T04:46:13Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:09:49Z'
   fit_stage030_selected_branch_target_equation:
     id: fit_stage030_selected_branch_target_equation
     candidate_key: stage030_selected_branch_target_equation
@@ -47139,11 +47391,13 @@ candidates:
     - P_0_minus
     - mhat_minus
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T04:46:25Z'
+      audited: '2026-06-12T05:10:01Z'
     codex_session:
       by_parameter:
         N_Q_target:
@@ -47192,6 +47446,13 @@ candidates:
         excerpt: The selected-branch target is
         stage: '030'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_chi_Q_norm
+      at: '2026-06-12T04:46:25Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:01Z'
   fit_stage031_alpha_crit_derived_directly:
     id: fit_stage031_alpha_crit_derived_directly
     candidate_key: stage031_alpha_crit_derived_directly
@@ -47325,11 +47586,13 @@ candidates:
     - P_target
     - alpha_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T04:51:15Z'
+      audited: '2026-06-12T05:14:27Z'
     codex_session:
       by_parameter:
         P_target:
@@ -47350,7 +47613,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage031_unique_alpha_star_crossing__alpha_star.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage031_unique_alpha_star_crossing__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -47373,6 +47636,10 @@ candidates:
           quadrupole target,
         stage: '031'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:14:27Z'
   fit_stage032_kappa_values_exact:
     id: fit_stage032_kappa_values_exact
     candidate_key: stage032_kappa_values_exact
@@ -48215,11 +48482,13 @@ candidates:
     - c_s
     - mu_W
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T04:49:14Z'
+      audited: '2026-06-12T05:12:32Z'
     codex_session:
       by_parameter:
         G:
@@ -48258,7 +48527,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage038_lambda_external_target_coefficient__lambda.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage038_lambda_external_target_coefficient__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -48284,6 +48553,10 @@ candidates:
         excerpt: \Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
         stage: 038
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:12:32Z'
   fit_stage038_mhat_p0_fitted_scales:
     id: fit_stage038_mhat_p0_fitted_scales
     candidate_key: stage038_mhat_p0_fitted_scales
@@ -48300,11 +48573,13 @@ candidates:
     - P_0
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T04:33:32Z'
+      audited: '2026-06-12T04:41:32Z'
     codex_session:
       by_parameter:
         P_0:
@@ -48347,6 +48622,13 @@ candidates:
         excerpt: 'OPEN_SOURCE_PORT_NORMALIZATION (meaning: ''Derive mhat and P0 as branch data rather than fitted scales.'')'
         stage: 038
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:33:32Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:41:32Z'
   fit_stage039_delta_split_exact_value:
     id: fit_stage039_delta_split_exact_value
     candidate_key: stage039_delta_split_exact_value
@@ -53429,11 +53711,13 @@ candidates:
     - Pe_fail_chi
     - Pe_suff_chi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T04:49:38Z'
+      audited: '2026-06-12T05:12:55Z'
     codex_session:
       by_parameter:
         Pe_fail_chi:
@@ -53454,7 +53738,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage089_pe_window_upstream_misattribution__pe_fail_chi.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage089_pe_window_upstream_misattribution__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -53477,6 +53761,10 @@ candidates:
         excerpt: '# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the'
         stage: 089
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:12:55Z'
   fit_stage089_provenance_record_misattribution:
     id: fit_stage089_provenance_record_misattribution
     candidate_key: stage089_provenance_record_misattribution
@@ -53493,11 +53781,13 @@ candidates:
     - Pe_fail_chi
     - Pe_suff_chi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T04:49:50Z'
+      audited: '2026-06-12T05:13:06Z'
     codex_session:
       by_parameter:
         Pe_fail_chi:
@@ -53540,6 +53830,13 @@ candidates:
         excerpt: naming `scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt` as the
         stage: 089
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 fam_0198_pe_fail_chi
+      at: '2026-06-12T04:49:50Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:13:06Z'
   fit_stage090_locked_triple_Pe_req:
     id: fit_stage090_locked_triple_Pe_req
     candidate_key: stage090_locked_triple_Pe_req
@@ -55988,11 +56285,13 @@ candidates:
     - K_4
     - N_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T04:33:43Z'
+      audited: '2026-06-12T04:41:44Z'
     codex_session:
       by_parameter:
         Gamma_5:
@@ -56049,6 +56348,13 @@ candidates:
           values:'
         stage: '106'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:33:43Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:41:44Z'
   fit_stage106_odd_exactly_gr_target:
     id: fit_stage106_odd_exactly_gr_target
     candidate_key: stage106_odd_exactly_gr_target
@@ -56064,11 +56370,13 @@ candidates:
     parameter_names:
     - Gamma_5_normalized
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T04:48:14Z'
+      audited: '2026-06-12T05:11:34Z'
     codex_session:
       by_parameter:
         Gamma_5_normalized:
@@ -56083,7 +56391,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage106_odd_exactly_gr_target__gamma_5_normalized.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage106_odd_exactly_gr_target__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -56103,6 +56411,10 @@ candidates:
         excerpt: 'Equivalently, the normalized odd coefficient is exactly the GR/Burke–Thorne target:'
         stage: '106'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:11:34Z'
   fit_stage107_chiQ_canonical_normalization:
     id: fit_stage107_chiQ_canonical_normalization
     candidate_key: stage107_chiQ_canonical_normalization
@@ -61736,11 +62048,13 @@ candidates:
     - g_star
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:53Z'
+      audit_pending: '2026-06-12T04:42:33Z'
+      audited: '2026-06-12T05:07:16Z'
     codex_session:
       by_parameter:
         Pi_star:
@@ -61783,7 +62097,7 @@ candidates:
       - redteam_adversarial/provenance/fit_stage156_carried_constants_block__t_hat_star.yaml
       - redteam_adversarial/provenance/fit_stage156_carried_constants_block__g_star.yaml
       - redteam_adversarial/provenance/fit_stage156_carried_constants_block__r_f1.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage156_carried_constants_block__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -61808,6 +62122,10 @@ candidates:
         excerpt: T_hat_star = 0.901484054174204
         stage: '156'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:07:16Z'
   fit_stage156_mouth_bias_increase_224_59_pct:
     id: fit_stage156_mouth_bias_increase_224_59_pct
     candidate_key: stage156_mouth_bias_increase_224_59_pct
@@ -62023,11 +62341,13 @@ candidates:
     - T_can
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:53Z'
+      audit_pending: '2026-06-12T04:42:56Z'
+      audited: '2026-06-12T05:07:28Z'
     codex_session:
       by_parameter:
         S_can:
@@ -62087,6 +62407,13 @@ candidates:
         excerpt: Sigma0_can = sp.Float("4.651033550168876")
         stage: '158'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_aspect_37_20
+      at: '2026-06-12T04:42:56Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:07:28Z'
   fit_stage159_canonical_even_baseline:
     id: fit_stage159_canonical_even_baseline
     candidate_key: stage159_canonical_even_baseline
@@ -62680,11 +63007,13 @@ candidates:
     parameter_names:
     - r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:54Z'
+      audit_pending: '2026-06-12T04:43:19Z'
+      audited: '2026-06-12T05:07:39Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -62719,6 +63048,13 @@ candidates:
         excerpt: rF1 = sp.Float("1.77799353547498")
         stage: '161'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_aspect_37_20
+      at: '2026-06-12T04:43:19Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:07:39Z'
   fit_stage161_stage159_tangential_transport_coeffs:
     id: fit_stage161_stage159_tangential_transport_coeffs
     candidate_key: stage161_stage159_tangential_transport_coeffs
@@ -63083,11 +63419,13 @@ candidates:
     parameter_names:
     - R_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:41Z'
+      audit_pending: '2026-06-12T04:43:41Z'
+      audited: '2026-06-12T05:07:51Z'
     codex_session:
       by_parameter:
         R_star:
@@ -63122,6 +63460,13 @@ candidates:
         excerpt: Rstar = sp.Rational(1, 4)
         stage: '163'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_aspect_37_20
+      at: '2026-06-12T04:43:41Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:07:51Z'
   fit_stage163_delta_perp_exact_parent_expression:
     id: fit_stage163_delta_perp_exact_parent_expression
     candidate_key: stage163_delta_perp_exact_parent_expression
@@ -67032,11 +67377,13 @@ candidates:
     - P_0
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:06Z'
+      audit_pending: '2026-06-12T04:46:37Z'
+      audited: '2026-06-12T05:10:12Z'
     codex_session:
       by_parameter:
         Gamma_5:
@@ -67088,6 +67435,13 @@ candidates:
         stage: '189'
       graph_node: EQ_P0_TARGET
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_chi_Q_norm
+      at: '2026-06-12T04:46:37Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:10:12Z'
   fit_stage189_normalization_target_2g_5c5:
     id: fit_stage189_normalization_target_2g_5c5
     candidate_key: stage189_normalization_target_2g_5c5
@@ -67105,11 +67459,13 @@ candidates:
     - m_hat0_squared_Gamma_5
     - normalization_54_5
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:06Z'
+      audit_pending: '2026-06-12T04:34:06Z'
+      audited: '2026-06-12T04:42:09Z'
     codex_session:
       by_parameter:
         Gamma_5_coefficient_1_27:
@@ -67159,6 +67515,13 @@ candidates:
         excerpt: m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
         stage: '189'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:34:06Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:42:09Z'
   fit_stage191_carried_coefficients_in_packet_interconversion:
     id: fit_stage191_carried_coefficients_in_packet_interconversion
     candidate_key: stage191_carried_coefficients_in_packet_interconversion
@@ -67384,11 +67747,17 @@ candidates:
     - N_Q
     - chi_Q
     batch_id: null
-    status: provenance_built
+    status: verdict_logged
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:46:49Z'
+      audited: '2026-06-12T05:16:02Z'
+      defense_pending: '2026-06-12T05:16:14Z'
+      defended: '2026-06-12T05:16:25Z'
+      adjudicating: '2026-06-12T05:16:37Z'
+      verdict_logged: '2026-06-12T05:16:49Z'
     codex_session:
       by_parameter:
         Delta_Q:
@@ -67437,6 +67806,25 @@ candidates:
         excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
         stage: '192'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_chi_Q_norm
+      at: '2026-06-12T04:46:49Z'
+    - status: audited
+      note: batch_c1 YES paper_card_overclaim -> adjudication PARTIAL (non-fatal, Step-6 card fix); verdicts/batch_c1_adjudication.md
+      at: '2026-06-12T05:16:02Z'
+    - status: defense_pending
+      note: batch_c1 YES paper_card_overclaim -> adjudication PARTIAL (non-fatal, Step-6 card fix); verdicts/batch_c1_adjudication.md
+      at: '2026-06-12T05:16:14Z'
+    - status: defended
+      note: batch_c1 YES paper_card_overclaim -> adjudication PARTIAL (non-fatal, Step-6 card fix); verdicts/batch_c1_adjudication.md
+      at: '2026-06-12T05:16:25Z'
+    - status: adjudicating
+      note: batch_c1 YES paper_card_overclaim -> adjudication PARTIAL (non-fatal, Step-6 card fix); verdicts/batch_c1_adjudication.md
+      at: '2026-06-12T05:16:37Z'
+    - status: verdict_logged
+      note: batch_c1 YES paper_card_overclaim -> adjudication PARTIAL (non-fatal, Step-6 card fix); verdicts/batch_c1_adjudication.md
+      at: '2026-06-12T05:16:49Z'
   fit_stage193_grouped_p2_target_surface_coefficients:
     id: fit_stage193_grouped_p2_target_surface_coefficients
     candidate_key: stage193_grouped_p2_target_surface_coefficients
@@ -67621,11 +68009,13 @@ candidates:
     - P0_target
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:34:30Z'
+      audited: '2026-06-12T04:42:44Z'
     codex_session:
       by_parameter:
         P0_target:
@@ -67670,6 +68060,13 @@ candidates:
         stage: '193'
       graph_node: MATH_FULL_BUNDLE_TARGET_SURFACE
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:34:30Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:42:44Z'
   fit_stage194_canonical_even_moment_ratios:
     id: fit_stage194_canonical_even_moment_ratios
     candidate_key: stage194_canonical_even_moment_ratios
@@ -68103,11 +68500,13 @@ candidates:
     parameter_names:
     - P0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T04:34:41Z'
+      audited: '2026-06-12T04:43:07Z'
     codex_session:
       by_parameter:
         P0_target:
@@ -68142,6 +68541,13 @@ candidates:
         excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
         stage: '195'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:34:41Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:43:07Z'
   fit_stage196_sigma_Q_canonical_outgoing_scale:
     id: fit_stage196_sigma_Q_canonical_outgoing_scale
     candidate_key: stage196_sigma_Q_canonical_outgoing_scale
@@ -68281,11 +68687,13 @@ candidates:
     - Gamma5_target
     - P0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T04:34:53Z'
+      audited: '2026-06-12T04:43:30Z'
     codex_session:
       by_parameter:
         Gamma5_target:
@@ -68329,6 +68737,13 @@ candidates:
         excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
         stage: '197'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:34:53Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:43:30Z'
   fit_stage200_mismatch_chart_rederived_not_posited:
     id: fit_stage200_mismatch_chart_rederived_not_posited
     candidate_key: stage200_mismatch_chart_rederived_not_posited
@@ -69757,11 +70172,13 @@ candidates:
     - coefficient_54_over_5
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T04:35:04Z'
+      audited: '2026-06-12T04:43:52Z'
     codex_session:
       by_parameter:
         P0_target:
@@ -69811,6 +70228,13 @@ candidates:
         excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
         stage: '223'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:35:04Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:43:52Z'
   fit_stage223_p0_target_import_unprovenanced:
     id: fit_stage223_p0_target_import_unprovenanced
     candidate_key: stage223_p0_target_import_unprovenanced
@@ -69827,11 +70251,13 @@ candidates:
     parameter_names:
     - P0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T04:35:15Z'
+      audited: '2026-06-12T04:44:16Z'
     codex_session:
       by_parameter:
         P0_target:
@@ -69869,6 +70295,13 @@ candidates:
         stage: '223'
       graph_node: MATH_FULL_BUNDLE_TARGET_SURFACE
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:35:15Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:44:16Z'
   fit_stage223_universal_p0_target:
     id: fit_stage223_universal_p0_target
     candidate_key: stage223_universal_p0_target
@@ -69884,11 +70317,13 @@ candidates:
     parameter_names:
     - P_0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T04:35:27Z'
+      audited: '2026-06-12T04:44:39Z'
     codex_session:
       by_parameter:
         P_0_target:
@@ -69923,6 +70358,13 @@ candidates:
         excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
         stage: '223'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_quad_54_5 pilot
+      at: '2026-06-12T04:35:27Z'
+    - status: audited
+      note: 'batch_c1: chain_quad_54_5 NO (disclosed external fit)'
+      at: '2026-06-12T04:44:39Z'
   fit_stage224_grouped_signature_exact:
     id: fit_stage224_grouped_signature_exact
     candidate_key: stage224_grouped_signature_exact
@@ -70198,11 +70640,13 @@ candidates:
     parameter_names:
     - T_quad
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T04:44:04Z'
+      audited: '2026-06-12T05:08:03Z'
     codex_session:
       by_parameter:
         T_quad:
@@ -70217,7 +70661,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage224_t_quad_target_scale__t_quad.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage224_t_quad_target_scale__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -70239,6 +70683,10 @@ candidates:
           signature $(1,1/2,-1)$, the line $b_{P_0}=3a_{P_0}$, and the target scale $T_{\rm quad}=54Gc_s^5/(5a^5c^5)$.}
         stage: '224'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:08:03Z'
   fit_stage224_weak_axisymmetric_lane_signature:
     id: fit_stage224_weak_axisymmetric_lane_signature
     candidate_key: stage224_weak_axisymmetric_lane_signature
@@ -71257,11 +71705,13 @@ candidates:
     - RQ_req
     - threshold_eta_01
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T04:50:02Z'
+      audited: '2026-06-12T05:13:18Z'
     codex_session:
       by_parameter:
         RQ_req:
@@ -71282,7 +71732,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage228_rq_requirement_threshold__rq_req.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage228_rq_requirement_threshold__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -71304,6 +71754,10 @@ candidates:
         excerpt: threshold_eta_01 = 21.854566296358396
         stage: '228'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:13:18Z'
   fit_stage229_delta_crossover_threshold:
     id: fit_stage229_delta_crossover_threshold
     candidate_key: stage229_delta_crossover_threshold
@@ -73701,11 +74155,13 @@ candidates:
     - Lvar_soft
     - lambda_L
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:43Z'
+      audit_pending: '2026-06-12T04:44:28Z'
+      audited: '2026-06-12T05:08:15Z'
     codex_session:
       by_parameter:
         Lvar_soft:
@@ -73726,7 +74182,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage247_benchmark_pinned_to_paper_figures__lambda_l.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage247_benchmark_pinned_to_paper_figures__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -73747,6 +74203,10 @@ candidates:
         excerpt: '    # F5: pin independently derived benchmark quantities to the paper figures.'
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:08:15Z'
   fit_stage247_lambda_L_backsolve:
     id: fit_stage247_lambda_L_backsolve
     candidate_key: stage247_lambda_L_backsolve
@@ -73762,11 +74222,13 @@ candidates:
     parameter_names:
     - lambda_L
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:44:51Z'
+      audited: '2026-06-12T05:08:27Z'
     codex_session:
       by_parameter:
         lambda_L:
@@ -73802,6 +74264,13 @@ candidates:
         excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_calibration_245_253
+      at: '2026-06-12T04:44:51Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:08:27Z'
   fit_stage247_lambda_L_closure:
     id: fit_stage247_lambda_L_closure
     candidate_key: stage247_lambda_L_closure
@@ -73817,11 +74286,13 @@ candidates:
     parameter_names:
     - lambda_L
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:45:02Z'
+      audited: '2026-06-12T05:08:39Z'
     codex_session:
       by_parameter:
         lambda_L:
@@ -73857,6 +74328,13 @@ candidates:
         excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_calibration_245_253
+      at: '2026-06-12T04:45:02Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:08:39Z'
   fit_stage247_lambda_l_fixed_by_recorded_point:
     id: fit_stage247_lambda_l_fixed_by_recorded_point
     candidate_key: stage247_lambda_l_fixed_by_recorded_point
@@ -73872,11 +74350,13 @@ candidates:
     parameter_names:
     - lambda_L
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:45:14Z'
+      audited: '2026-06-12T05:08:50Z'
     codex_session:
       by_parameter:
         lambda_L:
@@ -73911,6 +74391,13 @@ candidates:
         excerpt: 'which is fixed exactly by the recorded softening point:'
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_calibration_245_253
+      at: '2026-06-12T04:45:14Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:08:50Z'
   fit_stage247_lambda_w_natural_specialization:
     id: fit_stage247_lambda_w_natural_specialization
     candidate_key: stage247_lambda_w_natural_specialization
@@ -73990,11 +74477,13 @@ candidates:
     - mu_w
     - xi_R
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:47:49Z'
+      audited: '2026-06-12T05:11:11Z'
     codex_session:
       by_parameter:
         G_W:
@@ -74079,7 +74568,7 @@ candidates:
       - redteam_adversarial/provenance/fit_stage247_session1_packet__eta_leak.yaml
       - redteam_adversarial/provenance/fit_stage247_session1_packet__mu_w.yaml
       - redteam_adversarial/provenance/fit_stage247_session1_packet__xi_r.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage247_session1_packet__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -74111,6 +74600,10 @@ candidates:
         excerpt: Veff_obs = sp.Float("1.74701126")
         stage: '247'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:11:11Z'
   fit_stage247_session1_softening_point:
     id: fit_stage247_session1_softening_point
     candidate_key: stage247_session1_softening_point
@@ -74556,11 +75049,13 @@ candidates:
     parameter_names:
     - v0_cross
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:52:30Z'
+      audited: '2026-06-12T05:15:35Z'
     codex_session:
       by_parameter:
         v0_cross:
@@ -74575,7 +75070,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage248_v0_cross_benchmark_speed__v0_cross.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage248_v0_cross_benchmark_speed__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -74595,6 +75090,10 @@ candidates:
         excerpt: The Session-II report also gave an explicit above-threshold demonstration speed
         stage: '248'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:15:35Z'
   fit_stage249_helicity_ratio_matched:
     id: fit_stage249_helicity_ratio_matched
     candidate_key: stage249_helicity_ratio_matched
@@ -74846,11 +75345,13 @@ candidates:
     - t_transit_max
     - t_transit_min
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T04:45:37Z'
+      audited: '2026-06-12T05:09:14Z'
     codex_session:
       by_parameter:
         E_max:
@@ -74943,6 +75444,13 @@ candidates:
         excerpt: m_num = 1836.15267343
         stage: '250'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c1 chain_calibration_245_253
+      at: '2026-06-12T04:45:37Z'
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:09:14Z'
   fit_stage250_goldilocks_edge_forced:
     id: fit_stage250_goldilocks_edge_forced
     candidate_key: stage250_goldilocks_edge_forced
@@ -75023,11 +75531,13 @@ candidates:
     - g_UV
     - m_s_ratio_1836
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T04:51:27Z'
+      audited: '2026-06-12T05:14:38Z'
     codex_session:
       by_parameter:
         chi_peak:
@@ -75063,7 +75573,7 @@ candidates:
       - redteam_adversarial/provenance/fit_stage250_goldilocks_inputs__chi_raw.yaml
       - redteam_adversarial/provenance/fit_stage250_goldilocks_inputs__g_uv.yaml
       - redteam_adversarial/provenance/fit_stage250_goldilocks_inputs__m_s_ratio_1836.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage250_goldilocks_inputs__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -75088,6 +75598,10 @@ candidates:
         excerpt: chi_num = 21.73204372
         stage: '250'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:14:38Z'
   fit_stage251_gamma3_exact_cubic_coefficient:
     id: fit_stage251_gamma3_exact_cubic_coefficient
     candidate_key: stage251_gamma3_exact_cubic_coefficient
@@ -76528,11 +77042,13 @@ candidates:
     - Xi_turn
     - lambda_th
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:39:39Z'
       scanned: '2026-06-11T08:39:39Z'
       provenance_built: '2026-06-11T19:37:44Z'
+      audit_pending: '2026-06-12T04:51:03Z'
+      audited: '2026-06-12T05:14:15Z'
     codex_session:
       by_parameter:
         Xi_turn:
@@ -76553,7 +77069,7 @@ candidates:
       verdict: null
       provenance:
       - redteam_adversarial/provenance/fit_stage248_xi_turn_lambda_th_carried_hardcodes__xi_turn.yaml
-      phase_c_prompt: null
+      phase_c_prompt: redteam_adversarial/tmp_prompts/fit_stage248_xi_turn_lambda_th_carried_hardcodes__phase_c_adversarial.md
     verdict:
       adversarial: null
       adjudication: null
@@ -76576,4 +77092,8 @@ candidates:
         excerpt: Xi_turn_num = 0.34437471
         stage: '248'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audited
+      note: batch_c1 NO (disclosed/non-fatal)
+      at: '2026-06-12T05:14:15Z'
 dry_runs: {}

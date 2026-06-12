@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-11T19:38:11Z'
+generated_at: '2026-06-12T05:16:49Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -1177,7 +1177,7 @@ candidates:
   - coeff_11
   - coeff_8
   - coeff_9
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 376
@@ -1212,7 +1212,7 @@ candidates:
   parameter_names:
   - K_Sigma
   - P_0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_019.tex
     line: 27
@@ -1229,7 +1229,7 @@ candidates:
   - 019
   parameter_names:
   - P_0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_019.tex
     line: 32
@@ -1247,7 +1247,7 @@ candidates:
   parameter_names:
   - P0target
   - mhat0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: mathematica/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.wl
     line: 50
@@ -1342,7 +1342,7 @@ candidates:
   parameter_names:
   - N_Q_target
   - gamma_GR
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_022.tex
     line: 121
@@ -1361,7 +1361,7 @@ candidates:
   - N_Q_universal
   - P_An
   - u_n_A
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_022.tex
     line: 7
@@ -1405,7 +1405,7 @@ candidates:
   - P_0
   - gamma_GR
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_022.tex
     line: 133
@@ -1459,7 +1459,7 @@ candidates:
   - N_Q_target
   - gamma_GR
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_023.tex
     line: 231
@@ -1567,7 +1567,7 @@ candidates:
   - '025'
   parameter_names:
   - mhat_rad
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_025.tex
     line: 65
@@ -1585,7 +1585,7 @@ candidates:
   parameter_names:
   - N_Q_target
   - mhat_rad
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_025.tex
     line: 61
@@ -1603,7 +1603,7 @@ candidates:
   parameter_names:
   - N_Q_target
   - mhat_rad
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_025.tex
     line: 65
@@ -1621,7 +1621,7 @@ candidates:
   parameter_names:
   - mhat
   - target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
     line: 123
@@ -1638,7 +1638,7 @@ candidates:
   - '026'
   parameter_names:
   - K_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
     line: 212
@@ -1655,7 +1655,7 @@ candidates:
   - '026'
   parameter_names:
   - K_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_026.tex
     line: 111
@@ -1910,7 +1910,7 @@ candidates:
   - '030'
   parameter_names:
   - lambda_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
     line: 169
@@ -1929,7 +1929,7 @@ candidates:
   - NQ_target
   - lambda_req
   - mhat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
     line: 158
@@ -1948,7 +1948,7 @@ candidates:
   - N_Q_target
   - P_0_minus
   - mhat_minus
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_030.tex
     line: 91
@@ -2001,7 +2001,7 @@ candidates:
   parameter_names:
   - P_target
   - alpha_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_031.tex
     line: 60
@@ -2251,7 +2251,7 @@ candidates:
   - Lambda
   - c_s
   - mu_W
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_038.tex
     line: 28
@@ -2269,7 +2269,7 @@ candidates:
   parameter_names:
   - P_0
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: graph/fluid_universe_derivation_atlas_graph.yaml
     line: null
@@ -3753,7 +3753,7 @@ candidates:
   parameter_names:
   - Pe_fail_chi
   - Pe_suff_chi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
     line: 61
@@ -3771,7 +3771,7 @@ candidates:
   parameter_names:
   - Pe_fail_chi
   - Pe_suff_chi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/CHECKPOINT_CONSTANT_PROVENANCE.md
     line: 111
@@ -4494,7 +4494,7 @@ candidates:
   - K_2
   - K_4
   - N_Q
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
     line: 40
@@ -4511,7 +4511,7 @@ candidates:
   - '106'
   parameter_names:
   - Gamma_5_normalized
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
     line: 53
@@ -6214,7 +6214,7 @@ candidates:
   - T_hat_star
   - g_star
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
     line: 28
@@ -6289,7 +6289,7 @@ candidates:
   - Sigma_0_can
   - T_can
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
     line: 100
@@ -6487,7 +6487,7 @@ candidates:
   - '161'
   parameter_names:
   - r_F1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
     line: 135
@@ -6609,7 +6609,7 @@ candidates:
   - '163'
   parameter_names:
   - R_star
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
     line: 112
@@ -7728,7 +7728,7 @@ candidates:
   - Gamma_5
   - P_0
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 84
@@ -7747,7 +7747,7 @@ candidates:
   - Gamma_5_coefficient_1_27
   - m_hat0_squared_Gamma_5
   - normalization_54_5
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 515
@@ -7822,7 +7822,7 @@ candidates:
   - Delta_Q
   - N_Q
   - chi_Q
-  status: provenance_built
+  status: verdict_logged
   file_line_citations:
   - path: paper/stages/stage_192.tex
     line: 21
@@ -7882,7 +7882,7 @@ candidates:
   parameter_names:
   - P0_target
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_193.tex
     line: 15
@@ -8024,7 +8024,7 @@ candidates:
   - '195'
   parameter_names:
   - P0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
     line: 46
@@ -8078,7 +8078,7 @@ candidates:
   parameter_names:
   - Gamma5_target
   - P0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
     line: 76
@@ -8477,7 +8477,7 @@ candidates:
   - P0_target
   - coefficient_54_over_5
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
     line: 127
@@ -8494,7 +8494,7 @@ candidates:
   - '223'
   parameter_names:
   - P0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/paper/stages/stage_223.tex
     line: 9
@@ -8512,7 +8512,7 @@ candidates:
   - '223'
   parameter_names:
   - P_0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
     line: 127
@@ -8592,7 +8592,7 @@ candidates:
   - '224'
   parameter_names:
   - T_quad
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_224.tex
     line: 9
@@ -8881,7 +8881,7 @@ candidates:
   parameter_names:
   - RQ_req
   - threshold_eta_01
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
     line: 432
@@ -9566,7 +9566,7 @@ candidates:
   parameter_names:
   - Lvar_soft
   - lambda_L
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
     line: 239
@@ -9583,7 +9583,7 @@ candidates:
   - '247'
   parameter_names:
   - lambda_L
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
     line: 238
@@ -9600,7 +9600,7 @@ candidates:
   - '247'
   parameter_names:
   - lambda_L
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
     line: 238
@@ -9617,7 +9617,7 @@ candidates:
   - '247'
   parameter_names:
   - lambda_L
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
     line: 497
@@ -9661,7 +9661,7 @@ candidates:
   - eta_leak
   - mu_w
   - xi_R
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
     line: 213
@@ -9773,7 +9773,7 @@ candidates:
   - '248'
   parameter_names:
   - v0_cross
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
     line: 513
@@ -9791,7 +9791,7 @@ candidates:
   parameter_names:
   - Xi_turn
   - lambda_th
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
     line: 247
@@ -9874,7 +9874,7 @@ candidates:
   - mu_eta
   - t_transit_max
   - t_transit_min
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
     line: 177
@@ -9912,7 +9912,7 @@ candidates:
   - chi_raw
   - g_UV
   - m_s_ratio_1836
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
     line: 176
@@ -10798,7 +10798,7 @@ candidates:
   - P0_target
   - assert_nonzero
   - const_prefactor_matrix
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_019.md
     line: 44
@@ -11199,7 +11199,7 @@ candidates:
   parameter_names:
   - P_0
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_022.md
     line: 114
@@ -11377,7 +11377,7 @@ candidates:
   - '025'
   parameter_names:
   - P0_compact
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_025.md
     line: 39
@@ -11464,7 +11464,7 @@ candidates:
   - '026'
   parameter_names:
   - K_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_026.md
     line: 105
@@ -11847,7 +11847,7 @@ candidates:
   parameter_names:
   - R_target
   - xi_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
     line: 211
@@ -14601,7 +14601,7 @@ candidates:
   - 097
   parameter_names:
   - Kbar_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
     line: 53
@@ -14619,7 +14619,7 @@ candidates:
   - 097
   parameter_names:
   - R_i
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_097.md
     line: 103
@@ -14940,7 +14940,7 @@ candidates:
   - closure_ratio
   - matched_fingerprint_value
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_100.md
     line: 65
@@ -15730,7 +15730,7 @@ candidates:
   - gamma_rm
   - matched_fingerprint_value
   - overline
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_106.md
     line: 35
@@ -18962,7 +18962,7 @@ candidates:
   - P_0
   - P_2
   - P_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
     line: 502
@@ -19128,7 +19128,7 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_192.tex
     line: 13
@@ -19223,7 +19223,7 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_193.tex
     line: 13
@@ -19309,7 +19309,7 @@ candidates:
   - Delta_Q
   - chi_Q
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_194.tex
     line: 13
@@ -20779,7 +20779,7 @@ candidates:
   - '223'
   parameter_names:
   - mathrm
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
     line: 130
@@ -21791,7 +21791,7 @@ candidates:
   - '247'
   parameter_names:
   - lambda_L_soft
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_247.md
     line: 85
@@ -21866,7 +21866,7 @@ candidates:
   parameter_names:
   - V_eff
   - V_short
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_247.md
     line: 51
@@ -21887,7 +21887,7 @@ candidates:
   - Vrebuild_soft
   - lambda_L
   - lambda_L_paper
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_247.md
     line: 79

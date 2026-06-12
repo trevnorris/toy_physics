@@ -32,3 +32,12 @@ Explicit precedence partition (seeded chains first, then primary/small units): `
 ## PC5 — Pilot first
 
 Run `chain_quad_54_5` (the 20 batch-1 P0_target=54/5 members — the dominant external GR back-solve, duplicated across scanner angles, with sourced benchmarks) as a single pilot unit FIRST; verify verdict quality + that the rendered prompt carried everything; THEN fan out the remaining 27 units ≤8 concurrent.
+
+## PC6 — Remaining Phase C scope after batch 1 (USER-DECIDED 2026-06-11): TARGETED sweep
+
+Batch 1 covered the entire external-fit surface (all 60 `published_target`) + all 27 HIGH findings = everywhere the fit-vs-derive test bites, and found NO fatal flaw. The user chose the **targeted sweep** (not exhaustive, not stop):
+- **DO:** Phase C adversarial agents over the remaining **~190 `free_choice` ansätze** (where a posit-dressed-as-derived overclaim could hide — exactly the stage_192 failure mode), batched band-topically ~25–35 → ~6–8 batches. PLUS a **completeness-critic spot-check** across the `internal_consistency` band.
+- **SKIP:** exhaustive per-family adversarial agents on the ~685 honest `internal_consistency` derivations — already verified by the layer-1 red-team ×2; the fit-vs-derive test has near-zero surface there. The critic spot-check is the safety net; log what is intentionally not deep-audited (no silent caps).
+- Same execution mechanics (PC1–PC5): disjoint family partition, per-member sub-verdicts, sourced benchmarks, ≤8 concurrent, /compact between batches.
+
+**User adjudication sign-offs (2026-06-11): ACCEPT BOTH.** (1) L/a=37/20 = `free_choice` confirmed (apply the 3 r_F1 bundle label corrections `published_target→free_choice` in Step 6). (2) stage_192 card overclaim = PARTIAL, non-fatal card-text fix in Step 6. The full Step-6 close-out fix queue is in `verdicts/batch_c1_adjudication.md`.

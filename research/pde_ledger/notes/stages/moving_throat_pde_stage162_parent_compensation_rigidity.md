@@ -55,19 +55,19 @@ On the same parent family, the D/N mixed-tube selection law is
 \frac{L_W}{a}=\frac{\pi}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
 }
 \]
-And Stages 115–116 fix the bare odd normalization by
+Stages 115–116 give the conditional bare odd normalization formula inside the pure-scale realization posited at Stage 116:
 \[
 \boxed{
 \gamma_0=\frac{1+\mathfrak r^2}{9}.
 }
 \]
-So on the exact parent compensation family, both the even D/N scale ratio and the odd bare normalization are controlled by the **same single parent variable** \(\mathfrak r\).
+Thus the even D/N scale ratio is the genuinely derived companion relation, while the odd bare normalization value is a branch-determinable pure-scale realization posit controlled by the **same single parent variable** \(\mathfrak r\), not a separate derived parent theorem.
 
 ---
 
 ## 2. Exact automatic similarity preservation on the parent family
 
-Differentiate the two exact parent-family formulas:
+Differentiate the two parent-family formulas, treating the \(\gamma_0\) formula as the exact conditional consequence of the posited pure-scale realization:
 \[
 \ln\gamma_0
 =
@@ -106,7 +106,7 @@ So the Stage 161 similarity-slippage scalar vanishes identically on the exact pa
 This result does **not** require the extra Stage 159 even-preservation gate.
 It is true for any infinitesimal motion that stays on the exact parent compensation family.
 
-Equivalently, the bare mixed side-channel remains an exact pure-scale deformation of the canonical compact outgoing branch all along that family.
+Equivalently, inside that posited pure-scale realization, the bare mixed side-channel follows the exact formula-level deformation of the canonical compact outgoing branch all along that family.
 
 ---
 
@@ -220,7 +220,7 @@ The first-order reduced 2.5PN obstruction disappears automatically.
 
 Inside the explicit co-evolving Family-1 closure, together with the exact parent compensation family of Stage 119:
 
-1. the D/N mixed-tube scale ratio and the bare odd normalization are both exact functions of the single parent variable \(\mathfrak r\),
+1. the D/N mixed-tube scale ratio is an exact function of the single parent variable \(\mathfrak r\), and the bare odd normalization follows the conditional pure-scale realization formula carried by Stage 116,
 2. therefore the D/N similarity-slippage scalar vanishes identically along the full parent compensation family,
    \[
    \Xi_{\rm slip}=0,

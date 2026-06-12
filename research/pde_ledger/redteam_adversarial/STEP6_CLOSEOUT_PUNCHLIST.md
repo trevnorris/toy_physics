@@ -35,13 +35,13 @@ These all concern a card/badge implying more than the notes support. The blanket
   "selected/declared/reference" framing carries it). _[batch 2, u12]_
 - [x] **A7.** `paper/stages/stage_115.tex:1` title "Exact Core-Balance Compensation **Theorem**" is borderline-strong
   wording (it's about the balance surface/law, not a value; notes re-disclose free data). LOW priority. _[batch 3, u08]_
-- [ ] **A8.** `paper/stages/stage_162.tex:5` `\StatusExactClosure` + `notes162:38/58/70` present γ₀=(1+𝔯²)/9 as one of
+- [x] **A8.** ✅ APPLIED 2026-06-12 (§5 consult: γ₀=(b) branch-determinable posited realization → scope badge + hedge). `paper/stages/stage_162.tex:5` `\StatusExactClosure` + `notes162:38/58/70` present γ₀=(1+𝔯²)/9 as one of
   "the two **exact** parent-family formulas" / "Stages 115–116 **fix** the bare odd normalization" with no ansatz tag —
   scope the badge + add a pure-scale-realization hedge distinguishing γ₀ (posited) from the genuinely-derived L_W/a
   relation it is grouped with. **SAME class as A3** (stage_116 γ₀ badge). **CONTINGENT** on the user's
   ANSATZ_LEDGER §5-item-1 call: if the user adopts the "derived (odd-preservation theorem)" reading, NO edit is owed
   and the current wording is correct. _[batch 5, u02 — YES→PARTIAL, verdict_logged; Claude+Codex adjudicated non-fatal]_
-- [ ] **A9.** `paper/stages/stage_240.tex:15` OUTPUT field bare-words "Exact selected loading ratio" (ρ_α=4/3, ζ_req=1/3,
+- [x] **A9.** ✅ APPLIED 2026-06-12 (§5 consult: c0=3/4 posit → inline "(conditional on the posited c0=3/4 module)" qualifier; applied for point-of-claim consistency with A8). `paper/stages/stage_240.tex:15` OUTPUT field bare-words "Exact selected loading ratio" (ρ_α=4/3, ζ_req=1/3,
   Π_tr=4C_mix/3) WITHOUT an inline "(conditional on the posited c0=3/4 module)" qualifier. SAME γ₀ family as A3/A8 but
   MILDER: unlike γ₀, the **same card** already hedges (`:17` "should not be read as a second independent proof of actual
   nonlinear branch realization"; Checks `:21–22` "Check whether the row is algebraic, numerical placement, or open
@@ -162,7 +162,7 @@ mis-classifications** (full record `reports/_batch_cc_verdicts.md`). No verdict_
   label R_Q(λ_W=0.2) "dual_engine", but `stage_223.tex:11` confirms single-engine ("Mathematica
   audit: none yet"); the slug self-flags "overclaim". OPTIONAL: downgrade the provenance/record
   dual-engine claim to single-engine to match the card. NO card/notes fix (card honest). _[CC u09]_
-- [ ] **CC-2.** `fit_stage252_vin_benchmark_calibration_match` (V_in_match) is a calibration
+- [x] **CC-2.** ✅ NOTED in catalog §3 (V_in_match row) 2026-06-12. `fit_stage252_vin_benchmark_calibration_match` (V_in_match) is a calibration
   back-solve to the Session-IV internal readback E_diss; classified internal_consistency, defensible
   (target is LEDGER-INTERNAL, honestly labelled `notes252:474` "benchmark calibration" / `:496`
   "calibration consistency check, not a theorem"). Borderline free_choice but NOT published_target —

@@ -41,7 +41,7 @@ citation (`path:line`) that was opened and verified, not taken from the excerpt 
 | **(c-lit) external-literature fit** | **9** | all trace to 2 anchors: GR 2G/5c⁵ (7) + CODATA 1836… (2) |
 | **(c-rec) internal recorded-benchmark match** | **~24** | Session-I…V readbacks (λ_L, V_eff, Ξ_turn, helicity exports, γ_crit, …) |
 | **(a) convention / gauge** | **~83** | wall-action coeffs, limit illustrations, free model coefficients, gauge picks |
-| **§5 borderline / needs-judgment** | **4** | gamma_0, chi_Q, n=5 EOS, c0=3/4-vs-c0_min duplication |
+| **§5 resolved (Claude+Codex 2026-06-12)** | **0 open** | γ₀→(b)/A8, χ_Q→(b), n=5→(a)/§4, c0→dedup/A9 |
 
 (Family counts sum to the 133 corpus families; a handful of multi-parameter families straddle categories
 and are placed by their load-bearing parameter, noted inline.)
@@ -63,7 +63,7 @@ PDE solve would determine them.* Lead row is the headline posit; the indented ro
 | 2a | ell (support / healing scale ℓ) | ℓ = ε_r·a (controlled local closure) | 074 | derived *from* 2 | the parent GNLS medium must fix the support scale instead of leaving it free | `…stage074_family1_healing_lock.md:55` ("a **controlled local closure**, not yet a theorem of the full moving-throat PDE … first honest way to tie the support scale to the parent GNLS medium") |
 | **3** | **c0 (minimal isotropic conservative module)** | **3/4** (c1 = 1/4) | 088, 090, 240 (as c0_min) | YES — "smallest viable" posit; a candidate, not forced | the real conservative quadrupole precursor must select the contact/pole split; ρ_α=4/3, ζ_req=1/3, Π_tr chain all derive from 3/4 | `…stage088_loading_ratio_from_minimal_module.md:81` ("the smallest viable isotropic conservative precursor to `c0 = 3/4, c1 = 1/4`"); `…stage090_updated_reduced_status.md:15` ("natural contact-plus-pole realization … selects ρ_α=4/3, ζ_req=1/3"); `…stage240…:249` ("The minimal isotropic conservative quadrupole module is c_0=3/4") |
 | 3a | c_contact / c_0 / c0_min (= same 3/4 posit under different stage labels) | 3/4 | 088, 090, 240 | duplicate of 3 | same as 3 (see §5 dedup note) | `…stage088…:83` ("`c0 = 3/4,`"); `…stage240…:249` |
-| **4** | **chi_Q (outgoing-normalization multiplier)** | **1** (alt branch value 9) | 100, 105 | YES (1) — a branch selection, not arbitrary | the actual retarded/outgoing l=2 branch must fix χ_Q (=1 was matched to the stage-104 outgoing DtN h₂⁽¹⁾ fingerprint at 105); "all genuinely new retarded uncertainty sits in one number only: χ_Q" | `…stage100_outgoing_normalization_factorization.md:79` ("all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`"); origin/fix at 105 per `_4c_findings_ledger.md:38` |
+| **4** | **chi_Q (outgoing-normalization multiplier)** | **1** (corpus "9" is a coefficient artifact, not an alt value — see §5) | 100, 105 | YES (1) — a branch selection, not arbitrary | the actual retarded/outgoing l=2 branch must fix χ_Q (=1 was matched to the stage-104 outgoing DtN h₂⁽¹⁾ fingerprint at 105); "all genuinely new retarded uncertainty sits in one number only: χ_Q" | `…stage100_outgoing_normalization_factorization.md:79` ("all deviations from the exact compact outgoing `l=2` fingerprint are captured by the single multiplier `chi_Q`"); origin/fix at 105 per `_4c_findings_ledger.md:38` |
 | **5** | **g_nat (normalized mouth-coupling ratio)** | branch ansatz (O(1), set by the geometric r_F1) | 122, 124 | branch-selected | the actual core must pick the normalized mouth-coupling 𝔤 at the geometrically fixed r_F1 ("what normalized mouth-coupling ratio does the actual core pick?") | `…stage122_mouth_source_compensation_test.md:30` ("a concrete branch ansatz, not as a theorem of the full PDE: the cleanest 'same mouth source, same normalized loading' core closure") |
 | **6** | **K_m (local Robin wall closure)** | first natural Robin closure | 071, 073 | branch-selected | the parent PDE must fix the wall-shell Robin constant; "not a universal theorem of the parent PDE; the first natural local Robin closure" | `…stage071_tanh_wall_branch.md:95` ("This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell support scale") |
 | **7** | **L_W = L (mixed-tube ↔ throat identification)** | L_W := L | 121 | identification choice the solve would confirm | the real geometry must confirm the mixed D/N side-channel is the actual throat corridor (the identification that *forces* r_F1) | `…stage121_geometric_r_selection.md:26` ("\boxed{L_W=L.}") |
@@ -126,6 +126,7 @@ prediction and not literature. Disclosed in the notes (sometimes the *script* wo
 | K_turn / gamma_lattice_legacy / Upsilon_lat / Upsilon_lat_sess / gamma_lattice_red | 2.73855812 / 4.79562976 | Session-V reduced lattice-rate inputs (benchmark-only) | 252/253 | `notes/CHECKPOINT_CONSTANT_PROVENANCE.md:952` ("`4.79562976` is a carried forward legacy Session-V reduced lattice-rate input"); `:956` ("`…2.73855812` are benchmark-only") |
 | H_int_aligned / H_sub_minus_final / hint_aligned / R_int / C_sigma | reported helicity-export outputs | Session helicity exports | 249 | `…stage249…:416` ("The reported helicity-export outputs were") |
 | E_sub | 2.5 (fixed subbarrier energy) | session launch-energy convention | 248 | `…stage248…:470` ("At the fixed subbarrier energy E_sub=2.5, the launch speed is") |
+| V_in_match | calibration back-solve | reproduces the **Session-IV internal readback E_diss** — disclosed calibration, not a theorem | 252 | `…stage252…:474` ("benchmark calibration"); `:496` ("a calibration consistency check, not a theorem") — borderline free_choice, **not** published_target; same disclosed-calibration class as the stage-253 slice (punch-list CC-2) |
 
 > **Boundary call:** V_known ≈ 1.18190922 (222/223) is **not** here and **not** in §2 — the notes call it
 > **illustrative**, not a recorded benchmark and not a published constant. Placed in §4(a) as an
@@ -164,39 +165,44 @@ labels, and probe sample inputs. Grouped; brief. (~83 families.)
 
 ---
 
-## §5 borderline / needs-judgment — for human adjudication
+## §5 borderline calls — RESOLVED (Claude+Codex consult 2026-06-12)
 
-1. **gamma_0 = (1+r_c)/9 — (b)/derived-from-(b) vs (a).** At stage 114 it is a *free* bare mixed
-   low-frequency coefficient pair (κ_0, γ_0) `…stage114_concrete_core_schur.md:101`; at stage 115 the
-   odd-preservation / coupling-balance condition *constrains* it (γ_c = 1/9 appears as a derived balance,
-   `…stage115_core_balance_compensation.md:25`). **Competing reading:** (i) it is *derived* (an
-   odd-preservation theorem of the posited core model) → not an ansatz at all; (ii) it inherits the
-   posited core model (K_s,K_q,λ,r_c), so the *number* is branch-determinable → (b). The ansatz-value
-   catalog lists it as the first postulated value, but the stage-115 notes present it as a derived
-   condition. Recommend: **(b) derived-from-(b)** — the value is fixed once the posited core branch
-   (which is itself §1-class) is fixed. Flagged in `_4c_findings_ledger.md:42`.
+All four settled by a structured Claude+Codex consult — these are math-level classification calls (what
+the notes/scripts establish about derived-vs-posited), not a user gate. Full evidence + reasoning:
+`redteam_adversarial/verdicts/_ansatz_sec5_consult.md`. None changes what the model physically claims.
 
-2. **chi_Q — placed in §1 (b) but tag is `free_choice` with values {1, 9}.** The corpus tags it
-   free_choice (`fam_0345_chi_q`), and "9" appears as an alternative value, which *looks* like a free
-   pick. But the 4C findings settled χ_Q = 1 as `internal_consistency`, **origin stage 105**, matched to
-   the stage-104 outgoing DtN h₂⁽¹⁾ fingerprint (`_4c_findings_ledger.md:38`). I placed it in §1 (b)
-   because the actual outgoing branch *determines* it. **Competing reading:** if "9" is a genuinely free
-   alternate branch the user may want it noted as a branch *label* (a) rather than a value the solve
-   fixes. Recommend keeping in (b); flag the {1,9} ambiguity.
+1. **gamma_0 = (1+r_c)/9 → (b) branch-determinable posited realization.** Stage 115 makes the *formula*
+   γ₀=(1+r_c)/9 an exact conditional consequence of the posited family (γ_c=1/9 balance,
+   `…stage115…:23,67`), but the bare odd *value* is a posit (stage 116 "A simple concrete realization is
+   to take…" `…stage116…:58,62`; the stage 117 audit states `gamma_0_bare` is "NOT derived",
+   `scripts…stage117…:140`). The value is therefore a falsifiable branch target, not a parent theorem →
+   stays in §1 (b). **Disclosure action applied (punch-list A8):** the stage_162 `\StatusExactClosure`
+   badge is scoped to the formula and a pure-scale-realization hedge distinguishes γ₀ (posited) from the
+   genuinely-derived L_W/a relation it is grouped with.
 
-3. **n = 5 frozen EOS exponent — (a) convention vs (b) parent-fixed.** Tagged free_choice; the notes say
-   the parent 4D action *already* fixes the matter sector to the stiff EOS P(ρ)=K_EOS·ρ⁵
-   (`…stage062_parent_action_gain.md:88`, `…phase0_spec.md`). **Competing reading:** (a) it is an upstream
-   modeling convention the toy adopts (placed in §4); or (b) the "right model" (the parent GNLS) genuinely
-   fixes n, making it branch/parent-determinable. Placed in §4(a) as a frozen-by-parent convention;
-   adjudicate whether n is owed by the parent theory.
+2. **chi_Q → χ_Q=1 solve-fixed (b); the corpus "9" is an artifact.** χ_Q=1 is fixed by matching the ω⁵
+   coefficient of the stage-104 outgoing DtN fingerprint at stage 105 (`…stage105…:67,95`). The corpus
+   "{1,9}" is NOT an alternate-value set: "9" is the neighboring constant in
+   Γ̄₅ = χ_Q·9·K̄₀/(32 Ω_Q⁵), scanner-grabbed, not a value of χ_Q
+   (`provenance/fit_stage_100_chi_q__chi_q.yaml:222`; no `chi_Q=9` exists). Stays in §1 (b); the §1 row-4
+   note is corrected accordingly.
 
-4. **c0 = 3/4 appears as three corpus families (c0, c_0/c_contact, c0_min) — dedup.** `fam_0333_c0`,
-   `fam_0335_c_0`, `fam_0336_c_contact` (stages 088/090) and `fam_0334_c0_min` (stage 240) are the **same
-   posit** (3/4) at different stages/labels. Counted once in §1 (#3/3a). Not a classification dispute —
-   just confirm the user wants it as one entry, not four.
+3. **n = 5 stiff-EOS exponent → (a) frozen parent-action input.** Phase-0 declares the parent equations
+   "already frozen" incl. P(ρ)=K_EOS·ρ⁵ (`…phase0_spec…:3,12`); stage 062 derives the stiffness
+   identities *from* that frozen EOS (`…stage062…:88,98`); the paper import boundary
+   (`paper/parts/part01…:191`) + dependency map (`frontmatter/05_dependency_map.tex:192`) list n=5 among
+   frozen lower-order imports. A branch realization takes the parent action as given and does NOT
+   determine n → **not a layer-3 falsifiable target.** Stays in §4(a).
+
+4. **c0 = 3/4 (c0 / c_0 / c_contact / c0_min) → one posit; dedup confirmed.** `fam_0333_c0`,
+   `fam_0335_c_0`, `fam_0336_c_contact` (088/090) and `fam_0334_c0_min` (240) are the **same posit** (3/4)
+   under four scanner labels; ρ_α=4/3, ζ_req=1/3, Π_tr are exact conditional consequences. Counted once in
+   §1 (#3). **Disclosure action applied (punch-list A9):** the stage_240:15 "Exact selected loading ratio"
+   output carries an inline "(conditional on the posited c0=3/4 module)" qualifier matching the card's
+   existing hedges (`:17/:20–22`) and `notes240:6`.
 
 ---
 
 *End of ANSATZ_LEDGER. §1 is the falsifiable to-do list; §2/§3 are honest disclosures the audit
-confirmed; §4 is what the model does not owe; §5 awaits human gate.*
+confirmed; §4 is what the model does not owe; §5 resolved by Claude+Codex consult 2026-06-12
+(`verdicts/_ansatz_sec5_consult.md`).*

@@ -1,0 +1,125 @@
+# Phase C — Batch 3 roster (targeted free_choice sweep, stages 080-119)
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining ~190 free_choice ansaetze.
+# This is batch 3 of ~6: the 080-119 "blocking/EOS-coeffs + minimal-module + chi_Q/gamma_0 closure" band.
+# 31 free_choice candidates (provenance_built) -> 9 disjoint stage-cluster units, per-member sub-verdicts.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+
+batch_id: batch_c3_freechoice_080_119
+band: '080-119'
+constraint_kind: free_choice
+candidate_count: 31
+unit_count: 9
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+# SENSITIVE units flagged for mandatory orchestrator spot-check (distrust-all-clean backstop):
+#   u04_chiQ  - prior card overclaim caught at stage_100/101 during chi_Q=1 provenance fix (b052471);
+#               chi_Q is an ANSATZ_LEDGER branch-determinable value {1,9}.
+#   u05_gamma_0 - ANSATZ_LEDGER borderline (gamma_0=(1+r_c)/9 awaiting user gate); naming
+#               ("compensation_backfill", "pure_scale_removed_exactly") is overclaim-adjacent.
+
+units:
+  u01_blocking_and_natural_lambda_mu:
+    stages: ['081','085','086','087']
+    focus: |
+      Blocking fraction eps_blk carried 081->085->086->087 (re-fit drift check) + the "natural"
+      lambda_mu at 086/087. "unblocked_literal_law"/"natural_lambda_mu_unblocked" naming -> verify
+      eps_blk and lambda_mu are disclosed as posited/natural choices, not derived/forced.
+    members:
+      - {id: fit_stage_081_eps_blk, params: [eps_blk], files: [fit_stage_081_eps_blk__eps_blk.yaml]}
+      - {id: fit_stage085_unblocked_literal_law, params: [eps_blk], files: [fit_stage085_unblocked_literal_law__eps_blk.yaml]}
+      - {id: fit_stage086_natural_lambda_mu_unblocked, params: [eps_blk, lambda_mu], files: [fit_stage086_natural_lambda_mu_unblocked__eps_blk.yaml, fit_stage086_natural_lambda_mu_unblocked__lambda_mu.yaml]}
+      - {id: fit_stage087_natural_lambda_mu_unblocked, params: [eps_blk, lambda_mu], files: [fit_stage087_natural_lambda_mu_unblocked__eps_blk.yaml, fit_stage087_natural_lambda_mu_unblocked__lambda_mu.yaml]}
+  u02_minimal_module_c0:
+    stages: ['088','090']
+    focus: |
+      Minimal-module coefficients at 088 + downstream 090. c0/c_0 (3 bundles), c_contact (088+090),
+      Omega_Q pole frequency. Naming is overclaim-loaded: "c0_c1_derived_not_defined",
+      "natural_identification_fixes_exactly", "minimal_module_coefficients_paper_quoted",
+      "upstream_contradiction" -> the posit-dressed-as-derived test bites hardest here. c0=3/4 is an
+      ANSATZ_LEDGER branch-determinable value; classification settled free_choice, test = disclosure only.
+    members:
+      - {id: fit_stage088_c0_c1_derived_not_defined, params: [c0], files: [fit_stage088_c0_c1_derived_not_defined__c0.yaml]}
+      - {id: fit_stage088_minimal_module_c0_c1, params: [c_0], files: [fit_stage088_minimal_module_c0_c1__c_0.yaml]}
+      - {id: fit_stage088_minimal_module_coefficients_paper_quoted, params: [c0], files: [fit_stage088_minimal_module_coefficients_paper_quoted__c0.yaml]}
+      - {id: fit_stage088_natural_identification_fixes_exactly, params: [c_contact], files: [fit_stage088_natural_identification_fixes_exactly__c_contact.yaml]}
+      - {id: fit_stage088_pole_frequency_OmegaQ, params: [Omega_Q], files: [fit_stage088_pole_frequency_omegaq__omega_q.yaml]}
+      - {id: fit_stage090_minimal_module_upstream_contradiction, params: [c_contact], files: [fit_stage090_minimal_module_upstream_contradiction__c_contact.yaml]}
+  u03_epsilon_2_chain:
+    stages: ['091','092','093']
+    focus: |
+      epsilon_2 / eps_2 small-parameter carried 091->092->093 (5 bundles, both spellings = same concept).
+      "static_limit_hardcoded" naming at 093 -> verify the hardcoded eps_2 is disclosed as a posited
+      static-limit choice, not a derived/forced consequence; check re-fit drift across the three anchors.
+    members:
+      - {id: fit_stage_091_epsilon_2, params: [epsilon_2], files: [fit_stage_091_epsilon_2__epsilon_2.yaml]}
+      - {id: fit_stage_092_epsilon_2, params: [epsilon_2], files: [fit_stage_092_epsilon_2__epsilon_2.yaml]}
+      - {id: fit_stage093_static_limit_hardcoded, params: [eps_2], files: [fit_stage093_static_limit_hardcoded__eps_2.yaml]}
+      - {id: fit_stage_093_eps_2, params: [eps_2], files: [fit_stage_093_eps_2__eps_2.yaml]}
+      - {id: fit_stage_093_epsilon_2, params: [epsilon_2], files: [fit_stage_093_epsilon_2__epsilon_2.yaml]}
+  u04_chiQ:
+    stages: ['100']
+    sensitive: true
+    focus: |
+      chi_Q at 100 (two bundles). SENSITIVE: a paper-card overclaim was caught at stage_100/101.tex:13
+      during the chi_Q=1 provenance fix (commit b052471); "chiQ_fixed_downstream_card" name references
+      that history. chi_Q is an ANSATZ_LEDGER branch-determinable value {1,9}. Test = does any 100/101
+      card or notes line call chi_Q derived/forced/exact rather than a posited reference choice, AFTER the
+      b052471 fix. Orchestrator will spot-check stage_100.tex + stage_101.tex + notes regardless of verdict.
+    members:
+      - {id: fit_stage100_chiQ_fixed_downstream_card, params: [chi_Q], files: [fit_stage100_chiq_fixed_downstream_card__chi_q.yaml]}
+      - {id: fit_stage_100_chi_q, params: [chi_Q], files: [fit_stage_100_chi_q__chi_q.yaml]}
+  u05_gamma_0_chain:
+    stages: ['114','116']
+    sensitive: true
+    focus: |
+      gamma_0 mixed-denominator coefficient (114 ansatz) + gamma_0/gamma_0_bare at 116. SENSITIVE:
+      gamma_0=(1+r_c)/9 is an ANSATZ_LEDGER borderline awaiting user gate; naming
+      ("compensation_backfill", "pure_scale_removed_exactly", "bare_mixed_denominator_ansatz") is
+      overclaim-adjacent (a backfilled compensation could be dressed as forced/exact). Test = is gamma_0
+      disclosed as a posited bare ansatz / a compensation choice, or labeled derived/forced/exact?
+      Orchestrator will spot-check stage_114/116 cards + notes regardless of verdict.
+    members:
+      - {id: fit_stage114_bare_mixed_denominator_ansatz, params: [gamma_0], files: [fit_stage114_bare_mixed_denominator_ansatz__gamma_0.yaml]}
+      - {id: fit_stage116_gamma0_compensation_backfill, params: [gamma_0], files: [fit_stage116_gamma0_compensation_backfill__gamma_0.yaml]}
+      - {id: fit_stage116_pure_scale_removed_exactly, params: [gamma_0_bare], files: [fit_stage116_pure_scale_removed_exactly__gamma_0_bare.yaml]}
+  u06_geom_norm_coeffs:
+    stages: ['092','099','107']
+    focus: |
+      Definitional geometry/normalization coefficients: K_geom (092 "no_longer_forced_unless"),
+      K0_sym (099 symbol), Lambda_def (107 definition). "no_longer_forced_unless" naming ->
+      verify K_geom is honestly a freed/posited choice, not silently re-forced; K0_sym/Lambda_def are
+      definitional conventions (check they are labeled definition/convention, not derived).
+    members:
+      - {id: fit_stage092_no_longer_forced_unless, params: [K_geom], files: [fit_stage092_no_longer_forced_unless__k_geom.yaml]}
+      - {id: fit_stage_099_k0_sym, params: [K0_sym], files: [fit_stage_099_k0_sym__k0_sym.yaml]}
+      - {id: fit_stage_107_lambda_def, params: [Lambda_def], files: [fit_stage_107_lambda_def__lambda_def.yaml]}
+  u07_linearized_mixing:
+    stages: ['109','111']
+    focus: |
+      Linearized/mixing coefficients: a_0 (109 "linearized_condition_must_satisfy"), A_w + Lambda_mix
+      (111). "must_satisfy" naming -> verify a_0 is a posited amplitude subject to a condition, not a
+      value claimed derived/forced by that condition; A_w/Lambda_mix are mixing-amplitude choices.
+    members:
+      - {id: fit_stage109_linearized_condition_must_satisfy, params: [a_0], files: [fit_stage109_linearized_condition_must_satisfy__a_0.yaml]}
+      - {id: fit_stage_111_a_w, params: [A_w], files: [fit_stage_111_a_w__a_w.yaml]}
+      - {id: fit_stage_111_lambda_mix, params: [Lambda_mix], files: [fit_stage_111_lambda_mix__lambda_mix.yaml]}
+  u08_Ks_Kq_stiffness:
+    stages: ['114','115']
+    focus: |
+      Stiffness coefficients K_s carried 114->115 (re-fit drift check) + K_q (115). Verify K_s/K_q are
+      posited stiffness choices, consistent across the two K_s anchors, not labeled derived/forced.
+    members:
+      - {id: fit_stage_114_k_s, params: [K_s], files: [fit_stage_114_k_s__k_s.yaml]}
+      - {id: fit_stage_115_k_s, params: [K_s], files: [fit_stage_115_k_s__k_s.yaml]}
+      - {id: fit_stage_115_k_q, params: [K_q], files: [fit_stage_115_k_q__k_q.yaml]}
+  u09_n5_eos_Aq:
+    stages: ['118']
+    focus: |
+      n=5 polytropic EOS exponent (118 "frozen_n5_eos") + A_q amplitude (118). Same n=5 posit-not-derived
+      test as batch-2 u08 (062/070): verify the exponent is a frozen Input, with "deriving" attaching only
+      to downstream coefficients, never to the exponent itself. A_q an amplitude choice.
+    members:
+      - {id: fit_stage118_frozen_n5_eos, params: [n_eos], files: [fit_stage118_frozen_n5_eos__n_eos.yaml]}
+      - {id: fit_stage_118_a_q, params: [A_q], files: [fit_stage_118_a_q__a_q.yaml]}

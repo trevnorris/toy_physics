@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T05:47:33Z'
+updated_at: '2026-06-12T06:24:51Z'
 state_machine:
 - pending
 - scanned
@@ -12289,11 +12289,13 @@ candidates:
     parameter_names:
     - eps_blk
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T06:04:11Z'
+      audited: '2026-06-12T06:15:54Z'
     codex_session:
       by_parameter:
         eps_blk:
@@ -12333,6 +12335,13 @@ candidates:
           load-bearingly verify the stage''s primary deliverable; it relies on `solve` being right and on a human reading
           the printed form.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:04:11Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:15:54Z'
   fit_stage_082_pe_req:
     id: fit_stage_082_pe_req
     candidate_key: stage_082_pe_req
@@ -13714,11 +13723,13 @@ candidates:
     - epsilon_2_epsilon_4
     - epsilon_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:06:09Z'
+      audited: '2026-06-12T06:20:30Z'
     codex_session:
       by_parameter:
         epsilon_2:
@@ -13786,6 +13797,13 @@ candidates:
           computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:06:09Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:20:30Z'
   fit_stage_091_k_geom:
     id: fit_stage_091_k_geom
     candidate_key: stage_091_k_geom
@@ -13933,11 +13951,13 @@ candidates:
     - epsilon_2_epsilon_4
     - epsilon_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T06:06:21Z'
+      audited: '2026-06-12T06:20:50Z'
     codex_session:
       by_parameter:
         epsilon_2:
@@ -14005,6 +14025,13 @@ candidates:
           computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:06:21Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:20:50Z'
   fit_stage_092_yhat_q:
     id: fit_stage_092_yhat_q
     candidate_key: stage_092_yhat_q
@@ -14200,11 +14227,13 @@ candidates:
     - eps_2
     - eps_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T06:06:45Z'
+      audited: '2026-06-12T06:21:22Z'
     codex_session:
       by_parameter:
         eps_2:
@@ -14247,6 +14276,13 @@ candidates:
         excerpt: So the next real PDE-side task is no longer broad. It is to determine the two geometry-contamination numbers
           `eps_2` and `eps_4`, or prove that they vanish on the natural branch.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:06:45Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:21:22Z'
   fit_stage_093_epsilon_2:
     id: fit_stage_093_epsilon_2
     candidate_key: stage_093_epsilon_2
@@ -14267,11 +14303,13 @@ candidates:
     - epsilon_2_epsilon_4
     - epsilon_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T06:06:57Z'
+      audited: '2026-06-12T06:21:35Z'
     codex_session:
       by_parameter:
         epsilon_2:
@@ -14339,6 +14377,13 @@ candidates:
           computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\)
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:06:57Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:21:35Z'
   fit_stage_094_c_geom:
     id: fit_stage_094_c_geom
     candidate_key: stage_094_c_geom
@@ -16062,11 +16107,13 @@ candidates:
     - K0_sym
     - K0_target
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T06:08:20Z'
+      audited: '2026-06-12T06:23:03Z'
     codex_session:
       by_parameter:
         K0_sym:
@@ -16118,6 +16165,13 @@ candidates:
           so this is not `script_missing_paper_claim`. Outputs are fresh (both `.txt` mtimes 2026-05-27 14:28/14:30 postdate
           both script mtimes 11:16). Both engines present, substantive, and agreeing. No findings.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:08:20Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:23:03Z'
   fit_stage_099_xi_t:
     id: fit_stage_099_xi_t
     candidate_key: stage_099_xi_t
@@ -16269,11 +16323,13 @@ candidates:
     - matched_fingerprint_value
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T06:07:20Z'
+      audited: '2026-06-12T06:22:03Z'
     codex_session:
       by_parameter:
         chi_Q:
@@ -16407,6 +16463,13 @@ candidates:
           gap** — Checks (ii)/(iii) are explicitly and correctly delegated to stages 102/097 with named annotations, and the
           card box carries chi_Q free. Both engines present, agree, and outputs are fresh.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:07:20Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:22:03Z'
   fit_stage_100_gamma5_t:
     id: fit_stage_100_gamma5_t
     candidate_key: stage_100_gamma5_t
@@ -19544,11 +19607,13 @@ candidates:
     - chi_Q
     - matched_fingerprint_value
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T06:08:31Z'
+      audited: '2026-06-12T06:23:14Z'
     codex_session:
       by_parameter:
         Lambda_def:
@@ -19619,6 +19684,13 @@ candidates:
           correctly. (d) Confirmed the proposed F1 re-author keeps emitted values identical and does not introduce a different
           constant than the paper states (paper round-trip clean).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:08:31Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:23:14Z'
   fit_stage_108_chi_q:
     id: fit_stage_108_chi_q
     candidate_key: stage_108_chi_q
@@ -20460,11 +20532,13 @@ candidates:
     - A_w
     - mu
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:08:55Z'
+      audited: '2026-06-12T06:23:38Z'
     codex_session:
       by_parameter:
         A_w:
@@ -20508,6 +20582,13 @@ candidates:
           normalization and, more importantly, it cannot preserve the already-fixed canonical even `l=2` branch. If a mixed
           sector survives on the actual branch, it must appear in a more structured, compensated outlet law.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:08:55Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:23:38Z'
   fit_stage_111_chi_q:
     id: fit_stage_111_chi_q
     candidate_key: stage_111_chi_q
@@ -20602,11 +20683,13 @@ candidates:
     - chi_mix
     - chi_mix_lin
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:09:07Z'
+      audited: '2026-06-12T06:23:49Z'
     codex_session:
       by_parameter:
         Lambda_mix:
@@ -20660,6 +20743,13 @@ candidates:
           = 1`), confirming the RHS constants are the canonical values and the no-go solves return `kappa=-1/9`, `sigma=0`
           as shown in both transcripts. No directive written (zero findings).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:09:07Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:23:49Z'
   fit_stage_111_matched_fingerprint_value:
     id: fit_stage_111_matched_fingerprint_value
     candidate_key: stage_111_matched_fingerprint_value
@@ -20941,11 +21031,13 @@ candidates:
     - g_q
     - g_s
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:09:19Z'
+      audited: '2026-06-12T06:24:01Z'
     codex_session:
       by_parameter:
         K_s:
@@ -21001,6 +21093,13 @@ candidates:
           user prefers, an equivalent independent route is the explicit 2×2 Schur formula `δΛ = g_sᵀ·(K_s)⁻¹·g_s − (Schur
           term)` written out by hand rather than via `Inverse`.)'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:09:19Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:24:01Z'
   fit_stage_115_k_q:
     id: fit_stage_115_k_q
     candidate_key: stage_115_k_q
@@ -21070,11 +21169,13 @@ candidates:
     - sigma_sigma_1_z
     - tfrac
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:09:42Z'
+      audited: '2026-06-12T06:24:25Z'
     codex_session:
       by_parameter:
         K_q:
@@ -21323,6 +21424,13 @@ candidates:
           (see below). I read the card, the notes, and the relevant appendix subsection; the scripts'' claims match the paper''s
           claims.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:09:42Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:24:25Z'
   fit_stage_115_k_s:
     id: fit_stage_115_k_s
     candidate_key: stage_115_k_s
@@ -21363,11 +21471,13 @@ candidates:
     - sigma_c_K_sg_q_lambda
     - target_delta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:09:31Z'
+      audited: '2026-06-12T06:24:13Z'
     codex_session:
       by_parameter:
         K_s:
@@ -21516,6 +21626,13 @@ candidates:
           parent family for a fresh variable `gVar`, matches the closed-form root `frakGMinus = frakR - Sqrt[1+frakR^2]/2`
           against the Solve output, translates back to `g_q`, and re-verifies `sigma_c = sigma_*`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:09:31Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:24:13Z'
   fit_stage_115_matched_fingerprint_value:
     id: fit_stage_115_matched_fingerprint_value
     candidate_key: stage_115_matched_fingerprint_value
@@ -22064,11 +22181,13 @@ candidates:
     - g_q
     - g_s
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:10:06Z'
+      audited: '2026-06-12T06:24:48Z'
     codex_session:
       by_parameter:
         A_q:
@@ -22196,6 +22315,13 @@ candidates:
           = 2√(2L_W)/π`, `χ''(0) = π/(√2 L_W^{3/2})`, and the bilinear `sq` term `δ²H_sq = -q_* v_{w0} ∫ρ_s A_q · sq`. Notably
           the card states NO explicit sign for λ; the notes carry three boxed minus signs (lines 175-181, 194-198, 277-281).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:10:06Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:24:48Z'
   fit_stage_119_mathfrak:
     id: fit_stage_119_mathfrak
     candidate_key: stage_119_mathfrak
@@ -53394,11 +53520,13 @@ candidates:
     - eps_blk
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T06:04:23Z'
+      audited: '2026-06-12T06:16:06Z'
     codex_session:
       by_parameter:
         eps_blk:
@@ -53442,6 +53570,13 @@ candidates:
           by the mixed baseline, minus one.
         stage: 085
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:04:23Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:16:06Z'
   fit_stage086_natural_lambda_mu_unblocked:
     id: fit_stage086_natural_lambda_mu_unblocked
     candidate_key: stage086_natural_lambda_mu_unblocked
@@ -53458,11 +53593,13 @@ candidates:
     - eps_blk
     - lambda_mu
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:04:35Z'
+      audited: '2026-06-12T06:16:18Z'
     codex_session:
       by_parameter:
         eps_blk:
@@ -53505,6 +53642,13 @@ candidates:
         excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
         stage: 086
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:04:35Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:16:18Z'
   fit_stage087_natural_lambda_mu_unblocked:
     id: fit_stage087_natural_lambda_mu_unblocked
     candidate_key: stage087_natural_lambda_mu_unblocked
@@ -53521,11 +53665,13 @@ candidates:
     - eps_blk
     - lambda_mu
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:04:47Z'
+      audited: '2026-06-12T06:16:34Z'
     codex_session:
       by_parameter:
         eps_blk:
@@ -53568,6 +53714,13 @@ candidates:
         excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
         stage: 087
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:04:47Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:16:34Z'
   fit_stage088_c0_c1_derived_not_defined:
     id: fit_stage088_c0_c1_derived_not_defined
     candidate_key: stage088_c0_c1_derived_not_defined
@@ -53584,11 +53737,13 @@ candidates:
     - c0
     - c1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:04:59Z'
+      audited: '2026-06-12T06:16:46Z'
     codex_session:
       by_parameter:
         c0:
@@ -53630,6 +53785,13 @@ candidates:
         excerpt: '# With c0, c1 now derived (not defined), the contact-plus-pole reconstruction'
         stage: 088
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:04:59Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:16:46Z'
   fit_stage088_minimal_module_c0_c1:
     id: fit_stage088_minimal_module_c0_c1
     candidate_key: stage088_minimal_module_c0_c1
@@ -53648,11 +53810,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:05:10Z'
+      audited: '2026-06-12T06:17:30Z'
     codex_session:
       by_parameter:
         c_0:
@@ -53710,6 +53874,13 @@ candidates:
         excerpt: c_0=\frac34,
         stage: 088
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:05:10Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:17:30Z'
   fit_stage088_minimal_module_coefficients_paper_quoted:
     id: fit_stage088_minimal_module_coefficients_paper_quoted
     candidate_key: stage088_minimal_module_coefficients_paper_quoted
@@ -53728,11 +53899,13 @@ candidates:
     - c_contact
     - c_pole
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:05:22Z'
+      audited: '2026-06-12T06:18:22Z'
     codex_session:
       by_parameter:
         c0:
@@ -53790,6 +53963,13 @@ candidates:
         excerpt: Y_Q_paper = sp.Rational(3, 4) + sp.Rational(1, 4)/(1 - omega**2/Omega_Q**2)
         stage: 088
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:05:22Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:18:22Z'
   fit_stage088_natural_identification_fixes_exactly:
     id: fit_stage088_natural_identification_fixes_exactly
     candidate_key: stage088_natural_identification_fixes_exactly
@@ -53808,11 +53988,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:05:34Z'
+      audited: '2026-06-12T06:19:08Z'
     codex_session:
       by_parameter:
         c_contact:
@@ -53862,6 +54044,13 @@ candidates:
           support demand exactly:'
         stage: 088
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:05:34Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:19:08Z'
   fit_stage088_pole_frequency_OmegaQ:
     id: fit_stage088_pole_frequency_OmegaQ
     candidate_key: stage088_pole_frequency_OmegaQ
@@ -53877,11 +54066,13 @@ candidates:
     parameter_names:
     - Omega_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:05:46Z'
+      audited: '2026-06-12T06:19:41Z'
     codex_session:
       by_parameter:
         Omega_Q:
@@ -53917,6 +54108,13 @@ candidates:
         excerpt: \Omega_Q=\frac{3c_s}{2a}}.
         stage: 088
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:05:46Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:19:41Z'
   fit_stage089_Pe_req_forced_not_assumed:
     id: fit_stage089_Pe_req_forced_not_assumed
     candidate_key: stage089_Pe_req_forced_not_assumed
@@ -54199,11 +54397,13 @@ candidates:
     - c_contact
     - c_pole
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T06:05:57Z'
+      audited: '2026-06-12T06:20:07Z'
     codex_session:
       by_parameter:
         c_contact:
@@ -54246,6 +54446,13 @@ candidates:
         excerpt: '- 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed'
         stage: 090
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:05:57Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:20:07Z'
   fit_stage091_K_geom_forced_by_identity:
     id: fit_stage091_K_geom_forced_by_identity
     candidate_key: stage091_K_geom_forced_by_identity
@@ -54535,11 +54742,13 @@ candidates:
     - eps_2
     - eps_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T06:08:08Z'
+      audited: '2026-06-12T06:22:51Z'
     codex_session:
       by_parameter:
         K_geom:
@@ -54589,6 +54798,13 @@ candidates:
           vanish.
         stage: 092
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:08:08Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:22:51Z'
   fit_stage093_module_forced_statement:
     id: fit_stage093_module_forced_statement
     candidate_key: stage093_module_forced_statement
@@ -54675,11 +54891,13 @@ candidates:
     - eps_2
     - eps_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T06:06:33Z'
+      audited: '2026-06-12T06:21:07Z'
     codex_session:
       by_parameter:
         eps_2:
@@ -54723,6 +54941,13 @@ candidates:
         excerpt: eps2 = 0;
         stage: 093
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:06:33Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:21:07Z'
   fit_stage094_decoupling_kills_contamination:
     id: fit_stage094_decoupling_kills_contamination
     candidate_key: stage094_decoupling_kills_contamination
@@ -55641,11 +55866,13 @@ candidates:
     parameter_names:
     - chi_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T06:07:09Z'
+      audited: '2026-06-12T06:21:49Z'
     codex_session:
       by_parameter:
         chi_Q:
@@ -55682,6 +55909,13 @@ candidates:
           symbolic; the canonical condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
         stage: '100'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:07:09Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:21:49Z'
   fit_stage100_factorization_forced_script:
     id: fit_stage100_factorization_forced_script
     candidate_key: stage100_factorization_forced_script
@@ -56870,11 +57104,13 @@ candidates:
     - a_5
     - b
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:08:43Z'
+      audited: '2026-06-12T06:23:26Z'
     codex_session:
       by_parameter:
         a_0:
@@ -56923,6 +57159,13 @@ candidates:
         excerpt: To keep the canonical outgoing normalization at first order, the deformation must satisfy
         stage: '109'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:08:43Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:23:26Z'
   fit_stage110_chiQR_exact_factor:
     id: fit_stage110_chiQR_exact_factor
     candidate_key: stage110_chiQR_exact_factor
@@ -57354,11 +57597,13 @@ candidates:
     - gamma_0
     - kappa_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T06:07:32Z'
+      audited: '2026-06-12T06:22:15Z'
     codex_session:
       by_parameter:
         gamma_0:
@@ -57401,6 +57646,13 @@ candidates:
         excerpt: D_W^{\rm bare}(z)=1-\kappa_0 z^2-i\gamma_0 z^5+O(z^6).
         stage: '114'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:07:32Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:22:15Z'
   fit_stage114_exact_core_correction:
     id: fit_stage114_exact_core_correction
     candidate_key: stage114_exact_core_correction
@@ -57730,11 +57982,13 @@ candidates:
     parameter_names:
     - gamma_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:07:44Z'
+      audited: '2026-06-12T06:22:27Z'
     codex_session:
       by_parameter:
         gamma_0:
@@ -57770,6 +58024,13 @@ candidates:
         excerpt: \gamma_0=\frac{1+r_c}{9}.
         stage: '116'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:07:44Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:22:27Z'
   fit_stage116_lw_compensation_selected_length:
     id: fit_stage116_lw_compensation_selected_length
     candidate_key: stage116_lw_compensation_selected_length
@@ -57841,11 +58102,13 @@ candidates:
     - gamma_0_bare
     - r_c
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:07:56Z'
+      audited: '2026-06-12T06:22:39Z'
     codex_session:
       by_parameter:
         gamma_0_bare:
@@ -57888,6 +58151,13 @@ candidates:
           leaving the canonical final coefficients
         stage: '116'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:07:56Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:22:39Z'
   fit_stage117_formulas_derived_claim:
     id: fit_stage117_formulas_derived_claim
     candidate_key: stage117_formulas_derived_claim
@@ -58028,11 +58298,13 @@ candidates:
     parameter_names:
     - n_eos
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T06:09:54Z'
+      audited: '2026-06-12T06:24:36Z'
     codex_session:
       by_parameter:
         n_eos:
@@ -58068,6 +58340,13 @@ candidates:
           so the bulk matter Hamiltonian has both gradient and compressional terms, fileciteturn33file4'
         stage: '118'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c3_freechoice_080_119 dispatch
+      at: '2026-06-12T06:09:54Z'
+    - status: audited
+      note: 'batch_c3 all-NO: no fatal overclaim (9/9 units, 31/31 members)'
+      at: '2026-06-12T06:24:36Z'
   fit_stage119_g_fixed_exactly_once_r:
     id: fit_stage119_g_fixed_exactly_once_r
     candidate_key: stage119_g_fixed_exactly_once_r

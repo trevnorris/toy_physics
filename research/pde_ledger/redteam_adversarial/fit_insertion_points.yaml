@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T05:47:31Z'
+generated_at: '2026-06-12T06:24:48Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -3586,7 +3586,7 @@ candidates:
   parameter_names:
   - eps_blk
   - zeta_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
     line: 136
@@ -3605,7 +3605,7 @@ candidates:
   parameter_names:
   - eps_blk
   - lambda_mu
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
     line: 152
@@ -3623,7 +3623,7 @@ candidates:
   parameter_names:
   - eps_blk
   - lambda_mu
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
     line: 57
@@ -3641,7 +3641,7 @@ candidates:
   parameter_names:
   - c0
   - c1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
     line: 69
@@ -3661,7 +3661,7 @@ candidates:
   - c_1
   - rho_alpha
   - zeta_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_088.tex
     line: 20
@@ -3681,7 +3681,7 @@ candidates:
   - c1
   - c_contact
   - c_pole
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
     line: 95
@@ -3700,7 +3700,7 @@ candidates:
   - c_contact
   - rho_alpha
   - zeta_req
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
     line: 92
@@ -3718,7 +3718,7 @@ candidates:
   - 088
   parameter_names:
   - Omega_Q
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_088.tex
     line: 24
@@ -3808,7 +3808,7 @@ candidates:
   parameter_names:
   - c_contact
   - c_pole
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
     line: 15
@@ -3904,7 +3904,7 @@ candidates:
   - K_geom
   - eps_2
   - eps_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
     line: 68
@@ -3941,7 +3941,7 @@ candidates:
   parameter_names:
   - eps_2
   - eps_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/mathematica/moving_throat_pde_stage093_grouped_p2_status_update_mathematica_audit.wl
     line: 28
@@ -4220,7 +4220,7 @@ candidates:
   - '100'
   parameter_names:
   - chi_Q
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_100.tex
     line: 13
@@ -4581,7 +4581,7 @@ candidates:
   - a_0
   - a_5
   - b
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
     line: 62
@@ -4713,7 +4713,7 @@ candidates:
   parameter_names:
   - gamma_0
   - kappa_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
     line: 29
@@ -4820,7 +4820,7 @@ candidates:
   - '116'
   parameter_names:
   - gamma_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
     line: 60
@@ -4855,7 +4855,7 @@ candidates:
   parameter_names:
   - gamma_0_bare
   - r_c
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
     line: 70
@@ -4909,7 +4909,7 @@ candidates:
   - '118'
   parameter_names:
   - n_eos
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
     line: 18
@@ -13719,7 +13719,7 @@ candidates:
   - 081
   parameter_names:
   - eps_blk
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_081.md
     line: 94
@@ -14146,7 +14146,7 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_091.tex
     line: 13
@@ -14205,7 +14205,7 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_092.tex
     line: 13
@@ -14284,7 +14284,7 @@ candidates:
   parameter_names:
   - eps_2
   - eps_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
     line: 55
@@ -14305,7 +14305,7 @@ candidates:
   - epsilon_2
   - epsilon_2_epsilon_4
   - epsilon_4
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_093.tex
     line: 13
@@ -14819,7 +14819,7 @@ candidates:
   parameter_names:
   - K0_sym
   - K0_target
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_099.md
     line: 89
@@ -14878,7 +14878,7 @@ candidates:
   - chi_Q
   - matched_fingerprint_value
   - mhat_0
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: paper/stages/stage_100.tex
     line: 13
@@ -15794,7 +15794,7 @@ candidates:
   - Lambda_def
   - chi_Q
   - matched_fingerprint_value
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_107.md
     line: 97
@@ -16057,7 +16057,7 @@ candidates:
   parameter_names:
   - A_w
   - mu
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage111_mixed_sidechannel_pole.md
     line: 82
@@ -16102,7 +16102,7 @@ candidates:
   - Lambda_mix
   - chi_mix
   - chi_mix_lin
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_111.md
     line: 110
@@ -16201,7 +16201,7 @@ candidates:
   - K_s
   - g_q
   - g_s
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_114.md
     line: 86
@@ -16251,7 +16251,7 @@ candidates:
   - sigma_g_s
   - sigma_sigma_1_z
   - tfrac
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_115.md
     line: 35
@@ -16311,7 +16311,7 @@ candidates:
   - sigma_c
   - sigma_c_K_sg_q_lambda
   - target_delta
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_115.md
     line: 39
@@ -16514,7 +16514,7 @@ candidates:
   - Z_q
   - g_q
   - g_s
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_118.md
     line: 35

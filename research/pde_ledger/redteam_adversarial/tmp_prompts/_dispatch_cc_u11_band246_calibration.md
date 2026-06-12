@@ -1,0 +1,33 @@
+You are an ADVERSARIAL AUDITOR in a layer-2 fit-vs-derive audit of a toy-physics derivation ledger. You are an adversary, not a collaborator: assume the work is wrong; find the fatal flaw. INTERNAL CONSISTENCY IS NOT EVIDENCE OF CORRECTNESS.
+
+FIRST read this rendered prompt IN FULL and ADOPT the FROZEN DIRECTIVE it embeds (your role + fit-vs-derive test + red-flag scan + required-output rules):
+  /var/projects/toy_physics/research/pde_ledger/redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+This is a FAMILY audit (unit `u11_band246_calibration`, stages 246, 250, 252, 253) in the INTERNAL-CONSISTENCY COMPLETENESS-CRITIC spot-check. Cover EVERY member with its OWN sub-verdict (and per-parameter where a member carries several).
+
+## The test for internal_consistency values (THE INVERTED TEST — READ CAREFULLY)
+These values are classified `constraint_kind: internal_consistency` — i.e. the ledger CLAIMS each is a DERIVED consequence (an algebraic identity / Solve / closure / extremum / limit / normalization) of upstream POSITED inputs, NOT itself an inserted choice. Unlike the free_choice sweep, the fatal flaw here is the OPPOSITE mis-classification: **a value that is genuinely a POSITED free_choice (an inserted number / a tuned knob) OR a BACK-SOLVE from an EXTERNAL published number, but is mis-classified `internal_consistency` AND labelled "derived"/"forced"/"exact"/"fixed by"/"a theorem"/"not free" in a paper CARD or per-stage NOTES line** — a posit-as-derived (or fit-as-derived) that ESCAPED the free_choice + published_target sweeps via mis-classification. These candidates were selected BECAUSE their slug carries an overclaim-flavored word (forced/fixed_exactly/backsolve/injection/not_free/_req/unique/...). The slug is the PROMPT to scrutinize, NOT evidence.
+VERDICT RULE: **NO** = the value is a GENUINE derivation — open the notes/card and find the actual upstream step that PRODUCES it (a pole condition, a Solve, a closure relation, an extremum, a uniqueness criterion, a parity/symmetry forcing zero, an exact-algebra consequence of a NAMED posited input); the slug's "forced/exact" correctly names that consequence. **YES** = the value is actually inserted/tuned/back-solved (no upstream step produces it; it is chosen to hit a downstream or external target and then relabelled) — give the specific value + the card/notes file+line that calls it derived/forced/exact. Also flag (non-fatal) any stale upstream stage-anchor, value-divergence between members, or a slug that overstates vs the actual (honest) card/notes wording.
+
+## NOTE: this unit is orchestrator-flagged SENSITIVE
+It sits on prior-overclaim / mis-classification-risk ground (see Focus: e.g. a literal "backsolve"/"injection"/"5pn data"/"calibration_match" slug, or the stage-192 / chi_Q neighborhoods). Be especially literal: quote the EXACT card/notes line and its label-word, and the EXACT line that shows the derivation step (or its absence). The orchestrator will independently spot-check your verdict against the actual files regardless of what you return.
+
+## Focus
+The Stage 246-253 calibration / safe-edge / force-matched band (the batch-7 u06 calibration-slice neighborhood, free_choice side already vetted: card253 "a calibration slice, not a new branch law"). sigma_min "lower_branch_forced" (246): the bundle finding says it is a DERIVED exact minimum of the posited two-mode source family; "forced" refers to the carried theorem forcing a branch -- verify. E_edge "goldilocks_edge_forced" (250) + E_exp_min_safe "completely_fixed" (252): these are survival/safe-edge EDGES -- confirm each is FORCED by survival/export algebra (a derived edge), not a posited cut. V_in_match "vin_benchmark_calibration_match" (252) + k_eff_req "force_matched" (253): "calibration_match"/"force_matched" = a FIT by construction. CRUX: are these honestly DISCLOSED as calibration/force-match (-> a fit, but the calibration target is INTERNAL self-consistency, and the card hedges it as such -> NO), or are they dressed as a DERIVED branch law (-> YES)? card253:64 "force-matched stiffness ... only a geometric trigger".
+
+## Member bundles (read each; relative to /var/projects/toy_physics/)
+- fit_stage246_lower_branch_forced (param=sigma_min): redteam_adversarial/provenance/fit_stage246_lower_branch_forced__sigma_min.yaml
+- fit_stage250_goldilocks_edge_forced (param=E_edge): redteam_adversarial/provenance/fit_stage250_goldilocks_edge_forced__e_edge.yaml
+- fit_stage252_e_exp_min_completely_fixed (param=E_exp_min_safe): redteam_adversarial/provenance/fit_stage252_e_exp_min_completely_fixed__e_exp_min_safe.yaml
+- fit_stage252_vin_benchmark_calibration_match (param=V_in_match): redteam_adversarial/provenance/fit_stage252_vin_benchmark_calibration_match__v_in_match.yaml
+- fit_stage253_k_eff_force_matched (param=k_eff_req): redteam_adversarial/provenance/fit_stage253_k_eff_force_matched__k_eff_req.yaml
+
+## Sources to open as needed
+Each provenance bundle carries a `constraints[].constraint_kind` + `evidence_citation` and often a `provenance_findings` block stating the Phase-B synthesis agent's RATIONALE for the internal_consistency call (with cited notes/card lines). Treat that rationale as a CLAIM TO ATTACK, not ground truth — verify it against the actual files. Paper cards: research/pde_ledger/paper/stages/stage_<NNN>.tex ; per-stage notes: research/pde_ledger/notes/stages/moving_throat_pde_stage<NNN>_*.md (EM-projected stages 004-020 notes live at repo-root notes/em_projected/). Open the card AND the notes for each anchor stage; read how the value is LABELED and find the line that DERIVES it. Open what you need to ground each finding.
+
+## REQUIRED OUTPUT (compact, under ~350 words; raw data for an orchestrator, NOT a human-facing message)
+1. Per-member verdict table: `candidate_id (param) | YES/NO (mis-classified posit/fit dressed as derived?) | one-clause reason citing BOTH the label line AND the derivation-step line (or its absence)`.
+2. Unit verdict: fatal flaw? YES/NO. If YES, the single most important one in one sentence with the specific value + the overclaiming card/notes file+line + why no upstream step derives it.
+3. Classification assessment (the crux): for each member, is `internal_consistency` CORRECT (a genuine derivation exists) or should it be free_choice / published_target (a posit / external back-solve)? Name any mis-classification stage+line, or state the classification is sound.
+4. Proof you looked: which card+notes files you opened for each anchor stage, the exact label-word, and the exact derivation-step line you found (or confirmed absent).
+Do NOT propose fixes or next steps. Pure falsification pass. DO NOT run scripts - read and reason.

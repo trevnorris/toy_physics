@@ -142,6 +142,26 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - [ ] **G2.** `frac_54_5` / mention-fallback extractor tightening. _[exec plan §line 65]_
 - [ ] **G3.** Tier-2/3 value-fill for the 813 low-confidence target records (opportunistic). _[exec plan §line 65]_
 
+## CC. Internal-consistency completeness-critic items (the final Phase-C step — all NON-FATAL)
+The completeness-critic spot-check deep-audited the overclaim-flavored internal_consistency slug
+surface (Tier-A 83/83 + Tier-B 18-sample) with the INVERTED test: **12/12 units NO, 101/101 NO, 0
+mis-classifications** (full record `reports/_batch_cc_verdicts.md`). No verdict_logged finding added.
+- [ ] **CC-1.** `fit_stage223_lambda02_rq_dual_engine_overclaim` bundle + Phase-A provenance record
+  label R_Q(λ_W=0.2) "dual_engine", but `stage_223.tex:11` confirms single-engine ("Mathematica
+  audit: none yet"); the slug self-flags "overclaim". OPTIONAL: downgrade the provenance/record
+  dual-engine claim to single-engine to match the card. NO card/notes fix (card honest). _[CC u09]_
+- [ ] **CC-2.** `fit_stage252_vin_benchmark_calibration_match` (V_in_match) is a calibration
+  back-solve to the Session-IV internal readback E_diss; classified internal_consistency, defensible
+  (target is LEDGER-INTERNAL, honestly labelled `notes252:474` "benchmark calibration" / `:496`
+  "calibration consistency check, not a theorem"). Borderline free_choice but NOT published_target —
+  SAME disclosed-calibration class as the batch-7 stage-253 slice. OPTIONAL: note the borderline in
+  the ANSATZ_LEDGER calibration section. NO overclaim. _[CC u11]_
+- [ ] **CC-3.** Provenance-display gaps (value shown, producing Solve in script/upstream not the
+  per-stage notes): 200 M_star (re-derivation in script), 228 K_compat (solve upstream at 223), 094
+  c_geom (script assign-then-assert masks in-notes 3/4 chain). Completeness only, no overclaim. _[CC u09/u12]_
+- [ ] **CC-4.** `provenance_findings` blocks EMPTY for several deep-audited bundles (e.g. 126/127/128/
+  130) — Phase-B synthesis under-documented; classifications verified sound vs files regardless. _[CC u06]_
+
 ---
 
 ## Provenance index (where each batch's items were first recorded)
@@ -156,12 +176,19 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - Batch 7: `reports/_batch_c7_verdicts.md` §OPTIONAL (A9 + D8/D9 + E5; band 240–259 = the LAST free_choice band, 34/34 NO,
   zero card/notes overclaim. Also logged there: the in-band internal_consistency overclaim-flavored slugs =
   completeness-critic seed targets, NOT Step-6 fix items.) **The free_choice sweep (batches 1–7) is now COMPLETE.**
+- Internal_consistency completeness-critic: `reports/_batch_cc_verdicts.md` §"New optional close-out items"
+  (CC-1..CC-4; 12/12 units NO, 101/101 NO, 0 mis-classifications). **Phase C is now COMPLETE.**
 - Tooling: `docs/adversarial_audit_execution_plan.md` line 65
-- _Internal_consistency completeness-critic spot-check (the only remaining Phase-C step): append its items here as they land._
 
 ---
 
 ## Completeness-critic seed list (internal_consistency overclaim-flavored slugs, accumulated across batches 4–7)
+**✅ RESOLVED 2026-06-12 — every seed item covered.** The completeness-critic spot-check ran its OWN whole-ledger slug
+sweep (`/tmp/enum_ic_overclaim.py` → 84 Tier-A + 135 Tier-B, stages 6–253; this seed list is a SUBSET). Result:
+12/12 units NO, 101/101 deep-audited NO, 0 mis-classifications (`reports/_batch_cc_verdicts.md`). Seed-list correction:
+the 247 lambda_L / 248 Xi_turn items are constraint_kind=**published_target** (already audited batch 1), NOT
+internal_consistency — out of scope, reconciled. The list is retained below as the original record.
+
 These are constraint_kind=internal_consistency candidates with overclaim-flavored SLUGS that fell OUT OF SCOPE of the
 free_choice sweep. They are the seed targets for the internal_consistency completeness-critic spot-check (NOT Step-6 fix
 items, NOT silently dropped). Newest band last.

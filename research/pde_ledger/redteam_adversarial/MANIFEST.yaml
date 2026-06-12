@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T08:51:28Z'
+updated_at: '2026-06-12T15:52:33Z'
 state_machine:
 - pending
 - scanned
@@ -8541,11 +8541,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:14Z'
+      audit_pending: '2026-06-12T15:12:36Z'
+      audited: '2026-06-12T15:12:52Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -8582,6 +8584,13 @@ candidates:
           beyond the limiting literals `1/2`, `1`, `2 Pe_req`, `Pe_req`, which are themselves derived limits). Each is carried
           in the paper card and/or notes.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:12:36Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:12:52Z'
   fit_stage_062_tautological_check:
     id: fit_stage_062_tautological_check
     candidate_key: stage_062_tautological_check
@@ -11523,11 +11532,13 @@ candidates:
     - Theta_fail
     - Theta_suff
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T15:13:07Z'
+      audited: '2026-06-12T15:13:23Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -11581,6 +11592,13 @@ candidates:
           So the paper's bottom-line deliverable has no genuine SymPy-side anchor; the Mathematica `expectApprox` block (lines
           125-126) is currently the sole assertion pinning those endpoints to the paper values.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:13:07Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:13:23Z'
   fit_stage_077_i_f:
     id: fit_stage_077_i_f
     candidate_key: stage_077_i_f
@@ -11861,11 +11879,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T15:13:39Z'
+      audited: '2026-06-12T15:13:55Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -11901,6 +11921,13 @@ candidates:
         excerpt: '> determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization
           branch and compare it to the explicit success/failure bands above.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:13:39Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:13:55Z'
   fit_stage_079_a_f1:
     id: fit_stage_079_a_f1
     candidate_key: stage_079_a_f1
@@ -12359,11 +12386,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T15:14:42Z'
+      audited: '2026-06-12T15:14:58Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -12399,6 +12428,13 @@ candidates:
         excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator
           rather than through the intermediate `Pe_req` bookkeeping.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:14:42Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:14:58Z'
   fit_stage_082_zeta_max:
     id: fit_stage_082_zeta_max
     candidate_key: stage_082_zeta_max
@@ -44741,11 +44777,13 @@ candidates:
     parameter_names:
     - overlap_factor_4pi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:12Z'
+      audit_pending: '2026-06-12T15:42:52Z'
+      audited: '2026-06-12T15:43:09Z'
     codex_session:
       by_parameter:
         overlap_factor_4pi:
@@ -44783,6 +44821,13 @@ candidates:
           L)\) matrix reduction, and the uncoupled grouped real \(P_2\) degeneracy.}'
         stage: '002'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:42:52Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:43:09Z'
   fit_stage003_wall_self_energy_no_fitted_data:
     id: fit_stage003_wall_self_energy_no_fitted_data
     candidate_key: stage003_wall_self_energy_no_fitted_data
@@ -44870,11 +44915,13 @@ candidates:
     - ampere_sign
     - faraday_sign
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:12Z'
+      audit_pending: '2026-06-12T15:00:58Z'
+      audited: '2026-06-12T15:01:15Z'
     codex_session:
       by_parameter:
         ampere_sign:
@@ -44916,6 +44963,13 @@ candidates:
         excerpt: With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
         stage: '006'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:00:58Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:01:15Z'
   fit_stage008_source_profile_must_match_weight:
     id: fit_stage008_source_profile_must_match_weight
     candidate_key: stage008_source_profile_must_match_weight
@@ -45243,11 +45297,13 @@ candidates:
     parameter_names:
     - K_Sigma
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T15:01:32Z'
+      audited: '2026-06-12T15:01:47Z'
     codex_session:
       by_parameter:
         K_Sigma:
@@ -45282,6 +45338,13 @@ candidates:
         excerpt: The one-pole surface fixes
         stage: 019
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:01:32Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:01:47Z'
   fit_stage019_K_Sigma_fixed_by_outgoing_normalization:
     id: fit_stage019_K_Sigma_fixed_by_outgoing_normalization
     candidate_key: stage019_K_Sigma_fixed_by_outgoing_normalization
@@ -46370,11 +46433,13 @@ candidates:
     parameter_names:
     - grouped_lane_coefficients_20_21_22
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:24Z'
+      audit_pending: '2026-06-12T15:02:04Z'
+      audited: '2026-06-12T15:02:21Z'
     codex_session:
       by_parameter:
         grouped_lane_coefficients_20_21_22:
@@ -46410,6 +46475,13 @@ candidates:
           bundle is forced to collapse exactly:'
         stage: '024'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:02:04Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:02:21Z'
   fit_stage024_mhat_ang_exactly_one:
     id: fit_stage024_mhat_ang_exactly_one
     candidate_key: stage024_mhat_ang_exactly_one
@@ -47142,11 +47214,13 @@ candidates:
     - kappa
     - kappa_n
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T15:43:26Z'
+      audited: '2026-06-12T15:43:42Z'
     codex_session:
       by_parameter:
         kappa:
@@ -47188,6 +47262,13 @@ candidates:
         excerpt: The minimal branch keeps \(n=0\).  The exact overlap is
         stage: '026'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:43:26Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:43:42Z'
   fit_stage026_kappa_overlap_2sqrt2_over_pi:
     id: fit_stage026_kappa_overlap_2sqrt2_over_pi
     candidate_key: stage026_kappa_overlap_2sqrt2_over_pi
@@ -47275,11 +47356,13 @@ candidates:
     - kappa_theta
     - theta_max
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:36Z'
+      audit_pending: '2026-06-12T15:02:38Z'
+      audited: '2026-06-12T15:02:54Z'
     codex_session:
       by_parameter:
         kappa_theta:
@@ -47321,6 +47404,13 @@ candidates:
         excerpt: '### 6.3 Max-coupling branch is allowed but not free'
         stage: '027'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:02:38Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:02:54Z'
   fit_stage027_sin2_theta_max_2_11:
     id: fit_stage027_sin2_theta_max_2_11
     candidate_key: stage027_sin2_theta_max_2_11
@@ -47711,11 +47801,13 @@ candidates:
     parameter_names:
     - DeltaK_ax
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T15:03:10Z'
+      audited: '2026-06-12T15:03:25Z'
     codex_session:
       by_parameter:
         DeltaK_ax:
@@ -47751,6 +47843,13 @@ candidates:
         excerpt: '    # (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.'
         stage: 029
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:03:10Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:03:25Z'
   fit_stage029_mixed_sign_convention_match:
     id: fit_stage029_mixed_sign_convention_match
     candidate_key: stage029_mixed_sign_convention_match
@@ -48105,11 +48204,13 @@ candidates:
     - dlambda_minus_dalpha
     - s_minus
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:37Z'
+      audit_pending: '2026-06-12T15:43:58Z'
+      audited: '2026-06-12T15:44:14Z'
     codex_session:
       by_parameter:
         dlambda_minus_dalpha:
@@ -48151,6 +48252,13 @@ candidates:
         excerpt: Print["  HF identity d lam_-/d alpha + s_- = 0 (derived, not assumed)"];
         stage: '031'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:43:58Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:44:14Z'
   fit_stage031_unique_alpha_star_crossing:
     id: fit_stage031_unique_alpha_star_crossing
     candidate_key: stage031_unique_alpha_star_crossing
@@ -48300,11 +48408,13 @@ candidates:
     - mhat_minus
     - s_minus
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T15:03:41Z'
+      audited: '2026-06-12T15:03:58Z'
     codex_session:
       by_parameter:
         mhat_minus:
@@ -48346,6 +48456,13 @@ candidates:
         excerpt: It is completely fixed by the same selected overlap `s_-` that already controls the wall loading.
         stage: '032'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:03:41Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:03:58Z'
   fit_stage032_pattern_now_derived:
     id: fit_stage032_pattern_now_derived
     candidate_key: stage032_pattern_now_derived
@@ -48710,11 +48827,13 @@ candidates:
     - R_target
     - xi_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T15:04:16Z'
+      audited: '2026-06-12T15:04:33Z'
     codex_session:
       by_parameter:
         R_target:
@@ -48756,6 +48875,13 @@ candidates:
         excerpt: Strict monotonicity of \(F\) upgrades the Stage~033 onset inequality into a unique stable normalization locus.}
         stage: '035'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:04:16Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:04:33Z'
   fit_stage036_dn_coeffs_stale_stage18_anchor:
     id: fit_stage036_dn_coeffs_stale_stage18_anchor
     candidate_key: stage036_dn_coeffs_stale_stage18_anchor
@@ -48845,11 +48971,13 @@ candidates:
     parameter_names:
     - g_B_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T15:04:50Z'
+      audited: '2026-06-12T15:05:07Z'
     codex_session:
       by_parameter:
         g_B_req:
@@ -48885,6 +49013,13 @@ candidates:
           has no remaining free hidden eigenvector parameter at this order.
         stage: '036'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:04:50Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:05:07Z'
   fit_stage037_branch_data_exact_kernel_functionals:
     id: fit_stage037_branch_data_exact_kernel_functionals
     candidate_key: stage037_branch_data_exact_kernel_functionals
@@ -48984,11 +49119,13 @@ candidates:
     - epsilon_W
     - epsilon_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T15:05:24Z'
+      audited: '2026-06-12T15:05:42Z'
     codex_session:
       by_parameter:
         Lambda:
@@ -49045,6 +49182,13 @@ candidates:
           and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
         stage: 038
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:05:24Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:05:42Z'
   fit_stage038_lambda_external_target_coefficient:
     id: fit_stage038_lambda_external_target_coefficient
     candidate_key: stage038_lambda_external_target_coefficient
@@ -49280,11 +49424,13 @@ candidates:
     parameter_names:
     - lambda_minus
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:49Z'
+      audit_pending: '2026-06-12T15:44:30Z'
+      audited: '2026-06-12T15:44:47Z'
     codex_session:
       by_parameter:
         lambda_minus:
@@ -49319,6 +49465,13 @@ candidates:
         excerpt: '   loading vector z has exact closed-form eigenvalue and eigenvector formulas.'
         stage: '040'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:44:30Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:44:47Z'
   fit_stage041_n_req_exact_support_loading:
     id: fit_stage041_n_req_exact_support_loading
     candidate_key: stage041_n_req_exact_support_loading
@@ -49334,11 +49487,13 @@ candidates:
     parameter_names:
     - n_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:25:50Z'
+      audit_pending: '2026-06-12T15:06:00Z'
+      audited: '2026-06-12T15:06:19Z'
     codex_session:
       by_parameter:
         n_req:
@@ -49373,6 +49528,13 @@ candidates:
         excerpt: 2. The exact required support loading n_req(xi,delta;m,q,r) is correct.
         stage: '041'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:06:00Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:06:19Z'
   fit_stage042_overlaps_exact:
     id: fit_stage042_overlaps_exact
     candidate_key: stage042_overlaps_exact
@@ -49667,11 +49829,13 @@ candidates:
     parameter_names:
     - xi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:06:36Z'
+      audited: '2026-06-12T15:06:53Z'
     codex_session:
       by_parameter:
         xi:
@@ -49707,6 +49871,13 @@ candidates:
           physical softening depth is no longer free; it is selected by an exact quadratic.}
         stage: '044'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:06:36Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:06:53Z'
   fit_stage045_tracking_derived_not_postulated:
     id: fit_stage045_tracking_derived_not_postulated
     candidate_key: stage045_tracking_derived_not_postulated
@@ -49781,11 +49952,13 @@ candidates:
     - R_phi
     - R_tr
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:07:10Z'
+      audited: '2026-06-12T15:07:26Z'
     codex_session:
       by_parameter:
         R_U:
@@ -49835,6 +50008,13 @@ candidates:
           not realize a generic rank--2 direction.  It forces exact tracking.}
         stage: '045'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:07:10Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:07:26Z'
   fit_stage046_residual_comparison_exact:
     id: fit_stage046_residual_comparison_exact
     candidate_key: stage046_residual_comparison_exact
@@ -50022,11 +50202,13 @@ candidates:
     - S_req
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:07:43Z'
+      audited: '2026-06-12T15:08:00Z'
     codex_session:
       by_parameter:
         S_req:
@@ -50070,6 +50252,13 @@ candidates:
         excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
         stage: 048
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:07:43Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:08:00Z'
   fit_stage048_zeta_req_unique:
     id: fit_stage048_zeta_req_unique
     candidate_key: stage048_zeta_req_unique
@@ -50087,11 +50276,13 @@ candidates:
     parameter_names:
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:08:16Z'
+      audited: '2026-06-12T15:08:32Z'
     codex_session:
       by_parameter:
         zeta_req:
@@ -50128,6 +50319,13 @@ candidates:
           iff
         stage: 048
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:08:16Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:08:32Z'
   fit_stage049_uniform_source_density:
     id: fit_stage049_uniform_source_density
     candidate_key: stage049_uniform_source_density
@@ -50217,11 +50415,13 @@ candidates:
     parameter_names:
     - zeta_n_phys
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:08:48Z'
+      audited: '2026-06-12T15:09:05Z'
     codex_session:
       by_parameter:
         zeta_n_phys:
@@ -50258,6 +50458,13 @@ candidates:
           It is exactly
         stage: 049
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:08:48Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:09:05Z'
   fit_stage050_enhancement_factor_exact:
     id: fit_stage050_enhancement_factor_exact
     candidate_key: stage050_enhancement_factor_exact
@@ -50390,11 +50597,13 @@ candidates:
     - Omega_asym
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:09:22Z'
+      audited: '2026-06-12T15:09:38Z'
     codex_session:
       by_parameter:
         Omega_asym:
@@ -50436,6 +50645,13 @@ candidates:
         excerpt: So any `zeta_req > 1` forces a true overlap asymmetry above the symmetric twin value.
         stage: '052'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:09:22Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:09:38Z'
   fit_stage053_overlap_window_exact:
     id: fit_stage053_overlap_window_exact
     candidate_key: stage053_overlap_window_exact
@@ -50514,11 +50730,13 @@ candidates:
     - A_K
     - mu_R
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:02Z'
+      audit_pending: '2026-06-12T15:45:04Z'
+      audited: '2026-06-12T15:45:20Z'
     codex_session:
       by_parameter:
         A_K:
@@ -50560,6 +50778,13 @@ candidates:
         excerpt: '- the Robin-deformed lowest support branch is determined by'
         stage: '054'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:45:04Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:45:20Z'
   fit_stage055_reachability_window_exact:
     id: fit_stage055_reachability_window_exact
     candidate_key: stage055_reachability_window_exact
@@ -50835,11 +51060,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:14Z'
+      audit_pending: '2026-06-12T15:11:32Z'
+      audited: '2026-06-12T15:11:48Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -50876,6 +51103,13 @@ candidates:
         excerpt: '`Pe_req` carried from stages 048/049/052). The III.3 v2 sweep surfaced'
         stage: 059
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:11:32Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:11:48Z'
   fit_stage059_thresholds_exact:
     id: fit_stage059_thresholds_exact
     candidate_key: stage059_thresholds_exact
@@ -50893,11 +51127,13 @@ candidates:
     - Xi_fail
     - Xi_suff
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:14Z'
+      audit_pending: '2026-06-12T15:12:04Z'
+      audited: '2026-06-12T15:12:20Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -50946,6 +51182,13 @@ candidates:
         excerpt: If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
         stage: 059
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:12:04Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:12:20Z'
   fit_stage060_gamma_derived_rate:
     id: fit_stage060_gamma_derived_rate
     candidate_key: stage060_gamma_derived_rate
@@ -51233,11 +51476,13 @@ candidates:
     parameter_names:
     - Theta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:14Z'
+      audit_pending: '2026-06-12T15:09:55Z'
+      audited: '2026-06-12T15:10:12Z'
     codex_session:
       by_parameter:
         Theta:
@@ -51273,6 +51518,13 @@ candidates:
           of the parent medium, dressed only by the chosen transverse source normalization.
         stage: '062'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:09:55Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:10:12Z'
   fit_stage063_amplitude_thresholds_exact:
     id: fit_stage063_amplitude_thresholds_exact
     candidate_key: stage063_amplitude_thresholds_exact
@@ -51602,11 +51854,13 @@ candidates:
     - C_res_squared
     - P_res
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:15Z'
+      audit_pending: '2026-06-12T15:10:27Z'
+      audited: '2026-06-12T15:10:43Z'
     codex_session:
       by_parameter:
         C_res_squared:
@@ -51649,6 +51903,13 @@ candidates:
           constructive branch.
         stage: '067'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:10:27Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:10:43Z'
   fit_stage067_sech_gaussian_benchmark_constants:
     id: fit_stage067_sech_gaussian_benchmark_constants
     candidate_key: stage067_sech_gaussian_benchmark_constants
@@ -51745,11 +52006,13 @@ candidates:
     parameter_names:
     - w_g_over_w_f
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:15Z'
+      audit_pending: '2026-06-12T15:10:59Z'
+      audited: '2026-06-12T15:11:16Z'
     codex_session:
       by_parameter:
         w_g_over_w_f:
@@ -51784,6 +52047,13 @@ candidates:
         excerpt: 2. that self-duality forces an exact stationary point at
         stage: '067'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:10:59Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:11:16Z'
   fit_stage068_W_res_derived_label:
     id: fit_stage068_W_res_derived_label
     candidate_key: stage068_W_res_derived_label
@@ -52676,11 +52946,13 @@ candidates:
     parameter_names:
     - eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T17:55:40Z'
+      audit_pending: '2026-06-12T15:21:36Z'
+      audited: '2026-06-12T15:21:52Z'
     codex_session:
       by_parameter:
         eta:
@@ -52715,6 +52987,13 @@ candidates:
         excerpt: So the first explicit throat-support branch is now pinned to one concrete large-`eta` Robin regime.
         stage: '073'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:21:36Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:21:52Z'
   fit_stage073_paper_fixes_geometry_ratios:
     id: fit_stage073_paper_fixes_geometry_ratios
     candidate_key: stage073_paper_fixes_geometry_ratios
@@ -53478,11 +53757,13 @@ candidates:
     parameter_names:
     - I_f
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T15:45:38Z'
+      audited: '2026-06-12T15:45:53Z'
     codex_session:
       by_parameter:
         I_f:
@@ -53517,6 +53798,13 @@ candidates:
         excerpt: 2. Exact canonical support normalization If = 1/3.
         stage: '077'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:45:38Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:45:53Z'
   fit_stage077_Theta_w_chi_derived_directly:
     id: fit_stage077_Theta_w_chi_derived_directly
     candidate_key: stage077_Theta_w_chi_derived_directly
@@ -53650,11 +53938,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:27Z'
+      audit_pending: '2026-06-12T15:14:10Z'
+      audited: '2026-06-12T15:14:26Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -53689,6 +53979,13 @@ candidates:
         excerpt: print("A unique constructive Pe_req exists iff A_F1 <= zeta_req <= zeta_max^(F1).")
         stage: 079
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:14:10Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:14:26Z'
   fit_stage082_first_exact_product_window:
     id: fit_stage082_first_exact_product_window
     candidate_key: stage082_first_exact_product_window
@@ -54442,11 +54739,13 @@ candidates:
     parameter_names:
     - Pe_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T15:15:13Z'
+      audited: '2026-06-12T15:15:29Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -54481,6 +54780,13 @@ candidates:
         excerpt: '# Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 already exceeds the'
         stage: 089
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:15:13Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:15:29Z'
   fit_stage089_pe_window_upstream_misattribution:
     id: fit_stage089_pe_window_upstream_misattribution
     candidate_key: stage089_pe_window_upstream_misattribution
@@ -54640,11 +54946,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T15:15:45Z'
+      audited: '2026-06-12T15:16:00Z'
     codex_session:
       by_parameter:
         Pe_req:
@@ -54693,6 +55001,13 @@ candidates:
         excerpt: '   above is the carry-forward proxy for the locked triple value Pe_req = 0'
         stage: 090
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:15:45Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:16:00Z'
   fit_stage090_minimal_module_upstream_contradiction:
     id: fit_stage090_minimal_module_upstream_contradiction
     candidate_key: stage090_minimal_module_upstream_contradiction
@@ -54781,11 +55096,13 @@ candidates:
     - K_geom
     - K_pole
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:39Z'
+      audit_pending: '2026-06-12T15:16:17Z'
+      audited: '2026-06-12T15:16:32Z'
     codex_session:
       by_parameter:
         K_geom:
@@ -54827,6 +55144,13 @@ candidates:
         excerpt: print("K_geom forced by branch identity =", Kgeom_sol)
         stage: 091
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:16:17Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:16:32Z'
   fit_stage091_branch_identity_factor4:
     id: fit_stage091_branch_identity_factor4
     candidate_key: stage091_branch_identity_factor4
@@ -54908,11 +55232,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T15:16:48Z'
+      audited: '2026-06-12T15:17:04Z'
     codex_session:
       by_parameter:
         Y_Q_cons:
@@ -54963,6 +55289,13 @@ candidates:
           \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\).
         stage: 091
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:16:48Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:17:04Z'
   fit_stage092_forced_carrier_ledger_label:
     id: fit_stage092_forced_carrier_ledger_label
     candidate_key: stage092_forced_carrier_ledger_label
@@ -54982,11 +55315,13 @@ candidates:
     - eps_2
     - eps_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T15:17:20Z'
+      audited: '2026-06-12T15:17:36Z'
     codex_session:
       by_parameter:
         Y_Q_cons:
@@ -55037,6 +55372,13 @@ candidates:
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
         stage: 092
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:17:20Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:17:36Z'
   fit_stage092_no_longer_forced_unless:
     id: fit_stage092_no_longer_forced_unless
     candidate_key: stage092_no_longer_forced_unless
@@ -55134,11 +55476,13 @@ candidates:
     - rho_alpha
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T15:17:52Z'
+      audited: '2026-06-12T15:18:08Z'
     codex_session:
       by_parameter:
         Y_Q_cons:
@@ -55187,6 +55531,13 @@ candidates:
         excerpt: then the conservative quadrupole module is forced to be
         stage: 093
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:17:52Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:18:08Z'
   fit_stage093_static_limit_hardcoded:
     id: fit_stage093_static_limit_hardcoded
     candidate_key: stage093_static_limit_hardcoded
@@ -55341,11 +55692,13 @@ candidates:
     - c_geom
     - c_pole
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:26:40Z'
+      audit_pending: '2026-06-12T15:46:11Z'
+      audited: '2026-06-12T15:46:26Z'
     codex_session:
       by_parameter:
         c_geom:
@@ -55389,6 +55742,13 @@ candidates:
         excerpt: c_pole = sp.Rational(1, 4)
         stage: 094
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:46:11Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:46:26Z'
   fit_stage095_forced_carrier_ledger_label:
     id: fit_stage095_forced_carrier_ledger_label
     candidate_key: stage095_forced_carrier_ledger_label
@@ -55408,11 +55768,13 @@ candidates:
     - eps_2
     - eps_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T15:18:24Z'
+      audited: '2026-06-12T15:18:40Z'
     codex_session:
       by_parameter:
         Y_Q_cons:
@@ -55463,6 +55825,13 @@ candidates:
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
         stage: 095
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:18:24Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:18:40Z'
   fit_stage096_constants_derived_from_eps_zero:
     id: fit_stage096_constants_derived_from_eps_zero
     candidate_key: stage096_constants_derived_from_eps_zero
@@ -55693,11 +56062,13 @@ candidates:
     parameter_names:
     - Yhat_Q_cons
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T15:18:56Z'
+      audited: '2026-06-12T15:19:12Z'
     codex_session:
       by_parameter:
         Yhat_Q_cons:
@@ -55734,6 +56105,13 @@ candidates:
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
         stage: 097
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:18:56Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:19:12Z'
   fit_stage098_forced_carrier_card:
     id: fit_stage098_forced_carrier_card
     candidate_key: stage098_forced_carrier_card
@@ -55751,11 +56129,13 @@ candidates:
     parameter_names:
     - Yhat_Q_cons
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T15:19:28Z'
+      audited: '2026-06-12T15:19:44Z'
     codex_session:
       by_parameter:
         Yhat_Q_cons:
@@ -55791,6 +56171,13 @@ candidates:
           or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
         stage: 098
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:19:28Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:19:44Z'
   fit_stage098_rho_alpha_selected_ratio:
     id: fit_stage098_rho_alpha_selected_ratio
     candidate_key: stage098_rho_alpha_selected_ratio
@@ -55863,11 +56250,13 @@ candidates:
     - support_ratio
     - zeta_max
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:37Z'
+      audit_pending: '2026-06-12T15:20:00Z'
+      audited: '2026-06-12T15:20:16Z'
     codex_session:
       by_parameter:
         support_ratio:
@@ -55910,6 +56299,13 @@ candidates:
           `zeta_max > 1` already passes it throughout the admissible blocked regime.
         stage: 098
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:20:00Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:20:16Z'
   fit_stage098_zeta_max_f1_imported_literal:
     id: fit_stage098_zeta_max_f1_imported_literal
     candidate_key: stage098_zeta_max_f1_imported_literal
@@ -56115,11 +56511,13 @@ candidates:
     - Gamma_5
     - K_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T15:20:32Z'
+      audited: '2026-06-12T15:20:47Z'
     codex_session:
       by_parameter:
         Gamma_5:
@@ -56161,6 +56559,13 @@ candidates:
         excerpt: '# Conservative quadrupole structural relations (forced by Yhat_Q^cons):'
         stage: 099
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:20:32Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:20:47Z'
   fit_stage100_chiQ_fixed_downstream_card:
     id: fit_stage100_chiQ_fixed_downstream_card
     candidate_key: stage100_chiQ_fixed_downstream_card
@@ -56245,11 +56650,13 @@ candidates:
     - chi_Q
     - mhat_0
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:38Z'
+      audit_pending: '2026-06-12T15:21:03Z'
+      audited: '2026-06-12T15:21:20Z'
     codex_session:
       by_parameter:
         N_Q:
@@ -56298,6 +56705,13 @@ candidates:
         excerpt: '# the factorization mhat_0^2 chi_Q N_Q = 1 is forced.'
         stage: '100'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:21:03Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:21:20Z'
   fit_stage101_stage105_fixes_by_matching:
     id: fit_stage101_stage105_fixes_by_matching
     candidate_key: stage101_stage105_fixes_by_matching
@@ -56555,11 +56969,13 @@ candidates:
     - Gamma_5_can
     - xi_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T15:22:07Z'
+      audited: '2026-06-12T15:22:23Z'
     codex_session:
       by_parameter:
         Gamma_5_can:
@@ -56602,6 +57018,13 @@ candidates:
           the leading odd quadrupole coefficient is fixed to
         stage: '104'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:22:07Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:22:23Z'
   fit_stage104_unit_product_m0hat2_chiQ_NQ:
     id: fit_stage104_unit_product_m0hat2_chiQ_NQ
     candidate_key: stage104_unit_product_m0hat2_chiQ_NQ
@@ -56987,11 +57410,13 @@ candidates:
     - chi_Q
     - xi_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:54:50Z'
+      audit_pending: '2026-06-12T15:22:39Z'
+      audited: '2026-06-12T15:22:55Z'
     codex_session:
       by_parameter:
         chi_Q:
@@ -57034,6 +57459,13 @@ candidates:
           is fixed exactly.
         stage: '105'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:22:39Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:22:55Z'
   fit_stage105_omega_q_pole_frequency:
     id: fit_stage105_omega_q_pole_frequency
     candidate_key: stage105_omega_q_pole_frequency
@@ -57306,11 +57738,13 @@ candidates:
     parameter_names:
     - beta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T15:23:11Z'
+      audited: '2026-06-12T15:23:27Z'
     codex_session:
       by_parameter:
         beta:
@@ -57345,6 +57779,13 @@ candidates:
         excerpt: which on the natural positive branch forces
         stage: '108'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:23:11Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:23:27Z'
   fit_stage108_chiQ_robust_claim:
     id: fit_stage108_chiQ_robust_claim
     candidate_key: stage108_chiQ_robust_claim
@@ -57557,11 +57998,13 @@ candidates:
     - kappa_W
     - sigma_W
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T15:23:42Z'
+      audited: '2026-06-12T15:23:58Z'
     codex_session:
       by_parameter:
         kappa_W:
@@ -57604,6 +58047,13 @@ candidates:
           unless it is absent.
         stage: '111'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:23:42Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:23:58Z'
   fit_stage112_chiQhyb_exact_factor:
     id: fit_stage112_chiQhyb_exact_factor
     candidate_key: stage112_chiQhyb_exact_factor
@@ -58110,11 +58560,13 @@ candidates:
     - g_q
     - g_s
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:51:52Z'
+      audit_pending: '2026-06-12T15:46:46Z'
+      audited: '2026-06-12T15:47:03Z'
     codex_session:
       by_parameter:
         K_s:
@@ -58163,6 +58615,13 @@ candidates:
         excerpt: Solving for the mixed coupling gives the exact two-branch law
         stage: '115'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:46:46Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:47:03Z'
   fit_stage116_LW_fixed_card:
     id: fit_stage116_LW_fixed_card
     candidate_key: stage116_LW_fixed_card
@@ -58675,11 +59134,13 @@ candidates:
     - mathfrak_g
     - mathfrak_r
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T15:24:14Z'
+      audited: '2026-06-12T15:24:30Z'
     codex_session:
       by_parameter:
         mathfrak_g:
@@ -58721,6 +59182,13 @@ candidates:
         excerpt: Once \(\mathfrak r\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly.
         stage: '119'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:24:14Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:24:30Z'
   fit_stage119_one_parameter_family_LW_fixed:
     id: fit_stage119_one_parameter_family_LW_fixed
     candidate_key: stage119_one_parameter_family_LW_fixed
@@ -59650,11 +60118,13 @@ candidates:
     - branch_sign
     - mathfrak_g_minus_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:04Z'
+      audit_pending: '2026-06-12T15:24:46Z'
+      audited: '2026-06-12T15:24:59Z'
     codex_session:
       by_parameter:
         branch_sign:
@@ -59697,6 +60167,13 @@ candidates:
           admissible compensated Family-1 branch.}
         stage: '125'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:24:46Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:24:59Z'
   fit_stage126_g_match_pi_over_4_card:
     id: fit_stage126_g_match_pi_over_4_card
     candidate_key: stage126_g_match_pi_over_4_card
@@ -59830,11 +60307,13 @@ candidates:
     parameter_names:
     - xi_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:25:14Z'
+      audited: '2026-06-12T15:25:29Z'
     codex_session:
       by_parameter:
         xi_star:
@@ -59870,6 +60349,13 @@ candidates:
         excerpt: \approx 0.183918405511538.
         stage: '126'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:25:14Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:25:29Z'
   fit_stage126_xi_star_exact_solution:
     id: fit_stage126_xi_star_exact_solution
     candidate_key: stage126_xi_star_exact_solution
@@ -59995,11 +60481,13 @@ candidates:
     parameter_names:
     - x_star_slab
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:25:45Z'
+      audited: '2026-06-12T15:26:01Z'
     codex_session:
       by_parameter:
         x_star_slab:
@@ -60034,6 +60522,13 @@ candidates:
         excerpt: gives the unique Family-1 slab depth
         stage: '127'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:25:45Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:26:01Z'
   fit_stage127_x_star_exp_backsolve:
     id: fit_stage127_x_star_exp_backsolve
     candidate_key: stage127_x_star_exp_backsolve
@@ -60049,11 +60544,13 @@ candidates:
     parameter_names:
     - x_star_exp
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:26:17Z'
+      audited: '2026-06-12T15:26:33Z'
     codex_session:
       by_parameter:
         x_star_exp:
@@ -60088,6 +60585,13 @@ candidates:
         excerpt: x_*^{\exp}\approx 0.662765402623161.
         stage: '127'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:26:17Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:26:33Z'
   fit_stage127_x_star_slab_backsolve:
     id: fit_stage127_x_star_slab_backsolve
     candidate_key: stage127_x_star_slab_backsolve
@@ -60103,11 +60607,13 @@ candidates:
     parameter_names:
     - x_star_slab
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:26:49Z'
+      audited: '2026-06-12T15:27:05Z'
     codex_session:
       by_parameter:
         x_star_slab:
@@ -60142,6 +60648,13 @@ candidates:
         excerpt: x_*^{\rm slab}\approx 0.797839360904564.
         stage: '127'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:26:49Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:27:05Z'
   fit_stage128_branch_sign_fixed_card:
     id: fit_stage128_branch_sign_fixed_card
     candidate_key: stage128_branch_sign_fixed_card
@@ -60212,11 +60725,13 @@ candidates:
     parameter_names:
     - mathfrak_g_minus_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:27:21Z'
+      audited: '2026-06-12T15:27:36Z'
     codex_session:
       by_parameter:
         mathfrak_g_minus_F1:
@@ -60252,6 +60767,13 @@ candidates:
           reachable.}
         stage: '128'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:27:21Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:27:36Z'
   fit_stage128_rF1_fixed_by_geometry:
     id: fit_stage128_rF1_fixed_by_geometry
     candidate_key: stage128_rF1_fixed_by_geometry
@@ -60267,11 +60789,13 @@ candidates:
     parameter_names:
     - mathfrak_r_F1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:27:52Z'
+      audited: '2026-06-12T15:28:08Z'
     codex_session:
       by_parameter:
         mathfrak_r_F1:
@@ -60306,6 +60830,13 @@ candidates:
         excerpt: is already fixed by geometry.
         stage: '128'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:27:52Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:28:08Z'
   fit_stage128_traction_gap_downstream_attribution:
     id: fit_stage128_traction_gap_downstream_attribution
     candidate_key: stage128_traction_gap_downstream_attribution
@@ -60495,11 +61026,13 @@ candidates:
     - Pi_star
     - g_Pi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:16Z'
+      audit_pending: '2026-06-12T15:28:24Z'
+      audited: '2026-06-12T15:28:39Z'
     codex_session:
       by_parameter:
         Pi_star:
@@ -60541,6 +61074,13 @@ candidates:
         excerpt: Exact \(\mathfrak g_\Pi\), monotonicity, and unique Family--1 point \(\Pi_*\approx1.5088295\).
         stage: '130'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:28:24Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:28:39Z'
   fit_stage130_x_star_penetration_depth_match:
     id: fit_stage130_x_star_penetration_depth_match
     candidate_key: stage130_x_star_penetration_depth_match
@@ -61492,11 +62032,13 @@ candidates:
     parameter_names:
     - R_q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T15:47:20Z'
+      audited: '2026-06-12T15:47:36Z'
     codex_session:
       by_parameter:
         R_q:
@@ -61531,6 +62073,13 @@ candidates:
         excerpt: so the outlet-consistent mouth closure is derived rather than assumed.
         stage: '138'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:47:20Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:47:36Z'
   fit_stage139_aspect_ratio_literal:
     id: fit_stage139_aspect_ratio_literal
     candidate_key: stage139_aspect_ratio_literal
@@ -61619,11 +62168,13 @@ candidates:
     - M_q_comp_star
     - M_s_comp_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:28Z'
+      audit_pending: '2026-06-12T15:47:52Z'
+      audited: '2026-06-12T15:48:08Z'
     codex_session:
       by_parameter:
         M_q_comp_star:
@@ -61666,6 +62217,13 @@ candidates:
         excerpt: This is exactly the Stage 135 one-parameter canonical branch.
         stage: '139'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:47:52Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:48:08Z'
   fit_stage140_carried_gain_magnitudes:
     id: fit_stage140_carried_gain_magnitudes
     candidate_key: stage140_carried_gain_magnitudes
@@ -61861,11 +62419,13 @@ candidates:
     - M_q
     - M_s
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:29Z'
+      audit_pending: '2026-06-12T15:28:55Z'
+      audited: '2026-06-12T15:29:13Z'
     codex_session:
       by_parameter:
         M_q:
@@ -61907,6 +62467,13 @@ candidates:
         excerpt: '1. The actual mouth gains are derived from the explicit throat-core ansatz:'
         stage: '141'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:28:55Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:29:13Z'
   fit_stage142_three_quantities_no_longer_free:
     id: fit_stage142_three_quantities_no_longer_free
     candidate_key: stage142_three_quantities_no_longer_free
@@ -61924,11 +62491,13 @@ candidates:
     - T_m_hat
     - sigma_shape
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:29Z'
+      audit_pending: '2026-06-12T15:29:31Z'
+      audited: '2026-06-12T15:29:46Z'
     codex_session:
       by_parameter:
         R_q:
@@ -61977,6 +62546,13 @@ candidates:
         excerpt: '- the source shape is no longer free,'
         stage: '142'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:29:31Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:29:46Z'
   fit_stage144_unique_regular_canonical_branch:
     id: fit_stage144_unique_regular_canonical_branch
     candidate_key: stage144_unique_regular_canonical_branch
@@ -61993,11 +62569,13 @@ candidates:
     parameter_names:
     - Pi_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:29Z'
+      audit_pending: '2026-06-12T15:29:59Z'
+      audited: '2026-06-12T15:30:12Z'
     codex_session:
       by_parameter:
         Pi_star:
@@ -62033,6 +62611,13 @@ candidates:
           uniquely selected as the regular finite positive-source branch.}
         stage: '144'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:29:59Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:30:12Z'
   fit_stage146_aspect_ratio_37_20_primitive:
     id: fit_stage146_aspect_ratio_37_20_primitive
     candidate_key: stage146_aspect_ratio_37_20_primitive
@@ -62305,11 +62890,13 @@ candidates:
     - delta_Pi_lambda
     - delta_T_m_lambda
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:40Z'
+      audit_pending: '2026-06-12T15:48:25Z'
+      audited: '2026-06-12T15:48:41Z'
     codex_session:
       by_parameter:
         delta_Pi_lambda:
@@ -62351,6 +62938,13 @@ candidates:
         excerpt: the canonical first-order shifts are exactly
         stage: '148'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:48:25Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:48:41Z'
   fit_stage148_radical_constant_forced_by_rf1:
     id: fit_stage148_radical_constant_forced_by_rf1
     candidate_key: stage148_radical_constant_forced_by_rf1
@@ -62367,11 +62961,13 @@ candidates:
     - r_F1
     - xi_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:40Z'
+      audit_pending: '2026-06-12T15:30:25Z'
+      audited: '2026-06-12T15:30:39Z'
     codex_session:
       by_parameter:
         r_F1:
@@ -62413,6 +63009,13 @@ candidates:
         excerpt: '# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so'
         stage: '148'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:30:25Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:30:39Z'
   fit_stage150_residual_tangent_matched:
     id: fit_stage150_residual_tangent_matched
     candidate_key: stage150_residual_tangent_matched
@@ -62491,11 +63094,13 @@ candidates:
     - delta_Pi_act
     - delta_S_act
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:41Z'
+      audit_pending: '2026-06-12T15:30:55Z'
+      audited: '2026-06-12T15:31:07Z'
     codex_session:
       by_parameter:
         delta_Pi_act:
@@ -62537,6 +63142,13 @@ candidates:
         excerpt: Actual selected deformation is the centered residual \(R_*\); correction is fixed by two covariances.
         stage: '151'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:30:55Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:31:07Z'
   fit_stage152_affine_law_endpoints:
     id: fit_stage152_affine_law_endpoints
     candidate_key: stage152_affine_law_endpoints
@@ -63199,11 +63811,13 @@ candidates:
     - Sigma_0_can
     - T_m_can
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T18:52:53Z'
+      audit_pending: '2026-06-12T15:31:19Z'
+      audited: '2026-06-12T15:31:40Z'
     codex_session:
       by_parameter:
         Sigma_0_can:
@@ -63246,6 +63860,13 @@ candidates:
         excerpt: Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\).
         stage: '156'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:31:19Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:31:40Z'
   fit_stage157_expected_values_sidecar_json:
     id: fit_stage157_expected_values_sidecar_json
     candidate_key: stage157_expected_values_sidecar_json
@@ -64821,11 +65442,13 @@ candidates:
     - g_star
     - r_star
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:42Z'
+      audit_pending: '2026-06-12T15:31:56Z'
+      audited: '2026-06-12T15:32:08Z'
     codex_session:
       by_parameter:
         g_star:
@@ -64867,6 +65490,13 @@ candidates:
         excerpt: g_num = sp.Float("0.758035078944663", 30)
         stage: '164'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:31:56Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:32:08Z'
   fit_stage164_log_channel_prefactors_27_40_27_320:
     id: fit_stage164_log_channel_prefactors_27_40_27_320
     candidate_key: stage164_log_channel_prefactors_27_40_27_320
@@ -65128,11 +65758,13 @@ candidates:
     - g_frak
     - r_frak
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:16:42Z'
+      audit_pending: '2026-06-12T15:32:20Z'
+      audited: '2026-06-12T15:32:32Z'
     codex_session:
       by_parameter:
         g_frak:
@@ -65174,6 +65806,13 @@ candidates:
         excerpt: 'are pinned at first order on the exact lower branch:'
         stage: '165'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:32:20Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:32:32Z'
   fit_stage165_rstar_closed_form_4107:
     id: fit_stage165_rstar_closed_form_4107
     candidate_key: stage165_rstar_closed_form_4107
@@ -68245,11 +68884,13 @@ candidates:
     - C_tr_star
     - epsilon_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:06Z'
+      audit_pending: '2026-06-12T15:48:57Z'
+      audited: '2026-06-12T15:49:13Z'
     codex_session:
       by_parameter:
         C_nt_star:
@@ -68298,6 +68939,13 @@ candidates:
         excerpt: \text{the exact level sets of }
         stage: '187'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:48:57Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:49:13Z'
   fit_stage187_g2_common_tangent_lambda_1:
     id: fit_stage187_g2_common_tangent_lambda_1
     candidate_key: stage187_g2_common_tangent_lambda_1
@@ -68733,11 +69381,13 @@ candidates:
     - Delta_branch
     - Delta_orbit
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:44Z'
+      audit_pending: '2026-06-12T15:32:44Z'
+      audited: '2026-06-12T15:32:57Z'
     codex_session:
       by_parameter:
         Delta_branch:
@@ -68779,6 +69429,13 @@ candidates:
         excerpt: Everything else is compiler algebra already fixed by the previous stages.
         stage: '191'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:32:44Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:32:57Z'
   fit_stage192_canonical_quotient_section:
     id: fit_stage192_canonical_quotient_section
     candidate_key: stage192_canonical_quotient_section
@@ -69037,11 +69694,13 @@ candidates:
     - b_2
     - b_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T15:33:11Z'
+      audited: '2026-06-12T15:33:23Z'
     codex_session:
       by_parameter:
         Delta_pole:
@@ -69112,6 +69771,13 @@ candidates:
           one-parameter form.
         stage: '193'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:33:11Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:33:23Z'
   fit_stage193_p0_target_surface_frozen_without_derivation_edge:
     id: fit_stage193_p0_target_surface_frozen_without_derivation_edge
     candidate_key: stage193_p0_target_surface_frozen_without_derivation_edge
@@ -69329,11 +69995,13 @@ candidates:
     parameter_names:
     - chi_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T15:49:29Z'
+      audited: '2026-06-12T15:49:46Z'
     codex_session:
       by_parameter:
         chi_Q:
@@ -69370,6 +70038,13 @@ candidates:
           no longer a placeholder on the compact passive/outgoing branch.
         stage: '194'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:49:29Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:49:46Z'
   fit_stage194_even_deformations_not_free:
     id: fit_stage194_even_deformations_not_free
     candidate_key: stage194_even_deformations_not_free
@@ -69386,11 +70061,13 @@ candidates:
     - Sigma_2
     - Sigma_4
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:18:45Z'
+      audit_pending: '2026-06-12T15:33:36Z'
+      audited: '2026-06-12T15:33:50Z'
     codex_session:
       by_parameter:
         Sigma_2:
@@ -69432,6 +70109,13 @@ candidates:
         excerpt: So the even deformations are not free once the canonical conservative moments are held fixed.
         stage: '194'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:33:36Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:33:50Z'
   fit_stage195_mhat0_natural_source_map:
     id: fit_stage195_mhat0_natural_source_map
     candidate_key: stage195_mhat0_natural_source_map
@@ -69900,11 +70584,13 @@ candidates:
     - q_nt
     - q_tr
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T15:34:06Z'
+      audited: '2026-06-12T15:34:18Z'
     codex_session:
       by_parameter:
         M_star:
@@ -69960,6 +70646,13 @@ candidates:
         excerpt: print("   is re-derived from the exact dependent-triple orbit solve rather than posited.")
         stage: '200'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:34:06Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:34:18Z'
   fit_stage201_canonical_repair_vector:
     id: fit_stage201_canonical_repair_vector
     candidate_key: stage201_canonical_repair_vector
@@ -70599,11 +71292,13 @@ candidates:
     - alpha_6
     - delta_V_mix
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T15:34:30Z'
+      audited: '2026-06-12T15:34:43Z'
     codex_session:
       by_parameter:
         alpha_2:
@@ -70653,6 +71348,13 @@ candidates:
         excerpt: with `\widetilde{\delta V}_{\rm mix}` fixed by the one-port susceptibility theorem above.
         stage: '219'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:34:30Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:34:43Z'
   fit_stage222_exact_overlap_constant_kappa:
     id: fit_stage222_exact_overlap_constant_kappa
     candidate_key: stage222_exact_overlap_constant_kappa
@@ -70668,11 +71370,13 @@ candidates:
     parameter_names:
     - kappa
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T15:50:01Z'
+      audited: '2026-06-12T15:50:18Z'
     codex_session:
       by_parameter:
         kappa:
@@ -70708,6 +71412,13 @@ candidates:
         excerpt: Then the exact overlap constant is
         stage: '222'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:50:01Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:50:18Z'
   fit_stage222_illustrative_barrier_benchmark:
     id: fit_stage222_illustrative_barrier_benchmark
     candidate_key: stage222_illustrative_barrier_benchmark
@@ -71287,11 +71998,13 @@ candidates:
     - R_Q_lower_wall_lambdaW_0p2
     - R_Q_upper_wall_lambdaW_0p2
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T15:34:56Z'
+      audited: '2026-06-12T15:35:07Z'
     codex_session:
       by_parameter:
         R_Q_lower_wall_lambdaW_0p2:
@@ -71338,6 +72051,13 @@ candidates:
           and corroborating the verified SymPy script... [truncated line]'
         stage: '223'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:34:56Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:35:07Z'
   fit_stage223_p0_target_calibration_coefficient:
     id: fit_stage223_p0_target_calibration_coefficient
     candidate_key: stage223_p0_target_calibration_coefficient
@@ -71567,11 +72287,13 @@ candidates:
     - lambda_21
     - lambda_22
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T15:50:34Z'
+      audited: '2026-06-12T15:50:50Z'
     codex_session:
       by_parameter:
         b_P0_slope:
@@ -71629,6 +72351,13 @@ candidates:
           amplitude with grouped signature
         stage: '224'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:50:34Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:50:50Z'
   fit_stage224_kill_test_budgets_slice_anchored:
     id: fit_stage224_kill_test_budgets_slice_anchored
     candidate_key: stage224_kill_test_budgets_slice_anchored
@@ -71648,11 +72377,13 @@ candidates:
     - P_crit_one_30
     - barP0_compat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T15:35:19Z'
+      audited: '2026-06-12T15:35:31Z'
     codex_session:
       by_parameter:
         P_crit_both_10:
@@ -71720,6 +72451,13 @@ candidates:
         excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
         stage: '224'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:35:19Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:35:31Z'
   fit_stage224_stage223_carryover_ceilings:
     id: fit_stage224_stage223_carryover_ceilings
     candidate_key: stage224_stage223_carryover_ceilings
@@ -71739,11 +72477,13 @@ candidates:
     - Pcrit_one_30
     - barP0_compat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T15:35:43Z'
+      audited: '2026-06-12T15:35:55Z'
     codex_session:
       by_parameter:
         Pcrit_both_10:
@@ -71807,6 +72547,13 @@ candidates:
         excerpt: '    barP0_compat = Decimal("0.002069792318062885")'
         stage: '224'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:35:43Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:35:55Z'
   fit_stage224_t_quad_target_scale:
     id: fit_stage224_t_quad_target_scale
     candidate_key: stage224_t_quad_target_scale
@@ -72253,11 +73000,13 @@ candidates:
     - x_K
     - x_M
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T15:36:07Z'
+      audited: '2026-06-12T15:36:20Z'
     codex_session:
       by_parameter:
         x_K:
@@ -72299,6 +73048,13 @@ candidates:
         excerpt: the second equation forces
         stage: '225'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:36:07Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:36:20Z'
   fit_stage226_canonical_hidden_even_relation:
     id: fit_stage226_canonical_hidden_even_relation
     candidate_key: stage226_canonical_hidden_even_relation
@@ -72370,11 +73126,13 @@ candidates:
     parameter_names:
     - D_01
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T15:36:32Z'
+      audited: '2026-06-12T15:36:44Z'
     codex_session:
       by_parameter:
         D_01:
@@ -72409,6 +73167,13 @@ candidates:
         excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
         stage: '226'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:36:32Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:36:44Z'
   fit_stage226_k1_h_even_open_gates:
     id: fit_stage226_k1_h_even_open_gates
     candidate_key: stage226_k1_h_even_open_gates
@@ -72741,11 +73506,13 @@ candidates:
     parameter_names:
     - K_compat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T15:51:07Z'
+      audited: '2026-06-12T15:51:23Z'
     codex_session:
       by_parameter:
         K_compat:
@@ -72780,6 +73547,13 @@ candidates:
         excerpt: '- and the exact isotropic compatibility wall stiffness'
         stage: '228'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:51:07Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:51:23Z'
   fit_stage228_primitive_parameter_tuple:
     id: fit_stage228_primitive_parameter_tuple
     candidate_key: stage228_primitive_parameter_tuple
@@ -73104,11 +73878,13 @@ candidates:
     - s_plus_den
     - s_plus_num
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T15:51:40Z'
+      audited: '2026-06-12T15:51:56Z'
     codex_session:
       by_parameter:
         s_minus_den:
@@ -73165,6 +73941,13 @@ candidates:
         excerpt: s_plus_den = sp.Rational("-0.301516097158113")
         stage: '230'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:51:40Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:51:56Z'
   fit_stage231_dynamic_budget_carry:
     id: fit_stage231_dynamic_budget_carry
     candidate_key: stage231_dynamic_budget_carry
@@ -73470,11 +74253,13 @@ candidates:
     - rho_alpha_max
     - zeta_phys
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T15:36:56Z'
+      audited: '2026-06-12T15:37:08Z'
     codex_session:
       by_parameter:
         rho_alpha_max:
@@ -73517,6 +74302,13 @@ candidates:
           bottleneck moves, or stays on the unresolved static orbit-lock / coherent placement packet.'
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:36:56Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:37:08Z'
   fit_stage232_lambda_ell_geometry_literals:
     id: fit_stage232_lambda_ell_geometry_literals
     candidate_key: stage232_lambda_ell_geometry_literals
@@ -73676,11 +74468,13 @@ candidates:
     - Theta_w_J
     - Theta_w_chi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T15:37:21Z'
+      audited: '2026-06-12T15:37:34Z'
     codex_session:
       by_parameter:
         Theta_w_J:
@@ -73723,6 +74517,13 @@ candidates:
         excerpt: Theta_w_chi = mp.mpf("4.06863235008162")
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:37:21Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:37:34Z'
   fit_stage232_wall_depth_thetas:
     id: fit_stage232_wall_depth_thetas
     candidate_key: stage232_wall_depth_thetas
@@ -74002,11 +74803,13 @@ candidates:
     - mu
     - q_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T15:37:46Z'
+      audited: '2026-06-12T15:37:58Z'
     codex_session:
       by_parameter:
         K_eta:
@@ -74055,6 +74858,13 @@ candidates:
         excerpt: It only forces that correction to lie on a one-dimensional diagonal ray.
         stage: '236'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:37:46Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:37:58Z'
   fit_stage237_branch_sample_point:
     id: fit_stage237_branch_sample_point
     candidate_key: stage237_branch_sample_point
@@ -74314,11 +75124,13 @@ candidates:
     - Pi_tr
     - rho_alpha
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:38:11Z'
+      audited: '2026-06-12T15:38:23Z'
     codex_session:
       by_parameter:
         C_mix:
@@ -74368,6 +75180,13 @@ candidates:
         excerpt: This stage shows that the ratio is not free.
         stage: '240'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:38:11Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:38:23Z'
   fit_stage240_minimal_isotropic_precursor:
     id: fit_stage240_minimal_isotropic_precursor
     candidate_key: stage240_minimal_isotropic_precursor
@@ -74472,11 +75291,13 @@ candidates:
     - Pi_tr_over_C_mix
     - rho_alpha
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:38:35Z'
+      audited: '2026-06-12T15:38:48Z'
     codex_session:
       by_parameter:
         Pi_tr_over_C_mix:
@@ -74520,6 +75341,13 @@ candidates:
         excerpt: carried forward from the Stage 240 selected support demand
         stage: '240'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:38:35Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:38:48Z'
   fit_stage240_zeta_req_fixed_exactly:
     id: fit_stage240_zeta_req_fixed_exactly
     candidate_key: stage240_zeta_req_fixed_exactly
@@ -74536,11 +75364,13 @@ candidates:
     - Pi_tr
     - zeta_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:39:00Z'
+      audited: '2026-06-12T15:39:12Z'
     codex_session:
       by_parameter:
         Pi_tr:
@@ -74582,6 +75412,13 @@ candidates:
         excerpt: 'Then the selected demand product is fixed exactly:'
         stage: '240'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:39:00Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:39:12Z'
   fit_stage241_beta_window_endpoint:
     id: fit_stage241_beta_window_endpoint
     candidate_key: stage241_beta_window_endpoint
@@ -74653,11 +75490,13 @@ candidates:
     - epsilon_star
     - varrho
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:39:25Z'
+      audited: '2026-06-12T15:39:39Z'
     codex_session:
       by_parameter:
         epsilon_star:
@@ -74699,6 +75538,13 @@ candidates:
         excerpt: was no longer free. It was tied to the same selected branch by
         stage: '241'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:39:25Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:39:39Z'
   fit_stage242_placement_coeff_2_11:
     id: fit_stage242_placement_coeff_2_11
     candidate_key: stage242_placement_coeff_2_11
@@ -74832,11 +75678,13 @@ candidates:
     parameter_names:
     - Pi_tr
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:39:52Z'
+      audited: '2026-06-12T15:40:06Z'
     codex_session:
       by_parameter:
         Pi_tr:
@@ -74871,6 +75719,13 @@ candidates:
         excerpt: forces the entire leakage/work compiler through the same selected-support demand that Stage 242 already fixed.
         stage: '244'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:39:52Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:40:06Z'
   fit_stage245_eps_eta_session1_match:
     id: fit_stage245_eps_eta_session1_match
     candidate_key: stage245_eps_eta_session1_match
@@ -75139,11 +75994,13 @@ candidates:
     parameter_names:
     - sigma_min
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:31Z'
+      audit_pending: '2026-06-12T15:40:18Z'
+      audited: '2026-06-12T15:40:31Z'
     codex_session:
       by_parameter:
         sigma_min:
@@ -75178,6 +76035,13 @@ candidates:
         excerpt: The positive-source theorem had forced the lower branch as the only admissible positive candidate.
         stage: '246'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:40:18Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:40:31Z'
   fit_stage246_rF1_coefficient:
     id: fit_stage246_rF1_coefficient
     candidate_key: stage246_rF1_coefficient
@@ -76866,11 +77730,13 @@ candidates:
     - E_edge
     - V_peak
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:57Z'
+      audit_pending: '2026-06-12T15:40:44Z'
+      audited: '2026-06-12T15:40:58Z'
     codex_session:
       by_parameter:
         E_edge:
@@ -76912,6 +77778,13 @@ candidates:
         excerpt: Inside the declared closure it is forced by the exact algebra
         stage: '250'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:40:44Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:40:58Z'
   fit_stage250_goldilocks_inputs:
     id: fit_stage250_goldilocks_inputs
     candidate_key: stage250_goldilocks_inputs
@@ -77124,11 +77997,13 @@ candidates:
     parameter_names:
     - gamma_safe
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:37:58Z'
+      audit_pending: '2026-06-12T15:52:13Z'
+      audited: '2026-06-12T15:52:29Z'
     codex_session:
       by_parameter:
         gamma_safe:
@@ -77163,6 +78038,13 @@ candidates:
         excerpt: This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.
         stage: '251'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:52:13Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:52:29Z'
   fit_stage251_session4_rate_constants:
     id: fit_stage251_session4_rate_constants
     candidate_key: stage251_session4_rate_constants
@@ -77357,11 +78239,13 @@ candidates:
     - V_in
     - mu_eta
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:10Z'
+      audit_pending: '2026-06-12T15:41:16Z'
+      audited: '2026-06-12T15:41:32Z'
     codex_session:
       by_parameter:
         E_exp_min_safe:
@@ -77411,6 +78295,13 @@ candidates:
           completely fixed by
         stage: '252'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:41:16Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:41:32Z'
   fit_stage252_three_to_one_split:
     id: fit_stage252_three_to_one_split
     candidate_key: stage252_three_to_one_split
@@ -77528,11 +78419,13 @@ candidates:
     parameter_names:
     - V_in_match
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:10Z'
+      audit_pending: '2026-06-12T15:41:48Z'
+      audited: '2026-06-12T15:42:04Z'
     codex_session:
       by_parameter:
         V_in_match:
@@ -77567,6 +78460,13 @@ candidates:
         excerpt: 'Then the Stage-252 channel formulas reproduce the Session-IV split exactly:'
         stage: '252'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:41:48Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:42:04Z'
   fit_stage253_K_turn_force_match:
     id: fit_stage253_K_turn_force_match
     candidate_key: stage253_K_turn_force_match
@@ -77850,11 +78750,13 @@ candidates:
     parameter_names:
     - k_eff_req
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:38:11Z'
+      audit_pending: '2026-06-12T15:42:21Z'
+      audited: '2026-06-12T15:42:36Z'
     codex_session:
       by_parameter:
         k_eff_req:
@@ -77889,6 +78791,13 @@ candidates:
         excerpt: This is only a geometric trigger.  The force-matched stiffness requires
         stage: '253'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: CC spot-check dispatch
+      at: '2026-06-12T15:42:21Z'
+    - status: audited
+      note: 'CC internal_consistency completeness-critic: NO mis-classification (genuine derivation confirmed)'
+      at: '2026-06-12T15:42:36Z'
   fit_stage253_legacy_lattice_rate_and_upsilon:
     id: fit_stage253_legacy_lattice_rate_and_upsilon
     candidate_key: stage253_legacy_lattice_rate_and_upsilon

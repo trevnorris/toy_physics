@@ -1,0 +1,354 @@
+batch_id: cc_internal_consistency_completeness_critic
+# ---------------------------------------------------------------------------
+# Internal-consistency completeness-critic spot-check (the ONLY remaining
+# Phase-C step; the free_choice sweep, batches 1-7, is COMPLETE).
+#
+# DESIGN. ~685 internal_consistency candidates are honest in-ledger derivations
+# already covered by layer-1 red-team x2; they are NOT all re-audited. This pass
+# SAMPLES + TARGETS the overclaim-flavored internal_consistency SLUGS, per the
+# execution-plan RESUME directive. The completeness critic ran its OWN
+# whole-ledger slug sweep (NOT just the in-band seeds noticed during batches
+# 6/7): /tmp/enum_ic_overclaim.py -> 84 Tier-A bundles (strong posit-as-derived
+# slug signal: forced/fixed_exactly/backsolve/injection/not_free/_req/...,
+# spanning stages 6-253) and 135 Tier-B bundles (weaker/structural words:
+# exact/closure/canonical/derived/carried/fixed). The curated seed list in
+# STEP6_CLOSEOUT_PUNCHLIST.md is a SUBSET of these (in-band only).
+#
+# THE INVERTED TEST. Unlike the free_choice sweep (where the value is a CHOICE
+# and the flaw is dressing it as derived), here the value is CLASSIFIED as a
+# DERIVATION (constraint_kind: internal_consistency). The fatal flaw hunted is
+# the OPPOSITE mis-classification: a value that is genuinely a POSITED
+# free_choice (an inserted number / tuned knob) OR a back-solve from an EXTERNAL
+# published number, but mis-classified internal_consistency AND labeled
+# derived/forced/exact in a card/notes line -- a posit-as-derived (or
+# fit-as-derived) that ESCAPED the free_choice + published_target sweeps via
+# mis-classification. NO = a genuine algebraic/closure/extremum/limit derivation
+# exists upstream (the slug's "forced/exact" correctly names that consequence).
+# YES = the value is actually inserted/back-solved and the derivation claim is
+# false. The overclaim-flavored slug is the PROMPT to scrutinize, not evidence.
+#
+# RECONCILIATION (seed-list correction): the seed-list 247 lambda_L family
+# (benchmark_pinned/backsolve/closure/fixed_by_recorded_point) and 248 Xi_turn
+# are constraint_kind=published_target (NOT internal_consistency); canonical
+# bundles already AUDITED in batch 1's published_target sweep (backsolve/closure
+# variants are deduped aliases, <MISSING> from manifest). They are OUT OF SCOPE
+# here -- already covered. Logged, not dropped.
+#
+# 085 zeta_req (unblocked_literal_law) already status=audited -> excluded.
+# Tier-A deep-audit targets after exclusions: 83 bundles across 11 units.
+# Tier-B (135) -> cross-family SAMPLE in u12 + population logged not-deep-audited.
+# ---------------------------------------------------------------------------
+concurrency_note: "wave-1 = u01-u08 (8 agents, <=8 cap); wave-2 = u09,u10,u11,u12 (4 agents)"
+units:
+
+  u01_early_algebraic_forcing_A:
+    stages: ['006','019','024','027','029','032','035','036']
+    sensitive: false
+    focus: >
+      Earliest band. Each slug claims an algebraic FORCING of a value by a pole
+      condition / isotropy / eigenvector / locus. Verify each value is a genuine
+      upstream algebraic consequence (the notes show a Solve / pole / locus step
+      producing it), NOT an inserted number relabeled "forced"/"fixed_by"/"unique".
+      ampere_sign (006) is an EM-projected stage -> notes live at repo-root
+      notes/em_projected/ (sign fixed by an audit/convention, verify it is a
+      derived sign not a tuned value). mhat_0 "completely_fixed" (032) and
+      xi_req/g_B_req "unique/req" (035/036): confirm these are determined by the
+      stated constraint, not back-solved.
+    members:
+      - {id: fit_stage006_projected_vector_signs_fixed_by_audit, params: [ampere_sign], files: [fit_stage006_projected_vector_signs_fixed_by_audit__ampere_sign.yaml]}
+      - {id: fit_stage019_K_Sigma_fixed_by_one_pole, params: [K_Sigma], files: [fit_stage019_k_sigma_fixed_by_one_pole__k_sigma.yaml]}
+      - {id: fit_stage024_grouped_bundle_forced_isotropic, params: [grouped_lane_coefficients_20_21_22], files: [fit_stage024_grouped_bundle_forced_isotropic__grouped_lane_coefficients_20_21_22.yaml]}
+      - {id: fit_stage027_max_coupling_branch_not_free, params: [kappa_theta], files: [fit_stage027_max_coupling_branch_not_free__kappa_theta.yaml]}
+      - {id: fit_stage029_deltaK_algebraically_forced, params: [DeltaK_ax], files: [fit_stage029_deltak_algebraically_forced__deltak_ax.yaml]}
+      - {id: fit_stage032_mhat_minus_completely_fixed, params: [mhat_0], files: [fit_stage032_mhat_minus_completely_fixed__mhat_0.yaml]}
+      - {id: fit_stage035_xi_req_unique_locus, params: [xi_req], files: [fit_stage035_xi_req_unique_locus__xi_req.yaml]}
+      - {id: fit_stage036_no_free_hidden_eigenvector_param, params: [g_B_req], files: [fit_stage036_no_free_hidden_eigenvector_param__g_b_req.yaml]}
+
+  u02_early_thresholds_B:
+    stages: ['038','041','044','045','048','049','052','062','067']
+    sensitive: false
+    focus: >
+      Threshold / no-longer-free / self-duality band. "no_longer_free" (044 xi,
+      049 zeta_n_phys) must be conditioned on a NAMED upstream determination
+      (verify the notes show what fixes it). zeta_req appears twice at 048
+      (threshold + unique) -- same value, confirm both are the SAME derived
+      threshold, not two posits. Theta "not_free_entropy_constant" (062): verify
+      it is the derived entropy constant, not a tuned value. 067 self-duality
+      w_g/w_f "forced" + C_res "unique_global_max": confirm extremum/duality
+      derivation, not insertion.
+    members:
+      - {id: fit_stage038_delta_fixed_by_eps_eta, params: [delta], files: [fit_stage038_delta_fixed_by_eps_eta__delta.yaml]}
+      - {id: fit_stage041_n_req_exact_support_loading, params: [n_req], files: [fit_stage041_n_req_exact_support_loading__n_req.yaml]}
+      - {id: fit_stage044_xi_no_longer_free, params: [xi], files: [fit_stage044_xi_no_longer_free__xi.yaml]}
+      - {id: fit_stage045_tracking_forced, params: [R_U], files: [fit_stage045_tracking_forced__r_u.yaml]}
+      - {id: fit_stage048_zeta_req_threshold, params: [zeta_req], files: [fit_stage048_zeta_req_threshold__zeta_req.yaml]}
+      - {id: fit_stage048_zeta_req_unique, params: [zeta_req], files: [fit_stage048_zeta_req_unique__zeta_req.yaml]}
+      - {id: fit_stage049_zeta_phys_no_longer_free, params: [zeta_n_phys], files: [fit_stage049_zeta_phys_no_longer_free__zeta_n_phys.yaml]}
+      - {id: fit_stage052_asymmetry_forced, params: [Omega_asym], files: [fit_stage052_asymmetry_forced__omega_asym.yaml]}
+      - {id: fit_stage062_theta_not_free_entropy_constant, params: [Theta], files: [fit_stage062_theta_not_free_entropy_constant__theta.yaml]}
+      - {id: fit_stage067_C_res_unique_global_max, params: [C_res_squared], files: [fit_stage067_c_res_unique_global_max__c_res_squared.yaml]}
+      - {id: fit_stage067_w_ratio_self_duality_forced, params: [w_g_over_w_f], files: [fit_stage067_w_ratio_self_duality_forced__w_g_over_w_f.yaml]}
+
+  u03_pe_req_chain:
+    stages: ['059','061','075','078','079','082','089','090']
+    sensitive: true
+    focus: >
+      The Pe_req (Peclet-required threshold) chain, carried across 059-090. SLUGS
+      include "forced_not_assumed" (089), "thresholds_exact" (059), "locked_triple"
+      (090), "unique_constructive" (079). KNOWN non-fatal item C1 (punch-list):
+      Pe_fail_chi at 089 carries a FALSE "082" upstream anchor in the script
+      (61-62/92) + CHECKPOINT_CONSTANT_PROVENANCE.md:111; the correct rho-window
+      anchor is "086" (089-notes). That is a stale-anchor metadata item, NOT a
+      mis-classification -- but verify Pe_req itself is a DERIVED threshold (a
+      blocked/unblocked Peclet condition), the same value carried forward, not a
+      tuned number re-inserted per stage. Confirm 059 misattributed_carry is the
+      stale-anchor (metadata) not a value change.
+    members:
+      - {id: fit_stage059_pe_req_misattributed_carry, params: [Pe_req], files: [fit_stage059_pe_req_misattributed_carry__pe_req.yaml]}
+      - {id: fit_stage059_thresholds_exact, params: [Pe_req], files: [fit_stage059_thresholds_exact__pe_req.yaml]}
+      - {id: fit_stage_061_pe_req, params: [Pe_req], files: [fit_stage_061_pe_req__pe_req.yaml]}
+      - {id: fit_stage_075_pe_req, params: [Pe_req], files: [fit_stage_075_pe_req__pe_req.yaml]}
+      - {id: fit_stage_078_pe_req, params: [Pe_req], files: [fit_stage_078_pe_req__pe_req.yaml]}
+      - {id: fit_stage079_unique_constructive_Pe_req, params: [Pe_req], files: [fit_stage079_unique_constructive_pe_req__pe_req.yaml]}
+      - {id: fit_stage_082_pe_req, params: [Pe_req], files: [fit_stage_082_pe_req__pe_req.yaml]}
+      - {id: fit_stage089_Pe_req_forced_not_assumed, params: [Pe_req], files: [fit_stage089_pe_req_forced_not_assumed__pe_req.yaml]}
+      - {id: fit_stage090_locked_triple_Pe_req, params: [Pe_req], files: [fit_stage090_locked_triple_pe_req__pe_req.yaml]}
+
+  u04_yqcons_forced_carrier_chain:
+    stages: ['091','092','093','095','097','098','099','100']
+    sensitive: true
+    focus: >
+      The Y_Q_cons / Yhat_Q_cons "forced carrier" module chain (091-100) feeding
+      the chi_Q quotient. Heavy "forced"/"module_forced"/"forced_carrier" slug
+      density. This is the b052471 chi_Q-provenance neighborhood (chi_Q=1 fixed
+      DOWNSTREAM at 105, not here). Two risks: (1) K_geom "forced_by_identity"
+      (091) -- verify it is forced by a genuine algebraic identity, NOT the
+      K_geom=3K_pole tension that 092 FREES (punch-list E2: 091 says "forced",
+      092 says "no longer forced unless"; that tension is OPENLY logged, not a
+      flaw, but confirm); (2) the carrier-ledger-label "forced" wording (092/095/
+      097/098) is a LABEL on a carried module, not a posited number -- verify the
+      module value is derived/carried, not inserted. N_Q "factorization_forced"
+      (100) + Gamma_5 "forced_by_yhatQcons_script" (099): confirm script-forcing
+      is an algebraic factorization, not a back-solve.
+    members:
+      - {id: fit_stage091_K_geom_forced_by_identity, params: [K_geom], files: [fit_stage091_k_geom_forced_by_identity__k_geom.yaml]}
+      - {id: fit_stage091_module_forced_paper, params: [Y_Q_cons], files: [fit_stage091_module_forced_paper__y_q_cons.yaml]}
+      - {id: fit_stage092_forced_carrier_ledger_label, params: [Y_Q_cons], files: [fit_stage092_forced_carrier_ledger_label__y_q_cons.yaml]}
+      - {id: fit_stage093_module_forced_statement, params: [Y_Q_cons], files: [fit_stage093_module_forced_statement__y_q_cons.yaml]}
+      - {id: fit_stage095_forced_carrier_ledger_label, params: [Y_Q_cons], files: [fit_stage095_forced_carrier_ledger_label__y_q_cons.yaml]}
+      - {id: fit_stage097_yhatQcons_forced_carrier, params: [Yhat_Q_cons], files: [fit_stage097_yhatqcons_forced_carrier__yhat_q_cons.yaml]}
+      - {id: fit_stage098_forced_carrier_card, params: [Yhat_Q_cons], files: [fit_stage098_forced_carrier_card__yhat_q_cons.yaml]}
+      - {id: fit_stage098_support_demand_exact, params: [support_ratio], files: [fit_stage098_support_demand_exact__support_ratio.yaml]}
+      - {id: fit_stage099_forced_by_yhatQcons_script, params: [Gamma_5], files: [fit_stage099_forced_by_yhatqcons_script__gamma_5.yaml]}
+      - {id: fit_stage100_factorization_forced_script, params: [N_Q], files: [fit_stage100_factorization_forced_script__n_q.yaml]}
+
+  u05_chiQ_scalar_fixing:
+    stages: ['073','104','105','108','111','119']
+    sensitive: true
+    focus: >
+      THE canonical overclaim site. chi_Q "last_scalar_fixed_exactly" (105) is the
+      chi_Q=1 value whose provenance was fixed at b052471 (kept symbolic upstream;
+      fixed downstream). Verify card105/notes105 show chi_Q=1 as a DERIVED scalar
+      (factorization/normalization consequence), not posited -- and that the "fixed
+      exactly" attaches to the algebra. Gamma_5_can "not_free" (104): confirm the
+      canonical Gamma_5 is determined. eta "pinned_37" (073): eta=37 is the
+      Lambda_ell=L/a*... integer carried from the 37/20 aspect ratio (free_choice,
+      audited batches 1/2/4) -- here eta is the DERIVED integer pin from that
+      carried ratio; confirm it is an algebraic consequence (37/20 / (1/20)=37),
+      not an independent posit. beta/sigma_W "forced" (108/111) + mathfrak_g
+      "fixed_exactly_once_r" (119): confirm branch/zero forcing is algebraic.
+    members:
+      - {id: fit_stage073_eta_pinned_37, params: [eta], files: [fit_stage073_eta_pinned_37__eta.yaml]}
+      - {id: fit_stage104_gamma5_not_free, params: [Gamma_5_can], files: [fit_stage104_gamma5_not_free__gamma_5_can.yaml]}
+      - {id: fit_stage105_last_scalar_fixed_exactly, params: [chi_Q], files: [fit_stage105_last_scalar_fixed_exactly__chi_q.yaml]}
+      - {id: fit_stage108_beta_forced_positive_branch, params: [beta], files: [fit_stage108_beta_forced_positive_branch__beta.yaml]}
+      - {id: fit_stage111_sigmaW_forced_to_zero, params: [sigma_W], files: [fit_stage111_sigmaw_forced_to_zero__sigma_w.yaml]}
+      - {id: fit_stage119_g_fixed_exactly_once_r, params: [mathfrak_g], files: [fit_stage119_g_fixed_exactly_once_r__mathfrak_g.yaml]}
+
+  u06_branch_selection_backsolve:
+    stages: ['125','126','127','128','130']
+    sensitive: true
+    focus: >
+      THE genuine posit-as-derived RISK surface: slugs literally say "backsolve".
+      xi_star "admixture_backsolve" (126), x_star_exp/x_star_slab "backsolve" (127):
+      a back-solve from a target is EXACTLY the fit-as-derived failure mode --
+      scrutinize HARD. Open notes127/126: is x_star/xi_star back-solved from a
+      DOWNSTREAM target value (-> should be free_choice or published_target, a
+      mis-classification YES), or is it the closed-form solution of an upstream
+      equation (-> genuine internal_consistency, NO)? "lower_branch_unique/
+      uniquely_selected" (125/128 g_star): a branch SELECTION by a uniqueness
+      criterion is a derivation IF the criterion is upstream; confirm it is not a
+      hand-pick. r_F1 "fixed_by_geometry" (128) ties to the 37/20 geometry. Pi_star
+      "exact_unique" (130).
+    members:
+      - {id: fit_stage125_lower_branch_unique, params: [branch_sign], files: [fit_stage125_lower_branch_unique__branch_sign.yaml]}
+      - {id: fit_stage126_xi_star_admixture_backsolve, params: [xi_star], files: [fit_stage126_xi_star_admixture_backsolve__xi_star.yaml]}
+      - {id: fit_stage127_slab_depth_unique, params: [x_star_slab], files: [fit_stage127_slab_depth_unique__x_star_slab.yaml]}
+      - {id: fit_stage127_x_star_exp_backsolve, params: [x_star_exp], files: [fit_stage127_x_star_exp_backsolve__x_star_exp.yaml]}
+      - {id: fit_stage127_x_star_slab_backsolve, params: [x_star_slab], files: [fit_stage127_x_star_slab_backsolve__x_star_slab.yaml]}
+      - {id: fit_stage128_lower_branch_uniquely_selected, params: [g_star], files: [fit_stage128_lower_branch_uniquely_selected__g_star.yaml]}
+      - {id: fit_stage128_rF1_fixed_by_geometry, params: [r_F1], files: [fit_stage128_rf1_fixed_by_geometry__r_f1.yaml]}
+      - {id: fit_stage130_pi_star_exact_unique, params: [Pi_star], files: [fit_stage130_pi_star_exact_unique__pi_star.yaml]}
+
+  u07_gain_closure_forcing:
+    stages: ['141','142','144','148','151','156']
+    sensitive: false
+    focus: >
+      Mouth-gain / fixed-point-closure band. M_q/R_q "no_longer_free" (141/142):
+      verify each is fixed by the named fixed-point/closure, not a posit (these
+      are the gains the free_choice batch-4 u-units found honestly conditioned on
+      "once the mixed tube is identified"). r_F1 "radical_constant_forced_by_rf1"
+      (148): r_F1 = sqrt(4107-100pi^2)/(10pi) closed form -- confirm the radical
+      is the derived constant, not the decimal hardcode (punch-list F2 is a
+      script-form cosmetic on 162, not here). Sigma0_can "unique_traction_renorm"
+      (156): confirm derived renormalization. delta_Pi_act "fixed_by_covariances"
+      (151) + Pi_star "unique_regular_canonical_branch" (144): confirm closure.
+    members:
+      - {id: fit_stage141_gain_pair_no_longer_free, params: [M_q], files: [fit_stage141_gain_pair_no_longer_free__m_q.yaml]}
+      - {id: fit_stage142_three_quantities_no_longer_free, params: [R_q], files: [fit_stage142_three_quantities_no_longer_free__r_q.yaml]}
+      - {id: fit_stage144_unique_regular_canonical_branch, params: [Pi_star], files: [fit_stage144_unique_regular_canonical_branch__pi_star.yaml]}
+      - {id: fit_stage148_radical_constant_forced_by_rf1, params: [r_F1], files: [fit_stage148_radical_constant_forced_by_rf1__r_f1.yaml]}
+      - {id: fit_stage151_correction_fixed_by_covariances, params: [delta_Pi_act], files: [fit_stage151_correction_fixed_by_covariances__delta_pi_act.yaml]}
+      - {id: fit_stage156_unique_traction_renormalization, params: [Sigma0_can], files: [fit_stage156_unique_traction_renormalization__sigma0_can.yaml]}
+
+  u08_injection_and_stage192_neighborhood:
+    stages: ['164','165','191','193','194']
+    sensitive: true
+    focus: >
+      The stage-192 failure neighborhood (A1 verdict_logged: chi_Q/Delta_Q/N_Q
+      card re-attribution) + "point_injection"/"pinned" slugs. g_star
+      "family1_point_injection" (164) + g_frak "pinned_parent_ratios" (165): an
+      "injection" of a point is the prime mis-classification suspect -- verify it
+      is a CARRIED family-1 reference value (free_choice already audited) being
+      EVALUATED here (internal_consistency = the algebra at that point), NOT a new
+      external number injected. Delta_branch "fixed_by_previous_stages" (191),
+      Delta_pole "one_pole_carrier_forced" (193), Sigma_2 "even_deformations_
+      not_free" (194): these are the even-sector deformation moments around the
+      192/194 chi_Q-fixing -- confirm each is an algebraic consequence of the
+      pole/parity structure, not a posit. Be especially literal here.
+    members:
+      - {id: fit_stage164_family1_point_injection, params: [g_star], files: [fit_stage164_family1_point_injection__g_star.yaml]}
+      - {id: fit_stage165_pinned_parent_ratios, params: [g_frak], files: [fit_stage165_pinned_parent_ratios__g_frak.yaml]}
+      - {id: fit_stage191_fixed_by_previous_stages, params: [Delta_branch], files: [fit_stage191_fixed_by_previous_stages__delta_branch.yaml]}
+      - {id: fit_stage193_one_pole_carrier_forced, params: [Delta_pole], files: [fit_stage193_one_pole_carrier_forced__delta_pole.yaml]}
+      - {id: fit_stage194_even_deformations_not_free, params: [Sigma_2], files: [fit_stage194_even_deformations_not_free__sigma_2.yaml]}
+
+  u09_band200_kill_test_budgets:
+    stages: ['200','219','223','224','225','226']
+    sensitive: true
+    focus: >
+      Band-200 screens / kill-test budgets. KNOWN item: 223 R_Q
+      "lambda02_rq_dual_engine_overclaim" -- the lambda_W=0.2 lower-wall R_Q was a
+      Phase-A surfaced provenance defect (a recorded dual-engine OVERCLAIM). Verify
+      whether R_Q at lambda_W=0.2 is a genuine dual-engine-confirmed derivation or
+      whether the "dual_engine" label overstates (the slug self-flags overclaim) --
+      if the value itself is a derived screen output it is NO with a
+      disclosure/label note; if it is a posited budget dressed as derived it is
+      YES. 224 kill_test budgets P_crit_* "slice_anchored" + "carryover_ceilings":
+      these are screen pass/fail BUDGETS anchored to a carried slice -- confirm
+      they are derived/carried ceilings, not tuned thresholds. x_K/D_01
+      "forced_zero" (225/226): confirm a symmetry/parity FORCES them to zero
+      (genuine), not a convenience set-to-zero. M_star "rederived_not_posited"
+      (200): the slug ASSERTS rederived -- verify the notes actually re-derive it.
+    members:
+      - {id: fit_stage200_mismatch_chart_rederived_not_posited, params: [M_star], files: [fit_stage200_mismatch_chart_rederived_not_posited__m_star.yaml]}
+      - {id: fit_stage219_delta_v_mix_fixed_by_theorem, params: [delta_V_mix], files: [fit_stage219_delta_v_mix_fixed_by_theorem__delta_v_mix.yaml]}
+      - {id: fit_stage223_lambda02_rq_dual_engine_overclaim, params: [R_Q_lower_wall_lambdaW_0p2], files: [fit_stage223_lambda02_rq_dual_engine_overclaim__r_q_lower_wall_lambdaw_0p2.yaml]}
+      - {id: fit_stage224_kill_test_budgets_slice_anchored, params: [barP0_compat, P_crit_both_10, P_crit_both_30, P_crit_one_10, P_crit_one_30], files: [fit_stage224_kill_test_budgets_slice_anchored__barp0_compat.yaml, fit_stage224_kill_test_budgets_slice_anchored__p_crit_both_10.yaml, fit_stage224_kill_test_budgets_slice_anchored__p_crit_both_30.yaml, fit_stage224_kill_test_budgets_slice_anchored__p_crit_one_10.yaml, fit_stage224_kill_test_budgets_slice_anchored__p_crit_one_30.yaml]}
+      - {id: fit_stage224_stage223_carryover_ceilings, params: [Pcrit_both_10], files: [fit_stage224_stage223_carryover_ceilings__pcrit_both_10.yaml]}
+      - {id: fit_stage225_xk_xm_forced_zero, params: [x_K], files: [fit_stage225_xk_xm_forced_zero__x_k.yaml]}
+      - {id: fit_stage226_d01_forced_zero, params: [D_01], files: [fit_stage226_d01_forced_zero__d_01.yaml]}
+
+  u10_band232_5pn_and_loading:
+    stages: ['232','236','240','241','244']
+    sensitive: true
+    focus: >
+      THE highest-risk unit for a FIT-as-derived (published_target masquerade).
+      232 "known_5pn_data_injection" (rho_alpha_max) + "theta_w_5pn_injection"
+      (Theta_w): the slug says KNOWN 5PN DATA INJECTED. The bundle carries a
+      needs_triage derive_vs_fit_mismatch finding ("rho_alpha_max ~3.4675 is
+      DERIVED at Stage 232 as 1+zeta_phys"). CRUX: is the 5PN number an EXTERNAL
+      post-Newtonian literature value injected as a target (-> published_target,
+      mis-classified internal -> YES), or an INTERNAL EM-projected-chain quantity
+      that merely shares the "5pn" name (seed-list says internal, not a
+      publication)? Open notes232: trace whether rho_alpha_max/Theta_w come from
+      1+zeta_phys (internal) or are pinned to a cited PN coefficient. The 240
+      loading chain (C_mix/rho_alpha/zeta_req) is DERIVED from the posited c0=3/4
+      module (batch-7 u01: the downstream exact-algebra chain; the POSIT c0 is the
+      free_choice already audited -- here the DERIVED ratios are internal_
+      consistency, confirm). K_eta "equal_drift_ray_forced" (236), varrho
+      "no_longer_free" (241), Pi_tr "leakage_forced_through_fixed_demand" (244):
+      confirm algebraic forcing.
+    members:
+      - {id: fit_stage232_known_5pn_data_injection, params: [rho_alpha_max], files: [fit_stage232_known_5pn_data_injection__rho_alpha_max.yaml]}
+      - {id: fit_stage232_theta_w_5pn_injection, params: [Theta_w], files: [fit_stage232_theta_w_5pn_injection__theta_w.yaml]}
+      - {id: fit_stage236_equal_drift_ray_forced, params: [K_eta], files: [fit_stage236_equal_drift_ray_forced__k_eta.yaml]}
+      - {id: fit_stage240_loading_ratio_not_free, params: [C_mix], files: [fit_stage240_loading_ratio_not_free__c_mix.yaml]}
+      - {id: fit_stage240_rho_alpha_selected_demand, params: [rho_alpha], files: [fit_stage240_rho_alpha_selected_demand__rho_alpha.yaml]}
+      - {id: fit_stage240_zeta_req_fixed_exactly, params: [zeta_req], files: [fit_stage240_zeta_req_fixed_exactly__zeta_req.yaml]}
+      - {id: fit_stage241_varrho_no_longer_free, params: [varrho], files: [fit_stage241_varrho_no_longer_free__varrho.yaml]}
+      - {id: fit_stage244_leakage_forced_through_fixed_demand, params: [Pi_tr], files: [fit_stage244_leakage_forced_through_fixed_demand__pi_tr.yaml]}
+
+  u11_band246_calibration:
+    stages: ['246','250','252','253']
+    sensitive: true
+    focus: >
+      The Stage 246-253 calibration / safe-edge / force-matched band (the batch-7
+      u06 calibration-slice neighborhood, free_choice side already vetted: card253
+      "a calibration slice, not a new branch law"). sigma_min "lower_branch_forced"
+      (246): the bundle finding says it is a DERIVED exact minimum of the posited
+      two-mode source family; "forced" refers to the carried theorem forcing a
+      branch -- verify. E_edge "goldilocks_edge_forced" (250) + E_exp_min_safe
+      "completely_fixed" (252): these are survival/safe-edge EDGES -- confirm each
+      is FORCED by survival/export algebra (a derived edge), not a posited cut.
+      V_in_match "vin_benchmark_calibration_match" (252) + k_eff_req
+      "force_matched" (253): "calibration_match"/"force_matched" = a FIT by
+      construction. CRUX: are these honestly DISCLOSED as calibration/force-match
+      (-> a fit, but the calibration target is INTERNAL self-consistency, and the
+      card hedges it as such -> NO), or are they dressed as a DERIVED branch law
+      (-> YES)? card253:64 "force-matched stiffness ... only a geometric trigger".
+    members:
+      - {id: fit_stage246_lower_branch_forced, params: [sigma_min], files: [fit_stage246_lower_branch_forced__sigma_min.yaml]}
+      - {id: fit_stage250_goldilocks_edge_forced, params: [E_edge], files: [fit_stage250_goldilocks_edge_forced__e_edge.yaml]}
+      - {id: fit_stage252_e_exp_min_completely_fixed, params: [E_exp_min_safe], files: [fit_stage252_e_exp_min_completely_fixed__e_exp_min_safe.yaml]}
+      - {id: fit_stage252_vin_benchmark_calibration_match, params: [V_in_match], files: [fit_stage252_vin_benchmark_calibration_match__v_in_match.yaml]}
+      - {id: fit_stage253_k_eff_force_matched, params: [k_eff_req], files: [fit_stage253_k_eff_force_matched__k_eff_req.yaml]}
+
+  u12_tierB_crossfamily_sample:
+    stages: ['002','026','031','040','054','077','094','115','138','139','148','187','194','222','224','228','230','251']
+    sensitive: false
+    tier: B
+    focus: >
+      Tier-B SAMPLE (the "samples" half of the mandate). Tier-B = 135 internal_
+      consistency bundles whose slugs carry WEAKER/structural overclaim words
+      (exact/closure/canonical/derived/carried/fixed/determined). Across all 7
+      free_choice batches the decisive, repeatedly-confirmed finding was that
+      these words attach to an algebraic IDENTITY / closure / law among symbols,
+      never to a posited number. This unit SPOT-CHECKS that the SAME holds for
+      internal_consistency by sampling one representative per family-word across
+      the bands. For each: confirm the "exact/derived/canonical/closure" attaches
+      to a genuine derivation step (identity/Solve/normalization/extremum), NOT to
+      an inserted value relabeled. Specifically named seed-list Tier-B items to
+      INCLUDE: 224 grouped_signature_exact (b_P0_slope), 228 k_compat_exact_
+      stiffness (k_compat), 230 stage228_rigid_slope_carry (s_minus_den). These
+      are representative; the full Tier-B population (135) is logged as
+      scanned-not-individually-deep-audited with this sampling rationale.
+    members:
+      - {id: fit_stage002_overlap_factor_4pi_derived, params: ['(sample)'], files: [fit_stage002_overlap_factor_4pi_derived__overlap_factor_4pi.yaml]}
+      - {id: fit_stage026_kappa_exact_overlap, params: ['(sample)'], files: [fit_stage026_kappa_exact_overlap__kappa.yaml]}
+      - {id: fit_stage031_hf_identity_derived_not_assumed, params: ['(sample)'], files: [fit_stage031_hf_identity_derived_not_assumed__dlambda_minus_dalpha.yaml]}
+      - {id: fit_stage040_lambda_exact_closed_form, params: ['(sample)'], files: [fit_stage040_lambda_exact_closed_form__lambda_minus.yaml]}
+      - {id: fit_stage054_robin_branch_determined, params: ['(sample)'], files: [fit_stage054_robin_branch_determined__a_k.yaml]}
+      - {id: fit_stage077_If_exact_canonical, params: ['(sample)'], files: [fit_stage077_if_exact_canonical__i_f.yaml]}
+      - {id: fit_stage094_static_split_assigned_not_derived, params: ['(sample)'], files: [fit_stage094_static_split_assigned_not_derived__c_geom.yaml]}
+      - {id: fit_stage115_gq_exact_two_branch_law, params: ['(sample)'], files: [fit_stage115_gq_exact_two_branch_law__g_q.yaml]}
+      - {id: fit_stage138_rq_quarter_derived_not_assumed, params: ['(sample)'], files: [fit_stage138_rq_quarter_derived_not_assumed__r_q.yaml]}
+      - {id: fit_stage139_gains_land_exactly_on_canonical, params: ['(sample)'], files: [fit_stage139_gains_land_exactly_on_canonical__m_q_comp_star.yaml]}
+      - {id: fit_stage148_canonical_first_order_shifts_exact, params: ['(sample)'], files: [fit_stage148_canonical_first_order_shifts_exact__delta_pi_lambda.yaml]}
+      - {id: fit_stage187_exact_level_set_orbit_identity, params: ['(sample)'], files: [fit_stage187_exact_level_set_orbit_identity__c_nt_star.yaml]}
+      - {id: fit_stage194_chi_q_fixed_on_canonical_branch, params: ['(sample)'], files: [fit_stage194_chi_q_fixed_on_canonical_branch__chi_q.yaml]}
+      - {id: fit_stage222_exact_overlap_constant_kappa, params: ['(sample)'], files: [fit_stage222_exact_overlap_constant_kappa__kappa.yaml]}
+      - {id: fit_stage224_grouped_signature_exact, params: [b_P0_slope], files: [fit_stage224_grouped_signature_exact__b_p0_slope.yaml]}
+      - {id: fit_stage228_k_compat_exact_stiffness, params: [k_compat], files: [fit_stage228_k_compat_exact_stiffness__k_compat.yaml]}
+      - {id: fit_stage230_stage228_rigid_slope_carry, params: [s_minus_den], files: [fit_stage230_stage228_rigid_slope_carry__s_minus_den.yaml]}
+      - {id: fit_stage251_gamma_safe_exact_replacement, params: ['(sample)'], files: [fit_stage251_gamma_safe_exact_replacement__gamma_safe.yaml]}

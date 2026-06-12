@@ -61,12 +61,12 @@ inventory, trust, coverage, and cleanup sequencing. \\
 
 The first two layers below establish internal consistency and value
 reconciliation.  They cannot, by themselves, detect a fit dressed as a
-derivation; the adversarial fit-vs-derive layer is designed for exactly that
-failure mode and has not yet been run.
+derivation; the adversarial fit-vs-derive layer is the layer-2 audit for that
+failure mode, and it is now complete with no surviving fatal flaw.
 
 \begin{longtable}{L{0.38\textwidth}L{0.52\textwidth}}
 \toprule
-Layer & Status as of 2026-06-10 \\
+Layer & Status as of 2026-06-12 \\
 \midrule
 \endhead
 Internal-consistency red-team (SymPy + Mathematica dual-engine, script audit) &
@@ -74,8 +74,16 @@ Complete: 253/253 stages, with two full independent passes. \\
 \addlinespace
 Script-to-doc value reconciliation (second-pass augmentation) & Complete. \\
 \addlinespace
-Adversarial fit-vs-derive audit & Designed in
-\ReaderPath{docs/adversarial_audit_deployment.md}; not yet run. \\
+Adversarial fit-vs-derive audit & Layer-2 fit-vs-derive audit COMPLETE:
+no surviving fatal flaw.  The free-choice, published-target, HIGH, and
+internal-consistency completeness-critic surfaces are cleared in the
+toy-analog audit record.  Two non-fatal \texttt{verdict\_logged} PARTIALs
+remain recorded for close-out scoping: Stage~192 card re-attribution and
+\(\gamma_0\) badge scoping, both contingent on existing user-gated items.
+Archive disclosure is generated at
+\ReaderPath{paper/appendices/fit_insertion_index.tex} and
+\ReaderPath{paper/appendices/parameter_provenance_audit.tex}; the raw audit
+record remains under \ReaderPath{redteam_adversarial/}. \\
 \addlinespace
 Stage-1 branch realization (target-blind numerical PDE) & Gated on the
 adversarial layer by \ReaderPath{docs/branch_realization_execution_plan.md};

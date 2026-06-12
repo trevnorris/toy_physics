@@ -141,6 +141,11 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - [ ] **G1.** Seeded-chain coverage check should resolve aliases→canonicals before flagging missing (6 false alarms). _[exec plan §line 65]_
 - [ ] **G2.** `frac_54_5` / mention-fallback extractor tightening. _[exec plan §line 65]_
 - [ ] **G3.** Tier-2/3 value-fill for the 813 low-confidence target records (opportunistic). _[exec plan §line 65]_
+- [ ] **G4.** Per-stage `fit-vs-derive-audited` audit-status emission: the vocabulary is defined in
+  `paper/frontmatter/02_claim_status_firewall.tex` and stated machine-generated, but no generator
+  emits per-stage audit-status tags. Now that layer-2 ran, a generator could stamp
+  `fit-vs-derive-audited` on audited stages from the MANIFEST. NOT hand-tagged (values generated, never
+  hand-tagged). Step-6 Part-A A-5 finding; deferred follow-up. _[Step 6 Part A]_
 
 ## CC. Internal-consistency completeness-critic items (the final Phase-C step — all NON-FATAL)
 The completeness-critic spot-check deep-audited the overclaim-flavored internal_consistency slug

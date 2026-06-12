@@ -91,6 +91,14 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
   required**): `g2_common_tangent` (187 — no literal in notes; denotes the tangent space T_id G_* of which Lambda_1 is
   one free direction) and `doubled_slope_factors` (178 — the factor-2 lives in the derived identity ν_r=2(𝔭_r−𝔡_r),
   not in κ_1/d_r being "doubled"). Informational only. _[batch 5, u04/u05]_
+- [ ] **D6.** Two scanner artifacts (audit-internal candidate_ids, NOT real parameters → **no fix required**, optional
+  candidate-list cleanup): `fit_stage_224_hat` (the `hat` param is a LaTeX-command fragment scanner-extracted from
+  `\hat m_0`; mhat_0 is an undetermined lower-bounded branch factor at 224, not a posited value) and
+  `fit_stage_200_stale_output` (empty bundle, zero constraints). SAME class as D1 (V_0f token). _[batch 6, u05/u01]_
+- [ ] **D7.** Stage-232 `L_over_a` scanner dedup + mis-name: `fit_stage232_family1_geometry_normalization` and
+  `fit_stage232_lambda_ell_geometry_literals` are duplicate scanner candidates for the same literal `20`, and the param
+  name `L_over_a` is a stale_provenance_anchor mislabel of the **inverse thin-wall ratio a/ℓ=20** (NOT the aspect ratio
+  L/a=37/20). Audit-internal, **no content fix**; optional dedup/rename note. _[batch 6, u04]_
 
 ## E. Disclosure-completeness (optional notes additions)
 - [ ] **E1.** f'(0)=1 is documented only in the sympy script (`…stage065…:118`), absent from notes/ — optional notes mention. _[batch 2, u09]_
@@ -98,6 +106,10 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
   tension is OPENLY logged at 092, not concealed — optional cross-note. _[batch 3, u06]_
 - [ ] **E3.** `D_W_bare` appears only in the stage137 sympy script, absent from notes137 (bundle self-flags severity:low)
   — optional notes mention (parallels E1). _[batch 4, u06]_
+- [ ] **E4.** Batch-6 provenance/disclosure gaps (non-overclaim, optional fills): `Xi_prefactor_100` (the literal 100 in
+  Ξ_χ=100·Θ_w·Λ_ℓ² has no in-stage derivation; FoM structure traces to Stage 066); `V_known` float genealogy below 222
+  is undocumented (disclosed illustrative, so not an overclaim); `beta_path` (base-2) / `KW_t` (exp-ramp) / `Rratio_base`
+  (=7/6) live only in scripts, not notes (script-only illustrative path/sample coordinates). _[batch 6, u01/u02/u04]_
 
 ## F. Script wording
 - [ ] **F1.** `scripts/…stage247…` (":239 independently derived / :248 falsifiable") overstates the tautological
@@ -119,5 +131,8 @@ Content-harmless label drift; see [[project-numbering-drift-root-cause]] — con
 - Batch 3: `reports/_batch_c3_verdicts.md` §OPTIONAL (8 items)
 - Batch 4: `reports/_batch_c4_verdicts.md` §OPTIONAL (6 items: C12-C15, E3, D3)
 - Batch 5: `reports/_batch_c5_verdicts.md` §OPTIONAL (5 items: A8, F2, D4, D5, + the verdict_logged γ₀ PARTIAL = A8)
+- Batch 6: `reports/_batch_c6_verdicts.md` §OPTIONAL (D6, D7, E4; NO new A-class — band 200–239 had zero card/notes
+  overclaim. Also logged there: the in-band internal_consistency overclaim-flavored slugs = completeness-critic seed
+  targets, NOT Step-6 fix items.)
 - Tooling: `docs/adversarial_audit_execution_plan.md` line 65
-- _Batches 6-N (free_choice 200-259) + the internal_consistency completeness-critic: append here as they land._
+- _Batch 7 (free_choice 240-259) + the internal_consistency completeness-critic: append here as they land._

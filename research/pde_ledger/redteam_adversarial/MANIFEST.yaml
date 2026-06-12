@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-12T07:35:41Z'
+updated_at: '2026-06-12T08:08:40Z'
 state_machine:
 - pending
 - scanned
@@ -34367,11 +34367,13 @@ candidates:
     - expand_log
     - expand_power_exp
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T07:57:48Z'
+      audited: '2026-06-12T08:04:06Z'
     codex_session:
       by_parameter:
         eps_beta:
@@ -34435,6 +34437,13 @@ candidates:
           is produced by each engine''s own `series`/`Series`+`removeO`/`Normal`, and I re-derived it by hand independently
           (it matches).'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:57:48Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:04:06Z'
   fit_stage_200_stale_output:
     id: fit_stage_200_stale_output
     candidate_key: stage_200_stale_output
@@ -34915,11 +34924,13 @@ candidates:
     - closure_num_stage197
     - gamma_path
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T07:58:12Z'
+      audited: '2026-06-12T08:04:30Z'
     codex_session:
       by_parameter:
         beta_path:
@@ -34997,6 +35008,13 @@ candidates:
           mismatch (no deliverable value differs), but it is part of the same script/output-band label-drift family flagged
           for the dedicated numbering pass and is worth noting here for that pass.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:58:12Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:04:30Z'
   fit_stage_203_kw_t:
     id: fit_stage_203_kw_t
     candidate_key: stage_203_kw_t
@@ -35031,11 +35049,13 @@ candidates:
     - q_nt
     - q_tr
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T07:58:24Z'
+      audited: '2026-06-12T08:04:42Z'
     codex_session:
       by_parameter:
         KW_t:
@@ -35124,6 +35144,13 @@ candidates:
           — the verifier''s re-run fixes it). I confirm I read the card, the notes, and the Part VI appendix, and the script''s
           verified claim matches the paper''s stated `Output`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:58:24Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:04:42Z'
   fit_stage_204_delta:
     id: fit_stage_204_delta
     candidate_key: stage_204_delta
@@ -36983,11 +37010,13 @@ candidates:
     - DeltaV_req
     - V_known
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T07:58:48Z'
+      audited: '2026-06-12T08:05:06Z'
     codex_session:
       by_parameter:
         DeltaV_req:
@@ -37030,6 +37059,13 @@ candidates:
         excerpt: '| benchmark V_known(1)=1.181909222592, DeltaV_req(1)=1.081909222592 | py L213-215 | notes L351,355-356 |
           MATCH |'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:58:48Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:05:06Z'
   fit_stage_222_lambda_b:
     id: fit_stage_222_lambda_b
     candidate_key: stage_222_lambda_b
@@ -37051,11 +37087,13 @@ candidates:
     - lambda_U
     - lambda_W
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T07:59:36Z'
+      audited: '2026-06-12T08:05:53Z'
     codex_session:
       by_parameter:
         lambda_B:
@@ -37137,6 +37175,13 @@ candidates:
         excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must
           determine the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:36Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:05:53Z'
   fit_stage_222_n_star:
     id: fit_stage_222_n_star
     candidate_key: stage_222_n_star
@@ -37613,11 +37658,13 @@ candidates:
     - tfrac
     - varepsilon
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T08:01:24Z'
+      audited: '2026-06-12T08:07:38Z'
     codex_session:
       by_parameter:
         Delta_rm:
@@ -37811,6 +37858,13 @@ candidates:
           point $\bar P_0\approx0.002069792318062885$ for the four carried ceilings. The numerical budgets and ceilings are
           `\StatusNumerical{}`; the symbolic compiler is exact.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:01:24Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:07:38Z'
   fit_stage_224_hat:
     id: fit_stage_224_hat
     candidate_key: stage_224_hat
@@ -37832,11 +37886,13 @@ candidates:
     parameter_names:
     - hat
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T08:01:36Z'
+      audited: '2026-06-12T08:07:50Z'
     codex_session:
       by_parameter:
         hat:
@@ -37908,6 +37964,13 @@ candidates:
         stage: '224'
         excerpt: 7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:01:36Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:07:50Z'
   fit_stage_225_d_4:
     id: fit_stage_225_d_4
     candidate_key: stage_225_d_4
@@ -38905,11 +38968,13 @@ candidates:
     parameter_names:
     - lambda_mu_1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:01:00Z'
+      audited: '2026-06-12T08:07:15Z'
     codex_session:
       by_parameter:
         lambda_mu_1:
@@ -38957,6 +39022,13 @@ candidates:
         stage: '232'
         excerpt: for the benchmark \(\lambda_\mu=1\).
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:01:00Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:07:15Z'
   fit_stage_232_theta_w_j:
     id: fit_stage_232_theta_w_j
     candidate_key: stage_232_theta_w_j
@@ -39257,11 +39329,13 @@ candidates:
     - T_U
     - mu
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:11:49Z'
       scanned: '2026-06-11T08:11:49Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:02:11Z'
+      audited: '2026-06-12T08:08:25Z'
     codex_session:
       by_parameter:
         T_U:
@@ -39305,6 +39379,13 @@ candidates:
           orbit-lock problem is still codimension two, and the entire post-static microscopic obstruction is the single dressing
           coordinate `q_\eta` carried by an equal-drift `K_\eta`–`\mu` ray at fixed `T_U`.'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:02:11Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:08:25Z'
   fit_stage_237_epsilon_eta:
     id: fit_stage_237_epsilon_eta
     candidate_key: stage_237_epsilon_eta
@@ -69839,11 +69920,13 @@ candidates:
     - C_tr_target
     - delta_U_star_graph
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:20Z'
+      audit_pending: '2026-06-12T07:58:00Z'
+      audited: '2026-06-12T08:04:18Z'
     codex_session:
       by_parameter:
         C_tr_target:
@@ -69885,6 +69968,13 @@ candidates:
         excerpt: So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice.
         stage: '202'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:58:00Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:04:18Z'
   fit_stage208_canonical_two_ray_screen:
     id: fit_stage208_canonical_two_ray_screen
     candidate_key: stage208_canonical_two_ray_screen
@@ -70518,11 +70608,13 @@ candidates:
     - epsilon
     - epsilon_barrier
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T07:58:36Z'
+      audited: '2026-06-12T08:04:54Z'
     codex_session:
       by_parameter:
         V_known_x1:
@@ -70602,6 +70694,13 @@ candidates:
     alias_ids:
     - fit_stage222_vknown_barrier_benchmark
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:58:36Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:04:54Z'
   fit_stage222_numerical_primitive_slice:
     id: fit_stage222_numerical_primitive_slice
     candidate_key: stage222_numerical_primitive_slice
@@ -70625,11 +70724,13 @@ candidates:
     - lambda_W
     - varpi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:33Z'
+      audit_pending: '2026-06-12T07:59:12Z'
+      audited: '2026-06-12T08:05:29Z'
     codex_session:
       by_parameter:
         K:
@@ -70729,6 +70830,13 @@ candidates:
         excerpt: '        lam_B: sp.Rational(1, 2),'
         stage: '222'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:12Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:05:29Z'
   fit_stage222_primitive_sample_slice:
     id: fit_stage222_primitive_sample_slice
     candidate_key: stage222_primitive_sample_slice
@@ -70754,11 +70862,13 @@ candidates:
     - lam_W
     - varpi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:34Z'
+      audit_pending: '2026-06-12T07:59:24Z'
+      audited: '2026-06-12T08:05:41Z'
     codex_session:
       by_parameter:
         K:
@@ -70875,6 +70985,13 @@ candidates:
         excerpt: numerical_slice = {
         stage: '222'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:24Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:05:41Z'
   fit_stage222_vknown_barrier_benchmark:
     id: fit_stage222_vknown_barrier_benchmark
     candidate_key: stage222_vknown_barrier_benchmark
@@ -70966,11 +71083,13 @@ candidates:
     - barrier_floor
     - eta_linewidth_window
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:45Z'
+      audit_pending: '2026-06-12T07:59:00Z'
+      audited: '2026-06-12T08:05:18Z'
     codex_session:
       by_parameter:
         V_known_x1:
@@ -71020,6 +71139,13 @@ candidates:
         excerpt: '    V_known = sp.Float(''1.181909222592'')'
         stage: '223'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:00Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:05:18Z'
   fit_stage223_lambda02_rq_dual_engine_overclaim:
     id: fit_stage223_lambda02_rq_dual_engine_overclaim
     candidate_key: stage223_lambda02_rq_dual_engine_overclaim
@@ -71638,11 +71764,13 @@ candidates:
     - lambda_21
     - lambda_22
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T08:01:12Z'
+      audited: '2026-06-12T08:07:27Z'
     codex_session:
       by_parameter:
         lambda_20:
@@ -71692,6 +71820,13 @@ candidates:
         excerpt: '    lam21 = sp.Rational(1, 2)'
         stage: '224'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:01:12Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:07:27Z'
   fit_stage225_K_compat_P0_target_pin:
     id: fit_stage225_K_compat_P0_target_pin
     candidate_key: stage225_K_compat_P0_target_pin
@@ -71802,11 +71937,13 @@ candidates:
     - lamW
     - varpi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:46Z'
+      audit_pending: '2026-06-12T07:59:48Z'
+      audited: '2026-06-12T08:06:05Z'
     codex_session:
       by_parameter:
         OmU:
@@ -71891,6 +72028,13 @@ candidates:
         excerpt: 'lamB: sp.Rational(1, 2),'
         stage: '225'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:48Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:06:05Z'
   fit_stage225_stage224_xi_budgets:
     id: fit_stage225_stage224_xi_budgets
     candidate_key: stage225_stage224_xi_budgets
@@ -72535,11 +72679,13 @@ candidates:
     - lambda_W
     - varpi
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T07:59:59Z'
+      audited: '2026-06-12T08:06:17Z'
     codex_session:
       by_parameter:
         M:
@@ -72623,6 +72769,13 @@ candidates:
         excerpt: '- primitive parameters'
         stage: '228'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T07:59:59Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:06:17Z'
   fit_stage228_rq_requirement_threshold:
     id: fit_stage228_rq_requirement_threshold
     candidate_key: stage228_rq_requirement_threshold
@@ -72968,11 +73121,13 @@ candidates:
     - Xi_drive_prefactor
     - kappa
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:00:11Z'
+      audited: '2026-06-12T08:06:28Z'
     codex_session:
       by_parameter:
         Lambda_ell:
@@ -73022,6 +73177,13 @@ candidates:
         excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:00:11Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:06:28Z'
   fit_stage232_fom_prefactor_100:
     id: fit_stage232_fom_prefactor_100
     candidate_key: stage232_fom_prefactor_100
@@ -73037,11 +73199,13 @@ candidates:
     parameter_names:
     - Xi_prefactor_100
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:00:35Z'
+      audited: '2026-06-12T08:06:52Z'
     codex_session:
       by_parameter:
         Xi_prefactor_100:
@@ -73077,6 +73241,13 @@ candidates:
         excerpt: Xi_chi = 100 * Theta_w_chi * Lambda_ell**2
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:00:35Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:06:52Z'
   fit_stage232_injected_wall_depth_theta_w:
     id: fit_stage232_injected_wall_depth_theta_w
     candidate_key: stage232_injected_wall_depth_theta_w
@@ -73240,11 +73411,13 @@ candidates:
     - chi_s
     - kappa
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:00:23Z'
+      audited: '2026-06-12T08:06:40Z'
     codex_session:
       by_parameter:
         Lambda_ell:
@@ -73294,6 +73467,13 @@ candidates:
         excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:00:23Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:06:40Z'
   fit_stage232_nq_canonical_normalization:
     id: fit_stage232_nq_canonical_normalization
     candidate_key: stage232_nq_canonical_normalization
@@ -73309,11 +73489,13 @@ candidates:
     parameter_names:
     - N_Q
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:00:47Z'
+      audited: '2026-06-12T08:07:03Z'
     codex_session:
       by_parameter:
         N_Q:
@@ -73348,6 +73530,13 @@ candidates:
         excerpt: together with the canonical outgoing-normalization condition
         stage: '232'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:00:47Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:07:03Z'
   fit_stage232_theta_w_5pn_injection:
     id: fit_stage232_theta_w_5pn_injection
     candidate_key: stage232_theta_w_5pn_injection
@@ -73489,11 +73678,13 @@ candidates:
     parameter_names:
     - Delta_norm
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:01:48Z'
+      audited: '2026-06-12T08:08:02Z'
     codex_session:
       by_parameter:
         Delta_norm:
@@ -73528,6 +73719,13 @@ candidates:
         excerpt: On a calibrated branch with
         stage: '233'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:01:48Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:08:02Z'
   fit_stage233_stage224_ceiling_carry:
     id: fit_stage233_stage224_ceiling_carry
     candidate_key: stage233_stage224_ceiling_carry
@@ -73615,11 +73813,13 @@ candidates:
     parameter_names:
     - Xi_1
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:02:00Z'
+      audited: '2026-06-12T08:08:14Z'
     codex_session:
       by_parameter:
         Xi_1:
@@ -73655,6 +73855,13 @@ candidates:
           family that realizes any chosen \(\Xi_1\).
         stage: '234'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:02:00Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:08:14Z'
   fit_stage236_equal_drift_ray_forced:
     id: fit_stage236_equal_drift_ray_forced
     candidate_key: stage236_equal_drift_ray_forced
@@ -73744,11 +73951,13 @@ candidates:
     - qeta_param_base
     - ref_base
     batch_id: null
-    status: provenance_built
+    status: audited
     status_timestamps:
       pending: '2026-06-11T08:21:51Z'
       scanned: '2026-06-11T08:21:51Z'
       provenance_built: '2026-06-11T19:17:58Z'
+      audit_pending: '2026-06-12T08:02:23Z'
+      audited: '2026-06-12T08:08:37Z'
     codex_session:
       by_parameter:
         Rratio_base:
@@ -73812,6 +74021,13 @@ candidates:
         excerpt: base[sym] = sp.Rational(1, 5)
         stage: '237'
     phase_b_status: synthesis_complete
+    status_notes:
+    - status: audit_pending
+      note: batch_c6 dispatch (free_choice 200-239)
+      at: '2026-06-12T08:02:23Z'
+    - status: audited
+      note: batch_c6 NO fatal flaw (free_choice honestly disclosed; SENSITIVE u02/u03/u04 orchestrator-ratified)
+      at: '2026-06-12T08:08:37Z'
   fit_stage239_exact_microscopic_correction:
     id: fit_stage239_exact_microscopic_correction
     candidate_key: stage239_exact_microscopic_correction

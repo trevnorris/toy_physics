@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-12T07:35:38Z'
+generated_at: '2026-06-12T08:08:37Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -8136,7 +8136,7 @@ candidates:
   parameter_names:
   - C_tr_target
   - delta_U_star_graph
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
     line: 197
@@ -8343,7 +8343,7 @@ candidates:
   - V_known_x1
   - epsilon
   - epsilon_barrier
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
     line: 213
@@ -8373,7 +8373,7 @@ candidates:
   - lambda_U
   - lambda_W
   - varpi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
     line: 137
@@ -8400,7 +8400,7 @@ candidates:
   - lam_U
   - lam_W
   - varpi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
     line: 135
@@ -8438,7 +8438,7 @@ candidates:
   - V_known_x1
   - barrier_floor
   - eta_linewidth_window
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
     line: 296
@@ -8612,7 +8612,7 @@ candidates:
   - lambda_20
   - lambda_21
   - lambda_22
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
     line: 66
@@ -8657,7 +8657,7 @@ candidates:
   - lamU
   - lamW
   - varpi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
     line: 202
@@ -8863,7 +8863,7 @@ candidates:
   - lambda_U
   - lambda_W
   - varpi
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
     line: 72
@@ -8974,7 +8974,7 @@ candidates:
   - Lambda_ell
   - Xi_drive_prefactor
   - kappa
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
     line: 50
@@ -8991,7 +8991,7 @@ candidates:
   - '232'
   parameter_names:
   - Xi_prefactor_100
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
     line: 149
@@ -9050,7 +9050,7 @@ candidates:
   - Lambda_ell
   - chi_s
   - kappa
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: research/pde_ledger/scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
     line: 50
@@ -9067,7 +9067,7 @@ candidates:
   - '232'
   parameter_names:
   - N_Q
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
     line: 314
@@ -9120,7 +9120,7 @@ candidates:
   - '233'
   parameter_names:
   - Delta_norm
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
     line: 203
@@ -9156,7 +9156,7 @@ candidates:
   - '234'
   parameter_names:
   - Xi_1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
     line: 372
@@ -9197,7 +9197,7 @@ candidates:
   - eps_base
   - qeta_param_base
   - ref_base
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
     line: 17
@@ -19882,7 +19882,7 @@ candidates:
   - eps_beta
   - expand_log
   - expand_power_exp
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_200.md
     line: 98
@@ -20036,7 +20036,7 @@ candidates:
   - chi_from_stage197
   - closure_num_stage197
   - gamma_path
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_203.md
     line: 143
@@ -20068,7 +20068,7 @@ candidates:
   - q_eta
   - q_nt
   - q_tr
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_203.md
     line: 116
@@ -20633,7 +20633,7 @@ candidates:
   parameter_names:
   - DeltaV_req
   - V_known
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_222.md
     line: 131
@@ -20656,7 +20656,7 @@ candidates:
   - lambda_R
   - lambda_U
   - lambda_W
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
     line: 434
@@ -20820,7 +20820,7 @@ candidates:
   - max
   - tfrac
   - varepsilon
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: redteam/pass2/reports/stage_224.md
     line: 35
@@ -20850,7 +20850,7 @@ candidates:
   - '224'
   parameter_names:
   - hat
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
     line: 175
@@ -21179,7 +21179,7 @@ candidates:
   - '232'
   parameter_names:
   - lambda_mu_1
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
     line: 149
@@ -21286,7 +21286,7 @@ candidates:
   parameter_names:
   - T_U
   - mu
-  status: provenance_built
+  status: audited
   file_line_citations:
   - path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
     line: 476

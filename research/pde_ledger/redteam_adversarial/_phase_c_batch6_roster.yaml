@@ -1,0 +1,174 @@
+# Phase C - Batch 6 roster (targeted free_choice sweep, stages 200-239)
+# PC6 (user-decided 2026-06-11): adversarial agents over the remaining ~190 free_choice ansaetze.
+# This is batch 6 of ~7: the 200-239 "finite-throat illustrative-sample-slice / branch-calibration / FoM" band.
+# 24 free_choice candidates (provenance_built, ~42 param-checks across compound bundles)
+#   -> 5 disjoint stage-cluster units, per-member sub-verdicts.
+# The fit-vs-derive test for free_choice = posit-dressed-as-derived (the stage_192 failure mode):
+#   is a CHOSEN value labeled derived/forced/exact/non-tunable/fixed/canonical-as-unique in any card or notes line?
+# No external benchmark applies (free_choice makes no external-match claim) -> Benchmarks: [] is correct.
+#
+# BAND CHARACTER (from the Phase-B synthesis read, grounding the focus blocks): this band is dominated by
+# ILLUSTRATIVE numerical placements on a posited finite-throat sample branch (the primitive tuple
+# lambda_B/R/U/W, M, Omega_U/W, varpi, K, a, c_s carried 222->225->228), normalization CONVENTIONS
+# (N_Q=1 outgoing-normalization, lambda_mu=1 benchmark point), script-only path/sample coordinates
+# (beta_path, KW_t, Rratio_base=7/6), conditional CALIBRATION assumptions (Delta_norm=0 "on a calibrated
+# branch"), held-fixed axes (T_U), prescribed free targets (Xi_1 "realizes any chosen Xi_1"), and TWO scanner
+# artifacts (`hat` = a LaTeX fragment of \hat m_0; L_over_a = a mis-mapped geometric literal). The Phase-B
+# findings already classify all 24 as free_choice with honest disclosure; the adversarial pass re-examines.
+#
+# SCOPING NUANCES that the agents + orchestrator MUST honor (these are the traps in this band):
+#   (1) V_known (222 illustrative_barrier_benchmark, 223 barrier_benchmark_and_eta_window): this is the
+#       AUDIT-CORRECTION site. The scanner candidate-hint flagged V_known "likely published_target / external
+#       barrier import", but the batch-1/Phase-B audit correction RESOLVED it: the stage notes REPEATEDLY and
+#       EXPLICITLY disclaim external provenance -> it is an ILLUSTRATIVE benchmark, free_choice. The test here
+#       is NOT "is it external" (already settled NO) but "does any card/notes line dress the illustrative
+#       1.181909222592 as derived/forced/external". Provenance-gap (genealogy of the float undocumented below
+#       222) is NOT an overclaim as long as it is disclosed illustrative. SENSITIVE.
+#   (2) L_over_a at 232 (family1_geometry_normalization + lambda_ell_geometry_literals): value 20, NOT the
+#       batch-1-adjudicated aspect ratio L/a=37/20. It is the inverse THIN-WALL lock a/ell=20 (ell/a=1/20)
+#       inside Lambda_ell = 20*sqrt(2)*pi/x01, originating from the Stage-073 posit epsilon_r=0.05=1/20. The
+#       scanner mis-named it "L_over_a" (stale_provenance_anchor). DO NOT confuse with 37/20; DO NOT re-litigate
+#       the batch-1 aspect-ratio adjudication. The two L_over_a slugs are duplicate scanner candidates for the
+#       SAME literal. SENSITIVE.
+#   (3) N_Q=1 at 232 (nq_canonical_normalization): the canonical outgoing-mode normalization CONVENTION, a
+#       recurring ledger convention. It touches the batch-1 N_Q quadrupole family but here is plainly a
+#       convention (=1), not an external-fit claim. Confirm it is labeled a normalization condition.
+#   (4) `hat` at 224 and `stale_output`/`V_0f`-style fragments: `hat` is NOT a real parameter -- it is the
+#       LaTeX-command fragment the scanner extracted from \hat m_0 (mhat_0). Treat as a scanner artifact (benign,
+#       flag), not a posited value. (Same class as batch-2's V_0f token.)
+#
+# Internal_consistency neighbors with overclaim-flavored SLUGS that are OUT OF SCOPE here (free_choice only) and
+# are LOGGED FOR THE COMPLETENESS-CRITIC, not audited in this batch:
+#   223 lambda02_rq_dual_engine_overclaim (R_Q...) [slug literally says "overclaim"; kind=internal_consistency]
+#   225 xk_xm_forced_zero (x_K); 224 grouped_signature_exact (b_P0_slope); 232 known_5pn_data_injection
+#   (rho_alpha_max -- confirmed INTERNAL EM-projected chain, NOT a publication, per the memory audit correction);
+#   200 mismatch_chart_rederived_not_posited (m_star); 236 equal_drift_ray_forced (k_eta);
+#   228 k_compat_exact_stiffness (k_compat); 230 rigid_slope_carry (s_minus_den);
+#   224 kill_test_budgets_slice_anchored / stage223_carryover_ceilings (P_crit...).
+# Published_target neighbors already audited in batch 1: 223 p0_target_* (P0_target), 228 rq_requirement_threshold.
+
+batch_id: batch_c6_freechoice_200_239
+band: '200-239'
+constraint_kind: free_choice
+candidate_count: 24
+unit_count: 5
+frozen_directive_embed: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_L_over_a__phase_c_adversarial.md
+
+# SENSITIVE units flagged for mandatory orchestrator spot-check (distrust-all-clean backstop):
+#   u02_barrier_benchmark_Vknown - the V_known audit-correction site (slug/hint said published_target;
+#       evidence says illustrative free_choice). Orchestrator reads stage_222/223 cards + notes.
+#   u03_primitive_sample_slice   - HIGH PARAM COUNT (20 illustrative sample-slice values across two compound
+#       bundles). Orchestrator confirms the stage_222.tex:15 "the displayed slice is a numerical placement"
+#       disclosure + notes:7/434 illustrative flag cover every param; no value dressed derived.
+#   u04_fom_normalization_232    - L_over_a=20 thin-wall-lock mis-map (NOT 37/20) + N_Q=1 quadrupole-family
+#       normalization + the Xi prefactor 100. Orchestrator reads stage_232 card + notes.
+
+units:
+  u01_linearization_path:
+    stages: ['200','202','203']
+    focus: |
+      Early-band symbolic / script-only linearization & path coordinates plus one declared target-orbit value.
+      Members: eps_beta (200) is a SYMBOLIC linearization (perturbation) direction beta=1+eps*eps_beta, not a
+      fitted number -> verify it is a symbol, never a posited-as-derived value. C_tr_target (202,
+      "split_u_ratio_uniquely_fixed") is a DECLARED target-orbit specification ("Fix the target orbit by the
+      exact target values"); "uniquely_fixed" is overclaim-ADJACENT -> verify "uniquely_fixed" means the orbit
+      is fixed BY the chosen target (a parameterization choice), NOT that C_tr_target itself is derived/forced.
+      beta_path=2^(2*tau-1) (203) and KW_t=KW0*exp(t*kapW) (203) are SCRIPT-ONLY illustrative one-parameter path
+      coordinates driving the Stage-203 graph-crossing / intermediate-value demonstration -> verify they are
+      explicitly path/illustrative, not fitted/derived. Test = none of the four is dressed as derived; all are
+      symbolic / declared-target / script-illustrative. Check notes200/202/203 for the label-words.
+    members:
+      - {id: fit_stage_200_eps_beta, params: [eps_beta], files: [fit_stage_200_eps_beta__eps_beta.yaml]}
+      - {id: fit_stage202_split_u_ratio_uniquely_fixed, params: [C_tr_target], files: [fit_stage202_split_u_ratio_uniquely_fixed__c_tr_target.yaml]}
+      - {id: fit_stage_203_beta_path, params: [beta_path], files: [fit_stage_203_beta_path__beta_path.yaml]}
+      - {id: fit_stage_203_kw_t, params: [KW_t], files: [fit_stage_203_kw_t__kw_t.yaml]}
+  u02_barrier_benchmark_Vknown:
+    stages: ['222','223']
+    sensitive: true
+    focus: |
+      The V_known illustrative barrier benchmark (=1.181909222592) and its derived requirement DeltaV_req.
+      THE AUDIT-CORRECTION SITE: the scanner candidate-hint flagged V_known "likely published_target (external
+      barrier import)", but the audit correction RESOLVED it free_choice -- stage-222/223 notes REPEATEDLY and
+      EXPLICITLY disclaim external provenance, calling it an ILLUSTRATIVE reduced-barrier benchmark with no
+      external source named and no back-solve shown. Test here is NOT "is it external" (settled NO) but: does
+      ANY stage_222/223 card or notes line dress the illustrative V_known value as derived/forced/external/
+      published? A provenance-gap (the float's genealogy below 222 is undocumented) is NOT an overclaim as long
+      as it is disclosed illustrative. DeltaV_req(1)=V_known(1)-epsilon=1.081909222592 is SYMBOLICALLY derived
+      from V_known (the survival inequality is internally derived) -> verify DeltaV_req only inherits V_known's
+      illustrative status, no independent overclaim. Orchestrator will read stage_222/223 cards + notes.
+    members:
+      - {id: fit_stage222_illustrative_barrier_benchmark, params: [V_known], files: [fit_stage222_illustrative_barrier_benchmark__v_known.yaml]}
+      - {id: fit_stage_222_deltav_req, params: [DeltaV_req], files: [fit_stage_222_deltav_req__deltav_req.yaml]}
+      - {id: fit_stage223_barrier_benchmark_and_eta_window, params: [V_known], files: [fit_stage223_barrier_benchmark_and_eta_window__v_known.yaml]}
+  u03_primitive_sample_slice:
+    stages: ['222','225','228']
+    sensitive: true
+    focus: |
+      The posited finite-throat ADMISSIBLE SAMPLE BRANCH -- a tuple of ILLUSTRATIVE numerical placements carried
+      222 -> 225 -> 228. Two compound bundles at 222 (numerical_primitive_slice: K,M,Omega_U,Omega_W,
+      lambda_B,lambda_R,lambda_U,lambda_W,varpi; primitive_sample_slice: a,c_s,K,lam_B,lam_R,lam_U,lam_W,M,
+      Omega_U,Omega_W,varpi -- the lam_* are the same couplings under a script alias) + the standalone lambda_B
+      + the carried sample points OmU=Omega_U=1 (225) and M=1 (228 primitive_parameter_tuple). The tuple is
+      posited at notes 222 line 289-293 (a=c_s=1 at line 293) and stage_222.tex line 15 states "the displayed
+      slice is a numerical placement"; notes line 7/434 flag the whole slice as illustrative, not branch-derived.
+      Test = every sample-slice value is honestly an illustrative placement / carried sample point, and NO card
+      or notes line claims any of them derived/forced/uniquely-determined. HIGH PARAM COUNT -> orchestrator
+      confirms the stage_222.tex:15 placement disclosure + notes illustrative flag cover every param.
+    members:
+      - {id: fit_stage222_numerical_primitive_slice, params: [K, M, Omega_U, Omega_W, lambda_B, lambda_R, lambda_U, lambda_W, varpi], files: [fit_stage222_numerical_primitive_slice__k.yaml, fit_stage222_numerical_primitive_slice__m.yaml, fit_stage222_numerical_primitive_slice__omega_u.yaml, fit_stage222_numerical_primitive_slice__omega_w.yaml, fit_stage222_numerical_primitive_slice__lambda_b.yaml, fit_stage222_numerical_primitive_slice__lambda_r.yaml, fit_stage222_numerical_primitive_slice__lambda_u.yaml, fit_stage222_numerical_primitive_slice__lambda_w.yaml, fit_stage222_numerical_primitive_slice__varpi.yaml]}
+      - {id: fit_stage222_primitive_sample_slice, params: [a, c_s, K, lam_B, lam_R, lam_U, lam_W, M, Omega_U, Omega_W, varpi], files: [fit_stage222_primitive_sample_slice__a.yaml, fit_stage222_primitive_sample_slice__c_s.yaml, fit_stage222_primitive_sample_slice__k.yaml, fit_stage222_primitive_sample_slice__lam_b.yaml, fit_stage222_primitive_sample_slice__lam_r.yaml, fit_stage222_primitive_sample_slice__lam_u.yaml, fit_stage222_primitive_sample_slice__lam_w.yaml, fit_stage222_primitive_sample_slice__m.yaml, fit_stage222_primitive_sample_slice__omega_u.yaml, fit_stage222_primitive_sample_slice__omega_w.yaml, fit_stage222_primitive_sample_slice__varpi.yaml]}
+      - {id: fit_stage_222_lambda_b, params: [lambda_B], files: [fit_stage_222_lambda_b__lambda_b.yaml]}
+      - {id: fit_stage225_stage223_sample_point, params: [OmU], files: [fit_stage225_stage223_sample_point__omu.yaml]}
+      - {id: fit_stage228_primitive_parameter_tuple, params: [M], files: [fit_stage228_primitive_parameter_tuple__m.yaml]}
+  u04_fom_normalization_232:
+    stages: ['232']
+    sensitive: true
+    focus: |
+      The Stage-232 figure-of-merit / normalization literals. Members: L_over_a (value 20) appears in two
+      DUPLICATE scanner slugs (family1_geometry_normalization + lambda_ell_geometry_literals) -- it is the
+      inverse thin-wall lock a/ell=20 inside Lambda_ell=20*sqrt(2)*pi/x01, originating at the Stage-073 posit
+      epsilon_r=1/20; it is NOT the batch-1 aspect ratio L/a=37/20 (stale_provenance_anchor mis-name). DO NOT
+      confuse the two; DO NOT re-litigate the 37/20 adjudication. Xi_prefactor_100 = the literal prefactor 100
+      in the FoM Xi=100*Theta_w*Lambda_ell^2 (no in-stage derivation; structure traces to Stage 066). N_Q=1 =
+      the canonical outgoing-mode normalization CONVENTION (touches the batch-1 N_Q quadrupole family but here
+      is plainly =1, a convention). lambda_mu=1 = a benchmark evaluation point ("for the benchmark", notes 232
+      line 149). Test = each is a posited convention / FoM prefactor / normalization choice / geometric literal
+      traceable to an upstream posit, and NONE is dressed as derived/forced. Orchestrator reads stage_232 card
+      + notes; confirm L_over_a=20 is the thin-wall lock (not 37/20) and N_Q=1 is labeled a normalization
+      condition. NOTE the 232 notes file is the "known_5pn_data_injection" notes -- the 5PN reference is the
+      INTERNAL EM-projected chain, not an external publication (memory audit correction).
+    members:
+      - {id: fit_stage232_family1_geometry_normalization, params: [L_over_a], files: [fit_stage232_family1_geometry_normalization__l_over_a.yaml]}
+      - {id: fit_stage232_lambda_ell_geometry_literals, params: [L_over_a], files: [fit_stage232_lambda_ell_geometry_literals__l_over_a.yaml]}
+      - {id: fit_stage232_fom_prefactor_100, params: [Xi_prefactor_100], files: [fit_stage232_fom_prefactor_100__xi_prefactor_100.yaml]}
+      - {id: fit_stage232_nq_canonical_normalization, params: [N_Q], files: [fit_stage232_nq_canonical_normalization__n_q.yaml]}
+      - {id: fit_stage_232_lambda_mu_1, params: [lambda_mu_1], files: [fit_stage_232_lambda_mu_1__lambda_mu_1.yaml]}
+  u05_branch_calibration_samples:
+    stages: ['224','233','234','236','237']
+    focus: |
+      Branch-calibration assumptions, held-fixed axes, prescribed free targets, lane-weight conventions, a
+      script-only sample point, and one scanner artifact. Members: lambda_20=1 (224
+      weak_axisymmetric_lane_signature) = one entry of the imported grouped (l=2) lane signature
+      (lambda_20,lambda_21,lambda_22)=(1,1/2,-1), a posited convention. Delta_rm (224 delta_rm) = a scanner
+      truncation of Delta_norm; value 0 is the CONDITIONAL calibration assumption Delta_norm=0 ("if the real
+      branch already hits the universal quadrupole normalization"). `hat` (224) is NOT a real parameter -- it is
+      a LaTeX-command fragment scanner-extracted from \hat m_0 (mhat_0 is an undetermined branch quantity with
+      only a lower bound at 224); flag as a scanner artifact (benign). Delta_norm (233
+      calibrated_branch_delta_norm) value 0 is again a CALIBRATION / branch selection ("On a calibrated branch
+      with Delta_norm=0..."), explicitly NOT derived. Xi_1 (234 canonical_least_deformation_family) is NOT a
+      fixed number -- it is a PRESCRIBED first-order defect target ("Xi_1 = xi") that a "canonical
+      least-deformation family realizes any chosen Xi_1"; "canonical" attaches to the family construction, not
+      to forcing Xi_1. T_U (236) is one axis of a dependent triple, explicitly HELD FIXED ("at fixed T_U"), not
+      derived. Rratio_base=7/6 (237 branch_sample_point) is a SCRIPT-ONLY arbitrary substitution sample used to
+      numerically verify symbolic identities. Test = every member is honestly a convention / conditional
+      calibration / held-fixed axis / prescribed-free target / script sample / scanner artifact, and NONE is
+      dressed as derived/forced. "canonical_least_deformation" must label the family, not force Xi_1. Check
+      notes224/233/234/236 + script237 for the label-words.
+    members:
+      - {id: fit_stage224_weak_axisymmetric_lane_signature, params: [lambda_20], files: [fit_stage224_weak_axisymmetric_lane_signature__lambda_20.yaml]}
+      - {id: fit_stage_224_delta_rm, params: [Delta_rm], files: [fit_stage_224_delta_rm__delta_rm.yaml]}
+      - {id: fit_stage_224_hat, params: [hat], files: [fit_stage_224_hat__hat.yaml]}
+      - {id: fit_stage233_calibrated_branch_delta_norm, params: [Delta_norm], files: [fit_stage233_calibrated_branch_delta_norm__delta_norm.yaml]}
+      - {id: fit_stage234_canonical_least_deformation_family, params: [Xi_1], files: [fit_stage234_canonical_least_deformation_family__xi_1.yaml]}
+      - {id: fit_stage_236_t_u, params: [T_U], files: [fit_stage_236_t_u__t_u.yaml]}
+      - {id: fit_stage237_branch_sample_point, params: [Rratio_base], files: [fit_stage237_branch_sample_point__rratio_base.yaml]}

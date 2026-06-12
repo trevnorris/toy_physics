@@ -186,7 +186,7 @@ Non-rescue rules (`ACTUAL_BRANCH_PROTOCOL_V1.md` L131–139): do not project a r
 ```
 frozen: YES
 freeze_date: 2026-06-12
-freeze_commit:          # SHA of the commit that sets frozen: YES — filled by the immediate follow-up commit
+freeze_commit: 3865ec9552bbece4ff73cb040f973072d374a33d   # commit that set frozen: YES
 source_revision: 3c1365f6faae7b7c145554ea458339405727c916   # repo HEAD at freeze (ledger + protocol docs unchanged since)
 candidate_freeze_hash: df13fb4747dbd4410661245ad3b5938f57a531a5c25d4af974f203dbebc8781f
 candidate_freeze_hash_def: "SHA-256 over the text from the '## §C.' header up to (not including) the '## §J.' header (136 lines)"

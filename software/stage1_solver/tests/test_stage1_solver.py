@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import ast
 from dataclasses import asdict, replace
 import json
 import math
+from pathlib import Path
+import re
 
 import torch
 
@@ -22,6 +25,9 @@ from stage1_solver.config import (
     CubicGPEConfig,
     HarnessConfig,
     NewtonConfig,
+    P2CentrifugalMMSConfig,
+    P2MaxwellAngularMMSConfig,
+    P2TangentConfig,
     PreconditionerConfig,
     RadialGridSpec,
     TensorGridSpec,
@@ -42,10 +48,13 @@ from stage1_solver.coupled_branch import (
     CoupledFields,
     boundary_sponge_profile_torch,
     branch_boundary_conditions,
+    confinement_potential_torch,
     coupled_branch_residual,
     coupled_pde_residual,
+    geometry_radius_torch,
     initial_branch_state,
     pack_coupled_fields,
+    run_branch_continuation,
 )
 from stage1_solver.error_budget import (
     CombinationSensitivity,
@@ -59,6 +68,7 @@ from stage1_solver.error_budget import (
 from stage1_solver.grid import RadialGrid, TensorProductGrid
 from stage1_solver.manifest import write_manifest
 from stage1_solver.newton import PreconditionerBuildContext, finite_difference_jvp_check
+from stage1_solver.mms_benchmarks import run_p2_centrifugal_mms, run_p2_maxwell_angular_mms
 from stage1_solver.operators import (
     integrate,
     radial_current,
@@ -67,6 +77,15 @@ from stage1_solver.operators import (
     tensor_flux_divergence,
     tensor_laplacian,
     tensor_vector_face_fluxes,
+)
+from stage1_solver.p2_tangent import (
+    _diagnostics_digest,
+    apply_p2_tangent,
+    p2_tangent_fd_check,
+    p2_wellposedness_check,
+    wall_to_matter_coefficient_torch,
+    with_step8a_preconditioners,
+    zero_p2_tangent_state,
 )
 from stage1_solver.preconditioners import assemble_coupled_colored_sparse_jacobian
 from stage1_solver.physics import cubic_gpe_residual, gaussian_initial_state
@@ -857,3 +876,276 @@ def test_error_budget_digest_is_deterministic(tmp_path) -> None:
     assert first["diagnostics_digest"] == second["diagnostics_digest"]
     assert first["component_floors"] == second["component_floors"]
     assert first["observable_budget"] == second["observable_budget"]
+
+
+def _tiny_p2_harness_config(tmp_path) -> HarnessConfig:
+    base = HarnessConfig(
+        run_root=str(tmp_path / "run"),
+        report_path=str(tmp_path / "report.md"),
+    )
+    branch = BranchSmokeConfig(
+        solve_grid=(4, 4),
+        ladder_levels=((4, 4),),
+        continuation_K_values=(0.05,),
+        newton=replace(
+            BranchSmokeConfig().newton,
+            residual_atol=1.0e-8,
+            residual_rtol=1.0e-8,
+            gmres_rtol=1.0e-8,
+            gmres_atol=1.0e-10,
+            gmres_restart=96,
+            gmres_maxiter=8,
+            max_newton_iters=10,
+        ),
+    )
+    p2 = replace(
+        P2TangentConfig(),
+        convergence_levels=((4, 4), (8, 8), (16, 16)),
+        fd_check_grid=(4, 4),
+        wellposed_grid=(4, 4),
+        min_observable_order=0.0,
+        newton=replace(
+            P2TangentConfig().newton,
+            residual_atol=1.0e-9,
+            residual_rtol=1.0e-9,
+            gmres_rtol=1.0e-9,
+            gmres_atol=1.0e-11,
+            gmres_restart=128,
+            gmres_maxiter=8,
+        ),
+    )
+    mms = replace(
+        base.mms,
+        p2_centrifugal=replace(
+            P2CentrifugalMMSConfig(),
+            grid_levels=((24, 20), (48, 40), (96, 80)),
+            final_error_max=3.0e-3,
+        ),
+        p2_maxwell_angular=replace(
+            P2MaxwellAngularMMSConfig(),
+            grid_levels=((24, 20), (48, 40), (96, 80)),
+            final_error_max=4.0e-3,
+        ),
+    )
+    return replace(base, branch=branch, p2_tangent=p2, mms=mms)
+
+
+def _tiny_p2_background() -> tuple[HarnessConfig, TensorProductGrid, torch.Tensor]:
+    dtype = configure_backend(BackendConfig())
+    branch = BranchSmokeConfig(
+        solve_grid=(4, 4),
+        ladder_levels=((4, 4),),
+        continuation_K_values=(0.05,),
+        newton=replace(
+            BranchSmokeConfig().newton,
+            residual_atol=1.0e-8,
+            residual_rtol=1.0e-8,
+            gmres_rtol=1.0e-8,
+            gmres_atol=1.0e-10,
+            gmres_restart=96,
+            gmres_maxiter=8,
+            max_newton_iters=10,
+        ),
+    )
+    cfg = with_step8a_preconditioners(HarnessConfig(branch=branch))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(
+            r_max=cfg.branch.r_max,
+            nr=4,
+            w_min=cfg.branch.w_min,
+            w_max=cfg.branch.w_max,
+            nw=4,
+        ),
+        dtype=dtype,
+        device="cpu",
+    )
+    state, summary = run_branch_continuation(cfg, grid, grid_name="test_p2_background")
+    assert summary["converged"] is True
+    return cfg, grid, state
+
+
+def test_p2_tangent_matches_fd_of_mode_residual() -> None:
+    cfg, grid, background = _tiny_p2_background()
+    boundaries = branch_boundary_conditions(cfg.branch)
+    check = p2_tangent_fd_check(
+        background,
+        grid,
+        cfg.branch,
+        cfg.p2_tangent,
+        eos_K=cfg.branch.continuation_K_values[-1],
+        boundaries=boundaries,
+        epsilon=cfg.p2_tangent.newton.finite_difference_jvp_epsilon,
+        seed=1234,
+    )
+    assert (
+        check["relative_residual"] <= cfg.p2_tangent.tangent_fd_relative_tol
+        or check["absolute_residual"] <= cfg.p2_tangent.tangent_fd_absolute_tol
+    )
+
+
+def test_wall_to_matter_coefficient_matches_confinement_radius_fd() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig(
+        r_max=1.7,
+        w_min=0.0,
+        w_max=1.3,
+        radial_wall_strength=0.73,
+        axial_trap_strength=0.19,
+        r_mouth=1.25,
+        r_exit=0.82,
+        geometry_decay_length=0.67,
+    )
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=6, w_min=cfg.w_min, w_max=cfg.w_max, nw=5),
+        dtype=dtype,
+        device="cpu",
+    )
+    eps = 1.0e-6
+    plus = replace(cfg, r_mouth=cfg.r_mouth + eps, r_exit=cfg.r_exit + eps)
+    minus = replace(cfg, r_mouth=cfg.r_mouth - eps, r_exit=cfg.r_exit - eps)
+    fd_dv_d_radius = (
+        confinement_potential_torch(grid, plus) - confinement_potential_torch(grid, minus)
+    ) / (2.0 * eps)
+
+    coeff = wall_to_matter_coefficient_torch(grid, cfg)
+    radius = geometry_radius_torch(grid.w_centers, cfg)[None, :]
+    expected_shape = 4.0 * cfg.radial_wall_strength * grid.r_centers[:, None] ** 4 / radius**5
+    torch.testing.assert_close(coeff, expected_shape, rtol=0.0, atol=1.0e-14)
+    torch.testing.assert_close(fd_dv_d_radius, -coeff, rtol=0.0, atol=1.0e-6)
+
+
+def test_p2_new_mms_operator_pieces_are_second_order(tmp_path) -> None:
+    cfg = _tiny_p2_harness_config(tmp_path)
+    centrifugal = run_p2_centrifugal_mms(cfg)
+    maxwell = run_p2_maxwell_angular_mms(cfg)
+    assert centrifugal["passed"] is True
+    assert maxwell["passed"] is True
+    assert centrifugal["rows"][-1]["observed_order"] > 1.85
+    assert maxwell["rows"][-1]["observed_order"] > 1.75
+
+
+def test_p2_static_operator_is_wellposed_on_small_grid() -> None:
+    cfg, grid, background = _tiny_p2_background()
+    check = p2_wellposedness_check(background, grid, cfg)
+    assert check["state_size"] == zero_p2_tangent_state(grid).numel()
+    assert check["smallest_singular_value"] > cfg.p2_tangent.smallest_singular_min
+
+
+def test_p2_solve_path_is_target_blind() -> None:
+    root = Path(__file__).resolve().parents[1]
+    solve_path_files = [
+        root / "src/stage1_solver/p2_tangent.py",
+        root / "src/stage1_solver/p2_tangent_harness.py",
+    ]
+    solve_path_sources = {
+        path: path.read_text(encoding="utf-8")
+        for path in solve_path_files
+    }
+    solve_path_text = "\n".join(
+        solve_path_sources.values()
+    )
+    forbidden = [
+        "R_norm",
+        "R_pole",
+        "chi_Q",
+        "χ_Q",
+        "N_Q",
+        "10.8",
+        "54.0",
+        "54/5",
+        "54 G",
+        "physical_nonlinear_model",
+    ]
+    for token in forbidden:
+        assert token not in solve_path_text
+    for path, source in solve_path_sources.items():
+        tree = ast.parse(source, filename=str(path))
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                module_parts = {
+                    part
+                    for alias in node.names
+                    for part in alias.name.split(".")
+                }
+            elif isinstance(node, ast.ImportFrom):
+                module_parts = set((node.module or "").split(".")) if node.module else set()
+                module_parts.update(
+                    part
+                    for alias in node.names
+                    for part in alias.name.split(".")
+                )
+            else:
+                continue
+            assert module_parts.isdisjoint({"benchmarks", "references", "targets"}), path
+        for pattern in (
+            r"(?<![\w.])10\.8(?![\w.])",
+            r"(?<![\w.])54\.0(?![\w.])",
+            r"(?<![\w.])54\s*/\s*5(?![\w.])",
+        ):
+            assert re.search(pattern, source) is None, (path, pattern)
+
+
+def test_p2_digest_is_deterministic(tmp_path) -> None:
+    results = {
+        "mms": {
+            "p2_centrifugal": {
+                "rows": [{"grid": "a", "error": 1.0e-3, "manifest": str(tmp_path / "a")}],
+                "passed": True,
+            },
+            "p2_maxwell_angular": {
+                "rows": [{"grid": "a", "error": 2.0e-3, "manifest": str(tmp_path / "b")}],
+                "passed": True,
+            },
+        },
+        "tangent_fd_check": {"relative_residual": 1.0e-11, "absolute_residual": 1.0e-12},
+        "wellposedness": {"smallest_singular_value": 1.0, "condition_number": 3.0},
+        "level_rows": [
+            {
+                "grid": "tiny",
+                "solve": {"manifest": str(tmp_path / "solve_a"), "final_residual_norm": 1.0e-12},
+                "background": {"manifest": str(tmp_path / "background_a")},
+            }
+        ],
+        "observable_summary": [{"observable": "total_response_l2", "last_observed_order": 2.0}],
+        "pass_checks": {"computed_gate": True},
+        "asserted_checks": {"target_blind_not_a_physics_gate": True},
+    }
+    moved = json.loads(json.dumps(results))
+    moved["mms"]["p2_centrifugal"]["rows"][0]["manifest"] = str(tmp_path / "elsewhere")
+    moved["level_rows"][0]["solve"]["manifest"] = str(tmp_path / "solve_b")
+    first = _diagnostics_digest(results)
+    second = _diagnostics_digest(moved)
+    assert first == second
+    assert len(first) == 16
+
+
+def test_p2_centrifugal_terms_change_residual_vs_l0() -> None:
+    cfg, grid, background = _tiny_p2_background()
+    boundaries = branch_boundary_conditions(cfg.branch)
+    generator = torch.Generator(device="cpu")
+    generator.manual_seed(2026)
+    direction = torch.randn(
+        zero_p2_tangent_state(grid).shape,
+        dtype=grid.dtype,
+        generator=generator,
+    )
+    l2 = apply_p2_tangent(
+        direction,
+        background,
+        grid,
+        cfg.branch,
+        cfg.p2_tangent,
+        eos_K=cfg.branch.continuation_K_values[-1],
+        boundaries=boundaries,
+    )
+    l0_cfg = replace(cfg.p2_tangent, spherical_l=0)
+    l0 = apply_p2_tangent(
+        direction,
+        background,
+        grid,
+        cfg.branch,
+        l0_cfg,
+        eos_K=cfg.branch.continuation_K_values[-1],
+        boundaries=boundaries,
+    )
+    assert torch.linalg.norm(l2 - l0).item() > 1.0e-3

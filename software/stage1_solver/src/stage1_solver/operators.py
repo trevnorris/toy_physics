@@ -112,6 +112,39 @@ def tensor_laplacian(
     return divergence / grid.cell_volumes
 
 
+def spherical_ell_factor(spherical_l: int) -> float:
+    if spherical_l < 0:
+        raise ValueError("spherical_l must be non-negative")
+    return float(spherical_l * (spherical_l + 1))
+
+
+def tensor_laplacian_with_spherical_l(
+    values: torch.Tensor,
+    grid: TensorProductGrid,
+    spherical_l: int,
+    radial_outer_bc: BoundaryCondition,
+    w_lower_bc: BoundaryCondition,
+    w_upper_bc: BoundaryCondition,
+) -> torch.Tensor:
+    """Tensor Laplacian after ``Delta_S2 Y_lm = -l(l+1)Y_lm``.
+
+    Step 8a transliterates the compact-program bulk angular reduction:
+    ``Delta_3D = d_r^2 + 2r^-1 d_r + r^-2 Delta_S2``.  On the grouped
+    real ``P2`` block this adds ``-6/r^2`` times each scalar radial
+    coefficient (compact lines 1298-1308 and the Step-8a directive).
+    """
+
+    ell = spherical_ell_factor(spherical_l)
+    angular = ell * values / (grid.r_centers[:, None] ** 2)
+    return tensor_laplacian(
+        values,
+        grid,
+        radial_outer_bc,
+        w_lower_bc,
+        w_upper_bc,
+    ) - angular
+
+
 def tensor_weighted_laplacian(
     values: torch.Tensor,
     weight_w_centers: torch.Tensor,
@@ -404,6 +437,49 @@ def localized_maxwell_operator(
         1.0 / xi
     ) * tensor_center_gradient_w(weighted_divergence, grid)
     return torch.stack([scalar_block, ar_block, aw_block], dim=0)
+
+
+def localized_maxwell_operator_with_spherical_l(
+    a0: torch.Tensor,
+    ar: torch.Tensor,
+    aw: torch.Tensor,
+    grid: TensorProductGrid,
+    *,
+    spherical_l: int,
+    xi: float,
+    weight_w_centers: torch.Tensor,
+    weight_w_faces: torch.Tensor,
+    a0_radial_outer_bc: BoundaryCondition,
+    a0_w_lower_bc: BoundaryCondition,
+    a0_w_upper_bc: BoundaryCondition,
+) -> torch.Tensor:
+    """Engineering-smoke scalarized ``l`` block for retained ``A0, Ar, Aw`` lanes.
+
+    The existing axisymmetric ``l=0`` operator remains the source of truth for
+    the radial/w pieces.  Step 8a appends ``+l(l+1) Z(w) A_N/r^2`` componentwise
+    as a retained-lane scalarization: exact for scalar lanes ``A0`` and ``Aw``,
+    but not the full vector-spherical-harmonic reduction for ``Ar``.  The true
+    radial vector lane would also carry the vector-Laplacian ``-2 A_r/r^2``
+    self-term and couplings to transverse vector-harmonic lanes that this
+    truncation does not retain.
+    """
+
+    base = localized_maxwell_operator(
+        a0,
+        ar,
+        aw,
+        grid,
+        xi=xi,
+        weight_w_centers=weight_w_centers,
+        weight_w_faces=weight_w_faces,
+        a0_radial_outer_bc=a0_radial_outer_bc,
+        a0_w_lower_bc=a0_w_lower_bc,
+        a0_w_upper_bc=a0_w_upper_bc,
+    )
+    ell = spherical_ell_factor(spherical_l)
+    angular_coefficient = ell * weight_w_centers[None, :] / (grid.r_centers[:, None] ** 2)
+    angular = angular_coefficient[None, :, :] * torch.stack([a0, ar, aw], dim=0)
+    return base + angular
 
 
 def wall_s_eta_operator(

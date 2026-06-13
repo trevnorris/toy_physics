@@ -220,6 +220,42 @@ class MaxwellMMSConfig:
 
 
 @dataclass(frozen=True)
+class P2CentrifugalMMSConfig:
+    name: str = "mms_p2_centrifugal_tensor_laplacian"
+    r_max: float = 2.0
+    w_min: float = -0.75
+    w_max: float = 0.85
+    grid_levels: tuple[tuple[int, int], ...] = (
+        (24, 20),
+        (48, 40),
+        (96, 80),
+        (192, 160),
+    )
+    spherical_l: int = 2
+    min_observed_order: float = 1.85
+    final_error_max: float = 2.0e-3
+
+
+@dataclass(frozen=True)
+class P2MaxwellAngularMMSConfig:
+    name: str = "mms_p2_localized_maxwell_angular"
+    r_max: float = 2.0
+    w_min: float = -0.75
+    w_max: float = 0.85
+    grid_levels: tuple[tuple[int, int], ...] = (
+        (24, 20),
+        (48, 40),
+        (96, 80),
+        (192, 160),
+    )
+    spherical_l: int = 2
+    xi: float = 1.3
+    localization_width: float = 0.9
+    min_observed_order: float = 1.75
+    final_error_max: float = 8.0e-3
+
+
+@dataclass(frozen=True)
 class CoupledBranchMMSConfig:
     name: str = "mms_coupled_branch_matter_maxwell"
     r_max: float = 2.0
@@ -276,6 +312,10 @@ class ManufacturedSolutionsConfig:
     tensor: TensorLaplacianMMSConfig = field(default_factory=TensorLaplacianMMSConfig)
     current: CurrentMMSConfig = field(default_factory=CurrentMMSConfig)
     maxwell: MaxwellMMSConfig = field(default_factory=MaxwellMMSConfig)
+    p2_centrifugal: P2CentrifugalMMSConfig = field(default_factory=P2CentrifugalMMSConfig)
+    p2_maxwell_angular: P2MaxwellAngularMMSConfig = field(
+        default_factory=P2MaxwellAngularMMSConfig
+    )
     coupled_branch: CoupledBranchMMSConfig = field(default_factory=CoupledBranchMMSConfig)
     wall: WallMMSConfig = field(default_factory=WallMMSConfig)
 
@@ -359,6 +399,63 @@ class BranchConvergenceConfig:
 
 
 @dataclass(frozen=True)
+class P2TangentConfig:
+    name: str = "step8a_p2_tangent_operator"
+    placeholder_label: str = (
+        "step-8a engineering-smoke placeholders only; target-blind; not a physical response packet"
+    )
+    spherical_l: int = 2
+    solve_grid: tuple[int, int] = (8, 8)
+    fd_check_grid: tuple[int, int] = (4, 4)
+    wellposed_grid: tuple[int, int] = (4, 4)
+    convergence_levels: tuple[tuple[int, int], ...] = ((4, 4), (8, 8), (16, 16), (32, 32))
+    refinement_ratio: int = 2
+    expected_order: float = 2.0
+    min_observable_order: float = 1.45
+    tangent_fd_relative_tol: float = 1.0e-9
+    tangent_fd_absolute_tol: float = 1.0e-8
+    smallest_singular_min: float = 1.0e-8
+    # Free-choice engineering-smoke placeholders for the static wall packet;
+    # not a frozen physical packet and not exported.
+    placeholder_mu_eta: float = 1.0
+    placeholder_t_w_base: float = 1.15
+    placeholder_t_w_sine_amp: float = 0.10
+    placeholder_t_omega_base: float = 0.80
+    placeholder_t_omega_cosine_amp: float = 0.05
+    placeholder_k_eta_base: float = 0.95
+    placeholder_k_eta_bump_amp: float = 0.08
+    surrogate_force_amplitude: float = 0.02
+    newton: NewtonConfig = field(
+        default_factory=lambda: NewtonConfig(
+            residual_atol=1.0e-10,
+            residual_rtol=1.0e-10,
+            step_atol=1.0e-12,
+            step_rtol=1.0e-11,
+            max_newton_iters=3,
+            gmres_rtol=1.0e-10,
+            gmres_atol=1.0e-12,
+            gmres_restart=192,
+            gmres_maxiter=8,
+            max_line_search_iters=8,
+            accept_best_line_search_decrease=True,
+            finite_difference_jvp_epsilon=1.0e-5,
+            preconditioner=PreconditionerConfig(
+                type="colored_sparse_jacobian_lu",
+                side="left",
+                rebuild_policy="every_newton_step",
+                stencil_radius=3,
+                color_separation=7,
+                factorization="splu",
+                diagonal_shift=0.0,
+                drop_tolerance=0.0,
+                fill_factor=10.0,
+                permutation="COLAMD",
+            ),
+        )
+    )
+
+
+@dataclass(frozen=True)
 class HarnessConfig:
     backend: BackendConfig = field(default_factory=BackendConfig)
     newton: NewtonConfig = field(default_factory=NewtonConfig)
@@ -367,6 +464,7 @@ class HarnessConfig:
     mms: ManufacturedSolutionsConfig = field(default_factory=ManufacturedSolutionsConfig)
     branch: BranchSmokeConfig = field(default_factory=BranchSmokeConfig)
     convergence: BranchConvergenceConfig = field(default_factory=BranchConvergenceConfig)
+    p2_tangent: P2TangentConfig = field(default_factory=P2TangentConfig)
     run_root: str = "software/stage1_solver/runs/step2_manufactured_solutions"
     report_path: str = "software/stage1_solver/reports/step2_manufactured_solutions_validation.md"
     jacobian_check_seed: int = 1729

@@ -19,7 +19,9 @@ from .mms import run_convergence_study, weighted_l2_norm
 from .newton import finite_difference_jvp_check
 from .operators import (
     localized_maxwell_operator,
+    localized_maxwell_operator_with_spherical_l,
     radial_current,
+    tensor_laplacian_with_spherical_l,
     tensor_laplacian,
     wall_s_eta_operator,
 )
@@ -165,6 +167,100 @@ def _maxwell_expressions() -> dict[str, Any]:
     }
 
 
+def _p2_centrifugal_expressions() -> dict[str, Any]:
+    r, radius = _radial_symbols()
+    w, w_min, w_max = sp.symbols("w w_min w_max", real=True)
+    ell = sp.symbols("ell", integer=True, nonnegative=True)
+    length = w_max - w_min
+    x = (w - w_min) / length
+    radial = (r / radius) ** 2 * (1 - (r / radius) ** 2) ** 4
+    axial = 1 + sp.Rational(3, 20) * 256 * x**4 * (1 - x) ** 4
+    field = radial * axial
+    operator = (
+        sp.diff(field, r, 2)
+        + 2 * sp.diff(field, r) / r
+        + sp.diff(field, w, 2)
+        - ell * (ell + 1) * field / r**2
+    )
+    return {
+        "field": sp.lambdify((r, w, radius, w_min, w_max), field, "numpy"),
+        "operator": sp.lambdify((r, w, radius, w_min, w_max, ell), operator, "numpy"),
+        "r_outer_derivative": sp.lambdify(
+            (radius, w, w_min, w_max),
+            sp.diff(field, r).subs(r, radius),
+            "numpy",
+        ),
+        "w_lower_outward_derivative": sp.lambdify(
+            (r, radius, w_min, w_max), -sp.diff(field, w).subs(w, w_min), "numpy"
+        ),
+        "w_upper_outward_derivative": sp.lambdify(
+            (r, radius, w_min, w_max), sp.diff(field, w).subs(w, w_max), "numpy"
+        ),
+        "field_expr": field,
+        "operator_expr": sp.simplify(operator),
+    }
+
+
+def _p2_maxwell_angular_expressions() -> dict[str, Any]:
+    r, radius = _radial_symbols()
+    w, w_min, w_max = sp.symbols("w w_min w_max", real=True)
+    lam, xi = sp.symbols("lambda xi", positive=True, real=True)
+    ell = sp.symbols("ell", integer=True, nonnegative=True)
+    length = w_max - w_min
+    x = (w - w_min) / length
+    z = sp.exp(-(w / lam) ** 2)
+    radial = (r / radius) ** 2 * (1 - (r / radius) ** 2) ** 4
+    axial = 256 * x**4 * (1 - x) ** 4
+
+    a0 = radial * (sp.Rational(1, 5) + sp.Rational(3, 20) * axial)
+    ar = radial * (sp.Rational(19, 100) + sp.Rational(7, 100) * axial)
+    aw = radial * (
+        sp.Rational(11, 100)
+        + sp.Rational(9, 100) * axial
+        + sp.Rational(3, 50) * (r / radius) ** 2 * axial
+    )
+
+    scalar_lap = z * (sp.diff(a0, r, 2) + 2 * sp.diff(a0, r) / r) + sp.diff(
+        z * sp.diff(a0, w), w
+    )
+    divergence = sp.diff(r**2 * ar, r) / r**2 + sp.diff(aw, w)
+    f_rw = sp.diff(aw, r) - sp.diff(ar, w)
+    base = sp.Matrix(
+        [
+            -scalar_lap,
+            -sp.diff(z * f_rw, w) + (1 / xi) * sp.diff(z * divergence, r),
+            sp.diff(r**2 * z * f_rw, r) / r**2
+            + (1 / xi) * sp.diff(z * divergence, w),
+        ]
+    )
+    angular = ell * (ell + 1) * z * sp.Matrix([a0, ar, aw]) / r**2
+    operator = base + angular
+    return {
+        "a0": sp.lambdify((r, w, radius, w_min, w_max), a0, "numpy"),
+        "ar": sp.lambdify((r, w, radius, w_min, w_max), ar, "numpy"),
+        "aw": sp.lambdify((r, w, radius, w_min, w_max), aw, "numpy"),
+        "operator": sp.lambdify(
+            (r, w, radius, w_min, w_max, ell, lam, xi),
+            operator,
+            "numpy",
+        ),
+        "weight": sp.lambdify((w, lam), z, "numpy"),
+        "a0_r_outer_derivative": sp.lambdify(
+            (radius, w, w_min, w_max), sp.diff(a0, r).subs(r, radius), "numpy"
+        ),
+        "a0_w_lower_outward_derivative": sp.lambdify(
+            (r, radius, w_min, w_max), -sp.diff(a0, w).subs(w, w_min), "numpy"
+        ),
+        "a0_w_upper_outward_derivative": sp.lambdify(
+            (r, radius, w_min, w_max), sp.diff(a0, w).subs(w, w_max), "numpy"
+        ),
+        "a0_expr": a0,
+        "ar_expr": ar,
+        "aw_expr": aw,
+        "operator_expr": operator,
+    }
+
+
 def _wall_expressions() -> dict[str, Any]:
     w, w_min, w_max = sp.symbols("w w_min w_max", real=True)
     ell = sp.symbols("ell", integer=True, nonnegative=True)
@@ -224,6 +320,8 @@ _MATTER = _matter_expressions()
 _TENSOR = _tensor_expressions()
 _CURRENT = _current_expressions()
 _MAXWELL = _maxwell_expressions()
+_P2_CENTRIFUGAL = _p2_centrifugal_expressions()
+_P2_MAXWELL_ANGULAR = _p2_maxwell_angular_expressions()
 _WALL = _wall_expressions()
 
 
@@ -516,6 +614,192 @@ def run_maxwell_mms(config: HarnessConfig) -> dict[str, Any]:
     )
 
 
+def run_p2_centrifugal_mms(config: HarnessConfig) -> dict[str, Any]:
+    dtype = configure_backend(config.backend)
+    cfg = config.mms.p2_centrifugal
+    full_config = config.to_dict()
+    zero_flux = BoundaryCondition.neumann(0.0)
+
+    def build_level(level: tuple[int, int]):
+        nr, nw = level
+        grid = TensorProductGrid.create(
+            TensorGridSpec(r_max=cfg.r_max, nr=nr, w_min=cfg.w_min, w_max=cfg.w_max, nw=nw),
+            dtype=dtype,
+            device=config.backend.device,
+        )
+        spacing = max(grid.dr, grid.dw)
+        return grid, f"nr_{nr}_nw_{nw}", spacing, grid.to_dict(), grid.cell_volumes
+
+    def evaluate_level(grid: TensorProductGrid):
+        rr, ww = np.meshgrid(
+            grid.r_centers.detach().cpu().numpy(),
+            grid.w_centers.detach().cpu().numpy(),
+            indexing="ij",
+        )
+        field_np = _P2_CENTRIFUGAL["field"](rr, ww, cfg.r_max, cfg.w_min, cfg.w_max)
+        exact_np = _P2_CENTRIFUGAL["operator"](
+            rr,
+            ww,
+            cfg.r_max,
+            cfg.w_min,
+            cfg.w_max,
+            cfg.spherical_l,
+        )
+        field = _torch_from_numpy(field_np, dtype=dtype, device=config.backend.device)
+        exact = _torch_from_numpy(exact_np, dtype=dtype, device=config.backend.device)
+        discrete = tensor_laplacian_with_spherical_l(
+            field,
+            grid,
+            cfg.spherical_l,
+            zero_flux,
+            zero_flux,
+            zero_flux,
+        )
+        diagnostics = {
+            "spherical_l": cfg.spherical_l,
+            "ell_factor": cfg.spherical_l * (cfg.spherical_l + 1),
+            "regular_origin_profile": "field carries an r^2 factor",
+            "radial_outer_bc": zero_flux.to_dict(),
+            "w_lower_bc": zero_flux.to_dict(),
+            "w_upper_bc": zero_flux.to_dict(),
+        }
+        return discrete, exact, diagnostics
+
+    return asdict(
+        run_convergence_study(
+            name=cfg.name,
+            description=(
+                "P2 scalar/matter bulk angular reduction: tensor Laplacian plus "
+                "-l(l+1)u/r^2 with l=2."
+            ),
+            continuum_source=(
+                "moving_throat_pde_program_compact.md lines 1298-1308 and "
+                "Step-8a bulk angular reduction paragraph."
+            ),
+            manufactured_field=str(_P2_CENTRIFUGAL["field_expr"]),
+            forcing_derivation=(
+                "SymPy evaluated d_r^2 u + 2 r^-1 d_r u + d_w^2 u "
+                "- l(l+1)u/r^2 for a regular r^2 manufactured P2 coefficient."
+            ),
+            levels=cfg.grid_levels,
+            build_level=build_level,
+            evaluate_level=evaluate_level,
+            config=full_config,
+            run_root=config.run_root,
+            min_observed_order=cfg.min_observed_order,
+            final_error_max=cfg.final_error_max,
+            config_hash=config.config_hash(),
+        )
+    )
+
+
+def run_p2_maxwell_angular_mms(config: HarnessConfig) -> dict[str, Any]:
+    dtype = configure_backend(config.backend)
+    cfg = config.mms.p2_maxwell_angular
+    full_config = config.to_dict()
+    zero_flux = BoundaryCondition.neumann(0.0)
+
+    def build_level(level: tuple[int, int]):
+        nr, nw = level
+        grid = TensorProductGrid.create(
+            TensorGridSpec(r_max=cfg.r_max, nr=nr, w_min=cfg.w_min, w_max=cfg.w_max, nw=nw),
+            dtype=dtype,
+            device=config.backend.device,
+        )
+        spacing = max(grid.dr, grid.dw)
+        return grid, f"nr_{nr}_nw_{nw}", spacing, grid.to_dict(), grid.cell_volumes
+
+    def evaluate_level(grid: TensorProductGrid):
+        r_np = grid.r_centers.detach().cpu().numpy()
+        w_np = grid.w_centers.detach().cpu().numpy()
+        rr, ww = np.meshgrid(r_np, w_np, indexing="ij")
+        a0_np = _P2_MAXWELL_ANGULAR["a0"](rr, ww, cfg.r_max, cfg.w_min, cfg.w_max)
+        ar_np = _P2_MAXWELL_ANGULAR["ar"](rr, ww, cfg.r_max, cfg.w_min, cfg.w_max)
+        aw_np = _P2_MAXWELL_ANGULAR["aw"](rr, ww, cfg.r_max, cfg.w_min, cfg.w_max)
+        exact_np = np.asarray(
+            _P2_MAXWELL_ANGULAR["operator"](
+                rr,
+                ww,
+                cfg.r_max,
+                cfg.w_min,
+                cfg.w_max,
+                cfg.spherical_l,
+                cfg.localization_width,
+                cfg.xi,
+            ),
+            dtype=np.float64,
+        ).squeeze()
+        weight_centers = _torch_from_numpy(
+            _P2_MAXWELL_ANGULAR["weight"](w_np, cfg.localization_width),
+            dtype=dtype,
+            device=config.backend.device,
+        )
+        weight_faces = _torch_from_numpy(
+            _P2_MAXWELL_ANGULAR["weight"](
+                grid.w_faces.detach().cpu().numpy(),
+                cfg.localization_width,
+            ),
+            dtype=dtype,
+            device=config.backend.device,
+        )
+        discrete = localized_maxwell_operator_with_spherical_l(
+            _torch_from_numpy(a0_np, dtype=dtype, device=config.backend.device),
+            _torch_from_numpy(ar_np, dtype=dtype, device=config.backend.device),
+            _torch_from_numpy(aw_np, dtype=dtype, device=config.backend.device),
+            grid,
+            spherical_l=cfg.spherical_l,
+            xi=cfg.xi,
+            weight_w_centers=weight_centers,
+            weight_w_faces=weight_faces,
+            a0_radial_outer_bc=zero_flux,
+            a0_w_lower_bc=zero_flux,
+            a0_w_upper_bc=zero_flux,
+        )
+        exact = _torch_from_numpy(exact_np, dtype=dtype, device=config.backend.device)
+        diagnostics = {
+            "spherical_l": cfg.spherical_l,
+            "ell_factor": cfg.spherical_l * (cfg.spherical_l + 1),
+            "gauge_fixing": "H=Z",
+            "regular_origin_profile": "retained A_N lanes carry an r^2 factor",
+            "a0_radial_outer_bc": zero_flux.to_dict(),
+            "a0_w_lower_bc": zero_flux.to_dict(),
+            "a0_w_upper_bc": zero_flux.to_dict(),
+        }
+        return discrete, exact, diagnostics
+
+    return asdict(
+        run_convergence_study(
+            name=cfg.name,
+            description=(
+                "Localized Maxwell retained-lane l=2 engineering-smoke scalarization: "
+                "existing H=Z radial/w operator plus componentwise l(l+1)Z(w)A_N/r^2."
+            ),
+            continuum_source=(
+                "Step-8a retained-lane scalarization. Exact for scalar lanes A0 and Aw; "
+                "Ar is not the full vector-harmonic l=2 reduction."
+            ),
+            manufactured_field=(
+                f"A0={_P2_MAXWELL_ANGULAR['a0_expr']}; "
+                f"Ar={_P2_MAXWELL_ANGULAR['ar_expr']}; "
+                f"Aw={_P2_MAXWELL_ANGULAR['aw_expr']}"
+            ),
+            forcing_derivation=(
+                "SymPy evaluated the continuum H=Z Maxwell operator and then added "
+                "the scalarized l(l+1)Z(w)A_N/r^2 angular term for each retained "
+                "radial coefficient."
+            ),
+            levels=cfg.grid_levels,
+            build_level=build_level,
+            evaluate_level=evaluate_level,
+            config=full_config,
+            run_root=config.run_root,
+            min_observed_order=cfg.min_observed_order,
+            final_error_max=cfg.final_error_max,
+            config_hash=config.config_hash(),
+        )
+    )
+
+
 def run_wall_mms(config: HarnessConfig) -> dict[str, Any]:
     cfg = config.mms.wall
     full_config = config.to_dict()
@@ -647,12 +931,16 @@ def run_all_mms_benchmarks(config: HarnessConfig) -> dict[str, Any]:
     tensor_result = run_tensor_laplacian_mms(config)
     current = run_current_mms(config)
     maxwell = run_maxwell_mms(config)
+    p2_centrifugal = run_p2_centrifugal_mms(config)
+    p2_maxwell_angular = run_p2_maxwell_angular_mms(config)
     wall = run_wall_mms(config)
     sections = {
         "matter": matter,
         "tensor": tensor_result,
         "current": current,
         "maxwell": maxwell,
+        "p2_centrifugal": p2_centrifugal,
+        "p2_maxwell_angular": p2_maxwell_angular,
         "wall": wall,
     }
     return {

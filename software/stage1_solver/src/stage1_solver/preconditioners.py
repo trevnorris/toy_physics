@@ -33,6 +33,16 @@ class CoupledSparseJacobianLayout:
     nw: int
 
 
+@dataclass(frozen=True)
+class P2TangentSparseJacobianLayout:
+    cell_field_count: int
+    cell_count: int
+    wall_count: int
+    state_size: int
+    nr: int
+    nw: int
+
+
 def _validate_coloring_config(config: PreconditionerConfig) -> None:
     if config.type != "colored_sparse_jacobian_lu":
         raise ValueError(f"Unsupported preconditioner type {config.type!r}")
@@ -71,6 +81,28 @@ def _color_groups(layout: CoupledSparseJacobianLayout, separation: int) -> list[
     return [colors[key] for key in sorted(colors)]
 
 
+def _p2_tangent_color_groups(
+    layout: P2TangentSparseJacobianLayout,
+    separation: int,
+) -> list[list[int]]:
+    colors: dict[int, list[int]] = {}
+    plane_colors = separation * separation
+    for field in range(layout.cell_field_count):
+        field_offset = field * layout.cell_count
+        color_offset = field * plane_colors
+        for i in range(layout.nr):
+            for j in range(layout.nw):
+                cell = i * layout.nw + j
+                color = color_offset + (i % separation) * separation + (j % separation)
+                colors.setdefault(color, []).append(field_offset + cell)
+    wall_color_offset = layout.cell_field_count * plane_colors
+    wall_offset = layout.cell_field_count * layout.cell_count
+    for j in range(layout.wall_count):
+        color = wall_color_offset + (j % separation)
+        colors.setdefault(color, []).append(wall_offset + j)
+    return [colors[key] for key in sorted(colors)]
+
+
 def _local_residual_rows(
     *,
     layout: CoupledSparseJacobianLayout,
@@ -92,6 +124,52 @@ def _local_residual_rows(
         for row_field in range(layout.field_count)
     ]
     return np.concatenate(rows)
+
+
+def _p2_cell_residual_rows(
+    *,
+    layout: P2TangentSparseJacobianLayout,
+    cell: int,
+    radius: int,
+) -> np.ndarray:
+    i = cell // layout.nw
+    j = cell % layout.nw
+    i0 = max(0, i - radius)
+    i1 = min(layout.nr, i + radius + 1)
+    j0 = max(0, j - radius)
+    j1 = min(layout.nw, j + radius + 1)
+    cells = np.array(
+        [ii * layout.nw + jj for ii in range(i0, i1) for jj in range(j0, j1)],
+        dtype=np.int64,
+    )
+    rows = [
+        row_field * layout.cell_count + cells
+        for row_field in range(layout.cell_field_count)
+    ]
+    return np.concatenate(rows)
+
+
+def _p2_wall_column_rows(
+    *,
+    layout: P2TangentSparseJacobianLayout,
+    wall_index: int,
+    radius: int,
+) -> np.ndarray:
+    j0 = max(0, wall_index - radius)
+    j1 = min(layout.nw, wall_index + radius + 1)
+    cells = np.array(
+        [i * layout.nw + j for i in range(layout.nr) for j in range(j0, j1)],
+        dtype=np.int64,
+    )
+    cell_rows = [
+        row_field * layout.cell_count + cells
+        for row_field in range(layout.cell_field_count)
+    ]
+    wall_rows = (
+        layout.cell_field_count * layout.cell_count
+        + np.arange(j0, j1, dtype=np.int64)
+    )
+    return np.concatenate([*cell_rows, wall_rows])
 
 
 def _constraint_row_entries(
@@ -215,6 +293,106 @@ def assemble_coupled_colored_sparse_jacobian(
     return matrix, metadata
 
 
+def assemble_p2_tangent_colored_sparse_jacobian(
+    context: PreconditionerBuildContext,
+    grid: TensorProductGrid,
+) -> tuple[csc_matrix, dict[str, Any]]:
+    config = context.config.preconditioner
+    _validate_coloring_config(config)
+    cell_count = grid.spec.nr * grid.spec.nw
+    layout = P2TangentSparseJacobianLayout(
+        cell_field_count=5,
+        cell_count=cell_count,
+        wall_count=grid.spec.nw,
+        state_size=5 * cell_count + grid.spec.nw,
+        nr=grid.spec.nr,
+        nw=grid.spec.nw,
+    )
+    if context.x.numel() != layout.state_size:
+        raise ValueError(
+            f"Expected P2 tangent state with {layout.state_size} entries, got {context.x.numel()}"
+        )
+
+    color_groups = _p2_tangent_color_groups(layout, config.color_separation)
+    row_chunks: list[np.ndarray] = []
+    col_chunks: list[np.ndarray] = []
+    data_chunks: list[np.ndarray] = []
+    jvp_count = 0
+    wall_offset = layout.cell_field_count * layout.cell_count
+
+    for columns in color_groups:
+        direction_np = np.zeros(layout.state_size, dtype=np.float64)
+        direction_np[columns] = 1.0
+        direction = torch.as_tensor(direction_np, dtype=context.x.dtype, device=context.x.device)
+        probe = (
+            jvp(context.residual_fn, context.x, direction)
+            .detach()
+            .cpu()
+            .numpy()
+            .astype(np.float64, copy=False)
+        )
+        jvp_count += 1
+        for column in columns:
+            if column < wall_offset:
+                cell = column % layout.cell_count
+                rows = _p2_cell_residual_rows(
+                    layout=layout,
+                    cell=cell,
+                    radius=config.stencil_radius,
+                )
+            else:
+                rows = _p2_wall_column_rows(
+                    layout=layout,
+                    wall_index=column - wall_offset,
+                    radius=config.stencil_radius,
+                )
+            row_chunks.append(rows)
+            col_chunks.append(np.full(rows.shape, column, dtype=np.int64))
+            data_chunks.append(probe[rows])
+
+    rows = np.concatenate(row_chunks)
+    cols = np.concatenate(col_chunks)
+    data = np.concatenate(data_chunks)
+    if config.drop_tolerance > 0.0:
+        keep = np.abs(data) >= config.drop_tolerance
+        rows = rows[keep]
+        cols = cols[keep]
+        data = data[keep]
+    matrix = coo_matrix(
+        (data, (rows, cols)),
+        shape=(layout.state_size, layout.state_size),
+        dtype=np.float64,
+    ).tocsc()
+    matrix.sum_duplicates()
+    matrix.eliminate_zeros()
+    if config.diagonal_shift != 0.0:
+        matrix = matrix + config.diagonal_shift * eye(
+            layout.state_size,
+            format="csc",
+            dtype=np.float64,
+        )
+    metadata = {
+        "type": config.type,
+        "side": config.side,
+        "rebuild_policy": config.rebuild_policy,
+        "stencil_radius": config.stencil_radius,
+        "color_separation": config.color_separation,
+        "active_color_count": len(color_groups),
+        "jvp_count": jvp_count,
+        "state_size": layout.state_size,
+        "cell_field_count": layout.cell_field_count,
+        "wall_count": layout.wall_count,
+        "matrix_nnz": int(matrix.nnz),
+        "matrix_density": float(matrix.nnz / (layout.state_size * layout.state_size)),
+        "factorization": config.factorization,
+        "diagonal_shift": config.diagonal_shift,
+        "drop_tolerance": config.drop_tolerance,
+        "fill_factor": config.fill_factor,
+        "permutation": config.permutation,
+    }
+    return matrix, metadata
+
+
 def factorized_sparse_inverse_operator(
     matrix: csc_matrix,
     config: PreconditionerConfig,
@@ -262,6 +440,29 @@ def make_coupled_colored_sparse_jacobian_lu_factory(
         built = BuiltPreconditioner(operator=operator, metadata=metadata)
         if config.rebuild_policy != "every_newton_step":
             cached = built
+        return built
+
+    return factory
+
+
+def make_p2_tangent_colored_sparse_jacobian_lu_factory(
+    grid: TensorProductGrid,
+) -> Callable[[PreconditionerBuildContext], BuiltPreconditioner]:
+    cached: BuiltPreconditioner | None = None
+
+    def factory(context: PreconditionerBuildContext) -> BuiltPreconditioner:
+        nonlocal cached
+        config = context.config.preconditioner
+        _validate_coloring_config(config)
+        if config.rebuild_policy != "every_newton_step" and cached is not None:
+            metadata = dict(cached.metadata)
+            metadata["reused"] = True
+            return BuiltPreconditioner(operator=cached.operator, metadata=metadata)
+        matrix, metadata = assemble_p2_tangent_colored_sparse_jacobian(context, grid)
+        operator, factor_metadata = factorized_sparse_inverse_operator(matrix, config)
+        metadata.update(factor_metadata)
+        built = BuiltPreconditioner(operator=operator, metadata=metadata)
+        cached = built
         return built
 
     return factory

@@ -205,11 +205,22 @@ def _write_step2_report(results: dict[str, Any], path: str) -> Path:
         "Maxwell: stationary axisymmetric `d_M(Z F^{MN}) + xi^-1 d^N(Z d.A)` with components `A0, Ar, Aw` and `H=Z`."
     )
     lines.append(
+        "P2 angular pieces: scalar/tensor lanes add `-l(l+1)u/r^2`; retained Maxwell lanes add `+l(l+1)Z(w)A_N/r^2`."
+    )
+    lines.append(
         "Wall: flat-`dw` stationary modal `-d_w(T_w d_w eta) + [K_eta + ell(ell+1)T_Omega] eta`."
     )
     lines.append("")
 
-    for key in ("matter", "tensor", "current", "maxwell", "wall"):
+    for key in (
+        "matter",
+        "tensor",
+        "current",
+        "maxwell",
+        "p2_centrifugal",
+        "p2_maxwell_angular",
+        "wall",
+    ):
         section = mms["sections"][key]
         lines.append(f"## {section['name']}")
         lines.append("")

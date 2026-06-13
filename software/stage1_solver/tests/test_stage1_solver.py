@@ -47,6 +47,15 @@ from stage1_solver.coupled_branch import (
     initial_branch_state,
     pack_coupled_fields,
 )
+from stage1_solver.error_budget import (
+    CombinationSensitivity,
+    ErrorFloorScales,
+    _observable_set_matches_step4,
+    combine_uncertainty,
+    compose_observable_budget,
+    recorded_prior_results,
+    run_step7,
+)
 from stage1_solver.grid import RadialGrid, TensorProductGrid
 from stage1_solver.manifest import write_manifest
 from stage1_solver.newton import PreconditionerBuildContext, finite_difference_jvp_check
@@ -681,3 +690,170 @@ def test_boundary_sweep_configs_change_only_the_tested_variable() -> None:
         row.pop("a0_exit_impedance_alpha")
         impedance_common.append(row)
     assert impedance_common[0] == impedance_common[1] == impedance_common[2]
+
+
+def test_error_budget_floor_enforcement_carries_solver_floor() -> None:
+    floors = ErrorFloorScales(
+        solver_abs=1.0e-8,
+        discretization_relative_floor=1.0e-4,
+        boundary_relative_floor=0.0,
+        conservation_relative_floor=0.0,
+    )
+    row = compose_observable_budget(
+        {
+            "observable": "density_mass",
+            "label": "density mass integral",
+            "finest_grid": "synthetic",
+            "finest_dof": 1,
+            "finest_value": 1.0,
+            "finest_error_estimate": 1.0e-12,
+            "verdict": "solver-floor diagnostic",
+        },
+        floors,
+    )
+    assert row["u_disc"] == 1.0e-12
+    assert row["u_total"] == floors.solver_abs
+    assert row["floor_limited"] is True
+    assert row["verdict"] == "solver-floor diagnostic"
+
+
+def test_error_budget_monotonic_rss_composition_bounds_components() -> None:
+    base = combine_uncertainty(
+        solver_floor=1.0e-8,
+        discretization_abs=3.0e-6,
+        boundary_abs=0.0,
+        conservation_abs=0.0,
+    )
+    with_boundary = combine_uncertainty(
+        solver_floor=1.0e-8,
+        discretization_abs=3.0e-6,
+        boundary_abs=4.0e-6,
+        conservation_abs=0.0,
+    )
+    assert with_boundary["rss_total"] > base["rss_total"]
+    assert with_boundary["rss_total"] >= 4.0e-6
+    assert with_boundary["max_alternative"] <= with_boundary["rss_total"]
+    assert with_boundary["rss_total"] <= with_boundary["sum_bound"]
+
+
+def test_error_budget_relative_conservation_floor_scope_mapping() -> None:
+    floors = ErrorFloorScales(
+        solver_abs=1.0e-8,
+        discretization_relative_floor=1.0e-4,
+        boundary_relative_floor=0.01,
+        conservation_relative_floor=0.02,
+    )
+    coupled = compose_observable_budget(
+        {
+            "observable": "scalar_gauge_l2",
+            "label": "A0 L2 norm",
+            "finest_grid": "synthetic",
+            "finest_dof": 1,
+            "finest_value": 2.0,
+            "finest_error_estimate": 0.0,
+            "verdict": "expected-order convergence",
+        },
+        floors,
+    )
+    uncoupled = compose_observable_budget(
+        {
+            "observable": "chemical_potential",
+            "label": "chemical potential",
+            "finest_grid": "synthetic",
+            "finest_dof": 1,
+            "finest_value": 2.0,
+            "finest_error_estimate": 0.0,
+            "verdict": "expected-order convergence",
+        },
+        floors,
+    )
+    assert coupled["u_conservation"] == 0.04
+    assert uncoupled["u_conservation"] == 0.0
+    assert coupled["u_boundary"] == uncoupled["u_boundary"] == 0.02
+
+
+def test_error_budget_null_sector_guard_has_no_manufactured_uncertainty() -> None:
+    floors = ErrorFloorScales(
+        solver_abs=1.0e-8,
+        discretization_relative_floor=1.0e-4,
+        boundary_relative_floor=0.01,
+        conservation_relative_floor=0.02,
+    )
+    row = compose_observable_budget(
+        {
+            "observable": "spatial_gauge_l2",
+            "label": "spatial gauge L2 norm",
+            "finest_grid": "synthetic",
+            "finest_dof": 1,
+            "finest_value": 0.0,
+            "finest_error_estimate": 0.0,
+            "verdict": "null diagnostic",
+        },
+        floors,
+    )
+    assert row["u_total"] == 0.0
+    assert row["u_solver"] == 0.0
+    assert row["relative_uncertainty"] is None
+    assert row["dominant_component"] == "null"
+    assert row["verdict"] == "null diagnostic"
+
+
+def test_error_budget_asserted_items_are_reported_but_not_counted(tmp_path) -> None:
+    recorded = recorded_prior_results()
+    recorded["step4"]["passed"] = False
+    recorded["step5"]["passed"] = False
+    recorded["step6"]["passed"] = False
+    cfg = HarnessConfig(
+        run_root=str(tmp_path / "run"),
+        report_path=str(tmp_path / "report.md"),
+    )
+
+    results = run_step7(
+        cfg,
+        step4_results=recorded["step4"],
+        step5_results=recorded["step5"],
+        step6_results=recorded["step6"],
+    )
+
+    assert set(results["pass_checks"]) == {
+        "non_null_uncertainties_floor_at_solver",
+        "solver_floor_limited_rows_flagged",
+        "null_sectors_remain_null",
+        "conservation_floor_scoped",
+        "boundary_floor_scoped",
+        "observable_set_matches_step4",
+    }
+    assert all(results["pass_checks"].values())
+    assert results["passed"] is True
+    assert all(key.endswith("_not_a_physics_gate") for key in results["asserted_checks"])
+    assert results["asserted_checks"]["prior_step4_passed_not_a_physics_gate"] is False
+    assert results["asserted_checks"]["prior_step5_passed_not_a_physics_gate"] is False
+    assert results["asserted_checks"]["prior_step6_passed_not_a_physics_gate"] is False
+
+
+def test_error_budget_observable_set_check_is_computed() -> None:
+    recorded = recorded_prior_results()
+    assert _observable_set_matches_step4(recorded["step4"]) is True
+
+    dropped = recorded_prior_results()["step4"]
+    dropped["observable_summary"] = [
+        row for row in dropped["observable_summary"] if row["observable"] != "density_mass"
+    ]
+
+    assert _observable_set_matches_step4(dropped) is False
+
+
+def test_error_budget_digest_is_deterministic(tmp_path) -> None:
+    cfg_a = HarnessConfig(
+        run_root=str(tmp_path / "run_a"),
+        report_path=str(tmp_path / "report_a.md"),
+    )
+    cfg_b = HarnessConfig(
+        run_root=str(tmp_path / "run_b"),
+        report_path=str(tmp_path / "report_b.md"),
+    )
+    first = run_step7(cfg_a, sensitivity=CombinationSensitivity(material_ratio_threshold=1.05))
+    second = run_step7(cfg_b, sensitivity=CombinationSensitivity(material_ratio_threshold=1.05))
+    assert first["diagnostics_digest"] == second["diagnostics_digest"]
+    assert first["component_floors"] == second["component_floors"]
+    assert first["observable_budget"] == second["observable_budget"]

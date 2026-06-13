@@ -32,6 +32,12 @@ from stage1_solver.convergence import (
     richardson_estimate,
     validate_refinement_ladder,
 )
+from stage1_solver.conservation_diagnostics import (
+    ConservationRegion,
+    _sponge_sink_densities,
+    independent_gauss_face_fluxes,
+    null_floor_label,
+)
 from stage1_solver.coupled_branch import (
     CoupledFields,
     boundary_sponge_profile_torch,
@@ -49,7 +55,9 @@ from stage1_solver.operators import (
     radial_current,
     radial_fluxes,
     radial_laplacian,
+    tensor_flux_divergence,
     tensor_laplacian,
+    tensor_vector_face_fluxes,
 )
 from stage1_solver.preconditioners import assemble_coupled_colored_sparse_jacobian
 from stage1_solver.physics import cubic_gpe_residual, gaussian_initial_state
@@ -86,6 +94,69 @@ def test_tensor_grid_constant_has_zero_laplacian() -> None:
     zero_flux = BoundaryCondition.neumann(0.0)
     lap = tensor_laplacian(values, grid, zero_flux, zero_flux, zero_flux)
     assert torch.max(torch.abs(lap)).item() < 1.0e-13
+
+
+def test_conservative_tensor_divergence_theorem_on_hand_field() -> None:
+    dtype = configure_backend(BackendConfig())
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=10, w_min=0.0, w_max=1.2, nw=6),
+        dtype=dtype,
+        device="cpu",
+    )
+    rr = grid.r_centers[:, None]
+    ww = grid.w_centers[None, :]
+    radial = 0.2 + 0.03 * rr + 0.07 * ww + 0.01 * rr * ww
+    axial = -0.1 + 0.05 * rr**2 - 0.02 * ww
+    radial_flux, w_flux = tensor_vector_face_fluxes(radial, axial, grid)
+    divergence = tensor_flux_divergence(radial_flux, w_flux, grid)
+
+    r0, r1 = 2, 8
+    w0, w1 = 1, 5
+    volume_integral = torch.sum(divergence[r0:r1, w0:w1] * grid.cell_volumes[r0:r1, w0:w1])
+    surface_flux = (
+        torch.sum(radial_flux[r1, w0:w1])
+        - torch.sum(radial_flux[r0, w0:w1])
+        + torch.sum(w_flux[r0:r1, w1])
+        - torch.sum(w_flux[r0:r1, w0])
+    )
+    assert abs((volume_integral - surface_flux).item()) < 1.0e-13
+
+
+def test_gauss_closure_recovers_known_quadratic_charge_field() -> None:
+    dtype = configure_backend(BackendConfig())
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=12, w_min=0.0, w_max=1.0, nw=6),
+        dtype=dtype,
+        device="cpu",
+    )
+    source = 0.7
+    a0 = -(source / 6.0) * grid.r_centers[:, None] ** 2 + torch.zeros(
+        (grid.spec.nr, grid.spec.nw),
+        dtype=dtype,
+    )
+    cfg = BranchSmokeConfig(
+        r_max=2.0,
+        w_min=0.0,
+        w_max=1.0,
+        solve_grid=(12, 6),
+        localization_floor=1.0,
+        localization_amplitude=0.0,
+    )
+    gauss_radial_flux, gauss_w_flux = independent_gauss_face_fluxes(a0, grid, cfg)
+    region = ConservationRegion(r_start=0, r_stop=7, w_start=1, w_stop=5, label="known")
+    lhs = (
+        torch.sum(gauss_radial_flux[region.r_stop, region.w_start : region.w_stop])
+        - torch.sum(gauss_radial_flux[region.r_start, region.w_start : region.w_stop])
+        + torch.sum(gauss_w_flux[region.r_start : region.r_stop, region.w_stop])
+        - torch.sum(gauss_w_flux[region.r_start : region.r_stop, region.w_start])
+    )
+    r0 = grid.r_faces[region.r_start].item()
+    r1 = grid.r_faces[region.r_stop].item()
+    w0 = grid.w_faces[region.w_start].item()
+    w1 = grid.w_faces[region.w_stop].item()
+    analytic_volume = (4.0 * math.pi / 3.0) * (r1**3 - r0**3) * (w1 - w0)
+    rhs = source * analytic_volume
+    assert abs((lhs - rhs).item()) < 1.0e-13
 
 
 def test_conservative_restriction_preserves_constant_on_nested_tensor_grid() -> None:
@@ -479,6 +550,81 @@ def test_boundary_sponge_profile_and_residual_wiring() -> None:
     )
     assert torch.allclose(difference, expected, rtol=0.0, atol=1.0e-12)
     assert torch.count_nonzero(difference[:, interior]).item() == 0
+
+
+def test_conservation_sponge_accounting_is_interior_zero_with_expected_outer_sink() -> None:
+    dtype = configure_backend(BackendConfig())
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=8, w_min=0.0, w_max=1.0, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    cfg = BranchSmokeConfig(
+        r_max=2.0,
+        w_min=0.0,
+        w_max=1.0,
+        solve_grid=(8, 4),
+        gauge_charge=0.35,
+        sponge_enabled=True,
+        sponge_width=0.5,
+        sponge_matter_strength=3.0,
+        sponge_gauge_strength=5.0,
+        sponge_power=2,
+    )
+    rr = grid.r_centers[:, None]
+    ww = grid.w_centers[None, :]
+    fields = CoupledFields(
+        psi_real=1.0 + 0.1 * rr + torch.zeros_like(ww),
+        psi_imag=0.2 + 0.05 * ww + torch.zeros_like(rr),
+        a0=0.3 + 0.02 * rr + torch.zeros_like(ww),
+        ar=0.1 + 0.03 * ww + torch.zeros_like(rr),
+        aw=-0.2 + 0.01 * rr + torch.zeros_like(ww),
+    )
+    profile = boundary_sponge_profile_torch(grid, cfg)
+    sinks = _sponge_sink_densities(fields, grid, cfg)
+    interior = (grid.r_centers[:, None] <= 1.5) & (grid.w_centers[None, :] <= 0.5)
+    assert torch.sum(sinks["number"][interior] * grid.cell_volumes[interior]).item() == 0.0
+    expected_number = torch.sum(
+        cfg.sponge_matter_strength
+        * profile
+        * (fields.psi_real**2 + fields.psi_imag**2)
+        * grid.cell_volumes
+    )
+    expected_energy = torch.sum(
+        (
+            cfg.sponge_matter_strength * profile * (fields.psi_real**2 + fields.psi_imag**2)
+            + cfg.sponge_gauge_strength
+            * profile
+            * (fields.a0**2 + fields.ar**2 + fields.aw**2)
+        )
+        * grid.cell_volumes
+    )
+    assert expected_number.item() > 0.0
+    assert expected_energy.item() > expected_number.item()
+    assert torch.allclose(
+        torch.sum(sinks["number"] * grid.cell_volumes),
+        expected_number,
+        rtol=0.0,
+        atol=1.0e-13,
+    )
+    assert torch.allclose(
+        torch.sum(sinks["charge"] * grid.cell_volumes),
+        cfg.gauge_charge * expected_number,
+        rtol=0.0,
+        atol=1.0e-13,
+    )
+    assert torch.allclose(
+        torch.sum(sinks["energy"] * grid.cell_volumes),
+        expected_energy,
+        rtol=0.0,
+        atol=1.0e-13,
+    )
+
+
+def test_conservation_null_diagnostic_guard_uses_step4_vocabulary() -> None:
+    assert null_floor_label(0.0) == "null diagnostic"
+    assert null_floor_label(5.0e-15, floor=1.0e-14) == "null diagnostic"
+    assert null_floor_label(2.0e-14, floor=1.0e-14) == "solver-floor diagnostic"
 
 
 def test_boundary_interior_solution_difference_uses_fixed_volume_window() -> None:

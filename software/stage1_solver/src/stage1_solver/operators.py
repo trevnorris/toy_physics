@@ -130,6 +130,36 @@ def tensor_weighted_laplacian(
     if weight_w_faces.shape != (grid.spec.nw + 1,):
         raise ValueError("weight_w_faces expects shape (nw + 1,)")
 
+    radial_fluxes_rw, w_fluxes = tensor_weighted_gradient_fluxes(
+        values,
+        weight_w_centers,
+        weight_w_faces,
+        grid,
+        radial_outer_bc,
+        w_lower_bc,
+        w_upper_bc,
+    )
+    return tensor_flux_divergence(radial_fluxes_rw, w_fluxes, grid)
+
+
+def tensor_weighted_gradient_fluxes(
+    values: torch.Tensor,
+    weight_w_centers: torch.Tensor,
+    weight_w_faces: torch.Tensor,
+    grid: TensorProductGrid,
+    radial_outer_bc: BoundaryCondition,
+    w_lower_bc: BoundaryCondition,
+    w_upper_bc: BoundaryCondition,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return area-weighted FV fluxes used by ``tensor_weighted_laplacian``."""
+
+    if values.shape != (grid.spec.nr, grid.spec.nw):
+        raise ValueError("tensor_weighted_gradient_fluxes expects shape (nr, nw)")
+    if weight_w_centers.shape != (grid.spec.nw,):
+        raise ValueError("weight_w_centers expects shape (nw,)")
+    if weight_w_faces.shape != (grid.spec.nw + 1,):
+        raise ValueError("weight_w_faces expects shape (nw + 1,)")
+
     nr, nw = values.shape
     radial_fluxes_rw = torch.zeros((nr + 1, nw), dtype=values.dtype, device=values.device)
     radial_fluxes_rw[1:-1, :] = (
@@ -171,13 +201,7 @@ def tensor_weighted_laplacian(
         / grid.dw
     )
 
-    divergence = (
-        radial_fluxes_rw[1:, :]
-        - radial_fluxes_rw[:-1, :]
-        + w_fluxes[:, 1:]
-        - w_fluxes[:, :-1]
-    )
-    return divergence / grid.cell_volumes
+    return radial_fluxes_rw, w_fluxes
 
 
 def radial_center_gradient(values: torch.Tensor, grid: RadialGrid) -> torch.Tensor:
@@ -280,11 +304,39 @@ def axisymmetric_vector_divergence(
     expected = (grid.spec.nr, grid.spec.nw)
     if radial_component.shape != expected or w_component.shape != expected:
         raise ValueError("axisymmetric_vector_divergence expects two (nr, nw) fields")
+    radial_flux, w_flux = tensor_vector_face_fluxes(radial_component, w_component, grid)
+    return tensor_flux_divergence(radial_flux, w_flux, grid)
+
+
+def tensor_vector_face_fluxes(
+    radial_component: torch.Tensor,
+    w_component: torch.Tensor,
+    grid: TensorProductGrid,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return conservative face fluxes for a centered ``(r,w)`` vector field."""
+
+    expected = (grid.spec.nr, grid.spec.nw)
+    if radial_component.shape != expected or w_component.shape != expected:
+        raise ValueError("tensor_vector_face_fluxes expects two (nr, nw) fields")
     radial_faces = _face_average_with_linear_extrapolation(radial_component, axis=0)
     radial_faces[0, :] = 0.0
     radial_flux = grid.radial_face_areas[:, None] * grid.dw * radial_faces
     w_faces = _face_average_with_linear_extrapolation(w_component, axis=1)
     w_flux = grid.radial_shell_volumes[:, None] * w_faces
+    return radial_flux, w_flux
+
+
+def tensor_flux_divergence(
+    radial_flux: torch.Tensor,
+    w_flux: torch.Tensor,
+    grid: TensorProductGrid,
+) -> torch.Tensor:
+    """Cell-average divergence of area-weighted tensor-grid face fluxes."""
+
+    if radial_flux.shape != (grid.spec.nr + 1, grid.spec.nw):
+        raise ValueError("radial_flux expects shape (nr + 1, nw)")
+    if w_flux.shape != (grid.spec.nr, grid.spec.nw + 1):
+        raise ValueError("w_flux expects shape (nr, nw + 1)")
     divergence = (
         radial_flux[1:, :]
         - radial_flux[:-1, :]

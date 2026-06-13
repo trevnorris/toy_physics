@@ -7,6 +7,7 @@ import math
 import torch
 
 from stage1_solver.backend import configure_backend
+from stage1_solver.backend import jvp as torch_jvp
 from stage1_solver.boundaries import BoundaryCondition
 from stage1_solver.config import (
     BackendConfig,
@@ -14,6 +15,7 @@ from stage1_solver.config import (
     CubicGPEConfig,
     HarnessConfig,
     NewtonConfig,
+    PreconditionerConfig,
     RadialGridSpec,
     TensorGridSpec,
 )
@@ -27,7 +29,7 @@ from stage1_solver.coupled_branch import (
 )
 from stage1_solver.grid import RadialGrid, TensorProductGrid
 from stage1_solver.manifest import write_manifest
-from stage1_solver.newton import finite_difference_jvp_check
+from stage1_solver.newton import PreconditionerBuildContext, finite_difference_jvp_check
 from stage1_solver.operators import (
     integrate,
     radial_current,
@@ -35,6 +37,7 @@ from stage1_solver.operators import (
     radial_laplacian,
     tensor_laplacian,
 )
+from stage1_solver.preconditioners import assemble_coupled_colored_sparse_jacobian
 from stage1_solver.physics import cubic_gpe_residual, gaussian_initial_state
 
 
@@ -177,6 +180,110 @@ def test_coupled_branch_residual_shape_and_mass_constraint() -> None:
     )
     assert residual.shape == state.shape
     assert abs(residual[-1].item()) < 1.0e-13
+
+
+def test_colored_sparse_jacobian_matches_coupled_jvp_on_tiny_grid() -> None:
+    dtype = configure_backend(BackendConfig())
+    preconditioner = PreconditionerConfig(
+        type="colored_sparse_jacobian_lu",
+        side="left",
+        rebuild_policy="every_newton_step",
+        stencil_radius=3,
+        color_separation=7,
+        factorization="splu",
+    )
+    base_cfg = BranchSmokeConfig(solve_grid=(4, 3), ladder_levels=((4, 3),))
+    cfg = replace(base_cfg, newton=replace(base_cfg.newton, preconditioner=preconditioner))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=4, w_min=cfg.w_min, w_max=cfg.w_max, nw=3),
+        dtype=dtype,
+        device="cpu",
+    )
+    state = initial_branch_state(grid, cfg, dtype=dtype, device="cpu")
+    boundaries = branch_boundary_conditions(cfg)
+    residual_fn = lambda x: coupled_branch_residual(
+        x,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        boundaries=boundaries,
+    )
+    matrix, metadata = assemble_coupled_colored_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state,
+            rhs=torch.zeros_like(state).detach().cpu().numpy(),
+            iteration=1,
+            config=cfg.newton,
+        ),
+        grid,
+    )
+    generator = torch.Generator(device="cpu")
+    generator.manual_seed(777)
+    direction = torch.randn(state.shape, dtype=dtype, generator=generator)
+    direct = torch_jvp(residual_fn, state, direction).detach().cpu().numpy()
+    assembled = matrix @ direction.detach().cpu().numpy()
+    relative = math.sqrt(float(((assembled - direct) ** 2).sum())) / max(
+        1.0,
+        math.sqrt(float((direct**2).sum())),
+    )
+    assert metadata["active_color_count"] == state.numel()
+    assert relative < 1.0e-10
+
+
+def test_colored_sparse_jacobian_matches_coupled_jvp_with_compression() -> None:
+    dtype = configure_backend(BackendConfig())
+    preconditioner = PreconditionerConfig(
+        type="colored_sparse_jacobian_lu",
+        side="left",
+        rebuild_policy="every_newton_step",
+        stencil_radius=3,
+        color_separation=7,
+        factorization="splu",
+    )
+    base_cfg = BranchSmokeConfig(solve_grid=(14, 14), ladder_levels=((14, 14),))
+    cfg = replace(base_cfg, newton=replace(base_cfg.newton, preconditioner=preconditioner))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=14, w_min=cfg.w_min, w_max=cfg.w_max, nw=14),
+        dtype=dtype,
+        device="cpu",
+    )
+    state = initial_branch_state(grid, cfg, dtype=dtype, device="cpu")
+    boundaries = branch_boundary_conditions(cfg)
+    residual_fn = lambda x: coupled_branch_residual(
+        x,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        boundaries=boundaries,
+    )
+    matrix, metadata = assemble_coupled_colored_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state,
+            rhs=torch.zeros_like(state).detach().cpu().numpy(),
+            iteration=1,
+            config=cfg.newton,
+        ),
+        grid,
+    )
+    expected_color_bound = 5 * preconditioner.color_separation**2 + 1
+    assert metadata["active_color_count"] == expected_color_bound
+    assert metadata["active_color_count"] < state.numel()
+
+    relative_errors = []
+    for seed in (778, 779, 780):
+        generator = torch.Generator(device="cpu")
+        generator.manual_seed(seed)
+        direction = torch.randn(state.shape, dtype=dtype, generator=generator)
+        direct = torch_jvp(residual_fn, state, direction).detach().cpu().numpy()
+        assembled = matrix @ direction.detach().cpu().numpy()
+        relative = math.sqrt(float(((assembled - direct) ** 2).sum())) / max(
+            1.0,
+            math.sqrt(float((direct**2).sum())),
+        )
+        relative_errors.append(relative)
+    assert max(relative_errors) < 1.0e-10
 
 
 def test_coupled_residual_changes_when_spatial_gauge_is_enabled() -> None:

@@ -58,6 +58,20 @@ class BackendConfig:
 
 
 @dataclass(frozen=True)
+class PreconditionerConfig:
+    type: str = "none"
+    side: str = "left"
+    rebuild_policy: str = "every_newton_step"
+    stencil_radius: int = 3
+    color_separation: int = 7
+    factorization: str = "splu"
+    diagonal_shift: float = 0.0
+    drop_tolerance: float = 0.0
+    fill_factor: float = 10.0
+    permutation: str = "COLAMD"
+
+
+@dataclass(frozen=True)
 class NewtonConfig:
     residual_atol: float = 1.0e-11
     residual_rtol: float = 1.0e-10
@@ -76,6 +90,7 @@ class NewtonConfig:
     max_line_search_iters: int = 16
     accept_best_line_search_decrease: bool = True
     finite_difference_jvp_epsilon: float = 1.0e-4
+    preconditioner: PreconditionerConfig = field(default_factory=PreconditionerConfig)
 
 
 @dataclass(frozen=True)

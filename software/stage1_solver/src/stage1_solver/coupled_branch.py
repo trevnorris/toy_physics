@@ -7,7 +7,7 @@ engineering-smoke placeholders; they are not a physical branch packet.
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 import resource
 import time
@@ -20,7 +20,13 @@ import torch.nn.functional as torch_functional
 
 from .backend import configure_backend, tensor
 from .boundaries import BoundaryCondition
-from .config import BranchSmokeConfig, CoupledBranchMMSConfig, HarnessConfig, TensorGridSpec
+from .config import (
+    BranchSmokeConfig,
+    CoupledBranchMMSConfig,
+    HarnessConfig,
+    PreconditionerConfig,
+    TensorGridSpec,
+)
 from .grid import TensorProductGrid
 from .manifest import write_manifest
 from .mms import run_convergence_study, weighted_l2_norm
@@ -33,6 +39,7 @@ from .operators import (
     tensor_laplacian,
 )
 from .physics import quintic_enthalpy
+from .preconditioners import make_coupled_colored_sparse_jacobian_lu_factory
 
 
 @dataclass(frozen=True)
@@ -373,6 +380,15 @@ def _newton_history_rows(result: Any) -> list[dict[str, Any]]:
     return [asdict(row) for row in result.history]
 
 
+def _coupled_preconditioner_factory(config: HarnessConfig, grid: TensorProductGrid):
+    preconditioner = config.branch.newton.preconditioner
+    if preconditioner.type == "none":
+        return None
+    if preconditioner.type == "colored_sparse_jacobian_lu":
+        return make_coupled_colored_sparse_jacobian_lu_factory(grid)
+    raise ValueError(f"Unsupported coupled preconditioner {preconditioner.type!r}")
+
+
 def run_branch_continuation(
     config: HarnessConfig,
     grid: TensorProductGrid,
@@ -391,6 +407,7 @@ def run_branch_continuation(
     stages: list[dict[str, Any]] = []
     converged = True
     message = "continuation completed"
+    shared_preconditioner_factory = _coupled_preconditioner_factory(config, grid)
 
     for eos_K in cfg.continuation_K_values:
         residual_fn = lambda x, eos_K=eos_K: coupled_branch_residual(
@@ -400,7 +417,16 @@ def run_branch_continuation(
             eos_K=eos_K,
             boundaries=boundaries,
         )
-        result = solve_newton_jvp(residual_fn, state, cfg.newton)
+        result = solve_newton_jvp(
+            residual_fn,
+            state,
+            cfg.newton,
+            preconditioner_factory=(
+                _coupled_preconditioner_factory(config, grid)
+                if cfg.newton.preconditioner.rebuild_policy == "once_per_newton_solve"
+                else shared_preconditioner_factory
+            ),
+        )
         state = result.x.detach()
         gmres_counts = [
             row.gmres_iterations for row in result.history if row.gmres_iterations is not None
@@ -414,6 +440,7 @@ def run_branch_continuation(
                 "final_residual_norm": result.final_residual_norm,
                 "tolerance": result.tolerance,
                 "message": result.message,
+                "preconditioner": asdict(cfg.newton.preconditioner),
                 "gmres_iterations": gmres_counts,
                 "residual_history": [row.residual_norm for row in result.history],
                 "newton_history": _newton_history_rows(result),
@@ -449,6 +476,7 @@ def run_branch_continuation(
         "chemical_potential": float(mu.detach().cpu().item()) if mu is not None else None,
         "stages": stages,
         "placeholder_label": cfg.placeholder_label,
+        "preconditioner": asdict(cfg.newton.preconditioner),
         "boundaries": boundaries.to_dict(),
     }
     manifest = write_manifest(
@@ -459,6 +487,7 @@ def run_branch_continuation(
         mesh=grid.to_dict(),
         results=summary,
         config_hash=config.config_hash(),
+        solver_controls=asdict(cfg.newton),
     )
     summary["manifest"] = str(manifest)
     return state, summary
@@ -841,6 +870,247 @@ def run_step3(config: HarnessConfig | None = None) -> dict[str, Any]:
     return results
 
 
+def _with_branch_preconditioner(
+    branch: BranchSmokeConfig,
+    preconditioner: PreconditionerConfig,
+    *,
+    ladder_levels: tuple[tuple[int, int], ...] | None = None,
+) -> BranchSmokeConfig:
+    return replace(
+        branch,
+        ladder_levels=ladder_levels if ladder_levels is not None else branch.ladder_levels,
+        newton=replace(branch.newton, preconditioner=preconditioner),
+    )
+
+
+def _ladder_with_gmres_stats(ladder: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for row in ladder["rows"]:
+        counts = row.get("gmres_iterations", [])
+        rows.append(
+            {
+                **row,
+                "gmres_max": max(counts) if counts else None,
+                "gmres_mean": float(np.mean(counts)) if counts else None,
+                "gmres_total": int(np.sum(counts)) if counts else 0,
+            }
+        )
+    return rows
+
+
+def _run_solution_comparison(
+    unpreconditioned_config: HarnessConfig,
+    preconditioned_config: HarnessConfig,
+) -> dict[str, Any]:
+    dtype = configure_backend(unpreconditioned_config.backend)
+    grid = _create_branch_grid(
+        unpreconditioned_config.branch,
+        unpreconditioned_config.branch.solve_grid,
+        dtype=dtype,
+        device=unpreconditioned_config.backend.device,
+    )
+    grid_name = (
+        f"comparison_nr_{unpreconditioned_config.branch.solve_grid[0]}"
+        f"_nw_{unpreconditioned_config.branch.solve_grid[1]}"
+    )
+    unpreconditioned_state, unpreconditioned_summary = run_branch_continuation(
+        unpreconditioned_config,
+        grid,
+        grid_name=f"{grid_name}_unpreconditioned",
+    )
+    preconditioned_state, preconditioned_summary = run_branch_continuation(
+        preconditioned_config,
+        grid,
+        grid_name=f"{grid_name}_preconditioned",
+    )
+    difference = (preconditioned_state - unpreconditioned_state).detach()
+    linf = float(torch.max(torch.abs(difference)).detach().cpu().item())
+    l2 = float(torch.linalg.norm(difference).detach().cpu().item())
+    tolerance = max(
+        1.0e-6,
+        10.0 * unpreconditioned_config.branch.newton.residual_atol,
+        10.0 * preconditioned_config.branch.newton.residual_atol,
+    )
+    return {
+        "grid": grid_name,
+        "dof": int(unpreconditioned_state.numel()),
+        "solution_linf_difference": linf,
+        "solution_l2_difference": l2,
+        "tolerance": tolerance,
+        "passed": (
+            unpreconditioned_summary["converged"]
+            and preconditioned_summary["converged"]
+            and linf <= tolerance
+        ),
+        "unpreconditioned": unpreconditioned_summary,
+        "preconditioned": preconditioned_summary,
+    }
+
+
+def run_step3b_preconditioner(config: HarnessConfig | None = None) -> dict[str, Any]:
+    if config is None:
+        config = HarnessConfig(
+            run_root="software/stage1_solver/runs/step3b_preconditioner",
+            report_path="software/stage1_solver/reports/step3b_preconditioner.md",
+        )
+    Path(config.run_root).mkdir(parents=True, exist_ok=True)
+    shared_ladder = (
+        (8, 6),
+        (10, 8),
+        (12, 10),
+        (16, 12),
+        (20, 14),
+    )
+    extended_ladder = shared_ladder + (
+        (24, 16),
+        (28, 20),
+        (32, 24),
+        (40, 28),
+    )
+    no_preconditioner = PreconditionerConfig(type="none")
+    colored_lu_preconditioner = PreconditionerConfig(
+        type="colored_sparse_jacobian_lu",
+        side="left",
+        rebuild_policy="once_per_continuation",
+        stencil_radius=3,
+        color_separation=7,
+        factorization="splu",
+        diagonal_shift=0.0,
+        drop_tolerance=0.0,
+        fill_factor=10.0,
+        permutation="COLAMD",
+    )
+    baseline_branch = _with_branch_preconditioner(
+        config.branch,
+        no_preconditioner,
+        ladder_levels=shared_ladder,
+    )
+    preconditioned_branch = _with_branch_preconditioner(
+        config.branch,
+        colored_lu_preconditioner,
+        ladder_levels=extended_ladder,
+    )
+    baseline_config = replace(
+        config,
+        run_root=str(Path(config.run_root) / "unpreconditioned"),
+        branch=baseline_branch,
+    )
+    preconditioned_config = replace(
+        config,
+        run_root=str(Path(config.run_root) / "colored_sparse_jacobian_lu"),
+        branch=preconditioned_branch,
+    )
+
+    coupled_mms = run_coupled_branch_mms(preconditioned_config)
+    comparison = _run_solution_comparison(baseline_config, preconditioned_config)
+
+    dtype = configure_backend(preconditioned_config.backend)
+    grid = _create_branch_grid(
+        preconditioned_config.branch,
+        preconditioned_config.branch.solve_grid,
+        dtype=dtype,
+        device=preconditioned_config.backend.device,
+    )
+    boundaries = branch_boundary_conditions(preconditioned_config.branch)
+    solve_state, solve = run_branch_continuation(
+        preconditioned_config,
+        grid,
+        grid_name=(
+            f"solve_nr_{preconditioned_config.branch.solve_grid[0]}"
+            f"_nw_{preconditioned_config.branch.solve_grid[1]}"
+        ),
+    )
+    final_K = preconditioned_config.branch.continuation_K_values[-1]
+    residual_fn = lambda x: coupled_branch_residual(
+        x,
+        grid,
+        preconditioned_config.branch,
+        eos_K=final_K,
+        boundaries=boundaries,
+    )
+    jacobian_check = finite_difference_jvp_check(
+        residual_fn,
+        solve_state,
+        epsilon=preconditioned_config.branch.newton.finite_difference_jvp_epsilon,
+        seed=preconditioned_config.jacobian_check_seed,
+    )
+    jacobian_passed = (
+        jacobian_check["relative_residual"] <= preconditioned_config.jacobian_check_rel_tol
+        or jacobian_check["absolute_residual"] <= preconditioned_config.jacobian_check_abs_tol
+    )
+    baseline_ladder = run_resolution_ladder(baseline_config)
+    preconditioned_ladder = run_resolution_ladder(preconditioned_config)
+    baseline_rows = _ladder_with_gmres_stats(baseline_ladder)
+    preconditioned_rows = _ladder_with_gmres_stats(preconditioned_ladder)
+    shared_dofs = {5 * nr * nw + 1 for nr, nw in shared_ladder}
+    shared_preconditioned_rows = [
+        row for row in preconditioned_rows if row["dof"] in shared_dofs
+    ]
+    baseline_growth = (
+        baseline_rows[-1]["gmres_max"] / baseline_rows[0]["gmres_max"]
+        if baseline_rows and baseline_rows[0]["gmres_max"]
+        else None
+    )
+    preconditioned_growth = (
+        shared_preconditioned_rows[-1]["gmres_max"]
+        / shared_preconditioned_rows[0]["gmres_max"]
+        if shared_preconditioned_rows and shared_preconditioned_rows[0]["gmres_max"]
+        else None
+    )
+    max_preconditioned_dof = max(
+        (row["dof"] for row in preconditioned_rows if row["converged"]),
+        default=0,
+    )
+    scaling_passed = (
+        preconditioned_growth is not None
+        and baseline_growth is not None
+        and preconditioned_growth < 0.5 * baseline_growth
+        and max(
+            row["gmres_max"] for row in shared_preconditioned_rows if row["gmres_max"] is not None
+        )
+        <= 0.5
+        * max(row["gmres_max"] for row in baseline_rows if row["gmres_max"] is not None)
+    )
+    higher_resolution_passed = max_preconditioned_dof > max(
+        row["dof"] for row in baseline_rows if row["converged"]
+    )
+    results = {
+        "config": preconditioned_config.to_dict(),
+        "config_hash": preconditioned_config.config_hash(),
+        "baseline_config": baseline_config.to_dict(),
+        "baseline_config_hash": baseline_config.config_hash(),
+        "coupled_mms": coupled_mms,
+        "solution_comparison": comparison,
+        "solve": solve,
+        "jacobian_check": jacobian_check,
+        "jacobian_passed": jacobian_passed,
+        "baseline_ladder": {
+            **baseline_ladder,
+            "rows": baseline_rows,
+        },
+        "preconditioned_ladder": {
+            **preconditioned_ladder,
+            "rows": preconditioned_rows,
+        },
+        "scaling": {
+            "baseline_growth": baseline_growth,
+            "preconditioned_growth_on_shared_ladder": preconditioned_growth,
+            "max_preconditioned_dof": max_preconditioned_dof,
+            "scaling_passed": scaling_passed,
+            "higher_resolution_passed": higher_resolution_passed,
+        },
+        "passed": (
+            coupled_mms["passed"]
+            and comparison["passed"]
+            and solve["converged"]
+            and jacobian_passed
+            and scaling_passed
+            and higher_resolution_passed
+        ),
+    }
+    return results
+
+
 def _fmt(value: Any) -> str:
     if value is None:
         return "-"
@@ -859,6 +1129,196 @@ def _table(headers: list[str], rows: list[dict[str, Any]]) -> str:
     for row in rows:
         lines.append("| " + " | ".join(_fmt(row.get(header)) for header in headers) + " |")
     return "\n".join(lines)
+
+
+def write_step3b_report(results: dict[str, Any], path: str) -> Path:
+    report_path = Path(path)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    config = results["config"]
+    branch = config["branch"]
+    preconditioner = branch["newton"]["preconditioner"]
+    mms = results["coupled_mms"]
+    comparison = results["solution_comparison"]
+    jac = results["jacobian_check"]
+    solve = results["solve"]
+    baseline_rows = results["baseline_ladder"]["rows"]
+    preconditioned_rows = results["preconditioned_ladder"]["rows"]
+    pre_by_dof = {row["dof"]: row for row in preconditioned_rows}
+    shared_rows = []
+    for base in baseline_rows:
+        pre = pre_by_dof.get(base["dof"])
+        if pre is None:
+            continue
+        shared_rows.append(
+            {
+                "grid": base["grid"],
+                "dof": base["dof"],
+                "baseline_gmres_max": base["gmres_max"],
+                "preconditioned_gmres_max": pre["gmres_max"],
+                "baseline_gmres_mean": base["gmres_mean"],
+                "preconditioned_gmres_mean": pre["gmres_mean"],
+                "baseline_seconds": base["wall_clock_seconds"],
+                "preconditioned_seconds": pre["wall_clock_seconds"],
+            }
+        )
+    scaling = results["scaling"]
+    if scaling["scaling_passed"]:
+        d2_read = (
+            "The Krylov counts flatten when the linearized coupled operator is "
+            "preconditioned by an assembled sparse Jacobian inverse.  This supports "
+            "the D2 premise that the physics residual can remain in the torch-owned "
+            "operator stack, but direct sparse LU is a CPU smoke method, not the "
+            "production preconditioner.  The production path should replace this "
+            "inverse with structured multigrid or a PETSc-class algebraic equivalent."
+        )
+    else:
+        d2_read = (
+            "The preconditioned counts did not flatten enough in this run.  That points "
+            "toward the PETSc-class multigrid escape hatch rather than relying on this "
+            "CPU preconditioner shape."
+        )
+
+    lines: list[str] = []
+    lines.append("# Step 3b Coupled Branch JFNK Preconditioner")
+    lines.append("")
+    lines.append(f"Overall engineering gate: {'PASS' if results['passed'] else 'FAIL'}")
+    lines.append(f"Preconditioned config hash: `{results['config_hash']}`")
+    lines.append(f"Baseline config hash: `{results['baseline_config_hash']}`")
+    lines.append("")
+    lines.append(
+        "**Discipline:** engineering smoke, placeholder parameters, not a physical packet, "
+        "target-blind. No field-to-coefficient export is performed."
+    )
+    lines.append("")
+    lines.append("## Method")
+    lines.append("")
+    lines.append(
+        "Interface: `solve_newton_jvp` accepts a left-preconditioner factory and passes the "
+        "resulting SciPy `LinearOperator` as GMRES `M`.  The residual and JVP used by GMRES "
+        "are unchanged."
+    )
+    lines.append(
+        "Concrete preconditioner: assembled sparse Jacobian from the coupled residual JVP, "
+        "colored by the radius-3 local stencil, factored with SciPy SuperLU, then used as an "
+        "inverse preconditioner.  No new dependency was added."
+    )
+    lines.append("")
+    lines.append("```yaml")
+    for key, value in preconditioner.items():
+        lines.append(f"{key}: {value}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Correctness Preservation")
+    lines.append("")
+    lines.append(
+        f"Fixed-grid solution comparison `{comparison['grid']}` / {comparison['dof']} DOF: "
+        f"linf difference={comparison['solution_linf_difference']:.6e}, "
+        f"l2 difference={comparison['solution_l2_difference']:.6e}, "
+        f"tolerance={comparison['tolerance']:.6e}, "
+        f"status={'PASS' if comparison['passed'] else 'FAIL'}."
+    )
+    lines.append(
+        "Coupled residual JVP vs centered finite difference on the preconditioned solve: "
+        f"relative={jac['relative_residual']:.6e}, absolute={jac['absolute_residual']:.6e}, "
+        f"epsilon={jac['epsilon']:.6e}, "
+        f"status={'PASS' if results['jacobian_passed'] else 'FAIL'}."
+    )
+    lines.append("")
+    lines.append(
+        _table(
+            [
+                "grid",
+                "spacing",
+                "error",
+                "observed_order",
+                "reference_norm",
+                "spatial_gauge_l2",
+                "spatial_current_l2",
+            ],
+            mms["rows"],
+        )
+    )
+    lines.append("")
+    lines.append("MMS checks:")
+    for key, value in mms["pass_checks"].items():
+        lines.append(f"- {key}: {'PASS' if value else 'FAIL'}")
+    lines.append("")
+    lines.append("## Before After GMRES Curve")
+    lines.append("")
+    lines.append(
+        _table(
+            [
+                "grid",
+                "dof",
+                "baseline_gmres_max",
+                "preconditioned_gmres_max",
+                "baseline_gmres_mean",
+                "preconditioned_gmres_mean",
+                "baseline_seconds",
+                "preconditioned_seconds",
+            ],
+            shared_rows,
+        )
+    )
+    lines.append("")
+    lines.append(
+        f"Baseline max-GMRES growth on the shared ladder: "
+        f"{scaling['baseline_growth']:.6e}. Preconditioned growth on the same ladder: "
+        f"{scaling['preconditioned_growth_on_shared_ladder']:.6e}."
+    )
+    lines.append("")
+    lines.append("## Extended Preconditioned Ladder")
+    lines.append("")
+    lines.append(
+        _table(
+            [
+                "grid",
+                "dof",
+                "wall_clock_seconds",
+                "peak_memory_mb",
+                "newton_iterations",
+                "final_residual_linf",
+                "gmres_iterations",
+                "gmres_max",
+                "gmres_mean",
+                "converged",
+                "message",
+            ],
+            preconditioned_rows,
+        )
+    )
+    lines.append("")
+    lines.append(
+        f"New maximum converged DOF on this laptop run: {scaling['max_preconditioned_dof']}. "
+        f"Ladder stop reason: {results['preconditioned_ladder']['stop_reason']}."
+    )
+    lines.append("")
+    lines.append("## Main Preconditioned Solve")
+    lines.append("")
+    lines.append(
+        f"`{solve['grid']}` final residual linf={solve['final_residual_linf']:.6e}, "
+        f"wall-clock={solve['wall_clock_seconds']:.6e}s, "
+        f"peak RSS={solve['peak_memory_mb']:.6e} MB, manifest=`{solve['manifest']}`."
+    )
+    lines.append("")
+    lines.append("## D2 Trigger Read")
+    lines.append("")
+    lines.append(d2_read)
+    lines.append("")
+    lines.append("## Manifests")
+    lines.append("")
+    for row in mms["rows"]:
+        lines.append(f"- coupled MMS {row['grid']}: `{row['manifest']}`")
+    lines.append(f"- comparison unpreconditioned: `{comparison['unpreconditioned']['manifest']}`")
+    lines.append(f"- comparison preconditioned: `{comparison['preconditioned']['manifest']}`")
+    lines.append(f"- main preconditioned solve: `{solve['manifest']}`")
+    for row in baseline_rows:
+        lines.append(f"- baseline ladder {row['grid']}: `{row['manifest']}`")
+    for row in preconditioned_rows:
+        lines.append(f"- preconditioned ladder {row['grid']}: `{row['manifest']}`")
+    lines.append("")
+    report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return report_path
 
 
 def write_step3_report(results: dict[str, Any], path: str) -> Path:

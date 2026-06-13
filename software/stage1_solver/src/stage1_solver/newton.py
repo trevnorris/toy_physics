@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Callable
+import time
+from typing import Any, Callable
 
 import numpy as np
 from scipy.sparse.linalg import LinearOperator, gmres
@@ -21,6 +22,9 @@ class NewtonIteration:
     line_search_alpha: float | None = None
     gmres_info: int | None = None
     gmres_iterations: int | None = None
+    preconditioner_type: str = "none"
+    preconditioner_setup_seconds: float | None = None
+    preconditioner_info: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -35,6 +39,24 @@ class NewtonResult:
     message: str = ""
 
 
+@dataclass(frozen=True)
+class PreconditionerBuildContext:
+    residual_fn: Callable[[torch.Tensor], torch.Tensor]
+    x: torch.Tensor
+    rhs: np.ndarray
+    iteration: int
+    config: NewtonConfig
+
+
+@dataclass(frozen=True)
+class BuiltPreconditioner:
+    operator: LinearOperator | None
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+PreconditionerFactory = Callable[[PreconditionerBuildContext], BuiltPreconditioner]
+
+
 def _norm(values: torch.Tensor, kind: str) -> float:
     if kind == "linf":
         return float(torch.max(torch.abs(values)).detach().cpu().item())
@@ -47,6 +69,7 @@ def solve_newton_jvp(
     residual_fn: Callable[[torch.Tensor], torch.Tensor],
     x0: torch.Tensor,
     config: NewtonConfig,
+    preconditioner_factory: PreconditionerFactory | None = None,
 ) -> NewtonResult:
     if config.linear_solver != "gmres_jvp":
         raise ValueError(f"Unsupported linear solver {config.linear_solver!r}")
@@ -76,6 +99,9 @@ def solve_newton_jvp(
         rhs = -r.detach().cpu().numpy().astype(np.float64)
         dim = rhs.size
         gmres_iterations = 0
+        preconditioner_operator: LinearOperator | None = None
+        preconditioner_metadata: dict[str, Any] = {"type": config.preconditioner.type}
+        preconditioner_setup_seconds: float | None = None
 
         def matvec(vector_np: np.ndarray) -> np.ndarray:
             direction = torch.as_tensor(vector_np, dtype=x.dtype, device=x.device)
@@ -87,9 +113,36 @@ def solve_newton_jvp(
             gmres_iterations += 1
 
         linear_op = LinearOperator((dim, dim), matvec=matvec, dtype=np.float64)
+        if config.preconditioner.type != "none":
+            if config.preconditioner.side != "left":
+                raise ValueError(
+                    f"Unsupported preconditioner side {config.preconditioner.side!r}"
+                )
+            if preconditioner_factory is None:
+                raise ValueError(
+                    f"Preconditioner {config.preconditioner.type!r} requires a factory"
+                )
+            preconditioner_started = time.perf_counter()
+            built_preconditioner = preconditioner_factory(
+                PreconditionerBuildContext(
+                    residual_fn=residual_fn,
+                    x=x_for_jvp,
+                    rhs=rhs,
+                    iteration=iteration,
+                    config=config,
+                )
+            )
+            preconditioner_setup_seconds = time.perf_counter() - preconditioner_started
+            preconditioner_operator = built_preconditioner.operator
+            preconditioner_metadata = dict(built_preconditioner.metadata)
+            preconditioner_metadata.setdefault("type", config.preconditioner.type)
+            preconditioner_metadata.setdefault("side", config.preconditioner.side)
+        elif preconditioner_factory is not None:
+            raise ValueError("A preconditioner factory was provided while config type is 'none'")
         step_np, gmres_info = gmres(
             linear_op,
             rhs,
+            M=preconditioner_operator,
             rtol=config.gmres_rtol,
             atol=config.gmres_atol,
             restart=config.gmres_restart,
@@ -179,6 +232,12 @@ def solve_newton_jvp(
                 line_search_alpha=accepted_alpha,
                 gmres_info=gmres_info,
                 gmres_iterations=gmres_iterations,
+                preconditioner_type=preconditioner_metadata.get(
+                    "type",
+                    config.preconditioner.type,
+                ),
+                preconditioner_setup_seconds=preconditioner_setup_seconds,
+                preconditioner_info=preconditioner_metadata,
             )
         )
         if new_norm <= tolerance:

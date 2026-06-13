@@ -33,6 +33,7 @@ def write_manifest(
     mesh: dict[str, Any],
     results: dict[str, Any],
     config_hash: str | None = None,
+    solver_controls: dict[str, Any] | None = None,
 ) -> Path:
     run_dir = Path(run_root) / benchmark_name / grid_name
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -41,7 +42,7 @@ def write_manifest(
         "grid": grid_name,
         "dtype": config["backend"]["dtype"],
         "device": config["backend"]["device"],
-        "solver_controls": config["newton"],
+        "solver_controls": solver_controls if solver_controls is not None else config["newton"],
         "mesh": mesh,
         "config_hash": config_hash or config_hash_from_dict(config),
         "config": config,

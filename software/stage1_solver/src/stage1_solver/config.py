@@ -205,6 +205,37 @@ class MaxwellMMSConfig:
 
 
 @dataclass(frozen=True)
+class CoupledBranchMMSConfig:
+    name: str = "mms_coupled_branch_matter_maxwell"
+    r_max: float = 2.0
+    w_min: float = 0.0
+    w_max: float = 1.6
+    grid_levels: tuple[tuple[int, int], ...] = (
+        (12, 10),
+        (24, 20),
+        (48, 40),
+        (96, 80),
+    )
+    hbar: float = 1.0
+    particle_mass: float = 1.0
+    gauge_charge: float = 0.35
+    mu0: float = 1.0
+    xi: float = 1.0
+    eos_K: float = 0.45
+    chemical_potential: float = 0.9
+    localization_width: float = 0.75
+    localization_floor: float = 0.8
+    localization_amplitude: float = 0.45
+    r_mouth: float = 1.2
+    r_exit: float = 0.9
+    geometry_decay_length: float = 0.8
+    radial_wall_strength: float = 0.65
+    axial_trap_strength: float = 0.12
+    min_observed_order: float = 1.75
+    final_error_max: float = 1.5e-2
+
+
+@dataclass(frozen=True)
 class WallMMSConfig:
     name: str = "mms_wall_s_eta_2"
     w_min: float = -0.75
@@ -230,7 +261,63 @@ class ManufacturedSolutionsConfig:
     tensor: TensorLaplacianMMSConfig = field(default_factory=TensorLaplacianMMSConfig)
     current: CurrentMMSConfig = field(default_factory=CurrentMMSConfig)
     maxwell: MaxwellMMSConfig = field(default_factory=MaxwellMMSConfig)
+    coupled_branch: CoupledBranchMMSConfig = field(default_factory=CoupledBranchMMSConfig)
     wall: WallMMSConfig = field(default_factory=WallMMSConfig)
+
+
+@dataclass(frozen=True)
+class BranchSmokeConfig:
+    name: str = "step3_coupled_branch_engineering_smoke"
+    placeholder_label: str = (
+        "engineering-smoke placeholders only; not a physical packet; target-blind"
+    )
+    r_max: float = 2.0
+    w_min: float = 0.0
+    w_max: float = 1.6
+    solve_grid: tuple[int, int] = (10, 8)
+    ladder_levels: tuple[tuple[int, int], ...] = (
+        (8, 6),
+        (10, 8),
+        (12, 10),
+        (16, 12),
+        (20, 14),
+    )
+    hbar: float = 1.0
+    particle_mass: float = 1.0
+    gauge_charge: float = 0.35
+    mu0: float = 1.0
+    xi: float = 1.0
+    continuation_K_values: tuple[float, ...] = (0.05, 0.15, 0.3, 0.5)
+    mass: float = 1.0
+    localization_width: float = 0.75
+    localization_floor: float = 0.8
+    localization_amplitude: float = 0.45
+    r_mouth: float = 1.2
+    r_exit: float = 0.9
+    geometry_decay_length: float = 0.8
+    radial_wall_strength: float = 0.65
+    axial_trap_strength: float = 0.12
+    matter_exit_impedance_alpha: float = 0.25
+    a0_radial_impedance_alpha: float = 0.5
+    a0_exit_impedance_alpha: float = 0.4
+    initial_mu: float = 1.0
+    max_ladder_level_seconds: float = 120.0
+    newton: NewtonConfig = field(
+        default_factory=lambda: NewtonConfig(
+            residual_atol=5.0e-8,
+            residual_rtol=5.0e-9,
+            step_atol=1.0e-11,
+            step_rtol=1.0e-10,
+            max_newton_iters=16,
+            gmres_rtol=5.0e-8,
+            gmres_atol=1.0e-10,
+            gmres_restart=96,
+            gmres_maxiter=12,
+            max_line_search_iters=18,
+            accept_best_line_search_decrease=True,
+            finite_difference_jvp_epsilon=1.0e-5,
+        )
+    )
 
 
 @dataclass(frozen=True)
@@ -240,6 +327,7 @@ class HarnessConfig:
     linear: LinearEigenConfig = field(default_factory=LinearEigenConfig)
     cubic: CubicGPEConfig = field(default_factory=CubicGPEConfig)
     mms: ManufacturedSolutionsConfig = field(default_factory=ManufacturedSolutionsConfig)
+    branch: BranchSmokeConfig = field(default_factory=BranchSmokeConfig)
     run_root: str = "software/stage1_solver/runs/step2_manufactured_solutions"
     report_path: str = "software/stage1_solver/reports/step2_manufactured_solutions_validation.md"
     jacobian_check_seed: int = 1729

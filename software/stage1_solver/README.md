@@ -41,7 +41,7 @@ The build follows the sequence in `../../docs/branch_realization_execution_plan.
 |------|-------------------|--------|
 | 1 | Solver skeleton + known-analytic GPE benchmark (linear HO eigenproblem; cubic GPE vs an independent SciPy BVP) | ✅ done |
 | 2 | **Manufactured-solution (MMS) tests per operator block** — each discrete operator converges to its continuum operator at formal order | ✅ done |
-| 3 | Coarse stationary isotropic branch Newton solve | ⏳ not started |
+| 3 | Coupled matter + localized-Maxwell engineering smoke; coarse continuation-in-K Newton solve | ✅ done |
 | 4 | 3–5 level convergence study | ⏳ |
 | 5 | PML / sponge characterization | ⏳ |
 | 6 | Conservation diagnostics | ⏳ |
@@ -56,8 +56,8 @@ No physical branch is solved yet, and **no physical observable has been extracte
 ## How to run
 
 Requires Python 3 with `torch`, `numpy`, `scipy`, `sympy` (all already in the project env). All runs
-are CPU-only, deterministic (fixed seed, single-threaded, deterministic kernels), and finish in
-seconds.
+are CPU-only and deterministic (fixed seed, single-threaded, deterministic kernels). The step-1/2
+validation harness finishes in seconds; the Step 3 coupled smoke takes several minutes on CPU.
 
 From the repository root (`/var/projects/toy_physics`):
 
@@ -66,14 +66,20 @@ From the repository root (`/var/projects/toy_physics`):
 # Writes a markdown report and exits 0 on pass, 1 on fail.
 PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.harness
 
+# Run the Step 3 coupled matter/Maxwell engineering smoke.
+# Writes a target-blind placeholder-parameter report and exits 0 on pass, 1 on fail.
+PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.branch_harness
+
 # Run the unit tests.
 PYTHONPATH=software/stage1_solver/src python3 -m pytest -q software/stage1_solver/tests
 ```
 
 The harness prints `validation gate passed` and writes
 `reports/step2_manufactured_solutions_validation.md` (the step-1 report is
-`reports/step1_gpe_benchmark_validation.md`). Per-run manifests and any generated arrays go under
-`runs/` (git-ignored — see *Repo hygiene* below).
+`reports/step1_gpe_benchmark_validation.md`). The Step 3 harness prints
+`engineering-smoke gate passed` and writes `reports/step3_coupled_branch_smoke.md`.
+Per-run manifests and any generated arrays go under `runs/` (git-ignored — see *Repo hygiene*
+below).
 
 ---
 
@@ -135,9 +141,11 @@ software/stage1_solver/
 │   ├── benchmarks.py       # step-1 known-analytic benchmark suite
 │   ├── mms.py              # MMS convergence harness (weighted-norm error → observed order)
 │   ├── mms_benchmarks.py   # manufactured fields + SymPy continuum forcing + per-sector MMS runs
+│   ├── coupled_branch.py   # Step 3 coupled matter/Maxwell residual, MMS, continuation, ladder
 │   ├── report.py           # validation-report generator
 │   ├── manifest.py         # per-run reproducibility manifest
-│   └── harness.py          # CLI entrypoint (runs step-1 + MMS, writes report, sets the gate)
+│   ├── harness.py          # CLI entrypoint (runs step-1 + MMS, writes report, sets the gate)
+│   └── branch_harness.py   # CLI entrypoint for Step 3 engineering smoke
 ├── tests/                  # unit tests (tracked)
 ├── reports/                # small markdown validation reports (tracked)
 ├── directives/             # per-step build directives — requirements & acceptance criteria (tracked)

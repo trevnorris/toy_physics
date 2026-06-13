@@ -8,6 +8,8 @@ and a validation harness.
 from .config import (
     BackendConfig,
     CubicGPEConfig,
+    BranchSmokeConfig,
+    CoupledBranchMMSConfig,
     HarnessConfig,
     LinearEigenConfig,
     ManufacturedSolutionsConfig,
@@ -24,6 +26,8 @@ from .config import (
 
 __all__ = [
     "BackendConfig",
+    "BranchSmokeConfig",
+    "CoupledBranchMMSConfig",
     "CubicGPEConfig",
     "HarnessConfig",
     "LinearEigenConfig",

@@ -10,11 +10,20 @@ from stage1_solver.backend import configure_backend
 from stage1_solver.boundaries import BoundaryCondition
 from stage1_solver.config import (
     BackendConfig,
+    BranchSmokeConfig,
     CubicGPEConfig,
     HarnessConfig,
     NewtonConfig,
     RadialGridSpec,
     TensorGridSpec,
+)
+from stage1_solver.coupled_branch import (
+    CoupledFields,
+    branch_boundary_conditions,
+    coupled_branch_residual,
+    coupled_pde_residual,
+    initial_branch_state,
+    pack_coupled_fields,
 )
 from stage1_solver.grid import RadialGrid, TensorProductGrid
 from stage1_solver.manifest import write_manifest
@@ -78,6 +87,32 @@ def test_jvp_probe_is_consistent_on_small_grid() -> None:
     assert check["relative_residual"] < 1.0e-6
 
 
+def test_coupled_branch_jvp_probe_is_consistent_on_tiny_grid() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig(solve_grid=(6, 4), ladder_levels=((6, 4),))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=6, w_min=cfg.w_min, w_max=cfg.w_max, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    state = initial_branch_state(grid, cfg, dtype=dtype, device="cpu")
+    boundaries = branch_boundary_conditions(cfg)
+    residual_fn = lambda x: coupled_branch_residual(
+        x,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        boundaries=boundaries,
+    )
+    check = finite_difference_jvp_check(
+        residual_fn,
+        state,
+        epsilon=cfg.newton.finite_difference_jvp_epsilon,
+        seed=321,
+    )
+    assert check["relative_residual"] < 1.0e-6
+
+
 def test_config_hash_excludes_cosmetic_output_paths() -> None:
     cfg = HarnessConfig()
     moved = replace(
@@ -122,3 +157,69 @@ def test_complex_radial_current_is_nonzero() -> None:
     error = torch.sqrt(torch.sum((current - expected) ** 2 * grid.cell_volumes)).item()
     assert torch.max(torch.abs(current)).item() > 0.1
     assert error < 2.0e-4
+
+
+def test_coupled_branch_residual_shape_and_mass_constraint() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig(solve_grid=(6, 4), ladder_levels=((6, 4),))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=6, w_min=cfg.w_min, w_max=cfg.w_max, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    state = initial_branch_state(grid, cfg, dtype=dtype, device="cpu")
+    residual = coupled_branch_residual(
+        state,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        boundaries=branch_boundary_conditions(cfg),
+    )
+    assert residual.shape == state.shape
+    assert abs(residual[-1].item()) < 1.0e-13
+
+
+def test_coupled_residual_changes_when_spatial_gauge_is_enabled() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig()
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=6, w_min=cfg.w_min, w_max=cfg.w_max, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    rr = grid.r_centers[:, None]
+    ww = grid.w_centers[None, :]
+    psi_real = torch.ones((grid.spec.nr, grid.spec.nw), dtype=dtype)
+    psi_imag = 0.05 * rr * (ww - cfg.w_min)
+    zeros = torch.zeros_like(psi_real)
+    spatial_gauge = 0.1 * torch.ones_like(psi_real)
+    base = pack_coupled_fields(
+        CoupledFields(psi_real=psi_real, psi_imag=psi_imag, a0=zeros, ar=zeros, aw=zeros)
+    )
+    gauged = pack_coupled_fields(
+        CoupledFields(
+            psi_real=psi_real,
+            psi_imag=psi_imag,
+            a0=zeros,
+            ar=spatial_gauge,
+            aw=0.5 * spatial_gauge,
+        )
+    )
+    boundaries = branch_boundary_conditions(cfg)
+    base_residual = coupled_pde_residual(
+        base,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        chemical_potential=cfg.initial_mu,
+        boundaries=boundaries,
+    )
+    gauged_residual = coupled_pde_residual(
+        gauged,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[0],
+        chemical_potential=cfg.initial_mu,
+        boundaries=boundaries,
+    )
+    assert torch.linalg.norm(gauged_residual - base_residual).item() > 1.0e-2

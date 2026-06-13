@@ -140,6 +140,38 @@ def confinement_potential_torch(
     return radial_wall + axial
 
 
+def boundary_sponge_profile_torch(
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig | CoupledBranchMMSConfig,
+) -> torch.Tensor:
+    """Smooth stationary boundary-layer profile; disabled unless configured.
+
+    This is a coefficient layer, not a field clamp: it adds damping-like mass
+    terms near the outer radial and upper axial exits while leaving the
+    interior untouched.
+    """
+
+    if not getattr(cfg, "sponge_enabled", False):
+        return torch.zeros(
+            (grid.spec.nr, grid.spec.nw),
+            dtype=grid.dtype,
+            device=grid.device,
+        )
+    width = float(getattr(cfg, "sponge_width", 0.0))
+    if width <= 0.0:
+        raise ValueError("sponge_width must be positive when sponge_enabled=True")
+    power = int(getattr(cfg, "sponge_power", 2))
+    if power < 1:
+        raise ValueError("sponge_power must be at least 1")
+    r = grid.r_centers[:, None]
+    w = grid.w_centers[None, :]
+    radial = torch.clamp((r - (cfg.r_max - width)) / width, min=0.0, max=1.0)
+    axial = torch.clamp((w - (cfg.w_max - width)) / width, min=0.0, max=1.0)
+    radial = radial**power
+    axial = axial**power
+    return 1.0 - (1.0 - radial) * (1.0 - axial)
+
+
 def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
     return CoupledBoundarySet(
         matter_radial_outer=BoundaryCondition.dirichlet(0.0),
@@ -226,10 +258,12 @@ def coupled_pde_residual(
     )
     density = fields.psi_real**2 + fields.psi_imag**2
     potential = confinement_potential_torch(grid, cfg)
+    sponge = boundary_sponge_profile_torch(grid, cfg)
     mu = torch.as_tensor(chemical_potential, dtype=fields.psi_real.dtype, device=fields.psi_real.device)
     matter = (
         -(cfg.hbar**2 / (2.0 * cfg.particle_mass)) * covariant_lap
         + potential * psi
+        + getattr(cfg, "sponge_matter_strength", 0.0) * sponge * psi
         + quintic_enthalpy(density, eos_K) * psi
         + cfg.gauge_charge * fields.a0 * psi
         - mu * psi
@@ -255,9 +289,15 @@ def coupled_pde_residual(
     charge_current_w = cfg.gauge_charge * jw_number
     maxwell_residual = torch.stack(
         [
-            maxwell[0] - cfg.mu0 * charge_density,
-            maxwell[1] - cfg.mu0 * charge_current_r,
-            maxwell[2] - cfg.mu0 * charge_current_w,
+            maxwell[0]
+            - cfg.mu0 * charge_density
+            + getattr(cfg, "sponge_gauge_strength", 0.0) * sponge * fields.a0,
+            maxwell[1]
+            - cfg.mu0 * charge_current_r
+            + getattr(cfg, "sponge_gauge_strength", 0.0) * sponge * fields.ar,
+            maxwell[2]
+            - cfg.mu0 * charge_current_w
+            + getattr(cfg, "sponge_gauge_strength", 0.0) * sponge * fields.aw,
         ],
         dim=0,
     )
@@ -1232,7 +1272,7 @@ def write_step3b_report(results: dict[str, Any], path: str) -> Path:
         d2_read = (
             "The Krylov counts flatten when the linearized coupled operator is "
             "preconditioned by an assembled sparse Jacobian inverse.  This supports "
-            "the D2 premise that the physics residual can remain in the torch-owned "
+            "the design premise that the physics residual can remain in the torch-owned "
             "operator stack, but direct sparse LU is a CPU smoke method, not the "
             "production preconditioner.  The production path should replace this "
             "inverse with structured multigrid or a PETSc-class algebraic equivalent."
@@ -1367,7 +1407,7 @@ def write_step3b_report(results: dict[str, Any], path: str) -> Path:
         f"peak RSS={solve['peak_memory_mb']:.6e} MB, manifest=`{solve['manifest']}`."
     )
     lines.append("")
-    lines.append("## D2 Trigger Read")
+    lines.append("## Scaling Trigger Read")
     lines.append("")
     lines.append(d2_read)
     lines.append("")

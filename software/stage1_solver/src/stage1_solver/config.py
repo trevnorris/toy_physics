@@ -315,6 +315,11 @@ class BranchSmokeConfig:
     matter_exit_impedance_alpha: float = 0.25
     a0_radial_impedance_alpha: float = 0.5
     a0_exit_impedance_alpha: float = 0.4
+    sponge_enabled: bool = False
+    sponge_width: float = 0.0
+    sponge_matter_strength: float = 0.0
+    sponge_gauge_strength: float = 0.0
+    sponge_power: int = 2
     initial_mu: float = 1.0
     max_ladder_level_seconds: float = 120.0
     newton: NewtonConfig = field(

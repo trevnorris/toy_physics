@@ -1,11 +1,18 @@
 from __future__ import annotations
 
-from dataclasses import replace
+from dataclasses import asdict, replace
 import json
 import math
 
 import torch
 
+from stage1_solver.boundary_characterization import (
+    BoundaryCharacterizationConfig,
+    InteriorWindow,
+    impedance_sweep_branches,
+    interior_solution_difference,
+    truncation_sweep_branches,
+)
 from stage1_solver.backend import configure_backend
 from stage1_solver.backend import jvp as torch_jvp
 from stage1_solver.boundaries import BoundaryCondition
@@ -27,6 +34,7 @@ from stage1_solver.convergence import (
 )
 from stage1_solver.coupled_branch import (
     CoupledFields,
+    boundary_sponge_profile_torch,
     branch_boundary_conditions,
     coupled_branch_residual,
     coupled_pde_residual,
@@ -374,3 +382,156 @@ def test_coupled_residual_changes_when_spatial_gauge_is_enabled() -> None:
         boundaries=boundaries,
     )
     assert torch.linalg.norm(gauged_residual - base_residual).item() > 1.0e-2
+
+
+def test_boundary_sponge_profile_and_residual_wiring() -> None:
+    dtype = configure_backend(BackendConfig())
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=8, w_min=0.0, w_max=1.0, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    base_cfg = BranchSmokeConfig(
+        r_max=2.0,
+        w_min=0.0,
+        w_max=1.0,
+        solve_grid=(8, 4),
+        sponge_enabled=False,
+        sponge_width=0.0,
+        sponge_matter_strength=0.0,
+        sponge_gauge_strength=0.0,
+    )
+    off_profile = boundary_sponge_profile_torch(grid, base_cfg)
+    assert torch.count_nonzero(off_profile).item() == 0
+
+    sponge_cfg = replace(
+        base_cfg,
+        sponge_enabled=True,
+        sponge_width=0.5,
+        sponge_matter_strength=3.0,
+        sponge_gauge_strength=5.0,
+        sponge_power=2,
+    )
+    profile = boundary_sponge_profile_torch(grid, sponge_cfg)
+    assert torch.min(profile).item() >= 0.0
+    assert torch.max(profile).item() <= 1.0
+
+    interior = (grid.r_centers[:, None] <= 1.5) & (grid.w_centers[None, :] <= 0.5)
+    assert torch.count_nonzero(profile[interior]).item() == 0
+    assert torch.all(profile[1:, -1] >= profile[:-1, -1])
+    assert torch.all(profile[-1, 1:] >= profile[-1, :-1])
+
+    def expected_profile(r_value: float, w_value: float) -> float:
+        radial = max(0.0, min(1.0, (r_value - 1.5) / 0.5)) ** 2
+        axial = max(0.0, min(1.0, (w_value - 0.5) / 0.5)) ** 2
+        return 1.0 - (1.0 - radial) * (1.0 - axial)
+
+    assert math.isclose(
+        profile[-2, 2].item(),
+        expected_profile(grid.r_centers[-2].item(), grid.w_centers[2].item()),
+        rel_tol=0.0,
+        abs_tol=1.0e-15,
+    )
+    assert math.isclose(
+        profile[-1, -1].item(),
+        expected_profile(grid.r_centers[-1].item(), grid.w_centers[-1].item()),
+        rel_tol=0.0,
+        abs_tol=1.0e-15,
+    )
+
+    rr = grid.r_centers[:, None]
+    ww = grid.w_centers[None, :]
+    fields = CoupledFields(
+        psi_real=1.0 + 0.1 * rr + 0.2 * ww,
+        psi_imag=0.3 + 0.05 * rr + torch.zeros_like(ww),
+        a0=0.2 + 0.1 * ww + torch.zeros_like(rr),
+        ar=0.4 + 0.03 * rr + torch.zeros_like(ww),
+        aw=-0.2 + 0.07 * ww + torch.zeros_like(rr),
+    )
+    state = pack_coupled_fields(fields)
+    boundaries = branch_boundary_conditions(base_cfg)
+    residual_off = coupled_pde_residual(
+        state,
+        grid,
+        base_cfg,
+        eos_K=base_cfg.continuation_K_values[0],
+        chemical_potential=base_cfg.initial_mu,
+        boundaries=boundaries,
+    )
+    residual_on = coupled_pde_residual(
+        state,
+        grid,
+        sponge_cfg,
+        eos_K=sponge_cfg.continuation_K_values[0],
+        chemical_potential=sponge_cfg.initial_mu,
+        boundaries=boundaries,
+    )
+    difference = residual_on - residual_off
+    expected = torch.stack(
+        [
+            sponge_cfg.sponge_matter_strength * profile * fields.psi_real,
+            sponge_cfg.sponge_matter_strength * profile * fields.psi_imag,
+            sponge_cfg.sponge_gauge_strength * profile * fields.a0,
+            sponge_cfg.sponge_gauge_strength * profile * fields.ar,
+            sponge_cfg.sponge_gauge_strength * profile * fields.aw,
+        ],
+        dim=0,
+    )
+    assert torch.allclose(difference, expected, rtol=0.0, atol=1.0e-12)
+    assert torch.count_nonzero(difference[:, interior]).item() == 0
+
+
+def test_boundary_interior_solution_difference_uses_fixed_volume_window() -> None:
+    dtype = configure_backend(BackendConfig())
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=1.5, nr=6, w_min=0.0, w_max=1.0, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    ones = torch.ones((grid.spec.nr, grid.spec.nw), dtype=dtype)
+    zeros = torch.zeros_like(ones)
+    reference = pack_coupled_fields(
+        CoupledFields(psi_real=ones, psi_imag=zeros, a0=zeros, ar=zeros, aw=zeros),
+        torch.tensor(1.0, dtype=dtype),
+    )
+    shifted = pack_coupled_fields(
+        CoupledFields(psi_real=1.1 * ones, psi_imag=zeros, a0=zeros, ar=zeros, aw=zeros),
+        torch.tensor(1.0, dtype=dtype),
+    )
+    metric = interior_solution_difference(
+        shifted,
+        grid,
+        reference,
+        grid,
+        InteriorWindow(r_min=0.0, r_max=1.0, w_min=0.25, w_max=0.75),
+    )
+    assert abs(metric["interior_relative_l2_change"] - 0.1) < 1.0e-13
+    assert metric["interior_signal_l2_reference"] > 0.0
+
+
+def test_boundary_sweep_configs_change_only_the_tested_variable() -> None:
+    base = BranchSmokeConfig(r_max=2.0, w_max=1.6)
+    study = BoundaryCharacterizationConfig(
+        spacing=0.1,
+        fixed_w_max=1.6,
+        truncation_r_max_values=(1.8, 2.0, 2.2),
+        impedance_alpha_scales=(0.5, 1.0, 2.0),
+    )
+    truncation = [asdict(branch) for branch in truncation_sweep_branches(base, study)]
+    truncation_common = []
+    for row in truncation:
+        row = dict(row)
+        row.pop("r_max")
+        row.pop("solve_grid")
+        truncation_common.append(row)
+    assert truncation_common[0] == truncation_common[1] == truncation_common[2]
+
+    impedance = [asdict(branch) for branch in impedance_sweep_branches(base, study)]
+    impedance_common = []
+    for row in impedance:
+        row = dict(row)
+        row.pop("matter_exit_impedance_alpha")
+        row.pop("a0_radial_impedance_alpha")
+        row.pop("a0_exit_impedance_alpha")
+        impedance_common.append(row)
+    assert impedance_common[0] == impedance_common[1] == impedance_common[2]

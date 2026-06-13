@@ -19,6 +19,12 @@ from stage1_solver.config import (
     RadialGridSpec,
     TensorGridSpec,
 )
+from stage1_solver.convergence import (
+    _volume_restrict_2d,
+    observed_order_from_three,
+    richardson_estimate,
+    validate_refinement_ladder,
+)
 from stage1_solver.coupled_branch import (
     CoupledFields,
     branch_boundary_conditions,
@@ -72,6 +78,44 @@ def test_tensor_grid_constant_has_zero_laplacian() -> None:
     zero_flux = BoundaryCondition.neumann(0.0)
     lap = tensor_laplacian(values, grid, zero_flux, zero_flux, zero_flux)
     assert torch.max(torch.abs(lap)).item() < 1.0e-13
+
+
+def test_conservative_restriction_preserves_constant_on_nested_tensor_grid() -> None:
+    dtype = configure_backend(BackendConfig())
+    coarse = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=6, w_min=0.0, w_max=1.0, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    fine = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=12, w_min=0.0, w_max=1.0, nw=8),
+        dtype=dtype,
+        device="cpu",
+    )
+    restricted = _volume_restrict_2d(torch.ones((12, 8), dtype=dtype), fine, coarse)
+    assert torch.max(torch.abs(restricted - 1.0)).item() < 1.0e-14
+
+
+def test_refinement_ladder_requires_fixed_ratio() -> None:
+    validate_refinement_ladder(((6, 4), (12, 8), (24, 16)), 2)
+    try:
+        validate_refinement_ladder(((6, 4), (12, 8), (30, 16)), 2)
+    except ValueError as exc:
+        assert "fixed refinement ratio" in str(exc)
+    else:
+        raise AssertionError("non-ratio ladder should fail validation")
+
+
+def test_richardson_order_and_extrapolate_second_order_sequence() -> None:
+    continuum = 3.0
+    c = 0.5
+    values = [continuum + c * h * h for h in (0.4, 0.2, 0.1)]
+    order = observed_order_from_three(values[0], values[1], values[2], 2)
+    assert order is not None
+    assert abs(order - 2.0) < 1.0e-12
+    estimate = richardson_estimate(values[1], values[2], 2, order)
+    assert estimate is not None
+    assert abs(estimate - continuum) < 1.0e-12
 
 
 def test_jvp_probe_is_consistent_on_small_grid() -> None:

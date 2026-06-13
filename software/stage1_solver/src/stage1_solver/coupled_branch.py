@@ -389,6 +389,65 @@ def _coupled_preconditioner_factory(config: HarnessConfig, grid: TensorProductGr
     raise ValueError(f"Unsupported coupled preconditioner {preconditioner.type!r}")
 
 
+def target_blind_surrogate_observables(
+    state: torch.Tensor,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+    *,
+    eos_K: float,
+    final_residual_linf: float | None = None,
+) -> dict[str, float]:
+    """Extraction-free raw-field diagnostics for engineering-smoke studies."""
+
+    fields, mu = unpack_coupled_fields(state, grid, has_chemical_potential=True)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    volumes = grid.cell_volumes
+    jr_number, jw_number = _matter_number_current(fields, grid, cfg)
+    grad_real_r = tensor_center_gradient_r(fields.psi_real, grid)
+    grad_imag_r = tensor_center_gradient_r(fields.psi_imag, grid)
+    grad_real_w = tensor_center_gradient_w(fields.psi_real, grid)
+    grad_imag_w = tensor_center_gradient_w(fields.psi_imag, grid)
+    potential = confinement_potential_torch(grid, cfg)
+    gradient_density = grad_real_r**2 + grad_imag_r**2 + grad_real_w**2 + grad_imag_w**2
+    raw_field_norm_density = (
+        fields.psi_real**2
+        + fields.psi_imag**2
+        + fields.a0**2
+        + fields.ar**2
+        + fields.aw**2
+    )
+    energy_like_density = (
+        (cfg.hbar**2 / (2.0 * cfg.particle_mass)) * gradient_density
+        + potential * density
+        + 0.25 * eos_K * density**5
+        + 0.5 * (fields.a0**2 + fields.ar**2 + fields.aw**2)
+    )
+    result = {
+        "density_mass": float(torch.sum(density * volumes).detach().cpu().item()),
+        "peak_density": float(torch.max(density).detach().cpu().item()),
+        "min_density": float(torch.min(density).detach().cpu().item()),
+        "raw_field_l2_norm": float(
+            torch.sqrt(torch.sum(raw_field_norm_density * volumes)).detach().cpu().item()
+        ),
+        "scalar_gauge_l2": float(
+            torch.sqrt(torch.sum(fields.a0**2 * volumes)).detach().cpu().item()
+        ),
+        "spatial_gauge_l2": float(
+            torch.sqrt(torch.sum((fields.ar**2 + fields.aw**2) * volumes)).detach().cpu().item()
+        ),
+        "spatial_current_l2": float(
+            torch.sqrt(torch.sum((jr_number**2 + jw_number**2) * volumes)).detach().cpu().item()
+        ),
+        "field_energy_like_integral": float(
+            torch.sum(energy_like_density * volumes).detach().cpu().item()
+        ),
+        "chemical_potential": float(mu.detach().cpu().item()) if mu is not None else float("nan"),
+    }
+    if final_residual_linf is not None:
+        result["final_residual_linf"] = float(final_residual_linf)
+    return result
+
+
 def run_branch_continuation(
     config: HarnessConfig,
     grid: TensorProductGrid,
@@ -479,6 +538,13 @@ def run_branch_continuation(
         "preconditioner": asdict(cfg.newton.preconditioner),
         "boundaries": boundaries.to_dict(),
     }
+    summary["surrogate_values"] = target_blind_surrogate_observables(
+        state,
+        grid,
+        cfg,
+        eos_K=cfg.continuation_K_values[min(len(stages), len(cfg.continuation_K_values)) - 1],
+        final_residual_linf=summary["final_residual_linf"],
+    )
     manifest = write_manifest(
         run_root=config.run_root,
         benchmark_name=cfg.name,

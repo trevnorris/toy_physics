@@ -336,6 +336,24 @@ class BranchSmokeConfig:
 
 
 @dataclass(frozen=True)
+class BranchConvergenceConfig:
+    name: str = "step4_coupled_branch_grid_convergence"
+    refinement_ratio: int = 2
+    levels: tuple[tuple[int, int], ...] = (
+        (6, 4),
+        (12, 8),
+        (24, 16),
+        (48, 32),
+        (96, 64),
+    )
+    min_levels: int = 3
+    expected_order: float = 2.0
+    illustrative_error_levels: tuple[float, ...] = (1.0e-3, 1.0e-4)
+    max_level_seconds: float = 180.0
+    noise_floor_ratio: float = 1.25
+
+
+@dataclass(frozen=True)
 class HarnessConfig:
     backend: BackendConfig = field(default_factory=BackendConfig)
     newton: NewtonConfig = field(default_factory=NewtonConfig)
@@ -343,6 +361,7 @@ class HarnessConfig:
     cubic: CubicGPEConfig = field(default_factory=CubicGPEConfig)
     mms: ManufacturedSolutionsConfig = field(default_factory=ManufacturedSolutionsConfig)
     branch: BranchSmokeConfig = field(default_factory=BranchSmokeConfig)
+    convergence: BranchConvergenceConfig = field(default_factory=BranchConvergenceConfig)
     run_root: str = "software/stage1_solver/runs/step2_manufactured_solutions"
     report_path: str = "software/stage1_solver/reports/step2_manufactured_solutions_validation.md"
     jacobian_check_seed: int = 1729

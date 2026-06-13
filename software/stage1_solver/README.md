@@ -42,7 +42,7 @@ The build follows the sequence in `../../docs/branch_realization_execution_plan.
 | 1 | Solver skeleton + known-analytic GPE benchmark (linear HO eigenproblem; cubic GPE vs an independent SciPy BVP) | ✅ done |
 | 2 | **Manufactured-solution (MMS) tests per operator block** — each discrete operator converges to its continuum operator at formal order | ✅ done |
 | 3 | Coupled matter + localized-Maxwell engineering smoke; coarse continuation-in-K Newton solve | ✅ done |
-| 4 | 3–5 level convergence study | ⏳ |
+| 4 | 3–5 level convergence study | ✅ done |
 | 5 | PML / sponge characterization | ⏳ |
 | 6 | Conservation diagnostics | ⏳ |
 | 7 | Error-budget statement | ⏳ |
@@ -70,6 +70,10 @@ PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.harness
 # Writes a target-blind placeholder-parameter report and exits 0 on pass, 1 on fail.
 PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.branch_harness
 
+# Run the Step 4 coupled-branch grid-convergence study.
+# Writes a target-blind report plus a gitignored machine-readable convergence table.
+PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.convergence_harness
+
 # Run the unit tests.
 PYTHONPATH=software/stage1_solver/src python3 -m pytest -q software/stage1_solver/tests
 ```
@@ -78,6 +82,8 @@ The harness prints `validation gate passed` and writes
 `reports/step2_manufactured_solutions_validation.md` (the step-1 report is
 `reports/step1_gpe_benchmark_validation.md`). The Step 3 harness prints
 `engineering-smoke gate passed` and writes `reports/step3_coupled_branch_smoke.md`.
+The Step 4 harness prints `convergence engineering gate passed` and writes
+`reports/step4_convergence_study.md`; its full JSON table stays under `runs/`.
 Per-run manifests and any generated arrays go under `runs/` (git-ignored — see *Repo hygiene*
 below).
 
@@ -142,10 +148,12 @@ software/stage1_solver/
 │   ├── mms.py              # MMS convergence harness (weighted-norm error → observed order)
 │   ├── mms_benchmarks.py   # manufactured fields + SymPy continuum forcing + per-sector MMS runs
 │   ├── coupled_branch.py   # Step 3 coupled matter/Maxwell residual, MMS, continuation, ladder
+│   ├── convergence.py      # Step 4 grid self-convergence and report machinery
 │   ├── report.py           # validation-report generator
 │   ├── manifest.py         # per-run reproducibility manifest
 │   ├── harness.py          # CLI entrypoint (runs step-1 + MMS, writes report, sets the gate)
-│   └── branch_harness.py   # CLI entrypoint for Step 3 engineering smoke
+│   ├── branch_harness.py   # CLI entrypoint for Step 3 engineering smoke
+│   └── convergence_harness.py # CLI entrypoint for Step 4 convergence study
 ├── tests/                  # unit tests (tracked)
 ├── reports/                # small markdown validation reports (tracked)
 ├── directives/             # per-step build directives — requirements & acceptance criteria (tracked)

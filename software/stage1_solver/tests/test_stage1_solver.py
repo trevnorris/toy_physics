@@ -26,6 +26,8 @@ from stage1_solver.config import (
     HarnessConfig,
     NewtonConfig,
     P2CentrifugalMMSConfig,
+    P2DrivenConfig,
+    P2DrivenMMSConfig,
     P2MaxwellAngularMMSConfig,
     P2TangentConfig,
     PreconditionerConfig,
@@ -86,6 +88,18 @@ from stage1_solver.p2_tangent import (
     wall_to_matter_coefficient_torch,
     with_step8a_preconditioners,
     zero_p2_tangent_state,
+)
+from stage1_solver.p2_driven_absorber import (
+    _driven_digest,
+    _run_tensor_matter_frequency_cap_mms,
+    apply_p2_driven_tangent,
+    driven_observable_convergence_gate,
+    p2_matter_free_particle_dispersion_check,
+    p2_cap_profile_torch,
+    p2_driven_frequency_terms,
+    p2_omega_zero_static_limit_check,
+    run_p2_driven_mms,
+    run_reflection_study,
 )
 from stage1_solver.preconditioners import assemble_coupled_colored_sparse_jacobian
 from stage1_solver.physics import cubic_gpe_residual, gaussian_initial_state
@@ -930,6 +944,34 @@ def _tiny_p2_harness_config(tmp_path) -> HarnessConfig:
     return replace(base, branch=branch, p2_tangent=p2, mms=mms)
 
 
+def _tiny_step8b_harness_config(tmp_path) -> HarnessConfig:
+    base = _tiny_p2_harness_config(tmp_path)
+    p2_driven = replace(
+        P2DrivenConfig(),
+        drive_frequencies=(0.05, 1.5, 6.0),
+        primary_omega=6.0,
+        propagating_omega=6.0,
+        convergence_levels=((4, 4), (8, 8), (16, 16)),
+        reflection_grid=(8, 8),
+        response_table_grid=(6, 6),
+        reflection_fit_window=(0.25, 0.75),
+        cap_width=0.8,
+        cap_strength=200.0,
+        min_observable_order=1.45,
+    )
+    mms = replace(
+        base.mms,
+        p2_driven=replace(
+            P2DrivenMMSConfig(),
+            tensor_grid_levels=((24, 20), (48, 40), (96, 80)),
+            wall_grid_levels=(32, 64, 128),
+            tensor_final_error_max=1.0e-2,
+            wall_final_error_max=2.0e-3,
+        ),
+    )
+    return replace(base, p2_driven=p2_driven, mms=mms)
+
+
 def _tiny_p2_background() -> tuple[HarnessConfig, TensorProductGrid, torch.Tensor]:
     dtype = configure_backend(BackendConfig())
     branch = BranchSmokeConfig(
@@ -1024,6 +1066,28 @@ def test_p2_new_mms_operator_pieces_are_second_order(tmp_path) -> None:
     assert maxwell["rows"][-1]["observed_order"] > 1.75
 
 
+def test_p2_driven_frequency_and_cap_mms_are_second_order(tmp_path) -> None:
+    cfg = _tiny_step8b_harness_config(tmp_path)
+    result = run_p2_driven_mms(cfg)
+    assert result["passed"] is True
+    assert set(result["sections"]) == {
+        "matter_frequency_cap",
+        "maxwell_frequency_cap",
+        "wall_frequency_cap",
+    }
+    for section in result["sections"].values():
+        assert section["rows"][-1]["observed_order"] > 1.75
+
+
+def test_p2_driven_matter_mms_rejects_old_negated_time_sign(tmp_path) -> None:
+    cfg = _tiny_step8b_harness_config(tmp_path)
+    wrong = _run_tensor_matter_frequency_cap_mms(cfg, matter_time_sign=-1)
+    correct = _run_tensor_matter_frequency_cap_mms(cfg, matter_time_sign=1)
+    assert correct["passed"] is True
+    assert wrong["passed"] is False
+    assert wrong["rows"][-1]["error"] > 0.5
+
+
 def test_p2_static_operator_is_wellposed_on_small_grid() -> None:
     cfg, grid, background = _tiny_p2_background()
     check = p2_wellposedness_check(background, grid, cfg)
@@ -1031,11 +1095,89 @@ def test_p2_static_operator_is_wellposed_on_small_grid() -> None:
     assert check["smallest_singular_value"] > cfg.p2_tangent.smallest_singular_min
 
 
+def test_p2_driven_omega_zero_recovers_static_operator() -> None:
+    cfg, grid, background = _tiny_p2_background()
+    check = p2_omega_zero_static_limit_check(background, grid, cfg, seed=2027)
+    assert check["relative_residual"] <= cfg.p2_tangent.tangent_fd_relative_tol
+    assert check["absolute_residual"] <= cfg.p2_tangent.tangent_fd_absolute_tol
+
+
+def test_p2_driven_matter_bdg_sign_structure_is_offdiagonal() -> None:
+    dtype = configure_backend(BackendConfig())
+    base = HarnessConfig()
+    cfg = replace(base, p2_driven=replace(base.p2_driven, cap_enabled=False))
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.branch.r_max, nr=4, w_min=cfg.branch.w_min, w_max=cfg.branch.w_max, nw=4),
+        dtype=dtype,
+        device="cpu",
+    )
+    n = grid.spec.nr * grid.spec.nw
+    state = torch.zeros(zero_p2_tangent_state(grid).shape, dtype=torch.complex128)
+    state[:n] = 3.0 - 0.25j
+    state[n : 2 * n] = 2.0 + 0.5j
+    omega = 1.7
+    terms = p2_driven_frequency_terms(state, grid, cfg, omega=omega, cap_enabled=False)
+    assert torch.max(torch.abs(terms[:n] - 1j * cfg.branch.hbar * omega * state[n : 2 * n])).item() < 1.0e-14
+    assert torch.max(torch.abs(terms[n : 2 * n] + 1j * cfg.branch.hbar * omega * state[:n])).item() < 1.0e-14
+
+
+def test_p2_driven_matter_dispersion_check_rejects_old_sign() -> None:
+    check = p2_matter_free_particle_dispersion_check(HarnessConfig())
+    assert check["passed"] is True
+    assert check["relative_residual"] < 1.0e-14
+    assert check["old_negated_sign_relative_residual"] > 1.0
+
+
+def test_p2_cap_profile_is_exit_only_and_complex_absorbing() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = HarnessConfig()
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=2.0, nr=6, w_min=0.0, w_max=1.6, nw=8),
+        dtype=dtype,
+        device="cpu",
+    )
+    cell_sigma, wall_sigma = p2_cap_profile_torch(grid, cfg)
+    assert torch.count_nonzero(cell_sigma[:, grid.w_centers < grid.spec.w_max - cfg.p2_driven.cap_width]).item() == 0
+    assert torch.max(wall_sigma).item() > 0.0
+    assert torch.all(wall_sigma[1:] >= wall_sigma[:-1])
+    assert cfg.p2_driven.cap_profile == "smooth_polynomial_rational_cap"
+
+
+def test_p2_driven_convergence_gate_fails_synthetic_drifting_observable() -> None:
+    cfg = replace(
+        HarnessConfig(),
+        p2_driven=replace(
+            HarnessConfig().p2_driven,
+            min_observable_order=1.45,
+            scoped_min_observable_order=1.45,
+            scoped_convergence_observables=("total_response_l2",),
+        ),
+    )
+    summary = [
+        {
+            "observable": "total_response_l2",
+            "verdict": "drifts",
+            "last_observed_order": 0.1,
+        },
+        {
+            "observable": "driven_residual_linf",
+            "verdict": "solver-floor diagnostic",
+            "last_observed_order": None,
+        },
+    ]
+    gate = driven_observable_convergence_gate(summary, cfg)
+    assert gate["passed"] is False
+    assert gate["gated_observable_names"] == ["total_response_l2"]
+    assert gate["failing_observable_names"] == ["total_response_l2"]
+
+
 def test_p2_solve_path_is_target_blind() -> None:
     root = Path(__file__).resolve().parents[1]
     solve_path_files = [
         root / "src/stage1_solver/p2_tangent.py",
         root / "src/stage1_solver/p2_tangent_harness.py",
+        root / "src/stage1_solver/p2_driven_absorber.py",
+        root / "src/stage1_solver/step8b_harness.py",
     ]
     solve_path_sources = {
         path: path.read_text(encoding="utf-8")
@@ -1117,6 +1259,40 @@ def test_p2_digest_is_deterministic(tmp_path) -> None:
     second = _diagnostics_digest(moved)
     assert first == second
     assert len(first) == 16
+
+
+def test_p2_driven_digest_is_deterministic(tmp_path) -> None:
+    results = {
+        "mms": {"sections": {"matter_frequency_cap": {"passed": True, "rows": []}}},
+        "static_tangent_fd_check": {"relative_residual": 1.0e-12},
+        "driven_fd_check": {"relative_residual": 2.0e-12},
+        "omega_zero_static_limit": {"relative_residual": 0.0},
+        "matter_dispersion": {"relative_residual": 0.0},
+        "wellposedness": {"smallest_singular_value": 1.0},
+        "level_rows": [{"grid": "a", "solve": {"manifest": str(tmp_path / "a")}}],
+        "observable_summary": [{"observable": "total_response_l2", "last_observed_order": 2.0}],
+        "convergence_gate": {"passed": True, "gated_observable_names": ["total_response_l2"]},
+        "resolution_diagnostics": [{"grid": "a", "points_per_wavelength": 12.0}],
+        "reflection": {"absorbed": {"reflection_coefficient": 1.0e-3}},
+        "response_vs_omega": [{"omega": 1.0, "total_response_l2": 2.0}],
+        "pass_checks": {"computed_gate": True},
+        "asserted_checks": {"target_blind_not_a_physics_gate": True},
+    }
+    moved = json.loads(json.dumps(results))
+    moved["level_rows"][0]["solve"]["manifest"] = str(tmp_path / "b")
+    first = _driven_digest(results)
+    second = _driven_digest(moved)
+    assert first == second
+    assert len(first) == 16
+
+
+def test_p2_reflection_metric_has_absorber_control_teeth(tmp_path) -> None:
+    cfg = _tiny_step8b_harness_config(tmp_path)
+    reflection = run_reflection_study(cfg)
+    assert reflection["pass_checks"]["propagating_wall_k_real"] is True
+    assert reflection["absorbed"]["reflection_coefficient"] < reflection["target_blind_floor"]
+    assert reflection["reflecting_control"]["reflection_coefficient"] > reflection["target_blind_floor"]
+    assert reflection["control_contrast"] >= cfg.p2_driven.reflection_control_min_contrast
 
 
 def test_p2_centrifugal_terms_change_residual_vs_l0() -> None:

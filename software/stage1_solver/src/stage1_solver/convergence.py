@@ -195,7 +195,7 @@ def _diagnosis(observable: str, verdict: str) -> str:
         return "This raw channel is identically zero on the completed placeholder branch; no order is measured."
     if observable == "density_mass":
         return "Newton mass constraint; differences read the solver floor, not discretization."
-    if observable == "final_residual_linf":
+    if observable in {"final_residual_linf", "driven_residual_linf"}:
         return "Newton/GMRES stopping floor; useful as the numerical floor diagnostic."
     if observable in {"peak_density", "min_density"}:
         return "Pointwise extrema are sensitive to cell-center placement and coarse throat resolution."
@@ -209,7 +209,7 @@ def _diagnosis(observable: str, verdict: str) -> str:
 
 
 def _verdict(observable: str, order: float | None, expected_order: float) -> str:
-    if observable in {"density_mass", "final_residual_linf"}:
+    if observable in {"density_mass", "final_residual_linf", "driven_residual_linf"}:
         return "solver-floor diagnostic"
     if order is None:
         return "drifts"

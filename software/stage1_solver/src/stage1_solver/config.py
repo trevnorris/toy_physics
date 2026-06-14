@@ -256,6 +256,33 @@ class P2MaxwellAngularMMSConfig:
 
 
 @dataclass(frozen=True)
+class P2DrivenMMSConfig:
+    name: str = "mms_p2_driven_frequency_and_cap"
+    r_max: float = 2.0
+    w_min: float = -0.75
+    w_max: float = 0.85
+    tensor_grid_levels: tuple[tuple[int, int], ...] = (
+        (24, 20),
+        (48, 40),
+        (96, 80),
+    )
+    wall_grid_levels: tuple[int, ...] = (32, 64, 128)
+    spherical_l: int = 2
+    omega: float = 1.4
+    cap_width: float = 0.35
+    cap_strength: float = 4.0
+    hbar: float = 1.0
+    particle_mass: float = 1.0
+    anomalous_eos_K: float = 0.45
+    mu_eta: float = 1.0
+    xi: float = 1.3
+    localization_width: float = 0.9
+    min_observed_order: float = 1.75
+    tensor_final_error_max: float = 8.0e-3
+    wall_final_error_max: float = 2.0e-3
+
+
+@dataclass(frozen=True)
 class CoupledBranchMMSConfig:
     name: str = "mms_coupled_branch_matter_maxwell"
     r_max: float = 2.0
@@ -316,6 +343,7 @@ class ManufacturedSolutionsConfig:
     p2_maxwell_angular: P2MaxwellAngularMMSConfig = field(
         default_factory=P2MaxwellAngularMMSConfig
     )
+    p2_driven: P2DrivenMMSConfig = field(default_factory=P2DrivenMMSConfig)
     coupled_branch: CoupledBranchMMSConfig = field(default_factory=CoupledBranchMMSConfig)
     wall: WallMMSConfig = field(default_factory=WallMMSConfig)
 
@@ -456,6 +484,44 @@ class P2TangentConfig:
 
 
 @dataclass(frozen=True)
+class P2DrivenConfig:
+    name: str = "step8b_driven_p2_absorber"
+    placeholder_label: str = (
+        "step-8b engineering-smoke driven tangent; target-blind; no physical response packet; "
+        "retains only diagonal Maxwell temporal self-terms"
+    )
+    drive_frequencies: tuple[float, ...] = (0.05, 1.5, 6.0)
+    primary_omega: float = 6.0
+    propagating_omega: float = 6.0
+    cap_enabled: bool = True
+    cap_width: float = 0.8
+    cap_strength: float = 200.0
+    cap_profile: str = "smooth_polynomial_rational_cap"
+    convergence_levels: tuple[tuple[int, int], ...] = ((4, 4), (8, 8), (16, 16))
+    reflection_grid: tuple[int, int] = (12, 12)
+    reflection_fit_window: tuple[float, float] = (0.35, 0.95)
+    reflection_floor_multiplier: float = 8.0
+    step4_reference_relative_floor: float = 3.477501e-4
+    reflection_control_min_contrast: float = 2.0
+    reflection_max_relative: float = 0.02
+    min_observable_order: float = 1.45
+    scoped_min_observable_order: float = 1.35
+    scoped_convergence_observables: tuple[str, ...] = (
+        "total_response_l2",
+        "scalar_gauge_response_l2",
+        "wall_lower_endpoint_eta_abs",
+    )
+    scoped_convergence_rationale: str = (
+        "Fallback for the omega=6 resolution-limited ladder: total response plus "
+        "the scalar-gauge and lower-wall diagnostics are counted; lane diagnostics "
+        "that still show under-resolved drift are reported but not claimed converged."
+    )
+    smallest_singular_min: float = 1.0e-8
+    mms_min_order: float = 1.75
+    response_table_grid: tuple[int, int] = (8, 8)
+
+
+@dataclass(frozen=True)
 class HarnessConfig:
     backend: BackendConfig = field(default_factory=BackendConfig)
     newton: NewtonConfig = field(default_factory=NewtonConfig)
@@ -465,6 +531,7 @@ class HarnessConfig:
     branch: BranchSmokeConfig = field(default_factory=BranchSmokeConfig)
     convergence: BranchConvergenceConfig = field(default_factory=BranchConvergenceConfig)
     p2_tangent: P2TangentConfig = field(default_factory=P2TangentConfig)
+    p2_driven: P2DrivenConfig = field(default_factory=P2DrivenConfig)
     run_root: str = "software/stage1_solver/runs/step2_manufactured_solutions"
     report_path: str = "software/stage1_solver/reports/step2_manufactured_solutions_validation.md"
     jacobian_check_seed: int = 1729

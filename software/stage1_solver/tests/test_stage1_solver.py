@@ -55,6 +55,7 @@ from stage1_solver.coupled_branch import (
     coupled_pde_residual,
     geometry_radius_torch,
     initial_branch_state,
+    _matter_number_current,
     pack_coupled_fields,
     run_branch_continuation,
 )
@@ -82,6 +83,7 @@ from stage1_solver.operators import (
 )
 from stage1_solver.p2_tangent import (
     _diagnostics_digest,
+    P2TangentFields,
     apply_p2_tangent,
     p2_tangent_fd_check,
     p2_wellposedness_check,
@@ -100,6 +102,15 @@ from stage1_solver.p2_driven_absorber import (
     p2_omega_zero_static_limit_check,
     run_p2_driven_mms,
     run_reflection_study,
+)
+from stage1_solver.p2_conservation_response import (
+    Step8CStudyConfig,
+    _current_rows,
+    _sampling_stability_passes,
+    _status as _step8c_status,
+    _step8c_digest,
+    continuity_source_projection,
+    linearized_phasor_number_current,
 )
 from stage1_solver.preconditioners import assemble_coupled_colored_sparse_jacobian
 from stage1_solver.physics import cubic_gpe_residual, gaussian_initial_state
@@ -1143,6 +1154,182 @@ def test_p2_cap_profile_is_exit_only_and_complex_absorbing() -> None:
     assert cfg.p2_driven.cap_profile == "smooth_polynomial_rational_cap"
 
 
+def test_step8c_linearized_phasor_current_matches_real_branch_fd() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig(r_max=1.4, w_min=0.0, w_max=1.2, gauge_charge=0.37)
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=cfg.r_max, nr=8, w_min=cfg.w_min, w_max=cfg.w_max, nw=6),
+        dtype=dtype,
+        device="cpu",
+    )
+    rr = grid.r_centers[:, None]
+    ww = grid.w_centers[None, :]
+    background = CoupledFields(
+        psi_real=1.0 + 0.07 * rr + 0.03 * ww,
+        psi_imag=0.11 + 0.02 * rr - 0.04 * ww,
+        a0=torch.zeros((grid.spec.nr, grid.spec.nw), dtype=dtype),
+        ar=0.04 * rr + 0.01 * ww,
+        aw=-0.03 * rr + 0.02 * ww,
+    )
+    perturb = P2TangentFields(
+        psi_real=0.05 * rr**2 - 0.02 * ww,
+        psi_imag=-0.03 * rr + 0.04 * ww**2,
+        a0=torch.zeros((grid.spec.nr, grid.spec.nw), dtype=dtype),
+        ar=0.02 * rr * (1.0 + ww),
+        aw=-0.015 * (1.0 + rr) * ww,
+        eta=torch.zeros(grid.spec.nw, dtype=dtype),
+    )
+    eps = 1.0e-6
+
+    def shifted(sign: float) -> CoupledFields:
+        return CoupledFields(
+            psi_real=background.psi_real + sign * eps * perturb.psi_real,
+            psi_imag=background.psi_imag + sign * eps * perturb.psi_imag,
+            a0=background.a0 + sign * eps * perturb.a0,
+            ar=background.ar + sign * eps * perturb.ar,
+            aw=background.aw + sign * eps * perturb.aw,
+        )
+
+    plus_r, plus_w = _matter_number_current(shifted(1.0), grid, cfg)
+    minus_r, minus_w = _matter_number_current(shifted(-1.0), grid, cfg)
+    fd_r = (plus_r - minus_r) / (2.0 * eps)
+    fd_w = (plus_w - minus_w) / (2.0 * eps)
+    lin_r, lin_w = linearized_phasor_number_current(background, perturb, grid, cfg)
+    torch.testing.assert_close(torch.real(lin_r), fd_r, rtol=2.0e-8, atol=2.0e-8)
+    torch.testing.assert_close(torch.real(lin_w), fd_w, rtol=2.0e-8, atol=2.0e-8)
+    assert torch.max(torch.abs(torch.imag(lin_r))).item() == 0.0
+    assert torch.max(torch.abs(torch.imag(lin_w))).item() == 0.0
+
+
+def test_step8c_continuity_projection_uses_background_phase() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = BranchSmokeConfig(hbar=2.0)
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=1.0, nr=4, w_min=0.0, w_max=1.0, nw=2),
+        dtype=dtype,
+        device="cpu",
+    )
+    ones = torch.ones((grid.spec.nr, grid.spec.nw), dtype=dtype)
+    background = CoupledFields(
+        psi_real=2.0 * ones,
+        psi_imag=0.5 * ones,
+        a0=torch.zeros_like(ones),
+        ar=torch.zeros_like(ones),
+        aw=torch.zeros_like(ones),
+    )
+    residual = P2TangentFields(
+        psi_real=(1.0 + 2.0j) * ones.to(torch.complex128),
+        psi_imag=(3.0 - 4.0j) * ones.to(torch.complex128),
+        a0=torch.zeros_like(ones, dtype=torch.complex128),
+        ar=torch.zeros_like(ones, dtype=torch.complex128),
+        aw=torch.zeros_like(ones, dtype=torch.complex128),
+        eta=torch.zeros(grid.spec.nw, dtype=torch.complex128),
+    )
+    projected = continuity_source_projection(background, residual, cfg)
+    expected = (2.0 / cfg.hbar) * (
+        background.psi_real.to(torch.complex128) * residual.psi_imag
+        - background.psi_imag.to(torch.complex128) * residual.psi_real
+    )
+    torch.testing.assert_close(projected, expected, rtol=0.0, atol=0.0)
+
+
+def test_step8c_current_ratio_reports_static_null_sentinel() -> None:
+    dtype = configure_backend(BackendConfig())
+    cfg = HarnessConfig()
+    grid = TensorProductGrid.create(
+        TensorGridSpec(r_max=1.0, nr=4, w_min=0.0, w_max=1.0, nw=3),
+        dtype=dtype,
+        device="cpu",
+    )
+    ones = torch.ones((grid.spec.nr, grid.spec.nw), dtype=dtype)
+    background = CoupledFields(
+        psi_real=ones,
+        psi_imag=torch.zeros_like(ones),
+        a0=torch.zeros_like(ones),
+        ar=torch.zeros_like(ones),
+        aw=torch.zeros_like(ones),
+    )
+    perturbation = P2TangentFields(
+        psi_real=torch.zeros_like(ones, dtype=torch.complex128),
+        psi_imag=torch.zeros_like(ones, dtype=torch.complex128),
+        a0=torch.zeros_like(ones, dtype=torch.complex128),
+        ar=torch.zeros_like(ones, dtype=torch.complex128),
+        aw=torch.zeros_like(ones, dtype=torch.complex128),
+        eta=torch.zeros(grid.spec.nw, dtype=torch.complex128),
+    )
+    jr = torch.ones_like(ones, dtype=torch.complex128)
+    jw = torch.zeros_like(ones, dtype=torch.complex128)
+
+    rows = _current_rows(
+        level_index=0,
+        grid=grid,
+        config=cfg,
+        background=background,
+        perturbation=perturbation,
+        chemical_potential=torch.as_tensor(2.0, dtype=dtype),
+        jr=jr,
+        jw=jw,
+    )
+
+    assert rows[0]["phasor_current_l2"] > 0.0
+    assert rows[0]["static_branch_current_l2"] == 0.0
+    assert {row["non_null_vs_static_ratio"] for row in rows} == {"static_exactly_null"}
+
+
+def test_step8c_sampling_stability_uses_primary_relative_rule_only() -> None:
+    study = Step8CStudyConfig(coefficient_sampling_relative_tol=0.35)
+    unstable_primary = [
+        {
+            "level": 2,
+            "functional": "f",
+            "coefficient": "taylor_c0",
+            "counts_for_stability": True,
+            "relative_change": 0.36,
+            "absolute_change": 0.0,
+        }
+    ]
+    assert _sampling_stability_passes(unstable_primary, study) is False
+
+    stable_primary_with_failed_stress = [
+        {
+            "level": 2,
+            "functional": "f",
+            "coefficient": "taylor_c0",
+            "counts_for_stability": True,
+            "relative_change": 0.01,
+            "absolute_change": 1.0,
+        },
+        {
+            "level": 2,
+            "functional": "f",
+            "coefficient": "taylor_c1",
+            "counts_for_stability": False,
+            "relative_change": 1.29,
+            "absolute_change": 0.0,
+        },
+    ]
+    assert _sampling_stability_passes(stable_primary_with_failed_stress, study) is True
+
+
+def test_step8c_source_balance_checks_are_identity_not_physics_gates() -> None:
+    root = Path(__file__).resolve().parents[1]
+    source = (root / "src/stage1_solver/p2_conservation_response.py").read_text(encoding="utf-8")
+    pass_block = source.split("pass_checks = {", 1)[1].split("asserted_checks = {", 1)[0]
+    identity_block = source.split("identity_checks = {", 1)[1].split("source_balance_note =", 1)[0]
+
+    assert "source_balance_closes_on_finest_grid_not_a_physics_gate" in identity_block
+    assert "source_balance_residual_decreases_not_a_physics_gate" in identity_block
+    assert "source_balance_closes_on_finest_grid" not in pass_block
+    assert "source_balance_residual_decreases" not in pass_block
+    assert "number_divergence cancels algebraically" in source
+
+
+def test_step8c_status_reports_resolution_limited_pass() -> None:
+    assert _step8c_status({"passed": True, "resolution_limited": True}) == "PASS_WITH_RESOLUTION_LIMIT"
+    assert _step8c_status({"passed": True, "resolution_limited": False}) == "PASS"
+    assert _step8c_status({"passed": False, "resolution_limited": True}) == "FAIL"
+
+
 def test_p2_driven_convergence_gate_fails_synthetic_drifting_observable() -> None:
     cfg = replace(
         HarnessConfig(),
@@ -1178,6 +1365,8 @@ def test_p2_solve_path_is_target_blind() -> None:
         root / "src/stage1_solver/p2_tangent_harness.py",
         root / "src/stage1_solver/p2_driven_absorber.py",
         root / "src/stage1_solver/step8b_harness.py",
+        root / "src/stage1_solver/p2_conservation_response.py",
+        root / "src/stage1_solver/step8c_harness.py",
     ]
     solve_path_sources = {
         path: path.read_text(encoding="utf-8")
@@ -1282,6 +1471,42 @@ def test_p2_driven_digest_is_deterministic(tmp_path) -> None:
     moved["level_rows"][0]["solve"]["manifest"] = str(tmp_path / "b")
     first = _driven_digest(results)
     second = _driven_digest(moved)
+    assert first == second
+    assert len(first) == 16
+
+
+def test_step8c_digest_is_deterministic(tmp_path) -> None:
+    results = {
+        "study": Step8CStudyConfig().to_dict(),
+        "solve_rows": [
+            {
+                "grid": "a",
+                "omega": 0.1,
+                "driven_residual_linf": 1.0e-12,
+                "manifest": str(tmp_path / "solve_a"),
+                "background_manifest": str(tmp_path / "background_a"),
+            }
+        ],
+        "current_rows": [{"sector": "number", "phasor_current_l2": 1.0}],
+        "gauss_closure_rows": [{"surface": "nested", "relative_residual": 1.0e-3}],
+        "source_balance_rows": [
+            {"sector": "number", "interior_balance_l2_relative": 1.0e-4}
+        ],
+        "response_rows": [{"omega": 0.1, "scalar_gauge_cap_free_l2": 2.0}],
+        "coefficient_summary": [{"functional": "scalar", "coefficient": "taylor_c0"}],
+        "coefficient_budget": [{"functional": "scalar", "u_total": 1.0e-3}],
+        "omega_stability_rows": [{"functional": "scalar", "relative_change": 1.0e-2}],
+        "pass_checks": {"computed_gate": True},
+        "identity_checks": {"identity_not_a_physics_gate": True},
+        "identity_check_notes": {"identity_not_a_physics_gate": "not counted"},
+        "asserted_checks": {"target_blind_not_a_physics_gate": True},
+        "resolution_limited": True,
+    }
+    moved = json.loads(json.dumps(results))
+    moved["solve_rows"][0]["manifest"] = str(tmp_path / "solve_b")
+    moved["solve_rows"][0]["background_manifest"] = str(tmp_path / "background_b")
+    first = _step8c_digest(results)
+    second = _step8c_digest(moved)
     assert first == second
     assert len(first) == 16
 

@@ -402,7 +402,7 @@ conceptual_go: YES    # ✅ user-authorized 2026-06-17 (stage-1 conceptual gate 
 conceptual_go_by: user
 conceptual_go_date: 2026-06-17
 freeze_date: 2026-06-18
-freeze_commit: TBD   # this commit sets frozen: YES; its SHA is recorded by the immediately following commit (a self-hash here is impossible)
+freeze_commit: 1703f4c   # the commit that set frozen: YES (this line recorded by the immediately following commit)
 source_revision: 8bd82b9             # repo HEAD at freeze stamp
 candidate_freeze_hash: ed358569393fed5fc29c0c13286a07cd438db467da6c1bc663a09bb04b1691c9
 candidate_freeze_hash_def: SHA-256 over the decision-11 §8 canonical spec (family forms+ties+g=0, geometry, source/port mhat0=S_port=1, calibration objective incl. the GR anchor constant 54Gc_s^5/(5a^5c^5), §5 extraction-formula strings, mode/branch selection, tolerances+mesh ladder, source_file_sha256); EXCLUDES any target residual / computed D0/R_norm / pass-flag. Stamped by src/stage1_solver/patha_gate_a_freeze.py → frozen/pathA_gate_a/<hash>/.

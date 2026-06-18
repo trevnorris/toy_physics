@@ -36,6 +36,56 @@ def has_path(report: Mapping[str, Any], expected_path: str) -> bool:
     return expected_path in issue_paths(report)
 
 
+def build_direct_derived_packet() -> Dict[str, Any]:
+    packet = v22b.build_sample_solver_output(valid=True)
+    packet["branch_id"] = "direct_derived_positive_control"
+    packet.pop("mixed_ports", None)
+    packet["derived_bdg_wall_coefficients"] = {
+        "status": "derived_bdg_wall_m1b_fixture_control",
+        "coefficients": {
+            "K": packet["wall"]["K"],
+            "M": packet["wall"]["M"],
+            "B0": 0.01,
+            "B2": 0.02,
+            "B4": 0.03,
+        },
+        "source_hashes": {"fixture_control": "direct-bdg-wall"},
+    }
+    packet["derived_maxwell_transfer"] = {
+        "status": "derived_green_function_transfer",
+        "gauge_convention": packet["freeze"]["gauge_convention"],
+        "flux_normalization": {
+            "Gamma_port": 4.0 / 27.0,
+            "formula": "fixture_control_sigma_Q_can",
+        },
+        "coefficients": {
+            "Z0": 0.001,
+            "Z2": 0.002,
+            "Z4": 0.003,
+            "N0": 0.004,
+            "N2": 0.005,
+            "N4": 0.006,
+        },
+        "operator_gauge_residual_metrics": {
+            "current_frechet_matches_step8c": True,
+            "outgoing_flux_positive": True,
+            "open_not_hard_cap": True,
+            "pure_gauge_zero_physical_transfer": True,
+            "basis_invariance": True,
+            "v2_09_regression": True,
+            "green_residuals_small": True,
+            "bdg_residuals_small": True,
+            "N0_positive": True,
+            "max_green_residual": 1e-12,
+            "max_gauge_physical_field_norm": 1e-12,
+        },
+        "source_hashes": {"fixture_control": "direct-maxwell-transfer"},
+    }
+    packet["solver_metadata"]["coefficient_family"] = "direct_derived_fixture_control_v1"
+    packet["solver_metadata"]["source_commit"] = "fixture-only-direct-derived"
+    return packet
+
+
 def run_v22b_negative_controls(fixture_dir: Path) -> List[Dict[str, Any]]:
     cases = [
         ("nonmonotone_grid", "stage_v2_22b_negative_nonmonotone_grid.json", "grid.points"),
@@ -64,6 +114,49 @@ def run_v22b_negative_controls(fixture_dir: Path) -> List[Dict[str, Any]]:
             "packet_hash": report.get("packet_hash"),
         })
     return results
+
+
+def run_v22b_direct_derived_controls() -> List[Dict[str, Any]]:
+    packet = build_direct_derived_packet()
+    report = v22b.validate_solver_output(packet)
+    profile_manifest = v22b.convert_solver_output_to_v22a_profile_manifest(packet) if report["validation_pass"] else None
+    v21_manifest, _ = v22a.adapt_manifest(profile_manifest) if profile_manifest is not None else (None, None)
+    branch_packet = v21.extract_branch(v21_manifest["branches"][0]) if v21_manifest is not None else None
+    direct_lane_pass = bool(
+        branch_packet
+        and branch_packet["pass_flags"]["open_gate_pass"]
+        and branch_packet["pass_flags"]["stability_gate_pass"]
+        and all("direct_coefficients" in v21_manifest["branches"][0]["lanes"][lane] for lane in v21.LANES)
+    )
+
+    leak_packet = copy.deepcopy(packet)
+    leak_packet["derived_maxwell_transfer"]["R_norm"] = 0.0
+    leak_report = v22b.validate_solver_output(leak_packet)
+    leak_pass = (not leak_report["validation_pass"]) and has_path(leak_report, "derived_maxwell_transfer.R_norm")
+
+    return [
+        {
+            "name": "v22b_direct_derived_path_positive_control",
+            "control_type": "positive_guard",
+            "pass": bool(report["validation_pass"] and direct_lane_pass),
+            "validation_pass": bool(report["validation_pass"]),
+            "error_count": int(report.get("error_count", 0)),
+            "coefficient_path": "direct_derived_coefficients",
+            "open_gate_pass": bool(branch_packet and branch_packet["pass_flags"]["open_gate_pass"]),
+            "stability_gate_pass": bool(branch_packet and branch_packet["pass_flags"]["stability_gate_pass"]),
+            "packet_hash": report.get("packet_hash"),
+        },
+        {
+            "name": "v22b_direct_derived_target_leakage",
+            "control_type": "negative",
+            "expected_rejection_path": "derived_maxwell_transfer.R_norm",
+            "pass": bool(leak_pass),
+            "validation_pass": bool(leak_report.get("validation_pass")),
+            "error_count": int(leak_report.get("error_count", 0)),
+            "issue_paths": issue_paths(leak_report),
+            "packet_hash": leak_report.get("packet_hash"),
+        },
+    ]
 
 
 def run_v22a_strict_profile_controls() -> List[Dict[str, Any]]:
@@ -140,6 +233,7 @@ def main() -> int:
     fixture_dir = Path(args.fixture_dir)
     results: List[Dict[str, Any]] = []
     results.extend(run_v22b_negative_controls(fixture_dir))
+    results.extend(run_v22b_direct_derived_controls())
     results.extend(run_v22a_strict_profile_controls())
     results.extend(run_v21_unstable_direct_control())
 

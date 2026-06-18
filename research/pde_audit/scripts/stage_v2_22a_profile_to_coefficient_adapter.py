@@ -373,8 +373,31 @@ def compute_branch_overlaps(branch: Mapping[str, Any]) -> Dict[str, Any]:
 
 def adapt_profile_branch_to_v21(branch: Mapping[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """Convert one profile branch into a V2-21 branch manifest plus diagnostics."""
-    overlaps = compute_branch_overlaps(branch)
     reduction = branch["reduction"]
+    if "direct_coefficients" in reduction:
+        direct_coefficients = {k: float(v) for k, v in reduction["direct_coefficients"].items()}
+        v21_branch = {
+            "name": branch["name"],
+            "geometry": {k: v for k, v in branch.get("geometry", {}).items() if k != "L"},
+            "target": branch.get("target", {}),
+            "lanes": {lane: {"direct_coefficients": copy.deepcopy(direct_coefficients)} for lane in LANES},
+            "profile_adapter": {
+                "source_branch_hash": stable_hash(branch),
+                "coefficient_path": "direct_derived_coefficients",
+                "derived_coefficients_provenance": reduction.get("derived_coefficients_provenance", {}),
+                "weak_axisymmetric": branch.get("weak_axisymmetric", None),
+            },
+        }
+        diagnostics = {
+            "source_branch": branch["name"],
+            "source_branch_hash": stable_hash(branch),
+            "coefficient_path": "direct_derived_coefficients",
+            "direct_coefficients": direct_coefficients,
+            "v21_branch_hash": stable_hash(v21_branch),
+        }
+        return v21_branch, diagnostics
+
+    overlaps = compute_branch_overlaps(branch)
     lanes: Dict[str, Any] = {}
     for lane in LANES:
         wall = reduction["wall"]
@@ -500,11 +523,21 @@ def mixed_port_moments(ports: Iterable[Mapping[str, float]]) -> Tuple[Dict[str, 
 
 
 def lane_extract(lane: Mapping[str, Any]) -> Dict[str, Any]:
-    K = float(lane["K"])
-    M = float(lane["M"])
-    b = bdg_moments(lane.get("bdg_modes", []))
-    z_n, port_diag = mixed_port_moments(lane.get("mixed_ports", []))
-    coeff = {"K": K, "M": M, **b, **z_n}
+    if "direct_coefficients" in lane:
+        coeff = {k: float(v) for k, v in lane["direct_coefficients"].items()}
+        required = {"K", "M", "B0", "B2", "B4", "Z0", "Z2", "Z4", "N0", "N2", "N4"}
+        missing = required - set(coeff)
+        if missing:
+            raise ValueError(f"direct_coefficients missing {sorted(missing)}")
+        port_diag: List[Dict[str, float]] = []
+    else:
+        K = float(lane["K"])
+        M = float(lane["M"])
+        b = bdg_moments(lane.get("bdg_modes", []))
+        z_n, port_diag = mixed_port_moments(lane.get("mixed_ports", []))
+        coeff = {"K": K, "M": M, **b, **z_n}
+    K = coeff["K"]
+    M = coeff["M"]
     D0 = coeff["K"] - coeff["B0"] - coeff["Z0"]
     D2 = -(coeff["M"] + coeff["B2"] + coeff["Z2"])
     D4 = -(coeff["B4"] + coeff["Z4"])

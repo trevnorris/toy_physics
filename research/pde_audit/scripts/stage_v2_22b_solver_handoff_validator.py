@@ -43,6 +43,19 @@ import sympy as sp
 
 LANES = ("20", "21", "22")
 AXISYM_LAMBDA = {"20": 1.0, "21": 0.5, "22": -1.0}
+DIRECT_BDG_KEYS = ("B0", "B2", "B4")
+DIRECT_TRANSFER_KEYS = ("Z0", "Z2", "Z4", "N0", "N2", "N4")
+DIRECT_REQUIRED_CHECKS = (
+    "current_frechet_matches_step8c",
+    "outgoing_flux_positive",
+    "open_not_hard_cap",
+    "pure_gauge_zero_physical_transfer",
+    "basis_invariance",
+    "v2_09_regression",
+    "green_residuals_small",
+    "bdg_residuals_small",
+    "N0_positive",
+)
 
 
 # ---------------------------------------------------------------------------
@@ -90,6 +103,25 @@ def product_integral(xs: Sequence[float], *ys_list: Sequence[float]) -> float:
 
 def sampled_profile(xs: Sequence[float], ys: Sequence[float]) -> Dict[str, Any]:
     return {"kind": "sampled", "samples": [[float(x), float(y)] for x, y in zip(xs, ys)]}
+
+
+def direct_coefficients_from_packet(packet: Mapping[str, Any]) -> Dict[str, float]:
+    """Build the V2-21 direct-coefficient lane from a validated direct packet."""
+    bdg_wall = packet["derived_bdg_wall_coefficients"]["coefficients"]
+    transfer = packet["derived_maxwell_transfer"]["coefficients"]
+    return {
+        "K": float(packet["wall"]["K"]),
+        "M": float(packet["wall"]["M"]),
+        "B0": float(bdg_wall["B0"]),
+        "B2": float(bdg_wall["B2"]),
+        "B4": float(bdg_wall["B4"]),
+        "Z0": float(transfer["Z0"]),
+        "Z2": float(transfer["Z2"]),
+        "Z4": float(transfer["Z4"]),
+        "N0": float(transfer["N0"]),
+        "N2": float(transfer["N2"]),
+        "N4": float(transfer["N4"]),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -169,9 +201,12 @@ def solver_output_schema() -> Dict[str, Any]:
             "wall",
             "profiles",
             "bdg_modes",
-            "mixed_ports",
             "solver_metadata",
         ],
+        "coefficient_paths": {
+            "mixed_ports": "legacy path; at least one Maxwell/A_w mixed port is required unless derived_maxwell_transfer is supplied",
+            "derived_maxwell_transfer": "optional direct-derived path; when present without mixed_ports, requires derived_bdg_wall_coefficients and generates V2-21 direct_coefficients",
+        },
         "freeze_required": {
             "pre_target_freeze": True,
             "target_blind": True,
@@ -206,6 +241,19 @@ def solver_output_schema() -> Dict[str, Any]:
             "w_values",
             "lambda_R",
         ],
+        "derived_bdg_wall_coefficients_required_for_direct_path": {
+            "status": "derived_bdg_wall_m1b or equivalent",
+            "coefficients": ["B0", "B2", "B4"],
+            "source_hashes": "hashes for upstream M1b packet/diagnostics",
+        },
+        "derived_maxwell_transfer_required_for_direct_path": {
+            "status": "derived_green_function_transfer",
+            "gauge_convention": "declared transfer gauge convention",
+            "flux_normalization": "Gamma_port / sigma_Q^can convention",
+            "coefficients": ["Z0", "Z2", "Z4", "N0", "N2", "N4"],
+            "operator_gauge_residual_metrics": "finite residual metrics and boolean validation checks; do not use the forbidden key 'residuals'",
+            "source_hashes": "hashes for upstream Spike-2 transfer diagnostics",
+        },
         "optional": {
             "weak_axisymmetric": "epsilon and primitive slopes with grouped signature (20,21,22)=(1,1/2,-1)",
             "normalization_tolerances": "norm and overlap tolerances used by the validator",
@@ -300,10 +348,14 @@ def build_sample_solver_output(valid: bool = True, points: int = 801) -> Dict[st
 
 def validate_solver_output(packet: Mapping[str, Any]) -> Dict[str, Any]:
     issues: List[Dict[str, str]] = []
-    required = ["schema", "branch_id", "freeze", "geometry", "constants", "grid", "wall", "profiles", "bdg_modes", "mixed_ports", "solver_metadata"]
+    required = ["schema", "branch_id", "freeze", "geometry", "constants", "grid", "wall", "profiles", "bdg_modes", "solver_metadata"]
     for key in required:
         if key not in packet:
             add_issue(issues, "error", key, "missing required top-level key")
+
+    has_direct_derived_transfer = isinstance(packet.get("derived_maxwell_transfer"), Mapping)
+    if "derived_maxwell_transfer" in packet and not has_direct_derived_transfer:
+        add_issue(issues, "error", "derived_maxwell_transfer", "derived transfer branch must be an object")
 
     forbidden_target_keys = {
         "P0_target",
@@ -410,6 +462,80 @@ def validate_solver_output(packet: Mapping[str, Any]) -> Dict[str, Any]:
         if not finite_number(wall_packet.get(key)) or float(wall_packet.get(key, 0.0)) <= 0.0:
             add_issue(issues, "error", f"wall.{key}", f"wall.{key} must be positive")
 
+    if has_direct_derived_transfer:
+        bdg_wall_direct = packet.get("derived_bdg_wall_coefficients")
+        if not isinstance(bdg_wall_direct, Mapping):
+            add_issue(issues, "error", "derived_bdg_wall_coefficients", "direct-derived path requires derived BdG/wall coefficients")
+        else:
+            if not isinstance(bdg_wall_direct.get("status"), str) or not bdg_wall_direct.get("status", "").strip():
+                add_issue(issues, "error", "derived_bdg_wall_coefficients.status", "derived BdG/wall status must be declared")
+            bdg_coeff = bdg_wall_direct.get("coefficients")
+            if not isinstance(bdg_coeff, Mapping):
+                add_issue(issues, "error", "derived_bdg_wall_coefficients.coefficients", "must provide B0/B2/B4 coefficients")
+            else:
+                for key in DIRECT_BDG_KEYS:
+                    if not finite_number(bdg_coeff.get(key)):
+                        add_issue(issues, "error", f"derived_bdg_wall_coefficients.coefficients.{key}", f"{key} must be finite")
+                    elif float(bdg_coeff[key]) < 0.0:
+                        add_issue(issues, "error", f"derived_bdg_wall_coefficients.coefficients.{key}", f"{key} must be nonnegative")
+                for key in ["K", "M"]:
+                    if key in bdg_coeff:
+                        if not finite_number(bdg_coeff.get(key)):
+                            add_issue(issues, "error", f"derived_bdg_wall_coefficients.coefficients.{key}", f"{key} must be finite")
+                        elif finite_number(wall_packet.get(key)) and abs(float(bdg_coeff[key]) - float(wall_packet[key])) > 1e-10:
+                            add_issue(issues, "error", f"derived_bdg_wall_coefficients.coefficients.{key}", f"{key} must match wall.{key}")
+            source_hashes = bdg_wall_direct.get("source_hashes")
+            if not isinstance(source_hashes, Mapping) or not source_hashes:
+                add_issue(issues, "error", "derived_bdg_wall_coefficients.source_hashes", "M1b source hashes must be recorded")
+
+        transfer = packet["derived_maxwell_transfer"]
+        if transfer.get("status") != "derived_green_function_transfer":
+            add_issue(issues, "error", "derived_maxwell_transfer.status", "status must be derived_green_function_transfer")
+        if not isinstance(transfer.get("gauge_convention"), str) or not transfer.get("gauge_convention", "").strip():
+            add_issue(issues, "error", "derived_maxwell_transfer.gauge_convention", "transfer gauge convention must be declared")
+        flux = transfer.get("flux_normalization")
+        if not isinstance(flux, Mapping):
+            add_issue(issues, "error", "derived_maxwell_transfer.flux_normalization", "Gamma_port flux normalization must be recorded")
+        else:
+            gamma_port = flux.get("Gamma_port", flux.get("value"))
+            if not finite_number(gamma_port) or float(gamma_port) <= 0.0:
+                add_issue(issues, "error", "derived_maxwell_transfer.flux_normalization.Gamma_port", "Gamma_port must be positive and finite")
+        transfer_coeff = transfer.get("coefficients")
+        if not isinstance(transfer_coeff, Mapping):
+            add_issue(issues, "error", "derived_maxwell_transfer.coefficients", "must provide Z0/Z2/Z4 and N0/N2/N4")
+        else:
+            for key in DIRECT_TRANSFER_KEYS:
+                if not finite_number(transfer_coeff.get(key)):
+                    add_issue(issues, "error", f"derived_maxwell_transfer.coefficients.{key}", f"{key} must be finite")
+            if finite_number(transfer_coeff.get("N0")) and float(transfer_coeff["N0"]) <= 0.0:
+                add_issue(issues, "error", "derived_maxwell_transfer.coefficients.N0", "N0 must be positive for the outgoing transfer")
+        metrics = transfer.get("operator_gauge_residual_metrics")
+        if not isinstance(metrics, Mapping):
+            add_issue(issues, "error", "derived_maxwell_transfer.operator_gauge_residual_metrics", "operator/gauge residual metrics must be recorded")
+        else:
+            for key in DIRECT_REQUIRED_CHECKS:
+                if metrics.get(key) is not True:
+                    add_issue(issues, "error", f"derived_maxwell_transfer.operator_gauge_residual_metrics.{key}", f"{key} must be true")
+            for key, value in metrics.items():
+                if isinstance(value, bool):
+                    continue
+                if isinstance(value, (int, float)) and (not math.isfinite(float(value)) or float(value) < 0.0):
+                    add_issue(issues, "error", f"derived_maxwell_transfer.operator_gauge_residual_metrics.{key}", "numeric residual metric must be finite and nonnegative")
+        source_hashes = transfer.get("source_hashes")
+        if not isinstance(source_hashes, Mapping) or not source_hashes:
+            add_issue(issues, "error", "derived_maxwell_transfer.source_hashes", "Spike-2 source hashes must be recorded")
+
+        if (
+            isinstance(bdg_wall_direct, Mapping)
+            and isinstance(bdg_wall_direct.get("coefficients"), Mapping)
+            and isinstance(transfer.get("coefficients"), Mapping)
+        ):
+            try:
+                diagnostics["direct_derived_coefficients"] = direct_coefficients_from_packet(packet)
+                diagnostics["coefficient_path"] = "direct_derived_coefficients"
+            except Exception as exc:
+                add_issue(issues, "error", "derived_maxwell_transfer", f"could not build direct coefficients: {exc}")
+
     bdg_modes = packet.get("bdg_modes", [])
     if not isinstance(bdg_modes, list) or len(bdg_modes) == 0:
         add_issue(issues, "error", "bdg_modes", "at least one BdG mode is required for this handoff")
@@ -437,7 +563,8 @@ def validate_solver_output(packet: Mapping[str, Any]) -> Dict[str, Any]:
 
     mixed_ports = packet.get("mixed_ports", [])
     if not isinstance(mixed_ports, list) or len(mixed_ports) == 0:
-        add_issue(issues, "error", "mixed_ports", "at least one mixed Maxwell/A_w port is required")
+        if not has_direct_derived_transfer:
+            add_issue(issues, "error", "mixed_ports", "at least one mixed Maxwell/A_w port is required unless derived_maxwell_transfer is supplied")
     else:
         port_diag = []
         for idx, port in enumerate(mixed_ports):
@@ -528,7 +655,7 @@ def convert_solver_output_to_v22a_profile_manifest(packet: Mapping[str, Any]) ->
         bdg_modes.append({"name": str(mode.get("name", idx)), "lambda_B": float(mode["lambda_B"]), "varpi": float(mode["varpi"]), "profile": pname})
 
     mixed_ports = []
-    for idx, port in enumerate(packet["mixed_ports"]):
+    for idx, port in enumerate(packet.get("mixed_ports", [])):
         uname = f"u_{port.get('name', idx)}"
         wname = f"w_{port.get('name', idx)}"
         profiles[uname] = sampled_profile(xs, port["u_values"])
@@ -545,6 +672,18 @@ def convert_solver_output_to_v22a_profile_manifest(packet: Mapping[str, Any]) ->
             "u_w_profiles": [uname, wname],
         })
 
+    reduction: Dict[str, Any] = {
+        "wall": {"K": float(packet["wall"]["K"]), "M": float(packet["wall"]["M"])},
+        "bdg_modes": bdg_modes,
+        "mixed_ports": mixed_ports,
+    }
+    if isinstance(packet.get("derived_maxwell_transfer"), Mapping) and not mixed_ports:
+        reduction["direct_coefficients"] = direct_coefficients_from_packet(packet)
+        reduction["derived_coefficients_provenance"] = {
+            "bdg_wall": packet.get("derived_bdg_wall_coefficients", {}),
+            "maxwell_transfer": packet.get("derived_maxwell_transfer", {}),
+        }
+
     geometry = dict(packet["geometry"])
     geometry_for_adapter = {"R_exit": geometry["R_exit"], "boundary_class": geometry["boundary_class"], "Y_L_limit": geometry.get("Y_L_limit", 0.0), "L": geometry["L"]}
     branch: Dict[str, Any] = {
@@ -553,11 +692,7 @@ def convert_solver_output_to_v22a_profile_manifest(packet: Mapping[str, Any]) ->
         "target": {"constants": dict(packet["constants"])},
         "profiles": profiles,
         "integration": {"grid_points": int(packet.get("solver_metadata", {}).get("mesh_points", len(xs)))},
-        "reduction": {
-            "wall": {"K": float(packet["wall"]["K"]), "M": float(packet["wall"]["M"])},
-            "bdg_modes": bdg_modes,
-            "mixed_ports": mixed_ports,
-        },
+        "reduction": reduction,
         "handoff_freeze": {
             "source_schema": packet["schema"],
             "source_packet_hash": stable_hash(packet),

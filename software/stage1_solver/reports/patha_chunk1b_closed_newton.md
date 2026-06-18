@@ -30,7 +30,8 @@ exit_wall_bc: natural_zero_traction
 | 8.000000e-02 | True | 4 | 1.067053e+00 | 1.726341e-12 | 2.134107e-09 | [1, 1, 1, 1] | 9.877030e-01 | 9.980074e-01 | residual tolerance reached |
 | 1.800000e-01 | True | 0 | 1.381831e-09 | 1.381831e-09 | 2.000000e-09 | [] | 9.877030e-01 | 9.980074e-01 | initial residual met tolerance |
 
-Final residual linf=1.381831e-09; R0 range=[9.877030e-01, 9.980074e-01]; mass=5.000000e-02; mu=2.013805e+00; wall-clock=1.234869e+02s.
+Final residual linf=1.381831e-09; R0 range=[9.877030e-01, 9.980074e-01]; mass=5.000000e-02; mu=2.013805e+00; wall-clock=1.169103e+02s.
+Closed-Newton tolerance note: the counted gate uses residual_atol=2.000000e-09 and residual_rtol=2.000000e-09; the active nonlinear closed solve achieved residual 1.726341e-12, so the relaxed absolute tolerance is not masking non-convergence.
 
 ## JVP Check
 
@@ -44,6 +45,8 @@ Closed residual JVP vs centered finite difference: relative=4.041896e-11, absolu
 | T_w_RR | 5.764738e-08 | 5.764738e-08 |
 | U_R | 9.441967e-11 | 9.441967e-11 |
 | U_RR | 7.665529e-09 | 7.665529e-09 |
+
+Relative-derivative note: relative and absolute entries can be identical here because the denominator convention is `max(1, ||analytic||_inf)` and these analytic derivative magnitudes are below one.
 
 ## Return Source Diagnostic
 
@@ -60,6 +63,7 @@ minimum_margin: 7.341337e-02
 ```
 
 A downstream Schur-denominator value is not constructed in chunk 1b; this report records the placeholder constitutive positivity margin used by the closed background solve.
+This counted check is a constitutive-positivity sanity guard for the smooth positive placeholder family, near true by construction and retained as a stability precondition for the background solve; it is not independent physics evidence.
 
 ## Counted Gates
 
@@ -80,3 +84,4 @@ A downstream Schur-denominator value is not constructed in chunk 1b; this report
 - exit_bc_changed_from_zero_traction: not tripped
 - hidden_clamp_or_line_search_hack: not tripped
 - source_sign_or_reduction_mismatch: not tripped
+

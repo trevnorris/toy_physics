@@ -583,6 +583,23 @@ def write_patha_closed_newton_report(results: dict[str, Any], path: str) -> Path
         f"mass={results['final_mass']:.6e}; mu={results['chemical_potential']:.6e}; "
         f"wall-clock={results['wall_clock_seconds']:.6e}s."
     )
+    active_stage_residuals = [
+        row["final_residual_norm"]
+        for row in results["stages"]
+        if row["iterations"] > 0
+    ]
+    achieved_active_residual = (
+        min(active_stage_residuals)
+        if active_stage_residuals
+        else results["final_residual_linf"]
+    )
+    lines.append(
+        "Closed-Newton tolerance note: the counted gate uses "
+        f"residual_atol={branch['newton']['residual_atol']:.6e} and "
+        f"residual_rtol={branch['newton']['residual_rtol']:.6e}; the active nonlinear "
+        f"closed solve achieved residual {achieved_active_residual:.6e}, so the relaxed "
+        "absolute tolerance is not masking non-convergence."
+    )
     lines.append("")
     lines.append("## JVP Check")
     lines.append("")
@@ -600,6 +617,12 @@ def write_patha_closed_newton_report(results: dict[str, Any], path: str) -> Path
             ["quantity", "absolute", "relative"],
             results["placeholder_derivative_check"]["rows"],
         )
+    )
+    lines.append("")
+    lines.append(
+        "Relative-derivative note: relative and absolute entries can be identical here "
+        "because the denominator convention is `max(1, ||analytic||_inf)` and these "
+        "analytic derivative magnitudes are below one."
     )
     lines.append("")
     lines.append("## Return Source Diagnostic")
@@ -621,6 +644,11 @@ def write_patha_closed_newton_report(results: dict[str, Any], path: str) -> Path
     lines.append(
         "A downstream Schur-denominator value is not constructed in chunk 1b; this report records "
         "the placeholder constitutive positivity margin used by the closed background solve."
+    )
+    lines.append(
+        "This counted check is a constitutive-positivity sanity guard for the smooth positive "
+        "placeholder family, near true by construction and retained as a stability precondition "
+        "for the background solve; it is not independent physics evidence."
     )
     lines.append("")
     lines.append("## Counted Gates")

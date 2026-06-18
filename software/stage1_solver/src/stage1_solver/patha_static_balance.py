@@ -83,6 +83,28 @@ class SSigmaSpec:
         )
 
     @staticmethod
+    def homogeneous_isotropic_hooke(
+        *,
+        tau: float,
+        a: float = 1.0,
+        w_min: float = 0.0,
+        w_max: float = 37.0 / 20.0,
+    ) -> "SSigmaSpec":
+        """Frozen Path-A GATE-A homogeneous isotropic Hookean wall."""
+
+        return SSigmaSpec(
+            family="homogeneous_isotropic_hooke_v1",
+            parameters=_sorted_parameters(
+                {
+                    "tau": tau,
+                    "a": a,
+                    "w_min": w_min,
+                    "w_max": w_max,
+                }
+            ),
+        )
+
+    @staticmethod
     def from_dict(data: Mapping[str, Any]) -> "SSigmaSpec":
         if set(data) != {"family", "parameters"}:
             raise ValueError("S_Sigma spec requires exactly family and parameters")
@@ -245,9 +267,51 @@ class _PathAStaticMMSProvider(SSigmaProvider):
         return 2.0 * self._p("u_r2") + 6.0 * self._p("u_r3") * R + 0.0 * w
 
 
+class _HomogeneousIsotropicHookeProvider(SSigmaProvider):
+    def _tau_tensor(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        tau = self._p("tau")
+        if tau <= 0.0:
+            raise ValueError("homogeneous_isotropic_hooke_v1 requires tau > 0")
+        if self._p("a") <= 0.0:
+            raise ValueError("homogeneous_isotropic_hooke_v1 requires a > 0")
+        if self._p("w_max") <= self._p("w_min"):
+            raise ValueError("homogeneous_isotropic_hooke_v1 requires w_max > w_min")
+        return torch.zeros_like(R + w) + tau
+
+    def _tomega_tensor(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tau_tensor(R, w) / (self._p("a") ** 2)
+
+    def mu(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tau_tensor(R, w)
+
+    def T_w(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tau_tensor(R, w)
+
+    def T_w_R(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        self._tau_tensor(R, w)
+        return torch.zeros_like(R + w)
+
+    def T_w_RR(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        self._tau_tensor(R, w)
+        return torch.zeros_like(R + w)
+
+    def T_Omega(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tomega_tensor(R, w)
+
+    def U(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return 0.5 * self._tomega_tensor(R, w) * (R - self._p("a")) ** 2
+
+    def U_R(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tomega_tensor(R, w) * (R - self._p("a"))
+
+    def U_RR(self, R: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
+        return self._tomega_tensor(R, w)
+
+
 _S_SIGMA_REGISTRY: dict[str, Callable[[SSigmaSpec], SSigmaProvider]] = {
     "smooth_positive_placeholder_v1": _SmoothPositivePlaceholderProvider,
     "patha_static_mms_v1": _PathAStaticMMSProvider,
+    "homogeneous_isotropic_hooke_v1": _HomogeneousIsotropicHookeProvider,
 }
 
 

@@ -1,7 +1,18 @@
 # Decision 11 — Path-A GATE-A freeze sheet (S_Σ constitutive family + DOF + field→D0 map)
 
 **Date:** 2026-06-18
-**Status:** Claude+Codex determination COMPLETE; **PENDING user `frozen: YES`** (pre-reg §M Stage-2 freeze gate).
+**Status:** **FROZEN — `frozen: YES`** (user-authorized 2026-06-18, pre-reg §M Stage-2 freeze gate). Was:
+Claude+Codex determination COMPLETE, pending freeze.
+**Freeze record (G4 / decision-07 analog):**
+- `frozen: YES`; `signed_off_by: user`; `freeze_date: 2026-06-18`.
+- `candidate_freeze_hash: ed358569393fed5fc29c0c13286a07cd438db467da6c1bc663a09bb04b1691c9` (SHA-256 over the §8
+  canonical spec; byte-reproducible — two stamp runs gave the identical hash, independently re-verified).
+- `source_revision (git_head at freeze): 8bd82b9`; frozen packet:
+  `software/stage1_solver/frozen/pathA_gate_a/ed358569393fed5fc29c0c13286a07cd438db467da6c1bc663a09bb04b1691c9/`
+  (`freeze_sheet.json` + `freeze_hash.txt`). Frozen family registered as the
+  `homogeneous_isotropic_hooke_v1` provider in `src/stage1_solver/patha_static_balance.py` (transliteration-fidelity
+  audited FAITHFUL to §1; 11 solver tests pass; firewall untouched; sheet carries NO target residual / `R_norm` /
+  `D0` / pass-flag). Freeze stamped BEFORE any calibration (freeze-before-solve discipline).
 This is the §M **item-1 gating artifact** that converts the Path-A pre-registration DRAFT into a freeze-ready
 record (`docs/pathA_preregistration.md` §E/§K/§M; decision-07 analog).
 **Mechanism:** Claude+Codex consult ([[claude-codex-resolve-math]]). Prompt + full log:

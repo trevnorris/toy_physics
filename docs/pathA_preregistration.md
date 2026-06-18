@@ -397,17 +397,17 @@ closed-background extraction map, the validation plan). **The CALIBRATION RUN** 
 ONLY after `frozen: YES` (brief §3.4). Target-blind tooling/validation (Stage 1) is not gated by this.
 
 ```
-frozen: NO            # flip to YES at stage-2 sign-off
+frozen: YES           # ✅ user-authorized 2026-06-18 (stage-2 freeze gate passed)
 conceptual_go: YES    # ✅ user-authorized 2026-06-17 (stage-1 conceptual gate passed)
 conceptual_go_by: user
 conceptual_go_date: 2026-06-17
-freeze_date:          # set at stage-2 sign-off
-freeze_commit:        # commit that sets frozen: YES
-source_revision:      # repo HEAD at freeze
-candidate_freeze_hash:        # SHA-256 over §C..§K + the Path-A GATE-A freeze sheet (def recorded at freeze)
-candidate_freeze_hash_def:    # to be fixed once the §E freeze sheet exists
+freeze_date: 2026-06-18
+freeze_commit: TBD   # this commit sets frozen: YES; its SHA is recorded by the immediately following commit (a self-hash here is impossible)
+source_revision: 8bd82b9             # repo HEAD at freeze stamp
+candidate_freeze_hash: ed358569393fed5fc29c0c13286a07cd438db467da6c1bc663a09bb04b1691c9
+candidate_freeze_hash_def: SHA-256 over the decision-11 §8 canonical spec (family forms+ties+g=0, geometry, source/port mhat0=S_port=1, calibration objective incl. the GR anchor constant 54Gc_s^5/(5a^5c^5), §5 extraction-formula strings, mode/branch selection, tolerances+mesh ladder, source_file_sha256); EXCLUDES any target residual / computed D0/R_norm / pass-flag. Stamped by src/stage1_solver/patha_gate_a_freeze.py → frozen/pathA_gate_a/<hash>/.
 parent_action_status: promoted_throat_field
-signed_off_by:        # user
+signed_off_by: user
 ```
 
 **REQUIRED pre-freeze deliverables (must exist before stage 2; math determinations — Claude+Codex; user gates

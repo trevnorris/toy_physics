@@ -1,0 +1,94 @@
+# Decision 12 — Path-A chunk B2 architecture: DERIVE the BdG/Maxwell back-reaction bundle on the frozen background
+
+**Date:** 2026-06-18
+**Status:** DECIDED (user-authorized 2026-06-18). Reading **A** (fully derived) chosen. This is the architecture +
+detailed chunk plan for B2 (the decisive `R_norm(τ)=0` calibration). It is the **resume-here record after /compact.**
+**Mechanism:** Claude+Codex architecture consult (`_scratch/pathA_b2_architecture_consult*`) → user methodology
+call. Builds on: GATE-A freeze `decisions/11` (`frozen: YES`, commit `1703f4c`, hash `ed358569…b1691c9`); B1
+extraction module `decisions/11` §5 → committed `398ba27`.
+
+## The problem B2 surfaced
+The B1 extraction module computes `R_norm` GIVEN the wall channel `{K,M,χ}` PLUS the BdG bundle (`c_j,ϖ_j,B_n`) and
+the Maxwell bundle (`Z_n,N_n`). **Codebase map finding:** no BdG eigensolver and no Maxwell mixed-port/transfer
+solver exists in the Python solver tree. In the earlier M1c effective-closure run those were SUPPLIED as M1b
+packets — and the M1b BdG ran on a *smoke/high-residual* background ("machinery, not final physics") while the
+mixed-Maxwell ports were **posited** (`Ω_U=3.25, Ω_W=4.35, g_U=0.18, g_W=0.13, R=0.08`). So the −10.8
+effective-closure miss was partly resting on posited modes.
+
+## The decision (Reading A — derive, don't inherit)
+**Derive the BdG spectrum and the Maxwell transfer numerically on the Path-A self-consistent background, under the
+frozen conventions.** Rejected: Reading B (inherit/freeze numeric `ϖ/Ω/λ` scales, recompute only profiles/overlaps)
+— hash-compatible and smaller, but materially inherits/posits more of `R_norm`, against the "derive don't fit"
+methodology ([[feedback-calibrate-predict-methodology]]). User directive (2026-06-18): "let's not shy away from the
+hard work… the answers will be found in the weeds of hard work"; "nothing we've done is sacred" (re revising the
+freeze).
+
+### Freeze compatibility (important)
+The GATE-A freeze did **NOT** pin numeric `ϖ/Ω/λ` values or mode profiles — the canonical `freeze_sheet.json`
+serializes only forms/conventions (family, ties, geometry, objective, channel, extraction formulas). **So Reading A
+is compatible with the existing freeze hash `ed3585…` — NO re-freeze of numbers is required.** What is frozen and
+must NOT change: the extraction formulas, family ties, geometry, calibration objective, channel selection,
+tolerances. The §5b WORDING in `decisions/11` (which ambiguously listed `λ/Ω/ϖ` as "frozen conventions") gets a
+dated CLARIFICATION note (markdown only; not in the hashed JSON → hash unaffected): `ϖ_j,Ω` are DERIVED outputs of
+the BdG/Maxwell eigen/transfer solve on the Path-A background; only the coupling NORMALIZATION conventions (`λ`
+definitions) and the extraction formulas are frozen; the Maxwell sector uses the Spike-2 basis-invariant Green
+transfer (direct `{Z_n,N_n}`), NOT the posited U/W ports.
+
+### Maxwell sub-decision (user-approved)
+Use the **Spike-2 basis-invariant Maxwell Green/self-energy transfer** to produce direct `{Z_n,N_n}` — NOT the
+posited U/W mixed-port form (`Ω_U,Ω_W,g_U,g_W`). Removes those inherited posited scales. The B1 extraction already
+supports a `direct_coefficients` path (`patha_extraction.py` `lane_extract`) and a `derived_maxwell_transfer` path
+(`stage_v2_22b`), so direct `{Z_n,N_n}` feed straight in; `D0=K−B0−Z0` is unchanged regardless of how `Z0` was
+obtained.
+
+## Reusable derivation engines (Mathematica chain — re-point at the Path-A background)
+The reusable derivation path is the Mathematica M1b/Spike chain, NOT a Python rebuild (the Python JVP in
+`patha_closed_newton.py:312` / `newton.py:68` is the *stationary* Newton residual — not a drop-in dynamic/symplectic
+BdG eigensolver; the Python Maxwell operator `operators.py:396` is stationary axisymmetric, not the 5-lane
+VSH/open-boundary Green transfer):
+- **BdG:** `software/stage1_solver/mathematica/mt15_02_bdg_wall_derivation.wls` (assembles finite BdG matrix, solves
+  eigensystem, normalizes modes, exports `ϖ_j,φ_j,c_j`) + report `mt15_02_bdg_wall_derivation_report.md`.
+- **Maxwell transfer:** `mt15_03_spike1_vsh_maxwell_operator.wls` (Spike-1: VSH Maxwell operator) →
+  `mt15_04_spike2_transfer_n0.wls` (Spike-2: basis-invariant Green/self-energy transfer → `{Z_n,N_n}`) →
+  `mt15_05_spike3_clean_rnorm.wls` (Spike-3: clean R_norm assembly) + their reports.
+- **Background source:** the Path-A frozen closed solve `patha_closed_newton.py` (state `{ψ,A,R0,μ}` on the frozen
+  `homogeneous_isotropic_hooke_v1` family) + `coupled_branch.py` background export; B1 `patha_extraction.py` for
+  `χ,K,M`.
+- **Constraints:** Mathematica ≤2 concurrent `math -script` seats ([[feedback-mathematica-single-seat]]); dual-engine
+  required wherever MMA can independently verify ([[feedback-dual-engine-required]]); `timeout 600` on every script;
+  GPU off → CPU sparse-direct ([[project-gpu-disabled-machine]]).
+
+## Baseline numbers being REPLACED (provenance — NOT Path-A frozen inputs)
+From M1c effective-closure (`frozen/m1c/834835…/m1c_physical_derived_report.md`): `K=4.060384`, `B0=0.00465942`,
+`Z0=2.5002e-6`, `N0=2.6745e-6`. M1b BdG `ϖ=6.4327,7.6951,10.7526`. Posited ports `Ω_U=3.25,Ω_W=4.35,R=0.08,
+g_U=0.18,g_W=0.13`. **Honest prior** (`K=4.06 ≫ B0+Z0≈0.0047`, ~`1.6e7` cancellation, decision-08/decision-11 §6)
+came from this effective-closure branch, NOT the Path-A harmonic solve. Under Reading A, `B0/Z0/N0` + the spectra
+move with the actual Path-A background → can change both `R_norm` and the naturalness verdict. A miss is handled
+κ_PV-style (decision-11 §4b), never a rescue DOF.
+
+## The B2 chunk plan (sequential, explicit user gate per chunk — [[feedback-sequential-audit-chunks]])
+**B2a — Derive the BdG spectrum.** Adapt `mt15_02` to solve the BdG eigenproblem on the Path-A self-consistent
+`{ψ0,A0,R0}` (frozen harmonic family) → `ϖ_j`, mode profiles `φ_j`, normalized; overlaps with the B1 wall mode `χ`
+→ `c_j`, then `B_n=Σ c_j²/ϖ_j^{2(n+1)}`. Dual-engine (MMA derive + Python cross-check) + transliteration-fidelity
+(clean agent) + adversarial. Output: derived `{c_j,ϖ_j,φ_j,B0,B2,B4}` on the Path-A background.
+**B2b — Derive the Maxwell transfer.** Re-run the Spike-1→Spike-2 chain (`mt15_03`→`mt15_04`, and `mt15_05` for the
+clean assembly) on the Path-A `A0` background → direct `{Z0,Z2,Z4,N0,N2,N4}` via the basis-invariant Green/self-
+energy transfer (no U/W ports). Same audit stack. Output: derived `{Z_n,N_n}`.
+**B2c — Integrate + calibrate.** Feed derived `{K,M,B_n,Z_n,N_n}` (B1 `χ,K,M` + B2a + B2b) → B1 `patha_extraction`
+→ the unique `R_norm(τ)=0` deterministic root-find on the stable-side `D0>0`. NOTE: each τ → re-solve the closed
+background → re-derive the BdG+Maxwell bundle → extract `R_norm(τ)` (the bundle is genuinely τ-dependent through the
+background; confirm the τ-scaling early — `K=τκ̂` is exact, but `{ψ0,A0,R0}` and hence `{B,Z,N}` shift with τ via
+the wall stiffness). §J: closed grid-convergence with frozen forms, calibration-covariance into held-out
+`R_pole/P2/P4`, margin-to-Schur (`D0`) error bars. Report `τ*`, naturalness (`|ln τ*|`, `K/(B0+Z0)` cancellation
+ratio + digit count), held-out `R_pole/P2/P4`. **This LEAVES target-blind.**
+
+## NEXT STEPS (post-/compact, in order)
+1. Add the dated §5b clarification note to `decisions/11` (markdown; hash unaffected — state that explicitly).
+2. Scaffold the **B2a directive** (`directives/pathA_09_chunk_b2a_bdg_derivation.md`): requirements + acceptance for
+   adapting `mt15_02` to the Path-A background; Codex codes/designs the route (Claude reviews). Launch Codex
+   backgrounded (never shell-`timeout` the session).
+3. Review B2a (transliteration-fidelity + adversarial clean agents) → commit → **gate to user before B2b.**
+4. B2b (Maxwell Spike-2 transfer), then B2c (integrate + root-find), each gated.
+Discipline unchanged: Codex codes / Claude reviews; dual-engine + fidelity + adversarial per chunk; commit per
+validated chunk; build target-blind in the held-out sense (don't peek at `R_pole/P2/P4` targets; `R_norm` anchor is
+the calibration target, allowed).

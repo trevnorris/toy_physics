@@ -208,13 +208,20 @@ The map sharpens, rather than changes, the plan:
 
 ## 9. Next steps (resume-here after /compact)
 
-**Immediate — the computational-physics block (Path-A, the shared gate):**
-1. USER `frozen: YES` on `software/stage1_solver/decisions/11_pathA_gate_a_freeze_sheet.md` + compute
-   `candidate_freeze_hash` over its §8 (before any calibration touches the anchor).
-2. Build + validate the §5 field→D0 extraction module (Codex codes / Claude reviews + transliteration-fidelity
-   audit); re-solve the closed system with the frozen `homogeneous_isotropic_hooke_v1` (`g=0`) forms.
-3. The unique `R_norm(τ)=0` root-find (stable-side `D0>0`) — the decisive Path-A test; report `τ*` + naturalness +
-   held-out `R_pole/P2/P4` + §J calibration-covariance / Schur-margin error bars. (task #62)
+**Progress (2026-06-18):** ✅ GATE-A **frozen** (`decisions/11`, commit `1703f4c`, hash `ed3585…`); ✅ **B1**
+§5 extraction module built + validated + committed (`398ba27`). The detailed resume-here record is now
+`software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
+
+**Immediate — B2 (DERIVE the back-reaction bundle, decision-12 "Reading A", user-authorized):** B2 surfaced that the
+BdG spectrum (`c_j,ϖ_j,B_n`) and Maxwell transfer (`Z_n,N_n`) were never solved on the Path-A background — M1c used
+posited M1b modes. So derive them properly (the −10.8 miss partly rested on posited modes). Sequence, each gated:
+1. **B2a** — derive the BdG spectrum on the Path-A self-consistent `{ψ0,A0,R0}` (adapt Mathematica `mt15_02`) →
+   `ϖ_j,φ_j,c_j,B_n`. (task #68)
+2. **B2b** — derive the Maxwell transfer via the **Spike-2 basis-invariant Green/self-energy** route
+   (`mt15_03→04→05`), NOT posited U/W ports → direct `{Z_n,N_n}`. (task #69)
+3. **B2c** — integrate derived `{K,M,B_n,Z_n,N_n}` → the unique `R_norm(τ)=0` root-find (stable-side `D0>0`) + §J
+   error bars; report `τ*` + naturalness + held-out `R_pole/P2/P4`. **Leaves target-blind.** (task #70)
+Freeze stays valid (it froze forms/conventions, not numeric spectra); only a dated §5b clarification was added.
 
 **If it misses:** κ_PV discipline — diagnose + **derive** the missing physics, never add a rescue DOF. Richest
 candidates from this map: the shedding *rate*, the translation↔throat bridge, pair production.

@@ -163,6 +163,18 @@ incl. `D2/D4/P2/P4/R_pole`). `D0 = K − B0 − Z0` reconciles with pre-reg §F 
 mode-selection + normalization, the port/kernel conventions (`λ_B, λ_U, λ_W, λ_R, Ω_U, Ω_W, ϖ_j, …`), the
 extraction formulas, constants/units, optimizer/tolerances.
 
+> **CLARIFICATION (2026-06-18, decision-12 — hash UNAFFECTED; this markdown is not in the canonical
+> `freeze_sheet.json`).** The phrase "port/kernel conventions" above was ambiguous. Per the B2 architecture
+> decision ([[12_pathA_b2_derive_backreaction_bundle]], user-authorized): the BdG/Maxwell **spectra are DERIVED
+> outputs** of the eigen/transfer solve on the Path-A self-consistent background (`ϖ_j, Ω, φ_j, c_j, B_n, Z_n,
+> N_n` are computed, NOT inherited/posited) — "Reading A." What is actually frozen is only: the coupling
+> **normalization conventions** (the definitions `c_j=λ_B I_{η,φ_j}`, etc.), the channel/mode selection, and the
+> extraction formulas — none of which carries a numeric `ϖ/Ω/λ` value (verified: `freeze_sheet.json` contains no
+> numeric spectral fields). The **Maxwell sector uses the Spike-2 basis-invariant Green/self-energy transfer**
+> (direct `{Z_n,N_n}`), NOT the posited U/W mixed-port scales (`Ω_U=3.25, Ω_W=4.35, g_U, g_W` from M1b were
+> POSITED and are NOT used). The frozen GATE-A hash `ed358569…b1691c9` remains valid; no re-freeze of numbers is
+> required.
+
 ## 6. Mechanism statement + honest prior (decision-08)
 Path A moves `R_norm` **only** through the denominator `D0 = K − B0 − Z0` / the self-consistent background — never
 through a new numerator (reciprocity ⇒ `N0` forward-determined). For the harmonic family the operative levers are

@@ -375,11 +375,14 @@ class BranchSmokeConfig:
     localization_width: float = 0.75
     localization_floor: float = 0.8
     localization_amplitude: float = 0.45
+    geometry_profile: str = "exponential_decay"
     r_mouth: float = 1.2
     r_exit: float = 0.9
     geometry_decay_length: float = 0.8
     radial_wall_strength: float = 0.65
     axial_trap_strength: float = 0.12
+    matter_mouth_boundary: str = "neumann"
+    a0_mouth_boundary: str = "dirichlet"
     matter_exit_impedance_alpha: float = 0.25
     a0_radial_impedance_alpha: float = 0.5
     a0_exit_impedance_alpha: float = 0.4

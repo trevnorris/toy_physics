@@ -1,0 +1,104 @@
+{
+  "branch_id": "m1c_decision_07_physical_frozen_direct_derived",
+  "diagnostics": {
+    "bdg_profiles": [
+      {
+        "name": "m1c_prep_imported_background_bdg_mode_1",
+        "profile_norm": 0.9999999999999998
+      },
+      {
+        "name": "m1c_prep_imported_background_bdg_mode_2",
+        "profile_norm": 1.0
+      },
+      {
+        "name": "m1c_prep_imported_background_bdg_mode_3",
+        "profile_norm": 0.9999999999999997
+      }
+    ],
+    "coefficient_path": "direct_derived_coefficients",
+    "direct_derived_coefficients": {
+      "B0": 0.004659423689433822,
+      "B2": 0.000515232316768914,
+      "B4": 5.749912947089773e-05,
+      "K": 4.060384354904323,
+      "M": 0.5258858064705113,
+      "N0": 2.674541095707681e-06,
+      "N2": -1.5324096460422127e-06,
+      "N4": 5.228908789315485e-07,
+      "Z0": 2.5002239096227484e-06,
+      "Z2": -1.7477512766478496e-06,
+      "Z4": 6.714367676645645e-07
+    },
+    "solver_metadata": {
+      "coefficient_family": "m1c_physical_decision_07_frozen_bdg_wall_plus_spike2_direct_transfer_v1",
+      "exporter": "mt15_06_m1c_prep_crossengine.wls",
+      "mesh_points": 129,
+      "source_commit": "unavailable"
+    },
+    "wall_norm": 0.9999999999999996
+  },
+  "error_count": 1,
+  "issues": [
+    {
+      "message": "target residual/output fields are forbidden in frozen solver exports",
+      "path": "derived_maxwell_transfer.R_norm",
+      "severity": "error"
+    }
+  ],
+  "packet_hash": "29fb4b249768e6c580b74758408ec9c8606e1bc8868b96f32b7f12e1ecfc3f07",
+  "schema": "stage_v2_22b_validation_report/v1",
+  "symbolic_audit": {
+    "checks_failed": 0,
+    "checks_passed": 9,
+    "checks_total": 9,
+    "details": [
+      {
+        "name": "mouth_Dirichlet_q0",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "bottom_Neumann_halfwave",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "open_impedance_robin_to_neumann",
+        "note": "T*q_wL",
+        "pass": true
+      },
+      {
+        "name": "chi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "phi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "DN_overlap",
+        "note": "8/(3*pi)",
+        "pass": true
+      },
+      {
+        "name": "axisym_trace_unchanged",
+        "note": "x0",
+        "pass": true
+      },
+      {
+        "name": "axisym_b_equals_3a",
+        "note": "a=eps*x1/4, b=3*eps*x1/4",
+        "pass": true
+      },
+      {
+        "name": "N0_perfect_square_over_Delta2",
+        "note": "(OU**2*gW + R*gU)**2/(OU**2*OW**2 - R**2)**2",
+        "pass": true
+      }
+    ]
+  },
+  "validation_pass": false,
+  "warning_count": 0
+}

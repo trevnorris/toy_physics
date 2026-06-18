@@ -122,6 +122,13 @@ def localization_weight_torch(w: torch.Tensor, cfg: BranchSmokeConfig | CoupledB
 
 
 def geometry_radius_torch(w: torch.Tensor, cfg: BranchSmokeConfig | CoupledBranchMMSConfig) -> torch.Tensor:
+    if getattr(cfg, "geometry_profile", "exponential_decay") == "cubic_smoothstep":
+        length = cfg.w_max - cfg.w_min
+        if length <= 0.0:
+            raise ValueError("w_max must exceed w_min for cubic_smoothstep geometry")
+        x = torch.clamp((w - cfg.w_min) / length, min=0.0, max=1.0)
+        smooth = 3.0 * x**2 - 2.0 * x**3
+        return cfg.r_mouth + (cfg.r_exit - cfg.r_mouth) * smooth
     s = w - cfg.w_min
     return cfg.r_exit + (cfg.r_mouth - cfg.r_exit) * torch.exp(-s / cfg.geometry_decay_length)
 
@@ -173,9 +180,21 @@ def boundary_sponge_profile_torch(
 
 
 def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
+    if cfg.matter_mouth_boundary == "dirichlet":
+        matter_w_lower = BoundaryCondition.dirichlet(0.0)
+    elif cfg.matter_mouth_boundary == "neumann":
+        matter_w_lower = BoundaryCondition.neumann(0.0)
+    else:
+        raise ValueError(f"Unsupported matter_mouth_boundary {cfg.matter_mouth_boundary!r}")
+    if cfg.a0_mouth_boundary == "dirichlet":
+        a0_w_lower = BoundaryCondition.dirichlet(0.0)
+    elif cfg.a0_mouth_boundary == "neumann":
+        a0_w_lower = BoundaryCondition.neumann(0.0)
+    else:
+        raise ValueError(f"Unsupported a0_mouth_boundary {cfg.a0_mouth_boundary!r}")
     return CoupledBoundarySet(
         matter_radial_outer=BoundaryCondition.dirichlet(0.0),
-        matter_w_lower=BoundaryCondition.neumann(0.0),
+        matter_w_lower=matter_w_lower,
         matter_w_upper=BoundaryCondition.robin(
             alpha=cfg.matter_exit_impedance_alpha,
             beta=1.0,
@@ -186,7 +205,7 @@ def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
             beta=1.0,
             gamma=0.0,
         ),
-        a0_w_lower=BoundaryCondition.dirichlet(0.0),
+        a0_w_lower=a0_w_lower,
         a0_w_upper=BoundaryCondition.robin(
             alpha=cfg.a0_exit_impedance_alpha,
             beta=1.0,

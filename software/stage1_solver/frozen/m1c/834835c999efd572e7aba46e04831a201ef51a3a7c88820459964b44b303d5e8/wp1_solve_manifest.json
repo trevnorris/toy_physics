@@ -1,0 +1,15 @@
+{
+  "background_paths": [
+    "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json",
+    "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json",
+    "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json"
+  ],
+  "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+  "freeze_sheet_path": "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/freeze_sheet.json",
+  "primary_background_content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+  "primary_background_path": "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json",
+  "primary_residual_linf": 4.5892669664482355e-09,
+  "schema": "m1c_physical_wp1_solve_manifest/v1",
+  "wp1_background_resolution_hash": "782100ff570896f7db8f457436f0b3dd4f9a9b255a9db08b563750f43959a451",
+  "wp1_background_resolution_path": "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_resolution.json"
+}

@@ -1,0 +1,234 @@
+{
+  "estimates": [
+    {
+      "finest_error_estimate": 7.62210984853879e-11,
+      "finest_relative_error_estimate": 7.622109841980532e-11,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "density_mass",
+      "observed_order": 2.7146013064182952,
+      "values": [
+        1.000000001221824,
+        1.0000000009506353,
+        1.0000000008604255
+      ]
+    },
+    {
+      "finest_error_estimate": 0.000891184457256973,
+      "finest_relative_error_estimate": 0.0036103718898524016,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "peak_density",
+      "observed_order": 1.7420182177509325,
+      "values": [
+        0.24624486917080388,
+        0.24741988919451927,
+        0.24684007200527094
+      ]
+    },
+    {
+      "finest_error_estimate": 1.1008825171926127e-06,
+      "finest_relative_error_estimate": 0.9058574622715068,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "min_density",
+      "observed_order": 3.723221224106264,
+      "values": [
+        1.2885117727488102e-05,
+        3.327446346485833e-06,
+        1.2152933138421863e-06
+      ]
+    },
+    {
+      "finest_error_estimate": 6.848640272173876e-06,
+      "finest_relative_error_estimate": 6.844286591900719e-06,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "raw_field_l2_norm",
+      "observed_order": 2.4768733278957087,
+      "values": [
+        1.0006626505331662,
+        1.0006432213505447,
+        1.0006361043206913
+      ]
+    },
+    {
+      "finest_error_estimate": 0.00019432649398763092,
+      "finest_relative_error_estimate": 0.005447333168778811,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "scalar_gauge_l2",
+      "observed_order": 2.4516288694081365,
+      "values": [
+        0.03641069829373829,
+        0.035872768002479245,
+        0.0356736935242746
+      ]
+    },
+    {
+      "finest_error_estimate": 0.0,
+      "finest_relative_error_estimate": 0.0,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "spatial_gauge_l2",
+      "observed_order": null,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "finest_error_estimate": 0.0,
+      "finest_relative_error_estimate": 0.0,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "spatial_current_l2",
+      "observed_order": null,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "finest_error_estimate": 0.014879918249860902,
+      "finest_relative_error_estimate": 0.007837346828284422,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "field_energy_like_integral",
+      "observed_order": -4.654640953366063,
+      "values": [
+        1.8814573232202956,
+        1.8837113494174502,
+        1.8985912676673111
+      ]
+    },
+    {
+      "finest_error_estimate": 0.010999897321809426,
+      "finest_relative_error_estimate": 0.005388678019983822,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "chemical_potential",
+      "observed_order": 2.071924682569407,
+      "values": [
+        2.0115670276966093,
+        2.032333616586751,
+        2.04129793634292
+      ]
+    },
+    {
+      "finest_error_estimate": 3.551106972628043e-10,
+      "finest_relative_error_estimate": 0.07737852250893013,
+      "h_values": [
+        0.4625,
+        0.30833333333333335,
+        0.23125
+      ],
+      "observable": "final_residual_linf",
+      "observed_order": 2.037579944772327,
+      "values": [
+        5.5189885994622045e-09,
+        4.8723263201821965e-09,
+        4.5892669664482355e-09
+      ]
+    }
+  ],
+  "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+  "governing_background_resolution_relative_floor": 0.9058574622715068,
+  "governing_observable": "min_density",
+  "levels": [
+    {
+      "content_hash": "5911d3e33b8e0ff4d2840d8d81b21c09a468a1226c348038baa150d0eec8f191",
+      "grid": [
+        6,
+        4
+      ],
+      "h": 0.4625,
+      "residual_linf": 5.5189885994622045e-09,
+      "surrogate_values": {
+        "chemical_potential": 2.0115670276966093,
+        "density_mass": 1.000000001221824,
+        "field_energy_like_integral": 1.8814573232202956,
+        "final_residual_linf": 5.5189885994622045e-09,
+        "min_density": 1.2885117727488102e-05,
+        "peak_density": 0.24624486917080388,
+        "raw_field_l2_norm": 1.0006626505331662,
+        "scalar_gauge_l2": 0.03641069829373829,
+        "spatial_current_l2": 0.0,
+        "spatial_gauge_l2": 0.0
+      }
+    },
+    {
+      "content_hash": "06ad12b5da567b916508c682ccbd15a70983bdf1d1529cf61c598fbc0cd480e7",
+      "grid": [
+        8,
+        6
+      ],
+      "h": 0.30833333333333335,
+      "residual_linf": 4.8723263201821965e-09,
+      "surrogate_values": {
+        "chemical_potential": 2.032333616586751,
+        "density_mass": 1.0000000009506353,
+        "field_energy_like_integral": 1.8837113494174502,
+        "final_residual_linf": 4.8723263201821965e-09,
+        "min_density": 3.327446346485833e-06,
+        "peak_density": 0.24741988919451927,
+        "raw_field_l2_norm": 1.0006432213505447,
+        "scalar_gauge_l2": 0.035872768002479245,
+        "spatial_current_l2": 0.0,
+        "spatial_gauge_l2": 0.0
+      }
+    },
+    {
+      "content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+      "grid": [
+        10,
+        8
+      ],
+      "h": 0.23125,
+      "residual_linf": 4.5892669664482355e-09,
+      "surrogate_values": {
+        "chemical_potential": 2.04129793634292,
+        "density_mass": 1.0000000008604255,
+        "field_energy_like_integral": 1.8985912676673111,
+        "final_residual_linf": 4.5892669664482355e-09,
+        "min_density": 1.2152933138421863e-06,
+        "peak_density": 0.24684007200527094,
+        "raw_field_l2_norm": 1.0006361043206913,
+        "scalar_gauge_l2": 0.0356736935242746,
+        "spatial_current_l2": 0.0,
+        "spatial_gauge_l2": 0.0
+      }
+    }
+  ],
+  "schema": "m1c_wp1_background_resolution_estimate/v1",
+  "scope": "target-blind WP1 raw-field surrogate background-resolution estimate; not a model-form uncertainty"
+}

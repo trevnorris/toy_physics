@@ -1,0 +1,420 @@
+{
+  "branch_identity": {
+    "claim_scope": "pre_registered_effective_closure_branch",
+    "decision_record": "software/stage1_solver/decisions/07_gate_a_freeze_sheet.md",
+    "firewalled_simulation_tree": "not_touched",
+    "gate": "GATE-A GO",
+    "m1c_physical_frozen_run": true,
+    "name": "m1c_decision_07_structured_physical_falsification_run",
+    "no_post_residual_refit": true,
+    "physical_export_permitted_guard": "not_touched",
+    "target_blind": true
+  },
+  "content_hash": "11da2d1d5e98d8f7bb3bb3c0496f6d81dce02a4ee6e51da2a82f9e5e5563f300",
+  "derived_coefficients": {
+    "B0": 0.004659423689433822,
+    "B2": 0.000515232316768914,
+    "B4": 5.749912947089773e-05,
+    "K": 4.060384354904323,
+    "M": 0.5258858064705113,
+    "N0": 2.674541095707681e-06,
+    "N2": -1.5324096460422127e-06,
+    "N4": 5.228908789315485e-07,
+    "Z0": 2.5002239096227484e-06,
+    "Z2": -1.7477512766478496e-06,
+    "Z4": 6.714367676645645e-07
+  },
+  "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+  "gates": {
+    "forbidden_R_norm_rejected": true,
+    "forbidden_issues": [
+      {
+        "message": "target residual/output fields are forbidden in frozen solver exports",
+        "path": "derived_maxwell_transfer.R_norm",
+        "severity": "error"
+      }
+    ],
+    "open_gate_pass": true,
+    "stability_gate_pass": true,
+    "target_packet_pass": false,
+    "v2_mechanical_pipeline_pass": true
+  },
+  "hashes": {
+    "diagnostics_content_hash": "837da5268028070c5e25e6de3d235389a64d836bc52d1f12cd244c1b3adc4bd8",
+    "diagnostics_file_sha256": "c237b837baced9011ea9b8fa7ecca36937d59dc098f3fc6c9c8e32b99f02004a",
+    "freeze_sheet_sha256": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+    "observable_file_sha256": "05dfc6e8c8606e30f6df049f72f1fa657e9f8382eac6d499429d9aeed8ef90f5",
+    "observable_packet_hash": "d45da75108eef2c01477034937186a551bd68bee99790d90ca5767f9dbb36544",
+    "packet_content_hash": "e25b699964ea27bbd0c294d354f9ea03307886d405dbaaedf72291fd1b58766d",
+    "packet_file_sha256": "86802e51110bba38b16cbde6c0008440ecda873f4235fe1b14d5f2840642ab13",
+    "tolerance_budget_hash": "49f644e607b486b6e59f6dea428f40f644dbcb925a6c386ac46f0c9dbc468fc4"
+  },
+  "physical_observables": {
+    "D0": 4.055722430990979,
+    "N_Q": 6.106006963264946e-08,
+    "P0": 6.594487520326141e-07,
+    "P0_target": 10.8,
+    "P0_transfer": 6.594487520326141e-07,
+    "P2": -2.0665687783479044e-07,
+    "P4": 6.419188997684018e-08,
+    "R_norm": -10.799999340551249,
+    "R_pole": -0.831052717139304,
+    "chi_Q": 16377315.093418919,
+    "chi_Q_minus_1": 16377314.093418919
+  },
+  "schema": "m1c_physical_frozen_summary/v1",
+  "section_J_numerical_error_budget": {
+    "absolute_R_norm_budget_max": 5.973665730143759e-07,
+    "absolute_R_norm_budget_rss": 6.027159950692513e-07,
+    "bdg_amp_residual_absolute": 3.502861622131734e-15,
+    "bdg_eigen_residual_absolute": 1.9046513612373904e-13,
+    "bdg_phase_residual_absolute": 3.58903288316933e-15,
+    "combined_relative_max": 0.9058574622715068,
+    "combined_relative_rss": 0.9139694225085788,
+    "components_relative": {
+      "background_resolution": 0.9058574622715068,
+      "boundary_hardcap_contrast": 3.9474174512047575e-07,
+      "continuity": 0.11558198018037665,
+      "interp_method_N0_budget": 0.015591236611409905,
+      "transfer_mesh_N0_successive": 0.03369630266443602,
+      "transfer_mesh_Z0_successive": 0.004964041981260678
+    },
+    "green_residual_absolute": 1.3508640790632167e-15,
+    "interp_method_detail": {
+      "budget_uses_max": 0.015591236611409905,
+      "m1c_prep_carried_N0_relative_floor": 0.015591236611409905,
+      "physical_order2_vs_order1_N0_relative": 0.0003028615904797882
+    },
+    "resolution_scope": "modest CPU run; tighter background and transfer ladders are deferred to GPU/cluster.",
+    "scope": "NUMERICAL ONLY. Excludes free_choice/posit uncertainty and model-form uncertainty; conditional on the frozen target-blind decision-07 effective-closure posits.",
+    "solver_newton_linf_absolute": 4.5892669664482355e-09
+  },
+  "tracked_artifact_dir": "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+  "v2_tolerance_budget": {
+    "calibrated_control_budget": {
+      "absolute_residuals": {
+        "R_P2": 0.0,
+        "R_P4": 1.4210854715202004e-14,
+        "R_norm": 0.0,
+        "R_pole": 0.0,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": 0.0
+      },
+      "branch": "calibrated_direct_coefficient_fixture",
+      "open_gate_pass": true,
+      "pass_flags": {
+        "constant_prefactor_P2_pass": true,
+        "constant_prefactor_P4_pass": true,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": true,
+        "one_pole_pass": true,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": true
+      },
+      "scaled_residuals": {
+        "D0_anisotropy_norm_sq_over_tol": 0.0,
+        "P0_anisotropy_norm_sq_over_tol": 0.0,
+        "R_P2_over_tol": 0.0,
+        "R_P4_over_tol": 1.4210854715202002e-05,
+        "R_norm_over_P0_target": 0.0,
+        "R_norm_over_tol": 0.0,
+        "R_pole_over_tol": 0.0,
+        "R_tail_over_tol": 0.0
+      },
+      "stability_gate_pass": true,
+      "target_packet_pass": true,
+      "tolerance": 1e-09
+    },
+    "extraction_residual_tol": 1e-09,
+    "interpretation": {
+      "branch_target_packet_pass": "Whether the actual tested solver branch hits the one-pole, normalization, constant-prefactor, and tail residuals within extraction_residual_tol.",
+      "mechanical_pipeline_pass": "Validation, conversion, extraction, open-throat gates, stability gates, calibrated-control target pass, and invalid hard-cap rejection all passed.",
+      "target_failure_is_not_pipeline_failure": "A stable open branch may legitimately fail target residuals; that is the point of the extraction fixture."
+    },
+    "schema": "stage_v2_22c_tolerance_budget/v1",
+    "smoke_branch_budget": {
+      "absolute_residuals": {
+        "R_P2": -2.0665687783479044e-07,
+        "R_P4": 6.419188997684018e-08,
+        "R_norm": -10.799999340551249,
+        "R_pole": -0.831052717139304,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": -0.39999997557597217
+      },
+      "branch": "m1c_decision_07_physical_frozen_direct_derived",
+      "open_gate_pass": true,
+      "pass_flags": {
+        "constant_prefactor_P2_pass": false,
+        "constant_prefactor_P4_pass": false,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": false,
+        "one_pole_pass": false,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": false
+      },
+      "scaled_residuals": {
+        "D0_anisotropy_norm_sq_over_tol": 0.0,
+        "P0_anisotropy_norm_sq_over_tol": 0.0,
+        "R_P2_over_tol": 206.65687783479044,
+        "R_P4_over_tol": 64.19188997684017,
+        "R_norm_over_P0_target": 0.9999999389399304,
+        "R_norm_over_tol": 10799999340.551249,
+        "R_pole_over_tol": 831052717.1393039,
+        "R_tail_over_tol": 0.0
+      },
+      "stability_gate_pass": true,
+      "target_packet_pass": false,
+      "tolerance": 1e-09
+    },
+    "validator_Delta_tol": 1e-12,
+    "validator_profile_norm_tol": 0.005
+  },
+  "wp1": {
+    "background_content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+    "background_resolution": {
+      "estimates": [
+        {
+          "finest_error_estimate": 7.62210984853879e-11,
+          "finest_relative_error_estimate": 7.622109841980532e-11,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "density_mass",
+          "observed_order": 2.7146013064182952,
+          "values": [
+            1.000000001221824,
+            1.0000000009506353,
+            1.0000000008604255
+          ]
+        },
+        {
+          "finest_error_estimate": 0.000891184457256973,
+          "finest_relative_error_estimate": 0.0036103718898524016,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "peak_density",
+          "observed_order": 1.7420182177509325,
+          "values": [
+            0.24624486917080388,
+            0.24741988919451927,
+            0.24684007200527094
+          ]
+        },
+        {
+          "finest_error_estimate": 1.1008825171926127e-06,
+          "finest_relative_error_estimate": 0.9058574622715068,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "min_density",
+          "observed_order": 3.723221224106264,
+          "values": [
+            1.2885117727488102e-05,
+            3.327446346485833e-06,
+            1.2152933138421863e-06
+          ]
+        },
+        {
+          "finest_error_estimate": 6.848640272173876e-06,
+          "finest_relative_error_estimate": 6.844286591900719e-06,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "raw_field_l2_norm",
+          "observed_order": 2.4768733278957087,
+          "values": [
+            1.0006626505331662,
+            1.0006432213505447,
+            1.0006361043206913
+          ]
+        },
+        {
+          "finest_error_estimate": 0.00019432649398763092,
+          "finest_relative_error_estimate": 0.005447333168778811,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "scalar_gauge_l2",
+          "observed_order": 2.4516288694081365,
+          "values": [
+            0.03641069829373829,
+            0.035872768002479245,
+            0.0356736935242746
+          ]
+        },
+        {
+          "finest_error_estimate": 0.0,
+          "finest_relative_error_estimate": 0.0,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "spatial_gauge_l2",
+          "observed_order": null,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "finest_error_estimate": 0.0,
+          "finest_relative_error_estimate": 0.0,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "spatial_current_l2",
+          "observed_order": null,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "finest_error_estimate": 0.014879918249860902,
+          "finest_relative_error_estimate": 0.007837346828284422,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "field_energy_like_integral",
+          "observed_order": -4.654640953366063,
+          "values": [
+            1.8814573232202956,
+            1.8837113494174502,
+            1.8985912676673111
+          ]
+        },
+        {
+          "finest_error_estimate": 0.010999897321809426,
+          "finest_relative_error_estimate": 0.005388678019983822,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "chemical_potential",
+          "observed_order": 2.071924682569407,
+          "values": [
+            2.0115670276966093,
+            2.032333616586751,
+            2.04129793634292
+          ]
+        },
+        {
+          "finest_error_estimate": 3.551106972628043e-10,
+          "finest_relative_error_estimate": 0.07737852250893013,
+          "h_values": [
+            0.4625,
+            0.30833333333333335,
+            0.23125
+          ],
+          "observable": "final_residual_linf",
+          "observed_order": 2.037579944772327,
+          "values": [
+            5.5189885994622045e-09,
+            4.8723263201821965e-09,
+            4.5892669664482355e-09
+          ]
+        }
+      ],
+      "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+      "governing_background_resolution_relative_floor": 0.9058574622715068,
+      "governing_observable": "min_density",
+      "levels": [
+        {
+          "content_hash": "5911d3e33b8e0ff4d2840d8d81b21c09a468a1226c348038baa150d0eec8f191",
+          "grid": [
+            6,
+            4
+          ],
+          "h": 0.4625,
+          "residual_linf": 5.5189885994622045e-09,
+          "surrogate_values": {
+            "chemical_potential": 2.0115670276966093,
+            "density_mass": 1.000000001221824,
+            "field_energy_like_integral": 1.8814573232202956,
+            "final_residual_linf": 5.5189885994622045e-09,
+            "min_density": 1.2885117727488102e-05,
+            "peak_density": 0.24624486917080388,
+            "raw_field_l2_norm": 1.0006626505331662,
+            "scalar_gauge_l2": 0.03641069829373829,
+            "spatial_current_l2": 0.0,
+            "spatial_gauge_l2": 0.0
+          }
+        },
+        {
+          "content_hash": "06ad12b5da567b916508c682ccbd15a70983bdf1d1529cf61c598fbc0cd480e7",
+          "grid": [
+            8,
+            6
+          ],
+          "h": 0.30833333333333335,
+          "residual_linf": 4.8723263201821965e-09,
+          "surrogate_values": {
+            "chemical_potential": 2.032333616586751,
+            "density_mass": 1.0000000009506353,
+            "field_energy_like_integral": 1.8837113494174502,
+            "final_residual_linf": 4.8723263201821965e-09,
+            "min_density": 3.327446346485833e-06,
+            "peak_density": 0.24741988919451927,
+            "raw_field_l2_norm": 1.0006432213505447,
+            "scalar_gauge_l2": 0.035872768002479245,
+            "spatial_current_l2": 0.0,
+            "spatial_gauge_l2": 0.0
+          }
+        },
+        {
+          "content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+          "grid": [
+            10,
+            8
+          ],
+          "h": 0.23125,
+          "residual_linf": 4.5892669664482355e-09,
+          "surrogate_values": {
+            "chemical_potential": 2.04129793634292,
+            "density_mass": 1.0000000008604255,
+            "field_energy_like_integral": 1.8985912676673111,
+            "final_residual_linf": 4.5892669664482355e-09,
+            "min_density": 1.2152933138421863e-06,
+            "peak_density": 0.24684007200527094,
+            "raw_field_l2_norm": 1.0006361043206913,
+            "scalar_gauge_l2": 0.0356736935242746,
+            "spatial_current_l2": 0.0,
+            "spatial_gauge_l2": 0.0
+          }
+        }
+      ],
+      "schema": "m1c_wp1_background_resolution_estimate/v1",
+      "scope": "target-blind WP1 raw-field surrogate background-resolution estimate; not a model-form uncertainty"
+    },
+    "primary_grid": [
+      10,
+      8
+    ],
+    "primary_residual_linf": 4.5892669664482355e-09
+  }
+}

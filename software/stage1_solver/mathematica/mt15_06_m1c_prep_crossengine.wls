@@ -28,9 +28,33 @@ backgroundPath =
     If[Length[$ScriptCommandLine] >= 2, $ScriptCommandLine[[2]], defaultBackgroundPath]
   ];
 
-packetPath = FileNameJoin[{runDir, "mt15_06_v2_22b_m1c_prep_direct_derived_packet.json"}];
-diagnosticsPath = FileNameJoin[{runDir, "mt15_06_m1c_prep_crossengine_diagnostics.json"}];
-reportPath = FileNameJoin[{scriptDir, "mt15_06_m1c_prep_crossengine_report.md"}];
+physicalFreezePath =
+  If[StringQ[Environment["M1C_PHYSICAL_FREEZE_JSON"]] && StringLength[Environment["M1C_PHYSICAL_FREEZE_JSON"]] > 0,
+    Environment["M1C_PHYSICAL_FREEZE_JSON"],
+    ""
+  ];
+physicalMode = StringLength[physicalFreezePath] > 0;
+physicalOutputDir =
+  If[StringQ[Environment["M1C_FROZEN_OUTPUT_DIR"]] && StringLength[Environment["M1C_FROZEN_OUTPUT_DIR"]] > 0,
+    Environment["M1C_FROZEN_OUTPUT_DIR"],
+    runDir
+  ];
+If[physicalMode && ! DirectoryQ[physicalOutputDir],
+  CreateDirectory[physicalOutputDir, CreateIntermediateDirectories -> True]
+];
+
+packetPath = If[physicalMode,
+  FileNameJoin[{physicalOutputDir, "m1c_v2_22b_physical_frozen_packet.json"}],
+  FileNameJoin[{runDir, "mt15_06_v2_22b_m1c_prep_direct_derived_packet.json"}]
+];
+diagnosticsPath = If[physicalMode,
+  FileNameJoin[{physicalOutputDir, "m1c_physical_derived_diagnostics.json"}],
+  FileNameJoin[{runDir, "mt15_06_m1c_prep_crossengine_diagnostics.json"}]
+];
+reportPath = If[physicalMode,
+  FileNameJoin[{physicalOutputDir, "m1c_physical_derived_report.md"}],
+  FileNameJoin[{scriptDir, "mt15_06_m1c_prep_crossengine_report.md"}]
+];
 
 ClearAll[
   finiteQ, toReal, toJsonNumber, toJsonVector, toJsonMatrix, keySortRecursive,
@@ -101,9 +125,29 @@ If[background === $Failed || ! AssociationQ[background],
   Print["ERROR: failed to import background JSON: ", backgroundPath];
   Exit[3]
 ];
-If[background["schema"] =!= "stage1_m1c_prep_wp1_background/v1",
+If[! MemberQ[{"stage1_m1c_prep_wp1_background/v1", "stage1_m1c_physical_wp1_background/v1"}, background["schema"]],
   Print["ERROR: unexpected background schema: ", background["schema"]];
   Exit[3]
+];
+physicalFreeze = <||>;
+If[physicalMode,
+  If[! FileExistsQ[physicalFreezePath],
+    Print["ERROR: physical freeze JSON not found: ", physicalFreezePath];
+    Exit[3]
+  ];
+  physicalFreeze = Quiet[Check[Import[physicalFreezePath, "RawJSON"], $Failed]];
+  If[physicalFreeze === $Failed || ! AssociationQ[physicalFreeze],
+    Print["ERROR: failed to import physical freeze JSON: ", physicalFreezePath];
+    Exit[3]
+  ];
+  If[! TrueQ[background["m1c_physical_frozen_run"]],
+    Print["ERROR: physical mode requires a physical frozen WP1 background"];
+    Exit[3]
+  ];
+  If[background["freeze_hash"] =!= background["freeze_sheet_sha256"],
+    Print["ERROR: physical background freeze hash fields disagree"];
+    Exit[3]
+  ];
 ];
 
 cfg = background["config"]["branch"];
@@ -143,13 +187,15 @@ axialTrapStrength = toReal[cfg["axial_trap_strength"]];
 
 ell = 2;
 Lharm = ell (ell + 1);
-GConst = 1.0;
-csConst = 1.0;
-cConst = 2.5;
-mhat0Const = 0.85;
-SPortConst = 1.2;
-thetaTailConst = 1.0;
+GConst = If[physicalMode, toReal[physicalFreeze["constants"]["G"]], 1.0];
+csConst = If[physicalMode, toReal[physicalFreeze["constants"]["c_s"]], 1.0];
+cConst = If[physicalMode, toReal[physicalFreeze["constants"]["c"]], 2.5];
+aConst = If[physicalMode, toReal[physicalFreeze["geometry"]["a"]], toReal[First[r0ValuesSrc]]];
+mhat0Const = If[physicalMode, toReal[physicalFreeze["constants"]["mhat0"]], 0.85];
+SPortConst = If[physicalMode, toReal[physicalFreeze["constants"]["S_port"]], 1.2];
+thetaTailConst = If[physicalMode, toReal[physicalFreeze["constants"]["theta_tail"]], 1.0];
 phaseRegularizer = 0.05;
+rExitConst = If[physicalMode, toReal[physicalFreeze["geometry"]["R_exit"]], toReal[Last[r0ValuesSrc]]];
 
 smootherStep[x_] := 3 x^2 - 2 x^3;
 trapz[xs_List, ys_List] /; Length[xs] == Length[ys] && Length[xs] >= 2 :=
@@ -233,7 +279,12 @@ interp2Order[m_List, r_?NumericQ, w_?NumericQ, order_Integer] := Module[
   N[interp1Order[wNodes, valuesAtW, w, order], 17]
 ];
 
-r0Geometry[w_] := interp1[wCentersSrc, r0ValuesSrc, w];
+r0Geometry[w_] := If[physicalMode,
+  Module[{x = Clip[(w - wMin)/wLength, {0.0, 1.0}]},
+    aConst + (rExitConst - aConst) (3.0 x^2 - 2.0 x^3)
+  ],
+  interp1[wCentersSrc, r0ValuesSrc, w]
+];
 zWeight[w_] := interp1[wCentersSrc, zValuesSrc, w];
 
 overlapLength[a1_, a2_, b1_, b2_] := Max[0.0, Min[a2, b2] - Max[a1, b1]];
@@ -319,10 +370,10 @@ buildWallMode[] := Module[
   xGrid = (points - wMin)/wLength;
   radiusValues = N[r0Geometry /@ points, 17];
   weightValues = N[radiusValues^2, 17];
-  muEta = N[1.0 + 0.08 Cos[Pi xGrid]^2, 17];
-  Tw = N[1.1 + 0.10 Sin[Pi xGrid], 17];
-  TOmega = N[0.35 + 0.03 Cos[2 Pi xGrid], 17];
-  KEta = N[0.45 + 0.08 256 xGrid^4 (1 - xGrid)^4, 17];
+  muEta = If[physicalMode, ConstantArray[1.0, meshPoints], N[1.0 + 0.08 Cos[Pi xGrid]^2, 17]];
+  Tw = If[physicalMode, ConstantArray[1.0, meshPoints], N[1.1 + 0.10 Sin[Pi xGrid], 17]];
+  TOmega = If[physicalMode, ConstantArray[1.0, meshPoints], N[0.35 + 0.03 Cos[2 Pi xGrid], 17]];
+  KEta = If[physicalMode, ConstantArray[1.0, meshPoints], N[0.45 + 0.08 256 xGrid^4 (1 - xGrid)^4, 17]];
   Vl = N[KEta + Lharm TOmega, 17];
   YL0 = 0.0;
   basisValues = Table[N[xGrid^p, 17], {p, 1, basisCount}];
@@ -601,10 +652,11 @@ boundaryMatrix[grid_Association, fm_Association] := Module[
 
 rMinTransfer = Max[0.08 rDomainMax, rFacesSrc[[2]]];
 rOuterTransfer = rDomainMax;
-omegaQ = 3.0 csConst/(2.0 r0Geometry[wMin]);
+mouthRadiusForPort = If[physicalMode, aConst, r0Geometry[wMin]];
+omegaQ = 3.0 csConst/(2.0 mouthRadiusForPort);
 gammaPort = 9.0/(8.0 omegaQ^5);
-gammaPortLegacyV209 = r0Geometry[wMin]^5/(27.0 csConst^5);
-gammaPortCompact = 4.0 r0Geometry[wMin]^5/(27.0 csConst^5);
+gammaPortLegacyV209 = mouthRadiusForPort^5/(27.0 csConst^5);
+gammaPortCompact = 4.0 mouthRadiusForPort^5/(27.0 csConst^5);
 gammaPortFactorVsLegacy = gammaPort/gammaPortLegacyV209;
 yOutBranchDescription =
   "Frozen target-blind M1c-prep D2 branch: Y_out,l=2(omega)=i Gamma_port omega^5 on physical tangential lanes; Gamma_port=sigma_Q^can=4 a^5/(27 c_s^5).";
@@ -953,7 +1005,12 @@ extractionForBackgroundInterpolationOrder[order_Integer, transferGrid_List, wind
   {r0Geometry, zWeight, pointVector, wallMode, omegaQ, gammaPort, gammaPortLegacyV209,
     gammaPortCompact, gammaPortFactorVsLegacy},
   Module[{bdg, transfer},
-    r0Geometry[w_?NumericQ] := interp1Order[wCentersSrc, r0ValuesSrc, w, order];
+    r0Geometry[w_?NumericQ] := If[physicalMode,
+      Module[{x = Clip[(w - wMin)/wLength, {0.0, 1.0}]},
+        aConst + (rExitConst - aConst) (3.0 x^2 - 2.0 x^3)
+      ],
+      interp1Order[wCentersSrc, r0ValuesSrc, w, order]
+    ];
     zWeight[w_?NumericQ] := interp1Order[wCentersSrc, zValuesSrc, w, order];
     pointVector[m_List, rVals_List, wVals_List] :=
       N[MapThread[interp2Order[m, #1, #2, order] &, {rVals, wVals}], 17];
@@ -1060,7 +1117,7 @@ p0 = N0/d0;
 p2 = (d0 N2 - 2 d2 N0)/d0^2;
 p4 = (d0^2 N4 - 2 d0 (d2 N2 + d4 N0) + 3 d2^2 N0)/d0^3;
 rPole = d0 (B4 + Z4) - 3 (Mwall + B2 + Z2)^2;
-rNormMachinery = mhat0Const^2 SPortConst p0 - 54 GConst csConst^5/(5 r0Geometry[wMin]^5 cConst^5);
+rNormMachinery = mhat0Const^2 SPortConst p0 - 54 GConst csConst^5/(5 aConst^5 cConst^5);
 
 directCoefficients = <|"K" -> Kwall, "M" -> Mwall, "B0" -> B0, "B2" -> B2, "B4" -> B4, "Z0" -> Z0, "Z2" -> Z2, "Z4" -> Z4, "N0" -> N0, "N2" -> N2, "N4" -> N4|>;
 interpSensitivityKeys = {"K", "M", "B0", "B2", "B4", "Z0", "Z2", "Z4", "N0", "N2", "N4"};
@@ -1072,7 +1129,10 @@ interpolationMethodDeltas = coefficientRelativeDeltaTable[
   interpSensitivityKeys
 ];
 interpolationMethodCarryForwardNote =
-  "Order2-vs-order1 interpolation-method sensitivity is a diagnostic on the same coarse 10x8 torch background. It is distinct from, and smaller than, the unresolved background-resolution error of that coarse background. The production background-resolution term and full interpolation error belong in the M1c-run section J error budget; this M1c-prep machinery result is not resolution-converged.";
+  If[physicalMode,
+    "Order2-vs-order1 interpolation-method sensitivity is a diagnostic on the same frozen physical torch background. It is distinct from the WP1 background-resolution term and is carried explicitly into the M1c section J numerical-only budget.",
+    "Order2-vs-order1 interpolation-method sensitivity is a diagnostic on the same coarse 10x8 torch background. It is distinct from, and smaller than, the unresolved background-resolution error of that coarse background. The production background-resolution term and full interpolation error belong in the M1c-run section J error budget; this M1c-prep machinery result is not resolution-converged."
+  ];
 interpolationMethodSensitivity = <|
   "primary_interpolation_order" -> 1,
   "diagnostic_interpolation_order" -> order2InterpolationExtraction["interpolation_order"],
@@ -1107,13 +1167,26 @@ operatorMetrics = Join[
 sourceHashes = <|
   "torch_background_content_hash" -> background["content_hash"],
   "torch_background_sha256" -> sha256File[backgroundPath],
-  "mt15_06_script_sha256" -> sha256File[scriptPath]
+  "mt15_06_script_sha256" -> sha256File[scriptPath],
+  "freeze_sheet_sha256" -> If[physicalMode, sha256File[physicalFreezePath], "not_physical"]
 |>;
+packetBranchId = If[physicalMode,
+  "m1c_decision_07_physical_frozen_direct_derived",
+  "mt15_06_m1c_prep_imported_torch_background_direct_derived"
+];
+packetParentStatus = If[physicalMode,
+  "effective_closure",
+  "m1c_prep_effective_closure_placeholder_unfrozen"
+];
+packetMachineryLabel = If[physicalMode,
+  "M1c PHYSICAL frozen decision-07 effective-closure branch; target-blind freeze hash written before solve.",
+  "M1c-prep machinery on real self-consistent WP1 background but placeholder unfrozen params; NOT physical."
+];
 
 derivedBdgWall = <|
-  "status" -> "derived_bdg_wall_m1c_prep_imported_torch_background",
+  "status" -> If[physicalMode, "derived_bdg_wall_m1c_physical_frozen_imported_torch_background", "derived_bdg_wall_m1c_prep_imported_torch_background"],
   "coefficients" -> <|"K" -> toJsonNumber[Kwall], "M" -> toJsonNumber[Mwall], "B0" -> toJsonNumber[B0], "B2" -> toJsonNumber[B2], "B4" -> toJsonNumber[B4]|>,
-  "machinery_label" -> "M1c-prep machinery: self-consistent torch background with placeholder unfrozen params; NOT physical.",
+  "machinery_label" -> packetMachineryLabel,
   "source_paths" -> <|"torch_background" -> backgroundPath|>,
   "source_hashes" -> sourceHashes
 |>;
@@ -1132,17 +1205,20 @@ derivedMaxwellTransfer = <|
   "operator_gauge_residual_metrics" -> operatorMetrics,
   "source_paths" -> <|"torch_background" -> backgroundPath|>,
   "source_hashes" -> sourceHashes,
-  "machinery_label" -> "M1c-prep machinery on real self-consistent WP1 background but placeholder unfrozen params; NOT physical."
+  "machinery_label" -> packetMachineryLabel
 |>;
 
 packet = <|
   "schema" -> "stage_v2_22b_solver_handoff/v1",
-  "branch_id" -> "mt15_06_m1c_prep_imported_torch_background_direct_derived",
+  "branch_id" -> packetBranchId,
   "freeze" -> <|
     "pre_target_freeze" -> True,
     "target_blind" -> True,
     "parent_action" -> "GNLS imported self-consistent torch WP1 background plus M1b BdG/wall and Spike-2 direct Maxwell transfer",
-    "parent_action_status" -> "m1c_prep_effective_closure_placeholder_unfrozen",
+    "parent_action_status" -> packetParentStatus,
+    "freeze_hash" -> If[physicalMode, background["freeze_hash"], "not_physical"],
+    "m1c_physical_frozen_run" -> physicalMode,
+    "claim_scope" -> If[physicalMode, "pre_registered_effective_closure_branch", "m1c_prep_machinery_only"],
     "gauge_convention" -> "localized_H_equals_Z_imported_torch_background_A0_active",
     "boundary_protocol" -> "open_impedance_AC_reflecting_DC_leaking",
     "source_map_convention" -> "canonical real STF grouped P2 basis",
@@ -1150,13 +1226,13 @@ packet = <|
   |>,
   "geometry" -> <|
     "L" -> toJsonNumber[wLength],
-    "R_mouth" -> toJsonNumber[r0Geometry[wMin]],
-    "R_exit" -> toJsonNumber[r0Geometry[wMax]],
+    "R_mouth" -> toJsonNumber[If[physicalMode, aConst, r0Geometry[wMin]]],
+    "R_exit" -> toJsonNumber[If[physicalMode, physicalFreeze["geometry"]["R_exit"], r0Geometry[wMax]]],
     "boundary_class" -> "open_impedance",
     "Y_L_limit" -> 0.0,
     "exit_model" -> "impedance_mismatch_open_exit"
   |>,
-  "constants" -> <|"G" -> GConst, "c_s" -> csConst, "c" -> cConst, "a" -> toJsonNumber[r0Geometry[wMin]], "mhat0" -> mhat0Const, "S_port" -> SPortConst, "theta_tail" -> thetaTailConst|>,
+  "constants" -> <|"G" -> GConst, "c_s" -> csConst, "c" -> cConst, "a" -> toJsonNumber[aConst], "mhat0" -> mhat0Const, "S_port" -> SPortConst, "theta_tail" -> thetaTailConst|>,
   "grid" -> <|"coordinate" -> "w", "points" -> toJsonVector[wallMode["packet_points"]]|>,
   "wall" -> <|"K" -> toJsonNumber[Kwall], "M" -> toJsonNumber[Mwall], "derivation_status" -> "derived_weak_form_galerkin_on_imported_background_geometry"|>,
   "profiles" -> <|"radius_R0" -> toJsonVector[wallMode["radius"]], "weight" -> toJsonVector[wallMode["weight"]], "wall_chi_eta" -> toJsonVector[wallMode["chi"]]|>,
@@ -1167,7 +1243,7 @@ packet = <|
   "solver_metadata" -> <|
     "exporter" -> "mt15_06_m1c_prep_crossengine.wls",
     "mesh_points" -> Length[wallMode["packet_points"]],
-    "coefficient_family" -> "m1c_prep_imported_torch_background_bdg_wall_plus_spike2_direct_transfer_v1",
+    "coefficient_family" -> If[physicalMode, "m1c_physical_decision_07_frozen_bdg_wall_plus_spike2_direct_transfer_v1", "m1c_prep_imported_torch_background_bdg_wall_plus_spike2_direct_transfer_v1"],
     "source_commit" -> sourceCommitString[],
     "nonlinear_residual_norm" -> toJsonNumber[background["residuals"]["coupled_stationary_linf"]],
     "linear_residual_norm" -> toJsonNumber[bdgActive["max_relative_eigen_residual"]],
@@ -1176,17 +1252,20 @@ packet = <|
     "wall_status" -> "derived_from_weak_form_integrals",
     "maxwell_transfer_status" -> "derived_green_function_transfer_spike2_on_imported_background",
     "mixed_ports_status" -> "absent_for_direct_derived_N0_path",
-    "notes" -> "M1c-prep only: real self-consistent torch WP1 background with PLACEHOLDER unfrozen params. This packet proves machinery and contains no target residual outputs."
+    "notes" -> If[physicalMode, "M1c PHYSICAL frozen packet: decision-07 freeze hash was written before solve; no target residual outputs are present in this V2-22B handoff.", "M1c-prep only: real self-consistent torch WP1 background with PLACEHOLDER unfrozen params. This packet proves machinery and contains no target residual outputs."]
   |>,
   "normalization_tolerances" -> <|"profile_norm_tol" -> 0.005, "Delta_tol" -> 1.0*^-12|>
 |>;
 packet = Join[packet, <|"content_hash" -> contentHash[packet]|>];
 
 diagnostics = <|
-  "schema" -> "mt15_06_m1c_prep_crossengine_diagnostics/v1",
+  "schema" -> If[physicalMode, "m1c_physical_frozen_derived_diagnostics/v1", "mt15_06_m1c_prep_crossengine_diagnostics/v1"],
   "background_path" -> backgroundPath,
   "packet_path" -> packetPath,
-  "machinery_label" -> "LOUD LABEL: real self-consistent torch WP1 background but PLACEHOLDER unfrozen params -> MACHINERY, NOT physical; proves cross-engine pipeline only.",
+  "freeze_hash" -> If[physicalMode, background["freeze_hash"], "not_physical"],
+  "m1c_physical_frozen_run" -> physicalMode,
+  "claim_scope" -> If[physicalMode, "pre_registered_effective_closure_branch", "m1c_prep_machinery_only"],
+  "machinery_label" -> If[physicalMode, "PHYSICAL frozen decision-07 effective-closure branch; conditional on frozen target-blind posits; no value mutated after residual.", "LOUD LABEL: real self-consistent torch WP1 background but PLACEHOLDER unfrozen params -> MACHINERY, NOT physical; proves cross-engine pipeline only."],
   "torch_background" -> <|
     "content_hash" -> background["content_hash"],
     "grid" -> {gridBg["nr"], gridBg["nw"]},
@@ -1209,6 +1288,9 @@ diagnostics = <|
 	    |>
 	  |>,
 	  "interpolation_method_sensitivity" -> interpolationMethodSensitivity,
+    "direct_coefficients" -> Map[toJsonNumber, directCoefficients],
+    "derived_bdg_wall_coefficients" -> derivedBdgWall,
+    "derived_maxwell_transfer" -> derivedMaxwellTransfer,
 	  "bdg_wall" -> <|
     "A0_active" -> True,
     "A0_zero_comparison" -> A0Changed,
@@ -1224,6 +1306,20 @@ diagnostics = <|
   "spike2_transfer" -> <|
     "current_frechet" -> currentCheck,
     "primary_grid" -> primaryTransfer["grid"],
+    "mesh_convergence_rows" -> (Function[row, <|
+        "grid" -> row["grid"],
+        "h" -> toJsonNumber[row["h"]],
+        "Z0" -> toJsonNumber[row["Z0"]],
+        "Z2" -> toJsonNumber[row["Z2"]],
+        "Z4" -> toJsonNumber[row["Z4"]],
+        "N0" -> toJsonNumber[row["N0"]],
+        "N2" -> toJsonNumber[row["N2"]],
+        "N4" -> toJsonNumber[row["N4"]],
+        "maxGreenResidual" -> toJsonNumber[row["maxGreenResidual"]],
+        "maxBdgAmpResidual" -> toJsonNumber[row["maxBdgAmpResidual"]],
+        "maxBdgPhaseResidual" -> toJsonNumber[row["maxBdgPhaseResidual"]],
+        "maxContinuityResidual" -> toJsonNumber[row["maxContinuityResidual"]]
+      |>] /@ meshTransfers),
     "coefficients" -> Map[toJsonNumber, <|"Z0" -> Z0, "Z2" -> Z2, "Z4" -> Z4, "N0" -> N0, "N2" -> N2, "N4" -> N4|>],
     "mesh_orders" -> Map[toJsonNumber, meshZOrders],
     "pure_gauge" -> pureGauge,
@@ -1259,9 +1355,12 @@ interpSensitivityRows = ({
 
 report = StringRiffle[
   {
-    "# MT15-06 M1c-Prep Cross-Engine Background Report",
+    If[physicalMode, "# M1c Physical Frozen Derived Chain Report", "# MT15-06 M1c-Prep Cross-Engine Background Report"],
     "",
-    "**LOUD LABEL:** real self-consistent torch WP1 background, but PLACEHOLDER unfrozen params. This is MACHINERY, NOT physical; it proves the cross-engine pipeline only. No Gate A, no frozen committed packet, no physical claim.",
+    If[physicalMode,
+      "**LOUD LABEL:** PHYSICAL frozen decision-07 effective-closure branch. The freeze hash was written before the WP1 solve; the result is conditional on the frozen target-blind posits and modest CPU resolution.",
+      "**LOUD LABEL:** real self-consistent torch WP1 background, but PLACEHOLDER unfrozen params. This is MACHINERY, NOT physical; it proves the cross-engine pipeline only. No Gate A, no frozen committed packet, no physical claim."
+    ],
     "",
     "## Torch Background",
     "",
@@ -1315,10 +1414,13 @@ report = StringRiffle[
     "",
     "## Direct Formula Preview",
     "",
-    "These preview values are diagnostics only and are not exported inside the V2-22B packet.",
+    If[physicalMode,
+      "These values are physical-run diagnostics computed after the freeze; they are not exported inside the V2-22B handoff packet because the validator forbids target residual fields there.",
+      "These preview values are diagnostics only and are not exported inside the V2-22B packet."
+    ],
     "",
     "- `D0 = " <> formatNumber[d0] <> "`",
-    "- `R_norm = " <> formatNumber[rNormMachinery] <> "` (MACHINERY, NOT physical)",
+    "- `R_norm = " <> formatNumber[rNormMachinery] <> "`" <> If[physicalMode, " (PHYSICAL frozen diagnostic; V2 remains authoritative)", " (MACHINERY, NOT physical)"],
     "- `R_pole = " <> formatNumber[rPole] <> "`",
     "- `P2 = " <> formatNumber[p2] <> "`",
     "- `P4 = " <> formatNumber[p4] <> "`",
@@ -1340,4 +1442,7 @@ Print["report_path: ", reportPath];
 Print["packet_content_hash: ", packet["content_hash"]];
 Print["diagnostics_content_hash: ", diagnostics["content_hash"]];
 Print["pass_checks: ", passChecks];
-Print["R_norm_machinery_not_physical: ", formatNumber[rNormMachinery]];
+If[physicalMode,
+  Print["R_norm_physical_frozen_preview: ", formatNumber[rNormMachinery]],
+  Print["R_norm_machinery_not_physical: ", formatNumber[rNormMachinery]]
+];

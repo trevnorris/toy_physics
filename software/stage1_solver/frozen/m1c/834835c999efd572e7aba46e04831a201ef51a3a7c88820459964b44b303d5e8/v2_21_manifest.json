@@ -1,0 +1,152 @@
+{
+  "branches": [
+    {
+      "geometry": {
+        "R_exit": 1.5,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "direct_coefficients": {
+            "B0": 0.004659423689433822,
+            "B2": 0.000515232316768914,
+            "B4": 5.749912947089773e-05,
+            "K": 4.060384354904323,
+            "M": 0.5258858064705113,
+            "N0": 2.674541095707681e-06,
+            "N2": -1.5324096460422127e-06,
+            "N4": 5.228908789315485e-07,
+            "Z0": 2.5002239096227484e-06,
+            "Z2": -1.7477512766478496e-06,
+            "Z4": 6.714367676645645e-07
+          }
+        },
+        "21": {
+          "direct_coefficients": {
+            "B0": 0.004659423689433822,
+            "B2": 0.000515232316768914,
+            "B4": 5.749912947089773e-05,
+            "K": 4.060384354904323,
+            "M": 0.5258858064705113,
+            "N0": 2.674541095707681e-06,
+            "N2": -1.5324096460422127e-06,
+            "N4": 5.228908789315485e-07,
+            "Z0": 2.5002239096227484e-06,
+            "Z2": -1.7477512766478496e-06,
+            "Z4": 6.714367676645645e-07
+          }
+        },
+        "22": {
+          "direct_coefficients": {
+            "B0": 0.004659423689433822,
+            "B2": 0.000515232316768914,
+            "B4": 5.749912947089773e-05,
+            "K": 4.060384354904323,
+            "M": 0.5258858064705113,
+            "N0": 2.674541095707681e-06,
+            "N2": -1.5324096460422127e-06,
+            "N4": 5.228908789315485e-07,
+            "Z0": 2.5002239096227484e-06,
+            "Z2": -1.7477512766478496e-06,
+            "Z4": 6.714367676645645e-07
+          }
+        }
+      },
+      "name": "m1c_decision_07_physical_frozen_direct_derived",
+      "profile_adapter": {
+        "coefficient_path": "direct_derived_coefficients",
+        "derived_coefficients_provenance": {
+          "bdg_wall": {
+            "coefficients": {
+              "B0": 0.004659423689433822,
+              "B2": 0.000515232316768914,
+              "B4": 5.749912947089773e-05,
+              "K": 4.060384354904323,
+              "M": 0.5258858064705113
+            },
+            "machinery_label": "M1c PHYSICAL frozen decision-07 effective-closure branch; target-blind freeze hash written before solve.",
+            "source_hashes": {
+              "freeze_sheet_sha256": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+              "mt15_06_script_sha256": "e53278becae82f62e4254bb9b2f076cd4f7680652876ee090d6e541dc43ae97b",
+              "torch_background_content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+              "torch_background_sha256": "ce2e13bcb9b9c227fe8ee4877387f70c9fc124a9fb78ac5d8f8f6d8f2d0acdc3"
+            },
+            "source_paths": {
+              "torch_background": "/var/projects/toy_physics/software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json"
+            },
+            "status": "derived_bdg_wall_m1c_physical_frozen_imported_torch_background"
+          },
+          "maxwell_transfer": {
+            "coefficients": {
+              "N0": 2.674541095707681e-06,
+              "N2": -1.5324096460422127e-06,
+              "N4": 5.228908789315485e-07,
+              "Z0": 2.5002239096227484e-06,
+              "Z2": -1.7477512766478496e-06,
+              "Z4": 6.714367676645645e-07
+            },
+            "flux_normalization": {
+              "Gamma_port": 0.14814814814814817,
+              "derived_not_fitted_to_chi_Q": true,
+              "formula": "sigma_Q^can=9/(8 Omega_Q^5)=4 a^5/(27 c_s^5)",
+              "legacy_factor_gap": 4.000000000000001,
+              "legacy_v2_09_reduced_formula": "a^5/(27 c_s^5)"
+            },
+            "gauge_convention": "localized_H_equals_Z_imported_torch_background_A0_active_spatial_gauge_measured",
+            "machinery_label": "M1c PHYSICAL frozen decision-07 effective-closure branch; target-blind freeze hash written before solve.",
+            "operator_gauge_residual_metrics": {
+              "N0_positive": true,
+              "basis_invariance": true,
+              "basis_max_relative_N_delta": 1.5726479248121067e-15,
+              "basis_max_relative_Z_delta": 6.845950329670515e-16,
+              "bdg_residuals_small": true,
+              "current_frechet_matches_step8c": true,
+              "green_residuals_small": true,
+              "hard_cap_to_open_boundary_norm_ratio": 3.9474174512047575e-07,
+              "max_bdg_amp_residual": 3.502861622131734e-15,
+              "max_bdg_eigen_residual": 1.9046513612373904e-13,
+              "max_bdg_phase_residual": 3.58903288316933e-15,
+              "max_continuity_residual": 0.11558198018037665,
+              "max_green_residual": 1.3508640790632167e-15,
+              "open_not_hard_cap": true,
+              "outgoing_flux_positive": true,
+              "pure_gauge_outgoing_flux_abs": 1.4500007483594576e-27,
+              "pure_gauge_physical_field_norm": 2.4468926817079183e-15,
+              "pure_gauge_zero_physical_transfer": true,
+              "v2_09_regression": true,
+              "v2_09_relative_N0_error": 2.8119093166491344e-16,
+              "v2_09_relative_Z_error": 2.179611917552392e-16
+            },
+            "source_hashes": {
+              "freeze_sheet_sha256": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+              "mt15_06_script_sha256": "e53278becae82f62e4254bb9b2f076cd4f7680652876ee090d6e541dc43ae97b",
+              "torch_background_content_hash": "6fab0c757e344c565f1903f4dc809ef2cab2a48443c1b56328dc31610f60e176",
+              "torch_background_sha256": "ce2e13bcb9b9c227fe8ee4877387f70c9fc124a9fb78ac5d8f8f6d8f2d0acdc3"
+            },
+            "source_paths": {
+              "torch_background": "/var/projects/toy_physics/software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json"
+            },
+            "status": "derived_green_function_transfer"
+          }
+        },
+        "source_branch_hash": "d723a0ecbd3ed6c40cf830ce4fc78f5caa4b9487f9680a0797e20275a2809c12",
+        "weak_axisymmetric": null
+      },
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    }
+  ],
+  "description": "Generated by stage_v2_22a_profile_to_coefficient_adapter.py from profile overlap data.",
+  "schema": "stage_v2_21_branch_extraction_fixture/v1",
+  "source_profile_manifest_hash": "15ed339b6aa7563c317fb050f4abadb6413be884e2e14fbe37b9914e19070cba"
+}

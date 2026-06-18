@@ -1,0 +1,28 @@
+{
+  "differences": {},
+  "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+  "identical": true,
+  "run1": {
+    "R_norm": -10.799999340551249,
+    "chi_Q": 16377315.093418919,
+    "diagnostics_content_hash": "837da5268028070c5e25e6de3d235389a64d836bc52d1f12cd244c1b3adc4bd8",
+    "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+    "observable_file_sha256": "05dfc6e8c8606e30f6df049f72f1fa657e9f8382eac6d499429d9aeed8ef90f5",
+    "observable_packet_hash": "d45da75108eef2c01477034937186a551bd68bee99790d90ca5767f9dbb36544",
+    "packet_content_hash": "e25b699964ea27bbd0c294d354f9ea03307886d405dbaaedf72291fd1b58766d",
+    "packet_file_sha256": "86802e51110bba38b16cbde6c0008440ecda873f4235fe1b14d5f2840642ab13",
+    "summary_content_hash": "11da2d1d5e98d8f7bb3bb3c0496f6d81dce02a4ee6e51da2a82f9e5e5563f300"
+  },
+  "run2": {
+    "R_norm": -10.799999340551249,
+    "chi_Q": 16377315.093418919,
+    "diagnostics_content_hash": "837da5268028070c5e25e6de3d235389a64d836bc52d1f12cd244c1b3adc4bd8",
+    "freeze_hash": "834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8",
+    "observable_file_sha256": "05dfc6e8c8606e30f6df049f72f1fa657e9f8382eac6d499429d9aeed8ef90f5",
+    "observable_packet_hash": "d45da75108eef2c01477034937186a551bd68bee99790d90ca5767f9dbb36544",
+    "packet_content_hash": "e25b699964ea27bbd0c294d354f9ea03307886d405dbaaedf72291fd1b58766d",
+    "packet_file_sha256": "86802e51110bba38b16cbde6c0008440ecda873f4235fe1b14d5f2840642ab13",
+    "summary_content_hash": "11da2d1d5e98d8f7bb3bb3c0496f6d81dce02a4ee6e51da2a82f9e5e5563f300"
+  },
+  "schema": "m1c_reproducibility_report/v1"
+}

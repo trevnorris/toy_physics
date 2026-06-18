@@ -26,8 +26,9 @@ from .config import (
     HarnessConfig,
     PreconditionerConfig,
     TensorGridSpec,
+    WallGridSpec,
 )
-from .grid import TensorProductGrid
+from .grid import TensorProductGrid, WallGrid
 from .manifest import write_manifest
 from .mms import run_convergence_study, weighted_l2_norm
 from .newton import finite_difference_jvp_check, solve_newton_jvp
@@ -38,8 +39,17 @@ from .operators import (
     tensor_center_gradient_w,
     tensor_laplacian,
 )
+from .patha_static_balance import (
+    SSigmaProvider,
+    SSigmaSpec,
+    resolve_s_sigma,
+    static_balance_terms,
+)
 from .physics import quintic_enthalpy
-from .preconditioners import make_coupled_colored_sparse_jacobian_lu_factory
+from .preconditioners import (
+    make_closed_coupled_colored_sparse_jacobian_lu_factory,
+    make_coupled_colored_sparse_jacobian_lu_factory,
+)
 
 
 @dataclass(frozen=True)
@@ -69,6 +79,16 @@ class CoupledFields:
     a0: torch.Tensor
     ar: torch.Tensor
     aw: torch.Tensor
+
+
+@dataclass(frozen=True)
+class ClosedCoupledFields:
+    psi_real: torch.Tensor
+    psi_imag: torch.Tensor
+    a0: torch.Tensor
+    ar: torch.Tensor
+    aw: torch.Tensor
+    r0: torch.Tensor
 
 
 def _torch_from_numpy(values: np.ndarray, *, dtype: torch.dtype, device: str) -> torch.Tensor:
@@ -114,6 +134,57 @@ def unpack_coupled_fields(
     return fields, chemical_potential
 
 
+def pack_closed_coupled_fields(
+    fields: ClosedCoupledFields,
+    chemical_potential: torch.Tensor | None = None,
+) -> torch.Tensor:
+    pieces = [
+        fields.psi_real.reshape(-1),
+        fields.psi_imag.reshape(-1),
+        fields.a0.reshape(-1),
+        fields.ar.reshape(-1),
+        fields.aw.reshape(-1),
+        fields.r0.reshape(-1),
+    ]
+    if chemical_potential is not None:
+        pieces.append(chemical_potential.reshape(1))
+    return torch.cat(pieces)
+
+
+def unpack_closed_coupled_fields(
+    state: torch.Tensor,
+    grid: TensorProductGrid,
+    *,
+    has_chemical_potential: bool,
+) -> tuple[ClosedCoupledFields, torch.Tensor | None]:
+    n = _cell_count(grid)
+    nw = grid.spec.nw
+    expected = 5 * n + nw + (1 if has_chemical_potential else 0)
+    if state.numel() != expected:
+        raise ValueError(f"Expected closed state with {expected} entries, got {state.numel()}")
+    shape = (grid.spec.nr, grid.spec.nw)
+    fields = ClosedCoupledFields(
+        psi_real=state[0:n].reshape(shape),
+        psi_imag=state[n : 2 * n].reshape(shape),
+        a0=state[2 * n : 3 * n].reshape(shape),
+        ar=state[3 * n : 4 * n].reshape(shape),
+        aw=state[4 * n : 5 * n].reshape(shape),
+        r0=state[5 * n : 5 * n + nw],
+    )
+    chemical_potential = state[5 * n + nw] if has_chemical_potential else None
+    return fields, chemical_potential
+
+
+def _closed_to_coupled_fields(fields: ClosedCoupledFields) -> CoupledFields:
+    return CoupledFields(
+        psi_real=fields.psi_real,
+        psi_imag=fields.psi_imag,
+        a0=fields.a0,
+        ar=fields.ar,
+        aw=fields.aw,
+    )
+
+
 def localization_weight_torch(w: torch.Tensor, cfg: BranchSmokeConfig | CoupledBranchMMSConfig) -> torch.Tensor:
     midpoint = 0.5 * (cfg.w_min + cfg.w_max)
     return cfg.localization_floor + cfg.localization_amplitude * torch.exp(
@@ -136,15 +207,42 @@ def geometry_radius_torch(w: torch.Tensor, cfg: BranchSmokeConfig | CoupledBranc
 def confinement_potential_torch(
     grid: TensorProductGrid,
     cfg: BranchSmokeConfig | CoupledBranchMMSConfig,
+    *,
+    radius: torch.Tensor | None = None,
 ) -> torch.Tensor:
     r = grid.r_centers[:, None]
     w = grid.w_centers[None, :]
-    radius = geometry_radius_torch(grid.w_centers, cfg)[None, :]
+    radius_values = geometry_radius_torch(grid.w_centers, cfg) if radius is None else radius
+    if radius_values.shape != grid.w_centers.shape:
+        raise ValueError("confinement radius must live on grid.w_centers")
+    radius_2d = radius_values[None, :]
     length = cfg.w_max - cfg.w_min
     midpoint = 0.5 * (cfg.w_min + cfg.w_max)
-    radial_wall = cfg.radial_wall_strength * (r / radius) ** 4
+    radial_wall = cfg.radial_wall_strength * (r / radius_2d) ** 4
     axial = 0.5 * cfg.axial_trap_strength * ((w - midpoint) / length) ** 2
     return radial_wall + axial
+
+
+def confinement_wall_to_matter_coefficient_torch(
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig | CoupledBranchMMSConfig,
+    *,
+    radius: torch.Tensor | None = None,
+) -> torch.Tensor:
+    """Return the positive ``k1`` coefficient shared by forward and return coupling.
+
+    The implemented confinement placeholder is ``V_radial (r/R_0(w))^4`` plus
+    an ``R_0``-independent axial term.  Linearizing the radial term under
+    ``R_0 -> R_0 + eta`` gives ``delta V_conf = -k1 eta`` with
+    ``k1 = 4 V_radial r^4/R_0^5``.  The closed wall residual uses the same
+    tensor as its matter-return source coefficient, with source ``-k1 rho``.
+    """
+
+    radius_values = geometry_radius_torch(grid.w_centers, cfg) if radius is None else radius
+    if radius_values.shape != grid.w_centers.shape:
+        raise ValueError("confinement radius must live on grid.w_centers")
+    r = grid.r_centers[:, None]
+    return 4.0 * cfg.radial_wall_strength * r**4 / radius_values[None, :] ** 5
 
 
 def boundary_sponge_profile_torch(
@@ -255,6 +353,7 @@ def coupled_pde_residual(
     eos_K: float,
     chemical_potential: torch.Tensor | float,
     boundaries: CoupledBoundarySet,
+    confinement_radius: torch.Tensor | None = None,
 ) -> torch.Tensor:
     fields, _ = unpack_coupled_fields(field_state, grid, has_chemical_potential=False)
     psi = fields.psi_real.to(torch.complex128) + 1j * fields.psi_imag.to(torch.complex128)
@@ -276,7 +375,7 @@ def coupled_pde_residual(
         - (alpha**2) * (fields.ar**2 + fields.aw**2) * psi
     )
     density = fields.psi_real**2 + fields.psi_imag**2
-    potential = confinement_potential_torch(grid, cfg)
+    potential = confinement_potential_torch(grid, cfg, radius=confinement_radius)
     sponge = boundary_sponge_profile_torch(grid, cfg)
     mu = torch.as_tensor(chemical_potential, dtype=fields.psi_real.dtype, device=fields.psi_real.device)
     matter = (
@@ -360,6 +459,86 @@ def coupled_branch_residual(
     return torch.cat([pde.reshape(-1), mass.reshape(1)])
 
 
+def wall_grid_from_tensor_grid(grid: TensorProductGrid) -> WallGrid:
+    return WallGrid.create(
+        WallGridSpec(w_min=grid.spec.w_min, w_max=grid.spec.w_max, nw=grid.spec.nw),
+        dtype=grid.dtype,
+        device=grid.device,
+    )
+
+
+def patha_return_source_density(
+    fields: ClosedCoupledFields,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+) -> torch.Tensor:
+    """Return the local matter source density ``-k1*rho`` on the tensor grid."""
+
+    density = fields.psi_real**2 + fields.psi_imag**2
+    k1 = confinement_wall_to_matter_coefficient_torch(grid, cfg, radius=fields.r0)
+    return -k1 * density
+
+
+def patha_radial_reduced_return_source(
+    fields: ClosedCoupledFields,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+) -> torch.Tensor:
+    """Reduce ``-k1*rho`` with spherical shell volumes onto wall centers."""
+
+    source_density = patha_return_source_density(fields, grid, cfg)
+    return torch.sum(grid.radial_shell_volumes[:, None] * source_density, dim=0)
+
+
+def patha_closed_wall_terms(
+    fields: ClosedCoupledFields,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+    *,
+    s_sigma: SSigmaSpec | SSigmaProvider | dict[str, Any],
+):
+    wall_grid = wall_grid_from_tensor_grid(grid)
+    source = patha_radial_reduced_return_source(fields, grid, cfg)
+    return static_balance_terms(
+        fields.r0,
+        wall_grid,
+        s_sigma=s_sigma,
+        source=source,
+        lower_bc=BoundaryCondition.dirichlet(cfg.r_mouth),
+        upper_bc=BoundaryCondition.neumann(0.0),
+    )
+
+
+def patha_closed_branch_residual(
+    state: torch.Tensor,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+    *,
+    eos_K: float,
+    boundaries: CoupledBoundarySet,
+    s_sigma: SSigmaSpec | SSigmaProvider | dict[str, Any],
+) -> torch.Tensor:
+    fields, chemical_potential = unpack_closed_coupled_fields(
+        state,
+        grid,
+        has_chemical_potential=True,
+    )
+    assert chemical_potential is not None
+    pde = coupled_pde_residual(
+        pack_coupled_fields(_closed_to_coupled_fields(fields)),
+        grid,
+        cfg,
+        eos_K=eos_K,
+        chemical_potential=chemical_potential,
+        boundaries=boundaries,
+        confinement_radius=fields.r0,
+    )
+    wall = patha_closed_wall_terms(fields, grid, cfg, s_sigma=s_sigma).residual
+    density = fields.psi_real**2 + fields.psi_imag**2
+    mass = torch.sum(density * grid.cell_volumes) - cfg.mass
+    return torch.cat([pde.reshape(-1), wall.reshape(-1), mass.reshape(1)])
+
+
 def _renormalize_state_mass(
     state: torch.Tensor,
     grid: TensorProductGrid,
@@ -378,6 +557,27 @@ def _renormalize_state_mass(
     )
     assert mu is not None
     return pack_coupled_fields(fields, mu)
+
+
+def _renormalize_closed_state_mass(
+    state: torch.Tensor,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+) -> torch.Tensor:
+    fields, mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    mass = torch.sum(density * grid.cell_volumes)
+    scale = torch.sqrt(torch.as_tensor(cfg.mass, dtype=state.dtype, device=state.device) / mass)
+    renormalized = ClosedCoupledFields(
+        psi_real=fields.psi_real * scale,
+        psi_imag=fields.psi_imag * scale,
+        a0=fields.a0,
+        ar=fields.ar,
+        aw=fields.aw,
+        r0=fields.r0,
+    )
+    assert mu is not None
+    return pack_closed_coupled_fields(renormalized, mu)
 
 
 def initial_branch_state(
@@ -400,6 +600,35 @@ def initial_branch_state(
     fields = CoupledFields(psi_real=psi_real, psi_imag=psi_imag, a0=zeros, ar=zeros, aw=zeros)
     mu = torch.as_tensor(cfg.initial_mu, dtype=dtype, device=device)
     return _renormalize_state_mass(pack_coupled_fields(fields, mu), grid, cfg)
+
+
+def initial_closed_branch_state(
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+    *,
+    dtype: torch.dtype,
+    device: str,
+) -> torch.Tensor:
+    r = grid.r_centers[:, None]
+    w = grid.w_centers[None, :]
+    r0 = geometry_radius_torch(grid.w_centers, cfg)
+    length = cfg.w_max - cfg.w_min
+    midpoint = 0.5 * (cfg.w_min + cfg.w_max)
+    psi_real = torch.exp(-0.5 * (r / r0[None, :]) ** 2) * (
+        1.0 + 0.05 * torch.cos(torch.pi * (w - midpoint) / length)
+    )
+    psi_imag = torch.zeros_like(psi_real)
+    zeros = torch.zeros_like(psi_real)
+    fields = ClosedCoupledFields(
+        psi_real=psi_real,
+        psi_imag=psi_imag,
+        a0=zeros,
+        ar=zeros,
+        aw=zeros,
+        r0=r0,
+    )
+    mu = torch.as_tensor(cfg.initial_mu, dtype=dtype, device=device)
+    return _renormalize_closed_state_mass(pack_closed_coupled_fields(fields, mu), grid, cfg)
 
 
 def resample_branch_state(
@@ -428,6 +657,41 @@ def resample_branch_state(
         aw=resized[4],
     )
     return _renormalize_state_mass(pack_coupled_fields(new_fields, mu), new_grid, cfg)
+
+
+def resample_closed_branch_state(
+    state: torch.Tensor,
+    old_grid: TensorProductGrid,
+    new_grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+) -> torch.Tensor:
+    fields, mu = unpack_closed_coupled_fields(state, old_grid, has_chemical_potential=True)
+    assert mu is not None
+    stacked = torch.stack(
+        [fields.psi_real, fields.psi_imag, fields.a0, fields.ar, fields.aw],
+        dim=0,
+    )
+    resized = torch_functional.interpolate(
+        stacked.unsqueeze(0),
+        size=(new_grid.spec.nr, new_grid.spec.nw),
+        mode="bilinear",
+        align_corners=False,
+    ).squeeze(0)
+    r0 = torch_functional.interpolate(
+        fields.r0.reshape(1, 1, -1),
+        size=new_grid.spec.nw,
+        mode="linear",
+        align_corners=False,
+    ).reshape(-1)
+    new_fields = ClosedCoupledFields(
+        psi_real=resized[0],
+        psi_imag=resized[1],
+        a0=resized[2],
+        ar=resized[3],
+        aw=resized[4],
+        r0=r0,
+    )
+    return _renormalize_closed_state_mass(pack_closed_coupled_fields(new_fields, mu), new_grid, cfg)
 
 
 def _max_rss_mb() -> float:

@@ -36,7 +36,7 @@ from .coupled_branch import (
     _create_branch_grid,
     branch_boundary_conditions,
     coupled_pde_residual,
-    geometry_radius_torch,
+    confinement_wall_to_matter_coefficient_torch,
     localization_weight_torch,
     pack_coupled_fields,
     resample_branch_state,
@@ -162,25 +162,8 @@ def p2_wall_coefficients(
     return t_w_faces, t_omega_centers, k_eta_centers
 
 
-def wall_to_matter_coefficient_torch(
-    grid: TensorProductGrid,
-    cfg: BranchSmokeConfig,
-) -> torch.Tensor:
-    """Return the Step-3 ratio-confinement derivative used by ``delta V_conf``.
+wall_to_matter_coefficient_torch = confinement_wall_to_matter_coefficient_torch
 
-    Compact lines 1075-1089 pin the wall-to-matter coupling direction through
-    ``delta V_conf = -(V_wall'/ell_c) eta`` for a signed-distance confinement
-    ``V(Sigma=r-R)``.  The Step-3 engineering-smoke residual instead uses the
-    ratio placeholder ``V_radial (r/R_0(w))^4`` plus an ``R_0``-independent
-    axial term.  Linearizing that implemented radial term under the displaced
-    wall radius ``R=R_0+eta`` gives ``dV/dR_0 = -4 V_radial r^4/R_0^5`` and
-    therefore ``delta V_conf = -coeff * eta`` with the positive coefficient
-    returned here.
-    """
-
-    r = grid.r_centers[:, None]
-    radius = geometry_radius_torch(grid.w_centers, cfg)[None, :]
-    return 4.0 * cfg.radial_wall_strength * r**4 / radius**5
 
 
 def p2_mode_residual(

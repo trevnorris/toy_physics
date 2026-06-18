@@ -16,6 +16,12 @@ scriptPath =
   ];
 scriptDir = DirectoryName[scriptPath];
 repoRoot = AbsoluteFileName[FileNameJoin[{scriptDir, "..", "..", ".."}]];
+
+If[MemberQ[$ScriptCommandLine, "--patha-b2a"],
+  Get[FileNameJoin[{scriptDir, "mt15_02_patha_b2a_bdg_wall_derivation.wls"}]];
+  Exit[0]
+];
+
 runDir = FileNameJoin[{scriptDir, "runs", "mt15_02_bdg_wall_derivation"}];
 If[! DirectoryQ[runDir], CreateDirectory[runDir, CreateIntermediateDirectories -> True]];
 

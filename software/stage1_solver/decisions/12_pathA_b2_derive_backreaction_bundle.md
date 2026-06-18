@@ -82,13 +82,33 @@ the wall stiffness). §J: closed grid-convergence with frozen forms, calibration
 `R_pole/P2/P4`, margin-to-Schur (`D0`) error bars. Report `τ*`, naturalness (`|ln τ*|`, `K/(B0+Z0)` cancellation
 ratio + digit count), held-out `R_pole/P2/P4`. **This LEAVES target-blind.**
 
-## NEXT STEPS (post-/compact, in order)
-1. Add the dated §5b clarification note to `decisions/11` (markdown; hash unaffected — state that explicitly).
-2. Scaffold the **B2a directive** (`directives/pathA_09_chunk_b2a_bdg_derivation.md`): requirements + acceptance for
-   adapting `mt15_02` to the Path-A background; Codex codes/designs the route (Claude reviews). Launch Codex
-   backgrounded (never shell-`timeout` the session).
-3. Review B2a (transliteration-fidelity + adversarial clean agents) → commit → **gate to user before B2b.**
-4. B2b (Maxwell Spike-2 transfer), then B2c (integrate + root-find), each gated.
+## B2a STATUS — ✅ DONE + VALIDATED (2026-06-18)
+Directives `pathA_09` (build) + `pathA_10` (remediation). Built: a NEW Path-A closed-background exporter
+(`patha_b2a_bdg.py`), the adapted MMA engine (`mt15_02_patha_b2a_bdg_wall_derivation.wls`, dispatched via a 6-line
+`--patha-b2a` guard in the original `mt15_02`), tests, and report (`reports/patha_b2a_bdg_derivation_report.md`).
+**Derived τ=1 bundle (converged, K=30 of 100 positive modes):** `ϖ=[4.5287, 5.9597, 10.1091]`,
+`B0=3.9010e-5, B2=1.7734e-6, B4=8.4073e-8`; closed background residual `2.749e-10` (vs smoke `243.39`).
+**Review:** two independent transliteration-fidelity audits → operator FAITHFUL (the new engine generalizes the old
+real-ψ shortcuts to correct complex-BdG forms: `(dh/dρ)ψ²` pairing, `Re(ψ̄u+ψv)` density response, conjugated lower
+block). Adversarial review → no fatal flaw; caught a +3.0% B0 modal-truncation miss (3-mode sum) → remediation swept
+to K=30 (modal error 1.4e-5) and exports the **converged** moments. Tautological consumer gate replaced by a genuine
+cross-engine check; dual-engine gate tightened to `abs AND rel`. 23 tests pass. Target-blind preserved (no
+`R_norm`/Maxwell/root-find).
+**Error budget carried for B2c §J** (in the bundle `error_budget` block): modal-truncation `1.4e-5`,
+spatial-confirmation (12×12) `9.3e-3`, spatial-ladder (10×10 vs 8×8) `2.0e-2` (max rel over B0/B2/B4).
+**τ-finding for B2c:** doubling τ moves the *matter* background <1% (τ enters only the wall sector in the frozen
+Hooke family) → R_norm(τ) leverage is dominated by `K=τκ̂` (exact) + the wall/Maxwell sectors, NOT by `B_n`.
+
+## NEXT STEPS (in order)
+1. ~~§5b clarification note to `decisions/11`~~ — DONE.
+2. ~~Scaffold + run B2a (`pathA_09`/`pathA_10`); review (fidelity + adversarial); commit~~ — DONE + committed.
+3. **B2b — Maxwell Spike-2 transfer (task #69).** Scaffold `directives/pathA_11_chunk_b2b_maxwell_transfer.md`:
+   re-run the Spike-1→Spike-2 chain (`mt15_03`→`mt15_04`, `mt15_05` for clean assembly) on the Path-A `A0`
+   background → direct `{Z0,Z2,Z4,N0,N2,N4}` via the basis-invariant Green/self-energy transfer (NO U/W ports).
+   Same audit stack (dual-engine + fidelity + adversarial). Reuse the B2a background exporter / bundle convention.
+   **NOTE (user gate 2026-06-18): user paused AFTER the B2a commit to review the numbers themselves before B2b is
+   launched — do NOT start B2b until the user gives the go.**
+4. B2c (integrate derived `{K,M,B_n,Z_n,N_n}` → `R_norm(τ)=0` root-find + §J error bars), gated.
 Discipline unchanged: Codex codes / Claude reviews; dual-engine + fidelity + adversarial per chunk; commit per
 validated chunk; build target-blind in the held-out sense (don't peek at `R_pole/P2/P4` targets; `R_norm` anchor is
 the calibration target, allowed).

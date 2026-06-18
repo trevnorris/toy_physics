@@ -209,14 +209,18 @@ The map sharpens, rather than changes, the plan:
 ## 9. Next steps (resume-here after /compact)
 
 **Progress (2026-06-18):** ✅ GATE-A **frozen** (`decisions/11`, commit `1703f4c`, hash `ed3585…`); ✅ **B1**
-§5 extraction module built + validated + committed (`398ba27`). The detailed resume-here record is now
-`software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
+§5 extraction module built + validated + committed (`398ba27`); ✅ **B2a** BdG spectrum DERIVED on the
+self-consistent background (closed residual `2.749e-10` vs smoke `243.39`; `ϖ=[4.529,5.960,10.109]`, converged
+`B0=3.901e-5,B2=1.773e-6,B4=8.407e-8` over K=30/100 modes; operator FAITHFUL by 2 fidelity audits; target-blind),
+committed. The detailed resume-here record is `software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
+**Paused at the B2a→B2b gate (user reviewing the numbers before B2b launches).**
 
 **Immediate — B2 (DERIVE the back-reaction bundle, decision-12 "Reading A", user-authorized):** B2 surfaced that the
 BdG spectrum (`c_j,ϖ_j,B_n`) and Maxwell transfer (`Z_n,N_n`) were never solved on the Path-A background — M1c used
 posited M1b modes. So derive them properly (the −10.8 miss partly rested on posited modes). Sequence, each gated:
-1. **B2a** — derive the BdG spectrum on the Path-A self-consistent `{ψ0,A0,R0}` (adapt Mathematica `mt15_02`) →
-   `ϖ_j,φ_j,c_j,B_n`. (task #68)
+1. ~~**B2a** — derive the BdG spectrum on the Path-A self-consistent `{ψ0,A0,R0}`~~ ✅ DONE (task #68;
+   directives `pathA_09`/`pathA_10`). Bundle carries `error_budget` for B2c §J; τ-finding: matter background moves
+   <1% with τ → R_norm(τ) leverage is via `K=τκ̂` + wall/Maxwell, not `B_n`.
 2. **B2b** — derive the Maxwell transfer via the **Spike-2 basis-invariant Green/self-energy** route
    (`mt15_03→04→05`), NOT posited U/W ports → direct `{Z_n,N_n}`. (task #69)
 3. **B2c** — integrate derived `{K,M,B_n,Z_n,N_n}` → the unique `R_norm(τ)=0` root-find (stable-side `D0>0`) + §J

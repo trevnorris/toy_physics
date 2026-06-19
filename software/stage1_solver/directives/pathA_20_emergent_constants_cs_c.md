@@ -1,35 +1,41 @@
 # Directive pathA_20 — Emergent constants, Step 2: derive `c_s` and `c` (the velocity structure)
 
-**Status:** ✅ FINALIZED against the `pathA_19` foundation (landed + reviewed FIDELITY-CLEAN 2026-06-19; decision-13 §8).
-Consumes the pathA_19 outputs verbatim: base dimensions = **`{L,T,M}`** (mass NOT shown emergent — the `m_defect`↔inflow
-bridge is DEFERRED to `pathA_21`, not refuted); flux invariant **`J` with `[J]=T⁻¹`** (frame-independent, bulk+brane);
-healing relations **`a=ħ/(m c_s0)`**, **`ξ_h=√2 ħ/(m c_s0)`**, **`h0=(5K/4)ρ0⁴=m c_s0²/4`**; the **`a→J` re-pin**
-(`a`=branch-dependent mouth-moment, `J`=the invariant); the three R_norm-not-dimensionless conversion factors stay
-DEFERRED to `pathA_22`. Ready for the Codex DIRECTIVE design-review (standing process for foundational directives), then
-execution — gated by the user.
+**Status:** ✅ FINALIZED against the `pathA_19` foundation (landed + reviewed FIDELITY-CLEAN 2026-06-19; decision-13 §8)
+AND directive-design-reviewed (Codex `gpt-5.5` → SOUND-WITH-FIXES; all 10 fixes applied 2026-06-19; pending a confirm-
+pass before execution). Consumes the pathA_19 outputs verbatim: base dimensions = **`{L,T,M}`** (mass NOT shown emergent
+— the `m_defect`↔inflow bridge is DEFERRED to `pathA_21`, not refuted); flux invariant **`J` with `[J]=T⁻¹`** (frame-
+independent, bulk+brane); healing relations **`a=ħ/(m_GNLS c_s0)` ⟹ `ħ=m_GNLS·c_s0·a`** and **`ξ_h=√2 ħ/(m_GNLS c_s0)`
+⟹ `ħ=m_GNLS·c_s0·ξ_h/√2`** (NOTE `a` and `ξ_h` differ by `√2`: `a=ξ_h/√2` — do NOT mix the factor), **`h0=(5K/4)ρ0⁴=
+m_GNLS c_s0²/4`**; the **`a→J` re-pin** (`a`=branch-dependent mouth-moment, `J`=the invariant); the three R_norm-not-
+dimensionless conversion factors stay DEFERRED to `pathA_22`.
 **Date:** 2026-06-19
 **Owner:** Codex (DERIVES + consolidates + codes; iterates until scripts exit 0). Claude reviews afterward.
 **Trigger:** decision-13 §4 items 1–2, Step 2 of 4. Chain: `pathA_19` (foundation) → **this (`c_s`+`c`)** →
-`pathA_21` (`G`) → `pathA_22` (scale-map → `m̂0²·S_port` → re-run B2c).
+`pathA_21` (`G` + mass-bridge) → `pathA_22` (scale-map → `m̂0²·S_port` → re-run B2c).
 
 ## Why this step (context)
 With the dimensional foundation fixed by `pathA_19`, derive the two propagation/limit speeds. Honest priors from the
-pre-work: (a) `c_s` is stated everywhere as `c_s²=5Kρ⁴/m` but only relative to the IMPOSED polytropic EOS; (b) the
+pre-work: (a) `c_s` is stated everywhere as `c_s²=5Kρ⁴/m_GNLS` but only relative to the IMPOSED polytropic EOS; (b) the
 existing material (`research/em_fields/paper/em_fields.tex` ~160/168/178/699) derives `c` as the acoustic-metric
-light-cone speed and identifies `c=c_s` in the weak-field limit — so the honest prior is `c=c_s`, and the
-terminal-velocity / standing-wave reading is a hypothesis to TEST, with the math deciding.
+light-cone speed and identifies `c=c_s` in the weak-field limit — a USEFUL PRIOR but NOT sufficient proof (it lives in
+the legacy 3D/SI acoustic-reuse frame flagged in `pathA_19`). So `c_γ=c_s` must be DERIVED from the wave-sector operator
+or recorded UNDERDETERMINED; the terminal-velocity / standing-wave reading is a hypothesis to TEST, with the math
+deciding.
 
 ## Scope & stance
-DERIVATION + CONSOLIDATION. No model-formula changes, no freeze touch, no `m̂0²·S_port` un-pin. Extend
+DERIVATION + CONSOLIDATION. No model-formula changes, no freeze touch, no `m̂0²·S_port` un-pin, no `M`-collapse. Extend
 `dimensional_check.py` (new group; leave pathA_18 + the pathA_19 foundation group intact). Same infra constraints as
-`pathA_19` (read-only sim dir; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). **Dual-engine required** where MMA
-can verify the `c_s`/`c` algebra and the dimensional reductions. Use the base system + flux invariant from `pathA_19`.
+`pathA_19` (read-only sim dir; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). **Mass-symbol discipline:** use
+`m_GNLS` for ALL EOS/healing/Madelung/action/sound-speed formulas (the constituent mass) and `m_defect` for ALL
+throat rest-energy/standing-wave/inflow-mass formulas; any equality between them is OUT OF SCOPE (`pathA_21`). **Dual-
+engine** is REQUIRED for the ALGEBRAIC/DIMENSIONAL claims only (see acceptance §7); non-algebraic physics judgments get
+human-readable residuals, NOT `.wl` certification. Use the base system + flux invariant from `pathA_19`.
 
 ## Work items
 
 ### S1 — `c_s` (sound speed): consolidate + make rigorous + dimension-check
-- Consolidate `c_s²(ρ)=(1/m)(dP/dρ)=5Kρ⁴/m` from the EOS, in the `pathA_19` base dimensions; verify `[c_s]=L·T⁻¹`
-  symbolically (SymPy + `.wl`).
+- Consolidate `c_s²(ρ)=(1/m_GNLS)(dP/dρ)=5Kρ⁴/m_GNLS` from the EOS, in the `pathA_19` base dimensions; verify
+  `[c_s]=L·T⁻¹` symbolically (SymPy + `.wl`).
 - State-dependence: confirm `c_s(ρ)∝ρ²` for `n=5` and record `∂ln c_s/∂ln ρ`. `ρ` is NOT a free dial — it is set by
   the coupled stationary flow (continuity + Bernoulli, see S2), so `c_s` drifts because the flow makes `ρ` drift.
   Treat `c_s` as a profile `c_s(x)` with asymptotic constant `c_{s,0}`.
@@ -39,106 +45,143 @@ can verify the `c_s`/`c` algebra and the dimensional reductions. Use the base sy
 ### S2 — the three velocity scales; derive `c` as the photon/standing-wave ceiling
 This model has (at least) THREE distinct velocities, all `L·T⁻¹` (so dimensional analysis cannot separate them — only
 the dynamics can). Name, dimension-pin, and RELATE them — do not collapse them prematurely:
-  - `v_b` — **background condensate flow velocity** `v_b=(ħ/m)∇θ` (drift of the medium). GRAVITATIONAL-sector
+  - `v_b` — **background condensate flow velocity** `v_b=(ħ/m_GNLS)∇θ` (drift of the medium). GRAVITATIONAL-sector
     variable: gradients of `v_b` and `ρ` are the analog field; `v_b=c_s` is the acoustic horizon. Varies in space.
-    **`ρ` is ALSO coupled to `v_b`:** stationary continuity `∇·(ρv_b)=0` + quantum-Bernoulli `½mv_b²+μ(ρ)+V_conf+Q=const`
-    (`μ=h=(5K/4)ρ⁴`) lock `ρ, v_b, c_s(ρ)` into ONE self-consistent profile (flow up → `ρ` down → `c_s` down). LOCATE
-    the existing `ρ(v_b)`/Bernoulli equations in the ledger and incorporate (do not reinvent). Name + dimension-pin
-    `v_b`; its full gravitational role is `pathA_21`.
+    **`ρ` is ALSO coupled to `v_b`:** stationary continuity `∇·(ρv_b)=0` + quantum-Bernoulli
+    `½m_GNLS v_b²+μ(ρ)+V_conf+Q=const` (`μ=h=(5K/4)ρ⁴`) lock `ρ, v_b, c_s(ρ)` into ONE self-consistent profile (flow up
+    → `ρ` down → `c_s` down). LOCATE the existing `ρ(v_b)`/Bernoulli equations in the ledger and incorporate (do not
+    reinvent). Name + dimension-pin `v_b`; its full gravitational role is `pathA_21`.
   - `c_s` — **bulk sound speed** (density/phonon waves), from S1.
   - `c_γ` — **photon/gauge-wave speed** (massless gauge excitation on the brane); the brane light cone.
-- **`c` as the terminal-velocity ceiling, from the standing-wave ontology.** A massive particle (throat) is a
-  **standing wave of the gauge/photon field** — two counter-propagating `c_γ`-waves. Derive: (a) rest internal
-  oscillation = Compton frequency `ω₀=m*c_γ²/ħ`, so `E_rest=m*c_γ²` is trapped-wave energy; (b) driving the envelope at
-  `v` Doppler-shifts the components and slows the internal clock as `ω₀/γ` (time dilation), freezing (`→0`) as
-  `v→c_γ`; (c) the envelope cannot outrun its constituent `c_γ`-waves, so the terminal ceiling is `c=c_γ`,
-  `lim_{E→∞}∂E/∂p=c_γ`. This is the model's physical origin of relativistic kinematics and of `E=m*c²`. The
-  drag/enforcement view (Cherenkov/Mach, Landau `v_c=min_p ε(p)/p`) agrees in the infinite-drive limit.
-- **The mass-bridge that `c` unlocks (record the FORM here; the derivation + M-collapse is `pathA_21`).** The
-  `pathA_19` honest negative kept `{L,T,M}` ONLY because eliminating `M` requires `c`, which did not exist yet
-  (circular). The natural bridge is **`m_defect = α_J · ħ J / c²`** — i.e. `E=m c²` with the INFLOW setting the energy:
-  the drain rate `J` (a `T⁻¹` frequency) gives a rest energy `ħ·(α_J J)` and `/c²` returns a mass. This is the SAME
-  statement as the standing-wave rest energy `E_rest=ħω₀` (so mass-as-inflow ≡ mass-as-standing-light: `ω₀=α_J J`).
-  **de Broglie consistency:** in `ħ=c=1` units mass, rest frequency, and `J` are all `T⁻¹` (dimensionally identical);
-  in full `{L,T,M}` they differ by the `ħ/c²` bridge. So the `m↔J` dimensional equivalence is a DERIVED destination
-  (granted once `c` here + the `ħ` verdict in S3 are in hand), NOT a startable axiom. pathA_20's job is to put the
-  derived `c` and `c_γ` on the table so `pathA_21` can run the bridge + M-collapse test non-circularly; do NOT collapse
-  `M` in this step. Tie `m*` to the `pathA_19` flux/inflow mass (`J`, F1/F2) symbolically only.
-- **The surviving open number: is `c_γ=c_s`?** The standing-wave argument forces ceiling = photon speed `c_γ`; whether
-  THAT equals the bulk sound speed depends on whether gauge + density share the acoustic metric, or the localization
-  profile `Z(w)`/width `a` rescales the brane gauge cone (the EM sector already shows `μ₀^eff=μ₀/Z_int`). Derive
-  `c_γ/c_s` in closed form, AND determine whether it is `ρ`-INDEPENDENT (a pure number) even though each speed drifts.
-- **`(c/c_s)³`:** identify the tail factor `R_tail=Θ_tail(c/c_s)³−1` with the derived `c_γ/c_s` (=1 if they coincide);
-  reconcile with the `c=c_s` weak-field statement in `em_fields.tex`.
-- **Constants vs profiles:** separate genuine constants (`K,m,ħ` + the flux `J`/asymptotic `ρ₀,c_{s,0}`, per
-  `pathA_19`) from profiles (`ρ(x),v_b(x),c_s(x)`, possibly `c_γ(x)`); state which reference `c_s=1` denotes.
+- **`c` as the terminal-velocity ceiling — derive it WITHOUT assuming `E=m c²`.** A massive particle (throat) is a
+  standing wave of the gauge/photon field (two counter-propagating `c_γ`-waves). Derive the ceiling from FIRST
+  PRINCIPLES of the wave sector — the gauge-wave dispersion relation / group velocity, or a trapped-mode Hamiltonian
+  for the bound standing mode — NOT from the Compton relation: (a) the terminal/group-velocity ceiling is the
+  constituent wave speed `c_γ` (`lim_{E→∞}∂E/∂p=c_γ`); the envelope cannot outrun its constituent `c_γ`-waves;
+  (b) for the bound mode, obtain the rest oscillation `ω₀` from the trapped-mode condition and DERIVE the dilation
+  `ω₀→ω₀/γ` under drive. **The Compton relation `ω₀=m_defect c_γ²/ħ` and `E_rest=m_defect c²` are OUTPUTS to be checked
+  for consistency, NOT premises — a derivation that STARTS from `E=m_defect c_γ²` is REJECTED.** The drag/enforcement
+  view (Cherenkov/Mach, Landau `v_c=min_p ε(p)/p`) is a cross-check in the infinite-drive limit.
+- **The mass-bridge `c` unlocks (RECORD the candidate form only; derivation + `α_J` + M-collapse = `pathA_21`).**
+  pathA_19 kept `{L,T,M}` because eliminating `M` needs `c` (circular without it). The candidate bridge is
+  **`m_defect = α_J · ħ J / c²`** — `E=mc²` with the INFLOW as the energy (drain rate `J` → rest energy → mass), the
+  SAME statement as the standing-wave `E_rest=ħω₀` (`ω₀=α_J J`). **`h` vs `ħ` (the `2π`):** if `J` is a CYCLE-count rate
+  (windings/drainage events per time, `ν`-like — see S3), it pairs with `h=2πħ`, so the bridge carries an explicit
+  factor `m_defect = α_J h J_ν/c² = 2π α_J ħ J_ν/c²`; whether `α_J` absorbs the `2π` or it survives is a `pathA_21`
+  derivation — FLAG it, do not resolve it here. **de Broglie note:** in `ħ=c=1` units mass, rest frequency, and `J` are
+  all `T⁻¹`; in full `{L,T,M}` they differ by the `ħ/c²` bridge — so the `m↔J` equivalence is a **candidate conversion
+  ONLY, physically granted iff `pathA_21` derives the source/boundary/Hamiltonian relation and `α_J`** (NOT granted by
+  merely having `c`+`ħ` in hand). Do NOT collapse `M`. Tie `m_defect` (=`m*`) to the pathA_19 inflow mass (`J`, F1/F2)
+  symbolically only; keep `m_GNLS` and `m_defect` distinct.
+- **The open number: is `c_γ=c_s`?** The standing-wave argument forces ceiling = photon speed `c_γ`; whether THAT equals
+  the bulk sound speed depends on whether gauge + density share the acoustic metric, or the localization profile
+  `Z(w)`/width `a` rescales the brane gauge cone (the EM sector already shows `μ₀^eff=μ₀/Z_int`). **DERIVE `c_γ/c_s`
+  from the gauge/density KINETIC OPERATOR (the wave-sector action)**, and determine whether it is `ρ`-INDEPENDENT (a
+  pure number) even though each speed drifts. **Do NOT accept `c_γ=c_s` from shared dimensions or the weak-field
+  `em_fields.tex` prose alone.** If the needed gauge/density kinetic-operator data is absent, record
+  **`C_GAMMA_RATIO_UNDERDETERMINED`** with the missing operator/profile data + downstream consequence.
+- **`(c/c_s)³`:** if `c_γ/c_s` is derived, identify the tail factor `R_tail=Θ_tail(c/c_s)³−1` with it (=1 if they
+  coincide) and reconcile with the (legacy-frame) `c=c_s` weak-field statement in `em_fields.tex`; if underdetermined,
+  carry the tail factor as conditional on the `c_γ/c_s` residual.
+- **Constants vs profiles:** separate genuine constants (`K, m_GNLS, ħ` + the flux `J`/asymptotic `ρ₀, c_{s,0}`, per
+  `pathA_19`) from profiles (`ρ(x), v_b(x), c_s(x)`, possibly `c_γ(x)`); state which reference `c_s=1` denotes.
 
-### S2b — the throat as a transonic drain: the flux law `J(ρ₀, geometry)` (replaces the "constant `J`" assumption)
-`pathA_19` flagged `NO_NET_ACCRETION_BC_UNDERIVED` and did NOT prove the flux is a universal constant. Resolve the
-THREE distinct "is it constant?" questions, from the coupled continuity+Bernoulli+EOS profile (S1/S2), and TEST the
-transonic hypothesis rather than assuming it:
+### S2b — the throat as a transonic drain: the `flux_law_verdict` (replaces the "constant `J`" assumption)
+`pathA_19` flagged `NO_NET_ACCRETION_BC_UNDERIVED` and did NOT prove the flux is a universal constant. From the coupled
+continuity+Bernoulli+EOS profile (S1/S2), resolve the THREE distinct "is it constant?" questions and TEST the transonic
+hypothesis rather than assuming it. Produce ONE **`flux_law_verdict`** (one of the three cases below):
   - **Flux conservation ≠ velocity constancy.** In steady state `∇·(ρv_b)=0` makes `J=∮ρv_b·dΣ` the SAME through any
     surface enclosing the drain (Gauss, no sources/leakage) — but `v_b` is NOT constant: as the throat converges
     (`ρ` drops, cross-section narrows) `v_b` ACCELERATES to keep `J` fixed. The throat is a **nozzle**. State both
     explicitly; do not conflate the conserved integral `J` with the local speed `v_b`.
   - **Sonic point = acoustic horizon.** Locate where `v_b` crosses `c_s(ρ)` along the profile. A subsonic→supersonic
-    (transonic) drain is the canonical analog black hole (Unruh draining-bathtub); `v_b=c_s` is the horizon (already
-    named in S2). Determine whether the sonic point sits at/near the mouth.
-  - **Choked flux ⇒ `J` is set by the background, not universal.** If the throat is transonic the flux is CHOKED —
-    pinned by the critical (sonic) condition at the throat from the upstream stagnation state (the background
-    condensate). Derive the critical-flux scaling and DIMENSION-CHECK it to `T⁻¹`, e.g. `J_crit ~ ρ₀ c_{s,0} A_throat`
-    (`ρ₀ c_{s,0} a³` bulk → `T⁻¹`; `ρ_{3,0} c_{s,0} a²` brane → `T⁻¹`), and express its dependence on the background
-    pressure `P₀=Kρ₀⁵`. This makes `J` (hence any inflow-mass) **environment-dependent on `ρ₀`** — a derived feature,
-    not a frozen input. Confirm/deny `J_in=J_out` (true no-net-accretion) is still gated by the throat-bottom topology
-    (open/closed/connected, undetermined) — carry it forward if unresolved.
-  - **Honesty requirement:** "transonic choked drain" is a CANDIDATE mechanism. Derive the stationary profile and TEST
-    whether the throat is actually transonic; a non-transonic (everywhere-subsonic) result is a valid outcome that
-    changes the flux law. Do not assert the horizon/choking; let the profile decide.
+    (transonic) drain is the canonical analog black hole (Unruh draining-bathtub); `v_b=c_s` is the horizon (named in
+    S2). Determine whether the sonic point sits at/near the mouth.
+  - **`flux_law_verdict` ∈ { `TRANSONIC_CHOKED` | `NONTRANSONIC_NO_CHOKED_FLUX` | `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA` }:**
+      - `TRANSONIC_CHOKED`: the flux is choked at the sonic throat. Give it as a **critical-value law**
+        `J_crit = C_{EOS,geom} · ρ_* c_{s,*} A_*` (local sonic values `ρ_*, c_{s,*}, A_*`, related to the upstream
+        `ρ₀, c_{s,0}` by the SOLVED profile), with `C_{EOS,geom}` **DERIVED from the Bernoulli/EOS/geometry** (not just
+        upstream dimensional scaling). Machine-check `[J_crit]=T⁻¹` (e.g. `ρ_* c_{s,*} a³` bulk / `ρ_{3,*} c_{s,*} a²`
+        brane); record its dependence on the background pressure `P₀=Kρ₀⁵` (so `J`, hence any inflow-mass, is
+        environment-dependent — a derived feature, not a frozen input).
+      - `NONTRANSONIC_NO_CHOKED_FLUX`: everywhere-subsonic; give the alternate flux law / profile relation that DOES set
+        `J`, with its `ρ₀` dependence.
+      - `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA`: the parent sources give continuity/Euler identities + a
+        stationary surface definition but NOT a solved nozzle profile (no branch geometry/confinement/BC). NAME the
+        missing data and its effect on `pathA_21`. This is a VALID outcome.
+  - `J_in=J_out` (true no-net-accretion) stays gated by the throat-bottom topology (open/closed/connected, undetermined)
+    — carry it forward if unresolved.
+  - **Honesty requirement:** "transonic choked drain" is a CANDIDATE mechanism — derive the stationary profile and let
+    it decide the verdict; do not assert the horizon/choking.
 
-### S3 — `ħ` provenance: fundamental input or emergent? (named fork; feeds the `pathA_21` M-collapse test)
-`pathA_19` F3 derived `a=ħ/(m c_s0)`, i.e. **`ħ = (dimensionless factor)·m_GNLS·c_s0·a`** — so among `{ħ, m, c_s0, a}`
-only THREE are dimensionally independent. Calling `ħ` fundamental and `a` derived (as F3 did) is a CONVENTION, not a
-physics result. Investigate what `ħ` actually IS in this model and whether it can be expressed from the other genuine
-constants (`K, ρ₀, m`) or a substrate length:
-  - Catalog `ħ`'s structural roles and dimension-check each: quantum of circulation (`κ=2πħ/m`); the
-    phase↔momentum exchange rate (`p=ħ∇θ`, with `θ` dimensionless — "momentum carried per radian of phase twist");
-    the quantum-pressure / core-size scale (`Q=-ħ²/2m ∇²√ρ/√ρ`, sets the healing length `ξ_h=√2 ħ/(m c_s0)`).
-  - **The fork (state which, or carry as a named residual):** if `ħ` is EMERGENT (a derived combination, or fixed by a
-    microscopic substrate length so `a` is the fundamental scale and `ħ=m c_s0 a/√2`), then `ħ=1` is a derived relation
-    and `M` can collapse cleanly in `pathA_21`. If `ħ` is a genuine FUNDAMENTAL input (irreducible action quantum of
-    the medium), then `ħ=1` stays a unit choice and the eventual `M`-collapse rests on that fundamental. A "`ħ` stays
-    fundamental, here is why" verdict with its blocking reason is a VALID result — do not force emergence.
-  - Record the verdict + reasoning; it is a direct input to the `pathA_21` mass-bridge / M-collapse test. No base-set
-    change is MADE in `pathA_20` (that is a `pathA_19`-class base decision); S3 only DETERMINES the status and hands it
-    forward.
+### S3 — `ħ` provenance + the `h`/`2π` decomposition (named fork; feeds the `pathA_21` mass-bridge + M-collapse)
+pathA_19 F3 gave `a=ħ/(m_GNLS c_s0)`, i.e. **`ħ = m_GNLS·c_s0·a`** (for the pathA_19 mouth-moment `a`; the `√2` appears
+ONLY for the healing length, `ħ = m_GNLS·c_s0·ξ_h/√2`, since `a=ξ_h/√2` — keep `a` and `ξ_h` distinct). So among
+`{ħ, m_GNLS, c_s0, a}` only THREE are dimensionally independent; calling `ħ` fundamental and `a` derived (as F3 did) is
+a CONVENTION, not physics. Investigate `ħ`'s structure + provenance — TEST, do not declare:
+  - **Role catalog (dimension-check each):** quantum of circulation `κ=∮v_b·dl=(ħ/m_GNLS)∮∇θ·dl=(h/m_GNLS)·n`
+    (topological, `n∈ℤ`); the phase↔momentum exchange `p=ħ∇θ` (`θ` dimensionless — momentum per radian of phase twist);
+    the quantum-pressure / core scale `Q=-ħ²/(2 m_GNLS) ∇²√ρ/√ρ` (sets `ξ_h`).
+  - **The `h`/`2π` decomposition (winding-quantization hypothesis — TEST it).** Single-valuedness of `ψ=√ρ e^{iθ}`
+    forces phase to wind by `2πn`, so circulation is DISCRETE in steps `h/m_GNLS` (it cannot circulate continuously).
+    Determine whether decomposing `ħ=h/(2π)` is physically meaningful here: (a) does `h` (action per complete winding)
+    emerge as the natural quantum of the CHARGE/vorticity sector (charge = winding `n`) while mass stays CONTINUOUS via
+    the inflow `J` (so same-`n` leptons can differ in mass)? (b) is the inflow/drainage rate `J` a CYCLE-count rate
+    (`ν`-like → pairs with `h`, `2π` enters the mass-bridge) or an ANGULAR rate (`ω`-like → `ħ`)? (c) does defect energy
+    scale as `n²` (since energy `∝κ²`), making the energy ladder non-uniform (a prediction: higher windings disfavored)?
+    Keep `ħ` intact as the GNLS PDE coefficient; expand to `h/(2π)` ONLY inside winding/circulation integrals and
+    cycle-vs-radian rate relations where the `2π` is physical. A "no meaningful split" verdict is valid.
+  - **The provenance fork — emergence requires an INDEPENDENT `ħ`-free input (ANTI-TAUTOLOGY GATE).** `ħ` is EMERGENT
+    ONLY if an independent microscopic/substrate/action relation fixes a length or the action coefficient WITHOUT
+    already containing `ħ` (e.g. a substrate spacing sets `a`, making `ħ=m_GNLS c_s0 a` a derived value; or `h` is fixed
+    by a substrate winding action). **Rearranging the pathA_19 pin relation `a=ħ/(m_GNLS c_s0)` is NOT a derivation of
+    emergence (tautology) — dimension-checking the role catalog is NOT sufficient.** Background-dependence is
+    CORROBORATING evidence only: with `c_s0∝ρ₀²`, an `a`-fixed branch makes `ħ` vary with `ρ₀` (⇒ not a true constant ⇒
+    emergent); test it. If no independent `ħ`-free relation exists, the valid verdict is **`HBAR_FUNDAMENTAL`** or
+    **`HBAR_PROVENANCE_UNDETERMINED`**, each with source + consequence.
+  - Record the verdict + reasoning; it is a direct input to `pathA_21`. No base-set change is MADE here (that is a
+    `pathA_19`-class decision); S3 only DETERMINES the status and hands it forward.
 
-## Acceptance criteria (to finalize against the pathA_19 base)
-1. `c_s` consolidated + machine-verified `[c_s]=L/T` in the established base; state-dependence + Bernoulli coupling
-   recorded; EOS-closure provenance stated honestly.
-2. Three velocities named + dimension-pinned; `ρ`–`v_b`–`c_s` coupling explicit (ledger equations located); constants
-   vs profiles separated.
-3. `c` derived as the standing-wave photon ceiling `c=c_γ` (Compton freeze, `m*`, `E=m*c²`, `m*` tied to the
-   `pathA_19` inflow-mass); `c_γ/c_s` in closed form + its `ρ`-(in)dependence; `(c/c_s)³` identified and reconciled
-   with `em_fields.tex`. The mass-bridge FORM `m_defect=α_J ħ J/c²` + the de Broglie `ħ=c=1` equivalence note are
-   RECORDED (not executed); `M` is NOT collapsed here.
-4. (S2b) the transonic hypothesis is TESTED on the derived profile; flux-conservation-vs-velocity-acceleration stated;
-   if transonic, the choked flux law `J_crit(ρ₀, geometry)` is derived + machine-checked to `[J]=T⁻¹` + its `P₀=Kρ₀⁵`
-   dependence recorded; the sonic-point/horizon location reported; no-net-accretion (`J_in=J_out`) status carried.
-5. (S3) the `ħ`-provenance verdict (fundamental vs emergent) is stated with reasoning + dimension-checked role catalog;
-   no base-set change is MADE; the verdict is handed forward as a `pathA_21` input.
-6. Dual-engine `.wl` agreement; new harness group passes; scripts exit 0 within `timeout 600`; pathA_18 +
-   pathA_19 groups untouched.
+## Acceptance criteria
+1. `c_s` consolidated + machine-verified `[c_s]=L/T` (`c_s²=5Kρ⁴/m_GNLS`) in the pathA_19 base; state-dependence
+   (`∝ρ²`) + the `ρ`–`v_b`–`c_s` Bernoulli coupling recorded; EOS-closure provenance stated honestly.
+2. Three velocities (`v_b, c_s, c_γ`) named + dimension-pinned; coupling explicit (ledger equations located); genuine
+   constants vs profiles separated; `m_GNLS` (constituent) and `m_defect` (throat) kept distinct throughout.
+3. `c=c_γ` derived from WAVE-sector first principles (dispersion/group-velocity or trapped-mode Hamiltonian), NOT from
+   an assumed `E=m_defect c²`/Compton (a proof starting from `E=m_defect c_γ²` is REJECTED; `E=mc²`/Compton are
+   consistency OUTPUTS). The mass-bridge CANDIDATE `m_defect=α_J ħ J/c²` (+ the `h`/`2π` cycle-rate caveat + de Broglie
+   note) is RECORDED as a candidate conversion only; `M` NOT collapsed; `α_J` + the physical bridge deferred to
+   `pathA_21`.
+4. `c_γ/c_s` either DERIVED from the gauge/density kinetic operator (+ `ρ`-(in)dependence + the `(c/c_s)³` tail-factor
+   identification) OR recorded `C_GAMMA_RATIO_UNDERDETERMINED` with the missing data; `c_γ=c_s` from shared dimensions /
+   weak-field prose alone is REJECTED.
+5. (S2b) the transonic hypothesis is TESTED on the derived profile; flux-conservation-vs-velocity-acceleration stated;
+   the result is a single `flux_law_verdict` ∈ {`TRANSONIC_CHOKED` with the DERIVED critical-value law
+   `J_crit=C_{EOS,geom}·ρ_* c_{s,*} A_*` (`[J]=T⁻¹` machine-checked, `P₀=Kρ₀⁵` dependence) ; `NONTRANSONIC_NO_CHOKED_FLUX`
+   with the alternate law ; `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA` naming the missing data}; no-net-accretion
+   (`J_in=J_out`) topology status carried.
+6. (S3) the `ħ`-provenance verdict ∈ {`HBAR_EMERGENT` (ONLY with a named independent `ħ`-free relation) ;
+   `HBAR_FUNDAMENTAL` ; `HBAR_PROVENANCE_UNDETERMINED`} stated with reasoning; the `h`/`2π` decomposition assessed
+   (charge↔`h` vs mass↔`J`; `J` cycle-vs-angular; energy`∝n²`); rearranging the pin relation is NOT accepted as
+   emergence; no base-set change MADE; verdict handed to `pathA_21`.
+7. Dual-engine `.wl` agreement for the ALGEBRAIC/DIMENSIONAL claims ONLY (`[c_s]`, `[c_γ]`, flux dimensions, role-catalog
+   dimensions, ratio algebra); non-algebraic physics judgments (transonic existence, `ħ` provenance, profile existence,
+   no-net-accretion topology, standing-wave ontology) get human-readable residuals, NOT `.wl` certification. New harness
+   group passes; scripts exit 0 within `timeout 600`; pathA_18 + pathA_19 groups untouched.
 
-**Acceptance is PASS/FAIL with NAMED RESIDUALS (per `pathA_19`): script exit-0 is NECESSARY, NOT SUFFICIENT.** Every
-rejected hypothesis (e.g. non-transonic throat, `c_γ≠c_s`, `ħ` stays fundamental) must leave a named residual + source
-+ downstream consequence. Negative/`UNDETERMINED` results are valid outcomes, not execution failures.
+**Acceptance is PASS/FAIL with NAMED RESIDUALS: script exit-0 is NECESSARY, NOT SUFFICIENT.** Every rejected hypothesis
+(non-transonic throat; `c_γ≠c_s` / underdetermined; `ħ` fundamental/undetermined; no meaningful `h`/`2π` split) must
+leave a named residual + source + downstream consequence. Negative/`UNDETERMINED` results are VALID outcomes, not
+execution failures.
 
 ## Out of scope
-The mass-bridge DERIVATION + M-collapse test (`pathA_21`, using the `c` + `ħ`-verdict from here); emergent `G` and the
-`m↔G` unification (`pathA_21`); scale-map → `m̂0²·S_port` (`pathA_22`); B2c rerun; freeze amendment. Do NOT collapse `M`
-or change the base set in this step.
+The mass-bridge DERIVATION + `α_J` + the `2π` resolution + M-collapse test (`pathA_21`, using the `c` + `ħ`-verdict +
+`flux_law_verdict` from here); emergent `G` and the `m↔G` unification (`pathA_21`); scale-map → `m̂0²·S_port`
+(`pathA_22`); B2c rerun; freeze amendment. Do NOT collapse `M` or change the base set in this step.
 
 ## Review (orchestrator, after Codex)
-Transliteration-fidelity (one clean agent per new script); independent dimensional re-derivation of `[c_s]`,`[c]`,
-the three velocities; adversarial pass (distrust-all-clean) targeting the `c=c_s` vs `c≠c_s` verdict and the
-EOS-closure honesty. Claude reads only residuals. Then gate to `pathA_21`.
+Transliteration-fidelity (one clean agent per new script); independent dimensional re-derivation of `[c_s]`, `[c_γ]`,
+the three velocities, the flux dimensions; adversarial pass (distrust-all-clean) targeting: the `c_γ=c_s` vs
+`C_GAMMA_RATIO_UNDERDETERMINED` verdict, the standing-wave derivation's NON-CIRCULARITY (no `E=mc²` premise), the
+`flux_law_verdict` (transonic not assumed), the `ħ`-emergence ANTI-TAUTOLOGY gate, and the EOS-closure honesty. Claude
+reads only residuals. Then gate to `pathA_21`.

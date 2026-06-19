@@ -1,9 +1,13 @@
 # Directive pathA_21 — Emergent constants, Step 3: `G`, the mass-bridge, and the `m↔G` unification
 
 **Status:** ⚠️ DRAFT — to be FINALIZED after `pathA_20` (`c_s`+`c`) lands + is reviewed. It CONSUMES `pathA_20` outputs:
-the derived `c` (= `c_γ`) and `c_γ/c_s`; the `ħ`-provenance verdict (S3: fundamental vs emergent); and the transonic
-flux law `J_crit(ρ₀, geometry)` (S2b). Do NOT fire until `pathA_20` is gated. This is where the `pathA_19` honest
-negative (`INFLOW_MASS_SOURCE_MISSING`, base retained `{L,T,M}`) gets RE-TESTED with the now-available ingredients.
+the derived `c` (= `c_γ`) and the `c_γ/c_s` result (closed-form OR `C_GAMMA_RATIO_UNDERDETERMINED`); the `ħ`-provenance
+verdict (`HBAR_EMERGENT` / `HBAR_FUNDAMENTAL` / `HBAR_PROVENANCE_UNDETERMINED`) + the `h`/`2π` decomposition assessment;
+and the **`flux_law_verdict`** (`TRANSONIC_CHOKED` with `J_crit` / `NONTRANSONIC_NO_CHOKED_FLUX` with the alternate law /
+`STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA`) — NOT an unconditional `J_crit`; each case routes differently below.
+Do NOT fire until `pathA_20` is gated. This is where the `pathA_19` honest negative (`INFLOW_MASS_SOURCE_MISSING`, base
+retained `{L,T,M}`) gets RE-TESTED with the now-available ingredients. If `pathA_20` returned the underdetermined
+verdicts, this step inherits those as blocking residuals (it cannot manufacture the missing profile/operator data).
 **Date:** 2026-06-19
 **Owner:** Codex (DERIVES + codes; iterates until scripts exit 0). Claude reviews afterward.
 **Trigger:** decision-13 §4 item 3, Step 3 of 4. Chain: `pathA_19` (foundation) → `pathA_20` (`c_s`+`c`) →
@@ -20,7 +24,7 @@ DERIVATION. No model-formula changes, no freeze touch, no `m̂0²·S_port` un-pi
 `dimensional_check.py` (new group; leave pathA_18 + pathA_19 + pathA_20 groups intact). Same infra constraints as
 `pathA_19`/`pathA_20` (read-only sim dir; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). **Dual-engine required**
 where MMA can verify the force law, the `G` reduction, and the dimensional algebra. Use the `pathA_19` base + `pathA_20`
-constants (`c`, `c_γ/c_s`, the `ħ`-verdict, `J_crit`).
+outputs (`c`, the `c_γ/c_s` result, the `ħ`-verdict + `h`/`2π` assessment, the `flux_law_verdict`).
 
 ## Work items
 
@@ -36,7 +40,9 @@ constants (`c`, `c_γ/c_s`, the `ħ`-verdict, `J_crit`).
 - Produce the relation `pathA_19` demanded and could not find: an action-level / boundary-source / Noether-charge /
   Hamiltonian-energy derivation that ties the throat rest (gravitational) mass `m_defect` to the inflow rate `J`.
   Target FORM (from `pathA_20`): **`m_defect = α_J ħ J / c²`** (= `E=mc²` with `ħ·(α_J J)` the rest energy = the
-  standing-wave `ħω₀`). DERIVE `α_J`; do not assert it.
+  standing-wave `ħω₀`). DERIVE `α_J`; do not assert it. **`2π`/`h` resolution:** if `pathA_20` S3 found `J` is a
+  CYCLE-count rate (`ν`-like), the form is `m_defect = α_J h J_ν/c² = 2π α_J ħ J_ν/c²`; DERIVE whether the `2π` is
+  physical or absorbed into `α_J` (this factor is calibration-critical — a stray `2π` shifts the GR-anchor match).
 - **Equivalence-principle check (a derivation, if it lands):** show the INERTIAL mass (resistance to accelerating the
   throat — added mass / momentum of the entrained flow) equals the SAME inflow quantity as the gravitational/source
   mass. If both equal `α_J ħ J/c²`, the equivalence principle is DERIVED here, not assumed.

@@ -18,10 +18,13 @@ at the foundation level → honest negative result, valid per the falsification 
 but NOT yet finalized against the pathA_19 outputs. Working-tree changes (uncommitted unless a checkpoint was taken):
 `dimensional_check.py` (+509), `reports/pathA_19_dimensional_foundation.md`, `tools/pathA_19_foundation_dimensional_crosscheck.wl`,
 directives pathA_19 + pathA_20, decision-13.
-**NEXT ACTION:** `pathA_20` is FINALIZED + `pathA_21` drafted (both CONSUME the pathA_19 outputs; pathA_20 additionally
-carries **S2b** transonic/choked flux law + **S3** `ħ`-provenance fork; pathA_21 carries the mass-bridge + M-collapse
-re-test). NEXT = run the Codex DIRECTIVE design-review (+confirm-pass) on `pathA_20` (standing process for foundational
-directives), apply fixes, THEN execute `pathA_20` — gated on the user (sequential-chunk rule).
+**NEXT ACTION:** `pathA_20` is FINALIZED + design-reviewed: Codex design-review → SOUND-WITH-FIXES (10 fixes: the `√2`
+`ħ=m_GNLS c_s0 a` correction, the `ħ`-emergence anti-tautology gate, `m_GNLS`/`m_defect` split, non-circular standing-
+wave `c`, `c_γ/c_s` underdetermined branch, S2b `flux_law_verdict` cases, choked-flux critical-value law, mass-bridge
+candidate-only wording, dual-engine scope) → all applied + the `h`/`2π`/winding S3 content added → confirm-pass
+**SOUND-AS-IS** (reviews in `_scratch/pathA_20_directive_review*.md`). `pathA_21` handoff updated to consume the
+`flux_law_verdict`. NEXT = **execute the `pathA_20` run** (user authorized "proceed with pathA_20"), then review
+(transliteration-fidelity + dimensional + adversarial), then gate to `pathA_21`.
 **Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
 Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
 failure; pathA_21 carries the concrete derivation target to re-test it.

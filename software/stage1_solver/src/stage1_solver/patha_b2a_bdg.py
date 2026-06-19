@@ -190,15 +190,45 @@ def _field_linf(fields: ClosedCoupledFields) -> dict[str, float]:
     }
 
 
-def solve_closed_background(*, tau: float, grid_level: tuple[int, int]) -> tuple[Any, Any, Any, dict[str, Any]]:
+def solve_closed_background(
+    *,
+    tau: float,
+    grid_level: tuple[int, int],
+    initial_state: torch.Tensor | None = None,
+    initial_grid: Any | None = None,
+    continuation_K_values: Sequence[float] | None = None,
+    initialization_note: str | None = None,
+    newton_overrides: Mapping[str, Any] | None = None,
+) -> tuple[Any, Any, Any, dict[str, Any]]:
     dtype = configure_backend(BackendConfig())
     branch = frozen_patha_b2a_branch(grid=grid_level, tau=tau)
+    if newton_overrides:
+        branch = replace(branch, newton=replace(branch.newton, **dict(newton_overrides)))
     spec = frozen_s_sigma_spec(tau)
     provider = resolve_s_sigma(spec)
     grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
     boundaries = branch_boundary_conditions(branch)
-    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    if initial_state is None:
+        state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+        initialization_source = "default_closed_branch_state"
+    else:
+        state = initial_state.detach().clone().to(dtype=dtype, device="cpu")
+        if initial_grid is not None and (
+            int(initial_grid.spec.nr) != int(grid.spec.nr)
+            or int(initial_grid.spec.nw) != int(grid.spec.nw)
+            or abs(float(initial_grid.spec.r_max) - float(grid.spec.r_max)) > 0.0
+            or abs(float(initial_grid.spec.w_max) - float(grid.spec.w_max)) > 0.0
+        ):
+            state = resample_closed_branch_state(state, initial_grid, grid, branch)
+        initialization_source = "warm_start_state"
     shared_preconditioner_factory = make_closed_coupled_colored_sparse_jacobian_lu_factory(grid)
+    continuation_values = tuple(
+        float(value) for value in (
+            branch.continuation_K_values if continuation_K_values is None else continuation_K_values
+        )
+    )
+    if not continuation_values:
+        raise ValueError("continuation_K_values must contain at least one EOS value")
 
     stages: list[dict[str, Any]] = []
     converged = True
@@ -206,7 +236,7 @@ def solve_closed_background(*, tau: float, grid_level: tuple[int, int]) -> tuple
     started = time.perf_counter()
     previous_grid = grid
 
-    for eos_K in branch.continuation_K_values:
+    for eos_K in continuation_values:
         residual_fn = lambda x, eos_K=eos_K: patha_closed_branch_residual(
             x,
             grid,
@@ -288,12 +318,35 @@ def solve_closed_background(*, tau: float, grid_level: tuple[int, int]) -> tuple
         "r0_max": float(torch.max(fields.r0).detach().cpu().item()),
         "field_linf": _field_linf(fields),
         "previous_grid": previous_grid.to_dict(),
+        "initialization": {
+            "source": initialization_source,
+            "note": initialization_note,
+            "continuation_K_values": list(continuation_values),
+            "newton_overrides": {} if newton_overrides is None else dict(newton_overrides),
+        },
     }
     return grid, state, fields, summary
 
 
-def make_background_bundle(*, tau: float, grid_level: tuple[int, int]) -> dict[str, Any]:
-    grid, _state, fields, summary = solve_closed_background(tau=tau, grid_level=grid_level)
+def make_background_bundle(
+    *,
+    tau: float,
+    grid_level: tuple[int, int],
+    initial_state: torch.Tensor | None = None,
+    initial_grid: Any | None = None,
+    continuation_K_values: Sequence[float] | None = None,
+    initialization_note: str | None = None,
+    newton_overrides: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    grid, _state, fields, summary = solve_closed_background(
+        tau=tau,
+        grid_level=grid_level,
+        initial_state=initial_state,
+        initial_grid=initial_grid,
+        continuation_K_values=continuation_K_values,
+        initialization_note=initialization_note,
+        newton_overrides=newton_overrides,
+    )
     branch = summary["branch"]
     spec = summary["s_sigma_spec"]
     density = fields.psi_real**2 + fields.psi_imag**2
@@ -318,6 +371,7 @@ def make_background_bundle(*, tau: float, grid_level: tuple[int, int]) -> dict[s
             "final_eos_K": summary["final_eos_K"],
             "chemical_potential": summary["chemical_potential"],
             "wall_clock_seconds": summary["wall_clock_seconds"],
+            "initialization": summary["initialization"],
         },
         "geometry": {
             "a": FROZEN_A,

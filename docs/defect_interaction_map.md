@@ -217,8 +217,17 @@ DERIVED on the same `A0` via the **basis-invariant Green/self-energy** route (NO
 (`Z0/Z2/N0/N2 ~0.4–0.6%`, `Z4/N4 ~2–5%`). Structural win confirmed: `D0=K−B0−Z0≈7.7209`, `Z0` ~3e-9 of `K` → **no
 cancellation**. Operator FAITHFUL + target-blind; needed **3 review rounds** (adversarial caught real gate-theater
 twice — unconverged + fake "dual engine" + tautological basis gate — all fixed; round 3 verified genuine).
-The detailed resume-here record is `software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
-**Paused at the B2b→B2c gate (user reviewing the numbers before B2c — the verdict chunk — launches).**
+⏳ **B2c** integrated the full derived bundle → the `R_norm(τ)=0` calibration (directives `pathA_14`/`15`/`16`; NOT
+committed as a verdict). Raw measure: `P0` is 6.7–9.6 orders below `54/5=10.8`. **But the verdict is UNDETERMINED, not
+a miss** — two audits (`pathA_17` validity + `pathA_18` dimensional) + two verification agents found the comparison
+pins `m̂0²·S_port=1`, a **dimensionful emergent-normalization** factor (not a free number); pinning it FORCES the
+`D0→0` knife-edge. It is NOT a dimensional bug (gaps order-neutral) and NOT a validated miss. The ~9 orders = exactly
+what `m̂0²·S_port` would supply; whether its DERIVED value is ≈1 (miss) or large (match) is the open question.
+**→ NEXT (real next chunk): the EMERGENT-CONSTANTS derivation** — `c_s, c, G` are outputs of the 4D PDE, not
+fundamental; derive what they ARE + bulk-vs-brane dimensions + reduction factors (test: `G`→3D `L³T⁻²M⁻¹`?; `c`vs`c_s`
+= wave-speed vs terminal-velocity?), THEN `m̂0²·S_port` → re-do B2c. Resume-here doc:
+`software/stage1_solver/decisions/13_emergent_constants_derivation.md`. Standing step locked in: dimensional-check
+(units restored, `dimensional_check.py` harness) before trusting numbers.
 
 **Immediate — B2 (DERIVE the back-reaction bundle, decision-12 "Reading A", user-authorized):** B2 surfaced that the
 BdG spectrum (`c_j,ϖ_j,B_n`) and Maxwell transfer (`Z_n,N_n`) were never solved on the Path-A background — M1c used
@@ -230,12 +239,15 @@ posited M1b modes. So derive them properly (the −10.8 miss partly rested on po
    U/W ports → direct `{Z_n,N_n}`~~ ✅ DONE (task #69; directives `pathA_11`/`pathA_12`/`pathA_13`). Genuinely-
    independent 2nd-/4th-order dual engine; per-coefficient error bars in `error_budget` for B2c §J (soft spots
    `Z4/N4 ~2–5%` feed held-out `P4/R_pole`, not the `R_norm` calibration which rides on tight `N0`/`K`).
-3. **B2c** — integrate derived `{K,M,B_n,Z_n,N_n}` → the unique `R_norm(τ)=0` root-find (stable-side `D0>0`) + §J
-   error bars; report `τ*` + naturalness + held-out `R_pole/P2/P4`. **Leaves target-blind.** (task #70)
+3. ~~**B2c** — integrate derived `{K,M,B_n,Z_n,N_n}` → the `R_norm(τ)=0` calibration~~ built + reviewed (task #70;
+   directives `pathA_14`/`15`/`16`) — **verdict UNDETERMINED** (above), NOT committed as a miss. Target-blind
+   preserved; zero new DOF.
 Freeze stays valid (it froze forms/conventions, not numeric spectra); only a dated §5b clarification was added.
 
-**If it misses:** κ_PV discipline — diagnose + **derive** the missing physics, never add a rescue DOF. Richest
-candidates from this map: the shedding *rate*, the translation↔throat bridge, pair production.
+**The "miss" is not validated — it hinges on the un-derived dimensionful `m̂0²·S_port`.** Next = derive the EMERGENT
+CONSTANTS (`c_s, c, G`) and the bulk→brane normalization first (`decisions/13`), THEN `m̂0²·S_port` → re-do B2c. If a
+real miss survives THAT, κ_PV applies (derive missing physics, never a rescue DOF; candidates: shedding rate,
+translation↔throat bridge, pair production).
 
 **Parked for the user (conceptual, §7):** elementary-vs-composite defect; exact-zero vs residual swirl→mass.
 

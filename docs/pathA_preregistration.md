@@ -267,6 +267,21 @@ benchmark and it is the anchor; the held-outs share `D0`). The substantial *exte
 predictions), collected as the prediction set widens — exactly the bootstrap. The calibrated-parameter (DOF)
 count and the realized surplus (with full calibration-covariance propagation, §J) are reported (§K).
 
+**STANDING VERIFICATION STEPS (process discipline — dated 2026-06-19, `[[feedback-dimensional-consistency-check]]`).**
+Two checks are MANDATORY and run as gates, not afterthoughts:
+1. **Dimensional-consistency check BEFORE trusting any number.** Restore units symbolically (keep `a, c_s, c, G,
+   ħ, m`; do NOT rely on the `a=c_s=ħ=m=1` natural-unit pins) and machine-verify (SymPy harness
+   `software/stage1_solver/src/stage1_solver/dimensional_check.py`) that every equation in the active chain is
+   homogeneous. Natural units HIDE dropped factors (an `a⁵`, a reduction volume/Jacobian) that resurface as orders
+   of magnitude. Pay special attention to (a) every REDUCTION's integration measure, and (b) any quantity PINNED to
+   a dimensionless `1` that is actually dimensionful — e.g. `m̂0²·S_port`, which the audit (`pathA_17`/`18` +
+   verification, 2026-06-19) showed is the **dimensionful conversion factor** `T_target/[P0]`, NOT a free
+   dimensionless number; pinning it to `1` silently fixes the M/L/T scale and therefore the `D0→0` knife-edge
+   verdict. `[G]` is the **effective 3-spatial-dimension** (brane-projected) Newton constant `L³T⁻²M⁻¹`, NOT 4-D.
+2. **Transliteration-fidelity audit** after every computational-physics coding step (`[[feedback-transliteration-
+   fidelity-audit]]`). The two are complementary: fidelity catches a faithful-but-wrong operator; the dimensional
+   check catches a dropped-factor / pinned-dimensionful one. Neither MMS nor the arbiter catches these.
+
 ---
 
 ## §I. Stability gates (frozen)

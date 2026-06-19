@@ -131,6 +131,47 @@ N-fit reconditioned (value-preserving column equilibration; cond 5.5e6→33; `N0
 **Lesson reinforced:** the standing fidelity audit verifies the operator FORM; the **adversarial pass is what catches
 can't-fail/tautological gates and unconverged-shipped-as-converged** — needed 3 rounds here.
 
+## B2c STATUS — built + reviewed; **VERDICT SUPERSEDED → UNDETERMINED (see `decisions/13`)**
+> ⚠️ **2026-06-19 UPDATE:** the "rigorous MISS" reading below is **SUPERSEDED.** Two audits (`pathA_17` validity +
+> `pathA_18` dimensional) + two independent verification agents found the comparison pins `m̂0²·S_port=1`, a
+> **dimensionful emergent-normalization conversion factor** (NOT a free dimensionless number) — pinning it forces the
+> knife-edge. It's NOT a dimensional bug (gaps are order-neutral) and NOT a validated miss. **Verdict UNDETERMINED,
+> hinging on the un-derived `m̂0²·S_port`. The real next chunk is the EMERGENT-CONSTANTS derivation → see
+> `decisions/13_emergent_constants_derivation.md` (the resume-here doc).** B2c is NOT committed as a miss. The numbers
+> + machinery below remain valid; only the interpretation changed. (Original "MISS" block kept as historical record:)
+
+## B2c STATUS — ✅ DONE — ~~**rigorous MISS verdict**~~ [SUPERSEDED, see banner above] (2026-06-19)
+Directives `pathA_14` (build) + `pathA_15` (remediation #1: verdict logic + numerics) + `pathA_16` (remediation #2:
+report framing). Files: `src/stage1_solver/patha_b2c_calibration.py` (NEW: per-τ re-solve → assemble
+`direct_coefficients` → `lane_extract`/`observable_residuals` → `R_norm`; genuinely-independent SymPy series
+dual-engine; real Brent/bisection root-finder; warm-start τ-homotopy + wall predictor; 3 real negative controls),
+MODIFIED `patha_b2a_bdg.py` (additive optional warm-start/Newton-override plumbing; default behavior unchanged),
+tests (`test_patha_b2c_calibration.py`), report (`reports/patha_b2c_calibration_report.md`).
+**VERDICT = MISS (measured + fit-independent).** At every converged τ the model's `P0` is **6.7–9.6 decimal orders
+below** the GR target `54/5=10.8` on the stable side (τ=1: `P0=2.795e-9`, 9.59 orders; τ=0.029: `P0=1.22e-6`,
+6.95 orders) — directly measured, no extrapolation. Algebraically `P0=N0/D0`, so any stable root needs
+`D0(τ*)=N0(τ*)/10.8`, and since `N0/10.8 ≈ 2e-9–5e-8 ≪ K ≈ 0.22–7.7`, **any root is a knife-edge cancellation
+`D0≪K` regardless of τ\*** → the τ=1 "structural win" (no fragile cancellation) does NOT survive calibration; the GR
+anchor is reachable only by riding the `D0→0` stability boundary = not a natural calibration. **No confirmed τ\*:**
+the root sits below the resolvable wall-stiffness floor `τ≈0.029`; that floor is **numerical** (deepest converged
+`D0=O(0.1)`, `K/(B0+Z0)=849`; failures are smooth line-search/continuation stalls — NOT a diagnosed physical
+marginal-stability edge; no D0/Jacobian collapse was measured there). τ\* itself is **fit-dependent across ~3 orders**
+(`3.4e-5 / 7.0e-4 / degenerate`) → reported as a bound, NOT pinned (and not needed for the verdict). Held-out
+`R_pole/P2/P4` NOT emitted (no confirmed τ\*); **target-blind firewall intact; zero new DOF.** Full stage1 suite green.
+**REVIEW (3 rounds, distrust-all-clean earned its keep AGAIN):** R14 build shipped a **FATAL** verdict (located the
+root from the frozen-background prior its own drift table discredited → adversarial caught it). R15 fixed the verdict
+logic (frozen-prior-free, regression-tested) but the warm-start numerics **converted no new converged point** (3%
+descent, band not reached) and the report had **false precision** (12-digit τ_crit) + buried the rigorous result →
+adversarial caught it (MAJOR). R16 (framing-only) foregrounded the measured-deficit + algebraic-knife-edge headline,
+demoted τ\* to a bound+fit-spread, softened the numerical-floor wording, stated numerics limits honestly → final
+adversarial **CLEAN**. Fidelity certified the assembly/dual-engine math FAITHFUL + the warm-start GENUINE + the
+verdict logic frozen-prior-free; all UNTOUCHED through R16. **Lesson reinforced:** the FATAL flaw was not gate-theater
+but a *verdict that leaned on a discredited number while the report itself discredited it* — adversarial-on-the-verdict
+(not just on the gates) is what caught it.
+**→ NEXT PROGRAM STEP: κ_PV.** The miss localizes to the radiative-normalization sector (`N0/P0` is ~9 orders too
+small at the natural point). κ_PV = diagnose WHICH derivable physical contribution the minimal Hooke model dropped,
+then DERIVE it (decision-11 §4b discipline) — **never a rescue DOF.**
+
 ## NEXT STEPS (in order)
 1. ~~§5b clarification note to `decisions/11`~~ — DONE.
 2. ~~Scaffold + run B2a (`pathA_09`/`pathA_10`); review (fidelity + adversarial); commit~~ — DONE + committed.
@@ -138,11 +179,15 @@ can't-fail/tautological gates and unconverged-shipped-as-converged** — needed 
    → derived `{Z0,Z2,Z4,N0,N2,N4}`; 3-round review; commit~~ — **DONE + committed.**
    **NOTE (user gate 2026-06-18): user paused AFTER the B2b commit to review the numbers themselves before B2c is
    launched — do NOT start B2c until the user gives the go.**
-4. **B2c — integrate + calibrate (task #70).** Feed the full derived bundle `{K,M,B_n,Z_n,N_n}` (B1 `χ,K,M` + B2a
-   `B_n` + B2b `Z_n,N_n`) → `patha_extraction` → the unique `R_norm(τ)=0` deterministic root-find on the stable-side
-   `D0>0`. §J: propagate the B2a + B2b per-coefficient error bars (esp. `Z4/N4 ~2–5%`) into held-out
-   `R_pole/P2/P4`; report `τ*`, naturalness (`|ln τ*|`, `K/(B0+Z0)` cancellation ratio), held-out surplus. **LEAVES
-   target-blind** (the `R_norm` anchor is the calibration target; do NOT peek at the held-out `R_pole/P2/P4` targets).
+4. ~~B2c — integrate + calibrate (task #70)~~ — **DONE 2026-06-19 (rigorous MISS; see B2c STATUS above).** Committed
+   per user go. Target-blind preserved (held-out NOT emitted; no confirmed τ\*); zero new DOF.
+5. **EMERGENT-CONSTANTS derivation (NEXT — supersedes the premature "κ_PV" framing). See `decisions/13`.** The B2c
+   "miss" is undetermined: it hinges on the un-derived dimensionful `m̂0²·S_port`, which is part of the bulk→brane
+   emergent-normalization structure. So FIRST derive what the constants `c_s, c, G` actually ARE in this model
+   (emergent outputs of the 4D PDE, not fundamental) + their bulk-vs-brane dimensions + the reduction factors (test:
+   `G` reduces to 3D `L³T⁻²M⁻¹`?; `c` vs `c_s` = wave-speed vs terminal-velocity?). THEN `m̂0²·S_port` follows → re-do
+   B2c → real verdict. A miss-after-that → κ_PV (derive missing physics, never a knob). Constants/`m̂0²·S_port` may
+   require a GATE-A freeze amendment (new hash) — methodology call with the user.
 Discipline unchanged: Codex codes / Claude reviews; dual-engine + fidelity + adversarial per chunk; commit per
 validated chunk; build target-blind in the held-out sense (don't peek at `R_pole/P2/P4` targets; `R_norm` anchor is
 the calibration target, allowed).

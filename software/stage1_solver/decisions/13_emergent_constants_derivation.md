@@ -8,6 +8,26 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
+## 0. STATUS / NEXT ACTION (resume here after /compact — 2026-06-19)
+**Where we are:** the emergent-constants chunk is split into 4 gated sub-directives (see §4). `pathA_19` (FOUNDATION)
+is **EXECUTED + REVIEWED CLEAN (2026-06-19)** — see §8 for the verdict ledger. Codex (gpt-5.5, xhigh) ran the
+derivation; two clean transliteration-fidelity agents (Python harness group + Mathematica `.wl`) both returned
+**FIDELITY-CLEAN**, the `.wl` confirmed a genuinely INDEPENDENT engine, side-by-side scoping CLEAN (509 ins / 0 del,
+pathA_18 + `dimensional_dictionary()`/D1–D3 untouched). **F1 verdict = RETAIN `{L,T,M}`** (mass-as-inflow NOT derivable
+at the foundation level → honest negative result, valid per the falsification rule). `pathA_20` (`c_s`+`c`) is drafted
+but NOT yet finalized against the pathA_19 outputs. Working-tree changes (uncommitted unless a checkpoint was taken):
+`dimensional_check.py` (+509), `reports/pathA_19_dimensional_foundation.md`, `tools/pathA_19_foundation_dimensional_crosscheck.wl`,
+directives pathA_19 + pathA_20, decision-13.
+**NEXT ACTION:** `pathA_20` is FINALIZED + `pathA_21` drafted (both CONSUME the pathA_19 outputs; pathA_20 additionally
+carries **S2b** transonic/choked flux law + **S3** `ħ`-provenance fork; pathA_21 carries the mass-bridge + M-collapse
+re-test). NEXT = run the Codex DIRECTIVE design-review (+confirm-pass) on `pathA_20` (standing process for foundational
+directives), apply fixes, THEN execute `pathA_20` — gated on the user (sequential-chunk rule).
+**Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
+Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
+failure; pathA_21 carries the concrete derivation target to re-test it.
+
+---
+
 ## 1. The headline: B2c does NOT give a validated hit-or-miss
 B2c computed, on the self-consistent Path-A background, that the model's `P0` is **6.7–9.6 orders of magnitude below**
 the GR quadrupole target `54/5 = 10.8` (measured at every converged τ: `P0=2.795e-9` at τ=1 … `1.22e-6` at
@@ -50,14 +70,61 @@ What the verification already established about the constants:
 - The GR target `54Gc_s⁵/(5a⁵c⁵)` is NOT dimensionless on its own (it carries `M⁻¹L⁻²T⁻²` with 3D `G`); it is used as
   the Peters **pure number `54/5`** with constants pinned to 1, and `m̂0²·S_port` silently absorbs the dimension.
 
-## 3. User hypothesis to test: `c` ≠ `c_s` (wave speed vs terminal velocity)
-**`c_s` = the speed waves travel *through* the medium (sound).** **`c` = possibly the terminal/drag-limited speed of
-an *object* moving through the medium** (analogy: speed of sound vs an object falling through the fluid) — a
-*different* physical quantity with a different origin, not just `c_s` relabeled. This would explain why `(c/c_s)³`
-appears as a non-trivial bundle ratio (`R_tail`). **Let the math decide** — the constants derivation must determine
-what `c` actually is (= `c_s`? a drag/terminal speed? the localized-Maxwell-sector speed?) and its relation to `c_s`.
+## 3. The velocity structure (refined with the user, 2026-06-19): THREE scales + the standing-wave bridge
+The model has **three distinct velocities, all `L·T⁻¹`** (so dimensional analysis alone cannot separate them — only the
+dynamics can). The earlier "c vs c_s = wave-vs-terminal-velocity" framing is superseded by this richer picture:
+- **`v_b` — background condensate flow velocity** `v_b=(ħ/m)∇θ` (drift of the medium). This is the **gravitational-sector
+  variable**: gradients of `v_b` and `ρ` ARE the analog field; `v_b=c_s` is the acoustic horizon. Varies in space, not
+  constant. **`ρ` is ALSO not constant and is coupled to `v_b`** via stationary continuity `∇·(ρv_b)=0` + quantum-
+  Bernoulli `½mv_b²+μ(ρ)+V+Q=const` (flow speeds up → `ρ` drops → `c_s` drops). So `ρ, v_b, c_s` are ONE coupled
+  profile, not independent dials; genuine constants are `K, m, ħ, a`, the Bernoulli head, the mass flux, and the
+  asymptotic `ρ₀/c_{s,0}` (the `c_s=1` pin = `c_{s,0}`). (Its full `G` role → `pathA_20`.)
+- **`c_s` — bulk sound speed** (density/phonon waves through the medium). EOS-set, `∝ρ²`.
+- **`c_γ` — photon/gauge-wave speed** (massless gauge excitation on the brane); the brane light cone.
+
+**The standing-wave bridge (the key insight).** A massive particle (throat) is a **standing wave of the photon/gauge
+field** — two counter-propagating `c_γ`-waves. Consequences, to be derived: (a) rest internal oscillation = Compton
+frequency `ω₀=m*c_γ²/ħ`, so `E_rest=m*c_γ²` is trapped-wave energy; (b) driving the envelope at `v` Doppler-shifts the
+components and slows the internal clock as `ω₀/γ`, **freezing at `v→c_γ`** (= relativistic time dilation, the user's
+"oscillations stop at light speed"); (c) the envelope cannot outrun its constituent waves, so the **terminal-velocity
+ceiling is `c=c_γ`** — `c` is the terminal velocity AND the photon speed, unified because matter is standing light.
+This makes the old `c≠c_s` hypothesis and the existing `c=c_s` result COMPATIBLE: `c=c_γ` is forced;
+
+**The one surviving open number: `c_γ/c_s`.** Particle ceiling = photon speed is forced; whether the photon (brane
+gauge) speed equals the bulk sound speed depends on whether gauge + density share the acoustic metric, or the
+localization profile `Z(w)`/width `a` rescales the brane gauge cone (the EM sector already shows `μ₀^eff=μ₀/Z_int`).
+**`c_γ/c_s` (closed form) IS the `(c/c_s)³` tail factor `R_tail`** (=1 iff they coincide). Let the math decide.
+
+**Is DEFECT mass emergent? (user idea, 2026-06-19; sharpened by Codex directive-review into a falsifiable test.)** The
+idea: a defect is a SINK pulling superfluid inward, and that inflow strength is the defect's mass; the same inflow
+shared between two defects is their attraction, so **`m_defect` and `G` are two faces of one quantity** (→ `pathA_21`).
+**Two masses must NOT be conflated:** `m_GNLS` (the constituent mass in the parent action's kinetic/EOS/current terms)
+is part of the EXACT action and stays `[M]` unless an action-level rewrite keeps every term homogeneous; only the
+DEFECT mass `m_defect` (a throat branch property) might be emergent. The ontology says defect mass ↔ drainage/VOLUME
+deficit (volume flux), charge ↔ vorticity flux — so do not assume mass = number flux; frame-tag number flux
+`J=T⁻¹`, volumetric `Q_vol=ρ⁻¹J`, mass flux. Honest relation: `m_defect=α_J ħ J/c_γ²` (`α_J` dimensionless/branch
+data); `m_defect=J` only after `ħ=c=1` (→ using the not-yet-derived `c` to drop `M` is CIRCULAR; de Broglie route is a
+note to `pathA_20`). **Falsifiable:** `{L,T}` (mass emergent) is allowed ONLY if the whole action rewrites homogeneously
+AND a boundary/source/Noether/Hamiltonian derivation ties `m_defect` to the inflow; else RETAIN `{L,T,M}` and record
+`J` as a conserved rate — a valid negative result. **`a`-pin:** `a` is a mouth-radius collective MOMENT (not a
+fundamental coordinate), particle-dependent + deformation-fragile; the conserved invariant is the flux `J` (Gauss, in a
+no-leakage region — but the throat bottom may be open, so no-net-accretion must be a derived BC or a logged gap). Assess
+re-pinning `a→J`, but do NOT claim it changes `m̂0²·S_port` (may be dimensionally neutral) — that value is `pathA_22`.
 
 ## 4. NEXT CHUNK — the emergent-constants derivation (the agreed next step)
+**Execution split (user call, 2026-06-19 — foundation first):** the derivation is run as FOUR gated sub-directives, not
+one: **`pathA_19` (FOUNDATION** — base set / mass fork M-vs-`J` / flux-invariant re-pin of `a` / pin over-determination
+/ dictionary / paper-prose reconciliation; this is split out first because it can change the base dimensional system
+everything else sits on; ✅ DONE 2026-06-19, see §8) → **`pathA_20`** (`c_s` + `c`, the velocity structure; FINALIZED
+against the pathA_19 base — now also carries **S2b** the throat as a transonic/choked drain → the flux law
+`J_crit(ρ₀, geometry)` set by the sonic point = acoustic horizon, replacing the "constant `J`" assumption, and **S3**
+the `ħ`-provenance fork [`ħ=m c_s0 a/√2` ⇒ `ħ` may be EMERGENT, not fundamental — decides whether `M` ever collapses])
+→ **`pathA_21`** (`directives/pathA_21_emergent_G_mass_bridge.md`: `G` from defect back-reaction + 4D→3D reduction;
+the **mass-bridge** `m_defect=α_J ħ J/c²` [= `E=mc²` with the inflow as the energy ≡ the standing-wave `ħω₀`] DERIVED +
+the **M-collapse re-test** of the pathA_19 negative + the equivalence-principle check + the `m↔G` unification) →
+**`pathA_22`** (natural-unit→physical scale map → derive `m̂0²·S_port` → re-run B2c → real verdict). Each gated by the
+user. Conceptual basis for S2b/S3/the bridge co-developed with the user 2026-06-19 (see §3 + the directives).
+
 A full **reasoned + dimensional derivation** of the model's constants, from the parent action outward (NOT assumed —
 derived; much already exists scattered across `research/pde_ledger/paper/parts/part01_parent_geometry.tex`, the
 sound-speed ledger, and `research/4d_2_5pn/paper/4d_2_5pn.tex` — so partly consolidate + make rigorous + dimension-
@@ -99,3 +166,43 @@ harness `dimensional_check.py`. Pairs with `[[feedback-transliteration-fidelity-
 - Verification agent B (independent re-derivation): `[G]=L³T⁻²M⁻¹` effective-3D (brane projection, from the parent
   action); `m̂0²·S_port` is the dimensionful conversion factor `T_target/[P0]`, not dimensionless; `D0=K−B0−Z0` is a
   legal subtraction (`K`=modal stiffness eigenvalue) within the frozen normalization conventions.
+
+## 8. pathA_19 (FOUNDATION) execution + review ledger — 2026-06-19
+**Run:** Codex gpt-5.5 @ xhigh (`_scratch/pathA_19_execute.log`, 162k tokens). Deliverables: extended harness group in
+`src/stage1_solver/dimensional_check.py` (+509, side-by-side), `reports/pathA_19_dimensional_foundation.md` (F5 ref
+doc), `tools/pathA_19_foundation_dimensional_crosscheck.wl` (dual-engine). Python 17/17 algebraic checks pass;
+Mathematica 20 checks PASS; full suite 92 passed; `git diff --check` clean. Acceptance = **PASS_WITH_NAMED_RESIDUALS**
+(exit-0 NOT treated as acceptance).
+
+**F1 mass-fork verdict — RETAIN `{L,T,M}` (honest negative result):** `m_GNLS` stays an explicit parent-action mass
+`[M]` (appears in kinetic operator, current, Madelung velocity, Euler eq, sound-speed law). `m_defect` emergence is
+**NOT derived** — the ontology gives drainage/volume-deficit *scaling* (`brane_bulk_ontology.tex:1267-1297`) but no
+boundary source / Noether charge / Hamiltonian energy theorem tying `m_defect` to the inflow rate. `ħJ/c_γ²=M` is a
+*dimensional conversion only*, explicitly NOT a derivation. So mass-as-inflow is rejected **for this gate** and carried
+to pathA_21 as `INFLOW_MASS_SOURCE_MISSING` (BLOCKS_MASS_EMERGENCE) with a concrete derivation target.
+
+**F2 flux + a-pin:** `[J_number]=T⁻¹` in BOTH 4D-bulk (closed 3-surface) and brane (2-surface) frames; `Q_vol`=`L⁴T⁻¹`
+(bulk)/`L³T⁻¹` (brane); `m_GNLS J`=`MT⁻¹`. Gauss shape-independence holds ONLY with no enclosed source/leakage — but
+projection makes `S_leak` and the throat bottom is open/closed/connected-undecided → `NO_NET_ACCRETION_BC_UNDERIVED`
+carried. `a` confirmed a mouth-radius collective MOMENT (`a0=R0(0)`, `a(t)`=mouth average), not fundamental →
+`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`; use `J` as the invariant scale-map label.
+
+**F3 pins / healing / dictionary:** 4 pins (`a=c_s=ħ=m=1`) on 3 base dims ⟹ one null relation
+**`a=ħ/(m_GNLS·c_s0)`**. GNLS core balance ⟹ **`ξ_h=√2·ħ/(m_GNLS·c_s0)`** with `h0=(5K/4)ρ0⁴=m_GNLS c_s0²/4`; so if
+`a`≡healing core then `a=ξ_h/√2` (convention/branch factor). Independent set = {`ħ`, `m_GNLS`, `K`, chosen `ρ0`};
+derived = {`c_s0`, `ξ_h`, `a`(if core-identified), `m_defect`(blocked)}. 4D dictionary homogeneous; the 3D GR target is
+a downstream conversion problem, not a base-system change.
+
+**F4 paper-prose reconciliation:** `part01`/`pde.tex` 4D action/EOS/current/projection AGREE with the harness
+dictionary; `em_fields.tex:1717-1786` flagged **WRONG-3D-CONVENTION** (ρ₀ as kg m⁻³, pressure/enthalpy-per-mass,
+`V=πa²L` throat volume) — legacy 3D/SI prose, not the 4D number-density dictionary.
+
+**Three R_norm dimensional flags (carried, NOT repaired here):** formal 4D R_norm target is NOT dimensionless (needs
+`L T² M`); observed 3D GR target needs `L² T² M`; a TRUE `{L,T}` base FAILS the R_norm gate (needs `L² T²`). These
+corroborate the B2c-undetermined verdict (§1) and belong to pathA_21/pathA_22 — pathA_18 behavior preserved.
+
+**Review:** two clean transliteration-fidelity agents (Python module; Mathematica `.wl`) → both **FIDELITY-CLEAN**;
+`.wl` confirmed INDEPENDENT (no `Import`/`Get` of Python results; own representation); no tautology/can't-fail gate (the
+Maxwell `c²` factor and the `{L,T}`-gate rejection both demonstrably *can* fail); side-by-side scoping CLEAN. Two
+prose-only (non-machine-checked) claims — the `√2` in `ξ_h` and `h0=(5K/4)ρ0⁴=m c_s0²/4` — hand-verified correct. One
+harmless dead helper (`_dim_dict`).

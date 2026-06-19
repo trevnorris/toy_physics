@@ -20,14 +20,15 @@ but NOT yet finalized against the pathA_19 outputs. Working-tree changes (uncomm
 directives pathA_19 + pathA_20, decision-13.
 **NEXT ACTION:** `pathA_20` EXECUTED + REVIEWED (2026-06-19, see §9): three `UNDETERMINED` verdicts (`c_γ/c_s`, flux
 law, `ħ`-provenance), ALL VERIFIED as honest walls (adversarial premature-punt audit), NOT punts; code FIDELITY-CLEAN
-dual-engine (independent `.wl`); standing-wave `c=c_γ` genuinely non-circular; scope clean. **STRATEGIC FORK (user
-decision):** the emergent constants CANNOT be closed without the solved stationary defect profile + the coupled
-`c_γ`-vs-`c_s` linearization (+ NEW substrate physics for `ħ`) — the SAME bottleneck as the core Path-A solver. Choose:
-**(A)** finish `pathA_21` SYMBOLICALLY (derive `G` + mass-bridge FORMS, carry `λ_γ=c_γ/c_s` + `α_J` undetermined —
-completes the map of exactly which numbers we need) ; **(B)** the targeted `c_γ`-vs-`c_s` coupled GNLS+Maxwell
-linearization (answers the central ontology Q: does the photon ride the acoustic metric `g_μν(c_s)` or the bulk cone
-`η_MN`?) ; **(C)** the full stationary throat-profile solve (closes the flux law + feeds `G`/`α_J`/everything — the big
-solver work). pathA_21-symbolic (A) will likely also return carried-unknowns, but it nails the complete unknowns list.
+dual-engine (independent `.wl`); standing-wave `c=c_γ` genuinely non-circular; scope clean. **FORK RESOLVED (user chose B, 2026-06-19):** the targeted `c_γ`-vs-`c_s` coupled linearization. New inserted step
+**`pathA_20b`** (`directives/pathA_20b_cgamma_cs_linearization.md`) WRITTEN + design-reviewed (Codex SOUND-WITH-FIXES →
+8 fixes applied → confirm-pass **SOUND-AS-IS**; reviews in `_scratch/pathA_20b_directive_review*.md`). Key review
+correction: the homogeneous calc settles the **BULK** Maxwell principal cone (`c_bulk²=C_B/C_E`, NOT `Z/μ0`), but the
+**OBSERVED BRANE** photon cone may still need the zero-mode reduction / profile → TWO-LAYER verdict (`bulk_verdict` +
+`brane_verdict`; pathA_21 consumes only `brane_verdict`, carrying `λ_γ` symbolic if unclosed). Negative control: harness
+must FAIL a forced `c_γ=c_s` without a source-derived `c_bulk²=5Kρ0⁴/m_GNLS`. **NEXT ACTION = execute `pathA_20b`**, then
+review (fidelity + dimensional + adversarial premature-punt), then gate to `pathA_21`. (Options A=pathA_21-symbolic and
+C=full throat-profile solve remain the later moves once `c_γ/c_s` is as closed as it can be here.)
 **Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
 Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
 failure; pathA_21 carries the concrete derivation target to re-test it.

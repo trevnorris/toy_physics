@@ -1,7 +1,9 @@
 # Directive pathA_21 — Emergent constants, Step 3: `G`, the mass-bridge, and the `m↔G` unification
 
 **Status:** ⚠️ DRAFT — to be FINALIZED after `pathA_20` (`c_s`+`c`) lands + is reviewed. It CONSUMES `pathA_20` outputs:
-the derived `c` (= `c_γ`) and the `c_γ/c_s` result (closed-form OR `C_GAMMA_RATIO_UNDERDETERMINED`); the `ħ`-provenance
+the derived `c` (= `c_γ`); the **`pathA_20b` brane verdict** (`C_GAMMA_EQUALS_C_S` / `C_GAMMA_NE_C_S` with closed-form
+`λ_γ`+ρ-dependence / `C_GAMMA_RATIO_STILL_UNDERDETERMINED` with a named residual) — carry `λ_γ` SYMBOLIC whenever
+`pathA_20b` closed only the bulk cone or left the brane cone underdetermined; the `ħ`-provenance
 verdict (`HBAR_EMERGENT` / `HBAR_FUNDAMENTAL` / `HBAR_PROVENANCE_UNDETERMINED`) + the `h`/`2π` decomposition assessment;
 and the **`flux_law_verdict`** (`TRANSONIC_CHOKED` with `J_crit` / `NONTRANSONIC_NO_CHOKED_FLUX` with the alternate law /
 `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA`) — NOT an unconditional `J_crit`; each case routes differently below.
@@ -24,7 +26,8 @@ DERIVATION. No model-formula changes, no freeze touch, no `m̂0²·S_port` un-pi
 `dimensional_check.py` (new group; leave pathA_18 + pathA_19 + pathA_20 groups intact). Same infra constraints as
 `pathA_19`/`pathA_20` (read-only sim dir; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). **Dual-engine required**
 where MMA can verify the force law, the `G` reduction, and the dimensional algebra. Use the `pathA_19` base + `pathA_20`
-outputs (`c`, the `c_γ/c_s` result, the `ħ`-verdict + `h`/`2π` assessment, the `flux_law_verdict`).
+outputs (`c`, the `ħ`-verdict + `h`/`2π` assessment, the `flux_law_verdict`) + the `pathA_20b` brane verdict for `c_γ/c_s`
+(symbolic `λ_γ` if unclosed).
 
 ## Work items
 

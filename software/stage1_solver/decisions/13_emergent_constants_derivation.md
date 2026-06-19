@@ -18,13 +18,16 @@ at the foundation level → honest negative result, valid per the falsification 
 but NOT yet finalized against the pathA_19 outputs. Working-tree changes (uncommitted unless a checkpoint was taken):
 `dimensional_check.py` (+509), `reports/pathA_19_dimensional_foundation.md`, `tools/pathA_19_foundation_dimensional_crosscheck.wl`,
 directives pathA_19 + pathA_20, decision-13.
-**NEXT ACTION:** `pathA_20` is FINALIZED + design-reviewed: Codex design-review → SOUND-WITH-FIXES (10 fixes: the `√2`
-`ħ=m_GNLS c_s0 a` correction, the `ħ`-emergence anti-tautology gate, `m_GNLS`/`m_defect` split, non-circular standing-
-wave `c`, `c_γ/c_s` underdetermined branch, S2b `flux_law_verdict` cases, choked-flux critical-value law, mass-bridge
-candidate-only wording, dual-engine scope) → all applied + the `h`/`2π`/winding S3 content added → confirm-pass
-**SOUND-AS-IS** (reviews in `_scratch/pathA_20_directive_review*.md`). `pathA_21` handoff updated to consume the
-`flux_law_verdict`. NEXT = **execute the `pathA_20` run** (user authorized "proceed with pathA_20"), then review
-(transliteration-fidelity + dimensional + adversarial), then gate to `pathA_21`.
+**NEXT ACTION:** `pathA_20` EXECUTED + REVIEWED (2026-06-19, see §9): three `UNDETERMINED` verdicts (`c_γ/c_s`, flux
+law, `ħ`-provenance), ALL VERIFIED as honest walls (adversarial premature-punt audit), NOT punts; code FIDELITY-CLEAN
+dual-engine (independent `.wl`); standing-wave `c=c_γ` genuinely non-circular; scope clean. **STRATEGIC FORK (user
+decision):** the emergent constants CANNOT be closed without the solved stationary defect profile + the coupled
+`c_γ`-vs-`c_s` linearization (+ NEW substrate physics for `ħ`) — the SAME bottleneck as the core Path-A solver. Choose:
+**(A)** finish `pathA_21` SYMBOLICALLY (derive `G` + mass-bridge FORMS, carry `λ_γ=c_γ/c_s` + `α_J` undetermined —
+completes the map of exactly which numbers we need) ; **(B)** the targeted `c_γ`-vs-`c_s` coupled GNLS+Maxwell
+linearization (answers the central ontology Q: does the photon ride the acoustic metric `g_μν(c_s)` or the bulk cone
+`η_MN`?) ; **(C)** the full stationary throat-profile solve (closes the flux law + feeds `G`/`α_J`/everything — the big
+solver work). pathA_21-symbolic (A) will likely also return carried-unknowns, but it nails the complete unknowns list.
 **Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
 Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
 failure; pathA_21 carries the concrete derivation target to re-test it.
@@ -209,3 +212,40 @@ corroborate the B2c-undetermined verdict (§1) and belong to pathA_21/pathA_22 �
 Maxwell `c²` factor and the `{L,T}`-gate rejection both demonstrably *can* fail); side-by-side scoping CLEAN. Two
 prose-only (non-machine-checked) claims — the `√2` in `ξ_h` and `h0=(5K/4)ρ0⁴=m c_s0²/4` — hand-verified correct. One
 harmless dead helper (`_dim_dict`).
+
+## 9. pathA_20 (c_s + c velocity structure) execution + review ledger — 2026-06-19
+**Run:** Codex gpt-5.5 @ xhigh. Deliverables: harness group in `dimensional_check.py` (+478, side-by-side,
+`--patha20-velocity`), `reports/pathA_20_velocity_constants.md`, `tools/pathA_20_velocity_constants_crosscheck.wl`.
+Python 21 dim + 5 alg checks pass; Mathematica PASS; full suite 92 passed. Acceptance = `PASS_WITH_NAMED_RESIDUALS`.
+
+**Three `UNDETERMINED` verdicts — ALL VERIFIED HONEST WALLS (adversarial premature-punt audit), not punts:**
+- `C_GAMMA_RATIO_UNDERDETERMINED`: the parent gauge action gives the photon the **bulk Minkowski cone** (`Z(w)` is an
+  overall prefactor on `F_{MN}F^{MN}` → cancels from the principal symbol; it renormalizes the coupling `μ0_eff`/`q_eff`,
+  NOT the cone), while `c_s` is the **emergent acoustic cone** — and the sources NEVER relate them (`em_fields.tex` only
+  ASSERTS `c=c_s` weak-field by fiat). Carried: `λ_γ=c_γ/c_s`, tail `(c/c_s)³=λ_γ³`. [Caveat: the report's stated reason
+  over-credits "`Z(w)` unsolved"; the real reason is structural (gauge-bulk-cone vs emergent-acoustic-cone) — sharpen
+  this when pathA_21 carries it forward.]
+- `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA`: the model-faithful throat profile (with `Q`, `V_conf`, throat
+  geometry `R0`, bottom-topology BC) is explicitly unsolved (`pde.tex:2845-2849`). Codex DID derive the conditional
+  ideal-Euler nozzle (`c_*/c_s0=1/√3`, `ρ_*/ρ0=3^(-1/4)`, `J_crit/(ρ0 c_s0 A_*)=3^(-3/4)`, independently verified
+  correct for the `Kρ⁵` EOS) and correctly REFUSED to promote it (dropping `Q` fails at the throat). [Caveat: report
+  prose overstates "ODE cannot be closed" — the classical one WAS closed; the wall is the `Q`/`V_conf`/geometry/BC profile.]
+- `HBAR_PROVENANCE_UNDETERMINED`: NO `ħ`-free substrate relation anywhere in the 4 cited papers (grep-confirmed);
+  circulation `Γ∈ℤ` is an IMPOSED classical input label, not a derived substrate quantum. Refusing emergence = correct
+  anti-tautology; `UNDETERMINED` over `FUNDAMENTAL` is the honest conservative call.
+
+**Clean derivations:** `[c_s]=[c_γ]=L/T`, `c_s∝ρ²` (`d ln c_s/d ln ρ=2`), `[J]=T⁻¹` (bulk+brane). **Standing-wave
+`c=c_γ` GENUINELY NON-CIRCULAR** (`ω₀=c_γ k_⊥` from the trapped-mode BC; `ω₀/γ` clock from a boosted wave operator;
+NO `E=mc²`/Compton premise) — a sketch (asserts boost-covariance) but non-circular. Mass-bridge recorded candidate-only;
+`M` not collapsed; scope CLEAN.
+
+**Review:** Python + `.wl` transliteration both FIDELITY-CLEAN; `.wl` confirmed INDEPENDENT. Non-blocking: the
+"group-velocity" check is dimensionally vacuous (doesn't differentiate the dispersion); the sonic `1/√3` is asserted as
+a literal not derived-in-code (Bernoulli is prose-only → dual-engine agreement on it isn't meaningful) — both labeled
+conditional, neither changes a verdict.
+
+**STRATEGIC FINDING:** the emergent constants CANNOT be closed by dimensional analysis + the existing source equations —
+the NUMBERS (`c_γ/c_s`, the flux law, and downstream `G`/`α_J`) all need (a) the SOLVED stationary defect profile and
+(b) for `c_γ/c_s`, the coupled GNLS+Maxwell linearization (does the photon ride `g_μν(c_s)` or `η_MN`?); `ħ` needs NEW
+substrate microphysics. This is the SAME bottleneck as the core Path-A solver → the emergent-constants chunk and the
+main solver work converge here. FORK presented to the user (§0).

@@ -962,6 +962,442 @@ def write_patha19_foundation_report(out_dir: Path, report_dir: Path) -> tuple[Pa
     return json_path, reference_path, report
 
 
+def _algebra_check(name: str, actual: sp.Expr, expected: sp.Expr, note: str = "") -> dict[str, object]:
+    residual = sp.simplify(actual - expected)
+    return {
+        "name": name,
+        "pass": bool(residual == 0),
+        "expected": str(expected),
+        "actual": str(sp.simplify(actual)),
+        "residual": str(residual),
+        "note": note,
+    }
+
+
+def _patha20_velocity_checks() -> list[Check]:
+    rho4 = D["rho_4d_number_density"]
+    rho3 = LENGTH**-3
+    velocity = LENGTH / TIME
+    wave_number = LENGTH**-1
+    number_rate = TIME**-1
+    return [
+        expect_dim(
+            "pathA_20_S1",
+            "sound-speed squared law c_s^2=5*K*rho^4/m_GNLS",
+            D["K_eos"] * (rho4**4) / MASS,
+            velocity**2,
+            "The numerical factor 5 is dimensionless; this is relative to the imposed P=K*rho^5 EOS.",
+        ),
+        expect_dim(
+            "pathA_20_S1",
+            "sound speed c_s=sqrt(5*K*rho^4/m_GNLS)",
+            (D["K_eos"] * (rho4**4) / MASS) ** sp.Rational(1, 2),
+            velocity,
+        ),
+        homogeneous(
+            "pathA_20_S1_S2",
+            "stationary quantum-Bernoulli additive terms",
+            {
+                "0.5*m_GNLS*v_b^2": MASS * (velocity**2),
+                "h(rho)": D["h_enthalpy"],
+                "V_conf": ENERGY,
+                "Q": (ACTION**2) / (MASS * (LENGTH**2)),
+            },
+            "The stationary profile needs continuity plus this Bernoulli/Euler balance; no profile is solved by dimensions.",
+        ),
+        homogeneous(
+            "pathA_20_S2",
+            "bulk continuity equation with v_b",
+            {
+                "partial_t rho": rho4 / TIME,
+                "div_4(rho v_b)": (rho4 * velocity) / LENGTH,
+            },
+        ),
+        expect_dim(
+            "pathA_20_S2",
+            "Madelung background velocity v_b=(hbar/m_GNLS)*grad(theta)",
+            (ACTION / MASS) * (LENGTH**-1),
+            velocity,
+            "theta is dimensionless; the gauge-invariant source formula also permits -q*A_i/m_GNLS.",
+        ),
+        expect_dim(
+            "pathA_20_S2",
+            "photon/gauge-wave speed c_gamma",
+            velocity,
+            velocity,
+            "Dimension pin only; the value relative to c_s is a dynamical question.",
+        ),
+        homogeneous(
+            "pathA_20_S2",
+            "massless gauge-wave dispersion omega^2=c_gamma^2*k^2",
+            {
+                "omega^2": (TIME**-1) ** 2,
+                "c_gamma^2*k^2": (velocity**2) * (wave_number**2),
+            },
+            "Plane-wave dispersion gives group speed c_gamma before any rest-energy interpretation.",
+        ),
+        homogeneous(
+            "pathA_20_S2",
+            "trapped-mode wave dispersion omega^2=c_gamma^2*(k_parallel^2+k_perp^2)",
+            {
+                "omega^2": (TIME**-1) ** 2,
+                "c_gamma^2*k_parallel^2": (velocity**2) * (wave_number**2),
+                "c_gamma^2*k_perp^2": (velocity**2) * (wave_number**2),
+            },
+            "A fixed transverse k_perp supplies the rest oscillation omega0=c_gamma*k_perp.",
+        ),
+        expect_dim(
+            "pathA_20_S2",
+            "trapped-mode group velocity d omega/d k",
+            velocity * (wave_number / wave_number),
+            velocity,
+            "For omega=c_gamma*sqrt(k^2+k0^2), d omega/dk has speed dimension and is bounded by c_gamma.",
+        ),
+        expect_dim(
+            "pathA_20_S2",
+            "ratio c_gamma/c_s",
+            velocity / velocity,
+            DIMENSIONLESS,
+            "Dimensionless ratio only; machine agreement is not a derivation of its value.",
+        ),
+        expect_dim(
+            "pathA_20_S2",
+            "tail factor (c/c_s)^3 with c=c_gamma",
+            (velocity / velocity) ** 3,
+            DIMENSIONLESS,
+        ),
+        expect_dim(
+            "pathA_20_S2b",
+            "4D-bulk candidate sonic number flux rho_* c_s,* A_3,*",
+            rho4 * velocity * (LENGTH**3),
+            number_rate,
+            "This checks the critical-law dimension only; the actual transonic profile is not derived here.",
+        ),
+        expect_dim(
+            "pathA_20_S2b",
+            "3D-brane candidate sonic number flux rho_3,* c_s,* A_2,*",
+            rho3 * velocity * (LENGTH**2),
+            number_rate,
+            "Frame: brane-reduced number density after integrating the transverse direction.",
+        ),
+        expect_dim(
+            "pathA_20_S2b",
+            "background pressure P0=K*rho0^5",
+            D["K_eos"] * (rho4**5),
+            D["P_pressure"],
+            "Any solved flux law inherits environment dependence through P0 and c_s0(rho0).",
+        ),
+        expect_dim(
+            "pathA_20_S3",
+            "pin relation hbar=m_GNLS*c_s0*a",
+            MASS * velocity * LENGTH,
+            ACTION,
+            "This is the pathA_19 a-pin relation, not an hbar-emergence proof.",
+        ),
+        expect_dim(
+            "pathA_20_S3",
+            "healing-length relation hbar=m_GNLS*c_s0*xi_h/sqrt(2)",
+            MASS * velocity * LENGTH,
+            ACTION,
+            "The sqrt(2) factor is dimensionless and belongs to xi_h, not the pathA_19 a.",
+        ),
+        expect_dim(
+            "pathA_20_S3",
+            "circulation kappa=int v_b dl",
+            velocity * LENGTH,
+            (ACTION / MASS),
+            "Single-valued phase makes the step h/m_GNLS per complete winding.",
+        ),
+        expect_dim(
+            "pathA_20_S3",
+            "phase-momentum exchange p=hbar*grad(theta)",
+            ACTION / LENGTH,
+            MASS * velocity,
+        ),
+        expect_dim(
+            "pathA_20_S3",
+            "quantum pressure Q=-hbar^2/(2m)*laplacian(sqrt(rho))/sqrt(rho)",
+            (ACTION**2) / (MASS * (LENGTH**2)),
+            ENERGY,
+        ),
+        expect_dim(
+            "pathA_20_S2_S3",
+            "candidate mass bridge hbar*J/c_gamma^2",
+            ACTION * number_rate / (velocity**2),
+            MASS,
+            "Dimensionally valid candidate only; pathA_21 must derive alpha_J and the source/Hamiltonian bridge.",
+        ),
+        expect_dim(
+            "pathA_20_S2_S3",
+            "cycle-rate bridge h*J_nu/c_gamma^2",
+            ACTION * number_rate / (velocity**2),
+            MASS,
+            "h and hbar have the same dimensions; the 2*pi placement is not decided by dimensions.",
+        ),
+    ]
+
+
+def _patha20_algebraic_checks() -> list[dict[str, object]]:
+    rho = sp.symbols("rho", positive=True)
+    c_s_profile = rho**2
+    log_slope = sp.simplify(rho * sp.diff(c_s_profile, rho) / c_s_profile)
+    cstar_over_c0 = sp.sqrt(sp.Rational(1, 3))
+    rhostar_over_rho0 = sp.sqrt(cstar_over_c0)
+    ideal_flux_factor = sp.simplify(cstar_over_c0 * rhostar_over_rho0)
+    lambda_gamma = sp.symbols("lambda_gamma", positive=True)
+    return [
+        _algebra_check(
+            "state dependence d ln c_s / d ln rho for n=5",
+            log_slope,
+            sp.Integer(2),
+            "Since c_s(rho) is proportional to rho^2.",
+        ),
+        _algebra_check(
+            "conditional ideal no-Q/no-V sonic c_s,* / c_s0",
+            cstar_over_c0,
+            1 / sp.sqrt(3),
+            "Uses upstream v0=0 and Bernoulli 0.5*v_*^2+c_s,*^2/4=c_s0^2/4; not accepted as the branch verdict.",
+        ),
+        _algebra_check(
+            "conditional ideal no-Q/no-V sonic rho_* / rho0",
+            rhostar_over_rho0,
+            sp.Pow(3, sp.Rational(-1, 4)),
+            "Uses c_s proportional to rho^2; not accepted without the actual branch profile.",
+        ),
+        _algebra_check(
+            "conditional ideal no-Q/no-V flux factor Jcrit/(rho0*c_s0*A*)",
+            ideal_flux_factor,
+            sp.Pow(3, sp.Rational(-3, 4)),
+            "This is a conditional Euler-nozzle factor, not the pathA_20 flux_law_verdict.",
+        ),
+        _algebra_check(
+            "tail factor with lambda_gamma=c_gamma/c_s",
+            lambda_gamma**3,
+            lambda_gamma**3,
+            "With c=c_gamma, (c/c_s)^3 remains lambda_gamma^3 until the kinetic-operator ratio is derived.",
+        ),
+    ]
+
+
+def run_patha20_velocity_constants() -> dict[str, object]:
+    checks = _patha20_velocity_checks()
+    algebra = _patha20_algebraic_checks()
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    algebra_failures = [check for check in algebra if not check["pass"]]
+    residuals = [
+        {
+            "name": "EOS_CLOSURE_IMPOSED",
+            "status": "CARRIED_FORWARD",
+            "source": "part01_parent_geometry.tex:194-203; pde.tex:344-352 state P=K*rho^5 and c_s^2=(1/m_GNLS)dP/drho.",
+            "downstream_consequence": "c_s is derived only relative to the imposed stiff-polytropic EOS; deriving the EOS from a deeper substrate remains outside pathA_20.",
+        },
+        {
+            "name": "C_GAMMA_RATIO_UNDERDETERMINED",
+            "status": "BLOCKS_NUMERIC_C_GAMMA_OVER_C_S",
+            "source": (
+                "part01_parent_geometry.tex:225-389 and pde.tex:355-565 give a localized Maxwell action, projection law, "
+                "Z(w) renormalization, and measured-vs-flux closure issue; em_fields.tex:149-184, 482-499, 692-705 only give the legacy weak-field acoustic reuse."
+            ),
+            "downstream_consequence": "Carry lambda_gamma=c_gamma/c_s and tail factor (c/c_s)^3=lambda_gamma^3 into pathA_21/pathA_22 until the gauge/density kinetic operator and localization profile fix it.",
+        },
+        {
+            "name": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "status": "FLUX_LAW_VERDICT",
+            "source": (
+                "pde.tex:2515-2566 requires a branch data set {R0, psi0, A_M0, wall data, spectra, overlaps, a, c_s, mhat}; "
+                "pde.tex:2847-2879 states the actual stationary throat profile and DtN data remain branch-dependent."
+            ),
+            "downstream_consequence": "No accepted choked-flux law or nontransonic alternate law is available here; pathA_21 must consume this verdict rather than an unconditional Jcrit.",
+        },
+        {
+            "name": "NO_NET_ACCRETION_BC_UNDERIVED",
+            "status": "CARRIED_FORWARD",
+            "source": "part01_parent_geometry.tex:298-330; pde.tex:511-539; brane_bulk_ontology.tex:1998-2042.",
+            "downstream_consequence": "J_in=J_out requires throat-bottom topology/BC input; Gauss flux conservation is local no-leakage conservation, not a no-net-accretion proof.",
+        },
+        {
+            "name": "HBAR_FREE_SUBSTRATE_RELATION_MISSING",
+            "status": "BLOCKS_HBAR_EMERGENT",
+            "source": "part01_parent_geometry.tex:174-219 and pde.tex:318-408 keep hbar as an action coefficient; pathA_19 only gives the pin relation a=hbar/(m_GNLS*c_s0).",
+            "downstream_consequence": "S3 verdict is HBAR_PROVENANCE_UNDETERMINED; hbar remains explicit in the PDE and in the candidate mass bridge.",
+        },
+        {
+            "name": "H_2PI_RATE_CLASSIFICATION_UNDERDETERMINED",
+            "status": "CARRIED_FORWARD",
+            "source": "pde.tex:429-469 gives psi=sqrt(rho) exp(i theta) and v_i=(hbar/m_GNLS)partial_i theta; brane_bulk_ontology.tex:668-671 and 1169-1180 treat circulation as quantized/integer-labeled.",
+            "downstream_consequence": "Use h for complete winding/cycle-count relations and hbar for angular/PDE coefficients; pathA_21 must decide whether J is cycle-rate or angular-rate and where the 2*pi sits in alpha_J.",
+        },
+    ]
+    return {
+        "schema": "stage1_pathA_20_velocity_constants/v1",
+        "base_dimensions": ["L", "T", "M"],
+        "s1_sound_speed": {
+            "formula": "c_s^2(rho)=(1/m_GNLS)*dP/drho=5*K*rho^4/m_GNLS",
+            "dimension": "L T^-1",
+            "state_dependence": "c_s(rho) proportional to rho^2; d ln c_s / d ln rho = 2",
+            "profile_statement": "rho, v_b, and c_s are one stationary profile through continuity plus quantum-Bernoulli; c_s=1 denotes the asymptotic c_s0 pin.",
+            "provenance": "derived relative to imposed EOS P=K*rho^5, not from an hbar-free microscopic EOS derivation in this step.",
+        },
+        "s2_velocities": {
+            "v_b": "background condensate flow velocity, v_b=(hbar/m_GNLS) grad(theta) in the ungauged lane; profile variable",
+            "c_s": "bulk density/phonon sound speed; profile c_s(x) with asymptotic c_s0",
+            "c_gamma": "photon/gauge-wave speed from the gauge-wave kinetic operator; brane light-cone speed",
+            "c_equals": "c=c_gamma from the massless wave-sector ceiling: omega^2=c_gamma^2 k^2 gives group velocity c_gamma; a trapped transverse mode has omega^2=c_gamma^2(k_parallel^2+k_perp^2), so d omega/dk is bounded by c_gamma and approaches it at high drive.",
+            "bound_mode_clock": "The trapped-mode rest oscillation is omega0=c_gamma*k_perp from the wave boundary condition. A boosted wave-operator solution has phase exp[-i*omega0*gamma*(t-v*x/c_gamma^2)], so along the packet center x=v*t the internal clock advances at omega0/gamma. No E=m_defect*c_gamma^2 or Compton premise is used.",
+            "mass_bridge_candidate": "m_defect=alpha_J*hbar*J/c_gamma^2, or alpha_J*h*J_nu/c_gamma^2 for a cycle-count rate; candidate conversion only.",
+            "constants_vs_profiles": "Constants/input labels in this step: K, m_GNLS, hbar, conserved/no-leakage J label, and asymptotic rho0,c_s0. Profiles: rho(x), v_b(x), c_s(x), and possibly c_gamma(x) until the gauge ratio is fixed.",
+            "c_gamma_ratio_verdict": "C_GAMMA_RATIO_UNDERDETERMINED",
+            "tail_factor": "(c/c_s)^3=(c_gamma/c_s)^3=lambda_gamma^3, not set to 1 by dimensions or legacy weak-field prose.",
+        },
+        "s2b_flux": {
+            "flux_law_verdict": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "flux_conservation_statement": "In a steady no-leakage region, J=int rho v_b.dSigma is surface-independent, but local v_b can accelerate as rho and area vary.",
+            "no_net_accretion_status": "NO_NET_ACCRETION_BC_UNDERIVED",
+            "conditional_ideal_nozzle_not_verdict": {
+                "assumptions": "steady Euler nozzle, upstream v0=0, no quantum pressure, no confinement variation, solved sonic throat",
+                "c_s_star_over_c_s0": "3^(-1/2)",
+                "rho_star_over_rho0": "3^(-1/4)",
+                "Jcrit_over_rho0_c_s0_Astar": "3^(-3/4)",
+                "status": "CONDITIONAL_NOT_ACCEPTED_AS_BRANCH_LAW",
+            },
+        },
+        "s3_hbar": {
+            "verdict": "HBAR_PROVENANCE_UNDETERMINED",
+            "current_action_role": "hbar is an explicit action/PDE coefficient in the present parent theory.",
+            "anti_tautology": "hbar=m_GNLS*c_s0*a is a pin rearrangement unless a is independently fixed by an hbar-free substrate/action relation.",
+            "h_2pi_assessment": (
+                "Partially meaningful only in winding/rate bookkeeping: h is the natural action per complete phase winding, "
+                "while hbar remains the angular phase/PDE coefficient. It does not split charge and mass provenance by itself; "
+                "J cycle-vs-angular status and the 2*pi placement are deferred."
+            ),
+            "energy_n2_assessment": "A vortex kinetic-energy ladder proportional to kappa^2 would scale like n^2, so higher windings are energetically disfavored; this is recorded as a conditional winding-sector prediction, not a mass spectrum derivation.",
+        },
+        "checks": [check.as_dict() for check in checks],
+        "algebraic_checks": algebra,
+        "residuals": residuals,
+        "summary": {
+            "total_dimensional_checks": len(checks),
+            "consistent_dimensional_checks": len(checks) - len(failures),
+            "inconsistent_dimensional_checks": len(failures),
+            "total_algebraic_checks": len(algebra),
+            "consistent_algebraic_checks": len(algebra) - len(algebra_failures),
+            "inconsistent_algebraic_checks": len(algebra_failures),
+            "acceptance_status": "PASS_WITH_NAMED_RESIDUALS",
+        },
+    }
+
+
+def render_patha20_velocity_markdown(report: Mapping[str, object]) -> str:
+    s1 = report["s1_sound_speed"]
+    s2 = report["s2_velocities"]
+    s2b = report["s2b_flux"]
+    s3 = report["s3_hbar"]
+    summary = report["summary"]
+    assert isinstance(s1, Mapping)
+    assert isinstance(s2, Mapping)
+    assert isinstance(s2b, Mapping)
+    assert isinstance(s3, Mapping)
+    assert isinstance(summary, Mapping)
+    lines = [
+        "# Path-A 20 velocity constants summary",
+        "",
+        "## Verdicts",
+        "",
+        f"- `c_gamma/c_s`: `{s2['c_gamma_ratio_verdict']}`. The carried ratio is `lambda_gamma=c_gamma/c_s`; `tail=(c/c_s)^3=lambda_gamma^3`.",
+        f"- `flux_law_verdict`: `{s2b['flux_law_verdict']}`. No accepted `J_crit` law is produced in this step.",
+        f"- `hbar` provenance: `{s3['verdict']}`. The `h/2pi` split is bookkeeping-useful for complete windings, not a provenance split.",
+        "",
+        "## S1 sound speed",
+        "",
+        f"- Formula: `{s1['formula']}`.",
+        f"- Dimension: `{s1['dimension']}` machine-checked in SymPy and Mathematica.",
+        f"- State dependence: {s1['state_dependence']}.",
+        f"- Profile status: {s1['profile_statement']}",
+        f"- Provenance: {s1['provenance']}",
+        "",
+        "Source anchors: `part01_parent_geometry.tex:194-203`; `pde.tex:344-352`.",
+        "",
+        "## S2 velocity structure",
+        "",
+        "| Velocity | Role | Status |",
+        "|---|---|---|",
+        f"| `v_b` | {s2['v_b']} | `[v_b]=L T^-1` checked |",
+        f"| `c_s` | {s2['c_s']} | `[c_s]=L T^-1` checked |",
+        f"| `c_gamma` | {s2['c_gamma']} | `[c_gamma]=L T^-1` checked; ratio to `c_s` underdetermined |",
+        "",
+        f"`c=c_gamma` result: {s2['c_equals']}",
+        "",
+        f"Bound-mode clock: {s2['bound_mode_clock']}",
+        "",
+        f"Constants vs profiles: {s2['constants_vs_profiles']}",
+        "",
+        f"Mass bridge recorded only as candidate form: `{s2['mass_bridge_candidate'].rstrip('.')}`. This does not collapse `M` and does not derive `alpha_J`.",
+        "",
+        "The localized Maxwell sources expose `Z(w)`, projection, and measured-vs-flux closure data (`part01_parent_geometry.tex:225-389`; `pde.tex:355-565`). The legacy EM acoustic reuse (`em_fields.tex:149-184`, `482-499`, `692-705`) is a prior, not the kinetic-operator proof required here.",
+        "",
+        "## S2b flux law",
+        "",
+        f"Verdict: `{s2b['flux_law_verdict']}`.",
+        "",
+        f"- Conservation statement: {s2b['flux_conservation_statement']}",
+        f"- No-net-accretion status: `{s2b['no_net_accretion_status']}`.",
+        "- Missing branch data: solved `R0`, `psi0`, `A_M0`, confinement/wall data, quantum-pressure contribution, leakage/topology BC, support/gauge spectra, and overlap/DtN data.",
+        "- Consequence: pathA_21 must consume the verdict, not an unconditional choked flux.",
+        "- Environment dependence: any solved flux law inherits `P0=K*rho0^5` and `c_s0^2=5K*rho0^4/m_GNLS`; this was dimension-checked but not converted into an accepted choked law.",
+        "",
+        "A conditional ideal Euler-nozzle algebra check was recorded but not accepted as the branch law: with upstream rest flow and no `Q`/`V_conf` variation, `c_s,* / c_s0=3^(-1/2)`, `rho_* / rho0=3^(-1/4)`, and `Jcrit/(rho0 c_s0 A_*)=3^(-3/4)`.",
+        "",
+        "Source anchors: `pde.tex:2515-2566`, `2847-2879`; `brane_bulk_ontology.tex:1998-2042`.",
+        "",
+        "## S3 hbar and h/2pi",
+        "",
+        f"Verdict: `{s3['verdict']}`.",
+        "",
+        f"- Current action role: {s3['current_action_role']}",
+        f"- Anti-tautology gate: {s3['anti_tautology']}",
+        f"- `h/2pi` assessment: {s3['h_2pi_assessment']}",
+        f"- `n^2` assessment: {s3['energy_n2_assessment']}",
+        "",
+        "Role catalog dimensions checked: circulation `kappa=int v_b dl=h*n/m_GNLS`, phase momentum `p=hbar grad(theta)`, quantum pressure `Q`, and candidate bridge `hbar J/c_gamma^2`.",
+        "",
+        "Source anchors: `part01_parent_geometry.tex:174-219`, `270-289`; `pde.tex:429-469`; `brane_bulk_ontology.tex:668-671`, `1169-1180`.",
+        "",
+        "## Residuals",
+        "",
+    ]
+    residuals = report["residuals"]
+    assert isinstance(residuals, Sequence)
+    for raw in residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(
+        [
+            "",
+            "## Algebraic harness summary",
+            "",
+            f"- Dimensional checks: {summary['consistent_dimensional_checks']} consistent, {summary['inconsistent_dimensional_checks']} inconsistent, {summary['total_dimensional_checks']} total.",
+            f"- Algebraic checks: {summary['consistent_algebraic_checks']} consistent, {summary['inconsistent_algebraic_checks']} inconsistent, {summary['total_algebraic_checks']} total.",
+            f"- Acceptance status: `{summary['acceptance_status']}`.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def write_patha20_velocity_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = run_patha20_velocity_constants()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_20_velocity_constants_report.json"
+    scratch_md_path = out_dir / "pathA_20_velocity_constants_report.md"
+    reference_path = report_dir / "pathA_20_velocity_constants.md"
+    rendered = render_patha20_velocity_markdown(report) + "\n"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    scratch_md_path.write_text(rendered, encoding="utf-8")
+    reference_path.write_text(rendered, encoding="utf-8")
+    return json_path, reference_path, report
+
+
 def write_report(out_dir: Path) -> tuple[Path, Path, dict[str, object]]:
     report = run_audit()
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -985,9 +1421,19 @@ def main(argv: Iterable[str] | None = None) -> int:
         help="run the side-by-side pathA_19 foundation check group instead of the pathA_18 audit",
     )
     parser.add_argument(
+        "--patha20-velocity",
+        action="store_true",
+        help="run the side-by-side pathA_20 velocity/constants check group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
         "--foundation-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_19 foundation reference markdown",
+    )
+    parser.add_argument(
+        "--patha20-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_20 velocity/constants reference markdown",
     )
     args = parser.parse_args(list(argv) if argv is not None else None)
     if args.patha19_foundation:
@@ -1020,6 +1466,38 @@ def main(argv: Iterable[str] | None = None) -> int:
             + "; algebraic flags: "
             + ", ".join(str(raw["name"]) for raw in flags)
         )
+        return 0
+    if args.patha20_velocity:
+        json_path, reference_path, report = write_patha20_velocity_report(
+            Path(args.out_dir),
+            Path(args.patha20_report_dir),
+        )
+        summary = report["summary"]
+        s2 = report["s2_velocities"]
+        s2b = report["s2b_flux"]
+        s3 = report["s3_hbar"]
+        residuals = report["residuals"]
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_20 velocity checks: "
+            f"{summary['consistent_dimensional_checks']} dimensional consistent, "
+            f"{summary['inconsistent_dimensional_checks']} dimensional inconsistent, "
+            f"{summary['total_dimensional_checks']} dimensional total; "
+            f"{summary['consistent_algebraic_checks']} algebraic consistent, "
+            f"{summary['inconsistent_algebraic_checks']} algebraic inconsistent, "
+            f"{summary['total_algebraic_checks']} algebraic total"
+        )
+        print(f"c_gamma/c_s verdict: {s2['c_gamma_ratio_verdict']}; tail factor {s2['tail_factor']}")
+        print(
+            "flux_law_verdict: "
+            f"{s2b['flux_law_verdict']}; no-net-accretion status {s2b['no_net_accretion_status']}"
+        )
+        print(
+            "hbar provenance verdict: "
+            f"{s3['verdict']}; h/2pi assessment: {s3['h_2pi_assessment']}"
+        )
+        print("carried residuals: " + ", ".join(str(raw["name"]) for raw in residuals))
         return 0
     json_path, md_path, report = write_report(Path(args.out_dir))
     summary = report["summary"]

@@ -1,92 +1,128 @@
-# Directive pathA_21 — Emergent constants, Step 3: `G`, the mass-bridge, and the `m↔G` unification
+# Directive pathA_21 — Emergent constants, Step 3: `G`, the mass-bridge, the `m↔G` unification (SYMBOLIC forms + profile-solve spec)
 
-**Status:** ⚠️ DRAFT — to be FINALIZED after `pathA_20` (`c_s`+`c`) lands + is reviewed. It CONSUMES `pathA_20` outputs:
-the derived `c` (= `c_γ`); the **`pathA_20b` brane verdict** (`C_GAMMA_EQUALS_C_S` / `C_GAMMA_NE_C_S` with closed-form
-`λ_γ`+ρ-dependence / `C_GAMMA_RATIO_STILL_UNDERDETERMINED` with a named residual) — carry `λ_γ` SYMBOLIC whenever
-`pathA_20b` closed only the bulk cone or left the brane cone underdetermined; the `ħ`-provenance
-verdict (`HBAR_EMERGENT` / `HBAR_FUNDAMENTAL` / `HBAR_PROVENANCE_UNDETERMINED`) + the `h`/`2π` decomposition assessment;
-and the **`flux_law_verdict`** (`TRANSONIC_CHOKED` with `J_crit` / `NONTRANSONIC_NO_CHOKED_FLUX` with the alternate law /
-`STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA`) — NOT an unconditional `J_crit`; each case routes differently below.
-Do NOT fire until `pathA_20` is gated. This is where the `pathA_19` honest negative (`INFLOW_MASS_SOURCE_MISSING`, base
-retained `{L,T,M}`) gets RE-TESTED with the now-available ingredients. If `pathA_20` returned the underdetermined
-verdicts, this step inherits those as blocking residuals (it cannot manufacture the missing profile/operator data).
+**Status:** Design-reviewed (Codex `gpt-5.5` → SOUND-WITH-FIXES; all fixes applied 2026-06-19; pending confirm-pass before
+execution — gated by the user). This is the SYMBOLIC spec-completion step: pathA_19/20/20b extracted everything derivable
+from the symbolic action + dimensions; the remaining NUMBERS all bottleneck on the SOLVED THROAT PROFILE. So pathA_21
+DERIVES the FORMS (`G`, `m_defect`, the inter-defect force as profile-integral expressions) carrying
+`λ_γ`/`α_J`/profile-integrals SYMBOLIC, re-tests the `M`-collapse, and PRODUCES THE PROFILE-SOLVE SPECIFICATION (the exact
+list of profile quantities the future solve must compute). Concrete consumed inputs:
+- base **`{L,T,M}`**, `m_GNLS` (constituent) ≠ `m_defect` (throat) — pathA_19;
+- `[J]=T⁻¹` is the conserved invariant LABEL, but its VALUE = `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA` — pathA_20;
+- `ħ`-provenance = `HBAR_PROVENANCE_UNDETERMINED` (NOT shown emergent) + `H_2PI_RATE_CLASSIFICATION_UNDETERMINED` (is `J`
+  cycle-rate `J_ν` or angular-rate `J_ω`, hence where the `2π` sits) — pathA_20;
+- `c=c_γ` is the standing-wave ceiling. In the strict bulk transverse zero-mode, `c_γ` is represented by `c_bulk` with
+  `c_bulk²=C_B/C_E`; the OBSERVED brane `c_γ/c_s` remains the `brane_verdict` residual and is carried as `λ_γ` until the
+  zero-mode/profile reduction closes it (`c_γ/c_s` is a CALIBRATION KNOB) — pathA_20b;
+- healing: `a=ħ/(m_GNLS c_s0)`, `ξ_h=√2 ħ/(m_GNLS c_s0)`, `h0=(5K/4)ρ0⁴=m_GNLS c_s0²/4`; `c_s²=5Kρ0⁴/m_GNLS` — pathA_19.
 **Date:** 2026-06-19
 **Owner:** Codex (DERIVES + codes; iterates until scripts exit 0). Claude reviews afterward.
-**Trigger:** decision-13 §4 item 3, Step 3 of 4. Chain: `pathA_19` (foundation) → `pathA_20` (`c_s`+`c`) →
-**this (`G` + mass-bridge + `m↔G`)** → `pathA_22` (scale-map → `m̂0²·S_port` → re-run B2c).
+**Trigger:** user decision A (decision-13 §0/§10, 2026-06-19). Chain: `pathA_19` → `pathA_20` → `pathA_20b` →
+**this (`G` + mass-bridge + spec)** → `pathA_22` (scale-map → `m̂0²·S_port` → re-run B2c).
 
-## Why this step (context)
-Two things converge here. (1) `pathA_19` could NOT collapse `M` because doing so required `c` (circular) and a verdict
-on `ħ`; `pathA_20` supplies both. So the mass-as-inflow hypothesis becomes TESTABLE for the first time. (2) The user's
-ontology: a defect's mass is the attractive pull it exerts via condensate inflow — so **the inter-defect force, the
-defect mass, and `G` are three faces of the same inflow `J`**. Derive them as such, or report the blocking gap.
+## Why this step
+(1) Re-test the `pathA_19` mass-as-inflow negative now that `c` exists and the `ħ` verdict is in. (2) The user's ontology:
+a defect's mass = the attractive pull via condensate inflow → the inter-defect force, `m_defect`, and `G` are three faces
+of the inflow `J`. (3) Everything bottlenecks on the throat profile, so the highest-value output is a CONCRETE
+specification of what the profile solve must compute.
 
 ## Scope & stance
-DERIVATION. No model-formula changes, no freeze touch, no `m̂0²·S_port` un-pin (that is `pathA_22`). Extend
-`dimensional_check.py` (new group; leave pathA_18 + pathA_19 + pathA_20 groups intact). Same infra constraints as
-`pathA_19`/`pathA_20` (read-only sim dir; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). **Dual-engine required**
-where MMA can verify the force law, the `G` reduction, and the dimensional algebra. Use the `pathA_19` base + `pathA_20`
-outputs (`c`, the `ħ`-verdict + `h`/`2π` assessment, the `flux_law_verdict`) + the `pathA_20b` brane verdict for `c_γ/c_s`
-(symbolic `λ_γ` if unclosed).
+SYMBOLIC DERIVATION (forms, not numbers). Carry `λ_γ`, `α_J`, `J`-value, and profile integrals SYMBOLIC; do NOT
+manufacture missing profile/operator data (inherited as blocking residuals). No model-formula changes, no freeze touch,
+no `m̂0²·S_port` un-pin (`pathA_22`). Mass-symbol discipline: `m_GNLS` (EOS/healing/Madelung/action) vs `m_defect`
+(throat rest/gravitational). Extend `dimensional_check.py` side-by-side (new group; leave pathA_18/19/20/20b groups +
+`dimensional_dictionary()`/D1-D3 intact). Same infra constraints (read-only sim dir; never touch
+`physical_export_permitted`; no `$RT exec`; `timeout 600`; ≤2 MMA seats; YAML/md). Do NOT collapse `M` unless an
+INDEPENDENT `ħ`-free relation actually appears (pathA_20b left `ħ` UNDETERMINED → expected honest outcome is `{L,T,M}`).
+
+**DERIVED-FORM GATE (anti-restatement — the core acceptance teeth).** A positive P1/P2/P4 form is accepted ONLY when the
+report gives a SOURCE-EQUATION CHAIN from the parent equations to a named profile integral/relation. It is a FAIL to
+introduce the target formula as an assumption, to define `α_J := m_defect c²/(ħ J)` (rearrangement), or to define `G`
+only by rearranging `F = G m₁ m₂/r²`. A missing chain → a NAMED RESIDUAL (a VALID outcome), never a PASS. Dual-engine
+`.wl`/SymPy agreement validates DIMENSIONS/ALGEBRA ONLY; it cannot upgrade a restatement into a derivation — every
+non-algebraic P1/P2/P4 derivation needs a human-readable proof trace with source equations + residuals.
 
 ## Work items
 
-### P1 — the inter-defect force from inflow (mass-as-attraction, the user's ontology)
-- From the stationary Bernoulli/pressure field of a single drain (continuity + quantum-Bernoulli + EOS, the
-  `pathA_20` profile), derive the field a SECOND defect feels, and the resulting force between two drains of fluxes
-  `J₁, J₂` at separation `r`. Test whether it is attractive and its `r`-scaling (expect an inverse-power law from the
-  drain pressure field). Dimension-check the force.
-- This is the physical content of "mass is measured by the attractive force between two objects, directly from the
-  inflow." The force law is the bridge between `J` and a gravitational coupling.
+### P1 — the inter-defect force from inflow (FORM of the force coefficient `C_F`, WITHOUT `G`)
+- From the stationary drain pressure/Bernoulli field of a single defect, derive the FORM of the field a second defect
+  feels and the force between two drains of fluxes `J₁,J₂` at separation `r`. Report the force coefficient
+  `C_F(profile; J₁,J₂,…)` and the `r`-power — do NOT introduce `G`. Determine attractiveness FROM the pressure/density
+  response (a sign from convention or from choosing `α_J>0` is NOT acceptable — else carry the sign as a residual).
+- Keep the FULL stationary-profile dependencies (`Q`, `V_conf`, geometry, leakage/topology BC). Any ideal-Euler/nozzle
+  reduction (which pathA_20 refused to promote) must be labelled CONDITIONAL and NON-CLOSING. Dimension-check the force;
+  FLAG which profile integrals are unresolved (→ P5).
 
-### P2 — derive `m_defect` from inflow (re-test the `pathA_19` negative result)
-- Produce the relation `pathA_19` demanded and could not find: an action-level / boundary-source / Noether-charge /
-  Hamiltonian-energy derivation that ties the throat rest (gravitational) mass `m_defect` to the inflow rate `J`.
-  Target FORM (from `pathA_20`): **`m_defect = α_J ħ J / c²`** (= `E=mc²` with `ħ·(α_J J)` the rest energy = the
-  standing-wave `ħω₀`). DERIVE `α_J`; do not assert it. **`2π`/`h` resolution:** if `pathA_20` S3 found `J` is a
-  CYCLE-count rate (`ν`-like), the form is `m_defect = α_J h J_ν/c² = 2π α_J ħ J_ν/c²`; DERIVE whether the `2π` is
-  physical or absorbed into `α_J` (this factor is calibration-critical — a stray `2π` shifts the GR-anchor match).
-- **Equivalence-principle check (a derivation, if it lands):** show the INERTIAL mass (resistance to accelerating the
-  throat — added mass / momentum of the entrained flow) equals the SAME inflow quantity as the gravitational/source
-  mass. If both equal `α_J ħ J/c²`, the equivalence principle is DERIVED here, not assumed.
-- A negative result is still valid: if no such relation exists, keep `m_defect` as a separate datum and report the
-  precise obstruction (sharper than `pathA_19`'s, now that `c`/`ħ` are known).
+### P2 — `m_defect` from inflow (re-test the pathA_19 negative; FORM + `α_J`)
+- **Candidate FORM to test:** `m_defect = α_J ħ J / c²` (= `E=mc²` with the inflow as the energy = standing-wave `ħω₀`).
+  DERIVE OR REJECT it. A positive result REQUIRES an independent action-level / boundary-source / Noether / Hamiltonian
+  relation defining `α_J` as a profile functional that does NOT contain `m_defect`, `G`, or the target bridge. Restatement
+  or `α_J` by rearrangement → `MASS_BRIDGE_FORM_NOT_DERIVED` (a valid residual, NOT a PASS).
+- **`2π`/`h`:** since `J` cycle-vs-angular is UNDETERMINED, use SEPARATE symbols `J_ν` (cycle) and `J_ω` (angular), give
+  both forms (`α_J ħ J_ω` and `α_J h J_ν = 2π α_J ħ J_ν`), and show exactly where the `2π` sits + which residual blocks
+  choosing it. `α_J` must NOT silently absorb the `2π`.
+- **Equivalence-principle check (no smuggling):** compute `m_inertial` (accelerated-throat kinetic response /
+  entrained-flow momentum) and `m_source` (far-field drain/force coefficient from P1) SEPARATELY, from separate sources.
+  EP is DERIVED only if both reduce to the SAME profile integral with the SAME normalization. Otherwise `EP_NOT_DERIVED`
+  (valid outcome).
 
-### P3 — the M-collapse test (does the base set reduce to `{L,T}`?)
-- With the derived `c` (`pathA_20`) and the `ħ`-verdict (`pathA_20` S3), test whether `M` is now ELIMINABLE:
-  substitute the bridge + any `ħ`-emergence relation and check whether every mass reduces to combinations of
-  `{L,T}`-quantities + already-derived constants, OR whether an irreducible dimensionful constant remains.
-  - If `ħ` is emergent AND the bridge derives: `M` collapses → base `{L,T}`, mass-as-inflow PROVEN. Update a NEW
-    harness representation (side-by-side; do not mutate the `pathA_19` `{L,T,M}` dictionary).
-  - If `ħ` stays fundamental OR the bridge fails: retain `{L,T,M}`; record exactly which input blocks collapse.
-- Either outcome is a valid PASS with a named verdict. This directly resolves the `pathA_19`
-  `INFLOW_MASS_SOURCE_MISSING` residual one way or the other.
+### P3 — the `M`-collapse re-test (does the base reduce to `{L,T}`?)
+- With `c` derived and `ħ` = UNDETERMINED, test whether `M` is eliminable. The anti-tautology gate binds: `M` collapses
+  ONLY with a genuine INDEPENDENT `ħ`-free relation (absent in pathA_20b). **Honest expected outcome: retain `{L,T,M}`.**
+  If no independent mass bridge is derived (P2), the correct resolution is to RETAIN or RENAME `INFLOW_MASS_SOURCE_MISSING`
+  with a sharper blocker — do NOT force closure; `{L,T,M}` retained is a PASS. Only with a real `ħ`-free relation, collapse
+  to `{L,T}` in a NEW side-by-side representation (never mutate the pathA_19 `{L,T,M}` dictionary).
 
-### P4 — emergent `G` and the `m↔G` unification
-- Derive the effective Newton constant `G` from defect back-reaction on the condensate + the 4D→3D (bulk→brane)
-  reduction (transverse width ~`a`). Honest prior from the verification work: effective-3D `[G]=L³T⁻²M⁻¹` (brane
-  projection). Dimension-check in the `pathA_19` base.
-- Show `m_defect` and `G` are **two faces of one inflow quantity** (the force in P1 `∝ G m₁ m₂/r²` with both `m` and
-  the coupling sourced by `J`). State the closed-form `G(K, ρ₀, m, ħ, J, a, c_γ/c_s, …)` to the extent derivable;
-  flag any piece that must wait for `pathA_22`'s scale-map.
+### P4 — emergent `G` (FORM, derived AFTER P1/P2) + the `m↔G` unification
+- Do NOT define `G` by rearranging the Newton form. Extract a universal `G_eff` ONLY after: (a) P1 gives `C_F` without
+  `G`, and (b) P2 independently defines the masses — AND only if the force is attractive, INVERSE-SQUARE, factorizes into
+  the same source quantities, and is universal for the branch class (not pair/instance-specific except via allowed
+  universal branch data). Otherwise report `NEWTON_G_FORM_NOT_DERIVED` or `FORCE_NOT_NEWTONIAN` (record the observed power
+  law + consequence).
+- If extracted: express `G` as `G(K, ρ0, m_GNLS, ħ, λ_γ, α_J, W_eff; {profile integrals})` and dimension-check
+  (`[G]=L³T⁻²M⁻¹` effective-3D). The 4D→3D reduction width is a NAMED profile/reduction quantity `W_eff` (a
+  source-anchored branch relation) — do NOT set it `=a` or `=ξ_h/√2` without a source relation (`a` is a branch moment,
+  not an invariant width). Show `m_defect` and `G` are two faces of one inflow quantity (FORM); flag `pathA_22` hand-offs.
 
-## Acceptance criteria
-1. P1 inter-defect force derived from the inflow field + dimension-checked; attractive/`r`-scaling reported.
-2. P2 `m_defect`↔`J` relation derived (with `α_J`) OR a sharpened obstruction reported; equivalence-principle check
-   resolved (derived / not).
-3. P3 explicit M-collapse verdict: base `{L,T}` (mass-as-inflow proven) OR `{L,T,M}` retained with the named blocker.
-4. P4 emergent `G` derived + dimension-checked; the `m↔G` (both = inflow) relation stated; `pathA_22` hand-offs flagged.
-5. Dual-engine `.wl` agreement; new harness group passes; scripts exit 0 within `timeout 600`; pathA_18/19/20 groups
-   untouched.
+### P5 — the PROFILE-SOLVE SPECIFICATION (the deliverable that makes this step worth doing)
+Consolidate, from P1–P4, the EXACT machine-checkable table of every quantity the future stationary-throat-profile solve
+must compute. **Required columns per row (no unnamed placeholders like "the profile integral for α_J"):**
+`symbol` ; `definition` (domain + measure + integrand + profile fields + BC/source equation) ; `dimension` ;
+`frame` (4D-bulk / brane / reduced-3D) ; `source anchor` (file:line or equation label) ; `closes which output`
+(`C_F`/`α_J`/`G`/`brane c_γ`/`J`-value/…) ; `status` (`known` / `profile-solve` / `pathA_22` / `new-physics`) ;
+`residual if absent` ; `downstream consumer`. Include the branch-data-set `𝔅` items from `pde.tex:2515-2566` where
+relevant. DISTINGUISH quantities needed by pathA_21's forms from those deferred to pathA_22's scale map (do not drift
+into scale-map work).
 
-**Acceptance is PASS/FAIL with NAMED RESIDUALS: exit-0 is NECESSARY, NOT SUFFICIENT.** Every rejected hypothesis leaves
-a named residual + source + downstream consequence. A retained `{L,T,M}` / unproven bridge is a VALID negative result.
+## Acceptance criteria (PASS/FAIL with NAMED RESIDUALS; exit-0 NECESSARY not SUFFICIENT)
+1. P1 force-coefficient `C_F` FORM derived from the inflow field WITHOUT `G`, with a source-equation chain;
+   attractiveness from the pressure/density response (or residual); `r`-power reported; full-profile deps kept (ideal
+   reductions labelled conditional); profile integrals FLAGGED.
+2. P2 mass-bridge DERIVED OR REJECTED per the derived-form gate (`α_J` an independent profile functional, or
+   `MASS_BRIDGE_FORM_NOT_DERIVED`); `J_ν`/`J_ω` + `2π` placement explicit; EP resolved (derived with matching integrals,
+   or `EP_NOT_DERIVED`).
+3. P3 explicit `M`-collapse verdict: `{L,T,M}` retained (named blocker, residual retained/renamed) OR `{L,T}` (only with
+   a real `ħ`-free relation, new side-by-side representation).
+4. P4 `G` derived ONLY via P1+P2 (not by rearranging Newton) with the inverse-square/attractive/universal conditions, OR
+   `NEWTON_G_FORM_NOT_DERIVED`/`FORCE_NOT_NEWTONIAN`; if derived, `[G]=L³T⁻²M⁻¹` checked + `W_eff` source-anchored;
+   `m↔G` (both = inflow) FORM stated; `pathA_22` hand-offs flagged.
+5. P5 the profile-solve specification: the full-schema table (above), specific enough to drive the option-C solve, with
+   the `𝔅` items and the pathA_21-vs-pathA_22 split.
+6. Dual-engine `.wl` agreement for ALGEBRAIC/DIMENSIONAL claims only; non-algebraic derivations carry a human-readable
+   proof trace (`.wl` agreement is NOT proof of a derivation); new harness group passes; scripts exit 0 within
+   `timeout 600`; pathA_18/19/20/20b groups untouched.
+
+**Fail conditions (explicit):** restating a target form as derived; `α_J := m_defect c²/(ħ J)`; `G` by rearranging
+`F=Gm₁m₂/r²`; EP by naming the same formula twice; a P5 row with an unnamed placeholder. A retained `{L,T,M}`, a
+`MASS_BRIDGE_FORM_NOT_DERIVED`, an `EP_NOT_DERIVED`, or a profile-dependent (symbolic) `α_J`/`G` are VALID expected
+outcomes — the win is the rigorously-derived FORMS + the P5 spec, not numbers.
 
 ## Out of scope
-The scale-map → `m̂0²·S_port` → B2c rerun (`pathA_22`); any freeze amendment (methodology call with the user). Do not
-touch `m̂0²·S_port` here.
+The scale-map → `m̂0²·S_port` → B2c rerun (`pathA_22`); the throat-profile SOLVE itself (later option C — pathA_21 only
+SPECIFIES it); any freeze amendment. Do not touch `m̂0²·S_port`.
 
 ## Review (orchestrator, after Codex)
-Transliteration-fidelity (one clean agent per new script); independent re-derivation of the force law, the `m_defect↔J`
-bridge, and `[G]`; adversarial pass (distrust-all-clean) targeting the M-collapse verdict and the equivalence-principle
-claim (is it derived or smuggled?). Claude reads only residuals. Then gate to `pathA_22`.
+Transliteration-fidelity (one clean agent per new script); independent re-derivation of `C_F`, the `m_defect↔J` bridge +
+`α_J`'s defining relation, and `[G]`; adversarial pass (distrust-all-clean AND distrust-restated-target — for each of
+P1/P2/P4, is there a real source-equation chain, or a restatement? is `G` extracted only after a `G`-free force law? is
+EP derived from two separate masses?); plus a check that the P5 spec is concrete + complete (would it drive the profile
+solve?). Claude reads only residuals. Then gate to `pathA_22`.

@@ -9,34 +9,29 @@ verification agents → user methodology call (derive the emergent constants bef
 ---
 
 ## 0. STATUS / NEXT ACTION (resume here after /compact — 2026-06-19)
-**Where we are:** the emergent-constants chunk is split into 4 gated sub-directives (see §4). `pathA_19` (FOUNDATION)
-is **EXECUTED + REVIEWED CLEAN (2026-06-19)** — see §8 for the verdict ledger. Codex (gpt-5.5, xhigh) ran the
-derivation; two clean transliteration-fidelity agents (Python harness group + Mathematica `.wl`) both returned
-**FIDELITY-CLEAN**, the `.wl` confirmed a genuinely INDEPENDENT engine, side-by-side scoping CLEAN (509 ins / 0 del,
-pathA_18 + `dimensional_dictionary()`/D1–D3 untouched). **F1 verdict = RETAIN `{L,T,M}`** (mass-as-inflow NOT derivable
-at the foundation level → honest negative result, valid per the falsification rule). `pathA_20` (`c_s`+`c`) is drafted
-but NOT yet finalized against the pathA_19 outputs. Working-tree changes (uncommitted unless a checkpoint was taken):
-`dimensional_check.py` (+509), `reports/pathA_19_dimensional_foundation.md`, `tools/pathA_19_foundation_dimensional_crosscheck.wl`,
-directives pathA_19 + pathA_20, decision-13.
-**NEXT ACTION:** `pathA_20` EXECUTED + REVIEWED (2026-06-19, see §9): three `UNDETERMINED` verdicts (`c_γ/c_s`, flux
-law, `ħ`-provenance), ALL VERIFIED as honest walls (adversarial premature-punt audit), NOT punts; code FIDELITY-CLEAN
-dual-engine (independent `.wl`); standing-wave `c=c_γ` genuinely non-circular; scope clean. **FORK RESOLVED (user chose B, 2026-06-19):** the targeted `c_γ`-vs-`c_s` coupled linearization. New inserted step
-**`pathA_20b`** (`directives/pathA_20b_cgamma_cs_linearization.md`) WRITTEN + design-reviewed (Codex SOUND-WITH-FIXES →
-8 fixes applied → confirm-pass **SOUND-AS-IS**; reviews in `_scratch/pathA_20b_directive_review*.md`). Key review
-correction: the homogeneous calc settles the **BULK** Maxwell principal cone (`c_bulk²=C_B/C_E`, NOT `Z/μ0`), but the
-**OBSERVED BRANE** photon cone may still need the zero-mode reduction / profile → TWO-LAYER verdict (`bulk_verdict` +
-`brane_verdict`; pathA_21 consumes only `brane_verdict`, carrying `λ_γ` symbolic if unclosed). Negative control: harness
-must FAIL a forced `c_γ=c_s` without a source-derived `c_bulk²=5Kρ0⁴/m_GNLS`. **`pathA_20b` EXECUTED + REVIEWED (2026-06-19, see §10):** both
-verdicts UNDETERMINED but VERIFIED HONEST + sharper than pathA_20. KEY RESULT: **`c_γ=c_s` is NOT forced — it is a
-CALIBRATABLE normalization freedom** (the matter sector is non-relativistic/parabolic, so it does not lock the photon
-cone to `c_s`); the photon rides the bulk cone `c_bulk²=C_B/C_E`, sound rides the emergent acoustic cone; if `c_bulk`
-fixed, `λ_γ∝ρ0⁻²`. Brane cone still needs the profile. **NEXT ACTION = USER DECISION (re-presented, §0 fork minus B):**
-`c_γ/c_s` is now as closed as it can be without the profile, so choose **(A)** `pathA_21` SYMBOLIC (derive `G` +
-mass-bridge FORMS, carry `λ_γ`/`α_J` — completes the unknowns/calibration-knobs map) or **(C)** the full stationary
-throat-profile solve (closes the flux law + brane cone + feeds `G`/`α_J` — the big solver work everything now bottlenecks on).
-**Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
-Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
-failure; pathA_21 carries the concrete derivation target to re-test it.
+**Where we are:** `pathA_19` (foundation), `pathA_20` (`c_s`+`c`), and `pathA_20b` (`c_γ/c_s`) are ALL EXECUTED +
+REVIEWED (fidelity-clean dual-engine; all verdicts adversarially verified HONEST) + COMMITTED — ledgers in §8/§9/§10.
+**The emergent-constants program has now extracted everything derivable from the symbolic action + dimensions** (the
+convergence, §10): base `{L,T,M}` retained; `c_s∝ρ²`, `[c_s]=[c_γ]=L/T`, `[J]=T⁻¹` derived; **`c_γ/c_s` is a CALIBRATION
+KNOB** (photon rides the bulk cone, sound the emergent acoustic cone; the non-relativistic matter sector doesn't lock
+them); the flux-law value, brane photon cone, `G`, and `α_J` all need the **SOLVED THROAT PROFILE**; `ħ`-emergence needs
+new substrate physics. `pathA_21` (the SYMBOLIC spec-completion step: derive `G` + mass-bridge FORMS + re-test M-collapse
++ produce the PROFILE-SOLVE SPEC) is **WRITTEN + design-reviewed**: Codex SOUND-WITH-FIXES → all fixes applied →
+confirm-pass **SOUND-AS-IS** (reviews in `_scratch/pathA_21_directive_review*.md`). Execute prompt STAGED at
+`_scratch/pathA_21_execute_prompt.md`. Tree clean (everything committed).
+**NEXT ACTION (resume here after /compact — user chose option A, 2026-06-19): FIRE the `pathA_21` EXECUTION run.**
+Command (backgrounded, NEVER shell-timeout-wrapped):
+`codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh - < software/stage1_solver/_scratch/pathA_21_execute_prompt.md > software/stage1_solver/_scratch/pathA_21_execute.log 2>&1`
+Then REVIEW per the directive's Review section (transliteration-fidelity on the new module + the `.wl`; an adversarial
+pass with **distrust-restated-target** — for each of P1/P2/P4, is there a real source-equation chain or a restatement?
+is `G` extracted only after a `G`-free force law? is EP derived from two SEPARATE masses?; plus a check that the P5
+profile-solve spec is concrete + complete); Claude reads only residuals → gate to `pathA_22`.
+**Discipline reminder:** Codex derives/codes, Claude reviews. `pathA_21` is SYMBOLIC — the win is the rigorously-DERIVED
+FORMS (`C_F`, `m_defect↔J`, `G`) + the P5 profile-solve spec, NOT numbers. Expected honest outcomes that are VALID
+PASSES: `{L,T,M}` retained (`ħ` undetermined), symbolic/profile-dependent `α_J`/`G`, `MASS_BRIDGE_FORM_NOT_DERIVED`,
+`EP_NOT_DERIVED`, `NEWTON_G_FORM_NOT_DERIVED`/`FORCE_NOT_NEWTONIAN`. The DERIVED-FORM GATE forbids restating any target
+(`α_J:=m_defect c²/(ħJ)` or `G` by rearranging `F=Gm₁m₂/r²` are FAILs). After `pathA_21`: option **C** = the throat-profile
+SOLVE (closes the numbers, driven by the P5 spec); `pathA_22` = scale-map → `m̂0²·S_port` → re-run B2c.
 
 ---
 

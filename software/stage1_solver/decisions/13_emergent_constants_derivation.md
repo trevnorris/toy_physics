@@ -26,9 +26,14 @@ dual-engine (independent `.wl`); standing-wave `c=c_γ` genuinely non-circular; 
 correction: the homogeneous calc settles the **BULK** Maxwell principal cone (`c_bulk²=C_B/C_E`, NOT `Z/μ0`), but the
 **OBSERVED BRANE** photon cone may still need the zero-mode reduction / profile → TWO-LAYER verdict (`bulk_verdict` +
 `brane_verdict`; pathA_21 consumes only `brane_verdict`, carrying `λ_γ` symbolic if unclosed). Negative control: harness
-must FAIL a forced `c_γ=c_s` without a source-derived `c_bulk²=5Kρ0⁴/m_GNLS`. **NEXT ACTION = execute `pathA_20b`**, then
-review (fidelity + dimensional + adversarial premature-punt), then gate to `pathA_21`. (Options A=pathA_21-symbolic and
-C=full throat-profile solve remain the later moves once `c_γ/c_s` is as closed as it can be here.)
+must FAIL a forced `c_γ=c_s` without a source-derived `c_bulk²=5Kρ0⁴/m_GNLS`. **`pathA_20b` EXECUTED + REVIEWED (2026-06-19, see §10):** both
+verdicts UNDETERMINED but VERIFIED HONEST + sharper than pathA_20. KEY RESULT: **`c_γ=c_s` is NOT forced — it is a
+CALIBRATABLE normalization freedom** (the matter sector is non-relativistic/parabolic, so it does not lock the photon
+cone to `c_s`); the photon rides the bulk cone `c_bulk²=C_B/C_E`, sound rides the emergent acoustic cone; if `c_bulk`
+fixed, `λ_γ∝ρ0⁻²`. Brane cone still needs the profile. **NEXT ACTION = USER DECISION (re-presented, §0 fork minus B):**
+`c_γ/c_s` is now as closed as it can be without the profile, so choose **(A)** `pathA_21` SYMBOLIC (derive `G` +
+mass-bridge FORMS, carry `λ_γ`/`α_J` — completes the unknowns/calibration-knobs map) or **(C)** the full stationary
+throat-profile solve (closes the flux law + brane cone + feeds `G`/`α_J` — the big solver work everything now bottlenecks on).
 **Discipline reminder:** Codex derives/codes, Claude reviews. The pathA_19 negative result (no action-level
 Noether/Hamiltonian tie of `m_defect` to inflow → retain `{L,T,M}`, `J`=conserved rate `T⁻¹`) is a VALID PASS, not a
 failure; pathA_21 carries the concrete derivation target to re-test it.
@@ -250,3 +255,39 @@ the NUMBERS (`c_γ/c_s`, the flux law, and downstream `G`/`α_J`) all need (a) t
 (b) for `c_γ/c_s`, the coupled GNLS+Maxwell linearization (does the photon ride `g_μν(c_s)` or `η_MN`?); `ħ` needs NEW
 substrate microphysics. This is the SAME bottleneck as the core Path-A solver → the emergent-constants chunk and the
 main solver work converge here. FORK presented to the user (§0).
+
+## 10. pathA_20b (c_γ vs c_s coupled linearization) execution + review ledger — 2026-06-19
+**Run:** Codex gpt-5.5 @ xhigh. Deliverables: harness group in `dimensional_check.py` (+486, side-by-side,
+`--patha20b-cgamma-cs`), `reports/pathA_20b_cgamma_cs_linearization.md`, `tools/pathA_20b_cgamma_cs_crosscheck.wl`.
+Python 11 dim + 7 alg; Mathematica PASS; full suite green. Acceptance = `PASS_WITH_NAMED_RESIDUALS`.
+
+**Verdicts (both UNDETERMINED, VERIFIED HONEST + sharper than pathA_20 — adversarial audit):**
+- `bulk_verdict = C_GAMMA_BULK_UNDERDETERMINED` (`BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED`). The coupled principal
+  symbol FACTORIZES — off-diagonal GNLS↔gauge couplings are lower-order London/plasma terms (`δJ⁰=q★δρ`,
+  `−(q★/m)ρ0 δA^i` algebraic in `δA`) below the `∂²` cone — giving `det P = ħ(ω²−c_s²k²)·(C_E(ω²−c_bulk²k²))²`. Photon
+  cone `c_bulk²=C_B/C_E` (`Z/μ0` cancels). DERIVED, verified (not asserted).
+- **KEY PHYSICS: `c_γ=c_s` is NOT forced.** The parent gauge metric is bulk Minkowski `η_MN` (no `K/ρ0/m`); `c_s` is an
+  emergent Bogoliubov speed from a DIFFERENT sector; the matter sector is NON-RELATIVISTIC (parabolic, 1st-order in `t`)
+  so it imprints NO coordinate light cone on the shared `t` → sharing `t` does NOT lock the cones. **`c_bulk/c_s` is a
+  CALIBRATABLE normalization freedom (the `η` time-vs-space ratio), not a derived number and not a permanent gap.** If
+  `c_bulk` fixed, `λ_γ=c_γ/c_s ∝ ρ0⁻²`.
+- `brane_verdict = C_GAMMA_RATIO_STILL_UNDERDETERMINED` (`BRANE_ZERO_MODE_REDUCTION_UNDERIVED` +
+  `BRANE_PHOTON_CONE_REQUIRES_PROFILE`) — the observed photon cone needs the zero-mode reduction / solved profile (parent
+  paper declares the Maxwell/mixed spectrum OPEN: part01:1502,944; pde.tex:541-565). pathA_21 consumes this, `λ_γ` symbolic.
+
+**Background legality:** legal only with a neutralizing external source `J_ext0⁰=−q★ρ0` (jellium; sourced
+pde.tex:370-374) — handled, not punted.
+
+**Review:** Python + `.wl` both FIDELITY-CLEAN; `.wl` INDEPENDENT (own CAS, computes the determinant natively); the
+factorization + `c_bulk²=C_B/C_E` + the "unsourced `c_γ=c_s`" claim VERIFIED DERIVED; negative control BINDING (a forced
+`c_γ=c_s` genuinely fails); coupled-symbol GENUINELY-COUPLED; scope CLEAN. **Non-blocking caveats (recorded):** (1) the
+`lambdaLogSlope=−2` harness check is TAUTOLOGICAL in code (hardcodes `ρ0⁻²` rather than deriving it from `c_s∝ρ0²`) — the
+CLAIM is hand-verified correct but the check doesn't back it; (2) the `forced-equals` check is cosmetic (binding teeth =
+the residual-independence check) and the `coupled-det` check restates the block factorization → "7/7 algebraic" is NOT 7
+independent confirmations; (3) the bulk residual is better framed as a CALIBRATABLE FREEDOM than a gap. [If we revisit
+this harness, make `lambdaLogSlope` a real derivation.]
+
+**STRATEGIC STATE:** pathA_19/20/20b now CONVERGE — the emergent-constants program has extracted everything derivable
+from the symbolic action + dimensions. `c_γ/c_s` is a CALIBRATION KNOB; the flux law, brane cone, `G`, and `α_J` all need
+the SOLVED THROAT PROFILE; `ħ`-emergence needs new substrate physics. Remaining moves: (A) `pathA_21` SYMBOLIC (complete
+the unknowns/knobs map) or (C) the throat-profile solve (closes the numbers). User decision (§0).

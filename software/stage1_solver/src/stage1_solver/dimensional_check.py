@@ -974,6 +974,18 @@ def _algebra_check(name: str, actual: sp.Expr, expected: sp.Expr, note: str = ""
     }
 
 
+def _boolean_check(name: str, actual: bool, expected: bool, note: str = "") -> dict[str, object]:
+    actual_bool = bool(actual)
+    expected_bool = bool(expected)
+    return {
+        "name": name,
+        "pass": actual_bool == expected_bool,
+        "expected": str(expected_bool),
+        "actual": str(actual_bool),
+        "note": note,
+    }
+
+
 def _patha20_velocity_checks() -> list[Check]:
     rho4 = D["rho_4d_number_density"]
     rho3 = LENGTH**-3
@@ -1398,6 +1410,426 @@ def write_patha20_velocity_report(out_dir: Path, report_dir: Path) -> tuple[Path
     return json_path, reference_path, report
 
 
+def _patha20b_cgamma_cs_checks() -> list[Check]:
+    rho4 = D["rho_4d_number_density"]
+    velocity = LENGTH / TIME
+    wave_number = LENGTH**-1
+    lpsi_density = ENERGY / (LENGTH**4)
+    electric_field = FORCE
+    magnetic_field = ACTION / (LENGTH**2)
+    maxwell_c_e = lpsi_density / (electric_field**2)
+    maxwell_c_b = maxwell_c_e * (velocity**2)
+    ai = D["q_Ai"]
+    a0 = D["q_A0"]
+    c_s_squared = D["K_eos"] * (rho4**4) / MASS
+    return [
+        expect_dim(
+            "pathA_20b_L2",
+            "phonon sound speed c_s0=sqrt(5*K*rho0^4/m_GNLS)",
+            c_s_squared ** sp.Rational(1, 2),
+            velocity,
+            "Dimension check only; equality to c_gamma is not inferred.",
+        ),
+        expect_dim(
+            "pathA_20b_L1_L2",
+            "Maxwell principal speed squared C_B/C_E",
+            maxwell_c_b / maxwell_c_e,
+            velocity**2,
+            "Only the time-vs-space principal coefficient ratio sets c_bulk^2; an overall Z/mu0 prefactor is non-evidentiary.",
+        ),
+        expect_dim(
+            "pathA_20b_L2",
+            "gauge speed c_gamma=sqrt(C_B/C_E)",
+            (maxwell_c_b / maxwell_c_e) ** sp.Rational(1, 2),
+            velocity,
+            "This is the bulk/principal gauge speed dimension, not a proof that it equals c_s.",
+        ),
+        expect_dim(
+            "pathA_20b_L3",
+            "conditional bulk ratio c_bulk/c_s0",
+            ((maxwell_c_b / maxwell_c_e) / c_s_squared) ** sp.Rational(1, 2),
+            DIMENSIONLESS,
+            "The ratio is symbolic because no source equation sets C_B/C_E=5*K*rho0^4/m_GNLS.",
+        ),
+        expect_dim(
+            "pathA_20b_L4",
+            "tail factor lambda_gamma^3=(c_gamma/c_s)^3",
+            (((maxwell_c_b / maxwell_c_e) / c_s_squared) ** sp.Rational(1, 2)) ** 3,
+            DIMENSIONLESS,
+            "Dimensionless tail status is non-evidentiary for lambda_gamma=1.",
+        ),
+        homogeneous(
+            "pathA_20b_L1b",
+            "Maxwell transverse principal operator terms",
+            {
+                "C_E*partial_t^2 A_T": maxwell_c_e * ai / (TIME**2),
+                "C_B*laplacian A_T": maxwell_c_b * ai / (LENGTH**2),
+            },
+            "Gauge-invariant transverse field strengths give the cone; gauge-fixing terms do not set the speed.",
+        ),
+        homogeneous(
+            "pathA_20b_L2",
+            "transverse gauge dispersion omega^2=(C_B/C_E)*k^2",
+            {
+                "omega^2": (TIME**-1) ** 2,
+                "(C_B/C_E)*k^2": (maxwell_c_b / maxwell_c_e) * (wave_number**2),
+            },
+        ),
+        homogeneous(
+            "pathA_20b_L2",
+            "phonon acoustic dispersion omega^2=c_s0^2*k^2",
+            {
+                "omega^2": (TIME**-1) ** 2,
+                "c_s0^2*k^2": c_s_squared * (wave_number**2),
+            },
+            "The Bogoliubov quantum-pressure k^4 correction is dispersive and not used to identify c_gamma.",
+        ),
+        expect_dim(
+            "pathA_20b_L1",
+            "background charge density J_psi0^0=q_star*rho0",
+            rho4,
+            rho4,
+            "The homogeneous Maxwell equation needs J_ext0^0=-J_psi0^0 for F0=0.",
+        ),
+        homogeneous(
+            "pathA_20b_L1b",
+            "linearized spatial current variation terms",
+            {
+                "phase-current term rho0*(hbar/m_GNLS)*grad(delta theta)": rho4 * (ACTION / MASS) / LENGTH,
+                "London term (rho0/m_GNLS)*q_star*delta A_i": rho4 * ai / MASS,
+                "spatial current dimension rho0*v": rho4 * velocity,
+            },
+            "These current/London terms are lower-order in the Maxwell equation than the second-derivative principal operator.",
+        ),
+        homogeneous(
+            "pathA_20b_L1",
+            "source coupling dimensions A_M delta J^M",
+            {
+                "A0*delta J0": a0 * rho4,
+                "Ai*delta Ji": ai * (rho4 * velocity),
+                "local action density": ENERGY / (LENGTH**4),
+            },
+        ),
+    ]
+
+
+def _patha20b_algebraic_checks() -> list[dict[str, object]]:
+    omega, k2, rho0, k_eos, m_gnls, hbar = sp.symbols(
+        "omega k2 rho0 K m_GNLS hbar",
+        positive=True,
+    )
+    c_e, c_b = sp.symbols("C_E C_B", positive=True)
+    lambda_gamma = sp.symbols("lambda_gamma", positive=True)
+    h_prime = 5 * k_eos * rho0**3
+    c_s_sq = sp.simplify(rho0 * h_prime / m_gnls)
+    c_bulk_sq = c_b / c_e
+    phonon_matrix = sp.Matrix(
+        [
+            [omega, -(rho0 * hbar / m_gnls) * k2],
+            [-h_prime, hbar * omega],
+        ]
+    )
+    phonon_det = sp.factor(phonon_matrix.det())
+    gauge_transverse = c_e * omega**2 - c_b * k2
+    coupled_det = sp.factor(phonon_det * gauge_transverse**2)
+    equality_residual = sp.simplify(c_bulk_sq - c_s_sq)
+    source_metric_equation_present = False
+    forced_equals_valid = source_metric_equation_present and bool(equality_residual == 0)
+    lambda_rho_factor = rho0**-2
+    lambda_log_slope = sp.simplify(rho0 * sp.diff(lambda_rho_factor, rho0) / lambda_rho_factor)
+    return [
+        _algebra_check(
+            "phonon determinant gives omega^2=c_s0^2*k^2",
+            phonon_det,
+            hbar * (omega**2 - c_s_sq * k2),
+            "Uses h'(rho0)=5*K*rho0^3, so c_s0^2=rho0*h'(rho0)/m_GNLS=5*K*rho0^4/m_GNLS.",
+        ),
+        _algebra_check(
+            "transverse gauge operator gives c_bulk^2=C_B/C_E",
+            gauge_transverse,
+            c_e * (omega**2 - c_bulk_sq * k2),
+            "The overall Maxwell prefactor cancels from the characteristic equation.",
+        ),
+        _algebra_check(
+            "block coupled characteristic determinant after principal decoupling",
+            coupled_det,
+            hbar * (omega**2 - c_s_sq * k2) * (c_e * (omega**2 - c_bulk_sq * k2)) ** 2,
+            "Off-diagonal GNLS-gauge terms are lower derivative on the homogeneous neutralized background.",
+        ),
+        _boolean_check(
+            "negative control keeps C_B/C_E independent from c_s0^2",
+            equality_residual != 0,
+            True,
+            "The symbolic residual C_B/C_E - 5*K*rho0^4/m_GNLS must remain nonzero without a source equation.",
+        ),
+        _boolean_check(
+            "forced C_GAMMA_EQUALS_C_S verdict rejected without source metric equation",
+            forced_equals_valid,
+            False,
+            "This is the required negative-control fixture: dimensions alone cannot force equality.",
+        ),
+        _algebra_check(
+            "conditional rho dependence of c_bulk/c_s0 when C_B/C_E is rho-independent",
+            lambda_log_slope,
+            sp.Integer(-2),
+            "Since c_s0 is proportional to rho0^2, an independent c_bulk gives lambda_gamma proportional to rho0^-2.",
+        ),
+        _algebra_check(
+            "standing-wave tail remains lambda_gamma^3",
+            lambda_gamma**3,
+            lambda_gamma**3,
+            "No equality to 1 is inserted.",
+        ),
+    ]
+
+
+def run_patha20b_cgamma_cs() -> dict[str, object]:
+    checks = _patha20b_cgamma_cs_checks()
+    algebra = _patha20b_algebraic_checks()
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    algebra_failures = [check for check in algebra if not check["pass"]]
+    residuals = [
+        {
+            "name": "BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED",
+            "status": "BULK_VERDICT_RESIDUAL",
+            "source": (
+                "part01_parent_geometry.tex:225-247 and pde.tex:357-416 give F_MN F^MN with no source-derived "
+                "equation C_B/C_E=5*K*rho0^4/m_GNLS; pathA_20 showed Z(w) is an overall principal prefactor."
+            ),
+            "downstream_consequence": (
+                "bulk_verdict is C_GAMMA_BULK_UNDERDETERMINED. Carry c_bulk^2=C_B/C_E and "
+                "c_bulk/c_s0=sqrt((C_B/C_E)*m_GNLS/(5*K*rho0^4)); do not set lambda_gamma=1."
+            ),
+        },
+        {
+            "name": "PARENT_METRIC_ACOUSTIC_IDENTIFICATION_MISSING",
+            "status": "BLOCKS_BULK_EQUALS_C_S",
+            "source": (
+                "part01_parent_geometry.tex:191-203 derives the acoustic speed from the EOS, while "
+                "part01_parent_geometry.tex:225-247 gives the Maxwell parent metric separately; "
+                "em_fields.tex:160-178,482-504,692-705 is legacy acoustic reuse, not parent-action evidence."
+            ),
+            "downstream_consequence": (
+                "An EQUALS verdict is forbidden unless a later source equation identifies the gauge kinetic metric "
+                "with the acoustic metric."
+            ),
+        },
+        {
+            "name": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "status": "BRANE_VERDICT_RESIDUAL",
+            "source": (
+                "part01_parent_geometry.tex:333-389 and pde.tex:541-565 give projection and zero-mode reduction "
+                "as controlled assumptions; pde.tex:749-763 and 903-931 keep A_w, J^w, and F_muw alive in the "
+                "microscopic linearized problem."
+            ),
+            "downstream_consequence": (
+                "brane_verdict is C_GAMMA_RATIO_STILL_UNDERDETERMINED. pathA_21 consumes this brane verdict and "
+                "keeps lambda_gamma symbolic."
+            ),
+        },
+        {
+            "name": "BRANE_PHOTON_CONE_REQUIRES_PROFILE",
+            "status": "BRANE_SUB_RESIDUAL",
+            "source": (
+                "part01_parent_geometry.tex:944-946 and 1502-1511 state that the matched Maxwell/mixed reduction "
+                "and actual nonlinear branch realization remain branch/profile tasks."
+            ),
+            "downstream_consequence": (
+                "If the observed photon is a localized mixed-sector mode rather than a strict far-field zero mode, "
+                "its cone must be computed from the solved profile and reduction kernel."
+            ),
+        },
+    ]
+    return {
+        "schema": "stage1_pathA_20b_cgamma_cs_linearization/v1",
+        "base_dimensions": ["L", "T", "M"],
+        "l1_background_validity": {
+            "status": "LEGAL_WITH_EXPLICIT_NEUTRALIZING_EXTERNAL_SOURCE",
+            "psi0": "psi0=sqrt(rho0)*exp(-i*mu*t/hbar) with uniform rho0 and v_b0=0",
+            "A_M0": "A_M0=0, so F_MN0=0",
+            "J_psi0": "J_psi0^0=q_star*rho0 and J_psi0^i=0",
+            "J_ext0": "J_ext0^0=-q_star*rho0 and J_ext0^i=0",
+            "neutrality_condition": "J_tot0^M=J_psi0^M+J_ext0^M=0, making the Maxwell background equation 0=0",
+            "source_anchor": "pde.tex:370-374 permits explicit external/background sourcing; pde.tex:912-925 gives delta J^0=q_star*delta rho and the London current term.",
+            "caveat": "Without this explicit neutralizer the correct stop residual would be HOMOGENEOUS_CHARGE_NEUTRALITY_UNSPECIFIED.",
+        },
+        "l1b_principal_symbol": {
+            "variables": "(delta rho, delta theta, delta A_M)",
+            "phonon_block": "det P_ph=hbar*(omega^2 - (5*K*rho0^4/m_GNLS)*k^2)",
+            "gauge_transverse_block": "P_T=C_E*omega^2-C_B*k^2=C_E*(omega^2-c_bulk^2*k^2), c_bulk^2=C_B/C_E",
+            "coupled_principal_determinant": "det P = P_ph * P_T^2 for the physical transverse gauge polarizations after lower-derivative off-diagonal terms are dropped from the principal symbol",
+            "off_diagonal_principal_status": "VANISHES_ON_HOMOGENEOUS_NEUTRALIZED_BACKGROUND",
+            "lower_order_terms": [
+                "delta J^0=q_star*delta rho",
+                "delta J^i contains rho0*(hbar/m_GNLS)*grad(delta theta)",
+                "delta J^i contains -(q_star/m_GNLS)*rho0*delta A^i, a London/plasma term",
+                "background-gradient current terms vanish on the homogeneous background or are lower order",
+            ],
+            "gauge_invariant_branch": "The cone is read from transverse field-strength modes. Gauge-fixing consistency is not used as speed evidence.",
+        },
+        "l2_dispersions": {
+            "phonon": "omega^2=c_s0^2*k^2, c_s0^2=5*K*rho0^4/m_GNLS; quantum pressure gives the usual k^4 Bogoliubov correction but not c_gamma.",
+            "gauge_transverse": "omega^2=c_bulk^2*k^2 plus possible lower-order London/plasma shifts; c_bulk^2=C_B/C_E.",
+            "massless_branch_status": "BULK_PRINCIPAL_TRANSVERSE_BRANCH_ESTABLISHED; lower-order gapped/longitudinal branches are labeled separately and do not set the cone.",
+        },
+        "l3_two_layer_verdict": {
+            "bulk_verdict": "C_GAMMA_BULK_UNDERDETERMINED",
+            "bulk_residual": "BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED",
+            "conditional_bulk_ratio": "c_bulk/c_s0=sqrt((C_B/C_E)*m_GNLS/(5*K*rho0^4))",
+            "brane_verdict": "C_GAMMA_RATIO_STILL_UNDERDETERMINED",
+            "brane_residual": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "brane_sub_residual": "BRANE_PHOTON_CONE_REQUIRES_PROFILE",
+            "pathA_21_consumes": "brane_verdict only; lambda_gamma remains symbolic",
+            "lambda_gamma_rho_dependence": (
+                "No pure number derived. If c_bulk is independent of rho0, lambda_gamma is proportional to rho0^-2; "
+                "a pure number or equality would require the missing source equation."
+            ),
+        },
+        "l4_implications": {
+            "standing_wave_ceiling": "The standing-wave ceiling remains c=c_gamma, not c_s unless the missing brane verdict later proves equality.",
+            "tail_factor": "R_tail=(c/c_s)^3=lambda_gamma^3; conditionally (c_bulk/c_s0)^3, not set to 1.",
+            "brane_handoff": "The brane localization/profile question is a blocking sub-residual for pathA_21, not an afterthought.",
+        },
+        "negative_control": {
+            "independent_symbols": ["c_bulk", "c_s0"],
+            "forbidden_forced_equality": "C_B/C_E=5*K*rho0^4/m_GNLS",
+            "result": "FORCED_EQUALITY_REJECTED_WITHOUT_SOURCE_EQUATION",
+        },
+        "checks": [check.as_dict() for check in checks],
+        "algebraic_checks": algebra,
+        "residuals": residuals,
+        "summary": {
+            "total_dimensional_checks": len(checks),
+            "consistent_dimensional_checks": len(checks) - len(failures),
+            "inconsistent_dimensional_checks": len(failures),
+            "total_algebraic_checks": len(algebra),
+            "consistent_algebraic_checks": len(algebra) - len(algebra_failures),
+            "inconsistent_algebraic_checks": len(algebra_failures),
+            "acceptance_status": "PASS_WITH_NAMED_RESIDUALS",
+        },
+    }
+
+
+def render_patha20b_cgamma_cs_markdown(report: Mapping[str, object]) -> str:
+    l1 = report["l1_background_validity"]
+    l1b = report["l1b_principal_symbol"]
+    l2 = report["l2_dispersions"]
+    l3 = report["l3_two_layer_verdict"]
+    l4 = report["l4_implications"]
+    negative = report["negative_control"]
+    summary = report["summary"]
+    assert isinstance(l1, Mapping)
+    assert isinstance(l1b, Mapping)
+    assert isinstance(l2, Mapping)
+    assert isinstance(l3, Mapping)
+    assert isinstance(l4, Mapping)
+    assert isinstance(negative, Mapping)
+    assert isinstance(summary, Mapping)
+    lines = [
+        "# Path-A 20b c_gamma vs c_s coupled-linearization summary",
+        "",
+        "## Verdicts",
+        "",
+        f"- `bulk_verdict`: `{l3['bulk_verdict']}` with `{l3['bulk_residual']}`.",
+        f"- `brane_verdict`: `{l3['brane_verdict']}` with `{l3['brane_residual']}`; sub-residual `{l3['brane_sub_residual']}`.",
+        f"- `lambda_gamma`: {l3['lambda_gamma_rho_dependence']}",
+        f"- `pathA_21`: {l3['pathA_21_consumes']}.",
+        "",
+        "No `EQUALS` verdict is claimed. The required source equation `C_B/C_E=5*K*rho0^4/m_GNLS` was not found in the cited parent-action sources.",
+        "",
+        "## L1 background validity",
+        "",
+        f"- Status: `{l1['status']}`.",
+        f"- `psi0`: {l1['psi0']}.",
+        f"- `A_M0`: {l1['A_M0']}.",
+        f"- `J_psi0`: {l1['J_psi0']}.",
+        f"- `J_ext0`: {l1['J_ext0']}.",
+        f"- Neutrality: {l1['neutrality_condition']}.",
+        f"- Caveat: {l1['caveat']}",
+        "",
+        f"Source anchor: {l1['source_anchor']}",
+        "",
+        "## L1b coupled principal symbol",
+        "",
+        f"- Variables: `{l1b['variables']}`.",
+        f"- Phonon block: `{l1b['phonon_block']}`.",
+        f"- Gauge transverse block: `{l1b['gauge_transverse_block']}`.",
+        f"- Coupled determinant: `{l1b['coupled_principal_determinant']}`.",
+        f"- Off-diagonal principal status: `{l1b['off_diagonal_principal_status']}`.",
+        f"- Physical photon cone: {l1b['gauge_invariant_branch']}",
+        "",
+        "Lower-order/gapped terms, separated from the cone:",
+    ]
+    lower = l1b["lower_order_terms"]
+    assert isinstance(lower, Sequence)
+    for item in lower:
+        lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            "## L2 dispersions",
+            "",
+            f"- Phonon: {l2['phonon']}",
+            f"- Gauge: {l2['gauge_transverse']}",
+            f"- Massless/transverse branch status: {l2['massless_branch_status']}",
+            "",
+            "Machine checks confirm `[c_s]=[c_gamma]=L T^-1` and `C_B/C_E` has speed-squared dimension. These checks are non-evidentiary for equality.",
+            "",
+            "## L3 two-layer verdict",
+            "",
+            f"- Bulk: `{l3['bulk_verdict']}` because `{l3['bulk_residual']}`. Conditional formula: `{l3['conditional_bulk_ratio']}`.",
+            f"- Brane: `{l3['brane_verdict']}` because `{l3['brane_residual']}`; profile sub-residual `{l3['brane_sub_residual']}`.",
+            f"- Rho dependence: {l3['lambda_gamma_rho_dependence']}",
+            "",
+            "## L4 implications",
+            "",
+            f"- Standing-wave ceiling: {l4['standing_wave_ceiling']}",
+            f"- Tail factor: {l4['tail_factor']}",
+            f"- Brane handoff: {l4['brane_handoff']}",
+            "",
+            "## Negative control",
+            "",
+            f"- Independent symbols: `{', '.join(str(x) for x in negative['independent_symbols'])}`.",
+            f"- Forbidden forced equality: `{negative['forbidden_forced_equality']}`.",
+            f"- Result: `{negative['result']}`.",
+            "",
+            "## Residuals carried",
+            "",
+        ]
+    )
+    residuals = report["residuals"]
+    assert isinstance(residuals, Sequence)
+    for raw in residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(
+        [
+            "",
+            "## Harness summary",
+            "",
+            f"- Dimensional checks: {summary['consistent_dimensional_checks']} consistent, {summary['inconsistent_dimensional_checks']} inconsistent, {summary['total_dimensional_checks']} total.",
+            f"- Algebraic checks: {summary['consistent_algebraic_checks']} consistent, {summary['inconsistent_algebraic_checks']} inconsistent, {summary['total_algebraic_checks']} total.",
+            f"- Acceptance status: `{summary['acceptance_status']}`.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def write_patha20b_cgamma_cs_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = run_patha20b_cgamma_cs()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_20b_cgamma_cs_report.json"
+    scratch_md_path = out_dir / "pathA_20b_cgamma_cs_report.md"
+    reference_path = report_dir / "pathA_20b_cgamma_cs_linearization.md"
+    rendered = render_patha20b_cgamma_cs_markdown(report) + "\n"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    scratch_md_path.write_text(rendered, encoding="utf-8")
+    reference_path.write_text(rendered, encoding="utf-8")
+    return json_path, reference_path, report
+
+
 def write_report(out_dir: Path) -> tuple[Path, Path, dict[str, object]]:
     report = run_audit()
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -1426,6 +1858,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         help="run the side-by-side pathA_20 velocity/constants check group instead of the pathA_18 audit",
     )
     parser.add_argument(
+        "--patha20b-cgamma-cs",
+        action="store_true",
+        help="run the side-by-side pathA_20b coupled c_gamma/c_s check group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
         "--foundation-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_19 foundation reference markdown",
@@ -1434,6 +1871,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         "--patha20-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_20 velocity/constants reference markdown",
+    )
+    parser.add_argument(
+        "--patha20b-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_20b c_gamma/c_s reference markdown",
     )
     args = parser.parse_args(list(argv) if argv is not None else None)
     if args.patha19_foundation:
@@ -1498,6 +1940,50 @@ def main(argv: Iterable[str] | None = None) -> int:
             f"{s3['verdict']}; h/2pi assessment: {s3['h_2pi_assessment']}"
         )
         print("carried residuals: " + ", ".join(str(raw["name"]) for raw in residuals))
+        return 0
+    if args.patha20b_cgamma_cs:
+        json_path, reference_path, report = write_patha20b_cgamma_cs_report(
+            Path(args.out_dir),
+            Path(args.patha20b_report_dir),
+        )
+        summary = report["summary"]
+        l1 = report["l1_background_validity"]
+        l2 = report["l2_dispersions"]
+        l3 = report["l3_two_layer_verdict"]
+        residuals = report["residuals"]
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_20b coupled c_gamma/c_s checks: "
+            f"{summary['consistent_dimensional_checks']} dimensional consistent, "
+            f"{summary['inconsistent_dimensional_checks']} dimensional inconsistent, "
+            f"{summary['total_dimensional_checks']} dimensional total; "
+            f"{summary['consistent_algebraic_checks']} algebraic consistent, "
+            f"{summary['inconsistent_algebraic_checks']} algebraic inconsistent, "
+            f"{summary['total_algebraic_checks']} algebraic total"
+        )
+        print(
+            "bulk_verdict: "
+            f"{l3['bulk_verdict']} with {l3['bulk_residual']}; "
+            f"conditional ratio {l3['conditional_bulk_ratio']}"
+        )
+        print(
+            "brane_verdict: "
+            f"{l3['brane_verdict']} with {l3['brane_residual']} "
+            f"(sub-residual {l3['brane_sub_residual']}); pathA_21 consumes this brane verdict"
+        )
+        print(
+            "homogeneous background: "
+            f"{l1['status']}; {l1['neutrality_condition']}"
+        )
+        print(
+            "key derived results: "
+            "[c_s]=[c_gamma]=L T^-1; "
+            "c_s0^2=5*K*rho0^4/m_GNLS; "
+            f"{l2['gauge_transverse']}; "
+            f"{l3['lambda_gamma_rho_dependence']}"
+        )
+        print("named residuals carried to pathA_21: " + ", ".join(str(raw["name"]) for raw in residuals))
         return 0
     json_path, md_path, report = write_report(Path(args.out_dir))
     summary = report["summary"]

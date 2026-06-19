@@ -210,10 +210,15 @@ The map sharpens, rather than changes, the plan:
 
 **Progress (2026-06-18):** ✅ GATE-A **frozen** (`decisions/11`, commit `1703f4c`, hash `ed3585…`); ✅ **B1**
 §5 extraction module built + validated + committed (`398ba27`); ✅ **B2a** BdG spectrum DERIVED on the
-self-consistent background (closed residual `2.749e-10` vs smoke `243.39`; `ϖ=[4.529,5.960,10.109]`, converged
-`B0=3.901e-5,B2=1.773e-6,B4=8.407e-8` over K=30/100 modes; operator FAITHFUL by 2 fidelity audits; target-blind),
-committed. The detailed resume-here record is `software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
-**Paused at the B2a→B2b gate (user reviewing the numbers before B2b launches).**
+self-consistent background (closed residual `2.749e-10` vs smoke `243.39`; converged `B0=3.901e-5,B2=1.773e-6,
+B4=8.407e-8`; operator FAITHFUL by 2 fidelity audits; target-blind), committed `fa5712e`; ✅ **B2b** Maxwell transfer
+DERIVED on the same `A0` via the **basis-invariant Green/self-energy** route (NO posited U/W ports): converged
+`Z0=2.395e-8,Z2=-1.528e-8,Z4=5.017e-9,N0=2.158e-8,N2=-5.934e-9,N4=3.698e-9` with honest per-coefficient error bars
+(`Z0/Z2/N0/N2 ~0.4–0.6%`, `Z4/N4 ~2–5%`). Structural win confirmed: `D0=K−B0−Z0≈7.7209`, `Z0` ~3e-9 of `K` → **no
+cancellation**. Operator FAITHFUL + target-blind; needed **3 review rounds** (adversarial caught real gate-theater
+twice — unconverged + fake "dual engine" + tautological basis gate — all fixed; round 3 verified genuine).
+The detailed resume-here record is `software/stage1_solver/decisions/12_pathA_b2_derive_backreaction_bundle.md`.
+**Paused at the B2b→B2c gate (user reviewing the numbers before B2c — the verdict chunk — launches).**
 
 **Immediate — B2 (DERIVE the back-reaction bundle, decision-12 "Reading A", user-authorized):** B2 surfaced that the
 BdG spectrum (`c_j,ϖ_j,B_n`) and Maxwell transfer (`Z_n,N_n`) were never solved on the Path-A background — M1c used
@@ -221,8 +226,10 @@ posited M1b modes. So derive them properly (the −10.8 miss partly rested on po
 1. ~~**B2a** — derive the BdG spectrum on the Path-A self-consistent `{ψ0,A0,R0}`~~ ✅ DONE (task #68;
    directives `pathA_09`/`pathA_10`). Bundle carries `error_budget` for B2c §J; τ-finding: matter background moves
    <1% with τ → R_norm(τ) leverage is via `K=τκ̂` + wall/Maxwell, not `B_n`.
-2. **B2b** — derive the Maxwell transfer via the **Spike-2 basis-invariant Green/self-energy** route
-   (`mt15_03→04→05`), NOT posited U/W ports → direct `{Z_n,N_n}`. (task #69)
+2. ~~**B2b** — derive the Maxwell transfer via the **Spike-2 basis-invariant Green/self-energy** route, NOT posited
+   U/W ports → direct `{Z_n,N_n}`~~ ✅ DONE (task #69; directives `pathA_11`/`pathA_12`/`pathA_13`). Genuinely-
+   independent 2nd-/4th-order dual engine; per-coefficient error bars in `error_budget` for B2c §J (soft spots
+   `Z4/N4 ~2–5%` feed held-out `P4/R_pole`, not the `R_norm` calibration which rides on tight `N0`/`K`).
 3. **B2c** — integrate derived `{K,M,B_n,Z_n,N_n}` → the unique `R_norm(τ)=0` root-find (stable-side `D0>0`) + §J
    error bars; report `τ*` + naturalness + held-out `R_pole/P2/P4`. **Leaves target-blind.** (task #70)
 Freeze stays valid (it froze forms/conventions, not numeric spectra); only a dated §5b clarification was added.

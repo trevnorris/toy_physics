@@ -22,6 +22,12 @@ scriptPath =
   ];
 scriptDir = DirectoryName[scriptPath];
 repoRoot = AbsoluteFileName[FileNameJoin[{scriptDir, "..", "..", ".."}]];
+
+If[MemberQ[$ScriptCommandLine, "--patha-b2b"],
+  Get[FileNameJoin[{scriptDir, "mt15_04_patha_b2b_maxwell_transfer.wls"}]];
+  Exit[0]
+];
+
 runDir = FileNameJoin[{scriptDir, "runs", "mt15_04_spike2_transfer_n0"}];
 If[! DirectoryQ[runDir], CreateDirectory[runDir, CreateIntermediateDirectories -> True]];
 

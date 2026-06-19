@@ -99,16 +99,50 @@ spatial-confirmation (12×12) `9.3e-3`, spatial-ladder (10×10 vs 8×8) `2.0e-2`
 **τ-finding for B2c:** doubling τ moves the *matter* background <1% (τ enters only the wall sector in the frozen
 Hooke family) → R_norm(τ) leverage is dominated by `K=τκ̂` (exact) + the wall/Maxwell sectors, NOT by `B_n`.
 
+## B2b STATUS — ✅ DONE + VALIDATED (2026-06-18)
+Directives `pathA_11` (build) + `pathA_12` (remediation #1) + `pathA_13` (remediation #2). Built: a NEW Path-A VSH
+Maxwell transfer engine (`src/stage1_solver/patha_b2b_maxwell.py` — primary 2nd-order FD **and** a genuinely-
+independent 4th-order staggered FD engine), adapted MMA Spike variants (`mt15_03_patha_b2b` / `mt15_04_patha_b2b`,
+dispatched via `--patha-b2b` guards in the originals), tests (32 pass), and report
+(`reports/patha_b2b_maxwell_transfer_derivation_report.md`). Derived on the **same B2a closed background's `A0`** at
+neutral `τ=1` via the **basis-invariant Green/self-energy transfer** (`Z_n=Re Σ_cons(0)=gᵀ·inv(K)·g`,
+`N_n=−Im Σ_ret/(Γ_port ω⁵)`, `Γ_port=4a⁵/27c_s⁵`) — **NO posited U/W ports** in the live path.
+**Converged τ=1 bundle** (grid 47×17, window 0.028, radial_scale 5.0):
+`Z0=2.395e-8, Z2=-1.528e-8, Z4=5.017e-9, N0=2.158e-8, N2=-5.934e-9, N4=3.698e-9`.
+**Per-coefficient error bars:** `Z0/Z2/N0/N2 ≈ 0.4–0.6%`; `Z4 ≈ 2.2%` (true ~4–5% incl. geometric tail), `N4 ≈ 1.7%`;
+cross-engine (2nd- vs genuinely-different 4th-order) ≈ 4.4% ≈ the convergence error (honestly recorded, not
+overclaimed). All in the bundle `error_budget` for B2c §J.
+**Structural win confirmed on DERIVED numbers:** `D0 = K − B0 − Z0 = 7.7209 − 3.9e-5 − 2.4e-8 ≈ 7.7209`; `Z0` is
+~3e-9 of `K` → **NO fragile cancellation** (vs the old effective-closure ~1.6e7 knife-edge). The soft spots
+(`Z4,N4`) feed only the **held-out** `P4/R_pole`; the `R_norm` calibration rides on the tight `N0` (0.4%) + `K`.
+**Forward source** = canonical decision-05 **D3 Fréchet** over the B2a BdG-mode response (NOT a B1-χ overlap; the
+B2a overlaps `c_j` already carry the χ coupling). The B2a **rest** background has `A_r0 ≡ A_w0 ≡ 0` (expected — no
+rest current), so this calibration transfer runs through scalar `A_00` + kinematic `j_E` + `q·δρ`; the
+vector-current coupling is held-out non-rest/excited-defect coverage.
+**Review (3 rounds, distrust-all-clean):** 2 transliteration-fidelity audits → operator FAITHFUL term-by-term and
+UNTOUCHED through both remediations; `Γ_port` correctly resolves the decision-05 factor-4 flag and cancels between the
+DtN build and the `N` normalization. Adversarial rounds 1–2 caught **real gate-theater** (31.5% unconverged + 0.75
+can't-fail gate; a transliteration masquerading as the "dual engine"; a dead-conditional / algebraic-identity
+basis-invariance gate) → remediations fixed each. Round 3 verified all fixes genuine: per-coefficient convergence
+gate (max-over-coefficients FORBIDDEN; grow-one/shrink-another negative control fails), the 4th-order independent
+engine actually wired in (different stencils, same full sweeps), the basis gate genuinely basis-dependent (92% branch
+diff; fixed-port moves 9.88% while invariant `Z` is machine-zero). Target-blind CLEAN (no `R_norm`/…/`mt15_05`).
+N-fit reconditioned (value-preserving column equilibration; cond 5.5e6→33; `N0/N2/N4` each above the fit floor).
+**Lesson reinforced:** the standing fidelity audit verifies the operator FORM; the **adversarial pass is what catches
+can't-fail/tautological gates and unconverged-shipped-as-converged** — needed 3 rounds here.
+
 ## NEXT STEPS (in order)
 1. ~~§5b clarification note to `decisions/11`~~ — DONE.
 2. ~~Scaffold + run B2a (`pathA_09`/`pathA_10`); review (fidelity + adversarial); commit~~ — DONE + committed.
-3. **B2b — Maxwell Spike-2 transfer (task #69).** Scaffold `directives/pathA_11_chunk_b2b_maxwell_transfer.md`:
-   re-run the Spike-1→Spike-2 chain (`mt15_03`→`mt15_04`, `mt15_05` for clean assembly) on the Path-A `A0`
-   background → direct `{Z0,Z2,Z4,N0,N2,N4}` via the basis-invariant Green/self-energy transfer (NO U/W ports).
-   Same audit stack (dual-engine + fidelity + adversarial). Reuse the B2a background exporter / bundle convention.
-   **NOTE (user gate 2026-06-18): user paused AFTER the B2a commit to review the numbers themselves before B2b is
-   launched — do NOT start B2b until the user gives the go.**
-4. B2c (integrate derived `{K,M,B_n,Z_n,N_n}` → `R_norm(τ)=0` root-find + §J error bars), gated.
+3. ~~B2b — Maxwell transfer (`pathA_11`/`pathA_12`/`pathA_13`); basis-invariant Green/self-energy on the Path-A `A0`
+   → derived `{Z0,Z2,Z4,N0,N2,N4}`; 3-round review; commit~~ — **DONE + committed.**
+   **NOTE (user gate 2026-06-18): user paused AFTER the B2b commit to review the numbers themselves before B2c is
+   launched — do NOT start B2c until the user gives the go.**
+4. **B2c — integrate + calibrate (task #70).** Feed the full derived bundle `{K,M,B_n,Z_n,N_n}` (B1 `χ,K,M` + B2a
+   `B_n` + B2b `Z_n,N_n`) → `patha_extraction` → the unique `R_norm(τ)=0` deterministic root-find on the stable-side
+   `D0>0`. §J: propagate the B2a + B2b per-coefficient error bars (esp. `Z4/N4 ~2–5%`) into held-out
+   `R_pole/P2/P4`; report `τ*`, naturalness (`|ln τ*|`, `K/(B0+Z0)` cancellation ratio), held-out surplus. **LEAVES
+   target-blind** (the `R_norm` anchor is the calibration target; do NOT peek at the held-out `R_pole/P2/P4` targets).
 Discipline unchanged: Codex codes / Claude reviews; dual-engine + fidelity + adversarial per chunk; commit per
 validated chunk; build target-blind in the held-out sense (don't peek at `R_pole/P2/P4` targets; `R_norm` anchor is
 the calibration target, allowed).

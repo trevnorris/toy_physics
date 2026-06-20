@@ -23,7 +23,7 @@ import time
 from typing import Any, Callable, Mapping, Sequence
 
 import numpy as np
-from scipy.sparse import csc_matrix, diags, eye, save_npz
+from scipy.sparse import csc_matrix, diags, eye, load_npz, save_npz
 from scipy.sparse.linalg import LinearOperator, eigsh, gmres, svds
 import torch
 
@@ -34,11 +34,13 @@ from .backend import configure_backend, jvp
 from .boundaries import BoundaryCondition
 from .config import BackendConfig, NewtonConfig, source_revision
 from .coupled_branch import (
+    ClosedCoupledFields,
     _closed_to_coupled_fields,
     _create_branch_grid,
     branch_boundary_conditions,
     coupled_pde_residual,
     initial_closed_branch_state,
+    pack_closed_coupled_fields,
     pack_coupled_fields,
     patha_closed_branch_residual,
     resample_closed_branch_state,
@@ -46,6 +48,7 @@ from .coupled_branch import (
     wall_grid_from_tensor_grid,
 )
 from .newton import BuiltPreconditioner, PreconditionerBuildContext
+from .operators import tensor_center_gradient_r, tensor_center_gradient_w
 from .patha_static_balance import SSigmaProvider, SSigmaSpec, resolve_s_sigma, static_balance_terms
 from .preconditioners import (
     assemble_closed_coupled_colored_sparse_jacobian,
@@ -58,6 +61,11 @@ BACKGROUND_RESIDUAL_TOL = b2c.BACKGROUND_RESIDUAL_TOL
 DEFAULT_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0b_wall_diagnosis")
 DEFAULT_REPORT_PATH = Path("software/stage1_solver/reports/pathA_C0b_wall_diagnosis.md")
 DEFAULT_JSON_PATH = DEFAULT_RUN_ROOT / "pathA_C0b_diagnostic.json"
+DEFAULT_C0C_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0c_nullmode_identification")
+DEFAULT_C0C_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0c_nullmode_identification.md"
+)
+DEFAULT_C0C_JSON_PATH = DEFAULT_C0C_RUN_ROOT / "pathA_C0c_nullmode_identification.json"
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -65,6 +73,13 @@ ALLOWED_VERDICTS = {
     "PRODUCTION_SOLVER_REQUIRED",
     "DIAGNOSTIC_INCOMPLETE",
 }
+C0C_VERDICTS = {
+    "SYMMETRY_MODE_IDENTIFIED",
+    "MIXED",
+    "GENUINE_STIFFNESS",
+    "DIAGNOSTIC_INCOMPLETE",
+}
+C0C_FIELD_LAYOUT = ("psi_real", "psi_imag", "a0", "ar", "aw", "r0", "mu")
 
 
 @dataclass(frozen=True)
@@ -124,6 +139,29 @@ class C0Config:
     diagnostic_maxwell_grid: tuple[int, int] = (9, 9)
     diagnostic_maxwell_window: float = b2b.DEFAULT_FINAL_WINDOW
     diagnostic_maxwell_radial_scale: float = 1.75
+
+
+@dataclass(frozen=True)
+class C0cConfig:
+    c0b_json_path: Path = DEFAULT_JSON_PATH
+    run_root: Path = DEFAULT_C0C_RUN_ROOT
+    report_path: Path = DEFAULT_C0C_REPORT_PATH
+    json_path: Path = DEFAULT_C0C_JSON_PATH
+    cluster_mode_count: int = 5
+    annihilation_threshold: float = 1.0e-8
+    overlap_threshold: float = 0.9
+    residual_fraction_threshold: float = 0.2
+    dense_sigma_tau: float | None = None
+    dense_jvp_chunk_size: int = 32
+
+
+@dataclass(frozen=True)
+class C0cGenerator:
+    name: str
+    classification: str
+    symmetry_status: str
+    description: str
+    vector: np.ndarray
 
 
 @dataclass
@@ -2544,6 +2582,1089 @@ def write_c0_report(result: Mapping[str, Any], path: Path) -> None:
     )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _project_root() -> Path:
+    return Path(__file__).resolve().parents[4]
+
+
+def _stage_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def _resolve_input_path(path: str | Path) -> Path:
+    raw = Path(path)
+    if raw.is_absolute():
+        return raw
+    candidates = [Path.cwd() / raw, _project_root() / raw]
+    try:
+        stage_relative = raw.relative_to(Path("software/stage1_solver"))
+        candidates.append(_stage_root() / stage_relative)
+    except ValueError:
+        candidates.append(_stage_root() / raw)
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
+def _resolve_output_path(path: str | Path) -> Path:
+    raw = Path(path)
+    if raw.is_absolute():
+        return raw
+    if raw.parts[:2] == ("software", "stage1_solver"):
+        return _project_root() / raw
+    return Path.cwd() / raw
+
+
+def _c0c_config_to_dict(config: C0cConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("c0b_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _closed_lane_slices(grid) -> dict[str, tuple[int, int]]:
+    n = int(grid.spec.nr * grid.spec.nw)
+    field_dim = 5 * n
+    return {
+        "psi_real": (0, n),
+        "psi_imag": (n, 2 * n),
+        "a0": (2 * n, 3 * n),
+        "ar": (3 * n, 4 * n),
+        "aw": (4 * n, 5 * n),
+        "r0": (field_dim, field_dim + int(grid.spec.nw)),
+        "mu": (field_dim + int(grid.spec.nw), field_dim + int(grid.spec.nw) + 1),
+    }
+
+
+def _lane_energy_split(vector: np.ndarray, grid) -> dict[str, float]:
+    values = np.asarray(vector, dtype=np.float64)
+    denom = float(np.dot(values, values))
+    if denom <= 0.0:
+        return {name: math.nan for name in C0C_FIELD_LAYOUT}
+    split = {}
+    for name, (start, stop) in _closed_lane_slices(grid).items():
+        chunk = values[start:stop]
+        split[name] = float(np.dot(chunk, chunk) / denom)
+    return split
+
+
+def _center_gradient_1d(values: torch.Tensor, spacing: float) -> torch.Tensor:
+    if values.ndim != 1 or values.numel() < 3:
+        raise ValueError("centered 1D gradient requires at least three values")
+    grad = torch.empty_like(values)
+    grad[1:-1] = (values[2:] - values[:-2]) / (2.0 * spacing)
+    grad[0] = (-3.0 * values[0] + 4.0 * values[1] - values[2]) / (2.0 * spacing)
+    grad[-1] = (3.0 * values[-1] - 4.0 * values[-2]) / (2.0 * spacing)
+    return grad
+
+
+def _pack_closed_generator(
+    *,
+    state: torch.Tensor,
+    psi_real: torch.Tensor,
+    psi_imag: torch.Tensor,
+    a0: torch.Tensor,
+    ar: torch.Tensor,
+    aw: torch.Tensor,
+    r0: torch.Tensor,
+) -> np.ndarray:
+    mu_zero = torch.zeros((), dtype=state.dtype, device=state.device)
+    packed = pack_closed_coupled_fields(
+        ClosedCoupledFields(
+            psi_real=psi_real,
+            psi_imag=psi_imag,
+            a0=a0,
+            ar=ar,
+            aw=aw,
+            r0=r0,
+        ),
+        mu_zero,
+    )
+    return packed.detach().cpu().numpy().astype(np.float64, copy=True)
+
+
+def _c0c_generators_for_state(state: torch.Tensor, grid) -> list[C0cGenerator]:
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    zeros_field = torch.zeros_like(fields.psi_real)
+    zeros_r0 = torch.zeros_like(fields.r0)
+
+    phase = _pack_closed_generator(
+        state=state,
+        psi_real=-fields.psi_imag,
+        psi_imag=fields.psi_real,
+        a0=zeros_field,
+        ar=zeros_field,
+        aw=zeros_field,
+        r0=zeros_r0,
+    )
+
+    grad_r = {
+        "psi_real": tensor_center_gradient_r(fields.psi_real, grid),
+        "psi_imag": tensor_center_gradient_r(fields.psi_imag, grid),
+        "a0": tensor_center_gradient_r(fields.a0, grid),
+        "ar": tensor_center_gradient_r(fields.ar, grid),
+        "aw": tensor_center_gradient_r(fields.aw, grid),
+    }
+    translation_r = _pack_closed_generator(
+        state=state,
+        psi_real=grad_r["psi_real"],
+        psi_imag=grad_r["psi_imag"],
+        a0=grad_r["a0"],
+        ar=grad_r["ar"],
+        aw=grad_r["aw"],
+        r0=zeros_r0,
+    )
+
+    grad_w = {
+        "psi_real": tensor_center_gradient_w(fields.psi_real, grid),
+        "psi_imag": tensor_center_gradient_w(fields.psi_imag, grid),
+        "a0": tensor_center_gradient_w(fields.a0, grid),
+        "ar": tensor_center_gradient_w(fields.ar, grid),
+        "aw": tensor_center_gradient_w(fields.aw, grid),
+    }
+    translation_w = _pack_closed_generator(
+        state=state,
+        psi_real=grad_w["psi_real"],
+        psi_imag=grad_w["psi_imag"],
+        a0=grad_w["a0"],
+        ar=grad_w["ar"],
+        aw=grad_w["aw"],
+        r0=_center_gradient_1d(fields.r0, float(grid.dw)),
+    )
+
+    r = grid.r_centers[:, None]
+    dilation_r = _pack_closed_generator(
+        state=state,
+        psi_real=r * grad_r["psi_real"],
+        psi_imag=r * grad_r["psi_imag"],
+        a0=r * grad_r["a0"],
+        ar=r * grad_r["ar"],
+        aw=r * grad_r["aw"],
+        r0=zeros_r0,
+    )
+
+    r_scale = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_scale = (grid.w_centers[None, :] - float(grid.spec.w_min)) / (
+        float(grid.spec.w_max) - float(grid.spec.w_min)
+    )
+    gauge_lambda = (r_scale**2) * torch.sin(math.pi * w_scale)
+    maxwell_probe = _pack_closed_generator(
+        state=state,
+        psi_real=zeros_field,
+        psi_imag=zeros_field,
+        a0=zeros_field,
+        ar=tensor_center_gradient_r(gauge_lambda, grid),
+        aw=tensor_center_gradient_w(gauge_lambda, grid),
+        r0=zeros_r0,
+    )
+
+    return [
+        C0cGenerator(
+            name="phase",
+            classification="GAUGE_PHASE",
+            symmetry_status="EXACT_SYMMETRY",
+            description=(
+                "global U(1) phase: (-psi_imag, psi_real, 0, 0, 0, 0, 0)"
+            ),
+            vector=phase,
+        ),
+        C0cGenerator(
+            name="translation_r",
+            classification="TRANSLATION",
+            symmetry_status="PROBE",
+            description="broken radial-translation probe: finite-difference d_r(state)",
+            vector=translation_r,
+        ),
+        C0cGenerator(
+            name="translation_w",
+            classification="TRANSLATION",
+            symmetry_status="PROBE",
+            description="broken axial-translation probe: finite-difference d_w(state)",
+            vector=translation_w,
+        ),
+        C0cGenerator(
+            name="dilation_r",
+            classification="DILATION",
+            symmetry_status="PROBE",
+            description="broken radial dilation probe: r*d_r(field lanes)",
+            vector=dilation_r,
+        ),
+        C0cGenerator(
+            name="maxwell_residual_gauge",
+            classification="MAXWELL_RESIDUAL_GAUGE",
+            symmetry_status="PROBE",
+            description="Maxwell-sector pure-gradient probe: delta A=(0, d_r lambda, d_w lambda)",
+            vector=maxwell_probe,
+        ),
+    ]
+
+
+def _unit_vector(vector: np.ndarray) -> tuple[np.ndarray, float]:
+    values = np.asarray(vector, dtype=np.float64)
+    norm = float(np.linalg.norm(values))
+    if norm <= 0.0:
+        return values.copy(), norm
+    return values / norm, norm
+
+
+def _c0c_generator_metadata(generators: Sequence[C0cGenerator]) -> list[dict[str, Any]]:
+    return [
+        {
+            "name": generator.name,
+            "classification": generator.classification,
+            "symmetry_status": generator.symmetry_status,
+            "description": generator.description,
+            "norm": float(np.linalg.norm(generator.vector)),
+        }
+        for generator in generators
+    ]
+
+
+def _phase_action_closed_vector(vector: np.ndarray, grid) -> np.ndarray:
+    values = np.asarray(vector, dtype=np.float64)
+    n = int(grid.spec.nr * grid.spec.nw)
+    acted = np.zeros_like(values)
+    acted[0:n] = -values[n : 2 * n]
+    acted[n : 2 * n] = values[0:n]
+    return acted
+
+
+def _full_svd_cluster_from_matrix(
+    matrix: csc_matrix,
+    *,
+    mode_count: int,
+) -> dict[str, Any]:
+    dense = matrix.toarray()
+    values_no_uv = np.linalg.svd(dense, compute_uv=False)
+    left_all, values_desc, right_t_desc = np.linalg.svd(dense, full_matrices=False)
+    order = np.argsort(values_desc)
+    keep = order[: min(int(mode_count), len(order))]
+    sigma_min = float(np.min(values_no_uv))
+    sigma_max = float(np.max(values_no_uv))
+    return {
+        "sigma_min": sigma_min,
+        "sigma_max": sigma_max,
+        "condition": float(sigma_max / sigma_min)
+        if sigma_min > 0.0
+        else math.inf,
+        "vector_svd_sigma_min": float(values_desc[order[0]]),
+        "vector_svd_sigma_max": float(values_desc[order[-1]]),
+        "singular_values": [float(values_desc[index]) for index in keep],
+        "right_vectors": right_t_desc[keep, :].astype(np.float64, copy=True),
+        "left_vectors": left_all[:, keep].astype(np.float64, copy=True),
+        "method": "dense_svd_recomputed_from_saved_c0b_matrix",
+    }
+
+
+def _c0c_overlap_diagnostics(
+    *,
+    right_vectors: np.ndarray,
+    singular_values: Sequence[float],
+    generators: Sequence[C0cGenerator],
+    grid,
+) -> tuple[list[dict[str, Any]], int]:
+    unit_generators: list[tuple[C0cGenerator, np.ndarray]] = []
+    for generator in generators:
+        unit, norm = _unit_vector(generator.vector)
+        if norm > 0.0:
+            unit_generators.append((generator, unit))
+
+    if unit_generators:
+        generator_matrix = np.column_stack([unit for _generator, unit in unit_generators])
+        q, r = np.linalg.qr(generator_matrix)
+        diagonal = np.abs(np.diag(r))
+        rank = int(np.sum(diagonal > 1.0e-12))
+        span_basis = q[:, :rank] if rank > 0 else np.zeros((right_vectors.shape[1], 0))
+    else:
+        rank = 0
+        span_basis = np.zeros((right_vectors.shape[1], 0))
+
+    rows: list[dict[str, Any]] = []
+    for mode_index, (sigma, vector) in enumerate(zip(singular_values, right_vectors)):
+        unit_mode, mode_norm = _unit_vector(vector)
+        overlaps = {
+            generator.name: float(abs(np.dot(unit_mode, unit))) if mode_norm > 0.0 else math.nan
+            for generator, unit in unit_generators
+        }
+        if span_basis.shape[1] > 0 and mode_norm > 0.0:
+            captured = float(np.linalg.norm(span_basis.T @ unit_mode) ** 2)
+        else:
+            captured = 0.0
+        captured = min(max(captured, 0.0), 1.0)
+        rows.append(
+            {
+                "mode_index": int(mode_index),
+                "sigma": float(sigma),
+                "overlaps": overlaps,
+                "span_capture_fraction": captured,
+                "unexplained_residual_fraction": float(max(0.0, 1.0 - captured)),
+                "lane_energy_fractions": _lane_energy_split(unit_mode, grid),
+            }
+        )
+    return rows, rank
+
+
+def _c0c_residual_context(
+    *,
+    tau: float,
+    grid_shape: tuple[int, int],
+    dtype: torch.dtype,
+):
+    context_config = C0Config(grid=grid_shape)
+    branch, provider, grid, boundaries = _branch_context(
+        tau=float(tau),
+        config=context_config,
+        dtype=dtype,
+    )
+    eos_K = float(branch.continuation_K_values[-1])
+
+    def residual_fn(x: torch.Tensor) -> torch.Tensor:
+        return patha_closed_branch_residual(
+            x,
+            grid,
+            branch,
+            eos_K=eos_K,
+            boundaries=boundaries,
+            s_sigma=provider,
+        )
+
+    return branch, provider, grid, boundaries, eos_K, residual_fn
+
+
+def _c0c_attempt_artifacts(
+    row: Mapping[str, Any],
+    c0b_result: Mapping[str, Any],
+) -> tuple[Path, Path]:
+    state_path = _resolve_input_path(str(row["state_artifact"]))
+    linear = row.get("linear_diagnostics", {})
+    matrix_text = linear.get("matrix_path")
+    if matrix_text:
+        matrix_path = _resolve_input_path(str(matrix_text))
+    else:
+        c0b_run_root = Path(c0b_result.get("config", {}).get("run_root", DEFAULT_RUN_ROOT))
+        matrix_path = _resolve_input_path(
+            c0b_run_root
+            / "matrices"
+            / f"attempt_tau_{_format_tau(float(row['target_tau']))}_bt_{int(row.get('backtrack_index', 0))}.npz"
+        )
+    return state_path, matrix_path
+
+
+def _c0c_annihilation_rows(
+    *,
+    matrix: csc_matrix,
+    state: torch.Tensor,
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    generators: Sequence[C0cGenerator],
+    grid,
+    sigma_max: float,
+    converged: bool,
+    threshold: float,
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    residual_np = residual_fn(state).detach().cpu().numpy().astype(np.float64)
+    for generator in generators:
+        norm = float(np.linalg.norm(generator.vector))
+        if norm <= 0.0:
+            rows.append(
+                {
+                    "generator": generator.name,
+                    "classification": generator.classification,
+                    "symmetry_status": generator.symmetry_status,
+                    "status": "NOT_MEASURED",
+                    "reason": "zero_generator_norm",
+                    "test": "not_available",
+                }
+            )
+            continue
+        if not converged and generator.name != "phase":
+            rows.append(
+                {
+                    "generator": generator.name,
+                    "classification": generator.classification,
+                    "symmetry_status": generator.symmetry_status,
+                    "status": "NOT_MEASURED",
+                    "reason": "nonconverged_state_and_probe_not_an_exact_symmetry",
+                    "test": "not_measured_nonroot_probe",
+                }
+            )
+            continue
+
+        denominator = max(float(sigma_max) * norm, np.finfo(np.float64).tiny)
+        assembled_jg = matrix @ generator.vector
+        direction = torch.as_tensor(generator.vector, dtype=state.dtype, device=state.device)
+        jvp_jg = jvp(residual_fn, state.detach(), direction).detach().cpu().numpy().astype(
+            np.float64
+        )
+        assembled_rel = float(np.linalg.norm(assembled_jg) / denominator)
+        jvp_rel = float(np.linalg.norm(jvp_jg) / denominator)
+        crosscheck_rel = float(np.linalg.norm(assembled_jg - jvp_jg) / denominator)
+
+        if converged:
+            gate_pass = bool(assembled_rel <= threshold and jvp_rel <= threshold)
+            rows.append(
+                {
+                    "generator": generator.name,
+                    "classification": generator.classification,
+                    "symmetry_status": generator.symmetry_status,
+                    "status": "MEASURED",
+                    "test": "root_annihilation",
+                    "annihilation_rel_assembled": assembled_rel,
+                    "annihilation_rel_jvp": jvp_rel,
+                    "jvp_crosscheck_rel": crosscheck_rel,
+                    "threshold": float(threshold),
+                    "null_gate_pass": gate_pass,
+                }
+            )
+        else:
+            target = _phase_action_closed_vector(residual_np, grid)
+            target_norm = float(np.linalg.norm(target))
+            assembled_diff = float(np.linalg.norm(assembled_jg - target))
+            jvp_diff = float(np.linalg.norm(jvp_jg - target))
+            rows.append(
+                {
+                    "generator": generator.name,
+                    "classification": generator.classification,
+                    "symmetry_status": generator.symmetry_status,
+                    "status": "MEASURED",
+                    "test": "nonroot_phase_equivariance_identity",
+                    "annihilation_rel_assembled_not_a_null_gate": assembled_rel,
+                    "annihilation_rel_jvp_not_a_null_gate": jvp_rel,
+                    "equivariance_rel_assembled_sigma_scaled": assembled_diff / denominator,
+                    "equivariance_rel_jvp_sigma_scaled": jvp_diff / denominator,
+                    "equivariance_rel_assembled_target_scaled": assembled_diff
+                    / max(target_norm, np.finfo(np.float64).tiny),
+                    "equivariance_rel_jvp_target_scaled": jvp_diff
+                    / max(target_norm, np.finfo(np.float64).tiny),
+                    "jvp_crosscheck_rel": crosscheck_rel,
+                    "threshold": float(threshold),
+                    "equivariance_pass": bool(jvp_diff / denominator <= threshold),
+                    "null_gate_pass": None,
+                }
+            )
+    return rows
+
+
+def _dense_full_jvp_jacobian(
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    state: torch.Tensor,
+    *,
+    chunk_size: int,
+) -> np.ndarray:
+    x = state.detach()
+    n = int(x.numel())
+    dense = np.empty((n, n), dtype=np.float64)
+    eye_torch = torch.eye(n, dtype=x.dtype, device=x.device)
+
+    def one_jvp(direction: torch.Tensor) -> torch.Tensor:
+        return jvp(residual_fn, x, direction)
+
+    for start in range(0, n, max(1, int(chunk_size))):
+        stop = min(n, start + max(1, int(chunk_size)))
+        basis = eye_torch[start:stop]
+        try:
+            jvs = torch.func.vmap(one_jvp)(basis)
+            dense[:, start:stop] = jvs.detach().cpu().numpy().astype(np.float64).T
+        except Exception:
+            for offset, direction in enumerate(basis):
+                dense[:, start + offset] = (
+                    one_jvp(direction).detach().cpu().numpy().astype(np.float64)
+                )
+    return dense
+
+
+def _c0c_dense_sigma_validation(
+    *,
+    state: torch.Tensor,
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    assembled_sigma_min: float,
+    assembled_sigma_max: float,
+    tau: float,
+    config: C0cConfig,
+) -> dict[str, Any]:
+    started = time.perf_counter()
+    dense_jvp = _dense_full_jvp_jacobian(
+        residual_fn,
+        state,
+        chunk_size=config.dense_jvp_chunk_size,
+    )
+    values = np.linalg.svd(dense_jvp, compute_uv=False)
+    sigma_min = float(np.min(values))
+    sigma_max = float(np.max(values))
+    tolerance_abs = max(
+        1.0e-12,
+        1.0e3
+        * np.finfo(np.float64).eps
+        * max(abs(float(assembled_sigma_max)), abs(sigma_max), 1.0),
+    )
+    difference = abs(sigma_min - float(assembled_sigma_min))
+    status = "MATCH" if difference <= tolerance_abs else "DISCREPANCY"
+    return {
+        "status": status,
+        "tau": float(tau),
+        "method": "dense_full_jvp_jacobian_svd",
+        "assembled_matrix_method": "dense_svd_recomputed_from_saved_c0b_matrix",
+        "dense_full_jvp_sigma_min": sigma_min,
+        "dense_full_jvp_sigma_max": sigma_max,
+        "assembled_sigma_min": float(assembled_sigma_min),
+        "assembled_sigma_max": float(assembled_sigma_max),
+        "abs_difference": float(difference),
+        "tolerance_abs": float(tolerance_abs),
+        "trusted_sigma_source": "both" if status == "MATCH" else "dense_full_jvp_jacobian",
+        "elapsed_seconds": time.perf_counter() - started,
+        "chunk_size": int(config.dense_jvp_chunk_size),
+    }
+
+
+def _classify_c0c_modes(
+    *,
+    modes: Sequence[Mapping[str, Any]],
+    generators: Sequence[Mapping[str, Any]],
+    annihilation_rows: Sequence[Mapping[str, Any]],
+    config: C0cConfig,
+) -> tuple[list[dict[str, Any]], dict[str, Any], str, str]:
+    generator_gate = {
+        str(row["generator"]): bool(row.get("null_gate_pass"))
+        for row in annihilation_rows
+        if row.get("status") == "MEASURED"
+    }
+    generator_by_name = {str(row["name"]): row for row in generators}
+    classified: list[dict[str, Any]] = []
+    explained_count = 0
+    for mode in modes:
+        overlaps = mode.get("overlaps", {})
+        candidates = []
+        for name, metadata in generator_by_name.items():
+            overlap = float(overlaps.get(name, math.nan))
+            if (
+                generator_gate.get(name, False)
+                and math.isfinite(overlap)
+                and overlap >= config.overlap_threshold
+            ):
+                candidates.append((overlap, name, metadata))
+        if candidates:
+            overlap, name, metadata = max(candidates, key=lambda item: item[0])
+            classification = str(metadata["classification"])
+            explained_count += 1
+            support = {
+                "generator": name,
+                "overlap": float(overlap),
+                "annihilation_gate_pass": True,
+            }
+        else:
+            classification = "UNEXPLAINED_STIFFNESS"
+            best_name = None
+            best_overlap = math.nan
+            if overlaps:
+                best_name = max(overlaps, key=lambda key: float(overlaps[key]))
+                best_overlap = float(overlaps[best_name])
+            support = {
+                "best_generator": best_name,
+                "best_overlap": best_overlap,
+                "annihilation_gate_pass": False,
+            }
+        row = dict(mode)
+        row["classification"] = classification
+        row["classification_support"] = support
+        classified.append(row)
+
+    if not modes:
+        verdict = "DIAGNOSTIC_INCOMPLETE"
+        recommended = "Recompute the saved-matrix SVD before selecting a null-mode fix."
+    elif explained_count == len(modes):
+        verdict = "SYMMETRY_MODE_IDENTIFIED"
+        recommended = (
+            "Next step: add a diagnostic-gated gauge/null-space fix for the identified "
+            "cluster, e.g. pin the global phase and deflate any additional identified "
+            "null generators, then rerun the C0 crawl."
+        )
+    elif explained_count > 0:
+        verdict = "MIXED"
+        recommended = (
+            "Next step: pin or deflate the explained symmetry mode(s), especially the "
+            "global phase if present, then investigate the remaining field-lane residual "
+            "subspace before a re-crawl."
+        )
+    else:
+        verdict = "GENUINE_STIFFNESS"
+        recommended = (
+            "Next step: treat the cluster as unresolved field-block stiffness; do not "
+            "apply a symmetry fix until a generator passes both annihilation and overlap gates."
+        )
+
+    support = {
+        "thresholds": {
+            "annihilation_rel_max": float(config.annihilation_threshold),
+            "overlap_min": float(config.overlap_threshold),
+            "span_residual_fraction_reference": float(config.residual_fraction_threshold),
+        },
+        "generator_null_gates": generator_gate,
+        "explained_mode_count": int(explained_count),
+        "cluster_mode_count": int(len(modes)),
+        "mode_classifications": [
+            {
+                "mode_index": int(row["mode_index"]),
+                "sigma": float(row["sigma"]),
+                "classification": row["classification"],
+                "support": row["classification_support"],
+                "unexplained_residual_fraction": float(
+                    row["unexplained_residual_fraction"]
+                ),
+                "lane_energy_fractions": row["lane_energy_fractions"],
+            }
+            for row in classified
+        ],
+    }
+    return classified, support, verdict, recommended
+
+
+def _c0c_incomplete_result(reason: str, config: C0cConfig) -> dict[str, Any]:
+    return {
+        "schema": "stage1_pathA_C0c_nullmode_identification/v1",
+        "source_revision": source_revision(),
+        "verdict": "DIAGNOSTIC_INCOMPLETE",
+        "verdict_support": {"reason": reason},
+        "recommended_next_step": "Provide the missing C0b saved state/matrix evidence and rerun C0c.",
+        "config": _c0c_config_to_dict(config),
+        "points": [],
+        "dense_sigma_validation": {"status": "NOT_MEASURED", "reason": reason},
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+    }
+
+
+def run_c0c_nullmode_identification(config: C0cConfig | None = None) -> dict[str, Any]:
+    if config is None:
+        config = C0cConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    c0b_json_path = _resolve_input_path(config.c0b_json_path)
+    if not c0b_json_path.exists():
+        result = _c0c_incomplete_result(f"missing_c0b_json:{c0b_json_path}", config)
+        _write_c0c_outputs(result, config)
+        return result
+    c0b_result = json.loads(c0b_json_path.read_text(encoding="utf-8"))
+    attempts = [dict(row) for row in c0b_result.get("tau_attempts", [])]
+    converged = [row for row in attempts if row.get("final_physical_converged")]
+    if not attempts or not converged:
+        result = _c0c_incomplete_result("missing_attempts_or_converged_shallow_state", config)
+        _write_c0c_outputs(result, config)
+        return result
+
+    shallow_row = max(converged, key=lambda row: float(row["target_tau"]))
+    deepest_row = min(attempts, key=lambda row: float(row["target_tau"]))
+    selected_rows: list[dict[str, Any]] = [shallow_row]
+    if deepest_row is not shallow_row:
+        selected_rows.append(deepest_row)
+
+    c0b_grid = tuple(int(value) for value in c0b_result.get("config", {}).get("grid", C0Config().grid))
+    points: list[dict[str, Any]] = []
+    shallow_context: dict[str, Any] | None = None
+    for row in selected_rows:
+        tau = float(row["target_tau"])
+        state_path, matrix_path = _c0c_attempt_artifacts(row, c0b_result)
+        branch, provider, grid, boundaries, eos_K, residual_fn = _c0c_residual_context(
+            tau=tau,
+            grid_shape=c0b_grid,
+            dtype=dtype,
+        )
+        del branch, provider, boundaries, eos_K
+        state = _load_state_artifact(state_path, dtype=dtype)
+        matrix = load_npz(matrix_path).tocsc()
+        svd = _full_svd_cluster_from_matrix(matrix, mode_count=config.cluster_mode_count)
+        generators = _c0c_generators_for_state(state, grid)
+        modes, span_rank = _c0c_overlap_diagnostics(
+            right_vectors=svd["right_vectors"],
+            singular_values=svd["singular_values"],
+            generators=generators,
+            grid=grid,
+        )
+        annihilation = _c0c_annihilation_rows(
+            matrix=matrix,
+            state=state,
+            residual_fn=residual_fn,
+            generators=generators,
+            grid=grid,
+            sigma_max=float(svd["sigma_max"]),
+            converged=bool(row.get("final_physical_converged")),
+            threshold=config.annihilation_threshold,
+        )
+        point = {
+            "tau": tau,
+            "backtrack_index": int(row.get("backtrack_index", 0)),
+            "state_artifact": str(state_path),
+            "matrix_path": str(matrix_path),
+            "final_physical_converged": bool(row.get("final_physical_converged")),
+            "final_original_residual_linf": float(row.get("final_original_residual_linf", math.nan)),
+            "layout": list(C0C_FIELD_LAYOUT),
+            "layout_source": "stage1_solver.coupled_branch.pack/unpack_closed_coupled_fields",
+            "generators": _c0c_generator_metadata(generators),
+            "annihilation": {
+                "status": "MEASURED",
+                "threshold": float(config.annihilation_threshold),
+                "rows": annihilation,
+            },
+            "svd": {
+                "status": "MEASURED",
+                "method": svd["method"],
+                "sigma_min": float(svd["sigma_min"]),
+                "sigma_max": float(svd["sigma_max"]),
+                "condition": float(svd["condition"]),
+                "vector_svd_sigma_min": float(svd["vector_svd_sigma_min"]),
+                "vector_svd_sigma_max": float(svd["vector_svd_sigma_max"]),
+                "cluster_singular_values": [float(value) for value in svd["singular_values"]],
+            },
+            "overlap": {
+                "status": "MEASURED",
+                "span_rank": int(span_rank),
+                "modes": modes,
+            },
+        }
+        if row is shallow_row:
+            shallow_context = {
+                "point": point,
+                "state": state,
+                "residual_fn": residual_fn,
+                "svd": svd,
+            }
+        points.append(point)
+
+    if shallow_context is None:
+        result = _c0c_incomplete_result("missing_shallow_context", config)
+        _write_c0c_outputs(result, config)
+        return result
+
+    shallow_point = shallow_context["point"]
+    classified, support, verdict, recommended = _classify_c0c_modes(
+        modes=shallow_point["overlap"]["modes"],
+        generators=shallow_point["generators"],
+        annihilation_rows=shallow_point["annihilation"]["rows"],
+        config=config,
+    )
+    shallow_point["overlap"]["modes"] = classified
+
+    dense_validation = _c0c_dense_sigma_validation(
+        state=shallow_context["state"],
+        residual_fn=shallow_context["residual_fn"],
+        assembled_sigma_min=float(shallow_context["svd"]["sigma_min"]),
+        assembled_sigma_max=float(shallow_context["svd"]["sigma_max"]),
+        tau=float(shallow_point["tau"]),
+        config=config,
+    )
+    support["dense_sigma_validation"] = dense_validation
+    result = {
+        "schema": "stage1_pathA_C0c_nullmode_identification/v1",
+        "source_revision": source_revision(),
+        "c0b_source_json": str(c0b_json_path),
+        "verdict": verdict,
+        "verdict_support": support,
+        "recommended_next_step": recommended,
+        "config": _c0c_config_to_dict(config),
+        "points": points,
+        "dense_sigma_validation": dense_validation,
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+        "scope_guard": {
+            "diagnosis_only": True,
+            "gauge_fix_or_deflation_implemented": False,
+            "recrawl_implemented": False,
+            "faithful_operators_touched_by_c0c": False,
+            "frozen_physics_touched_by_c0c": False,
+            "physical_export_guard_touched_by_c0c": False,
+        },
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    _write_c0c_outputs(result, config)
+    return result
+
+
+def _write_c0c_outputs(result: Mapping[str, Any], config: C0cConfig) -> None:
+    json_path = _resolve_output_path(config.json_path)
+    report_path = _resolve_output_path(config.report_path)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_c0c_report(result, report_path)
+
+
+def _format_overlap_cell(overlaps: Mapping[str, Any], name: str) -> str:
+    value = overlaps.get(name)
+    if value is None:
+        return "-"
+    return _fmt(float(value))
+
+
+def write_c0c_report(result: Mapping[str, Any], path: Path) -> None:
+    lines: list[str] = []
+    lines.append("# Path-A C0c Nullmode Identification")
+    lines.append("")
+    lines.append(f"Verdict: **{result.get('verdict')}**")
+    lines.append("")
+    lines.append("## Scope")
+    lines.append("")
+    lines.append(
+        "Diagnosis only: generators are evaluated on existing C0b states and saved Jacobians. "
+        "`coupled_branch.py`, `operators.py`, frozen physics, and `physical_export_permitted` are untouched."
+    )
+    lines.append("")
+    points = list(result.get("points", []))
+    if points:
+        lines.append("## Generator Inventory")
+        lines.append("")
+        generator_rows = [
+            {
+                "name": row["name"],
+                "class": row["classification"],
+                "status": row["symmetry_status"],
+                "norm": row["norm"],
+                "description": row["description"],
+            }
+            for row in points[0].get("generators", [])
+        ]
+        lines.append(_markdown_table(["name", "class", "status", "norm", "description"], generator_rows))
+        lines.append("")
+    lines.append("## Annihilation And Equivariance")
+    lines.append("")
+    for point in points:
+        lines.append(
+            f"### tau={float(point['tau']):.12e} "
+            f"(converged={point.get('final_physical_converged')}, "
+            f"residual={_fmt(point.get('final_original_residual_linf'))})"
+        )
+        rows = []
+        for row in point.get("annihilation", {}).get("rows", []):
+            rows.append(
+                {
+                    "generator": row.get("generator"),
+                    "status": row.get("status"),
+                    "test": row.get("test"),
+                    "assembled": row.get(
+                        "annihilation_rel_assembled",
+                        row.get("annihilation_rel_assembled_not_a_null_gate"),
+                    ),
+                    "jvp": row.get(
+                        "annihilation_rel_jvp",
+                        row.get("annihilation_rel_jvp_not_a_null_gate"),
+                    ),
+                    "crosscheck": row.get("jvp_crosscheck_rel"),
+                    "equiv_jvp": row.get("equivariance_rel_jvp_sigma_scaled"),
+                    "gate": row.get("null_gate_pass", row.get("equivariance_pass")),
+                    "reason": row.get("reason"),
+                }
+            )
+        lines.append(
+            _markdown_table(
+                [
+                    "generator",
+                    "status",
+                    "test",
+                    "assembled",
+                    "jvp",
+                    "crosscheck",
+                    "equiv_jvp",
+                    "gate",
+                    "reason",
+                ],
+                rows,
+            )
+        )
+        lines.append("")
+    lines.append("## Near-Null SVD Overlap")
+    lines.append("")
+    for point in points:
+        lines.append(f"### tau={float(point['tau']):.12e}")
+        lines.append("")
+        rows = []
+        for mode in point.get("overlap", {}).get("modes", []):
+            lanes = mode.get("lane_energy_fractions", {})
+            overlaps = mode.get("overlaps", {})
+            rows.append(
+                {
+                    "mode": mode.get("mode_index"),
+                    "sigma": mode.get("sigma"),
+                    "class": mode.get("classification", "-"),
+                    "phase": _format_overlap_cell(overlaps, "phase"),
+                    "tr": _format_overlap_cell(overlaps, "translation_r"),
+                    "tw": _format_overlap_cell(overlaps, "translation_w"),
+                    "dil": _format_overlap_cell(overlaps, "dilation_r"),
+                    "maxwell": _format_overlap_cell(overlaps, "maxwell_residual_gauge"),
+                    "residual": mode.get("unexplained_residual_fraction"),
+                    "psi_re": lanes.get("psi_real"),
+                    "psi_im": lanes.get("psi_imag"),
+                    "a0": lanes.get("a0"),
+                    "ar": lanes.get("ar"),
+                    "aw": lanes.get("aw"),
+                    "r0": lanes.get("r0"),
+                    "mu": lanes.get("mu"),
+                }
+            )
+        lines.append(
+            _markdown_table(
+                [
+                    "mode",
+                    "sigma",
+                    "class",
+                    "phase",
+                    "tr",
+                    "tw",
+                    "dil",
+                    "maxwell",
+                    "residual",
+                    "psi_re",
+                    "psi_im",
+                    "a0",
+                    "ar",
+                    "aw",
+                    "r0",
+                    "mu",
+                ],
+                rows,
+            )
+        )
+        lines.append("")
+    lines.append("## Dense Sigma Validation")
+    lines.append("")
+    dense = result.get("dense_sigma_validation", {})
+    lines.append("```yaml")
+    for key, value in dense.items():
+        lines.append(f"{key}: {value}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Verdict Support")
+    lines.append("")
+    lines.append("```yaml")
+    support = result.get("verdict_support", {})
+    lines.append(f"thresholds: {support.get('thresholds')}")
+    lines.append(f"generator_null_gates: {support.get('generator_null_gates')}")
+    lines.append(f"explained_mode_count: {support.get('explained_mode_count')}")
+    lines.append(f"cluster_mode_count: {support.get('cluster_mode_count')}")
+    lines.append("mode_classifications:")
+    for row in support.get("mode_classifications", []):
+        lines.append(
+            f"  - mode_index: {row.get('mode_index')}, sigma: {row.get('sigma')}, "
+            f"classification: {row.get('classification')}, residual: "
+            f"{row.get('unexplained_residual_fraction')}, lanes: "
+            f"{row.get('lane_energy_fractions')}, support: {row.get('support')}"
+        )
+    lines.append("```")
+    lines.append("")
+    lines.append("## Recommended Next Step")
+    lines.append("")
+    lines.append(str(result.get("recommended_next_step")))
+    lines.append("")
+    lines.append("## Guard Confirmation")
+    lines.append("")
+    lines.append("```yaml")
+    lines.append(f"faithful_operator_boundary: {result.get('faithful_operator_boundary')}")
+    lines.append(f"scope_guard: {result.get('scope_guard')}")
+    lines.append("```")
+    lines.append("")
+    lines.append(f"Machine artifact: `{_resolve_output_path(C0cConfig().json_path)}`.")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0c_stdout_summary(result: Mapping[str, Any], config: C0cConfig) -> str:
+    lines: list[str] = []
+    points = list(result.get("points", []))
+    if not points:
+        return (
+            f"C0c verdict: {result.get('verdict')} - "
+            f"{result.get('verdict_support', {}).get('reason')}"
+        )
+    shallow = points[0]
+    deepest = points[-1]
+    exact = [
+        row["name"]
+        for row in shallow.get("generators", [])
+        if row.get("symmetry_status") == "EXACT_SYMMETRY"
+    ]
+    probes = [
+        row["name"]
+        for row in shallow.get("generators", [])
+        if row.get("symmetry_status") == "PROBE"
+    ]
+    lines.append(f"Generators: EXACT={exact}; PROBE={probes}")
+    lines.append(
+        f"Converged tau {float(shallow['tau']):.12e} annihilation "
+        f"(assembled/JVP, threshold {config.annihilation_threshold:.1e}):"
+    )
+    for row in shallow.get("annihilation", {}).get("rows", []):
+        lines.append(
+            "  "
+            f"{row.get('generator')}: "
+            f"{_fmt(row.get('annihilation_rel_assembled'))}/"
+            f"{_fmt(row.get('annihilation_rel_jvp'))}, gate={row.get('null_gate_pass')}"
+        )
+    if deepest is not shallow:
+        lines.append(
+            f"Non-converged tau {float(deepest['tau']):.12e}: "
+            "phase uses equivariance identity; probes are NOT_MEASURED."
+        )
+        for row in deepest.get("annihilation", {}).get("rows", []):
+            if row.get("generator") == "phase":
+                lines.append(
+                    "  phase equivariance sigma-scaled assembled/JVP = "
+                    f"{_fmt(row.get('equivariance_rel_assembled_sigma_scaled'))}/"
+                    f"{_fmt(row.get('equivariance_rel_jvp_sigma_scaled'))}"
+                )
+    lines.append("Near-null cluster at converged tau:")
+    for mode in shallow.get("overlap", {}).get("modes", []):
+        lanes = mode.get("lane_energy_fractions", {})
+        overlaps = mode.get("overlaps", {})
+        lines.append(
+            "  "
+            f"mode {mode.get('mode_index')} sigma={_fmt(mode.get('sigma'))} "
+            f"class={mode.get('classification')} "
+            f"phase={_format_overlap_cell(overlaps, 'phase')} "
+            f"maxwell={_format_overlap_cell(overlaps, 'maxwell_residual_gauge')} "
+            f"residual={_fmt(mode.get('unexplained_residual_fraction'))} "
+            f"lanes psi_re={_fmt(lanes.get('psi_real'))}, psi_im={_fmt(lanes.get('psi_imag'))}, "
+            f"a0={_fmt(lanes.get('a0'))}, ar={_fmt(lanes.get('ar'))}, aw={_fmt(lanes.get('aw'))}"
+        )
+    dense = result.get("dense_sigma_validation", {})
+    lines.append(
+        "Dense sigma validation: "
+        f"{dense.get('status')} assembled={_fmt(dense.get('assembled_sigma_min'))} "
+        f"full_jvp={_fmt(dense.get('dense_full_jvp_sigma_min'))} "
+        f"trusted={dense.get('trusted_sigma_source')}"
+    )
+    lines.append(f"Verdict: {result.get('verdict')}")
+    lines.append(f"Recommended next step: {result.get('recommended_next_step')}")
+    lines.append(
+        "Guard confirmation: faithful operators, frozen physics, and export guard untouched by C0c; "
+        "no gauge-fix/deflation/re-crawl implemented."
+    )
+    lines.append(
+        f"Artifacts: report={_resolve_output_path(config.report_path)}, "
+        f"json={_resolve_output_path(config.json_path)}"
+    )
+    return "\n".join(lines)
+
+
+def _build_c0c_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run Path-A C0c null-mode identification.")
+    parser.add_argument("--c0b-json-path", type=Path, default=C0cConfig().c0b_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0cConfig().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0cConfig().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0cConfig().json_path)
+    parser.add_argument("--cluster-mode-count", type=int, default=C0cConfig().cluster_mode_count)
+    parser.add_argument("--dense-jvp-chunk-size", type=int, default=C0cConfig().dense_jvp_chunk_size)
+    return parser
+
+
+def c0c_main(argv: Sequence[str] | None = None) -> int:
+    args = _build_c0c_parser().parse_args(argv)
+    config = C0cConfig(
+        c0b_json_path=args.c0b_json_path,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        cluster_mode_count=int(args.cluster_mode_count),
+        dense_jvp_chunk_size=int(args.dense_jvp_chunk_size),
+    )
+    result = run_c0c_nullmode_identification(config)
+    print(_c0c_stdout_summary(result, config))
+    return 0
 
 
 def _build_parser() -> argparse.ArgumentParser:

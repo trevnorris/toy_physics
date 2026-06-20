@@ -96,14 +96,24 @@ stationary GPE+Maxwell BVP. **If so, the fix is gauge-fixing / null-space DEFLAT
 solver and NOT pseudo-arclength** → potentially unblocks the throat solve cheaply. C0b outputs (verified honest):
 `src/.../patha_c0_conditioning_spike.py`, `tests/test_patha_c0_conditioning_spike.py`, `scripts/pathA_C0b_{crawl,diagnostics}.py`,
 `reports/pathA_C0b_wall_diagnosis.md`, `runs/pathA_C0b_wall_diagnosis/…json`.
-**NEXT ACTION (resume here): USER-GATED — pathA_C0c = IDENTIFY the field-block null mode (the decisive, cheap diagnostic).**
-Implement the symmetry/gauge generators (global U(1) phase, r/w translations, dilation) + project the measured null
-subspace onto them → does it match a symmetry/gauge mode (⇒ cheap gauge-fix/deflation, then re-crawl → likely breakthrough)
-or genuine field stiffness (⇒ the harder solver question)? Also (a) validate σ vs a dense/full-JVP Jacobian to retire the
-colored-stencil-radius-3 truncation caveat the fidelity agent flagged; (b) DEFER the full-budget+backtracking crawl until
-the mode is identified (a crawl without addressing the null mode just re-hits it). The v2/C0b machinery (Single-Arbiter
-gating, true SVD, decomposition, gate logic) is SOUND + reused. CONCEPTUAL STATE: NOT yet a "build a production solver" step —
-the wall is a field-block near-null subspace; identify it before any solver decision. THEN (only after a real verdict): promote the
+**pathA_C0c EXECUTED 2026-06-20 → verdict `MIXED` → FIDELITY-AGENT VERIFIED TRUSTWORTHY (all 8 checks real: dual
+independent annihilation paths assembled-vs-JVP, recomputed SVD from saved matrices, real planted-generator test, honest
+verdict logic, dense-σ MATCH retiring the stencil caveat, faithful ops untouched). VERIFIED FINDING (big clarification):**
+the worst near-null mode (mode 0, σ≈7.4e-14 ≈ exact zero) **IS the global U(1) gauge PHASE zero mode** — CONFIRMED by BOTH
+gates (annihilation `‖J·g_phase‖/(σ_max‖g‖)=1.49e-12` ≤1e-8 via assembled AND autodiff-JVP; overlap=1.0; energy 99.99% in
+the `psi_imag` lane; equivariance `J·g_phase≈G·F(x)`=2.7e-17 at the non-converged τ). The OTHER 4 modes (σ 4.7e-11..2.8e-8)
+are **MAXWELL A-FIELD lane (ar/aw, ~99%) near-null modes**, labeled `UNEXPLAINED_STIFFNESS` ONLY because the single crude
+`maxwell_residual_gauge` probe (one fixed `λ`) doesn't span them (overlaps 0.11–0.77). **KEY CAVEAT (fidelity agent): those
+4 are almost certainly NOT genuine stiffness — they're very likely Maxwell-sector GAUGE modes a proper `∇λ` basis would
+span; do NOT call them stiffness / conclude "production solver" until tested against a FULL Maxwell gauge basis.** So the
+whole τ≈0.029 wall may be ENTIRELY GAUGE (U(1) phase + Maxwell A-sector) ⇒ a CHEAP combined gauge-fix/deflation could
+dissolve it. C0c outputs (verified, committed): `src/.../patha_c0_conditioning_spike.py` (+C0c additions),
+`scripts/pathA_C0c_nullmode.py`, `tests/…`, `reports/pathA_C0c_nullmode_identification.md`, `runs/pathA_C0c_…json`.
+**NEXT ACTION (resume here): USER-GATED — pathA_C0d = finish the gauge identification.** Project the 4 Maxwell-lane modes
+onto a PROPER Maxwell A-sector gauge subspace (the discrete-gradient `∇λ` range in the ar/aw lanes, NOT one ansatz). If they
+ARE gauge ⇒ the wall is all gauge ⇒ design ONE combined phase+Maxwell gauge-fix/deflation, then re-crawl (likely
+breakthrough). Any TRUE residual after the full gauge basis = the genuine-stiffness candidate. The C0c machinery
+(generators, annihilation, overlap, per-lane split) is SOUND + reused. THEN (only after a real verdict): promote the
 constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W → anchor → surplus) → `pathA_22`.
 **⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
 is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades

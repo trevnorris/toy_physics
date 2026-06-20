@@ -13,7 +13,9 @@ from stage1_solver.coupled_branch import (
     _create_branch_grid,
     branch_boundary_conditions,
     initial_closed_branch_state,
+    pack_closed_coupled_fields,
     patha_closed_branch_residual,
+    unpack_closed_coupled_fields,
 )
 from stage1_solver.patha_b2a_bdg import FROZEN_A, FROZEN_L, frozen_s_sigma_spec
 from stage1_solver.patha_static_balance import resolve_s_sigma
@@ -224,3 +226,109 @@ def test_c0_production_verdict_requires_persistent_backtracked_full_budget_failu
     assert not support["crawl_persistent_failure_evidence"]
     assert not support["attempted_backtracking"]
     assert not support["full_newton_budget"]
+
+
+def test_c0c_phase_generator_uses_confirmed_closed_layout() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = _small_branch()
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    fields, mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    assert mu is not None
+    imag = torch.linspace(
+        0.1,
+        0.4,
+        fields.psi_imag.numel(),
+        dtype=state.dtype,
+        device=state.device,
+    ).reshape_as(fields.psi_imag)
+    state = pack_closed_coupled_fields(
+        type(fields)(
+            psi_real=fields.psi_real,
+            psi_imag=imag,
+            a0=fields.a0,
+            ar=fields.ar,
+            aw=fields.aw,
+            r0=fields.r0,
+        ),
+        mu,
+    )
+
+    generators = c0._c0c_generators_for_state(state, grid)
+    phase = next(generator for generator in generators if generator.name == "phase")
+    n = grid.spec.nr * grid.spec.nw
+
+    assert phase.symmetry_status == "EXACT_SYMMETRY"
+    assert np.allclose(phase.vector[:n], -imag.detach().cpu().numpy().reshape(-1))
+    assert np.allclose(phase.vector[n : 2 * n], fields.psi_real.detach().cpu().numpy().reshape(-1))
+    assert np.allclose(phase.vector[2 * n :], 0.0)
+
+
+def test_c0c_planted_generator_overlap_reports_one() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = _small_branch()
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    generators = c0._c0c_generators_for_state(state, grid)
+    phase = next(generator for generator in generators if generator.name == "phase")
+    planted, _norm = c0._unit_vector(phase.vector)
+
+    modes, span_rank = c0._c0c_overlap_diagnostics(
+        right_vectors=planted.reshape(1, -1),
+        singular_values=[1.0e-12],
+        generators=generators,
+        grid=grid,
+    )
+
+    assert span_rank >= 1
+    assert modes[0]["overlaps"]["phase"] >= 1.0 - 1.0e-12
+    assert modes[0]["unexplained_residual_fraction"] <= 1.0e-12
+
+
+def test_c0c_whole_cluster_verdict_is_mixed_when_only_one_mode_is_phase() -> None:
+    config = c0.C0cConfig(cluster_mode_count=2)
+    modes = [
+        {
+            "mode_index": 0,
+            "sigma": 1.0e-14,
+            "overlaps": {"phase": 0.95, "translation_r": 0.0},
+            "unexplained_residual_fraction": 0.05,
+            "lane_energy_fractions": {"psi_real": 0.5, "psi_imag": 0.5},
+        },
+        {
+            "mode_index": 1,
+            "sigma": 2.0e-10,
+            "overlaps": {"phase": 0.1, "translation_r": 0.2},
+            "unexplained_residual_fraction": 0.96,
+            "lane_energy_fractions": {"a0": 0.9, "ar": 0.1},
+        },
+    ]
+    generators = [
+        {
+            "name": "phase",
+            "classification": "GAUGE_PHASE",
+            "symmetry_status": "EXACT_SYMMETRY",
+        },
+        {
+            "name": "translation_r",
+            "classification": "TRANSLATION",
+            "symmetry_status": "PROBE",
+        },
+    ]
+    annihilation = [
+        {"generator": "phase", "status": "MEASURED", "null_gate_pass": True},
+        {"generator": "translation_r", "status": "MEASURED", "null_gate_pass": False},
+    ]
+
+    classified, support, verdict, recommended = c0._classify_c0c_modes(
+        modes=modes,
+        generators=generators,
+        annihilation_rows=annihilation,
+        config=config,
+    )
+
+    assert verdict == "MIXED"
+    assert classified[0]["classification"] == "GAUGE_PHASE"
+    assert classified[1]["classification"] == "UNEXPLAINED_STIFFNESS"
+    assert support["explained_mode_count"] == 1
+    assert "pin or deflate" in recommended

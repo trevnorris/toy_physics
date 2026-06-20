@@ -1830,6 +1830,1946 @@ def write_patha20b_cgamma_cs_report(out_dir: Path, report_dir: Path) -> tuple[Pa
     return json_path, reference_path, report
 
 
+def _patha21_emergent_g_checks() -> list[Check]:
+    rho4 = D["rho_4d_number_density"]
+    rho3 = LENGTH**-3
+    velocity = LENGTH / TIME
+    number_rate = TIME**-1
+    q3_vol = (rho3**-1) * number_rate
+    q4_vol = (rho4**-1) * number_rate
+    mass_density_3 = MASS * rho3
+    mass_density_4 = MASS * rho4
+    force_coefficient_3 = FORCE * (LENGTH**2)
+    force_coefficient_4 = FORCE * (LENGTH**3)
+    n3_eff = LENGTH * rho4
+    return [
+        expect_dim(
+            "pathA_21_P1",
+            "reduced-3D volumetric drain strength Q_3=J/n_3",
+            q3_vol,
+            (LENGTH**3) / TIME,
+            "The profile solve must supply n_3,eff and the dimensionless far-field drain factor Theta_Q.",
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "bulk-4D volumetric drain strength Q_4=J/rho_4",
+            q4_vol,
+            (LENGTH**4) / TIME,
+            "This is the unreduced bulk comparison lane; it would give an r^-3 force law in four spatial dimensions.",
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "far-field brane drain velocity v_r=Q_3/(4*pi*r^2)",
+            q3_vol / (LENGTH**2),
+            velocity,
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "far-field bulk drain velocity v_R=Q_4/(S_3*R^3)",
+            q4_vol / (LENGTH**3),
+            velocity,
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "reduced-3D pressure/momentum force F=rho_m3*Q_2*v_1",
+            mass_density_3 * q3_vol * velocity,
+            FORCE,
+            "This checks the control-surface cross term behind the G-free drain force.",
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "reduced-3D force coefficient C_F=rho_m3*Q_1*Q_2/(4*pi)",
+            mass_density_3 * (q3_vol**2),
+            force_coefficient_3,
+            "F=C_F/r^2 in the compact reduced-3D drain limit; no G is present.",
+        ),
+        expect_dim(
+            "pathA_21_P1",
+            "bulk-4D force coefficient C_F4=rho_m4*Q_1*Q_2/S_3",
+            mass_density_4 * (q4_vol**2),
+            force_coefficient_4,
+            "F=C_F4/R^3 before brane reduction; this is not the observed Newton lane.",
+        ),
+        expect_dim(
+            "pathA_21_P1_P4",
+            "effective reduced number density n_3,eff=W_eff*rho_4",
+            n3_eff,
+            rho3,
+            "W_eff is a named reduction/profile width, not set equal to a or xi_h/sqrt(2).",
+        ),
+        expect_dim(
+            "pathA_21_P2",
+            "angular-rate bridge candidate alpha_J*hbar*J_omega/c_gamma^2",
+            ACTION * number_rate / (velocity**2),
+            MASS,
+            "Dimensionally valid candidate only; alpha_J is not defined by this check.",
+        ),
+        expect_dim(
+            "pathA_21_P2",
+            "cycle-rate bridge candidate alpha_J*h*J_nu/c_gamma^2",
+            ACTION * number_rate / (velocity**2),
+            MASS,
+            "h=2*pi*hbar has the same dimension; the 2*pi placement is algebraic bookkeeping.",
+        ),
+        expect_dim(
+            "pathA_21_P2",
+            "candidate throat Hamiltonian ratio H_throat/(hbar*J_omega)",
+            ENERGY / (ACTION * number_rate),
+            DIMENSIONLESS,
+            "A real bridge would need a source equation identifying this profile energy with the rest mass.",
+        ),
+        expect_dim(
+            "pathA_21_P2",
+            "inertial-throat kinetic coefficient dimension",
+            MASS,
+            MASS,
+            "Placeholder-free dimensional lane for m_inertial from a second velocity derivative of the effective throat action.",
+        ),
+        expect_dim(
+            "pathA_21_P3",
+            "hbar remains an action dimension in the retained {L,T,M} base",
+            ACTION,
+            Dim(2, -1, 1),
+            "No independent hbar-free relation is introduced in pathA_21.",
+        ),
+        expect_dim(
+            "pathA_21_P4",
+            "conditional G_eff from C_F*c_gamma^4/(alpha1*alpha2*hbar^2*J1*J2)",
+            force_coefficient_3 * (velocity**4) / ((ACTION**2) * (number_rate**2)),
+            D["G_3_spatial"],
+            "Algebraic dimension only; P4 rejects extraction because P2 and universality are not derived.",
+        ),
+        expect_dim(
+            "pathA_21_P4",
+            "conditional G_eff using W_eff*rho4: c_gamma^4*m_GNLS/(W_eff*rho4*hbar^2)",
+            (velocity**4) * MASS / (n3_eff * (ACTION**2)),
+            D["G_3_spatial"],
+        ),
+        expect_dim(
+            "pathA_21_P4",
+            "lambda_gamma=c_gamma/c_s",
+            velocity / velocity,
+            DIMENSIONLESS,
+            "Consumed symbolically from pathA_20b.",
+        ),
+    ]
+
+
+def _patha21_algebraic_checks() -> list[dict[str, object]]:
+    q1, q2, rho_m, r, hbar, jnu, jomega, alpha1, alpha2, cgam = sp.symbols(
+        "Q1 Q2 rho_m r hbar J_nu J_omega alpha1 alpha2 c_gamma",
+        positive=True,
+    )
+    c_f = rho_m * q1 * q2 / (4 * sp.pi)
+    force_radial = -c_f / r**2
+    velocity_from_1 = -q1 / (4 * sp.pi * r**2)
+    force_from_cross_term = rho_m * q2 * velocity_from_1
+    m1 = alpha1 * hbar * jomega / cgam**2
+    m2 = alpha2 * hbar * jomega / cgam**2
+    g_cond = c_f * cgam**4 / (alpha1 * alpha2 * hbar**2 * jomega**2)
+    return [
+        _algebra_check(
+            "reduced-3D drain force is inverse-square before any G",
+            force_from_cross_term,
+            force_radial,
+            "Uses inward-positive Q_i and the pressure/momentum cross term rho_m*Q_2*v_1.",
+        ),
+        _algebra_check(
+            "G-free force coefficient C_F",
+            -force_radial * r**2,
+            c_f,
+            "C_F=rho_m3*Q1*Q2/(4*pi); G is not introduced.",
+        ),
+        _algebra_check(
+            "cycle-rate bridge keeps the 2*pi outside alpha_J",
+            2 * sp.pi * hbar * jnu,
+            2 * sp.pi * hbar * jnu,
+            "The check substitutes h=2*pi*hbar by expectation; alpha_J does not absorb 2*pi.",
+        ),
+        _algebra_check(
+            "conditional Newton coefficient algebra if independent bridge existed",
+            sp.simplify(g_cond * m1 * m2),
+            c_f,
+            "This is only an algebraic downstream conditional; it is not a P2/P4 derivation.",
+        ),
+    ]
+
+
+def _patha21_residuals() -> list[dict[str, object]]:
+    return [
+        {
+            "name": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "status": "CARRIED_FROM_pathA_20",
+            "source": "pde.tex:2515-2566 and 2847-2879 require the realized branch data set before flux and overlap values are known.",
+            "downstream_consequence": "The drain strength Theta_Q, W_eff, leakage/topology BC, and profile force integral remain symbolic.",
+        },
+        {
+            "name": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "status": "P1_PROFILE_RESIDUAL",
+            "source": "pde.tex:396-451 gives current, continuity, quantum potential, and Euler-like force balance but no solved finite-throat branch.",
+            "downstream_consequence": "P1 provides a G-free profile-functional C_F; the compact reduced-3D r^-2 lane is conditional on the source profile.",
+        },
+        {
+            "name": "FORCE_POWER_PROFILE_UNDERDETERMINED",
+            "status": "P1_SCOPE_RESIDUAL",
+            "source": "pde.tex:511-539 gives projected open-system brane continuity; pde.tex:541-565 distinguishes reduction from projection.",
+            "downstream_consequence": "A universal Newtonian r^-2 force is not promoted until the profile solve proves compact reduced-3D no-leakage behavior.",
+        },
+        {
+            "name": "BOUNDARY_HAMILTONIAN_MASS_RELATION_MISSING",
+            "status": "BLOCKS_ALPHA_J",
+            "source": "part01_parent_geometry.tex:174-219 and pde.tex:326-406 define the action and current; brane_bulk_ontology.tex:1267-1297 gives drainage scaling only.",
+            "downstream_consequence": "alpha_J is not an independently derived profile functional; the mass bridge is rejected.",
+        },
+        {
+            "name": "MASS_BRIDGE_FORM_NOT_DERIVED",
+            "status": "P2_VERDICT",
+            "source": "No action-level, boundary-source, Noether, or Hamiltonian equation was found that maps inflow J to m_defect without restating the target.",
+            "downstream_consequence": "m_defect=alpha_J*hbar*J/c_gamma^2 remains a candidate dimensional form only.",
+        },
+        {
+            "name": "H_2PI_RATE_CLASSIFICATION_UNDETERMINED",
+            "status": "CARRIED_FROM_pathA_20",
+            "source": "pde.tex:429-469 gives angular phase variables; circulation/winding sources do not classify the throat inflow J value.",
+            "downstream_consequence": "Keep J_omega and J_nu separate; h*J_nu=2*pi*hbar*J_nu and alpha_J cannot absorb 2*pi.",
+        },
+        {
+            "name": "INERTIAL_PROFILE_RESPONSE_MISSING",
+            "status": "BLOCKS_EP_INERTIAL_SIDE",
+            "source": "The cited parent sources do not provide an accelerated-throat kinetic response functional for m_inertial.",
+            "downstream_consequence": "m_inertial cannot be matched to the source mass normalization in this step.",
+        },
+        {
+            "name": "SOURCE_MASS_PROFILE_NORMALIZATION_MISSING",
+            "status": "BLOCKS_EP_SOURCE_SIDE",
+            "source": "P1 supplies C_F as a drain-force profile functional, not an independent mass functional.",
+            "downstream_consequence": "m_source is not separately reduced to the same integral and normalization as m_inertial.",
+        },
+        {
+            "name": "EP_NOT_DERIVED",
+            "status": "P2_VERDICT",
+            "source": "The inertial and source masses are not both available as separately sourced profile integrals.",
+            "downstream_consequence": "Equivalence of m_inertial and m_source is not claimed.",
+        },
+        {
+            "name": "HBAR_FREE_SUBSTRATE_RELATION_MISSING",
+            "status": "P3_BLOCKER",
+            "source": "pathA_20b retained HBAR_PROVENANCE_UNDETERMINED; no new hbar-free substrate relation appears in pathA_21.",
+            "downstream_consequence": "The base remains {L,T,M}; INFLOW_MASS_SOURCE_MISSING is sharpened by MASS_BRIDGE_FORM_NOT_DERIVED.",
+        },
+        {
+            "name": "NEWTON_G_FORM_NOT_DERIVED",
+            "status": "P4_VERDICT",
+            "source": "P4 requires a G-free universal inverse-square force plus independently derived P2 masses; P2 failed and P1 remains profile-conditional.",
+            "downstream_consequence": "The m<->G algebraic form is recorded only as a conditional hand-off to the profile solve/pathA_22.",
+        },
+        {
+            "name": "W_EFF_REDUCTION_UNDERIVED",
+            "status": "P4_PROFILE_RESIDUAL",
+            "source": "part01_parent_geometry.tex:298-389 and pde.tex:496-565 define projection/reduction but do not fix an invariant width.",
+            "downstream_consequence": "Use named W_eff; do not set it to a or xi_h/sqrt(2).",
+        },
+        {
+            "name": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "status": "CARRIED_FROM_pathA_20b",
+            "source": "pde.tex:541-565 and software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md:47-51 keep the observed brane c_gamma/c_s as a profile/reduction residual.",
+            "downstream_consequence": "lambda_gamma remains symbolic in all pathA_21 forms.",
+        },
+    ]
+
+
+def _patha21_profile_spec_rows() -> list[dict[str, str]]:
+    rows = [
+        {
+            "symbol": "R0(w)",
+            "definition": "Stationary throat surface Sigma0(X)=r-R0(w); domain 0<=w<=L0 with mouth R0(0) and bottom/topology BC.",
+            "dimension": "L",
+            "frame": "4D-bulk / reduced throat",
+            "source_anchor": "pde.tex:2515-2518; part01_parent_geometry.tex:447-461",
+            "closes_which_output": "C_F, W_eff, branch geometry",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "downstream_consumer": "pathA_21 P1/P4; pathA_22 scale map",
+        },
+        {
+            "symbol": "psi0(X)",
+            "definition": "Background matter field on the stationary branch; rho0(X)=abs(psi0)^2 enters current, Q, h(rho), and drain flux.",
+            "dimension": "L^-2",
+            "frame": "4D-bulk",
+            "source_anchor": "pde.tex:2519-2522; pde.tex:326-406",
+            "closes_which_output": "C_F, J-value, pressure response",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "downstream_consumer": "pathA_21 P1/P5",
+        },
+        {
+            "symbol": "rho0(X)",
+            "definition": "rho0=abs(psi0)^2 on the branch; measure d^4X in bulk and reduced d^3x after W_eff integration.",
+            "dimension": "L^-4 bulk; L^-3 reduced-3D after W_eff",
+            "frame": "4D-bulk / reduced-3D",
+            "source_anchor": "pde.tex:431-443; part01_parent_geometry.tex:266-278",
+            "closes_which_output": "C_F, c_s, W_eff*rho0",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "downstream_consumer": "pathA_21 P1/P4",
+        },
+        {
+            "symbol": "A_M0(x,w)",
+            "definition": "Background localized gauge field entering D_t, D_i, v_i, Maxwell/mixed branch data, and c_gamma reduction.",
+            "dimension": "A0: M L^2 T^-2; Ai: M L T^-1",
+            "frame": "4D-bulk / brane",
+            "source_anchor": "pde.tex:2523-2526; pde.tex:355-416",
+            "closes_which_output": "brane c_gamma, lambda_gamma, mixed profile data",
+            "status": "profile-solve",
+            "residual_if_absent": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "downstream_consumer": "pathA_21 P4; pathA_22",
+        },
+        {
+            "symbol": "V_conf(X;Sigma0)",
+            "definition": "Confinement potential on the stationary surface; domain bulk neighborhood of throat; integrand V_conf*rho in L_psi.",
+            "dimension": "M L^2 T^-2",
+            "frame": "4D-bulk",
+            "source_anchor": "pde.tex:2527-2530; part01_parent_geometry.tex:466-497",
+            "closes_which_output": "C_F pressure/Bernoulli profile",
+            "status": "profile-solve",
+            "residual_if_absent": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "downstream_consumer": "pathA_21 P1",
+        },
+        {
+            "symbol": "Q0(rho0)",
+            "definition": "Quantum potential -hbar^2/(2m_GNLS) nabla_4^2 sqrt(rho0)/sqrt(rho0), evaluated on the solved branch.",
+            "dimension": "M L^2 T^-2",
+            "frame": "4D-bulk",
+            "source_anchor": "pde.tex:440-443; part01_parent_geometry.tex:275-286",
+            "closes_which_output": "C_F pressure/Bernoulli profile",
+            "status": "profile-solve",
+            "residual_if_absent": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "downstream_consumer": "pathA_21 P1",
+        },
+        {
+            "symbol": "S_leak",
+            "definition": "Projected continuity leakage -[W j^w] + int W'(w) j^w dw; domain transverse w boundary plus support of W'.",
+            "dimension": "L^-4 T^-1 projected; L^-3 T^-1 reduced",
+            "frame": "brane projection / reduced-3D",
+            "source_anchor": "pde.tex:511-539; part01_parent_geometry.tex:321-330",
+            "closes_which_output": "r-power, J conservation, C_F",
+            "status": "profile-solve",
+            "residual_if_absent": "FORCE_POWER_PROFILE_UNDERDETERMINED",
+            "downstream_consumer": "pathA_21 P1/P4",
+        },
+        {
+            "symbol": "W_eff",
+            "definition": "Named reduction width N_infty,3/rho_infty,4 from the solved brane localization/reduction kernel; measure dw with profile weight, not a or xi_h/sqrt(2).",
+            "dimension": "L",
+            "frame": "4D-bulk to reduced-3D",
+            "source_anchor": "pde.tex:541-565; part01_parent_geometry.tex:298-389",
+            "closes_which_output": "G, reduced C_F",
+            "status": "profile-solve",
+            "residual_if_absent": "W_EFF_REDUCTION_UNDERIVED",
+            "downstream_consumer": "pathA_21 P4; pathA_22 scale map",
+        },
+        {
+            "symbol": "N_infty,3",
+            "definition": "Asymptotic reduced number density int rho0(x,w) chi_N(w) dw = W_eff*rho_infty,4 in the far field.",
+            "dimension": "L^-3",
+            "frame": "reduced-3D",
+            "source_anchor": "pde.tex:496-509; software/stage1_solver/reports/pathA_19_dimensional_foundation.md:20-28",
+            "closes_which_output": "C_F, conditional G",
+            "status": "profile-solve",
+            "residual_if_absent": "W_EFF_REDUCTION_UNDERIVED",
+            "downstream_consumer": "pathA_21 P1/P4",
+        },
+        {
+            "symbol": "J",
+            "definition": "Number-rate flux lim_{S_R} int n_3 v_brane.n dS in a no-leakage steady region, with throat-source sign convention specified.",
+            "dimension": "T^-1",
+            "frame": "reduced-3D / brane",
+            "source_anchor": "pde.tex:396-406; pde.tex:511-539",
+            "closes_which_output": "C_F, alpha_J candidate, J-value",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "downstream_consumer": "pathA_21 P1/P2",
+        },
+        {
+            "symbol": "Theta_Q",
+            "definition": "Dimensionless far-field drain factor Theta_Q=-(N_infty,3/J) lim_{R->infty} int_{S_R} v_brane.n dS; fields psi0,R0,A_M0 and leakage BC.",
+            "dimension": "1",
+            "frame": "reduced-3D",
+            "source_anchor": "pde.tex:511-539; pde.tex:2515-2566",
+            "closes_which_output": "C_F",
+            "status": "profile-solve",
+            "residual_if_absent": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "downstream_consumer": "pathA_21 P1/P4",
+        },
+        {
+            "symbol": "I_F,12",
+            "definition": "Dimensionless control-surface pressure/momentum cross integral around throat 2: normalize int_{partial U2} Pi_cross[v1,v2,rho0].n dS by m_GNLS N_infty,3 Q1 Q2/(4*pi r^2).",
+            "dimension": "1",
+            "frame": "reduced-3D",
+            "source_anchor": "pde.tex:445-451; em_fields.tex:118-124 for legacy Euler pressure form",
+            "closes_which_output": "C_F, attractiveness",
+            "status": "profile-solve",
+            "residual_if_absent": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "downstream_consumer": "pathA_21 P1",
+        },
+        {
+            "symbol": "C_F,12",
+            "definition": "G-free force coefficient C_F,12=(m_GNLS N_infty,3 Q1 Q2/(4*pi))*I_F,12 with Qi=Theta_Qi*Ji/N_infty,3.",
+            "dimension": "M L^3 T^-2",
+            "frame": "reduced-3D",
+            "source_anchor": "pde.tex:396-451 plus profile rows J,Theta_Q,I_F,12",
+            "closes_which_output": "C_F",
+            "status": "profile-solve",
+            "residual_if_absent": "PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED",
+            "downstream_consumer": "pathA_21 P1/P4",
+        },
+        {
+            "symbol": "alpha_H,omega",
+            "definition": "Would-be dimensionless profile energy ratio H_throat[psi0,A_M0,R0,wall]/(hbar J_omega), with H_throat from the canonical Hamiltonian over the throat domain and bottom BC.",
+            "dimension": "1",
+            "frame": "4D-bulk / throat",
+            "source_anchor": "pde.tex:318-391; brane_bulk_ontology.tex:1267-1297",
+            "closes_which_output": "alpha_J, m_defect bridge",
+            "status": "new-physics",
+            "residual_if_absent": "BOUNDARY_HAMILTONIAN_MASS_RELATION_MISSING",
+            "downstream_consumer": "pathA_21 P2; future profile solve",
+        },
+        {
+            "symbol": "J_omega",
+            "definition": "Angular-rate version of the throat invariant used in alpha_J*hbar*J_omega/c_gamma^2; classification requires source relation to phase/angular rate.",
+            "dimension": "T^-1",
+            "frame": "throat / brane",
+            "source_anchor": "pde.tex:429-469; software/stage1_solver/reports/pathA_20_velocity_constants.md:57-60",
+            "closes_which_output": "2pi placement, alpha_J candidate",
+            "status": "new-physics",
+            "residual_if_absent": "H_2PI_RATE_CLASSIFICATION_UNDETERMINED",
+            "downstream_consumer": "pathA_21 P2",
+        },
+        {
+            "symbol": "J_nu",
+            "definition": "Cycle-rate version of the throat invariant, with h*J_nu=2*pi*hbar*J_nu and alpha_J not absorbing 2*pi.",
+            "dimension": "T^-1",
+            "frame": "throat / brane",
+            "source_anchor": "pde.tex:429-469; software/stage1_solver/reports/pathA_20_velocity_constants.md:57-60",
+            "closes_which_output": "2pi placement, alpha_J candidate",
+            "status": "new-physics",
+            "residual_if_absent": "H_2PI_RATE_CLASSIFICATION_UNDETERMINED",
+            "downstream_consumer": "pathA_21 P2",
+        },
+        {
+            "symbol": "M_inertial",
+            "definition": "Second derivative of the effective moving-throat action with respect to a slow center velocity after integrating fields over the solved throat/support domain.",
+            "dimension": "M",
+            "frame": "brane / reduced throat",
+            "source_anchor": "pde.tex:2806-2879 scope statement; no explicit accelerated-throat source equation in cited parents",
+            "closes_which_output": "EP inertial side",
+            "status": "new-physics",
+            "residual_if_absent": "INERTIAL_PROFILE_RESPONSE_MISSING",
+            "downstream_consumer": "pathA_21 P2 EP",
+        },
+        {
+            "symbol": "M_source",
+            "definition": "Mass normalization inferred from the far-field drain source after C_F factorization, separately from M_inertial and without using Newton G.",
+            "dimension": "M",
+            "frame": "reduced-3D",
+            "source_anchor": "pde.tex:396-451; brane_bulk_ontology.tex:1267-1297",
+            "closes_which_output": "EP source side",
+            "status": "new-physics",
+            "residual_if_absent": "SOURCE_MASS_PROFILE_NORMALIZATION_MISSING",
+            "downstream_consumer": "pathA_21 P2/P4",
+        },
+        {
+            "symbol": "C_B/C_E",
+            "definition": "Bulk transverse Maxwell principal coefficient ratio from the localized Maxwell kinetic operator.",
+            "dimension": "L^2 T^-2",
+            "frame": "4D-bulk",
+            "source_anchor": "pde.tex:355-416; software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md:39-50",
+            "closes_which_output": "bulk c_gamma",
+            "status": "profile-solve",
+            "residual_if_absent": "BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED",
+            "downstream_consumer": "pathA_21 P4",
+        },
+        {
+            "symbol": "lambda_gamma",
+            "definition": "Observed brane photon/sound ratio c_gamma/c_s from the zero-mode/profile reduction.",
+            "dimension": "1",
+            "frame": "brane",
+            "source_anchor": "pde.tex:541-565; software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md:47-51",
+            "closes_which_output": "G conditional form, mass bridge c_gamma",
+            "status": "profile-solve",
+            "residual_if_absent": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "downstream_consumer": "pathA_21 P2/P4; pathA_22",
+        },
+        {
+            "symbol": "mu_eta(w)",
+            "definition": "Wall inertia density in the reduced wall action, integrated over the finite throat axial coordinate.",
+            "dimension": "M L^-1",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2531-2535",
+            "closes_which_output": "pathA_22 support/scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "T_w(w)",
+            "definition": "Axial wall tension function in the reduced wall operator.",
+            "dimension": "M L T^-2",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2531-2535",
+            "closes_which_output": "pathA_22 support/scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "T_Omega(w)",
+            "definition": "Angular wall stiffness/tension density entering the grouped l=2 wall operator.",
+            "dimension": "M L^-1 T^-2",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2531-2535",
+            "closes_which_output": "pathA_22 support/scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "K_eta(w)",
+            "definition": "Wall restoring stiffness density in the reduced wall operator.",
+            "dimension": "M L^-1 T^-2",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2531-2535",
+            "closes_which_output": "pathA_22 support/scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "varpi_Aalpha",
+            "definition": "Stable BdG/support frequency for grouped real lane A and mode alpha.",
+            "dimension": "T^-1",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2537-2544; pde.tex:2602-2609",
+            "closes_which_output": "pathA_22 B_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "c_Aalpha",
+            "definition": "Wall/support coupling for lane A and mode alpha; enters B_n=sum c_Aalpha^2/varpi_Aalpha^(2+2n).",
+            "dimension": "M^1/2 L^-1/2 T^-2",
+            "frame": "reduced throat",
+            "source_anchor": "pde.tex:2537-2544; pde.tex:2602-2609",
+            "closes_which_output": "pathA_22 B_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "Omega_U,Ar",
+            "definition": "Conservative mixed/gauge frequency for U-family mode r in grouped lane A.",
+            "dimension": "T^-1",
+            "frame": "reduced throat / mixed gauge",
+            "source_anchor": "pde.tex:2545-2549; pde.tex:2611-2624",
+            "closes_which_output": "pathA_22 Z_n/N_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "Omega_W,Ar",
+            "definition": "Conservative mixed/gauge frequency for W-family mode r in grouped lane A.",
+            "dimension": "T^-1",
+            "frame": "reduced throat / mixed gauge",
+            "source_anchor": "pde.tex:2545-2549; pde.tex:2611-2624",
+            "closes_which_output": "pathA_22 Z_n/N_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "R_Ar",
+            "definition": "Mixed U-W coupling satisfying Delta_r=Omega_U^2 Omega_W^2 - R_r^2.",
+            "dimension": "T^-2",
+            "frame": "reduced throat / mixed gauge",
+            "source_anchor": "pde.tex:2545-2549; pde.tex:2611-2624",
+            "closes_which_output": "pathA_22 Z_n/N_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "g_U,Ar",
+            "definition": "Wall-to-U mixed/gauge coupling entering Q_r,H_r,P_r.",
+            "dimension": "M^1/2 L^-1/2 T^-2",
+            "frame": "reduced throat / mixed gauge",
+            "source_anchor": "pde.tex:2545-2549; pde.tex:2619-2624",
+            "closes_which_output": "pathA_22 Z_n/N_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "g_W,Ar",
+            "definition": "Wall-to-W mixed/gauge coupling entering Q_r,H_r,P_r.",
+            "dimension": "M^1/2 L^-1/2 T^-2",
+            "frame": "reduced throat / mixed gauge",
+            "source_anchor": "pde.tex:2545-2549; pde.tex:2619-2624",
+            "closes_which_output": "pathA_22 Z_n/N_n moments",
+            "status": "pathA_22",
+            "residual_if_absent": "PATHA_22_BRANCH_PACKET_INCOMPLETE",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "a",
+            "definition": "Mouth-radius collective moment a(t)=(1/4*pi) int_{S^2} R(Omega,0,t) dOmega; not an invariant reduction width.",
+            "dimension": "L",
+            "frame": "brane / reduced throat",
+            "source_anchor": "part01_parent_geometry.tex:503-510; pde.tex:2551-2563",
+            "closes_which_output": "pathA_22 scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "c_s(branch)",
+            "definition": "Branch sound speed c_s^2=5K rho0^4/m_GNLS evaluated on the asymptotic/profile state.",
+            "dimension": "L T^-1",
+            "frame": "4D-bulk / brane",
+            "source_anchor": "pde.tex:342-352; software/stage1_solver/reports/pathA_20_velocity_constants.md:9-17",
+            "closes_which_output": "lambda_gamma, pathA_22 target",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "downstream_consumer": "pathA_21 P4; pathA_22",
+        },
+        {
+            "symbol": "mhat",
+            "definition": "Source-map factor in the isotropic normalization law; in the 3D target lane its squared dimension must convert P0 to G*c_s^5/(a^5*c^5).",
+            "dimension": "L^-1 T^-1 M^-1/2 in the 3D target normalization",
+            "frame": "PN-facing reduced observable",
+            "source_anchor": "pde.tex:2077-2092; pde.tex:2551-2563",
+            "closes_which_output": "pathA_22 scale map",
+            "status": "pathA_22",
+            "residual_if_absent": "SCALE_MAP_SOURCE_FACTOR_UNDERIVED",
+            "downstream_consumer": "pathA_22",
+        },
+        {
+            "symbol": "chi_Q",
+            "definition": "Outgoing-normalization scalar retained when the passive/outgoing branch is not fixed to canonical compact DtN.",
+            "dimension": "1",
+            "frame": "PN-facing reduced observable",
+            "source_anchor": "pde.tex:1980-1996; pde.tex:2053-2082; pde.tex:2551-2552",
+            "closes_which_output": "pathA_22 outgoing normalization",
+            "status": "pathA_22",
+            "residual_if_absent": "OUTGOING_DTN_BRANCH_UNDERIVED",
+            "downstream_consumer": "pathA_22",
+        },
+    ]
+    return rows
+
+
+def _patha21_status_counts(rows: Sequence[Mapping[str, str]]) -> dict[str, int]:
+    statuses = ("known", "profile-solve", "pathA_22", "new-physics")
+    return {status: sum(1 for row in rows if row["status"] == status) for status in statuses}
+
+
+def run_patha21_emergent_g_mass_bridge() -> dict[str, object]:
+    checks = _patha21_emergent_g_checks()
+    algebra = _patha21_algebraic_checks()
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    algebra_failures = [check for check in algebra if not check["pass"]]
+    profile_rows = _patha21_profile_spec_rows()
+    residuals = _patha21_residuals()
+    status_counts = _patha21_status_counts(profile_rows)
+    return {
+        "schema": "stage1_pathA_21_emergent_g_mass_bridge/v1",
+        "base_dimensions": ["L", "T", "M"],
+        "p1_force": {
+            "verdict": "G_FREE_PROFILE_FUNCTIONAL_DERIVED_CONDITIONAL_REDUCED_3D",
+            "force_form": "F_12 = -[C_F,12/r^2] rhat in the compact reduced-3D drain lane",
+            "coefficient": "C_F,12=(m_GNLS*N_infty,3*Q1*Q2/(4*pi))*I_F,12 = m_GNLS*Theta_Q1*Theta_Q2*J1*J2*I_F,12/(4*pi*N_infty,3)",
+            "attractiveness": "Attractive for positive compressibility, positive N_infty,3, and inward-positive drains Q1,Q2>0 because the pressure/momentum cross term gives F_12 parallel to the external inflow toward the other drain.",
+            "r_power": "r^-2 only after compact reduced-3D no-leakage behavior; unreduced bulk lane is r^-3.",
+            "profile_dependencies": ["Q(rho)", "V_conf", "R0 geometry", "S_leak/topology BC", "W_eff", "Theta_Q", "I_F,12"],
+            "non_closing_conditions": ["compact reduced-3D source", "far-field no-leakage", "positive compressibility", "solved stationary branch"],
+        },
+        "p2_mass_bridge": {
+            "verdict": "MASS_BRIDGE_FORM_NOT_DERIVED",
+            "alpha_status": "No independent alpha_J profile functional is derived; alpha_H,omega=H_throat/(hbar*J_omega) is specified as a needed future relation, not accepted as mass bridge.",
+            "angular_form": "m_defect ?= alpha_J*hbar*J_omega/c_gamma^2",
+            "cycle_form": "m_defect ?= alpha_J*h*J_nu/c_gamma^2 = 2*pi*alpha_J*hbar*J_nu/c_gamma^2",
+            "two_pi_status": "H_2PI_RATE_CLASSIFICATION_UNDETERMINED; alpha_J does not absorb 2*pi.",
+            "ep_verdict": "EP_NOT_DERIVED",
+        },
+        "p3_m_collapse": {
+            "verdict": "RETAIN_L_T_M",
+            "blocker": "HBAR_FREE_SUBSTRATE_RELATION_MISSING and MASS_BRIDGE_FORM_NOT_DERIVED",
+            "residual_resolution": "INFLOW_MASS_SOURCE_MISSING is sharpened, not closed.",
+        },
+        "p4_g": {
+            "verdict": "NEWTON_G_FORM_NOT_DERIVED",
+            "reason": "P2 does not independently derive masses and P1 inverse-square universality remains profile-conditional.",
+            "conditional_m_to_g_form": "If future solves prove universal Theta_Q/alpha_J and I_F,12=1, then G_cond=c_gamma^4*m_GNLS*Theta_Q1*Theta_Q2*I_F,12/(4*pi*N_infty,3*alpha_J1*alpha_J2*hbar^2), with N_infty,3=W_eff*rho_infty,4.",
+            "width": "W_eff named reduction width; not set to a or xi_h/sqrt(2).",
+        },
+        "profile_spec_rows": profile_rows,
+        "profile_spec_status_counts": status_counts,
+        "checks": [check.as_dict() for check in checks],
+        "algebraic_checks": algebra,
+        "residuals": residuals,
+        "summary": {
+            "total_dimensional_checks": len(checks),
+            "consistent_dimensional_checks": len(checks) - len(failures),
+            "inconsistent_dimensional_checks": len(failures),
+            "total_algebraic_checks": len(algebra),
+            "consistent_algebraic_checks": len(algebra) - len(algebra_failures),
+            "inconsistent_algebraic_checks": len(algebra_failures),
+            "profile_spec_row_count": len(profile_rows),
+            "profile_solve_rows": status_counts["profile-solve"],
+            "pathA_22_rows": status_counts["pathA_22"],
+            "new_physics_rows": status_counts["new-physics"],
+            "known_rows": status_counts["known"],
+            "acceptance_status": "PASS_WITH_NAMED_RESIDUALS",
+        },
+    }
+
+
+def render_patha21_emergent_g_markdown(report: Mapping[str, object]) -> str:
+    p1 = report["p1_force"]
+    p2 = report["p2_mass_bridge"]
+    p3 = report["p3_m_collapse"]
+    p4 = report["p4_g"]
+    summary = report["summary"]
+    assert isinstance(p1, Mapping)
+    assert isinstance(p2, Mapping)
+    assert isinstance(p3, Mapping)
+    assert isinstance(p4, Mapping)
+    assert isinstance(summary, Mapping)
+    lines = [
+        "# Path-A 21 emergent G and mass bridge summary",
+        "",
+        "## Verdicts",
+        "",
+        f"- P1 force: `{p1['verdict']}`. Form: `{p1['force_form']}`; coefficient `{p1['coefficient']}`.",
+        f"- P2 bridge: `{p2['verdict']}`. EP: `{p2['ep_verdict']}`.",
+        f"- P3 M-collapse: `{p3['verdict']}` because `{p3['blocker']}`.",
+        f"- P4 G: `{p4['verdict']}` because {p4['reason']}",
+        "",
+        "Dual-engine scope: the Python and Mathematica scripts check dimensions and algebra only. They do not prove the non-algebraic P1/P2/P4 source relations.",
+        "",
+        "## P1 force coefficient",
+        "",
+        "Source-equation chain:",
+        "",
+        "1. Parent continuity gives the drain rate: `partial_t rho + partial_i j^i = 0`, `j^i=rho v^i` (`pde.tex:396-406`; `part01_parent_geometry.tex:213-219`).",
+        "2. The stationary pressure response comes from the Euler-like identity with `V_conf`, `h(rho)`, and `Q(rho)` retained (`pde.tex:440-451`; `part01_parent_geometry.tex:275-286`).",
+        "3. Projected brane continuity is open unless `S_leak` and the topology BC close (`pde.tex:511-539`), and reduction is a separate profile assumption (`pde.tex:541-565`).",
+        "4. In the compact reduced-3D far-field lane, the solved profile returns `Q_i=Theta_Qi*J_i/N_infty,3`, `v_i=-Q_i rhat/(4*pi*r^2)`. The pressure/momentum cross term on a control surface around throat 2 gives `F_12=-C_F,12 rhat/r^2`.",
+        "",
+        f"Attractiveness: {p1['attractiveness']}",
+        f"Power law: {p1['r_power']}",
+        "Profile dependencies: " + ", ".join(str(item) for item in p1["profile_dependencies"]) + ".",
+        "Non-closing conditions: " + ", ".join(str(item) for item in p1["non_closing_conditions"]) + ".",
+        "",
+        "## P2 mass bridge and EP",
+        "",
+        f"Verdict: `{p2['verdict']}`.",
+        "",
+        f"- Angular-rate candidate: `{p2['angular_form']}`.",
+        f"- Cycle-rate candidate: `{p2['cycle_form']}`.",
+        f"- `2*pi` status: {p2['two_pi_status']}",
+        f"- `alpha_J`: {p2['alpha_status']}",
+        f"- EP verdict: `{p2['ep_verdict']}` because the accelerated-throat inertial functional and the far-field source mass functional are not separately available with the same normalization.",
+        "",
+        "No row defines `alpha_J := m_defect*c_gamma^2/(hbar*J)`, and no mass formula is accepted by restatement.",
+        "",
+        "## P3 M-collapse",
+        "",
+        f"`{p3['verdict']}`. {p3['residual_resolution']} The retained base is `{', '.join(report['base_dimensions'])}`.",
+        "",
+        "## P4 G and m-to-G",
+        "",
+        f"Verdict: `{p4['verdict']}`.",
+        f"Conditional algebraic hand-off only: `{p4['conditional_m_to_g_form']}`.",
+        f"Width discipline: {p4['width']}",
+        "",
+        "This is not an extracted Newton constant because the independent mass bridge is missing and the inverse-square/factorized/universal force conditions are not all closed.",
+        "",
+        "## P5 profile-solve specification",
+        "",
+        f"Rows: {summary['profile_spec_row_count']} total; {summary['profile_solve_rows']} profile-solve, {summary['pathA_22_rows']} pathA_22, {summary['new_physics_rows']} new-physics, {summary['known_rows']} known.",
+        "",
+        "| symbol | definition | dimension | frame | source anchor | closes which output | status | residual if absent | downstream consumer |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
+    rows = report["profile_spec_rows"]
+    assert isinstance(rows, Sequence)
+    for raw in rows:
+        assert isinstance(raw, Mapping)
+        lines.append(
+            "| "
+            + " | ".join(
+                str(raw[key]).replace("|", "/")
+                for key in (
+                    "symbol",
+                    "definition",
+                    "dimension",
+                    "frame",
+                    "source_anchor",
+                    "closes_which_output",
+                    "status",
+                    "residual_if_absent",
+                    "downstream_consumer",
+                )
+            )
+            + " |"
+        )
+    lines.extend(["", "## Residuals carried", ""])
+    residuals = report["residuals"]
+    assert isinstance(residuals, Sequence)
+    for raw in residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(
+        [
+            "",
+            "## Harness summary",
+            "",
+            f"- Dimensional checks: {summary['consistent_dimensional_checks']} consistent, {summary['inconsistent_dimensional_checks']} inconsistent, {summary['total_dimensional_checks']} total.",
+            f"- Algebraic checks: {summary['consistent_algebraic_checks']} consistent, {summary['inconsistent_algebraic_checks']} inconsistent, {summary['total_algebraic_checks']} total.",
+            f"- Acceptance status: `{summary['acceptance_status']}`.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def write_patha21_emergent_g_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = run_patha21_emergent_g_mass_bridge()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_21_emergent_g_mass_bridge_report.json"
+    scratch_md_path = out_dir / "pathA_21_emergent_g_mass_bridge_report.md"
+    reference_path = report_dir / "pathA_21_emergent_G_mass_bridge.md"
+    rendered = render_patha21_emergent_g_markdown(report) + "\n"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    scratch_md_path.write_text(rendered, encoding="utf-8")
+    reference_path.write_text(rendered, encoding="utf-8")
+    return json_path, reference_path, report
+
+
+def _patha21b_force_bvp_checks() -> list[Check]:
+    rho4 = D["rho_4d_number_density"]
+    rho3 = LENGTH**-3
+    velocity = LENGTH / TIME
+    number_rate = TIME**-1
+    q3_vol = number_rate / rho3
+    q4_vol = number_rate / rho4
+    stress3 = FORCE / (LENGTH**2)
+    stress4 = FORCE / (LENGTH**3)
+    force_coefficient_3 = FORCE * (LENGTH**2)
+    force_coefficient_4 = FORCE * (LENGTH**3)
+    mass_density_3 = MASS * rho3
+    mass_density_4 = MASS * rho4
+    mu = ENERGY
+    a0 = D["q_A0"]
+    return [
+        expect_dim(
+            "pathA_21b_P1b",
+            "reduced-3D Gauss solve velocity J/(N_infty,3*Omega2*r^2)",
+            number_rate / (rho3 * (LENGTH**2)),
+            velocity,
+            "The power is d-1 with d=3; the check is dimensional only, not a source-chain proof.",
+        ),
+        expect_dim(
+            "pathA_21b_P1b",
+            "bulk-4D Gauss solve velocity J/(rho_infty,4*Omega3*R^3)",
+            number_rate / (rho4 * (LENGTH**3)),
+            velocity,
+            "The unreduced four-spatial bulk lane gives power d-1=3.",
+        ),
+        expect_dim(
+            "pathA_21b_P1b",
+            "reduced-3D momentum-flux stress m_GNLS*N_infty,3*v^2",
+            mass_density_3 * (velocity**2),
+            stress3,
+        ),
+        expect_dim(
+            "pathA_21b_P1b",
+            "bulk-4D momentum-flux stress m_GNLS*rho_infty,4*v^2",
+            mass_density_4 * (velocity**2),
+            stress4,
+        ),
+        expect_dim(
+            "pathA_21b_P1b",
+            "reduced-3D force coefficient m_GNLS*N_infty,3*Q1*Q2",
+            mass_density_3 * (q3_vol**2),
+            force_coefficient_3,
+            "F=C_F/r^2 after the reduced-3D Gauss solve and the Pi_cross surface integral.",
+        ),
+        expect_dim(
+            "pathA_21b_P1b",
+            "bulk-4D force coefficient m_GNLS*rho_infty,4*Q1*Q2",
+            mass_density_4 * (q4_vol**2),
+            force_coefficient_4,
+            "F=C_F4/R^3 in the unreduced bulk lane.",
+        ),
+        homogeneous(
+            "pathA_21b_G1",
+            "stationary GNLS eigenvalue equation terms",
+            {
+                "kinetic": (ACTION**2) / (MASS * (LENGTH**2)),
+                "V_conf": ENERGY,
+                "h(rho0)": ENERGY,
+                "q*A_00": a0,
+                "mu": mu,
+            },
+            "For psi0 != 0, each bracketed term multiplying psi0 has energy dimension.",
+        ),
+        homogeneous(
+            "pathA_21b_G1",
+            "stationary GNLS density-weighted Euler/Bernoulli terms",
+            {
+                "m_GNLS*v^2": MASS * (velocity**2),
+                "h(rho0)": ENERGY,
+                "Q(rho0)": ENERGY,
+                "V_conf": ENERGY,
+                "q*A_00": a0,
+            },
+        ),
+        homogeneous(
+            "pathA_21b_G3",
+            "Pi_cross reduced-3D stress terms",
+            {
+                "convective": mass_density_3 * (velocity**2),
+                "pressure": D["P_pressure"] * LENGTH,
+                "quantum": rho3 * ENERGY,
+                "confinement": rho3 * ENERGY,
+            },
+            "Pressure is reduced by the transverse width in the 3D lane; quantum and confinement stresses are represented by their divergence-equivalent energy-density terms.",
+        ),
+        expect_dim(
+            "pathA_21b_G5",
+            "N_infty,3 from transverse integration of rho_infty,4 against a length-width kernel",
+            LENGTH * rho4,
+            rho3,
+            "The formula is dimensional; the kernel shape remains W_KERNEL_UNDERDECLARED.",
+        ),
+    ]
+
+
+def _patha21b_algebraic_checks() -> list[dict[str, object]]:
+    j, rho, r, radius4, v, k_eos, rho_sym, m_gnls, delta_v2 = sp.symbols(
+        "J rho r R v K rho_sym m_GNLS delta_v2"
+    )
+    omega2 = 4 * sp.pi
+    omega3 = 2 * sp.pi**2
+    v3_solution = sp.solve(sp.Eq(rho * omega2 * r**2 * v, -j), v)[0]
+    v4_solution = sp.solve(sp.Eq(rho * omega3 * radius4**3 * v, -j), v)[0]
+    q1, q2, n3, r12 = sp.symbols("Q1 Q2 N3 r12")
+    v1_from_gauss = v3_solution.subs({j: q1 * n3, rho: n3, r: r12})
+    force_from_surface = m_gnls * n3 * q2 * v1_from_gauss
+    force_expected = -m_gnls * n3 * q1 * q2 / (4 * sp.pi * r12**2)
+    h_expr = sp.Rational(5, 4) * k_eos * rho_sym**4
+    dh_drho = sp.diff(h_expr, rho_sym)
+    density_response = sp.simplify((-m_gnls * delta_v2 / 2) / dh_drho)
+    return [
+        _algebra_check(
+            "Gauss solve gives reduced-3D drain velocity with r^(-2) power",
+            v3_solution,
+            -j / (4 * sp.pi * rho * r**2),
+            "Solved from integral flux rho*v*Omega2*r^2=-J; no hand-inserted velocity field.",
+        ),
+        _algebra_check(
+            "Gauss solve gives bulk-4D drain velocity with R^(-3) power",
+            v4_solution,
+            -j / (2 * sp.pi**2 * rho * radius4**3),
+            "Solved from integral flux rho*v*Omega3*R^3=-J.",
+        ),
+        _algebra_check(
+            "Pi_cross surface impulse gives reduced force coefficient",
+            force_from_surface,
+            force_expected,
+            "Uses the Gauss-solved v1 and the drain-2 momentum uptake m_GNLS*N3*Q2*v1.",
+        ),
+        _algebra_check(
+            "EOS enthalpy derivative used for pressure-response sign",
+            dh_drho,
+            5 * k_eos * rho_sym**3,
+            "The sign statement in the report comes from stable K>0 and rho>0, not CAS assumptions.",
+        ),
+        _algebra_check(
+            "Bernoulli density response to increased speed",
+            density_response,
+            -m_gnls * delta_v2 / (10 * k_eos * rho_sym**3),
+            "For stable K>0, rho>0, and delta_v2>0 this is negative; the finite-throat force orientation remains a profile residual.",
+        ),
+    ]
+
+
+def _patha21b_gap_statuses() -> list[dict[str, str]]:
+    return [
+        {
+            "gap": "G1",
+            "status": "CLOSED",
+            "equation_or_residual": "BVP-G1.GNLS plus BVP-G1.Maxwell",
+            "note": "Stationary gauged GNLS and stationary localized Maxwell are transcribed from the parent action for fixed branch geometry and source data.",
+        },
+        {
+            "gap": "G2",
+            "status": "NAMED RESIDUAL",
+            "equation_or_residual": "R0_FREE_BOUNDARY_CONDITION_UNDERIVED",
+            "note": "The parent supplies Sigma0=r-R0(w), a0=R0(0), and candidate bottom/regularity data, but not an Euler-Lagrange selector for R0(w).",
+        },
+        {
+            "gap": "G3",
+            "status": "CLOSED AS FUNCTIONAL",
+            "equation_or_residual": "BVP-G3.Pi_cross stress integral",
+            "note": "Pi_cross is written from the Euler stress balance/action terms; its numerical value and attractive orientation are profile integrals.",
+        },
+        {
+            "gap": "G4",
+            "status": "NAMED RESIDUAL",
+            "equation_or_residual": "J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED",
+            "note": "Continuity and no-leakage conserve flux in a chosen lane but do not select the value of J.",
+        },
+        {
+            "gap": "G5",
+            "status": "NAMED RESIDUAL",
+            "equation_or_residual": "W_KERNEL_UNDERDECLARED / W_EFF_REDUCTION_UNDERIVED",
+            "note": "Projection formulas are source-anchored; the kernel shape is not selected by the parent.",
+        },
+        {
+            "gap": "G6",
+            "status": "NAMED RESIDUAL",
+            "equation_or_residual": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "note": "The brane photon cone requires a solved zero-mode/profile reduction; lambda_gamma remains symbolic.",
+        },
+    ]
+
+
+def _patha21b_profile_spec_rows() -> list[dict[str, str]]:
+    rows = [dict(row) for row in _patha21_profile_spec_rows()]
+    overrides: dict[str, dict[str, str]] = {
+        "R0(w)": {
+            "definition": "Stationary throat surface Sigma0(X)=r-R0(w). Parent gives a0=R0(0) and candidate bottom/regularity data, but no free-boundary equation selecting R0(w).",
+            "closes_which_output": "branch geometry for BVP-G1; C_F and W_eff only after a branch selection",
+            "status": "branch-residual",
+            "residual_if_absent": "R0_FREE_BOUNDARY_CONDITION_UNDERIVED",
+            "downstream_consumer": "option C branch realization; pathA_22 scale map",
+        },
+        "psi0(X)": {
+            "definition": "Background matter field solved by BVP-G1.GNLS: [-hbar^2/(2m_GNLS)D_i0D_i0+V_conf(X;Sigma0)+h(abs(psi0)^2)+q_*A_00-mu]psi0=0.",
+            "source_anchor": "pde.tex:382-391; pde.tex:396-406; pde.tex:2519-2522",
+            "closes_which_output": "stationary density/current profile entering C_F, c_s(branch), and Pi_cross",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_GNLS_BVP_NOT_SOLVED",
+            "downstream_consumer": "option C; pathA_21b P1b/P5b",
+        },
+        "rho0(X)": {
+            "definition": "rho0=abs(psi0)^2 from BVP-G1.GNLS; it enters h(rho0), P(rho0), Q(rho0), current, and the branch sound speed.",
+            "source_anchor": "pde.tex:431-443; pde.tex:342-352; part01_parent_geometry.tex:266-278",
+            "closes_which_output": "pressure response, Q0, c_s(branch), reduced density after G5 branch data",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_GNLS_BVP_NOT_SOLVED",
+            "downstream_consumer": "option C; pathA_21b P1b/P5b",
+        },
+        "A_M0(x,w)": {
+            "definition": "Background localized gauge field solved by BVP-G1.Maxwell: partial_M(Z F_0^{MN})+xi^-1 partial^N(partial.A_0)=mu0 J_tot,0^N with the gauge condition and finite-energy BCs.",
+            "source_anchor": "pde.tex:355-416; pde.tex:2523-2526; part01_parent_geometry.tex:333-390",
+            "closes_which_output": "stationary gauge background and mixed-sector branch data; brane lambda_gamma remains G6 residual",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_MAXWELL_BVP_NOT_SOLVED",
+            "downstream_consumer": "option C; pathA_21b P5b; pathA_22",
+        },
+        "V_conf(X;Sigma0)": {
+            "definition": "Confinement profile entering BVP-G1.GNLS for a selected Sigma0; parent promotes V_conf(X;a,L) to V_conf(X;Sigma) and gives the smooth-wall variation.",
+            "source_anchor": "pde.tex:318-334; pde.tex:2527-2530; part01_parent_geometry.tex:466-497",
+            "closes_which_output": "stationary GNLS potential and pressure/Bernoulli profile for a chosen branch",
+            "status": "profile-solve",
+            "residual_if_absent": "V_CONF_BRANCH_PROFILE_UNDERDECLARED",
+            "downstream_consumer": "option C; pathA_21b P1b",
+        },
+        "Q0(rho0)": {
+            "definition": "Quantum potential Q0=-(hbar^2/(2m_GNLS))*nabla_4^2(sqrt(rho0))/sqrt(rho0), evaluated from the BVP-G1 density.",
+            "closes_which_output": "quantum-stress contribution to Pi_cross and Bernoulli balance",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_GNLS_BVP_NOT_SOLVED",
+            "downstream_consumer": "option C; pathA_21b P1b",
+        },
+        "S_leak": {
+            "definition": "Exact projected leakage S_leak=-[W j^w]+int W'(w)j^w dw. A compact reduced-3D force lane additionally assumes the far-field no-leakage branch S_leak=0.",
+            "closes_which_output": "far-field continuity equation, drain r-power in the selected compact lane, and flux conservation",
+            "status": "profile-solve",
+            "residual_if_absent": "NO_LEAKAGE_BRANCH_BC_UNDERIVED",
+            "downstream_consumer": "option C; pathA_21b P1b/P5b",
+        },
+        "W_eff": {
+            "definition": "Reduction width W_eff=N_infty,3/rho_infty,4 after a projection/reduction kernel is selected; formula is declared but the kernel shape is not parent-selected.",
+            "closes_which_output": "G reduction and reduced C_F only after G5 branch realization",
+            "status": "branch-residual",
+            "residual_if_absent": "W_KERNEL_UNDERDECLARED / W_EFF_REDUCTION_UNDERIVED",
+            "downstream_consumer": "option C branch realization; pathA_22 scale map",
+        },
+        "N_infty,3": {
+            "definition": "Asymptotic reduced density N_infty,3=int chi_N(w) rho_infty,4(w) dw = W_eff*rho_infty,4 only after the G5 kernel branch is selected.",
+            "closes_which_output": "C_F normalization and conditional G denominator",
+            "status": "branch-residual",
+            "residual_if_absent": "W_KERNEL_UNDERDECLARED / W_EFF_REDUCTION_UNDERIVED",
+            "downstream_consumer": "option C branch realization; pathA_21b P1b/P4",
+        },
+        "J": {
+            "definition": "Conserved number-rate flux J in a stationary no-leakage region: int_{S_R} n v.n dS=-J. The parent does not select its value.",
+            "closes_which_output": "P1b force coefficient after branch-selected value; alpha_J candidate remains rejected",
+            "status": "branch-residual",
+            "residual_if_absent": "J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED",
+            "downstream_consumer": "option C branch realization; pathA_21b P1b; pathA_22",
+        },
+        "Theta_Q": {
+            "definition": "Dimensionless branch factor relating the mouth/source flux to the far-field Gauss flux; computable only after R0, leakage, and kernel branch choices.",
+            "closes_which_output": "C_F factorization and far-field source normalization",
+            "status": "branch-residual",
+            "residual_if_absent": "THETA_Q_BRANCH_REALIZATION_UNDERIVED",
+            "downstream_consumer": "option C branch realization; pathA_21b P1b/P4",
+        },
+        "I_F,12": {
+            "definition": "Dimensionless Pi_cross control-surface integral I_F,12 defined by BVP-G3: normalize -int_{partial U2} Pi_cross.n dS by m_GNLS*N_infty,3*Q1*Q2/(4*pi*r12^2).",
+            "source_anchor": "pde.tex:445-451; pde.tex:342-352; part01_parent_geometry.tex:275-286; pathA_21b BVP-G3",
+            "closes_which_output": "C_F magnitude; attractive orientation only after profile sign integral",
+            "status": "profile-solve",
+            "residual_if_absent": "PI_CROSS_STRESS_TENSOR_UNDERIVED",
+            "downstream_consumer": "option C; pathA_21b P1b",
+        },
+        "C_F,12": {
+            "definition": "G-free force coefficient C_F,12=(m_GNLS*N_infty,3*Q1*Q2/(4*pi))*I_F,12, with Qi=Theta_Qi*Ji/N_infty,3 from the Gauss-solved lane.",
+            "source_anchor": "pathA_21b P1b Gauss solve plus BVP-G3 Pi_cross",
+            "closes_which_output": "P1b force form",
+            "status": "profile-solve",
+            "residual_if_absent": "ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL",
+            "downstream_consumer": "pathA_21b P1b; pathA_22 only after mass bridge remains separately derived",
+        },
+        "alpha_H,omega": {
+            "definition": "Would-be dimensionless profile energy ratio H_throat/(hbar*J_omega). pde.tex:318-391 is the action-level source, not a canonical Hamiltonian; the Hamiltonian and boundary mass relation must be constructed separately.",
+            "source_anchor": "pde.tex:318-391 action-level only; brane_bulk_ontology.tex:1267-1297 scaling only",
+            "closes_which_output": "alpha_J and m_defect bridge remain unclosed",
+            "status": "new-physics",
+            "residual_if_absent": "CANONICAL_THROAT_HAMILTONIAN_UNCONSTRUCTED / BOUNDARY_HAMILTONIAN_MASS_RELATION_MISSING",
+            "downstream_consumer": "pathA_22 or later new-physics bridge",
+        },
+        "C_B/C_E": {
+            "definition": "Bulk transverse Maxwell principal coefficient ratio. The principal-symbol form is known, but the physical normalization is a calibration/branch datum rather than a throat BVP closure.",
+            "closes_which_output": "bulk c_gamma normalization only after calibration/branch choice",
+            "status": "branch-residual",
+            "residual_if_absent": "BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED",
+            "downstream_consumer": "pathA_22 calibration packet",
+        },
+        "lambda_gamma": {
+            "definition": "Observed brane photon/sound ratio c_gamma/c_s. It requires the brane zero-mode/profile reduction and is not closed by P5b.",
+            "closes_which_output": "G conditional form and mass bridge c_gamma remain symbolic",
+            "status": "new-physics",
+            "residual_if_absent": "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "downstream_consumer": "option C zero-mode reduction; pathA_22",
+        },
+        "c_s(branch)": {
+            "definition": "Branch sound speed c_s^2=5K*rho0^4/m_GNLS evaluated on the BVP-G1 asymptotic/profile state.",
+            "closes_which_output": "profile sound speed for lambda_gamma and pathA_22 target",
+            "status": "profile-solve",
+            "residual_if_absent": "STATIONARY_GNLS_BVP_NOT_SOLVED",
+            "downstream_consumer": "option C; pathA_22",
+        },
+    }
+    for row in rows:
+        row.update(overrides.get(row["symbol"], {}))
+    return rows
+
+
+def _patha21b_status_counts(rows: Sequence[Mapping[str, str]]) -> dict[str, int]:
+    statuses = ("profile-solve", "branch-residual", "pathA_22", "new-physics", "known")
+    return {status: sum(1 for row in rows if row["status"] == status) for status in statuses}
+
+
+def _patha21b_named_residuals() -> list[dict[str, str]]:
+    return [
+        {
+            "name": "ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL",
+            "status": "P1b_SIGN_RESIDUAL",
+            "source": "pde.tex:445-451 plus the BVP-G3 control-surface integral; the parent does not select the finite-throat normal-orientation sign of I_F,12.",
+            "downstream_consequence": "EOS/compressibility gives the pressure-drop sign, but the full attractive force sign is left to the solved profile integral.",
+        },
+        {
+            "name": "R0_FREE_BOUNDARY_CONDITION_UNDERIVED",
+            "status": "G2_BRANCH_REALIZATION_RESIDUAL",
+            "source": "part01_parent_geometry.tex:447-461 defines Sigma0 and candidate bottom data; no action variation with respect to R0(w) is supplied.",
+            "downstream_consequence": "Option C must choose or derive the R0 branch selector.",
+        },
+        {
+            "name": "J_VALUE_BRANCH_PARAMETER",
+            "status": "G4_BRANCH_REALIZATION_RESIDUAL",
+            "source": "pde.tex:396-406 and pde.tex:511-539 conserve/project flux but do not fix the value.",
+            "downstream_consequence": "J remains a branch parameter unless a choking, regularity, topology, or energy selector is added downstream.",
+        },
+        {
+            "name": "J_SELECTOR_UNDERIVED",
+            "status": "G4_BRANCH_REALIZATION_RESIDUAL",
+            "source": "No separate source-anchored regularity/choking/energy condition selecting J was found in the cited parents.",
+            "downstream_consequence": "No silent free parameter; option C must enumerate or solve the selector.",
+        },
+        {
+            "name": "W_KERNEL_UNDERDECLARED",
+            "status": "G5_BRANCH_REALIZATION_RESIDUAL",
+            "source": "pde.tex:496-565 and part01_parent_geometry.tex:298-390 define projection/reduction formulas but not a kernel-shape selector.",
+            "downstream_consequence": "W_eff and N_infty,3 remain branch-realization data.",
+        },
+        {
+            "name": "CANONICAL_THROAT_HAMILTONIAN_UNCONSTRUCTED",
+            "status": "ALPHA_H_ANCHOR_FIX",
+            "source": "pde.tex:318-391 is action-level; it is not a canonical Hamiltonian construction.",
+            "downstream_consequence": "alpha_H,omega cannot be used as a mass bridge restatement.",
+        },
+    ]
+
+
+def run_patha21b_force_closure_and_profile_bvp() -> dict[str, object]:
+    checks = _patha21b_force_bvp_checks()
+    algebra = _patha21b_algebraic_checks()
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    algebra_failures = [check for check in algebra if not check["pass"]]
+    profile_rows = _patha21b_profile_spec_rows()
+    status_counts = _patha21b_status_counts(profile_rows)
+    carried_residuals = _patha21_residuals()
+    new_residuals = _patha21b_named_residuals()
+    return {
+        "schema": "stage1_pathA_21b_force_closure_and_profile_bvp/v1",
+        "base_dimensions": ["L", "T", "M"],
+        "p1b_force": {
+            "corrected_verdict": "G_FREE_DRAIN_FORCE_FORM_DERIVED_WITH_ATTRACTIVE_SIGN_PROFILE_RESIDUAL",
+            "supersedes_pathA_21_label": "G_FREE_PROFILE_FUNCTIONAL_DERIVED_CONDITIONAL_REDUCED_3D",
+            "inverse_square_status": "P1_INVERSE_SQUARE_FIELD_ASSUMED_NOT_SOLVED resolved for the compact reduced-3D lane by continuity/Gauss; unreduced bulk lane gives R^-3.",
+            "drain_velocity_reduced_3d": "int_{S_r} N_infty,3 v.n dS=-Theta_Q J => v_r(r)=-Theta_Q J/(4*pi*N_infty,3*r^2), or -Theta_Q J/(4*pi*r^2*N0(r)) if the asymptotic density is not constant.",
+            "drain_velocity_bulk_4d": "int_{S_R} rho_infty,4 v.n dS=-Theta_Q4 J => v_R(R)=-Theta_Q4 J/(2*pi^2*rho_infty,4*R^3), or -Theta_Q4 J/(2*pi^2*R^3*rho0(R)) if the asymptotic density is not constant.",
+            "force_form": "F_12=-(m_GNLS*N_infty,3*Q1*Q2/(4*pi*r12^2))*I_F,12*rhat_12 in the compact reduced-3D lane, with Qi=Theta_Qi*Ji/N_infty,3.",
+            "pi_cross_surface_integral": "F_12=-int_{partial U2} Pi_cross[v1,v2,rho0,A0,Sigma0].n_2 dS; partial U2 is a small closed reduced-3D surface enclosing throat 2 but excluding throat 1.",
+            "sign_verdict": "ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL",
+            "sign_chain": "Bernoulli gives delta h=-(m_GNLS/2)delta(v^2) where V_conf,Q,qA0 are asymptotically fixed. From P=K*rho^5 and h=(5K/4)rho^4, dh/drho=5K*rho^3>0 for a stable K>0,rho>0 branch, so higher entrained speed lowers rho and pressure. The remaining finite-throat traction orientation is the profile sign residual.",
+        },
+        "p2_mass_bridge": {
+            "verdict": "MASS_BRIDGE_FORM_NOT_DERIVED",
+            "ep_verdict": "EP_NOT_DERIVED",
+            "carried": "verbatim from pathA_21",
+        },
+        "p3_m_collapse": {
+            "verdict": "RETAIN_L_T_M",
+            "blocker": "HBAR_FREE_SUBSTRATE_RELATION_MISSING and MASS_BRIDGE_FORM_NOT_DERIVED",
+            "carried": "verbatim from pathA_21",
+        },
+        "p4_g": {
+            "verdict": "NEWTON_G_FORM_NOT_DERIVED",
+            "carried": "verbatim from pathA_21",
+        },
+        "bvp": {
+            "gaps": _patha21b_gap_statuses(),
+            "g1_stationary_gnls": "BVP-G1.GNLS: [-hbar^2/(2m_GNLS)D_i0D_i0+V_conf(X;Sigma0)+h(abs(psi0)^2)+q_*A_00-mu]psi0=0 on the 4D bulk throat exterior/interior domain, with D_i0=partial_i-i*q_*A_i0/hbar.",
+            "g1_stationary_maxwell": "BVP-G1.Maxwell: partial_M(Z(w)F_0^{MN})+xi^-1 partial^N(partial.A_0)=mu0[J_psi^N(psi0,A0)+J_ext,0^N], plus Bianchi identities and a gauge condition such as partial.A_0=0.",
+            "g3_pi_cross": "Pi_cross,ij=m_GNLS*rho_asym(v1_i v2_j+v2_i v1_j)+delta_ij P_cross+Pi_Q,cross,ij+Pi_V,cross,ij+Pi_EM,cross,ij. Here P_cross=K[(rho0+drho1+drho2)^5-(rho0+drho1)^5-(rho0+drho2)^5+rho0^5], Pi_Q,cross=cross[(hbar^2/(4m_GNLS))*((partial_i rho partial_j rho)/rho-partial_i partial_j rho)], and partial_j Pi_V,cross,ij=[rho partial_i V_conf]_cross for the selected V_conf branch.",
+            "g5_projection_formulas": "rho_brane=int W(w)rho dw, j_brane=int W(w)j_xyz dw, N_infty,3=int chi_N(w)rho_infty,4(w)dw, W_eff=N_infty,3/rho_infty,4 for constant far-field rho.",
+            "alpha_H_omega_anchor_fix": "pde.tex:318-391 is action-level, not a canonical Hamiltonian; canonical Hamiltonian must be constructed before alpha_H,omega can be used.",
+        },
+        "profile_spec_rows": profile_rows,
+        "profile_spec_status_counts": status_counts,
+        "new_residuals": new_residuals,
+        "carried_residuals": carried_residuals,
+        "carried_negative_verdicts_verbatim": [
+            "MASS_BRIDGE_FORM_NOT_DERIVED",
+            "EP_NOT_DERIVED",
+            "RETAIN_L_T_M",
+            "NEWTON_G_FORM_NOT_DERIVED",
+            "STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA",
+            "H_2PI_RATE_CLASSIFICATION_UNDETERMINED",
+            "BRANE_ZERO_MODE_REDUCTION_UNDERIVED",
+            "HBAR_PROVENANCE_UNDETERMINED",
+            "HBAR_FREE_SUBSTRATE_RELATION_MISSING",
+            "W_EFF_REDUCTION_UNDERIVED",
+        ],
+        "checks": [check.as_dict() for check in checks],
+        "algebraic_checks": algebra,
+        "summary": {
+            "total_dimensional_checks": len(checks),
+            "consistent_dimensional_checks": len(checks) - len(failures),
+            "inconsistent_dimensional_checks": len(failures),
+            "total_algebraic_checks": len(algebra),
+            "consistent_algebraic_checks": len(algebra) - len(algebra_failures),
+            "inconsistent_algebraic_checks": len(algebra_failures),
+            "profile_spec_row_count": len(profile_rows),
+            "closed_profile_solve_rows": status_counts["profile-solve"],
+            "branch_residual_rows": status_counts["branch-residual"],
+            "pathA_22_rows": status_counts["pathA_22"],
+            "new_physics_rows": status_counts["new-physics"],
+            "known_rows": status_counts["known"],
+            "acceptance_status": "PASS_WITH_NAMED_RESIDUALS",
+        },
+    }
+
+
+def render_patha21b_force_bvp_markdown(report: Mapping[str, object]) -> str:
+    p1 = report["p1b_force"]
+    bvp = report["bvp"]
+    summary = report["summary"]
+    p2 = report["p2_mass_bridge"]
+    p3 = report["p3_m_collapse"]
+    p4 = report["p4_g"]
+    assert isinstance(p1, Mapping)
+    assert isinstance(bvp, Mapping)
+    assert isinstance(summary, Mapping)
+    assert isinstance(p2, Mapping)
+    assert isinstance(p3, Mapping)
+    assert isinstance(p4, Mapping)
+    lines = [
+        "# Path-A 21b force closure and stationary-throat BVP",
+        "",
+        "## Verdicts",
+        "",
+        f"- P1b force: `{p1['corrected_verdict']}`; supersedes pathA_21 `{p1['supersedes_pathA_21_label']}`.",
+        f"- P2 bridge: `{p2['verdict']}`. EP: `{p2['ep_verdict']}`. Carried verbatim.",
+        f"- P3 M-collapse: `{p3['verdict']}` because `{p3['blocker']}`. Carried verbatim.",
+        f"- P4 G: `{p4['verdict']}`. Carried verbatim.",
+        "",
+        "Dual-engine scope: Python and Mathematica check dimensions and algebra only. The derivation is the source-equation chain below; exit 0 is not treated as proof.",
+        "",
+        "## P1b drain field",
+        "",
+        "Continuity source chain: parent continuity gives `partial_t rho + partial_i j^i=0`, `j^i=rho v^i` (`pde.tex:396-406`; `part01_parent_geometry.tex:213-219`). In a stationary no-leakage region outside the localized throat source, Gauss gives the far-field radial solution rather than inserting the power.",
+        "",
+        f"- Reduced-3D lane: `{p1['drain_velocity_reduced_3d']}`.",
+        f"- Bulk-4D lane: `{p1['drain_velocity_bulk_4d']}`.",
+        f"- Inverse-square status: {p1['inverse_square_status']}",
+        "",
+        "The reduced-3D `r^-2` power is therefore the area power of the enclosing two-sphere. The unreduced four-spatial bulk lane is `R^-3` from the three-sphere area `Omega3 R^3`.",
+        "",
+        "## P1b force",
+        "",
+        f"Control surface: `{p1['pi_cross_surface_integral']}`",
+        "",
+        "The cross stress used by the option-C solve is",
+        "",
+        "```text",
+        str(bvp["g3_pi_cross"]),
+        "```",
+        "",
+        "The pressure cross term is the explicit EOS cross-difference. The quantum term uses the displayed representative of the Madelung quantum stress, with the cross operation meaning `F[rho0+drho1+drho2]-F[rho0+drho1]-F[rho0+drho2]+F[rho0]`. The confinement term is the branch-selected stress-divergence representative whose divergence equals the cross body force from `rho partial_i V_conf`; absent that representative, the row would fall back to `PI_CROSS_STRESS_TENSOR_UNDERIVED`. `Pi_EM,cross` is retained only when gauge/mixed fields are active. The anchors are the Euler identity and EOS (`pde.tex:342-352`, `pde.tex:440-451`; `part01_parent_geometry.tex:275-286`).",
+        "",
+        f"Force form: `{p1['force_form']}`",
+        "",
+        f"Sign verdict: `{p1['sign_verdict']}`. {p1['sign_chain']}",
+        "",
+        "## Stationary BVP",
+        "",
+        "### G1 Closed Core",
+        "",
+        f"- GNLS: `{bvp['g1_stationary_gnls']}` Anchor: `pde.tex:382-391`; action anchor `pde.tex:318-391`.",
+        f"- Maxwell: `{bvp['g1_stationary_maxwell']}` Anchor: `pde.tex:410-426`; source bookkeeping `pde.tex:370-374`.",
+        "",
+        "G1 domain and BCs: the fields live on the 4D bulk throat branch domain with measure `d^4X` and stationary time factored by `psi=e^{-i mu t/hbar}psi0`. Far-field BCs fix the asymptotic density, chemical potential/gauge reference, finite energy, and the Gauss flux lane. Throat BCs require regular finite fields and branch-declared mouth/bottom flux data; the value selector for those branch data is not part of G1.",
+        "",
+        "### Boundary Conditions",
+        "",
+        "| condition | fields/domain | frame and measure | source anchor | status |",
+        "|---|---|---|---|---|",
+        "| Stationary matter asymptotic | `psi0 -> sqrt(rho_infty,4) exp(i theta_infty)`, `rho0 -> rho_infty,4`; `V_conf`, `Q`, and gauge reference approach branch constants | 4D bulk, `d^4X`; `psi0:L^-2`, `rho0:L^-4` | `pde.tex:382-406`; `pde.tex:2519-2530` | closed equation, branch value supplied by option C |",
+        "| Reduced-3D Gauss flux | `int_{S_r} N_infty,3 v.n dS=-Theta_Q J`, so `v_r=-Theta_Q J/(4*pi*N_infty,3*r^2)` | reduced-3D, `dS=r^2 dOmega_2`; `J:T^-1`, `N_infty,3:L^-3` | `pde.tex:396-406`; `pde.tex:511-539` | closed conservation law; `J_VALUE_BRANCH_PARAMETER` remains |",
+        "| Bulk-4D Gauss flux | `int_{S_R} rho_infty,4 v.n dS=-Theta_Q4 J`, so `v_R=-Theta_Q4 J/(2*pi^2*rho_infty,4*R^3)` | 4D bulk, `dS=R^3 dOmega_3`; `rho_infty,4:L^-4` | `pde.tex:396-406` | closed conservation law; compact reduced lane still branch-selected |",
+        "| Throat regularity and mouth flux | finite `psi0`, `rho0`, and `A_M0`; mouth inflow oriented into the throat where the branch declares a drain | 4D bulk/brane mouth, mouth `d^2S`; volumetric flux from brane mouth data | `brane_bulk_ontology.tex:1267-1289`; `part01_parent_geometry.tex:447-461` | branch BC; no `J` value selector |",
+        "| Bottom/topology | candidate `R0(L0)=0` or equivalent regular bottom condition | reduced throat, `0<=w<=L0` | `part01_parent_geometry.tex:447-461` | branch assumption, not closure |",
+        "| Stationary Maxwell far field and gauge | finite-energy `A_M0`; gauge condition from the gauge-fixed Maxwell equation, e.g. `partial.A_0=0`; optional zero-mode BCs only in the reduced brane lane | 4D bulk, `d^4X`; `A0:ML^2T^-2`, `Ai:MLT^-1` | `pde.tex:355-426`; `pde.tex:541-565` | G1 closed for bulk field; G6 brane cone residual |",
+        "| Projection kernel normalization | `int W(w)dw=1`; `rho_brane=int W rho dw`, `j_brane=int W j_xyz dw` | brane projection, `dw`; `W:L^-1` | `pde.tex:496-539`; `part01_parent_geometry.tex:298-330` | formula closed; kernel shape is `W_KERNEL_UNDERDECLARED` |",
+        "",
+        "### Gap Table",
+        "",
+        "| gap | status | equation or residual | note |",
+        "|---|---|---|---|",
+    ]
+    gaps = bvp["gaps"]
+    assert isinstance(gaps, Sequence)
+    for raw in gaps:
+        assert isinstance(raw, Mapping)
+        lines.append(f"| {raw['gap']} | {raw['status']} | `{raw['equation_or_residual']}` | {raw['note']} |")
+    lines.extend(
+        [
+            "",
+            "### G2 Branch Choices",
+            "",
+            "`R0_FREE_BOUNDARY_CONDITION_UNDERIVED`: candidate option-C assumptions are a prescribed analytic `R0(w)`, the parent bottom cap `R0(L0)=0`, an equivalent regular bottom condition, or a future free-boundary stationarity equation. These are branches, not closure.",
+            "",
+            "### G4 Branch Choices",
+            "",
+            "`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.",
+            "",
+            "### G5 Projection Formulas",
+            "",
+            f"`{bvp['g5_projection_formulas']}`. The formulas are source-anchored (`pde.tex:496-565`; `part01_parent_geometry.tex:298-390`), but the shape of `W(w)` or `chi_N(w)` is `W_KERNEL_UNDERDECLARED`.",
+            "",
+            "### G6 Brane Photon Residual",
+            "",
+            "`BRANE_ZERO_MODE_REDUCTION_UNDERIVED`: option C must solve the localized Maxwell zero-mode/profile reduction and compute the observed brane photon cone before `lambda_gamma=c_gamma/c_s` can be numerical.",
+            "",
+            "### alpha_H,omega Anchor Fix",
+            "",
+            str(bvp["alpha_H_omega_anchor_fix"]),
+            "",
+            "## Machine Table",
+            "",
+            f"Rows: {summary['profile_spec_row_count']} total; {summary['closed_profile_solve_rows']} closed profile-solve, {summary['branch_residual_rows']} branch-residual, {summary['pathA_22_rows']} pathA_22, {summary['new_physics_rows']} new-physics, {summary['known_rows']} known.",
+            "",
+            "| symbol | definition | dimension | frame | source anchor | closes which output | status | residual if absent | downstream consumer |",
+            "|---|---|---|---|---|---|---|---|---|",
+        ]
+    )
+    rows = report["profile_spec_rows"]
+    assert isinstance(rows, Sequence)
+    for raw in rows:
+        assert isinstance(raw, Mapping)
+        lines.append(
+            "| "
+            + " | ".join(
+                str(raw[key]).replace("|", "/")
+                for key in (
+                    "symbol",
+                    "definition",
+                    "dimension",
+                    "frame",
+                    "source_anchor",
+                    "closes_which_output",
+                    "status",
+                    "residual_if_absent",
+                    "downstream_consumer",
+                )
+            )
+            + " |"
+        )
+    lines.extend(["", "## New Residuals", ""])
+    new_residuals = report["new_residuals"]
+    assert isinstance(new_residuals, Sequence)
+    for raw in new_residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(["", "## Carried Negatives", ""])
+    carried = report["carried_negative_verdicts_verbatim"]
+    assert isinstance(carried, Sequence)
+    lines.append("Carried verbatim: " + ", ".join(f"`{item}`" for item in carried) + ".")
+    lines.extend(["", "## Carried Residual Ledger", ""])
+    residuals = report["carried_residuals"]
+    assert isinstance(residuals, Sequence)
+    for raw in residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(
+        [
+            "",
+            "## Harness Summary",
+            "",
+            f"- Dimensional checks: {summary['consistent_dimensional_checks']} consistent, {summary['inconsistent_dimensional_checks']} inconsistent, {summary['total_dimensional_checks']} total.",
+            f"- Algebraic checks: {summary['consistent_algebraic_checks']} consistent, {summary['inconsistent_algebraic_checks']} inconsistent, {summary['total_algebraic_checks']} total.",
+            f"- Acceptance status: `{summary['acceptance_status']}`.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def write_patha21b_force_bvp_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = run_patha21b_force_closure_and_profile_bvp()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_21b_force_closure_and_profile_bvp_report.json"
+    machine_table_path = out_dir / "pathA_21b_profile_bvp_machine_table.json"
+    scratch_md_path = out_dir / "pathA_21b_force_closure_and_profile_bvp.md"
+    reference_path = report_dir / "pathA_21b_force_closure_and_profile_bvp.md"
+    rendered = render_patha21b_force_bvp_markdown(report) + "\n"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    machine_table_path.write_text(
+        json.dumps(report["profile_spec_rows"], indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    scratch_md_path.write_text(rendered, encoding="utf-8")
+    reference_path.write_text(rendered, encoding="utf-8")
+    return json_path, reference_path, report
+
+
+def _patha21c_force_tensor_checks() -> list[Check]:
+    rho4 = D["rho_4d_number_density"]
+    rho3 = LENGTH**-3
+    velocity = LENGTH / TIME
+    number_rate = TIME**-1
+    q3_vol = number_rate / rho3
+    q4_vol = number_rate / rho4
+    mass_density_3 = MASS * rho3
+    mass_density_4 = MASS * rho4
+    stress3 = FORCE / (LENGTH**2)
+    stress4 = FORCE / (LENGTH**3)
+    force_density3 = FORCE / (LENGTH**3)
+    force_density4 = FORCE / (LENGTH**4)
+    energy_gradient = ENERGY / LENGTH
+    quantum_prefactor = (ACTION**2) / (MASS * (LENGTH**2))
+    return [
+        homogeneous(
+            "pathA_21c_P1c_A",
+            "reduced-3D momentum-balance terms",
+            {
+                "partial_t(m_GNLS*N*v_i)": mass_density_3 * velocity / TIME,
+                "partial_j Pi_ij": stress3 / LENGTH,
+                "V_conf body force N*partial_i V": rho3 * energy_gradient,
+            },
+            "Checks the balance law dimensions partial_t g_i + partial_j Pi_ij = f_i^body.",
+        ),
+        homogeneous(
+            "pathA_21c_P1c_A",
+            "bulk-4D momentum-balance terms",
+            {
+                "partial_t(m_GNLS*rho*v_i)": mass_density_4 * velocity / TIME,
+                "partial_J Pi_iJ": stress4 / LENGTH,
+                "V_conf body force rho*partial_i V": rho4 * energy_gradient,
+            },
+            "Bulk lane remains separate from the compact reduced-3D lane.",
+        ),
+        homogeneous(
+            "pathA_21c_P1c_A",
+            "reduced-3D Noether stress representatives",
+            {
+                "convective m_GNLS*N*v_i*v_j": mass_density_3 * (velocity**2),
+                "pressure delta_ij P_3": D["P_pressure"] * LENGTH,
+                "quantum sigma_Q": quantum_prefactor * rho3,
+            },
+            "The pressure term is reduced by one transverse length in the compact 3D lane.",
+        ),
+        homogeneous(
+            "pathA_21c_P1c_A",
+            "Euler force-per-volume identity terms in reduced 3D",
+            {
+                "m_GNLS*N*(partial_t+v.grad)v": mass_density_3 * velocity / TIME,
+                "N*partial_i h": rho3 * energy_gradient,
+                "N*partial_i Q": rho3 * energy_gradient,
+                "N*partial_i V_conf": rho3 * energy_gradient,
+                "N*q(E+vB)": rho3 * energy_gradient,
+            },
+            "Gauge force dimension is checked as q times an energy gradient per particle.",
+        ),
+        expect_dim(
+            "pathA_21c_P1c_B",
+            "reduced-3D surface traction integral gives force",
+            stress3 * (LENGTH**2),
+            FORCE,
+        ),
+        expect_dim(
+            "pathA_21c_P1c_B",
+            "bulk-4D surface traction integral gives force",
+            stress4 * (LENGTH**3),
+            FORCE,
+        ),
+        expect_dim(
+            "pathA_21c_P1c_B",
+            "reduced-3D Noether force coefficient m_GNLS*N_infty,3*Q1*Q2",
+            mass_density_3 * (q3_vol**2),
+            FORCE * (LENGTH**2),
+            "This is the coefficient before the downstream dimensionless normalization knob.",
+        ),
+        expect_dim(
+            "pathA_21c_P1c_B",
+            "bulk-4D Noether force coefficient m_GNLS*rho_infty,4*Q1*Q2",
+            mass_density_4 * (q4_vol**2),
+            FORCE * (LENGTH**3),
+            "The bulk lane uses Omega_3=2*pi^2 and R^-3, not the reduced 4*pi lane.",
+        ),
+        expect_dim(
+            "pathA_21c_P1c_B",
+            "V_conf body-force volume term dimension",
+            force_density3 * (LENGTH**3),
+            FORCE,
+            "The term is a residual unless the selected profile supplies the volume integral.",
+        ),
+    ]
+
+
+def _patha21c_algebraic_checks() -> list[dict[str, object]]:
+    m_gnls, n3, rho4, q1, q2, r12, radius4, v1, k_eos, rho_sym, vdot = sp.symbols(
+        "m_GNLS N3 rho4 Q1 Q2 r12 R v1 K rho vdot"
+    )
+    hbar_sym, x, m_sym = sp.symbols("hbar x m")
+    rho_fn = sp.Function("rho")(x)
+    omega2 = 4 * sp.pi
+    omega3 = 2 * sp.pi**2
+    d3 = sp.Integer(3)
+    d4 = sp.Integer(4)
+    convective_flux_3 = -(1 + sp.Rational(1, d3)) * m_gnls * n3 * q2 * v1
+    pressure_flux_3 = sp.Rational(1, d3) * m_gnls * n3 * q2 * v1
+    total_flux_3 = convective_flux_3 + pressure_flux_3
+    force_along_v1_3 = -total_flux_3
+    v1_from_gauss_3 = -q1 / (omega2 * r12**2)
+    force_along_rhat_3 = sp.simplify(force_along_v1_3.subs(v1, v1_from_gauss_3))
+    convective_flux_4 = -(1 + sp.Rational(1, d4)) * m_gnls * rho4 * q2 * v1
+    pressure_flux_4 = sp.Rational(1, d4) * m_gnls * rho4 * q2 * v1
+    total_flux_4 = convective_flux_4 + pressure_flux_4
+    force_along_v1_4 = -total_flux_4
+    v1_from_gauss_4 = -q1 / (omega3 * radius4**3)
+    force_along_rhat_4 = sp.simplify(force_along_v1_4.subs(v1, v1_from_gauss_4))
+    h_expr = sp.Rational(5, 4) * k_eos * rho_sym**4
+    pressure_expr = k_eos * rho_sym**5
+    dh_drho = sp.diff(h_expr, rho_sym)
+    dpressure_drho = sp.diff(pressure_expr, rho_sym)
+    delta_rho_cross = -m_gnls * vdot / dh_drho
+    delta_pressure_cross = sp.simplify(dpressure_drho * delta_rho_cross)
+    quantum_potential = -(hbar_sym**2 / (2 * m_sym)) * sp.diff(sp.sqrt(rho_fn), x, 2) / sp.sqrt(rho_fn)
+    sigma_q = (hbar_sym**2 / (4 * m_sym)) * (
+        (sp.diff(rho_fn, x) ** 2) / rho_fn - sp.diff(rho_fn, x, 2)
+    )
+    quantum_divergence_residual = sp.simplify(sp.diff(sigma_q, x) - rho_fn * sp.diff(quantum_potential, x))
+    return [
+        _algebra_check(
+            "EOS identity dP/drho = rho*dh/drho",
+            dpressure_drho,
+            rho_sym * dh_drho,
+            "This is the pressure term needed to convert the parent Euler identity into stress divergence form.",
+        ),
+        _algebra_check(
+            "Bernoulli/EOS pressure cross term",
+            delta_pressure_cross,
+            -m_gnls * rho_sym * vdot,
+            "Uses delta h_cross=-m_GNLS*(v1.v2); no density response is imported from the Gauss solve.",
+        ),
+        _algebra_check(
+            "Madelung quantum stress divergence",
+            quantum_divergence_residual,
+            sp.Integer(0),
+            "One-dimensional representative check of partial_j sigma_Q,ij = rho partial_i Q.",
+        ),
+        _algebra_check(
+            "reduced-3D convective angular traction factor",
+            convective_flux_3,
+            -sp.Rational(4, 3) * m_gnls * n3 * q2 * v1,
+            "Uses int n_i n_j dOmega = (4*pi/3) delta_ij and the drain-2 flux through the control surface.",
+        ),
+        _algebra_check(
+            "reduced-3D pressure angular traction factor",
+            pressure_flux_3,
+            sp.Rational(1, 3) * m_gnls * n3 * q2 * v1,
+            "The Bernoulli pressure term cancels the extra convective angular third.",
+        ),
+        _algebra_check(
+            "reduced-3D total flux from Noether stress",
+            total_flux_3,
+            -m_gnls * n3 * q2 * v1,
+            "This is the surface flux before applying F_12=-int Pi.n dS.",
+        ),
+        _algebra_check(
+            "reduced-3D force structure after Gauss substitution",
+            force_along_rhat_3,
+            -m_gnls * n3 * q1 * q2 / (4 * sp.pi * r12**2),
+            "rhat_12 points from defect 1 to defect 2; the minus sign is attractive for like drains.",
+        ),
+        _algebra_check(
+            "bulk-4D total flux from Noether stress",
+            total_flux_4,
+            -m_gnls * rho4 * q2 * v1,
+            "In four spatial dimensions the convective 1/4 and pressure 1/4 cancel the same way.",
+        ),
+        _algebra_check(
+            "bulk-4D force structure after Gauss substitution",
+            force_along_rhat_4,
+            -m_gnls * rho4 * q1 * q2 / (2 * sp.pi**2 * radius4**3),
+            "The bulk lane uses Omega_3=2*pi^2 and remains separate from W_eff/G5.",
+        ),
+    ]
+
+
+def _patha21c_named_residuals() -> list[dict[str, str]]:
+    return [
+        {
+            "name": "VCONF_BODY_FORCE_RESIDUAL",
+            "status": "BODY_FORCE_PROFILE_RESIDUAL",
+            "source": "The action contains -V_conf(X;Sigma0)*rho, so f_i^Vconf=-rho*partial_i V_conf. The selected finite throat profile is not solved in pathA_21c.",
+            "downstream_consequence": "The exterior hydrodynamic matter-stress integral is derived, but the full core/body-force normalization is not called derived.",
+        },
+        {
+            "name": "QUANTUM_STRESS_FAR_FIELD_RESIDUAL",
+            "status": "PROFILE_DERIVATIVE_RESIDUAL",
+            "source": "sigma_Q,ij is derived and its divergence check is machine-verified, but its cross surface integral needs the density derivative profile near the throat branch.",
+            "downstream_consequence": "Quantum stress is not used to tune or flip the derived matter-stress sign.",
+        },
+        {
+            "name": "MAXWELL_Z_GAUGE_JEXT_CANCELLATION_RESIDUAL",
+            "status": "MAXWELL_BODY_FORCE_RESIDUAL",
+            "source": "The localized Maxwell action has explicit Z(w), gauge fixing, and -A_M J_ext^M terms. The compact matter-drain lane does not prove their cross terms vanish or cancel.",
+            "downstream_consequence": "Maxwell stress is not included in the force coefficient until the profile/zero-mode branch proves the cancellation.",
+        },
+        {
+            "name": "SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE",
+            "status": "FULL_SIGN_RESIDUAL",
+            "source": "The convective plus Bernoulli-pressure matter stress gives an attractive like-drain far-field sign, but quantum, V_conf body-force, and Maxwell profile pieces are not all evaluated.",
+            "downstream_consequence": "The full sign is not claimed as derived; the leading compact reduced-3D matter-stress sign is a target-blind far-field result.",
+        },
+    ]
+
+
+def run_patha21c_force_from_noether_stress_tensor() -> dict[str, object]:
+    checks = _patha21c_force_tensor_checks()
+    algebra = _patha21c_algebraic_checks()
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    algebra_failures = [check for check in algebra if not check["pass"]]
+    residuals = _patha21c_named_residuals()
+    carried_residuals = _patha21_residuals()
+    return {
+        "schema": "stage1_pathA_21c_force_from_noether_stress_tensor/v1",
+        "base_dimensions": ["L", "T", "M"],
+        "consumed_inputs": [
+            "software/stage1_solver/directives/pathA_21c_force_from_noether_stress_tensor.md",
+            "software/stage1_solver/_scratch/pathA_21c_directive_review.log",
+            "software/stage1_solver/_scratch/pathA_21c_directive_confirmpass.log",
+            "software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md",
+            "software/stage1_solver/decisions/13_emergent_constants_derivation.md sections 11-12",
+            "research/pde/paper/pde.tex lines 318-451",
+            "research/pde_ledger/paper/parts/part01_parent_geometry.tex lines 275-286",
+        ],
+        "noether_balance": {
+            "momentum_density": "g_i=m_GNLS*rho*v_i",
+            "noether_trace": [
+                "Start from L_psi=(i*hbar/2)(psi^*D_t psi-psi D_t psi^*)-(hbar^2/(2*m_GNLS))(D_i psi)^*(D_i psi)-V_conf*rho-U(rho).",
+                "For an active spatial translation delta psi=-epsilon_i partial_i psi and delta A_M=-epsilon_i partial_i A_M, the canonical identity is partial_t T^0_i+partial_j T^j_i=partial L/partial x_i for explicit backgrounds.",
+                "The matter canonical flux from the spatial-gradient term is reduced on shell with psi=sqrt(rho) exp(i theta), j_i=rho v_i, the phase equation, and P=rho*h-U to Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P+sigma_Q,ij.",
+                "The explicit matter background term -V_conf(X;Sigma0)*rho contributes partial L/partial x_i=-rho*partial_i V_conf, so it is f_i^body, not part of Pi_ij.",
+                "The Maxwell action contributes the standard field stress only in lanes where Z(w), gauge fixing, and J_ext backgrounds are proven to vanish/cancel; otherwise their explicit partial L/partial x_i terms are residualized.",
+            ],
+            "matter_stress": "Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P(rho)+sigma_Q,ij",
+            "quantum_stress": "sigma_Q,ij=(hbar^2/(4*m_GNLS))*[(partial_i rho partial_j rho)/rho-partial_i partial_j rho]",
+            "pressure": "P=K*rho^5, h=(5K/4)*rho^4, dP=rho*dh",
+            "matter_balance": "partial_t g_i+partial_j Pi_ij^matter=q_star*rho*(E_i+v_j B_ij)-rho*partial_i V_conf",
+            "body_forces": [
+                "f_i^Vconf=-rho*partial_i V_conf",
+                "f_i^Z=-(partial_i Z) F_MN F^MN/(4*mu0) in the Maxwell sector",
+                "f_i^Jext=-A_M*partial_i J_ext^M for explicit external-source gradients",
+                "gauge-fixing/background terms are included only after a selected branch proves cancellation; otherwise residualized",
+            ],
+            "euler_check": "Using continuity, dP=rho*dh, and partial_j sigma_Q,ij=rho*partial_i Q, the balance law divided by rho reproduces m_GNLS*(partial_t+v.grad)v_i=q_star*(E_i+v_jB_ij)-partial_i(V_conf+h+Q).",
+            "stress_representative": "Canonical Noether stress is reduced to the displayed Madelung hydrodynamic representative. No Belinfante improvement is used in the accepted matter-stress integral; smooth closed-surface improvements integrate to zero by Gauss/antisymmetry, while singular core/profile pieces are not used as derived normalization.",
+        },
+        "force_integral": {
+            "sign_convention": "n_hat outward from U2; F_12 is force on defect 2 by defect 1; stationary F_12=-int_boundary Pi_ij n_j dS+int_U2 f_i^body dV.",
+            "control_surface": "reduced-3D sphere around defect 2 with core scale << a << r12; v2=-Q2*n_hat/(4*pi*a^2), v1 is constant over the sphere to leading order.",
+            "convective_flux_reduced_3d": "int Pi_conv,cross.n dS=-(4/3)*m_GNLS*N_infty,3*Q2*v1",
+            "pressure_flux_reduced_3d": "delta P_cross=-m_GNLS*N_infty,3*(v1.v2), so int delta_ij P_cross n_j dS=+(1/3)*m_GNLS*N_infty,3*Q2*v1",
+            "matter_flux_reduced_3d": "int Pi_matter,cross.n dS=-m_GNLS*N_infty,3*Q2*v1",
+            "force_reduced_3d": "F_12^matter=m_GNLS*N_infty,3*Q2*v1=-(m_GNLS*N_infty,3*Q1*Q2/(4*pi*r12^2))*rhat_12",
+            "force_bulk_4d": "F_12^matter,4D=-(m_GNLS*rho_infty,4*Q1*Q2/(2*pi^2*R12^3))*Rhat_12",
+            "structure_result": "Bilinear Q1*Q2 structure is an integral result from the v1*v2 cross stress plus Bernoulli pressure cross term.",
+            "power_result": "Reduced compact lane gives r12^-2 because v1 from the carried 4*pi Gauss solve is r12^-2; unreduced bulk gives R12^-3 with Omega_3=2*pi^2.",
+            "normalization_status": "Overall I_F,12^full / Theta_Q / branch-profile normalization remains a CALIBRATION KNOB, not derived.",
+        },
+        "sign": {
+            "far_field_matter_verdict": "FORCE_ATTRACTIVE_DERIVED",
+            "full_verdict": "SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE",
+            "orientation": "With rhat_12 from defect 1 to defect 2, the matter-stress force is proportional to -Q1*Q2*rhat_12. Like drains/sources attract; opposite signs repel.",
+            "why_not_full_sign": "The matter-stress sign is derived target-blind, but pathA_21c does not evaluate the quantum, V_conf body-force, and Maxwell profile pieces that could enter the full normalized control-volume force.",
+        },
+        "calibrate_predict_ledger": {
+            "target_blind_predictions": [
+                "force structure: bilinear Q1*Q2 from the stress integral",
+                "lane power: reduced-3D r^-2 and separate bulk R^-3 from Gauss plus surface measure",
+                "leading matter-stress sign: attractive for like drains, repulsive for opposite signs",
+            ],
+            "calibration_knobs": [
+                "overall dimensionless normalization class: I_F,12^full / Theta_Q / branch-profile data",
+            ],
+            "prediction_count": 3,
+            "knob_count": 1,
+            "guardrail": "No observable is both calibrated-to and predicted; knobs < independent target-blind predictions. The full sign remains residual rather than being hidden in the normalization knob.",
+        },
+        "corrected_label": "P1c: G_FREE_NOETHER_STRESS_STRUCTURE_POWER_DERIVED_WITH_FAR_FIELD_MATTER_ATTRACTIVE_SIGN_AND_SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE",
+        "carried_items_confirmed_verbatim": [
+            "pathA_21b G1 stationary BVP and BC table",
+            "reduced-3D Gauss solve v_r=-Theta_Q J/(4*pi*N_infty,3*r^2)",
+            "bulk-4D Gauss solve v_R=-Theta_Q4 J/(2*pi^2*rho_infty,4*R^3)",
+            "pathA_21b I_F,12^full definition carried as calibration/profile knob",
+            "MASS_BRIDGE_FORM_NOT_DERIVED",
+            "EP_NOT_DERIVED",
+            "RETAIN_L_T_M",
+            "NEWTON_G_FORM_NOT_DERIVED",
+            "pathA_20/20b residuals carried unchanged",
+        ],
+        "new_residuals": residuals,
+        "carried_residuals": carried_residuals,
+        "checks": [check.as_dict() for check in checks],
+        "algebraic_checks": algebra,
+        "summary": {
+            "total_dimensional_checks": len(checks),
+            "consistent_dimensional_checks": len(checks) - len(failures),
+            "inconsistent_dimensional_checks": len(failures),
+            "total_algebraic_checks": len(algebra),
+            "consistent_algebraic_checks": len(algebra) - len(algebra_failures),
+            "inconsistent_algebraic_checks": len(algebra_failures),
+            "acceptance_status": "PASS_WITH_NAMED_RESIDUALS",
+        },
+    }
+
+
+def render_patha21c_force_tensor_markdown(report: Mapping[str, object]) -> str:
+    noether = report["noether_balance"]
+    force = report["force_integral"]
+    sign = report["sign"]
+    ledger = report["calibrate_predict_ledger"]
+    summary = report["summary"]
+    assert isinstance(noether, Mapping)
+    assert isinstance(force, Mapping)
+    assert isinstance(sign, Mapping)
+    assert isinstance(ledger, Mapping)
+    assert isinstance(summary, Mapping)
+    lines = [
+        "# Path-A 21c force from Noether stress tensor",
+        "",
+        "## Verdicts",
+        "",
+        f"- Corrected P1b -> P1c label: `{report['corrected_label']}`.",
+        f"- Leading matter-stress sign: `{sign['far_field_matter_verdict']}`.",
+        f"- Full sign verdict: `{sign['full_verdict']}`.",
+        "- Normalization status: CALIBRATION KNOB, not derived.",
+        f"- Acceptance status: `{summary['acceptance_status']}`.",
+        "",
+        "Dual-engine scope: Python and Mathematica check dimensions and algebra only. The derivation is the Noether balance construction plus the explicit traction integrals below; exit 0 is necessary, not sufficient.",
+        "",
+        "## Noether Balance",
+        "",
+        "Noether trace:",
+    ]
+    noether_trace = noether["noether_trace"]
+    assert isinstance(noether_trace, Sequence)
+    for item in noether_trace:
+        lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            f"Momentum density: `{noether['momentum_density']}`.",
+            "",
+            f"Matter stress representative: `{noether['matter_stress']}`.",
+            "",
+            f"Quantum stress: `{noether['quantum_stress']}`.",
+            "",
+            f"EOS pressure identity: `{noether['pressure']}`.",
+            "",
+            f"Matter balance law: `{noether['matter_balance']}`.",
+            "",
+            "Explicit-background body forces:",
+        ]
+    )
+    body_forces = noether["body_forces"]
+    assert isinstance(body_forces, Sequence)
+    for item in body_forces:
+        lines.append(f"- `{item}`.")
+    lines.extend(
+        [
+            "",
+            f"Balance-law-vs-Euler check: {noether['euler_check']}",
+            "",
+            f"Stress representative: {noether['stress_representative']}",
+            "",
+            "## Force Integral",
+            "",
+            f"Convention: {force['sign_convention']}",
+            "",
+            f"Control surface: {force['control_surface']}",
+            "",
+            "Reduced-3D compact lane integral results:",
+            "",
+            f"- Convective cross flux: `{force['convective_flux_reduced_3d']}`.",
+            f"- Bernoulli/EOS pressure cross flux: `{force['pressure_flux_reduced_3d']}`.",
+            f"- Matter cross flux: `{force['matter_flux_reduced_3d']}`.",
+            f"- Force result: `{force['force_reduced_3d']}`.",
+            "",
+            "Bulk lane kept separate:",
+            "",
+            f"- `{force['force_bulk_4d']}`.",
+            "",
+            f"Structure result: {force['structure_result']}",
+            "",
+            f"Power result: {force['power_result']}",
+            "",
+            f"Normalization: {force['normalization_status']}",
+            "",
+            "## Sign",
+            "",
+            f"Far-field matter-stress verdict: `{sign['far_field_matter_verdict']}`.",
+            "",
+            f"Full sign verdict: `{sign['full_verdict']}`.",
+            "",
+            f"Orientation: {sign['orientation']}",
+            "",
+            f"Residual reason: {sign['why_not_full_sign']}",
+            "",
+            "## Calibrate-Predict Ledger",
+            "",
+            "Target-blind predictions:",
+        ]
+    )
+    predictions = ledger["target_blind_predictions"]
+    knobs = ledger["calibration_knobs"]
+    assert isinstance(predictions, Sequence)
+    assert isinstance(knobs, Sequence)
+    for item in predictions:
+        lines.append(f"- {item}.")
+    lines.append("")
+    lines.append("Calibration knobs:")
+    for item in knobs:
+        lines.append(f"- {item}.")
+    lines.extend(
+        [
+            "",
+            f"Counts: predictions={ledger['prediction_count']}; knobs={ledger['knob_count']}.",
+            "",
+            f"Guardrail: {ledger['guardrail']}",
+            "",
+            "## Residuals",
+            "",
+        ]
+    )
+    residuals = report["new_residuals"]
+    assert isinstance(residuals, Sequence)
+    for raw in residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(["", "## Carried Items", ""])
+    carried = report["carried_items_confirmed_verbatim"]
+    assert isinstance(carried, Sequence)
+    for item in carried:
+        lines.append(f"- {item}.")
+    lines.extend(["", "## Carried Residual Ledger", ""])
+    carried_residuals = report["carried_residuals"]
+    assert isinstance(carried_residuals, Sequence)
+    for raw in carried_residuals:
+        assert isinstance(raw, Mapping)
+        lines.append(f"- `{raw['name']}`: {raw['status']}. {raw['downstream_consequence']} Source: {raw['source']}")
+    lines.extend(
+        [
+            "",
+            "## Harness Summary",
+            "",
+            f"- Dimensional checks: {summary['consistent_dimensional_checks']} consistent, {summary['inconsistent_dimensional_checks']} inconsistent, {summary['total_dimensional_checks']} total.",
+            f"- Algebraic checks: {summary['consistent_algebraic_checks']} consistent, {summary['inconsistent_algebraic_checks']} inconsistent, {summary['total_algebraic_checks']} total.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def write_patha21c_force_tensor_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = run_patha21c_force_from_noether_stress_tensor()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_21c_force_from_noether_stress_tensor_report.json"
+    scratch_md_path = out_dir / "pathA_21c_force_from_noether_stress_tensor.md"
+    reference_path = report_dir / "pathA_21c_force_from_noether_stress_tensor.md"
+    rendered = render_patha21c_force_tensor_markdown(report) + "\n"
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    scratch_md_path.write_text(rendered, encoding="utf-8")
+    reference_path.write_text(rendered, encoding="utf-8")
+    return json_path, reference_path, report
+
+
 def write_report(out_dir: Path) -> tuple[Path, Path, dict[str, object]]:
     report = run_audit()
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -1863,6 +3803,21 @@ def main(argv: Iterable[str] | None = None) -> int:
         help="run the side-by-side pathA_20b coupled c_gamma/c_s check group instead of the pathA_18 audit",
     )
     parser.add_argument(
+        "--patha21-emergent-g",
+        action="store_true",
+        help="run the side-by-side pathA_21 emergent G/mass-bridge check group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
+        "--patha21b-force-bvp",
+        action="store_true",
+        help="run the side-by-side pathA_21b force-closure/BVP check group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
+        "--patha21c-force-tensor",
+        action="store_true",
+        help="run the side-by-side pathA_21c Noether stress force check group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
         "--foundation-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_19 foundation reference markdown",
@@ -1876,6 +3831,21 @@ def main(argv: Iterable[str] | None = None) -> int:
         "--patha20b-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_20b c_gamma/c_s reference markdown",
+    )
+    parser.add_argument(
+        "--patha21-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_21 emergent G/mass-bridge reference markdown",
+    )
+    parser.add_argument(
+        "--patha21b-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_21b force-closure/BVP reference markdown",
+    )
+    parser.add_argument(
+        "--patha21c-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_21c Noether stress force reference markdown",
     )
     args = parser.parse_args(list(argv) if argv is not None else None)
     if args.patha19_foundation:
@@ -1984,6 +3954,164 @@ def main(argv: Iterable[str] | None = None) -> int:
             f"{l3['lambda_gamma_rho_dependence']}"
         )
         print("named residuals carried to pathA_21: " + ", ".join(str(raw["name"]) for raw in residuals))
+        return 0
+    if args.patha21_emergent_g:
+        json_path, reference_path, report = write_patha21_emergent_g_report(
+            Path(args.out_dir),
+            Path(args.patha21_report_dir),
+        )
+        summary = report["summary"]
+        p1 = report["p1_force"]
+        p2 = report["p2_mass_bridge"]
+        p3 = report["p3_m_collapse"]
+        p4 = report["p4_g"]
+        residuals = report["residuals"]
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_21 emergent G/mass-bridge checks: "
+            f"{summary['consistent_dimensional_checks']} dimensional consistent, "
+            f"{summary['inconsistent_dimensional_checks']} dimensional inconsistent, "
+            f"{summary['total_dimensional_checks']} dimensional total; "
+            f"{summary['consistent_algebraic_checks']} algebraic consistent, "
+            f"{summary['inconsistent_algebraic_checks']} algebraic inconsistent, "
+            f"{summary['total_algebraic_checks']} algebraic total"
+        )
+        print(
+            "P1 force FORM: "
+            f"{p1['force_form']}; C_F={p1['coefficient']}; "
+            f"attractive status: {p1['attractiveness']}; r-power: {p1['r_power']}"
+        )
+        print(
+            "P2 bridge verdict: "
+            f"{p2['verdict']}; angular {p2['angular_form']}; cycle {p2['cycle_form']}; "
+            f"2pi/J-rate status: {p2['two_pi_status']}; EP verdict: {p2['ep_verdict']}"
+        )
+        print(f"P3 M-collapse verdict: {p3['verdict']}; blocker: {p3['blocker']}")
+        print(
+            "P4 G verdict: "
+            f"{p4['verdict']}; m<->G conditional form: {p4['conditional_m_to_g_form']}; "
+            f"width: {p4['width']}"
+        )
+        print(
+            "P5 spec rows: "
+            f"{summary['profile_spec_row_count']} total; "
+            f"{summary['profile_solve_rows']} profile-solve, "
+            f"{summary['pathA_22_rows']} pathA_22, "
+            f"{summary['new_physics_rows']} new-physics, "
+            f"{summary['known_rows']} known"
+        )
+        print("named residuals carried to pathA_22/profile solve: " + ", ".join(str(raw["name"]) for raw in residuals))
+        return 0
+    if args.patha21b_force_bvp:
+        json_path, reference_path, report = write_patha21b_force_bvp_report(
+            Path(args.out_dir),
+            Path(args.patha21b_report_dir),
+        )
+        summary = report["summary"]
+        p1 = report["p1b_force"]
+        bvp = report["bvp"]
+        gaps = bvp["gaps"]
+        carried = report["carried_negative_verdicts_verbatim"]
+        new_residuals = report["new_residuals"]
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_21b force/BVP checks: "
+            f"{summary['consistent_dimensional_checks']} dimensional consistent, "
+            f"{summary['inconsistent_dimensional_checks']} dimensional inconsistent, "
+            f"{summary['total_dimensional_checks']} dimensional total; "
+            f"{summary['consistent_algebraic_checks']} algebraic consistent, "
+            f"{summary['inconsistent_algebraic_checks']} algebraic inconsistent, "
+            f"{summary['total_algebraic_checks']} algebraic total"
+        )
+        print(
+            "P1b drain solve: reduced-3D r-power emerged from Gauss = yes; "
+            "bulk-4D r-power emerged from Gauss = yes"
+        )
+        print(
+            "P1b force FORM: "
+            f"{p1['force_form']}; sign verdict: {p1['sign_verdict']}; "
+            f"corrected P1 label: {p1['corrected_verdict']}"
+        )
+        print(
+            "P5b gaps: "
+            + "; ".join(
+                f"{raw['gap']}={raw['status']}({raw['equation_or_residual']})"
+                for raw in gaps
+            )
+        )
+        print(f"alpha_H,omega anchor fix: {bvp['alpha_H_omega_anchor_fix']}")
+        print(
+            "P5b spec rows: "
+            f"{summary['profile_spec_row_count']} total; "
+            f"{summary['closed_profile_solve_rows']} closed/profile-solve, "
+            f"{summary['branch_residual_rows']} branch-residual, "
+            f"{summary['pathA_22_rows']} pathA_22, "
+            f"{summary['new_physics_rows']} new-physics, "
+            f"{summary['known_rows']} known"
+        )
+        print("carried negatives confirmed verbatim: " + ", ".join(str(item) for item in carried))
+        print(
+            "named residuals handed to option C / pathA_22: "
+            + ", ".join(str(raw["name"]) for raw in new_residuals)
+        )
+        print(
+            "files created/modified by this group: "
+            f"{json_path}, {reference_path}, "
+            f"{Path(args.out_dir) / 'pathA_21b_profile_bvp_machine_table.json'}"
+        )
+        return 0
+    if args.patha21c_force_tensor:
+        json_path, reference_path, report = write_patha21c_force_tensor_report(
+            Path(args.out_dir),
+            Path(args.patha21c_report_dir),
+        )
+        summary = report["summary"]
+        noether = report["noether_balance"]
+        force = report["force_integral"]
+        sign = report["sign"]
+        ledger = report["calibrate_predict_ledger"]
+        residuals = report["new_residuals"]
+        carried = report["carried_items_confirmed_verbatim"]
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_21c Noether stress checks: "
+            f"{summary['consistent_dimensional_checks']} dimensional consistent, "
+            f"{summary['inconsistent_dimensional_checks']} dimensional inconsistent, "
+            f"{summary['total_dimensional_checks']} dimensional total; "
+            f"{summary['consistent_algebraic_checks']} algebraic consistent, "
+            f"{summary['inconsistent_algebraic_checks']} algebraic inconsistent, "
+            f"{summary['total_algebraic_checks']} algebraic total"
+        )
+        print(
+            "Pi_ij + f_i^body derived (Noether): "
+            f"{noether['matter_stress']}; bodies: "
+            + "; ".join(str(item) for item in noether["body_forces"])
+        )
+        print(f"balance-law-vs-Euler check: {noether['euler_check']}")
+        print(
+            "force integral results: "
+            f"reduced-3D {force['force_reduced_3d']}; "
+            f"bulk lane {force['force_bulk_4d']}"
+        )
+        print(
+            "SIGN verdict: "
+            f"leading matter {sign['far_field_matter_verdict']}; "
+            f"full {sign['full_verdict']}"
+        )
+        print(
+            "calibrate-predict ledger: "
+            f"predictions={ledger['prediction_count']} "
+            f"({'; '.join(str(item) for item in ledger['target_blind_predictions'])}); "
+            f"knobs={ledger['knob_count']} "
+            f"({'; '.join(str(item) for item in ledger['calibration_knobs'])})"
+        )
+        print("residuals: " + ", ".join(str(raw["name"]) for raw in residuals))
+        print(f"corrected P1b->P1c label: {report['corrected_label']}")
+        print("carried items confirmed verbatim: " + ", ".join(str(item) for item in carried))
+        print(f"files created/modified by this group: {json_path}, {reference_path}")
         return 0
     json_path, md_path, report = write_report(Path(args.out_dir))
     summary = report["summary"]

@@ -8,30 +8,62 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here after /compact — 2026-06-19)
-**Where we are:** `pathA_19` (foundation), `pathA_20` (`c_s`+`c`), and `pathA_20b` (`c_γ/c_s`) are ALL EXECUTED +
-REVIEWED (fidelity-clean dual-engine; all verdicts adversarially verified HONEST) + COMMITTED — ledgers in §8/§9/§10.
-**The emergent-constants program has now extracted everything derivable from the symbolic action + dimensions** (the
-convergence, §10): base `{L,T,M}` retained; `c_s∝ρ²`, `[c_s]=[c_γ]=L/T`, `[J]=T⁻¹` derived; **`c_γ/c_s` is a CALIBRATION
-KNOB** (photon rides the bulk cone, sound the emergent acoustic cone; the non-relativistic matter sector doesn't lock
-them); the flux-law value, brane photon cone, `G`, and `α_J` all need the **SOLVED THROAT PROFILE**; `ħ`-emergence needs
-new substrate physics. `pathA_21` (the SYMBOLIC spec-completion step: derive `G` + mass-bridge FORMS + re-test M-collapse
-+ produce the PROFILE-SOLVE SPEC) is **WRITTEN + design-reviewed**: Codex SOUND-WITH-FIXES → all fixes applied →
-confirm-pass **SOUND-AS-IS** (reviews in `_scratch/pathA_21_directive_review*.md`). Execute prompt STAGED at
-`_scratch/pathA_21_execute_prompt.md`. Tree clean (everything committed).
-**NEXT ACTION (resume here after /compact — user chose option A, 2026-06-19): FIRE the `pathA_21` EXECUTION run.**
-Command (backgrounded, NEVER shell-timeout-wrapped):
-`codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh - < software/stage1_solver/_scratch/pathA_21_execute_prompt.md > software/stage1_solver/_scratch/pathA_21_execute.log 2>&1`
-Then REVIEW per the directive's Review section (transliteration-fidelity on the new module + the `.wl`; an adversarial
-pass with **distrust-restated-target** — for each of P1/P2/P4, is there a real source-equation chain or a restatement?
-is `G` extracted only after a `G`-free force law? is EP derived from two SEPARATE masses?; plus a check that the P5
-profile-solve spec is concrete + complete); Claude reads only residuals → gate to `pathA_22`.
-**Discipline reminder:** Codex derives/codes, Claude reviews. `pathA_21` is SYMBOLIC — the win is the rigorously-DERIVED
-FORMS (`C_F`, `m_defect↔J`, `G`) + the P5 profile-solve spec, NOT numbers. Expected honest outcomes that are VALID
-PASSES: `{L,T,M}` retained (`ħ` undetermined), symbolic/profile-dependent `α_J`/`G`, `MASS_BRIDGE_FORM_NOT_DERIVED`,
-`EP_NOT_DERIVED`, `NEWTON_G_FORM_NOT_DERIVED`/`FORCE_NOT_NEWTONIAN`. The DERIVED-FORM GATE forbids restating any target
-(`α_J:=m_defect c²/(ħJ)` or `G` by rearranging `F=Gm₁m₂/r²` are FAILs). After `pathA_21`: option **C** = the throat-profile
-SOLVE (closes the numbers, driven by the P5 spec); `pathA_22` = scale-map → `m̂0²·S_port` → re-run B2c.
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-19, pathA_21c EXECUTING)
+**Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
+reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
+`pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
+velocity genuinely Gauss-solved (`r`-power emerges from the surface measure); sign honest; residuals G2/G4/G5/G6 honest;
+branch-realization to-do = a finite **4-item list** (`R0` selector, `J`-value, kernel shape, brane zero-mode). **ONE
+surviving overclaim (adversarial-caught):** the inter-defect force COEFFICIENT was still a heuristic product
+`F=m·N·Q2·v1` dressed as a Π_cross integral → spawned `pathA_21c`.
+**`pathA_21c` (force + SIGN from the GNLS momentum-BALANCE / Noether tensor) — directive READY + NOW EXECUTING.**
+Design-reviewed SOUND-WITH-FIXES → all 9 fixes APPLIED (momentum-BALANCE law `∂_t g_i+∂_j Π_ij=f_i^body` since
+`V_conf`/`Z(w)`/`J_ext` break translation invariance; pinned sign convention; stress-improvement ambiguity controlled;
+δρ/quantum/V_conf/Maxwell derive-or-residualize) **+ the CALIBRATE-PREDICT reframe** (force STRUCTURE/`r`-power/SIGN =
+target-blind PREDICTIONS to derive; overall NORMALIZATION = a labeled CALIBRATION KNOB, NOT "derived") → confirm-pass
+**SOUND-AS-IS**. Run: `_scratch/pathA_21c_execute.log` (session 019ee287). Execute prompt: `_scratch/pathA_21c_execute_prompt.md`.
+**CALIBRATE-PREDICT REFRAME (user reaffirmed 2026-06-19, now load-bearing for the whole frontier):** the throat-profile
+branch data (`R0`/`J`/kernel) and the force normalization are **CALIBRATION KNOBS**, not things to derive ab initio. Cross
+the "everything needs the profile solve" wall by **pick a branch family → calibrate to a trusted anchor (Newtonian `G` /
+GR quadrupole `54/5`) → predict the held-out SURPLUS** (g−2, 5PN, multi-defect). The DERIVED-FORM GATE forbids only
+calling a calibrated thing "derived," NOT calibration itself. ([[feedback-calibrate-predict-methodology]], updated.)
+**`pathA_21c` DONE + reviewed — FORCE MILESTONE.** The inter-defect force is FINALLY a genuine derivation (the
+pathA_21/21b shortcuts are superseded): Noether stress `Π_ij=m_GNLS ρ v_iv_j+δ_ij P+σ_Q,ij`; balance law
+`∂_t g_i+∂_jΠ_ij=f_i^body` VERIFIED against the parent Euler identity (the sub-identities `dP=ρdh`, `∂_jσ_Q,ij=ρ∂_iQ`
+machine-verified — adversarial-confirmed REAL); force = a REAL surface integral [convective −4/3 + Bernoulli +1/3 = −1] →
+`F_12=−(m_GNLS N_∞,3 Q1Q2/4π r²) r̂` (inverse-square, bulk R⁻³, structure+power EMERGE from the Gauss substitution);
+**SIGN = FORCE_ATTRACTIVE_DERIVED for like drains** (target-blind, no positivity smuggle; full sign =
+`SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE`). Calibrate-predict ledger honest (3 predictions / 1 knob = normalization).
+Minor carried harness-tightening flag: the angular `4/3`/`1/3` are asserted (hardcoded `(1+1/d)`,`1/d`), not ∮n_in_j dΩ
+integrated — genuineness rests on the hand-verified prose; tighten one engine later ([[feedback-transliteration-fidelity-audit]]).
+**So: the analog produces an inverse-square ATTRACTIVE force for like drains, derived target-blind from the superfluid
+stress tensor.** NOT yet committed.
+**PHASE-1 SOLVER RECONNAISSANCE (3 clean agents) — THE WHALE REFRAMED:** the throat-profile solve (option C) was audited.
+The PDE OPERATORS are MODEL-FAITHFUL (real quintic EOS, covariant Laplacian, gauge coupling, localized Maxwell H=Z,
+ψ-sourced current — coupled_branch.py/operators.py); the "engineering-smoke" label = parameter values + constitutive
+closure (V_conf/Z(w)/R0 shapes), NOT the operators. The solver + calibrate-predict harness are **~70-80% BUILT + VALIDATED**
+(Newton-Krylov; chunk 1a/1b/1c DONE; B2c prototype: knob→real-solve, extraction map, anchor+root-finder, held-out-surplus
+skeleton w/ target-blind firewall). **The blocker is NUMERICAL CONDITIONING, not physics and not a from-scratch build:**
+no quantum-core safeguard (√ρ→0 degenerates the matter Jacobian); the `k1∝r⁴/R0⁵` wall coupling blows up unclamped as
+R0→0; uniform grid no grading; non-production preconditioner. LIVE EVIDENCE: B2c STALLS at `tau≈0.029` = a diagnosed
+conditioning floor, NOT a physical edge. The R0 constitutive family is a posited placeholder (a calibration knob not yet
+promoted to a frozen branch).
+**NEXT ACTION (resume here) — the CONDITIONING SPIKE (the next attack on the whale; task #78):** (1) density floor /
+log-ρ in the matter block + clamp the `k1∝1/R0⁵` blow-up (convergence aids that vanish at the solution); (2) Jacobi
+row/col scaling of the bordered Jacobian; (3) short depth-homotopy continuation; + a DIAGNOSTIC on one moderately-deep
+branch (D0, smallest Jacobian singular value, GMRES growth vs depth) that DECIDES whether scaling+homotopy suffices or a
+production linear-solver swap (PETSc/multigrid) is needed. Directive DRAFTED at
+`directives/pathA_C0_conditioning_spike.md`. **POST-/COMPACT FIRST ACTION = fire the pathA_C0 design-review**
+(`codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh` on a review prompt under `_scratch/`),
+then apply fixes → confirm-pass → USER-gate execute → review (is the deeper convergence REAL or masked? do the
+regularizations vanish at the solution? are the faithful operators untouched?). Must NOT alter the faithful operators or
+touch frozen physics. THEN: promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict
+(R0/J/W → anchor → surplus) → `pathA_22`.
+**Discipline reminder:** Codex derives/codes + applies fixes, Claude reviews; orchestrator owns directives/decisions.
+The DERIVED-FORM GATE binds (no hand-inserted field/`r`-power, no convention sign, no `x==x` posing as a check, no
+restatement to fake BVP closure). VALID expected outcomes: a derived far-field force with interior factors flagged, an
+honest `ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL`, and G6/`α_J`/`ħ`/`2π` remaining residuals. Commit pathA_21 + its 21b
+corrections together so the ledger lands honest (commit only when the user asks).
 
 ---
 
@@ -286,3 +318,94 @@ this harness, make `lambdaLogSlope` a real derivation.]
 from the symbolic action + dimensions. `c_γ/c_s` is a CALIBRATION KNOB; the flux law, brane cone, `G`, and `α_J` all need
 the SOLVED THROAT PROFILE; `ħ`-emergence needs new substrate physics. Remaining moves: (A) `pathA_21` SYMBOLIC (complete
 the unknowns/knobs map) or (C) the throat-profile solve (closes the numbers). User decision (§0).
+
+## 11. pathA_21 (G + mass-bridge + profile-solve spec) execution + review ledger — 2026-06-19
+**Run:** Codex gpt-5.5 @ xhigh (`_scratch/pathA_21_execute.log`, 223k tokens, exit 0). Deliverables: harness group in
+`dimensional_check.py` (+887/-0, side-by-side, `--patha21-emergent-g`; 16 dim + 4 alg checks),
+`reports/pathA_21_emergent_G_mass_bridge.md`, `tools/pathA_21_emergent_G_mass_bridge_crosscheck.wl`. Acceptance string =
+`PASS_WITH_NAMED_RESIDUALS`. **NOT YET COMMITTED** (review found corrections needed → pathA_21b first).
+
+**Verdicts as the run reported them:** P1 `G_FREE_PROFILE_FUNCTIONAL_DERIVED_CONDITIONAL_REDUCED_3D`
+(`C_F,12=(m_GNLS·N_∞,3·Q1·Q2/4π)·I_F,12`, `r⁻²` reduced-3D / `r⁻³` bulk, attractive); P2 `MASS_BRIDGE_FORM_NOT_DERIVED`
++ `EP_NOT_DERIVED`; P3 `{L,T,M}` retained; P4 `NEWTON_G_FORM_NOT_DERIVED` (conditional `m↔G` with named `W_eff`); P5 a
+35-row spec (16 profile-solve / 14 pathA_22 / 5 new-physics).
+
+**Review = 5 clean agents (2 fidelity, 2 adversarial, 1 spec-concreteness). Outcome: TWO real shortfalls behind exit-0.**
+- **NEGATIVES ALL CONFIRMED HONEST (trustworthy):** P2/EP/P3/P4 re-confirmed by independent adversarial agents. The only
+  mass law in the sources is the volume-deficit scaling `M~ρ0πa²L` (`brane_bulk_ontology.tex:1294-1302`,
+  `em_fields.tex:393-400`); the historical inflow was *tuned* to match Newton (`em_fields.tex:133`), not derived; the
+  matter Noether charge is particle NUMBER not mass/energy; EP appears only as `m_G` reused on both sides of
+  `em_fields.tex:95-98` (imposed by symbol reuse). `Γ∈ℤ` is an imposed classical label → no ħ-free relation → `{L,T,M}`
+  correctly retained. No premature punts, no hidden restatements in P2/P3.
+- **P1 IS A RESTATEMENT (overclaimed).** The `1/r²` drain field is HAND-INSERTED (`velocity_from_1=-q1/(4π r²)` at
+  `dimensional_check.py:1965`), never solved from continuity (no dsolve/Green's fn anywhere); the "derivation" check
+  reduces to `x==x` (`:1971-1976`); the attractive SIGN comes from `positive=True` declarations + choosing `Q_i>0`
+  (`:1959-1964`), a convention the directive explicitly forbids. The `.wl` mirrors the same tautology. The report did NOT
+  hard-PASS it (carries `PRESSURE_FORCE_PROFILE_FUNCTIONAL_UNSOLVED`), but the verdict label `..._DERIVED_CONDITIONAL` +
+  prose overclaim. → corrected in pathA_21b.
+- **P5 SPEC IS HONEST BUT NOT COMPUTABLE.** Schema-complete, anchors mostly real (𝔅 complete), but a residual ledger not
+  a closed BVP: 6 gaps — G1 no stationary field-eq set (no time-indep GNLS, no stationary Maxwell, no `R0(w)`-selecting
+  eq), G2 `R0` BC a placeholder, G3 `Π_cross` integrand never written, G4 no `J`-selecting BC, G5 reduction kernel
+  `W(w)/χ_N` undefined, G6 brane `c_γ` needs the underived zero-mode. One overstated anchor: `α_H,ω` cites
+  `pde.tex:318-391` for a "canonical Hamiltonian" that isn't there (only the action is). → addressed in pathA_21b.
+- **Harness:** fidelity-clean, dual-engine genuinely INDEPENDENT (separate JSON, no cross-read), additive (887/0,
+  pathA_18/19/20/20b untouched). Caveat (carried): the only check of `h=2πħ` is an `expr===expr` identity (no physics);
+  several P1/P4 algebra checks are definitional cancellations.
+
+**Net:** pathA_21 CONFIRMED the wall rather than breaching it (consistent with the pathA_20/20b convergence). Nothing new
+rigorously DERIVED; the value is the re-confirmed honest negatives + the residual ledger. The "distrust-all-clean"
+instinct caught the P1 overclaim that exit-0 + green checks masked.
+
+## 12. STATUS / NEXT ACTION (resume here — 2026-06-19, post pathA_21 review)
+**Where we are:** pathA_21 executed + reviewed (§11). Negatives solid; P1 overclaim + non-computable spec found.
+`pathA_21b` directive DRAFTED (`directives/pathA_21b_force_closure_and_profile_bvp.md`) to (1) DERIVE the inter-defect
+force honestly (solve continuity for the drain field — no hand-inserted `1/r²`; explicit `Π_cross` surface integral; sign
+from the pressure/compressibility response or honest residual; fix the P1 verdict label) and (2) turn the P5 ledger into
+a CODEABLE stationary-throat BVP, carrying P2/EP/P3/P4 + the pathA_20/20b residuals UNCHANGED.
+**DESIGN-REVIEW = SOUND-WITH-FIXES → all 8 fixes applied.** KEY refinement (correct, consistent with pathA_20/21): the
+draft's "close G1–G5" bar would PRESSURE A FAKE BVP — only **G1 (stationary GNLS+Maxwell) is genuinely
+transcribable/closeable**; **G2 (`R0(w)` free-boundary selector), G4 (the `J`-value), G5 (kernel shape)** are
+BRANCH-REALIZATION data the parent does NOT select → NAMED RESIDUALS, not closures. So each gap is now framed
+"source-anchored closure OR named branch-realization residual" (faking a closure the parent doesn't provide = FAIL); the
+sign/`positive=True` loophole, the P1-label resolution, the Π_cross↔P1 contradiction, and the "produces numbers"
+overpromise were also fixed. So the HONEST expected pathA_21b result is: G1 closed + the inter-defect force solved in the
+far field (sign from EOS or residual) + G2/G3/G4/G5/G6/`α_J`/`ħ` as named, enumerated residuals → option C is codeable
+for the transcribable sector and has an explicit branch-realization to-do list.
+**CONFIRM-PASS = SOUND-AS-IS** (`_scratch/pathA_21b_directive_confirmpass.log`; all 8 fixes APPLIED, new-problem scan
+clean). Directive EXECUTION-READY; execute prompt STAGED at `_scratch/pathA_21b_execute_prompt.md`.
+**NEXT ACTIONS (in order):** (1) **USER GATES execution of pathA_21b**; (2) FIRE
+`codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh - < software/stage1_solver/_scratch/pathA_21b_execute_prompt.md > software/stage1_solver/_scratch/pathA_21b_execute.log 2>&1`
+(backgrounded, NEVER shell-timeout-wrapped) → review (transliteration + distrust-restated-target adversarial +
+completeness-critic); (3) gate to **option C** (the throat-profile SOLVE, now specified by the BVP) → then `pathA_22`
+(scale-map → `m̂0²·S_port` → re-run B2c). [Superseded by §0 + §13; pathA_21+21b+21c COMMITTED 2026-06-19.]
+
+## 13. pathA_21b + 21c execution/review + Phase-1 solver reconnaissance ledger — 2026-06-19 (resume detail in §0)
+**pathA_21b** (force closure + codeable BVP): EXECUTED + 4-agent reviewed. G1 stationary GNLS+Maxwell BVP genuinely CLOSED
++ codeable; drain velocity genuinely Gauss-solved (`r`-power from the surface measure); residuals G2 (`R0` selector) / G4
+(`J`-value) / G5 (kernel) / G6 (brane cone) honest branch-realization residuals; branch-realization to-do = a finite
+4-item list. Caught overclaim: the force COEFFICIENT was still a heuristic product → pathA_21c.
+**pathA_21c** (force + sign from the Noether stress tensor): EXECUTED + 2-agent reviewed — **FORCE MILESTONE.**
+`Π_ij=m_GNLS ρ v_iv_j+δ_ij P+σ_Q,ij`; balance law `∂_t g_i+∂_jΠ_ij=f_i^body` VERIFIED to reproduce the parent Euler
+identity (sub-identities `dP=ρdh`, `∂_jσ_Q,ij=ρ∂_iQ` MACHINE-VERIFIED — adversarial-confirmed REAL); force = a REAL surface
+integral [convective −4/3 + Bernoulli +1/3 = −1] → `F_12=−(m_GNLS N_∞,3 Q1Q2/4π r²) r̂` (inverse-square; bulk R⁻³;
+structure+power EMERGE from the Gauss substitution, NOT the heuristic product); **SIGN = FORCE_ATTRACTIVE_DERIVED for like
+drains** (target-blind, no positivity smuggle); full sign = `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE`. Calibrate-predict
+ledger honest (3 predictions: structure/power/sign — vs 1 knob: normalization `I_F,12^full`/`Θ_Q`). Carried negatives
+verbatim. **Net: the analog yields an inverse-square ATTRACTIVE inter-defect force for like drains, derived target-blind
+from the superfluid stress tensor — gravity's sign+power-law signature out of the PDE.** Minor carried harness-tightening:
+the angular `4/3`/`1/3` are asserted (hardcoded `(1+1/d)`,`1/d`), not `∮n_in_j dΩ`-integrated — genuineness rests on the
+hand-verified prose; tighten one engine later. The Noether tensor is posited-then-verified-by-divergence ("representative"),
+not a from-scratch executed variation.
+**PHASE-1 SOLVER RECONNAISSANCE (3 clean agents) — THE WHALE REFRAMED.** The throat-profile solve (option C) was audited:
+(a) the PDE OPERATORS are MODEL-FAITHFUL (real quintic EOS, covariant Laplacian, gauge coupling, localized Maxwell H=Z,
+ψ-sourced current — `coupled_branch.py`/`operators.py`); "engineering-smoke" = parameter values + constitutive shapes
+(`V_conf`/`Z(w)`/`R0`), NOT the operators. (b) the solver + calibrate-predict harness are ~70–80% BUILT + VALIDATED
+(Newton-Krylov; chunk 1a/1b/1c DONE incl. a self-caught overclaim remediation; B2c prototype: knob→real-solve, extraction
+map, anchor root-finder, held-out-surplus skeleton w/ target-blind firewall). (c) **the blocker is NUMERICAL CONDITIONING,
+not physics and not a from-scratch build:** no quantum-core safeguard (`√ρ→0` degenerates the matter Jacobian); the
+`k1∝r⁴/R0⁵` wall coupling blows up unclamped as `R0→0`; uniform grid (no wall grading); non-production preconditioner.
+LIVE EVIDENCE: B2c stalls at `τ≈0.029` = a diagnosed conditioning floor. (d) the R0 constitutive family is a posited
+placeholder (a calibration knob, not yet a frozen branch). → THE ATTACK = the **conditioning spike**, directive DRAFTED at
+`directives/pathA_C0_conditioning_spike.md` (density floor/log-ρ + clamp `k1` + Jacobi scaling + depth-homotopy + a
+diagnostic that decides spike-sufficient vs production-solver-required). NEXT after /compact: design-review pathA_C0 →
+confirm-pass → execute → review.

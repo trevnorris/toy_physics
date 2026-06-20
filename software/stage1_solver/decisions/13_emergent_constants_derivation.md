@@ -83,17 +83,27 @@ multigrid/mesh-grading); (5) **binding-constraint MISS** — `min_R0` INCREASES 
 INACTIVE at the deepest τ, and `min_ρ≈7e-6` is ~flat → **τ-depth ≠ R0-depth**; the empty-core (√ρ→0, R0→0) regime the
 program cares about was NEVER approached; (6) **σ_min untrustworthy** — a 1-norm LU *estimate* (true SVD gated out by
 state size 1297 > 360), and it INVERTS (healthy looks more singular than broken).
-**NEXT ACTION (resume here): USER-GATED — a CORRECTED spike (Codex applies fixes + reruns; orchestrator amends the
-directive scaffolding).** It must: (a) set `prefer_existing_b2c_background_predictor=False` below the floor + genuinely
-warm-start each τ from the previous C0-converged state (no τ skipping); (b) run the FULL ε schedule + depth backtracking
-at each deep τ (don't break on first failure) so persistent failure is actually produced; (c) compute a TRUE σ_min
-(shift-invert Lanczos / `eigsh(sigma=0)`) at a shallow converged τ AND the deepest τ, and IDENTIFY the null vector
-(project onto gauge mode / mass lane / μ lane); (d) explicitly TEST the FOLD hypothesis (track det-sign / smallest real
-eigenvalue of the branch Jacobian along τ — a zero-crossing near 0.029 ⇒ turning point ⇒ NOT a linear-solver problem ⇒
-verdict is wrong); (e) DECOUPLE τ-depth from R0-depth (report R0_min/min_ρ as the depth metric; confirm whether τ↓ even
-approaches R0→0 — if not, change the depth knob); (f) replace the hardcoded admissibility PASSes with genuine measured
-checks on near-floor + deepest states. CONCEPTUAL FORK FOR THE USER: this may NOT be a "build a production solver" step at
-all — disambiguate fold-vs-near-null-space-vs-genuine-conditioning FIRST. THEN (only after a real verdict): promote the
+**pathA_C0b EXECUTED 2026-06-20 (corrected) → verdict `DIAGNOSTIC_INCOMPLETE` (HONEST — the anti-fake gate refused a
+substantive verdict off a bounded crawl) → FIDELITY-AGENT VERIFIED clean (no v2 sins; faithful ops untouched; the
+decomposition is trustworthy — slicing direction proven by a planted-null-mode unit test). VERIFIED FINDING (this is real
+progress):** the τ≈0.029 "wall" is **NOT the mass/μ border** (REFUTED my earlier hypothesis) and **NOT a fold** (REFUTED —
+tracked triplets, overlaps ~0.997–0.9999, no complement crossing). It is a **PERSISTENT near-null SUBSPACE in the PHYSICS
+FIELD BLOCK**: true dense-SVD gives ~5 tracked modes (σ_min≈1.4e-12 deep / 2.1e-15 shallow, then 4.7e-11, 2.6e-10, 5.9e-10,
+2.8e-8), ALL with `v_min` energy = 1.0 in `field[0:5n]` and `u_min` = 1.0 in the PDE rows, present at BOTH τ; `cond_ratio`
+(field-block/full) rises 0.097 (shallow) → 1.01 (deep). **Most likely identity (UNCONFIRMED — the gauge/symmetry projection
+was `not_available`/unimplemented):** an unfixed U(1) global-phase (gauge) zero mode (± other symmetry modes) of the
+stationary GPE+Maxwell BVP. **If so, the fix is gauge-fixing / null-space DEFLATION (a CONSTRAINT) — CHEAP, NOT a production
+solver and NOT pseudo-arclength** → potentially unblocks the throat solve cheaply. C0b outputs (verified honest):
+`src/.../patha_c0_conditioning_spike.py`, `tests/test_patha_c0_conditioning_spike.py`, `scripts/pathA_C0b_{crawl,diagnostics}.py`,
+`reports/pathA_C0b_wall_diagnosis.md`, `runs/pathA_C0b_wall_diagnosis/…json`.
+**NEXT ACTION (resume here): USER-GATED — pathA_C0c = IDENTIFY the field-block null mode (the decisive, cheap diagnostic).**
+Implement the symmetry/gauge generators (global U(1) phase, r/w translations, dilation) + project the measured null
+subspace onto them → does it match a symmetry/gauge mode (⇒ cheap gauge-fix/deflation, then re-crawl → likely breakthrough)
+or genuine field stiffness (⇒ the harder solver question)? Also (a) validate σ vs a dense/full-JVP Jacobian to retire the
+colored-stencil-radius-3 truncation caveat the fidelity agent flagged; (b) DEFER the full-budget+backtracking crawl until
+the mode is identified (a crawl without addressing the null mode just re-hits it). The v2/C0b machinery (Single-Arbiter
+gating, true SVD, decomposition, gate logic) is SOUND + reused. CONCEPTUAL STATE: NOT yet a "build a production solver" step —
+the wall is a field-block near-null subspace; identify it before any solver decision. THEN (only after a real verdict): promote the
 constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W → anchor → surplus) → `pathA_22`.
 **⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
 is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades

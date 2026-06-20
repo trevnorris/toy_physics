@@ -52,12 +52,22 @@ promoted to a frozen branch).
 log-ρ in the matter block + clamp the `k1∝1/R0⁵` blow-up (convergence aids that vanish at the solution); (2) Jacobi
 row/col scaling of the bordered Jacobian; (3) short depth-homotopy continuation; + a DIAGNOSTIC on one moderately-deep
 branch (D0, smallest Jacobian singular value, GMRES growth vs depth) that DECIDES whether scaling+homotopy suffices or a
-production linear-solver swap (PETSc/multigrid) is needed. Directive DRAFTED at
-`directives/pathA_C0_conditioning_spike.md`. **POST-/COMPACT FIRST ACTION = fire the pathA_C0 design-review**
-(`codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh` on a review prompt under `_scratch/`),
-then apply fixes → confirm-pass → USER-gate execute → review (is the deeper convergence REAL or masked? do the
-regularizations vanish at the solution? are the faithful operators untouched?). Must NOT alter the faithful operators or
-touch frozen physics. THEN: promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict
+production linear-solver swap (PETSc/multigrid) is needed. Directive READY v2 at
+`directives/pathA_C0_conditioning_spike.md`: **design-review = SOUND-WITH-FIXES → all 11 fixes + 6 new-problem items
+applied; Codex confirm-pass = SOUND-AS-IS (both logs under `_scratch/pathA_C0_directive_{review,confirmpass}.log`,
+gitignored).** The directive now turns on ONE load-bearing rule — the **Single Arbiter Principle**: the ORIGINAL,
+unmodified physical residual is the SOLE arbiter of both convergence AND solution-invariance; every aid (floor/`k1`
+clamp/Jacobi scaling/variable change/depth homotopy) is PATH-only and must be residual-equivalent OR vanish (`ε→0`) at the
+final solve. Key teeth added: deep-regime invariance (not a dormant shallow case); `log ρ`/`√ρ` forbidden unless it
+preserves the COMPLEX matter block's phase/current/gauge lanes; depth continuation is `τ`-only (no `a`/`L`/`r_mouth`/
+`r_exit`/`w_max`/boundary/constitutive — freeze violation); `SPIKE_SUFFICIENT` only on the ORIGINAL unscaled residual at
+the B2c tolerance; `PRODUCTION_SOLVER_REQUIRED` only after C0-1..4 all active with persistent-failure evidence.
+**NEXT ACTION (resume here): USER-GATE the pathA_C0 EXECUTION**, then fire it (`codex exec --sandbox workspace-write -m
+gpt-5.5 -c model_reasoning_effort=xhigh` on an execution prompt under `_scratch/` — NOTE: plain harness-backgrounded
+command, NEVER `nohup … &` on top of it [that orphans+kills codex mid-turn]), then review (is the deeper convergence REAL
+or masked vs the ORIGINAL residual? do the regularizations vanish [`ε`-independence + `F_original==F_conditioned` on the
+DEEP state]? is the depth `τ`-only? are the faithful operators + export guard untouched?). Must NOT alter the faithful
+operators or touch frozen physics. THEN: promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict
 (R0/J/W → anchor → surplus) → `pathA_22`.
 **Discipline reminder:** Codex derives/codes + applies fixes, Claude reviews; orchestrator owns directives/decisions.
 The DERIVED-FORM GATE binds (no hand-inserted field/`r`-power, no convention sign, no `x==x` posing as a check, no

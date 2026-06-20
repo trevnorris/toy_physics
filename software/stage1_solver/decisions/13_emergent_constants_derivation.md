@@ -109,12 +109,19 @@ span; do NOT call them stiffness / conclude "production solver" until tested aga
 whole τ≈0.029 wall may be ENTIRELY GAUGE (U(1) phase + Maxwell A-sector) ⇒ a CHEAP combined gauge-fix/deflation could
 dissolve it. C0c outputs (verified, committed): `src/.../patha_c0_conditioning_spike.py` (+C0c additions),
 `scripts/pathA_C0c_nullmode.py`, `tests/…`, `reports/pathA_C0c_nullmode_identification.md`, `runs/pathA_C0c_…json`.
-**NEXT ACTION (resume here): USER-GATED — pathA_C0d = finish the gauge identification.** Project the 4 Maxwell-lane modes
-onto a PROPER Maxwell A-sector gauge subspace (the discrete-gradient `∇λ` range in the ar/aw lanes, NOT one ansatz). If they
-ARE gauge ⇒ the wall is all gauge ⇒ design ONE combined phase+Maxwell gauge-fix/deflation, then re-crawl (likely
-breakthrough). Any TRUE residual after the full gauge basis = the genuine-stiffness candidate. The C0c machinery
-(generators, annihilation, overlap, per-lane split) is SOUND + reused. THEN (only after a real verdict): promote the
-constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W → anchor → surplus) → `pathA_22`.
+**⭐ FIRST POST-/COMPACT ACTION (resume here): EXECUTE pathA_C0d** (directive READY — design-review SOUND-WITH-FIXES + all
+fixes + confirm-pass SOUND-AS-IS; `directives/pathA_C0d_maxwell_gauge_identification.md`). The execution prompt is
+PRE-WRITTEN at `_scratch/pathA_C0d_execute_prompt.md`. FIRE IT (plain harness-backgrounded, NEVER `nohup … &`):
+`cd software/stage1_solver && codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh - <
+_scratch/pathA_C0d_execute_prompt.md > _scratch/pathA_C0d_execute.log 2>&1` (run_in_background). Then REVIEW (1–2 clean
+agents): is the gauge subspace a genuine multi-`λ` discrete-gradient `G` (dim≫1, correct A-lane/grad/div ops)? are
+`‖P_G v‖²` + the WEIGHTED gauge residual `‖grad(Z·D_A·A)‖/‖A‖` genuinely computed (positive + negative controls)? is the
+verdict gated (MAXWELL_GAUGE iff `‖P_G v‖²≥0.9` AND weighted residual `≤0.1`)? faithful ops untouched. **What C0d decides:**
+WALL_IS_ALL_GAUGE (the 4 Maxwell modes are gauge too — likely) ⇒ the τ≈0.029 wall is ENTIRELY GAUGE ⇒ NEXT after C0d =
+design ONE combined phase+A-sector gauge-fix/deflation (`pathA_C0e`), then re-crawl (likely breakthrough). MIXED/STIFFNESS ⇒
+the residual is the genuine-stiffness candidate. **Confirmed so far: the U(1) PHASE mode IS gauge (C0c).** THEN (only after
+the wall is broken): promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W →
+anchor → surplus) → `pathA_22`.
 **⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
 is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades
 to `NOT_MEASURED`/`DIAGNOSTIC_INCOMPLETE`, never a fake). It WILL legitimately bind at the **real high-resolution profile

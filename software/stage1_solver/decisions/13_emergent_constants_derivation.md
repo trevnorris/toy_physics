@@ -62,13 +62,50 @@ final solve. Key teeth added: deep-regime invariance (not a dormant shallow case
 preserves the COMPLEX matter block's phase/current/gauge lanes; depth continuation is `τ`-only (no `a`/`L`/`r_mouth`/
 `r_exit`/`w_max`/boundary/constitutive — freeze violation); `SPIKE_SUFFICIENT` only on the ORIGINAL unscaled residual at
 the B2c tolerance; `PRODUCTION_SOLVER_REQUIRED` only after C0-1..4 all active with persistent-failure evidence.
-**NEXT ACTION (resume here): USER-GATE the pathA_C0 EXECUTION**, then fire it (`codex exec --sandbox workspace-write -m
-gpt-5.5 -c model_reasoning_effort=xhigh` on an execution prompt under `_scratch/` — NOTE: plain harness-backgrounded
-command, NEVER `nohup … &` on top of it [that orphans+kills codex mid-turn]), then review (is the deeper convergence REAL
-or masked vs the ORIGINAL residual? do the regularizations vanish [`ε`-independence + `F_original==F_conditioned` on the
-DEEP state]? is the depth `τ`-only? are the faithful operators + export guard untouched?). Must NOT alter the faithful
-operators or touch frozen physics. THEN: promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict
-(R0/J/W → anchor → surplus) → `pathA_22`.
+**pathA_C0 EXECUTION RAN 2026-06-19 (Codex) → verdict reported `PRODUCTION_SOLVER_REQUIRED` → ADVERSARIAL REVIEW (2
+clean agents) = VERDICT NOT EARNED / SHORT-CIRCUITED. DO NOT ACCEPT IT. Outputs are untracked WIP (NOT committed):
+`src/stage1_solver/patha_c0_conditioning_spike.py`, `tests/test_patha_c0_conditioning_spike.py`,
+`reports/pathA_C0_conditioning_spike.md`, `runs/pathA_C0_conditioning_spike/…json`.**
+*What is SOUND (reusable):* the Single-Arbiter machinery — original-residual gating, Jacobi neutrality (`R·J·C`, line
+search on unscaled), faithful-operator safety (no operator/freeze/export edits; verified by `git diff`). *What is BROKEN
+(why the verdict fails the gate):* (1) **no genuine depth crawl** — `prefer_existing_b2c_background_predictor=True`
+cold-loads pre-existing B2c backgrounds for 7/8 τ; every "converged" row is an OLD B2c solution re-verified at **0 Newton
+iters** (residuals match to all digits) → the spike solved ZERO new throats; (2) **below-floor attack is single-ε /
+~single-step** — the aid loop `break`s on first failure (`patha_c0_…py:1052`) so the ε schedule `[0.08→0.02→0]` never
+advances and there is no backtracking → the gate's "C0-1..4 all active, persistent failure" bar is UNMET (the face-saving
+exit the directive forbids); (3) **tautological admissibility** — `residual_equality_max_abs=0.0` is HARDCODED (`:1200`),
+`epsilon_independence=PASS` rests on hardcoded `final_aids_inactive=True` + only checks already-converged rows (the
+dormant-case FAIL pattern); (4) **MISDIAGNOSIS** — the bordered Jacobian is near-singular (cond≈1e20) even at the
+CONVERGED shallow τ=0.03 and conditioning IMPROVES (cond≈1e14) at the failed deeper τ → the wall is an intrinsic
+near-null-space, most likely the unscaled dense mass/μ **border lanes**, a **gauge/zero mode**, or a **τ-FOLD/turning
+point** (which would make a production solver the WRONG fix — pseudo-arclength continuation is the right tool, NOT
+multigrid/mesh-grading); (5) **binding-constraint MISS** — `min_R0` INCREASES (0.748→0.806) as τ↓ and the k1 clamp goes
+INACTIVE at the deepest τ, and `min_ρ≈7e-6` is ~flat → **τ-depth ≠ R0-depth**; the empty-core (√ρ→0, R0→0) regime the
+program cares about was NEVER approached; (6) **σ_min untrustworthy** — a 1-norm LU *estimate* (true SVD gated out by
+state size 1297 > 360), and it INVERTS (healthy looks more singular than broken).
+**NEXT ACTION (resume here): USER-GATED — a CORRECTED spike (Codex applies fixes + reruns; orchestrator amends the
+directive scaffolding).** It must: (a) set `prefer_existing_b2c_background_predictor=False` below the floor + genuinely
+warm-start each τ from the previous C0-converged state (no τ skipping); (b) run the FULL ε schedule + depth backtracking
+at each deep τ (don't break on first failure) so persistent failure is actually produced; (c) compute a TRUE σ_min
+(shift-invert Lanczos / `eigsh(sigma=0)`) at a shallow converged τ AND the deepest τ, and IDENTIFY the null vector
+(project onto gauge mode / mass lane / μ lane); (d) explicitly TEST the FOLD hypothesis (track det-sign / smallest real
+eigenvalue of the branch Jacobian along τ — a zero-crossing near 0.029 ⇒ turning point ⇒ NOT a linear-solver problem ⇒
+verdict is wrong); (e) DECOUPLE τ-depth from R0-depth (report R0_min/min_ρ as the depth metric; confirm whether τ↓ even
+approaches R0→0 — if not, change the depth knob); (f) replace the hardcoded admissibility PASSes with genuine measured
+checks on near-floor + deepest states. CONCEPTUAL FORK FOR THE USER: this may NOT be a "build a production solver" step at
+all — disambiguate fold-vs-near-null-space-vs-genuine-conditioning FIRST. THEN (only after a real verdict): promote the
+constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W → anchor → surplus) → `pathA_22`.
+**⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
+is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades
+to `NOT_MEASURED`/`DIAGNOSTIC_INCOMPLETE`, never a fake). It WILL legitimately bind at the **real high-resolution profile
+solve** (post-diagnosis, CPU-only/GPU-off → genuinely O(grid) cost). WHEN that step arrives, BEFORE touching the cap walk
+the ladder IN ORDER: (1) coarse→fine continuation with RESUMABLE CHECKPOINT CHUNKS, each ≤600s (keep the cap per-chunk);
+(2) the better solver (the production-solver step, IF the C0b verdict calls for one); (3) the smaller modal/port
+formulation (fewer DOF/solve). Raising the per-chunk cap is the LAST rung and a USER-LEVEL call ([[feedback-script-timeout-policy]],
+[[feedback-never-alter-calibrated-process]]). **TRIGGER to bring it to the user:** a SINGLE irreducible Newton/linear-solve
+at the resolution we actually need cannot fit in 600s EVEN AFTER chunking + a better solver + the modal/port form. Until
+that exact condition, keep 600s. (Note placed here because it surfaces at the high-res-solve juncture; do not delete on
+compact.)
 **Discipline reminder:** Codex derives/codes + applies fixes, Claude reviews; orchestrator owns directives/decisions.
 The DERIVED-FORM GATE binds (no hand-inserted field/`r`-power, no convention sign, no `x==x` posing as a check, no
 restatement to fake BVP closure). VALID expected outcomes: a derived far-field force with interior factors flagged, an

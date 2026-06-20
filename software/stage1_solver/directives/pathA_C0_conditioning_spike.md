@@ -1,8 +1,12 @@
 # Directive pathA_C0 — Conditioning spike: make the throat-profile solver REACH a deep/realistic throat
 
-**Status:** READY v2 (Claude-authored 2026-06-19; design-review SOUND-WITH-FIXES → all 11 fixes + 6 new-problem items
-applied; Codex confirm-pass = SOUND-AS-IS 2026-06-19; PENDING USER GATE → execution). First step of **option C** (the
-throat-profile solve). Follows the Phase-1 solver
+**Status:** EXECUTED v2 2026-06-19 → verdict `PRODUCTION_SOLVER_REQUIRED` **REJECTED by adversarial review (NOT EARNED /
+short-circuited)** → **SUPERSEDED by `directives/pathA_C0b_wall_diagnosis_and_corrected_spike.md`** for the corrected run.
+The Single-Arbiter machinery built here (`src/stage1_solver/patha_c0_conditioning_spike.py`) is SOUND and reused by C0b;
+the v2 EXECUTION was deficient (cold-loaded pre-existing backgrounds instead of crawling; broke the ε-schedule on first
+failure; hardcoded admissibility PASSes; mis-diagnosed an intrinsic near-null-space/probable fold as depth conditioning;
+1-norm-LU σ_min estimate). See decision-13 §0 + C0b for the full finding. First step of **option C** (the throat-profile
+solve). Follows the Phase-1 solver
 reconnaissance (decision-13 §0/§13): the PDE operators are MODEL-FAITHFUL and the solver + calibrate-predict harness are
 ~70–80% built + validated, but the solver has NEVER converged on a deep/realistic throat — the blocker is NUMERICAL
 CONDITIONING (B2c stalls at `τ≈0.029` with "line search failed" = a diagnosed conditioning floor, NOT a physical edge).

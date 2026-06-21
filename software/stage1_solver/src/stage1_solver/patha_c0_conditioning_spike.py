@@ -37,9 +37,12 @@ from .coupled_branch import (
     ClosedCoupledFields,
     _closed_to_coupled_fields,
     _create_branch_grid,
+    _matter_number_current,
     branch_boundary_conditions,
+    boundary_sponge_profile_torch,
     coupled_pde_residual,
     initial_closed_branch_state,
+    localization_weight_torch,
     pack_closed_coupled_fields,
     pack_coupled_fields,
     patha_closed_branch_residual,
@@ -48,7 +51,12 @@ from .coupled_branch import (
     wall_grid_from_tensor_grid,
 )
 from .newton import BuiltPreconditioner, PreconditionerBuildContext
-from .operators import tensor_center_gradient_r, tensor_center_gradient_w
+from .operators import (
+    axisymmetric_vector_divergence,
+    radial_divergence_from_center_flux,
+    tensor_center_gradient_r,
+    tensor_center_gradient_w,
+)
 from .patha_static_balance import SSigmaProvider, SSigmaSpec, resolve_s_sigma, static_balance_terms
 from .preconditioners import (
     assemble_closed_coupled_colored_sparse_jacobian,
@@ -66,6 +74,16 @@ DEFAULT_C0C_REPORT_PATH = Path(
     "software/stage1_solver/reports/pathA_C0c_nullmode_identification.md"
 )
 DEFAULT_C0C_JSON_PATH = DEFAULT_C0C_RUN_ROOT / "pathA_C0c_nullmode_identification.json"
+DEFAULT_C0D_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0d_maxwell_gauge")
+DEFAULT_C0D_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0d_maxwell_gauge_identification.md"
+)
+DEFAULT_C0D_JSON_PATH = DEFAULT_C0D_RUN_ROOT / "pathA_C0d_maxwell_gauge_identification.json"
+DEFAULT_C0E_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0e_curl_gate")
+DEFAULT_C0E_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0e_gauge_invariant_curl_gate.md"
+)
+DEFAULT_C0E_JSON_PATH = DEFAULT_C0E_RUN_ROOT / "pathA_C0e_gauge_invariant_curl_gate.json"
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -77,6 +95,18 @@ C0C_VERDICTS = {
     "SYMMETRY_MODE_IDENTIFIED",
     "MIXED",
     "GENUINE_STIFFNESS",
+    "DIAGNOSTIC_INCOMPLETE",
+}
+C0D_VERDICTS = {
+    "WALL_IS_ALL_GAUGE",
+    "MIXED_GAUGE_PLUS_RESIDUAL",
+    "GENUINE_MAXWELL_STIFFNESS",
+    "DIAGNOSTIC_INCOMPLETE",
+}
+C0E_VERDICTS = {
+    "WALL_IS_ALL_GAUGE",
+    "GAUGE_PLUS_ONE_TRANSVERSE",
+    "GAUGE_FRAMING_REFUTED",
     "DIAGNOSTIC_INCOMPLETE",
 }
 C0C_FIELD_LAYOUT = ("psi_real", "psi_imag", "a0", "ar", "aw", "r0", "mu")
@@ -153,6 +183,37 @@ class C0cConfig:
     residual_fraction_threshold: float = 0.2
     dense_sigma_tau: float | None = None
     dense_jvp_chunk_size: int = 32
+
+
+@dataclass(frozen=True)
+class C0dConfig:
+    c0b_json_path: Path = DEFAULT_JSON_PATH
+    run_root: Path = DEFAULT_C0D_RUN_ROOT
+    report_path: Path = DEFAULT_C0D_REPORT_PATH
+    json_path: Path = DEFAULT_C0D_JSON_PATH
+    cluster_mode_count: int = 5
+    maxwell_mode_count: int = 4
+    maxwell_lane_fraction_min: float = 0.9
+    gauge_capture_threshold: float = 0.9
+    weighted_residual_threshold: float = 0.1
+    gradient_rank_rtol: float = 1.0e-12
+    harmonic_weighted_divergence_rtol: float = 1.0e-6
+    control_random_seed: int = 8675309
+
+
+@dataclass(frozen=True)
+class C0eConfig:
+    c0b_json_path: Path = DEFAULT_JSON_PATH
+    run_root: Path = DEFAULT_C0E_RUN_ROOT
+    report_path: Path = DEFAULT_C0E_REPORT_PATH
+    json_path: Path = DEFAULT_C0E_JSON_PATH
+    cluster_mode_count: int = 5
+    maxwell_mode_count: int = 4
+    maxwell_lane_fraction_min: float = 0.9
+    gradient_rank_rtol: float = 1.0e-12
+    harmonic_weighted_divergence_rtol: float = 1.0e-6
+    control_random_seed: int = 420029
+    run_all_available_tau_sources: bool = True
 
 
 @dataclass(frozen=True)
@@ -2650,6 +2711,1105 @@ def _lane_energy_split(vector: np.ndarray, grid) -> dict[str, float]:
     return split
 
 
+def _c0d_config_to_dict(config: C0dConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("c0b_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0e_config_to_dict(config: C0eConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("c0b_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0d_spatial_a_norm(vector: np.ndarray, grid) -> float:
+    lanes = _closed_lane_slices(grid)
+    values = np.asarray(vector, dtype=np.float64)
+    pieces = []
+    for name in ("ar", "aw"):
+        start, stop = lanes[name]
+        pieces.append(values[start:stop])
+    return float(np.linalg.norm(np.concatenate(pieces)))
+
+
+def _c0d_non_a_fraction(vector: np.ndarray, grid) -> float:
+    split = _lane_energy_split(vector, grid)
+    a_fraction = float(split.get("ar", 0.0)) + float(split.get("aw", 0.0))
+    return float(max(0.0, 1.0 - a_fraction))
+
+
+def _c0d_extract_spatial_a_fields(vector: np.ndarray, grid) -> tuple[torch.Tensor, torch.Tensor]:
+    values = np.asarray(vector, dtype=np.float64)
+    lanes = _closed_lane_slices(grid)
+    shape = (grid.spec.nr, grid.spec.nw)
+    ar_start, ar_stop = lanes["ar"]
+    aw_start, aw_stop = lanes["aw"]
+    ar = torch.as_tensor(
+        values[ar_start:ar_stop].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    aw = torch.as_tensor(
+        values[aw_start:aw_stop].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    return ar, aw
+
+
+def _c0d_embed_spatial_a_fields(ar: torch.Tensor, aw: torch.Tensor, grid) -> np.ndarray:
+    dims = _closed_layout_dimensions(grid)
+    values = np.zeros(dims["state_size"], dtype=np.float64)
+    lanes = _closed_lane_slices(grid)
+    ar_start, ar_stop = lanes["ar"]
+    aw_start, aw_stop = lanes["aw"]
+    values[ar_start:ar_stop] = ar.detach().cpu().numpy().reshape(-1)
+    values[aw_start:aw_stop] = aw.detach().cpu().numpy().reshape(-1)
+    return values
+
+
+def _c0d_scalar_gradient_vector(lambda_field: torch.Tensor, grid) -> np.ndarray:
+    return _c0d_embed_spatial_a_fields(
+        tensor_center_gradient_r(lambda_field, grid),
+        tensor_center_gradient_w(lambda_field, grid),
+        grid,
+    )
+
+
+def _c0d_scalar_gradient_matrix(grid) -> np.ndarray:
+    cell_count = int(grid.spec.nr * grid.spec.nw)
+    dims = _closed_layout_dimensions(grid)
+    matrix = np.empty((dims["state_size"], cell_count), dtype=np.float64)
+    eye_fields = torch.eye(
+        cell_count,
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    ).reshape(cell_count, grid.spec.nr, grid.spec.nw)
+    for column in range(cell_count):
+        matrix[:, column] = _c0d_scalar_gradient_vector(eye_fields[column], grid)
+    return matrix
+
+
+def _c0d_column_space_basis(
+    matrix: np.ndarray,
+    *,
+    relative_tolerance: float,
+) -> tuple[np.ndarray, np.ndarray, float, int]:
+    u, singular_values, _vh = np.linalg.svd(np.asarray(matrix, dtype=np.float64), full_matrices=False)
+    largest = float(singular_values[0]) if singular_values.size else 0.0
+    threshold = max(
+        float(relative_tolerance) * largest,
+        np.finfo(np.float64).eps * max(matrix.shape) * max(largest, 1.0),
+    )
+    rank = int(np.sum(singular_values > threshold))
+    if rank <= 0:
+        return np.zeros((matrix.shape[0], 0), dtype=np.float64), singular_values, threshold, rank
+    return u[:, :rank].astype(np.float64, copy=True), singular_values, threshold, rank
+
+
+def _c0d_weighted_divergence_flat(vector: np.ndarray, grid, branch) -> np.ndarray:
+    ar, aw = _c0d_extract_spatial_a_fields(vector, grid)
+    divergence = axisymmetric_vector_divergence(ar, aw, grid)
+    z = localization_weight_torch(grid.w_centers, branch)[None, :]
+    return (z * divergence).detach().cpu().numpy().reshape(-1).astype(np.float64, copy=True)
+
+
+def _c0d_weighted_gauge_gradient_flat(vector: np.ndarray, grid, branch) -> np.ndarray:
+    ar, aw = _c0d_extract_spatial_a_fields(vector, grid)
+    divergence = axisymmetric_vector_divergence(ar, aw, grid)
+    z = localization_weight_torch(grid.w_centers, branch)[None, :]
+    weighted = z * divergence
+    grad_r = tensor_center_gradient_r(weighted, grid)
+    grad_w = tensor_center_gradient_w(weighted, grid)
+    return (
+        torch.cat([grad_r.reshape(-1), grad_w.reshape(-1)])
+        .detach()
+        .cpu()
+        .numpy()
+        .astype(np.float64, copy=True)
+    )
+
+
+def _c0d_raw_divergence_flat(vector: np.ndarray, grid) -> np.ndarray:
+    ar, aw = _c0d_extract_spatial_a_fields(vector, grid)
+    divergence = axisymmetric_vector_divergence(ar, aw, grid)
+    return divergence.detach().cpu().numpy().reshape(-1).astype(np.float64, copy=True)
+
+
+def _c0d_build_gauge_subspace(grid, branch, config: C0dConfig) -> dict[str, Any]:
+    gradient_matrix = _c0d_scalar_gradient_matrix(grid)
+    basis, singular_values, rank_threshold, rank = _c0d_column_space_basis(
+        gradient_matrix,
+        relative_tolerance=config.gradient_rank_rtol,
+    )
+    if rank > 0:
+        weighted_divergence_matrix = np.column_stack(
+            [_c0d_weighted_divergence_flat(basis[:, index], grid, branch) for index in range(rank)]
+        )
+        _u, weighted_singular_values, vh = np.linalg.svd(
+            weighted_divergence_matrix,
+            full_matrices=False,
+        )
+        largest = float(weighted_singular_values[0]) if weighted_singular_values.size else 0.0
+        harmonic_threshold = float(config.harmonic_weighted_divergence_rtol) * largest
+        if largest <= np.finfo(np.float64).tiny:
+            harmonic_indices = np.arange(rank, dtype=int)
+        else:
+            harmonic_indices = np.where(weighted_singular_values <= harmonic_threshold)[0]
+        if harmonic_indices.size:
+            harmonic_basis = basis @ vh.T[:, harmonic_indices]
+        else:
+            harmonic_basis = np.zeros((basis.shape[0], 0), dtype=np.float64)
+    else:
+        weighted_divergence_matrix = np.zeros((grid.spec.nr * grid.spec.nw, 0), dtype=np.float64)
+        weighted_singular_values = np.zeros(0, dtype=np.float64)
+        harmonic_threshold = 0.0
+        harmonic_indices = np.zeros(0, dtype=int)
+        harmonic_basis = np.zeros((gradient_matrix.shape[0], 0), dtype=np.float64)
+
+    return {
+        "basis": basis,
+        "harmonic_basis": harmonic_basis.astype(np.float64, copy=True),
+        "gradient_matrix": gradient_matrix,
+        "gradient_singular_values": singular_values.astype(np.float64, copy=True),
+        "gradient_rank_threshold": float(rank_threshold),
+        "weighted_divergence_matrix": weighted_divergence_matrix,
+        "weighted_divergence_singular_values": weighted_singular_values.astype(
+            np.float64,
+            copy=True,
+        ),
+        "weighted_divergence_harmonic_threshold": float(harmonic_threshold),
+        "weighted_divergence_harmonic_indices": [int(index) for index in harmonic_indices],
+        "dim_g": int(basis.shape[1]),
+        "dim_g_harm": int(harmonic_basis.shape[1]),
+    }
+
+
+def _c0d_projection_fraction(basis: np.ndarray, vector: np.ndarray) -> float:
+    values = np.asarray(vector, dtype=np.float64)
+    norm = float(np.linalg.norm(values))
+    if norm <= 0.0:
+        return math.nan
+    if basis.shape[1] == 0:
+        return 0.0
+    unit = values / norm
+    captured = float(np.linalg.norm(basis.T @ unit) ** 2)
+    return float(min(max(captured, 0.0), 1.0))
+
+
+def _c0d_a_only_vector(vector: np.ndarray, grid) -> np.ndarray:
+    lanes = _closed_lane_slices(grid)
+    values = np.asarray(vector, dtype=np.float64)
+    a_only = np.zeros_like(values)
+    for name in ("ar", "aw"):
+        start, stop = lanes[name]
+        a_only[start:stop] = values[start:stop]
+    return a_only
+
+
+def _c0d_spatial_a_metrics(vector: np.ndarray, grid, branch) -> dict[str, float]:
+    a_norm = _c0d_spatial_a_norm(vector, grid)
+    if a_norm <= 0.0:
+        return {
+            "spatial_a_norm": a_norm,
+            "raw_divergence": math.nan,
+            "weighted_gauge_residual": math.nan,
+            "weighted_divergence": math.nan,
+        }
+    raw = _c0d_raw_divergence_flat(vector, grid)
+    weighted = _c0d_weighted_divergence_flat(vector, grid, branch)
+    weighted_gradient = _c0d_weighted_gauge_gradient_flat(vector, grid, branch)
+    return {
+        "spatial_a_norm": a_norm,
+        "raw_divergence": float(np.linalg.norm(raw) / a_norm),
+        "weighted_gauge_residual": float(np.linalg.norm(weighted_gradient) / a_norm),
+        "weighted_divergence": float(np.linalg.norm(weighted) / a_norm),
+    }
+
+
+def _c0d_mode_diagnostics(
+    *,
+    mode_index: int,
+    sigma: float,
+    vector: np.ndarray,
+    subspace: Mapping[str, Any],
+    grid,
+    branch,
+    config: C0dConfig,
+) -> dict[str, Any]:
+    unit, mode_norm = _unit_vector(vector)
+    lane_split = _lane_energy_split(unit, grid)
+    a_only = _c0d_a_only_vector(unit, grid)
+    p_g = _c0d_projection_fraction(subspace["basis"], unit)
+    p_g_harm = _c0d_projection_fraction(subspace["harmonic_basis"], unit)
+    p_g_a_normalized = _c0d_projection_fraction(subspace["basis"], a_only)
+    metrics = _c0d_spatial_a_metrics(unit, grid, branch)
+    weighted = metrics["weighted_gauge_residual"]
+    classification = (
+        "MAXWELL_GAUGE"
+        if (
+            math.isfinite(p_g)
+            and math.isfinite(weighted)
+            and p_g >= config.gauge_capture_threshold
+            and weighted <= config.weighted_residual_threshold
+        )
+        else "GENUINE_MAXWELL_STIFFNESS"
+    )
+    return {
+        "mode_index": int(mode_index),
+        "sigma": float(sigma),
+        "mode_norm_before_unit": float(mode_norm),
+        "p_g_fraction": p_g,
+        "p_g_harm_fraction": p_g_harm,
+        "p_g_a_normalized_fraction": p_g_a_normalized,
+        "unexplained_residual": float(max(0.0, 1.0 - p_g)) if math.isfinite(p_g) else math.nan,
+        "raw_divergence": metrics["raw_divergence"],
+        "weighted_gauge_residual": weighted,
+        "weighted_divergence": metrics["weighted_divergence"],
+        "spatial_a_norm": metrics["spatial_a_norm"],
+        "lane_energy_fractions": lane_split,
+        "spatial_a_energy_fraction": float(lane_split.get("ar", 0.0))
+        + float(lane_split.get("aw", 0.0)),
+        "non_a_remainder": _c0d_non_a_fraction(unit, grid),
+        "classification": classification,
+        "classification_gate": {
+            "p_g_min": float(config.gauge_capture_threshold),
+            "weighted_gauge_residual_max": float(config.weighted_residual_threshold),
+            "p_g_pass": bool(
+                math.isfinite(p_g) and p_g >= config.gauge_capture_threshold
+            ),
+            "weighted_gauge_residual_pass": bool(
+                math.isfinite(weighted) and weighted <= config.weighted_residual_threshold
+            ),
+        },
+    }
+
+
+def _c0d_control_diagnostics(subspace: Mapping[str, Any], grid, config: C0dConfig) -> dict[str, Any]:
+    r_scaled = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_span = float(grid.spec.w_max) - float(grid.spec.w_min)
+    w_scaled = (grid.w_centers[None, :] - float(grid.spec.w_min)) / w_span
+    lambda_field = (
+        torch.sin(math.pi * r_scaled)
+        * torch.cos(2.0 * math.pi * w_scaled)
+        + 0.37 * r_scaled * (1.0 - w_scaled)
+    )
+    positive = _c0d_scalar_gradient_vector(lambda_field, grid)
+    positive_p_g = _c0d_projection_fraction(subspace["basis"], positive)
+    positive_non_a = _c0d_non_a_fraction(positive, grid)
+
+    rng = np.random.default_rng(int(config.control_random_seed))
+    random_a = np.zeros(_closed_layout_dimensions(grid)["state_size"], dtype=np.float64)
+    lanes = _closed_lane_slices(grid)
+    for name in ("ar", "aw"):
+        start, stop = lanes[name]
+        random_a[start:stop] = rng.normal(size=stop - start)
+    if subspace["basis"].shape[1] > 0:
+        negative = random_a - subspace["basis"] @ (subspace["basis"].T @ random_a)
+    else:
+        negative = random_a
+    negative_p_g = _c0d_projection_fraction(subspace["basis"], negative)
+    negative_non_a = _c0d_non_a_fraction(negative, grid)
+
+    status = (
+        "PASS"
+        if positive_p_g >= 1.0 - 1.0e-10
+        and positive_non_a <= 1.0e-12
+        and negative_p_g <= 1.0e-10
+        and negative_non_a <= 1.0e-12
+        else "FAIL"
+    )
+    return {
+        "status": status,
+        "positive_control": {
+            "type": "held_out_smooth_discrete_gradient",
+            "p_g_fraction": float(positive_p_g),
+            "non_a_remainder": float(positive_non_a),
+            "pass": bool(positive_p_g >= 1.0 - 1.0e-10 and positive_non_a <= 1.0e-12),
+        },
+        "negative_control": {
+            "type": "transverse_orthogonalized_random_A",
+            "p_g_fraction": float(negative_p_g),
+            "non_a_remainder": float(negative_non_a),
+            "pass": bool(negative_p_g <= 1.0e-10 and negative_non_a <= 1.0e-12),
+        },
+        "thresholds": {
+            "positive_p_g_min": 1.0 - 1.0e-10,
+            "positive_non_a_max": 1.0e-12,
+            "negative_p_g_max": 1.0e-10,
+            "negative_non_a_max": 1.0e-12,
+        },
+    }
+
+
+def _c0e_scope_guard() -> dict[str, bool]:
+    return {
+        "diagnosis_only": True,
+        "single_read_only_linear_solve_per_artifact": True,
+        "trial_residual_evaluations_on_temporary_tensors_only": True,
+        "state_advance_or_newton_write": False,
+        "gauge_fix_or_deflation_implemented": False,
+        "stencil_change_implemented": False,
+        "recrawl_implemented": False,
+        "changed_xi_reassembly": False,
+        "faithful_operators_touched_by_c0e": False,
+        "frozen_physics_touched_by_c0e": False,
+        "physical_export_guard_touched_by_c0e": False,
+    }
+
+
+def _c0e_operator_sources(branch) -> dict[str, Any]:
+    return {
+        "curl_fraction": {
+            "field_strength": "stage1_solver.operators.tensor_center_gradient_r(aw) - tensor_center_gradient_w(ar)",
+            "localization_weight": "stage1_solver.coupled_branch.localization_weight_torch(grid.w_centers, branch)",
+            "ratio": "||Z*F_rw[v]|| / ||A[v]||",
+            "norms": ["unweighted_code_space", "cell_volume_weighted"],
+        },
+        "coupled_generator": {
+            "real_lane_formula": (
+                "delta psi_real=-(q/hbar)*lambda*psi_imag; "
+                "delta psi_imag=+(q/hbar)*lambda*psi_real; "
+                "delta a0=0; delta ar=d_r(lambda); delta aw=d_w(lambda)"
+            ),
+            "q_over_hbar_source": (
+                "branch.gauge_charge / branch.hbar from "
+                "stage1_solver.coupled_branch.coupled_pde_residual alpha and "
+                "q*A0 matter coupling"
+            ),
+            "q_over_hbar_value": float(branch.gauge_charge / branch.hbar),
+        },
+        "maxwell_operator": {
+            "source": "stage1_solver.operators.localized_maxwell_operator",
+            "curl_rows": "ar=-d_w(Z*F_rw), aw=radial_divergence_from_center_flux(Z*F_rw)",
+            "gauge_penalty_rows": "(1/xi)*grad(Z*axisymmetric_vector_divergence(A))",
+            "xi": float(branch.xi),
+            "sponge_gauge_strength": float(getattr(branch, "sponge_gauge_strength", 0.0)),
+        },
+    }
+
+
+def _c0e_coupled_gauge_vector(
+    lambda_field: torch.Tensor,
+    state: torch.Tensor,
+    grid,
+    branch,
+) -> np.ndarray:
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    alpha = float(branch.gauge_charge / branch.hbar)
+    dims = _closed_layout_dimensions(grid)
+    values = np.zeros(dims["state_size"], dtype=np.float64)
+    lanes = _closed_lane_slices(grid)
+    pieces = {
+        "psi_real": -alpha * lambda_field * fields.psi_imag,
+        "psi_imag": alpha * lambda_field * fields.psi_real,
+        "ar": tensor_center_gradient_r(lambda_field, grid),
+        "aw": tensor_center_gradient_w(lambda_field, grid),
+    }
+    for name, piece in pieces.items():
+        start, stop = lanes[name]
+        values[start:stop] = piece.detach().cpu().numpy().reshape(-1)
+    return values
+
+
+def _c0e_coupled_gauge_matrix(state: torch.Tensor, grid, branch) -> np.ndarray:
+    cell_count = int(grid.spec.nr * grid.spec.nw)
+    dims = _closed_layout_dimensions(grid)
+    matrix = np.empty((dims["state_size"], cell_count), dtype=np.float64)
+    eye_fields = torch.eye(
+        cell_count,
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    ).reshape(cell_count, grid.spec.nr, grid.spec.nw)
+    for column in range(cell_count):
+        matrix[:, column] = _c0e_coupled_gauge_vector(eye_fields[column], state, grid, branch)
+    return matrix
+
+
+def _c0e_build_coupled_subspace(
+    state: torch.Tensor,
+    grid,
+    branch,
+    config: C0eConfig,
+) -> dict[str, Any]:
+    matrix = _c0e_coupled_gauge_matrix(state, grid, branch)
+    u, singular_values, vh = np.linalg.svd(matrix, full_matrices=False)
+    largest = float(singular_values[0]) if singular_values.size else 0.0
+    threshold = max(
+        float(config.gradient_rank_rtol) * largest,
+        np.finfo(np.float64).eps * max(matrix.shape) * max(largest, 1.0),
+    )
+    rank = int(np.sum(singular_values > threshold))
+    basis = u[:, :rank].astype(np.float64, copy=True) if rank > 0 else np.zeros((matrix.shape[0], 0))
+    return {
+        "basis": basis,
+        "generator_matrix": matrix,
+        "singular_values": singular_values.astype(np.float64, copy=True),
+        "vh": vh.astype(np.float64, copy=True),
+        "rank_threshold": float(threshold),
+        "rank": int(rank),
+        "scalar_basis_dim": int(matrix.shape[1]),
+        "full_state_dim": int(matrix.shape[0]),
+        "q_over_hbar": float(branch.gauge_charge / branch.hbar),
+    }
+
+
+def _c0e_field_norm(
+    values: torch.Tensor,
+    grid,
+    *,
+    weighted: bool,
+    mask: torch.Tensor | None = None,
+) -> float:
+    selected = values if mask is None else values[mask]
+    if selected.numel() == 0:
+        return 0.0
+    if not weighted:
+        return float(torch.linalg.vector_norm(selected).detach().cpu().item())
+    volumes = grid.cell_volumes if mask is None else grid.cell_volumes[mask]
+    return float(torch.sqrt(torch.sum((selected**2) * volumes)).detach().cpu().item())
+
+
+def _c0e_spatial_a_norm_from_fields(
+    ar: torch.Tensor,
+    aw: torch.Tensor,
+    grid,
+    *,
+    weighted: bool,
+) -> float:
+    density = ar**2 + aw**2
+    if not weighted:
+        return float(torch.sqrt(torch.sum(density)).detach().cpu().item())
+    return float(torch.sqrt(torch.sum(density * grid.cell_volumes)).detach().cpu().item())
+
+
+def _c0e_boundary_mask(grid) -> torch.Tensor:
+    mask = torch.zeros(
+        (grid.spec.nr, grid.spec.nw),
+        dtype=torch.bool,
+        device=grid.r_centers.device,
+    )
+    mask[0, :] = True
+    mask[-1, :] = True
+    mask[:, 0] = True
+    mask[:, -1] = True
+    return mask
+
+
+def _c0e_curl_fraction_from_fields(
+    ar: torch.Tensor,
+    aw: torch.Tensor,
+    grid,
+    branch,
+) -> dict[str, Any]:
+    z = localization_weight_torch(grid.w_centers, branch)[None, :]
+    curl = z * (tensor_center_gradient_r(aw, grid) - tensor_center_gradient_w(ar, grid))
+    boundary_mask = _c0e_boundary_mask(grid)
+    interior_mask = ~boundary_mask
+    metrics: dict[str, Any] = {}
+    for label, weighted in (
+        ("unweighted", False),
+        ("cell_volume_weighted", True),
+    ):
+        numerator = _c0e_field_norm(curl, grid, weighted=weighted)
+        denominator = _c0e_spatial_a_norm_from_fields(ar, aw, grid, weighted=weighted)
+        boundary = _c0e_field_norm(curl, grid, weighted=weighted, mask=boundary_mask)
+        interior = _c0e_field_norm(curl, grid, weighted=weighted, mask=interior_mask)
+        metrics[label] = {
+            "curl_norm": float(numerator),
+            "spatial_a_norm": float(denominator),
+            "curl_fraction": float(numerator / denominator)
+            if denominator > 0.0
+            else math.nan,
+            "boundary_curl_norm": float(boundary),
+            "interior_curl_norm": float(interior),
+            "boundary_curl_fraction_of_norm": float(boundary / numerator)
+            if numerator > 0.0
+            else 0.0,
+        }
+    return metrics
+
+
+def _c0e_curl_fraction_metrics(vector: np.ndarray, grid, branch) -> dict[str, Any]:
+    ar, aw = _c0d_extract_spatial_a_fields(vector, grid)
+    return _c0e_curl_fraction_from_fields(ar, aw, grid, branch)
+
+
+def _c0e_positive_lambda_fields(grid) -> list[tuple[str, torch.Tensor]]:
+    r_scaled = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_span = float(grid.spec.w_max) - float(grid.spec.w_min)
+    w_scaled = (grid.w_centers[None, :] - float(grid.spec.w_min)) / w_span
+    i = torch.arange(grid.spec.nr, dtype=grid.r_centers.dtype, device=grid.r_centers.device)[:, None]
+    j = torch.arange(grid.spec.nw, dtype=grid.r_centers.dtype, device=grid.r_centers.device)[None, :]
+    checker = torch.where(((i + j).remainder(2) == 0), 1.0, -1.0).to(grid.r_centers.dtype)
+    return [
+        (
+            "smooth_sin_poly_gradient",
+            torch.sin(math.pi * r_scaled) * torch.cos(2.0 * math.pi * w_scaled)
+            + 0.37 * r_scaled * (1.0 - w_scaled),
+        ),
+        (
+            "smooth_mixed_gradient",
+            (r_scaled**2) * torch.sin(math.pi * w_scaled)
+            + 0.19 * torch.cos(2.0 * math.pi * r_scaled) * (0.5 + w_scaled),
+        ),
+        (
+            "high_k_sine_gradient",
+            torch.sin((grid.spec.nr - 1.0) * math.pi * r_scaled)
+            * torch.cos((grid.spec.nw - 2.0) * math.pi * w_scaled),
+        ),
+        ("checkerboard_gradient", checker),
+    ]
+
+
+def _c0e_stream_function_a_vector(chi: torch.Tensor, grid) -> np.ndarray:
+    r2 = torch.clamp(grid.r_centers[:, None] ** 2, min=float(grid.dr) ** 2)
+    return _c0d_embed_spatial_a_fields(
+        tensor_center_gradient_w(chi, grid) / r2,
+        -tensor_center_gradient_r(chi, grid) / r2,
+        grid,
+    )
+
+
+def _c0e_negative_stream_functions(grid) -> list[tuple[str, torch.Tensor]]:
+    r_scaled = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_span = float(grid.spec.w_max) - float(grid.spec.w_min)
+    w_scaled = (grid.w_centers[None, :] - float(grid.spec.w_min)) / w_span
+    i = torch.arange(grid.spec.nr, dtype=grid.r_centers.dtype, device=grid.r_centers.device)[:, None]
+    j = torch.arange(grid.spec.nw, dtype=grid.r_centers.dtype, device=grid.r_centers.device)[None, :]
+    checker = torch.where(((i + j).remainder(2) == 0), 1.0, -1.0).to(grid.r_centers.dtype)
+    return [
+        (
+            "smooth_stream_sin",
+            torch.sin(math.pi * r_scaled) * torch.sin(2.0 * math.pi * w_scaled),
+        ),
+        (
+            "smooth_stream_mixed",
+            r_scaled * (1.0 - r_scaled) * torch.cos(math.pi * w_scaled)
+            + 0.11 * torch.sin(2.0 * math.pi * r_scaled),
+        ),
+        (
+            "high_k_stream_sine",
+            torch.sin((grid.spec.nr - 1.0) * math.pi * r_scaled)
+            * torch.sin((grid.spec.nw - 1.0) * math.pi * w_scaled),
+        ),
+        ("checkerboard_stream", checker),
+    ]
+
+
+def _c0e_control_bands(rows: Sequence[Mapping[str, Any]], norm_label: str) -> dict[str, Any]:
+    positive = [
+        float(row[norm_label]["curl_fraction"])
+        for row in rows
+        if row.get("family") == "positive_gradient"
+        and math.isfinite(float(row[norm_label]["curl_fraction"]))
+    ]
+    negative = [
+        float(row[norm_label]["curl_fraction"])
+        for row in rows
+        if row.get("family") == "negative_stream_function_transverse"
+        and math.isfinite(float(row[norm_label]["curl_fraction"]))
+    ]
+    if not positive or not negative:
+        return {"status": "NOT_MEASURED", "reason": "missing_control_family"}
+    positive_max = max(positive)
+    negative_min = min(negative)
+    tiny = np.finfo(np.float64).eps
+    separated = bool(positive_max < negative_min)
+    separator = math.sqrt(max(positive_max, tiny) * max(negative_min, tiny)) if separated else math.nan
+    return {
+        "status": "SEPARATED" if separated else "OVERLAP",
+        "positive_min": float(min(positive)),
+        "positive_max": float(positive_max),
+        "negative_min": float(negative_min),
+        "negative_max": float(max(negative)),
+        "geometric_separator": float(separator),
+        "separation_ratio": float(negative_min / max(positive_max, tiny)),
+        "separation_log10": float(math.log10(negative_min / max(positive_max, tiny)))
+        if negative_min > 0.0
+        else -math.inf,
+    }
+
+
+def _c0e_control_diagnostics(
+    *,
+    a_subspace: Mapping[str, Any],
+    coupled_subspace: Mapping[str, Any],
+    state: torch.Tensor,
+    grid,
+    branch,
+) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    for name, lambda_field in _c0e_positive_lambda_fields(grid):
+        vector = _c0d_scalar_gradient_vector(lambda_field, grid)
+        coupled_vector = _c0e_coupled_gauge_vector(lambda_field, state, grid, branch)
+        metrics = _c0e_curl_fraction_metrics(vector, grid, branch)
+        rows.append(
+            {
+                "name": name,
+                "family": "positive_gradient",
+                "construction": "held_out_discrete_gradient_not_used_to_define_mode_classification",
+                "unweighted": metrics["unweighted"],
+                "cell_volume_weighted": metrics["cell_volume_weighted"],
+                "a_only_p_g_fraction": _c0d_projection_fraction(a_subspace["basis"], vector),
+                "coupled_capture_fraction": _c0d_projection_fraction(
+                    coupled_subspace["basis"], coupled_vector
+                ),
+                "non_a_remainder": _c0d_non_a_fraction(vector, grid),
+            }
+        )
+    for name, chi in _c0e_negative_stream_functions(grid):
+        vector = _c0e_stream_function_a_vector(chi, grid)
+        metrics = _c0e_curl_fraction_metrics(vector, grid, branch)
+        rows.append(
+            {
+                "name": name,
+                "family": "negative_stream_function_transverse",
+                "construction": "independent_stream_function_A_not_random_minus_own_gradient_projection",
+                "unweighted": metrics["unweighted"],
+                "cell_volume_weighted": metrics["cell_volume_weighted"],
+                "a_only_p_g_fraction": _c0d_projection_fraction(a_subspace["basis"], vector),
+                "coupled_capture_fraction": _c0d_projection_fraction(
+                    coupled_subspace["basis"], vector
+                ),
+                "non_a_remainder": _c0d_non_a_fraction(vector, grid),
+            }
+        )
+    bands = {
+        "unweighted": _c0e_control_bands(rows, "unweighted"),
+        "cell_volume_weighted": _c0e_control_bands(rows, "cell_volume_weighted"),
+    }
+    positive_rows = [row for row in rows if row["family"] == "positive_gradient"]
+    negative_rows = [row for row in rows if row["family"] == "negative_stream_function_transverse"]
+    status = "PASS"
+    reasons: list[str] = []
+    if any(band.get("status") != "SEPARATED" for band in bands.values()):
+        status = "FAIL"
+        reasons.append("control_curl_bands_overlap_or_missing")
+    if any(float(row["a_only_p_g_fraction"]) < 1.0 - 1.0e-10 for row in positive_rows):
+        status = "FAIL"
+        reasons.append("positive_gradient_a_only_capture_not_exact")
+    if any(float(row["coupled_capture_fraction"]) < 1.0 - 1.0e-10 for row in positive_rows):
+        status = "FAIL"
+        reasons.append("positive_coupled_capture_not_exact")
+    if any(float(row["non_a_remainder"]) > 1.0e-12 for row in positive_rows):
+        status = "FAIL"
+        reasons.append("positive_gradient_non_a_remainder_nonzero")
+    max_negative_capture = max(
+        [float(row["a_only_p_g_fraction"]) for row in negative_rows],
+        default=math.inf,
+    )
+    if max_negative_capture >= 0.5:
+        status = "FAIL"
+        reasons.append("stream_function_negative_control_has_high_gradient_capture")
+    return {
+        "status": status,
+        "reason": ";".join(reasons) if reasons else None,
+        "controls": rows,
+        "bands": bands,
+        "negative_capture_max_observed": float(max_negative_capture),
+        "negative_capture_low_gate": 0.5,
+    }
+
+
+def _c0e_curl_margin(value: float, bands: Mapping[str, Any]) -> dict[str, Any]:
+    if bands.get("status") != "SEPARATED" or not math.isfinite(value) or value <= 0.0:
+        return {
+            "outcome": "CONTROL_BANDS_OVERLAP"
+            if bands.get("status") != "SEPARATED"
+            else "AMBIGUOUS",
+            "margin_log10_to_separator": math.nan,
+            "separator": bands.get("geometric_separator"),
+            "observed_control_gap_log10": bands.get("separation_log10"),
+        }
+    separator = float(bands["geometric_separator"])
+    if value <= separator:
+        margin = math.log10(separator / value)
+        outcome = "GAUGE"
+    else:
+        margin = math.log10(value / separator)
+        outcome = "TRANSVERSE"
+    return {
+        "outcome": outcome,
+        "margin_log10_to_separator": float(margin),
+        "separator": float(separator),
+        "observed_control_gap_log10": float(bands["separation_log10"]),
+        "positive_control_max": float(bands["positive_max"]),
+        "negative_control_min": float(bands["negative_min"]),
+    }
+
+
+def _c0e_frequency_classification(lambda_field: np.ndarray) -> dict[str, Any]:
+    values = np.asarray(lambda_field, dtype=np.float64)
+    centered = values - float(np.mean(values))
+    total = float(np.sum(centered**2))
+    if total <= np.finfo(np.float64).tiny:
+        return {
+            "classification": "ZERO_PREIMAGE",
+            "low_frequency_fraction": 0.0,
+            "high_frequency_fraction": 0.0,
+            "nyquist_fraction": 0.0,
+            "checkerboard_score": 0.0,
+        }
+    fft = np.fft.fftn(centered)
+    energy = np.abs(fft) ** 2
+    total_fft = float(np.sum(energy))
+    kr = np.abs(np.fft.fftfreq(values.shape[0]) * values.shape[0])[:, None]
+    kw = np.abs(np.fft.fftfreq(values.shape[1]) * values.shape[1])[None, :]
+    low_mask = (kr <= 2.0) & (kw <= 2.0)
+    high_mask = (kr >= max(2.0, values.shape[0] / 4.0)) | (
+        kw >= max(2.0, values.shape[1] / 4.0)
+    )
+    nyquist_mask = (kr >= max(1.0, values.shape[0] / 2.0 - 1.0)) | (
+        kw >= max(1.0, values.shape[1] / 2.0 - 1.0)
+    )
+    ii = np.arange(values.shape[0])[:, None]
+    jj = np.arange(values.shape[1])[None, :]
+    patterns = [
+        (-1.0) ** ii * np.ones_like(values),
+        np.ones_like(values) * ((-1.0) ** jj),
+        (-1.0) ** (ii + jj),
+    ]
+    checker_scores = []
+    for pattern in patterns:
+        p = pattern - float(np.mean(pattern))
+        denom = math.sqrt(float(np.sum(p**2)) * total)
+        checker_scores.append(float(abs(np.sum(centered * p)) / denom) if denom > 0.0 else 0.0)
+    low = float(np.sum(energy[low_mask]) / total_fft) if total_fft > 0.0 else 0.0
+    high = float(np.sum(energy[high_mask]) / total_fft) if total_fft > 0.0 else 0.0
+    nyquist = float(np.sum(energy[nyquist_mask]) / total_fft) if total_fft > 0.0 else 0.0
+    checker = float(max(checker_scores))
+    if checker >= 0.35 or nyquist >= 0.35:
+        classification = "CHECKERBOARD"
+    elif high >= 0.5:
+        classification = "HIGH_K"
+    elif low >= 0.7:
+        classification = "SMOOTH"
+    else:
+        classification = "MIXED"
+    return {
+        "classification": classification,
+        "low_frequency_fraction": low,
+        "high_frequency_fraction": high,
+        "nyquist_fraction": nyquist,
+        "checkerboard_score": checker,
+    }
+
+
+def _c0e_embed_pde_component(
+    components: Mapping[int, torch.Tensor],
+    grid,
+    *,
+    dtype: torch.dtype,
+    device: torch.device | str,
+) -> torch.Tensor:
+    pde = torch.zeros((5, grid.spec.nr, grid.spec.nw), dtype=dtype, device=device)
+    for lane, values in components.items():
+        pde[int(lane)] = values
+    wall_mass = torch.zeros(grid.spec.nw + 1, dtype=dtype, device=device)
+    return torch.cat([pde.reshape(-1), wall_mass])
+
+
+def _c0e_maxwell_curl_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+) -> torch.Tensor:
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    z = localization_weight_torch(grid.w_centers, branch)[None, :]
+    f_rw = tensor_center_gradient_r(fields.aw, grid) - tensor_center_gradient_w(fields.ar, grid)
+    weighted_f_rw = z * f_rw
+    ar_block = -tensor_center_gradient_w(weighted_f_rw, grid)
+    aw_block = radial_divergence_from_center_flux(weighted_f_rw, grid)
+    return _c0e_embed_pde_component(
+        {3: ar_block, 4: aw_block},
+        grid,
+        dtype=state.dtype,
+        device=state.device,
+    )
+
+
+def _c0e_maxwell_gauge_penalty_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+) -> torch.Tensor:
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    z = localization_weight_torch(grid.w_centers, branch)[None, :]
+    divergence = axisymmetric_vector_divergence(fields.ar, fields.aw, grid)
+    weighted_divergence = z * divergence
+    ar_block = (1.0 / float(branch.xi)) * tensor_center_gradient_r(weighted_divergence, grid)
+    aw_block = (1.0 / float(branch.xi)) * tensor_center_gradient_w(weighted_divergence, grid)
+    return _c0e_embed_pde_component(
+        {3: ar_block, 4: aw_block},
+        grid,
+        dtype=state.dtype,
+        device=state.device,
+    )
+
+
+def _c0e_maxwell_current_source_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+) -> torch.Tensor:
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    coupled_fields = _closed_to_coupled_fields(fields)
+    jr_number, jw_number = _matter_number_current(coupled_fields, grid, branch)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    charge_current_r = branch.gauge_charge * jr_number
+    charge_current_w = branch.gauge_charge * jw_number
+    sponge = boundary_sponge_profile_torch(grid, branch)
+    ar_block = (
+        -branch.mu0 * charge_current_r
+        + getattr(branch, "sponge_gauge_strength", 0.0) * sponge * fields.ar
+    )
+    aw_block = (
+        -branch.mu0 * charge_current_w
+        + getattr(branch, "sponge_gauge_strength", 0.0) * sponge * fields.aw
+    )
+    # Keep the density local so autograd sees the same dependencies used by the Gauss split.
+    _ = density
+    return _c0e_embed_pde_component(
+        {3: ar_block, 4: aw_block},
+        grid,
+        dtype=state.dtype,
+        device=state.device,
+    )
+
+
+def _c0e_matter_rows_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+    *,
+    eos_K: float,
+    boundaries,
+) -> torch.Tensor:
+    fields, chemical_potential = unpack_closed_coupled_fields(
+        state,
+        grid,
+        has_chemical_potential=True,
+    )
+    assert chemical_potential is not None
+    pde = coupled_pde_residual(
+        pack_coupled_fields(_closed_to_coupled_fields(fields)),
+        grid,
+        branch,
+        eos_K=eos_K,
+        chemical_potential=chemical_potential,
+        boundaries=boundaries,
+        confinement_radius=fields.r0,
+    )
+    return _c0e_embed_pde_component(
+        {0: pde[0], 1: pde[1]},
+        grid,
+        dtype=state.dtype,
+        device=state.device,
+    )
+
+
+def _c0e_gauss_charge_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+    *,
+    eos_K: float,
+    boundaries,
+) -> torch.Tensor:
+    fields, chemical_potential = unpack_closed_coupled_fields(
+        state,
+        grid,
+        has_chemical_potential=True,
+    )
+    assert chemical_potential is not None
+    pde = coupled_pde_residual(
+        pack_coupled_fields(_closed_to_coupled_fields(fields)),
+        grid,
+        branch,
+        eos_K=eos_K,
+        chemical_potential=chemical_potential,
+        boundaries=boundaries,
+        confinement_radius=fields.r0,
+    )
+    return _c0e_embed_pde_component(
+        {2: pde[2]},
+        grid,
+        dtype=state.dtype,
+        device=state.device,
+    )
+
+
+def _c0e_wall_mass_component(
+    state: torch.Tensor,
+    grid,
+    branch,
+    *,
+    eos_K: float,
+    boundaries,
+    s_sigma: SSigmaSpec | SSigmaProvider | Mapping[str, Any],
+) -> torch.Tensor:
+    residual = patha_closed_branch_residual(
+        state,
+        grid,
+        branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=s_sigma,
+    )
+    result = torch.zeros_like(residual)
+    n = int(grid.spec.nr * grid.spec.nw)
+    result[5 * n :] = residual[5 * n :]
+    return result
+
+
+def _c0e_jvp_component(
+    fn: Callable[[torch.Tensor], torch.Tensor],
+    state: torch.Tensor,
+    direction: np.ndarray,
+) -> np.ndarray:
+    direction_t = torch.as_tensor(direction, dtype=state.dtype, device=state.device)
+    return jvp(fn, state.detach(), direction_t).detach().cpu().numpy().astype(np.float64)
+
+
+def _c0e_residual_budget_for_mode(
+    *,
+    matrix: csc_matrix,
+    state: torch.Tensor,
+    vector: np.ndarray,
+    grid,
+    branch,
+    eos_K: float,
+    boundaries,
+    s_sigma: SSigmaSpec | SSigmaProvider | Mapping[str, Any],
+) -> dict[str, Any]:
+    unit, _norm = _unit_vector(vector)
+    assembled = (matrix @ unit).astype(np.float64, copy=False)
+    components: dict[str, np.ndarray] = {
+        "maxwell_curl_rows": _c0e_jvp_component(
+            lambda x: _c0e_maxwell_curl_component(x, grid, branch),
+            state,
+            unit,
+        ),
+        "maxwell_gauge_penalty_rows": _c0e_jvp_component(
+            lambda x: _c0e_maxwell_gauge_penalty_component(x, grid, branch),
+            state,
+            unit,
+        ),
+        "maxwell_current_source_rows": _c0e_jvp_component(
+            lambda x: _c0e_maxwell_current_source_component(x, grid, branch),
+            state,
+            unit,
+        ),
+        "matter_covariant_a_coupling_rows": _c0e_jvp_component(
+            lambda x: _c0e_matter_rows_component(
+                x,
+                grid,
+                branch,
+                eos_K=eos_K,
+                boundaries=boundaries,
+            ),
+            state,
+            unit,
+        ),
+        "gauss_charge_rows": _c0e_jvp_component(
+            lambda x: _c0e_gauss_charge_component(
+                x,
+                grid,
+                branch,
+                eos_K=eos_K,
+                boundaries=boundaries,
+            ),
+            state,
+            unit,
+        ),
+        "wall_mass_rows": _c0e_jvp_component(
+            lambda x: _c0e_wall_mass_component(
+                x,
+                grid,
+                branch,
+                eos_K=eos_K,
+                boundaries=boundaries,
+                s_sigma=s_sigma,
+            ),
+            state,
+            unit,
+        ),
+    }
+    component_sum = np.sum(np.column_stack(list(components.values())), axis=1)
+    unexplained = assembled - component_sum
+    assembled_norm = float(np.linalg.norm(assembled))
+    component_rows = {}
+    for name, values in components.items():
+        norm = float(np.linalg.norm(values))
+        component_rows[name] = {
+            "norm": norm,
+            "fraction_of_assembled_jv_norm": float(norm / max(assembled_norm, np.finfo(np.float64).tiny)),
+        }
+    unexplained_norm = float(np.linalg.norm(unexplained))
+    return {
+        "assembled_jv_norm": assembled_norm,
+        "component_sum_norm": float(np.linalg.norm(component_sum)),
+        "sum_component_norms": float(sum(float(np.linalg.norm(v)) for v in components.values())),
+        "components": component_rows,
+        "unexplained_remainder_norm": unexplained_norm,
+        "unexplained_fraction_of_assembled_jv_norm": float(
+            unexplained_norm / max(assembled_norm, np.finfo(np.float64).tiny)
+        ),
+        "unexplained_fraction_of_component_sum_norm": float(
+            unexplained_norm / max(float(np.linalg.norm(component_sum)), np.finfo(np.float64).tiny)
+        ),
+    }
+
+
+def _c0e_row_scaling_summary(matrix: csc_matrix, grid) -> dict[str, Any]:
+    row_norms = _sparse_abs_max_by_axis(matrix, 1)
+    lanes = _closed_lane_slices(grid)
+    groups = {
+        "matter_psi_rows": (lanes["psi_real"][0], lanes["psi_imag"][1]),
+        "gauss_a0_rows": lanes["a0"],
+        "maxwell_ar_rows": lanes["ar"],
+        "maxwell_aw_rows": lanes["aw"],
+        "wall_rows": lanes["r0"],
+        "mass_row": lanes["mu"],
+    }
+    summaries: dict[str, Any] = {}
+    for name, (start, stop) in groups.items():
+        chunk = row_norms[start:stop]
+        summaries[name] = {
+            "count": int(chunk.size),
+            "min": float(np.min(chunk)) if chunk.size else math.nan,
+            "median": float(np.median(chunk)) if chunk.size else math.nan,
+            "max": float(np.max(chunk)) if chunk.size else math.nan,
+            "rms": float(math.sqrt(float(np.mean(chunk**2)))) if chunk.size else math.nan,
+        }
+    maxwell = np.concatenate([row_norms[lanes["ar"][0] : lanes["ar"][1]], row_norms[lanes["aw"][0] : lanes["aw"][1]]])
+    non_maxwell = np.concatenate(
+        [
+            row_norms[lanes["psi_real"][0] : lanes["a0"][1]],
+            row_norms[lanes["r0"][0] : lanes["mu"][1]],
+        ]
+    )
+    maxwell_rms = float(math.sqrt(float(np.mean(maxwell**2)))) if maxwell.size else math.nan
+    non_maxwell_rms = (
+        float(math.sqrt(float(np.mean(non_maxwell**2)))) if non_maxwell.size else math.nan
+    )
+    return {
+        "row_norm_kind": "sparse_row_abs_max",
+        "groups": summaries,
+        "maxwell_araw_rms": maxwell_rms,
+        "non_maxwell_rms": non_maxwell_rms,
+        "maxwell_to_non_maxwell_rms_ratio": float(
+            maxwell_rms / max(non_maxwell_rms, np.finfo(np.float64).tiny)
+        )
+        if math.isfinite(maxwell_rms) and math.isfinite(non_maxwell_rms)
+        else math.nan,
+    }
+
+
 def _center_gradient_1d(values: torch.Tensor, spacing: float) -> torch.Tensor:
     if values.ndim != 1 or values.numel() < 3:
         raise ValueError("centered 1D gradient requires at least three values")
@@ -3378,6 +4538,1421 @@ def run_c0c_nullmode_identification(config: C0cConfig | None = None) -> dict[str
     return result
 
 
+def _c0d_incomplete_result(reason: str, config: C0dConfig) -> dict[str, Any]:
+    return {
+        "schema": "stage1_pathA_C0d_maxwell_gauge_identification/v1",
+        "source_revision": source_revision(),
+        "verdict": "DIAGNOSTIC_INCOMPLETE",
+        "verdict_support": {"reason": reason},
+        "recommended_next_step": "Provide the missing saved-matrix C0b/C0c evidence and rerun C0d.",
+        "config": _c0d_config_to_dict(config),
+        "operator_sources": _c0d_operator_sources(),
+        "gauge_subspace": {"status": "NOT_MEASURED", "reason": reason},
+        "controls": {"status": "NOT_MEASURED", "reason": reason},
+        "all_cluster_modes": [],
+        "maxwell_modes": [],
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+        "scope_guard": _c0d_scope_guard(),
+    }
+
+
+def _c0d_operator_sources() -> dict[str, Any]:
+    return {
+        "field_layout": {
+            "source": "stage1_solver.coupled_branch.pack_closed_coupled_fields/unpack_closed_coupled_fields",
+            "order": list(C0C_FIELD_LAYOUT),
+            "spatial_a_lanes": ["ar", "aw"],
+            "scalar_potential_lane": "a0",
+            "gradient_embedding": "zeros in psi_real, psi_imag, a0, r0, mu; d_r(lambda) in ar; d_w(lambda) in aw",
+        },
+        "discrete_gradient": {
+            "source": "stage1_solver.operators.tensor_center_gradient_r/w",
+            "boundary_closure": "the operators' one-sided centered-gradient closures; no extra lambda or A boundary condition imposed",
+        },
+        "raw_divergence": {
+            "source": "stage1_solver.operators.axisymmetric_vector_divergence(ar, aw)",
+            "definition": "cell-average r^-2 d_r(r^2 A_r) + d_w A_w",
+        },
+        "weighted_gauge_residual": {
+            "source": "stage1_solver.operators.localized_maxwell_operator ar/aw gauge-control blocks",
+            "object": "grad(Z(w) * axisymmetric_vector_divergence(ar, aw))",
+            "weight_source": "stage1_solver.coupled_branch.localization_weight_torch",
+        },
+    }
+
+
+def _c0d_scope_guard() -> dict[str, bool]:
+    return {
+        "diagnosis_only": True,
+        "gauge_fix_or_deflation_implemented": False,
+        "recrawl_implemented": False,
+        "xi_reassembly_implemented": False,
+        "faithful_operators_touched_by_c0d": False,
+        "frozen_physics_touched_by_c0d": False,
+        "physical_export_guard_touched_by_c0d": False,
+    }
+
+
+def _c0d_subspace_summary(subspace: Mapping[str, Any], grid, config: C0dConfig) -> dict[str, Any]:
+    gradient_singular_values = np.asarray(
+        subspace["gradient_singular_values"],
+        dtype=np.float64,
+    )
+    weighted_singular_values = np.asarray(
+        subspace["weighted_divergence_singular_values"],
+        dtype=np.float64,
+    )
+    return {
+        "status": "MEASURED",
+        "construction": (
+            "Full nodal scalar basis lambda_k, one scalar field per (r,w) cell. "
+            "Each column is embedded as delta a0=0, delta ar=tensor_center_gradient_r(lambda_k), "
+            "delta aw=tensor_center_gradient_w(lambda_k), with all non-A closed-state lanes zero. "
+            "G is the SVD-orthonormalized column space. G_harm is formed from right singular "
+            "directions of Z*D_A restricted to G whose weighted-divergence singular value is "
+            "below the configured relative threshold."
+        ),
+        "grid": [int(grid.spec.nr), int(grid.spec.nw)],
+        "scalar_basis_dim": int(grid.spec.nr * grid.spec.nw),
+        "full_state_dim": int(_closed_layout_dimensions(grid)["state_size"]),
+        "dim_G": int(subspace["dim_g"]),
+        "dim_G_harm": int(subspace["dim_g_harm"]),
+        "gradient_matrix_shape": [
+            int(subspace["gradient_matrix"].shape[0]),
+            int(subspace["gradient_matrix"].shape[1]),
+        ],
+        "gradient_rank_rtol": float(config.gradient_rank_rtol),
+        "gradient_rank_threshold": float(subspace["gradient_rank_threshold"]),
+        "gradient_singular_values": [float(value) for value in gradient_singular_values],
+        "weighted_divergence_operator": "Z(w) * axisymmetric_vector_divergence restricted to G",
+        "harmonic_weighted_divergence_rtol": float(
+            config.harmonic_weighted_divergence_rtol
+        ),
+        "weighted_divergence_harmonic_threshold": float(
+            subspace["weighted_divergence_harmonic_threshold"]
+        ),
+        "weighted_divergence_singular_values": [
+            float(value) for value in weighted_singular_values
+        ],
+        "weighted_divergence_harmonic_indices": list(
+            subspace["weighted_divergence_harmonic_indices"]
+        ),
+    }
+
+
+def _c0d_select_saved_matrix_row(c0b_result: Mapping[str, Any]) -> dict[str, Any] | None:
+    converged = [
+        dict(row)
+        for row in c0b_result.get("tau_attempts", [])
+        if row.get("final_physical_converged")
+    ]
+    if not converged:
+        return None
+    return max(converged, key=lambda row: float(row["target_tau"]))
+
+
+def _c0d_determine_verdict(
+    *,
+    selected_modes: Sequence[Mapping[str, Any]],
+    controls: Mapping[str, Any],
+    config: C0dConfig,
+    incomplete_reason: str | None,
+) -> tuple[str, dict[str, Any], str]:
+    mode_support = [
+        {
+            "mode_index": int(row["mode_index"]),
+            "sigma": float(row["sigma"]),
+            "p_g_fraction": float(row["p_g_fraction"]),
+            "p_g_harm_fraction": float(row["p_g_harm_fraction"]),
+            "weighted_gauge_residual": float(row["weighted_gauge_residual"]),
+            "raw_divergence": float(row["raw_divergence"]),
+            "spatial_a_energy_fraction": float(row["spatial_a_energy_fraction"]),
+            "non_a_remainder": float(row["non_a_remainder"]),
+            "classification": str(row["classification"]),
+        }
+        for row in selected_modes
+    ]
+    support = {
+        "thresholds": {
+            "p_g_min": float(config.gauge_capture_threshold),
+            "weighted_gauge_residual_max": float(config.weighted_residual_threshold),
+            "maxwell_lane_fraction_min": float(config.maxwell_lane_fraction_min),
+        },
+        "controls_status": controls.get("status"),
+        "mode_count": int(len(selected_modes)),
+        "required_mode_count": int(config.maxwell_mode_count),
+        "mode_classifications": mode_support,
+    }
+    all_gauge = bool(
+        selected_modes
+        and len(selected_modes) == int(config.maxwell_mode_count)
+        and all(row.get("classification") == "MAXWELL_GAUGE" for row in selected_modes)
+    )
+    any_gauge = any(row.get("classification") == "MAXWELL_GAUGE" for row in selected_modes)
+    if incomplete_reason is not None:
+        support["reason"] = incomplete_reason
+        return (
+            "DIAGNOSTIC_INCOMPLETE",
+            support,
+            "Complete the missing saved-matrix/subspace/control evidence before selecting a gauge or stiffness fix.",
+        )
+    if all_gauge:
+        return (
+            "WALL_IS_ALL_GAUGE",
+            support,
+            (
+                "Next step: implement a combined diagnostic-gated gauge/null fix: pin or deflate "
+                "the confirmed global U(1) phase mode and deflate the A-sector discrete-gradient "
+                "subspace, or impose an equivalent compatible weighted-gauge constraint, then rerun "
+                "the C0 crawl."
+            ),
+        )
+    if any_gauge:
+        return (
+            "MIXED_GAUGE_PLUS_RESIDUAL",
+            support,
+            (
+                "Next step: do not apply a whole-wall gauge conclusion. Pin/deflate only the "
+                "gated gauge modes and investigate the remaining Maxwell-lane residual modes with "
+                "their lane split and weighted residual evidence."
+            ),
+        )
+    return (
+        "GENUINE_MAXWELL_STIFFNESS",
+        support,
+        (
+            "Next step: treat the four Maxwell-lane modes as genuine A-sector stiffness under "
+            "the C0d gates; do not implement a gauge fix without new evidence."
+        ),
+    )
+
+
+def run_c0d_maxwell_gauge_identification(config: C0dConfig | None = None) -> dict[str, Any]:
+    if config is None:
+        config = C0dConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    c0b_json_path = _resolve_input_path(config.c0b_json_path)
+    if not c0b_json_path.exists():
+        result = _c0d_incomplete_result(f"missing_c0b_json:{c0b_json_path}", config)
+        _write_c0d_outputs(result, config)
+        return result
+    c0b_result = json.loads(c0b_json_path.read_text(encoding="utf-8"))
+    row = _c0d_select_saved_matrix_row(c0b_result)
+    if row is None:
+        result = _c0d_incomplete_result("missing_converged_c0b_matrix_row", config)
+        _write_c0d_outputs(result, config)
+        return result
+
+    c0b_grid = tuple(int(value) for value in c0b_result.get("config", {}).get("grid", C0Config().grid))
+    tau = float(row["target_tau"])
+    branch, _provider, grid, _boundaries = _branch_context(
+        tau=tau,
+        config=C0Config(grid=c0b_grid),
+        dtype=dtype,
+    )
+    state_path, matrix_path = _c0c_attempt_artifacts(row, c0b_result)
+    matrix = load_npz(matrix_path).tocsc()
+    svd = _full_svd_cluster_from_matrix(matrix, mode_count=config.cluster_mode_count)
+    subspace = _c0d_build_gauge_subspace(grid, branch, config)
+    controls = _c0d_control_diagnostics(subspace, grid, config)
+
+    all_modes: list[dict[str, Any]] = []
+    for mode_index, (sigma, vector) in enumerate(
+        zip(svd["singular_values"], svd["right_vectors"])
+    ):
+        all_modes.append(
+            _c0d_mode_diagnostics(
+                mode_index=mode_index,
+                sigma=float(sigma),
+                vector=np.asarray(vector, dtype=np.float64),
+                subspace=subspace,
+                grid=grid,
+                branch=branch,
+                config=config,
+            )
+        )
+
+    maxwell_modes = [
+        row
+        for row in all_modes
+        if float(row["spatial_a_energy_fraction"]) >= float(config.maxwell_lane_fraction_min)
+    ][: int(config.maxwell_mode_count)]
+    selected_indices = {int(row["mode_index"]) for row in maxwell_modes}
+    for mode in all_modes:
+        if int(mode["mode_index"]) not in selected_indices:
+            mode["classification"] = "NOT_A_MAXWELL_LANE_MODE"
+            mode["classification_gate"] = {
+                "reason": "spatial_a_energy_fraction_below_maxwell_lane_gate",
+                "maxwell_lane_fraction_min": float(config.maxwell_lane_fraction_min),
+            }
+
+    incomplete_reason = None
+    if len(maxwell_modes) != int(config.maxwell_mode_count):
+        incomplete_reason = (
+            f"found_{len(maxwell_modes)}_maxwell_lane_modes_required_{config.maxwell_mode_count}"
+        )
+    elif controls.get("status") != "PASS":
+        incomplete_reason = "anti_hardcode_controls_failed"
+    verdict, support, recommended = _c0d_determine_verdict(
+        selected_modes=maxwell_modes,
+        controls=controls,
+        config=config,
+        incomplete_reason=incomplete_reason,
+    )
+    result = {
+        "schema": "stage1_pathA_C0d_maxwell_gauge_identification/v1",
+        "source_revision": source_revision(),
+        "c0b_source_json": str(c0b_json_path),
+        "selected_tau": tau,
+        "selected_state_artifact": str(state_path),
+        "selected_matrix_path": str(matrix_path),
+        "verdict": verdict,
+        "verdict_support": support,
+        "recommended_next_step": recommended,
+        "combined_fix_design_if_wall_is_all_gauge": (
+            "Pin/deflate the global U(1) phase generator already confirmed by C0c, and "
+            "deflate the A-sector discrete-gradient subspace G or add an equivalent compatible "
+            "weighted gauge constraint for grad(Z*D_A*A); then rerun the C0 crawl. This C0d run "
+            "does not implement that fix."
+        ),
+        "config": _c0d_config_to_dict(config),
+        "operator_sources": _c0d_operator_sources(),
+        "gauge_subspace": _c0d_subspace_summary(subspace, grid, config),
+        "controls": controls,
+        "svd": {
+            "status": "MEASURED",
+            "method": svd["method"],
+            "sigma_min": float(svd["sigma_min"]),
+            "sigma_max": float(svd["sigma_max"]),
+            "condition": float(svd["condition"]),
+            "cluster_singular_values": [float(value) for value in svd["singular_values"]],
+            "source": "dense SVD recomputed from saved C0b sparse matrix",
+        },
+        "all_cluster_modes": all_modes,
+        "maxwell_modes": maxwell_modes,
+        "phase_context": {
+            "source": "C0c",
+            "status": "CONFIRMED_GLOBAL_U1_PHASE_GAUGE",
+            "note": "C0d classifies only the other four spatial A-lane near-null modes.",
+        },
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+        "scope_guard": _c0d_scope_guard(),
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    _write_c0d_outputs(result, config)
+    return result
+
+
+def _c0e_incomplete_result(reason: str, config: C0eConfig) -> dict[str, Any]:
+    return {
+        "schema": "stage1_pathA_C0e_gauge_invariant_curl_gate/v1",
+        "source_revision": source_revision(),
+        "verdict": "DIAGNOSTIC_INCOMPLETE",
+        "verdict_support": {"reason": reason},
+        "recommended_next_step": "Provide the missing pinned saved state/matrix evidence and rerun C0e.",
+        "config": _c0e_config_to_dict(config),
+        "operator_sources": {},
+        "artifacts": [],
+        "primary_artifact": None,
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+        "scope_guard": _c0e_scope_guard(),
+    }
+
+
+def _c0e_available_artifact_rows(c0b_result: Mapping[str, Any], config: C0eConfig) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for row in c0b_result.get("depth_sequence", []):
+        linear = row.get("linear_diagnostics", {})
+        if linear.get("status") != "MEASURED":
+            continue
+        try:
+            state_path, matrix_path = _c0c_attempt_artifacts(row, c0b_result)
+        except Exception:
+            continue
+        if not state_path.exists() or not matrix_path.exists():
+            continue
+        item = dict(row)
+        item["_state_path"] = state_path
+        item["_matrix_path"] = matrix_path
+        rows.append(item)
+    rows.sort(key=lambda r: (abs(float(r.get("target_tau", math.inf)) - PRIOR_TAU_FLOOR), float(r.get("target_tau", math.inf))))
+    if config.run_all_available_tau_sources:
+        return rows
+    return rows[:1]
+
+
+def _c0e_trial_residual_norms(
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    state: torch.Tensor,
+    step: np.ndarray,
+) -> dict[str, Any]:
+    try:
+        trial = state.detach() + torch.as_tensor(step, dtype=state.dtype, device=state.device)
+        residual = residual_fn(trial).detach().cpu().numpy().astype(np.float64)
+        return {
+            "status": "MEASURED",
+            "l2": float(np.linalg.norm(residual)),
+            "linf": float(np.max(np.abs(residual))),
+            "finite": bool(np.all(np.isfinite(residual))),
+        }
+    except Exception as exc:  # pragma: no cover - diagnostic reports failures.
+        return {"status": "NOT_MEASURED", "reason": repr(exc), "l2": math.nan, "linf": math.nan}
+
+
+def _c0e_newton_framing_check(
+    *,
+    matrix: csc_matrix,
+    state: torch.Tensor,
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    svd: Mapping[str, Any],
+) -> dict[str, Any]:
+    residual = residual_fn(state).detach().cpu().numpy().astype(np.float64)
+    residual_l2 = float(np.linalg.norm(residual))
+    residual_linf = float(np.max(np.abs(residual)))
+    dense = matrix.toarray()
+    try:
+        step = np.linalg.solve(dense, -residual)
+        solve_method = "dense_np_linalg_solve"
+    except np.linalg.LinAlgError:
+        step, _resid, _rank, _singular = np.linalg.lstsq(dense, -residual, rcond=None)
+        solve_method = "dense_np_linalg_lstsq_fallback"
+    near_null = np.asarray(svd["right_vectors"], dtype=np.float64).T
+    q, r = np.linalg.qr(near_null)
+    diag = np.abs(np.diag(r))
+    rank = int(np.sum(diag > 1.0e-12))
+    basis = q[:, :rank] if rank > 0 else np.zeros((near_null.shape[0], 0), dtype=np.float64)
+    gauge_step = basis @ (basis.T @ step) if basis.shape[1] else np.zeros_like(step)
+    physical_step = step - gauge_step
+    full_trial = _c0e_trial_residual_norms(residual_fn, state, step)
+    physical_trial = _c0e_trial_residual_norms(residual_fn, state, physical_step)
+    linear_residual = dense @ step + residual
+    return {
+        "status": "MEASURED",
+        "solve_method": solve_method,
+        "initial_residual_l2": residual_l2,
+        "initial_residual_linf": residual_linf,
+        "full_step_residual_l2": full_trial.get("l2"),
+        "full_step_residual_linf": full_trial.get("linf"),
+        "full_step_residual_l2_ratio": float(full_trial.get("l2", math.nan) / residual_l2)
+        if residual_l2 > 0.0
+        else math.nan,
+        "full_step_residual_linf_ratio": float(full_trial.get("linf", math.nan) / residual_linf)
+        if residual_linf > 0.0
+        else math.nan,
+        "gauge_removed_step_residual_l2": physical_trial.get("l2"),
+        "gauge_removed_step_residual_linf": physical_trial.get("linf"),
+        "gauge_removed_step_residual_l2_ratio": float(
+            physical_trial.get("l2", math.nan) / residual_l2
+        )
+        if residual_l2 > 0.0
+        else math.nan,
+        "gauge_removed_step_residual_linf_ratio": float(
+            physical_trial.get("linf", math.nan) / residual_linf
+        )
+        if residual_linf > 0.0
+        else math.nan,
+        "step_norm": float(np.linalg.norm(step)),
+        "near_null_component_norm": float(np.linalg.norm(gauge_step)),
+        "complement_component_norm": float(np.linalg.norm(physical_step)),
+        "near_null_component_fraction": float(
+            np.dot(gauge_step, gauge_step) / max(np.dot(step, step), np.finfo(np.float64).tiny)
+        ),
+        "near_null_basis": "fresh_dense_svd_right_modes_0_through_4",
+        "near_null_basis_rank": int(rank),
+        "linear_solve_relative_residual": float(
+            np.linalg.norm(linear_residual) / max(residual_l2, np.finfo(np.float64).tiny)
+        ),
+        "trial_residual_eval_scope": "temporary_tensors_only_no_state_advance_no_line_search_no_newton_write",
+    }
+
+
+def _c0e_lambda_preimage(
+    vector: np.ndarray,
+    coupled_subspace: Mapping[str, Any],
+    grid,
+    config: C0eConfig,
+) -> dict[str, Any]:
+    unit, _norm = _unit_vector(vector)
+    matrix = np.asarray(coupled_subspace["generator_matrix"], dtype=np.float64)
+    coeffs, _resid, rank, singular = np.linalg.lstsq(
+        matrix,
+        unit,
+        rcond=float(config.gradient_rank_rtol),
+    )
+    fitted = matrix @ coeffs
+    lambda_field = coeffs.reshape(grid.spec.nr, grid.spec.nw)
+    frequency = _c0e_frequency_classification(lambda_field)
+    return {
+        "least_squares_rank": int(rank),
+        "singular_values_min": float(np.min(singular)) if len(singular) else math.nan,
+        "singular_values_max": float(np.max(singular)) if len(singular) else math.nan,
+        "fit_residual_fraction": float(
+            np.linalg.norm(unit - fitted) / max(np.linalg.norm(unit), np.finfo(np.float64).tiny)
+        ),
+        "lambda_norm": float(np.linalg.norm(lambda_field)),
+        "frequency": frequency,
+    }
+
+
+def _c0e_mode_outcome(
+    *,
+    curl_metrics: Mapping[str, Any],
+    controls: Mapping[str, Any],
+    a_only_p_g: float,
+    coupled_capture: float,
+) -> dict[str, Any]:
+    margins = {
+        label: _c0e_curl_margin(
+            float(curl_metrics[label]["curl_fraction"]),
+            controls.get("bands", {}).get(label, {}),
+        )
+        for label in ("unweighted", "cell_volume_weighted")
+    }
+    norm_outcomes = {label: row["outcome"] for label, row in margins.items()}
+    if any(outcome == "CONTROL_BANDS_OVERLAP" for outcome in norm_outcomes.values()):
+        combined = "CONTROL_BANDS_OVERLAP"
+    elif all(outcome == "GAUGE" for outcome in norm_outcomes.values()):
+        if a_only_p_g < 0.5 and coupled_capture < 0.5:
+            combined = "LOW_CAPTURE_LOW_CURL_OTHER"
+        else:
+            combined = "GAUGE"
+    elif all(outcome == "TRANSVERSE" for outcome in norm_outcomes.values()):
+        combined = "TRANSVERSE"
+    else:
+        combined = "AMBIGUOUS"
+    finite_margins = [
+        float(row["margin_log10_to_separator"])
+        for row in margins.values()
+        if math.isfinite(float(row.get("margin_log10_to_separator", math.nan)))
+    ]
+    return {
+        "outcome": combined,
+        "norm_outcomes": norm_outcomes,
+        "margins": margins,
+        "band_margin_log10_min": float(min(finite_margins)) if finite_margins else math.nan,
+    }
+
+
+def _c0e_phase_mode_diagnostics(
+    *,
+    mode: Mapping[str, Any],
+    state: torch.Tensor,
+    grid,
+    branch,
+    coupled_subspace: Mapping[str, Any],
+) -> dict[str, Any]:
+    vector = np.asarray(mode["vector"], dtype=np.float64)
+    unit, _norm = _unit_vector(vector)
+    generators = _c0c_generators_for_state(state, grid)
+    phase = next(generator for generator in generators if generator.name == "phase")
+    phase_unit, phase_norm = _unit_vector(phase.vector)
+    curl_metrics = _c0e_curl_fraction_metrics(unit, grid, branch)
+    return {
+        "mode_index": int(mode["mode_index"]),
+        "sigma": float(mode["sigma"]),
+        "classification": "PHASE_GAUGE_CONFIRMED_BY_PHASE_AND_COUPLED_CAPTURE",
+        "phase_overlap_abs": float(abs(np.dot(unit, phase_unit))) if phase_norm > 0.0 else math.nan,
+        "phase_capture_fraction": float(abs(np.dot(unit, phase_unit)) ** 2)
+        if phase_norm > 0.0
+        else math.nan,
+        "coupled_capture_fraction": _c0d_projection_fraction(coupled_subspace["basis"], unit),
+        "spatial_a_norm_unweighted": curl_metrics["unweighted"]["spatial_a_norm"],
+        "z_f_rw_norm_unweighted": curl_metrics["unweighted"]["curl_norm"],
+        "spatial_a_norm_cell_volume_weighted": curl_metrics["cell_volume_weighted"]["spatial_a_norm"],
+        "z_f_rw_norm_cell_volume_weighted": curl_metrics["cell_volume_weighted"]["curl_norm"],
+        "note": "The curl ratio is denominator-noise for the phase mode and is not used as its gate.",
+    }
+
+
+def _c0e_mode_diagnostics(
+    *,
+    mode_index: int,
+    sigma: float,
+    vector: np.ndarray,
+    matrix: csc_matrix,
+    state: torch.Tensor,
+    grid,
+    branch,
+    eos_K: float,
+    boundaries,
+    s_sigma: SSigmaSpec | SSigmaProvider | Mapping[str, Any],
+    a_subspace: Mapping[str, Any],
+    coupled_subspace: Mapping[str, Any],
+    controls: Mapping[str, Any],
+    config: C0eConfig,
+) -> dict[str, Any]:
+    unit, mode_norm = _unit_vector(vector)
+    curl_metrics = _c0e_curl_fraction_metrics(unit, grid, branch)
+    a_only = _c0d_a_only_vector(unit, grid)
+    a_only_p_g = _c0d_projection_fraction(a_subspace["basis"], unit)
+    a_only_p_g_a_normalized = _c0d_projection_fraction(a_subspace["basis"], a_only)
+    coupled_capture = _c0d_projection_fraction(coupled_subspace["basis"], unit)
+    preimage = _c0e_lambda_preimage(unit, coupled_subspace, grid, config)
+    budget = _c0e_residual_budget_for_mode(
+        matrix=matrix,
+        state=state,
+        vector=unit,
+        grid=grid,
+        branch=branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=s_sigma,
+    )
+    outcome = _c0e_mode_outcome(
+        curl_metrics=curl_metrics,
+        controls=controls,
+        a_only_p_g=a_only_p_g,
+        coupled_capture=coupled_capture,
+    )
+    lane_split = _lane_energy_split(unit, grid)
+    return {
+        "mode_index": int(mode_index),
+        "sigma": float(sigma),
+        "mode_norm_before_unit": float(mode_norm),
+        "lane_energy_fractions": lane_split,
+        "spatial_a_energy_fraction": float(lane_split.get("ar", 0.0))
+        + float(lane_split.get("aw", 0.0)),
+        "non_a_remainder": _c0d_non_a_fraction(unit, grid),
+        "curl_fraction": curl_metrics,
+        "a_only_p_g_fraction": a_only_p_g,
+        "a_only_p_g_a_normalized_fraction": a_only_p_g_a_normalized,
+        "coupled_capture_fraction": coupled_capture,
+        "outcome": outcome["outcome"],
+        "outcome_details": outcome,
+        "lambda_preimage": preimage,
+        "residual_budget_jv": budget,
+    }
+
+
+def _c0e_mechanism_summary(
+    *,
+    maxwell_modes: Sequence[Mapping[str, Any]],
+    row_scaling: Mapping[str, Any],
+) -> dict[str, Any]:
+    gauge_like = [
+        mode
+        for mode in maxwell_modes
+        if mode.get("outcome") in {"GAUGE", "LOW_CAPTURE_LOW_CURL_OTHER"}
+    ]
+    mechanism_modes = gauge_like if gauge_like else list(maxwell_modes)
+    freq_counts: dict[str, int] = {}
+    unexplained = []
+    penalty_ratios = []
+    for mode in mechanism_modes:
+        classification = (
+            mode.get("lambda_preimage", {})
+            .get("frequency", {})
+            .get("classification", "UNKNOWN")
+        )
+        freq_counts[classification] = freq_counts.get(classification, 0) + 1
+        budget = mode.get("residual_budget_jv", {})
+        unexplained.append(float(budget.get("unexplained_fraction_of_component_sum_norm", math.nan)))
+        components = budget.get("components", {})
+        penalty = float(components.get("maxwell_gauge_penalty_rows", {}).get("norm", math.nan))
+        assembled = float(budget.get("assembled_jv_norm", math.nan))
+        if math.isfinite(penalty) and math.isfinite(assembled):
+            penalty_ratios.append(penalty / max(assembled, np.finfo(np.float64).tiny))
+    row_ratio = float(row_scaling.get("maxwell_to_non_maxwell_rms_ratio", math.nan))
+    secondary: list[str] = []
+    if math.isfinite(row_ratio) and row_ratio < 1.0e-3:
+        primary = "ROW_SCALING"
+        secondary.append("MAXWELL_ROWS_SMALL_RELATIVE_TO_NON_MAXWELL")
+    elif freq_counts.get("CHECKERBOARD", 0) >= max(1, math.ceil(len(mechanism_modes) / 2)):
+        primary = "ODD_EVEN_DECOUPLING"
+    elif (freq_counts.get("CHECKERBOARD", 0) + freq_counts.get("HIGH_K", 0)) >= max(
+        1, math.ceil(len(mechanism_modes) / 2)
+    ):
+        primary = "ODD_EVEN_DECOUPLING"
+        secondary.append("HIGH_K_LAMBDA_PREIMAGE")
+    elif freq_counts.get("SMOOTH", 0) >= max(1, math.ceil(len(mechanism_modes) / 2)):
+        primary = "SMOOTH_K2"
+    else:
+        primary = "OTHER"
+    if math.isfinite(row_ratio) and row_ratio < 1.0e-1 and primary != "ROW_SCALING":
+        secondary.append("POSSIBLE_ROW_SCALING_CONTRIBUTION")
+    if any(value > 1.0e-6 for value in unexplained if math.isfinite(value)):
+        secondary.append("NONZERO_UNEXPLAINED_JV_REMAINDER")
+    if any(value > 1.0e6 for value in penalty_ratios if math.isfinite(value)):
+        secondary.append("LARGE_COMPONENT_CANCELLATION_RELATIVE_TO_NEAR_NULL_JV")
+    if primary == "ODD_EVEN_DECOUPLING":
+        secondary.append("CONSISTENT_STAGGERED_DIV_GRAD_STENCIL_IS_VIABLE_STRUCTURAL_C0F_DESIGN_NOTE")
+    return {
+        "primary_mechanism": primary,
+        "secondary_flags": secondary,
+        "lambda_frequency_counts": freq_counts,
+        "row_scaling_ratio": row_ratio,
+        "max_unexplained_fraction_of_component_sum_norm": float(
+            max([value for value in unexplained if math.isfinite(value)], default=math.nan)
+        ),
+        "max_gauge_penalty_to_assembled_jv_ratio": float(
+            max([value for value in penalty_ratios if math.isfinite(value)], default=math.nan)
+        ),
+        "evidence_note": (
+            "ODD_EVEN_DECOUPLING is emitted only when the lambda-preimage frequency evidence is "
+            "checkerboard/high-k and the row/block residual budget is present."
+        ),
+    }
+
+
+def _c0e_determine_verdict(
+    *,
+    maxwell_modes: Sequence[Mapping[str, Any]],
+    phase_mode: Mapping[str, Any],
+    controls: Mapping[str, Any],
+    mechanism: Mapping[str, Any],
+    config: C0eConfig,
+) -> tuple[str, dict[str, Any], str]:
+    mode_outcomes = {int(mode["mode_index"]): str(mode.get("outcome")) for mode in maxwell_modes}
+    support = {
+        "controls_status": controls.get("status"),
+        "control_bands": controls.get("bands"),
+        "mode_outcomes": mode_outcomes,
+        "mode_curl_support": [
+            {
+                "mode_index": int(mode["mode_index"]),
+                "sigma": float(mode["sigma"]),
+                "outcome": mode.get("outcome"),
+                "unweighted_curl_fraction": mode["curl_fraction"]["unweighted"]["curl_fraction"],
+                "weighted_curl_fraction": mode["curl_fraction"]["cell_volume_weighted"]["curl_fraction"],
+                "band_margin_log10_min": mode.get("outcome_details", {}).get(
+                    "band_margin_log10_min"
+                ),
+                "a_only_p_g_fraction": mode.get("a_only_p_g_fraction"),
+                "coupled_capture_fraction": mode.get("coupled_capture_fraction"),
+            }
+            for mode in maxwell_modes
+        ],
+        "phase_mode": {
+            "mode_index": phase_mode.get("mode_index"),
+            "phase_capture_fraction": phase_mode.get("phase_capture_fraction"),
+            "coupled_capture_fraction": phase_mode.get("coupled_capture_fraction"),
+        },
+        "mechanism": mechanism,
+        "required_maxwell_mode_count": int(config.maxwell_mode_count),
+        "observed_maxwell_mode_count": len(maxwell_modes),
+        "mode_2_outcome": mode_outcomes.get(2),
+    }
+    if len(maxwell_modes) != int(config.maxwell_mode_count):
+        support["reason"] = "missing_required_four_maxwell_lane_modes"
+        return (
+            "DIAGNOSTIC_INCOMPLETE",
+            support,
+            "Complete the missing four-mode Maxwell-lane evidence before selecting C0f.",
+        )
+    if controls.get("status") != "PASS":
+        support["reason"] = "control_bands_failed"
+        return (
+            "DIAGNOSTIC_INCOMPLETE",
+            support,
+            "Fix the non-circular positive/negative controls before selecting C0f.",
+        )
+    if any(
+        outcome in {"AMBIGUOUS", "CONTROL_BANDS_OVERLAP", "LOW_CAPTURE_LOW_CURL_OTHER"}
+        for outcome in mode_outcomes.values()
+    ):
+        support["reason"] = "one_or_more_modes_not_decisively_classified"
+        return (
+            "DIAGNOSTIC_INCOMPLETE",
+            support,
+            "Do not choose a C0f fix until every Maxwell-lane mode has a decisive curl-band outcome.",
+        )
+    phase_confirmed = bool(
+        float(phase_mode.get("phase_capture_fraction", 0.0)) >= 0.9
+        and float(phase_mode.get("coupled_capture_fraction", 0.0)) >= 0.9
+    )
+    if not phase_confirmed:
+        support["reason"] = "phase_mode_not_confirmed"
+        return (
+            "DIAGNOSTIC_INCOMPLETE",
+            support,
+            "Recheck the phase/coupled generator basis before selecting C0f.",
+        )
+    gauge_modes = {index for index, outcome in mode_outcomes.items() if outcome == "GAUGE"}
+    transverse_modes = {index for index, outcome in mode_outcomes.items() if outcome == "TRANSVERSE"}
+    primary = str(mechanism.get("primary_mechanism"))
+    if len(gauge_modes) == int(config.maxwell_mode_count):
+        recommendation = (
+            "C0f should use minimal adaptive deflation of the full near-null gauge set "
+            "{phase + coupled-gauge modes 1,2,3,4 + the 2-D G_harm}; mode 2 is explicitly "
+            "included because its curl gate is gauge. If the mechanism remains "
+            "ODD_EVEN_DECOUPLING, C0f may instead or additionally evaluate a consistent/staggered "
+            "div-grad gauge-penalty stencil as a structural design, but C0e implements no fix. "
+            "Single-Arbiter plan: deflation lives only in the Newton linear-solve/preconditioner "
+            "path; patha_closed_branch_residual remains the sole convergence arbiter and "
+            "merit/line-search stays on the original ||F||. Caveats: the no-deflation reference "
+            "exists only at tau≈0.029, and deflation must be adaptive across tau with re-SVD at "
+            "new stalls."
+        )
+        support["reason"] = "all_four_maxwell_modes_in_gauge_band_and_phase_confirmed"
+        support["primary_mechanism"] = primary
+        return "WALL_IS_ALL_GAUGE", support, recommendation
+    if {1, 3, 4}.issubset(gauge_modes) and transverse_modes == {2}:
+        recommendation = (
+            "C0f should deflate the confirmed gauge directions {phase + modes 1,3,4 + G_harm} "
+            "and only mode 2's gradient projection; the surviving transverse remnant of mode 2 "
+            "is the narrow A-sector question, not a production solver. Single-Arbiter plan: "
+            "deflation lives only in the Newton linear-solve/preconditioner path; "
+            "patha_closed_branch_residual remains the sole convergence arbiter and merit/"
+            "line-search stays on the original ||F||. Caveats: the no-deflation reference exists "
+            "only at tau≈0.029, and deflation must be adaptive across tau with re-SVD at new stalls."
+        )
+        support["reason"] = "modes_1_3_4_gauge_mode_2_transverse"
+        support["primary_mechanism"] = primary
+        return "GAUGE_PLUS_ONE_TRANSVERSE", support, recommendation
+    if any(mode_outcomes.get(index) == "TRANSVERSE" for index in (1, 3, 4)):
+        support["reason"] = "one_of_modes_1_3_4_has_real_curl"
+        return (
+            "GAUGE_FRAMING_REFUTED",
+            support,
+            "Stop before C0f: the gauge reading is refuted by curl-carrying modes among 1/3/4.",
+        )
+    support["reason"] = "mode_outcome_pattern_not_covered"
+    return (
+        "DIAGNOSTIC_INCOMPLETE",
+        support,
+        "Do not choose a C0f fix until the Maxwell-mode outcome pattern is decisive.",
+    )
+
+
+def _c0e_analyze_artifact(
+    *,
+    row: Mapping[str, Any],
+    c0b_result: Mapping[str, Any],
+    dtype: torch.dtype,
+    config: C0eConfig,
+) -> dict[str, Any]:
+    tau = float(row["target_tau"])
+    c0b_grid = tuple(int(value) for value in c0b_result.get("config", {}).get("grid", C0Config().grid))
+    branch, provider, grid, boundaries, eos_K, residual_fn = _c0c_residual_context(
+        tau=tau,
+        grid_shape=c0b_grid,
+        dtype=dtype,
+    )
+    state_path = Path(row["_state_path"])
+    matrix_path = Path(row["_matrix_path"])
+    state = _load_state_artifact(state_path, dtype=dtype)
+    matrix = load_npz(matrix_path).tocsc()
+    svd = _full_svd_cluster_from_matrix(matrix, mode_count=config.cluster_mode_count)
+    a_subspace_config = C0dConfig(
+        gradient_rank_rtol=config.gradient_rank_rtol,
+        harmonic_weighted_divergence_rtol=config.harmonic_weighted_divergence_rtol,
+    )
+    a_subspace = _c0d_build_gauge_subspace(grid, branch, a_subspace_config)
+    coupled_subspace = _c0e_build_coupled_subspace(state, grid, branch, config)
+    controls = _c0e_control_diagnostics(
+        a_subspace=a_subspace,
+        coupled_subspace=coupled_subspace,
+        state=state,
+        grid=grid,
+        branch=branch,
+    )
+    framing = _c0e_newton_framing_check(
+        matrix=matrix,
+        state=state,
+        residual_fn=residual_fn,
+        svd=svd,
+    )
+    raw_modes = [
+        {
+            "mode_index": int(index),
+            "sigma": float(sigma),
+            "vector": np.asarray(vector, dtype=np.float64),
+        }
+        for index, (sigma, vector) in enumerate(zip(svd["singular_values"], svd["right_vectors"]))
+    ]
+    phase_mode = _c0e_phase_mode_diagnostics(
+        mode=raw_modes[0],
+        state=state,
+        grid=grid,
+        branch=branch,
+        coupled_subspace=coupled_subspace,
+    )
+    all_modes: list[dict[str, Any]] = []
+    for mode in raw_modes:
+        diagnostic = _c0e_mode_diagnostics(
+            mode_index=int(mode["mode_index"]),
+            sigma=float(mode["sigma"]),
+            vector=np.asarray(mode["vector"], dtype=np.float64),
+            matrix=matrix,
+            state=state,
+            grid=grid,
+            branch=branch,
+            eos_K=eos_K,
+            boundaries=boundaries,
+            s_sigma=provider,
+            a_subspace=a_subspace,
+            coupled_subspace=coupled_subspace,
+            controls=controls,
+            config=config,
+        )
+        if int(mode["mode_index"]) == 0:
+            diagnostic["outcome"] = "PHASE_MODE_SEPARATE"
+        all_modes.append(diagnostic)
+    maxwell_modes = [
+        mode
+        for mode in all_modes
+        if int(mode["mode_index"]) != 0
+        and float(mode["spatial_a_energy_fraction"]) >= float(config.maxwell_lane_fraction_min)
+    ][: int(config.maxwell_mode_count)]
+    selected = {int(mode["mode_index"]) for mode in maxwell_modes}
+    for mode in all_modes:
+        if int(mode["mode_index"]) == 0:
+            continue
+        if int(mode["mode_index"]) not in selected:
+            mode["outcome"] = "NOT_SELECTED_AS_MAXWELL_LANE_MODE"
+            mode["selection_reason"] = "spatial_a_energy_fraction_below_gate_or_beyond_required_four_modes"
+    row_scaling = _c0e_row_scaling_summary(matrix, grid)
+    mechanism = _c0e_mechanism_summary(maxwell_modes=maxwell_modes, row_scaling=row_scaling)
+    verdict, support, recommended = _c0e_determine_verdict(
+        maxwell_modes=maxwell_modes,
+        phase_mode=phase_mode,
+        controls=controls,
+        mechanism=mechanism,
+        config=config,
+    )
+    serializable_modes = all_modes
+    for mode in serializable_modes:
+        mode.pop("vector", None)
+    return {
+        "tau": tau,
+        "tau_source_label": (
+            "deepest_saved_stall_attempt"
+            if not bool(row.get("final_physical_converged", False))
+            else "converged_tau_source"
+        ),
+        "final_physical_converged": bool(row.get("final_physical_converged", False)),
+        "state_artifact": str(state_path),
+        "matrix_path": str(matrix_path),
+        "backtrack_index": int(row.get("backtrack_index", 0)),
+        "verdict": verdict,
+        "verdict_support": support,
+        "recommended_next_step": recommended,
+        "c0e_0_newton_framing": framing,
+        "svd": {
+            "status": "MEASURED",
+            "method": svd["method"],
+            "sigma_min": float(svd["sigma_min"]),
+            "sigma_max": float(svd["sigma_max"]),
+            "condition": float(svd["condition"]),
+            "cluster_singular_values": [float(value) for value in svd["singular_values"]],
+            "source": "fresh dense SVD recomputed from saved sparse matrix",
+        },
+        "gauge_subspace_a_only": {
+            "dim_G": int(a_subspace["dim_g"]),
+            "dim_G_harm": int(a_subspace["dim_g_harm"]),
+            "gradient_rank_threshold": float(a_subspace["gradient_rank_threshold"]),
+            "gradient_rank_rtol": float(config.gradient_rank_rtol),
+        },
+        "coupled_gauge_subspace": {
+            "rank": int(coupled_subspace["rank"]),
+            "rank_threshold": float(coupled_subspace["rank_threshold"]),
+            "scalar_basis_dim": int(coupled_subspace["scalar_basis_dim"]),
+            "full_state_dim": int(coupled_subspace["full_state_dim"]),
+            "q_over_hbar": float(coupled_subspace["q_over_hbar"]),
+            "q_over_hbar_source": "branch.gauge_charge / branch.hbar from coupled_branch.py alpha=q/hbar",
+            "singular_value_min": float(np.min(coupled_subspace["singular_values"]))
+            if len(coupled_subspace["singular_values"])
+            else math.nan,
+            "singular_value_max": float(np.max(coupled_subspace["singular_values"]))
+            if len(coupled_subspace["singular_values"])
+            else math.nan,
+        },
+        "controls": controls,
+        "phase_mode": phase_mode,
+        "all_cluster_modes": serializable_modes,
+        "maxwell_modes": maxwell_modes,
+        "row_scaling": row_scaling,
+        "mechanism": mechanism,
+    }
+
+
+def run_c0e_gauge_invariant_curl_gate(config: C0eConfig | None = None) -> dict[str, Any]:
+    if config is None:
+        config = C0eConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    c0b_json_path = _resolve_input_path(config.c0b_json_path)
+    if not c0b_json_path.exists():
+        result = _c0e_incomplete_result(f"missing_c0b_json:{c0b_json_path}", config)
+        _write_c0e_outputs(result, config)
+        return result
+    c0b_result = json.loads(c0b_json_path.read_text(encoding="utf-8"))
+    rows = _c0e_available_artifact_rows(c0b_result, config)
+    if not rows:
+        result = _c0e_incomplete_result("missing_saved_state_or_matrix_with_measured_linear_diagnostics", config)
+        _write_c0e_outputs(result, config)
+        return result
+    artifacts = [
+        _c0e_analyze_artifact(row=row, c0b_result=c0b_result, dtype=dtype, config=config)
+        for row in rows
+    ]
+    primary = artifacts[0]
+    result = {
+        "schema": "stage1_pathA_C0e_gauge_invariant_curl_gate/v1",
+        "source_revision": source_revision(),
+        "c0b_source_json": str(c0b_json_path),
+        "verdict": primary.get("verdict"),
+        "verdict_support": primary.get("verdict_support"),
+        "recommended_next_step": primary.get("recommended_next_step"),
+        "primary_artifact": {
+            "tau": primary.get("tau"),
+            "tau_source_label": primary.get("tau_source_label"),
+            "state_artifact": primary.get("state_artifact"),
+            "matrix_path": primary.get("matrix_path"),
+        },
+        "artifact_policy": {
+            "same_state_and_matrix_used_for_c0e_0_through_c0e_3": True,
+            "preferred_primary": "deepest saved stall/source closest to tau≈0.029 with assembled J",
+            "both_tau_sources_labeled_when_available": bool(len(artifacts) > 1),
+            "available_artifact_count": int(len(artifacts)),
+        },
+        "operator_sources": _c0e_operator_sources(
+            c0_frozen_branch(
+                tau=float(primary["tau"]),
+                grid=tuple(int(value) for value in c0b_result.get("config", {}).get("grid", C0Config().grid)),
+            )
+        ),
+        "artifacts": artifacts,
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+        "scope_guard": _c0e_scope_guard(),
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    _write_c0e_outputs(result, config)
+    return result
+
+
+def _write_c0d_outputs(result: Mapping[str, Any], config: C0dConfig) -> None:
+    json_path = _resolve_output_path(config.json_path)
+    report_path = _resolve_output_path(config.report_path)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_c0d_report(result, report_path)
+
+
+def write_c0d_report(result: Mapping[str, Any], path: Path) -> None:
+    lines: list[str] = []
+    lines.append("# Path-A C0d Maxwell Gauge Identification")
+    lines.append("")
+    lines.append(f"Verdict: **{result.get('verdict')}**")
+    lines.append("")
+    lines.append("## Scope")
+    lines.append("")
+    lines.append(
+        "Diagnosis only: the saved C0b matrix is loaded and its SVD modes are recomputed. "
+        "No gauge fix, deflation, recrawl, or changed-xi Jacobian assembly is performed."
+    )
+    lines.append("")
+    lines.append("## Operator Sources")
+    lines.append("")
+    sources = result.get("operator_sources", {})
+    lines.append("```yaml")
+    for key, value in sources.items():
+        lines.append(f"{key}: {value}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Gauge Subspace")
+    lines.append("")
+    subspace = result.get("gauge_subspace", {})
+    lines.append("```yaml")
+    for key in (
+        "status",
+        "construction",
+        "grid",
+        "scalar_basis_dim",
+        "full_state_dim",
+        "dim_G",
+        "dim_G_harm",
+        "gradient_matrix_shape",
+        "gradient_rank_rtol",
+        "gradient_rank_threshold",
+        "weighted_divergence_operator",
+        "harmonic_weighted_divergence_rtol",
+        "weighted_divergence_harmonic_threshold",
+        "weighted_divergence_harmonic_indices",
+    ):
+        lines.append(f"{key}: {subspace.get(key)}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Controls")
+    lines.append("")
+    lines.append("```yaml")
+    controls = result.get("controls", {})
+    lines.append(f"status: {controls.get('status')}")
+    lines.append(f"positive_control: {controls.get('positive_control')}")
+    lines.append(f"negative_control: {controls.get('negative_control')}")
+    lines.append(f"thresholds: {controls.get('thresholds')}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Maxwell-Lane Mode Gate")
+    lines.append("")
+    lines.append(
+        "A mode is `MAXWELL_GAUGE` iff `||P_G v||^2 >= 0.9` and "
+        "`||grad(Z*D_A*A[v])||/||A[v]|| <= 0.1`. Raw `||D_A*A[v]||/||A[v]||` "
+        "is reported for context but is not the gate."
+    )
+    lines.append("")
+    mode_rows = []
+    for mode in result.get("maxwell_modes", []):
+        lanes = mode.get("lane_energy_fractions", {})
+        mode_rows.append(
+            {
+                "mode": mode.get("mode_index"),
+                "sigma": mode.get("sigma"),
+                "P_G": mode.get("p_g_fraction"),
+                "P_G_harm": mode.get("p_g_harm_fraction"),
+                "residual": mode.get("unexplained_residual"),
+                "weighted": mode.get("weighted_gauge_residual"),
+                "raw_div": mode.get("raw_divergence"),
+                "ar": lanes.get("ar"),
+                "aw": lanes.get("aw"),
+                "non_A": mode.get("non_a_remainder"),
+                "class": mode.get("classification"),
+            }
+        )
+    lines.append(
+        _markdown_table(
+            [
+                "mode",
+                "sigma",
+                "P_G",
+                "P_G_harm",
+                "residual",
+                "weighted",
+                "raw_div",
+                "ar",
+                "aw",
+                "non_A",
+                "class",
+            ],
+            mode_rows,
+        )
+    )
+    lines.append("")
+    lines.append("## Full Cluster Context")
+    lines.append("")
+    all_rows = []
+    for mode in result.get("all_cluster_modes", []):
+        all_rows.append(
+            {
+                "mode": mode.get("mode_index"),
+                "sigma": mode.get("sigma"),
+                "spatial_A": mode.get("spatial_a_energy_fraction"),
+                "P_G": mode.get("p_g_fraction"),
+                "weighted": mode.get("weighted_gauge_residual"),
+                "raw_div": mode.get("raw_divergence"),
+                "class": mode.get("classification"),
+            }
+        )
+    lines.append(
+        _markdown_table(
+            ["mode", "sigma", "spatial_A", "P_G", "weighted", "raw_div", "class"],
+            all_rows,
+        )
+    )
+    lines.append("")
+    lines.append("## Gauge vs Stiffness Discriminator")
+    lines.append("")
+    lines.append(
+        "Saved-matrix evidence distinguishes penalized residual gauge from genuine Maxwell stiffness as follows: "
+        "high projection into the proper multi-lambda gradient range plus small weighted gauge residual is gauge; "
+        "low `P_G` or large weighted residual is classified as Maxwell stiffness under the C0d gate."
+    )
+    lines.append("")
+    lines.append("## Verdict Support")
+    lines.append("")
+    lines.append("```yaml")
+    support = result.get("verdict_support", {})
+    lines.append(f"thresholds: {support.get('thresholds')}")
+    lines.append(f"controls_status: {support.get('controls_status')}")
+    lines.append(f"mode_count: {support.get('mode_count')}")
+    lines.append(f"required_mode_count: {support.get('required_mode_count')}")
+    lines.append("mode_classifications:")
+    for row in support.get("mode_classifications", []):
+        lines.append(f"  - {row}")
+    if support.get("reason") is not None:
+        lines.append(f"reason: {support.get('reason')}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Recommended Next Step")
+    lines.append("")
+    lines.append(str(result.get("recommended_next_step")))
+    lines.append("")
+    lines.append("Combined-fix design if `WALL_IS_ALL_GAUGE`:")
+    lines.append("")
+    lines.append(str(result.get("combined_fix_design_if_wall_is_all_gauge")))
+    lines.append("")
+    lines.append("## Guard Confirmation")
+    lines.append("")
+    lines.append("```yaml")
+    lines.append(f"faithful_operator_boundary: {result.get('faithful_operator_boundary')}")
+    lines.append(f"scope_guard: {result.get('scope_guard')}")
+    lines.append("```")
+    lines.append("")
+    lines.append(f"Machine artifact: `{_resolve_output_path(C0dConfig().json_path)}`.")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _write_c0e_outputs(result: Mapping[str, Any], config: C0eConfig) -> None:
+    json_path = _resolve_output_path(config.json_path)
+    report_path = _resolve_output_path(config.report_path)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_c0e_report(result, report_path)
+
+
+def write_c0e_report(result: Mapping[str, Any], path: Path) -> None:
+    lines: list[str] = []
+    lines.append("# Path-A C0e Gauge-Invariant Curl Gate")
+    lines.append("")
+    lines.append(f"Primary C0e-4 verdict: **{result.get('verdict')}**")
+    lines.append("")
+    lines.append("## Scope And Artifact Policy")
+    lines.append("")
+    lines.append(
+        "Diagnosis only. C0e uses saved C0b states and assembled Jacobians, recomputes fresh dense SVD modes, "
+        "runs one read-only `J*dx=-F` solve per labeled artifact, and evaluates trial residuals only on "
+        "temporary tensors. It implements no deflation, gauge fix, stencil change, xi reassembly, or recrawl."
+    )
+    lines.append("")
+    lines.append("```yaml")
+    lines.append(f"primary_artifact: {result.get('primary_artifact')}")
+    lines.append(f"artifact_policy: {result.get('artifact_policy')}")
+    lines.append(f"scope_guard: {result.get('scope_guard')}")
+    lines.append(f"faithful_operator_boundary: {result.get('faithful_operator_boundary')}")
+    lines.append("```")
+    lines.append("")
+    lines.append("## Operator Sources")
+    lines.append("")
+    lines.append("```yaml")
+    for key, value in result.get("operator_sources", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.append("```")
+    lines.append("")
+
+    artifact_rows = []
+    for artifact in result.get("artifacts", []):
+        artifact_rows.append(
+            {
+                "tau": artifact.get("tau"),
+                "source": artifact.get("tau_source_label"),
+                "converged": artifact.get("final_physical_converged"),
+                "state": artifact.get("state_artifact"),
+                "matrix": artifact.get("matrix_path"),
+                "verdict": artifact.get("verdict"),
+            }
+        )
+    lines.append("## Artifact Sources")
+    lines.append("")
+    lines.append(_markdown_table(["tau", "source", "converged", "state", "matrix", "verdict"], artifact_rows))
+    lines.append("")
+
+    for artifact in result.get("artifacts", []):
+        tau = float(artifact.get("tau"))
+        lines.append(f"## Artifact tau={tau:.12e} ({artifact.get('tau_source_label')})")
+        lines.append("")
+        framing = artifact.get("c0e_0_newton_framing", {})
+        lines.append("### C0e-0 Read-Only Newton Framing")
+        lines.append("")
+        lines.append("```yaml")
+        for key in (
+            "solve_method",
+            "initial_residual_l2",
+            "initial_residual_linf",
+            "full_step_residual_l2_ratio",
+            "full_step_residual_linf_ratio",
+            "gauge_removed_step_residual_l2_ratio",
+            "gauge_removed_step_residual_linf_ratio",
+            "step_norm",
+            "near_null_component_norm",
+            "complement_component_norm",
+            "near_null_component_fraction",
+            "linear_solve_relative_residual",
+            "trial_residual_eval_scope",
+        ):
+            lines.append(f"{key}: {framing.get(key)}")
+        lines.append("```")
+        lines.append("")
+
+        controls = artifact.get("controls", {})
+        lines.append("### Controls")
+        lines.append("")
+        lines.append("```yaml")
+        lines.append(f"status: {controls.get('status')}")
+        lines.append(f"reason: {controls.get('reason')}")
+        lines.append(f"bands: {controls.get('bands')}")
+        lines.append(f"negative_capture_max_observed: {controls.get('negative_capture_max_observed')}")
+        lines.append("```")
+        control_rows = []
+        for row in controls.get("controls", []):
+            control_rows.append(
+                {
+                    "name": row.get("name"),
+                    "family": row.get("family"),
+                    "curl_unw": row.get("unweighted", {}).get("curl_fraction"),
+                    "curl_w": row.get("cell_volume_weighted", {}).get("curl_fraction"),
+                    "P_G": row.get("a_only_p_g_fraction"),
+                    "P_cpl": row.get("coupled_capture_fraction"),
+                    "non_A": row.get("non_a_remainder"),
+                    "construction": row.get("construction"),
+                }
+            )
+        lines.append(
+            _markdown_table(
+                ["name", "family", "curl_unw", "curl_w", "P_G", "P_cpl", "non_A", "construction"],
+                control_rows,
+            )
+        )
+        lines.append("")
+
+        phase = artifact.get("phase_mode", {})
+        lines.append("### Phase Mode Separate Gate")
+        lines.append("")
+        lines.append("```yaml")
+        for key in (
+            "mode_index",
+            "sigma",
+            "classification",
+            "phase_capture_fraction",
+            "coupled_capture_fraction",
+            "spatial_a_norm_unweighted",
+            "z_f_rw_norm_unweighted",
+            "spatial_a_norm_cell_volume_weighted",
+            "z_f_rw_norm_cell_volume_weighted",
+            "note",
+        ):
+            lines.append(f"{key}: {phase.get(key)}")
+        lines.append("```")
+        lines.append("")
+
+        lines.append("### C0e-1 Curl Gate For Maxwell-Lane Modes")
+        lines.append("")
+        mode_rows = []
+        for mode in artifact.get("maxwell_modes", []):
+            lanes = mode.get("lane_energy_fractions", {})
+            outcome = mode.get("outcome_details", {})
+            mode_rows.append(
+                {
+                    "mode": mode.get("mode_index"),
+                    "sigma": mode.get("sigma"),
+                    "curl_unw": mode.get("curl_fraction", {}).get("unweighted", {}).get("curl_fraction"),
+                    "curl_w": mode.get("curl_fraction", {})
+                    .get("cell_volume_weighted", {})
+                    .get("curl_fraction"),
+                    "outcome": mode.get("outcome"),
+                    "margin_log10": outcome.get("band_margin_log10_min"),
+                    "P_G": mode.get("a_only_p_g_fraction"),
+                    "P_cpl": mode.get("coupled_capture_fraction"),
+                    "A_energy": mode.get("spatial_a_energy_fraction"),
+                    "ar": lanes.get("ar"),
+                    "aw": lanes.get("aw"),
+                }
+            )
+        lines.append(
+            _markdown_table(
+                [
+                    "mode",
+                    "sigma",
+                    "curl_unw",
+                    "curl_w",
+                    "outcome",
+                    "margin_log10",
+                    "P_G",
+                    "P_cpl",
+                    "A_energy",
+                    "ar",
+                    "aw",
+                ],
+                mode_rows,
+            )
+        )
+        lines.append("")
+        lines.append("Boundary/interior curl split and norm-specific margins are in the machine JSON for each mode.")
+        lines.append("")
+
+        lines.append("### C0e-3 Mechanism Evidence")
+        lines.append("")
+        mechanism = artifact.get("mechanism", {})
+        lines.append("```yaml")
+        lines.append(f"primary_mechanism: {mechanism.get('primary_mechanism')}")
+        lines.append(f"secondary_flags: {mechanism.get('secondary_flags')}")
+        lines.append(f"lambda_frequency_counts: {mechanism.get('lambda_frequency_counts')}")
+        lines.append(f"row_scaling_ratio: {mechanism.get('row_scaling_ratio')}")
+        lines.append(
+            "max_unexplained_fraction_of_component_sum_norm: "
+            f"{mechanism.get('max_unexplained_fraction_of_component_sum_norm')}"
+        )
+        lines.append(
+            "max_gauge_penalty_to_assembled_jv_ratio: "
+            f"{mechanism.get('max_gauge_penalty_to_assembled_jv_ratio')}"
+        )
+        lines.append("```")
+        lines.append("")
+        row_scaling = artifact.get("row_scaling", {})
+        lines.append("Assembled Maxwell-row scaling:")
+        lines.append("")
+        lines.append("```yaml")
+        lines.append(f"{row_scaling}")
+        lines.append("```")
+        lines.append("")
+        budget_rows = []
+        for mode in artifact.get("maxwell_modes", []):
+            budget = mode.get("residual_budget_jv", {})
+            comps = budget.get("components", {})
+            budget_rows.append(
+                {
+                    "mode": mode.get("mode_index"),
+                    "Jv": budget.get("assembled_jv_norm"),
+                    "curl": comps.get("maxwell_curl_rows", {}).get("norm"),
+                    "penalty": comps.get("maxwell_gauge_penalty_rows", {}).get("norm"),
+                    "current": comps.get("maxwell_current_source_rows", {}).get("norm"),
+                    "matter": comps.get("matter_covariant_a_coupling_rows", {}).get("norm"),
+                    "gauss": comps.get("gauss_charge_rows", {}).get("norm"),
+                    "wall_mass": comps.get("wall_mass_rows", {}).get("norm"),
+                    "unexplained": budget.get("unexplained_remainder_norm"),
+                    "lambda_class": mode.get("lambda_preimage", {})
+                    .get("frequency", {})
+                    .get("classification"),
+                }
+            )
+        lines.append(
+            _markdown_table(
+                [
+                    "mode",
+                    "Jv",
+                    "curl",
+                    "penalty",
+                    "current",
+                    "matter",
+                    "gauss",
+                    "wall_mass",
+                    "unexplained",
+                    "lambda_class",
+                ],
+                budget_rows,
+            )
+        )
+        lines.append("")
+
+        lines.append("### C0e-4 Verdict And C0f Recommendation")
+        lines.append("")
+        lines.append("```yaml")
+        lines.append(f"verdict: {artifact.get('verdict')}")
+        lines.append(f"verdict_support: {artifact.get('verdict_support')}")
+        lines.append("```")
+        lines.append("")
+        lines.append(str(artifact.get("recommended_next_step")))
+        lines.append("")
+
+    lines.append("## Machine Artifact")
+    lines.append("")
+    lines.append(f"`{_resolve_output_path(C0eConfig().json_path)}`")
+    lines.append("")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def _write_c0c_outputs(result: Mapping[str, Any], config: C0cConfig) -> None:
     json_path = _resolve_output_path(config.json_path)
     report_path = _resolve_output_path(config.report_path)
@@ -3639,6 +6214,226 @@ def _c0c_stdout_summary(result: Mapping[str, Any], config: C0cConfig) -> str:
         f"json={_resolve_output_path(config.json_path)}"
     )
     return "\n".join(lines)
+
+
+def _c0d_stdout_summary(result: Mapping[str, Any], config: C0dConfig) -> str:
+    lines: list[str] = []
+    subspace = result.get("gauge_subspace", {})
+    lines.append(
+        f"dim(G)={subspace.get('dim_G')} dim(G_harm)={subspace.get('dim_G_harm')}"
+    )
+    lines.append("Maxwell-lane modes:")
+    for mode in result.get("maxwell_modes", []):
+        lines.append(
+            "  "
+            f"mode {mode.get('mode_index')} sigma={_fmt(mode.get('sigma'))} "
+            f"P_G={_fmt(mode.get('p_g_fraction'))} "
+            f"weighted={_fmt(mode.get('weighted_gauge_residual'))} "
+            f"raw_div={_fmt(mode.get('raw_divergence'))} "
+            f"class={mode.get('classification')}"
+        )
+    lines.append(f"Verdict: {result.get('verdict')}")
+    lines.append(f"Recommended next step: {result.get('recommended_next_step')}")
+    lines.append(
+        "Combined-fix design if WALL_IS_ALL_GAUGE: "
+        f"{result.get('combined_fix_design_if_wall_is_all_gauge')}"
+    )
+    controls = result.get("controls", {})
+    lines.append(
+        "Controls: "
+        f"positive={controls.get('positive_control')} "
+        f"negative={controls.get('negative_control')} "
+        f"status={controls.get('status')}"
+    )
+    lines.append(
+        "Guard confirmation: faithful operators, frozen physics, and export guard untouched by C0d; "
+        "no gauge-fix/deflation/re-crawl and no changed-xi reassembly implemented."
+    )
+    lines.append(
+        f"Artifacts: report={_resolve_output_path(config.report_path)}, "
+        f"json={_resolve_output_path(config.json_path)}"
+    )
+    return "\n".join(lines)
+
+
+def _build_c0d_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run Path-A C0d Maxwell gauge identification.")
+    parser.add_argument("--c0b-json-path", type=Path, default=C0dConfig().c0b_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0dConfig().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0dConfig().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0dConfig().json_path)
+    parser.add_argument("--cluster-mode-count", type=int, default=C0dConfig().cluster_mode_count)
+    parser.add_argument("--maxwell-mode-count", type=int, default=C0dConfig().maxwell_mode_count)
+    parser.add_argument(
+        "--maxwell-lane-fraction-min",
+        type=float,
+        default=C0dConfig().maxwell_lane_fraction_min,
+    )
+    parser.add_argument(
+        "--gauge-capture-threshold",
+        type=float,
+        default=C0dConfig().gauge_capture_threshold,
+    )
+    parser.add_argument(
+        "--weighted-residual-threshold",
+        type=float,
+        default=C0dConfig().weighted_residual_threshold,
+    )
+    parser.add_argument(
+        "--harmonic-weighted-divergence-rtol",
+        type=float,
+        default=C0dConfig().harmonic_weighted_divergence_rtol,
+    )
+    return parser
+
+
+def c0d_main(argv: Sequence[str] | None = None) -> int:
+    args = _build_c0d_parser().parse_args(argv)
+    config = C0dConfig(
+        c0b_json_path=args.c0b_json_path,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        cluster_mode_count=int(args.cluster_mode_count),
+        maxwell_mode_count=int(args.maxwell_mode_count),
+        maxwell_lane_fraction_min=float(args.maxwell_lane_fraction_min),
+        gauge_capture_threshold=float(args.gauge_capture_threshold),
+        weighted_residual_threshold=float(args.weighted_residual_threshold),
+        harmonic_weighted_divergence_rtol=float(args.harmonic_weighted_divergence_rtol),
+    )
+    result = run_c0d_maxwell_gauge_identification(config)
+    print(_c0d_stdout_summary(result, config))
+    return 0
+
+
+def _c0e_stdout_summary(result: Mapping[str, Any], config: C0eConfig) -> str:
+    artifacts = list(result.get("artifacts", []))
+    if not artifacts:
+        return (
+            f"C0e verdict: {result.get('verdict')} - "
+            f"{result.get('verdict_support', {}).get('reason')}"
+        )
+    primary = artifacts[0]
+    lines: list[str] = []
+    lines.append(
+        "Artifact: "
+        f"tau={float(primary.get('tau')):.12e} source={primary.get('tau_source_label')} "
+        f"state={primary.get('state_artifact')} J={primary.get('matrix_path')}"
+    )
+    if len(artifacts) > 1:
+        lines.append(
+            "Additional labeled tau sources: "
+            + ", ".join(
+                f"tau={float(artifact.get('tau')):.12e}:{artifact.get('tau_source_label')}"
+                for artifact in artifacts[1:]
+            )
+        )
+    framing = primary.get("c0e_0_newton_framing", {})
+    lines.append(
+        "C0e-0 ||F|| ratios: "
+        f"full_l2={_fmt(framing.get('full_step_residual_l2_ratio'))}, "
+        f"gauge_removed_l2={_fmt(framing.get('gauge_removed_step_residual_l2_ratio'))}, "
+        f"full_linf={_fmt(framing.get('full_step_residual_linf_ratio'))}, "
+        f"gauge_removed_linf={_fmt(framing.get('gauge_removed_step_residual_linf_ratio'))}; "
+        f"near_null_step_fraction={_fmt(framing.get('near_null_component_fraction'))}"
+    )
+    lines.append("Per-mode curl gate (primary artifact):")
+    for mode in primary.get("maxwell_modes", []):
+        label = "mode 2 SWING" if int(mode.get("mode_index")) == 2 else f"mode {mode.get('mode_index')}"
+        outcome = mode.get("outcome_details", {})
+        lines.append(
+            "  "
+            f"{label}: curl_unw={_fmt(mode.get('curl_fraction', {}).get('unweighted', {}).get('curl_fraction'))}, "
+            f"curl_w={_fmt(mode.get('curl_fraction', {}).get('cell_volume_weighted', {}).get('curl_fraction'))}, "
+            f"outcome={mode.get('outcome')}, "
+            f"band_margin_log10={_fmt(outcome.get('band_margin_log10_min'))}, "
+            f"P_G={_fmt(mode.get('a_only_p_g_fraction'))}, "
+            f"P_cpl={_fmt(mode.get('coupled_capture_fraction'))}"
+        )
+    phase = primary.get("phase_mode", {})
+    lines.append(
+        "Phase mode separate: "
+        f"A_norm_unw={_fmt(phase.get('spatial_a_norm_unweighted'))}, "
+        f"ZF_norm_unw={_fmt(phase.get('z_f_rw_norm_unweighted'))}, "
+        f"phase_capture={_fmt(phase.get('phase_capture_fraction'))}, "
+        f"P_cpl={_fmt(phase.get('coupled_capture_fraction'))}"
+    )
+    mechanism = primary.get("mechanism", {})
+    lines.append(
+        "Mechanism: "
+        f"primary={mechanism.get('primary_mechanism')}, "
+        f"secondary_flags={mechanism.get('secondary_flags')}, "
+        "unexplained_budget="
+        f"{_fmt(mechanism.get('max_unexplained_fraction_of_component_sum_norm'))}"
+    )
+    lines.append(
+        "C0e-4 verdict: "
+        f"{primary.get('verdict')} - {primary.get('verdict_support', {}).get('reason')}"
+    )
+    lines.append(f"Recommended C0f design: {primary.get('recommended_next_step')}")
+    controls = primary.get("controls", {})
+    bands = controls.get("bands", {})
+    lines.append(
+        "Controls: "
+        f"status={controls.get('status')}, "
+        f"unweighted_gap_log10={_fmt(bands.get('unweighted', {}).get('separation_log10'))}, "
+        "weighted_gap_log10="
+        f"{_fmt(bands.get('cell_volume_weighted', {}).get('separation_log10'))}, "
+        f"negative_capture_max={_fmt(controls.get('negative_capture_max_observed'))}"
+    )
+    lines.append(
+        "Guard confirmation: faithful operators/frozen/export untouched by C0e; "
+        "no fix, no state advance, no recrawl, no xi reassembly."
+    )
+    lines.append(
+        f"Artifacts: report={_resolve_output_path(config.report_path)}, "
+        f"json={_resolve_output_path(config.json_path)}"
+    )
+    return "\n".join(lines)
+
+
+def _build_c0e_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run Path-A C0e gauge-invariant curl gate.")
+    parser.add_argument("--c0b-json-path", type=Path, default=C0eConfig().c0b_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0eConfig().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0eConfig().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0eConfig().json_path)
+    parser.add_argument("--cluster-mode-count", type=int, default=C0eConfig().cluster_mode_count)
+    parser.add_argument("--maxwell-mode-count", type=int, default=C0eConfig().maxwell_mode_count)
+    parser.add_argument(
+        "--maxwell-lane-fraction-min",
+        type=float,
+        default=C0eConfig().maxwell_lane_fraction_min,
+    )
+    parser.add_argument(
+        "--gradient-rank-rtol",
+        type=float,
+        default=C0eConfig().gradient_rank_rtol,
+    )
+    parser.add_argument(
+        "--primary-only",
+        action="store_true",
+        help="Analyze only the deepest/primary artifact instead of every available labeled tau source.",
+    )
+    return parser
+
+
+def c0e_main(argv: Sequence[str] | None = None) -> int:
+    args = _build_c0e_parser().parse_args(argv)
+    config = C0eConfig(
+        c0b_json_path=args.c0b_json_path,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        cluster_mode_count=int(args.cluster_mode_count),
+        maxwell_mode_count=int(args.maxwell_mode_count),
+        maxwell_lane_fraction_min=float(args.maxwell_lane_fraction_min),
+        gradient_rank_rtol=float(args.gradient_rank_rtol),
+        run_all_available_tau_sources=not bool(args.primary_only),
+    )
+    result = run_c0e_gauge_invariant_curl_gate(config)
+    print(_c0e_stdout_summary(result, config))
+    return 0
 
 
 def _build_c0c_parser() -> argparse.ArgumentParser:

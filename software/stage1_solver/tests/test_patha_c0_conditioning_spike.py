@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+import math
 
 import numpy as np
 from scipy.sparse import csc_matrix
@@ -332,3 +333,159 @@ def test_c0c_whole_cluster_verdict_is_mixed_when_only_one_mode_is_phase() -> Non
     assert classified[1]["classification"] == "UNEXPLAINED_STIFFNESS"
     assert support["explained_mode_count"] == 1
     assert "pin or deflate" in recommended
+
+
+def test_c0d_gauge_subspace_controls_are_anti_hardcode() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = _small_branch()
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    config = c0.C0dConfig()
+
+    subspace = c0._c0d_build_gauge_subspace(grid, branch, config)
+    controls = c0._c0d_control_diagnostics(subspace, grid, config)
+
+    assert subspace["dim_g"] > 1
+    assert subspace["dim_g"] <= grid.spec.nr * grid.spec.nw
+    assert controls["status"] == "PASS"
+    assert controls["positive_control"]["p_g_fraction"] >= 1.0 - 1.0e-10
+    assert controls["positive_control"]["non_a_remainder"] <= 1.0e-12
+    assert controls["negative_control"]["p_g_fraction"] <= 1.0e-10
+    assert controls["negative_control"]["non_a_remainder"] <= 1.0e-12
+
+
+def test_c0d_weighted_gauge_residual_matches_operator_definition() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = _small_branch()
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    r_scaled = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_scaled = (grid.w_centers[None, :] - float(grid.spec.w_min)) / (
+        float(grid.spec.w_max) - float(grid.spec.w_min)
+    )
+    lambda_field = torch.sin(math.pi * r_scaled) * (1.0 + 0.25 * w_scaled)
+    vector = c0._c0d_scalar_gradient_vector(lambda_field, grid)
+    ar, aw = c0._c0d_extract_spatial_a_fields(vector, grid)
+
+    divergence = c0.axisymmetric_vector_divergence(ar, aw, grid)
+    z = c0.localization_weight_torch(grid.w_centers, branch)[None, :]
+    weighted = z * divergence
+    manual_weighted_gradient = torch.cat(
+        [
+            c0.tensor_center_gradient_r(weighted, grid).reshape(-1),
+            c0.tensor_center_gradient_w(weighted, grid).reshape(-1),
+        ]
+    )
+    a_norm = c0._c0d_spatial_a_norm(vector, grid)
+    metrics = c0._c0d_spatial_a_metrics(vector, grid, branch)
+
+    assert np.isclose(
+        metrics["raw_divergence"],
+        float(torch.linalg.vector_norm(divergence).item()) / a_norm,
+        rtol=1.0e-12,
+        atol=1.0e-12,
+    )
+    assert np.isclose(
+        metrics["weighted_gauge_residual"],
+        float(torch.linalg.vector_norm(manual_weighted_gradient).item()) / a_norm,
+        rtol=1.0e-12,
+        atol=1.0e-12,
+    )
+
+
+def test_c0e_coupled_generator_uses_real_lane_charge_formula() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = _small_branch()
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    fields, mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    assert mu is not None
+    imag = torch.linspace(
+        0.2,
+        0.5,
+        fields.psi_imag.numel(),
+        dtype=state.dtype,
+        device=state.device,
+    ).reshape_as(fields.psi_imag)
+    state = pack_closed_coupled_fields(
+        type(fields)(
+            psi_real=fields.psi_real,
+            psi_imag=imag,
+            a0=fields.a0,
+            ar=fields.ar,
+            aw=fields.aw,
+            r0=fields.r0,
+        ),
+        mu,
+    )
+    fields, _mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    r_scaled = grid.r_centers[:, None] / float(grid.spec.r_max)
+    w_scaled = (grid.w_centers[None, :] - float(grid.spec.w_min)) / (
+        float(grid.spec.w_max) - float(grid.spec.w_min)
+    )
+    lambda_field = r_scaled * (1.0 - w_scaled)
+    vector = c0._c0e_coupled_gauge_vector(lambda_field, state, grid, branch)
+    lanes = c0._closed_lane_slices(grid)
+    alpha = branch.gauge_charge / branch.hbar
+
+    assert np.allclose(
+        vector[lanes["psi_real"][0] : lanes["psi_real"][1]],
+        (-alpha * lambda_field * fields.psi_imag).detach().cpu().numpy().reshape(-1),
+    )
+    assert np.allclose(
+        vector[lanes["psi_imag"][0] : lanes["psi_imag"][1]],
+        (alpha * lambda_field * fields.psi_real).detach().cpu().numpy().reshape(-1),
+    )
+    assert np.allclose(vector[lanes["a0"][0] : lanes["a0"][1]], 0.0)
+    assert np.allclose(
+        vector[lanes["ar"][0] : lanes["ar"][1]],
+        c0.tensor_center_gradient_r(lambda_field, grid).detach().cpu().numpy().reshape(-1),
+    )
+    assert np.allclose(
+        vector[lanes["aw"][0] : lanes["aw"][1]],
+        c0.tensor_center_gradient_w(lambda_field, grid).detach().cpu().numpy().reshape(-1),
+    )
+
+
+def test_c0e_curl_controls_are_non_circular_and_separated() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = replace(c0.c0_frozen_branch(tau=0.03, grid=(12, 12)), r_max=1.4)
+    grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
+    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    config = c0.C0eConfig()
+    a_subspace = c0._c0d_build_gauge_subspace(
+        grid,
+        branch,
+        c0.C0dConfig(
+            gradient_rank_rtol=config.gradient_rank_rtol,
+            harmonic_weighted_divergence_rtol=config.harmonic_weighted_divergence_rtol,
+        ),
+    )
+    coupled = c0._c0e_build_coupled_subspace(state, grid, branch, config)
+    controls = c0._c0e_control_diagnostics(
+        a_subspace=a_subspace,
+        coupled_subspace=coupled,
+        state=state,
+        grid=grid,
+        branch=branch,
+    )
+
+    assert controls["status"] == "PASS"
+    assert controls["bands"]["unweighted"]["status"] == "SEPARATED"
+    assert controls["bands"]["cell_volume_weighted"]["status"] == "SEPARATED"
+    assert controls["bands"]["unweighted"]["separation_log10"] > 10.0
+    assert controls["bands"]["cell_volume_weighted"]["separation_log10"] > 10.0
+    positives = [row for row in controls["controls"] if row["family"] == "positive_gradient"]
+    negatives = [
+        row for row in controls["controls"] if row["family"] == "negative_stream_function_transverse"
+    ]
+    assert len(positives) >= 3
+    assert len(negatives) >= 3
+    assert all(row["unweighted"]["curl_fraction"] < 1.0e-12 for row in positives)
+    assert all(row["cell_volume_weighted"]["curl_fraction"] < 1.0e-12 for row in positives)
+    assert all(row["a_only_p_g_fraction"] >= 1.0 - 1.0e-10 for row in positives)
+    assert all(row["coupled_capture_fraction"] >= 1.0 - 1.0e-10 for row in positives)
+    assert all(row["non_a_remainder"] <= 1.0e-12 for row in positives)
+    assert all(row["unweighted"]["curl_fraction"] > 1.0 for row in negatives)
+    assert all(row["cell_volume_weighted"]["curl_fraction"] > 1.0 for row in negatives)
+    assert all(row["a_only_p_g_fraction"] < 0.5 for row in negatives)
+    assert all(row["construction"].startswith("independent_stream_function_A") for row in negatives)
+    assert all("not_random_minus_own_gradient_projection" in row["construction"] for row in negatives)

@@ -109,19 +109,101 @@ span; do NOT call them stiffness / conclude "production solver" until tested aga
 whole τ≈0.029 wall may be ENTIRELY GAUGE (U(1) phase + Maxwell A-sector) ⇒ a CHEAP combined gauge-fix/deflation could
 dissolve it. C0c outputs (verified, committed): `src/.../patha_c0_conditioning_spike.py` (+C0c additions),
 `scripts/pathA_C0c_nullmode.py`, `tests/…`, `reports/pathA_C0c_nullmode_identification.md`, `runs/pathA_C0c_…json`.
-**⭐ FIRST POST-/COMPACT ACTION (resume here): EXECUTE pathA_C0d** (directive READY — design-review SOUND-WITH-FIXES + all
-fixes + confirm-pass SOUND-AS-IS; `directives/pathA_C0d_maxwell_gauge_identification.md`). The execution prompt is
-PRE-WRITTEN at `_scratch/pathA_C0d_execute_prompt.md`. FIRE IT (plain harness-backgrounded, NEVER `nohup … &`):
-`cd software/stage1_solver && codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=xhigh - <
-_scratch/pathA_C0d_execute_prompt.md > _scratch/pathA_C0d_execute.log 2>&1` (run_in_background). Then REVIEW (1–2 clean
-agents): is the gauge subspace a genuine multi-`λ` discrete-gradient `G` (dim≫1, correct A-lane/grad/div ops)? are
-`‖P_G v‖²` + the WEIGHTED gauge residual `‖grad(Z·D_A·A)‖/‖A‖` genuinely computed (positive + negative controls)? is the
-verdict gated (MAXWELL_GAUGE iff `‖P_G v‖²≥0.9` AND weighted residual `≤0.1`)? faithful ops untouched. **What C0d decides:**
-WALL_IS_ALL_GAUGE (the 4 Maxwell modes are gauge too — likely) ⇒ the τ≈0.029 wall is ENTIRELY GAUGE ⇒ NEXT after C0d =
-design ONE combined phase+A-sector gauge-fix/deflation (`pathA_C0e`), then re-crawl (likely breakthrough). MIXED/STIFFNESS ⇒
-the residual is the genuine-stiffness candidate. **Confirmed so far: the U(1) PHASE mode IS gauge (C0c).** THEN (only after
-the wall is broken): promote the constitutive family to a calibrated branch + wire multi-knob calibrate-predict (R0/J/W →
-anchor → surplus) → `pathA_22`.
+**pathA_C0d EXECUTED 2026-06-20 → verdict `MIXED_GAUGE_PLUS_RESIDUAL` (3/4 "genuine stiffness") → FIDELITY-AGENT VERIFIED
+the CODE faithful (term-by-term ops; the 4 modes freshly re-SVD'd from the saved C0b matrix, NO cold-load; ξ=1.0 verified
+so the dropped 1/ξ factor is inert; negative control circular = weak but not wrong) BUT ADVERSARIAL + Codex-consult +
+GLM-review judged the VERDICT OVERSTATED.** Why: C0d gated gauge-vs-stiffness on `P_G` + a hand-picked
+weighted-divergence-RESIDUAL threshold (0.1), which is a gauge-FIXING-operator response, NOT the gauge-INVARIANT field
+strength. Modes 1/3/4 are ~99.9% pure gradient (P_G≈0.999 = curl-free = GAUGE); only mode 2 (P_G=0.83, ar-dominated, ~17%
+non-gradient) is a partial exception. The 0.1 gate is the SOLE discriminator (mode 3 clears it by only 0.022); mode 1
+sits 99.7% in the penalty's OWN blind subspace (G_harm) yet is called the worst stiffness (the gate reads `grad` of a
+near-zero, mesh-oscillatory divergence). C0d outputs committed: `src/.../patha_c0_conditioning_spike.py` (+C0d additions),
+`scripts/pathA_C0d_maxwell_gauge.py`, `tests/…`, `reports/pathA_C0d_maxwell_gauge_identification.md`, `runs/pathA_C0d_…json`.
+**3-REVIEWER CONSULT (Claude+Codex+GLM) → CONVERGED PLAN** (`_scratch/pathA_C0e_agreed_plan_for_GLM.md`: §6 Claude+Codex,
+§8 GLM + Claude's C5): the decisive test is the per-mode gauge-INVARIANT **curl fraction `‖Z·F_rw‖/‖A‖`**, with **mode 2 as
+the swing GATE** (curl≈0 ⇒ all 5 modes gauge ⇒ the wall is entirely cheap; curl O(1) ⇒ ONE transverse mode, NOT a
+production solver). CONFIRMED vs code: the COUPLED gauge generator `(δψ=i(q/ħ)λψ, δa0=0, δA=∇λ)` is complete (no temporal
+δa0 for the stationary ansatz; a0 elliptic via Gauss → no near-null modes); BCs do NOT restrict the gauge subspace
+(deflation SAFE); the discrete de Rham complex is INEXACT (so `P_G` can't bound the curl — measure it directly); no second
+continuous symmetry. **Claude C5 (carried; Codex vets at design-review):** the σ≈1e-11 vs k²~O(1–10) **9-order gap** ⇒
+likely ODD-EVEN/CHECKERBOARD decoupling from the mismatched div/grad stencils (or a small Maxwell-row scaling), NOT smooth
+modes ⇒ if so, a consistent/staggered STENCIL fix is a STRUCTURAL alternative to deflation that generalizes across τ.
+Added by GLM: a Step-0 full-Newton-step ‖F‖ check (rules globalization in/out); adaptive re-SVD at each new stall; the
+no-deflation reference exists ONLY at τ≈0.029.
+**pathA_C0e EXECUTED 2026-06-20 → verdict `GAUGE_FRAMING_REFUTED` → FIDELITY-AGENT VERIFIED the CODE faithful BUT the
+VERDICT was REJECTED (k-biased-metric FALSE NEGATIVE) by adversarial + Codex + Claude.** Why rejected: the curl gate
+`‖Z·F_rw[v]‖/‖A[v]‖` is structurally `‖∂A‖/‖A‖` (a derivative-over-value ratio ≈ a WAVENUMBER, NOT a content fraction),
+so it AMPLIFIES the ~0.1% high-k remnant of a 99.9%-gradient near-null mode → it mislabeled gauge modes 1/3/4 TRANSVERSE.
+Three convergent tells: (1) C0e's own Jv budget shows every mode's near-null-ness is a curl-term≈penalty-term CANCELLATION
+with λ=SMOOTH / `SMOOTH_K2` (= the smooth-gradient gauge story, per the operator identity curl-curl+(1/ξ)grad-div on ∇λ →
+(1/ξ)∇(Lap λ), small for smooth λ); (2) curl/energy INVERSION (mode 4 has 5× more transverse energy than mode 3 yet 5×
+less curl — impossible if curl tracked physics); (3) ~53% of each mode's curl norm sits on the 1-cell boundary ring
+(closure leakage). **Honest gauge picture (back to the 3-reviewer view): modes 1/3/4 are GAUGE; only mode 2 (P_G=0.83,
+17% transverse) is a genuine candidate. Unbiased discriminator = dimensionless `1−P_G`. Drop the raw curl gate as a
+classifier.** C0e outputs (faithful code; verdict rejected — annotate on commit): `src/.../patha_c0_conditioning_spike.py`
+(+C0e), `scripts/pathA_C0e_curl_gate.py`, `tests/…`, `reports/pathA_C0e_gauge_invariant_curl_gate.md`, `runs/pathA_C0e_…json`.
+**⭐⭐ THE REFRAME (two findings that change everything; Claude+2 agents+Codex converged):**
+**(A) The τ≈0.029 "wall" is NOT a proven wall — it's a CRIPPLED-SOLVER ARTIFACT.** The C0b run that DEFINED the stall
+used `max_newton_iters_override=2` (code default = 18, `patha_closed_newton.py:81`), `max_tau_backtracks=0`, and
+`depth_sequence=[0.03, 0.02899]` (ONE τ step of 0.001). Independently verified via `runs/pathA_C0b_wall_diagnosis/pathA_C0b_diagnostic.json`.
+So the "wall" = from a converged τ=0.03, take one τ step, allow 2 Newton iters, never backtrack → "fail". B2c gate is
+Linf≤1e-6; stall sits at Linf=5.32e-5 (~53× above) = "not converged in 2 iters", NOT "unreachable". FIVE rounds (C0–C0e)
+analyzed a 2-iteration budget as if it were physics.
+**(B) The near-null subspace is NOT what blocks the Newton step (C0e-0, fidelity-verified genuine):** the full step
+overshoots ‖F‖ 5.08× while the near-null subspace contributes ~nothing (fraction 1.8e-21); removing it changes nothing;
+linear solve clean (7.9e-13). ⇒ the proximate blocker is GLOBALIZATION/step-length, not gauge-conditioning (Codex caveat:
+α=1 overshoot alone isn't fully diagnostic; if `Jδ=−F` is consistent the L2 merit slope is −‖F‖² at α=0 so SOME small α
+must reduce ‖F‖ — C0b even found accepted α=1/128 — so the real question is whether the trust radius is large enough to
+CONVERGE vs plateau). **Production solver OFF the table for unblocking the crawl; gauge deflation drops to cheap INSURANCE.**
+**GLM REVIEWED the C0f plan → ENDORSED + 3 refinements folded in:** run-the-DEFAULT-config FIRST (the cheapest test;
+C0b overrode every default); a cheap NUMERIC `dψ/dτ` FOLD DETECTOR (the one genuine residual risk — a turning point near
+τ=0.029 that no globalization passes; pseudo-arclange doesn't exist in the codebase yet); and the residual is SMOOTH (EOS
+`(5K/4)ρ⁴`, ρ=|ψ|², NO √ρ in `coupled_pde_residual` — `physics.py:46-47`) so the α=1 overshoot is pure large-step
+nonlinearity and SOME small α MUST reduce ‖F‖ (⇒ Q2 nonsmoothness worry eliminated). GLM also retracted its own earlier
+"use curl fraction as a gate" rec. Plan: `_scratch/pathA_C0f_agreed_plan_for_GLM.md`; consult `_scratch/pathA_C0f_consult.log`.
+**pathA_C0f EXECUTED 2026-06-20 → verdict `DIAGNOSTIC_INCOMPLETE` (HONEST), key data is ENCOURAGING + RE-VERIFIED:**
+(1) **GAUGE QUESTION SETTLED** — the UNBIASED `1−P_G` re-confirm: modes 1/3/4 are GAUGE (`1−P_G_A`≈7e-4/2e-4/1e-3), mode 2
+the LONE transverse candidate (0.17); the MIXED control reproduced `ε²/(1+ε²)=9.9e-3` EXACTLY (k-independent) while raw
+curl grew with k ⇒ DEFINITIVE proof the C0e curl gate was k-biased and its REFUTED verdict WRONG. (2) **The crawl is
+GENUINE** (Claude-verified: `prefer_existing_b2c_background_predictor=false`; each τ warm-starts from the prior converged
+state — NO C0-v2 cold-load) and with the DEFAULT config CONVERGES CLEANLY (0 backtracks, Linf~1e-12) through τ=0.029125 —
+PAST where the crippled C0b run "stalled" ⇒ the "wall" is dissolving under a non-crippled solver. (3) **WRINKLE:** a SINGLE
+τ-step (0.0290625) hit the **600s PER-ATTEMPT timeout** (SIGALRM; not the cumulative crawl) before finishing → no stalled
+state saved → merit sweep NOT_MEASURED. (4) **YELLOW FLAG:** `‖dψ/dτ‖` growing 3.2× & accelerating, **R0-dominated**, as
+τ→0.029 (below the 10× gate ⇒ FOLD_RISK not FOLD_DETECTED). The step that timed out was the SMALLEST one — ambiguous
+between "slow/expensive solve" and "emerging fold." C0f outputs: `src/.../patha_c0f_globalization_probe.py`,
+`scripts/pathA_C0f_globalization_probe.py`, `tests/test_patha_c0f_globalization_probe.py`, `reports/pathA_C0f_globalization_probe.md`,
+`runs/pathA_C0f_globalization_probe/…json`.
+**pathA_C0f2 EXECUTED 2026-06-20 (chunked/timed, user-authorized >600s) → fidelity + adversarial reviewed (faithful;
+numbers trustworthy).** VERIFIED: per-τ cost = **96–97% Jacobian assembly** (colored JVP build → ~100× sparse-assembly
+target); the crawl converges CLEANLY to **τ=0.029125** (GENUINE warm-start, NO cold-load) then STALLS at 0.0290625 —
+**plain Newton+Armijo is effectively STUCK** (merit sweep: best step 0.05% reduction; α=1 OVERSHOOTS 13 orders, 4× worse
+than start). The J⁻¹-amplified near-null direction is **NON-gauge (mode 2 transverse)** ⇒ **gauge-only fix is DEAD**;
+**production solver OFF** (linear solve clean to 1e-12 — a GLOBALIZATION problem, not linear-solve). **FOLD-ONSET LIVE
+~30%** (the backtrack-exhaustion fold-gate FIRED; growth 3.2× R0-dominated; reachable-Linf "improvement" is turning-point
+creep, |Δτ|→0). Timing extrapolation (~1.67h to τ=0.02) is MOOT until the stall is cured.
+**⭐⭐ CONSOLIDATED FINDINGS + RESEARCH BRIEF (read FIRST on resume):
+`reports/pathA_throat_solver_findings_and_research_brief.md`** — self-contained: the PRECISE numerical problem
+(gauged-GPE + Maxwell continuation BVP; near-singular J cond≈1e13; near-null = phase gauge + A gradient modes + mode-2
+transverse), the full C0→C0f2 chain, the VERIFIED diagnosis, the OPEN fold-vs-ill-conditioning question + the cheap
+det(J)/σ_min(τ)/tangent probe that settles it, the C0g candidates, and the literature search terms. C0f2 outputs:
+`src/.../patha_c0f2_timing_rerun.py`, `scripts/pathA_C0f2_timing_rerun.py`, `tests/…`, `reports/pathA_C0f2_timing_rerun.md`,
+`runs/pathA_C0f2_timing_rerun/…json`.
+**⭐ POST-/COMPACT PLAN (user-set 2026-06-20):** (1) **ONLINE LITERATURE RESEARCH FIRST** — how is this class of solve
+done / what tricks apply: pseudo-arclength + deflated continuation (AUTO / pde2path / BifurcationKit.jl / Farrell
+deflation); pseudo-transient continuation (Kelley–Keyes); Levenberg–Marquardt / trust-region globalization; null-space
+deflation & gauge-fixing in coupled EM–matter BVPs; stationary-GPE / vortex / soliton solvers (Bao & Cai; Sobolev /
+preconditioned-gradient; Newton-for-GPE); sparse Jacobian via graph coloring; analog-gravity throat-profile numerics;
+near-empty-core GPE conditioning (brief §1/§6). (2) The cheap **FOLD PROBE** (brief §4) — det(J)-sign / σ_min(τ) / branch
+tangent on the existing converged states → fold ⇒ pseudo-arclength, else ill-conditioning ⇒ LM/trust-region. (3) **C0g**
+shaped by (1)+(2): sparse assembly + the chosen globalization + a det(J)/tangent fold instrument; Single-Arbiter + genuine
+continuation preserved; production solver stays OFF unless everything else fails. (4) If unblocked → constitutive family →
+calibrated branch → multi-knob calibrate-predict (R0/J/W → anchor → SURPLUS) → `pathA_22`.
+**Confirmed: U(1) phase mode gauge (C0c); modes 1/3/4 gauge (1−P_G, C0f/C0f2); mode 2 the lone transverse candidate
+DRIVING the stall.**
+**LESSON (candidate memory): a "gauge-invariant" metric built as derivative/value is dimensionally a wavenumber and
+amplifies high-k remnants — use the dimensionless energy fraction; and ALWAYS check the solver CONFIG (iter budget,
+backtracking) before diagnosing a "wall" as physics.**
 **⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
 is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades
 to `NOT_MEASURED`/`DIAGNOSTIC_INCOMPLETE`, never a fake). It WILL legitimately bind at the **real high-resolution profile

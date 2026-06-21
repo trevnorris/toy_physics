@@ -1,11 +1,23 @@
 # Directive pathA_C0g-build — gauge-fix (path-only) → re-confirm the fold → gauge-fixed pseudo-arclength to round the throat-radius turning point
 
-**Status:** **B-1/B-2/B-4 + deepcrawl DONE & COMMITTED (`0c3fc98f`); B-3 RE-SCOPED + READY — awaiting the user EXECUTION
-gate (2026-06-21).** See the "⭐ B-3 EXECUTION RE-SCOPE (AMENDMENT, 2026-06-21)" section below + the staged execution prompt
-`_scratch/pathA_C0g_B3_execution_prompt.md`. **B-3 amendment design-review loop COMPLETE:** Codex design-review =
-SOUND-WITH-FIXES (8 MUST-FIX + 3 NICE) → all applied → confirm-pass = STILL-NEEDS (2 residuals: stale `:1539` anchor in
-Acceptance B-3(ii); a B-3.1 cold-load loophole) → both FIXED → Codex **re-confirm = SOUND-AS-IS** (Claude, 2026-06-21).
-Logs `_scratch/codex_c0g_B3_{design_review,confirmpass,reconfirm}.log`.
+**Status:** **B-3 FIRST RUN DONE & COMMITTED (`46a3ea21`) → NOT_MEASURED at the B-3.0 gate (honest). GLM-REFRAMED:
+the "decisive" overlap test was near-tautological → the CURRENT plan is the "⭐⭐ B-3 FOLLOW-UP v2" CHARACTERIZATION BATTERY.
+EXECUTE via `_scratch/pathA_C0g_B3_followup_execution_prompt.md` once the v2 design-review loop closes SOUND-AS-IS, then the
+user EXECUTION gate (2026-06-21).**
+- **B-3 first run:** faithful gauge-fixed Keller pseudo-arclength (fidelity FAITHFUL_WITH_NOTES); reproduces the recorded
+  branch to ~1e-6 at the reliable points but "FAILs" the B-3.0 gate at the deepest point (compared vs an under-converged
+  recorded Newton state) → `NOT_MEASURED` (honest; dual-reviewed). Report `reports/pathA_C0g_B3_pseudoarclength.md`.
+- **⚠️ The earlier "Phase D overlap → gate-refine → re-run" follow-up is SCRAPPED** (GLM + Claude + Codex agree: the overlap
+  test is a NECESSARY consequence of two near-roots, so it can't separate gate-artifact from continuation-bug). **CURRENT =
+  the CHARACTERIZATION BATTERY** (see "⭐⭐ B-3 FOLLOW-UP v2"): C0 read-offs → C1 re-converge-the-FAIL-state-TIGHT-from-both →
+  C2 mode-characterization (+ bordered fold-transversality) → C3 line-scan → C4 resolution check; a 6-outcome tool-selection
+  table (Case 0 INCONCLUSIVE / 1 under-converged-ref / 2 fold / 3 bifurcation / 4 wall / 5 gauge-or-discretization); **do NOT
+  pre-commit to pseudo-arclength** — only Case 2 (with a user gate) lets the built pseudo-arclength continue. GLM consult DONE
+  (`_scratch/pathA_C0g_B3_followup_for_GLM.md`); v2 design-review loop: Codex AGREES with GLM, SOUND-WITH-FIXES (12) → fixes
+  applied → confirm-pass [pending]. Logs `_scratch/codex_c0g_B3_followup_v2_design_review.log`. Timeout: 600s cap LIFTED for
+  solver runs → forward-progress monitoring (see that policy section).
+- **(History: prior B-3 RE-SCOPE amendment loop + the scrapped Phase-D follow-up loop, 2026-06-21)** — design-reviewed
+  SOUND-AS-IS at the time; the Phase-D one was later superseded by the GLM reframe.
 **(Prior BUILD-directive loop, 2026-06-20/21):** Codex design-review = SOUND-WITH-FIXES → all 8
 fixes APPLIED → confirm-pass = STILL-NEEDS (3 residuals) → 3 residuals FIXED + the `min_R0` anchor self-verified
 → Codex **re-confirm = SOUND-AS-IS** (Claude, 2026-06-20/21). Logs `_scratch/codex_c0g_build_directive_{review,confirmpass,reconfirm}.log`. The 8 design-review fixes: (1) B-2 relative/trend gates, not the refuted absolute
@@ -221,69 +233,119 @@ timeout ⇒ NOT_MEASURED (chunk + resume), NEVER raise the 600s cap — if a sin
 
 ---
 
-## ⭐⭐ B-3 FOLLOW-UP (AMENDMENT, 2026-06-21) — decisive A-vs-B diagnostic → conditional gate-refine + fallback-wire → re-run
+## ⭐⭐ B-3 FOLLOW-UP v2 (AMENDMENT, 2026-06-21, GLM-REFRAMED) — CHARACTERIZE the singularity FIRST, then pick the tool
 
-**Why.** The first B-3 run (commit pending; report `reports/pathA_C0g_B3_pseudoarclength.md`) BUILT a faithful gauge-fixed
-Keller pseudo-arclength continuation (fidelity audit FAITHFUL_WITH_NOTES; Single Arbiter intact; gauge `Q_perp` inside
-every solve; B-4 direction-only; no cold-load; freeze intact) and stopped HONESTLY at the B-3.0 validation gate
-(`reproduction = FAIL` → `NOT_MEASURED`; B-3.1 not attempted). The dual review converged: the continuation reproduces the
-recorded branch to ~1e-6 wherever the recorded states are reliable (3/4 comparison points PASS), and the lone FAIL is
-**~85% a GATE-CALIBRATION ARTIFACT, not a continuation bug** — at the deepest point (τ=0.02911625, σ_min≈7.9e-5) it is
-compared against an UNDER-CONVERGED recorded plain-Newton state (20 iters = max, residual 2.2e-7, step_norm still 1.08e-6),
-while the continuation's OWN residual there is ~1e-10 (≈1000× tighter); the 6.82e-4 mismatch lives almost entirely in the
-soft `r0`/`μ` fold (near-null) mode (ρ, curl A agree to 1e-6/1e-13). **The ONE missing decisive check (not run under the
-no-commentary-script rule): project that mismatch onto the σ_min near-null subspace.** Separately: the continuation stalled
-just ABOVE the recorded deepest τ and the directive-required fallback machinery (adaptive `ds` reduction / tangent reseed /
-secant fallback) was NEVER exercised (`*_attempted: false`) — B-3.1 needs it wired in regardless.
+**This supersedes the earlier "decisive A-vs-B diagnostic (Phase D) → gate-refine → re-run" follow-up, which a GLM tertiary
+review (and Claude+Codex on reflection) judged FLAWED.** Why the prior Phase D was scrapped: the proposed "decisive" test —
+project `Δ = x_cont − x_rec` onto the near-null subspace of `J·Q_perp` and require overlap ≥ 0.90 — is **near-tautological**.
+If `x_cont` and `x_rec` are BOTH near-roots of the same residual at the same τ, then `J·Δ ≈ R(x_cont) − R(x_rec) ≈ 0` by the
+mean-value theorem, so `Δ` lies in the near-null space REGARDLESS of whether the continuation tracked the branch correctly or
+drifted there via a bug (checked: `‖J·Δ‖/‖Δ‖ ≈ 2.2e-7/6.8e-4 ≈ 3e-4` — high overlap was guaranteed). The "false-confirmation
+guard" just restated "both are roots." So Phase D is NECESSARY-not-SUFFICIENT and cannot separate A (gate artifact) from B
+(continuation bug). **Lesson recorded:** a decisive test must not be a necessary consequence of the thing it claims to confirm.
 
-**GUARD AGAINST GOALPOST-MOVING (binding):** refining a validation gate AFTER it failed can mask a real bug. Therefore the
-DECISIVE diagnostic (Phase D) GATES the gate-refinement, with a PRE-COMMITTED, FALSIFIABLE threshold stated here BEFORE
-execution. If Phase D refutes the artifact hypothesis, the gate is NOT touched and the continuation is debugged instead.
+**The reframe (GLM): characterize the singularity, don't optimize the gate.** The B-3.0 gate failure is a SYMPTOM; the disease
+is an UNCHARACTERIZED near-singularity at τ≈0.0291132. The framing was also incomplete — there are FIVE possibilities, not two:
+(1) gate artifact / under-converged reference (the recorded state hit the 20-iter cap, residual 2.2e-7, step_norm 1.08e-6 =
+slow-not-stalled at cond~1e5); (2) physical simple FOLD (σ_min→0 with a tangent reversal reachable past the stall);
+(3) physical BIFURCATION / branch point (the non-monotone r0/μ + r0 nudging UP + "valid roots differing from Newton's" are
+hallmarks; pseudo-arclength is the WRONG tool here — it silently branch-switches); (4) conditioning WALL (σ_min bottoms out
+>0, never reaches 0 — read-off: the deepest CONVERGED σ_min is a FINITE 7e-6 at τ=0.0291132, already BELOW the σ_min² fit's
+zero-crossing 0.0291139, so the fit is unreliable and a wall is live); (5) incomplete GAUGE fix (a residual r0/μ gauge
+freedom the 511-dim fix missed) or a 16×16 DISCRETIZATION artifact. **Plus an operational (0) INCONCLUSIVE / bug** — an
+implementation, provenance, scaling, or gate defect is a real EXECUTION outcome that must STOP for debug, NOT be forced into
+(1)–(5). **Pseudo-arclength is right only for (2); each other case needs a different tool (or a stop). So we MUST characterize
+before committing the expensive deep solve.**
 
-### Phase D — DECISIVE A-vs-B diagnostic (run FIRST; read-only on existing states + a fresh Jacobian)
-On the existing artifacts ONLY (no new solve): the B-3.0 FAIL-point continuation state (`B3_0_accepted_009`, τ≈0.02911625,
-under `runs/pathA_C0g_B3_pseudoarclength/B3_0/`) and the recorded deepcrawl state at the SAME τ
-(`runs/pathA_C0g_deepcrawl/.../states/attempt_008_tau_0p02911625.npz`). **Codex designs** the projection; requirements:
-gauge-ALIGN the two states first (global-phase for ψ + gauge-orbit LS for A — reuse the B-1 path-only alignment), form the
-physical difference `Δ = x_cont − x_rec`, restrict to the gauge complement `Q_perp` (project out residual gauge), normalize;
-assemble the scaled `J·Q_perp` near-null right-singular vectors at the FAIL point (top-k, k≈5, smallest σ — reuse the
-existing dense-SVD machinery), and report **(i)** the overlap fraction `‖P_nullspace Δ̂‖` of the unit mismatch with the
-top-k near-null subspace, **(ii)** the single-mode overlap `|⟨Δ̂, v_min⟩|`, **(iii)** corroborating facts: the recorded
-state's own original-residual / Newton-iters / step_norm (is it under-converged?) and the continuation state's
-original-residual; the stiff-lane (ρ, curl A) agreement.
-- **PRE-COMMITTED verdict:** `ARTIFACT_CONFIRMED` iff top-k near-null overlap ≥ **0.90** AND the recorded state is
-  demonstrably under-converged (residual > 10× the continuation's, or iters at max with step_norm ≳ 1e-6) AND the stiff
-  lanes agree to tol. `ARTIFACT_REFUTED` iff overlap < 0.90 (the mismatch is NOT along the soft mode) ⇒ STOP, do NOT refine
-  the gate, report a likely continuation defect to debug. `DIAGNOSTIC_INCOMPLETE` otherwise (report + re-gate).
+**Two read-offs already done (Claude, from existing logs; Codex re-confirms exact in C0):** raw σ_min(τ) — finite 7e-6 at the
+deepest converged τ, fit zero-crossing unreliable (wall vs fold UNRESOLVED); arclength-metric balance — near the stall the
+metric is x-DOMINATED (`‖dx‖²≈3.6e-6` vs `(1000·dτ)²≈6e-7`), so pseudo-arclength was NOT degenerating into τ-continuation.
 
-### Phase G — Conditional B-3.0 gate refinement (ONLY if Phase D = ARTIFACT_CONFIRMED) — criteria PRE-STATED here
-Replace the equality-to-recorded-state test (which treats unreliable references as ground truth) with these PRINCIPLED
-criteria, FIXED BEFORE the re-run (not tuned to pass): B-3.0 PASSES iff ALL hold across the validation crawl —
-(a) **reference-reliability filter:** the gauge-invariant 5e-5 equality test (incl. the soft `r0`/`μ` lanes) is applied ONLY
-at recorded comparison states that are themselves WELL-CONVERGED (original-residual ≤ a stated factor ≪ 1e-6, e.g. ≤ 1e-8,
-AND Newton iters not at max AND step_norm small) — i.e. trustworthy references; (b) at comparison states that FAIL the
-reliability filter (under-converged near the singularity), require only: the continuation's own original-residual ≤
-min(recorded residual, 1e-6), branch-continuity (no L2 jump), AND stiff-lane (ρ, curl A) agreement to tol — the soft
-`r0`/`μ` equality is DROPPED there because the reference is provably unreliable along that mode (established by Phase D);
-(c) branch-continuity and continuation-residual ≤ 1e-6 hold at EVERY accepted state. **The σ_min floor / residual factor /
-iters-max / step_norm thresholds are stated in the execution prompt BEFORE running.** Single Arbiter unchanged.
+### THE CHARACTERIZATION BATTERY (run cheap→expensive, GATED; Codex designs each; each step reports before the next)
+- **C0 — confirm the two read-offs exactly** (raw σ_min(τ) array shape: bottoming-out vs trending-to-0; exact `‖dx‖²` vs
+  `(1000·dτ)²` per B-3.0 step from the actual scaled-state vectors). Cheap, on existing artifacts.
+- **C1 — RE-CONVERGE the FAIL-point state (THE decisive A-vs-B test; cheap).** At τ=0.02911625 run plain (gauge-fixed) Newton
+  warm-started SEPARATELY from (i) the recorded deepcrawl state `attempt_008_tau_0p02911625.npz` and (ii) the B-3.0
+  continuation state `B3_0_accepted_009`. **TIGHT convergence required (MF1):** original residual ≤ **1e-11** (NOT 1e-6 — the
+  recorded state already sits at 2.2e-7, so a 1e-6 bar lets the solver "stop immediately" on the stale state) AND
+  Newton step/update norm ≤ **1e-9**; the iteration budget (≥100) is a BUDGET, not success. Emit the full iteration trace
+  (residual + step_norm per iter). Report both end-states + their gauge-invariant (ρ, curlA, r0, μ) comparison. **Pre-committed
+  reading (MF2 — asymmetric/partial outcomes are EXPLICIT, not forced into 1/2/3):**
+  - BOTH tight-converge to the SAME state (gauge-inv ≤ 5e-5) ⇒ **Case 1** (under-converged-reference ARTIFACT at THIS τ —
+    "same root here," NOT "continuation globally fine"; C2/C4 still decide the deeper fold-vs-wall).
+  - BOTH tight-converge to gauge-inv DIFFERENT states ⇒ **Case 3** (genuine multiple roots / bifurcation).
+  - NEITHER reaches tight tol at the budget ⇒ a real deep singularity (**Case 2 or 4**; C2 distinguishes).
+  - **ONE tight-converges and the other does NOT, OR both improve but miss tight tol, OR one start drifts down the soft mode**
+    ⇒ **Case 0 / INCONCLUSIVE (conditioning evidence)** — do NOT force a physical case.
+  (NICE: re-converge not just the deepest FAIL point but EVERY unreliable comparison state, for the gate refinement.)
+- **C2 — CHARACTERIZE the near-null mode(s) at the stall (informs the TOOL — SUPPORTING evidence, not sole arbiter).** From the
+  dense SVD of `row_scale·J·col_scale·Q_perp` at the deepest tight-converged state: (i) report the smallest ~10 σ + a
+  predefined near-null CLUSTER criterion (by σ gap/ratio, e.g. a >10× gap to the next σ) — one isolated near-null σ is
+  fold-LIKE, a cluster is bifurcation-LIKE, but **count is SUPPORTING only (MF3)**; (ii) the dominant right-singular vector's
+  SECTOR decomposition (r0/μ/ψ/A energy fractions); (iii) **a bordered FOLD-TRANSVERSALITY check (MF3):** form the left null
+  vector `w` and test `wᵀ F_τ ≠ 0` (simple fold) vs ≈ 0 (bifurcation/degenerate) via the bordered system / bordered
+  conditioning — this, not the σ-count, is the fold-vs-bifurcation discriminant; (iv) **GAUGE test (MF4 — avoid
+  metric-tautology):** the mode comes from `J·Q_perp`, so projecting it back onto the SAME analytic gauge basis used to build
+  `Q_perp` can be forced small — require BOTH the scaled-metric projection onto the REMOVED gauge basis AND an INDEPENDENT
+  expanded gauge-candidate test (a broader ∇λ/phase family) PLUS a curl / residual-equivalence check; high physical-metric
+  overlap ALONE does not prove "missed gauge"; (v) localization (throat-concentrated ⇒ fold-like vs extended ⇒
+  bifurcation-like). Read-only on the tight C1 states.
+- **C3 — LINE-SEGMENT residual scan (SUPPORTING physical check, not proof; MF5).** GAUGE-ALIGN x_rec to x_cont first; evaluate
+  `‖R(x(t),τ)‖` for `x(t)=(1−t)x_rec + t·x_cont`, t∈[0,1], 20–50 points, at τ=0.02911625, normalized against the TIGHT C1
+  endpoint residuals (not the stale ones). A clear SPIKE ⇒ bifurcation / barrier / bug / INCONCLUSIVE; FLAT ⇒ CONSISTENT with
+  one near-root manifold but NOT proof (a straight line is not a solution-manifold path; coordinate curvature + tiny σ_min can
+  flatten it). SUPPORTING evidence only.
+- **C4 — RESOLUTION check (is it even real?; MF6).** RE-LOCATE the comparable stall/feature at 24×24 (and 32×32 if affordable)
+  — same gauge/scaling/tolerances, find the feature's τ per grid (it may SHIFT), then compare NORMALIZED σ_min trends + mode
+  localization across resolutions. σ_min trend GROWS with resolution ⇒ DISCRETIZATION-artifact-SUSPECT → re-gate (not "the rest
+  is moot"); PERSISTS (normalized) ⇒ physical. (The more expensive step; gate it on C1–C3 not already settling the question.)
 
-### Phase F — Wire in the full fallback machinery (unconditional for the re-run)
-Make the corrector/continuation actually EXERCISE adaptive `ds` reduction + tangent reseed + secant fallback before any
-TARGET_MISSED/stall is recorded (the directive already requires these for any GENUINE_ENDPOINT call; the first run never
-fired them). A stall is only honest after these are genuinely attempted (record `*_attempted: true` with counts).
+### TOOL SELECTION (the battery's OUTPUT decides; do NOT pre-commit to pseudo-arclength)
+| Characterization result | Right tool / next step |
+|---|---|
+| **Case 0 — INCONCLUSIVE / implementation-provenance-scaling-or-gate bug** (mixed C1/C2/C3 evidence; asymmetric C1; provenance mismatch) | **STOP — debug / re-gate with the user. Do NOT select pseudo-arclength, deflation, or LM.** |
+| Case 1 — under-converged reference (C1: both tight→same state) | Re-converge the recorded deep states tightly; refine the B-3.0 gate (criteria below); the deeper fold-vs-wall question STAYS open → C2 transversality + C4 decide. |
+| Case 2 — physical simple fold (C2: isolated near-null mode, `wᵀF_τ≠0`, localized; C4: persists) | Gauge-fixed pseudo-arclength (already built) — with the Phase-F fallbacks ACTUALLY wired (below). |
+| Case 3 — bifurcation (C1: distinct tight roots; C2: cluster / `wᵀF_τ≈0`; C3: barrier) | Deflation / branch-switching — NOT plain pseudo-arclength. New build, re-gate with the user. |
+| Case 4 — conditioning wall (C1: neither tight-converges; C2: isolated mode but σ_min bottoms out) | Levenberg–Marquardt / trust-region damping — re-gate with the user (LM is allowed ONLY as this gated Case-4 tool). |
+| Case 5 — gauge mode (C2: independent-test gauge overlap high) OR discretization (C4: normalized σ_min grows) | Extend the gauge fix, or refine the grid — the "singularity" is not physical. |
 
-### Phase R — Re-run B-3.0 → B-3.1 → B-3.2 (the actual disambiguation)
-With the refined gate (Phase G) + full machinery (Phase F): B-3.0 must PASS honestly (no cold-load; provenance intact);
-then B-3.1 attempts the hard region; then B-3.2 returns ONE honest verdict (ROUNDS_FOLD / CONTINUES_NO_TURNING /
-GENUINE_ENDPOINT / NOT_MEASURED) per the amendment's solved-τ progress + exhaustion criteria. All prior Single-Arbiter /
-gauge / freeze / timeout / no-cold-load constraints REMAIN BINDING.
+**Only Case 2 lets the already-built pseudo-arclength continue (and only with a user gate); every other case STOPS for a
+re-gate.** **If (and only if) Case 1 or Case 2**, the principled B-3.0 gate refinement applies (reference-reliability filter:
+a recorded comparison state is RELIABLE iff original-residual ≤ 1e-8 AND Newton-iters < 20 AND step_norm ≤ 1e-7; missing
+metadata ⇒ NOT reliable; at unreliable references require only continuation-residual ≤ min(recorded,1e-6) + numeric
+branch-continuity + stiff-lane (ρ,curlA) agreement ≤ 5e-5; drop soft r0/μ equality ONLY at points C1 tight-re-convergence +
+C3 show are genuine same-manifold) + the Phase-F fallback wiring (adaptive ds / tangent reseed / secant fallback with
+ACTUAL-USE evidence, not booleans — note the existing bug where `secant_fallback_attempted` can be true while the predictor
+still gets `None`), THEN the pseudo-arclength re-run with an honest B-3.2 verdict (ROUNDS_FOLD / CONTINUES_NO_TURNING /
+GENUINE_ENDPOINT / NOT_MEASURED). GENUINE_ENDPOINT requires fallbacks demonstrably FIRED-and-FAILED (evidence, not flags).
 
-**Acceptance (follow-up):** Phase D returns a pre-committed verdict with the numeric overlap; the gate is refined ONLY on
-ARTIFACT_CONFIRMED with the pre-stated criteria; Phase F fallbacks genuinely fire; Phase R returns an honest B-3.2 verdict
-on the ORIGINAL residual. **Fail conditions (follow-up):** refining the gate without ARTIFACT_CONFIRMED; choosing the
-σ_min/residual thresholds post-hoc to pass; the projection computed without gauge-alignment; declaring ARTIFACT_CONFIRMED
-on overlap < 0.90; any prior Fail condition.
+### MONITORING & TIMEOUT POLICY (user-granted 2026-06-21 — supersedes the 600s cap FOR ALL THROAT-SOLVER NUMERICAL RUNS)
+**This policy SUPERSEDES every earlier `timeout 600` / "never raise the cap" mention in THIS directive for solver runs** (the
+prior B-3 amendment's anti-gaming item (h), Acceptance #6, the standing-flag references) — those are legacy / `.wl`-SymPy-only.
+The hard cap was a forcing-function for the `.wl`/SymPy DERIVATION scripts (which KEEP it); the user LIFTED it for the
+throat-solver NUMERICAL runs. Replace it with FORWARD-PROGRESS monitoring:
+- NO hard wall-clock cap; a multi-hour run is FINE **as long as it is making forward progress** toward results we need.
+- Every solver script MUST emit INCREMENTAL progress (append per accepted state / per Newton iter: τ, original-residual,
+  min_R0, σ_min, iters, wall-time) to its run JSON/log so progress is observable WHILE running, and MUST checkpoint resumably.
+- Each script MUST carry an INTERNAL no-forward-progress guard with an EXACT pre-stated criterion: STOP + report STALLED when
+  **N = 30** consecutive Newton/continuation iterations show neither (a) original-residual decreasing by ≥ a relative
+  `ε_res = 1%` over the window, NOR (b) the continuation parameter advancing (Δτ or Δarclength ≥ `ε_adv = 1e-9`). For the C1
+  FIXED-τ re-converge (where τ does not advance), the guard is criterion (a) ALONE (residual must keep decreasing); reaching
+  the iteration budget without tight tol ⇒ report NOT-tight-converged (a C1 outcome), not silently "converged." (Tune N/ε in
+  the run only UP, with the value logged; never to mask a stall.)
+- The orchestrator MONITORS the emitted progress periodically and TaskStops a run that is genuinely stuck (no progress), but
+  lets a progressing run continue however long it needs.
+- This applies to the Path-A throat-solver numerical work ONLY; the `.wl`/SymPy derivation/audit scripts KEEP the 600s cap.
+  ([[feedback-script-timeout-policy]] updated; the decisions/13 standing timeout flag updated.)
+
+**Acceptance (follow-up v2):** C0 read-offs confirmed; C1 returns a pre-committed case reading with the two re-converged
+states compared gauge-invariantly; C2 characterizes the mode(s) (count, sector, gauge-overlap, localization); C3/C4 as gated;
+the TOOL is chosen by the table from the EVIDENCE (not pre-committed); any gate refinement happens ONLY in Case 1/2 with the
+principled criteria; Single Arbiter / gauge-inside-every-solve / freeze / no-cold-load all hold; forward-progress monitoring
+replaces the 600s cap. **Fail conditions (follow-up v2):** committing to pseudo-arclength before the battery characterizes the
+singularity; refining the gate outside Case 1/2; treating the near-tautological overlap as decisive; post-hoc threshold
+tuning; any prior Fail condition (freeze/operators/export/Single-Arbiter/cold-load).
 
 ---
 
@@ -311,6 +373,15 @@ the B-3 run, acceptance is the **honest 3-outcome adjudication of the amendment*
 GENUINE_ENDPOINT, or NOT_MEASURED/HALT) — NOT "rounds τ_fold." A ROUNDS_FOLD claim still requires an actual `dτ/ds`
 reversal + original-residual convergence on both sides; the target is the DEEPER near-singularity (~τ=0.0291132), not the
 refuted shallow τ_fold≈0.0291233.
+
+**⭐⭐ 2026-06-21 B-3 FOLLOW-UP v2 ACCEPTANCE OVERRIDE (governs the CURRENT run — supersedes the criteria below for it):**
+The current run is the CHARACTERIZATION BATTERY, NOT a pseudo-arclength fold-round. Its acceptance is the "Acceptance
+(follow-up v2)" block in the v2 section (C0 read-offs confirmed; C1 TIGHT re-converge-from-both with a pre-committed
+6-outcome reading incl. Case 0/INCONCLUSIVE; C2 mode-characterization + bordered fold-transversality; C3/C4 as SUPPORTING
+evidence; the TOOL chosen from the table by EVIDENCE, never pre-committed; gate refinement only in Case 1/2). Criteria #2/#3
+below (old B-1/B-2/B-3 pseudo-arclength) are HISTORY for this run; #1 (B-1 path-only) and #4 (B-4 residual-equivalent) still
+hold where reused; #5 holds with the LM reconciliation noted; #6's 600s cap is REPLACED by the forward-progress monitoring
+policy. Pseudo-arclength's ROUNDS_FOLD/etc. acceptance applies ONLY if the battery returns Case 2 AND the user gates it.
 1. B-1 gauge-fix removes the gauge near-null subspace AND is PROVEN path-only (same physical state with/without, lane-wise
    on the ORIGINAL residual); operators/frozen/export untouched (diff).
 2. B-2 re-confirm explicitly returns one of FOLD_DISSOLVED / FOLD_CONFIRMED / STILL_INCONCLUSIVE (in that precedence) with
@@ -321,10 +392,14 @@ refuted shallow τ_fold≈0.0291233.
    residual ≤ tol, one branch, no frozen-param change. (The old "rounds τ_fold + quantified deeper throat" wording applies
    only to the ROUNDS_FOLD branch and is replaced by the amendment's solved-τ progress metric.)
 4. B-4 analytic assembly is residual-equivalent (matches the original-residual JVP to tol).
-5. Single Arbiter throughout (no scaled/bordered/least-squares surrogate used as the convergence/identity arbiter); NO
-   LM/PTC/Sobolev conditioning remedy built (out of scope by the verdict); depth continuation moves only τ + state along
-   the natural branch.
-6. CPU; `timeout 600` per script (chunked + resumable; a timeout ⇒ NOT_MEASURED, NEVER raise the cap — if a single
+5. Single Arbiter throughout (no scaled/bordered/least-squares surrogate used as the convergence/identity arbiter). **LM/PTC
+   reconciliation (MF12):** NO LM/PTC/Sobolev remedy may be BUILT during THIS characterization run or without a user re-gate;
+   LM/trust-region is permitted ONLY later as the explicitly-gated Case-4-SELECTED tool (per the tool-selection table). Depth
+   continuation moves only τ + state along the natural branch.
+6. CPU. **[For the B-3 FOLLOW-UP v2 solver runs the 600s cap is SUPERSEDED by the user-granted forward-progress monitoring
+   policy — see that section; no hard wall-clock cap, multi-hour OK if progressing, internal no-progress guard + orchestrator
+   monitoring instead.]** (Legacy, still binding for `.wl`/SymPy derivation scripts:) `timeout 600` per script (chunked +
+   resumable; a timeout ⇒ NOT_MEASURED, NEVER raise the cap — if a single
    bordered Newton/linear solve at the resolution we need cannot fit 600s EVEN AFTER chunking + B-4 assembly + the
    modal/port form, HALT and bring it to the user, per the standing timeout flag); no `python3 -c`; YAML/markdown human
    output + JSON machine artifacts; chunk-1a/1b/1c gates pass; report + machine JSON emitted.
@@ -339,6 +414,13 @@ norm instead of the ORIGINAL residual; **initializing any corrector from a recor
 warm-start)**; building an LM/PTC/PTC-style/Sobolev remedy (scope creep the verdict disfavors); cold-loading states instead
 of genuine warm-start/continuation; **declaring GENUINE_ENDPOINT without meeting the full exhaustion criteria (B-3.0 PASS +
 B-4 reconfirm + adaptive-ds/reseed/secant tried)**; masking NOT_MEASURED; raising the timeout cap unilaterally.
+**No-cold-load scope (MF10):** the C0–C3 DIAGNOSTICS legitimately LOAD recorded/continuation artifacts (C1 warm-starts from
+BOTH; C3 reads both end-states) — that is allowed and expected; the prohibition is that any CONTINUATION / tool CLAIM (and the
+B-3.0 reproduction) may NOT be INITIALIZED from a comparison artifact except the single declared seed. Report artifact
+provenance for every loaded state (which file, used as seed vs comparison).
+**Follow-up v2 Fail conditions:** committing to pseudo-arclength before the battery characterizes the singularity; forcing a
+Case-0/asymmetric/inconclusive C1 outcome into a physical case; relaxing the C1 tight-tol (≤1e-11) to let the stale state
+"converge"; treating C2 σ-count or C3 flatness as PROOF rather than supporting evidence; refining the gate outside Case 1/2.
 
 ## Out of scope (later, gated on this unblocking the crawl)
 - The high-resolution production solve (RunPod A100/H100 GPU lever — POST-cure only; useless at 16×16).
@@ -346,13 +428,17 @@ B-4 reconfirm + adaptive-ds/reseed/secant tried)**; masking NOT_MEASURED; raisin
   `pathA_22`.
 
 ## Review (orchestrator, after Codex)
-Fidelity agent (code-vs-spec, term-by-term): is the gauge-fix PATH-ONLY (in solver/preconditioner/bordering coords, never
-the frozen residual) and is the with/without physical-equality proof real (not a tautology); is the ORIGINAL residual the
-sole convergence/identity arbiter everywhere (not the bordered/least-squares norm); is the pseudo-arclength bordered system
-correct (tangent predictor, bordered-Newton corrector, original residual in the physical block); is B-4 assembly genuinely
-residual-equivalent (matches the original-residual JVP); are operators/frozen/export untouched (diff)? Adversarial agent:
-is B-2's gate honestly applied (FOLD_CONFIRMED genuinely earned by the relative fold-trend gates — not asserted, and
-closer-to-fold sampling attempted, not required; FOLD_DISSOLVED
-not hidden to justify building B-3); does B-3 ACTUALLY round the fold and reach a quantified deeper throat (converged on
-the original residual both sides), or is "rounded" over-read; any branch-jump / frozen-param drift / can't-fail gate /
-hardcoded depth claim / surrogate-norm convergence? Then gate the next phase (constitutive family → calibrate-predict).
+**For the B-3 FOLLOW-UP v2 CHARACTERIZATION BATTERY (current run):** Fidelity agent (code-vs-spec): is C1 a GENUINE tight
+re-converge (≤1e-11 + step-norm ≤1e-9, full trace) from BOTH seeds — NOT a stop-on-the-stale-state; is the gauge-invariant
+comparison correct; is C2's bordered fold-transversality (`wᵀF_τ`) and the INDEPENDENT-basis gauge test implemented (not the
+metric-tautological self-projection); is C3 gauge-aligned + normalized to tight endpoints; is C4 re-locating the feature
+per-grid (not same-nominal-τ); is the no-progress guard exact (N=30, ε_res=1%, ε_adv=1e-9; C1 residual-only); Single
+Arbiter + freeze + provenance intact (diff)? Adversarial agent: is the Case reading HONEST (asymmetric/partial C1 → Case 0,
+not forced; σ-count + line-scan flatness treated as SUPPORTING not proof; gauge overlap not metric-tautological); is the TOOL
+chosen from EVIDENCE with NO pre-commitment to pseudo-arclength (only Case 2 + user gate proceeds); any forced case /
+can't-fail / surrogate-norm / hidden cold-load? **Then STOP and bring the Case + chosen tool to the user (re-gate)** — only a
+clean Case 2 + user gate runs the built pseudo-arclength.
+**(Legacy review notes, for the pseudo-arclength run IF Case 2 gates it):** is the gauge-fix PATH-ONLY; the bordered system
+correct (tangent predictor, bordered-Newton corrector, original residual in the physical block); B-4 residual-equivalent;
+does it ACTUALLY round the fold (converged both sides on the original residual) or is "rounded" over-read; any branch-jump /
+frozen-param drift / surrogate-norm convergence? Then gate the next phase (constitutive family → calibrate-predict).

@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; C0g BUILD B-1/B-2/B-4+deepcrawl DONE, B-3 pseudo-arclength is the EARNED next build → see §0 block (4))
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; B-3 first run DONE→NOT_MEASURED, GLM-REFRAMED → EXECUTE the CHARACTERIZATION BATTERY → see §0 block (5))
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -224,8 +224,8 @@ cond>1e10 needs sampling ~1e-15 from τ_fold but Newton stalls ~1.6e-6 short BY 
 even said "no absolute O(1) thresholds" then set one. The bordered-cond TREND, not the absolute, is the discriminant.**
 The 511-dim gauge near-null subspace is a SEPARATE, independently-real conditioning issue (NOT the stall driver) to fix
 regardless.
-**(4) ⭐ RESUME HERE (2026-06-21) — the C0g BUILD: B-1/B-2/B-4 + deeper-crawl DONE & DUAL-REVIEWED; B-3 (pseudo-arclength)
-is the EARNED NEXT BUILD, awaiting the USER EXECUTION GATE.** Directive `directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`
+**(4) (HISTORY — superseded by (5) below) — the C0g BUILD: B-1/B-2/B-4 + deeper-crawl DONE & DUAL-REVIEWED; B-3
+(pseudo-arclength) was THEN the earned next build (now: built+ran→NOT_MEASURED→GLM-reframed to the battery in (5)).** Directive `directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`
 (design-review→8 fixes→confirm/re-confirm SOUND-AS-IS; B-2 AMENDED so FOLD_DISSOLVED uses FULL Newton budget + the
 `crawl_persistent_failure` guard — the anti-sandbag fix). Executed STAGED, every step fidelity+adversarially reviewed
 (all HONEST/faithful/scope-clean; freeze intact — operators/physics/`(1/ξ)`/residual/export UNTOUCHED throughout):
@@ -256,23 +256,46 @@ is the EARNED NEXT BUILD, awaiting the USER EXECUTION GATE.** Directive `directi
   code in `patha_c0_conditioning_spike.py` + the B-4 autodiff assembly in `preconditioners.py`; scripts
   `pathA_C0g_build_B1B2.py`/`_finalize_timeout.py`/`build_B4_B2.py`/`deepcrawl.py`; reports `pathA_C0g_build_B1B2.md` +
   `pathA_C0g_deepcrawl.md`; JSON under `runs/pathA_C0g_build_B1B2/` + `runs/pathA_C0g_deepcrawl/` (gitignored).
+
+**(5) ⭐⭐ RESUME HERE (2026-06-21, post-/compact) — EXECUTE the B-3 FOLLOW-UP v2 CHARACTERIZATION BATTERY.**
+B-3 (gauge-fixed Keller pseudo-arclength) was BUILT + RAN (committed `46a3ea21`) → honest **`NOT_MEASURED`** at the B-3.0
+validation gate (reproduces the branch to ~1e-6 except at the deepest point, where it's compared vs an UNDER-CONVERGED recorded
+Newton state). **GLM tertiary consult REFRAMED it:** the proposed "decisive" Phase-D overlap test was NEAR-TAUTOLOGICAL (two
+near-roots' Δ is automatically in J's near-null space by the mean-value theorem — can't separate gate-artifact from
+continuation-bug; [[feedback-decisive-test-not-tautological]]). Claude+Codex AGREE with GLM. **The plan is now a CHARACTERIZATION
+BATTERY** — C0 read-offs → **C1 re-converge the FAIL state TIGHT (≤1e-11) from BOTH seeds [the decisive cheap test]** → C2
+mode-characterization (+ bordered fold-transversality `wᵀF_τ` + independent-basis gauge test) → C3 line-scan → C4 24×24
+resolution check — feeding a **6-outcome tool-selection table** (Case 0 INCONCLUSIVE / 1 under-converged-ref / 2 simple-fold /
+3 bifurcation / 4 conditioning-wall / 5 gauge-or-discretization). **DO NOT pre-commit to pseudo-arclength** — only Case 2 (with
+a user gate) runs the already-built pseudo-arclength; every other case STOPS for a re-gate.
+- **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_followup_execution_prompt.md`**, launched as a
+  `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, then
+  bring the Case + chosen tool to the user.
+- **Contract:** the directive's "⭐⭐ B-3 FOLLOW-UP v2 (AMENDMENT, 2026-06-21, GLM-REFRAMED)" section
+  (`directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`). **Loop CLOSED:** design-review (Codex AGREES w/ GLM) =
+  SOUND-WITH-FIXES (12) → fixes applied → confirm-pass SOUND-AS-IS (1 trivial Case-0 enumeration fix applied after).
+- **TIMEOUT:** the 600s cap is LIFTED for solver runs (user, 2026-06-21) → forward-progress monitoring (no wall-clock cap;
+  emit incremental progress; internal no-progress guard N=30 / ε_res=1% / ε_adv=1e-9; orchestrator watches, stops only a
+  genuinely-stuck run). `.wl`/SymPy keep the cap. (See the standing-flag update above + [[feedback-script-timeout-policy]].)
+- Read-offs DONE (confirm exact in C0): raw σ_min(τ) finite 7e-6 at deepest (σ_min² fit zero-crossing UNRELIABLE — wall-vs-fold
+  OPEN); arclength metric x-dominated near the stall (method not degenerating to τ-continuation).
+- **COMMIT STATE:** the v2 directive checkpoint is committed (see the commit after `46a3ea21`); the execution prompt lives in
+  `_scratch/` (gitignored). LESSON: a "decisive test" must be able to FAIL for the bad case ([[feedback-decisive-test-not-tautological]]).
 **LESSON (now a memory): the C0f/C0f2 "crippled-solver artifact" trap RECURRED at the diag layer — a clean fold signature
 (σ_min² linear R²=0.999 + cosθ transversality) was really a near-null CONDITIONING dip a budget-2/0-backtrack solver
 couldn't push through. ALWAYS contest a "wall"/"fold" verdict with the FULL solver budget + faster assembly BEFORE building
 the fix; the honest dissolve-contest (full budget, reachable DISSOLVED branch) is what caught it. Also: a "gauge-invariant"
 metric built as derivative/value is dimensionally a wavenumber and amplifies high-k remnants — use the dimensionless energy
 fraction.**
-**⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
-is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades
-to `NOT_MEASURED`/`DIAGNOSTIC_INCOMPLETE`, never a fake). It WILL legitimately bind at the **real high-resolution profile
-solve** (post-diagnosis, CPU-only/GPU-off → genuinely O(grid) cost). WHEN that step arrives, BEFORE touching the cap walk
-the ladder IN ORDER: (1) coarse→fine continuation with RESUMABLE CHECKPOINT CHUNKS, each ≤600s (keep the cap per-chunk);
-(2) the better solver (the production-solver step, IF the C0b verdict calls for one); (3) the smaller modal/port
-formulation (fewer DOF/solve). Raising the per-chunk cap is the LAST rung and a USER-LEVEL call ([[feedback-script-timeout-policy]],
-[[feedback-never-alter-calibrated-process]]). **TRIGGER to bring it to the user:** a SINGLE irreducible Newton/linear-solve
-at the resolution we actually need cannot fit in 600s EVEN AFTER chunking + a better solver + the modal/port form. Until
-that exact condition, keep 600s. (Note placed here because it surfaces at the high-res-solve juncture; do not delete on
-compact.)
+**⏱ STANDING FLAG — `timeout 600` cap — UPDATED 2026-06-21 (USER DECISION):** the user LIFTED the 600s cap **for the Path-A
+throat-solver NUMERICAL runs** (it was a forcing-function meant for the `.wl`/SymPy DERIVATION scripts, which KEEP the cap).
+For solver runs the cap is REPLACED by **forward-progress monitoring**: NO hard wall-clock cap; a multi-hour run is fine *as
+long as it makes forward progress*; every solver script EMITS incremental progress + checkpoints resumably + carries an
+INTERNAL no-forward-progress guard (stop + report STALLED if N consecutive steps make no measurable progress); the
+orchestrator MONITORS the emitted progress and TaskStops a genuinely-stuck run but lets a progressing one run as long as it
+needs. So the old "walk the ladder, raising the per-chunk cap is the last rung / user-level call" is now MOOT for solver runs
+(the user has made that call). **Still binding for `.wl`/SymPy derivation/audit scripts:** keep `timeout 600`, a timeout ⇒
+`NOT_MEASURED`, never raise. ([[feedback-script-timeout-policy]] updated.) (Do not delete on compact.)
 **Discipline reminder:** Codex derives/codes + applies fixes, Claude reviews; orchestrator owns directives/decisions.
 The DERIVED-FORM GATE binds (no hand-inserted field/`r`-power, no convention sign, no `x==x` posing as a check, no
 restatement to fake BVP closure). VALID expected outcomes: a derived far-field force with interior factors flagged, an

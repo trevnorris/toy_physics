@@ -106,6 +106,13 @@ DEFAULT_C0G_B3_REPORT_PATH = Path(
     "software/stage1_solver/reports/pathA_C0g_B3_pseudoarclength.md"
 )
 DEFAULT_C0G_B3_JSON_PATH = DEFAULT_C0G_B3_RUN_ROOT / "pathA_C0g_B3_pseudoarclength.json"
+DEFAULT_C0G_B3_FOLLOWUP_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_B3_followup")
+DEFAULT_C0G_B3_FOLLOWUP_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0g_B3_followup.md"
+)
+DEFAULT_C0G_B3_FOLLOWUP_JSON_PATH = (
+    DEFAULT_C0G_B3_FOLLOWUP_RUN_ROOT / "pathA_C0g_B3_followup.json"
+)
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -386,6 +393,34 @@ class C0gB3PseudoArclengthConfig:
     b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
     b4_match_abs_tol: float = C0gBuildB1B2Config().b4_match_abs_tol
     b4_match_rel_tol: float = C0gBuildB1B2Config().b4_match_rel_tol
+
+
+@dataclass(frozen=True)
+class C0gB3FollowupConfig:
+    deepcrawl_json_path: Path = DEFAULT_C0G_DEEP_JSON_PATH
+    b3_json_path: Path = DEFAULT_C0G_B3_JSON_PATH
+    run_root: Path = DEFAULT_C0G_B3_FOLLOWUP_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_B3_FOLLOWUP_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_B3_FOLLOWUP_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    fail_tau: float = 0.02911625
+    sigma_fit_zero_crossing: float = 0.0291139
+    tau_scale: float = 1000.0
+    c1_residual_tolerance: float = 1.0e-11
+    c1_step_tolerance: float = 1.0e-9
+    c1_max_iters: int = 120
+    c1_lstsq_rcond: float = 1.0e-12
+    c1_line_search_steps: int = 12
+    c1_stall_window: int = 30
+    c1_stall_residual_decrease: float = 0.01
+    c1_same_state_tolerance: float = 5.0e-5
+    c2_singular_count: int = 10
+    c2_cluster_gap_ratio: float = 10.0
+    c2_ftau_abs_small: float = 1.0e-8
+    c3_points: int = 31
+    c3_spike_factor: float = 100.0
+    c4_run: bool = False
 
 
 @dataclass(frozen=True)
@@ -4731,19 +4766,30 @@ def _c0g_assemble_original_jacobian(
         dtype=dtype,
     )
     residual = residual_fn(state).detach().cpu().numpy().astype(np.float64, copy=False)
-    preconditioner_config = replace(branch.newton.preconditioner, diagonal_shift=0.0)
+    preconditioner_config = replace(
+        branch.newton.preconditioner,
+        type=str(config.jacobian_assembly),
+        diagonal_shift=0.0,
+    )
     linear_config = replace(branch.newton, preconditioner=preconditioner_config)
     start = time.perf_counter()
-    matrix, metadata = assemble_closed_coupled_sparse_jacobian(
-        PreconditionerBuildContext(
-            residual_fn=residual_fn,
-            x=state.detach(),
-            rhs=-residual,
-            iteration=0,
-            config=linear_config,
-        ),
-        grid,
+    build_context = PreconditionerBuildContext(
+        residual_fn=residual_fn,
+        x=state.detach(),
+        rhs=-residual,
+        iteration=0,
+        config=linear_config,
     )
+    if str(config.jacobian_assembly) == "autodiff_sparse_jacobian_lu":
+        matrix, metadata = assemble_closed_coupled_autodiff_sparse_jacobian(
+            build_context,
+            grid,
+            autodiff_mode="jacfwd",
+        )
+    elif str(config.jacobian_assembly) == "colored_sparse_jacobian_lu":
+        matrix, metadata = assemble_closed_coupled_sparse_jacobian(build_context, grid)
+    else:
+        raise ValueError(f"unsupported C0g jacobian assembly {config.jacobian_assembly!r}")
     assembly_seconds = float(time.perf_counter() - start)
     matrix = matrix.tocsc()
     aid = C0AidParameters(
@@ -4760,6 +4806,9 @@ def _c0g_assemble_original_jacobian(
             "assembly_seconds": assembly_seconds,
             "jacobian_source": (
                 "stage1_solver.preconditioners."
+                "assemble_closed_coupled_autodiff_sparse_jacobian"
+                if str(config.jacobian_assembly) == "autodiff_sparse_jacobian_lu"
+                else "stage1_solver.preconditioners."
                 "assemble_closed_coupled_sparse_jacobian"
             ),
             "residual_entry_point": (
@@ -11214,6 +11263,1108 @@ def _c0g_b3_stdout_summary(result: Mapping[str, Any]) -> str:
     )
 
 
+def _c0g_b3_followup_config_to_dict(config: C0gB3FollowupConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("deepcrawl_json_path", "b3_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_b3_followup_load_json(path: Path) -> dict[str, Any]:
+    resolved = _resolve_input_path(path)
+    payload = json.loads(resolved.read_text(encoding="utf-8"))
+    payload["_resolved_path"] = str(resolved)
+    return payload
+
+
+def _c0g_b3_followup_progress_path(config: C0gB3FollowupConfig) -> Path:
+    return _resolve_output_path(config.run_root / "progress.jsonl")
+
+
+def _c0g_b3_followup_append_progress(
+    config: C0gB3FollowupConfig,
+    row: Mapping[str, Any],
+) -> None:
+    path = _c0g_b3_followup_progress_path(config)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(dict(row), sort_keys=True) + "\n")
+
+
+def _c0g_b3_followup_state_np(path: str | Path, *, dtype: torch.dtype) -> np.ndarray:
+    return (
+        _c0g_state_vector_from_path(path, dtype=dtype)
+        .detach()
+        .cpu()
+        .numpy()
+        .astype(np.float64, copy=True)
+    )
+
+
+def _c0g_b3_followup_deep_sigma_rows(deep_payload: Mapping[str, Any]) -> list[dict[str, Any]]:
+    rows = []
+    source_rows = list(deep_payload.get("step6_bordered_conditioning", {}).get("rows", []))
+    if not source_rows:
+        source_rows = list(deep_payload.get("ladder", []))
+    for row in source_rows:
+        sigma = row.get("sigma_min_JQ_perp")
+        if sigma is None:
+            continue
+        rows.append(
+            {
+                "tau": float(row.get("tau", math.nan)),
+                "sigma_min_JQ_perp": float(sigma),
+                "cond_JQ_perp": row.get("cond_JQ_perp"),
+                "status": row.get("status"),
+            }
+        )
+    rows.sort(key=lambda item: float(item["tau"]), reverse=True)
+    return rows
+
+
+def _c0g_b3_followup_deep_converged_rows(
+    deep_payload: Mapping[str, Any],
+) -> list[dict[str, Any]]:
+    rows = []
+    for row in deep_payload.get("admissibility", {}).get("rows", []):
+        if row.get("status") == "PASS":
+            rows.append(dict(row))
+    rows.sort(key=lambda item: float(item.get("tau", math.nan)), reverse=True)
+    return rows
+
+
+def _c0g_b3_followup_find_deep_row(
+    deep_payload: Mapping[str, Any],
+    tau: float,
+) -> dict[str, Any]:
+    rows = _c0g_b3_followup_deep_converged_rows(deep_payload)
+    best = min(rows, key=lambda row: abs(float(row.get("tau", math.inf)) - float(tau)))
+    if abs(float(best.get("tau", math.inf)) - float(tau)) > 5.0e-8:
+        raise RuntimeError(f"could not find deepcrawl row near tau={tau}")
+    return best
+
+
+def _c0g_b3_followup_find_b3_accepted(
+    b3_payload: Mapping[str, Any],
+    accepted_id: str,
+) -> dict[str, Any]:
+    for row in b3_payload.get("B3_0", {}).get("accepted", []):
+        if row.get("id") == accepted_id:
+            return dict(row)
+    raise RuntimeError(f"could not find B3 accepted state {accepted_id!r}")
+
+
+def _c0g_b3_followup_c0(
+    *,
+    deep_payload: Mapping[str, Any],
+    b3_payload: Mapping[str, Any],
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    sigma_rows = _c0g_b3_followup_deep_sigma_rows(deep_payload)
+    finite_sigmas = [
+        row for row in sigma_rows if math.isfinite(float(row.get("sigma_min_JQ_perp", math.nan)))
+    ]
+    deepest = min(finite_sigmas, key=lambda row: float(row["tau"])) if finite_sigmas else {}
+    last_three = finite_sigmas[-3:]
+    trend_call = "NOT_MEASURED"
+    if len(last_three) >= 3:
+        values = [float(row["sigma_min_JQ_perp"]) for row in last_three]
+        if values[-1] < 0.25 * values[-2] and values[-2] < values[-3]:
+            trend_call = "STILL_DROPPING_STEEPLY"
+        elif min(values) > 0.0 and max(values) / max(min(values), np.finfo(np.float64).tiny) < 3.0:
+            trend_call = "BOTTOMING_OUT"
+        else:
+            trend_call = "MIXED"
+
+    accepted = list(b3_payload.get("B3_0", {}).get("accepted", []))
+    balance_rows: list[dict[str, Any]] = []
+    previous_state: np.ndarray | None = None
+    previous_tau: float | None = None
+    for row in accepted:
+        state = _c0g_b3_followup_state_np(str(row["state_artifact"]), dtype=dtype)
+        tau = float(row.get("solved_tau", math.nan))
+        if previous_state is not None and previous_tau is not None:
+            dx = state - previous_state
+            dtau = tau - previous_tau
+            dx2 = float(np.dot(dx, dx))
+            tau2 = float((float(config.tau_scale) * dtau) ** 2)
+            balance_rows.append(
+                {
+                    "id": row.get("id"),
+                    "previous_tau": previous_tau,
+                    "tau": tau,
+                    "dx_norm_squared": dx2,
+                    "tau_metric_squared": tau2,
+                    "x_fraction": float(dx2 / max(dx2 + tau2, np.finfo(np.float64).tiny)),
+                    "dominant": "x" if dx2 > tau2 else "tau",
+                }
+            )
+        previous_state = state
+        previous_tau = tau
+    return {
+        "sigma_rows": sigma_rows,
+        "sigma_trend_call": trend_call,
+        "deepest_converged_tau": deepest.get("tau"),
+        "deepest_converged_sigma_min_JQ_perp": deepest.get("sigma_min_JQ_perp"),
+        "sigma_fit_zero_crossing": float(config.sigma_fit_zero_crossing),
+        "gap_zero_crossing_minus_deepest_tau": (
+            float(config.sigma_fit_zero_crossing) - float(deepest["tau"]) if deepest else None
+        ),
+        "arclength_metric_balance": balance_rows,
+        "arclength_balance_source": "actual B3_0 accepted state artifacts",
+    }
+
+
+def _c0g_b3_followup_checkpoint_c1(
+    *,
+    config: C0gB3FollowupConfig,
+    label: str,
+    state: np.ndarray,
+    tau: float,
+    dtype: torch.dtype,
+) -> str:
+    state_t = torch.as_tensor(np.asarray(state, dtype=np.float64), dtype=dtype, device="cpu")
+    path = _resolve_output_path(
+        config.run_root / "C1" / "states" / f"{label}_tau_{_format_tau(float(tau))}.npz"
+    )
+    _save_state_artifact(path, state_t)
+    return str(path)
+
+
+def _c0g_b3_followup_recent_progress_stalled(
+    history: Sequence[Mapping[str, Any]],
+    *,
+    window: int,
+    epsilon_res: float,
+) -> bool:
+    if len(history) <= window:
+        return False
+    start = float(history[-window - 1]["original_residual_linf"])
+    best = min(float(row["original_residual_linf"]) for row in history[-window:])
+    if start <= 0.0:
+        return False
+    return best > start * (1.0 - float(epsilon_res))
+
+
+def _c0g_b3_followup_reconverge_fixed_tau(
+    *,
+    label: str,
+    start_state: np.ndarray,
+    tau: float,
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    state = np.asarray(start_state, dtype=np.float64).copy()
+    started = time.perf_counter()
+    rows: list[dict[str, Any]] = []
+    status = "NOT_TIGHT_CONVERGED"
+    message = "maximum iteration budget reached"
+    final_linear: Mapping[str, Any] | None = None
+
+    def append_progress(row: Mapping[str, Any]) -> None:
+        _c0g_b3_followup_append_progress(
+            config,
+            {
+                "stage": "C1",
+                "start_label": label,
+                **dict(row),
+            },
+        )
+
+    for iteration in range(0, int(config.c1_max_iters) + 1):
+        linear = _c0g_b3_linearization(
+            state_np=state,
+            tau=float(tau),
+            config=C0gB3PseudoArclengthConfig(
+                deepcrawl_json_path=config.deepcrawl_json_path,
+                run_root=config.run_root / "C1" / label,
+                grid=config.grid,
+                jacobian_assembly=config.jacobian_assembly,
+                tau_scale=config.tau_scale,
+            ),
+            dtype=dtype,
+        )
+        final_linear = linear
+        residual = np.asarray(linear["residual"], dtype=np.float64)
+        residual_linf = float(np.max(np.abs(residual)))
+        reduced_j = np.asarray(linear["reduced_j"], dtype=np.float64)
+        rhs = -np.asarray(linear["row_scale"], dtype=np.float64) * residual
+        solve_start = time.perf_counter()
+        try:
+            dz, _resids, rank, singular = linalg.lstsq(
+                reduced_j,
+                rhs,
+                cond=float(config.c1_lstsq_rcond),
+                lapack_driver="gelsy",
+                check_finite=False,
+            )
+            if singular is None or len(singular) == 0:
+                singular = np.linalg.svd(reduced_j, compute_uv=False)
+            dx = _c0g_b3_physical_from_scaled_step(
+                col_scale=np.asarray(linear["col_scale"], dtype=np.float64),
+                q_perp=np.asarray(linear["q_perp"], dtype=np.float64),
+                coeff=np.asarray(dz, dtype=np.float64),
+            )
+            linear_message = "ok"
+        except Exception as exc:
+            rank = 0
+            singular = np.asarray([], dtype=np.float64)
+            dx = np.full_like(state, np.nan)
+            linear_message = f"lstsq_failed: {exc}"
+        solve_seconds = float(time.perf_counter() - solve_start)
+        step_norm = float(np.linalg.norm(dx)) if np.all(np.isfinite(dx)) else math.inf
+        metrics = _state_metrics(
+            torch.as_tensor(state, dtype=dtype, device="cpu"),
+            linear["grid"],
+        )
+        row = {
+            "iteration": int(iteration),
+            "tau": float(tau),
+            "original_residual_linf": residual_linf,
+            "min_R0": float(metrics["min_R0"]),
+            "step_norm": step_norm,
+            "sigma_min_JQ_perp": float(linear["sigma_min_JQ_perp"]),
+            "gauge_rank": int(linear["scaled_gauge_rank"]),
+            "linear_rank": int(rank),
+            "linear_sigma_min": float(np.min(singular)) if len(singular) else math.nan,
+            "linear_sigma_max": float(np.max(singular)) if len(singular) else math.nan,
+            "linear_solve_seconds": solve_seconds,
+            "wall_seconds": float(time.perf_counter() - started),
+            "line_search_alpha": None,
+            "line_search_accepted": False,
+            "linear_message": linear_message,
+        }
+        rows.append(row)
+        if (
+            residual_linf <= float(config.c1_residual_tolerance)
+            and step_norm <= float(config.c1_step_tolerance)
+        ):
+            status = "TIGHT_CONVERGED"
+            message = "original residual and update norm met tight C1 tolerances"
+            append_progress(rows[-1])
+            break
+        if iteration >= int(config.c1_max_iters):
+            append_progress(rows[-1])
+            break
+        if not np.all(np.isfinite(dx)):
+            status = "FAILED"
+            message = linear_message
+            append_progress(rows[-1])
+            break
+        old_norm = residual_linf
+        accepted = False
+        alpha = 1.0
+        best_state = state
+        best_norm = old_norm
+        best_alpha = None
+        for _line_index in range(int(config.c1_line_search_steps)):
+            trial_state = state + alpha * dx
+            trial_residual, _branch, _grid = _c0g_b3_residual_np(
+                state_np=trial_state,
+                tau=float(tau),
+                config=C0gB3PseudoArclengthConfig(
+                    deepcrawl_json_path=config.deepcrawl_json_path,
+                    run_root=config.run_root / "C1" / label,
+                    grid=config.grid,
+                    jacobian_assembly=config.jacobian_assembly,
+                    tau_scale=config.tau_scale,
+                ),
+                dtype=dtype,
+            )
+            trial_norm = float(np.max(np.abs(trial_residual)))
+            if np.isfinite(trial_norm) and trial_norm < best_norm:
+                best_state = trial_state
+                best_norm = trial_norm
+                best_alpha = alpha
+            if np.isfinite(trial_norm) and trial_norm < old_norm:
+                accepted = True
+                best_state = trial_state
+                best_norm = trial_norm
+                best_alpha = alpha
+                break
+            alpha *= 0.5
+        rows[-1]["line_search_alpha"] = best_alpha
+        rows[-1]["line_search_accepted"] = bool(accepted or best_norm < old_norm)
+        rows[-1]["accepted_residual_linf"] = best_norm if best_norm < old_norm else None
+        if best_norm < old_norm:
+            state = np.asarray(best_state, dtype=np.float64)
+        else:
+            status = "STALLED"
+            message = "line search failed to decrease original residual"
+            append_progress(rows[-1])
+            break
+        if _c0g_b3_followup_recent_progress_stalled(
+            rows,
+            window=int(config.c1_stall_window),
+            epsilon_res=float(config.c1_stall_residual_decrease),
+        ):
+            status = "STALLED"
+            message = (
+                f"no {config.c1_stall_residual_decrease:.1%} residual decrease "
+                f"over {config.c1_stall_window} C1 iterations"
+            )
+            append_progress(rows[-1])
+            break
+        append_progress(rows[-1])
+    residual, _branch, grid = _c0g_b3_residual_np(
+        state_np=state,
+        tau=float(tau),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C1" / label,
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    state_artifact = _c0g_b3_followup_checkpoint_c1(
+        config=config,
+        label=label,
+        state=state,
+        tau=float(tau),
+        dtype=dtype,
+    )
+    return {
+        "label": label,
+        "status": status,
+        "message": message,
+        "tau": float(tau),
+        "iterations": int(max(0, len(rows) - 1)),
+        "initial_residual_linf": float(rows[0]["original_residual_linf"]) if rows else None,
+        "final_residual_linf": float(np.max(np.abs(residual))),
+        "final_step_norm": float(rows[-1]["step_norm"]) if rows else None,
+        "residual_tolerance": float(config.c1_residual_tolerance),
+        "step_tolerance": float(config.c1_step_tolerance),
+        "history": rows,
+        "state_artifact": state_artifact,
+        "invariants": _c0g_b3_invariants(state, grid),
+        "metrics": _state_metrics(torch.as_tensor(state, dtype=dtype, device="cpu"), grid),
+        "last_linearization_summary": None
+        if final_linear is None
+        else {
+            "sigma_min_JQ_perp": float(final_linear["sigma_min_JQ_perp"]),
+            "sigma_max_JQ_perp": float(final_linear["sigma_max_JQ_perp"]),
+            "gauge_rank": int(final_linear["scaled_gauge_rank"]),
+            "jacobian_source": final_linear.get("jacobian_metadata", {}).get("jacobian_source"),
+        },
+        "wall_seconds": float(time.perf_counter() - started),
+    }
+
+
+def _c0g_b3_followup_c1_case(
+    left: Mapping[str, Any],
+    right: Mapping[str, Any],
+    mismatch: Mapping[str, float],
+    config: C0gB3FollowupConfig,
+) -> dict[str, Any]:
+    left_tight = left.get("status") == "TIGHT_CONVERGED"
+    right_tight = right.get("status") == "TIGHT_CONVERGED"
+    max_mismatch = max(float(value) for value in mismatch.values()) if mismatch else math.inf
+    if left_tight and right_tight and max_mismatch <= float(config.c1_same_state_tolerance):
+        return {
+            "case": "Case 1",
+            "reading": "both_tight_same",
+            "tool_table_action": "reconverge_recorded_deep_states_then_gate_refine_only_after_C2_C4",
+        }
+    if left_tight and right_tight:
+        return {
+            "case": "Case 3",
+            "reading": "both_tight_different",
+            "tool_table_action": "STOP_re_gate_for_deflation_branch_switching",
+        }
+    if not left_tight and not right_tight:
+        return {
+            "case": "Case 2_or_4",
+            "reading": "neither_tight",
+            "tool_table_action": "C2_required_to_discriminate_fold_vs_wall",
+        }
+    return {
+        "case": "Case 0",
+        "reading": "asymmetric_or_partial_C1",
+        "tool_table_action": "STOP_debug_re_gate_no_tool_selected",
+    }
+
+
+def _c0g_b3_followup_c1(
+    *,
+    deep_payload: Mapping[str, Any],
+    b3_payload: Mapping[str, Any],
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    rec_row = _c0g_b3_followup_find_deep_row(deep_payload, float(config.fail_tau))
+    cont_row = _c0g_b3_followup_find_b3_accepted(b3_payload, "B3_0_accepted_009")
+    rec_start = _c0g_b3_followup_state_np(str(rec_row["state_artifact"]), dtype=dtype)
+    cont_start = _c0g_b3_followup_state_np(str(cont_row["state_artifact"]), dtype=dtype)
+    rec = _c0g_b3_followup_reconverge_fixed_tau(
+        label="recorded_deepcrawl_attempt_008",
+        start_state=rec_start,
+        tau=float(config.fail_tau),
+        config=config,
+        dtype=dtype,
+    )
+    cont = _c0g_b3_followup_reconverge_fixed_tau(
+        label="continuation_B3_0_accepted_009",
+        start_state=cont_start,
+        tau=float(config.fail_tau),
+        config=config,
+        dtype=dtype,
+    )
+    _branch, grid, _residual_fn = _c0g_b3_context(
+        tau=float(config.fail_tau),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root,
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    rec_state = _c0g_b3_followup_state_np(str(rec["state_artifact"]), dtype=dtype)
+    cont_state = _c0g_b3_followup_state_np(str(cont["state_artifact"]), dtype=dtype)
+    aligned_cont, alignment = _c0g_global_phase_align_np(rec_state, cont_state, grid)
+    mismatch = _c0g_b3_invariant_mismatch(left=rec_state, right=aligned_cont, grid=grid)
+    case = _c0g_b3_followup_c1_case(rec, cont, mismatch, config)
+    for result in (rec, cont):
+        invariants = result.get("invariants")
+        if isinstance(invariants, dict):
+            result["invariants_summary"] = {
+                "rho_min": float(np.min(invariants["rho"])),
+                "rho_max": float(np.max(invariants["rho"])),
+                "curl_A_linf": float(np.max(np.abs(invariants["curl_A"]))),
+                "r0_min": float(np.min(invariants["r0"])),
+                "r0_max": float(np.max(invariants["r0"])),
+                "mu": float(invariants["mu"]),
+            }
+            result.pop("invariants", None)
+    return {
+        "tau": float(config.fail_tau),
+        "starts": {
+            "recorded": {
+                "provenance": "deepcrawl recorded comparison artifact; diagnostics-only load",
+                "state_artifact": str(rec_row["state_artifact"]),
+                "recorded_residual_linf": rec_row.get("residual_linf"),
+            },
+            "continuation": {
+                "provenance": "B3_0 continuation accepted artifact; diagnostics-only load",
+                "state_artifact": str(cont_row["state_artifact"]),
+                "recorded_residual_linf": cont_row.get("original_residual_linf"),
+            },
+        },
+        "recorded": rec,
+        "continuation": cont,
+        "phase_alignment": alignment,
+        "gauge_invariant_mismatch": mismatch,
+        "case_reading": case,
+    }
+
+
+def _c0g_b3_followup_sector_fractions(
+    vector: np.ndarray,
+    grid,
+) -> dict[str, float]:
+    lanes = _closed_lane_slices(grid)
+    groups = {
+        "psi": ("psi_real", "psi_imag"),
+        "A": ("a0", "ar", "aw"),
+        "r0": ("r0",),
+        "mu": ("mu",),
+    }
+    total = float(np.dot(vector, vector))
+    if total <= 0.0:
+        return {key: math.nan for key in groups}
+    fractions = {}
+    for group, names in groups.items():
+        energy = 0.0
+        for name in names:
+            start, stop = lanes[name]
+            energy += float(np.dot(vector[start:stop], vector[start:stop]))
+        fractions[group] = float(energy / total)
+    return fractions
+
+
+def _c0g_b3_followup_localization(
+    vector: np.ndarray,
+    grid,
+) -> dict[str, Any]:
+    lanes = _closed_lane_slices(grid)
+    cell_count = int(grid.spec.nr * grid.spec.nw)
+    nw = int(grid.spec.nw)
+    throat_columns = max(1, nw // 4)
+    cell_energy = np.zeros((int(grid.spec.nr), int(grid.spec.nw)), dtype=np.float64)
+    for name in ("psi_real", "psi_imag", "a0", "ar", "aw"):
+        start, stop = lanes[name]
+        block = vector[start:stop].reshape((int(grid.spec.nr), int(grid.spec.nw)))
+        cell_energy += block * block
+    r0_start, r0_stop = lanes["r0"]
+    r0_energy = np.zeros_like(cell_energy)
+    r0_energy[:, :] = (vector[r0_start:r0_stop][None, :] ** 2) / max(int(grid.spec.nr), 1)
+    cell_energy += r0_energy
+    total = float(np.sum(cell_energy))
+    throat = float(np.sum(cell_energy[:, :throat_columns]))
+    peak_flat = int(np.argmax(cell_energy)) if cell_count else 0
+    peak = np.unravel_index(peak_flat, cell_energy.shape)
+    fraction = float(throat / max(total, np.finfo(np.float64).tiny))
+    return {
+        "throat_energy_fraction_first_quarter_w": fraction,
+        "classification": "THROAT_CONCENTRATED" if fraction >= 0.5 else "EXTENDED",
+        "peak_cell": {"r_index": int(peak[0]), "w_index": int(peak[1])},
+    }
+
+
+def _c0g_b3_followup_expanded_gauge_candidates(
+    *,
+    state: np.ndarray,
+    grid,
+    branch,
+) -> np.ndarray:
+    state_t = torch.as_tensor(np.asarray(state, dtype=np.float64), dtype=torch.float64, device="cpu")
+    candidates = []
+    for generator in _c0c_generators_for_state(state_t, grid):
+        candidates.append(np.asarray(generator.vector, dtype=np.float64))
+    lanes = _closed_lane_slices(grid)
+    size = int(state.size)
+    for lane_name in ("a0", "ar", "aw", "r0", "mu"):
+        start, stop = lanes[lane_name]
+        vector = np.zeros(size, dtype=np.float64)
+        vector[start:stop] = 1.0
+        candidates.append(vector)
+    gradient = _c0d_scalar_gradient_matrix(grid)
+    for col in range(min(gradient.shape[1], 8)):
+        candidates.append(np.asarray(gradient[:, col], dtype=np.float64))
+    coupled = _c0e_coupled_gauge_matrix(state_t, grid, branch)
+    for col in range(min(coupled.shape[1], 8)):
+        candidates.append(np.asarray(coupled[:, col], dtype=np.float64))
+    matrix = np.column_stack(candidates) if candidates else np.zeros((size, 0), dtype=np.float64)
+    if matrix.shape[1] == 0:
+        return matrix
+    q, _r = np.linalg.qr(matrix, mode="reduced")
+    return q
+
+
+def _c0g_b3_followup_projection_fraction(vector: np.ndarray, basis: np.ndarray) -> float:
+    denom = float(np.dot(vector, vector))
+    if denom <= 0.0 or basis.size == 0:
+        return 0.0
+    coeff = basis.T @ vector
+    return float(np.dot(coeff, coeff) / denom)
+
+
+def _c0g_b3_followup_c2_from_state(
+    *,
+    label: str,
+    state: np.ndarray,
+    tau: float,
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    linear = _c0g_b3_linearization(
+        state_np=state,
+        tau=float(tau),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C2" / label,
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    reduced_j = np.asarray(linear["reduced_j"], dtype=np.float64)
+    u, singular, vh = np.linalg.svd(reduced_j, full_matrices=False)
+    count = min(int(config.c2_singular_count), int(singular.size))
+    smallest = singular[-count:].tolist() if count else []
+    gap_ratio = (
+        float(singular[-2] / max(singular[-1], np.finfo(np.float64).tiny))
+        if singular.size >= 2
+        else math.inf
+    )
+    cluster_call = "ISOLATED_NEAR_NULL" if gap_ratio >= float(config.c2_cluster_gap_ratio) else "CLUSTER_OR_NO_CLEAR_GAP"
+    coeff = vh[-1, :].astype(np.float64, copy=False)
+    scaled_mode = np.asarray(linear["q_perp"], dtype=np.float64) @ coeff
+    physical_mode = _c0g_b3_physical_from_scaled_step(
+        col_scale=np.asarray(linear["col_scale"], dtype=np.float64),
+        q_perp=np.asarray(linear["q_perp"], dtype=np.float64),
+        coeff=coeff,
+    )
+    left_null = u[:, -1].astype(np.float64, copy=False)
+    w_ftau = float(np.dot(left_null, np.asarray(linear["ftau_scaled"], dtype=np.float64)))
+    w_ftau_norm = float(abs(w_ftau) / max(np.linalg.norm(linear["ftau_scaled"]), np.finfo(np.float64).tiny))
+    gauge = _c0g_scaled_gauge_complement(
+        gauge_matrix=np.asarray(linear["gauge"]["generator_matrix"], dtype=np.float64),
+        col_scale=np.asarray(linear["col_scale"], dtype=np.float64),
+        config=C0gConfig(
+            run_root=config.run_root / "C2" / label,
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+        ),
+    )
+    scaled_gauge = np.asarray(linear["gauge"]["generator_matrix"], dtype=np.float64) / np.asarray(
+        linear["col_scale"], dtype=np.float64
+    )[:, None]
+    scaled_basis, _u, _s, _threshold, _rank = _c0g_column_space(
+        scaled_gauge,
+        relative_tolerance=C0gConfig().gradient_rank_rtol,
+        full_matrices=False,
+    )
+    removed_projection = _c0g_b3_followup_projection_fraction(scaled_mode, scaled_basis)
+    expanded = _c0g_b3_followup_expanded_gauge_candidates(
+        state=state,
+        grid=linear["grid"],
+        branch=linear["branch"],
+    )
+    expanded_projection = _c0g_b3_followup_projection_fraction(physical_mode, expanded)
+    curl = _c0g_curl_np(physical_mode, linear["grid"])
+    residual_response = np.asarray(linear["scaled_matrix"] @ scaled_mode, dtype=np.float64)
+    localization = _c0g_b3_followup_localization(physical_mode, linear["grid"])
+    mode_path = _resolve_output_path(config.run_root / "C2" / f"{label}_mode.npz")
+    mode_path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(
+        mode_path,
+        physical_mode=physical_mode,
+        scaled_mode=scaled_mode,
+        singular_values=singular,
+        left_null=left_null,
+    )
+    return {
+        "label": label,
+        "tau": float(tau),
+        "status": "MEASURED",
+        "smallest_singular_values": smallest,
+        "sigma_min": float(singular[-1]) if singular.size else math.nan,
+        "sigma_gap_ratio_next_over_min": gap_ratio,
+        "cluster_call": cluster_call,
+        "sector_energy_fractions": _c0g_b3_followup_sector_fractions(physical_mode, linear["grid"]),
+        "fold_transversality": {
+            "wT_Ftau": w_ftau,
+            "normalized_abs_wT_Ftau": w_ftau_norm,
+            "call": "FOLD_TRANSVERSAL"
+            if w_ftau_norm > float(config.c2_ftau_abs_small)
+            else "FTAU_ORTHOGONAL_OR_DEGENERATE",
+        },
+        "gauge_tests": {
+            "scaled_removed_gauge_projection_fraction": removed_projection,
+            "independent_expanded_candidate_projection_fraction": expanded_projection,
+            "curl_mode_l2": float(np.linalg.norm(curl)),
+            "scaled_residual_response_l2": float(np.linalg.norm(residual_response)),
+            "high_physical_overlap_alone_is_not_used": True,
+        },
+        "localization": localization,
+        "mode_artifact": str(mode_path),
+        "jacobian_source": linear.get("jacobian_metadata", {}).get("jacobian_source"),
+        "gauge_rank": int(linear["scaled_gauge_rank"]),
+        "redundant_gauge_rank_check": int(gauge["scaled_gauge_rank"]),
+    }
+
+
+def _c0g_b3_followup_c2(
+    *,
+    c1: Mapping[str, Any],
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    case = c1.get("case_reading", {}).get("case")
+    if case == "Case 0":
+        return {"status": "SKIPPED_BY_C1_CASE0", "reason": "Case 0 stops for debug/re-gate"}
+    measured = []
+    for key in ("recorded", "continuation"):
+        result = c1.get(key, {})
+        if result.get("status") != "TIGHT_CONVERGED":
+            continue
+        state = _c0g_b3_followup_state_np(str(result["state_artifact"]), dtype=dtype)
+        measured.append(
+            _c0g_b3_followup_c2_from_state(
+                label=key,
+                state=state,
+                tau=float(c1["tau"]),
+                config=config,
+                dtype=dtype,
+            )
+        )
+    if not measured:
+        return {"status": "SKIPPED_NO_TIGHT_C1_STATE", "reason": "C2 is read-only on tight C1 states"}
+    return {"status": "MEASURED", "state_results": measured}
+
+
+def _c0g_b3_followup_c3(
+    *,
+    c1: Mapping[str, Any],
+    config: C0gB3FollowupConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    if c1.get("recorded", {}).get("status") != "TIGHT_CONVERGED" or c1.get("continuation", {}).get("status") != "TIGHT_CONVERGED":
+        return {"status": "SKIPPED_REQUIRES_TWO_TIGHT_C1_ENDPOINTS"}
+    rec_state = _c0g_b3_followup_state_np(str(c1["recorded"]["state_artifact"]), dtype=dtype)
+    cont_state = _c0g_b3_followup_state_np(str(c1["continuation"]["state_artifact"]), dtype=dtype)
+    _branch, grid, _residual_fn = _c0g_b3_context(
+        tau=float(c1["tau"]),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C3",
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    aligned_cont, alignment = _c0g_global_phase_align_np(rec_state, cont_state, grid)
+    rows = []
+    endpoint_floor = max(
+        float(c1["recorded"]["final_residual_linf"]),
+        float(c1["continuation"]["final_residual_linf"]),
+        np.finfo(np.float64).tiny,
+    )
+    for index, t in enumerate(np.linspace(0.0, 1.0, int(config.c3_points))):
+        state = (1.0 - float(t)) * rec_state + float(t) * aligned_cont
+        residual, _branch, _grid = _c0g_b3_residual_np(
+            state_np=state,
+            tau=float(c1["tau"]),
+            config=C0gB3PseudoArclengthConfig(
+                deepcrawl_json_path=config.deepcrawl_json_path,
+                run_root=config.run_root / "C3",
+                grid=config.grid,
+                jacobian_assembly=config.jacobian_assembly,
+                tau_scale=config.tau_scale,
+            ),
+            dtype=dtype,
+        )
+        linf = float(np.max(np.abs(residual)))
+        rows.append(
+            {
+                "index": int(index),
+                "t": float(t),
+                "original_residual_linf": linf,
+                "normalized_to_tight_endpoint_floor": float(linf / endpoint_floor),
+            }
+        )
+    max_normalized = max(float(row["normalized_to_tight_endpoint_floor"]) for row in rows)
+    call = "SPIKE" if max_normalized >= float(config.c3_spike_factor) else "FLAT_OR_NO_CLEAR_SPIKE"
+    return {
+        "status": "MEASURED",
+        "phase_alignment": alignment,
+        "endpoint_residual_floor": endpoint_floor,
+        "max_normalized_residual": max_normalized,
+        "call": call,
+        "supporting_only_not_proof": True,
+        "rows": rows,
+    }
+
+
+def _c0g_b3_followup_c4(
+    *,
+    config: C0gB3FollowupConfig,
+) -> dict[str, Any]:
+    if not bool(config.c4_run):
+        return {
+            "status": "SKIPPED_BY_DEFAULT_GATE",
+            "reason": "resolution relocation is expensive; Case-1 stops for re-gate before any tool claim, so fold-vs-wall remains open",
+        }
+    return {
+        "status": "NOT_IMPLEMENTED_FOR_AUTOMATIC_RUN",
+        "reason": "C4 requires a gated per-resolution relocation crawl; no continuation/tool claim made",
+    }
+
+
+def _c0g_b3_followup_tool_selection(
+    *,
+    c1: Mapping[str, Any],
+    c2: Mapping[str, Any],
+    c3: Mapping[str, Any],
+    c4: Mapping[str, Any],
+) -> dict[str, Any]:
+    case = c1.get("case_reading", {}).get("case")
+    if case == "Case 0":
+        return {
+            "case": "Case 0",
+            "chosen_tool": "STOP_DEBUG_RE_GATE",
+            "why": "C1 was asymmetric or partial; directive forbids forcing this into a physical case",
+        }
+    if case == "Case 3":
+        return {
+            "case": "Case 3",
+            "chosen_tool": "STOP_RE_GATE_DEFLATION_BRANCH_SWITCHING",
+            "why": "C1 found distinct tight roots",
+        }
+    if case == "Case 1":
+        return {
+            "case": "Case 1",
+            "chosen_tool": "STOP_RECONVERGE_DEEP_STATES_AND_GATE_REFINE_THEN_C2_C4",
+            "why": "C1 found the same tight root at this tau; global fold-vs-wall remains open",
+        }
+    if case == "Case 2_or_4":
+        c2_rows = c2.get("state_results", []) if isinstance(c2, Mapping) else []
+        first = c2_rows[0] if c2_rows else {}
+        if first.get("cluster_call") == "ISOLATED_NEAR_NULL" and first.get("fold_transversality", {}).get("call") == "FOLD_TRANSVERSAL":
+            return {
+                "case": "Case 2_candidate",
+                "chosen_tool": "STOP_RE_GATE_PSEUDO_ARCLENGTH_CANDIDATE",
+                "why": "C1 neither-tight plus C2 fold-like evidence; user gate required before using pseudo-arclength",
+            }
+        return {
+            "case": "Case 4_candidate",
+            "chosen_tool": "STOP_RE_GATE_LM_TRUST_REGION_CANDIDATE",
+            "why": "C1 neither-tight without decisive fold-like C2 evidence",
+        }
+    return {
+        "case": str(case),
+        "chosen_tool": "STOP_INCONCLUSIVE",
+        "why": f"unmapped case reading {case!r}; C3={c3.get('status')}; C4={c4.get('status')}",
+    }
+
+
+def write_c0g_b3_followup_report(result: Mapping[str, Any], path: Path) -> None:
+    c0 = result.get("C0", {})
+    c1 = result.get("C1", {})
+    c2 = result.get("C2", {})
+    c3 = result.get("C3", {})
+    c4 = result.get("C4", {})
+    tool = result.get("tool_selection", {})
+    lines = [
+        "# Path-A C0g B-3 Follow-Up v2",
+        "",
+        "## Contract",
+        "",
+        "- Battery: C0 read-offs, C1 tight two-start reconvergence, C2/C3 gated characterization, C4 gated resolution check.",
+        "- Tool selection is evidence-driven; pseudo-arclength is not pre-selected.",
+        "- Original `patha_closed_branch_residual` remains the single arbiter.",
+        "",
+        "## C0 Read-Offs",
+        "",
+        f"- sigma trend call: `{c0.get('sigma_trend_call')}`",
+        f"- deepest converged tau: `{_c0g_fmt(c0.get('deepest_converged_tau'))}`",
+        f"- deepest sigma_min(JQ_perp): `{_c0g_fmt(c0.get('deepest_converged_sigma_min_JQ_perp'))}`",
+        f"- fit zero crossing: `{_c0g_fmt(c0.get('sigma_fit_zero_crossing'))}`",
+        f"- zero-crossing minus deepest tau: `{_c0g_fmt(c0.get('gap_zero_crossing_minus_deepest_tau'))}`",
+        "",
+        _markdown_table(
+            ["tau", "sigma_min_JQ_perp", "cond_JQ_perp", "status"],
+            c0.get("sigma_rows", []),
+        ),
+        "",
+        "### Arclength Metric Balance",
+        "",
+        _markdown_table(
+            ["id", "previous_tau", "tau", "dx_norm_squared", "tau_metric_squared", "x_fraction", "dominant"],
+            c0.get("arclength_metric_balance", []),
+        ),
+        "",
+        "## C1 Tight Reconvergence",
+        "",
+        f"- case: `{c1.get('case_reading', {}).get('case')}`",
+        f"- reading: `{c1.get('case_reading', {}).get('reading')}`",
+        f"- recorded status: `{c1.get('recorded', {}).get('status')}` residual `{_c0g_fmt(c1.get('recorded', {}).get('final_residual_linf'))}` step `{_c0g_fmt(c1.get('recorded', {}).get('final_step_norm'))}`",
+        f"- continuation status: `{c1.get('continuation', {}).get('status')}` residual `{_c0g_fmt(c1.get('continuation', {}).get('final_residual_linf'))}` step `{_c0g_fmt(c1.get('continuation', {}).get('final_step_norm'))}`",
+        "",
+        "Gauge-invariant mismatch after phase alignment:",
+        "",
+        "```yaml",
+        f"{c1.get('gauge_invariant_mismatch')}",
+        "```",
+        "",
+        "## C2 Mode Characterization",
+        "",
+        f"status: `{c2.get('status')}`",
+    ]
+    for row in c2.get("state_results", []) if isinstance(c2, Mapping) else []:
+        lines.extend(
+            [
+                "",
+                f"### {row.get('label')}",
+                "",
+                f"- sigma_min: `{_c0g_fmt(row.get('sigma_min'))}`",
+                f"- near-null count call: `{row.get('cluster_call')}` gap `{_c0g_fmt(row.get('sigma_gap_ratio_next_over_min'))}`",
+                f"- dominant sector fractions: `{row.get('sector_energy_fractions')}`",
+                f"- transversality: `{row.get('fold_transversality')}`",
+                f"- gauge tests: `{row.get('gauge_tests')}`",
+                f"- localization: `{row.get('localization')}`",
+            ]
+        )
+    lines.extend(
+        [
+            "",
+            "## C3 Line Scan",
+            "",
+            f"- status: `{c3.get('status')}`",
+            f"- call: `{c3.get('call')}`",
+            f"- max normalized residual: `{_c0g_fmt(c3.get('max_normalized_residual'))}`",
+            "",
+            "## C4 Resolution Check",
+            "",
+            f"- status: `{c4.get('status')}`",
+            f"- reason: `{c4.get('reason')}`",
+            "",
+            "## Tool Selection",
+            "",
+            f"- case: `{tool.get('case')}`",
+            f"- chosen tool: `{tool.get('chosen_tool')}`",
+            f"- why: {tool.get('why')}",
+            "",
+            "## Scope Guard",
+            "",
+            "```yaml",
+        ]
+    )
+    for key, value in result.get("scope_guard", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.extend(
+        [
+            "```",
+            "",
+            "## Git Diff Summary",
+            "",
+            "```",
+            str(result.get("git_diff_summary", "")),
+            "```",
+            "",
+            f"Machine JSON: `{result.get('json_path')}`",
+            f"Progress log: `{result.get('progress_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def run_c0g_b3_followup(
+    config: C0gB3FollowupConfig | None = None,
+) -> dict[str, Any]:
+    cfg = config or C0gB3FollowupConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    progress_path = _c0g_b3_followup_progress_path(cfg)
+    progress_path.parent.mkdir(parents=True, exist_ok=True)
+    progress_path.write_text("", encoding="utf-8")
+    deep_payload = _c0g_b3_followup_load_json(cfg.deepcrawl_json_path)
+    b3_payload = _c0g_b3_followup_load_json(cfg.b3_json_path)
+    c0 = _c0g_b3_followup_c0(
+        deep_payload=deep_payload,
+        b3_payload=b3_payload,
+        config=cfg,
+        dtype=dtype,
+    )
+    c1 = _c0g_b3_followup_c1(
+        deep_payload=deep_payload,
+        b3_payload=b3_payload,
+        config=cfg,
+        dtype=dtype,
+    )
+    c2 = _c0g_b3_followup_c2(c1=c1, config=cfg, dtype=dtype)
+    c3 = _c0g_b3_followup_c3(c1=c1, config=cfg, dtype=dtype)
+    c4 = _c0g_b3_followup_c4(config=cfg)
+    tool_selection = _c0g_b3_followup_tool_selection(c1=c1, c2=c2, c3=c3, c4=c4)
+    result = {
+        "schema": "stage1_pathA_C0g_B3_followup_v2/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_b3_followup_config_to_dict(cfg),
+        "C0": c0,
+        "C1": c1,
+        "C2": c2,
+        "C3": c3,
+        "C4": c4,
+        "tool_selection": tool_selection,
+        "scope_guard": {
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "convergence_judged_only_on_original_residual": True,
+            "gauge_Q_perp_inside_every_C1_solve": True,
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "frozen_physics_touched": False,
+            "no_LM_no_PTC_no_Sobolev_regularization": True,
+            "no_pseudoarclength_precommit": True,
+            "comparison_artifacts_diagnostics_only": True,
+        },
+        "progress_guard": {
+            "C1_fixed_tau_window": int(cfg.c1_stall_window),
+            "epsilon_res": float(cfg.c1_stall_residual_decrease),
+            "stalled": any(
+                c1.get(key, {}).get("status") == "STALLED"
+                for key in ("recorded", "continuation")
+            ),
+        },
+        "git_diff_summary": _c0g_b3_git_diff_summary(),
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(cfg.report_path)),
+        "json_path": str(_resolve_output_path(cfg.json_path)),
+        "progress_path": str(progress_path),
+    }
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_b3_followup_report(result, report_path)
+    return result
+
+
+def _c0g_b3_followup_stdout_summary(result: Mapping[str, Any]) -> str:
+    c0 = result.get("C0", {})
+    c1 = result.get("C1", {})
+    c2 = result.get("C2", {})
+    c3 = result.get("C3", {})
+    c4 = result.get("C4", {})
+    tool = result.get("tool_selection", {})
+    c2_rows = c2.get("state_results", []) if isinstance(c2, Mapping) else []
+    first_c2 = c2_rows[0] if c2_rows else {}
+    scope = result.get("scope_guard", {})
+    mismatch = c1.get("gauge_invariant_mismatch", {})
+    return "\n".join(
+        [
+            (
+                "C0: sigma trend={trend}, deepest_tau={tau}, deepest_sigma={sigma}, "
+                "zero_gap={gap}"
+            ).format(
+                trend=c0.get("sigma_trend_call"),
+                tau=_c0g_fmt(c0.get("deepest_converged_tau")),
+                sigma=_c0g_fmt(c0.get("deepest_converged_sigma_min_JQ_perp")),
+                gap=_c0g_fmt(c0.get("gap_zero_crossing_minus_deepest_tau")),
+            ),
+            f"C0 arclength balance: last={c0.get('arclength_metric_balance', [{}])[-1] if c0.get('arclength_metric_balance') else 'n/a'}",
+            (
+                "C1: {case}/{reading}; recorded={rstat} residual={rres} step={rstep}; "
+                "continuation={cstat} residual={cres} step={cstep}; mismatch={mismatch}"
+            ).format(
+                case=c1.get("case_reading", {}).get("case"),
+                reading=c1.get("case_reading", {}).get("reading"),
+                rstat=c1.get("recorded", {}).get("status"),
+                rres=_c0g_fmt(c1.get("recorded", {}).get("final_residual_linf")),
+                rstep=_c0g_fmt(c1.get("recorded", {}).get("final_step_norm")),
+                cstat=c1.get("continuation", {}).get("status"),
+                cres=_c0g_fmt(c1.get("continuation", {}).get("final_residual_linf")),
+                cstep=_c0g_fmt(c1.get("continuation", {}).get("final_step_norm")),
+                mismatch=mismatch,
+            ),
+            (
+                "C2: status={status}, near-null={cluster}, dominant_sector={sector}, "
+                "gauge_overlap={gauge}, localization={loc}"
+            ).format(
+                status=c2.get("status"),
+                cluster=first_c2.get("cluster_call"),
+                sector=_dominant_group(first_c2.get("sector_energy_fractions", {}))[0]
+                if first_c2
+                else "n/a",
+                gauge=first_c2.get("gauge_tests", {}),
+                loc=first_c2.get("localization", {}),
+            ),
+            f"C3: status={c3.get('status')}, call={c3.get('call')}, max_normalized={_c0g_fmt(c3.get('max_normalized_residual'))}",
+            f"C4: status={c4.get('status')}, reason={c4.get('reason')}",
+            f"TOOL: {tool.get('chosen_tool')} ({tool.get('why')})",
+            (
+                "Scope untouched: residual/operators/(1/xi)/export/physics="
+                f"{not scope.get('patha_closed_branch_residual_touched')}/"
+                f"{not scope.get('faithful_operators_touched')}/"
+                f"{not scope.get('xi_or_grad_div_penalty_touched')}/"
+                f"{not scope.get('physical_export_permitted_touched')}/"
+                f"{not scope.get('frozen_physics_touched')}; "
+                f"Single Arbiter only={scope.get('convergence_judged_only_on_original_residual')}; "
+                f"progress stalled={result.get('progress_guard', {}).get('stalled')}"
+            ),
+            f"Files: report={result.get('report_path')}, json={result.get('json_path')}, progress={result.get('progress_path')}",
+        ]
+    )
+
+
 def _c0g_fmt(value: Any, *, digits: int = 6) -> str:
     if value is None:
         return "n/a"
@@ -12365,6 +13516,43 @@ def c0g_b3_pseudoarclength_main(argv: Sequence[str] | None = None) -> int:
         b30_only=bool(args.b30_only),
     )
     print(_c0g_b3_stdout_summary(result))
+    return 0
+
+
+def c0g_b3_followup_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run Path-A C0g B-3 follow-up v2 characterization battery."
+    )
+    default = C0gB3FollowupConfig()
+    parser.add_argument("--deepcrawl-json", type=Path, default=default.deepcrawl_json_path)
+    parser.add_argument("--b3-json", type=Path, default=default.b3_json_path)
+    parser.add_argument("--run-root", type=Path, default=default.run_root)
+    parser.add_argument("--report-path", type=Path, default=default.report_path)
+    parser.add_argument("--json-path", type=Path, default=default.json_path)
+    parser.add_argument("--fail-tau", type=float, default=default.fail_tau)
+    parser.add_argument("--max-c1-iters", type=int, default=default.c1_max_iters)
+    parser.add_argument("--c3-points", type=int, default=default.c3_points)
+    parser.add_argument("--run-c4", action="store_true")
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=default.jacobian_assembly,
+    )
+    args = parser.parse_args(argv)
+    config = C0gB3FollowupConfig(
+        deepcrawl_json_path=args.deepcrawl_json,
+        b3_json_path=args.b3_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        fail_tau=float(args.fail_tau),
+        c1_max_iters=int(args.max_c1_iters),
+        c3_points=int(args.c3_points),
+        c4_run=bool(args.run_c4),
+        jacobian_assembly=str(args.jacobian_assembly),
+    )
+    result = run_c0g_b3_followup(config)
+    print(_c0g_b3_followup_stdout_summary(result))
     return 0
 
 

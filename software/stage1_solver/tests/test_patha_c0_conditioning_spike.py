@@ -322,6 +322,151 @@ def test_c0g_b3_reproduction_gate_reads_comparison_after_run(monkeypatch) -> Non
     assert any("comparison_state.npz" in path for path in loaded_paths)
 
 
+def test_c0g_b3_followup_c1_two_start_case_reading_is_precommitted() -> None:
+    cfg = c0.C0gB3FollowupConfig(c1_same_state_tolerance=5.0e-5)
+    same = {"rho_linf": 1.0e-6, "curl_A_linf": 2.0e-6, "r0_linf": 3.0e-6, "mu_abs": 4.0e-6}
+    different = {
+        "rho_linf": 1.0e-4,
+        "curl_A_linf": 2.0e-6,
+        "r0_linf": 3.0e-6,
+        "mu_abs": 4.0e-6,
+    }
+
+    assert (
+        c0._c0g_b3_followup_c1_case(
+            {"status": "TIGHT_CONVERGED"},
+            {"status": "TIGHT_CONVERGED"},
+            same,
+            cfg,
+        )["case"]
+        == "Case 1"
+    )
+    assert (
+        c0._c0g_b3_followup_c1_case(
+            {"status": "TIGHT_CONVERGED"},
+            {"status": "TIGHT_CONVERGED"},
+            different,
+            cfg,
+        )["case"]
+        == "Case 3"
+    )
+    assert (
+        c0._c0g_b3_followup_c1_case(
+            {"status": "TIGHT_CONVERGED"},
+            {"status": "NOT_TIGHT_CONVERGED"},
+            same,
+            cfg,
+        )["case"]
+        == "Case 0"
+    )
+    assert (
+        c0._c0g_b3_followup_c1_case(
+            {"status": "NOT_TIGHT_CONVERGED"},
+            {"status": "STALLED"},
+            same,
+            cfg,
+        )["case"]
+        == "Case 2_or_4"
+    )
+
+
+def test_c0g_b3_followup_c2_characterizes_planted_mode(monkeypatch, tmp_path) -> None:
+    grid = SimpleNamespace(
+        spec=SimpleNamespace(nr=1, nw=1),
+        r_centers=torch.as_tensor([0.5], dtype=torch.float64),
+        w_centers=torch.as_tensor([0.25], dtype=torch.float64),
+    )
+    q_perp = np.zeros((7, 3), dtype=np.float64)
+    q_perp[1, 0] = 1.0
+    q_perp[2, 1] = 1.0
+    q_perp[6, 2] = 1.0
+    reduced = np.diag([10.0, 1.0, 1.0e-4])
+    scaled = csc_matrix(np.diag([0.0, 10.0, 1.0, 0.0, 0.0, 0.0, 1.0e-4]))
+
+    def fake_linearization(*, state_np, tau, config, dtype):
+        del state_np, tau, config, dtype
+        return {
+            "reduced_j": reduced,
+            "q_perp": q_perp,
+            "col_scale": np.ones(7, dtype=np.float64),
+            "ftau_scaled": np.asarray([0.0, 0.0, 1.0], dtype=np.float64),
+            "gauge": {"generator_matrix": np.eye(7, 1, dtype=np.float64)},
+            "scaled_matrix": scaled,
+            "grid": grid,
+            "branch": SimpleNamespace(),
+            "scaled_gauge_rank": 1,
+            "jacobian_metadata": {"jacobian_source": "test"},
+        }
+
+    monkeypatch.setattr(c0, "_c0g_b3_linearization", fake_linearization)
+    monkeypatch.setattr(
+        c0,
+        "_c0g_b3_followup_expanded_gauge_candidates",
+        lambda *, state, grid, branch: np.zeros((7, 0), dtype=np.float64),
+    )
+    monkeypatch.setattr(c0, "_c0g_curl_np", lambda values, grid: np.zeros((1, 1), dtype=np.float64))
+
+    result = c0._c0g_b3_followup_c2_from_state(
+        label="planted",
+        state=np.zeros(7, dtype=np.float64),
+        tau=0.03,
+        config=c0.C0gB3FollowupConfig(run_root=tmp_path),
+        dtype=torch.float64,
+    )
+
+    assert result["status"] == "MEASURED"
+    assert result["cluster_call"] == "ISOLATED_NEAR_NULL"
+    assert result["sector_energy_fractions"]["mu"] > 0.99
+    assert result["fold_transversality"]["call"] == "FOLD_TRANSVERSAL"
+    assert result["gauge_tests"]["scaled_removed_gauge_projection_fraction"] <= 1.0e-12
+
+
+def test_c0g_b3_followup_c3_line_scan_detects_spike(monkeypatch) -> None:
+    grid = SimpleNamespace(spec=SimpleNamespace(nr=1, nw=1))
+
+    def fake_state(path, *, dtype):
+        del dtype
+        if "recorded" in str(path):
+            return np.asarray([0.0], dtype=np.float64)
+        return np.asarray([1.0], dtype=np.float64)
+
+    def fake_residual(*, state_np, tau, config, dtype):
+        del tau, config, dtype
+        x = float(state_np[0])
+        return np.asarray([10.0 * x * (1.0 - x)], dtype=np.float64), None, None
+
+    monkeypatch.setattr(c0, "_c0g_b3_followup_state_np", fake_state)
+    monkeypatch.setattr(c0, "_c0g_b3_context", lambda *, tau, config, dtype: (None, grid, None))
+    monkeypatch.setattr(
+        c0,
+        "_c0g_global_phase_align_np",
+        lambda reference, candidate, grid: (candidate, {"global_phase_angle_radians": 0.0}),
+    )
+    monkeypatch.setattr(c0, "_c0g_b3_residual_np", fake_residual)
+
+    result = c0._c0g_b3_followup_c3(
+        c1={
+            "tau": 0.03,
+            "recorded": {
+                "status": "TIGHT_CONVERGED",
+                "state_artifact": "recorded.npz",
+                "final_residual_linf": 1.0e-12,
+            },
+            "continuation": {
+                "status": "TIGHT_CONVERGED",
+                "state_artifact": "continuation.npz",
+                "final_residual_linf": 1.0e-12,
+            },
+        },
+        config=c0.C0gB3FollowupConfig(c3_points=11, c3_spike_factor=100.0),
+        dtype=torch.float64,
+    )
+
+    assert result["status"] == "MEASURED"
+    assert result["call"] == "SPIKE"
+    assert result["max_normalized_residual"] >= 1.0e12
+
+
 def test_c0g_provenance_fails_if_real_prefer_existing_field_absent() -> None:
     with pytest.raises(KeyError):
         c0._c0g_prefer_existing_flag_from_c0f2_payload({"config": {}})

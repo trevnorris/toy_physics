@@ -101,6 +101,11 @@ DEFAULT_C0G_BUILD_JSON_PATH = DEFAULT_C0G_BUILD_RUN_ROOT / "pathA_C0g_build_B1B2
 DEFAULT_C0G_DEEP_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_deepcrawl")
 DEFAULT_C0G_DEEP_REPORT_PATH = Path("software/stage1_solver/reports/pathA_C0g_deepcrawl.md")
 DEFAULT_C0G_DEEP_JSON_PATH = DEFAULT_C0G_DEEP_RUN_ROOT / "pathA_C0g_deepcrawl.json"
+DEFAULT_C0G_B3_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_B3_pseudoarclength")
+DEFAULT_C0G_B3_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0g_B3_pseudoarclength.md"
+)
+DEFAULT_C0G_B3_JSON_PATH = DEFAULT_C0G_B3_RUN_ROOT / "pathA_C0g_B3_pseudoarclength.json"
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -342,6 +347,40 @@ class C0gDeepCrawlConfig:
     jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
     residual_equality_tolerance: float = 1.0e-10
     sigma_finite_floor: float = 1.0e-8
+    b4_reference_tau: float = C0gBuildB1B2Config().b4_reference_tau
+    b4_random_probe_count: int = C0gBuildB1B2Config().b4_random_probe_count
+    b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
+    b4_match_abs_tol: float = C0gBuildB1B2Config().b4_match_abs_tol
+    b4_match_rel_tol: float = C0gBuildB1B2Config().b4_match_rel_tol
+
+
+@dataclass(frozen=True)
+class C0gB3PseudoArclengthConfig:
+    deepcrawl_json_path: Path = DEFAULT_C0G_DEEP_JSON_PATH
+    run_root: Path = DEFAULT_C0G_B3_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_B3_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_B3_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    residual_tolerance: float = BACKGROUND_RESIDUAL_TOL
+    tau_scale: float = 1000.0
+    initial_ds: float = 1.0e-3
+    min_ds: float = 4.0e-5
+    max_ds: float = 3.0e-2
+    ds_growth: float = 1.35
+    ds_shrink: float = 0.5
+    corrector_max_iters: int = 8
+    corrector_stop_residual_tolerance: float = 1.0e-9
+    corrector_lstsq_rcond: float = 1.0e-12
+    corrector_line_search_steps: int = 10
+    arclength_tolerance: float = 2.0e-6
+    ftau_h: float = 1.0e-7
+    target_tau_tolerance: float = 1.0e-8
+    reproduction_comparison_tolerance: float = 5.0e-5
+    distinct_state_floor: float = 1.0e-7
+    b31_max_steps: int = 8
+    b31_required_below_count: int = 3
+    b31_deepest_tau_margin: float = 1.0e-7
     b4_reference_tau: float = C0gBuildB1B2Config().b4_reference_tau
     b4_random_probe_count: int = C0gBuildB1B2Config().b4_random_probe_count
     b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
@@ -9789,6 +9828,1392 @@ def run_c0g_deepcrawl(
     )
 
 
+def _c0g_b3_config_to_dict(config: C0gB3PseudoArclengthConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("deepcrawl_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_b3_build_config(config: C0gB3PseudoArclengthConfig) -> C0gBuildB1B2Config:
+    return C0gBuildB1B2Config(
+        run_root=config.run_root / "b4_reconfirm_context",
+        report_path=config.report_path,
+        json_path=config.json_path,
+        grid=config.grid,
+        jacobian_assembly=config.jacobian_assembly,
+        b4_reference_tau=float(config.b4_reference_tau),
+        b4_random_probe_count=int(config.b4_random_probe_count),
+        b4_random_seed=int(config.b4_random_seed),
+        b4_match_abs_tol=float(config.b4_match_abs_tol),
+        b4_match_rel_tol=float(config.b4_match_rel_tol),
+    )
+
+
+def _c0g_b3_deepcrawl_payload(config: C0gB3PseudoArclengthConfig) -> dict[str, Any]:
+    path = _resolve_input_path(config.deepcrawl_json_path)
+    payload = _c0g_load_json_path(path)
+    payload["_resolved_path"] = str(path)
+    return payload
+
+
+def _c0g_b3_converged_deepcrawl_rows(payload: Mapping[str, Any]) -> list[dict[str, Any]]:
+    rows = [
+        _c0g_deep_apply_single_arbiter(row)
+        for row in payload.get("rows", [])
+        if bool(_c0g_deep_apply_single_arbiter(row).get("final_physical_converged"))
+        and float(row.get("final_original_residual_linf", math.inf)) <= BACKGROUND_RESIDUAL_TOL
+        and row.get("state_artifact")
+    ]
+    return sorted(rows, key=lambda row: float(row["target_tau"]), reverse=True)
+
+
+def _c0g_b3_target_summary(
+    payload: Mapping[str, Any],
+    config: C0gB3PseudoArclengthConfig,
+) -> dict[str, Any]:
+    rows = _c0g_b3_converged_deepcrawl_rows(payload)
+    if len(rows) < 2:
+        raise RuntimeError("B-3 requires at least two converged deepcrawl rows")
+    deepest = min(rows, key=lambda row: float(row["target_tau"]))
+    ladder = [
+        float(row["target_tau"])
+        for row in rows
+        if float(row["target_tau"]) >= float(deepest["target_tau"]) - 5.0e-13
+    ]
+    return {
+        "status": "MEASURED",
+        "deepcrawl_json_path": payload.get("_resolved_path"),
+        "deepest_converged_tau": float(deepest["target_tau"]),
+        "deepest_state_artifact": deepest.get("state_artifact"),
+        "deepest_residual_linf": float(deepest.get("final_original_residual_linf", math.nan)),
+        "seed_tau": float(rows[0]["target_tau"]),
+        "seed_state_artifact": rows[0].get("state_artifact"),
+        "b30_target_taus": ladder,
+        "not_hardcoded": True,
+        "residual_tolerance": float(config.residual_tolerance),
+    }
+
+
+def _c0g_b3_context(
+    *,
+    tau: float,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+):
+    branch, provider, grid, boundaries = _branch_context(
+        tau=float(tau),
+        config=C0Config(grid=config.grid, jacobian_assembly=config.jacobian_assembly),
+        dtype=dtype,
+    )
+    eos_K = float(branch.continuation_K_values[-1])
+
+    def residual_fn(x: torch.Tensor) -> torch.Tensor:
+        return patha_closed_branch_residual(
+            x,
+            grid,
+            branch,
+            eos_K=eos_K,
+            boundaries=boundaries,
+            s_sigma=provider,
+        )
+
+    return branch, grid, residual_fn
+
+
+def _c0g_b3_residual_np(
+    *,
+    state_np: np.ndarray,
+    tau: float,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> tuple[np.ndarray, Any, Any]:
+    branch, grid, residual_fn = _c0g_b3_context(tau=tau, config=config, dtype=dtype)
+    state_t = torch.as_tensor(np.asarray(state_np, dtype=np.float64), dtype=dtype, device="cpu")
+    residual = residual_fn(state_t).detach().cpu().numpy().astype(np.float64, copy=False)
+    return residual, branch, grid
+
+
+def _c0g_b3_ftau_scaled(
+    *,
+    state_np: np.ndarray,
+    tau: float,
+    row_scale: np.ndarray,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> np.ndarray:
+    h = float(config.ftau_h)
+    tau_left = max(float(tau) - h, np.finfo(np.float64).tiny)
+    tau_right = float(tau) + h
+    if tau_left == float(tau):
+        right, _branch, _grid = _c0g_b3_residual_np(
+            state_np=state_np,
+            tau=tau_right,
+            config=config,
+            dtype=dtype,
+        )
+        center, _branch, _grid = _c0g_b3_residual_np(
+            state_np=state_np,
+            tau=float(tau),
+            config=config,
+            dtype=dtype,
+        )
+        return row_scale * ((right - center) / (tau_right - float(tau)))
+    left, _branch, _grid = _c0g_b3_residual_np(
+        state_np=state_np,
+        tau=tau_left,
+        config=config,
+        dtype=dtype,
+    )
+    right, _branch, _grid = _c0g_b3_residual_np(
+        state_np=state_np,
+        tau=tau_right,
+        config=config,
+        dtype=dtype,
+    )
+    return row_scale * ((right - left) / (tau_right - tau_left))
+
+
+def _c0g_b3_linearization(
+    *,
+    state_np: np.ndarray,
+    tau: float,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    state_t = torch.as_tensor(np.asarray(state_np, dtype=np.float64), dtype=dtype, device="cpu")
+    c0g_config = C0gConfig(
+        run_root=config.run_root / "diagnostics",
+        grid=config.grid,
+        jacobian_assembly=config.jacobian_assembly,
+    )
+    assembled = _c0g_assemble_original_jacobian(
+        state=state_t,
+        tau=float(tau),
+        config=c0g_config,
+        dtype=dtype,
+    )
+    branch = assembled["branch"]
+    grid = assembled["grid"]
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state_t,
+        grid=grid,
+        branch=branch,
+        config=c0g_config,
+    )
+    complement = _c0g_scaled_gauge_complement(
+        gauge_matrix=np.asarray(gauge["generator_matrix"], dtype=np.float64),
+        col_scale=np.asarray(assembled["col_scale"], dtype=np.float64),
+        config=c0g_config,
+    )
+    q_perp = np.asarray(complement["q_perp"], dtype=np.float64)
+    scaled_matrix = assembled["scaled_matrix"].tocsc()
+    reduced_j = (scaled_matrix @ q_perp).astype(np.float64, copy=False)
+    ftau_scaled = _c0g_b3_ftau_scaled(
+        state_np=np.asarray(state_np, dtype=np.float64),
+        tau=float(tau),
+        row_scale=np.asarray(assembled["row_scale"], dtype=np.float64),
+        config=config,
+        dtype=dtype,
+    )
+    singular = np.linalg.svd(reduced_j, compute_uv=False)
+    sigma_min = float(singular[-1]) if singular.size else math.nan
+    sigma_max = float(singular[0]) if singular.size else math.nan
+    return {
+        "branch": branch,
+        "grid": grid,
+        "residual_fn": assembled["residual_fn"],
+        "residual": np.asarray(assembled["residual"], dtype=np.float64),
+        "matrix": assembled["matrix"],
+        "scaled_matrix": scaled_matrix,
+        "row_scale": np.asarray(assembled["row_scale"], dtype=np.float64),
+        "col_scale": np.asarray(assembled["col_scale"], dtype=np.float64),
+        "q_perp": q_perp,
+        "reduced_j": reduced_j,
+        "ftau_scaled": ftau_scaled,
+        "gauge": gauge,
+        "scaled_gauge_rank": int(complement["scaled_gauge_rank"]),
+        "scaled_gauge_rank_threshold": float(complement["scaled_gauge_rank_threshold"]),
+        "sigma_min_JQ_perp": sigma_min,
+        "sigma_max_JQ_perp": sigma_max,
+        "jacobian_metadata": dict(assembled["metadata"]),
+        "b4_direction_source": "assemble_closed_coupled_autodiff_sparse_jacobian"
+        if config.jacobian_assembly == "autodiff_sparse_jacobian_lu"
+        else "assemble_closed_coupled_sparse_jacobian",
+    }
+
+
+def _c0g_b3_physical_from_scaled_step(
+    *,
+    col_scale: np.ndarray,
+    q_perp: np.ndarray,
+    coeff: np.ndarray,
+) -> np.ndarray:
+    return np.asarray(col_scale, dtype=np.float64) * (
+        np.asarray(q_perp, dtype=np.float64) @ np.asarray(coeff, dtype=np.float64)
+    )
+
+
+def _c0g_b3_metric_norm(
+    dx: np.ndarray,
+    dtau: float,
+    config: C0gB3PseudoArclengthConfig,
+) -> float:
+    return float(
+        math.sqrt(
+            float(np.dot(dx, dx)) + (float(config.tau_scale) * float(dtau)) ** 2
+        )
+    )
+
+
+def _c0g_b3_metric_dot(
+    left_dx: np.ndarray,
+    left_dtau: float,
+    right_dx: np.ndarray,
+    right_dtau: float,
+    config: C0gB3PseudoArclengthConfig,
+) -> float:
+    return float(
+        np.dot(np.asarray(left_dx, dtype=np.float64), np.asarray(right_dx, dtype=np.float64))
+        + (float(config.tau_scale) ** 2) * float(left_dtau) * float(right_dtau)
+    )
+
+
+def _c0g_b3_tangent_from_linearization(
+    *,
+    linear: Mapping[str, Any],
+    config: C0gB3PseudoArclengthConfig,
+    previous_tangent: Mapping[str, Any] | None,
+    secant_fallback: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    reduced_j = np.asarray(linear["reduced_j"], dtype=np.float64)
+    ftau = np.asarray(linear["ftau_scaled"], dtype=np.float64)
+    bordered = np.column_stack([reduced_j, ftau])
+    source = "lstsq_parameter_tangent_in_gauge_complement"
+    dtau_seed = -1.0
+    try:
+        coeff, _resids, rank, coeff_singular = linalg.lstsq(
+            reduced_j,
+            -ftau * dtau_seed,
+            cond=float(config.corrector_lstsq_rcond),
+            lapack_driver="gelsy",
+            check_finite=False,
+        )
+        coeff = np.asarray(coeff, dtype=np.float64)
+        dtau = dtau_seed
+        linear_residual = reduced_j @ coeff + ftau * dtau
+        residual_rel = float(
+            np.linalg.norm(linear_residual)
+            / max(np.linalg.norm(ftau), np.finfo(np.float64).tiny)
+        )
+        singular = (
+            np.asarray(coeff_singular, dtype=np.float64)
+            if coeff_singular is not None and len(coeff_singular)
+            else np.linalg.svd(reduced_j, compute_uv=False)
+        )
+    except np.linalg.LinAlgError:
+        coeff = np.zeros(reduced_j.shape[1], dtype=np.float64)
+        dtau = 0.0
+        singular = np.asarray([], dtype=np.float64)
+        residual_rel = math.inf
+    if (
+        not np.all(np.isfinite(coeff))
+        or np.linalg.norm(coeff) <= 0.0
+        or not math.isfinite(residual_rel)
+        or residual_rel > 1.0e-6
+    ):
+        source = "svd_null_vector_of_[row_scale_J_col_scale_Q_perp,row_scale_Ftau]"
+        try:
+            _u, aug_singular, vh = np.linalg.svd(bordered, full_matrices=False)
+            vector = vh[-1, :].astype(np.float64, copy=False)
+            coeff = vector[:-1]
+            dtau = float(vector[-1])
+            residual_rel = float(
+                np.linalg.norm(bordered @ vector)
+                / max(np.linalg.norm(bordered), np.finfo(np.float64).tiny)
+            )
+            singular = aug_singular
+        except np.linalg.LinAlgError:
+            coeff = np.zeros(reduced_j.shape[1], dtype=np.float64)
+            dtau = 0.0
+            residual_rel = math.inf
+        if (
+            not np.all(np.isfinite(coeff))
+            or np.linalg.norm(coeff) <= 0.0
+            or not math.isfinite(residual_rel)
+        ):
+            if secant_fallback is None:
+                raise RuntimeError("unable to compute first pseudo-arclength tangent")
+            dx = np.asarray(secant_fallback["dx"], dtype=np.float64)
+            dtau = float(secant_fallback["dtau"])
+            norm = _c0g_b3_metric_norm(dx, dtau, config)
+            if norm <= 0.0:
+                raise RuntimeError("secant fallback tangent has zero norm")
+            return {
+                "dx": dx / norm,
+                "dtau": float(dtau / norm),
+                "source": "secant_fallback",
+                "linear_residual_rel": math.nan,
+                "null_singular_min": None,
+                "orientation_rule": "fallback_secant",
+            }
+    dx = _c0g_b3_physical_from_scaled_step(
+        col_scale=np.asarray(linear["col_scale"], dtype=np.float64),
+        q_perp=np.asarray(linear["q_perp"], dtype=np.float64),
+        coeff=coeff,
+    )
+    norm = _c0g_b3_metric_norm(dx, dtau, config)
+    if norm <= 0.0:
+        raise RuntimeError("computed pseudo-arclength tangent has zero norm")
+    dx = dx / norm
+    dtau = float(dtau / norm)
+    orientation_rule = "first_tangent_oriented_to_decreasing_tau"
+    if previous_tangent is not None:
+        dot = _c0g_b3_metric_dot(
+            dx,
+            dtau,
+            np.asarray(previous_tangent["dx"], dtype=np.float64),
+            float(previous_tangent["dtau"]),
+            config,
+        )
+        orientation_rule = "positive_metric_dot_with_previous_tangent"
+        if math.isfinite(dot) and dot < 0.0:
+            dx = -dx
+            dtau = -dtau
+    elif dtau > 0.0:
+        dx = -dx
+        dtau = -dtau
+    return {
+        "dx": dx.astype(np.float64, copy=False),
+        "dtau": float(dtau),
+        "source": source,
+        "linear_residual_rel": residual_rel,
+        "null_singular_min": float(singular[-1]) if singular.size else None,
+        "orientation_rule": orientation_rule,
+    }
+
+
+def _c0g_b3_corrector(
+    *,
+    predicted_state: np.ndarray,
+    predicted_tau: float,
+    previous_state: np.ndarray,
+    previous_tau: float,
+    tangent: Mapping[str, Any],
+    ds: float,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    state = np.asarray(predicted_state, dtype=np.float64).copy()
+    tau = float(predicted_tau)
+    tangent_dx = np.asarray(tangent["dx"], dtype=np.float64)
+    tangent_dtau = float(tangent["dtau"])
+    rows: list[dict[str, Any]] = []
+    best_state = state.copy()
+    best_tau = tau
+    best_residual_linf = math.inf
+    best_constraint = math.inf
+    rejected_reason = None
+    for iteration in range(1, int(config.corrector_max_iters) + 1):
+        linear = _c0g_b3_linearization(state_np=state, tau=tau, config=config, dtype=dtype)
+        residual = np.asarray(linear["residual"], dtype=np.float64)
+        residual_linf = float(np.max(np.abs(residual)))
+        residual_l2 = float(np.linalg.norm(residual))
+        constraint = float(
+            np.dot(state - previous_state, tangent_dx)
+            + (float(config.tau_scale) ** 2) * (tau - float(previous_tau)) * tangent_dtau
+            - float(ds)
+        )
+        if residual_linf < best_residual_linf:
+            best_state = state.copy()
+            best_tau = float(tau)
+            best_residual_linf = residual_linf
+            best_constraint = constraint
+        if (
+            residual_linf <= float(config.corrector_stop_residual_tolerance)
+            and abs(constraint) <= float(config.arclength_tolerance)
+        ):
+            return {
+                "status": "CONVERGED",
+                "state": state,
+                "tau": float(tau),
+                "iterations": int(iteration - 1),
+                "rows": rows,
+                "final_residual_linf": residual_linf,
+                "final_residual_l2": residual_l2,
+                "arclength_constraint": constraint,
+                "last_linearization": linear,
+                "message": "corrector drove original physical residual below tolerance",
+            }
+        reduced_j = np.asarray(linear["reduced_j"], dtype=np.float64)
+        q_perp = np.asarray(linear["q_perp"], dtype=np.float64)
+        col_scale = np.asarray(linear["col_scale"], dtype=np.float64)
+        arclength_row = (tangent_dx * col_scale) @ q_perp
+        bordered = np.vstack(
+            [
+                np.column_stack([reduced_j, np.asarray(linear["ftau_scaled"], dtype=np.float64)]),
+                np.concatenate(
+                    [
+                        arclength_row,
+                        np.asarray(
+                            [(float(config.tau_scale) ** 2) * tangent_dtau],
+                            dtype=np.float64,
+                        ),
+                    ]
+                ),
+            ]
+        )
+        rhs = -np.concatenate(
+            [
+                np.asarray(linear["row_scale"], dtype=np.float64) * residual,
+                np.asarray([constraint], dtype=np.float64),
+            ]
+        )
+        try:
+            solve_start = time.perf_counter()
+            solution, _resids, rank, singular = linalg.lstsq(
+                bordered,
+                rhs,
+                cond=float(config.corrector_lstsq_rcond),
+                lapack_driver="gelsy",
+                check_finite=False,
+            )
+            if singular is None or len(singular) == 0:
+                singular = np.linalg.svd(bordered, compute_uv=False)
+            solve_seconds = float(time.perf_counter() - solve_start)
+        except Exception as exc:
+            rejected_reason = f"bordered_lstsq_failed: {exc}"
+            break
+        solution = np.asarray(solution, dtype=np.float64)
+        if not np.all(np.isfinite(solution)):
+            rejected_reason = "bordered_lstsq_nonfinite_step"
+            break
+        dz = solution[:-1]
+        dtau = float(solution[-1])
+        dx = _c0g_b3_physical_from_scaled_step(
+            col_scale=col_scale,
+            q_perp=q_perp,
+            coeff=dz,
+        )
+        old_merit = residual_l2 + abs(constraint)
+        accepted = False
+        alpha = 1.0
+        accepted_residual_linf = math.inf
+        accepted_constraint = math.inf
+        for _line_index in range(int(config.corrector_line_search_steps)):
+            trial_state = state + alpha * dx
+            trial_tau = float(tau + alpha * dtau)
+            trial_residual, _branch, _grid = _c0g_b3_residual_np(
+                state_np=trial_state,
+                tau=trial_tau,
+                config=config,
+                dtype=dtype,
+            )
+            trial_l2 = float(np.linalg.norm(trial_residual))
+            trial_linf = float(np.max(np.abs(trial_residual)))
+            trial_constraint = float(
+                np.dot(trial_state - previous_state, tangent_dx)
+                + (float(config.tau_scale) ** 2)
+                * (trial_tau - float(previous_tau))
+                * tangent_dtau
+                - float(ds)
+            )
+            trial_merit = trial_l2 + abs(trial_constraint)
+            if (
+                np.all(np.isfinite(trial_residual))
+                and math.isfinite(trial_tau)
+                and (trial_merit < old_merit or trial_linf <= float(config.residual_tolerance))
+            ):
+                state = trial_state
+                tau = trial_tau
+                accepted = True
+                accepted_residual_linf = trial_linf
+                accepted_constraint = trial_constraint
+                break
+            alpha *= 0.5
+        rows.append(
+            {
+                "iteration": int(iteration),
+                "original_residual_linf": residual_linf,
+                "original_residual_l2": residual_l2,
+                "arclength_constraint": constraint,
+                "bordered_rank": int(rank),
+                "bordered_sigma_min": float(np.min(singular)) if len(singular) else math.nan,
+                "bordered_sigma_max": float(np.max(singular)) if len(singular) else math.nan,
+                "bordered_condition": float(np.max(singular) / np.min(singular))
+                if len(singular) and np.min(singular) > 0.0
+                else math.inf,
+                "linear_solve_seconds": solve_seconds,
+                "gauge_rank": int(linear["scaled_gauge_rank"]),
+                "gauge_projection_inside_corrector": True,
+                "step_metric_norm": _c0g_b3_metric_norm(dx, dtau, config),
+                "line_search_alpha": float(alpha) if accepted else None,
+                "line_search_accepted": bool(accepted),
+                "accepted_residual_linf": accepted_residual_linf if accepted else None,
+                "accepted_arclength_constraint": accepted_constraint if accepted else None,
+                "sigma_min_JQ_perp": float(linear["sigma_min_JQ_perp"]),
+            }
+        )
+        if not accepted:
+            rejected_reason = "corrector_line_search_failed"
+            break
+    return {
+        "status": "FAILED",
+        "state": best_state,
+        "tau": float(best_tau),
+        "iterations": len(rows),
+        "rows": rows,
+        "final_residual_linf": best_residual_linf,
+        "final_residual_l2": math.nan,
+        "arclength_constraint": best_constraint,
+        "last_linearization": None,
+        "message": rejected_reason or "maximum bordered Newton iterations reached",
+    }
+
+
+def _c0g_b3_invariants(vector: np.ndarray, grid) -> dict[str, Any]:
+    state = torch.as_tensor(np.asarray(vector, dtype=np.float64), dtype=torch.float64, device="cpu")
+    fields, mu = unpack_closed_coupled_fields(state, grid, has_chemical_potential=True)
+    density = (fields.psi_real**2 + fields.psi_imag**2).detach().cpu().numpy()
+    r0 = fields.r0.detach().cpu().numpy()
+    return {
+        "rho": density.astype(np.float64, copy=False),
+        "curl_A": _c0g_curl_np(np.asarray(vector, dtype=np.float64), grid),
+        "r0": r0.astype(np.float64, copy=False),
+        "mu": float(mu.detach().cpu().item()) if mu is not None else math.nan,
+    }
+
+
+def _c0g_b3_invariant_mismatch(
+    *,
+    left: np.ndarray,
+    right: np.ndarray,
+    grid,
+) -> dict[str, float]:
+    linv = _c0g_b3_invariants(left, grid)
+    rinv = _c0g_b3_invariants(right, grid)
+    return {
+        "rho_linf": float(np.max(np.abs(linv["rho"] - rinv["rho"]))),
+        "curl_A_linf": float(np.max(np.abs(linv["curl_A"] - rinv["curl_A"]))),
+        "r0_linf": float(np.max(np.abs(linv["r0"] - rinv["r0"]))),
+        "mu_abs": float(abs(linv["mu"] - rinv["mu"])),
+    }
+
+
+def _c0g_b3_make_accepted_row(
+    *,
+    index: int,
+    stage: str,
+    predecessor_id: str,
+    state: np.ndarray,
+    tau: float,
+    tangent: Mapping[str, Any],
+    ds: float,
+    corrector: Mapping[str, Any],
+    linear: Mapping[str, Any],
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+    wall_seconds: float,
+) -> dict[str, Any]:
+    grid = linear["grid"]
+    state_t = torch.as_tensor(np.asarray(state, dtype=np.float64), dtype=dtype, device="cpu")
+    metrics = _state_metrics(state_t, grid)
+    residual = np.asarray(linear["residual"], dtype=np.float64)
+    state_path = _resolve_output_path(
+        config.run_root
+        / stage
+        / "states"
+        / f"accepted_{index:03d}_tau_{_format_tau(float(tau))}.npz"
+    )
+    _save_state_artifact(state_path, state_t)
+    cond_rows = corrector.get("rows", [])
+    last_cond = cond_rows[-1] if cond_rows else {}
+    return {
+        "id": f"{stage}_accepted_{index:03d}",
+        "stage": stage,
+        "accepted_index": int(index),
+        "predecessor_state_id": predecessor_id,
+        "state_artifact": str(state_path),
+        "solved_tau": float(tau),
+        "predictor_step": float(ds),
+        "corrector_iters": int(corrector.get("iterations", 0)),
+        "dtauds": float(tangent["dtau"]),
+        "dtauds_sign": "positive" if float(tangent["dtau"]) > 0.0 else "negative",
+        "original_residual_linf": float(np.max(np.abs(residual))),
+        "original_residual_l2": float(np.linalg.norm(residual)),
+        "residual_tolerance": float(config.residual_tolerance),
+        "physical_converged": bool(np.max(np.abs(residual)) <= float(config.residual_tolerance)),
+        "min_R0": float(metrics["min_R0"]),
+        "min_rho": float(metrics["min_rho"]),
+        "mu": float(metrics["chemical_potential"]),
+        "mass": float(metrics["mass"]),
+        "sigma_min_JQ_perp": float(linear["sigma_min_JQ_perp"]),
+        "sigma_max_JQ_perp": float(linear["sigma_max_JQ_perp"]),
+        "bordered_condition": last_cond.get("bordered_condition"),
+        "bordered_sigma_min": last_cond.get("bordered_sigma_min"),
+        "arclength_constraint": float(corrector.get("arclength_constraint", math.nan)),
+        "wall_seconds": float(wall_seconds),
+        "not_initialized_from_comparison_artifact": True,
+        "gauge_projection_inside_predictor": True,
+        "gauge_projection_inside_corrector": True,
+        "b4_direction_source": linear.get("b4_direction_source"),
+        "metrics": metrics,
+    }
+
+
+def _c0g_b3_run_sequence(
+    *,
+    stage: str,
+    start_state: np.ndarray,
+    start_tau: float,
+    start_id: str,
+    target_taus: Sequence[float] | None,
+    initial_tangent: Mapping[str, Any] | None,
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+    max_steps: int,
+) -> dict[str, Any]:
+    accepted: list[dict[str, Any]] = []
+    failures: list[dict[str, Any]] = []
+    state = np.asarray(start_state, dtype=np.float64).copy()
+    tau = float(start_tau)
+    predecessor_id = str(start_id)
+    previous_tangent = initial_tangent
+    ds = float(config.initial_ds)
+    reseed_attempted = False
+    secant_fallback_attempted = False
+    for step_index in range(int(max_steps)):
+        step_start = time.perf_counter()
+        linear = _c0g_b3_linearization(state_np=state, tau=tau, config=config, dtype=dtype)
+        secant_fallback = None
+        tangent = _c0g_b3_tangent_from_linearization(
+            linear=linear,
+            config=config,
+            previous_tangent=previous_tangent,
+            secant_fallback=secant_fallback,
+        )
+        if target_taus is not None and step_index < len(target_taus):
+            target_tau = float(target_taus[step_index])
+            if abs(float(tangent["dtau"])) > 1.0e-14:
+                ds = abs((target_tau - tau) / float(tangent["dtau"]))
+                ds = min(max(ds, float(config.min_ds)), float(config.max_ds))
+        predicted_state = state + ds * np.asarray(tangent["dx"], dtype=np.float64)
+        predicted_tau = float(tau + ds * float(tangent["dtau"]))
+        corrector = _c0g_b3_corrector(
+            predicted_state=predicted_state,
+            predicted_tau=predicted_tau,
+            previous_state=state,
+            previous_tau=tau,
+            tangent=tangent,
+            ds=ds,
+            config=config,
+            dtype=dtype,
+        )
+        if corrector.get("status") == "CONVERGED":
+            corrected_state = np.asarray(corrector["state"], dtype=np.float64)
+            corrected_tau = float(corrector["tau"])
+            corrected_linear = _c0g_b3_linearization(
+                state_np=corrected_state,
+                tau=corrected_tau,
+                config=config,
+                dtype=dtype,
+            )
+            target_landing_attempts: list[dict[str, Any]] = []
+            if target_taus is not None and step_index < len(target_taus):
+                target_tau = float(target_taus[step_index])
+                for retry_index in range(5):
+                    tau_error = float(corrected_tau - target_tau)
+                    if abs(tau_error) <= float(config.target_tau_tolerance):
+                        break
+                    denom = float(corrected_tau - tau)
+                    if abs(denom) <= 1.0e-15:
+                        target_landing_attempts.append(
+                            {
+                                "retry_index": int(retry_index),
+                                "status": "FAILED",
+                                "reason": "zero_tau_response_to_ds",
+                                "solved_tau": corrected_tau,
+                                "target_tau": target_tau,
+                            }
+                        )
+                        break
+                    retry_ds = float(ds) * (target_tau - float(tau)) / denom
+                    retry_ds = min(max(abs(retry_ds), float(config.min_ds)), float(config.max_ds))
+                    retry_predicted_state = state + retry_ds * np.asarray(tangent["dx"], dtype=np.float64)
+                    retry_predicted_tau = float(tau + retry_ds * float(tangent["dtau"]))
+                    retry_corrector = _c0g_b3_corrector(
+                        predicted_state=retry_predicted_state,
+                        predicted_tau=retry_predicted_tau,
+                        previous_state=state,
+                        previous_tau=tau,
+                        tangent=tangent,
+                        ds=retry_ds,
+                        config=config,
+                        dtype=dtype,
+                    )
+                    target_landing_attempts.append(
+                        {
+                            "retry_index": int(retry_index),
+                            "status": retry_corrector.get("status"),
+                            "requested_ds": retry_ds,
+                            "target_tau": target_tau,
+                            "solved_tau": retry_corrector.get("tau"),
+                            "tau_error": None
+                            if retry_corrector.get("tau") is None
+                            else float(retry_corrector.get("tau") - target_tau),
+                            "original_residual_linf": retry_corrector.get("final_residual_linf"),
+                        }
+                    )
+                    if retry_corrector.get("status") != "CONVERGED":
+                        break
+                    ds = retry_ds
+                    corrector = retry_corrector
+                    corrected_state = np.asarray(corrector["state"], dtype=np.float64)
+                    corrected_tau = float(corrector["tau"])
+                    corrected_linear = _c0g_b3_linearization(
+                        state_np=corrected_state,
+                        tau=corrected_tau,
+                        config=config,
+                        dtype=dtype,
+                    )
+                if abs(float(corrected_tau) - target_tau) > float(config.target_tau_tolerance):
+                    failures.append(
+                        {
+                            "step_index": int(step_index),
+                            "status": "TARGET_MISSED",
+                            "target_tau": target_tau,
+                            "solved_tau": corrected_tau,
+                            "tau_error": float(corrected_tau - target_tau),
+                            "target_landing_attempts": target_landing_attempts,
+                        }
+                    )
+                    break
+            row = _c0g_b3_make_accepted_row(
+                index=len(accepted),
+                stage=stage,
+                predecessor_id=predecessor_id,
+                state=corrected_state,
+                tau=corrected_tau,
+                tangent=tangent,
+                ds=ds,
+                corrector=corrector,
+                linear=corrected_linear,
+                config=config,
+                dtype=dtype,
+                wall_seconds=float(time.perf_counter() - step_start),
+            )
+            if row["min_R0"] <= 0.0:
+                failures.append(
+                    {
+                        "step_index": int(step_index),
+                        "status": "HALT",
+                        "reason": "min_R0_nonpositive_model_forbidden",
+                        "min_R0": row["min_R0"],
+                    }
+                )
+                break
+            accepted.append(row)
+            previous_state = state
+            previous_tau = tau
+            state = corrected_state
+            tau = corrected_tau
+            predecessor_id = row["id"]
+            previous_tangent = _c0g_b3_tangent_from_linearization(
+                linear=corrected_linear,
+                config=config,
+                previous_tangent=tangent,
+                secant_fallback={
+                    "dx": corrected_state - previous_state,
+                    "dtau": corrected_tau - previous_tau,
+                },
+                )
+            ds = min(float(config.max_ds), ds * float(config.ds_growth))
+            continue
+        failures.append(
+            {
+                "step_index": int(step_index),
+                "status": "FAILED",
+                "reason": corrector.get("message"),
+                "ds": float(ds),
+                "predicted_tau": predicted_tau,
+                "best_tau": corrector.get("tau"),
+                "best_original_residual_linf": corrector.get("final_residual_linf"),
+                "adaptive_ds_reduction": True,
+            }
+        )
+        if ds > float(config.min_ds):
+            ds = max(float(config.min_ds), ds * float(config.ds_shrink))
+            continue
+        if not reseed_attempted:
+            previous_tangent = None
+            reseed_attempted = True
+            failures[-1]["tangent_reseed_attempted_after_failure"] = True
+            continue
+        if not secant_fallback_attempted and len(accepted) >= 1:
+            secant_fallback_attempted = True
+            failures[-1]["secant_fallback_attempted_after_failure"] = True
+            continue
+        break
+    return {
+        "stage": stage,
+        "accepted": accepted,
+        "failures": failures,
+        "final_state": state,
+        "final_tau": float(tau),
+        "final_state_id": predecessor_id,
+        "final_tangent": previous_tangent,
+        "adaptive_ds_reduction_attempted": bool(any(row.get("adaptive_ds_reduction") for row in failures)),
+        "tangent_reseed_attempted": bool(reseed_attempted),
+        "secant_fallback_attempted": bool(secant_fallback_attempted),
+    }
+
+
+def _c0g_b3_reproduction_check(
+    *,
+    b30: Mapping[str, Any],
+    deepcrawl_rows: Sequence[Mapping[str, Any]],
+    config: C0gB3PseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    accepted = list(b30.get("accepted", []))
+    if not accepted:
+        return {"status": "FAIL", "reason": "no accepted B-3.0 continuation states"}
+    by_tau = {float(row["target_tau"]): row for row in deepcrawl_rows}
+    checks: list[dict[str, Any]] = []
+    for row in accepted:
+        solved_tau = float(row["solved_tau"])
+        nearest_tau = min(by_tau, key=lambda value: abs(value - solved_tau))
+        if abs(solved_tau - nearest_tau) > float(config.target_tau_tolerance):
+            checks.append(
+                {
+                    "accepted_id": row["id"],
+                    "solved_tau": solved_tau,
+                    "comparison_tau": nearest_tau,
+                    "tau_abs_error": abs(solved_tau - nearest_tau),
+                    "status": "SKIPPED_INTERMEDIATE",
+                    "reason": "accepted continuation state is an internal B-3.0 subdivision, not a recorded comparison tau",
+                    "comparison_artifact_read_after_run": False,
+                }
+            )
+            continue
+        reference_row = by_tau[nearest_tau]
+        accepted_state = _load_state_artifact(_resolve_input_path(str(row["state_artifact"])), dtype=dtype)
+        reference_state = _load_state_artifact(_resolve_input_path(str(reference_row["state_artifact"])), dtype=dtype)
+        _branch, grid, _residual_fn = _c0g_b3_context(tau=solved_tau, config=config, dtype=dtype)
+        mismatch = _c0g_b3_invariant_mismatch(
+            left=accepted_state.detach().cpu().numpy(),
+            right=reference_state.detach().cpu().numpy(),
+            grid=grid,
+        )
+        max_mismatch = max(float(value) for value in mismatch.values())
+        checks.append(
+            {
+                "accepted_id": row["id"],
+                "solved_tau": solved_tau,
+                "comparison_tau": nearest_tau,
+                "tau_abs_error": abs(solved_tau - nearest_tau),
+                "mismatch": mismatch,
+                "max_gauge_invariant_mismatch": max_mismatch,
+                "status": "PASS"
+                if max_mismatch <= float(config.reproduction_comparison_tolerance)
+                and abs(solved_tau - nearest_tau) <= float(config.target_tau_tolerance)
+                and float(row["original_residual_linf"]) <= float(config.residual_tolerance)
+                else "FAIL",
+                "comparison_artifact_read_after_run": True,
+            }
+        )
+    continuity = []
+    prev_state = None
+    for row in accepted:
+        current = _load_state_artifact(_resolve_input_path(str(row["state_artifact"])), dtype=dtype)
+        current_np = current.detach().cpu().numpy().astype(np.float64, copy=False)
+        if prev_state is not None:
+            distance = float(np.linalg.norm(current_np - prev_state))
+            continuity.append(
+                {
+                    "accepted_id": row["id"],
+                    "state_l2_distance_from_previous": distance,
+                    "distinct_above_floor": bool(distance > float(config.distinct_state_floor)),
+                }
+            )
+        prev_state = current_np
+    required_checks = [row for row in checks if row.get("status") != "SKIPPED_INTERMEDIATE"]
+    status = (
+        "PASS"
+        if required_checks and all(row["status"] == "PASS" for row in required_checks)
+        else "FAIL"
+    )
+    if continuity and not all(row["distinct_above_floor"] for row in continuity):
+        status = "FAIL"
+    return {
+        "status": status,
+        "checks": checks,
+        "state_continuity": continuity,
+        "not_initialized_from_comparison_artifact": bool(
+            all(row.get("not_initialized_from_comparison_artifact") for row in accepted)
+        ),
+        "comparison_artifacts_read_only_after_run": True,
+        "tolerance": float(config.reproduction_comparison_tolerance),
+    }
+
+
+def _c0g_b3_adjudicate(
+    *,
+    b30: Mapping[str, Any],
+    reproduction: Mapping[str, Any],
+    b31: Mapping[str, Any] | None,
+    b4_reconfirm: Mapping[str, Any],
+    target: Mapping[str, Any],
+    config: C0gB3PseudoArclengthConfig,
+) -> dict[str, Any]:
+    if reproduction.get("status") != "PASS":
+        return {
+            "verdict": "NOT_MEASURED",
+            "why": "B-3.0 reproduction gate failed; hard-region continuation was not attempted",
+            "scientific_verdict_earned": False,
+        }
+    if b4_reconfirm.get("status") != "PASS":
+        return {
+            "verdict": "NOT_MEASURED",
+            "why": "B-4 match gate failed; B-3 direction was not trusted",
+            "scientific_verdict_earned": False,
+        }
+    if b31 is None:
+        return {
+            "verdict": "NOT_MEASURED",
+            "why": "B-3.1 did not run",
+            "scientific_verdict_earned": False,
+        }
+    accepted = list(b31.get("accepted", []))
+    if not accepted:
+        exhausted = bool(
+            b31.get("adaptive_ds_reduction_attempted")
+            and b31.get("tangent_reseed_attempted")
+            and b31.get("secant_fallback_attempted")
+        )
+        return {
+            "verdict": "GENUINE_ENDPOINT" if exhausted else "NOT_MEASURED",
+            "why": "bordered corrector could not drive original residual with tau free"
+            if exhausted
+            else "no B-3.1 accepted states and exhaustion criteria were not complete",
+            "scientific_verdict_earned": exhausted,
+            "exhaustion": {
+                "adaptive_ds_reduction": bool(b31.get("adaptive_ds_reduction_attempted")),
+                "tangent_reseed": bool(b31.get("tangent_reseed_attempted")),
+                "secant_fallback": bool(b31.get("secant_fallback_attempted")),
+            },
+        }
+    all_rows = list(b30.get("accepted", [])) + accepted
+    signs = [1 if float(row["dtauds"]) > 0.0 else -1 for row in all_rows]
+    reversal_index = None
+    for index in range(1, len(signs)):
+        if signs[index] != signs[index - 1]:
+            reversal_index = index
+            break
+    min_r0_positive = all(float(row.get("min_R0", -math.inf)) > 0.0 for row in all_rows)
+    stall_tau = float(target["deepest_converged_tau"])
+    below = [
+        row
+        for row in accepted
+        if float(row.get("solved_tau", math.inf)) < stall_tau
+        and bool(row.get("physical_converged"))
+    ]
+    deepest = min((float(row["solved_tau"]) for row in below), default=None)
+    if reversal_index is not None:
+        far_side = all_rows[reversal_index:]
+        far_converged = [
+            row
+            for row in far_side
+            if bool(row.get("physical_converged"))
+            and float(row.get("original_residual_linf", math.inf)) <= float(config.residual_tolerance)
+        ]
+        if len(far_converged) >= 3 and min_r0_positive:
+            return {
+                "verdict": "ROUNDS_FOLD",
+                "why": "dτ/ds reversed sign with at least three converged states on the far side",
+                "scientific_verdict_earned": True,
+                "turning_index": int(reversal_index),
+                "far_side_count": int(len(far_converged)),
+            }
+    progress_tau = stall_tau - float(config.b31_deepest_tau_margin)
+    if (
+        len(below) >= int(config.b31_required_below_count)
+        and deepest is not None
+        and deepest <= progress_tau
+        and reversal_index is None
+        and min_r0_positive
+    ):
+        return {
+            "verdict": "CONTINUES_NO_TURNING",
+            "why": (
+                f"{len(below)} distinct accepted states have solved tau below "
+                f"{stall_tau:.12g}, deepest {deepest:.12g}, with no dτ/ds reversal"
+            ),
+            "scientific_verdict_earned": True,
+            "below_stall_count": int(len(below)),
+            "deepest_converged_tau": deepest,
+            "required_deepest_tau": progress_tau,
+        }
+    failures = list(b31.get("failures", []))
+    exhausted = bool(
+        failures
+        and b31.get("adaptive_ds_reduction_attempted")
+        and b31.get("tangent_reseed_attempted")
+        and b31.get("secant_fallback_attempted")
+    )
+    if exhausted and min_r0_positive:
+        return {
+            "verdict": "GENUINE_ENDPOINT",
+            "why": "full pseudo-arclength machinery exhausted without correcting original residual",
+            "scientific_verdict_earned": True,
+            "below_stall_count": int(len(below)),
+            "deepest_converged_tau": deepest,
+            "exhaustion": {
+                "adaptive_ds_reduction": True,
+                "tangent_reseed": True,
+                "secant_fallback": True,
+            },
+        }
+    return {
+        "verdict": "NOT_MEASURED",
+        "why": "B-3.1 produced too few accepted states for a scientific verdict in this chunk",
+        "scientific_verdict_earned": False,
+        "below_stall_count": int(len(below)),
+        "deepest_converged_tau": deepest,
+        "dtauds_reversed": reversal_index is not None,
+    }
+
+
+def write_c0g_b3_pseudoarclength_report(result: Mapping[str, Any], path: Path) -> None:
+    b4 = result.get("b4_reconfirm", {})
+    target = result.get("target", {})
+    verdict = result.get("b32_verdict", {})
+    b30 = result.get("B3_0", {})
+    b31 = result.get("B3_1", {})
+    lines = [
+        "# Path-A C0g B-3 Pseudo-Arclength",
+        "",
+        f"B-3.0 reproduction: **{result.get('B3_0_reproduction', {}).get('status')}**",
+        f"B-3.2 verdict: **{verdict.get('verdict')}**",
+        "",
+        "## Method",
+        "",
+        "- Reduced unknowns are `(Q_perp coefficients, tau)`.",
+        f"- Declared arclength metric: `||dx||_2^2 + ({result.get('config', {}).get('tau_scale')} dτ)^2`.",
+        "- Predictor tangent first solves `row_scale * J_original * col_scale * Q_perp * z = -row_scale * F_tau * dτ` in the gauge complement; the augmented null vector is the fallback.",
+        "- The bordered corrector drives the unchanged original physical residual; the arclength row is not a convergence arbiter.",
+        "- `Q_perp` is rebuilt inside every predictor and corrector linear solve.",
+        "",
+        "## B-4 Reconfirm",
+        "",
+        "```yaml",
+        f"status: {b4.get('status')}",
+        f"reference_tau: {b4.get('reference_tau')}",
+        f"tolerances: {b4.get('match_tolerances')}",
+        f"assembly_speedup_x: {b4.get('assembly_speedup_x')}",
+        "```",
+        "",
+        "## Target",
+        "",
+        "```yaml",
+        f"deepcrawl_json_path: {target.get('deepcrawl_json_path')}",
+        f"seed_tau: {target.get('seed_tau')}",
+        f"deepest_converged_tau: {target.get('deepest_converged_tau')}",
+        f"deepest_residual_linf: {target.get('deepest_residual_linf')}",
+        "```",
+        "",
+        "## B-3.0 Ladder",
+        "",
+        _markdown_table(
+            [
+                "accepted_index",
+                "predecessor_state_id",
+                "predictor_step",
+                "corrector_iters",
+                "solved_tau",
+                "dtauds",
+                "original_residual_linf",
+                "min_R0",
+                "min_rho",
+                "mu",
+                "sigma_min_JQ_perp",
+                "bordered_condition",
+                "wall_seconds",
+                "not_initialized_from_comparison_artifact",
+            ],
+            b30.get("accepted", []),
+        ),
+        "",
+        "## B-3.0 Reproduction Check",
+        "",
+        "```yaml",
+        f"{result.get('B3_0_reproduction', {})}",
+        "```",
+        "",
+        "## B-3.1 Ladder",
+        "",
+        _markdown_table(
+            [
+                "accepted_index",
+                "predecessor_state_id",
+                "predictor_step",
+                "corrector_iters",
+                "solved_tau",
+                "dtauds",
+                "original_residual_linf",
+                "min_R0",
+                "min_rho",
+                "mu",
+                "sigma_min_JQ_perp",
+                "bordered_condition",
+                "wall_seconds",
+            ],
+            b31.get("accepted", []) if isinstance(b31, Mapping) else [],
+        ),
+        "",
+        "## Verdict",
+        "",
+        "```yaml",
+        f"{verdict}",
+        "```",
+        "",
+        "## Scope Guard",
+        "",
+        "```yaml",
+    ]
+    for key, value in result.get("scope_guard", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.extend(
+        [
+            "```",
+            "",
+            "## Git Diff Summary",
+            "",
+            "```",
+            str(result.get("git_diff_summary", "")),
+            "```",
+            "",
+            f"Machine JSON: `{result.get('json_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0g_b3_git_diff_summary() -> str:
+    import subprocess
+
+    proc = subprocess.run(
+        ["git", "diff", "--", "src/stage1_solver/coupled_branch.py", "src/stage1_solver/operators.py"],
+        cwd=str(Path(__file__).resolve().parents[2]),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    if proc.stdout.strip():
+        return proc.stdout.strip()
+    return "No diff in src/stage1_solver/coupled_branch.py or src/stage1_solver/operators.py."
+
+
+def run_c0g_b3_pseudoarclength(
+    config: C0gB3PseudoArclengthConfig | None = None,
+    *,
+    b4_recheck: bool = True,
+    b31_steps: int | None = None,
+    b30_only: bool = False,
+) -> dict[str, Any]:
+    cfg = config or C0gB3PseudoArclengthConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    payload = _c0g_b3_deepcrawl_payload(cfg)
+    target = _c0g_b3_target_summary(payload, cfg)
+    deepcrawl_rows = _c0g_b3_converged_deepcrawl_rows(payload)
+    b4_reconfirm: Mapping[str, Any]
+    if b4_recheck:
+        b4_reconfirm = run_c0g_b4_match_gate(_c0g_b3_build_config(cfg))
+    else:
+        b4_reconfirm = payload.get("b4_reconfirm", {"status": "NOT_RECHECKED"})
+    seed_state = _load_state_artifact(
+        _resolve_input_path(str(target["seed_state_artifact"])),
+        dtype=dtype,
+    )
+    seed_np = seed_state.detach().cpu().numpy().astype(np.float64, copy=True)
+    recorded_target_taus = [
+        float(tau)
+        for tau in target["b30_target_taus"]
+        if float(tau) < float(target["seed_tau"]) - 5.0e-13
+    ]
+    target_taus: list[float] = []
+    current_tau = float(target["seed_tau"])
+    for recorded_tau in recorded_target_taus:
+        pieces = max(1, int(math.ceil(abs(recorded_tau - current_tau) / 7.5e-7)))
+        for piece_index in range(1, pieces + 1):
+            target_taus.append(
+                float(current_tau + (recorded_tau - current_tau) * piece_index / pieces)
+            )
+        current_tau = recorded_tau
+    b30 = _c0g_b3_run_sequence(
+        stage="B3_0",
+        start_state=seed_np,
+        start_tau=float(target["seed_tau"]),
+        start_id="single_initial_seed_from_deepcrawl",
+        target_taus=target_taus,
+        initial_tangent=None,
+        config=cfg,
+        dtype=dtype,
+        max_steps=len(target_taus),
+    )
+    reproduction = _c0g_b3_reproduction_check(
+        b30=b30,
+        deepcrawl_rows=deepcrawl_rows,
+        config=cfg,
+        dtype=dtype,
+    )
+    b31 = None
+    if reproduction.get("status") == "PASS" and b4_reconfirm.get("status") == "PASS" and not b30_only:
+        b31 = _c0g_b3_run_sequence(
+            stage="B3_1",
+            start_state=np.asarray(b30["final_state"], dtype=np.float64),
+            start_tau=float(b30["final_tau"]),
+            start_id=str(b30["final_state_id"]),
+            target_taus=None,
+            initial_tangent=b30.get("final_tangent"),
+            config=cfg,
+            dtype=dtype,
+            max_steps=int(cfg.b31_max_steps if b31_steps is None else b31_steps),
+        )
+    verdict = _c0g_b3_adjudicate(
+        b30=b30,
+        reproduction=reproduction,
+        b31=b31,
+        b4_reconfirm=b4_reconfirm,
+        target=target,
+        config=cfg,
+    )
+    result = {
+        "schema": "stage1_pathA_C0g_B3_pseudoarclength/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_b3_config_to_dict(cfg),
+        "target": target,
+        "b4_reconfirm": dict(b4_reconfirm),
+        "B3_0": {
+            key: value
+            for key, value in b30.items()
+            if key not in {"final_state", "final_tangent"}
+        },
+        "B3_0_reproduction": reproduction,
+        "B3_1": None
+        if b31 is None
+        else {
+            key: value
+            for key, value in b31.items()
+            if key not in {"final_state", "final_tangent"}
+        },
+        "b32_verdict": verdict,
+        "scope_guard": {
+            "B3_pseudoarclength_built": True,
+            "B4_analytic_sparse_assembly_built": True,
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "convergence_judged_only_on_original_residual": True,
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "prefer_existing_b2c_background_predictor": False,
+            "frozen_physics_touched": False,
+            "no_LM_no_PTC_no_Sobolev_regularization": True,
+        },
+        "git_diff_summary": _c0g_b3_git_diff_summary(),
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(cfg.report_path)),
+        "json_path": str(_resolve_output_path(cfg.json_path)),
+    }
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_b3_pseudoarclength_report(result, report_path)
+    return result
+
+
+def _c0g_b3_stdout_summary(result: Mapping[str, Any]) -> str:
+    b30_status = result.get("B3_0_reproduction", {}).get("status")
+    b31_rows = (result.get("B3_1") or {}).get("accepted", [])
+    all_rows = list(result.get("B3_0", {}).get("accepted", [])) + list(b31_rows)
+    reversed_sign = False
+    signs = [1 if float(row.get("dtauds", 0.0)) > 0.0 else -1 for row in all_rows]
+    for left, right in zip(signs, signs[1:]):
+        if left != right:
+            reversed_sign = True
+            break
+    target_tau = result.get("target", {}).get("deepest_converged_tau")
+    below = [
+        row for row in b31_rows if target_tau is not None and float(row.get("solved_tau", math.inf)) < float(target_tau)
+    ]
+    min_r0_values = [float(row.get("min_R0", math.nan)) for row in all_rows if row.get("min_R0") is not None]
+    sigma_values = [
+        float(row.get("sigma_min_JQ_perp", math.nan))
+        for row in all_rows
+        if row.get("sigma_min_JQ_perp") is not None
+    ]
+    ladder_lines = []
+    for row in b31_rows:
+        ladder_lines.append(
+            (
+                "  tau={tau}, dtauds={dtauds}, residual={resid}, min_R0={r0}, "
+                "min_rho={rho}, mu={mu}, sigma_min(JQ_perp)={sigma}, "
+                "bordered_cond={cond}, ds={ds}, iters={iters}, seconds={seconds}"
+            ).format(
+                tau=_c0g_fmt(row.get("solved_tau")),
+                dtauds=_c0g_fmt(row.get("dtauds")),
+                resid=_c0g_fmt(row.get("original_residual_linf")),
+                r0=_c0g_fmt(row.get("min_R0")),
+                rho=_c0g_fmt(row.get("min_rho")),
+                mu=_c0g_fmt(row.get("mu")),
+                sigma=_c0g_fmt(row.get("sigma_min_JQ_perp")),
+                cond=_c0g_fmt(row.get("bordered_condition")),
+                ds=_c0g_fmt(row.get("predictor_step")),
+                iters=row.get("corrector_iters"),
+                seconds=_c0g_fmt(row.get("wall_seconds")),
+            )
+        )
+    verdict = result.get("b32_verdict", {})
+    scope = result.get("scope_guard", {})
+    return "\n".join(
+        [
+            f"B-3.0 reproduction: {b30_status}",
+            "B-3.1 ladder:",
+            *(ladder_lines or ["  n/a"]),
+            f"dτ/ds reversed: {reversed_sign}",
+            f"B-3.2 verdict: {verdict.get('verdict')} - {verdict.get('why')}",
+            (
+                f"deepest converged tau reached: {_c0g_fmt(min([float(row.get('solved_tau')) for row in b31_rows], default=None))}; "
+                f"count below {target_tau}: {len(below)}"
+            ),
+            (
+                f"min_R0 range: {_c0g_fmt(min(min_r0_values) if min_r0_values else None)} .. "
+                f"{_c0g_fmt(max(min_r0_values) if min_r0_values else None)}; stayed > 0 = "
+                f"{bool(min_r0_values and min(min_r0_values) > 0.0)}"
+            ),
+            (
+                f"sigma_min trend: first={_c0g_fmt(sigma_values[0] if sigma_values else None)}, "
+                f"last={_c0g_fmt(sigma_values[-1] if sigma_values else None)}"
+            ),
+            f"B-4 reconfirm: {result.get('b4_reconfirm', {}).get('status')}",
+            (
+                "Scope untouched: residual/operators/(1/xi)/export/physics="
+                f"{not scope.get('patha_closed_branch_residual_touched')}/"
+                f"{not scope.get('faithful_operators_touched')}/"
+                f"{not scope.get('xi_or_grad_div_penalty_touched')}/"
+                f"{not scope.get('physical_export_permitted_touched')}/"
+                f"{not scope.get('frozen_physics_touched')}; "
+                f"original residual only={scope.get('convergence_judged_only_on_original_residual')}"
+            ),
+            f"Files: report={result.get('report_path')}, json={result.get('json_path')}",
+        ]
+    )
+
+
 def _c0g_fmt(value: Any, *, digits: int = 6) -> str:
     if value is None:
         return "n/a"
@@ -10881,6 +12306,65 @@ def c0g_deepcrawl_main(argv: Sequence[str] | None = None) -> int:
         b4_recheck=not bool(args.skip_b4_recheck),
     )
     print(_c0g_deep_stdout_summary(result))
+    return 0
+
+
+def c0g_b3_pseudoarclength_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run Path-A C0g B-3 gauge-fixed Keller pseudo-arclength continuation."
+    )
+    default = C0gB3PseudoArclengthConfig()
+    parser.add_argument("--deepcrawl-json", type=Path, default=default.deepcrawl_json_path)
+    parser.add_argument("--run-root", type=Path, default=default.run_root)
+    parser.add_argument("--report-path", type=Path, default=default.report_path)
+    parser.add_argument("--json-path", type=Path, default=default.json_path)
+    parser.add_argument("--skip-b4-recheck", action="store_true")
+    parser.add_argument("--b30-only", action="store_true")
+    parser.add_argument("--b31-steps", type=int, default=default.b31_max_steps)
+    parser.add_argument("--initial-ds", type=float, default=default.initial_ds)
+    parser.add_argument("--min-ds", type=float, default=default.min_ds)
+    parser.add_argument("--max-ds", type=float, default=default.max_ds)
+    parser.add_argument("--tau-scale", type=float, default=default.tau_scale)
+    parser.add_argument("--corrector-max-iters", type=int, default=default.corrector_max_iters)
+    parser.add_argument("--target-tau-tolerance", type=float, default=default.target_tau_tolerance)
+    parser.add_argument(
+        "--reproduction-comparison-tolerance",
+        type=float,
+        default=default.reproduction_comparison_tolerance,
+    )
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=default.jacobian_assembly,
+    )
+    args = parser.parse_args(argv)
+    config = C0gB3PseudoArclengthConfig(
+        deepcrawl_json_path=args.deepcrawl_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        jacobian_assembly=str(args.jacobian_assembly),
+        tau_scale=float(args.tau_scale),
+        initial_ds=float(args.initial_ds),
+        min_ds=float(args.min_ds),
+        max_ds=float(args.max_ds),
+        corrector_max_iters=int(args.corrector_max_iters),
+        target_tau_tolerance=float(args.target_tau_tolerance),
+        reproduction_comparison_tolerance=float(args.reproduction_comparison_tolerance),
+        b31_max_steps=int(args.b31_steps),
+        b4_reference_tau=float(default.b4_reference_tau),
+        b4_random_probe_count=int(default.b4_random_probe_count),
+        b4_random_seed=int(default.b4_random_seed),
+        b4_match_abs_tol=float(default.b4_match_abs_tol),
+        b4_match_rel_tol=float(default.b4_match_rel_tol),
+    )
+    result = run_c0g_b3_pseudoarclength(
+        config,
+        b4_recheck=not bool(args.skip_b4_recheck),
+        b31_steps=int(args.b31_steps),
+        b30_only=bool(args.b30_only),
+    )
+    print(_c0g_b3_stdout_summary(result))
     return 0
 
 

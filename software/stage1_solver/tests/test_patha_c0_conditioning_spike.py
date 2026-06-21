@@ -218,6 +218,110 @@ def test_c0g_provenance_prefers_real_crawl_config_field() -> None:
     assert source == "crawl_config.prefer_existing_b2c_background_predictor"
 
 
+def test_c0g_b3_bordered_corrector_drives_physical_block_to_zero(monkeypatch) -> None:
+    cfg = replace(
+        c0.C0gB3PseudoArclengthConfig(),
+        residual_tolerance=1.0e-12,
+        arclength_tolerance=1.0e-12,
+        corrector_max_iters=4,
+        corrector_line_search_steps=4,
+    )
+    calls = {"linearization": 0, "original_residual": 0}
+
+    def fake_linearization(*, state_np, tau, config, dtype):
+        del config, dtype
+        calls["linearization"] += 1
+        residual = np.asarray([float(state_np[0]) + float(tau)], dtype=np.float64)
+        return {
+            "residual": residual,
+            "reduced_j": np.asarray([[1.0]], dtype=np.float64),
+            "q_perp": np.asarray([[1.0]], dtype=np.float64),
+            "col_scale": np.ones(1, dtype=np.float64),
+            "row_scale": np.ones(1, dtype=np.float64),
+            "ftau_scaled": np.asarray([1.0], dtype=np.float64),
+            "scaled_gauge_rank": 0,
+            "sigma_min_JQ_perp": 1.0,
+        }
+
+    def fake_original_residual(*, state_np, tau, config, dtype):
+        del config, dtype
+        calls["original_residual"] += 1
+        return np.asarray([float(state_np[0]) + float(tau)], dtype=np.float64), None, None
+
+    monkeypatch.setattr(c0, "_c0g_b3_linearization", fake_linearization)
+    monkeypatch.setattr(c0, "_c0g_b3_residual_np", fake_original_residual)
+
+    result = c0._c0g_b3_corrector(
+        predicted_state=np.asarray([0.1], dtype=np.float64),
+        predicted_tau=0.0,
+        previous_state=np.asarray([0.0], dtype=np.float64),
+        previous_tau=0.0,
+        tangent={"dx": np.asarray([1.0], dtype=np.float64), "dtau": 0.0},
+        ds=0.1,
+        config=cfg,
+        dtype=torch.float64,
+    )
+
+    assert result["status"] == "CONVERGED"
+    assert abs(result["tau"] + 0.1) <= 1.0e-12
+    assert result["final_residual_linf"] <= cfg.residual_tolerance
+    assert calls["original_residual"] >= 1
+    assert result["rows"][0]["gauge_projection_inside_corrector"]
+
+
+def test_c0g_b3_reproduction_gate_reads_comparison_after_run(monkeypatch) -> None:
+    cfg = replace(
+        c0.C0gB3PseudoArclengthConfig(),
+        target_tau_tolerance=1.0e-9,
+        reproduction_comparison_tolerance=1.0e-9,
+    )
+    loaded_paths: list[str] = []
+
+    def fake_load(path, *, dtype):
+        loaded_paths.append(str(path))
+        return torch.as_tensor([1.0, 2.0], dtype=dtype)
+
+    def fake_context(*, tau, config, dtype):
+        del tau, config, dtype
+        return None, SimpleNamespace(), None
+
+    def fake_mismatch(*, left, right, grid):
+        del left, right, grid
+        return {"rho_linf": 0.0, "curl_A_linf": 0.0, "r0_linf": 0.0, "mu_abs": 0.0}
+
+    monkeypatch.setattr(c0, "_load_state_artifact", fake_load)
+    monkeypatch.setattr(c0, "_c0g_b3_context", fake_context)
+    monkeypatch.setattr(c0, "_c0g_b3_invariant_mismatch", fake_mismatch)
+
+    check = c0._c0g_b3_reproduction_check(
+        b30={
+            "accepted": [
+                {
+                    "id": "B3_0_accepted_000",
+                    "solved_tau": 0.029122,
+                    "state_artifact": "new_state.npz",
+                    "original_residual_linf": 1.0e-10,
+                    "not_initialized_from_comparison_artifact": True,
+                }
+            ]
+        },
+        deepcrawl_rows=[
+            {
+                "target_tau": 0.029122,
+                "state_artifact": "comparison_state.npz",
+                "final_original_residual_linf": 1.0e-10,
+            }
+        ],
+        config=cfg,
+        dtype=torch.float64,
+    )
+
+    assert check["status"] == "PASS"
+    assert check["comparison_artifacts_read_only_after_run"]
+    assert check["not_initialized_from_comparison_artifact"]
+    assert any("comparison_state.npz" in path for path in loaded_paths)
+
+
 def test_c0g_provenance_fails_if_real_prefer_existing_field_absent() -> None:
     with pytest.raises(KeyError):
         c0._c0g_prefer_existing_flag_from_c0f2_payload({"config": {}})

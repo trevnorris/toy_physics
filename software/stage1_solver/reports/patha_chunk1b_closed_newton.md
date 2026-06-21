@@ -30,7 +30,7 @@ exit_wall_bc: natural_zero_traction
 | 8.000000e-02 | True | 4 | 1.067053e+00 | 1.726341e-12 | 2.134107e-09 | [1, 1, 1, 1] | 9.877030e-01 | 9.980074e-01 | residual tolerance reached |
 | 1.800000e-01 | True | 0 | 1.381831e-09 | 1.381831e-09 | 2.000000e-09 | [] | 9.877030e-01 | 9.980074e-01 | initial residual met tolerance |
 
-Final residual linf=1.381831e-09; R0 range=[9.877030e-01, 9.980074e-01]; mass=5.000000e-02; mu=2.013805e+00; wall-clock=1.169103e+02s.
+Final residual linf=1.381831e-09; R0 range=[9.877030e-01, 9.980074e-01]; mass=5.000000e-02; mu=2.013805e+00; wall-clock=1.173417e+02s.
 Closed-Newton tolerance note: the counted gate uses residual_atol=2.000000e-09 and residual_rtol=2.000000e-09; the active nonlinear closed solve achieved residual 1.726341e-12, so the relaxed absolute tolerance is not masking non-convergence.
 
 ## JVP Check

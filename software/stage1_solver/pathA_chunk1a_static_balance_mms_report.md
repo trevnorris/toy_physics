@@ -1,7 +1,7 @@
 # Path-A Chunk 1a Static Balance MMS Report
 
 Overall gate: PASS
-Config hash: `62db24d3532de346`
+Config hash: `db6d8119bc0f05c3`
 S_Sigma spec digest: `99a48c7c8163a213`
 
 ## Built Surface

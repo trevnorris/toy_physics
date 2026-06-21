@@ -23,9 +23,9 @@ import time
 from typing import Any, Callable, Mapping, Sequence
 
 import numpy as np
-from scipy import optimize
+from scipy import linalg, optimize
 from scipy.sparse import csc_matrix, diags, eye, load_npz, save_npz
-from scipy.sparse.linalg import LinearOperator, eigsh, gmres, svds
+from scipy.sparse.linalg import LinearOperator, eigsh, gmres, lsmr, svds
 import torch
 
 from . import patha_b2a_bdg as b2a
@@ -60,7 +60,9 @@ from .operators import (
 )
 from .patha_static_balance import SSigmaProvider, SSigmaSpec, resolve_s_sigma, static_balance_terms
 from .preconditioners import (
+    assemble_closed_coupled_autodiff_sparse_jacobian,
     assemble_closed_coupled_colored_sparse_jacobian,
+    assemble_closed_coupled_sparse_jacobian,
     factorized_sparse_inverse_operator,
 )
 
@@ -93,6 +95,12 @@ DEFAULT_C0G_STEP0_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_step0_premise.js
 DEFAULT_C0G_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_diag_fold_vs_conditioning_steps0_3.json"
 DEFAULT_C0G_STEP5_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_step5_scipy_probe.json"
 DEFAULT_C0G_FINAL_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_diag_fold_vs_conditioning.json"
+DEFAULT_C0G_BUILD_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_build_B1B2")
+DEFAULT_C0G_BUILD_REPORT_PATH = Path("software/stage1_solver/reports/pathA_C0g_build_B1B2.md")
+DEFAULT_C0G_BUILD_JSON_PATH = DEFAULT_C0G_BUILD_RUN_ROOT / "pathA_C0g_build_B1B2.json"
+DEFAULT_C0G_DEEP_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_deepcrawl")
+DEFAULT_C0G_DEEP_REPORT_PATH = Path("software/stage1_solver/reports/pathA_C0g_deepcrawl.md")
+DEFAULT_C0G_DEEP_JSON_PATH = DEFAULT_C0G_DEEP_RUN_ROOT / "pathA_C0g_deepcrawl.json"
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -158,6 +166,10 @@ class C0Config:
     eos_final_only_after_first: bool = True
     use_wall_predictor: bool = True
     prefer_existing_b2c_background_predictor: bool = False
+    use_gauge_fix: bool = False
+    gauge_fix_gradient_rank_rtol: float = 1.0e-12
+    gauge_fix_harmonic_weighted_divergence_rtol: float = 1.0e-6
+    gauge_fix_lstsq_rcond: float = 1.0e-12
     max_depth_failures_after_floor: int = 3
     max_tau_backtracks: int = 5
     min_tau_backtrack_delta: float = 5.0e-5
@@ -172,6 +184,7 @@ class C0Config:
     max_newton_iters_override: int | None = None
     diagnostic_observables: bool = True
     compute_missing_observables: bool = False
+    jacobian_assembly: str = "colored_sparse_jacobian_lu"
     diagnostic_bdg_grid: tuple[int, int] = (8, 8)
     diagnostic_bdg_modes: int = 8
     diagnostic_profile_points: int = 65
@@ -258,6 +271,82 @@ class C0gConfig:
     scipy_global_wall_seconds: float = 600.0
     scipy_maxfev_factor: int = 4
     commutator_control_seed: int = 730029
+    jacobian_assembly: str = "colored_sparse_jacobian_lu"
+
+
+@dataclass(frozen=True)
+class C0gBuildB1B2Config:
+    c0f2_json_path: Path = C0gConfig().c0f2_json_path
+    run_root: Path = DEFAULT_C0G_BUILD_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_BUILD_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_BUILD_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    b2_depth_sequence: tuple[float, ...] = (
+        0.03,
+        0.0295,
+        0.02925,
+        0.029125,
+        0.029124,
+        0.0291225,
+        0.029122,
+        0.029120,
+    )
+    proof_tau: float = 0.02925
+    tau_fold_reference: float = 0.0291233
+    dissolved_tau_margin: float = 5.0e-7
+    proof_tolerance: float = BACKGROUND_RESIDUAL_TOL
+    b2_fit_r2_threshold: float = 0.95
+    b2_cond_jb_flat_band_max_over_min: float = 1.10
+    b2_ratio_growth_factor_min: float = 10.0
+    max_tau_backtracks: int = 5
+    min_tau_backtrack_delta: float = 1.0e-7
+    max_depth_failures_after_floor: int = 4
+    max_newton_iters_override: int | None = None
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    b4_reference_tau: float = 0.029125
+    b4_random_probe_count: int = 5
+    b4_random_seed: int = 20260621
+    b4_match_abs_tol: float = 1.0e-10
+    b4_match_rel_tol: float = 1.0e-8
+    proof_global_phase_radians: float = 1.0e-3
+    proof_r0_perturbation: float = 1.0e-5
+
+
+@dataclass(frozen=True)
+class C0gDeepCrawlConfig:
+    prior_b1b2_json_path: Path = DEFAULT_C0G_BUILD_JSON_PATH
+    prior_crawl_json_path: Path = (
+        DEFAULT_C0G_BUILD_RUN_ROOT / "gauge_fixed_crawl" / "c0_gauge_fixed_crawl.json"
+    )
+    run_root: Path = DEFAULT_C0G_DEEP_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_DEEP_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_DEEP_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    target_taus: tuple[float, ...] = (
+        0.0290,
+        0.0288,
+        0.0285,
+        0.0282,
+        0.0280,
+        0.0275,
+        0.0270,
+        0.0265,
+        0.0260,
+    )
+    tau_fold_reference: float = 0.0291233
+    below_fold_seed_count: int = 3
+    no_fold_required_new_converged: int = 5
+    max_tau_backtracks: int = 6
+    min_tau_backtrack_delta: float = 1.0e-7
+    max_newton_iters_override: int | None = None
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    residual_equality_tolerance: float = 1.0e-10
+    sigma_finite_floor: float = 1.0e-8
+    b4_reference_tau: float = C0gBuildB1B2Config().b4_reference_tau
+    b4_random_probe_count: int = C0gBuildB1B2Config().b4_random_probe_count
+    b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
+    b4_match_abs_tol: float = C0gBuildB1B2Config().b4_match_abs_tol
+    b4_match_rel_tol: float = C0gBuildB1B2Config().b4_match_rel_tol
 
 
 @dataclass(frozen=True)
@@ -305,10 +394,14 @@ def _format_tau(tau: float) -> str:
     return b2a._format_tau(float(tau))
 
 
-def _c0_newton_config(base: NewtonConfig) -> NewtonConfig:
+def _c0_newton_config(
+    base: NewtonConfig,
+    *,
+    jacobian_assembly: str = "colored_sparse_jacobian_lu",
+) -> NewtonConfig:
     preconditioner = replace(
         base.preconditioner,
-        type="colored_sparse_jacobian_lu",
+        type=jacobian_assembly,
         side="left",
         rebuild_policy="every_newton_step",
         stencil_radius=3,
@@ -339,11 +432,12 @@ def c0_frozen_branch(
     tau: float,
     grid: tuple[int, int],
     max_newton_iters: int | None = None,
+    jacobian_assembly: str = "colored_sparse_jacobian_lu",
 ):
     """Return the existing frozen branch with only Newton controls changed."""
 
     branch = b2a.frozen_patha_b2a_branch(grid=grid, tau=float(tau))
-    newton = _c0_newton_config(branch.newton)
+    newton = _c0_newton_config(branch.newton, jacobian_assembly=jacobian_assembly)
     if max_newton_iters is not None:
         newton = replace(newton, max_newton_iters=int(max_newton_iters))
     return replace(branch, newton=newton)
@@ -436,9 +530,8 @@ def jacobi_row_col_scales(
     return row_scale.astype(np.float64), col_scale.astype(np.float64)
 
 
-def build_scaled_preconditioner(
+def assemble_scaled_linear_system(
     *,
-    original_residual_fn: Callable[[torch.Tensor], torch.Tensor],
     preconditioner_residual_fn: Callable[[torch.Tensor], torch.Tensor],
     x: torch.Tensor,
     rhs: np.ndarray,
@@ -446,10 +539,10 @@ def build_scaled_preconditioner(
     newton: NewtonConfig,
     aid: C0AidParameters,
     iteration: int,
-) -> tuple[BuiltPreconditioner, np.ndarray, np.ndarray, csc_matrix, csc_matrix]:
+) -> tuple[np.ndarray, np.ndarray, csc_matrix, csc_matrix, dict[str, Any]]:
     preconditioner_config = replace(newton.preconditioner, diagonal_shift=0.0)
     linear_config = replace(newton, preconditioner=preconditioner_config)
-    matrix, metadata = assemble_closed_coupled_colored_sparse_jacobian(
+    matrix, metadata = assemble_closed_coupled_sparse_jacobian(
         PreconditionerBuildContext(
             residual_fn=preconditioner_residual_fn,
             x=x,
@@ -472,11 +565,9 @@ def build_scaled_preconditioner(
             dtype=np.float64,
             format="csc",
         )
-    operator, factor_metadata = factorized_sparse_inverse_operator(scaled_matrix, preconditioner_config)
-    metadata.update(factor_metadata)
     metadata.update(
         {
-            "type": "c0_conditioned_scaled_colored_sparse_jacobian_lu",
+            "type": f"c0_conditioned_scaled_{preconditioner_config.type}",
             "physical_residual_entry_point": (
                 "stage1_solver.coupled_branch.patha_closed_branch_residual"
             ),
@@ -494,7 +585,146 @@ def build_scaled_preconditioner(
             "linear_operator_residual_is_original": True,
         }
     )
+    return row_scale, col_scale, matrix, scaled_matrix, metadata
+
+
+def build_scaled_preconditioner(
+    *,
+    original_residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    preconditioner_residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    x: torch.Tensor,
+    rhs: np.ndarray,
+    grid,
+    newton: NewtonConfig,
+    aid: C0AidParameters,
+    iteration: int,
+) -> tuple[BuiltPreconditioner, np.ndarray, np.ndarray, csc_matrix, csc_matrix]:
+    del original_residual_fn
+    preconditioner_config = replace(newton.preconditioner, diagonal_shift=0.0)
+    row_scale, col_scale, matrix, scaled_matrix, metadata = assemble_scaled_linear_system(
+        preconditioner_residual_fn=preconditioner_residual_fn,
+        x=x,
+        rhs=rhs,
+        grid=grid,
+        newton=newton,
+        aid=aid,
+        iteration=iteration,
+    )
+    operator, factor_metadata = factorized_sparse_inverse_operator(scaled_matrix, preconditioner_config)
+    metadata.update(factor_metadata)
     return BuiltPreconditioner(operator=operator, metadata=metadata), row_scale, col_scale, matrix, scaled_matrix
+
+
+def _solve_scaled_gauge_complement_step(
+    *,
+    scaled_matrix: csc_matrix,
+    rhs_scaled: np.ndarray,
+    gauge_matrix: np.ndarray,
+    col_scale: np.ndarray,
+    gradient_rank_rtol: float,
+    lstsq_rcond: float,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    def fast_lstsq(matrix: np.ndarray, rhs: np.ndarray) -> tuple[np.ndarray, np.ndarray, int, np.ndarray]:
+        try:
+            coeff, residuals, rank, singular = linalg.lstsq(
+                matrix,
+                rhs,
+                cond=float(lstsq_rcond),
+                lapack_driver="gelsy",
+                check_finite=False,
+            )
+            if singular is None:
+                singular = np.asarray([], dtype=np.float64)
+            return (
+                np.asarray(coeff, dtype=np.float64),
+                np.asarray(residuals, dtype=np.float64),
+                int(rank),
+                np.asarray(singular, dtype=np.float64),
+            )
+        except Exception:
+            coeff, residuals, rank, singular = np.linalg.lstsq(
+                matrix,
+                rhs,
+                rcond=float(lstsq_rcond),
+            )
+            return (
+                np.asarray(coeff, dtype=np.float64),
+                np.asarray(residuals, dtype=np.float64),
+                int(rank),
+                np.asarray(singular, dtype=np.float64),
+            )
+
+    scaled_gauge = np.asarray(gauge_matrix, dtype=np.float64) / col_scale[:, None]
+    _basis, full_u, singular_values, threshold, rank = _c0g_column_space(
+        scaled_gauge,
+        relative_tolerance=float(gradient_rank_rtol),
+        full_matrices=True,
+    )
+    if rank <= 0:
+        dense = scaled_matrix.toarray().astype(np.float64, copy=False)
+        coeff, residuals, ls_rank, ls_singular = fast_lstsq(dense, rhs_scaled)
+        linear_residual = dense @ coeff - rhs_scaled
+        return coeff.astype(np.float64, copy=False), {
+            "method": "dense_lstsq_no_gauge_rank",
+            "gauge_rank": 0,
+            "gauge_rank_threshold": float(threshold),
+            "gauge_singular_min_retained": None,
+            "reduced_shape": [int(dense.shape[0]), int(dense.shape[1])],
+            "lstsq_rank": int(ls_rank),
+            "lstsq_singular_min": float(np.min(ls_singular)) if len(ls_singular) else math.nan,
+            "lstsq_residual_sum": float(np.sum(residuals)) if len(residuals) else 0.0,
+            "linear_rel_resid": float(
+                np.linalg.norm(linear_residual)
+                / max(np.linalg.norm(rhs_scaled), np.finfo(np.float64).tiny)
+            ),
+        }
+    q_perp = full_u[:, rank:].astype(np.float64, copy=True)
+    reduced_shape = (int(scaled_matrix.shape[0]), int(q_perp.shape[1]))
+
+    def matvec(coeff: np.ndarray) -> np.ndarray:
+        return scaled_matrix @ (q_perp @ np.asarray(coeff, dtype=np.float64))
+
+    def rmatvec(values: np.ndarray) -> np.ndarray:
+        return q_perp.T @ (scaled_matrix.T @ np.asarray(values, dtype=np.float64))
+
+    reduced_operator = LinearOperator(reduced_shape, matvec=matvec, rmatvec=rmatvec, dtype=np.float64)
+    lsmr_result = lsmr(
+        reduced_operator,
+        rhs_scaled,
+        atol=max(float(lstsq_rcond), 1.0e-12),
+        btol=max(float(lstsq_rcond), 1.0e-12),
+        maxiter=max(4 * reduced_shape[1], 200),
+        show=False,
+    )
+    coeff = np.asarray(lsmr_result[0], dtype=np.float64)
+    scaled_step = q_perp @ coeff
+    linear_residual = matvec(coeff) - rhs_scaled
+    gauge_constraint = full_u[:, :rank].T @ scaled_step
+    return scaled_step.astype(np.float64, copy=False), {
+        "method": "iterative_lsmr_scaled_J_times_Q_perp",
+        "gauge_rank": int(rank),
+        "gauge_rank_threshold": float(threshold),
+        "gauge_singular_min_retained": float(singular_values[rank - 1])
+        if rank > 0
+        else None,
+        "state_dim": int(scaled_matrix.shape[1]),
+        "reduced_shape": [reduced_shape[0], reduced_shape[1]],
+        "lstsq_rank": None,
+        "lstsq_singular_min": math.nan,
+        "lstsq_singular_max": math.nan,
+        "lstsq_residual_sum": math.nan,
+        "lsmr_istop": int(lsmr_result[1]),
+        "lsmr_iterations": int(lsmr_result[2]),
+        "lsmr_normr": float(lsmr_result[3]),
+        "lsmr_normar": float(lsmr_result[4]),
+        "lsmr_conda": float(lsmr_result[6]),
+        "linear_rel_resid": float(
+            np.linalg.norm(linear_residual)
+            / max(np.linalg.norm(rhs_scaled), np.finfo(np.float64).tiny)
+        ),
+        "scaled_gauge_constraint_l2": float(np.linalg.norm(gauge_constraint)),
+        "path_only_coordinates": "row_scale * J_original * col_scale, step = col_scale * Q_perp * z",
+    }
 
 
 def solve_c0_scaled_newton(
@@ -505,6 +735,9 @@ def solve_c0_scaled_newton(
     grid,
     newton: NewtonConfig,
     aid: C0AidParameters,
+    gauge_matrix_fn: Callable[[torch.Tensor, np.ndarray], Mapping[str, Any]] | None = None,
+    gauge_fix_lstsq_rcond: float = 1.0e-12,
+    gauge_fix_gradient_rank_rtol: float = 1.0e-12,
 ) -> C0NewtonResult:
     if newton.linear_solver != "gmres_jvp":
         raise ValueError(f"unsupported linear solver {newton.linear_solver!r}")
@@ -531,41 +764,86 @@ def solve_c0_scaled_newton(
     for iteration in range(1, newton.max_newton_iters + 1):
         x_for_jvp = x.detach().clone()
         rhs = -r.detach().cpu().numpy().astype(np.float64)
-        built, row_scale, col_scale, _matrix, _scaled_matrix = build_scaled_preconditioner(
-            original_residual_fn=original_residual_fn,
-            preconditioner_residual_fn=preconditioner_residual_fn,
-            x=x_for_jvp,
-            rhs=rhs,
-            grid=grid,
-            newton=newton,
-            aid=aid,
-            iteration=iteration,
-        )
-        dim = rhs.size
-        rhs_scaled = row_scale * rhs
         gmres_curve: list[float] = []
+        if gauge_matrix_fn is None:
+            built, row_scale, col_scale, _matrix, _scaled_matrix = build_scaled_preconditioner(
+                original_residual_fn=original_residual_fn,
+                preconditioner_residual_fn=preconditioner_residual_fn,
+                x=x_for_jvp,
+                rhs=rhs,
+                grid=grid,
+                newton=newton,
+                aid=aid,
+                iteration=iteration,
+            )
+            dim = rhs.size
+            rhs_scaled = row_scale * rhs
 
-        def matvec(vector_np: np.ndarray) -> np.ndarray:
-            direction_np = col_scale * np.asarray(vector_np, dtype=np.float64)
-            direction = torch.as_tensor(direction_np, dtype=x.dtype, device=x.device)
-            jv = jvp(original_residual_fn, x_for_jvp, direction)
-            return row_scale * jv.detach().cpu().numpy().astype(np.float64)
+            def matvec(vector_np: np.ndarray) -> np.ndarray:
+                direction_np = col_scale * np.asarray(vector_np, dtype=np.float64)
+                direction = torch.as_tensor(direction_np, dtype=x.dtype, device=x.device)
+                jv = jvp(original_residual_fn, x_for_jvp, direction)
+                return row_scale * jv.detach().cpu().numpy().astype(np.float64)
 
-        def callback(residual_norm: float) -> None:
-            gmres_curve.append(float(residual_norm))
+            def callback(residual_norm: float) -> None:
+                gmres_curve.append(float(residual_norm))
 
-        linear_op = LinearOperator((dim, dim), matvec=matvec, dtype=np.float64)
-        step_scaled, gmres_info = gmres(
-            linear_op,
-            rhs_scaled,
-            M=built.operator,
-            rtol=newton.gmres_rtol,
-            atol=newton.gmres_atol,
-            restart=newton.gmres_restart,
-            maxiter=newton.gmres_maxiter,
-            callback=callback,
-            callback_type="pr_norm",
-        )
+            linear_op = LinearOperator((dim, dim), matvec=matvec, dtype=np.float64)
+            step_scaled, gmres_info = gmres(
+                linear_op,
+                rhs_scaled,
+                M=built.operator,
+                rtol=newton.gmres_rtol,
+                atol=newton.gmres_atol,
+                restart=newton.gmres_restart,
+                maxiter=newton.gmres_maxiter,
+                callback=callback,
+                callback_type="pr_norm",
+            )
+            preconditioner_info = dict(built.metadata)
+        else:
+            row_scale, col_scale, _matrix, scaled_matrix, metadata = assemble_scaled_linear_system(
+                preconditioner_residual_fn=preconditioner_residual_fn,
+                x=x_for_jvp,
+                rhs=rhs,
+                grid=grid,
+                newton=newton,
+                aid=aid,
+                iteration=iteration,
+            )
+            rhs_scaled = row_scale * rhs
+            gauge = gauge_matrix_fn(x_for_jvp, col_scale)
+            step_scaled, gauge_info = _solve_scaled_gauge_complement_step(
+                scaled_matrix=scaled_matrix,
+                rhs_scaled=rhs_scaled,
+                gauge_matrix=np.asarray(gauge["generator_matrix"], dtype=np.float64),
+                col_scale=col_scale,
+                gradient_rank_rtol=float(gauge_fix_gradient_rank_rtol),
+                lstsq_rcond=float(gauge_fix_lstsq_rcond),
+            )
+            gmres_info = 0
+            preconditioner_info = dict(metadata)
+            preconditioner_info.update(
+                {
+                    "type": "c0_gauge_fixed_scaled_complement_lstsq",
+                    "gauge_fix_enabled": True,
+                    "gauge_fix_source_helpers": list(gauge.get("source_helpers", [])),
+                    "gauge_fix_piece_dimensions": dict(gauge.get("piece_dimensions", {})),
+                    "gauge_fix_rank": int(gauge_info.get("gauge_rank", 0)),
+                    "gauge_fix_method": gauge_info.get("method"),
+                    "gauge_fix_path_only_coordinates": gauge_info.get(
+                        "path_only_coordinates"
+                    ),
+                    "gauge_fix_linear_rel_resid": gauge_info.get("linear_rel_resid"),
+                    "gauge_fix_scaled_constraint_l2": gauge_info.get(
+                        "scaled_gauge_constraint_l2"
+                    ),
+                    "gauge_fix_reduced_shape": gauge_info.get("reduced_shape"),
+                    "gauge_fix_lstsq_rank": gauge_info.get("lstsq_rank"),
+                    "gauge_fix_lstsq_singular_min": gauge_info.get("lstsq_singular_min"),
+                    "gauge_fix_lstsq_singular_max": gauge_info.get("lstsq_singular_max"),
+                }
+            )
         if not np.all(np.isfinite(step_scaled)):
             return C0NewtonResult(
                 x=x,
@@ -638,7 +916,7 @@ def solve_c0_scaled_newton(
                         gmres_info=int(gmres_info),
                         gmres_iterations=len(gmres_curve),
                         gmres_residual_curve=gmres_curve,
-                        preconditioner_info=dict(built.metadata),
+                        preconditioner_info=preconditioner_info,
                     )
                 )
                 return C0NewtonResult(
@@ -662,7 +940,7 @@ def solve_c0_scaled_newton(
                 gmres_info=int(gmres_info),
                 gmres_iterations=len(gmres_curve),
                 gmres_residual_curve=gmres_curve,
-                preconditioner_info=dict(built.metadata),
+                preconditioner_info=preconditioner_info,
             )
         )
         if new_norm <= tolerance:
@@ -980,6 +1258,32 @@ def _dominant_group(fractions: Mapping[str, float | None]) -> tuple[str | None, 
     return group, finite[group]
 
 
+def _crawl_persistent_failure_guard(
+    attempts: Sequence[Mapping[str, Any]],
+    config: Mapping[str, Any],
+    *,
+    failed_attempt_predicate: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> dict[str, Any]:
+    predicate = failed_attempt_predicate or (
+        lambda row: _below_prior_floor(float(row["target_tau"]))
+        and not row.get("final_physical_converged")
+        and row.get("measurement_status", "MEASURED") == "MEASURED"
+    )
+    failed = [dict(row) for row in attempts if predicate(row)]
+    attempted_backtracking = any(int(row.get("backtrack_index", 0)) > 0 for row in attempts)
+    full_newton_budget = config.get("max_newton_iters_override") in (None, 0)
+    return {
+        "crawl_persistent_failure_evidence": bool(
+            failed and attempted_backtracking and full_newton_budget
+        ),
+        "failed_attempt_count": int(len(failed)),
+        "attempted_backtracking": bool(attempted_backtracking),
+        "full_newton_budget": bool(full_newton_budget),
+        "max_tau_backtracks": int(config.get("max_tau_backtracks", 0) or 0),
+        "failed_attempts": failed,
+    }
+
+
 def _condition_number_from_singular_values(values: np.ndarray) -> tuple[float, float, float]:
     finite = np.asarray(values, dtype=np.float64)
     sigma_max = float(np.max(finite)) if finite.size else math.nan
@@ -1286,6 +1590,7 @@ def _branch_context(*, tau: float, config: C0Config, dtype: torch.dtype):
         tau=float(tau),
         grid=config.grid,
         max_newton_iters=config.max_newton_iters_override,
+        jacobian_assembly=config.jacobian_assembly,
     )
     provider = resolve_s_sigma(b2a.frozen_s_sigma_spec(float(tau)))
     grid = _create_branch_grid(branch, branch.solve_grid, dtype=dtype, device="cpu")
@@ -1447,6 +1752,29 @@ def _execute_tau_attempt(
                 s_sigma=provider,
                 aid=aid,
             )
+            gauge_matrix_fn = None
+            if config.use_gauge_fix:
+                gauge_config = C0gConfig(
+                    grid=config.grid,
+                    gradient_rank_rtol=float(config.gauge_fix_gradient_rank_rtol),
+                    harmonic_weighted_divergence_rtol=float(
+                        config.gauge_fix_harmonic_weighted_divergence_rtol
+                    ),
+                )
+
+                def gauge_matrix_fn(
+                    x: torch.Tensor,
+                    _col_scale: np.ndarray,
+                    gauge_config: C0gConfig = gauge_config,
+                ) -> Mapping[str, Any]:
+                    del _col_scale
+                    return _c0g_build_analytic_gauge_matrix(
+                        state=x,
+                        grid=grid,
+                        branch=branch,
+                        config=gauge_config,
+                    )
+
             result = solve_c0_scaled_newton(
                 original_residual_fn=original_residual_fn,
                 preconditioner_residual_fn=preconditioner_residual_fn,
@@ -1454,6 +1782,9 @@ def _execute_tau_attempt(
                 grid=grid,
                 newton=branch.newton,
                 aid=aid,
+                gauge_matrix_fn=gauge_matrix_fn,
+                gauge_fix_lstsq_rcond=float(config.gauge_fix_lstsq_rcond),
+                gauge_fix_gradient_rank_rtol=float(config.gauge_fix_gradient_rank_rtol),
             )
             state_for_metrics = result.x.detach()
             metrics = _state_metrics(state_for_metrics, grid)
@@ -1517,6 +1848,11 @@ def _execute_tau_attempt(
         "init": initialization,
         "initialization": initialization,
         "used_existing_b2c": bool(used_existing_b2c),
+        "gauge_fix_solver_invoked": bool(config.use_gauge_fix),
+        "max_newton_iters": int(branch.newton.max_newton_iters),
+        "max_newton_iters_override": config.max_newton_iters_override,
+        "max_tau_backtracks": int(config.max_tau_backtracks),
+        "min_tau_backtrack_delta": float(config.min_tau_backtrack_delta),
         "continuation_K_values": list(continuation_values),
         "epsilon_attempts": epsilon_attempts,
         "substeps": epsilon_attempts,
@@ -1566,7 +1902,10 @@ def _validate_tau_attempts_schema(rows: Sequence[Mapping[str, Any]]) -> list[str
         if _below_prior_floor(tau):
             if row.get("used_existing_b2c") is not False:
                 errors.append(f"tau_attempts[{index}] below floor used existing B2c")
-            if row.get("init", {}).get("source") != "previous_c0_converged_state":
+            if row.get("init", {}).get("source") not in {
+                "previous_c0_converged_state",
+                "previous_c0g_gauge_fixed_converged_state",
+            }:
                 errors.append(f"tau_attempts[{index}] below floor did not warm-start from previous C0")
         attempts = row.get("epsilon_attempts", [])
         if attempts:
@@ -2215,15 +2554,11 @@ def _determine_verdict(result: Mapping[str, Any]) -> tuple[str, dict[str, Any], 
             "Target border scaling, Schur complementing, or null-space deflation before a generic production solver.",
         )
 
-    below_failed = [
-        row
-        for row in attempts
-        if _below_prior_floor(float(row["target_tau"]))
-        and not row.get("final_physical_converged")
-    ]
-    attempted_backtracking = any(int(row.get("backtrack_index", 0)) > 0 for row in attempts)
-    full_newton_budget = config.get("max_newton_iters_override") in (None, 0)
-    crawl_persistent_failure = bool(below_failed and attempted_backtracking and full_newton_budget)
+    persistent_guard = _crawl_persistent_failure_guard(attempts, config)
+    below_failed = persistent_guard["failed_attempts"]
+    attempted_backtracking = bool(persistent_guard["attempted_backtracking"])
+    full_newton_budget = bool(persistent_guard["full_newton_budget"])
+    crawl_persistent_failure = bool(persistent_guard["crawl_persistent_failure_evidence"])
     if (
         crawl_persistent_failure
         and v_group == "field"
@@ -4326,7 +4661,7 @@ def _c0g_residual_context(
 ):
     branch, provider, grid, boundaries = _branch_context(
         tau=float(tau),
-        config=C0Config(grid=config.grid),
+        config=C0Config(grid=config.grid, jacobian_assembly=config.jacobian_assembly),
         dtype=dtype,
     )
     eos_K = float(branch.continuation_K_values[-1])
@@ -4360,7 +4695,7 @@ def _c0g_assemble_original_jacobian(
     preconditioner_config = replace(branch.newton.preconditioner, diagonal_shift=0.0)
     linear_config = replace(branch.newton, preconditioner=preconditioner_config)
     start = time.perf_counter()
-    matrix, metadata = assemble_closed_coupled_colored_sparse_jacobian(
+    matrix, metadata = assemble_closed_coupled_sparse_jacobian(
         PreconditionerBuildContext(
             residual_fn=residual_fn,
             x=state.detach(),
@@ -4386,7 +4721,7 @@ def _c0g_assemble_original_jacobian(
             "assembly_seconds": assembly_seconds,
             "jacobian_source": (
                 "stage1_solver.preconditioners."
-                "assemble_closed_coupled_colored_sparse_jacobian"
+                "assemble_closed_coupled_sparse_jacobian"
             ),
             "residual_entry_point": (
                 "stage1_solver.coupled_branch.patha_closed_branch_residual"
@@ -6518,6 +6853,2942 @@ def aggregate_c0g_final(config: C0gConfig | None = None) -> dict[str, Any]:
     return result
 
 
+def _c0g_build_b1b2_config_to_dict(config: C0gBuildB1B2Config) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("c0f2_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_build_crawl_config(config: C0gBuildB1B2Config) -> C0Config:
+    return C0Config(
+        run_root=config.run_root / "gauge_fixed_crawl",
+        report_path=config.run_root / "gauge_fixed_crawl" / "c0_gauge_fixed_crawl.md",
+        json_path=config.run_root / "gauge_fixed_crawl" / "c0_gauge_fixed_crawl.json",
+        depth_sequence=tuple(float(tau) for tau in config.b2_depth_sequence),
+        grid=config.grid,
+        use_gauge_fix=True,
+        prefer_existing_b2c_background_predictor=False,
+        max_tau_backtracks=int(config.max_tau_backtracks),
+        min_tau_backtrack_delta=float(config.min_tau_backtrack_delta),
+        max_depth_failures_after_floor=int(config.max_depth_failures_after_floor),
+        max_newton_iters_override=config.max_newton_iters_override,
+        jacobian_assembly=config.jacobian_assembly,
+        diagnostic_linear=False,
+        diagnostic_observables=False,
+    )
+
+
+def _c0g_build_diag_config(
+    config: C0gBuildB1B2Config,
+    *,
+    converged_taus: Sequence[float],
+) -> C0gConfig:
+    return C0gConfig(
+        c0f2_json_path=config.c0f2_json_path,
+        run_root=config.run_root / "b2_reconfirm",
+        report_path=config.report_path,
+        step0_json_path=config.run_root / "b2_reconfirm" / "unused_step0.json",
+        json_path=config.run_root / "b2_reconfirm" / "pathA_C0g_build_B2_steps1_3.json",
+        step5_json_path=config.run_root / "b2_reconfirm" / "unused_step5.json",
+        final_json_path=config.run_root / "b2_reconfirm" / "pathA_C0g_build_B2_reconfirm.json",
+        grid=config.grid,
+        converged_taus=tuple(float(tau) for tau in converged_taus),
+        stalled_tau=float(config.tau_fold_reference),
+        fit_good_r2_threshold=float(config.b2_fit_r2_threshold),
+        jacobian_assembly=config.jacobian_assembly,
+    )
+
+
+def _c0g_converged_rows(crawl: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        dict(row)
+        for row in crawl.get("tau_attempts", [])
+        if bool(row.get("final_physical_converged"))
+    ]
+
+
+def _c0g_select_proof_row(
+    crawl: Mapping[str, Any],
+    *,
+    proof_tau: float,
+) -> dict[str, Any]:
+    converged = _c0g_converged_rows(crawl)
+    if not converged:
+        raise RuntimeError("gauge-fixed crawl has no converged rows for B-1 proof")
+    exact = [
+        row
+        for row in converged
+        if _c0g_tau_close(float(row.get("target_tau", math.nan)), float(proof_tau))
+    ]
+    if exact:
+        return exact[0]
+    return min(converged, key=lambda row: abs(float(row["target_tau"]) - float(proof_tau)))
+
+
+def _c0g_original_row_for_tau(c0f2_payload: Mapping[str, Any], tau: float) -> dict[str, Any]:
+    rows = [
+        row
+        for row in c0f2_payload.get("per_tau_timing", [])
+        if _c0g_tau_close(float(row.get("tau", math.nan)), float(tau))
+        and bool(row.get("solver_converged"))
+        and bool(row.get("accepted_default_success"))
+    ]
+    if not rows:
+        raise RuntimeError(f"C0f2 has no converged original row for tau={tau:.12e}")
+    return dict(rows[0])
+
+
+def _c0g_state_vector_from_path(path: str | Path, *, dtype: torch.dtype) -> torch.Tensor:
+    return _load_state_artifact(_resolve_input_path(path), dtype=dtype)
+
+
+def _c0g_global_phase_align_np(reference: np.ndarray, candidate: np.ndarray, grid) -> tuple[np.ndarray, dict[str, Any]]:
+    n = int(grid.spec.nr * grid.spec.nw)
+    ref_complex = reference[:n] + 1j * reference[n : 2 * n]
+    cand_complex = candidate[:n] + 1j * candidate[n : 2 * n]
+    inner = np.vdot(ref_complex.reshape(-1), cand_complex.reshape(-1))
+    phase = float(np.angle(inner)) if abs(inner) > 0.0 else 0.0
+    rotated = cand_complex * np.exp(-1j * phase)
+    aligned = np.asarray(candidate, dtype=np.float64).copy()
+    aligned[:n] = rotated.real.reshape(-1)
+    aligned[n : 2 * n] = rotated.imag.reshape(-1)
+    return aligned, {
+        "global_phase_angle_radians": phase,
+        "global_phase_inner_abs": float(abs(inner)),
+    }
+
+
+def _c0g_curl_np(values: np.ndarray, grid) -> np.ndarray:
+    lanes = _closed_lane_slices(grid)
+    shape = (grid.spec.nr, grid.spec.nw)
+    ar = torch.as_tensor(
+        values[lanes["ar"][0] : lanes["ar"][1]].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    aw = torch.as_tensor(
+        values[lanes["aw"][0] : lanes["aw"][1]].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    curl = tensor_center_gradient_r(aw, grid) - tensor_center_gradient_w(ar, grid)
+    return curl.detach().cpu().numpy().astype(np.float64, copy=True)
+
+
+def _c0g_a0_gradients_np(values: np.ndarray, grid) -> tuple[np.ndarray, np.ndarray]:
+    lanes = _closed_lane_slices(grid)
+    shape = (grid.spec.nr, grid.spec.nw)
+    a0 = torch.as_tensor(
+        values[lanes["a0"][0] : lanes["a0"][1]].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    grad_r = tensor_center_gradient_r(a0, grid).detach().cpu().numpy().astype(np.float64, copy=True)
+    grad_w = tensor_center_gradient_w(a0, grid).detach().cpu().numpy().astype(np.float64, copy=True)
+    return grad_r, grad_w
+
+
+def _c0g_density_np(values: np.ndarray, grid) -> np.ndarray:
+    n = int(grid.spec.nr * grid.spec.nw)
+    return values[:n] * values[:n] + values[n : 2 * n] * values[n : 2 * n]
+
+
+def _c0g_gauge_aligned_path_only_proof(
+    *,
+    with_state: torch.Tensor,
+    without_state: torch.Tensor,
+    tau: float,
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    branch, _provider, grid, _boundaries, _eos_K, residual_fn = _c0g_residual_context(
+        tau=float(tau),
+        config=C0gConfig(grid=config.grid),
+        dtype=dtype,
+    )
+    ref = without_state.detach().cpu().numpy().astype(np.float64, copy=True)
+    cand = with_state.detach().cpu().numpy().astype(np.float64, copy=True)
+    phase_aligned, phase_info = _c0g_global_phase_align_np(ref, cand, grid)
+    generator_matrix = _c0e_coupled_gauge_matrix(without_state, grid, branch)
+    delta = phase_aligned - ref
+    coeff, residuals, rank, singular = np.linalg.lstsq(
+        generator_matrix,
+        delta,
+        rcond=float(config.proof_tolerance),
+    )
+    orbit_aligned = phase_aligned - generator_matrix @ coeff
+    orbit_residual = orbit_aligned - ref
+    ref_a0_r, ref_a0_w = _c0g_a0_gradients_np(ref, grid)
+    aligned_a0_r, aligned_a0_w = _c0g_a0_gradients_np(orbit_aligned, grid)
+    lanes = _closed_lane_slices(grid)
+    density_delta = float(np.max(np.abs(_c0g_density_np(ref, grid) - _c0g_density_np(orbit_aligned, grid))))
+    curl_delta = float(np.max(np.abs(_c0g_curl_np(ref, grid) - _c0g_curl_np(orbit_aligned, grid))))
+    a0_grad_delta = max(
+        float(np.max(np.abs(ref_a0_r - aligned_a0_r))),
+        float(np.max(np.abs(ref_a0_w - aligned_a0_w))),
+    )
+    r0_start, r0_stop = lanes["r0"]
+    mu_start, mu_stop = lanes["mu"]
+    r0_delta = float(np.max(np.abs(ref[r0_start:r0_stop] - orbit_aligned[r0_start:r0_stop])))
+    mu_delta = float(np.max(np.abs(ref[mu_start:mu_stop] - orbit_aligned[mu_start:mu_stop])))
+    residual_without = residual_fn(without_state).detach().cpu().numpy().astype(np.float64)
+    residual_with = residual_fn(with_state).detach().cpu().numpy().astype(np.float64)
+    residual_without_linf = float(np.max(np.abs(residual_without)))
+    residual_with_linf = float(np.max(np.abs(residual_with)))
+    residual_norm_abs_delta = abs(
+        float(np.linalg.norm(residual_with)) - float(np.linalg.norm(residual_without))
+    )
+    max_invariant_delta = max(density_delta, curl_delta, a0_grad_delta, r0_delta, mu_delta)
+    status = (
+        "PASS"
+        if max_invariant_delta <= float(config.proof_tolerance)
+        and residual_without_linf <= float(config.proof_tolerance)
+        and residual_with_linf <= float(config.proof_tolerance)
+        else "FAIL"
+    )
+    return {
+        "status": status,
+        "tau": float(tau),
+        "tolerance": float(config.proof_tolerance),
+        "alignment": {
+            **phase_info,
+            "coupled_gauge_ls_rank": int(rank),
+            "coupled_gauge_ls_singular_min": float(np.min(singular)) if len(singular) else math.nan,
+            "coupled_gauge_ls_singular_max": float(np.max(singular)) if len(singular) else math.nan,
+            "coupled_gauge_ls_residual_sum": float(np.sum(residuals)) if len(residuals) else 0.0,
+            "orbit_residual_l2": float(np.linalg.norm(orbit_residual)),
+            "raw_state_delta_l2_not_a_gate": float(np.linalg.norm(cand - ref)),
+        },
+        "gauge_invariant_deltas_after_alignment": {
+            "density_abs_linf": density_delta,
+            "F_rw_abs_linf": curl_delta,
+            "a0_gradient_abs_linf": a0_grad_delta,
+            "r0_abs_linf": r0_delta,
+            "mu_abs": mu_delta,
+            "max": max_invariant_delta,
+        },
+        "original_residual": {
+            "without_gauge_fix_linf": residual_without_linf,
+            "with_gauge_fix_linf": residual_with_linf,
+            "l2_norm_abs_delta": residual_norm_abs_delta,
+            "arbiter": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+        },
+    }
+
+
+def _c0g_gauge_sector_lift(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    diag_config = C0gConfig(grid=config.grid)
+    assembled = _c0g_assemble_original_jacobian(
+        state=state,
+        tau=float(tau),
+        config=diag_config,
+        dtype=dtype,
+    )
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state,
+        grid=assembled["grid"],
+        branch=assembled["branch"],
+        config=diag_config,
+    )
+    scaled_gauge = np.asarray(gauge["generator_matrix"], dtype=np.float64) / assembled["col_scale"][:, None]
+    _basis, full_u, gauge_singular, threshold, rank = _c0g_column_space(
+        scaled_gauge,
+        relative_tolerance=float(diag_config.gradient_rank_rtol),
+        full_matrices=True,
+    )
+    if rank <= 0:
+        return {"status": "FAIL", "reason": "analytic_gauge_rank_zero"}
+    gauge_basis = full_u[:, :rank]
+    gauge_image = assembled["scaled_matrix"].toarray().astype(np.float64, copy=False) @ gauge_basis
+    before = np.linalg.svd(gauge_image, compute_uv=False)
+    after_columns = np.vstack([gauge_image, np.eye(rank, dtype=np.float64)])
+    after = np.linalg.svd(after_columns, compute_uv=False)
+    return {
+        "status": "PASS" if int(rank) > 0 and float(gauge_singular[rank - 1]) > 0.0 else "FAIL",
+        "tau": float(tau),
+        "method": "scaled gauge-complement/bordering coordinates",
+        "gauge_rank": int(rank),
+        "state_dim": int(assembled["scaled_matrix"].shape[1]),
+        "source_helpers": list(gauge["source_helpers"]),
+        "piece_dimensions": dict(gauge["piece_dimensions"]),
+        "scaled_gauge_rank_threshold": float(threshold),
+        "scaled_gauge_singular_min_retained": float(gauge_singular[rank - 1]),
+        "before_gauge_sector_sigma_min": float(np.min(before)),
+        "before_gauge_sector_sigma_max": float(np.max(before)),
+        "after_bordered_gauge_sector_sigma_min": float(np.min(after)),
+        "after_bordered_gauge_sector_sigma_max": float(np.max(after)),
+        "after_bordered_identity_metric_is_by_construction": True,
+        "not_a_lift_gate": "after_bordered_gauge_sector_sigma_min",
+        "meaningful_gauge_removed_evidence": {
+            "before_gauge_sector_sigma_min": float(np.min(before)),
+            "scaled_gauge_singular_min_retained": float(gauge_singular[rank - 1]),
+        },
+        "status_criterion": "analytic scaled gauge rank retained; bordered identity sigma is reported but not gated",
+        "after_definition": "singular values of [scaled_J*G_scaled_basis; I_gauge], by-construction >= O(1)",
+    }
+
+
+def _c0g_r0_mode_preservation(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    diag_config = C0gConfig(grid=config.grid)
+    assembled = _c0g_assemble_original_jacobian(
+        state=state,
+        tau=float(tau),
+        config=diag_config,
+        dtype=dtype,
+    )
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state,
+        grid=assembled["grid"],
+        branch=assembled["branch"],
+        config=diag_config,
+    )
+    svd = _c0g_dense_complement_svd(
+        scaled_matrix=assembled["scaled_matrix"],
+        gauge_matrix=gauge["generator_matrix"],
+        col_scale=assembled["col_scale"],
+        grid=assembled["grid"],
+        config=diag_config,
+        mode_artifact_path=config.run_root / "b1_evidence" / "r0_mode_preservation_modes.npz",
+    )
+    if svd.get("status") != "MEASURED":
+        return {"status": "FAIL", "reason": svd.get("reason", "svd_not_measured")}
+    mode1 = (svd.get("modes") or [{}])[0]
+    lane, lane_fraction = _dominant_group(mode1.get("v_lane_energy_fractions", {}))
+    mode_bundle = _c0g_load_mode_bundle(str(svd["mode_vectors_artifact"]))
+    p_g = _c0g_projection_fraction_from_basis(
+        gauge["physical_basis"],
+        mode_bundle["right_modes"][0],
+    )
+    preserved = bool(lane == "r0" and lane_fraction >= 0.7 and p_g <= 1.0e-8)
+    return {
+        "status": "PASS" if preserved else "FAIL",
+        "tau": float(tau),
+        "mode1_lane": lane,
+        "mode1_lane_fraction": lane_fraction,
+        "mode1_sigma": mode1.get("sigma"),
+        "mode1_projection_into_gauge_basis": p_g,
+        "gauge_rank": svd.get("scaled_gauge_rank"),
+        "mode_artifact": svd.get("mode_vectors_artifact"),
+        "criterion": "dominant r0 lane >=0.7 and P_G <= 1e-8",
+    }
+
+
+def _c0g_b2_analyze_gauge_fixed_crawl(
+    *,
+    crawl: Mapping[str, Any],
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    converged_rows = _c0g_converged_rows(crawl)
+    converged_taus = sorted(
+        [float(row["target_tau"]) for row in converged_rows],
+        reverse=True,
+    )
+    diag_config = _c0g_build_diag_config(config, converged_taus=converged_taus)
+    selected_rows = [
+        dict(row)
+        for row in crawl.get("tau_attempts", [])
+        if bool(row.get("final_physical_converged"))
+    ]
+    by_tau: dict[float, dict[str, Any]] = {}
+    for row in selected_rows:
+        by_tau[float(row["target_tau"])] = row
+    state_results: list[dict[str, Any]] = []
+    for tau, row in sorted(by_tau.items(), key=lambda item: item[0], reverse=True):
+        prior_state_path = _resolve_input_path(
+            DEFAULT_C0G_RUN_ROOT
+            / "state_measurements"
+            / f"c0g_state_tau_{_format_tau(float(tau))}.json"
+        )
+        can_reuse_prior = (
+            not bool(row.get("gauge_fix_solver_invoked"))
+            or bool(row.get("gauge_fix_orbit_equivalent_to_c0f2"))
+        )
+        if can_reuse_prior and prior_state_path.exists():
+            measured = json.loads(prior_state_path.read_text(encoding="utf-8"))
+            measured["reused_prior_c0g_measurement"] = True
+            measured["reused_prior_c0g_reason"] = (
+                "gauge-fixed crawl state is copied or exact global-phase equivalent to C0f2"
+            )
+        else:
+            measured = _c0g_analyze_state(
+                tau=float(tau),
+                row=row,
+                config=diag_config,
+                dtype=dtype,
+                include_step0=False,
+                compute_ftau=True,
+            )
+            _c0g_write_state_result(diag_config, measured)
+            measured["reused_prior_c0g_measurement"] = False
+        measured["crawl_final_physical_converged"] = bool(row.get("final_physical_converged"))
+        measured["crawl_final_original_residual_linf"] = row.get("final_original_residual_linf")
+        measured["crawl_init"] = row.get("init")
+        measured["crawl_used_existing_b2c"] = row.get("used_existing_b2c")
+        measured["gauge_fix_solver_invoked"] = bool(row.get("gauge_fix_solver_invoked"))
+        state_results.append(measured)
+    steps1_3 = {
+        "phase": "B2_steps1_3_gauge_fixed",
+        "status": "MEASURED" if state_results else "NOT_MEASURED",
+        "config": _c0g_config_to_dict(diag_config),
+        "state_results": state_results,
+        "step1_tracked_modes": _c0g_track_modes(state_results),
+        "sigma_min_squared_fit": _c0g_fit_sigma_min_squared(state_results, config=diag_config),
+    }
+    prior_step6_rows: dict[float, dict[str, Any]] = {}
+    prior_steps4_path = _resolve_input_path(DEFAULT_C0G_RUN_ROOT / "pathA_C0g_steps4_6_7.json")
+    if prior_steps4_path.exists():
+        prior_steps4 = json.loads(prior_steps4_path.read_text(encoding="utf-8"))
+        for row in prior_steps4.get("step6_bordered_conditioning", {}).get("rows", []):
+            if row.get("status") == "MEASURED" and "tau" in row:
+                prior_step6_rows[float(row["tau"])] = dict(row)
+    state_by_tau = _c0g_state_results_by_tau(steps1_3)
+    step6_rows = []
+    for tau in sorted(converged_taus, reverse=True):
+        crawl_row = by_tau.get(float(tau), {})
+        can_reuse_prior = (
+            not bool(crawl_row.get("gauge_fix_solver_invoked"))
+            or bool(crawl_row.get("gauge_fix_orbit_equivalent_to_c0f2"))
+        )
+        if can_reuse_prior and float(tau) in prior_step6_rows:
+            reused = dict(prior_step6_rows[float(tau)])
+            reused["reused_prior_c0g_measurement"] = True
+            reused["reused_prior_c0g_reason"] = (
+                "gauge-fixed crawl state is copied or exact global-phase equivalent to C0f2"
+            )
+            step6_rows.append(reused)
+            continue
+        state_result = state_by_tau.get(float(tau))
+        if state_result is None:
+            step6_rows.append({"status": "NOT_MEASURED", "tau": float(tau), "reason": "missing_state_result"})
+            continue
+        step6_row = _c0g_bordered_conditioning_for_state(
+            state_result=state_result,
+            config=diag_config,
+            dtype=dtype,
+        )
+        step6_row["reused_prior_c0g_measurement"] = False
+        step6_rows.append(step6_row)
+    step6_measured = [row for row in step6_rows if row.get("status") == "MEASURED"]
+    step6 = {
+        "status": "MEASURED" if step6_measured else "NOT_MEASURED",
+        "rows": step6_rows,
+        "call": "B2_RELATIVE_TREND_EVALUATED_OUTSIDE_ABSOLUTE_BAR",
+        "closest_converged_tau": min(
+            (float(row["tau"]) for row in step6_measured),
+            default=None,
+        ),
+    }
+    result = {
+        **steps1_3,
+        "step6_bordered_conditioning": step6,
+    }
+    _c0g_write_json(_resolve_output_path(diag_config.json_path), result)
+    return result
+
+
+def _c0g_b2_cos_support(state_results: Sequence[Mapping[str, Any]], config: C0gBuildB1B2Config) -> dict[str, Any]:
+    rows = []
+    for state in state_results:
+        if not bool(state.get("crawl_final_physical_converged")):
+            continue
+        ftau = state.get("ftau", {})
+        row = {
+            "tau": state.get("tau"),
+            "status": ftau.get("status") if isinstance(ftau, Mapping) else "NOT_MEASURED",
+            "cos_theta": ftau.get("representative_cos_theta") if isinstance(ftau, Mapping) else None,
+            "call": ftau.get("call") if isinstance(ftau, Mapping) else None,
+            "stability": ftau.get("stepsize_stability_call") if isinstance(ftau, Mapping) else None,
+        }
+        rows.append(row)
+    measured = [
+        row
+        for row in rows
+        if row.get("status") == "MEASURED"
+        and row.get("stability") == "STABLE"
+        and isinstance(row.get("cos_theta"), float)
+    ]
+    pass_gate = bool(
+        len(measured) >= 3
+        and all(float(row["cos_theta"]) > C0gConfig().cos_fold_threshold for row in measured)
+    )
+    return {
+        "status": "PASS" if pass_gate else "FAIL",
+        "rows": rows,
+        "measured_count": int(len(measured)),
+        "threshold": float(C0gConfig().cos_fold_threshold),
+    }
+
+
+def _c0g_b2_fit_support(fit: Mapping[str, Any], config: C0gBuildB1B2Config) -> dict[str, Any]:
+    linear = fit.get("linear", {}) if isinstance(fit, Mapping) else {}
+    r2 = linear.get("r2")
+    monotone = bool(fit.get("sigma_min_monotone_decreasing_toward_stall")) if isinstance(fit, Mapping) else False
+    pass_gate = bool(
+        fit.get("status") == "MEASURED"
+        and monotone
+        and isinstance(r2, float)
+        and math.isfinite(r2)
+        and float(r2) >= float(config.b2_fit_r2_threshold)
+    )
+    return {
+        "status": "PASS" if pass_gate else "FAIL",
+        "call": fit.get("call") if isinstance(fit, Mapping) else None,
+        "linear_r2": r2,
+        "linear_slope": linear.get("slope"),
+        "tau_fold_zero_crossing": linear.get("tau_fold_zero_crossing"),
+        "monotone": monotone,
+        "threshold_r2": float(config.b2_fit_r2_threshold),
+        "rows": fit.get("rows", []) if isinstance(fit, Mapping) else [],
+    }
+
+
+def _c0g_b2_step6_support(step6: Mapping[str, Any], config: C0gBuildB1B2Config) -> dict[str, Any]:
+    rows = [row for row in step6.get("rows", []) if row.get("status") == "MEASURED"]
+    ordered = sorted(rows, key=lambda row: float(row["tau"]), reverse=True)
+    cond_jb = [float(row["cond_Jb"]) for row in ordered if math.isfinite(float(row["cond_Jb"]))]
+    ratios = [
+        float(row["cond_JQ_perp"]) / float(row["cond_Jb"])
+        for row in ordered
+        if math.isfinite(float(row.get("cond_JQ_perp", math.nan)))
+        and math.isfinite(float(row.get("cond_Jb", math.nan)))
+        and float(row.get("cond_Jb", 0.0)) > 0.0
+    ]
+    flat_band = float(max(cond_jb) / min(cond_jb)) if len(cond_jb) >= 2 and min(cond_jb) > 0.0 else math.inf
+    ratio_factor = float(ratios[-1] / ratios[0]) if len(ratios) >= 2 and ratios[0] > 0.0 else math.nan
+    ratio_increasing = bool(
+        len(ratios) >= 2
+        and all(right >= left * (1.0 - 1.0e-10) for left, right in zip(ratios, ratios[1:]))
+    )
+    pass_gate = bool(
+        len(ordered) >= 3
+        and math.isfinite(flat_band)
+        and flat_band <= float(config.b2_cond_jb_flat_band_max_over_min)
+        and math.isfinite(ratio_factor)
+        and ratio_factor >= float(config.b2_ratio_growth_factor_min)
+        and ratio_increasing
+    )
+    return {
+        "status": "PASS" if pass_gate else "FAIL",
+        "rows": rows,
+        "cond_Jb_max_over_min": flat_band,
+        "cond_Jb_flat_band_threshold": float(config.b2_cond_jb_flat_band_max_over_min),
+        "ratio_values_toward_fold": ratios,
+        "ratio_growth_factor": ratio_factor,
+        "ratio_growth_factor_threshold": float(config.b2_ratio_growth_factor_min),
+        "ratio_increasing_toward_fold": ratio_increasing,
+    }
+
+
+def _c0g_b2_closer_sampling(crawl: Mapping[str, Any], config: C0gBuildB1B2Config) -> dict[str, Any]:
+    attempts = [
+        {
+            "tau": float(row["target_tau"]),
+            "converged": bool(row.get("final_physical_converged")),
+            "residual_linf": row.get("final_original_residual_linf"),
+            "newton_iters": _c0g_attempt_newton_iterations(row),
+            "backtrack_index": int(row.get("backtrack_index", 0)),
+            "max_newton_iters": row.get("max_newton_iters"),
+            "init_source": row.get("init", {}).get("source"),
+        }
+        for row in crawl.get("tau_attempts", [])
+        if "target_tau" in row
+    ]
+    if not attempts:
+        return {"status": "NOT_MEASURED", "attempts": []}
+    tau_fold = float(config.tau_fold_reference)
+    prior_distance = abs(0.029125 - tau_fold)
+    closest = min(attempts, key=lambda row: abs(float(row["tau"]) - tau_fold))
+    return {
+        "status": "MEASURED",
+        "tau_fold_reference": tau_fold,
+        "prior_last_converged_tau": 0.029125,
+        "prior_last_converged_distance": prior_distance,
+        "closest_attempt_tau": closest["tau"],
+        "closest_attempt_distance": abs(float(closest["tau"]) - tau_fold),
+        "closer_than_prior_last_converged": abs(float(closest["tau"]) - tau_fold) < prior_distance,
+        "attempts": attempts,
+    }
+
+
+def _c0g_attempt_newton_iterations(row: Mapping[str, Any]) -> int | None:
+    attempts = row.get("epsilon_attempts", [])
+    values = [
+        int(attempt.get("newton_iterations", attempt.get("iterations", 0)))
+        for attempt in attempts
+        if isinstance(attempt, Mapping)
+    ]
+    if not values:
+        return None
+    return int(max(values))
+
+
+def _c0g_attempt_total_newton_iterations(row: Mapping[str, Any]) -> int | None:
+    attempts = row.get("epsilon_attempts", [])
+    values = [
+        int(attempt.get("newton_iterations", attempt.get("iterations", 0)))
+        for attempt in attempts
+        if isinstance(attempt, Mapping)
+    ]
+    if not values:
+        return None
+    return int(sum(values))
+
+
+def _c0g_b2_branch_continuity_source(source: Any) -> bool:
+    return source in {
+        "previous_c0_converged_state",
+        "previous_c0g_gauge_fixed_converged_state",
+    }
+
+
+def _c0g_b2_full_budget_dissolve_contest(
+    crawl: Mapping[str, Any],
+    config: C0gBuildB1B2Config,
+) -> dict[str, Any]:
+    attempts = [dict(row) for row in crawl.get("tau_attempts", []) if "target_tau" in row]
+    tau_fold = float(config.tau_fold_reference)
+    margin = float(config.dissolved_tau_margin)
+    below_failure_guard = _crawl_persistent_failure_guard(
+        attempts,
+        crawl.get("config", {}),
+        failed_attempt_predicate=lambda row: (
+            float(row.get("target_tau", math.inf)) <= tau_fold - margin
+            and not bool(row.get("final_physical_converged"))
+            and row.get("measurement_status", "MEASURED") == "MEASURED"
+        ),
+    )
+    above_probe_taus = [
+        float(tau)
+        for tau in config.b2_depth_sequence
+        if tau_fold < float(tau) < 0.029125 - 5.0e-13
+    ]
+    above_probe_tau = min(above_probe_taus, key=lambda tau: abs(tau - tau_fold)) if above_probe_taus else None
+    above_rows = [
+        row
+        for row in attempts
+        if above_probe_tau is not None
+        and _c0g_tau_close(float(row.get("target_tau", math.nan)), float(above_probe_tau))
+    ]
+    above_converged = any(bool(row.get("final_physical_converged")) for row in above_rows)
+    below_rows = [
+        row
+        for row in attempts
+        if float(row.get("target_tau", math.inf)) <= tau_fold - margin
+    ]
+    below_converged = [row for row in below_rows if bool(row.get("final_physical_converged"))]
+    persistent_failure = bool(below_failure_guard["crawl_persistent_failure_evidence"])
+    full_newton_budget = bool(below_failure_guard["full_newton_budget"])
+    attempted_backtracking = bool(below_failure_guard["attempted_backtracking"])
+    pass_gate = bool(
+        above_converged
+        and persistent_failure
+        and full_newton_budget
+        and attempted_backtracking
+    )
+    return {
+        "status": "PASS" if pass_gate else "FAIL",
+        "tau_fold_reference": tau_fold,
+        "below_fold_margin": margin,
+        "above_fold_sanity_tau": above_probe_tau,
+        "above_fold_sanity_converged": bool(above_converged),
+        "below_fold_attempt_count": int(len(below_rows)),
+        "below_fold_converged_count": int(len(below_converged)),
+        "persistent_failure_guard": {
+            key: value
+            for key, value in below_failure_guard.items()
+            if key != "failed_attempts"
+        },
+        "failed_below_fold_rows": [
+            {
+                "tau": row.get("target_tau"),
+                "residual_linf": row.get("final_original_residual_linf"),
+                "newton_iters": _c0g_attempt_newton_iterations(row),
+                "backtrack_index": int(row.get("backtrack_index", 0)),
+                "message": row.get("message"),
+                "init_source": row.get("init", {}).get("source"),
+            }
+            for row in below_failure_guard["failed_attempts"]
+        ],
+    }
+
+
+def _c0g_b2_dissolved_support(crawl: Mapping[str, Any], b2: Mapping[str, Any], config: C0gBuildB1B2Config) -> dict[str, Any]:
+    below = [
+        dict(row)
+        for row in crawl.get("tau_attempts", [])
+        if bool(row.get("final_physical_converged"))
+        and float(row.get("target_tau", math.inf))
+        <= float(config.tau_fold_reference) - float(config.dissolved_tau_margin)
+        and float(row.get("final_original_residual_linf", math.inf)) <= BACKGROUND_RESIDUAL_TOL
+    ]
+    branch_continuous = [
+        row
+        for row in below
+        if _c0g_b2_branch_continuity_source(row.get("init", {}).get("source"))
+        and not bool(row.get("used_existing_b2c"))
+    ]
+    fit = b2.get("sigma_min_squared_fit", {})
+    cos = _c0g_b2_cos_support(b2.get("state_results", []), config)
+    no_turning = not (
+        fit.get("call") == "LINEAR_MONOTONE_FOLD_SUPPORT"
+        and cos.get("status") == "PASS"
+    )
+    pass_gate = bool(len(branch_continuous) >= 2 and no_turning)
+    return {
+        "status": "PASS" if pass_gate else "FAIL",
+        "below_fold_margin": float(config.dissolved_tau_margin),
+        "required_count": 2,
+        "below_fold_converged_count": int(len(below)),
+        "branch_continuous_count": int(len(branch_continuous)),
+        "no_r0_turning_signature": bool(no_turning),
+        "rows": [
+            {
+                "tau": row.get("target_tau"),
+                "residual_linf": row.get("final_original_residual_linf"),
+                "newton_iters": _c0g_attempt_newton_iterations(row),
+                "backtrack_index": int(row.get("backtrack_index", 0)),
+                "init_source": row.get("init", {}).get("source"),
+                "used_existing_b2c": row.get("used_existing_b2c"),
+            }
+            for row in branch_continuous
+        ],
+    }
+
+
+def _c0g_b2_gate_verdict(
+    *,
+    crawl: Mapping[str, Any],
+    b2: Mapping[str, Any],
+    config: C0gBuildB1B2Config,
+) -> dict[str, Any]:
+    dissolved = _c0g_b2_dissolved_support(crawl, b2, config)
+    dissolve_contest = _c0g_b2_full_budget_dissolve_contest(crawl, config)
+    cos = _c0g_b2_cos_support(b2.get("state_results", []), config)
+    fit = _c0g_b2_fit_support(b2.get("sigma_min_squared_fit", {}), config)
+    step6 = _c0g_b2_step6_support(b2.get("step6_bordered_conditioning", {}), config)
+    closer = _c0g_b2_closer_sampling(crawl, config)
+    if dissolved["status"] == "PASS":
+        verdict = "FOLD_DISSOLVED"
+        branch = "FOLD_DISSOLVED precedence branch"
+    elif (
+        dissolve_contest["status"] == "PASS"
+        and cos["status"] == "PASS"
+        and fit["status"] == "PASS"
+        and step6["status"] == "PASS"
+    ):
+        verdict = "FOLD_CONFIRMED"
+        branch = "FOLD_CONFIRMED relative-trend branch after full-budget dissolve contest"
+    else:
+        verdict = "STILL_INCONCLUSIVE"
+        branch = "STILL_INCONCLUSIVE fallback branch"
+    return {
+        "verdict": verdict,
+        "precedence_branch": branch,
+        "fold_dissolved": dissolved,
+        "full_budget_dissolve_contest": dissolve_contest,
+        "fold_confirmed_components": {
+            "cos_theta": cos,
+            "sigma_min_squared_fit": fit,
+            "bordered_conditioning_trend": step6,
+        },
+        "closer_sampling": closer,
+        "absolute_cond_bar_used": False,
+    }
+
+
+def _c0g_b2_convergence_ladder(
+    crawl: Mapping[str, Any],
+    config: C0gBuildB1B2Config,
+) -> list[dict[str, Any]]:
+    tau_fold = float(config.tau_fold_reference)
+    rows = []
+    for row in crawl.get("tau_attempts", []):
+        if "target_tau" not in row:
+            continue
+        tau = float(row["target_tau"])
+        rows.append(
+            {
+                "tau": tau,
+                "nominal_tau": row.get("nominal_target_tau"),
+                "relative_to_tau_fold": "below"
+                if tau < tau_fold
+                else "above"
+                if tau > tau_fold
+                else "at",
+                "converged": bool(row.get("final_physical_converged")),
+                "residual_linf": row.get("final_original_residual_linf"),
+                "newton_iters": _c0g_attempt_newton_iterations(row),
+                "newton_iters_total": _c0g_attempt_total_newton_iterations(row),
+                "max_newton_iters": row.get("max_newton_iters"),
+                "backtrack_index": int(row.get("backtrack_index", 0)),
+                "wall_seconds": row.get("elapsed_seconds"),
+                "measurement_status": row.get("measurement_status", "MEASURED"),
+                "init_source": row.get("init", {}).get("source"),
+                "message": row.get("message"),
+            }
+        )
+    return rows
+
+
+def _c0g_closed_block_slices(grid) -> dict[str, tuple[int, int]]:
+    cell = int(grid.spec.nr * grid.spec.nw)
+    wall = int(grid.spec.nw)
+    return {
+        "psi_real_rows": (0, cell),
+        "psi_imag_rows": (cell, 2 * cell),
+        "a0_rows": (2 * cell, 3 * cell),
+        "ar_rows": (3 * cell, 4 * cell),
+        "aw_rows": (4 * cell, 5 * cell),
+        "wall_rows": (5 * cell, 5 * cell + wall),
+        "mass_row": (5 * cell + wall, 5 * cell + wall + 1),
+    }
+
+
+def _c0g_abs_rel_mismatch(
+    got: np.ndarray,
+    ref: np.ndarray,
+) -> dict[str, float]:
+    got = np.asarray(got, dtype=np.float64)
+    ref = np.asarray(ref, dtype=np.float64)
+    diff = got - ref
+    abs_max = float(np.max(np.abs(diff))) if diff.size else 0.0
+    ref_scale = max(1.0, float(np.max(np.abs(ref))) if ref.size else 0.0)
+    return {
+        "max_abs": abs_max,
+        "max_rel": float(abs_max / ref_scale),
+        "reference_linf": float(np.max(np.abs(ref))) if ref.size else 0.0,
+    }
+
+
+def _c0g_update_block_mismatch(
+    blocks: dict[str, dict[str, float]],
+    name: str,
+    got: np.ndarray,
+    ref: np.ndarray,
+) -> None:
+    mismatch = _c0g_abs_rel_mismatch(got, ref)
+    current = blocks.setdefault(
+        name,
+        {"max_abs": 0.0, "max_rel": 0.0, "reference_linf": 0.0},
+    )
+    current["max_abs"] = max(float(current["max_abs"]), mismatch["max_abs"])
+    current["max_rel"] = max(float(current["max_rel"]), mismatch["max_rel"])
+    current["reference_linf"] = max(
+        float(current["reference_linf"]),
+        mismatch["reference_linf"],
+    )
+
+
+def run_c0g_b4_match_gate(config: C0gBuildB1B2Config | None = None) -> dict[str, Any]:
+    cfg = config or C0gBuildB1B2Config()
+    dtype = configure_backend(BackendConfig())
+    c0f2_payload = _c0g_load_c0f2_payload(C0gConfig(c0f2_json_path=cfg.c0f2_json_path))
+    reference_row = _c0g_original_row_for_tau(c0f2_payload, float(cfg.b4_reference_tau))
+    state = _c0g_state_vector_from_path(reference_row["state_artifact"], dtype=dtype)
+    reference_context = C0gConfig(
+        c0f2_json_path=cfg.c0f2_json_path,
+        grid=cfg.grid,
+        jacobian_assembly="colored_sparse_jacobian_lu",
+    )
+    branch, _provider, grid, _boundaries, _eos_K, residual_fn = _c0g_residual_context(
+        tau=float(cfg.b4_reference_tau),
+        config=reference_context,
+        dtype=dtype,
+    )
+    residual = residual_fn(state).detach().cpu().numpy().astype(np.float64, copy=False)
+    colored_config = replace(
+        branch.newton,
+        preconditioner=replace(
+            branch.newton.preconditioner,
+            type="colored_sparse_jacobian_lu",
+            diagonal_shift=0.0,
+        ),
+    )
+    fast_config = replace(
+        branch.newton,
+        preconditioner=replace(
+            branch.newton.preconditioner,
+            type="autodiff_sparse_jacobian_lu",
+            diagonal_shift=0.0,
+        ),
+    )
+
+    colored_start = time.perf_counter()
+    colored_matrix, colored_metadata = assemble_closed_coupled_colored_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state.detach(),
+            rhs=-residual,
+            iteration=0,
+            config=colored_config,
+        ),
+        grid,
+    )
+    colored_seconds = float(time.perf_counter() - colored_start)
+
+    fast_start = time.perf_counter()
+    fast_matrix, fast_metadata = assemble_closed_coupled_autodiff_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state.detach(),
+            rhs=-residual,
+            iteration=0,
+            config=fast_config,
+        ),
+        grid,
+        autodiff_mode="jacfwd",
+    )
+    fast_seconds = float(time.perf_counter() - fast_start)
+
+    blocks = _c0g_closed_block_slices(grid)
+    random_block_mismatches: dict[str, dict[str, float]] = {}
+    generator = torch.Generator(device=state.device)
+    generator.manual_seed(int(cfg.b4_random_seed))
+    for probe_index in range(int(cfg.b4_random_probe_count)):
+        direction = torch.randn(state.shape, dtype=dtype, device=state.device, generator=generator)
+        direction = direction / torch.linalg.vector_norm(direction)
+        reference_jv = jvp(residual_fn, state.detach(), direction).detach().cpu().numpy()
+        assembled_jv = fast_matrix @ direction.detach().cpu().numpy().astype(np.float64, copy=False)
+        for name, (start, stop) in blocks.items():
+            _c0g_update_block_mismatch(
+                random_block_mismatches,
+                name,
+                assembled_jv[start:stop],
+                reference_jv[start:stop],
+            )
+        random_block_mismatches.setdefault("_probe_count", {})["count"] = float(probe_index + 1)
+
+    reverse_start = time.perf_counter()
+    reverse_jacobian = (
+        torch.func.jacrev(residual_fn)(state.detach()).detach().cpu().numpy().astype(np.float64, copy=False)
+    )
+    reverse_seconds = float(time.perf_counter() - reverse_start)
+    fast_dense = fast_matrix.toarray()
+    cell = int(grid.spec.nr * grid.spec.nw)
+    wall_start = 5 * cell
+    wall_stop = wall_start + int(grid.spec.nw)
+    mu_column = fast_dense.shape[1] - 1
+    dense_checks = {
+        "wall_rows_full": _c0g_abs_rel_mismatch(
+            fast_dense[wall_start:wall_stop, :],
+            reverse_jacobian[wall_start:wall_stop, :],
+        ),
+        "mass_row_full": _c0g_abs_rel_mismatch(
+            fast_dense[wall_stop : wall_stop + 1, :],
+            reverse_jacobian[wall_stop : wall_stop + 1, :],
+        ),
+        "mu_column_full": _c0g_abs_rel_mismatch(
+            fast_dense[:, mu_column : mu_column + 1],
+            reverse_jacobian[:, mu_column : mu_column + 1],
+        ),
+    }
+    all_gate_rows = [
+        value
+        for key, value in random_block_mismatches.items()
+        if key != "_probe_count"
+    ] + list(dense_checks.values())
+    abs_pass = all(float(row["max_abs"]) <= float(cfg.b4_match_abs_tol) for row in all_gate_rows)
+    rel_pass = all(float(row["max_rel"]) <= float(cfg.b4_match_rel_tol) for row in all_gate_rows)
+    speedup = colored_seconds / fast_seconds if fast_seconds > 0.0 else math.inf
+    return {
+        "schema": "stage1_pathA_C0g_B4_sparse_jacobian_match_gate/v1",
+        "status": "PASS" if abs_pass and rel_pass else "FAIL",
+        "reference_tau": float(cfg.b4_reference_tau),
+        "reference_state_artifact": reference_row.get("state_artifact"),
+        "residual_entry_point": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+        "frozen_residual_modified": False,
+        "faithful_operators_modified": False,
+        "xi_or_grad_div_penalty_modified": False,
+        "physics_modified": False,
+        "match_tolerances": {
+            "max_abs": float(cfg.b4_match_abs_tol),
+            "max_rel": float(cfg.b4_match_rel_tol),
+        },
+        "coverage": {
+            "random_jv_probe_count": int(cfg.b4_random_probe_count),
+            "random_jv_blocks": list(blocks),
+            "explicit_dense_checks": [
+                "wall_rows_full",
+                "mass_row_full",
+                "mu_column_full",
+            ],
+            "random_jv_reference": "torch.func.jvp(original_residual)",
+            "dense_row_reference": "torch.func.jacrev(original_residual)",
+        },
+        "random_jv_block_mismatches": {
+            key: value
+            for key, value in random_block_mismatches.items()
+            if key != "_probe_count"
+        },
+        "dense_row_mismatches": dense_checks,
+        "colored_assembly": {
+            "seconds": colored_seconds,
+            "metadata": dict(colored_metadata),
+            "matrix_nnz": int(colored_matrix.nnz),
+            "note": "timing reference for legacy colored-JVP assembly",
+        },
+        "fast_assembly": {
+            "seconds": fast_seconds,
+            "metadata": dict(fast_metadata),
+            "matrix_nnz": int(fast_matrix.nnz),
+            "independent_jacrev_seconds_for_dense_checks": reverse_seconds,
+        },
+        "assembly_speedup_x": float(speedup),
+        "gate": {
+            "abs_pass": bool(abs_pass),
+            "rel_pass": bool(rel_pass),
+            "pass": bool(abs_pass and rel_pass),
+        },
+    }
+
+
+def _c0g_proof_newton_solve_summary(row: Mapping[str, Any]) -> dict[str, Any]:
+    attempts = [attempt for attempt in row.get("epsilon_attempts", []) if isinstance(attempt, Mapping)]
+    initial_residuals = []
+    for attempt in attempts:
+        try:
+            value = float(attempt.get("initial_original_residual", math.nan))
+        except (TypeError, ValueError):
+            value = math.nan
+        if math.isfinite(value):
+            initial_residuals.append(value)
+
+    def _is_zero_epsilon_attempt(attempt: Mapping[str, Any]) -> bool:
+        try:
+            epsilon = float(attempt.get("epsilon", math.nan))
+            k1_epsilon = float(attempt.get("k1_radius_epsilon", math.nan))
+        except (TypeError, ValueError):
+            return False
+        return epsilon == 0.0 and k1_epsilon == 0.0
+
+    final_zero = next(
+        (
+            attempt
+            for attempt in reversed(attempts)
+            if _is_zero_epsilon_attempt(attempt)
+        ),
+        attempts[-1] if attempts else {},
+    )
+    max_iters = _c0g_attempt_newton_iterations(row)
+    total_iters = _c0g_attempt_total_newton_iterations(row)
+    nonconverged_seed = bool(
+        initial_residuals
+        and max(initial_residuals) > float(row.get("b2c_background_tolerance", BACKGROUND_RESIDUAL_TOL))
+    )
+    genuine = bool(row.get("gauge_fix_solver_invoked") and max_iters is not None and max_iters > 0)
+    return {
+        "status": "PASS" if genuine and nonconverged_seed else "FAIL",
+        "tau": row.get("target_tau"),
+        "gauge_fix_solver_invoked": bool(row.get("gauge_fix_solver_invoked")),
+        "nonconverged_seed": nonconverged_seed,
+        "seed_description": row.get("proof_seed_description"),
+        "newton_iters": max_iters,
+        "newton_iters_total": total_iters,
+        "zero_epsilon_newton_iters": final_zero.get("newton_iterations"),
+        "initial_original_residual_max": max(initial_residuals) if initial_residuals else None,
+        "final_original_residual_linf": row.get("final_original_residual_linf"),
+        "init_source": row.get("init", {}).get("source"),
+        "max_newton_iters": row.get("max_newton_iters"),
+        "max_newton_iters_override": row.get("max_newton_iters_override"),
+    }
+
+
+def _c0g_per_tau_row_for_sequence(
+    payload: Mapping[str, Any],
+    tau: float,
+) -> dict[str, Any] | None:
+    for row in payload.get("per_tau_timing", []):
+        if _c0g_tau_close(float(row.get("tau", math.nan)), float(tau)):
+            return dict(row)
+    return None
+
+
+def _c0g_saved_state_residual_linf(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> float:
+    _branch, _provider, _grid, _boundaries, _eos_K, residual_fn = _c0g_residual_context(
+        tau=float(tau),
+        config=C0gConfig(grid=config.grid),
+        dtype=dtype,
+    )
+    residual = residual_fn(state).detach()
+    return float(torch.max(torch.abs(residual)).detach().cpu().item())
+
+
+def _c0g_apply_global_phase_state(
+    state: torch.Tensor,
+    grid,
+    *,
+    angle: float,
+) -> torch.Tensor:
+    values = state.detach().clone()
+    fields, mu = unpack_closed_coupled_fields(values, grid, has_chemical_potential=True)
+    cos_a = torch.as_tensor(math.cos(float(angle)), dtype=values.dtype, device=values.device)
+    sin_a = torch.as_tensor(math.sin(float(angle)), dtype=values.dtype, device=values.device)
+    psi_real = cos_a * fields.psi_real - sin_a * fields.psi_imag
+    psi_imag = sin_a * fields.psi_real + cos_a * fields.psi_imag
+    assert mu is not None
+    return pack_closed_coupled_fields(
+        ClosedCoupledFields(
+            psi_real=psi_real,
+            psi_imag=psi_imag,
+            a0=fields.a0,
+            ar=fields.ar,
+            aw=fields.aw,
+            r0=fields.r0,
+        ),
+        mu,
+    ).detach()
+
+
+def _c0g_apply_path_only_proof_perturbation(
+    state: torch.Tensor,
+    grid,
+    *,
+    phase_angle: float,
+    r0_amplitude: float,
+) -> tuple[torch.Tensor, dict[str, Any]]:
+    values = _c0g_apply_global_phase_state(state, grid, angle=float(phase_angle))
+    fields, mu = unpack_closed_coupled_fields(values, grid, has_chemical_potential=True)
+    pattern = torch.linspace(
+        -1.0,
+        1.0,
+        fields.r0.numel(),
+        dtype=values.dtype,
+        device=values.device,
+    ).reshape_as(fields.r0)
+    pattern = pattern / torch.clamp(torch.max(torch.abs(pattern)), min=1.0)
+    assert mu is not None
+    perturbed = pack_closed_coupled_fields(
+        ClosedCoupledFields(
+            psi_real=fields.psi_real,
+            psi_imag=fields.psi_imag,
+            a0=fields.a0,
+            ar=fields.ar,
+            aw=fields.aw,
+            r0=fields.r0 + float(r0_amplitude) * pattern,
+        ),
+        mu,
+    ).detach()
+    return perturbed, {
+        "global_phase_radians": float(phase_angle),
+        "r0_linf_amplitude": float(r0_amplitude),
+        "r0_pattern": "deterministic centered linear lane perturbation",
+        "not_pure_global_phase": True,
+    }
+
+
+def _c0g_single_gauge_fixed_attempt(
+    *,
+    x0: torch.Tensor,
+    tau: float,
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+    attempt_index: int,
+    start_from_tau: float | None,
+    init: Mapping[str, Any],
+    max_newton_iters: int | None,
+) -> tuple[dict[str, Any], torch.Tensor, Any]:
+    local_c0 = C0Config(
+        run_root=config.run_root / "gauge_fixed_crawl",
+        grid=config.grid,
+        use_gauge_fix=True,
+        max_newton_iters_override=None
+        if max_newton_iters is None
+        else int(max_newton_iters),
+        prefer_existing_b2c_background_predictor=False,
+        jacobian_assembly=config.jacobian_assembly,
+    )
+    branch, provider, grid, boundaries = _branch_context(
+        tau=float(tau),
+        config=local_c0,
+        dtype=dtype,
+    )
+    eos_K = float(branch.continuation_K_values[-1])
+    original_residual_fn = lambda x: patha_closed_branch_residual(
+        x,
+        grid,
+        branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=provider,
+    )
+    aid = C0AidParameters(core_epsilon=0.0, k1_radius_epsilon=0.0)
+    preconditioner_residual_fn = lambda x: c0_preconditioner_residual(
+        x,
+        grid,
+        branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=provider,
+        aid=aid,
+    )
+    gauge_config = C0gConfig(grid=config.grid)
+
+    def gauge_matrix_fn(x: torch.Tensor, _col_scale: np.ndarray) -> Mapping[str, Any]:
+        del _col_scale
+        return _c0g_build_analytic_gauge_matrix(
+            state=x,
+            grid=grid,
+            branch=branch,
+            config=gauge_config,
+        )
+
+    started = time.perf_counter()
+    result = solve_c0_scaled_newton(
+        original_residual_fn=original_residual_fn,
+        preconditioner_residual_fn=preconditioner_residual_fn,
+        x0=x0,
+        grid=grid,
+        newton=branch.newton,
+        aid=aid,
+        gauge_matrix_fn=gauge_matrix_fn,
+        gauge_fix_lstsq_rcond=float(config.proof_tolerance),
+        gauge_fix_gradient_rank_rtol=float(gauge_config.gradient_rank_rtol),
+    )
+    final_state = result.x.detach()
+    final_residual = original_residual_fn(final_state).detach()
+    final_linf = float(torch.max(torch.abs(final_residual)).detach().cpu().item())
+    metrics = _state_metrics(final_state, grid)
+    state_path = _resolve_output_path(
+        _state_artifact_path(local_c0, tau=float(tau), attempt_index=attempt_index)
+    )
+    _save_state_artifact(state_path, final_state)
+    row = {
+        "tau": float(tau),
+        "target_tau": float(tau),
+        "nominal_target_tau": float(tau),
+        "delta_tau": None if start_from_tau is None else float(tau) - float(start_from_tau),
+        "backtrack_index": 0,
+        "start_from_tau": start_from_tau,
+        "target_relative_to_prior_floor": float(tau) / PRIOR_TAU_FLOOR,
+        "below_prior_floor": _below_prior_floor(float(tau)),
+        "stage_converged": bool(result.converged),
+        "final_original_residual_linf": final_linf,
+        "final_physical_converged": bool(result.converged and final_linf <= BACKGROUND_RESIDUAL_TOL),
+        "b2c_background_tolerance": BACKGROUND_RESIDUAL_TOL,
+        "message": result.message,
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "init": dict(init),
+        "initialization": dict(init),
+        "used_existing_b2c": False,
+        "max_newton_iters": int(branch.newton.max_newton_iters),
+        "max_newton_iters_override": local_c0.max_newton_iters_override,
+        "max_tau_backtracks": int(config.max_tau_backtracks),
+        "min_tau_backtrack_delta": float(config.min_tau_backtrack_delta),
+        "jacobian_assembly": config.jacobian_assembly,
+        "continuation_K_values": [eos_K],
+        "epsilon_attempts": [
+            _epsilon_attempt_row(
+                tau=float(tau),
+                eos_K=eos_K,
+                aid_index=0,
+                aid=aid,
+                result=result,
+                start_policy=str(init.get("source", "unknown")),
+                metrics=metrics,
+            )
+        ],
+        "substeps": [],
+        "metrics": metrics,
+        "state_artifact": str(state_path),
+        "gauge_fix_solver_invoked": True,
+        "linear_diagnostics": {"status": "NOT_MEASURED", "reason": "B2_phase_not_run_yet"},
+        "observables": {"available": False, "reason": "B2_phase_not_run_yet"},
+        "floor_activation": {
+            "min_rho_during_final": metrics["min_rho"],
+            "min_R0_during_final": metrics["min_R0"],
+            "final_aids_inactive": True,
+        },
+    }
+    return row, final_state, grid
+
+
+def _c0g_run_gauge_fixed_polish_crawl(
+    *,
+    payload: Mapping[str, Any],
+    config: C0gBuildB1B2Config,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    run_root = _resolve_output_path(config.run_root / "gauge_fixed_crawl")
+    run_root.mkdir(parents=True, exist_ok=True)
+    sequence_rows: list[dict[str, Any]] = []
+    last_converged_state: torch.Tensor | None = None
+    last_converged_grid: Any | None = None
+    last_converged_tau: float | None = None
+    attempt_index = 0
+    started = time.perf_counter()
+    proof_solve_seen = False
+    for nominal_tau in config.b2_depth_sequence:
+        nominal_tau = float(nominal_tau)
+        existing_row = _c0g_per_tau_row_for_sequence(payload, nominal_tau)
+        may_accept_shallow_anchor = (
+            existing_row is not None
+            and bool(existing_row.get("solver_converged"))
+            and nominal_tau > float(config.proof_tau) + 5.0e-13
+            and (
+                last_converged_state is None
+                or (
+                    last_converged_tau is not None
+                    and nominal_tau < float(last_converged_tau) - 5.0e-13
+                )
+            )
+        )
+        if may_accept_shallow_anchor and existing_row is not None:
+            state = _c0g_state_vector_from_path(existing_row["state_artifact"], dtype=dtype)
+            residual_linf = _c0g_saved_state_residual_linf(
+                state=state,
+                tau=nominal_tau,
+                config=config,
+                dtype=dtype,
+            )
+            branch, _provider, grid, _boundaries = _branch_context(
+                tau=nominal_tau,
+                config=C0Config(grid=config.grid, jacobian_assembly=config.jacobian_assembly),
+                dtype=dtype,
+            )
+            metrics = _state_metrics(state, grid)
+            state_path = _resolve_output_path(
+                _state_artifact_path(
+                    C0Config(run_root=config.run_root / "gauge_fixed_crawl"),
+                    tau=nominal_tau,
+                    attempt_index=attempt_index,
+                )
+            )
+            _save_state_artifact(state_path, state)
+            row = {
+                "tau": nominal_tau,
+                "target_tau": nominal_tau,
+                "nominal_target_tau": nominal_tau,
+                "delta_tau": None
+                if last_converged_tau is None
+                else nominal_tau - float(last_converged_tau),
+                "backtrack_index": 0,
+                "start_from_tau": last_converged_tau,
+                "target_relative_to_prior_floor": nominal_tau / PRIOR_TAU_FLOOR,
+                "below_prior_floor": _below_prior_floor(nominal_tau),
+                "stage_converged": residual_linf <= BACKGROUND_RESIDUAL_TOL,
+                "final_original_residual_linf": residual_linf,
+                "final_physical_converged": residual_linf <= BACKGROUND_RESIDUAL_TOL,
+                "b2c_background_tolerance": BACKGROUND_RESIDUAL_TOL,
+                "message": "existing C0f2 genuine warm-start converged state accepted as a shallow anchor before the gauge-fixed proof solve",
+                "elapsed_seconds": 0.0,
+                "init": {
+                    "source": "c0f2_genuine_warm_start_converged_state",
+                    "path": existing_row.get("state_artifact"),
+                    "original_init_source": existing_row.get("init_source"),
+                },
+                "initialization": {
+                    "source": "c0f2_genuine_warm_start_converged_state",
+                    "path": existing_row.get("state_artifact"),
+                },
+                "used_existing_b2c": False,
+                "gauge_fix_solver_invoked": False,
+                "max_newton_iters": 20,
+                "max_newton_iters_override": config.max_newton_iters_override,
+                "max_tau_backtracks": int(config.max_tau_backtracks),
+                "min_tau_backtrack_delta": float(config.min_tau_backtrack_delta),
+                "jacobian_assembly": config.jacobian_assembly,
+                "continuation_K_values": [float(branch.continuation_K_values[-1])],
+                "epsilon_attempts": [],
+                "substeps": [],
+                "metrics": metrics,
+                "state_artifact": str(state_path),
+                "linear_diagnostics": {"status": "NOT_MEASURED", "reason": "B2_phase_not_run_yet"},
+                "observables": {"available": False, "reason": "B2_phase_not_run_yet"},
+                "floor_activation": {
+                    "min_rho_during_final": metrics["min_rho"],
+                    "min_R0_during_final": metrics["min_R0"],
+                    "final_aids_inactive": True,
+                },
+            }
+            sequence_rows.append(row)
+            if row["final_physical_converged"]:
+                last_converged_state = state.detach().clone()
+                last_converged_grid = grid
+                last_converged_tau = nominal_tau
+            attempt_index += 1
+            continue
+
+        if last_converged_state is None:
+            if existing_row is None or not bool(existing_row.get("solver_converged")):
+                raise RuntimeError(f"no warm-start state available for tau={nominal_tau:.12e}")
+            last_converged_state = _c0g_state_vector_from_path(existing_row["state_artifact"], dtype=dtype)
+            branch, _provider, last_converged_grid, _boundaries = _branch_context(
+                tau=nominal_tau,
+                config=C0Config(grid=config.grid, jacobian_assembly=config.jacobian_assembly),
+                dtype=dtype,
+            )
+            last_converged_tau = nominal_tau
+
+        start_tau = last_converged_tau
+        full_delta = None if start_tau is None else nominal_tau - float(start_tau)
+        target_tau = nominal_tau
+        backtrack_index = 0
+        while True:
+            delta_tau = None if start_tau is None else float(target_tau) - float(start_tau)
+            branch, _provider, grid, _boundaries = _branch_context(
+                tau=float(target_tau),
+                config=C0Config(grid=config.grid, jacobian_assembly=config.jacobian_assembly),
+                dtype=dtype,
+            )
+            if (
+                _c0g_tau_close(float(target_tau), float(config.proof_tau))
+                and existing_row is not None
+                and bool(existing_row.get("solver_converged"))
+                and not proof_solve_seen
+            ):
+                base_state = _c0g_state_vector_from_path(existing_row["state_artifact"], dtype=dtype)
+                x0, perturbation = _c0g_apply_path_only_proof_perturbation(
+                    base_state,
+                    grid,
+                    phase_angle=float(config.proof_global_phase_radians),
+                    r0_amplitude=float(config.proof_r0_perturbation),
+                )
+                init = {
+                    "source": "c0f2_converged_state_non_gauge_perturbed_for_gauge_fixed_proof",
+                    "path": existing_row.get("state_artifact"),
+                    "perturbation": perturbation,
+                }
+            else:
+                if last_converged_state is None:
+                    raise RuntimeError(f"no previous gauge-fixed state for tau={target_tau:.12e}")
+                x0 = last_converged_state.detach().clone()
+                if last_converged_grid is not None:
+                    x0 = resample_closed_branch_state(x0, last_converged_grid, grid, branch)
+                x0, predictor = _apply_c0_wall_predictor(
+                    state=x0,
+                    grid=grid,
+                    tau=float(target_tau),
+                    grid_level=config.grid,
+                )
+                init = {
+                    "source": "previous_c0g_gauge_fixed_converged_state",
+                    "previous_tau": last_converged_tau,
+                    "wall_predictor": predictor,
+                }
+            row, final_state, final_grid = _c0g_single_gauge_fixed_attempt(
+                x0=x0,
+                tau=float(target_tau),
+                config=config,
+                dtype=dtype,
+                attempt_index=attempt_index,
+                start_from_tau=last_converged_tau,
+                init=init,
+                max_newton_iters=config.max_newton_iters_override,
+            )
+            row["nominal_target_tau"] = float(nominal_tau)
+            row["delta_tau"] = delta_tau
+            row["backtrack_index"] = int(backtrack_index)
+            row["max_tau_backtracks"] = int(config.max_tau_backtracks)
+            row["min_tau_backtrack_delta"] = float(config.min_tau_backtrack_delta)
+            row["gauge_fix_solver_invoked"] = True
+            row["full_newton_budget"] = row.get("max_newton_iters_override") in (None, 0)
+            if _c0g_tau_close(float(row["target_tau"]), float(config.proof_tau)):
+                row["proof_solve_role"] = "genuine_gauge_fixed_newton_solve"
+                row["proof_seed_description"] = (
+                    "C0f2 proof-tau state plus global phase and non-gauge r0 perturbation; not a pure global-phase orbit seed"
+                )
+                proof_solve_seen = True
+            sequence_rows.append(row)
+            attempt_index += 1
+            if row["final_physical_converged"]:
+                last_converged_state = final_state.detach().clone()
+                last_converged_grid = final_grid
+                last_converged_tau = float(row["target_tau"])
+                break
+            if start_tau is None or full_delta is None:
+                break
+            if (
+                backtrack_index >= int(config.max_tau_backtracks)
+                or abs(delta_tau or 0.0) <= float(config.min_tau_backtrack_delta)
+            ):
+                break
+            backtrack_index += 1
+            target_tau = float(start_tau) + float(full_delta) / (2.0**backtrack_index)
+    schema_errors = _validate_tau_attempts_schema(sequence_rows)
+    result = {
+        "schema": "stage1_pathA_C0g_build_gauge_fixed_polish_crawl/v1",
+        "source_revision": source_revision(),
+        "phase_status": "gauge_fixed_polish_crawl_complete",
+        "prior_tau_floor": PRIOR_TAU_FLOOR,
+        "b2c_background_tolerance": BACKGROUND_RESIDUAL_TOL,
+        "deepest_converged_tau": last_converged_tau,
+        "deepest_converged_R0_min": None
+        if not sequence_rows
+        else min(
+            (
+                row["metrics"]["min_R0"]
+                for row in sequence_rows
+                if row.get("final_physical_converged") and row.get("metrics")
+            ),
+            default=None,
+        ),
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "config": {
+            "run_root": str(config.run_root / "gauge_fixed_crawl"),
+            "grid": list(config.grid),
+            "depth_sequence": list(config.b2_depth_sequence),
+            "prefer_existing_b2c_background_predictor": False,
+            "use_gauge_fix": True,
+            "max_newton_iters_override": config.max_newton_iters_override,
+            "max_tau_backtracks": int(config.max_tau_backtracks),
+            "min_tau_backtrack_delta": float(config.min_tau_backtrack_delta),
+            "jacobian_assembly": config.jacobian_assembly,
+        },
+        "tau_attempts": sequence_rows,
+        "depth_sequence": sequence_rows,
+        "tau_attempt_schema_errors": schema_errors,
+        "proof_solve_seen": bool(proof_solve_seen),
+        "faithful_operator_boundary": _faithful_operator_boundary(),
+    }
+    crawl_json = _resolve_output_path(config.run_root / "gauge_fixed_crawl" / "c0_gauge_fixed_crawl.json")
+    _c0g_write_json(crawl_json, result)
+    return result
+
+
+def write_c0g_build_b1b2_report(result: Mapping[str, Any], path: Path) -> None:
+    b4 = result.get("B4_analytic_sparse_jacobian", {})
+    b1 = result.get("B1_gauge_fix", {})
+    b2 = result.get("B2_reconfirm", {})
+    gate = b2.get("gate", {})
+    lift = b1.get("gauge_sector_lift", {})
+    proof = b1.get("path_only_proof", {})
+    genuine = b1.get("genuine_solve_proof", {})
+    preserved = b1.get("r0_mode_preservation", {})
+    fit = gate.get("fold_confirmed_components", {}).get("sigma_min_squared_fit", {})
+    step6 = gate.get("fold_confirmed_components", {}).get("bordered_conditioning_trend", {})
+    cos = gate.get("fold_confirmed_components", {}).get("cos_theta", {})
+    ladder = b2.get("full_budget_convergence_ladder", [])
+    has_b4 = bool(b4)
+    lines = [
+        "# Path-A C0g Build B-1/B-2/B-4 Staged Report",
+        "",
+        f"B-2 verdict: **{gate.get('verdict')}**",
+        f"B-4 match gate: **{b4.get('status', 'NOT_RUN')}**",
+        "",
+        "## Scope",
+        "",
+        "- Built B-1 gauge-fix only in solver/path coordinates.",
+        "- Built B-4 analytic/sparse Jacobian assembly and verified it before B-2."
+        if has_b4
+        else "- B-4 analytic/sparse assembly was not built.",
+        "- Ran B-2 re-confirmation on the gauge-fixed crawl.",
+        "- B-3 pseudo-arclength was not built.",
+        "- The original `patha_closed_branch_residual` remains the convergence/progress arbiter.",
+        "",
+        "## B-4 Sparse Jacobian Match Gate",
+        "",
+        "```yaml",
+        f"status: {b4.get('status', 'NOT_RUN')}",
+        f"reference_tau: {b4.get('reference_tau')}",
+        f"tolerances: {b4.get('match_tolerances')}",
+        f"coverage: {b4.get('coverage')}",
+        f"assembly_speedup_x: {b4.get('assembly_speedup_x')}",
+        f"colored_seconds: {(b4.get('colored_assembly') or {}).get('seconds')}",
+        f"fast_seconds: {(b4.get('fast_assembly') or {}).get('seconds')}",
+        "```",
+        "",
+        "Random-Jv per-block mismatch:",
+        "",
+        "```yaml",
+        str(b4.get("random_jv_block_mismatches", {})),
+        "```",
+        "",
+        "Explicit dense wall/mass/mu mismatch:",
+        "",
+        "```yaml",
+        str(b4.get("dense_row_mismatches", {})),
+        "```",
+        "",
+        "## B-1 Gauge Fix",
+        "",
+        "Method: scaled analytic gauge-complement Newton step. The linear solve acts on `row_scale * J_original * col_scale` and constrains the step to `Q_perp` of the analytic gauge generators; no residual/operator row is changed.",
+        "",
+        "Gauge-sector removal evidence:",
+        "",
+        "```yaml",
+        f"status: {lift.get('status')}",
+        f"gauge_rank: {lift.get('gauge_rank')}",
+        f"before_gauge_sector_sigma_min: {lift.get('before_gauge_sector_sigma_min')}",
+        f"scaled_gauge_singular_min_retained: {lift.get('scaled_gauge_singular_min_retained')}",
+        f"after_bordered_gauge_sector_sigma_min_not_a_lift_gate: {lift.get('after_bordered_gauge_sector_sigma_min')}",
+        f"after_bordered_identity_metric_is_by_construction: {lift.get('after_bordered_identity_metric_is_by_construction')}",
+        f"source_helpers: {lift.get('source_helpers')}",
+        "```",
+        "",
+        "Genuine gauge-fixed Newton proof solve:",
+        "",
+        "```yaml",
+        f"status: {genuine.get('status')}",
+        f"tau: {genuine.get('tau')}",
+        f"nonconverged_seed: {genuine.get('nonconverged_seed')}",
+        f"seed_description: {genuine.get('seed_description')}",
+        f"newton_iters: {genuine.get('newton_iters')}",
+        f"newton_iters_total: {genuine.get('newton_iters_total')}",
+        f"zero_epsilon_newton_iters: {genuine.get('zero_epsilon_newton_iters')}",
+        f"initial_original_residual_max: {genuine.get('initial_original_residual_max')}",
+        f"final_original_residual_linf: {genuine.get('final_original_residual_linf')}",
+        "```",
+        "",
+        "Gauge-aligned path-only proof:",
+        "",
+        "```yaml",
+        f"status: {proof.get('status')}",
+        f"tau: {proof.get('tau')}",
+        f"tolerance: {proof.get('tolerance')}",
+        f"invariant_deltas: {proof.get('gauge_invariant_deltas_after_alignment')}",
+        f"original_residual: {proof.get('original_residual')}",
+        "```",
+        "",
+        "`r0` mode preservation:",
+        "",
+        "```yaml",
+        f"status: {preserved.get('status')}",
+        f"mode1_lane: {preserved.get('mode1_lane')}",
+        f"mode1_lane_fraction: {preserved.get('mode1_lane_fraction')}",
+        f"mode1_projection_into_gauge_basis: {preserved.get('mode1_projection_into_gauge_basis')}",
+        f"mode1_sigma: {preserved.get('mode1_sigma')}",
+        "```",
+        "",
+        "## B-2 Re-Confirm Gate",
+        "",
+        f"Verdict: **{gate.get('verdict')}** via `{gate.get('precedence_branch')}`.",
+        "",
+        "Timeout finalization:",
+        "",
+        "```yaml",
+        f"{result.get('timeout_finalization', {'status': 'not_used'})}",
+        "```",
+        "",
+        "Full-budget fold-vs-dissolve convergence ladder:",
+        "",
+        _markdown_table(
+            [
+                "tau",
+                "nominal_tau",
+                "relative_to_tau_fold",
+                "converged",
+                "residual_linf",
+                "newton_iters",
+                "max_newton_iters",
+                "backtrack_index",
+                "wall_seconds",
+                "measurement_status",
+                "init_source",
+            ],
+            ladder,
+        ),
+        "",
+        "Full-budget dissolve contest:",
+        "",
+        "```yaml",
+        f"{gate.get('full_budget_dissolve_contest')}",
+        "```",
+        "",
+        "Closer sampling:",
+        "",
+        "```yaml",
+        f"{gate.get('closer_sampling')}",
+        "```",
+        "",
+        "Cosθ support:",
+        "",
+        _markdown_table(["tau", "status", "cos_theta", "call", "stability"], cos.get("rows", [])),
+        "",
+        "σ_min² fit support:",
+        "",
+        "```yaml",
+        f"status: {fit.get('status')}",
+        f"linear_r2: {fit.get('linear_r2')}",
+        f"linear_slope: {fit.get('linear_slope')}",
+        f"tau_fold_zero_crossing: {fit.get('tau_fold_zero_crossing')}",
+        f"monotone: {fit.get('monotone')}",
+        f"threshold_r2: {fit.get('threshold_r2')}",
+        "```",
+        "",
+        "Bordered-conditioning trend:",
+        "",
+        "```yaml",
+        f"status: {step6.get('status')}",
+        f"cond_Jb_max_over_min: {step6.get('cond_Jb_max_over_min')}",
+        f"ratio_growth_factor: {step6.get('ratio_growth_factor')}",
+        f"ratio_increasing_toward_fold: {step6.get('ratio_increasing_toward_fold')}",
+        f"absolute_cond_bar_used: {gate.get('absolute_cond_bar_used')}",
+        "```",
+        "",
+        "Step-6 measured rows:",
+        "",
+        _markdown_table(
+            [
+                "tau",
+                "status",
+                "cond_JQ_perp",
+                "cond_Jb",
+                "sigma_min_JQ_perp",
+                "sigma_min_Jb",
+                "call",
+            ],
+            step6.get("rows", []),
+        ),
+        "",
+        "FOLD_DISSOLVED precedence check:",
+        "",
+        "```yaml",
+        f"{gate.get('fold_dissolved')}",
+        "```",
+        "",
+        "## Scope Guard",
+        "",
+        "```yaml",
+    ]
+    for key, value in result.get("scope_guard", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.extend(
+        [
+            "```",
+            "",
+            f"Machine JSON: `{result.get('json_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0g_build_b1b2_stdout_summary(result: Mapping[str, Any]) -> str:
+    b4 = result.get("B4_analytic_sparse_jacobian", {})
+    b1 = result.get("B1_gauge_fix", {})
+    b2 = result.get("B2_reconfirm", {})
+    gate = b2.get("gate", {})
+    lift = b1.get("gauge_sector_lift", {})
+    proof = b1.get("path_only_proof", {})
+    genuine = b1.get("genuine_solve_proof", {})
+    preserved = b1.get("r0_mode_preservation", {})
+    fit = gate.get("fold_confirmed_components", {}).get("sigma_min_squared_fit", {})
+    step6 = gate.get("fold_confirmed_components", {}).get("bordered_conditioning_trend", {})
+    cos_rows = gate.get("fold_confirmed_components", {}).get("cos_theta", {}).get("rows", [])
+    ladder = b2.get("full_budget_convergence_ladder", [])
+    tau_fold = float((gate.get("full_budget_dissolve_contest") or {}).get("tau_fold_reference", math.nan))
+    below_converged = [
+        row
+        for row in ladder
+        if math.isfinite(tau_fold)
+        and float(row.get("tau", math.inf)) < tau_fold
+        and bool(row.get("converged"))
+    ]
+    ladder_lines = [
+        (
+            "  tau={tau}, converged={converged}, residual_linf={residual}, "
+            "newton_iters={iters}, backtracks={backtracks}, wall_seconds={wall_seconds}, "
+            "measurement_status={status}"
+        ).format(
+            tau=_c0g_fmt(row.get("tau")),
+            converged=row.get("converged"),
+            residual=_c0g_fmt(row.get("residual_linf")),
+            iters=row.get("newton_iters"),
+            backtracks=row.get("backtrack_index"),
+            wall_seconds=_c0g_fmt(row.get("wall_seconds")),
+            status=row.get("measurement_status", "MEASURED"),
+        )
+        for row in ladder
+    ]
+    cos_values = [
+        float(row["cos_theta"])
+        for row in cos_rows
+        if isinstance(row.get("cos_theta"), float) and math.isfinite(float(row["cos_theta"]))
+    ]
+    return "\n".join(
+        [
+            "C0g B-4-gated B-1/B-2 staged summary:",
+            (
+                "B-4 match gate: "
+                f"{b4.get('status', 'NOT_RUN')} "
+                f"abs_tol={((b4.get('match_tolerances') or {}).get('max_abs'))}, "
+                f"rel_tol={((b4.get('match_tolerances') or {}).get('max_rel'))}, "
+                f"speedup_x={_c0g_fmt(b4.get('assembly_speedup_x'))}, "
+                f"coverage={b4.get('coverage')}"
+            ),
+            f"B-4 random-Jv per-block mismatch: {b4.get('random_jv_block_mismatches')}",
+            f"B-4 dense wall/mass/mu mismatch: {b4.get('dense_row_mismatches')}",
+            f"Phase 2 ran: {bool(result.get('phase2_ran'))}",
+            (
+                "Gauge-fix method: scaled analytic gauge-complement solve in path coordinates "
+                "(row_scale*J_original*col_scale, step=col_scale*Q_perp*z); "
+                "frozen residual/operators/(1/xi) penalty/export are not edited."
+            ),
+            (
+                "Corrected gauge-sector numbers: "
+                f"before_gauge_sector_sigma_min={_c0g_fmt(lift.get('before_gauge_sector_sigma_min'))}, "
+                f"scaled_gauge_singular_min_retained="
+                f"{_c0g_fmt(lift.get('scaled_gauge_singular_min_retained'))}; "
+                "after_bordered_gauge_sector_sigma_min is by-construction and not gated."
+            ),
+            (
+                "Strengthened path-only proof: "
+                f"genuine_solve={genuine.get('status')} "
+                f"(newton_iters={genuine.get('newton_iters')}, "
+                f"zero_epsilon_iters={genuine.get('zero_epsilon_newton_iters')}), "
+                f"alignment={proof.get('status')}, invariants max="
+                f"{_c0g_fmt((proof.get('gauge_invariant_deltas_after_alignment') or {}).get('max'))}, "
+                f"residuals with/without="
+                f"{_c0g_fmt((proof.get('original_residual') or {}).get('with_gauge_fix_linf'))}/"
+                f"{_c0g_fmt((proof.get('original_residual') or {}).get('without_gauge_fix_linf'))}"
+            ),
+            (
+                "r0-mode preserved: "
+                f"{preserved.get('status')} lane={preserved.get('mode1_lane')} "
+                f"P_G={_c0g_fmt(preserved.get('mode1_projection_into_gauge_basis'))}"
+            ),
+            (
+                "B-2 support: sigma_min^2 R2="
+                f"{_c0g_fmt(fit.get('linear_r2'))}, monotone={fit.get('monotone')}; "
+                f"cos_theta range="
+                f"{_c0g_fmt(min(cos_values) if cos_values else None)}.."
+                f"{_c0g_fmt(max(cos_values) if cos_values else None)}; "
+                f"cond(Jb) max/min={_c0g_fmt(step6.get('cond_Jb_max_over_min'))}; "
+                f"ratio growth={_c0g_fmt(step6.get('ratio_growth_factor'))}"
+            ),
+            "Below-fold full-budget convergence ladder:",
+            *(ladder_lines or ["  n/a"]),
+            f"Any state converged below tau_fold: {bool(below_converged)}",
+            (
+                "Source-string fix: FOLD_DISSOLVED branch-continuity accepts "
+                "previous_c0g_gauge_fixed_converged_state and previous_c0_converged_state."
+            ),
+            f"Full-budget dissolve contest: {gate.get('full_budget_dissolve_contest')}",
+            f"Closer-to-fold sampling: {gate.get('closer_sampling')}",
+            f"B-2 verdict: {gate.get('verdict')} ({gate.get('precedence_branch')})",
+            "B-3 was not built; frozen residual/operators/(1/xi)/export/physics remain untouched per scope guard.",
+            f"Files: report={result.get('report_path')}, json={result.get('json_path')}",
+        ]
+    )
+
+
+def run_c0g_build_b1b2(config: C0gBuildB1B2Config | None = None) -> dict[str, Any]:
+    cfg = config or C0gBuildB1B2Config()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    c0f2_payload = _c0g_load_c0f2_payload(C0gConfig(c0f2_json_path=cfg.c0f2_json_path))
+    crawl = _c0g_run_gauge_fixed_polish_crawl(
+        payload=c0f2_payload,
+        config=cfg,
+        dtype=dtype,
+    )
+    proof_row = _c0g_select_proof_row(crawl, proof_tau=float(cfg.proof_tau))
+    proof_tau = float(proof_row["target_tau"])
+    original_row = _c0g_original_row_for_tau(c0f2_payload, proof_tau)
+    with_state = _c0g_state_vector_from_path(proof_row["state_artifact"], dtype=dtype)
+    without_state = _c0g_state_vector_from_path(original_row["state_artifact"], dtype=dtype)
+    b1 = {
+        "method": {
+            "name": "scaled analytic gauge-complement Newton solve",
+            "path_only_coordinates": "row_scale * J_original * col_scale; step = col_scale * Q_perp * z",
+            "acts_in": "solver linear-step coordinates only",
+            "residual_entry_point": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "frozen_residual_modified": False,
+            "faithful_operators_modified": False,
+            "xi_or_grad_div_penalty_modified": False,
+        },
+        "proof_tau": proof_tau,
+        "with_gauge_state_artifact": proof_row.get("state_artifact"),
+        "without_gauge_state_artifact": original_row.get("state_artifact"),
+        "gauge_sector_lift": _c0g_gauge_sector_lift(
+            state=with_state,
+            tau=proof_tau,
+            config=cfg,
+            dtype=dtype,
+        ),
+        "genuine_solve_proof": _c0g_proof_newton_solve_summary(proof_row),
+        "path_only_proof": _c0g_gauge_aligned_path_only_proof(
+            with_state=with_state,
+            without_state=without_state,
+            tau=proof_tau,
+            config=cfg,
+            dtype=dtype,
+        ),
+        "r0_mode_preservation": _c0g_r0_mode_preservation(
+            state=with_state,
+            tau=proof_tau,
+            config=cfg,
+            dtype=dtype,
+        ),
+    }
+    b2 = _c0g_b2_analyze_gauge_fixed_crawl(crawl=crawl, config=cfg, dtype=dtype)
+    gate = _c0g_b2_gate_verdict(crawl=crawl, b2=b2, config=cfg)
+    b2["gate"] = gate
+    b2["full_budget_convergence_ladder"] = _c0g_b2_convergence_ladder(crawl, cfg)
+    result = {
+        "schema": "stage1_pathA_C0g_build_B1B2/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_build_b1b2_config_to_dict(cfg),
+        "B1_gauge_fix": b1,
+        "B2_reconfirm": b2,
+        "scope_guard": {
+            "staged_items_built": ["B-1", "B-2"],
+            "B3_pseudoarclength_built": False,
+            "B4_analytic_sparse_assembly_built": False,
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "prefer_existing_b2c_background_predictor": False,
+            "absolute_cond_gt_1e10_bar_used_for_B2": False,
+        },
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(cfg.report_path)),
+        "json_path": str(_resolve_output_path(cfg.json_path)),
+    }
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_build_b1b2_report(result, report_path)
+    return result
+
+
+def run_c0g_build_b4_then_b2(config: C0gBuildB1B2Config | None = None) -> dict[str, Any]:
+    cfg = config or C0gBuildB1B2Config()
+    started = time.perf_counter()
+    b4 = run_c0g_b4_match_gate(cfg)
+    if b4.get("status") != "PASS":
+        result = {
+            "schema": "stage1_pathA_C0g_build_B4_then_B2/v1",
+            "source_revision": source_revision(),
+            "config": _c0g_build_b1b2_config_to_dict(cfg),
+            "B4_analytic_sparse_jacobian": b4,
+            "B1_gauge_fix": {},
+            "B2_reconfirm": {
+                "gate": {
+                    "verdict": "STILL_INCONCLUSIVE",
+                    "precedence_branch": "B4 match-gate failed; Phase 2 not run",
+                },
+                "full_budget_convergence_ladder": [],
+            },
+            "phase2_ran": False,
+            "phase2_blocked_reason": "B4 match-gate failed",
+            "scope_guard": {
+                "staged_items_built": ["B-4"],
+                "B3_pseudoarclength_built": False,
+                "B4_analytic_sparse_assembly_built": True,
+                "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+                "patha_closed_branch_residual_touched": False,
+                "faithful_operators_touched": False,
+                "xi_or_grad_div_penalty_touched": False,
+                "physical_export_permitted_touched": False,
+                "prefer_existing_b2c_background_predictor": False,
+                "absolute_cond_gt_1e10_bar_used_for_B2": False,
+            },
+            "elapsed_seconds": float(time.perf_counter() - started),
+            "report_path": str(_resolve_output_path(cfg.report_path)),
+            "json_path": str(_resolve_output_path(cfg.json_path)),
+        }
+        json_path = _resolve_output_path(cfg.json_path)
+        report_path = _resolve_output_path(cfg.report_path)
+        _c0g_write_json(json_path, result)
+        write_c0g_build_b1b2_report(result, report_path)
+        return result
+
+    result = run_c0g_build_b1b2(cfg)
+    result["schema"] = "stage1_pathA_C0g_build_B4_then_B2/v1"
+    result["B4_analytic_sparse_jacobian"] = b4
+    result["phase2_ran"] = True
+    result["total_b4_then_b2_elapsed_seconds"] = float(time.perf_counter() - started)
+    scope = dict(result.get("scope_guard", {}))
+    scope["staged_items_built"] = ["B-4", "B-1", "B-2"]
+    scope["B4_analytic_sparse_assembly_built"] = True
+    scope["B3_pseudoarclength_built"] = False
+    result["scope_guard"] = scope
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_build_b1b2_report(result, report_path)
+    return result
+
+
+def _c0g_deep_config_to_dict(config: C0gDeepCrawlConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in ("prior_b1b2_json_path", "prior_crawl_json_path", "run_root", "report_path", "json_path"):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_deep_build_config(config: C0gDeepCrawlConfig) -> C0gBuildB1B2Config:
+    return C0gBuildB1B2Config(
+        run_root=config.run_root / "gauge_fixed",
+        report_path=config.report_path,
+        json_path=config.json_path,
+        grid=config.grid,
+        b2_depth_sequence=tuple(float(tau) for tau in config.target_taus),
+        tau_fold_reference=float(config.tau_fold_reference),
+        max_tau_backtracks=int(config.max_tau_backtracks),
+        min_tau_backtrack_delta=float(config.min_tau_backtrack_delta),
+        max_newton_iters_override=config.max_newton_iters_override,
+        jacobian_assembly=config.jacobian_assembly,
+        b4_reference_tau=float(config.b4_reference_tau),
+        b4_random_probe_count=int(config.b4_random_probe_count),
+        b4_random_seed=int(config.b4_random_seed),
+        b4_match_abs_tol=float(config.b4_match_abs_tol),
+        b4_match_rel_tol=float(config.b4_match_rel_tol),
+    )
+
+
+def _c0g_deep_diag_config(
+    config: C0gDeepCrawlConfig,
+    *,
+    converged_taus: Sequence[float],
+) -> C0gConfig:
+    return C0gConfig(
+        run_root=config.run_root / "diagnostics",
+        report_path=config.report_path,
+        json_path=config.run_root / "diagnostics" / "pathA_C0g_deepcrawl_diagnostics.json",
+        final_json_path=config.run_root / "diagnostics" / "pathA_C0g_deepcrawl_diagnostics_final.json",
+        grid=config.grid,
+        converged_taus=tuple(float(tau) for tau in converged_taus),
+        stalled_tau=float(config.tau_fold_reference),
+        fit_good_r2_threshold=0.95,
+        jacobian_assembly=config.jacobian_assembly,
+    )
+
+
+def _c0g_load_json_path(path: Path) -> dict[str, Any]:
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def _c0g_deep_existing_result(config: C0gDeepCrawlConfig) -> dict[str, Any] | None:
+    path = _resolve_input_path(config.json_path)
+    if not path.exists():
+        return None
+    return _c0g_load_json_path(path)
+
+
+def _c0g_deep_prior_measurement_path(config: C0gDeepCrawlConfig, tau: float) -> Path:
+    prior_json = _resolve_input_path(config.prior_b1b2_json_path)
+    return (
+        prior_json.parent
+        / "b2_reconfirm"
+        / "state_measurements"
+        / f"c0g_state_tau_{_format_tau(float(tau))}.json"
+    )
+
+
+def _c0g_deep_seed_rows(config: C0gDeepCrawlConfig) -> list[dict[str, Any]]:
+    prior_crawl_path = _resolve_input_path(config.prior_crawl_json_path)
+    prior_crawl = _c0g_load_json_path(prior_crawl_path)
+    converged = [
+        dict(row)
+        for row in prior_crawl.get("tau_attempts", [])
+        if bool(row.get("final_physical_converged"))
+        and float(row.get("target_tau", math.inf)) < float(config.tau_fold_reference)
+    ]
+    converged = sorted(converged, key=lambda row: float(row["target_tau"]), reverse=True)
+    if not converged:
+        converged = sorted(
+            [
+                dict(row)
+                for row in prior_crawl.get("tau_attempts", [])
+                if bool(row.get("final_physical_converged"))
+            ],
+            key=lambda row: float(row["target_tau"]),
+            reverse=True,
+        )[-1:]
+    seeds: list[dict[str, Any]] = []
+    for index, row in enumerate(converged):
+        tau = float(row["target_tau"])
+        seed = dict(row)
+        seed["deepcrawl_role"] = "below_fold_seed"
+        seed["deepcrawl_source"] = str(prior_crawl_path)
+        seed["measurement_status"] = seed.get("measurement_status", "MEASURED")
+        seed["attempt_index"] = int(seed.get("attempt_index", index))
+        seed["full_newton_budget"] = seed.get("max_newton_iters_override") in (None, 0)
+        seed["prior_state_measurement_path"] = str(_c0g_deep_prior_measurement_path(config, tau))
+        seeds.append(_c0g_deep_apply_single_arbiter(seed))
+    return seeds
+
+
+def _c0g_deep_apply_single_arbiter(row: Mapping[str, Any]) -> dict[str, Any]:
+    updated = dict(row)
+    try:
+        residual = float(updated.get("final_original_residual_linf", math.inf))
+    except (TypeError, ValueError):
+        residual = math.inf
+    if math.isfinite(residual):
+        physical_converged = bool(residual <= BACKGROUND_RESIDUAL_TOL)
+        previous = bool(updated.get("final_physical_converged"))
+        updated["stage_converged"] = physical_converged
+        updated["final_physical_converged"] = physical_converged
+        updated["single_arbiter_original_residual_linf_tol"] = BACKGROUND_RESIDUAL_TOL
+        if physical_converged and not previous:
+            updated["single_arbiter_convergence_override"] = (
+                "accepted because original residual Linf is within BACKGROUND_RESIDUAL_TOL; "
+                "internal Newton tolerance is tighter and is not the physical arbiter"
+            )
+    return updated
+
+
+def _c0g_deep_converged_rows(rows: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    converged: list[dict[str, Any]] = []
+    for row in rows:
+        updated = _c0g_deep_apply_single_arbiter(row)
+        if (
+            bool(updated.get("final_physical_converged"))
+            and updated.get("measurement_status", "MEASURED") == "MEASURED"
+        ):
+            converged.append(updated)
+    return converged
+
+
+def _c0g_deep_deepest_converged_row(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any] | None:
+    normalized_rows = [_c0g_deep_apply_single_arbiter(row) for row in rows]
+    converged = _c0g_deep_converged_rows(normalized_rows)
+    if not converged:
+        return None
+    return min(converged, key=lambda row: float(row["target_tau"]))
+
+
+def _c0g_deep_has_converged_tau(rows: Sequence[Mapping[str, Any]], tau: float) -> bool:
+    return any(
+        bool(row.get("final_physical_converged"))
+        and _c0g_tau_close(float(row.get("target_tau", math.nan)), float(tau))
+        for row in rows
+    )
+
+
+def _c0g_deep_state_measurement(
+    *,
+    row: Mapping[str, Any],
+    config: C0gDeepCrawlConfig,
+    diag_config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tau = float(row["target_tau"])
+    local_path = _c0g_state_json_path(diag_config, tau=tau)
+    if local_path.exists():
+        return _c0g_load_json_path(local_path)
+    prior_path_text = str(row.get("prior_state_measurement_path", ""))
+    prior_path = Path(prior_path_text) if prior_path_text else None
+    if prior_path is not None and prior_path.is_file():
+        measured = _c0g_load_json_path(prior_path)
+        measured["reused_prior_b2_measurement"] = True
+        measured["reused_prior_b2_measurement_path"] = str(prior_path)
+        _c0g_write_state_result(diag_config, measured)
+        return measured
+    measured = _c0g_analyze_state(
+        tau=tau,
+        row=row,
+        config=diag_config,
+        dtype=dtype,
+        include_step0=False,
+        compute_ftau=True,
+    )
+    measured["reused_prior_b2_measurement"] = False
+    _c0g_write_state_result(diag_config, measured)
+    return measured
+
+
+def _c0g_deep_admissibility_for_row(
+    *,
+    row: Mapping[str, Any],
+    config: C0gDeepCrawlConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tau = float(row["target_tau"])
+    state_path = _resolve_input_path(str(row["state_artifact"]))
+    state = _load_state_artifact(state_path, dtype=dtype)
+    branch, provider, grid, boundaries = _branch_context(
+        tau=tau,
+        config=C0Config(
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            max_newton_iters_override=config.max_newton_iters_override,
+        ),
+        dtype=dtype,
+    )
+    eos_K = float(branch.continuation_K_values[-1])
+    original = patha_closed_branch_residual(
+        state,
+        grid,
+        branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=provider,
+    ).detach()
+    conditioned = c0_preconditioner_residual(
+        state,
+        grid,
+        branch,
+        eos_K=eos_K,
+        boundaries=boundaries,
+        s_sigma=provider,
+        aid=C0AidParameters(core_epsilon=0.0, k1_radius_epsilon=0.0),
+    ).detach()
+    metrics = _state_metrics(state, grid)
+    residual_linf = float(torch.max(torch.abs(original)).detach().cpu().item())
+    residual_equal_max_abs = float(torch.max(torch.abs(original - conditioned)).detach().cpu().item())
+    min_rho = float(metrics["min_rho"])
+    min_r0 = float(metrics["min_R0"])
+    positive_density = bool(math.isfinite(min_rho) and min_rho > 0.0)
+    sane_r0 = bool(math.isfinite(min_r0) and min_r0 > 0.0)
+    residual_ok = bool(residual_linf <= BACKGROUND_RESIDUAL_TOL)
+    residual_equivalent = bool(residual_equal_max_abs <= float(config.residual_equality_tolerance))
+    final_aids_inactive = bool(row.get("floor_activation", {}).get("final_aids_inactive", True))
+    epsilon_independent = bool(final_aids_inactive and residual_equivalent)
+    status = "PASS" if positive_density and sane_r0 and residual_ok and epsilon_independent else "FAIL"
+    return {
+        "status": status,
+        "tau": tau,
+        "positive_density_status": "PASS" if positive_density else "FAIL",
+        "min_rho": min_rho,
+        "sane_min_R0_status": "PASS" if sane_r0 else "FAIL",
+        "min_R0": min_r0,
+        "residual_linf": residual_linf,
+        "residual_tolerance": BACKGROUND_RESIDUAL_TOL,
+        "original_residual_status": "PASS" if residual_ok else "FAIL",
+        "epsilon_independence_status": "PASS" if epsilon_independent else "FAIL",
+        "final_aids_inactive": final_aids_inactive,
+        "zero_aid_residual_equivalence_max_abs": residual_equal_max_abs,
+        "zero_aid_residual_equivalence_tolerance": float(config.residual_equality_tolerance),
+        "metrics": metrics,
+        "state_artifact": str(state_path),
+    }
+
+
+def _c0g_deep_monotone_summary(values: Sequence[float]) -> dict[str, Any]:
+    finite = [float(value) for value in values if math.isfinite(float(value))]
+    if len(finite) < 2:
+        return {"status": "NOT_MEASURED", "direction": None}
+    scale = max(max(abs(value) for value in finite), 1.0)
+    tol = 1.0e-8 * scale
+    nondecreasing = all(right >= left - tol for left, right in zip(finite, finite[1:]))
+    nonincreasing = all(right <= left + tol for left, right in zip(finite, finite[1:]))
+    if nondecreasing and not nonincreasing:
+        direction = "nondecreasing_as_tau_decreases"
+    elif nonincreasing and not nondecreasing:
+        direction = "nonincreasing_as_tau_decreases"
+    elif nondecreasing and nonincreasing:
+        direction = "flat_within_tolerance"
+    else:
+        direction = "nonmonotone"
+    return {
+        "status": "PASS" if direction != "nonmonotone" else "FAIL",
+        "direction": direction,
+        "first": finite[0],
+        "last": finite[-1],
+        "delta": float(finite[-1] - finite[0]),
+        "tolerance": tol,
+    }
+
+
+def _c0g_deep_branch_tangent(rows: Sequence[Mapping[str, Any]], *, dtype: torch.dtype) -> dict[str, Any]:
+    converged = sorted(_c0g_deep_converged_rows(rows), key=lambda row: float(row["target_tau"]), reverse=True)
+    if len(converged) < 3:
+        return {"status": "NOT_MEASURED", "rows": [], "aggregate_call": "TOO_FEW_STATES"}
+    states: list[np.ndarray] = []
+    for row in converged:
+        state = _load_state_artifact(_resolve_input_path(str(row["state_artifact"])), dtype=dtype)
+        states.append(state.detach().cpu().numpy().astype(np.float64, copy=False))
+    tangent_rows: list[dict[str, Any]] = []
+    previous_delta: np.ndarray | None = None
+    for index in range(1, len(converged)):
+        delta = states[index] - states[index - 1]
+        if previous_delta is None:
+            previous_delta = delta
+            continue
+        denom = float(np.linalg.norm(delta) * np.linalg.norm(previous_delta))
+        overlap = float(np.dot(delta, previous_delta) / denom) if denom > 0.0 else math.nan
+        if math.isfinite(overlap) and overlap < 0.0:
+            call = "TANGENT_REVERSAL"
+        elif math.isfinite(overlap) and overlap > 0.5:
+            call = "SAME_TANGENT_DIRECTION"
+        elif math.isfinite(overlap):
+            call = "TANGENT_GRAY"
+        else:
+            call = "NOT_MEASURED"
+        tangent_rows.append(
+            {
+                "tau_left": float(converged[index - 1]["target_tau"]),
+                "tau": float(converged[index]["target_tau"]),
+                "tangent_cosine_vs_previous": overlap,
+                "call": call,
+            }
+        )
+        previous_delta = delta
+    calls = {row["call"] for row in tangent_rows}
+    aggregate = "TANGENT_REVERSAL" if "TANGENT_REVERSAL" in calls else "NO_TANGENT_REVERSAL"
+    return {"status": "MEASURED", "rows": tangent_rows, "aggregate_call": aggregate}
+
+
+def _c0g_deep_ladder_rows(
+    rows: Sequence[Mapping[str, Any]],
+    state_results: Sequence[Mapping[str, Any]],
+    admissibility_rows: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    sigma_by_tau = {
+        float(row["tau"]): row.get("svd", {}).get("sigma_min")
+        for row in state_results
+        if "tau" in row
+    }
+    admiss_by_tau = {float(row["tau"]): row for row in admissibility_rows if "tau" in row}
+    ladder = []
+    for raw_row in sorted(rows, key=lambda item: float(item["target_tau"]), reverse=True):
+        row = _c0g_deep_apply_single_arbiter(raw_row)
+        if float(row.get("target_tau", math.inf)) >= 0.0291233:
+            continue
+        metrics = dict(row.get("metrics", {}))
+        adm = admiss_by_tau.get(float(row["target_tau"]), {})
+        if adm.get("metrics"):
+            metrics = dict(adm["metrics"])
+        ladder.append(
+            {
+                "tau": float(row["target_tau"]),
+                "nominal_tau": row.get("nominal_target_tau"),
+                "role": row.get("deepcrawl_role"),
+                "converged": bool(row.get("final_physical_converged")),
+                "residual_linf": row.get("final_original_residual_linf") or adm.get("residual_linf"),
+                "newton_iters": _c0g_attempt_newton_iterations(row),
+                "newton_iters_total": _c0g_attempt_total_newton_iterations(row),
+                "backtracks": int(row.get("backtrack_index", 0)),
+                "wall_seconds": row.get("elapsed_seconds"),
+                "min_R0": metrics.get("min_R0"),
+                "min_rho": metrics.get("min_rho"),
+                "mu": metrics.get("chemical_potential"),
+                "sigma_min_JQ_perp": sigma_by_tau.get(float(row["target_tau"])),
+                "admissibility": adm.get("status") if adm else None,
+                "init_source": row.get("init", {}).get("source"),
+                "measurement_status": row.get("measurement_status", "MEASURED"),
+            }
+        )
+    return ladder
+
+
+def _c0g_deep_verdict(
+    *,
+    rows: Sequence[Mapping[str, Any]],
+    ladder: Sequence[Mapping[str, Any]],
+    state_results: Sequence[Mapping[str, Any]],
+    admissibility_rows: Sequence[Mapping[str, Any]],
+    sigma_fit: Mapping[str, Any],
+    tangent: Mapping[str, Any],
+    config: C0gDeepCrawlConfig,
+) -> dict[str, Any]:
+    normalized_rows = [_c0g_deep_apply_single_arbiter(row) for row in rows]
+    new_converged = [
+        row
+        for row in normalized_rows
+        if row.get("deepcrawl_role") == "deep_crawl_attempt"
+        and bool(row.get("final_physical_converged"))
+        and float(row.get("final_original_residual_linf", math.inf)) <= BACKGROUND_RESIDUAL_TOL
+    ]
+    admiss_by_tau = {float(row["tau"]): row for row in admissibility_rows if "tau" in row}
+    all_converged_below = [
+        row
+        for row in normalized_rows
+        if bool(row.get("final_physical_converged"))
+        and float(row.get("target_tau", math.inf)) < float(config.tau_fold_reference)
+    ]
+    all_admissible = all(
+        admiss_by_tau.get(float(row["target_tau"]), {}).get("status") == "PASS"
+        for row in all_converged_below
+    )
+    sigmas = [
+        float(state.get("svd", {}).get("sigma_min", math.nan))
+        for state in state_results
+        if state.get("svd", {}).get("status") == "MEASURED"
+    ]
+    sigma_finite = bool(
+        sigmas
+        and all(math.isfinite(value) and value > float(config.sigma_finite_floor) for value in sigmas)
+    )
+    sigma_collapse_factor = (
+        float(sigmas[0] / min(sigmas))
+        if sigmas and min(sigmas) > 0.0 and math.isfinite(sigmas[0])
+        else math.nan
+    )
+    sigma_collapsing = bool(math.isfinite(sigma_collapse_factor) and sigma_collapse_factor >= 10.0)
+    guard = _crawl_persistent_failure_guard(
+        normalized_rows,
+        _c0g_deep_config_to_dict(config),
+        failed_attempt_predicate=lambda row: (
+            row.get("deepcrawl_role") == "deep_crawl_attempt"
+            and row.get("measurement_status", "MEASURED") == "MEASURED"
+            and not bool(_c0g_deep_apply_single_arbiter(row).get("final_physical_converged"))
+        ),
+    )
+    r0_trend = _c0g_deep_monotone_summary([row.get("min_R0", math.nan) for row in ladder])
+    mu_trend = _c0g_deep_monotone_summary([row.get("mu", math.nan) for row in ladder])
+    fit_linear = sigma_fit.get("linear", {}) if isinstance(sigma_fit, Mapping) else {}
+    fold_fit_support = bool(
+        sigma_fit.get("call") == "LINEAR_MONOTONE_FOLD_SUPPORT"
+        and math.isfinite(float(fit_linear.get("r2", math.nan)))
+        and float(fit_linear.get("r2", math.nan)) >= 0.95
+    )
+    tangent_reversal = tangent.get("aggregate_call") == "TANGENT_REVERSAL"
+    real_fold = bool(
+        guard.get("crawl_persistent_failure_evidence")
+        and fold_fit_support
+        and sigma_collapsing
+        and tangent_reversal
+    )
+    no_fold_locked = bool(
+        len(new_converged) >= int(config.no_fold_required_new_converged)
+        and all_admissible
+        and sigma_finite
+        and not sigma_collapsing
+        and r0_trend.get("status") == "PASS"
+        and mu_trend.get("status") == "PASS"
+        and not guard.get("crawl_persistent_failure_evidence")
+    )
+    if real_fold:
+        verdict = "REAL_FOLD_DEEPER"
+        why = (
+            "persistent full-budget failure plus linear-monotone sigma_min^2 support "
+            "and branch tangent reversal"
+        )
+    elif no_fold_locked:
+        verdict = "NO_FOLD_LOCKED"
+        why = (
+            f"{len(new_converged)} new branch-continuous deeper states converged below "
+            f"tau_fold with admissibility PASS and finite sigma_min(J*Q_perp)"
+        )
+    else:
+        verdict = "STILL_GOING"
+        why = "deeper crawl did not meet the strict no-fold or real-fold criteria"
+    deepest = min((float(row["target_tau"]) for row in all_converged_below), default=None)
+    margin = None if deepest is None else float(config.tau_fold_reference) - deepest
+    return {
+        "verdict": verdict,
+        "why": why,
+        "tau_fold_reference": float(config.tau_fold_reference),
+        "deepest_converged_tau": deepest,
+        "deepest_margin_past_tau_fold": margin,
+        "new_deep_converged_count": int(len(new_converged)),
+        "required_new_deep_converged_count": int(config.no_fold_required_new_converged),
+        "all_converged_below_admissible": bool(all_admissible),
+        "sigma_min_finite": bool(sigma_finite),
+        "sigma_min_finite_floor": float(config.sigma_finite_floor),
+        "sigma_min_min": min(sigmas) if sigmas else None,
+        "sigma_min_collapse_factor": sigma_collapse_factor,
+        "sigma_min_collapsing_toward_zero": sigma_collapsing,
+        "sigma_fit_supports_fold": bool(fold_fit_support),
+        "branch_tangent_reversal": bool(tangent_reversal),
+        "r0_trend": r0_trend,
+        "mu_trend": mu_trend,
+        "persistent_failure_guard": {
+            key: value for key, value in guard.items() if key != "failed_attempts"
+        },
+        "failed_attempts": [
+            {
+                "tau": row.get("target_tau"),
+                "nominal_tau": row.get("nominal_target_tau"),
+                "residual_linf": row.get("final_original_residual_linf"),
+                "backtrack_index": row.get("backtrack_index"),
+                "newton_iters": _c0g_attempt_newton_iterations(row),
+                "message": row.get("message"),
+            }
+            for row in guard.get("failed_attempts", [])
+        ],
+    }
+
+
+def _c0g_deep_empty_core_summary(ladder: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    converged = [row for row in ladder if bool(row.get("converged"))]
+    if not converged:
+        return {"status": "NOT_MEASURED"}
+    first = converged[0]
+    deepest = converged[-1]
+    min_r0_first = float(first.get("min_R0", math.nan))
+    min_r0_deep = float(deepest.get("min_R0", math.nan))
+    min_rho_first = float(first.get("min_rho", math.nan))
+    min_rho_deep = float(deepest.get("min_rho", math.nan))
+    approached = bool(
+        math.isfinite(min_r0_first)
+        and math.isfinite(min_r0_deep)
+        and math.isfinite(min_rho_first)
+        and math.isfinite(min_rho_deep)
+        and (min_r0_deep < min_r0_first or min_rho_deep < min_rho_first)
+    )
+    return {
+        "status": "MEASURED",
+        "first_tau": first.get("tau"),
+        "deepest_tau": deepest.get("tau"),
+        "first_min_R0": min_r0_first,
+        "deepest_min_R0": min_r0_deep,
+        "first_min_rho": min_rho_first,
+        "deepest_min_rho": min_rho_deep,
+        "approached_small_core_regime": approached,
+        "deepest_solvable": bool(deepest.get("converged") and deepest.get("admissibility") == "PASS"),
+        "interpretation": (
+            "min_R0/min_rho moved toward smaller-core values"
+            if approached
+            else "min_R0/min_rho did not move toward the small-core regime over this ladder"
+        ),
+    }
+
+
+def _c0g_deep_finalize(
+    *,
+    rows: Sequence[Mapping[str, Any]],
+    config: C0gDeepCrawlConfig,
+    b4_reconfirm: Mapping[str, Any],
+    dtype: torch.dtype,
+    started: float,
+    chunk_note: str | None,
+) -> dict[str, Any]:
+    normalized_rows = [_c0g_deep_apply_single_arbiter(row) for row in rows]
+    converged = _c0g_deep_converged_rows(normalized_rows)
+    converged_taus = sorted([float(row["target_tau"]) for row in converged], reverse=True)
+    diag_config = _c0g_deep_diag_config(config, converged_taus=converged_taus)
+    state_results = [
+        _c0g_deep_state_measurement(
+            row=row,
+            config=config,
+            diag_config=diag_config,
+            dtype=dtype,
+        )
+        for row in converged
+        if float(row.get("target_tau", math.inf)) < float(config.tau_fold_reference)
+    ]
+    admissibility_rows = [
+        _c0g_deep_admissibility_for_row(row=row, config=config, dtype=dtype)
+        for row in converged
+        if float(row.get("target_tau", math.inf)) < float(config.tau_fold_reference)
+    ]
+    sigma_fit = _c0g_fit_sigma_min_squared(state_results, config=diag_config)
+    tangent = _c0g_deep_branch_tangent(converged, dtype=dtype)
+    ladder = _c0g_deep_ladder_rows(normalized_rows, state_results, admissibility_rows)
+    verdict = _c0g_deep_verdict(
+        rows=normalized_rows,
+        ladder=ladder,
+        state_results=state_results,
+        admissibility_rows=admissibility_rows,
+        sigma_fit=sigma_fit,
+        tangent=tangent,
+        config=config,
+    )
+    empty_core = _c0g_deep_empty_core_summary(ladder)
+    admiss_failures = [row for row in admissibility_rows if row.get("status") != "PASS"]
+    result = {
+        "schema": "stage1_pathA_C0g_deepcrawl/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_deep_config_to_dict(config),
+        "b4_reconfirm": dict(b4_reconfirm),
+        "prior_b2_result": _c0g_deep_prior_summary(config),
+        "rows": [dict(row) for row in normalized_rows],
+        "ladder": ladder,
+        "state_results": state_results,
+        "sigma_min_squared_fit": sigma_fit,
+        "branch_tangent": tangent,
+        "admissibility": {
+            "status": "PASS" if not admiss_failures and admissibility_rows else "FAIL",
+            "rows": admissibility_rows,
+            "failing_taus": [row.get("tau") for row in admiss_failures],
+        },
+        "empty_core_summary": empty_core,
+        "work1_verdict": verdict,
+        "scope_guard": {
+            "B3_pseudoarclength_built": False,
+            "B4_analytic_sparse_assembly_built": True,
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "prefer_existing_b2c_background_predictor": False,
+            "frozen_physics_touched": False,
+        },
+        "chunk_note": chunk_note,
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(config.report_path)),
+        "json_path": str(_resolve_output_path(config.json_path)),
+    }
+    _c0g_write_json(_resolve_output_path(config.json_path), result)
+    write_c0g_deepcrawl_report(result, _resolve_output_path(config.report_path))
+    return result
+
+
+def _c0g_deep_prior_summary(config: C0gDeepCrawlConfig) -> dict[str, Any]:
+    path = _resolve_input_path(config.prior_b1b2_json_path)
+    if not path.exists():
+        return {"status": "NOT_FOUND", "path": str(path)}
+    payload = _c0g_load_json_path(path)
+    return {
+        "status": "MEASURED",
+        "path": str(path),
+        "b4_status": payload.get("B4_analytic_sparse_jacobian", {}).get("status"),
+        "b2_verdict": payload.get("B2_reconfirm", {}).get("gate", {}).get("verdict"),
+        "scope_guard": payload.get("scope_guard", {}),
+    }
+
+
+def write_c0g_deepcrawl_report(result: Mapping[str, Any], path: Path) -> None:
+    verdict = result.get("work1_verdict", {})
+    b4 = result.get("b4_reconfirm", {})
+    admissibility = result.get("admissibility", {})
+    empty_core = result.get("empty_core_summary", {})
+    fit = result.get("sigma_min_squared_fit", {})
+    fit_linear = fit.get("linear", {}) if isinstance(fit, Mapping) else {}
+    lines = [
+        "# Path-A C0g Deeper Crawl",
+        "",
+        f"Work-1 verdict: **{verdict.get('verdict')}**",
+        "",
+        "## Scope",
+        "",
+        "- Continuation is gauge-fixed and path-only: `row_scale * J_original * col_scale`, step constrained to `Q_perp`.",
+        "- The original `patha_closed_branch_residual` is the sole convergence arbiter at `Linf <= 1e-6`.",
+        "- B-3 pseudo-arclength was not built.",
+        "- Frozen residual/operators/`(1/xi)` penalty/export/physics are not edited by this runner.",
+        "",
+        "## B-4 Reconfirm",
+        "",
+        "```yaml",
+        f"status: {b4.get('status')}",
+        f"reference_tau: {b4.get('reference_tau')}",
+        f"assembly_speedup_x: {b4.get('assembly_speedup_x')}",
+        f"tolerances: {b4.get('match_tolerances')}",
+        "```",
+        "",
+        "## Deeper Ladder",
+        "",
+        _markdown_table(
+            [
+                "tau",
+                "converged",
+                "residual_linf",
+                "newton_iters",
+                "backtracks",
+                "wall_seconds",
+                "min_R0",
+                "min_rho",
+                "mu",
+                "sigma_min_JQ_perp",
+                "admissibility",
+            ],
+            result.get("ladder", []),
+        ),
+        "",
+        "## Sigma Trend",
+        "",
+        "```yaml",
+        f"status: {fit.get('status') if isinstance(fit, Mapping) else None}",
+        f"call: {fit.get('call') if isinstance(fit, Mapping) else None}",
+        f"linear_r2: {fit_linear.get('r2')}",
+        f"linear_slope: {fit_linear.get('slope')}",
+        f"tau_fold_zero_crossing: {fit_linear.get('tau_fold_zero_crossing')}",
+        f"monotone_toward_stall: {fit.get('sigma_min_monotone_decreasing_toward_stall') if isinstance(fit, Mapping) else None}",
+        f"branch_tangent: {result.get('branch_tangent', {}).get('aggregate_call')}",
+        "```",
+        "",
+        "## Verdict Support",
+        "",
+        "```yaml",
+        f"{verdict}",
+        "```",
+        "",
+        "## Admissibility",
+        "",
+        f"Overall: **{admissibility.get('status')}**",
+        "",
+        _markdown_table(
+            [
+                "tau",
+                "status",
+                "positive_density_status",
+                "min_rho",
+                "sane_min_R0_status",
+                "min_R0",
+                "residual_linf",
+                "epsilon_independence_status",
+                "zero_aid_residual_equivalence_max_abs",
+            ],
+            admissibility.get("rows", []),
+        ),
+        "",
+        "## Empty-Core Target",
+        "",
+        "```yaml",
+        f"{empty_core}",
+        "```",
+        "",
+        "## Scope Guard",
+        "",
+        "```yaml",
+    ]
+    for key, value in result.get("scope_guard", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.extend(
+        [
+            "```",
+            "",
+            f"Machine JSON: `{result.get('json_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0g_deep_stdout_summary(result: Mapping[str, Any]) -> str:
+    verdict = result.get("work1_verdict", {})
+    ladder_lines = []
+    for row in result.get("ladder", []):
+        ladder_lines.append(
+            (
+                "  tau={tau}, converged={conv}, residual={resid}, iters={iters}, "
+                "min_R0={r0}, min_rho={rho}, sigma_min(JQ_perp)={sigma}, admissibility={adm}"
+            ).format(
+                tau=_c0g_fmt(row.get("tau")),
+                conv=row.get("converged"),
+                resid=_c0g_fmt(row.get("residual_linf")),
+                iters=row.get("newton_iters"),
+                r0=_c0g_fmt(row.get("min_R0")),
+                rho=_c0g_fmt(row.get("min_rho")),
+                sigma=_c0g_fmt(row.get("sigma_min_JQ_perp")),
+                adm=row.get("admissibility"),
+            )
+        )
+    admiss = result.get("admissibility", {})
+    empty = result.get("empty_core_summary", {})
+    scope = result.get("scope_guard", {})
+    return "\n".join(
+        [
+            "C0g deeper-crawl summary:",
+            "Deeper convergence ladder:",
+            *(ladder_lines or ["  n/a"]),
+            f"Deepest margin past tau_fold: {_c0g_fmt(verdict.get('deepest_margin_past_tau_fold'))}",
+            (
+                "sigma_min(JQ_perp): "
+                f"finite={verdict.get('sigma_min_finite')}, "
+                f"min={_c0g_fmt(verdict.get('sigma_min_min'))}, "
+                f"collapse_factor={_c0g_fmt(verdict.get('sigma_min_collapse_factor'))}, "
+                f"collapsing={verdict.get('sigma_min_collapsing_toward_zero')}, "
+                f"fit_call={result.get('sigma_min_squared_fit', {}).get('call')}"
+            ),
+            f"Work-1 verdict: {verdict.get('verdict')} - {verdict.get('why')}",
+            (
+                "Admissibility: "
+                f"{admiss.get('status')}; failing_taus={admiss.get('failing_taus')}"
+            ),
+            (
+                "Empty-core target: "
+                f"approached={empty.get('approached_small_core_regime')}, "
+                f"deepest_solvable={empty.get('deepest_solvable')}, "
+                f"deepest_min_R0={_c0g_fmt(empty.get('deepest_min_R0'))}, "
+                f"deepest_min_rho={_c0g_fmt(empty.get('deepest_min_rho'))}"
+            ),
+            (
+                "Scope: B-3 built="
+                f"{scope.get('B3_pseudoarclength_built')}; frozen residual/operators/"
+                f"(1/xi)/export/physics touched="
+                f"{scope.get('patha_closed_branch_residual_touched')}/"
+                f"{scope.get('faithful_operators_touched')}/"
+                f"{scope.get('xi_or_grad_div_penalty_touched')}/"
+                f"{scope.get('physical_export_permitted_touched')}/"
+                f"{scope.get('frozen_physics_touched')}"
+            ),
+            f"Files: report={result.get('report_path')}, json={result.get('json_path')}",
+        ]
+    )
+
+
+def run_c0g_deepcrawl(
+    config: C0gDeepCrawlConfig | None = None,
+    *,
+    max_new_states: int = 1,
+    finalize_only: bool = False,
+    b4_recheck: bool = True,
+) -> dict[str, Any]:
+    cfg = config or C0gDeepCrawlConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    existing = _c0g_deep_existing_result(cfg)
+    if existing is None:
+        rows: list[dict[str, Any]] = _c0g_deep_seed_rows(cfg)
+        b4_reconfirm: Mapping[str, Any]
+        if b4_recheck:
+            b4_reconfirm = run_c0g_b4_match_gate(_c0g_deep_build_config(cfg))
+        else:
+            prior = _c0g_deep_prior_summary(cfg)
+            b4_reconfirm = {"status": prior.get("b4_status"), "source": prior.get("path")}
+    else:
+        rows = [_c0g_deep_apply_single_arbiter(row) for row in existing.get("rows", [])]
+        b4_reconfirm = existing.get("b4_reconfirm", {})
+        if b4_recheck and b4_reconfirm.get("status") != "PASS":
+            b4_reconfirm = run_c0g_b4_match_gate(_c0g_deep_build_config(cfg))
+
+    if b4_reconfirm.get("status") != "PASS":
+        return _c0g_deep_finalize(
+            rows=rows,
+            config=cfg,
+            b4_reconfirm=b4_reconfirm,
+            dtype=dtype,
+            started=started,
+            chunk_note="B4 match gate did not pass; no deeper continuation attempted",
+        )
+
+    build_cfg = _c0g_deep_build_config(cfg)
+    new_states = 0
+    stopped_note: str | None = None
+    if not finalize_only and int(max_new_states) != 0:
+        deepest = _c0g_deep_deepest_converged_row(rows)
+        if deepest is None:
+            raise RuntimeError("deep crawl has no prior converged state to warm-start from")
+        last_tau = float(deepest["target_tau"])
+        last_state = _c0g_state_vector_from_path(str(deepest["state_artifact"]), dtype=dtype)
+        prior_converged = sorted(
+            _c0g_deep_converged_rows(rows),
+            key=lambda row: float(row["target_tau"]),
+        )
+        previous_row = prior_converged[1] if len(prior_converged) >= 2 else None
+        previous_tau = float(previous_row["target_tau"]) if previous_row is not None else None
+        previous_state = (
+            _c0g_state_vector_from_path(str(previous_row["state_artifact"]), dtype=dtype)
+            if previous_row is not None
+            else None
+        )
+        previous_grid = None
+        if previous_tau is not None:
+            _branch, _provider, previous_grid, _boundaries = _branch_context(
+                tau=previous_tau,
+                config=C0Config(grid=cfg.grid, jacobian_assembly=cfg.jacobian_assembly),
+                dtype=dtype,
+            )
+        branch, _provider, last_grid, _boundaries = _branch_context(
+            tau=last_tau,
+            config=C0Config(grid=cfg.grid, jacobian_assembly=cfg.jacobian_assembly),
+            dtype=dtype,
+        )
+        del branch
+        for nominal_tau in cfg.target_taus:
+            nominal_tau = float(nominal_tau)
+            if new_states >= int(max_new_states):
+                break
+            if nominal_tau >= last_tau - 5.0e-13 or _c0g_deep_has_converged_tau(rows, nominal_tau):
+                continue
+            start_tau = last_tau
+            full_delta = nominal_tau - start_tau
+            target_tau = nominal_tau
+            backtrack_index = 0
+            converged_this_nominal = False
+            while True:
+                branch, _provider, target_grid, _boundaries = _branch_context(
+                    tau=float(target_tau),
+                    config=C0Config(grid=cfg.grid, jacobian_assembly=cfg.jacobian_assembly),
+                    dtype=dtype,
+                )
+                last_resampled = resample_closed_branch_state(
+                    last_state.detach().clone(),
+                    last_grid,
+                    target_grid,
+                    branch,
+                )
+                secant_predictor: dict[str, Any] = {"status": "NOT_USED", "reason": "missing_previous_state"}
+                x0 = last_resampled
+                if (
+                    previous_state is not None
+                    and previous_grid is not None
+                    and previous_tau is not None
+                    and abs(float(last_tau) - float(previous_tau)) > 1.0e-15
+                ):
+                    previous_resampled = resample_closed_branch_state(
+                        previous_state.detach().clone(),
+                        previous_grid,
+                        target_grid,
+                        branch,
+                    )
+                    factor = (float(target_tau) - float(last_tau)) / (
+                        float(last_tau) - float(previous_tau)
+                    )
+                    x0 = last_resampled + float(factor) * (last_resampled - previous_resampled)
+                    secant_predictor = {
+                        "status": "USED",
+                        "previous_tau": previous_tau,
+                        "last_tau": last_tau,
+                        "target_tau": float(target_tau),
+                        "extrapolation_factor": float(factor),
+                    }
+                x0, predictor = _apply_c0_wall_predictor(
+                    state=x0,
+                    grid=target_grid,
+                    tau=float(target_tau),
+                    grid_level=cfg.grid,
+                )
+                row, final_state, final_grid = _c0g_single_gauge_fixed_attempt(
+                    x0=x0,
+                    tau=float(target_tau),
+                    config=build_cfg,
+                    dtype=dtype,
+                    attempt_index=len(rows),
+                    start_from_tau=start_tau,
+                    init={
+                        "source": "previous_c0g_gauge_fixed_converged_state",
+                        "previous_tau": last_tau,
+                        "previous_state_artifact": deepest.get("state_artifact"),
+                        "secant_predictor": secant_predictor,
+                        "wall_predictor": predictor,
+                    },
+                    max_newton_iters=cfg.max_newton_iters_override,
+                )
+                row["attempt_index"] = int(len(rows))
+                row["deepcrawl_role"] = "deep_crawl_attempt"
+                row["measurement_status"] = "MEASURED"
+                row["full_newton_budget"] = row.get("max_newton_iters_override") in (None, 0)
+                row["nominal_target_tau"] = float(nominal_tau)
+                row["backtrack_index"] = int(backtrack_index)
+                row["delta_tau"] = float(target_tau) - float(start_tau)
+                row = _c0g_deep_apply_single_arbiter(row)
+                rows.append(row)
+                if row.get("final_physical_converged"):
+                    deepest = row
+                    previous_tau = last_tau
+                    previous_state = last_state.detach().clone()
+                    previous_grid = last_grid
+                    last_tau = float(row["target_tau"])
+                    last_state = final_state.detach().clone()
+                    last_grid = final_grid
+                    new_states += 1
+                    converged_this_nominal = True
+                    break
+                if (
+                    backtrack_index >= int(cfg.max_tau_backtracks)
+                    or abs(float(target_tau) - float(start_tau)) <= float(cfg.min_tau_backtrack_delta)
+                ):
+                    stopped_note = (
+                        f"nominal tau {nominal_tau:.12e} failed after "
+                        f"{backtrack_index} backtracks under full budget"
+                    )
+                    break
+                backtrack_index += 1
+                target_tau = float(start_tau) + float(full_delta) / (2.0**backtrack_index)
+            if not converged_this_nominal and stopped_note is not None:
+                break
+    return _c0g_deep_finalize(
+        rows=rows,
+        config=cfg,
+        b4_reconfirm=b4_reconfirm,
+        dtype=dtype,
+        started=started,
+        chunk_note=stopped_note,
+    )
+
+
 def _c0g_fmt(value: Any, *, digits: int = 6) -> str:
     if value is None:
         return "n/a"
@@ -7415,6 +10686,201 @@ def c0g_final_main(argv: Sequence[str] | None = None) -> int:
     )
     result = aggregate_c0g_final(config)
     print(_c0g_stdout_summary(result))
+    return 0
+
+
+def c0g_build_b1b2_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Run staged Path-A C0g B-1/B-2 only.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gBuildB1B2Config().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gBuildB1B2Config().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0gBuildB1B2Config().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0gBuildB1B2Config().json_path)
+    parser.add_argument(
+        "--taus",
+        default=",".join(str(tau) for tau in C0gBuildB1B2Config().b2_depth_sequence),
+        help="Comma-separated gauge-fixed crawl tau sequence for B-2.",
+    )
+    parser.add_argument("--proof-tau", type=float, default=C0gBuildB1B2Config().proof_tau)
+    parser.add_argument(
+        "--tau-fold-reference",
+        type=float,
+        default=C0gBuildB1B2Config().tau_fold_reference,
+    )
+    parser.add_argument(
+        "--max-tau-backtracks",
+        type=int,
+        default=C0gBuildB1B2Config().max_tau_backtracks,
+    )
+    parser.add_argument(
+        "--min-tau-backtrack-delta",
+        type=float,
+        default=C0gBuildB1B2Config().min_tau_backtrack_delta,
+    )
+    parser.add_argument(
+        "--max-newton-iters",
+        type=int,
+        default=0,
+        help="0 means use the default full Newton budget.",
+    )
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("colored_sparse_jacobian_lu", "autodiff_sparse_jacobian_lu"),
+        default=C0gBuildB1B2Config().jacobian_assembly,
+    )
+    args = parser.parse_args(argv)
+    config = C0gBuildB1B2Config(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        b2_depth_sequence=tuple(float(piece) for piece in args.taus.split(",") if piece),
+        proof_tau=float(args.proof_tau),
+        tau_fold_reference=float(args.tau_fold_reference),
+        max_tau_backtracks=int(args.max_tau_backtracks),
+        min_tau_backtrack_delta=float(args.min_tau_backtrack_delta),
+        max_newton_iters_override=(
+            int(args.max_newton_iters) if int(args.max_newton_iters) > 0 else None
+        ),
+        jacobian_assembly=str(args.jacobian_assembly),
+    )
+    result = run_c0g_build_b1b2(config)
+    print(_c0g_build_b1b2_stdout_summary(result))
+    return 0
+
+
+def c0g_build_b4_b2_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run Path-A C0g B-4 match gate, then B-1/B-2 only if B-4 passes."
+    )
+    parser.add_argument("--c0f2-json", type=Path, default=C0gBuildB1B2Config().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gBuildB1B2Config().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0gBuildB1B2Config().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0gBuildB1B2Config().json_path)
+    parser.add_argument(
+        "--taus",
+        default=",".join(str(tau) for tau in C0gBuildB1B2Config().b2_depth_sequence),
+        help="Comma-separated gauge-fixed crawl tau sequence for B-2.",
+    )
+    parser.add_argument("--proof-tau", type=float, default=C0gBuildB1B2Config().proof_tau)
+    parser.add_argument(
+        "--tau-fold-reference",
+        type=float,
+        default=C0gBuildB1B2Config().tau_fold_reference,
+    )
+    parser.add_argument(
+        "--max-tau-backtracks",
+        type=int,
+        default=C0gBuildB1B2Config().max_tau_backtracks,
+    )
+    parser.add_argument(
+        "--min-tau-backtrack-delta",
+        type=float,
+        default=C0gBuildB1B2Config().min_tau_backtrack_delta,
+    )
+    parser.add_argument(
+        "--max-newton-iters",
+        type=int,
+        default=0,
+        help="0 means use the default full Newton budget.",
+    )
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=C0gBuildB1B2Config().jacobian_assembly,
+    )
+    parser.add_argument("--b4-reference-tau", type=float, default=C0gBuildB1B2Config().b4_reference_tau)
+    parser.add_argument(
+        "--b4-random-probes",
+        type=int,
+        default=C0gBuildB1B2Config().b4_random_probe_count,
+    )
+    args = parser.parse_args(argv)
+    config = C0gBuildB1B2Config(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        b2_depth_sequence=tuple(float(piece) for piece in args.taus.split(",") if piece),
+        proof_tau=float(args.proof_tau),
+        tau_fold_reference=float(args.tau_fold_reference),
+        max_tau_backtracks=int(args.max_tau_backtracks),
+        min_tau_backtrack_delta=float(args.min_tau_backtrack_delta),
+        max_newton_iters_override=(
+            int(args.max_newton_iters) if int(args.max_newton_iters) > 0 else None
+        ),
+        jacobian_assembly=str(args.jacobian_assembly),
+        b4_reference_tau=float(args.b4_reference_tau),
+        b4_random_probe_count=int(args.b4_random_probes),
+    )
+    result = run_c0g_build_b4_then_b2(config)
+    print(_c0g_build_b1b2_stdout_summary(result))
+    return 0
+
+
+def c0g_deepcrawl_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run the Path-A C0g deeper gauge-fixed continuation crawl."
+    )
+    parser.add_argument("--prior-b1b2-json", type=Path, default=C0gDeepCrawlConfig().prior_b1b2_json_path)
+    parser.add_argument("--prior-crawl-json", type=Path, default=C0gDeepCrawlConfig().prior_crawl_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gDeepCrawlConfig().run_root)
+    parser.add_argument("--report-path", type=Path, default=C0gDeepCrawlConfig().report_path)
+    parser.add_argument("--json-path", type=Path, default=C0gDeepCrawlConfig().json_path)
+    parser.add_argument(
+        "--taus",
+        default=",".join(str(tau) for tau in C0gDeepCrawlConfig().target_taus),
+        help="Comma-separated deeper target tau sequence.",
+    )
+    parser.add_argument("--tau-fold-reference", type=float, default=C0gDeepCrawlConfig().tau_fold_reference)
+    parser.add_argument("--max-new-states", type=int, default=1)
+    parser.add_argument("--finalize-only", action="store_true")
+    parser.add_argument("--skip-b4-recheck", action="store_true")
+    parser.add_argument("--max-tau-backtracks", type=int, default=C0gDeepCrawlConfig().max_tau_backtracks)
+    parser.add_argument(
+        "--min-tau-backtrack-delta",
+        type=float,
+        default=C0gDeepCrawlConfig().min_tau_backtrack_delta,
+    )
+    parser.add_argument(
+        "--max-newton-iters",
+        type=int,
+        default=0,
+        help="0 means use the default full Newton budget.",
+    )
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=C0gDeepCrawlConfig().jacobian_assembly,
+    )
+    config = C0gDeepCrawlConfig()
+    args = parser.parse_args(argv)
+    config = C0gDeepCrawlConfig(
+        prior_b1b2_json_path=args.prior_b1b2_json,
+        prior_crawl_json_path=args.prior_crawl_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        target_taus=tuple(float(piece) for piece in args.taus.split(",") if piece),
+        tau_fold_reference=float(args.tau_fold_reference),
+        max_tau_backtracks=int(args.max_tau_backtracks),
+        min_tau_backtrack_delta=float(args.min_tau_backtrack_delta),
+        max_newton_iters_override=(
+            int(args.max_newton_iters) if int(args.max_newton_iters) > 0 else None
+        ),
+        jacobian_assembly=str(args.jacobian_assembly),
+        b4_reference_tau=float(config.b4_reference_tau),
+        b4_random_probe_count=int(config.b4_random_probe_count),
+        b4_random_seed=int(config.b4_random_seed),
+        b4_match_abs_tol=float(config.b4_match_abs_tol),
+        b4_match_rel_tol=float(config.b4_match_rel_tol),
+    )
+    result = run_c0g_deepcrawl(
+        config,
+        max_new_states=int(args.max_new_states),
+        finalize_only=bool(args.finalize_only),
+        b4_recheck=not bool(args.skip_b4_recheck),
+    )
+    print(_c0g_deep_stdout_summary(result))
     return 0
 
 
@@ -9814,6 +13280,11 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Allow an existing B2c seed only before a C0-converged state exists; below-floor attempts still bypass it.",
     )
+    parser.add_argument(
+        "--use-gauge-fix",
+        action="store_true",
+        help="Use the analytic gauge-complement linear solve in path coordinates.",
+    )
     return parser
 
 
@@ -9845,6 +13316,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         diagnostic_linear=not bool(args.skip_linear_diagnostics),
         diagnostic_observables=not bool(args.skip_observables),
         prefer_existing_b2c_background_predictor=bool(args.prefer_existing_shallow_seed),
+        use_gauge_fix=bool(args.use_gauge_fix),
     )
     if args.phase == "crawl":
         result = run_c0_crawl(config)

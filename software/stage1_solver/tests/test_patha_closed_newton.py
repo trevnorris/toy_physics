@@ -5,7 +5,7 @@ from pathlib import Path
 
 import torch
 
-from stage1_solver.backend import configure_backend
+from stage1_solver.backend import configure_backend, jvp
 from stage1_solver.boundaries import BoundaryCondition
 from stage1_solver.config import (
     BackendConfig,
@@ -23,7 +23,7 @@ from stage1_solver.coupled_branch import (
     unpack_closed_coupled_fields,
 )
 from stage1_solver.grid import TensorProductGrid, WallGrid
-from stage1_solver.newton import finite_difference_jvp_check
+from stage1_solver.newton import PreconditionerBuildContext, finite_difference_jvp_check
 from stage1_solver.p2_tangent import wall_to_matter_coefficient_torch
 from stage1_solver.patha_closed_newton import (
     PathAClosedNewtonConfig,
@@ -33,9 +33,9 @@ from stage1_solver.patha_closed_newton import (
 )
 from stage1_solver.patha_static_balance import SSigmaSpec, static_balance_terms
 from stage1_solver.preconditioners import (
+    assemble_closed_coupled_autodiff_sparse_jacobian,
     assemble_closed_coupled_colored_sparse_jacobian,
 )
-from stage1_solver.newton import PreconditionerBuildContext
 
 
 def _small_grid(dtype: torch.dtype) -> TensorProductGrid:
@@ -159,6 +159,64 @@ def test_closed_colored_preconditioner_uses_wall_plus_mass_layout() -> None:
     assert matrix.shape == (expected, expected)
     assert metadata["layout"] == "5*cells+nw+1"
     assert metadata["state_size"] == expected
+
+
+def test_closed_autodiff_sparse_jacobian_matches_original_residual_jvp() -> None:
+    dtype = configure_backend(BackendConfig())
+    branch = replace(
+        _small_branch(),
+        newton=replace(
+            _small_branch().newton,
+            preconditioner=PreconditionerConfig(
+                type="autodiff_sparse_jacobian_lu",
+                side="left",
+                rebuild_policy="every_newton_step",
+                factorization="splu",
+            ),
+        ),
+    )
+    grid = _small_grid(dtype)
+    spec = SSigmaSpec.smooth_positive_placeholder(w_min=branch.w_min, w_max=branch.w_max)
+    boundaries = branch_boundary_conditions(branch)
+    state = initial_closed_branch_state(grid, branch, dtype=dtype, device="cpu")
+    residual_fn = lambda x: patha_closed_branch_residual(
+        x,
+        grid,
+        branch,
+        eos_K=branch.continuation_K_values[0],
+        boundaries=boundaries,
+        s_sigma=spec,
+    )
+    rhs = -residual_fn(state).detach().cpu().numpy()
+    matrix, metadata = assemble_closed_coupled_autodiff_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state,
+            rhs=rhs,
+            iteration=1,
+            config=branch.newton,
+        ),
+        grid,
+    )
+    generator = torch.Generator(device="cpu")
+    generator.manual_seed(20260621)
+    for _ in range(3):
+        direction = torch.randn(state.shape, dtype=dtype, generator=generator)
+        direction = direction / torch.linalg.vector_norm(direction)
+        reference = jvp(residual_fn, state.detach(), direction).detach().cpu().numpy()
+        assembled = matrix @ direction.detach().cpu().numpy()
+        assert max(abs(assembled - reference)) <= 1.0e-10
+
+    reverse = torch.func.jacrev(residual_fn)(state.detach()).detach().cpu().numpy()
+    dense = matrix.toarray()
+    cell = grid.spec.nr * grid.spec.nw
+    wall_start = 5 * cell
+    wall_stop = wall_start + grid.spec.nw
+    mu_column = dense.shape[1] - 1
+    assert max(abs(dense[wall_start:wall_stop, :].reshape(-1) - reverse[wall_start:wall_stop, :].reshape(-1))) <= 1.0e-10
+    assert max(abs(dense[wall_stop, :] - reverse[wall_stop, :])) <= 1.0e-10
+    assert max(abs(dense[:, mu_column] - reverse[:, mu_column])) <= 1.0e-10
+    assert metadata["dense_wall_mass_mu_couplings_included"] is True
 
 
 def test_placeholder_provider_derivative_check_and_scan(tmp_path: Path) -> None:

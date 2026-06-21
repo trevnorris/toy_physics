@@ -43,9 +43,9 @@ Balance identity checks, reported but not counted as physics gates:
 
 | level | grid | dof | wall_clock_seconds | converged | final_residual_linf | final_tolerance | r0_min | r0_max | message |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | closed_l0_nr_4_nw_4 | 85 | 1.902502e+01 | true | 1.186493e-09 | 2.000000e-09 | 9.878671e-01 | 9.970928e-01 | closed validation continuation completed |
-| 1 | closed_l1_nr_8_nw_8 | 329 | 4.241241e+01 | true | 1.456064e-09 | 2.000000e-09 | 9.876428e-01 | 9.984848e-01 | closed validation continuation completed |
-| 2 | closed_l2_nr_16_nw_16 | 1297 | 4.245836e+01 | true | 1.532886e-09 | 2.000000e-09 | 9.875850e-01 | 9.992279e-01 | closed validation continuation completed |
+| 0 | closed_l0_nr_4_nw_4 | 85 | 1.822957e+01 | true | 1.186493e-09 | 2.000000e-09 | 9.878671e-01 | 9.970928e-01 | closed validation continuation completed |
+| 1 | closed_l1_nr_8_nw_8 | 329 | 4.102487e+01 | true | 1.456064e-09 | 2.000000e-09 | 9.876428e-01 | 9.984848e-01 | closed validation continuation completed |
+| 2 | closed_l2_nr_16_nw_16 | 1297 | 4.099620e+01 | true | 1.532886e-09 | 2.000000e-09 | 9.875850e-01 | 9.992279e-01 | closed validation continuation completed |
 
 Raw-field self-difference, including R0:
 
@@ -103,7 +103,7 @@ The 4x frozen-baseline envelope is a sanity bound for the closed solve. The live
 Closed/frozen metric threshold factor: `4.0`.
 null_floor_label keys on transport-signal norm, not residual magnitude; that is correct for this isotropic stationary branch and should be revisited for a current-carrying branch.
 
-Frozen baseline solve: grid `frozen_baseline_nr_16_nw_16`, converged=True, final_residual_linf=1.560697e-09, wall_clock=3.555148e+01s.
+Frozen baseline solve: grid `frozen_baseline_nr_16_nw_16`, converged=True, final_residual_linf=1.560697e-09, wall_clock=3.410430e+01s.
 
 | metric | activity | closed_r0_solved | frozen_geometry_baseline | threshold | basis | status |
 | --- | --- | --- | --- | --- | --- | --- |

@@ -68,6 +68,14 @@ report's "Post-hoc adjudication"). Decide, with numeric support, exactly one, ev
   BELOW τ_fold by a stated margin** (each ‖original residual‖ ≤ B2c tol) with NO `r0`-turning signature (σ_min not
   collapsing, cosθ not approaching transversality). ⇒ the "fold" was entangled with the gauge; STOP, do NOT build
   pseudo-arclength, report + re-gate with the user (a cheaper win than expected).
+  **FOLD_DISSOLVED MUST be honestly contestable (no sandbagging — the C0f lesson):** the below-fold attempts MUST use the
+  FULL Newton budget + τ-backtracking and be routed through the existing `crawl_persistent_failure` guard
+  (`max_newton_iters_override=None`, `max_tau_backtracks>0`, `attempted_backtracking=True`). A 1-iteration / 0-backtrack
+  below-fold attempt is a CRIPPLED-CONFIG artifact, NOT fold evidence. The dissolve branch must be genuinely REACHABLE in
+  code (no source-string / precedence wiring that precludes it). Diagnostic: a τ that is ABOVE τ_fold and fails ONLY under
+  a crippled budget but converges under the full budget REFUTES the dissolve-side "failure" — in that case FOLD_CONFIRMED
+  is NOT supported on the dissolve side and the gate must re-sample (full budget) until it either crosses τ_fold
+  (FOLD_DISSOLVED) or genuinely stalls below it under full budget (FOLD_CONFIRMED).
 - **FOLD_CONFIRMED** — only if NO clean below-fold crawl exists (FOLD_DISSOLVED fails) AND the RELATIVE fold-trend gates
   pass: Step-2 cosθ stable and above the fold threshold; σ_min²(τ) linear-monotone with good fit (R² ≥ 0.95); cond(Jb)
   FLAT within a stated band across the sampled τ; and cond(J·Q_perp)/cond(Jb) (or σ_min(Jb)/σ_min(J·Q_perp)) INCREASING by

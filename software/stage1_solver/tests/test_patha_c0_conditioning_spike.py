@@ -177,6 +177,26 @@ def test_c0g_complement_svd_does_not_report_planted_gauge_zero(tmp_path) -> None
     assert result["sigma_min"] > 0.0
 
 
+def test_c0g_gauge_fixed_step_solves_only_complement_coordinates() -> None:
+    matrix = csc_matrix(np.diag([0.0, 2.0, 3.0]))
+    gauge = np.asarray([[1.0], [0.0], [0.0]], dtype=np.float64)
+    rhs = np.asarray([1.0, 4.0, 9.0], dtype=np.float64)
+
+    step, info = c0._solve_scaled_gauge_complement_step(
+        scaled_matrix=matrix,
+        rhs_scaled=rhs,
+        gauge_matrix=gauge,
+        col_scale=np.ones(3, dtype=np.float64),
+        gradient_rank_rtol=1.0e-12,
+        lstsq_rcond=1.0e-12,
+    )
+
+    assert info["gauge_rank"] == 1
+    assert info["method"] == "iterative_lsmr_scaled_J_times_Q_perp"
+    assert abs(step[0]) <= 1.0e-14
+    assert np.allclose(step[1:], [2.0, 3.0], rtol=1.0e-12, atol=1.0e-12)
+
+
 def test_c0g_premise_gate_thresholds_are_executable() -> None:
     config = c0.C0gConfig()
 
@@ -275,6 +295,249 @@ def test_c0g_step8_allows_fold_when_primary_clean_and_step6_confirms() -> None:
 
     assert verdict["verdict"] == "FOLD_CONFIRMED"
     assert verdict["sub_label"] == "NON_SONIC_FOLD"
+
+
+def test_c0g_b2_gate_confirms_only_relative_trends() -> None:
+    crawl = {
+        "config": {"max_tau_backtracks": 5, "max_newton_iters_override": None},
+        "tau_attempts": [
+            {"target_tau": 0.03, "final_physical_converged": True},
+            {"target_tau": 0.0295, "final_physical_converged": True},
+            {"target_tau": 0.02925, "final_physical_converged": True},
+            {"target_tau": 0.029125, "final_physical_converged": True},
+            {"target_tau": 0.029124, "final_physical_converged": True},
+            {"target_tau": 0.0291225, "final_physical_converged": False, "backtrack_index": 0},
+            {"target_tau": 0.02912325, "final_physical_converged": False, "backtrack_index": 1},
+        ]
+    }
+    b2 = {
+        "state_results": [
+            {
+                "tau": tau,
+                "crawl_final_physical_converged": True,
+                "ftau": {
+                    "status": "MEASURED",
+                    "stepsize_stability_call": "STABLE",
+                    "representative_cos_theta": 0.5,
+                    "call": "FOLD_SUPPORT",
+                },
+            }
+            for tau in (0.03, 0.0295, 0.02925, 0.029125)
+        ],
+        "sigma_min_squared_fit": {
+            "status": "MEASURED",
+            "call": "LINEAR_MONOTONE_FOLD_SUPPORT",
+            "sigma_min_monotone_decreasing_toward_stall": True,
+            "linear": {
+                "r2": 0.99,
+                "slope": 1.0,
+                "tau_fold_zero_crossing": 0.0291233,
+            },
+            "rows": [],
+        },
+        "step6_bordered_conditioning": {
+            "rows": [
+                {"status": "MEASURED", "tau": 0.03, "cond_JQ_perp": 1.0e3, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.0295, "cond_JQ_perp": 4.0e3, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.02925, "cond_JQ_perp": 1.0e4, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.029125, "cond_JQ_perp": 3.0e4, "cond_Jb": 5.0e2},
+            ]
+        },
+    }
+
+    verdict = c0._c0g_b2_gate_verdict(
+        crawl=crawl,
+        b2=b2,
+        config=c0.C0gBuildB1B2Config(),
+    )
+
+    assert verdict["verdict"] == "FOLD_CONFIRMED"
+    assert verdict["absolute_cond_bar_used"] is False
+    assert verdict["full_budget_dissolve_contest"]["status"] == "PASS"
+    assert verdict["fold_confirmed_components"]["bordered_conditioning_trend"]["ratio_growth_factor"] == 30.0
+
+
+def test_c0g_b2_gate_stays_inconclusive_without_full_budget_dissolve_contest() -> None:
+    crawl = {
+        "config": {"max_tau_backtracks": 0, "max_newton_iters_override": 1},
+        "tau_attempts": [
+            {"target_tau": 0.03, "final_physical_converged": True},
+            {"target_tau": 0.0295, "final_physical_converged": True},
+            {"target_tau": 0.02925, "final_physical_converged": True},
+            {"target_tau": 0.029125, "final_physical_converged": True},
+            {"target_tau": 0.029124, "final_physical_converged": False, "backtrack_index": 0},
+            {"target_tau": 0.0291225, "final_physical_converged": False, "backtrack_index": 0},
+        ],
+    }
+    b2 = {
+        "state_results": [
+            {
+                "tau": tau,
+                "crawl_final_physical_converged": True,
+                "ftau": {
+                    "status": "MEASURED",
+                    "stepsize_stability_call": "STABLE",
+                    "representative_cos_theta": 0.5,
+                    "call": "FOLD_SUPPORT",
+                },
+            }
+            for tau in (0.03, 0.0295, 0.02925, 0.029125)
+        ],
+        "sigma_min_squared_fit": {
+            "status": "MEASURED",
+            "call": "LINEAR_MONOTONE_FOLD_SUPPORT",
+            "sigma_min_monotone_decreasing_toward_stall": True,
+            "linear": {
+                "r2": 0.99,
+                "slope": 1.0,
+                "tau_fold_zero_crossing": 0.0291233,
+            },
+        },
+        "step6_bordered_conditioning": {
+            "rows": [
+                {"status": "MEASURED", "tau": 0.03, "cond_JQ_perp": 1.0e3, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.0295, "cond_JQ_perp": 4.0e3, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.02925, "cond_JQ_perp": 1.0e4, "cond_Jb": 5.0e2},
+                {"status": "MEASURED", "tau": 0.029125, "cond_JQ_perp": 3.0e4, "cond_Jb": 5.0e2},
+            ]
+        },
+    }
+
+    verdict = c0._c0g_b2_gate_verdict(
+        crawl=crawl,
+        b2=b2,
+        config=c0.C0gBuildB1B2Config(),
+    )
+
+    assert verdict["verdict"] == "STILL_INCONCLUSIVE"
+    assert verdict["full_budget_dissolve_contest"]["status"] == "FAIL"
+
+
+def test_c0g_b2_dissolved_accepts_gauge_fixed_previous_source() -> None:
+    crawl = {
+        "config": {"max_tau_backtracks": 5, "max_newton_iters_override": None},
+        "tau_attempts": [
+            {
+                "target_tau": 0.0291225,
+                "final_physical_converged": True,
+                "final_original_residual_linf": 1.0e-8,
+                "used_existing_b2c": False,
+                "init": {"source": "previous_c0g_gauge_fixed_converged_state"},
+            },
+            {
+                "target_tau": 0.029122,
+                "final_physical_converged": True,
+                "final_original_residual_linf": 2.0e-8,
+                "used_existing_b2c": False,
+                "init": {"source": "previous_c0g_gauge_fixed_converged_state"},
+            },
+        ],
+    }
+    b2 = {
+        "state_results": [],
+        "sigma_min_squared_fit": {
+            "status": "MEASURED",
+            "call": "NO_LINEAR_MONOTONE_FOLD_SUPPORT",
+            "sigma_min_monotone_decreasing_toward_stall": False,
+            "linear": {"r2": 0.2},
+        },
+        "step6_bordered_conditioning": {"rows": []},
+    }
+
+    verdict = c0._c0g_b2_gate_verdict(
+        crawl=crawl,
+        b2=b2,
+        config=c0.C0gBuildB1B2Config(),
+    )
+
+    assert verdict["verdict"] == "FOLD_DISSOLVED"
+    assert verdict["fold_dissolved"]["branch_continuous_count"] == 2
+
+
+def test_c0g_deep_verdict_locks_no_fold_with_admissible_finite_sigma() -> None:
+    rows = []
+    ladder = []
+    state_results = []
+    admissibility = []
+    for index, tau in enumerate((0.0291225, 0.02912, 0.0290, 0.0288, 0.0285)):
+        rows.append(
+            {
+                "target_tau": tau,
+                "deepcrawl_role": "deep_crawl_attempt" if index >= 1 else "below_fold_seed",
+                "final_physical_converged": True,
+                "final_original_residual_linf": 1.0e-9,
+                "measurement_status": "MEASURED",
+            }
+        )
+        ladder.append(
+            {
+                "tau": tau,
+                "converged": True,
+                "min_R0": 0.79 + 0.01 * index,
+                "min_rho": 7.0e-6 + 1.0e-7 * index,
+                "mu": 2.04 - 0.01 * index,
+            }
+        )
+        state_results.append({"tau": tau, "svd": {"status": "MEASURED", "sigma_min": 3.0e-4}})
+        admissibility.append({"tau": tau, "status": "PASS"})
+
+    verdict = c0._c0g_deep_verdict(
+        rows=rows,
+        ladder=ladder,
+        state_results=state_results,
+        admissibility_rows=admissibility,
+        sigma_fit={"call": "FIT_UNRELIABLE_NON_MONOTONE_SIGMA_MIN", "linear": {"r2": 0.2}},
+        tangent={"aggregate_call": "NO_TANGENT_REVERSAL"},
+        config=c0.C0gDeepCrawlConfig(no_fold_required_new_converged=4),
+    )
+
+    assert verdict["verdict"] == "NO_FOLD_LOCKED"
+    assert verdict["sigma_min_finite"] is True
+    assert verdict["all_converged_below_admissible"] is True
+
+
+def test_c0g_deep_verdict_does_not_lock_if_admissibility_fails() -> None:
+    rows = [
+        {
+            "target_tau": 0.0290 - index * 1.0e-4,
+            "deepcrawl_role": "deep_crawl_attempt",
+            "final_physical_converged": True,
+            "final_original_residual_linf": 1.0e-9,
+            "measurement_status": "MEASURED",
+        }
+        for index in range(5)
+    ]
+    ladder = [
+        {
+            "tau": row["target_tau"],
+            "converged": True,
+            "min_R0": 0.8 + 0.01 * index,
+            "min_rho": 7.0e-6 + 1.0e-7 * index,
+            "mu": 2.0 - 0.01 * index,
+        }
+        for index, row in enumerate(rows)
+    ]
+    state_results = [
+        {"tau": row["target_tau"], "svd": {"status": "MEASURED", "sigma_min": 2.0e-4}}
+        for row in rows
+    ]
+    admissibility = [
+        {"tau": row["target_tau"], "status": "FAIL" if index == 2 else "PASS"}
+        for index, row in enumerate(rows)
+    ]
+
+    verdict = c0._c0g_deep_verdict(
+        rows=rows,
+        ladder=ladder,
+        state_results=state_results,
+        admissibility_rows=admissibility,
+        sigma_fit={"call": "FIT_UNRELIABLE_NON_MONOTONE_SIGMA_MIN", "linear": {"r2": 0.2}},
+        tangent={"aggregate_call": "NO_TANGENT_REVERSAL"},
+        config=c0.C0gDeepCrawlConfig(no_fold_required_new_converged=5),
+    )
+
+    assert verdict["verdict"] == "STILL_GOING"
+    assert verdict["all_converged_below_admissible"] is False
 
 
 def test_c0_verdict_is_incomplete_when_sigma_or_fold_not_measured() -> None:

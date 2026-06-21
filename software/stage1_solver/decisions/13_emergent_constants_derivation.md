@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-19, pathA_21c EXECUTING)
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; C0g BUILD B-1/B-2/B-4+deepcrawl DONE, B-3 pseudo-arclength is the EARNED next build → see §0 block (4))
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -206,6 +206,11 @@ tests) → fidelity-review `FAITHFUL_WITH_MINOR_NOTES`; Steps 4–7 + Step-8 ver
 faithful, scope-clean, NO gaming). Report `reports/pathA_C0g_diag_fold_vs_conditioning.md`; JSON
 `runs/pathA_C0g_diag_fold_vs_conditioning/…`; scripts `pathA_C0g_{step0_premise,state_svd_ftau,steps4_6_7,step5_scipy_probe,aggregate_*}.py`;
 C0g analysis code in `patha_c0_conditioning_spike.py` (+1589/−0; operators/physics/frozen/export UNTOUCHED).
+**⚠️ THIS C0g-DIAG VERDICT WAS LATER REFUTED BY THE C0g BUILD (see (4) below). KEPT FOR HISTORY.** The diag called a SIMPLE
+FOLD at τ_fold≈0.0291233; the gauge-fixed full-budget fast-assembly crawl then CROSSED it (8 admissible states deeper) ⇒
+the "fold at 0.0291233" was a CONDITIONING DIP + crippled Newton budget, NOT a turning point. The σ_min²=0.9994 "linear
+fold scaling" is RETRACTED as a near-null conditioning dip. (The C0f/C0f2 "crippled-solver artifact" lesson recurred —
+distrust-clean + the honest dissolve-contest caught it.) Original (now-refuted) diag verdict text follows:
 **⭐⭐ VERDICT — the white-whale stall is a SIMPLE FOLD (turning point) in the throat-radius (`r0`) continuation at
 τ_fold≈0.0291233; NOT conditioning, NOT sonic.** Machine verdict = `MIXED/INCONCLUSIVE` (literal contract) but ADJUDICATED
 **FOLD-LEANING** (`primary_fold_support=True, primary_conditioning_support=False`, NO disagreements, NO gray items). FIVE
@@ -219,22 +224,44 @@ cond>1e10 needs sampling ~1e-15 from τ_fold but Newton stalls ~1.6e-6 short BY 
 even said "no absolute O(1) thresholds" then set one. The bordered-cond TREND, not the absolute, is the discriminant.**
 The 511-dim gauge near-null subspace is a SEPARATE, independently-real conditioning issue (NOT the stall driver) to fix
 regardless.
-**(4) NEXT ACTION (resume here) — the C0g BUILD (both reviews converge):** (a) **gauge-fix FIRST** — PATH-ONLY (far-field
-ψ phase pin + A-sector gauge handling in solver/preconditioner coords, NEVER the frozen residual); kills the 511-dim gauge
-null space AND lets the crawl sample closer to τ_fold. (b) re-run cheap Steps 1–3 + 6 on the gauge-fixed crawl nearer
-τ_fold → if σ_min² stays linear-monotone and cond(J·Q_perp) crosses ~1e8–1e10 with cond(Jb) flat, promote MIXED →
-FOLD_CONFIRMED. (c) **gauge-fixed PSEUDO-ARCLENGTH continuation** to round the fold. **SKIP the LM/PTC conditioning detour**
-(evidence disfavors — LM damps but never rounds a fold). + analytic/sparse Jacobian assembly unconditionally (after the
-color audit; 253 colors = deterministic radius-3, NOT a bug). → **C0g-BUILD directive READY**
-(`directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`; design-review SOUND-WITH-FIXES → 8 fixes → confirm-pass
-STILL-NEEDS(3) → 3 fixes → re-confirm SOUND-AS-IS; committed) — its B-1/B-2/B-3/B-4 structure: gauge-fix path-only →
-re-confirm the fold via RELATIVE trend gates (the absolute cond>1e10 bar dropped as self-defeating) → gauge-fixed
-pseudo-arclength (only if FOLD_CONFIRMED) → analytic/sparse assembly. **NEXT = the USER EXECUTION GATE → Codex executes**
-([[feedback-directive-design-review]]) → then constitutive family → calibrated branch → calibrate-predict (R0/J/W → anchor
-→ SURPLUS) → `pathA_22`.
-**LESSON (candidate memory): a "gauge-invariant" metric built as derivative/value is dimensionally a wavenumber and
-amplifies high-k remnants — use the dimensionless energy fraction; and ALWAYS check the solver CONFIG (iter budget,
-backtracking) before diagnosing a "wall" as physics.**
+**(4) ⭐ RESUME HERE (2026-06-21) — the C0g BUILD: B-1/B-2/B-4 + deeper-crawl DONE & DUAL-REVIEWED; B-3 (pseudo-arclength)
+is the EARNED NEXT BUILD, awaiting the USER EXECUTION GATE.** Directive `directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`
+(design-review→8 fixes→confirm/re-confirm SOUND-AS-IS; B-2 AMENDED so FOLD_DISSOLVED uses FULL Newton budget + the
+`crawl_persistent_failure` guard — the anti-sandbag fix). Executed STAGED, every step fidelity+adversarially reviewed
+(all HONEST/faithful/scope-clean; freeze intact — operators/physics/`(1/ξ)`/residual/export UNTOUCHED throughout):
+- **B-1 gauge-fix (PATH-ONLY, verified):** removes the 511-dim gauge null space (analytic generators → `Q_perp`; step
+  direction only). PROVEN path-only — with/without gives the SAME physical state (gauge-invariant Δ 3.5e-18, equal original
+  residual); `r0` mode preserved (stays in the complement). Single Arbiter = original `patha_closed_branch_residual` ≤1e-6.
+- **B-4 analytic/sparse Jacobian (verified residual-equivalent):** `torch.func.jacfwd` of the UNCHANGED residual, matched
+  to the colored-JVP at ~1e-14 (rel≤1e-8/abs≤1e-10), **~74–80× faster** assembly (was 96–97% of cost). Used only for the
+  Newton search DIRECTION; convergence still on the original residual.
+- **B-2 honest re-contest → `FOLD_DISSOLVED` (EARNED_WITH_CAVEATS), then deeper-crawl → `STILL_GOING` (HONEST_STILL_GOING).**
+  With gauge-fix+full-budget+fast-assembly the crawl CROSSES the putative τ_fold≈0.0291233 — **8 admissible states down to
+  τ=0.0291132 (~3× deeper)**, each original-residual ≤1e-6, branch-continuous, positive density, `min_R0`≈0.79 (throat STAYS
+  OPEN — and nudges UP with depth, satisfying the user's open-throat constraint), NOT near the empty-core/opening regime yet.
+  ⇒ the first "fold" is REFUTED. **BUT a NEW, genuinely-real near-singularity appears ~1e-5 deeper (~τ=0.0291132):**
+  σ_min(J·Q_perp) collapses 3.95e-4→7.03e-6 (factor 56, on the AUTHORITATIVE Jacobian; σ_min² fit r²=0.96 extrapolates a
+  zero-crossing ≈0.0291139), and full-budget warm-started attempts below it persistently MISS tol (~1.04e-6) — **but with NO
+  branch-tangent reversal.** So σ_min says "near-singular," tangent says "no turning point yet" = the SAME fold-vs-conditioning
+  ambiguity, now DEEPER and unsettled. Adversarial read: plain Newton (even gauge-fixed/full-budget/fast) CANNOT resolve
+  σ_min→0 at any step size; **pseudo-arclength (B-3) is the ONLY tool that distinguishes "rounds a genuine fold" from "hard
+  near-singular wall"** — so B-3 is now GENUINELY EARNED (not spent on the refuted shallow fold).
+- **B-3 NOT built (held for the user gate).** **NEXT = author the B-3 execution (gauge-fixed Keller pseudo-arclength through
+  τ≈0.0291132), STAGED + dual-reviewed**, per the directive's B-3 spec (gauge projection INSIDE every predictor/corrector;
+  ORIGINAL residual the sole arbiter; `min_R0` depth metric + margin). Outcome resolves it: rounds the turning point →
+  deeper throats (real further unblock); or cannot continue → genuine branch endpoint to understand (note: this is a
+  NUMERICAL/branch feature BEFORE the physical empty-core/opening, since min_R0≈0.79 ≫ 0). Then → constitutive family →
+  calibrated branch → calibrate-predict (R0/J/W → anchor → SURPLUS) → `pathA_22`.
+- **UNCOMMITTED-AS-OF-RESUME?** No — all of B-1/B-2/B-4/deepcrawl committed 2026-06-21 (this commit). Files: C0g build/deep
+  code in `patha_c0_conditioning_spike.py` + the B-4 autodiff assembly in `preconditioners.py`; scripts
+  `pathA_C0g_build_B1B2.py`/`_finalize_timeout.py`/`build_B4_B2.py`/`deepcrawl.py`; reports `pathA_C0g_build_B1B2.md` +
+  `pathA_C0g_deepcrawl.md`; JSON under `runs/pathA_C0g_build_B1B2/` + `runs/pathA_C0g_deepcrawl/` (gitignored).
+**LESSON (now a memory): the C0f/C0f2 "crippled-solver artifact" trap RECURRED at the diag layer — a clean fold signature
+(σ_min² linear R²=0.999 + cosθ transversality) was really a near-null CONDITIONING dip a budget-2/0-backtrack solver
+couldn't push through. ALWAYS contest a "wall"/"fold" verdict with the FULL solver budget + faster assembly BEFORE building
+the fix; the honest dissolve-contest (full budget, reachable DISSOLVED branch) is what caught it. Also: a "gauge-invariant"
+metric built as derivative/value is dimensionally a wavenumber and amplifies high-k remnants — use the dimensionless energy
+fraction.**
 **⏱ STANDING FLAG — `timeout 600` cap (RAISE WITH ME, DON'T DECIDE ALONE — user asked to be flagged 2026-06-19):** the cap
 is currently a FORCING FUNCTION and is NOT binding (C0/C0b respect it by SPLITTING into ≤600s scripts; a timeout degrades
 to `NOT_MEASURED`/`DIAGNOSTIC_INCOMPLETE`, never a fake). It WILL legitimately bind at the **real high-resolution profile

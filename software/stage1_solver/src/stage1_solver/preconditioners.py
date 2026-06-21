@@ -56,6 +56,20 @@ class ClosedCoupledSparseJacobianLayout:
 def _validate_coloring_config(config: PreconditionerConfig) -> None:
     if config.type != "colored_sparse_jacobian_lu":
         raise ValueError(f"Unsupported preconditioner type {config.type!r}")
+    _validate_sparse_factorization_config(config)
+    if config.stencil_radius < 0:
+        raise ValueError("stencil_radius must be non-negative")
+    if config.color_separation <= 2 * config.stencil_radius:
+        raise ValueError("color_separation must exceed 2 * stencil_radius")
+
+
+def _validate_autodiff_sparse_config(config: PreconditionerConfig) -> None:
+    if config.type != "autodiff_sparse_jacobian_lu":
+        raise ValueError(f"Unsupported preconditioner type {config.type!r}")
+    _validate_sparse_factorization_config(config)
+
+
+def _validate_sparse_factorization_config(config: PreconditionerConfig) -> None:
     if config.side != "left":
         raise ValueError(f"Unsupported preconditioner side {config.side!r}")
     if config.rebuild_policy not in {
@@ -64,16 +78,34 @@ def _validate_coloring_config(config: PreconditionerConfig) -> None:
         "once_per_continuation",
     }:
         raise ValueError(f"Unsupported rebuild policy {config.rebuild_policy!r}")
-    if config.stencil_radius < 0:
-        raise ValueError("stencil_radius must be non-negative")
-    if config.color_separation <= 2 * config.stencil_radius:
-        raise ValueError("color_separation must exceed 2 * stencil_radius")
     if config.factorization not in {"splu", "spilu"}:
         raise ValueError(f"Unsupported factorization {config.factorization!r}")
     if config.drop_tolerance < 0.0:
         raise ValueError("drop_tolerance must be non-negative")
     if config.fill_factor <= 0.0:
         raise ValueError("fill_factor must be positive")
+
+
+def _matrix_from_dense_jacobian(
+    jacobian: np.ndarray,
+    *,
+    drop_tolerance: float,
+) -> csc_matrix:
+    if jacobian.ndim != 2 or jacobian.shape[0] != jacobian.shape[1]:
+        raise ValueError("Jacobian must be a square two-dimensional array")
+    if drop_tolerance > 0.0:
+        row, col = np.nonzero(np.abs(jacobian) >= drop_tolerance)
+    else:
+        row, col = np.nonzero(jacobian != 0.0)
+    data = jacobian[row, col].astype(np.float64, copy=False)
+    matrix = coo_matrix(
+        (data, (row.astype(np.int64), col.astype(np.int64))),
+        shape=jacobian.shape,
+        dtype=np.float64,
+    ).tocsc()
+    matrix.sum_duplicates()
+    matrix.eliminate_zeros()
+    return matrix
 
 
 def _color_groups(layout: CoupledSparseJacobianLayout, separation: int) -> list[list[int]]:
@@ -593,6 +625,97 @@ def assemble_closed_coupled_colored_sparse_jacobian(
     return matrix, metadata
 
 
+def assemble_closed_coupled_autodiff_sparse_jacobian(
+    context: PreconditionerBuildContext,
+    grid: TensorProductGrid,
+    *,
+    autodiff_mode: str = "jacfwd",
+) -> tuple[csc_matrix, dict[str, Any]]:
+    """Assemble the closed residual Jacobian by exact torch autodiff.
+
+    This is a sparse storage path for the unchanged residual.  It materializes
+    the dense Jacobian once with torch's batched AD, then keeps only nonzero
+    entries in CSC form.  The dense wall/mass and mu-column couplings are
+    therefore included without graph-color aliasing.
+    """
+
+    config = context.config.preconditioner
+    _validate_autodiff_sparse_config(config)
+    cell_count = grid.spec.nr * grid.spec.nw
+    layout = ClosedCoupledSparseJacobianLayout(
+        cell_field_count=5,
+        cell_count=cell_count,
+        wall_count=grid.spec.nw,
+        state_size=5 * cell_count + grid.spec.nw + 1,
+        nr=grid.spec.nr,
+        nw=grid.spec.nw,
+    )
+    if context.x.numel() != layout.state_size:
+        raise ValueError(
+            f"Expected closed coupled state with {layout.state_size} entries, "
+            f"got {context.x.numel()}"
+        )
+    x = context.x.detach()
+    if autodiff_mode == "jacfwd":
+        jacobian_t = torch.func.jacfwd(context.residual_fn)(x)
+    elif autodiff_mode == "jacrev":
+        jacobian_t = torch.func.jacrev(context.residual_fn)(x)
+    else:
+        raise ValueError(f"Unsupported autodiff mode {autodiff_mode!r}")
+    if tuple(jacobian_t.shape) != (layout.state_size, layout.state_size):
+        raise ValueError(
+            "Closed residual Jacobian has unexpected shape "
+            f"{tuple(jacobian_t.shape)}, expected {(layout.state_size, layout.state_size)}"
+        )
+    jacobian = jacobian_t.detach().cpu().numpy().astype(np.float64, copy=False)
+    matrix = _matrix_from_dense_jacobian(
+        jacobian,
+        drop_tolerance=config.drop_tolerance,
+    )
+    if config.diagonal_shift != 0.0:
+        matrix = matrix + config.diagonal_shift * eye(
+            layout.state_size,
+            format="csc",
+            dtype=np.float64,
+        )
+    metadata = {
+        "type": config.type,
+        "side": config.side,
+        "rebuild_policy": config.rebuild_policy,
+        "assembly_method": "torch_func_dense_autodiff_to_sparse_csc",
+        "autodiff_mode": autodiff_mode,
+        "stencil_radius": None,
+        "color_separation": None,
+        "active_color_count": 0,
+        "jvp_count": 0,
+        "state_size": layout.state_size,
+        "cell_field_count": layout.cell_field_count,
+        "wall_count": layout.wall_count,
+        "matrix_nnz": int(matrix.nnz),
+        "matrix_density": float(matrix.nnz / (layout.state_size * layout.state_size)),
+        "factorization": config.factorization,
+        "diagonal_shift": config.diagonal_shift,
+        "drop_tolerance": config.drop_tolerance,
+        "fill_factor": config.fill_factor,
+        "permutation": config.permutation,
+        "layout": "5*cells+nw+1",
+        "dense_wall_mass_mu_couplings_included": True,
+        "residual_equivalent_to": "context.residual_fn",
+    }
+    return matrix, metadata
+
+
+def assemble_closed_coupled_sparse_jacobian(
+    context: PreconditionerBuildContext,
+    grid: TensorProductGrid,
+) -> tuple[csc_matrix, dict[str, Any]]:
+    if context.config.preconditioner.type == "colored_sparse_jacobian_lu":
+        return assemble_closed_coupled_colored_sparse_jacobian(context, grid)
+    if context.config.preconditioner.type == "autodiff_sparse_jacobian_lu":
+        return assemble_closed_coupled_autodiff_sparse_jacobian(context, grid)
+    raise ValueError(f"Unsupported preconditioner type {context.config.preconditioner.type!r}")
+
+
 def factorized_sparse_inverse_operator(
     matrix: csc_matrix,
     config: PreconditionerConfig,
@@ -682,6 +805,61 @@ def make_closed_coupled_colored_sparse_jacobian_lu_factory(
             metadata["reused"] = True
             return BuiltPreconditioner(operator=cached.operator, metadata=metadata)
         matrix, metadata = assemble_closed_coupled_colored_sparse_jacobian(context, grid)
+        operator, factor_metadata = factorized_sparse_inverse_operator(matrix, config)
+        metadata.update(factor_metadata)
+        metadata["reused"] = False
+        built = BuiltPreconditioner(operator=operator, metadata=metadata)
+        if config.rebuild_policy != "every_newton_step":
+            cached = built
+        return built
+
+    return factory
+
+
+def make_closed_coupled_autodiff_sparse_jacobian_lu_factory(
+    grid: TensorProductGrid,
+) -> Callable[[PreconditionerBuildContext], BuiltPreconditioner]:
+    cached: BuiltPreconditioner | None = None
+
+    def factory(context: PreconditionerBuildContext) -> BuiltPreconditioner:
+        nonlocal cached
+        config = context.config.preconditioner
+        _validate_autodiff_sparse_config(config)
+        if config.rebuild_policy != "every_newton_step" and cached is not None:
+            metadata = dict(cached.metadata)
+            metadata["reused"] = True
+            return BuiltPreconditioner(operator=cached.operator, metadata=metadata)
+        matrix, metadata = assemble_closed_coupled_autodiff_sparse_jacobian(context, grid)
+        operator, factor_metadata = factorized_sparse_inverse_operator(matrix, config)
+        metadata.update(factor_metadata)
+        metadata["reused"] = False
+        built = BuiltPreconditioner(operator=operator, metadata=metadata)
+        if config.rebuild_policy != "every_newton_step":
+            cached = built
+        return built
+
+    return factory
+
+
+def make_closed_coupled_sparse_jacobian_lu_factory(
+    grid: TensorProductGrid,
+) -> Callable[[PreconditionerBuildContext], BuiltPreconditioner]:
+    cached: BuiltPreconditioner | None = None
+
+    def factory(context: PreconditionerBuildContext) -> BuiltPreconditioner:
+        nonlocal cached
+        config = context.config.preconditioner
+        _validate_sparse_factorization_config(config)
+        if config.type not in {
+            "colored_sparse_jacobian_lu",
+            "autodiff_sparse_jacobian_lu",
+        }:
+            raise ValueError(f"Unsupported preconditioner type {config.type!r}")
+        if config.rebuild_policy != "every_newton_step" and cached is not None:
+            metadata = dict(cached.metadata)
+            metadata["reused"] = True
+            return BuiltPreconditioner(operator=cached.operator, metadata=metadata)
+        matrix, metadata = assemble_closed_coupled_sparse_jacobian(context, grid)
         operator, factor_metadata = factorized_sparse_inverse_operator(matrix, config)
         metadata.update(factor_metadata)
         metadata["reused"] = False

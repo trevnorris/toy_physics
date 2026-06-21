@@ -322,6 +322,88 @@ def test_c0g_b3_reproduction_gate_reads_comparison_after_run(monkeypatch) -> Non
     assert any("comparison_state.npz" in path for path in loaded_paths)
 
 
+def test_c0g_b3_run_detector_passes_planted_fold_and_reaches_wall() -> None:
+    cfg = replace(c0.C0gB3RunPseudoArclengthConfig(), fold_sigma_monotone_points=2)
+
+    def row(index: int, tau: float, sigma: float) -> dict[str, object]:
+        return {
+            "accepted_index": index,
+            "s": float(index),
+            "solved_tau": tau,
+            "sigma_min_JQ_perp": sigma,
+            "original_residual_linf": 1.0e-8,
+            "physical_converged": True,
+            "provenance": "corrector_accepted_fresh",
+        }
+
+    fold = c0._c0g_b3_run_detect_decisive_outcome(
+        accepted=[
+            row(0, 0.031, 4.0e-5),
+            row(1, 0.030, 1.0e-5),
+            row(2, 0.029, 1.0e-6),
+            row(3, 0.030, 2.0e-5),
+            row(4, 0.031, 3.0e-5),
+        ],
+        failures=[],
+        config=cfg,
+    )
+
+    assert fold["outcome"] == "A"
+    assert fold["accepted_point_geometry"]["status"] == "PASS"
+    assert fold["sigma_recovery"]["status"] == "PASS"
+
+    wall = c0._c0g_b3_run_detect_decisive_outcome(
+        accepted=[
+            row(0, 0.031, 4.0e-5),
+            row(1, 0.030, 1.0e-5),
+            row(2, 0.0295, 1.0e-6),
+        ],
+        failures=[
+            {
+                "ds_schedule_exhausted": True,
+                "ds": cfg.min_ds,
+                "fallback_used": True,
+                "fallback_failed_reason": "corrector_line_search_failed",
+                "reason": "corrector_line_search_failed",
+            }
+        ],
+        config=cfg,
+    )
+
+    assert wall["outcome"] == "B"
+    assert wall["accepted_point_geometry"]["status"] == "FAIL"
+    assert wall["fallback_used"] is True
+    assert wall["fallback_failed_reason"] == "corrector_line_search_failed"
+
+
+def test_c0g_b3_run_secant_fallback_consumes_fallback_vector() -> None:
+    cfg = c0.C0gB3RunPseudoArclengthConfig()
+    linear = {
+        "reduced_j": np.asarray([[1.0]], dtype=np.float64),
+        "ftau_scaled": np.asarray([1.0], dtype=np.float64),
+        "col_scale": np.ones(2, dtype=np.float64),
+        "q_perp": np.asarray([[1.0], [0.0]], dtype=np.float64),
+    }
+    fallback = {
+        "dx": np.asarray([3.0, 4.0], dtype=np.float64),
+        "dtau": 0.0,
+        "provenance": "accepted_001_minus_accepted_000",
+    }
+
+    tangent = c0._c0g_b3_predictor_tangent(
+        linear=linear,
+        config=cfg,
+        previous_tangent=None,
+        secant_fallback=fallback,
+        predictor_source="secant_fallback",
+    )
+
+    assert tangent["source"] == "secant_fallback"
+    assert tangent["fallback_used"] is True
+    assert np.allclose(tangent["dx"], np.asarray([0.6, 0.8]), rtol=0.0, atol=1.0e-14)
+    assert tangent["dtau"] == 0.0
+
+
 def test_c0g_b3_followup_c1_two_start_case_reading_is_precommitted() -> None:
     cfg = c0.C0gB3FollowupConfig(c1_same_state_tolerance=5.0e-5)
     same = {"rho_linf": 1.0e-6, "curl_A_linf": 2.0e-6, "r0_linf": 3.0e-6, "mu_abs": 4.0e-6}

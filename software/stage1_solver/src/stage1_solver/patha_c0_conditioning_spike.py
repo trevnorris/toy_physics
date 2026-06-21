@@ -120,6 +120,19 @@ DEFAULT_C0G_B3_DEEPPOINT_REPORT_PATH = Path(
 DEFAULT_C0G_B3_DEEPPOINT_JSON_PATH = (
     DEFAULT_C0G_B3_DEEPPOINT_RUN_ROOT / "pathA_C0g_B3_deeppoint.json"
 )
+DEFAULT_C0G_B3_RUN_PSEUDO_ROOT = Path(
+    "software/stage1_solver/runs/pathA_C0g_B3_run_pseudoarclength"
+)
+DEFAULT_C0G_B3_RUN_PSEUDO_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0g_B3_run_pseudoarclength.md"
+)
+DEFAULT_C0G_B3_RUN_PSEUDO_JSON_PATH = (
+    DEFAULT_C0G_B3_RUN_PSEUDO_ROOT / "pathA_C0g_B3_run_pseudoarclength.json"
+)
+DEFAULT_C0G_B3_RUN_PSEUDO_ANCHOR = Path(
+    "software/stage1_solver/runs/pathA_C0g_B3_followup/C1/states/"
+    "continuation_B3_0_accepted_009_tau_0p02911625.npz"
+)
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -395,6 +408,46 @@ class C0gB3PseudoArclengthConfig:
     b31_max_steps: int = 8
     b31_required_below_count: int = 3
     b31_deepest_tau_margin: float = 1.0e-7
+    b4_reference_tau: float = C0gBuildB1B2Config().b4_reference_tau
+    b4_random_probe_count: int = C0gBuildB1B2Config().b4_random_probe_count
+    b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
+    b4_match_abs_tol: float = C0gBuildB1B2Config().b4_match_abs_tol
+    b4_match_rel_tol: float = C0gBuildB1B2Config().b4_match_rel_tol
+
+
+@dataclass(frozen=True)
+class C0gB3RunPseudoArclengthConfig:
+    anchor_state_path: Path = DEFAULT_C0G_B3_RUN_PSEUDO_ANCHOR
+    anchor_tau: float = 0.02911625
+    anchor_provenance: str = "fresh_tight_reconverge_from_B3_followup_C1"
+    run_root: Path = DEFAULT_C0G_B3_RUN_PSEUDO_ROOT
+    report_path: Path = DEFAULT_C0G_B3_RUN_PSEUDO_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_B3_RUN_PSEUDO_JSON_PATH
+    deepcrawl_json_path: Path = DEFAULT_C0G_DEEP_JSON_PATH
+    deeppoint_report_path: Path = DEFAULT_C0G_B3_DEEPPOINT_REPORT_PATH
+    deeppoint_json_path: Path = DEFAULT_C0G_B3_DEEPPOINT_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    residual_tolerance: float = BACKGROUND_RESIDUAL_TOL
+    tau_scale: float = 1000.0
+    initial_ds: float = 1.0e-3
+    min_ds: float = 4.0e-5
+    max_ds: float = 1.0e-3
+    ds_growth: float = 1.0
+    ds_shrink: float = 0.5
+    max_retries_per_step: int = 30
+    max_steps: int = 16
+    corrector_max_iters: int = 10
+    corrector_stop_residual_tolerance: float = BACKGROUND_RESIDUAL_TOL
+    corrector_lstsq_rcond: float = 1.0e-12
+    corrector_line_search_steps: int = 12
+    arclength_tolerance: float = 2.0e-6
+    ftau_h: float = 1.0e-7
+    fold_sigma_recovery_factor: float = 10.0
+    fold_sigma_monotone_points: int = 3
+    hard_wall_no_progress_N: int = 30
+    hard_wall_epsilon_res: float = 0.01
+    hard_wall_epsilon_adv: float = 1.0e-9
     b4_reference_tau: float = C0gBuildB1B2Config().b4_reference_tau
     b4_random_probe_count: int = C0gBuildB1B2Config().b4_random_probe_count
     b4_random_seed: int = C0gBuildB1B2Config().b4_random_seed
@@ -11318,6 +11371,891 @@ def _c0g_b3_stdout_summary(result: Mapping[str, Any]) -> str:
     )
 
 
+def _c0g_b3_run_config_to_dict(config: C0gB3RunPseudoArclengthConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in (
+        "anchor_state_path",
+        "run_root",
+        "report_path",
+        "json_path",
+        "deepcrawl_json_path",
+        "deeppoint_report_path",
+        "deeppoint_json_path",
+    ):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_b3_run_progress_path(config: C0gB3RunPseudoArclengthConfig) -> Path:
+    return _resolve_output_path(config.run_root / "progress.jsonl")
+
+
+def _c0g_b3_run_append_progress(
+    config: C0gB3RunPseudoArclengthConfig,
+    row: Mapping[str, Any],
+) -> None:
+    path = _c0g_b3_run_progress_path(config)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(dict(row), sort_keys=True) + "\n")
+
+
+def _c0g_b3_secant_fallback_tangent(
+    *,
+    secant_fallback: Mapping[str, Any],
+    config: C0gB3RunPseudoArclengthConfig | C0gB3PseudoArclengthConfig,
+) -> dict[str, Any]:
+    dx = np.asarray(secant_fallback["dx"], dtype=np.float64)
+    dtau = float(secant_fallback["dtau"])
+    norm = _c0g_b3_metric_norm(dx, dtau, config)
+    if norm <= 0.0 or not math.isfinite(norm):
+        raise RuntimeError("secant fallback tangent has zero/nonfinite metric norm")
+    return {
+        "dx": (dx / norm).astype(np.float64, copy=False),
+        "dtau": float(dtau / norm),
+        "source": "secant_fallback",
+        "linear_residual_rel": math.nan,
+        "null_singular_min": None,
+        "orientation_rule": "fallback_secant_actual_use",
+        "fallback_used": True,
+    }
+
+
+def _c0g_b3_predictor_tangent(
+    *,
+    linear: Mapping[str, Any],
+    config: C0gB3RunPseudoArclengthConfig,
+    previous_tangent: Mapping[str, Any] | None,
+    secant_fallback: Mapping[str, Any] | None,
+    predictor_source: str,
+) -> dict[str, Any]:
+    if predictor_source == "secant_fallback":
+        if secant_fallback is None:
+            raise RuntimeError("secant fallback requested but no secant is available")
+        tangent = _c0g_b3_secant_fallback_tangent(
+            secant_fallback=secant_fallback,
+            config=config,
+        )
+    else:
+        tangent = _c0g_b3_tangent_from_linearization(
+            linear=linear,
+            config=config,
+            previous_tangent=None if predictor_source == "tangent_reseed" else previous_tangent,
+            secant_fallback=None,
+        )
+        tangent["fallback_used"] = bool(tangent.get("source") == "secant_fallback")
+    tangent["predictor_source"] = predictor_source
+    return tangent
+
+
+def _c0g_b3_metric_balance(
+    *,
+    dx: np.ndarray,
+    dtau: float,
+    config: C0gB3RunPseudoArclengthConfig | C0gB3PseudoArclengthConfig,
+) -> dict[str, float]:
+    dx = np.asarray(dx, dtype=np.float64)
+    dx_norm_sq = float(np.dot(dx, dx))
+    tau_norm_sq = float((float(config.tau_scale) * float(dtau)) ** 2)
+    total = dx_norm_sq + tau_norm_sq
+    ds = math.sqrt(total) if total >= 0.0 else math.nan
+    return {
+        "dx_norm_sq": dx_norm_sq,
+        "tau_scaled_norm_sq": tau_norm_sq,
+        "x_fraction": dx_norm_sq / total if total > 0.0 else math.nan,
+        "delta_tau_over_delta_s": float(dtau) / ds if ds > 0.0 else math.nan,
+    }
+
+
+def _c0g_b3_run_failure_exhausted(
+    failures: Sequence[Mapping[str, Any]],
+    *,
+    config: C0gB3RunPseudoArclengthConfig,
+) -> bool:
+    if not failures:
+        return False
+    last = failures[-1]
+    fallback_ok = bool(last.get("fallback_used")) and bool(last.get("fallback_failed_reason"))
+    fallback_na = bool(last.get("fallback_not_applicable_reason"))
+    return bool(
+        last.get("ds_schedule_exhausted")
+        and float(last.get("ds", math.inf)) <= float(config.min_ds)
+        and (fallback_ok or fallback_na)
+    )
+
+
+def _c0g_b3_run_detect_decisive_outcome(
+    *,
+    accepted: Sequence[Mapping[str, Any]],
+    failures: Sequence[Mapping[str, Any]],
+    config: C0gB3RunPseudoArclengthConfig,
+) -> dict[str, Any]:
+    rows = [
+        row
+        for row in accepted
+        if bool(row.get("physical_converged"))
+        and float(row.get("original_residual_linf", math.inf)) <= float(config.residual_tolerance)
+        and row.get("provenance") == "corrector_accepted_fresh"
+    ]
+    taus = [float(row["solved_tau"]) for row in rows]
+    sigmas = [float(row["sigma_min_JQ_perp"]) for row in rows]
+    min_index = None
+    sigma_recovery = {"status": "NOT_EVALUATED"}
+    if len(rows) >= 5:
+        candidate = min(range(len(rows)), key=lambda index: taus[index])
+        before_deltas = [taus[index + 1] - taus[index] for index in range(candidate)]
+        after_deltas = [taus[index + 1] - taus[index] for index in range(candidate, len(rows) - 1)]
+        if (
+            candidate >= 2
+            and len(rows) - candidate - 1 >= 2
+            and sum(1 for value in before_deltas if value < 0.0) >= 2
+            and sum(1 for value in after_deltas if value > 0.0) >= 2
+            and all(value < 0.0 for value in before_deltas[-2:])
+            and all(value > 0.0 for value in after_deltas[:2])
+        ):
+            min_index = candidate
+    if min_index is not None:
+        near_min_sigma = min(sigmas[: min_index + 1]) if sigmas[: min_index + 1] else math.nan
+        far_sigmas = sigmas[min_index + 1 :]
+        monotone = False
+        need = int(config.fold_sigma_monotone_points)
+        if len(far_sigmas) >= need:
+            for start in range(0, len(far_sigmas) - need + 1):
+                window = far_sigmas[start : start + need]
+                if all(right > left for left, right in zip(window, window[1:])):
+                    monotone = True
+                    break
+        factor = (
+            max(far_sigmas) / near_min_sigma
+            if far_sigmas and near_min_sigma > 0.0
+            else math.nan
+        )
+        recovered = bool(
+            monotone
+            or (
+                math.isfinite(factor)
+                and factor >= float(config.fold_sigma_recovery_factor)
+            )
+        )
+        sigma_recovery = {
+            "status": "PASS" if recovered else "FAIL",
+            "near_minimum_sigma_min_JQ_perp": near_min_sigma,
+            "far_side_sigma_min_JQ_perp": far_sigmas,
+            "monotone_increase_over_required_window": monotone,
+            "recovery_factor": factor,
+            "required_factor": float(config.fold_sigma_recovery_factor),
+            "required_monotone_points": int(config.fold_sigma_monotone_points),
+        }
+        if recovered:
+            return {
+                "outcome": "A",
+                "label": "GENUINE_FOLD",
+                "why": "accepted tau(s) has a local minimum with original-residual accepted far-side points and sigma recovery",
+                "tau_fold": taus[min_index],
+                "turning_accepted_index": int(rows[min_index]["accepted_index"]),
+                "accepted_point_geometry": {
+                    "status": "PASS",
+                    "decreasing_points_before": int(min_index),
+                    "increasing_points_after": int(len(rows) - min_index - 1),
+                    "taus": taus,
+                },
+                "single_arbiter": {
+                    "status": "PASS",
+                    "residual_tolerance": float(config.residual_tolerance),
+                    "max_original_residual_linf": max(
+                        float(row["original_residual_linf"]) for row in rows
+                    ),
+                },
+                "sigma_recovery": sigma_recovery,
+            }
+    if _c0g_b3_run_failure_exhausted(failures, config=config):
+        deepest = min(taus) if taus else None
+        last = failures[-1]
+        return {
+            "outcome": "B",
+            "label": "HARD_NEAR_SINGULAR_WALL",
+            "why": "corrector failed after frozen step-size exhaustion without accepted-point tau reversal",
+            "deepest_accepted_tau": deepest,
+            "deepest_accepted_s": max(
+                (float(row.get("s", math.nan)) for row in rows),
+                default=None,
+            ),
+            "corrector_failure_mode": last.get("reason"),
+            "fallback_used": bool(last.get("fallback_used")),
+            "fallback_failed_reason": last.get("fallback_failed_reason"),
+            "fallback_not_applicable_reason": last.get("fallback_not_applicable_reason"),
+            "ds_schedule_exhausted": bool(last.get("ds_schedule_exhausted")),
+            "accepted_point_geometry": {
+                "status": "FAIL",
+                "taus": taus,
+                "reason": "no accepted tau minimum with two decreasing and two increasing fresh accepted points",
+            },
+            "sigma_recovery": sigma_recovery,
+        }
+    return {
+        "outcome": "C",
+        "label": "INCONCLUSIVE_OR_BUG",
+        "why": "neither fold criteria nor hard-wall exhaustion criteria were satisfied",
+        "accepted_point_geometry": {
+            "status": "PASS" if min_index is not None else "FAIL",
+            "taus": taus,
+        },
+        "sigma_recovery": sigma_recovery,
+        "failure_count": int(len(failures)),
+    }
+
+
+def _c0g_b3_run_sequence_decisive(
+    *,
+    start_state: np.ndarray,
+    start_tau: float,
+    config: C0gB3RunPseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    accepted: list[dict[str, Any]] = []
+    failures: list[dict[str, Any]] = []
+    state = np.asarray(start_state, dtype=np.float64).copy()
+    tau = float(start_tau)
+    previous_tangent: Mapping[str, Any] | None = None
+    previous_state_for_secant: np.ndarray | None = None
+    previous_tau_for_secant: float | None = None
+    predecessor_id = "single_declared_start_anchor"
+    s_position = 0.0
+    no_progress_attempts = 0
+    best_attempt_residual = math.inf
+    progress_path = _c0g_b3_run_progress_path(config)
+    progress_path.parent.mkdir(parents=True, exist_ok=True)
+    progress_path.write_text("", encoding="utf-8")
+    for step_index in range(int(config.max_steps)):
+        ds = float(config.initial_ds)
+        retries = 0
+        step_accepted = False
+        while retries < int(config.max_retries_per_step):
+            ds = max(float(config.min_ds), float(ds))
+            secant_fallback = None
+            if previous_state_for_secant is not None and previous_tau_for_secant is not None:
+                secant_fallback = {
+                    "dx": state - previous_state_for_secant,
+                    "dtau": float(tau - previous_tau_for_secant),
+                    "provenance": f"{predecessor_id}_minus_previous_corrector_accepted_state",
+                }
+            sources = ["tangent"]
+            if previous_tangent is not None:
+                sources.append("tangent_reseed")
+            if secant_fallback is not None:
+                sources.append("secant_fallback")
+            fallback_source_tried = False
+            failures_this_ds = 0
+            for predictor_source in sources:
+                attempt_start = time.perf_counter()
+                linear = _c0g_b3_linearization(
+                    state_np=state,
+                    tau=tau,
+                    config=config,
+                    dtype=dtype,
+                )
+                try:
+                    tangent = _c0g_b3_predictor_tangent(
+                        linear=linear,
+                        config=config,
+                        previous_tangent=previous_tangent,
+                        secant_fallback=secant_fallback,
+                        predictor_source=predictor_source,
+                    )
+                except Exception as exc:
+                    failure = {
+                        "step_index": int(step_index),
+                        "retry_index": int(retries),
+                        "status": "REJECTED",
+                        "reason": f"tangent_failed: {exc}",
+                        "s": float(s_position),
+                        "tau": float(tau),
+                        "dtauds": None,
+                        "original_residual_linf": float(np.max(np.abs(linear["residual"]))),
+                        "sigma_min_JQ_perp": float(linear["sigma_min_JQ_perp"]),
+                        "min_R0": None,
+                        "ds": float(ds),
+                        "metric_balance": None,
+                        "predictor_source": predictor_source,
+                        "secant_fallback_available": secant_fallback is not None,
+                        "fallback_dx_dtau_provenance": None
+                        if secant_fallback is None
+                        else secant_fallback.get("provenance"),
+                        "fallback_dx/dtau_provenance": None
+                        if secant_fallback is None
+                        else secant_fallback.get("provenance"),
+                        "fallback_used": predictor_source == "secant_fallback",
+                        "fallback_failed_reason": f"tangent_failed: {exc}"
+                        if predictor_source == "secant_fallback"
+                        else None,
+                        "fallback_not_applicable_reason": "no prior accepted secant"
+                        if secant_fallback is None
+                        else None,
+                        "no_forward_progress_count": int(no_progress_attempts),
+                        "wall_seconds": float(time.perf_counter() - attempt_start),
+                        "accepted_or_rejected": "REJECTED",
+                    }
+                    failures.append(failure)
+                    failures_this_ds += 1
+                    _c0g_b3_run_append_progress(config, failure)
+                    continue
+                if predictor_source == "secant_fallback":
+                    fallback_source_tried = True
+                predicted_state = state + ds * np.asarray(tangent["dx"], dtype=np.float64)
+                predicted_tau = float(tau + ds * float(tangent["dtau"]))
+                corrector = _c0g_b3_corrector(
+                    predicted_state=predicted_state,
+                    predicted_tau=predicted_tau,
+                    previous_state=state,
+                    previous_tau=tau,
+                    tangent=tangent,
+                    ds=ds,
+                    config=config,
+                    dtype=dtype,
+                )
+                wall_seconds = float(time.perf_counter() - attempt_start)
+                if corrector.get("status") == "CONVERGED":
+                    corrected_state = np.asarray(corrector["state"], dtype=np.float64)
+                    corrected_tau = float(corrector["tau"])
+                    corrected_linear = _c0g_b3_linearization(
+                        state_np=corrected_state,
+                        tau=corrected_tau,
+                        config=config,
+                        dtype=dtype,
+                    )
+                    row = _c0g_b3_make_accepted_row(
+                        index=len(accepted),
+                        stage="B3_run",
+                        predecessor_id=predecessor_id,
+                        state=corrected_state,
+                        tau=corrected_tau,
+                        tangent=tangent,
+                        ds=ds,
+                        corrector=corrector,
+                        linear=corrected_linear,
+                        config=config,
+                        dtype=dtype,
+                        wall_seconds=wall_seconds,
+                    )
+                    delta_state = corrected_state - state
+                    delta_tau = float(corrected_tau - tau)
+                    delta_s = _c0g_b3_metric_norm(delta_state, delta_tau, config)
+                    s_position += delta_s
+                    row.update(
+                        {
+                            "provenance": "corrector_accepted_fresh",
+                            "s": float(s_position),
+                            "metric_balance": _c0g_b3_metric_balance(
+                                dx=delta_state,
+                                dtau=delta_tau,
+                                config=config,
+                            ),
+                            "finite_difference_delta_tau_over_delta_s": (
+                                delta_tau / delta_s if delta_s > 0.0 else math.nan
+                            ),
+                            "predictor_source": predictor_source,
+                            "secant_fallback_available": secant_fallback is not None,
+                            "fallback_dx_dtau_provenance": None
+                            if secant_fallback is None
+                            else secant_fallback.get("provenance"),
+                            "fallback_dx/dtau_provenance": None
+                            if secant_fallback is None
+                            else secant_fallback.get("provenance"),
+                            "fallback_used": bool(tangent.get("fallback_used")),
+                            "fallback_failed_reason": None,
+                            "accepted_or_rejected": "ACCEPTED",
+                        }
+                    )
+                    accepted.append(row)
+                    _c0g_b3_run_append_progress(config, row)
+                    previous_state_for_secant = state.copy()
+                    previous_tau_for_secant = float(tau)
+                    state = corrected_state
+                    tau = corrected_tau
+                    predecessor_id = row["id"]
+                    previous_tangent = tangent
+                    no_progress_attempts = 0
+                    best_attempt_residual = math.inf
+                    step_accepted = True
+                    break
+                best_resid = float(corrector.get("final_residual_linf", math.inf))
+                reduced_enough = bool(
+                    math.isfinite(best_resid)
+                    and (
+                        not math.isfinite(best_attempt_residual)
+                        or best_resid <= (1.0 - float(config.hard_wall_epsilon_res))
+                        * best_attempt_residual
+                    )
+                )
+                if reduced_enough:
+                    best_attempt_residual = best_resid
+                    no_progress_attempts = 0
+                else:
+                    no_progress_attempts += 1
+                failure = {
+                    "step_index": int(step_index),
+                    "retry_index": int(retries),
+                    "status": "REJECTED",
+                    "reason": corrector.get("message"),
+                    "s": float(s_position),
+                    "tau": float(tau),
+                    "dtauds": float(tangent["dtau"]),
+                    "predicted_tau": predicted_tau,
+                    "best_tau": corrector.get("tau"),
+                    "original_residual_linf": best_resid,
+                    "sigma_min_JQ_perp": float(linear["sigma_min_JQ_perp"]),
+                    "min_R0": None,
+                    "ds": float(ds),
+                    "metric_balance": _c0g_b3_metric_balance(
+                        dx=ds * np.asarray(tangent["dx"], dtype=np.float64),
+                        dtau=ds * float(tangent["dtau"]),
+                        config=config,
+                    ),
+                    "finite_difference_delta_tau_over_delta_s": float(tangent["dtau"]),
+                    "predictor_source": predictor_source,
+                    "secant_fallback_available": secant_fallback is not None,
+                    "fallback_dx_dtau_provenance": None
+                    if secant_fallback is None
+                    else secant_fallback.get("provenance"),
+                    "fallback_dx/dtau_provenance": None
+                    if secant_fallback is None
+                    else secant_fallback.get("provenance"),
+                    "fallback_used": bool(tangent.get("fallback_used")),
+                    "fallback_failed_reason": corrector.get("message")
+                    if bool(tangent.get("fallback_used"))
+                    else None,
+                    "fallback_not_applicable_reason": "no prior accepted secant"
+                    if secant_fallback is None
+                    else None,
+                    "no_forward_progress_count": int(no_progress_attempts),
+                    "wall_seconds": wall_seconds,
+                    "accepted_or_rejected": "REJECTED",
+                    "corrector_rows": corrector.get("rows", []),
+                }
+                failures.append(failure)
+                failures_this_ds += 1
+                _c0g_b3_run_append_progress(config, failure)
+            if step_accepted:
+                break
+            if (
+                no_progress_attempts >= int(config.hard_wall_no_progress_N)
+                and ds <= float(config.min_ds)
+            ):
+                failures[-1]["progress_guard_triggered"] = True
+                failures[-1]["ds_schedule_exhausted"] = True
+                break
+            if ds <= float(config.min_ds):
+                if failures:
+                    failures[-1]["ds_schedule_exhausted"] = True
+                    if not fallback_source_tried and secant_fallback is None:
+                        failures[-1]["fallback_not_applicable_reason"] = "no prior accepted secant"
+                    elif not fallback_source_tried:
+                        failures[-1]["fallback_failed_reason"] = (
+                            "secant_fallback_available_but_not_reached_before_exhaustion"
+                        )
+                break
+            ds = max(float(config.min_ds), ds * float(config.ds_shrink))
+            retries += max(1, failures_this_ds)
+        if not step_accepted:
+            break
+        outcome = _c0g_b3_run_detect_decisive_outcome(
+            accepted=accepted,
+            failures=failures,
+            config=config,
+        )
+        if outcome.get("outcome") == "A":
+            break
+    outcome = _c0g_b3_run_detect_decisive_outcome(
+        accepted=accepted,
+        failures=failures,
+        config=config,
+    )
+    return {
+        "accepted": accepted,
+        "failures": failures,
+        "final_tau": float(tau),
+        "final_state_id": predecessor_id,
+        "outcome": outcome,
+        "progress_path": str(progress_path),
+        "progress_guard": {
+            "N": int(config.hard_wall_no_progress_N),
+            "epsilon_res": float(config.hard_wall_epsilon_res),
+            "epsilon_adv": float(config.hard_wall_epsilon_adv),
+            "max_observed_no_forward_progress_count": max(
+                (int(row.get("no_forward_progress_count", 0)) for row in failures),
+                default=0,
+            ),
+            "triggered": any(bool(row.get("progress_guard_triggered")) for row in failures),
+        },
+    }
+
+
+def write_c0g_b3_run_pseudoarclength_report(result: Mapping[str, Any], path: Path) -> None:
+    outcome = result.get("outcome", {})
+    run = result.get("run", {})
+    accepted = run.get("accepted", []) if isinstance(run, Mapping) else []
+    failures = run.get("failures", []) if isinstance(run, Mapping) else []
+    lines = [
+        "# Path-A C0g B-3 Run Pseudo-Arclength",
+        "",
+        f"Outcome: **{outcome.get('outcome')} - {outcome.get('label')}**",
+        "",
+        "## Frozen Schedule",
+        "",
+        "```yaml",
+    ]
+    cfg = result.get("config", {})
+    for key in (
+        "initial_ds",
+        "min_ds",
+        "ds_shrink",
+        "max_retries_per_step",
+        "tau_scale",
+        "residual_tolerance",
+        "hard_wall_no_progress_N",
+        "hard_wall_epsilon_res",
+        "hard_wall_epsilon_adv",
+    ):
+        lines.append(f"{key}: {cfg.get(key)}")
+    lines.extend(
+        [
+            "reseed_order: tangent -> tangent_reseed -> secant_fallback -> step_shrink",
+            "single_arbiter: original patha_closed_branch_residual Linf <= BACKGROUND_RESIDUAL_TOL",
+            "```",
+            "",
+            "## Seed",
+            "",
+            "```yaml",
+            f"anchor_tau: {result.get('seed', {}).get('tau')}",
+            f"anchor_state_path: {result.get('seed', {}).get('state_artifact')}",
+            f"anchor_provenance: {result.get('seed', {}).get('provenance')}",
+            "fresh_accepted_state: false",
+            "```",
+            "",
+            "## Accepted Trace",
+            "",
+            _markdown_table(
+                [
+                    "accepted_index",
+                    "s",
+                    "solved_tau",
+                    "dtauds",
+                    "finite_difference_delta_tau_over_delta_s",
+                    "original_residual_linf",
+                    "sigma_min_JQ_perp",
+                    "min_R0",
+                    "min_rho",
+                    "predictor_step",
+                    "predictor_source",
+                    "fallback_used",
+                    "secant_fallback_available",
+                    "wall_seconds",
+                ],
+                accepted,
+            ),
+            "",
+            "## Rejected Attempts",
+            "",
+            _markdown_table(
+                [
+                    "step_index",
+                    "retry_index",
+                    "s",
+                    "tau",
+                    "dtauds",
+                    "original_residual_linf",
+                    "sigma_min_JQ_perp",
+                    "ds",
+                    "predictor_source",
+                    "fallback_used",
+                    "fallback_failed_reason",
+                    "fallback_not_applicable_reason",
+                    "reason",
+                    "ds_schedule_exhausted",
+                    "no_forward_progress_count",
+                ],
+                failures[-20:],
+            ),
+            "",
+            "## Decisive Evidence",
+            "",
+            "```yaml",
+            f"{outcome}",
+            "```",
+            "",
+            "## Fresh Deep Tight State",
+            "",
+            "```yaml",
+            f"{result.get('fresh_deepest_state')}",
+            "```",
+            "",
+            "## Deeper-State Mode Comparison",
+            "",
+            str(result.get("deeper_state_mode_comparison")),
+            "",
+            "## Resolution Evidence",
+            "",
+            (
+                "- The 24x24 reproduction is physical-supporting evidence from "
+                "`reports/pathA_C0g_B3_deeppoint.md` Stage-3 and "
+                "`runs/pathA_C0g_B3_deeppoint/pathA_C0g_B3_deeppoint.json`; this report "
+                "uses the evidence, not the stale prior insufficiency label."
+            ),
+            "",
+            "## Predictor / Fallback Audit",
+            "",
+            "```yaml",
+            f"{result.get('predictor_audit')}",
+            "```",
+            "",
+            "## Scope Guard",
+            "",
+            "```yaml",
+        ]
+    )
+    for key, value in result.get("scope_guard", {}).items():
+        lines.append(f"{key}: {value}")
+    lines.extend(
+        [
+            "```",
+            "",
+            "## Git Diff Summary",
+            "",
+            "```",
+            str(result.get("git_diff_summary", "")),
+            "```",
+            "",
+            f"Machine JSON: `{result.get('json_path')}`",
+            f"Progress JSONL: `{result.get('progress_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0g_b3_run_mode_comparison(
+    *,
+    seed_state: np.ndarray,
+    seed_tau: float,
+    fresh_row: Mapping[str, Any] | None,
+    config: C0gB3RunPseudoArclengthConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any] | str:
+    if fresh_row is None:
+        return "no deeper state - comparison N/A"
+    fresh_state = _c0g_b3_followup_state_np(str(fresh_row["state_artifact"]), dtype=dtype)
+    c2_config = C0gB3FollowupConfig(
+        deepcrawl_json_path=config.deepcrawl_json_path,
+        b3_json_path=config.json_path,
+        run_root=config.run_root / "mode_comparison",
+        report_path=config.report_path,
+        json_path=config.json_path,
+        grid=config.grid,
+        jacobian_assembly=config.jacobian_assembly,
+        tau_scale=config.tau_scale,
+    )
+    anchor = _c0g_b3_followup_c2_from_state(
+        label="declared_anchor",
+        state=np.asarray(seed_state, dtype=np.float64),
+        tau=float(seed_tau),
+        config=c2_config,
+        dtype=dtype,
+    )
+    fresh = _c0g_b3_followup_c2_from_state(
+        label="fresh_deepest",
+        state=fresh_state,
+        tau=float(fresh_row["solved_tau"]),
+        config=c2_config,
+        dtype=dtype,
+    )
+    anchor_mode = np.load(_resolve_input_path(anchor["mode_artifact"]))["physical_mode"]
+    fresh_mode = np.load(_resolve_input_path(fresh["mode_artifact"]))["physical_mode"]
+    denom = float(np.linalg.norm(anchor_mode) * np.linalg.norm(fresh_mode))
+    abs_cosine = (
+        float(abs(np.dot(anchor_mode, fresh_mode)) / denom)
+        if denom > 0.0
+        else math.nan
+    )
+    return {
+        "status": "MEASURED",
+        "comparison": "declared_anchor_vs_fresh_deepest_corrector_accepted_state",
+        "self_comparison": False,
+        "anchor_tau": float(seed_tau),
+        "fresh_tau": float(fresh_row["solved_tau"]),
+        "fresh_state_artifact": str(fresh_row["state_artifact"]),
+        "abs_physical_mode_cosine": abs_cosine,
+        "anchor": anchor,
+        "fresh_deepest": fresh,
+    }
+
+
+def run_c0g_b3_run_pseudoarclength(
+    config: C0gB3RunPseudoArclengthConfig | None = None,
+    *,
+    b4_recheck: bool = True,
+) -> dict[str, Any]:
+    cfg = config or C0gB3RunPseudoArclengthConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    _resolve_output_path(cfg.run_root).mkdir(parents=True, exist_ok=True)
+    anchor_path = _resolve_input_path(cfg.anchor_state_path)
+    seed_state = _load_state_artifact(anchor_path, dtype=dtype)
+    seed_np = seed_state.detach().cpu().numpy().astype(np.float64, copy=True)
+    seed_residual, _branch, seed_grid = _c0g_b3_residual_np(
+        state_np=seed_np,
+        tau=float(cfg.anchor_tau),
+        config=cfg,
+        dtype=dtype,
+    )
+    seed_metrics = _state_metrics(seed_state, seed_grid)
+    if b4_recheck:
+        b4_reconfirm: Mapping[str, Any] = run_c0g_b4_match_gate(
+            C0gBuildB1B2Config(
+                run_root=cfg.run_root / "b4_reconfirm_context",
+                report_path=cfg.report_path,
+                json_path=cfg.json_path,
+                grid=cfg.grid,
+                jacobian_assembly=cfg.jacobian_assembly,
+                b4_reference_tau=float(cfg.b4_reference_tau),
+                b4_random_probe_count=int(cfg.b4_random_probe_count),
+                b4_random_seed=int(cfg.b4_random_seed),
+                b4_match_abs_tol=float(cfg.b4_match_abs_tol),
+                b4_match_rel_tol=float(cfg.b4_match_rel_tol),
+            )
+        )
+    else:
+        b4_reconfirm = {"status": "SKIPPED_BY_RUN_ARGUMENT"}
+    run = _c0g_b3_run_sequence_decisive(
+        start_state=seed_np,
+        start_tau=float(cfg.anchor_tau),
+        config=cfg,
+        dtype=dtype,
+    )
+    accepted = list(run.get("accepted", []))
+    deepest_row = min(accepted, key=lambda row: float(row["solved_tau"])) if accepted else None
+    all_attempts = list(accepted) + list(run.get("failures", []))
+    predictor_audit = {
+        "secant_fallback_available_count": sum(
+            1 for row in all_attempts if row.get("secant_fallback_available")
+        ),
+        "fallback_used_count": sum(1 for row in all_attempts if row.get("fallback_used")),
+        "fallback_failed_reasons": [
+            row.get("fallback_failed_reason")
+            for row in run.get("failures", [])
+            if row.get("fallback_failed_reason")
+        ],
+        "predictor_sources": sorted(
+            {
+                str(row.get("predictor_source"))
+                for row in all_attempts
+                if row.get("predictor_source")
+            }
+        ),
+        "attempted_flag_without_actual_use": False,
+    }
+    result = {
+        "schema": "stage1_pathA_C0g_B3_run_pseudoarclength/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_b3_run_config_to_dict(cfg),
+        "seed": {
+            "tau": float(cfg.anchor_tau),
+            "state_artifact": str(anchor_path),
+            "provenance": cfg.anchor_provenance,
+            "original_residual_linf": float(np.max(np.abs(seed_residual))),
+            "residual_tolerance": float(cfg.residual_tolerance),
+            "physical_converged": bool(
+                np.max(np.abs(seed_residual)) <= float(cfg.residual_tolerance)
+            ),
+            "metrics": seed_metrics,
+        },
+        "b4_reconfirm": dict(b4_reconfirm),
+        "run": run,
+        "outcome": run.get("outcome"),
+        "fresh_deepest_state": (
+            {
+                "tau": float(deepest_row["solved_tau"]),
+                "s": float(deepest_row["s"]),
+                "state_artifact": deepest_row["state_artifact"],
+                "original_residual_linf": float(deepest_row["original_residual_linf"]),
+                "min_R0": float(deepest_row["min_R0"]),
+                "min_rho": float(deepest_row["min_rho"]),
+                "provenance": deepest_row["provenance"],
+            }
+            if deepest_row is not None
+            else "none - Outcome B"
+        ),
+        "deeper_state_mode_comparison": _c0g_b3_run_mode_comparison(
+            seed_state=seed_np,
+            seed_tau=float(cfg.anchor_tau),
+            fresh_row=deepest_row,
+            config=cfg,
+            dtype=dtype,
+        ),
+        "predictor_audit": predictor_audit,
+        "scope_guard": {
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "convergence_judged_only_on_original_residual": True,
+            "branch_acceptance_tolerance": float(BACKGROUND_RESIDUAL_TOL),
+            "bordered_arclength_residual_is_not_acceptance_arbiter": True,
+            "B4_direction_tangent_svd_only": True,
+            "gauge_Q_perp_rebuilt_inside_every_solve": True,
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "frozen_physics_touched": False,
+            "no_LM_no_PTC_no_Sobolev_regularization": True,
+        },
+        "git_diff_summary": _c0g_b3_git_diff_summary(),
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(cfg.report_path)),
+        "json_path": str(_resolve_output_path(cfg.json_path)),
+        "progress_path": run.get("progress_path"),
+    }
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_b3_run_pseudoarclength_report(result, report_path)
+    return result
+
+
+def _c0g_b3_run_stdout_summary(result: Mapping[str, Any]) -> str:
+    outcome = result.get("outcome", {})
+    deepest = result.get("fresh_deepest_state")
+    run = result.get("run", {})
+    failures = run.get("failures", []) if isinstance(run, Mapping) else []
+    final_failure = failures[-1] if failures else {}
+    scope = result.get("scope_guard", {})
+    audit = result.get("predictor_audit", {})
+    return "\n".join(
+        [
+            f"OUTCOME {outcome.get('outcome')}: {outcome.get('label')} - {outcome.get('why')}",
+            f"decisive_evidence: {outcome}",
+            f"deepest_fresh_tight_state: {deepest}",
+            (
+                "corrector_failure_mode: "
+                f"{final_failure.get('reason')}; deepest accepted s/tau="
+                f"{outcome.get('deepest_accepted_s')}/{outcome.get('deepest_accepted_tau')}"
+            )
+            if outcome.get("outcome") == "B"
+            else f"tau_fold: {outcome.get('tau_fold')}",
+            f"predictor_secant_fallback_audit: {audit}",
+            (
+                "scope untouched: residual/operators/(1/xi)/export/physics="
+                f"{not scope.get('patha_closed_branch_residual_touched')}/"
+                f"{not scope.get('faithful_operators_touched')}/"
+                f"{not scope.get('xi_or_grad_div_penalty_touched')}/"
+                f"{not scope.get('physical_export_permitted_touched')}/"
+                f"{not scope.get('frozen_physics_touched')}; "
+                f"Single Arbiter only={scope.get('convergence_judged_only_on_original_residual')}; "
+                f"B-4 direction-only={scope.get('B4_direction_tangent_svd_only')}; "
+                f"progress_guard={run.get('progress_guard')}"
+            ),
+            f"files: report={result.get('report_path')}, json={result.get('json_path')}, progress={result.get('progress_path')}",
+        ]
+    )
+
+
 def _c0g_b3_followup_config_to_dict(config: C0gB3FollowupConfig) -> dict[str, Any]:
     data = asdict(config)
     for key in ("deepcrawl_json_path", "b3_json_path", "run_root", "report_path", "json_path"):
@@ -14488,6 +15426,53 @@ def c0g_b3_pseudoarclength_main(argv: Sequence[str] | None = None) -> int:
         b30_only=bool(args.b30_only),
     )
     print(_c0g_b3_stdout_summary(result))
+    return 0
+
+
+def c0g_b3_run_pseudoarclength_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run the decisive Path-A C0g B-3 pseudo-arclength continuation."
+    )
+    default = C0gB3RunPseudoArclengthConfig()
+    parser.add_argument("--anchor-state", type=Path, default=default.anchor_state_path)
+    parser.add_argument("--anchor-tau", type=float, default=default.anchor_tau)
+    parser.add_argument("--run-root", type=Path, default=default.run_root)
+    parser.add_argument("--report-path", type=Path, default=default.report_path)
+    parser.add_argument("--json-path", type=Path, default=default.json_path)
+    parser.add_argument("--skip-b4-recheck", action="store_true")
+    parser.add_argument("--max-steps", type=int, default=default.max_steps)
+    parser.add_argument("--initial-ds", type=float, default=default.initial_ds)
+    parser.add_argument("--min-ds", type=float, default=default.min_ds)
+    parser.add_argument("--ds-shrink", type=float, default=default.ds_shrink)
+    parser.add_argument("--max-retries-per-step", type=int, default=default.max_retries_per_step)
+    parser.add_argument("--tau-scale", type=float, default=default.tau_scale)
+    parser.add_argument("--corrector-max-iters", type=int, default=default.corrector_max_iters)
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=default.jacobian_assembly,
+    )
+    args = parser.parse_args(argv)
+    config = C0gB3RunPseudoArclengthConfig(
+        anchor_state_path=args.anchor_state,
+        anchor_tau=float(args.anchor_tau),
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        jacobian_assembly=str(args.jacobian_assembly),
+        initial_ds=float(args.initial_ds),
+        min_ds=float(args.min_ds),
+        ds_shrink=float(args.ds_shrink),
+        max_retries_per_step=int(args.max_retries_per_step),
+        max_steps=int(args.max_steps),
+        tau_scale=float(args.tau_scale),
+        corrector_max_iters=int(args.corrector_max_iters),
+    )
+    result = run_c0g_b3_run_pseudoarclength(
+        config,
+        b4_recheck=not bool(args.skip_b4_recheck),
+    )
+    print(_c0g_b3_run_stdout_summary(result))
     return 0
 
 

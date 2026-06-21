@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; battery→Case 1 verified; DEEP-POINT ran→GENUINE full-budget wall, NOT discretization/gauge, fold-CANDIDATE → pseudo-arclength (B-3) now EARNED, USER-GATE PENDING → see §0 block (5c))
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; battery→Case 1; deep-point→genuine wall; B-3 pseudo-arclength RAN→FOLD (EARNED-BUT-OVERSTATED: likely turned early + NO deeper throat) → ⭐ STRATEGIC PIVOT: min_R0 stuck ~0.798, τ does NOT control throat depth → see §0 block (5d))
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -309,6 +309,28 @@ genuinely DEEPER tight state B-3 produces; (ii) reproduce ≥1 FRESH deep tight 
 (iii) credit the 24×24 reproduction as physical-supporting + optionally run 32×32 to confirm. NOTE: the FIRST B-3 run's B-3.0
 "FAIL" was the Case-1 STALE-REFERENCE artifact (now refuted) — the pseudo-arclength continuation itself WORKS (reproduces the branch
 to τ≈0.0291162); the task is to push it PAST the stall. **Build/run only after the user gates** (Case-2-tool rule).
+
+**(5c) RESULT — B-3 pseudo-arclength RAN 2026-06-21 (user-gated), DUAL-REVIEWED. Outcome A GENUINE_FOLD — EARNED-BUT-OVERSTATED.**
+FIDELITY-CLEAN (fold detector fail-able — planted-wall→Outcome B; secant-fallback bug FIXED+unit-tested; Single Arbiter held;
+frozen physics 0-diff). Adversarial = **EARNED-BUT-OVERSTATED**. The numerical fold is real: from the anchor (τ=0.02911625, fresh
+tight reconverge) the gauge-fixed pseudo-arclength produced 6 corrector-accepted points, `dτ/ds` through 0 at τ_fold=0.029115870
+(2 down / 3 up), Single Arbiter held (max orig-residual 1.33e-7 ≤1e-6), σ_min(J·Q_perp) recovered 12.5× (1.0e-5→1.26e-4 monotone).
+**BUT two corrections (override the report prose):** (1) **LIKELY TURNED EARLY** — it turned at σ_min≈1.0e-5, yet the deep-point
+fixed-τ run reached σ_min≈4.8e-7 at τ=0.0291150 (DEEPER + ~20× more singular); a genuine fold turns AT the σ_min minimum, so
+fold-vs-wobbled-shallow is UNRESOLVED (needs smaller-ds). (2) **NO DEEPER THROAT** — min_R0 RISES 0.7975→0.7992 (throat OPENS),
+min_rho flat ~7.2e-6; the report's "Fresh Deep Tight State" is mislabeled (branch-accepted 6.7e-8, not tight; not deeper than
+fixed-τ Newton). Report annotated with the correction (`reports/pathA_C0g_B3_run_pseudoarclength.md` header). Code/report committed.
+
+**(5d) ⭐⭐ RESUME HERE (2026-06-21) — STRATEGIC PIVOT: τ does NOT control throat depth.** Across the deepcrawl + deep-point +
+B-3 runs, **min_R0 is STUCK ~0.798 for the ENTIRE τ range** ([[project-pathA-build]]: "τ-depth ≠ R0-depth; empty-core NEVER
+approached" — now CONCRETE). So pushing the τ-continuation — fold or wall — does NOT deliver the deep/empty-core throat the program
+wants (R0→small). The τ≈0.0291159 obstruction is now CHARACTERIZED (a fold, modulo the turned-early check) and is a DEAD END for
+throat-deepening. **The open question to bring to the user (DONE — see options): what actually controls throat depth?** Candidates:
+the R0 CONSTITUTIVE FAMILY (the posited placeholder knob, never promoted to a frozen branch — the most likely real depth knob);
+a different continuation parameter; or the calibrate-predict reframe (branch data = KNOBS, so maybe a deep throat is SELECTED via a
+constitutive choice, not crawled to via τ). Cheap optional side-quest: smaller-ds B-3 re-run to settle turned-early-vs-genuine-deep-fold
+(low priority if pivoting off τ). The report "Deep/Tight" mislabel + min_R0 caveat are corrected in decisions/13 + the report header;
+a future Codex pass can clean the report body.
 - **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_deeppoint_execution_prompt.md`**, launched as a
   `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, bring the
   Case + tool to the user. **Design-review:** Codex read-only on `_scratch/pathA_C0g_B3_deeppoint_design_review_prompt.md`

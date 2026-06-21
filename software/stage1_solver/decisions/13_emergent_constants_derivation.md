@@ -331,6 +331,26 @@ a different continuation parameter; or the calibrate-predict reframe (branch dat
 constitutive choice, not crawled to via τ). Cheap optional side-quest: smaller-ds B-3 re-run to settle turned-early-vs-genuine-deep-fold
 (low priority if pivoting off τ). The report "Deep/Tight" mislabel + min_R0 caveat are corrected in decisions/13 + the report header;
 a future Codex pass can clean the report body.
+
+**(5e) ⭐⭐ RE-SCOPE (USER-GATED "do we even need a deep throat?") — CLAUDE(2 agents)+CODEX CONSENSUS: REFRAME-SOUND-WITH-CAVEATS;
+GLM TERTIARY PENDING.** Two clean read-only investigations (calibrate-predict pipeline + per-observable physics) AND a Codex
+adversarial refutation attempt ALL conclude: **NO downstream observable requires an EMPTY-CORE throat (R0→0, ρ_center→0); the
+converged OPEN finite-core family (min_R0≈0.798) is SUFFICIENT to proceed** to constitutive-family → calibrate-predict → `pathA_22`.
+Evidence: extraction calibrates over τ (root-find `R_norm(τ)=0`), the only geometric gate is OPEN-throat (`R0(L)>0`, `hard_cap`
+REJECTED — the OPPOSITE of empty core); the 1c run extracted the full chain at finite core R0∈[0.99,1.0]; FORCE (pathA_21c)
+"does NOT need the solved interior profile" (far-field + normalization knob); κ_PV positively REQUIRES a FINITE core (a0≈0.79;
+empty core makes its functional singular); 5PN/g−2/moving-throat need finite-aperture overlaps + the `D0=K−B0−Z0→0` near-pole gate,
+never ρ_center→0; canonical ontology (`pde_audit_full.md`, `defect_interaction_map.md`) REQUIRES a finite OPEN conduit (hard-cap
+forbidden). **The "empty-core" target was introduced in the C0b solver directive as a re-interpretation of "deep/realistic" with NO
+downstream derivation behind it ⇒ the τ-deep-throat "white whale" was largely chasing a numerical feature off the critical path.**
+**THE ONE SERIOUS CAVEAT (Codex, → GLM):** the force derivation assumes `core scale ≪ aperture a ≪ r12`; the frozen family has
+`a=1` (FROZEN_A) and min_R0≈0.798, so `0.798 ≪ 1` is FALSE — the current branch may NOT be in the controlled point-defect regime.
+This needs SCALE SEPARATION (core≪a), NOT an empty core — satisfiable by a smaller core / larger aperture / explicit finite-aperture
+(1/a) correction. Lesser risks: the one-knob B2c root isn't currently found (wants near-pole `D0≪K` — naturalness); emergent
+constants need "a profile," not an empty one. **GLM prompt:** `_scratch/reframe_empty_core_GLM_consult_prompt.md` (user runs GLM;
+focus = is core≪a a HARD prerequisite for pathA_21c/pathA_22, and can the finite-core calibrate-predict branch proceed now with
+scale-separation as a parallel correction). After GLM: if 3-way consensus holds → PIVOT off the τ-deep-throat hunt → promote the
+constitutive family + run calibrate-predict on the finite-core branch (the scale-separation fix is the new, cheaper sub-problem).
 - **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_deeppoint_execution_prompt.md`**, launched as a
   `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, bring the
   Case + tool to the user. **Design-review:** Codex read-only on `_scratch/pathA_C0g_B3_deeppoint_design_review_prompt.md`

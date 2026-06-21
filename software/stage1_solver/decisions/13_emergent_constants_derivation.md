@@ -225,9 +225,13 @@ null space AND lets the crawl sample closer to τ_fold. (b) re-run cheap Steps 1
 τ_fold → if σ_min² stays linear-monotone and cond(J·Q_perp) crosses ~1e8–1e10 with cond(Jb) flat, promote MIXED →
 FOLD_CONFIRMED. (c) **gauge-fixed PSEUDO-ARCLENGTH continuation** to round the fold. **SKIP the LM/PTC conditioning detour**
 (evidence disfavors — LM damps but never rounds a fold). + analytic/sparse Jacobian assembly unconditionally (after the
-color audit; 253 colors = deterministic radius-3, NOT a bug). → author the C0g-BUILD directive → Codex design-review +
-confirm-pass ([[feedback-directive-design-review]]) → user execution gate → then constitutive family → calibrated branch
-→ calibrate-predict (R0/J/W → anchor → SURPLUS) → `pathA_22`.
+color audit; 253 colors = deterministic radius-3, NOT a bug). → **C0g-BUILD directive READY**
+(`directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`; design-review SOUND-WITH-FIXES → 8 fixes → confirm-pass
+STILL-NEEDS(3) → 3 fixes → re-confirm SOUND-AS-IS; committed) — its B-1/B-2/B-3/B-4 structure: gauge-fix path-only →
+re-confirm the fold via RELATIVE trend gates (the absolute cond>1e10 bar dropped as self-defeating) → gauge-fixed
+pseudo-arclength (only if FOLD_CONFIRMED) → analytic/sparse assembly. **NEXT = the USER EXECUTION GATE → Codex executes**
+([[feedback-directive-design-review]]) → then constitutive family → calibrated branch → calibrate-predict (R0/J/W → anchor
+→ SURPLUS) → `pathA_22`.
 **LESSON (candidate memory): a "gauge-invariant" metric built as derivative/value is dimensionally a wavenumber and
 amplifies high-k remnants — use the dimensionless energy fraction; and ALWAYS check the solver CONFIG (iter budget,
 backtracking) before diagnosing a "wall" as physics.**

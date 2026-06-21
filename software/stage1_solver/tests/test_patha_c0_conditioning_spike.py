@@ -467,6 +467,108 @@ def test_c0g_b3_followup_c3_line_scan_detects_spike(monkeypatch) -> None:
     assert result["max_normalized_residual"] >= 1.0e12
 
 
+def test_c0g_b3_deeppoint_stage1_case_reads_monotone_bracket() -> None:
+    rows = [
+        {"label": "shallow", "tau": 0.02911625, "status": "TIGHT_CONVERGED"},
+        {"label": "edge", "tau": 0.0291132, "status": "TIGHT_CONVERGED"},
+        {"label": "deep", "tau": 0.0291131, "status": "STALLED"},
+        {"label": "deeper", "tau": 0.0291128, "status": "NOT_TIGHT_CONVERGED"},
+    ]
+
+    result = c0._c0g_b3_deeppoint_stage1_case(rows)
+
+    assert result["case"] == "BRACKETED_NEAR_SINGULARITY"
+    assert result["reading"] == "monotone_tight_to_non_tight_as_tau_deepens"
+    assert result["target_label"] == "edge"
+    assert result["first_non_tight_label"] == "deep"
+
+
+def test_c0g_b3_deeppoint_stage1_case_keeps_nonmonotone_inconclusive() -> None:
+    rows = [
+        {"label": "shallow", "tau": 0.02911625, "status": "TIGHT_CONVERGED"},
+        {"label": "miss", "tau": 0.0291132, "status": "NOT_TIGHT_CONVERGED"},
+        {"label": "deeper_tight", "tau": 0.0291131, "status": "TIGHT_CONVERGED"},
+    ]
+
+    result = c0._c0g_b3_deeppoint_stage1_case(rows)
+
+    assert result["case"] == "Case 0"
+    assert result["monotone"] is False
+
+
+def test_c0g_b3_deeppoint_c4_relocation_synthetic(monkeypatch, tmp_path) -> None:
+    config = c0.C0gB3DeepPointConfig(run_root=tmp_path, c4_tau_window_radius=1)
+    c1 = {
+        "case_reading": {"target_label": "feature"},
+        "results": [
+            {
+                "label": "prefeature",
+                "tau": 0.02911625,
+                "status": "TIGHT_CONVERGED",
+                "state_artifact": "prefeature.npz",
+                "final_residual_linf": 1.0e-12,
+            },
+            {
+                "label": "feature",
+                "tau": 0.0291132,
+                "status": "TIGHT_CONVERGED",
+                "state_artifact": "feature.npz",
+                "final_residual_linf": 1.0e-12,
+            },
+        ],
+    }
+
+    def fake_resample_seed(**kwargs):
+        del kwargs
+        return np.zeros(7, dtype=np.float64)
+
+    def fake_reconverge(*, row, label, config, dtype, tau=None, start_state=None):
+        del config, dtype, tau, start_state
+        return {
+            "label": label,
+            "status": "TIGHT_CONVERGED",
+            "tau": float(row["tau"]),
+            "state_artifact": f"{label}.npz",
+            "final_residual_linf": 1.0e-12,
+            "final_step_norm": 1.0e-10,
+        }
+
+    def fake_state(path, *, dtype):
+        del path, dtype
+        return np.zeros(7, dtype=np.float64)
+
+    def fake_c2(*, label, state, tau, config, dtype):
+        del state, config, dtype
+        sigma = 1.0e-6 if "feature" in label and "prefeature" not in label else 1.0e-3
+        return {
+            "label": label,
+            "tau": tau,
+            "status": "MEASURED",
+            "sigma_min": sigma,
+            "sigma_max": 10.0,
+            "smallest_singular_values": [sigma],
+            "sector_energy_fractions": {"r0": 0.9, "mu": 0.1, "psi": 0.0, "A": 0.0},
+            "localization": {"classification": "EXTENDED"},
+        }
+
+    monkeypatch.setattr(c0, "_c0g_b3_deeppoint_resample_seed", fake_resample_seed)
+    monkeypatch.setattr(c0, "_c0g_b3_deeppoint_reconverge_row", fake_reconverge)
+    monkeypatch.setattr(c0, "_c0g_b3_followup_state_np", fake_state)
+    monkeypatch.setattr(c0, "_c0g_b3_followup_c2_from_state", fake_c2)
+
+    result = c0._c0g_b3_deeppoint_c4_grid(
+        grid_shape=(24, 24),
+        c1=c1,
+        config=config,
+        dtype=torch.float64,
+    )
+
+    assert result["status"] == "MEASURED"
+    assert result["feature_tau"] == pytest.approx(0.0291132)
+    assert result["collapse_ratio_same_grid"] == pytest.approx(1.0e-3)
+    assert result["sigma_min_over_sigma_max_feature"] == pytest.approx(1.0e-7)
+
+
 def test_c0g_provenance_fails_if_real_prefer_existing_field_absent() -> None:
     with pytest.raises(KeyError):
         c0._c0g_prefer_existing_flag_from_c0f2_payload({"config": {}})

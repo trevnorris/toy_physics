@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; B-3 first run DONE→NOT_MEASURED, GLM-REFRAMED → EXECUTE the CHARACTERIZATION BATTERY → see §0 block (5))
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; battery→Case 1 verified; DEEP-POINT ran→GENUINE full-budget wall, NOT discretization/gauge, fold-CANDIDATE → pseudo-arclength (B-3) now EARNED, USER-GATE PENDING → see §0 block (5c))
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -257,7 +257,7 @@ regardless.
   `pathA_C0g_build_B1B2.py`/`_finalize_timeout.py`/`build_B4_B2.py`/`deepcrawl.py`; reports `pathA_C0g_build_B1B2.md` +
   `pathA_C0g_deepcrawl.md`; JSON under `runs/pathA_C0g_build_B1B2/` + `runs/pathA_C0g_deepcrawl/` (gitignored).
 
-**(5) ⭐⭐ RESUME HERE (2026-06-21, post-/compact) — EXECUTE the B-3 FOLLOW-UP v2 CHARACTERIZATION BATTERY.**
+**(5) ⭐⭐ HISTORY (2026-06-21) — the B-3 FOLLOW-UP v2 CHARACTERIZATION BATTERY RAN → Case 1 VERIFIED. [resume = block (5b) below].**
 B-3 (gauge-fixed Keller pseudo-arclength) was BUILT + RAN (committed `46a3ea21`) → honest **`NOT_MEASURED`** at the B-3.0
 validation gate (reproduces the branch to ~1e-6 except at the deepest point, where it's compared vs an UNDER-CONVERGED recorded
 Newton state). **GLM tertiary consult REFRAMED it:** the proposed "decisive" Phase-D overlap test was NEAR-TAUTOLOGICAL (two
@@ -268,9 +268,51 @@ mode-characterization (+ bordered fold-transversality `wᵀF_τ` + independent-b
 resolution check — feeding a **6-outcome tool-selection table** (Case 0 INCONCLUSIVE / 1 under-converged-ref / 2 simple-fold /
 3 bifurcation / 4 conditioning-wall / 5 gauge-or-discretization). **DO NOT pre-commit to pseudo-arclength** — only Case 2 (with
 a user gate) runs the already-built pseudo-arclength; every other case STOPS for a re-gate.
-- **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_followup_execution_prompt.md`**, launched as a
-  `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, then
-  bring the Case + chosen tool to the user.
+- **RESULT (RAN 2026-06-21, committed `50b9f459`): Case 1 at τ=0.02911625** — both seeds (recorded `attempt_008` + continuation
+  `B3_0_accepted_009`) tight-converged (orig-residual ~2e-13, step ~2e-11) to the SAME gauge-invariant root (r0_linf ~5e-12) ⇒
+  the B-3.0 gate "FAIL" was a **STALE-REFERENCE artifact, NOT a buggy continuation.** Dual-reviewed: **FIDELITY-CLEAN** (all
+  C0–C4 ops faithful; Single Arbiter = original residual; frozen physics zero-diff) + **VERDICT-EARNED** (genuine independent
+  two-start descent — different files AND different start-residuals 2.22e-7 vs 2.10e-9 — not a cold-load short-circuit; C2
+  tension disclosed). Verdict `STOP_RECONVERGE_DEEP_STATES_AND_GATE_REFINE_THEN_C2_C4`; no tool pre-committed.
+- **STILL OPEN:** the genuinely-DEEPER near-singularity (~τ=0.0291132, σ_min(J·Q_perp) still dropping steeply, 7.03e-6 at the
+  deepest converged τ, 7e-7 above the σ² zero-crossing 0.0291139). C2 measured one rung ABOVE it leans FOLD (isolated near-null,
+  `wᵀF_τ`≈0.92 fold-transversal, dominant **r0**) but localization dissents (EXTENDED) and **C4/resolution was never run** ⇒
+  fold-vs-wall-vs-discretization UNSETTLED.
+- **EXECUTE (history):** `_scratch/pathA_C0g_B3_followup_execution_prompt.md` (the Case-1 run, done).
+
+**(5b) ⭐⭐ DEEP-POINT characterization (USER-GATED "characterize the deep point") — RAN 2026-06-21, DUAL-REVIEWED. [resume = (5c)]**
+**RESULT (committed this batch): the τ≈0.0291159 wall is a GENUINE near-singularity — the contest-the-wall trap did NOT recur, and
+it is NOT a discretization artifact.** Stage 1 = a clean MONOTONE tight→non-tight bracket: only τ=0.02911625 tight (a cold-loaded
+prior anchor — see caveat), all deeper τ STALL (2.22e-8 at τ=0.02911594, worsening with depth). **Adversarial-VERIFIED the stalls
+are FULL-BUDGET (`c1_max_iters=120`, 12-step halving line-search α→0.5¹¹≈4.9e-4 then TOTAL collapse, σ_min monotonically →3.7e-7)
+— plain Newton genuinely cannot cross. The 3×-recurring crippled-solver trap is REFUTED here.** Stage 2 = isolated near-null,
+r0-dominant (0.994), `wᵀF_τ`≈0.92 FOLD_TRANSVERSAL, non-gauge — a fold-LIKE mode at the bracket edge. Stage 3 (C4) = the 24×24
+relocation was a GENUINE full attempt that converged 4 orders then hit the SAME wall at the SAME τ (throat open, min_R0≈0.798) ⇒
+**the feature REPRODUCES under grid refinement = NOT a 16×16 discretization artifact** (the run UNDER-read this as merely
+"insufficient"; adversarial promoted it to physical-supporting). Fidelity = FIDELITY-CLEAN (full budget, Single Arbiter, frozen
+physics untouched). **TWO honest caveats (adversarial):** (a) the tight bracket-edge is a COLD-LOADED prior anchor — no FRESH deep
+tight state was reproduced this run; (b) Stage-2 "FOLD_SIGNATURE_SHARPENS_OR_PERSISTS" is a VACUOUS self-comparison (anchor vs the
+PRIOR run's C2 of the SAME anchor — byte-identical, can't-fail) → DROP it; only a deeper tight state (which pseudo-arclength can
+produce) gives a real sharpens-vs-dissolves read ([[feedback-decisive-test-not-tautological]]).
+**VERDICT REVISED (adversarial, Claude concurs): the run's `STOP_NO_REMEDY` was TOO CONSERVATIVE.** A genuine full-budget σ_min→0
+stall that is NOT discretization and NOT gauge, with a fold-like transversal mode but NO demonstrated branch-tangent reversal, is
+the EXACT precondition that EARNS the pseudo-arclength (B-3) tool — the only tool that distinguishes "rounds a genuine fold"
+(tangent reversal) from "hard near-singular wall." σ_min→0 ALONE stays fold-vs-wall AMBIGUOUS ([[feedback-contest-wall-verdict]]),
+and B-3 is the discriminator. So B-3 is NOW GENUINELY EARNED (not spent on a refuted shallow fold). Deep-point ORIGINAL spec was:
+Re-converge `attempt_022..028` TIGHT (FULL budget) = contest-the-wall → C2 at the deepest TIGHT → C4 24×24 → 6-case map.
+
+**(5c) ⭐⭐ RESUME HERE (2026-06-21) — RUN the pseudo-arclength (B-3), USER-GATE PENDING.** The deep-point battery EARNED it.
+Bring to the user: gate to run the already-built gauge-fixed Keller pseudo-arclength (B-3) THROUGH the τ≈0.0291159 stall and read
+**tangent-reversal (genuine fold → continue to deeper throats) vs hard-wall (corrector also fails → LM/trust-region or rethink).**
+Secondary asks the next B-3 run must honor (adversarial): (i) DROP the tautological Stage-2 self-comparison — compare only against a
+genuinely DEEPER tight state B-3 produces; (ii) reproduce ≥1 FRESH deep tight state (don't rest on the cold-loaded anchor);
+(iii) credit the 24×24 reproduction as physical-supporting + optionally run 32×32 to confirm. NOTE: the FIRST B-3 run's B-3.0
+"FAIL" was the Case-1 STALE-REFERENCE artifact (now refuted) — the pseudo-arclength continuation itself WORKS (reproduces the branch
+to τ≈0.0291162); the task is to push it PAST the stall. **Build/run only after the user gates** (Case-2-tool rule).
+- **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_deeppoint_execution_prompt.md`**, launched as a
+  `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, bring the
+  Case + tool to the user. **Design-review:** Codex read-only on `_scratch/pathA_C0g_B3_deeppoint_design_review_prompt.md`
+  (IN PROGRESS at last checkpoint — apply MUST-FIX before launch). Monitoring policy (no 600s cap) applies.
 - **Contract:** the directive's "⭐⭐ B-3 FOLLOW-UP v2 (AMENDMENT, 2026-06-21, GLM-REFRAMED)" section
   (`directives/pathA_C0g_build_gaugefix_then_pseudoarclength.md`). **Loop CLOSED:** design-review (Codex AGREES w/ GLM) =
   SOUND-WITH-FIXES (12) → fixes applied → confirm-pass SOUND-AS-IS (1 trivial Case-0 enumeration fix applied after).

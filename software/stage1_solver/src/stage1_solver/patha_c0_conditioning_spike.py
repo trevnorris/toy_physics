@@ -113,6 +113,13 @@ DEFAULT_C0G_B3_FOLLOWUP_REPORT_PATH = Path(
 DEFAULT_C0G_B3_FOLLOWUP_JSON_PATH = (
     DEFAULT_C0G_B3_FOLLOWUP_RUN_ROOT / "pathA_C0g_B3_followup.json"
 )
+DEFAULT_C0G_B3_DEEPPOINT_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_B3_deeppoint")
+DEFAULT_C0G_B3_DEEPPOINT_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0g_B3_deeppoint.md"
+)
+DEFAULT_C0G_B3_DEEPPOINT_JSON_PATH = (
+    DEFAULT_C0G_B3_DEEPPOINT_RUN_ROOT / "pathA_C0g_B3_deeppoint.json"
+)
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -415,12 +422,50 @@ class C0gB3FollowupConfig:
     c1_stall_window: int = 30
     c1_stall_residual_decrease: float = 0.01
     c1_same_state_tolerance: float = 5.0e-5
+    c1_bracket_refine_width: float = 5.0e-7
+    c1_bracket_refine_max: int = 4
     c2_singular_count: int = 10
     c2_cluster_gap_ratio: float = 10.0
     c2_ftau_abs_small: float = 1.0e-8
     c3_points: int = 31
     c3_spike_factor: float = 100.0
     c4_run: bool = False
+
+
+@dataclass(frozen=True)
+class C0gB3DeepPointConfig:
+    deepcrawl_json_path: Path = DEFAULT_C0G_DEEP_JSON_PATH
+    b3_followup_json_path: Path = DEFAULT_C0G_B3_FOLLOWUP_JSON_PATH
+    run_root: Path = DEFAULT_C0G_B3_DEEPPOINT_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_B3_DEEPPOINT_REPORT_PATH
+    json_path: Path = DEFAULT_C0G_B3_DEEPPOINT_JSON_PATH
+    deep_state_dir: Path = (
+        DEFAULT_C0G_DEEP_RUN_ROOT / "gauge_fixed/gauge_fixed_crawl/states"
+    )
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    jacobian_assembly: str = "autodiff_sparse_jacobian_lu"
+    tau_scale: float = 1000.0
+    selected_attempt_window: tuple[int, int] = (22, 28)
+    shallow_anchor_tau: float = 0.02911625
+    sigma_fit_zero_crossing: float = 0.0291139
+    c1_residual_tolerance: float = 1.0e-11
+    c1_step_tolerance: float = 1.0e-9
+    c1_max_iters: int = 120
+    c1_lstsq_rcond: float = 1.0e-12
+    c1_line_search_steps: int = 12
+    c1_stall_window: int = 30
+    c1_stall_residual_decrease: float = 0.01
+    c1_same_state_tolerance: float = 5.0e-5
+    c1_bracket_refine_width: float = 5.0e-7
+    c1_bracket_refine_max: int = 4
+    c2_singular_count: int = 10
+    c2_cluster_gap_ratio: float = 10.0
+    c2_ftau_abs_small: float = 1.0e-8
+    c3_points: int = 31
+    c3_spike_factor: float = 100.0
+    c4_grids: tuple[tuple[int, int], ...] = ((24, 24),)
+    c4_include_32: bool = False
+    c4_tau_window_radius: int = 1
 
 
 @dataclass(frozen=True)
@@ -11053,7 +11098,14 @@ def _c0g_b3_git_diff_summary() -> str:
     import subprocess
 
     proc = subprocess.run(
-        ["git", "diff", "--", "src/stage1_solver/coupled_branch.py", "src/stage1_solver/operators.py"],
+        [
+            "git",
+            "diff",
+            "--",
+            "src/stage1_solver/coupled_branch.py",
+            "src/stage1_solver/operators.py",
+            "src/stage1_solver/preconditioners.py",
+        ],
         cwd=str(Path(__file__).resolve().parents[2]),
         text=True,
         stdout=subprocess.PIPE,
@@ -11062,7 +11114,10 @@ def _c0g_b3_git_diff_summary() -> str:
     )
     if proc.stdout.strip():
         return proc.stdout.strip()
-    return "No diff in src/stage1_solver/coupled_branch.py or src/stage1_solver/operators.py."
+    return (
+        "No diff in src/stage1_solver/coupled_branch.py, "
+        "src/stage1_solver/operators.py, or src/stage1_solver/preconditioners.py."
+    )
 
 
 def run_c0g_b3_pseudoarclength(
@@ -11935,6 +11990,7 @@ def _c0g_b3_followup_c2_from_state(
         "status": "MEASURED",
         "smallest_singular_values": smallest,
         "sigma_min": float(singular[-1]) if singular.size else math.nan,
+        "sigma_max": float(singular[0]) if singular.size else math.nan,
         "sigma_gap_ratio_next_over_min": gap_ratio,
         "cluster_call": cluster_call,
         "sector_energy_fractions": _c0g_b3_followup_sector_fractions(physical_mode, linear["grid"]),
@@ -12358,6 +12414,922 @@ def _c0g_b3_followup_stdout_summary(result: Mapping[str, Any]) -> str:
                 f"{not scope.get('physical_export_permitted_touched')}/"
                 f"{not scope.get('frozen_physics_touched')}; "
                 f"Single Arbiter only={scope.get('convergence_judged_only_on_original_residual')}; "
+                f"progress stalled={result.get('progress_guard', {}).get('stalled')}"
+            ),
+            f"Files: report={result.get('report_path')}, json={result.get('json_path')}, progress={result.get('progress_path')}",
+        ]
+    )
+
+
+def _c0g_b3_deeppoint_config_to_dict(config: C0gB3DeepPointConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in (
+        "deepcrawl_json_path",
+        "b3_followup_json_path",
+        "run_root",
+        "report_path",
+        "json_path",
+        "deep_state_dir",
+    ):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_b3_deeppoint_progress_path(config: C0gB3DeepPointConfig) -> Path:
+    return _resolve_output_path(config.run_root / "progress.jsonl")
+
+
+def _c0g_b3_deeppoint_parse_attempt_path(path: Path) -> dict[str, Any] | None:
+    stem = path.stem
+    if not stem.startswith("attempt_") or "_tau_" not in stem:
+        return None
+    attempt_text, tau_text = stem.split("_tau_", 1)
+    try:
+        attempt_index = int(attempt_text.split("_", 1)[1])
+        tau = float(tau_text.replace("p", "."))
+    except (IndexError, ValueError):
+        return None
+    return {
+        "attempt_index": attempt_index,
+        "tau": tau,
+        "state_artifact": str(path),
+        "state_path": str(path),
+        "source": "deepcrawl_state_dir",
+    }
+
+
+def _c0g_b3_deeppoint_harvest_state_metadata(payload: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+
+    def visit(value: Any) -> None:
+        if isinstance(value, Mapping):
+            state_text = value.get("state_artifact") or value.get("state_path")
+            tau_value = value.get("tau") if value.get("tau") is not None else value.get("solved_tau")
+            if state_text is not None and tau_value is not None:
+                try:
+                    path = _resolve_input_path(str(state_text))
+                    tau = float(tau_value)
+                except (TypeError, ValueError):
+                    path = None
+                    tau = math.nan
+                if path is not None:
+                    residual = (
+                        value.get("original_residual_linf")
+                        if value.get("original_residual_linf") is not None
+                        else value.get("final_original_residual_linf")
+                    )
+                    if residual is None:
+                        residual = value.get("residual_linf")
+                    rows[str(path)] = {
+                        "tau": tau,
+                        "recorded_original_residual_linf": None
+                        if residual is None
+                        else float(residual),
+                        "recorded_status": value.get("status"),
+                        "recorded_solver_converged": value.get("solver_converged"),
+                        "recorded_newton_iters": value.get("newton_iters"),
+                    }
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+            for child in value:
+                visit(child)
+
+    visit(payload)
+    return rows
+
+
+def _c0g_b3_deeppoint_selected_state_rows(
+    *,
+    deep_payload: Mapping[str, Any],
+    followup_payload: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+) -> list[dict[str, Any]]:
+    metadata = _c0g_b3_deeppoint_harvest_state_metadata(deep_payload)
+    state_dir = _resolve_input_path(config.deep_state_dir)
+    low, high = config.selected_attempt_window
+    selected: list[dict[str, Any]] = []
+    if state_dir.exists():
+        for path in sorted(state_dir.glob("attempt_*_tau_*.npz")):
+            parsed = _c0g_b3_deeppoint_parse_attempt_path(path)
+            if parsed is None:
+                continue
+            attempt = int(parsed["attempt_index"])
+            if not (int(low) <= attempt <= int(high)):
+                continue
+            meta = metadata.get(str(path), {})
+            row = {**parsed, **meta}
+            row["selection_reason"] = "near_stall_attempt_window_enumerated_from_state_dir"
+            selected.append(row)
+
+    shallow_candidates = []
+    for key in ("recorded", "continuation"):
+        row = followup_payload.get("C1", {}).get(key, {})
+        if row.get("status") != "TIGHT_CONVERGED":
+            continue
+        try:
+            tau = float(row.get("tau"))
+            state_artifact = str(row.get("state_artifact"))
+        except (TypeError, ValueError):
+            continue
+        shallow_candidates.append(
+            {
+                "attempt_index": None,
+                "tau": tau,
+                "state_artifact": state_artifact,
+                "state_path": state_artifact,
+                "recorded_original_residual_linf": row.get("final_residual_linf"),
+                "recorded_status": row.get("status"),
+                "source": f"B3_followup_C1_{key}",
+                "selection_reason": "prior_tight_reconverged_shallow_anchor",
+            }
+        )
+    if shallow_candidates:
+        selected.append(
+            min(
+                shallow_candidates,
+                key=lambda row: abs(float(row["tau"]) - float(config.shallow_anchor_tau)),
+            )
+        )
+
+    def sort_key(row: Mapping[str, Any]) -> tuple[float, float]:
+        residual = row.get("recorded_original_residual_linf")
+        return (
+            -float(row.get("tau", math.nan)),
+            float(residual) if residual is not None else math.inf,
+        )
+
+    selected.sort(key=sort_key)
+    for index, row in enumerate(selected):
+        row["selection_order"] = int(index)
+    return selected
+
+
+def _c0g_b3_deeppoint_label(row: Mapping[str, Any], prefix: str = "stage1") -> str:
+    source = str(row.get("source", "state")).replace("/", "_").replace(" ", "_")
+    attempt = row.get("attempt_index")
+    attempt_text = "anchor" if attempt is None else f"attempt_{int(attempt):03d}"
+    return f"{prefix}_{source}_{attempt_text}_tau_{_format_tau(float(row['tau']))}"
+
+
+def _c0g_b3_deeppoint_reconverge_row(
+    *,
+    row: Mapping[str, Any],
+    label: str,
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+    tau: float | None = None,
+    start_state: np.ndarray | None = None,
+) -> dict[str, Any]:
+    start = (
+        np.asarray(start_state, dtype=np.float64)
+        if start_state is not None
+        else _c0g_b3_followup_state_np(str(row["state_artifact"]), dtype=dtype)
+    )
+    result = _c0g_b3_followup_reconverge_fixed_tau(
+        label=label,
+        start_state=start,
+        tau=float(row["tau"] if tau is None else tau),
+        config=config,
+        dtype=dtype,
+    )
+    invariants = result.get("invariants")
+    if isinstance(invariants, dict):
+        result["invariants_summary"] = {
+            "rho_min": float(np.min(invariants["rho"])),
+            "rho_max": float(np.max(invariants["rho"])),
+            "curl_A_linf": float(np.max(np.abs(invariants["curl_A"]))),
+            "r0_min": float(np.min(invariants["r0"])),
+            "r0_max": float(np.max(invariants["r0"])),
+            "mu": float(invariants["mu"]),
+        }
+        result.pop("invariants", None)
+    result["start_provenance"] = {
+        "source": row.get("source"),
+        "state_artifact": str(row.get("state_artifact")),
+        "selection_reason": row.get("selection_reason"),
+        "recorded_original_residual_linf": row.get("recorded_original_residual_linf"),
+        "recorded_status": row.get("recorded_status"),
+        "interpolated_seed_only": bool(row.get("interpolated_seed_only", False)),
+    }
+    result["attempt_index"] = row.get("attempt_index")
+    return result
+
+
+def _c0g_b3_deeppoint_stage1_case(
+    results: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    ordered = sorted(results, key=lambda row: float(row["tau"]), reverse=True)
+    tight_flags = [row.get("status") == "TIGHT_CONVERGED" for row in ordered]
+    if not ordered:
+        return {"case": "Case 0", "reading": "no_selected_states", "target": None}
+    if all(tight_flags):
+        target = min(ordered, key=lambda row: float(row["tau"]))
+        return {
+            "case": "ALL_TIGHT_BRANCH_CONTINUES",
+            "reading": "all_selected_states_reached_tight_tol",
+            "target_label": target.get("label"),
+            "target_tau": float(target["tau"]),
+            "first_non_tight_tau": None,
+            "monotone": True,
+        }
+    first_non_index = next(index for index, tight in enumerate(tight_flags) if not tight)
+    if any(tight_flags[first_non_index + 1 :]):
+        return {
+            "case": "Case 0",
+            "reading": "non_monotone_tightness_deeper_state_tight_after_shallower_non_tight",
+            "target_label": None,
+            "target_tau": None,
+            "first_non_tight_tau": float(ordered[first_non_index]["tau"]),
+            "monotone": False,
+        }
+    if first_non_index == 0:
+        return {
+            "case": "Case 0",
+            "reading": "no_shallow_tight_anchor_before_non_tight_transition",
+            "target_label": None,
+            "target_tau": None,
+            "first_non_tight_tau": float(ordered[first_non_index]["tau"]),
+            "monotone": False,
+        }
+    target = ordered[first_non_index - 1]
+    first_non = ordered[first_non_index]
+    return {
+        "case": "BRACKETED_NEAR_SINGULARITY",
+        "reading": "monotone_tight_to_non_tight_as_tau_deepens",
+        "target_label": target.get("label"),
+        "target_tau": float(target["tau"]),
+        "first_non_tight_label": first_non.get("label"),
+        "first_non_tight_tau": float(first_non["tau"]),
+        "bracket_width_tau": abs(float(target["tau"]) - float(first_non["tau"])),
+        "monotone": True,
+    }
+
+
+def _c0g_b3_deeppoint_stage1(
+    *,
+    deep_payload: Mapping[str, Any],
+    followup_payload: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    selected = _c0g_b3_deeppoint_selected_state_rows(
+        deep_payload=deep_payload,
+        followup_payload=followup_payload,
+        config=config,
+    )
+    results: list[dict[str, Any]] = []
+    for row in selected:
+        label = _c0g_b3_deeppoint_label(row)
+        result = _c0g_b3_deeppoint_reconverge_row(
+            row=row,
+            label=label,
+            config=config,
+            dtype=dtype,
+        )
+        result["label"] = label
+        results.append(result)
+
+    case = _c0g_b3_deeppoint_stage1_case(results)
+    refinements: list[dict[str, Any]] = []
+    while (
+        case.get("case") == "BRACKETED_NEAR_SINGULARITY"
+        and float(case.get("bracket_width_tau", 0.0)) > float(config.c1_bracket_refine_width)
+        and len(refinements) < int(config.c1_bracket_refine_max)
+    ):
+        tight = next(row for row in results if row.get("label") == case.get("target_label"))
+        non_tight = next(row for row in results if row.get("label") == case.get("first_non_tight_label"))
+        mid_tau = 0.5 * (float(tight["tau"]) + float(non_tight["tau"]))
+        tight_state = _c0g_b3_followup_state_np(str(tight["state_artifact"]), dtype=dtype)
+        refine_seed = {
+            "source": "stage1_bracket_refinement_from_tight_edge",
+            "state_artifact": str(tight["state_artifact"]),
+            "selection_reason": "fixed_tau_bisect_wide_monotone_bracket",
+            "tau": mid_tau,
+            "attempt_index": None,
+        }
+        label = f"refine_{len(refinements):02d}_tau_{_format_tau(mid_tau)}"
+        refined = _c0g_b3_deeppoint_reconverge_row(
+            row=refine_seed,
+            label=label,
+            config=config,
+            dtype=dtype,
+            tau=mid_tau,
+            start_state=tight_state,
+        )
+        refined["label"] = label
+        refinements.append(refined)
+        results.append(refined)
+        case = _c0g_b3_deeppoint_stage1_case(results)
+
+    return {
+        "status": "MEASURED",
+        "selected_states": selected,
+        "results": sorted(results, key=lambda row: float(row["tau"]), reverse=True),
+        "refinements": refinements,
+        "case_reading": case,
+        "tight_bar": {
+            "original_residual_linf_max": float(config.c1_residual_tolerance),
+            "step_norm_max": float(config.c1_step_tolerance),
+            "max_iters_budget": int(config.c1_max_iters),
+        },
+    }
+
+
+def _c0g_b3_deeppoint_state_by_label(c1: Mapping[str, Any], label: str) -> Mapping[str, Any] | None:
+    for row in c1.get("results", []):
+        if row.get("label") == label:
+            return row
+    return None
+
+
+def _c0g_b3_deeppoint_stage2(
+    *,
+    c1: Mapping[str, Any],
+    followup_payload: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    target_label = c1.get("case_reading", {}).get("target_label")
+    if not target_label:
+        return {"status": "SKIPPED_STAGE1_CASE0", "reason": "no deepest tight target"}
+    target = _c0g_b3_deeppoint_state_by_label(c1, str(target_label))
+    if not target:
+        return {"status": "SKIPPED_TARGET_NOT_FOUND"}
+    target_state = _c0g_b3_followup_state_np(str(target["state_artifact"]), dtype=dtype)
+    c2 = _c0g_b3_followup_c2_from_state(
+        label=f"deeppoint_{target_label}",
+        state=target_state,
+        tau=float(target["tau"]),
+        config=config,
+        dtype=dtype,
+    )
+    one_rung = {}
+    rows = followup_payload.get("C2", {}).get("state_results", [])
+    if rows:
+        one_rung = dict(rows[0])
+    c3 = _c0g_b3_deeppoint_c3_neighbor_scan(
+        c1=c1,
+        target=target,
+        config=config,
+        dtype=dtype,
+    )
+    prior_ftau = one_rung.get("fold_transversality", {}).get("normalized_abs_wT_Ftau")
+    deep_ftau = c2.get("fold_transversality", {}).get("normalized_abs_wT_Ftau")
+    prior_sigma = one_rung.get("sigma_min")
+    deep_sigma = c2.get("sigma_min")
+    if prior_ftau is None or deep_ftau is None:
+        comparison = "NOT_MEASURED"
+    elif float(deep_ftau) >= 0.9 * float(prior_ftau) and (
+        prior_sigma is None or float(deep_sigma) <= float(prior_sigma)
+    ):
+        comparison = "FOLD_SIGNATURE_SHARPENS_OR_PERSISTS"
+    else:
+        comparison = "FOLD_SIGNATURE_DISSOLVES_OR_WEAKENS"
+    return {
+        "status": "MEASURED",
+        "target_label": target_label,
+        "target_tau": float(target["tau"]),
+        "C2": c2,
+        "C3": c3,
+        "one_rung_above_C2_reference": one_rung,
+        "sharpen_or_dissolve": comparison,
+    }
+
+
+def _c0g_b3_deeppoint_c3_neighbor_scan(
+    *,
+    c1: Mapping[str, Any],
+    target: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    target_tau = float(target["tau"])
+    candidates = [
+        row
+        for row in c1.get("results", [])
+        if row.get("label") != target.get("label") and row.get("status") == "TIGHT_CONVERGED"
+    ]
+    if not candidates:
+        return {"status": "SKIPPED_NO_TIGHT_NEIGHBOR"}
+    neighbor = min(candidates, key=lambda row: abs(float(row["tau"]) - target_tau))
+    target_state = _c0g_b3_followup_state_np(str(target["state_artifact"]), dtype=dtype)
+    neighbor_state = _c0g_b3_followup_state_np(str(neighbor["state_artifact"]), dtype=dtype)
+    _branch, grid, _residual_fn = _c0g_b3_context(
+        tau=target_tau,
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C3",
+            grid=config.grid,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    aligned_neighbor, alignment = _c0g_global_phase_align_np(target_state, neighbor_state, grid)
+    endpoint_floor = max(
+        float(target["final_residual_linf"]),
+        float(neighbor["final_residual_linf"]),
+        np.finfo(np.float64).tiny,
+    )
+    rows = []
+    for index, t in enumerate(np.linspace(0.0, 1.0, int(config.c3_points))):
+        state = (1.0 - float(t)) * target_state + float(t) * aligned_neighbor
+        residual, _branch, _grid = _c0g_b3_residual_np(
+            state_np=state,
+            tau=target_tau,
+            config=C0gB3PseudoArclengthConfig(
+                deepcrawl_json_path=config.deepcrawl_json_path,
+                run_root=config.run_root / "C3",
+                grid=config.grid,
+                jacobian_assembly=config.jacobian_assembly,
+                tau_scale=config.tau_scale,
+            ),
+            dtype=dtype,
+        )
+        linf = float(np.max(np.abs(residual)))
+        rows.append(
+            {
+                "index": int(index),
+                "t": float(t),
+                "tau_evaluated": target_tau,
+                "original_residual_linf": linf,
+                "normalized_to_tight_endpoint_floor": float(linf / endpoint_floor),
+            }
+        )
+    max_normalized = max(float(row["normalized_to_tight_endpoint_floor"]) for row in rows)
+    return {
+        "status": "MEASURED",
+        "target_label": target.get("label"),
+        "neighbor_label": neighbor.get("label"),
+        "neighbor_tau": float(neighbor["tau"]),
+        "phase_alignment": alignment,
+        "endpoint_residual_floor": endpoint_floor,
+        "max_normalized_residual": max_normalized,
+        "call": "SPIKE" if max_normalized >= float(config.c3_spike_factor) else "FLAT_OR_NO_CLEAR_SPIKE",
+        "supporting_only_not_proof": True,
+        "rows": rows,
+    }
+
+
+def _c0g_b3_deeppoint_resample_seed(
+    *,
+    state_path: str,
+    tau: float,
+    old_grid_shape: tuple[int, int],
+    new_grid_shape: tuple[int, int],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> np.ndarray:
+    old_branch, old_grid, _old_residual = _c0g_b3_context(
+        tau=float(tau),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C4" / "seed_old",
+            grid=old_grid_shape,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    new_branch, new_grid, _new_residual = _c0g_b3_context(
+        tau=float(tau),
+        config=C0gB3PseudoArclengthConfig(
+            deepcrawl_json_path=config.deepcrawl_json_path,
+            run_root=config.run_root / "C4" / f"seed_{new_grid_shape[0]}x{new_grid_shape[1]}",
+            grid=new_grid_shape,
+            jacobian_assembly=config.jacobian_assembly,
+            tau_scale=config.tau_scale,
+        ),
+        dtype=dtype,
+    )
+    del old_branch
+    seed = torch.as_tensor(
+        _c0g_b3_followup_state_np(state_path, dtype=dtype),
+        dtype=dtype,
+        device="cpu",
+    )
+    return (
+        resample_closed_branch_state(seed, old_grid, new_grid, new_branch)
+        .detach()
+        .cpu()
+        .numpy()
+        .astype(np.float64, copy=True)
+    )
+
+
+def _c0g_b3_deeppoint_c4_grid(
+    *,
+    grid_shape: tuple[int, int],
+    c1: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    target_label = c1.get("case_reading", {}).get("target_label")
+    if not target_label:
+        return {"grid": list(grid_shape), "status": "SKIPPED_NO_STAGE1_TARGET"}
+    ordered = list(c1.get("results", []))
+    ordered.sort(key=lambda row: float(row["tau"]), reverse=True)
+    target_index = next(
+        (index for index, row in enumerate(ordered) if row.get("label") == target_label),
+        None,
+    )
+    if target_index is None:
+        return {"grid": list(grid_shape), "status": "SKIPPED_TARGET_NOT_FOUND"}
+    lo = max(0, target_index - int(config.c4_tau_window_radius))
+    hi = min(len(ordered), target_index + int(config.c4_tau_window_radius) + 1)
+    seed_rows = ordered[lo:hi]
+    relocated: list[dict[str, Any]] = []
+    for seed_row in seed_rows:
+        seed_state = _c0g_b3_deeppoint_resample_seed(
+            state_path=str(seed_row["state_artifact"]),
+            tau=float(seed_row["tau"]),
+            old_grid_shape=config.grid,
+            new_grid_shape=grid_shape,
+            config=config,
+            dtype=dtype,
+        )
+        seed = {
+            "source": f"interpolated_16x16_seed_to_{grid_shape[0]}x{grid_shape[1]}",
+            "state_artifact": str(seed_row["state_artifact"]),
+            "selection_reason": "C4_resolution_relocation_seed_not_evidence",
+            "recorded_original_residual_linf": seed_row.get("final_residual_linf"),
+            "recorded_status": seed_row.get("status"),
+            "tau": float(seed_row["tau"]),
+            "attempt_index": seed_row.get("attempt_index"),
+            "interpolated_seed_only": True,
+        }
+        local_config = replace(config, grid=grid_shape)
+        label = f"C4_{grid_shape[0]}x{grid_shape[1]}_{seed_row.get('label', 'seed')}"
+        solved = _c0g_b3_deeppoint_reconverge_row(
+            row=seed,
+            label=label,
+            config=local_config,
+            dtype=dtype,
+            start_state=seed_state,
+        )
+        solved["label"] = label
+        if solved.get("status") == "TIGHT_CONVERGED":
+            state = _c0g_b3_followup_state_np(str(solved["state_artifact"]), dtype=dtype)
+            c2 = _c0g_b3_followup_c2_from_state(
+                label=label,
+                state=state,
+                tau=float(solved["tau"]),
+                config=local_config,
+                dtype=dtype,
+            )
+            solved["c2"] = c2
+            solved["sigma_min_raw_scaled"] = c2.get("sigma_min")
+            solved["sigma_min_over_sigma_max"] = float(
+                c2.get("sigma_min", math.nan)
+                / max(float(c2.get("sigma_max", math.nan)), np.finfo(np.float64).tiny)
+            )
+        relocated.append(solved)
+    tight = [row for row in relocated if row.get("status") == "TIGHT_CONVERGED"]
+    if len(tight) < 2:
+        return {
+            "grid": list(grid_shape),
+            "status": "INSUFFICIENT_TIGHT_RELOCATION",
+            "seed_provenance": "interpolated seeds only; accepted evidence requires same-grid original residual tight convergence",
+            "rows": relocated,
+        }
+    feature = min(tight, key=lambda row: float(row.get("sigma_min_raw_scaled", math.inf)))
+    prefeature_candidates = [
+        row for row in tight if float(row["tau"]) > float(feature["tau"])
+    ]
+    prefeature = (
+        max(prefeature_candidates, key=lambda row: float(row.get("sigma_min_raw_scaled", -math.inf)))
+        if prefeature_candidates
+        else max(tight, key=lambda row: float(row.get("sigma_min_raw_scaled", -math.inf)))
+    )
+    feature_sigma = float(feature.get("sigma_min_raw_scaled", math.nan))
+    pre_sigma = float(prefeature.get("sigma_min_raw_scaled", math.nan))
+    return {
+        "grid": list(grid_shape),
+        "status": "MEASURED",
+        "feature_tau": float(feature["tau"]),
+        "prefeature_tau": float(prefeature["tau"]),
+        "raw_scaled_sigma_min_feature": feature_sigma,
+        "raw_scaled_sigma_min_prefeature": pre_sigma,
+        "collapse_ratio_same_grid": float(feature_sigma / max(pre_sigma, np.finfo(np.float64).tiny)),
+        "sigma_min_over_sigma_max_feature": feature.get("sigma_min_over_sigma_max"),
+        "feature_mode_sector": feature.get("c2", {}).get("sector_energy_fractions"),
+        "feature_localization": feature.get("c2", {}).get("localization"),
+        "rows": relocated,
+        "seed_provenance": "interpolated lower-res states are seeds only; rows accepted by original residual at this resolution",
+    }
+
+
+def _c0g_b3_deeppoint_stage3(
+    *,
+    c1: Mapping[str, Any],
+    c2_stage: Mapping[str, Any],
+    config: C0gB3DeepPointConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    grids = list(config.c4_grids)
+    if bool(config.c4_include_32) and (32, 32) not in grids:
+        grids.append((32, 32))
+    status = "LIMITED_16_24_ONLY"
+    rows = [
+        _c0g_b3_deeppoint_c4_grid(
+            grid_shape=tuple(grid),
+            c1=c1,
+            config=config,
+            dtype=dtype,
+        )
+        for grid in grids
+    ]
+    if any(tuple(row.get("grid", [])) == (32, 32) for row in rows):
+        status = "MEASURED_16_24_32"
+    if not any(row.get("status") == "MEASURED" for row in rows):
+        status = "LIMITED_C4_INSUFFICIENT_TIGHT_RELOCATION"
+    c2 = c2_stage.get("C2", {})
+    sigma_min = c2.get("sigma_min")
+    sigma_max = c2.get("sigma_max")
+    return {
+        "status": status,
+        "omission_log": None
+        if status == "MEASURED_16_24_32"
+        else "32x32 deferred by configuration; C4 verdict is candidate/limited only.",
+        "grid_16_reference": {
+            "tau": c2_stage.get("target_tau"),
+            "raw_scaled_sigma_min_feature": sigma_min,
+            "sigma_min_over_sigma_max_feature": None
+            if sigma_min is None or sigma_max is None
+            else float(float(sigma_min) / max(float(sigma_max), np.finfo(np.float64).tiny)),
+            "feature_mode_sector": c2.get("sector_energy_fractions"),
+            "feature_localization": c2.get("localization"),
+        },
+        "relocated_grids": rows,
+    }
+
+
+def _c0g_b3_deeppoint_tool_selection(
+    *,
+    c1: Mapping[str, Any],
+    c2_stage: Mapping[str, Any],
+    c4: Mapping[str, Any],
+) -> dict[str, Any]:
+    case = c1.get("case_reading", {}).get("case")
+    if case == "Case 0":
+        return {
+            "case": "Case 0",
+            "chosen_tool": "STOP_DEBUG_RE_GATE",
+            "why": c1.get("case_reading", {}).get("reading"),
+        }
+    if c4.get("status") not in {"LIMITED_16_24_ONLY", "MEASURED_16_24_32"}:
+        return {
+            "case": "CANDIDATE_ONLY_C4_NOT_DECISIVE",
+            "chosen_tool": "STOP_NO_REMEDY_TOOL",
+            "why": f"C4 status {c4.get('status')} does not provide a tight same-grid relocation, so no physical/discretization case is finalized",
+        }
+    c2 = c2_stage.get("C2", {})
+    gauge = c2.get("gauge_tests", {})
+    if (
+        float(gauge.get("independent_expanded_candidate_projection_fraction", 0.0)) >= 0.9
+        or float(gauge.get("scaled_removed_gauge_projection_fraction", 0.0)) >= 0.9
+    ):
+        return {
+            "case": "Case 5_candidate",
+            "chosen_tool": "STOP_RE_GATE_GAUGE_FIX_EXTENSION",
+            "why": "independent gauge overlap is high at the deep point",
+        }
+    fold_like = (
+        c2.get("cluster_call") == "ISOLATED_NEAR_NULL"
+        and c2.get("fold_transversality", {}).get("call") == "FOLD_TRANSVERSAL"
+    )
+    if fold_like:
+        return {
+            "case": "Case 2_candidate" if c4.get("status") == "LIMITED_16_24_ONLY" else "Case 2",
+            "chosen_tool": "STOP_REPORT_PSEUDO_ARCLENGTH_INDICATED_BUT_NOT_RUN",
+            "why": "isolated non-gauge near-null with fold-transversal wT_Ftau and measured C4 support/limit",
+        }
+    if c2.get("cluster_call") == "CLUSTER_OR_NO_CLEAR_GAP":
+        return {
+            "case": "Case 3_candidate",
+            "chosen_tool": "STOP_RE_GATE_DEFLATION_BRANCH_SWITCHING",
+            "why": "near-null cluster at the deep point",
+        }
+    return {
+        "case": "Case 4_candidate",
+        "chosen_tool": "STOP_RE_GATE_LM_TRUST_REGION",
+        "why": "near-singular floor without decisive fold/bifurcation/gauge evidence",
+    }
+
+
+def write_c0g_b3_deeppoint_report(result: Mapping[str, Any], path: Path) -> None:
+    c1 = result.get("Stage1", {})
+    c2 = result.get("Stage2", {})
+    c4 = result.get("Stage3", {})
+    tool = result.get("tool_selection", {})
+    lines = [
+        "# Path-A C0g B-3 Deep-Point Characterization",
+        "",
+        "## Contract",
+        "",
+        "- Deep-point battery only; no remedy tool was run.",
+        "- Fixed-tau convergence is judged only by the original `patha_closed_branch_residual` Linf norm and update norm.",
+        "- B-4 autodiff sparse Jacobian is used only for Newton directions and SVD diagnostics.",
+        "",
+        "## Stage 1 - Deep Re-Converge",
+        "",
+        f"- reading: `{c1.get('case_reading', {}).get('case')}` / `{c1.get('case_reading', {}).get('reading')}`",
+        f"- target tau: `{_c0g_fmt(c1.get('case_reading', {}).get('target_tau'))}`",
+        f"- first non-tight tau: `{_c0g_fmt(c1.get('case_reading', {}).get('first_non_tight_tau'))}`",
+        "",
+        "| tau | label | status | final residual | final step | iterations |",
+        "|---:|---|---|---:|---:|---:|",
+    ]
+    for row in c1.get("results", []):
+        lines.append(
+            "| {tau} | `{label}` | `{status}` | {res} | {step} | {iters} |".format(
+                tau=_c0g_fmt(row.get("tau")),
+                label=row.get("label"),
+                status=row.get("status"),
+                res=_c0g_fmt(row.get("final_residual_linf")),
+                step=_c0g_fmt(row.get("final_step_norm")),
+                iters=row.get("iterations"),
+            )
+        )
+    stage2_c2 = c2.get("C2", {})
+    lines.extend(
+        [
+            "",
+            "## Stage 2 - C2/C3 At Deep Point",
+            "",
+            f"- status: `{c2.get('status')}`",
+            f"- smallest singular values: `{stage2_c2.get('smallest_singular_values')}`",
+            f"- cluster call: `{stage2_c2.get('cluster_call')}`",
+            f"- sector fractions: `{stage2_c2.get('sector_energy_fractions')}`",
+            f"- fold transversality: `{stage2_c2.get('fold_transversality')}`",
+            f"- gauge tests: `{stage2_c2.get('gauge_tests')}`",
+            f"- localization: `{stage2_c2.get('localization')}`",
+            f"- one-rung comparison: `{c2.get('sharpen_or_dissolve')}`",
+            f"- C3 line scan: status `{c2.get('C3', {}).get('status')}`, call `{c2.get('C3', {}).get('call')}`, max normalized `{_c0g_fmt(c2.get('C3', {}).get('max_normalized_residual'))}`",
+            "",
+            "## Stage 3 - C4 Resolution Relocation",
+            "",
+            f"- status: `{c4.get('status')}`",
+            f"- omission log: `{c4.get('omission_log')}`",
+            f"- 16x16 reference: `{c4.get('grid_16_reference')}`",
+        ]
+    )
+    for row in c4.get("relocated_grids", []):
+        lines.append(
+            "- grid `{grid}` status `{status}` feature tau `{tau}`, sigma ratio `{ratio}`, collapse `{collapse}`, localization `{loc}`".format(
+                grid=row.get("grid"),
+                status=row.get("status"),
+                tau=_c0g_fmt(row.get("feature_tau")),
+                ratio=_c0g_fmt(row.get("sigma_min_over_sigma_max_feature")),
+                collapse=_c0g_fmt(row.get("collapse_ratio_same_grid")),
+                loc=row.get("feature_localization"),
+            )
+        )
+    lines.extend(
+        [
+            "",
+            "## Tool Selection",
+            "",
+            f"- case: `{tool.get('case')}`",
+            f"- tool: `{tool.get('chosen_tool')}`",
+            f"- why: {tool.get('why')}",
+            "",
+            "## Scope Guard",
+            "",
+            f"- `{result.get('scope_guard')}`",
+            f"- git diff summary: `{result.get('git_diff_summary')}`",
+            "",
+            "## Artifacts",
+            "",
+            f"- JSON: `{result.get('json_path')}`",
+            f"- progress: `{result.get('progress_path')}`",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def run_c0g_b3_deeppoint(
+    config: C0gB3DeepPointConfig | None = None,
+) -> dict[str, Any]:
+    cfg = config or C0gB3DeepPointConfig()
+    started = time.perf_counter()
+    dtype = configure_backend(BackendConfig())
+    progress_path = _c0g_b3_deeppoint_progress_path(cfg)
+    progress_path.parent.mkdir(parents=True, exist_ok=True)
+    progress_path.write_text("", encoding="utf-8")
+    deep_payload = _c0g_b3_followup_load_json(cfg.deepcrawl_json_path)
+    followup_payload = _c0g_b3_followup_load_json(cfg.b3_followup_json_path)
+    stage1 = _c0g_b3_deeppoint_stage1(
+        deep_payload=deep_payload,
+        followup_payload=followup_payload,
+        config=cfg,
+        dtype=dtype,
+    )
+    stage2 = _c0g_b3_deeppoint_stage2(
+        c1=stage1,
+        followup_payload=followup_payload,
+        config=cfg,
+        dtype=dtype,
+    )
+    stage3 = _c0g_b3_deeppoint_stage3(
+        c1=stage1,
+        c2_stage=stage2,
+        config=cfg,
+        dtype=dtype,
+    )
+    tool_selection = _c0g_b3_deeppoint_tool_selection(
+        c1=stage1,
+        c2_stage=stage2,
+        c4=stage3,
+    )
+    result = {
+        "schema": "stage1_pathA_C0g_B3_deeppoint/v1",
+        "source_revision": source_revision(),
+        "config": _c0g_b3_deeppoint_config_to_dict(cfg),
+        "Stage1": stage1,
+        "Stage2": stage2,
+        "Stage3": stage3,
+        "tool_selection": tool_selection,
+        "scope_guard": {
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "convergence_judged_only_on_original_residual": True,
+            "gauge_Q_perp_rebuilt_inside_every_fixed_tau_solve": True,
+            "b4_autodiff_sparse_jacobian_direction_and_svd_only": True,
+            "patha_closed_branch_residual_touched": False,
+            "faithful_operators_touched": False,
+            "preconditioners_touched": False,
+            "xi_or_grad_div_penalty_touched": False,
+            "physical_export_permitted_touched": False,
+            "frozen_physics_touched": False,
+            "no_pseudoarclength_or_LM_or_deflation_remedy_run": True,
+            "comparison_artifacts_diagnostics_only": True,
+        },
+        "progress_guard": {
+            "fixed_tau_window": int(cfg.c1_stall_window),
+            "epsilon_res": float(cfg.c1_stall_residual_decrease),
+            "stalled": any(row.get("status") == "STALLED" for row in stage1.get("results", [])),
+        },
+        "git_diff_summary": _c0g_b3_git_diff_summary(),
+        "elapsed_seconds": float(time.perf_counter() - started),
+        "report_path": str(_resolve_output_path(cfg.report_path)),
+        "json_path": str(_resolve_output_path(cfg.json_path)),
+        "progress_path": str(progress_path),
+    }
+    json_path = _resolve_output_path(cfg.json_path)
+    report_path = _resolve_output_path(cfg.report_path)
+    _c0g_write_json(json_path, result)
+    write_c0g_b3_deeppoint_report(result, report_path)
+    return result
+
+
+def _c0g_b3_deeppoint_stdout_summary(result: Mapping[str, Any]) -> str:
+    c1 = result.get("Stage1", {})
+    c2_stage = result.get("Stage2", {})
+    c2 = c2_stage.get("C2", {})
+    c3 = c2_stage.get("C3", {})
+    c4 = result.get("Stage3", {})
+    tool = result.get("tool_selection", {})
+    tight = [
+        f"{_c0g_fmt(row.get('tau'))}:{_c0g_fmt(row.get('final_residual_linf'))}"
+        for row in c1.get("results", [])
+        if row.get("status") == "TIGHT_CONVERGED"
+    ]
+    non_tight = [
+        f"{_c0g_fmt(row.get('tau'))}:{row.get('status')}:{_c0g_fmt(row.get('final_residual_linf'))}"
+        for row in c1.get("results", [])
+        if row.get("status") != "TIGHT_CONVERGED"
+    ]
+    scope = result.get("scope_guard", {})
+    return "\n".join(
+        [
+            f"Stage-1: tight={tight}; not_tight={non_tight}; reading={c1.get('case_reading')}",
+            (
+                "Stage-2: count={count}, dominant_sector={sector}, wT_Ftau={wt}, "
+                "gauge_overlap={gauge}, localization={loc}, comparison={cmp}, C3={c3call}"
+            ).format(
+                count=len(c2.get("smallest_singular_values", []) or []),
+                sector=_dominant_group(c2.get("sector_energy_fractions", {}))[0]
+                if c2.get("sector_energy_fractions")
+                else "n/a",
+                wt=_c0g_fmt(c2.get("fold_transversality", {}).get("wT_Ftau")),
+                gauge=c2.get("gauge_tests"),
+                loc=c2.get("localization"),
+                cmp=c2_stage.get("sharpen_or_dissolve"),
+                c3call=c3.get("call"),
+            ),
+            f"Stage-3: status={c4.get('status')}; 16_ref={c4.get('grid_16_reference')}; relocated={[(row.get('grid'), row.get('status'), row.get('sigma_min_over_sigma_max_feature'), row.get('collapse_ratio_same_grid')) for row in c4.get('relocated_grids', [])]}",
+            f"TOOL: {tool.get('case')} -> {tool.get('chosen_tool')} because {tool.get('why')}",
+            (
+                "Scope: frozen residual/operators/(1/xi)/export/physics untouched="
+                f"{not scope.get('patha_closed_branch_residual_touched')}/"
+                f"{not scope.get('faithful_operators_touched')}/"
+                f"{not scope.get('xi_or_grad_div_penalty_touched')}/"
+                f"{not scope.get('physical_export_permitted_touched')}/"
+                f"{not scope.get('frozen_physics_touched')}; "
+                f"Single Arbiter only={scope.get('convergence_judged_only_on_original_residual')}; "
+                f"B-4 direction-only={scope.get('b4_autodiff_sparse_jacobian_direction_and_svd_only')}; "
                 f"progress stalled={result.get('progress_guard', {}).get('stalled')}"
             ),
             f"Files: report={result.get('report_path')}, json={result.get('json_path')}, progress={result.get('progress_path')}",
@@ -13553,6 +14525,54 @@ def c0g_b3_followup_main(argv: Sequence[str] | None = None) -> int:
     )
     result = run_c0g_b3_followup(config)
     print(_c0g_b3_followup_stdout_summary(result))
+    return 0
+
+
+def c0g_b3_deeppoint_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run Path-A C0g B-3 deep-point characterization battery."
+    )
+    default = C0gB3DeepPointConfig()
+    parser.add_argument("--deepcrawl-json", type=Path, default=default.deepcrawl_json_path)
+    parser.add_argument("--b3-followup-json", type=Path, default=default.b3_followup_json_path)
+    parser.add_argument("--run-root", type=Path, default=default.run_root)
+    parser.add_argument("--report-path", type=Path, default=default.report_path)
+    parser.add_argument("--json-path", type=Path, default=default.json_path)
+    parser.add_argument("--deep-state-dir", type=Path, default=default.deep_state_dir)
+    parser.add_argument("--max-c1-iters", type=int, default=default.c1_max_iters)
+    parser.add_argument("--c3-points", type=int, default=default.c3_points)
+    parser.add_argument("--include-32", action="store_true")
+    parser.add_argument(
+        "--c4-grid",
+        action="append",
+        default=[],
+        help="Resolution relocation grid as NxM, e.g. 24x24. Defaults to 24x24.",
+    )
+    parser.add_argument(
+        "--jacobian-assembly",
+        choices=("autodiff_sparse_jacobian_lu",),
+        default=default.jacobian_assembly,
+    )
+    args = parser.parse_args(argv)
+    grids: list[tuple[int, int]] = []
+    for text in args.c4_grid:
+        left, right = str(text).lower().split("x", 1)
+        grids.append((int(left), int(right)))
+    config = C0gB3DeepPointConfig(
+        deepcrawl_json_path=args.deepcrawl_json,
+        b3_followup_json_path=args.b3_followup_json,
+        run_root=args.run_root,
+        report_path=args.report_path,
+        json_path=args.json_path,
+        deep_state_dir=args.deep_state_dir,
+        c1_max_iters=int(args.max_c1_iters),
+        c3_points=int(args.c3_points),
+        c4_grids=tuple(grids) if grids else default.c4_grids,
+        c4_include_32=bool(args.include_32),
+        jacobian_assembly=str(args.jacobian_assembly),
+    )
+    result = run_c0g_b3_deeppoint(config)
+    print(_c0g_b3_deeppoint_stdout_summary(result))
     return 0
 
 

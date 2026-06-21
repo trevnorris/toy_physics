@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from dataclasses import replace
 import math
+from types import SimpleNamespace
 
 import numpy as np
+import pytest
 from scipy.sparse import csc_matrix
 import torch
 
@@ -148,6 +150,131 @@ def test_c0_true_sigma_triplet_uses_dense_svd_and_closed_layout() -> None:
     assert diagnostic["v_min_energy_fractions"]["mu"] > 0.999
     assert diagnostic["u_min_energy_fractions"]["mass_constraint_row"] > 0.999
     assert diagnostic["cond_ratio"] < 0.1
+
+
+def test_c0g_complement_svd_does_not_report_planted_gauge_zero(tmp_path) -> None:
+    grid = SimpleNamespace(
+        spec=SimpleNamespace(nr=1, nw=1),
+        r_centers=torch.as_tensor([0.5], dtype=torch.float64),
+        w_centers=torch.as_tensor([0.25], dtype=torch.float64),
+    )
+    matrix = csc_matrix(np.diag([0.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]))
+    gauge = np.zeros((7, 1), dtype=np.float64)
+    gauge[0, 0] = 1.0
+
+    result = c0._c0g_dense_complement_svd(
+        scaled_matrix=matrix,
+        gauge_matrix=gauge,
+        col_scale=np.ones(7, dtype=np.float64),
+        grid=grid,
+        config=c0.C0gConfig(near_null_mode_count=2),
+        mode_artifact_path=tmp_path / "modes.npz",
+    )
+
+    assert result["status"] == "MEASURED"
+    assert result["forbidden_construction_not_used"] == "SVD((I-P_G)J)"
+    assert np.isclose(result["sigma_min"], 2.0)
+    assert result["sigma_min"] > 0.0
+
+
+def test_c0g_premise_gate_thresholds_are_executable() -> None:
+    config = c0.C0gConfig()
+
+    assert c0._c0g_premise_gate_call(9.9e-3, config) == "PREMISE_FAILED"
+    assert c0._c0g_premise_gate_call(5.0e-2, config) == "PREMISE_GRAY"
+    assert c0._c0g_premise_gate_call(1.1e-1, config) == "PREMISE_HOLDS"
+
+
+def test_c0g_provenance_prefers_real_crawl_config_field() -> None:
+    value, source = c0._c0g_prefer_existing_flag_from_c0f2_payload(
+        {
+            "config": {"prefer_existing_b2c_background_predictor": True},
+            "crawl_config": {"prefer_existing_b2c_background_predictor": False},
+            "scope_guard": {"prefer_existing_b2c_background_predictor": True},
+        }
+    )
+
+    assert value is False
+    assert source == "crawl_config.prefer_existing_b2c_background_predictor"
+
+
+def test_c0g_provenance_fails_if_real_prefer_existing_field_absent() -> None:
+    with pytest.raises(KeyError):
+        c0._c0g_prefer_existing_flag_from_c0f2_payload({"config": {}})
+
+
+def test_c0g_scaled_lane_overlap_keeps_branch_direction() -> None:
+    grid = SimpleNamespace(spec=SimpleNamespace(nr=1, nw=1))
+    origin = np.zeros(7, dtype=np.float64)
+    reference = np.ones(7, dtype=np.float64)
+    candidate = -reference
+
+    overlap = c0._c0g_scaled_lane_overlaps(
+        candidate=candidate,
+        reference=reference,
+        origin=origin,
+        col_scale=np.ones(7, dtype=np.float64),
+        grid=grid,
+    )
+
+    assert overlap["aggregate_overlap_call"] == "POST_FOLD_BRANCH"
+    assert all(row["scaled_overlap"] < 0.5 for row in overlap["rows"])
+
+
+def test_c0g_step8_does_not_force_clean_verdict_on_gray_overlap() -> None:
+    steps0_3 = {
+        "step0": {"premise_gate": {"call": "PREMISE_HOLDS"}},
+        "state_results": [
+            {"ftau": {"status": "MEASURED", "call": "FOLD_SUPPORT"}},
+        ],
+        "sigma_min_squared_fit": {
+            "status": "MEASURED",
+            "fit_reliability": "RELIABLE",
+            "call": "LINEAR_MONOTONE_FOLD_SUPPORT",
+        },
+    }
+    steps4_6_7 = {
+        "step4_mach": {"sonic_context_label": "NO_SONIC"},
+        "step6_bordered_conditioning": {"call": "FOLD_SUPPORT"},
+    }
+    step5 = {"branch_overlap": {"aggregate_overlap_call": "INCONCLUSIVE"}}
+
+    verdict = c0._c0g_determine_step8_verdict(
+        steps0_3=steps0_3,
+        steps4_6_7=steps4_6_7,
+        step5=step5,
+    )
+
+    assert verdict["verdict"] == "MIXED/INCONCLUSIVE"
+    assert "Step-5 branch overlap" in verdict["primary_evidence"]["gray_items"]
+
+
+def test_c0g_step8_allows_fold_when_primary_clean_and_step6_confirms() -> None:
+    steps0_3 = {
+        "step0": {"premise_gate": {"call": "PREMISE_HOLDS"}},
+        "state_results": [
+            {"ftau": {"status": "MEASURED", "call": "FOLD_SUPPORT"}},
+        ],
+        "sigma_min_squared_fit": {
+            "status": "MEASURED",
+            "fit_reliability": "RELIABLE",
+            "call": "LINEAR_MONOTONE_FOLD_SUPPORT",
+        },
+    }
+    steps4_6_7 = {
+        "step4_mach": {"sonic_context_label": "NO_SONIC"},
+        "step6_bordered_conditioning": {"call": "FOLD_SUPPORT"},
+    }
+    step5 = {"branch_overlap": {"aggregate_overlap_call": "NOT_COMPUTED_NO_PROGRESS"}}
+
+    verdict = c0._c0g_determine_step8_verdict(
+        steps0_3=steps0_3,
+        steps4_6_7=steps4_6_7,
+        step5=step5,
+    )
+
+    assert verdict["verdict"] == "FOLD_CONFIRMED"
+    assert verdict["sub_label"] == "NON_SONIC_FOLD"
 
 
 def test_c0_verdict_is_incomplete_when_sigma_or_fold_not_measured() -> None:

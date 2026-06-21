@@ -23,6 +23,7 @@ import time
 from typing import Any, Callable, Mapping, Sequence
 
 import numpy as np
+from scipy import optimize
 from scipy.sparse import csc_matrix, diags, eye, load_npz, save_npz
 from scipy.sparse.linalg import LinearOperator, eigsh, gmres, svds
 import torch
@@ -84,6 +85,14 @@ DEFAULT_C0E_REPORT_PATH = Path(
     "software/stage1_solver/reports/pathA_C0e_gauge_invariant_curl_gate.md"
 )
 DEFAULT_C0E_JSON_PATH = DEFAULT_C0E_RUN_ROOT / "pathA_C0e_gauge_invariant_curl_gate.json"
+DEFAULT_C0G_RUN_ROOT = Path("software/stage1_solver/runs/pathA_C0g_diag_fold_vs_conditioning")
+DEFAULT_C0G_REPORT_PATH = Path(
+    "software/stage1_solver/reports/pathA_C0g_diag_fold_vs_conditioning.md"
+)
+DEFAULT_C0G_STEP0_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_step0_premise.json"
+DEFAULT_C0G_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_diag_fold_vs_conditioning_steps0_3.json"
+DEFAULT_C0G_STEP5_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_step5_scipy_probe.json"
+DEFAULT_C0G_FINAL_JSON_PATH = DEFAULT_C0G_RUN_ROOT / "pathA_C0g_diag_fold_vs_conditioning.json"
 ALLOWED_VERDICTS = {
     "SPIKE_SUFFICIENT",
     "FOLD_TURNING_POINT",
@@ -214,6 +223,41 @@ class C0eConfig:
     harmonic_weighted_divergence_rtol: float = 1.0e-6
     control_random_seed: int = 420029
     run_all_available_tau_sources: bool = True
+
+
+@dataclass(frozen=True)
+class C0gConfig:
+    c0f2_json_path: Path = Path(
+        "software/stage1_solver/runs/pathA_C0f2_timing_rerun/pathA_C0f2_timing_rerun.json"
+    )
+    run_root: Path = DEFAULT_C0G_RUN_ROOT
+    report_path: Path = DEFAULT_C0G_REPORT_PATH
+    step0_json_path: Path = DEFAULT_C0G_STEP0_JSON_PATH
+    json_path: Path = DEFAULT_C0G_JSON_PATH
+    step5_json_path: Path = DEFAULT_C0G_STEP5_JSON_PATH
+    final_json_path: Path = DEFAULT_C0G_FINAL_JSON_PATH
+    grid: tuple[int, int] = b2a.DEFAULT_BACKGROUND_GRID
+    converged_taus: tuple[float, ...] = (0.03, 0.0295, 0.02925, 0.029125)
+    stalled_tau: float = 0.0290625
+    near_null_mode_count: int = 5
+    alpha_min_power: int = 20
+    gradient_rank_rtol: float = 1.0e-12
+    harmonic_weighted_divergence_rtol: float = 1.0e-6
+    ftau_h_multipliers: tuple[float, ...] = (1.0e-4, 1.0e-5, 1.0e-6)
+    ftau_stability_rtol: float = 0.1
+    premise_fail_threshold: float = 1.0e-2
+    premise_hold_threshold: float = 1.0e-1
+    cos_fold_threshold: float = 1.0e-1
+    cos_bifurcation_threshold: float = 1.0e-2
+    fit_good_r2_threshold: float = 0.9
+    mach_density_floors: tuple[float, ...] = (1.0e-14, 1.0e-12, 1.0e-10, 1.0e-8)
+    sonic_band: tuple[float, float] = (0.8, 1.2)
+    no_sonic_threshold: float = 0.7
+    sonic_current_threshold_multiplier: float = 1.0e-3
+    scipy_method_wall_seconds: float = 285.0
+    scipy_global_wall_seconds: float = 600.0
+    scipy_maxfev_factor: int = 4
+    commutator_control_seed: int = 730029
 
 
 @dataclass(frozen=True)
@@ -4091,6 +4135,3287 @@ def _c0c_residual_context(
         )
 
     return branch, provider, grid, boundaries, eos_K, residual_fn
+
+
+def _c0g_config_to_dict(config: C0gConfig) -> dict[str, Any]:
+    data = asdict(config)
+    for key in (
+        "c0f2_json_path",
+        "run_root",
+        "report_path",
+        "step0_json_path",
+        "json_path",
+        "step5_json_path",
+        "final_json_path",
+    ):
+        data[key] = str(data[key])
+    return data
+
+
+def _c0g_load_c0f2_payload(config: C0gConfig) -> dict[str, Any]:
+    path = _resolve_input_path(config.c0f2_json_path)
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    payload["_resolved_path"] = str(path)
+    return payload
+
+
+def _c0g_tau_close(left: float, right: float) -> bool:
+    return abs(float(left) - float(right)) <= 5.0e-13
+
+
+def _c0g_rows_by_tau(payload: Mapping[str, Any]) -> dict[float, dict[str, Any]]:
+    rows: dict[float, dict[str, Any]] = {}
+    for row in payload.get("per_tau_timing", []):
+        if "tau" in row:
+            rows[float(row["tau"])] = dict(row)
+    return rows
+
+
+def _c0g_find_tau_row(payload: Mapping[str, Any], tau: float) -> dict[str, Any]:
+    for row in payload.get("per_tau_timing", []):
+        if _c0g_tau_close(float(row.get("tau", math.nan)), tau):
+            return dict(row)
+    raise ValueError(f"C0f2 per_tau_timing has no row for tau={tau:.12g}")
+
+
+def _c0g_state_path_from_row(row: Mapping[str, Any]) -> Path:
+    artifact = row.get("state_artifact")
+    if not artifact:
+        raise ValueError(f"missing state_artifact for tau={row.get('tau')}")
+    path = _resolve_input_path(str(artifact))
+    if not path.exists():
+        raise FileNotFoundError(path)
+    return path
+
+
+def _c0g_prefer_existing_flag_from_c0f2_payload(
+    payload: Mapping[str, Any],
+) -> tuple[bool, str]:
+    key = "prefer_existing_b2c_background_predictor"
+    for section_name in ("crawl_config", "scope_guard"):
+        section = payload.get(section_name)
+        if isinstance(section, Mapping) and key in section:
+            value = section[key]
+            if not isinstance(value, bool):
+                raise ValueError(
+                    f"C0f2 {section_name}.{key} must be a bool, got {value!r}"
+                )
+            return bool(value), f"{section_name}.{key}"
+    raise KeyError(
+        "C0f2 provenance is missing crawl_config.prefer_existing_b2c_background_predictor "
+        "and scope_guard.prefer_existing_b2c_background_predictor"
+    )
+
+
+def _c0g_verify_stalled_provenance(config: C0gConfig) -> dict[str, Any]:
+    payload = _c0g_load_c0f2_payload(config)
+    row = _c0g_find_tau_row(payload, config.stalled_tau)
+    prefer_existing, prefer_existing_source = _c0g_prefer_existing_flag_from_c0f2_payload(
+        payload
+    )
+    provenance = {
+        "status": "MEASURED",
+        "c0f2_json_path": payload.get("_resolved_path"),
+        "tau": float(row.get("tau", math.nan)),
+        "attempt_index": int(row.get("attempt_index", -1)),
+        "state_artifact": row.get("state_artifact"),
+        "state_path": str(_c0g_state_path_from_row(row)),
+        "source": row.get("init_source"),
+        "start_tau": row.get("start_tau"),
+        "prefer_existing_b2c_background_predictor": bool(prefer_existing),
+        "prefer_existing_b2c_background_predictor_source": prefer_existing_source,
+        "used_existing_b2c": bool(row.get("used_existing_b2c", False)),
+        "accepted_default_success": bool(row.get("accepted_default_success", False)),
+        "solver_converged": bool(row.get("solver_converged", False)),
+        "message": row.get("message"),
+    }
+    genuine = (
+        _c0g_tau_close(float(row.get("tau", math.nan)), config.stalled_tau)
+        and row.get("init_source") == "previous_c0_converged_state"
+        and not bool(prefer_existing)
+        and not bool(row.get("used_existing_b2c", False))
+    )
+    provenance["genuine_warm_start_not_cold_loaded"] = bool(genuine)
+    provenance["call"] = (
+        "GENUINE_WARM_START_NOT_COLD_LOADED" if genuine else "PROVENANCE_FAILED"
+    )
+    return provenance
+
+
+def _c0g_column_space(
+    matrix: np.ndarray,
+    *,
+    relative_tolerance: float,
+    full_matrices: bool,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, float, int]:
+    values = np.asarray(matrix, dtype=np.float64)
+    if values.ndim != 2:
+        raise ValueError("column-space input must be a matrix")
+    if values.shape[1] == 0:
+        u = np.eye(values.shape[0], dtype=np.float64) if full_matrices else np.zeros(
+            (values.shape[0], 0), dtype=np.float64
+        )
+        return np.zeros((values.shape[0], 0), dtype=np.float64), u, np.zeros(0), 0.0, 0
+    u, singular_values, _vh = np.linalg.svd(values, full_matrices=full_matrices)
+    largest = float(singular_values[0]) if singular_values.size else 0.0
+    threshold = max(
+        float(relative_tolerance) * largest,
+        np.finfo(np.float64).eps * max(values.shape) * max(largest, 1.0),
+    )
+    rank = int(np.sum(singular_values > threshold))
+    basis = u[:, :rank].astype(np.float64, copy=True)
+    return basis, u.astype(np.float64, copy=True), singular_values, float(threshold), rank
+
+
+def _c0g_projection_fraction_from_basis(basis: np.ndarray, vector: np.ndarray) -> float:
+    values = np.asarray(vector, dtype=np.float64)
+    norm = float(np.linalg.norm(values))
+    if norm <= 0.0:
+        return math.nan
+    if basis.shape[1] == 0:
+        return 0.0
+    captured = float(np.linalg.norm(basis.T @ (values / norm)) ** 2)
+    return float(min(max(captured, 0.0), 1.0))
+
+
+def _c0g_projection_vector(basis: np.ndarray, vector: np.ndarray) -> np.ndarray:
+    values = np.asarray(vector, dtype=np.float64)
+    if basis.shape[1] == 0:
+        return np.zeros_like(values)
+    return basis @ (basis.T @ values)
+
+
+def _c0g_premise_gate_call(f_nn: float, config: C0gConfig) -> str:
+    value = float(f_nn)
+    if math.isfinite(value) and value < float(config.premise_fail_threshold):
+        return "PREMISE_FAILED"
+    if math.isfinite(value) and value > float(config.premise_hold_threshold):
+        return "PREMISE_HOLDS"
+    return "PREMISE_GRAY"
+
+
+def _c0g_state_center_of_energy(vector: np.ndarray, grid) -> dict[str, float | None]:
+    values = np.asarray(vector, dtype=np.float64)
+    n = int(grid.spec.nr * grid.spec.nw)
+    field_dim = 5 * n
+    if values.size < field_dim:
+        return {"r": None, "w": None}
+    fields = values[:field_dim].reshape(5, grid.spec.nr, grid.spec.nw)
+    energy = np.sum(fields * fields, axis=0)
+    denom = float(np.sum(energy))
+    if denom <= 0.0:
+        return {"r": None, "w": None}
+    r = grid.r_centers.detach().cpu().numpy().astype(np.float64)
+    w = grid.w_centers.detach().cpu().numpy().astype(np.float64)
+    return {
+        "r": float(np.sum(energy * r[:, None]) / denom),
+        "w": float(np.sum(energy * w[None, :]) / denom),
+    }
+
+
+def _c0g_scaled_norm(row_scale: np.ndarray, residual: np.ndarray) -> float:
+    return float(np.linalg.norm(np.asarray(row_scale, dtype=np.float64) * residual))
+
+
+def _c0g_residual_context(
+    *,
+    tau: float,
+    config: C0gConfig,
+    dtype: torch.dtype,
+):
+    branch, provider, grid, boundaries = _branch_context(
+        tau=float(tau),
+        config=C0Config(grid=config.grid),
+        dtype=dtype,
+    )
+    eos_K = float(branch.continuation_K_values[-1])
+
+    def residual_fn(x: torch.Tensor) -> torch.Tensor:
+        return patha_closed_branch_residual(
+            x,
+            grid,
+            branch,
+            eos_K=eos_K,
+            boundaries=boundaries,
+            s_sigma=provider,
+        )
+
+    return branch, provider, grid, boundaries, eos_K, residual_fn
+
+
+def _c0g_assemble_original_jacobian(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    branch, _provider, grid, _boundaries, _eos_K, residual_fn = _c0g_residual_context(
+        tau=float(tau),
+        config=config,
+        dtype=dtype,
+    )
+    residual = residual_fn(state).detach().cpu().numpy().astype(np.float64, copy=False)
+    preconditioner_config = replace(branch.newton.preconditioner, diagonal_shift=0.0)
+    linear_config = replace(branch.newton, preconditioner=preconditioner_config)
+    start = time.perf_counter()
+    matrix, metadata = assemble_closed_coupled_colored_sparse_jacobian(
+        PreconditionerBuildContext(
+            residual_fn=residual_fn,
+            x=state.detach(),
+            rhs=-residual,
+            iteration=0,
+            config=linear_config,
+        ),
+        grid,
+    )
+    assembly_seconds = float(time.perf_counter() - start)
+    matrix = matrix.tocsc()
+    aid = C0AidParameters(
+        core_epsilon=0.0,
+        k1_radius_epsilon=0.0,
+        use_jacobi_scaling=True,
+        preconditioner_diagonal_shift=0.0,
+    )
+    row_scale, col_scale = jacobi_row_col_scales(matrix, aid=aid)
+    scaled_matrix = (diags(row_scale, format="csc") @ matrix @ diags(col_scale, format="csc")).tocsc()
+    metadata = dict(metadata)
+    metadata.update(
+        {
+            "assembly_seconds": assembly_seconds,
+            "jacobian_source": (
+                "stage1_solver.preconditioners."
+                "assemble_closed_coupled_colored_sparse_jacobian"
+            ),
+            "residual_entry_point": (
+                "stage1_solver.coupled_branch.patha_closed_branch_residual"
+            ),
+            "scaling": "jacobi_row_col_from_unmodified_original_jacobian",
+            "row_scale_min": float(np.min(row_scale)),
+            "row_scale_max": float(np.max(row_scale)),
+            "col_scale_min": float(np.min(col_scale)),
+            "col_scale_max": float(np.max(col_scale)),
+            "diagonal_shift": 0.0,
+            "core_epsilon": 0.0,
+            "k1_radius_epsilon": 0.0,
+        }
+    )
+    return {
+        "branch": branch,
+        "grid": grid,
+        "residual_fn": residual_fn,
+        "residual": residual,
+        "matrix": matrix,
+        "scaled_matrix": scaled_matrix,
+        "row_scale": row_scale,
+        "col_scale": col_scale,
+        "metadata": metadata,
+    }
+
+
+def _c0g_build_analytic_gauge_matrix(
+    *,
+    state: torch.Tensor,
+    grid,
+    branch,
+    config: C0gConfig,
+) -> dict[str, Any]:
+    generators = _c0c_generators_for_state(state, grid)
+    phase = [generator.vector for generator in generators if generator.name == "phase"]
+    if len(phase) != 1:
+        raise RuntimeError("_c0c_generators_for_state did not return exactly one phase generator")
+    c0d_config = C0dConfig(
+        gradient_rank_rtol=float(config.gradient_rank_rtol),
+        harmonic_weighted_divergence_rtol=float(config.harmonic_weighted_divergence_rtol),
+    )
+    a_subspace = _c0d_build_gauge_subspace(grid, branch, c0d_config)
+    coupled_matrix = _c0e_coupled_gauge_matrix(state, grid, branch)
+    pieces = [
+        np.asarray(phase[0], dtype=np.float64).reshape(-1, 1),
+        np.asarray(a_subspace["basis"], dtype=np.float64),
+        np.asarray(coupled_matrix, dtype=np.float64),
+    ]
+    generator_matrix = np.column_stack([piece for piece in pieces if piece.shape[1] > 0])
+    basis, _u, singular_values, threshold, rank = _c0g_column_space(
+        generator_matrix,
+        relative_tolerance=float(config.gradient_rank_rtol),
+        full_matrices=False,
+    )
+    return {
+        "generator_matrix": generator_matrix,
+        "physical_basis": basis,
+        "singular_values": singular_values,
+        "rank_threshold": threshold,
+        "rank": int(rank),
+        "source_helpers": [
+            "_c0c_generators_for_state(name='phase')",
+            "_c0d_scalar_gradient_matrix",
+            "_c0d_build_gauge_subspace",
+            "_c0e_coupled_gauge_matrix",
+        ],
+        "piece_dimensions": {
+            "phase_columns": 1,
+            "a_sector_gradient_basis_columns": int(a_subspace["basis"].shape[1]),
+            "a_sector_gradient_raw_columns": int(a_subspace["gradient_matrix"].shape[1]),
+            "coupled_local_gauge_columns": int(coupled_matrix.shape[1]),
+        },
+        "a_sector_gradient_rank": int(a_subspace["dim_g"]),
+        "a_sector_gradient_rank_threshold": float(a_subspace["gradient_rank_threshold"]),
+    }
+
+
+def _c0g_scaled_gauge_complement(
+    *,
+    gauge_matrix: np.ndarray,
+    col_scale: np.ndarray,
+    config: C0gConfig,
+) -> dict[str, Any]:
+    scaled_gauge = np.asarray(gauge_matrix, dtype=np.float64) / col_scale[:, None]
+    _scaled_basis, scaled_u, scaled_gauge_s, scaled_threshold, scaled_rank = _c0g_column_space(
+        scaled_gauge,
+        relative_tolerance=float(config.gradient_rank_rtol),
+        full_matrices=True,
+    )
+    q_perp = scaled_u[:, scaled_rank:].astype(np.float64, copy=True)
+    return {
+        "q_perp": q_perp,
+        "scaled_gauge_singular_values": scaled_gauge_s,
+        "scaled_gauge_rank_threshold": float(scaled_threshold),
+        "scaled_gauge_rank": int(scaled_rank),
+    }
+
+
+def _c0g_dense_complement_svd(
+    *,
+    scaled_matrix: csc_matrix,
+    gauge_matrix: np.ndarray,
+    col_scale: np.ndarray,
+    grid,
+    config: C0gConfig,
+    mode_artifact_path: Path | None,
+) -> dict[str, Any]:
+    complement = _c0g_scaled_gauge_complement(
+        gauge_matrix=gauge_matrix,
+        col_scale=col_scale,
+        config=config,
+    )
+    q_perp = np.asarray(complement["q_perp"], dtype=np.float64)
+    scaled_gauge_s = np.asarray(
+        complement["scaled_gauge_singular_values"], dtype=np.float64
+    )
+    scaled_threshold = float(complement["scaled_gauge_rank_threshold"])
+    scaled_rank = int(complement["scaled_gauge_rank"])
+    if q_perp.shape[1] <= 0:
+        return {
+            "status": "NOT_MEASURED",
+            "reason": "gauge_basis_spans_full_scaled_state_space",
+            "scaled_gauge_rank": int(scaled_rank),
+            "scaled_gauge_rank_threshold": float(scaled_threshold),
+        }
+    dense_scaled = scaled_matrix.toarray().astype(np.float64, copy=False)
+    start = time.perf_counter()
+    reduced = dense_scaled @ q_perp
+    left, singular_values, vh = np.linalg.svd(reduced, full_matrices=False)
+    svd_seconds = float(time.perf_counter() - start)
+    sigma_max = float(singular_values[0]) if singular_values.size else math.nan
+    sigma_min = float(singular_values[-1]) if singular_values.size else math.nan
+    count = min(int(config.near_null_mode_count), int(singular_values.size))
+    modes: list[dict[str, Any]] = []
+    right_modes: list[np.ndarray] = []
+    left_modes: list[np.ndarray] = []
+    mode_sigmas: list[float] = []
+    for offset in range(count):
+        svd_index = int(singular_values.size - 1 - offset)
+        right_scaled = q_perp @ vh[svd_index, :]
+        right_physical = col_scale * right_scaled
+        right_unit, right_norm = _unit_vector(right_physical)
+        left_scaled = left[:, svd_index]
+        left_unit, left_norm = _unit_vector(left_scaled)
+        right_modes.append(right_unit)
+        left_modes.append(left_unit)
+        mode_sigmas.append(float(singular_values[svd_index]))
+        modes.append(
+            {
+                "ascending_rank": int(offset + 1),
+                "svd_index": svd_index,
+                "sigma": float(singular_values[svd_index]),
+                "right_physical_norm_before_unit": float(right_norm),
+                "left_scaled_norm_before_unit": float(left_norm),
+                "v_lane_energy_fractions": _lane_energy_split(right_unit, grid),
+                "w_output_energy_fractions": _lane_energy_split(left_unit, grid),
+                "v_center_of_energy": _c0g_state_center_of_energy(right_unit, grid),
+                "w_center_of_energy": _c0g_state_center_of_energy(left_unit, grid),
+            }
+        )
+    artifact_text = None
+    if mode_artifact_path is not None:
+        mode_artifact_path.parent.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(
+            mode_artifact_path,
+            right_modes=np.asarray(right_modes, dtype=np.float64),
+            left_modes=np.asarray(left_modes, dtype=np.float64),
+            sigmas=np.asarray(mode_sigmas, dtype=np.float64),
+        )
+        artifact_text = str(mode_artifact_path)
+    return {
+        "status": "MEASURED",
+        "construction": "dense_svd_of_scaled_J_times_scaled_gauge_complement_Q_perp",
+        "forbidden_construction_not_used": "SVD((I-P_G)J)",
+        "scaling": "row_scale * J_original * col_scale; gauge basis transformed by C^{-1}",
+        "reduced_shape": [int(reduced.shape[0]), int(reduced.shape[1])],
+        "state_dim": int(dense_scaled.shape[1]),
+        "scaled_gauge_rank": int(scaled_rank),
+        "scaled_gauge_rank_threshold": float(scaled_threshold),
+        "scaled_gauge_singular_min_retained": float(scaled_gauge_s[scaled_rank - 1])
+        if scaled_rank > 0
+        else None,
+        "sigma_max": sigma_max,
+        "sigma_min": sigma_min,
+        "sigma_min_over_sigma_max": float(sigma_min / sigma_max)
+        if math.isfinite(sigma_min) and math.isfinite(sigma_max) and sigma_max > 0.0
+        else math.nan,
+        "svd_seconds": svd_seconds,
+        "modes": modes,
+        "mode_vectors_artifact": artifact_text,
+    }
+
+
+def _c0g_clean_newton_step(
+    *,
+    matrix: csc_matrix,
+    residual: np.ndarray,
+) -> dict[str, Any]:
+    dense = matrix.toarray().astype(np.float64, copy=False)
+    try:
+        step = np.linalg.solve(dense, -residual)
+        method = "dense_np_linalg_solve"
+    except np.linalg.LinAlgError:
+        step, _resid, _rank, _singular = np.linalg.lstsq(dense, -residual, rcond=None)
+        method = "dense_np_linalg_lstsq_fallback"
+    linear_residual = dense @ step + residual
+    residual_norm = float(np.linalg.norm(residual))
+    return {
+        "step": step.astype(np.float64, copy=False),
+        "method": method,
+        "linear_rel_resid": float(
+            np.linalg.norm(linear_residual) / max(residual_norm, np.finfo(np.float64).tiny)
+        ),
+        "step_norm": float(np.linalg.norm(step)),
+    }
+
+
+def _c0g_merit_sweep(
+    *,
+    state: torch.Tensor,
+    step: np.ndarray,
+    matrix: csc_matrix,
+    residual: np.ndarray,
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    alpha_min_power: int,
+) -> dict[str, Any]:
+    initial_l2 = float(np.linalg.norm(residual))
+    initial_linf = float(np.max(np.abs(residual)))
+    j_step = matrix @ step
+    step_t = torch.as_tensor(step, dtype=state.dtype, device=state.device)
+    rows: list[dict[str, Any]] = []
+    for power in range(int(alpha_min_power) + 1):
+        alpha = float(2.0 ** (-power))
+        predicted = residual + alpha * j_step
+        trial = state.detach() + alpha * step_t
+        actual = residual_fn(trial).detach().cpu().numpy().astype(np.float64, copy=False)
+        actual_l2 = float(np.linalg.norm(actual))
+        predicted_l2 = float(np.linalg.norm(predicted))
+        row = {
+            "alpha": alpha,
+            "power": int(power),
+            "actual_l2": actual_l2,
+            "actual_linf": float(np.max(np.abs(actual))),
+            "predicted_l2": predicted_l2,
+            "predicted_linf": float(np.max(np.abs(predicted))),
+            "actual_l2_ratio": actual_l2 / max(initial_l2, np.finfo(np.float64).tiny),
+            "predicted_l2_ratio": predicted_l2 / max(initial_l2, np.finfo(np.float64).tiny),
+            "reduces_true_l2": bool(actual_l2 < initial_l2),
+            "finite": bool(np.all(np.isfinite(actual))),
+        }
+        rows.append(row)
+    best = min(rows, key=lambda row: row["actual_l2"]) if rows else None
+    alpha1 = rows[0] if rows else None
+    return {
+        "status": "MEASURED",
+        "initial_l2": initial_l2,
+        "initial_linf": initial_linf,
+        "alpha1": alpha1,
+        "best": best,
+        "best_alpha": best.get("alpha") if best else None,
+        "best_actual_l2": best.get("actual_l2") if best else None,
+        "best_actual_l2_ratio": best.get("actual_l2_ratio") if best else None,
+        "best_percent_reduction": float(100.0 * (1.0 - best["actual_l2"] / initial_l2))
+        if best is not None and initial_l2 > 0.0
+        else math.nan,
+        "alpha1_predicted_vs_actual_l2_gap": float(
+            alpha1["actual_l2"] / max(alpha1["predicted_l2"], np.finfo(np.float64).tiny)
+        )
+        if alpha1 is not None
+        else math.nan,
+        "any_alpha_reduces_true_l2": bool(
+            any(bool(row["reduces_true_l2"]) for row in rows)
+        ),
+        "rows": rows,
+    }
+
+
+def _c0g_step_decomposition(
+    *,
+    step: np.ndarray,
+    physical_gauge_basis: np.ndarray,
+    right_modes: np.ndarray,
+) -> dict[str, Any]:
+    step_norm = float(np.linalg.norm(step))
+    if step_norm <= 0.0:
+        return {
+            "status": "NOT_MEASURED",
+            "reason": "zero_newton_step",
+        }
+    gauge_projection = _c0g_projection_vector(physical_gauge_basis, step)
+    gauge_fraction = float(np.dot(gauge_projection, gauge_projection) / (step_norm * step_norm))
+    gauge_residual = step - gauge_projection
+    if right_modes.size:
+        residualized_modes = []
+        for mode in right_modes:
+            residualized = mode - _c0g_projection_vector(physical_gauge_basis, mode)
+            unit, norm = _unit_vector(residualized)
+            if norm > 0.0:
+                residualized_modes.append(unit)
+        if residualized_modes:
+            near_matrix = np.column_stack(residualized_modes)
+            near_basis, _u, _s, _threshold, near_rank = _c0g_column_space(
+                near_matrix,
+                relative_tolerance=1.0e-12,
+                full_matrices=False,
+            )
+            near_projection = _c0g_projection_vector(near_basis, gauge_residual)
+            near_fraction = float(np.dot(near_projection, near_projection) / (step_norm * step_norm))
+            per_mode = []
+            for index, mode in enumerate(residualized_modes):
+                component = float(np.dot(mode, gauge_residual) ** 2 / (step_norm * step_norm))
+                per_mode.append(
+                    {
+                        "ascending_rank": int(index + 1),
+                        "component_fraction": component,
+                    }
+                )
+        else:
+            near_rank = 0
+            near_fraction = 0.0
+            per_mode = []
+    else:
+        near_rank = 0
+        near_fraction = 0.0
+        per_mode = []
+    complement_fraction = float(max(0.0, 1.0 - gauge_fraction - near_fraction))
+    mode2_fraction = per_mode[1]["component_fraction"] if len(per_mode) >= 2 else None
+    dominant = max(per_mode, key=lambda item: item["component_fraction"]) if per_mode else None
+    return {
+        "status": "MEASURED",
+        "step_norm": step_norm,
+        "gauge_component_fraction": gauge_fraction,
+        "near_null_component_fraction": near_fraction,
+        "complement_component_fraction": complement_fraction,
+        "transverse_mode_2_component_fraction": mode2_fraction,
+        "mode_2_definition": "second-smallest gauge-complement right singular vector",
+        "dominant_near_null_mode": dominant,
+        "near_null_rank_after_gauge_residualization": int(near_rank),
+        "per_mode_component_fractions": per_mode,
+    }
+
+
+def _c0g_residual_decomposition(
+    *,
+    residual: np.ndarray,
+    row_scale: np.ndarray,
+    matrix: csc_matrix,
+    gauge_matrix: np.ndarray,
+    left_modes: np.ndarray,
+) -> dict[str, Any]:
+    scaled_residual = row_scale * residual
+    residual_norm = float(np.linalg.norm(scaled_residual))
+    if residual_norm <= 0.0:
+        return {
+            "status": "NOT_MEASURED",
+            "reason": "zero_scaled_residual",
+        }
+    left_rows = []
+    for index, mode in enumerate(left_modes):
+        unit, norm = _unit_vector(mode)
+        if norm <= 0.0:
+            fraction = math.nan
+        else:
+            fraction = float(abs(np.dot(unit, scaled_residual)) / residual_norm)
+        left_rows.append(
+            {
+                "ascending_rank": int(index + 1),
+                "abs_u_dot_F_over_normF": fraction,
+            }
+        )
+    gauge_images = row_scale[:, None] * (matrix @ gauge_matrix)
+    image_basis, _u, image_s, threshold, rank = _c0g_column_space(
+        gauge_images,
+        relative_tolerance=1.0e-12,
+        full_matrices=False,
+    )
+    projection = _c0g_projection_vector(image_basis, scaled_residual)
+    return {
+        "status": "MEASURED",
+        "scaled_residual_l2": residual_norm,
+        "left_singular_vector_components": left_rows,
+        "gauge_image_projection_fraction": float(
+            np.dot(projection, projection) / (residual_norm * residual_norm)
+        ),
+        "gauge_image_rank": int(rank),
+        "gauge_image_rank_threshold": float(threshold),
+        "gauge_image_singular_values_head": [
+            float(value) for value in image_s[: min(5, image_s.size)]
+        ],
+    }
+
+
+def _c0g_ftau_diagnostic(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    left_min: np.ndarray,
+    row_scale: np.ndarray,
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    w_unit, w_norm = _unit_vector(left_min)
+    if w_norm <= 0.0:
+        return {"status": "NOT_MEASURED", "reason": "zero_left_min_vector", "rows": rows}
+    for multiplier in config.ftau_h_multipliers:
+        h = float(multiplier) * float(tau)
+        _branch_p, _provider_p, _grid_p, _boundaries_p, _eos_K_p, residual_plus = (
+            _c0g_residual_context(tau=float(tau) + h, config=config, dtype=dtype)
+        )
+        _branch_m, _provider_m, _grid_m, _boundaries_m, _eos_K_m, residual_minus = (
+            _c0g_residual_context(tau=float(tau) - h, config=config, dtype=dtype)
+        )
+        f_plus = residual_plus(state).detach().cpu().numpy().astype(np.float64, copy=False)
+        f_minus = residual_minus(state).detach().cpu().numpy().astype(np.float64, copy=False)
+        ftau = (f_plus - f_minus) / (2.0 * h)
+        ftau_scaled = row_scale * ftau
+        ftau_norm = float(np.linalg.norm(ftau_scaled))
+        dot = float(np.dot(w_unit, ftau_scaled))
+        cos_theta = float(abs(dot) / max(ftau_norm, np.finfo(np.float64).tiny))
+        rows.append(
+            {
+                "h_multiplier": float(multiplier),
+                "h": h,
+                "wT_F_tau": dot,
+                "F_tau_scaled_l2": ftau_norm,
+                "cos_theta": cos_theta,
+            }
+        )
+    stable_pairs = []
+    for left_index in range(len(rows)):
+        for right_index in range(left_index + 1, len(rows)):
+            a = float(rows[left_index]["cos_theta"])
+            b = float(rows[right_index]["cos_theta"])
+            rel = abs(a - b) / max(abs(a), abs(b), np.finfo(np.float64).tiny)
+            if rel <= float(config.ftau_stability_rtol):
+                stable_pairs.append(
+                    {
+                        "left_h_multiplier": rows[left_index]["h_multiplier"],
+                        "right_h_multiplier": rows[right_index]["h_multiplier"],
+                        "relative_difference": float(rel),
+                        "mean_cos_theta": float(0.5 * (a + b)),
+                    }
+                )
+    if not stable_pairs:
+        return {
+            "status": "NOT_MEASURED",
+            "reason": "cos_theta_not_stable_to_10_percent_across_any_two_h_values",
+            "rows": rows,
+            "stable_pairs": stable_pairs,
+        }
+    representative = min(stable_pairs, key=lambda item: item["relative_difference"])
+    cos = float(representative["mean_cos_theta"])
+    if cos > float(config.cos_fold_threshold):
+        call = "FOLD_SUPPORT"
+    elif cos < float(config.cos_bifurcation_threshold):
+        call = "BIFURCATION_SUPPORT"
+    else:
+        call = "INCONCLUSIVE"
+    return {
+        "status": "MEASURED",
+        "rows": rows,
+        "stable_pairs": stable_pairs,
+        "stepsize_stability_call": "STABLE",
+        "representative_cos_theta": cos,
+        "call": call,
+        "thresholds": {
+            "fold_support_cos_gt": float(config.cos_fold_threshold),
+            "bifurcation_support_cos_lt": float(config.cos_bifurcation_threshold),
+            "inconclusive_band": [
+                float(config.cos_bifurcation_threshold),
+                float(config.cos_fold_threshold),
+            ],
+        },
+    }
+
+
+def _c0g_mode_artifact_path(config: C0gConfig, *, tau: float) -> Path:
+    return _resolve_output_path(
+        config.run_root / "modes" / f"c0g_modes_tau_{_format_tau(float(tau))}.npz"
+    )
+
+
+def _c0g_state_json_path(config: C0gConfig, *, tau: float) -> Path:
+    return _resolve_output_path(
+        config.run_root / "state_measurements" / f"c0g_state_tau_{_format_tau(float(tau))}.json"
+    )
+
+
+def _c0g_load_mode_vectors(path: str | Path) -> np.ndarray:
+    with np.load(_resolve_input_path(path)) as data:
+        return np.asarray(data["right_modes"], dtype=np.float64)
+
+
+def _c0g_load_mode_bundle(path: str | Path) -> dict[str, np.ndarray]:
+    with np.load(_resolve_input_path(path)) as data:
+        return {
+            "right_modes": np.asarray(data["right_modes"], dtype=np.float64),
+            "left_modes": np.asarray(data["left_modes"], dtype=np.float64),
+            "sigmas": np.asarray(data["sigmas"], dtype=np.float64),
+        }
+
+
+def _c0g_analyze_state(
+    *,
+    tau: float,
+    row: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+    include_step0: bool,
+    compute_ftau: bool,
+) -> dict[str, Any]:
+    state_path = _c0g_state_path_from_row(row)
+    state = _load_state_artifact(state_path, dtype=dtype)
+    assembled = _c0g_assemble_original_jacobian(
+        state=state,
+        tau=float(tau),
+        config=config,
+        dtype=dtype,
+    )
+    grid = assembled["grid"]
+    branch = assembled["branch"]
+    residual = assembled["residual"]
+    matrix = assembled["matrix"]
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state,
+        grid=grid,
+        branch=branch,
+        config=config,
+    )
+    mode_artifact = _c0g_mode_artifact_path(config, tau=float(tau))
+    svd = _c0g_dense_complement_svd(
+        scaled_matrix=assembled["scaled_matrix"],
+        gauge_matrix=gauge["generator_matrix"],
+        col_scale=assembled["col_scale"],
+        grid=grid,
+        config=config,
+        mode_artifact_path=mode_artifact,
+    )
+    step = _c0g_clean_newton_step(matrix=matrix, residual=residual)
+    merit = _c0g_merit_sweep(
+        state=state,
+        step=step["step"],
+        matrix=matrix,
+        residual=residual,
+        residual_fn=assembled["residual_fn"],
+        alpha_min_power=int(config.alpha_min_power),
+    )
+    result: dict[str, Any] = {
+        "status": "MEASURED",
+        "tau": float(tau),
+        "attempt_index": int(row.get("attempt_index", -1)),
+        "state_artifact": row.get("state_artifact"),
+        "state_path": str(state_path),
+        "accepted_default_success": bool(row.get("accepted_default_success", False)),
+        "solver_converged": bool(row.get("solver_converged", False)),
+        "init_source": row.get("init_source"),
+        "used_existing_b2c": bool(row.get("used_existing_b2c", False)),
+        "original_residual_l2": float(np.linalg.norm(residual)),
+        "original_residual_linf": float(np.max(np.abs(residual))),
+        "jacobian": {
+            key: value
+            for key, value in assembled["metadata"].items()
+            if key
+            in {
+                "active_color_count",
+                "jvp_count",
+                "state_size",
+                "matrix_nnz",
+                "matrix_density",
+                "assembly_seconds",
+                "jacobian_source",
+                "residual_entry_point",
+                "scaling",
+                "row_scale_min",
+                "row_scale_max",
+                "col_scale_min",
+                "col_scale_max",
+                "diagonal_shift",
+                "core_epsilon",
+                "k1_radius_epsilon",
+            }
+        },
+        "gauge_basis": {
+            "rank": int(gauge["rank"]),
+            "rank_threshold": float(gauge["rank_threshold"]),
+            "source_helpers": list(gauge["source_helpers"]),
+            "piece_dimensions": dict(gauge["piece_dimensions"]),
+            "a_sector_gradient_rank": int(gauge["a_sector_gradient_rank"]),
+            "a_sector_gradient_rank_threshold": float(
+                gauge["a_sector_gradient_rank_threshold"]
+            ),
+        },
+        "svd": svd,
+        "newton_step": {
+            "method": step["method"],
+            "linear_rel_resid": float(step["linear_rel_resid"]),
+            "step_norm": float(step["step_norm"]),
+        },
+        "merit_sweep": merit,
+    }
+    if include_step0:
+        if svd.get("status") == "MEASURED":
+            modes = _c0g_load_mode_vectors(svd["mode_vectors_artifact"])
+            left_modes = None
+            with np.load(_resolve_input_path(svd["mode_vectors_artifact"])) as data:
+                left_modes = np.asarray(data["left_modes"], dtype=np.float64)
+            result["step0_decomposition"] = {
+                "delta": _c0g_step_decomposition(
+                    step=step["step"],
+                    physical_gauge_basis=gauge["physical_basis"],
+                    right_modes=modes,
+                ),
+                "residual": _c0g_residual_decomposition(
+                    residual=residual,
+                    row_scale=assembled["row_scale"],
+                    matrix=matrix,
+                    gauge_matrix=gauge["generator_matrix"],
+                    left_modes=left_modes,
+                ),
+            }
+            f_nn = result["step0_decomposition"]["delta"].get(
+                "near_null_component_fraction", math.nan
+            )
+            call = _c0g_premise_gate_call(float(f_nn), config)
+            result["premise_gate"] = {
+                "f_nn": float(f_nn),
+                "call": call,
+                "thresholds": {
+                    "premise_failed_if_f_nn_lt": float(config.premise_fail_threshold),
+                    "premise_holds_if_f_nn_gt": float(config.premise_hold_threshold),
+                    "gray_band": [
+                        float(config.premise_fail_threshold),
+                        float(config.premise_hold_threshold),
+                    ],
+                },
+            }
+        else:
+            result["step0_decomposition"] = {
+                "status": "NOT_MEASURED",
+                "reason": svd.get("reason", "svd_not_measured"),
+            }
+            result["premise_gate"] = {
+                "f_nn": math.nan,
+                "call": "DIAGNOSTIC_INCOMPLETE",
+            }
+    premise_failed = (
+        include_step0
+        and result.get("premise_gate", {}).get("call") == "PREMISE_FAILED"
+    )
+    if compute_ftau and premise_failed:
+        result["ftau"] = "SKIPPED_PREMISE_FAILED"
+    elif compute_ftau and svd.get("status") == "MEASURED":
+        with np.load(_resolve_input_path(svd["mode_vectors_artifact"])) as data:
+            left_modes = np.asarray(data["left_modes"], dtype=np.float64)
+        result["ftau"] = _c0g_ftau_diagnostic(
+            state=state,
+            tau=float(tau),
+            left_min=left_modes[0],
+            row_scale=assembled["row_scale"],
+            config=config,
+            dtype=dtype,
+        )
+    elif compute_ftau:
+        result["ftau"] = {
+            "status": "NOT_MEASURED",
+            "reason": "svd_not_measured",
+        }
+    return result
+
+
+def _c0g_write_json(path: Path, payload: Mapping[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _c0g_write_state_result(config: C0gConfig, result: Mapping[str, Any]) -> Path:
+    path = _c0g_state_json_path(config, tau=float(result["tau"]))
+    _c0g_write_json(path, result)
+    return path
+
+
+def run_c0g_step0_premise(config: C0gConfig | None = None) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    dtype = configure_backend(BackendConfig())
+    payload = _c0g_load_c0f2_payload(cfg)
+    provenance = _c0g_verify_stalled_provenance(cfg)
+    if provenance["call"] != "GENUINE_WARM_START_NOT_COLD_LOADED":
+        result = {
+            "phase": "step0_premise",
+            "status": "PROVENANCE_FAILED",
+            "config": _c0g_config_to_dict(cfg),
+            "provenance": provenance,
+            "steps_1_to_7": "SKIPPED_PREMISE_FAILED",
+        }
+        _c0g_write_json(_resolve_output_path(cfg.step0_json_path), result)
+        return result
+    row = _c0g_find_tau_row(payload, cfg.stalled_tau)
+    state_result = _c0g_analyze_state(
+        tau=float(cfg.stalled_tau),
+        row=row,
+        config=cfg,
+        dtype=dtype,
+        include_step0=True,
+        compute_ftau=True,
+    )
+    gate = state_result.get("premise_gate", {})
+    if gate.get("call") != "PREMISE_FAILED":
+        state_result["ftau_note"] = "computed after premise gate did not fail"
+    _c0g_write_state_result(cfg, state_result)
+    result = {
+        "phase": "step0_premise",
+        "status": "MEASURED",
+        "config": _c0g_config_to_dict(cfg),
+        "provenance": provenance,
+        "step0": state_result,
+    }
+    if gate.get("call") == "PREMISE_FAILED":
+        result["steps_1_to_7"] = "SKIPPED_PREMISE_FAILED"
+    _c0g_write_json(_resolve_output_path(cfg.step0_json_path), result)
+    return result
+
+
+def run_c0g_state_measurement(
+    *,
+    tau: float,
+    config: C0gConfig | None = None,
+) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    dtype = configure_backend(BackendConfig())
+    payload = _c0g_load_c0f2_payload(cfg)
+    row = _c0g_find_tau_row(payload, float(tau))
+    result = _c0g_analyze_state(
+        tau=float(tau),
+        row=row,
+        config=cfg,
+        dtype=dtype,
+        include_step0=False,
+        compute_ftau=True,
+    )
+    _c0g_write_state_result(cfg, result)
+    return result
+
+
+def _c0g_fit_sigma_min_squared(
+    state_results: Sequence[Mapping[str, Any]],
+    *,
+    config: C0gConfig,
+) -> dict[str, Any]:
+    converged = [
+        result
+        for result in state_results
+        if any(_c0g_tau_close(float(result["tau"]), tau) for tau in config.converged_taus)
+    ]
+    converged = sorted(converged, key=lambda item: float(item["tau"]), reverse=True)
+    rows = []
+    for result in converged:
+        svd = result.get("svd", {})
+        if svd.get("status") != "MEASURED":
+            return {
+                "status": "NOT_MEASURED",
+                "reason": f"svd_not_measured_tau_{result.get('tau')}",
+            }
+        rows.append(
+            {
+                "tau": float(result["tau"]),
+                "sigma_min": float(svd["sigma_min"]),
+                "sigma_min_squared": float(svd["sigma_min"]) ** 2,
+            }
+        )
+    if len(rows) < 3:
+        return {"status": "NOT_MEASURED", "reason": "too_few_converged_sigma_values"}
+    tau_values = np.asarray([row["tau"] for row in rows], dtype=np.float64)
+    y = np.asarray([row["sigma_min_squared"] for row in rows], dtype=np.float64)
+    linear = np.polyfit(tau_values, y, deg=1)
+    pred_linear = np.polyval(linear, tau_values)
+    ss_res_linear = float(np.sum((y - pred_linear) ** 2))
+    ss_tot = float(np.sum((y - float(np.mean(y))) ** 2))
+    r2_linear = float(1.0 - ss_res_linear / ss_tot) if ss_tot > 0.0 else math.nan
+    quadratic = np.polyfit(tau_values, y, deg=2)
+    pred_quadratic = np.polyval(quadratic, tau_values)
+    ss_res_quadratic = float(np.sum((y - pred_quadratic) ** 2))
+    r2_quadratic = float(1.0 - ss_res_quadratic / ss_tot) if ss_tot > 0.0 else math.nan
+    slope = float(linear[0])
+    intercept = float(linear[1])
+    tau_fold = float(-intercept / slope) if slope != 0.0 else math.nan
+    sigmas = np.asarray([row["sigma_min"] for row in rows], dtype=np.float64)
+    monotone_toward_stall = bool(
+        np.all(np.diff(sigmas) <= np.maximum(1.0e-15, 1.0e-10 * np.maximum(sigmas[:-1], 1.0)))
+    )
+    if monotone_toward_stall and math.isfinite(r2_linear) and r2_linear >= config.fit_good_r2_threshold:
+        call = "LINEAR_MONOTONE_FOLD_SUPPORT"
+    elif not monotone_toward_stall:
+        call = "FIT_UNRELIABLE_NON_MONOTONE_SIGMA_MIN"
+    elif math.isfinite(r2_quadratic) and r2_quadratic > r2_linear:
+        call = "QUADRATIC_OR_FLAT_SUPPORT"
+    else:
+        call = "INCONCLUSIVE"
+    return {
+        "status": "MEASURED",
+        "rows": rows,
+        "linear": {
+            "slope": slope,
+            "intercept": intercept,
+            "r2": r2_linear,
+            "sse": ss_res_linear,
+            "tau_fold_zero_crossing": tau_fold,
+        },
+        "quadratic": {
+            "coefficients": [float(value) for value in quadratic],
+            "r2": r2_quadratic,
+            "sse": ss_res_quadratic,
+        },
+        "sigma_min_monotone_decreasing_toward_stall": monotone_toward_stall,
+        "fit_reliability": "RELIABLE" if monotone_toward_stall else "UNRELIABLE",
+        "call": call,
+    }
+
+
+def _c0g_track_modes(state_results: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    ordered = sorted(state_results, key=lambda item: float(item["tau"]), reverse=True)
+    previous_vectors: np.ndarray | None = None
+    previous_lane_by_track: dict[int, int] = {}
+    tracked_rows: list[dict[str, Any]] = []
+    for result in ordered:
+        svd = result.get("svd", {})
+        if svd.get("status") != "MEASURED" or not svd.get("mode_vectors_artifact"):
+            continue
+        vectors = _c0g_load_mode_vectors(str(svd["mode_vectors_artifact"]))
+        mode_to_track: dict[int, int] = {}
+        if previous_vectors is None:
+            for mode_index in range(vectors.shape[0]):
+                mode_to_track[mode_index] = mode_index + 1
+        else:
+            overlaps = np.abs(vectors @ previous_vectors.T)
+            used_previous: set[int] = set()
+            for mode_index in range(vectors.shape[0]):
+                order = list(np.argsort(overlaps[mode_index])[::-1])
+                chosen = next((idx for idx in order if int(idx) not in used_previous), int(order[0]))
+                used_previous.add(int(chosen))
+                mode_to_track[mode_index] = previous_lane_by_track.get(int(chosen), int(chosen) + 1)
+        for mode_index, mode in enumerate(svd.get("modes", [])):
+            tracked_rows.append(
+                {
+                    "tau": float(result["tau"]),
+                    "ascending_rank": int(mode.get("ascending_rank", mode_index + 1)),
+                    "tracked_lane": int(mode_to_track.get(mode_index, mode_index + 1)),
+                    "sigma": float(mode["sigma"]),
+                    "v_lane_energy_fractions": mode.get("v_lane_energy_fractions", {}),
+                    "w_output_energy_fractions": mode.get("w_output_energy_fractions", {}),
+                    "v_center_of_energy": mode.get("v_center_of_energy", {}),
+                    "w_center_of_energy": mode.get("w_center_of_energy", {}),
+                }
+            )
+        previous_vectors = vectors
+        previous_lane_by_track = {mode_index: lane for mode_index, lane in mode_to_track.items()}
+    return tracked_rows
+
+
+def _c0g_best_alpha_trend(
+    state_results: Sequence[Mapping[str, Any]],
+    *,
+    config: C0gConfig,
+) -> dict[str, Any]:
+    rows = []
+    for tau in sorted(config.converged_taus):
+        match = next(
+            (
+                result
+                for result in state_results
+                if _c0g_tau_close(float(result["tau"]), float(tau))
+            ),
+            None,
+        )
+        if match is None:
+            continue
+        merit = match.get("merit_sweep", {})
+        rows.append(
+            {
+                "tau": float(tau),
+                "best_alpha": merit.get("best_alpha"),
+                "best_actual_l2_ratio": merit.get("best_actual_l2_ratio"),
+                "best_percent_reduction": merit.get("best_percent_reduction"),
+                "alpha1_actual_l2_ratio": (merit.get("alpha1") or {}).get("actual_l2_ratio"),
+                "alpha1_predicted_l2_ratio": (merit.get("alpha1") or {}).get(
+                    "predicted_l2_ratio"
+                ),
+                "alpha1_gap": merit.get("alpha1_predicted_vs_actual_l2_gap"),
+            }
+        )
+    descending = sorted(rows, key=lambda item: item["tau"], reverse=True)
+    reductions = [
+        float(row["best_percent_reduction"])
+        for row in descending
+        if row.get("best_percent_reduction") is not None
+        and math.isfinite(float(row["best_percent_reduction"]))
+    ]
+    degrading = bool(
+        len(reductions) >= 2
+        and all(right <= left + 1.0e-10 for left, right in zip(reductions, reductions[1:]))
+    )
+    return {
+        "status": "MEASURED" if rows else "NOT_MEASURED",
+        "rows": rows,
+        "trend_call": "DEGRADING_TOWARD_STALL" if degrading else "NOT_MONOTONE_DEGRADING",
+    }
+
+
+def _c0g_preliminary_reading(result: Mapping[str, Any]) -> dict[str, Any]:
+    step0_call = result.get("step0", {}).get("premise_gate", {}).get("call")
+    ftau_rows = [
+        state.get("ftau", {})
+        for state in result.get("state_results", [])
+        if isinstance(state.get("ftau"), Mapping)
+    ]
+    measured_ftau = [row for row in ftau_rows if row.get("status") == "MEASURED"]
+    ftau_calls = {row.get("call") for row in measured_ftau}
+    fit_call = result.get("sigma_min_squared_fit", {}).get("call")
+    if step0_call == "PREMISE_FAILED":
+        direction = "PREMISE_FAILED"
+    elif "FOLD_SUPPORT" in ftau_calls and fit_call == "LINEAR_MONOTONE_FOLD_SUPPORT":
+        direction = "FOLD_SUPPORT"
+    elif "BIFURCATION_SUPPORT" in ftau_calls or fit_call == "QUADRATIC_OR_FLAT_SUPPORT":
+        direction = "CONDITIONING_OR_BIFURCATION_SUPPORT"
+    else:
+        direction = "INCONCLUSIVE"
+    return {
+        "status": direction,
+        "step8_verdict_deferred": True,
+        "reason": (
+            "Steps 4-7 were not run in this staged pass; this is not a Step-8 verdict."
+        ),
+        "step0_call": step0_call,
+        "ftau_calls": sorted(str(call) for call in ftau_calls if call is not None),
+        "sigma_min_squared_fit_call": fit_call,
+    }
+
+
+def aggregate_c0g_steps0_3(config: C0gConfig | None = None) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    step0_path = _resolve_input_path(cfg.step0_json_path)
+    with step0_path.open("r", encoding="utf-8") as handle:
+        step0 = json.load(handle)
+    provenance = step0.get("provenance", {})
+    if step0.get("step0", {}).get("premise_gate", {}).get("call") == "PREMISE_FAILED":
+        result = {
+            "phase": "steps0_3_staged",
+            "status": "PREMISE_FAILED",
+            "config": _c0g_config_to_dict(cfg),
+            "provenance": provenance,
+            "step0": step0.get("step0"),
+            "step0b": "SKIPPED_PREMISE_FAILED",
+            "step1": "SKIPPED_PREMISE_FAILED",
+            "step2": "SKIPPED_PREMISE_FAILED",
+            "step3": "SKIPPED_PREMISE_FAILED",
+            "steps_4_to_7": "NOT_RUN_ORCHESTRATOR_REVIEW_GATE",
+        }
+        _c0g_write_json(_resolve_output_path(cfg.json_path), result)
+        write_c0g_partial_report(result, _resolve_output_path(cfg.report_path))
+        return result
+    state_results: list[dict[str, Any]] = []
+    if "step0" in step0:
+        state_results.append(step0["step0"])
+    for tau in cfg.converged_taus:
+        path = _c0g_state_json_path(cfg, tau=float(tau))
+        with path.open("r", encoding="utf-8") as handle:
+            state_results.append(json.load(handle))
+    # Keep one row per tau if the stalled state was also measured separately.
+    by_tau: dict[float, dict[str, Any]] = {}
+    for state in state_results:
+        by_tau[float(state["tau"])] = state
+    state_results = sorted(by_tau.values(), key=lambda item: float(item["tau"]), reverse=True)
+    result = {
+        "phase": "steps0_3_staged",
+        "status": "MEASURED",
+        "config": _c0g_config_to_dict(cfg),
+        "provenance": provenance,
+        "step0": step0.get("step0"),
+        "step0b": _c0g_best_alpha_trend(state_results, config=cfg),
+        "state_results": state_results,
+        "step1_tracked_modes": _c0g_track_modes(state_results),
+        "sigma_min_squared_fit": _c0g_fit_sigma_min_squared(state_results, config=cfg),
+        "steps_4_to_7": "NOT_RUN_ORCHESTRATOR_REVIEW_GATE",
+    }
+    result["preliminary_reading"] = _c0g_preliminary_reading(result)
+    _c0g_write_json(_resolve_output_path(cfg.json_path), result)
+    write_c0g_partial_report(result, _resolve_output_path(cfg.report_path))
+    return result
+
+
+def _c0g_steps4_6_7_json_path(config: C0gConfig) -> Path:
+    return _resolve_output_path(config.run_root / "pathA_C0g_steps4_6_7.json")
+
+
+def _c0g_load_steps0_3(config: C0gConfig) -> dict[str, Any]:
+    path = _resolve_input_path(config.json_path)
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def _c0g_state_results_by_tau(
+    result: Mapping[str, Any],
+) -> dict[float, dict[str, Any]]:
+    return {float(row["tau"]): dict(row) for row in result.get("state_results", [])}
+
+
+def _c0g_current_and_mach_for_state(
+    *,
+    state_result: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tau = float(state_result["tau"])
+    state_path = _resolve_input_path(str(state_result["state_path"]))
+    state = _load_state_artifact(state_path, dtype=dtype)
+    branch, _provider, grid, _boundaries, eos_K, _residual_fn = _c0g_residual_context(
+        tau=tau,
+        config=config,
+        dtype=dtype,
+    )
+    fields, _mu = unpack_closed_coupled_fields(
+        state,
+        grid,
+        has_chemical_potential=True,
+    )
+    grad_real_r = tensor_center_gradient_r(fields.psi_real, grid)
+    grad_imag_r = tensor_center_gradient_r(fields.psi_imag, grid)
+    grad_real_w = tensor_center_gradient_w(fields.psi_real, grid)
+    grad_imag_w = tensor_center_gradient_w(fields.psi_imag, grid)
+    rho = fields.psi_real**2 + fields.psi_imag**2
+    jr = (branch.hbar / branch.particle_mass) * (
+        fields.psi_real * grad_imag_r - fields.psi_imag * grad_real_r
+    ) - (branch.gauge_charge / branch.particle_mass) * fields.ar * rho
+    jw = (branch.hbar / branch.particle_mass) * (
+        fields.psi_real * grad_imag_w - fields.psi_imag * grad_real_w
+    ) - (branch.gauge_charge / branch.particle_mass) * fields.aw * rho
+
+    rho_np = rho.detach().cpu().numpy().astype(np.float64, copy=False)
+    jr_np = jr.detach().cpu().numpy().astype(np.float64, copy=False)
+    jw_np = jw.detach().cpu().numpy().astype(np.float64, copy=False)
+    jmag = np.sqrt(jr_np * jr_np + jw_np * jw_np)
+    sound_speed = math.sqrt(5.0 * float(eos_K) / float(branch.particle_mass)) * rho_np**2
+    sound_speed = np.maximum(sound_speed, 1.0e-300)
+    floor_rows: list[dict[str, Any]] = []
+    base_payload: dict[str, Any] | None = None
+    r_centers = grid.r_centers.detach().cpu().numpy().astype(np.float64, copy=False)
+    w_centers = grid.w_centers.detach().cpu().numpy().astype(np.float64, copy=False)
+    r0_np = fields.r0.detach().cpu().numpy().astype(np.float64, copy=False)
+    for floor in config.mach_density_floors:
+        denom = np.maximum(rho_np, float(floor))
+        speed = jmag / denom
+        mach = np.nan_to_num(speed / sound_speed, nan=0.0, posinf=1.0e308, neginf=0.0)
+        mach_w = np.nan_to_num(
+            np.abs(jw_np) / denom / sound_speed,
+            nan=0.0,
+            posinf=1.0e308,
+            neginf=0.0,
+        )
+        flat_index = int(np.argmax(mach))
+        ir, iw = np.unravel_index(flat_index, mach.shape)
+        row = {
+            "density_floor": float(floor),
+            "M_full_max": float(mach[ir, iw]),
+            "M_w_max": float(mach_w[ir, iw]),
+            "rho_at_max": float(rho_np[ir, iw]),
+            "j_at_max": float(jmag[ir, iw]),
+            "j_r_at_max": float(jr_np[ir, iw]),
+            "j_w_at_max": float(jw_np[ir, iw]),
+            "r_star": float(r_centers[ir]),
+            "w_star": float(w_centers[iw]),
+            "R0_at_w_star": float(r0_np[iw]),
+            "r_star_over_R0": float(r_centers[ir] / r0_np[iw]) if r0_np[iw] != 0.0 else math.inf,
+            "argmax_index": [int(ir), int(iw)],
+        }
+        floor_rows.append(row)
+        if base_payload is None:
+            base_payload = row
+    assert base_payload is not None
+    max_rho = float(np.max(rho_np)) if rho_np.size else 0.0
+    nonvacuum_floor = max(float(config.mach_density_floors[0]), 1.0e-12 * max(max_rho, 1.0))
+    nonvacuum = rho_np > nonvacuum_floor
+    if not np.any(nonvacuum):
+        nonvacuum = rho_np > float(config.mach_density_floors[0])
+    median_j = float(np.median(jmag[nonvacuum])) if np.any(nonvacuum) else 0.0
+    current_threshold = float(config.sonic_current_threshold_multiplier) * median_j
+    represented = bool(
+        math.isfinite(float(base_payload["j_at_max"]))
+        and float(base_payload["j_at_max"]) > current_threshold
+    )
+    values = np.asarray([row["M_full_max"] for row in floor_rows], dtype=np.float64)
+    finite_values = values[np.isfinite(values)]
+    floor_relative_spread = (
+        float((np.max(finite_values) - np.min(finite_values)) / max(np.max(finite_values), 1.0e-300))
+        if finite_values.size
+        else math.nan
+    )
+    return {
+        "status": "MEASURED",
+        "tau": tau,
+        "state_path": str(state_path),
+        "current_formula": (
+            "j=(hbar/m)(psi_r grad psi_i - psi_i grad psi_r) - (q/m) A rho; "
+            "matches coupled_branch._matter_number_current gauge-covariant terms"
+        ),
+        "sound_speed_formula": "c_s=sqrt(5*K/m)*rho^2",
+        "base_density_floor": float(config.mach_density_floors[0]),
+        "M_full_max": float(base_payload["M_full_max"]),
+        "M_w_max": float(base_payload["M_w_max"]),
+        "rho_at_max": float(base_payload["rho_at_max"]),
+        "j_at_max": float(base_payload["j_at_max"]),
+        "j_r_at_max": float(base_payload["j_r_at_max"]),
+        "j_w_at_max": float(base_payload["j_w_at_max"]),
+        "r_star": float(base_payload["r_star"]),
+        "w_star": float(base_payload["w_star"]),
+        "R0_at_w_star": float(base_payload["R0_at_w_star"]),
+        "r_star_over_R0": float(base_payload["r_star_over_R0"]),
+        "nonvacuum_definition": f"rho>{nonvacuum_floor:.6e}",
+        "median_abs_j_nonvacuum": median_j,
+        "current_threshold": current_threshold,
+        "sonic_current_represented": represented,
+        "density_floor_sweep": floor_rows,
+        "density_floor_relative_spread": floor_relative_spread,
+        "density_floor_stability_call": "STABLE"
+        if math.isfinite(floor_relative_spread) and floor_relative_spread <= 0.1
+        else "SENSITIVE",
+    }
+
+
+def _c0g_mach_map(
+    *,
+    steps0_3: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    rows = [
+        _c0g_current_and_mach_for_state(
+            state_result=state,
+            config=config,
+            dtype=dtype,
+        )
+        for state in sorted(
+            steps0_3.get("state_results", []),
+            key=lambda item: float(item["tau"]),
+            reverse=True,
+        )
+    ]
+    trend_rows = [{"tau": row["tau"], "M_full_max": row["M_full_max"]} for row in rows]
+    by_decreasing_tau = sorted(rows, key=lambda item: float(item["tau"]), reverse=True)
+    m_values = [float(row["M_full_max"]) for row in by_decreasing_tau]
+    monotone_approach = bool(
+        len(m_values) >= 2
+        and all(right >= left - 1.0e-12 for left, right in zip(m_values, m_values[1:]))
+    )
+    deepest = min(rows, key=lambda item: float(item["tau"])) if rows else None
+    if deepest is None:
+        label = "NOT_MEASURED"
+        represented = False
+    else:
+        represented = bool(deepest.get("sonic_current_represented"))
+        m_deep = float(deepest["M_full_max"])
+        low, high = config.sonic_band
+        if not represented:
+            label = "SONIC_HYPOTHESIS_NOT_REPRESENTED"
+        elif low <= m_deep <= high and monotone_approach:
+            label = "SONIC_SUPPORT"
+        elif m_deep < float(config.no_sonic_threshold):
+            label = "NO_SONIC"
+        else:
+            label = "INCONCLUSIVE"
+    return {
+        "status": "MEASURED" if rows else "NOT_MEASURED",
+        "context_only_not_verdict_gate": True,
+        "rows": rows,
+        "M_max_trend": trend_rows,
+        "monotone_approach_as_tau_decreases": monotone_approach,
+        "sonic_context_label": label,
+        "sonic_hypothesis_represented": represented,
+        "thresholds": {
+            "sonic_band": [float(config.sonic_band[0]), float(config.sonic_band[1])],
+            "no_sonic_if_M_max_lt": float(config.no_sonic_threshold),
+            "j_at_max_threshold": (
+                f"{config.sonic_current_threshold_multiplier:.6e} * "
+                "median(|j| over non-vacuum cells)"
+            ),
+        },
+    }
+
+
+def _c0g_scaled_ftau_vector(
+    *,
+    state: torch.Tensor,
+    tau: float,
+    row_scale: np.ndarray,
+    h_multiplier: float,
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    h = float(h_multiplier) * float(tau)
+    _branch_p, _provider_p, _grid_p, _boundaries_p, _eos_K_p, residual_plus = (
+        _c0g_residual_context(tau=float(tau) + h, config=config, dtype=dtype)
+    )
+    _branch_m, _provider_m, _grid_m, _boundaries_m, _eos_K_m, residual_minus = (
+        _c0g_residual_context(tau=float(tau) - h, config=config, dtype=dtype)
+    )
+    f_plus = residual_plus(state).detach().cpu().numpy().astype(np.float64, copy=False)
+    f_minus = residual_minus(state).detach().cpu().numpy().astype(np.float64, copy=False)
+    ftau = (f_plus - f_minus) / (2.0 * h)
+    scaled = row_scale * ftau
+    return {
+        "h": h,
+        "h_multiplier": float(h_multiplier),
+        "scaled_vector": scaled,
+        "scaled_l2": float(np.linalg.norm(scaled)),
+    }
+
+
+def _c0g_preferred_ftau_h_multiplier(state_result: Mapping[str, Any], config: C0gConfig) -> float:
+    ftau = state_result.get("ftau", {})
+    stable_pairs = ftau.get("stable_pairs", []) if isinstance(ftau, Mapping) else []
+    if stable_pairs:
+        pair = min(
+            stable_pairs,
+            key=lambda item: float(item.get("relative_difference", math.inf)),
+        )
+        return float(pair["left_h_multiplier"])
+    return float(config.ftau_h_multipliers[0])
+
+
+def _c0g_bordered_conditioning_for_state(
+    *,
+    state_result: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tau = float(state_result["tau"])
+    state_path = _resolve_input_path(str(state_result["state_path"]))
+    state = _load_state_artifact(state_path, dtype=dtype)
+    assembled = _c0g_assemble_original_jacobian(
+        state=state,
+        tau=tau,
+        config=config,
+        dtype=dtype,
+    )
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state,
+        grid=assembled["grid"],
+        branch=assembled["branch"],
+        config=config,
+    )
+    complement = _c0g_scaled_gauge_complement(
+        gauge_matrix=gauge["generator_matrix"],
+        col_scale=assembled["col_scale"],
+        config=config,
+    )
+    q_perp = np.asarray(complement["q_perp"], dtype=np.float64)
+    reduced = assembled["scaled_matrix"].toarray().astype(np.float64, copy=False) @ q_perp
+    mode_path = state_result.get("svd", {}).get("mode_vectors_artifact")
+    if not mode_path:
+        return {"status": "NOT_MEASURED", "tau": tau, "reason": "missing_mode_artifact"}
+    modes = _c0g_load_mode_bundle(mode_path)
+    right_min_scaled = modes["right_modes"][0] / assembled["col_scale"]
+    vhat, vhat_norm = _unit_vector(q_perp.T @ right_min_scaled)
+    if vhat_norm <= 0.0:
+        return {"status": "NOT_MEASURED", "tau": tau, "reason": "zero_reduced_right_null"}
+    h_multiplier = _c0g_preferred_ftau_h_multiplier(state_result, config)
+    ftau = _c0g_scaled_ftau_vector(
+        state=state,
+        tau=tau,
+        row_scale=assembled["row_scale"],
+        h_multiplier=h_multiplier,
+        config=config,
+        dtype=dtype,
+    )
+    bordered = np.zeros((reduced.shape[0] + 1, reduced.shape[1] + 1), dtype=np.float64)
+    bordered[:-1, :-1] = reduced
+    bordered[:-1, -1] = np.asarray(ftau["scaled_vector"], dtype=np.float64)
+    bordered[-1, :-1] = vhat
+    start = time.perf_counter()
+    bordered_singular = np.linalg.svd(bordered, compute_uv=False)
+    bordered_svd_seconds = float(time.perf_counter() - start)
+    sigma_min_b, sigma_max_b, cond_b = _condition_number_from_singular_values(
+        bordered_singular
+    )
+    svd = state_result.get("svd", {})
+    sigma_min_a = float(svd.get("sigma_min", math.nan))
+    sigma_max_a = float(svd.get("sigma_max", math.nan))
+    cond_a = (
+        float(sigma_max_a / sigma_min_a)
+        if sigma_min_a > 0.0 and math.isfinite(sigma_max_a)
+        else math.inf
+    )
+    sigma_min_ratio = (
+        float(sigma_min_b / sigma_min_a)
+        if sigma_min_a > 0.0 and math.isfinite(sigma_min_b)
+        else math.nan
+    )
+    fold_support = bool(
+        (cond_a > 1.0e10 and cond_b < 1.0e8)
+        or (math.isfinite(sigma_min_ratio) and sigma_min_ratio > 1.0e4)
+    )
+    return {
+        "status": "MEASURED",
+        "tau": tau,
+        "state_path": str(state_path),
+        "construction": "bordered_[scaled_J_times_Q_perp, scaled_F_tau; vhat_min^T, 0]",
+        "forbidden_construction_not_used": "SVD((I-P_G)J)",
+        "reduced_shape": [int(reduced.shape[0]), int(reduced.shape[1])],
+        "bordered_shape": [int(bordered.shape[0]), int(bordered.shape[1])],
+        "ftau_h_multiplier": float(ftau["h_multiplier"]),
+        "ftau_scaled_l2": float(ftau["scaled_l2"]),
+        "cond_JQ_perp": cond_a,
+        "cond_Jb": cond_b,
+        "sigma_min_JQ_perp": sigma_min_a,
+        "sigma_min_Jb": sigma_min_b,
+        "sigma_min_ratio_Jb_over_JQ_perp": sigma_min_ratio,
+        "sigma_max_Jb": sigma_max_b,
+        "call": "FOLD_SUPPORT" if fold_support else "NO_FOLD_SUPPORT_BY_BORDER_THRESHOLD",
+        "thresholds": {
+            "fold_if_cond_JQ_perp_gt_and_cond_Jb_lt": [1.0e10, 1.0e8],
+            "fold_if_sigma_min_ratio_gt": 1.0e4,
+        },
+        "assembly_seconds": float(assembled["metadata"].get("assembly_seconds", math.nan)),
+        "bordered_svd_seconds": bordered_svd_seconds,
+    }
+
+
+def _c0g_bordered_conditioning(
+    *,
+    steps0_3: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    rows = []
+    by_tau = _c0g_state_results_by_tau(steps0_3)
+    for tau in sorted(config.converged_taus, reverse=True):
+        state_result = by_tau.get(float(tau))
+        if state_result is None:
+            rows.append({"status": "NOT_MEASURED", "tau": float(tau), "reason": "missing_state_result"})
+            continue
+        rows.append(
+            _c0g_bordered_conditioning_for_state(
+                state_result=state_result,
+                config=config,
+                dtype=dtype,
+            )
+        )
+    measured = [row for row in rows if row.get("status") == "MEASURED"]
+    support_rows = [row for row in measured if row.get("call") == "FOLD_SUPPORT"]
+    closest = min(measured, key=lambda item: float(item["tau"])) if measured else None
+    return {
+        "status": "MEASURED" if measured else "NOT_MEASURED",
+        "rows": rows,
+        "call": "FOLD_SUPPORT" if support_rows else "NO_FOLD_SUPPORT_BY_BORDER_THRESHOLD",
+        "closest_converged_tau_call": closest.get("call") if closest else None,
+        "closest_converged_tau": closest.get("tau") if closest else None,
+    }
+
+
+def _c0g_boundary_mask_np(grid) -> np.ndarray:
+    mask = np.zeros((grid.spec.nr, grid.spec.nw), dtype=bool)
+    mask[0, :] = True
+    mask[-1, :] = True
+    mask[:, 0] = True
+    mask[:, -1] = True
+    return mask
+
+
+def _c0g_curl_from_state_vector(vector: np.ndarray, grid) -> np.ndarray:
+    values = np.asarray(vector, dtype=np.float64)
+    lanes = _closed_lane_slices(grid)
+    shape = (grid.spec.nr, grid.spec.nw)
+    ar_start, ar_stop = lanes["ar"]
+    aw_start, aw_stop = lanes["aw"]
+    ar = torch.as_tensor(
+        values[ar_start:ar_stop].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    aw = torch.as_tensor(
+        values[aw_start:aw_stop].reshape(shape),
+        dtype=grid.r_centers.dtype,
+        device=grid.r_centers.device,
+    )
+    curl = tensor_center_gradient_r(aw, grid) - tensor_center_gradient_w(ar, grid)
+    return curl.detach().cpu().numpy().astype(np.float64, copy=True)
+
+
+def _c0g_spatial_a_norm(vector: np.ndarray, grid) -> float:
+    lanes = _closed_lane_slices(grid)
+    values = np.asarray(vector, dtype=np.float64)
+    pieces = []
+    for name in ("ar", "aw"):
+        start, stop = lanes[name]
+        pieces.append(values[start:stop])
+    if not pieces:
+        return 0.0
+    a_values = np.concatenate(pieces)
+    return float(np.linalg.norm(a_values))
+
+
+def _c0g_curl_metrics(vector: np.ndarray, grid) -> dict[str, Any]:
+    curl = _c0g_curl_from_state_vector(vector, grid)
+    curl_norm = float(np.linalg.norm(curl))
+    boundary_mask = _c0g_boundary_mask_np(grid)
+    boundary_norm = float(np.linalg.norm(curl[boundary_mask]))
+    interior_norm = float(np.linalg.norm(curl[~boundary_mask]))
+    vector_norm = float(np.linalg.norm(vector))
+    spatial_a_norm = _c0g_spatial_a_norm(vector, grid)
+    return {
+        "curl_norm": curl_norm,
+        "state_norm": vector_norm,
+        "spatial_a_norm": spatial_a_norm,
+        "residual_curl_over_state_norm": float(curl_norm / vector_norm)
+        if vector_norm > 0.0
+        else math.nan,
+        "curl_over_spatial_a_norm": float(curl_norm / spatial_a_norm)
+        if spatial_a_norm > 0.0
+        else math.nan,
+        "boundary_curl_norm_fraction": float(boundary_norm / curl_norm)
+        if curl_norm > 0.0
+        else math.nan,
+        "boundary_curl_energy_fraction": float((boundary_norm**2) / (curl_norm**2))
+        if curl_norm > 0.0
+        else math.nan,
+        "interior_curl_norm": interior_norm,
+    }
+
+
+def _c0g_commutator_for_state(
+    *,
+    state_result: Mapping[str, Any],
+    tracked_lookup: Mapping[tuple[float, int], int],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tau = float(state_result["tau"])
+    state_path = _resolve_input_path(str(state_result["state_path"]))
+    state = _load_state_artifact(state_path, dtype=dtype)
+    branch, _provider, grid, _boundaries, _eos_K, _residual_fn = _c0g_residual_context(
+        tau=tau,
+        config=config,
+        dtype=dtype,
+    )
+    gauge = _c0g_build_analytic_gauge_matrix(
+        state=state,
+        grid=grid,
+        branch=branch,
+        config=config,
+    )
+    generator_matrix = np.asarray(gauge["generator_matrix"], dtype=np.float64)
+    curls = np.column_stack(
+        [
+            _c0g_curl_from_state_vector(generator_matrix[:, index], grid).reshape(-1)
+            for index in range(generator_matrix.shape[1])
+        ]
+    )
+    curl_norm = float(np.linalg.norm(curls))
+    generator_norm = float(np.linalg.norm(generator_matrix))
+    boundary_mask = _c0g_boundary_mask_np(grid).reshape(-1)
+    boundary_norm = float(np.linalg.norm(curls[boundary_mask, :]))
+    mode_path = state_result.get("svd", {}).get("mode_vectors_artifact")
+    mode_rows: list[dict[str, Any]] = []
+    if mode_path:
+        mode_bundle = _c0g_load_mode_bundle(mode_path)
+        for mode_index, mode in enumerate(mode_bundle["right_modes"]):
+            p_g = _c0g_projection_fraction_from_basis(gauge["physical_basis"], mode)
+            curl_metrics = _c0g_curl_metrics(mode, grid)
+            mode_rows.append(
+                {
+                    "tau": tau,
+                    "ascending_rank": int(mode_index + 1),
+                    "tracked_lane": int(tracked_lookup.get((tau, mode_index + 1), mode_index + 1)),
+                    "sigma": float(mode_bundle["sigmas"][mode_index])
+                    if mode_index < mode_bundle["sigmas"].size
+                    else math.nan,
+                    "P_G": p_g,
+                    "one_minus_P_G": float(1.0 - p_g) if math.isfinite(p_g) else math.nan,
+                    **curl_metrics,
+                }
+            )
+    rng = np.random.default_rng(int(config.commutator_control_seed) + int(round(tau * 1.0e9)))
+    mixed = rng.normal(size=generator_matrix.shape[0]).astype(np.float64)
+    mixed_unit, _mixed_norm = _unit_vector(mixed)
+    mixed_p_g = _c0g_projection_fraction_from_basis(gauge["physical_basis"], mixed_unit)
+    return {
+        "status": "MEASURED",
+        "tau": tau,
+        "state_path": str(state_path),
+        "gauge_rank": int(gauge["rank"]),
+        "source_helpers": list(gauge["source_helpers"]),
+        "commutator_norm_CG_over_G": float(curl_norm / generator_norm)
+        if generator_norm > 0.0
+        else math.nan,
+        "boundary_row_norm_fraction": float(boundary_norm / curl_norm)
+        if curl_norm > 0.0
+        else math.nan,
+        "boundary_row_energy_fraction": float((boundary_norm**2) / (curl_norm**2))
+        if curl_norm > 0.0
+        else math.nan,
+        "mode_rows": mode_rows,
+        "mixed_control": {
+            "seed": int(config.commutator_control_seed) + int(round(tau * 1.0e9)),
+            "P_G": mixed_p_g,
+            "one_minus_P_G": float(1.0 - mixed_p_g) if math.isfinite(mixed_p_g) else math.nan,
+            **_c0g_curl_metrics(mixed_unit, grid),
+        },
+        "note": (
+            "P_G is projected onto analytic gauge generators. The C0g tracked modes are "
+            "right modes of J*Q_perp, so low P_G is expected and is not used as fold evidence."
+        ),
+    }
+
+
+def _c0g_commutator_diagnostic(
+    *,
+    steps0_3: Mapping[str, Any],
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    tracked_lookup = {
+        (float(row["tau"]), int(row["ascending_rank"])): int(row["tracked_lane"])
+        for row in steps0_3.get("step1_tracked_modes", [])
+        if "tau" in row and "ascending_rank" in row and "tracked_lane" in row
+    }
+    rows = [
+        _c0g_commutator_for_state(
+            state_result=state,
+            tracked_lookup=tracked_lookup,
+            config=config,
+            dtype=dtype,
+        )
+        for state in sorted(
+            steps0_3.get("state_results", []),
+            key=lambda item: float(item["tau"]),
+            reverse=True,
+        )
+    ]
+    all_modes = [mode for row in rows for mode in row.get("mode_rows", [])]
+    return {
+        "status": "MEASURED" if rows else "NOT_MEASURED",
+        "rows": rows,
+        "per_mode_rows": all_modes,
+        "mode_characterization_scope": (
+            "C0g gauge-complement tracked modes; mode 2 here is the a0 lane with "
+            "sigma about 1.7e-2, not the r0 stall-driving minimum mode."
+        ),
+    }
+
+
+def run_c0g_steps4_6_7(config: C0gConfig | None = None) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    dtype = configure_backend(BackendConfig())
+    steps0_3 = _c0g_load_steps0_3(cfg)
+    if steps0_3.get("status") == "PREMISE_FAILED":
+        result = {
+            "phase": "steps4_6_7",
+            "status": "SKIPPED_PREMISE_FAILED",
+            "config": _c0g_config_to_dict(cfg),
+            "step4_mach": "SKIPPED_PREMISE_FAILED",
+            "step6_bordered_conditioning": "SKIPPED_PREMISE_FAILED",
+            "step7_commutator": "SKIPPED_PREMISE_FAILED",
+        }
+        _c0g_write_json(_c0g_steps4_6_7_json_path(cfg), result)
+        return result
+    result = {
+        "phase": "steps4_6_7",
+        "status": "MEASURED",
+        "config": _c0g_config_to_dict(cfg),
+        "step4_mach": _c0g_mach_map(steps0_3=steps0_3, config=cfg, dtype=dtype),
+        "step6_bordered_conditioning": _c0g_bordered_conditioning(
+            steps0_3=steps0_3,
+            config=cfg,
+            dtype=dtype,
+        ),
+        "step7_commutator": _c0g_commutator_diagnostic(
+            steps0_3=steps0_3,
+            config=cfg,
+            dtype=dtype,
+        ),
+    }
+    _c0g_write_json(_c0g_steps4_6_7_json_path(cfg), result)
+    return result
+
+
+class _C0gProbeAbort(RuntimeError):
+    def __init__(self, reason: str) -> None:
+        super().__init__(reason)
+        self.reason = reason
+
+
+def _c0g_residual_norms(values: np.ndarray) -> dict[str, float]:
+    return {
+        "l2": float(np.linalg.norm(values)),
+        "linf": float(np.max(np.abs(values))) if values.size else 0.0,
+    }
+
+
+def _c0g_scaled_lane_overlaps(
+    *,
+    candidate: np.ndarray,
+    reference: np.ndarray,
+    origin: np.ndarray,
+    col_scale: np.ndarray,
+    grid,
+) -> dict[str, Any]:
+    candidate_scaled = (candidate - origin) / col_scale
+    reference_scaled = (reference - origin) / col_scale
+    lane_groups = {
+        "psi": ("psi_real", "psi_imag"),
+        "A": ("a0", "ar", "aw"),
+        "r0": ("r0",),
+        "mu": ("mu",),
+    }
+    slices = _closed_lane_slices(grid)
+    rows = []
+    for group, names in lane_groups.items():
+        indices = []
+        for name in names:
+            start, stop = slices[name]
+            indices.extend(range(start, stop))
+        idx = np.asarray(indices, dtype=np.int64)
+        a = candidate_scaled[idx]
+        b = reference_scaled[idx]
+        denom = float(np.linalg.norm(a) * np.linalg.norm(b))
+        overlap = float(np.dot(a, b) / denom) if denom > 0.0 else math.nan
+        if math.isfinite(overlap) and overlap > 0.99:
+            call = "SAME_BRANCH"
+        elif math.isfinite(overlap) and overlap < 0.5:
+            call = "POST_FOLD_BRANCH"
+        elif math.isfinite(overlap):
+            call = "INCONCLUSIVE"
+        else:
+            call = "NOT_MEASURED"
+        rows.append(
+            {
+                "lane": group,
+                "scaled_overlap": overlap,
+                "call": call,
+                "candidate_delta_scaled_norm": float(np.linalg.norm(a)),
+                "prestall_delta_scaled_norm": float(np.linalg.norm(b)),
+            }
+        )
+    finite = [row for row in rows if math.isfinite(float(row["scaled_overlap"]))]
+    if finite and all(float(row["scaled_overlap"]) > 0.99 for row in finite):
+        aggregate = "SAME_BRANCH"
+    elif finite and any(float(row["scaled_overlap"]) < 0.5 for row in finite):
+        aggregate = "POST_FOLD_BRANCH"
+    elif finite:
+        aggregate = "INCONCLUSIVE"
+    else:
+        aggregate = "NOT_MEASURED"
+    return {
+        "metric": "spectral_scaled_state_coordinates_delta/col_scale",
+        "rows": rows,
+        "aggregate_overlap_call": aggregate,
+        "thresholds": {
+            "same_branch_if_lane_overlap_gt": 0.99,
+            "post_fold_if_lane_overlap_lt": 0.5,
+            "inconclusive_band": [0.5, 0.99],
+        },
+    }
+
+
+def _c0g_step5_overlap_if_progress(
+    *,
+    candidate: np.ndarray,
+    stalled_state: np.ndarray,
+    prestall_state: np.ndarray,
+    config: C0gConfig,
+    dtype: torch.dtype,
+) -> dict[str, Any]:
+    state_t = torch.as_tensor(stalled_state, dtype=dtype, device="cpu")
+    assembled = _c0g_assemble_original_jacobian(
+        state=state_t,
+        tau=float(config.stalled_tau),
+        config=config,
+        dtype=dtype,
+    )
+    return _c0g_scaled_lane_overlaps(
+        candidate=candidate,
+        reference=prestall_state,
+        origin=stalled_state,
+        col_scale=assembled["col_scale"],
+        grid=assembled["grid"],
+    )
+
+
+def _c0g_scipy_method_probe(
+    *,
+    method: str,
+    initial: np.ndarray,
+    residual_fn: Callable[[torch.Tensor], torch.Tensor],
+    initial_norms: Mapping[str, float],
+    config: C0gConfig,
+    dtype: torch.dtype,
+    global_start: float,
+) -> dict[str, Any]:
+    method_start = time.perf_counter()
+    maxfev = int(config.scipy_maxfev_factor * (initial.size + 1))
+    remaining_global = max(0.0, float(config.scipy_global_wall_seconds) - (method_start - global_start))
+    wall_cap = min(float(config.scipy_method_wall_seconds), remaining_global)
+    if wall_cap <= 1.0:
+        return {
+            "status": "NOT_MEASURED",
+            "method": method,
+            "reason": "global_wall_budget_exhausted_before_method",
+            "maxfev": maxfev,
+            "wall_cap_seconds": wall_cap,
+        }
+    trajectory: list[dict[str, Any]] = []
+    best_x = initial.copy()
+    best_l2 = float(initial_norms["l2"])
+    best_linf = float(initial_norms["linf"])
+    nfev = 0
+
+    def fun(values: np.ndarray) -> np.ndarray:
+        nonlocal nfev, best_x, best_l2, best_linf
+        elapsed = time.perf_counter() - method_start
+        if elapsed > wall_cap:
+            raise _C0gProbeAbort("wall_time_cap")
+        if nfev >= maxfev:
+            raise _C0gProbeAbort("maxfev_cap")
+        nfev += 1
+        tensor = torch.as_tensor(values, dtype=dtype, device="cpu")
+        residual = residual_fn(tensor).detach().cpu().numpy().astype(np.float64, copy=False)
+        norms = _c0g_residual_norms(residual)
+        if norms["l2"] < best_l2:
+            best_l2 = norms["l2"]
+            best_linf = norms["linf"]
+            best_x = np.asarray(values, dtype=np.float64).copy()
+        trajectory.append(
+            {
+                "eval": int(nfev),
+                "elapsed_seconds": float(elapsed),
+                "original_residual_l2": norms["l2"],
+                "original_residual_linf": norms["linf"],
+            }
+        )
+        return residual
+
+    options: dict[str, Any]
+    if method == "lm":
+        options = {"maxiter": maxfev}
+    else:
+        options = {"maxfev": maxfev}
+    abort_reason = None
+    scipy_success = False
+    scipy_message = None
+    try:
+        scipy_result = optimize.root(fun, initial.copy(), method=method, options=options)
+        scipy_success = bool(scipy_result.success)
+        scipy_message = str(scipy_result.message)
+        final_x = np.asarray(scipy_result.x, dtype=np.float64)
+        reported_nfev = int(getattr(scipy_result, "nfev", nfev))
+    except _C0gProbeAbort as exc:
+        abort_reason = exc.reason
+        final_x = best_x.copy()
+        reported_nfev = nfev
+    except Exception as exc:  # pragma: no cover - diagnostic reports unexpected scipy failures.
+        abort_reason = f"{type(exc).__name__}:{exc}"
+        final_x = best_x.copy()
+        reported_nfev = nfev
+
+    final_residual = residual_fn(
+        torch.as_tensor(final_x, dtype=dtype, device="cpu")
+    ).detach().cpu().numpy().astype(np.float64, copy=False)
+    final_norms = _c0g_residual_norms(final_residual)
+    if final_norms["l2"] < best_l2:
+        best_l2 = final_norms["l2"]
+        best_linf = final_norms["linf"]
+        best_x = final_x.copy()
+    l2_ratio = best_l2 / max(float(initial_norms["l2"]), np.finfo(np.float64).tiny)
+    if best_linf <= 1.0e-6:
+        progress_call = "CONVERGED_LINF"
+    elif l2_ratio <= 0.1:
+        progress_call = "PROGRESS_10X_L2_DROP"
+    else:
+        progress_call = "NO_PROGRESS_NO_EVIDENCE"
+    status = "MEASURED"
+    if abort_reason in {"wall_time_cap", "maxfev_cap"}:
+        status = "NOT_MEASURED"
+    return {
+        "status": status,
+        "method": method,
+        "maxfev": maxfev,
+        "wall_cap_seconds": wall_cap,
+        "elapsed_seconds": float(time.perf_counter() - method_start),
+        "nfev_wrapper": int(nfev),
+        "nfev_reported_by_scipy": reported_nfev,
+        "scipy_success": scipy_success,
+        "scipy_message": scipy_message,
+        "abort_reason": abort_reason,
+        "initial_original_residual_l2": float(initial_norms["l2"]),
+        "initial_original_residual_linf": float(initial_norms["linf"]),
+        "final_original_residual_l2": final_norms["l2"],
+        "final_original_residual_linf": final_norms["linf"],
+        "best_original_residual_l2": best_l2,
+        "best_original_residual_linf": best_linf,
+        "best_l2_ratio": l2_ratio,
+        "progress_call": progress_call,
+        "trajectory": trajectory,
+        "best_state": best_x,
+    }
+
+
+def run_c0g_step5_scipy_probe(config: C0gConfig | None = None) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    dtype = configure_backend(BackendConfig())
+    payload = _c0g_load_c0f2_payload(cfg)
+    rows_by_tau = _c0g_rows_by_tau(payload)
+    stalled_row = _c0g_find_tau_row(payload, cfg.stalled_tau)
+    prestall_tau = min(tau for tau in rows_by_tau if tau > float(cfg.stalled_tau))
+    prestall_row = rows_by_tau[prestall_tau]
+    stalled_state_t = _load_state_artifact(_c0g_state_path_from_row(stalled_row), dtype=dtype)
+    prestall_state_t = _load_state_artifact(_c0g_state_path_from_row(prestall_row), dtype=dtype)
+    stalled_state = stalled_state_t.detach().cpu().numpy().astype(np.float64, copy=True)
+    prestall_state = prestall_state_t.detach().cpu().numpy().astype(np.float64, copy=True)
+    _branch, _provider, _grid, _boundaries, _eos_K, residual_fn = _c0g_residual_context(
+        tau=float(cfg.stalled_tau),
+        config=cfg,
+        dtype=dtype,
+    )
+    initial_residual = residual_fn(stalled_state_t).detach().cpu().numpy().astype(np.float64, copy=False)
+    initial_norms = _c0g_residual_norms(initial_residual)
+    global_start = time.perf_counter()
+    method_results: list[dict[str, Any]] = []
+    overlap: dict[str, Any] | None = None
+    for method in ("lm", "hybr"):
+        if time.perf_counter() - global_start >= float(cfg.scipy_global_wall_seconds):
+            method_results.append(
+                {
+                    "status": "NOT_MEASURED",
+                    "method": method,
+                    "reason": "global_wall_budget_exhausted",
+                }
+            )
+            continue
+        method_result = _c0g_scipy_method_probe(
+            method=method,
+            initial=stalled_state,
+            residual_fn=residual_fn,
+            initial_norms=initial_norms,
+            config=cfg,
+            dtype=dtype,
+            global_start=global_start,
+        )
+        best_state = np.asarray(method_result.pop("best_state"), dtype=np.float64)
+        if (
+            method_result.get("progress_call") in {"CONVERGED_LINF", "PROGRESS_10X_L2_DROP"}
+            and overlap is None
+        ):
+            overlap = _c0g_step5_overlap_if_progress(
+                candidate=best_state,
+                stalled_state=stalled_state,
+                prestall_state=prestall_state,
+                config=cfg,
+                dtype=dtype,
+            )
+            method_result["overlap_computed_for_this_method"] = True
+        else:
+            method_result["overlap_computed_for_this_method"] = False
+        method_results.append(method_result)
+    measured_progress = [
+        row
+        for row in method_results
+        if row.get("progress_call") in {"CONVERGED_LINF", "PROGRESS_10X_L2_DROP"}
+    ]
+    if overlap is None:
+        overlap = {
+            "metric": "spectral_scaled_state_coordinates_delta/col_scale",
+            "aggregate_overlap_call": "NOT_COMPUTED_NO_PROGRESS",
+            "rows": [],
+        }
+    if any(row.get("status") == "NOT_MEASURED" for row in method_results) and not measured_progress:
+        status = "NOT_MEASURED"
+    else:
+        status = "MEASURED"
+    result = {
+        "phase": "step5_scipy_probe",
+        "status": status,
+        "config": _c0g_config_to_dict(cfg),
+        "tau": float(cfg.stalled_tau),
+        "prestall_tau": float(prestall_tau),
+        "state_path": str(_c0g_state_path_from_row(stalled_row)),
+        "prestall_state_path": str(_c0g_state_path_from_row(prestall_row)),
+        "arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+        "caps": {
+            "method_order": ["lm", "hybr"],
+            "maxfev": int(cfg.scipy_maxfev_factor * (stalled_state.size + 1)),
+            "maxfev_formula": "4*(n+1)",
+            "method_wall_seconds": float(cfg.scipy_method_wall_seconds),
+            "global_wall_seconds": float(cfg.scipy_global_wall_seconds),
+        },
+        "initial_original_residual_l2": float(initial_norms["l2"]),
+        "initial_original_residual_linf": float(initial_norms["linf"]),
+        "method_results": method_results,
+        "branch_overlap": overlap,
+        "step5_call": overlap.get("aggregate_overlap_call")
+        if measured_progress
+        else "NO_PROGRESS_NO_EVIDENCE",
+        "non_progressing_result_interpretation": "no evidence, not fold proof",
+    }
+    _c0g_write_json(_resolve_output_path(cfg.step5_json_path), result)
+    return result
+
+
+def _c0g_step5_summary(step5: Mapping[str, Any]) -> dict[str, Any]:
+    methods = step5.get("method_results", [])
+    return {
+        "status": step5.get("status"),
+        "call": step5.get("step5_call"),
+        "method_progress_calls": [
+            {
+                "method": row.get("method"),
+                "status": row.get("status"),
+                "progress_call": row.get("progress_call"),
+                "nfev": row.get("nfev_wrapper"),
+                "best_l2_ratio": row.get("best_l2_ratio"),
+                "best_linf": row.get("best_original_residual_linf"),
+                "abort_reason": row.get("abort_reason") or row.get("reason"),
+            }
+            for row in methods
+        ],
+        "branch_overlap": step5.get("branch_overlap", {}),
+    }
+
+
+def _c0g_primary_evidence_status(
+    *,
+    steps0_3: Mapping[str, Any],
+    step5: Mapping[str, Any],
+) -> dict[str, Any]:
+    step0_gate = steps0_3.get("step0", {}).get("premise_gate", {})
+    ftau = [
+        state.get("ftau", {})
+        for state in steps0_3.get("state_results", [])
+        if isinstance(state.get("ftau"), Mapping)
+    ]
+    fit = steps0_3.get("sigma_min_squared_fit", {})
+    overlap_call = step5.get("branch_overlap", {}).get("aggregate_overlap_call")
+    gray_items: list[str] = []
+    not_measured: list[str] = []
+    disagreements: list[str] = []
+    if step0_gate.get("call") == "PREMISE_GRAY":
+        gray_items.append("Step-0 f_nn")
+    elif step0_gate.get("call") not in {"PREMISE_HOLDS", "PREMISE_FAILED"}:
+        not_measured.append("Step-0 f_nn")
+    ftau_calls = {row.get("call") for row in ftau if row.get("status") == "MEASURED"}
+    if any(row.get("status") != "MEASURED" for row in ftau):
+        not_measured.append("Step-2 cos_theta")
+    if "INCONCLUSIVE" in ftau_calls:
+        gray_items.append("Step-2 cos_theta")
+    if fit.get("status") != "MEASURED" or fit.get("fit_reliability") == "UNRELIABLE":
+        not_measured.append("Step-3 sigma_min^2 fit")
+    elif fit.get("call") == "INCONCLUSIVE":
+        gray_items.append("Step-3 sigma_min^2 fit")
+    if overlap_call == "INCONCLUSIVE":
+        gray_items.append("Step-5 branch overlap")
+    elif overlap_call in {None, "NOT_MEASURED"}:
+        not_measured.append("Step-5 branch overlap")
+    fold_primary = (
+        step0_gate.get("call") == "PREMISE_HOLDS"
+        and ftau_calls == {"FOLD_SUPPORT"}
+        and fit.get("call") == "LINEAR_MONOTONE_FOLD_SUPPORT"
+    )
+    conditioning_primary = (
+        "BIFURCATION_SUPPORT" in ftau_calls
+        or fit.get("call") == "QUADRATIC_OR_FLAT_SUPPORT"
+    )
+    if fold_primary and overlap_call == "SAME_BRANCH":
+        disagreements.append("Step-5 same-branch result disagrees with Steps 2-3 fold support")
+    return {
+        "gray_items": gray_items,
+        "not_measured": not_measured,
+        "disagreements": disagreements,
+        "fold_primary": fold_primary,
+        "conditioning_primary": conditioning_primary,
+        "step0_call": step0_gate.get("call"),
+        "ftau_calls": sorted(str(call) for call in ftau_calls if call is not None),
+        "sigma_fit_call": fit.get("call"),
+        "step5_overlap_call": overlap_call,
+    }
+
+
+def _c0g_determine_step8_verdict(
+    *,
+    steps0_3: Mapping[str, Any],
+    steps4_6_7: Mapping[str, Any],
+    step5: Mapping[str, Any],
+) -> dict[str, Any]:
+    primary = _c0g_primary_evidence_status(steps0_3=steps0_3, step5=step5)
+    step4 = steps4_6_7.get("step4_mach", {})
+    step6 = steps4_6_7.get("step6_bordered_conditioning", {})
+    step5_call = primary.get("step5_overlap_call")
+    step6_call = step6.get("call")
+    step6_support = step6_call == "FOLD_SUPPORT"
+    gray_items = list(primary["gray_items"])
+    not_measured = list(primary["not_measured"])
+    disagreements = list(primary["disagreements"])
+    if steps0_3.get("step0", {}).get("premise_gate", {}).get("call") == "PREMISE_FAILED":
+        verdict = "PREMISE_FAILED"
+        sub_label = None
+        recommendation = "Re-diagnose the actual stall driver before any C0g build."
+    elif gray_items or disagreements:
+        verdict = "MIXED/INCONCLUSIVE"
+        sub_label = None
+        recommendation = "Gauge-fix plus LM/PTC first, then rerun the battery before pseudo-arclength."
+    elif primary["fold_primary"] and (step5_call == "POST_FOLD_BRANCH" or step6_support):
+        verdict = "FOLD_CONFIRMED"
+        sonic = step4.get("sonic_context_label")
+        if sonic == "SONIC_SUPPORT":
+            sub_label = "SONIC_FOLD"
+            recommendation = (
+                "C0g build branch: gauge-fixed pseudo-arclength; optionally "
+                "shoot-from-sonic with L'Hopital regularity."
+            )
+        elif sonic == "NO_SONIC":
+            sub_label = "NON_SONIC_FOLD"
+            recommendation = "C0g build branch: gauge-fixed pseudo-arclength."
+        elif sonic == "SONIC_HYPOTHESIS_NOT_REPRESENTED":
+            sub_label = "SONIC_NOT_REPRESENTED_FOLD"
+            recommendation = "C0g build branch: gauge-fixed pseudo-arclength."
+        else:
+            sub_label = "SONIC_CONTEXT_INCONCLUSIVE_FOLD"
+            recommendation = "C0g build branch: gauge-fixed pseudo-arclength."
+    elif (
+        primary["conditioning_primary"]
+        and step5_call == "SAME_BRANCH"
+        and any(
+            row.get("progress_call") in {"CONVERGED_LINF", "PROGRESS_10X_L2_DROP"}
+            for row in step5.get("method_results", [])
+        )
+    ):
+        verdict = "CONDITIONING"
+        sub_label = None
+        recommendation = (
+            "C0g build branch: shifted-Newton LM and/or PTC+SER with "
+            "inverse-Hamiltonian matter preconditioning."
+        )
+    elif not_measured and not step6_support:
+        verdict = "DIAGNOSTIC_INCOMPLETE"
+        sub_label = None
+        recommendation = "Complete the missing confirmatory evidence before choosing the C0g build branch."
+    else:
+        verdict = "MIXED/INCONCLUSIVE"
+        sub_label = None
+        recommendation = "Gauge-fix plus LM/PTC first, then rerun the battery before pseudo-arclength."
+    return {
+        "verdict": verdict,
+        "sub_label": sub_label,
+        "recommended_C0g_build_branch": recommendation,
+        "gray_zone_rule_honored": True,
+        "primary_evidence": primary,
+        "confirmatory": {
+            "step5_overlap_call": step5_call,
+            "step6_call": step6_call,
+            "step6_support": step6_support,
+        },
+        "sonic_context_label": step4.get("sonic_context_label"),
+        "sonic_hypothesis_represented": step4.get("sonic_hypothesis_represented"),
+    }
+
+
+def aggregate_c0g_final(config: C0gConfig | None = None) -> dict[str, Any]:
+    cfg = config or C0gConfig()
+    steps0_3 = _c0g_load_steps0_3(cfg)
+    provenance = _c0g_verify_stalled_provenance(cfg)
+    steps4_path = _c0g_steps4_6_7_json_path(cfg)
+    with steps4_path.open("r", encoding="utf-8") as handle:
+        steps4_6_7 = json.load(handle)
+    step5_path = _resolve_input_path(cfg.step5_json_path)
+    with step5_path.open("r", encoding="utf-8") as handle:
+        step5 = json.load(handle)
+    verdict = _c0g_determine_step8_verdict(
+        steps0_3=steps0_3,
+        steps4_6_7=steps4_6_7,
+        step5=step5,
+    )
+    result = {
+        "phase": "complete_steps0_8",
+        "status": "MEASURED",
+        "config": _c0g_config_to_dict(cfg),
+        "provenance": provenance,
+        "step0": steps0_3.get("step0"),
+        "step0b": steps0_3.get("step0b"),
+        "state_results": steps0_3.get("state_results", []),
+        "step1_tracked_modes": steps0_3.get("step1_tracked_modes", []),
+        "sigma_min_squared_fit": steps0_3.get("sigma_min_squared_fit", {}),
+        "step4_mach": steps4_6_7.get("step4_mach", {}),
+        "step5_scipy_probe": step5,
+        "step6_bordered_conditioning": steps4_6_7.get("step6_bordered_conditioning", {}),
+        "step7_commutator": steps4_6_7.get("step7_commutator", {}),
+        "step8": verdict,
+        "verdict_support": {
+            "step0_decomposition": steps0_3.get("step0", {}).get("step0_decomposition", {}),
+            "step0b_best_alpha_trend": steps0_3.get("step0b", {}),
+            "step1_svd_table": [
+                {
+                    "tau": row.get("tau"),
+                    "sigma_min": row.get("svd", {}).get("sigma_min"),
+                    "sigma_min_over_sigma_max": row.get("svd", {}).get("sigma_min_over_sigma_max"),
+                    "modes": row.get("svd", {}).get("modes", []),
+                }
+                for row in steps0_3.get("state_results", [])
+            ],
+            "step2_cos_theta_table": [
+                {"tau": row.get("tau"), "ftau": row.get("ftau")}
+                for row in steps0_3.get("state_results", [])
+            ],
+            "step3_sigma_min_squared_fit": steps0_3.get("sigma_min_squared_fit", {}),
+            "step4_mach": steps4_6_7.get("step4_mach", {}),
+            "step5_scipy_probe_summary": _c0g_step5_summary(step5),
+            "step6_bordered_conditioning": steps4_6_7.get("step6_bordered_conditioning", {}),
+            "step7_commutator": steps4_6_7.get("step7_commutator", {}),
+        },
+        "scope_confirmation": {
+            "no_C0g_fix_implemented": True,
+            "single_arbiter_residual": "stage1_solver.coupled_branch.patha_closed_branch_residual",
+            "depth_continuation": "tau_only",
+            "solver_logic_touched_by_c0g": False,
+            "faithful_operators_touched_by_c0g": False,
+            "frozen_physics_touched_by_c0g": False,
+            "physical_export_guard_touched_by_c0g": False,
+        },
+    }
+    _c0g_write_json(_resolve_output_path(cfg.final_json_path), result)
+    write_c0g_final_report(result, _resolve_output_path(cfg.report_path))
+    return result
+
+
+def _c0g_fmt(value: Any, *, digits: int = 6) -> str:
+    if value is None:
+        return "n/a"
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    if math.isnan(number):
+        return "nan"
+    if math.isinf(number):
+        return "inf" if number > 0 else "-inf"
+    return f"{number:.{digits}e}"
+
+
+def _c0g_report_step0_rows(step0: Mapping[str, Any]) -> list[dict[str, Any]]:
+    delta = step0.get("step0_decomposition", {}).get("delta", {})
+    residual = step0.get("step0_decomposition", {}).get("residual", {})
+    merit = step0.get("merit_sweep", {})
+    alpha1 = merit.get("alpha1") or {}
+    return [
+        {
+            "tau": step0.get("tau"),
+            "f_nn": delta.get("near_null_component_fraction"),
+            "gauge_fraction": delta.get("gauge_component_fraction"),
+            "mode2_fraction": delta.get("transverse_mode_2_component_fraction"),
+            "gauge_image_F_fraction": residual.get("gauge_image_projection_fraction"),
+            "alpha1_actual_ratio": alpha1.get("actual_l2_ratio"),
+            "alpha1_gap": merit.get("alpha1_predicted_vs_actual_l2_gap"),
+            "best_alpha": merit.get("best_alpha"),
+            "best_reduction_percent": merit.get("best_percent_reduction"),
+        }
+    ]
+
+
+def _c0g_report_svd_rows(state_results: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    rows = []
+    for state in sorted(state_results, key=lambda item: float(item["tau"]), reverse=True):
+        svd = state.get("svd", {})
+        if svd.get("status") != "MEASURED":
+            rows.append(
+                {
+                    "tau": state.get("tau"),
+                    "status": svd.get("status"),
+                    "sigma_min": None,
+                    "sigma_min/sigma_max": None,
+                    "gauge_rank": None,
+                    "mode1_lane": None,
+                }
+            )
+            continue
+        mode1 = (svd.get("modes") or [{}])[0]
+        lane = _dominant_group(mode1.get("v_lane_energy_fractions", {}))[0]
+        rows.append(
+            {
+                "tau": state.get("tau"),
+                "status": "MEASURED",
+                "sigma_min": svd.get("sigma_min"),
+                "sigma_min/sigma_max": svd.get("sigma_min_over_sigma_max"),
+                "gauge_rank": svd.get("scaled_gauge_rank"),
+                "mode1_lane": lane,
+            }
+        )
+    return rows
+
+
+def _c0g_report_ftau_rows(state_results: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    rows = []
+    for state in sorted(state_results, key=lambda item: float(item["tau"]), reverse=True):
+        ftau = state.get("ftau")
+        if not isinstance(ftau, Mapping) or ftau.get("status") != "MEASURED":
+            rows.append(
+                {
+                    "tau": state.get("tau"),
+                    "status": ftau if isinstance(ftau, str) else (ftau or {}).get("status"),
+                    "cos_theta": None,
+                    "call": None,
+                    "stability": None,
+                }
+            )
+            continue
+        rows.append(
+            {
+                "tau": state.get("tau"),
+                "status": "MEASURED",
+                "cos_theta": ftau.get("representative_cos_theta"),
+                "call": ftau.get("call"),
+                "stability": ftau.get("stepsize_stability_call"),
+            }
+        )
+    return rows
+
+
+def write_c0g_partial_report(result: Mapping[str, Any], path: Path) -> None:
+    lines: list[str] = [
+        "# Path-A C0g Diagnostic Battery Partial Report (Steps 0-3)",
+        "",
+        "This staged pass ran only Steps 0, 0b, 1, 2, and 3. Steps 4-7 were not run; the Step-8 verdict is explicitly deferred.",
+        "",
+        "## Provenance",
+        "",
+    ]
+    provenance = result.get("provenance", {})
+    lines.extend(
+        [
+            f"- C0f2 stalled-state provenance: `{provenance.get('call')}`",
+            f"- state: `{provenance.get('state_artifact')}`",
+            f"- source: `{provenance.get('source')}`",
+            f"- prefer_existing_b2c_background_predictor: `{provenance.get('prefer_existing_b2c_background_predictor')}`",
+            f"- used_existing_b2c: `{provenance.get('used_existing_b2c')}`",
+            "",
+        ]
+    )
+    step0 = result.get("step0", {})
+    gate = step0.get("premise_gate", {}) if isinstance(step0, Mapping) else {}
+    lines.extend(
+        [
+            "## Step 0 Premise Gate",
+            "",
+            f"PREMISE-GATE call: `{gate.get('call')}` with `f_nn={_c0g_fmt(gate.get('f_nn'))}`.",
+            "",
+        ]
+    )
+    if isinstance(step0, Mapping):
+        lines.append(
+            _markdown_table(
+                [
+                    "tau",
+                    "f_nn",
+                    "gauge_fraction",
+                    "mode2_fraction",
+                    "gauge_image_F_fraction",
+                    "alpha1_actual_ratio",
+                    "alpha1_gap",
+                    "best_alpha",
+                    "best_reduction_percent",
+                ],
+                _c0g_report_step0_rows(step0),
+            )
+        )
+        lines.append("")
+        residual = step0.get("step0_decomposition", {}).get("residual", {})
+        left_rows = residual.get("left_singular_vector_components", [])
+        if left_rows:
+            lines.append("Residual decomposition via left singular vectors:")
+            lines.append("")
+            lines.append(
+                _markdown_table(
+                    ["ascending_rank", "abs_u_dot_F_over_normF"],
+                    left_rows,
+                )
+            )
+            lines.append("")
+    if result.get("status") == "PREMISE_FAILED":
+        lines.extend(
+            [
+                "## Halt",
+                "",
+                "Step 0 returned `PREMISE_FAILED`. Steps 1-7 are `SKIPPED_PREMISE_FAILED` in the machine JSON.",
+                "",
+            ]
+        )
+    else:
+        lines.extend(["## Step 0b Best-Alpha Trend", ""])
+        step0b = result.get("step0b", {})
+        lines.append(f"Trend call: `{step0b.get('trend_call')}`.")
+        lines.append("")
+        lines.append(
+            _markdown_table(
+                [
+                    "tau",
+                    "best_alpha",
+                    "best_actual_l2_ratio",
+                    "best_percent_reduction",
+                    "alpha1_actual_l2_ratio",
+                    "alpha1_predicted_l2_ratio",
+                    "alpha1_gap",
+                ],
+                step0b.get("rows", []),
+            )
+        )
+        lines.extend(["", "## Step 1 Gauge-Complement SVD", ""])
+        state_results = result.get("state_results", [])
+        lines.append(
+            _markdown_table(
+                [
+                    "tau",
+                    "status",
+                    "sigma_min",
+                    "sigma_min/sigma_max",
+                    "gauge_rank",
+                    "mode1_lane",
+                ],
+                _c0g_report_svd_rows(state_results),
+            )
+        )
+        lines.append("")
+        tracked = result.get("step1_tracked_modes", [])
+        if tracked:
+            compact = []
+            for row in tracked:
+                v_lane, _v_frac = _dominant_group(row.get("v_lane_energy_fractions", {}))
+                w_lane, _w_frac = _dominant_group(row.get("w_output_energy_fractions", {}))
+                compact.append(
+                    {
+                        "tau": row.get("tau"),
+                        "tracked_lane": row.get("tracked_lane"),
+                        "ascending_rank": row.get("ascending_rank"),
+                        "sigma": row.get("sigma"),
+                        "v_dominant_lane": v_lane,
+                        "w_dominant_lane": w_lane,
+                        "v_center_r": (row.get("v_center_of_energy") or {}).get("r"),
+                        "v_center_w": (row.get("v_center_of_energy") or {}).get("w"),
+                    }
+                )
+            lines.append("Tracked mode lanes by vector overlap:")
+            lines.append("")
+            lines.append(
+                _markdown_table(
+                    [
+                        "tau",
+                        "tracked_lane",
+                        "ascending_rank",
+                        "sigma",
+                        "v_dominant_lane",
+                        "w_dominant_lane",
+                        "v_center_r",
+                        "v_center_w",
+                    ],
+                    compact,
+                )
+            )
+            lines.append("")
+        lines.extend(["## Step 2 wT F_tau", ""])
+        lines.append(
+            _markdown_table(
+                ["tau", "status", "cos_theta", "call", "stability"],
+                _c0g_report_ftau_rows(state_results),
+            )
+        )
+        lines.append("")
+        for state in state_results:
+            ftau = state.get("ftau")
+            if isinstance(ftau, Mapping) and ftau.get("rows"):
+                lines.append(f"Per-h values for tau={state.get('tau')}:")
+                lines.append("")
+                lines.append(
+                    _markdown_table(
+                        ["h_multiplier", "h", "wT_F_tau", "F_tau_scaled_l2", "cos_theta"],
+                        ftau.get("rows", []),
+                    )
+                )
+                lines.append("")
+        lines.extend(["## Step 3 sigma_min squared fit", ""])
+        fit = result.get("sigma_min_squared_fit", {})
+        linear = fit.get("linear", {})
+        quadratic = fit.get("quadratic", {})
+        lines.extend(
+            [
+                f"- call: `{fit.get('call')}`",
+                f"- linear slope: `{_c0g_fmt(linear.get('slope'))}`",
+                f"- linear R2: `{_c0g_fmt(linear.get('r2'))}`",
+                f"- tau_fold zero crossing: `{_c0g_fmt(linear.get('tau_fold_zero_crossing'))}`",
+                f"- quadratic R2: `{_c0g_fmt(quadratic.get('r2'))}`",
+                f"- sigma_min monotone toward stall: `{fit.get('sigma_min_monotone_decreasing_toward_stall')}`",
+                "",
+                "## Preliminary Reading",
+                "",
+                f"`{result.get('preliminary_reading', {}).get('status')}`. Step-8 verdict deferred until Steps 4-7 are run.",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "## Scope Confirmation",
+            "",
+            "- NO C0g fix implemented in this staged pass.",
+            "- Solver logic, frozen physics, faithful PDE operators, and export guard were not intentionally changed.",
+            "- Steps 4-7 were NOT run; stopped for the orchestrator review gate.",
+            "",
+            f"Machine JSON: `{result.get('config', {}).get('json_path')}`.",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _c0g_final_mach_rows(step4: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "tau": row.get("tau"),
+            "M_full_max": row.get("M_full_max"),
+            "M_w_max": row.get("M_w_max"),
+            "rho_at_max": row.get("rho_at_max"),
+            "j_at_max": row.get("j_at_max"),
+            "r_star": row.get("r_star"),
+            "w_star": row.get("w_star"),
+            "r_star_over_R0": row.get("r_star_over_R0"),
+            "current_represented": row.get("sonic_current_represented"),
+            "floor_stability": row.get("density_floor_stability_call"),
+        }
+        for row in step4.get("rows", [])
+    ]
+
+
+def _c0g_final_step5_rows(step5: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "method": row.get("method"),
+            "status": row.get("status"),
+            "nfev": row.get("nfev_wrapper"),
+            "elapsed_seconds": row.get("elapsed_seconds"),
+            "best_l2_ratio": row.get("best_l2_ratio"),
+            "best_linf": row.get("best_original_residual_linf"),
+            "progress_call": row.get("progress_call"),
+            "abort_reason": row.get("abort_reason") or row.get("reason"),
+        }
+        for row in step5.get("method_results", [])
+    ]
+
+
+def _c0g_final_overlap_rows(step5: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "lane": row.get("lane"),
+            "scaled_overlap": row.get("scaled_overlap"),
+            "call": row.get("call"),
+            "candidate_delta_scaled_norm": row.get("candidate_delta_scaled_norm"),
+            "prestall_delta_scaled_norm": row.get("prestall_delta_scaled_norm"),
+        }
+        for row in step5.get("branch_overlap", {}).get("rows", [])
+    ]
+
+
+def _c0g_final_step6_rows(step6: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "tau": row.get("tau"),
+            "status": row.get("status"),
+            "cond_JQ_perp": row.get("cond_JQ_perp"),
+            "cond_Jb": row.get("cond_Jb"),
+            "sigma_min_JQ_perp": row.get("sigma_min_JQ_perp"),
+            "sigma_min_Jb": row.get("sigma_min_Jb"),
+            "ratio": row.get("sigma_min_ratio_Jb_over_JQ_perp"),
+            "call": row.get("call"),
+        }
+        for row in step6.get("rows", [])
+    ]
+
+
+def _c0g_final_step7_rows(step7: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "tau": row.get("tau"),
+            "tracked_lane": row.get("tracked_lane"),
+            "ascending_rank": row.get("ascending_rank"),
+            "sigma": row.get("sigma"),
+            "one_minus_P_G": row.get("one_minus_P_G"),
+            "P_G": row.get("P_G"),
+            "curl_over_A": row.get("curl_over_spatial_a_norm"),
+            "boundary_fraction": row.get("boundary_curl_norm_fraction"),
+        }
+        for row in step7.get("per_mode_rows", [])
+    ]
+
+
+def _c0g_final_commutator_rows(step7: Mapping[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "tau": row.get("tau"),
+            "norm_CG_over_G": row.get("commutator_norm_CG_over_G"),
+            "boundary_fraction": row.get("boundary_row_norm_fraction"),
+            "mixed_control_one_minus_P_G": row.get("mixed_control", {}).get("one_minus_P_G"),
+            "mixed_control_curl_over_A": row.get("mixed_control", {}).get("curl_over_spatial_a_norm"),
+        }
+        for row in step7.get("rows", [])
+    ]
+
+
+def write_c0g_final_report(result: Mapping[str, Any], path: Path) -> None:
+    step8 = result.get("step8", {})
+    lines: list[str] = [
+        "# Path-A C0g Diagnostic Battery Final Report (Steps 0-8)",
+        "",
+        f"Step-8 verdict: **{step8.get('verdict')}**",
+    ]
+    if step8.get("sub_label"):
+        lines.append(f"Sub-label: **{step8.get('sub_label')}**")
+    lines.extend(
+        [
+            "",
+            f"Recommended C0g build branch: {step8.get('recommended_C0g_build_branch')}",
+            "",
+            "The original `patha_closed_branch_residual` remains the sole convergence/progress arbiter. Steps 4-7 are diagnostic only; no C0g fix is implemented here.",
+            "",
+            "## Provenance",
+            "",
+        ]
+    )
+    provenance = result.get("provenance", {})
+    lines.extend(
+        [
+            f"- C0f2 stalled-state provenance: `{provenance.get('call')}`",
+            f"- prefer_existing_b2c_background_predictor: `{provenance.get('prefer_existing_b2c_background_predictor')}` from `{provenance.get('prefer_existing_b2c_background_predictor_source')}`",
+            f"- source: `{provenance.get('source')}`; used_existing_b2c: `{provenance.get('used_existing_b2c')}`",
+            "",
+            "## Step 0 Premise Gate",
+            "",
+        ]
+    )
+    step0 = result.get("step0", {})
+    gate = step0.get("premise_gate", {}) if isinstance(step0, Mapping) else {}
+    lines.append(f"Call: `{gate.get('call')}` with `f_nn={_c0g_fmt(gate.get('f_nn'))}`.")
+    lines.append("")
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "f_nn",
+                "gauge_fraction",
+                "mode2_fraction",
+                "gauge_image_F_fraction",
+                "alpha1_actual_ratio",
+                "best_alpha",
+                "best_reduction_percent",
+            ],
+            _c0g_report_step0_rows(step0) if isinstance(step0, Mapping) else [],
+        )
+    )
+    lines.extend(["", "## Step 0b Best-Alpha Trend", ""])
+    step0b = result.get("step0b", {})
+    lines.append(f"Trend call: `{step0b.get('trend_call')}`.")
+    lines.append("")
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "best_alpha",
+                "best_actual_l2_ratio",
+                "best_percent_reduction",
+                "alpha1_actual_l2_ratio",
+                "alpha1_predicted_l2_ratio",
+            ],
+            step0b.get("rows", []),
+        )
+    )
+    state_results = result.get("state_results", [])
+    lines.extend(["", "## Step 1 Gauge-Complement SVD", ""])
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "status",
+                "sigma_min",
+                "sigma_min/sigma_max",
+                "gauge_rank",
+                "mode1_lane",
+            ],
+            _c0g_report_svd_rows(state_results),
+        )
+    )
+    lines.extend(["", "## Step 2 wT F_tau", ""])
+    lines.append(
+        _markdown_table(
+            ["tau", "status", "cos_theta", "call", "stability"],
+            _c0g_report_ftau_rows(state_results),
+        )
+    )
+    lines.extend(["", "## Step 3 Sigma-Min Squared Fit", ""])
+    fit = result.get("sigma_min_squared_fit", {})
+    linear = fit.get("linear", {})
+    quadratic = fit.get("quadratic", {})
+    lines.extend(
+        [
+            f"- call: `{fit.get('call')}`",
+            f"- linear slope: `{_c0g_fmt(linear.get('slope'))}`",
+            f"- linear R2: `{_c0g_fmt(linear.get('r2'))}`",
+            f"- tau_fold zero crossing: `{_c0g_fmt(linear.get('tau_fold_zero_crossing'))}`",
+            f"- quadratic R2: `{_c0g_fmt(quadratic.get('r2'))}`",
+            f"- monotone: `{fit.get('sigma_min_monotone_decreasing_toward_stall')}`",
+            "",
+            "## Step 4 Mach Context",
+            "",
+        ]
+    )
+    step4 = result.get("step4_mach", {})
+    lines.extend(
+        [
+            f"Context label: `{step4.get('sonic_context_label')}`; represented: `{step4.get('sonic_hypothesis_represented')}`.",
+            f"Monotone M_max approach as tau decreases: `{step4.get('monotone_approach_as_tau_decreases')}`.",
+            "",
+            _markdown_table(
+                [
+                    "tau",
+                    "M_full_max",
+                    "M_w_max",
+                    "rho_at_max",
+                    "j_at_max",
+                    "r_star",
+                    "w_star",
+                    "r_star_over_R0",
+                    "current_represented",
+                    "floor_stability",
+                ],
+                _c0g_final_mach_rows(step4),
+            ),
+            "",
+            "## Step 5 Capped Scipy Probe",
+            "",
+        ]
+    )
+    step5 = result.get("step5_scipy_probe", {})
+    caps = step5.get("caps", {})
+    lines.extend(
+        [
+            f"Call: `{step5.get('step5_call')}`; status: `{step5.get('status')}`.",
+            f"Caps used: maxfev `{caps.get('maxfev')}` (`{caps.get('maxfev_formula')}`), method wall `{caps.get('method_wall_seconds')}` s, global wall `{caps.get('global_wall_seconds')}` s.",
+            "",
+            _markdown_table(
+                [
+                    "method",
+                    "status",
+                    "nfev",
+                    "elapsed_seconds",
+                    "best_l2_ratio",
+                    "best_linf",
+                    "progress_call",
+                    "abort_reason",
+                ],
+                _c0g_final_step5_rows(step5),
+            ),
+            "",
+            f"Branch-overlap aggregate: `{step5.get('branch_overlap', {}).get('aggregate_overlap_call')}`.",
+            "",
+            _markdown_table(
+                [
+                    "lane",
+                    "scaled_overlap",
+                    "call",
+                    "candidate_delta_scaled_norm",
+                    "prestall_delta_scaled_norm",
+                ],
+                _c0g_final_overlap_rows(step5),
+            ),
+            "",
+            "A non-progressing capped probe is interpreted as no evidence, not fold proof.",
+            "",
+            "## Step 6 Bordered Reduced Conditioning",
+            "",
+        ]
+    )
+    step6 = result.get("step6_bordered_conditioning", {})
+    lines.append(f"Call: `{step6.get('call')}`.")
+    lines.append("")
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "status",
+                "cond_JQ_perp",
+                "cond_Jb",
+                "sigma_min_JQ_perp",
+                "sigma_min_Jb",
+                "ratio",
+                "call",
+            ],
+            _c0g_final_step6_rows(step6),
+        )
+    )
+    lines.extend(["", "## Step 7 Commutator And P_G", ""])
+    step7 = result.get("step7_commutator", {})
+    lines.append(step7.get("mode_characterization_scope", ""))
+    lines.append("")
+    lines.append("Commutator rows:")
+    lines.append("")
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "norm_CG_over_G",
+                "boundary_fraction",
+                "mixed_control_one_minus_P_G",
+                "mixed_control_curl_over_A",
+            ],
+            _c0g_final_commutator_rows(step7),
+        )
+    )
+    lines.append("")
+    lines.append("Per-mode `1-P_G` rows:")
+    lines.append("")
+    lines.append(
+        _markdown_table(
+            [
+                "tau",
+                "tracked_lane",
+                "ascending_rank",
+                "sigma",
+                "one_minus_P_G",
+                "P_G",
+                "curl_over_A",
+                "boundary_fraction",
+            ],
+            _c0g_final_step7_rows(step7),
+        )
+    )
+    lines.extend(["", "## Step 8 Verdict Support", ""])
+    primary = step8.get("primary_evidence", {})
+    confirmatory = step8.get("confirmatory", {})
+    lines.extend(
+        [
+            f"- primary fold support: `{primary.get('fold_primary')}`",
+            f"- primary conditioning support: `{primary.get('conditioning_primary')}`",
+            f"- gray items: `{primary.get('gray_items')}`",
+            f"- not measured: `{primary.get('not_measured')}`",
+            f"- disagreements: `{primary.get('disagreements')}`",
+            f"- Step-5 overlap call: `{confirmatory.get('step5_overlap_call')}`",
+            f"- Step-6 call: `{confirmatory.get('step6_call')}`",
+            f"- gray-zone/agreement rule honored: `{step8.get('gray_zone_rule_honored')}`",
+            "",
+            "## Scope Confirmation",
+            "",
+        ]
+    )
+    scope = result.get("scope_confirmation", {})
+    lines.extend(
+        [
+            f"- NO C0g fix implemented: `{scope.get('no_C0g_fix_implemented')}`",
+            f"- Single arbiter residual: `{scope.get('single_arbiter_residual')}`",
+            f"- Depth continuation: `{scope.get('depth_continuation')}`",
+            f"- Solver logic touched: `{scope.get('solver_logic_touched_by_c0g')}`",
+            f"- Faithful operators touched: `{scope.get('faithful_operators_touched_by_c0g')}`",
+            f"- Frozen physics touched: `{scope.get('frozen_physics_touched_by_c0g')}`",
+            f"- Physical export guard touched: `{scope.get('physical_export_guard_touched_by_c0g')}`",
+            "",
+            f"Complete machine JSON: `{result.get('config', {}).get('final_json_path')}`.",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def c0g_step0_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Run Path-A C0g Step 0 premise gate only.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        report_path=args.report_path,
+    )
+    result = run_c0g_step0_premise(config)
+    step0 = result.get("step0", {})
+    gate = step0.get("premise_gate", {}) if isinstance(step0, Mapping) else {}
+    summary = {
+        "phase": "step0_premise",
+        "status": result.get("status"),
+        "provenance": result.get("provenance", {}).get("call"),
+        "premise_call": gate.get("call"),
+        "f_nn": gate.get("f_nn"),
+        "step0_json": str(config.step0_json_path),
+    }
+    print(json.dumps(summary, sort_keys=True))
+    return 0
+
+
+def c0g_state_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Run one Path-A C0g per-state SVD/F_tau measurement.")
+    parser.add_argument("--tau", type=float, required=True)
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        report_path=args.report_path,
+    )
+    result = run_c0g_state_measurement(tau=float(args.tau), config=config)
+    summary = {
+        "phase": "state_measurement",
+        "tau": result.get("tau"),
+        "sigma_min": result.get("svd", {}).get("sigma_min"),
+        "cos_theta": result.get("ftau", {}).get("representative_cos_theta")
+        if isinstance(result.get("ftau"), Mapping)
+        else None,
+        "json": str(_c0g_state_json_path(config, tau=float(args.tau))),
+    }
+    print(json.dumps(summary, sort_keys=True))
+    return 0
+
+
+def c0g_aggregate_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Aggregate Path-A C0g staged Steps 0-3.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        report_path=args.report_path,
+    )
+    result = aggregate_c0g_steps0_3(config)
+    summary = {
+        "phase": "aggregate_steps0_3",
+        "status": result.get("status"),
+        "premise_call": result.get("step0", {}).get("premise_gate", {}).get("call")
+        if isinstance(result.get("step0"), Mapping)
+        else None,
+        "preliminary": result.get("preliminary_reading", {}).get("status")
+        if isinstance(result.get("preliminary_reading"), Mapping)
+        else None,
+        "json": str(config.json_path),
+        "report": str(config.report_path),
+        "steps_4_to_7": result.get("steps_4_to_7"),
+    }
+    print(json.dumps(summary, sort_keys=True))
+    return 0
+
+
+def c0g_steps4_6_7_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Run Path-A C0g diagnostic Steps 4, 6, and 7.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--step5-json-path", type=Path, default=C0gConfig().step5_json_path)
+    parser.add_argument("--final-json-path", type=Path, default=C0gConfig().final_json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        step5_json_path=args.step5_json_path,
+        final_json_path=args.final_json_path,
+        report_path=args.report_path,
+    )
+    result = run_c0g_steps4_6_7(config)
+    step4 = result.get("step4_mach", {})
+    step6 = result.get("step6_bordered_conditioning", {})
+    step7 = result.get("step7_commutator", {})
+    summary = {
+        "phase": "steps4_6_7",
+        "status": result.get("status"),
+        "mach_label": step4.get("sonic_context_label") if isinstance(step4, Mapping) else None,
+        "sonic_represented": step4.get("sonic_hypothesis_represented") if isinstance(step4, Mapping) else None,
+        "bordered_call": step6.get("call") if isinstance(step6, Mapping) else None,
+        "commutator_rows": len(step7.get("rows", [])) if isinstance(step7, Mapping) else 0,
+        "json": str(_c0g_steps4_6_7_json_path(config)),
+    }
+    print(json.dumps(summary, sort_keys=True))
+    return 0
+
+
+def c0g_step5_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Run Path-A C0g Step 5 capped scipy probe.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--step5-json-path", type=Path, default=C0gConfig().step5_json_path)
+    parser.add_argument("--final-json-path", type=Path, default=C0gConfig().final_json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    parser.add_argument(
+        "--method-wall-seconds",
+        type=float,
+        default=C0gConfig().scipy_method_wall_seconds,
+    )
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        step5_json_path=args.step5_json_path,
+        final_json_path=args.final_json_path,
+        report_path=args.report_path,
+        scipy_method_wall_seconds=float(args.method_wall_seconds),
+    )
+    result = run_c0g_step5_scipy_probe(config)
+    summary = {
+        "phase": "step5_scipy_probe",
+        "status": result.get("status"),
+        "step5_call": result.get("step5_call"),
+        "caps": result.get("caps"),
+        "method_progress": [
+            {
+                "method": row.get("method"),
+                "status": row.get("status"),
+                "progress_call": row.get("progress_call"),
+                "nfev": row.get("nfev_wrapper"),
+                "best_l2_ratio": row.get("best_l2_ratio"),
+                "abort_reason": row.get("abort_reason") or row.get("reason"),
+            }
+            for row in result.get("method_results", [])
+        ],
+        "overlap_call": result.get("branch_overlap", {}).get("aggregate_overlap_call"),
+        "json": str(config.step5_json_path),
+    }
+    print(json.dumps(summary, sort_keys=True))
+    return 0
+
+
+def _c0g_stdout_summary(result: Mapping[str, Any]) -> str:
+    step4 = result.get("step4_mach", {})
+    step5 = result.get("step5_scipy_probe", {})
+    step6 = result.get("step6_bordered_conditioning", {})
+    step7 = result.get("step7_commutator", {})
+    step8 = result.get("step8", {})
+    mach_rows = _c0g_final_mach_rows(step4)
+    deepest_mach = min(mach_rows, key=lambda row: float(row["tau"])) if mach_rows else {}
+    step6_rows = [
+        row for row in _c0g_final_step6_rows(step6) if row.get("status") == "MEASURED"
+    ]
+    closest_step6 = min(step6_rows, key=lambda row: float(row["tau"])) if step6_rows else {}
+    mode_rows = [
+        row
+        for row in _c0g_final_step7_rows(step7)
+        if abs(float(row.get("tau", math.nan)) - float(result.get("config", {}).get("stalled_tau", math.nan))) < 5.0e-13
+    ]
+    if not mode_rows:
+        mode_rows = _c0g_final_step7_rows(step7)[:5]
+    mode_summary = ", ".join(
+        f"track {row.get('tracked_lane')}/rank {row.get('ascending_rank')}: 1-P_G={_c0g_fmt(row.get('one_minus_P_G'))}"
+        for row in mode_rows[:5]
+    )
+    method_bits = ", ".join(
+        f"{row.get('method')} {row.get('status')} {row.get('progress_call')} nfev={row.get('nfev_wrapper')} best_l2_ratio={_c0g_fmt(row.get('best_l2_ratio'))}"
+        for row in step5.get("method_results", [])
+    )
+    return "\n".join(
+        [
+            "C0g final diagnostic summary:",
+            (
+                "Step 4 Mach: "
+                f"M_max={_c0g_fmt(deepest_mach.get('M_full_max'))}, "
+                f"j_at_max={_c0g_fmt(deepest_mach.get('j_at_max'))}, "
+                f"label={step4.get('sonic_context_label')}, "
+                f"represented={step4.get('sonic_hypothesis_represented')}"
+            ),
+            f"Step 5 capped probe: {step5.get('step5_call')} ({method_bits}); overlap={step5.get('branch_overlap', {}).get('aggregate_overlap_call')}",
+            (
+                "Step 6 border: "
+                f"cond(JQ_perp)={_c0g_fmt(closest_step6.get('cond_JQ_perp'))}, "
+                f"cond(Jb)={_c0g_fmt(closest_step6.get('cond_Jb'))}, "
+                f"ratio={_c0g_fmt(closest_step6.get('ratio'))}, "
+                f"call={step6.get('call')}"
+            ),
+            f"Step 7 per-mode at stalled/nearest: {mode_summary}",
+            (
+                "Step 8 verdict: "
+                f"{step8.get('verdict')} / {step8.get('sub_label')} ; "
+                f"gray-zone honored={step8.get('gray_zone_rule_honored')}"
+            ),
+            f"Recommended C0g build branch: {step8.get('recommended_C0g_build_branch')}",
+            f"Complete JSON: {result.get('config', {}).get('final_json_path')}",
+            f"Report: {result.get('config', {}).get('report_path')}",
+        ]
+    )
+
+
+def c0g_final_main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Aggregate Path-A C0g final Steps 0-8 report.")
+    parser.add_argument("--c0f2-json", type=Path, default=C0gConfig().c0f2_json_path)
+    parser.add_argument("--run-root", type=Path, default=C0gConfig().run_root)
+    parser.add_argument("--step0-json", type=Path, default=C0gConfig().step0_json_path)
+    parser.add_argument("--json-path", type=Path, default=C0gConfig().json_path)
+    parser.add_argument("--step5-json-path", type=Path, default=C0gConfig().step5_json_path)
+    parser.add_argument("--final-json-path", type=Path, default=C0gConfig().final_json_path)
+    parser.add_argument("--report-path", type=Path, default=C0gConfig().report_path)
+    args = parser.parse_args(argv)
+    config = C0gConfig(
+        c0f2_json_path=args.c0f2_json,
+        run_root=args.run_root,
+        step0_json_path=args.step0_json,
+        json_path=args.json_path,
+        step5_json_path=args.step5_json_path,
+        final_json_path=args.final_json_path,
+        report_path=args.report_path,
+    )
+    result = aggregate_c0g_final(config)
+    print(_c0g_stdout_summary(result))
+    return 0
 
 
 def _c0c_attempt_artifacts(

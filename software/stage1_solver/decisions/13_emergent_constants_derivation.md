@@ -189,18 +189,38 @@ transverse), the full C0→C0f2 chain, the VERIFIED diagnosis, the OPEN fold-vs-
 det(J)/σ_min(τ)/tangent probe that settles it, the C0g candidates, and the literature search terms. C0f2 outputs:
 `src/.../patha_c0f2_timing_rerun.py`, `scripts/pathA_C0f2_timing_rerun.py`, `tests/…`, `reports/pathA_C0f2_timing_rerun.md`,
 `runs/pathA_C0f2_timing_rerun/…json`.
-**⭐ POST-/COMPACT PLAN (user-set 2026-06-20):** (1) **ONLINE LITERATURE RESEARCH FIRST** — how is this class of solve
-done / what tricks apply: pseudo-arclength + deflated continuation (AUTO / pde2path / BifurcationKit.jl / Farrell
-deflation); pseudo-transient continuation (Kelley–Keyes); Levenberg–Marquardt / trust-region globalization; null-space
-deflation & gauge-fixing in coupled EM–matter BVPs; stationary-GPE / vortex / soliton solvers (Bao & Cai; Sobolev /
-preconditioned-gradient; Newton-for-GPE); sparse Jacobian via graph coloring; analog-gravity throat-profile numerics;
-near-empty-core GPE conditioning (brief §1/§6). (2) The cheap **FOLD PROBE** (brief §4) — det(J)-sign / σ_min(τ) / branch
-tangent on the existing converged states → fold ⇒ pseudo-arclength, else ill-conditioning ⇒ LM/trust-region. (3) **C0g**
-shaped by (1)+(2): sparse assembly + the chosen globalization + a det(J)/tangent fold instrument; Single-Arbiter + genuine
-continuation preserved; production solver stays OFF unless everything else fails. (4) If unblocked → constitutive family →
-calibrated branch → multi-knob calibrate-predict (R0/J/W → anchor → SURPLUS) → `pathA_22`.
-**Confirmed: U(1) phase mode gauge (C0c); modes 1/3/4 gauge (1−P_G, C0f/C0f2); mode 2 the lone transverse candidate
-DRIVING the stall.**
+**⭐ POST-/COMPACT PLAN — STEP (1) RESEARCH DONE + DESIGN LOCKED (2026-06-20). RESUME HERE.**
+(1) ✅ **ONLINE LITERATURE RESEARCH DONE** (5 parallel agents) → `reports/pathA_throat_solver_literature_synthesis.md`
+(the convergent strategy: gauge-fix path-only FIRST → branch fold-vs-conditioning; PTC/LM + Sobolev preconditioner for
+conditioning; pseudo-arclength for a fold; the NEW sonic/horizon-critical-point hypothesis). (2) ✅ **DESIGN LOCKED**
+through the Claude+Codex consult (§5 of the synthesis — code-grounded corrections: gauge handling PATH-ONLY, scipy LM a
+capped probe, no det sign-flip observable from one-sided states, 253 colors = deterministic radius-3 coloring not a bug)
++ the **GLM 5.2 review (§6 — the AUTHORITATIVE diagnostic-battery spec):** a premise-validating **Step 0 framing check at
+the ACTUAL stall τ=0.0290625** (the mode-2-drives-the-stall premise was only verified at the OLD τ=0.02899 — MUST
+re-check; if near-null fraction ~0, the whole battery premise collapses), **wᵀF_τ** as the cheap decisive fold test
+(bordered cond(Jb) demoted to confirmatory), **σ_min²(τ) linear fit** (fold√ vs bifurcation; predicts τ_fold from
+one-sided data), scipy-LM **+ branch-overlap gate** (both-sides signal), and the closed sonic question (ψ-form operator
+is ALWAYS elliptic ⇒ NO principal-symbol type change; Mach = physical CONTEXT, the Jacobian test = the DISCRIMINANT).
+**(3) ✅ C0g-diag DIRECTIVE READY (resume here = the EXECUTION GATE).**
+`directives/pathA_C0g_diag_fold_vs_conditioning_battery.md` — authored from synthesis §6.2/§6.3; **Codex design-review =
+SOUND-WITH-FIXES → all 6 fixes + anchor corrections + new fail conditions APPLIED → Codex CONFIRM-PASS = SOUND-AS-IS.**
+The 6 fixes (load-bearing): (1) project `F` via LEFT vectors `u` not right-state subspaces; (2) gauge machinery is NOT
+turnkey — build a wrapper from the named C0c/C0d/C0e helpers (`_c0c_generators_for_state`, `_c0d_scalar_gradient_matrix`/
+`_c0d_build_gauge_subspace`, `_c0e_coupled_gauge_matrix`); (3) gauge-complement spectrum = `SVD(J·Q_perp)` (G→QR→Q_perp),
+NEVER `SVD((I−P_G)J)` (which fabricates gauge-zero singulars); (4) executable numeric thresholds + INCONCLUSIVE bands +
+a binding gray-zone rule; (5) added the best-α trend across converged τ (Step 0b); (6) concrete scipy caps in its own
+≤600s script. Anchors corrected (current `:339`/`:342`, sparse J `preconditioners.py:476`, curl `:431`). Battery order:
+**Step 0 PREMISE GATE** (re-validate near-null amplification at the REAL stall τ=0.0290625; `f_nn<1e-2` ⇒ HALT) → 0b
+best-α trend → 1 `J·Q_perp` SVD → 2 wᵀF_τ `cosθ` (PRIMARY fold test) → 3 σ_min² fit → 4 Mach (context) → 5 capped scipy +
+overlap → 6 bordered Jb → 7 commutator. Verdict ∈ {PREMISE_FAILED, FOLD_CONFIRMED[SONIC/NON_SONIC], CONDITIONING, MIXED,
+DIAGNOSTIC_INCOMPLETE}, AGREEMENT-required. Review logs `_scratch/codex_c0g_diag_directive_{review,confirmpass}.log`.
+**NEXT ACTION: USER EXECUTION GATE → Codex executes the directive (Steps 0–3 first, report before 4–7).**
+**(4) THEN C0g BUILD** branched on the verdict (gauge-fix PATH-ONLY + analytic/sparse assembly unconditionally; fold ⇒
+pseudo-arclength; conditioning ⇒ LM/PTC + Sobolev preconditioner) → if unblocked → constitutive family → calibrated
+branch → calibrate-predict (R0/J/W → anchor → SURPLUS) → `pathA_22`.
+**Confirmed: U(1) phase mode gauge (C0c); modes 1/3/4 gauge (1−P_G, C0f/C0f2); mode 2 = lone transverse candidate —
+BUT "mode 2 DRIVES the stall" is verified only at τ=0.02899 (stale); the §6 Step-0 framing check at τ=0.0290625
+RE-VALIDATES this premise before anything is built on it.**
 **LESSON (candidate memory): a "gauge-invariant" metric built as derivative/value is dimensionally a wavenumber and
 amplifies high-k remnants — use the dimensionless energy fraction; and ALWAYS check the solver CONFIG (iter budget,
 backtracking) before diagnosing a "wall" as physics.**

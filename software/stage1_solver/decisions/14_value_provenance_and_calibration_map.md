@@ -54,6 +54,9 @@ calibrated knob) and conventions. Everything below is DERIVED or BRANCH-DETERMIN
 **UPDATE (β resolved, see §5):** `λγ = c_γ/c_s` is now confirmed a **7th genuine input** (a *dimensionless* speed-ratio parameter) —
 the declared parent action does not tie the photon cone to the sound cone (`BETA_GENUINE_GAP`). So the genuine free-parameter set is
 `{n, K, m_GNLS, ρ0, μ0, q_*, λγ}`.
+**Precision (which speed is free):** `c_s=√(5Kρ0⁴/m)` is DERIVED from `{K,ρ0,m}` — NOT a separate free parameter. Only `c_γ` is
+unfixed by the action. So `λγ=c_γ/c_s` is ONE degree of freedom (all the freedom lives in `c_γ`; `c_s` is already pinned); whether
+written as the dimensionful `c_γ` or the dimensionless `λγ`, it is the SAME single input — `c_s` does NOT add a second knob.
 
 ### 1b. DERIVED (computed from inputs + equations)
 | value | physical meaning | derived from | provenance |

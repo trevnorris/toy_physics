@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATES 0+1 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip); `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path; Gate 1 `Z_int=BLOCKED` but CONTAINED; Gate 2 `λγ=STILL_TUNABLE` (C_B/C_E=1 computed ⇒ 1 dial: bulk→acoustic speed map) → **USER PIVOT to CALIBRATE-PREDICT (option B), 2026-06-21** → ▶ NEXT ACTION = build the KNOB INVENTORY + observable→knob dependency map + minimal calibration set (NOT grind Gate 3/4/5) → see §0 block (5n). Gate-2 + pivot (5n); Gate-1 (5m); Gate-0 (5l); directive/gate-order (5k); methodology (5g); throat history (5a)–(5f).)
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATES 0+1 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip); `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path; Gate 1 `Z_int=BLOCKED` but CONTAINED; Gate 2 `λγ=STILL_TUNABLE` (C_B/C_E=1 computed ⇒ 1 dial) → **USER PIVOT to CALIBRATE-PREDICT (option B)** → **`decisions/14` BUILT** (value-provenance + calibration map, Codex+GLM reviewed: ~7 genuine inputs `{n,K,m,ρ0,μ0,q_*,λγ}`; everything else DERIVED or BRANCH-DETERMINED = compute-don't-calibrate) → **β resolved `BETA_GENUINE_GAP`** (λγ is the 7th genuine input; `c_s` derived, only `c_γ` free) + m̂ inconsistency HARDENED in pde.tex. ▶ NEXT ACTION (post-/compact) = **COMPUTE χ_Q** via outgoing-DtN (scope-and-solve, 2 guards; prompt STAGED `_scratch/pathA_22b_chi_Q_execute_prompt.md`) → see §0 block (5o) + `decisions/14`. (5o) post-pivot/decision-14/β; (5n) Gate-2+pivot; (5m) Gate-1; (5l) Gate-0; (5k) directive; (5g) methodology; (5a)–(5f) throat history.)
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -629,7 +629,35 @@ expansion. Artifacts: `src/stage1_solver/patha22b_gate2.py`, `tools/pathA_22b_ga
 - **▶ EXECUTE-NEXT:** (a) commit Gate 2; (b) build the calibrate-predict setup: a KNOB-INVENTORY + OBSERVABLE→KNOB DEPENDENCY MAP
   (which held-outs — g−2, 5PN, multi-defect, ringdown — depend on which knobs + in what combination) + the MINIMAL CALIBRATION SET
   (anchors: Newtonian `G`, GR quadrupole `54/5`) → confirms whether the knobs are genuinely SHARED (calibrate-predict sound) and what
-  the held-out predictions are. Verify the cross-observable sharing against pre-reg + project_defect_regimes before claiming surplus.
+  the held-out predictions are. Verify the cross-observable sharing against pre-reg + project_defect_regimes before claiming surplus. [DONE → see (5o).]
+
+**(5o) ⭐⭐⭐ RESUME HERE (2026-06-21, post-/compact) — calibrate-predict pivot EXECUTED: `decisions/14` built + β resolved + traps
+hardened. NEXT ACTION = COMPUTE `χ_Q` (outgoing-DtN), prompt STAGED.** This block supersedes (5n)'s "build the inventory" next-action.
+- **`decisions/14` (value-provenance + calibration map) BUILT, Codex-reviewed (6 fixes) + GLM-reviewed (§5).** Classifies every
+  load-bearing value as DERIVED / INPUT (genuine calibration-necessity) / BRANCH-DETERMINED (computable, NOT free — compute don't
+  calibrate) / BENCHMARK. **~7 genuine free inputs: `{n=5, K, m_GNLS, ρ0, μ0, q_*, λγ}`** (+`ħ` fixed external const + conventions).
+  Everything in the ξ verdict is DERIVED (`c_s, a-cond, P0, C_B/C_E=1`) or BRANCH-DETERMINED (`χ_Q, λγ, g_G, g_mhat`).
+- **GLM tertiary (decision-14 §5):** ADOPT — `g_G`,`g_mhat` are NOT independent (one `W_eff` computation; verdict sees only the ratio
+  `g_mhat²/g_G`) ⇒ NEVER calibrate them independently (hidden-freedom trap). REJECT GLM's "cheap ratio via `Z(w)` cancellation" — our
+  Gate 0b already found `DOES_NOT_CANCEL`; the ratio stays blocked on `W_eff` (GLM's KK intuition = a thing to TEST at Gate 4).
+  REFRAME (user's point, vindicated): the dimensionless quadrupole `54/5` is closer to a PREDICTION than an anchor — calibration is for
+  DIMENSIONFUL scales; "tunability" was the artifact of leaving branch-determined factors UNCOMPUTED.
+- **β RESOLVED = `BETA_GENUINE_GAP`** (β-status analysis + adversarial review `VERDICT_SOUND`): the parent action treats EM as an
+  INDEPENDENT gauge field on the flat bulk metric, NOT tied to the acoustic speed ⇒ `λγ=c_γ/c_s` is a genuine CALIBRATION INPUT (not a
+  prediction, not a removable convention; nothing to compute — filling it = ADDING a postulate). **`c_s` is DERIVED (only `c_γ`
+  free)**; `[λγ]=1` computationally confirmed in Gate 2 (units-restored, dual-engine). Counter-construction (`c_γ=c_s`) is the
+  SUPERSEDED legacy `em_fields.tex`; canonical Path-A re-postulates EM independent.
+- **TRAPS HARDENED (committed 857cb1f4):** pde.tex got a "Dimensional note" reconciling the m̂ inconsistency (law's m̂ = dimensionful
+  carrier `m̂0`; source-map's `m̂=1+O(a²/r²)` = dimensionless profile factor; do not conflate) — no equation/physics changed. Report
+  hardened with the em_fields-superseded provenance line.
+- **THE UNDER-DETERMINATION (decision-14 §2):** ξ verdict has branch-determined unknowns `χ_Q, g_G, g_mhat` (+input `λγ`); the 2
+  gravity anchors (Newtonian `G`, quadrupole) leave it under-determined until `χ_Q` (DtN) and the `g_G`/`g_mhat` pair (`W_eff`) are
+  COMPUTED. The honest task is COMPUTE-don't-calibrate the branch-determined factors.
+- **▶ EXECUTE-NEXT (post-/compact):** launch `_scratch/pathA_22b_chi_Q_execute_prompt.md` (Gate 3 = `χ_Q` via outgoing-DtN around the
+  FROZEN finite-core branch; SCOPE-AND-SOLVE with 2 guards: NON-VACUOUS (must be able to return `χ_Q≠1`) + FEASIBILITY-HONEST (report
+  `NEEDS_DYNAMIC_SOLVE`/`BLOCKED` if the frozen branch can't support a clean outgoing-DtN, `pde.tex:2845-2849`)) → `codex exec
+  --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=high` as a `Bash run_in_background:true` task (NOT timeout-wrapped) →
+  on exit, dimensional-fidelity + adversarial review → user. Then `g_G`/`g_mhat` via `W_eff` (Gate 4, the hard blocker) remains.
 
 ---
 

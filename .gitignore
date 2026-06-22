@@ -90,6 +90,8 @@ software/**/runs/
 software/**/_scratch/
 research/**/runs/
 research/**/_scratch/
+# Repo-root scratch (diagnostic runners, regenerable data, __pycache__) — same convention
+/_scratch/
 
 # Large numerical / serialized-data formats, wherever they land
 *.h5

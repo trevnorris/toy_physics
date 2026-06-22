@@ -69,13 +69,15 @@ written as the dimensionful `c_γ` or the dimensionless `λγ`, it is the SAME s
 | value | physical meaning | computable-now / blocked-on | path to derivation | provenance |
 |---|---|---|---|---|
 | `P0 = (c_s/a)²·N0/D0` | static quadrupole response of the throat (raw `N0/D0` has dim `T²`; `(c_s/a)²` makes it dimensionless) | **already extracted** (target-blind) from the existing finite-core background — the one branch-determined value in hand | (done; do NOT re-solve a deep/empty throat) | pathA_22a:24-25,41-43; pathA_22b:14,20 |
-| `χ_Q` (=S_port) | the defect's outgoing-radiation coupling ("antenna efficiency": near-field→outgoing-wave) | **underived outgoing-DtN residual** — `S_port=1` is a current convention/DEFAULT, NOT confirmed from the existing background; feasibility of an outgoing-DtN solve on the *frozen finite-core* branch is itself OPEN (`pde.tex:2845-2849` actual branch unresolved). Tunability channel until derived | requires an actual outgoing-compact-DtN derivation; SCOPE feasibility on the frozen branch first | ANSATZ_LEDGER §1#4 (b); pathA_22a:7-11,70-71,85-88; pathA_21:90 |
+| `χ_Q` (=S_port) | the defect's outgoing-radiation coupling ("antenna efficiency": near-field→outgoing-wave) | **COMPUTED ≈ 0.712** (Gate 3 DONE, 2026-06-22): exact spherical-Hankel `l=2` outgoing-DtN around the frozen finite-core branch; `χ_Q = C5_defect / C5_branch-geometry-reference`; converged in even-`nw` (jackknife-stable, `nr`-independent, flat tail verified to `nw=320`). Budget = **±0.0008 numerical** + a **separate ~8.5% one-sided Z_w-reference definitional systematic** (branch-geometry = physical zero vs flat-`Z_w`). The FORM (`ω⁵`, `l=2`, `1/27` Hankel fingerprint) is derived EXACTLY (target-blind, dual-engine). NOT `S_port=1` — that default was a convention; the value is now computed. | DONE (do NOT re-solve; precision floored at ~8.5% by the reference *choice*, not by numerics) | pathA_22b Gate-3 report §; ANSATZ_LEDGER §1#4 (b); pathA_22a:7-11,70-71,85-88 |
 | `λγ = c_γ/c_s` | speed of light ÷ speed of sound of the medium | **blocked on `β_bulk_to_brane`** (the bulk-metric→acoustic-speed identification); `C_B/C_E=1` already removed one dial | determine if the EM↔matter coupling that sets `c_γ/c_s` is specified-but-unreduced (→compute) or a genuine model gap (→ then it is an INPUT, calibrate it) | pathA_22b:130-136; pathA_20b:68 |
 | `g_G` (↔ Newton `G`) | strength of the gravity-analog coupling (how defect stress sources long-range attraction) | **blocked on `W_eff`** + the mass bridge (`N_∞,3, Θ_Q, α_J`) | the `W_eff` transverse-profile derivation (Gate-0b said no shortcut — neither cancellation route holds) | pathA_21:44-48,104 |
 | `g_mhat` (↔ `m̂0`) | the brane source-map scale (dimensionless residual after `m̂0` carries units) | **blocked on `W_eff`** / action-level kernel | same `W_eff` derivation (Gate 4) | pathA_22b:7-10,56 |
 | `Z_int` | Maxwell localization integral (→ coupling renorm `μ0_eff=μ0/Z_int`) | **blocked** (placeholder `Z(w)` with undocumented floor=0.8; ideal integral divergent). **Off the ξ critical path** | export a genuinely decaying `Z(w)` or get floor provenance + physical w-extent | pathA_22b:66-78 |
 | `L/a (=37/20)`, `c0=3/4`, `ε_r=1/20`, `γ₀`, `R0`, `J` | throat/brane geometry + profile moments | blocked on the stationary-profile / moving-throat solve | the branch solve selects them | ANSATZ_LEDGER §1#1-3,§5; pathA_21:56,65 |
 | `Θ_Q`, `α_J`, `W_eff/a`, `J-selector`, branch-kernel choices | the named sub-factors inside the `g_G`/`g_mhat` mass-bridge + source-map chain | **blocked** (same `W_eff`/profile derivation as `g_G`/`g_mhat`; these ARE its constituents) | fold into / derived alongside `g_G`,`g_mhat` (Gate 4) | pathA_22a:75-81,88-89; pathA_21:63-71,97-105 |
+
+**Known numerical issue (logged 2026-06-22, separate follow-up).** The shared Maxwell assembler's centered W-lane first-derivative operator (`patha_b2b_maxwell.py`) is EXACTLY rank-deficient for ODD `nw` — a checkerboard/odd-even null mode that admits a spurious solution contaminating any quantity extracted on odd-`nw` grids. Gate 3 sidestepped it by using only EVEN `nw` (the full-rank, well-posed discretization), which is correct (excluding a singular discretization, not hiding a mode). **Other gates that may use odd `nw` should be audited**, and the shared stencil eventually fixed (non-decoupling/staggered lane operator or a clean null-projection). Not fixed in Gate 3 (Gate-3-local even-`nw` scope only).
 
 ### 1d. BENCHMARKS (external targets we calibrate against — not model values)
 `Newtonian G`; `GR quadrupole 54/5` (= `2G/5c⁵` chain, Peters 1964); `CODATA m_p/m_e=1836.15…`; `g−2`, `5PN`, ringdown freqs (held-out).
@@ -90,7 +92,8 @@ either DERIVED (`c_s, a, P0, C_B/C_E`) or BRANCH-DETERMINED (`χ_Q, λγ, g_G, g
 parameter** — each is a deferred computation. This is the whole point: the apparent ">3 tunable knobs" of pathA_22a's
 `TUNABILITY_CHANNEL_PRESENT` is really "3 branch-determined quantities we haven't computed," not 3 independent dials. The honest move
 is to COMPUTE them (or, where genuinely a model gap like `β`, promote to a calibrated INPUT and *say so*), never to leave them as
-silent free knobs.
+silent free knobs. **Update (2026-06-22):** of the BRANCH-DETERMINED set, `P0` and now **`χ_Q` ≈ 0.712 are COMPUTED** (Gate 3 DONE);
+`g_G`/`g_mhat` remain blocked on `W_eff` (Gate 4) and `λγ` on `β` — two of four closed.
 
 **The under-determination that gates calibrate-predict (counting argument).** The ξ verdict has FOUR branch-determined unknowns
 (`χ_Q`, `λγ`, `g_G`, `g_mhat`) but the gravity anchors give only TWO equations: Newtonian `G` (pins `g_G`, given derived `c_s, a, m`)
@@ -99,7 +102,7 @@ and the GR quadrupole (pins the single product `χ_Q·g_mhat²·λγ⁵`, given 
 excess is removed. To close it we must **derive ≥2 of {`χ_Q`, `λγ`, `g_mhat`/`g_G`}** OR **add independent anchor(s)** (the EM-sector
 anchor of §3 is one). The cheapest derivable pair is `χ_Q` (outgoing-DtN, feasibility-scope first) + `λγ` (settle `β`): if both close,
 the two gravity anchors then pin `g_G` and `g_mhat` and the system is well-posed; if either is a genuine gap, we need the extra anchor.
-This counting is the live gate on running an honest calibrate-predict and decides the next derivation targets.
+This counting is the live gate on running an honest calibrate-predict and decides the next derivation targets. **Update (2026-06-22): `χ_Q` is COMPUTED (Gate 3, ≈0.712 ± 0.0008 numerical + ~8.5% Z_w-reference systematic), so the four-unknown count drops to THREE (`λγ`, `g_G`, `g_mhat`); the cheapest remaining move is the `W_eff` derivation that yields `g_G`/`g_mhat` (Gate 4) plus settling `λγ` (`β`).**
 
 ---
 

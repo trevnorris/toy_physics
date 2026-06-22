@@ -189,3 +189,133 @@
 - Not a mere convention: choosing units can set one speed's numerical value, but the dimensionless ratio `c_gamma/c_s` is invariant under common brane unit rescalings. Declaring the EM unit cone to equal the acoustic cone would therefore be an added physical identification, not a prediction already contained in the action.
 - Missing input needed to derive it later: an explicit `bulk_metric_to_acoustic_metric_identification` postulate or branch-level constitutive law, for example a source-derived equation fixing `beta_bulk_to_brane^2 = 5*K*rho0^4/m_GNLS` for equality, or more generally fixing the EM bulk metric's time/length scale as a function of the GNLS medium parameters.
 - Implication: `lambda_gamma = beta_bulk_to_brane*sqrt(m_GNLS/(5*K*rho0^4)) = beta_bulk_to_brane/c_s` is a calibration input until that missing physical input is supplied; it is not a parent-action prediction.
+
+## Gate 3 — χ_Q
+
+### Definition
+
+- Scope: linear-response solve around the frozen M1c finite-core branch. No nonlinear profile re-solve and no deep/empty-throat solve were run.
+- Frozen branch: `software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json` with grid `{'nr': 10, 'nw': 8, 'r_range': [0.0, 2.0], 'w_range': [0.0, 1.85]}` and stationary residual `4.5892669664482355e-09`.
+- Boundary labels: freeze sheet `mouth Dirichlet / open-impedance(Robin) exit / no hard cap`; packet `open_impedance` with exit model `impedance_mismatch_open_exit`.
+- Hankel check: `Lambda_2^out=I*z**5/9 + z**4/9 + z**2/3 - 3` and `Y_out=I*z**5/27 + 4*z**4/81 + z**2/9 + 1`; the `z^5` coefficient is `1/27`.
+- Anti-tautology: cached `Gamma_port=0.14814814814814817` is present only as legacy provenance and is not used by the solve.
+- Source adapter: frozen derived BdG wall modes from the physical packet; the outgoing DtN/self-energy sweep itself is recomputed from the frozen background.
+- Extraction: for each domain, grid, and frequency window, fit `E = C5` from `-Im(Sigma_out/Sigma_cons)/omega^5 = C5 + C7*omega^2 + C9*omega^4`, then set `chi_Q = E_defect / E_reference`.
+- Physical reference: the branch-geometry reference keeps the exported `Z_w` and `R0_w`, and undefects only the condensate/gauge sector (`rho` uniform, `A -> 0`). The flat reference (`Z_w=1`, `R0_w=a`) is retained only to quantify the old reference choice.
+- Exterior caveat: `radial_scale>1` uses the existing radial exterior taper, not a nonlinear far-field re-solve. The sweep tests/bounds boundary-placement sensitivity on this frozen continuation; lack of plateau still blocks non-characterized inputs.
+
+### r_max Domain Sweep
+
+- `dr` control: nr is recomputed from the scale-1 base dr so r_max changes do not deliberately coarsen the radial cell size.
+- Branch-geometry reference tail mean `7.420107259365566e-01`, tail spread `1.394e-03`, relative tail spread `1.879e-03`, plateau `True`.
+- Plateau onset: `r_max=6.0` by the `1.5e-03` tail-delta rule; strict `1e-3` final-lock onset `r_max=7.0`.
+- Flat `Z_w=1` reference is a plateau-tail diagnostic over scales `[3.0]`: tail mean `7.038601320016022e-01`, tail spread `0.000e+00`, relative tail spread `0.000e+00`.
+
+Branch-geometry reference:
+
+| radial_scale | r_max | grid | dr | E_defect | E_reference | chi_Q | delta chi_Q | max residual |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 2 | 10x8 | 1.618182e-01 | 4.399618116589e-01 | 2.416783352202e+00 | 1.820443736746e-01 |  | 9.382e-16 |
+| 1.5 | 3 | 16x8 | 1.635294e-01 | 1.936856040594e+00 | 5.588811643100e+00 | 3.465595486628e-01 | 1.645151749882e-01 | 9.319e-16 |
+| 2 | 4 | 22x8 | 1.643478e-01 | 7.845910949754e+00 | 1.171598578464e+01 | 6.696756972891e-01 | 3.231161486263e-01 | 1.002e-15 |
+| 2.5 | 5 | 29x8 | 1.593333e-01 | 2.384749254423e+01 | 3.253017802069e+01 | 7.330882889440e-01 | 6.341259165495e-02 | 1.065e-15 |
+| 3 | 6 | 35x8 | 1.605556e-01 | 5.931640551817e+01 | 8.003232505849e+01 | 7.411555952525e-01 | 8.067306308464e-03 | 1.087e-15 |
+| 3.5 | 7 | 41x8 | 1.614286e-01 | 1.282190805257e+02 | 1.727259937405e+02 | 7.423264891925e-01 | 1.170893940022e-03 | 1.101e-15 |
+| 4 | 8 | 47x8 | 1.620833e-01 | 2.500120710280e+02 | 3.366938786516e+02 | 7.425500933647e-01 | 2.236041721781e-04 | 1.001e-15 |
+
+Flat `Z_w=1` plateau-tail diagnostic:
+
+| radial_scale | r_max | grid | dr | E_defect | E_reference | chi_Q | delta chi_Q | max residual |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 3 | 6 | 35x8 | 1.605556e-01 | 5.931640551817e+01 | 8.427300087233e+01 | 7.038601320016e-01 |  | 1.116e-15 |
+
+### Z_w Reference Comparison
+
+- Physically correct zero for the defect's radiative coupling: `branch_geometry` (`Z_w/R0_w` retained, condensate/gauge undefected).
+- Matched converged-grid reference shift, branch minus flat: `6.081952123083167e-02` (relative `8.54%`). This is a one-sided definitional systematic because branch-geometry is the physical zero and flat `Z_w=1` is the less-physical alternative; it is not folded into the numerical error bar.
+
+Matched converged even-nw rows:
+
+| nr | nw | r_max | branch chi_Q | flat Z_w=1 chi_Q | branch-flat shift | relative shift |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 48 | 64 | 6 | 7.127073077159e-01 | 6.517756787792e-01 | 6.093162893678e-02 | 8.549% |
+| 48 | 80 | 6 | 7.125120276544e-01 | 6.518009360986e-01 | 6.071109155583e-02 | 8.521% |
+| 48 | 96 | 6 | 7.122748130763e-01 | 6.514589698764e-01 | 6.081584319989e-02 | 8.538% |
+
+### Grid Convergence at Post-Plateau r_max
+
+- Fixed post-plateau `r_max=6` (`radial_scale=3`) branch grid sequence values: `[0.7411555952524825, 0.7220737682611891, 0.7159043960619648]`.
+- Observed delta ratios: `[0.3233114000058398]`.
+- Richardson/geometric-tail limit: `7.129567649611814e-01`; finest value `7.159043960619648e-01`; old two-grid mean `7.189890821615770e-01`.
+- Grid extrapolation uncertainty `6.032e-03`; raw finest-limit correction `2.948e-03`; model uncertainty `6.032e-03`; old two-grid mean bias `6.032e-03`.
+- Grid convergence: `True` with observed delta-ratio `3.233e-01` and relative tail correction `4.134e-03`.
+
+| grid | r_max | exterior dr | dw | E_defect | E_reference | chi_Q | fit RMS max | max residual |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 35x8 | 6 | 1.605556e-01 | 2.055556e-01 | 5.931640551817e+01 | 8.003232505849e+01 | 7.411555952525e-01 | 4.098e-13 | 1.087e-15 |
+| 48x10 | 6 | 1.179592e-01 | 1.681818e-01 | 5.661117583814e+01 | 7.840082042374e+01 | 7.220737682612e-01 | 4.382e-13 | 1.766e-15 |
+| 61x12 | 6 | 9.322581e-02 | 1.423077e-01 | 5.592800392480e+01 | 7.812216859185e+01 | 7.159043960620e-01 | 4.547e-13 | 2.442e-15 |
+
+### Even-nw Characterization
+
+- Canonical characterization JSON: `_scratch/pathA_22b_gate3_nw_characterization.json`.
+- Outcome class: `NW_CONVERGES_chi_inf=0.711956789348_pm_0.00418_order=1.525`; reason: finite power-law limit with stable coarsest-point jackknife and second-nr confirmation.
+- Tail-supported central uses the `nw>=56` fit: raw `7.120688981355322e-01`, reported as `0.712`.
+- Numerical bar `0.0008` comes from `sqrt(max(tail RMS 4.838e-04, tail jackknife 7.404e-04)^2 + nr offset 3.177e-04^2)`.
+- Conservative full-sweep fit uncertainty is kept separately: `0.0042` from the `nw=8..160` fit.
+- Evidence: jackknife stable `True`, nr-independent `True`, stored flat tail through `nw=160`; review verification extends the flat tail to `nw=320`.
+
+### Tiny-Defect Linearity
+
+- Definition: branch-geometry reference plus a small fraction of the frozen condensate/gauge defect.
+- Slope mean `-7.654165346717084e-02`; slope relative spread `8.774e-03`; linear toward zero `True`.
+
+| defect fraction | chi_Q | chi_Q - 1 | (chi_Q - 1)/fraction | max residual |
+| ---: | ---: | ---: | ---: | ---: |
+| 1.000000e-03 | 9.999237316117e-01 | -7.626838828689e-05 | -7.626838828689e-02 | 4.443e-16 |
+| 3.000000e-03 | 9.997707501453e-01 | -2.292498546721e-04 | -7.641661822403e-02 | 4.594e-16 |
+| 1.000000e-02 | 9.992306004611e-01 | -7.693995389059e-04 | -7.693995389059e-02 | 4.549e-16 |
+
+### Trivial Uniform Consistency
+
+- The uniform self-ratio is demoted to a trivial consistency check: `uniform no-defect control coefficient divided by separately built uniform vacuum reference coefficient`.
+- Uniform no-defect max `|chi_Q-1|`: `0.000e+00`; pass `True`. This is not evidence for the physical magnitude.
+
+### Dimensional Check
+
+- `defect omega^5 coefficient`: **CONSISTENT** (expected `T^5`, actual `T^5`). The defect coefficient multiplying omega^5 carries T^5.
+- `vacuum omega^5 coefficient`: **CONSISTENT** (expected `T^5`, actual `T^5`). The same extraction on the uniform background carries T^5.
+- `closure placement factor (R_exit/c_s)^5`: **CONSISTENT** (expected `T^5`, actual `T^5`). The outgoing-Hankel boundary-placement factor is common to defect and vacuum extractions.
+- `radius-consistent chi_Q ratio`: **CONSISTENT** (expected `1`, actual `1`). chi_Q is the ratio of two same-radius omega^5 coefficients.
+
+### Provenance
+
+- research/pde/paper/pde.tex:1964.
+- research/pde/paper/pde.tex:1985-1988.
+- research/pde/paper/pde.tex:2034-2069.
+- software/stage1_solver/mathematica/mt15_06_m1c_prep_crossengine.wls:686-753.
+- software/stage1_solver/mathematica/mt15_06_m1c_prep_crossengine.wls:896-985.
+
+### Target-Blindness
+
+- `TARGET_BLIND_PASS` over the new Gate-3 module, tests, and Mathematica cross-check. The final comparison constants are not used in the derivation.
+
+### Residual Ledger
+
+- Frozen finite-core background loaded; no nonlinear profile re-solve was performed.
+- Linear source adapter uses the frozen derived BdG wall modes; the outgoing DtN/self-energy sweep is recomputed.
+- Retarded operator uses exact spherical-Hankel Y_out at the truncation radius; cached Gamma_port is not used in the solve.
+- Branch-reference r_max tail relative spread 1.879e-03; onset r_max=6.0; plateau True.
+- Post-plateau fixed-r_max Richardson limit 7.129567649611814e-01; observed delta-ratio 3.233e-01.
+- Matched even-nw Z_w reference shift 6.082e-02 (8.54% of the branch value); carried separately as a one-sided definitional systematic.
+- Tiny-defect slope relative spread 8.774e-03; linear True.
+
+### OUTCOME
+
+- OUTCOME: `DELTA_Q_NE_0_0.712_pm_0.0008_NW_CONVERGES`.
+- Converged `chi_Q = 0.712 +/- 0.0008` (numerical, tail-supported), branch-geometry reference.
+- Conservative full-sweep fit uncertainty: `+/- 0.0042`; this is retained as a coarse-transient diagnostic, while the flat nw-tail plus nr-offset gives the honest numerical bar.
+- Separate `Z_w`-reference definitional systematic: one-sided `0.061` absolute (`8.5%`) toward the flat `Z_w=1` alternative; not folded symmetrically into the numerical error bar.
+- Convergence evidence: jackknife-stable `True`, nr-independent `True`, flat even-nw tail, and matched branch-geometry reference.
+- Reason: The physically correct defect zero keeps the branch Z_w/R0_w geometry and removes only the condensate/gauge defect. The production magnitude is earned from the unfiltered even-nw branch-geometry characterization when that stored sweep has a stable finite limit, nr confirmation, and a matched flat-Zw reference comparison. The flat-Zw shift is a separate one-sided definitional systematic, not part of the numerical error bar. If the even-nw evidence is unavailable or non-convergent, the magnitude reverts to a calibration knob.
+

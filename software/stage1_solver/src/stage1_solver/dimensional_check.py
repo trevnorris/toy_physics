@@ -99,6 +99,9 @@ class Check:
         }
 
 
+M_UNIT, L_UNIT, T_UNIT = sp.symbols("M L T", positive=True)
+
+
 def factor_to_reach(expected: Dim, actual: Dim) -> Dim:
     return expected / actual
 
@@ -3770,6 +3773,677 @@ def write_patha21c_force_tensor_report(out_dir: Path, report_dir: Path) -> tuple
     return json_path, reference_path, report
 
 
+@dataclass(frozen=True)
+class PathA22aKnob:
+    name: str
+    classification: str
+    role: str
+    provenance: str
+    verdict_effect: str
+
+    def as_dict(self) -> dict[str, str]:
+        return {
+            "name": self.name,
+            "classification": self.classification,
+            "role": self.role,
+            "provenance": self.provenance,
+            "verdict_effect": self.verdict_effect,
+        }
+
+
+def _patha22a_monomial(dim: Dim) -> str:
+    expr = sp.simplify((L_UNIT**dim.l) * (T_UNIT**dim.t) * (M_UNIT**dim.m))
+    return str(expr)
+
+
+def _patha22a_dim_row(name: str, dim: Dim, derivation: str, provenance: str) -> dict[str, object]:
+    return {
+        "name": name,
+        "dimension": str(dim),
+        "tuple_L_T_M": dim.as_tuple(),
+        "sympy_monomial": _patha22a_monomial(dim),
+        "derivation": derivation,
+        "provenance": provenance,
+    }
+
+
+def patha22a_homogeneity_checks(
+    *,
+    planted_rhs: Dim | None = None,
+    planted_p0: Dim | None = None,
+) -> dict[str, object]:
+    """Run PathA_22a dimensional homogeneity with restored M,L,T units."""
+
+    velocity = LENGTH / TIME
+    reduced_stiffness = MASS / (LENGTH * (TIME**2))
+    reduced_mass = MASS / LENGTH
+    target = D["G_3_spatial"] * (D["c_s"] ** 5) / ((D["a"] ** 5) * (D["c"] ** 5))
+    mhat0 = (LENGTH**-1) * (TIME**-1) * (MASS ** sp.Rational(-1, 2))
+    mhat0_sq = mhat0**2
+    s_port = DIMENSIONLESS
+    chi_q = DIMENSIONLESS
+
+    k0 = reduced_stiffness
+    b0 = reduced_stiffness
+    omega_u = TIME**-1
+    omega_w = TIME**-1
+    r_mix = TIME**-2
+    g_port = (reduced_stiffness * (TIME**-2)) ** sp.Rational(1, 2)
+    delta = (omega_u**2) * (omega_w**2)
+    delta_via_r = r_mix**2
+    s_mix = omega_u**2
+    q_mix = (g_port**2) * (omega_w**2)
+    h_mix = g_port**2
+    p_mix = (omega_u**2) * g_port
+    p_mix_via_r = r_mix * g_port
+    z0 = q_mix / delta
+    z2 = (q_mix * s_mix) / (delta**2)
+    z4 = (q_mix * (s_mix**2)) / (delta**3)
+    d0 = k0
+    n0 = (p_mix**2) / (delta**2)
+    n2 = (p_mix * (p_mix * s_mix)) / (delta**3)
+    n4 = ((delta**2) * (g_port**2)) / (delta**4)
+    p0_faithful = n0 / d0
+    frequency_scale = (D["c_s"] / D["a"]) ** 2
+    p0_normalized = p0_faithful * frequency_scale
+    p0_for_lhs = planted_p0 or p0_normalized
+    rhs_for_check = planted_rhs or target
+    lhs = mhat0_sq * s_port * p0_for_lhs
+
+    p0_factor_needed = DIMENSIONLESS / p0_faithful
+    wrong_n0_assertion = expect_dim(
+        "pathA_22a_negative",
+        "WRONG assertion N0 has reduced stiffness dimension",
+        n0,
+        reduced_stiffness,
+        "Negative control: the code formula N0=P^2/Delta^2 derives reduced mass, so asserting reduced stiffness must fail.",
+    )
+
+    checks = [
+        homogeneous(
+            "pathA_22a_A",
+            "D0=K-B0-Z0 reduced static denominator",
+            {"K": k0, "B0": b0, "Z0": z0},
+            "Uses the reduced coefficient compiler contract in patha_extraction.py and pde.tex.",
+        ),
+        homogeneous(
+            "pathA_22a_A",
+            "mixed-port Delta=Omega_U^2*Omega_W^2-R^2",
+            {"Omega_U^2*Omega_W^2": delta, "R^2": delta_via_r},
+            "Uses pde.tex building-block dimensions Omega_U,Omega_W:T^-1 and R:T^-2.",
+        ),
+        homogeneous(
+            "pathA_22a_A",
+            "mixed-port P=Omega_U^2*g_W+R*g_U",
+            {"Omega_U^2*g_W": p_mix, "R*g_U": p_mix_via_r},
+            "Uses [g_U]^2=[g_W]^2=[K]*T^-2 from the same building-block dictionary.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "Z0=Q/Delta derived from mixed-port formula",
+            z0,
+            reduced_stiffness,
+            "Cross-check: Z0 remains a reduced stiffness coefficient.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "Z2 derived from mixed-port formula",
+            z2,
+            reduced_mass,
+            "Cross-check: Z2=K*T^2 matches the existing reduced_M_B2_Z2_N2 dictionary entry.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "Z4 derived from mixed-port formula",
+            z4,
+            reduced_mass * (TIME**2),
+            "Cross-check: Z4=K*T^4 matches the existing reduced_B4_Z4_N4 dictionary entry.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "N0=P^2/Delta^2 derived from code formula",
+            n0,
+            reduced_mass,
+            "This is derived from patha_extraction.py, not asserted from the old reduced_K_B0_Z0_N0 dictionary bucket.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "N2 derived from code formula",
+            n2,
+            reduced_mass * (TIME**2),
+            "The N tower is shifted by T^2 relative to the old asserted N2 bucket.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "N4 derived from code formula",
+            n4,
+            reduced_mass * (TIME**4),
+            "The N tower is shifted by T^2 relative to the old asserted N4 bucket.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "faithful P0=N0/D0 before frequency normalization",
+            p0_faithful,
+            TIME**2,
+            "The actual code formula gives P0 with T^2 before applying the explicit frequency-normalization factor.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "P0 frequency-normalization factor (c_s/a)^2",
+            frequency_scale,
+            p0_factor_needed,
+            "The paper's dimensionless P0 requires this explicit T^-2 factor; no a^5/c_s^5 radiation factor is hidden here.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "normalized P0=(c_s/a)^2*N0/D0 dimension",
+            p0_normalized,
+            DIMENSIONLESS,
+            "This is the P0 used by the R_norm homogeneity gate and by Gamma5.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "mhat0 source-map dimension",
+            mhat0,
+            (LENGTH**-1) * (TIME**-1) * (MASS ** sp.Rational(-1, 2)),
+            "Source-map dimensional table carried by pathA_21b; this group rechecks the monomial.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "3D GR target 54*G*c_s^5/(5*a^5*c^5)",
+            target,
+            (MASS**-1) * (LENGTH**-2) * (TIME**-2),
+            "Uses 3D Newton G=L^3 T^-2 M^-1; numerical factors are dimensionless.",
+        ),
+        expect_dim(
+            "pathA_22a_A",
+            "S_port / chi_Q outgoing-normalization scalar",
+            s_port,
+            DIMENSIONLESS,
+            "S_port is the code slot occupied by the paper's chi_Q.",
+        ),
+        homogeneous(
+            "pathA_22a_A",
+            "R_norm=mhat0^2*S_port*P0 - 54*G*c_s^5/(5*a^5*c^5)",
+            {"mhat0^2*S_port*P0": lhs, "GR_target": rhs_for_check},
+            "This is the actual homogeneity gate; it is not an x==x self-check.",
+        ),
+    ]
+
+    failures = [check for check in checks if check.status != "CONSISTENT"]
+    homogeneity_status = "HOMOGENEITY_PASS" if not failures else "HOMOGENEITY_FAILURE"
+    return {
+        "homogeneity_status": homogeneity_status,
+        "checks": [check.as_dict() for check in checks],
+        "production_failure_count": len(failures),
+        "formula_negative_controls": {
+            "wrong_n0_reduced_stiffness_assertion": wrong_n0_assertion.as_dict(),
+            "status": "CAUGHT_WRONG_N0_ASSERTION"
+            if wrong_n0_assertion.status == "INCONSISTENT"
+            else "MISSED_WRONG_N0_ASSERTION",
+        },
+        "dimension_table": [
+            _patha22a_dim_row(
+                "G_3D",
+                D["G_3_spatial"],
+                "Newton force dimension in observed 3-space: [G]=L^3 T^-2 M^-1.",
+                "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:31; software/stage1_solver/reports/pathA_19_dimensional_foundation.md",
+            ),
+            _patha22a_dim_row(
+                "c_s",
+                velocity,
+                "EOS sound-speed law c_s^2=5 K rho0^4/m_GNLS.",
+                "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:59; dimensional_check.py pathA_19_F3",
+            ),
+            _patha22a_dim_row("c", velocity, "Observed brane light speed.", "pathA_20/20b carried as lambda_gamma=c/c_s."),
+            _patha22a_dim_row("a", LENGTH, "Throat/core length scale.", "research/pde/paper/pde.tex:2061"),
+            _patha22a_dim_row(
+                "mhat0",
+                mhat0,
+                "Source-map factor with [mhat0]=L^-1 T^-1 M^-1/2, so mhat0^2 matches the full target dimension.",
+                "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:35",
+            ),
+            _patha22a_dim_row(
+                "K,B0,Z0,D0",
+                reduced_stiffness,
+                "Reduced static denominator compiler: D0=K-B0-Z0; Z0 also derives to reduced stiffness.",
+                "software/stage1_solver/src/stage1_solver/patha_extraction.py:397-445,473-482; research/pde/paper/pde.tex:1849-1872",
+            ),
+            _patha22a_dim_row(
+                "N0,N2,N4 from code formulas",
+                n0,
+                "N0=P^2/Delta^2 derives to K*T^2=M/L; N2 and N4 derive to M/L*T^2 and M/L*T^4.",
+                "software/stage1_solver/src/stage1_solver/patha_extraction.py:397-445",
+            ),
+            _patha22a_dim_row(
+                "P0_faithful=N0/D0",
+                p0_faithful,
+                "Faithful code-formula ratio before normalization; dimension T^2.",
+                "research/pde/paper/pde.tex:2018-2026; software/stage1_solver/src/stage1_solver/patha_extraction.py:482",
+            ),
+            _patha22a_dim_row(
+                "P0=(c_s/a)^2*N0/D0",
+                p0_normalized,
+                "Dimensionless static outgoing prefactor after explicit frequency normalization.",
+                "software/stage1_solver/src/stage1_solver/patha_extraction.py:397-445,473-482; research/pde/paper/pde.tex:2018-2026",
+            ),
+            _patha22a_dim_row(
+                "S_port == chi_Q",
+                chi_q,
+                "Dimensionless outgoing-normalization scalar; S_port is the code slot in observable_residuals/extract_branch.",
+                "software/stage1_solver/src/stage1_solver/patha_extraction.py:526-544,609-624; research/pde/paper/pde.tex:1980-1998",
+            ),
+            _patha22a_dim_row(
+                "Gamma5",
+                TIME**5,
+                "Gamma5=chi_Q P0 a^5/(27 c_s^5); the radiation time^5 factor is explicit, not hidden in P0.",
+                "research/pde/paper/pde.tex:2053-2061",
+            ),
+            _patha22a_dim_row(
+                "54*G*c_s^5/(5*a^5*c^5)",
+                target,
+                "Target dimension is M^-1 L^-2 T^-2.",
+                "research/pde/paper/pde.tex:2082",
+            ),
+        ],
+        "p0_dimensionless_finding": {
+            "status": "P0_DIMENSIONLESS_AFTER_EXPLICIT_FREQUENCY_NORMALIZATION",
+            "finding": (
+                "The actual patha_extraction.py mixed-port formulas derive N0=P^2/Delta^2 with "
+                "dimension M/L, so faithful N0/D0 has dimension T^2. Multiplying by the explicit "
+                "(c_s/a)^2 frequency-normalization factor makes P0 dimensionless. With that "
+                "normalized P0, R_norm is homogeneous; without it, the gate would fail."
+            ),
+            "faithful_unnormalized_dimension": str(p0_faithful),
+            "normalization_needed_for_faithful_reading": "(c_s/a)^2",
+            "normalization_needed_dimension": str(frequency_scale),
+            "normalized_dimension": str(p0_normalized),
+        },
+    }
+
+
+def patha22a_knob_ledger(include_control_free_factor: bool = False) -> list[PathA22aKnob]:
+    ledger = [
+        PathA22aKnob(
+            "sigma_Q^can=4*a^5/(27*c_s^5)",
+            "(a) fixed-by-prior-derivation",
+            "Canonical compact outgoing fingerprint factor; dimensional T^5 carrier for Gamma5.",
+            "research/pde/paper/pde.tex:1980-1993,2061",
+            "Not tunable once the canonical compact outgoing branch is selected.",
+        ),
+        PathA22aKnob(
+            "grouped signature (1,1/2,-1)",
+            "(a) fixed-by-prior-derivation",
+            "Weak-axisymmetric grouped transport signature.",
+            "research/pde/paper/pde.tex:92,2371-2384",
+            "Does not affect the isotropic homogeneity gate.",
+        ),
+        PathA22aKnob(
+            "lambda_gamma=c/c_s",
+            "(c)/(d) underived residual; TRUE FREE calibration knob under calibrate-predict",
+            "Observed brane cone versus sound cone ratio; enters xi as lambda_gamma^5 and is equally unpinned by the current reduction.",
+            "software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md; research/pde/paper/pde.tex:2551",
+            "A future brane zero-mode reduction may pin it; under calibrate-predict it is a tunability channel, not a prediction.",
+        ),
+        PathA22aKnob(
+            "chi_Q / S_port",
+            "(d) TRUE FREE calibration knob",
+            "Outgoing-normalization scalar. Code S_port multiplies mhat0^2*P0 in exactly the paper's chi_Q slot.",
+            "software/stage1_solver/src/stage1_solver/patha_extraction.py:526-544,609-624; research/pde/paper/pde.tex:1980-1998,2071-2082",
+            "TUNABILITY_CHANNEL_PRESENT unless the actual outgoing compact DtN derivation independently fixes chi_Q; Stage 104/105 canonical sigma_Q choice does not prove the Path-A branch is canonical.",
+        ),
+        PathA22aKnob(
+            "P0 branch value=N0/D0",
+            "(b) branch-determined (target-blind)",
+            "Static outgoing prefactor from reduced overlap data after the branch solve.",
+            "software/stage1_solver/src/stage1_solver/patha_extraction.py:397-445,473-482; research/pde/paper/pde.tex:1849-1872,2018-2026",
+            "Not a calibration knob if the profile/overlaps are solved target-blind.",
+        ),
+        PathA22aKnob(
+            "R0/a",
+            "(b) branch-determined (target-blind)",
+            "Finite throat radius profile scale in the branch data.",
+            "software/stage1_solver/src/stage1_solver/patha_extraction.py:25-37,64-75; research/pde/paper/pde.tex:2551",
+            "Conditional on solving the stationary branch; not automatically tunable.",
+        ),
+        PathA22aKnob(
+            "L/a",
+            "(b) branch-determined (target-blind)",
+            "Wall/worldtube length ratio used by finite-throat profiles.",
+            "software/stage1_solver/src/stage1_solver/patha_extraction.py:40-53,691-700",
+            "Geometry/domain data; only tunable if later allowed as calibration.",
+        ),
+        PathA22aKnob(
+            "W_eff/a",
+            "(c) underived residual",
+            "Effective kernel/support width entering the profile and force normalization.",
+            "software/stage1_solver/decisions/13_emergent_constants_derivation.md:433-445",
+            "Pure-number closure needs the branch/kernel form.",
+        ),
+        PathA22aKnob(
+            "Theta_Q",
+            "(c) underived residual",
+            "Quadrupole source/shape residual not closed by dimensional analysis.",
+            "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:72-76",
+            "Carried to the minimal xi/source-map derivation.",
+        ),
+        PathA22aKnob(
+            "J-selector / flux law",
+            "(c) underived residual",
+            "Mass/source bridge rate selector inherited from the pathA_20/pathA_21 chain.",
+            "software/stage1_solver/decisions/13_emergent_constants_derivation.md:407,433-445",
+            "Affects mhat/G forms, not dimensional homogeneity.",
+        ),
+        PathA22aKnob(
+            "alpha_J",
+            "(c) underived residual",
+            "Dimensionless mass-bridge coefficient, including the h versus hbar/2pi convention.",
+            "software/stage1_solver/decisions/13_emergent_constants_derivation.md:407; software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md",
+            "Pending source/boundary/Hamiltonian derivation; not set to one.",
+        ),
+        PathA22aKnob(
+            "branch-kernel choices",
+            "(c) underived residual",
+            "Profile/kernel choices that determine overlap integrals and the branch packet.",
+            "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:72-76",
+            "Indeterminate until forms are derived or branch solve fixes them target-blind.",
+        ),
+        PathA22aKnob(
+            "g_G",
+            "(c) underived residual",
+            "Arbitrary dimensionless multiplier in G=(a*c_s^2/m_GNLS)*g_G.",
+            "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:63-71",
+            "Must remain symbolic in xi; dimensional analysis cannot set it to one.",
+        ),
+        PathA22aKnob(
+            "g_mhat",
+            "(c) underived residual",
+            "Arbitrary dimensionless multiplier in mhat0=(c_s/(a^2*sqrt(m_GNLS)))*g_mhat.",
+            "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:63-71",
+            "Must remain symbolic in xi; source-map form is the scoped next step.",
+        ),
+    ]
+    if include_control_free_factor:
+        ledger.append(
+            PathA22aKnob(
+                "g_control_unresolved",
+                "(d) TRUE FREE calibration knob",
+                "Planted unresolved dimensionless multiplier for the negative control.",
+                "software/stage1_solver/directives/pathA_22a_dimensional_skeleton.md:96-100",
+                "Must force TUNABILITY_CHANNEL_PRESENT/INDETERMINATE, never cancel dimensionally.",
+            )
+        )
+    return ledger
+
+
+def patha22a_classify_headline(
+    homogeneity_status: str,
+    ledger: Sequence[PathA22aKnob],
+) -> str:
+    if homogeneity_status == "HOMOGENEITY_FAILURE":
+        return "HOMOGENEITY_FAILURE"
+    if any(item.classification.startswith("(d)") for item in ledger):
+        return "TUNABILITY_CHANNEL_PRESENT"
+    return "INDETERMINATE_NEEDS_FORMS"
+
+
+def patha22a_symbolic_xi() -> dict[str, object]:
+    lambda_gamma, g_mhat, g_G, chi_Q, P0 = sp.symbols(
+        "lambda_gamma g_mhat g_G chi_Q P0", nonzero=True
+    )
+    c_s, a, m = sp.symbols("c_s a m_GNLS", positive=True)
+    g_monomial = a * c_s**2 / m
+    mhat_monomial = c_s / (a**2 * sp.sqrt(m))
+    denominator = g_monomial * g_G * c_s**5 / (a**5 * (lambda_gamma * c_s) ** 5)
+    xi_times = sp.simplify((mhat_monomial**2 * g_mhat**2 * chi_Q * P0) / denominator)
+    return {
+        "G_form": "G = (a*c_s^2/m_GNLS) * g_G = (5*a*K*rho0^4/m_GNLS^2) * g_G",
+        "mhat0_form": "mhat0 = (c_s/(a^2*sqrt(m_GNLS))) * g_mhat",
+        "c_form": "c = lambda_gamma*c_s",
+        "xi_times_S_port_P0": str(xi_times),
+        "xi_times_S_port_P0_simplified": "P0*chi_Q*g_mhat**2*lambda_gamma**5/g_G",
+        "note": "All g_* factors are dimensionless and underived unless separately fixed.",
+    }
+
+
+def patha22a_negative_controls() -> dict[str, object]:
+    target = D["G_3_spatial"] * (D["c_s"] ** 5) / ((D["a"] ** 5) * (D["c"] ** 5))
+    missing_a5_rhs = target * (D["a"] ** 5)
+    mismatch = patha22a_homogeneity_checks(planted_rhs=missing_a5_rhs)
+    unresolved_ledger = patha22a_knob_ledger(include_control_free_factor=True)
+    unresolved_headline = patha22a_classify_headline("HOMOGENEITY_PASS", unresolved_ledger)
+    return {
+        "planted_dimensional_mismatch": {
+            "status": "CAUGHT_DIMENSIONAL_MISMATCH"
+            if mismatch["homogeneity_status"] == "HOMOGENEITY_FAILURE"
+            else "MISSED_DIMENSIONAL_MISMATCH",
+            "expected": "HOMOGENEITY_FAILURE",
+            "actual": mismatch["homogeneity_status"],
+            "planted_rhs": "target with a^5 removed from the denominator",
+        },
+        "planted_unresolved_dimensionless_factor": {
+            "status": "PRESERVED_UNRESOLVED_FACTOR"
+            if unresolved_headline in {"TUNABILITY_CHANNEL_PRESENT", "INDETERMINATE_NEEDS_FORMS"}
+            else "CANCELLED_UNRESOLVED_FACTOR",
+            "expected": "TUNABILITY_CHANNEL_PRESENT or INDETERMINATE_NEEDS_FORMS",
+            "actual": unresolved_headline,
+            "control_factor": "g_control_unresolved",
+        },
+        "reachable_headlines": {
+            "homogeneity_failure": patha22a_classify_headline("HOMOGENEITY_FAILURE", []),
+            "tunability_present": patha22a_classify_headline("HOMOGENEITY_PASS", unresolved_ledger),
+            "indeterminate_needs_forms": patha22a_classify_headline(
+                "HOMOGENEITY_PASS",
+                [
+                    item
+                    for item in patha22a_knob_ledger()
+                    if not item.classification.startswith("(d)")
+                ],
+            ),
+        },
+    }
+
+
+def patha22a_dimensional_skeleton_report() -> dict[str, object]:
+    homogeneity = patha22a_homogeneity_checks()
+    ledger = patha22a_knob_ledger()
+    headline = patha22a_classify_headline(str(homogeneity["homogeneity_status"]), ledger)
+    negative_controls = patha22a_negative_controls()
+    class_d = [item.name for item in ledger if item.classification.startswith("(d)")]
+    tunability_channels = [
+        "chi_Q / S_port",
+        "lambda_gamma=c/c_s",
+    ]
+    calibrate_predict_residuals = [
+        "Theta_Q",
+        "alpha_J",
+        "W_eff/a",
+        "branch-kernel choices",
+    ]
+    return {
+        "schema": "stage1_pathA_22a_dimensional_skeleton/v1",
+        "base_dimensions": ["M", "L", "T"],
+        "sympy_unit_symbols": [str(M_UNIT), str(L_UNIT), str(T_UNIT)],
+        "homogeneity": homogeneity,
+        "knob_ledger": [item.as_dict() for item in ledger],
+        "symbolic_dimensionless_audit": patha22a_symbolic_xi(),
+        "negative_controls": negative_controls,
+        "headline": headline,
+        "class_d_free_knobs": class_d,
+        "tunability_channels": tunability_channels,
+        "tunability_channel_count_lower_bound": len(tunability_channels),
+        "strict_ledger_disclosure": (
+            "The strict class labels under-count tunability: lambda_gamma and the source-map residual cluster are "
+            "underived class-(c) quantities in a proof ledger, but become calibration knobs under a calibrate-predict methodology."
+        ),
+        "calibrate_predict_source_map_residuals": calibrate_predict_residuals,
+        "mhat_inconsistency": {
+            "status": "KNOWN_PDE_TEX_INCONSISTENCY",
+            "dimensionful_reading_used_by_code": str((LENGTH**-1) * (TIME**-1) * (MASS ** sp.Rational(-1, 2))),
+            "equation_conflict": (
+                "eq:outgoing-BT-target forces dimensionful mhat with [mhat]=L^-1 T^-1 M^-1/2, "
+                "while eq:outgoing-natural-source-map writes mhat=1+O(a^2/r^2), which is dimensionless."
+            ),
+            "resolution_needed": "The eventual source-map derivation must reconcile this; pathA_22a uses the dimensionful reading.",
+        },
+        "scoped_next_step": (
+            "Before deriving broad G/mass/source machinery, derive the minimal combination "
+            "xi=mhat0^2*S_port/[G*c_s^5/(a^5*c^5)], with chi_Q/S_port fixed only by "
+            "actual outgoing compact DtN matching and lambda_gamma fixed only by brane zero-mode reduction; "
+            "otherwise both remain calibration channels."
+        ),
+        "residuals": [
+            "chi_Q/S_port is not canonically fixed by the current code path; S_port defaults to 1.0 as a convention.",
+            "lambda_gamma enters as lambda_gamma^5 and remains unpinned after pathA_20b; it is a second tunability channel under calibrate-predict.",
+            "Theta_Q, alpha_J, W_eff/a, and branch-kernel source-map residuals are strict class-(c) gaps but become tunable under calibrate-predict.",
+            "g_G, g_mhat, alpha_J, J-selector, W_eff/a, Theta_Q, and branch-kernel forms remain underived.",
+            "pde.tex is internally inconsistent on mhat; the code uses the dimensionful eq:outgoing-BT-target reading.",
+            "Faithful N0/D0 has dimension T^2; P0 is dimensionless only after the explicit (c_s/a)^2 frequency normalization.",
+        ],
+    }
+
+
+def render_patha22a_dimensional_skeleton_markdown(report: Mapping[str, object]) -> str:
+    homogeneity = report["homogeneity"]
+    assert isinstance(homogeneity, Mapping)
+    p0_finding = homogeneity["p0_dimensionless_finding"]
+    assert isinstance(p0_finding, Mapping)
+    symbolic = report["symbolic_dimensionless_audit"]
+    assert isinstance(symbolic, Mapping)
+    lines = [
+        "# PathA 22a dimensional skeleton",
+        "",
+        "## Result",
+        "",
+        f"- Homogeneity: `{homogeneity['homogeneity_status']}`.",
+        f"- P0 finding: `{p0_finding['status']}`. {p0_finding['finding']}",
+        f"- Headline: `{report['headline']}`.",
+        f"- Tunability channels: >= {report['tunability_channel_count_lower_bound']} ({', '.join(f'`{item}`' for item in report['tunability_channels'])}).",
+        f"- Strict class-(d) free knobs: {', '.join(f'`{item}`' for item in report['class_d_free_knobs'])}.",
+        f"- Strict-ledger disclosure: {report['strict_ledger_disclosure']}",
+        f"- Scoped next step: {report['scoped_next_step']}",
+        "",
+        "## Dimension table",
+        "",
+        "| ingredient | dimension | SymPy monomial | derivation | provenance |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for row in homogeneity["dimension_table"]:
+        assert isinstance(row, Mapping)
+        lines.append(
+            f"| `{row['name']}` | `{row['dimension']}` | `{row['sympy_monomial']}` | "
+            f"{row['derivation']} | {row['provenance']} |"
+        )
+    lines.extend(["", "## Homogeneity checks", ""])
+    for raw in homogeneity["checks"]:
+        assert isinstance(raw, Mapping)
+        factor = raw["factor_needed_to_reach_expected"]
+        factor_text = "" if factor in (None, "1") else f"; factor needed `{factor}`"
+        lines.append(
+            f"- `{raw['name']}`: **{raw['status']}** "
+            f"(expected `{raw['expected']}`, actual `{raw['actual']}`{factor_text}). "
+            f"{raw['note']}"
+        )
+    lines.extend(
+        [
+            "",
+            "## P0 normalization reading",
+            "",
+            f"- Faithful `N0/D0` dimension before normalization: `{p0_finding['faithful_unnormalized_dimension']}`.",
+            f"- Required normalization: `{p0_finding['normalization_needed_for_faithful_reading']}` with dimension `{p0_finding['normalization_needed_dimension']}`.",
+            f"- Normalized `P0` dimension: `{p0_finding['normalized_dimension']}`.",
+            "- The outgoing radiation carrier is explicit in `Gamma5=chi_Q*P0*a^5/(27*c_s^5)`; it is not hidden inside `P0`.",
+            "",
+            "## Dimensionless audit",
+            "",
+            f"- `{symbolic['G_form']}`",
+            f"- `{symbolic['mhat0_form']}`",
+            f"- `{symbolic['c_form']}`",
+            f"- `xi*S_port*P0 = {symbolic['xi_times_S_port_P0_simplified']}`.",
+            f"- {symbolic['note']}",
+            "",
+            "## Knob ledger",
+            "",
+            "| knob/residual | class | role | provenance | verdict effect |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+    )
+    for raw in report["knob_ledger"]:
+        assert isinstance(raw, Mapping)
+        lines.append(
+            f"| `{raw['name']}` | {raw['classification']} | {raw['role']} | "
+            f"{raw['provenance']} | {raw['verdict_effect']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Calibrate-Predict Disclosure",
+            "",
+            f"- Tunability lower bound: `>= {report['tunability_channel_count_lower_bound']}` channels: "
+            + ", ".join(f"`{item}`" for item in report["tunability_channels"])
+            + ".",
+            "- `chi_Q/S_port` is expected to be pinned only by an actual outgoing compact DtN derivation.",
+            "- `lambda_gamma=c_gamma/c_s` is expected to be pinned only by the brane zero-mode reduction and enters the reduction as `lambda_gamma^5`.",
+            "- Both are underived branch/reduction quantities; both become free knobs under calibrate-predict.",
+            "- Strict class-(c) source-map residuals that also become tunable under calibrate-predict: "
+            + ", ".join(f"`{item}`" for item in report["calibrate_predict_source_map_residuals"])
+            + ".",
+            "",
+            "## Known Inconsistency",
+            "",
+        ]
+    )
+    mhat = report["mhat_inconsistency"]
+    assert isinstance(mhat, Mapping)
+    lines.extend(
+        [
+            f"- `{mhat['status']}`: {mhat['equation_conflict']}",
+            f"- Code/harness reading: `[mhat]={mhat['dimensionful_reading_used_by_code']}`.",
+            f"- Required resolution: {mhat['resolution_needed']}",
+        ]
+    )
+    controls = report["negative_controls"]
+    assert isinstance(controls, Mapping)
+    mismatch = controls["planted_dimensional_mismatch"]
+    unresolved = controls["planted_unresolved_dimensionless_factor"]
+    reachable = controls["reachable_headlines"]
+    assert isinstance(mismatch, Mapping)
+    assert isinstance(unresolved, Mapping)
+    assert isinstance(reachable, Mapping)
+    lines.extend(
+        [
+            "",
+            "## Negative controls",
+            "",
+            f"- Planted dimensional mismatch: `{mismatch['status']}`; expected `{mismatch['expected']}`, actual `{mismatch['actual']}`.",
+            f"- Planted unresolved dimensionless factor: `{unresolved['status']}`; expected `{unresolved['expected']}`, actual `{unresolved['actual']}`.",
+            f"- Reachability: homogeneity failure -> `{reachable['homogeneity_failure']}`; tunability -> `{reachable['tunability_present']}`; no class-(d) but residual forms -> `{reachable['indeterminate_needs_forms']}`.",
+            f"- Wrong `N0` stiffness assertion: `{homogeneity['formula_negative_controls']['status']}`.",
+            "",
+            "## Residuals",
+            "",
+        ]
+    )
+    for item in report["residuals"]:
+        lines.append(f"- {item}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def write_patha22a_dimensional_skeleton_report(out_dir: Path, report_dir: Path) -> tuple[Path, Path, dict[str, object]]:
+    report = patha22a_dimensional_skeleton_report()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "pathA_22a_dimensional_skeleton.json"
+    scratch_md_path = out_dir / "pathA_22a_dimensional_skeleton.md"
+    reference_path = report_dir / "pathA_22a_dimensional_skeleton.md"
+    rendered = render_patha22a_dimensional_skeleton_markdown(report)
+    json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    scratch_md_path.write_text(rendered + "\n", encoding="utf-8")
+    reference_path.write_text(rendered + "\n", encoding="utf-8")
+    return json_path, reference_path, report
+
+
 def write_report(out_dir: Path) -> tuple[Path, Path, dict[str, object]]:
     report = run_audit()
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -3818,6 +4492,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         help="run the side-by-side pathA_21c Noether stress force check group instead of the pathA_18 audit",
     )
     parser.add_argument(
+        "--patha22a-dimensional-skeleton",
+        action="store_true",
+        help="run the side-by-side pathA_22a dimensional skeleton/knob-ledger group instead of the pathA_18 audit",
+    )
+    parser.add_argument(
         "--foundation-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_19 foundation reference markdown",
@@ -3846,6 +4525,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         "--patha21c-report-dir",
         default="software/stage1_solver/reports",
         help="directory for the pathA_21c Noether stress force reference markdown",
+    )
+    parser.add_argument(
+        "--patha22a-report-dir",
+        default="software/stage1_solver/reports",
+        help="directory for the pathA_22a dimensional skeleton reference markdown",
     )
     args = parser.parse_args(list(argv) if argv is not None else None)
     if args.patha19_foundation:
@@ -4111,6 +4795,33 @@ def main(argv: Iterable[str] | None = None) -> int:
         print("residuals: " + ", ".join(str(raw["name"]) for raw in residuals))
         print(f"corrected P1b->P1c label: {report['corrected_label']}")
         print("carried items confirmed verbatim: " + ", ".join(str(item) for item in carried))
+        print(f"files created/modified by this group: {json_path}, {reference_path}")
+        return 0
+    if args.patha22a_dimensional_skeleton:
+        json_path, reference_path, report = write_patha22a_dimensional_skeleton_report(
+            Path(args.out_dir),
+            Path(args.patha22a_report_dir),
+        )
+        homogeneity = report["homogeneity"]
+        assert isinstance(homogeneity, Mapping)
+        p0_finding = homogeneity["p0_dimensionless_finding"]
+        assert isinstance(p0_finding, Mapping)
+        controls = report["negative_controls"]
+        assert isinstance(controls, Mapping)
+        print(f"wrote {json_path}")
+        print(f"wrote {reference_path}")
+        print(
+            "pathA_22a dimensional skeleton: "
+            f"homogeneity={homogeneity['homogeneity_status']}; "
+            f"P0={p0_finding['status']}; "
+            f"headline={report['headline']}"
+        )
+        print("class-(d) free knobs: " + ", ".join(str(item) for item in report["class_d_free_knobs"]))
+        print(
+            "negative controls: "
+            f"mismatch={controls['planted_dimensional_mismatch']['status']}; "
+            f"unresolved_factor={controls['planted_unresolved_dimensionless_factor']['status']}"
+        )
         print(f"files created/modified by this group: {json_path}, {reference_path}")
         return 0
     json_path, md_path, report = write_report(Path(args.out_dir))

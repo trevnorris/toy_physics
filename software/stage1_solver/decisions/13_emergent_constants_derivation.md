@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21; battery→Case 1; deep-point→genuine wall; B-3 pseudo-arclength RAN→FOLD (EARNED-BUT-OVERSTATED: likely turned early + NO deeper throat) → ⭐ STRATEGIC PIVOT: min_R0 stuck ~0.798, τ does NOT control throat depth → see §0 block (5d))
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL + design-review `SOUND-AS-IS` → ▶ NEXT ACTION = EXECUTE GATE 0 (reconcile m̂ + prove-or-fail Z-kernel cancellation) → see §0 block (5k). GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -406,6 +406,156 @@ The DERIVED-FORM GATE binds (no hand-inserted field/`r`-power, no convention sig
 restatement to fake BVP closure). VALID expected outcomes: a derived far-field force with interior factors flagged, an
 honest `ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL`, and G6/`α_J`/`ħ`/`2π` remaining residuals. Commit pathA_21 + its 21b
 corrections together so the ledger lands honest (commit only when the user asks).
+
+**(5g) ⭐⭐ RESUME HERE (2026-06-21, post-/compact) — pathA_22 METHODOLOGY SETTLED (Claude+Codex) + DIMENSIONAL-SKELETON-FIRST (USER-GATED).**
+The open methodology Q [(5f)] is RESOLVED by Claude+Codex (Codex consult `_scratch/codex_pathA22_methodology_consult.log`,
+prompt `_scratch/pathA22_methodology_codex_consult_prompt.md`; grounded in real code + pre-reg §H, NOT prose):
+- **`m̂0²·S_port` is a DERIVE-target, NOT a free scale knob.** Decisive: it's the dimensionful conversion factor `T_target/[P0]`
+  (pre-reg lines 277–278 citing pathA_17/18; decision-13 §1 lines 421/423), and pinning it to 1 is a SCALE CHOICE that forces
+  the `D0→0` knife-edge. The "predict scale-free RATIOS instead" escape hatch is DEAD: the only scale-free Stage-1 held-outs
+  (P2=P4=R_pole=0) are THIN internal-consistency checks sharing the calibrated `D0` (pre-reg 258–264), not external benchmarks.
+- **Codex CORRECTION (kept):** the two levers COEXIST, not compete. `D0` is the BRANCH lever (`P0=N0/D0`, set by the
+  self-consistent background; frozen family can't reach the knife-edge → the pinned-convention MISS). `m̂0²·S_port` is a
+  SEPARATE physical unit/source-map conversion multiplying the solved `P0` in `R_norm`. Verdict hinges on the DERIVED value:
+  ≈1 → MISS stands; ~3.86e9 (=10.8/P0) → the SAME finite-core branch becomes a MATCH. **"Fail-able, not tunable"** — value from
+  physics, NOT reverse-engineered from `10.8/P0`. Code lanes confirmed: scale enters ONLY `R_norm`/`observable_residuals`
+  (`patha_extraction.py:477,544`); `gamma_eff` uses it but isn't held-out; secondary symbolic lane hardcodes `R_norm=P0−54/5`
+  (scale-unaware, validates the pinned algebra only).
+- **THE CRUX BOTH ENGINES ONLY ASSERTED (did NOT prove) → the gate of pathA_22:** is the final `m̂0²·S_port·P0` vs
+  `54·G·c_s⁵/(5a⁵c⁵)` comparison genuinely DIMENSIONLESS (the ~9 orders fixed by model structure → a REAL fail-able test) or
+  does a FREE overall scale survive (toy model, `a=c_s=ħ=m=1` are pins → the GR-quadrupole "match" would be TUNABLE, not a
+  prediction)? Dimensional bookkeeping (units restored): target dim = `M⁻¹L⁻²T⁻²` (3D `G`); `m̂0²=(L⁻¹T⁻¹M⁻¹ᐟ²)²=M⁻¹L⁻²T⁻²`
+  ALREADY carries the target dim ⇒ `S_port·P0` must be DIMENSIONLESS ⇒ `R_norm=0 ⟺ ξ·(S_port·P0)=54/5` with
+  `ξ:=m̂0²/[G·c_s⁵/(a⁵c⁵)]` dimensionless. FAIL-ABLE iff `ξ` is a pure number fixed by the fundamental params (K,m,ħ,a,ρ₀ via
+  the emergent c_s/c/G + m̂0 + S_port closed forms); TUNABLE if a free scale survives. This is [[feedback-dimensional-consistency-check]]
+  + [[feedback-rescope-blocker-vs-downstream-need]] applied to the test itself ([[feedback-decisive-test-not-tautological]]: the
+  pathA_22 test is only worth doing if it CAN fail).
+- **SCOPE of pathA_22 (bigger than one directive; rests on pathA_21 honest-negatives):** emergent `G` (`NEWTON_G_FORM_NOT_DERIVED`,
+  4D→3D brane reduction + `W_eff` kernel undefined = ledger gap G5 — THE big piece); mass-bridge (`MASS_BRIDGE_FORM_NOT_DERIVED`);
+  source factor `m̂0` (`SCALE_MAP_SOURCE_FACTOR_UNDERIVED`); port convention `S_port` (frozen, not derived); the natural→physical
+  scale map. The "branch packet" (`R0,N0,D0`,overlaps) input is supplied by the EXISTING converged finite-core branch — does NOT
+  re-introduce the deep-solve white whale.
+- **USER DECISION (2026-06-21):** **DIMENSIONAL-SKELETON FIRST** — do the cheap fail-able-vs-tunable check (units restored,
+  SymPy/`dimensional_check.py`) BEFORE investing in the hard `G`/mass-bridge/`W_eff` derivations. If TUNABLE → GR-quadrupole
+  anchor isn't a real external prediction (learn cheaply, re-think). If FAIL-ABLE → proceed to derive `G` + the scale map. This
+  DEFERS the **GATE-A freeze amendment** (un-pinning `m̂0²·S_port=1`, hash `ed3585…`, decision-11 §2/§3 — §5 below: "settle with
+  the user, do NOT do unilaterally") until we know the prize is real. GLM tertiary review = LATER (review the completed
+  scale-map derivation), NOT now.
+- **NEXT ACTION (resume here):** draft the dimensional-skeleton directive (`directives/pathA_22a_dimensional_skeleton_*.md`) →
+  Codex design-review (read-only) → fixes → confirm-pass → execute (Codex workspace-write; SymPy/`dimensional_check.py`; KEEPS the
+  `timeout 600` cap — derivation script, NOT a solver run) → dimensional-fidelity + adversarial review → bring FAIL-ABLE/TUNABLE
+  verdict to the user. Discipline: Codex derives/codes, Claude reviews; DERIVED-FORM GATE binds (no `x==x` posing as a check).
+
+**(5h) ⭐⭐ pathA_22a DIMENSIONAL-SKELETON EXECUTED + DUAL-REVIEWED (2026-06-21). VERDICT: `TUNABILITY_CHANNEL_PRESENT` (EARNED) —
+the GR-quadrupole anchor is NOT a clean fail-able test as currently framed; ≥2 un-pinned normalization knobs survive.** Directive
+`directives/pathA_22a_dimensional_skeleton.md` (design-review SOUND-WITH-FIXES→10 fixes→confirm-pass SOUND-AS-IS). Executed by
+Codex (workspace-write): `reports/pathA_22a_dimensional_skeleton.md` + `dimensional_check.py` group `--patha22a-dimensional-skeleton`
++ tests + `tools/pathA_22a_dimensional_skeleton_crosscheck.wl`. Key reduction (verified): with units restored,
+`m̂0²` ALONE carries the full target dim `M⁻¹L⁻²T⁻²`, and `R_norm=0 ⟺ P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5`
+(`G=(a·c_s²/m_GNLS)·g_G`, `m̂0=(c_s/(a²√m_GNLS))·g_mhat`, `c=λγ·c_s`). **DUAL-REVIEW (2 clean agents):**
+- **Adversarial (verdict): headline EARNED + STANDS.** The crux reconciliation: Stage 105 "EXACT FIXING of χ_Q=1" is
+  BRANCH-CONDITIONAL — it pre-chose the canonical `σ_Q^can` + matched the free-space spherical-Hankel fingerprint (Stage 104),
+  so `χ_Q=1` holds ONLY IF the Path-A outgoing branch IS that canonical mode (UNPROVEN; the notes carry `Δ_Q:=χ_Q−1` as the open
+  deviation; cards say "not an unconditional actual-branch theorem"; project tag `OUTGOING_DTN_BRANCH_UNDERIVED`). So `χ_Q/S_port`
+  is genuinely a class-(d) free knob for Path-A. **BUT the report's "SOLE class-(d) knob" is OVERSTATED:** `λγ=c_γ/c_s` enters as
+  `λγ⁵` and is equally un-pinned (pathA_20b REJECTED forcing `c_γ=c_s`; decision-13 §3 "the one surviving open number") ⇒ **≥2
+  tunability channels** (χ_Q AND λγ⁵), plus (c) residuals (`Θ_Q, α_J, W_eff/a, branch-kernel`) that go tunable under
+  calibrate-predict. Not gamed (under-counts class-(d), the conservative direction).
+- **Fidelity (dimensions): one FAITHFUL-BUT-WRONG dimension.** The harness ASSERTED `N0 = reduced_stiffness (=[K])`, but the code's
+  actual `N0 = P²/Δ²` gives `[N0]=[K]T² = reduced_mass` (whole N-tower shifted T²; CROSS-VALIDATED: same building blocks give
+  `[Z2]=[K]T²=[M]`, `[Z4]=[K]T⁴=[M]T²`, MATCHING the dictionary's Z/B contracts). ⇒ faithful `[P0]=T²` not 1 ⇒ the
+  `HOMOGENEITY_PASS` is SPURIOUS at the N0/P0 link (passes only because P0=1 by fiat); the real `(c_s/a)²` factor was mislabeled a
+  "convention" (masked because `m̂0`'s dim is itself a back-fit `=√(target/(P0·S_port))`). Negative controls genuinely fire
+  (not hardcoded); ξ-algebra + χ_Q≡S_port mapping FAITHFUL; target dim FAITHFUL. Also: `pde.tex` internally inconsistent on `m̂`
+  (`eq:outgoing-BT-target` dimensionful vs `eq:outgoing-natural-source-map` dimensionless).
+- **FIX IN FLIGHT (Codex, `_scratch/pathA_22a_fix_prompt.md` → `codex_pathA_22a_fix.log`):** build N-tower dims from `P²/Δ²`
+  (derive, not assert) + carry `(c_s/a)²` on P0 so the gate tests the real chain (report PASS-honestly OR a revealed gap);
+  correct the report to ≥2 channels + the `m̂` inconsistency flag. Then a fidelity confirm-review.
+- **⭐ STRATEGIC SCOPING PAYOFF (what this gate bought):** to make the GR-quadrupole anchor a REAL fail-able test, the critical
+  path must DERIVE — not calibrate — `χ_Q` (the actual Path-A outgoing DtN branch coefficient = `OUTGOING_DTN_BRANCH_UNDERIVED`),
+  `λγ=c_γ/c_s` (the brane zero-mode reduction), AND the `G`/source-map forms (`g_G`, `g_mhat`). NOT just `G`. These are the
+  named sub-problems of pathA_22; they are also SHARED with the downstream observables (g−2, 5PN). The minimal combined target is
+  `ξ = m̂0²·S_port/[G·c_s⁵/(a⁵c⁵)]`. Honest note (pre-reg §H): the GR-quadrupole is the ANCHOR, not held-out; its predictive
+  value is limited — the real external surplus is DOWNSTREAM. **NEXT: bring verdict to user; gate the next chunk (derive
+  χ_Q-outgoing-DtN + c_γ/c_s brane-reduction + G/source-map forms → minimal ξ → real B2c verdict; vs weigh leaning on downstream
+  external surplus). GATE-A freeze amendment still deferred until a derived value is installed.**
+- **pathA_22a FIX LANDED + CLOSED (2026-06-21):** N0-tower dims now DERIVED from `P²/Δ²` (not asserted); `P0` dimensionless only
+  after explicit `(c_s/a)²` ⇒ `HOMOGENEITY_PASS` HONESTLY; report corrected to ≥2 channels + the `m̂` pde.tex inconsistency;
+  tests 5+143 pass; `.wl` re-validated via `math -script` (18/18 dim incl. expected-negative, 1/1 alg). (`wolframscript` exits 255
+  in this env — use `math -script`.) Task #81 done.
+
+**(5i) ⭐⭐ RESUME HERE (2026-06-21) — pathA_22b plan: USER chose HOLISTIC ξ; Codex design-review = `UNSOUND` as a SINGLE directive →
+DECOMPOSE + GLM direction-consult PENDING (user runs GLM).** Directive drafted `directives/pathA_22b_minimal_combination_xi.md`
+(target-blind `P0·χ_Q·g_mhat²·λγ⁵/g_G ?=? 54/5`). Codex design-review (`_scratch/codex_pathA_22b_directive_design_review.log`):
+- **VERDICT UNSOUND as one directive** — over-scoped + leans on an UNPROVEN cancellation; high risk of a pathA_21-style overclaim
+  masked by green checks. **DECOMPOSE into gated sub-steps w/ HARD STOPS:** χ_Q → λγ → `g_mhat²/g_G` (prove the `W_eff/Z(w)`
+  kernel cancellation FIRST, as its own deliverable) → only then assemble. Still targets ξ (user's choice stands); refines HOW.
+- **Realistic outcome = honest negatives / conditional residuals, NOT a real MATCH/MISS**, unless the missing brane/profile/
+  source-map equations already exist in sources unextracted. Per-factor: `χ_Q` partially tractable (canonical ω⁵ closed; ACTUAL
+  Path-A branch equivalence UNPROVEN); `λγ` blocked on brane zero-mode reduction (reproduces pathA_20b negative); `g_mhat²/g_G`
+  not tractable until the cancellation is proven.
+- **Claude synthesis:** `χ_Q`-actual-branch + `λγ` + `g_G` all appear blocked on RELATED underived structure (brane zero-mode /
+  `W_eff` reduction + actual outgoing-DtN) ⇒ a COMMON derivation-side wall (analogous to the throat solve we re-scoped off).
+- **Codex+Claude AGREE on the refined plan (decompose); 4 DIRECTION-LEVEL questions → GLM** (prompt
+  `_scratch/pathA_22b_direction_GLM_consult_prompt.md`, user runs GLM, paste response): (1) does `W_eff/Z(w)` genuinely cancel in
+  `g_mhat²/g_G` (source-map vs back-reaction adjoint) or wishful? (2) can actual `χ_Q` come from the EXISTING finite-core branch
+  via low-ω linear-response/DtN, or need a new dynamic solve? (3) is `λγ` derivable or an irreducible calibration choice? (4)
+  STRATEGIC: attack the common brane-reduction blocker directly vs re-weigh downstream — and do the needed equations already exist
+  in the parent action/pde.tex unextracted? **NEXT: user runs GLM → digest → revise the directive into the decomposed gated form
+  per Codex+GLM → confirm-pass → execute first gate. Do NOT revise/execute before GLM (direction may change the decomposition).**
+
+**(5j) ⭐⭐ RESUME HERE (2026-06-21) — GLM RESPONDED (constructive reframe): the "common wall" is TWO-LAYERED, one layer BREACHED →
+PROCEED with a decomposed GATED plan (0→4). Codex SOURCE-VERIFICATION of GLM's claims IN FLIGHT.** GLM full response archived in
+chat; consult prompt `_scratch/pathA_22b_direction_GLM_consult_prompt.md`; Codex verify `_scratch/codex_pathA_22b_glm_digest_verify.log`
+(prompt `_scratch/pathA_22b_glm_digest_codex_verify_prompt.md`). GLM's reframe (claims to VERIFY vs sources — GLM ran NO code):
+- **Q1 (cancellation) PARTIAL:** the `W_eff/Z(w)` brane kernel CANCELS in the ratio `g_mhat²/g_G` (same `Z(w)`, measure `√g_w dw`,
+  volume powers) ⇒ **W_eff OFF the critical path for the RATIO**; the residual is an O(1) FIELD-CONTENT ratio `K_stress`(∂field)
+  vs `K_source`(field value) — NOT adjoint, does NOT cancel — computable from the EXISTING profile. (Codex's "unproven" stands for
+  ratio=O(1), but the KERNEL cancellation is the cheap win.)
+- **Q2 (χ_Q) AGREE:** obtainable via a LINEAR-RESPONSE outgoing-DtN BVP around the EXISTING stationary branch (ω⁵ depends only on
+  `P₀,χ_Q` per `pde.tex:2068`; canonical `σ_Q^can=9a⁵/(8Ω_Q⁵)` `pde.tex:1987`; framework `pde.tex:1941-2229`) — NOT a new nonlinear
+  solve, does NOT re-introduce the off-path deep solve.
+- **Q3 (λγ) AGREE — DERIVABLE, an EVALUATION not a derivation:** `μ₀^eff=μ₀/Z_int` already derived (`pde.tex:557`); `λγ=c_γ/c_s=
+  √((C_B/C_E)·m/(5Kρ⁴))/√Z_int`; `Z_int=∫dw Z(w)` = one integral over the EXISTING exported `Z_w` (`m1c_background_export.py:169`);
+  `C_B,C_E` parent gauge sector (`pde.tex:541-565`). pathA_20b's `BRANE_ZERO_MODE_REDUCTION_UNDERIVED` = bookkeeping gap (treated an
+  existing formula as future work), not physics.
+- **Q4 (strategic) AGREE:** equations ALREADY EXIST (parent action/pde.tex) — extraction/evaluation, NOT new physics. Realistic
+  outcome converts TUNABLE knobs → DERIVED values or NAMED gaps (still decisive: unfalsifiable→falsifiable).
+- **GLM's "ONE THING MISSED" (a Gate-0 PREREQUISITE):** the `pde.tex` `m̂` inconsistency (dimensionful `eq:outgoing-BT-target`
+  `[m̂]=L⁻¹T⁻¹M⁻¹ᐟ²` vs dimensionless `m̂=1+O(a²/r²)` `eq:outgoing-natural-source-map`; code uses dimensionful,
+  `dimensional_check.py:4280-4287`). If the DIMENSIONLESS reading is right, `m̂` is a FIELD VALUE not a normalization ⇒ the pathA_22a
+  `TUNABILITY_CHANNEL_PRESENT` "tunability" becomes a PROFILE property, NOT a free knob — reconcile FIRST, in Gate 0.
+- **GLM GATE ORDER:** Gate 0 (SymPy) reconcile `m̂` THEN prove `Z(w)` kernel cancellation (success⇒W_eff off path; failure⇒wall
+  real) → Gate 1 (one integral) `λγ` via `Z_int` → Gate 2 (linear BVP) `χ_Q` → Gate 3 (real derivation) the O(1) field-content
+  ratio `g_mhat²/g_G` → Gate 4 assemble `P0·χ_Q·g_mhat²·λγ⁵/g_G ?=? 54/5`.
+- **NEXT:** Codex source-verify (in flight) → digest with Claude → rewrite `pathA_22b` into the gated form (Gates 0–4) → confirm-pass
+  → execute Gate 0. Each gate is a hard stop; honest negatives still = progress (knob→derived/named-gap). [DONE → see (5k).]
+
+**(5k) ⭐⭐⭐ RESUME HERE (2026-06-21, post-/compact) — pathA_22b GATED DIRECTIVE FINAL + design-review `SOUND-AS-IS`. NEXT ACTION =
+EXECUTE GATE 0.** Codex SOURCE-VERIFICATION (`_scratch/codex_pathA_22b_glm_digest_verify.log`) TEMPERED GLM (net "CHANGE then
+PROCEED gated"): GLM's reframe only PARTIALLY holds —
+- **Q1 cancellation = a REAL PROOF OBLIGATION, NOT a given:** `Z(w)` (Maxwell weight `pde.tex:357-416`) ≠ `W(w)` (brane kernel
+  `:277,496-505`); a ratio of WEIGHTED AVERAGES `∫Z·K_stress/∫Z·K_source` does NOT cancel `Z` unless BOTH reduce to the SAME
+  factorizable scalar `I_Z=∫√g_w Z dw` × SEPARATE field-content kernels (sources do NOT establish this). Can FAIL ⇒ W_eff back on.
+- **Q3 λγ NOT just an evaluation:** `μ₀^eff=μ₀/Z_int` is a COUPLING normalization (`pde.tex:541-558`), NOT a photon-SPEED law;
+  `c_bulk²=C_B/C_E` with the bulk→brane SPEED normalization UNSPECIFIED (pathA_20b). `Z_int` computable; `λγ` still needs the speed
+  derivation. **Q2 χ_Q** = a real NEW linear-response DtN solve (not an existing extraction); `σ_Q^can=4a⁵/(27c_s⁵)`, fingerprint
+  `a⁵/(27c_s⁵)` (GLM mis-cited). **Q4/m̂** CONFIRMED — reconcile first (may flip the tunability reading).
+- **FINAL gated directive `directives/pathA_22b_minimal_combination_xi.md` (v2)** — design-review `SOUND-AS-IS`
+  (`_scratch/codex_pathA_22b_v2_design_review.log`). VERIFIED GATE ORDER (each a HARD STOP, separate execution, honest outcomes all
+  reachable): **GATE 0** (SymPy, cheapest/fail-fast) = 0a reconcile `m̂` (`MHAT_DIMENSIONFUL_CONFIRMED`/`..._DIMENSIONLESS_REFRAME`)
+  + 0b prove-or-fail the `Z`-kernel cancellation (`CANCELS`/`DOES_NOT_CANCEL`; gates Gate 4) → **GATE 1** evaluate `Z_int` from
+  existing `Z_w` (coupling artifact ONLY) → **GATE 2** derive `λγ` speed-reduction (`DERIVED`/`STILL_TUNABLE`/`CONDITIONAL_ON C_B/C_E`)
+  → **GATE 3** `χ_Q` via linear outgoing-DtN BVP around the FROZEN existing branch (`=1`/`Δ_Q≠0`/`NEEDS_DYNAMIC_SOLVE`) → **GATE 4**
+  field-content ratio `g_mhat²/g_G` ONLY IF 0b=`CANCELS` (else `BLOCKED_NEEDS_W_EFF`) → **GATE 5** assemble `P0·χ_Q·g_mhat²·λγ⁵/g_G
+  ?=? 54/5` (`REAL_MATCH`/`REAL_MISS`/`FAIL_ABLE_PENDING_X`). `P0` = TARGET-BLIND input from the EXISTING finite-core branch (no
+  re-solve). Discipline: target-blind, DERIVED-FORM gate, dimensional-check, dual-engine via `math -script` (NOT `wolframscript`=255),
+  `timeout 600`, additive, no commit. Per-gate review = dimensional-fidelity + adversarial; Gate 5 → GLM tertiary; then user
+  (incl. GATE-A freeze amendment when a derived value is installed).
+- **▶ EXECUTE-NEXT (post-/compact):** write `_scratch/pathA_22b_gate0_execute_prompt.md` pointing at the directive's GATE 0 only →
+  `codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=high` as a `Bash run_in_background:true` task (NOT
+  timeout-wrapped) → on exit, dimensional-fidelity + adversarial review (esp. "is 0b a real proof, can it emit DOES_NOT_CANCEL?")
+  → bring Gate 0 outcome to user before Gate 1. Codex invocation pattern + all context in this block.
 
 ---
 

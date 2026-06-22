@@ -351,6 +351,27 @@ constants need "a profile," not an empty one. **GLM prompt:** `_scratch/reframe_
 focus = is core≪a a HARD prerequisite for pathA_21c/pathA_22, and can the finite-core calibrate-predict branch proceed now with
 scale-separation as a parallel correction). After GLM: if 3-way consensus holds → PIVOT off the τ-deep-throat hunt → promote the
 constitutive family + run calibrate-predict on the finite-core branch (the scale-separation fix is the new, cheaper sub-problem).
+
+**(5f) ⭐⭐ GLM TERTIARY VERDICT (2026-06-21): AGREE — 3-WAY CONSENSUS. The REAL critical path is `m̂0²·S_port`, NOT the throat solve.**
+GLM AGREES the empty core is OFF the critical path (independently: κ_PV is **structurally undefined** at R0→0 — the virial lock
+`E_w+2E_f=3E_PV` breaks, not merely singular). GLM DOWNGRADES the scale-separation caveat from "hard prerequisite" to a **soft
+residual on one calibration knob**: in the force, `v₂∝Q₂/a²` and the control-surface area `∝a²` CANCEL, so the force STRUCTURE
+(`Q₁Q₂/r₁₂²`) + SIGN survive; the O(1) `core/a` correction shifts ONLY the prefactor, which is ALREADY a labeled calibration knob.
+⇒ add `SCALE_SEPARATION_RESIDUAL` to the force ledger (alongside the 4 existing residuals), fix IN PARALLEL via a different wall law
+`S_Σ` (R0 is set by `S_Σ`, NOT τ — do NOT resume the τ crawl; the fold is irrelevant). **THE REAL BLOCKER (GLM Q4#1 — CONFIRMED by the COMMITTED REAL
+B2c code output `reports/patha_b2c_calibration_report.md` (Jun 19; dual-engine cross-check ~1e-16, error bars, negative-control
+gates all failed-as-expected; verdict MISS): measured P0=2.795e-9 (τ=1) … 1.224e-6 (τ=0.029125), 6.7–9.6 orders below, R_norm≈−10.8
+at EVERY τ ⇒ NO root with m̂0²·S_port=1. Not prose/GLM-reasoning — actual calibration output.): P0 sits 6.7–9.6 orders BELOW the
+`54/5=10.8` target at EVERY converged τ (P0=2.795e-9 at τ=1 … 1.22e-6 at
+τ=0.029); `R_norm=m̂0²·S_port·P0−54Gc_s⁵/(5a⁵c⁵)` with `m̂0²·S_port` PINNED=1; the ~9-order miss = exactly what the DIMENSIONFUL
+`m̂0²·S_port` would supply (10.8/P0=3.86e9 at τ=1). So `R_norm(τ)=0` has NO root at any τ — the fold + scale-sep are SIDESHOWS.** The
+critical path is DERIVE `m̂0²·S_port` (the bulk→brane natural-unit→physical scale map = `pathA_22`), logically PRECEDED by the
+emergent-constants derivation (c_s/c/G — task #71; §13 already lays out: scale-map → `m̂0²·S_port` → re-run B2c → real verdict).
+Whether derived `m̂0²·S_port`≈1 (→ real miss) or carries orders (→ match) is the decisive, FAIL-ABLE test (line 406). **⇒ PIVOT:
+STOP throat-solver work; the min_R0≈0.798 finite-core family is the branch to extract from; resume the emergent-constants →
+`m̂0²·S_port` (pathA_22) path.** [Open methodology Q for Claude+Codex at pathA_22 entry: is `m̂0²·S_port` a DERIVE-target (dimensionful
+unit-map, decision-13's reading) or can the dimensionless surplus-RATIOS (P2/P0, P4/P0, R_pole) be predicted with it as a free overall
+scale knob? — settle before claiming a verdict. GLM consult prompt + response archived under `_scratch/reframe_empty_core_*`.]
 - **EXECUTE:** `codex exec --sandbox workspace-write` on **`_scratch/pathA_C0g_B3_deeppoint_execution_prompt.md`**, launched as a
   `Bash run_in_background:true` task ([[feedback-background-process-launch]]); then fidelity+adversarial dual-review, bring the
   Case + tool to the user. **Design-review:** Codex read-only on `_scratch/pathA_C0g_B3_deeppoint_design_review_prompt.md`

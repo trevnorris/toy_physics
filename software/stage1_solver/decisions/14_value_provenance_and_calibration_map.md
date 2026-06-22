@@ -51,6 +51,9 @@ The verdict identity (pathA_22a, dimensional-skeleton-verified):
 
 → **The model has ~6 genuine *calibration* inputs** (`n, K, m_GNLS, ρ0, μ0, q_*`), plus `ħ` (a fixed external action constant, not a
 calibrated knob) and conventions. Everything below is DERIVED or BRANCH-DETERMINED from these — i.e. NOT independent.
+**UPDATE (β resolved, see §5):** `λγ = c_γ/c_s` is now confirmed a **7th genuine input** (a *dimensionless* speed-ratio parameter) —
+the declared parent action does not tie the photon cone to the sound cone (`BETA_GENUINE_GAP`). So the genuine free-parameter set is
+`{n, K, m_GNLS, ρ0, μ0, q_*, λγ}`.
 
 ### 1b. DERIVED (computed from inputs + equations)
 | value | physical meaning | derived from | provenance |
@@ -174,3 +177,14 @@ one real flaw fixed, one GLM recommendation refuted by our own Gate 0b, and a sh
 - **REVISED NEXT STEP.** Settle `β` first (cheapest; pure analysis; classify convention-vs-prediction per Trap 4) → then `χ_Q` via the
   outgoing-DtN (non-vacuous per Trap 3). `g_G`/`g_mhat` remain the hard `W_eff` blocker (Gate 4), with GLM's KK-cancellation intuition
   as the concrete thing to TEST there. Do NOT calibrate the gravity pair independently in the interim (Trap 1).
+
+### β RESOLVED (2026-06-21) — `BETA_GENUINE_GAP` (adversarial-reviewed `VERDICT_SOUND`)
+The β-status analysis + a clean adversarial review concluded: the declared parent action treats EM as an INDEPENDENT fundamental gauge
+field on the flat bulk metric (`pde.tex:257-262, 316-321, 357-416`), minimally coupled to the GNLS medium; nothing identifies the
+bulk-metric null speed with the acoustic speed `c_s` (`pde.tex:541-577`). So `c_γ/c_s` is a genuine *physical* (invariant) ratio the
+action leaves OPEN → **`λγ` is a calibration INPUT, not a prediction and not a removable convention.** It is NOT something to "compute"
+— there is no derivation to do; the physics genuinely doesn't fix it. The ONLY counter-construction (where `c_γ=c_s` is forced) is the
+**superseded** legacy emergent-acoustic-photon paper `em_fields.tex:160,172,475-482` (the photon as a collective mode of the medium);
+Path-A canonically rejects it as non-parent (`pathA_20:35`, `pathA_20b:68`). So filling this gap would require ADDING a physical
+postulate (e.g. declaring EM emergent → `c_γ=c_s`), which is a *modeling choice*, not a computation. Recommendation accepted: harden
+the report addendum + `pde.tex` so this (and the m̂ dimensional inconsistency) don't re-trap a future reader.

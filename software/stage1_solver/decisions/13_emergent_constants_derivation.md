@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATE 0 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip), `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path → ▶ NEXT ACTION = EXECUTE GATE 1 (`Z_int` evaluation), user-gate pending → see §0 block (5l). Gate-0 detail (5l); directive/gate-order (5k); GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATES 0+1 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip); `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path; Gate 1 `Z_int=BLOCKED` (placeholder floor, domain-dependent) but CONTAINED (not in the ξ combination) → ▶ NEXT ACTION = EXECUTE GATE 2 (`λγ` photon-cone speed reduction — first load-bearing factor), user-gate pending → see §0 block (5m). Gate-1 detail (5m); Gate-0 detail (5l); directive/gate-order (5k); GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -579,7 +579,30 @@ exit 0). Artifacts: `src/stage1_solver/patha22b_gate0.py`, `tools/pathA_22b_gate
 - **▶ EXECUTE-NEXT:** Gate 0 work is UNCOMMITTED (offer to commit). On user GO → GATE 1 = evaluate `I_Z=Z_int=∫Z(w)dw` from the
   EXISTING exported `Z_w` (`m1c_background_export.py:166-170`), report as a COUPLING-normalization artifact ONLY (`μ₀^eff=μ₀/Z_int`),
   do NOT promote to `λγ` (that's Gate 2's speed-reduction). Same pattern: write `_scratch/pathA_22b_gate1_execute_prompt.md` → Codex
-  `--sandbox workspace-write` background (NOT timeout-wrapped) → dimensional-fidelity + adversarial review → user before Gate 2.
+  `--sandbox workspace-write` background (NOT timeout-wrapped) → dimensional-fidelity + adversarial review → user before Gate 2. [DONE → see (5m).]
+
+**(5m) ⭐⭐⭐ RESUME HERE (2026-06-21, post-/compact) — GATE 1 EXECUTED + dual-reviewed + remediated → `BLOCKED` but CONTAINED.
+NEXT ACTION = EXECUTE GATE 2 (`λγ` photon-cone speed reduction — first load-bearing factor), USER-GATE PENDING.** Codex ran Gate 1
+(`_scratch/codex_pathA_22b_gate1_execute.log`, exit 0) → 2 clean review agents → Codex remediation
+(`_scratch/codex_pathA_22b_gate1_fix.log`, exit 0). Artifacts: `src/stage1_solver/patha22b_gate1.py`,
+`tools/pathA_22b_gate1_crosscheck.wl`, `tests/test_patha22b_gate1.py` (15 pass w/ gate0), report Gate-1 section.
+- **OUTCOME = `BLOCKED_NEEDS_DECAYING_Z_PROFILE_OR_FLOOR_PROVENANCE`.** Quadrature is FAITHFUL (exact arithmetic, genuine independent
+  `.wl`), measure = flat `∫Z dw` per `pde.tex:289-295` (the `√g_w` variant is NOT computable from the export — flagged). But the
+  exported `Z_w` is a PLACEHOLDER: `Z=floor+amp·exp(Gaussian)` with `floor=0.8` an UNDOCUMENTED solver-config constant
+  (`coupled_branch.py:188-192`, differs across presets) with NO source support — `pde.tex:277` defines `Z(w)` LOCALIZED over
+  `(-∞,+∞)`, which the floor violates (makes `∫` divergent). **72.9% of the finite-box `Z_int=2.03 L` is `floor×domain` (1.48 L);
+  only 27.1% (0.55 L) is the localized Gaussian** → `Z_int` is domain-dependent, NOT a pinned constant. The `±0.0011 L` was grid-
+  resolution only (relabeled); true uncertainty unbounded.
+- **CONTAINED — does NOT gate the ξ verdict.** Both review agents independently confirmed `Z_int` is NOT a factor in
+  `P0·χ_Q·g_mhat²·λγ⁵/g_G`; it feeds ONLY the coupling normalization `μ₀^eff=μ₀/Z_int`, `q_eff=q_*/√Z_int` (off the ξ critical
+  path). So Gate 1 BLOCKED = a contained side-quantity, carry SYMBOLICALLY (never the numeric 2.03), program proceeds. Gate 1 also
+  decisively confirmed `Z_int` ≠ `λγ` (the GLM-reframe conflation is dead). UNBLOCK (only if ever needed): export a genuinely decaying
+  `Z(w)` or get floor provenance + physical `w`-extent.
+- **▶ EXECUTE-NEXT:** Gate 1 work UNCOMMITTED (offer to commit). On user GO → GATE 2 = derive `λγ=c_γ/c_s` from the bulk→brane
+  PHOTON-CONE SPEED map (NOT the coupling `Z_int`); pathA_20b left `c_bulk²=C_B/C_E` with the speed normalization UNSPECIFIED — close
+  it or carry `C_B/C_E` explicitly; do NOT force `c_γ=c_s` (pathA_20b's negative control rejects it). Outcomes:
+  `LAMBDAGAMMA_DERIVED`/`STILL_TUNABLE_LAMBDAGAMMA`/`CONDITIONAL_ON_<C_B/C_E or speed-map>`. Same pattern: write
+  `_scratch/pathA_22b_gate2_execute_prompt.md` → Codex background → dimensional-fidelity + adversarial review → user before Gate 3.
 
 ---
 

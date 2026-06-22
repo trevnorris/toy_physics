@@ -57,3 +57,52 @@
 - The parent sources do not establish either route (a) a shared factored I_Z for g_G and g_mhat^2 or route (b) pointwise-proportional kernels.
 - Gate 4 cannot use a reduced field-content ratio unless a later action-level derivation proves one of the two cancellation routes; otherwise it needs W_eff/full transverse kernels.
 
+## Gate 1
+
+### Measure determination
+
+- PDE definition used: `flat_dw_no_sqrt_g_w`. `pde.tex:289-295` defines `Z_int=int Z(w) dw`; it does not include a `sqrt(g_w)` factor.
+- Discrepancy flag: Gate 0's structural carrier included sqrt_g_w, but pde.tex defines Z_int with flat dw. The frozen export provides no independent sqrt_g_w profile; in the flat/densitized convention sqrt_g_w=1 and the numeric quadrature is identical.
+- Numeric `sqrt(g_w)` variant: `NOT_INDEPENDENTLY_COMPUTABLE_FROM_EXPORTED_Z_W`. If the export is read in the flat/densitized convention, the variant equals `2.03111437236 L`.
+- Exported grid measure label: `4*pi*r^2 dr dw`; w quadrature used the exported `w_faces` widths.
+
+### Quadrature result
+
+- Headline: `Z_int ~= 2.03111437236 L` (finite-box, floor-dominated, domain-dependent; ideal +/-infinity integral divergent).
+- Rule: cell-centered midpoint sum over exported w_faces widths. Primary background: `software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json`.
+- Domain/grid: `w in [0, 1.85]`, `nw=8`, `dw=0.23125`.
+- Resolution diagnostic: nearest-grid change `0.00111874036259 L` (grid-resolution delta only -- NOT total uncertainty); full 4/6/8-point ladder spread `0.00429934874052 L`.
+- Tail/truncation diagnostic: edge values `Z_left=0.94042125771`, `Z_right=0.94042125771`, max edge/peak ratio `0.75875254043`.
+- Edge-cell contribution diagnostic: the two boundary cells contribute `0.434944831691 L`, fraction `0.214140984678` of the finite-domain integral.
+- Ideal infinite-domain status: `BLOCKED_NEEDS_DECAYING_OR_ZERO_FLOOR_EXTENSION`. The exported nonzero floor means the finite-domain result is the faithful exported-grid integral, but the omitted ideal tail is not bounded as a small correction by this export.
+- Floor decomposition: `localization_floor=0.8` over domain width `1.85 L` contributes `1.48 L`, which is `72.9%` of finite-box `Z_int`; the localized Gaussian part contributes `0.551114372359 L` (`27.1%`), so the Gaussian is the minority.
+- Gaussian-only omitted-tail diagnostic, ignoring the nonzero floor extension: `0.04852910805 L`.
+
+### Dimensions and scope
+
+- `exported Z_w localization weight`: **CONSISTENT** (expected `1`, actual `1`). The code exports Z_w from dimensionless floor/amplitude constants and a dimensionless Gaussian argument.
+- `Z_int=int Z(w) dw`: **CONSISTENT** (expected `L`, actual `L`). pde.tex defines Z_int with flat dw, so the integral carries the w-coordinate length dimension.
+- Scope: Gate 1 reports Z_int only as a coupling-normalization artifact: mu0_eff=mu0/Z_int and q_eff=q_star/sqrt(Z_int). Z_int is not a factor in P0*chi_Q*g_mhat^2*lambda_gamma^5/g_G, does not gate the xi verdict, and does not promote Z_int to lambda_gamma or alter photon-cone speed. If needed downstream, carry it symbolically as mu0_eff=mu0/Z_int and q_eff=q_star/sqrt(Z_int), never as the numeric finite-box value.
+
+### Provenance
+
+- Measure: research/pde/paper/pde.tex:289-295.
+- Localized Maxwell source of `Z(w)`: research/pde/paper/pde.tex:357-416.
+- Coupling reduction: research/pde/paper/pde.tex:541-563.
+- Exported `Z_w`: software/stage1_solver/src/stage1_solver/m1c_background_export.py:166-170.
+- Frozen data: `software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json`.
+
+### Target-blindness
+
+- `TARGET_BLIND_PASS` over the new Gate-1 module and Mathematica cross-check.
+
+### Residual ledger
+
+- The exported primary grid is only nw=8; the nearest-grid finite-domain change is recorded as a grid-resolution delta only, not as the total uncertainty.
+- The exported Z_w is not small at the domain edges, so the finite interval is not a controlled small-tail approximation to an ideal infinite integral.
+- Because the frozen source has a nonzero localization_floor, an infinite continuation of that same formula would not give a finite Z_int; an external decaying/zero-floor continuation would be needed to bound the omitted tail.
+- Floor provenance: localization_floor=0.8 is an undocumented solver config constant (coupled_branch.py:188-192; m1c_physical_run.py:121-123), differs across presets (patha_closed_newton.py:61-63), and has no source support; pde.tex:277,289-295 uses a localized Z(w) over (-infinity,+infinity). Next step to unblock: export/derive a genuinely decaying Z(w), or obtain documented physical provenance for the floor plus a physical w-extent.
+- No photon-cone speed or lambda_gamma normalization is derived or modified in Gate 1.
+
+- Gate 1 outcome: `BLOCKED_NEEDS_DECAYING_Z_PROFILE_OR_FLOOR_PROVENANCE`.
+

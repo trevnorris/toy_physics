@@ -106,3 +106,74 @@
 
 - Gate 1 outcome: `BLOCKED_NEEDS_DECAYING_Z_PROFILE_OR_FLOOR_PROVENANCE`.
 
+## Gate 2
+
+### Existing pathA_20b result
+
+- Group/module consumed: `software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md:24-50`. It established the transverse gauge principal block `P_T=C_E*omega^2-C_B*k^2`, hence `c_bulk^2=C_B/C_E`, and carried `BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED`.
+- Gate-2 scope: reduce the localized zero-mode Maxwell action onto the brane, form the photon cone, and treat the missing speed normalization explicitly. No Gate 3-5 work is used.
+
+### C_E/C_B reduction
+
+- Metric finding: `FLAT_UNWARPED_BULK_METRIC` with `eta_MN=diag(-1,+1,+1,+1,+1)`. Provenance: `research/pde/paper/pde.tex:242-244`.
+- Source action: `L_EM=-(Z(w)/(4*mu0))*F_MN F^MN` plus gauge fixing and external/background source terms. Provenance: `pde.tex:357-416`.
+- Reduction assumptions: `A_w approximately 0, partial_w A_mu approximately 0, J^w approximately 0, F_mu_w approximately 0`. Provenance: `pde.tex:543-552`.
+- Measure: `flat_dw_no_sqrt_g_w` because `pde.tex:289-295` defines `Z_int=int Z(w) dw`; no independent `sqrt(g_w)` factor is introduced.
+- Flat-metric expansion: `F_MN F^MN = -2*F_tx**2 - 2*F_ty**2 - 2*F_tz**2 + 2*F_xy**2 + 2*F_xz**2 + 2*F_yz**2` after the zero-mode assumptions, i.e. `-2*F_tx**2 - 2*F_ty**2 - 2*F_tz**2 + 2*F_xy**2 + 2*F_xz**2 + 2*F_yz**2`.
+- Reduced Maxwell density: `F_tx**2*Z_w/(2*mu0) + F_ty**2*Z_w/(2*mu0) + F_tz**2*Z_w/(2*mu0) - F_xy**2*Z_w/(2*mu0) - F_xz**2*Z_w/(2*mu0) - F_yz**2*Z_w/(2*mu0)`; after the flat `dw` integration: `F_tx**2*Z_int/(2*mu0) + F_ty**2*Z_int/(2*mu0) + F_tz**2*Z_int/(2*mu0) - F_xy**2*Z_int/(2*mu0) - F_xz**2*Z_int/(2*mu0) - F_yz**2*Z_int/(2*mu0)`.
+- Reduced coefficients: `C_E=Z_int/mu0`, `C_B=Z_int/mu0`.
+- Cone ratio: `C_B/C_E=1`. This is a computed flat-metric result, not a second free knob; both coefficients are `Z_int/mu0`, so the common localization factor cancels from the characteristic speed.
+- Transverse operator: `-Z_int*(k2 - omega**2)/mu0`.
+
+### Speed Normalization
+
+- Carried speed map: `beta_bulk_to_brane` with status `UNPINNED_BY_SOURCES`.
+- Genuine open knobs after the F^2 computation: `1` (`bulk_metric_to_acoustic_speed_identification`).
+- Physical photon cone carried by Gate 2: `c_gamma^2 = beta_bulk_to_brane^2` because `C_B/C_E=1` in bulk-metric units.
+- GNLS sound speed: `c_s^2 = 5*K*rho0**4/m_GNLS`.
+- Result: `lambda_gamma = beta_bulk_to_brane*sqrt(m_GNLS/(5*K*rho0**4))`.
+- Outcome: `STILL_TUNABLE_LAMBDAGAMMA`. This is still tunable through one named speed-normalization residual, not a two-condition geometry result.
+- Gate-5 protection: carry `lambda_gamma` as an explicit open knob until the speed map is pinned; the downstream xi verdict is `FAIL_ABLE_PENDING_LAMBDAGAMMA_SPEED_MAP`, not `REAL_MATCH`.
+
+### Negative Control
+
+- Verdict: `GUARD_AGAINST_FORCING_LAMBDAGAMMA_TO_ONE`.
+- Forced equality would require `beta_bulk_to_brane^2=5*K*rho0^4/m_GNLS`.
+- Symbolic residual carried: `-5*K*rho0**4/m_GNLS + beta_bulk_to_brane**2`.
+- Residual is an identity zero? `False`. This is a guard against forcing `lambda_gamma=1`, not evidence from a discriminating source equation.
+
+### Dimensional Checks
+
+- `C_E electric principal coefficient`: **CONSISTENT** (expected `L^-4 T^2 M^-1`, actual `L^-4 T^2 M^-1`). Defined by the coefficient multiplying E_i E_i in the reduced Maxwell action.
+- `C_B magnetic principal coefficient`: **CONSISTENT** (expected `L^-4 T^2 M^-1`, actual `L^-4 T^2 M^-1`). The flat bulk metric gives the same scalar-weighted coefficient as the electric term.
+- `C_B/C_E flat bulk cone ratio`: **CONSISTENT** (expected `1`, actual `1`). In bulk-metric units the localized Maxwell zero mode has c_bulk^2=1.
+- `speed-normalization beta_bulk_to_brane`: **CONSISTENT** (expected `L T^-1`, actual `L T^-1`). This is the remaining source-unpinned map from unit bulk-metric speed to physical brane speed.
+- `c_gamma=beta*sqrt(C_B/C_E)`: **CONSISTENT** (expected `L T^-1`, actual `L T^-1`). Physical brane photon speed after the flat reduction fixes C_B/C_E=1.
+- `c_s=sqrt(5*K*rho0^4/m_GNLS)`: **CONSISTENT** (expected `L T^-1`, actual `L T^-1`). GNLS sound speed from the already-derived pathA_19/20 EOS law.
+- `lambda_gamma=c_gamma/c_s`: **CONSISTENT** (expected `1`, actual `1`). The single remaining speed-normalization dial is dimensionless only as beta_bulk_to_brane/c_s.
+- `bulk-metric transverse Maxwell principal operator`: **CONSISTENT** (expected `L^-5 T`, actual `L^-5 T`). The flat parent metric uses x^0 and spatial coordinates in the same bulk-metric units. terms=C_E*partial_0^2 A_T:L^-5 T, C_B*laplacian A_T:L^-5 T
+- `photon and sound dispersions`: **CONSISTENT** (expected `T^-2`, actual `T^-2`). This confirms comparable units only; it does not assert equal coefficients. terms=omega^2:T^-2, beta^2*(C_B/C_E)*k^2:T^-2, c_s^2*k^2:T^-2
+
+### Provenance
+
+- research/pde/paper/pde.tex:242-244.
+- research/pde/paper/pde.tex:289-295.
+- research/pde/paper/pde.tex:357-416.
+- research/pde/paper/pde.tex:543-552.
+- research/pde/paper/pde.tex:553-558.
+- software/stage1_solver/reports/pathA_20b_cgamma_cs_linearization.md:24-50.
+
+### Target-Blindness
+
+- `TARGET_BLIND_PASS` over the new Gate-2 module, tests, and Mathematica cross-check. No final-comparison constants are used in the derivation.
+
+### Residual Ledger
+
+- The flat localized Maxwell reduction computes C_B/C_E=1, so C_B/C_E is no longer an open Gate-2 knob.
+- The bulk-to-brane speed normalization beta_bulk_to_brane is not pinned by pde.tex:357-416 or by the zero-mode reduction at pde.tex:543-558.
+- Z_int cancels from the cone and remains a coupling-normalization artifact, not lambda_gamma.
+- A definite numerical lambda_gamma requires a source-derived identification of the unit bulk Maxwell cone with the acoustic brane speed scale.
+- Gate 5 must carry lambda_gamma as an explicit open knob; the overall xi verdict remains FAIL_ABLE_PENDING_LAMBDAGAMMA_SPEED_MAP and must not be folded into a REAL_MATCH.
+
+- Gate 2 outcome: `STILL_TUNABLE_LAMBDAGAMMA`.
+

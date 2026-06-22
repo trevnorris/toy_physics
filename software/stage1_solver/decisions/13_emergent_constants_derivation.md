@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATES 0+1 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip); `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path; Gate 1 `Z_int=BLOCKED` (placeholder floor, domain-dependent) but CONTAINED (not in the ξ combination) → ▶ NEXT ACTION = EXECUTE GATE 2 (`λγ` photon-cone speed reduction — first load-bearing factor), user-gate pending → see §0 block (5m). Gate-1 detail (5m); Gate-0 detail (5l); directive/gate-order (5k); GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATES 0+1 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip); `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path; Gate 1 `Z_int=BLOCKED` but CONTAINED; Gate 2 `λγ=STILL_TUNABLE` (C_B/C_E=1 computed ⇒ 1 dial: bulk→acoustic speed map) → **USER PIVOT to CALIBRATE-PREDICT (option B), 2026-06-21** → ▶ NEXT ACTION = build the KNOB INVENTORY + observable→knob dependency map + minimal calibration set (NOT grind Gate 3/4/5) → see §0 block (5n). Gate-2 + pivot (5n); Gate-1 (5m); Gate-0 (5l); directive/gate-order (5k); methodology (5g); throat history (5a)–(5f).)
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -602,7 +602,34 @@ NEXT ACTION = EXECUTE GATE 2 (`λγ` photon-cone speed reduction — first load-
   PHOTON-CONE SPEED map (NOT the coupling `Z_int`); pathA_20b left `c_bulk²=C_B/C_E` with the speed normalization UNSPECIFIED — close
   it or carry `C_B/C_E` explicitly; do NOT force `c_γ=c_s` (pathA_20b's negative control rejects it). Outcomes:
   `LAMBDAGAMMA_DERIVED`/`STILL_TUNABLE_LAMBDAGAMMA`/`CONDITIONAL_ON_<C_B/C_E or speed-map>`. Same pattern: write
-  `_scratch/pathA_22b_gate2_execute_prompt.md` → Codex background → dimensional-fidelity + adversarial review → user before Gate 3.
+  `_scratch/pathA_22b_gate2_execute_prompt.md` → Codex background → dimensional-fidelity + adversarial review → user before Gate 3. [DONE → see (5n).]
+
+**(5n) ⭐⭐⭐ RESUME HERE (2026-06-21, post-/compact) — GATE 2 DONE + dual-reviewed + remediated → `STILL_TUNABLE_LAMBDAGAMMA`;
+USER DECISION = PIVOT TO CALIBRATE-PREDICT (option B). NEXT ACTION = build the KNOB INVENTORY + observable→knob dependency map +
+minimal calibration set (NOT grind Gate 3/4/5 ab-initio).** Codex ran Gate 2 (`_scratch/codex_pathA_22b_gate2_execute.log`) → 2
+reviewers DISAGREED on severity (fidelity=PASS-disclosed vs adversarial=3 BLOCKERS: tautological `κ_B/κ_E==κ_B/κ_E`, over-labeled
+CONDITIONAL, computable-but-skipped C_B/C_E) → Codex remediation (`_scratch/codex_pathA_22b_gate2_fix.log`) did the REAL `F²`
+expansion. Artifacts: `src/stage1_solver/patha22b_gate2.py`, `tools/pathA_22b_gate2_crosscheck.wl`,
+`tests/test_patha22b_gate2.py` (21 pass w/ gate0/1), report Gate-2 section.
+- **OUTCOME = `STILL_TUNABLE_LAMBDAGAMMA`.** Flat/unwarped EM metric (`η_MN=diag(-1,+1,+1,+1,+1)`, `pde.tex:242`) ⇒ explicit
+  `F_MN F^MN=−2F_ti²+2F_ij²` ⇒ `C_E=C_B=Z_int/μ0` ⇒ **`C_B/C_E=1` COMPUTED** (the fake 2nd knob collapsed). `λγ` rides on ONE
+  source-unpinned dial: `β_bulk_to_brane` = the bulk-metric→acoustic-speed identification (`λγ=β·√(m_GNLS/(5Kρ0⁴))=β/c_s`). Negative
+  control downgraded to a GUARD (was hardcoded-False). Gate 5 protected: `λγ` carried as explicit open knob ⇒
+  `FAIL_ABLE_PENDING_LAMBDAGAMMA_SPEED_MAP`, never folded into `REAL_MATCH`.
+- **STRATEGIC PIVOT (user, 2026-06-21):** Gates 0–2 cemented that the load-bearing ξ constants are NOT pinned by current sources
+  (0b cancellation not established; 1 Z_int placeholder; 2 λγ tunable). User chose **option B = calibrate-predict** (the program's
+  spine): calibrate a MINIMAL set on a trusted anchor, then PREDICT the held-out surplus; do NOT shoot in the dark deriving every
+  constant. **User REQUIREMENT: every knob must be a NAMED PHYSICAL quantity** — pin down what we're calibrating, no fudge factors.
+- **THE KNOBS (physical inventory) in `ξ·χ_Q·P0 = P0·χ_Q·g_mhat²·λγ⁵/g_G`:** `P0` = static quadrupole response of the throat
+  (COMPUTED from the finite-core background, NOT a knob); `χ_Q` = the defect's outgoing-radiation coupling / "antenna" normalization
+  (=1 only on the canonical free-space branch; actual branch unproven — would be Gate 3 DtN); `λγ=c_γ/c_s` = speed-of-light /
+  speed-of-sound of the medium (EM flat ⇒ c_bulk=1; the c_γ↔c_s identification is the open dial); `g_mhat²/g_G` = ratio of
+  gravity-analog source coupling to brane-scale coupling (needs `W_eff` transverse profile = Gate 4). ~3 physical numbers, each a
+  property of the model/medium/defect SHARED across observables (which is what makes calibrate-predict have predictive content).
+- **▶ EXECUTE-NEXT:** (a) commit Gate 2; (b) build the calibrate-predict setup: a KNOB-INVENTORY + OBSERVABLE→KNOB DEPENDENCY MAP
+  (which held-outs — g−2, 5PN, multi-defect, ringdown — depend on which knobs + in what combination) + the MINIMAL CALIBRATION SET
+  (anchors: Newtonian `G`, GR quadrupole `54/5`) → confirms whether the knobs are genuinely SHARED (calibrate-predict sound) and what
+  the held-out predictions are. Verify the cross-observable sharing against pre-reg + project_defect_regimes before claiming surplus.
 
 ---
 

@@ -8,7 +8,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ---
 
-## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL + design-review `SOUND-AS-IS` → ▶ NEXT ACTION = EXECUTE GATE 0 (reconcile m̂ + prove-or-fail Z-kernel cancellation) → see §0 block (5k). GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
+## 0. STATUS / NEXT ACTION (resume here — 2026-06-21 post-/compact; ⭐ PIVOT to pathA_22 m̂0²·S_port; pathA_22a DONE → `TUNABILITY_CHANNEL_PRESENT` [≥2 knobs χ_Q+c_γ/c_s], fix landed+closed (5h); pathA_22b GATED directive FINAL; **GATE 0 DONE + dual-reviewed + remediated** → `0a=MHAT_DIMENSIONFUL_CONFIRMED` (no pathA_22a flip), `0b=DOES_NOT_CANCEL (NOT_ESTABLISHED)` ⇒ W_eff stays on the Gate-4 critical path → ▶ NEXT ACTION = EXECUTE GATE 1 (`Z_int` evaluation), user-gate pending → see §0 block (5l). Gate-0 detail (5l); directive/gate-order (5k); GLM/verify digest (5j); methodology (5g); throat history (5a)–(5f).)
 **Where we are:** `pathA_19`/`pathA_20`/`pathA_20b` EXECUTED + REVIEWED + COMMITTED (§8/§9/§10). `pathA_21` EXECUTED +
 reviewed (§11) — negatives HONEST, but P1 force was a RESTATEMENT + the P5 spec wasn't computable → spawned `pathA_21b`.
 `pathA_21b` EXECUTED + 4-agent reviewed (full ledger recorded with the pathA_21c review) — **big wins:** G1 stationary BVP genuinely CLOSED + codeable; drain
@@ -555,7 +555,31 @@ PROCEED gated"): GLM's reframe only PARTIALLY holds —
 - **▶ EXECUTE-NEXT (post-/compact):** write `_scratch/pathA_22b_gate0_execute_prompt.md` pointing at the directive's GATE 0 only →
   `codex exec --sandbox workspace-write -m gpt-5.5 -c model_reasoning_effort=high` as a `Bash run_in_background:true` task (NOT
   timeout-wrapped) → on exit, dimensional-fidelity + adversarial review (esp. "is 0b a real proof, can it emit DOES_NOT_CANCEL?")
-  → bring Gate 0 outcome to user before Gate 1. Codex invocation pattern + all context in this block.
+  → bring Gate 0 outcome to user before Gate 1. Codex invocation pattern + all context in this block. [DONE → see (5l).]
+
+**(5l) ⭐⭐⭐ RESUME HERE (2026-06-21, post-/compact) — GATE 0 EXECUTED + dual-reviewed + remediated. OUTCOMES STAND; NEXT ACTION =
+EXECUTE GATE 1 (`Z_int` evaluation), USER-GATE PENDING.** Codex ran Gate 0 (`_scratch/codex_pathA_22b_gate0_execute.log`,
+exit 0) → 2 clean review agents (dimensional-fidelity + adversarial) → Codex remediation (`_scratch/codex_pathA_22b_gate0_fix.log`,
+exit 0). Artifacts: `src/stage1_solver/patha22b_gate0.py`, `tools/pathA_22b_gate0_crosscheck.wl`,
+`tests/test_patha22b_gate0.py` (7 pass), `reports/pathA_22b_minimal_combination_xi.md` (Gate 0 section).
+- **0a = `MHAT_DIMENSIONFUL_CONFIRMED`** (SOUND, non-rigged). Dimensionful `m̂0` (`[m̂0]=L⁻¹T⁻¹M⁻¹ᐟ²`) is the scale carrier;
+  the dimensionless `m̂=1+O(a²/r²)` (`pde.tex:2095-2099`) reconciles as the dimensionless profile/source-map factor `g_mhat`
+  (`m̂=m̂0·g_mhat`). `m̂0²·Γ5=G/c⁵` balances exactly (`Γ5=T⁵` via the (c_s/a)²-normalized dimensionless `P0` per pathA_22a — **no
+  `[P0]` conflict**, the highest-value fidelity check). The dimensionless reading FAILS the odd law (`T⁵≠L⁻²T³M⁻¹`) → real
+  discrimination, not tautology. **Does NOT flip pathA_22a** (`m̂0²` still the carrier; `g_mhat` an un-pinned dimensionless residual).
+- **0b = `DOES_NOT_CANCEL (NOT_ESTABLISHED)`** (SOUND, CONSERVATIVE direction = forces the HARDER W_eff path, not a lazy out).
+  Verified honest source-read: sources establish NEITHER route (a) shared factored scalar `I_Z` NOR route (b) pointwise-proportional
+  kernels for the real `g_G`/`g_mhat²`. **⇒ W_eff/full transverse profile STAYS on the Gate-4 critical path** (Gate 4 NOT eligible
+  for the reduced-ratio shortcut unless it proves route (a) or (b) from the action-level kernels).
+- **Review found the outcomes sound + 5 fixes (all applied; outcomes UNCHANGED):** (1) ⭐ added BOTH Z-independence routes — proportional
+  kernels ALSO null the Z-dependence of the ratio, so Gate 4 must test route (a) AND route (b), not just factorization; (2) annotated
+  `0b` as `NOT_ESTABLISHED` (absence-of-proof, not proof-of-absence); (3) renamed `z_kernel_cancellation_proof`→`..._source_assessment`
+  (Gate 0 surveys source availability; action-level kernel derivation deferred to Gate 4); (4) `.wl` proportional-control parity (now
+  asserts route (b) Z-independence via a two-point Z → ratio=2); (5) pinned the `Γ5=T⁵` attribution to the (c_s/a)²-normalized `P0`.
+- **▶ EXECUTE-NEXT:** Gate 0 work is UNCOMMITTED (offer to commit). On user GO → GATE 1 = evaluate `I_Z=Z_int=∫Z(w)dw` from the
+  EXISTING exported `Z_w` (`m1c_background_export.py:166-170`), report as a COUPLING-normalization artifact ONLY (`μ₀^eff=μ₀/Z_int`),
+  do NOT promote to `λγ` (that's Gate 2's speed-reduction). Same pattern: write `_scratch/pathA_22b_gate1_execute_prompt.md` → Codex
+  `--sandbox workspace-write` background (NOT timeout-wrapped) → dimensional-fidelity + adversarial review → user before Gate 2.
 
 ---
 

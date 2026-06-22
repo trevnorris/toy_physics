@@ -319,3 +319,74 @@ Matched converged even-nw rows:
 - Convergence evidence: jackknife-stable `True`, nr-independent `True`, flat even-nw tail, and matched branch-geometry reference.
 - Reason: The physically correct defect zero keeps the branch Z_w/R0_w geometry and removes only the condensate/gauge defect. The production magnitude is earned from the unfiltered even-nw branch-geometry characterization when that stored sweep has a stable finite limit, nr confirmation, and a matched flat-Zw reference comparison. The flat-Zw shift is a separate one-sided definitional systematic, not part of the numerical error bar. If the even-nw evidence is unavailable or non-convergent, the magnitude reverts to a calibration knob.
 
+## Gate 4 - ratio-or-blocked fork (Steps 4-i and 4-ii)
+
+### Target-blind attestation
+
+- `TARGET_BLIND_PASS` over the new Gate-4 Python module, Wolfram cross-check, and tests.
+- No final comparison constants, outgoing target normalization equations, or imported target constants are used to derive `K_stress`, `K_source`, `g_G`, or `g_mhat`.
+- The Burke-Thorne-facing normalization block is used only for the already accepted dimensional reading of `mhat0`, not as source-map provenance.
+
+### Step 4-i kernels
+
+- `K_stress(w)`: `chi_N(w)*rho_inf4(w)` with `N_infty,3 = Integral(chi_N(w)*rho_inf4(w), (w, -oo, oo))`.
+- Stress measure/weight: flat `dw` over the transverse coordinate; `chi_N(w)` reduction selector; not `Z(w)` and not silently `W(w)`.
+- Stress provenance: research/pde/paper/pde.tex:396-416; research/pde/paper/pde.tex:496-565; software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md:80-104; software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md:20-67.
+- Stress lane powers: `-1 in N_infty,3`, `-1 in alpha_J1 and -1 in alpha_J2`.
+- `K_source(w)`: `BLOCKED_NEEDS_SOURCE_MAP_PROVENANCE`.
+- Source finding: The allowed parent action/current terms provide the GNLS current, localized Maxwell source bookkeeping, the projected brane continuity law, and the outgoing static prefactor. They do not provide an action, boundary-source, Hamiltonian, or branch equation that turns `mhat0` or `g_mhat` into an integral over `w`. The only explicit `mhat` normalization is target-facing or listed as branch input, so a `K_source` kernel would be convention-dependent here.
+- Allowed source scan: research/pde/paper/pde.tex:326-416; research/pde/paper/pde.tex:496-565; research/pde/paper/pde.tex:903-931; research/pde/paper/pde.tex:2034-2069; research/pde/paper/pde.tex:2551-2565; software/stage1_solver/reports/pathA_21_emergent_G_mass_bridge.md:28-44; software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md:129-151.
+
+Stress dimensional checks:
+- `K_stress(w)=chi_N(w)*rho_infty,4(w)`: **CONSISTENT** (expected `L^-4`, actual `L^-4`). `chi_N` is the dimensionless reduction selector and `rho_infty,4` is the bulk number density.
+- `integral K_stress(w) dw = N_infty,3`: **CONSISTENT** (expected `L^-3`, actual `L^-3`). The reduced density has one fewer length power than the bulk four-spatial density.
+
+Source dimensional checks:
+- `mhat0 dimensional scale carrier`: **CONSISTENT** (expected `L^-1 T^-1 M^-1/2`, actual `L^-1 T^-1 M^-1/2`). Dimensional inheritance only; this is not a transverse source-map kernel derivation.
+- `parent number-current divergence scale`: **CONSISTENT** (expected `L^-4 T^-1`, actual `L^-4 T^-1`). The parent continuity/source-current lane has number-density per time units and contains no `mhat0` normalization.
+
+### Single-defect `g_G` mini-lemma
+
+- The two-body stress result first gives `C_F` proportional to `N_infty,3*Q1*Q2`. Substituting the Gauss-solved `Q_i` factors gives one inverse power of `N_infty,3` while retaining `J1*J2`. Dividing by the two candidate masses removes `J1*J2` and introduces `alpha_J1^-1*alpha_J2^-1`. The scalar `g_G` uses this pair-level `G_cond` directly as the universal coupling candidate; the sources do not justify taking a square root or selecting one defect's factor by convention.
+- `C_F` after flux substitution: `I_F12*J1*J2*Theta_Q1*Theta_Q2*m_GNLS/(4*pi*N_infty3)`.
+- `G_cond`: `I_F12*Theta_Q1*Theta_Q2*c_gamma**4*m_GNLS/(4*pi*N_infty3*alpha_J1*alpha_J2*hbar**2)`.
+- `g_G_cond`: `I_F12*Theta_Q1*Theta_Q2*c_gamma**4*m_GNLS**2/(4*pi*N_infty3*a*alpha_J1*alpha_J2*c_s**2*hbar**2)`.
+- Power ledger: `Theta_Q1 -> 1`, `Theta_Q2 -> 1`, `alpha_J1 -> -1`, `alpha_J2 -> -1`, `N_infty,3 -> -1`, `I_F12 -> 1`.
+
+Mini-lemma checks:
+- `C_F substitution from Q_i=Theta_Qi*J_i/N_infty,3`: **CONSISTENT**. The two flux factors are retained until the explicit mass bridge division.
+- `G_cond pair expression`: **CONSISTENT**. No square root or single-defect factor dropping is used.
+- `conditional G from stress lane`: **CONSISTENT** (expected `L^3 T^-2 M^-1`, actual `L^3 T^-2 M^-1`). Dimensionless profile factors and `alpha_J` are carried symbolically.
+- `g_G=G*m_GNLS/(a*c_s^2)`: **CONSISTENT** (expected `1`, actual `1`). The scalar `g_G` is dimensionless after the conditional `G` expression is inserted.
+
+### H findings
+
+- `H-K_source`: `CONFIRMED` -> `BLOCKED_NEEDS_SOURCE_MAP_PROVENANCE`. The allowed parent action/current terms do not provide a target-blind transverse source-map kernel for `mhat0`/`g_mhat`.
+- `H-alpha_J`: `CONFIRMED_NOT_CANCELLED`. The stress lane inherits `alpha_J` only through the candidate mass division in `G_cond`; the allowed source-map scan finds no independent `alpha_J`-bearing `mhat0` or `g_mhat` equation.
+- Required source-lane alpha power in `g_mhat^2` for cancellation: `-2`; derived power: `0`.
+- Residual pair factor if an alpha-free source map were forced: `alpha_J1*alpha_J2`.
+
+### Step 4-ii cancellation test
+
+- Route (a), shared factored scalar: `NOT_RUN_UNDEFINED_K_SOURCE`. `K_source` has no target-blind transverse functional, so there is no real shared scalar to compare.
+- Route (b), pointwise-proportional kernels: `NOT_RUN_UNDEFINED_K_SOURCE`. `K_source` has no target-blind pointwise kernel, so proportionality is undefined.
+- Independence check: `PASS_SEPARATE_PROVENANCE`. The real comparator is not run because `K_source` is blocked; the source scan is a separate blocked provenance object, not a reused stress AST.
+- Negative control: `DOES_NOT_CANCEL` with residual `(v - w)*(v*w + v + w - 1)` -> `PASS`.
+- Mutated-kernel control: `DOES_NOT_CANCEL` with residual `-epsilon*(v*chi_N(w)*rho_inf4(w) - w*chi_N(v)*rho_inf4(v))` -> `PASS`.
+
+### Overall verdict
+
+- Step-4-ii fork verdict: `BLOCKED_NEEDS_SOURCE_MAP_PROVENANCE`.
+- Step 4-iii was not run.
+
+### Run logs
+
+- `PYTHONPATH=software/stage1_solver/src timeout 600 python -m stage1_solver.patha22b_gate4` -> exit 0; log `software/stage1_solver/_scratch/pathA_22b_gate4_sympy.log`; wrote `software/stage1_solver/_scratch/pathA_22b_gate4.json` and `software/stage1_solver/_scratch/pathA_22b_gate4.md`.
+- `timeout 600 math -script software/stage1_solver/tools/pathA_22b_gate4_crosscheck.wl` -> exit 0; log `software/stage1_solver/_scratch/pathA_22b_gate4_wolfram.log`; Wolfram cross-check `10/10`.
+- `PYTHONPATH=software/stage1_solver/src timeout 600 python -m pytest software/stage1_solver/tests/test_patha22b_gate4.py -q` -> exit 0; log `software/stage1_solver/_scratch/pathA_22b_gate4_pytest.log`; `9 passed`.
+
+### Residual ledger
+
+- `K_source` is not derivable as an independent target-blind transverse kernel from the allowed source/current action content.
+- `alpha_J` is not inherited by the allowed source-map lane; if a source map were later supplied without `alpha_J^-2` in `g_mhat^2`, the ratio would still be blocked on `alpha_J`.
+- The real Route-a/Route-b kernel cancellation test is not meaningful until `K_source` provenance exists.

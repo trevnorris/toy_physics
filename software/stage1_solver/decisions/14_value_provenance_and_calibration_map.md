@@ -1,7 +1,7 @@
 # Decision 14 — Value provenance + calibration map ("every value is derived or calibration-necessity")
 
 **Date:** 2026-06-21
-**Status:** DRAFT for Codex review. Built after the user pivot to calibrate-predict (decision-13 §0 (5n)) and the user requirement:
+**Status:** LIVE (Codex+GLM reviewed; updated through Gate 4, 2026-06-22 — see §6). Built after the user pivot to calibrate-predict (decision-13 §0 (5n)) and the user requirement:
 *every value must be a named physical quantity that is either DERIVED, or fixed by CALIBRATION NECESSITY (we find what it must be for
 the equations to close, freeze it, and derive it later if we can) — nothing is a free "knob."* This is the `n=5, β=3` discipline
 applied to the whole Path-A constant set.
@@ -57,6 +57,13 @@ the declared parent action does not tie the photon cone to the sound cone (`BETA
 **Precision (which speed is free):** `c_s=√(5Kρ0⁴/m)` is DERIVED from `{K,ρ0,m}` — NOT a separate free parameter. Only `c_γ` is
 unfixed by the action. So `λγ=c_γ/c_s` is ONE degree of freedom (all the freedom lives in `c_γ`; `c_s` is already pinned); whether
 written as the dimensionful `c_γ` or the dimensionless `λγ`, it is the SAME single input — `c_s` does NOT add a second knob.
+**UPDATE (Gate 4 DONE, 2026-06-22 — the gravity source-map is now a PROVEN genuine gap):** the gravity ratio `g_mhat²/g_G` is
+`GENUINE_BLOCKED` (not derivable target-blind from the current action — see §1c + §6). So the source-map scale `g_mhat` (↔ `m̂0`)
+joins `λγ` as an **8th genuine gap**: `g_G` is calibrated on Newtonian `G` (a benchmark anchor), and `g_mhat` is then fixed by
+**consuming the GR-quadrupole `54/5` as a calibration ANCHOR** (so `54/5` is ABSORBED, not predicted). Genuine free-parameter /
+gap set is now `{n, K, m_GNLS, ρ0, μ0, q_*, λγ, g_mhat}` — with the caveat that `g_mhat` is fixed by spending the `54/5` anchor,
+not freely floating. Filling this gap (→ recover `54/5` as a prediction) requires ADDING a source-map/mass-bridge postulate to
+the action — a modeling choice, exactly parallel to `λγ`/β, NOT a computation.
 
 ### 1b. DERIVED (computed from inputs + equations)
 | value | physical meaning | derived from | provenance |
@@ -71,11 +78,11 @@ written as the dimensionful `c_γ` or the dimensionless `λγ`, it is the SAME s
 | `P0 = (c_s/a)²·N0/D0` | static quadrupole response of the throat (raw `N0/D0` has dim `T²`; `(c_s/a)²` makes it dimensionless) | **already extracted** (target-blind) from the existing finite-core background — the one branch-determined value in hand | (done; do NOT re-solve a deep/empty throat) | pathA_22a:24-25,41-43; pathA_22b:14,20 |
 | `χ_Q` (=S_port) | the defect's outgoing-radiation coupling ("antenna efficiency": near-field→outgoing-wave) | **COMPUTED ≈ 0.712** (Gate 3 DONE, 2026-06-22): exact spherical-Hankel `l=2` outgoing-DtN around the frozen finite-core branch; `χ_Q = C5_defect / C5_branch-geometry-reference`; converged in even-`nw` (jackknife-stable, `nr`-independent, flat tail verified to `nw=320`). Budget = **±0.0008 numerical** + a **separate ~8.5% one-sided Z_w-reference definitional systematic** (branch-geometry = physical zero vs flat-`Z_w`). The FORM (`ω⁵`, `l=2`, `1/27` Hankel fingerprint) is derived EXACTLY (target-blind, dual-engine). NOT `S_port=1` — that default was a convention; the value is now computed. | DONE (do NOT re-solve; precision floored at ~8.5% by the reference *choice*, not by numerics) | pathA_22b Gate-3 report §; ANSATZ_LEDGER §1#4 (b); pathA_22a:7-11,70-71,85-88 |
 | `λγ = c_γ/c_s` | speed of light ÷ speed of sound of the medium | **blocked on `β_bulk_to_brane`** (the bulk-metric→acoustic-speed identification); `C_B/C_E=1` already removed one dial | determine if the EM↔matter coupling that sets `c_γ/c_s` is specified-but-unreduced (→compute) or a genuine model gap (→ then it is an INPUT, calibrate it) | pathA_22b:130-136; pathA_20b:68 |
-| `g_G` (↔ Newton `G`) | strength of the gravity-analog coupling (how defect stress sources long-range attraction) | **blocked on `W_eff`** + the mass bridge (`N_∞,3, Θ_Q, α_J`) | the `W_eff` transverse-profile derivation (Gate-0b said no shortcut — neither cancellation route holds) | pathA_21:44-48,104 |
-| `g_mhat` (↔ `m̂0`) | the brane source-map scale (dimensionless residual after `m̂0` carries units) | **blocked on `W_eff`** / action-level kernel | same `W_eff` derivation (Gate 4) | pathA_22b:7-10,56 |
+| `g_G` (↔ Newton `G`) | strength of the gravity-analog coupling (how defect stress sources long-range attraction) | **GATE 4 DONE → the ratio `g_mhat²/g_G` is `GENUINE_BLOCKED` (not derivable target-blind from the current action).** `K_stress=χ_N·ρ_∞4` derives cleanly, but `α_J` (mass bridge) sits only in this stress lane and does NOT cancel. `g_G` itself is fixed by CALIBRATING to Newtonian `G` (a benchmark anchor) — legitimate. | NOT derivable from the current action; would need a derived mass bridge (`α_J`). Calibrate `g_G` on `G`. | pathA_21:44-48,104; pathA_22b Gate-4 § overall-verdict |
+| `g_mhat` (↔ `m̂0`) | the brane source-map scale (dimensionless residual after `m̂0` carries units) | **GATE 4 DONE → `BLOCKED_NEEDS_SOURCE_MAP_PROVENANCE`** (dual-reviewed: fidelity `FAITHFUL` + adversarial `GENUINE_BLOCKED`). `m̂0` appears in the canonical action ONLY as a target-facing normalization (all 22 `m̂` sites sit in `m̂²·(branch)=54Gc_s⁵/…`); there is NO target-blind transverse source-map kernel `K_source` to derive. So `g_mhat` is **a genuine model gap → effectively a calibration INPUT** (absorbed by the quadrupole given the EM anchor), NOT a deferred computation. | reclassified INPUT/gap; derive-later requires ADDING a source-map postulate to the action (a modeling choice, cf. `λγ`/β) | pathA_22b:7-10,56; pathA_22b Gate-4 § H-findings/residual-ledger |
 | `Z_int` | Maxwell localization integral (→ coupling renorm `μ0_eff=μ0/Z_int`) | **blocked** (placeholder `Z(w)` with undocumented floor=0.8; ideal integral divergent). **Off the ξ critical path** | export a genuinely decaying `Z(w)` or get floor provenance + physical w-extent | pathA_22b:66-78 |
 | `L/a (=37/20)`, `c0=3/4`, `ε_r=1/20`, `γ₀`, `R0`, `J` | throat/brane geometry + profile moments | blocked on the stationary-profile / moving-throat solve | the branch solve selects them | ANSATZ_LEDGER §1#1-3,§5; pathA_21:56,65 |
-| `Θ_Q`, `α_J`, `W_eff/a`, `J-selector`, branch-kernel choices | the named sub-factors inside the `g_G`/`g_mhat` mass-bridge + source-map chain | **blocked** (same `W_eff`/profile derivation as `g_G`/`g_mhat`; these ARE its constituents) | fold into / derived alongside `g_G`,`g_mhat` (Gate 4) | pathA_22a:75-81,88-89; pathA_21:63-71,97-105 |
+| `Θ_Q`, `α_J`, `W_eff/a`, `J-selector`, branch-kernel choices | the named sub-factors inside the `g_G`/`g_mhat` mass-bridge + source-map chain | **GATE 4 confirmed BLOCKED** — `α_J` (mass bridge) and the source-map kernel are NOT derivable from the current action (no action/boundary/Hamiltonian J→m map; `m̂0` only target-facing). These are the constituents of the now-proven-blocked gravity ratio. | not derivable from the current action; would need a mass-bridge + source-map postulate | pathA_22a:75-81,88-89; pathA_21:63-71,97-105; pathA_22b Gate-4 § |
 
 **Known numerical issue (logged 2026-06-22, separate follow-up).** The shared Maxwell assembler's centered W-lane first-derivative operator (`patha_b2b_maxwell.py`) is EXACTLY rank-deficient for ODD `nw` — a checkerboard/odd-even null mode that admits a spurious solution contaminating any quantity extracted on odd-`nw` grids. Gate 3 sidestepped it by using only EVEN `nw` (the full-rank, well-posed discretization), which is correct (excluding a singular discretization, not hiding a mode). **Other gates that may use odd `nw` should be audited**, and the shared stencil eventually fixed (non-decoupling/staggered lane operator or a clean null-projection). Not fixed in Gate 3 (Gate-3-local even-`nw` scope only).
 
@@ -87,13 +94,15 @@ Provenance: ANSATZ_LEDGER §(c-lit); prereg §H.
 
 ## 2. The genuine free-parameter count (the falsifiability measure)
 
-After classification, the model's **genuine free inputs are ~6** (`n, K, m_GNLS, ρ0, μ0, q_*`). Everything in the ξ combination is
-either DERIVED (`c_s, a, P0, C_B/C_E`) or BRANCH-DETERMINED (`χ_Q, λγ, g_G, g_mhat`). **None of the ξ "knobs" is a genuine free
-parameter** — each is a deferred computation. This is the whole point: the apparent ">3 tunable knobs" of pathA_22a's
-`TUNABILITY_CHANNEL_PRESENT` is really "3 branch-determined quantities we haven't computed," not 3 independent dials. The honest move
-is to COMPUTE them (or, where genuinely a model gap like `β`, promote to a calibrated INPUT and *say so*), never to leave them as
-silent free knobs. **Update (2026-06-22):** of the BRANCH-DETERMINED set, `P0` and now **`χ_Q` ≈ 0.712 are COMPUTED** (Gate 3 DONE);
-`g_G`/`g_mhat` remain blocked on `W_eff` (Gate 4) and `λγ` on `β` — two of four closed.
+After classification, the model's genuine free inputs/gaps are now `{n, K, m_GNLS, ρ0, μ0, q_*, λγ, g_mhat}`. Of the four ξ
+factors that were once "branch-determined / compute-don't-calibrate" (`χ_Q, λγ, g_G, g_mhat`), the resolution is now SETTLED:
+- `P0`, `χ_Q ≈ 0.712`: **COMPUTED** (extraction + Gate 3). These were genuinely deferred computations, now done.
+- `λγ`: **genuine model gap** (`BETA_GENUINE_GAP`) → calibration INPUT (the action doesn't fix the photon/sound cone ratio).
+- `g_G`, `g_mhat`: **Gate 4 (2026-06-22) PROVED the ratio `g_mhat²/g_G` is NOT derivable** target-blind from the current action
+  (`GENUINE_BLOCKED`, dual-reviewed) → `g_G` calibrated on Newtonian `G`; `g_mhat` fixed by consuming the `54/5` anchor.
+So the honest picture: the two factors that *could* be computed (`P0`, `χ_Q`) WERE; the other two are genuine model gaps (`λγ` by
+the β-analysis, the gravity source-map by Gate 4). The "compute-don't-calibrate" program ran to completion — what remains
+calibrated is calibrated because the physics genuinely doesn't fix it, not because we deferred the work.
 
 **The under-determination that gates calibrate-predict (counting argument).** The ξ verdict has FOUR branch-determined unknowns
 (`χ_Q`, `λγ`, `g_G`, `g_mhat`) but the gravity anchors give only TWO equations: Newtonian `G` (pins `g_G`, given derived `c_s, a, m`)
@@ -102,7 +111,7 @@ and the GR quadrupole (pins the single product `χ_Q·g_mhat²·λγ⁵`, given 
 excess is removed. To close it we must **derive ≥2 of {`χ_Q`, `λγ`, `g_mhat`/`g_G`}** OR **add independent anchor(s)** (the EM-sector
 anchor of §3 is one). The cheapest derivable pair is `χ_Q` (outgoing-DtN, feasibility-scope first) + `λγ` (settle `β`): if both close,
 the two gravity anchors then pin `g_G` and `g_mhat` and the system is well-posed; if either is a genuine gap, we need the extra anchor.
-This counting is the live gate on running an honest calibrate-predict and decides the next derivation targets. **Update (2026-06-22): `χ_Q` is COMPUTED (Gate 3, ≈0.712 ± 0.0008 numerical + ~8.5% Z_w-reference systematic), so the four-unknown count drops to THREE (`λγ`, `g_G`, `g_mhat`); the cheapest remaining move is the `W_eff` derivation that yields `g_G`/`g_mhat` (Gate 4) plus settling `λγ` (`β`).**
+This counting is the live gate on running an honest calibrate-predict and decides the next derivation targets. **Update (2026-06-22): the count is now RESOLVED.** Of the two derivations §2 said we needed, only `χ_Q` landed (Gate 3, ≈0.712); `λγ` is a genuine gap (`BETA_GENUINE_GAP`) and the gravity ratio `g_mhat²/g_G` is now PROVEN not-derivable (Gate 4, `GENUINE_BLOCKED`). So we did NOT get the ≥2 derivations that would have closed the system by derivation alone → **we must add an independent anchor.** Concretely: `g_G` is calibrated on Newtonian `G`; that leaves the quadrupole relating `g_mhat²` and `λγ⁵` — under-determined by ONE → **the EM-sector anchor (which pins `λγ`) is now LOAD-BEARING**; it is what closes the count. With it the system is well-posed but the `54/5` quadrupole is ABSORBED (it fixes `g_mhat`), not predicted. The falsifiable predictive content therefore lives ENTIRELY in the held-out surplus (g−2, 5PN, ringdown, multi-defect), which share the now-derived `χ_Q` + `P0/D0` bundle + `c_s`. Next derivation targets: the EM-sector anchor, then the held-out surplus.
 
 ---
 
@@ -135,21 +144,25 @@ Rows = observables; cells = depends (power/combo) / no / `?`. Each row flagged W
 
 ## 4. Implications → the calibrate-predict plan
 
-1. **Compute the branch-determined-NOW quantities instead of calibrating them.** `P0` is done. `χ_Q` is the next: it is computable
-   from the existing finite-core background via the linear outgoing-DtN solve (old Gate 3) — do it, for the right reason (a
-   branch-determined quantity, not a free constant). This shrinks the apparent knob set honestly.
-2. **For the blocked branch-determined quantities** (`g_G, g_mhat` need `W_eff`; `λγ` needs `β`): either invest in the computation, or
-   — only where it is a *genuine model gap* — promote to a calibrated INPUT and declare the dependency (the `n=5` treatment: freeze by
-   necessity, derive later). Decide `β`'s status (computable vs genuine gap) FIRST.
-3. **Add an EM-side anchor.** Gravity anchors cannot pin `μ0, q_*, Z_int`; the program needs one EM/charge-sector calibration anchor or
-   these stay underdetermined.
-4. **Minimal calibration set:** the genuine INPUTS (`n, K, m_GNLS, ρ0` for the gravity sector; `μ0, q_*` for EM) calibrated against
-   `{Newtonian G, GR quadrupole, one EM anchor}`; everything else COMPUTED; held-out surplus (g−2, 5PN, ringdown, multi-defect) =
-   the falsifiable predictions. Predictive content lives in the SHARED `P0/D0`-bundle + `c_s` + `χ_Q` + `λγ`.
+1. **Compute the branch-determined-NOW quantities instead of calibrating them.** ✅ DONE: `P0` extracted; `χ_Q ≈ 0.712` computed
+   (Gate 3). These were genuine deferred computations and they landed.
+2. **The blocked quantities turned out to be genuine model gaps, not deferred computations.** ✅ RESOLVED: `λγ` = `BETA_GENUINE_GAP`
+   (the action doesn't fix `c_γ/c_s`); the gravity ratio `g_mhat²/g_G` = Gate-4 `GENUINE_BLOCKED` (no target-blind source-map kernel;
+   `α_J` underived + doesn't cancel). Per this section's own rule, they are now declared calibration INPUTs/anchors — not silent
+   knobs. (`β` was settled first per the §5 revision; the gravity ratio was then proven blocked.)
+3. **Add an EM-side anchor — now LOAD-BEARING, not optional.** With the gravity ratio blocked, `g_G` is calibrated on `G` and the
+   quadrupole alone leaves `{g_mhat, λγ}` under-determined by one. The EM-sector anchor (which pins `λγ`) is what closes the count.
+   It still also anchors `μ0, q_*, Z_int` (which the gravity anchors never touch). This is the next concrete derivation/calibration target.
+4. **Minimal calibration set (updated):** genuine INPUTS `{n, K, m_GNLS, ρ0}` (gravity sector) + `{μ0, q_*}` (EM) + the gaps
+   `{λγ, g_mhat}`, calibrated against `{Newtonian G, GR quadrupole 54/5, one EM anchor}` — note the quadrupole `54/5` is now a
+   CONSUMED ANCHOR (it fixes `g_mhat`), not a prediction. Everything computable (`c_s, a, P0, χ_Q, C_B/C_E`) is COMPUTED. The
+   falsifiable predictions are the held-out surplus (g−2, 5PN, ringdown, multi-defect), riding the SHARED `P0/D0`-bundle + `c_s` + `χ_Q`.
 
-**Bottom line for the user's question ("what are we actually calibrating?"):** ~6 genuine physical inputs, plus — only where a real
-model gap exists (currently just `β_bulk_to_brane`, pending a check) — a small number of frozen-by-necessity values. The rest of the
-"knobs" are computations we deferred. (Next-step recommendation revised in §5 after the GLM review: settle `β` first, not `χ_Q`.)
+**Bottom line for the user's question ("what are we actually calibrating?") — updated 2026-06-22:** ~6 genuine physical inputs
+(`n, K, m_GNLS, ρ0, μ0, q_*`) PLUS two proven model gaps that must be calibrated because the physics genuinely doesn't fix them
+(`λγ` = the photon/sound cone ratio; `g_mhat` = the gravity source-map scale, Gate 4). The "compute-don't-calibrate" program ran
+to completion: everything that COULD be computed was (`P0, χ_Q, c_s, a, C_B/C_E`); the residue is calibrated by necessity, not by
+deferral. The cost: the GR-quadrupole `54/5` is an absorbed anchor, not a prediction — the predictive payoff is the held-out surplus.
 
 ---
 
@@ -194,3 +207,41 @@ action leaves OPEN → **`λγ` is a calibration INPUT, not a prediction and not
 Path-A canonically rejects it as non-parent (`pathA_20:35`, `pathA_20b:68`). So filling this gap would require ADDING a physical
 postulate (e.g. declaring EM emergent → `c_γ=c_s`), which is a *modeling choice*, not a computation. Recommendation accepted: harden
 the report addendum + `pde.tex` so this (and the m̂ dimensional inconsistency) don't re-trap a future reader.
+
+---
+
+## 6. GATE 4 CLOSEOUT (2026-06-22) — the gravity ratio `g_mhat²/g_G` is `GENUINE_BLOCKED`
+
+**What was attempted.** The action-level derivation of the verdict ratio `g_mhat²/g_G` (the only gravity combination the verdict
+sees — GLM Trap 1), via the cancellation test Gate-0b deferred. Directive: `directives/pathA_22b_gate4_ratio_or_blocked.md` (design-
+reviewed `SOUND-WITH-FIXES` → 12 fixes → confirm-pass `SOUND-AS-IS`). A user-mediated GLM viability consult pre-judged it likely
+blocked (driven by `α_J`) and recommended a CONFIRMATORY run; the directive was reframed (v3) to put the `α_J`-doom hypothesis
+front-and-center and demote the `W_eff` cancellation to necessary-but-not-sufficient.
+
+**Result (dual-reviewed: fidelity `FAITHFUL` + adversarial `GENUINE_BLOCKED`).** Verdict `BLOCKED_NEEDS_SOURCE_MAP_PROVENANCE`:
+- `K_stress(w) = χ_N(w)·ρ_∞4(w)` (the `g_G` stress lane) DERIVES cleanly, target-blind, with `N_∞,3 = ∫K_stress dw` (provenance
+  pde.tex:396-416, 496-565; pathA_21b/21c). Dimensions check (`L⁻⁴ → L⁻³`).
+- `K_source(w)` (the `g_mhat` source-map lane) does **NOT exist** as an independent target-blind transverse kernel. The adversarial
+  agent independently swept ALL 22 `m̂` occurrences in canonical `pde.tex` — every one is target-facing (sits inside
+  `m̂²·(branch data) = 54Gc_s⁵/…`); the paper itself (pde.tex:1879-1886) labels the residual `m̂_rad` an unsolved *dynamical*
+  normalization. So there is no source-map kernel to derive independently of the `54/5` target.
+- `α_J` (mass bridge) sits ONLY in the `g_G` stress lane (via `G_cond ∝ 1/(α_J1·α_J2)`); it has no independent route into `g_mhat`,
+  so it does NOT cancel in the ratio (corroborated by pathA_21's prior `MASS_BRIDGE_FORM_NOT_DERIVED`, not circularly manufactured).
+- The cancellation routes (a)/(b) were correctly `NOT_RUN_UNDEFINED_K_SOURCE` (you cannot test cancellation of a nonexistent kernel);
+  negative + mutated-kernel controls confirmed the comparator is genuine (dual-engine, 10/10 `.wl`).
+
+**Why this is the honest, valuable outcome (not a failure).** It converts "we left `g_G`/`g_mhat` as knobs" into a *derived,
+adversarially-verified* statement: **the toy model as written does NOT derive its own gravitational coupling — `m̂0` and `α_J` are
+imported as target-matched normalizations.** This closes Gate-0b's "did you actually try the action-level derivation?" definitively.
+
+**Consequence for the verdict (`P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5`).** `g_G` is calibrated on Newtonian `G`; `P0`, `χ_Q` are derived;
+that leaves the quadrupole relating `g_mhat²` and `λγ⁵` — under-determined by one → the **EM-sector anchor (pins `λγ`) is now
+load-bearing**. With it the system closes but `54/5` is ABSORBED (it fixes `g_mhat`), not predicted. **Falsifiable content = the
+held-out surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared derived `χ_Q` + `P0/D0` bundle + `c_s`.
+
+**The one path that would recover `54/5` as a prediction** (NOT a computation, a modeling choice): ADD a principled source-map
+provenance + mass-bridge (`α_J`) postulate to the parent action — exactly parallel to the `λγ`/β gap. Out of scope unless the user
+elects it.
+
+**Artifacts (uncommitted at closeout):** `src/stage1_solver/patha22b_gate4.py`, `tests/test_patha22b_gate4.py`,
+`tools/pathA_22b_gate4_crosscheck.wl`, report § appended to `reports/pathA_22b_minimal_combination_xi.md:322-393`.

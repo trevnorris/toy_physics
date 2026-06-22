@@ -2,6 +2,8 @@
 
 Lightweight research sandbox for a toy superfluid model that reproduces Newtonian gravity and leading post-Newtonian effects.
 
+> **Where is the work right now?** See [`STATUS.md`](STATUS.md) — the single front door to current state, the next step, and a map of which doc holds what.
+
 ## Repository Layout
 
 ### `research/`

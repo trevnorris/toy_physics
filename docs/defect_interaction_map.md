@@ -21,6 +21,22 @@ field content is a gauged superfluid (GNLS) medium `ψ`, a localized Maxwell fie
 `R(Ω,w,t)`. At rest+ground state the throat is a "hyper-trumpet": a narrow brane **mouth** of radius `a` belling
 out to a wider open **exit** `R(L)>a` (`PHYS_OPEN_FINITE_EXIT`: `R(0)=a, R(L)>0`).
 
+> **⭐ CURRENT STATUS (2026-06-22) — canonical state lives in `software/stage1_solver/decisions/13` §0 + `decisions/14` §6.**
+> The program has moved well past the B2c/throat-solve framing that §6, §8, §9 below were written in (2026-06-18); those
+> sections are kept as HISTORY. Where we actually are:
+> - The deep throat-solve is OFF the critical path (genuine fold; the finite-core branch is sufficient — no observable needs an empty core).
+> - **PIVOT to calibrate-predict** (`decisions/14`): every value is DERIVED or a declared calibration gap — no silent knobs.
+> - **Gate 3 DONE:** `χ_Q ≈ 0.712` COMPUTED (exact spherical-Hankel l=2 outgoing-DtN; replaces the old `χ_Q=1` placeholder).
+> - **Gate 4 DONE → `GENUINE_BLOCKED`:** the gravity ratio `g_mhat²/g_G` is NOT derivable from the current action (no
+>   target-blind source-map kernel; `α_J` doesn't cancel; all 22 `m̂` sites in `pde.tex` are target-facing). So the model
+>   does not derive its own gravity coupling — `g_G` is calibrated on Newton's `G`, and the **GR-quadrupole `54/5` is an
+>   ABSORBED calibration anchor, not a prediction**.
+> - **Consequence:** the verdict `P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5` closes only with the **EM-sector anchor** (which pins
+>   `λγ`); that anchor is now LOAD-BEARING. The falsifiable payoff is the **held-out surplus** (g−2, 5PN, ringdown,
+>   multi-defect) riding the shared *derived* `χ_Q` + `P0/D0` bundle + `c_s`.
+> - **NEXT:** the EM-sector anchor → the held-out-surplus predictions. (Recovering `54/5` as a prediction would require
+>   ADDING a source-map/mass-bridge postulate to the action — a modeling choice, not a computation.)
+
 ---
 
 ## 1. Nodes — the physical attributes (grounded in the atlas `physical_ontology` layer)
@@ -148,6 +164,11 @@ is a model-level question (§7).
 
 ## 6. The big unification — three programs bottleneck on the Path-A solve
 
+> **[Framing partly HISTORY — see the CURRENT STATUS banner.]** The per-program *sharing* below is still valid (5PN,
+> moving-throat, g−2 all ride the same Path-A `P0/D0` bundle + `χ_Q`). What changed: the shared gate is no longer "read off
+> `χ_Q = N_Q = 1` (≡ `R_norm = 0`)" — `χ_Q ≈ 0.712` is now *computed*, the gravity ratio is *blocked* (Gate 4), and the
+> shared gate is the EM-sector anchor + the held-out surplus, not an `R_norm=0` root-find.
+
 5PN radiation, the moving-throat radiative engine, and g−2 all symbolically reduce to the **same** open
 computational gate = solve the self-consistent throat branch and read off `χ_Q = N_Q = 1` (≡ `R_norm = 0`):
 
@@ -194,6 +215,10 @@ decision-11), `OPEN_SOURCE_PORT_NORMALIZATION`, `OPEN_MATERIAL_CLOSURE`, `OPEN_W
 
 ## 8. Path-A path forward (assessment)
 
+> **[HISTORY (2026-06-18) — superseded by the CURRENT STATUS banner.]** The "finish the `R_norm` solve first" plan below
+> is done/re-scoped: the deep solve is off the critical path, the calibrate-predict pivot happened, and gates 0–4 ran. The
+> *held-out surplus* emphasis (item 3) is still exactly right and is now the live path.
+
 The map sharpens, rather than changes, the plan:
 1. **Finish the Path-A `R_norm` solve first** — it is the shared gate for 5PN / moving-throat / g−2 (§6). Concrete
    next step: USER `frozen: YES` on `decisions/11` → build the §5 extraction module → the unique `R_norm(τ)=0`
@@ -207,6 +232,11 @@ The map sharpens, rather than changes, the plan:
 ---
 
 ## 9. Next steps (resume-here after /compact)
+
+> **⛔ STALE (2026-06-18 B2c-era) — do NOT resume from this section.** Canonical resume state is
+> `software/stage1_solver/decisions/13` §0 + `decisions/14` §6 (and the CURRENT STATUS banner near the top of this file).
+> Current next step: **the EM-sector anchor** (pins `λγ`, closes the verdict count) → then the held-out-surplus predictions
+> (g−2, 5PN, ringdown, multi-defect). The B2c/emergent-constants arc described below is DONE (gates 0–4 complete). Kept for history.
 
 **Progress (2026-06-18):** ✅ GATE-A **frozen** (`decisions/11`, commit `1703f4c`, hash `ed3585…`); ✅ **B1**
 §5 extraction module built + validated + committed (`398ba27`); ✅ **B2a** BdG spectrum DERIVED on the

@@ -3,6 +3,11 @@
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
 Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-23.**
 
+> **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
+> native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
+> charge=puncture direction ±w, light=brane shear), and the particle/defect (an extended throat — there are NO point particles)
+> physically ARE. This `STATUS.md` is the *program state*; that doc is the *conceptual vision*.
+
 ---
 
 ## Current state (one paragraph)
@@ -71,6 +76,7 @@ result; a GLM tertiary on the Stage-3b separate-sector question (likely subsumed
 
 | You want… | Look here |
 |---|---|
+| **The conceptual vision — what the medium / brane / 4 sectors / defect physically ARE (read first)** | `docs/conceptual_foundation.md` |
 | **The EM re-founding physical picture + MacCullagh template + Stage-1 leak finding (§7.1)** | `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` |
 | The EM re-founding execution plan (directive v5, EXECUTING) | `software/stage1_solver/directives/pathA_23_em_medium_native.md` |
 | Stage 0 result (action + contracts) / Stage 1 result (leak audit) | `software/stage1_solver/reports/pathA_23_stage0_action_and_contracts.md` / `..._stage1_kinematic_leak_audit.md` |

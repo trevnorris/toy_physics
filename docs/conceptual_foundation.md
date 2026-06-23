@@ -151,15 +151,61 @@ This is the heart of the model. The four phenomena are **four different mechanis
 | **Gravity** | The medium's **inflow / drain** toward defects. Test bodies are carried inward by the flow. Largely unobservable as a flow. | flow velocity `v_r` |
 | **Magnetism** | The medium's **swirl** — vorticity/rotation. Magnus force. Lives in the bulk and needs **no shear** (which is why a shear-free bulk is required). | vorticity / circulation (the *winding*) |
 | **Electric charge** | The **puncture direction** — which way a throat punctures the brane into the bulk (`+w` vs `−w`). A **binary orientation**. No rotation, no swirl, no winding. | puncture orientation `±w` |
-| **Light** | The brane's **in-plane shear wave** — our 3D space sliding transversely *within itself* (not the drumhead's up/down bowing, which is a separate scalar mode). Two transverse polarizations; non-dispersive at `c_γ=√(μ_brane/ρ_brane)`. The shear rigidity lives **on the brane, not in the bulk**. | brane shear (displacement) |
+| **Light** | The brane's in-plane **rotational-elastic (MacCullagh) shear wave** — our 3D space resisting being *locally twisted*, the wave riding on the curl of an in-plane displacement (not the drumhead's up/down bowing, which is a separate scalar mode). Two transverse polarizations, no longitudinal mode; rigidity lives **on the brane, not the bulk**. | brane rotational-elastic shear |
 
-**Why two polarizations for light:** shear waves in a 3D elastic medium (which the brane *is*) have exactly two transverse
-polarizations — the photon's count, falling straight out, *provided the brane has a shear modulus* `μ_brane` (the open
-"structured wall" question of §2).
+**Why two polarizations and no third (the MacCullagh point):** if the brane's stiffness is **rotational/curl-type** — it costs
+energy to *locally rotate* the medium, energy `∝ (∇×u)²` — then the wave equation has **exactly two transverse polarizations and
+no longitudinal mode**: precisely electromagnetism. (Ordinary "Cauchy" elasticity, which resists *stretching/sliding strain*
+`∝ (∂u)²`, would instead give a spurious *third*, longitudinal "photon" that real light does not have — so light needs the
+*rotational* kind of stiffness specifically, not generic shear.) This is MacCullagh's 1839 rotational ether, the historical
+ancestor of the EM field. It is the open "structured wall" question of §2 — see the deep-dive just below.
 
 **The summary image (keep this):** *Our 3D space is a taut elastic sheet in the 4D bulk; gravity is how that sheet drapes and how
 the bulk drains through it; light is the sheet shivering sideways within itself; and the bulk underneath stays a frictionless
 fluid so magnetism never feels the stiffness.*
+
+**What light actually is — and the two ways a wiggle can carry energy (read this; it's the part that's easy to get lost on).**
+We were never going to "derive photons" out of the bare scalar superfluid — a scalar has only compression waves (the `c_s` ripple,
+the gravity sector). We *postulate a mode* (the arrows) and ask whether it behaves like light. Picture the arrows lying flat in the
+brane and wiggle them. There are **two physically different ways the wiggle can store energy, and only one is light:**
+- **Frank / orientation wave (NOT light).** The arrows re-point while the medium stays put — like a stadium wave: the people
+  (material) don't move, only their "pointing" propagates. The energy cost is for *neighbours to disagree* — an orientation
+  gradient, `∝ (∇n)²` — and the restoring force is a **torque**. It can even have two transverse components and a fixed speed, so
+  it can *look* like light on a dispersion plot — **but it is not**, because nothing material is displaced and it exerts no
+  mechanical force across a surface.
+- **MacCullagh rotational-elastic wave (THIS is light).** Here the medium resists being *locally rotated at all*; energy
+  `∝ (∇×u)²`, the curl of a genuine displacement. This gives exactly two transverse polarizations, no longitudinal mode, Maxwell —
+  *real* electromagnetism. It is special because ordinary matter resists squeezing and sliding but **not** rotating; to resist
+  rotation you need substructure made of little orientable elements that have a direction to defend — **which is exactly what the
+  arrows are.** The arrows are the rotation-resisting (gyrostat / Cosserat) elements MacCullagh needed in 1839 but couldn't name.
+- **The decisive difference — torque vs traction.** If wiggling an arrow only pushes back as a *torque* on its orientation → Frank
+  → not light. If it exerts a real *traction* (a mechanical force across a surface, because the arrow's rotation is rigidly tied to
+  the medium's own motion) → MacCullagh → light. **This is why "the arrows are carried by the one medium, not a free decoupled
+  field" is mechanically load-bearing, not just philosophy:** only if tilting an arrow *is* a rotation of the material does the
+  orientation stiffness become rotational-elastic stiffness — Frank turns into MacCullagh. The honest hard part (the genuine
+  coin-flip, and the same wall pathA_23 Stage-2 hit): getting it **curl-only** (no spurious longitudinal third "photon," which a
+  generic *Cauchy* elastic wall would have) and closing the gauge structure. (Tested directly in `pathA_24` T2.)
+
+**Why light comes in localized packets — an honest open frontier (no clean answer yet).** This is a *separate* and deeper question,
+and worth keeping distinct from the above. Three things are easy to blur: (1) does the medium carry the light *mode* at all; (2)
+does that mode have EM's *structure* (2 polarizations, no longitudinal, Maxwell); (3) why does light come in **localized, quantized
+packets**. `pathA_24`/T2 only addresses (1)+(2). The packet question (3) — which is really *two* hard things, localization *and*
+quantization (`E=ℏω`) — is **not solved in the model**, and there is no clean off-the-shelf analog. The honest landscape:
+- A *linear* wave does **not** stay a packet — it disperses and spreads. So pure MacCullagh elasticity alone gives spread-out
+  waves, not lumps; the packet has to come from somewhere else.
+- **The closest real analog is the optical soliton:** in a *nonlinear* medium (an optical fibre) a pulse can hold itself together
+  forever — the nonlinearity self-focuses it exactly enough to cancel spreading. Our medium *is* nonlinear (the GNLS potential), so
+  a brane-shear packet self-trapping into a soliton is the most natural mechanical picture of "light that sticks together."
+- **The honest tension:** real vacuum photons don't interact (light passes through light), whereas solitons rely on a nonlinearity
+  that usually *does* make pulses interact. So either the nonlinearity is negligible for ordinary light (and "packets" are then a
+  purely quantum field-quantization effect the *classical* model can't produce), or light is weakly soliton-like and
+  self-interacting — which would be a **prediction/difference** from textbook EM (and notably, real vacuum *is* weakly nonlinear at
+  extreme intensity via QED photon-photon scattering). A falsifiable fork, not a fudge.
+- **An illuminating contrast (helps the intuition):** a *massive particle* is a **trapped** wave — the geon standing-wave caught in
+  a throat (§4); localized because it's *caught*. A *photon* is a **free** wave — nothing traps it. So a photon's packet-ness can't
+  be trapping-in-a-throat; it must be either quantum quantization or soliton self-trapping. Mass and "light-in-a-lump" are
+  different mechanisms even though both are "wave energy." (This frontier is deliberately **out of `pathA_24`'s scope** — a later
+  "light quantization / soliton" question; forcing it into the wall test would muddy a clean result.)
 
 **On charge being a direction, not a winding (the recurring correction):** in textbook physics "topological charge" *is* a
 winding number, so it is tempting to describe electric charge as a winding. **In this model it is not.** Winding/swirl is the
@@ -250,10 +296,16 @@ make a *wrong* synthesis seductive.)
 
 Honest list of what the picture still owes us. (Concept-level; the math test plan is §8.)
 1. **Does the polar-arrow order actually form a stable wall (§2)?** Polar (`+w ≠ −w`), not headless — and stable, with a finite
-   surface tension. The current `U(ρ)∝ρ⁵` is single-well; the wall must come from the *orientation* field.
-2. **Does the in-plane wall texture carry shear → light (§2, §3)?** Does it produce a brane shear modulus `μ_brane` with **two**
-   transverse polarizations at one speed, or only tension + bending (→ no light), or the wrong count/dispersion? Make-or-break for
-   the light sector.
+   surface tension. The current `U(ρ)∝ρ⁵` is single-well; the wall must come from the *orientation* field. **Honest prior (GLM
+   tertiary, 2026-06-23): there is likely a three-way no-win** — {light needs an orientational OP} × {a stable `±w` wall needs
+   disconnected vacua, i.e. an easy-axis anisotropy} × {emergent `w` needs full rotational symmetry} can hold at most *two at once*
+   for a classical OP. The anisotropy that buys stability is what *imposes* `w` — so the "**why space is 3D falls out for free**"
+   bonus is the leg most likely to be lost (realistic best case: a stable wall with `w` put in by hand).
+2. **Does the wall carry light, i.e. MacCullagh *rotational*-elastic shear, not mere Frank orientation waves (§2, §3)?** Not "does a
+   shear modulus exist" but the sharper fork: are the in-plane modes genuine **rotational-elastic** (curl-only, traction, 2
+   transverse + no longitudinal = a photon), or merely **Frank/orientation** waves (torque, not light), or **Cauchy** elasticity
+   (a stray longitudinal third mode)? Make-or-break for the light sector; turns on whether the arrows couple to a genuine medium
+   displacement (see the §3 deep-dive). Honest prior: a real coin-flip, hard at the curl-only + gauge-closure step.
 3. **Dark-energy cycle signs & rates (§5):** is the net bulk↔brane flow *inward* (expansion)? Does influx mean *area growth* (not
    *densification*, which would drift `c_s`)? Does the matter→dark-energy crossover timing come out sane?
 4. **Electron/proton ↔ charge-sign preference (§4):** does defect structure prefer a `±w` direction via bulk interaction, and how
@@ -265,6 +317,14 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
    (charge). One shared energy budget or two co-located things? (Keeps the single-medium picture honest at the one place it
    matters most.)
 8. **Cone lock `λγ`:** does light (brane shear, `c_γ`) end up at the same speed as the gravitational ripple (`c_s`)?
+9. **Why does light come in packets (localization + quantization)?** A separate, deeper frontier (see §3): a linear wave spreads, so
+   "photon as a lump" needs either nonlinear self-trapping (the optical-soliton analog — the best lead, but in tension with photon
+   non-interaction) or genuine field quantization (`E=ℏω`, which the classical model doesn't produce). Deliberately out of scope for
+   `pathA_24`; the standing puzzle the user has long flagged as missing a clean analog.
+10. **Wall-energy cosmology (the σ-tension squeeze).** A stable wall with tension `σ_brane` is a classic cosmological hazard
+    (Zel'dovich–Kobzarev–Okun overclosure). And the tension big enough to set the charge scale (§4) vs. tiny enough not to overclose
+    differ by many orders of magnitude — a likely contradiction the dark-energy story (§5) must resolve by being the *flow*, not the
+    static tension. (Tested in `pathA_24` G10.)
 
 ---
 

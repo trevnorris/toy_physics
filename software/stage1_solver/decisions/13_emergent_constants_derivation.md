@@ -31,16 +31,28 @@ NOT-SOUND→3 req fixes+10 concerns → v5 Codex confirm SOUND-AS-IS). **NOW EXE
   is EXPECTED**; survival rides on the **Stage-3 throat solve** (magnitude small OR non-fine-tuned projection cancellation);
   `v_n→bulk-vorticity` feedback = top Stage-3 priority. **DO NOT bank on no-leak.** (`reports/pathA_23_stage1_kinematic_leak_audit.md`;
   detail in `decisions/15` §7.1.)
+- **Stage 2 ✅ GATED (after a rework) — THE CRUX:** `FAIL_UNSPECIFIED_SUBSTRUCTURE` (tri-reviewed: re-run 32/32 both engines +
+  `FIDELITY_CLEAN` + adversarial `REWORK_VERDICT_HONEST`). First attempt returned `FAIL_NO_TRANSVERSE_STIFFNESS` but was caught
+  TAUTOLOGICAL (it fixed `W=W(det F)=W(J)` at the input, forcing `μ_shear=0`) → reworked to keep the **deviatoric shear
+  invariant present** (`U_∥=½K_br θ²+μ_br e⟨ab⟩e⟨ab⟩`) and route μ_br through a genuine able-to-fail substructure classifier
+  (fluid-facts→0, network-facts→>0, actual-record→UNDETERMINED). **VERDICT: brane-shear EM is NOT derivable from the current
+  medium specification** — μ_br is genuinely undetermined (record motivates cohesion/elasticity but never pins persistent
+  neighbor-memory / a network free energy; §14 C9: substructure not fixed by GP/NLS). **TRILEMMA (verified algebraically):**
+  μ_br=0→no light; μ_br>0 (Cauchy)→light BUT a stray longitudinal "second photon" (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, Stage 4);
+  MacCullagh curl-only (only clean-transverse form)→needs reverse-engineered gyrostats + the C5 gauge obstruction. ⇒ clean light
+  needs an **extra postulated ingredient**. (`reports/pathA_23_stage2_constitutive_form.md`; `decisions/15` §15.)
 
-**NEXT (post-/compact) = USER CHOSE (A): fire off Stage 2 — the constitutive crux (D2), TRACK B** (Stage 2 MUST attempt an
-independently-motivated microstructure derivation of the brane elastic form; postulate only as honest fallback ⇒ CONDITIONAL).
-Pattern: write Stage-2 exec prompt (fold in 2 small Stage-1 report honesty notes: deferred-token-is-constructed; no-leak-conditions-
-special-not-generic) → `codex exec -c model_reasoning_effort=xhigh` background → tri-review → gate. Remaining stages: 3 constitutive
-leak closure (**DECIDES the leak**) → 4 spectrum/polarization+`u_w` → 5 Maxwell/gauge (C5 obstruction)/Lorentz → 6a–d
-charge/energy/cone-λγ/leftovers. **GATE RULE:** if the constitutive form stays POSTULATED, the final verdict is CONDITIONAL and
-must NOT update `decisions/14`/papers without explicit user acceptance. DEFERRED (parked, `decisions/15` §9): mouth-inflow-vs-brane-
-leak. Falsifiable; a clean break is a valid result. The dense 2026-06-21 block below is PRIOR CONTEXT (gravity-sector verdict —
-still valid); the gravity verdict's `54/5` is ABSORBED (Gate 4 `GENUINE_BLOCKED`), and the EM anchor `λγ` is what this frontier pins.
+**USER DECISION (2026-06-23) = PROCEED CONDITIONALLY (Path 1):** adopt the **rotational/MacCullagh form as an explicit
+POSTULATE** (`U_∥=½μ_R(∇×u)²`, CONDITIONAL flagged throughout — the only form that can give clean transverse light), and run
+Stages 3–6 to test whether the REST holds. The gyrostat substructure stays an acknowledged GAP (not claimed derived); the verdict
+stays CONDITIONAL and must NOT update `decisions/14`/papers without explicit user acceptance. **NEXT = Stage 3** (constitutive
+no-leak closure, **DECIDES the Stage-1 leak**, uses the postulated stress/couple-stress + the Stage-1 bulk channels) → 4
+spectrum/polarization+`u_w` (the `FAIL_CAUCHY_STRAY_LONGITUDINAL`/MacCullagh-vs-residual-longitudinal test) → 5 Maxwell/gauge
+(**the C5 obstruction**)/Lorentz → 6a–d charge/energy/cone-λγ/leftovers. Pattern: write exec prompt → `codex exec -c
+model_reasoning_effort=xhigh` background → tri-review (re-run + fidelity + adversarial) → gate. DEFERRED (parked, `decisions/15`
+§9): mouth-inflow-vs-brane-leak. Falsifiable at every remaining stage; a clean break is a valid result. The dense 2026-06-21
+block below is PRIOR CONTEXT (gravity-sector verdict — still valid); the gravity verdict's `54/5` is ABSORBED (Gate 4
+`GENUINE_BLOCKED`), and the EM anchor `λγ` is what this frontier pins.
 
 ---
 

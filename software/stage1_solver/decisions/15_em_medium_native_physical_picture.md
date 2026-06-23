@@ -246,3 +246,37 @@ they must be carried honestly into every verdict.
 4. **The treatment is CLASSICAL; quantization is deferred (C10).** The brane elastic action, constitutive laws, and wave
    spectra are classical, while the bulk is a quantum superfluid. The classical scope must be stated and quantization flagged
    as a deferred question.
+
+## 15. Stage-2 constitutive-crux RESULT (2026-06-23) — the medium does NOT derive the brane shear; user elected the CONDITIONAL path
+The constitutive crux (`pathA_23` Stage 2, track B) was executed, caught tautological, reworked, and tri-reviewed. **Verified
+result: `FAIL_UNSPECIFIED_SUBSTRUCTURE`.** (`reports/pathA_23_stage2_constitutive_form.md`.)
+
+- **The honest finding.** With the **full symmetric first-gradient energy** kept — `U_∥ = ½K_br θ² + μ_br e⟨ab⟩e⟨ab⟩`, the
+  deviatoric shear invariant `e⟨ab⟩` PRESENT with a free coefficient — and μ_br routed through a genuine able-to-fail
+  substructure classifier, the medium's record **does not determine μ_br**. Simple-fluid facts give μ_br=0; coherent-network
+  facts give μ_br>0; the actual record lands UNDETERMINED because *persistent in-plane neighbor memory* and an *affine/network
+  free energy* are never independently specified (consistent with §14 C1: the GP/NLS mean-field is a fluid, shear must come from
+  the substructure; and §14 C9: the substructure is not fixed by GP/NLS). **So brane-shear EM is NOT derivable from the current
+  single-medium specification.**
+- **The tautology that was caught (lesson).** The first attempt returned `FAIL_NO_TRANSVERSE_STIFFNESS` by selecting `W=W(det F)
+  =W(J)` (a fluid EOS) *at the input* — `μ_shear=0` was then a definitional identity, a can't-fail gate. The fidelity audit
+  confirmed the code was clean *as an implementation*; the adversarial review caught that it implemented a pre-ordained setup and
+  tested the wrong object (the mean-field, not the substructure). The rework de-tautologized it (deviatoric invariant present;
+  classifier demonstrably lands ZERO/NONZERO/UNDETERMINED on different inputs). Same discipline that caught Stage 1.
+- **The trilemma / pincer (verified algebraically — sharpens §11's CRUX).** Spectrum of the symmetric law is
+  `(λ−μ_br k²)²(λ−(K_br+4μ_br/3)k²)`:
+  - **μ_br=0** (fluid) → eigenvalues `0,0,K_br k²` → **no transverse light.**
+  - **μ_br>0** (ordinary/Cauchy symmetric shear; needs NO directors/spin → *not* reverse-engineering) → two transverse modes
+    `μ_br k²` **but also** a longitudinal mode `(K_br+4μ_br/3)k²` = a stray **"second photon"** → `FAIL_CAUCHY_STRAY_LONGITUDINAL`
+    at Stage 4.
+  - **MacCullagh curl-only** `½μ_R(∇×u)²` (the *only* form with clean transverse-only light, charpoly `λ(λ−μ_R k²)²`) → first-
+    gradient stress is **antisymmetric** (no spin-couple closure without a gyrostat sector = reverse-engineering) and carries the
+    **C5 gauge obstruction** (the longitudinal null is a constrained zero mode, not gauge, until a φ-analog/constraint is supplied).
+  ⇒ the medium cannot produce clean transverse-only light without an **extra postulated ingredient**.
+- **Consequence for the value map.** The EM sector / `λγ` (`c_γ=√(μ_br/ρ)` or `√(μ_R/ρ)`) is **not derivable medium-natively** at
+  the current specification — `λγ` remains a **genuine free input** (consistent with `BETA_GENUINE_GAP`). (Do NOT yet edit
+  `decisions/14`: the gate rule holds — a postulated form ⇒ CONDITIONAL, no value-map/paper updates without explicit acceptance.)
+- **USER DECISION (2026-06-23) = Path 1 (proceed CONDITIONALLY).** Adopt the **rotational/MacCullagh form as an explicit
+  POSTULATE**, flag the verdict CONDITIONAL throughout, and run Stages 3–6 to test whether the rest holds (no-leak; the C5 gauge
+  test; charge firewall; the λγ cone payoff). Still able-to-fail at every stage. The gyrostat substructure stays an acknowledged
+  gap, not a claim. **NEXT = Stage 3** (constitutive no-leak closure — decides the Stage-1 leak).

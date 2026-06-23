@@ -16,7 +16,7 @@ cancel; all 22 `m̂` sites in `pde.tex` are target-facing, dual-reviewed). So th
 verdict closes only with the **EM-sector anchor** (which pins `λγ`) — now load-bearing. The falsifiable payoff is the **held-out
 surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared *derived* `χ_Q` + `P0/D0` bundle + `c_s`.
 
-## ⭐ ACTIVE FRONTIER (2026-06-23): the EM re-founding — NOW EXECUTING (Stage 2 next)
+## ⭐ ACTIVE FRONTIER (2026-06-23): the EM re-founding — NOW EXECUTING (Stage 3 next; CONDITIONAL path)
 
 Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a fundamental gauge field
 on a flat metric, *decoupled* from the medium; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). Re-founded EM **medium-native**:
@@ -33,17 +33,26 @@ each tri-reviewed (re-run + fidelity + adversarial) before its gate:
   interface traction `T_na = T_wa + (T_ww δ−T_ab)∂u_w` is **generically transverse**; no-leak needs `T_wa=0` + isotropic `T_ab` at
   the brane, which are **NOT generic near a draining defect** → **the leak is EXPECTED; survival rides on the Stage-3 throat solve**
   (small magnitude OR non-fine-tuned projection cancellation). **Do not bank on no-leak.** (`decisions/15` §7.1.)
+- **Stage 2 ✅ — THE CRUX** — `FAIL_UNSPECIFIED_SUBSTRUCTURE` (tri-reviewed; after a rework that fixed a tautological first
+  attempt — the first try forced `μ_shear=0` by choosing a fluid EOS `W=W(J)` at the input). With the **deviatoric shear
+  invariant present** and μ_br routed through a genuine able-to-fail classifier, **the medium's record does not determine μ_br**
+  → **brane-shear EM is NOT derivable from the current single-medium spec.** Verified **trilemma:** μ_br=0→no light; μ_br>0
+  (Cauchy)→light + a stray longitudinal "second photon" (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, Stage 4); MacCullagh curl-only (only
+  clean-transverse form)→reverse-engineered gyrostats + C5. ⇒ clean light needs an **extra postulated ingredient**. So `λγ` is
+  **not derivable medium-natively** — it stays a genuine free input. (`decisions/15` §15.)
 
-**Full physical picture + MacCullagh template + λγ subtlety + honest costs + Stage-1 leak finding = `decisions/15`.**
+**Full physical picture + MacCullagh template + λγ subtlety + honest costs + Stage-1 leak (§7.1) + Stage-2 crux result (§15) = `decisions/15`.**
 
-## Next step (post-/compact) — USER CHOSE (A): Stage 2, the constitutive crux (TRACK B)
+## Next step — USER CHOSE Path 1 (2026-06-23): proceed CONDITIONALLY, Stage 3 next
 
-1. **Fire off Stage 2** (D2): the brane constitutive form. **Track B** — Codex MUST attempt an *independently-motivated*
-   microstructure derivation (rotational/MacCullagh vs Cauchy vs Cosserat); postulate only as honest fallback ⇒ CONDITIONAL.
-   (Fold 2 small Stage-1 report honesty notes into the exec prompt.) Then tri-review → gate.
-2. **Then:** Stage 3 (constitutive leak closure — **decides the Stage-1 leak**) → 4 spectrum/`u_w` → 5 Maxwell/gauge (C5)/Lorentz
-   → 6a–d charge/energy/cone-`λγ`/leftovers. **Gate rule:** a POSTULATED form ⇒ CONDITIONAL verdict; do NOT update
-   `decisions/14`/papers without explicit user acceptance.
+The crux is unmet as a *derivation*, so the route proceeds as a **conditional construction** (user-elected):
+1. **Adopt the rotational/MacCullagh form as an explicit POSTULATE** (`U_∥=½μ_R(∇×u)²` — the only form that can give clean
+   transverse light), **verdict CONDITIONAL flagged throughout**; the gyrostat substructure stays an acknowledged GAP, not a claim.
+2. **Fire off Stage 3** (D1): constitutive no-leak closure — **decides the Stage-1 leak** — using the postulated stress/couple-stress
+   + the Stage-1 bulk channels. Then tri-review → gate.
+3. **Then:** 4 spectrum/`u_w` (the MacCullagh-vs-residual-longitudinal + `u_w`-fifth-force test) → 5 Maxwell/gauge (**the C5
+   obstruction**)/Lorentz → 6a–d charge/energy/cone-`λγ`/leftovers. Able-to-fail at every stage (C5 / charge firewall / cone can
+   each kill it). **Gate rule:** CONDITIONAL verdict; do NOT update `decisions/14`/papers without explicit user acceptance.
 
 (Deferred, parked: why fluid flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
 

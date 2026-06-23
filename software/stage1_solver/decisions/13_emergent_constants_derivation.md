@@ -10,6 +10,9 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
+> **⭐ LIVE STATE (2026-06-23): now EXECUTING `pathA_24` (little-arrows T1–T5); T0 DONE, T1 next — see the PIVOT block below + repo
+> `STATUS.md` "Next step". The EM-re-founding paragraph immediately following is the history that LED to that pivot.**
+
 **⭐⭐⭐ 2026-06-23 — EM RE-FOUNDING NOW EXECUTING (RESUME HERE FIRST; front door = repo `STATUS.md`).** Chasing `λγ` exposed the
 canonical EM sector DRIFTED from the single-medium concept (`reports/pathA_cgamma_of_rho_derivation.md`: EM = fundamental gauge
 field on a flat metric, DECOUPLED, Type-4). Re-founded EM **medium-native**: **LIGHT = the brane's in-plane SHEAR waves** (our 3D
@@ -55,15 +58,21 @@ NOT-SOUND→3 req fixes+10 concerns → v5 Codex confirm SOUND-AS-IS). **NOW EXE
   separation — single-medium vs membrane); defect/throat leak **relocated not retired** (still open, throat solve doesn't exist);
   report framing to downgrade. (`reports/pathA_23_stage3b_overcount_and_curvature.md`.)
 
-**PIVOT (2026-06-23, user) → directive `pathA_24` (brane existence + defect structure) = THE NEXT MANY STEPS (resume here).** The
-Stage-2/3 walls + the user's foundational question ("why is there a brane?") converged: brane = a **DOMAIN WALL** (surface tension;
-we = bound zero modes; currently imposed, U(ρ)∝ρ⁵ single-well ⇒ needs more structure), and a defect = a **PUNCTURE** → **CHARGE** =
-topological puncture (mass-independent→universality; mechanism for `η_Q e_*`), **MASS** = trapped geon standing wave, **THROAT SIZE**
-= tension-closing-vs-holding-open balance (→ finite self-energy); **charge⊥mass** decoupling. The wall's internal structure answers
-brane-existence + the Stage-2 shear crux (→ possibly DERIVE light, retire the MacCullagh postulate) + the Stage-3b separate-sector
-legitimacy **together**. THE PRIZE = a fundamental model of the charged massive particle uniting EM↔gravity at the defect. Picture =
-`decisions/15` §17–§18; roadmap = `directives/pathA_24_brane_existence_defect_structure.md` (**DRAFT → Codex design-review → GLM
-tertiary → execute stage-by-stage, tri-reviewed**). Memory `[[project-brane-existence-defect-structure]]`. pathA_23 Stages 4–6
+**PIVOT (2026-06-23, user) → directive `pathA_24` = NOW EXECUTING (the "little-arrows" T1–T5 ladder; resume: live state in repo
+`STATUS.md` "Next step").** The Stage-2/3 walls + "why is there a brane?" converged on the **little-arrows mechanism**: brane = a
+**DOMAIN WALL** between two `±w` domains of a polar order parameter ("little arrows", carried by the medium); we = bound zero modes;
+it dodges the single-well `U(ρ)`. A defect = a **PUNCTURE** → **CHARGE = puncture DIRECTION `±w`** (a binary orientation, **NOT a
+winding / topological charge** — that's magnetism; this corrects the earlier "topological puncture" phrasing), **MASS** = trapped
+geon standing wave, **THROAT SIZE** = tension-vs-holding-open balance; **charge⊥mass**. Light = **MacCullagh rotational-elastic**
+brane shear (not Cauchy). THE PRIZE = a fundamental charged-massive-particle model uniting EM↔gravity at the defect.
+**STATUS:** `pathA_24` reworked to **v2.2**, FULLY REVIEWED (Codex design-review ×5 → `SOUND-AS-IS` + GLM tertiary
+`SOUND-WITH-CONCERNS` folded) & **committed `95ed2b86`**. Executing rung-by-rung (each: Codex codes+runs dual-engine → orchestrator
+arbiter-re-run + transliteration-fidelity audit + adversarial → user gate; **AI prose never establishes a math fact**). **T0 DONE &
+committed `f0c2745f`** (freeze `8fa41ac51e88` target-blind: O(4)-isotropic polar-OP, no easy axis, 0 independent params; dual-engine
+dim-check PASS: bulk modes = 3 transverse Goldstones at `c_s` + gapped amplitude). **NEXT ACTION = T1** (stable-wall make-or-break:
+profile + `σ_brane` + stability spectrum + `w`-emergent? + confinement). Honest prior: isotropic baseline likely → emergent-`w` but
+UNSTABLE wall (sphere-of-vacua) = the three-way no-win leg; expect ≤2 of {light, stable wall, emergent-`w`}. Picture = `docs/conceptual_foundation.md`
+(canonical) + `decisions/15` §17–§18. Memory `[[project-brane-existence-defect-structure]]`. pathA_23 Stages 4–6
 (spectrum/`u_w`, Maxwell/C5, charge/cone-λγ) remain downstream and may be re-framed by pathA_24's wall result. (Also outstanding: a
 GLM tertiary on the Stage-3b separate-sector question — likely subsumed by pathA_24's domain-wall derivation.) DEFERRED (parked,
 `decisions/15` §9): mouth-inflow-vs-brane-leak. Falsifiable throughout; a clean break is a valid result. The dense 2026-06-21 block

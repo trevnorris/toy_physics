@@ -23,6 +23,9 @@ surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared *derived* `χ_
 
 ## ⭐ ACTIVE FRONTIER (2026-06-23): EM re-founding → PIVOT to "why the brane exists" + the defect = a brane PUNCTURE (pathA_24)
 
+> **Now EXECUTING `pathA_24` (little-arrows T1–T5) — see the "Next step" section below for the live state (T0 done, T1 next).**
+> The pathA_23 history below is the context that led here.
+
 Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a fundamental gauge field
 on a flat metric, *decoupled* from the medium; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). Re-founded EM **medium-native**:
 - A single **scalar** superfluid **cannot carry transverse light** (scalar→spin-0; fluid→no shear). Accepted.
@@ -54,30 +57,38 @@ each tri-reviewed (re-run + fidelity + adversarial) before its gate:
 
 **Full physical picture (MacCullagh §11, λγ §13, costs §14, Stage-1 leak §7.1, Stage-2 crux §15, Stage-3/3b §16, brane-existence §17, defect=puncture §18) = `decisions/15`.**
 
-## Next step — CONCEPT SETTLED (2026-06-23): test the "little-arrows" brane mechanism (the post-`/compact` plan)
+## Next step — EXECUTING `pathA_24` (little-arrows T1–T5); T0 DONE, **T1 is next** (resume here after `/compact`)
 
-The brane two-state mechanism is now an **agreed working hypothesis** (reasoned with the user): the medium's constituents are
-**polar "little arrows"** that align (→ define `w`, → why space is 3D), flip across the wall (= our brane), **lie flat in-plane →
-shear = LIGHT**, point `±w` in the bulk → shear-free → **magnetism**, and whose two `±w` domains give the **two charge signs**
-(puncture direction, no winding). It dodges the single-well `U(ρ)` (the wall lives in the orientation field). Bonus hypothesis:
-**dark energy** = a bulk↔brane cycle (matter drains brane→bulk; tension throttles a bulk→brane *areal* leak → accelerating
-expansion; matter-vs-area scaling gives the decel→accel crossover). **Full picture + the test plan: `docs/conceptual_foundation.md`
-(read first; §2 mechanism, §5 dark energy, §8 the T1–T5 ladder).**
+The little-arrows brane mechanism is the agreed working hypothesis (full picture: `docs/conceptual_foundation.md` — read first;
+§2 mechanism, §3 light = MacCullagh rotational-elastic shear [the Frank-vs-MacCullagh deep-dive], §5 dark energy, §8 the T1–T5 plan).
+Directive **`pathA_24` v2.2 is FULLY REVIEWED + COMMITTED** (`95ed2b86`): Codex design-review ×5 rounds → `SOUND-AS-IS`, GLM tertiary
+→ `SOUND-WITH-CONCERNS` folded. Now **executing rung-by-rung**, each tri-reviewed (orchestrator arbiter-re-run + transliteration-
+fidelity audit + adversarial review) + user gate.
 
-**The plan (resume here after `/compact`):**
-1. **Read `docs/conceptual_foundation.md`** top-to-bottom for grounding (esp. §2, §5, §8).
-2. **Rework directive `pathA_24`** to encode the little-arrows mechanism + the **T1–T5 ladder** (T1 = does a polar field form a
-   *stable* wall — the brane make-or-break, gates everything; T2 = does the wall carry 2-polarization in-plane shear = light;
-   T3 = bulk stays shear-free; T4 = puncture→two charge signs + finite throat; T5 = the dark-energy cycle). The current
-   Codex-SOUND `pathA_24` v1.1 is generic-domain-wall and must be **reworked to this concrete mechanism**, then re-run through the
-   pipeline: Codex design-review (`xhigh`) → GLM tertiary → execute stage-by-stage, tri-reviewed (re-run + fidelity + adversarial)
-   → user gate. **T1 FIRST** — if a polar field can't make a stable wall, the rest is moot and that is itself the result.
-3. **Gate rule:** any postulated ingredient ⇒ CONDITIONAL; falsification is welcome; do NOT update `decisions/14`/papers without
-   explicit user acceptance.
+**Done so far:**
+- **T0 ✅ (committed `f0c2745f`)** — froze the minimal polar-OP Lagrangian *target-blind* (`reports/pathA_24_T0_freeze.md`, hash
+  `8fa41ac51e88`): O(4)-isotropic soft-spin polar vector `P^i` carried by the medium, one-constant Frank stiffness, single-well
+  potential, **no easy axis**, 0 independent OP params (refused the easy-axis + Cosserat temptations). Reviewed `T0-SOUND-WITH-NOTES`.
+  Dual-engine dim-check `PASS` (`reports/pathA_24_T0_dimcheck.md`; SymPy+Mathematica, both fidelity-guarded, orchestrator re-ran
+  both): dims homogeneous; bulk OP spectrum = **3 transverse Goldstones at `c_s` + 1 gapped amplitude mode** (`c_OP=c_s0` is the
+  *bulk* speed, NOT the wall-localized `c_γ` — `λγ` not pre-decided).
 
-**Downstream / outstanding:** pathA_23 Stages 4–6 (spectrum/`u_w`, Maxwell/C5, charge/cone-`λγ`) — may be re-framed by pathA_24's wall
-result; a GLM tertiary on the Stage-3b separate-sector question (likely subsumed by pathA_24's domain-wall derivation).
-(Deferred, parked: why fluid flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
+**T1 — the stable-wall make-or-break (DO THIS NEXT, script-first/dual-engine):** Mathematica leads the wall profile + finite surface
+tension `σ_brane` + the full fluctuation/stability spectrum + `w`-emergent-vs-imposed + confinement/bound-zero-modes; SymPy
+cross-checks; then orchestrator arbiter-re-run + fidelity audit + adversarial review → user gate. **Honest prior (load-bearing):**
+the isotropic baseline likely gives an **emergent-`w` but UNSTABLE wall** (sphere-of-vacua unwinding) — the three-way no-win leg;
+expect **≤2 of {light, stable wall, emergent-`w`}**, and plan to lose emergent-`w` (realistic best case = stable wall with `w`
+imposed). T2 (light) = a `MacCullagh-vs-Frank/Cauchy` coin-flip, and the baseline is *conservative* (the co-rotational/Jaumann term
+— a MacCullagh enabler — is pruned-to-a-future-T0, so a baseline T2 FAIL = "FAIL under the minimal advective frame", not concept-dead).
+
+**Methodology (locked in with the user):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** — the
+orchestrator independently re-runs scripts (arbiter) + audits code-vs-equations (fidelity) + clean adversarial review; user gate per rung.
+
+**Gate rule:** any postulated/ad-hoc ingredient ⇒ CONDITIONAL; falsification is welcome and first-class; execution is reports-only —
+NO `decisions/14`/`decisions/15`/`pde.tex`/paper edits without explicit user acceptance (gated behind a separate `pathA_24_integration`).
+
+**Downstream / outstanding:** pathA_23 Stages 4–6 (spectrum/`u_w`, Maxwell/C5, charge/cone-`λγ`) — likely re-framed by pathA_24's wall
+result. (Deferred, parked: why fluid flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
 
 ## Map — what you want → which doc holds it
 

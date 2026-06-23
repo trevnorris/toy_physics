@@ -42,17 +42,33 @@ NOT-SOUND→3 req fixes+10 concerns → v5 Codex confirm SOUND-AS-IS). **NOW EXE
   MacCullagh curl-only (only clean-transverse form)→needs reverse-engineered gyrostats + the C5 gauge obstruction. ⇒ clean light
   needs an **extra postulated ingredient**. (`reports/pathA_23_stage2_constitutive_form.md`; `decisions/15` §15.)
 
-**USER DECISION (2026-06-23) = PROCEED CONDITIONALLY (Path 1):** adopt the **rotational/MacCullagh form as an explicit
-POSTULATE** (`U_∥=½μ_R(∇×u)²`, CONDITIONAL flagged throughout — the only form that can give clean transverse light), and run
-Stages 3–6 to test whether the REST holds. The gyrostat substructure stays an acknowledged GAP (not claimed derived); the verdict
-stays CONDITIONAL and must NOT update `decisions/14`/papers without explicit user acceptance. **NEXT = Stage 3** (constitutive
-no-leak closure, **DECIDES the Stage-1 leak**, uses the postulated stress/couple-stress + the Stage-1 bulk channels) → 4
-spectrum/polarization+`u_w` (the `FAIL_CAUCHY_STRAY_LONGITUDINAL`/MacCullagh-vs-residual-longitudinal test) → 5 Maxwell/gauge
-(**the C5 obstruction**)/Lorentz → 6a–d charge/energy/cone-λγ/leftovers. Pattern: write exec prompt → `codex exec -c
-model_reasoning_effort=xhigh` background → tri-review (re-run + fidelity + adversarial) → gate. DEFERRED (parked, `decisions/15`
-§9): mouth-inflow-vs-brane-leak. Falsifiable at every remaining stage; a clean break is a valid result. The dense 2026-06-21
-block below is PRIOR CONTEXT (gravity-sector verdict — still valid); the gravity verdict's `54/5` is ABSORBED (Gate 4
-`GENUINE_BLOCKED`), and the EM anchor `λγ` is what this frontier pins.
+**USER DECISION (2026-06-23) = PROCEED CONDITIONALLY (Path 1):** adopt the **rotational/MacCullagh form as a POSTULATE**
+(`U_∥=½μ_R(∇×u)²`, CONDITIONAL throughout — the only form giving clean transverse light); gyrostat substructure = acknowledged GAP.
+- **Stage 3 ✅ GATED:** `LEAK_BOUNDED_CONDITIONAL` (tri-reviewed: re-run 36/36 + `FIDELITY_CLEAN`; adversarial flagged it too soft).
+  Postulated stress is antisymmetric (needs a postulated gyrostatic spin reservoir to close angular momentum); interface exchange is
+  generically transverse; no-leak holds only under `ε_leak≪1` + an unmotivated cancellation/impedance price (else concept-fatal
+  `FAIL_LEAK_BREAKS_MAGNUS`). (`reports/pathA_23_stage3_noleak_closure.md`.)
+- **Stage 3b ✅ (verification):** `OVER_COUNT_CONFIRMED_CURVATURE_LOCALIZED` (`SIGMA_R_NOT_A_BULK_SOURCE`, `LIGHT_FREE_SLIPS_NO_LEAK`;
+  tri-reviewed: 30/30·29/29 + `FIDELITY_CLEAN` + adversarial `RESTS_ON_MODELING_CHOICE_NEEDS_GLM`). Retired the "intrinsic-to-light
+  fatal leak" reading: given the (separate-sector) action, `σ^R` is brane-internal not a bulk source; flat density-preserving light
+  free-slips; leak is **curvature-localized** (∝|K|L_mix, far-field-vanishing). CAVEATS: model-contingent (rests on brane⊥bulk
+  separation — single-medium vs membrane); defect/throat leak **relocated not retired** (still open, throat solve doesn't exist);
+  report framing to downgrade. (`reports/pathA_23_stage3b_overcount_and_curvature.md`.)
+
+**PIVOT (2026-06-23, user) → directive `pathA_24` (brane existence + defect structure) = THE NEXT MANY STEPS (resume here).** The
+Stage-2/3 walls + the user's foundational question ("why is there a brane?") converged: brane = a **DOMAIN WALL** (surface tension;
+we = bound zero modes; currently imposed, U(ρ)∝ρ⁵ single-well ⇒ needs more structure), and a defect = a **PUNCTURE** → **CHARGE** =
+topological puncture (mass-independent→universality; mechanism for `η_Q e_*`), **MASS** = trapped geon standing wave, **THROAT SIZE**
+= tension-closing-vs-holding-open balance (→ finite self-energy); **charge⊥mass** decoupling. The wall's internal structure answers
+brane-existence + the Stage-2 shear crux (→ possibly DERIVE light, retire the MacCullagh postulate) + the Stage-3b separate-sector
+legitimacy **together**. THE PRIZE = a fundamental model of the charged massive particle uniting EM↔gravity at the defect. Picture =
+`decisions/15` §17–§18; roadmap = `directives/pathA_24_brane_existence_defect_structure.md` (**DRAFT → Codex design-review → GLM
+tertiary → execute stage-by-stage, tri-reviewed**). Memory `[[project-brane-existence-defect-structure]]`. pathA_23 Stages 4–6
+(spectrum/`u_w`, Maxwell/C5, charge/cone-λγ) remain downstream and may be re-framed by pathA_24's wall result. (Also outstanding: a
+GLM tertiary on the Stage-3b separate-sector question — likely subsumed by pathA_24's domain-wall derivation.) DEFERRED (parked,
+`decisions/15` §9): mouth-inflow-vs-brane-leak. Falsifiable throughout; a clean break is a valid result. The dense 2026-06-21 block
+below is PRIOR CONTEXT (gravity-sector verdict — still valid); `54/5` is ABSORBED (Gate 4 `GENUINE_BLOCKED`); the EM anchor `λγ` is
+what this frontier pins.
 
 ---
 

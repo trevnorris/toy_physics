@@ -280,3 +280,110 @@ result: `FAIL_UNSPECIFIED_SUBSTRUCTURE`.** (`reports/pathA_23_stage2_constitutiv
   POSTULATE**, flag the verdict CONDITIONAL throughout, and run Stages 3–6 to test whether the rest holds (no-leak; the C5 gauge
   test; charge firewall; the λγ cone payoff). Still able-to-fail at every stage. The gyrostat substructure stays an acknowledged
   gap, not a claim. **NEXT = Stage 3** (constitutive no-leak closure — decides the Stage-1 leak).
+
+## 16. Stage-3 leak → the CURVATURE-LOCALIZED LEAK + GEON-THROAT hypothesis (2026-06-23, user)
+Stage 3 (constitutive no-leak closure) returned `LEAK_BOUNDED_CONDITIONAL` (tri-reviewed: re-run 36/36 + `FIDELITY_CLEAN`; the
+adversarial review flagged the verdict as too soft). The adversarial concern: a **defect-independent, intrinsic-to-light** channel —
+the brane's own rotational stress `D_b σ^R_ba = −μ_R k² u_a` — would drive bulk vorticity for *every* photon, making D1
+(no-leak/Magnus) effectively fatal unless a 4th postulate (brane→bulk impedance) is added. Adjudicating that produced a sharper,
+falsifiable picture (user's insight + the ideal-fluid free-slip property).
+
+**(A) The leak is CURVATURE-LOCALIZED, and the adversarial "intrinsic fatal" reading is an over-count.**
+- An **ideal (shear-free) bulk transmits tangential traction ONLY convectively**: `T_wa = ρ v_w v_a` (the pressure part `P δ_wa` is
+  purely normal ⇒ **free slip** — the very "no sideways push in the bulk" that makes Magnus work, §3). So the bulk can receive a
+  sideways force only by a normal (w) flow *advecting* in-plane momentum.
+- **Light is in-plane shear with `v_w = 0`** ⇒ on a **flat brane it transmits zero tangential traction ⇒ NO leak ⇒ Magnus/EM clean
+  in the far field.** The brane's `σ^R` is its *internal* restoring force; by the action's variational structure it sources the
+  *brane* EOM, not the *bulk* EOM (vary bulk fields ρ,θ,v → only S_ψ + S_cpl appear) — so folding `D_b σ^R_ba` into the bulk source
+  is the over-count.
+- The light↔`u_w` **mixing rides on the brane slope `s_a = D_a u_w`** (the `(T_ww δ−T_ab) D_b u_w` term in `T_na`): ≈0 between
+  defects, **O(1) at a throat** where the brane bends hard into 4D and the small-slope expansion breaks. ⇒ `ε_leak ∝ (curvature)²`
+  — a **derived, far-field-vanishing** suppression, NOT the unmotivated "assume ε_leak≪1" the adversarial flagged. Bonus: residual
+  curvature everywhere (= the gravity field) ⇒ tiny light–bulk coupling ∝ local curvature = light bending in gravity.
+
+**(B) The GEON-THROAT hypothesis (user — the bigger structural bet).** The throat of a defect = a **trapped brane-shear standing
+wave** ("photons standing between 3D and 4D — beyond the mouth, before the bulk"), held by the throat geometry. Ancestor: Wheeler's
+**geon** (1955). Trapped wave → quantized k → rest energy = the defect's **mass**; circulation → **charge/spin**. Ties the EM sector
+(light) to the gravity sector (drain/throat) AT the defect — a real unification step, and a candidate answer to the parked §9
+inflow-vs-back-leak puzzle. See memory `[[project-geon-throat-hypothesis]]`.
+
+**Status / falsifiable ([[feedback-falsification-is-the-goal]]):** the free-space half (σ^R not a bulk source; convective-only
+tangential traction; `v_w(light)=0 ⇒ T_wa(light)=0`; leak ∝ slope) is being **verified now** (focused Stage-3b re-derivation,
+dual-engine + tri-review, able-to-fail in BOTH directions). If it holds, the fatal reading is retired and Stage 3 = a
+curvature-localized (defect-only, throat-deferred) `LEAK_BOUNDED_CONDITIONAL`. The **make-or-break** for the geon throat is
+**Stage-4 `u_w` confinement** (a massless unconfined `u_w` = fifth force = death) + showing the throat-localized strong mixing does
+NOT reach the far-field Magnus. Do NOT bank it; let the math falsify it.
+
+**Stage-3b OUTCOME (2026-06-23, tri-reviewed — re-run 30/30·29/29, `FIDELITY_CLEAN`, adversarial `RESTS_ON_MODELING_CHOICE_NEEDS_GLM`
++ `STAGE3B_OVERCLAIMS`).** Verdict `OVER_COUNT_CONFIRMED_CURVATURE_LOCALIZED` (`SIGMA_R_NOT_A_BULK_SOURCE`, `LIGHT_FREE_SLIPS_NO_LEAK`).
+The over-count is **real and verified GIVEN the declared (separate-sector) action** — `σ^R` is a brane-internal force, not a bulk
+source; flat density-preserving transverse light free-slips. **BUT** (adversarial, fair): the result is **model-contingent** — it
+rests on the brane field `u` being a separate sector from the bulk fluid `v` (no in-plane `u̇^a↔v^a` link). Membrane-in-fluid → no
+leak; strict "brane *is* the fluid" → `u̇^a` is a bulk `δv^a` → leak returns. AND the real (defect/throat) leak is **relocated, not
+retired** (still open, deferred to a throat solve; the `|K|L_mix` scaling admittedly breaks at the throat). Claude's physics read:
+the separation is **probably legitimate** — inviscid (shear-free) bulk ⇒ **free slip** ⇒ no tangential `u̇^a=v^a` matching (no-slip
+holds only for a *viscous* fluid), so brane shear (`u`, neighbor-preserving elastic) and bulk flow (`v`, mass transport) are two
+**distinct emergent DOF of one substructure**, correctly decoupled tangentially — the same free-slip that makes Magnus work. **§17
+below upgrades this from "probably" to a mechanism** (the brane is a domain wall = a genuine emergent structure ⇒ separation is
+single-medium-legitimate by construction). Report framing to be downgraded ("over-count corrected, defect/throat leak open"); GLM Q1
+likely subsumed by §17.
+
+## 17. WHY does the brane exist at all? Brane = a DOMAIN WALL / phase interface (2026-06-23, user — foundational)
+The most-imposed, least-derived part of the whole construction. Currently the brane is **put in by hand**: the confinement potential
+`V_conf(X;Σ)`, the `w`-profiles `Z(w)`/`W(w)`/`B_ℓ(w)`, and the `k_w u_w²` restoring term. None explains *why* there is a sheet at
+`w=0` or what stops us flowing into the bulk.
+
+- **User's mechanism (surface tension):** the brane = a **domain wall / phase interface** in the medium. A field with two degenerate
+  vacua forms a codim-1 surface carrying **energy/area = surface tension** (the water-surface intuition); it is **topologically
+  stable** (interpolates two vacua, can't unwind); we are **confined as bound zero modes** in the wall's potential well (leaving the
+  wall costs energy). Grounding: **Rubakov–Shaposhnikov 1983** "Do we live inside a domain wall?"; **Volovik ³He** A–B phase interface.
+- **The honest obstacle:** the current potential `U(ρ)=(K/4)ρ⁵` is **single-well** ⇒ no domain wall from the scalar alone ⇒ deriving
+  the brane needs **more medium structure** (degenerate vacua / a 2nd component / self-trapping by the collective drain network).
+  This is the **same "substructure"** §14 C1 said we need for shear, and the same gap Stage 2 hit.
+- **THE DOOR — the convergence:** brane existence, the Stage-2 shear crux, the §14 substructure, and the Stage-3b separate-sector
+  justification are **ALL one question: what is the wall's internal structure?**
+  - **Structureless wall** (simple scalar) = a *fluid membrane*: tension + bending but **NO in-plane shear** = exactly the Stage-2
+    failure (`U_∥=½K(∇·u)²`, μ_shear=0). Gives confinement but not light.
+  - **Structured wall** (internal order: a director / broken symmetry across the wall / textured interface) **CAN carry in-plane
+    shear** ⇒ that internal order **IS** the substructure §14 C1 needed ⇒ could **derive** the shear law and **retire the postulated
+    MacCullagh (Stage-2 CONDITIONAL → derivation)**.
+  - A wall as a genuine emergent topological object is the **single-medium-legitimate justification for the separate-sector no-leak**
+    (answers Stage-3b/GLM Q1): one substance *organized into* a stable wall with its own collective surface DOF — not a 2nd medium,
+    not "just the fluid."
+  So deriving "why the brane exists" could yield **confinement + shear (light) + the legitimate separation in one move.**
+
+## 18. The DEFECT = a PUNCTURE through the brane: CHARGE / MASS / THROAT unification (2026-06-23, user — the prize)
+Extends §17 to tie the **electric** and **mass** sectors together at the defect. A defect/particle = a **puncture (throat) through the
+brane** into the bulk; the brane's **surface tension wants to restore (close)** the puncture → stored deformation energy.
+
+- **CHARGE = the topological PUNCTURE itself** (that it punctures at all + its winding/orientation). **Quantized and mass-independent
+  because topological** → explains **charge universality** (same `|e|` despite wildly different mass). This is a **mechanism for the
+  EXISTING `η_Q e_*` ontology** (`pde.tex:279-312`) and respects the **charge firewall** (`η_Q`, not circulation) — NOT a new free knob.
+- **MASS = the geon standing-wave content** holding the throat **open** (trapped brane-shear; wave energy = rest mass, §16B).
+  Continuous/variable.
+- **DECOUPLING (user, load-bearing assumption):** charge ⊥ mass *at this level* — the standing-wave photons (mass) do **not** directly
+  interact with the electric (charge/puncture) part. ("Maybe they interact at some point, but not here.") ⇒ the EM-charge sector and
+  the mass/geon sector are **separable**; this is what makes charge mass-independent.
+- **ELECTRIC FIELD ENERGY = the brane-tension deformation energy around the puncture.** The tension trying to close the hole **↔ the
+  electric charge**; the stored field energy is the brane's restoring energy.
+- **THROAT SIZE/STRUCTURE = the energy BALANCE:** brane-tension-closing (∝ charge) **vs** standing-wave/drain holding-open (∝
+  mass/energy). Sets a **finite throat radius** → candidate **resolution of the classical point-charge self-energy divergence**
+  (finite `a` ⇒ finite Coulomb self-energy `~q²/a`). Necessary to model the particle defect at a fundamental level.
+- **THE PRIZE:** a candidate **fundamental model of the charged massive particle** — a punctured, tense domain-wall brane with a
+  trapped standing wave: **charge from topology, mass from wave energy, size from the tension-vs-holding-open balance** — tying EM
+  (charge=tension, light=shear) to gravity/mass (throat=drain, mass=geon) through the brane's existence.
+- **Falsifiable tests (do NOT bank — [[feedback-falsification-is-the-goal]]):** (1) does the puncture's tension-energy reproduce the
+  Coulomb `1/r²` field + `~q²/a` self-energy? (2) does the balance give a finite, sensible throat size? (3) does charge come out
+  quantized/universal (mass-independent)? (4) does the charge⊥mass decoupling hold or break? (5) does the tie to brane moduli feed
+  `λγ` (`c_γ²=μ_brane/ρ_brane`) and the verdict? Any of these can fail and falsify (this construction of) the picture.
+
+- **CALIBRATION RUNWAY (user, 2026-06-23 — why this matters).** Because charge is universal (one `e`) and the brane tension `σ` is one
+  universal number, `tension↔charge` is **one equation** → **calibrate `σ` on the measured `e`/`α`**, then predict the **held-out
+  surplus** against experiment (classical electron radius `r_e`; `λγ=c_γ/c_s≈1` cone-lock → closes the verdict gap; lepton mass ratios;
+  `g−2`; stretch = `α` from brane/bulk moduli). **NON-NEGOTIABLE first gate (the Gate-4 lesson):** the `tension→charge` map must derive
+  **constant-free** (fewer free constants than downstream predictions) — else calibrating `σ` on `e` merely ABSORBS `e` (zero surplus =
+  the `g_G`-absorbs-`G` trap), which we report plainly. The cascade (one `σ` → many predictions) further requires §17's wall structure to
+  **relate the moduli** (`σ`, `μ_brane`→`c_γ`, `ρ_brane`). This is calibrate-predict ([[feedback-calibrate-predict-methodology]]) at the
+  EM coupling — the deepest open gap. Folded into `pathA_24` Phase B (B6).
+
+**NEXT PHASE = directive `pathA_24` (brane existence + defect structure) — the next many steps.** See `directives/pathA_24_brane_existence_defect_structure.md` (DRAFT → design-review → GLM → execute). Memory: `[[project-brane-existence-defect-structure]]`.

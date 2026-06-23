@@ -16,7 +16,7 @@ cancel; all 22 `m̂` sites in `pde.tex` are target-facing, dual-reviewed). So th
 verdict closes only with the **EM-sector anchor** (which pins `λγ`) — now load-bearing. The falsifiable payoff is the **held-out
 surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared *derived* `χ_Q` + `P0/D0` bundle + `c_s`.
 
-## ⭐ ACTIVE FRONTIER (2026-06-23): the EM re-founding — NOW EXECUTING (Stage 3 next; CONDITIONAL path)
+## ⭐ ACTIVE FRONTIER (2026-06-23): EM re-founding → PIVOT to "why the brane exists" + the defect = a brane PUNCTURE (pathA_24)
 
 Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a fundamental gauge field
 on a flat metric, *decoupled* from the medium; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). Re-founded EM **medium-native**:
@@ -39,21 +39,32 @@ each tri-reviewed (re-run + fidelity + adversarial) before its gate:
   → **brane-shear EM is NOT derivable from the current single-medium spec.** Verified **trilemma:** μ_br=0→no light; μ_br>0
   (Cauchy)→light + a stray longitudinal "second photon" (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, Stage 4); MacCullagh curl-only (only
   clean-transverse form)→reverse-engineered gyrostats + C5. ⇒ clean light needs an **extra postulated ingredient**. So `λγ` is
-  **not derivable medium-natively** — it stays a genuine free input. (`decisions/15` §15.)
+  **not derivable medium-natively** — it stays a genuine free input. (`decisions/15` §15.) → **USER chose Path 1: postulate MacCullagh, CONDITIONAL.**
+- **Stage 3 ✅** — `LEAK_BOUNDED_CONDITIONAL` (tri-reviewed; adversarial flagged too soft). No-leak holds only under an unmotivated
+  `ε_leak≪1`/impedance price (else concept-fatal `FAIL_LEAK_BREAKS_MAGNUS`); postulated stress needs a postulated gyrostatic spin reservoir.
+- **Stage 3b ✅ (verification)** — `OVER_COUNT_CONFIRMED_CURVATURE_LOCALIZED`: given the (separate-sector) action, `σ^R` is brane-internal
+  not a bulk source; flat density-preserving light **free-slips** (inviscid bulk → free slip); leak is **curvature-localized** (∝|K|L_mix,
+  far-field-vanishing). Retires the "intrinsic-to-light fatal leak" reading. CAVEATS (adversarial, fair): model-contingent (brane⊥bulk
+  separation — single-medium vs membrane); defect/throat leak **relocated not retired** (throat solve still needed). (`decisions/15` §16.)
 
-**Full physical picture + MacCullagh template + λγ subtlety + honest costs + Stage-1 leak (§7.1) + Stage-2 crux result (§15) = `decisions/15`.**
+**Full physical picture (MacCullagh §11, λγ §13, costs §14, Stage-1 leak §7.1, Stage-2 crux §15, Stage-3/3b §16, brane-existence §17, defect=puncture §18) = `decisions/15`.**
 
-## Next step — USER CHOSE Path 1 (2026-06-23): proceed CONDITIONALLY, Stage 3 next
+## Next step — PIVOT (2026-06-23, user): directive `pathA_24` = brane existence + the defect as a brane PUNCTURE (the next many steps)
 
-The crux is unmet as a *derivation*, so the route proceeds as a **conditional construction** (user-elected):
-1. **Adopt the rotational/MacCullagh form as an explicit POSTULATE** (`U_∥=½μ_R(∇×u)²` — the only form that can give clean
-   transverse light), **verdict CONDITIONAL flagged throughout**; the gyrostat substructure stays an acknowledged GAP, not a claim.
-2. **Fire off Stage 3** (D1): constitutive no-leak closure — **decides the Stage-1 leak** — using the postulated stress/couple-stress
-   + the Stage-1 bulk channels. Then tri-review → gate.
-3. **Then:** 4 spectrum/`u_w` (the MacCullagh-vs-residual-longitudinal + `u_w`-fifth-force test) → 5 Maxwell/gauge (**the C5
-   obstruction**)/Lorentz → 6a–d charge/energy/cone-`λγ`/leftovers. Able-to-fail at every stage (C5 / charge firewall / cone can
-   each kill it). **Gate rule:** CONDITIONAL verdict; do NOT update `decisions/14`/papers without explicit user acceptance.
+The Stage-2/3 walls + the user's foundational question converged. **The plan (resume here after `/compact`):**
+1. **Read** `decisions/15` §17 (brane = a **DOMAIN WALL** / phase interface: surface tension, we = bound zero modes; currently imposed,
+   `U(ρ)∝ρ⁵` single-well ⇒ needs more structure) + §18 (defect = a **PUNCTURE** → **CHARGE** = topological puncture
+   [mass-independent → universality; mechanism for `η_Q e_*`], **MASS** = trapped geon standing wave, **THROAT SIZE** =
+   tension-closing-vs-holding-open balance [→ finite self-energy]; **charge⊥mass** decoupling). THE PRIZE = a fundamental model of the
+   charged massive particle uniting EM↔gravity at the defect.
+2. **Process the roadmap** `directives/pathA_24_brane_existence_defect_structure.md` (**DRAFT**): Codex design-review (`xhigh`) → GLM
+   tertiary → execute stage-by-stage, each tri-reviewed (re-run + fidelity + adversarial) → user gate. Phase A = brane existence
+   (does the wall carry SHEAR → derive light, retire the MacCullagh postulate? or only tension/bending?); Phase B = defect structure
+   (throat size; charge=puncture; tension→Coulomb + finite self-energy; charge⊥mass; feed `λγ`).
+3. **Gate rule:** any postulated ingredient ⇒ CONDITIONAL; do NOT update `decisions/14`/papers without explicit user acceptance.
 
+**Downstream / outstanding:** pathA_23 Stages 4–6 (spectrum/`u_w`, Maxwell/C5, charge/cone-`λγ`) — may be re-framed by pathA_24's wall
+result; a GLM tertiary on the Stage-3b separate-sector question (likely subsumed by pathA_24's domain-wall derivation).
 (Deferred, parked: why fluid flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
 
 ## Map — what you want → which doc holds it

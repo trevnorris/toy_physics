@@ -6,8 +6,10 @@ conceptual picture is never lost between work sessions and never has to be re-ex
 update it whenever the conceptual picture sharpens. It is deliberately separate from the math/derivation/verdict machinery
 (those live in `software/stage1_solver/decisions/*`, the `pathA_*` directives, and `STATUS.md`).
 
-**Status:** v1, 2026-06-23. Reconstructed from the pre-`/compact` "what is light" (the drumhead/surface-tension discussion) and
-"why does the brane exist" discussions, plus the EM re-founding work (pathA_23) and the puncture/charge/mass picture.
+**Status:** v2, 2026-06-23. Reconstructed from the pre-`/compact` "what is light" (drumhead/surface-tension) and "why does the
+brane exist" discussions, plus the EM re-founding work (pathA_23) and the puncture/charge/mass picture. **v2 adds the agreed
+working hypothesis** — the **little-arrows (polar-orientation) brane mechanism** (§2) — and the **bulk↔brane cycle / dark-energy**
+extension (§5), plus the post-`/compact` test plan (§8).
 
 ---
 
@@ -16,9 +18,9 @@ update it whenever the conceptual picture sharpens. It is deliberately separate 
 These are load-bearing. Violating them is the recurring failure mode (importing standard-physics habits that don't fit).
 
 1. **ONE medium, everything emergent.** There is a single substance — a compressible superfluid filling 4 spatial + 1 time
-   dimensions. Gravity, magnetism, electricity, light, mass, and charge are all *behaviours of that one medium*. Nothing is
-   layered on top as a separate fundamental field. When the math starts looking like "the medium PLUS a separate gauge field on
-   its own metric," that is **drift**, and it is to be pruned, not accommodated.
+   dimensions. Gravity, magnetism, electricity, light, mass, charge, and even **cosmic expansion / dark energy** (§5) are all
+   *behaviours of that one medium*. Nothing is layered on top as a separate fundamental field. When the math starts looking like
+   "the medium PLUS a separate gauge field on its own metric," that is **drift**, and it is to be pruned, not accommodated.
 2. **There are NO point particles.** A particle is an **extended** object — a finite-size throat/puncture in the brane. Nothing in
    this model is a zero-size point. The classical point-particle pathologies (infinite self-energy, etc.) are things this model
    *removes by construction*, so any argument that imports "point defect / point charge" machinery is using the wrong tool.
@@ -88,16 +90,44 @@ the medium *cannot* form a wall. That is exactly why the brane currently has to 
 `V_conf`, the `w`-profiles `Z/W/B_ℓ`, the `k_w u_w²` restoring term — all *inputs*, not derived). To **derive** the brane, the one
 medium needs structure that gives it **two coexisting states.**
 
-**Candidate mechanisms for the two states** (open; to be reasoned/tested):
-1. **An orientation flip of the substructure** — the medium's constituents have a "which-way-they-point" property that points one
-   way for `w>0` and the other for `w<0`; the brane is where it flips. *Current lean*, because the same orientational structure
-   that distinguishes the two sides is plausibly what lets the brane carry **shear (light)**, and the `±w` it picks out is exactly
-   what gives a puncture its two directions (the two charge signs) — one ingredient buying the wall, light, and the charge
-   dichotomy at once.
-2. **Two densities** — a liquid/vapour-like coexistence from the same cohesion that gives tension. Clean, but a pure density
-   difference doesn't obviously supply the `±w` sign structure.
-3. **Self-trapping by the collective drain network** — "all the distant throats together = the gravitational field," turned into
-   a self-consistent well that holds the sheet together. Most native to the model's own gravity; hardest to make sharp.
+**The working hypothesis (agreed 2026-06-23): the "little arrows".** The two states come from giving the medium's tiny
+constituents the simplest non-trivial property beyond mass — a **polar orientation**: each constituent is a little *arrow*, with
+a head and a tail (genuinely polar, **not** a headless axis). Then:
+
+- **The arrows align** (lower energy aligned, like little magnets) along **one axis** in the 4D space — and *that axis is what we
+  call `w`*. So `w` is not pre-existing geometry the arrows find; **`w` is *defined* by the alignment direction.**
+- **Why our space is 3D:** align along a single axis in 4D and the surface perpendicular to it is 3D. The codimension-1-ness of
+  our space falls straight out of the orientation being a *single* direction.
+- **Two domains ⇒ a wall.** When the medium first settled it needn't have picked the same direction everywhere — domains of
+  arrows-pointing-`+w` and arrows-pointing-`−w` form generically (the way any symmetry-breaking-on-cooling leaves domains with
+  walls between them). **We live on a wall between a `+w` domain and a `−w` domain** — two genuine mirror-image states of the
+  *same* medium (so the two sides, and the two charge signs, are symmetric).
+- **The wall's own structure does triple duty.** To get from `+w` on one side to `−w` on the other, the arrows must *rotate
+  through the wall*, and **at the wall centre they lie *flat, in the plane of the brane*.** Therefore:
+  - in the **bulk**, arrows point ⊥ to our space (`±w`) → no in-plane structure → **bulk stays shear-free → magnetism preserved**;
+  - on the **brane**, arrows lie *in* our space → the brane has genuine in-plane orientational structure → **it can carry in-plane
+    shear → light**.
+  The *same* arrow-field gives the wall's existence, the brane's shear (light), and the bulk's shear-freeness (magnetism) at once.
+- **It dodges the single-well obstacle cleanly.** The two states live in the *orientation*, not the density, so `U(ρ)` can stay
+  single-welled and monotonic — `ρ` ("how much medium is here") remains single-valued everywhere. We never fake a double-well.
+- **Charge falls out.** A throat puncturing toward the `+w` domain vs the `−w` domain = the two charge signs — pure puncture
+  *direction*, no winding (§3/§4) — and we now see *why there are exactly two*: there are exactly two arrow-domains to puncture
+  into.
+- **It is substructure, not drift.** Giving the constituents an orientation is acknowledging a property the *one* medium's
+  particles already have (the §1 lens), not adding a second substance. Existence proof: superfluid ³He — its constituents carry
+  an orientation and it is emphatically *one* superfluid with structured A/B interfaces. Firewall: the arrows must be *carried by*
+  the medium's particles, not an independent decoupled field.
+
+*This is the working hypothesis to test, not a settled result.* Make-or-break checks: the arrows must be **polar (`+w ≠ −w`)** or
+there is no wall and no two charge signs; and the in-plane wall texture must actually yield **two shear polarizations at one
+speed** (the photon signature) rather than the wrong count/dispersion. See §8 for the test plan.
+
+**Alternatives considered and set aside** (kept for the record): **(a) two densities** — a liquid/vapour coexistence from the same
+cohesion; clean, but "dense vs dilute" are not mirror images (asymmetric → asymmetric charge) and a pure density wall is a fluid
+membrane (no in-plane shear → no light), so too weak to be fundamental. **(b) self-trapping by the collective drain network** —
+"all the distant throats together = the gravitational field" as a self-consistent well; maximally native but a *persistence*
+mechanism, not an *origin* (it's circular — the brane holds matter because matter deepens the brane), so likely a real
+*secondary* effect that deepens the well, not the seed.
 
 **The unification (why this question is the keystone).** Four problems are really *one* question — *what is the wall's internal
 structure?*
@@ -172,7 +202,37 @@ carry the signs they do.
 
 ---
 
-## 5. Pedigree — explored before, never wired together
+## 5. Cosmology — the bulk↔brane cycle and dark energy
+
+A consequence of the little-arrows wall (hypothesis, 2026-06-23). **Medium cycles between bulk and brane in two opposing flows:**
+
+- **Matter drains medium OUT (brane → bulk).** Gravity = medium draining into defects and down their throats into the bulk. So
+  matter *removes* medium from our space. This flow scales with the **matter content**.
+- **Tension leaks medium IN (bulk → brane).** The bulk is drawn toward the brane (toward the matter), but to enter, its arrows
+  must rotate from `±w` to flat — and that **realignment costs energy**. The wall's surface tension is exactly the **throttle**:
+  it stops the bulk from collapsing in all at once and admits it as a **slow, steady leak**. This flow happens across the **whole
+  brane surface**, so it scales with **area**. *(Precision: the flat wall state is not lower-energy — the wall has positive
+  tension, that's the throttle; the bulk comes in because the drains pull it, and the tension limits the rate.)*
+
+**Expansion.** Our space *is* the wall. Medium leaking in at a roughly fixed areal density forces the wall to **grow its area** →
+space expands. The medium is conserved — it just cycles. The **net** of the two flows sets the cosmic dynamics (expand / hold /
+contract).
+
+**Why it could be *accelerating*, and match cosmic history** (both fall out *if the signs work*):
+- The inward leak scales with **area**, so influx ∝ area → exponential, de Sitter-like **accelerating** expansion — the
+  dark-energy signature.
+- The outward drainage scales with **matter**. So **early (matter-dense): drainage dominates → deceleration; later (matter dilutes
+  with expansion): the steady areal leak wins → acceleration kicks in.** That crossover matches the observed history
+  (deceleration → recent acceleration) from the *same* one-medium picture.
+
+**Honest caveats (the math must confirm the signs and rates):** that the net leak is *inward* not outward; that influx-at-fixed-
+density really means *area growth* (not just *densification*, which would instead drift `c_s` over time — a distinct, checkable
+prediction); and that the acceleration crossover timing is even roughly sane. Any of these can break it. As a *hypothesis* it is
+coherent and testable. **This makes cosmic expansion / dark energy another thing the one medium + little arrows would deliver.**
+
+---
+
+## 6. Pedigree — explored before, never wired together
 
 Individual pieces of this picture have respectable prior lives; the novelty is the *combination*. (A synthesis of pedigreed
 parts is a reason to take it seriously — it is **not** evidence it is true; pieces being individually sound is exactly what would
@@ -186,27 +246,71 @@ make a *wrong* synthesis seductive.)
 
 ---
 
-## 6. Open questions / conceptual audit (what is NOT yet pinned)
+## 7. Open questions / conceptual audit (what is NOT yet pinned)
 
-Honest list of what the picture still owes us. (Items here are concept-level; the math test plan lives in the `pathA_*`
-directives.)
-1. **The two-state mechanism (§2):** what actually gives the one medium two coexisting states so a brane can form — orientation
-   flip vs two densities vs self-trapping? The current `U(ρ)∝ρ⁵` is single-well and cannot.
-2. **Does the wall's internal structure carry shear (§2, §3)?** i.e., does the structured wall actually produce a brane shear
-   modulus `μ_brane` (→ light), or only tension + bending (→ no light)? This is the make-or-break for the light sector.
-3. **Electron/proton ↔ charge-sign preference (§4):** does defect structure prefer a `±w` direction via bulk interaction, and how
+Honest list of what the picture still owes us. (Concept-level; the math test plan is §8.)
+1. **Does the polar-arrow order actually form a stable wall (§2)?** Polar (`+w ≠ −w`), not headless — and stable, with a finite
+   surface tension. The current `U(ρ)∝ρ⁵` is single-well; the wall must come from the *orientation* field.
+2. **Does the in-plane wall texture carry shear → light (§2, §3)?** Does it produce a brane shear modulus `μ_brane` with **two**
+   transverse polarizations at one speed, or only tension + bending (→ no light), or the wrong count/dispersion? Make-or-break for
+   the light sector.
+3. **Dark-energy cycle signs & rates (§5):** is the net bulk↔brane flow *inward* (expansion)? Does influx mean *area growth* (not
+   *densification*, which would drift `c_s`)? Does the matter→dark-energy crossover timing come out sane?
+4. **Electron/proton ↔ charge-sign preference (§4):** does defect structure prefer a `±w` direction via bulk interaction, and how
    does that square with antiparticles + the matter-abundance asymmetry?
-4. **Spin:** not yet placed in the picture. Where does it live (circulation in the trapped wave? throat geometry?)?
-5. **Charge magnitude:** the picture gives charge *universality* and *two signs* naturally; what fixes the actual *magnitude*
-   `e` (the tension? the throat? the bulk)? — the calibration target.
-6. **The defect's two roles at once:** a throat is simultaneously a **drain** (gravity/mass-energy inflow) and a **puncture**
-   (charge). Are these one shared energy budget or two co-located things? (Getting this right is what keeps the single-medium
-   picture honest at the one place it matters most — the defect.)
-7. **Cone lock `λγ`:** does light (brane shear, `c_γ`) end up at the same speed as the gravitational ripple (`c_s`)?
+5. **Spin:** not yet placed in the picture. Where does it live (circulation in the trapped wave? throat geometry? the arrows?)?
+6. **Charge magnitude:** the picture gives charge *universality* and *two signs* naturally; what fixes the actual *magnitude* `e`
+   (the tension? the throat? the bulk)? — the calibration target.
+7. **The defect's two roles at once:** a throat is simultaneously a **drain** (gravity/mass-energy inflow) and a **puncture**
+   (charge). One shared energy budget or two co-located things? (Keeps the single-medium picture honest at the one place it
+   matters most.)
+8. **Cone lock `λγ`:** does light (brane shear, `c_γ`) end up at the same speed as the gravitational ripple (`c_s`)?
+
+---
+
+## 8. Next: testing the little-arrows hypothesis (the post-`/compact` plan)
+
+**Goal:** find out, with math/code, whether the **little-arrows (polar-orientation) mechanism** actually delivers — first the
+brane, then light, then charge, then (ambitiously) the dark-energy cycle. Falsification is the point: a clean FAIL at any rung is
+a first-class, welcome result, never to be rescued.
+
+**The test ladder (cheapest-concept-fatal-FIRST; one rung at a time, user gate between):**
+
+- **T1 — Does a polar-orientation field form a stable wall? (the brane make-or-break.)** Add the *minimal* polar "arrow" order
+  parameter to the medium and ask: does it produce a codimension-1 wall with **finite surface tension** and **bound zero modes**
+  (confinement)? Two sub-questions that are themselves make-or-break: **(i) stability** — a vector whose vacua fill a sphere gives
+  *no* topologically stable wall (`+w` can unwind to `−w`), so what minimal structure gives a genuinely stable (or adequately
+  long-lived) `±w` wall — a polar double-well / anisotropy / disconnected vacua (π₀=ℤ₂)?; **(ii) is `w` emergent or pre-existing**
+  — does the alignment *define* `w` (spontaneous), or did we smuggle in a preferred `w`-axis (anisotropy)? Report honestly which.
+  FAIL modes: no stable wall; needs ad-hoc structure; `w` had to be imposed.
+- **T2 — Does the wall carry in-plane shear → light? (the light make-or-break.)** Compute the spectrum of fluctuations localized
+  on the wall. Does it contain **two transverse in-plane shear polarizations at a single speed** `c_γ=√(μ_brane/ρ_brane)`,
+  cleanly separated from the (scalar) bending mode `u_w` and any trapped scalar modes? Wrong count / wrong dispersion / no shear =
+  FAIL (this is the pathA_23 Stage-2 wall, now with a concrete candidate to test).
+- **T3 — Bulk stays shear-free? (magnetism consistency.)** Confirm the bulk (arrows `±w`) acquires no in-plane shear rigidity, so
+  Magnus/magnetism is untouched. Consistency gate.
+- **T4 — Puncture into `±w` domains → two charge signs + finite throat.** Model a throat through the wall connecting to the `±w`
+  bulk; confirm two mirror-image puncture orientations (the two charge signs, pure direction — no winding), and a finite throat
+  radius from the tension-vs-holding-open balance.
+- **T5 — The dark-energy cycle (ambitious; after T1–T4).** Set up the two opposing flows (matter-driven brane→bulk drainage;
+  tension-throttled bulk→brane areal leak) and test the §5 claims: net inward leak, area-growth (not densification), the
+  matter→dark-energy acceleration crossover. Signs and rates are everything here.
+
+**Methodology (the standing process):** this supersedes/reworks the generic-domain-wall directive `pathA_24` — **rework pathA_24
+to encode the little-arrows mechanism + this T1–T5 ladder**, then run it through the standing pipeline: Codex design-review
+(`-c model_reasoning_effort=xhigh`) → GLM tertiary (foundational) → execute **stage-by-stage**, each **tri-reviewed** (orchestrator
+re-run + transliteration-fidelity audit + adversarial review on clean agents) with a user gate. Engine: Mathematica leads (wall
+profiles, fluctuation spectra, stability), SymPy cross-checks; dual-engine; units restored; Codex codes, Claude reviews.
+Conditional-verdict rule on any postulated ingredient.
+
+**First action when we come back:** (1) read this doc top-to-bottom for grounding; (2) rework `pathA_24` to test T1 (the brane
+make-or-break) with the little-arrows order parameter; (3) Codex design-review (xhigh) → GLM → execute T1. Don't skip ahead —
+T1 (stable wall) gates everything; if the polar field can't make a stable wall, the rest of the ladder is moot and that itself is
+the result.
 
 ---
 
 ## Cross-references
 - EM re-founding detail + the MacCullagh/shear math history: `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md`.
-- The test plan for brane-existence + the defect-as-puncture: `software/stage1_solver/directives/pathA_24_brane_existence_defect_structure.md`.
+- The directive to be reworked into the T1–T5 ladder: `software/stage1_solver/directives/pathA_24_brane_existence_defect_structure.md`.
 - Program state / "you are here": `STATUS.md`; `software/stage1_solver/decisions/13_emergent_constants_derivation.md` §0.

@@ -54,19 +54,26 @@ each tri-reviewed (re-run + fidelity + adversarial) before its gate:
 
 **Full physical picture (MacCullagh §11, λγ §13, costs §14, Stage-1 leak §7.1, Stage-2 crux §15, Stage-3/3b §16, brane-existence §17, defect=puncture §18) = `decisions/15`.**
 
-## Next step — PIVOT (2026-06-23, user): directive `pathA_24` = brane existence + the defect as a brane PUNCTURE (the next many steps)
+## Next step — CONCEPT SETTLED (2026-06-23): test the "little-arrows" brane mechanism (the post-`/compact` plan)
 
-The Stage-2/3 walls + the user's foundational question converged. **The plan (resume here after `/compact`):**
-1. **Read** `decisions/15` §17 (brane = a **DOMAIN WALL** / phase interface: surface tension, we = bound zero modes; currently imposed,
-   `U(ρ)∝ρ⁵` single-well ⇒ needs more structure) + §18 (defect = a **PUNCTURE** → **CHARGE** = topological puncture
-   [mass-independent → universality; mechanism for `η_Q e_*`], **MASS** = trapped geon standing wave, **THROAT SIZE** =
-   tension-closing-vs-holding-open balance [→ finite self-energy]; **charge⊥mass** decoupling). THE PRIZE = a fundamental model of the
-   charged massive particle uniting EM↔gravity at the defect.
-2. **Process the roadmap** `directives/pathA_24_brane_existence_defect_structure.md` (**DRAFT**): Codex design-review (`xhigh`) → GLM
-   tertiary → execute stage-by-stage, each tri-reviewed (re-run + fidelity + adversarial) → user gate. Phase A = brane existence
-   (does the wall carry SHEAR → derive light, retire the MacCullagh postulate? or only tension/bending?); Phase B = defect structure
-   (throat size; charge=puncture; tension→Coulomb + finite self-energy; charge⊥mass; feed `λγ`).
-3. **Gate rule:** any postulated ingredient ⇒ CONDITIONAL; do NOT update `decisions/14`/papers without explicit user acceptance.
+The brane two-state mechanism is now an **agreed working hypothesis** (reasoned with the user): the medium's constituents are
+**polar "little arrows"** that align (→ define `w`, → why space is 3D), flip across the wall (= our brane), **lie flat in-plane →
+shear = LIGHT**, point `±w` in the bulk → shear-free → **magnetism**, and whose two `±w` domains give the **two charge signs**
+(puncture direction, no winding). It dodges the single-well `U(ρ)` (the wall lives in the orientation field). Bonus hypothesis:
+**dark energy** = a bulk↔brane cycle (matter drains brane→bulk; tension throttles a bulk→brane *areal* leak → accelerating
+expansion; matter-vs-area scaling gives the decel→accel crossover). **Full picture + the test plan: `docs/conceptual_foundation.md`
+(read first; §2 mechanism, §5 dark energy, §8 the T1–T5 ladder).**
+
+**The plan (resume here after `/compact`):**
+1. **Read `docs/conceptual_foundation.md`** top-to-bottom for grounding (esp. §2, §5, §8).
+2. **Rework directive `pathA_24`** to encode the little-arrows mechanism + the **T1–T5 ladder** (T1 = does a polar field form a
+   *stable* wall — the brane make-or-break, gates everything; T2 = does the wall carry 2-polarization in-plane shear = light;
+   T3 = bulk stays shear-free; T4 = puncture→two charge signs + finite throat; T5 = the dark-energy cycle). The current
+   Codex-SOUND `pathA_24` v1.1 is generic-domain-wall and must be **reworked to this concrete mechanism**, then re-run through the
+   pipeline: Codex design-review (`xhigh`) → GLM tertiary → execute stage-by-stage, tri-reviewed (re-run + fidelity + adversarial)
+   → user gate. **T1 FIRST** — if a polar field can't make a stable wall, the rest is moot and that is itself the result.
+3. **Gate rule:** any postulated ingredient ⇒ CONDITIONAL; falsification is welcome; do NOT update `decisions/14`/papers without
+   explicit user acceptance.
 
 **Downstream / outstanding:** pathA_23 Stages 4–6 (spectrum/`u_w`, Maxwell/C5, charge/cone-`λγ`) — may be re-framed by pathA_24's wall
 result; a GLM tertiary on the Stage-3b separate-sector question (likely subsumed by pathA_24's domain-wall derivation).

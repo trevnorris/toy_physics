@@ -1,0 +1,504 @@
+engine: sympy
+parameters:
+  rho0: 1.0
+  K_eos: 0.002
+  P_vac: 0.001
+  sigma: 0.003
+  I_wave: 1.0
+  c_w: 1.0
+  mu_in: 0.2
+  mu_out: 2.5
+  chi_perp: 3.14159265359
+  chi_DN: 1.570796326795
+  hbar: 0.03
+  m: 1.0
+  delta_r: 0.05
+  delta_parallel: 0.05
+  eps_w: 0.01
+  depletion_eta_min: 0.95
+  numeric_grid_n: 48
+  numeric_hessian_step: 0.05
+  phase_b_max_coeff: 0.0001
+  d_slab: 2.5
+  c_damp_sample: 1.0
+  c_damp_max: 10.0
+  gain_min: 0.1
+  gain_max: 10.0
+  robust_axis_fraction: 0.3
+  P0: 0.002
+  alpha_volume: 0.003
+  mu_fluid: 0.0025
+citations:
+  fluid_GNLS_and_H:
+  - notes/inner_throat/inner_throat_hard_mode.md:331
+  - notes/inner_throat/inner_throat_hard_mode.md:365
+  - notes/inner_throat/inner_throat_hard_mode.md:1544
+  wave_surrogate_and_H:
+  - notes/inner_throat/inner_throat_hard_mode.md:459
+  - notes/inner_throat/inner_throat_hard_mode.md:479
+  - notes/inner_throat/inner_throat_hard_mode.md:1540
+  fixed_regulator_Vconf:
+  - notes/inner_throat/inner_throat_freeze_sheet.md:54
+  - notes/inner_throat/inner_throat_freeze_sheet.md:62
+  - notes/inner_throat/inner_throat_freeze_sheet.md:70
+  - notes/inner_throat/inner_throat_freeze_sheet.md:89
+  - notes/inner_throat/inner_throat_freeze_sheet.md:101
+  - notes/inner_throat/inner_throat_freeze_sheet.md:113
+  geometry_measures:
+  - notes/inner_throat/inner_throat_freeze_sheet.md:196
+  - notes/inner_throat/inner_throat_freeze_sheet.md:200
+  - notes/inner_throat/inner_throat_freeze_sheet.md:202
+  - notes/inner_throat/inner_throat_freeze_sheet.md:206
+  failure_and_hessian:
+  - notes/inner_throat/inner_throat_hard_mode.md:715
+  - notes/inner_throat/inner_throat_hard_mode.md:1714
+  - notes/inner_throat/inner_throat_hard_mode.md:1720
+  - notes/inner_throat/inner_throat_hard_mode.md:1727
+  open_system:
+  - notes/inner_throat/4d_next_steps.md:1184
+  - notes/inner_throat/4d_next_steps.md:1210
+  - notes/inner_throat/4d_next_steps.md:1217
+  - notes/inner_throat/4d_next_steps.md:2045
+  - notes/inner_throat/4d_next_steps.md:3145
+  - notes/inner_throat/4d_next_steps.md:3246
+  - notes/inner_throat/4d_next_steps.md:3262
+  flow_and_DN:
+  - notes/lepton_mass_notes.md:50
+  - notes/lepton_mass_notes.md:60
+  - notes/lepton_mass_notes.md:155
+  - notes/lepton_mass_notes.md:175
+  - notes/lepton_mass_notes.md:188
+  - notes/lepton_mass_notes.md:199
+  - notes/lepton_mass_notes.md:266
+  - notes/lepton_mass_notes.md:303
+  - notes/lepton_mass_notes.md:1047
+  multi_brane_slab:
+  - docs/conceptual_foundation.md:321
+  - docs/conceptual_foundation.md:325
+  - docs/conceptual_foundation.md:326
+  - docs/conceptual_foundation.md:328
+  scalar_surrogate_scope:
+  - docs/conceptual_foundation.md:274
+  - docs/conceptual_foundation.md:275
+  - docs/conceptual_foundation.md:280
+  - docs/conceptual_foundation.md:283
+forms:
+  sharp_wall_forms:
+  - name: fluid_grand_potential_depletion
+    form: P(rho0)*(4*pi/3)*a^3*L
+    exponents_a_L:
+    - 3
+    - 1
+    sign: +
+    citation: notes/inner_throat/inner_throat_hard_mode.md:1544; notes/inner_throat/inner_throat_freeze_sheet.md:202
+  - name: vacuum_pressure_geometry
+    form: P_vac*(4*pi/3)*a^3*L
+    exponents_a_L:
+    - 3
+    - 1
+    sign: +
+    citation: notes/inner_throat/inner_throat_freeze_sheet.md:191; notes/inner_throat/inner_throat_freeze_sheet.md:202
+  - name: brane_tension_side
+    form: sigma*4*pi*a^2*L
+    exponents_a_L:
+    - 2
+    - 1
+    sign: +
+    citation: notes/inner_throat/inner_throat_freeze_sheet.md:191; notes/inner_throat/inner_throat_freeze_sheet.md:206
+  - name: brane_tension_caps
+    form: sigma*(8*pi/3)*a^3
+    exponents_a_L:
+    - 3
+    - 0
+    sign: +
+    citation: notes/inner_throat/inner_throat_freeze_sheet.md:191; notes/inner_throat/inner_throat_freeze_sheet.md:209
+  - name: fixed_action_wave
+    form: I*sqrt(c_w^2*(pi^2/a^2+(pi/2)^2/L^2)+mu_in^2)
+    exponents_a_L: algebraic; asymptotic pieces (-1,0) and (0,-1), not a monomial
+    sign: +
+    citation: notes/inner_throat/inner_throat_hard_mode.md:479; notes/lepton_mass_notes.md:303
+  - name: phaseB_internal_4D_self_flow
+    form: Phi^2/(8*pi^2*rho*a^2)
+    exponents_a_L:
+    - -2
+    - 0
+    sign: +
+    citation: notes/lepton_mass_notes.md:188; notes/lepton_mass_notes.md:201; notes/lepton_mass_notes.md:1047
+  - name: phaseB_soft_slab
+    form: sigma_ret*(L/d_slab)^2
+    exponents_a_L:
+    - 0
+    - 2
+    sign: +
+    citation: docs/conceptual_foundation.md:321; docs/conceptual_foundation.md:325
+  - name: phaseB_hard_slab
+    form: constraint L<=d_slab
+    exponents_a_L: inequality constraint
+    sign: constraint
+    citation: docs/conceptual_foundation.md:325; docs/conceptual_foundation.md:326
+  - name: optional_Willmore_side
+    form: lambda_W*(16*pi/9)*L
+    exponents_a_L:
+    - 0
+    - 1
+    sign: +
+    citation: notes/inner_throat/inner_throat_hard_mode.md:586; notes/inner_throat/4d_next_steps.md:353
+  - name: phaseC_conductance
+    form: G_c=a^3/L
+    exponents_a_L:
+    - 3
+    - -1
+    sign: +
+    citation: notes/inner_throat/4d_next_steps.md:1210; notes/inner_throat/inner_throat_freeze_sheet.md:200
+  - name: phaseC_work_kernel
+    form: G_work=a^2*L/ell0^5
+    exponents_a_L:
+    - 2
+    - 1
+    sign: s in {+,-} enters F_nc
+    citation: notes/inner_throat/4d_next_steps.md:1224; notes/inner_throat/inner_throat_freeze_sheet.md:206
+  dimensional_check:
+    fluid_terms: P and P_vac have units E/L^4; V has L^4.
+    surface_term: sigma has E/L^3; area has L^3.
+    wave_term: I has action E*T; omega has T^-1.
+    phaseB_flow: rho*u^2 integrated over d^4X gives energy; cited closed form Phi^2/(8*pi^2*rho*a^2).
+    phaseC: kappa_c carries the units needed for Phi_w=kappa_c*G_c*mu_drive; G_work is normalized by ell0^5 so dG_work/dq
+      has L^-3 and (Phi_w^2/rho)*dG_work/dq is a generalized force E/L.
+    jacobian: M^{-1}*(H+K_open) has T^-2 and M^{-1}*C has T^-1.
+phase_A:
+  q_star:
+  - 1.892410005412
+  - 1.81206770991
+  L_over_a: 0.957544984823
+  energy: 2.452741975468
+  omega: 1.88344658775
+  gradient_residual:
+  - 0.0
+  - 0.0
+  hessian:
+  - - 1.588882648729
+    - 0.187305037772
+  - - 0.187305037772
+    - 0.338772578964
+  hessian_eigenvalues:
+  - 0.311311733728
+  - 1.616343493965
+  label: A_CANDIDATE_MIN
+  virial:
+    a_identity: 3*E_volume + 2*E_side + 3*E_cap = I*c_w^2*chi_perp^2/(a^2*omega)
+    L_identity: E_volume + E_side = I*c_w^2*chi_DN^2/(L^2*omega)
+    a_residual: 0.0
+    L_residual: 0.0
+fluid_only:
+  label: FLUID_ONLY_COLLAPSE_NO_INTERIOR_STATIONARY
+  dE_da: 0.024*pi*a*(0.5*L*a + 1.0*L + 1.0*a)
+  dE_dL: 0.012*pi*a**2*(0.333333333333333*a + 1.0)
+  positive_derivative_sample:
+  - 0.188495559215
+  - 0.050265482457
+numeric_envelope:
+  method: coarse smooth-gate fixed-mu depletion envelope; eta relaxed to constrained lower bound
+  grid_shape:
+  - 48
+  - 48
+  eta_relaxed: 0.95
+  domain:
+    rmax: 2.492410005412
+    wmax: 1.506033854955
+  hessian:
+  - - 1.883688977473
+    - 0.233314944424
+  - - 0.233314944424
+    - 1.019054676558
+  hessian_eigenvalues:
+  - 0.960114275551
+  - 1.942629378481
+  analytic_numeric_sign_agree: true
+  candidate_interior_to_grid: true
+  local_5x5_energy_mesh:
+  - - 2.634967785
+    - 2.6408358633
+    - 2.6356522035
+    - 2.6438974066
+    - 2.6453748075
+  - - 2.6394990758
+    - 2.6463641681
+    - 2.641149907
+    - 2.6504793248
+    - 2.6524025384
+  - - 2.6487669096
+    - 2.6566937352
+    - 2.6514567928
+    - 2.6619367784
+    - 2.6643372228
+  - - 2.6626693801
+    - 2.6717255858
+    - 2.6664748514
+    - 2.6781738919
+    - 2.6810853052
+  - - 2.6810984
+    - 2.6913539677
+    - 2.6860982719
+    - 2.6990863948
+    - 2.7025440101
+phase_B:
+  label: B_RESCUABLE
+  open_positive_region:
+    B_flow: (0, 0.0001)
+    sigma_ret: (0, 0.0001)
+    lambda_W: (0, 0.0001)
+    d_slab: 2.5
+  corner_checks:
+  - success: true
+    coeffs:
+    - 0.0
+    - 0.0
+    - 0.0
+    q_star:
+    - 1.892410005412
+    - 1.81206770991
+    hessian_eigenvalues:
+    - 0.311311742677
+    - 1.616343514962
+  - success: true
+    coeffs:
+    - 0.0
+    - 0.0
+    - 0.0001
+    q_star:
+    - 1.892617447658
+    - 1.810307653373
+    hessian_eigenvalues:
+    - 0.312550382689
+    - 1.615653191897
+  - success: true
+    coeffs:
+    - 0.0
+    - 0.0001
+    - 0.0
+    q_star:
+    - 1.892431583075
+    - 1.811884666753
+    hessian_eigenvalues:
+    - 0.311471641246
+    - 1.616272389826
+  - success: true
+    coeffs:
+    - 0.0
+    - 0.0001
+    - 0.0001
+    q_star:
+    - 1.892638910111
+    - 1.810125513622
+    hessian_eigenvalues:
+    - 0.312710199903
+    - 1.615582436774
+  - success: true
+    coeffs:
+    - 0.0001
+    - 0.0
+    - 0.0
+    q_star:
+    - 1.89242987344
+    - 1.812056724934
+    hessian_eigenvalues:
+    - 0.311320783983
+    - 1.616364816051
+  - success: true
+    coeffs:
+    - 0.0001
+    - 0.0
+    - 0.0001
+    q_star:
+    - 1.892637310911
+    - 1.810296720633
+    hessian_eigenvalues:
+    - 0.312559410254
+    - 1.615674528932
+  - success: true
+    coeffs:
+    - 0.0001
+    - 0.0001
+    - 0.0
+    q_star:
+    - 1.89245145025
+    - 1.811873688442
+    hessian_eigenvalues:
+    - 0.311480665488
+    - 1.616293707979
+  - success: true
+    coeffs:
+    - 0.0001
+    - 0.0001
+    - 0.0001
+    q_star:
+    - 1.892658772659
+    - 1.810114587065
+    hessian_eigenvalues:
+    - 0.312719275378
+    - 1.61560378141
+  hard_slab:
+    constraint: L <= 2.5
+    status: interior_not_boundary
+  soft_slab_form: sigma_ret*(L/d_slab)^2
+  flow_form: Phi^2/(8*pi^2*rho*a^2)
+  bending_form: (16*pi/9)*lambda_W*L plus fixed-regulator edge corrections
+phase_C:
+  label: C_GENERICALLY_UNSTABLE
+  state_variables:
+  - Phi_w
+  - Delta_h
+  slaving:
+    G_c: a^3/L
+    Phi_w: kappa_c*(a^3/L)*mu_drive
+    Delta_h: zeta*Phi_w
+  work_kernel: 'G_work=a^2*L/ell0^5 (nondimensional execution: a^2*L)'
+  F_nc_after_slaving: s*(kappa_c*mu_drive)^2/rho0 * (2*a^7/L, a^8/L^2)
+  K_open: -dF_nc/dq
+  mass_matrix: diag(rho0*V, rho0*V/4)
+  damping: diag(c_a,c_L), c_a,c_L>=0
+  gain_box:
+    kappa_c:
+    - 0.1
+    - 10.0
+    zeta:
+    - 0.1
+    - 10.0
+    mu_drive:
+    - 0.1
+    - 10.0
+    c_a_c_L:
+    - 0.0
+    - 10.0
+  robust_required_axis_radius: 2.97
+  robust_min_center_gain: 3.07
+  robust_center_g_open_lower_bound: 88.82874001
+  robust_forced_g_lower_bound: 1330.90713856
+  robust_region_exists: false
+  static_divergence_at_box_forced_gain:
+    reference_point: conservative_phase_A_q_star
+    q_reference:
+    - 1.892410005412
+    - 1.81206770991
+    g_open: 88.82874001
+    damping_note: 'Static divergence: H+K_open has negative determinant and the symmetric stiffness part has a negative eigenvalue,
+      so passive C>=0 can only set timescales; it cannot remove the negative-stiffness direction.'
+    signs:
+      plus:
+        s: 1
+        det_total_stiffness: -66344569.698162
+        min_symmetric_stiffness_eigenvalue: -32837.374848
+        symmetric_stiffness_eigenvalues:
+        - -32837.374848
+        - 6229.546069
+        total_stiffness_eigenvalues:
+        - re: -28903.231932
+          im: 0.0
+        - re: 2295.403153
+          im: 0.0
+        max_jacobian_real_part: 21.268402
+      minus:
+        s: -1
+        det_total_stiffness: -66344104.227761
+        min_symmetric_stiffness_eigenvalue: -6228.919444
+        symmetric_stiffness_eigenvalues:
+        - -6228.919444
+        - 32840.603539
+        total_stiffness_eigenvalues:
+        - re: 28906.788712
+          im: 0.0
+        - re: -2295.104617
+          im: 0.0
+        max_jacobian_real_part: 14.840795
+  signs:
+    plus:
+      s: 1
+      sample_gain:
+        kappa_c: 0.1
+        mu_drive: 0.1
+        zeta: 1.0
+        c_a: 1.0
+        c_L: 1.0
+        g_open: 0.0001
+      sample:
+        steady_point:
+        - 1.897036263838
+        - 1.824510457739
+        jacobian_spectrum:
+        - re: -0.017712259
+          im: 0.1814321003
+        - re: -0.017712259
+          im: -0.1814321003
+        - re: -0.0302034748
+          im: 0.1438780504
+        - re: -0.0302034748
+          im: -0.1438780504
+        det_total_stiffness: 0.488797988
+        stiffness_symmetric_eigenvalues:
+        - 0.3097532948
+        - 1.5774541573
+        stable: true
+      stable_corner_gcrit: 0.0013108765
+      stable_corner_condition: (kappa_c*mu_drive)^2 < 0.001310876542
+    minus:
+      s: -1
+      sample_gain:
+        kappa_c: 0.1
+        mu_drive: 0.1
+        zeta: 1.0
+        c_a: 1.0
+        c_L: 1.0
+        g_open: 0.0001
+      sample:
+        steady_point:
+        - 1.887848509896
+        - 1.800012627417
+        jacobian_spectrum:
+        - re: -0.0176380603
+          im: 0.188353188
+        - re: -0.0176380603
+          im: -0.188353188
+        - re: -0.0316423622
+          im: 0.1465903422
+        - re: -0.0316423622
+          im: -0.1465903422
+        det_total_stiffness: 0.517842553
+        stiffness_symmetric_eigenvalues:
+        - 0.3128357822
+        - 1.6547615431
+        stable: true
+      stable_corner_gcrit: 0.0060561151
+      stable_corner_condition: (kappa_c*mu_drive)^2 < 0.006056115081
+  instability_proof: Stable fixed points exist only in a tiny near-zero-drain corner. The most favorable in-box 30%-axis-radius
+    ball center already has kappa_c=mu_drive=3.07, hence g_open=88.8287, far above max(gcrit)=0.00605612; therefore no qualifying
+    ball can be stable.
+approximation_gate:
+  checks:
+    scale_separation: true
+    binding: true
+    candidate_interior_to_numeric_grid: true
+    hessian_sign_agreement: true
+  passes: true
+  scale_ratio_min: 36.2413541982
+  binding_margin_fraction: 0.2466213649
+  remedy_if_failed: shrink fixed regulators, raise outside threshold, enlarge grid, or run a higher-resolution envelope solve
+lambda_ray:
+  object: reduced ledger only, not the full 4D continuum
+  F: A/a + B/a^2 + C*a^3
+  exponents:
+  - -1
+  - -2
+  - 3
+  stationarity_identity: -E_w - 2*E_f + 3*E_PV = 0
+  virial: E_w + 2*E_f = 3*E_PV
+top_line_verdict: THROAT_DRAIN_DESTABILIZED
+falsifier:
+  name: FALSIFIER_C_ROBUST_DRAIN_BALL
+  description: A measured non-conservative drain closure with a 30%-axis-radius LHP-stable gain ball for nonzero drain would
+    change Phase C to C_STABILIZABLE.  For this kernel that is equivalent to reducing the effective open-force normalization
+    below eta_open=4.55037e-06, or otherwise changing the measured work-kernel/Jacobian so the robust ball fits inside the
+    O(1) box.
+engine_agreement:
+  status: AGREE
+  mathematica_json: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_26_derrick_mathematica.json
+  mismatches: []

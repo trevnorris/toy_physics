@@ -35,19 +35,46 @@ STALLED on `L/a` self-selection); `notes/lepton_mass_notes.md` (trapped-wave fun
 throat (a *different* object — frozen-geometry gravity-closure profile solve, abandoned/re-scoped). **Recurring wall: nothing in either
 self-selects the throat size.**
 
-**▶ NEXT ACTION (resume here — user-approved plan, 2026-06-24; cheap + able-to-fail, before any big build):**
-1. Draft a **4D Derrick/virial scaling check** of the throat-soliton energy (reuse the Paper-7 functional `notes/inner_throat/`) — the
-   cheapest way to KILL the throat-soliton; **never run** in either prior effort. A Derrick obstruction ends it cheaply.
-2. Run the **R/C cubic verdict** (pathA_25 sensitivity branches): does Family **R** or **C** escape the B4 cubic? Expect **R = no**
-   (purely quadratic in δρ, no axis), **C = maybe** (ρ–P coupling → P picks the axis → uniaxial → codim-1, the nematic→smectic
-   mechanism; crux risk = the same C may pin P out-of-plane and starve light). **FIX the tautological Family-C `k→0`** in the G0 scripts
-   before running C.
-3. IF Derrick survives → **resume Paper-7** with the missing forces (drain-backpressure closure + multi-brane return = the `L/a`
-   selector; trapped wave as a brane-shear **sub-cutoff** mode), reusing the `stage1_solver` solver infra + the soliton-solver lit survey
-   (`reports/pathA_throat_solver_literature_synthesis.md`).
+**⭐ pathA_26 DERRICK CHECK — DONE (2026-06-24): `THROAT_DRAIN_DESTABILIZED`** (full gauntlet: Codex r1→r6 GREEN, GLM SOUND, Codex r7
+confirm; executed dual-engine; arbiter-reran deterministic; adversarial `SOUND` by 10³–10⁴×; fidelity `ISSUES`→remediated `c_w²`-fix).
+Artifacts: `software/stage1_solver/reports/pathA_26_derrick.md` (+`_results.yaml`), `tools/pathA_26_derrick_sympy.py`+`.wl`; prompt
+`_scratch/pathA_26_derrick_execute_prompt.md` (v7). Two halves:
+- **Phase A = `A_CANDIDATE_MIN` (the SOLID, real result):** the conservative throat-soliton EXISTS **generically** (interior PD min at
+  `a*≈1.89,L*≈1.81`, virial residuals 0, both Hessian eigs >0, fluid-only collapses; adversarial confirmed 75/75 coupling combos). The
+  trapped wave's outward pressure (`ω∝1/a`: squeeze the throat → freq↑ → energy↑ → pushes back) balances tension+vacuum inward. **NOT
+  Derrick-forbidden.** The throat-soliton energy balance closes.
+- **Phase C = `C_GENERICALLY_UNSTABLE` → top-line `THROAT_DRAIN_DESTABILIZED`. ⚠ DO NOT READ AS "PARTICLE KILLED" (user+orchestrator
+  interpretation 2026-06-24, post-investigation):** the destabilization is a static divergence ONLY above a critical drain
+  `gcrit≈0.006`; **for weak drain the throat is STABLE** (`gcrit>0`). The `DESTABILIZED` verdict came from a directive choice I made —
+  demanding robustness over an O(1) drain box (`g` up to ~89) — that does **NOT reflect that gravity is the weakest force**. Prior repo
+  work (investigation 2026-06-24) shows the drain/gravity sector is the runt: `E_w:E_f:E_PV=11:2:5` (feed ≈11% of rest E); `g_G`
+  **calibrated not derived**, bare `P0~10⁻⁹` (~9 orders below GR target); analog horizon only at the **transonic** limit `v_b→c_s`;
+  on the EXACT trapped mode the trans-brane current `J_w=0` (drain formally ~0). **So a particle's physical drain is tiny → it sits deep
+  in the stable corner; the instability plausibly marks the BLACK-HOLE/transonic regime, where the drain SHOULD dominate (a consistency
+  feature).** Your intuition ("you can hold it open; the tiny flow doesn't break it") is vindicated structurally.
+- **THE PRECISE GAP (what was never done):** nobody mapped a particle's PHYSICAL drain strength onto pathA_26's dimensionless
+  `g`-axis to prove `g_phys ≪ gcrit`. The pathA_26 drain law is **parameterized, not derived** (the `g≈89` is a synthetic worst-case,
+  not a particle). Closing this rigorously = the drain-sector derivation. **Deeper open question (separate from stability):** with
+  `J_w=0` on the exact mode, whether the "gravity = drain" mechanism produces a **nonzero, right-sized** drain at all is itself unbuilt
+  (needs the dynamic AC→DC rectification the notes specced-not-built).
 
-**UNCOMMITTED working tree:** B4 artifacts (`reports/pathA_25_gateB4_smectic.md`, `..._results.yaml`,
-`tools/pathA_25_gateB4_smectic_sympy.py` + `....wl`) + these doc/ledger edits are uncommitted (commit only when the user asks).
+**▶ NEXT ACTION — TWO INDEPENDENT TRACKS (can run in parallel; different objects, files, no shared state; only shared resource = ≤2
+concurrent Mathematica seats):**
+1. **(2a) Drain-sector derivation — the REAL throat-soliton frontier (big, open).** Derive the actual drain law (steady flow + density
+   depletion + backpressure built INTO the equilibrium, not an external perturbation; the user's picture = wave-out vs tension+backpressure-in
+   from the start), tied to the physical gravity coupling → (i) pin `g_phys` vs `gcrit≈0.006` rigorously, (ii) resolve whether the drain
+   is even nonzero/right-sized (the `J_w=0` rectification question). Reuses `stage1_solver` infra + `reports/pathA_throat_solver_literature_synthesis.md`.
+   Needs a SCOPING/design phase first (not a single execute).
+2. **(2b) R/C cubic verdict — cheap, bounded, independent (pathA_25 branches).** Does Family **R** or **C** escape the B4 multi-`k`
+   cubic NO-GO (i.e. can the DENSITY-smectic brane form via a different driver)? Expect **R=no** (quadratic in δρ, no axis), **C=maybe**
+   (ρ–P coupling picks an axis → uniaxial → codim-1; crux risk = same C pins P out-of-plane, starves light). **FIX the tautological
+   Family-C `k→0`** in the G0 scripts FIRST. Contained dual-engine symbolic check like B4 → light gauntlet → execute. Settles the OLD
+   density-smectic brane route (independent of the throat-soliton's gravity question in 2a).
+
+**UNCOMMITTED working tree (as of 2026-06-24, pre-/compact):** B4 artifacts were committed in `581c0b2f`. NOW uncommitted = the
+**pathA_26** deliverables (`reports/pathA_26_derrick.md`, `..._results.yaml`, `tools/pathA_26_derrick_sympy.py` + `....wl`), the pathA_26
+`_scratch/` prompts+logs (gitignored), and these STATUS/report/ledger doc edits. **Commit only when the user asks.** (User has NOT yet
+asked to commit pathA_26.)
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

@@ -7,11 +7,13 @@ This is the live "you are here" for pathA_25. Updated at each gate.
 
 > **⚠ FRONTIER PIVOTED (2026-06-24): pathA_25 gates are PAUSED.** B4 = `FAIL_NOT_CODIM1` (final; density-smectic NO-GO). The active
 > frontier is now the **throat-soliton / 4D-light synthesis** — READ FIRST: repo `STATUS.md` ⭐⭐ LATEST STATE +
-> `docs/conceptual_foundation.md` §4/§5/§6.1 + memory `project-light-is-4d-throat-hypothesis`. **Resume plan (user-approved):** (1) draft
-> a **4D Derrick/virial scaling check** of the throat-soliton (reuse Paper-7 `notes/inner_throat/`) — cheapest kill, never run; (2) run
-> the **R/C cubic verdict** (does Family R/C escape the B4 cubic? fix the tautological Family-C `k→0` first); (3) if Derrick survives,
-> resume Paper-7 with the missing drain-backpressure/multi-brane-return + sub-cutoff-wave forces (reuse `stage1_solver` solver infra).
-> The pathA_25 gate material below is preserved as history.
+> `docs/conceptual_foundation.md` §4/§5/§6.1 + memory `project-light-is-4d-throat-hypothesis`.
+> **UPDATE (2026-06-24): step (1) DONE — pathA_26 Derrick + open-stability check = `THROAT_DRAIN_DESTABILIZED`, interpreted NOT-a-kill**
+> (conservative throat-soliton EXISTS generically; instability only at unphysical large drain = black-hole regime). See
+> `reports/pathA_26_derrick.md` (+ its Interpretation §) and STATUS.md ⭐⭐. **Remaining plan = TWO INDEPENDENT PARALLEL tracks:**
+> **(2a)** drain-sector derivation (the real throat-soliton frontier — pin `g_phys≪gcrit`; resolve the `J_w=0` mechanism); **(2b)** the
+> **R/C cubic verdict** below (does Family R/C escape the B4 cubic? **FIX the tautological Family-C `k→0` first** — see Carry-forward).
+> The pathA_25 gate material below is preserved as history; (2b) is the only live pathA_25 thread.
 
 **State:** directive `pathA_25` v4 review-gauntlet SOUND + committed (`6cdaa821`). **G0 DONE** = `SECOND_MEDIUM_DRIFT_AT_FREEZE`
 (5 inputs; tri-reviewed; committed `77fd0e72`, hash `f00ee99d465e`). **Gate B4 execution prompt v4 = THROUGH THE FULL REVIEW GAUNTLET**

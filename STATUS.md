@@ -83,9 +83,13 @@ no-longitudinal, leak-free — THE CRUX), Gate S (magnetism), Gate B (brane↔gr
 (cone-lock `c_γ≈c_s`, likely a calibration gap), Gate T (throat/mass). **Inherited walls (concede):** dynamics/`G`/`α`
 (calibrate-predict), emergent-axis/why-3D, Lorentz/preferred-frame (toy-analog scope).
 
-**First action post-`/compact`:** draft a fresh directive encoding the GNLS polar-smectic structure + the consistency gates
-(**Gate L first** — the crux/most-likely no-go) → Codex design-review (xhigh) → GLM tertiary → execute gate-by-gate, tri-reviewed,
-user-gated. Methodology shift: "specify the FULL structure (postulated) + test CONSISTENCY," not "freeze minimal + test derivation."
+**LIVE STATE (2026-06-23):** the directive is BUILT — `pathA_25` (v4, review-gauntlet SOUND: Codex design-review → GLM tertiary → 2
+Codex confirm-passes), committed `6cdaa821`. **G0 (structure freeze) DONE** = `SECOND_MEDIUM_DRIFT_AT_FREEZE` (5 independent inputs:
+`c_L1,c_L2` smectic driver + `μ_br,J_Pu,κ_Pu` light sector; tri-reviewed genuine; committed `77fd0e72`). Per §14 the drift is a
+record-and-proceed finding (the 5 inputs = the calibration budget). **NEXT = Gate B4** (does the baseline Family-L driver make a stable
+codim-1 emergent-axis smectic? — the T1-replacement): draft its execution prompt → design-review with **BOTH Codex (xhigh) AND GLM**
+(crux gate, §18) → execute → tri-review → user gate. **Live ledger + resume block: `software/stage1_solver/reports/pathA_25_STATUS.md`.**
+Methodology: "specify the FULL structure (postulated) + test CONSISTENCY / hunt a no-go," not "freeze minimal + test derivation."
 
 **Methodology (locked):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** — orchestrator arbiter
 re-run + transliteration-fidelity audit + adversarial review on clean agents; user gate per gate.

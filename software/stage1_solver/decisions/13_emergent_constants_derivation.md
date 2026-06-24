@@ -10,8 +10,11 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐ LIVE STATE (2026-06-23): now EXECUTING `pathA_24` (little-arrows T1–T5); T0 DONE, T1 next — see the PIVOT block below + repo
-> `STATUS.md` "Next step". The EM-re-founding paragraph immediately following is the history that LED to that pivot.**
+> **⭐ LIVE STATE (2026-06-23): pathA_24 T0 ✅ then T1 ❌ FALSIFIED (`T1_FAIL_NO_STABLE_WALL`, tri-reviewed genuine, `2fa91886`) —
+> the static little-arrows domain-wall brane is dead (connected `S³` vacua → wall spreads/unwinds). PIVOT → the GNLS polar-smectic
+> superfluid + a consistency-gate program (analog, not derivation). RESUME: repo `STATUS.md` "Next step" + `docs/conceptual_foundation.md`
+> (v3) + `docs/medium_requirements_and_prior_art.md` (requirements + survey + candidate + gates). The EM-re-founding / little-arrows
+> material below is the history that LED here.**
 
 **⭐⭐⭐ 2026-06-23 — EM RE-FOUNDING NOW EXECUTING (RESUME HERE FIRST; front door = repo `STATUS.md`).** Chasing `λγ` exposed the
 canonical EM sector DRIFTED from the single-medium concept (`reports/pathA_cgamma_of_rho_derivation.md`: EM = fundamental gauge

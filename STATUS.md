@@ -23,8 +23,9 @@ surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared *derived* `χ_
 
 ## ⭐ ACTIVE FRONTIER (2026-06-23): EM re-founding → PIVOT to "why the brane exists" + the defect = a brane PUNCTURE (pathA_24)
 
-> **Now EXECUTING `pathA_24` (little-arrows T1–T5) — see the "Next step" section below for the live state (T0 done, T1 next).**
-> The pathA_23 history below is the context that led here.
+> **PIVOT (2026-06-23): pathA_24 T1 FALSIFIED the little-arrows domain-wall brane → now the GNLS polar-smectic superfluid candidate
+> + a consistency-gate program. See the "Next step" section below for the live state.** The pathA_23 / little-arrows history below
+> is the context that led here. Conceptual home: `docs/conceptual_foundation.md` (v3) + `docs/medium_requirements_and_prior_art.md`.
 
 Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a fundamental gauge field
 on a flat metric, *decoupled* from the medium; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). Re-founded EM **medium-native**:
@@ -57,44 +58,47 @@ each tri-reviewed (re-run + fidelity + adversarial) before its gate:
 
 **Full physical picture (MacCullagh §11, λγ §13, costs §14, Stage-1 leak §7.1, Stage-2 crux §15, Stage-3/3b §16, brane-existence §17, defect=puncture §18) = `decisions/15`.**
 
-## Next step — EXECUTING `pathA_24` (little-arrows T1–T5); T0 DONE, **T1 is next** (resume here after `/compact`)
+## Next step — PIVOT to the GNLS polar-smectic superfluid + consistency-gate program (resume here after `/compact`)
 
-The little-arrows brane mechanism is the agreed working hypothesis (full picture: `docs/conceptual_foundation.md` — read first;
-§2 mechanism, §3 light = MacCullagh rotational-elastic shear [the Frank-vs-MacCullagh deep-dive], §5 dark energy, §8 the T1–T5 plan).
-Directive **`pathA_24` v2.2 is FULLY REVIEWED + COMMITTED** (`95ed2b86`): Codex design-review ×5 rounds → `SOUND-AS-IS`, GLM tertiary
-→ `SOUND-WITH-CONCERNS` folded. Now **executing rung-by-rung**, each tri-reviewed (orchestrator arbiter-re-run + transliteration-
-fidelity audit + adversarial review) + user gate.
+**Read first:** `docs/conceptual_foundation.md` (v3 — §0.6 analog reframe, §2 v3 brane update, §8 new plan) + the full writeup in
+`docs/medium_requirements_and_prior_art.md` (requirements list A/B/C, prior-art survey, candidate structure, consistency gates).
 
-**Done so far:**
-- **T0 ✅ (committed `f0c2745f`)** — froze the minimal polar-OP Lagrangian *target-blind* (`reports/pathA_24_T0_freeze.md`, hash
-  `8fa41ac51e88`): O(4)-isotropic soft-spin polar vector `P^i` carried by the medium, one-constant Frank stiffness, single-well
-  potential, **no easy axis**, 0 independent OP params (refused the easy-axis + Cosserat temptations). Reviewed `T0-SOUND-WITH-NOTES`.
-  Dual-engine dim-check `PASS` (`reports/pathA_24_T0_dimcheck.md`; SymPy+Mathematica, both fidelity-guarded, orchestrator re-ran
-  both): dims homogeneous; bulk OP spectrum = **3 transverse Goldstones at `c_s` + 1 gapped amplitude mode** (`c_OP=c_s0` is the
-  *bulk* speed, NOT the wall-localized `c_γ` — `λγ` not pre-decided).
+**What happened (2026-06-23):**
+- **T0 ✅ (`f0c2745f`)** froze the GNLS + polar-OP action (`reports/pathA_24_T0_freeze.md`, hash `8fa41ac51e88`).
+- **T1 ❌ FALSIFIED (`2fa91886`) — `T1_FAIL_NO_STABLE_WALL`, tri-reviewed GENUINE** (arbiter re-run both engines identical;
+  `FIDELITY_CLEAN`; adversarial `T1_FAIL_GENUINE`). A *static* polar-vector domain wall has a **connected `S³` vacuum manifold
+  (π₀=0)** → it spreads to infinite width (`σ_L→0`) and unwinds with zero barrier: no stable wall, no flat core, no confinement.
+  The three-way no-win (emergent-`w` / stable-wall / light-capable-core) is now **demonstrated**.
+- **Prior-art survey (5 agents)** + two user reframes → the pivot. Survey verdicts: kinematics-without-dynamics is a **universal
+  wall** (analog gravity + Volovik ³He both stall there — same as our `g_G`-calibrated finding); the emergent-axis obstruction is
+  **structural** (Davies–George–Volkas + ³He independently confirm T1); the **smectic mechanism** is the escape; light has two
+  rival routes (continuum MacCullagh — ours, must beat a negative-energy instability — vs Wen lattice string-nets); charge-as-
+  extended-puncture gets independent corroboration (Wen string-ends).
 
-**T1 — the stable-wall make-or-break (DO THIS NEXT, script-first/dual-engine):** Mathematica leads the wall profile + finite surface
-tension `σ_brane` + the full fluctuation/stability spectrum + `w`-emergent-vs-imposed + confinement/bound-zero-modes; SymPy
-cross-checks; then orchestrator arbiter-re-run + fidelity audit + adversarial review → user gate. **Honest prior (load-bearing):**
-the isotropic baseline likely gives an **emergent-`w` but UNSTABLE wall** (sphere-of-vacua unwinding) — the three-way no-win leg;
-expect **≤2 of {light, stable wall, emergent-`w`}**, and plan to lose emergent-`w` (realistic best case = stable wall with `w`
-imposed). T2 (light) = a `MacCullagh-vs-Frank/Cauchy` coin-flip, and the baseline is *conservative* (the co-rotational/Jaumann term
-— a MacCullagh enabler — is pruned-to-a-future-T0, so a baseline T2 FAIL = "FAIL under the minimal advective frame", not concept-dead).
+**The new candidate + plan (the GNLS polar-smectic superfluid):** KEEP the GNLS (gravity/magnetism/sound/`c_s`); ADD the polar
+orientation field (light + charge) + a **non-local/roton layering driver** that gives a **smectic** (1D density-modulated) brane as
+the spontaneous **ground state** (fixes T1's no-stable-wall + emergent-axis). **Density now modulates** (honest change). Test by
+**hunting no-gos among the consistency gates** (analog, not derivation): **Gate L** (light on the layer — bounded-below MacCullagh,
+no-longitudinal, leak-free — THE CRUX), Gate S (magnetism), Gate B (brane↔gravity compat), Gate Q (two charge signs), Gate K
+(cone-lock `c_γ≈c_s`, likely a calibration gap), Gate T (throat/mass). **Inherited walls (concede):** dynamics/`G`/`α`
+(calibrate-predict), emergent-axis/why-3D, Lorentz/preferred-frame (toy-analog scope).
 
-**Methodology (locked in with the user):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** — the
-orchestrator independently re-runs scripts (arbiter) + audits code-vs-equations (fidelity) + clean adversarial review; user gate per rung.
+**First action post-`/compact`:** draft a fresh directive encoding the GNLS polar-smectic structure + the consistency gates
+(**Gate L first** — the crux/most-likely no-go) → Codex design-review (xhigh) → GLM tertiary → execute gate-by-gate, tri-reviewed,
+user-gated. Methodology shift: "specify the FULL structure (postulated) + test CONSISTENCY," not "freeze minimal + test derivation."
 
-**Gate rule:** any postulated/ad-hoc ingredient ⇒ CONDITIONAL; falsification is welcome and first-class; execution is reports-only —
-NO `decisions/14`/`decisions/15`/`pde.tex`/paper edits without explicit user acceptance (gated behind a separate `pathA_24_integration`).
+**Methodology (locked):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** — orchestrator arbiter
+re-run + transliteration-fidelity audit + adversarial review on clean agents; user gate per gate.
 
-**Downstream / outstanding:** pathA_23 Stages 4–6 (spectrum/`u_w`, Maxwell/C5, charge/cone-`λγ`) — likely re-framed by pathA_24's wall
-result. (Deferred, parked: why fluid flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
+**Downstream / outstanding:** pathA_23 Stages 4–6 — likely re-framed by the smectic-brane result. (Deferred, parked: why fluid
+flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
 
 ## Map — what you want → which doc holds it
 
 | You want… | Look here |
 |---|---|
 | **The conceptual vision — what the medium / brane / 4 sectors / defect physically ARE (read first)** | `docs/conceptual_foundation.md` |
+| **Requirements list + prior-art survey + the GNLS polar-smectic candidate + consistency gates (the live frontier)** | `docs/medium_requirements_and_prior_art.md` |
 | **The EM re-founding physical picture + MacCullagh template + Stage-1 leak finding (§7.1)** | `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` |
 | The EM re-founding execution plan (directive v5, EXECUTING) | `software/stage1_solver/directives/pathA_23_em_medium_native.md` |
 | Stage 0 result (action + contracts) / Stage 1 result (leak audit) | `software/stage1_solver/reports/pathA_23_stage0_action_and_contracts.md` / `..._stage1_kinematic_leak_audit.md` |

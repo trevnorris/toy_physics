@@ -6,10 +6,14 @@ conceptual picture is never lost between work sessions and never has to be re-ex
 update it whenever the conceptual picture sharpens. It is deliberately separate from the math/derivation/verdict machinery
 (those live in `software/stage1_solver/decisions/*`, the `pathA_*` directives, and `STATUS.md`).
 
-**Status:** v2, 2026-06-23. Reconstructed from the pre-`/compact` "what is light" (drumhead/surface-tension) and "why does the
-brane exist" discussions, plus the EM re-founding work (pathA_23) and the puncture/charge/mass picture. **v2 adds the agreed
-working hypothesis** — the **little-arrows (polar-orientation) brane mechanism** (§2) — and the **bulk↔brane cycle / dark-energy**
-extension (§5), plus the post-`/compact` test plan (§8).
+**Status:** v3, 2026-06-23. (v2 added the little-arrows brane hypothesis.) **v3 records a pivot:** the little-arrows *domain-wall*
+brane was **FALSIFIED** at pathA_24 T1 (a static polar-vector wall on the connected `S³` vacuum manifold spreads/unwinds —
+tri-reviewed genuine, commit `2fa91886`). A prior-art survey + two user reframes led to the **GNLS polar-smectic superfluid**
+candidate (the arrows now ride on a **smectic density-layering** brane, not a self-localizing wall) and a **methodology shift**:
+we are building an **analog and testing whether one self-consistent structure satisfies all requirements** — NOT deriving the
+universe. Full requirements list, prior-art survey, candidate structure, and the consistency-gate plan now live in
+`docs/medium_requirements_and_prior_art.md` (read alongside this doc). Changes below: §0 reframe rule; §2 brane refinement (density
+now modulates); §8 new plan.
 
 ---
 
@@ -32,6 +36,13 @@ These are load-bearing. Violating them is the recurring failure mode (importing 
    protect the picture. A clean "it all just works" is the *suspicious* outcome.
 5. **Framing split.** In private/working context (like this doc) we engage the unification picture directly. In public
    papers, the framing is strict toy-analog only. This doc is the private conceptual vision.
+6. **Analog, not derivation — find a consistent structure (added v3, load-bearing).** We are NOT trying to derive the medium /
+   brane / constituents from first principles (they could be arbitrarily deep — e.g. 4D structures in their own 5D space;
+   unknowable). We are building a mathematical analog and asking the finite question: **is there a single self-consistent
+   superfluid structure that satisfies ALL our requirements at once?** We may **postulate the structure freely**; the test is
+   internal **consistency**. This makes falsification *sharper*: the failure mode is a genuine **no-go — two requirements
+   mutually incompatible in any structure** (the T1 three-way no-win was the first). The requirements list + the candidate
+   structure live in `docs/medium_requirements_and_prior_art.md`.
 
 ---
 
@@ -65,6 +76,20 @@ These are load-bearing. Violating them is the recurring failure mode (importing 
 ---
 
 ## 2. The brane — why our 3D space exists
+
+> **⭐ v3 UPDATE (2026-06-23) — the brane mechanism changed; read this before the little-arrows prose below.**
+> pathA_24 **T1 FALSIFIED** the little-arrows *domain-wall* brane: a static polar-vector order parameter has a **connected** vacuum
+> manifold (`S³`, π₀=0), so a `+w`/`−w` wall **spreads to infinite width and unwinds with zero barrier** — no stable wall, no flat
+> core, no confinement (tri-reviewed genuine; commit `2fa91886`). Independently corroborated by prior art (Davies–George–Volkas:
+> isotropic 4-space gives no 3+1D zero modes without imposing the axis; ³He's A–B interface is externally maintained, not
+> self-localizing). **The refinement:** the brane is now a **smectic (1D density-layering) structure** — a codim-1 surface that is
+> the spontaneous **ground state** (not a metastable kink), with an emergent axis, immune to the spread-and-unwind failure. **The
+> little arrows are KEPT** — they ride on the smectic layer and still do their two jobs (in-plane shear = light; `±w` flip across
+> the layer = the two charge signs). **Honest change:** the **density now MODULATES** (the layering); the claim below that "the two
+> states live in orientation, not density, so `U(ρ)` stays single-well and we never modulate density" is **superseded** — `U(ρ)`
+> stays single-well *locally*, but a new non-local/roton interaction drives a finite-`k` density modulation. Full candidate
+> structure (the **GNLS polar-smectic superfluid**), requirement→mechanism map, and the consistency gates:
+> `docs/medium_requirements_and_prior_art.md`. The prose below is retained as the conceptual ancestor.
 
 This is the most *imposed*, least *derived* part of the construction, and pinning it down is a current frontier.
 
@@ -328,45 +353,40 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
 
 ---
 
-## 8. Next: testing the little-arrows hypothesis (the post-`/compact` plan)
+## 8. Next: the consistency-gate program for the GNLS polar-smectic superfluid (post-pivot plan)
 
-**Goal:** find out, with math/code, whether the **little-arrows (polar-orientation) mechanism** actually delivers — first the
-brane, then light, then charge, then (ambitiously) the dark-energy cycle. Falsification is the point: a clean FAIL at any rung is
-a first-class, welcome result, never to be rescued.
+**This replaces the old little-arrows T1–T5 derivation ladder** (T1 was run and FALSIFIED — see the §2 v3 update; the T2–T5
+rungs are moot on that baseline). The plan and detail now live in **`docs/medium_requirements_and_prior_art.md`** (requirements
+list A/B/C, prior-art survey, candidate structure, consistency gates). Summary:
 
-**The test ladder (cheapest-concept-fatal-FIRST; one rung at a time, user gate between):**
+**Goal:** test whether the **GNLS polar-smectic superfluid** (GNLS medium — KEPT — + polar orientation field + a non-local/roton
+layering driver) is **internally self-consistent across all requirements**, i.e. whether one postulated structure satisfies the
+whole list at once, or whether two requirements form a **no-go**. (Analog, not derivation — rule §0.6. Falsification = a no-go.)
 
-- **T1 — Does a polar-orientation field form a stable wall? (the brane make-or-break.)** Add the *minimal* polar "arrow" order
-  parameter to the medium and ask: does it produce a codimension-1 wall with **finite surface tension** and **bound zero modes**
-  (confinement)? Two sub-questions that are themselves make-or-break: **(i) stability** — a vector whose vacua fill a sphere gives
-  *no* topologically stable wall (`+w` can unwind to `−w`), so what minimal structure gives a genuinely stable (or adequately
-  long-lived) `±w` wall — a polar double-well / anisotropy / disconnected vacua (π₀=ℤ₂)?; **(ii) is `w` emergent or pre-existing**
-  — does the alignment *define* `w` (spontaneous), or did we smuggle in a preferred `w`-axis (anisotropy)? Report honestly which.
-  FAIL modes: no stable wall; needs ad-hoc structure; `w` had to be imposed.
-- **T2 — Does the wall carry in-plane shear → light? (the light make-or-break.)** Compute the spectrum of fluctuations localized
-  on the wall. Does it contain **two transverse in-plane shear polarizations at a single speed** `c_γ=√(μ_brane/ρ_brane)`,
-  cleanly separated from the (scalar) bending mode `u_w` and any trapped scalar modes? Wrong count / wrong dispersion / no shear =
-  FAIL (this is the pathA_23 Stage-2 wall, now with a concrete candidate to test).
-- **T3 — Bulk stays shear-free? (magnetism consistency.)** Confirm the bulk (arrows `±w`) acquires no in-plane shear rigidity, so
-  Magnus/magnetism is untouched. Consistency gate.
-- **T4 — Puncture into `±w` domains → two charge signs + finite throat.** Model a throat through the wall connecting to the `±w`
-  bulk; confirm two mirror-image puncture orientations (the two charge signs, pure direction — no winding), and a finite throat
-  radius from the tension-vs-holding-open balance.
-- **T5 — The dark-energy cycle (ambitious; after T1–T4).** Set up the two opposing flows (matter-driven brane→bulk drainage;
-  tension-throttled bulk→brane areal leak) and test the §5 claims: net inward leak, area-growth (not densification), the
-  matter→dark-energy acceleration crossover. Signs and rates are everything here.
+**The make-or-break consistency gates (replace the T1–T5 ladder):**
+- **Gate L — light on the smectic layer (THE CRUX):** the in-plane polar order must give MacCullagh rotational stiffness that is
+  2-transverse + no-longitudinal, **bounded-below / inertially anchored** (defeat the Kelvin-gyrostat negative-energy instability),
+  and **leak-free into the inter-layer bulk** (don't kill magnetism). A plain smectic is liquid in-plane — the rigidity must come
+  from the arrows. Highest risk; the most likely no-go.
+- **Gate S — magnetism preserved** (in-plane stiffness confined to the layer; inter-layer bulk shear-free).
+- **Gate B — brane↔gravity compatibility** (the layering interaction is finite-`k`; must not disturb long-wavelength `c_s`/flow or
+  the existing GR-quadrupole bundle `χ_Q`/`P0`).
+- **Gate Q — two charge signs** (polar `±w` flip across the layer → two mirror, mass-independent puncture directions).
+- **Gate K — cone-lock `c_γ≈c_s`** (likely a calibration gap, not a derivation — consistent with `λγ`).
+- **Gate T — throat/mass** (a defect puncturing the layers → finite trapped-wave throat).
 
-**Methodology (the standing process):** this supersedes/reworks the generic-domain-wall directive `pathA_24` — **rework pathA_24
-to encode the little-arrows mechanism + this T1–T5 ladder**, then run it through the standing pipeline: Codex design-review
-(`-c model_reasoning_effort=xhigh`) → GLM tertiary (foundational) → execute **stage-by-stage**, each **tri-reviewed** (orchestrator
-re-run + transliteration-fidelity audit + adversarial review on clean agents) with a user gate. Engine: Mathematica leads (wall
-profiles, fluctuation spectra, stability), SymPy cross-checks; dual-engine; units restored; Codex codes, Claude reviews.
-Conditional-verdict rule on any postulated ingredient.
+**Inherited walls (concede, don't fight):** dynamics/`G`/`α` (calibrate-predict — universal wall, not ours); emergent-axis/why-3D
+(smectic helps but full isotropic 3+1D localization is structurally hard); Lorentz/preferred-frame (toy-analog scope only).
 
-**First action when we come back:** (1) read this doc top-to-bottom for grounding; (2) rework `pathA_24` to test T1 (the brane
-make-or-break) with the little-arrows order parameter; (3) Codex design-review (xhigh) → GLM → execute T1. Don't skip ahead —
-T1 (stable wall) gates everything; if the polar field can't make a stable wall, the rest of the ladder is moot and that itself is
-the result.
+**Methodology shift:** from "freeze a MINIMAL postulate + test DERIVATION" → **"specify the FULL candidate structure (postulated
+freely) + test CONSISTENCY / hunt a no-go,"** same pipeline (Codex design-review xhigh → GLM tertiary → execute, each tri-reviewed:
+orchestrator arbiter re-run + transliteration-fidelity audit + adversarial review on clean agents + user gate; Mathematica leads,
+SymPy cross-checks; dual-engine; units restored; Codex codes, Claude reviews). T0 (GNLS + polar OP, frozen `8fa41ac51e88`) is
+preserved and extended with the layering driver.
+
+**First action when we come back:** (1) read this doc + `docs/medium_requirements_and_prior_art.md`; (2) draft a fresh directive
+encoding the GNLS polar-smectic structure + the consistency gates above (Gate L first — it's the crux/most-likely no-go);
+(3) Codex design-review (xhigh) → GLM tertiary → execute gate-by-gate, tri-reviewed, user-gated.
 
 ---
 

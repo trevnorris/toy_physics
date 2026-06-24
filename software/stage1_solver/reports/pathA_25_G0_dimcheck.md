@@ -16,7 +16,7 @@ Engine agreement: PASS. SymPy and Mathematica both:
 - reduced every new frozen bulk-density term to `M L^-2 T^-2`;
 - reduced every layer term to `M L^-1 T^-2` and its `delta_Sigma` bulk representation to `M L^-2 T^-2`;
 - verified `k_Lstar` and `k_Rstar` carry `L^-1`;
-- verified the explicit `k->0` driver limit has no constant EOS/compressibility shift.
+- replaced the old Family-C monomial `k->0` assertion with a derived density/P response: Cdiv shifts the directional low-`k` EOS stiffness after Goldstone integrate-out, while Cpin remains an `O(k^2)` anisotropic density Hessian and preserves `A_rho(0)`.
 
 ## Artifacts
 
@@ -143,11 +143,34 @@ tilde V_R(k) = -2 A_R k^2/k_R^2 + O(k^4)
 k_Rstar = k_R sqrt(2 - sqrt(2))
 ```
 
-Family C sensitivities vanish at strict zero wave number:
+Family C is no longer checked by the superseded tautological monomials `lambda_Cdiv*k` and `chi_Cpin*k^2`. Both engines now derive the quadratic density response about uniform `rho0` and unit `P0`, retain the Family-L kernel, and integrate out the P fluctuations before taking the directional low-`k` limit.
 
 ```text
-lambda_Cdiv channel ~ O(k)
-chi_Cpin channel ~ O(k^2)
+S_Goldstone = 5 K a^2 rho0^5
+G_magnitude = 10 K rho0^5
+
+Cdiv mixed block:
+  d^2E/(d eta d pi_T) = -k lambda_Cdiv sin(theta)
+  d^2E/(d eta d sigma) = -k lambda_Cdiv cos(theta)
+
+Delta A_Cdiv =
+  -lambda_Cdiv^2 sin(theta)^2/(5 K a^2 rho0^5)
+  -k^2 lambda_Cdiv^2 cos(theta)^2/(5 K rho0^5 (a^2 k^2 + 2))
+
+lim_{k->0} [A_Cdiv(k,theta)-5 K rho0^3] =
+  -lambda_Cdiv^2 sin(theta)^2/(5 K a^2 rho0^5)
+
+liminf_direction shift =
+  -lambda_Cdiv^2/(5 K a^2 rho0^5)
 ```
 
-Therefore the frozen driver is a finite-`k` feature. It does not add a constant `k=0` density-potential term, so the original `U(rho)=K rho^5/4` and `c_s^2(rho)=5K rho^4/m` remain available for Gate B to check rather than assumed passed.
+Thus Cdiv is a directional low-wavelength admission failure for any nonzero `lambda_Cdiv` and becomes phase-separating if the shift overwhelms `5 K rho0^3`.
+
+Cpin enters through a direct density Hessian, with no rho-P quadratic mixed block:
+
+```text
+d^2E_Cpin/d eta^2 = chi_Cpin k^2 cos(theta)^2
+lim_{k->0} A_Cpin(k,theta) = 5 K rho0^3
+```
+
+Therefore Cpin preserves the strict EOS stiffness while adding an anisotropic `O(k^2)` shell-selection term. Family L and R conclusions above are unchanged.

@@ -15,8 +15,13 @@ ClearAll[
   dgradRho, dlapRho, familyLTerms, dkLstar, dVRReal, dAR, dkR,
   dlambdaCdiv, dchiCpin, dgradP, familyCTerms, dvarrhoBr, dmuBr,
   dOmega, dDtU, dIPSigma, dKPSigma, dGPSigma, dJPu, dkappaPu,
-  dDtP, lightBraneTerms, k, cL1, cL2, AR, kR, lam, chi, familyL,
-  kLstar, x, fR, vR, kRstar, checks, dimensions, ktoZero, report,
+  dDtP, lightBraneTerms, k, cL1, cL2, AR, kR, lam, chi, theta, rho0, K,
+  hbar, m, a, eta, piT, sigma, familyL, kLstar, x, fR, vR, kRstar,
+  U2, cQ, baselineLKernel, SGoldstone, Gmagnitude, cdivQuadratic,
+  cdivMixedPi, cdivMixedSigma, cdivDeltaA, cdivEffectiveKernel, cdivLowK,
+  cdivLowKShift, cdivDirectionalLiminfShift, cpinQuadratic, cpinMixedPi,
+  cpinDensityHessian, cpinDeltaA, cpinEffectiveKernel, cpinLowK,
+  cpinLowKShift, checks, dimensions, ktoZero, report,
   outPath
 ];
 
@@ -177,7 +182,8 @@ assertDim["delta_Sigma", deltaSigma, -Ldim];
 assertDim["int dt d^4X bulkLag", bulkLag + Tdim + 4 Ldim, actionDim];
 assertDim["int dt d^3sigma braneLag", braneLag + Tdim + 3 Ldim, actionDim];
 
-$Assumptions = cL1 > 0 && cL2 > 0 && AR > 0 && kR > 0;
+$Assumptions = cL1 > 0 && cL2 > 0 && AR > 0 && kR > 0 &&
+  rho0 > 0 && K > 0 && hbar > 0 && m > 0 && a > 0;
 familyL = cL2 k^4 - cL1 k^2;
 kLstar = Sqrt[cL1/(2 cL2)];
 If[FullSimplify[Limit[familyL, k -> 0]] =!= 0, fail["Family L k->0 limit is not zero"]];
@@ -194,8 +200,49 @@ If[FullSimplify[D[vR, k] /. k -> kRstar] =!= 0, fail["Family R finite-k derivati
 If[! TrueQ[N[fR /. x -> Sqrt[2 - Sqrt[2]]] < 0],
   fail["Family R finite-k stationary point is not negative"]
 ];
-If[FullSimplify[Limit[lam k, k -> 0]] =!= 0, fail["Family C divergence k->0 limit is not zero"]];
-If[FullSimplify[Limit[chi k^2, k -> 0]] =!= 0, fail["Family C pinning k->0 limit is not zero"]];
+
+(* Supersedes the old tautological monomial check
+   cdiv=lambda_Cdiv*k and cpin=chi_Cpin*k^2.  The response is derived from
+   the rho-P Hessian about uniform rho0 and unit P0, then P is integrated out
+   before taking the directional k->0 limit. *)
+U2 = 5 K rho0^3;
+cQ = hbar^2/(4 m rho0);
+baselineLKernel = FullSimplify[U2 + (cQ - cL1) k^2 + cL2 k^4];
+SGoldstone = FullSimplify[5 K rho0^5 a^2];
+Gmagnitude = FullSimplify[10 K rho0^5];
+cdivQuadratic = -lam eta (k Sin[theta] piT + k Cos[theta] sigma);
+cdivMixedPi = FullSimplify[D[cdivQuadratic, eta, piT]];
+cdivMixedSigma = FullSimplify[D[cdivQuadratic, eta, sigma]];
+cdivDeltaA = FullSimplify[
+  -lam^2 Sin[theta]^2/SGoldstone -
+    lam^2 k^2 Cos[theta]^2/(SGoldstone k^2 + Gmagnitude)
+];
+cdivEffectiveKernel = FullSimplify[baselineLKernel + cdivDeltaA];
+limitAssumptions = rho0 > 0 && K > 0 && hbar > 0 && m > 0 && a > 0 &&
+  cL1 > 0 && cL2 > 0;
+cdivLowK = FullSimplify[Block[{$Assumptions = limitAssumptions},
+  Limit[cdivEffectiveKernel, k -> 0, Direction -> "FromAbove"]
+]];
+cdivLowKShift = FullSimplify[cdivLowK - U2];
+cdivDirectionalLiminfShift = FullSimplify[cdivLowKShift /. theta -> Pi/2];
+If[FullSimplify[cdivDirectionalLiminfShift + lam^2/SGoldstone] =!= 0,
+  fail["Family Cdiv derived transverse low-k shift mismatch"]
+];
+If[TrueQ[FullSimplify[cdivLowKShift == 0]],
+  fail["Family Cdiv derived low-k response unexpectedly preserved the EOS stiffness"]
+];
+
+cpinQuadratic = 1/2 chi (k Cos[theta] eta)^2;
+cpinMixedPi = FullSimplify[D[cpinQuadratic, eta, piT]];
+cpinDensityHessian = FullSimplify[D[cpinQuadratic, eta, eta]];
+cpinDeltaA = FullSimplify[cpinDensityHessian];
+cpinEffectiveKernel = FullSimplify[baselineLKernel + cpinDeltaA];
+cpinLowK = FullSimplify[Block[{$Assumptions = limitAssumptions},
+  Limit[cpinEffectiveKernel, k -> 0, Direction -> "FromAbove"]
+]];
+cpinLowKShift = FullSimplify[cpinLowK - U2];
+If[FullSimplify[cpinLowKShift] =!= 0, fail["Family Cpin derived k->0 EOS shift is not zero"]];
+If[FullSimplify[cpinMixedPi] =!= 0, fail["Family Cpin rho-P mixed quadratic block is not zero"]];
 
 dimensions = <|
   "expected_bulk_action_density" -> <|"triple_MLT" -> dimTuple[bulkLag], "string" -> dimString[bulkLag]|>,
@@ -237,10 +284,25 @@ ktoZero = <|
     "finite_k_stationary_scale" -> ToString[InputForm[kRstar]]
   |>,
   "family_c" -> <|
-    "divergence_coupling_limit_k_to_0" -> "0",
-    "pinning_coupling_limit_k_to_0" -> "0"
+    "supersedes_old_tautology" -> "old cdiv=lambda*k and cpin=chi*k^2 assertions removed",
+    "baseline_L_kernel_retained" -> ToString[InputForm[baselineLKernel]],
+    "goldstone_stiffness" -> ToString[InputForm[SGoldstone]],
+    "magnitude_gap" -> ToString[InputForm[Gmagnitude]],
+    "Cdiv_mixed_block_eta_piT" -> ToString[InputForm[cdivMixedPi]],
+    "Cdiv_mixed_block_eta_sigma" -> ToString[InputForm[cdivMixedSigma]],
+    "Cdiv_delta_A_after_integrating_P" -> ToString[InputForm[cdivDeltaA]],
+    "Cdiv_low_k_limit" -> ToString[InputForm[cdivLowK]],
+    "Cdiv_low_k_shift_from_EOS" -> ToString[InputForm[cdivLowKShift]],
+    "Cdiv_directional_liminf_shift" -> ToString[InputForm[cdivDirectionalLiminfShift]],
+    "Cdiv_admission_status" -> "FAIL_ADMISSION_for_nonzero_lambda_Cdiv",
+    "Cpin_rho_P_mixed_block" -> ToString[InputForm[cpinMixedPi]],
+    "Cpin_direct_density_hessian" -> ToString[InputForm[cpinDensityHessian]],
+    "Cpin_delta_A" -> ToString[InputForm[cpinDeltaA]],
+    "Cpin_low_k_limit" -> ToString[InputForm[cpinLowK]],
+    "Cpin_low_k_shift_from_EOS" -> ToString[InputForm[cpinLowKShift]],
+    "Cpin_admission_status" -> "EOS_preserved_O(k^2)_anisotropic_density_Hessian"
   |>,
-  "statement" -> "No frozen driver contributes a constant k=0 density-potential term; the EOS c_s definition is not shifted at strict k=0."
+  "statement" -> "Derived Family-C response replaces the old monomial limit: Cdiv shifts the directional low-k EOS stiffness after Goldstone integrate-out, while Cpin is O(k^2) and preserves A_rho(0)."
 |>;
 
 report = <|

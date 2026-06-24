@@ -256,9 +256,10 @@ def assert_zero(name: str, expr: sp.Expr) -> None:
 
 
 def check_k_to_zero() -> dict:
-    k, cL1, cL2, A_R, k_R, lam, chi = sp.symbols(
-        "k c_L1 c_L2 A_R k_R lambda_Cdiv chi_Cpin", positive=True
+    k, cL1, cL2, A_R, k_R, rho0, K, hbar, m, a = sp.symbols(
+        "k c_L1 c_L2 A_R k_R rho0 K hbar m a", positive=True
     )
+    lam, chi, theta = sp.symbols("lambda_Cdiv chi_Cpin theta", real=True)
 
     family_l = cL2 * k**4 - cL1 * k**2
     k_l_star = sp.sqrt(cL1 / (2 * cL2))
@@ -277,10 +278,45 @@ def check_k_to_zero() -> dict:
     if f_r_min_numeric >= 0:
         raise AssertionError("Family R finite-k stationary point is not in the negative annulus")
 
-    cdiv_symbol = lam * k
-    cpin_symbol = chi * k**2
-    assert_zero("Family C divergence k->0 value", sp.limit(cdiv_symbol, k, 0))
-    assert_zero("Family C pinning k->0 value", sp.limit(cpin_symbol, k, 0))
+    # Supersedes the old tautological monomial check
+    #   cdiv_symbol=lambda_Cdiv*k, cpin_symbol=chi_Cpin*k^2.
+    # Here the k-dependence is derived from the quadratic density/P Hessian
+    # about uniform rho0 and unit P0, then the P fluctuations are integrated
+    # out before taking the directional k->0 limit.
+    U2 = 5 * K * rho0**3
+    cQ = hbar**2 / (4 * m * rho0)
+    baseline_l_kernel = U2 + (cQ - cL1) * k**2 + cL2 * k**4
+    S_goldstone = 5 * K * rho0**5 * a**2
+    G_magnitude = 10 * K * rho0**5
+
+    eta, pi_T, sigma = sp.symbols("eta pi_T sigma", real=True)
+    cdiv_quadratic = -lam * eta * (k * sp.sin(theta) * pi_T + k * sp.cos(theta) * sigma)
+    cdiv_mixed_pi = sp.factor(sp.diff(cdiv_quadratic, eta, pi_T))
+    cdiv_mixed_sigma = sp.factor(sp.diff(cdiv_quadratic, eta, sigma))
+    cdiv_delta_A = sp.factor(
+        -lam**2 * sp.sin(theta) ** 2 / S_goldstone
+        - lam**2 * k**2 * sp.cos(theta) ** 2 / (S_goldstone * k**2 + G_magnitude)
+    )
+    cdiv_effective_kernel = sp.factor(baseline_l_kernel + cdiv_delta_A)
+    cdiv_low_k = sp.factor(sp.limit(cdiv_effective_kernel, k, 0, dir="+"))
+    cdiv_low_k_shift = sp.factor(cdiv_low_k - U2)
+    cdiv_directional_liminf_shift = sp.factor(cdiv_low_k_shift.subs(theta, sp.pi / 2))
+    assert_zero(
+        "Family Cdiv derived transverse low-k shift",
+        cdiv_directional_liminf_shift + lam**2 / S_goldstone,
+    )
+    if sp.simplify(cdiv_low_k_shift) == 0:
+        raise AssertionError("Family Cdiv derived low-k response unexpectedly preserved the EOS stiffness")
+
+    cpin_quadratic = sp.Rational(1, 2) * chi * (k * sp.cos(theta) * eta) ** 2
+    cpin_mixed_pi = sp.factor(sp.diff(cpin_quadratic, eta, pi_T))
+    cpin_density_hessian = sp.factor(sp.diff(cpin_quadratic, eta, eta))
+    cpin_delta_A = sp.factor(cpin_density_hessian)
+    cpin_effective_kernel = sp.factor(baseline_l_kernel + cpin_delta_A)
+    cpin_low_k = sp.factor(sp.limit(cpin_effective_kernel, k, 0, dir="+"))
+    cpin_low_k_shift = sp.factor(cpin_low_k - U2)
+    assert_zero("Family Cpin derived k->0 EOS shift", cpin_low_k_shift)
+    assert_zero("Family Cpin rho-P mixed quadratic block", cpin_mixed_pi)
 
     return {
         "family_l": {
@@ -296,10 +332,25 @@ def check_k_to_zero() -> dict:
             "finite_k_stationary_scale": sp.sstr(k_r_star),
         },
         "family_c": {
-            "divergence_coupling_limit_k_to_0": "0",
-            "pinning_coupling_limit_k_to_0": "0",
+            "supersedes_old_tautology": "old cdiv=lambda*k and cpin=chi*k^2 assertions removed",
+            "baseline_L_kernel_retained": sp.sstr(sp.factor(baseline_l_kernel)),
+            "goldstone_stiffness": sp.sstr(S_goldstone),
+            "magnitude_gap": sp.sstr(G_magnitude),
+            "Cdiv_mixed_block_eta_piT": sp.sstr(cdiv_mixed_pi),
+            "Cdiv_mixed_block_eta_sigma": sp.sstr(cdiv_mixed_sigma),
+            "Cdiv_delta_A_after_integrating_P": sp.sstr(cdiv_delta_A),
+            "Cdiv_low_k_limit": sp.sstr(cdiv_low_k),
+            "Cdiv_low_k_shift_from_EOS": sp.sstr(cdiv_low_k_shift),
+            "Cdiv_directional_liminf_shift": sp.sstr(cdiv_directional_liminf_shift),
+            "Cdiv_admission_status": "FAIL_ADMISSION_for_nonzero_lambda_Cdiv",
+            "Cpin_rho_P_mixed_block": sp.sstr(cpin_mixed_pi),
+            "Cpin_direct_density_hessian": sp.sstr(cpin_density_hessian),
+            "Cpin_delta_A": sp.sstr(cpin_delta_A),
+            "Cpin_low_k_limit": sp.sstr(cpin_low_k),
+            "Cpin_low_k_shift_from_EOS": sp.sstr(cpin_low_k_shift),
+            "Cpin_admission_status": "EOS_preserved_O(k^2)_anisotropic_density_Hessian",
         },
-        "statement": "No frozen driver contributes a constant k=0 density-potential term; the EOS c_s definition is not shifted at strict k=0.",
+        "statement": "Derived Family-C response replaces the old monomial limit: Cdiv shifts the directional low-k EOS stiffness after Goldstone integrate-out, while Cpin is O(k^2) and preserves A_rho(0).",
     }
 
 

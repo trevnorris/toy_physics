@@ -18,7 +18,17 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 > cosmology), **§6.1** (our own prior work) + the memory **`project-light-is-4d-throat-hypothesis`**.
 
 **B4 RESULT:** `FAIL_NOT_CODIM1` (final, dual-engine verified, adversarial-SOUND). The GNLS **density-smectic brane is a candidate
-NO-GO** — the medium's cubic invariant `U'''=15Kρ0²>0` makes a multi-`k` crystal beat the codim-1 lamella. **pathA_25 gates are PAUSED.**
+NO-GO** — the medium's cubic invariant `U'''=15Kρ0²>0` makes a multi-`k` crystal beat the codim-1 lamella.
+
+**R/C RESULT (2026-06-24, track 2b — DONE, tri-reviewed, dual-engine, earned): `RC_DENSITY_SMECTIC_LIGHT_NOGO`.** The density-smectic
+brane is now a **confirmed NO-GO across ALL admitted drivers:** R→`FAIL_NOT_CODIM1` (bilinear/isotropic, cubic survives); Cdiv→
+`FAIL_ADMISSION` (Goldstone integrate-out gives O(k⁰) directional EOS-stiffness softening for any λ_Cdiv≠0); Cpin→`FAIL_LIGHT_STARVED`
+(χ_Cpin<0 DOES open a genuine codim-1 density-smectic window — the cubic IS escapable — but the same coupling pins P ⊥-plane, `P_∥=0`
+at the static Ω_u=0 minimizer, starving in-plane light). **So density CAN form a brane but only by killing light** → strong earned
+evidence for the synthesis: the brane must be a **light-confining shear surface, not a density modulation.** A first-class
+falsification: it removes a rival and points the same direction as the throat-soliton picture. **pathA_25 density route CLOSED;** the
+only remaining throat-soliton track is **(2a) the drain-sector derivation — PAUSED (user, 2026-06-24).** Artifacts:
+`reports/pathA_25_gateRC_cubic.md` (+`_results.yaml`), `tools/pathA_25_gateRC_cubic_{sympy.py,.wl}`; Family-C `k→0` tautology RESOLVED.
 
 **THE SYNTHESIS (the thing not to forget):** particles = **throat-solitons**. Light = an **intrinsically (3+1)D brane shear wave**
 (2 polarizations; confined because the bulk is **shear-free** and light *is* shear) whose 4D-ness is the brane's **extrinsic
@@ -58,23 +68,19 @@ Artifacts: `software/stage1_solver/reports/pathA_26_derrick.md` (+`_results.yaml
   `J_w=0` on the exact mode, whether the "gravity = drain" mechanism produces a **nonzero, right-sized** drain at all is itself unbuilt
   (needs the dynamic AC→DC rectification the notes specced-not-built).
 
-**▶ NEXT ACTION — TWO INDEPENDENT TRACKS (can run in parallel; different objects, files, no shared state; only shared resource = ≤2
-concurrent Mathematica seats):**
-1. **(2a) Drain-sector derivation — the REAL throat-soliton frontier (big, open).** Derive the actual drain law (steady flow + density
-   depletion + backpressure built INTO the equilibrium, not an external perturbation; the user's picture = wave-out vs tension+backpressure-in
-   from the start), tied to the physical gravity coupling → (i) pin `g_phys` vs `gcrit≈0.006` rigorously, (ii) resolve whether the drain
-   is even nonzero/right-sized (the `J_w=0` rectification question). Reuses `stage1_solver` infra + `reports/pathA_throat_solver_literature_synthesis.md`.
-   Needs a SCOPING/design phase first (not a single execute).
-2. **(2b) R/C cubic verdict — cheap, bounded, independent (pathA_25 branches).** Does Family **R** or **C** escape the B4 multi-`k`
-   cubic NO-GO (i.e. can the DENSITY-smectic brane form via a different driver)? Expect **R=no** (quadratic in δρ, no axis), **C=maybe**
-   (ρ–P coupling picks an axis → uniaxial → codim-1; crux risk = same C pins P out-of-plane, starves light). **FIX the tautological
-   Family-C `k→0`** in the G0 scripts FIRST. Contained dual-engine symbolic check like B4 → light gauntlet → execute. Settles the OLD
-   density-smectic brane route (independent of the throat-soliton's gravity question in 2a).
+**▶ NEXT ACTION — ONE REMAINING TRACK (2b is DONE; see R/C RESULT above):**
+1. **(2a) Drain-sector derivation — the REAL throat-soliton frontier (big, open) — ⏸ PAUSED (user, 2026-06-24); resume here next.**
+   Derive the actual drain law (steady flow + density depletion + backpressure built INTO the equilibrium, not an external perturbation;
+   the user's picture = wave-out vs tension+backpressure-in from the start), tied to the physical gravity coupling → (i) pin `g_phys` vs
+   `gcrit≈0.006` rigorously, (ii) resolve whether the drain is even nonzero/right-sized (the `J_w=0` rectification question). Reuses
+   `stage1_solver` infra + `reports/pathA_throat_solver_literature_synthesis.md`. Needs a SCOPING/design phase first (not a single execute).
+2. ~~**(2b) R/C cubic verdict**~~ — ✅ **DONE: `RC_DENSITY_SMECTIC_LIGHT_NOGO`** (see R/C RESULT above). Density-smectic brane route
+   CLOSED across all admitted drivers; Family-C `k→0` tautology resolved. Pre-registered prediction verified (R=no; C escapes the cubic
+   but starves light). The brane is therefore a light-confining shear surface, not a density modulation — which is exactly 2a's object.
 
-**UNCOMMITTED working tree (as of 2026-06-24, pre-/compact):** B4 artifacts were committed in `581c0b2f`. NOW uncommitted = the
-**pathA_26** deliverables (`reports/pathA_26_derrick.md`, `..._results.yaml`, `tools/pathA_26_derrick_sympy.py` + `....wl`), the pathA_26
-`_scratch/` prompts+logs (gitignored), and these STATUS/report/ledger doc edits. **Commit only when the user asks.** (User has NOT yet
-asked to commit pathA_26.)
+**COMMIT STATE (2026-06-24):** B4 artifacts committed `581c0b2f`; pathA_26 Derrick committed `8e0205c4`; **Gate R/C (2b) committed this
+milestone** (`reports/pathA_25_gateRC_cubic.md` + `_results.yaml`, `tools/pathA_25_gateRC_cubic_{sympy.py,.wl}`, the §B.0 G0 tautology
+fix, + these STATUS/ledger doc edits; `_scratch/` prompts+logs gitignored). **Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

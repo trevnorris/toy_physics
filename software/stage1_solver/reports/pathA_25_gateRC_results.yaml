@@ -1,0 +1,451 @@
+schema: pathA_25_gateRC_cubic_sympy/v1
+top_line_verdict: RC_DENSITY_SMECTIC_LIGHT_NOGO
+branch_verdicts:
+  top_line_verdict: RC_DENSITY_SMECTIC_LIGHT_NOGO
+  branches:
+    S_R_kernel:
+      verdict: RC_S_R_kernel_FAIL_NOT_CODIM1
+      stage: C.5
+      reason: R is bilinear and isotropic; the kept GNLS cubic survives at the R roton off a codimension-one surface.
+    S_L_plus_Cdiv:
+      verdict: RC_S_L_plus_Cdiv_FAIL_ADMISSION
+      stage: B.0/C.2
+      reason: integrating out transverse P Goldstones shifts the k->0 EOS density stiffness directionally for any nonzero
+        lambda_Cdiv.
+    S_L_plus_Cpin:
+      verdict: RC_S_L_plus_Cpin_FAIL_LIGHT_STARVED
+      stage: C.6
+      reason: negative chi_Cpin has an open density-smectic anisotropy window, but the computed static Omega_u=0 minimizer
+        gives P_parallel=0.
+  precedence_applied: INCONCLUSIVE -> CODIM1_CONDITIONAL -> LIGHT_NOGO -> NO_GO
+freeze_fidelity:
+  t0_hash: 8fa41ac51e88a1464a4a5b22c6fe64fc218cf36ba2e3583d26b97c994e5da064
+  g0_hash: f00ee99d465e2e311c68f47fcacf4af0154ca650642271ab66c36d112cb6a290
+  t0_bytes_embedded_in_g0: true
+  required_frozen_lines_present: true
+dimensions_MLT:
+  A_rho:
+  - 1
+  - 6
+  - -2
+  Gamma:
+  - 1
+  - 10
+  - -2
+  lambda_Cdiv:
+  - 1
+  - 3
+  - -2
+  chi_Cpin:
+  - 1
+  - 8
+  - -2
+  Goldstone_stiffness_SG:
+  - 1
+  - 0
+  - -2
+  P_magnitude_gap:
+  - 1
+  - -2
+  - -2
+  mu_br:
+  - 1
+  - -1
+  - -2
+  kappa_Pu:
+  - 1
+  - -1
+  - -2
+  K_PSigma:
+  - 1
+  - 1
+  - -2
+  chi_Cpin_grad_rho_sq_surface_stiffness:
+  - 1
+  - -1
+  - -2
+  omega_squared:
+  - 0
+  - 0
+  - -2
+family_C_kernel:
+  baseline_L_kernel: (20*K*m*rho0**4 - 4*c_L1*k**2*m*rho0 + 4*c_L2*k**4*m*rho0 + hbar**2*k**2)/(4*m*rho0)
+  Goldstone_stiffness_SG: 5*K*a**2*rho0**5
+  magnitude_gap_Gmag: 10*K*rho0**5
+  cdiv:
+    mixed_block_eta_piT: -k*lam*sin(theta)
+    mixed_block_eta_sigma: -k*lam*cos(theta)
+    transverse_integrated_delta_A: -lam**2*sin(theta)**2/(5*K*a**2*rho0**5)
+    magnitude_integrated_delta_A: -k**2*lam**2*cos(theta)**2/(5*K*rho0**5*(a**2*k**2 + 2))
+    derived_delta_A: -lam**2*(a**2*k**2*sin(theta)**2 + a**2*k**2*cos(theta)**2 + 2*sin(theta)**2)/(5*K*a**2*rho0**5*(a**2*k**2
+      + 2))
+    effective_A_rho: (100*K**2*a**4*k**2*m*rho0**8 + 200*K**2*a**2*m*rho0**8 - 20*K*a**4*c_L1*k**4*m*rho0**5 + 20*K*a**4*c_L2*k**6*m*rho0**5
+      + 5*K*a**4*hbar**2*k**4*rho0**4 - 40*K*a**2*c_L1*k**2*m*rho0**5 + 40*K*a**2*c_L2*k**4*m*rho0**5 + 10*K*a**2*hbar**2*k**2*rho0**4
+      - 4*a**2*k**2*lam**2*m*sin(theta)**2 - 4*a**2*k**2*lam**2*m*cos(theta)**2 - 8*lam**2*m*sin(theta)**2)/(20*K*a**2*m*rho0**5*(a**2*k**2
+      + 2))
+    omega2_density_phase: k**2*(100*K**2*a**4*k**2*m*rho0**8 + 200*K**2*a**2*m*rho0**8 - 20*K*a**4*c_L1*k**4*m*rho0**5 + 20*K*a**4*c_L2*k**6*m*rho0**5
+      + 5*K*a**4*hbar**2*k**4*rho0**4 - 40*K*a**2*c_L1*k**2*m*rho0**5 + 40*K*a**2*c_L2*k**4*m*rho0**5 + 10*K*a**2*hbar**2*k**2*rho0**4
+      - 4*a**2*k**2*lam**2*m*sin(theta)**2 - 4*a**2*k**2*lam**2*m*cos(theta)**2 - 8*lam**2*m*sin(theta)**2)/(20*K*a**2*m**2*rho0**4*(a**2*k**2
+      + 2))
+    low_k_limit: (5*K*a*rho0**4 - lam*sin(theta))*(5*K*a*rho0**4 + lam*sin(theta))/(5*K*a**2*rho0**5)
+    low_k_shift_from_EOS: -lam**2*sin(theta)**2/(5*K*a**2*rho0**5)
+    directional_liminf_shift: -lam**2/(5*K*a**2*rho0**5)
+    admission_shift_detected: true
+    phase_separation_if_lambda_squared_ge: 25*K**2*a**2*rho0**8
+    verdict_driver: derived_O(k^0)_directional_Goldstone_softening
+  cpin:
+    rho_P_mixed_block: '0'
+    direct_density_hessian: chi*k**2*cos(theta)**2
+    derived_delta_A: chi*k**2*cos(theta)**2
+    effective_A_rho: (20*K*m*rho0**4 - 4*c_L1*k**2*m*rho0 + 4*c_L2*k**4*m*rho0 + 4*chi*k**2*m*rho0*cos(theta)**2 + hbar**2*k**2)/(4*m*rho0)
+    omega2_density_phase: k**2*(20*K*m*rho0**4 - 4*c_L1*k**2*m*rho0 + 4*c_L2*k**4*m*rho0 + 4*chi*k**2*m*rho0*cos(theta)**2
+      + hbar**2*k**2)/(4*m**2)
+    finite_kstar_squared_angle: (4*c_L1*m*rho0 - 4*chi*m*rho0*cos(theta)**2 - hbar**2)/(8*c_L2*m*rho0)
+    A_min_angle: (320*K*c_L2*m**2*rho0**5 - 16*c_L1**2*m**2*rho0**2 + 32*c_L1*chi*m**2*rho0**2*cos(theta)**2 + 8*c_L1*hbar**2*m*rho0
+      - 16*chi**2*m**2*rho0**2*cos(theta)**4 - 8*chi*hbar**2*m*rho0*cos(theta)**2 - hbar**4)/(64*c_L2*m**2*rho0**2)
+    softening_threshold_c_L1_angle: (8*sqrt(5)*sqrt(K)*sqrt(c_L2)*m*rho0**(5/2) + 4*chi*m*rho0*cos(theta)**2 + hbar**2)/(4*m*rho0)
+    negative_chi_soft_direction_kstar_squared_parallel: (4*c_L1*m*rho0 - 4*chi*m*rho0 - hbar**2)/(8*c_L2*m*rho0)
+    positive_chi_soft_direction_kstar_squared_perp: (4*c_L1*m*rho0 - hbar**2)/(8*c_L2*m*rho0)
+    low_k_limit: 5*K*rho0**3
+    low_k_shift_from_EOS: '0'
+    admission_shift_detected: false
+    verdict_driver: O(k^2)_anisotropic_density_Hessian
+  engine_exprs:
+    A_L_kernel: (1/4)*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + hbar^2*k^2)/(m*rho0)
+    SGoldstone: 5*K*a^2*rho0^5
+    Gmagnitude: 10*K*rho0^5
+    Cdiv_mixed_eta_piT: -k*lam*Sin[theta]
+    Cdiv_mixed_eta_sigma: -k*lam*Cos[theta]
+    Cdiv_delta_A: -1/5*lam^2*(a^2*k^2*Sin[theta]^2 + a^2*k^2*Cos[theta]^2 + 2*Sin[theta]^2)/(K*a^2*rho0^5*(a^2*k^2 + 2))
+    Cdiv_omega2: (1/20)*k^2*(100*K^2*a^4*k^2*m*rho0^8 + 200*K^2*a^2*m*rho0^8 - 20*K*a^4*cL1*k^4*m*rho0^5 + 20*K*a^4*cL2*k^6*m*rho0^5
+      + 5*K*a^4*hbar^2*k^4*rho0^4 - 40*K*a^2*cL1*k^2*m*rho0^5 + 40*K*a^2*cL2*k^4*m*rho0^5 + 10*K*a^2*hbar^2*k^2*rho0^4 - 4*a^2*k^2*lam^2*m*Sin[theta]^2
+      - 4*a^2*k^2*lam^2*m*Cos[theta]^2 - 8*lam^2*m*Sin[theta]^2)/(K*a^2*m^2*rho0^4*(a^2*k^2 + 2))
+    Cdiv_lowk_limit: (1/5)*(5*K*a*rho0^4 - lam*Sin[theta])*(5*K*a*rho0^4 + lam*Sin[theta])/(K*a^2*rho0^5)
+    Cdiv_lowk_shift: -1/5*lam^2*Sin[theta]^2/(K*a^2*rho0^5)
+    Cdiv_liminf_shift: -1/5*lam^2/(K*a^2*rho0^5)
+    Cpin_mixed_eta_piT: '0'
+    Cpin_direct_density_hessian: chi*k^2*Cos[theta]^2
+    Cpin_delta_A: chi*k^2*Cos[theta]^2
+    Cpin_omega2: (1/4)*k^2*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + 4*chi*k^2*m*rho0*Cos[theta]^2 + hbar^2*k^2)/m^2
+    Cpin_kstar2_angle: (1/8)*(4*cL1*m*rho0 - 4*chi*m*rho0*Cos[theta]^2 - hbar^2)/(cL2*m*rho0)
+    Cpin_Amin_angle: (1/64)*(320*K*cL2*m^2*rho0^5 - 16*cL1^2*m^2*rho0^2 + 32*cL1*chi*m^2*rho0^2*Cos[theta]^2 + 8*cL1*hbar^2*m*rho0
+      - 16*chi^2*m^2*rho0^2*Cos[theta]^4 - 8*chi*hbar^2*m*rho0*Cos[theta]^2 - hbar^4)/(cL2*m^2*rho0^2)
+    Cpin_threshold_cL1_angle: (1/4)*(8*5^(1/2)*K^(1/2)*cL2^(1/2)*m*rho0^(5/2) + 4*chi*m*rho0*Cos[theta]^2 + hbar^2)/(m*rho0)
+    Cpin_kstar2_parallel: (1/8)*(4*cL1*m*rho0 - 4*chi*m*rho0 - hbar^2)/(cL2*m*rho0)
+    Cpin_kstar2_perp: (1/8)*(4*cL1*m*rho0 - hbar^2)/(cL2*m*rho0)
+    Cpin_lowk_limit: 5*K*rho0^3
+    Cpin_lowk_shift: '0'
+family_R:
+  kernel_A_rho: (4*AR*k**4*m*rho0 - 8*AR*k**2*kR**2*m*rho0 + 20*K*kR**4*m*rho0**4*exp(k**2/kR**2) + hbar**2*k**2*kR**4*exp(k**2/kR**2))*exp(-k**2/kR**2)/(4*kR**4*m*rho0)
+  omega2_density_phase: k**2*(4*AR*k**4*m*rho0 - 8*AR*k**2*kR**2*m*rho0 + 20*K*kR**4*m*rho0**4*exp(k**2/kR**2) + hbar**2*k**2*kR**4*exp(k**2/kR**2))*exp(-k**2/kR**2)/(4*kR**4*m**2)
+  shape_f_R: x**2*(x**2 - 2)*exp(-x**2)
+  shape_derivative: -2*x*(x**4 - 4*x**2 + 2)*exp(-x**2)
+  dimensionless_A_of_x: (4*AR*m*rho0*x**4 - 8*AR*m*rho0*x**2 + 20*K*m*rho0**4*exp(x**2) + hbar**2*kR**2*x**2*exp(x**2))*exp(-x**2)/(4*m*rho0)
+  roton_stationarity_equation: -x*(4*AR*m*rho0*x**4 - 16*AR*m*rho0*x**2 + 8*AR*m*rho0 - hbar**2*kR**2*exp(x**2))*exp(-x**2)/(2*m*rho0)
+    = 0
+  softening_threshold_AR_of_x: -(20*K*m*rho0**4 + hbar**2*kR**2*x**2)*exp(x**2)/(4*m*rho0*x**2*(x**2 - 2))
+  threshold_stationarity_equation: -(20*K*m*rho0**4*x**4 - 80*K*m*rho0**4*x**2 + 40*K*m*rho0**4 + hbar**2*kR**2*x**6 - 3*hbar**2*kR**2*x**4)*exp(-x**2)/(4*m*rho0)
+    = 0
+  negative_annulus: 0 < x < sqrt(2)
+  frozen_shape_minimum_without_quantum_term: x=sqrt(2-sqrt(2))
+  R_cubic_contribution: '0'
+  Gamma_R_EOS_cubic: 15*K*rho0**2/4
+  Gamma_R_quantum_pressure_cubic: -3*hbar**2*k**2/(32*m*rho0**2)
+  Gamma_R: -3*(-40*K*m*rho0**4 + hbar**2*k**2)/(32*m*rho0**2)
+  Gamma_R_zero_codimension_surface: k_Rstar^2 = 40*K*m*rho0**4/hbar**2
+  verdict_conditions:
+    finite_k_region_exists_for_sufficient_AR: true
+    isotropic_shell: true
+    R_adds_cubic: false
+    generic_Gamma_R_nonzero: true
+  engine_exprs:
+    R_fR: x^2*(x^2 - 2)*Exp[-x^2]
+    R_fRprime: -2*x*(x^4 - 4*x^2 + 2)*Exp[-x^2]
+    R_A_of_x: (1/4)*(4*AR*m*rho0*x^4 - 8*AR*m*rho0*x^2 + 20*K*m*rho0^4*Exp[x^2] + hbar^2*kR^2*x^2*Exp[x^2])*Exp[-x^2]/(m*rho0)
+    R_stationarity: -1/2*x*(4*AR*m*rho0*x^4 - 16*AR*m*rho0*x^2 + 8*AR*m*rho0 - hbar^2*kR^2*Exp[x^2])*Exp[-x^2]/(m*rho0)
+    R_threshold_AR: -1/4*(20*K*m*rho0^4 + hbar^2*kR^2*x^2)*Exp[x^2]/(m*rho0*x^2*(x^2 - 2))
+    R_threshold_stationarity: -1/4*(20*K*m*rho0^4*x^4 - 80*K*m*rho0^4*x^2 + 40*K*m*rho0^4 + hbar^2*kR^2*x^6 - 3*hbar^2*kR^2*x^4)*Exp[-x^2]/(m*rho0)
+    R_A_of_k: (1/4)*(4*AR*k^4*m*rho0 - 8*AR*k^2*kR^2*m*rho0 + 20*K*kR^4*m*rho0^4*Exp[k^2/kR^2] + hbar^2*k^2*kR^4*Exp[k^2/kR^2])*Exp[-k^2/kR^2]/(kR^4*m*rho0)
+    R_omega2: (1/4)*k^2*(4*AR*k^4*m*rho0 - 8*AR*k^2*kR^2*m*rho0 + 20*K*kR^4*m*rho0^4*Exp[k^2/kR^2] + hbar^2*k^2*kR^4*Exp[k^2/kR^2])*Exp[-k^2/kR^2]/(kR^4*m^2)
+    R_cubic_contribution: '0'
+    Gamma_R_EOS_cubic: (15/4)*K*rho0^2
+    Gamma_R_quantum_pressure_cubic: -3/32*hbar^2*k^2/(m*rho0^2)
+    Gamma_R: -3/32*(-40*K*m*rho0^4 + hbar^2*k^2)/(m*rho0^2)
+    Gamma_R_zero_k2: 40*K*m*rho0^4/hbar^2
+cubic_invariant:
+  Gamma_kept_GNLS: -3*(-40*K*m*rho0**4 + hbar**2*k**2)/(32*m*rho0**2)
+  Gamma_zero_codimension_surface: k_*^2 = 40*K*m*rho0**4/hbar**2
+  Cpin_cubic_altered: false
+  R_cubic_altered: false
+  engine_exprs:
+    Gamma_T: -3/32*(-40*K*m*rho0^4 + hbar^2*k^2)/(m*rho0^2)
+    Gamma_T_zero_k2: 40*K*m*rho0^4/hbar^2
+morphology:
+  predeclared_competitors:
+  - single-k lamella
+  - rank-2 equilateral triad
+  - rank-3 orthogonal regular star
+  - rank-4 orthogonal regular star
+  shell_averages:
+    lamella:
+      avg_phi2: 1/2
+      avg_phi3: '0'
+      avg_phi4: 3/8
+      avg_phi_grad_phi_sq: '0'
+    rank2_triad:
+      avg_phi2: 3/2
+      avg_phi3: 3/2
+      avg_phi4: 45/8
+      avg_phi_grad_phi_sq: 3/4
+    rank3_orthogonal:
+      avg_phi2: 3/2
+      avg_phi3: '0'
+      avg_phi4: 45/8
+      avg_phi_grad_phi_sq: '0'
+    rank4_orthogonal:
+      avg_phi2: '2'
+      avg_phi3: '0'
+      avg_phi4: 21/2
+      avg_phi_grad_phi_sq: '0'
+  Cpin_negative_chi:
+    orientation: P0 parallel to lamellar normal
+    anisotropy_gap_sums:
+      lamella: '0'
+      rank2_triad: 3/2
+      rank3_orthogonal: '2'
+      rank4_orthogonal: '3'
+    lamella_energy: A**2*(3*A**2*beta - 4*eps)/8
+    lamella_min: -eps**2/(6*beta)
+    rank2_triad_energy: A**2*(45*A**2*beta - 8*A*gamma - 12*eps + 6*zeta)/8
+    rank3_energy: A**2*(45*A**2*beta - 12*eps + 8*zeta)/8
+    rank4_energy: A**2*(21*A**2*beta - 4*eps + 3*zeta)/2
+    open_density_smectic_certificate: eps>0, beta>0, gamma>0, zeta > 2*(135*beta*eps + 4*gamma**2)/(135*beta)
+    certificate_meaning: then every declared multi-k competitor has nonnegative minimum while the lamella minimum is -eps^2/(6
+      beta); omitted finite cubic-active competitors with anisotropy gap >=3/2 are covered by a finite large-zeta threshold
+      recorded in omitted_competitor_scope
+    C5_density_escape_open: true
+    sample:
+      eps: 1/100
+      beta: '1'
+      gamma: '1'
+      zeta: '3'
+      lamella_min: -1/60000
+      rank2_triad_min: '0'
+      rank3_min: '0'
+      rank4_min: '0'
+      NC_RC_Cescape_pass: true
+  omitted_competitor_scope:
+    status: unresolved_by_scope_but_large_zeta_gap_covered
+    omitted_examples:
+    - BCC-like cubic-active multi-k states
+    - FCC-like cubic-active multi-k states
+    gap_lower_bound_used: 3/2
+    generic_energy_form: q A^2 - gamma c3 A^3 + u4 A^4, u4>0
+    q_lower_bound: -(4*avg2O*eps - 3*zeta)/4
+    finite_cover_threshold_zeta: (4*avg2O*eps*u4O + c3O**2*gamma**2)/(3*u4O)
+    gap_growth_to_infinity: true
+    conclusion: 'not silently omitted: detailed BCC/FCC invariants are out of declared scope, but any finite omitted competitor
+      with Sigma sin^2 >= 3/2 is suppressed for sufficiently large zeta'
+  Cpin_positive_chi:
+    orientation: P0 perpendicular to lamellar normal; triad can also lie in P0-perp
+    triad_energy_on_soft_shell: A**2*(45*A**2*beta - 8*A*gamma - 12*eps)/8
+    sample_lamella_min: -1/60000
+    sample_triad_min: -(10 + sqrt(130))**2*(2*sqrt(130) + 29)/27000000
+    triad_beats_lamella_sample: true
+    verdict: FAIL_NOT_CODIM1
+  controls:
+    NC_RC_regress:
+      setting: R off and C couplings -> 0
+      outcome: baseline B4 FAIL_NOT_CODIM1 with Gamma_T nonzero off one codimension-one surface
+      cnull_algebra: true
+      pass: true
+    NC_RC_pos:
+      setting: Z2-symmetric shell with cubic absent
+      lamella_min: -1/6
+      rank2_triad_min: -1/10
+      rank3_min: -1/10
+      rank4_min: -2/21
+      outcome: single-k lamella/stripe
+      pass: true
+    NC_RC_Rtriad:
+      setting: R isotropic shell triad averages
+      triad_avg3: 3/2
+      triad_eta_grad2: 3/4
+      pass: true
+    NC_RC_Cescape:
+      predeclared_coefficients:
+        eps: 1/100
+        beta: '1'
+        gamma: '1'
+        zeta: '3'
+      outcome: stable_single_k_lamella
+      pass: true
+  engine_exprs:
+    lamella_avg2: 1/2
+    lamella_avg4: 3/8
+    triad_avg2: 3/2
+    triad_avg3: 3/2
+    triad_avg4: 45/8
+    triad_eta_grad2: 3/4
+    Cpin_F_lam: (1/8)*A^2*(3*A^2*beta - 4*eps)
+    Cpin_F_lam_min: -1/6*eps^2/beta
+    Cpin_q_tri_neg: (-3/2*eps + (3/4)*zeta)
+    Cpin_F_tri_neg: (1/8)*A^2*(45*A^2*beta - 8*A*gamma - 12*eps + 6*zeta)
+    Cpin_F_rank3_neg: (1/8)*A^2*(45*A^2*beta - 12*eps + 8*zeta)
+    Cpin_F_rank4_neg: (1/2)*A^2*(21*A^2*beta - 4*eps + 3*zeta)
+    Cpin_tri_nonnegative_threshold: (2/45)*gamma^2/beta
+    Cpin_lamella_open_region_zeta: (2/135)*(135*beta*eps + 4*gamma^2)/beta
+    Cpin_F_tri_pos: (1/8)*A^2*(45*A^2*beta - 8*A*gamma - 12*eps)
+    Cescape_sample_lamella_min: -1/6*eps^2/beta
+    Cescape_sample_tri_neg_min: '0'
+    Cpin_positive_sample_tri_min: -1/13500*(gamma + (30*beta*eps + gamma^2)^(1/2))^2*(45*beta*eps + gamma^2 + gamma*(30*beta*eps
+      + gamma^2)^(1/2))/beta^3
+    NC_pos_tri_z2_min: -1/10*eps^2/beta
+    NC_pos_rank3_z2_min: -1/10*eps^2/beta
+    NC_pos_rank4_z2_min: -2/21*eps^2/beta
+    NC_Cnull_degradation: '0'
+    Omitted_gap_lower_bound: 3/2
+    Omitted_q_lower_bound: (-avg2O*eps + (3/4)*zeta)
+    Omitted_cover_threshold_zeta: (1/3)*(4*avg2O*eps*u4O + c3O^2*gamma^2)/u4O
+C6_light_substrate:
+  quotient_definition: tangential shear/curl symbol with nonzero curl u, modulo rigid translations and pure longitudinal-gradient
+    u
+  quotient_energy: (curlU**2*muBr + kappaPu*mismatch**2)/2
+  quotient_hessian:
+  - - muBr
+    - '0'
+  - - '0'
+    - kappaPu
+  positive_definite_conditions:
+  - mu_br > 0
+  - kappa_Pu > 0
+  orientation_minimization:
+    layer_normal: n_hat proportional to grad rho on the density-smectic lamella
+    P_split: '|P|^2=P_normal^2+P_parallel^2 with P_parallel tangent to Sigma_n[rho]'
+    pinning_strength: chiAbs*gRhoSqSigma
+    frank_stiffness: KPSigma*qParallel**2
+    total_static_energy: (KPSigma*pParallel**2*qParallel**2 + OmegaU**2*kappaPu + 4*OmegaU**2*muBr - 2*OmegaU*kappaPu*pParallel
+      + chiAbs*gRhoSqSigma*pParallel**2 + kappaPu*pParallel**2)/2
+    stationarity_dE_dP_parallel: KPSigma*pParallel*qParallel**2 - OmegaU*kappaPu + chiAbs*gRhoSqSigma*pParallel + kappaPu*pParallel
+    P_parallel_driven: OmegaU*kappaPu/(KPSigma*qParallel**2 + chiAbs*gRhoSqSigma + kappaPu)
+    P_parallel_static_Omega_u_0: '0'
+    P_parallel_static_norm_squared: '0'
+    Omega_u_handling: static brane-formation ground state has no imposed rotation drive, so Omega_u=0; nonzero P_parallel
+      requires a driven/excited Omega_u
+  Cpin_negative_chi:
+    P_parallel: '0'
+    P_parallel_norm_squared: '0'
+    verdict: FAIL_LIGHT_STARVED
+  NC_RC_C6_fork:
+    static_Omega_u_0:
+      P_parallel: '0'
+      branch_verdict: RC_S_L_plus_Cpin_FAIL_LIGHT_STARVED
+      pass: true
+    driven_Omega_u_nonzero:
+      sample_substitution:
+        kappa_Pu: '1'
+        chiAbs: '1'
+        gRhoSqSigma: '1'
+        KPSigma: '1'
+        qParallel: '0'
+        OmegaU: '1'
+      P_parallel: 1/2
+      branch_verdict: RC_S_L_plus_Cpin_CODIM1_CONDITIONAL
+      pass: true
+  engine_exprs:
+    C6_pinning_strength: chiAbs*gRhoSqSigma
+    C6_frank_stiffness: KPSigma*qParallel^2
+    C6_total_orientation_energy: ((1/2)*KPSigma*pParallel^2*qParallel^2 + (1/2)*OmegaU^2*kappaPu + 2*OmegaU^2*muBr - OmegaU*kappaPu*pParallel
+      + (1/2)*chiAbs*gRhoSqSigma*pParallel^2 + (1/2)*kappaPu*pParallel^2)
+    C6_stationarity_dE_dP_parallel: KPSigma*pParallel*qParallel^2 - OmegaU*kappaPu + chiAbs*gRhoSqSigma*pParallel + kappaPu*pParallel
+    C6_P_parallel_driven: OmegaU*kappaPu/(KPSigma*qParallel^2 + chiAbs*gRhoSqSigma + kappaPu)
+    C6_P_parallel_static: '0'
+    C6_P_parallel_static_sq: '0'
+    C6_P_parallel_driven_sample: 1/2
+    C6_quotient_energy: ((1/2)*curlU^2*muBr + (1/2)*kappaPu*mismatch^2)
+    C6_hessian_det: kappaPu*muBr
+    C6_hessian_leading_minor: muBr
+engine_agreement:
+  status: PASS
+  shared_expression_count: 72
+  mathematica_exprs:
+    A_L_kernel: (1/4)*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + hbar^2*k^2)/(m*rho0)
+    SGoldstone: 5*K*a^2*rho0^5
+    Gmagnitude: 10*K*rho0^5
+    Cdiv_mixed_eta_piT: -k*lam*Sin[theta]
+    Cdiv_mixed_eta_sigma: -k*lam*Cos[theta]
+    Cdiv_delta_A: -1/5*lam^2*(a^2*k^2*Sin[theta]^2 + a^2*k^2*Cos[theta]^2 + 2*Sin[theta]^2)/(K*a^2*rho0^5*(a^2*k^2 + 2))
+    Cdiv_omega2: (1/20)*k^2*(100*K^2*a^4*k^2*m*rho0^8 + 200*K^2*a^2*m*rho0^8 - 20*K*a^4*cL1*k^4*m*rho0^5 + 20*K*a^4*cL2*k^6*m*rho0^5
+      + 5*K*a^4*hbar^2*k^4*rho0^4 - 40*K*a^2*cL1*k^2*m*rho0^5 + 40*K*a^2*cL2*k^4*m*rho0^5 + 10*K*a^2*hbar^2*k^2*rho0^4 - 4*a^2*k^2*lam^2*m*Sin[theta]^2
+      - 4*a^2*k^2*lam^2*m*Cos[theta]^2 - 8*lam^2*m*Sin[theta]^2)/(K*a^2*m^2*rho0^4*(a^2*k^2 + 2))
+    Cdiv_lowk_limit: (1/5)*(5*K*a*rho0^4 - lam*Sin[theta])*(5*K*a*rho0^4 + lam*Sin[theta])/(K*a^2*rho0^5)
+    Cdiv_lowk_shift: -1/5*lam^2*Sin[theta]^2/(K*a^2*rho0^5)
+    Cdiv_liminf_shift: -1/5*lam^2/(K*a^2*rho0^5)
+    Cpin_mixed_eta_piT: '0'
+    Cpin_direct_density_hessian: chi*k^2*Cos[theta]^2
+    Cpin_delta_A: chi*k^2*Cos[theta]^2
+    Cpin_omega2: (1/4)*k^2*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + 4*chi*k^2*m*rho0*Cos[theta]^2 + hbar^2*k^2)/m^2
+    Cpin_kstar2_angle: (1/8)*(4*cL1*m*rho0 - 4*chi*m*rho0*Cos[theta]^2 - hbar^2)/(cL2*m*rho0)
+    Cpin_Amin_angle: (1/64)*(320*K*cL2*m^2*rho0^5 - 16*cL1^2*m^2*rho0^2 + 32*cL1*chi*m^2*rho0^2*Cos[theta]^2 + 8*cL1*hbar^2*m*rho0
+      - 16*chi^2*m^2*rho0^2*Cos[theta]^4 - 8*chi*hbar^2*m*rho0*Cos[theta]^2 - hbar^4)/(cL2*m^2*rho0^2)
+    Cpin_threshold_cL1_angle: (1/4)*(8*5^(1/2)*K^(1/2)*cL2^(1/2)*m*rho0^(5/2) + 4*chi*m*rho0*Cos[theta]^2 + hbar^2)/(m*rho0)
+    Cpin_kstar2_parallel: (1/8)*(4*cL1*m*rho0 - 4*chi*m*rho0 - hbar^2)/(cL2*m*rho0)
+    Cpin_kstar2_perp: (1/8)*(4*cL1*m*rho0 - hbar^2)/(cL2*m*rho0)
+    Cpin_lowk_limit: 5*K*rho0^3
+    Cpin_lowk_shift: '0'
+    R_fR: x^2*(x^2 - 2)*Exp[-x^2]
+    R_fRprime: -2*x*(x^4 - 4*x^2 + 2)*Exp[-x^2]
+    R_A_of_x: (1/4)*(4*AR*m*rho0*x^4 - 8*AR*m*rho0*x^2 + 20*K*m*rho0^4*Exp[x^2] + hbar^2*kR^2*x^2*Exp[x^2])*Exp[-x^2]/(m*rho0)
+    R_stationarity: -1/2*x*(4*AR*m*rho0*x^4 - 16*AR*m*rho0*x^2 + 8*AR*m*rho0 - hbar^2*kR^2*Exp[x^2])*Exp[-x^2]/(m*rho0)
+    R_threshold_AR: -1/4*(20*K*m*rho0^4 + hbar^2*kR^2*x^2)*Exp[x^2]/(m*rho0*x^2*(x^2 - 2))
+    R_threshold_stationarity: -1/4*(20*K*m*rho0^4*x^4 - 80*K*m*rho0^4*x^2 + 40*K*m*rho0^4 + hbar^2*kR^2*x^6 - 3*hbar^2*kR^2*x^4)*Exp[-x^2]/(m*rho0)
+    R_A_of_k: (1/4)*(4*AR*k^4*m*rho0 - 8*AR*k^2*kR^2*m*rho0 + 20*K*kR^4*m*rho0^4*Exp[k^2/kR^2] + hbar^2*k^2*kR^4*Exp[k^2/kR^2])*Exp[-k^2/kR^2]/(kR^4*m*rho0)
+    R_omega2: (1/4)*k^2*(4*AR*k^4*m*rho0 - 8*AR*k^2*kR^2*m*rho0 + 20*K*kR^4*m*rho0^4*Exp[k^2/kR^2] + hbar^2*k^2*kR^4*Exp[k^2/kR^2])*Exp[-k^2/kR^2]/(kR^4*m^2)
+    R_cubic_contribution: '0'
+    Gamma_R_EOS_cubic: (15/4)*K*rho0^2
+    Gamma_R_quantum_pressure_cubic: -3/32*hbar^2*k^2/(m*rho0^2)
+    Gamma_R: -3/32*(-40*K*m*rho0^4 + hbar^2*k^2)/(m*rho0^2)
+    Gamma_R_zero_k2: 40*K*m*rho0^4/hbar^2
+    lamella_avg2: 1/2
+    lamella_avg4: 3/8
+    triad_avg2: 3/2
+    triad_avg3: 3/2
+    triad_avg4: 45/8
+    triad_eta_grad2: 3/4
+    Cpin_F_lam: (1/8)*A^2*(3*A^2*beta - 4*eps)
+    Cpin_F_lam_min: -1/6*eps^2/beta
+    Cpin_q_tri_neg: (-3/2*eps + (3/4)*zeta)
+    Cpin_F_tri_neg: (1/8)*A^2*(45*A^2*beta - 8*A*gamma - 12*eps + 6*zeta)
+    Cpin_F_rank3_neg: (1/8)*A^2*(45*A^2*beta - 12*eps + 8*zeta)
+    Cpin_F_rank4_neg: (1/2)*A^2*(21*A^2*beta - 4*eps + 3*zeta)
+    Cpin_tri_nonnegative_threshold: (2/45)*gamma^2/beta
+    Cpin_lamella_open_region_zeta: (2/135)*(135*beta*eps + 4*gamma^2)/beta
+    Cpin_F_tri_pos: (1/8)*A^2*(45*A^2*beta - 8*A*gamma - 12*eps)
+    Cescape_sample_lamella_min: -1/6*eps^2/beta
+    Cescape_sample_tri_neg_min: '0'
+    Cpin_positive_sample_tri_min: -1/13500*(gamma + (30*beta*eps + gamma^2)^(1/2))^2*(45*beta*eps + gamma^2 + gamma*(30*beta*eps
+      + gamma^2)^(1/2))/beta^3
+    NC_pos_tri_z2_min: -1/10*eps^2/beta
+    NC_pos_rank3_z2_min: -1/10*eps^2/beta
+    NC_pos_rank4_z2_min: -2/21*eps^2/beta
+    NC_Cnull_degradation: '0'
+    Omitted_gap_lower_bound: 3/2
+    Omitted_q_lower_bound: (-avg2O*eps + (3/4)*zeta)
+    Omitted_cover_threshold_zeta: (1/3)*(4*avg2O*eps*u4O + c3O^2*gamma^2)/u4O
+    Gamma_T: -3/32*(-40*K*m*rho0^4 + hbar^2*k^2)/(m*rho0^2)
+    Gamma_T_zero_k2: 40*K*m*rho0^4/hbar^2
+    C6_pinning_strength: chiAbs*gRhoSqSigma
+    C6_frank_stiffness: KPSigma*qParallel^2
+    C6_total_orientation_energy: ((1/2)*KPSigma*pParallel^2*qParallel^2 + (1/2)*OmegaU^2*kappaPu + 2*OmegaU^2*muBr - OmegaU*kappaPu*pParallel
+      + (1/2)*chiAbs*gRhoSqSigma*pParallel^2 + (1/2)*kappaPu*pParallel^2)
+    C6_stationarity_dE_dP_parallel: KPSigma*pParallel*qParallel^2 - OmegaU*kappaPu + chiAbs*gRhoSqSigma*pParallel + kappaPu*pParallel
+    C6_P_parallel_driven: OmegaU*kappaPu/(KPSigma*qParallel^2 + chiAbs*gRhoSqSigma + kappaPu)
+    C6_P_parallel_static: '0'
+    C6_P_parallel_static_sq: '0'
+    C6_P_parallel_driven_sample: 1/2
+    C6_quotient_energy: ((1/2)*curlU^2*muBr + (1/2)*kappaPu*mismatch^2)
+    C6_hessian_det: kappaPu*muBr
+    C6_hessian_leading_minor: muBr
+engine_status:
+  sympy: timeout 600 python3 software/stage1_solver/tools/pathA_25_gateRC_cubic_sympy.py exited 0
+  mathematica: timeout 600 math -script software/stage1_solver/tools/pathA_25_gateRC_cubic.wl exited 0 and asserted PASS

@@ -271,6 +271,23 @@ carry the signs they do.
   *abundance* asymmetry (why matter dominates) would then be a *separate* question — plausibly about a small asymmetry in the
   bulk or in the two brane-states — layered on top of the structure↔direction preference. Both halves are open and interesting.
 
+**Sharpening (2026-06-24 — light's dimensionality, how the throat traps it, and the honest death). Working synthesis:**
+- **Light is INTRINSICALLY a (3+1)D brane field** — so it has **2 transverse polarizations automatically**, and it **never leaves the
+  brane**. *Why it can't escape:* the bulk is **shear-free** and light **is** shear → there is no medium for light off the brane. Its
+  "4D-ness" is the brane's **extrinsic curvature/embedding** (the surface bends into `w` at a throat), **not** a bulk excursion or a 3rd
+  polarization. (Like a 2D wave on a sheet of paper rolled into a 3D tube: intrinsically 2D, extrinsically 3D.) This resolves the old
+  worry "how can a 3D object live in a 4D throat" — it's intrinsic-vs-extrinsic.
+- **How the throat traps it (the localization mechanism, answering §7 #9):** the trapped mode expands into the 4D throat and becomes
+  **larger than the throat's neck → below the neck's waveguide cutoff → evanescent in the neck → genuinely BOUND** (not a slowly-leaking
+  Wheeler resonance); it sheds the non-resonant energy and locks in.
+- **The balance, precisely:** equilibrium throat radius `R*` set by **outward** trapped-light pressure vs **inward** (brane TENSION from
+  pushing into 4D + ground-state superfluid BACKPRESSURE) → a mass–radius relation `R*(E)`; a self-bound Q-ball/soliton.
+- **Causal chain (correcting a slip — gravity is the FLOW, not the curvature):** standing wave = **mass** → holds the throat **open** →
+  the puncture lets superfluid **drain into the bulk** → that inward **drain IS gravity**.
+- **HONEST DEATH (do not over-claim):** the trapped-wave **mass TOWER is falsified** — it predicts mass ratios 1:9:25, reality is
+  1:207:3477 — and the absolute mass scale (the wave amplitude) is undetermined. So this gives **one** soliton's mass, **not** a
+  predictive lepton spectrum.
+
 ---
 
 ## 5. Cosmology — the bulk↔brane cycle and dark energy
@@ -301,6 +318,19 @@ density really means *area growth* (not just *densification*, which would instea
 prediction); and that the acceleration crossover timing is even roughly sane. Any of these can break it. As a *hypothesis* it is
 coherent and testable. **This makes cosmic expansion / dark energy another thing the one medium + little arrows would deliver.**
 
+**Multi-brane / Randall–Sundrum refinement (2026-06-24).** "Where does the drained medium go?" was long hand-waved as an *infinite
+bulk vacuum* actively pulling fluid in. Two reframings + one structural commitment: (i) it's **one medium** — draining = *de-structuring*
+(ordered brane → unstructured bulk ground state), so conservation is global/automatic; (ii) a codim-1 brane draining into codim-0 bulk is
+a 3-surface into a 4-volume → dimensionally vast reservoir; (iii) **the structural commitment we'd dodged: is `w` infinite or
+bounded?** A **stack of parallel branes** (the smectic itself) **partitions `w` into finite slabs** (RS1-like: two branes bound a finite
+bulk, generalized to a stack). Then a throat on one brane drains into the adjacent slab and the **neighboring brane provides the RETURN
+(re-absorption)** → the drain closes into a **steady circulation** (resolving the "drain is an open/non-equilibrium system" worry). The
+**`±w` puncture direction = which adjacent slab = charge sign**; the **inter-brane spacing sets gravity's coupling/range**. So the brane
+stack does triple duty: light substrate + bulk partition + conservation closure. **Honest constraint (able-to-fail):** recovering
+long-range `1/r²` gravity from a finite slab is the classic braneworld problem — it needs **warping / graviton-zero-mode localization**;
+if that can't be arranged, the finite-slab picture breaks. **KEY:** the steady drain-flow field around a throat *is* the gravity field of
+that mass — so solving conservation directly yields the gravitational profile of a particle.
+
 ---
 
 ## 6. Pedigree — explored before, never wired together
@@ -314,6 +344,28 @@ make a *wrong* synthesis seductive.)
 - **Gravity/EM as emergent from a medium:** analog gravity — Unruh (1981), Volovik, Barceló–Liberati–Visser.
 - **Our space as a wall in a higher-dimensional bulk:** Rubakov–Shaposhnikov, *"Do we live inside a domain wall?"* (1983); the
   superfluid **³He A–B interface** (Volovik) as a real, structured phase interface with surface physics.
+
+### 6.1 Our OWN prior internal work on the throat — already explored, never wired together (don't rediscover it again)
+
+The throat-as-self-bound-particle picture above has been **partially built twice in this repo** and then fragmented. Read these before
+re-deriving (surveyed 2026-06-24):
+- **Paper-7 — `notes/inner_throat/`** (`inner_throat_4d.md`, `4d_next_steps.md`, `inner_throat_hard_mode.md`): already builds the
+  **force balance** `∂_a E = ∂_L E = 0`, `E_total = E_fluid + U_wave + E_geom`, `m_eff = E_total/c²`, in **4D with the calibrated n=5
+  EOS**, plus a **working 4D GNLS solver + equilibrium-scan harness** and a drain diagnostic `Φ_w=∫ρv_w`. **STALLED:** it could never
+  **self-select the aspect ratio `L/a`** (conservative-static tension+vacuum cost doesn't pin it; "requires dynamics"). The
+  drain/backpressure sector was **specced but never built**, and the trapped wave was a **scalar surrogate**, not a brane-shear mode.
+- **Lepton functional — `notes/lepton_mass_notes.md`**: the trapped-wave energy `F(a)=A/a + B/a² + C a³`, a virial identity, and
+  **`m = (18/11)·E_trapped-wave`** with an *exact* finite-throat standing-wave spectrum. **But** the mass **tower is falsified** (1:9:25
+  ≠ 1:207:3477) and the absolute scale is open — quantitative trapped-wave-as-mass, **no** lepton spectrum.
+- **`software/stage1_solver/` throat (C0–C0g)** — a **different object**: a **frozen-geometry** gauged-quintic-GPE + Maxwell *profile*
+  BVP solved only to feed the Path-A **gravity-sector closure** (`m̂0²·S_port` scale map / the `54/5` GR quadrupole). Throat geometry was
+  a **frozen input — self-selection explicitly forbidden**; it hit a **fold at τ≈0.029** (a wall-elasticity knob, **not** the soliton's
+  stability boundary) and was **deliberately re-scoped OFF the critical path** (`decisions/13` §5e–§5f). **Reusable:** the validated
+  GPE+Maxwell solver, the stationary-GPE/soliton-ground-state **literature survey**
+  (`reports/pathA_throat_solver_literature_synthesis.md`), and the conditioning/fold diagnostics — **not** a soliton existence result.
+- **THE RECURRING WALL (both efforts):** *nothing in the built models self-selects the throat size/shape.* The 2026-06-24 candidate fix
+  = the **trapped-wave pressure + drain backpressure + multi-brane return** forces (§4, §5) — **UNTESTED**. The cheapest existence test,
+  **never run in either place**, is a **4D Derrick/virial scaling check** — do that *before* any big resume.
 
 ---
 
@@ -345,11 +397,20 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
 9. **Why does light come in packets (localization + quantization)?** A separate, deeper frontier (see §3): a linear wave spreads, so
    "photon as a lump" needs either nonlinear self-trapping (the optical-soliton analog — the best lead, but in tension with photon
    non-interaction) or genuine field quantization (`E=ℏω`, which the classical model doesn't produce). Deliberately out of scope for
-   `pathA_24`; the standing puzzle the user has long flagged as missing a clean analog.
+   `pathA_24`; the standing puzzle the user has long flagged as missing a clean analog. *Candidate answer (2026-06-24, §4):* the THROAT
+   provides the localization — a trapped mode "larger than the neck" is below waveguide cutoff → evanescent → genuinely bound; the lump
+   is light caught in a throat, not a free wave that must self-trap in open space.
 10. **Wall-energy cosmology (the σ-tension squeeze).** A stable wall with tension `σ_brane` is a classic cosmological hazard
     (Zel'dovich–Kobzarev–Okun overclosure). And the tension big enough to set the charge scale (§4) vs. tiny enough not to overclose
     differ by many orders of magnitude — a likely contradiction the dark-energy story (§5) must resolve by being the *flow*, not the
     static tension. (Tested in `pathA_24` G10.)
+11. **Throat self-selection — the recurring wall (§6.1).** Neither Paper-7 nor the `stage1_solver` solve self-selects the throat
+    size/aspect-ratio `L/a` (a named unsolved residual / a frozen input, respectively). The 2026-06-24 candidate force is the
+    **trapped-wave pressure + drain backpressure + multi-brane return** (§4, §5) — UNTESTED. **Cheapest existence test = a 4D
+    Derrick/virial scaling check** (never run); do it before any big resume — a Derrick obstruction would kill the throat-soliton cheaply.
+12. **Does light's confinement (shear-free bulk) and its 2 polarizations actually fall out (§4)?** The intrinsic-(3+1)D / extrinsic-
+    curvature picture *predicts* 2 polarizations + brane confinement for free, and re-frames the old "leak" as curvature, not loss — but
+    this must be shown, not asserted (and it must still resolve the C5 longitudinal-mode obstruction at the throat, not in vacuum).
 
 ---
 

@@ -1,0 +1,293 @@
+verdict: FAIL_NOT_CODIM1
+reason: computed rank-2 triad Landau minimum is below the single-k lamella in an open neighborhood above onset
+computed_verdict:
+  verdict: FAIL_NOT_CODIM1
+  reason: computed rank-2 triad Landau minimum is below the single-k lamella in an open neighborhood above onset
+  conditions:
+    finite_k_window_open: true
+    phase_separation_excluded_by_convexity: true
+    bounded_below_symbol_minimum: true
+    static_light_sector_nonnegative: true
+    Gamma_T_nonzero_on_generic_sample: true
+    triad_minimum_below_lamella_minimum: true
+    open_neighborhood_certificate: true
+  computed_baseline_comparison:
+    lamellar_min_numeric: -1.6666666666666667e-05
+    triad_min_numeric: -0.09020779478363558
+    lamellar_min_exact: -1/60000
+    triad_min_exact: -(4455 + sqrt(20338545))**2*(99*sqrt(20338545) + 457429)/805306368000000
+freeze_fidelity:
+  t0_hash: 8fa41ac51e88a1464a4a5b22c6fe64fc218cf36ba2e3583d26b97c994e5da064
+  g0_hash: f00ee99d465e2e311c68f47fcacf4af0154ca650642271ab66c36d112cb6a290
+  t0_bytes_embedded_in_g0: true
+  required_frozen_lines_present: true
+background:
+  A_mu: 0 up to pure gauge
+  V_conf: 0
+  fixed_mean: bar rho = rho0
+  boundary_potential: none
+  box_role: numerical regulator only
+dimensions_MLT:
+  omega_squared:
+  - 0
+  - 0
+  - -2
+  c_L1:
+  - 1
+  - 8
+  - -2
+  c_L2:
+  - 1
+  - 10
+  - -2
+  A_kernel:
+  - 1
+  - 6
+  - -2
+  smectic_B_if_reached:
+  - 1
+  - -2
+  - -2
+  smectic_K_if_reached:
+  - 1
+  - 0
+  - -2
+  smectic_branch_status: not_reached_after_FAIL_NOT_CODIM1
+coupled_spectrum:
+  density_kernel_A_of_k: (20*K*m*rho0**4 - 4*c_L1*k**2*m*rho0 + 4*c_L2*k**4*m*rho0 + hbar**2*k**2)/(4*m*rho0)
+  omega2_density_phase: k**2*(20*K*m*rho0**4 - 4*c_L1*k**2*m*rho0 + 4*c_L2*k**4*m*rho0 + hbar**2*k**2)/(4*m**2)
+  theta_density_symplectic_entry: hbar
+  P_transverse_goldstone_count: 3
+  P_transverse_omega2: 5*K*k**2*rho0**4/m
+  P_longitudinal_omega2: 5*K*rho0**4*(a**2*k**2 + 2)/(a**2*m)
+  rho_P_quadratic_block:
+    computed_mixed_derivatives:
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    status: zero
+  theta_P_quadratic_block:
+    computed_mixed_derivatives:
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    status: zero
+  P_sector_nonnegative_conditions:
+  - K>0
+  - rho0>0
+  - m>0
+  - a>0
+  finite_k_condition: c_L1 > hbar^2/(4*m*rho0)
+  finite_kstar_squared: (4*c_L1*m*rho0 - hbar**2)/(8*c_L2*m*rho0)
+  A_min: (320*K*c_L2*m**2*rho0**5 - 16*c_L1**2*m**2*rho0**2 + 8*c_L1*hbar**2*m*rho0 - hbar**4)/(64*c_L2*m**2*rho0**2)
+  softening_threshold_c_L1: (8*sqrt(5)*sqrt(K)*sqrt(c_L2)*m*rho0**(5/2) + hbar**2)/(4*m*rho0)
+  kstar_squared_at_threshold: sqrt(5)*sqrt(K)*rho0**(3/2)/sqrt(c_L2)
+  k_Lstar_reconciliation: k_*^2 = c_L1/(2*c_L2) - hbar^2/(8*m*rho0*c_L2)
+light_sector:
+  uniform_state_support:
+    status: analytic_argument_not_computed
+    statement: Sigma_n[rho0] is empty, so there is no layer support and no quadratic contribution.
+  static_stripe_minimum:
+    computed_integrand: 1/2*mu_br*|curl u|^2 + 1/2*kappa_Pu*|deltaP_parallel-Omega_u|^2
+    quadratic_minimizer:
+      curl_u: '0'
+      deltaP_parallel_minus_Omega_u: '0'
+    minimum: '0'
+    nonnegative_conditions:
+    - mu_br>=0
+    - kappa_Pu>=0
+    - inherited T0 surface terms nonnegative
+  support_variation:
+    integrand_at_u0_deltaP_equals_Omega: '0'
+    status: computed_zero_integrand_on_each_support
+  density_stability_controls:
+    static_dropouts_after_minimization:
+    - mu_br
+    - J_Pu
+    - kappa_Pu
+    collapse_if_negative_modulus: separate_light_sector_failure_not_used_to_rescue_B4
+finite_k_vs_k0:
+  k0_compressibility: 5*K*rho0**3
+  k0_linear_instability:
+    computed_A_rho_0: 5*K*rho0**3
+    status: absent_for_K_positive_rho0_positive
+  same_mean_phase_separation:
+    local_potential: K*rho^5/4
+    computed_second_derivative: 5*K*rho**3
+    convex_on_rho_nonnegative: true
+    fixed_mean_exclusion: computed_convexity_plus_Jensen
+  bounded_below:
+    fourier_symbol: q*(-c_L1 + c_L2*q)/2
+    minimizing_k_squared: c_L1/(2*c_L2)
+    minimum: -c_L1**2/(8*c_L2)
+    bound: E_L >= -c_L1^2/(8*c_L2) * integral((rho-rho0)^2)
+    positive_controls:
+    - U(rho)~rho^5 at fixed mean
+    - quantum pressure >= 0
+  finite_k_linear_instability_region: c_L1 > (8*sqrt(5)*sqrt(K)*sqrt(c_L2)*m*rho0**(5/2) + hbar**2)/(4*m*rho0)
+morphology:
+  single_k_lamellar_cubic_average: '0'
+  single_k_lamellar_average_phi2: 1/2
+  single_k_lamellar_average_phi4: 3/8
+  rank2_triad_average_phi2: 3/2
+  rank2_triad_average_phi3: 3/2
+  rank2_triad_average_phi4: 45/8
+  rank2_triad_average_phi_grad_phi_sq: 3/4
+  baseline_rank2_triad_cubic_coefficient: -3*(-40*K*m*rho0**4 + hbar**2*k**2)/(32*m*rho0**2)
+  baseline_cubic_zero_codimension_condition: k_*^2 = 40*K*m*rho0**4/hbar**2
+  baseline_landau_comparison:
+    epsilon_above_onset: 1/100
+    quartic_stabilizer_beta: '1'
+    generic_sample:
+      K: '1'
+      rho0: '1'
+      hbar: '1'
+      m: '1'
+      kstar_squared: 23/8
+    Gamma_T_sample_exact: 891/256
+    Gamma_T_sample_abs_numeric: 3.48046875
+    lamellar_energy: A**2*(75*A**2 - 1)/200
+    triad_energy: 3*A**2*(12000*A**2 - 7425*A - 32)/6400
+    lamellar_min_exact: -1/60000
+    lamellar_min_numeric: -1.6666666666666667e-05
+    lamellar_minimizing_amplitude: sqrt(6)/30
+    triad_min_exact: -(4455 + sqrt(20338545))**2*(99*sqrt(20338545) + 457429)/805306368000000
+    triad_min_numeric: -0.09020779478363558
+    triad_minimizing_amplitude: (4455 + sqrt(20338545))/19200
+    triad_beats_lamella: true
+    onset_lamellar_min_exact: '0'
+    onset_triad_min_exact: -23342483043/268435456000
+    onset_triad_minimizing_amplitude: 297/640
+    open_neighborhood_certificate: true
+    stationary_candidates:
+      lamella:
+      - sqrt(6)/30
+      - '0'
+      triad:
+      - (4455 + sqrt(20338545))/19200
+      - '0'
+  baseline_morphology_result: computed_rank2_triad_minimum_below_rank1_lamella_for_Gamma_T_nonzero
+  baseline_verdict_driver_region: generic finite-k B0_Lifshitz onset is non-codim1; cubic-zero is codimension-one fine tuning,
+    not an open smectic region
+  positive_control_NC_B4b:
+    model: 4D Z2-symmetric conserved Swift-Hohenberg/Brazovskii shell with u>0 and -r<0 on |k|=k0
+    minimized_energies:
+      1_directions: -r**2/(6*u)
+      2_directions: -r**2/(9*u)
+      3_directions: -r**2/(10*u)
+      4_directions: -2*r**2/(21*u)
+    derived_minimizations:
+      1_directions:
+        avg_phi2: 1/2
+        avg_phi4: 3/8
+        energy: -A**2*(-3*A**2*u + 8*r)/32
+        minimizing_amplitude: 2*sqrt(3)*sqrt(r)/(3*sqrt(u))
+        stationary_candidates:
+        - 2*sqrt(3)*sqrt(r)/(3*sqrt(u))
+        - '0'
+        engine_expr: -1/6*r^2/u
+      2_directions:
+        avg_phi2: '1'
+        avg_phi4: 9/4
+        energy: -A**2*(-9*A**2*u + 8*r)/16
+        minimizing_amplitude: 2*sqrt(r)/(3*sqrt(u))
+        stationary_candidates:
+        - 2*sqrt(r)/(3*sqrt(u))
+        - '0'
+        engine_expr: -1/9*r^2/u
+      3_directions:
+        avg_phi2: 3/2
+        avg_phi4: 45/8
+        energy: -3*A**2*(-15*A**2*u + 8*r)/32
+        minimizing_amplitude: 2*sqrt(15)*sqrt(r)/(15*sqrt(u))
+        stationary_candidates:
+        - 2*sqrt(15)*sqrt(r)/(15*sqrt(u))
+        - '0'
+        engine_expr: -1/10*r^2/u
+      4_directions:
+        avg_phi2: '2'
+        avg_phi4: 21/2
+        energy: -A**2*(-21*A**2*u + 8*r)/8
+        minimizing_amplitude: 2*sqrt(21)*sqrt(r)/(21*sqrt(u))
+        stationary_candidates:
+        - 2*sqrt(21)*sqrt(r)/(21*sqrt(u))
+        - '0'
+        engine_expr: -2/21*r^2/u
+    outcome: stable_single_k_stripe
+  negative_control_NC_B4d:
+    model: 4D shell Landau benchmark with a rank-2 equilateral-triad cubic invariant
+    predeclared_coefficients:
+      tau: 1/100
+      gamma: '1'
+      u: '1'
+    lamellar_min: '0'
+    lamellar_minimizing_amplitude: '0'
+    triad_min_numeric: -3.614683057877558e-05
+    triad_min_exact: -(1 + 2*sqrt(10))*(sqrt(10) + 5)**2/13500000
+    triad_minimizing_amplitude: (sqrt(10) + 5)/75
+    stationary_candidates:
+      lamella:
+      - '0'
+      triad:
+      - -(-5 + sqrt(10))/75
+      - (sqrt(10) + 5)/75
+      - '0'
+    outcome: FAIL_NOT_CODIM1
+controls:
+  NC_B4a_driver_off:
+    setting: c_L1,c_L2 -> 0 after removing the Lifshitz driver
+    spectrum: omega^2=(rho0*k^2/m)*(5*K*rho0^3 + hbar^2*k^2/(4*m*rho0)) > 0
+    outcome: FAIL_NO_MODULATION
+  NC_B4b_positive_method:
+    setting: 4D Z2 Swift-Hohenberg/Brazovskii shell, r<0,u>0, mean zero
+    outcome: stable_single_k_stripe
+  NC_B4c_k0_attraction:
+    setting: replace U'' by a negative compressibility -abs(mu0) with nonnegative gradient regularization
+    first_soft_mode: k=0
+    outcome: FAIL_PHASE_SEPARATION
+  NC_B4d_multik_benchmark:
+    setting: predeclared tau=1/100,gamma=1,u=1 rank-2 cubic shell benchmark
+    outcome: FAIL_NOT_CODIM1
+stability_region:
+  dimensionless_linear_control: Lambda=(c_L1-hbar^2/(4*m*rho0))/(2*sqrt(5*K*rho0^3*c_L2))
+  finite_k_softening: Lambda>1
+  generic_codim1_status: not stable at onset for Gamma_triad != 0
+  Gamma_triad: -3*(-40*K*m*rho0**4 + hbar**2*k**2)/(32*m*rho0**2)
+  Gamma_triad_zero: k_*^2 = 40*K*m*rho0**4/hbar**2
+engine_agreement:
+  sympy_engine: PASS
+  mathematica_engine: asserted_by_wolfram_script_against_this_json
+  mathematica_exprs:
+    density_kernel_A_of_k: (1/4)*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + hbar^2*k^2)/(m*rho0)
+    omega2_density_phase: (1/4)*k^2*(20*K*m*rho0^4 - 4*cL1*k^2*m*rho0 + 4*cL2*k^4*m*rho0 + hbar^2*k^2)/m^2
+    finite_kstar_squared: (1/8)*(4*cL1*m*rho0 - hbar^2)/(cL2*m*rho0)
+    A_min: (1/64)*(320*K*cL2*m^2*rho0^5 - 16*cL1^2*m^2*rho0^2 + 8*cL1*hbar^2*m*rho0 - hbar^4)/(cL2*m^2*rho0^2)
+    softening_threshold_c_L1: (1/4)*(8*5^(1/2)*K^(1/2)*cL2^(1/2)*m*rho0^(5/2) + hbar^2)/(m*rho0)
+    kstar_squared_at_threshold: 5^(1/2)*K^(1/2)*rho0^(3/2)/cL2^(1/2)
+    P_transverse_omega2: 5*K*k^2*rho0^4/m
+    P_longitudinal_omega2: 5*K*rho0^4*(a^2*k^2 + 2)/(a^2*m)
+    rho_P_zero_sum: '0'
+    theta_P_zero_sum: '0'
+    single_k_lamellar_cubic_average: '0'
+    rank2_triad_average_phi2: 3/2
+    rank2_triad_average_phi3: 3/2
+    rank2_triad_average_phi_grad_phi_sq: 3/4
+    baseline_rank2_triad_cubic_coefficient: -3/32*(-40*K*m*rho0^4 + hbar^2*k^2)/(m*rho0^2)
+    baseline_cubic_zero_kstar_squared: 40*K*m*rho0^4/hbar^2
+    baseline_lamella_min: -1/60000
+    baseline_triad_min: -1/805306368000000*(4455 + 20338545^(1/2))^2*(99*20338545^(1/2) + 457429)
+    baseline_onset_triad_min: -23342483043/268435456000
+    negative_control_NC_B4d_lamellar_min: '0'
+    negative_control_NC_B4d_triad_min: -1/13500000*(1 + 2*10^(1/2))*(10^(1/2) + 5)^2
+    positive_control_SH_M1_min: -1/6*r^2/u
+    positive_control_SH_M2_min: -1/9*r^2/u
+    positive_control_SH_M3_min: -1/10*r^2/u
+    positive_control_SH_M4_min: -2/21*r^2/u
+    bounded_symbol_minimum: -1/8*cL1^2/cL2
+    bounded_symbol_minimizing_k_squared: (1/2)*cL1/cL2
+    phase_convexity_second_derivative: 5*K*rho^3
+    k0_compressibility: 5*K*rho0^3
+    light_integrand_minimum: '0'
+    light_support_integrand_at_minimum: '0'

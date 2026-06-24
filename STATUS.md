@@ -10,6 +10,52 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
+## ⭐⭐ LATEST STATE (2026-06-24) — READ THIS + `conceptual_foundation.md` §4/§5/§6.1 FIRST
+
+> **POST-/COMPACT WARNING TO FUTURE-ME:** the active frame is the **throat-soliton / 4D-light unification synthesis** worked out in
+> conversation on 2026-06-24. It is *easy to forget after compaction* and the user assumes you still hold it — that mismatch has
+> derailed us before. **Before any model work, READ:** `docs/conceptual_foundation.md` **§4** (throat/light), **§5** (multi-brane
+> cosmology), **§6.1** (our own prior work) + the memory **`project-light-is-4d-throat-hypothesis`**.
+
+**B4 RESULT:** `FAIL_NOT_CODIM1` (final, dual-engine verified, adversarial-SOUND). The GNLS **density-smectic brane is a candidate
+NO-GO** — the medium's cubic invariant `U'''=15Kρ0²>0` makes a multi-`k` crystal beat the codim-1 lamella. **pathA_25 gates are PAUSED.**
+
+**THE SYNTHESIS (the thing not to forget):** particles = **throat-solitons**. Light = an **intrinsically (3+1)D brane shear wave**
+(2 polarizations; confined because the bulk is **shear-free** and light *is* shear) whose 4D-ness is the brane's **extrinsic
+curvature** at throats — NOT a bulk excursion. A throat traps light as a **sub-cutoff standing wave** (mode larger than the neck →
+evanescent → genuinely bound) = **MASS**. The trapped wave holds the throat **open** against **brane tension + superfluid
+backpressure** (force-balance soliton, radius `R*(E)`); the puncture lets superfluid **drain into the bulk = GRAVITY** (gravity is the
+**FLOW**, not the curvature); **±w puncture direction = CHARGE**. A **stack of branes** partitions the bulk into RS-like **finite
+slabs** → the neighbor provides the drain's **return** (steady circulation) + sets gravity's range. **DEATHS to respect (don't
+over-claim):** the trapped-wave lepton mass *tower* is FALSIFIED (1:9:25 ≠ 1:207:3477) → one soliton mass, **no** lepton spectrum;
+B4 density-smectic FAILED.
+
+**ALREADY BUILT — don't rediscover (`conceptual_foundation.md` §6.1):** Paper-7 `notes/inner_throat/` (force-balance + 4D GNLS solver,
+STALLED on `L/a` self-selection); `notes/lepton_mass_notes.md` (trapped-wave functional, tower falsified); `software/stage1_solver/`
+throat (a *different* object — frozen-geometry gravity-closure profile solve, abandoned/re-scoped). **Recurring wall: nothing in either
+self-selects the throat size.**
+
+**▶ NEXT ACTION (resume here — user-approved plan, 2026-06-24; cheap + able-to-fail, before any big build):**
+1. Draft a **4D Derrick/virial scaling check** of the throat-soliton energy (reuse the Paper-7 functional `notes/inner_throat/`) — the
+   cheapest way to KILL the throat-soliton; **never run** in either prior effort. A Derrick obstruction ends it cheaply.
+2. Run the **R/C cubic verdict** (pathA_25 sensitivity branches): does Family **R** or **C** escape the B4 cubic? Expect **R = no**
+   (purely quadratic in δρ, no axis), **C = maybe** (ρ–P coupling → P picks the axis → uniaxial → codim-1, the nematic→smectic
+   mechanism; crux risk = the same C may pin P out-of-plane and starve light). **FIX the tautological Family-C `k→0`** in the G0 scripts
+   before running C.
+3. IF Derrick survives → **resume Paper-7** with the missing forces (drain-backpressure closure + multi-brane return = the `L/a`
+   selector; trapped wave as a brane-shear **sub-cutoff** mode), reusing the `stage1_solver` solver infra + the soliton-solver lit survey
+   (`reports/pathA_throat_solver_literature_synthesis.md`).
+
+**UNCOMMITTED working tree:** B4 artifacts (`reports/pathA_25_gateB4_smectic.md`, `..._results.yaml`,
+`tools/pathA_25_gateB4_smectic_sympy.py` + `....wl`) + these doc/ledger edits are uncommitted (commit only when the user asks).
+
+**Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
+danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate
+Codex to GREEN → one GLM pass → fold → Codex to green; crux execution prompts get the full gauntlet; reports-only; `codex exec … -c
+model_reasoning_effort=xhigh` backgrounded, never wrap the session in `timeout`.
+
+---
+
 ## Current state (one paragraph)
 
 The toy model targets the GR-quadrupole verdict `P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5`. Under the **calibrate-predict** discipline

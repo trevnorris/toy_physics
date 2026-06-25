@@ -1,0 +1,594 @@
+schema: pathA_29_brane_bulk_return_sympy/v3
+top_line_verdict: RETURN_RESIDUAL_PREDICTION
+Z_is_premise: true
+pathA_28_reuse:
+  pathA_28_results: software/stage1_solver/reports/pathA_28_monopole_results.yaml
+  pathA_28_condition: software/stage1_solver/reports/pathA_28_cancellation_condition.yaml
+  raw_kernels_reused_verbatim:
+    ell0:
+      kernel: I*a*omega/cS
+      p_raw: 1
+    ell1:
+      kernel: I*a**3*omega**3/(2*cS**3)
+      p_raw: 3
+    ell2:
+      kernel: I*a**5*omega**5/(27*cS**5)
+      p_raw: 5
+  source_moment_definitions_reused:
+    ell0: M0(omega)=int_brane S_leak(omega,x) d^3x
+    ell1: D1_i(omega)=int_brane x_i S_leak d^3x + int_brane j_i d^3x, including carried odd wake contribution when present
+  cancellation_target_reused:
+    ell0: R0(omega)=int_brane S_return(omega,x) d^3x = -M0(omega)
+    ell1: R1_i(omega)=-D1_i(omega) for each dipole component
+  quadrupole_anchor_reused:
+    p_raw: 5
+    kernel: I*a**5*omega**5/(27*cS**5)
+    research_anchor: research/4d_2_5pn
+slab_structure:
+  structure_id: a91d8cb3bb342101866760dd8291af795b6240cc6ee0cfcb8dafae5097f358be
+  canonical_form: pathA29_v3|flat_slab:0<=w<=d|warp:A(w)=1|bulk_eq:Phi_ww+(omega/c_s)^2 Phi=0|checkA:continuity_fraction_alpha_l=1/(1+epsilon_l),phase=exp(I*omega*2d/c_s)|checkB:destructuring_absorbing:compact_cell_natural_dc_sink_spectrum|checkB:bloch_stack:q=0_periodic_cell|radiation:ac_check_a_only|Z_is_premise:true|boundary_dof:none
+  spacing_d:
+    value: d>0 finite
+    status: postulated
+  dimensionality_of_return:
+    value: one flat finite bulk w-slab; return fractions epsilon_l/(1+epsilon_l) are continuity partition parameters, not
+      source fits
+    status: postulated
+  warp_ansatz:
+    value: flat A(w)=1 for the main family
+    status: postulated
+  derived_neighbor_BC_equations:
+    destructuring_absorbing:
+      status: derived
+      physical_completion: section-5 de-structuring/absorbing DC sink; drain admittance is the premise and is represented
+        in the continuity source term Z, not by a tuned wall impedance
+      transverse_equations:
+      - -f''(w)=m^2 f(w)
+      - f'(0)=0
+      - f'(d)=0
+    bloch_stack:
+      status: derived
+      physical_completion: periodic multi-brane stack q=0 Bloch cell with absorbing neighbor branes
+      transverse_equations:
+      - -f''(w)=m^2 f(w)
+      - f(d)=f(0)
+      - f'(d)=f'(0)
+    radiation:
+      status: derived_ac_only
+      physical_completion: Sommerfeld outgoing AC transport, tagged ac_check_a_only and excluded from Check B
+      equation: partial_w Phi = I*(omega/c_s)*Phi at finite omega; omega->0 Neumann limit is not a Check-B branch
+  response:
+    value: T_l(omega)=alpha_l*exp(I*omega*2d/c_s) from projected continuity and solved bidirectional Helmholtz transport
+    status: derived_not_dialed
+  postulate_vs_derived:
+    geometry: postulated
+    topology: postulated
+    BC_functional_forms: derived from declared physical completions
+    response: computed from continuity plus transport; not fitted to cancellation
+steady_state:
+  exists: true
+  type: circulation
+  provenance:
+    zeroth_moment_balance: M0 = M0/(epsilon0 + 1) + M0*epsilon0/(epsilon0 + 1)
+    first_moment_balance: D1 = D1/(epsilon1 + 1) + D1*epsilon1/(epsilon1 + 1)
+    computed_residuals:
+      ell0: '0'
+      ell1: '0'
+    routing: a candidate with nonzero steady balance is inadmissible; this family has zero balance residual
+transfer_function:
+  structure_id: a91d8cb3bb342101866760dd8291af795b6240cc6ee0cfcb8dafae5097f358be
+  provenance:
+    governing_equations:
+    - 'bulk Helmholtz transport: partial_w^2 Phi_l + (omega/c_s)^2 Phi_l = 0 on 0<w<d'
+    - 'bidirectional basis: Phi_l=A_l*exp(I*omega*w/c_s)+B_l*exp(-I*omega*w/c_s)'
+    - round-trip transport phase solved from the Helmholtz basis phase ratios
+    - 'zeroth-moment continuity: J_leak_0 = J_return_0 + J_neighbor_0'
+    - 'first-moment continuity: J_leak_1 = J_return_1 + J_neighbor_1 including return centroid partition'
+    - alpha_l = J_return_l/J_leak_l = 1/(1+epsilon_l), epsilon_l>0
+    transit_phase_trace:
+      basis: Phi_l=A_l*exp(I*omega*w/c_s)+B_l*exp(-I*omega*w/c_s)
+      forward_phase_ratio: exp(I*d*omega/cS)
+      return_phase_ratio: exp(I*d*omega/cS)
+      round_trip_phase: exp(2*I*d*omega/cS)
+      solved_tau: 2*d/cS
+      source_hash: 6b5cfc8c8e91b2f534c3b0f8e73942e95f869bc86f59cfca1c099be7f7802cdb
+    bc_equations:
+    - 'destructuring_absorbing DC sink: compact cell transverse spectrum f''(0)=f''(d)=0; drain flux is the source accounting
+      Z'
+    - 'Bloch DC-sink cross-check: f(d)=f(0), f''(d)=f''(0)'
+    - Sommerfeld radiation is finite-omega AC transport only and is not used for Check B
+    solution_basis: Phi_l=A_l*exp(I*omega*w/c_s)+B_l*exp(-I*omega*w/c_s)
+    series_coefficients:
+      ell0:
+        omega^0: 1/(epsilon0 + 1)
+        omega^1: 2*I*d/(cS*(epsilon0 + 1))
+        omega^2: -2*d**2/(cS**2*(epsilon0 + 1))
+        omega^3: -4*I*d**3/(3*cS**3*(epsilon0 + 1))
+        omega^4: 2*d**4/(3*cS**4*(epsilon0 + 1))
+      ell1:
+        omega^0: 1/(epsilon1 + 1)
+        omega^1: 2*I*d/(cS*(epsilon1 + 1))
+        omega^2: -2*d**2/(cS**2*(epsilon1 + 1))
+    free_parameter_table:
+      d:
+        role: postulated slab spacing
+        domain: positive finite
+        depends_on_source: false
+      epsilon0:
+        role: zeroth-moment transmitted-to-returned DC sink partition
+        domain: positive
+        depends_on_source: false
+      epsilon1:
+        role: first-moment transmitted-to-returned centroid partition
+        domain: positive
+        depends_on_source: false
+      c_s:
+        role: signal speed with restored units
+        domain: positive
+        depends_on_source: false
+    residual_substitution_trace:
+      R0_substitution: R0(omega)=-M0*T0(omega)
+      R1_substitution: R1(omega)=-D1*T1(omega)
+      A0_residual: -I*M0*a*omega*(-3*cS**4*epsilon0 + 6*I*cS**3*d*omega - 6*cS**2*d**2*omega**2 - 4*I*cS*d**3*omega**3 + 2*d**4*omega**4)/(3*cS**5*(epsilon0
+        + 1))
+      A1_residual: I*D1*a**3*omega**3*(cS**2*epsilon1 - 2*I*cS*d*omega + 2*d**2*omega**2)/(2*cS**5*(epsilon1 + 1))
+    forbidden_fit_flags:
+      fit_to_cancellation: false
+      fit_to_source_moments: false
+      T_set_to_one_by_fiat: false
+      standalone_frozen_static_solve: false
+      falloff_exponent_fit_from_handwritten_vr: false
+      m_dependent_impedance_BC: false
+      radiation_branch_used_for_Check_B: false
+      all_multipole_cancellation: false
+  ell0:
+    T_ell_omega: (3*cS**4 + 6*I*cS**3*d*omega - 6*cS**2*d**2*omega**2 - 4*I*cS*d**3*omega**3 + 2*d**4*omega**4)/(3*cS**4*(epsilon0
+      + 1))
+    T_full_unexpanded: exp(2*I*d*omega/cS)/(epsilon0 + 1)
+    series_through: O(omega^4)
+    T_at_DC: 1/(epsilon0 + 1)
+    sigma_l: 1
+    nu_l: 0
+    computed_from: zeroth-moment continuity fraction times solved Helmholtz round-trip phase
+  ell1:
+    T_ell_omega: -I*(-cS + d*omega*(1 - I))*(-I*cS + d*omega*(1 - I))/(cS**2*(epsilon1 + 1))
+    T_full_unexpanded: exp(2*I*d*omega/cS)/(epsilon1 + 1)
+    series_through: O(omega^2)
+    T_at_DC: 1/(epsilon1 + 1)
+    sigma_l: 1
+    nu_l: 0
+    computed_from: first-moment continuity fraction times solved Helmholtz round-trip phase
+  T_at_DC:
+    ell0: 1/(epsilon0 + 1)
+    ell1: 1/(epsilon1 + 1)
+return_moments:
+  R0_omega: -M0*(3*cS**4 + 6*I*cS**3*d*omega - 6*cS**2*d**2*omega**2 - 4*I*cS*d**3*omega**3 + 2*d**4*omega**4)/(3*cS**4*(epsilon0
+    + 1))
+  R1_omega: I*D1*(-cS + d*omega*(1 - I))*(-I*cS + d*omega*(1 - I))/(cS**2*(epsilon1 + 1))
+  target_from_pathA_28:
+    R0: -M0
+    R1: -D1
+residual_amplitude:
+  A0_res: -I*M0*a*omega*(-3*cS**4*epsilon0 + 6*I*cS**3*d*omega - 6*cS**2*d**2*omega**2 - 4*I*cS*d**3*omega**3 + 2*d**4*omega**4)/(3*cS**5*(epsilon0
+    + 1))
+  A1_res: I*D1*a**3*omega**3*(cS**2*epsilon1 - 2*I*cS*d*omega + 2*d**2*omega**2)/(2*cS**5*(epsilon1 + 1))
+  p_residual:
+    ell0: 1
+    ell1: 3
+  p_quadrupole: 5
+  order_rule: p_res_0=1+nu_0 and p_res_1=3+nu_1; sigma_l is not used in p_res
+admissibility_window_A:
+  status: none
+  strict_window: none
+  required_conditions: T0(0)=1 with nu0>=4 and T1(0)=1 with nu1>=2
+  computed_obstruction: finite epsilon_l>0 gives nu0=0 and nu1=0; perfect-return epsilon0->0 gives a finite transport phase
+    with nu0=1, so strict p_res>=5 is not an open window in this tractable family
+  perfect_return_control:
+    T0_limit: exp(2*I*d*omega/cS)
+    nu0: 1
+    p_res0: 2
+    p_res1: 4
+residual_window_A:
+  status: open
+  constraints: d>0, c_s>0, epsilon0>0, epsilon1>0, flat localizing slab, admissible DC-sink completion
+  p_residual:
+    ell0: 1
+    ell1: 3
+  bounded_residual: true
+transverse_mode_spectrum:
+  operator: -d^2/dw^2 on the compact finite slab for Check-B DC sinks
+  destructuring_absorbing:
+    bc_derivation: 'section-5 de-structuring/absorbing DC sink: finite compact cell; drain admittance is carried by Z and
+      the field spectrum uses the natural finite-cell zero mode'
+    bc_equations:
+    - f'(0)=0
+    - f'(d)=0
+    eigenvalue_equation: sin(m*d)=0
+    modes:
+    - n: 0
+      m_n: '0'
+      f_n(w): 1/sqrt(d)
+      normalization: '1'
+    - n: 1
+      m_n: pi/d
+      f_n(w): sqrt(2)*cos(pi*w/d)/sqrt(d)
+      normalization: '1'
+    - n: j>=0
+      m_n: j*pi/d
+      f_n(w): sqrt((2-delta_j0)/d)*cos(j*pi*w/d)
+    proof_residuals:
+      zero_ode: '0'
+      zero_bc_w0: '0'
+      zero_bc_wd: '0'
+      first_ode: '0'
+      first_bc_w0: '0'
+      first_bc_wd: '0'
+    spectrum_class: normalizable_zero_mode
+  bloch_stack:
+    bc_derivation: q=0 Bloch cell of the periodic multi-brane stack with absorbing neighboring branes
+    bc_equations:
+    - f(d)=f(0)
+    - f'(d)=f'(0)
+    eigenvalue_equation: m=2*pi*j/d for integer j in the q=0 Bloch sector
+    modes:
+    - n: 0
+      m_n: '0'
+      f_n(w): 1/sqrt(d)
+      normalization: '1'
+    - n: 1
+      m_n: 2*pi/d
+      f_n(w): sqrt(2)*cos(2*pi*w/d)/sqrt(d)
+      normalization: '1'
+    proof_residuals:
+      zero_ode: '0'
+      zero_periodic_value: '0'
+      zero_periodic_derivative: '0'
+      first_ode: '0'
+      first_periodic_value: '0'
+      first_periodic_derivative: '0'
+    spectrum_class: normalizable_zero_mode
+zero_mode:
+  exists: true
+  normalizable: true
+  eigenvalue_m0: '0'
+  eigenfunction: 1/sqrt(d)
+  r_dependence: 1/(4*pi*d*r)
+  flow_from_gradient: 1/(4*pi*d*r**2)
+  derived_flow_exponent_p: 2
+  destructuring_radial_trace_id: d56c35ec0aa20ef526ee9c2362964fef9cd98db8a7ef45e1645ed6f2b9a3d41b
+  bloch_radial_trace_id: e2aa21297c378b01a8fa24f6d2cb3c929076a1fff57dc1444d245b1e02dcf7ac
+  independent_branch_solves: true
+green_function:
+  dynamic_zero_mode: exp(I*omega*r/cS)/(4*pi*d*r)
+  dynamic_zero_mode_trace:
+    route: dynamic_limit_trace
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: g''+(2/r)g'+((omega/c_s)^2-m^2)g=0 solved before omega->0
+    dsolve_general: sqrt(2)*sqrt(cS)*(C1*sin(omega*r/cS) - C2*cos(omega*r/cS))/(sqrt(pi)*sqrt(omega)*r)
+    boundary_selection: outgoing spherical radial branch selected from the dsolve basis; normalization fixed by the compact
+      zero-mode overlap 1/d
+    solution: exp(I*omega*r/cS)/(4*pi*d*r)
+    limit_green: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+    exponent: '2'
+    source_hash: 105ac2b6f27989e50d51b35f2cfb1ef622089ddbcf46d2c6cb59f5742f5ee1dd
+    trace_id: a98499d0b28117d8504dcd5a31a5fec9b59f5771bb3cee98e523fac838e17e03
+  static_destructuring_modal_green: (CAbs1*d*epsilon0 + CAbs1*d - M0*epsilon0*exp(pi*r/d))*exp(-pi*r/d)/(4*pi*d*r*(epsilon0
+    + 1))
+  static_destructuring_zero_mode_trace:
+    route: static_solve_trace
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: 'omega set to 0 first: g''''+(2/r)g''-m^2*g=0'
+    dsolve_general: (C1*r + C2)/r
+    boundary_selection: constant branch removed by decay at infinity; remaining radial branch normalized by compact zero-mode
+      overlap 1/d
+    solution: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+    exponent: '2'
+    source_hash: 9b6ce833962c75186186eba813600be65d1826f346c864a025977aa4430a242e
+    trace_id: d56c35ec0aa20ef526ee9c2362964fef9cd98db8a7ef45e1645ed6f2b9a3d41b
+  static_bloch_modal_green: (CBloch1*d*epsilon0 + CBloch1*d - M0*epsilon0*exp(2*pi*r/d))*exp(-2*pi*r/d)/(4*pi*d*r*(epsilon0
+    + 1))
+  static_bloch_zero_mode_trace:
+    route: static_solve_trace
+    branch: bloch_stack
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: 'omega set to 0 first: g''''+(2/r)g''-m^2*g=0'
+    dsolve_general: (C1*r + C2)/r
+    boundary_selection: constant branch removed by decay at infinity; remaining radial branch normalized by compact zero-mode
+      overlap 1/d
+    solution: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+    exponent: '2'
+    source_hash: 9b6ce833962c75186186eba813600be65d1826f346c864a025977aa4430a242e
+    trace_id: e2aa21297c378b01a8fa24f6d2cb3c929076a1fff57dc1444d245b1e02dcf7ac
+  first_massive_tail_destructuring: exp(-pi*r/d)/(4*pi*r)
+  first_massive_tail_destructuring_trace:
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: pi/d
+    operator: g''+(2/r)g'-m^2*g=0
+    dsolve_general: -sqrt(2)*I*I**(3/2)*sqrt(d)*(C1*sinh(pi*r/d) + I*C2*cosh(pi*r/d))/(pi*r)
+    selected_decaying_solution: exp(-pi*r/d)/(4*pi*r)
+    selection_rule: growing exp(+m*r)/r coefficient set to zero in the dsolve basis
+    residual: '0'
+  first_massive_tail_bloch: exp(-2*pi*r/d)/(4*pi*r)
+  first_massive_tail_bloch_trace:
+    branch: bloch_stack
+    seed_transverse_eigenvalue_m: 2*pi/d
+    operator: g''+(2/r)g'-m^2*g=0
+    dsolve_general: -I*I**(3/2)*sqrt(d)*(C1*sinh(2*pi*r/d) + I*C2*cosh(2*pi*r/d))/(pi*r)
+    selected_decaying_solution: exp(-2*pi*r/d)/(4*pi*r)
+    selection_rule: growing exp(+m*r)/r coefficient set to zero in the dsolve basis
+    residual: '0'
+  long_range_selection: the solved normalizable m=0 mode controls r>>d; massive terms are exponentially suppressed
+counterfactual_guard:
+  perturbed_falloff_rejected: true
+  perturbation: multiplied the solved static zero-mode Green function by r**(-4), changing 1/r to 1/r**5
+  candidate_residual: '0'
+  perturbed_residual: 5/(pi*d*r**7)
+  operator: g''+(2/r)g'+kappa^2*g
+spectrum_class: normalizable_zero_mode
+static_falloff_B:
+  structure_id: a91d8cb3bb342101866760dd8291af795b6240cc6ee0cfcb8dafae5097f358be
+  same_structure_as_A: true
+  limiting_map: Check B is omega->0 of the same finite-slab Helmholtz transport/spectrum family; radiation/Sommerfeld is tagged
+    ac_check_a_only and excluded from the DC-sink branch gate
+  dynamic_object: G(omega,r,w;0,0)=sum_n f_n(w)f_n(0) g_n(r), where each g_n solves g''+(2/r)g'+((omega/c_s)^2-m_n^2)g=0
+  bc_computed_under:
+  - destructuring_absorbing
+  - bloch_stack
+  p: 2
+  p_eq_2: true
+  crossover_scale: r>>d; first massive scales d/pi for destructuring_absorbing and d/(2*pi) for bloch_stack
+  zero_mode_source_integral: -M0*epsilon0/(epsilon0 + 1)
+  Z_terms:
+    throat_sink: -M0
+    return: M0/(epsilon0 + 1)
+    replenishment_localized: '0'
+    Z_boundary_dof: none
+  Z_uniform_background:
+    term: Gamma_uniform
+    enters_zero_mode_source_integral: false
+    provenance: uniform whole-brane areal-leak background; separate observable, not localized monopole Z
+  Z_sign: negative
+  Z_sign_certificate: '1'
+  Z_reduces_to_local: true
+branch_results:
+  destructuring_absorbing:
+    role: PRIMARY
+    admissibility: DC sink; Z<0 is the drain premise
+    verdict: RETURN_RESIDUAL_PREDICTION
+    p: 2
+    p_eq_2: true
+    Z_sign: negative_by_premise_and_accounting
+    spectrum_class: normalizable_zero_mode
+    green_function: (CAbs1*d*epsilon0 + CAbs1*d - M0*epsilon0*exp(pi*r/d))*exp(-pi*r/d)/(4*pi*d*r*(epsilon0 + 1))
+    radial_solve_trace_id: d56c35ec0aa20ef526ee9c2362964fef9cd98db8a7ef45e1645ed6f2b9a3d41b
+  bloch_stack:
+    role: CROSS_CHECK
+    admissibility: DC sink periodic stack; Z<0 is the drain premise
+    verdict: RETURN_RESIDUAL_PREDICTION
+    p: 2
+    p_eq_2: true
+    Z_sign: negative_by_premise_and_accounting
+    spectrum_class: normalizable_zero_mode
+    green_function: (CBloch1*d*epsilon0 + CBloch1*d - M0*epsilon0*exp(2*pi*r/d))*exp(-2*pi*r/d)/(4*pi*d*r*(epsilon0 + 1))
+    radial_solve_trace_id: e2aa21297c378b01a8fa24f6d2cb3c929076a1fff57dc1444d245b1e02dcf7ac
+  radiation:
+    tag: ac_check_a_only
+    not_used_for_Check_B: true
+    finite_omega_bc: partial_w Phi = I*(omega/c_s)*Phi
+    dc_limit_note: omega->0 is reflecting/no-drain and therefore inadmissible for Check B
+branch_agreement:
+  destructuring_p: 2
+  bloch_p: 2
+  destructuring_verdict: RETURN_RESIDUAL_PREDICTION
+  bloch_verdict: RETURN_RESIDUAL_PREDICTION
+  p_agree: true
+reconciliation:
+  verdict: RETURN_RESIDUAL_PREDICTION
+  B_pass: true
+  p: 2
+  Z_is_premise: true
+  T0_at_DC: 1/(epsilon0 + 1)
+  same_structure: true
+  A_strict_pass: false
+  A_residual_pass: true
+  Z_sign: negative
+  p_eq_2: true
+  Z_reduces_to_local: true
+  Z_boundary_dof_status: none
+  joint_window: superseded_by_v3; no strict-A window in the computed local channel
+bc_is_local_causal_passive: true
+bc_omega_dependence_source: none
+window_is_open: true
+window_symmetry_protected: none
+residual_prediction:
+  status: active
+  scaling:
+    ell0: A0_res = i*a*(omega/c_s)*M0*(epsilon0/(1+epsilon0) + O(omega*d/c_s))
+    ell1: A1_res = i*a^3*(omega/c_s)^3*D1*(epsilon1/(1+epsilon1) + O(omega*d/c_s))/2
+  epsilon_to_gravity_strength_tie: Z=-M0*epsilon0/(epsilon0 + 1); the same epsilon0 sets the net sink strength and the monopole
+    residual coefficient
+  pde_ledger: 'does not close open-item #9; records a falsifiable residual prediction'
+T2_effect:
+  T2_applied: false
+  quadrupole_kernel_retains_p_raw: 5
+  kernel_reused_from_pathA_28: I*a**5*omega**5/(27*cS**5)
+  burke_thorne_anchor: research/4d_2_5pn
+  all_multipole_cancellation_imposed: false
+static_dynamic_consistency:
+  agree: true
+  dynamic_limit_exponent: 2
+  static_solve_exponent: 2
+  dynamic_trace_id: a98499d0b28117d8504dcd5a31a5fec9b59f5771bb3cee98e523fac838e17e03
+  static_trace_id: d56c35ec0aa20ef526ee9c2362964fef9cd98db8a7ef45e1645ed6f2b9a3d41b
+  dynamic_source_hash: 105ac2b6f27989e50d51b35f2cfb1ef622089ddbcf46d2c6cb59f5742f5ee1dd
+  static_source_hash: 9b6ce833962c75186186eba813600be65d1826f346c864a025977aa4430a242e
+  independent_extractions: true
+  dynamic_limit_trace:
+    route: dynamic_limit_trace
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: g''+(2/r)g'+((omega/c_s)^2-m^2)g=0 solved before omega->0
+    dsolve_general: sqrt(2)*sqrt(cS)*(C1*sin(omega*r/cS) - C2*cos(omega*r/cS))/(sqrt(pi)*sqrt(omega)*r)
+    boundary_selection: outgoing spherical radial branch selected from the dsolve basis; normalization fixed by the compact
+      zero-mode overlap 1/d
+    solution: exp(I*omega*r/cS)/(4*pi*d*r)
+    limit_green: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+    exponent: '2'
+    source_hash: 105ac2b6f27989e50d51b35f2cfb1ef622089ddbcf46d2c6cb59f5742f5ee1dd
+    trace_id: a98499d0b28117d8504dcd5a31a5fec9b59f5771bb3cee98e523fac838e17e03
+  static_solve_trace:
+    route: static_solve_trace
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: 'omega set to 0 first: g''''+(2/r)g''-m^2*g=0'
+    dsolve_general: (C1*r + C2)/r
+    boundary_selection: constant branch removed by decay at infinity; remaining radial branch normalized by compact zero-mode
+      overlap 1/d
+    solution: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+    exponent: '2'
+    source_hash: 9b6ce833962c75186186eba813600be65d1826f346c864a025977aa4430a242e
+    trace_id: d56c35ec0aa20ef526ee9c2362964fef9cd98db8a7ef45e1645ed6f2b9a3d41b
+controls:
+  dc_value_computed:
+    same_pipeline: true
+    fired: true
+    T0_at_DC: 1/(epsilon0 + 1)
+    T1_at_DC: 1/(epsilon1 + 1)
+    not_fiat_one: true
+    strict_A_requires_finite_omega_orders: true
+  no_go_reachable:
+    same_pipeline: true
+    fired: true
+    status: reachable_RETURN_NOGO
+    warp_equation: anti-localizing half-line measure mu(w)=exp(2*k_warp*w), k_warp>0; L_w=-(1/mu) d_w(mu d_w)
+    zero_mode_norm: oo
+    spectrum_class: continuum_p3
+    computed_p: 3
+    classifier_verdict: RETURN_NOGO
+    drain_admissibility: Z<0 premise retained; failure is only zero-mode delocalization
+  tension_is_real:
+    same_pipeline: true
+    fired: true
+    status: witnessed
+    localizing_p: 2
+    delocalizing_p: 3
+  quadrupole_survives:
+    same_pipeline: true
+    fired: true
+    p_raw_ell2: 5
+    kernel_ell2: I*a**5*omega**5/(27*cS**5)
+    Q2_set_to_zero: false
+  return_necessity:
+    same_pipeline: true
+    fired: true
+    rung_condition: RETURN_RESIDUAL_PREDICTION
+    order_change_required: false
+    coefficient_substituted: true
+    coefficient_tied_to_Z: true
+  static_dynamic_consistency:
+    same_pipeline: true
+    fired: true
+    agree: true
+    independent_extractions: true
+frozen_slice:
+  n: 5
+  K_eos: 1/500
+  rho_frozen_m_eq_1: sqrt(10)
+  c_s_squared_frozen: '1'
+  G: 1
+  c: 1
+  c_s: 1
+  a_star: 4731/2500
+  L_star: 18121/10000
+  dimensions_MLT:
+    a:
+    - 0
+    - 1
+    - 0
+    d:
+    - 0
+    - 1
+    - 0
+    omega:
+    - 0
+    - 0
+    - -1
+    c_s:
+    - 0
+    - 1
+    - -1
+    M0:
+    - 0
+    - 0
+    - -1
+    D1:
+    - 0
+    - 1
+    - -1
+    K_eos:
+    - 1
+    - 14
+    - -2
+    c_s_squared:
+    - 0
+    - 2
+    - -2
+    radial_flow:
+    - 0
+    - 1
+    - -1
+engine_agreement:
+  status: PASS
+  checked_quantities:
+  - p
+  - p_eq_2
+  - destructuring_p
+  - bloch_p
+  - dynamic_limit_exponent
+  - static_solve_exponent
+  - zero_mode.r_dependence
+  - green_function
+  - destructuring_green_function
+  - bloch_green_function
+  - delocalizing_p
+  - A0_residual
+  - A1_residual
+  - Z
+  sympy_expression_digest: ef82d852d485e0a3df4d897fe04b340c45cb029f842fd84b9856cd9fcb383420
+  mathematica_status: timeout 600 math -script software/stage1_solver/tools/pathA_29_brane_bulk_return.wl exited 0 and asserted
+    PASS
+  mathematica_exprs:
+    T0_at_DC: (epsilon0 + 1)^(-1)
+    T1_at_DC: (epsilon1 + 1)^(-1)
+    p: '2'
+    p_eq_2: '1'
+    destructuring_p: '2'
+    bloch_p: '2'
+    dynamic_limit_exponent: '2'
+    static_solve_exponent: '2'
+    zero_mode.r_dependence: (1/4)/(Pi*d*r)
+    green_function: (1/4)*Exp[I*omega*r/cS]/(Pi*d*r)
+    destructuring_green_function: (1/4)*(CAbs1*d*epsilon0 + CAbs1*d - M0*epsilon0*Exp[Pi*r/d])*Exp[-Pi*r/d]/(Pi*d*r*(epsilon0
+      + 1))
+    bloch_green_function: (1/4)*(CBloch1*d*epsilon0 + CBloch1*d - M0*epsilon0*Exp[2*Pi*r/d])*Exp[-2*Pi*r/d]/(Pi*d*r*(epsilon0
+      + 1))
+    delocalizing_p: '3'
+    A0_residual: -1/3*I*M0*a*omega*(-3*cS^4*epsilon0 + 6*I*cS^3*d*omega - 6*cS^2*d^2*omega^2 - 4*I*cS*d^3*omega^3 + 2*d^4*omega^4)/(cS^5*(epsilon0
+      + 1))
+    A1_residual: (1/2)*I*D1*a^3*omega^3*(cS^2*epsilon1 - 2*I*cS*d*omega + 2*d^2*omega^2)/(cS^5*(epsilon1 + 1))
+    Z: -M0*epsilon0/(epsilon0 + 1)
+run_commands:
+  sympy: timeout 600 python3 software/stage1_solver/tools/pathA_29_brane_bulk_return_sympy.py
+  mathematica: timeout 600 math -script software/stage1_solver/tools/pathA_29_brane_bulk_return.wl

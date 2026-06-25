@@ -19,6 +19,15 @@ verification agents → user methodology call (derive the emergent constants bef
 >   ℓ=0/ℓ=1 radiation the brane↔bulk return must deliver **`R0=−M0`** (kills the raw `O(ω¹)` monopole) and **`R1=−D1`** (kills the
 >   raw `O(ω³)` dipole — net momentum-rate *including the carried odd wake*; global conservation alone is NOT enough). Artifacts:
 >   `tools/pathA_28_monopole_{sympy.py,.wl}` + `reports/pathA_28_monopole*.{md,yaml}` + `reports/pathA_28_cancellation_condition.yaml`.
+> - **pathA_29 (TRACK 3 gate-1: brane↔bulk return) DONE + VERIFIED 2026-06-25 = `RETURN_RESIDUAL_PREDICTION`** (tri-reviewed:
+>   arbiter re-run reproduced + adversarial CLEAN + fidelity FAITHFUL). Given the **drain premise** (Z<0 = gravity is the inflow),
+>   **1/r² Newtonian gravity SURVIVES the finite slab** (both DC-sink return completions solve a normalizable m=0 transverse zero
+>   mode → p=2 via a counterfactual-guarded 3D-radial `dsolve`); the drain comes **bundled with an unavoidable bounded
+>   monopole/dipole c_s-radiation residual ∝ ε0=1−𝒯₀(0)** = the **falsifiable departure from GR** (Birkhoff forbids it; the drain
+>   breaks brane mass conservation). NOGO reachable via a derived delocalizing warp (p=3). **Sharpens but does NOT close**
+>   `pde_ledger` open-item #9 (records the residual prediction; the 1/r² range item passes for the localizing flat-slab family).
+>   Artifacts: `directives/pathA_29_brane_bulk_return.md` (v3) + `tools/pathA_29_brane_bulk_return_{sympy.py,.wl}` +
+>   `reports/pathA_29_{brane_bulk_return.md,results.yaml}`. NEXT = the full **nonlinear** brane↔bulk return closure (downstream track-3).
 > - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
 >   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
 > - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity

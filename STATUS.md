@@ -26,16 +26,34 @@ GR-forbidden monopole/dipole gravitational radiation, the brane↔bulk return mu
 and `R1 = −D1` (net dipole/momentum-rate `D1 = ∫x_i S_leak + ∫j_i`, including the carried odd wake). Artifacts under
 `software/stage1_solver/` (tools / reports `pathA_28_monopole*`).
 
-**⭐ NEXT STEP = TRACK 3: the brane↔bulk return / brane parent action.** This is the keystone the whole PDE assembly is gated on, and
-where pathA_28's real falsification lives (R0/R1 must be *delivered*, not just specified). GLM is ON for its directive.
+**⭐ TRACK 3 GATE-1 (brane↔bulk return, `pathA_29`) — DONE + VERIFIED (2026-06-25) = `RETURN_RESIDUAL_PREDICTION`.** The keystone
+pathA_28 handed off — earned on the **4th execution (v3b)** after a full tri-review (orchestrator arbiter re-run reproduced +
+adversarial CLEAN + fidelity FAITHFUL). **Given the drain premise (`Z<0` = gravity IS the inflow): 1/r² Newtonian gravity SURVIVES
+the finite slab** — both admissible DC-sink return completions (de-structuring/absorbing + Bloch stack) genuinely solve a normalizable
+`m=0` transverse zero mode → `p=2` via a real 3D-radial `dsolve` (counterfactual-guarded: a wrong `1/r⁵` → nonzero residual,
+rejected). **And the drain comes bundled with an UNAVOIDABLE bounded monopole/dipole `c_s`-radiation residual `∝ ε0 = 1−𝒯₀(0)`**,
+tied to the gravity strength — **the falsifiable departure from GR** (GR forbids monopole/dipole GW via Birkhoff/mass-conservation;
+the drain breaks brane mass conservation). NOGO is genuinely reachable via a derived delocalizing warp (`p=3`). **Sharpens but does
+NOT close `pde_ledger` open-item #9** (records the residual-radiation prediction); the **gravity-range (1/r²) item passes** for the
+localizing flat-slab family. Artifacts: `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md (v3), tools/pathA_29_*,
+reports/pathA_29_*}`. **⭐ NEXT = THE ACTIVE PUSH (user, 2026-06-25: "push until a wall"): complete the full nonlinear moving-throat PDE / brane↔bulk return
+closure.** Central spec = `research/pde_ledger/` (253 stages, ALL algebra done; single OPEN item = **"actual branch realization"** — the
+solved nonlinear PDE must RETURN the grouped-`P2` / quadrupole-normalization data `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)`, instead of leaving it
+symbolic). **⚠️ Reconcile FIRST:** pathA_29's "open-item #9 / `R0=−M0`" is `stage1_solver`'s OWN numbering, **NOT** the ledger's open
+item — map the two before assuming they're the same. Dive-in plan + first sub-gate (the Phase-1 **frozen-wall D/N unit test**
+`Z₀₀(ω)=−(ω/c_s)tan(ωL/c_s)`) = memory `project-moving-throat-pde-push`; start doc =
+`research/pde_ledger/notes/stages/moving_throat_pde_handoff_full.md`. (Don't re-derive the audited PN ladder, `research/4d_*pn*`.)
+Review-pain lesson (memory `project-model-mechanics-corrections`): 4 executions; 3 rejected for assert-not-solve (hardcoded `r²` →
+spectral-lookup → hand-written `1/r`), fixed only by a mandatory **counterfactual self-test**.
 
 **Model-mechanics reminders** (memory `project-model-mechanics-corrections`): nothing is static; **three speeds** — `c_s` = speed
 gravitational changes propagate (∝ρ²); `v_r` = field *strength*, not a speed; `c_γ` = light. Gravity = the **flow between drains**;
 changes propagate at `c_s`, and uniform motion tracks the **current** position → **no aberration**. Throat-soliton has **no sloshing**
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
-**COMMIT STATE (2026-06-25):** pathA_27 (abandoned drain-sector scope) + pathA_28 artifacts are **UNCOMMITTED**. **Commit only when the
-user asks; stage explicit paths.**
+**COMMIT STATE (2026-06-25):** pathA_27/pathA_28 committed (`8cf6f1f1`). The **pathA_29 milestone** (directive v3, dual engines,
+reports) + this STATUS / `conceptual_foundation.md` / memory sync are **being committed now**. **Commit only when the user asks; stage
+explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

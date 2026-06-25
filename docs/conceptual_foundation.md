@@ -363,6 +363,24 @@ long-range `1/r²` gravity from a finite slab is the classic braneworld problem 
 if that can't be arranged, the finite-slab picture breaks. **KEY:** the steady drain-flow field around a throat *is* the gravity field of
 that mass — so solving conservation directly yields the gravitational profile of a particle.
 
+> **⭐ MILESTONE (2026-06-25) — `pathA_29` (track-3 gate-1) DID exactly this, and it CHECKS OUT: `RETURN_RESIDUAL_PREDICTION`, tri-review-verified.**
+> Modelling the brane↔bulk return as a finite slab with a **DC-sink completion** (de-structuring/absorbing, cross-checked against a
+> periodic Bloch stack) and taking the drain as the **premise** (gravity = inflow, `Z<0`), the steady-conservation solve gives **two
+> results at once:**
+> 1. **Long-range `1/r²` Newtonian gravity SURVIVES the finite slab.** The transverse zero mode is normalizable for the localizing
+>    (flat/RS) geometry → `p=2` (solved from a real 3D-radial equation, counterfactual-guarded), so the braneworld-localization worry
+>    above is — *for this family* — resolved in favour of survival. (It is genuinely able-to-fail: a *delocalizing* warp fails to
+>    localize the zero mode → `p=3` → `RETURN_NOGO`, kept reachable.)
+> 2. **But gravity does NOT come for free.** A drain that *breathes* radiates an **unavoidable, bounded monopole/dipole `c_s`-wave
+>    `∝ ε0 = 1−𝒯₀(0)`**, tied to the gravity strength itself. GR forbids this (Birkhoff's theorem relies on mass conservation, which the
+>    drain breaks on the brane) — so it is a clean **falsifiable prediction / departure from GR.** *You cannot have the Newtonian sink
+>    without the radiation — they are the same flux.*
+>
+> This is the first end-to-end confirmation that **gravity-as-a-drain is self-consistent** (Newtonian `1/r²` + the GR-matched quadrupole
+> + global conservation, no internal no-go) **and** yields a concrete testable difference from GR. It sharpens — does **not** close —
+> `pde_ledger` open-item #9 (the full nonlinear return closure is the downstream track-3 work). Detail:
+> `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md, tools/pathA_29_*, reports/pathA_29_*}`.
+
 ---
 
 ## 6. Pedigree — explored before, never wired together

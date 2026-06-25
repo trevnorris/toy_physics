@@ -171,6 +171,38 @@ structure?*
 This is the heart of the model. The four phenomena are **four different mechanisms of the one medium.** Do not conflate them
 (especially: electric ≠ magnetic; charge is a direction, not a swirl).
 
+> **⭐ v4 UPDATE (2026-06-25) — model-mechanics corrections that keep getting LOST between sessions (read this; it is the recurring
+> relapse into textbook defaults). Mirror of memory `[[project-model-mechanics-corrections]]`.**
+>
+> 1. **NOTHING in this model is static.** Every static-field simplification has FAILED because it deletes *the coupling that
+>    selects the balance.* The acoustic horizon, the throat size, and the drain are all self-consistent **DYNAMICAL** balances —
+>    not fixed surfaces or snapshots (throat self-selection "requires dynamics"; the horizon is just where rising `v_r` meets
+>    falling `c_s`, both downstream of the *same* drain). If you catch yourself freezing a field, STOP.
+> 2. **THREE distinct speeds — never conflate them:**
+>    - `c_s` (**ripple**) = the speed gravitational **CHANGES** propagate ("the speed of gravity"). `c_s²=5Kρ⁴/m` ⇒ **`c_s ∝ ρ²`**
+>      — density-dependent, *slower in low density.* **That density-dependence IS the lensing/Shapiro mechanism** (a mass depletes
+>      ρ → lowers `c_s` → bends/delays signals).
+>    - `v_r` (**inflow / drain**) = the **STRENGTH** of the (quasi-)static field (like the *value* of `g`), **NOT a propagation
+>      speed.** `v_r ≪ c_s` is normal = **weak** gravity, NOT "*slow*" gravity.
+>    - `c_γ` (**brane shear**) = **light** (`c_γ=√(μ_br/ρ_br)`), a separate speed. `λγ=c_γ/c_s=1` (the GW170817 cone-lock) is
+>      still **open** (§7 #8).
+> 3. **Gravity = the FLOW between draining defects** — carried by the flow + Bernoulli pressure, **NOT** by ripples/radiation.
+>    But a *change* in it propagates at `c_s` (the flow can't re-aim at a distance without a pressure signal). A *uniformly
+>    moving* drain drags its inflow with it → the field points to the drain's **CURRENT position** → **no aberration, no
+>    Laplace/solar-system instability.** This is **already PROVEN** in `research/1pn_orbital_dynamics` (the "**Static Limit
+>    Theorem**": elliptic/instantaneous near-zone; the 1PN precession comes from inertial dressing `m_eff(r)=m[1+σ(r)]`, not from
+>    a potential lag) — that old tension is RESOLVED.
+> 4. **Throat-soliton — NO sloshing.** The trapped light = **mass** is *statically bound* (mode larger than the neck → sub-cutoff
+>    → evanescent) and carries **NO net trans-brane current** ⇒ `J_w=0` on the exact mode is **EXPECTED and FINE.** The photon's
+>    only job is to hold the throat **OPEN.** The old **"AC→DC rectification" idea is RETIRED.** Gravity is a **SEPARATE** steady
+>    *background* de-structuring drain through the open throat (ordered brane → unstructured bulk ground state, escaping through
+>    the puncture). **Photon ≠ gravity.**
+>
+> **And on scope (so it never gets re-litigated): the conservative PN gravity ladder (1PN→4PN + the 2.5PN radiation-reaction term)
+> is already BUILT & GR-matched (calibrated) in `research/4d_*pn*`** — don't re-derive it. The end goal is a fully **calibrated**
+> PDE (`research/pde_ledger/`) delivering GR + EM. **Calibration is fine; first-principles is not required** (§0.6 — analog, not
+> derivation).
+
 | Sector | What it physically IS | Native quantity |
 |---|---|---|
 | **Gravity** | The medium's **inflow / drain** toward defects. Test bodies are carried inward by the flow. Largely unobservable as a flow. | flow velocity `v_r` |

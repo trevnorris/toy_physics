@@ -1,7 +1,7 @@
 # STATUS — where the Path-A program is (single front door)
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
-Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-23.**
+Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-25.**
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -10,77 +10,32 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ⭐⭐ LATEST STATE (2026-06-24) — READ THIS + `conceptual_foundation.md` §4/§5/§6.1 FIRST
+## ⭐⭐ LATEST STATE (2026-06-25) — READ THIS FIRST
 
-> **POST-/COMPACT WARNING TO FUTURE-ME:** the active frame is the **throat-soliton / 4D-light unification synthesis** worked out in
-> conversation on 2026-06-24. It is *easy to forget after compaction* and the user assumes you still hold it — that mismatch has
-> derailed us before. **Before any model work, READ:** `docs/conceptual_foundation.md` **§4** (throat/light), **§5** (multi-brane
-> cosmology), **§6.1** (our own prior work) + the memory **`project-light-is-4d-throat-hypothesis`**.
+**DYNAMICAL-GRAVITY SECTOR = BUILT & GR-MATCHED; speed-of-gravity / aberration worry RESOLVED.** The conservative PN two-body ladder
+**1PN→4PN + 2.5PN radiation is already derived, audited, and GR-matched** (calibrated / controlled-reduction) in `research/4d_*pn*`.
+**DO NOT re-derive it.** (memory `project-pn-gravity-ladder`.)
 
-**B4 RESULT:** `FAIL_NOT_CODIM1` (final, dual-engine verified, adversarial-SOUND). The GNLS **density-smectic brane is a candidate
-NO-GO** — the medium's cubic invariant `U'''=15Kρ0²>0` makes a multi-`k` crystal beat the codim-1 lamella.
+**END GOAL = a fully CALIBRATED PDE delivering GR + EM.** Calibration is fine; first-principles is NOT required; **existing-in-any-shape
+is the win.** The central spec is `research/pde_ledger/` (the 253-stage audited ledger of the target moving-throat PDE); every
+calibration is a constraint that feeds it. (memory `project-calibrated-pde-goal`.)
 
-**R/C RESULT (2026-06-24, track 2b — DONE, tri-reviewed, dual-engine, earned): `RC_DENSITY_SMECTIC_LIGHT_NOGO`.** The density-smectic
-brane is now a **confirmed NO-GO across ALL admitted drivers:** R→`FAIL_NOT_CODIM1` (bilinear/isotropic, cubic survives); Cdiv→
-`FAIL_ADMISSION` (Goldstone integrate-out gives O(k⁰) directional EOS-stiffness softening for any λ_Cdiv≠0); Cpin→`FAIL_LIGHT_STARVED`
-(χ_Cpin<0 DOES open a genuine codim-1 density-smectic window — the cubic IS escapable — but the same coupling pins P ⊥-plane, `P_∥=0`
-at the static Ω_u=0 minimizer, starving in-plane light). **So density CAN form a brane but only by killing light** → strong earned
-evidence for the synthesis: the brane must be a **light-confining shear surface, not a density modulation.** A first-class
-falsification: it removes a rival and points the same direction as the throat-soliton picture. **pathA_25 density route CLOSED;** the
-only remaining throat-soliton track is **(2a) the drain-sector derivation — PAUSED (user, 2026-06-24).** Artifacts:
-`reports/pathA_25_gateRC_cubic.md` (+`_results.yaml`), `tools/pathA_25_gateRC_cubic_{sympy.py,.wl}`; Family-C `k→0` tautology RESOLVED.
+**pathA_28 (monopole/dipole radiation) — DONE = `MONOPOLE_DIPOLE_RETURN_CONDITIONAL`.** A VERIFIED CONSTRAINT-SPEC (dual-engine;
+arbiter PASS + fidelity CLEAN; adversarial CONCERNS = it is a constraint-spec, not a falsifiable test). **Handoff:** to avoid
+GR-forbidden monopole/dipole gravitational radiation, the brane↔bulk return must deliver `R0 = −M0` (net mass-rate `M0 = ∫S_leak`)
+and `R1 = −D1` (net dipole/momentum-rate `D1 = ∫x_i S_leak + ∫j_i`, including the carried odd wake). Artifacts under
+`software/stage1_solver/` (tools / reports `pathA_28_monopole*`).
 
-**THE SYNTHESIS (the thing not to forget):** particles = **throat-solitons**. Light = an **intrinsically (3+1)D brane shear wave**
-(2 polarizations; confined because the bulk is **shear-free** and light *is* shear) whose 4D-ness is the brane's **extrinsic
-curvature** at throats — NOT a bulk excursion. A throat traps light as a **sub-cutoff standing wave** (mode larger than the neck →
-evanescent → genuinely bound) = **MASS**. The trapped wave holds the throat **open** against **brane tension + superfluid
-backpressure** (force-balance soliton, radius `R*(E)`); the puncture lets superfluid **drain into the bulk = GRAVITY** (gravity is the
-**FLOW**, not the curvature); **±w puncture direction = CHARGE**. A **stack of branes** partitions the bulk into RS-like **finite
-slabs** → the neighbor provides the drain's **return** (steady circulation) + sets gravity's range. **DEATHS to respect (don't
-over-claim):** the trapped-wave lepton mass *tower* is FALSIFIED (1:9:25 ≠ 1:207:3477) → one soliton mass, **no** lepton spectrum;
-B4 density-smectic FAILED.
+**⭐ NEXT STEP = TRACK 3: the brane↔bulk return / brane parent action.** This is the keystone the whole PDE assembly is gated on, and
+where pathA_28's real falsification lives (R0/R1 must be *delivered*, not just specified). GLM is ON for its directive.
 
-**ALREADY BUILT — don't rediscover (`conceptual_foundation.md` §6.1):** Paper-7 `notes/inner_throat/` (force-balance + 4D GNLS solver,
-STALLED on `L/a` self-selection); `notes/lepton_mass_notes.md` (trapped-wave functional, tower falsified); `software/stage1_solver/`
-throat (a *different* object — frozen-geometry gravity-closure profile solve, abandoned/re-scoped). **Recurring wall: nothing in either
-self-selects the throat size.**
+**Model-mechanics reminders** (memory `project-model-mechanics-corrections`): nothing is static; **three speeds** — `c_s` = speed
+gravitational changes propagate (∝ρ²); `v_r` = field *strength*, not a speed; `c_γ` = light. Gravity = the **flow between drains**;
+changes propagate at `c_s`, and uniform motion tracks the **current** position → **no aberration**. Throat-soliton has **no sloshing**
+(`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
-**⭐ pathA_26 DERRICK CHECK — DONE (2026-06-24): `THROAT_DRAIN_DESTABILIZED`** (full gauntlet: Codex r1→r6 GREEN, GLM SOUND, Codex r7
-confirm; executed dual-engine; arbiter-reran deterministic; adversarial `SOUND` by 10³–10⁴×; fidelity `ISSUES`→remediated `c_w²`-fix).
-Artifacts: `software/stage1_solver/reports/pathA_26_derrick.md` (+`_results.yaml`), `tools/pathA_26_derrick_sympy.py`+`.wl`; prompt
-`_scratch/pathA_26_derrick_execute_prompt.md` (v7). Two halves:
-- **Phase A = `A_CANDIDATE_MIN` (the SOLID, real result):** the conservative throat-soliton EXISTS **generically** (interior PD min at
-  `a*≈1.89,L*≈1.81`, virial residuals 0, both Hessian eigs >0, fluid-only collapses; adversarial confirmed 75/75 coupling combos). The
-  trapped wave's outward pressure (`ω∝1/a`: squeeze the throat → freq↑ → energy↑ → pushes back) balances tension+vacuum inward. **NOT
-  Derrick-forbidden.** The throat-soliton energy balance closes.
-- **Phase C = `C_GENERICALLY_UNSTABLE` → top-line `THROAT_DRAIN_DESTABILIZED`. ⚠ DO NOT READ AS "PARTICLE KILLED" (user+orchestrator
-  interpretation 2026-06-24, post-investigation):** the destabilization is a static divergence ONLY above a critical drain
-  `gcrit≈0.006`; **for weak drain the throat is STABLE** (`gcrit>0`). The `DESTABILIZED` verdict came from a directive choice I made —
-  demanding robustness over an O(1) drain box (`g` up to ~89) — that does **NOT reflect that gravity is the weakest force**. Prior repo
-  work (investigation 2026-06-24) shows the drain/gravity sector is the runt: `E_w:E_f:E_PV=11:2:5` (feed ≈11% of rest E); `g_G`
-  **calibrated not derived**, bare `P0~10⁻⁹` (~9 orders below GR target); analog horizon only at the **transonic** limit `v_b→c_s`;
-  on the EXACT trapped mode the trans-brane current `J_w=0` (drain formally ~0). **So a particle's physical drain is tiny → it sits deep
-  in the stable corner; the instability plausibly marks the BLACK-HOLE/transonic regime, where the drain SHOULD dominate (a consistency
-  feature).** Your intuition ("you can hold it open; the tiny flow doesn't break it") is vindicated structurally.
-- **THE PRECISE GAP (what was never done):** nobody mapped a particle's PHYSICAL drain strength onto pathA_26's dimensionless
-  `g`-axis to prove `g_phys ≪ gcrit`. The pathA_26 drain law is **parameterized, not derived** (the `g≈89` is a synthetic worst-case,
-  not a particle). Closing this rigorously = the drain-sector derivation. **Deeper open question (separate from stability):** with
-  `J_w=0` on the exact mode, whether the "gravity = drain" mechanism produces a **nonzero, right-sized** drain at all is itself unbuilt
-  (needs the dynamic AC→DC rectification the notes specced-not-built).
-
-**▶ NEXT ACTION — ONE REMAINING TRACK (2b is DONE; see R/C RESULT above):**
-1. **(2a) Drain-sector derivation — the REAL throat-soliton frontier (big, open) — ⏸ PAUSED (user, 2026-06-24); resume here next.**
-   Derive the actual drain law (steady flow + density depletion + backpressure built INTO the equilibrium, not an external perturbation;
-   the user's picture = wave-out vs tension+backpressure-in from the start), tied to the physical gravity coupling → (i) pin `g_phys` vs
-   `gcrit≈0.006` rigorously, (ii) resolve whether the drain is even nonzero/right-sized (the `J_w=0` rectification question). Reuses
-   `stage1_solver` infra + `reports/pathA_throat_solver_literature_synthesis.md`. Needs a SCOPING/design phase first (not a single execute).
-2. ~~**(2b) R/C cubic verdict**~~ — ✅ **DONE: `RC_DENSITY_SMECTIC_LIGHT_NOGO`** (see R/C RESULT above). Density-smectic brane route
-   CLOSED across all admitted drivers; Family-C `k→0` tautology resolved. Pre-registered prediction verified (R=no; C escapes the cubic
-   but starves light). The brane is therefore a light-confining shear surface, not a density modulation — which is exactly 2a's object.
-
-**COMMIT STATE (2026-06-24):** B4 artifacts committed `581c0b2f`; pathA_26 Derrick committed `8e0205c4`; **Gate R/C (2b) committed this
-milestone** (`reports/pathA_25_gateRC_cubic.md` + `_results.yaml`, `tools/pathA_25_gateRC_cubic_{sympy.py,.wl}`, the §B.0 G0 tautology
-fix, + these STATUS/ledger doc edits; `_scratch/` prompts+logs gitignored). **Commit only when the user asks; stage explicit paths.**
+**COMMIT STATE (2026-06-25):** pathA_27 (abandoned drain-sector scope) + pathA_28 artifacts are **UNCOMMITTED**. **Commit only when the
+user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

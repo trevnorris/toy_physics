@@ -1,0 +1,270 @@
+schema: pathA_28_monopole_sympy/v1
+top_line_verdict: MONOPOLE_DIPOLE_RETURN_CONDITIONAL
+scope_caveat: >-
+  This is a VERIFIED CONSTRAINT-SPECIFICATION (the raw ell=0/1/2 outgoing amplitudes plus radiation orders,
+  and the exact moments/orders at which the brane<->bulk return must cancel), NOT a falsifiable test of
+  no-monopole-radiation. The cancellation condition (R0=-M0, R1=-D1) is the algebraic bookkeeping of what the
+  return must cancel; its symbolic 'derivation' is an identity (x - x), not a deep result. The UNAVOIDABLE rung
+  is NOT decidable in-scope (cancellation_possible is a parameter / literal flag, not a computed quantity) --
+  deciding suppression-vs-unavoidable requires the track-3 brane<->bulk return, which is out of scope. The real
+  falsification lives in track 3: whether an admissible return can actually deliver R0=-M0, R1=-D1.
+source_provenance:
+  note: >-
+    M0 and D1 are this script's OWN constructions, built to be consistent with pde_ledger Part VIII projected
+    open-system continuity (linearized_identity fields below). They are NOT verbatim-cited Part VIII objects.
+  ell0:
+    raw_moment: M0(omega)=int_brane S_leak(omega,x) d^3x
+    linearized_identity: 'Integrate projected continuity: dM_brane/dt=int S_leak d^3x for compact/no-flux brane boundary.'
+    breathing_dofs: delta a, delta L, delta q enter through the variation of S_leak; no recovery slice or S_leak=0 substitution is used.
+    raw_vs_vertex:
+      raw:
+        coupling_flag: derived
+        basis: projected-continuity source moment
+      derivative_vertex:
+        coupling_flag: branch_assumption
+        basis: reported g_W0(omega)=eta0 omega two-vertex branch; not used for verdict
+  ell1:
+    raw_moment: D1_i(omega)=int_brane x_i S_leak d^3x + int_brane j_i d^3x, projected onto the ell=1 harmonic
+    linearized_identity: 'Multiply projected continuity by x_i and integrate: d/dt int rho x_i = int x_i S_leak + int j_i, assuming compact/no-flux
+      boundary.'
+    odd_wake_separation: A global momentum-rate constraint can cancel only the net dipole/momentum-rate moment; carried odd wake is not killed
+      by that identity.
+    raw_vs_vertex:
+      raw:
+        coupling_flag: derived
+        basis: dipole moment of projected continuity
+      derivative_vertex:
+        coupling_flag: branch_assumption
+        basis: reported derivative coupling only; not used for verdict
+  ell2:
+    raw_moment: Q2(omega), the STF quadrupole source moment
+    linearized_identity: Reuses 4d_2_5pn outgoing ell=2 DtN anchor with i omega^5 radiation phase.
+    raw_vs_vertex:
+      raw:
+        coupling_flag: derived
+        basis: quadrupole DtN anchor
+      derivative_vertex:
+        coupling_flag: not_applied
+        basis: quadrupole survives as anchor
+raw_amplitudes:
+  ell0:
+    kernel: I*a*omega/cS
+    source_moment: M0
+    amplitude: I*M0*a*omega/cS
+  ell1:
+    kernel: I*a**3*omega**3/(2*cS**3)
+    source_moment: D1
+    amplitude: I*D1*a**3*omega**3/(2*cS**3)
+  ell2:
+    kernel: I*a**5*omega**5/(27*cS**5)
+    source_moment: Q2
+    amplitude: I*Q2*a**5*omega**5/(27*cS**5)
+dtn:
+  ell0:
+    Lambda_series: I*(a*k + I)/a
+    Y_norm_series: -a**6*k**6 + I*a**5*k**5 + a**4*k**4 - I*a**3*k**3 - a**2*k**2 + I*a*k + 1
+    imag_coeff_k: a
+  ell1:
+    Lambda_series: (a**6*k**6 - I*a**5*k**5 - a**4*k**4 + I*a**3*k**3 + a**2*k**2 - 2)/a
+    Y_norm_series: -(a**6*k**6 + 2*a**4*k**4 - 4*I*a**3*k**3 - 4*a**2*k**2 - 8)/8
+    imag_coeff_k: a**3/2
+  ell2:
+    Lambda_series: -(2*a**6*k**6 - 3*I*a**5*k**5 - 3*a**4*k**4 - 9*a**2*k**2 + 81)/(27*a)
+    Y_norm_series: -(11*a**6*k**6 - 27*I*a**5*k**5 - 36*a**4*k**4 - 81*a**2*k**2 - 729)/729
+    imag_coeff_k: a**5/27
+p_raw:
+  ell0: 1
+  ell1: 3
+  ell2: 5
+p_source_vertex:
+  ell0:
+    raw_direct_added_power: 0
+    raw_direct_flag: derived
+    derivative_vertex_added_power: 2
+    derivative_vertex_flag: branch_assumption
+  ell1:
+    raw_direct_added_power: 0
+    raw_direct_flag: derived
+    derivative_vertex_added_power: 2
+    derivative_vertex_flag: branch_assumption
+  ell2:
+    raw_direct_added_power: 0
+    raw_direct_flag: derived
+    derivative_vertex_added_power: 0
+    derivative_vertex_flag: not_applied
+p_residual:
+  ell0:
+    order: null
+    exact_zero: true
+    without_condition_order: 1
+    with_condition_reason: R0=-M0
+  ell1:
+    order: null
+    exact_zero: true
+    without_condition_order: 3
+    with_condition_reason: R1=-D1
+  ell2:
+    order: 5
+    exact_zero: false
+    condition: no return cancellation imposed
+direct_coupling_counterfactual:
+  ell0:
+    p_if_direct_non_derivative_coupling_present: 1
+    amplitude: I*M0*a*omega/cS
+  ell1:
+    p_if_direct_non_derivative_coupling_present: 3
+    amplitude: I*D1*a**3*omega**3/(2*cS**3)
+  ell2:
+    p_if_direct_non_derivative_coupling_present: 5
+    amplitude: I*Q2*a**5*omega**5/(27*cS**5)
+residual_without_condition:
+  ell0:
+    expr: I*M0*a*omega/cS
+    exact_zero: false
+  ell1:
+    expr: I*D1*a**3*omega**3/(2*cS**3)
+    exact_zero: false
+residual_with_condition:
+  ell0:
+    expr: '0'
+    exact_zero: true
+  ell1:
+    expr: '0'
+    exact_zero: true
+cancellation_condition:
+  ell0:
+    source_moment: M0(omega)=int_brane S_leak(omega,x) d^3x
+    return_moment_required: R0(omega)=int_brane S_return(omega,x) d^3x = -M0(omega)
+    order_to_cancel: O(omega^0) source moment feeding the raw O(omega^1) outgoing coefficient
+    residual_target: A0_residual_leading = i*a*(omega/c_s)*(M0+R0) = 0
+    track3_must_deliver: A brane<->bulk return whose projected monopole source moment cancels the leakage mass-rate moment, not merely prose that
+      leakage enters bulk.
+  ell1:
+    source_moment: D1_i(omega)=int_brane x_i S_leak d^3x + int_brane j_i d^3x, including carried odd wake contribution when present
+    return_moment_required: R1_i(omega)=-D1_i(omega) for each dipole component
+    order_to_cancel: O(omega^0) dipole/momentum-rate moment feeding the raw O(omega^3) outgoing coefficient
+    residual_target: A1_residual_leading = i*a^3*(omega/c_s)^3*(D1+R1)/2 = 0
+    track3_must_deliver: A return law cancelling the net dipole/momentum-rate moment; global momentum conservation alone is not a carried-odd-wake
+      kill.
+controls:
+  scope_note: >-
+    These controls do NOT test whether suppression occurs. They confirm only that the source moments M0/D1 are
+    kept live (no S_leak=0, no strict-recovery basis, no projection-locking). Beyond keeping the source live the
+    controls pass by construction; they are guards against the obvious tautologies, not able-to-fail probes of
+    suppression-vs-unavoidable.
+  raw_monopole_present:
+    same_pipeline: true
+    fired: true
+    omega_dominance: p_raw(ell=0)=1 < p_raw(ell=2)=5
+    unavoidable_rung_control: MONOPOLE_RADIATION_UNAVOIDABLE
+  steady_no_radiation:
+    same_pipeline: true
+    fired: true
+    limit_omega_to_0_raw_monopole_radiation_term: '0'
+  quadrupole_survives:
+    same_pipeline: true
+    fired: true
+    p_raw_ell2: 5
+    kernel_ell2: I*a**5*omega**5/(27*cS**5)
+  return_necessity:
+    same_pipeline: true
+    fired: true
+    without_condition_nonzero:
+      ell0: true
+      ell1: true
+    with_condition_exact_zero:
+      ell0: true
+      ell1: true
+  anti_tautology_no_S_leak_zero:
+    same_pipeline: true
+    fired: true
+    forbidden_shortcut_raw_amp_after_M0_to_0: '0'
+    raw_source_kept_live: true
+  anti_tautology_no_strict_recovery_basis:
+    same_pipeline: true
+    fired: true
+    stage243_recovery_zero_observed_but_not_used_as_verdict_basis: true
+    stage244_recovery_zero_observed_but_not_used_as_verdict_basis: true
+  anti_tautology_no_projection_locking:
+    same_pipeline: true
+    fired: true
+    raw_monopole_source_symbol: M0=int S_leak d^3x kept unconstrained
+    raw_dipole_source_symbol: D1=int x_i S_leak d^3x + int j_i d^3x kept unconstrained
+  anti_tautology_derivative_vertex_not_basis:
+    same_pipeline: true
+    fired: true
+    derivative_vertex_flag: branch_assumption
+    derivative_vertex_amp_ell0_nonzero: true
+  anti_tautology_no_track3_bulk_kill:
+    same_pipeline: true
+    fired: true
+    without_condition_nonzero: true
+    condition_substitution_required:
+      R0: -M0
+      R1: -D1
+frozen_slice:
+  n: 5
+  K_eos: 1/500
+  rho_frozen_m_eq_1: sqrt(10)
+  c_s_squared_frozen: '1'
+  G: 1
+  c: 1
+  c_s: 1
+  a_star: 4731/2500
+  L_star: 18121/10000
+  dimensions_MLT:
+    rho_number_density:
+    - 0
+    - -3
+    - 0
+    K_eos:
+    - 1
+    - 14
+    - -2
+    pressure:
+    - 1
+    - -1
+    - -2
+    c_s_squared:
+    - 0
+    - 2
+    - -2
+out_of_scope:
+- track3 brane<->bulk return construction
+- full nonlinear moving-throat PDE closure
+engine_agreement:
+  status: PASS
+  shared_expression_count: 26
+  count_note: >-
+    The 26 shared expressions include a few trivial entries (e.g. integer radiation orders p_raw, bare
+    coefficients); the load-bearing matches are the ell=0/1/2 amplitudes, kernels, and radiation orders.
+  mathematica_exprs:
+    Lambda0_series: I*(a*k + I)/a
+    Y0_norm_series: -a^6*k^6 + I*a^5*k^5 + a^4*k^4 - I*a^3*k^3 - a^2*k^2 + I*a*k + 1
+    p_raw_0: '1'
+    imag_coeff_k_0: a
+    radiation_kernel_0: I*a*omega/cS
+    raw_amplitude_0: I*M0*a*omega/cS
+    Lambda1_series: (a^6*k^6 - I*a^5*k^5 - a^4*k^4 + I*a^3*k^3 + a^2*k^2 - 2)/a
+    Y1_norm_series: (-1/8*a^6*k^6 - 1/4*a^4*k^4 + (1/2)*I*a^3*k^3 + (1/2)*a^2*k^2 + 1)
+    p_raw_1: '3'
+    imag_coeff_k_1: (1/2)*a^3
+    radiation_kernel_1: (1/2)*I*a^3*omega^3/cS^3
+    raw_amplitude_1: (1/2)*I*D1*a^3*omega^3/cS^3
+    Lambda2_series: -1/27*(2*a^6*k^6 - 3*I*a^5*k^5 - 3*a^4*k^4 - 9*a^2*k^2 + 81)/a
+    Y2_norm_series: (-11/729*a^6*k^6 + (1/27)*I*a^5*k^5 + (4/81)*a^4*k^4 + (1/9)*a^2*k^2 + 1)
+    p_raw_2: '5'
+    imag_coeff_k_2: (1/27)*a^5
+    radiation_kernel_2: (1/27)*I*a^5*omega^5/cS^5
+    raw_amplitude_2: (1/27)*I*Q2*a^5*omega^5/cS^5
+    residual_without_0: I*M0*a*omega/cS
+    residual_with_0: '0'
+    derivative_vertex_amp_0: I*M0*a*eta0^2*omega*omega^2/cS
+    residual_without_1: (1/2)*I*D1*a^3*omega^3/cS^3
+    residual_with_1: '0'
+    derivative_vertex_amp_1: (1/2)*I*D1*a^3*eta1^2*omega^2*omega^3/cS^3
+    stage243_sleak: -1/4*2^(1/2)*ellw*j0
+    stage244_sleak: (1/2)*2^(1/2)*E0*muw*rho0/(Pi^(1/2)*lam^3)
+engine_status:
+  sympy: timeout 600 python3 software/stage1_solver/tools/pathA_28_monopole_sympy.py exited 0
+  mathematica: timeout 600 math -script software/stage1_solver/tools/pathA_28_monopole.wl exited 0 and asserted PASS

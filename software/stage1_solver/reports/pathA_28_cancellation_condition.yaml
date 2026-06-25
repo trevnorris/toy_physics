@@ -1,0 +1,25 @@
+headline: 'MONOPOLE_DIPOLE_RETURN_CONDITIONAL: track 3 must return the net ell=0 mass-rate and ell=1 dipole/momentum-rate source moments with
+  opposite sign.'
+scope: Condition only; brane<->bulk return construction/closure is out of scope.
+scope_caveat: >-
+  This is a VERIFIED CONSTRAINT-SPECIFICATION (the raw ell=0/1/2 outgoing amplitudes plus radiation orders, and
+  the exact moments/orders at which the brane<->bulk return must cancel), NOT a falsifiable test of
+  no-monopole-radiation. The cancellation condition (R0=-M0, R1=-D1) below is the algebraic bookkeeping of what
+  the return must cancel; its symbolic 'derivation' is an identity (x - x), not a deep result. The UNAVOIDABLE
+  rung is NOT decidable in-scope (cancellation_possible is a parameter / literal flag, not a computed quantity)
+  -- deciding suppression-vs-unavoidable requires the track-3 brane<->bulk return, which is out of scope. The
+  real falsification lives in track 3: whether an admissible return can actually deliver R0=-M0, R1=-D1.
+ell0:
+  source_moment: M0(omega)=int_brane S_leak(omega,x) d^3x
+  return_moment_required: R0(omega)=int_brane S_return(omega,x) d^3x = -M0(omega)
+  order_to_cancel: O(omega^0) source moment feeding the raw O(omega^1) outgoing coefficient
+  residual_target: A0_residual_leading = i*a*(omega/c_s)*(M0+R0) = 0
+  track3_must_deliver: A brane<->bulk return whose projected monopole source moment cancels the leakage mass-rate moment, not merely prose that
+    leakage enters bulk.
+ell1:
+  source_moment: D1_i(omega)=int_brane x_i S_leak d^3x + int_brane j_i d^3x, including carried odd wake contribution when present
+  return_moment_required: R1_i(omega)=-D1_i(omega) for each dipole component
+  order_to_cancel: O(omega^0) dipole/momentum-rate moment feeding the raw O(omega^3) outgoing coefficient
+  residual_target: A1_residual_leading = i*a^3*(omega/c_s)^3*(D1+R1)/2 = 0
+  track3_must_deliver: A return law cancelling the net dipole/momentum-rate moment; global momentum conservation alone is not a carried-odd-wake
+    kill.

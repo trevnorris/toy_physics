@@ -10,11 +10,21 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐ LIVE STATE (2026-06-23): pathA_24 T0 ✅ then T1 ❌ FALSIFIED (`T1_FAIL_NO_STABLE_WALL`, tri-reviewed genuine, `2fa91886`) —
-> the static little-arrows domain-wall brane is dead (connected `S³` vacua → wall spreads/unwinds). PIVOT → the GNLS polar-smectic
-> superfluid + a consistency-gate program (analog, not derivation). RESUME: repo `STATUS.md` "Next step" + `docs/conceptual_foundation.md`
-> (v3) + `docs/medium_requirements_and_prior_art.md` (requirements + survey + candidate + gates). The EM-re-founding / little-arrows
-> material below is the history that LED here.**
+> **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
+> - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN
+>   radiation-reaction) lives in `research/4d_*pn*`; the moving-drain no-aberration result is the "Static Limit Theorem" in
+>   `research/1pn_orbital_dynamics`. Calibration is fine; first-principles is not required.
+> - **pathA_28 (monopole/dipole gravitational radiation) DONE = `MONOPOLE_DIPOLE_RETURN_CONDITIONAL`** (dual-engine; arbiter PASS +
+>   fidelity CLEAN; adversarial CONCERNS ⇒ it is a verified **constraint-spec, not a falsifiable test**). To avoid GR-forbidden
+>   ℓ=0/ℓ=1 radiation the brane↔bulk return must deliver **`R0=−M0`** (kills the raw `O(ω¹)` monopole) and **`R1=−D1`** (kills the
+>   raw `O(ω³)` dipole — net momentum-rate *including the carried odd wake*; global conservation alone is NOT enough). Artifacts:
+>   `tools/pathA_28_monopole_{sympy.py,.wl}` + `reports/pathA_28_monopole*.{md,yaml}` + `reports/pathA_28_cancellation_condition.yaml`.
+> - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
+>   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
+> - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity
+>   = the FLOW not radiation; throat-soliton `J_w=0` is fine + AC→DC retired; photon ≠ gravity) live in memory
+>   `[[project-model-mechanics-corrections]]` and `docs/conceptual_foundation.md` §3 (v4 block). The EM-re-founding / little-arrows /
+>   GNLS polar-smectic material below is the **history** that LED here.
 
 **⭐⭐⭐ 2026-06-23 — EM RE-FOUNDING NOW EXECUTING (RESUME HERE FIRST; front door = repo `STATUS.md`).** Chasing `λγ` exposed the
 canonical EM sector DRIFTED from the single-medium concept (`reports/pathA_cgamma_of_rho_derivation.md`: EM = fundamental gauge

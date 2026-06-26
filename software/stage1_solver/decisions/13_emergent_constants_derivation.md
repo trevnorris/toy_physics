@@ -48,12 +48,19 @@ verification agents → user methodology call (derive the emergent constants bef
 >   is G-invariant yet calibrated); `G` is `GENUINE_BLOCKED` (the PDE delivers FORM/branch, not `G`). **Dim milestone:** a `μ̂₀`-FREE
 >   able-to-fail check (`[P₀^phys]=(c_s/a)²·N₀/D₀`) caught the handoff's `P₀=N₀/D₀` silently dropping a `(c_s/a)²` factor; v1 was
 >   tri-review-REJECTED (free-carrier-tautology dim gate + constant `self_ablation`) → remediated → re-verified EARNED. All four gates
->   land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 5 (scalar/dipole side-conditions + cross-ℓ unification)** — reconcile the
->   ℓ=0/1 brane↔bulk return (pathA_28/29: `R0=−M0`, `R1=−D1`, bounded residual `∝ε₀`) with the ℓ=2 quadrupole channel. Then Gate 6
->   (nonlinear closure = the WALL — solved PDE must RETURN the symbolic branch data + literal `54/5`); PN match-back = the decisive falsifier.
->   **⚠️ Tracked debt:** the Gate-1–3 dim checks (`pathA_30/31/32`) were found VACUOUS (typed-tuple ledgers disconnected from the real
->   expressions) — a retrofit debt to redo after Gate 4 using the real `pathA_18` harness (the harness the Gate-4 `μ̂₀`-free check now
->   uses). Physics OOM-risk judged low.
+>   land **CALIBRATED** (toy-model contract). **Gate 5 (`pathA_34`, scalar/dipole + cross-ℓ unification) ✅ DONE 2026-06-26 =
+>   `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` (EARNED).** At linear order the ℓ=0/1↔ℓ=2 link runs through `Z0_ret,Z1_ret`, a pathA_29
+>   premise (`Z_is_premise:true`); a genuine 11-dof rank audit gives `return_moving_nullity=2` (ℓ=2 `P₀` determined via the port
+>   kernel, ℓ=0/1 not), flipping to nullity 0 under a real derived selector equation → the cross-ℓ *consistency* verdict **defers to
+>   Gate 6**, which must supply the `Z0_ret,Z1_ret` selector (first concrete Gate-6 input). v1 REJECTED (rigged-to-UNDERDETERMINED
+>   audit + flag probes + `.wl` headline-only) → remediated → re-verified EARNED (arbiter + fidelity CLEAN + adversarial re-ablation).
+>   **⭐ NEXT (chosen 2026-06-26) = the BRANE sector** (the gravity arm is at its sim-ready boundary; Gate 6's 4D field solve is
+>   sim-deferred). Brane = the crux, gates EM/light, algebra-tractable / NOT sim-gated (the gauntlet that gave pathA_25's no-gos).
+>   First step: specify the light-confining shear-surface candidate ([[project-light-is-4d-throat-hypothesis]]) + run Gate L (the
+>   crux). **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
+>   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
+>   able-to-fail + dual-engine; checks out).
 > - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
 >   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
 > - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity

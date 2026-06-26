@@ -62,7 +62,8 @@ model_reasoning_effort=xhigh`, backgrounded, verify `reasoning effort: xhigh`, n
 Reports→`reports/pathA_25_*`, scripts→`tools/pathA_25_*`, scratch→`_scratch/`. Commit only when the user asks; stage explicit paths.
 GLM-direct = `opencode -m cloudflare-workers-ai/@cf/zai-org/glm-5.2 run '...'`; on the known output-emission hang, recover via
 `opencode export <sessionID>` (full reasoning persists) — do NOT restart from scratch (re-hangs).
-**Post-compact sync TODO (low priority):** `decisions/13` §0 + repo `STATUS.md` active-frontier still describe the pre-G0 plan.
+**Post-compact sync DONE (2026-06-26):** `decisions/13` §0 top block + repo `STATUS.md` now reframe this EM/brane-existence material as
+*history* (density route CLOSED, drain-sector PAUSED); the live front is the moving-throat PDE push. This ledger stays as the EM-track record.
 
 ## Gate ledger
 

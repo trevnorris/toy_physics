@@ -408,9 +408,13 @@ that mass — so solving conservation directly yields the gravitational profile 
 >   (`QUAD_CALIBRATED`.)
 >
 > Honest status: all four are **necessary plumbing**, all land **CALIBRATED** (the toy-model contract — calibrate freely, derive later
-> if we can), and the decisive tests are still ahead: **Gate 5** (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole
-> return) → **Gate 6** (the full *nonlinear* closure — the likely wall), with the **match-back to the audited PN ladder** threaded through
-> as the real falsifier. Process note (hard-won): Gates 2, 3, and 4 all first runs *looked* clean, but the adversarial review caught
+ if we can). **Gate 5 (`pathA_34`) is now DONE = `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` (EARNED)** — the honest landing: at linear
+> order the ℓ=0/1↔ℓ=2 cross-link runs through the return admittances `Z0_ret,Z1_ret`, which pathA_29 shows are a *premise*, so the
+> linear theory cannot pin them and **Gate 6 must supply that selector** (the first concrete Gate-6 input). The remaining decisive
+> tests are **Gate 6** (the full *nonlinear* closure — the likely wall; its 4D solve is **sim-deferred**) with the **PN-ladder
+> match-back** as the falsifier. **⭐ Since the full simulation is out of reach (`docs/development_plan.md`), the program now pivots to
+> completing the OTHER sectors to "simulation-ready" — next front = the BRANE sector (§2: the crux that carries light), then
+> EM/light, then throat.** Process note (hard-won): Gates 2, 3, and 4 all first runs *looked* clean, but the adversarial review caught
 > pass-by-construction defects fidelity missed — Gate-3's first attempt even faked one of its two independent engines (a vacuous "x minus
 > x" comparison), and Gate-4's first attempt had a units check that cheated by back-solving a free knob to force the answer. The
 > dimensional-rigor win is worth flagging: a units check that can **actually fail** caught a quietly dropped scale factor in the handoff —

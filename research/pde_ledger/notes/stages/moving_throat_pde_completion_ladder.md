@@ -115,7 +115,7 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
 - **Why it matters:** this is where the PDE can actually **die** — the cheapest decisive falsifier on the
   whole push.
 
-### Gate 5 — Scalar/dipole side conditions + cross-ℓ unification  ☐
+### Gate 5 — Scalar/dipole side conditions + cross-ℓ unification  ☑ DONE = `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` (EARNED)  (`pathA_34`)
 - **Tests:** from the *same* PDE, (a) confirm scalar soft-mode suppression / projection-locking, (b) confirm
   the dipole outgoing branch is cubic + finite-size demoted (roadmap Phase 5), and (c) **unify pathA_29's
   ℓ=0/1 brane↔bulk return residual** (`R0=−M0, R1=−D1`, bounded residual `∝ε₀`) with the ℓ=2 channel — the
@@ -124,6 +124,17 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
   the ℓ=2 `P₀`. A return that "cleanly cancels at all ℓ" is **suspicious**, not a win
   (`feedback-falsification-is-the-goal`).
 - **Difficulty:** hard. **Decisive?** yes (it's the GR-departure prediction's survival).
+- **RESULT (2026-06-26):** EARNED `FAIL_UNDERDETERMINED_NOT_PREDICTIVE`. At linear order the ℓ=0/1↔ℓ=2 link runs through the
+  return admittances `Z0_ret,Z1_ret`, which pathA_29 establishes are a **premise** (`Z_is_premise:true`). A genuine rank audit
+  over 11 generator dofs (constraints assembled from the §8.2 ℓ=0 collective / §9.4 ℓ=1 harmonic / §10 ℓ=2 port-kernel reductions,
+  with the ℓ=2 `P₀` the DERIVED `N0_port=P²/Δ²`) computes `return_moving_nullity=2` (ℓ=2 determined, ℓ=0/1 not) → underdetermined;
+  a **real derived selector equation** (`Z0_ret=K0c`, `Z1_ret=K_η+2T_Ω`) substituted in collapses it to nullity 0 →
+  `CROSS_L_RESIDUAL_PREDICTION` (so the gate is genuinely able-to-fail; an asserted-without-provenance selector → `FAIL_TAUTOLOGICAL`).
+  **So the cross-ℓ *consistency* verdict defers to Gate 6, which must supply the selector fixing `Z0_ret,Z1_ret` — the first concrete,
+  proven Gate-6 input.** ⚠️ v1 tri-review-REJECTED — the ADVERSARIAL leg caught the verdict mechanism pass-by-construction (rank audit
+  rigged-to-UNDERDETERMINED via a zero-padded constraint row; flag-driven probes; `.wl` headline-only) → remediated (genuine 11-dof
+  audit + real selector-equation substitution + computed-from-mutation probes + dual-engine verdict machinery) → re-verified EARNED
+  (arbiter reproduces; fidelity CLEAN; adversarial re-ablation EARNED). Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_34_*`.
 
 ### EM half — Maxwell mixed channels  ☐  (switches on ~Gates 2–3)
 - **Tests:** keep `A_w / J^w / F_{μw}` alive (do **not** zero them as ontology; scaffold §1.3); the localized

@@ -1,0 +1,1932 @@
+schema: pathA_34_cross_l_unification/v1
+engine: dual-engine
+source_directive: software/stage1_solver/directives/pathA_34_cross_l_unification.md
+verdict: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+which_rung: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+gate_conditions:
+  decoupled: false
+  tautological: false
+  quad_regression: false
+  dimensional: false
+  no_consistent_return: false
+  overcancel: false
+  epsilon_mismatch: false
+  underdetermined: true
+  able_to_fail_bad: false
+headline:
+  sympy:
+    schema: pathA_34_sympy_scratch/v1
+    engine: sympy
+    fingerprints:
+      ell0:
+        Y_series_z: -I*(z - 1)*(z + 1)*(z - I)*(z**2 - I)*(z**2 + I)
+        normalization_factor: -1
+        radiative_coeff_z: '1'
+        raw_order: 1
+        incoming_radiative_coeff_z: '-1'
+      ell1:
+        Y_series_z: -I*(z + I)*(z**2 - 2)*(z**2 + 2)*(z - 1 - I)*(z + 1 - I)/8
+        normalization_factor: -2
+        radiative_coeff_z: 1/2
+        raw_order: 3
+        incoming_radiative_coeff_z: -1/2
+      ell2:
+        Y_series_z: -I*(3*z**7 - 11*I*z**6 - 27*z**5 + 36*I*z**4 + 81*I*z**2 + 729*I)/729
+        normalization_factor: -3
+        radiative_coeff_z: 1/27
+        raw_order: 5
+        incoming_radiative_coeff_z: -1/27
+    residuals:
+      T0_dc: K0c/(K0c + Z0_ret)
+      T1_dc: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+      epsilon0_eff: Z0_ret/K0c
+      epsilon1_eff: Z1_ret/(K_eta + 2*T_Omega)
+      A0_leading: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      A1_leading: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      A0_expected: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      A1_expected: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      A0_residual_to_expected: '0'
+      A1_residual_to_expected: '0'
+      A0_sample:
+        re: 0.0
+        im: 0.33541666666666664
+      A1_sample:
+        re: 0.0
+        im: 0.0021981093750000004
+      T0_sample: 0.3611111111111111
+      T1_sample: 0.6547619047619048
+      epsilon0_sample: 1.7692307692307694
+      epsilon1_sample: 0.5272727272727272
+    gate4_non_regression:
+      ok: true
+      chi_Q: '1'
+      P0_residual: '0'
+      P2_residual: '0'
+      P4_residual: '0'
+      P0_sample: 0.02402647545504688
+      P2_sample: 1.0522627867801613
+      P4_sample: -1.2768129856724242
+    rank:
+      native_nullspace_dimension: 8
+      native_null_moves_return: true
+      return_moving_nullity: 2
+      determined_prediction: false
+      baseline_verdict: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      selector_control_verdict: CROSS_L_RESIDUAL_PREDICTION
+    dimension:
+      dimensional_ok: true
+      corrupt_sourced_verdict: FAIL_DIMENSIONAL
+      corrupt_free_carrier_verdict: NO_FAIL
+    headline_booleans:
+      fingerprints_ok: true
+      residual_form_ok: true
+      gate4_ok: true
+      dimension_ok: true
+    verdict_probes:
+      rank_baseline: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      rank_selector_equation: CROSS_L_RESIDUAL_PREDICTION
+      3c_wrong_sign:
+        with_mutation: FAIL_EPSILON_MISMATCH
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3d_perfect_return:
+        with_mutation: FAIL_OVERCANCEL
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3h_no_consistent_return:
+        with_mutation: FAIL_NO_CONSISTENT_RETURN
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3f_corrupt_dimension:
+        with_mutation: FAIL_DIMENSIONAL
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+  mathematica:
+    schema: pathA_34_mathematica_scratch/v1
+    engine: mathematica
+    fingerprints:
+      ell0:
+        Y_series_z: 1 + I*z - z^2 - I*z^3 + z^4 + I*z^5 - z^6 - I*z^7 + z^8
+        normalization_factor: -1
+        radiative_coeff_z: '1'
+        raw_order: 1
+        incoming_radiative_coeff_z: '-1'
+      ell1:
+        Y_series_z: 1 + z^2/2 + (I/2)*z^3 - z^4/4 - z^6/8 - (I/8)*z^7 + z^8/16
+        normalization_factor: -2
+        radiative_coeff_z: 1/2
+        raw_order: 3
+        incoming_radiative_coeff_z: -1/2
+      ell2:
+        Y_series_z: 1 + z^2/9 + (4*z^4)/81 + (I/27)*z^5 - (11*z^6)/729 - (I/243)*z^7
+          + (10*z^8)/6561
+        normalization_factor: -3
+        radiative_coeff_z: 1/27
+        raw_order: 5
+        incoming_radiative_coeff_z: -1/27
+    residuals:
+      T0_dc: K0c/(K0c + Z0ret)
+      T1_dc: (Keta + 2*TOmega)/(Keta + 2*TOmega + Z1ret)
+      epsilon0_eff: Z0ret/K0c
+      epsilon1_eff: Z1ret/(Keta + 2*TOmega)
+      A0_leading: (I*a*M0*omega*Z0ret)/(cs*K0c + cs*Z0ret)
+      A1_leading: ((I/2)*a^3*D1*omega^3*Z1ret)/(cs^3*(Keta + 2*TOmega + Z1ret))
+      A0_expected: (I*a*M0*omega*Z0ret)/(cs*K0c + cs*Z0ret)
+      A1_expected: ((I/2)*a^3*D1*omega^3*Z1ret)/(cs^3*(Keta + 2*TOmega + Z1ret))
+      A0_residual_to_expected: '0'
+      A1_residual_to_expected: '0'
+      A0_sample:
+        re: 0.0
+        im: 0.3354166666666667
+      A1_sample:
+        re: 0.0
+        im: 0.0021981093750000004
+      T0_sample: 0.3611111111111111
+      T1_sample: 0.6547619047619048
+      epsilon0_sample: 1.7692307692307694
+      epsilon1_sample: 0.5272727272727272
+    gate4_non_regression:
+      ok: true
+      chi_Q: '1'
+      P0_residual: '0'
+      P2_residual: '0'
+      P4_residual: '0'
+      P0_sample: 0.024026475455046888
+      P2_sample: 1.0522627867801613
+      P4_sample: -1.2768129856724242
+    rank:
+      native_nullspace_dimension: 8
+      native_null_moves_return: true
+      return_moving_nullity: 2
+      determined_prediction: false
+      baseline_verdict: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      selector_control_verdict: CROSS_L_RESIDUAL_PREDICTION
+    dimension:
+      dimensional_ok: true
+      corrupt_sourced_verdict: FAIL_DIMENSIONAL
+      corrupt_free_carrier_verdict: NO_FAIL
+    headline_booleans:
+      fingerprints_ok: true
+      residual_form_ok: true
+      gate4_ok: true
+      dimension_ok: true
+    verdict_probes:
+      rank_baseline: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      rank_selector_equation: CROSS_L_RESIDUAL_PREDICTION
+      3c_wrong_sign:
+        with_mutation: FAIL_EPSILON_MISMATCH
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3d_perfect_return:
+        with_mutation: FAIL_OVERCANCEL
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3h_no_consistent_return:
+        with_mutation: FAIL_NO_CONSISTENT_RETURN
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      3f_corrupt_dimension:
+        with_mutation: FAIL_DIMENSIONAL
+        without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+shared_generator_certificate:
+  parameter_set:
+  - mu_eta
+  - T_w
+  - K_eta
+  - T_Omega
+  - c_s
+  - K0c
+  - Z0_ret
+  - Z1_ret
+  - D0
+  - Omega_U
+  - Omega_W
+  - R_mix
+  - g_U
+  - g_W
+  - eta_null_probe
+  sector_maps:
+    ell0:
+      sector: ell=0
+      route: handoff section 8.2 / Gate-2 collective (delta_a,delta_L) reduction
+      K_dc: K0c
+      Z_return: Z0_ret
+      T_dc: K0c/(K0c + Z0_ret)
+      epsilon_eff: Z0_ret/K0c
+      derived_non_asserted: true
+    ell1:
+      sector: ell=1
+      route: handoff section 9.4 harmonic reduction; angular stiffness K_eta+2*T_Omega
+      K_dc: K_eta + 2*T_Omega
+      Z_return: Z1_ret
+      T_dc: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+      epsilon_eff: Z1_ret/(K_eta + 2*T_Omega)
+      derived_non_asserted: true
+    ell2:
+      sector: ell=2
+      route: handoff sections 9.4 and 10.2-10.3 grouped-P2 port kernel
+      Omega_U_used: Omega_U
+      P_port: Omega_U**2*g_W + R_mix*g_U
+      Delta_port: (Omega_U*Omega_W - R_mix)*(Omega_U*Omega_W + R_mix)
+      N0_from_port: (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      D0_from_port_consistent_conservative_scalar: D0
+      D0_source: Gate-4 conservative D0 branch scalar carried on the grouped-P2 isotropic
+        branch
+      P0_raw: (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      P0_physical: c_s**2*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*a**2*(Omega_U*Omega_W
+        - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+      free_N0_symbol_used_in_verdict: false
+      corrupt_port_kernel_symbol: false
+      derived_non_asserted: true
+  rank_audit:
+    genuine_generator_dofs:
+    - Omega_U
+    - Omega_W
+    - R_mix
+    - g_U
+    - g_W
+    - D0
+    - K0c
+    - K_eta
+    - T_Omega
+    - Z0_ret
+    - Z1_ret
+    named_constraints_collected:
+    - name: ell0_collective_gate2_stiffness
+      source: handoff section 8.2 / Gate-2 collective (delta_a,delta_L) reduction
+      equations:
+      - K0_dc = K0c
+      - T0_dc = K0c/(K0c + Z0_ret) when a return admittance is supplied
+      fixes:
+      - K0_dc
+      uses_but_does_not_fix:
+      - Z0_ret
+      touches_generator_dofs:
+      - K0c
+      linearized_row:
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+    - name: ell1_section9_4_harmonic_stiffness
+      source: handoff section 9.4 harmonic reduction
+      equations:
+      - K1_dc = K_eta + 2*T_Omega
+      - T1_dc = K1_dc/(K1_dc + Z1_ret) when a return admittance is supplied
+      fixes:
+      - K1_dc
+      uses_but_does_not_fix:
+      - Z1_ret
+      touches_generator_dofs:
+      - K_eta
+      - T_Omega
+      linearized_row:
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '2'
+      - '0'
+      - '0'
+    - name: ell2_section10_port_kernel
+      source: handoff sections 10.2-10.3 grouped-P2 port kernel + Gate-4 conservative
+        D0
+      equations:
+      - P_port = Omega_U**2*g_W + R_mix*g_U
+      - Delta_port = (Omega_U*Omega_W - R_mix)*(Omega_U*Omega_W + R_mix)
+      - N0_port = (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - P0_raw = (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      fixes:
+      - P0_raw combination
+      uses_but_does_not_fix: []
+      touches_generator_dofs:
+      - Omega_U
+      - Omega_W
+      - R_mix
+      - g_U
+      - g_W
+      - D0
+      linearized_row:
+      - -4*Omega_U*R_mix*(Omega_U**2*g_W + R_mix*g_U)*(Omega_W**2*g_U + R_mix*g_W)/(D0*(Omega_U*Omega_W
+        - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - -4*Omega_U**2*Omega_W*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W
+        - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - 2*(Omega_U**2*g_W + R_mix*g_U)*(Omega_U**2*Omega_W**2*g_U + 2*Omega_U**2*R_mix*g_W
+        + R_mix**2*g_U)/(D0*(Omega_U*Omega_W - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - 2*R_mix*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - 2*Omega_U**2*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - -(Omega_U**2*g_W + R_mix*g_U)**2/(D0**2*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+    pathA29_premise_citation:
+      source: software/stage1_solver/reports/pathA_29_results.yaml
+      Z_is_premise: true
+      boundary_dof: none
+      canonical_form_contains: Z_is_premise:true|boundary_dof:none
+      meaning_for_gate5: the collected Gate-5 linear named equations may use Z_ret
+        in transfer forms, but pathA_29 supplies no boundary degree of freedom or
+        PDE equation that fixes it
+    linearized_constraint_expressions:
+    - (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    - K0c
+    - K_eta + 2*T_Omega
+    linearized_constraint_matrix:
+    - - -4*Omega_U*R_mix*(Omega_U**2*g_W + R_mix*g_U)*(Omega_W**2*g_U + R_mix*g_W)/(D0*(Omega_U*Omega_W
+        - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - -4*Omega_U**2*Omega_W*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W
+        - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - 2*(Omega_U**2*g_W + R_mix*g_U)*(Omega_U**2*Omega_W**2*g_U + 2*Omega_U**2*R_mix*g_W
+        + R_mix**2*g_U)/(D0*(Omega_U*Omega_W - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+      - 2*R_mix*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - 2*Omega_U**2*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - -(Omega_U**2*g_W + R_mix*g_U)**2/(D0**2*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '2'
+      - '0'
+      - '0'
+    linearized_constraint_rank: 3
+    native_nullspace_dimension: 8
+    return_augmented_rank: 5
+    return_moving_nullity: 2
+    native_null_moves_return: true
+    untouched_return_dofs_from_named_constraints:
+    - Z0_ret
+    - Z1_ret
+    example_return_moving_directions:
+    - dof: Z0_ret
+      preserves_all_collected_constraints: true
+      delta_T0: -K0c/(K0c + Z0_ret)**2
+      delta_T1: '0'
+      moves_return: true
+    - dof: Z1_ret
+      preserves_all_collected_constraints: true
+      delta_T0: '0'
+      delta_T1: -(K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)**2
+      moves_return: true
+    T0_pinned_by_collected_constraints: false
+    T1_pinned_by_collected_constraints: false
+    branch_selector:
+      status: absent
+      present: false
+      equations: []
+      derived_from_named_pde_admissibility_equation: false
+      tautological_assertion: false
+      source: none available at Gate 5 linear level
+    selector_constraint_rows: []
+    injected_null_probe:
+      present: false
+      dof: null
+      preserves_P0: false
+      moves_T0_T1: false
+      distinct_from_decoupled_knob: false
+    determined_prediction: false
+    underdetermined_not_predictive: true
+    why_Z_survives: No collected named Gate-5 linear constraint fixes the return admittance
+      dofs; pathA_29 records Z_is_premise:true and boundary_dof:none.
+  decoupling_audit:
+    introduced_after_l2_parameters: []
+    P0_unaffected_by_introduced_parameters: false
+    independent_transfer_derivatives:
+      gain0_moves_T0: false
+      gain0_moves_T1: false
+      gain1_moves_T0: false
+      gain1_moves_T1: false
+    epsilon_can_be_dialed_after_P0_fixed: false
+    decoupled: false
+dtn_fingerprints:
+  time_convention: exp(-i*omega*t); h_l^(1) is outgoing and h_l^(2) is incoming
+  outgoing:
+    0:
+      ell: 0
+      kind: outgoing_hankel1
+      source: hankel1_outgoing_for_exp_minus_i_omega_t
+      normalization_factor: -1
+      h: -I*(I*sin(z) + cos(z))/z
+      lambda: I*(z + I)
+      Y: I/(z + I)
+      lambda_series: I*(z + I)
+      Y_series: -I*(z - 1)*(z + 1)*(z - I)*(z**2 - I)*(z**2 + I)
+      static: '1'
+      radiative_power: 1
+      radiative_coeff_z: '1'
+      raw_outgoing_order: 1
+      u2_z: '-1'
+      u4_z: '1'
+      v5_z: '1'
+    1:
+      ell: 1
+      kind: outgoing_hankel1
+      source: hankel1_outgoing_for_exp_minus_i_omega_t
+      normalization_factor: -2
+      h: -(z + I)*(I*sin(z) + cos(z))/z**2
+      lambda: I*(z - 1 + I)*(z + 1 + I)/(z + I)
+      Y: 2*I*(z + I)/((z - 1 + I)*(z + 1 + I))
+      lambda_series: I*(z**7 - I*z**6 - z**5 + I*z**4 + z**3 - I*z**2 + 2*I)
+      Y_series: -I*(z + I)*(z**2 - 2)*(z**2 + 2)*(z - 1 - I)*(z + 1 - I)/8
+      static: '1'
+      radiative_power: 3
+      radiative_coeff_z: 1/2
+      raw_outgoing_order: 3
+      u2_z: 1/2
+      u4_z: -1/4
+      v5_z: '0'
+    2:
+      ell: 2
+      kind: outgoing_hankel1
+      source: hankel1_outgoing_for_exp_minus_i_omega_t
+      normalization_factor: -3
+      h: I*(I*sin(z) + cos(z))*(z**2 + 3*I*z - 3)/z**3
+      lambda: I*(z**3 + 4*I*z**2 - 9*z - 9*I)/(z**2 + 3*I*z - 3)
+      Y: 3*I*(z**2 + 3*I*z - 3)/(z**3 + 4*I*z**2 - 9*z - 9*I)
+      lambda_series: -I*(z**7 - 2*I*z**6 - 3*z**5 + 3*I*z**4 + 9*I*z**2 - 81*I)/27
+      Y_series: -I*(3*z**7 - 11*I*z**6 - 27*z**5 + 36*I*z**4 + 81*I*z**2 + 729*I)/729
+      static: '1'
+      radiative_power: 5
+      radiative_coeff_z: 1/27
+      raw_outgoing_order: 5
+      u2_z: 1/9
+      u4_z: 4/81
+      v5_z: 1/27
+  incoming:
+    0:
+      ell: 0
+      kind: incoming_hankel2
+      source: hankel2_incoming_for_exp_minus_i_omega_t
+      normalization_factor: -1
+      h: I*(-I*sin(z) + cos(z))/z
+      lambda: -I*(z - I)
+      Y: -I/(z - I)
+      lambda_series: -I*(z - I)
+      Y_series: I*(z - 1)*(z + 1)*(z + I)*(z**2 - I)*(z**2 + I)
+      static: '1'
+      radiative_power: 1
+      radiative_coeff_z: '-1'
+      raw_outgoing_order: 1
+      u2_z: '-1'
+      u4_z: '1'
+      v5_z: '-1'
+    1:
+      ell: 1
+      kind: incoming_hankel2
+      source: hankel2_incoming_for_exp_minus_i_omega_t
+      normalization_factor: -2
+      h: -(z - I)*(-I*sin(z) + cos(z))/z**2
+      lambda: -I*(z - 1 - I)*(z + 1 - I)/(z - I)
+      Y: -2*I*(z - I)/((z - 1 - I)*(z + 1 - I))
+      lambda_series: -I*(z**7 + I*z**6 - z**5 - I*z**4 + z**3 + I*z**2 - 2*I)
+      Y_series: I*(z - I)*(z**2 - 2)*(z**2 + 2)*(z - 1 + I)*(z + 1 + I)/8
+      static: '1'
+      radiative_power: 3
+      radiative_coeff_z: -1/2
+      raw_outgoing_order: 3
+      u2_z: 1/2
+      u4_z: -1/4
+      v5_z: '0'
+    2:
+      ell: 2
+      kind: incoming_hankel2
+      source: hankel2_incoming_for_exp_minus_i_omega_t
+      normalization_factor: -3
+      h: -I*(-I*sin(z) + cos(z))*(z**2 - 3*I*z - 3)/z**3
+      lambda: -I*(z**3 - 4*I*z**2 - 9*z + 9*I)/(z**2 - 3*I*z - 3)
+      Y: -3*I*(z**2 - 3*I*z - 3)/(z**3 - 4*I*z**2 - 9*z + 9*I)
+      lambda_series: I*(z**7 + 2*I*z**6 - 3*z**5 - 3*I*z**4 - 9*I*z**2 + 81*I)/27
+      Y_series: I*(3*z**7 + 11*I*z**6 - 27*z**5 - 36*I*z**4 - 81*I*z**2 - 729*I)/729
+      static: '1'
+      radiative_power: 5
+      radiative_coeff_z: -1/27
+      raw_outgoing_order: 5
+      u2_z: 1/9
+      u4_z: 4/81
+      v5_z: -1/27
+  standing: {}
+  expected_radiative_coefficients:
+    0: '1'
+    1: 1/2
+    2: 1/27
+  expected_raw_orders:
+    0: 1
+    1: 3
+    2: 5
+  matches:
+    ell0_normalization: true
+    ell0_static: true
+    ell0_radiative_coeff: true
+    ell0_raw_order: true
+    ell0_incoming_flips_radiative_sign: true
+    ell1_normalization: true
+    ell1_static: true
+    ell1_radiative_coeff: true
+    ell1_raw_order: true
+    ell1_incoming_flips_radiative_sign: true
+    ell2_normalization: true
+    ell2_static: true
+    ell2_radiative_coeff: true
+    ell2_raw_order: true
+    ell2_incoming_flips_radiative_sign: true
+    ell2_u2: true
+    ell2_u4: true
+    ell2_v5: true
+    chi_Q: true
+  ok: true
+  chi_Q: '1'
+residuals_and_transfers:
+  transfers:
+    ell0:
+      sector: ell=0
+      route: handoff section 8.2 / Gate-2 collective (delta_a,delta_L) reduction
+      K_dc: K0c
+      Z_return: Z0_ret
+      T_dc: K0c/(K0c + Z0_ret)
+      epsilon_eff: Z0_ret/K0c
+      derived_non_asserted: true
+    ell1:
+      sector: ell=1
+      route: handoff section 9.4 harmonic reduction; angular stiffness K_eta+2*T_Omega
+      K_dc: K_eta + 2*T_Omega
+      Z_return: Z1_ret
+      T_dc: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+      epsilon_eff: Z1_ret/(K_eta + 2*T_Omega)
+      derived_non_asserted: true
+    relations:
+      T0_equals_1_over_1_plus_eps: true
+      T1_equals_1_over_1_plus_eps: true
+      one_minus_T0_equals_eps_over_1_plus_eps: true
+      one_minus_T1_equals_eps_over_1_plus_eps: true
+    boundedness:
+      ell0:
+        epsilon_positive: true
+        T_positive: true
+        one_minus_T_positive: true
+        finite_symbolic_expression: true
+        T_in_open_unit_interval: true
+        admissible: true
+      ell1:
+        epsilon_positive: true
+        T_positive: true
+        one_minus_T_positive: true
+        finite_symbolic_expression: true
+        T_in_open_unit_interval: true
+        admissible: true
+      positive_bounded_domain: true
+    positive_bounded_domain: true
+    overcancel: false
+    admissible_branch_exists: true
+    no_consistent_return: false
+    selector_substitutions: {}
+  residuals:
+    raw_radiative_coefficients:
+      ell0: '1'
+      ell1: 1/2
+    leading:
+      A0: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      A1: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      expected_A0: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      expected_A1: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      A0_residual_to_pathA29_form: '0'
+      A1_residual_to_pathA29_form: '0'
+    pathA_29_comparison:
+      A0_form: true
+      A1_form: true
+      A0_order: true
+      A1_order: true
+      positive_bounded: true
+      nonzero_epsilon: true
+      admissible_branch_exists: true
+    ok: true
+pathA_29_form_sign_order_comparison:
+  A0_form: true
+  A1_form: true
+  A0_order: true
+  A1_order: true
+  positive_bounded: true
+  nonzero_epsilon: true
+  admissible_branch_exists: true
+gate4_non_regression:
+  branch_used: outgoing_hankel1
+  prefactor_object: D0*(N2*Omega_U**4*Omega_W**4*omega**2 - 2*N2*Omega_U**2*Omega_W**2*R_mix**2*omega**2
+    + N2*R_mix**4*omega**2 + N4*Omega_U**4*Omega_W**4*omega**4 - 2*N4*Omega_U**2*Omega_W**2*R_mix**2*omega**4
+    + N4*R_mix**4*omega**4 + Omega_U**4*g_W**2 + 2*Omega_U**2*R_mix*g_U*g_W + R_mix**2*g_U**2)/((Omega_U*Omega_W
+    - R_mix)**2*(Omega_U*Omega_W + R_mix)**2*(D0 + D2*omega**2 + D4*omega**4)**2)
+  correct_object: D0*(N2*Omega_U**4*Omega_W**4*omega**2 - 2*N2*Omega_U**2*Omega_W**2*R_mix**2*omega**2
+    + N2*R_mix**4*omega**2 + N4*Omega_U**4*Omega_W**4*omega**4 - 2*N4*Omega_U**2*Omega_W**2*R_mix**2*omega**4
+    + N4*R_mix**4*omega**4 + Omega_U**4*g_W**2 + 2*Omega_U**2*R_mix*g_U*g_W + R_mix**2*g_U**2)/((Omega_U*Omega_W
+    - R_mix)**2*(Omega_U*Omega_W + R_mix)**2*(D0 + D2*omega**2 + D4*omega**4)**2)
+  plain_object: (N2*Omega_U**4*Omega_W**4*omega**2 - 2*N2*Omega_U**2*Omega_W**2*R_mix**2*omega**2
+    + N2*R_mix**4*omega**2 + N4*Omega_U**4*Omega_W**4*omega**4 - 2*N4*Omega_U**2*Omega_W**2*R_mix**2*omega**4
+    + N4*R_mix**4*omega**4 + Omega_U**4*g_W**2 + 2*Omega_U**2*R_mix*g_U*g_W + R_mix**2*g_U**2)/((Omega_U*Omega_W
+    - R_mix)**2*(Omega_U*Omega_W + R_mix)**2*(D0 + D2*omega**2 + D4*omega**4))
+  series: (D0**2*N2*Omega_U**4*Omega_W**4*omega**2 - 2*D0**2*N2*Omega_U**2*Omega_W**2*R_mix**2*omega**2
+    + D0**2*N2*R_mix**4*omega**2 + D0**2*N4*Omega_U**4*Omega_W**4*omega**4 - 2*D0**2*N4*Omega_U**2*Omega_W**2*R_mix**2*omega**4
+    + D0**2*N4*R_mix**4*omega**4 + D0**2*Omega_U**4*g_W**2 + 2*D0**2*Omega_U**2*R_mix*g_U*g_W
+    + D0**2*R_mix**2*g_U**2 - 2*D0*D2*N2*Omega_U**4*Omega_W**4*omega**4 + 4*D0*D2*N2*Omega_U**2*Omega_W**2*R_mix**2*omega**4
+    - 2*D0*D2*N2*R_mix**4*omega**4 - 2*D0*D2*Omega_U**4*g_W**2*omega**2 - 4*D0*D2*Omega_U**2*R_mix*g_U*g_W*omega**2
+    - 2*D0*D2*R_mix**2*g_U**2*omega**2 - 2*D0*D4*Omega_U**4*g_W**2*omega**4 - 4*D0*D4*Omega_U**2*R_mix*g_U*g_W*omega**4
+    - 2*D0*D4*R_mix**2*g_U**2*omega**4 + 3*D2**2*Omega_U**4*g_W**2*omega**4 + 6*D2**2*Omega_U**2*R_mix*g_U*g_W*omega**4
+    + 3*D2**2*R_mix**2*g_U**2*omega**4)/(D0**3*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+    + R_mix)**2)
+  coefficients:
+    P0: (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    P2: (D0*N2*Omega_U**4*Omega_W**4 - 2*D0*N2*Omega_U**2*Omega_W**2*R_mix**2 + D0*N2*R_mix**4
+      - 2*D2*Omega_U**4*g_W**2 - 4*D2*Omega_U**2*R_mix*g_U*g_W - 2*D2*R_mix**2*g_U**2)/(D0**2*(Omega_U*Omega_W
+      - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+    P4: (D0**2*N4*Omega_U**4*Omega_W**4 - 2*D0**2*N4*Omega_U**2*Omega_W**2*R_mix**2
+      + D0**2*N4*R_mix**4 - 2*D0*D2*N2*Omega_U**4*Omega_W**4 + 4*D0*D2*N2*Omega_U**2*Omega_W**2*R_mix**2
+      - 2*D0*D2*N2*R_mix**4 - 2*D0*D4*Omega_U**4*g_W**2 - 4*D0*D4*Omega_U**2*R_mix*g_U*g_W
+      - 2*D0*D4*R_mix**2*g_U**2 + 3*D2**2*Omega_U**4*g_W**2 + 6*D2**2*Omega_U**2*R_mix*g_U*g_W
+      + 3*D2**2*R_mix**2*g_U**2)/(D0**3*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+  expected:
+    P0: (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    P2: (D0*N2*Omega_U**4*Omega_W**4 - 2*D0*N2*Omega_U**2*Omega_W**2*R_mix**2 + D0*N2*R_mix**4
+      - 2*D2*Omega_U**4*g_W**2 - 4*D2*Omega_U**2*R_mix*g_U*g_W - 2*D2*R_mix**2*g_U**2)/(D0**2*(Omega_U*Omega_W
+      - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+    P4: (D0**2*N4*Omega_U**4*Omega_W**4 - 2*D0**2*N4*Omega_U**2*Omega_W**2*R_mix**2
+      + D0**2*N4*R_mix**4 - 2*D0*D2*N2*Omega_U**4*Omega_W**4 + 4*D0*D2*N2*Omega_U**2*Omega_W**2*R_mix**2
+      - 2*D0*D2*N2*R_mix**4 - 2*D0*D4*Omega_U**4*g_W**2 - 4*D0*D4*Omega_U**2*R_mix*g_U*g_W
+      - 2*D0*D4*R_mix**2*g_U**2 + 3*D2**2*Omega_U**4*g_W**2 + 6*D2**2*Omega_U**2*R_mix*g_U*g_W
+      + 3*D2**2*R_mix**2*g_U**2)/(D0**3*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+  residuals:
+    P0: '0'
+    P2: '0'
+    P4: '0'
+  prefactor_matches:
+    P0: true
+    P2: true
+    P4: true
+  fingerprint_matches:
+    u2: true
+    u4: true
+    v5: true
+    chi_Q: true
+  chi_Q: '1'
+  ok: true
+dimensional_check:
+  dimension_order:
+  - L
+  - M
+  - T
+  source_of_truth:
+    M0: moment definition int S_leak d^3x
+    D1: moment definition int x_i S_leak d^3x + int j_i d^3x
+    R0: return zeroth moment, same sourced dimension as M0
+    R1: return first moment, same sourced dimension as D1
+    A0: amplitude ledger slot independent of residual formula, same sourced dimension
+      as M0
+    A1: amplitude ledger slot independent of residual formula, same sourced dimension
+      as D1
+    T_l: transfer ratio, dimensionless by continuity partition
+    epsilon_l: return admittance ratio, dimensionless
+    N0: Gate-4 port moment sourced dimension L^-1 M
+    D0: Gate-4 conservative moment sourced dimension L^-1 T^-2 M
+  symbol_dimensions:
+    a: L
+    c_s: L T^-1
+    omega: T^-1
+    M0: T^-1 M
+    D1: L T^-1 M
+    R0: T^-1 M
+    R1: L T^-1 M
+    A0: T^-1 M
+    A1: L T^-1 M
+    N0: L^-1 M
+    D0: L^-1 T^-2 M
+    K0c: T^-2 M
+    K_eta: T^-2 M
+    T_Omega: T^-2 M
+    Z0_ret: T^-2 M
+    Z1_ret: T^-2 M
+    Omega_U: T^-1
+    Omega_W: T^-1
+    R_mix: T^-2
+    g_U: L^-1/2 T^-2 M^1/2
+    g_W: L^-1/2 T^-2 M^1/2
+    eta_null: '1'
+    gain0: '1'
+    gain1: '1'
+    q_free: '1'
+  table:
+  - quantity: M0
+    expression: M0
+    computed_dimension: T^-1 M
+    expected_sourced_dimension: T^-1 M
+    dimension_monomial: M/T
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -1
+    matches_expected: true
+  - quantity: D1
+    expression: D1
+    computed_dimension: L T^-1 M
+    expected_sourced_dimension: L T^-1 M
+    dimension_monomial: L*M/T
+    dimension_vector_LMT:
+    - 1
+    - 1
+    - -1
+    matches_expected: true
+  - quantity: R0
+    expression: R0
+    computed_dimension: T^-1 M
+    expected_sourced_dimension: T^-1 M
+    dimension_monomial: M/T
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -1
+    matches_expected: true
+  - quantity: R1
+    expression: R1
+    computed_dimension: L T^-1 M
+    expected_sourced_dimension: L T^-1 M
+    dimension_monomial: L*M/T
+    dimension_vector_LMT:
+    - 1
+    - 1
+    - -1
+    matches_expected: true
+  - quantity: A0
+    expression: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+    computed_dimension: T^-1 M
+    expected_sourced_dimension: T^-1 M
+    dimension_monomial: M/T
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-1'
+    matches_expected: true
+  - quantity: A1
+    expression: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+    computed_dimension: L T^-1 M
+    expected_sourced_dimension: L T^-1 M
+    dimension_monomial: L*M/T
+    dimension_vector_LMT:
+    - '1'
+    - '1'
+    - '-1'
+    matches_expected: true
+  - quantity: T0
+    expression: K0c/(K0c + Z0_ret)
+    computed_dimension: '1'
+    expected_sourced_dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+    matches_expected: true
+  - quantity: T1
+    expression: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+    computed_dimension: '1'
+    expected_sourced_dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+    matches_expected: true
+  - quantity: epsilon0_eff
+    expression: Z0_ret/K0c
+    computed_dimension: '1'
+    expected_sourced_dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+    matches_expected: true
+  - quantity: epsilon1_eff
+    expression: Z1_ret/(K_eta + 2*T_Omega)
+    computed_dimension: '1'
+    expected_sourced_dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+    matches_expected: true
+  - quantity: N0_port
+    expression: (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    computed_dimension: L^-1 M
+    expected_sourced_dimension: L^-1 M
+    dimension_monomial: M/L
+    dimension_vector_LMT:
+    - '-1'
+    - '1'
+    - '0'
+    matches_expected: true
+  - quantity: D0
+    expression: D0
+    computed_dimension: L^-1 T^-2 M
+    expected_sourced_dimension: L^-1 T^-2 M
+    dimension_monomial: M/(L*T**2)
+    dimension_vector_LMT:
+    - -1
+    - 1
+    - -2
+    matches_expected: true
+  - quantity: P0_physical
+    expression: c_s**2*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*a**2*(Omega_U*Omega_W -
+      R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+    computed_dimension: '1'
+    expected_sourced_dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+    matches_expected: true
+  - quantity: K0_collective
+    expression: K0c
+    computed_dimension: T^-2 M
+    expected_sourced_dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -2
+    matches_expected: true
+  - quantity: K1_harmonic
+    expression: K_eta + 2*T_Omega
+    computed_dimension: T^-2 M
+    expected_sourced_dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -2
+    matches_expected: true
+  errors: []
+  dimensional_ok: true
+  verdict: NO_FAIL
+  corrupt_sourced: false
+  corrupt_free_carrier: false
+  free_carrier_independence_expression_mentions_q_free: false
+dimensional_homogeneity_table:
+- quantity: M0
+  expression: M0
+  computed_dimension: T^-1 M
+  expected_sourced_dimension: T^-1 M
+  dimension_monomial: M/T
+  dimension_vector_LMT:
+  - 0
+  - 1
+  - -1
+  matches_expected: true
+- quantity: D1
+  expression: D1
+  computed_dimension: L T^-1 M
+  expected_sourced_dimension: L T^-1 M
+  dimension_monomial: L*M/T
+  dimension_vector_LMT:
+  - 1
+  - 1
+  - -1
+  matches_expected: true
+- quantity: R0
+  expression: R0
+  computed_dimension: T^-1 M
+  expected_sourced_dimension: T^-1 M
+  dimension_monomial: M/T
+  dimension_vector_LMT:
+  - 0
+  - 1
+  - -1
+  matches_expected: true
+- quantity: R1
+  expression: R1
+  computed_dimension: L T^-1 M
+  expected_sourced_dimension: L T^-1 M
+  dimension_monomial: L*M/T
+  dimension_vector_LMT:
+  - 1
+  - 1
+  - -1
+  matches_expected: true
+- quantity: A0
+  expression: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+  computed_dimension: T^-1 M
+  expected_sourced_dimension: T^-1 M
+  dimension_monomial: M/T
+  dimension_vector_LMT:
+  - '0'
+  - '1'
+  - '-1'
+  matches_expected: true
+- quantity: A1
+  expression: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+  computed_dimension: L T^-1 M
+  expected_sourced_dimension: L T^-1 M
+  dimension_monomial: L*M/T
+  dimension_vector_LMT:
+  - '1'
+  - '1'
+  - '-1'
+  matches_expected: true
+- quantity: T0
+  expression: K0c/(K0c + Z0_ret)
+  computed_dimension: '1'
+  expected_sourced_dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  matches_expected: true
+- quantity: T1
+  expression: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+  computed_dimension: '1'
+  expected_sourced_dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  matches_expected: true
+- quantity: epsilon0_eff
+  expression: Z0_ret/K0c
+  computed_dimension: '1'
+  expected_sourced_dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  matches_expected: true
+- quantity: epsilon1_eff
+  expression: Z1_ret/(K_eta + 2*T_Omega)
+  computed_dimension: '1'
+  expected_sourced_dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  matches_expected: true
+- quantity: N0_port
+  expression: (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+    + R_mix)**2)
+  computed_dimension: L^-1 M
+  expected_sourced_dimension: L^-1 M
+  dimension_monomial: M/L
+  dimension_vector_LMT:
+  - '-1'
+  - '1'
+  - '0'
+  matches_expected: true
+- quantity: D0
+  expression: D0
+  computed_dimension: L^-1 T^-2 M
+  expected_sourced_dimension: L^-1 T^-2 M
+  dimension_monomial: M/(L*T**2)
+  dimension_vector_LMT:
+  - -1
+  - 1
+  - -2
+  matches_expected: true
+- quantity: P0_physical
+  expression: c_s**2*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*a**2*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+    + R_mix)**2)
+  computed_dimension: '1'
+  expected_sourced_dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  matches_expected: true
+- quantity: K0_collective
+  expression: K0c
+  computed_dimension: T^-2 M
+  expected_sourced_dimension: T^-2 M
+  dimension_monomial: M/T**2
+  dimension_vector_LMT:
+  - 0
+  - 1
+  - -2
+  matches_expected: true
+- quantity: K1_harmonic
+  expression: K_eta + 2*T_Omega
+  computed_dimension: T^-2 M
+  expected_sourced_dimension: T^-2 M
+  dimension_monomial: M/T**2
+  dimension_vector_LMT:
+  - 0
+  - 1
+  - -2
+  matches_expected: true
+dimensional_able_to_fail:
+  corrupt_sourced_input:
+    dimension_order:
+    - L
+    - M
+    - T
+    source_of_truth:
+      M0: moment definition int S_leak d^3x
+      D1: moment definition int x_i S_leak d^3x + int j_i d^3x
+      R0: return zeroth moment, same sourced dimension as M0
+      R1: return first moment, same sourced dimension as D1
+      A0: amplitude ledger slot independent of residual formula, same sourced dimension
+        as M0
+      A1: amplitude ledger slot independent of residual formula, same sourced dimension
+        as D1
+      T_l: transfer ratio, dimensionless by continuity partition
+      epsilon_l: return admittance ratio, dimensionless
+      N0: Gate-4 port moment sourced dimension L^-1 M
+      D0: Gate-4 conservative moment sourced dimension L^-1 T^-2 M
+    symbol_dimensions:
+      a: L
+      c_s: L T^-1
+      omega: T^-1
+      M0: L T^-1 M
+      D1: L T^-1 M
+      R0: T^-1 M
+      R1: L T^-1 M
+      A0: T^-1 M
+      A1: L T^-1 M
+      N0: L^-1 M
+      D0: L^-1 T^-2 M
+      K0c: T^-2 M
+      K_eta: T^-2 M
+      T_Omega: T^-2 M
+      Z0_ret: T^-2 M
+      Z1_ret: T^-2 M
+      Omega_U: T^-1
+      Omega_W: T^-1
+      R_mix: T^-2
+      g_U: L^-1/2 T^-2 M^1/2
+      g_W: L^-1/2 T^-2 M^1/2
+      eta_null: '1'
+      gain0: '1'
+      gain1: '1'
+      q_free: '1'
+    table:
+    - quantity: M0
+      expression: M0
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - '1'
+      - '1'
+      - '-1'
+      matches_expected: false
+    - quantity: D1
+      expression: D1
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - 1
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: R0
+      expression: R0
+      computed_dimension: T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: M/T
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: R1
+      expression: R1
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - 1
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: A0
+      expression: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - '1'
+      - '1'
+      - '-1'
+      matches_expected: false
+    - quantity: A1
+      expression: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - '1'
+      - '1'
+      - '-1'
+      matches_expected: true
+    - quantity: T0
+      expression: K0c/(K0c + Z0_ret)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: T1
+      expression: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: epsilon0_eff
+      expression: Z0_ret/K0c
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: epsilon1_eff
+      expression: Z1_ret/(K_eta + 2*T_Omega)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: N0_port
+      expression: (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      computed_dimension: L^-1 M
+      expected_sourced_dimension: L^-1 M
+      dimension_monomial: M/L
+      dimension_vector_LMT:
+      - '-1'
+      - '1'
+      - '0'
+      matches_expected: true
+    - quantity: D0
+      expression: D0
+      computed_dimension: L^-1 T^-2 M
+      expected_sourced_dimension: L^-1 T^-2 M
+      dimension_monomial: M/(L*T**2)
+      dimension_vector_LMT:
+      - -1
+      - 1
+      - -2
+      matches_expected: true
+    - quantity: P0_physical
+      expression: c_s**2*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*a**2*(Omega_U*Omega_W
+        - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: K0_collective
+      expression: K0c
+      computed_dimension: T^-2 M
+      expected_sourced_dimension: T^-2 M
+      dimension_monomial: M/T**2
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -2
+      matches_expected: true
+    - quantity: K1_harmonic
+      expression: K_eta + 2*T_Omega
+      computed_dimension: T^-2 M
+      expected_sourced_dimension: T^-2 M
+      dimension_monomial: M/T**2
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -2
+      matches_expected: true
+    errors: []
+    dimensional_ok: false
+    verdict: FAIL_DIMENSIONAL
+    corrupt_sourced: true
+    corrupt_free_carrier: false
+    free_carrier_independence_expression_mentions_q_free: false
+  corrupt_unconstrained_carrier:
+    dimension_order:
+    - L
+    - M
+    - T
+    source_of_truth:
+      M0: moment definition int S_leak d^3x
+      D1: moment definition int x_i S_leak d^3x + int j_i d^3x
+      R0: return zeroth moment, same sourced dimension as M0
+      R1: return first moment, same sourced dimension as D1
+      A0: amplitude ledger slot independent of residual formula, same sourced dimension
+        as M0
+      A1: amplitude ledger slot independent of residual formula, same sourced dimension
+        as D1
+      T_l: transfer ratio, dimensionless by continuity partition
+      epsilon_l: return admittance ratio, dimensionless
+      N0: Gate-4 port moment sourced dimension L^-1 M
+      D0: Gate-4 conservative moment sourced dimension L^-1 T^-2 M
+    symbol_dimensions:
+      a: L
+      c_s: L T^-1
+      omega: T^-1
+      M0: T^-1 M
+      D1: L T^-1 M
+      R0: T^-1 M
+      R1: L T^-1 M
+      A0: T^-1 M
+      A1: L T^-1 M
+      N0: L^-1 M
+      D0: L^-1 T^-2 M
+      K0c: T^-2 M
+      K_eta: T^-2 M
+      T_Omega: T^-2 M
+      Z0_ret: T^-2 M
+      Z1_ret: T^-2 M
+      Omega_U: T^-1
+      Omega_W: T^-1
+      R_mix: T^-2
+      g_U: L^-1/2 T^-2 M^1/2
+      g_W: L^-1/2 T^-2 M^1/2
+      eta_null: '1'
+      gain0: '1'
+      gain1: '1'
+      q_free: L^7
+    table:
+    - quantity: M0
+      expression: M0
+      computed_dimension: T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: M/T
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: D1
+      expression: D1
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - 1
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: R0
+      expression: R0
+      computed_dimension: T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: M/T
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: R1
+      expression: R1
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - 1
+      - 1
+      - -1
+      matches_expected: true
+    - quantity: A0
+      expression: I*M0*Z0_ret*a*omega/(c_s*(K0c + Z0_ret))
+      computed_dimension: T^-1 M
+      expected_sourced_dimension: T^-1 M
+      dimension_monomial: M/T
+      dimension_vector_LMT:
+      - '0'
+      - '1'
+      - '-1'
+      matches_expected: true
+    - quantity: A1
+      expression: I*D1*Z1_ret*a**3*omega**3/(2*c_s**3*(K_eta + 2*T_Omega + Z1_ret))
+      computed_dimension: L T^-1 M
+      expected_sourced_dimension: L T^-1 M
+      dimension_monomial: L*M/T
+      dimension_vector_LMT:
+      - '1'
+      - '1'
+      - '-1'
+      matches_expected: true
+    - quantity: T0
+      expression: K0c/(K0c + Z0_ret)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: T1
+      expression: (K_eta + 2*T_Omega)/(K_eta + 2*T_Omega + Z1_ret)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: epsilon0_eff
+      expression: Z0_ret/K0c
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: epsilon1_eff
+      expression: Z1_ret/(K_eta + 2*T_Omega)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: N0_port
+      expression: (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+        + R_mix)**2)
+      computed_dimension: L^-1 M
+      expected_sourced_dimension: L^-1 M
+      dimension_monomial: M/L
+      dimension_vector_LMT:
+      - '-1'
+      - '1'
+      - '0'
+      matches_expected: true
+    - quantity: D0
+      expression: D0
+      computed_dimension: L^-1 T^-2 M
+      expected_sourced_dimension: L^-1 T^-2 M
+      dimension_monomial: M/(L*T**2)
+      dimension_vector_LMT:
+      - -1
+      - 1
+      - -2
+      matches_expected: true
+    - quantity: P0_physical
+      expression: c_s**2*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*a**2*(Omega_U*Omega_W
+        - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+      computed_dimension: '1'
+      expected_sourced_dimension: '1'
+      dimension_monomial: '1'
+      dimension_vector_LMT:
+      - '0'
+      - '0'
+      - '0'
+      matches_expected: true
+    - quantity: K0_collective
+      expression: K0c
+      computed_dimension: T^-2 M
+      expected_sourced_dimension: T^-2 M
+      dimension_monomial: M/T**2
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -2
+      matches_expected: true
+    - quantity: K1_harmonic
+      expression: K_eta + 2*T_Omega
+      computed_dimension: T^-2 M
+      expected_sourced_dimension: T^-2 M
+      dimension_monomial: M/T**2
+      dimension_vector_LMT:
+      - 0
+      - 1
+      - -2
+      matches_expected: true
+    errors: []
+    dimensional_ok: true
+    verdict: NO_FAIL
+    corrupt_sourced: false
+    corrupt_free_carrier: true
+    free_carrier_independence_expression_mentions_q_free: false
+provenance_partition:
+  items:
+    Y_l_out_fingerprints:
+      tags:
+      - dtn_hankel_expansion
+      - outgoing_boundary_condition
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    ell0_T0_map:
+      tags:
+      - section_8_2_collective_delta_a_delta_L_reduction
+      - continuity_partition_solve
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    ell1_T1_map:
+      tags:
+      - section_9_4_harmonic_projection
+      - continuity_partition_solve
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    ell2_P0_map:
+      tags:
+      - section_10_2_10_3_port_kernel
+      - gate4_prefactor
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    epsilon_eff_nonzero_value:
+      tags:
+      - native_nullspace_rank_audit
+      computed_class: deferred_branch_data
+      magnitude_note: not computed because native nullspace leaves Z0_ret/Z1_ret free
+      emitted_class: deferred_branch_data
+      class_matches_computed: true
+    pathA_28_side_conditions:
+      tags:
+      - external_R0_equals_minus_M0
+      - external_R1_equals_minus_D1
+      computed_class: external_bridge_input
+      emitted_class: external_bridge_input
+      class_matches_computed: true
+    literal_pathA_29_epsilon_magnitudes:
+      tags:
+      - pathA29_flat_slab_partition
+      computed_class: deferred_branch_data
+      emitted_class: deferred_branch_data
+      class_matches_computed: true
+    time_convention:
+      tags:
+      - exp_minus_i_omega_t
+      computed_class: convention
+      emitted_class: convention
+      class_matches_computed: true
+  groups:
+    derived_in_gate:
+    - Y_l_out_fingerprints
+    - ell0_T0_map
+    - ell1_T1_map
+    - ell2_P0_map
+    external_bridge_input:
+    - pathA_28_side_conditions
+    deferred_branch_data:
+    - epsilon_eff_nonzero_value
+    - literal_pathA_29_epsilon_magnitudes
+    convention:
+    - time_convention
+    asserted_literal: []
+  ok: true
+  epsilon_magnitude_cases:
+    computed_not_pathA29_cross_checked: false
+    not_computed_generator_underdetermined: true
+    literal_pathA29_partition_magnitudes: deferred_branch_data
+counterfactual_probes:
+  R1_port_kernel_dependency:
+    description: Corrupt Omega_U in the ell=2 port kernel and recompute P0_raw plus
+      the rank row.
+    baseline_P0_raw: (Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    corrupt_P0_raw: (4*Omega_U**2*g_W + R_mix*g_U)**2/(D0*(2*Omega_U*Omega_W - R_mix)**2*(2*Omega_U*Omega_W
+      + R_mix)**2)
+    baseline_rank_row:
+    - -4*Omega_U*R_mix*(Omega_U**2*g_W + R_mix*g_U)*(Omega_W**2*g_U + R_mix*g_W)/(D0*(Omega_U*Omega_W
+      - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+    - -4*Omega_U**2*Omega_W*(Omega_U**2*g_W + R_mix*g_U)**2/(D0*(Omega_U*Omega_W -
+      R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+    - 2*(Omega_U**2*g_W + R_mix*g_U)*(Omega_U**2*Omega_W**2*g_U + 2*Omega_U**2*R_mix*g_W
+      + R_mix**2*g_U)/(D0*(Omega_U*Omega_W - R_mix)**3*(Omega_U*Omega_W + R_mix)**3)
+    - 2*R_mix*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    - 2*Omega_U**2*(Omega_U**2*g_W + R_mix*g_U)/(D0*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    - -(Omega_U**2*g_W + R_mix*g_U)**2/(D0**2*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W
+      + R_mix)**2)
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    corrupt_rank_row:
+    - -16*Omega_U*R_mix*(4*Omega_U**2*g_W + R_mix*g_U)*(Omega_W**2*g_U + R_mix*g_W)/(D0*(2*Omega_U*Omega_W
+      - R_mix)**3*(2*Omega_U*Omega_W + R_mix)**3)
+    - -16*Omega_U**2*Omega_W*(4*Omega_U**2*g_W + R_mix*g_U)**2/(D0*(2*Omega_U*Omega_W
+      - R_mix)**3*(2*Omega_U*Omega_W + R_mix)**3)
+    - 2*(4*Omega_U**2*g_W + R_mix*g_U)*(4*Omega_U**2*Omega_W**2*g_U + 8*Omega_U**2*R_mix*g_W
+      + R_mix**2*g_U)/(D0*(2*Omega_U*Omega_W - R_mix)**3*(2*Omega_U*Omega_W + R_mix)**3)
+    - 2*R_mix*(4*Omega_U**2*g_W + R_mix*g_U)/(D0*(2*Omega_U*Omega_W - R_mix)**2*(2*Omega_U*Omega_W
+      + R_mix)**2)
+    - 8*Omega_U**2*(4*Omega_U**2*g_W + R_mix*g_U)/(D0*(2*Omega_U*Omega_W - R_mix)**2*(2*Omega_U*Omega_W
+      + R_mix)**2)
+    - -(4*Omega_U**2*g_W + R_mix*g_U)**2/(D0**2*(2*Omega_U*Omega_W - R_mix)**2*(2*Omega_U*Omega_W
+      + R_mix)**2)
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+    P0_changes: true
+    ell2_determinacy_row_changes: true
+  3a_decouple_knobs:
+    description: Inject gain0/gain1 after ell=2 branch is fixed.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_DECOUPLED
+      without_mutation: CROSS_L_RESIDUAL_PREDICTION
+      expected_fail: FAIL_DECOUPLED
+      fail_suppressed: true
+      with_conditions:
+        decoupled: true
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: true
+        underdetermined: false
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: false
+        able_to_fail_bad: false
+  3b_null_direction:
+    real_selector_equation_able_to_fail:
+      rerun_gate_logic: true
+      selector_equations:
+      - Z0_ret = K0c
+      - Z1_ret = K_eta + 2*T_Omega
+      with_selector: CROSS_L_RESIDUAL_PREDICTION
+      without_selector: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      with_selector_return_moving_nullity: 0
+      without_selector_return_moving_nullity: 2
+      verdict_flips_to_prediction: true
+    detector_self_ablation_clean_native:
+      rerun_gate_logic: true
+      with_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      without_mutation: CROSS_L_RESIDUAL_PREDICTION
+      expected_fail: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: false
+        able_to_fail_bad: false
+    baseline_native_no_injection:
+      rerun_gate_logic: true
+      verdict: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      native_null_moves_return: true
+      selector_present: false
+      untouched_return_dofs:
+      - Z0_ret
+      - Z1_ret
+  3c_wrong_sign_antilocalizing:
+    description: Flip return admittance sign so eps_eff is negative/unbounded.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_EPSILON_MISMATCH
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_EPSILON_MISMATCH
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: true
+        underdetermined: true
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+  3d_perfect_return:
+    description: Force Z0_ret=Z1_ret=0 so T0=T1=1 and eps_eff=0.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_OVERCANCEL
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_OVERCANCEL
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: true
+        epsilon_mismatch: true
+        underdetermined: false
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+  3e_break_gate4:
+    description: Use incoming ell=2 and N/D prefactor in place of outgoing D0*N/Dcons^2.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_QUAD_REGRESSION
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_QUAD_REGRESSION
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: true
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+  3f_corrupt_dimension:
+    description: Corrupt sourced [M0] by L; separately corrupt q_free, which is not
+      in the verdict expressions.
+    sourced_corruption_verdict: FAIL_DIMENSIONAL
+    unconstrained_carrier_verdict: NO_FAIL
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_DIMENSIONAL
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_DIMENSIONAL
+      fail_suppressed: true
+  3g_assert_not_derive:
+    description: Supply the selector equations as asserted literals with no named
+      PDE provenance.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_TAUTOLOGICAL
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_TAUTOLOGICAL
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: true
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: false
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+  3h_no_consistent_return:
+    description: Restrict branch so P0 match forces eps_eff=-2 and T is not bounded
+      positive.
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_NO_CONSISTENT_RETURN
+      without_mutation: FAIL_UNDERDETERMINED_NOT_PREDICTIVE
+      expected_fail: FAIL_NO_CONSISTENT_RETURN
+      fail_suppressed: true
+      with_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: true
+        overcancel: false
+        epsilon_mismatch: true
+        underdetermined: false
+        able_to_fail_bad: false
+      without_conditions:
+        decoupled: false
+        tautological: false
+        quad_regression: false
+        dimensional: false
+        no_consistent_return: false
+        overcancel: false
+        epsilon_mismatch: false
+        underdetermined: true
+        able_to_fail_bad: false
+able_to_fail:
+  probe_flags:
+    R1_port_kernel_dependency: true
+    3a_decouple_knobs: true
+    3b_null_direction: true
+    3c_wrong_sign_antilocalizing: true
+    3d_perfect_return: true
+    3e_break_gate4: true
+    3f_corrupt_dimension: true
+    3g_assert_not_derive: true
+    3h_no_consistent_return: true
+  able_to_fail_ok: true
+engine_agreement:
+  status: pass
+  max_symbolic_delta: 0.0
+  symbolic_tolerance: 1.0e-10
+  max_numeric_delta: 5.551115123125783e-17
+  numeric_tolerance: 1.0e-08
+  symbolic_checks:
+    ell0_radiative_coeff_z: true
+    ell0_raw_order: true
+    ell0_normalization_factor: true
+    ell1_radiative_coeff_z: true
+    ell1_raw_order: true
+    ell1_normalization_factor: true
+    ell2_radiative_coeff_z: true
+    ell2_raw_order: true
+    ell2_normalization_factor: true
+    A0_residual_to_expected: true
+    A1_residual_to_expected: true
+    gate4_P0_residual: true
+    gate4_P2_residual: true
+    gate4_P4_residual: true
+    gate4_chi_Q: true
+    rank_native_nullspace_dimension: true
+    rank_native_null_moves_return: true
+    rank_return_moving_nullity: true
+    rank_determined_prediction: true
+    rank_baseline_verdict: true
+    rank_selector_control_verdict: true
+    probe_rank_baseline: true
+    probe_rank_selector_equation: true
+    probe_3c_wrong_sign: true
+    probe_3d_perfect_return: true
+    probe_3h_no_consistent_return: true
+    probe_3f_corrupt_dimension: true
+    dimension_dimensional_ok: true
+    dimension_corrupt_sourced_verdict: true
+    dimension_corrupt_free_carrier_verdict: true
+  numeric_deltas:
+    residual_A0_sample_re: 0.0
+    residual_A0_sample_im: 5.551115123125783e-17
+    residual_A1_sample_re: 0.0
+    residual_A1_sample_im: 0.0
+    residual_T0_sample: 0.0
+    residual_T1_sample: 0.0
+    residual_epsilon0_sample: 0.0
+    residual_epsilon1_sample: 0.0
+    gate4_P0_sample: 6.938893903907228e-18
+    gate4_P2_sample: 0.0
+    gate4_P4_sample: 0.0
+  compared_quantities:
+  - ell0_radiative_coeff_z
+  - ell0_raw_order
+  - ell0_normalization_factor
+  - ell1_radiative_coeff_z
+  - ell1_raw_order
+  - ell1_normalization_factor
+  - ell2_radiative_coeff_z
+  - ell2_raw_order
+  - ell2_normalization_factor
+  - A0_residual_to_expected
+  - A1_residual_to_expected
+  - gate4_P0_residual
+  - gate4_P2_residual
+  - gate4_P4_residual
+  - gate4_chi_Q
+  - rank_native_nullspace_dimension
+  - rank_native_null_moves_return
+  - rank_return_moving_nullity
+  - rank_determined_prediction
+  - rank_baseline_verdict
+  - rank_selector_control_verdict
+  - probe_rank_baseline
+  - probe_rank_selector_equation
+  - probe_3c_wrong_sign
+  - probe_3d_perfect_return
+  - probe_3h_no_consistent_return
+  - probe_3f_corrupt_dimension
+  - dimension_dimensional_ok
+  - dimension_corrupt_sourced_verdict
+  - dimension_corrupt_free_carrier_verdict
+  - residual_A0_sample_re
+  - residual_A0_sample_im
+  - residual_A1_sample_re
+  - residual_A1_sample_im
+  - residual_T0_sample
+  - residual_T1_sample
+  - residual_epsilon0_sample
+  - residual_epsilon1_sample
+  - gate4_P0_sample
+  - gate4_P2_sample
+  - gate4_P4_sample
+honest_gap:
+  status: native_nullspace_leaves_scalar_dipole_return_unfixed
+  gate6_selector_requirement: A nonlinear branch selector must fix Z0_ret and Z1_ret,
+    or an equivalent return law, before ell=0/1 become predictions.
+  pathA29_premise_citation:
+    source: software/stage1_solver/reports/pathA_29_results.yaml
+    Z_is_premise: true
+    boundary_dof: none
+    canonical_form_contains: Z_is_premise:true|boundary_dof:none
+    meaning_for_gate5: the collected Gate-5 linear named equations may use Z_ret in
+      transfer forms, but pathA_29 supplies no boundary degree of freedom or PDE equation
+      that fixes it

@@ -83,13 +83,37 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   tautological (it **back-solved the FREE carrier `μ̂₀`** to force homogeneity); (b) the per-probe `self_ablation` was a **constant, not a
   re-run** → remediated (`μ̂₀`-free dim gate + corrupt-`[N₀]` probe §3d′ + real two-verdict `self_ablation`) → re-verified EARNED
   (corrupting `[N₀]` now fires `FAIL_DIMENSIONAL`; `[G]` doesn't). Artifacts: `pathA_33_*`.
-- **⭐ NEXT = Gate 5 (scalar/dipole side-conditions + cross-ℓ unification):** from the *same* PDE, reconcile the ℓ=0/1 brane↔bulk return
-  (pathA_28/29 — `R0=−M0`, `R1=−D1`, bounded residual `∝ε₀`) with the ℓ=2 quadrupole channel (the new cross-ℓ consistency gate). Then
-  Gate 6 (full nonlinear closure = the WALL — where the symbolic branch data + the literal `54/5` magnitude must be RETURNED by the
-  solved PDE); PN match-back threaded through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
-- **⚠️ Tracked debt (Gate-1–3 dimensional checks):** the `pathA_30/31/32` dim checks were found **VACUOUS** (typed-tuple ledgers
-  disconnected from the real expressions) — a retrofit debt to redo after Gate 4 using the real `pathA_18` harness (the same harness
-  the Gate-4 `μ̂₀`-free check now uses). Physics OOM-risk judged low.
+- **Gate 5 (`pathA_34`, scalar/dipole + cross-ℓ unification) ✅ DONE 2026-06-26 = `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` (EARNED).**
+  The ℓ=0/1 brane↔bulk return (pathA_28/29 — `R0=−M0`, `R1=−D1`) and the ℓ=2 quadrupole (`P₀`, derived via the port kernel) are
+  sectors of one return law, but at LINEAR order the cross-ℓ link runs through the return admittances `Z0_ret,Z1_ret`, which pathA_29
+  establishes are a **premise** (`Z_is_premise:true`). A rank audit over 11 genuine generator dofs computes `return_moving_nullity=2`
+  (ℓ=2 determined, ℓ=0/1 NOT) → underdetermined; a **real derived selector equation** collapses it to nullity 0 →
+  `CROSS_L_RESIDUAL_PREDICTION` (so the gate is genuinely able-to-fail). **Honest landing: the linear theory cannot pin the ℓ=0/1
+  return — Gate 6 must supply a selector fixing `Z0_ret,Z1_ret` (the first concrete, proven Gate-6 input).** ⚠️ **v1 tri-review-REJECTED**
+  — the ADVERSARIAL leg caught the verdict mechanism pass-by-construction (rank audit rigged-to-UNDERDETERMINED via a zero-padded
+  constraint; flag-driven probes; `.wl` headline-only). Remediated (genuine 11-dof rank audit from the §8.2/§9.4/§10 reductions + real
+  selector-equation substitution + computed-from-mutation probes + dual-engine verdict machinery) and re-verified EARNED (arbiter
+  reproduces under the new toolchain; fidelity CLEAN; adversarial re-ablation EARNED). Earned content (`−(ℓ+1)/Λ_ℓ` fingerprints
+  `ω¹/ω³/ω⁵`, residual forms vs pathA_29, free-carrier-independent dim check) all genuine. Artifacts: `pathA_34_*`.
+- **⭐ NEXT (chosen 2026-06-26) = the BRANE sector** — the gravity arm is at its sim-ready boundary (Gates 1–5 done; Gate 6 = the
+  WALL, its 4D field solve sim-deferred), so the program moves to the brane: it's the **crux**, it **gates EM/light** (light rides
+  the brane), and it's **algebra-tractable / NOT sim-gated** (the same gauntlet produced pathA_25's real no-gos). **First step:**
+  specify the light-confining shear-surface candidate (post-density-route; `project-light-is-4d-throat-hypothesis`), then run **Gate L**
+  (bounded-below + 2-transverse/no-longitudinal + leak-free MacCullagh light — the crux / most-likely no-go), then S/B/Q/T. Read
+  first: `docs/conceptual_foundation.md` §4/§5/§6.1 + `docs/medium_requirements_and_prior_art.md` + `reports/pathA_25_STATUS.md`.
+- **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
+  self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve
+  is sim-deferred regardless. The full road to a simulation-ready PDE (gravity arm done; brane → EM/light → throat → integration
+  remaining) = **`docs/development_plan.md`**.
+- **✅ Gate-1–3 dimensional checks — RETROFITTED (2026-06-26, parallel session).** The previously **VACUOUS** typed-tuple ledgers
+  in `pathA_30/31/32` are now real-expression + able-to-fail + dual-engine (per `directives/pathA_dimcheck_retrofit_gates1to3.md`,
+  the real `pathA_18` harness) and **everything checks out** — no OOM surprises. (Orchestrator confirm-read optional.)
+- **⭐⭐ SCOPE EXPANDED (2026-06-26):** the full nonlinear **simulation is OUT OF REACH** (solver tractability, not hardware), so the
+  goal is now to bring **EVERY sector (gravity / EM-light / brane / throat) to "simulation-ready"** via the algebra/calibrate gauntlet
+  and **defer the sim** as future work. The win = a complete, internally-consistent, calibrated, *simulation-ready* PDE — it
+  **completes the spec, does NOT prove the theory** (sim-dependent Qs stay posed; a no-go is still possible). **Master work breakdown
+  = `docs/development_plan.md`** (memory `project-simulation-deferred-complete-pde-strategy`). The Gate-5/6 gravity ladder below is now
+  one *arm* of that broader plan; Gate 6's full 4D field solve is sim-deferred (its algebra-tractable reduced closure is still in-scope).
 
 Process lesson banked (memory `project-model-mechanics-corrections` + `feedback-offload-review-gauntlet`): every compute gate runs the
 full Codex→GLM→Codex directive gauntlet + dual-engine + tri-review, with the **review rounds offloaded to a gauntlet-runner agent** so
@@ -102,9 +126,10 @@ changes propagate at `c_s`, and uniform motion tracks the **current** position �
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
 **COMMIT STATE (2026-06-26):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`), pathA_30 Gate-1 (`f460fc63`), pathA_31 Gate-2
-(`765db5f0`), the prior docs-sync (`810e01f7`), and **pathA_32 Gate-3 (`6711167a`)** committed. The **pathA_33 Gate-4 milestone**
-— directive, tools, dual engines, reports + this STATUS / ladder / decisions-13 / conceptual-foundation sync — is **committed as
-this HEAD commit** (hash pinned at the next sync, per the `810e01f7` convention). **Commit only when the user asks; stage explicit paths.**
+(`765db5f0`), the prior docs-sync (`810e01f7`), **pathA_32 Gate-3 (`6711167a`)**, and **pathA_33 Gate-4 (`75ad0d0d`)** are all
+committed. This **documentation sync** — relabeling the superseded verdict-count + EM / brane-existence material below as *history*,
+pinning the Gate-4 hash, and disambiguating the two clashing "Gate 3 / Gate 4" namings — is **uncommitted, pending the user's go.**
+**Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate
@@ -113,113 +138,98 @@ model_reasoning_effort=xhigh` backgrounded, never wrap the session in `timeout`.
 
 ---
 
-## Current state (one paragraph)
+## Earlier track — the gravity-sector verdict count (`pathA_22b`; the context the push grew out of)
 
-The toy model targets the GR-quadrupole verdict `P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5`. Under the **calibrate-predict** discipline
-(every value DERIVED or a declared calibration gap — no silent knobs), the factors now stand: `P0` extracted, **`χ_Q ≈ 0.712`
-COMPUTED** (Gate 3), `λγ` a genuine model gap (`BETA_GENUINE_GAP`), and — **Gate 4 (2026-06-22) → `GENUINE_BLOCKED`** — the
-gravity ratio `g_mhat²/g_G` is **not derivable** from the current action (no target-blind source-map kernel; `α_J` doesn't
-cancel; all 22 `m̂` sites in `pde.tex` are target-facing, dual-reviewed). So the model does not derive its own gravity coupling:
-`g_G` is calibrated on Newton's `G`, and the **`54/5` quadrupole is an ABSORBED calibration anchor, not a prediction**. The
-verdict closes only with the **EM-sector anchor** (which pins `λγ`) — now load-bearing. The falsifiable payoff is the **held-out
-surplus** (g−2, 5PN, ringdown, multi-defect), riding the shared *derived* `χ_Q` + `P0/D0` bundle + `c_s`.
+> **⚠️ Naming caution — "Gate 3 / Gate 4" are OVERLOADED across two programs.** In this section, `pathA_22b` **Gate 3 / Gate 4** are
+> the *verdict-count* gates (compute `χ_Q`; classify the `g_mhat²/g_G` ratio). The ⭐⭐ LATEST section above uses **Gate 3 / Gate 4**
+> for the *moving-throat ladder* (ℓ=2 isotropy `pathA_32`; the `54/5` quadrupole `pathA_33`). Different programs — the dates
+> disambiguate (`pathA_22b` Gate 4 = 2026-06-22; moving-throat Gate 4 = 2026-06-26).
 
-## ⭐ ACTIVE FRONTIER (2026-06-23): EM re-founding → PIVOT to "why the brane exists" + the defect = a brane PUNCTURE (pathA_24)
+Before the moving-throat PDE push, the gravity sector was scored by a single **verdict-count** equation
+`P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5` under calibrate-predict discipline (every value DERIVED or a declared calibration gap — no silent
+knobs). Terminal state of that count: `P0` extracted; **`χ_Q ≈ 0.712` COMPUTED** (`pathA_22b` Gate 3, outgoing-DtN, even-`nw`
+converged); `λγ` a genuine model gap (`BETA_GENUINE_GAP`); and — **`pathA_22b` Gate 4 (2026-06-22) → `GENUINE_BLOCKED`** — the ratio
+`g_mhat²/g_G` is **not derivable** from the action (no target-blind source-map kernel; `α_J` doesn't cancel; all 22 `m̂` sites in
+`pde.tex` are target-facing, dual-reviewed). So the model does **not** derive its own gravity coupling: `g_G` is calibrated on
+Newton's `G`, and the **`54/5` quadrupole is an ABSORBED calibration anchor, not a prediction**; the count closes only via the
+**EM-sector anchor** (pins `λγ`) — load-bearing. The falsifiable payoff is the **held-out surplus** (g−2, 5PN, ringdown,
+multi-defect), riding the shared *derived* `χ_Q` + `P0/D0` bundle + `c_s`. **This verdict-count framing is what motivated the EM
+re-founding (history below) and, later, the more fundamental moving-throat PDE push (⭐⭐ LATEST, above).**
 
-> **PIVOT (2026-06-23): pathA_24 T1 FALSIFIED the little-arrows domain-wall brane → now the GNLS polar-smectic superfluid candidate
-> + a consistency-gate program. See the "Next step" section below for the live state.** The pathA_23 / little-arrows history below
-> is the context that led here. Conceptual home: `docs/conceptual_foundation.md` (v3) + `docs/medium_requirements_and_prior_art.md`.
+> **⚠️ Open reconciliation (do NOT silently merge the two `χ_Q`s):** the moving-throat Gate 4 (`pathA_33`) independently **derived
+> `χ_Q = 1`** in the clean outgoing-DtN Hankel context (incoming = −1), whereas `pathA_22b` Gate 3 **computed `χ_Q ≈ 0.712`**
+> numerically in the older minimal-combination context. These are different definitions/computations bearing the same name, not a
+> contradiction to paper over — reconciling them is a tracked documentation item (alongside the Gate-1–3 dimensional-check retrofit).
 
-Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a fundamental gauge field
-on a flat metric, *decoupled* from the medium; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). Re-founded EM **medium-native**:
-- A single **scalar** superfluid **cannot carry transverse light** (scalar→spin-0; fluid→no shear). Accepted.
-- Hypothesis (falsifiable): substructure → elasticity on surfaces; **our 3D space = an elastic brane**; **LIGHT = the brane's
-  in-plane SHEAR waves**, shear **on the brane not the bulk** → bulk stays a pure fluid → magnetism (Magnus) preserved. Template:
-  **MacCullagh rotational elasticity** (Cosserat/spinning-substructure mechanism). Three-sector: gravity=bulk flow,
-  magnetism=bulk swirl, light=brane shear.
+## Earlier track — EM re-founding → "why the brane exists" (history; routes CLOSED / PAUSED, 2026-06-23→24)
 
-**Directive `pathA_23` v5 — THREE-WAY SOUND** (Codex design-review → GLM tertiary → Codex confirm). **NOW EXECUTING** stage-by-stage,
-each tri-reviewed (re-run + fidelity + adversarial) before its gate:
-- **Stage 0 ✅** — `NEW_PARENT_ACTION`; constitutive form **POSTULATED** (⇒ conditional-verdict rule active); dual-engine 25/25.
-- **Stage 1 ✅** — `LEAK_CONDITIONS_DEFERRED` (after a rework that fixed a tautological first attempt). **KEY FINDING:** the brane↔bulk
-  interface traction `T_na = T_wa + (T_ww δ−T_ab)∂u_w` is **generically transverse**; no-leak needs `T_wa=0` + isotropic `T_ab` at
-  the brane, which are **NOT generic near a draining defect** → **the leak is EXPECTED; survival rides on the Stage-3 throat solve**
-  (small magnitude OR non-fine-tuned projection cancellation). **Do not bank on no-leak.** (`decisions/15` §7.1.)
-- **Stage 2 ✅ — THE CRUX** — `FAIL_UNSPECIFIED_SUBSTRUCTURE` (tri-reviewed; after a rework that fixed a tautological first
-  attempt — the first try forced `μ_shear=0` by choosing a fluid EOS `W=W(J)` at the input). With the **deviatoric shear
-  invariant present** and μ_br routed through a genuine able-to-fail classifier, **the medium's record does not determine μ_br**
-  → **brane-shear EM is NOT derivable from the current single-medium spec.** Verified **trilemma:** μ_br=0→no light; μ_br>0
-  (Cauchy)→light + a stray longitudinal "second photon" (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, Stage 4); MacCullagh curl-only (only
-  clean-transverse form)→reverse-engineered gyrostats + C5. ⇒ clean light needs an **extra postulated ingredient**. So `λγ` is
-  **not derivable medium-natively** — it stays a genuine free input. (`decisions/15` §15.) → **USER chose Path 1: postulate MacCullagh, CONDITIONAL.**
-- **Stage 3 ✅** — `LEAK_BOUNDED_CONDITIONAL` (tri-reviewed; adversarial flagged too soft). No-leak holds only under an unmotivated
-  `ε_leak≪1`/impedance price (else concept-fatal `FAIL_LEAK_BREAKS_MAGNUS`); postulated stress needs a postulated gyrostatic spin reservoir.
-- **Stage 3b ✅ (verification)** — `OVER_COUNT_CONFIRMED_CURVATURE_LOCALIZED`: given the (separate-sector) action, `σ^R` is brane-internal
-  not a bulk source; flat density-preserving light **free-slips** (inviscid bulk → free slip); leak is **curvature-localized** (∝|K|L_mix,
-  far-field-vanishing). Retires the "intrinsic-to-light fatal leak" reading. CAVEATS (adversarial, fair): model-contingent (brane⊥bulk
-  separation — single-medium vs membrane); defect/throat leak **relocated not retired** (throat solve still needed). (`decisions/15` §16.)
+> **This was the active frontier in 2026-06-23→24; it has since handed off to the moving-throat PDE push (⭐⭐ LATEST, above).** It is
+> recorded here as **history** — its falsification results are first-class and load-bearing for the current picture. `decisions/13` §0
+> top block carries the same "this is the history that led here" framing. Conceptual home: `docs/conceptual_foundation.md` (v3) +
+> `docs/medium_requirements_and_prior_art.md`. Live EM-track ledger: `software/stage1_solver/reports/pathA_25_STATUS.md`.
 
-**Full physical picture (MacCullagh §11, λγ §13, costs §14, Stage-1 leak §7.1, Stage-2 crux §15, Stage-3/3b §16, brane-existence §17, defect=puncture §18) = `decisions/15`.**
+**Why it started.** Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a
+fundamental gauge field on a flat metric, *decoupled*; `reports/pathA_cgamma_of_rho_derivation.md`, Type-4). The re-founding
+hypothesis: **our 3D space = an elastic brane; LIGHT = the brane's in-plane SHEAR (MacCullagh rotational elasticity), on the brane
+not the bulk** → bulk stays a pure fluid → magnetism preserved.
 
-## Next step — PIVOT to the GNLS polar-smectic superfluid + consistency-gate program (resume here after `/compact`)
+**`pathA_23` (EM medium-native, Stages 0–3b) — DONE, CONDITIONAL.** Stage-2 **CRUX = `FAIL_UNSPECIFIED_SUBSTRUCTURE`**: the medium's
+record does not determine the brane shear modulus `μ_br` (verified trilemma — `μ_br=0`→no light; Cauchy→stray longitudinal "second
+photon"; MacCullagh curl-only→needs postulated gyrostats), so **brane-shear EM is not derivable medium-natively and `λγ` stays a free
+input.** **User chose Path 1: postulate MacCullagh, CONDITIONAL.** Leak findings: the brane↔bulk interface traction is *generically
+transverse* near a draining defect (Stage 1), bounded only under an unmotivated `ε_leak≪1` price (Stage 3), but flat light *free-slips*
+and the leak is **curvature-localized / far-field-vanishing** (Stage 3b) — throat/defect leak relocated, not retired. Full picture =
+`decisions/15` (§11 MacCullagh, §13 λγ, §14 costs, §15 crux, §16 leak, §17–18 brane/defect).
 
-**Read first:** `docs/conceptual_foundation.md` (v3 — §0.6 analog reframe, §2 v3 brane update, §8 new plan) + the full writeup in
-`docs/medium_requirements_and_prior_art.md` (requirements list A/B/C, prior-art survey, candidate structure, consistency gates).
+**`pathA_24` (little-arrows domain-wall brane) — ❌ FALSIFIED.** `T1_FAIL_NO_STABLE_WALL` (`2fa91886`, tri-reviewed GENUINE): a static
+polar-vector wall on a **connected `S³` vacuum manifold (π₀=0)** spreads to infinite width and unwinds with zero barrier — no stable
+wall. The three-way no-win (emergent-`w` / stable-wall / light-capable-core) demonstrated; independently corroborated by a 5-agent
+prior-art survey (Davies–George–Volkas; ³He).
 
-**What happened (2026-06-23):**
-- **T0 ✅ (`f0c2745f`)** froze the GNLS + polar-OP action (`reports/pathA_24_T0_freeze.md`, hash `8fa41ac51e88`).
-- **T1 ❌ FALSIFIED (`2fa91886`) — `T1_FAIL_NO_STABLE_WALL`, tri-reviewed GENUINE** (arbiter re-run both engines identical;
-  `FIDELITY_CLEAN`; adversarial `T1_FAIL_GENUINE`). A *static* polar-vector domain wall has a **connected `S³` vacuum manifold
-  (π₀=0)** → it spreads to infinite width (`σ_L→0`) and unwinds with zero barrier: no stable wall, no flat core, no confinement.
-  The three-way no-win (emergent-`w` / stable-wall / light-capable-core) is now **demonstrated**.
-- **Prior-art survey (5 agents)** + two user reframes → the pivot. Survey verdicts: kinematics-without-dynamics is a **universal
-  wall** (analog gravity + Volovik ³He both stall there — same as our `g_G`-calibrated finding); the emergent-axis obstruction is
-  **structural** (Davies–George–Volkas + ³He independently confirm T1); the **smectic mechanism** is the escape; light has two
-  rival routes (continuum MacCullagh — ours, must beat a negative-energy instability — vs Wen lattice string-nets); charge-as-
-  extended-puncture gets independent corroboration (Wen string-ends).
+**`pathA_25` (GNLS polar-smectic candidate) — ❌ DENSITY ROUTE CLOSED.** G0 froze the structure (`SECOND_MEDIUM_DRIFT_AT_FREEZE`, 5
+calibration inputs). Then **B4 = `FAIL_NOT_CODIM1`** (the smectic onset is a rank-2 triad, not a codim-1 lamella — the GNLS cubic
+`U'''=15Kρ0²>0` lowers the triad) **and R/C = `RC_DENSITY_SMECTIC_LIGHT_NOGO`** (the only driver that opens a genuine codim-1 density
+window, `Cpin`, pins `P` out-of-plane → `P_∥=0` → starves in-plane light). Both tri-reviewed, dual-engine, earned. **Conclusion: a
+density modulation can form a brane only by killing light → the brane must be a *light-confining shear surface*, not a density
+layering.** (Ledger: `pathA_25_STATUS.md`.)
 
-**The new candidate + plan (the GNLS polar-smectic superfluid):** KEEP the GNLS (gravity/magnetism/sound/`c_s`); ADD the polar
-orientation field (light + charge) + a **non-local/roton layering driver** that gives a **smectic** (1D density-modulated) brane as
-the spontaneous **ground state** (fixes T1's no-stable-wall + emergent-axis). **Density now modulates** (honest change). Test by
-**hunting no-gos among the consistency gates** (analog, not derivation): **Gate L** (light on the layer — bounded-below MacCullagh,
-no-longitudinal, leak-free — THE CRUX), Gate S (magnetism), Gate B (brane↔gravity compat), Gate Q (two charge signs), Gate K
-(cone-lock `c_γ≈c_s`, likely a calibration gap), Gate T (throat/mass). **Inherited walls (concede):** dynamics/`G`/`α`
-(calibrate-predict), emergent-axis/why-3D, Lorentz/preferred-frame (toy-analog scope).
+**Pivot → throat-soliton / 4D-light + drain sector (PAUSED 2026-06-24).** The brane = a light-confining shear surface; light is a
+**4D shear field** (3+1D face on the brane via a gapped `w`-mode → 2 polarizations; 4D at throats; trapped = mass = geon). **pathA_26
+Derrick + open-stability = `THROAT_DRAIN_DESTABILIZED`, interpreted NOT-a-kill** (a conservative throat-soliton exists generically;
+instability only at unphysical large drain = black-hole regime). The remaining EM-track step — the **drain-sector derivation** — is
+**PAUSED** (memories `project-light-is-4d-throat-hypothesis`, `project-brane-existence-defect-structure`); the program's live effort
+moved to the gravity-sector moving-throat PDE (⭐⭐ LATEST). Deferred/parked: `pathA_23` Stages 4–6; why fluid flows *into* the mouth
+but leaks *back* into the brane (`decisions/15` §9).
 
-**LIVE STATE (2026-06-23):** the directive is BUILT — `pathA_25` (v4, review-gauntlet SOUND: Codex design-review → GLM tertiary → 2
-Codex confirm-passes), committed `6cdaa821`. **G0 (structure freeze) DONE** = `SECOND_MEDIUM_DRIFT_AT_FREEZE` (5 independent inputs:
-`c_L1,c_L2` smectic driver + `μ_br,J_Pu,κ_Pu` light sector; tri-reviewed genuine; committed `77fd0e72`). Per §14 the drift is a
-record-and-proceed finding (the 5 inputs = the calibration budget). **NEXT = Gate B4** (does the baseline Family-L driver make a stable
-codim-1 emergent-axis smectic? — the T1-replacement): draft its execution prompt → design-review with **BOTH Codex (xhigh) AND GLM**
-(crux gate, §18) → execute → tri-review → user gate. **Live ledger + resume block: `software/stage1_solver/reports/pathA_25_STATUS.md`.**
-Methodology: "specify the FULL structure (postulated) + test CONSISTENCY / hunt a no-go," not "freeze minimal + test derivation."
-
-**Methodology (locked):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** — orchestrator arbiter
-re-run + transliteration-fidelity audit + adversarial review on clean agents; user gate per gate.
-
-**Downstream / outstanding:** pathA_23 Stages 4–6 — likely re-framed by the smectic-brane result. (Deferred, parked: why fluid
-flows *into* the mouth but leaks *back* into the brane — `decisions/15` §9.)
+**Methodology (locked, applies to all tracks):** Codex codes + runs + dual-engine; **AI prose never establishes a math fact** —
+orchestrator arbiter re-run + transliteration-fidelity audit + adversarial review on clean agents; user gate per gate.
 
 ## Map — what you want → which doc holds it
 
 | You want… | Look here |
 |---|---|
 | **The conceptual vision — what the medium / brane / 4 sectors / defect physically ARE (read first)** | `docs/conceptual_foundation.md` |
-| **Requirements list + prior-art survey + the GNLS polar-smectic candidate + consistency gates (the live frontier)** | `docs/medium_requirements_and_prior_art.md` |
-| **The EM re-founding physical picture + MacCullagh template + Stage-1 leak finding (§7.1)** | `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md` |
-| The EM re-founding execution plan (directive v5, EXECUTING) | `software/stage1_solver/directives/pathA_23_em_medium_native.md` |
-| Stage 0 result (action + contracts) / Stage 1 result (leak audit) | `software/stage1_solver/reports/pathA_23_stage0_action_and_contracts.md` / `..._stage1_kinematic_leak_audit.md` |
+| **⭐⭐ The master development plan — ALL sectors → "simulation-ready" (the full scope; read for "what's left")** | `docs/development_plan.md` |
+| **⭐ The gravity arm — moving-throat PDE ~6-gate master checklist** | `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md` |
+| **⭐ Moving-throat ladder gate artifacts (Gates 1–4)** | `software/stage1_solver/{directives,tools,reports}/pathA_30..33_*` |
+| **⭐ Gate-5 cross-ℓ framing (ℓ=0/1 return ↔ ℓ=2 quadrupole)** | `research/pde_ledger/notes/stages/moving_throat_pde_open_item_reconciliation.md` |
 | Full current state + resume-after-`/compact` pointer | `software/stage1_solver/decisions/13_emergent_constants_derivation.md` §0 |
 | Every value classified DERIVED / INPUT / gap / benchmark | `software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md` (Gate-4 closeout = §6) |
 | The defect-regime + held-out-surplus roadmap | `docs/defect_interaction_map.md` (CURRENT STATUS banner at top) |
-| Per-gate derivation detail (Gates 0–4) | `software/stage1_solver/reports/pathA_22b_minimal_combination_xi.md` |
-| The directive that ran Gate 4 | `software/stage1_solver/directives/pathA_22b_gate4_ratio_or_blocked.md` |
+| EM-track history — requirements list + prior-art survey + GNLS polar-smectic candidate (routes closed) | `docs/medium_requirements_and_prior_art.md`; ledger `software/stage1_solver/reports/pathA_25_STATUS.md` |
+| EM-track history — physical picture + MacCullagh template + leak findings | `software/stage1_solver/decisions/15_em_medium_native_physical_picture.md`; directive `directives/pathA_23_em_medium_native.md` |
+| Per-gate derivation detail (`pathA_22b` *verdict-count* Gates 0–4 — NOT the moving-throat ladder) | `software/stage1_solver/reports/pathA_22b_minimal_combination_xi.md` |
+| The directive that ran `pathA_22b` Gate 4 (the `g_mhat²/g_G` ratio = `GENUINE_BLOCKED`) | `software/stage1_solver/directives/pathA_22b_gate4_ratio_or_blocked.md` |
 | The calibrate-predict methodology | `software/stage1_solver/decisions/09_calibrate_predict_methodology.md`; `docs/pathA_preregistration.md` |
 
-## The verdict equation (reference)
+## The `pathA_22b` verdict equation (reference — the *earlier* verdict-count framing, not the moving-throat ladder)
 
 ```
 P0 · χ_Q · g_mhat² · λγ⁵ / g_G  =  54/5
  ✓     ✓     gap1     gap2  cal-on-G        (✓ = derived; gap1 g_mhat absorbs 54/5; gap2 λγ ← EM anchor)
 G = (a·c_s²/m_GNLS)·g_G ,  m̂0 = (c_s/(a²·√m_GNLS))·g_mhat ,  c = λγ·c_s
 ```
+
+> Here `χ_Q ≈ 0.712` (the `pathA_22b` Gate-3 number). The moving-throat ladder's Gate 4 (`pathA_33`) later derived **`χ_Q = 1`** in
+> the outgoing-DtN Hankel context — a different computation of the same-named factor (see the open-reconciliation note above), and the
+> moving-throat ladder reaches the same `54/5` via the earned/calibrated split `54/5 = 2·27/5`, not via this verdict-count product.

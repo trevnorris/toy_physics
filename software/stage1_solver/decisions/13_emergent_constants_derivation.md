@@ -56,8 +56,12 @@ verification agents → user methodology call (derive the emergent constants bef
 >   audit + flag probes + `.wl` headline-only) → remediated → re-verified EARNED (arbiter + fidelity CLEAN + adversarial re-ablation).
 >   **⭐ NEXT (chosen 2026-06-26) = the BRANE sector** (the gravity arm is at its sim-ready boundary; Gate 6's 4D field solve is
 >   sim-deferred). Brane = the crux, gates EM/light, algebra-tractable / NOT sim-gated (the gauntlet that gave pathA_25's no-gos).
->   First step: specify the light-confining shear-surface candidate ([[project-light-is-4d-throat-hypothesis]]) + run Gate L (the
->   crux). **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   First step (DONE): the `pathA_35` directive is BUILT + gauntleted (Codex×2 + GLM; the §2.6 four-way couple-stress no-go folded), and
+>   **G0 freeze is DONE + VERIFIED 2026-06-26** = `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` (flat-brane DOF=8
+>   genuinely-computed; comprehensive dim-firewall clean; tri-reviewed — a hardcoded DOF-count hole was remediated + re-verified on a FRESH
+>   clean agent per `docs/development_pipeline.md`). **NEXT = Gate L (the crux:** a-i…a-iii, b, c, d; the frozen massless-`Pⁱ` baseline is
+>   exposed to the §2.6 four-way no-go, `slaved-rigid` = the escape). Artifacts: `directives/pathA_35_shear_surface_brane_gates.md`,
+>   `reports/pathA_35_G0_*`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
 >   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
 >   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
 >   able-to-fail + dual-engine; checks out).

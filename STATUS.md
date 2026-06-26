@@ -97,9 +97,11 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   `ω¹/ω³/ω⁵`, residual forms vs pathA_29, free-carrier-independent dim check) all genuine. Artifacts: `pathA_34_*`.
 - **⭐ NEXT (chosen 2026-06-26) = the BRANE sector** — the gravity arm is at its sim-ready boundary (Gates 1–5 done; Gate 6 = the
   WALL, its 4D field solve sim-deferred), so the program moves to the brane: it's the **crux**, it **gates EM/light** (light rides
-  the brane), and it's **algebra-tractable / NOT sim-gated** (the same gauntlet produced pathA_25's real no-gos). **First step:**
-  specify the light-confining shear-surface candidate (post-density-route; `project-light-is-4d-throat-hypothesis`), then run **Gate L**
-  (bounded-below + 2-transverse/no-longitudinal + leak-free MacCullagh light — the crux / most-likely no-go), then S/B/Q/T. Read
+  the brane), and it's **algebra-tractable / NOT sim-gated** (the same gauntlet produced pathA_25's real no-gos). **Progress (2026-06-26):** `pathA_35` directive BUILT + gauntleted (Codex×2 + GLM; the §2.6 four-way couple-stress no-go folded);
+  **G0 freeze DONE + VERIFIED** = `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` (flat-brane DOF=8
+  genuinely-computed, dim-firewall clean, tri-reviewed + a DOF-count hole remediated & re-verified on a fresh clean agent). **NEXT = Gate
+  L** (traction-not-torque, 2-transverse/no-longitudinal, C5, bounded-below + gyrostat closure, leak-free, `u_w` gap — the massless-`Pⁱ`
+  baseline is exposed to the four-way no-go, `slaved-rigid` is the escape), then S/B/Q/T. Read
   first: `docs/conceptual_foundation.md` §4/§5/§6.1 + `docs/medium_requirements_and_prior_art.md` + `reports/pathA_25_STATUS.md`.
 - **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
   self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve
@@ -210,6 +212,7 @@ orchestrator arbiter re-run + transliteration-fidelity audit + adversarial revie
 |---|---|
 | **The conceptual vision — what the medium / brane / 4 sectors / defect physically ARE (read first)** | `docs/conceptual_foundation.md` |
 | **⭐⭐ The master development plan — ALL sectors → "simulation-ready" (the full scope; read for "what's left")** | `docs/development_plan.md` |
+| **⭐ How we work — the dev pipeline / review gauntlet (read before running ANY gate)** | `docs/development_pipeline.md` |
 | **⭐ The gravity arm — moving-throat PDE ~6-gate master checklist** | `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md` |
 | **⭐ Moving-throat ladder gate artifacts (Gates 1–4)** | `software/stage1_solver/{directives,tools,reports}/pathA_30..33_*` |
 | **⭐ Gate-5 cross-ℓ framing (ℓ=0/1 return ↔ ℓ=2 quadrupole)** | `research/pde_ledger/notes/stages/moving_throat_pde_open_item_reconciliation.md` |

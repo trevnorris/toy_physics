@@ -1,0 +1,191 @@
+schema: pathA_35_G0_results/v1
+stage: G0_structure_freeze
+scope: "freeze only; no Gate L verdict computed"
+date: "2026-06-26"
+
+verdicts:
+  - "T0_SHEAR_FROZEN(d9520d3819c3)"
+  - "SECOND_MEDIUM_DRIFT_AT_FREEZE(11)"
+
+freeze_hash:
+  algorithm: SHA-256
+  full: "d9520d3819c3f718290f9d0be57138c07d5bf02d2237106478e17b6a1e389ac3"
+  short: "d9520d3819c3"
+  extraction_command: "awk '/^```freeze-action$/ {on=1; next} /^```$/ && on {exit} on {print}' software/stage1_solver/reports/pathA_35_G0_freeze.md | sha256sum"
+  byte_range:
+    convention: "content bytes inside freeze-action fence, excluding fence lines"
+    zero_based_half_open: [8110, 13310]
+    one_based_inclusive: [8111, 13310]
+    length_bytes: 5200
+  t0_reference:
+    short_hash: "8fa41ac51e88"
+    full_hash: "8fa41ac51e88a1464a4a5b22c6fe64fc218cf36ba2e3583d26b97c994e5da064"
+    byte_identical_block_embedded: true
+
+frozen_baseline:
+  confinement_profile:
+    family: "g_ell(w)=exp(-(w/ell_g)^2)/(sqrt(pi) ell_g)"
+    finite_parameter_count: 1
+    free_form_profile: false
+  p_mass_gap_status:
+    active_baseline: massless
+    named_alternates:
+      - gapped
+      - slaved-rigid
+    slaved_rigid_definition: "P_parallel = w_hat x (nabla_parallel x u)"
+    gate_l_exposure_recorded_only:
+      - FAIL_HIDDEN_PROPAGATING_MODE
+      - FAIL_GYROSTAT_NO_CLOSURE
+      - FAIL_NOT_BOUNDED_BELOW
+      - FAIL_COUPLE_STRESS_NOGO
+  p_u_operator:
+    active: "L_Pu=-lambda_Pu varpi_a Omega_u^a=-lambda_Pu w_hat . (P_parallel x (nabla_parallel x u))"
+    varpi: "varpi_a=(w_hat x P_parallel)_a"
+    direct_p_dot_curlu: excluded_parity_odd
+    requires_conceded_axis: true
+    readmits_t0_excluded_epsilon_chiral_class: true
+  phi_analog:
+    active_baseline: absent
+    phi_equals_u_w: false
+    raw_divergence_projector: false
+    consistency_record: "inactive phi=u_w alternate would require a massless scalar potential and tension with the frozen bare u_w gap"
+  u_w_gap:
+    term: "L_uw=(1/2) rho_br (partial_t u_w)^2 - (1/2) rho_br Omega_w^2 u_w^2"
+    scale: Omega_w
+
+parameter_ledger:
+  field_dof_subcount_new_at_G0: 4
+  field_dof_items:
+    - {name: "u^a", tag: postulated-ingredient, count: 3}
+    - {name: "u_w", tag: postulated-ingredient, count: 1}
+    - {name: "P^i", tag: kept_T0_reused, count: 0}
+    - {name: "independent_micro_rotation", tag: postulated-ingredient, count: 0, note: "absent baseline"}
+    - {name: "phi", tag: postulated-ingredient, count: 0, note: "absent baseline"}
+  constant_subcount: 4
+  constants:
+    - {name: rho_br, dimension: "M L^-3", tag: postulated-ingredient, count: 1}
+    - {name: mu_R, dimension: "M L^-1 T^-2", tag: postulated-ingredient, count: 1}
+    - {name: lambda_Pu, dimension: "M L^-1 T^-2", tag: postulated-ingredient, count: 1}
+    - {name: Omega_w, dimension: "T^-1", tag: postulated-ingredient, count: 1}
+    - {name: "T0 couple-stress inertia/stiffness", tag: kept, count: 0}
+  function_subcount: 1
+  functions:
+    - {name: g_ell, tag: postulated-ingredient, count: 1}
+  structural_subcount: 6
+  structural_inputs:
+    - {name: imposed_w_axis_and_surface, tag: conceded-wall, count: 1}
+    - {name: same_medium_surface_collective_free_slip_interpretation, tag: postulated-ingredient, count: 1}
+    - {name: T0_P_reused_as_Cosserat_reservoir, tag: postulated-ingredient, count: 1}
+    - {name: massless_P_spin_wave_baseline, tag: postulated-ingredient, count: 1}
+    - {name: w_hat_dependent_parity_repaired_P_u_operator, tag: postulated-ingredient, count: 1}
+    - {name: no_phi_analog_no_longitudinal_constraint_baseline, tag: postulated-ingredient, count: 1}
+  independent_new_input_count_n: 11
+
+flat_brane_mode_content:
+  computed_from_quadratic_terms: true
+  reported_counts_wired_to_computation: true
+  total_computed_dof: 8
+  counts:
+    u_transverse: 2
+    u_longitudinal: 1
+    P_spin_wave: 3
+    P_soft_spin_radial: 1
+    u_w: 1
+    phi: 0
+  quadratic_terms_used:
+    u: "rho_br (partial_t u^a)^2 and mu_R (nabla_parallel x u)^2"
+    P: "m rho a^2 (D_t P^i)^2, m rho c_s^2 a^2 (partial_j P^i)^2, and m rho c_s^2 (P^i P^i - 1)^2"
+    u_w: "rho_br (partial_t u_w)^2 and rho_br Omega_w^2 u_w^2"
+    phi: "absent in active baseline"
+  curl_rank_for_k_nonzero: 2
+  curl_nullity_for_k_nonzero: 1
+  rank_bookkeeping:
+    u_kinetic_rank: 3
+    u_curl_rank: 2
+    u_curl_nullity_within_active_kinetic_space: 1
+    P_tangent_kinetic_rank: 3
+    P_tangent_Frank_rank: 3
+    P_radial_kinetic_rank: 1
+    P_radial_soft_spin_hessian_rank: 1
+    u_w_kinetic_rank: 1
+    u_w_gap_rank: 1
+    phi_kinetic_rank: 0
+  dof_count_ablations:
+    - name: drop_u_w_gap_term
+      mutation: "set the frozen u_w gap matrix Omega_w^2 u_w^2 to rank 0"
+      baseline_total: 8
+      mutated_total: 7
+      mutated_counts:
+        u_transverse: 2
+        u_longitudinal: 1
+        P_spin_wave: 3
+        P_soft_spin_radial: 1
+        u_w: 0
+        phi: 0
+      status: FIRED
+    - name: drop_P_soft_spin_radial_term
+      mutation: "set the T0 (P^i P^i - 1)^2 radial Hessian to rank 0"
+      baseline_total: 8
+      mutated_total: 7
+      mutated_counts:
+        u_transverse: 2
+        u_longitudinal: 1
+        P_spin_wave: 3
+        P_soft_spin_radial: 0
+        u_w: 1
+        phi: 0
+      status: FIRED
+    - name: zero_u_longitudinal_component
+      mutation: "remove the k-parallel u component from the kinetic field space"
+      baseline_total: 8
+      mutated_total: 7
+      mutated_counts:
+        u_transverse: 2
+        u_longitudinal: 0
+        P_spin_wave: 3
+        P_soft_spin_radial: 1
+        u_w: 1
+        phi: 0
+      status: FIRED
+  bulk_status: kept_GNLS_bulk_shear_free
+  guard: "counts only; no propagating/gauge/bounded/leak-free/coupled-gap claim"
+
+dimensional_firewall:
+  pass: true
+  engine_agreement: ENGINE_AGREE
+  sympy_output: "software/stage1_solver/_scratch/pathA_35_G0_sympy.json"
+  mathematica_output: "software/stage1_solver/_scratch/pathA_35_G0_mathematica.json"
+  engine_agreement_output: "software/stage1_solver/_scratch/pathA_35_G0_engine_agreement.json"
+  run_commands:
+    - "timeout 600 python3 software/stage1_solver/tools/pathA_35_G0_sympy.py"
+    - "timeout 600 math -script software/stage1_solver/tools/pathA_35_G0.wl"
+    - "timeout 600 python3 software/stage1_solver/tools/pathA_35_G0_sympy.py --compare"
+  checked_expression_count: 52
+  checked_categories:
+    - kept_gnls
+    - kept_T0
+    - confinement
+    - brane_surface
+    - brane_bulk_representation
+    - traction
+    - action_measure
+    - linearization
+  ablations:
+    - name: drop_m_from_T_wa
+      expression: "rho v_w v_a"
+      expected: "M L^-2 T^-2"
+      actual: "L^-2 T^-2"
+      status: FIRED
+    - name: MacCullagh_without_curl
+      expression: "mu_R u^2"
+      expected: "M L^-1 T^-2"
+      actual: "M L T^-2"
+      status: FIRED
+  dimensional_failures: []
+  engine_disagree: false
+
+artifacts:
+  report: "software/stage1_solver/reports/pathA_35_G0_freeze.md"
+  results_yaml: "software/stage1_solver/reports/pathA_35_G0_results.yaml"
+  sympy_checker: "software/stage1_solver/tools/pathA_35_G0_sympy.py"
+  mathematica_checker: "software/stage1_solver/tools/pathA_35_G0.wl"

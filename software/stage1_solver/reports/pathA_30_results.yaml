@@ -1,0 +1,164 @@
+verdict: DN_UNITTEST_BC_DEPENDENT
+reduction_certificate:
+  background:
+    stationary_reference: straight finite throat, eta=0, s in [0,L0], R0(L0)=0
+    psi0: sqrt(rho_star)*exp(-I*mu*t/hbar) with constant rho_star on the centerline
+    rho0(s): rho_star
+    A_M0: 0 for this scalar unit test
+    frozen_wall: R=R0, eta=0; matter perturbation remains dynamic as exp(-I*omega*t)
+  projection:
+    measure: sqrt(gamma0)(s)=A_perp0 on the straight reference throat
+    measure_derivative: '0'
+    first_derivative_term: absent because d_s log(sqrt(gamma0))=0
+    domain: 0 <= s <= L0; cap is the R0(L0)=0 pinch-off
+  rho0_fate:
+    rho0_gradient: '0'
+    condition: uniform straight reference, O(rho0'/rho0)=0
+    retained_in_Ls: false
+  cs_of_s_fate:
+    cs_squared_from_EOS: 5*K*rho_star**4/m
+    cs_gradient: '0'
+    condition: c_s is the bulk sound speed sqrt(5*K*rho_star^4/m), not wall/healing
+      renormalized
+    retained_in_Ls: constant c_s only
+  Vconf0_fate:
+    V_conf(Sigma0): absorbed into the stationary reference chemical potential / zero
+      off the wall
+    delta_V_conf: 0 in the frozen eta=0 unit test
+    ell_c_role: confinement length in V_wall(Sigma/ell_c); distinct from healing length
+      xi
+    retained_in_Ls: false
+  Q_fate:
+    background_grad_Q: '0'
+    background_condition: uniform rho0 makes grad Q(rho0)=0 at O(rho0'/rho0)
+    delta_Q_Bogoliubov_term: hbar**2*omega**4/(4*cS**4*m**2)
+    full_BdG_dispersion: omega^2 = c_s^2*k^2 + hbar^2*k^4/(4*m^2)
+    ratio_to_phonon_term: hbar**2*omega**2/(4*cS**4*m**2)
+    phonon_limit_condition: k*xi << 1 with xi=hbar/(m*c_s); equivalently omega <<
+      m*c_s^2/hbar
+    xi_distinct_from_ell_c: hbar/(cS*m) is the healing length, not ell_c=ell_c
+    retained_in_Ls: deferred as a higher-phase term only under k*xi << 1
+  deferred_terms:
+    phase2_variable_coefficients: rho0(s), c_s(s), V_conf, and background-Q corrections
+      if the straight uniform reference is relaxed
+    phonon_limit_delta_Q: Bogoliubov k^4 correction parameterized by (k*xi)^2/4
+  unsuppressed_operator_intrusion: false
+reduced_operator_L_s: (cS**2*Derivative(psi_hat(s), (s, 2)) + omega**2*psi_hat(s))/cS**2
+operator_is_helmholtz: true
+speed_is_cs: true
+domain_is_L0: true
+bc_type: D-at-mouth / N-at-cap
+bc_provenance: imposed
+bc_derivation_emitted: false
+dtn: -omega*tan(L0*omega/cS)/cS
+pole_ladder: omega_n = pi*cS*(n + 1/2)/L0, n=0,1,2,...
+halfshift: true
+static_limit_series: -L0*omega**2/cS**2 - L0**3*omega**4/(3*cS**4) + O(omega**6)
+round_trip:
+  r_D: '-1'
+  r_L: r_N=+1
+  R_rt_expression: -exp(2*I*L0*omega/cS)
+  R_rt_on_pole_ladder: '1'
+  R_rt: '1'
+  phi0: 0 mod 2*pi
+  computed_after_ladder_substitution: true
+counterfactual_guard:
+  robin_determinant_emitted: true
+  recovers_DN_at_alpha0: true
+  recovers_DD_at_alpha_inf: true
+  halfshift_destroyed_for_DD: true
+  numeric_alpha_distinct: true
+  dtn_mismatch: true
+engine_agreement: true
+engine_agreement_details:
+  status: pass
+  digest_matches: true
+  mathematica_yaml: software/stage1_solver/_scratch/pathA_30_mathematica_results.yaml
+  details:
+    dtn: true
+    pole_denominator: true
+    robin_dtn: true
+    robin_denominator: true
+    static_series: true
+    dd_limit: true
+    alpha0_limit: true
+  mathematica_route: transfer_matrix_resolvent
+dim_check: pass
+dimensional_check:
+  status: pass
+  checks:
+    omega_L0_over_cS_dimensionless: true
+    Z00_has_inverse_length: true
+    cs_squared_from_EOS: true
+    pole_ladder_has_frequency_dimension: true
+  dimension_order: '{M,L,T}'
+solve_artifacts:
+  ode: psi''(s) + (omega/cS)^2 psi(s) = 0
+  dsolve_general_solution: C1*sin(omega*s/cS) + C2*cos(omega*s/cS)
+  DN_coefficient_matrix:
+  - - '0'
+    - '1'
+  - - omega*cos(L0*omega/cS)/cS
+    - -omega*sin(L0*omega/cS)/cS
+  DN_rhs:
+  - psiM
+  - '0'
+  DN_determinant: -omega*cos(L0*omega/cS)/cS
+  DN_coefficients:
+    C1: psiM*tan(L0*omega/cS)
+    C2: psiM
+  DN_bc_applied_solution: psiM*(sin(omega*s/cS)*tan(L0*omega/cS) + cos(omega*s/cS))
+  dtn_before_final_simplification: -omega*tan(L0*omega/cS)/cS
+  dtn_simplified: -omega*tan(L0*omega/cS)/cS
+  transcendental_pole_equation: Eq(cos(L0*omega/cS), 0)
+  denominator_zeros_solved_in_x: Union(ImageSet(Lambda(_n, 2*_n*pi + pi/2), Integers),
+    ImageSet(Lambda(_n, 2*_n*pi + 3*pi/2), Integers))
+  static_small_omega_series: -L0*omega**2/cS**2 - L0**3*omega**4/(3*cS**4) + O(omega**6)
+  robin_coefficient_matrix:
+  - - '0'
+    - '1'
+  - - -(alpha*cS*sin(L0*omega/cS) - omega*cos(L0*omega/cS))/cS
+    - -(alpha*cS*cos(L0*omega/cS) + omega*sin(L0*omega/cS))/cS
+  robin_determinant: (alpha*cS*sin(L0*omega/cS) - omega*cos(L0*omega/cS))/cS
+  robin_denominator_core: -(alpha*cS*sin(L0*omega/cS) - omega*cos(L0*omega/cS))/cS
+  robin_dtn: omega*(alpha*cS*cos(L0*omega/cS) + omega*sin(L0*omega/cS))/(cS*(alpha*cS*sin(L0*omega/cS)
+    - omega*cos(L0*omega/cS)))
+  robin_numeric_alpha: 2/L0
+  robin_numeric_denominator: (L0*omega*cos(L0*omega/cS) - 2*cS*sin(L0*omega/cS))/(L0*cS)
+  robin_numeric_dtn: -omega*(L0*omega*sin(L0*omega/cS) + 2*cS*cos(L0*omega/cS))/(cS*(L0*omega*cos(L0*omega/cS)
+    - 2*cS*sin(L0*omega/cS)))
+counterfactual_artifacts:
+  alpha_to_0_DN_dtn: -omega*tan(L0*omega/cS)/cS
+  alpha_to_infinity_DD_dtn: omega/(cS*tan(L0*omega/cS))
+  DD_zero_mode_removable: true
+  numeric_alpha_distinct_samples:
+    half_ladder_denominator_values:
+    - -2/L0
+    - 2/L0
+    - -2/L0
+    - 2/L0
+    integer_ladder_denominator_values:
+    - -pi/L0
+    - 2*pi/L0
+    - -3*pi/L0
+    - 4*pi/L0
+bc_derivation:
+  bc_type: D-at-mouth / N-at-cap
+  mouth_gradient_from_Vconf: not emitted from an explicit V_wall profile in this unit
+    test
+  cap_gradient_from_Vconf: not emitted from an explicit V_wall profile in this unit
+    test
+  regularity_at_pinchoff: regular cap closure R0(L0)=0 motivates Neumann, but a full
+    asymptotic derivation is not emitted
+  mouth_condition: clamp to quasi-static bulk reservoir is imposed for this frozen-wall
+    benchmark, not derived as radiation
+  classification_rule: bc_derivation_emitted=false forces DN_UNITTEST_BC_DEPENDENT
+    unless an explicit mouth/cap derivation is later supplied
+generated_files:
+  sympy_engine: software/stage1_solver/tools/pathA_30_dn_unit_test_sympy.py
+  mathematica_engine: software/stage1_solver/tools/pathA_30_dn_unit_test.wl
+  report: software/stage1_solver/reports/pathA_30_dn_unit_test.md
+  results_yaml: software/stage1_solver/reports/pathA_30_results.yaml
+  feed_note: research/pde_ledger/notes/stages/moving_throat_pde_pathA_30_dn_unit_test_result.md
+  sympy_scratch_yaml: software/stage1_solver/_scratch/pathA_30_sympy_results.yaml
+  mathematica_scratch_yaml: software/stage1_solver/_scratch/pathA_30_mathematica_results.yaml

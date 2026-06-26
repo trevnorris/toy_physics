@@ -36,24 +36,37 @@ tied to the gravity strength — **the falsifiable departure from GR** (GR forbi
 the drain breaks brane mass conservation). NOGO is genuinely reachable via a derived delocalizing warp (`p=3`). **Sharpens but does
 NOT close `pde_ledger` open-item #9** (records the residual-radiation prediction); the **gravity-range (1/r²) item passes** for the
 localizing flat-slab family. Artifacts: `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md (v3), tools/pathA_29_*,
-reports/pathA_29_*}`. **⭐ NEXT = THE ACTIVE PUSH (user, 2026-06-25: "push until a wall"): complete the full nonlinear moving-throat PDE / brane↔bulk return
+reports/pathA_29_*}`. **⭐ THE ACTIVE PUSH (user, 2026-06-25: "push until a wall"): complete the full nonlinear moving-throat PDE / brane↔bulk return
 closure.** Central spec = `research/pde_ledger/` (253 stages, ALL algebra done; single OPEN item = **"actual branch realization"** — the
-solved nonlinear PDE must RETURN the grouped-`P2` / quadrupole-normalization data `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)`, instead of leaving it
-symbolic). **⚠️ Reconcile FIRST:** pathA_29's "open-item #9 / `R0=−M0`" is `stage1_solver`'s OWN numbering, **NOT** the ledger's open
-item — map the two before assuming they're the same. Dive-in plan + first sub-gate (the Phase-1 **frozen-wall D/N unit test**
-`Z₀₀(ω)=−(ω/c_s)tan(ωL/c_s)`) = memory `project-moving-throat-pde-push`; start doc =
-`research/pde_ledger/notes/stages/moving_throat_pde_handoff_full.md`. (Don't re-derive the audited PN ladder, `research/4d_*pn*`.)
-Review-pain lesson (memory `project-model-mechanics-corrections`): 4 executions; 3 rejected for assert-not-solve (hardcoded `r²` →
-spectral-lookup → hand-written `1/r`), fixed only by a mandatory **counterfactual self-test**.
+solved nonlinear PDE must RETURN the grouped-`P2` / quadrupole-normalization data `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)`). **This is a ~6-gate
+ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md`.
+
+- **Step 1 (reconcile the two open-item framings) ✅ DONE** = `moving_throat_pde_open_item_reconciliation.md`: pathA_29's "#9 /
+  `R0=−M0`" (ℓ=0/1 forbidden channels) and the ledger's "branch realization" (ℓ=2 quadrupole) are **complementary multipole sectors of
+  one return law**, not the same and not independent; a new cross-ℓ consistency gate falls out (Gate 5).
+- **Gate 1 (`pathA_30`, frozen-wall D/N unit test) ✅ DONE = `DN_UNITTEST_BC_DEPENDENT`** (tri-review CLEAN: arbiter re-run both engines
+  + fidelity + adversarial). The geometry lift's frozen reduction genuinely gives the const-coeff Helmholtz resonator (DtN
+  `−(ω/c_s)tan`, half-shifted ladder, Robin counterfactual, dual-engine agreed; Bogoliubov `k⁴` deferred under `kξ≪1`). **D/N is a
+  banked calibration input** (`bc_derivation_emitted=False`); earning it → `PASS` is an optional later upgrade. 2 non-blocking NITs
+  logged in the ladder. Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_30_*`.
+- **⭐ NEXT = Gate 2 (scalar breathing `η₀₀`):** switch on the monopole channel, verify the distributed Hellmann–Feynman force
+  reproduces the old `(a,L)` collective closure (scaffold §11.2). Then Gate 3 (grouped-`P2`/isotropy) → Gate 4 (quadrupole `54/5`,
+  calibrated form) → Gate 5 (scalar/dipole + cross-ℓ unification) → Gate 6 (full nonlinear closure = the WALL); PN match-back threaded
+  through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
+
+Process lesson banked (memory `project-model-mechanics-corrections` + `feedback-offload-review-gauntlet`): every compute gate runs the
+full Codex→GLM→Codex directive gauntlet + dual-engine + tri-review, with the **review rounds offloaded to a gauntlet-runner agent** so
+the orchestrator context survives. pathA_30 took Codex(8)→reconfirm→GLM(Bogoliubov `k⁴`+5)→Codex post-GLM(2)→close-out before a clean
+execution.
 
 **Model-mechanics reminders** (memory `project-model-mechanics-corrections`): nothing is static; **three speeds** — `c_s` = speed
 gravitational changes propagate (∝ρ²); `v_r` = field *strength*, not a speed; `c_γ` = light. Gravity = the **flow between drains**;
 changes propagate at `c_s`, and uniform motion tracks the **current** position → **no aberration**. Throat-soliton has **no sloshing**
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
-**COMMIT STATE (2026-06-25):** pathA_27/pathA_28 committed (`8cf6f1f1`). The **pathA_29 milestone** (directive v3, dual engines,
-reports) + this STATUS / `conceptual_foundation.md` / memory sync are **being committed now**. **Commit only when the user asks; stage
-explicit paths.**
+**COMMIT STATE (2026-06-25):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`) committed. The **pathA_30 Gate-1 milestone** (directive,
+dual engines, reports, the completion ladder + open-item reconciliation + pde_ledger feed note) + this STATUS / push-memory sync are
+**being committed now**. **Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

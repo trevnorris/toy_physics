@@ -389,6 +389,8 @@ engine_agreement:
     structure_K_rank: true
     structure_probe_M_posdef: true
     structure_probe_K_structure_ok: true
+    dimensional_ok: true
+    dimension_probe_verdict: true
   numeric_checks:
     beta_sweep: true
     selected_overlap: true
@@ -396,25 +398,352 @@ engine_agreement:
     wrong_const_overlap: true
   max_numeric_abs_delta: 5.684341886080801e-13
 dim_check: pass
-dimensional_check:
-  status: pass
-  dimension_order: '{M,L,T}'
-  dimensions:
-    Q=(delta_a,delta_L): (0, 1, 0)
-    muEta: (1, -1, 0)
-    Tw: (1, 1, -2)
-    K_eta: (1, -1, -2)
-    beta: (0, -1, 0)
-    source_density: (1, 0, -2)
+dimensional:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: assembled M_AB/K_AB homogeneity and K/M=T^-2
+  headline_quantities_walked:
+    M_AB:
+      aa: -2*pi*muEta*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+      aL: 2*pi*muEta*rAL*(L0*beta - tanh(L0*beta))/(beta*sinh(L0*beta)*tanh(L0*beta))
+      LL: -2*pi*muEta*rAL**2*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    K_AB:
+      aa: 4*pi*Tw*beta/tanh(L0*beta)
+      aL: -4*pi*Tw*beta*rAL/sinh(L0*beta)
+      LL: 4*pi*Tw*beta*rAL**2/tanh(L0*beta)
+  symbol_dimensions:
+    L0: L
+    beta: L^-1
+    muEta: M L^-1
+    Tw: M L T^-2
+    K_eta=Tw*beta^2: M L^-1 T^-2
+    rAL: '1'
+    alpha_a,alpha_L: '1'
+  sourcing_note: muEta, Tw, and K_eta are sourced wall-action coefficients in the
+    reduced-throat convention; K_eta is Tw*beta^2, not fitted from the matrix answer.
+  computed_dimensions:
+    M_AB_entries:
+      aa: M
+      aL: M
+      LL: M
+    K_AB_entries:
+      aa: T^-2 M
+      aL: T^-2 M
+      LL: T^-2 M
+    M_AB_shared: M
+    K_AB_shared: T^-2 M
+    K_over_M_ratio: T^-2
+  computed_dimension_vectors_LMT:
+    M_AB_entries:
+      aa:
+      - '0'
+      - '1'
+      - '0'
+      aL:
+      - '0'
+      - '1'
+      - '0'
+      LL:
+      - '0'
+      - '1'
+      - '0'
+    K_AB_entries:
+      aa:
+      - '0'
+      - '1'
+      - '-2'
+      aL:
+      - '0'
+      - '1'
+      - '-2'
+      LL:
+      - '0'
+      - '1'
+      - '-2'
+    M_AB_shared:
+    - '0'
+    - '1'
+    - '0'
+    K_AB_shared:
+    - '0'
+    - '1'
+    - '-2'
+    K_over_M_ratio:
+    - '0'
+    - '0'
+    - '-2'
+  expected_dimensions:
+    M_AB_shared: M
+    K_AB_shared: T^-2 M
+    K_over_M_ratio: T^-2
   checks:
-    M_AB_dimension_mass: true
-    kinetic_energy_dimension: true
-    K_AB_from_Tw_dimension: true
-    K_AB_from_Keta_dimension: true
-    potential_energy_dimension: true
-    HF_force_dimension: true
-    perturbed_Keta_dimension_fails: true
-    perturbed_alpha_L_dimension_fails: true
+    M_entries_homogeneous: true
+    K_entries_homogeneous: true
+    M_entries_have_mass_dimension: true
+    K_entries_have_stiffness_dimension: true
+    K_over_M_has_omega_squared_dimension: true
+  dimensional_ok: true
+  status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: K_eta=Tw*beta^2
+    expression: Tw*beta**2
+    dimension: L^-1 T^-2 M
+    dimension_monomial: M/(L*T**2)
+    dimension_vector_LMT:
+    - '-1'
+    - '1'
+    - '-2'
+  - quantity: M_aa
+    expression: -2*pi*muEta*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: M_aL
+    expression: 2*pi*muEta*rAL*(L0*beta - tanh(L0*beta))/(beta*sinh(L0*beta)*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: M_LL
+    expression: -2*pi*muEta*rAL**2*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: K_aa
+    expression: 4*pi*Tw*beta/tanh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K_aL
+    expression: -4*pi*Tw*beta*rAL/sinh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K_LL
+    expression: 4*pi*Tw*beta*rAL**2/tanh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  BREATHING_FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [Tw] by one extra power of L
+    participates_in_verdict: true
+    sourced_Tw_dimension: L T^-2 M
+    corrupted_Tw_dimension: L^2 T^-2 M
+    mutated_dimensions:
+      M_AB_entries:
+        aa: M
+        aL: M
+        LL: M
+      K_AB_entries:
+        aa: L T^-2 M
+        aL: L T^-2 M
+        LL: L T^-2 M
+      M_AB_shared: M
+      K_AB_shared: L T^-2 M
+      K_over_M_ratio: L T^-2
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: BREATHING_FAIL_DIMENSIONAL
+    mutation_fires: true
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: BREATHING_FAIL_DIMENSIONAL
+      without_mutation: BREATHING_CALIBRATED
+      expected_fail: BREATHING_FAIL_DIMENSIONAL
+      fail_suppressed: true
+dimensional_check:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: assembled M_AB/K_AB homogeneity and K/M=T^-2
+  headline_quantities_walked:
+    M_AB:
+      aa: -2*pi*muEta*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+      aL: 2*pi*muEta*rAL*(L0*beta - tanh(L0*beta))/(beta*sinh(L0*beta)*tanh(L0*beta))
+      LL: -2*pi*muEta*rAL**2*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    K_AB:
+      aa: 4*pi*Tw*beta/tanh(L0*beta)
+      aL: -4*pi*Tw*beta*rAL/sinh(L0*beta)
+      LL: 4*pi*Tw*beta*rAL**2/tanh(L0*beta)
+  symbol_dimensions:
+    L0: L
+    beta: L^-1
+    muEta: M L^-1
+    Tw: M L T^-2
+    K_eta=Tw*beta^2: M L^-1 T^-2
+    rAL: '1'
+    alpha_a,alpha_L: '1'
+  sourcing_note: muEta, Tw, and K_eta are sourced wall-action coefficients in the
+    reduced-throat convention; K_eta is Tw*beta^2, not fitted from the matrix answer.
+  computed_dimensions:
+    M_AB_entries:
+      aa: M
+      aL: M
+      LL: M
+    K_AB_entries:
+      aa: T^-2 M
+      aL: T^-2 M
+      LL: T^-2 M
+    M_AB_shared: M
+    K_AB_shared: T^-2 M
+    K_over_M_ratio: T^-2
+  computed_dimension_vectors_LMT:
+    M_AB_entries:
+      aa:
+      - '0'
+      - '1'
+      - '0'
+      aL:
+      - '0'
+      - '1'
+      - '0'
+      LL:
+      - '0'
+      - '1'
+      - '0'
+    K_AB_entries:
+      aa:
+      - '0'
+      - '1'
+      - '-2'
+      aL:
+      - '0'
+      - '1'
+      - '-2'
+      LL:
+      - '0'
+      - '1'
+      - '-2'
+    M_AB_shared:
+    - '0'
+    - '1'
+    - '0'
+    K_AB_shared:
+    - '0'
+    - '1'
+    - '-2'
+    K_over_M_ratio:
+    - '0'
+    - '0'
+    - '-2'
+  expected_dimensions:
+    M_AB_shared: M
+    K_AB_shared: T^-2 M
+    K_over_M_ratio: T^-2
+  checks:
+    M_entries_homogeneous: true
+    K_entries_homogeneous: true
+    M_entries_have_mass_dimension: true
+    K_entries_have_stiffness_dimension: true
+    K_over_M_has_omega_squared_dimension: true
+  dimensional_ok: true
+  status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: K_eta=Tw*beta^2
+    expression: Tw*beta**2
+    dimension: L^-1 T^-2 M
+    dimension_monomial: M/(L*T**2)
+    dimension_vector_LMT:
+    - '-1'
+    - '1'
+    - '-2'
+  - quantity: M_aa
+    expression: -2*pi*muEta*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: M_aL
+    expression: 2*pi*muEta*rAL*(L0*beta - tanh(L0*beta))/(beta*sinh(L0*beta)*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: M_LL
+    expression: -2*pi*muEta*rAL**2*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: K_aa
+    expression: 4*pi*Tw*beta/tanh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K_aL
+    expression: -4*pi*Tw*beta*rAL/sinh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K_LL
+    expression: 4*pi*Tw*beta*rAL**2/tanh(L0*beta)
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  BREATHING_FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [Tw] by one extra power of L
+    participates_in_verdict: true
+    sourced_Tw_dimension: L T^-2 M
+    corrupted_Tw_dimension: L^2 T^-2 M
+    mutated_dimensions:
+      M_AB_entries:
+        aa: M
+        aL: M
+        LL: M
+      K_AB_entries:
+        aa: L T^-2 M
+        aL: L T^-2 M
+        LL: L T^-2 M
+      M_AB_shared: M
+      K_AB_shared: L T^-2 M
+      K_over_M_ratio: L T^-2
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: BREATHING_FAIL_DIMENSIONAL
+    mutation_fires: true
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: BREATHING_FAIL_DIMENSIONAL
+      without_mutation: BREATHING_CALIBRATED
+      expected_fail: BREATHING_FAIL_DIMENSIONAL
+      fail_suppressed: true
 operator_order:
 - ell=0 modal operator + BC + mu_eta inner product
 - profiles + projection integrals
@@ -547,4 +876,4 @@ generated_files:
   sympy_scratch_yaml: software/stage1_solver/_scratch/pathA_31_sympy_results.yaml
   mathematica_scratch_yaml: software/stage1_solver/_scratch/pathA_31_mathematica_results.yaml
   sympy_expr_export: software/stage1_solver/_scratch/pathA_31_sympy_exprs.wl
-sympy_expression_digest: c6760284dfc2d5a7cdb85925b66dcb07638755e1d0ea56d61cddc7e5cf9829b1
+sympy_expression_digest: dc09ee4c860ce8aad007df752dd4bedea064b64952c89c03a8c619c5b8d887c8

@@ -65,8 +65,17 @@ The explicit `V_wall` mouth/cap gradient derivation is not emitted, so the verdi
 
 ## Engine Agreement
 
-`engine_agreement=True` via Mathematica `FullSimplify[a-b==0]` checks. Details: `{'status': 'pass', 'digest_matches': True, 'mathematica_yaml': 'software/stage1_solver/_scratch/pathA_30_mathematica_results.yaml', 'details': {'dtn': True, 'pole_denominator': True, 'robin_dtn': True, 'robin_denominator': True, 'static_series': True, 'dd_limit': True, 'alpha0_limit': True}, 'mathematica_route': 'transfer_matrix_resolvent'}`.
+`engine_agreement=True` via Mathematica `FullSimplify[a-b==0]` checks. Details: `{'status': 'pass', 'digest_matches': True, 'mathematica_yaml': 'software/stage1_solver/_scratch/pathA_30_mathematica_results.yaml', 'details': {'dtn': True, 'pole_denominator': True, 'robin_dtn': True, 'robin_denominator': True, 'static_series': True, 'dd_limit': True, 'alpha0_limit': True, 'dimensional_ok': True, 'dimension_probe_verdict': True}, 'dimensional_agreement': {'dimensional_ok': True, 'dimension_probe_verdict': True}, 'mathematica_route': 'transfer_matrix_resolvent'}`.
 
 ## Dimensional Check
 
 `dim_check=pass`.
+
+### Dimensional check (retrofit)
+
+- Walked headline quantities: `{'cs_squared_from_EOS': '5*K*rho_star**4/m', 'tan_argument': 'L0*omega/cS', 'Z00': '-omega*tan(L0*omega/cS)/cS', 'Z00_prefactor_walked': '-omega/cS'}`.
+- Sourced dimensions: `{'L0': 'L', 'omega': 'T^-1', 'c_s': 'L T^-1', 'm': 'M', 'energy': 'L^2 T^-2 M', 'four_volume_L4': 'L^4', 'P': 'L^-2 T^-2 M', 'rho_star': 'L^-4', 'K': 'L^18 T^-2 M'}`.
+- Sourcing note: `{'K_source': 'P=K*rho^5', 'spatial_dimensions': 4, 'no_cs_dependency': True, 'energy_dimension_LMT': ['2', '1', '-2'], 'four_volume_dimension_LMT': ['4', '0', '0'], 'P_dimension_LMT': ['-2', '1', '-2'], 'rho_dimension_LMT': ['-4', '0', '0'], 'K_derivation': '[K]=[P]-5[rho]', 'K_dimension_LMT': ['18', '1', '-2'], 'derived_chain': '[P]=(-2,1,-2), [rho]=(-4,0,0), [K]=[P]-5[rho]=(18,1,-2)'}`.
+- Computed dimensions: `{'cs_squared_from_EOS': 'L^2 T^-2', 'tan_argument': '1', 'Z00_prefactor': 'L^-1'}`; `dimensional_ok=True`.
+- Sourced-input probe: `{'mutation': 'corrupt sourced [K] by one extra power of L', 'participates_in_verdict': True, 'sourced_K_dimension': 'L^18 T^-2 M', 'corrupted_K_dimension': 'L^19 T^-2 M', 'mutated_dimensions': {'cs_squared_from_EOS': 'L^3 T^-2', 'tan_argument': '1', 'Z00_prefactor': 'L^-1'}, 'without_mutation_dimensional_ok': True, 'with_mutation_dimensional_ok': False, 'probe_verdict': 'DN_UNITTEST_FAIL_DIMENSIONAL', 'mutation_fires': True, 'self_ablation': {'rerun_gate_logic': True, 'with_mutation': 'DN_UNITTEST_FAIL_DIMENSIONAL', 'without_mutation': 'DN_UNITTEST_BC_DEPENDENT', 'expected_fail': 'DN_UNITTEST_FAIL_DIMENSIONAL', 'fail_suppressed': True}}`.
+- Dual-engine dimensional agreement: `{'dimensional_ok': True, 'dimension_probe_verdict': True}`.

@@ -10,6 +10,9 @@ The result remains calibrated because `muEta`, `Tw`, and `K_eta` are frozen/cali
 
 Structure gate: `M_posdef=True`, `K_structure_ok=True`, `K_offdiag_negative=True`, computed from the derived `M_AB,K_AB` with probe `{'non_posdef_M_probe': {'mutation': 'M_aa -> -M_aa', 'M_posdef': False, 'leading_minor_positive': False, 'det_positive': False}, 'sign_flipped_K_probe': {'mutation': 'K_aL -> -K_aL', 'K_offdiag_negative': False, 'K_structure_ok': False}}`.
 
+Dimensional retrofit: the engines walk the evaluated `M_aa,M_aL,M_LL` and `K_aa,K_aL,K_LL` expressions, check common matrix dimensions and `[K]/[M]=T^-2`, and corrupt sourced `[Tw]` to prove the dedicated dimensional verdict is load-bearing.
+Dimensional probe ablation: with mutation `BREATHING_FAIL_DIMENSIONAL`, without mutation `BREATHING_CALIBRATED`.
+
 Artifacts:
 - `software/stage1_solver/tools/pathA_31_scalar_breathing_sympy.py`
 - `software/stage1_solver/tools/pathA_31_scalar_breathing.wl`

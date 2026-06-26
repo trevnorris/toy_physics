@@ -98,6 +98,76 @@ structureKProbeStructureOk = TrueQ[
     legacySymmetric && legacyOffdiagNegative
 ];
 
+zeroDim = {0, 0, 0};
+dimAdd[x_, y_] := x + y;
+dimSub[x_, y_] := x - y;
+dimScale[x_, q_] := q x;
+dimOf[expr_, dims_] := Module[{args, ds, base, pow, argDims},
+  Which[
+    TrueQ[expr == 0] || NumericQ[expr], zeroDim,
+    AtomQ[expr] && KeyExistsQ[dims, expr], dims[expr],
+    AtomQ[expr], fail["missing dimension for " <> ToString[Unevaluated[expr], InputForm]],
+    Head[expr] === Times, Total[dimOf[#, dims] & /@ (List @@ expr)],
+    Head[expr] === Power,
+      base = expr[[1]];
+      pow = expr[[2]];
+      If[! NumericQ[pow], fail["non-numeric dimension exponent"]];
+      dimScale[dimOf[base, dims], pow],
+    Head[expr] === Plus,
+      args = List @@ expr;
+      ds = dimOf[#, dims] & /@ Select[args, ! TrueQ[# == 0] &];
+      If[Length[ds] == 0, zeroDim,
+        If[Length[DeleteDuplicates[ds]] != 1, fail["dimension mismatch in sum"]];
+        First[ds]
+      ],
+    MemberQ[{Sin, Cos, Tan, Cot, Sinh, Cosh, Tanh, Coth, Sech, Csch}, Head[expr]],
+      argDims = dimOf[#, dims] & /@ (List @@ expr);
+      If[AnyTrue[argDims, # =!= zeroDim &], fail["dimensionful argument in dimensionless function"]];
+      zeroDim,
+    True, fail["unsupported dimension expression " <> ToString[expr, InputForm]]
+  ]
+];
+expText[e_] := Module[{r = Rationalize[e]},
+  If[Denominator[r] == 1, ToString[Numerator[r]], ToString[Numerator[r]] <> "/" <> ToString[Denominator[r]]]
+];
+dimText[d_] := Module[{pairs, parts},
+  pairs = {{"L", d[[1]]}, {"T", d[[3]]}, {"M", d[[2]]}};
+  parts = (If[TrueQ[#[[2]] == 1], #[[1]], #[[1]] <> "^" <> expText[#[[2]]]] &) /@
+    Select[pairs, ! TrueQ[#[[2]] == 0] &];
+  If[Length[parts] == 0, "1", StringRiffle[parts, " "]]
+];
+sharedDim[assoc_] := Module[{vals = Values[assoc]},
+  If[Length[DeleteDuplicates[vals]] == 1, First[vals], Missing["Inhomogeneous"]]
+];
+dimAssocText[assoc_] := Association @ KeyValueMap[(#1 -> dimText[#2]) &, assoc];
+dimMaybeText[x_] := If[ListQ[x], dimText[x], "inhomogeneous"];
+
+dimRules = <|
+  L0 -> {1, 0, 0},
+  beta -> {-1, 0, 0},
+  muEta -> {-1, 1, 0},
+  Tw -> {1, 1, -2},
+  rAL -> zeroDim
+|>;
+massDims = <|"aa" -> dimOf[massAA, dimRules], "aL" -> dimOf[massAL, dimRules], "LL" -> dimOf[massLL, dimRules]|>;
+stiffDims = <|"aa" -> dimOf[stiffAA, dimRules], "aL" -> dimOf[stiffAL, dimRules], "LL" -> dimOf[stiffLL, dimRules]|>;
+massSharedDim = sharedDim[massDims];
+stiffSharedDim = sharedDim[stiffDims];
+ratioDim = If[ListQ[massSharedDim] && ListQ[stiffSharedDim], dimSub[stiffSharedDim, massSharedDim], Missing["Inhomogeneous"]];
+dimensionalOk = TrueQ[massSharedDim == {0, 1, 0} && stiffSharedDim == {0, 1, -2} && ratioDim == {0, 0, -2}];
+corruptTwRules = Join[KeyDrop[dimRules, Tw], <|Tw -> {2, 1, -2}|>];
+corruptMassDims = <|"aa" -> dimOf[massAA, corruptTwRules], "aL" -> dimOf[massAL, corruptTwRules], "LL" -> dimOf[massLL, corruptTwRules]|>;
+corruptStiffDims = <|"aa" -> dimOf[stiffAA, corruptTwRules], "aL" -> dimOf[stiffAL, corruptTwRules], "LL" -> dimOf[stiffLL, corruptTwRules]|>;
+corruptMassSharedDim = sharedDim[corruptMassDims];
+corruptStiffSharedDim = sharedDim[corruptStiffDims];
+corruptRatioDim = If[ListQ[corruptMassSharedDim] && ListQ[corruptStiffSharedDim], dimSub[corruptStiffSharedDim, corruptMassSharedDim], Missing["Inhomogeneous"]];
+corruptDimensionalOk = TrueQ[corruptMassSharedDim == {0, 1, 0} && corruptStiffSharedDim == {0, 1, -2} && corruptRatioDim == {0, 0, -2}];
+dimensionProbeVerdict = If[corruptDimensionalOk, "NO_FAIL", "BREATHING_FAIL_DIMENSIONAL"];
+
+If[! TrueQ[dimensionalOk && dimensionProbeVerdict === "BREATHING_FAIL_DIMENSIONAL"],
+  fail["Mathematica dimensional gate did not pass baseline and fail corrupted Tw probe"]
+];
+
 checks = <|
   "alpha_a" -> TrueQ[FullSimplify[alphaA - sympyAlphaA == 0]],
   "alpha_L" -> TrueQ[FullSimplify[alphaL - sympyAlphaL == 0]],
@@ -126,7 +196,9 @@ checks = <|
   "structure_K_structure_ok" -> TrueQ[FullSimplify[structureKStructureOk == sympyKStructureOk]],
   "structure_K_rank" -> TrueQ[FullSimplify[structureKRank - sympyKRank == 0]],
   "structure_probe_M_posdef" -> TrueQ[FullSimplify[structureMProbePosdef == sympyStructureProbeMPosdef]],
-  "structure_probe_K_structure_ok" -> TrueQ[FullSimplify[structureKProbeStructureOk == sympyStructureProbeKStructureOk]]
+  "structure_probe_K_structure_ok" -> TrueQ[FullSimplify[structureKProbeStructureOk == sympyStructureProbeKStructureOk]],
+  "dimensional_ok" -> TrueQ[FullSimplify[dimensionalOk == sympyDimensionalOk]],
+  "dimension_probe_verdict" -> TrueQ[dimensionProbeVerdict === sympyDimensionalProbeVerdict]
 |>;
 
 If[! And @@ Values[checks],
@@ -252,6 +324,45 @@ yaml = StringRiffle[{
   "  aa: " <> quoteText[stiffAA],
   "  aL: " <> quoteText[stiffAL],
   "  LL: " <> quoteText[stiffLL],
+  "dimensional:",
+  "  dimension_order:",
+  "  - L",
+  "  - M",
+  "  - T",
+  "  headline_quantities_walked:",
+  "    M_AB:",
+  "      aa: " <> quoteText[massAA],
+  "      aL: " <> quoteText[massAL],
+  "      LL: " <> quoteText[massLL],
+  "    K_AB:",
+  "      aa: " <> quoteText[stiffAA],
+  "      aL: " <> quoteText[stiffAL],
+  "      LL: " <> quoteText[stiffLL],
+  "  computed_dimensions:",
+  "    M_AB_entries:",
+  "      aa: " <> quoteText[dimText[massDims["aa"]]],
+  "      aL: " <> quoteText[dimText[massDims["aL"]]],
+  "      LL: " <> quoteText[dimText[massDims["LL"]]],
+  "    K_AB_entries:",
+  "      aa: " <> quoteText[dimText[stiffDims["aa"]]],
+  "      aL: " <> quoteText[dimText[stiffDims["aL"]]],
+  "      LL: " <> quoteText[dimText[stiffDims["LL"]]],
+  "    M_AB_shared: " <> quoteText[dimMaybeText[massSharedDim]],
+  "    K_AB_shared: " <> quoteText[dimMaybeText[stiffSharedDim]],
+  "    K_over_M_ratio: " <> quoteText[dimMaybeText[ratioDim]],
+  "  dimensional_ok: " <> boolText[dimensionalOk],
+  "  dimensional_status: " <> quoteText[If[dimensionalOk, "DIMENSIONAL_OK", "BREATHING_FAIL_DIMENSIONAL"]],
+  "  BREATHING_FAIL_DIMENSIONAL_probe:",
+  "    mutation: " <> quoteText["corrupt sourced [Tw] by one extra power of L"],
+  "    sourced_Tw_dimension: " <> quoteText[dimText[dimRules[Tw]]],
+  "    corrupted_Tw_dimension: " <> quoteText[dimText[corruptTwRules[Tw]]],
+  "    with_mutation_dimensional_ok: " <> boolText[corruptDimensionalOk],
+  "    without_mutation_dimensional_ok: " <> boolText[dimensionalOk],
+  "    probe_verdict: " <> quoteText[dimensionProbeVerdict],
+  "    mutated_dimensions:",
+  "      M_AB_shared: " <> quoteText[dimMaybeText[corruptMassSharedDim]],
+  "      K_AB_shared: " <> quoteText[dimMaybeText[corruptStiffSharedDim]],
+  "      K_over_M_ratio: " <> quoteText[dimMaybeText[corruptRatioDim]],
   "selected_overlap:",
   "  beta_L0: " <> numText[mmaSelected[[1]]],
   "  o_1: " <> numText[mmaSelected[[2]]],
@@ -290,6 +401,8 @@ yaml = StringRiffle[{
   "    structure_K_rank: " <> boolText[checks["structure_K_rank"]],
   "    structure_probe_M_posdef: " <> boolText[checks["structure_probe_M_posdef"]],
   "    structure_probe_K_structure_ok: " <> boolText[checks["structure_probe_K_structure_ok"]],
+  "    dimensional_ok: " <> boolText[checks["dimensional_ok"]],
+  "    dimension_probe_verdict: " <> boolText[checks["dimension_probe_verdict"]],
   "  numeric_checks:",
   "    beta_sweep: " <> boolText[numericChecks["beta_sweep"]],
   "    selected_overlap: " <> boolText[numericChecks["selected_overlap"]],

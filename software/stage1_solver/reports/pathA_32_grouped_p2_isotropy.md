@@ -23,6 +23,7 @@ The two engines computed the real l=2 basis, angular Gram matrix, Laplacian eige
 - Singular denominator guard probe: `FAIL_SINGULAR_RESPONSE`.
 - Tautology hash probe: `FAIL_TAUTOLOGICAL`.
 - Static response probe: `FAIL_STATIC_RESPONSE`.
+- Dimensional sourced-input probe: `FAIL_DIMENSIONAL`.
 
 ## Fixed probe self-ablations
 
@@ -31,10 +32,11 @@ The two engines computed the real l=2 basis, angular Gram matrix, Laplacian eige
 - `degenerate_beta_zero`: with mutation `FAIL_STABILITY`, without mutation `ISOTROPY_CALIBRATED`, fail suppressed = `True`.
 - `tautology_hash_collision`: with mutation `FAIL_TAUTOLOGICAL`, without mutation `ISOTROPY_CALIBRATED`, fail suppressed = `True`.
 - `static_drop_inertia`: with mutation `FAIL_STATIC_RESPONSE`, without mutation `ISOTROPY_CALIBRATED`, fail suppressed = `True`.
+- `dimensional_corrupt_T_Omega`: with mutation `FAIL_DIMENSIONAL`, without mutation `ISOTROPY_CALIBRATED`, fail suppressed = `True`.
 
 ## Able-to-fail aggregate
 
-- Computed probe gate flags: `{'pure_prefactor_anisotropy': True, 'sector_selective_anisotropy': True, 'm_dependent_profile': True, 'degenerate_beta_zero': True, 'wrong_eigenvalue': True, 'singular_denominator': True, 'tautology_hash_collision': True, 'static_drop_inertia': True}`.
+- Computed probe gate flags: `{'pure_prefactor_anisotropy': True, 'sector_selective_anisotropy': True, 'm_dependent_profile': True, 'degenerate_beta_zero': True, 'wrong_eigenvalue': True, 'singular_denominator': True, 'tautology_hash_collision': True, 'static_drop_inertia': True, 'dimensional_corrupt_T_Omega': True}`.
 - Neutering any one probe flips aggregate false: `True`.
 
 ## Engine agreement
@@ -44,6 +46,14 @@ The two engines computed the real l=2 basis, angular Gram matrix, Laplacian eige
 - Max numeric delta: `2.220446049250313e-16` with tolerance `1e-08`.
 - Per-lane `D_A,n` max numeric delta: `0.0`.
 - Per-lane `D_A,n` deltas: `{'20.D0': 0.0, '20.D2': 0.0, '20.D4': 0.0, '21.D0': 0.0, '21.D2': 0.0, '21.D4': 0.0, '22.D0': 0.0, '22.D2': 0.0, '22.D4': 0.0}`.
+- Dimensional agreement: `True`; probe verdict agreement: `True`.
+
+## Dimensional check (retrofit)
+
+- Walked quantities: `{'explicit_measure': 'a_dim**2*dOmega*dw', 'M2_integral': 'a_dim**2*beta2**2*dOmega*dw*mu_eta_density', 'K2_integral': 'a_dim**2*dOmega*dw*(K_eta_density*beta2**2 + 6*T_Omega_density*beta2**2 + T_w_density*beta2_prime**2)', 'K2_terms': {'T_w_beta_prime_sq': 'T_w_density*a_dim**2*beta2_prime**2*dOmega*dw', 'K_eta_beta_sq': 'K_eta_density*a_dim**2*beta2**2*dOmega*dw', 'lambda_T_Omega_beta_sq': '6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw'}, 'actual_grouped_M2': 'Mtilde', 'actual_grouped_K2': 'Ktilde + 6*TomegaTilde', 'actual_K2_over_M2': '(Ktilde + 6*TomegaTilde)/Mtilde'}`.
+- Sourced dimensions: `{'a_dim': 'L', 'dw': 'L', 'dOmega': '1', 'dV=a_dim^2*dw*dOmega': 'L^3', 'beta2': '1', 'beta2_prime': 'L^-1', 'mu_eta_density': 'M L^-3', 'T_w_density': 'M L^-1 T^-2', 'K_eta_density': 'M L^-3 T^-2', 'T_Omega_density': 'M L^-3 T^-2', 'Mtilde': 'M', 'Ktilde': 'M T^-2', 'TomegaTilde': 'M T^-2'}`.
+- Computed dimensions: `{'measure': 'L^3', 'M2_integral': 'M', 'K2_terms': {'T_w_beta_prime_sq': 'T^-2 M', 'K_eta_beta_sq': 'T^-2 M', 'lambda_T_Omega_beta_sq': 'T^-2 M'}, 'K2_integral': 'T^-2 M', 'actual_grouped_M2': 'M', 'actual_grouped_K2': 'T^-2 M', 'actual_K2_over_M2': 'T^-2'}`.
+- Probe flip: `{'description': 'corrupt the sourced angular stiffness dimension and its assembled TomegaTilde scalar', 'mutation': 'corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one extra power of L', 'participates_in_verdict': True, 'sourced_T_Omega_dimension': 'L^-3 T^-2 M', 'corrupted_T_Omega_dimension': 'L^-2 T^-2 M', 'sourced_TomegaTilde_dimension': 'T^-2 M', 'corrupted_TomegaTilde_dimension': 'L T^-2 M', 'mutated_dimensions': {'lambda_T_Omega_beta_sq': 'L T^-2 M', 'K2_integral': 'inhomogeneous', 'actual_grouped_K2': 'inhomogeneous', 'actual_K2_over_M2': 'inhomogeneous', 'error': 'dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw: [(0, 1, -2), (0, 1, -2), (1, 1, -2)]'}, 'without_mutation_dimensional_ok': True, 'with_mutation_dimensional_ok': False, 'probe_verdict': 'FAIL_DIMENSIONAL', 'mutation_fires': True, 'verdict': 'FAIL_DIMENSIONAL', 'fail_fires': True, 'self_ablation': {'description': 'restore sourced T_Omega/TomegaTilde dimensions', 'dimensional_ok': True, 'verdict': 'ISOTROPY_CALIBRATED', 'fail_fires': False, 'fail_suppressed': True}}`.
 
 ## Input partition
 

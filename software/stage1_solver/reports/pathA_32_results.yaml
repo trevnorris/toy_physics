@@ -9,6 +9,7 @@ cited_sources:
 verdict: ISOTROPY_CALIBRATED
 which_rung: ISOTROPY_CALIBRATED
 gate_booleans:
+  dimensional_ok: true
   covariant: true
   tautology_clear: true
   dynamic_retained: true
@@ -694,6 +695,36 @@ counterfactuals:
       verdict: ISOTROPY_CALIBRATED
       fail_fires: false
       fail_suppressed: true
+  dimensional_corrupt_T_Omega:
+    description: corrupt the sourced angular stiffness dimension and its assembled
+      TomegaTilde scalar
+    mutation: corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one
+      extra power of L
+    participates_in_verdict: true
+    sourced_T_Omega_dimension: L^-3 T^-2 M
+    corrupted_T_Omega_dimension: L^-2 T^-2 M
+    sourced_TomegaTilde_dimension: T^-2 M
+    corrupted_TomegaTilde_dimension: L T^-2 M
+    mutated_dimensions:
+      lambda_T_Omega_beta_sq: L T^-2 M
+      K2_integral: inhomogeneous
+      actual_grouped_K2: inhomogeneous
+      actual_K2_over_M2: inhomogeneous
+      error: 'dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw
+        + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw:
+        [(0, 1, -2), (0, 1, -2), (1, 1, -2)]'
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
+    verdict: FAIL_DIMENSIONAL
+    fail_fires: true
+    self_ablation:
+      description: restore sourced T_Omega/TomegaTilde dimensions
+      dimensional_ok: true
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
 able_to_fail:
   expected_probe_verdicts:
     pure_prefactor_anisotropy: FAIL_ANISOTROPIC_BRANCH
@@ -704,6 +735,7 @@ able_to_fail:
     singular_denominator: FAIL_SINGULAR_RESPONSE
     tautology_hash_collision: FAIL_TAUTOLOGICAL
     static_drop_inertia: FAIL_STATIC_RESPONSE
+    dimensional_corrupt_T_Omega: FAIL_DIMENSIONAL
   expected_probe_verdicts_match:
     pure_prefactor_anisotropy: true
     sector_selective_anisotropy: true
@@ -713,6 +745,7 @@ able_to_fail:
     singular_denominator: true
     tautology_hash_collision: true
     static_drop_inertia: true
+    dimensional_corrupt_T_Omega: true
   computed_probe_gate_flags:
     pure_prefactor_anisotropy: true
     sector_selective_anisotropy: true
@@ -722,6 +755,7 @@ able_to_fail:
     singular_denominator: true
     tautology_hash_collision: true
     static_drop_inertia: true
+    dimensional_corrupt_T_Omega: true
   able_to_fail_if_probe_neutered:
     pure_prefactor_anisotropy: false
     sector_selective_anisotropy: false
@@ -731,129 +765,537 @@ able_to_fail:
     singular_denominator: false
     tautology_hash_collision: false
     static_drop_inertia: false
+    dimensional_corrupt_T_Omega: false
   neutering_any_probe_flips_false: true
   able_to_fail_ok: true
+dimensional:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: explicit a^2 dw dOmega measure plus grouped M2/K2 ratio
+  headline_quantities_walked:
+    explicit_measure: a_dim**2*dOmega*dw
+    M2_integral: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    K2_integral: a_dim**2*dOmega*dw*(K_eta_density*beta2**2 + 6*T_Omega_density*beta2**2
+      + T_w_density*beta2_prime**2)
+    K2_terms:
+      T_w_beta_prime_sq: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+      K_eta_beta_sq: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+      lambda_T_Omega_beta_sq: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    actual_grouped_M2: Mtilde
+    actual_grouped_K2: Ktilde + 6*TomegaTilde
+    actual_K2_over_M2: (Ktilde + 6*TomegaTilde)/Mtilde
+  symbol_dimensions:
+    a_dim: L
+    dw: L
+    dOmega: '1'
+    dV=a_dim^2*dw*dOmega: L^3
+    beta2: '1'
+    beta2_prime: L^-1
+    mu_eta_density: M L^-3
+    T_w_density: M L^-1 T^-2
+    K_eta_density: M L^-3 T^-2
+    T_Omega_density: M L^-3 T^-2
+    Mtilde: M
+    Ktilde: M T^-2
+    TomegaTilde: M T^-2
+  sourcing_note: The explicit check restores the S2 wall measure dV=a^2 dw dOmega
+    before walking the density terms; the actual grouped Mtilde/Ktilde/TomegaTilde
+    dimensions are then sourced from those integrals, not back-solved from K2/M2.
+  computed_dimensions:
+    measure: L^3
+    M2_integral: M
+    K2_terms:
+      T_w_beta_prime_sq: T^-2 M
+      K_eta_beta_sq: T^-2 M
+      lambda_T_Omega_beta_sq: T^-2 M
+    K2_integral: T^-2 M
+    actual_grouped_M2: M
+    actual_grouped_K2: T^-2 M
+    actual_K2_over_M2: T^-2
+  computed_dimension_vectors_LMT:
+    measure:
+    - '3'
+    - '0'
+    - '0'
+    M2_integral:
+    - '0'
+    - '1'
+    - '0'
+    K2_terms:
+      T_w_beta_prime_sq:
+      - '0'
+      - '1'
+      - '-2'
+      K_eta_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+      lambda_T_Omega_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+    K2_integral:
+    - '0'
+    - '1'
+    - '-2'
+    actual_grouped_M2:
+    - 0
+    - 1
+    - 0
+    actual_grouped_K2:
+    - 0
+    - 1
+    - -2
+    actual_K2_over_M2:
+    - '0'
+    - '0'
+    - '-2'
+  expected_dimensions:
+    M2: M
+    K2: T^-2 M
+    K2_over_M2: T^-2
+  checks:
+    measure_dimension_explicit: true
+    K2_terms_homogeneous: true
+    M2_integral_has_mass_dimension: true
+    K2_integral_has_stiffness_dimension: true
+    actual_grouped_M2_has_mass_dimension: true
+    actual_grouped_K2_has_stiffness_dimension: true
+    actual_K2_over_M2_has_omega_squared_dimension: true
+  dimensional_ok: true
+  status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: dV=a_dim^2*dw*dOmega
+    expression: a_dim**2*dOmega*dw
+    dimension: L^3
+    dimension_monomial: L**3
+    dimension_vector_LMT:
+    - '3'
+    - '0'
+    - '0'
+  - quantity: M2_integral=mu_eta_density*beta2^2*dV
+    expression: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: K2_Tw_term=T_w_density*beta2_prime^2*dV
+    expression: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_Keta_term=K_eta_density*beta2^2*dV
+    expression: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_TOmega_term=lambda*T_Omega_density*beta2^2*dV
+    expression: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: actual_grouped_M2
+    expression: Mtilde
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - 0
+  - quantity: actual_grouped_K2
+    expression: Ktilde + 6*TomegaTilde
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -2
+  FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one
+      extra power of L
+    participates_in_verdict: true
+    sourced_T_Omega_dimension: L^-3 T^-2 M
+    corrupted_T_Omega_dimension: L^-2 T^-2 M
+    sourced_TomegaTilde_dimension: T^-2 M
+    corrupted_TomegaTilde_dimension: L T^-2 M
+    mutated_dimensions:
+      lambda_T_Omega_beta_sq: L T^-2 M
+      K2_integral: inhomogeneous
+      actual_grouped_K2: inhomogeneous
+      actual_K2_over_M2: inhomogeneous
+      error: 'dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw
+        + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw:
+        [(0, 1, -2), (0, 1, -2), (1, 1, -2)]'
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
+dimensional_check:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: explicit a^2 dw dOmega measure plus grouped M2/K2 ratio
+  headline_quantities_walked:
+    explicit_measure: a_dim**2*dOmega*dw
+    M2_integral: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    K2_integral: a_dim**2*dOmega*dw*(K_eta_density*beta2**2 + 6*T_Omega_density*beta2**2
+      + T_w_density*beta2_prime**2)
+    K2_terms:
+      T_w_beta_prime_sq: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+      K_eta_beta_sq: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+      lambda_T_Omega_beta_sq: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    actual_grouped_M2: Mtilde
+    actual_grouped_K2: Ktilde + 6*TomegaTilde
+    actual_K2_over_M2: (Ktilde + 6*TomegaTilde)/Mtilde
+  symbol_dimensions:
+    a_dim: L
+    dw: L
+    dOmega: '1'
+    dV=a_dim^2*dw*dOmega: L^3
+    beta2: '1'
+    beta2_prime: L^-1
+    mu_eta_density: M L^-3
+    T_w_density: M L^-1 T^-2
+    K_eta_density: M L^-3 T^-2
+    T_Omega_density: M L^-3 T^-2
+    Mtilde: M
+    Ktilde: M T^-2
+    TomegaTilde: M T^-2
+  sourcing_note: The explicit check restores the S2 wall measure dV=a^2 dw dOmega
+    before walking the density terms; the actual grouped Mtilde/Ktilde/TomegaTilde
+    dimensions are then sourced from those integrals, not back-solved from K2/M2.
+  computed_dimensions:
+    measure: L^3
+    M2_integral: M
+    K2_terms:
+      T_w_beta_prime_sq: T^-2 M
+      K_eta_beta_sq: T^-2 M
+      lambda_T_Omega_beta_sq: T^-2 M
+    K2_integral: T^-2 M
+    actual_grouped_M2: M
+    actual_grouped_K2: T^-2 M
+    actual_K2_over_M2: T^-2
+  computed_dimension_vectors_LMT:
+    measure:
+    - '3'
+    - '0'
+    - '0'
+    M2_integral:
+    - '0'
+    - '1'
+    - '0'
+    K2_terms:
+      T_w_beta_prime_sq:
+      - '0'
+      - '1'
+      - '-2'
+      K_eta_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+      lambda_T_Omega_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+    K2_integral:
+    - '0'
+    - '1'
+    - '-2'
+    actual_grouped_M2:
+    - 0
+    - 1
+    - 0
+    actual_grouped_K2:
+    - 0
+    - 1
+    - -2
+    actual_K2_over_M2:
+    - '0'
+    - '0'
+    - '-2'
+  expected_dimensions:
+    M2: M
+    K2: T^-2 M
+    K2_over_M2: T^-2
+  checks:
+    measure_dimension_explicit: true
+    K2_terms_homogeneous: true
+    M2_integral_has_mass_dimension: true
+    K2_integral_has_stiffness_dimension: true
+    actual_grouped_M2_has_mass_dimension: true
+    actual_grouped_K2_has_stiffness_dimension: true
+    actual_K2_over_M2_has_omega_squared_dimension: true
+  dimensional_ok: true
+  status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: dV=a_dim^2*dw*dOmega
+    expression: a_dim**2*dOmega*dw
+    dimension: L^3
+    dimension_monomial: L**3
+    dimension_vector_LMT:
+    - '3'
+    - '0'
+    - '0'
+  - quantity: M2_integral=mu_eta_density*beta2^2*dV
+    expression: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: K2_Tw_term=T_w_density*beta2_prime^2*dV
+    expression: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_Keta_term=K_eta_density*beta2^2*dV
+    expression: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_TOmega_term=lambda*T_Omega_density*beta2^2*dV
+    expression: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: actual_grouped_M2
+    expression: Mtilde
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - 0
+  - quantity: actual_grouped_K2
+    expression: Ktilde + 6*TomegaTilde
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -2
+  FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one
+      extra power of L
+    participates_in_verdict: true
+    sourced_T_Omega_dimension: L^-3 T^-2 M
+    corrupted_T_Omega_dimension: L^-2 T^-2 M
+    sourced_TomegaTilde_dimension: T^-2 M
+    corrupted_TomegaTilde_dimension: L T^-2 M
+    mutated_dimensions:
+      lambda_T_Omega_beta_sq: L T^-2 M
+      K2_integral: inhomogeneous
+      actual_grouped_K2: inhomogeneous
+      actual_K2_over_M2: inhomogeneous
+      error: 'dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw
+        + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw:
+        [(0, 1, -2), (0, 1, -2), (1, 1, -2)]'
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
 dim_homogeneity_table:
   dimension_order:
-  - M
   - L
+  - M
   - T
-  table:
-  - quantity: dOmega
-    dimension_MLT:
-    - 0
-    - 0
-    - 0
-  - quantity: dw
-    dimension_MLT:
+  dimensional_gate: explicit a^2 dw dOmega measure plus grouped M2/K2 ratio
+  headline_quantities_walked:
+    explicit_measure: a_dim**2*dOmega*dw
+    M2_integral: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    K2_integral: a_dim**2*dOmega*dw*(K_eta_density*beta2**2 + 6*T_Omega_density*beta2**2
+      + T_w_density*beta2_prime**2)
+    K2_terms:
+      T_w_beta_prime_sq: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+      K_eta_beta_sq: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+      lambda_T_Omega_beta_sq: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    actual_grouped_M2: Mtilde
+    actual_grouped_K2: Ktilde + 6*TomegaTilde
+    actual_K2_over_M2: (Ktilde + 6*TomegaTilde)/Mtilde
+  symbol_dimensions:
+    a_dim: L
+    dw: L
+    dOmega: '1'
+    dV=a_dim^2*dw*dOmega: L^3
+    beta2: '1'
+    beta2_prime: L^-1
+    mu_eta_density: M L^-3
+    T_w_density: M L^-1 T^-2
+    K_eta_density: M L^-3 T^-2
+    T_Omega_density: M L^-3 T^-2
+    Mtilde: M
+    Ktilde: M T^-2
+    TomegaTilde: M T^-2
+  sourcing_note: The explicit check restores the S2 wall measure dV=a^2 dw dOmega
+    before walking the density terms; the actual grouped Mtilde/Ktilde/TomegaTilde
+    dimensions are then sourced from those integrals, not back-solved from K2/M2.
+  computed_dimensions:
+    measure: L^3
+    M2_integral: M
+    K2_terms:
+      T_w_beta_prime_sq: T^-2 M
+      K_eta_beta_sq: T^-2 M
+      lambda_T_Omega_beta_sq: T^-2 M
+    K2_integral: T^-2 M
+    actual_grouped_M2: M
+    actual_grouped_K2: T^-2 M
+    actual_K2_over_M2: T^-2
+  computed_dimension_vectors_LMT:
+    measure:
+    - '3'
+    - '0'
+    - '0'
+    M2_integral:
+    - '0'
+    - '1'
+    - '0'
+    K2_terms:
+      T_w_beta_prime_sq:
+      - '0'
+      - '1'
+      - '-2'
+      K_eta_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+      lambda_T_Omega_beta_sq:
+      - '0'
+      - '1'
+      - '-2'
+    K2_integral:
+    - '0'
+    - '1'
+    - '-2'
+    actual_grouped_M2:
     - 0
     - 1
     - 0
-  - quantity: q_2m
-    dimension_MLT:
+    actual_grouped_K2:
     - 0
-    - 1
-    - 0
-  - quantity: omega
-    dimension_MLT:
-    - 0
-    - 0
-    - -1
-  - quantity: beta2
-    dimension_MLT:
-    - 0
-    - 0
-    - 0
-  - quantity: mu_eta
-    dimension_MLT:
-    - 1
-    - -1
-    - 0
-  - quantity: T_w
-    dimension_MLT:
-    - 1
     - 1
     - -2
-  - quantity: K_eta
-    dimension_MLT:
-    - 1
-    - -1
-    - -2
-  - quantity: T_Omega
-    dimension_MLT:
-    - 1
-    - -1
-    - -2
-  - quantity: M2
-    dimension_MLT:
-    - 1
-    - 0
-    - 0
-  - quantity: K2
-    dimension_MLT:
-    - 1
-    - 0
-    - -2
-  - quantity: B0_Z0
-    dimension_MLT:
-    - 1
-    - 0
-    - -2
-  - quantity: B2_Z2
-    dimension_MLT:
-    - 1
-    - 0
-    - 0
-  - quantity: B4_Z4
-    dimension_MLT:
-    - 1
-    - 0
-    - 2
-  - quantity: D0
-    dimension_MLT:
-    - 1
-    - 0
-    - -2
-  - quantity: D2
-    dimension_MLT:
-    - 1
-    - 0
-    - 0
-  - quantity: D4
-    dimension_MLT:
-    - 1
-    - 0
-    - 2
-  - quantity: D2_omega2
-    dimension_MLT:
-    - 1
-    - 0
-    - -2
-  - quantity: D4_omega4
-    dimension_MLT:
-    - 1
-    - 0
-    - -2
-  - quantity: u2_a2_b2
-    dimension_MLT:
-    - 0
-    - 0
-    - 2
-  - quantity: u4_a4_b4
-    dimension_MLT:
-    - 0
-    - 0
-    - 4
+    actual_K2_over_M2:
+    - '0'
+    - '0'
+    - '-2'
+  expected_dimensions:
+    M2: M
+    K2: T^-2 M
+    K2_over_M2: T^-2
   checks:
-    M2_from_mu_eta_dw: true
-    K2_from_Tw_beta_prime_sq_dw: true
-    K_eta_and_T_Omega_add: true
-    Keta_beta_sq_dw_to_K2: true
-    D0_D2w2_D4w4_match: true
-    u2_is_inverse_omega_squared: true
-    u4_is_inverse_omega_fourth: true
-    angular_integrals_dimensionless: true
+    measure_dimension_explicit: true
+    K2_terms_homogeneous: true
+    M2_integral_has_mass_dimension: true
+    K2_integral_has_stiffness_dimension: true
+    actual_grouped_M2_has_mass_dimension: true
+    actual_grouped_K2_has_stiffness_dimension: true
+    actual_K2_over_M2_has_omega_squared_dimension: true
+  dimensional_ok: true
   status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: dV=a_dim^2*dw*dOmega
+    expression: a_dim**2*dOmega*dw
+    dimension: L^3
+    dimension_monomial: L**3
+    dimension_vector_LMT:
+    - '3'
+    - '0'
+    - '0'
+  - quantity: M2_integral=mu_eta_density*beta2^2*dV
+    expression: a_dim**2*beta2**2*dOmega*dw*mu_eta_density
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: K2_Tw_term=T_w_density*beta2_prime^2*dV
+    expression: T_w_density*a_dim**2*beta2_prime**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_Keta_term=K_eta_density*beta2^2*dV
+    expression: K_eta_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: K2_TOmega_term=lambda*T_Omega_density*beta2^2*dV
+    expression: 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '-2'
+  - quantity: actual_grouped_M2
+    expression: Mtilde
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - 0
+  - quantity: actual_grouped_K2
+    expression: Ktilde + 6*TomegaTilde
+    dimension: T^-2 M
+    dimension_monomial: M/T**2
+    dimension_vector_LMT:
+    - 0
+    - 1
+    - -2
+  FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one
+      extra power of L
+    participates_in_verdict: true
+    sourced_T_Omega_dimension: L^-3 T^-2 M
+    corrupted_T_Omega_dimension: L^-2 T^-2 M
+    sourced_TomegaTilde_dimension: T^-2 M
+    corrupted_TomegaTilde_dimension: L T^-2 M
+    mutated_dimensions:
+      lambda_T_Omega_beta_sq: L T^-2 M
+      K2_integral: inhomogeneous
+      actual_grouped_K2: inhomogeneous
+      actual_K2_over_M2: inhomogeneous
+      error: 'dimension mismatch in sum K_eta_density*a_dim**2*beta2**2*dOmega*dw
+        + 6*T_Omega_density*a_dim**2*beta2**2*dOmega*dw + T_w_density*a_dim**2*beta2_prime**2*dOmega*dw:
+        [(0, 1, -2), (0, 1, -2), (1, 1, -2)]'
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
 deferred:
 - 54/5 quadrupole normalization
 - outgoing odd N_A,n extraction
@@ -899,7 +1341,10 @@ engine_agreement:
       singular_denominator: true
       tautology_hash_collision: true
       static_drop_inertia: true
+      dimensional_corrupt_T_Omega: true
     baseline_verdict: true
+    dimensional_ok: true
+    dimension_probe_verdict: true
   checked_fields:
   - gram_5x5
   - grouped_reduction
@@ -910,3 +1355,5 @@ engine_agreement:
   - probe_verdicts
   - omega_2m_sample
   - baseline_verdict
+  - dimensional_ok
+  - dimension_probe_verdict

@@ -82,12 +82,252 @@ def digest_mapping(mapping: dict[str, str]) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def dimension_add(*dims: tuple[int, int, int]) -> tuple[int, int, int]:
-    return tuple(sum(dim[i] for dim in dims) for i in range(3))  # type: ignore[return-value]
+class DimError(ValueError):
+    pass
 
 
-def dimension_scale(power: int, dim: tuple[int, int, int]) -> tuple[int, int, int]:
-    return tuple(power * entry for entry in dim)  # type: ignore[return-value]
+Dim = tuple[sp.Rational, sp.Rational, sp.Rational]
+ZERO_DIM: Dim = (sp.Rational(0), sp.Rational(0), sp.Rational(0))
+DIMENSIONLESS_FUNCTIONS = {
+    sp.sin,
+    sp.cos,
+    sp.tan,
+    sp.cot,
+    sp.sinh,
+    sp.cosh,
+    sp.tanh,
+    sp.coth,
+    sp.sech,
+    sp.csch,
+}
+Ldim, Mdim, Tdim = sp.symbols("L M T", positive=True)
+
+
+def dim_add(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 + b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_sub(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 - b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_scale(dim: Dim, scale: sp.Rational) -> Dim:
+    return tuple(sp.Rational(scale * d0) for d0 in dim)  # type: ignore[return-value]
+
+
+def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
+    expr = sp.sympify(expr)
+    if expr == 0 or expr.is_number:
+        return ZERO_DIM
+    if expr.is_Symbol:
+        if expr not in symbol_dims:
+            raise DimError(f"missing dimension for symbol {expr}")
+        return symbol_dims[expr]
+    if expr.is_Mul:
+        out = ZERO_DIM
+        for arg in expr.args:
+            out = dim_add(out, dim_of(arg, symbol_dims))
+        return out
+    if expr.is_Pow:
+        base, exponent = expr.args
+        if not exponent.is_number:
+            raise DimError(f"non-numeric dimension exponent in {expr}")
+        return dim_scale(dim_of(base, symbol_dims), sp.Rational(exponent))
+    if expr.is_Add:
+        dims = [dim_of(arg, symbol_dims) for arg in expr.args if arg != 0]
+        if not dims:
+            return ZERO_DIM
+        first = dims[0]
+        mismatched = [dim for dim in dims if dim != first]
+        if mismatched:
+            raise DimError(f"dimension mismatch in sum {expr}: {dims}")
+        return first
+    if expr.func in DIMENSIONLESS_FUNCTIONS:
+        arg_dims = [dim_of(arg, symbol_dims) for arg in expr.args]
+        if any(dim != ZERO_DIM for dim in arg_dims):
+            raise DimError(f"dimensionful argument in {expr}: {arg_dims}")
+        return ZERO_DIM
+    raise DimError(f"unsupported expression in dimension checker: {expr}")
+
+
+def dim_to_monomial(dim: Dim) -> sp.Expr:
+    return sp.factor(Ldim ** dim[0] * Mdim ** dim[1] * Tdim ** dim[2])
+
+
+def exp_text(exp: sp.Rational) -> str:
+    exp = sp.Rational(exp)
+    if exp.q == 1:
+        return str(exp.p)
+    return f"{exp.p}/{exp.q}"
+
+
+def dim_to_text(dim: Dim) -> str:
+    parts: list[str] = []
+    for name, exp in (("L", dim[0]), ("T", dim[2]), ("M", dim[1])):
+        exp = sp.Rational(exp)
+        if exp == 0:
+            continue
+        if exp == 1:
+            parts.append(name)
+        else:
+            parts.append(f"{name}^{exp_text(exp)}")
+    return " ".join(parts) if parts else "1"
+
+
+def dim_vector_text(dim: Dim) -> list[str]:
+    return [str(hstr(v)) for v in dim]
+
+
+def dim_tuple_text(dim: Dim) -> str:
+    return "(" + ",".join(exp_text(sp.Rational(v)) for v in dim) + ")"
+
+
+def dim_record(name: str, expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> dict[str, Any]:
+    dim = dim_of(expr, symbol_dims)
+    return {
+        "quantity": name,
+        "expression": hstr(expr),
+        "dimension": dim_to_text(dim),
+        "dimension_monomial": hstr(dim_to_monomial(dim)),
+        "dimension_vector_LMT": dim_vector_text(dim),
+    }
+
+
+def dimension_verdict(ok: bool) -> str:
+    return "DIMENSIONAL_OK" if ok else "DN_UNITTEST_FAIL_DIMENSIONAL"
+
+
+def build_dimensional_check(
+    *,
+    L0: sp.Symbol,
+    omega: sp.Symbol,
+    cS: sp.Symbol,
+    K: sp.Symbol,
+    rho_star: sp.Symbol,
+    m: sp.Symbol,
+    cs_squared_from_eos: sp.Expr,
+    tan_argument: sp.Expr,
+    dtn_prefactor: sp.Expr,
+    dtn_target: sp.Expr,
+) -> dict[str, Any]:
+    length_dim: Dim = (1, 0, 0)
+    energy_dim: Dim = (2, 1, -2)
+    spatial_dimensions = sp.Rational(4)
+    volume4_dim = dim_scale(length_dim, spatial_dimensions)
+    pressure_dim = dim_sub(energy_dim, volume4_dim)
+    rho_dim = dim_scale(length_dim, -spatial_dimensions)
+    K_dim = dim_sub(pressure_dim, dim_scale(rho_dim, sp.Rational(5)))
+
+    symbol_dims: dict[sp.Symbol, Dim] = {
+        L0: length_dim,
+        omega: (0, 0, -1),
+        cS: (1, 0, -1),
+        K: K_dim,
+        rho_star: rho_dim,
+        m: (0, 1, 0),
+    }
+    expected_cs_squared = (2, 0, -2)
+    expected_z00 = (-1, 0, 0)
+
+    cs_dim = dim_of(cs_squared_from_eos, symbol_dims)
+    tan_arg_dim = dim_of(tan_argument, symbol_dims)
+    z00_dim = dim_of(dtn_prefactor, symbol_dims)
+    dimensional_ok = bool(
+        cs_dim == expected_cs_squared
+        and tan_arg_dim == ZERO_DIM
+        and z00_dim == expected_z00
+    )
+
+    corrupt_dims = dict(symbol_dims)
+    corrupt_dims[K] = dim_add(symbol_dims[K], (1, 0, 0))
+    corrupt_cs_dim = dim_of(cs_squared_from_eos, corrupt_dims)
+    corrupt_tan_arg_dim = dim_of(tan_argument, corrupt_dims)
+    corrupt_z00_dim = dim_of(dtn_prefactor, corrupt_dims)
+    corrupt_ok = bool(
+        corrupt_cs_dim == expected_cs_squared
+        and corrupt_tan_arg_dim == ZERO_DIM
+        and corrupt_z00_dim == expected_z00
+    )
+    probe_verdict = "NO_FAIL" if corrupt_ok else "DN_UNITTEST_FAIL_DIMENSIONAL"
+
+    return {
+        "dimension_order": ["L", "M", "T"],
+        "dimensional_gate": "sourced EOS speed law plus DtN argument/prefactor",
+        "headline_quantities_walked": {
+            "cs_squared_from_EOS": hstr(cs_squared_from_eos),
+            "tan_argument": hstr(tan_argument),
+            "Z00": hstr(dtn_target),
+            "Z00_prefactor_walked": hstr(dtn_prefactor),
+        },
+        "symbol_dimensions": {
+            "L0": "L",
+            "omega": "T^-1",
+            "c_s": "L T^-1",
+            "m": "M",
+            "energy": dim_to_text(energy_dim),
+            "four_volume_L4": dim_to_text(volume4_dim),
+            "P": dim_to_text(pressure_dim),
+            "rho_star": dim_to_text(rho_dim),
+            "K": dim_to_text(K_dim),
+        },
+        "sourcing_note": {
+            "K_source": "P=K*rho^5",
+            "spatial_dimensions": int(spatial_dimensions),
+            "no_cs_dependency": True,
+            "energy_dimension_LMT": dim_vector_text(energy_dim),
+            "four_volume_dimension_LMT": dim_vector_text(volume4_dim),
+            "P_dimension_LMT": dim_vector_text(pressure_dim),
+            "rho_dimension_LMT": dim_vector_text(rho_dim),
+            "K_derivation": "[K]=[P]-5[rho]",
+            "K_dimension_LMT": dim_vector_text(K_dim),
+            "derived_chain": (
+                f"[P]={dim_tuple_text(pressure_dim)}, "
+                f"[rho]={dim_tuple_text(rho_dim)}, "
+                f"[K]=[P]-5[rho]={dim_tuple_text(K_dim)}"
+            ),
+        },
+        "computed_dimensions": {
+            "cs_squared_from_EOS": dim_to_text(cs_dim),
+            "tan_argument": dim_to_text(tan_arg_dim),
+            "Z00_prefactor": dim_to_text(z00_dim),
+        },
+        "computed_dimension_vectors_LMT": {
+            "cs_squared_from_EOS": dim_vector_text(cs_dim),
+            "tan_argument": dim_vector_text(tan_arg_dim),
+            "Z00_prefactor": dim_vector_text(z00_dim),
+        },
+        "expected_dimensions": {
+            "cs_squared_from_EOS": dim_to_text(expected_cs_squared),
+            "tan_argument": dim_to_text(ZERO_DIM),
+            "Z00_prefactor": dim_to_text(expected_z00),
+        },
+        "dimensional_ok": dimensional_ok,
+        "status": "pass" if dimensional_ok else "fail",
+        "dimensional_status": dimension_verdict(dimensional_ok),
+        "table": [
+            dim_record("K", K, symbol_dims),
+            dim_record("rho_star", rho_star, symbol_dims),
+            dim_record("m", m, symbol_dims),
+            dim_record("cs_squared_from_EOS=5*K*rho_star^4/m", cs_squared_from_eos, symbol_dims),
+            dim_record("omega*L0/c_s", tan_argument, symbol_dims),
+            dim_record("Z00_prefactor=-omega/c_s", dtn_prefactor, symbol_dims),
+        ],
+        "DN_UNITTEST_FAIL_DIMENSIONAL_probe": {
+            "mutation": "corrupt sourced [K] by one extra power of L",
+            "participates_in_verdict": True,
+            "sourced_K_dimension": dim_to_text(symbol_dims[K]),
+            "corrupted_K_dimension": dim_to_text(corrupt_dims[K]),
+            "mutated_dimensions": {
+                "cs_squared_from_EOS": dim_to_text(corrupt_cs_dim),
+                "tan_argument": dim_to_text(corrupt_tan_arg_dim),
+                "Z00_prefactor": dim_to_text(corrupt_z00_dim),
+            },
+            "without_mutation_dimensional_ok": dimensional_ok,
+            "with_mutation_dimensional_ok": corrupt_ok,
+            "probe_verdict": probe_verdict,
+            "mutation_fires": probe_verdict == "DN_UNITTEST_FAIL_DIMENSIONAL",
+        },
+    }
 
 
 def build_reduction_certificate(symbols: dict[str, sp.Symbol]) -> dict[str, Any]:
@@ -181,6 +421,7 @@ def solve_sympy_engine() -> dict[str, Any]:
     psi = sp.Function("psi")
 
     k = omega / cS
+    cs_squared_from_eos = compact_expr(5 * K * rho_star**4 / m)
     ode = sp.Eq(sp.diff(psi(s), s, 2) + k**2 * psi(s), 0)
     dsolve_solution = compact_expr(sp.dsolve(ode).rhs)
     constants = sorted(
@@ -208,6 +449,8 @@ def solve_sympy_engine() -> dict[str, Any]:
     dtn_sincos = compact_expr(dtn_raw.rewrite(sp.sin))
     dtn = compact_expr(dtn_raw)
     dtn_target = compact_expr(-k * sp.tan(k * L0))
+    tan_argument = compact_expr(k * L0)
+    dtn_prefactor = compact_expr(-k)
     dtn_matches_target = expr_equal(dtn, dtn_target)
 
     denominator_full = compact_expr(sp.fraction(sp.together(dtn_sincos))[1])
@@ -299,25 +542,18 @@ def solve_sympy_engine() -> dict[str, Any]:
     bc_derivation_emitted = False
     bc_provenance = "imposed"
 
-    dim_M = (1, 0, 0)
-    dim_L = (0, 1, 0)
-    dim_T = (0, 0, 1)
-    dim_omega = (0, 0, -1)
-    dim_L0 = dim_L
-    dim_cS = (0, 1, -1)
-    dim_Z = (0, -1, 0)
-    dim_rho = (0, -3, 0)
-    dim_m = dim_M
-    dim_K = (1, 14, -2)
-    dim_checks = {
-        "omega_L0_over_cS_dimensionless": dimension_add(dim_omega, dim_L0, dimension_scale(-1, dim_cS))
-        == (0, 0, 0),
-        "Z00_has_inverse_length": dimension_add(dim_omega, dimension_scale(-1, dim_cS)) == dim_Z,
-        "cs_squared_from_EOS": dimension_add(dim_K, dimension_scale(4, dim_rho), dimension_scale(-1, dim_m))
-        == dimension_scale(2, dim_cS),
-        "pole_ladder_has_frequency_dimension": dimension_add(dim_cS, dimension_scale(-1, dim_L0)) == dim_omega,
-    }
-    dim_check_pass = all(dim_checks.values())
+    dimensional_check = build_dimensional_check(
+        L0=L0,
+        omega=omega,
+        cS=cS,
+        K=K,
+        rho_star=rho_star,
+        m=m,
+        cs_squared_from_eos=cs_squared_from_eos,
+        tan_argument=tan_argument,
+        dtn_prefactor=dtn_prefactor,
+        dtn_target=dtn_target,
+    )
 
     reduction_certificate = build_reduction_certificate(
         {
@@ -414,9 +650,7 @@ def solve_sympy_engine() -> dict[str, Any]:
             },
         },
         "dimensional_check": {
-            "status": "pass" if dim_check_pass else "fail",
-            "checks": dim_checks,
-            "dimension_order": "{M,L,T}",
+            **dimensional_check,
         },
         "solve_artifacts": artifacts,
         "mathematica_exprs": mma_exports,
@@ -436,17 +670,29 @@ def write_sympy_exports(payload: dict[str, Any]) -> None:
     SYM_EXPR_WL.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def load_engine_agreement(expected_digest: str) -> tuple[bool, dict[str, Any]]:
+def load_engine_agreement(payload: dict[str, Any]) -> tuple[bool, dict[str, Any]]:
     mma = yaml_read(MMA_YAML)
     if mma is None:
         return False, {
             "status": "pending_mathematica",
             "mathematica_yaml": str(MMA_YAML.relative_to(REPO_ROOT)),
         }
-    digest_matches = mma.get("sympy_expression_digest") == expected_digest
+    digest_matches = mma.get("sympy_expression_digest") == payload["expression_digest"]
     agreement_block = mma.get("engine_agreement", {})
     if not isinstance(agreement_block, dict):
         agreement_block = {}
+    mma_dim = mma.get("dimensional", {})
+    if not isinstance(mma_dim, dict):
+        mma_dim = {}
+    mma_probe = mma_dim.get("DN_UNITTEST_FAIL_DIMENSIONAL_probe", {})
+    if not isinstance(mma_probe, dict):
+        mma_probe = {}
+    sym_dim = payload["dimensional_check"]
+    sym_probe = sym_dim["DN_UNITTEST_FAIL_DIMENSIONAL_probe"]
+    dimensional_agreement = {
+        "dimensional_ok": mma_dim.get("dimensional_ok") == sym_dim["dimensional_ok"],
+        "dimension_probe_verdict": mma_probe.get("probe_verdict") == sym_probe["probe_verdict"],
+    }
     load_bearing = [
         "dtn",
         "pole_denominator",
@@ -455,12 +701,17 @@ def load_engine_agreement(expected_digest: str) -> tuple[bool, dict[str, Any]]:
         "static_series",
         "dd_limit",
     ]
-    all_agree = digest_matches and all(bool(agreement_block.get(key)) for key in load_bearing)
+    all_agree = (
+        digest_matches
+        and all(bool(agreement_block.get(key)) for key in load_bearing)
+        and all(dimensional_agreement.values())
+    )
     return all_agree, {
         "status": "pass" if all_agree else "fail",
         "digest_matches": digest_matches,
         "mathematica_yaml": str(MMA_YAML.relative_to(REPO_ROOT)),
         "details": agreement_block,
+        "dimensional_agreement": dimensional_agreement,
         "mathematica_route": mma.get("route", "transfer_matrix"),
     }
 
@@ -468,6 +719,8 @@ def load_engine_agreement(expected_digest: str) -> tuple[bool, dict[str, Any]]:
 def compute_verdict(payload: dict[str, Any], engine_agreement: bool) -> str:
     if not engine_agreement:
         return "DN_UNITTEST_ENV_BLOCKED"
+    if not payload["dimensional_check"]["dimensional_ok"]:
+        return "DN_UNITTEST_FAIL_DIMENSIONAL"
     if payload["reduction_certificate"]["unsuppressed_operator_intrusion"]:
         return "DN_UNITTEST_FAIL_OPERATOR_INTRUSION"
     if not payload["operator_is_helmholtz"]:
@@ -485,7 +738,35 @@ def compute_verdict(payload: dict[str, Any], engine_agreement: bool) -> str:
     return "DN_UNITTEST_PASS"
 
 
+def with_dimensional_ok(payload: dict[str, Any], ok: bool) -> dict[str, Any]:
+    mutated = dict(payload)
+    dim = dict(payload["dimensional_check"])
+    dim["dimensional_ok"] = ok
+    dim["status"] = "pass" if ok else "fail"
+    dim["dimensional_status"] = dimension_verdict(ok)
+    mutated["dimensional_check"] = dim
+    return mutated
+
+
+def attach_dimensional_ablation(payload: dict[str, Any]) -> dict[str, Any]:
+    dim = dict(payload["dimensional_check"])
+    probe = dict(dim["DN_UNITTEST_FAIL_DIMENSIONAL_probe"])
+    probe["self_ablation"] = {
+        "rerun_gate_logic": True,
+        "with_mutation": compute_verdict(with_dimensional_ok(payload, False), True),
+        "without_mutation": compute_verdict(with_dimensional_ok(payload, True), True),
+        "expected_fail": "DN_UNITTEST_FAIL_DIMENSIONAL",
+    }
+    probe["self_ablation"]["fail_suppressed"] = (
+        probe["self_ablation"]["with_mutation"] == "DN_UNITTEST_FAIL_DIMENSIONAL"
+        and probe["self_ablation"]["without_mutation"] != "DN_UNITTEST_FAIL_DIMENSIONAL"
+    )
+    dim["DN_UNITTEST_FAIL_DIMENSIONAL_probe"] = probe
+    return dim
+
+
 def final_results(payload: dict[str, Any], verdict: str, engine_agreement: bool, engine_details: dict[str, Any]) -> dict[str, Any]:
+    dimensional = attach_dimensional_ablation(payload)
     return {
         "verdict": verdict,
         "reduction_certificate": payload["reduction_certificate"],
@@ -504,8 +785,9 @@ def final_results(payload: dict[str, Any], verdict: str, engine_agreement: bool,
         "counterfactual_guard": payload["counterfactual_guard"],
         "engine_agreement": engine_agreement,
         "engine_agreement_details": engine_details,
-        "dim_check": payload["dimensional_check"]["status"],
-        "dimensional_check": payload["dimensional_check"],
+        "dim_check": dimensional["status"],
+        "dimensional": dimensional,
+        "dimensional_check": dimensional,
         "solve_artifacts": payload["solve_artifacts"],
         "counterfactual_artifacts": payload["counterfactual_artifacts"],
         "bc_derivation": payload["bc_derivation"],
@@ -595,6 +877,15 @@ The explicit `V_wall` mouth/cap gradient derivation is not emitted, so the verdi
 ## Dimensional Check
 
 `dim_check={results['dim_check']}`.
+
+### Dimensional check (retrofit)
+
+- Walked headline quantities: `{results['dimensional']['headline_quantities_walked']}`.
+- Sourced dimensions: `{results['dimensional']['symbol_dimensions']}`.
+- Sourcing note: `{results['dimensional']['sourcing_note']}`.
+- Computed dimensions: `{results['dimensional']['computed_dimensions']}`; `dimensional_ok={results['dimensional']['dimensional_ok']}`.
+- Sourced-input probe: `{results['dimensional']['DN_UNITTEST_FAIL_DIMENSIONAL_probe']}`.
+- Dual-engine dimensional agreement: `{results['engine_agreement_details'].get('dimensional_agreement')}`.
 """
     REPORT_OUT.parent.mkdir(parents=True, exist_ok=True)
     REPORT_OUT.write_text(report, encoding="utf-8")
@@ -609,6 +900,8 @@ This records the Phase-1 scaffold §9/§11.1 check for the straight frozen throa
 
 BC provenance remains `{results['bc_provenance']}` because the explicit `V_wall` mouth/cap gradient derivation was not emitted; therefore this is the honest `BC_DEPENDENT` rung, not a full `PASS`.
 
+Dimensional retrofit: the SymPy and Mathematica engines walk the sourced EOS speed law `5*K*rho_star^4/m`, the DtN tangent argument `omega*L0/c_s`, and the `Z00` prefactor. The sourced `[K]` is fixed from the 4D EOS chain `{results['dimensional']['sourcing_note']['derived_chain']}`, not back-solved from `c_s`; corrupting `[K]` flips the recomputed verdict to `{results['dimensional']['DN_UNITTEST_FAIL_DIMENSIONAL_probe']['self_ablation']['with_mutation']}`, while the unmutated run remains `{results['dimensional']['DN_UNITTEST_FAIL_DIMENSIONAL_probe']['self_ablation']['without_mutation']}`.
+
 Primary artifacts:
 - `software/stage1_solver/reports/pathA_30_dn_unit_test.md`
 - `software/stage1_solver/reports/pathA_30_results.yaml`
@@ -622,7 +915,7 @@ Primary artifacts:
 def main() -> None:
     payload = solve_sympy_engine()
     write_sympy_exports(payload)
-    engine_agreement, engine_details = load_engine_agreement(payload["expression_digest"])
+    engine_agreement, engine_details = load_engine_agreement(payload)
     verdict = compute_verdict(payload, engine_agreement)
     results = final_results(payload, verdict, engine_agreement, engine_details)
     yaml_write(RESULTS_YAML, results)

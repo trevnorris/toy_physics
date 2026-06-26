@@ -153,6 +153,119 @@ def f_eval(expr: sp.Expr, subs: dict[sp.Symbol, float]) -> float:
     return float(sp.N(compact(expr).subs(subs), 30))
 
 
+class DimError(ValueError):
+    pass
+
+
+Dim = tuple[sp.Rational, sp.Rational, sp.Rational]
+ZERO_DIM: Dim = (sp.Rational(0), sp.Rational(0), sp.Rational(0))
+DIMENSIONLESS_FUNCTIONS = {
+    sp.sin,
+    sp.cos,
+    sp.tan,
+    sp.cot,
+    sp.sinh,
+    sp.cosh,
+    sp.tanh,
+    sp.coth,
+    sp.sech,
+    sp.csch,
+}
+Ldim, Mdim, Tdim = sp.symbols("L M T", positive=True)
+
+
+def dim_add(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 + b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_sub(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 - b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_scale(dim: Dim, scale: sp.Rational) -> Dim:
+    return tuple(sp.Rational(scale * d0) for d0 in dim)  # type: ignore[return-value]
+
+
+def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
+    expr = sp.sympify(expr)
+    if expr == 0 or expr.is_number:
+        return ZERO_DIM
+    if expr.is_Symbol:
+        if expr not in symbol_dims:
+            raise DimError(f"missing dimension for symbol {expr}")
+        return symbol_dims[expr]
+    if expr.is_Mul:
+        out = ZERO_DIM
+        for arg in expr.args:
+            out = dim_add(out, dim_of(arg, symbol_dims))
+        return out
+    if expr.is_Pow:
+        base, exponent = expr.args
+        if not exponent.is_number:
+            raise DimError(f"non-numeric dimension exponent in {expr}")
+        return dim_scale(dim_of(base, symbol_dims), sp.Rational(exponent))
+    if expr.is_Add:
+        dims = [dim_of(arg, symbol_dims) for arg in expr.args if arg != 0]
+        if not dims:
+            return ZERO_DIM
+        first = dims[0]
+        mismatched = [dim for dim in dims if dim != first]
+        if mismatched:
+            raise DimError(f"dimension mismatch in sum {expr}: {dims}")
+        return first
+    if expr.func in DIMENSIONLESS_FUNCTIONS:
+        arg_dims = [dim_of(arg, symbol_dims) for arg in expr.args]
+        if any(dim != ZERO_DIM for dim in arg_dims):
+            raise DimError(f"dimensionful argument in {expr}: {arg_dims}")
+        return ZERO_DIM
+    raise DimError(f"unsupported expression in dimension checker: {expr}")
+
+
+def dim_to_monomial(dim: Dim) -> sp.Expr:
+    return sp.factor(Ldim ** dim[0] * Mdim ** dim[1] * Tdim ** dim[2])
+
+
+def exp_text(exp: sp.Rational) -> str:
+    exp = sp.Rational(exp)
+    if exp.q == 1:
+        return str(exp.p)
+    return f"{exp.p}/{exp.q}"
+
+
+def dim_to_text(dim: Dim) -> str:
+    parts: list[str] = []
+    for name, exp in (("L", dim[0]), ("T", dim[2]), ("M", dim[1])):
+        exp = sp.Rational(exp)
+        if exp == 0:
+            continue
+        if exp == 1:
+            parts.append(name)
+        else:
+            parts.append(f"{name}^{exp_text(exp)}")
+    return " ".join(parts) if parts else "1"
+
+
+def dim_vector_text(dim: Dim | None) -> list[str] | None:
+    if dim is None:
+        return None
+    return [hstr(v) for v in dim]
+
+
+def dim_record(name: str, expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> dict[str, Any]:
+    dim = dim_of(expr, symbol_dims)
+    return {
+        "quantity": name,
+        "expression": hstr(expr),
+        "dimension": dim_to_text(dim),
+        "dimension_monomial": hstr(dim_to_monomial(dim)),
+        "dimension_vector_LMT": dim_vector_text(dim),
+    }
+
+
+def dimension_verdict(ok: bool) -> str:
+    return "DIMENSIONAL_OK" if ok else "FAIL_DIMENSIONAL"
+
+
 def max_ratio_delta(values: list[float], eps_values: list[float]) -> float:
     ratios = [value / eps for value, eps in zip(values, eps_values) if eps != 0.0]
     if not ratios:
@@ -165,6 +278,8 @@ def first_nonzero(values: list[float], tol: float = 1.0e-12) -> bool:
 
 
 def verdict_from_gates(gates: dict[str, bool], calibration_inputs: list[str]) -> str:
+    if not gates["dimensional_ok"]:
+        return "FAIL_DIMENSIONAL"
     if not gates["covariant"]:
         return "FAIL_NOT_COVARIANT"
     if not gates["tautology_clear"]:
@@ -184,50 +299,191 @@ def verdict_from_gates(gates: dict[str, bool], calibration_inputs: list[str]) ->
     return "ISOTROPY_PASS"
 
 
-def build_dimensional_table() -> dict[str, Any]:
-    # Dimension vector order is (M,L,T). q has length; beta2 and Y_lm are dimensionless.
-    dims = {
-        "dOmega": (0, 0, 0),
-        "dw": (0, 1, 0),
-        "q_2m": (0, 1, 0),
-        "omega": (0, 0, -1),
-        "beta2": (0, 0, 0),
-        "mu_eta": (1, -1, 0),
-        "T_w": (1, 1, -2),
-        "K_eta": (1, -1, -2),
-        "T_Omega": (1, -1, -2),
-        "M2": (1, 0, 0),
-        "K2": (1, 0, -2),
-        "B0_Z0": (1, 0, -2),
-        "B2_Z2": (1, 0, 0),
-        "B4_Z4": (1, 0, 2),
-        "D0": (1, 0, -2),
-        "D2": (1, 0, 0),
-        "D4": (1, 0, 2),
-        "D2_omega2": (1, 0, -2),
-        "D4_omega4": (1, 0, -2),
-        "u2_a2_b2": (0, 0, 2),
-        "u4_a4_b4": (0, 0, 4),
+def build_dimensional_check(
+    *,
+    Mtilde: sp.Symbol,
+    Ktilde: sp.Symbol,
+    TomegaTilde: sp.Symbol,
+    M2_expr: sp.Expr,
+    K2_expr: sp.Expr,
+    lambda_m: sp.Expr,
+) -> dict[str, Any]:
+    a_dim, dw, dOmega = sp.symbols("a_dim dw dOmega", positive=True)
+    beta2, beta2_prime = sp.symbols("beta2 beta2_prime", nonzero=True)
+    mu_eta_density, T_w_density, K_eta_density, T_omega_density = sp.symbols(
+        "mu_eta_density T_w_density K_eta_density T_Omega_density", nonzero=True
+    )
+    measure = a_dim**2 * dw * dOmega
+    m2_integral = mu_eta_density * beta2**2 * measure
+    k_tw_term = T_w_density * beta2_prime**2 * measure
+    k_eta_term = K_eta_density * beta2**2 * measure
+    k_omega_term = lambda_m * T_omega_density * beta2**2 * measure
+    k2_integral = k_tw_term + k_eta_term + k_omega_term
+
+    symbol_dims: dict[sp.Symbol, Dim] = {
+        a_dim: (1, 0, 0),
+        dw: (1, 0, 0),
+        dOmega: ZERO_DIM,
+        beta2: ZERO_DIM,
+        beta2_prime: (-1, 0, 0),
+        mu_eta_density: (-3, 1, 0),
+        T_w_density: (-1, 1, -2),
+        K_eta_density: (-3, 1, -2),
+        T_omega_density: (-3, 1, -2),
+        Mtilde: (0, 1, 0),
+        Ktilde: (0, 1, -2),
+        TomegaTilde: (0, 1, -2),
     }
-    checks = {
-        "M2_from_mu_eta_dw": dims["M2"] == tuple(a + b for a, b in zip(dims["mu_eta"], dims["dw"])),
-        "K2_from_Tw_beta_prime_sq_dw": dims["K2"] == (1, 0, -2),
-        "K_eta_and_T_Omega_add": dims["K_eta"] == dims["T_Omega"],
-        "Keta_beta_sq_dw_to_K2": dims["K2"] == tuple(a + b for a, b in zip(dims["K_eta"], dims["dw"])),
-        "D0_D2w2_D4w4_match": dims["D0"] == dims["D2_omega2"] == dims["D4_omega4"],
-        "u2_is_inverse_omega_squared": dims["u2_a2_b2"] == (0, 0, 2),
-        "u4_is_inverse_omega_fourth": dims["u4_a4_b4"] == (0, 0, 4),
-        "angular_integrals_dimensionless": dims["dOmega"] == (0, 0, 0),
-    }
-    table = [
-        {"quantity": key, "dimension_MLT": list(value)}
-        for key, value in dims.items()
-    ]
+    expected_m = (0, 1, 0)
+    expected_k = (0, 1, -2)
+    expected_ratio = (0, 0, -2)
+
+    measure_dim = dim_of(measure, symbol_dims)
+    m2_integral_dim = dim_of(m2_integral, symbol_dims)
+    k_tw_dim = dim_of(k_tw_term, symbol_dims)
+    k_eta_dim = dim_of(k_eta_term, symbol_dims)
+    k_omega_dim = dim_of(k_omega_term, symbol_dims)
+    k2_integral_dim = dim_of(k2_integral, symbol_dims)
+    actual_m2_dim = dim_of(M2_expr, symbol_dims)
+    actual_k2_dim = dim_of(K2_expr, symbol_dims)
+    actual_ratio_dim = dim_sub(actual_k2_dim, actual_m2_dim)
+    term_homogeneous = k_tw_dim == k_eta_dim == k_omega_dim == k2_integral_dim
+    dimensional_ok = bool(
+        measure_dim == (3, 0, 0)
+        and m2_integral_dim == expected_m
+        and term_homogeneous
+        and k2_integral_dim == expected_k
+        and actual_m2_dim == expected_m
+        and actual_k2_dim == expected_k
+        and actual_ratio_dim == expected_ratio
+    )
+
+    corrupt_dims = dict(symbol_dims)
+    corrupt_dims[T_omega_density] = dim_add(symbol_dims[T_omega_density], (1, 0, 0))
+    corrupt_dims[TomegaTilde] = dim_add(symbol_dims[TomegaTilde], (1, 0, 0))
+    corrupt_error = None
+    try:
+        corrupt_k_omega_dim = dim_of(k_omega_term, corrupt_dims)
+        corrupt_k2_integral_dim = dim_of(k2_integral, corrupt_dims)
+        corrupt_actual_k2_dim = dim_of(K2_expr, corrupt_dims)
+        corrupt_actual_ratio_dim = dim_sub(corrupt_actual_k2_dim, actual_m2_dim)
+        corrupt_ok = bool(
+            corrupt_k2_integral_dim == expected_k
+            and corrupt_actual_k2_dim == expected_k
+            and corrupt_actual_ratio_dim == expected_ratio
+        )
+    except DimError as exc:
+        corrupt_k_omega_dim = dim_of(k_omega_term, corrupt_dims)
+        corrupt_k2_integral_dim = None
+        corrupt_actual_k2_dim = None
+        corrupt_actual_ratio_dim = None
+        corrupt_ok = False
+        corrupt_error = str(exc)
+    probe_verdict = "NO_FAIL" if corrupt_ok else "FAIL_DIMENSIONAL"
+
     return {
-        "dimension_order": ["M", "L", "T"],
-        "table": table,
-        "checks": checks,
-        "status": "pass" if all(checks.values()) else "fail",
+        "dimension_order": ["L", "M", "T"],
+        "dimensional_gate": "explicit a^2 dw dOmega measure plus grouped M2/K2 ratio",
+        "headline_quantities_walked": {
+            "explicit_measure": hstr(measure),
+            "M2_integral": hstr(m2_integral),
+            "K2_integral": hstr(k2_integral),
+            "K2_terms": {
+                "T_w_beta_prime_sq": hstr(k_tw_term),
+                "K_eta_beta_sq": hstr(k_eta_term),
+                "lambda_T_Omega_beta_sq": hstr(k_omega_term),
+            },
+            "actual_grouped_M2": hstr(M2_expr),
+            "actual_grouped_K2": hstr(K2_expr),
+            "actual_K2_over_M2": hstr(K2_expr / M2_expr),
+        },
+        "symbol_dimensions": {
+            "a_dim": "L",
+            "dw": "L",
+            "dOmega": "1",
+            "dV=a_dim^2*dw*dOmega": "L^3",
+            "beta2": "1",
+            "beta2_prime": "L^-1",
+            "mu_eta_density": "M L^-3",
+            "T_w_density": "M L^-1 T^-2",
+            "K_eta_density": "M L^-3 T^-2",
+            "T_Omega_density": "M L^-3 T^-2",
+            "Mtilde": "M",
+            "Ktilde": "M T^-2",
+            "TomegaTilde": "M T^-2",
+        },
+        "sourcing_note": "The explicit check restores the S2 wall measure dV=a^2 dw dOmega before walking the density terms; the actual grouped Mtilde/Ktilde/TomegaTilde dimensions are then sourced from those integrals, not back-solved from K2/M2.",
+        "computed_dimensions": {
+            "measure": dim_to_text(measure_dim),
+            "M2_integral": dim_to_text(m2_integral_dim),
+            "K2_terms": {
+                "T_w_beta_prime_sq": dim_to_text(k_tw_dim),
+                "K_eta_beta_sq": dim_to_text(k_eta_dim),
+                "lambda_T_Omega_beta_sq": dim_to_text(k_omega_dim),
+            },
+            "K2_integral": dim_to_text(k2_integral_dim),
+            "actual_grouped_M2": dim_to_text(actual_m2_dim),
+            "actual_grouped_K2": dim_to_text(actual_k2_dim),
+            "actual_K2_over_M2": dim_to_text(actual_ratio_dim),
+        },
+        "computed_dimension_vectors_LMT": {
+            "measure": dim_vector_text(measure_dim),
+            "M2_integral": dim_vector_text(m2_integral_dim),
+            "K2_terms": {
+                "T_w_beta_prime_sq": dim_vector_text(k_tw_dim),
+                "K_eta_beta_sq": dim_vector_text(k_eta_dim),
+                "lambda_T_Omega_beta_sq": dim_vector_text(k_omega_dim),
+            },
+            "K2_integral": dim_vector_text(k2_integral_dim),
+            "actual_grouped_M2": dim_vector_text(actual_m2_dim),
+            "actual_grouped_K2": dim_vector_text(actual_k2_dim),
+            "actual_K2_over_M2": dim_vector_text(actual_ratio_dim),
+        },
+        "expected_dimensions": {
+            "M2": dim_to_text(expected_m),
+            "K2": dim_to_text(expected_k),
+            "K2_over_M2": dim_to_text(expected_ratio),
+        },
+        "checks": {
+            "measure_dimension_explicit": measure_dim == (3, 0, 0),
+            "K2_terms_homogeneous": term_homogeneous,
+            "M2_integral_has_mass_dimension": m2_integral_dim == expected_m,
+            "K2_integral_has_stiffness_dimension": k2_integral_dim == expected_k,
+            "actual_grouped_M2_has_mass_dimension": actual_m2_dim == expected_m,
+            "actual_grouped_K2_has_stiffness_dimension": actual_k2_dim == expected_k,
+            "actual_K2_over_M2_has_omega_squared_dimension": actual_ratio_dim == expected_ratio,
+        },
+        "dimensional_ok": dimensional_ok,
+        "status": "pass" if dimensional_ok else "fail",
+        "dimensional_status": dimension_verdict(dimensional_ok),
+        "table": [
+            dim_record("dV=a_dim^2*dw*dOmega", measure, symbol_dims),
+            dim_record("M2_integral=mu_eta_density*beta2^2*dV", m2_integral, symbol_dims),
+            dim_record("K2_Tw_term=T_w_density*beta2_prime^2*dV", k_tw_term, symbol_dims),
+            dim_record("K2_Keta_term=K_eta_density*beta2^2*dV", k_eta_term, symbol_dims),
+            dim_record("K2_TOmega_term=lambda*T_Omega_density*beta2^2*dV", k_omega_term, symbol_dims),
+            dim_record("actual_grouped_M2", M2_expr, symbol_dims),
+            dim_record("actual_grouped_K2", K2_expr, symbol_dims),
+        ],
+        "FAIL_DIMENSIONAL_probe": {
+            "mutation": "corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one extra power of L",
+            "participates_in_verdict": True,
+            "sourced_T_Omega_dimension": dim_to_text(symbol_dims[T_omega_density]),
+            "corrupted_T_Omega_dimension": dim_to_text(corrupt_dims[T_omega_density]),
+            "sourced_TomegaTilde_dimension": dim_to_text(symbol_dims[TomegaTilde]),
+            "corrupted_TomegaTilde_dimension": dim_to_text(corrupt_dims[TomegaTilde]),
+            "mutated_dimensions": {
+                "lambda_T_Omega_beta_sq": dim_to_text(corrupt_k_omega_dim),
+                "K2_integral": dim_to_text(corrupt_k2_integral_dim) if corrupt_k2_integral_dim else "inhomogeneous",
+                "actual_grouped_K2": dim_to_text(corrupt_actual_k2_dim) if corrupt_actual_k2_dim else "inhomogeneous",
+                "actual_K2_over_M2": dim_to_text(corrupt_actual_ratio_dim) if corrupt_actual_ratio_dim else "inhomogeneous",
+                "error": corrupt_error,
+            },
+            "without_mutation_dimensional_ok": dimensional_ok,
+            "with_mutation_dimensional_ok": corrupt_ok,
+            "probe_verdict": probe_verdict,
+            "mutation_fires": probe_verdict == "FAIL_DIMENSIONAL",
+        },
     }
 
 
@@ -243,6 +499,7 @@ def build_report(payload: dict[str, Any]) -> str:
         "degenerate_beta_zero",
         "tautology_hash_collision",
         "static_drop_inertia",
+        "dimensional_corrupt_T_Omega",
     ]
     fixed_probe_lines = [
         f"- `{name}`: with mutation `{probes[name]['verdict']}`, "
@@ -281,6 +538,7 @@ def build_report(payload: dict[str, Any]) -> str:
         f"- Singular denominator guard probe: `{probes['singular_denominator']['verdict']}`.",
         f"- Tautology hash probe: `{probes['tautology_hash_collision']['verdict']}`.",
         f"- Static response probe: `{probes['static_drop_inertia']['verdict']}`.",
+        f"- Dimensional sourced-input probe: `{probes['dimensional_corrupt_T_Omega']['verdict']}`.",
         "",
         "## Fixed probe self-ablations",
         "",
@@ -298,6 +556,15 @@ def build_report(payload: dict[str, Any]) -> str:
         f"- Max numeric delta: `{engine['max_numeric_delta']}` with tolerance `{engine['numeric_tolerance']}`.",
         f"- Per-lane `D_A,n` max numeric delta: `{engine.get('grouped_lane_D_max_numeric_delta')}`.",
         f"- Per-lane `D_A,n` deltas: `{engine.get('grouped_lane_D_numeric_deltas')}`.",
+        f"- Dimensional agreement: `{engine['symbolic_checks'].get('dimensional_ok')}`; "
+        f"probe verdict agreement: `{engine['symbolic_checks'].get('dimension_probe_verdict')}`.",
+        "",
+        "## Dimensional check (retrofit)",
+        "",
+        f"- Walked quantities: `{payload['dimensional']['headline_quantities_walked']}`.",
+        f"- Sourced dimensions: `{payload['dimensional']['symbol_dimensions']}`.",
+        f"- Computed dimensions: `{payload['dimensional']['computed_dimensions']}`.",
+        f"- Probe flip: `{payload['counterfactuals']['dimensional_corrupt_T_Omega']}`.",
         "",
         "## Input partition",
         "",
@@ -326,9 +593,11 @@ def build_feed_note(payload: dict[str, Any]) -> str:
             "`ISOTROPY_CALIBRATED`, not `ISOTROPY_PASS`, because `beta2(w)`, `T_Omega`, wall stiffnesses, "
             "and the `Btilde/Ztilde/Ktilde/Mtilde` radial data remain calibration inputs.",
             "",
-            "The able-to-fail probes now use computed gate flags. The five remediated probes each fail with "
+            "The able-to-fail probes now use computed gate flags. The remediated probes each fail with "
             "their mutation and stop failing under their self-ablation; neutering any probe's computed flag "
             "makes `able_to_fail_ok` false.",
+            "",
+            "Dimensional retrofit: the engines walk the explicit `a^2 dw dOmega` wall measure, the `M2`/`K2` integrand terms, and the actual grouped `Mtilde` / `Ktilde + 6*TomegaTilde` expressions. Corrupting sourced `T_Omega` flips the recomputed verdict to `FAIL_DIMENSIONAL` and the self-ablation restores `ISOTROPY_CALIBRATED`.",
             "",
             f"Engine agreement status: `{payload['engine_agreement']['status']}`, max numeric delta "
             f"`{payload['engine_agreement']['max_numeric_delta']}`, grouped-lane D max delta "
@@ -410,6 +679,13 @@ def compute_engine_agreement(sympy_payload: dict[str, Any], mma_payload: dict[st
     )
     max_numeric_delta = max(numeric_deltas) if numeric_deltas else 0.0
 
+    mma_counterfactuals = mma_payload.get("counterfactuals", {})
+    if not isinstance(mma_counterfactuals, dict):
+        mma_counterfactuals = {}
+    mma_dimensional = mma_payload.get("dimensional", {})
+    if not isinstance(mma_dimensional, dict):
+        mma_dimensional = {}
+
     symbolic_checks = {
         "gram_identity": sympy_payload["harmonics"]["gram_is_identity"]
         == mma_payload["harmonics"]["gram_is_identity"],
@@ -428,7 +704,10 @@ def compute_engine_agreement(sympy_payload: dict[str, Any], mma_payload: dict[st
             for order_n in ["0", "2", "4"]
         ),
         "probe_verdicts": {
-            key: sympy_payload["counterfactuals"][key]["verdict"] == mma_payload["counterfactuals"][key]["verdict"]
+            key: (
+                key in mma_counterfactuals
+                and sympy_payload["counterfactuals"][key]["verdict"] == mma_counterfactuals[key].get("verdict")
+            )
             for key in [
                 "pure_prefactor_anisotropy",
                 "sector_selective_anisotropy",
@@ -438,9 +717,14 @@ def compute_engine_agreement(sympy_payload: dict[str, Any], mma_payload: dict[st
                 "singular_denominator",
                 "tautology_hash_collision",
                 "static_drop_inertia",
+                "dimensional_corrupt_T_Omega",
             ]
         },
         "baseline_verdict": sympy_payload["verdict"] == mma_payload["verdict"],
+        "dimensional_ok": sympy_payload["dimensional"]["dimensional_ok"]
+        == mma_dimensional.get("dimensional_ok"),
+        "dimension_probe_verdict": sympy_payload["counterfactuals"]["dimensional_corrupt_T_Omega"]["verdict"]
+        == mma_counterfactuals.get("dimensional_corrupt_T_Omega", {}).get("verdict"),
     }
     nested_probe_ok = all(symbolic_checks["probe_verdicts"].values())
     symbolic_flat_ok = all(
@@ -469,6 +753,8 @@ def compute_engine_agreement(sympy_payload: dict[str, Any], mma_payload: dict[st
             "probe_verdicts",
             "omega_2m_sample",
             "baseline_verdict",
+            "dimensional_ok",
+            "dimension_probe_verdict",
         ],
     }
 
@@ -596,6 +882,14 @@ def symbolic_engine() -> dict[str, Any]:
             },
         },
     }
+    dimensional_check = build_dimensional_check(
+        Mtilde=M,
+        Ktilde=Kbase,
+        TomegaTilde=Tomega,
+        M2_expr=grouped_lanes["20"]["M2"],
+        K2_expr=grouped_lanes["20"]["K2"],
+        lambda_m=sp.Integer(6),
+    )
 
     cs_equal = {
         f"D21c_equals_D21s_order_{n}": bool(compact(ungrouped["21c"]["D"][n] - ungrouped["21s"]["D"][n]) == 0)
@@ -685,6 +979,7 @@ def symbolic_engine() -> dict[str, Any]:
 
     def case_verdict(**overrides: bool) -> str:
         gates = {
+            "dimensional_ok": dimensional_check["dimensional_ok"],
             "covariant": True,
             "tautology_clear": True,
             "dynamic_retained": True,
@@ -846,6 +1141,9 @@ def symbolic_engine() -> dict[str, Any]:
     static_verdict = case_verdict(dynamic_retained=static_dynamic_retained)
     static_ablation_dynamic_retained = bool(grouped_lanes["20"]["D"]["2"].has(M))
     static_ablation_verdict = case_verdict(dynamic_retained=static_ablation_dynamic_retained)
+    dimension_probe = dimensional_check["FAIL_DIMENSIONAL_probe"]
+    dimensional_verdict = case_verdict(dimensional_ok=dimension_probe["with_mutation_dimensional_ok"])
+    dimensional_ablation_verdict = case_verdict(dimensional_ok=dimension_probe["without_mutation_dimensional_ok"])
 
     probes = {
         "pure_prefactor_anisotropy": {
@@ -944,6 +1242,19 @@ def symbolic_engine() -> dict[str, Any]:
                 "fail_suppressed": static_ablation_verdict != "FAIL_STATIC_RESPONSE",
             },
         },
+        "dimensional_corrupt_T_Omega": {
+            "description": "corrupt the sourced angular stiffness dimension and its assembled TomegaTilde scalar",
+            **dimension_probe,
+            "verdict": dimensional_verdict,
+            "fail_fires": dimensional_verdict == "FAIL_DIMENSIONAL",
+            "self_ablation": {
+                "description": "restore sourced T_Omega/TomegaTilde dimensions",
+                "dimensional_ok": dimension_probe["without_mutation_dimensional_ok"],
+                "verdict": dimensional_ablation_verdict,
+                "fail_fires": dimensional_ablation_verdict == "FAIL_DIMENSIONAL",
+                "fail_suppressed": dimensional_ablation_verdict != "FAIL_DIMENSIONAL",
+            },
+        },
     }
 
     expected_probe_verdicts = {
@@ -955,6 +1266,7 @@ def symbolic_engine() -> dict[str, Any]:
         "singular_denominator": "FAIL_SINGULAR_RESPONSE",
         "tautology_hash_collision": "FAIL_TAUTOLOGICAL",
         "static_drop_inertia": "FAIL_STATIC_RESPONSE",
+        "dimensional_corrupt_T_Omega": "FAIL_DIMENSIONAL",
     }
     expected_probe_verdicts_match = {
         key: probes[key]["verdict"] == expected for key, expected in expected_probe_verdicts.items()
@@ -989,6 +1301,10 @@ def symbolic_engine() -> dict[str, Any]:
             probes["static_drop_inertia"]["computed_fail_gate"]
             and probes["static_drop_inertia"]["self_ablation"]["fail_suppressed"]
         ),
+        "dimensional_corrupt_T_Omega": bool(
+            not probes["dimensional_corrupt_T_Omega"]["with_mutation_dimensional_ok"]
+            and probes["dimensional_corrupt_T_Omega"]["self_ablation"]["fail_suppressed"]
+        ),
     }
     def able_to_fail_from_flags(flags: dict[str, bool]) -> bool:
         return bool(all(expected_probe_verdicts_match.values()) and all(flags.values()))
@@ -1002,6 +1318,7 @@ def symbolic_engine() -> dict[str, Any]:
     dynamic_retained = bool(all(d_common[n].has(M) for n in ["2"]) and not d_common["0"].has(M))
 
     baseline_gates = {
+        "dimensional_ok": dimensional_check["dimensional_ok"],
         "covariant": bool(gram_is_identity and lambda_all_six and residuals_zero and k_coefficients_equal_all),
         "tautology_clear": tautology_clear,
         "dynamic_retained": dynamic_retained,
@@ -1128,7 +1445,9 @@ def symbolic_engine() -> dict[str, Any]:
             "neutering_any_probe_flips_false": all(not value for value in able_to_fail_if_probe_neutered.values()),
             "able_to_fail_ok": able_to_fail_ok,
         },
-        "dim_homogeneity_table": build_dimensional_table(),
+        "dimensional": dimensional_check,
+        "dimensional_check": dimensional_check,
+        "dim_homogeneity_table": dimensional_check,
         "deferred": [
             "54/5 quadrupole normalization",
             "outgoing odd N_A,n extraction",

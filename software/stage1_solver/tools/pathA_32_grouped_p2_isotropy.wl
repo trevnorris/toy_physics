@@ -50,6 +50,45 @@ defectA[triple_] := FullSimplify[(2 triple[[1]] - triple[[2]] - triple[[3]])/10,
 defectB[triple_] := FullSimplify[(triple[[2]] - triple[[3]])/2, $Assumptions];
 u2FromD[d_] := FullSimplify[-d["2"]/d["0"], $Assumptions];
 u4FromD[d_] := FullSimplify[(d["2"]^2 - d["0"] d["4"])/d["0"]^2, $Assumptions];
+zeroDim = {0, 0, 0};
+dimAdd[x_, y_] := x + y;
+dimSub[x_, y_] := x - y;
+dimScale[x_, q_] := q x;
+dimOf[expr_, dims_] := Module[{args, ds, base, pow, argDims},
+  Which[
+    TrueQ[expr == 0] || NumericQ[expr], zeroDim,
+    AtomQ[expr] && KeyExistsQ[dims, expr], dims[expr],
+    AtomQ[expr], fail["missing dimension for " <> ToString[Unevaluated[expr], InputForm]],
+    Head[expr] === Times, Total[dimOf[#, dims] & /@ (List @@ expr)],
+    Head[expr] === Power,
+      base = expr[[1]];
+      pow = expr[[2]];
+      If[! NumericQ[pow], fail["non-numeric dimension exponent"]];
+      dimScale[dimOf[base, dims], pow],
+    Head[expr] === Plus,
+      args = List @@ expr;
+      ds = dimOf[#, dims] & /@ Select[args, ! TrueQ[# == 0] &];
+      If[Length[ds] == 0, zeroDim,
+        If[Length[DeleteDuplicates[ds]] != 1, fail["dimension mismatch in sum"]];
+        First[ds]
+      ],
+    MemberQ[{Sin, Cos, Tan, Cot, Sinh, Cosh, Tanh, Coth, Sech, Csch}, Head[expr]],
+      argDims = dimOf[#, dims] & /@ (List @@ expr);
+      If[AnyTrue[argDims, # =!= zeroDim &], fail["dimensionful argument in dimensionless function"]];
+      zeroDim,
+    True, fail["unsupported dimension expression " <> ToString[expr, InputForm]]
+  ]
+];
+expText[e_] := Module[{r = Rationalize[e]},
+  If[Denominator[r] == 1, ToString[Numerator[r]], ToString[Numerator[r]] <> "/" <> ToString[Denominator[r]]]
+];
+dimText[d_] := Module[{pairs, parts},
+  pairs = {{"L", d[[1]]}, {"T", d[[3]]}, {"M", d[[2]]}};
+  parts = (If[TrueQ[#[[2]] == 1], #[[1]], #[[1]] <> "^" <> expText[#[[2]]]] &) /@
+    Select[pairs, ! TrueQ[#[[2]] == 0] &];
+  If[Length[parts] == 0, "1", StringRiffle[parts, " "]]
+];
+dimMaybeText[x_] := If[ListQ[x], dimText[x], "inhomogeneous"];
 
 gram = Table[intS2[ys[[i]] ys[[j]]], {i, 5}, {j, 5}];
 gramIsIdentity = TrueQ[FullSimplify[gram == IdentityMatrix[5], $Assumptions]];
@@ -135,6 +174,60 @@ groupedLanes = <|
     ]
   |>
 |>;
+
+measureExpr = aDim^2 dwDim dOmegaDim;
+m2IntegralExpr = muEtaDensity beta2Dim^2 measureExpr;
+kTwTermExpr = TwDensity beta2PrimeDim^2 measureExpr;
+kEtaTermExpr = KetaDensity beta2Dim^2 measureExpr;
+kOmegaTermExpr = 6 TOmegaDensity beta2Dim^2 measureExpr;
+k2IntegralExpr = kTwTermExpr + kEtaTermExpr + kOmegaTermExpr;
+dimRules = <|
+  aDim -> {1, 0, 0},
+  dwDim -> {1, 0, 0},
+  dOmegaDim -> zeroDim,
+  beta2Dim -> zeroDim,
+  beta2PrimeDim -> {-1, 0, 0},
+  muEtaDensity -> {-3, 1, 0},
+  TwDensity -> {-1, 1, -2},
+  KetaDensity -> {-3, 1, -2},
+  TOmegaDensity -> {-3, 1, -2},
+  Mtilde -> {0, 1, 0},
+  Ktilde -> {0, 1, -2},
+  TomegaTilde -> {0, 1, -2}
+|>;
+measureDim = dimOf[measureExpr, dimRules];
+m2IntegralDim = dimOf[m2IntegralExpr, dimRules];
+kTwDim = dimOf[kTwTermExpr, dimRules];
+kEtaDim = dimOf[kEtaTermExpr, dimRules];
+kOmegaDim = dimOf[kOmegaTermExpr, dimRules];
+k2IntegralDim = dimOf[k2IntegralExpr, dimRules];
+actualM2Dim = dimOf[groupedLanes["20"]["M2"], dimRules];
+actualK2Dim = dimOf[groupedLanes["20"]["K2"], dimRules];
+actualRatioDim = dimSub[actualK2Dim, actualM2Dim];
+kTermsHomogeneous = TrueQ[kTwDim == kEtaDim == kOmegaDim == k2IntegralDim];
+dimensionalOk = TrueQ[
+  measureDim == {3, 0, 0} && m2IntegralDim == {0, 1, 0} && kTermsHomogeneous &&
+    k2IntegralDim == {0, 1, -2} && actualM2Dim == {0, 1, 0} &&
+    actualK2Dim == {0, 1, -2} && actualRatioDim == {0, 0, -2}
+];
+corruptDimRules = Join[
+  KeyDrop[dimRules, {TOmegaDensity, TomegaTilde}],
+  <|TOmegaDensity -> {-2, 1, -2}, TomegaTilde -> {1, 1, -2}|>
+];
+corruptKOmegaDim = dimOf[kOmegaTermExpr, corruptDimRules];
+corruptActualKtildeDim = dimOf[Ktilde, corruptDimRules];
+corruptActualTomegaDim = dimOf[6 TomegaTilde, corruptDimRules];
+corruptDimensionalOk = TrueQ[
+  kTwDim == kEtaDim == corruptKOmegaDim &&
+    corruptActualKtildeDim == corruptActualTomegaDim &&
+    corruptActualKtildeDim == {0, 1, -2}
+];
+dimensionProbeVerdict = If[corruptDimensionalOk, "NO_FAIL", "FAIL_DIMENSIONAL"];
+
+If[! TrueQ[dimensionalOk && dimensionProbeVerdict === "FAIL_DIMENSIONAL"],
+  fail["PathA-32 Mathematica dimensional gate did not pass baseline and fail corrupted T_Omega probe"]
+];
+
 csEqual = Join[
   AssociationThread[
     ("D21c_equals_D21s_order_" <> #) & /@ {"0", "2", "4"},
@@ -182,7 +275,8 @@ calibrationInputs = {
   "Gate-1 D/N boundary provenance"
 };
 
-verdictFromGates[cov_, taut_, dyn_, stable_, denom_, lane_, able_] := Which[
+verdictFromGates[dim_, cov_, taut_, dyn_, stable_, denom_, lane_, able_] := Which[
+  ! TrueQ[dim], "FAIL_DIMENSIONAL",
   ! TrueQ[cov], "FAIL_NOT_COVARIANT",
   ! TrueQ[taut], "FAIL_TAUTOLOGICAL",
   ! TrueQ[dyn], "FAIL_STATIC_RESPONSE",
@@ -194,12 +288,12 @@ verdictFromGates[cov_, taut_, dyn_, stable_, denom_, lane_, able_] := Which[
   True, "ISOTROPY_PASS"
 ];
 caseVerdict[opts___Rule] := Module[
-  {cov = True, taut = True, dyn = True, stable = True, denom = True, lane = True, able = True},
-  {cov, taut, dyn, stable, denom, lane, able} =
-    {covariant, tautology, dynamic, stability, denominator, collapse, ableToFail} /.
-      {opts} /. {covariant -> cov, tautology -> taut, dynamic -> dyn, stability -> stable,
+  {dim = dimensionalOk, cov = True, taut = True, dyn = True, stable = True, denom = True, lane = True, able = True},
+  {dim, cov, taut, dyn, stable, denom, lane, able} =
+    {dimensional, covariant, tautology, dynamic, stability, denominator, collapse, ableToFail} /.
+      {opts} /. {dimensional -> dim, covariant -> cov, tautology -> taut, dynamic -> dyn, stability -> stable,
         denominator -> denom, collapse -> lane, ableToFail -> able};
-  verdictFromGates[cov, taut, dyn, stable, denom, lane, able]
+  verdictFromGates[dim, cov, taut, dyn, stable, denom, lane, able]
 ];
 
 sampleRules = {
@@ -356,6 +450,8 @@ staticDynamicRetained = TrueQ[Not[FreeQ[staticWrongD2, Mtilde]]];
 staticVerdict = caseVerdict[dynamic -> staticDynamicRetained];
 staticAblationDynamicRetained = TrueQ[Not[FreeQ[groupedLanes["20"]["D"]["2"], Mtilde]]];
 staticAblationVerdict = caseVerdict[dynamic -> staticAblationDynamicRetained];
+dimensionalProbeVerdict = caseVerdict[dimensional -> corruptDimensionalOk];
+dimensionalAblationVerdict = caseVerdict[dimensional -> dimensionalOk];
 
 probeVerdicts = <|
   "pure_prefactor_anisotropy" -> caseVerdict[collapse -> False],
@@ -365,7 +461,8 @@ probeVerdicts = <|
   "wrong_eigenvalue" -> wrongEigenProbe["verdict"],
   "singular_denominator" -> singularVerdict,
   "tautology_hash_collision" -> tautologyProbe["verdict"],
-  "static_drop_inertia" -> staticVerdict
+  "static_drop_inertia" -> staticVerdict,
+  "dimensional_corrupt_T_Omega" -> dimensionalProbeVerdict
 |>;
 expectedProbeVerdicts = <|
   "pure_prefactor_anisotropy" -> "FAIL_ANISOTROPIC_BRANCH",
@@ -375,7 +472,8 @@ expectedProbeVerdicts = <|
   "wrong_eigenvalue" -> "FAIL_NOT_COVARIANT",
   "singular_denominator" -> "FAIL_SINGULAR_RESPONSE",
   "tautology_hash_collision" -> "FAIL_TAUTOLOGICAL",
-  "static_drop_inertia" -> "FAIL_STATIC_RESPONSE"
+  "static_drop_inertia" -> "FAIL_STATIC_RESPONSE",
+  "dimensional_corrupt_T_Omega" -> "FAIL_DIMENSIONAL"
 |>;
 expectedProbeVerdictsMatch = Association @ KeyValueMap[(#1 -> TrueQ[probeVerdicts[#1] === #2]) &, expectedProbeVerdicts];
 computedProbeGateFlags = <|
@@ -386,7 +484,8 @@ computedProbeGateFlags = <|
   "wrong_eigenvalue" -> TrueQ[Not[wrongEigenProbe["coefficient_equals_computed_lambda"]] && Not[wrongEigenAblation["fail_fires"]]],
   "singular_denominator" -> TrueQ[Not[singularDenominatorGuardOk] && singularAblationVerdict =!= "FAIL_SINGULAR_RESPONSE"],
   "tautology_hash_collision" -> TrueQ[Not[tautologyProbe["distinct_hashes"]] && Not[tautologyAblation["fail_fires"]]],
-  "static_drop_inertia" -> TrueQ[Not[staticDynamicRetained] && staticAblationVerdict =!= "FAIL_STATIC_RESPONSE"]
+  "static_drop_inertia" -> TrueQ[Not[staticDynamicRetained] && staticAblationVerdict =!= "FAIL_STATIC_RESPONSE"],
+  "dimensional_corrupt_T_Omega" -> TrueQ[Not[corruptDimensionalOk] && dimensionalAblationVerdict =!= "FAIL_DIMENSIONAL"]
 |>;
 ableToFailOk = TrueQ[(And @@ Values[expectedProbeVerdictsMatch]) && (And @@ Values[computedProbeGateFlags])];
 
@@ -399,10 +498,10 @@ tautologyClear = TrueQ[
 laneCollapseOk = TrueQ[rawDefectsZero && (And @@ Values[csEqual])];
 dynamicRetained = TrueQ[Not[FreeQ[groupedLanes["20"]["D"]["2"], Mtilde]] && FreeQ[groupedLanes["20"]["D"]["0"], Mtilde]];
 covariantOk = TrueQ[gramIsIdentity && lambdaAllSix && residualsZero && kCoeffEqualsAll];
-verdict = verdictFromGates[covariantOk, tautologyClear, dynamicRetained, stabilityOk, denominatorGuardOk, laneCollapseOk, ableToFailOk];
+verdict = verdictFromGates[dimensionalOk, covariantOk, tautologyClear, dynamicRetained, stabilityOk, denominatorGuardOk, laneCollapseOk, ableToFailOk];
 
-If[! TrueQ[covariantOk && rawDefectsZero && normalizedDefectsZero && ableToFailOk && verdict === "ISOTROPY_CALIBRATED"],
-  Print["covariantOk=", covariantOk, " rawDefectsZero=", rawDefectsZero,
+If[! TrueQ[dimensionalOk && covariantOk && rawDefectsZero && normalizedDefectsZero && ableToFailOk && verdict === "ISOTROPY_CALIBRATED"],
+  Print["dimensionalOk=", dimensionalOk, " covariantOk=", covariantOk, " rawDefectsZero=", rawDefectsZero,
     " normalizedDefectsZero=", normalizedDefectsZero, " ableToFailOk=", ableToFailOk,
     " verdict=", verdict];
   fail["PathA-32 Mathematica gate did not reach calibrated baseline"]
@@ -471,6 +570,44 @@ yamlLines = Flatten[{
   "  normalized_defects_zero: " <> boolText[normalizedDefectsZero],
   "stability:",
   "  omega_2m_sample: " <> numText[Sqrt[(7.0 + 6.0*0.5)/3.0]],
+  "dimensional:",
+  "  dimension_order:",
+  "  - L",
+  "  - M",
+  "  - T",
+  "  dimensional_gate: " <> quoteText["explicit a^2 dw dOmega measure plus grouped M2/K2 ratio"],
+  "  headline_quantities_walked:",
+  "    explicit_measure: " <> quoteText[measureExpr],
+  "    M2_integral: " <> quoteText[m2IntegralExpr],
+  "    K2_integral: " <> quoteText[k2IntegralExpr],
+  "    actual_grouped_M2: " <> quoteText[groupedLanes["20"]["M2"]],
+  "    actual_grouped_K2: " <> quoteText[groupedLanes["20"]["K2"]],
+  "  computed_dimensions:",
+  "    measure: " <> quoteText[dimText[measureDim]],
+  "    M2_integral: " <> quoteText[dimText[m2IntegralDim]],
+  "    K2_terms:",
+  "      T_w_beta_prime_sq: " <> quoteText[dimText[kTwDim]],
+  "      K_eta_beta_sq: " <> quoteText[dimText[kEtaDim]],
+  "      lambda_T_Omega_beta_sq: " <> quoteText[dimText[kOmegaDim]],
+  "    K2_integral: " <> quoteText[dimText[k2IntegralDim]],
+  "    actual_grouped_M2: " <> quoteText[dimText[actualM2Dim]],
+  "    actual_grouped_K2: " <> quoteText[dimText[actualK2Dim]],
+  "    actual_K2_over_M2: " <> quoteText[dimText[actualRatioDim]],
+  "  dimensional_ok: " <> boolText[dimensionalOk],
+  "  dimensional_status: " <> quoteText[If[dimensionalOk, "DIMENSIONAL_OK", "FAIL_DIMENSIONAL"]],
+  "  FAIL_DIMENSIONAL_probe:",
+  "    mutation: " <> quoteText["corrupt sourced [T_Omega] and its assembled TomegaTilde scalar by one extra power of L"],
+  "    sourced_T_Omega_dimension: " <> quoteText[dimText[dimRules[TOmegaDensity]]],
+  "    corrupted_T_Omega_dimension: " <> quoteText[dimText[corruptDimRules[TOmegaDensity]]],
+  "    sourced_TomegaTilde_dimension: " <> quoteText[dimText[dimRules[TomegaTilde]]],
+  "    corrupted_TomegaTilde_dimension: " <> quoteText[dimText[corruptDimRules[TomegaTilde]]],
+  "    with_mutation_dimensional_ok: " <> boolText[corruptDimensionalOk],
+  "    without_mutation_dimensional_ok: " <> boolText[dimensionalOk],
+  "    probe_verdict: " <> quoteText[dimensionProbeVerdict],
+  "    mutated_dimensions:",
+  "      lambda_T_Omega_beta_sq: " <> quoteText[dimText[corruptKOmegaDim]],
+  "      K2_integral: " <> quoteText["inhomogeneous"],
+  "      actual_grouped_K2: " <> quoteText["inhomogeneous"],
   "counterfactuals:",
   "  pure_prefactor_anisotropy:",
   "    verdict: " <> probeVerdicts["pure_prefactor_anisotropy"],
@@ -528,6 +665,14 @@ yamlLines = Flatten[{
   "      dynamic_retained: " <> boolText[staticAblationDynamicRetained],
   "      verdict: " <> staticAblationVerdict,
   "      fail_suppressed: " <> boolText[staticAblationVerdict =!= "FAIL_STATIC_RESPONSE"],
+  "  dimensional_corrupt_T_Omega:",
+  "    verdict: " <> probeVerdicts["dimensional_corrupt_T_Omega"],
+  "    with_mutation_dimensional_ok: " <> boolText[corruptDimensionalOk],
+  "    probe_verdict: " <> quoteText[dimensionProbeVerdict],
+  "    self_ablation:",
+  "      dimensional_ok: " <> boolText[dimensionalOk],
+  "      verdict: " <> dimensionalAblationVerdict,
+  "      fail_suppressed: " <> boolText[dimensionalAblationVerdict =!= "FAIL_DIMENSIONAL"],
   "able_to_fail:",
   "  expected_probe_verdicts_match:",
   assocBoolLines["    ", expectedProbeVerdictsMatch],
@@ -535,6 +680,7 @@ yamlLines = Flatten[{
   assocBoolLines["    ", computedProbeGateFlags],
   "  able_to_fail_ok: " <> boolText[ableToFailOk],
   "gate_booleans:",
+  "  dimensional_ok: " <> boolText[dimensionalOk],
   "  covariant: " <> boolText[covariantOk],
   "  tautology_clear: " <> boolText[tautologyClear],
   "  dynamic_retained: " <> boolText[dynamicRetained],

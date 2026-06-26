@@ -103,6 +103,117 @@ def zero_pattern(matrix: sp.Matrix) -> list[list[bool]]:
     return [[bool(compact(matrix[i, j]) == 0) for j in range(matrix.cols)] for i in range(matrix.rows)]
 
 
+class DimError(ValueError):
+    pass
+
+
+Dim = tuple[sp.Rational, sp.Rational, sp.Rational]
+ZERO_DIM: Dim = (sp.Rational(0), sp.Rational(0), sp.Rational(0))
+DIMENSIONLESS_FUNCTIONS = {
+    sp.sin,
+    sp.cos,
+    sp.tan,
+    sp.cot,
+    sp.sinh,
+    sp.cosh,
+    sp.tanh,
+    sp.coth,
+    sp.sech,
+    sp.csch,
+}
+Ldim, Mdim, Tdim = sp.symbols("L M T", positive=True)
+
+
+def dim_add(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 + b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_sub(left: Dim, right: Dim) -> Dim:
+    return tuple(sp.Rational(a0 - b0) for a0, b0 in zip(left, right))  # type: ignore[return-value]
+
+
+def dim_scale(dim: Dim, scale: sp.Rational) -> Dim:
+    return tuple(sp.Rational(scale * d0) for d0 in dim)  # type: ignore[return-value]
+
+
+def dim_of(expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> Dim:
+    expr = sp.sympify(expr)
+    if expr == 0 or expr.is_number:
+        return ZERO_DIM
+    if expr.is_Symbol:
+        if expr not in symbol_dims:
+            raise DimError(f"missing dimension for symbol {expr}")
+        return symbol_dims[expr]
+    if expr.is_Mul:
+        out = ZERO_DIM
+        for arg in expr.args:
+            out = dim_add(out, dim_of(arg, symbol_dims))
+        return out
+    if expr.is_Pow:
+        base, exponent = expr.args
+        if not exponent.is_number:
+            raise DimError(f"non-numeric dimension exponent in {expr}")
+        return dim_scale(dim_of(base, symbol_dims), sp.Rational(exponent))
+    if expr.is_Add:
+        dims = [dim_of(arg, symbol_dims) for arg in expr.args if arg != 0]
+        if not dims:
+            return ZERO_DIM
+        first = dims[0]
+        mismatched = [dim for dim in dims if dim != first]
+        if mismatched:
+            raise DimError(f"dimension mismatch in sum {expr}: {dims}")
+        return first
+    if expr.func in DIMENSIONLESS_FUNCTIONS:
+        arg_dims = [dim_of(arg, symbol_dims) for arg in expr.args]
+        if any(dim != ZERO_DIM for dim in arg_dims):
+            raise DimError(f"dimensionful argument in {expr}: {arg_dims}")
+        return ZERO_DIM
+    raise DimError(f"unsupported expression in dimension checker: {expr}")
+
+
+def dim_to_monomial(dim: Dim) -> sp.Expr:
+    return sp.factor(Ldim ** dim[0] * Mdim ** dim[1] * Tdim ** dim[2])
+
+
+def exp_text(exp: sp.Rational) -> str:
+    exp = sp.Rational(exp)
+    if exp.q == 1:
+        return str(exp.p)
+    return f"{exp.p}/{exp.q}"
+
+
+def dim_to_text(dim: Dim) -> str:
+    parts: list[str] = []
+    for name, exp in (("L", dim[0]), ("T", dim[2]), ("M", dim[1])):
+        exp = sp.Rational(exp)
+        if exp == 0:
+            continue
+        if exp == 1:
+            parts.append(name)
+        else:
+            parts.append(f"{name}^{exp_text(exp)}")
+    return " ".join(parts) if parts else "1"
+
+
+def dim_vector_text(dim: Dim) -> list[str]:
+    return [hstr(v) for v in dim]
+
+
+def dim_record(name: str, expr: sp.Expr, symbol_dims: dict[sp.Symbol, Dim]) -> dict[str, Any]:
+    dim = dim_of(expr, symbol_dims)
+    return {
+        "quantity": name,
+        "expression": hstr(expr),
+        "dimension": dim_to_text(dim),
+        "dimension_monomial": hstr(dim_to_monomial(dim)),
+        "dimension_vector_LMT": dim_vector_text(dim),
+    }
+
+
+def dimension_verdict(ok: bool) -> str:
+    return "DIMENSIONAL_OK" if ok else "BREATHING_FAIL_DIMENSIONAL"
+
+
 def build_structure_gate(
     M: sp.Matrix,
     K: sp.Matrix,
@@ -200,71 +311,136 @@ def build_structure_gate(
     }
 
 
-Dim = tuple[int, int, int]
+def matrix_entry_dims(entries: dict[str, sp.Expr], symbol_dims: dict[sp.Symbol, Dim]) -> dict[str, Dim]:
+    return {name: dim_of(expr, symbol_dims) for name, expr in entries.items()}
 
 
-def dadd(*dims: Dim) -> Dim:
-    return tuple(sum(dim[i] for dim in dims) for i in range(3))  # type: ignore[return-value]
+def shared_dimension(entry_dims: dict[str, Dim]) -> Dim | None:
+    dims = list(entry_dims.values())
+    if not dims:
+        return None
+    first = dims[0]
+    return first if all(dim == first for dim in dims) else None
 
 
-def dmul(power: int, dim: Dim) -> Dim:
-    return tuple(power * entry for entry in dim)  # type: ignore[return-value]
-
-
-def dsub(left: Dim, right: Dim) -> Dim:
-    return dadd(left, dmul(-1, right))
-
-
-def build_dimensional_check() -> dict[str, Any]:
-    mass: Dim = (1, 0, 0)
-    length: Dim = (0, 1, 0)
-    time: Dim = (0, 0, 1)
-    energy: Dim = (1, 2, -2)
-    force: Dim = (1, 1, -2)
-    stiffness: Dim = (1, 0, -2)
-    alpha: Dim = (0, 0, 0)
-    dw = length
-    qdot = dsub(length, time)
-    mu_eta = (1, -1, 0)
-    tw = (1, 1, -2)
-    k_eta = (1, -1, -2)
-    beta = (0, -1, 0)
-    source_density = (1, 0, -2)
-
-    m_ab = dadd(mu_eta, dw, alpha, alpha)
-    kinetic = dadd(m_ab, qdot, qdot)
-    k_from_tw = dadd(tw, beta, beta, dw)
-    k_from_keta = dadd(k_eta, dw)
-    potential = dadd(k_from_tw, length, length)
-    hf_force = dadd(source_density, dw, alpha)
-
-    perturb_keta = (1, 0, -2)
-    perturb_alpha_l = (0, -1, 0)
-    perturb_k_from_keta = dadd(perturb_keta, dw)
-    perturb_m_ab = dadd(mu_eta, dw, alpha, perturb_alpha_l)
-
-    checks = {
-        "M_AB_dimension_mass": m_ab == mass,
-        "kinetic_energy_dimension": kinetic == energy,
-        "K_AB_from_Tw_dimension": k_from_tw == stiffness,
-        "K_AB_from_Keta_dimension": k_from_keta == stiffness,
-        "potential_energy_dimension": potential == energy,
-        "HF_force_dimension": hf_force == force,
-        "perturbed_Keta_dimension_fails": perturb_k_from_keta != stiffness,
-        "perturbed_alpha_L_dimension_fails": perturb_m_ab != mass,
+def build_dimensional_check(
+    *,
+    L0: sp.Symbol,
+    beta: sp.Symbol,
+    mu_eta: sp.Symbol,
+    T_w: sp.Symbol,
+    r_AL: sp.Symbol,
+    M_entries: dict[str, sp.Expr],
+    K_entries: dict[str, sp.Expr],
+) -> dict[str, Any]:
+    symbol_dims: dict[sp.Symbol, Dim] = {
+        L0: (1, 0, 0),
+        beta: (-1, 0, 0),
+        mu_eta: (-1, 1, 0),
+        T_w: (1, 1, -2),
+        r_AL: ZERO_DIM,
     }
+    expected_m = (0, 1, 0)
+    expected_k = (0, 1, -2)
+    expected_ratio = (0, 0, -2)
+
+    m_dims = matrix_entry_dims(M_entries, symbol_dims)
+    k_dims = matrix_entry_dims(K_entries, symbol_dims)
+    m_shared = shared_dimension(m_dims)
+    k_shared = shared_dimension(k_dims)
+    ratio_dim = dim_sub(k_shared, m_shared) if m_shared is not None and k_shared is not None else None
+    dimensional_ok = bool(
+        m_shared == expected_m
+        and k_shared == expected_k
+        and ratio_dim == expected_ratio
+    )
+
+    corrupt_dims = dict(symbol_dims)
+    corrupt_dims[T_w] = dim_add(symbol_dims[T_w], (1, 0, 0))
+    corrupt_m_dims = matrix_entry_dims(M_entries, corrupt_dims)
+    corrupt_k_dims = matrix_entry_dims(K_entries, corrupt_dims)
+    corrupt_m_shared = shared_dimension(corrupt_m_dims)
+    corrupt_k_shared = shared_dimension(corrupt_k_dims)
+    corrupt_ratio_dim = (
+        dim_sub(corrupt_k_shared, corrupt_m_shared)
+        if corrupt_m_shared is not None and corrupt_k_shared is not None
+        else None
+    )
+    corrupt_ok = bool(
+        corrupt_m_shared == expected_m
+        and corrupt_k_shared == expected_k
+        and corrupt_ratio_dim == expected_ratio
+    )
+    probe_verdict = "NO_FAIL" if corrupt_ok else "BREATHING_FAIL_DIMENSIONAL"
+
     return {
-        "status": "pass" if all(checks.values()) else "fail",
-        "dimension_order": "{M,L,T}",
-        "dimensions": {
-            "Q=(delta_a,delta_L)": str(length),
-            "muEta": str(mu_eta),
-            "Tw": str(tw),
-            "K_eta": str(k_eta),
-            "beta": str(beta),
-            "source_density": str(source_density),
+        "dimension_order": ["L", "M", "T"],
+        "dimensional_gate": "assembled M_AB/K_AB homogeneity and K/M=T^-2",
+        "headline_quantities_walked": {
+            "M_AB": {name: hstr(expr) for name, expr in M_entries.items()},
+            "K_AB": {name: hstr(expr) for name, expr in K_entries.items()},
         },
-        "checks": checks,
+        "symbol_dimensions": {
+            "L0": "L",
+            "beta": "L^-1",
+            "muEta": "M L^-1",
+            "Tw": "M L T^-2",
+            "K_eta=Tw*beta^2": "M L^-1 T^-2",
+            "rAL": "1",
+            "alpha_a,alpha_L": "1",
+        },
+        "sourcing_note": "muEta, Tw, and K_eta are sourced wall-action coefficients in the reduced-throat convention; K_eta is Tw*beta^2, not fitted from the matrix answer.",
+        "computed_dimensions": {
+            "M_AB_entries": {name: dim_to_text(dim) for name, dim in m_dims.items()},
+            "K_AB_entries": {name: dim_to_text(dim) for name, dim in k_dims.items()},
+            "M_AB_shared": dim_to_text(m_shared) if m_shared is not None else "inhomogeneous",
+            "K_AB_shared": dim_to_text(k_shared) if k_shared is not None else "inhomogeneous",
+            "K_over_M_ratio": dim_to_text(ratio_dim) if ratio_dim is not None else "inhomogeneous",
+        },
+        "computed_dimension_vectors_LMT": {
+            "M_AB_entries": {name: dim_vector_text(dim) for name, dim in m_dims.items()},
+            "K_AB_entries": {name: dim_vector_text(dim) for name, dim in k_dims.items()},
+            "M_AB_shared": dim_vector_text(m_shared) if m_shared is not None else None,
+            "K_AB_shared": dim_vector_text(k_shared) if k_shared is not None else None,
+            "K_over_M_ratio": dim_vector_text(ratio_dim) if ratio_dim is not None else None,
+        },
+        "expected_dimensions": {
+            "M_AB_shared": dim_to_text(expected_m),
+            "K_AB_shared": dim_to_text(expected_k),
+            "K_over_M_ratio": dim_to_text(expected_ratio),
+        },
+        "checks": {
+            "M_entries_homogeneous": m_shared is not None,
+            "K_entries_homogeneous": k_shared is not None,
+            "M_entries_have_mass_dimension": m_shared == expected_m,
+            "K_entries_have_stiffness_dimension": k_shared == expected_k,
+            "K_over_M_has_omega_squared_dimension": ratio_dim == expected_ratio,
+        },
+        "dimensional_ok": dimensional_ok,
+        "status": "pass" if dimensional_ok else "fail",
+        "dimensional_status": dimension_verdict(dimensional_ok),
+        "table": [
+            dim_record("K_eta=Tw*beta^2", T_w * beta**2, symbol_dims),
+            *[dim_record(f"M_{name}", expr, symbol_dims) for name, expr in M_entries.items()],
+            *[dim_record(f"K_{name}", expr, symbol_dims) for name, expr in K_entries.items()],
+        ],
+        "BREATHING_FAIL_DIMENSIONAL_probe": {
+            "mutation": "corrupt sourced [Tw] by one extra power of L",
+            "participates_in_verdict": True,
+            "sourced_Tw_dimension": dim_to_text(symbol_dims[T_w]),
+            "corrupted_Tw_dimension": dim_to_text(corrupt_dims[T_w]),
+            "mutated_dimensions": {
+                "M_AB_entries": {name: dim_to_text(dim) for name, dim in corrupt_m_dims.items()},
+                "K_AB_entries": {name: dim_to_text(dim) for name, dim in corrupt_k_dims.items()},
+                "M_AB_shared": dim_to_text(corrupt_m_shared) if corrupt_m_shared is not None else "inhomogeneous",
+                "K_AB_shared": dim_to_text(corrupt_k_shared) if corrupt_k_shared is not None else "inhomogeneous",
+                "K_over_M_ratio": dim_to_text(corrupt_ratio_dim) if corrupt_ratio_dim is not None else "inhomogeneous",
+            },
+            "without_mutation_dimensional_ok": dimensional_ok,
+            "with_mutation_dimensional_ok": corrupt_ok,
+            "probe_verdict": probe_verdict,
+            "mutation_fires": probe_verdict == "BREATHING_FAIL_DIMENSIONAL",
+        },
     }
 
 
@@ -492,6 +668,15 @@ def symbolic_engine() -> dict[str, Any]:
     K = sp.Matrix([[K_aa, K_aL], [K_aL, K_LL]])
     M_det = compact(M.det())
     K_det = compact(K.det())
+    dimensional_check = build_dimensional_check(
+        L0=L0,
+        beta=beta,
+        mu_eta=mu_eta,
+        T_w=T_w,
+        r_AL=r_AL,
+        M_entries={"aa": M_aa, "aL": M_aL, "LL": M_LL},
+        K_entries={"aa": K_aa, "aL": K_aL, "LL": K_LL},
+    )
 
     E_geom = (
         sp.Rational(1, 2) * kappa * (delta_L - chi * delta_a) ** 2
@@ -560,6 +745,8 @@ def symbolic_engine() -> dict[str, Any]:
         "sympyKRank": structure_gate["K_rank"],
         "sympyStructureProbeMPosdef": structure_gate["structure_counterfactual"]["non_posdef_M_probe"]["M_posdef"],
         "sympyStructureProbeKStructureOk": structure_gate["structure_counterfactual"]["sign_flipped_K_probe"]["K_structure_ok"],
+        "sympyDimensionalOk": dimensional_check["dimensional_ok"],
+        "sympyDimensionalProbeVerdict": dimensional_check["BREATHING_FAIL_DIMENSIONAL_probe"]["probe_verdict"],
     }
     expr_digest = digest_mapping({key: mma_expr(value) for key, value in expressions_for_mma.items()})
     expressions_for_mma["sympyExpressionDigest"] = expr_digest
@@ -804,7 +991,7 @@ def symbolic_engine() -> dict[str, Any]:
             "K_eta": "calibration_tied_to_beta_squared_Tw",
         },
         "calibration_inputs": ["muEta", "Tw", "K_eta/Tw beta scale", "legacy kappa/chi/sigmaA/sigmaL magnitudes"],
-        "dimensional_check": build_dimensional_check(),
+        "dimensional_check": dimensional_check,
         "sympy_expression_digest": expr_digest,
         "generated_files": {
             "sympy_engine": str(SCRIPT_PATH.relative_to(REPO_ROOT)),
@@ -880,8 +1067,8 @@ def compute_verdict(payload: dict[str, Any], engine: dict[str, Any]) -> str:
         and guard["nontrivial"]["fails"]
     ):
         return "BREATHING_FAIL_COUNTERFACTUAL"
-    if payload["dimensional_check"]["status"] != "pass":
-        return "BREATHING_FAIL_STRUCTURE"
+    if not payload["dimensional_check"]["dimensional_ok"]:
+        return "BREATHING_FAIL_DIMENSIONAL"
     if any(str(value).startswith("calibration") for value in payload["stiffness_provenance"].values()):
         return "BREATHING_CALIBRATED"
     if payload["profile_provenance"] != "derived":
@@ -889,7 +1076,36 @@ def compute_verdict(payload: dict[str, Any], engine: dict[str, Any]) -> str:
     return "BREATHING_PASS"
 
 
+def with_dimensional_ok(payload: dict[str, Any], ok: bool) -> dict[str, Any]:
+    mutated = dict(payload)
+    dim = dict(payload["dimensional_check"])
+    dim["dimensional_ok"] = ok
+    dim["status"] = "pass" if ok else "fail"
+    dim["dimensional_status"] = dimension_verdict(ok)
+    mutated["dimensional_check"] = dim
+    return mutated
+
+
+def attach_dimensional_ablation(payload: dict[str, Any]) -> dict[str, Any]:
+    dim = dict(payload["dimensional_check"])
+    probe = dict(dim["BREATHING_FAIL_DIMENSIONAL_probe"])
+    engine = {"status": "pass", "engine_agreement": True}
+    probe["self_ablation"] = {
+        "rerun_gate_logic": True,
+        "with_mutation": compute_verdict(with_dimensional_ok(payload, False), engine),
+        "without_mutation": compute_verdict(with_dimensional_ok(payload, True), engine),
+        "expected_fail": "BREATHING_FAIL_DIMENSIONAL",
+    }
+    probe["self_ablation"]["fail_suppressed"] = (
+        probe["self_ablation"]["with_mutation"] == "BREATHING_FAIL_DIMENSIONAL"
+        and probe["self_ablation"]["without_mutation"] != "BREATHING_FAIL_DIMENSIONAL"
+    )
+    dim["BREATHING_FAIL_DIMENSIONAL_probe"] = probe
+    return dim
+
+
 def result_payload(payload: dict[str, Any], engine: dict[str, Any], verdict: str) -> dict[str, Any]:
+    dimensional = attach_dimensional_ablation(payload)
     return {
         "verdict": verdict,
         "reduction_certificate": payload["reduction_certificate"],
@@ -923,8 +1139,9 @@ def result_payload(payload: dict[str, Any], engine: dict[str, Any], verdict: str
         "static_limit_consistent": payload["static_dynamic_consistency"]["static_limit_consistent"],
         "counterfactual_guard": payload["counterfactual_guard"],
         "engine_agreement": engine,
-        "dim_check": payload["dimensional_check"]["status"],
-        "dimensional_check": payload["dimensional_check"],
+        "dim_check": dimensional["status"],
+        "dimensional": dimensional,
+        "dimensional_check": dimensional,
         "operator_order": payload["operator_order"],
         "modal_operator": payload["modal_operator"],
         "profiles": payload["profiles"],
@@ -1032,6 +1249,16 @@ def write_report(results: dict[str, Any]) -> None:
             "",
             f"`{results['dimensional_check']}`.",
             "",
+            "### Dimensional check (retrofit)",
+            "",
+            f"Walked headline quantities: `{results['dimensional']['headline_quantities_walked']}`.",
+            f"Sourced dimensions: `{results['dimensional']['symbol_dimensions']}`.",
+            f"Computed dimensions: `{results['dimensional']['computed_dimensions']}`; "
+            f"`dimensional_ok={results['dimensional']['dimensional_ok']}`.",
+            f"Sourced-input probe: `{results['dimensional']['BREATHING_FAIL_DIMENSIONAL_probe']}`.",
+            f"Dual-engine dimensional checks: `{results['engine_agreement']['checks'].get('dimensional_ok')}`, "
+            f"probe verdict check `{results['engine_agreement']['checks'].get('dimension_probe_verdict')}`.",
+            "",
             "## Reduction Certificate",
             "",
             f"`{results['reduction_certificate']}`.",
@@ -1063,6 +1290,9 @@ def write_feed_note(results: dict[str, Any]) -> None:
         "The result remains calibrated because `muEta`, `Tw`, and `K_eta` are frozen/calibrated wall inputs even though the two collective profiles are harmonic liftings of that operator.",
         "",
         f"Structure gate: `M_posdef={results['M_posdef']}`, `K_structure_ok={results['K_structure_ok']}`, `K_offdiag_negative={results['K_offdiag_negative']}`, computed from the derived `M_AB,K_AB` with probe `{results['structure']['structure_counterfactual']}`.",
+        "",
+        "Dimensional retrofit: the engines walk the evaluated `M_aa,M_aL,M_LL` and `K_aa,K_aL,K_LL` expressions, check common matrix dimensions and `[K]/[M]=T^-2`, and corrupt sourced `[Tw]` to prove the dedicated dimensional verdict is load-bearing.",
+        f"Dimensional probe ablation: with mutation `{results['dimensional']['BREATHING_FAIL_DIMENSIONAL_probe']['self_ablation']['with_mutation']}`, without mutation `{results['dimensional']['BREATHING_FAIL_DIMENSIONAL_probe']['self_ablation']['without_mutation']}`.",
         "",
         "Artifacts:",
         f"- `{results['generated_files']['sympy_engine']}`",

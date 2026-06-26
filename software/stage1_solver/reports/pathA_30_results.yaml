@@ -82,16 +82,291 @@ engine_agreement_details:
     static_series: true
     dd_limit: true
     alpha0_limit: true
+    dimensional_ok: true
+    dimension_probe_verdict: true
+  dimensional_agreement:
+    dimensional_ok: true
+    dimension_probe_verdict: true
   mathematica_route: transfer_matrix_resolvent
 dim_check: pass
-dimensional_check:
+dimensional:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: sourced EOS speed law plus DtN argument/prefactor
+  headline_quantities_walked:
+    cs_squared_from_EOS: 5*K*rho_star**4/m
+    tan_argument: L0*omega/cS
+    Z00: -omega*tan(L0*omega/cS)/cS
+    Z00_prefactor_walked: -omega/cS
+  symbol_dimensions:
+    L0: L
+    omega: T^-1
+    c_s: L T^-1
+    m: M
+    energy: L^2 T^-2 M
+    four_volume_L4: L^4
+    P: L^-2 T^-2 M
+    rho_star: L^-4
+    K: L^18 T^-2 M
+  sourcing_note:
+    K_source: P=K*rho^5
+    spatial_dimensions: 4
+    no_cs_dependency: true
+    energy_dimension_LMT:
+    - '2'
+    - '1'
+    - '-2'
+    four_volume_dimension_LMT:
+    - '4'
+    - '0'
+    - '0'
+    P_dimension_LMT:
+    - '-2'
+    - '1'
+    - '-2'
+    rho_dimension_LMT:
+    - '-4'
+    - '0'
+    - '0'
+    K_derivation: '[K]=[P]-5[rho]'
+    K_dimension_LMT:
+    - '18'
+    - '1'
+    - '-2'
+    derived_chain: '[P]=(-2,1,-2), [rho]=(-4,0,0), [K]=[P]-5[rho]=(18,1,-2)'
+  computed_dimensions:
+    cs_squared_from_EOS: L^2 T^-2
+    tan_argument: '1'
+    Z00_prefactor: L^-1
+  computed_dimension_vectors_LMT:
+    cs_squared_from_EOS:
+    - '2'
+    - '0'
+    - '-2'
+    tan_argument:
+    - '0'
+    - '0'
+    - '0'
+    Z00_prefactor:
+    - '-1'
+    - '0'
+    - '0'
+  expected_dimensions:
+    cs_squared_from_EOS: L^2 T^-2
+    tan_argument: '1'
+    Z00_prefactor: L^-1
+  dimensional_ok: true
   status: pass
-  checks:
-    omega_L0_over_cS_dimensionless: true
-    Z00_has_inverse_length: true
-    cs_squared_from_EOS: true
-    pole_ladder_has_frequency_dimension: true
-  dimension_order: '{M,L,T}'
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: K
+    expression: K
+    dimension: L^18 T^-2 M
+    dimension_monomial: L**18*M/T**2
+    dimension_vector_LMT:
+    - '18'
+    - '1'
+    - '-2'
+  - quantity: rho_star
+    expression: rho_star
+    dimension: L^-4
+    dimension_monomial: L**(-4)
+    dimension_vector_LMT:
+    - '-4'
+    - '0'
+    - '0'
+  - quantity: m
+    expression: m
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: cs_squared_from_EOS=5*K*rho_star^4/m
+    expression: 5*K*rho_star**4/m
+    dimension: L^2 T^-2
+    dimension_monomial: L**2/T**2
+    dimension_vector_LMT:
+    - '2'
+    - '0'
+    - '-2'
+  - quantity: omega*L0/c_s
+    expression: L0*omega/cS
+    dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+  - quantity: Z00_prefactor=-omega/c_s
+    expression: -omega/cS
+    dimension: L^-1
+    dimension_monomial: 1/L
+    dimension_vector_LMT:
+    - '-1'
+    - '0'
+    - '0'
+  DN_UNITTEST_FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [K] by one extra power of L
+    participates_in_verdict: true
+    sourced_K_dimension: L^18 T^-2 M
+    corrupted_K_dimension: L^19 T^-2 M
+    mutated_dimensions:
+      cs_squared_from_EOS: L^3 T^-2
+      tan_argument: '1'
+      Z00_prefactor: L^-1
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: DN_UNITTEST_FAIL_DIMENSIONAL
+    mutation_fires: true
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: DN_UNITTEST_FAIL_DIMENSIONAL
+      without_mutation: DN_UNITTEST_BC_DEPENDENT
+      expected_fail: DN_UNITTEST_FAIL_DIMENSIONAL
+      fail_suppressed: true
+dimensional_check:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: sourced EOS speed law plus DtN argument/prefactor
+  headline_quantities_walked:
+    cs_squared_from_EOS: 5*K*rho_star**4/m
+    tan_argument: L0*omega/cS
+    Z00: -omega*tan(L0*omega/cS)/cS
+    Z00_prefactor_walked: -omega/cS
+  symbol_dimensions:
+    L0: L
+    omega: T^-1
+    c_s: L T^-1
+    m: M
+    energy: L^2 T^-2 M
+    four_volume_L4: L^4
+    P: L^-2 T^-2 M
+    rho_star: L^-4
+    K: L^18 T^-2 M
+  sourcing_note:
+    K_source: P=K*rho^5
+    spatial_dimensions: 4
+    no_cs_dependency: true
+    energy_dimension_LMT:
+    - '2'
+    - '1'
+    - '-2'
+    four_volume_dimension_LMT:
+    - '4'
+    - '0'
+    - '0'
+    P_dimension_LMT:
+    - '-2'
+    - '1'
+    - '-2'
+    rho_dimension_LMT:
+    - '-4'
+    - '0'
+    - '0'
+    K_derivation: '[K]=[P]-5[rho]'
+    K_dimension_LMT:
+    - '18'
+    - '1'
+    - '-2'
+    derived_chain: '[P]=(-2,1,-2), [rho]=(-4,0,0), [K]=[P]-5[rho]=(18,1,-2)'
+  computed_dimensions:
+    cs_squared_from_EOS: L^2 T^-2
+    tan_argument: '1'
+    Z00_prefactor: L^-1
+  computed_dimension_vectors_LMT:
+    cs_squared_from_EOS:
+    - '2'
+    - '0'
+    - '-2'
+    tan_argument:
+    - '0'
+    - '0'
+    - '0'
+    Z00_prefactor:
+    - '-1'
+    - '0'
+    - '0'
+  expected_dimensions:
+    cs_squared_from_EOS: L^2 T^-2
+    tan_argument: '1'
+    Z00_prefactor: L^-1
+  dimensional_ok: true
+  status: pass
+  dimensional_status: DIMENSIONAL_OK
+  table:
+  - quantity: K
+    expression: K
+    dimension: L^18 T^-2 M
+    dimension_monomial: L**18*M/T**2
+    dimension_vector_LMT:
+    - '18'
+    - '1'
+    - '-2'
+  - quantity: rho_star
+    expression: rho_star
+    dimension: L^-4
+    dimension_monomial: L**(-4)
+    dimension_vector_LMT:
+    - '-4'
+    - '0'
+    - '0'
+  - quantity: m
+    expression: m
+    dimension: M
+    dimension_monomial: M
+    dimension_vector_LMT:
+    - '0'
+    - '1'
+    - '0'
+  - quantity: cs_squared_from_EOS=5*K*rho_star^4/m
+    expression: 5*K*rho_star**4/m
+    dimension: L^2 T^-2
+    dimension_monomial: L**2/T**2
+    dimension_vector_LMT:
+    - '2'
+    - '0'
+    - '-2'
+  - quantity: omega*L0/c_s
+    expression: L0*omega/cS
+    dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+  - quantity: Z00_prefactor=-omega/c_s
+    expression: -omega/cS
+    dimension: L^-1
+    dimension_monomial: 1/L
+    dimension_vector_LMT:
+    - '-1'
+    - '0'
+    - '0'
+  DN_UNITTEST_FAIL_DIMENSIONAL_probe:
+    mutation: corrupt sourced [K] by one extra power of L
+    participates_in_verdict: true
+    sourced_K_dimension: L^18 T^-2 M
+    corrupted_K_dimension: L^19 T^-2 M
+    mutated_dimensions:
+      cs_squared_from_EOS: L^3 T^-2
+      tan_argument: '1'
+      Z00_prefactor: L^-1
+    without_mutation_dimensional_ok: true
+    with_mutation_dimensional_ok: false
+    probe_verdict: DN_UNITTEST_FAIL_DIMENSIONAL
+    mutation_fires: true
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: DN_UNITTEST_FAIL_DIMENSIONAL
+      without_mutation: DN_UNITTEST_BC_DEPENDENT
+      expected_fail: DN_UNITTEST_FAIL_DIMENSIONAL
+      fail_suppressed: true
 solve_artifacts:
   ode: psi''(s) + (omega/cS)^2 psi(s) = 0
   dsolve_general_solution: C1*sin(omega*s/cS) + C2*cos(omega*s/cS)

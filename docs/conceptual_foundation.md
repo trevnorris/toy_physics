@@ -381,6 +381,27 @@ that mass — so solving conservation directly yields the gravitational profile 
 > `pde_ledger` open-item #9 (the full nonlinear return closure is the downstream track-3 work). Detail:
 > `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md, tools/pathA_29_*, reports/pathA_29_*}`.
 
+> **⭐ MILESTONE (2026-06-25) — the MOVING-THROAT PDE push is underway, and the first two gates hold.** Completing the actual
+> moving-throat PDE (the distributed-geometry field theory whose solved branch must *return* the GR-quadrupole and the EM sector) is a
+> **~6-gate ladder**, not one step — master checklist: `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md`.
+> What matters conceptually: we are checking that the **distributed geometry lift** (promote the throat from collective coordinates
+> `(a,L)` to a level-set field `Σ=r−R(Ω,w,t)`) genuinely *contains the structures we already trust* as its limits.
+> - **Gate 1 (`pathA_30`) ✅** — the frozen-wall reduction reproduces the exact finite-throat acoustic resonator (mouth DtN
+>   `−(ω/c_s)tan(ωL/c_s)`, half-shifted mode ladder). The geometry lift's plumbing is sound. (`DN_UNITTEST_BC_DEPENDENT`: the
+>   Dirichlet/Neumann boundary assignment is a labeled calibration input, not yet derived.)
+> - **Gate 2 (`pathA_31`) ✅** — switching on the breathing mode, the distributed lift's Hellmann–Feynman force **reproduces the legacy
+>   `(a,L)` collective dynamics** (mass + stiffness from one operator projection; the 2-mode truncation is clean for any order-unity
+>   wall stiffness). So the old finite-dimensional throat dynamics are genuinely the lowest-mode limit of the field theory.
+>   (`BREATHING_CALIBRATED`: the wall material constants are calibration inputs.)
+>
+> Honest status: both are **necessary plumbing**, both land **CALIBRATED** (the toy-model contract — calibrate freely, derive later if
+> we can), and the decisive tests are still ahead: **Gate 3** (the grouped-`P2` / ℓ=2 quadrupole sector first appears) → **Gate 4** (the
+> `54/5` quadrupole normalization, calibrated form) → **Gate 5** (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole
+> return) → **Gate 6** (the full *nonlinear* closure — the likely wall), with the **match-back to the audited PN ladder** threaded through
+> as the real falsifier. Process note (hard-won): Gate-2's first run *looked* clean but the adversarial review caught three
+> pass-by-construction defects (and the remediation then caught a false-FAIL in our own fix) — every verdict-bearing control must
+> compute from inputs and carry an able-to-fail probe. The model is holding together so far, which is the only reason to keep pushing.
+
 ---
 
 ## 6. Pedigree — explored before, never wired together

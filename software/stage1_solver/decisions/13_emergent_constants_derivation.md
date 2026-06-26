@@ -28,6 +28,15 @@ verification agents → user methodology call (derive the emergent constants bef
 >   `pde_ledger` open-item #9 (records the residual prediction; the 1/r² range item passes for the localizing flat-slab family).
 >   Artifacts: `directives/pathA_29_brane_bulk_return.md` (v3) + `tools/pathA_29_brane_bulk_return_{sympy.py,.wl}` +
 >   `reports/pathA_29_{brane_bulk_return.md,results.yaml}`. NEXT = the full **nonlinear** brane↔bulk return closure (downstream track-3).
+> - **⭐ ACTIVE PUSH = the MOVING-THROAT PDE (a ~6-gate ladder; master checklist =
+>   `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md`; resume memory = `project-moving-throat-pde-push`).**
+>   **Gate 1 `pathA_30` ✅ `DN_UNITTEST_BC_DEPENDENT`** (frozen-wall reduction reproduces the finite-throat DtN `−(ω/c_s)tan` + ladder;
+>   committed `f460fc63`). **Gate 2 `pathA_31` ✅ `BREATHING_CALIBRATED`** (the distributed lift's breathing mode reproduces the legacy
+>   `(a,L)` collective closure; operator-projected M/K, independent HF routes, structure gate computed+able-to-fail, dual-engine;
+>   2-mode truncation clean for order-unity wall stiffness; v1 was tri-review-REJECTED for pass-by-construction → remediated; committed
+>   `765db5f0`). Both land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 3 (grouped-`P2` / ℓ=2)** — `η_2m` channels, grouped
+>   response matrix, isotropy `a₂=b₂=0` (scaffold §11.3; the quadrupole sector first appears). Then Gate 4 (`54/5`) → Gate 5
+>   (scalar/dipole + cross-ℓ unify pathA_28/29) → Gate 6 (nonlinear closure = the WALL); PN match-back = the decisive falsifier.
 > - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
 >   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
 > - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity

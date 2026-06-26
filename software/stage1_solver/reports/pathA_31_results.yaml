@@ -1,0 +1,550 @@
+verdict: BREATHING_CALIBRATED
+reduction_certificate:
+  ell0_restriction:
+    Y00: 1/(2*sqrt(pi)); int_S2 Y00^2 dOmega = 1
+    eta: eta(w,t)=eta_00(w,t)*Y00
+    T_Omega_term: drops because l(l+1)=0
+  background:
+    gate1_reference: straight constant-coefficient finite throat, rho0=rho_star
+    R0_endpoint_data: R0(0)=a0, R0(L0)=0; frozen Gate-1 packet has L0=37/20 and Tw=K_eta=1
+    domain: 0 <= w <= L0
+    rho0: rhoStar
+  source_linearization:
+    Sigma: r-R0(w)-eta
+    delta_V_conf: -(V_wall_prime_0/ell_c)*eta
+    action_force_density: rhoStar*V_wall_prime_0/ellC, conjugate to eta
+    action_measure: int f_Sigma alpha_A sqrt(gamma0) dw dOmega; straight-reference
+      normalization gives 4*pi int dw, not the mu_eta inner product
+  input_provenance:
+    alpha_a: 'derived: harmonic lifting L0 alpha_a=0 with alpha_a(0)=1, alpha_a(L0)=0
+      from Gate-1 endpoint data'
+    alpha_L: 'derived: harmonic lifting L0 alpha_L=0 with alpha_L(0)=0, alpha_L(L0)=rAL
+      from straight-throat length endpoint data'
+    muEta: calibration
+    Tw: calibration
+    K_eta: calibration_tied_to_beta_squared_Tw
+    beta_from_R0: beta=sqrt(K_eta/Tw)=1 from frozen constant-coefficient packet; geometry
+      alone does not derive it
+  phonon_limit_caveat: No BdG k^4 matter-sector term enters this gate; Gate-1 caveat
+    remains deferred under k*xi << 1 if matter dynamics are restored.
+  forbidden_fit_flags:
+    K_from_static_hessian: false
+    M_or_K_typed_from_legacy_values: false
+    full_matrix_fit: false
+    chain_rule_HF_identity_used: false
+    counterfactual_flags_hardcoded: false
+dynamical: true
+truncation:
+  status: true
+  epsilon_trunc: 0.1
+  overlap_floor: 0.9
+  N_modes: 16
+  o_1: 0.9931091025894195
+  o_2: 0.9877636993599208
+  min_omega12_squared: 3.4225194459861923
+  lambda2: 13.292692442596563
+  gap: 2.2278703535085196
+  selected_beta:
+    beta_L0: 1.85
+    beta: 1/L_unit from frozen Gate-1 wall packet Tw=K_eta=1
+    selection_rule: predeclared Gate-1 anchor, not best-fit over the sweep
+  beta_from_R0:
+    status: derived_from_frozen_constant_coeff_packet
+    R0_reference: 'Gate-1 frozen finite throat: L0=37/20, Tw=1, K_eta=1'
+    beta: 1.0
+    L0: 1.85
+    beta_L0: 1.85
+    provenance: calibrated wall constitutive packet; R0 geometry alone does not derive
+      Tw or K_eta
+  beta_window:
+    beta_L0_min_in_sweep: 0.1
+    beta_L0_max_in_sweep: 3.0
+    predicate: o_1,o_2 >= 0.9 and min(omega_1^2,omega_2^2)>0
+  o_k_of_beta:
+  - beta_L0: 0.1
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.999999930574681
+    o_2: 0.992719635541671
+    omega1_squared: 0.01000000016623669
+    omega2_squared: 9.879929781019305
+    omega3_squared: 39.493653618484885
+    min_omega12_squared: 0.01000000016623669
+    gap: 2.9973617721815784
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 989910.5454085519
+  - beta_L0: 0.2
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9999988907809547
+    o_2: 0.9926801727589115
+    omega1_squared: 0.040000002660721436
+    omega2_squared: 9.909931755511263
+    omega3_squared: 39.52366150380967
+    min_omega12_squared: 0.040000002660721436
+    gap: 2.988287959887228
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 966585.9991338253
+  - beta_L0: 0.5
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9999571031674533
+    o_2: 0.9924017106724693
+    omega1_squared: 0.2500001039125523
+    omega2_squared: 10.119945743390078
+    omega3_squared: 39.733716864114015
+    min_omega12_squared: 0.2500001039125523
+    gap: 2.926277657176809
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 824545.9318315173
+  - beta_L0: 1.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9993379432863316
+    o_2: 0.9913762999601765
+    omega1_squared: 1.0000016620241243
+    omega2_squared: 10.869998076795435
+    omega3_squared: 40.483916907235255
+    min_omega12_squared: 1.0000016620241243
+    gap: 2.724372039555158
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 511946.9203208083
+  - beta_L0: 1.85
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9931091025894195
+    o_2: 0.9877636993599208
+    omega1_squared: 3.4225194459861923
+    omega2_squared: 13.292692442596563
+    omega3_squared: 42.90708785376419
+    min_omega12_squared: 3.4225194459861923
+    gap: 2.2278703535085196
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 188973.08392677506
+  - beta_L0: 2.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9908506125918466
+    o_2: 0.9868416334245586
+    omega1_squared: 4.000026554909756
+    omega2_squared: 13.870244477286153
+    omega3_squared: 43.48475338315674
+    min_omega12_squared: 4.000026554909756
+    gap: 2.1351108089238924
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 159706.40691616695
+  - beta_L0: 3.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9637005350771697
+    o_2: 0.978084610116703
+    omega1_squared: 9.000134116082794
+    omega2_squared: 18.87078639828681
+    omega3_squared: 48.48627605843324
+    min_omega12_squared: 9.000134116082794
+    gap: 1.5693829093860698
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 60868.391484086875
+  - beta_L0: 5.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.8598471803306499
+    o_2: 0.9453315267331555
+    omega1_squared: 25.001026870980898
+    omega2_squared: 34.87361071031848
+    omega3_squared: 64.49221632487195
+    min_omega12_squared: 25.001026870980898
+    gap: 0.849312847487566
+    pass: false
+    rank_deficient_basis: false
+    mass_condition: 17578.411804532705
+  - beta_L0: 10.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.6313053078718699
+    o_2: 0.8137038421556997
+    omega1_squared: 100.0157975229998
+    omega2_squared: 109.90801226445227
+    omega3_squared: 139.54080034667103
+    min_omega12_squared: 100.0157975229998
+    gap: 0.26961444822529057
+    pass: false
+    rank_deficient_basis: false
+    mass_condition: 3808.867294586409
+  - beta_L0: 18.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.46589994191001866
+    o_2: 0.6415859341634874
+    omega1_squared: 324.1439192297935
+    omega2_squared: 334.18906350982803
+    omega3_squared: 363.8620628964289
+    min_omega12_squared: 324.1439192297935
+    gap: 0.08879105460531687
+    pass: false
+    rank_deficient_basis: false
+    mass_condition: 1192.6349224285962
+  - beta_L0: 30.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.3477893484277418
+    o_2: 0.48351817640511513
+    omega1_squared: 900.70444824978
+    omega2_squared: 911.666753831269
+    omega3_squared: 941.4978665667091
+    min_omega12_squared: 900.70444824978
+    gap: 0.03272150992681833
+    pass: false
+    rank_deficient_basis: false
+    mass_condition: 512.8325391284885
+  - beta_L0: 50.0
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.2668893775133323
+    o_2: 0.31849385984851286
+    omega1_squared: 2501.6678269527133
+    omega2_squared: 2515.9505308757475
+    omega3_squared: 2547.381036873431
+    min_omega12_squared: 2501.6678269527133
+    gap: 0.012492497611526326
+    pass: false
+    rank_deficient_basis: false
+    mass_condition: 287.39843860499747
+  convergence_in_N:
+  - beta_L0: 1.85
+    N: 4
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9930092905690113
+    o_2: 0.9871004922686136
+    omega1_squared: 3.4236392243245994
+    omega2_squared: 13.327931790649671
+    omega3_squared: 43.329698015773054
+    min_omega12_squared: 3.4236392243245994
+    gap: 2.2510444003150876
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 3143.999988790218
+  - beta_L0: 1.85
+    N: 8
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.993097805037466
+    o_2: 0.9876694141071264
+    omega1_squared: 3.422652656604015
+    omega2_squared: 13.296755443232552
+    omega3_squared: 42.950858398158616
+    min_omega12_squared: 3.422652656604015
+    gap: 2.2301758561723917
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 23898.670290241742
+  - beta_L0: 1.85
+    N: 12
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9931068863770757
+    o_2: 0.9877444260283081
+    omega1_squared: 3.4225458658290386
+    omega2_squared: 13.29349403082082
+    omega3_squared: 42.91558377486189
+    min_omega12_squared: 3.4225458658290386
+    gap: 2.228314818915371
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 79940.76565409845
+  - beta_L0: 1.85
+    N: 16
+    profile: alpha_a=sinh(beta*(L0-w))/sinh(beta*L0)
+    o_1: 0.9931091025894195
+    o_2: 0.9877636993599208
+    omega1_squared: 3.4225194459861923
+    omega2_squared: 13.292692442596563
+    omega3_squared: 42.90708785376419
+    min_omega12_squared: 3.4225194459861923
+    gap: 2.2278703535085196
+    pass: true
+    rank_deficient_basis: false
+    mass_condition: 188973.08392677506
+  g_lane_eigenproblem:
+    operator: L0 g = omega^2 g
+    BC: g(0)=0, T_w*g'(L0)=0
+    eigenfunctions: sin((n-1/2)*pi*w/L0), n=1,2,...
+    spectrum: omega_n^2=(T_w/muEta)*(((n-1/2)*pi/L0)^2+beta^2)
+    discrete: true
+  combined_basis: B={alpha_a, alpha_L, g_1..g_N}; generalized problem K v = omega^2
+    M v
+M_AB:
+  derived: true
+  integrands:
+    aa: muEta*sinh(L0*beta - beta*w)**2/sinh(L0*beta)**2
+    aL: muEta*rAL*sinh(beta*w)*sinh(L0*beta - beta*w)/sinh(L0*beta)**2
+    LL: muEta*rAL**2*sinh(beta*w)**2/sinh(L0*beta)**2
+  matrix:
+    aa: -2*pi*muEta*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+    aL: 2*pi*muEta*rAL*(L0*beta - tanh(L0*beta))/(beta*sinh(L0*beta)*tanh(L0*beta))
+    LL: -2*pi*muEta*rAL**2*(L0*beta*tanh(L0*beta) - sinh(L0*beta)**2)/(beta*sinh(L0*beta)**2*tanh(L0*beta))
+  det: -4*pi**2*muEta**2*rAL**2*(L0*beta - sinh(L0*beta))*(L0*beta + sinh(L0*beta))/(beta**2*sinh(L0*beta)**2)
+K_AB:
+  derived: true
+  integrands:
+    aa: Tw*beta**2*cosh(2*L0*beta - 2*beta*w)/sinh(L0*beta)**2
+    aL: -Tw*beta**2*rAL*cosh(L0*beta - 2*beta*w)/sinh(L0*beta)**2
+    LL: Tw*beta**2*rAL**2*cosh(2*beta*w)/sinh(L0*beta)**2
+  matrix:
+    aa: 4*pi*Tw*beta/tanh(L0*beta)
+    aL: -4*pi*Tw*beta*rAL/sinh(L0*beta)
+    LL: 4*pi*Tw*beta*rAL**2/tanh(L0*beta)
+  det: 16*pi**2*Tw**2*beta**2*rAL**2
+  provenance: operator_projection_not_static_Hessian
+M_posdef: true
+K_structure_ok: true
+K_offdiag_negative: true
+hf_force_reduces:
+  status: true
+  F_dist:
+    F_a: 4*pi*Integral(Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)), (w,
+      0, L0))
+    F_L: 4*pi*Integral(Vp0*rAL*rhoStar*sinh(beta*w)/(ellC*sinh(L0*beta)), (w, 0, L0))
+  F_legacy:
+    F_a: -4*pi*Integral(-Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)),
+      (w, 0, L0))
+    F_L: -4*pi*Integral(-Vp0*rAL*rhoStar*sinh(beta*w)/(ellC*sinh(L0*beta)), (w, 0,
+      L0))
+  differences:
+    F_a: '0'
+    F_L: '0'
+  measure: action measure 4*pi*int dw; not mu_eta-weighted
+profile_provenance: derived
+stiffness_provenance:
+  muEta: calibration
+  Tw: calibration
+  K_eta: calibration_tied_to_beta_squared_Tw
+static_limit_consistent: true
+counterfactual_guard:
+  calibrations_frozen: true
+  alpha_L_frozen: true
+  refit_forbidden: true
+  degenerate:
+    profile: alpha_a=0
+    M_det: '0'
+    M_posdef: false
+    wrong_o_k:
+      o_1: 0.9690040196623307
+      o_2: 0.2226896627819251
+      rank_deficient_basis: true
+    F_a_dist: '0'
+    F_a_legacy_frozen: 4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+    hf_mismatch: true
+    fails: true
+  nontrivial:
+    profile: alpha_a=1
+    M_det: -8*pi**2*muEta**2*rAL**2*(L0**2*beta**2*tanh(L0*beta) - L0*beta*sinh(L0*beta)**2
+      + 2*sinh(L0*beta)**2*tanh(L0*beta) - 4*cosh(L0*beta)*tanh(L0*beta) + 4*tanh(L0*beta))/(beta**2*sinh(L0*beta)**2*tanh(L0*beta))
+    M_posdef: true
+    wrong_o_k:
+      o_1: 0.9999999999999994
+      o_2: 0.9738471876732767
+    F_a_dist: 4*pi*L0*Vp0*rhoStar/ellC
+    F_a_legacy_frozen: 4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+    hf_mismatch: true
+    overlap_passes: true
+    fails: true
+engine_agreement:
+  status: pass
+  engine_agreement: true
+  digest_matches: true
+  mathematica_yaml: software/stage1_solver/_scratch/pathA_31_mathematica_results.yaml
+  mathematica_route: native_DSolveValue_BVP_Integrate_plus_NIntegrate_generalized_Eigensystem
+  checks:
+    alpha_a: true
+    alpha_L: true
+    M_aa: true
+    M_aL: true
+    M_LL: true
+    K_aa: true
+    K_aL: true
+    K_LL: true
+    M_det: true
+    K_det: true
+    force_dist_a: true
+    force_dist_L: true
+    force_legacy_a: true
+    force_legacy_L: true
+    wrong_zero_M_det: true
+    wrong_const_M_det: true
+    wrong_zero_F_a: true
+    wrong_const_F_a: true
+    legacy_H_aa: true
+    legacy_H_aL: true
+    legacy_H_LL: true
+    structure_M_posdef: true
+    structure_K_symmetric: true
+    structure_K_offdiag_negative: true
+    structure_K_structure_ok: true
+    structure_K_rank: true
+    structure_probe_M_posdef: true
+    structure_probe_K_structure_ok: true
+  numeric_checks:
+    beta_sweep: true
+    selected_overlap: true
+    wrong_zero_overlap: true
+    wrong_const_overlap: true
+  max_numeric_abs_delta: 5.684341886080801e-13
+dim_check: pass
+dimensional_check:
+  status: pass
+  dimension_order: '{M,L,T}'
+  dimensions:
+    Q=(delta_a,delta_L): (0, 1, 0)
+    muEta: (1, -1, 0)
+    Tw: (1, 1, -2)
+    K_eta: (1, -1, -2)
+    beta: (0, -1, 0)
+    source_density: (1, 0, -2)
+  checks:
+    M_AB_dimension_mass: true
+    kinetic_energy_dimension: true
+    K_AB_from_Tw_dimension: true
+    K_AB_from_Keta_dimension: true
+    potential_energy_dimension: true
+    HF_force_dimension: true
+    perturbed_Keta_dimension_fails: true
+    perturbed_alpha_L_dimension_fails: true
+operator_order:
+- ell=0 modal operator + BC + mu_eta inner product
+- profiles + projection integrals
+- M_AB,K_AB + dynamical EOM M Qddot + K Q = F
+- legacy E_geom comparison
+modal_operator:
+  equation: mu_eta*q_tt - d_w(T_w*d_w q) + K_eta*q = S_0^(psi)+f_0^ext
+  L0: mu_eta^(-1)*(-d_w(T_w*d_w .) + K_eta .)
+  K_eta: Tw*beta**2
+  constant_coeff_assumption: beta=sqrt(K_eta/T_w) is scalar only on this straight
+    constant-coefficient reference
+  collective_BC:
+    alpha_a: alpha_a(0)=1, alpha_a(L0)=0
+    alpha_L: alpha_L(0)=0, alpha_L(L0)=rAL
+  g_lane_BC: g(0)=0, T_w*g'(L0)=0
+  inner_product: <f,g>_mu=4*pi*int_0^L0 mu_eta f g dw
+  self_adjoint_g_lane: true
+profiles:
+  alpha_a: sinh(L0*beta - beta*w)/sinh(L0*beta)
+  alpha_L: rAL*sinh(beta*w)/sinh(L0*beta)
+  dsolve_general: C1*sinh(beta*w) + C2*cosh(beta*w)
+  provenance: derived
+  residuals_and_BC:
+    L0_alpha_a: '0'
+    L0_alpha_L: '0'
+    alpha_a_mouth: '1'
+    alpha_a_cap: '0'
+    alpha_L_mouth: '0'
+    alpha_L_cap: rAL
+structure:
+  M_posdef: true
+  M_leading_minor_positive: true
+  M_det_positive: true
+  K_symmetric: true
+  K_structure_ok: true
+  K_offdiag_negative: true
+  K_rank: 2
+  K_rank_matches_legacy: true
+  K_zero_pattern_matches_legacy: true
+  K_zero_pattern:
+  - - false
+    - false
+  - - false
+    - false
+  structure_from_computed_matrices: true
+  structure_counterfactual:
+    non_posdef_M_probe:
+      mutation: M_aa -> -M_aa
+      M_posdef: false
+      leading_minor_positive: false
+      det_positive: false
+    sign_flipped_K_probe:
+      mutation: K_aL -> -K_aL
+      K_offdiag_negative: false
+      K_structure_ok: false
+  structure_certificates:
+    M_aa_positive: M_aa=2*pi*muEta*(sinh(B)*cosh(B)-B)/(beta*sinh(B)^2)>0 for B=L0*beta>0
+    M_det_positive: det(M)=4*pi^2*muEta^2*rAL^2*(sinh(B)^2-B^2)/(beta^2*sinh(B)^2)>0
+      for B=L0*beta>0
+    K_aL_negative: K_aL=-4*pi*Tw*beta*rAL/sinh(B)<0 for B=L0*beta>0
+  legacy_E_geom: 1/2*kappa*(delta_L-chi*delta_a)^2 + 1/2*sigmaA*delta_a^2 + 1/2*sigmaL*delta_L^2
+  legacy_Hessian:
+    aa: chi**2*kappa + sigmaA
+    aL: -chi*kappa
+    LL: kappa + sigmaL
+  legacy_rank: 2
+  legacy_zero_pattern:
+  - - false
+    - false
+  - - false
+    - false
+  legacy_symmetric: true
+  legacy_offdiag_negative: true
+  legacy_pattern: symmetric full-rank ratio-plus-support Hessian with negative off-diagonal
+    for chi>0
+  full_matrix_fit: false
+hf_force:
+  hf_force_reduces: true
+  measure: action measure 4*pi*int dw; not mu_eta-weighted
+  distributed_route:
+    unsimplified:
+      F_a: 4*pi*Integral(Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)),
+        (w, 0, L0))
+      F_L: 4*pi*Integral(Vp0*rAL*rhoStar*sinh(beta*w)/(ellC*sinh(L0*beta)), (w, 0,
+        L0))
+    simplified:
+      F_a: 4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+      F_L: 4*pi*Vp0*rAL*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+    method: functional wall-force density projected against alpha_A with the action
+      measure
+  legacy_route:
+    unsimplified:
+      F_a: -4*pi*Integral(-Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)),
+        (w, 0, L0))
+      F_L: -4*pi*Integral(-Vp0*rAL*rhoStar*sinh(beta*w)/(ellC*sinh(L0*beta)), (w,
+        0, L0))
+    simplified:
+      F_a: 4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+      F_L: 4*pi*Vp0*rAL*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+    method: direct parametric derivative of V_conf(r,w;a,L) before integration
+  differences:
+    F_a: '0'
+    F_L: '0'
+  unsimplified_routes_identical: false
+  chain_rule_identity_used: false
+dynamical_EOM:
+  matrix_form: M_AB*Qddot^B + K_AB*Q^B = F_A^(HF)
+  expanded:
+  - M_aa*delta_a_ddot + M_aL*delta_L_ddot + K_aa*delta_a + K_aL*delta_L = F_a
+  - M_aL*delta_a_ddot + M_LL*delta_L_ddot + K_aL*delta_a + K_LL*delta_L = F_L
+  Q: (delta_a, delta_L)
+  Qddot_present: true
+  K_AB_provenance: operator_projection_not_static_Hessian
+static_dynamic_consistency:
+  static_limit_consistent: true
+  limit: Qddot -> 0 in the same M_AB Qddot + K_AB Q = F_A system gives K_AB Q = F_A;
+    after the legacy pattern comparison this is the static dE_geom/dQ=0 limit.
+  separate_static_solve: false
+calibration_inputs:
+- muEta
+- Tw
+- K_eta/Tw beta scale
+- legacy kappa/chi/sigmaA/sigmaL magnitudes
+generated_files:
+  sympy_engine: software/stage1_solver/tools/pathA_31_scalar_breathing_sympy.py
+  mathematica_engine: software/stage1_solver/tools/pathA_31_scalar_breathing.wl
+  report: software/stage1_solver/reports/pathA_31_scalar_breathing.md
+  results_yaml: software/stage1_solver/reports/pathA_31_results.yaml
+  feed_note: research/pde_ledger/notes/stages/moving_throat_pde_pathA_31_scalar_breathing_result.md
+  sympy_scratch_yaml: software/stage1_solver/_scratch/pathA_31_sympy_results.yaml
+  mathematica_scratch_yaml: software/stage1_solver/_scratch/pathA_31_mathematica_results.yaml
+  sympy_expr_export: software/stage1_solver/_scratch/pathA_31_sympy_exprs.wl
+sympy_expression_digest: c6760284dfc2d5a7cdb85925b66dcb07638755e1d0ea56d61cddc7e5cf9829b1

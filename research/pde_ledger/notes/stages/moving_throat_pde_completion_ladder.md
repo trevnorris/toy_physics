@@ -34,12 +34,25 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
   `ENV_BLOCKED` instead of `FAIL_ENGINE_DISAGREE` (conservative — errs toward re-run, never a false PASS).
   (2) `dim_check` uses hand-coded `{M,L,T}` tuples (verified non-tautological); directive §5 now blesses this.
 
-### Gate 2 — Scalar breathing on (`η₀₀`)  ☐
+### Gate 2 — Scalar breathing on (`η₀₀`)  ☑ DONE = `BREATHING_CALIBRATED`  (`pathA_31`)
 - **Tests:** switch on only the monopole channel; verify the distributed Hellmann–Feynman force reproduces
   the **old `(a,L)` collective closure** in the lowest-mode truncation (scaffold §11.2).
 - **Able-to-fail core:** the geometry-*on* coupling must regenerate the already-frozen `(a,L)` dynamics; a
   mismatch means the distributed lift is not the right generalization.
 - **Difficulty:** medium. **Decisive?** no (consistency with the existing reduced closure).
+- **RESULT (2026-06-25):** the ℓ=0 reduction genuinely reproduces the legacy `(a,L)` Lagrangian — profiles
+  `α_a,α_L` derived (`L₀`-harmonic lifting), `M_AB/K_AB` from operator projection (not `∂²E_geom`), the
+  distributed Hellmann–Feynman force matches the legacy `F_a,F_L` via two genuinely-independent routes, the
+  Hessian pattern matches, dual-engine agreed (max Δ 5.7e-13). The 2-mode truncation is clean
+  (generalized-eigenproblem `V₂`-overlap `o_1=0.993` at the physical `β_L0=1.85`) across the whole order-unity
+  wall-stiffness window (`K_η/T_w≲2.6`); fails only for sharp walls. **CALIBRATED** because `μ_η,T_w,K_η` are
+  calibration inputs. **Caveat:** the overlap measure passes any mouth-BC profile — the anti-wrong-profile
+  teeth are the recomputed HF mismatch; clean truncation is shown *for an assumed order-unity wall stiffness*.
+  Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_31_*`.
+- **Hard-won (process):** v1 was REJECTED by tri-review (HF `x−x`, hardcoded counterfactual, chosen-to-pass
+  truncation threshold); remediation also caught a Parseval-muddled measure + double-`μ_η`; a final surgical
+  fix made the STRUCTURE gate computed-not-hardcoded (with an able-to-fail probe). The Gate-1 "fold via Codex
+  at next touch" NIT (`engine_agreement` ordering) still applies to the stage1_solver verdict idiom.
 
 ### Gate 3 — Grouped-`P2` (ℓ=2) sector  ☐
 - **Tests:** switch on `η_2m` one channel at a time; build the grouped response matrix `Z^eff_{AB}(ω)`; test

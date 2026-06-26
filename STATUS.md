@@ -49,8 +49,15 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   `−(ω/c_s)tan`, half-shifted ladder, Robin counterfactual, dual-engine agreed; Bogoliubov `k⁴` deferred under `kξ≪1`). **D/N is a
   banked calibration input** (`bc_derivation_emitted=False`); earning it → `PASS` is an optional later upgrade. 2 non-blocking NITs
   logged in the ladder. Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_30_*`.
-- **⭐ NEXT = Gate 2 (scalar breathing `η₀₀`):** switch on the monopole channel, verify the distributed Hellmann–Feynman force
-  reproduces the old `(a,L)` collective closure (scaffold §11.2). Then Gate 3 (grouped-`P2`/isotropy) → Gate 4 (quadrupole `54/5`,
+- **Gate 2 (`pathA_31`, scalar breathing `η₀₀`) ✅ DONE = `BREATHING_CALIBRATED`** (tri-review CLEAN after a remediation). The
+  distributed ℓ=0 reduction genuinely reproduces the legacy `(a,L)` collective closure: derived `L₀`-harmonic profiles, `M_AB/K_AB`
+  from operator projection (not `∂²E_geom`), two genuinely-independent HF routes match, structure gate computed + able-to-fail,
+  dual-engine agreed. The 2-mode truncation is clean (`V₂`-overlap `o_1=0.993` at the physical `β_L0=1.85`) across the order-unity
+  wall-stiffness window (`K_η/T_w≲2.6`), failing only for sharp walls. CALIBRATED ⇐ `μ_η,T_w,K_η` are calibration inputs. **Caveat:**
+  the overlap doesn't guard profile-correctness (HF mismatch does); clean truncation shown *for assumed order-unity wall stiffness*.
+  v1 was tri-review-REJECTED (HF `x−x`, hardcoded counterfactual, gamed threshold) → remediated. Artifacts: `pathA_31_*`.
+- **⭐ NEXT = Gate 3 (grouped-`P2` / ℓ=2 sector):** switch on `η_2m` one channel at a time, build the grouped response matrix, test the
+  isotropy gate `a₂=b₂=0` (scaffold §11.3, handoff §11) — the quadrupole sector first appears here. Then Gate 4 (quadrupole `54/5`,
   calibrated form) → Gate 5 (scalar/dipole + cross-ℓ unification) → Gate 6 (full nonlinear closure = the WALL); PN match-back threaded
   through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
 
@@ -64,9 +71,9 @@ gravitational changes propagate (∝ρ²); `v_r` = field *strength*, not a speed
 changes propagate at `c_s`, and uniform motion tracks the **current** position → **no aberration**. Throat-soliton has **no sloshing**
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
-**COMMIT STATE (2026-06-25):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`) committed. The **pathA_30 Gate-1 milestone** (directive,
-dual engines, reports, the completion ladder + open-item reconciliation + pde_ledger feed note) + this STATUS / push-memory sync are
-**being committed now**. **Commit only when the user asks; stage explicit paths.**
+**COMMIT STATE (2026-06-25):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`), pathA_30 Gate-1 (`f460fc63`) committed. The **pathA_31
+Gate-2 milestone** (directive, dual engines, reports, feed note) + this STATUS / ladder / push-memory sync are **being committed now**.
+**Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

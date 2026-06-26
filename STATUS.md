@@ -69,10 +69,27 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   byte-identical Mathematica copies; 5/8 probes typed their FAIL booleans + a tautological able-to-fail aggregate) → remediated
   (honest per-harmonic `.wl` + per-lane `D` cross-engine; each probe computed-from-mutated-input with a self-ablation) → re-verified
   (arbiter byte-for-byte; fidelity + adversarial re-ablation EARNED). Artifacts: `pathA_32_*`.
-- **⭐ NEXT = Gate 4 (quadrupole `54/5` normalization):** on the isotropic outgoing branch, extract the canonical pair, compute the
-  outgoing prefactor `P₀`, and hit `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)` (handoff §8.3/§12). `G` is CALIBRATED — the PDE delivers the FORM/branch
-  + outgoing `P₀`, **not** Newton's `G`. Then Gate 5 (scalar/dipole + cross-ℓ unification) → Gate 6 (full nonlinear closure = the WALL);
-  PN match-back threaded through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
+- **Gate 4 (`pathA_33`, quadrupole `54/5` normalization) ✅ DONE = `QUAD_CALIBRATED`** (full tri-review CLEAN after a remediation). On
+  Gate-3's isotropic outgoing branch, the ℓ=2 sector delivers the **EARNED predictive surplus cleanly SEPARATED from the CALIBRATED
+  magnitude**: the outgoing fingerprint `1/9, 4/81, 1/27` is **DERIVED** from the DtN `Ŷ₂^out=−3/Λ₂^out` Hankel series (not hardcoded),
+  the prefactor algebra follows from `P(ω)=D₀N(ω)/D^cons(ω)²` (the `−2D₂N₀` term), `P0_target_scaling=a⁻⁵`, and the derived `χ_Q=1`
+  closes `m̂₀²P₀=54Gc_s⁵/5a⁵c⁵ ⟺ γ_quad^eff=2G/5c⁵`. **The headline result — the earned/calibrated split:** `54/5 = 2·27/5` — the
+  `27` is **EARNED** (`derived_in_gate`, from the fingerprint), the `2/5` + `G` + assembled magnitude are **CALIBRATED**
+  (`external_bridge_input`), classified by a 4-way **PROVENANCE** partition (NOT `G→λG` invariance, since `54/5` is G-invariant yet
+  calibrated). `G` is `GENUINE_BLOCKED` — the PDE delivers the FORM/branch, **not** Newton's `G`. **Dimensional milestone:** a genuine,
+  `μ̂₀`-FREE, able-to-fail dim check (`[P₀^phys]=(c_s/a)²·N₀/D₀` must be dimensionless from sourced `[N₀]=L⁻¹M`, `[D₀]=L⁻¹T⁻²M`) caught
+  that the handoff's `P₀=N₀/D₀` silently drops a `(c_s/a)²` factor (natural-units trap). v1 was tri-review-REJECTED — the
+  adversarial-with-ablation leg caught two pass-by-construction sub-controls fidelity + arbiter both passed: (a) the dim gate was STILL
+  tautological (it **back-solved the FREE carrier `μ̂₀`** to force homogeneity); (b) the per-probe `self_ablation` was a **constant, not a
+  re-run** → remediated (`μ̂₀`-free dim gate + corrupt-`[N₀]` probe §3d′ + real two-verdict `self_ablation`) → re-verified EARNED
+  (corrupting `[N₀]` now fires `FAIL_DIMENSIONAL`; `[G]` doesn't). Artifacts: `pathA_33_*`.
+- **⭐ NEXT = Gate 5 (scalar/dipole side-conditions + cross-ℓ unification):** from the *same* PDE, reconcile the ℓ=0/1 brane↔bulk return
+  (pathA_28/29 — `R0=−M0`, `R1=−D1`, bounded residual `∝ε₀`) with the ℓ=2 quadrupole channel (the new cross-ℓ consistency gate). Then
+  Gate 6 (full nonlinear closure = the WALL — where the symbolic branch data + the literal `54/5` magnitude must be RETURNED by the
+  solved PDE); PN match-back threaded through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
+- **⚠️ Tracked debt (Gate-1–3 dimensional checks):** the `pathA_30/31/32` dim checks were found **VACUOUS** (typed-tuple ledgers
+  disconnected from the real expressions) — a retrofit debt to redo after Gate 4 using the real `pathA_18` harness (the same harness
+  the Gate-4 `μ̂₀`-free check now uses). Physics OOM-risk judged low.
 
 Process lesson banked (memory `project-model-mechanics-corrections` + `feedback-offload-review-gauntlet`): every compute gate runs the
 full Codex→GLM→Codex directive gauntlet + dual-engine + tri-review, with the **review rounds offloaded to a gauntlet-runner agent** so
@@ -85,10 +102,9 @@ changes propagate at `c_s`, and uniform motion tracks the **current** position �
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
 **COMMIT STATE (2026-06-26):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`), pathA_30 Gate-1 (`f460fc63`), pathA_31 Gate-2
-(`765db5f0`), and the prior docs-sync (`810e01f7`) committed. The **pathA_32 Gate-3 milestone** — directive, tools, dual
-engines, reports + this STATUS / ladder / decisions-13 / conceptual-foundation sync — is **committed as this HEAD commit**
-(hash pinned at the next sync, per the `810e01f7` convention).
-**Commit only when the user asks; stage explicit paths.**
+(`765db5f0`), the prior docs-sync (`810e01f7`), and **pathA_32 Gate-3 (`6711167a`)** committed. The **pathA_33 Gate-4 milestone**
+— directive, tools, dual engines, reports + this STATUS / ladder / decisions-13 / conceptual-foundation sync — is **committed as
+this HEAD commit** (hash pinned at the next sync, per the `810e01f7` convention). **Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox
 danger-full-access` — workspace-write CAN'T run it; OR the orchestrator runs `math` directly as arbiter); **review ordering** = iterate

@@ -38,10 +38,22 @@ verification agents → user methodology call (derive the emergent constants bef
 >   theorem at the linearized isotropic reference — the three grouped lanes `{20,21,22}` collapse to common conservative coefficients
 >   (raw-`D` lane defects = 0, the PRIMARY gate), SO(3)-covariant (Gram = `I₅`, `λ_m=6`, the angular `K₂` term that dropped at ℓ=0 now
 >   alive), 8 able-to-fail probes; the quadrupole sector first appears here; two-tier gate = raw-`D` PRIMARY + normalized `a₂=b₂=a₄=b₄=0`
->   cross-check; v1 was tri-review-REJECTED for dual-engine `x−x` gaming + typed probe booleans → remediated; pending commit). All three
->   land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 4 (`54/5` quadrupole normalization)** — extract `P₀` on the isotropic
->   outgoing branch, hit `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)` (handoff §8.3/§12; `G` is CALIBRATED — the PDE delivers the FORM/branch + `P₀`, not
->   `G`). Then Gate 5 (scalar/dipole + cross-ℓ unify pathA_28/29) → Gate 6 (nonlinear closure = the WALL); PN match-back = the decisive falsifier.
+>   cross-check; v1 was tri-review-REJECTED for dual-engine `x−x` gaming + typed probe booleans → remediated; committed `6711167a`).
+>   **Gate 4 `pathA_33` ✅ `QUAD_CALIBRATED`** (full tri-review CLEAN after a remediation; committed at HEAD, hash pinned next sync) — on Gate-3's isotropic
+>   outgoing branch the ℓ=2 sector delivers the **EARNED predictive surplus cleanly SEPARATED from the CALIBRATED magnitude**: the
+>   outgoing fingerprint `1/9, 4/81, 1/27` is DERIVED from the DtN `Ŷ₂^out=−3/Λ₂^out` Hankel series (not hardcoded), prefactor algebra
+>   from `P(ω)=D₀N(ω)/D^cons(ω)²` (the `−2D₂N₀` term), `P0_target_scaling=a⁻⁵`, derived `χ_Q=1` closing
+>   `m̂₀²P₀=54Gc_s⁵/5a⁵c⁵ ⟺ γ_quad^eff=2G/5c⁵`. **Headline split:** `54/5 = 2·27/5` — the `27` EARNED (`derived_in_gate`), the
+>   `2/5`+`G`+magnitude CALIBRATED (`external_bridge_input`), classified by a 4-way PROVENANCE partition (NOT `G→λG` invariance — `54/5`
+>   is G-invariant yet calibrated); `G` is `GENUINE_BLOCKED` (the PDE delivers FORM/branch, not `G`). **Dim milestone:** a `μ̂₀`-FREE
+>   able-to-fail check (`[P₀^phys]=(c_s/a)²·N₀/D₀`) caught the handoff's `P₀=N₀/D₀` silently dropping a `(c_s/a)²` factor; v1 was
+>   tri-review-REJECTED (free-carrier-tautology dim gate + constant `self_ablation`) → remediated → re-verified EARNED. All four gates
+>   land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 5 (scalar/dipole side-conditions + cross-ℓ unification)** — reconcile the
+>   ℓ=0/1 brane↔bulk return (pathA_28/29: `R0=−M0`, `R1=−D1`, bounded residual `∝ε₀`) with the ℓ=2 quadrupole channel. Then Gate 6
+>   (nonlinear closure = the WALL — solved PDE must RETURN the symbolic branch data + literal `54/5`); PN match-back = the decisive falsifier.
+>   **⚠️ Tracked debt:** the Gate-1–3 dim checks (`pathA_30/31/32`) were found VACUOUS (typed-tuple ledgers disconnected from the real
+>   expressions) — a retrofit debt to redo after Gate 4 using the real `pathA_18` harness (the harness the Gate-4 `μ̂₀`-free check now
+>   uses). Physics OOM-risk judged low.
 > - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
 >   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
 > - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity

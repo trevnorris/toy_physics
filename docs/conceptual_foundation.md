@@ -381,7 +381,7 @@ that mass — so solving conservation directly yields the gravitational profile 
 > `pde_ledger` open-item #9 (the full nonlinear return closure is the downstream track-3 work). Detail:
 > `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md, tools/pathA_29_*, reports/pathA_29_*}`.
 
-> **⭐ MILESTONE (2026-06-26) — the MOVING-THROAT PDE push is underway, and the first three gates hold.** Completing the actual
+> **⭐ MILESTONE (2026-06-26) — the MOVING-THROAT PDE push is underway, and the first four gates hold.** Completing the actual
 > moving-throat PDE (the distributed-geometry field theory whose solved branch must *return* the GR-quadrupole and the EM sector) is a
 > **~6-gate ladder**, not one step — master checklist: `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md`.
 > What matters conceptually: we are checking that the **distributed geometry lift** (promote the throat from collective coordinates
@@ -399,14 +399,23 @@ that mass — so solving conservation directly yields the gravitational profile 
 >   is **SO(3)-covariant** (rotation-symmetric). And it is genuinely able-to-fail: deliberately squashing the reference throat splits the
 >   lanes back apart. So the quadrupole — the lowest radiating gravitational shape — enters the PDE the way it should.
 >   (`ISOTROPY_CALIBRATED`: the wall material constants are calibration inputs.)
+> - **Gate 4 (`pathA_33`) ✅** — the quadrupole **radiation / normalization** gate. Here the model draws an honest line between what it
+>   *earns* and what it *calibrates*. The **shape** of the radiating quadrupole's response (its low-frequency fingerprint) is **earned** —
+>   it is **derived from the genuine outgoing-wave boundary condition** (a wave leaving to infinity), not put in by hand. The overall
+>   **magnitude** — the famous `54/5` factor and the gravitational coupling `G` itself — is honest **calibration**, not a derivation of
+>   Newton's constant. The split is literally `54/5 = 2·27/5`: the `27` is earned from the fingerprint, the `2/5` and `G` are the
+>   calibrated bridge. So the PDE delivers the *form* of gravitational-wave emission while we still tune its strength to nature.
+>   (`QUAD_CALIBRATED`.)
 >
-> Honest status: all three are **necessary plumbing**, all land **CALIBRATED** (the toy-model contract — calibrate freely, derive later
-> if we can), and the decisive tests are still ahead: **Gate 4** (the `54/5` quadrupole normalization, calibrated form) → **Gate 5**
-> (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole return) → **Gate 6** (the full *nonlinear* closure — the likely
-> wall), with the **match-back to the audited PN ladder** threaded through as the real falsifier. Process note (hard-won): both Gate-2
-> and Gate-3 first runs *looked* clean, but the adversarial review caught pass-by-construction defects fidelity missed — Gate-3's first
-> attempt even faked one of its two independent engines (a vacuous "x minus x" comparison) — so every verdict-bearing control must
-> compute from inputs and carry an able-to-fail probe. The model is holding together so far, which is the only reason to keep pushing.
+> Honest status: all four are **necessary plumbing**, all land **CALIBRATED** (the toy-model contract — calibrate freely, derive later
+> if we can), and the decisive tests are still ahead: **Gate 5** (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole
+> return) → **Gate 6** (the full *nonlinear* closure — the likely wall), with the **match-back to the audited PN ladder** threaded through
+> as the real falsifier. Process note (hard-won): Gates 2, 3, and 4 all first runs *looked* clean, but the adversarial review caught
+> pass-by-construction defects fidelity missed — Gate-3's first attempt even faked one of its two independent engines (a vacuous "x minus
+> x" comparison), and Gate-4's first attempt had a units check that cheated by back-solving a free knob to force the answer. The
+> dimensional-rigor win is worth flagging: a units check that can **actually fail** caught a quietly dropped scale factor in the handoff —
+> exactly the kind of natural-units bookkeeping slip that hides order-of-magnitude errors. So every verdict-bearing control must compute
+> from inputs and carry an able-to-fail probe. The model is holding together so far, which is the only reason to keep pushing.
 
 ---
 

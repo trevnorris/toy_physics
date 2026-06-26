@@ -1,0 +1,778 @@
+schema: pathA_33_quadrupole_normalization/v1
+engine: dual-engine
+source_directive: software/stage1_solver/directives/pathA_33_quadrupole_normalization.md
+cited_sources:
+- research/pde_ledger/notes/stages/moving_throat_pde_handoff_full.md sections 10.3,
+  11, 12
+- software/stage1_solver/reports/pathA_22a_dimensional_skeleton.md
+verdict: QUAD_CALIBRATED
+which_rung: QUAD_CALIBRATED
+gate_booleans:
+  fingerprint_ok: true
+  prefactor_ok: true
+  scaling_ok: true
+  equivalence_ok: true
+  dimensional_ok: true
+  outgoing_ok: true
+  provenance_ok: true
+  able_to_fail_ok: true
+dtn_fingerprint:
+  definition:
+    Lambda2_out: z*h2^(1)'(z)/h2^(1)(z)
+    Yhat2_out: -3/Lambda2_out
+    z: a*omega/c_s
+  sympy:
+    lambda_out_series_z: -(2*z**6 - 3*I*z**5 - 3*z**4 - 9*z**2 + 81)/27
+    Yhat_out_series_z: -(11*z**6 - 27*I*z**5 - 36*z**4 - 81*z**2 - 729)/729
+    coefficients_z:
+      u2: 1/9
+      u4: 4/81
+      v5: 1/27
+    coefficients_physical:
+      u2: a**2/(9*c_s**2)
+      u4: 4*a**4/(81*c_s**4)
+      v5: a**5/(27*c_s**5)
+    coefficients_z_numeric:
+      u2: 0.1111111111111111
+      u4: 0.04938271604938271
+      v5: 0.037037037037037035
+    coefficient_matches:
+      u2_z: true
+      u4_z: true
+      v5_z: true
+      u2: true
+      u4: true
+      v5: true
+    chi_Q: '1'
+    chi_Q_numeric: 1.0
+    incoming_chi_Q: '-1'
+    incoming_chi_Q_numeric: -1.0
+    standing_lambda_static: '2'
+    standing_Yhat_static: -3/2
+    standing_v5_z: '0'
+  mathematica:
+    lambda_out_series_z: -3 + z^2/3 + z^4/9 + (I/9)*z^5 - (2*z^6)/27
+    Yhat_out_series_z: 1 + z^2/9 + (4*z^4)/81 + (I/27)*z^5 - (11*z^6)/729
+    coefficients_z:
+      u2: 1/9
+      u4: 4/81
+      v5: 1/27
+    coefficients_physical:
+      u2: a^2/(9*cs^2)
+      u4: (4*a^4)/(81*cs^4)
+      v5: a^5/(27*cs^5)
+    coefficients_z_numeric:
+      u2: 0.1111111111111111
+      u4: 0.04938271604938271
+      v5: 0.037037037037037035
+    coefficient_matches:
+      u2_z: true
+      u4_z: true
+      v5_z: true
+    chi_Q: '1'
+    chi_Q_numeric: 1.0
+    incoming_chi_Q: '-1'
+    incoming_chi_Q_numeric: -1.0
+    standing_lambda_static: '2'
+    standing_Yhat_static: -3/2
+    standing_v5_z: '0'
+  derived_coefficients:
+    u2: a**2/(9*c_s**2)
+    u4: 4*a**4/(81*c_s**4)
+    v5: a**5/(27*c_s**5)
+    chi_Q: '1'
+outgoing_port_moments:
+  P_port: Omega_U**2*g_W + R*g_U
+  N_A0_r: (Omega_U**2*g_W + R*g_U)**2/Delta**2
+  N_A2_r: -2*(Omega_U**2*g_W + R*g_U)*(Delta*g_W - Omega_U**2*S*g_W - R*S*g_U)/Delta**3
+  N_A4_r: (Delta**2*g_W**2 - 2*Delta*Omega_U**4*g_W**2 - 4*Delta*Omega_U**2*R*g_U*g_W
+    - 4*Delta*Omega_U**2*S*g_W**2 - 2*Delta*R**2*g_U**2 - 4*Delta*R*S*g_U*g_W + 3*Omega_U**4*S**2*g_W**2
+    + 6*Omega_U**2*R*S**2*g_U*g_W + 3*R**2*S**2*g_U**2)/Delta**4
+  isotropic_branch: N_20,n=N_21,n=N_22,n=N_n and D_20,n=D_21,n=D_22,n=D_n carried
+    symbolically
+prefactor_algebra:
+  definition: P(omega)=D0*N(omega)/Dcons(omega)^2
+  Nomega: N0 + N2*omega**2 + N4*omega**4
+  Dcons: D0 + D2*omega**2 + D4*omega**4
+  correct_series: (D0**2*N0 + D0**2*N2*omega**2 + D0**2*N4*omega**4 - 2*D0*D2*N0*omega**2
+    - 2*D0*D2*N2*omega**4 - 2*D0*D4*N0*omega**4 + 3*D2**2*N0*omega**4)/D0**3
+  coefficients:
+    P0: N0/D0
+    P2: (D0*N2 - 2*D2*N0)/D0**2
+    P4: (D0**2*N4 - 2*D0*D2*N2 - 2*D0*D4*N0 + 3*D2**2*N0)/D0**3
+  expected:
+    P0: N0/D0
+    P2: (D0*N2 - 2*D2*N0)/D0**2
+    P4: (D0**2*N4 - 2*D0*D2*N2 - 2*D0*D4*N0 + 3*D2**2*N0)/D0**3
+  residuals_to_formula:
+    P0: '0'
+    P2: '0'
+    P4: '0'
+  matches:
+    P0: true
+    P2: true
+    P4: true
+  N_over_D_self_check:
+    correct_P2_D2N0_term: -2*D2*N0
+    plain_P2_D2N0_term: -D2*N0
+    plain_equals_correct_P2: false
+    difference_plain_minus_correct_P2: D2*N0/D0**2
+  plain_N_over_D_coefficients:
+    P0: N0/D0
+    P2: (D0*N2 - D2*N0)/D0**2
+    P4: (D0**2*N4 - D0*D2*N2 - D0*D4*N0 + D2**2*N0)/D0**3
+  sympy_sample_values:
+    P0: 0.5789473684210527
+    P2: -0.7174515235457064
+    P4: 0.016037323224959543
+    plain_P2: -0.016620498614958512
+    plain_minus_correct_P2: 0.7008310249307479
+  mathematica_sample_values:
+    P0: 0.5789473684210527
+    P2: -0.7174515235457064
+    P4: 0.016037323224959908
+    plain_P2: -0.01662049861495845
+    plain_minus_correct_P2: 0.700831024930748
+target_scaling:
+  target_rhs: 54*G*c_s**5/(5*a**5*c**5)
+  P0_target_scaling: -5
+  target_scaling_ok: true
+  actual_branch_scaling_status: DEFERRED_GATE_6_SYMBOLIC_Dn_Nn_NO_A_SCALINGS_SUPPLIED
+  wrong_scaling_probe_power: -4
+  wrong_scaling_probe_ok: true
+equivalence:
+  definitions:
+    P0_physical: N0*c_s**2/(D0*a**2)
+    Gamma5: N0*a**3*chi_Q/(27*D0*c_s**3)
+    gamma_quad_eff: mhat0^2*Gamma5 with mhat0=mu_hat0*mtilde0
+    normalization_target: 54*G*c_s**5/(5*a**5*c**5)
+  chi_Q_derived_from_DtN: '1'
+  Gamma5_with_derived_chi: N0*a**3/(27*D0*c_s**3)
+  forward_residual_to_2G_over_5c5: '0'
+  reverse_residual_to_54Gcs5_over_5a5c5: '0'
+  ok: true
+  wrong_gamma_probe_residual: 27*G*c_s**5/(5*a**5*c**5)
+  wrong_gamma_probe_fires: true
+dimensional_check:
+  dimension_order:
+  - L
+  - M
+  - T
+  dimensional_gate: mu_hat0-free P0 physical dimension check
+  dimensional_gate_expression: P0_phys=(c_s/a)^2*(N0/D0)
+  dimensional_gate_depends_on_mu_hat0: false
+  symbol_dimensions:
+    a: L
+    c_s: L T^-1
+    c: L T^-1
+    G: L^3 T^-2 M^-1
+    N0: L^-1 M
+    D0: L^-1 T^-2 M
+    mtilde0: '1'
+    mu_hat0: L^-1 T^-1 M^-1/2
+  P0_raw_dimension: T^2
+  frequency_normalization_dimension: T^-2
+  P0_dimension: '1'
+  P0_physical_dimension: '1'
+  P0_physical_dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+  dimensional_ok: true
+  dimensional_status: DIMENSIONAL_OK
+  mu_hat0_dimension: L^-1 T^-1 M^-1/2
+  Gamma5_dimension: T^5
+  lhs_dimension: L^-2 T^-2 M^-1
+  rhs_dimension: L^-2 T^-2 M^-1
+  table:
+  - quantity: N0
+    expression: N0
+    dimension: L^-1 M
+    dimension_monomial: M/L
+    dimension_vector_LMT:
+    - -1
+    - 1
+    - 0
+  - quantity: D0
+    expression: D0
+    dimension: L^-1 T^-2 M
+    dimension_monomial: M/(L*T**2)
+    dimension_vector_LMT:
+    - -1
+    - 1
+    - -2
+  - quantity: P0_raw=N0/D0
+    expression: N0/D0
+    dimension: T^2
+    dimension_monomial: T**2
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '2'
+  - quantity: frequency_normalization=(c_s/a)^2
+    expression: c_s**2/a**2
+    dimension: T^-2
+    dimension_monomial: T**(-2)
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '-2'
+  - quantity: P0=(c_s/a)^2*N0/D0
+    expression: N0*c_s**2/(D0*a**2)
+    dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+  - quantity: Yhat_out_physical_expansion
+    expression: I*(3*a**5*omega**5 - 4*I*a**4*c_s*omega**4 - 9*I*a**2*c_s**3*omega**2
+      - 81*I*c_s**5)/(81*c_s**5)
+    dimension: '1'
+    dimension_monomial: '1'
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '0'
+  - quantity: Gamma5=chi_Q*P0*a^5/(27*c_s^5)
+    expression: N0*a**3*chi_Q/(27*D0*c_s**3)
+    dimension: T^5
+    dimension_monomial: T**5
+    dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '5'
+  - quantity: target_lhs=(mu_hat0*mtilde0)^2*P0
+    expression: N0*c_s**2*mtilde0**2*mu_hat0**2/(D0*a**2)
+    dimension: L^-2 T^-2 M^-1
+    dimension_monomial: 1/(L**2*M*T**2)
+    dimension_vector_LMT:
+    - '-2'
+    - '-1'
+    - '-2'
+  - quantity: target_rhs=54*G*c_s^5/(5*a^5*c^5)
+    expression: 54*G*c_s**5/(5*a**5*c**5)
+    dimension: L^-2 T^-2 M^-1
+    dimension_monomial: 1/(L**2*M*T**2)
+    dimension_vector_LMT:
+    - '-2'
+    - '-1'
+    - '-2'
+  mu_hat0_homogeneity_diagnostic:
+    label: non-able-to-fail (mu_hat0 free carrier)
+    participates_in_verdict: false
+    mu_dim_solved_from_rhs_minus_p0_over_2: true
+    homogeneity_required_P0_dimension_with_pinned_mu: '1'
+    mu_hat0_dimension: L^-1 T^-1 M^-1/2
+    lhs_dimension: L^-2 T^-2 M^-1
+    rhs_dimension: L^-2 T^-2 M^-1
+    lhs_raw_without_frequency_normalization_dimension: L^-2 M^-1
+    homogeneity_pass: true
+  mutation_drop_frequency_normalization:
+    mutated_P0_expression: N0/D0
+    mutated_P0_dimension: T^2
+    mutated_P0_dimension_vector_LMT:
+    - '0'
+    - '0'
+    - '2'
+    baseline_P0_physical_dimension: '1'
+    dimensional_ok: false
+    verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
+  mutation_corrupt_N0_dimension:
+    sourced_N0_dimension: L^-1 M
+    corrupted_N0_dimension: '1'
+    mutated_P0_raw_dimension: L T^2 M^-1
+    mutated_P0_physical_dimension: L M^-1
+    mutated_P0_physical_dimension_vector_LMT:
+    - '1'
+    - '-1'
+    - '0'
+    baseline_P0_physical_dimension: '1'
+    dimensional_ok: false
+    verdict: FAIL_DIMENSIONAL
+    mutation_fires: true
+dimensional_table:
+- quantity: N0
+  expression: N0
+  dimension: L^-1 M
+  dimension_monomial: M/L
+  dimension_vector_LMT:
+  - -1
+  - 1
+  - 0
+- quantity: D0
+  expression: D0
+  dimension: L^-1 T^-2 M
+  dimension_monomial: M/(L*T**2)
+  dimension_vector_LMT:
+  - -1
+  - 1
+  - -2
+- quantity: P0_raw=N0/D0
+  expression: N0/D0
+  dimension: T^2
+  dimension_monomial: T**2
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '2'
+- quantity: frequency_normalization=(c_s/a)^2
+  expression: c_s**2/a**2
+  dimension: T^-2
+  dimension_monomial: T**(-2)
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '-2'
+- quantity: P0=(c_s/a)^2*N0/D0
+  expression: N0*c_s**2/(D0*a**2)
+  dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+- quantity: Yhat_out_physical_expansion
+  expression: I*(3*a**5*omega**5 - 4*I*a**4*c_s*omega**4 - 9*I*a**2*c_s**3*omega**2
+    - 81*I*c_s**5)/(81*c_s**5)
+  dimension: '1'
+  dimension_monomial: '1'
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '0'
+- quantity: Gamma5=chi_Q*P0*a^5/(27*c_s^5)
+  expression: N0*a**3*chi_Q/(27*D0*c_s**3)
+  dimension: T^5
+  dimension_monomial: T**5
+  dimension_vector_LMT:
+  - '0'
+  - '0'
+  - '5'
+- quantity: target_lhs=(mu_hat0*mtilde0)^2*P0
+  expression: N0*c_s**2*mtilde0**2*mu_hat0**2/(D0*a**2)
+  dimension: L^-2 T^-2 M^-1
+  dimension_monomial: 1/(L**2*M*T**2)
+  dimension_vector_LMT:
+  - '-2'
+  - '-1'
+  - '-2'
+- quantity: target_rhs=54*G*c_s^5/(5*a^5*c^5)
+  expression: 54*G*c_s**5/(5*a**5*c**5)
+  dimension: L^-2 T^-2 M^-1
+  dimension_monomial: 1/(L**2*M*T**2)
+  dimension_vector_LMT:
+  - '-2'
+  - '-1'
+  - '-2'
+provenance_partition:
+  items:
+    fingerprint_u2:
+      provenance_tags:
+      - dtn_hankel_expansion
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    fingerprint_u4:
+      provenance_tags:
+      - dtn_hankel_expansion
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    fingerprint_v5:
+      provenance_tags:
+      - dtn_hankel_expansion
+      - dtn_radiative_slot
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    fingerprint_27:
+      provenance_tags:
+      - dtn_radiative_slot
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    prefactor_P0_P2_P4:
+      provenance_tags:
+      - prefactor_series_algebra
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    P0_target_scaling_minus5:
+      provenance_tags:
+      - target_rhs_algebra
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    chi_Q:
+      provenance_tags:
+      - dtn_radiative_slot
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    Gamma5_equivalence_chain:
+      provenance_tags:
+      - gamma_bridge_algebra
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    dimensional_p0_physical_gate:
+      provenance_tags:
+      - dimension_expression_eval
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    emergent_passivity:
+      provenance_tags:
+      - emergent_outgoing_passivity
+      computed_class: derived_in_gate
+      emitted_class: derived_in_gate
+      class_matches_computed: true
+    G:
+      provenance_tags:
+      - external_gr_constant
+      computed_class: external_bridge_input
+      emitted_class: external_bridge_input
+      class_matches_computed: true
+    PN_2_over_5:
+      provenance_tags:
+      - external_pn_bridge
+      computed_class: external_bridge_input
+      emitted_class: external_bridge_input
+      class_matches_computed: true
+    Einstein_2G_over_5c5_identity:
+      provenance_tags:
+      - einstein_bridge_identity
+      computed_class: external_bridge_input
+      emitted_class: external_bridge_input
+      class_matches_computed: true
+    assembled_54_over_5_magnitude:
+      provenance_tags:
+      - external_pn_bridge
+      - dtn_radiative_slot
+      computed_class: external_bridge_input
+      emitted_class: external_bridge_input
+      class_matches_computed: true
+    D_n_N_n_numeric_values:
+      provenance_tags:
+      - gate6_branch_solve
+      computed_class: deferred_branch_data
+      emitted_class: deferred_branch_data
+      class_matches_computed: true
+    port_scalars:
+      provenance_tags:
+      - gate6_branch_solve
+      computed_class: deferred_branch_data
+      emitted_class: deferred_branch_data
+      class_matches_computed: true
+    actual_branch_a_scaling:
+      provenance_tags:
+      - gate6_branch_solve
+      computed_class: deferred_branch_data
+      emitted_class: deferred_branch_data
+      class_matches_computed: true
+    unit_choices:
+      provenance_tags:
+      - unit_choice
+      computed_class: convention
+      emitted_class: convention
+      class_matches_computed: true
+    static_slot_minus3:
+      provenance_tags:
+      - static_slot_convention
+      computed_class: convention
+      emitted_class: convention
+      class_matches_computed: true
+  groups:
+    derived_in_gate:
+    - fingerprint_u2
+    - fingerprint_u4
+    - fingerprint_v5
+    - fingerprint_27
+    - prefactor_P0_P2_P4
+    - P0_target_scaling_minus5
+    - chi_Q
+    - Gamma5_equivalence_chain
+    - dimensional_p0_physical_gate
+    - emergent_passivity
+    external_bridge_input:
+    - G
+    - PN_2_over_5
+    - Einstein_2G_over_5c5_identity
+    - assembled_54_over_5_magnitude
+    deferred_branch_data:
+    - D_n_N_n_numeric_values
+    - port_scalars
+    - actual_branch_a_scaling
+    convention:
+    - unit_choices
+    - static_slot_minus3
+    unclassified: []
+  emitted_groups:
+    derived_in_gate:
+    - fingerprint_u2
+    - fingerprint_u4
+    - fingerprint_v5
+    - fingerprint_27
+    - prefactor_P0_P2_P4
+    - P0_target_scaling_minus5
+    - chi_Q
+    - Gamma5_equivalence_chain
+    - dimensional_p0_physical_gate
+    - emergent_passivity
+    external_bridge_input:
+    - G
+    - PN_2_over_5
+    - Einstein_2G_over_5c5_identity
+    - assembled_54_over_5_magnitude
+    deferred_branch_data:
+    - D_n_N_n_numeric_values
+    - port_scalars
+    - actual_branch_a_scaling
+    convention:
+    - unit_choices
+    - static_slot_minus3
+    unclassified: []
+  ok: true
+  classification_rule: computed from provenance tags; external tags dominate mixed
+    quantities, so assembled 54/5 remains calibrated
+  g_to_lambda_g_diagnostic:
+    diagnostics:
+      G:
+        expression: G
+        g_invariant: false
+        provenance_class: external_bridge_input
+      target_2G_over_5c5:
+        expression: 2*G/(5*c**5)
+        g_invariant: false
+        provenance_class: external_bridge_input
+      pure_54_over_5:
+        expression: 54/5
+        g_invariant: true
+        provenance_class: external_bridge_input
+      fingerprint_27:
+        expression: '27'
+        g_invariant: true
+        provenance_class: derived_in_gate
+    classifier: provenance_not_g_invariance
+    invariance_only_trap_catches_54_over_5: true
+  decomposition_54_over_5:
+    identity: 54/5 = 2*27/5
+    earned_factor:
+      factor: 27
+      class: derived_in_gate
+    calibrated_factor:
+      factor: 2/5
+      class: external_bridge_input
+    assembled_magnitude_class: external_bridge_input
+counterfactuals:
+  3a_wrong_bc:
+    incoming:
+      u2_z: 1/9
+      u4_z: 4/81
+      v5_z: -1/27
+      chi_Q: '-1'
+      predicted_change: true
+      verdict: FAIL_FINGERPRINT
+    standing_j2:
+      lambda_static: '2'
+      Yhat_static: -3/2
+      v5_z: '0'
+      predicted_change: true
+      verdict: FAIL_FINGERPRINT
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_FINGERPRINT
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_FINGERPRINT
+      fail_suppressed: true
+      with_mutation_cases:
+        incoming: FAIL_FINGERPRINT
+        standing_j2: FAIL_FINGERPRINT
+  3b_imposed_dissipation:
+    mutated_source: phenomenological_inserted_damping
+    inserted_v5_z: 1/27
+    genuine_outgoing: false
+    detection_basis: provenance-tag check; no DtN Hankel source is attached to the
+      inserted damping term
+    removing_outgoing_bc_removes_imaginary_term: true
+    verdict: FAIL_NOT_OUTGOING
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_NOT_OUTGOING
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_NOT_OUTGOING
+      fail_suppressed: true
+  3c_wrong_scaling:
+    mutated_P0_target_scaling: -4
+    expected_P0_target_scaling: -5
+    verdict: FAIL_SCALING
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_SCALING
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_SCALING
+      fail_suppressed: true
+  3d_dimensional_break:
+    mutated_P0_dimension: T^2
+    baseline_P0_physical_dimension: '1'
+    mutated_dimensional_ok: false
+    verdict: FAIL_DIMENSIONAL
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_DIMENSIONAL
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_DIMENSIONAL
+      fail_suppressed: true
+  3d_prime_corrupt_port_dimension:
+    sourced_N0_dimension: L^-1 M
+    corrupted_N0_dimension: '1'
+    mutated_P0_physical_dimension: L M^-1
+    baseline_P0_physical_dimension: '1'
+    mutated_dimensional_ok: false
+    verdict: FAIL_DIMENSIONAL
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_DIMENSIONAL
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_DIMENSIONAL
+      fail_suppressed: true
+  3e_equivalence_break:
+    wrong_gamma_probe_residual: 27*G*c_s**5/(5*a**5*c**5)
+    verdict: FAIL_EQUIVALENCE
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_EQUIVALENCE
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_EQUIVALENCE
+      fail_suppressed: true
+  3f_partition_mislabel:
+    external_bridge_input_G_as_derived:
+      partition_ok: false
+      verdict: FAIL_PROVENANCE_PARTITION
+    derived_fingerprint_27_as_external:
+      partition_ok: false
+      verdict: FAIL_PROVENANCE_PARTITION
+    g_invariance_only_would_miss_54_over_5: true
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_PROVENANCE_PARTITION
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_PROVENANCE_PARTITION
+      fail_suppressed: true
+      with_mutation_cases:
+        external_bridge_input_G_as_derived: FAIL_PROVENANCE_PARTITION
+        derived_fingerprint_27_as_external: FAIL_PROVENANCE_PARTITION
+  3g_wrong_prefactor_object:
+    mutated_object: (N0 + N2*omega**2 + N4*omega**4)/(D0 + D2*omega**2 + D4*omega**4)
+    plain_P2: (D0*N2 - D2*N0)/D0**2
+    correct_P2: (D0*N2 - 2*D2*N0)/D0**2
+    plain_equals_correct_P2: false
+    verdict: FAIL_PREFACTOR_ALGEBRA
+    self_ablation:
+      rerun_gate_logic: true
+      with_mutation: FAIL_PREFACTOR_ALGEBRA
+      without_mutation: QUAD_CALIBRATED
+      expected_fail: FAIL_PREFACTOR_ALGEBRA
+      fail_suppressed: true
+able_to_fail:
+  probe_flags:
+    3a_wrong_bc: true
+    3b_imposed_dissipation: true
+    3c_wrong_scaling: true
+    3d_dimensional_break: true
+    3d_prime_corrupt_port_dimension: true
+    3e_equivalence_break: true
+    3f_partition_mislabel: true
+    3g_wrong_prefactor_object: true
+  able_to_fail_ok: true
+  neutered_each_probe_flips_aggregate_false: true
+passivity:
+  source: dtn_hankel1
+  imaginary_v5_nonzero: true
+  genuine_outgoing: true
+engine_agreement:
+  status: pass
+  max_symbolic_delta: 0.0
+  symbolic_tolerance: 1.0e-10
+  max_numeric_delta: 3.642919299551295e-16
+  numeric_tolerance: 1.0e-08
+  symbolic_checks:
+    fingerprint_u2_z: true
+    fingerprint_u4_z: true
+    fingerprint_v5_z: true
+    chi_Q: true
+    prefactor_P0_residual_zero_in_both: true
+    prefactor_P2_residual_zero_in_both: true
+    prefactor_P4_residual_zero_in_both: true
+    dimension_P0_raw_dimension: true
+    dimension_frequency_normalization_dimension: true
+    dimension_P0_dimension: true
+    dimension_P0_physical_dimension: true
+    dimension_dimensional_ok: true
+    dimension_mu_hat0_dimension: true
+    dimension_Gamma5_dimension: true
+    dimension_lhs_dimension: true
+    dimension_rhs_dimension: true
+    dimension_drop_norm_verdict: true
+    dimension_corrupt_N0_verdict: true
+  numeric_deltas:
+    fingerprint_u2_z: 0.0
+    fingerprint_u4_z: 0.0
+    fingerprint_v5_z: 0.0
+    chi_Q: 0.0
+    incoming_chi_Q: 0.0
+    prefactor_P0: 0.0
+    prefactor_P2: 0.0
+    prefactor_P4: 3.642919299551295e-16
+    prefactor_plain_P2: 6.245004513516506e-17
+    prefactor_plain_minus_correct_P2: 1.1102230246251565e-16
+  compared_quantities:
+  - fingerprint_u2_z
+  - fingerprint_u4_z
+  - fingerprint_v5_z
+  - chi_Q
+  - incoming_chi_Q
+  - prefactor_P0
+  - prefactor_P2
+  - prefactor_P4
+  - prefactor_plain_P2
+  - prefactor_plain_minus_correct_P2
+  - fingerprint_u2_z
+  - fingerprint_u4_z
+  - fingerprint_v5_z
+  - chi_Q
+  - prefactor_P0_residual_zero_in_both
+  - prefactor_P2_residual_zero_in_both
+  - prefactor_P4_residual_zero_in_both
+  - dimension_P0_raw_dimension
+  - dimension_frequency_normalization_dimension
+  - dimension_P0_dimension
+  - dimension_P0_physical_dimension
+  - dimension_dimensional_ok
+  - dimension_mu_hat0_dimension
+  - dimension_Gamma5_dimension
+  - dimension_lhs_dimension
+  - dimension_rhs_dimension
+  - dimension_drop_norm_verdict
+  - dimension_corrupt_N0_verdict
+reduction_certificate:
+  frozen_inputs:
+  - Gate-3 isotropic linearized reference
+  - symbolic D_n
+  - symbolic outgoing port scalars and N_n
+  - external calibration knob G
+  computed:
+  - DtN-derived outgoing fingerprint
+  - P0/P2/P4 prefactor algebra
+  - P0_target_scaling=a^-5
+  - Gamma5/chi_Q equivalence
+  - real-expression dimensional table
+  - provenance partition
+  - counterfactual verdict flips
+  deferred:
+  - numerical D_n,N_n and port scalars from Gate 6
+  - actual branch a-scaling from Gate 6
+  - derivation of G and the literal 54/5 magnitude
+  - cross-l reconciliation and downstream PN match-back

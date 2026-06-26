@@ -78,7 +78,7 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
   assembly + per-lane raw-`D` cross-engine comparison; each probe computed-from-mutated-input with a self-ablation.
   Re-verified (arbiter byte-for-byte; fidelity + adversarial re-ablation EARNED).
 
-### Gate 4 — Full coupled extraction → quadrupole normalization  ☐  ⭐ THE PAYOFF
+### Gate 4 — Full coupled extraction → quadrupole normalization  ☑ DONE = `QUAD_CALIBRATED`  (`pathA_33`)  ⭐ THE PAYOFF
 - **Tests:** on the isotropic passive/outgoing branch, extract the canonical pair `(K̄₀, K̄₂)`, compute the
   outgoing prefactor `P₀=N₀/D₀` and `γ_quad^eff`, and hit the **single sharp target**
   `m̂₀²·P₀ = 54Gc_s⁵/(5a⁵c⁵)` ⟺ `γ_quad^eff = 2G/(5c⁵)` (handoff §12.3; scaffold §11.4, §8.3).
@@ -89,6 +89,24 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
   knob. **We are not deriving Newton's constant.**
 - **Difficulty:** hardest. **Decisive?** yes (this is the ledger's single OPEN item, "actual branch
   realization").
+- **RESULT (2026-06-26):** on Gate-3's isotropic branch, the outgoing ℓ=2 sector delivers the **EARNED predictive
+  surplus cleanly SEPARATED from the CALIBRATED magnitude** — the outgoing fingerprint `1/9, 4/81, 1/27` is
+  **DERIVED** from the DtN `Ŷ₂^out=−3/Λ₂^out` Hankel series (not hardcoded), the prefactor algebra follows from
+  `P(ω)=D₀N(ω)/D^cons(ω)²` (the `−2D₂N₀` term), `P0_target_scaling=a⁻⁵`, and the derived `χ_Q=1` closes
+  `m̂₀²P₀=54Gc_s⁵/5a⁵c⁵ ⟺ γ_quad^eff=2G/5c⁵`. **The headline split:** `54/5 = 2·27/5` — the `27` is **EARNED**
+  (`derived_in_gate`, from the fingerprint), the `2/5` + `G` + assembled magnitude are **CALIBRATED**
+  (`external_bridge_input`), classified by a 4-way **PROVENANCE** partition (NOT `G→λG` invariance, since `54/5`
+  is G-invariant yet calibrated). `G` is `GENUINE_BLOCKED` — the PDE delivers the FORM/branch, not `G`.
+  **Dimensional milestone:** a genuine, `μ̂₀`-FREE, able-to-fail dim check (`[P₀^phys]=(c_s/a)²·N₀/D₀` must be
+  dimensionless from sourced `[N₀]=L⁻¹M`, `[D₀]=L⁻¹T⁻²M`) caught that the handoff's `P₀=N₀/D₀` silently drops a
+  `(c_s/a)²` factor (natural-units trap). **CALIBRATED** because `G` / the `54/5` magnitude are calibration inputs.
+  Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_33_*`.
+- **Hard-won (process):** v1 was tri-review-REJECTED — the **adversarial-with-ablation** leg caught two
+  pass-by-construction sub-controls fidelity + arbiter both passed: (a) the "non-vacuous" dimensional gate was STILL
+  tautological because it **back-solved the FREE carrier `μ̂₀`** to force homogeneity (free-carrier tautology); and
+  (b) the per-probe `self_ablation` field was a **constant, not a re-run**. Remediation: `μ̂₀`-free dim gate + a new
+  corrupt-`[N₀]` probe (§3d′) + a real two-verdict `self_ablation`; re-verified EARNED (corrupting `[N₀]` now fires
+  `FAIL_DIMENSIONAL`; `[G]` doesn't).
 
 ### Threaded through Gates 2–4 — PN match-back  ☐  (decisive falsification)
 - **Tests:** at each gate, the extracted low-frequency data must match the **already-audited PN ladder**

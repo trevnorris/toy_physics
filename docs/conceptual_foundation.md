@@ -381,7 +381,7 @@ that mass — so solving conservation directly yields the gravitational profile 
 > `pde_ledger` open-item #9 (the full nonlinear return closure is the downstream track-3 work). Detail:
 > `software/stage1_solver/{directives/pathA_29_brane_bulk_return.md, tools/pathA_29_*, reports/pathA_29_*}`.
 
-> **⭐ MILESTONE (2026-06-25) — the MOVING-THROAT PDE push is underway, and the first two gates hold.** Completing the actual
+> **⭐ MILESTONE (2026-06-26) — the MOVING-THROAT PDE push is underway, and the first three gates hold.** Completing the actual
 > moving-throat PDE (the distributed-geometry field theory whose solved branch must *return* the GR-quadrupole and the EM sector) is a
 > **~6-gate ladder**, not one step — master checklist: `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md`.
 > What matters conceptually: we are checking that the **distributed geometry lift** (promote the throat from collective coordinates
@@ -393,13 +393,19 @@ that mass — so solving conservation directly yields the gravitational profile 
 >   `(a,L)` collective dynamics** (mass + stiffness from one operator projection; the 2-mode truncation is clean for any order-unity
 >   wall stiffness). So the old finite-dimensional throat dynamics are genuinely the lowest-mode limit of the field theory.
 >   (`BREATHING_CALIBRATED`: the wall material constants are calibration inputs.)
+> - **Gate 3 (`pathA_32`) ✅** — switching on the quadrupole channels, the **ℓ=2 quadrupole sector first appears**, and the three
+>   directional lanes that the throat can wobble along **collapse to one common set of coefficients on an isotropic (round) reference**.
+>   That collapse is exactly what spatial isotropy *means* — there is no preferred direction baked into the field theory; the reduction
+>   is **SO(3)-covariant** (rotation-symmetric). And it is genuinely able-to-fail: deliberately squashing the reference throat splits the
+>   lanes back apart. So the quadrupole — the lowest radiating gravitational shape — enters the PDE the way it should.
+>   (`ISOTROPY_CALIBRATED`: the wall material constants are calibration inputs.)
 >
-> Honest status: both are **necessary plumbing**, both land **CALIBRATED** (the toy-model contract — calibrate freely, derive later if
-> we can), and the decisive tests are still ahead: **Gate 3** (the grouped-`P2` / ℓ=2 quadrupole sector first appears) → **Gate 4** (the
-> `54/5` quadrupole normalization, calibrated form) → **Gate 5** (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole
-> return) → **Gate 6** (the full *nonlinear* closure — the likely wall), with the **match-back to the audited PN ladder** threaded through
-> as the real falsifier. Process note (hard-won): Gate-2's first run *looked* clean but the adversarial review caught three
-> pass-by-construction defects (and the remediation then caught a false-FAIL in our own fix) — every verdict-bearing control must
+> Honest status: all three are **necessary plumbing**, all land **CALIBRATED** (the toy-model contract — calibrate freely, derive later
+> if we can), and the decisive tests are still ahead: **Gate 4** (the `54/5` quadrupole normalization, calibrated form) → **Gate 5**
+> (scalar/dipole side-conditions + unifying the `pathA_29` monopole/dipole return) → **Gate 6** (the full *nonlinear* closure — the likely
+> wall), with the **match-back to the audited PN ladder** threaded through as the real falsifier. Process note (hard-won): both Gate-2
+> and Gate-3 first runs *looked* clean, but the adversarial review caught pass-by-construction defects fidelity missed — Gate-3's first
+> attempt even faked one of its two independent engines (a vacuous "x minus x" comparison) — so every verdict-bearing control must
 > compute from inputs and carry an able-to-fail probe. The model is holding together so far, which is the only reason to keep pushing.
 
 ---

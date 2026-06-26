@@ -1,7 +1,7 @@
 # STATUS — where the Path-A program is (single front door)
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
-Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-25.**
+Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-26.**
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -10,7 +10,7 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ⭐⭐ LATEST STATE (2026-06-25) — READ THIS FIRST
+## ⭐⭐ LATEST STATE (2026-06-26) — READ THIS FIRST
 
 **DYNAMICAL-GRAVITY SECTOR = BUILT & GR-MATCHED; speed-of-gravity / aberration worry RESOLVED.** The conservative PN two-body ladder
 **1PN→4PN + 2.5PN radiation is already derived, audited, and GR-matched** (calibrated / controlled-reduction) in `research/4d_*pn*`.
@@ -56,10 +56,23 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   wall-stiffness window (`K_η/T_w≲2.6`), failing only for sharp walls. CALIBRATED ⇐ `μ_η,T_w,K_η` are calibration inputs. **Caveat:**
   the overlap doesn't guard profile-correctness (HF mismatch does); clean truncation shown *for assumed order-unity wall stiffness*.
   v1 was tri-review-REJECTED (HF `x−x`, hardcoded counterfactual, gamed threshold) → remediated. Artifacts: `pathA_31_*`.
-- **⭐ NEXT = Gate 3 (grouped-`P2` / ℓ=2 sector):** switch on `η_2m` one channel at a time, build the grouped response matrix, test the
-  isotropy gate `a₂=b₂=0` (scaffold §11.3, handoff §11) — the quadrupole sector first appears here. Then Gate 4 (quadrupole `54/5`,
-  calibrated form) → Gate 5 (scalar/dipole + cross-ℓ unification) → Gate 6 (full nonlinear closure = the WALL); PN match-back threaded
-  through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
+- **Gate 3 (`pathA_32`, grouped-`P2` / ℓ=2 sector) ✅ DONE = `ISOTROPY_CALIBRATED`** (full tri-review CLEAN after a remediation). The
+  distributed lift's ℓ=2 grouped-`P2` sector satisfies the isotropy / lane-degeneracy theorem at the linearized isotropic reference:
+  the three grouped lanes `{20,21,22}` collapse to common conservative coefficients (raw-`D` lane defects = 0, the **PRIMARY** gate),
+  the reduction is SO(3)-covariant (angular Gram = `I₅`; computed `−Δ_S²` eigenvalue `λ_m=6` per harmonic; the angular stiffness
+  `K₂=∫[T_w β₂'² + (K_η+6T_Ω)β₂²]` — the term that dropped at ℓ=0 — is now alive), and the gate is genuinely able-to-fail (8
+  counterfactual probes, each flips under ablation). **The quadrupole sector first appears here.** CALIBRATED ⇐ the wall constants
+  `μ_η,T_w,K_η,T_Ω,β₂` + the symbolic radial scalars are calibration inputs. **Two-tier gate:** raw-`D` lane collapse is the
+  verdict-bearing PRIMARY test; the published `a₂=b₂=a₄=b₄=0` (normalized `u`-defects) is a necessary-but-not-sufficient cross-check
+  (a per-lane order-independent prefactor cancels in the normalized response). v1 was tri-review-REJECTED — the
+  adversarial-with-ablation leg caught two pass-by-construction defects fidelity missed (dual-engine gaming = vacuous `x−x` on three
+  byte-identical Mathematica copies; 5/8 probes typed their FAIL booleans + a tautological able-to-fail aggregate) → remediated
+  (honest per-harmonic `.wl` + per-lane `D` cross-engine; each probe computed-from-mutated-input with a self-ablation) → re-verified
+  (arbiter byte-for-byte; fidelity + adversarial re-ablation EARNED). Artifacts: `pathA_32_*`.
+- **⭐ NEXT = Gate 4 (quadrupole `54/5` normalization):** on the isotropic outgoing branch, extract the canonical pair, compute the
+  outgoing prefactor `P₀`, and hit `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)` (handoff §8.3/§12). `G` is CALIBRATED — the PDE delivers the FORM/branch
+  + outgoing `P₀`, **not** Newton's `G`. Then Gate 5 (scalar/dipole + cross-ℓ unification) → Gate 6 (full nonlinear closure = the WALL);
+  PN match-back threaded through = the decisive falsifier. Don't re-derive the audited PN ladder (`research/4d_*pn*`).
 
 Process lesson banked (memory `project-model-mechanics-corrections` + `feedback-offload-review-gauntlet`): every compute gate runs the
 full Codex→GLM→Codex directive gauntlet + dual-engine + tri-review, with the **review rounds offloaded to a gauntlet-runner agent** so
@@ -71,8 +84,10 @@ gravitational changes propagate (∝ρ²); `v_r` = field *strength*, not a speed
 changes propagate at `c_s`, and uniform motion tracks the **current** position → **no aberration**. Throat-soliton has **no sloshing**
 (`J_w=0` expected; AC→DC retired); gravity is a separate background de-structuring drain.
 
-**COMMIT STATE (2026-06-25):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`), pathA_30 Gate-1 (`f460fc63`) committed. The **pathA_31
-Gate-2 milestone** (directive, dual engines, reports, feed note) + this STATUS / ladder / push-memory sync are **being committed now**.
+**COMMIT STATE (2026-06-26):** pathA_28 (`8cf6f1f1`), pathA_29 (`145c8426`), pathA_30 Gate-1 (`f460fc63`), pathA_31 Gate-2
+(`765db5f0`), and the prior docs-sync (`810e01f7`) committed. The **pathA_32 Gate-3 milestone** — directive, tools, dual
+engines, reports + this STATUS / ladder / decisions-13 / conceptual-foundation sync — is **committed as this HEAD commit**
+(hash pinned at the next sync, per the `810e01f7` convention).
 **Commit only when the user asks; stage explicit paths.**
 
 **Process discipline (unchanged):** Codex codes / Claude reviews; **dual-engine** (Mathematica: Codex needs `--sandbox

@@ -54,13 +54,29 @@ Status legend: ☐ not started · ◐ in progress · ☑ done.
   fix made the STRUCTURE gate computed-not-hardcoded (with an able-to-fail probe). The Gate-1 "fold via Codex
   at next touch" NIT (`engine_agreement` ordering) still applies to the stage1_solver verdict idiom.
 
-### Gate 3 — Grouped-`P2` (ℓ=2) sector  ☐
+### Gate 3 — Grouped-`P2` (ℓ=2) sector  ☑ DONE = `ISOTROPY_CALIBRATED`  (`pathA_32`)
 - **Tests:** switch on `η_2m` one channel at a time; build the grouped response matrix `Z^eff_{AB}(ω)`; test
   the **isotropy gate** `a₂=b₂=0` on the reference branch (scaffold §11.3, handoff §11).
 - **Able-to-fail core:** the three grouped lanes `{20,21,22}` must collapse to common coefficients on the
   isotropic branch; anisotropy that won't vanish = the branch is wrong. **This is where the quadrupole sector
   first appears.**
 - **Difficulty:** hard. **Decisive?** partial (isotropy is a real gate).
+- **RESULT (2026-06-26):** the distributed lift's ℓ=2 grouped-`P2` sector satisfies the isotropy / lane-degeneracy
+  theorem at the linearized isotropic reference — the three grouped lanes `{20,21,22}` **collapse to common
+  conservative coefficients** (raw-`D` lane defects = 0, the **PRIMARY** gate), the reduction is **SO(3)-covariant**
+  (angular Gram = `I₅`; computed `−Δ_S²` eigenvalue `λ_m=6` per harmonic; the angular stiffness
+  `K₂=∫[T_w β₂'² + (K_η+6T_Ω)β₂²]` — the term that dropped at ℓ=0 — is now alive), and the gate is **genuinely
+  able-to-fail** (8 counterfactual probes, each flips under ablation). **CALIBRATED** because the wall constants
+  `μ_η,T_w,K_η,T_Ω,β₂` and the symbolic radial scalars are calibration inputs (toy-model contract). **Two-tier
+  gate:** the raw-`D` lane collapse is the verdict-bearing PRIMARY test; the published `a₂=b₂=a₄=b₄=0` (normalized
+  `u`-defects) is a necessary-but-not-sufficient cross-check (a per-lane order-independent prefactor cancels in the
+  normalized response). Artifacts: `software/stage1_solver/{directives,tools,reports}/pathA_32_*`.
+- **Hard-won (process):** v1 was REJECTED by tri-review — the **adversarial-with-ablation** leg caught two
+  pass-by-construction defects fidelity missed: (a) **dual-engine gaming** (the Mathematica baseline lane-collapse
+  was a vacuous `x−x` on three byte-identical copies, honest only on the probes), and (b) **5 of 8 probes typed
+  their FAIL booleans** plus a tautological `able_to_fail` aggregate. Remediation: honest per-harmonic `.wl`
+  assembly + per-lane raw-`D` cross-engine comparison; each probe computed-from-mutated-input with a self-ablation.
+  Re-verified (arbiter byte-for-byte; fidelity + adversarial re-ablation EARNED).
 
 ### Gate 4 — Full coupled extraction → quadrupole normalization  ☐  ⭐ THE PAYOFF
 - **Tests:** on the isotropic passive/outgoing branch, extract the canonical pair `(K̄₀, K̄₂)`, compute the

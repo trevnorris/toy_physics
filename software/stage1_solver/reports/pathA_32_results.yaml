@@ -1,0 +1,912 @@
+schema: pathA_32_grouped_p2_isotropy/v1
+engine: dual-engine
+source_directive: software/stage1_solver/directives/pathA_32_grouped_p2_isotropy.md
+cited_sources:
+- research/pde_ledger/notes/stages/moving_throat_pde_handoff_full.md sections 6.1,
+  8.3, 11
+- research/pde_ledger/notes/stages/moving_throat_pde_phase1_linearized_scaffold.md
+  section 8.2
+verdict: ISOTROPY_CALIBRATED
+which_rung: ISOTROPY_CALIBRATED
+gate_booleans:
+  covariant: true
+  tautology_clear: true
+  dynamic_retained: true
+  stability_ok: true
+  denominator_guard_ok: true
+  lane_collapse_ok: true
+  able_to_fail_ok: true
+input_partition:
+  derived_inputs:
+  - explicit real l=2 harmonics
+  - 5x5 angular Gram from S2 integrals
+  - per-harmonic -Delta_S2 eigenvalues
+  - K2 angular coefficient selected from computed lambda_m
+  - ungrouped channel angular self-overlaps
+  - raw-D and normalized defect algebra from assembled lanes
+  - counterfactual probe verdicts
+  calibration_inputs:
+  - R0(w) linearized isotropic reference
+  - beta2(w) radial profile
+  - mu_eta(w)
+  - T_w(w)
+  - K_eta(w)
+  - T_Omega(w)
+  - Mtilde radial mass scalar
+  - Ktilde radial stiffness scalar excluding angular T_Omega
+  - TomegaTilde angular radial scalar
+  - B0tilde,B2tilde,B4tilde support scalars
+  - Z0tilde,Z2tilde,Z4tilde mixed/Maxwell scalars
+  - physical calibration window for positivity and denominator guards
+  - Gate-1 D/N boundary provenance
+  pass_requires_empty_calibration_inputs: true
+calibration_window:
+  Mtilde:
+    min: 2.0
+    max: 5.0
+    unit: mass
+  Ktilde:
+    min: 5.0
+    max: 11.0
+    unit: mass/time^2
+  TomegaTilde:
+    min: 0.25
+    max: 1.0
+    unit: mass/time^2
+  B0tilde:
+    min: 0.5
+    max: 1.5
+    unit: mass/time^2
+  Z0tilde:
+    min: 0.25
+    max: 0.75
+    unit: mass/time^2
+calibration_sample:
+  Mtilde: 3.0
+  Ktilde: 7.0
+  TomegaTilde: 0.5
+  B0tilde: 1.0
+  Z0tilde: 0.5
+  B2tilde: 0.4
+  Z2tilde: 0.2
+  B4tilde: 0.05
+  Z4tilde: 0.03
+harmonics:
+  order:
+  - '20'
+  - 21c
+  - 21s
+  - 22c
+  - 22s
+  expressions:
+    '20': sqrt(5)*(3*cos(theta)**2 - 1)/(4*sqrt(pi))
+    21c: -sqrt(15)*(-sin(phi - 2*theta) + sin(phi + 2*theta))/(8*sqrt(pi))
+    21s: sqrt(15)*(-cos(phi - 2*theta) + cos(phi + 2*theta))/(8*sqrt(pi))
+    22c: sqrt(15)*sin(theta)**2*cos(2*phi)/(4*sqrt(pi))
+    22s: sqrt(15)*sin(2*phi)*sin(theta)**2/(4*sqrt(pi))
+  input_hashes:
+    '20': 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+    21c: a9d1ecb601d4c5a12264100e1ca23ead86d991c4bb20bbf481df7385b5ce8c19
+    21s: c457a0581622be32eb77e017498c1ecc4dd9086f6ae6bc4b5ef55871d2b789f6
+    22c: 768cbd341eb9a784e90f79c6fdc72b1fcbd2dfdc658d021170566cca0bff5a5f
+    22s: 9cce3a727699af189470cabf1f30f4c06e000ed5f281674eae2e1293b1818b6b
+  distinct_input_hashes: true
+  per_channel_integral_trace:
+    '20':
+      hash: 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+      self_overlap_integral: Integral[Y_20^2 dOmega]
+      self_overlap_value: '1'
+      lambda_value: '6'
+    21c:
+      hash: a9d1ecb601d4c5a12264100e1ca23ead86d991c4bb20bbf481df7385b5ce8c19
+      self_overlap_integral: Integral[Y_21c^2 dOmega]
+      self_overlap_value: '1'
+      lambda_value: '6'
+    21s:
+      hash: c457a0581622be32eb77e017498c1ecc4dd9086f6ae6bc4b5ef55871d2b789f6
+      self_overlap_integral: Integral[Y_21s^2 dOmega]
+      self_overlap_value: '1'
+      lambda_value: '6'
+    22c:
+      hash: 768cbd341eb9a784e90f79c6fdc72b1fcbd2dfdc658d021170566cca0bff5a5f
+      self_overlap_integral: Integral[Y_22c^2 dOmega]
+      self_overlap_value: '1'
+      lambda_value: '6'
+    22s:
+      hash: 9cce3a727699af189470cabf1f30f4c06e000ed5f281674eae2e1293b1818b6b
+      self_overlap_integral: Integral[Y_22s^2 dOmega]
+      self_overlap_value: '1'
+      lambda_value: '6'
+  gram_5x5:
+  - - '1'
+    - '0'
+    - '0'
+    - '0'
+    - '0'
+  - - '0'
+    - '1'
+    - '0'
+    - '0'
+    - '0'
+  - - '0'
+    - '0'
+    - '1'
+    - '0'
+    - '0'
+  - - '0'
+    - '0'
+    - '0'
+    - '1'
+    - '0'
+  - - '0'
+    - '0'
+    - '0'
+    - '0'
+    - '1'
+  gram_5x5_numeric:
+  - - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+  gram_is_identity: true
+  anisotropy_weight: 1 + eps*(3*cos(theta)^2-1)/2
+  anisotropy_coefficients:
+    '20': 2/7
+    21c: 1/7
+    21s: 1/7
+    22c: -2/7
+    22s: -2/7
+  anisotropy_coefficients_numeric:
+    '20': 0.2857142857142857
+    21c: 0.14285714285714285
+    21s: 0.14285714285714285
+    22c: -0.2857142857142857
+    22s: -0.2857142857142857
+  self_overlaps_pure_prefactor:
+    '20': (2*eps + 7)/7
+    21c: (eps + 7)/7
+    21s: (eps + 7)/7
+    22c: -(2*eps - 7)/7
+    22s: -(2*eps - 7)/7
+  grouped_reduction_isotropic:
+  - - '1'
+    - '0'
+    - '0'
+  - - '0'
+    - '1'
+    - '0'
+  - - '0'
+    - '0'
+    - '1'
+  grouped_reduction_isotropic_numeric:
+  - - 1.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 1.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 1.0
+  grouped_reduction_pure_prefactor:
+  - - (2*eps + 7)/7
+    - '0'
+    - '0'
+  - - '0'
+    - (eps + 7)/7
+    - '0'
+  - - '0'
+    - '0'
+    - -(2*eps - 7)/7
+  grouped_reduction_pure_prefactor_linear_coeff:
+  - - 2/7
+    - '0'
+    - '0'
+  - - '0'
+    - 1/7
+    - '0'
+  - - '0'
+    - '0'
+    - -2/7
+  grouped_reduction_pure_prefactor_linear_coeff_numeric:
+  - - 0.2857142857142857
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.14285714285714285
+    - 0.0
+  - - 0.0
+    - 0.0
+    - -0.2857142857142857
+laplacian:
+  lambda_by_channel:
+    '20': '6'
+    21c: '6'
+    21s: '6'
+    22c: '6'
+    22s: '6'
+  lambda_numeric_by_channel:
+    '20': 6.0
+    21c: 6.0
+    21s: 6.0
+    22c: 6.0
+    22s: 6.0
+  residuals_minus_lambda_Y:
+    '20': '0'
+    21c: '0'
+    21s: '0'
+    22c: '0'
+    22s: '0'
+  residuals_zero: true
+  lambda_all_six: true
+  k2_angular_coefficient_used:
+    '20': '6'
+    21c: '6'
+    21s: '6'
+    22c: '6'
+    22s: '6'
+  k2_coefficient_equals_computed_lambda:
+    '20': true
+    21c: true
+    21s: true
+    22c: true
+    22s: true
+  k2_coefficient_equals_computed_lambda_all: true
+response_symbols:
+  M2: Mtilde
+  K2_per_channel: Ktilde + lambda_m*TomegaTilde
+  K2_on_isotropic_l2: Ktilde + 6*TomegaTilde
+  Btilde:
+  - B0tilde
+  - B2tilde
+  - B4tilde
+  Ztilde:
+  - Z0tilde
+  - Z2tilde
+  - Z4tilde
+ungrouped_channels:
+  '20':
+    angular_self_overlap: '1'
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+  21c:
+    angular_self_overlap: '1'
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+  21s:
+    angular_self_overlap: '1'
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+  22c:
+    angular_self_overlap: '1'
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+  22s:
+    angular_self_overlap: '1'
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+intra_lane_cs_equality:
+  D21c_equals_D21s_order_0: true
+  D21c_equals_D21s_order_2: true
+  D21c_equals_D21s_order_4: true
+  D22c_equals_D22s_order_0: true
+  D22c_equals_D22s_order_2: true
+  D22c_equals_D22s_order_4: true
+grouped_lanes:
+  '20':
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+    D_sample:
+      '0': 8.5
+      '2': -3.6
+      '4': -0.08
+    D0_nonzero_guard: true
+  '21':
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+    D_sample:
+      '0': 8.5
+      '2': -3.6
+      '4': -0.08
+    D0_nonzero_guard: true
+  '22':
+    M2: Mtilde
+    K2: Ktilde + 6*TomegaTilde
+    D:
+      '0': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '2': -B2tilde - Mtilde - Z2tilde
+      '4': -B4tilde - Z4tilde
+    D_sample:
+      '0': 8.5
+      '2': -3.6
+      '4': -0.08
+    D0_nonzero_guard: true
+raw_D_gate:
+  raw_D_triples:
+    '0':
+      '20': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '21': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+      '22': -B0tilde + Ktilde + 6*TomegaTilde - Z0tilde
+    '2':
+      '20': -B2tilde - Mtilde - Z2tilde
+      '21': -B2tilde - Mtilde - Z2tilde
+      '22': -B2tilde - Mtilde - Z2tilde
+    '4':
+      '20': -B4tilde - Z4tilde
+      '21': -B4tilde - Z4tilde
+      '22': -B4tilde - Z4tilde
+  raw_D_defects:
+    a_D0: '0'
+    b_D0: '0'
+    a_D2: '0'
+    b_D2: '0'
+    a_D4: '0'
+    b_D4: '0'
+  raw_D_defect_magnitudes_sample:
+    a_D0: 0.0
+    b_D0: 0.0
+    a_D2: 0.0
+    b_D2: 0.0
+    a_D4: 0.0
+    b_D4: 0.0
+  raw_D_defects_zero: true
+  lane_collapse_ok: true
+normalized_response:
+  u2_triple:
+    '20': -(B2tilde + Mtilde + Z2tilde)/(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)
+    '21': -(B2tilde + Mtilde + Z2tilde)/(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)
+    '22': -(B2tilde + Mtilde + Z2tilde)/(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)
+  u4_triple:
+    '20': -(B0tilde*B4tilde + B0tilde*Z4tilde - B2tilde**2 - 2*B2tilde*Mtilde - 2*B2tilde*Z2tilde
+      - B4tilde*Ktilde - 6*B4tilde*TomegaTilde + B4tilde*Z0tilde - Ktilde*Z4tilde
+      - Mtilde**2 - 2*Mtilde*Z2tilde - 6*TomegaTilde*Z4tilde + Z0tilde*Z4tilde - Z2tilde**2)/(B0tilde
+      - Ktilde - 6*TomegaTilde + Z0tilde)**2
+    '21': -(B0tilde*B4tilde + B0tilde*Z4tilde - B2tilde**2 - 2*B2tilde*Mtilde - 2*B2tilde*Z2tilde
+      - B4tilde*Ktilde - 6*B4tilde*TomegaTilde + B4tilde*Z0tilde - Ktilde*Z4tilde
+      - Mtilde**2 - 2*Mtilde*Z2tilde - 6*TomegaTilde*Z4tilde + Z0tilde*Z4tilde - Z2tilde**2)/(B0tilde
+      - Ktilde - 6*TomegaTilde + Z0tilde)**2
+    '22': -(B0tilde*B4tilde + B0tilde*Z4tilde - B2tilde**2 - 2*B2tilde*Mtilde - 2*B2tilde*Z2tilde
+      - B4tilde*Ktilde - 6*B4tilde*TomegaTilde + B4tilde*Z0tilde - Ktilde*Z4tilde
+      - Mtilde**2 - 2*Mtilde*Z2tilde - 6*TomegaTilde*Z4tilde + Z0tilde*Z4tilde - Z2tilde**2)/(B0tilde
+      - Ktilde - 6*TomegaTilde + Z0tilde)**2
+  normalized_defects:
+    a2: '0'
+    b2: '0'
+    a4: '0'
+    b4: '0'
+  normalized_defect_magnitudes_sample:
+    a2: 0.0
+    b2: 0.0
+    a4: 0.0
+    b4: 0.0
+  normalized_defects_zero: true
+stability:
+  M2_window_min: 2.0
+  K2_window_min: 6.5
+  D0_window_min: 4.25
+  stability_ok: true
+  denominator_guard_ok: true
+  omega_2m:
+    '20': sqrt((Ktilde + 6*TomegaTilde)/Mtilde)
+    21c: sqrt((Ktilde + 6*TomegaTilde)/Mtilde)
+    21s: sqrt((Ktilde + 6*TomegaTilde)/Mtilde)
+    22c: sqrt((Ktilde + 6*TomegaTilde)/Mtilde)
+    22s: sqrt((Ktilde + 6*TomegaTilde)/Mtilde)
+  omega_2m_sample: 1.8257418583505538
+  omega_2m_degenerate: true
+counterfactuals:
+  pure_prefactor_anisotropy:
+    description: w=1+eps*P2 applied uniformly to wall and support sectors
+    epsilon_values:
+    - 0.0001
+    - 0.0002
+    - -0.0003
+    C_A_epsilon:
+      '20': (2*eps + 7)/7
+      '21': (eps + 7)/7
+      '22': -(2*eps - 7)/7
+    raw_D_defects:
+      a_D0: -eps*(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)/14
+      b_D0: -3*eps*(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)/14
+      a_D2: -eps*(B2tilde + Mtilde + Z2tilde)/14
+      b_D2: -3*eps*(B2tilde + Mtilde + Z2tilde)/14
+      a_D4: -eps*(B4tilde + Z4tilde)/14
+      b_D4: -3*eps*(B4tilde + Z4tilde)/14
+    normalized_u_defects:
+      a2: '0'
+      b2: '0'
+      a4: '0'
+      b4: '0'
+    sample_values:
+      a_D0:
+      - 6.07142857142857e-05
+      - 0.0001214285714285714
+      - -0.00018214285714285712
+      b_D0:
+      - 0.00018214285714285712
+      - 0.00036428571428571423
+      - -0.0005464285714285714
+      a_D2:
+      - -2.5714285714285714e-05
+      - -5.142857142857143e-05
+      - 7.714285714285713e-05
+      b_D2:
+      - -7.714285714285714e-05
+      - -0.00015428571428571428
+      - 0.0002314285714285714
+      a_D4:
+      - -5.714285714285715e-07
+      - -1.142857142857143e-06
+      - 1.714285714285714e-06
+      b_D4:
+      - -1.7142857142857143e-06
+      - -3.4285714285714285e-06
+      - 5.1428571428571415e-06
+    raw_D_moves: true
+    linear_scaling_max_ratio_delta: 4.440892098500626e-16
+    linear_scaling_confirmed: true
+    normalized_u_defects_stay_zero: true
+    verdict: FAIL_ANISOTROPIC_BRANCH
+  sector_selective_anisotropy:
+    description: w=1+eps*P2 applied only to Btilde/Ztilde support sectors; wall sector
+      stays isotropic
+    epsilon_values:
+    - 0.0001
+    - 0.0002
+    - -0.0003
+    raw_D_defects:
+      a_D0: -eps*(B0tilde + Z0tilde)/14
+      b_D0: -3*eps*(B0tilde + Z0tilde)/14
+      a_D2: -eps*(B2tilde + Z2tilde)/14
+      b_D2: -3*eps*(B2tilde + Z2tilde)/14
+      a_D4: -eps*(B4tilde + Z4tilde)/14
+      b_D4: -3*eps*(B4tilde + Z4tilde)/14
+    normalized_u_defects:
+      a2: -7*eps*(B0tilde*Mtilde + B2tilde*Ktilde + 6*B2tilde*TomegaTilde + Ktilde*Z2tilde
+        + Mtilde*Z0tilde + 6*TomegaTilde*Z2tilde)*(2*B0tilde*eps + 35*B0tilde - 35*Ktilde
+        - 210*TomegaTilde + 2*Z0tilde*eps + 35*Z0tilde)/(10*(B0tilde*eps + 7*B0tilde
+        - 7*Ktilde - 42*TomegaTilde + Z0tilde*eps + 7*Z0tilde)*(2*B0tilde*eps - 7*B0tilde
+        + 7*Ktilde + 42*TomegaTilde + 2*Z0tilde*eps - 7*Z0tilde)*(2*B0tilde*eps +
+        7*B0tilde - 7*Ktilde - 42*TomegaTilde + 2*Z0tilde*eps + 7*Z0tilde))
+      b2: -21*eps*(B0tilde*Mtilde + B2tilde*Ktilde + 6*B2tilde*TomegaTilde + Ktilde*Z2tilde
+        + Mtilde*Z0tilde + 6*TomegaTilde*Z2tilde)/(2*(B0tilde*eps + 7*B0tilde - 7*Ktilde
+        - 42*TomegaTilde + Z0tilde*eps + 7*Z0tilde)*(2*B0tilde*eps - 7*B0tilde + 7*Ktilde
+        + 42*TomegaTilde + 2*Z0tilde*eps - 7*Z0tilde))
+    sample_values:
+      a_D0:
+      - -1.0714285714285714e-05
+      - -2.1428571428571428e-05
+      - 3.214285714285714e-05
+      b_D0:
+      - -3.2142857142857144e-05
+      - -6.428571428571429e-05
+      - 9.642857142857142e-05
+      a_D2:
+      - -4.285714285714286e-06
+      - -8.571428571428573e-06
+      - 1.2857142857142856e-05
+      b_D2:
+      - -1.2857142857142856e-05
+      - -2.571428571428571e-05
+      - 3.857142857142857e-05
+      a_D4:
+      - -5.714285714285715e-07
+      - -1.142857142857143e-06
+      - 1.714285714285714e-06
+      b_D4:
+      - -1.7142857142857143e-06
+      - -3.4285714285714285e-06
+      - 5.1428571428571415e-06
+      u_a2:
+      - 1.038063853945617e-06
+      - 2.0761308484298108e-06
+      - -3.1141727204262654e-06
+      u_b2:
+      - 3.1141790003792283e-06
+      - 6.228342299332268e-06
+      - -9.342631213257398e-06
+    u_linear_coefficients_at_eps0_sample:
+      a2: 0.010380622837370242
+      b2: 0.031141868512110725
+    raw_D_moves: true
+    u_defects_move: true
+    verdict: FAIL_ANISOTROPIC_BRANCH
+  m_dependent_profile:
+    description: profile scale beta_22=(1+delta)*beta_20, so quadratic response scale
+      differs by lane
+    delta: 0.1
+    profile_scales:
+      '20': '1'
+      '21': '1'
+      '22': (delta + 1)**2
+    raw_D_defects:
+      a_D0: delta*(delta + 2)*(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)/10
+      b_D0: delta*(delta + 2)*(B0tilde - Ktilde - 6*TomegaTilde + Z0tilde)/2
+      a_D2: delta*(delta + 2)*(B2tilde + Mtilde + Z2tilde)/10
+      b_D2: delta*(delta + 2)*(B2tilde + Mtilde + Z2tilde)/2
+      a_D4: delta*(B4tilde + Z4tilde)*(delta + 2)/10
+      b_D4: delta*(B4tilde + Z4tilde)*(delta + 2)/2
+    sample_values:
+      a_D0: -0.17850000000000005
+      b_D0: -0.8925000000000001
+      a_D2: 0.07560000000000001
+      b_D2: 0.3780000000000001
+      a_D4: 0.0016800000000000005
+      b_D4: 0.008400000000000001
+    raw_D_moves: true
+    normalized_u_defects_may_cancel_for_pure_profile_scale: true
+    verdict: FAIL_ANISOTROPIC_BRANCH
+  degenerate_beta_zero:
+    description: beta2=0 gives M2=K2=0 and is caught before normalized 0/0 response
+    beta2_scale: '0'
+    M2: '0'
+    K2: '0'
+    M2_sample: 0.0
+    K2_sample: 0.0
+    stability_ok: false
+    verdict: FAIL_STABILITY
+    fail_fires: true
+    computed_fail_gate: true
+    self_ablation:
+      beta2_scale: '1'
+      M2: Mtilde
+      K2: Ktilde + 6*TomegaTilde
+      M2_sample: 3.0
+      K2_sample: 10.0
+      stability_ok: true
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
+  wrong_eigenvalue:
+    description: force K2 angular coefficient 2 while computed lambda_m remains 6
+    forced_coefficient: '2'
+    forced_K2_by_channel:
+      '20': Ktilde + 2*TomegaTilde
+      21c: Ktilde + 2*TomegaTilde
+      21s: Ktilde + 2*TomegaTilde
+      22c: Ktilde + 2*TomegaTilde
+      22s: Ktilde + 2*TomegaTilde
+    computed_lambda_by_channel:
+      '20': '6'
+      21c: '6'
+      21s: '6'
+      22c: '6'
+      22s: '6'
+    coefficient_equals_computed_lambda: false
+    verdict: FAIL_NOT_COVARIANT
+    fail_fires: true
+    computed_fail_gate: true
+    self_ablation:
+      forced_coefficient: '6'
+      forced_K2_by_channel:
+        '20': Ktilde + 6*TomegaTilde
+        21c: Ktilde + 6*TomegaTilde
+        21s: Ktilde + 6*TomegaTilde
+        22c: Ktilde + 6*TomegaTilde
+        22s: Ktilde + 6*TomegaTilde
+      computed_lambda_by_channel:
+        '20': '6'
+        21c: '6'
+        21s: '6'
+        22c: '6'
+        22s: '6'
+      coefficient_equals_computed_lambda: true
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
+  singular_denominator:
+    description: hold M2,K2 positive but choose B0tilde+Z0tilde=K2 so D_A0=0
+    D0_sample: 0.0
+    M2_positive: true
+    K2_positive: true
+    denominator_guard_ok: false
+    computed_fail_gate: true
+    verdict: FAIL_SINGULAR_RESPONSE
+    fail_fires: true
+    self_ablation:
+      description: baseline non-singular substitution
+      D0_sample: 8.5
+      denominator_guard_ok: true
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
+  tautology_hash_collision:
+    description: set the three grouped lanes to identical harmonic inputs and compute
+      the hashes
+    input_hashes:
+      '20': 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+      '21': 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+      '22': 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+    distinct_hashes: false
+    verdict: FAIL_TAUTOLOGICAL
+    fail_fires: true
+    computed_fail_gate: true
+    self_ablation:
+      input_hashes:
+        '20': 67a9f3541ae998b7483acc2b13c613be10639eaa61f70e7bc3e950398ef041de
+        '21': a9d1ecb601d4c5a12264100e1ca23ead86d991c4bb20bbf481df7385b5ce8c19
+        '22': 768cbd341eb9a784e90f79c6fdc72b1fcbd2dfdc658d021170566cca0bff5a5f
+      distinct_hashes: true
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
+  static_drop_inertia:
+    description: drop Mtilde from D_A2, breaking the required dynamic omega expansion
+    dynamic_retained: false
+    computed_fail_gate: true
+    wrong_D2_without_M: -B2tilde - Z2tilde
+    correct_D2: -B2tilde - Mtilde - Z2tilde
+    verdict: FAIL_STATIC_RESPONSE
+    fail_fires: true
+    self_ablation:
+      description: retain the Mtilde inertia term in D_A2
+      dynamic_retained: true
+      correct_D2: -B2tilde - Mtilde - Z2tilde
+      verdict: ISOTROPY_CALIBRATED
+      fail_fires: false
+      fail_suppressed: true
+able_to_fail:
+  expected_probe_verdicts:
+    pure_prefactor_anisotropy: FAIL_ANISOTROPIC_BRANCH
+    sector_selective_anisotropy: FAIL_ANISOTROPIC_BRANCH
+    m_dependent_profile: FAIL_ANISOTROPIC_BRANCH
+    degenerate_beta_zero: FAIL_STABILITY
+    wrong_eigenvalue: FAIL_NOT_COVARIANT
+    singular_denominator: FAIL_SINGULAR_RESPONSE
+    tautology_hash_collision: FAIL_TAUTOLOGICAL
+    static_drop_inertia: FAIL_STATIC_RESPONSE
+  expected_probe_verdicts_match:
+    pure_prefactor_anisotropy: true
+    sector_selective_anisotropy: true
+    m_dependent_profile: true
+    degenerate_beta_zero: true
+    wrong_eigenvalue: true
+    singular_denominator: true
+    tautology_hash_collision: true
+    static_drop_inertia: true
+  computed_probe_gate_flags:
+    pure_prefactor_anisotropy: true
+    sector_selective_anisotropy: true
+    m_dependent_profile: true
+    degenerate_beta_zero: true
+    wrong_eigenvalue: true
+    singular_denominator: true
+    tautology_hash_collision: true
+    static_drop_inertia: true
+  able_to_fail_if_probe_neutered:
+    pure_prefactor_anisotropy: false
+    sector_selective_anisotropy: false
+    m_dependent_profile: false
+    degenerate_beta_zero: false
+    wrong_eigenvalue: false
+    singular_denominator: false
+    tautology_hash_collision: false
+    static_drop_inertia: false
+  neutering_any_probe_flips_false: true
+  able_to_fail_ok: true
+dim_homogeneity_table:
+  dimension_order:
+  - M
+  - L
+  - T
+  table:
+  - quantity: dOmega
+    dimension_MLT:
+    - 0
+    - 0
+    - 0
+  - quantity: dw
+    dimension_MLT:
+    - 0
+    - 1
+    - 0
+  - quantity: q_2m
+    dimension_MLT:
+    - 0
+    - 1
+    - 0
+  - quantity: omega
+    dimension_MLT:
+    - 0
+    - 0
+    - -1
+  - quantity: beta2
+    dimension_MLT:
+    - 0
+    - 0
+    - 0
+  - quantity: mu_eta
+    dimension_MLT:
+    - 1
+    - -1
+    - 0
+  - quantity: T_w
+    dimension_MLT:
+    - 1
+    - 1
+    - -2
+  - quantity: K_eta
+    dimension_MLT:
+    - 1
+    - -1
+    - -2
+  - quantity: T_Omega
+    dimension_MLT:
+    - 1
+    - -1
+    - -2
+  - quantity: M2
+    dimension_MLT:
+    - 1
+    - 0
+    - 0
+  - quantity: K2
+    dimension_MLT:
+    - 1
+    - 0
+    - -2
+  - quantity: B0_Z0
+    dimension_MLT:
+    - 1
+    - 0
+    - -2
+  - quantity: B2_Z2
+    dimension_MLT:
+    - 1
+    - 0
+    - 0
+  - quantity: B4_Z4
+    dimension_MLT:
+    - 1
+    - 0
+    - 2
+  - quantity: D0
+    dimension_MLT:
+    - 1
+    - 0
+    - -2
+  - quantity: D2
+    dimension_MLT:
+    - 1
+    - 0
+    - 0
+  - quantity: D4
+    dimension_MLT:
+    - 1
+    - 0
+    - 2
+  - quantity: D2_omega2
+    dimension_MLT:
+    - 1
+    - 0
+    - -2
+  - quantity: D4_omega4
+    dimension_MLT:
+    - 1
+    - 0
+    - -2
+  - quantity: u2_a2_b2
+    dimension_MLT:
+    - 0
+    - 0
+    - 2
+  - quantity: u4_a4_b4
+    dimension_MLT:
+    - 0
+    - 0
+    - 4
+  checks:
+    M2_from_mu_eta_dw: true
+    K2_from_Tw_beta_prime_sq_dw: true
+    K_eta_and_T_Omega_add: true
+    Keta_beta_sq_dw_to_K2: true
+    D0_D2w2_D4w4_match: true
+    u2_is_inverse_omega_squared: true
+    u4_is_inverse_omega_fourth: true
+    angular_integrals_dimensionless: true
+  status: pass
+deferred:
+- 54/5 quadrupole normalization
+- outgoing odd N_A,n extraction
+- solved nonlinear branch data K_A,M_A,B_A,n,Z_A,n,N_A,n
+- cross-l consistency and PN match-back
+engines:
+  sympy:
+    scratch_yaml: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_32_sympy_results.yaml
+    status: ok
+  mathematica:
+    scratch_yaml: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_32_mathematica_results.yaml
+    status: ok
+engine_agreement:
+  status: pass
+  max_symbolic_delta: 0.0
+  max_numeric_delta: 2.220446049250313e-16
+  grouped_lane_D_numeric_deltas:
+    20.D0: 0.0
+    20.D2: 0.0
+    20.D4: 0.0
+    21.D0: 0.0
+    21.D2: 0.0
+    21.D4: 0.0
+    22.D0: 0.0
+    22.D2: 0.0
+    22.D4: 0.0
+  grouped_lane_D_max_numeric_delta: 0.0
+  symbolic_tolerance: 1.0e-10
+  numeric_tolerance: 1.0e-08
+  symbolic_checks:
+    gram_identity: true
+    lambda_all_six: true
+    k_coefficients_equal: true
+    raw_D_defects_zero: true
+    normalized_defects_zero: true
+    grouped_lane_D_samples_present: true
+    probe_verdicts:
+      pure_prefactor_anisotropy: true
+      sector_selective_anisotropy: true
+      m_dependent_profile: true
+      degenerate_beta_zero: true
+      wrong_eigenvalue: true
+      singular_denominator: true
+      tautology_hash_collision: true
+      static_drop_inertia: true
+    baseline_verdict: true
+  checked_fields:
+  - gram_5x5
+  - grouped_reduction
+  - grouped_lane_D_A_n
+  - lambda_by_channel
+  - anisotropy_coefficients
+  - probe_sample_values
+  - probe_verdicts
+  - omega_2m_sample
+  - baseline_verdict

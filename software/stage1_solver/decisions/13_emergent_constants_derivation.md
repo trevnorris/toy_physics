@@ -34,9 +34,14 @@ verification agents → user methodology call (derive the emergent constants bef
 >   committed `f460fc63`). **Gate 2 `pathA_31` ✅ `BREATHING_CALIBRATED`** (the distributed lift's breathing mode reproduces the legacy
 >   `(a,L)` collective closure; operator-projected M/K, independent HF routes, structure gate computed+able-to-fail, dual-engine;
 >   2-mode truncation clean for order-unity wall stiffness; v1 was tri-review-REJECTED for pass-by-construction → remediated; committed
->   `765db5f0`). Both land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 3 (grouped-`P2` / ℓ=2)** — `η_2m` channels, grouped
->   response matrix, isotropy `a₂=b₂=0` (scaffold §11.3; the quadrupole sector first appears). Then Gate 4 (`54/5`) → Gate 5
->   (scalar/dipole + cross-ℓ unify pathA_28/29) → Gate 6 (nonlinear closure = the WALL); PN match-back = the decisive falsifier.
+>   `765db5f0`). **Gate 3 `pathA_32` ✅ `ISOTROPY_CALIBRATED`** (the ℓ=2 grouped-`P2` sector satisfies the isotropy / lane-degeneracy
+>   theorem at the linearized isotropic reference — the three grouped lanes `{20,21,22}` collapse to common conservative coefficients
+>   (raw-`D` lane defects = 0, the PRIMARY gate), SO(3)-covariant (Gram = `I₅`, `λ_m=6`, the angular `K₂` term that dropped at ℓ=0 now
+>   alive), 8 able-to-fail probes; the quadrupole sector first appears here; two-tier gate = raw-`D` PRIMARY + normalized `a₂=b₂=a₄=b₄=0`
+>   cross-check; v1 was tri-review-REJECTED for dual-engine `x−x` gaming + typed probe booleans → remediated; pending commit). All three
+>   land **CALIBRATED** (toy-model contract). **⭐ NEXT = Gate 4 (`54/5` quadrupole normalization)** — extract `P₀` on the isotropic
+>   outgoing branch, hit `m̂₀²P₀ = 54Gc_s⁵/(5a⁵c⁵)` (handoff §8.3/§12; `G` is CALIBRATED — the PDE delivers the FORM/branch + `P₀`, not
+>   `G`). Then Gate 5 (scalar/dipole + cross-ℓ unify pathA_28/29) → Gate 6 (nonlinear closure = the WALL); PN match-back = the decisive falsifier.
 > - **NEXT = TRACK 3: the brane↔bulk return / brane parent action** — the keystone the calibrated PDE (`research/pde_ledger/`) is
 >   gated on, and where the gravity sector's last falsifier actually lives (can an admissible return deliver `R0=−M0`, `R1=−D1`?).
 > - **The model-mechanics corrections that keep getting lost** (nothing is static; three distinct speeds `c_s`/`v_r`/`c_γ`; gravity

@@ -1,0 +1,239 @@
+schema: pathA_35_gateL_light_results/v1
+stage: Gate_L_light_on_shear_surface_brane
+date: '2026-06-26'
+frozen_baseline: T0_SHEAR_FROZEN(d9520d3819c3)
+overall_verdict: FAIL_COUPLE_STRESS_NOGO
+provenance: CONDITIONAL_ON(both)
+pass_subtag: null
+section_2_6_four_way_materialized: true
+branch_B_escaped_mode_count_plus_closure: true
+gapped_P_leg_tabulated: true
+c_gamma_squared: mu_R/rho_br
+derived_from_S_G0:
+  projection:
+    Gamma_P: m rho c_s^2 a^2 ell_g
+    J_P: m rho a^2 ell_g
+    g_ell_normalization: '1'
+    mode_weight_integral: ell_g
+    radial_stiffness: Gamma_P/a^2
+    source: int dw ell_g g_ell(w) times the inherited T0 P terms
+  transverse_hessian:
+    basis:
+    - u_T
+    - varpi_T
+    bounded_below_lambda_Pu_zero: true
+    lambda_Pu_zero_minor: Gamma_P mu_R k^4
+    low_k_minor_limit_over_k2: -lambda_Pu^2
+    matrix:
+    - - mu_R k^2
+      - lambda_Pu k
+    - - lambda_Pu k
+      - Gamma_P k^2
+    negative_energy_interval: 0 < k^2 < lambda_Pu^2/(Gamma_P mu_R)
+    principal_minor: k^2 (Gamma_P mu_R k^2 - lambda_Pu^2)
+  slaved_reduction:
+    closure_residual: '0'
+    k4_coefficient: Gamma_P
+    k_disp_squared: (mu_R - 2 lambda_Pu)/Gamma_P
+    mu_eff: mu_R - 2 lambda_Pu
+    omega2_slaved: ((mu_R - 2 lambda_Pu) k^2 + Gamma_P k^4)/rho_br
+    substitution: P_parallel = w_hat x Omega_u; varpi = w_hat x P_parallel = -Omega_u
+    transverse_energy_hessian: k^2 (mu_R - 2 lambda_Pu + Gamma_P k^2)
+  principal_symbol_mode_counts:
+    gapped_P:
+      det_degree: 7
+      extra_gapless_P_branches: 0
+      gapless_positive_branches_lambda_Pu_zero: 2
+      gapped_P_branches: 3
+      longitudinal_zero_roots: 1
+      positive_omega2_branches_lambda_Pu_zero: 6
+    massless_P:
+      det_degree: 7
+      extra_gapless_P_branches: 3
+      gapless_positive_branches_lambda_Pu_zero: 5
+      longitudinal_zero_roots: 1
+      negative_omega2_branches_low_k_lambda_Pu_nonzero: 2
+      positive_gapless_branches_low_k_lambda_Pu_nonzero: 3
+      positive_omega2_branches_lambda_Pu_zero: 6
+    slaved_rigid:
+      det_degree: 4
+      extra_gapless_P_branches: 0
+      gapless_positive_branches: 2
+      longitudinal_zero_roots: 1
+      positive_omega2_branches: 3
+  closure:
+    gapped_P_low_k_residual: 2 mu_R Omega_u
+    gapped_P_response: -lambda_Pu Omega_u/(M_gap_P + Gamma_P k^2)
+    omit_reservoir_low_k_residual: 2 mu_R Omega_u
+    slaved_residual: '0'
+  leak:
+    Frank_only_induced_P: '0'
+    advective_current: J_P (partial_t P) partial_a P from D_t^v P at leading v=0
+    bent_control_nonzero: true
+    direct_flat_T_na: '0'
+    direct_flat_wave: u_y=A cos(k x - omega t), u_w=0, v_w=partial_t u_w=0
+    indirect_flat_P_response: -lambda_Pu partial_x u_y/(Gamma_P k^2 - J_P omega^2)
+    indirect_flat_curl: '0'
+    nonplanar_able_to_fail_nonzero: true
+  verdict_aggregated_from_subhurdles: true
+  good_structure_able_to_pass_fixture:
+    aggregated_verdict: FREE_LIGHT_OK_CONDITIONAL
+    name: all_sub_hurdles_pass_fixture
+    status: FIRED_PASS_FIXTURE
+dimensional_firewall:
+  pass: true
+  engine_agreement: ENGINE_AGREE
+  checked_expression_count: 42
+  ablations:
+  - actual:
+      string: M T^-2
+      triple_MLT:
+      - 1
+      - 0
+      - -2
+    category: ablation
+    expected:
+      string: M L^-1 T^-2
+      triple_MLT:
+      - 1
+      - -1
+      - -2
+    expression: lambda_Pu P u
+    name: P_u_without_curl_or_cut_gradient
+    status: FIRED
+  - actual:
+      string: L^-2 T^-2
+      triple_MLT:
+      - 0
+      - -2
+      - -2
+    category: ablation
+    expected:
+      string: M L^-2 T^-2
+      triple_MLT:
+      - 1
+      - -2
+      - -2
+    expression: rho v_w v_a
+    name: drop_m_from_T_wa
+    status: FIRED
+configurations:
+  A_baseline:
+    config_verdict: FAIL_COUPLE_STRESS_NOGO
+    labels_fired:
+    - FAIL_HIDDEN_PROPAGATING_MODE
+    - FAIL_C5_LONGITUDINAL_ZERO_MODE
+    - FAIL_NOT_BOUNDED_BELOW
+    sub_hurdle_status:
+      L_a_i: PASS
+      L_a_ii: FAIL
+      L_a_iii: FAIL
+      L_b: FAIL
+      L_c: PASS
+      L_d: PASS
+    traction_provenance: ARROWS_SUPPLY_TRACTION
+    extra_propagating_modes: 3
+    dispersion:
+      P_spin_omega2: c_s^2 k^2
+      coupled_transverse_pencil: det[[mu_R k^2-rho_br omega^2, lambda_Pu k],[lambda_Pu k, Gamma_P k^2-J_P omega^2]]=0
+      small_k_warning: derived Hamiltonian minor gives two negative omega^2 transverse branches at low k for nonzero lambda_Pu;
+        counted separately in L(b)
+      u_light_omega2_uncoupled_reference: (mu_R/rho_br) k^2
+    section_2_6_chain_role: 'live_P_horn: massless P supplies the needed reservoir candidate but creates hidden modes and
+      an unbounded gyroscopic P-u Hamiltonian; no phi leaves C5 exposed'
+  B_slaved_rigid:
+    config_verdict: FAIL_C5_LONGITUDINAL_ZERO_MODE
+    labels_fired:
+    - FAIL_C5_LONGITUDINAL_ZERO_MODE
+    sub_hurdle_status:
+      L_a_i: PASS
+      L_a_ii: PASS_WITH_LOW_K_DISPERSION_CAVEAT
+      L_a_iii: FAIL
+      L_b: PASS_CONDITIONAL_ON_POSITIVE_EFFECTIVE_MODULUS
+      L_c: PASS
+      L_d: PASS
+    traction_provenance: POSTULATED_SURFACE_ELASTICITY
+    extra_propagating_modes: 0
+    dispersion:
+      c_gamma_squared_MacCullagh_feed_forward: mu_R/rho_br
+      effective_c_squared_if_bilinear_retained: (mu_R - 2 lambda_Pu)/rho_br
+      k4_correction: (Gamma_P/rho_br) k^4
+      k_disp_squared: (mu_R - 2 lambda_Pu)/Gamma_P
+      low_k_tolerance: requires k^2 << (mu_R - 2 lambda_Pu)/Gamma_P with positive effective modulus; exact nondispersive equality
+        is false at finite k
+      omega2_slaved: ((mu_R - 2 lambda_Pu) k^2 + Gamma_P k^4)/rho_br
+      symbolic_checks:
+        k_disp_squared: -(2*lambda_Pu - mu_R)/Gamma_P
+        omega2_identity: true
+    section_2_6_chain_role: slaved-rigid escape resolves hidden P mode-count and closure with a derived k^4 correction, but
+      inherits the frozen no-phi C5 zero mode; phi=u_w rescue collides with L(d)
+controls:
+- label: FAIL_FRANK_TORQUE_NOT_MACCULLAGH_TRACTION
+  name: Frank_only_reference
+  status: FIRED
+  target: L(a-i)
+- label: FAIL_CAUCHY_STRAY_LONGITUDINAL
+  name: Cauchy_reference
+  status: FIRED
+  target: L(a-ii)
+- label: FAIL_C5_LONGITUDINAL_ZERO_MODE
+  name: no_phi_C5_branch
+  status: FIRED
+  target: L(a-iii)
+- fresh_G0_required: true
+  name: independent_variational_phi_fixture
+  status: FIRED_PASS_FIXTURE_ONLY
+  target: L(a-iii)
+- label: FAIL_C5_LONGITUDINAL_ZERO_MODE
+  name: raw_divergence_projector
+  status: FIRED
+  target: L(a-iii)
+- label: FAIL_GYROSTAT_NO_CLOSURE
+  name: omit_couple_stress_reservoir
+  status: FIRED
+  target: L(b)
+- label: FAIL_GYROSTAT_NO_CLOSURE
+  name: large_gap_P_leg
+  status: FIRED
+  target: L(b)
+- label: FAIL_LEAK_BREAKS_MAGNUS
+  name: bent_interface
+  status: FIRED
+  target: L(c) direct
+- bulk_vorticity_source: '0'
+  name: Frank_only_indirect
+  status: FIRED_ZERO_SOURCE
+  target: L(c) indirect
+- name: nonplanar_indirect_able_to_fail
+  status: FIRED_NONZERO_SOURCE
+  target: L(c) indirect
+- label: FAIL_BENDING_MASSLESS_FIFTH_FORCE
+  name: ungapped_u_w
+  status: FIRED
+  target: L(d)
+- label: FAIL_DIMENSIONAL
+  name: drop_m_from_T_wa
+  status: FIRED
+  target: dimensional_firewall
+- label: FAIL_DIMENSIONAL
+  name: P_u_without_curl_or_cut_gradient
+  status: FIRED
+  target: dimensional_firewall
+hypothetical_pass_fixture_not_gate_admissible:
+  computed_status: FREE_LIGHT_OK_CONDITIONAL_fixture
+  gateL_admissible: false
+  name: B_plus_independent_variational_phi
+  passes_all_subhurdles_if:
+  - the low-k interpretation tolerates the slaved k^4 correction
+  - mu_R - 2 lambda_Pu > 0
+  - the independent phi fixture was frozen in G0
+  reason: G0 froze phi absent; adding phi is a fresh G0, not a Gate-L pass
+  traction_subtag: POSTULATED_SURFACE_ELASTICITY
+artifacts:
+  report: software/stage1_solver/reports/pathA_35_gateL_light.md
+  results_yaml: software/stage1_solver/reports/pathA_35_gateL_light_results.yaml
+  sympy: software/stage1_solver/tools/pathA_35_gateL_sympy.py
+  mathematica: software/stage1_solver/tools/pathA_35_gateL.wl
+  sympy_json: software/stage1_solver/_scratch/pathA_35_gateL_sympy.json
+  mathematica_json: software/stage1_solver/_scratch/pathA_35_gateL_mathematica.json
+  engine_agreement_json: software/stage1_solver/_scratch/pathA_35_gateL_engine_agreement.json

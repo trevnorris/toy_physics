@@ -97,11 +97,18 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   `ω¹/ω³/ω⁵`, residual forms vs pathA_29, free-carrier-independent dim check) all genuine. Artifacts: `pathA_34_*`.
 - **⭐ NEXT (chosen 2026-06-26) = the BRANE sector** — the gravity arm is at its sim-ready boundary (Gates 1–5 done; Gate 6 = the
   WALL, its 4D field solve sim-deferred), so the program moves to the brane: it's the **crux**, it **gates EM/light** (light rides
-  the brane), and it's **algebra-tractable / NOT sim-gated** (the same gauntlet produced pathA_25's real no-gos). **Progress (2026-06-26):** `pathA_35` directive BUILT + gauntleted (Codex×2 + GLM; the §2.6 four-way couple-stress no-go folded);
-  **G0 freeze DONE + VERIFIED** = `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` (flat-brane DOF=8
-  genuinely-computed, dim-firewall clean, tri-reviewed + a DOF-count hole remediated & re-verified on a fresh clean agent). **NEXT = Gate
-  L** (traction-not-torque, 2-transverse/no-longitudinal, C5, bounded-below + gyrostat closure, leak-free, `u_w` gap — the massless-`Pⁱ`
-  baseline is exposed to the four-way no-go, `slaved-rigid` is the escape), then S/B/Q/T. Read
+  the brane), and it's **algebra-tractable / NOT sim-gated** (the same gauntlet produced pathA_25's real no-gos). **Progress (2026-06-26):** `pathA_35` directive BUILT + gauntleted; **G0 freeze DONE+VERIFIED** = `T0_SHEAR_FROZEN(d9520d3819c3)` +
+  `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` (tri-reviewed; a DOF-count hole remediated & re-verified on a fresh clean agent). **⭐ Gate L
+  EXECUTED + REMEDIATED = `FAIL_COUPLE_STRESS_NOGO`** (the predicted §2.6 four-way no-go): config A (massless-`Pⁱ`) fails a-ii (3 hidden
+  `P` spin waves) + a-iii (C5 longitudinal zero mode) + b (gyrostat-unbounded, transverse minor `k²(Γ_P μ_R k² − λ_Pu²)<0`); the
+  slaved-rigid escape clears a-ii/b but **still dies on C5** (`φ` absent; `φ=u_w` collides with the `u_w` gap; an independent `φ` = fresh
+  G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`). **⚠️ PROVISIONAL — re-tri-review PENDING.** The 1st run was a **hardcoded
+  result-emitter** (fidelity caught it; the verdict matching our prior was the seductive trap); Codex remediated to genuinely derive the
+  Hessian / mode-count / verdict from `S_G0` and **corrected `μ_eff` `+2λ_Pu`→`−2λ_Pu`** (verdict unchanged). **⭐⭐ NEXT ACTION
+  (post-compact): re-tri-review the REMEDIATED Gate L — fidelity + adversarial on FRESH clean agents (the 1st adversarial ran on the
+  hardcoded version) — then bank (STATUS/decisions-13/memory) + commit.** Gate-L deliverables (`reports/pathA_35_gateL_light*`,
+  `tools/pathA_35_gateL_*`) are UNCOMMITTED. If the no-go survives re-review: the shear-surface light program is **falsified as-frozen** →
+  decide S/B/Q/T vs a fresh-G0 carrying a frozen independently-motivated `φ`-analog. Read
   first: `docs/conceptual_foundation.md` §4/§5/§6.1 + `docs/medium_requirements_and_prior_art.md` + `reports/pathA_25_STATUS.md`.
 - **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
   self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve

@@ -59,9 +59,16 @@ verification agents → user methodology call (derive the emergent constants bef
 >   First step (DONE): the `pathA_35` directive is BUILT + gauntleted (Codex×2 + GLM; the §2.6 four-way couple-stress no-go folded), and
 >   **G0 freeze is DONE + VERIFIED 2026-06-26** = `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` (flat-brane DOF=8
 >   genuinely-computed; comprehensive dim-firewall clean; tri-reviewed — a hardcoded DOF-count hole was remediated + re-verified on a FRESH
->   clean agent per `docs/development_pipeline.md`). **NEXT = Gate L (the crux:** a-i…a-iii, b, c, d; the frozen massless-`Pⁱ` baseline is
->   exposed to the §2.6 four-way no-go, `slaved-rigid` = the escape). Artifacts: `directives/pathA_35_shear_surface_brane_gates.md`,
->   `reports/pathA_35_G0_*`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   clean agent per `docs/development_pipeline.md`). **⭐ Gate L EXECUTED + REMEDIATED 2026-06-26 = `FAIL_COUPLE_STRESS_NOGO`** (predicted §2.6 four-way MATERIALIZED): config A
+>   massless-`Pⁱ` fails a-ii (3 hidden `P` spin waves) + a-iii (C5 zero mode) + b (gyrostat-unbounded, transverse minor
+>   `k²(Γ_P μ_R k²−λ_Pu²)<0`); the slaved-rigid escape clears a-ii/b but **dies on C5** (`φ` absent; `φ=u_w` collides with the `u_w` gap;
+>   independent `φ` = fresh G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`); `c_γ²=μ_R/ρ_br`. **⚠️ PROVISIONAL:** the 1st run was a HARDCODED
+>   result-emitter — the verdict matched our prior (the seductive trap), fidelity caught it — → Codex remediated to genuinely derive the
+>   Hessian/mode-count/verdict from `S_G0`, **corrected `μ_eff` `+2λ_Pu`→`−2λ_Pu`** (verdict unchanged). **⭐⭐ NEXT ACTION (post-compact):
+>   re-tri-review the REMEDIATED Gate L — fidelity + adversarial on FRESH clean agents (the 1st adversarial ran on the hardcoded version) —
+>   then bank + commit; Gate-L deliverables are UNCOMMITTED.** If the no-go survives: shear-surface light is falsified as-frozen → decide
+>   S/B/Q/T vs a fresh-G0 with a frozen independently-motivated `φ`-analog. Artifacts: `directives/pathA_35_shear_surface_brane_gates.md`,
+>   `reports/pathA_35_{G0_*,gateL_light*}`, `tools/pathA_35_{G0,gateL}_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
 >   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
 >   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
 >   able-to-fail + dual-engine; checks out).

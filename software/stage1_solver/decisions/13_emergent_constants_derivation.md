@@ -71,7 +71,13 @@ verification agents → user methodology call (derive the emergent constants bef
 >   density/gravity mode + (static, around a charge) the ELECTRIC FIELD = brane deformation around a puncture — CHARGE (the throat) is the
 >   missing ingredient, NOT a gauge field. Test whether the E-field + Gauss's law EMERGE from the throat–brane coupling (if so, the forces
 >   are CONNECTED = massive win). Detail = `conceptual_foundation.md` §3 v6 + `STATUS.md` + memory
->   `project-brane-existence-defect-structure`. Artifacts UNCOMMITTED: `pathA_36_c5_*`, `pathA_35_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   `project-brane-existence-defect-structure`. **⭐⭐ SUPERSEDED 2026-07-03b:** the C5-with-a-throat gate (`pathA_37`) was built as an
+>   electric-FLOW gate (Codex-SOUND) but the FLOW framing is RETIRED. Charge is NOT a brane flow/deformation (deformation→wrong energy
+>   `1/r⁶`; one-fluid flow→charge=mass; counterflow→needs a 2nd component the `T=0` condensate lacks in flat 3D — a flat-3D artifact, the
+>   throat is 4D). ⭐ NEW: **charge = interaction of two throats' 4D BODIES beyond the mouth**; gravity = strictly one-way drain (no return
+>   through throat; return=`S_leakage`). Charge crux RE-HOMED to the THROAT/BULK sector (Gate-T): does the 4D throat body give a
+>   **brane-localized `1/r²`** (like pathA_29 gravity) with `±w` sign. `pathA_37` flow-gate = RETIRED. Canonical = `conceptual_foundation.md`
+>   §3/§4 ⭐ v7. Artifacts UNCOMMITTED: `pathA_36_c5_*`, `pathA_35_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
 >   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
 >   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
 >   able-to-fail + dual-engine; checks out).

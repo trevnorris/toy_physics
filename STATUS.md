@@ -121,6 +121,24 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   works → the forces are CONNECTED, not just coexisting = a massive win.** This SUPERSEDES the pathA_36 vacuum-gauge remediation (vacuum
   result = documented waypoint). pathA_35 Gate-L + pathA_36 deliverables UNCOMMITTED. Read first: `docs/conceptual_foundation.md` §3 v6
   + §2 v5 + §4; `notes/brane_bulk_handoff.md`; `notes/rung_W_reframe.md`; `reports/pathA_36_c5_phase_potential.md`.
+- **⭐⭐ SUPERSEDED 2026-07-03b — the C5-with-a-throat gate (pathA_37) was BUILT as an electric-FLOW gate, then the FLOW framing was
+  RETIRED (charge is NOT a brane flow).** pathA_37 v1–v3 (deformation) → GLM energy-scaling no-go → v4 flow → v5 counterflow (all
+  Codex-SOUND), then a 2nd GLM pass + a user-driven conceptual pass established: **charge = the interaction of two throats' 4D BODIES
+  beyond the mouth** (deformation→wrong energy `1/r⁶`; one-fluid flow→charge=mass; counterflow→needs a 2nd component the `T=0`
+  condensate lacks in flat 3D — but the counterflow no-go is a **flat-3D artifact**: the throat is 4D). **Gravity correction:** strictly
+  ONE-WAY (medium de-structures in-throat, no return through it; return = global `S_leakage`). **Four-way taxonomy:** gravity=one-way
+  drain, light=brane shear, magnetism=brane swirl, charge=4D throat-body interaction. **⭐ NEXT ACTION = the charge crux is RE-HOMED to
+  the THROAT/BULK sector** (Gate-T, with mass/geon/`r_e`/annihilation): does a throat's 4D body mediate a **brane-localized `1/r²`**
+  interaction (naive 4D-bulk → wrong `1/R³`; needs the SAME localization that gave pathA_29 gravity its `1/r²`) with `±w` = sign.
+  **pathA_37 flow-gate framing = RETIRED — do not execute as-is.** Canonical picture: `docs/conceptual_foundation.md` §3/§4 ⭐ v7.
+  (Deferred future note, do NOT compute: same localization may turn `1/r²`→`1/r` at galaxy scale — a rotation-curve/MOND-like hint.)
+  **CARRY-OVER / running start = `directives/pathA_38_throat_body_electric_localization.md`** (DRAFT, written pre-`/compact`): the
+  1/r^2 crux + its leverage (**pathA_29 already proved gravity localizes to 1/r^2 via a normalizable transverse zero mode through the
+  finite slab; pathA_38 applies the SAME test to the charge/throat-body sector** — localized zero mode -> 1/r^2 PASS, delocalized ->
+  1/r^3 FAIL). **First task next session = resolve pathA_38 §2 setup** (what field mediates the throat-body interaction + its
+  transverse operator; the throat-body geometry model leveraging the 4D-throat/geon work; how ±w gives the sign), THEN gauntlet
+  (Codex design-review -> GLM -> dual-engine -> tri-review). Reuse the pathA_29 machinery; keep it linearized (full nonlinear throat
+  interior stays sim-deferred).
 - **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
   self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve
   is sim-deferred regardless. The full road to a simulation-ready PDE (gravity arm done; brane → EM/light → throat → integration

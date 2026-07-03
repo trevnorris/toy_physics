@@ -31,6 +31,18 @@ resolved by a postulated gauge field (that route is a provable no-go, tied to pa
 gravity/electric channel, with the live front being **C5-with-a-throat** (does the electric field + Gauss's law EMERGE from the
 puncture–brane coupling). Full detail in the ⭐ v6 block in §3.
 
+**Status update:** v7, 2026-07-03. **v7 = the EM-charge MECHANISM pivot — charge is a 4D throat-body interaction, NOT a brane
+flow/deformation; and gravity is a strictly one-way drain.** The v6 "third wave" reframe tried to make the electric field a
+*longitudinal brane deformation/flow* around a puncture. Three sub-routes were explored and set aside (each first-class): elastic
+**deformation** → wrong energy scaling (gradient energy `(∂u)²∼1/r⁶ ≠` Coulomb `∼1/r⁴`); a one-fluid **flow** → charge=mass by
+construction (`ρv` *is* the mass current); a two-stream **counterflow** → needs a second nondissipative component a `T=0`
+single-condensate lacks in flat 3D. The resolution (user): **charge is not a flow — it is the interaction of the throats' 4D bodies
+beyond the mouth** (the throat's body has more area than its 3D mouth and extends into the bulk). This yields a clean four-way
+taxonomy and **re-homes charge into the throat/bulk sector**. Correction folded in: **gravity is strictly one-way** — medium that
+enters a throat de-structures into a bulk state and **cannot return to the brane through that throat**; the return is the separate
+global `S_leakage`. Full detail in the ⭐ v7 block in §3 (+ §4). The v6 *achievement* (2 transverse photons) stands; only the v6
+*mechanism-guess* (longitudinal deformation = the electric field) is superseded.
+
 ---
 
 ## 0. The non-negotiable conceptual rules (how to think about this model)
@@ -284,6 +296,52 @@ This is the heart of the model. The four phenomena are **four different mechanis
 > the pathA_36 vacuum-gauge remediation (the vacuum result stands as a documented waypoint, not the final word). Detail +
 > deliverables: [[project-brane-existence-defect-structure]]; directive `software/stage1_solver/directives/pathA_36_c5_phase_potential.md`.
 
+> **⭐ v7 UPDATE (2026-07-03) — the EM-charge MECHANISM: charge is a 4D THROAT-BODY interaction, not a brane flow. This supersedes
+> the v6 mechanism-guess (the v6 *achievement* — 2 photons — still stands). Read this: it is the current picture.**
+>
+> **The four-way taxonomy (each force = a distinct thing the ONE medium does — keep them clean):**
+> - **Gravity** = a throat *swallowing* medium — a **one-way inflow/drain.** Medium that passes the mouth **transforms
+>   (de-structures)** into a bulk state and **cannot return to the brane through that throat**; the return is the separate **global
+>   `S_leakage`** process, not a local throat loop. (This retires any "recirculation down-and-back-up the throat" picture.)
+> - **Light** = shear/ripple **along** the brane (2 transverse polarizations, `c_γ`). *Banked* (pathA_36).
+> - **Magnetism** = **swirl / vorticity of** the brane (a moving charge → swirl).
+> - **Charge** = the throats' **4D bodies interacting beyond the mouth** — a *geometric* interaction of the extended throat structures
+>   in the bulk. **NOT a brane flow, not a deformation, not a swirl.**
+>
+> **Why charge is NOT a flow (the honest evolution — three sub-routes, each set aside as first-class):** (a) electric field = elastic
+> brane **deformation** → wrong energy scaling (generic first-gradient elasticity forces `u_L∼1/r²`, so gradient energy
+> `(∂u)²∼1/r⁶`, but Coulomb needs `∼1/r⁴`; self-energy `∼1/a³` not `∼1/a`); (b) electric field = a one-fluid **flow** → charge=mass
+> by construction (`ρv` *is* the mass current — a flow with energy moves mass = gravity); (c) a two-stream **counterflow**
+> (mass-neutral) → needs a *second nondissipative component* the `T=0` single-condensate medium lacks in flat 3D (one U(1) →
+> `ker(J_m)={0}`). The way out is **not another flow** — it is that charge lives in the throat's **4D body**, where flat-3D
+> reasoning does not apply.
+>
+> **Charge specifics.** `±w` (throat puncture direction) = the **sign**. **Like-throats resist 4D overlap → repel; opposite (`+w` &
+> `−w`) merge → attract, and can annihilate** (the two throats join and the brane heals = pair annihilation; pair *production* =
+> nucleating a `+w`/`−w` pair, so **net charge is conserved** while the *count* of charges can grow). Charge magnitude is
+> **universal** (a topological property of the puncture — cannot drift with energy/mass). The **classical electron radius `r_e`** is
+> the **throat-body size**: setting the electric self-energy `∼ke²/a` equal to the rest energy `m_ec²` (the trapped-geon energy that
+> holds the throat open) gives `a∼ke²/(m_ec²)=r_e`. "You cannot push two electrons closer than `r_e`" = "you cannot force two 4D
+> throat-bodies to overlap" — the finite-size resolution of the point-charge self-energy divergence.
+>
+> **⭐ THE MAKE-OR-BREAK (must be nailed in the derivations): does it give `1/r²`?** An electric field is **long-range** (`1/r²` force
+> between distant charges), so this cannot be only a short-range *contact* collision — the throat's 4D body must mediate a
+> **long-range** interaction that comes out `1/r²` **in the 3D brane.** The catch: a source acting through the **4D bulk** naively
+> gives the **wrong** falloff (4-space → `1/R²` *potential* → `1/R³` force). It becomes correct 3D Coulomb only if the throat's
+> influence is **brane-localized** (does not spread freely into the bulk). Encouragingly, **that is the same localization mechanism
+> that already made *gravity* come out `1/r²` through the finite slab** (pathA_29's localizing flat-slab family) — so there is a
+> demonstrated route, but it **must be shown for charge, not assumed.** This is the crux of the charge derivation.
+>
+> **Future item (deferred — do NOT calculate yet, but do not lose):** the same `1/r²`-vs-localization mechanism may, at **large
+> separations (galaxy scale, widely-separated bodies)**, turn `1/r²` into `1/r` — a candidate native handle on **galactic rotation
+> curves / a MOND-like modification.** Parked for later.
+>
+> **Program implication.** This **re-homes the charge crux into the throat/bulk sector** (the 4D throat interior — Gate-T territory,
+> where mass = the geon, throat size = `r_e`, and annihilation already live), and **out of the flat-brane far-field.** The
+> flow-based flat-brane charge gate (`pathA_37`, in its flow/counterflow form) is **retired** — it tested the wrong mechanism. The
+> charge crux is now: **does a throat's 4D body mediate a brane-localized interaction that comes out `1/r²` in 3D, with `±w` giving
+> the sign?** Detail: [[project-brane-existence-defect-structure]], [[feedback-native-em-mechanisms]].
+
 > **⭐ v4 UPDATE (2026-06-25) — model-mechanics corrections that keep getting LOST between sessions (read this; it is the recurring
 > relapse into textbook defaults). Mirror of memory `[[project-model-mechanics-corrections]]`.**
 >
@@ -401,6 +459,15 @@ through it into the bulk.) The decomposition:
   (the model's resolution of the classical point-charge divergence).
 - **Charge ⊥ mass.** The charge sector (puncture direction) and the mass sector (the trapped wave) do not directly interact at
   this level — which is *why* the charge is the same regardless of mass.
+
+> **⭐ v7 (2026-07-03) — what the electric FORCE is (not just the charge label).** The bullets above define charge's *sign* (`±w`) and
+> *magnitude* (universal, topological). The **electric force/field** is the **interaction of two throats' 4D bodies beyond the mouth**
+> (§3 ⭐ v7) — **not** a brane flow or deformation (both were explored and set aside: deformation fails on energy scaling, a flow is
+> charge=mass, a counterflow needs a second component the medium lacks in flat 3D). `r_e` (classical electron radius) = the throat-body
+> size, from the self-energy balance `ke²/a = m_ec²`; two *like* throats cannot be pushed closer than `r_e` (their 4D bodies resist
+> overlap → repulsion), *opposite* throats merge/annihilate. **The make-or-break** — getting `1/r²` in 3D from the 4D-body interaction
+> via **brane-localization** (the same mechanism that gave pathA_29 gravity its `1/r²`) — is the crux, detailed in §3 ⭐ v7. This
+> **re-homes charge into the throat/bulk sector** (with mass, `r_e`, and annihilation), out of the flat-brane far-field.
 
 **Different particles are different defect structures.** Working picture:
 - **Electron = a simple drain** (a clean puncture).

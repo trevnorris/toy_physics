@@ -62,13 +62,16 @@ verification agents → user methodology call (derive the emergent constants bef
 >   clean agent per `docs/development_pipeline.md`). **⭐ Gate L EXECUTED + REMEDIATED 2026-06-26 = `FAIL_COUPLE_STRESS_NOGO`** (predicted §2.6 four-way MATERIALIZED): config A
 >   massless-`Pⁱ` fails a-ii (3 hidden `P` spin waves) + a-iii (C5 zero mode) + b (gyrostat-unbounded, transverse minor
 >   `k²(Γ_P μ_R k²−λ_Pu²)<0`); the slaved-rigid escape clears a-ii/b but **dies on C5** (`φ` absent; `φ=u_w` collides with the `u_w` gap;
->   independent `φ` = fresh G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`); `c_γ²=μ_R/ρ_br`. **⚠️ PROVISIONAL:** the 1st run was a HARDCODED
->   result-emitter — the verdict matched our prior (the seductive trap), fidelity caught it — → Codex remediated to genuinely derive the
->   Hessian/mode-count/verdict from `S_G0`, **corrected `μ_eff` `+2λ_Pu`→`−2λ_Pu`** (verdict unchanged). **⭐⭐ NEXT ACTION (post-compact):
->   re-tri-review the REMEDIATED Gate L — fidelity + adversarial on FRESH clean agents (the 1st adversarial ran on the hardcoded version) —
->   then bank + commit; Gate-L deliverables are UNCOMMITTED.** If the no-go survives: shear-surface light is falsified as-frozen → decide
->   S/B/Q/T vs a fresh-G0 with a frozen independently-motivated `φ`-analog. Artifacts: `directives/pathA_35_shear_surface_brane_gates.md`,
->   `reports/pathA_35_{G0_*,gateL_light*}`, `tools/pathA_35_{G0,gateL}_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   independent `φ` = fresh G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`); `c_γ²=μ_R/ρ_br`. **⭐ SUPERSEDED 2026-07-03 → material-state pivot + pathA_36.**
+>   Material-state closure (brane = ordered PHASE, order field `χ_B`) passed **rung W**; crux → **C5**; **`pathA_36`** (dual-engine,
+>   Dirac–Bergmann, tri-reviewed: arbiter reproduced + Codex/adversarial `EARNED` + fidelity `FIDELITY_ISSUES`) =
+>   `FAIL_CAUCHY_STRAY_LONGITUDINAL`/`BY_TUNING` BUT **the medium carries LIGHT (2 transverse photons at `c_γ²=μ_R/ρ_br`, first time)**;
+>   the vacuum C5 gauge-closure via the order-parameter phase is a provable no-go (wrong-sign gradient stiffness = brane stability = the
+>   same wall as pathA_25). **⭐⭐ NEXT (post-compact) = the C5-WITH-A-THROAT gate:** the longitudinal 'third wave' = the `c_s`
+>   density/gravity mode + (static, around a charge) the ELECTRIC FIELD = brane deformation around a puncture — CHARGE (the throat) is the
+>   missing ingredient, NOT a gauge field. Test whether the E-field + Gauss's law EMERGE from the throat–brane coupling (if so, the forces
+>   are CONNECTED = massive win). Detail = `conceptual_foundation.md` §3 v6 + `STATUS.md` + memory
+>   `project-brane-existence-defect-structure`. Artifacts UNCOMMITTED: `pathA_36_c5_*`, `pathA_35_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
 >   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
 >   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
 >   able-to-fail + dual-engine; checks out).

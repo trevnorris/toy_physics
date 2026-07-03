@@ -15,6 +15,22 @@ universe. Full requirements list, prior-art survey, candidate structure, and the
 `docs/medium_requirements_and_prior_art.md` (read alongside this doc). Changes below: §0 reframe rule; §2 brane refinement (density
 now modulates); §8 new plan.
 
+**Status update:** v5, 2026-07-03. **v5 records a second brane pivot.** Two more brane routes have since died (both kept as
+first-class falsifications): the v3 **smectic density-layering** route is **CLOSED** (`RC_DENSITY_SMECTIC_LIGHT_NOGO` — a density
+modulation forms a codim-1 brane only by pinning the arrows along the layer normal, which *starves* in-plane light), and the
+fallback **postulated shear-surface** brane hit `FAIL_COUPLE_STRESS_NOGO` (pathA_35 Gate L, provisional — the frozen light package
+has no scalar potential `φ` to kill its longitudinal zero mode). The **new candidate** is a **material-state closure**: the brane
+is the medium's *ordered, shear-supporting phase*; the bulk is the *same medium de-structured / shear-free*; throats are
+phase-conversion sites. See the ⭐ v5 block in §2 and the updated plan in §8. This *formalizes* the "draining = de-structuring"
+language already in §5. Source: `notes/brane_bulk_handoff.md`.
+
+**Status update:** v6, 2026-07-03. **v6 = the medium DEMONSTRABLY carries light, and the "third wave / C5" is where the sectors
+CONNECT.** pathA_36 (dual-engine + tri-reviewed) got **2 transverse photons at `c_γ²=μ_R/ρ_br`** out of the brane's MacCullagh shear
+— the first time the one medium provably supports *light* alongside gravity. The residual longitudinal "third wave" was NOT
+resolved by a postulated gauge field (that route is a provable no-go, tied to pathA_25) — instead it is **reframed** as the
+gravity/electric channel, with the live front being **C5-with-a-throat** (does the electric field + Gauss's law EMERGE from the
+puncture–brane coupling). Full detail in the ⭐ v6 block in §3.
+
 ---
 
 ## 0. The non-negotiable conceptual rules (how to think about this model)
@@ -76,6 +92,58 @@ These are load-bearing. Violating them is the recurring failure mode (importing 
 ---
 
 ## 2. The brane — why our 3D space exists
+
+> **⭐ v5 UPDATE (2026-07-03) — second brane pivot: the material-state closure. Read this before the v3 smectic block below.**
+> Since v3, **two more brane routes have died** (both first-class falsifications, both kept):
+> - The v3 **smectic density-layering** route is **CLOSED** — `RC_DENSITY_SMECTIC_LIGHT_NOGO`: a density modulation *can* form a
+>   codim-1 brane, but the same coupling that opens the codim-1 window **pins the arrows along the layer normal** (`P_∥=0`) → it
+>   **starves the in-plane shear that carries light**. Density-brane and light-brane are mutually exclusive.
+> - The fallback **postulated shear-surface** brane (pathA_35: concede the axis, *postulate* a light-confining shear surface, test
+>   whether light lives on it) hit **`FAIL_COUPLE_STRESS_NOGO`** (Gate L, provisional): the frozen MacCullagh light package has **no
+>   scalar potential `φ`** to remove its longitudinal zero mode (the "C5" obstruction — below), and the escapes either re-admit
+>   hidden `P` modes or collide with the required `u_w` gap.
+>
+> **The new candidate — a material-state closure (from `notes/brane_bulk_handoff.md`).** Stop asking "what *shape* localizes the
+> brane" and instead treat brane-vs-bulk as **two phases of the one medium**:
+> - the **brane** is the medium's **ordered, shear-supporting phase** (the phase in which the substructure locks into a state that
+>   can carry MacCullagh shear = light);
+> - the **bulk** is the **same medium de-structured** — a shear-free phase; this is now *why* the bulk carries no light and preserves
+>   magnetism (§3), a **consequence of one order parameter** instead of a separate postulate;
+> - a **throat** is an open defect where **ordered brane material de-structures into the bulk phase** (the steady drain = gravity);
+>   **return** is bulk material **re-ordering** into the brane phase. Brane↔bulk becomes a **conserved phase cycle**, which **kills
+>   the old "bulk vacuum sucks brane material in" paradox** (an empty sink could never explain re-entry). It formalizes the exact
+>   "draining = de-structuring" language already in §5.
+> - Introduce a brane-order field `χ_B ∈ [0,1]` (name provisional): `χ_B=1` ordered/shear-supporting, `χ_B=0` de-structured/bulk.
+>   Shear/light exists only where `χ_B≈1`.
+>
+> **Why this is more than a re-description — it may escape BOTH prior brane deaths (to be tested).** A `χ_B` domain wall (ordered
+> slab at `w≈0`, de-structured outside) is a **genuinely different object** from both corpses:
+> - It **escapes T1** (the little-arrows wall that *spread and unwound* on a **connected** `S³` vacuum): a scalar `χ_B` with a real
+>   **double-well** free energy `f_B(n,χ_B)` has **disconnected** minima → a **φ⁴-kink-like, topologically stable wall** — exactly
+>   the structure T1's own negative control (the stable φ⁴ kink) showed it lacked.
+> - It **escapes the density no-go**: `χ_B` is a **single domain wall in an abstract order field, not a periodic density stack**, so
+>   it has **no layer normal to pin the arrows against** — the in-plane shear lives in a separate field that `χ_B` merely *gates on*.
+>
+> **The exciting sub-hypothesis — `χ_B`'s phase may supply the missing C5 `φ`.** The shear-surface death was precise: MacCullagh's
+> curl-only energy `½μ_R(∇×u)²` is gauge-invariant under `u→u+∇χ` but its kinetic term is not, forcing a **constrained physical
+> longitudinal zero mode** (`∂_t²(∇·u)=0`); Maxwell escapes via a scalar potential (`φ→φ−∂_tχ`) but MacCullagh has none, and the
+> only on-brane scalar (`u_w`) **must stay gapped** (a massless out-of-plane mode = an excluded fifth force), so it *cannot* be `φ`.
+> But if the brane-order parameter is **complex** (amplitude `χ_B` + **phase `θ`**), that phase is a **new on-brane scalar with
+> genuine mechanical provenance that is NOT `u_w`** — a natural candidate for the exact `φ`-analog the frozen light package lacked.
+> If `θ` couples to the displacement like Maxwell's scalar potential, it removes the longitudinal zero mode and **could revive
+> shear-surface light** as a *fresh G0*. Whether it actually does is the test — **not a claim**.
+>
+> **Honest costs (do not fool ourselves).** The double-well `f_B` is **still postulated** — the GNLS potential `U(ρ)∝ρ⁵` is
+> single-well, so "two coexisting phases" is the *same* degenerate-vacua obstacle the brane has always had (§ "The obstacle" below),
+> now conceded under the analog license (§0.6), **not derived**. It is **real drift**: `f_B` + the interface stiffness `κ_B` + the
+> `χ_B`-shear gating + (if complex) the phase sector — the gauntlet must count it and decide whether `χ_B` is
+> substructure-of-one-medium or a smuggled second field. And it may simply **relocate** the problems (the
+> wall-exists-*and*-carries-shear rung is where I expect it to bite).
+>
+> **The make-or-break ladder (each rung able-to-fail), tested next (§8):** **W** — a double-well `χ_B` wall that is stable (escapes
+> T1) *and* light-permitting (escapes the density no-go); **φ** — does `χ_B`'s phase supply a legitimate C5 `φ` (removes the
+> longitudinal mode with no fifth force and no `u_w` collision)?; **Gate L** — re-run the six light sub-hurdles on the
+> `χ_B`-founded G0. Strictly W→φ→Gate-L in order; a failure at W kills the route cheaply.
 
 > **⭐ v3 UPDATE (2026-06-23) — the brane mechanism changed; read this before the little-arrows prose below.**
 > pathA_24 **T1 FALSIFIED** the little-arrows *domain-wall* brane: a static polar-vector order parameter has a **connected** vacuum
@@ -170,6 +238,51 @@ structure?*
 
 This is the heart of the model. The four phenomena are **four different mechanisms of the one medium.** Do not conflate them
 (especially: electric ≠ magnetic; charge is a direction, not a swirl).
+
+> **⭐ v6 UPDATE (2026-07-03) — the medium DEMONSTRABLY carries light; and the "third wave / C5" is where the sectors CONNECT.
+> Read this — it reframes the light sector and defines the live front.**
+>
+> **Achievement (pathA_36, dual-engine + tri-reviewed).** The frozen shear-surface light package (MacCullagh curl shear on the
+> brane + brane inertia) yields **exactly 2 transverse photon polarizations at `c_γ²=μ_R/ρ_br`** — the FIRST time in the program the
+> one medium demonstrably supports *light* alongside gravity. That is real and banked.
+>
+> **The C5 "third wave" (the honest obstruction).** MacCullagh (curl-only) stiffness leaves the **longitudinal** (compression, `∇·u`)
+> brane motion with no shear-restoring force — a "third mode" that ordinary elasticity would turn into a spurious 3rd photon. The
+> attempt to make the **brane-order phase `θ`** act as Maxwell's scalar potential `φ` and remove it **fails in VACUUM**
+> (`FAIL_CAUCHY_STRAY_LONGITUDINAL` / `BY_TUNING`, EARNED — arbiter reproduced, Codex + adversarial `EARNED` from-scratch): a *stable*
+> order-parameter phase has **positive** gradient-stiffness (that positivity is *what makes the brane stable*), which is the **wrong
+> sign** for Maxwell's `φ`; the only escape (negative stiffness) is a spatial-modulation instability = the **same obstruction that
+> killed the density-smectic route (pathA_25)**. So the order-parameter phase **provably cannot self-supply the gauge structure**, and
+> the two no-gos are *one* wall.
+>
+> **THE REFRAME (the live direction — do NOT bolt on an abstract gauge field).** The vacuum no-go answers the *wrong* question. In
+> real EM the longitudinal/scalar sector is **pure gauge (nothing) in vacuum** and only becomes physical — the **Coulomb field** —
+> in the presence of **charge**. pathA_36 analyzed the shear sector in VACUUM (no throats) — i.e. it diagnosed the one mode whose
+> entire character comes from charge, *with no charge present*. Natively, the longitudinal (compression) brane mode is **NOT a
+> spurious photon**: it is (a) the medium's **density/compression = the `c_s` gravity sector**, and (b) its static-around-a-charge
+> part = the **ELECTRIC FIELD = the brane's tension-deformation around a throat** (§4 already: "electric field energy = brane-tension
+> deformation around the puncture"). So the "third wave" is exactly **where light (shear) meets gravity (density) and charge
+> (throat).**
+>
+> **The missing ingredient is CHARGE, not a gauge field.** Maxwell's gauge structure — Gauss's law, exactly 2 propagating photons —
+> should **EMERGE** from the **throat–brane coupling**: the longitudinal brane deformation around a puncture *is* the electric
+> (Coulomb) field; Gauss's law = "brane tension sourced by punctures." And the longitudinal/transverse split is naturally **two
+> sectors at two speeds** (`c_s` compression/gravity vs `c_γ` shear/light), not "3 modes of one field" (pathA_36 used a single
+> inertia, which blurred this). If the longitudinal mode couples to charge as *radiation* (not just as the static Coulomb field),
+> that is a **falsifiable departure** from pure Maxwell (cf. the pathA_29 monopole wave) — possibly a feature.
+>
+> **Why this matters (the potential massive win).** If the electric field / Gauss constraint **emerges from the puncture–brane
+> coupling**, the forces are not merely *coexisting* in one medium — they are **CONNECTED**: light = shear, gravity =
+> density/compression, electric field = static brane-deformation around charge — all the *same* longitudinal/transverse structure of
+> the *one* medium. The "third-photon problem" dissolves into "the sectors are linked."
+>
+> **NEXT (post-compact) = the C5-WITH-A-THROAT gate.** Put a puncture (charge) into the flat-brane light analysis and test whether
+> (i) the longitudinal brane response to the throat is the **static electric (Coulomb) field** (a constraint, not a free wave);
+> (ii) **Gauss's law emerges** from "brane deformation sourced by the puncture"; (iii) the longitudinal (compression) sector is the
+> **`c_s` gravity/density** channel, distinct from `c_γ` light; (iv) whether any longitudinal **radiation** coupling to charge appears
+> (a falsifiable departure). Build via the pipeline (directive → Codex design-review → dual-engine → tri-review). This **supersedes**
+> the pathA_36 vacuum-gauge remediation (the vacuum result stands as a documented waypoint, not the final word). Detail +
+> deliverables: [[project-brane-existence-defect-structure]]; directive `software/stage1_solver/directives/pathA_36_c5_phase_potential.md`.
 
 > **⭐ v4 UPDATE (2026-06-25) — model-mechanics corrections that keep getting LOST between sessions (read this; it is the recurring
 > relapse into textbook defaults). Mirror of memory `[[project-model-mechanics-corrections]]`.**
@@ -505,6 +618,16 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
 ---
 
 ## 8. Next: the consistency-gate program for the GNLS polar-smectic superfluid (post-pivot plan)
+
+> **⭐ v5 UPDATE (2026-07-03) — this GNLS-polar-smectic gate program is itself now SUPERSEDED at the brane-existence level** (its
+> density route is CLOSED and the postulated shear-surface fallback hit `FAIL_COUPLE_STRESS_NOGO`; see the §2 v5 block). The live
+> plan is the **material-state closure** and its **W→φ→Gate-L ladder**: **(W)** does a double-well `χ_B` wall localize the brane
+> while staying light-permitting; **(φ)** does `χ_B`'s phase supply the C5 scalar the shear-surface freeze lacked; **(Gate L)**
+> re-run the light sub-hurdles on the `χ_B`-founded G0. Same pipeline as below (Codex design-review xhigh → GLM tertiary → execute,
+> tri-reviewed, user-gated). **Immediate step:** a **GLM reframe pre-checks rung W** — is the double-well `χ_B` wall stable *and*
+> light-permitting, or is there a fresh no-go between codim-1 localization and in-plane shear? — before the expensive directive+G0
+> build. The gate list below (S/B/Q/K/T) is retained as the **downstream requirements** any surviving light-capable structure must
+> still satisfy.
 
 **This replaces the old little-arrows T1–T5 derivation ladder** (T1 was run and FALSIFIED — see the §2 v3 update; the T2–T5
 rungs are moot on that baseline). The plan and detail now live in **`docs/medium_requirements_and_prior_art.md`** (requirements

@@ -102,14 +102,25 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   EXECUTED + REMEDIATED = `FAIL_COUPLE_STRESS_NOGO`** (the predicted §2.6 four-way no-go): config A (massless-`Pⁱ`) fails a-ii (3 hidden
   `P` spin waves) + a-iii (C5 longitudinal zero mode) + b (gyrostat-unbounded, transverse minor `k²(Γ_P μ_R k² − λ_Pu²)<0`); the
   slaved-rigid escape clears a-ii/b but **still dies on C5** (`φ` absent; `φ=u_w` collides with the `u_w` gap; an independent `φ` = fresh
-  G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`). **⚠️ PROVISIONAL — re-tri-review PENDING.** The 1st run was a **hardcoded
-  result-emitter** (fidelity caught it; the verdict matching our prior was the seductive trap); Codex remediated to genuinely derive the
-  Hessian / mode-count / verdict from `S_G0` and **corrected `μ_eff` `+2λ_Pu`→`−2λ_Pu`** (verdict unchanged). **⭐⭐ NEXT ACTION
-  (post-compact): re-tri-review the REMEDIATED Gate L — fidelity + adversarial on FRESH clean agents (the 1st adversarial ran on the
-  hardcoded version) — then bank (STATUS/decisions-13/memory) + commit.** Gate-L deliverables (`reports/pathA_35_gateL_light*`,
-  `tools/pathA_35_gateL_*`) are UNCOMMITTED. If the no-go survives re-review: the shear-surface light program is **falsified as-frozen** →
-  decide S/B/Q/T vs a fresh-G0 carrying a frozen independently-motivated `φ`-analog. Read
-  first: `docs/conceptual_foundation.md` §4/§5/§6.1 + `docs/medium_requirements_and_prior_art.md` + `reports/pathA_25_STATUS.md`.
+  G0). Traction PASSES (`ARROWS_SUPPLY_TRACTION`). **⭐ SUPERSEDED (2026-07-03) by the material-state pivot + pathA_36 — the Gate-L C5 leg became the crux.**
+  The **material-state closure** (brane = ordered PHASE of the medium, order field `χ_B`; from `notes/brane_bulk_handoff.md`) passed
+  **rung W** (GLM reframe `notes/rung_W_reframe.md`: a double-well `χ_B` wall is stable AND light-permitting), collapsing the crux to
+  **C5**. **`pathA_36`** (directive gauntleted → SOUND; dual-engine SymPy+Mathematica; full Dirac–Bergmann) tested whether the `χ_B`
+  PHASE supplies the C5 `φ`. **RESULT = `FAIL_CAUCHY_STRAY_LONGITUDINAL` / `BY_TUNING`, `ENGINE_AGREE`; tri-reviewed** (arbiter
+  reproduced; Codex + adversarial `EARNED`; fidelity `FIDELITY_ISSUES` = the decisive sign was asserted-not-derived in-script, physics
+  triply-confirmed). **⭐ ACHIEVEMENT: the medium DEMONSTRABLY carries LIGHT — 2 transverse photons at `c_γ²=μ_R/ρ_br` (first time).**
+  C5: a *stable* order-parameter phase has the WRONG-SIGN gradient stiffness (that positivity = brane stability); Maxwell needs the
+  opposite ("electric") sign; the only escape (negative stiffness) = a Lifshitz instability = **the SAME wall as pathA_25**. So θ-as-φ
+  is a **provable vacuum no-go**. **⭐⭐ NEXT ACTION (post-compact) = the C5-WITH-A-THROAT gate.** THE REFRAME (do NOT bolt on an
+  abstract gauge field): the longitudinal "third wave" is NOT a spurious photon — it is the `c_s` density/gravity mode + (static, around
+  a charge) the **ELECTRIC FIELD = brane deformation around a puncture** (`conceptual_foundation.md` §4). pathA_36 analyzed VACUUM (no
+  throats) — the one mode whose character comes entirely from charge, with no charge present → **CHARGE (the throat) is the missing
+  ingredient, not a gauge field.** Build a C5-with-a-throat directive (pipeline: directive → Codex design-review → GLM → dual-engine →
+  tri-review): does the electric field + Gauss's law EMERGE from the throat–brane coupling; is the longitudinal sector the `c_s` gravity
+  channel (two speeds, not 3-modes-of-one-field); any longitudinal RADIATION coupling to charge (falsifiable, cf pathA_29). **If it
+  works → the forces are CONNECTED, not just coexisting = a massive win.** This SUPERSEDES the pathA_36 vacuum-gauge remediation (vacuum
+  result = documented waypoint). pathA_35 Gate-L + pathA_36 deliverables UNCOMMITTED. Read first: `docs/conceptual_foundation.md` §3 v6
+  + §2 v5 + §4; `notes/brane_bulk_handoff.md`; `notes/rung_W_reframe.md`; `reports/pathA_36_c5_phase_potential.md`.
 - **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
   self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve
   is sim-deferred regardless. The full road to a simulation-ready PDE (gravity arm done; brane → EM/light → throat → integration

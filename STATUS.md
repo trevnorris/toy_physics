@@ -10,14 +10,15 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-04) — magnetism IN PROGRESS: Stage 3 EARNED; Stage 4 (field classification) is next
+## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 FORCE-SECTORS EARNED; magnetism sector COMPLETE; next = the consistency knit
 
-**⭐ 3 OF 4 SECTORS EARNED + the 4th (MAGNETISM) 3-of-4-stages EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder),
-light (`pathA_36`), electric charge (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, commit `797f4d88`) — each a distinct thing the
-brane+bulk does, sharing one localization principle (normalizable transverse zero mode → `1/r²`), split by `w→−w` parity. **Clean
-chain = `docs/conceptual_foundation.md` → ⭐ THE FOUR-SECTOR CHAIN + the ⭐ v8 block.**
+**⭐⭐ ALL 4 SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder), light (`pathA_36`), electric charge
+(`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, `797f4d88`), and now **MAGNETISM (`pathA_39`, 4/4 stages, sector COMPLETE)** —
+each a distinct thing the brane+bulk does, sharing one localization principle (normalizable transverse zero mode → `1/r²`), split by
+`w→−w` parity. **This closes the four-sector SPEC** (a real fourth force + characterized departures; not clean isolated Maxwell —
+first-class for a toy analog). **Clean chain = `docs/conceptual_foundation.md` → ⭐ THE FOUR-SECTOR CHAIN + the ⭐ v8 block.**
 
-**▶ MAGNETISM (`pathA_39`) — IN PROGRESS, 3 of 4 stages earned (2026-07-04).** ⭐ **REFRAMED:** magnetism = the velocity-dependent
+**▶ MAGNETISM (`pathA_39`) — COMPLETE, 4 of 4 stages earned (2026-07-04).** ⭐ **REFRAMED:** magnetism = the velocity-dependent
 (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of electric charge (charge = static throat-body,
 magnetism = same interaction under motion). **⭐ MAGNETISM LIVES IN THE THROAT, like charge** — NOT bulk vorticity (that is
 *gravitomagnetism*: weak, mass-coupled, part of gravity — do not conflate). Setup gauntlet done (Claude↔Codex→GLM, resolution v5
@@ -43,15 +44,24 @@ magnetism = same interaction under motion). **⭐ MAGNETISM LIVES IN THE THROAT,
   swirl, NOT operator-level separable under motion** — a characterized departure, magnitude sim-deferred (the `a=1` coefficient
   needs the nonlinear throat interior). Method used the spurion-EFT selection-rule reframe (the naive `δÔ_i≡0` on the w-only
   slab). Artifacts: `{directives,tools,reports}/pathA_39_stage3_operator_parity*`.
-- **▶ NEXT = Stage 4 (field-coupling classification)** closes the sector: classify the EM field content
-  (`FIELD_SCALAR_VECTOR_DEPARTURE` expected — a propagating charge-coupled `h`-branon; exact Maxwell excluded by `M_h>0`,
-  `B_eff>0`). Same discipline (directive gauntlet → dual-engine → tri-review). **Then the CONSISTENCY KNIT** (`λγ=c_γ/c_s=1`
-  AND `c_E=c_γ`) → "fully formed."
-- **Honest landing:** magnetism = a real fourth force (correct sign) + a **characterized departure** (the unavoidable scalar), NOT
-  clean Maxwell — first-class for a toy analog. **Follow-up (post-Stage-4):** investigate the charge-coupled "extra scalar" (why
-  hidden? magnitude?) = task #110 + `notes/pathA_39_charge_coupled_scalar_followup.md`.
-- ✅ **COMMITTED:** Stages 0-2 (`9e1a6075`, pre-`/compact`); Stage 3 (this milestone — directive + `pathA_39_stage3_*`
-  scripts/report + this `STATUS.md` / `decisions/13` update). **Next action = build Stage 4 (field-coupling classification).**
+- **Stage 4 (field-coupling classification) = EARNED — SECTOR CLOSE** (dual-engine genuine `ENGINE_AGREE` over 77 quantities,
+  33 discrete features independently derived by BOTH engines; full gauntlet Codex×2 + GLM `SOUND_WITH_CONCERNS`; tri-review CLEAN
+  after a light 5-smell remediation, fresh-agent `REMEDIATION_CLEAN`): `primary=FIELD_SCALAR_VECTOR_DEPARTURE` (flags
+  `scalar_sector_stable`, `density_charge_coupled`, `operator_parity_contamination`). A genuine gate (not a relabel): it assembles
+  ONE combined quadratic action `Q(ω,k)` over `(u_T1,u_T2,u_L,h)` and COMPUTES the DOF (Dirac: real 4 = 2 transverse + 1
+  finite-compressibility density + 1 propagating `h`; Maxwell counterfactual → 2, DERIVED), the scalar-sector stability
+  (`B_eff K_h − C_hu² > 0`, with a `FIELD_SCALAR_SECTOR_UNSTABLE` branch), and the per-pole charge residues (`J_q†Q⁻¹J_q`). **The
+  EM field content = a transverse-vector + propagating charge-coupled-scalar (`h`-branon) multiplet, NOT exact Maxwell** — the
+  coherent statement of the Stage 0–3 departures. Able-to-fail proven: neutral/clean → `FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY`,
+  large-`C_hu` → UNSTABLE, remove-`h` → `FIELD_EXACT_MAXWELL_STRUCTURE`, corrupt-import → `UNDERDETERMINED`. Artifacts:
+  `{directives,tools,reports}/pathA_39_stage4_field_classification*`. Spec close, NOT solved-parameter (`a_L`, `C_hu`,
+  contamination magnitude, `c_E=c_γ`/`λγ` sim-deferred/knit).
+- **Honest landing (sector):** magnetism = a real fourth force (correct sign) + a **characterized departure** (an unavoidable
+  propagating charge-coupled scalar; the two magnetisms are one throat swirl not operator-separable), NOT clean Maxwell —
+  first-class for a toy analog. **Follow-up:** investigate the charge-coupled "extra scalar" (why hidden? magnitude?) = task #110 +
+  `notes/pathA_39_charge_coupled_scalar_followup.md`.
+- ✅ **COMMITTED:** Stages 0-2 (`9e1a6075`), Stage 3 (`7fc12bab`), **Stage 4 (this milestone — sector close, pushed to origin
+  master).** **Next action = the CONSISTENCY KNIT (below).**
 
 **▶ THEN = THE CONSISTENCY KNIT → "fully formed."** After all four sectors: (a) the sharp `λγ = c_γ/c_s = 1` cone-lock test (still
 OPEN — do all four live in ONE parameter set?); (b) the NG cross-consistency gauntlet; (c) assemble the end-to-end chain into the

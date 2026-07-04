@@ -10,9 +10,9 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐⭐ LIVE STATE (2026-07-04) — MAGNETISM (`pathA_39`) IN PROGRESS, 3 of 4 stages EARNED. Front door = repo `STATUS.md` ▶ RESUME
-> HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis).**
-> - **3 of 4 sectors EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`). **Magnetism `pathA_39` = the velocity-
+> **⭐⭐ LIVE STATE (2026-07-04) — ALL 4 SECTORS EARNED; MAGNETISM (`pathA_39`) COMPLETE, 4 of 4 stages. Front door = repo
+> `STATUS.md` ▶ RESUME HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis). NEXT = the consistency knit.**
+> - **⭐⭐ ALL 4 SECTORS EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`, magnetism `pathA_39`). **Magnetism = the velocity-
 >   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
 >   charge; NOT bulk vorticity = gravitomagnetism).** Setup gauntlet done (resolution v5 `SOUND_AS_A_RESOLUTION`; directive v1).
 > - **Stage 0+1 EARNED** (dual-engine + tri-reviewed CLEAN) = `FAIL_OBSERVABLE_SCALAR_ADMIXTURE` — exact isolated Maxwell EXCLUDED;
@@ -31,11 +31,19 @@ verification agents → user methodology call (derive the emergent constants bef
 >   FAIL contingent-not-baked). **"One swirl, two regimes" made precise: EM magnetism & gravitomagnetism = the same 4D-throat
 >   swirl, NOT operator-level separable under motion** (source-level split = leading approx); magnitude sim-deferred. Method =
 >   spurion-EFT selection-rule reframe (naive `δÔ_i≡0` on the w-only slab). Artifacts `{directives,tools,reports}/pathA_39_stage3_*`.
-> - **▶ NEXT = Stage 4 (field-coupling classification)** closes the sector (`FIELD_SCALAR_VECTOR_DEPARTURE` expected — a
->   propagating charge-coupled `h`-branon; exact Maxwell excluded by `M_h>0`/`B_eff>0`) → **then the consistency knit**
->   (`λγ=c_γ/c_s=1` AND `c_E=c_γ`). Honest landing: magnetism = a real fourth force + a characterized scalar departure, NOT clean
->   Maxwell. Follow-up (post-Stage-4) = the charge-coupled "extra scalar" (task #110 + `notes/pathA_39_charge_coupled_scalar_followup.md`).
->   **Stages 0-2 committed `9e1a6075`; Stage 3 committed this milestone.**
+> - **Stage 4 EARNED — SECTOR CLOSE** (dual-engine genuine `ENGINE_AGREE` over 77 quantities, 33 discrete features derived by BOTH
+>   engines; gauntlet Codex×2 + GLM `SOUND_WITH_CONCERNS`; tri-review CLEAN after a light 5-smell remediation, fresh-agent
+>   `REMEDIATION_CLEAN`) = `FIELD_SCALAR_VECTOR_DEPARTURE`. A genuine gate (NOT a relabel): assembles ONE quadratic action `Q(ω,k)`
+>   over `(u_T1,u_T2,u_L,h)` and COMPUTES DOF (Dirac: real 4 = 2 transverse + 1 finite-compressibility density + 1 propagating `h`;
+>   Maxwell counterfactual → 2 DERIVED), scalar-sector stability (`B_eff K_h − C_hu² > 0`; `FIELD_SCALAR_SECTOR_UNSTABLE` branch),
+>   per-pole charge residues (`J_q†Q⁻¹J_q`). **EM field content = a transverse-vector + propagating charge-coupled-scalar multiplet,
+>   NOT exact Maxwell.** Able-to-fail: clean→`FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY`, large-`C_hu`→UNSTABLE,
+>   remove-`h`→`FIELD_EXACT_MAXWELL_STRUCTURE`, corrupt→`UNDERDETERMINED`. Spec close (sim-deferred: `a_L`, `C_hu`, contamination
+>   magnitude, `c_E=c_γ`/`λγ`). Artifacts `{directives,tools,reports}/pathA_39_stage4_*`.
+> - **▶ NEXT = the CONSISTENCY KNIT** (`λγ=c_γ/c_s=1` AND `c_E=c_γ`) + the NG cross-consistency gauntlet + assemble the four-sector
+>   chain into the central `pde_ledger` → "one self-consistent brane+bulk model." Honest landing (sector): magnetism = a real fourth
+>   force + a characterized scalar departure, NOT clean Maxwell. Follow-up = the charge-coupled "extra scalar" (task #110 +
+>   `notes/pathA_39_charge_coupled_scalar_followup.md`). **Stages 0-2 `9e1a6075`, Stage 3 `7fc12bab`, Stage 4 this milestone (pushed).**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN

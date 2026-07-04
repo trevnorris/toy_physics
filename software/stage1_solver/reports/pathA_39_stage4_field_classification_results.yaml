@@ -1,0 +1,2066 @@
+schema: pathA_39_stage4_field_classification/v1
+primary: FIELD_SCALAR_VECTOR_DEPARTURE
+flags: &id001
+  scalar_sector_stable: true
+  density_charge_coupled: true
+  operator_parity_contamination: true
+headline:
+  primary: FIELD_SCALAR_VECTOR_DEPARTURE
+  flags: *id001
+  engine_agreement: ENGINE_AGREE
+engine_agreement:
+  status: ENGINE_AGREE
+  compared_payload:
+    top_line_primary: FIELD_SCALAR_VECTOR_DEPARTURE
+    top_line_primary_code: 3
+    top_line_flags: *id001
+    control_classes:
+      real_provenance_fixed: FIELD_SCALAR_VECTOR_DEPARTURE
+      maxwell_counterfactual: FIELD_EXACT_MAXWELL_STRUCTURE
+      clean_coexistence: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+      aL_to_0: FIELD_SCALAR_VECTOR_DEPARTURE
+      large_C_hu: FIELD_SCALAR_SECTOR_UNSTABLE
+      large_C_hu_restored_bound: FIELD_SCALAR_VECTOR_DEPARTURE
+      import_fidelity: &id007
+        B_eff_corrupt: FIELD_CLASSIFICATION_UNDERDETERMINED
+        K_h_corrupt: FIELD_CLASSIFICATION_UNDERDETERMINED
+        c_E_corrupt: FIELD_CLASSIFICATION_UNDERDETERMINED
+    dof_discriminator:
+      real: 4
+      maxwell: 2
+    self_tests: &id008
+      FIELD_SCALAR_VECTOR_DEPARTURE: FIELD_SCALAR_VECTOR_DEPARTURE
+      FIELD_EXACT_MAXWELL_STRUCTURE: FIELD_EXACT_MAXWELL_STRUCTURE
+      FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+      FIELD_SCALAR_SECTOR_UNSTABLE: FIELD_SCALAR_SECTOR_UNSTABLE
+      FIELD_CLASSIFICATION_UNDERDETERMINED: FIELD_CLASSIFICATION_UNDERDETERMINED
+      A_L_ZERO_H_FLOOR: FIELD_SCALAR_VECTOR_DEPARTURE
+      RESTORED_STABILITY_BOUND: FIELD_SCALAR_VECTOR_DEPARTURE
+    checked_expression_count: 77
+    expr_digest: aa560b9f74abd33a25722e6902df45b6a597c8f6c4a41d4aa7873d65aab12b95
+  sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_stage4_field_classification_sympy.json
+  mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_stage4_field_classification_mathematica.json
+imports:
+  checks:
+    pathA_36_B_eff:
+      expected: rho_B0**2/chi_c
+      actual: rho_B0**2/chi_c
+      match: true
+    pathA_36_c_gamma_squared:
+      expected: mu_R/rho_br
+      actual: mu_R/rho_br
+      match: true
+    pathA_36_real_constraint_class:
+      expected: SECOND_CLASS_PAIR
+      actual: SECOND_CLASS_PAIR
+      match: true
+    pathA_36_real_longitudinal_dof:
+      expected: 1
+      actual: 1
+      match: true
+    pathA_36_tuned_constraint_class:
+      expected: FIRST_CLASS_MAXWELL_CHAIN
+      actual: FIRST_CLASS_MAXWELL_CHAIN
+      match: true
+    pathA_36_tuned_longitudinal_dof:
+      expected: 0
+      actual: 0
+      match: true
+    pathA_36_tuned_first_class_count:
+      expected: 2
+      actual: 2
+      match: true
+    pathA_36_transverse_dof:
+      expected: 2
+      actual: 2
+      match: true
+    pathA_38_q_h_plus:
+      expected: 2*QE*tanh(b/ell)/b
+      actual: 2*QE*tanh(b/ell)/b
+      match: true
+    pathA_38_dynamic_green_speed:
+      expected: exp(I*R*omega/cE)/(4*pi*R)
+      actual: exp(I*R*omega/cE)/(4*pi*R)
+      match: true
+    pathA_38_engine:
+      expected: ENGINE_AGREE
+      actual: ENGINE_AGREE
+      match: true
+    pathA_39_stage0_plus_1_block:
+      expected: scalar block with Chu, Kh=Mh*cE^2, q_L=Nu*aL*sCharge, ENGINE_AGREE
+      actual: report text
+      match: true
+    pathA_39_stage2_sign:
+      expected: NO_CANCELLATION_BOTH_CHANNELS_ATTRACTIVE and ENGINE_AGREE
+      actual: report text
+      match: true
+    pathA_39_stage3_contamination:
+      expected: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING with ENGINE_AGREE
+      actual: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+      match: true
+  imported:
+    B_eff: rho_B0^2/chi_c from pathA_36 finite-compressibility branch
+    c_gamma_squared: mu_R/rho_br from pathA_36 transverse sector
+    longitudinal_real_constraint_class: SECOND_CLASS_PAIR with 1 physical longitudinal DOF
+    longitudinal_maxwell_constraint_class: FIRST_CLASS_MAXWELL_CHAIN with 0 physical longitudinal DOF and 2 first-class constraints
+    q_A_T: q_A^T components parameterized as Nu*aT*sCharge and Nu*aTp*sCharge
+    q_L: Nu*aL*sCharge from Stage 0+1 source projection; a_L sim-deferred
+    q_h: 2*QE*tanh(b/ell)/b
+    q_M: mass source to u_L, recorded separately from charge residues
+    M_h: positive symbolic Mh from pathA_38 branon zero-mode normalization
+    c_E: cE from pathA_38 dynamic Green exp(I*R*omega/cE)/(4*pi*R)
+    K_h: M_h*c_E^2
+    C_hu: sim-deferred Stage 0+1 scalar mixing coefficient Chu
+    magnetic_sign: 'Stage 2 source of truth: transverse and longitudinal like-current channels attract'
+    operator_parity_contamination: true, magnitude sim-deferred, from Stage 3
+  declared_vs_deferred:
+    declared_stage4:
+    - one assembled Q(omega,k) over (u_T1,u_T2,u_L,h)
+    - charge source vector decomposed as q_A^T, q_L, q_h with q_M tracked as mass-channel source
+    - real branch uses the imported SECOND_CLASS_PAIR longitudinal class
+    conditional_or_sim_deferred:
+    - C_hu stability bound C_hu^2 < B_eff K_h
+    - a_L and density charge coupling magnitude
+    - operator-parity contamination magnitude
+    - c_E=c_gamma and lambda_gamma knit
+  pathA_36_branch_records:
+    real:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof: 1
+    maxwell:
+      classification: FIRST_CLASS_MAXWELL_CHAIN
+      first_class_count: 2
+      second_class_count: 0
+      longitudinal_dof: 0
+      generator: &id006
+        generator: G[chi]=(rho_br/C_J)*(chi*Phi_2-dot(chi)*Phi_1)
+        delta_u_L: k chi
+        delta_theta: -(rho_br/C_J) dot(chi)
+        local: true
+        inverse_k_or_inverse_omega: false
+dimensional_firewall:
+  pass: true
+  checked_expression_count: 14
+  records:
+  - category: Q
+    name: transverse_inertia_entry
+    expression: rho_br omega^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: Q
+    name: transverse_stiffness_entry
+    expression: mu_R k^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: Q
+    name: density_stiffness_entry
+    expression: B_eff k^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: Q
+    name: h_inertia_entry
+    expression: M_h omega^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: Q
+    name: h_stiffness_entry
+    expression: K_h k^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: Q
+    name: hu_mixing_entry
+    expression: C_hu k^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: PASS
+  - category: action
+    name: uT_Q_uT
+    expression: u_T Q_T u_T
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  - category: action
+    name: uL_Q_h
+    expression: u_L Q_Lh h
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  - category: import
+    name: K_h_over_M_h
+    expression: K_h/M_h=c_E^2
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 0
+      - 2
+      - -2
+      - 0
+      string: L^2 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 0
+      - 2
+      - -2
+      - 0
+      string: L^2 T^-2
+    status: PASS
+  - category: import
+    name: c_gamma_squared
+    expression: mu_R/rho_br
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 0
+      - 2
+      - -2
+      - 0
+      string: L^2 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 0
+      - 2
+      - -2
+      - 0
+      string: L^2 T^-2
+    status: PASS
+  - category: source
+    name: transverse_current_source
+    expression: j_T q_A^T u_T
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  - category: source
+    name: density_current_source
+    expression: j_L q_L u_L
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  - category: source
+    name: h_charge_density_source
+    expression: rho_q q_h h
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  - category: source
+    name: mass_density_source
+    expression: rho_m q_M u_L
+    dimension:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: PASS
+  ablations:
+  - category: ablation
+    name: drop_k2_from_hu_mixing_Q
+    expression: C_hu without k^2 in Q_Lh
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -3
+      - -2
+      - 0
+      string: M L^-3 T^-2
+    status: FIRED
+  - category: ablation
+    name: use_charge_density_for_qL_current
+    expression: rho_q q_L u_L
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -2
+      - -1
+      - 0
+      string: M L^-2 T^-1
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: FIRED
+  - category: ablation
+    name: mass_source_counted_as_charge_source
+    expression: rho_q q_M u_L
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 0
+      - -1
+      - -2
+      - 1
+      string: L^-1 T^-2 Q
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: FIRED
+assembled_system:
+  coordinates: &id002
+  - u_T1
+  - u_T2
+  - u_L
+  - h
+  Q: &id003
+  - - -k**2*muR + omega**2*rhoBr
+    - '0'
+    - '0'
+    - '0'
+  - - '0'
+    - -k**2*muR + omega**2*rhoBr
+    - '0'
+    - '0'
+  - - '0'
+    - '0'
+    - omega**2*rhoBr - k**2*rhoB0**2/chiC
+    - -Chu*k**2
+  - - '0'
+    - '0'
+    - -Chu*k**2
+    - -Mh*cE**2*k**2 + Mh*omega**2
+  J_charge: &id004
+  - - Nu*aT*sCharge
+  - - Nu*aTp*sCharge
+  - - Nu*aL*sCharge
+  - - 2*QE*tanh(b/ell)/b
+  J_q_record: &id005
+    q_A_T_components:
+    - Nu*aT*sCharge
+    - Nu*aTp*sCharge
+    q_L: Nu*aL*sCharge
+    q_h: 2*QE*tanh(b/ell)/b
+    q_M: qM
+    mass_source_is_not_counted_as_charge_residue: true
+  R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+    + Mh*x) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2
+    - Mh*rhoB0**2*x))
+branches:
+  real_provenance_fixed:
+    name: real_provenance_fixed
+    primary: FIELD_SCALAR_VECTOR_DEPARTURE
+    primary_code: 3
+    flags: *id001
+    coordinates: *id002
+    assembled_Q: *id003
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge: *id004
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record: *id005
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+      + Mh*x) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2
+      - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cE**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 - sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cE**2*rhoB0**2/chiC is positive; with positive diagonal stiffness entries this gives
+        both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC +
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr +
+        Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))), chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b
+        + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))
+        + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))), Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Real branch is conditional on the computed stability bound C_hu^2 < B_eff K_h.
+  maxwell_counterfactual:
+    name: maxwell_counterfactual
+    primary: FIELD_EXACT_MAXWELL_STRUCTURE
+    primary_code: 1
+    flags:
+      scalar_sector_stable: not_applicable
+      density_charge_coupled: false
+      operator_parity_contamination: false
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L_gauge
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+    assembled_Q_x_scalar_block: null
+    det_Q: '0'
+    physical_det_Q: (k**2*muR - omega**2*rhoBr)**2
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - '0'
+    J_mass:
+    - - '0'
+    - - '0'
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: '0'
+      q_h: '0'
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: -Nu**2*sCharge**2*(aT**2 + aTp**2)/(k**2*muR - omega**2*rhoBr)
+    constraint:
+      classification: FIRST_CLASS_MAXWELL_CHAIN
+      first_class_count: 2
+      second_class_count: 0
+      longitudinal_dof_imported: 0
+      first_class_generator_present: true
+      generator: *id006
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 2
+    dof:
+      config_count_for_dirac: 4
+      transverse: 2
+      u_L: 0
+      h: 0
+      first_class_count: 2
+      second_class_count: 0
+      physical_total: 2
+      independent_initial_data_functions: 4
+    scalar_sector:
+      stable_code: 2
+      stable: not_applicable_h_removed_first_class_longitudinal
+      det_stiffness_sign_code: null
+      finite_k_stiffness_eigenvalues_positive: not_applicable
+      diagonal_stiffness_positive: not_applicable
+      det_stiffness_over_k4: null
+      stiffness_eigenvalues: []
+      condition: h block removed and u_L removed from physical spectrum by FIRST_CLASS_MAXWELL_CHAIN
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: false
+      density_charge_coupled: false
+      h_charge_residue_nonzero: false
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[]'
+      density_charge_residue_expressions: '[]'
+      h_charge_residue_expressions: '[]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: false
+    notes:
+    - Action-level h block removal plus imported pathA_36 FIRST_CLASS_MAXWELL_CHAIN on u_L.
+  clean_coexistence:
+    name: clean_coexistence
+    primary: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+    primary_code: 2
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: false
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - -Mh*cE**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - '0'
+    - - '0'
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: '0'
+      q_h: '0'
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr)
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cE**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 - sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cE**2*rhoB0**2/chiC is positive; with positive diagonal stiffness entries this gives
+        both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: '0'
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: '0'
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: false
+      density_charge_coupled: false
+      h_charge_residue_nonzero: false
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[0, 0]'
+      density_charge_residue_expressions: '[0, 0]'
+      h_charge_residue_expressions: '[0, 0]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Scalar block kept and diagonalized; charge source set to zero only in scalar channels.
+  aL_to_0:
+    name: aL_to_0
+    primary: FIELD_SCALAR_VECTOR_DEPARTURE
+    primary_code: 3
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: false
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - -Mh*cE**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - '0'
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: '0'
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + 4*QE**2*chiC*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/(b**2*k**2*(-Chu**2*chiC
+      - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cE**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 - sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cE**2*rhoB0**2/chiC is positive; with positive diagonal stiffness entries this gives
+        both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: false
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+      density_charge_residue_expressions: '[0, 0]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Density source removed while h charge source remains nonzero.
+  large_C_hu:
+    name: large_C_hu
+    primary: FIELD_SCALAR_SECTOR_UNSTABLE
+    primary_code: 4
+    flags:
+      scalar_sector_stable: false
+      density_charge_coupled: true
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -2*sqrt(Mh)*cE*k**2*rhoB0/sqrt(chiC)
+    - - '0'
+      - '0'
+      - -2*sqrt(Mh)*cE*k**2*rhoB0/sqrt(chiC)
+      - -Mh*cE**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -2*sqrt(Mh)*cE*rhoB0/sqrt(chiC)
+    - - -2*sqrt(Mh)*cE*rhoB0/sqrt(chiC)
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Mh*cE**2*chiC*rhoBr*x - 3*Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Mh*cE**2*chiC*rhoBr*x - 3*Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - Nu*aL*sCharge
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: Nu*aL*sCharge
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(8*sqrt(Mh)*Nu*QE*aL*cE*rhoB0*sCharge*tanh(b/ell)/(b*sqrt(chiC))
+      + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + Mh*x) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Mh*cE**2*chiC*rhoBr*x - 3*Mh*cE**2*rhoB0**2
+      + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 0
+      stable: false
+      det_stiffness_sign_code: -1
+      finite_k_stiffness_eigenvalues_positive: false
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -3*Mh*cE**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 - sqrt(16*Mh*cE**2*rhoB0**2/chiC + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + sqrt(16*Mh*cE**2*rhoB0**2/chiC + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-3*Mh*cE**2*rhoB0**2/chiC is nonpositive or not certified positive; at least one finite-k scalar
+        stiffness eigenvalue is marginal/unstable
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(8*sqrt(Mh)*Nu*QE*aL*cE*rhoB0*sCharge*tanh(b/ell)/(b*sqrt(chiC)) + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC
+        + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(8*sqrt(Mh)*Nu*QE*aL*cE*rhoB0*sCharge*tanh(b/ell)/(b*sqrt(chiC)) + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC
+        + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(8*sqrt(Mh)*Nu*QE*aL*cE*rhoB0*sCharge*tanh(b/ell)/(b*sqrt(chiC)) + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+        + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) +
+        4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))),
+        chiC*(8*sqrt(Mh)*Nu*QE*aL*cE*rhoB0*sCharge*tanh(b/ell)/(b*sqrt(chiC)) + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))), Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(16*Mh**2*cE**2*rhoB0**2*rhoBr/chiC + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Uses C_hu=2*sqrt(B_eff*K_h), so C_hu^2=4 B_eff K_h and det stiffness is negative.
+  large_C_hu_restored_bound:
+    name: large_C_hu_restored_bound
+    primary: FIELD_SCALAR_VECTOR_DEPARTURE
+    primary_code: 3
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: true
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - -Mh*cE**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - Nu*aL*sCharge
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: Nu*aL*sCharge
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+      + Mh*x) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2
+      - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cE**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 - sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + sqrt(4*Chu**2 + (-Mh*cE**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cE**2*rhoB0**2/chiC is positive; with positive diagonal stiffness entries this gives
+        both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC +
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr +
+        Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))), chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b
+        + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))
+        + 4*QE**2*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr
+        + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))), Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr
+        + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC -
+        sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 +
+        chiC*(Mh*cE**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+    import_fidelity:
+      ok: true
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Restores the computed stability bound after the large-C_hu ablation.
+  import_fidelity_B_eff_corrupt:
+    name: import_fidelity_B_eff_corrupt
+    primary: FIELD_CLASSIFICATION_UNDERDETERMINED
+    primary_code: 0
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: true
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - -k**2*(deltaB + rhoB0**2/chiC) + omega**2*rhoBr
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - -Mh*cE**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - -deltaB + rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC + Mh*cE**2*chiC*deltaB - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 - Mh*chiC*deltaB*x
+      + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC + Mh*cE**2*chiC*deltaB - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 - Mh*chiC*deltaB*x
+      + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - Nu*aL*sCharge
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: Nu*aL*sCharge
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+      + Mh*x) + 4*QE**2*(-deltaB + rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC + Mh*cE**2*chiC*deltaB - Mh*cE**2*chiC*rhoBr*x
+      + Mh*cE**2*rhoB0**2 - Mh*chiC*deltaB*x + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cE**2*(deltaB + rhoB0**2/chiC)
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 + deltaB - sqrt(4*Chu**2 + (-Mh*cE**2 + deltaB + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + deltaB + sqrt(4*Chu**2 + (-Mh*cE**2 + deltaB + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cE**2*(deltaB + rhoB0**2/chiC) is positive; with positive diagonal stiffness entries
+        this gives both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC)
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr)) + 4*QE**2*(-deltaB - rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC)
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC)
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr)) + 4*QE**2*(-deltaB - rhoB0**2/chiC + (Mh*cE**2*rhoBr
+        + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC)
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr +
+        Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr)) + 4*QE**2*(-deltaB
+        - rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2))), chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB
+        + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr)) + 4*QE**2*(-deltaB - rhoB0**2/chiC
+        + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr
+        + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr
+        + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))), Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2
+        + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr
+        - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-deltaB - rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr
+        + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*chiC*deltaB - Mh*rhoB0**2
+        + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2)))),
+        4*QE**2*chiC*(-deltaB - rhoB0**2/chiC + (Mh*cE**2*rhoBr + Mh*(deltaB + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB
+        + rhoB0**2/chiC))**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*chiC*deltaB - Mh*rhoB0**2 + chiC*(Mh*cE**2*rhoBr + Mh*(deltaB
+        + rhoB0**2/chiC) + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cE**2*rhoBr - Mh*(deltaB + rhoB0**2/chiC))**2))))]'
+    import_fidelity:
+      ok: false
+      B_eff_matches_rho_B0_squared_over_chi_c: false
+      K_h_matches_M_h_c_E_squared: true
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: deltaB + rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Corrupts B_eff so B_eff != rho_B0^2/chi_c.
+  import_fidelity_K_h_corrupt:
+    name: import_fidelity_K_h_corrupt
+    primary: FIELD_CLASSIFICATION_UNDERDETERMINED
+    primary_code: 0
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: true
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - Mh*omega**2 - k**2*(Mh*cE**2 + deltaKh)
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cE**2 + Mh*x - deltaKh
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x
+      - chiC*deltaKh*rhoBr*x + deltaKh*rhoB0**2)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x
+      - chiC*deltaKh*rhoBr*x + deltaKh*rhoB0**2)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - Nu*aL*sCharge
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: Nu*aL*sCharge
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2
+      + Mh*x - deltaKh) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2
+      + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x - chiC*deltaKh*rhoBr*x + deltaKh*rhoB0**2))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + rhoB0**2*(Mh*cE**2 + deltaKh)/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cE**2 + deltaKh - sqrt(4*Chu**2 + (-Mh*cE**2 - deltaKh + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cE**2 + deltaKh + sqrt(4*Chu**2 + (-Mh*cE**2 - deltaKh + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + rhoB0**2*(Mh*cE**2 + deltaKh)/chiC is positive; with positive diagonal stiffness entries
+        this gives both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC
+        + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2))), chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC
+        + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cE**2*chiC*rhoBr
+        - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh)
+        - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr
+        + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))),
+        Nu**2*aL**2*chiC*sCharge**2*(-Mh*cE**2 - deltaKh + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC
+        + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*rhoBr))/(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr +
+        (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr
+        + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) - sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2)))),
+        4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh))**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2 - chiC*deltaKh*rhoBr + chiC*(Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2
+        + deltaKh) + sqrt(4*Chu**2*Mh*rhoBr + (-Mh*rhoB0**2/chiC + rhoBr*(Mh*cE**2 + deltaKh))**2))))]'
+    import_fidelity:
+      ok: false
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: false
+      c_E_matches_dynamic_Green_speed: true
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2 + deltaKh
+        c_E_symbol: cE
+    operator_parity_contamination: true
+    notes:
+    - Corrupts K_h so K_h != M_h c_E^2.
+  import_fidelity_c_E_corrupt:
+    name: import_fidelity_c_E_corrupt
+    primary: FIELD_CLASSIFICATION_UNDERDETERMINED
+    primary_code: 0
+    flags:
+      scalar_sector_stable: true
+      density_charge_coupled: true
+      operator_parity_contamination: true
+    coordinates:
+    - u_T1
+    - u_T2
+    - u_L
+    - h
+    assembled_Q:
+    - - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - -k**2*muR + omega**2*rhoBr
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - omega**2*rhoBr - k**2*rhoB0**2/chiC
+      - -Chu*k**2
+    - - '0'
+      - '0'
+      - -Chu*k**2
+      - -Mh*cBad**2*k**2 + Mh*omega**2
+    assembled_Q_x_scalar_block:
+    - - rhoBr*x - rhoB0**2/chiC
+      - -Chu
+    - - -Chu
+      - -Mh*cBad**2 + Mh*x
+    det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cBad**2*chiC*rhoBr*x + Mh*cBad**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+    physical_det_Q: k**4*(-k**2*muR + omega**2*rhoBr)**2*(-Chu**2*chiC - Mh*cBad**2*chiC*rhoBr*x + Mh*cBad**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 -
+      Mh*rhoB0**2*x)/chiC
+    J_charge:
+    - - Nu*aT*sCharge
+    - - Nu*aTp*sCharge
+    - - Nu*aL*sCharge
+    - - 2*QE*tanh(b/ell)/b
+    J_mass:
+    - - '0'
+    - - '0'
+    - - qM
+    - - '0'
+    J_q_record:
+      q_A_T_components:
+      - Nu*aT*sCharge
+      - Nu*aTp*sCharge
+      q_L: Nu*aL*sCharge
+      q_h: 2*QE*tanh(b/ell)/b
+      q_M: qM
+      mass_source_is_not_counted_as_charge_residue: true
+    R_charge: Nu**2*sCharge**2*(aT**2 + aTp**2)/(-k**2*muR + omega**2*rhoBr) + chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cBad**2
+      + Mh*x) + 4*QE**2*(rhoBr*x - rhoB0**2/chiC)*tanh(b/ell)**2/b**2)/(k**2*(-Chu**2*chiC - Mh*cBad**2*chiC*rhoBr*x + Mh*cBad**2*rhoB0**2 + Mh*chiC*rhoBr*x**2
+      - Mh*rhoB0**2*x))
+    constraint:
+      classification: SECOND_CLASS_PAIR
+      first_class_count: 0
+      second_class_count: 2
+      longitudinal_dof_imported: 1
+      first_class_generator_present: false
+      generator: null
+      imported_from: pathA_36_c5_phase_potential_results.yaml
+    kinetic_rank_assembled: 4
+    dof:
+      config_count_for_dirac: 5
+      transverse: 2
+      u_L: 1
+      h: 1
+      first_class_count: 0
+      second_class_count: 2
+      physical_total: 4
+      independent_initial_data_functions: 8
+    scalar_sector:
+      stable_code: 1
+      stable: true
+      det_stiffness_sign_code: 1
+      finite_k_stiffness_eigenvalues_positive: true
+      diagonal_stiffness_positive: true
+      det_stiffness_over_k4: -Chu**2 + Mh*cBad**2*rhoB0**2/chiC
+      stiffness_eigenvalues:
+      - k**2*(Mh*cBad**2 - sqrt(4*Chu**2 + (-Mh*cBad**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      - k**2*(Mh*cBad**2 + sqrt(4*Chu**2 + (-Mh*cBad**2 + rhoB0**2/chiC)**2) + rhoB0**2/chiC)/2
+      condition: computed det(stiffness)/k^4=-Chu**2 + Mh*cBad**2*rhoB0**2/chiC is positive; with positive diagonal stiffness entries this gives
+        both finite-k stiffness eigenvalues > 0
+      fixture_label: stable_bound
+    poles:
+    - label: u_T1
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aT**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: u_T2
+      speed_squared: muR/rhoBr
+      residue_to_charge: Nu**2*aTp**2*sCharge**2/rhoBr
+      sector: transverse
+    - label: scalar_root_minus
+      speed_squared: (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2
+        + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cBad**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    - label: scalar_root_plus
+      speed_squared: (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh*rhoBr)
+      residue_to_charge: chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2
+        + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      residue_to_mass: chiC*qM**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cBad**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))
+      sector: scalar
+    residue_flags:
+      transverse_charge_residue_nonzero: true
+      scalar_charge_residue_nonzero: true
+      density_charge_coupled: true
+      h_charge_residue_nonzero: true
+    residue_derivation:
+      rule: branch flags are computed from pole charge residues of J_q^T Q^-1 J_q, not from source-coupling literals
+      scalar_charge_residue_expressions: '[chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b + Nu**2*aL**2*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr
+        + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr)) + 4*QE**2*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr
+        + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cBad**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))), chiC*(4*Chu*Nu*QE*aL*sCharge*tanh(b/ell)/b
+        + Nu**2*aL**2*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))
+        + 4*QE**2*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/b**2)/(-Mh*cBad**2*chiC*rhoBr
+        - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      density_charge_residue_expressions: '[Nu**2*aL**2*chiC*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr
+        + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))), Nu**2*aL**2*chiC*sCharge**2*(-Mh*cBad**2 + (Mh*cBad**2*rhoBr +
+        Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*rhoBr))/(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2
+        + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))]'
+      h_charge_residue_expressions: '[4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr
+        - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2 + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        - sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2)))), 4*QE**2*chiC*(-rhoB0**2/chiC + (Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC
+        + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))/(2*Mh))*tanh(b/ell)**2/(b**2*(-Mh*cBad**2*chiC*rhoBr - Mh*rhoB0**2
+        + chiC*(Mh*cBad**2*rhoBr + Mh*rhoB0**2/chiC + sqrt(4*Chu**2*Mh*rhoBr + (Mh*cBad**2*rhoBr - Mh*rhoB0**2/chiC)**2))))]'
+    import_fidelity:
+      ok: false
+      B_eff_matches_rho_B0_squared_over_chi_c: true
+      K_h_matches_M_h_c_E_squared: false
+      c_E_matches_dynamic_Green_speed: false
+      expected:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cE**2
+        c_E_symbol: cE
+      actual:
+        B_eff: rhoB0**2/chiC
+        K_h: Mh*cBad**2
+        c_E_symbol: cBad
+    operator_parity_contamination: true
+    notes:
+    - Uses cBad in the h block, inconsistent with the pathA_38 dynamic Green speed cE.
+controls:
+  real_provenance_fixed:
+    status: FIRED
+    branch: real_provenance_fixed
+    class: FIELD_SCALAR_VECTOR_DEPARTURE
+  maxwell_counterfactual:
+    status: FIRED
+    branch: maxwell_counterfactual
+    class: FIELD_EXACT_MAXWELL_STRUCTURE
+  clean_coexistence:
+    status: FIRED
+    branch: clean_coexistence
+    class: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+  aL_to_0:
+    status: FIRED
+    branch: aL_to_0
+    class: FIELD_SCALAR_VECTOR_DEPARTURE
+  large_C_hu:
+    status: FIRED
+    branch: large_C_hu
+    class: FIELD_SCALAR_SECTOR_UNSTABLE
+    restored_bound_branch: large_C_hu_restored_bound
+    restored_bound_class: FIELD_SCALAR_VECTOR_DEPARTURE
+  import_fidelity:
+    status: FIRED
+    branches: *id007
+  dof_count_discriminator:
+    status: FIRED
+    real_physical_dof: 4
+    maxwell_physical_dof: 2
+    real_branch: real_provenance_fixed
+    maxwell_branch: maxwell_counterfactual
+classifier:
+  rule: pure function of import fidelity, scalar stability, Dirac DOF consequences, first-class generator status, and charge residues
+  labels:
+  - FIELD_CLASSIFICATION_UNDERDETERMINED
+  - FIELD_EXACT_MAXWELL_STRUCTURE
+  - FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+  - FIELD_SCALAR_VECTOR_DEPARTURE
+  - FIELD_SCALAR_SECTOR_UNSTABLE
+  self_tests: *id008
+  self_test_records_nonfatal:
+    FIELD_SCALAR_VECTOR_DEPARTURE:
+      expected_fixture: FIELD_SCALAR_VECTOR_DEPARTURE
+      actual: FIELD_SCALAR_VECTOR_DEPARTURE
+      match: true
+    FIELD_EXACT_MAXWELL_STRUCTURE:
+      expected_fixture: FIELD_EXACT_MAXWELL_STRUCTURE
+      actual: FIELD_EXACT_MAXWELL_STRUCTURE
+      match: true
+    FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY:
+      expected_fixture: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+      actual: FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY
+      match: true
+    FIELD_SCALAR_SECTOR_UNSTABLE:
+      expected_fixture: FIELD_SCALAR_SECTOR_UNSTABLE
+      actual: FIELD_SCALAR_SECTOR_UNSTABLE
+      match: true
+    FIELD_CLASSIFICATION_UNDERDETERMINED:
+      expected_fixture: FIELD_CLASSIFICATION_UNDERDETERMINED
+      actual: FIELD_CLASSIFICATION_UNDERDETERMINED
+      match: true
+    A_L_ZERO_H_FLOOR:
+      expected_fixture: FIELD_SCALAR_VECTOR_DEPARTURE
+      actual: FIELD_SCALAR_VECTOR_DEPARTURE
+      match: true
+    RESTORED_STABILITY_BOUND:
+      expected_fixture: FIELD_SCALAR_VECTOR_DEPARTURE
+      actual: FIELD_SCALAR_VECTOR_DEPARTURE
+      match: true
+  verdict_codes:
+    FIELD_CLASSIFICATION_UNDERDETERMINED: 0
+    FIELD_EXACT_MAXWELL_STRUCTURE: 1
+    FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY: 2
+    FIELD_SCALAR_VECTOR_DEPARTURE: 3
+    FIELD_SCALAR_SECTOR_UNSTABLE: 4
+remediation:
+  status: REMEDIATED
+  fixes:
+  - scalar stability code derived from computed det(stiffness)/k^4 sign and finite-k stiffness positivity
+  - Mathematica engine derives kinetic rank, Dirac DOF, residue flags, stability code, and classifier codes before comparing
+  - canonical classifier predicates are shared across engines
+  - scalar/density/h charge flags are derived from computed pole charge residues
+  - expected-landing classifier self-tests are non-fatal records
+  numbers_and_verdict: unchanged
+honest_scope:
+  stage4_close: 'spec close: classified linear field-content skeleton'
+  not_done_here:
+  - nonlinear throat solve
+  - lambda_gamma/c_gamma=c_s knit
+  - c_E=c_gamma Lorentz-cone test
+  - operator-parity contamination magnitude
+  does_not_unearn: Stages 0-3 remain imported provenance and controls; Stage 4 does not relabel them.

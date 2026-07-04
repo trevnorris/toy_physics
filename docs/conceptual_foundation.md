@@ -73,12 +73,17 @@ structure.
    electric charge of #3 (charge-coupled by construction; `±w` sets its sign). ⭐ **Two swirls must NOT be conflated:**
    **gravitomagnetism** = the 3D flow-swirl of the mass-inflow (EVEN, mass-coupled, `c_s`, weak — frame-dragging / Gravity Probe B;
    part of the *gravity* sector, one flow field) vs **EM magnetism** = the 4D throat-body swirl (ODD/`±w`, charge-coupled, strong,
-   because the swirl concentrates toward the finite mouth radius). **STATUS: PARTIALLY EARNED (`pathA_39` Stage 0+1 and Stage 2).**
-   ⭐ First computed result (Stage 0+1, dual-engine + tri-reviewed CLEAN): **exact isolated Maxwell is EXCLUDED** — the EM *field*
-   carries a charge-coupled scalar admixture (a propagating `h`-branon, forced by pathA_38's `M_h>0`; a 5th-force-like departure).
-   ⭐ Second computed result (Stage 2, dual-engine): a charge-coupled `R^-2` magnetic current-current force is derived, with like
-   currents attracting in the transverse channel and an unavoidable attractive longitudinal scalar-current admixture. Detail: the ⭐ v8
-   block below + `directives/pathA_39_magnetism_close_maxwell.md` + `reports/pathA_39_magnetic_force.md`.
+   because the swirl concentrates toward the finite mouth radius). **STATUS: ⭐⭐ EARNED — SECTOR COMPLETE (`pathA_39`, all 4 stages;
+   this is the FOURTH and last force-sector, so ALL FOUR now come from ONE brane+bulk).** The four computed results, all dual-engine
+   + tri-reviewed CLEAN: (0+1) **exact isolated Maxwell is EXCLUDED** — the EM *field* carries a charge-coupled scalar admixture (a
+   propagating `h`-branon, forced by pathA_38's `M_h>0`; a 5th-force-like departure); (2) a charge-coupled `R^-2` current-current
+   magnetic force, like currents attracting (transverse) + an unavoidable attractive longitudinal scalar-current admixture; (3)
+   `FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING` — because charge is `P_w`-ODD (`±w`), a MOVING charge is symmetry-allowed to mix the
+   EM-magnetic and gravitomagnetic sectors at `O(V)`: **the two swirls above are ONE 4D-throat swirl, not operator-level separable
+   under motion** (magnitude sim-deferred); (4) `FIELD_SCALAR_VECTOR_DEPARTURE` — assembling the whole linearized EM sector as one
+   quadratic action gives a **transverse-vector + propagating charge-coupled-scalar (`h`-branon) multiplet, NOT exact Maxwell**. Net:
+   magnetism is a real fourth force + a *characterized departure* from clean Maxwell — first-class for a toy analog. Detail: the ⭐ v8
+   block below + `directives/pathA_39_magnetism_close_maxwell.md`, `..._stage3_operator_parity.md`, `..._stage4_field_classification.md`.
 
 **THE CLOSING STEP (after magnetism) — the CONSISTENCY KNIT → "fully formed."** Four sectors each passing in isolation is NOT the same
 as one self-consistent model. The knit: (a) the sharp cross-sector test **`λγ = c_γ/c_s = 1`** (the GW170817 cone-lock — do light and
@@ -442,10 +447,17 @@ This is the heart of the model. The four phenomena are **four different mechanis
 > Preferred-frame unless `c_E=c_γ`; conditional on the sim-deferred amplitudes `aT,aL`. ⚠️ Its first pass was a pass-by-construction
 > RIG (hand-written kernel, cosmetic anti-readback, a WRONG asserted longitudinal sign that faked a `Ξ` crossover) — CAUGHT by the
 > adversarial + fidelity legs, genuinely remediated (real integral; the Biot–Savart fixture now correctly `FAIL_TARGET_READBACK`,
-> rejected on derivation-process not expression-shape), re-tri-reviewed CLEAN. Still open: the operator-level
-> EM-vs-gravitomagnetic separation under motion (Stage 3) and the field-coupling classification (Stage 4). **The sector is landing as
-> a fourth force WITH a characterized departure, not a clean Maxwell copy — first-class for a unified toy model, computed (and
-> adversarially verified) rather than asserted.** Detail: `directives/pathA_39_magnetism_close_maxwell.md` +
+> rejected on derivation-process not expression-shape), re-tri-reviewed CLEAN. ⭐ **Stage 3 (operator parity, dual-engine +
+> tri-reviewed CLEAN) = `FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING`:** because charge is `P_w`-ODD (`±w`), a MOVING charge's `O(V)`
+> operator is symmetry-allowed in the combined-parity-mixing class, so it generically mixes the EM-magnetic (odd) and
+> gravitomagnetic (even) sectors — **the two swirls are ONE 4D-throat swirl, not operator-level separable under motion** (via a
+> spurion-EFT selection-rule gate, since the naive `δÔ_i≡0` on the reduced slab; magnitude sim-deferred). ⭐ **Stage 4 (field
+> classification, dual-engine + tri-reviewed CLEAN) = `FIELD_SCALAR_VECTOR_DEPARTURE` — SECTOR CLOSE:** assembling the full
+> linearized EM sector as ONE quadratic action `Q(ω,k)` over `(u_T1,u_T2,u_L,h)` and COMPUTING its DOF (Dirac: 4 real / 2 under a
+> Maxwell counterfactual), scalar-sector stability, and per-pole charge residues gives a **transverse-vector + propagating
+> charge-coupled-scalar (`h`-branon) multiplet, NOT exact Maxwell**. **The sector landed as a fourth force WITH a characterized
+> departure, not a clean Maxwell copy — ALL FOUR force-sectors now earned from ONE brane+bulk; first-class for a unified toy model,
+> computed (and adversarially verified) rather than asserted.** Detail: `directives/pathA_39_magnetism_close_maxwell.md` +
 > `reports/pathA_39_{scalar_admixture_screen,magnetic_force}.md`.
 >
 > **Downstream payoff (parked — do not compute yet):** the 4D throat/vortex structure gives a candidate **resistivity-free magnetic

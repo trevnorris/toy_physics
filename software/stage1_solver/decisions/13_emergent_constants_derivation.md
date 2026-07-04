@@ -10,7 +10,7 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐⭐ LIVE STATE (2026-07-04) — MAGNETISM (`pathA_39`) IN PROGRESS, 2 of 4 stages EARNED. Front door = repo `STATUS.md` ▶ RESUME
+> **⭐⭐ LIVE STATE (2026-07-04) — MAGNETISM (`pathA_39`) IN PROGRESS, 3 of 4 stages EARNED. Front door = repo `STATUS.md` ▶ RESUME
 > HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis).**
 > - **3 of 4 sectors EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`). **Magnetism `pathA_39` = the velocity-
 >   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
@@ -23,11 +23,19 @@ verification agents → user methodology call (derive the emergent constants bef
 >   conditional on sim-deferred `aT/aL`. ⚠️ 1st pass = a RIG (hand-written kernel + cosmetic anti-readback that labeled a Biot–Savart
 >   insertion DERIVED + a WRONG asserted longitudinal sign faking a `Ξ` crossover) — caught by adversarial (pass-by-construction) +
 >   fidelity (wrong sign), remediated (real integral; anti-readback now rejects on DERIVATION-PROCESS not expression-shape).
-> - **▶ NEXT = Stage 3 (operator parity = EM-vs-gravitomagnetic separation under motion; EXPECT `FAIL_GRAVITOMAGNETIC_CONTAMINATION`
->   or a sim-deferred `PASS_CONDITIONAL_ON_NO_OPERATOR_PARITY_MIXING`) → Stage 4 (field classification) → the consistency knit
->   (`λγ=c_γ/c_s=1` AND `c_E=c_γ`).** Honest landing: magnetism = a real fourth force + a characterized scalar departure, NOT clean
+> - **Stage 3 EARNED** (dual-engine `ENGINE_AGREE`; gauntlet Codex×3 + GLM `SOUND`; tri-review CLEAN after a light 4-smell
+>   remediation, fresh-agent `REMEDIATION_CLEAN`) = `FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING`. Charge = the `±w` (`P_w`-ODD)
+>   puncture orientation ⇒ a MOVING charge's `O(V)` operator is symmetry-ALLOWED in the combined-parity-MIXING class ⇒ generically
+>   connects the odd (EM) Goldstone `f₀` to the even (gravitomagnetic) sector (7 nonzero `iV·k` witnesses, e.g. `3π/16ℓ`), NO
+>   residual symmetry protecting it. Gate DISTINGUISHES (neutral→CLEAN; `C₀`→PASS_CONDITIONAL; empty-witness→`ACCIDENTAL_ZERO` ⇒
+>   FAIL contingent-not-baked). **"One swirl, two regimes" made precise: EM magnetism & gravitomagnetism = the same 4D-throat
+>   swirl, NOT operator-level separable under motion** (source-level split = leading approx); magnitude sim-deferred. Method =
+>   spurion-EFT selection-rule reframe (naive `δÔ_i≡0` on the w-only slab). Artifacts `{directives,tools,reports}/pathA_39_stage3_*`.
+> - **▶ NEXT = Stage 4 (field-coupling classification)** closes the sector (`FIELD_SCALAR_VECTOR_DEPARTURE` expected — a
+>   propagating charge-coupled `h`-branon; exact Maxwell excluded by `M_h>0`/`B_eff>0`) → **then the consistency knit**
+>   (`λγ=c_γ/c_s=1` AND `c_E=c_γ`). Honest landing: magnetism = a real fourth force + a characterized scalar departure, NOT clean
 >   Maxwell. Follow-up (post-Stage-4) = the charge-coupled "extra scalar" (task #110 + `notes/pathA_39_charge_coupled_scalar_followup.md`).
->   **ALL pathA_39 work UNCOMMITTED.**
+>   **Stages 0-2 committed `9e1a6075`; Stage 3 committed this milestone.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN

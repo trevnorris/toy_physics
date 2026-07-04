@@ -1,0 +1,4864 @@
+schema: pathA_39_stage3_operator_parity/v1
+verdict: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+expected_landing_observation:
+  expected: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+  computed: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+  status: OBSERVED_EXPECTED_FAIL
+headline:
+  verdict: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+  engine_agreement: ENGINE_AGREE
+  raw_manifest_count: 216
+  hermitian_retained: 108
+  parity_retained: 54
+  a0_physical_count: 27
+  a1_physical_count: 27
+  a1_static_nonzero_witness_count: 7
+engine_agreement:
+  status: ENGINE_AGREE
+  compared_payload:
+    top_line_verdict: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+    main_verdict_code: 1
+    counts: &id001
+      raw_manifest_count: 216
+      expected_raw_manifest_count: 216
+      hermitian_retained_pre_ibp: 108
+      hermitian_retained_post_ibp: 108
+      parity_retained_pre_ibp: 54
+      parity_retained_post_ibp: 54
+      a0_physical_count: 27
+      a1_physical_count: 27
+      a1_static_nonzero_witness_count: 7
+    manifest_ids:
+    - iVdotk|0|etaeta|C|even
+    - iVdotk|0|etaeta|C|odd
+    - iVdotk|0|etaeta|B|even
+    - iVdotk|0|etaeta|B|odd
+    - iVdotk|0|etaeta|K|even
+    - iVdotk|0|etaeta|K|odd
+    - iVdotk|0|nn|C|even
+    - iVdotk|0|nn|C|odd
+    - iVdotk|0|nn|B|even
+    - iVdotk|0|nn|B|odd
+    - iVdotk|0|nn|K|even
+    - iVdotk|0|nn|K|odd
+    - iVdotk|0|tautau|C|even
+    - iVdotk|0|tautau|C|odd
+    - iVdotk|0|tautau|B|even
+    - iVdotk|0|tautau|B|odd
+    - iVdotk|0|tautau|K|even
+    - iVdotk|0|tautau|K|odd
+    - iVdotk|0|etan|C|even
+    - iVdotk|0|etan|C|odd
+    - iVdotk|0|etan|B|even
+    - iVdotk|0|etan|B|odd
+    - iVdotk|0|etan|K|even
+    - iVdotk|0|etan|K|odd
+    - iVdotk|0|etatau|C|even
+    - iVdotk|0|etatau|C|odd
+    - iVdotk|0|etatau|B|even
+    - iVdotk|0|etatau|B|odd
+    - iVdotk|0|etatau|K|even
+    - iVdotk|0|etatau|K|odd
+    - iVdotk|0|ntau|C|even
+    - iVdotk|0|ntau|C|odd
+    - iVdotk|0|ntau|B|even
+    - iVdotk|0|ntau|B|odd
+    - iVdotk|0|ntau|K|even
+    - iVdotk|0|ntau|K|odd
+    - iVdotk|0|[etan]|C|even
+    - iVdotk|0|[etan]|C|odd
+    - iVdotk|0|[etan]|B|even
+    - iVdotk|0|[etan]|B|odd
+    - iVdotk|0|[etan]|K|even
+    - iVdotk|0|[etan]|K|odd
+    - iVdotk|0|[etatau]|C|even
+    - iVdotk|0|[etatau]|C|odd
+    - iVdotk|0|[etatau]|B|even
+    - iVdotk|0|[etatau]|B|odd
+    - iVdotk|0|[etatau]|K|even
+    - iVdotk|0|[etatau]|K|odd
+    - iVdotk|0|[ntau]|C|even
+    - iVdotk|0|[ntau]|C|odd
+    - iVdotk|0|[ntau]|B|even
+    - iVdotk|0|[ntau]|B|odd
+    - iVdotk|0|[ntau]|K|even
+    - iVdotk|0|[ntau]|K|odd
+    - iVdotk|1|etaeta|C|even
+    - iVdotk|1|etaeta|C|odd
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|etaeta|B|odd
+    - iVdotk|1|etaeta|K|even
+    - iVdotk|1|etaeta|K|odd
+    - iVdotk|1|nn|C|even
+    - iVdotk|1|nn|C|odd
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|nn|B|odd
+    - iVdotk|1|nn|K|even
+    - iVdotk|1|nn|K|odd
+    - iVdotk|1|tautau|C|even
+    - iVdotk|1|tautau|C|odd
+    - iVdotk|1|tautau|B|even
+    - iVdotk|1|tautau|B|odd
+    - iVdotk|1|tautau|K|even
+    - iVdotk|1|tautau|K|odd
+    - iVdotk|1|etan|C|even
+    - iVdotk|1|etan|C|odd
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etan|B|odd
+    - iVdotk|1|etan|K|even
+    - iVdotk|1|etan|K|odd
+    - iVdotk|1|etatau|C|even
+    - iVdotk|1|etatau|C|odd
+    - iVdotk|1|etatau|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|etatau|K|even
+    - iVdotk|1|etatau|K|odd
+    - iVdotk|1|ntau|C|even
+    - iVdotk|1|ntau|C|odd
+    - iVdotk|1|ntau|B|even
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|ntau|K|even
+    - iVdotk|1|ntau|K|odd
+    - iVdotk|1|[etan]|C|even
+    - iVdotk|1|[etan]|C|odd
+    - iVdotk|1|[etan]|B|even
+    - iVdotk|1|[etan]|B|odd
+    - iVdotk|1|[etan]|K|even
+    - iVdotk|1|[etan]|K|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[etatau]|C|odd
+    - iVdotk|1|[etatau]|B|even
+    - iVdotk|1|[etatau]|B|odd
+    - iVdotk|1|[etatau]|K|even
+    - iVdotk|1|[etatau]|K|odd
+    - iVdotk|1|[ntau]|C|even
+    - iVdotk|1|[ntau]|C|odd
+    - iVdotk|1|[ntau]|B|even
+    - iVdotk|1|[ntau]|B|odd
+    - iVdotk|1|[ntau]|K|even
+    - iVdotk|1|[ntau]|K|odd
+    - omegaVdotk|0|etaeta|C|even
+    - omegaVdotk|0|etaeta|C|odd
+    - omegaVdotk|0|etaeta|B|even
+    - omegaVdotk|0|etaeta|B|odd
+    - omegaVdotk|0|etaeta|K|even
+    - omegaVdotk|0|etaeta|K|odd
+    - omegaVdotk|0|nn|C|even
+    - omegaVdotk|0|nn|C|odd
+    - omegaVdotk|0|nn|B|even
+    - omegaVdotk|0|nn|B|odd
+    - omegaVdotk|0|nn|K|even
+    - omegaVdotk|0|nn|K|odd
+    - omegaVdotk|0|tautau|C|even
+    - omegaVdotk|0|tautau|C|odd
+    - omegaVdotk|0|tautau|B|even
+    - omegaVdotk|0|tautau|B|odd
+    - omegaVdotk|0|tautau|K|even
+    - omegaVdotk|0|tautau|K|odd
+    - omegaVdotk|0|etan|C|even
+    - omegaVdotk|0|etan|C|odd
+    - omegaVdotk|0|etan|B|even
+    - omegaVdotk|0|etan|B|odd
+    - omegaVdotk|0|etan|K|even
+    - omegaVdotk|0|etan|K|odd
+    - omegaVdotk|0|etatau|C|even
+    - omegaVdotk|0|etatau|C|odd
+    - omegaVdotk|0|etatau|B|even
+    - omegaVdotk|0|etatau|B|odd
+    - omegaVdotk|0|etatau|K|even
+    - omegaVdotk|0|etatau|K|odd
+    - omegaVdotk|0|ntau|C|even
+    - omegaVdotk|0|ntau|C|odd
+    - omegaVdotk|0|ntau|B|even
+    - omegaVdotk|0|ntau|B|odd
+    - omegaVdotk|0|ntau|K|even
+    - omegaVdotk|0|ntau|K|odd
+    - omegaVdotk|0|[etan]|C|even
+    - omegaVdotk|0|[etan]|C|odd
+    - omegaVdotk|0|[etan]|B|even
+    - omegaVdotk|0|[etan]|B|odd
+    - omegaVdotk|0|[etan]|K|even
+    - omegaVdotk|0|[etan]|K|odd
+    - omegaVdotk|0|[etatau]|C|even
+    - omegaVdotk|0|[etatau]|C|odd
+    - omegaVdotk|0|[etatau]|B|even
+    - omegaVdotk|0|[etatau]|B|odd
+    - omegaVdotk|0|[etatau]|K|even
+    - omegaVdotk|0|[etatau]|K|odd
+    - omegaVdotk|0|[ntau]|C|even
+    - omegaVdotk|0|[ntau]|C|odd
+    - omegaVdotk|0|[ntau]|B|even
+    - omegaVdotk|0|[ntau]|B|odd
+    - omegaVdotk|0|[ntau]|K|even
+    - omegaVdotk|0|[ntau]|K|odd
+    - omegaVdotk|1|etaeta|C|even
+    - omegaVdotk|1|etaeta|C|odd
+    - omegaVdotk|1|etaeta|B|even
+    - omegaVdotk|1|etaeta|B|odd
+    - omegaVdotk|1|etaeta|K|even
+    - omegaVdotk|1|etaeta|K|odd
+    - omegaVdotk|1|nn|C|even
+    - omegaVdotk|1|nn|C|odd
+    - omegaVdotk|1|nn|B|even
+    - omegaVdotk|1|nn|B|odd
+    - omegaVdotk|1|nn|K|even
+    - omegaVdotk|1|nn|K|odd
+    - omegaVdotk|1|tautau|C|even
+    - omegaVdotk|1|tautau|C|odd
+    - omegaVdotk|1|tautau|B|even
+    - omegaVdotk|1|tautau|B|odd
+    - omegaVdotk|1|tautau|K|even
+    - omegaVdotk|1|tautau|K|odd
+    - omegaVdotk|1|etan|C|even
+    - omegaVdotk|1|etan|C|odd
+    - omegaVdotk|1|etan|B|even
+    - omegaVdotk|1|etan|B|odd
+    - omegaVdotk|1|etan|K|even
+    - omegaVdotk|1|etan|K|odd
+    - omegaVdotk|1|etatau|C|even
+    - omegaVdotk|1|etatau|C|odd
+    - omegaVdotk|1|etatau|B|even
+    - omegaVdotk|1|etatau|B|odd
+    - omegaVdotk|1|etatau|K|even
+    - omegaVdotk|1|etatau|K|odd
+    - omegaVdotk|1|ntau|C|even
+    - omegaVdotk|1|ntau|C|odd
+    - omegaVdotk|1|ntau|B|even
+    - omegaVdotk|1|ntau|B|odd
+    - omegaVdotk|1|ntau|K|even
+    - omegaVdotk|1|ntau|K|odd
+    - omegaVdotk|1|[etan]|C|even
+    - omegaVdotk|1|[etan]|C|odd
+    - omegaVdotk|1|[etan]|B|even
+    - omegaVdotk|1|[etan]|B|odd
+    - omegaVdotk|1|[etan]|K|even
+    - omegaVdotk|1|[etan]|K|odd
+    - omegaVdotk|1|[etatau]|C|even
+    - omegaVdotk|1|[etatau]|C|odd
+    - omegaVdotk|1|[etatau]|B|even
+    - omegaVdotk|1|[etatau]|B|odd
+    - omegaVdotk|1|[etatau]|K|even
+    - omegaVdotk|1|[etatau]|K|odd
+    - omegaVdotk|1|[ntau]|C|even
+    - omegaVdotk|1|[ntau]|C|odd
+    - omegaVdotk|1|[ntau]|B|even
+    - omegaVdotk|1|[ntau]|B|odd
+    - omegaVdotk|1|[ntau]|K|even
+    - omegaVdotk|1|[ntau]|K|odd
+    hermitian_ids:
+    - iVdotk|0|etaeta|B|even
+    - iVdotk|0|etaeta|B|odd
+    - iVdotk|0|nn|B|even
+    - iVdotk|0|nn|B|odd
+    - iVdotk|0|tautau|B|even
+    - iVdotk|0|tautau|B|odd
+    - iVdotk|0|etan|B|even
+    - iVdotk|0|etan|B|odd
+    - iVdotk|0|etatau|B|even
+    - iVdotk|0|etatau|B|odd
+    - iVdotk|0|ntau|B|even
+    - iVdotk|0|ntau|B|odd
+    - iVdotk|0|[etan]|C|even
+    - iVdotk|0|[etan]|C|odd
+    - iVdotk|0|[etan]|K|even
+    - iVdotk|0|[etan]|K|odd
+    - iVdotk|0|[etatau]|C|even
+    - iVdotk|0|[etatau]|C|odd
+    - iVdotk|0|[etatau]|K|even
+    - iVdotk|0|[etatau]|K|odd
+    - iVdotk|0|[ntau]|C|even
+    - iVdotk|0|[ntau]|C|odd
+    - iVdotk|0|[ntau]|K|even
+    - iVdotk|0|[ntau]|K|odd
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|etaeta|B|odd
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|nn|B|odd
+    - iVdotk|1|tautau|B|even
+    - iVdotk|1|tautau|B|odd
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etan|B|odd
+    - iVdotk|1|etatau|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|ntau|B|even
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|[etan]|C|even
+    - iVdotk|1|[etan]|C|odd
+    - iVdotk|1|[etan]|K|even
+    - iVdotk|1|[etan]|K|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[etatau]|C|odd
+    - iVdotk|1|[etatau]|K|even
+    - iVdotk|1|[etatau]|K|odd
+    - iVdotk|1|[ntau]|C|even
+    - iVdotk|1|[ntau]|C|odd
+    - iVdotk|1|[ntau]|K|even
+    - iVdotk|1|[ntau]|K|odd
+    - omegaVdotk|0|etaeta|C|even
+    - omegaVdotk|0|etaeta|C|odd
+    - omegaVdotk|0|etaeta|K|even
+    - omegaVdotk|0|etaeta|K|odd
+    - omegaVdotk|0|nn|C|even
+    - omegaVdotk|0|nn|C|odd
+    - omegaVdotk|0|nn|K|even
+    - omegaVdotk|0|nn|K|odd
+    - omegaVdotk|0|tautau|C|even
+    - omegaVdotk|0|tautau|C|odd
+    - omegaVdotk|0|tautau|K|even
+    - omegaVdotk|0|tautau|K|odd
+    - omegaVdotk|0|etan|C|even
+    - omegaVdotk|0|etan|C|odd
+    - omegaVdotk|0|etan|K|even
+    - omegaVdotk|0|etan|K|odd
+    - omegaVdotk|0|etatau|C|even
+    - omegaVdotk|0|etatau|C|odd
+    - omegaVdotk|0|etatau|K|even
+    - omegaVdotk|0|etatau|K|odd
+    - omegaVdotk|0|ntau|C|even
+    - omegaVdotk|0|ntau|C|odd
+    - omegaVdotk|0|ntau|K|even
+    - omegaVdotk|0|ntau|K|odd
+    - omegaVdotk|0|[etan]|B|even
+    - omegaVdotk|0|[etan]|B|odd
+    - omegaVdotk|0|[etatau]|B|even
+    - omegaVdotk|0|[etatau]|B|odd
+    - omegaVdotk|0|[ntau]|B|even
+    - omegaVdotk|0|[ntau]|B|odd
+    - omegaVdotk|1|etaeta|C|even
+    - omegaVdotk|1|etaeta|C|odd
+    - omegaVdotk|1|etaeta|K|even
+    - omegaVdotk|1|etaeta|K|odd
+    - omegaVdotk|1|nn|C|even
+    - omegaVdotk|1|nn|C|odd
+    - omegaVdotk|1|nn|K|even
+    - omegaVdotk|1|nn|K|odd
+    - omegaVdotk|1|tautau|C|even
+    - omegaVdotk|1|tautau|C|odd
+    - omegaVdotk|1|tautau|K|even
+    - omegaVdotk|1|tautau|K|odd
+    - omegaVdotk|1|etan|C|even
+    - omegaVdotk|1|etan|C|odd
+    - omegaVdotk|1|etan|K|even
+    - omegaVdotk|1|etan|K|odd
+    - omegaVdotk|1|etatau|C|even
+    - omegaVdotk|1|etatau|C|odd
+    - omegaVdotk|1|etatau|K|even
+    - omegaVdotk|1|etatau|K|odd
+    - omegaVdotk|1|ntau|C|even
+    - omegaVdotk|1|ntau|C|odd
+    - omegaVdotk|1|ntau|K|even
+    - omegaVdotk|1|ntau|K|odd
+    - omegaVdotk|1|[etan]|B|even
+    - omegaVdotk|1|[etan]|B|odd
+    - omegaVdotk|1|[etatau]|B|even
+    - omegaVdotk|1|[etatau]|B|odd
+    - omegaVdotk|1|[ntau]|B|even
+    - omegaVdotk|1|[ntau]|B|odd
+    physical_ids:
+    - iVdotk|0|etaeta|B|odd
+    - iVdotk|0|nn|B|odd
+    - iVdotk|0|tautau|B|odd
+    - iVdotk|0|etan|B|odd
+    - iVdotk|0|etatau|B|even
+    - iVdotk|0|ntau|B|even
+    - iVdotk|0|[etan]|C|even
+    - iVdotk|0|[etan]|K|even
+    - iVdotk|0|[etatau]|C|odd
+    - iVdotk|0|[etatau]|K|odd
+    - iVdotk|0|[ntau]|C|odd
+    - iVdotk|0|[ntau]|K|odd
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|tautau|B|even
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|[etan]|C|odd
+    - iVdotk|1|[etan]|K|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[etatau]|K|even
+    - iVdotk|1|[ntau]|C|even
+    - iVdotk|1|[ntau]|K|even
+    - omegaVdotk|0|etaeta|C|even
+    - omegaVdotk|0|etaeta|K|even
+    - omegaVdotk|0|nn|C|even
+    - omegaVdotk|0|nn|K|even
+    - omegaVdotk|0|tautau|C|even
+    - omegaVdotk|0|tautau|K|even
+    - omegaVdotk|0|etan|C|even
+    - omegaVdotk|0|etan|K|even
+    - omegaVdotk|0|etatau|C|odd
+    - omegaVdotk|0|etatau|K|odd
+    - omegaVdotk|0|ntau|C|odd
+    - omegaVdotk|0|ntau|K|odd
+    - omegaVdotk|0|[etan]|B|odd
+    - omegaVdotk|0|[etatau]|B|even
+    - omegaVdotk|0|[ntau]|B|even
+    - omegaVdotk|1|etaeta|C|odd
+    - omegaVdotk|1|etaeta|K|odd
+    - omegaVdotk|1|nn|C|odd
+    - omegaVdotk|1|nn|K|odd
+    - omegaVdotk|1|tautau|C|odd
+    - omegaVdotk|1|tautau|K|odd
+    - omegaVdotk|1|etan|C|odd
+    - omegaVdotk|1|etan|K|odd
+    - omegaVdotk|1|etatau|C|even
+    - omegaVdotk|1|etatau|K|even
+    - omegaVdotk|1|ntau|C|even
+    - omegaVdotk|1|ntau|K|even
+    - omegaVdotk|1|[etan]|B|even
+    - omegaVdotk|1|[etatau]|B|odd
+    - omegaVdotk|1|[ntau]|B|odd
+    a0_ids: &id004
+    - iVdotk|0|etaeta|B|odd
+    - iVdotk|0|nn|B|odd
+    - iVdotk|0|tautau|B|odd
+    - iVdotk|0|etan|B|odd
+    - iVdotk|0|etatau|B|even
+    - iVdotk|0|ntau|B|even
+    - iVdotk|0|[etan]|C|even
+    - iVdotk|0|[etan]|K|even
+    - iVdotk|0|[etatau]|C|odd
+    - iVdotk|0|[etatau]|K|odd
+    - iVdotk|0|[ntau]|C|odd
+    - iVdotk|0|[ntau]|K|odd
+    - omegaVdotk|0|etaeta|C|even
+    - omegaVdotk|0|etaeta|K|even
+    - omegaVdotk|0|nn|C|even
+    - omegaVdotk|0|nn|K|even
+    - omegaVdotk|0|tautau|C|even
+    - omegaVdotk|0|tautau|K|even
+    - omegaVdotk|0|etan|C|even
+    - omegaVdotk|0|etan|K|even
+    - omegaVdotk|0|etatau|C|odd
+    - omegaVdotk|0|etatau|K|odd
+    - omegaVdotk|0|ntau|C|odd
+    - omegaVdotk|0|ntau|K|odd
+    - omegaVdotk|0|[etan]|B|odd
+    - omegaVdotk|0|[etatau]|B|even
+    - omegaVdotk|0|[ntau]|B|even
+    a1_ids: &id005
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|tautau|B|even
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|[etan]|C|odd
+    - iVdotk|1|[etan]|K|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[etatau]|K|even
+    - iVdotk|1|[ntau]|C|even
+    - iVdotk|1|[ntau]|K|even
+    - omegaVdotk|1|etaeta|C|odd
+    - omegaVdotk|1|etaeta|K|odd
+    - omegaVdotk|1|nn|C|odd
+    - omegaVdotk|1|nn|K|odd
+    - omegaVdotk|1|tautau|C|odd
+    - omegaVdotk|1|tautau|K|odd
+    - omegaVdotk|1|etan|C|odd
+    - omegaVdotk|1|etan|K|odd
+    - omegaVdotk|1|etatau|C|even
+    - omegaVdotk|1|etatau|K|even
+    - omegaVdotk|1|ntau|C|even
+    - omegaVdotk|1|ntau|K|even
+    - omegaVdotk|1|[etan]|B|even
+    - omegaVdotk|1|[etatau]|B|odd
+    - omegaVdotk|1|[ntau]|B|odd
+    adjoint_table: &id002
+    - id: iVdotk|0|etaeta|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etaeta|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etaeta|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etaeta|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etaeta|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etaeta|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|nn|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|nn|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|nn|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|nn|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|nn|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|nn|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|tautau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|tautau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|tautau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|tautau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|tautau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|tautau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etan|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etan|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etan|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etan|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etan|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etan|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etatau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etatau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etatau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etatau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|etatau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|etatau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|ntau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|ntau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|ntau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|ntau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|ntau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|ntau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[etan]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etan]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etan]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[etan]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[etan]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etan]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etatau]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etatau]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etatau]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[etatau]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[etatau]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[etatau]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[ntau]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[ntau]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[ntau]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[ntau]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|0|[ntau]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|0|[ntau]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etaeta|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etaeta|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etaeta|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etaeta|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etaeta|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etaeta|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|nn|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|nn|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|nn|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|nn|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|nn|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|nn|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|tautau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|tautau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|tautau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|tautau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|tautau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|tautau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etan|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etan|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etan|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etan|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etan|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etan|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etatau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etatau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etatau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etatau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|etatau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|etatau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|ntau|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|ntau|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|ntau|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|ntau|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|ntau|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|ntau|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[etan]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etan]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etan]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[etan]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[etan]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etan]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etatau]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etatau]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etatau]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[etatau]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[etatau]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[etatau]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[ntau]|C|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[ntau]|C|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[ntau]|B|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[ntau]|B|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: iVdotk|1|[ntau]|K|even
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: iVdotk|1|[ntau]|K|odd
+      X_adjoint_sign: -1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etaeta|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etaeta|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etaeta|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etaeta|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etaeta|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etaeta|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|nn|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|nn|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|nn|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|nn|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|nn|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|nn|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|tautau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|tautau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|tautau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|tautau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|tautau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|tautau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etan|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etan|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etan|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etan|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etan|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etan|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etatau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etatau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etatau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etatau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|etatau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|etatau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|ntau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|ntau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|ntau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|ntau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|ntau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|ntau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[etan]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etan]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etan]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[etan]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[etan]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etan]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etatau]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etatau]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etatau]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[etatau]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[etatau]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[etatau]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[ntau]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[ntau]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[ntau]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[ntau]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|0|[ntau]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|0|[ntau]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etaeta|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etaeta|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etaeta|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etaeta|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etaeta|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etaeta|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|nn|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|nn|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|nn|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|nn|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|nn|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|nn|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|tautau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|tautau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|tautau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|tautau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|tautau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|tautau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etan|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etan|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etan|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etan|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etan|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etan|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etatau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etatau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etatau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etatau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|etatau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|etatau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|ntau|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|ntau|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|ntau|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|ntau|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: -1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|ntau|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|ntau|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: 1
+      w_module_adjoint_sign: 1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[etan]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etan]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etan]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[etan]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[etan]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etan]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etatau]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etatau]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etatau]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[etatau]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[etatau]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[etatau]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[ntau]|C|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[ntau]|C|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[ntau]|B|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[ntau]|B|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: -1
+      adjoint_product: 1
+      hermitian_retained: true
+    - id: omegaVdotk|1|[ntau]|K|even
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    - id: omegaVdotk|1|[ntau]|K|odd
+      X_adjoint_sign: 1
+      M_adjoint_sign: -1
+      w_module_adjoint_sign: 1
+      adjoint_product: -1
+      hermitian_retained: false
+    parity_table: &id003
+    - id: iVdotk|0|etaeta|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|etaeta|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|nn|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|nn|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|tautau|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|tautau|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|etan|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|etan|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|etatau|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|etatau|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|ntau|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|ntau|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[etan]|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|[etan]|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[etan]|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|[etan]|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[etatau]|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[etatau]|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|[etatau]|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[etatau]|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|[ntau]|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[ntau]|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|0|[ntau]|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|0|[ntau]|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: iVdotk|1|etaeta|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|etaeta|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|nn|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|nn|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|tautau|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|tautau|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|etan|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|etan|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|etatau|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|etatau|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|ntau|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|ntau|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[etan]|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|[etan]|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[etan]|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|[etan]|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[etatau]|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[etatau]|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|[etatau]|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[etatau]|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|[ntau]|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[ntau]|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: iVdotk|1|[ntau]|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: iVdotk|1|[ntau]|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etaeta|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etaeta|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etaeta|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etaeta|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|nn|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|nn|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|nn|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|nn|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|tautau|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|tautau|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|tautau|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|tautau|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etan|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etan|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etan|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etan|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etatau|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etatau|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etatau|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|etatau|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|ntau|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|ntau|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|ntau|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|ntau|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[etan]|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[etan]|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[etatau]|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[etatau]|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[ntau]|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: parity-preserving
+    - id: omegaVdotk|0|[ntau]|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etaeta|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etaeta|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etaeta|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etaeta|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|nn|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|nn|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|nn|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|nn|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|tautau|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|tautau|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|tautau|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|tautau|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etan|C|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etan|C|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etan|K|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etan|K|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etatau|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etatau|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|etatau|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|etatau|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|ntau|C|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|ntau|C|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|ntau|K|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|ntau|K|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|[etan]|B|even
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|[etan]|B|odd
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|[etatau]|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|[etatau]|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    - id: omegaVdotk|1|[ntau]|B|even
+      pi_P_rule: -1
+      pi_P_conjugation: -1
+      parity_methods_agree: true
+      P_w_invariant: false
+      a_class: parity-preserving
+    - id: omegaVdotk|1|[ntau]|B|odd
+      pi_P_rule: 1
+      pi_P_conjugation: 1
+      parity_methods_agree: true
+      P_w_invariant: true
+      a_class: combined-parity-mixing
+    witness_status_table:
+    - slot_id: iVdotk|1|etaeta|B|even
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id006
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+      finite_frequency_nonzero_pairs: &id007
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: iVdotk|1|nn|B|even
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id008
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+      finite_frequency_nonzero_pairs: &id009
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: iVdotk|1|tautau|B|even
+      witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+      static_nonzero_pairs: &id010 []
+      finite_frequency_nonzero_pairs: &id011 []
+    - slot_id: iVdotk|1|etan|B|even
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id012
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+      finite_frequency_nonzero_pairs: &id013
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: iVdotk|1|etatau|B|odd
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id014
+      - f0_to_tau
+      finite_frequency_nonzero_pairs: &id015
+      - f0_to_tau
+    - slot_id: iVdotk|1|ntau|B|odd
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id016
+      - f0_to_tau
+      finite_frequency_nonzero_pairs: &id017
+      - f0_to_tau
+    - slot_id: iVdotk|1|[etan]|C|odd
+      witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+      static_nonzero_pairs: &id018 []
+      finite_frequency_nonzero_pairs: &id019 []
+    - slot_id: iVdotk|1|[etan]|K|odd
+      witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+      static_nonzero_pairs: &id020 []
+      finite_frequency_nonzero_pairs: &id021 []
+    - slot_id: iVdotk|1|[etatau]|C|even
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id022
+      - f0_to_tau
+      finite_frequency_nonzero_pairs: &id023
+      - f0_to_tau
+    - slot_id: iVdotk|1|[etatau]|K|even
+      witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+      static_nonzero_pairs: &id024 []
+      finite_frequency_nonzero_pairs: &id025 []
+    - slot_id: iVdotk|1|[ntau]|C|even
+      witness_status: NONZERO_STATIC_WITNESS
+      static_nonzero_pairs: &id026
+      - f0_to_tau
+      finite_frequency_nonzero_pairs: &id027
+      - f0_to_tau
+    - slot_id: iVdotk|1|[ntau]|K|even
+      witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+      static_nonzero_pairs: &id028 []
+      finite_frequency_nonzero_pairs: &id029 []
+    - slot_id: omegaVdotk|1|etaeta|C|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id030 []
+      finite_frequency_nonzero_pairs: &id031
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|etaeta|K|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id032 []
+      finite_frequency_nonzero_pairs: &id033
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|nn|C|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id034 []
+      finite_frequency_nonzero_pairs: &id035
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|nn|K|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id036 []
+      finite_frequency_nonzero_pairs: &id037
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|tautau|C|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id038 []
+      finite_frequency_nonzero_pairs: &id039 []
+    - slot_id: omegaVdotk|1|tautau|K|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id040 []
+      finite_frequency_nonzero_pairs: &id041 []
+    - slot_id: omegaVdotk|1|etan|C|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id042 []
+      finite_frequency_nonzero_pairs: &id043
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|etan|K|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id044 []
+      finite_frequency_nonzero_pairs: &id045
+      - f0_to_wall_partner
+      - wall_partner_to_f0
+    - slot_id: omegaVdotk|1|etatau|C|even
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id046 []
+      finite_frequency_nonzero_pairs: &id047
+      - f0_to_tau
+    - slot_id: omegaVdotk|1|etatau|K|even
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id048 []
+      finite_frequency_nonzero_pairs: &id049 []
+    - slot_id: omegaVdotk|1|ntau|C|even
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id050 []
+      finite_frequency_nonzero_pairs: &id051
+      - f0_to_tau
+    - slot_id: omegaVdotk|1|ntau|K|even
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id052 []
+      finite_frequency_nonzero_pairs: &id053 []
+    - slot_id: omegaVdotk|1|[etan]|B|even
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id054 []
+      finite_frequency_nonzero_pairs: &id055 []
+    - slot_id: omegaVdotk|1|[etatau]|B|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id056 []
+      finite_frequency_nonzero_pairs: &id057
+      - f0_to_tau
+    - slot_id: omegaVdotk|1|[ntau]|B|odd
+      witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+      static_nonzero_pairs: &id058 []
+      finite_frequency_nonzero_pairs: &id059
+      - f0_to_tau
+    control_verdicts:
+      neutral_moving_throat: CLEAN_PARITY_PRESERVING
+      charged_moving_throat: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+      injected_C0: PASS_CONDITIONAL_ON_NO_OPERATOR_PARITY_MIXING
+      C0_removed_restores_a1: A1_IDS_RESTORED
+      injected_extra_odd_spurion: REJECT_ILLEGAL_INPUT
+      deleted_operator: BASIS_INCOMPLETE
+      smuggled_V_i_n_i: REJECT_UNDECLARED_SPURION
+      smuggled_epsilon_ijk_V_i_k_j: REJECT_UNDECLARED_SPURION
+      parity_two_ways: PARITY_TWO_WAYS_AGREE
+      V_equals_zero: CLEAN_STATIC_SPLIT
+    checked_expression_count: 178
+    expr_digest: 6471975187bc0b7b86df93f499a73d79932ff316e40e9633506d2bd903ca4967
+  sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_stage3_operator_parity_sympy.json
+  mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_stage3_operator_parity_mathematica.json
+imports:
+  checks:
+    pathA_38_fields:
+      expected:
+      - eta
+      - n
+      - tau
+      actual:
+      - eta
+      - n
+      - tau
+      match: true
+    pathA_38_Sigma:
+      expected: diag(-1,-1,+1)
+      actual:
+      - - -1
+        - 0
+        - 0
+      - - 0
+        - -1
+        - 0
+      - - 0
+        - 0
+        - 1
+      match: true
+    pathA_38_modes:
+      expected:
+      - translation_goldstone
+      - wall_shape_partner
+      - relative_lock_partner
+      - tau_source_tilt
+      actual:
+      - translation_goldstone
+      - wall_shape_partner
+      - relative_lock_partner
+      - tau_source_tilt
+      match: true
+    pathA_38_engine:
+      expected: ENGINE_AGREE
+      actual: ENGINE_AGREE
+      match: true
+    pathA_39_stage0_plus_1:
+      expected: FAIL_OBSERVABLE_SCALAR_ADMIXTURE with ENGINE_AGREE
+      actual: report text
+      match: true
+    pathA_39_stage2:
+      expected: MAGNETIC_FORCE_DERIVED with ENGINE_AGREE
+      actual: report text
+      match: true
+  imported:
+    operator: O=-partial_w(K_w partial_w)+M2(w), K_w=K_parallel=I_3
+    Sigma: diag(-1,-1,+1)
+    f0: '[sech(w/ell)^2/ell, sech(w/ell)^2/ell, 0], P_w odd'
+    wall_partner: '[sech(w/ell)*tanh(w/ell), sech(w/ell)*tanh(w/ell), 0], P_w even'
+    tau: '[0,0,1], P_w even'
+    relative_lock: '[sech(w/ell)^2/ell,-sech(w/ell)^2/ell,0], P_w odd; imported but not targeted'
+    pathA_39_stage0_plus_1: FAIL_OBSERVABLE_SCALAR_ADMIXTURE; source-level split not un-earned
+    pathA_39_stage2: MAGNETIC_FORCE_DERIVED; operator motion coefficient remains sim-deferred
+  declared:
+    external_factors:
+    - iVdotk
+    - omegaVdotk
+    charge_spurion: s is P_w odd; a in {0,1} at leading O(s^1)
+    coefficients: one free even or odd coefficient function per canonical slot
+    forbidden_spurions:
+    - V_i n_i without a brane vector
+    - epsilon_ijk V_i k_j without an axial vector
+  sim_deferred: &id067
+  - realized nonlinear-throat O(V) coefficient
+  - finite-mouth coefficient profile and compactness
+  - contamination magnitude hierarchy
+grammar:
+  fields:
+  - eta
+  - n
+  - tau
+  field_sigma:
+    eta: -1
+    n: -1
+    tau: 1
+  external_factors:
+  - iVdotk
+  - omegaVdotk
+  a_values:
+  - 0
+  - 1
+  matrix_basis:
+  - name: etaeta
+    kind: symmetric
+    sigma_Asigma_B: 1
+    adjoint_sign: 1
+  - name: nn
+    kind: symmetric
+    sigma_Asigma_B: 1
+    adjoint_sign: 1
+  - name: tautau
+    kind: symmetric
+    sigma_Asigma_B: 1
+    adjoint_sign: 1
+  - name: etan
+    kind: symmetric
+    sigma_Asigma_B: 1
+    adjoint_sign: 1
+  - name: etatau
+    kind: symmetric
+    sigma_Asigma_B: -1
+    adjoint_sign: 1
+  - name: ntau
+    kind: symmetric
+    sigma_Asigma_B: -1
+    adjoint_sign: 1
+  - name: '[etan]'
+    kind: antisymmetric
+    sigma_Asigma_B: 1
+    adjoint_sign: -1
+  - name: '[etatau]'
+    kind: antisymmetric
+    sigma_Asigma_B: -1
+    adjoint_sign: -1
+  - name: '[ntau]'
+    kind: antisymmetric
+    sigma_Asigma_B: -1
+    adjoint_sign: -1
+  coeff_types:
+    C:
+      N_w: 0
+      adjoint_sign: 1
+      module: C(w)
+    B:
+      N_w: 1
+      adjoint_sign: -1
+      module: A_B=1/2[B D_w + D_w B]
+    K:
+      N_w: 2
+      adjoint_sign: 1
+      module: -D_w K D_w
+  p_f_values:
+    even: 1
+    odd: -1
+  expected_raw_count: 216
+manifest:
+  summary: *id001
+  raw_table:
+  - id: iVdotk|0|etaeta|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etaeta|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etaeta|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etaeta|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etaeta|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etaeta|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|nn|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|nn|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|nn|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|nn|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|nn|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|nn|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|tautau|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|tautau|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|tautau|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|tautau|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|tautau|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|tautau|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etan|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etan|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etan|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etan|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etan|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etan|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etatau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etatau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etatau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etatau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|etatau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|etatau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|ntau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|ntau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|ntau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|ntau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|ntau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|0|ntau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etan]|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etan]|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etan]|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etan]|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etan]|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etan]|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etatau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etatau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etatau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etatau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[etatau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[etatau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[ntau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[ntau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[ntau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[ntau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|0|[ntau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|0|[ntau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etaeta|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etaeta|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etaeta|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etaeta|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etaeta|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etaeta|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|nn|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|nn|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|nn|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|nn|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|nn|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|nn|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|tautau|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|tautau|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|tautau|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|tautau|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|tautau|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|tautau|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etan|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etan|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etan|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etan|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etan|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etan|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etatau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etatau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etatau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etatau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|etatau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|etatau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|ntau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|ntau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|ntau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|ntau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|ntau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: iVdotk|1|ntau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etan]|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etan]|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etan]|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etan]|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etan]|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etan]|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etatau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etatau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etatau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etatau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[etatau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[etatau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[ntau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[ntau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[ntau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[ntau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: iVdotk|1|[ntau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: iVdotk|1|[ntau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etaeta|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etaeta|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etaeta|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etaeta|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etaeta|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etaeta|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|nn|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|nn|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|nn|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|nn|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|nn|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|nn|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|tautau|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|tautau|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|tautau|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|tautau|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|tautau|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|tautau|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etan|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etan|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etan|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etan|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etan|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etan|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etatau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etatau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etatau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etatau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|etatau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|etatau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|ntau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|ntau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|ntau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|ntau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|ntau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|ntau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etan]|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etan]|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etan]|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etan]|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etan]|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etan]|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etatau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etatau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etatau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etatau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[etatau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[etatau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[ntau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[ntau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[ntau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[ntau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|0|[ntau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|0|[ntau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etaeta|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etaeta|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etaeta|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etaeta|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etaeta|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etaeta|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|nn|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|nn|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|nn|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|nn|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|nn|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|nn|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|tautau|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|tautau|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|tautau|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|tautau|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|tautau|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|tautau|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etan|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etan|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etan|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etan|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etan|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etan|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etatau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etatau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etatau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etatau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|etatau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|etatau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|ntau|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|ntau|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|ntau|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|ntau|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|ntau|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|ntau|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etan]|C|even
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etan]|C|odd
+    sigma_Asigma_B: 1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etan]|B|even
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etan]|B|odd
+    sigma_Asigma_B: 1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etan]|K|even
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etan]|K|odd
+    sigma_Asigma_B: 1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etatau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etatau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etatau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etatau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[etatau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[etatau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[ntau]|C|even
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[ntau]|C|odd
+    sigma_Asigma_B: -1
+    N_w: 0
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[ntau]|B|even
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[ntau]|B|odd
+    sigma_Asigma_B: -1
+    N_w: 1
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  - id: omegaVdotk|1|[ntau]|K|even
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: even
+  - id: omegaVdotk|1|[ntau]|K|odd
+    sigma_Asigma_B: -1
+    N_w: 2
+    M_adjoint_class: anti-self-adjoint
+    p_f: odd
+  raw_ids:
+  - iVdotk|0|etaeta|C|even
+  - iVdotk|0|etaeta|C|odd
+  - iVdotk|0|etaeta|B|even
+  - iVdotk|0|etaeta|B|odd
+  - iVdotk|0|etaeta|K|even
+  - iVdotk|0|etaeta|K|odd
+  - iVdotk|0|nn|C|even
+  - iVdotk|0|nn|C|odd
+  - iVdotk|0|nn|B|even
+  - iVdotk|0|nn|B|odd
+  - iVdotk|0|nn|K|even
+  - iVdotk|0|nn|K|odd
+  - iVdotk|0|tautau|C|even
+  - iVdotk|0|tautau|C|odd
+  - iVdotk|0|tautau|B|even
+  - iVdotk|0|tautau|B|odd
+  - iVdotk|0|tautau|K|even
+  - iVdotk|0|tautau|K|odd
+  - iVdotk|0|etan|C|even
+  - iVdotk|0|etan|C|odd
+  - iVdotk|0|etan|B|even
+  - iVdotk|0|etan|B|odd
+  - iVdotk|0|etan|K|even
+  - iVdotk|0|etan|K|odd
+  - iVdotk|0|etatau|C|even
+  - iVdotk|0|etatau|C|odd
+  - iVdotk|0|etatau|B|even
+  - iVdotk|0|etatau|B|odd
+  - iVdotk|0|etatau|K|even
+  - iVdotk|0|etatau|K|odd
+  - iVdotk|0|ntau|C|even
+  - iVdotk|0|ntau|C|odd
+  - iVdotk|0|ntau|B|even
+  - iVdotk|0|ntau|B|odd
+  - iVdotk|0|ntau|K|even
+  - iVdotk|0|ntau|K|odd
+  - iVdotk|0|[etan]|C|even
+  - iVdotk|0|[etan]|C|odd
+  - iVdotk|0|[etan]|B|even
+  - iVdotk|0|[etan]|B|odd
+  - iVdotk|0|[etan]|K|even
+  - iVdotk|0|[etan]|K|odd
+  - iVdotk|0|[etatau]|C|even
+  - iVdotk|0|[etatau]|C|odd
+  - iVdotk|0|[etatau]|B|even
+  - iVdotk|0|[etatau]|B|odd
+  - iVdotk|0|[etatau]|K|even
+  - iVdotk|0|[etatau]|K|odd
+  - iVdotk|0|[ntau]|C|even
+  - iVdotk|0|[ntau]|C|odd
+  - iVdotk|0|[ntau]|B|even
+  - iVdotk|0|[ntau]|B|odd
+  - iVdotk|0|[ntau]|K|even
+  - iVdotk|0|[ntau]|K|odd
+  - iVdotk|1|etaeta|C|even
+  - iVdotk|1|etaeta|C|odd
+  - iVdotk|1|etaeta|B|even
+  - iVdotk|1|etaeta|B|odd
+  - iVdotk|1|etaeta|K|even
+  - iVdotk|1|etaeta|K|odd
+  - iVdotk|1|nn|C|even
+  - iVdotk|1|nn|C|odd
+  - iVdotk|1|nn|B|even
+  - iVdotk|1|nn|B|odd
+  - iVdotk|1|nn|K|even
+  - iVdotk|1|nn|K|odd
+  - iVdotk|1|tautau|C|even
+  - iVdotk|1|tautau|C|odd
+  - iVdotk|1|tautau|B|even
+  - iVdotk|1|tautau|B|odd
+  - iVdotk|1|tautau|K|even
+  - iVdotk|1|tautau|K|odd
+  - iVdotk|1|etan|C|even
+  - iVdotk|1|etan|C|odd
+  - iVdotk|1|etan|B|even
+  - iVdotk|1|etan|B|odd
+  - iVdotk|1|etan|K|even
+  - iVdotk|1|etan|K|odd
+  - iVdotk|1|etatau|C|even
+  - iVdotk|1|etatau|C|odd
+  - iVdotk|1|etatau|B|even
+  - iVdotk|1|etatau|B|odd
+  - iVdotk|1|etatau|K|even
+  - iVdotk|1|etatau|K|odd
+  - iVdotk|1|ntau|C|even
+  - iVdotk|1|ntau|C|odd
+  - iVdotk|1|ntau|B|even
+  - iVdotk|1|ntau|B|odd
+  - iVdotk|1|ntau|K|even
+  - iVdotk|1|ntau|K|odd
+  - iVdotk|1|[etan]|C|even
+  - iVdotk|1|[etan]|C|odd
+  - iVdotk|1|[etan]|B|even
+  - iVdotk|1|[etan]|B|odd
+  - iVdotk|1|[etan]|K|even
+  - iVdotk|1|[etan]|K|odd
+  - iVdotk|1|[etatau]|C|even
+  - iVdotk|1|[etatau]|C|odd
+  - iVdotk|1|[etatau]|B|even
+  - iVdotk|1|[etatau]|B|odd
+  - iVdotk|1|[etatau]|K|even
+  - iVdotk|1|[etatau]|K|odd
+  - iVdotk|1|[ntau]|C|even
+  - iVdotk|1|[ntau]|C|odd
+  - iVdotk|1|[ntau]|B|even
+  - iVdotk|1|[ntau]|B|odd
+  - iVdotk|1|[ntau]|K|even
+  - iVdotk|1|[ntau]|K|odd
+  - omegaVdotk|0|etaeta|C|even
+  - omegaVdotk|0|etaeta|C|odd
+  - omegaVdotk|0|etaeta|B|even
+  - omegaVdotk|0|etaeta|B|odd
+  - omegaVdotk|0|etaeta|K|even
+  - omegaVdotk|0|etaeta|K|odd
+  - omegaVdotk|0|nn|C|even
+  - omegaVdotk|0|nn|C|odd
+  - omegaVdotk|0|nn|B|even
+  - omegaVdotk|0|nn|B|odd
+  - omegaVdotk|0|nn|K|even
+  - omegaVdotk|0|nn|K|odd
+  - omegaVdotk|0|tautau|C|even
+  - omegaVdotk|0|tautau|C|odd
+  - omegaVdotk|0|tautau|B|even
+  - omegaVdotk|0|tautau|B|odd
+  - omegaVdotk|0|tautau|K|even
+  - omegaVdotk|0|tautau|K|odd
+  - omegaVdotk|0|etan|C|even
+  - omegaVdotk|0|etan|C|odd
+  - omegaVdotk|0|etan|B|even
+  - omegaVdotk|0|etan|B|odd
+  - omegaVdotk|0|etan|K|even
+  - omegaVdotk|0|etan|K|odd
+  - omegaVdotk|0|etatau|C|even
+  - omegaVdotk|0|etatau|C|odd
+  - omegaVdotk|0|etatau|B|even
+  - omegaVdotk|0|etatau|B|odd
+  - omegaVdotk|0|etatau|K|even
+  - omegaVdotk|0|etatau|K|odd
+  - omegaVdotk|0|ntau|C|even
+  - omegaVdotk|0|ntau|C|odd
+  - omegaVdotk|0|ntau|B|even
+  - omegaVdotk|0|ntau|B|odd
+  - omegaVdotk|0|ntau|K|even
+  - omegaVdotk|0|ntau|K|odd
+  - omegaVdotk|0|[etan]|C|even
+  - omegaVdotk|0|[etan]|C|odd
+  - omegaVdotk|0|[etan]|B|even
+  - omegaVdotk|0|[etan]|B|odd
+  - omegaVdotk|0|[etan]|K|even
+  - omegaVdotk|0|[etan]|K|odd
+  - omegaVdotk|0|[etatau]|C|even
+  - omegaVdotk|0|[etatau]|C|odd
+  - omegaVdotk|0|[etatau]|B|even
+  - omegaVdotk|0|[etatau]|B|odd
+  - omegaVdotk|0|[etatau]|K|even
+  - omegaVdotk|0|[etatau]|K|odd
+  - omegaVdotk|0|[ntau]|C|even
+  - omegaVdotk|0|[ntau]|C|odd
+  - omegaVdotk|0|[ntau]|B|even
+  - omegaVdotk|0|[ntau]|B|odd
+  - omegaVdotk|0|[ntau]|K|even
+  - omegaVdotk|0|[ntau]|K|odd
+  - omegaVdotk|1|etaeta|C|even
+  - omegaVdotk|1|etaeta|C|odd
+  - omegaVdotk|1|etaeta|B|even
+  - omegaVdotk|1|etaeta|B|odd
+  - omegaVdotk|1|etaeta|K|even
+  - omegaVdotk|1|etaeta|K|odd
+  - omegaVdotk|1|nn|C|even
+  - omegaVdotk|1|nn|C|odd
+  - omegaVdotk|1|nn|B|even
+  - omegaVdotk|1|nn|B|odd
+  - omegaVdotk|1|nn|K|even
+  - omegaVdotk|1|nn|K|odd
+  - omegaVdotk|1|tautau|C|even
+  - omegaVdotk|1|tautau|C|odd
+  - omegaVdotk|1|tautau|B|even
+  - omegaVdotk|1|tautau|B|odd
+  - omegaVdotk|1|tautau|K|even
+  - omegaVdotk|1|tautau|K|odd
+  - omegaVdotk|1|etan|C|even
+  - omegaVdotk|1|etan|C|odd
+  - omegaVdotk|1|etan|B|even
+  - omegaVdotk|1|etan|B|odd
+  - omegaVdotk|1|etan|K|even
+  - omegaVdotk|1|etan|K|odd
+  - omegaVdotk|1|etatau|C|even
+  - omegaVdotk|1|etatau|C|odd
+  - omegaVdotk|1|etatau|B|even
+  - omegaVdotk|1|etatau|B|odd
+  - omegaVdotk|1|etatau|K|even
+  - omegaVdotk|1|etatau|K|odd
+  - omegaVdotk|1|ntau|C|even
+  - omegaVdotk|1|ntau|C|odd
+  - omegaVdotk|1|ntau|B|even
+  - omegaVdotk|1|ntau|B|odd
+  - omegaVdotk|1|ntau|K|even
+  - omegaVdotk|1|ntau|K|odd
+  - omegaVdotk|1|[etan]|C|even
+  - omegaVdotk|1|[etan]|C|odd
+  - omegaVdotk|1|[etan]|B|even
+  - omegaVdotk|1|[etan]|B|odd
+  - omegaVdotk|1|[etan]|K|even
+  - omegaVdotk|1|[etan]|K|odd
+  - omegaVdotk|1|[etatau]|C|even
+  - omegaVdotk|1|[etatau]|C|odd
+  - omegaVdotk|1|[etatau]|B|even
+  - omegaVdotk|1|[etatau]|B|odd
+  - omegaVdotk|1|[etatau]|K|even
+  - omegaVdotk|1|[etatau]|K|odd
+  - omegaVdotk|1|[ntau]|C|even
+  - omegaVdotk|1|[ntau]|C|odd
+  - omegaVdotk|1|[ntau]|B|even
+  - omegaVdotk|1|[ntau]|B|odd
+  - omegaVdotk|1|[ntau]|K|even
+  - omegaVdotk|1|[ntau]|K|odd
+  ibp_quotient:
+    policy: canonical C, A_B, and -D K D modules are already in slab-IBP normal form; no free-coefficient singleton slots merge
+    raw_class_count: 216
+    hermitian_class_count: 108
+    physical_class_count: 54
+adjoint_table: *id002
+parity_table: *id003
+physical_slots:
+  a0_parity_preserving_ids: *id004
+  a1_combined_parity_mixing_ids: *id005
+witnesses:
+  a1_mixing_slots:
+  - &id060
+    slot_id: iVdotk|1|etaeta|B|even
+    X: iVdotk
+    a: 1
+    M: etaeta
+    coeff_type: B
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=etaeta, module=B, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=etaeta, module=B, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=etaeta, module=B, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: 3*pi/(16*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(16*ell)
+    static_omega0_values:
+      f0_to_wall_partner: 3*pi/(16*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(16*ell)
+    static_nonzero_pairs: *id006
+    finite_frequency_nonzero_pairs: *id007
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id061
+    slot_id: iVdotk|1|nn|B|even
+    X: iVdotk
+    a: 1
+    M: nn
+    coeff_type: B
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=nn, module=B, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=nn, module=B, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=nn, module=B, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: 3*pi/(16*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(16*ell)
+    static_omega0_values:
+      f0_to_wall_partner: 3*pi/(16*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(16*ell)
+    static_nonzero_pairs: *id008
+    finite_frequency_nonzero_pairs: *id009
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: iVdotk|1|tautau|B|even
+    X: iVdotk
+    a: 1
+    M: tautau
+    coeff_type: B
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=tautau, module=B, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=tautau, module=B, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=tautau, module=B, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id010
+    finite_frequency_nonzero_pairs: *id011
+    witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id062
+    slot_id: iVdotk|1|etan|B|even
+    X: iVdotk
+    a: 1
+    M: etan
+    coeff_type: B
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=etan, module=B, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=etan, module=B, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=etan, module=B, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: 3*pi/(8*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(8*ell)
+    static_omega0_values:
+      f0_to_wall_partner: 3*pi/(8*ell)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -3*pi/(8*ell)
+    static_nonzero_pairs: *id012
+    finite_frequency_nonzero_pairs: *id013
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id063
+    slot_id: iVdotk|1|etatau|B|odd
+    X: iVdotk
+    a: 1
+    M: etatau
+    coeff_type: B
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=etatau, module=B, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=etatau, module=B, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=etatau, module=B, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id014
+    finite_frequency_nonzero_pairs: *id015
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id064
+    slot_id: iVdotk|1|ntau|B|odd
+    X: iVdotk
+    a: 1
+    M: ntau
+    coeff_type: B
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=ntau, module=B, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=ntau, module=B, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=ntau, module=B, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id016
+    finite_frequency_nonzero_pairs: *id017
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: iVdotk|1|[etan]|C|odd
+    X: iVdotk
+    a: 1
+    M: '[etan]'
+    coeff_type: C
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[etan], module=C, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[etan], module=C, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[etan], module=C, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id018
+    finite_frequency_nonzero_pairs: *id019
+    witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: iVdotk|1|[etan]|K|odd
+    X: iVdotk
+    a: 1
+    M: '[etan]'
+    coeff_type: K
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[etan], module=K, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[etan], module=K, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[etan], module=K, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id020
+    finite_frequency_nonzero_pairs: *id021
+    witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id065
+    slot_id: iVdotk|1|[etatau]|C|even
+    X: iVdotk
+    a: 1
+    M: '[etatau]'
+    coeff_type: C
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[etatau], module=C, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[etatau], module=C, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[etatau], module=C, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id022
+    finite_frequency_nonzero_pairs: *id023
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: iVdotk|1|[etatau]|K|even
+    X: iVdotk
+    a: 1
+    M: '[etatau]'
+    coeff_type: K
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[etatau], module=K, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[etatau], module=K, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[etatau], module=K, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id024
+    finite_frequency_nonzero_pairs: *id025
+    witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - &id066
+    slot_id: iVdotk|1|[ntau]|C|even
+    X: iVdotk
+    a: 1
+    M: '[ntau]'
+    coeff_type: C
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[ntau], module=C, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[ntau], module=C, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[ntau], module=C, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id026
+    finite_frequency_nonzero_pairs: *id027
+    witness_status: NONZERO_STATIC_WITNESS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: iVdotk|1|[ntau]|K|even
+    X: iVdotk
+    a: 1
+    M: '[ntau]'
+    coeff_type: K
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: iVdotk*s^1*Int[bra=f0, M=[ntau], module=K, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: iVdotk*s^1*Int[bra=f0, M=[ntau], module=K, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: iVdotk*s^1*Int[bra=wall_partner, M=[ntau], module=K, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id028
+    finite_frequency_nonzero_pairs: *id029
+    witness_status: STRUCTURAL_ZERO_FOR_IMPORTED_TARGETS
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etaeta|C|odd
+    X: omegaVdotk
+    a: 1
+    M: etaeta
+    coeff_type: C
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etaeta, module=C, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etaeta, module=C, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etaeta, module=C, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: pi/16
+      f0_to_tau: '0'
+      wall_partner_to_f0: pi/16
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id030
+    finite_frequency_nonzero_pairs: *id031
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etaeta|K|odd
+    X: omegaVdotk
+    a: 1
+    M: etaeta
+    coeff_type: K
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etaeta, module=K, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etaeta, module=K, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etaeta, module=K, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: -pi/(32*ell**2)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -pi/(32*ell**2)
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id032
+    finite_frequency_nonzero_pairs: *id033
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|nn|C|odd
+    X: omegaVdotk
+    a: 1
+    M: nn
+    coeff_type: C
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=nn, module=C, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=nn, module=C, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=nn, module=C, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: pi/16
+      f0_to_tau: '0'
+      wall_partner_to_f0: pi/16
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id034
+    finite_frequency_nonzero_pairs: *id035
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|nn|K|odd
+    X: omegaVdotk
+    a: 1
+    M: nn
+    coeff_type: K
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=nn, module=K, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=nn, module=K, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=nn, module=K, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: -pi/(32*ell**2)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -pi/(32*ell**2)
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id036
+    finite_frequency_nonzero_pairs: *id037
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|tautau|C|odd
+    X: omegaVdotk
+    a: 1
+    M: tautau
+    coeff_type: C
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=tautau, module=C, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=tautau, module=C, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=tautau, module=C, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id038
+    finite_frequency_nonzero_pairs: *id039
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|tautau|K|odd
+    X: omegaVdotk
+    a: 1
+    M: tautau
+    coeff_type: K
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=tautau, module=K, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=tautau, module=K, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=tautau, module=K, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id040
+    finite_frequency_nonzero_pairs: *id041
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etan|C|odd
+    X: omegaVdotk
+    a: 1
+    M: etan
+    coeff_type: C
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etan, module=C, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etan, module=C, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etan, module=C, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: pi/8
+      f0_to_tau: '0'
+      wall_partner_to_f0: pi/8
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id042
+    finite_frequency_nonzero_pairs: *id043
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etan|K|odd
+    X: omegaVdotk
+    a: 1
+    M: etan
+    coeff_type: K
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etan, module=K, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etan, module=K, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etan, module=K, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: -pi/(16*ell**2)
+      f0_to_tau: '0'
+      wall_partner_to_f0: -pi/(16*ell**2)
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id044
+    finite_frequency_nonzero_pairs: *id045
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etatau|C|even
+    X: omegaVdotk
+    a: 1
+    M: etatau
+    coeff_type: C
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etatau, module=C, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etatau, module=C, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etatau, module=C, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id046
+    finite_frequency_nonzero_pairs: *id047
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|etatau|K|even
+    X: omegaVdotk
+    a: 1
+    M: etatau
+    coeff_type: K
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=etatau, module=K, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=etatau, module=K, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=etatau, module=K, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id048
+    finite_frequency_nonzero_pairs: *id049
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|ntau|C|even
+    X: omegaVdotk
+    a: 1
+    M: ntau
+    coeff_type: C
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=ntau, module=C, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=ntau, module=C, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=ntau, module=C, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/3
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id050
+    finite_frequency_nonzero_pairs: *id051
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|ntau|K|even
+    X: omegaVdotk
+    a: 1
+    M: ntau
+    coeff_type: K
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=ntau, module=K, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=ntau, module=K, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=ntau, module=K, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id052
+    finite_frequency_nonzero_pairs: *id053
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|[etan]|B|even
+    X: omegaVdotk
+    a: 1
+    M: '[etan]'
+    coeff_type: B
+    p_f: even
+    witness_profile: sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=[etan], module=B, coeff_parity=even, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=[etan], module=B, coeff_parity=even, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=[etan], module=B, coeff_parity=even, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id054
+    finite_frequency_nonzero_pairs: *id055
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|[etatau]|B|odd
+    X: omegaVdotk
+    a: 1
+    M: '[etatau]'
+    coeff_type: B
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=[etatau], module=B, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=[etatau], module=B, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=[etatau], module=B, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id056
+    finite_frequency_nonzero_pairs: *id057
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  - slot_id: omegaVdotk|1|[ntau]|B|odd
+    X: omegaVdotk
+    a: 1
+    M: '[ntau]'
+    coeff_type: B
+    p_f: odd
+    witness_profile: tanh(w/ell)*sech(w/ell)^2
+    functionals:
+      f0_to_wall_partner: omegaVdotk*s^1*Int[bra=f0, M=[ntau], module=B, coeff_parity=odd, ket=wall_partner]
+      f0_to_tau: omegaVdotk*s^1*Int[bra=f0, M=[ntau], module=B, coeff_parity=odd, ket=tau]
+      wall_partner_to_f0: omegaVdotk*s^1*Int[bra=wall_partner, M=[ntau], module=B, coeff_parity=odd, ket=f0]
+    finite_frequency_w_overlap_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: 4/(15*ell)
+      wall_partner_to_f0: '0'
+    static_omega0_values:
+      f0_to_wall_partner: '0'
+      f0_to_tau: '0'
+      wall_partner_to_f0: '0'
+    static_nonzero_pairs: *id058
+    finite_frequency_nonzero_pairs: *id059
+    witness_status: OMEGA_STATIC_MODE_NO_WITNESS_BURDEN
+    continuum_threshold_flag: not_excited_by_native_discrete_witness
+  decisive_static_iVdotk_witness_slots:
+  - *id060
+  - *id061
+  - *id062
+  - *id063
+  - *id064
+  - *id065
+  - *id066
+  omega_static_note: Imported native modes are omega=0; omegaVdotk rows are classified but carry no static witness burden.
+  neutral_control_overlap:
+    slot_id: iVdotk|0|etaeta|B|odd
+    profile: tanh(w/ell)*sech(w/ell)^2
+    overlap: '0'
+controls:
+  neutral_moving_throat:
+    name: neutral_moving_throat
+    status: FIRED
+    verdict: CLEAN_PARITY_PRESERVING
+    verdict_code: 7
+    raw_count: 108
+    hermitian_count: 54
+    physical_count: 27
+    active_operator_count: 27
+    a0_count: 27
+    a1_count: 0
+    a1_nonzero_static_witness_count: 0
+    a1_ids: []
+    a1_nonzero_static_witness_ids: []
+    required_overlap_exercised:
+      slot_id: iVdotk|0|etaeta|B|odd
+      profile: tanh(w/ell)*sech(w/ell)^2
+      overlap: '0'
+      status: FIRED
+  charged_moving_throat:
+    name: charged_moving_throat
+    status: FIRED
+    verdict: FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING
+    verdict_code: 1
+    raw_count: 216
+    hermitian_count: 108
+    physical_count: 54
+    active_operator_count: 54
+    a0_count: 27
+    a1_count: 27
+    a1_nonzero_static_witness_count: 7
+    a1_ids:
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|tautau|B|even
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|[etan]|C|odd
+    - iVdotk|1|[etan]|K|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[etatau]|K|even
+    - iVdotk|1|[ntau]|C|even
+    - iVdotk|1|[ntau]|K|even
+    - omegaVdotk|1|etaeta|C|odd
+    - omegaVdotk|1|etaeta|K|odd
+    - omegaVdotk|1|nn|C|odd
+    - omegaVdotk|1|nn|K|odd
+    - omegaVdotk|1|tautau|C|odd
+    - omegaVdotk|1|tautau|K|odd
+    - omegaVdotk|1|etan|C|odd
+    - omegaVdotk|1|etan|K|odd
+    - omegaVdotk|1|etatau|C|even
+    - omegaVdotk|1|etatau|K|even
+    - omegaVdotk|1|ntau|C|even
+    - omegaVdotk|1|ntau|K|even
+    - omegaVdotk|1|[etan]|B|even
+    - omegaVdotk|1|[etatau]|B|odd
+    - omegaVdotk|1|[ntau]|B|odd
+    a1_nonzero_static_witness_ids:
+    - iVdotk|1|etaeta|B|even
+    - iVdotk|1|nn|B|even
+    - iVdotk|1|etan|B|even
+    - iVdotk|1|etatau|B|odd
+    - iVdotk|1|ntau|B|odd
+    - iVdotk|1|[etatau]|C|even
+    - iVdotk|1|[ntau]|C|even
+  injected_C0:
+    name: injected_C0
+    status: FIRED
+    verdict: PASS_CONDITIONAL_ON_NO_OPERATOR_PARITY_MIXING
+    verdict_code: 2
+    raw_count: 216
+    hermitian_count: 108
+    physical_count: 27
+    active_operator_count: 27
+    a0_count: 27
+    a1_count: 0
+    a1_nonzero_static_witness_count: 0
+    a1_ids: []
+    a1_nonzero_static_witness_ids: []
+    c0_label_basis: observed_post_C0_filter_a1_count_eq_0
+  C0_removed_restores_a1:
+    name: C0_removed_restores_a1
+    status: FIRED
+    verdict: A1_IDS_RESTORED
+    without_C0_a1_count: 27
+    with_C0_a1_count: 0
+  injected_extra_odd_spurion:
+    name: injected_extra_odd_spurion
+    status: FIRED
+    verdict: REJECT_ILLEGAL_INPUT
+    verdict_code: 8
+    reason: undeclared P_w-odd spurion distinct from s
+    attempted_structure: iVdotk*s*q_odd_extra*C_even(w)*etaeta
+    validation_observation: REFUSED_BY_DECLARED_GRAMMAR
+    validator_observation:
+      declared_external_scalars:
+      - iVdotk
+      - omegaVdotk
+      declared_odd_spurions:
+      - s
+      declared_brane_vectors: []
+      declared_axial_spurions: []
+      attempted_structure: iVdotk*s*q_odd_extra*C_even(w)*etaeta
+      undeclared_odd_spurions:
+      - q_odd_extra
+  deleted_operator:
+    name: deleted_operator
+    status: FIRED
+    verdict: BASIS_INCOMPLETE
+    expected_raw_count: 216
+    generated_raw_count: 215
+    missing_ids:
+    - iVdotk|0|etaeta|C|even
+    extra_ids: []
+  smuggled_V_i_n_i:
+    name: smuggled_V_i_n_i
+    status: FIRED
+    verdict: REJECT_UNDECLARED_SPURION
+    verdict_code: 9
+    reason: V_i n_i requires an undeclared brane vector
+    attempted_structure: V_i n_i*s*C_even(w)*etaeta
+    validation_observation: REFUSED_BY_DECLARED_GRAMMAR
+    validator_observation:
+      declared_external_scalars:
+      - iVdotk
+      - omegaVdotk
+      declared_odd_spurions:
+      - s
+      declared_brane_vectors: []
+      declared_axial_spurions: []
+      attempted_structure: V_i n_i*s*C_even(w)*etaeta
+      missing_declared_brane_vector: d_i
+  smuggled_epsilon_ijk_V_i_k_j:
+    name: smuggled_epsilon_ijk_V_i_k_j
+    status: FIRED
+    verdict: REJECT_UNDECLARED_SPURION
+    verdict_code: 9
+    reason: epsilon_ijk V_i k_j requires an undeclared axial spurion
+    attempted_structure: epsilon_ijk V_i k_j*s*C_even(w)*etaeta
+    validation_observation: REFUSED_BY_DECLARED_GRAMMAR
+    validator_observation:
+      declared_external_scalars:
+      - iVdotk
+      - omegaVdotk
+      declared_odd_spurions:
+      - s
+      declared_brane_vectors: []
+      declared_axial_spurions: []
+      attempted_structure: epsilon_ijk V_i k_j*s*C_even(w)*etaeta
+      missing_declared_axial_spurion: J_k
+  parity_two_ways:
+    name: parity_two_ways
+    status: FIRED
+    verdict: PARITY_TWO_WAYS_AGREE
+    checked_retained_count: 108
+  V_equals_zero:
+    name: V_equals_zero
+    status: FIRED
+    verdict: CLEAN_STATIC_SPLIT
+    verdict_code: 11
+    raw_count: 216
+    hermitian_count: 108
+    physical_count: 54
+    active_operator_count: 0
+    a0_count: 0
+    a1_count: 0
+    a1_nonzero_static_witness_count: 0
+    a1_ids: []
+    a1_nonzero_static_witness_ids: []
+dimensional_firewall:
+  allowed_external_scalars:
+  - iVdotk
+  - omegaVdotk
+  illegal_inputs_rejected:
+  - V_i n_i
+  - epsilon_ijk V_i k_j
+  - extra P_w-odd spurion distinct from s
+  status: PASS
+remediation:
+  fix_1: production path emits the computed verdict; the expected fail is recorded as an observation, not asserted
+  fix_2: illegal controls attempt admission through the declared grammar validator and derive rejection from refusal
+  fix_3: injected_C0 PASS_CONDITIONAL is based on observed post-C0-filter a=1 count equal to zero
+  fix_4: P O P^-1 check uses concrete coefficient profiles, explicit D_w tokens, s->-s, and Sigma M Sigma
+honest_scope:
+  derived:
+  - finite O(V^1) canonical slot manifest
+  - Hermiticity table under Convention A
+  - P_w parity by rule and by literal P O P^-1 representative conjugation
+  - native-mode symbolic witness overlaps for a=1 slots
+  - controls that fire in pass, fail, rejection, and basis-incomplete directions
+  sim_deferred: *id067
+  does_not_unearn:
+  - pathA_38 Coulomb localization and source-level odd/even split
+  - pathA_39 Stage 0+1 scalar-admixture floor
+  - pathA_39 Stage 2 magnetic-force derivation

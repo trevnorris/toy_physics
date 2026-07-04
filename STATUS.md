@@ -10,23 +10,38 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-03, post-`/compact`) — magnetism is next
+## ▶ RESUME HERE (2026-07-04, post-`/compact`) — magnetism IN PROGRESS: Stage 3 (operator parity) is next
 
-**⭐ 3 OF 4 FORCE-SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` localization + the PN ladder), light (`pathA_36`),
-and electric charge (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, just banked — commit `797f4d88`) — each a distinct thing the
-same medium's brane+bulk does, all sharing **one localization principle** (a normalizable transverse zero mode → `1/r²`), split by
-`w→−w` **parity** (even drain = gravity, odd embedding-Goldstone = charge → that parity is *why* charge ≠ mass). **The clean
-end-to-end derivation chain = `docs/conceptual_foundation.md` → ⭐ THE FOUR-SECTOR CHAIN** (read it — it maps brane+bulk → all four
-sectors with each link's status).
+**⭐ 3 OF 4 SECTORS EARNED + the 4th (MAGNETISM) 2-of-4-stages EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder),
+light (`pathA_36`), electric charge (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, commit `797f4d88`) — each a distinct thing the
+brane+bulk does, sharing one localization principle (normalizable transverse zero mode → `1/r²`), split by `w→−w` parity. **Clean
+chain = `docs/conceptual_foundation.md` → ⭐ THE FOUR-SECTOR CHAIN + the ⭐ v8 block.**
 
-**▶ NEXT = MAGNETISM (close Maxwell).** Draft carry-over spec: `software/stage1_solver/directives/pathA_39_magnetism_close_maxwell.md`.
-The gate: a MOVING throat → brane swirl/vorticity → **B**, the Lorentz force, the curl equations, with the right `E↔B` normalization —
-largely DOWNSTREAM of `pathA_38` (charge/E) + `pathA_36` (light/the EM wave). **First task = resolve its §2 setup sub-questions**
-(what the swirl field is + how a moving throat sources it; does E+B close full Maxwell; the Lorentz force; `λγ` consistency), THEN the
-gauntlet (Codex design-review → GLM → dual-engine → tri-review), reusing the pathA_38/pathA_29 machinery.
-**⚠️ REMEMBER the pathA_38 lesson:** a clean PASS can be **pass-by-construction** — pathA_38's first run hardcoded `1/(4πR)` and was
-structurally unable to FAIL; only the **adversarial-with-ablation** leg (force bad inputs → the classifier must EMIT a `FAIL`, not
-raise) caught it. Make every gate empirically able-to-fail ([[feedback-negative-verdict-short-circuit]]).
+**▶ MAGNETISM (`pathA_39`) — IN PROGRESS, 2 of 4 stages earned (2026-07-04).** ⭐ **REFRAMED:** magnetism = the velocity-dependent
+(`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of electric charge (charge = static throat-body,
+magnetism = same interaction under motion). **⭐ MAGNETISM LIVES IN THE THROAT, like charge** — NOT bulk vorticity (that is
+*gravitomagnetism*: weak, mass-coupled, part of gravity — do not conflate). Setup gauntlet done (Claude↔Codex→GLM, resolution v5
+`SOUND_AS_A_RESOLUTION`; directive `pathA_39_magnetism_close_maxwell.md` v1).
+- **Stage 0+1 (scalar-admixture screen) = EARNED** (dual-engine + tri-reviewed CLEAN): `FAIL_OBSERVABLE_SCALAR_ADMIXTURE` — the EM
+  FIELD carries a charge-coupled scalar (`h`-branon at `c_E`, import-forced by pathA_38 `M_h>0`; + density/`c_s` mode via `q_L`).
+  **Exact isolated Maxwell EXCLUDED.**
+- **Stage 2 (magnetic force) = EARNED** (dual-engine + tri-reviewed CLEAN, AFTER a caught-and-remediated RIG): `MAGNETIC_FORCE_DERIVED`
+  — a genuine brane-localized `O(V₁V₂)` current–current force (`1/R` potential → `1/R²` point-force, DERIVED via propagator
+  inversion + exchange integral). **Magnetism EXISTS: transverse channel → like currents ATTRACT (correct EM sign)** + an
+  **UNAVOIDABLE attractive scalar-current admixture** (longitudinal). Preferred-frame unless `c_E=c_γ`. Conditional on sim-deferred
+  `aT/aL`. ⚠️ **Stage 2's FIRST pass was a RIG** (hand-written kernel; cosmetic anti-readback that labeled a Biot–Savart insertion
+  DERIVED; a WRONG asserted longitudinal sign faking a `Ξ` crossover) — CAUGHT by adversarial (pass-by-construction) + fidelity
+  (wrong sign), remediated (real integral; anti-readback now rejects on DERIVATION-PROCESS not expression-shape), re-tri-reviewed
+  CLEAN. Lesson: [[feedback-negative-verdict-short-circuit]] — a rigged POSITIVE, again.
+- **▶ NEXT = Stage 3 (operator parity):** the EM-vs-gravitomagnetic separation under motion. Directive EXPECTS
+  `FAIL_GRAVITOMAGNETIC_CONTAMINATION` or a sim-deferred `PASS_CONDITIONAL_ON_NO_OPERATOR_PARITY_MIXING`. **Then Stage 4** (field
+  classification) closes the sector. Same discipline (Codex derives → dual-engine → tri-review; a rigged POSITIVE is the risk).
+- **Honest landing:** magnetism = a real fourth force (correct sign) + a **characterized departure** (the unavoidable scalar), NOT
+  clean Maxwell — first-class for a toy analog. **Follow-up (post-Stage-4):** investigate the charge-coupled "extra scalar" (why
+  hidden? magnitude?) = task #110 + `notes/pathA_39_charge_coupled_scalar_followup.md`.
+- ✅ **COMMITTED at this milestone (2026-07-04, pre-`/compact`):** the pathA_39 directive, both stages' scripts + reports, and the
+  `conceptual_foundation.md` v8 / `decisions/13` / `STATUS.md` updates. **The session was `/compact`-ed HERE** — this ▶ RESUME HERE
+  block is the pickup point; **next action = build Stage 3 (operator parity).**
 
 **▶ THEN = THE CONSISTENCY KNIT → "fully formed."** After all four sectors: (a) the sharp `λγ = c_γ/c_s = 1` cone-lock test (still
 OPEN — do all four live in ONE parameter set?); (b) the NG cross-consistency gauntlet; (c) assemble the end-to-end chain into the

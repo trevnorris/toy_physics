@@ -10,6 +10,25 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
+> **⭐⭐ LIVE STATE (2026-07-04) — MAGNETISM (`pathA_39`) IN PROGRESS, 2 of 4 stages EARNED. Front door = repo `STATUS.md` ▶ RESUME
+> HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis).**
+> - **3 of 4 sectors EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`). **Magnetism `pathA_39` = the velocity-
+>   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
+>   charge; NOT bulk vorticity = gravitomagnetism).** Setup gauntlet done (resolution v5 `SOUND_AS_A_RESOLUTION`; directive v1).
+> - **Stage 0+1 EARNED** (dual-engine + tri-reviewed CLEAN) = `FAIL_OBSERVABLE_SCALAR_ADMIXTURE` — exact isolated Maxwell EXCLUDED;
+>   the EM field carries a charge-coupled scalar (`h`-branon at `c_E` forced by pathA_38 `M_h>0`; + density/`c_s` mode via `q_L`).
+> - **Stage 2 EARNED** (dual-engine + tri-reviewed CLEAN, AFTER a caught-and-remediated RIG) = `MAGNETIC_FORCE_DERIVED` — a genuine
+>   brane-localized `O(V₁V₂)` `1/R²` current–current force (propagator inversion + exchange integral; sign+falloff fall out); like
+>   currents ATTRACT (correct EM sign) + an UNAVOIDABLE attractive scalar-current admixture; preferred-frame unless `c_E=c_γ`;
+>   conditional on sim-deferred `aT/aL`. ⚠️ 1st pass = a RIG (hand-written kernel + cosmetic anti-readback that labeled a Biot–Savart
+>   insertion DERIVED + a WRONG asserted longitudinal sign faking a `Ξ` crossover) — caught by adversarial (pass-by-construction) +
+>   fidelity (wrong sign), remediated (real integral; anti-readback now rejects on DERIVATION-PROCESS not expression-shape).
+> - **▶ NEXT = Stage 3 (operator parity = EM-vs-gravitomagnetic separation under motion; EXPECT `FAIL_GRAVITOMAGNETIC_CONTAMINATION`
+>   or a sim-deferred `PASS_CONDITIONAL_ON_NO_OPERATOR_PARITY_MIXING`) → Stage 4 (field classification) → the consistency knit
+>   (`λγ=c_γ/c_s=1` AND `c_E=c_γ`).** Honest landing: magnetism = a real fourth force + a characterized scalar departure, NOT clean
+>   Maxwell. Follow-up (post-Stage-4) = the charge-coupled "extra scalar" (task #110 + `notes/pathA_39_charge_coupled_scalar_followup.md`).
+>   **ALL pathA_39 work UNCOMMITTED.**
+
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN
 >   radiation-reaction) lives in `research/4d_*pn*`; the moving-drain no-aberration result is the "Static Limit Theorem" in

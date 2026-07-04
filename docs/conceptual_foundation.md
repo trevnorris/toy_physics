@@ -45,7 +45,7 @@ global `S_leakage`. Full detail in the ⭐ v7 block in §3 (+ §4). The v6 *achi
 
 ---
 
-## ⭐ THE FOUR-SECTOR CHAIN — how ONE brane+bulk yields gravity + light + electric + magnetism (2026-07-03 status map)
+## ⭐ THE FOUR-SECTOR CHAIN — how ONE brane+bulk yields gravity + light + electric + magnetism (2026-07-04 status map)
 
 **This is the spine of the whole program: one medium, organized into a brane+bulk, from which the four forces emerge as distinct
 things that the SAME structure does. Read this as the derivation chain + where each link stands.**
@@ -69,10 +69,16 @@ structure.
    Parity: the **ODD** channel — which is *exactly why charge ≠ mass* (`⟨f₀,S_grav_even⟩=0` by `w→−w`). **STATUS: EARNED** — `pathA_38`
    = `THROAT_ELECTRIC_LOCALIZED_COULOMB` (dual-engine + tri-reviewed). DERIVED{p=2, sign, parity} + CALIBRATED{`Q_E`, that a throat
    sources a nonzero monopole} + SIM-DEFERRED{operator-level parity mixing, source compactness, nonlinear interior}.
-4. **MAGNETISM = the swirl/vorticity of the brane.** A MOVING charge (moving throat) drags/twists the surrounding brane → the magnetic
-   field. **STATUS: NEXT (not yet gated).** The real gate is **"close Maxwell"**: moving throat → **B**, the Lorentz force, the curl
-   equations, with the right `E↔B` normalization — largely DOWNSTREAM of `pathA_38` (charge/E) + `pathA_36` (light/the EM wave). Draft
-   spec: `software/stage1_solver/directives/pathA_39_magnetism_close_maxwell.md`.
+4. **MAGNETISM = the velocity-dependent (`O(V)`) part of the SAME 4D throat-body interaction** — the moving/rotating version of the
+   electric charge of #3 (charge-coupled by construction; `±w` sets its sign). ⭐ **Two swirls must NOT be conflated:**
+   **gravitomagnetism** = the 3D flow-swirl of the mass-inflow (EVEN, mass-coupled, `c_s`, weak — frame-dragging / Gravity Probe B;
+   part of the *gravity* sector, one flow field) vs **EM magnetism** = the 4D throat-body swirl (ODD/`±w`, charge-coupled, strong,
+   because the swirl concentrates toward the finite mouth radius). **STATUS: PARTIALLY EARNED (`pathA_39` Stage 0+1 and Stage 2).**
+   ⭐ First computed result (Stage 0+1, dual-engine + tri-reviewed CLEAN): **exact isolated Maxwell is EXCLUDED** — the EM *field*
+   carries a charge-coupled scalar admixture (a propagating `h`-branon, forced by pathA_38's `M_h>0`; a 5th-force-like departure).
+   ⭐ Second computed result (Stage 2, dual-engine): a charge-coupled `R^-2` magnetic current-current force is derived, with like
+   currents attracting in the transverse channel and an unavoidable attractive longitudinal scalar-current admixture. Detail: the ⭐ v8
+   block below + `directives/pathA_39_magnetism_close_maxwell.md` + `reports/pathA_39_magnetic_force.md`.
 
 **THE CLOSING STEP (after magnetism) — the CONSISTENCY KNIT → "fully formed."** Four sectors each passing in isolation is NOT the same
 as one self-consistent model. The knit: (a) the sharp cross-sector test **`λγ = c_γ/c_s = 1`** (the GW170817 cone-lock — do light and
@@ -381,6 +387,72 @@ This is the heart of the model. The four phenomena are **four different mechanis
 > charge crux is now: **does a throat's 4D body mediate a brane-localized interaction that comes out `1/r²` in 3D, with `±w` giving
 > the sign?** Detail: [[project-brane-existence-defect-structure]], [[feedback-native-em-mechanisms]].
 
+> **⭐ v8 UPDATE (2026-07-04) — the MAGNETISM mechanism refined + the FIRST computed result (`pathA_39`). Magnetism is the
+> moving/rotating version of the v7 charge mechanism, and its first gate stage is banked. Read this for the current view of
+> magnetism (it supersedes the "swirl = bulk vorticity, close Maxwell as a gauge field" framing).**
+>
+> **Magnetism is the velocity-dependent (`O(V)`) part of the SAME 4D throat-body interaction that gives electric charge** — the
+> moving/rotating throat, not a separate mechanism.
+>
+> **⭐⭐ WHERE MAGNETISM LIVES — IN THE THROAT (do NOT forget this): both electric charge AND magnetism are 4D-THROAT-BODY
+> phenomena.** Electric charge = the **static** interaction of two throats' 4D bodies (pathA_38); magnetism = **the SAME throat-body
+> interaction under MOTION** (pathA_39). Both happen in the throat's 4D body beyond the mouth and are felt on the brane via
+> localization — **NOT** a brane-surface effect like light (in-plane shear), **NOT** a bulk-flow effect like gravity (the drain).
+> The `±w` puncture direction sets the sign for both. **Do NOT relapse to "magnetism = bulk vorticity of the medium" — that is
+> *gravitomagnetism* (weak, mass-coupled, part of the gravity sector), a DIFFERENT thing.** The mnemonic: gravity = flow, light =
+> brane shear, **charge & magnetism = the throat (static vs moving).**
+>
+> This applies the v7 electric-sector route under motion: charge-coupled by construction, `±w` sets the sign. It is NOT "does the
+> curl of the light field close Maxwell as a gauge field" — that framing was tried and is a *predetermined* fail (the shear field's
+> longitudinal stiffness `B_eff=ρ_B0²/χ_c>0` from pathA_36 blocks clean gauge closure).
+>
+> **⭐ TWO distinct "swirls" — do NOT conflate them (the load-bearing clean-up):**
+> - **Gravitomagnetism** = the **3D flow-swirl of the mass-inflow** — the medium literally circulating as it drains into a moving or
+>   spinning throat. **Mass-coupled, EVEN under `w→−w`, rides `c_s`, WEAK** (ordinary frame-dragging — Gravity Probe B saw only
+>   milli-arcseconds/year). It is **part of the gravity sector** (gravity's radial inflow + this swirl = one flow field), NOT a
+>   separate force. The bulk is shear-free, so the medium **cannot "push" sideways** — which is *why* frame-dragging is tiny.
+> - **EM magnetism** = the **4D throat-body swirl** — the same swirl carried past the mouth into the throat's 4D body, flavored by
+>   `±w`. **Charge-coupled, ODD, STRONG.** Felt on the brane by the SAME localization that gives charge its `1/r²` (a brane-trapped
+>   field, not a "shadow" reached for in the bulk).
+> - **One swirl, two regimes:** 3D near-mouth flow = gravitomagnetism (weak); 4D throat-body = EM magnetism (strong). **Why EM ≫
+>   gravity:** the swirl **concentrates** as it funnels toward the mouth (`v_φ ~ 1/r`, saturating at the finite mouth radius `r_e`) —
+>   the same localization/concentration that made charge strong. Consistency checks that match reality: magnetic moment ∥ spin ∥
+>   angular momentum; the EM sense flips with `±w` while the gravitomagnetic sense follows mass (electron vs positron → same
+>   frame-dragging, opposite magnetic moment).
+>
+> **The longitudinal mode is NOT a spurious "third photon" — it is the gravity/density (`c_s`) channel.** In a ONE-medium model, EM
+> is not an isolated sector: the transverse ripple of the shear field is light (`c_γ`); its longitudinal (compression) part is a
+> density wave (`c_s`) = the gravity/density channel. "Not exact isolated Maxwell" is EXPECTED and is the *point* of unification — the
+> question is whether the coupling stays clean or produces an observable departure. Do not force it to zero; characterize it.
+>
+> **⭐ FIRST COMPUTED RESULT (`pathA_39` Stage 0+1 — dual-engine SymPy+Mathematica, `ENGINE_AGREE`, tri-reviewed CLEAN: arbiter
+> reproduced + `ADVERSARIAL_SOUND` + `FIDELITY_CLEAN`): `FAIL_OBSERVABLE_SCALAR_ADMIXTURE`.** The electric charge has a **nonzero
+> residue on a propagating scalar pole** — a **charge-coupled scalar** the medium carries that clean EM does not. **Exact isolated
+> Maxwell is EXCLUDED**, computationally. The robust floor is the **propagating `h`-branon** (charge residue `∝ q_h²/M_h`), FORCED by
+> pathA_38's own `M_h>0` (its static Coulomb mediator propagates dynamically) — so even the *electric* sector's dynamic completion is
+> not clean Maxwell (the static `1/r²` Coulomb + sign + charge≠mass still stand, as the `ω→0` limit). This is the honest
+> **"characterized departure"** landing we expected: not a clean Maxwell copy, but a computed, falsifiable 5th-force-like scalar.
+>
+> **⭐ SECOND COMPUTED RESULT (`pathA_39` Stage 2 — dual-engine SymPy+Mathematica, tri-reviewed CLEAN): `MAGNETIC_FORCE_DERIVED`.**
+> Integrating out the declared moving-throat sources — via a genuine propagator inversion + exchange integral, with the sign and
+> falloff FALLING OUT (not asserted) — gives a brane-localized current-current kernel with `R^-1` potential and `R^-2` point-force
+> falloff. **The transverse channel gives the correct magnetic sign — like currents attract for `μ_R>0`** (matching magnetostatics).
+> The longitudinal channel is ALSO attractive for `B_eff>0`, so the old cancellation/crossover story is retired: **magnetism rides
+> alongside an UNAVOIDABLE attractive scalar-current admixture** (the same Stage 0+1 departure, uncancelable at the force level).
+> Preferred-frame unless `c_E=c_γ`; conditional on the sim-deferred amplitudes `aT,aL`. ⚠️ Its first pass was a pass-by-construction
+> RIG (hand-written kernel, cosmetic anti-readback, a WRONG asserted longitudinal sign that faked a `Ξ` crossover) — CAUGHT by the
+> adversarial + fidelity legs, genuinely remediated (real integral; the Biot–Savart fixture now correctly `FAIL_TARGET_READBACK`,
+> rejected on derivation-process not expression-shape), re-tri-reviewed CLEAN. Still open: the operator-level
+> EM-vs-gravitomagnetic separation under motion (Stage 3) and the field-coupling classification (Stage 4). **The sector is landing as
+> a fourth force WITH a characterized departure, not a clean Maxwell copy — first-class for a unified toy model, computed (and
+> adversarially verified) rather than asserted.** Detail: `directives/pathA_39_magnetism_close_maxwell.md` +
+> `reports/pathA_39_{scalar_admixture_screen,magnetic_force}.md`.
+>
+> **Downstream payoff (parked — do not compute yet):** the 4D throat/vortex structure gives a candidate **resistivity-free magnetic
+> reconnection** — 1D vortex lines are codim-3 in 4D, so they cannot link/knot and can reconnect by a smooth excursion through the
+> bulk (no dissipative cut). This is where the parked MHD work ([[project-mhd-reconnection-parked]]) reconnects once the EM sector is
+> settled.
+
 > **⭐ v4 UPDATE (2026-06-25) — model-mechanics corrections that keep getting LOST between sessions (read this; it is the recurring
 > relapse into textbook defaults). Mirror of memory `[[project-model-mechanics-corrections]]`.**
 >
@@ -416,7 +488,7 @@ This is the heart of the model. The four phenomena are **four different mechanis
 | Sector | What it physically IS | Native quantity |
 |---|---|---|
 | **Gravity** | The medium's **inflow / drain** toward defects. Test bodies are carried inward by the flow. Largely unobservable as a flow. | flow velocity `v_r` |
-| **Magnetism** | The medium's **swirl** — vorticity/rotation. Magnus force. Lives in the bulk and needs **no shear** (which is why a shear-free bulk is required). | vorticity / circulation (the *winding*) |
+| **Magnetism** | Two swirls, kept distinct (⭐ v8 block above): **EM magnetism** = the velocity-dependent (`O(V)`) part of the 4D throat-body interaction (the *moving* version of electric charge — charge-coupled, `±w` sign, strong) vs **gravitomagnetism** = the 3D flow-swirl of the mass-inflow (mass-coupled, weak frame-dragging; part of the *gravity* sector). The bulk is shear-free (it cannot "push"), which is *why* frame-dragging is tiny and light stays confined to the brane. | throat-body swirl (`±w`) / flow vorticity |
 | **Electric charge** | The **puncture direction** — which way a throat punctures the brane into the bulk (`+w` vs `−w`). A **binary orientation**. No rotation, no swirl, no winding. | puncture orientation `±w` |
 | **Light** | The brane's in-plane **rotational-elastic (MacCullagh) shear wave** — our 3D space resisting being *locally twisted*, the wave riding on the curl of an in-plane displacement (not the drumhead's up/down bowing, which is a separate scalar mode). Two transverse polarizations, no longitudinal mode; rigidity lives **on the brane, not the bulk**. | brane rotational-elastic shear |
 

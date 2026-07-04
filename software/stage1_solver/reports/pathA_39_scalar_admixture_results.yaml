@@ -1,0 +1,461 @@
+schema: pathA_39_scalar_admixture_screen/v1
+verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+headline:
+  verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+  engine_agreement: ENGINE_AGREE
+  robust_floor_verdict: FAIL_EXTRA_H_BRANON
+  decisive_density_residue: Nu**2*aL**2*sCharge**2/rhoBr
+  decisive_h_residue: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+engine_agreement:
+  status: ENGINE_AGREE
+  compared_payload:
+    top_line_verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    main_verdict_code: 5
+    control_verdicts:
+      inject_qL_epsilon: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+      closed_steady_current_wire_limit: WIRE_LIMIT_NO_LONGITUDINAL_RESPONSE
+      B_eff_positive_vs_zero: FAIL_OBSERVABLE_SCALAR_ADMIXTURE->FAIL_EXTRA_H_BRANON
+      Mh_positive_qh_nonzero: FAIL_EXTRA_H_BRANON
+      cE_import_match: IMPORT_MATCH
+      mixing_on_with_derived_qL_zero: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    self_tests: &id001
+      FAIL_OBSERVABLE_SCALAR_ADMIXTURE: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+      FAIL_EXTRA_H_BRANON: FAIL_EXTRA_H_BRANON
+      FAIL_CHARGE_COUPLED_CS_SCALAR: FAIL_CHARGE_COUPLED_CS_SCALAR
+      PASS_BY_DECLARATION: PASS_BY_DECLARATION
+      SCALAR_COEXISTENCE_CLEAN: SCALAR_COEXISTENCE_CLEAN
+    checked_expression_count: 41
+    expr_digest: d4ac85aac565ab8d7bc80b7c1180d0e90cabc32c0ddd8e0ebfd1ca26c6c5e24a
+  sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_scalar_admixture_screen_sympy.json
+  mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_39_scalar_admixture_screen_mathematica.json
+imports:
+  checks:
+    pathA_36_B_eff:
+      expected: rho_B0**2/chi_c
+      actual: rho_B0**2/chi_c
+      match: true
+    pathA_36_c_gamma_squared:
+      expected: mu_R/rho_br
+      actual: mu_R/rho_br
+      match: true
+    pathA_38_q_h_plus:
+      expected: 2*QE*tanh(b/ell)/b
+      actual: 2*QE*tanh(b/ell)/b
+      match: true
+    pathA_38_dynamic_green_speed:
+      expected: exp(I*R*omega/cE)/(4*pi*R)
+      actual: exp(I*R*omega/cE)/(4*pi*R)
+      match: true
+  guard_ablations:
+    pathA_38_dynamic_green_wrong_c_gamma:
+      expected: exp(I*R*omega/c_gamma)/(4*pi*R)
+      actual: exp(I*R*omega/cE)/(4*pi*R)
+      match: false
+  imported:
+    B_eff: rho_B0^2/chi_c
+    c_gamma_squared: mu_R/rho_br
+    q_h: 2*QE*tanh(b/ell)/b
+    c_E: cE from pathA_38 dynamic Green exp(I*R*omega/cE)/(4*pi*R)
+    f_h:
+    - - 1/(ell*cosh(w/ell)**2)
+    - - 1/(ell*cosh(w/ell)**2)
+    - - '0'
+    f_u: pathA_36 shear profile f_u(w); normalization kept as Nu because the report does not give a closed profile
+    M_h: positive imported property from pathA_38; coefficient kept as symbolic Mh>0
+  declared_vs_imported:
+    imported_exact:
+    - B_eff=rho_B0^2/chi_c
+    - c_gamma^2=mu_R/rho_br
+    - q_h=2*QE*tanh(b/ell)/b
+    - c_E=cE
+    imported_positivity_parameterized:
+    - M_h>0 as symbolic Mh
+    - f_u normalization Nu
+    declared_scan_parameters:
+    - q_L from Stage-1 ansatz coefficient aL
+    - C_hu scalar mixing
+    sim_deferred_values:
+    - aT
+    - aL
+    - bulk compactness
+    - operator motion perturbation deltaO_V
+L_scalar:
+  fields:
+  - u_L
+  - h
+  Fourier_x: x=omega^2/k^2
+  density_block: 1/2 rhoBr dot(u_L)^2 - 1/2 B_eff k^2 u_L^2, B_eff=rhoB0^2/chiC
+  h_block: 1/2 Mh dot(h)^2 - 1/2 Kh k^2 h^2, Kh=Mh*cE^2
+  mixing: -Chu k^2 u_L h
+  source_charge_vector: '[q_L, q_h]'
+  source_mass_vector: '[qM, 0]'
+  D_x:
+  - - rhoBr*x - rhoB0**2/chiC
+    - -Chu
+  - - -Chu
+    - -Mh*cE**2 + Mh*x
+  detD: (-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)/chiC
+  G_scalar_x:
+  - - chiC*(-Mh*cE**2 + Mh*x)/(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)
+    - Chu*chiC/(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)
+  - - Chu*chiC/(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)
+    - chiC*(rhoBr*x - rhoB0**2/chiC)/(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)
+  G_scalar_omega: G_scalar_x/k^2
+  A_qq: (4*Chu*QE*b*chiC*qL*tanh(b/ell) - Mh*b**2*cE**2*chiC*qL**2 + Mh*b**2*chiC*qL**2*x + 4*QE**2*chiC*rhoBr*x*tanh(b/ell)**2
+    - 4*QE**2*rhoB0**2*tanh(b/ell)**2)/(b**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2
+    - Mh*rhoB0**2*x))
+  A_qm: chiC*qM*(2*Chu*QE*tanh(b/ell) - Mh*b*cE**2*qL + Mh*b*qL*x)/(b*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2
+    + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x))
+  A_mm: Mh*chiC*qM**2*(-cE**2 + x)/(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2 + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x)
+decisive_residue_table_scope: C_hu -> 0 decoupled limit
+mixed_eigenpole_residue_pointer: poles_generic_mixing
+poles_generic_mixing:
+- label: root_minus
+  speed_squared: (-sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+    + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*Mh*chiC*rhoBr)
+  residue_to_charge: -(4*Chu*QE*b*chiC*qL*tanh(b/ell) - Mh*b**2*cE**2*chiC*qL**2 - 4*QE**2*rhoB0**2*tanh(b/ell)**2 + b**2*qL**2*(-sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr
+    + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*rhoBr)
+    + 2*QE**2*(-sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+    + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)*tanh(b/ell)**2/Mh)/(sqrt(Mh)*b**2*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+    - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4))
+  residue_to_mass: -sqrt(Mh)*chiC*qM**2*(-cE**2 + (-sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr
+    + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*Mh*chiC*rhoBr))/sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+    - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+- label: root_plus
+  speed_squared: (sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+    + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*Mh*chiC*rhoBr)
+  residue_to_charge: (4*Chu*QE*b*chiC*qL*tanh(b/ell) - Mh*b**2*cE**2*chiC*qL**2 - 4*QE**2*rhoB0**2*tanh(b/ell)**2 + b**2*qL**2*(sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr
+    + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*rhoBr)
+    + 2*QE**2*(sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+    + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)*tanh(b/ell)**2/Mh)/(sqrt(Mh)*b**2*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+    - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4))
+  residue_to_mass: sqrt(Mh)*chiC*qM**2*(-cE**2 + (sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr
+    + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr + Mh*rhoB0**2)/(2*Mh*chiC*rhoBr))/sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+    - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4)
+robust_floor:
+  verdict: FAIL_EXTRA_H_BRANON
+  channel: h_branon
+  residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+  import_forced: true
+  import_forced_inputs:
+  - M_h>0
+  - q_h=2*QE*tanh(b/ell)/b != 0 from pathA_38
+  independent_of_a_L: true
+  density_admixture_status: The OBSERVABLE scalar-admixture upgrade has residue proportional to q_L^2 and rests on the sim-deferred
+    a_L != 0 branch.
+stage1_projection:
+  ansatz: S_i^(1)=sCharge*Nu*f_u(w)*(aT Pi_T,ij V_j + aL Pi_L,ij V_j)+sCharge*aBulk S_bulk
+  Pi_T: delta_ij-k_i k_j/k^2
+  Pi_L: k_i k_j/k^2
+  q_A_T: Nu*aT*sCharge
+  q_L: Nu*aL*sCharge
+  q_bulk: aBulk*sCharge
+  q_even_to_A: '0'
+  anisotropy: parameterized/sim-deferred; isotropic pass requires anisotropy tensor = 0
+  derivation_status: DERIVED_STAGE1_FROM_DECLARED_PARAMETERIZED_ANSATZ
+  controls:
+    V_equals_zero:
+      q_A_T: '0'
+      q_L: '0'
+      status: FIRED
+    charge_flip_s_to_minus_s:
+      q_A_T: -q_A_T
+      q_L: -q_L
+      status: FIRED
+    neutral_plus_minus_composite:
+      q_A_T_sum: '0'
+      q_L_sum: '0'
+      status: FIRED
+    uncharged_even_drain:
+      q_A_T: '0'
+      q_L: '0'
+      status: FIRED
+    bulk_compactness:
+      q_bulk: aBulk*sCharge
+      status: SIM_DEFERRED
+classifier:
+  rule: computed from charge residues on propagating scalar/density poles and q_L derivation status
+  labels:
+  - SCALAR_COEXISTENCE_CLEAN
+  - PASS_BY_DECLARATION
+  - FAIL_EXTRA_H_BRANON
+  - FAIL_CHARGE_COUPLED_CS_SCALAR
+  - FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+  - ERROR_IMPORTED_CE_MISMATCH
+  main_inputs: &id002
+    name: stage1_parametric_qL_no_extra_mixing
+    verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    verdict_code: 5
+    q_L_status: DERIVED_STAGE1
+    flags:
+    - FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    - FAIL_CHARGE_COUPLED_CS_SCALAR
+    - FAIL_EXTRA_H_BRANON
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: Nu**2*aL**2*sCharge**2/rhoBr
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+      residue_to_mass: '0'
+  self_tests: *id001
+controls:
+  inject_qL_epsilon:
+    status: FIRED
+    verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    residue_density_to_charge: epsQ**2/rhoBr
+  closed_steady_current_wire_limit:
+    status: FIRED
+    verdict: WIRE_LIMIT_NO_LONGITUDINAL_RESPONSE
+    condition: div_j=0 -> Pi_L j=0 and rho_q=0 for the current-only wire limit
+    divergence_constraint: jx*kx + jy*ky + jz*kz
+    Pi_L_j:
+    - - kx*(jx*kx + jy*ky + jz*kz)/(kx**2 + ky**2 + kz**2)
+    - - ky*(jx*kx + jy*ky + jz*kz)/(kx**2 + ky**2 + kz**2)
+    - - kz*(jx*kx + jy*ky + jz*kz)/(kx**2 + ky**2 + kz**2)
+    longitudinal_response_unconstrained: (jx*kx + jy*ky + jz*kz)**2/(kx**2 + ky**2 + kz**2)
+    longitudinal_response: '0'
+  B_eff_positive_vs_zero:
+    status: FIRED
+    positive_B_eff_verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    B_eff_to_zero_verdict: FAIL_EXTRA_H_BRANON
+    positive_B_eff_density_speed_squared: rhoB0**2/(chiC*rhoBr)
+    B_eff_to_zero_density_speed_squared: '0'
+  Mh_positive_qh_nonzero:
+    status: FIRED
+    verdict: FAIL_EXTRA_H_BRANON
+    h_charge_residue: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+  cE_import_match:
+    status: FIRED
+    verdict: IMPORT_MATCH
+    matched_dynamic_green: exp(I*R*omega/cE)/(4*pi*R)
+    actual_dynamic_green: exp(I*R*omega/cE)/(4*pi*R)
+    wrong_c_gamma_guard_match: '0'
+    mismatch_ablation_verdict: ERROR_IMPORTED_CE_MISMATCH
+  mixing_on_with_derived_qL_zero:
+    status: FIRED
+    verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    A_qq_qL0: 4*QE**2*(chiC*rhoBr*x - rhoB0**2)*tanh(b/ell)**2/(b**2*(-Chu**2*chiC - Mh*cE**2*chiC*rhoBr*x + Mh*cE**2*rhoB0**2
+      + Mh*chiC*rhoBr*x**2 - Mh*rhoB0**2*x))
+    root_minus_charge_residue: -2*QE**2*(-sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr
+      + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2)*tanh(b/ell)**2/(Mh**(3/2)*b**2*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+      - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4))
+    root_plus_charge_residue: 2*QE**2*(sqrt(Mh)*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2 - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr
+      + Mh*rhoB0**4) + Mh*cE**2*chiC*rhoBr - Mh*rhoB0**2)*tanh(b/ell)**2/(Mh**(3/2)*b**2*sqrt(4*Chu**2*chiC**2*rhoBr + Mh*cE**4*chiC**2*rhoBr**2
+      - 2*Mh*cE**2*chiC*rhoB0**2*rhoBr + Mh*rhoB0**4))
+scenarios:
+  main: *id002
+  inject_qL_epsilon:
+    name: inject_qL_equals_epsilon
+    verdict: FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    verdict_code: 5
+    q_L_status: ABLATION_INJECTED
+    flags:
+    - FAIL_OBSERVABLE_SCALAR_ADMIXTURE
+    - FAIL_CHARGE_COUPLED_CS_SCALAR
+    - FAIL_EXTRA_H_BRANON
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: epsQ**2/rhoBr
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+      residue_to_mass: '0'
+  B_eff_to_zero:
+    name: tune_B_eff_to_zero
+    verdict: FAIL_EXTRA_H_BRANON
+    verdict_code: 3
+    q_L_status: ABLATION_INJECTED
+    flags:
+    - FAIL_EXTRA_H_BRANON
+    density_propagating: false
+    poles:
+    - label: density_cs
+      speed_squared: '0'
+      propagating: false
+      residue_to_charge: '0'
+      residue_to_mass: '0'
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+      residue_to_mass: '0'
+  extra_h:
+    name: derived_qL_zero_keeps_h_charge
+    verdict: FAIL_EXTRA_H_BRANON
+    verdict_code: 3
+    q_L_status: DERIVED_STAGE1
+    flags:
+    - FAIL_EXTRA_H_BRANON
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: '0'
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+      residue_to_mass: '0'
+  charge_coupled_cs_only:
+    name: charge_coupled_cs_only_qh_zero
+    verdict: FAIL_CHARGE_COUPLED_CS_SCALAR
+    verdict_code: 4
+    q_L_status: ABLATION_INJECTED
+    flags:
+    - FAIL_CHARGE_COUPLED_CS_SCALAR
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: epsQ**2/rhoBr
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: '0'
+      residue_to_mass: '0'
+  pass_by_declaration:
+    name: qL_zero_without_stage1_derivation
+    verdict: PASS_BY_DECLARATION
+    verdict_code: 2
+    q_L_status: DECLARED_NOT_DERIVED
+    flags:
+    - FAIL_EXTRA_H_BRANON
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: '0'
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: 4*QE**2*tanh(b/ell)**2/(Mh*b**2)
+      residue_to_mass: '0'
+  clean_fixture:
+    name: clean_fixture_qL_zero_qh_zero
+    verdict: SCALAR_COEXISTENCE_CLEAN
+    verdict_code: 1
+    q_L_status: DERIVED_STAGE1
+    flags: []
+    density_propagating: true
+    poles:
+    - label: density_cs
+      speed_squared: rhoB0**2/(chiC*rhoBr)
+      propagating: true
+      residue_to_charge: '0'
+      residue_to_mass: qM**2/rhoBr
+    - label: h_branon
+      speed_squared: cE**2
+      propagating: true
+      residue_to_charge: '0'
+      residue_to_mass: '0'
+dimensional_firewall:
+  pass: true
+  checked_expression_count: 10
+  ablations:
+  - category: ablation
+    name: drop_k2_from_B_eff_term
+    expression: B_eff u_L^2
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - 1
+      - -2
+      - 0
+      string: M L T^-2
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: FIRED
+  - category: ablation
+    name: omit_velocity_in_moving_source
+    expression: rho_q q_L u_L
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -2
+      - -1
+      - 0
+      string: M L^-2 T^-1
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: FIRED
+  - category: ablation
+    name: mix_mass_density_with_charge_current_coupling
+    expression: rho_m q_L u_L
+    actual:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 2
+      - -2
+      - -1
+      - -1
+      string: M^2 L^-2 T^-1 Q^-1
+    expected:
+      basis:
+      - M
+      - L
+      - T
+      - Q
+      powers:
+      - 1
+      - -1
+      - -2
+      - 0
+      string: M L^-1 T^-2
+    status: FIRED
+  - category: provenance
+    name: use_c_s_where_c_gamma_required
+    expression: Stage-1 transverse source speed provenance
+    actual_symbol: c_s
+    expected_symbol: c_gamma
+    status: FIRED

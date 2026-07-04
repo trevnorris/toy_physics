@@ -132,13 +132,21 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   interaction (naive 4D-bulk → wrong `1/R³`; needs the SAME localization that gave pathA_29 gravity its `1/r²`) with `±w` = sign.
   **pathA_37 flow-gate framing = RETIRED — do not execute as-is.** Canonical picture: `docs/conceptual_foundation.md` §3/§4 ⭐ v7.
   (Deferred future note, do NOT compute: same localization may turn `1/r²`→`1/r` at galaxy scale — a rotation-curve/MOND-like hint.)
-  **CARRY-OVER / running start = `directives/pathA_38_throat_body_electric_localization.md`** (DRAFT, written pre-`/compact`): the
-  1/r^2 crux + its leverage (**pathA_29 already proved gravity localizes to 1/r^2 via a normalizable transverse zero mode through the
-  finite slab; pathA_38 applies the SAME test to the charge/throat-body sector** — localized zero mode -> 1/r^2 PASS, delocalized ->
-  1/r^3 FAIL). **First task next session = resolve pathA_38 §2 setup** (what field mediates the throat-body interaction + its
-  transverse operator; the throat-body geometry model leveraging the 4D-throat/geon work; how ±w gives the sign), THEN gauntlet
-  (Codex design-review -> GLM -> dual-engine -> tri-review). Reuse the pathA_29 machinery; keep it linearized (full nonlinear throat
-  interior stays sim-deferred).
+- **⭐⭐ pathA_38 EXECUTED (2026-07-03) = `THROAT_ELECTRIC_LOCALIZED_COULOMB` — EARNED PASS (tri-reviewed).** The charge crux is
+  RESOLVED at the reduced/spec level: the throat's 4D body mediates a **brane-localized `1/r²` Coulomb** via the **gapless
+  transverse-embedding / orientation-lock Goldstone `h`** (wall displacement into `w`, `±w` arrows locked to the normal; NOT the free
+  internal director = gapped → Yukawa, the pathA_36/25 wall). **DERIVED** = {`p=2` localization (normalizable `sech²(w/ℓ)` zero mode,
+  `N₀=8/(3ℓ)`; delocalized→`p=3` counterfactual computed and wired to the classifier), like-repel/unlike-attract SIGN STRUCTURE
+  (`G₀>0`, general theorem), charge≠mass by `w→−w` parity}; **CALIBRATED** = {charge magnitude `Q_E`; nonzero-monopole modeling};
+  **SIM-DEFERRED** = {`FAIL_OPERATOR_PARITY_MIXING`, `FAIL_SOURCE_NOT_COMPACT`, nonlinear throat interior}. **Gauntlet:** directive
+  `SOUND_AS_IS` (Codex r1→r4 + GLM tertiary, all concerns folded; commit `2c5fe4f7`) → dual-engine (SymPy+Mathematica, `ENGINE_AGREE`).
+  ⚠️ **The FIRST execution was a pass-by-construction RIG** (hardcoded `1/(4πR)`, gate structurally unable to emit a FAIL) — CAUGHT by
+  the fresh **adversarial-with-ablation** leg, REMEDIATED to genuinely derive localization from the transverse-mode projection (à la
+  pathA_29's `g''+(2/R)g'+…=0`) + empirically able-to-fail (9/9 forced-bad inputs → correct `FAIL_*`), then re-tri-reviewed CLEAN
+  (`ADVERSARIAL_SOUND` + `FIDELITY_CLEAN`, two minor stylizations closed). Deliverables: `tools/pathA_38_throat_body_electric_{sympy.py,.wl}`
+  + `reports/pathA_38_*`. **⭐ RESULT: electric charge's `1/r²` FORCE LAW + sign + charge≠mass now share gravity's localization
+  PRINCIPLE — 3 of 4 sectors EARNED (gravity pathA_29, light pathA_36, charge pathA_38). NEXT = magnetism (close Maxwell, largely
+  downstream of pathA_38) + the `λγ=c_γ/c_s=1` cross-sector consistency knit.** Canonical: `docs/conceptual_foundation.md` §3/§4 ⭐ v7.
 - **Gate-6 Tier-A is DEFERRED as an optional cap** — it would likely just re-confirm that the `Z0_ret,Z1_ret` selector / `L/a`
   self-selection need the sim-deferred full solve (pathA_29 `Z_is_premise`; self-selection "requires dynamics"); its 4D field solve
   is sim-deferred regardless. The full road to a simulation-ready PDE (gravity arm done; brane → EM/light → throat → integration

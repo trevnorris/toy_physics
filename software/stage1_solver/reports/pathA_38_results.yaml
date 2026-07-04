@@ -1,0 +1,1451 @@
+schema: pathA_38_throat_body_electric_sympy/v2
+top_line_verdict: THROAT_ELECTRIC_LOCALIZED_COULOMB
+honest_scope:
+  premise: conditional reduced Z2-wall model with an unpinned self-localizing translation Goldstone
+  derived:
+  - transverse eigenproblem O f_n=m_n^2 K_parallel f_n for the wall modes
+  - normalizability from the computed integral int f0^T K_parallel f0 dw
+  - static and finite-omega radial factors seeded by the computed m0^2=0 transverse mode
+  - charge, anti-charge, gravity-even, and orthogonal-source projections from explicit integrals
+  computed_fail_witnesses:
+  - delocalized anti-localizing norm divergence and continuum p=3
+  - flipped K_parallel ghost norm and wrong-sign U++
+  - orthogonalized source with computed zero monopole
+  - pathA_35-style confinement curvature with positive descendant mass
+  - source-only tau channel Yukawa tail
+  calibrated_or_deferred:
+  - Q_E magnitude
+  - replacement of the compact top-hat datum by a full nonlinear throat-mouth source
+  - operator parity mixing from nonlinear throat-induced deltaO
+model:
+  fields:
+  - eta
+  - n
+  - tau
+  background:
+    Phi0:
+    - tanh(w/ell)
+    - tanh(w/ell)
+    - '0'
+    potential: (chi^2-1)^2/(2*ell^2)+(N^2-1)^2/(2*ell^2)+lamN*(N-chi)^2/2+lamTau*tau^2/2
+    background_eom_residual:
+    - - '0'
+    - - '0'
+    - - '0'
+  K_w:
+  - - '1'
+    - '0'
+    - '0'
+  - - '0'
+    - '1'
+    - '0'
+  - - '0'
+    - '0'
+    - '1'
+  K_parallel:
+  - - '1'
+    - '0'
+    - '0'
+  - - '0'
+    - '1'
+    - '0'
+  - - '0'
+    - '0'
+    - '1'
+  M2:
+  - - (ell**2*lamN + 6*tanh(w/ell)**2 - 2)/ell**2
+    - -lamN
+    - '0'
+  - - -lamN
+    - (ell**2*lamN + 6*tanh(w/ell)**2 - 2)/ell**2
+    - '0'
+  - - '0'
+    - '0'
+    - lamTau
+  operator: O=-partial_w(K_w partial_w)+M2(w)
+  parity_matrix:
+  - - '-1'
+    - '0'
+    - '0'
+  - - '0'
+    - '-1'
+    - '0'
+  - - '0'
+    - '0'
+    - '1'
+transverse_mode_spectrum:
+  eigenproblem: O f_n=m_n^2 K_parallel f_n
+  modes:
+  - name: translation_goldstone
+    vector: '[sech(w/ell)^2/ell, sech(w/ell)^2/ell, 0]'
+    m_squared: '0'
+    normalizable: true
+    operator_residual:
+    - - '0'
+    - - '0'
+    - - '0'
+  - name: wall_shape_partner
+    vector: '[sech(w/ell)*tanh(w/ell), sech(w/ell)*tanh(w/ell), 0]'
+    m_squared: 3/ell**2
+    operator_residual_after_subtracting_eigenvalue:
+    - - '0'
+    - - '0'
+    - - '0'
+  - name: relative_lock_partner
+    vector: '[sech(w/ell)^2/ell,-sech(w/ell)^2/ell,0]'
+    m_squared: 2*lamN
+    operator_residual_after_subtracting_eigenvalue:
+    - - '0'
+    - - '0'
+    - - '0'
+  - name: tau_source_tilt
+    m_squared: lamTau
+    operator_residual_after_subtracting_eigenvalue:
+    - - '0'
+    - - '0'
+    - - '0'
+  continuum_threshold_eta_n: 4/ell**2
+  spectrum_class: normalizable_zero_mode_plus_gap
+goldstone:
+  f0:
+  - - 1/(ell*cosh(w/ell)**2)
+  - - 1/(ell*cosh(w/ell)**2)
+  - - '0'
+  operator_residual:
+  - - '0'
+  - - '0'
+  - - '0'
+  bc_residuals:
+    parity_wall_eta_prime_0: '0'
+    outer_flux_finite_cutoff: -2*sinh(d/ell)/(ell**2*cosh(d/ell)**3)
+    outer_flux_noncompact_limit: '0'
+  N0_norm_integrand: 2/(ell**2*cosh(w/ell)**4)
+  N0_norm_transform_y_density: -2*(y - 1)*(y + 1)/ell
+  N0_norm_cutoff: -4*(tanh(d/ell)**2 - 3)*tanh(d/ell)/(3*ell)
+  N0_norm: 8/(3*ell)
+  shape_norm_transform_y_density: 2*ell*y**2
+  shape_norm: 4*ell/3
+  m_desc_Z2_squared: '0'
+  descendant_numerator_density: '0'
+  descendant_numerator_cutoff: '0'
+  locking_energy:
+    N0prime_over_chi0prime: '1'
+    goldstone_normal_lock_residual: '0'
+    goldstone_tau_residual: '0'
+    flat_direction: true
+source_projections:
+  rho_a: compact normalized 3D source, int d^3x rho_a=1
+  rho_b: top-hat 1/(2*b) for |w|<=b
+  u_E_plus: '[1,1,0]'
+  u_E_minus: '[-1,-1,0]'
+  q_h_plus_density_y: QE/b
+  q_h_minus_density_y: -QE/b
+  q_h_plus: 2*QE*tanh(b/ell)/b
+  q_h_minus: -2*QE*tanh(b/ell)/b
+  q_eff: 2*QE*tanh(b/ell)/b
+  neutral_composite_sum: '0'
+  S_grav_even: top-hat * tanh(w/ell) * [1,1,0], even under Sigma plus w-reflection
+  grav_even_overlap: '0'
+  S_orth_overlap: '0'
+  source_dims:
+    rho_a:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -3
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-3
+    rho_b:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -1
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-1
+    K_w_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -2
+      - -2
+      - 0
+      - 0
+      - 0
+      string: E L^-2 Chi^-2
+    K_parallel_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -2
+      - -2
+      - 0
+      - 0
+      - 0
+      string: E L^-2 Chi^-2
+    M2_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - -2
+      - 0
+      - 0
+      - 0
+      string: E L^-4 Chi^-2
+    S_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E L^-4 Chi^-1
+    G_eta_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - -1
+      - 0
+      - 2
+      - 0
+      - 0
+      - 0
+      string: E^-1 Chi^2
+    Q_E_u_eta:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E Chi^-1
+green_function:
+  construction: G(R,w,w')=sum_n f_n(w) f_n(w') g_n(R)/N_n; p uses the solved normalizable n=0 factor
+  static_zero_mode_kernel_eta_eta: 3/(32*pi*R*ell*cosh(w/ell)**2*cosh(wp/ell)**2)
+  static_shape_mode_kernel_eta_eta: 3*exp(-sqrt(3)*R/ell)*tanh(w/ell)*tanh(wp/ell)*sech(w/ell)*sech(wp/ell)/(16*pi*R*ell)
+  static_relative_mode_kernel_eta_eta: 3*exp(-sqrt(2)*R*sqrt(lamN))*sech(wp/ell)**2/(32*pi*R*ell*cosh(w/ell)**2)
+  static_bound_mode_sum_eta_eta: 3*(exp(sqrt(2)*R*sqrt(lamN))*exp(sqrt(3)*R/ell) + 2*exp(sqrt(2)*R*sqrt(lamN))*sinh(w/ell)*sinh(wp/ell) + exp(sqrt(3)*R/ell))*exp(-sqrt(2)*R*sqrt(lamN))*exp(-sqrt(3)*R/ell)/(32*pi*R*ell*cosh(w/ell)**2*cosh(wp/ell)**2)
+  static_projected_U_kernel: 3*QE**2*ell*tanh(b/ell)**2/(8*pi*R*b**2)
+  dynamic_projected_U_kernel: 3*QE**2*ell*exp(I*R*omega/cE)*tanh(b/ell)**2/(8*pi*R*b**2)
+  static_trace:
+    route: static_zero_mode_from_transverse_projection
+    transverse_mode: translation_goldstone
+    seed_m_squared: '0'
+    seed_normalization: 8/(3*ell)
+    operator: g''+(2/R)g'-m_0^2*g=0
+    dsolve_general: (C1*R + C2)/R
+    boundary_selection: constant branch removed by decay at infinity; delta normalization fixes the remaining branch coefficient
+    radial_green: 1/(4*pi*R)
+    flow_from_gradient: 1/(4*pi*R**2)
+    flow_exponent_p: '2'
+    residual: '0'
+    source_hash: 3803319d4308dbbec31305f0b384e8e491e0dd8ead374571c68faf11fd86d47a
+    trace_id: 4d886f2e1f6c7c4bf3997743ce138aa054667505868668cd02d265f6d5180bf3
+  dynamic_trace:
+    route: finite_omega_zero_mode_from_transverse_projection
+    transverse_mode: translation_goldstone
+    seed_m_squared: '0'
+    seed_normalization: 8/(3*ell)
+    operator: g''+(2/R)g'+((omega/c_E)^2-m_0^2)*g=0
+    dsolve_general: sqrt(2)*sqrt(cE)*(C1*sin(R*omega/cE) - C2*cos(R*omega/cE))/(sqrt(pi)*R*sqrt(omega))
+    boundary_selection: outgoing Hankel/spherical branch selected from the dsolve Bessel basis before omega->0
+    radial_green_finite_omega: exp(I*R*omega/cE)/(4*pi*R)
+    omega_to_0_limit: 1/(4*pi*R)
+    flow_from_gradient_after_limit: 1/(4*pi*R**2)
+    flow_exponent_p: '2'
+    residual: '0'
+    source_hash: 2a5aade44b9fde5f820a0714b9cc9f179d20fe4385d131fdb5b86f9fb1409547
+    trace_id: e23b69d2a56782839090ff6528af8a66dc13e140a23dee6a7a7b1bdff382f892
+  shape_trace:
+    route: static_massive_mode_from_transverse_projection
+    label: Shape
+    seed_m_squared: 3/ell**2
+    operator: g''+(2/R)g'-m_n^2*g=0
+    dsolve_general: -sqrt(2)*3**(3/4)*I*I**(3/2)*sqrt(ell)*(C1*sinh(sqrt(3)*R/ell) + I*C2*cosh(sqrt(3)*R/ell))/(3*sqrt(pi)*R)
+    selected_decaying_green: exp(-sqrt(3)*R/ell)/(4*pi*R)
+    residual: '0'
+  relative_trace:
+    route: static_massive_mode_from_transverse_projection
+    label: RelativeLock
+    seed_m_squared: 2*lamN
+    operator: g''+(2/R)g'-m_n^2*g=0
+    dsolve_general: -2**(1/4)*I*I**(3/2)*(C1*sinh(sqrt(2)*R*sqrt(lamN)) + I*C2*cosh(sqrt(2)*R*sqrt(lamN)))/(sqrt(pi)*R*lamN**(1/4))
+    selected_decaying_green: exp(-sqrt(2)*R*sqrt(lamN))/(4*pi*R)
+    residual: '0'
+  massive_terms: shape/relative/tau channels are Yukawa and exponentially suppressed at R>>ell
+static_dynamic_consistency:
+  agree: true
+  p_static: 2
+  p_dynamic: 2
+  static_trace_id: 4d886f2e1f6c7c4bf3997743ce138aa054667505868668cd02d265f6d5180bf3
+  dynamic_trace_id: e23b69d2a56782839090ff6528af8a66dc13e140a23dee6a7a7b1bdff382f892
+  independent_routes: true
+interaction_sign:
+  U_pp: 3*QE**2*ell*tanh(b/ell)**2/(8*pi*R*b**2)
+  U_pm: -3*QE**2*ell*tanh(b/ell)**2/(8*pi*R*b**2)
+  U_pp_sign: 1
+  U_pm_sign: -1
+  like_repel_unlike_attract: true
+  derived_from_solved_G: true
+classifier:
+  main_inputs:
+    normalizable_zero_mode: true
+    p_static: '2'
+    p_dynamic: '2'
+    q_eff: 2*QE*tanh(b/ell)/b
+    m_desc_squared: '0'
+    U_pp_sign: 1
+    U_pm_sign: -1
+  self_test:
+    classifier_main: THROAT_ELECTRIC_LOCALIZED_COULOMB
+    FAIL_YUKAWA: FAIL_YUKAWA
+    FAIL_PINNED_BRANON: FAIL_PINNED_BRANON
+    FAIL_DELOCALIZED_BULK_1_OVER_R3: FAIL_DELOCALIZED_BULK_1_OVER_R3
+    FAIL_NO_MONOPOLE: FAIL_NO_MONOPOLE
+    FAIL_GHOST_INSTABILITY: FAIL_GHOST_INSTABILITY
+  labels:
+  - THROAT_ELECTRIC_LOCALIZED_COULOMB
+  - FAIL_DELOCALIZED_BULK_1_OVER_R3
+  - FAIL_GHOST_INSTABILITY
+  - FAIL_NO_MONOPOLE
+  - FAIL_PINNED_BRANON
+  - FAIL_YUKAWA
+fail_witnesses:
+  FAIL_YUKAWA:
+    status: FIRED
+    headline: FAIL_YUKAWA
+    ablation: source_only_relative_tilt_u_E=e_tau
+    m_src_squared: lamTau
+    tail: exp(-R*sqrt(lamTau))/(4*pi*R)
+    classifier_input:
+      source_m_squared: lamTau
+      source_zero_mode_overlap: '0'
+      source_mode_overlap: '1'
+      source_mode_residual:
+      - - '0'
+      - - '0'
+      - - '0'
+      derived_tail: yukawa
+  FAIL_PINNED_BRANON:
+    status: FIRED
+    headline: FAIL_PINNED_BRANON
+    ablation: add_pathA35_style_V_conf_curvature
+    m_desc_Z2_squared: '0'
+    pinning_numerator: 8*Omega35**2/(3*ell)
+    Omega_w_35_squared: Omega35**2
+    m_desc_conf_squared: Omega35**2
+    tail: exp(-Omega35*R)/(4*pi*R)
+  FAIL_DELOCALIZED_BULK_1_OVER_R3:
+    status: FIRED
+    headline: FAIL_DELOCALIZED_BULK_1_OVER_R3
+    ablation: noncompact_anti_localizing_operator_exp_2kw_w_K_parallel_with_kw=3/ell
+    k_w: 3/ell
+    asymptotic_norm_exponent: 2/ell
+    zero_mode_norm_cutoff: 2*(Y**4 + 8*Y**3 + 42*Y**2 + 96*Y*log(1 - Y) - 99*Y - 96*log(1 - Y))/(3*ell*(Y - 1))
+    zero_mode_norm: oo
+    continuum_green: 1/(4*pi*R**2)
+    computed_p: 3
+  FAIL_NO_MONOPOLE:
+    status: FIRED
+    headline: FAIL_NO_MONOPOLE
+    ablation: S_orth=S-f0<f0,S>/<f0,f0>
+    charge_part: 2*QE*tanh(b/ell)/b
+    subtraction_part: 2*QE*tanh(b/ell)/b
+    q_eff: '0'
+    coulomb_term: '0'
+  FAIL_GHOST_INSTABILITY:
+    status: FIRED
+    headline: FAIL_GHOST_INSTABILITY
+    ablation: flip_source_overlapping_K_parallel_diagonal_signs
+    ghost_norm: -8/(3*ell)
+    G0_sign: -1
+    U_pp: -3*QE**2*ell*tanh(b/ell)**2/(8*pi*R*b**2)
+    U_pm: 3*QE**2*ell*tanh(b/ell)**2/(8*pi*R*b**2)
+    classifier_input:
+      U_pp_sign: -1
+      U_pm_sign: 1
+  FAIL_GRAVITY_MIXING:
+    status: FIRED
+    headline: FAIL_GRAVITY_MIXING
+    ablation: S_mass=S_grav_even+epsMix*S_charge_plus
+    pure_even_density_y: QE*y/b
+    pure_even_overlap: '0'
+    mixed_overlap: 2*QE*epsMix*tanh(b/ell)/b
+    classifier_input: gravity_mixes_with_h
+dimensional_firewall:
+  pass: true
+  checked_expression_count: 22
+  records:
+  - category: E_quad
+    name: eta_w_gradient
+    expression: K_w,eta (partial_w eta)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: eta_parallel_gradient
+    expression: K_parallel,eta (nabla eta)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: eta_mass
+    expression: M2_eta eta^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: S_eta_Psi
+    expression: S_eta eta d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: rho_a_rho_b_u_eta
+    expression: Q_E rho_a rho_b u_eta
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E L^-4 Chi^-1
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E L^-4 Chi^-1
+    status: PASS
+  - category: E_quad
+    name: n_w_gradient
+    expression: K_w,n (partial_w n)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: n_parallel_gradient
+    expression: K_parallel,n (nabla n)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: n_mass
+    expression: M2_n n^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: S_n_Psi
+    expression: S_n n d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: rho_a_rho_b_u_n
+    expression: Q_E rho_a rho_b u_n
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - 0
+      - -1
+      - 0
+      - 0
+      string: E L^-4 N^-1
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - 0
+      - -1
+      - 0
+      - 0
+      string: E L^-4 N^-1
+    status: PASS
+  - category: E_quad
+    name: tau_w_gradient
+    expression: K_w,tau (partial_w tau)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: tau_parallel_gradient
+    expression: K_parallel,tau (nabla tau)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_quad
+    name: tau_mass
+    expression: M2_tau tau^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: S_tau_Psi
+    expression: S_tau tau d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: source
+    name: rho_a_rho_b_u_tau
+    expression: Q_E rho_a rho_b u_tau
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - 0
+      - 0
+      - -1
+      - 0
+      string: E L^-4 Tau^-1
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - 0
+      - 0
+      - -1
+      - 0
+      string: E L^-4 Tau^-1
+    status: PASS
+  - category: E_lock
+    name: normal_lock_difference
+    expression: (N0'/chi0') eta has n dimension
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      string: N
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      string: N
+    status: PASS
+  - category: E_lock
+    name: normal_lock_energy
+    expression: Lambda_N (n-(N0'/chi0') eta)^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_lock
+    name: tau_lock_energy
+    expression: Lambda_tau tau^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: E_pin
+    name: pinning_curvature
+    expression: DeltaM_conf eta^2 d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: Green
+    name: G_eta_eta_response
+    expression: eta = int G_eta_eta S_eta d^4x
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      string: Chi
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      string: Chi
+    status: PASS
+  - category: U_int
+    name: eta_pair_energy
+    expression: int S_eta G_eta_eta S_eta d^4x d^4x'
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      string: E
+    status: PASS
+  - category: spectrum
+    name: m_n_squared
+    expression: m_n^2 = O/K_parallel
+    dimension:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -2
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-2
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -2
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-2
+    status: PASS
+  ablations:
+  - category: ablation
+    name: omit_rho_b_from_source
+    expression: Q_E rho_a u_eta
+    actual:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -3
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E L^-3 Chi^-1
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 1
+      - -4
+      - -1
+      - 0
+      - 0
+      - 0
+      string: E L^-4 Chi^-1
+    status: FIRED
+  - category: ablation
+    name: incompatible_K_parallel_weight
+    expression: O/K_parallel_bad
+    actual:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -3
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-3
+    expected:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - -2
+      - 0
+      - 0
+      - 0
+      - 0
+      string: L^-2
+    status: FIRED
+  - category: ablation
+    name: drop_N0prime_over_chi0prime
+    expression: n - eta
+    left:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      string: N
+    right:
+      basis:
+      - E
+      - L
+      - Chi
+      - N
+      - Tau
+      - Q
+      powers:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      string: Chi
+    status: FIRED
+engine_agreement:
+  status: ENGINE_AGREE
+  checked_quantities:
+  - K_w_11
+  - K_parallel_11
+  - M_eta_eta
+  - M_eta_n
+  - M_tau_tau
+  - O_f0_eta
+  - O_f0_n
+  - O_f0_tau
+  - N0_norm
+  - m_desc_Z2_squared
+  - m_desc_conf_squared
+  - shape_mode_m_squared
+  - relative_tilt_eigenvalue
+  - tau_source_eigenvalue
+  - q_eff
+  - q_h_plus
+  - q_h_minus
+  - neutral_composite_sum
+  - grav_even_overlap
+  - grav_mix_overlap
+  - no_monopole_overlap
+  - p_static
+  - p_dynamic
+  - green_zero_projected_static
+  - green_zero_projected_dynamic
+  - U_pp_sign
+  - U_pm_sign
+  - ghost_norm
+  - ghost_U_pp_sign
+  - ghost_U_pm_sign
+  - anti_norm_diverges
+  - delocalized_p
+  - FAIL_YUKAWA_fired
+  - FAIL_PINNED_BRANON_fired
+  - FAIL_DELOCALIZED_BULK_1_OVER_R3_fired
+  - FAIL_NO_MONOPOLE_fired
+  - FAIL_GHOST_INSTABILITY_fired
+  - FAIL_GRAVITY_MIXING_fired
+  - headline_is_pass
+  - dim_omit_rho_b_fired
+  - dim_bad_K_parallel_fired
+  - dim_drop_lock_ratio_fired
+  sympy_expression_digest: f0306809e559298ab35ce5bed2db79711640d9bc3aef7e459927eece35c046df
+  mathematica_status: timeout 600 math -script software/stage1_solver/tools/pathA_38_throat_body_electric.wl exited 0
+  mathematica_exprs:
+    K_w_11: '1'
+    K_parallel_11: '1'
+    M_eta_eta: (ell^2*lamN + 6*Tanh[w/ell]^2 - 2)/ell^2
+    M_eta_n: -lamN
+    M_tau_tau: lamTau
+    O_f0_eta: '0'
+    O_f0_n: '0'
+    O_f0_tau: '0'
+    N0_norm: (8/3)/ell
+    m_desc_Z2_squared: '0'
+    m_desc_conf_squared: Omega35^2
+    shape_mode_m_squared: 3/ell^2
+    relative_tilt_eigenvalue: 2*lamN
+    tau_source_eigenvalue: lamTau
+    q_eff: 2*QE*Tanh[b/ell]/b
+    q_h_plus: 2*QE*Tanh[b/ell]/b
+    q_h_minus: -2*QE*Tanh[b/ell]/b
+    neutral_composite_sum: '0'
+    grav_even_overlap: '0'
+    grav_mix_overlap: 2*QE*epsMix*Tanh[b/ell]/b
+    no_monopole_overlap: '0'
+    p_static: '2'
+    p_dynamic: '2'
+    green_zero_projected_static: (3/8)*QE^2*ell*Tanh[b/ell]^2/(Pi*R*b^2)
+    green_zero_projected_dynamic: (3/8)*QE^2*ell*Exp[I*R*omega/cE]*Tanh[b/ell]^2/(Pi*R*b^2)
+    U_pp_sign: '1'
+    U_pm_sign: '-1'
+    ghost_norm: -(8/3)/ell
+    ghost_U_pp_sign: '-1'
+    ghost_U_pm_sign: '1'
+    anti_norm_diverges: '1'
+    delocalized_p: '3'
+    FAIL_YUKAWA_fired: '1'
+    FAIL_PINNED_BRANON_fired: '1'
+    FAIL_DELOCALIZED_BULK_1_OVER_R3_fired: '1'
+    FAIL_NO_MONOPOLE_fired: '1'
+    FAIL_GHOST_INSTABILITY_fired: '1'
+    FAIL_GRAVITY_MIXING_fired: '1'
+    headline_is_pass: '1'
+    dim_omit_rho_b_fired: '1'
+    dim_bad_K_parallel_fired: '1'
+    dim_drop_lock_ratio_fired: '1'
+provenance_split:
+  derived_symbolic:
+  - transverse spectrum
+  - zero-mode normalizability
+  - radial p_static/p_dynamic
+  - source projections
+  - U signs
+  computed_ablations:
+  - FAIL_YUKAWA
+  - FAIL_PINNED_BRANON
+  - FAIL_DELOCALIZED_BULK_1_OVER_R3
+  - FAIL_NO_MONOPOLE
+  - FAIL_GHOST_INSTABILITY
+  - FAIL_GRAVITY_MIXING
+  dimensional_firewall: symbolic dimensional algebra plus three negative controls
+  deferred_or_calibrated:
+  - full nonlinear throat source compactness
+  - operator parity mixing deltaO
+  - Q_E calibration
+run_commands:
+  sympy: timeout 600 python3 software/stage1_solver/tools/pathA_38_throat_body_electric_sympy.py
+  mathematica: timeout 600 math -script software/stage1_solver/tools/pathA_38_throat_body_electric.wl
+run_statuses:
+  sympy_exit_status: 0
+  mathematica_exit_status: 0

@@ -77,7 +77,14 @@ verification agents → user methodology call (derive the emergent constants bef
 >   throat is 4D). ⭐ NEW: **charge = interaction of two throats' 4D BODIES beyond the mouth**; gravity = strictly one-way drain (no return
 >   through throat; return=`S_leakage`). Charge crux RE-HOMED to the THROAT/BULK sector (Gate-T): does the 4D throat body give a
 >   **brane-localized `1/r²`** (like pathA_29 gravity) with `±w` sign. `pathA_37` flow-gate = RETIRED. Canonical = `conceptual_foundation.md`
->   §3/§4 ⭐ v7. Artifacts UNCOMMITTED: `pathA_36_c5_*`, `pathA_35_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
+>   §3/§4 ⭐ v7. **⭐⭐ RESOLVED 2026-07-03 — `pathA_38` EXECUTED = `THROAT_ELECTRIC_LOCALIZED_COULOMB` (EARNED PASS, tri-reviewed).**
+>   The mediator is the **gapless transverse-embedding/orientation-lock Goldstone `h`** (NOT the gapped free director); DERIVED = {`p=2`
+>   localization via normalizable `sech²` zero mode + delocalized→`p=3` counterfactual, like-repel sign, charge≠mass by `w→−w` parity};
+>   CALIBRATED = {`Q_E`, nonzero-monopole}; SIM-DEFERRED = {operator-parity-mixing, source-compactness, nonlinear interior}. ⚠️ 1st run
+>   was a pass-by-construction RIG (hardcoded `1/(4πR)`, unable to FAIL) — CAUGHT by fresh adversarial-with-ablation, REMEDIATED to derive
+>   localization from the transverse-mode projection + empirically able-to-fail (9/9), re-tri-reviewed CLEAN. Directive commit `2c5fe4f7`;
+>   deliverables `tools/pathA_38_throat_body_electric_{sympy.py,.wl}` + `reports/pathA_38_*`. **3 of 4 sectors EARNED (gravity/light/charge);
+>   next = magnetism (close Maxwell) + `λγ` consistency knit.** Artifacts UNCOMMITTED: `pathA_36_c5_*`, `pathA_35_*`; process = `docs/development_pipeline.md`. **Gate-6 Tier-A deferred** as an optional cap (likely re-confirms the `Z0_ret,Z1_ret` selector / `L/a` need the
 >   sim-deferred full solve). Full road = `docs/development_plan.md`; brane resume = [[project-brane-existence-defect-structure]].
 >   **✅ Tracked debt RESOLVED (2026-06-26):** the Gate-1–3 dim checks (`pathA_30/31/32`) were retrofitted (real-expression +
 >   able-to-fail + dual-engine; checks out).

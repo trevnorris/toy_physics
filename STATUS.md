@@ -1,7 +1,7 @@
 # STATUS — where the Path-A program is (single front door)
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
-Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-06-26.**
+Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-03.**
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -10,7 +10,32 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ⭐⭐ LATEST STATE (2026-06-26) — READ THIS FIRST
+## ▶ RESUME HERE (2026-07-03, post-`/compact`) — magnetism is next
+
+**⭐ 3 OF 4 FORCE-SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` localization + the PN ladder), light (`pathA_36`),
+and electric charge (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, just banked — commit `797f4d88`) — each a distinct thing the
+same medium's brane+bulk does, all sharing **one localization principle** (a normalizable transverse zero mode → `1/r²`), split by
+`w→−w` **parity** (even drain = gravity, odd embedding-Goldstone = charge → that parity is *why* charge ≠ mass). **The clean
+end-to-end derivation chain = `docs/conceptual_foundation.md` → ⭐ THE FOUR-SECTOR CHAIN** (read it — it maps brane+bulk → all four
+sectors with each link's status).
+
+**▶ NEXT = MAGNETISM (close Maxwell).** Draft carry-over spec: `software/stage1_solver/directives/pathA_39_magnetism_close_maxwell.md`.
+The gate: a MOVING throat → brane swirl/vorticity → **B**, the Lorentz force, the curl equations, with the right `E↔B` normalization —
+largely DOWNSTREAM of `pathA_38` (charge/E) + `pathA_36` (light/the EM wave). **First task = resolve its §2 setup sub-questions**
+(what the swirl field is + how a moving throat sources it; does E+B close full Maxwell; the Lorentz force; `λγ` consistency), THEN the
+gauntlet (Codex design-review → GLM → dual-engine → tri-review), reusing the pathA_38/pathA_29 machinery.
+**⚠️ REMEMBER the pathA_38 lesson:** a clean PASS can be **pass-by-construction** — pathA_38's first run hardcoded `1/(4πR)` and was
+structurally unable to FAIL; only the **adversarial-with-ablation** leg (force bad inputs → the classifier must EMIT a `FAIL`, not
+raise) caught it. Make every gate empirically able-to-fail ([[feedback-negative-verdict-short-circuit]]).
+
+**▶ THEN = THE CONSISTENCY KNIT → "fully formed."** After all four sectors: (a) the sharp `λγ = c_γ/c_s = 1` cone-lock test (still
+OPEN — do all four live in ONE parameter set?); (b) the NG cross-consistency gauntlet; (c) assemble the end-to-end chain into the
+central `pde_ledger` (the calibrated PDE delivering GR+EM). This closes *"four sectors that each work"* → *"one self-consistent
+brane+bulk model."* (Completes the SPEC; the full nonlinear sim stays deferred — a no-go is still possible.)
+
+---
+
+## ⭐⭐ GRAVITY-SECTOR REFERENCE (2026-06-26) — still valid
 
 **DYNAMICAL-GRAVITY SECTOR = BUILT & GR-MATCHED; speed-of-gravity / aberration worry RESOLVED.** The conservative PN two-body ladder
 **1PN→4PN + 2.5PN radiation is already derived, audited, and GR-matched** (calibrated / controlled-reduction) in `research/4d_*pn*`.

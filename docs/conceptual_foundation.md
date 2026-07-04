@@ -45,6 +45,45 @@ global `S_leakage`. Full detail in the ⭐ v7 block in §3 (+ §4). The v6 *achi
 
 ---
 
+## ⭐ THE FOUR-SECTOR CHAIN — how ONE brane+bulk yields gravity + light + electric + magnetism (2026-07-03 status map)
+
+**This is the spine of the whole program: one medium, organized into a brane+bulk, from which the four forces emerge as distinct
+things that the SAME structure does. Read this as the derivation chain + where each link stands.**
+
+**THE FOUNDATION (the brane+bulk) — now DEFINED (was imposed a year ago).** One compressible superfluid in 4+1D, in two phases: an
+**ordered, shear-supporting phase = the brane** (our 3D space, a codim-1 wall; order field `χ_B` — a genuine self-localizing Z₂
+material-state wall, rung-W-passed: stable + light-permitting) and a **de-structured, shear-free phase = the bulk** (`w≠0`). **Throats**
+are open punctures where brane-ordered medium de-structures into the bulk (phase-conversion sites). Everything below hangs off this one
+structure.
+
+1. **GRAVITY = the throat drain (one-way inflow).** A throat swallows medium (de-structures it into the bulk; no return through the
+   throat — return = the separate global `S_leakage`). The inflow `v_r` IS the field; a *change* in it propagates at `c_s`. Localizes to
+   **`1/r²`** via a normalizable transverse zero mode through the finite slab (RS-like). Parity: the **EVEN** channel. **STATUS: EARNED**
+   — PN ladder 1PN→4PN + 2.5PN GR-matched (`research/4d_*pn*`) + `pathA_29` localization (`RETURN_RESIDUAL_PREDICTION`).
+2. **LIGHT = the brane's in-plane shear wave** (MacCullagh rotational-elastic). 2 transverse polarizations at `c_γ²=μ_R/ρ_br`; confined
+   to the brane because the bulk is shear-free. **STATUS: EARNED** — `pathA_36` (dual-engine + tri-reviewed): the medium demonstrably
+   carries 2 transverse photons (first time).
+3. **ELECTRIC CHARGE = the interaction of two throats' 4D BODIES beyond the mouth.** Sign = `±w` puncture direction. Mediator = the
+   **gapless transverse-embedding/orientation-lock Goldstone `h`** (wall displacement into `w`, arrows locked to the normal). Localizes
+   to **`1/r²` Coulomb** by the SAME principle as gravity (normalizable `sech²` zero mode); like-repel/unlike-attract from `G₀>0`.
+   Parity: the **ODD** channel — which is *exactly why charge ≠ mass* (`⟨f₀,S_grav_even⟩=0` by `w→−w`). **STATUS: EARNED** — `pathA_38`
+   = `THROAT_ELECTRIC_LOCALIZED_COULOMB` (dual-engine + tri-reviewed). DERIVED{p=2, sign, parity} + CALIBRATED{`Q_E`, that a throat
+   sources a nonzero monopole} + SIM-DEFERRED{operator-level parity mixing, source compactness, nonlinear interior}.
+4. **MAGNETISM = the swirl/vorticity of the brane.** A MOVING charge (moving throat) drags/twists the surrounding brane → the magnetic
+   field. **STATUS: NEXT (not yet gated).** The real gate is **"close Maxwell"**: moving throat → **B**, the Lorentz force, the curl
+   equations, with the right `E↔B` normalization — largely DOWNSTREAM of `pathA_38` (charge/E) + `pathA_36` (light/the EM wave). Draft
+   spec: `software/stage1_solver/directives/pathA_39_magnetism_close_maxwell.md`.
+
+**THE CLOSING STEP (after magnetism) — the CONSISTENCY KNIT → "fully formed."** Four sectors each passing in isolation is NOT the same
+as one self-consistent model. The knit: (a) the sharp cross-sector test **`λγ = c_γ/c_s = 1`** (the GW170817 cone-lock — do light and
+gravity travel at the same speed in ONE parameter set? — still OPEN); (b) the NG cross-consistency gauntlet (all sector couplings
+mutually consistent, no contradiction); (c) **assemble the end-to-end chain into the central `pde_ledger`** (the calibrated PDE
+delivering GR + EM). Completing this turns *"the four forces each work"* into *"one fully-formed brane+bulk model."* Honest boundary
+([[project-simulation-deferred-complete-pde-strategy]]): this completes the **spec**; the full nonlinear sim stays deferred, so
+sim-dependent questions stay posed and a no-go is still possible.
+
+---
+
 ## 0. The non-negotiable conceptual rules (how to think about this model)
 
 These are load-bearing. Violating them is the recurring failure mode (importing standard-physics habits that don't fit).

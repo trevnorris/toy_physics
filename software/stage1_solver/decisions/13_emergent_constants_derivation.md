@@ -40,10 +40,14 @@ verification agents → user methodology call (derive the emergent constants bef
 >   NOT exact Maxwell.** Able-to-fail: clean→`FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY`, large-`C_hu`→UNSTABLE,
 >   remove-`h`→`FIELD_EXACT_MAXWELL_STRUCTURE`, corrupt→`UNDERDETERMINED`. Spec close (sim-deferred: `a_L`, `C_hu`, contamination
 >   magnitude, `c_E=c_γ`/`λγ`). Artifacts `{directives,tools,reports}/pathA_39_stage4_*`.
-> - **▶ NEXT = the CONSISTENCY KNIT** (`λγ=c_γ/c_s=1` AND `c_E=c_γ`) + the NG cross-consistency gauntlet + assemble the four-sector
->   chain into the central `pde_ledger` → "one self-consistent brane+bulk model." Honest landing (sector): magnetism = a real fourth
->   force + a characterized scalar departure, NOT clean Maxwell. Follow-up = the charge-coupled "extra scalar" (task #110 +
->   `notes/pathA_39_charge_coupled_scalar_followup.md`). **Stages 0-2 `9e1a6075`, Stage 3 `7fc12bab`, Stage 4 this milestone (pushed).**
+> - **▶ NEXT (session `/compact`-ed here 2026-07-04) = the CONSISTENCY KNIT. Running-start handoff =
+>   `notes/consistency_knit_handoff.md` (read first).** (a) speed cone-lock `λγ=c_γ/c_s=1` AND `c_E=c_γ` — DERIVED or CALIBRATED?
+>   (`λγ`=`BETA_GENUINE_GAP`; `λγ⁵` in the `pathA_22b` verdict count below; `c_E=c_γ`=retired `η_T=1`; pathA_39 preferred-frame
+>   unless `c_E=c_γ`); (b) NG1–NG5 cross-consistency (`directives/pathA_25_*`); (c) assemble the four-sector chain into
+>   `research/pde_ledger/`. **FIRST action = SCOPE with Codex (able-to-fail: a NO-GO if the four can't share one param set =
+>   first-class falsification) → directive → gauntlet → user gate.** Honest landing (sector): magnetism = a real fourth force + a
+>   characterized scalar departure, NOT clean Maxwell. Then task #110 (the charge-coupled "extra scalar",
+>   `notes/pathA_39_charge_coupled_scalar_followup.md`). **Committed+pushed: Stages 0-2 `9e1a6075`, Stage 3 `7fc12bab`, Stage 4 `29dcd4fa`.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN

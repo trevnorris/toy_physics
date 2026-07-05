@@ -51,8 +51,8 @@ verification agents → user methodology call (derive the emergent constants bef
 >   here.** Gauntlet: scope Codex×3+GLM; sequencing Claude↔Codex→option(iv); directive Codex+**GLM-5.2(opencode)** (BLOCKER = SHARED_CALIBRATION
 >   provenance leak + NITs folded)→Codex-green; dual-engine `ENGINE_AGREE(150)`; tri-review CLEAN (arbiter + `FIDELITY_CLEAN` +
 >   `ADVERSARIAL_SOUND`/6 ablations). Artifacts `{directives,tools,reports}/pathA_40_cone_lock*`.
->   **(b) NG5 `SECOND_MEDIUM_DRIFT` (`pathA_41`) — DONE; honest verdict `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}`; ⚠ remediated-gate re-tri-review
->   PENDING.** Gauntlet green (scope Codex×2+GLM-5.2; directive Codex+GLM-5.2, incl. forward re-open trigger). Build landed
+>   **(b) NG5 `SECOND_MEDIUM_DRIFT` (`pathA_41`) — DONE + re-tri-reviewed CLEAN + hardened; BANKED EARNED (2026-07-05); honest verdict
+>   `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}`.** Gauntlet green (scope Codex×2+GLM-5.2; directive Codex+GLM-5.2, incl. forward re-open trigger). Build landed
 >   `ONE_MEDIUM_CONDITIONAL`/drift-0 → **adversarial-with-ablation caught a RIG** (hardcoded origins; `registered_route_for` dead code; AB2
 >   deleting the registry left the verdict unchanged). Claude↔Codex **framing re-exam** (`_scratch/pathA_41_framing_codex.md`) corrected the
 >   routing: `ρ_br,μ_R`→the *pending* Route-A (NOT the *closed* smectic B4 — GLM's "overcount" was a red herring conflating pathA_25 smectic
@@ -62,9 +62,14 @@ verification agents → user methodology call (derive the emergent constants bef
 >   INCOMPLETE**; every param ∈ {4D bulk, 3D brane surface, throat/embedding seam}, NO fourth arena (location-closure verified). `ρ_br/μ_R`
 >   reductions REGISTERED-PENDING (Route-A); the drift trio's NOT-YET-REGISTERED. Named future routes = (i) compression 4D→3D reduction for
 >   `ρ_B0,χ_c`, (ii) embedding-overlap for `C_hu` (hard deferred nonlinear solves; could no-go). Gate REMEDIATED to emit this + the
->   interpretation; **full fresh-agent re-tri-review of the remediated gate still OWED.** **(c)** assemble the chain into `research/pde_ledger/`
+>   interpretation. ✅ **RE-TRI-REVIEW DONE + CLEAN (2026-07-05):** fresh fidelity = `FIDELITY_CLEAN`; fresh adversarial = `ADVERSARIAL_CLEAN`
+>   (able-to-PASS: register a real route → `ρ_B0,χ_c` LEAVE the drift set → NOT rigged toward drift). Hardening fold caught a real
+>   reproducibility bug (tool read its own expected verdict from a gitignored `_scratch` doc), made location-closure ("no fourth arena")
+>   COMPUTED + able-to-fail (bad production-row location now RAISES — teeth proven), honest-ified the Dual-Engine Split prose; fresh
+>   spot-check = `HARDENING_CLEAN`, `ENGINE_AGREE 211`; tool no longer depends on `_scratch`. (Process: Codex once gamed a grep acceptance
+>   by concat-splitting a literal → caught + reverted.) **(c)** assemble the chain into `research/pde_ledger/`
 >   (resolves two-`χ_Q`) — after #110. **▶ NEXT (post-compact) = task #110** (the charge-coupled extra scalar — falsifiable break vs
->   naturally-hidden). **Committed: cone-lock `9bb58a97`; pathA_41 NG5 = this commit; earlier `9e1a6075`/`7fc12bab`/`29dcd4fa` pushed,
+>   naturally-hidden). **Committed: cone-lock `9bb58a97`; pathA_41 NG5 + hardening = this commit; earlier `9e1a6075`/`7fc12bab`/`29dcd4fa` pushed,
 >   `b0ad3540`+`9bb58a97`+this local.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**

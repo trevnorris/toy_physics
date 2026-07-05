@@ -5,7 +5,7 @@ SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
 Primary verdict: `SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})`.
 Active irreducible set (computed): `['rho_B0', 'chi_c', 'C_hu']`.
 Lineage finding: `NO_OVERCOUNT_ROUTE_A_PENDING`.
-Engine agreement: `ENGINE_AGREE` over `201` compared scalar/audit quantities.
+Engine agreement: `ENGINE_AGREE` over `211` compared scalar/audit quantities.
 
 ## Interpretation
 
@@ -90,13 +90,16 @@ Reduction status:
 | `calibration_ablation_Q_E` | `True` | SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,Q_E}) |
 | `irreducible_synthetic` | `True` | SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active}) |
 | `reducible_derived_synthetic` | `True` | SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) |
+| `location_closure_out_of_arena` | `True` | no_fourth_arena True -> False |
 | `contradiction` | `True` | SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> NO_GO(cone-lock-feedback) |
 | `residual_multiplier_ablation` | `True` | lineage SAME when residual=1; lineage DIFFERENT when residual=Xi_residual |
 | `route_eval_recorded_for_all_active_rows` | `True` | all active production rows carry RouteEvaluation records |
 
 ## Dual-Engine Split
 
-- SymPy and Mathematica independently compute MLT dimension closure, residual lineage states, RouteEvaluation validity, origin classification, active irreducibles, and control transitions.
+- Dual-engine derived: MLT dimension arithmetic; full RouteEvaluation conjuncts; origin classification; active irreducibles; location-closure/no-fourth-arena predicate; key source-mutation controls; and the pathA_40 current non-entailment witness.
+- Single-engine extraction/bookkeeping: source line references, lineage narration, static interpretation prose, named future-route prose, control narration text, YAML/report assembly, and provenance-audit packaging.
+- The residual-multiplier check (section 7a) is single-engine in the Mathematica tool and vacuous in the production DIFFERENT-objects branch; it is not claimed as an independently re-derived residual lineage state.
 - The contradiction control is gated on a recomputed pathA_40 `freedom_tie` UNSAT result, not on a typed no-go flag.
 
 Run commands:
@@ -107,4 +110,4 @@ timeout 600 math -script software/stage1_solver/tools/pathA_41_ng5_second_medium
 timeout 600 python3 software/stage1_solver/tools/pathA_41_ng5_second_medium_drift_sympy.py --compare
 ```
 
-Controls fired: `AB_delete_registry, route_blank_Route_A, route_field_blank_Route_A_target_blind, route_field_blank_Route_A_missing_objects, calibration_ablation_Q_E, irreducible_synthetic, reducible_derived_synthetic, contradiction, residual_multiplier_ablation, route_eval_recorded_for_all_active_rows`.
+Controls fired: `AB_delete_registry, route_blank_Route_A, route_field_blank_Route_A_target_blind, route_field_blank_Route_A_missing_objects, calibration_ablation_Q_E, irreducible_synthetic, reducible_derived_synthetic, location_closure_out_of_arena, contradiction, residual_multiplier_ablation, route_eval_recorded_for_all_active_rows`.

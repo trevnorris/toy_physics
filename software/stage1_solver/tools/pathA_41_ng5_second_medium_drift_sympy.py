@@ -26,10 +26,10 @@ SCRIPT_PATH = Path(__file__).resolve()
 STAGE1_ROOT = SCRIPT_PATH.parents[1]
 REPO_ROOT = STAGE1_ROOT.parents[1]
 REPORTS = STAGE1_ROOT / "reports"
-SCRATCH = STAGE1_ROOT / "_scratch"
+RUN_OUT = STAGE1_ROOT / "_scratch"
 
-SYM_OUT = SCRATCH / "pathA_41_ng5_second_medium_drift_sympy.json"
-WL_OUT = SCRATCH / "pathA_41_ng5_second_medium_drift_mathematica.json"
+SYM_OUT = RUN_OUT / "pathA_41_ng5_second_medium_drift_sympy.json"
+WL_OUT = RUN_OUT / "pathA_41_ng5_second_medium_drift_mathematica.json"
 YAML_OUT = REPORTS / "pathA_41_ng5_second_medium_drift_results.yaml"
 REPORT_OUT = REPORTS / "pathA_41_ng5_second_medium_drift.md"
 
@@ -38,6 +38,8 @@ WL_SCHEMA = "pathA_41_ng5_second_medium_drift_mathematica/v2"
 
 ALLOWED_ROUTE_STATUSES = {"SOLVED_PASS", "REGISTERED_DEFERRED"}
 REJECTED_ROUTE_STATUSES = {"FAILED", "BY_TUNING", "ABSENT", "PROMISSORY_ONLY"}
+ARENAS = {"4D bulk", "3D brane surface", "throat/embedding seam"}
+ARENAS_ORDER = ["4D bulk", "3D brane surface", "throat/embedding seam"]
 
 
 class NoAliasDumper(yaml.SafeDumper):
@@ -175,6 +177,7 @@ class CaseSpec:
     remove_calibrated_geometry: set[str] = field(default_factory=set)
     add_synthetic_irreducible: bool = False
     add_synthetic_reducible: bool = False
+    add_out_of_arena_row: bool = False
     contradiction: str | None = None
     residual_mode: str = "production"
 
@@ -208,7 +211,6 @@ def source_catalog() -> dict[str, Any]:
     p40_yml = REPORTS / "pathA_40_cone_lock_results.yaml"
     d09 = STAGE1_ROOT / "decisions" / "09_calibrate_predict_methodology.md"
     d14 = STAGE1_ROOT / "decisions" / "14_value_provenance_and_calibration_map.md"
-    framing = STAGE1_ROOT / "_scratch" / "pathA_41_framing_codex.md"
 
     refs = {
         "pathA25_closed": source_ref(p25_status, "no live pathA_25 thread remains", "pathA_25 closed"),
@@ -247,7 +249,6 @@ def source_catalog() -> dict[str, Any]:
         "pathA40_no_go_control": source_ref(p40_md, "freedom_tie", "pathA_40 freedom_tie control"),
         "decision09_calibration": source_ref(d09, "Calibration anchor", "decision 09 calibration anchor"),
         "decision14_calibration": source_ref(d14, "calibration INPUT", "decision 14 calibration input"),
-        "framing_target": source_ref(framing, "SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0, chi_c, C_hu})", "framing target"),
     }
 
     required = [
@@ -426,6 +427,7 @@ def dim_derivations() -> dict[str, Any]:
     bulk_mrho = dadd(DIM_M, DIM_RHO)
     layer_factor = DIM_L
     varrho = dadd(bulk_mrho, layer_factor)
+    rho_br = DIM_SURFACE_INERTIA
     c_e_sq_rho = dadd(dmul(DIM_SPEED, 2), DIM_SURFACE_INERTIA)
     return {
         "bulk_m_times_rho_dim": dim_str(bulk_mrho),
@@ -433,8 +435,8 @@ def dim_derivations() -> dict[str, Any]:
         "varrho_integral_dim": dim_str(varrho),
         "surface_inertia_dim_expected": dim_str(DIM_SURFACE_INERTIA),
         "varrho_equals_surface_inertia_dim": varrho == DIM_SURFACE_INERTIA,
-        "rho_br_source_dim": dim_str(DIM_SURFACE_INERTIA),
-        "rho_br_equals_surface_inertia_dim": True,
+        "rho_br_source_dim": dim_str(rho_br),
+        "rho_br_equals_surface_inertia_dim": rho_br == DIM_SURFACE_INERTIA,
         "c_E_squared_rho_br_dim": dim_str(c_e_sq_rho),
         "mu_R_dim": dim_str(DIM_SURFACE_MODULUS),
         "c_E_squared_rho_br_minus_mu_R_dim_match": c_e_sq_rho == DIM_SURFACE_MODULUS,
@@ -558,6 +560,8 @@ def build_rows(refs: dict[str, str], case: CaseSpec) -> list[RowSource]:
         rows.append(RowSource("xi_active", "synthetic active medium parameter", "1", "synthetic-control-source-fact", "SYNTHETIC_ACTIVE_INPUT", active_medium_competition=True, location="3D brane surface"))
     if case.add_synthetic_reducible:
         rows.append(RowSource("p_syn", "synthetic reducible-derived control parameter", dim_str(DIM_SURFACE_MODULUS), "synthetic-control-source-fact", "SYNTHETIC_EARNED_RELATION", ["p_syn=5*K*rho^4/m"], active_medium_competition=True, location="4D bulk"))
+    if case.add_out_of_arena_row:
+        rows.append(RowSource("loc_sentinel", "synthetic out-of-arena location control row", "1", "synthetic-location-control-source-fact", "BASE_SUBSTRATE", location="unassigned"))
 
     return rows
 
@@ -679,6 +683,25 @@ def route_eval_recorded_for_all_active_rows(rows: list[dict[str, Any]]) -> dict[
     }
 
 
+def location_closure(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    offending = [
+        {
+            "p": row["p"],
+            "location": row.get("location", "unassigned"),
+            "incidence": row["incidence"],
+        }
+        for row in rows
+        if row.get("location", "unassigned") not in ARENAS
+    ]
+    return {
+        "arenas": ARENAS_ORDER,
+        "row_count": len(rows),
+        "no_fourth_arena": len(offending) == 0,
+        "offending_rows": offending,
+        "fact": "Every production row is assigned to one of the three arenas.",
+    }
+
+
 def decide_verdict(rows: list[dict[str, Any]], no_go: dict[str, Any] | None) -> dict[str, Any]:
     sim = sim_deferred_map(rows)
     calibrated = calibrated_map(rows)
@@ -722,15 +745,11 @@ def decide_verdict(rows: list[dict[str, Any]], no_go: dict[str, Any] | None) -> 
     }
 
 
-def interpretation_payload() -> dict[str, Any]:
+def interpretation_payload(closure: dict[str, Any]) -> dict[str, Any]:
     return {
         "interpretation": "ONE_CANDIDATE_MEDIUM_4D_TO_3D_REDUCTION_INCOMPLETE",
         "physical_meaning": "The drift is not a separate substance; it is three unreduced 3D-brane-surface parameters: compression rho_B0, chi_c and embedding-mixing C_hu.",
-        "location_closure": {
-            "arenas": ["4D bulk", "3D brane surface", "throat/embedding seam"],
-            "no_fourth_arena": True,
-            "fact": "Every production row is assigned to one of the three arenas.",
-        },
+        "location_closure": closure,
         "reduction_status": {
             "rho_br": "REGISTERED_PENDING(Route-A)",
             "mu_R": "REGISTERED_PENDING(Route-A)",
@@ -799,6 +818,7 @@ def run_pipeline(case: CaseSpec, catalog: dict[str, Any]) -> dict[str, Any]:
         "lineage_adjudication": lineage_adjudication(case),
         "freedom_states": freedom_states(rows),
         "route_eval_recorded_for_all_active_rows": route_eval_recorded_for_all_active_rows(rows),
+        "location_closure": location_closure(rows),
         "verdict": verdict,
         "forward_reopen_triggers": [
             {"row": p, "registered_solve": route, "trigger": "re-adjudicate on solve"}
@@ -835,6 +855,7 @@ def build_controls(catalog: dict[str, Any], production: dict[str, Any]) -> dict[
         "calibration_ablation_Q_E": CaseSpec("calibration_ablation_Q_E", remove_calibration_anchors={"Q_E"}),
         "irreducible_synthetic": CaseSpec("irreducible_synthetic", add_synthetic_irreducible=True),
         "reducible_derived_synthetic": CaseSpec("reducible_derived_synthetic", add_synthetic_reducible=True),
+        "location_closure_out_of_arena": CaseSpec("location_closure_out_of_arena", add_out_of_arena_row=True),
         "contradiction": CaseSpec("contradiction", contradiction="C_hu_charge_residue_tie"),
     }
     for name, spec in specs.items():
@@ -861,6 +882,15 @@ def build_controls(catalog: dict[str, Any], production: dict[str, Any]) -> dict[
             fired = any(row["p"] == "p_syn" and row["origin_verdict"] == "REDUCIBLE_DERIVED" for row in result["origin_ledger"])
             mutation = "add earned closed relation p_syn=5*K*rho^4/m"
             invariant = "classifier sees SYNTHETIC_EARNED_RELATION"
+        elif name == "location_closure_out_of_arena":
+            prod_closure = production["location_closure"]
+            mutated_closure = result["location_closure"]
+            fired = prod_closure["no_fourth_arena"] is True and mutated_closure["no_fourth_arena"] is False and bool(mutated_closure["offending_rows"])
+            mutation = "add synthetic ledgered row loc_sentinel with location=unassigned"
+            invariant = {
+                "production": prod_closure,
+                "mutated": mutated_closure,
+            }
         elif name == "contradiction":
             fired = compact["verdict"] == "NO_GO(cone-lock-feedback)" and result["p40_no_go_recompute"]["lock_sat_status"] == "UNSAT"
             mutation = "assert C_hu charge-residue tie, then rerun pathA_40 lock+stability SAT"
@@ -873,7 +903,11 @@ def build_controls(catalog: dict[str, Any], production: dict[str, Any]) -> dict[
             "fired": fired,
             "before": prod_compact,
             "after": compact,
-            "expected_transition": f"{prod_compact['verdict']} -> {compact['verdict']}",
+            "expected_transition": (
+                f"no_fourth_arena {production['location_closure']['no_fourth_arena']} -> {result['location_closure']['no_fourth_arena']}"
+                if name == "location_closure_out_of_arena"
+                else f"{prod_compact['verdict']} -> {compact['verdict']}"
+            ),
         }
 
     same = run_pipeline(CaseSpec("residual_same", residual_mode="same_no_residual"), catalog)
@@ -952,6 +986,7 @@ def comparison_payload(results: dict[str, Any]) -> dict[str, Any]:
             "dimension_and_residual": prod["lineage_adjudication"]["dimension_derivation"] | {
                 "residual_multiplier": prod["lineage_adjudication"]["residual_multiplier"],
             },
+            "location_closure": prod["location_closure"],
             "pathA40_current_nonentailment": results["pathA40_nonentailment"]["c_E_squared_rho_br_minus_mu_R_status"],
             "pathA40_current_nonentailment_witness": results["pathA40_nonentailment"]["c_E_squared_rho_br_minus_mu_R_witness_value"],
         },
@@ -977,13 +1012,15 @@ def count_agreements(payload: Any) -> int:
 def build_results() -> dict[str, Any]:
     catalog = source_catalog()
     production = run_pipeline(CaseSpec("production"), catalog)
+    if not production["location_closure"]["no_fourth_arena"]:
+        raise AssertionError(f"production location closure failed: {production['location_closure']['offending_rows']}")
     controls = build_controls(catalog, production)
     results = {
         "schema": SCHEMA,
         "engine": "sympy",
         "production": production,
         "controls": controls,
-        "interpretation": interpretation_payload(),
+        "interpretation": interpretation_payload(production["location_closure"]),
         "extraction_audit": extraction_audit(catalog),
         "pathA40_nonentailment": p40_current_nonentailment(),
         "source_refs": catalog["refs"],
@@ -1035,6 +1072,7 @@ def yaml_results(results: dict[str, Any], agreement: dict[str, Any]) -> dict[str
         "origin_ledger": prod["origin_ledger"],
         "freedom_states": prod["freedom_states"],
         "route_eval_recorded_for_all_active_rows": prod["route_eval_recorded_for_all_active_rows"],
+        "location_closure": prod["location_closure"],
         "pathA40_nonentailment": results["pathA40_nonentailment"],
         "controls": results["controls"],
         "extraction_audit": results["extraction_audit"],
@@ -1072,6 +1110,8 @@ def write_report(results: dict[str, Any], agreement: dict[str, Any]) -> None:
     ]
     for route in interp["named_future_reduction_routes"]:
         lines.append(f"- `{route['name']}` targets `{route['targets']}`: `{route['status']}`.")
+    if interp["location_closure"]["offending_rows"]:
+        lines.append(f"- Location closure offenders: `{interp['location_closure']['offending_rows']}`.")
     lines += [
         "",
         "Reduction status:",
@@ -1111,7 +1151,9 @@ def write_report(results: dict[str, Any], agreement: dict[str, Any]) -> None:
         "",
         "## Dual-Engine Split",
         "",
-        "- SymPy and Mathematica independently compute MLT dimension closure, residual lineage states, RouteEvaluation validity, origin classification, active irreducibles, and control transitions.",
+        "- Dual-engine derived: MLT dimension arithmetic; full RouteEvaluation conjuncts; origin classification; active irreducibles; location-closure/no-fourth-arena predicate; key source-mutation controls; and the pathA_40 current non-entailment witness.",
+        "- Single-engine extraction/bookkeeping: source line references, lineage narration, static interpretation prose, named future-route prose, control narration text, YAML/report assembly, and provenance-audit packaging.",
+        "- The residual-multiplier check (section 7a) is single-engine in the Mathematica tool and vacuous in the production DIFFERENT-objects branch; it is not claimed as an independently re-derived residual lineage state.",
         "- The contradiction control is gated on a recomputed pathA_40 `freedom_tie` UNSAT result, not on a typed no-go flag.",
         "",
         "Run commands:",
@@ -1132,7 +1174,7 @@ def main() -> None:
     parser.add_argument("--compare", action="store_true", help="compare against Mathematica JSON and write final YAML/Markdown")
     args = parser.parse_args()
 
-    SCRATCH.mkdir(parents=True, exist_ok=True)
+    RUN_OUT.mkdir(parents=True, exist_ok=True)
     results = build_results()
     with SYM_OUT.open("w", encoding="utf-8") as fh:
         json.dump(results, fh, indent=2, sort_keys=True)

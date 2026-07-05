@@ -5,7 +5,8 @@
 > (`pathA_40`, `9bb58a97`, tri-reviewed EARNED). (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` (`pathA_41`, `453e342f`) — interpreted as
 > ONE candidate medium whose 4D→3D reduction is INCOMPLETE (NOT two substances; no fourth arena); a build-rig was adversarial-caught + a
 > Claude↔Codex framing re-exam corrected the routing (`ρ_br/μ_R`→pending Route-A; GLM "overcount"=red herring, pathA_35 erratum corrected).
-> ⚠ a full fresh-agent re-tri-review of the remediated `pathA_41` is still OWED.** ▶ **NEXT = task #110** (the charge-coupled extra scalar:
+> ✅ re-tri-review of the remediated `pathA_41` = DONE + CLEAN (2026-07-05: fidelity `FIDELITY_CLEAN` + adversarial `ADVERSARIAL_CLEAN`
+> able-to-PASS + hardening fold `HARDENING_CLEAN` — caught a reproducibility bug + made location-closure able-to-fail); pathA_41 BANKED EARNED.** ▶ **NEXT = task #110** (the charge-coupled extra scalar:
 > does it clearly BREAK the model or is it naturally hidden?), THEN **(c)** the `pde_ledger` assembly. Detail = [[project-brane-existence-defect-structure]]
 > UPDATE 2026-07-04c + `_scratch/pathA_41_framing_codex.md`.
 

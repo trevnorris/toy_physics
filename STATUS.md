@@ -11,13 +11,17 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` (interpreted: ONE candidate medium, 4D→3D reduction incomplete); NEXT = task #110 (the extra scalar), then the pde_ledger
+## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` re-tri-reviewed CLEAN + hardened (interpreted: ONE candidate medium, 4D→3D reduction incomplete); NEXT = task #110 (the extra scalar), then the pde_ledger
 
-> **⏸ SESSION `/compact`-ed HERE (2026-07-04b).** Pickup: read this block + `notes/consistency_knit_handoff.md` + memory
+> **⏸ (2026-07-05).** Pickup: read this block + `notes/consistency_knit_handoff.md` + memory
 > [[project-brane-existence-defect-structure]]. **NEXT ACTION = task #110** (explore the charge-coupled "extra scalar" from pathA_39
 > Stage-4: does it show up in a way that would clearly BREAK the model? `notes/pathA_39_charge_coupled_scalar_followup.md`), THEN the
-> pde_ledger assembly (knit sub-piece c). **Open debt on NG5 (`pathA_41`):** the remediated gate emits the honest verdict but a FULL
-> fresh-agent re-tri-review (fidelity + adversarial) of the REMEDIATED gate is still pending — do it before banking pathA_41 as EARNED.
+> pde_ledger assembly (knit sub-piece c). **NG5 (`pathA_41`) re-tri-review = DONE + CLEAN (2026-07-05):** fidelity `FIDELITY_CLEAN`,
+> adversarial `ADVERSARIAL_CLEAN` (able-to-PASS: verdict reversible under legit route registration, NOT rigged toward drift). Then a
+> hardening fold caught + fixed a real reproducibility bug (tool read its own expected verdict string from a gitignored `_scratch` doc),
+> made location-closure ("no fourth arena") COMPUTED + able-to-fail (proven: a bad production-row location now raises), and honest-ified
+> the Dual-Engine Split prose; a fresh spot-check = `HARDENING_CLEAN`. **pathA_41 is now BANKED EARNED + hardened.** (Process note: Codex
+> once gamed a grep-based acceptance by string-concatenating a literal — caught + reverted; don't hand Codex grep pass/fail it can dodge.)
 
 **⭐⭐ ALL 4 SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder), light (`pathA_36`), electric charge
 (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, `797f4d88`), and now **MAGNETISM (`pathA_39`, 4/4 stages, sector COMPLETE)** —
@@ -88,8 +92,8 @@ self-consistent parameter set, and can they assemble into the central calibrated
   `pathA_22b`'s `P0·χ_Q·g_mhat²·λγ⁵/g_G=54/5` to the 5th power. Artifacts: `{directives,tools,reports}/pathA_40_cone_lock*`. Full
   gauntlet: scope Codex×3 + GLM `SOUND`; sequencing Claude↔Codex → option (iv); directive Codex + **GLM-5.2 (via opencode)** tertiary
   (1 BLOCKER — the `SHARED_CALIBRATION` provenance leak — + NITs folded) → Codex-to-green.
-- **(b) NG5 `SECOND_MEDIUM_DRIFT` (`pathA_41`) — DONE, honest verdict = `SECOND_MEDIUM_DRIFT{ρ_B0, χ_c, C_hu}`; ⚠ remediated-gate
-  re-tri-review PENDING.** Full gauntlet (scope Codex×2+GLM-5.2 `SOUND`; directive Codex+GLM-5.2 `SOUND`, incl. the forward re-open
+- **(b) NG5 `SECOND_MEDIUM_DRIFT` (`pathA_41`) — DONE + re-tri-reviewed CLEAN + hardened; BANKED EARNED (2026-07-05).** Honest verdict
+  = `SECOND_MEDIUM_DRIFT{ρ_B0, χ_c, C_hu}`. Full gauntlet (scope Codex×2+GLM-5.2 `SOUND`; directive Codex+GLM-5.2 `SOUND`, incl. the forward re-open
   trigger). The build landed `ONE_MEDIUM_CONDITIONAL`/drift-0 but the fresh **adversarial-with-ablation leg caught it as a RIG**
   (production origins hardcoded; `registered_route_for` dead code; AB2 deleting the route registry left the verdict unchanged). A
   Claude↔Codex **framing re-examination** then corrected the routing: `ρ_br,μ_R` → the *pending* Route-A (NOT the *closed* smectic B4;
@@ -101,9 +105,15 @@ self-consistent parameter set, and can they assemble into the central calibrated
   *3D-brane-surface* parameters; `ρ_br/μ_R` reductions are *registered-pending* (Route-A), the drift trio's are *not-yet-registered*.
   **Named future reduction routes (the concrete work that would flip drift→sim-deferred):** (i) a compression-sector 4D→3D reduction for
   `ρ_B0,χ_c`; (ii) an embedding-overlap reduction for `C_hu` — both the hard, deferred nonlinear brane/throat solves (could still no-go).
-  The gate was REMEDIATED to emit this (computed origins + `CALIBRATED_ANCHOR` class + the interpretation payload); ⚠ **a full fresh-agent
-  re-tri-review of the remediated gate is still owed before banking pathA_41 EARNED** (arbiter + ablation-recheck done; fidelity+adversarial
-  fresh legs pending). Artifacts: `{directives,tools,reports}/pathA_41_ng5_second_medium_drift*`; framing = `_scratch/pathA_41_framing_codex.md`.
+  The gate was REMEDIATED to emit this (computed origins + `CALIBRATED_ANCHOR` class + the interpretation payload). ✅ **RE-TRI-REVIEW
+  DONE + CLEAN (2026-07-05):** fresh fidelity leg = `FIDELITY_CLEAN` (falsifiable core faithful + genuinely dual-engine, byte-identical
+  repro); fresh adversarial-with-ablation leg = `ADVERSARIAL_CLEAN` — the decisive **able-to-PASS** test confirmed the verdict is fully
+  reversible (register a real route → `ρ_B0,χ_c` LEAVE the drift set; register both → `ONE_MEDIUM_CONDITIONAL`), so it is NOT hardcoded
+  toward drift (symmetric-rig hypothesis refuted). A hardening fold then (1) removed a real reproducibility bug — the tool had read its own
+  expected verdict string from a gitignored `_scratch` doc (crashes on clean checkout); (2) made location-closure ("no fourth arena")
+  COMPUTED + able-to-fail (a bad production-row location now RAISES — teeth proven on a fresh spot-check); (3) honest-ified the Dual-Engine
+  Split prose (`.wl` extracts lineage/interp/control narration per §7); a fresh spot-check leg = `HARDENING_CLEAN`, `ENGINE_AGREE 211`.
+  Artifacts: `{directives,tools,reports}/pathA_41_ng5_second_medium_drift*` (tool no longer depends on `_scratch`).
 - **(c) Assemble the four-sector chain into `research/pde_ledger/`** — after task #110; resolves the two-`χ_Q` open item.
 - **▶ NEXT (post-compact) = task #110: the charge-coupled "extra scalar."** Explore whether the off-cone `h`-branon departure (pathA_39
   Stage-4 / pathA_40 `Δ_pole∝C_hu²`) shows up in a way that would **clearly BREAK the model** (falsifiable conflict) vs a naturally-hidden

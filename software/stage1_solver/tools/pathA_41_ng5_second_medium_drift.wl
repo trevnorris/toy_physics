@@ -57,20 +57,22 @@ dimM = {1, 0, 0}; dimL = {0, 1, 0}; dimRho = {0, -4, 0};
 dimSurfaceInertia = {1, -3, 0}; dimSpeed = {0, 1, -1}; dimMuR = {1, -1, -2};
 bulkMRho = dAdd[dimM, dimRho];
 varrhoDim = dAdd[bulkMRho, dimL];
+rhoBrDim = dimSurfaceInertia;
 cESqRhoDim = dAdd[dMul[dimSpeed, 2], dimSurfaceInertia];
 If[varrhoDim =!= dimSurfaceInertia, fail["varrho dimension derivation failed"]];
+If[rhoBrDim =!= dimSurfaceInertia, fail["rho_br source dimension check failed"]];
 If[cESqRhoDim =!= dimMuR, fail["c_E^2 rho_br dimension derivation failed"]];
 
 dimensionDerivation = <|
   "bulk_m_times_rho_dim" -> dimStr[bulkMRho],
   "c_E_squared_rho_br_dim" -> dimStr[cESqRhoDim],
-  "c_E_squared_rho_br_minus_mu_R_dim_match" -> True,
+  "c_E_squared_rho_br_minus_mu_R_dim_match" -> (cESqRhoDim === dimMuR),
   "layer_normal_integral_dn_dim" -> dimStr[dimL],
   "mu_R_dim" -> dimStr[dimMuR],
-  "rho_br_equals_surface_inertia_dim" -> True,
-  "rho_br_source_dim" -> dimStr[dimSurfaceInertia],
+  "rho_br_equals_surface_inertia_dim" -> (rhoBrDim === dimSurfaceInertia),
+  "rho_br_source_dim" -> dimStr[rhoBrDim],
   "surface_inertia_dim_expected" -> dimStr[dimSurfaceInertia],
-  "varrho_equals_surface_inertia_dim" -> True,
+  "varrho_equals_surface_inertia_dim" -> (varrhoDim === dimSurfaceInertia),
   "varrho_integral_dim" -> dimStr[varrhoDim]
 |>;
 
@@ -210,6 +212,64 @@ originByParam = Join[
 simDeferred = <|"c_E" -> "Route-A", "mu_R" -> "Route-A", "rho_br" -> "Route-A"|>;
 calibratedRows = <|"M_h" -> "CALIBRATED_GEOMETRY_INPUT", "Q_E" -> "CALIBRATED_ANCHOR", "b" -> "CALIBRATED_GEOMETRY_INPUT", "ell" -> "CALIBRATED_GEOMETRY_INPUT"|>;
 
+arenas = {"4D bulk", "3D brane surface", "throat/embedding seam"};
+productionLocations = <|
+  "rho" -> "4D bulk", "K" -> "4D bulk", "m" -> "4D bulk", "a" -> "4D bulk",
+  "ell_g" -> "throat/embedding seam", "g_ell(w)" -> "throat/embedding seam",
+  "varrho_br[rho]" -> "3D brane surface", "Sigma_n[rho]" -> "3D brane surface", "delta_Sigma[rho]" -> "3D brane surface",
+  "rho_br" -> "3D brane surface", "mu_R" -> "3D brane surface", "c_E" -> "throat/embedding seam",
+  "c_gamma" -> "3D brane surface", "rho_B0" -> "3D brane surface", "chi_c" -> "3D brane surface",
+  "B_eff" -> "3D brane surface", "C_hu" -> "throat/embedding seam", "Q_E" -> "throat/embedding seam",
+  "ell" -> "throat/embedding seam", "b" -> "throat/embedding seam", "M_h" -> "throat/embedding seam",
+  "K_h" -> "throat/embedding seam", "q_h" -> "throat/embedding seam",
+  "c_L1" -> "3D brane surface", "c_L2" -> "3D brane surface", "A_R" -> "3D brane surface",
+  "k_R" -> "3D brane surface", "lambda_Cdiv" -> "3D brane surface", "chi_Cpin" -> "3D brane surface",
+  "J_Pu" -> "3D brane surface", "kappa_Pu" -> "3D brane surface", "lambda_Pu" -> "3D brane surface",
+  "Omega_w" -> "3D brane surface", "lambda_N" -> "throat/embedding seam", "lambda_tau" -> "throat/embedding seam",
+  "Nu" -> "throat/embedding seam", "a_T" -> "throat/embedding seam", "a_Tp" -> "throat/embedding seam",
+  "a_L" -> "throat/embedding seam"
+|>;
+productionIncidences = <|
+  "rho" -> "base GNLS substrate", "K" -> "base GNLS EOS substrate", "m" -> "base GNLS constituent mass",
+  "a" -> "T0 polar substrate length", "ell_g" -> "pathA_35 confinement width", "g_ell(w)" -> "codim-1 confinement profile",
+  "varrho_br[rho]" -> "closed pathA_25 density-smectic layer inertia", "Sigma_n[rho]" -> "closed pathA_25 density-smectic layer support",
+  "delta_Sigma[rho]" -> "closed pathA_25 density-smectic layer measure", "rho_br" -> "active pathA_35 shear-surface brane inertia",
+  "mu_R" -> "active pathA_35 shear-surface modulus", "c_E" -> "electric throat dynamic Green speed",
+  "c_gamma" -> "light/shear speed", "rho_B0" -> "C5 compression density amplitude", "chi_c" -> "C5 compression susceptibility",
+  "B_eff" -> "derived C5 density modulus", "C_hu" -> "embedding h/u_L mixing overlap",
+  "Q_E" -> "electric throat source magnitude", "ell" -> "throat/wall profile scale",
+  "b" -> "compact throat source half-separation/form factor scale", "M_h" -> "h-sector zero-mode normalization/mass coefficient",
+  "K_h" -> "h-sector stiffness", "q_h" -> "electric throat source projection",
+  "c_L1" -> "pathA_25 density-smectic driver", "c_L2" -> "pathA_25 density-smectic driver",
+  "A_R" -> "pathA_25 density-smectic driver", "k_R" -> "pathA_25 density-smectic driver",
+  "lambda_Cdiv" -> "pathA_25 density-smectic driver", "chi_Cpin" -> "pathA_25 density-smectic driver",
+  "J_Pu" -> "pathA_25 density-smectic driver", "kappa_Pu" -> "pathA_25 density-smectic driver",
+  "lambda_Pu" -> "pathA_35 parity-repaired P-u coupling", "Omega_w" -> "pathA_35 bare u_w gap scale",
+  "lambda_N" -> "pathA_38 wall-internal potential coefficient", "lambda_tau" -> "pathA_38 wall-internal tau mass coefficient",
+  "Nu" -> "moving-source normalization", "a_T" -> "transverse moving-source amplitude",
+  "a_Tp" -> "second transverse moving-source amplitude", "a_L" -> "longitudinal moving-source amplitude"
+|>;
+
+locationClosure[locations_Association, incidences_Association] := Module[{bad},
+  bad = Select[Keys[locations], ! MemberQ[arenas, Lookup[locations, #, "unassigned"]] &];
+  <|
+    "arenas" -> arenas,
+    "fact" -> "Every production row is assigned to one of the three arenas.",
+    "no_fourth_arena" -> (Length[bad] == 0),
+    "offending_rows" -> (<|"incidence" -> Lookup[incidences, #, ""], "location" -> Lookup[locations, #, "unassigned"], "p" -> #|> & /@ bad),
+    "row_count" -> Length[Keys[locations]]
+  |>
+];
+
+prodLocationClosure = locationClosure[productionLocations, productionIncidences];
+If[! TrueQ[prodLocationClosure["no_fourth_arena"]], fail["production location closure failed"]];
+badLocationClosure = locationClosure[
+  Join[productionLocations, <|"loc_sentinel" -> "unassigned"|>],
+  Join[productionIncidences, <|"loc_sentinel" -> "synthetic out-of-arena location control row"|>]
+];
+locationClosureControlFired = TrueQ[prodLocationClosure["no_fourth_arena"]] && ! TrueQ[badLocationClosure["no_fourth_arena"]] && Length[badLocationClosure["offending_rows"]] > 0;
+If[! TrueQ[locationClosureControlFired], fail["location closure out-of-arena control did not flip"]];
+
 production = <|
   "active_irreducible" -> {"rho_B0", "chi_c", "C_hu"},
   "calibrated" -> calibratedRows,
@@ -244,8 +304,7 @@ lineage = <|
 interpretation = <|
   "honest_caveat" -> "The brane is a postulated shear-supporting ordered phase; whether the one medium yields it and whether the three reductions close rather than no-go is genuinely open.",
   "interpretation" -> "ONE_CANDIDATE_MEDIUM_4D_TO_3D_REDUCTION_INCOMPLETE",
-  "location_closure" -> <|"arenas" -> {"4D bulk", "3D brane surface", "throat/embedding seam"},
-    "fact" -> "Every production row is assigned to one of the three arenas.", "no_fourth_arena" -> True|>,
+  "location_closure" -> prodLocationClosure,
   "named_future_reduction_routes" -> {
     <|"description" -> "derive the brane compression amplitude and susceptibility from the 4D bulk/nonlinear brane solve",
       "name" -> "compression-sector 4D->3D reduction", "status" -> "DEFERRED_NOT_REGISTERED", "targets" -> {"rho_B0", "chi_c"}|>,
@@ -267,6 +326,8 @@ controls = <|
     "transition" -> "SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> NO_GO(cone-lock-feedback)"|>,
   "irreducible_synthetic" -> <|"after_verdict" -> "SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})", "fired" -> True,
     "transition" -> "SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})"|>,
+  "location_closure_out_of_arena" -> <|"after_verdict" -> prodVerdict, "fired" -> locationClosureControlFired,
+    "transition" -> "no_fourth_arena " <> ToString[prodLocationClosure["no_fourth_arena"]] <> " -> " <> ToString[badLocationClosure["no_fourth_arena"]]|>,
   "reducible_derived_synthetic" -> <|"after_verdict" -> prodVerdict, "fired" -> True, "transition" -> prodVerdict <> " -> " <> prodVerdict|>,
   "residual_multiplier_ablation" -> <|"after_verdict" -> Null, "fired" -> True,
     "transition" -> "lineage SAME when residual=1; lineage DIFFERENT when residual=Xi_residual"|>,
@@ -284,6 +345,7 @@ payload = <|
   "interpretation" -> interpretation,
   "dual_engine_derivations" -> <|
     "dimension_and_residual" -> Join[dimensionDerivation, <|"residual_multiplier" -> "UNKNOWN_NOT_COMPARABLE_DIFFERENT_ACTIVE_OBJECTS"|>],
+    "location_closure" -> prodLocationClosure,
     "pathA40_current_nonentailment" -> "WITNESSED",
     "pathA40_current_nonentailment_witness" -> ToString[lockBValue]
   |>,
@@ -320,7 +382,7 @@ out = <|
   "method" -> <|
     "dimension" -> "MLT exponent arithmetic",
     "route_evaluation" -> "structured route source records checked for provenance, allowed status, finite missing objects, target identity, target-blindness, and falsifiers",
-    "controls" -> "route deletion/field deletion/calibration ablation recomputed from mutated facts"
+    "controls" -> "route deletion/field deletion/calibration ablation/location closure recomputed from mutated facts"
   |>,
   "comparison_payload" -> payload,
   "comparison_digest" -> digest

@@ -39,7 +39,9 @@ interpretation:
     - 4D bulk
     - 3D brane surface
     - throat/embedding seam
+    row_count: 39
     no_fourth_arena: true
+    offending_rows: []
     fact: Every production row is assigned to one of the three arenas.
   reduction_status:
     rho_br: REGISTERED_PENDING(Route-A)
@@ -1110,6 +1112,15 @@ route_eval_recorded_for_all_active_rows:
   - q_h
   missing: []
   count: 14
+location_closure:
+  arenas:
+  - 4D bulk
+  - 3D brane surface
+  - throat/embedding seam
+  row_count: 39
+  no_fourth_arena: true
+  offending_rows: []
+  fact: Every production row is assigned to one of the three arenas.
 pathA40_nonentailment:
   compact:
     verdict: CONE_LOCK_CALIBRATED
@@ -1725,6 +1736,78 @@ controls:
         rho_br: FREEDOM_SIM_DEFERRED{Route-A}
         C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
     expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+  location_closure_out_of_arena:
+    source_mutation: add synthetic ledgered row loc_sentinel with location=unassigned
+    recomputed_invariant:
+      production:
+        arenas:
+        - 4D bulk
+        - 3D brane surface
+        - throat/embedding seam
+        row_count: 39
+        no_fourth_arena: true
+        offending_rows: []
+        fact: Every production row is assigned to one of the three arenas.
+      mutated:
+        arenas:
+        - 4D bulk
+        - 3D brane surface
+        - throat/embedding seam
+        row_count: 40
+        no_fourth_arena: false
+        offending_rows:
+        - p: loc_sentinel
+          location: unassigned
+          incidence: synthetic out-of-arena location control row
+        fact: Every production row is assigned to one of the three arenas.
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: no_fourth_arena True -> False
   contradiction:
     source_mutation: assert C_hu charge-residue tie, then rerun pathA_40 lock+stability SAT
     recomputed_invariant:
@@ -2039,11 +2122,11 @@ engine_agreement:
   status: ENGINE_AGREE
   agreement_test: STRUCTURAL_PAYLOAD_EQUALITY
   structural_payload_equal: true
-  agreement_count: 201
+  agreement_count: 211
   sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_41_ng5_second_medium_drift_sympy.json
   mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_41_ng5_second_medium_drift_mathematica.json
-  sympy_comparison_digest: 813cef9ed0320aece752b08463dade3507f5b896ff97a76b45d24b4b7edf4921
-  mathematica_comparison_digest: d16370182edaf7f1a94962c0193c3fbb00df16ace32f4c67f094302d8381a6db
+  sympy_comparison_digest: 49a10a001434b5223bf1de560bda4c97a09f327bf4dcb2333b85e3a580e288e8
+  mathematica_comparison_digest: 11dac0e416b5928ed4780b31fa0c1518f730c450861c8a7397b662cefce3bc05
 comparison_payload:
   production:
     verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
@@ -2212,7 +2295,9 @@ comparison_payload:
       - 4D bulk
       - 3D brane surface
       - throat/embedding seam
+      row_count: 39
       no_fourth_arena: true
+      offending_rows: []
       fact: Every production row is assigned to one of the three arenas.
     reduction_status:
       rho_br: REGISTERED_PENDING(Route-A)
@@ -2247,6 +2332,15 @@ comparison_payload:
       mu_R_dim: M L^-1 T^-2
       c_E_squared_rho_br_minus_mu_R_dim_match: true
       residual_multiplier: UNKNOWN_NOT_COMPARABLE_DIFFERENT_ACTIVE_OBJECTS
+    location_closure:
+      arenas:
+      - 4D bulk
+      - 3D brane surface
+      - throat/embedding seam
+      row_count: 39
+      no_fourth_arena: true
+      offending_rows: []
+      fact: Every production row is assigned to one of the three arenas.
     pathA40_current_nonentailment: WITNESSED
     pathA40_current_nonentailment_witness: '7'
   controls:
@@ -2277,6 +2371,10 @@ comparison_payload:
     reducible_derived_synthetic:
       fired: true
       transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+    location_closure_out_of_arena:
+      fired: true
+      transition: no_fourth_arena True -> False
       after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
     contradiction:
       fired: true
@@ -2327,4 +2425,3 @@ source_refs:
   pathA40_no_go_control: software/stage1_solver/reports/pathA_40_cone_lock.md:49
   decision09_calibration: software/stage1_solver/decisions/09_calibrate_predict_methodology.md:25
   decision14_calibration: software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md:82
-  framing_target: software/stage1_solver/_scratch/pathA_41_framing_codex.md:21

@@ -11,7 +11,7 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 FORCE-SECTORS EARNED; magnetism sector COMPLETE; next = the consistency knit
+## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 SECTORS EARNED; CONSISTENCY KNIT sub-step (a) cone-lock EARNED = `CONE_LOCK_CALIBRATED`; NEXT = NG5 (sub-step b)
 
 **⭐⭐ ALL 4 SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder), light (`pathA_36`), electric charge
 (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, `797f4d88`), and now **MAGNETISM (`pathA_39`, 4/4 stages, sector COMPLETE)** —
@@ -68,20 +68,28 @@ magnetism = same interaction under motion). **⭐ MAGNETISM LIVES IN THE THROAT,
 **▶ NEXT = THE CONSISTENCY KNIT → "fully formed." Full running-start handoff = `notes/consistency_knit_handoff.md` (read it
 first post-compact).** Now that all four sectors are earned as independent specs, the knit asks: **do they live in ONE
 self-consistent parameter set, and can they assemble into the central calibrated PDE?** Three sub-pieces:
-- **(a) The speed cone-lock (crux):** `λγ = c_γ/c_s = 1` AND `c_E = c_γ`. Each sector fixed a speed — `c_γ²=μ_R/ρ_br` (light),
-  `c_s ∝ ρ²` (gravity-change), `c_E` (charge/EM Green). Are they FORCED to coincide by the shared medium params, or is the
-  cone-lock a **calibration input / genuine gap** (`λγ` is flagged `BETA_GENUINE_GAP`; `c_E=c_γ` = the retired `η_T=1`)? Full
-  Maxwell needs BOTH; the pathA_39 results are preferred-frame UNLESS `c_E=c_γ`, so the knit is what would restore Lorentz
-  invariance. `λγ` enters the `pathA_22b` verdict count `P0·χ_Q·g_mhat²·λγ⁵/g_G = 54/5` to the 5th power.
-- **(b) The NG cross-consistency gauntlet (NG1–NG5)** from `directives/pathA_25_*`, re-posed on the earned four-sector param set.
-- **(c) Assemble the four-sector chain into `research/pde_ledger/`** (the calibrated, simulation-ready PDE delivering GR+EM).
-- **▶ FIRST post-compact action = SCOPE it with Codex** (Claude↔Codex setup → GLM, like the pathA_39 §2 / Stage-3 setups)
-  BEFORE any directive: is `λγ=1` / `c_E=c_γ` DERIVABLE or CALIBRATED? What is the **able-to-fail** structure (a knit that
-  CAN'T be satisfied in one param set = a first-class NO-GO/falsification — the gate must be able to emit it)? Then directive →
-  Codex design-review → GLM → dual-engine → tri-review → user gate. **Honest expectation:** either it CLOSES (one param set =
-  "one self-consistent brane+bulk model," the stated win, completes the SPEC; sim deferred, no-go still possible) or a NO-GO;
-  likely landing = cone-lock CALIBRATED (anchored, not derived), surplus in the held-out predictions — report the
-  earned-vs-calibrated split plainly. **Then follow-up: task #110 (the charge-coupled "extra scalar").**
+- **(a) The speed cone-lock (crux) — ✅ EARNED (`pathA_40`) = `CONE_LOCK_CALIBRATED`, `Δr=2`** (dual-engine `ENGINE_AGREE` over 150
+  quantities; tri-review CLEAN — arbiter reproduced, `FIDELITY_CLEAN`, `ADVERSARIAL_SOUND` over 6 ablations; a light honesty touch-up
+  on 2 report labels). Both locks `WITNESSED` (non-entailed): `λγ=1` (`μ_R/ρ_br=5Kρ⁴/m`) and `c_E=c_γ` (`c_E²=μ_R/ρ_br`) are
+  **CALIBRATION inputs, not derived** — the `Δr=2` codimension increase (real-locus Krull dim 10→8, MMA `RegionDimension`-confirmed)
+  shows each lock is an independent calibration. **Pre-pass (able-to-fail, graded):** Route A = `ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT`
+  (missing R1–R5 — a forced `μ_R`-as-bulk-defect-integral derivation would need the deferred nonlinear throat interior; that is WHERE a
+  future `λγ` derivation must come from); Route B = closed checked-negative (`h`≠`u_T`, thin-plate = over-import); freedom
+  `FREEDOM_UNCONSTRAINED{C_hu,ρ_br}`. **Field content stays `FIELD_SCALAR_VECTOR_DEPARTURE`** — the coupled scalar poles are OFF the light
+  cone (`det M|cone = −C_hu²k⁴`), so `c_E=c_γ` restores only the principal-speed cone, not exact Maxwell (→ task #110). **Honest landing
+  (as expected, §0): the cone-lock gate is near-mechanically CALIBRATED — its value is the checked-negatives + the off-cone residual + the
+  freedom caveat feeding NG5; the falsification power lives in NG5, #110, and the held-out predictions, NOT here.** `λγ` enters
+  `pathA_22b`'s `P0·χ_Q·g_mhat²·λγ⁵/g_G=54/5` to the 5th power. Artifacts: `{directives,tools,reports}/pathA_40_cone_lock*`. Full
+  gauntlet: scope Codex×3 + GLM `SOUND`; sequencing Claude↔Codex → option (iv); directive Codex + **GLM-5.2 (via opencode)** tertiary
+  (1 BLOCKER — the `SHARED_CALIBRATION` provenance leak — + NITs folded) → Codex-to-green.
+- **(b) The NG cross-consistency gauntlet (NG1–NG5) — ▶ NEXT.** Re-pose the `pathA_25_*` NG concepts on the earned four-sector param set,
+  chiefly **NG5 `SECOND_MEDIUM_DRIFT`** (count every independent input across the four sectors — is it genuinely ONE medium, or several
+  in disguise?). **This is where the knit's real falsification power lives** (the cone-lock (a) was near-vacuous by construction). NG5 must
+  also **certify the freedom of `C_hu, ρ_br`** the pathA_40 NO_GO-non-firing was conditional on — if a tie is found, re-run pathA_40.
+  Consumes pathA_40's parameter-freedom caveat list. Same gauntlet: scope with Codex → GLM → directive → dual-engine → tri-review → user gate.
+- **(c) Assemble the four-sector chain into `research/pde_ledger/`** (the calibrated, simulation-ready PDE delivering GR+EM) — after NG5;
+  resolves the two-`χ_Q` open item (`pathA_22b ≈0.712` vs `pathA_33 =1`).
+- **Then follow-up: task #110 (the charge-coupled "extra scalar," the off-cone residual pathA_40 surfaced).**
 
 ---
 

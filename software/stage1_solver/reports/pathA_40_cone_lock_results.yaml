@@ -1,0 +1,2134 @@
+schema: pathA_40_cone_lock_results/v1
+verdict: CONE_LOCK_CALIBRATED
+atomic_riders: []
+delta_r: 2
+prepass:
+  route_a:
+    grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    candidate_bridge: true
+    records:
+      R1:
+        status: absent
+        object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+        citation:
+        - reports/pathA_35_G0_freeze.md:34-38
+      R2:
+        status: absent
+        object: closed transverse profile f_u(w) for the in-plane shear mode
+        citation:
+        - reports/pathA_39_scalar_admixture_screen.md:45-58
+      R3:
+        status: absent
+        object: common normalization/integral deriving both rho_br and mu_R
+        citation:
+        - reports/pathA_35_G0_freeze.md:83-88
+      R4:
+        status: absent
+        object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+        citation:
+        - reports/pathA_35_G0_freeze.md:83-88
+      R5:
+        status: not_applicable
+        object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+        citation:
+        - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+    missing_objects:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+  route_b:
+    status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    field_distinctness_checked: true
+    over_import_guard: CHECKED_NEGATIVE
+    citations:
+    - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+    - directive/pathA_40_cone_lock.md:Route-B guard
+  freedom:
+    status: FREEDOM_UNCONSTRAINED
+    free_params:
+    - C_hu
+    - rho_br
+    ties: []
+layer1:
+  sector_sat:
+    status: SAT
+    method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+    witness:
+      B_eff: '1'
+      C_hu: 1/2
+      K: '1'
+      K_h: '9'
+      M_h: '1'
+      c_E: '3'
+      chi_c: '4'
+      m: '5'
+      mu_R: '2'
+      rho: '1'
+      rho_B0: '2'
+      rho_br: '1'
+      sigma: 35/4
+  cone_lock_sat:
+    status: SAT
+    method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+    witness:
+      B_eff: '1'
+      C_hu: 1/2
+      K: '1'
+      K_h: '1'
+      M_h: '1'
+      c_E: '1'
+      chi_c: '4'
+      m: '5'
+      mu_R: '1'
+      rho: '1'
+      rho_B0: '2'
+      rho_br: '1'
+      sigma: 3/4
+layer2:
+  provenance:
+    A:
+      status: WITNESSED
+      method: exact real non-entailment witness satisfying E and lock != 0
+      remainder: -5*K*rho**4*rho_br + m*mu_R
+      lock_value_at_witness: '5'
+      witness:
+        B_eff: '1'
+        C_hu: 1/2
+        K: '1'
+        K_h: '9'
+        M_h: '1'
+        c_E: '3'
+        chi_c: '4'
+        m: '5'
+        mu_R: '2'
+        rho: '1'
+        rho_B0: '2'
+        rho_br: '1'
+        sigma: 35/4
+    B:
+      status: WITNESSED
+      method: exact real non-entailment witness satisfying E and lock != 0
+      remainder: c_E**2*rho_br - mu_R
+      lock_value_at_witness: '7'
+      witness:
+        B_eff: '1'
+        C_hu: 1/2
+        K: '1'
+        K_h: '9'
+        M_h: '1'
+        c_E: '3'
+        chi_c: '4'
+        m: '5'
+        mu_R: '2'
+        rho: '1'
+        rho_B0: '2'
+        rho_br: '1'
+        sigma: 35/4
+  dimension:
+    status: CERTIFIED
+    delta_r: 2
+    dim_before: 10
+    dim_after: 8
+    before:
+      dimension: 10
+      leading_supports:
+      - - M_h
+        - c_E
+      - - rho_B0
+      - - C_hu
+      max_independent_coordinate_set:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - K_h
+      - B_eff
+      - sigma
+      method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+    after:
+      dimension: 8
+      leading_supports:
+      - - rho
+        - rho_br
+        - K
+      - - rho
+        - mu_R
+        - K
+      - - rho_br
+        - c_E
+      - - M_h
+        - c_E
+      - - rho_B0
+      - - mu_R
+        - M_h
+      - - C_hu
+      max_independent_coordinate_set:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - m
+      - K_h
+      - B_eff
+      - sigma
+      method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+    real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is an
+      open semialgebraic subset of the computed variety.
+    dropped_assumptions_named:
+    - regular-sequence/generic-Jacobian-rank
+    - complex-only radical/dimension without real-locus guard
+field_overlay:
+  field_content: FIELD_SCALAR_VECTOR_DEPARTURE
+  field_content_source: reports/pathA_39_stage4_field_classification_results.yaml:1-30
+  determinant: B_eff*K_h*k**4 - B_eff*M_h*k**2*omega**2 - C_hu**2*k**4 - K_h*k**2*omega**2*rho_br + M_h*omega**4*rho_br
+  det_on_light_cone_under_B: -C_hu**2*k**4
+  root_selection_rule: v_minus^2 uses the negative square-root branch and is the lower mixed scalar speed because rho_br,M_h>0; v_plus^2 uses
+    the positive branch.
+  v_squared_minus: (B_eff*M_h + K_h*rho_br - sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  v_squared_plus: (B_eff*M_h + K_h*rho_br + sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  Delta_pole_minus: (B_eff*M_h + K_h*rho_br - 2*M_h*mu_R - sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  Delta_pole_plus: (B_eff*M_h + K_h*rho_br - 2*M_h*mu_R + sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  Delta_pole_minus_under_B: (B_eff*M_h - K_h*rho_br - sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  Delta_pole_plus_under_B: (B_eff*M_h - K_h*rho_br + sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  status: OFF_CONE_under_AB_proportional_to_C_hu_squared_OPEN_110
+controls:
+  well_posed:
+    verdict: HALT_ROUTE_A_WELL_POSED
+    route_a_grade: ROUTE_A_WELL_POSED
+    route_a_missing: []
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: NOT_RUN
+    lock_sat: NOT_RUN
+    prov_A: null
+    prov_B: null
+    dimension_status: NOT_RUN
+    delta_r: null
+    dim_before: null
+    dim_after: null
+    riders: []
+  absent:
+    verdict: CONE_LOCK_CALIBRATED
+    route_a_grade: ROUTE_A_ABSENT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: WITNESSED
+    prov_B: WITNESSED
+    dimension_status: CERTIFIED
+    delta_r: 2
+    dim_before: 10
+    dim_after: 8
+    riders: []
+  partial_inventory:
+    verdict: CONE_LOCK_CALIBRATED
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: WITNESSED
+    prov_B: WITNESSED
+    dimension_status: CERTIFIED
+    delta_r: 2
+    dim_before: 10
+    dim_after: 8
+    riders: []
+  forced_lock:
+    verdict: CONE_LOCK_DERIVED
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: ENTAILED
+    prov_B: ENTAILED
+    dimension_status: CERTIFIED
+    delta_r: 0
+    dim_before: 8
+    dim_after: 8
+    riders: []
+  a_only_partial:
+    verdict: CONE_LOCK_PARTIAL(derived=A, calibrated=B)
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: ENTAILED
+    prov_B: WITNESSED
+    dimension_status: CERTIFIED
+    delta_r: 1
+    dim_before: 9
+    dim_after: 8
+    riders: []
+  b_only_partial:
+    verdict: CONE_LOCK_PARTIAL(derived=B, calibrated=A)
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: WITNESSED
+    prov_B: ENTAILED
+    dimension_status: CERTIFIED
+    delta_r: 1
+    dim_before: 9
+    dim_after: 8
+    riders: []
+  over_constrained:
+    verdict: NO_GO(sector-ledger)
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: UNSAT
+    lock_sat: UNSAT
+    prov_A: null
+    prov_B: null
+    dimension_status: NOT_RUN
+    delta_r: null
+    dim_before: null
+    dim_after: null
+    riders: []
+  freedom_tie:
+    verdict: NO_GO(cone-lock)
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_TIED
+    sector_sat: SAT
+    lock_sat: UNSAT
+    prov_A: null
+    prov_B: null
+    dimension_status: NOT_RUN
+    delta_r: null
+    dim_before: null
+    dim_after: null
+    riders: []
+control_details:
+  well_posed:
+    case: well_posed
+    verdict: HALT_ROUTE_A_WELL_POSED
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_WELL_POSED
+        candidate_bridge: true
+        records:
+          R1:
+            status: present
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - synthetic-control-source-fact
+          R2:
+            status: present
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - synthetic-control-source-fact
+          R3:
+            status: present
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - synthetic-control-source-fact
+          R4:
+            status: present
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - synthetic-control-source-fact
+          R5:
+            status: present
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - synthetic-control-source-fact
+        missing_objects: []
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - synthetic-control-source-fact
+        - synthetic-control-source-fact
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: NOT_RUN
+      lock_sat:
+        status: NOT_RUN
+      provenance: {}
+      dimension:
+        status: NOT_RUN
+    source_objects:
+    - kind: candidate_bridge
+      citation: synthetic-control-source-fact
+      statement: synthetic throat bridge exists
+    - kind: nonlinear_action_with_gnls_and_u
+      citation: synthetic-control-source-fact
+      statement: R1 source fact present
+    - kind: in_plane_shear_profile_fu
+      citation: synthetic-control-source-fact
+      statement: R2 source fact present
+    - kind: common_normalization_rho_mu
+      citation: synthetic-control-source-fact
+      statement: R3 source fact present
+    - kind: reduction_mu_over_rho_equals_cs
+      citation: synthetic-control-source-fact
+      statement: R4 source fact present
+    - kind: no_residual_geometric_factor
+      citation: synthetic-control-source-fact
+      statement: R5 source fact present
+    - kind: route_b_distinct_dof
+      citation: synthetic-control-source-fact
+      statement: route B distinct DOF retained
+    - kind: over_import_guard
+      citation: synthetic-control-source-fact
+      statement: thin-plate relation rejected
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: C_hu remains free
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: rho_br remains free
+      data:
+        param: rho_br
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - rho_B0 != 0
+      - C_hu real
+  absent:
+    case: absent
+    verdict: CONE_LOCK_CALIBRATED
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_ABSENT
+        candidate_bridge: false
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation: null
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation: null
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - synthetic-control-source-fact
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - synthetic-control-source-fact
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation: null
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - synthetic-control-source-fact
+        - synthetic-control-source-fact
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '9'
+          M_h: '1'
+          c_E: '3'
+          chi_c: '4'
+          m: '5'
+          mu_R: '2'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 35/4
+      lock_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+      provenance:
+        A:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: -5*K*rho**4*rho_br + m*mu_R
+          lock_value_at_witness: '5'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '9'
+            M_h: '1'
+            c_E: '3'
+            chi_c: '4'
+            m: '5'
+            mu_R: '2'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 35/4
+        B:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: c_E**2*rho_br - mu_R
+          lock_value_at_witness: '7'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '9'
+            M_h: '1'
+            c_E: '3'
+            chi_c: '4'
+            m: '5'
+            mu_R: '2'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 35/4
+      dimension:
+        status: CERTIFIED
+        delta_r: 2
+        dim_before: 10
+        dim_after: 8
+        before:
+          dimension: 10
+          leading_supports:
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - C_hu
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - K
+          - m
+          - M_h
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        after:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - rho_br
+            - K
+          - - rho
+            - mu_R
+            - K
+          - - rho_br
+            - c_E
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - C_hu
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is
+          an open semialgebraic subset of the computed variety.
+        dropped_assumptions_named:
+        - regular-sequence/generic-Jacobian-rank
+        - complex-only radical/dimension without real-locus guard
+    source_objects:
+    - kind: postulated_mu_rho
+      citation: synthetic-control-source-fact
+      statement: 'pathA_35/36-only synthetic ledger: mu_R and rho_br postulated, no throat bridge'
+    - kind: route_b_distinct_dof
+      citation: synthetic-control-source-fact
+      statement: route B distinct DOF retained
+    - kind: over_import_guard
+      citation: synthetic-control-source-fact
+      statement: thin-plate relation rejected
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: C_hu remains free
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: rho_br remains free
+      data:
+        param: rho_br
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - rho_B0 != 0
+      - C_hu real
+  partial_inventory:
+    case: partial_inventory
+    verdict: CONE_LOCK_CALIBRATED
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: present
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - synthetic-control-source-fact
+          R2:
+            status: present
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - synthetic-control-source-fact
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - synthetic-control-source-fact
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - synthetic-control-source-fact
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation: null
+        missing_objects:
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - synthetic-control-source-fact
+        - synthetic-control-source-fact
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '9'
+          M_h: '1'
+          c_E: '3'
+          chi_c: '4'
+          m: '5'
+          mu_R: '2'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 35/4
+      lock_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+      provenance:
+        A:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: -5*K*rho**4*rho_br + m*mu_R
+          lock_value_at_witness: '5'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '9'
+            M_h: '1'
+            c_E: '3'
+            chi_c: '4'
+            m: '5'
+            mu_R: '2'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 35/4
+        B:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: c_E**2*rho_br - mu_R
+          lock_value_at_witness: '7'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '9'
+            M_h: '1'
+            c_E: '3'
+            chi_c: '4'
+            m: '5'
+            mu_R: '2'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 35/4
+      dimension:
+        status: CERTIFIED
+        delta_r: 2
+        dim_before: 10
+        dim_after: 8
+        before:
+          dimension: 10
+          leading_supports:
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - C_hu
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - K
+          - m
+          - M_h
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        after:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - rho_br
+            - K
+          - - rho
+            - mu_R
+            - K
+          - - rho_br
+            - c_E
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - C_hu
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is
+          an open semialgebraic subset of the computed variety.
+        dropped_assumptions_named:
+        - regular-sequence/generic-Jacobian-rank
+        - complex-only radical/dimension without real-locus guard
+    source_objects:
+    - kind: candidate_bridge
+      citation: synthetic-control-source-fact
+      statement: synthetic throat bridge exists
+    - kind: nonlinear_action_with_gnls_and_u
+      citation: synthetic-control-source-fact
+      statement: R1 source fact present
+    - kind: in_plane_shear_profile_fu
+      citation: synthetic-control-source-fact
+      statement: R2 source fact present
+    - kind: postulated_mu_rho
+      citation: synthetic-control-source-fact
+      statement: 'R3/R4 absent: mu_R and rho_br not commonly derived'
+    - kind: route_b_distinct_dof
+      citation: synthetic-control-source-fact
+      statement: route B distinct DOF retained
+    - kind: over_import_guard
+      citation: synthetic-control-source-fact
+      statement: thin-plate relation rejected
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: C_hu remains free
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: synthetic-control-source-fact
+      statement: rho_br remains free
+      data:
+        param: rho_br
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - rho_B0 != 0
+      - C_hu real
+  forced_lock:
+    case: forced_lock
+    verdict: CONE_LOCK_DERIVED
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - reports/pathA_35_G0_freeze.md:34-38
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - reports/pathA_39_scalar_admixture_screen.md:45-58
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+        - directive/pathA_40_cone_lock.md:Route-B guard
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+          tau_forced: '1'
+      lock_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+          tau_forced: '1'
+      provenance:
+        A:
+          status: ENTAILED
+          method: polynomial ideal membership via Groebner remainder zero; sufficient real-radical certificate
+          remainder: '0'
+        B:
+          status: ENTAILED
+          method: polynomial ideal membership via Groebner remainder zero; sufficient real-radical certificate
+          remainder: '0'
+      dimension:
+        status: CERTIFIED
+        delta_r: 0
+        dim_before: 8
+        dim_after: 8
+        before:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - K
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - c_E
+          - - C_hu
+          - - rho_br
+            - tau_forced
+          - - M_h
+            - tau_forced
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        after:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - K
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - c_E
+          - - C_hu
+          - - rho_br
+            - tau_forced
+          - - M_h
+            - tau_forced
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is
+          an open semialgebraic subset of the computed variety.
+        dropped_assumptions_named:
+        - regular-sequence/generic-Jacobian-rank
+        - complex-only radical/dimension without real-locus guard
+    source_objects:
+    - kind: candidate_bridge
+      citation: reports/pathA_38_throat_body_electric_localization.md:26-30; reports/pathA_38_results.yaml:80
+      statement: pathA_38 h-throat plus deferred nonlinear-throat program is treated by directive convention as a candidate bridge.
+      data:
+        profile_role: h_Goldstone_not_in_plane_shear
+    - kind: h_goldstone_profile_imported
+      citation: reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+      statement: sech^2/ell profile exists for h-Goldstone throat localization; the soliton form is imported and not an in-plane f_u profile.
+    - kind: postulated_mu_rho
+      citation: reports/pathA_35_G0_freeze.md:83-88
+      statement: rho_br and mu_R are independent postulated ingredients in G0.
+    - kind: surface_shear_postulated
+      citation: reports/pathA_35_G0_freeze.md:34-38
+      statement: u^a is a postulated surface collective/material DOF; no nonlinear bulk/throat action derives its shear modulus.
+    - kind: missing_closed_fu
+      citation: reports/pathA_39_scalar_admixture_screen.md:45-58
+      statement: f_u normalization is kept symbolic; the report does not give a closed in-plane shear profile.
+    - kind: route_b_distinct_dof
+      citation: reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+      statement: h is a scalar in the (u_L,h) block and u_T has two transverse vector DOF; equal speeds are not field identity.
+    - kind: over_import_guard
+      citation: directive/pathA_40_cone_lock.md:Route-B guard
+      statement: thin-plate K_h proportional to mu_R*thickness^2 is not an earned native relation and is rejected as over-import.
+    - kind: freedom_free_parameter
+      citation: reports/pathA_39_scalar_admixture_screen.md:54-58
+      statement: C_hu is a declared scan/deferred scalar mixing parameter, not derived from q_h.
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: reports/pathA_35_G0_freeze.md:38,83-88
+      statement: rho_br is an independent brane inertia density, not rho times an earned thickness.
+      data:
+        param: rho_br
+    - kind: forced_lock_fake_relation
+      citation: synthetic-control-source-fact
+      statement: 'target-blind tau relation: mu_R=rho_br*tau, c_E^2=tau, m*tau=5K rho^4; syntactically distinct from L_A/L_B.'
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      - mu_R - rho_br*tau_forced
+      - c_E**2 - tau_forced
+      - -5*K*rho**4 + m*tau_forced
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - tau_forced
+      - rho_B0 != 0
+      - C_hu real
+  a_only_partial:
+    case: a_only_partial
+    verdict: CONE_LOCK_PARTIAL(derived=A, calibrated=B)
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - reports/pathA_35_G0_freeze.md:34-38
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - reports/pathA_39_scalar_admixture_screen.md:45-58
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+        - directive/pathA_40_cone_lock.md:Route-B guard
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '4'
+          M_h: '1'
+          c_E: '2'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 15/4
+          tau_A: '1'
+      lock_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+          tau_A: '1'
+      provenance:
+        A:
+          status: ENTAILED
+          method: polynomial ideal membership via Groebner remainder zero; sufficient real-radical certificate
+          remainder: '0'
+        B:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: c_E**2*rho_br - mu_R
+          lock_value_at_witness: '3'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '4'
+            M_h: '1'
+            c_E: '2'
+            chi_c: '4'
+            m: '5'
+            mu_R: '1'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 15/4
+            tau_A: '1'
+      dimension:
+        status: CERTIFIED
+        delta_r: 1
+        dim_before: 9
+        dim_after: 8
+        before:
+          dimension: 9
+          leading_supports:
+          - - rho
+            - K
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - C_hu
+          - - rho_br
+            - tau_A
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - M_h
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        after:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - K
+          - - rho_br
+            - c_E
+          - - mu_R
+            - c_E
+          - - M_h
+            - c_E
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - C_hu
+          - - rho_br
+            - tau_A
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is
+          an open semialgebraic subset of the computed variety.
+        dropped_assumptions_named:
+        - regular-sequence/generic-Jacobian-rank
+        - complex-only radical/dimension without real-locus guard
+    source_objects:
+    - kind: candidate_bridge
+      citation: reports/pathA_38_throat_body_electric_localization.md:26-30; reports/pathA_38_results.yaml:80
+      statement: pathA_38 h-throat plus deferred nonlinear-throat program is treated by directive convention as a candidate bridge.
+      data:
+        profile_role: h_Goldstone_not_in_plane_shear
+    - kind: h_goldstone_profile_imported
+      citation: reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+      statement: sech^2/ell profile exists for h-Goldstone throat localization; the soliton form is imported and not an in-plane f_u profile.
+    - kind: postulated_mu_rho
+      citation: reports/pathA_35_G0_freeze.md:83-88
+      statement: rho_br and mu_R are independent postulated ingredients in G0.
+    - kind: surface_shear_postulated
+      citation: reports/pathA_35_G0_freeze.md:34-38
+      statement: u^a is a postulated surface collective/material DOF; no nonlinear bulk/throat action derives its shear modulus.
+    - kind: missing_closed_fu
+      citation: reports/pathA_39_scalar_admixture_screen.md:45-58
+      statement: f_u normalization is kept symbolic; the report does not give a closed in-plane shear profile.
+    - kind: route_b_distinct_dof
+      citation: reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+      statement: h is a scalar in the (u_L,h) block and u_T has two transverse vector DOF; equal speeds are not field identity.
+    - kind: over_import_guard
+      citation: directive/pathA_40_cone_lock.md:Route-B guard
+      statement: thin-plate K_h proportional to mu_R*thickness^2 is not an earned native relation and is rejected as over-import.
+    - kind: freedom_free_parameter
+      citation: reports/pathA_39_scalar_admixture_screen.md:54-58
+      statement: C_hu is a declared scan/deferred scalar mixing parameter, not derived from q_h.
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: reports/pathA_35_G0_freeze.md:38,83-88
+      statement: rho_br is an independent brane inertia density, not rho times an earned thickness.
+      data:
+        param: rho_br
+    - kind: force_A_fake_relation
+      citation: synthetic-control-source-fact
+      statement: 'target-blind tau_A relation: mu_R=rho_br*tau_A and m*tau_A=5K rho^4.'
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      - mu_R - rho_br*tau_A
+      - -5*K*rho**4 + m*tau_A
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - tau_A
+      - rho_B0 != 0
+      - C_hu real
+  b_only_partial:
+    case: b_only_partial
+    verdict: CONE_LOCK_PARTIAL(derived=B, calibrated=A)
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - reports/pathA_35_G0_freeze.md:34-38
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - reports/pathA_39_scalar_admixture_screen.md:45-58
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+        - directive/pathA_40_cone_lock.md:Route-B guard
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '4'
+          M_h: '1'
+          c_E: '2'
+          chi_c: '4'
+          m: '5'
+          mu_R: '4'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 15/4
+          tau_B: '4'
+      lock_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: 1/2
+          K: '1'
+          K_h: '1'
+          M_h: '1'
+          c_E: '1'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: 3/4
+          tau_B: '1'
+      provenance:
+        A:
+          status: WITNESSED
+          method: exact real non-entailment witness satisfying E and lock != 0
+          remainder: -5*K*rho**4*rho_br + m*mu_R
+          lock_value_at_witness: '15'
+          witness:
+            B_eff: '1'
+            C_hu: 1/2
+            K: '1'
+            K_h: '4'
+            M_h: '1'
+            c_E: '2'
+            chi_c: '4'
+            m: '5'
+            mu_R: '4'
+            rho: '1'
+            rho_B0: '2'
+            rho_br: '1'
+            sigma: 15/4
+            tau_B: '4'
+        B:
+          status: ENTAILED
+          method: polynomial ideal membership via Groebner remainder zero; sufficient real-radical certificate
+          remainder: '0'
+      dimension:
+        status: CERTIFIED
+        delta_r: 1
+        dim_before: 9
+        dim_after: 8
+        before:
+          dimension: 9
+          leading_supports:
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - c_E
+          - - C_hu
+          - - rho_br
+            - tau_B
+          - - M_h
+            - tau_B
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - K
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        after:
+          dimension: 8
+          leading_supports:
+          - - rho
+            - rho_br
+            - K
+          - - rho
+            - mu_R
+            - K
+          - - rho_B0
+          - - mu_R
+            - M_h
+          - - c_E
+          - - C_hu
+          - - rho_br
+            - tau_B
+          - - M_h
+            - tau_B
+          max_independent_coordinate_set:
+          - rho
+          - rho_br
+          - chi_c
+          - mu_R
+          - m
+          - K_h
+          - B_eff
+          - sigma
+          method: Groebner initial-monomial Hilbert/Krull dimension; real-locus guarded by exact positive witness
+        real_locus_guard: Both before/after formulas have exact positive witnesses satisfying the strict stability slack; the positive cell is
+          an open semialgebraic subset of the computed variety.
+        dropped_assumptions_named:
+        - regular-sequence/generic-Jacobian-rank
+        - complex-only radical/dimension without real-locus guard
+    source_objects:
+    - kind: candidate_bridge
+      citation: reports/pathA_38_throat_body_electric_localization.md:26-30; reports/pathA_38_results.yaml:80
+      statement: pathA_38 h-throat plus deferred nonlinear-throat program is treated by directive convention as a candidate bridge.
+      data:
+        profile_role: h_Goldstone_not_in_plane_shear
+    - kind: h_goldstone_profile_imported
+      citation: reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+      statement: sech^2/ell profile exists for h-Goldstone throat localization; the soliton form is imported and not an in-plane f_u profile.
+    - kind: postulated_mu_rho
+      citation: reports/pathA_35_G0_freeze.md:83-88
+      statement: rho_br and mu_R are independent postulated ingredients in G0.
+    - kind: surface_shear_postulated
+      citation: reports/pathA_35_G0_freeze.md:34-38
+      statement: u^a is a postulated surface collective/material DOF; no nonlinear bulk/throat action derives its shear modulus.
+    - kind: missing_closed_fu
+      citation: reports/pathA_39_scalar_admixture_screen.md:45-58
+      statement: f_u normalization is kept symbolic; the report does not give a closed in-plane shear profile.
+    - kind: route_b_distinct_dof
+      citation: reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+      statement: h is a scalar in the (u_L,h) block and u_T has two transverse vector DOF; equal speeds are not field identity.
+    - kind: over_import_guard
+      citation: directive/pathA_40_cone_lock.md:Route-B guard
+      statement: thin-plate K_h proportional to mu_R*thickness^2 is not an earned native relation and is rejected as over-import.
+    - kind: freedom_free_parameter
+      citation: reports/pathA_39_scalar_admixture_screen.md:54-58
+      statement: C_hu is a declared scan/deferred scalar mixing parameter, not derived from q_h.
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: reports/pathA_35_G0_freeze.md:38,83-88
+      statement: rho_br is an independent brane inertia density, not rho times an earned thickness.
+      data:
+        param: rho_br
+    - kind: force_B_fake_relation
+      citation: synthetic-control-source-fact
+      statement: 'target-blind tau_B relation: mu_R=rho_br*tau_B and c_E^2=tau_B.'
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      - mu_R - rho_br*tau_B
+      - c_E**2 - tau_B
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - tau_B
+      - rho_B0 != 0
+      - C_hu real
+  over_constrained:
+    case: over_constrained
+    verdict: NO_GO(sector-ledger)
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - reports/pathA_35_G0_freeze.md:34-38
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - reports/pathA_39_scalar_admixture_screen.md:45-58
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+        - directive/pathA_40_cone_lock.md:Route-B guard
+      freedom:
+        status: FREEDOM_UNCONSTRAINED
+        free_params:
+        - C_hu
+        - rho_br
+        ties: []
+    algebra:
+      sector_sat:
+        status: UNSAT
+        core:
+        - B_eff*K_h - C_hu^2 - sigma = 0
+        - C_hu^2 - B_eff*K_h - eta_over = 0
+        - sigma>0
+        - eta_over>0
+        certificate: Adding the two equations gives -(sigma+eta_over)=0, impossible with sigma,eta_over>0.
+      lock_sat:
+        status: UNSAT
+        core:
+        - B_eff*K_h - C_hu^2 - sigma = 0
+        - C_hu^2 - B_eff*K_h - eta_over = 0
+        - sigma>0
+        - eta_over>0
+        certificate: Adding the two equations gives -(sigma+eta_over)=0, impossible with sigma,eta_over>0.
+      provenance: {}
+      dimension:
+        status: NOT_RUN
+    source_objects:
+    - kind: candidate_bridge
+      citation: reports/pathA_38_throat_body_electric_localization.md:26-30; reports/pathA_38_results.yaml:80
+      statement: pathA_38 h-throat plus deferred nonlinear-throat program is treated by directive convention as a candidate bridge.
+      data:
+        profile_role: h_Goldstone_not_in_plane_shear
+    - kind: h_goldstone_profile_imported
+      citation: reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+      statement: sech^2/ell profile exists for h-Goldstone throat localization; the soliton form is imported and not an in-plane f_u profile.
+    - kind: postulated_mu_rho
+      citation: reports/pathA_35_G0_freeze.md:83-88
+      statement: rho_br and mu_R are independent postulated ingredients in G0.
+    - kind: surface_shear_postulated
+      citation: reports/pathA_35_G0_freeze.md:34-38
+      statement: u^a is a postulated surface collective/material DOF; no nonlinear bulk/throat action derives its shear modulus.
+    - kind: missing_closed_fu
+      citation: reports/pathA_39_scalar_admixture_screen.md:45-58
+      statement: f_u normalization is kept symbolic; the report does not give a closed in-plane shear profile.
+    - kind: route_b_distinct_dof
+      citation: reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+      statement: h is a scalar in the (u_L,h) block and u_T has two transverse vector DOF; equal speeds are not field identity.
+    - kind: over_import_guard
+      citation: directive/pathA_40_cone_lock.md:Route-B guard
+      statement: thin-plate K_h proportional to mu_R*thickness^2 is not an earned native relation and is rejected as over-import.
+    - kind: freedom_free_parameter
+      citation: reports/pathA_39_scalar_admixture_screen.md:54-58
+      statement: C_hu is a declared scan/deferred scalar mixing parameter, not derived from q_h.
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: reports/pathA_35_G0_freeze.md:38,83-88
+      statement: rho_br is an independent brane inertia density, not rho times an earned thickness.
+      data:
+        param: rho_br
+    - kind: over_stability_relation
+      citation: synthetic-control-source-fact
+      statement: earned over-constraint C_hu^2 = B_eff K_h + eta_over with eta_over>0.
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      - -B_eff*K_h + C_hu**2 - eta_over
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - eta_over
+      - rho_B0 != 0
+      - C_hu real
+  freedom_tie:
+    case: freedom_tie
+    verdict: NO_GO(cone-lock)
+    atomic_riders: []
+    prepass:
+      route_a:
+        grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        candidate_bridge: true
+        records:
+          R1:
+            status: absent
+            object: nonlinear bulk/throat/interior action containing both GNLS EOS and in-plane u^a shear
+            citation:
+            - reports/pathA_35_G0_freeze.md:34-38
+          R2:
+            status: absent
+            object: closed transverse profile f_u(w) for the in-plane shear mode
+            citation:
+            - reports/pathA_39_scalar_admixture_screen.md:45-58
+          R3:
+            status: absent
+            object: common normalization/integral deriving both rho_br and mu_R
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R4:
+            status: absent
+            object: algebraic reduction proving mu_R/rho_br = 5K rho^4/m
+            citation:
+            - reports/pathA_35_G0_freeze.md:83-88
+          R5:
+            status: not_applicable
+            object: R4 reduction leaves no residual ell/thickness/profile/compactness factor
+            citation:
+            - reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        r5_gating_rule: R5 is present only after R4 is present and no residual free geometric/profile factor remains; otherwise not_applicable.
+      route_b:
+        status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        field_distinctness_checked: true
+        over_import_guard: CHECKED_NEGATIVE
+        citations:
+        - reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+        - directive/pathA_40_cone_lock.md:Route-B guard
+      freedom:
+        status: FREEDOM_TIED
+        ties:
+        - kind: freedom_tie_relation
+          citation: synthetic-control-source-fact
+          statement: C_hu tied to q_h_sq by C_hu^2=q_h_sq and q_h_sq*rho_br=2 B_eff M_h mu_R; with L_B and K_h=M_h c_E^2 this violates stability.
+          data:
+            param: C_hu
+            relation: C_hu^2=q_h_sq, q_h_sq*rho_br=2*B_eff*M_h*mu_R
+        free_params: []
+    algebra:
+      sector_sat:
+        status: SAT
+        method: exact_positive_witness_checked_against_polynomial_equalities_and_strict_slack
+        witness:
+          B_eff: '1'
+          C_hu: sqrt(2)
+          K: '1'
+          K_h: '4'
+          M_h: '1'
+          c_E: '2'
+          chi_c: '4'
+          m: '5'
+          mu_R: '1'
+          q_h_sq: '2'
+          rho: '1'
+          rho_B0: '2'
+          rho_br: '1'
+          sigma: '2'
+      lock_sat:
+        status: UNSAT
+        core:
+        - B_eff*K_h - C_hu^2 - sigma = 0
+        - C_hu^2 - q_h_sq = 0
+        - q_h_sq*rho_br - 2*B_eff*M_h*mu_R = 0
+        - K_h - M_h*c_E^2 = 0
+        - c_E^2*rho_br - mu_R = 0
+        - B_eff,K_h,rho_br,sigma>0
+        certificate: The tie plus L_B and K_h=M_h*c_E^2 gives C_hu^2=2 B_eff K_h; stability then gives -(B_eff*K_h+sigma)=0.
+      provenance: {}
+      dimension:
+        status: NOT_RUN
+    source_objects:
+    - kind: candidate_bridge
+      citation: reports/pathA_38_throat_body_electric_localization.md:26-30; reports/pathA_38_results.yaml:80
+      statement: pathA_38 h-throat plus deferred nonlinear-throat program is treated by directive convention as a candidate bridge.
+      data:
+        profile_role: h_Goldstone_not_in_plane_shear
+    - kind: h_goldstone_profile_imported
+      citation: reports/pathA_38_results.yaml:80; reports/pathA_38_throat_body_electric_localization.md:26-30
+      statement: sech^2/ell profile exists for h-Goldstone throat localization; the soliton form is imported and not an in-plane f_u profile.
+    - kind: postulated_mu_rho
+      citation: reports/pathA_35_G0_freeze.md:83-88
+      statement: rho_br and mu_R are independent postulated ingredients in G0.
+    - kind: surface_shear_postulated
+      citation: reports/pathA_35_G0_freeze.md:34-38
+      statement: u^a is a postulated surface collective/material DOF; no nonlinear bulk/throat action derives its shear modulus.
+    - kind: missing_closed_fu
+      citation: reports/pathA_39_scalar_admixture_screen.md:45-58
+      statement: f_u normalization is kept symbolic; the report does not give a closed in-plane shear profile.
+    - kind: route_b_distinct_dof
+      citation: reports/pathA_39_stage4_field_classification_results.yaml:1-30; reports/pathA_36_c5_phase_potential_results.yaml:441-449
+      statement: h is a scalar in the (u_L,h) block and u_T has two transverse vector DOF; equal speeds are not field identity.
+    - kind: over_import_guard
+      citation: directive/pathA_40_cone_lock.md:Route-B guard
+      statement: thin-plate K_h proportional to mu_R*thickness^2 is not an earned native relation and is rejected as over-import.
+    - kind: freedom_free_parameter
+      citation: reports/pathA_39_scalar_admixture_screen.md:54-58
+      statement: C_hu is a declared scan/deferred scalar mixing parameter, not derived from q_h.
+      data:
+        param: C_hu
+    - kind: freedom_free_parameter
+      citation: reports/pathA_35_G0_freeze.md:38,83-88
+      statement: rho_br is an independent brane inertia density, not rho times an earned thickness.
+      data:
+        param: rho_br
+    - kind: freedom_tie_relation
+      citation: synthetic-control-source-fact
+      statement: C_hu tied to q_h_sq by C_hu^2=q_h_sq and q_h_sq*rho_br=2 B_eff M_h mu_R; with L_B and K_h=M_h c_E^2 this violates stability.
+      data:
+        param: C_hu
+        relation: C_hu^2=q_h_sq, q_h_sq*rho_br=2*B_eff*M_h*mu_R
+    domain:
+      equalities:
+      - B_eff*chi_c - rho_B0**2
+      - K_h - M_h*c_E**2
+      - B_eff*K_h - C_hu**2 - sigma
+      - C_hu**2 - q_h_sq
+      - -2*B_eff*M_h*mu_R + q_h_sq*rho_br
+      locks:
+        A: -5*K*rho**4*rho_br + m*mu_R
+        B: c_E**2*rho_br - mu_R
+      positive_or_nonzero:
+      - rho
+      - rho_br
+      - chi_c
+      - mu_R
+      - K
+      - m
+      - M_h
+      - c_E
+      - K_h
+      - B_eff
+      - sigma
+      - q_h_sq
+      - rho_B0 != 0
+      - C_hu real
+production_check:
+  verdict: CONE_LOCK_CALIBRATED
+  route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+  route_a_missing:
+  - R1
+  - R2
+  - R3
+  - R4
+  - R5
+  route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+  freedom_status: FREEDOM_UNCONSTRAINED
+  sector_sat: SAT
+  lock_sat: SAT
+  prov_A: WITNESSED
+  prov_B: WITNESSED
+  dimension_status: CERTIFIED
+  delta_r: 2
+  dim_before: 10
+  dim_after: 8
+  riders: []
+ledger:
+  earned_equalities:
+  - c_s^2 = 5 K rho^4/m
+  - c_gamma^2 = mu_R/rho_br
+  - B_eff = rho_B0^2/chi_c
+  - K_h = M_h c_E^2
+  - B_eff K_h - C_hu^2 = sigma, sigma>0
+  - 'L_A: m mu_R - 5 K rho^4 rho_br = 0'
+  - 'L_B: c_E^2 rho_br - mu_R = 0'
+  branch_tags:
+  - 'pathA_36 real branch: SECOND_CLASS_PAIR, not tuned Maxwell locus'
+  - 'pathA_39 field content: FIELD_SCALAR_VECTOR_DEPARTURE'
+  - mu_R,rho_br,c_E,K independent unless an earned source relation mutates the case
+engine_agreement:
+  status: ENGINE_AGREE
+  agreement_test: STRUCTURAL_PAYLOAD_EQUALITY
+  structural_payload_equal: true
+  agreement_count: 150
+  sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_40_cone_lock_sympy.json
+  mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_40_cone_lock_mathematica.json
+  informational_digests:
+    role: informational_only_not_agreement_test
+    note: SymPy and Mathematica serialize the matched payload differently before hashing; structural payload equality is the agreement test.
+    sympy_comparison_digest: e06d8a573653d4163720b18870abab15b4e76e0819f5bc4fa5e2c95ddd6beec0
+    mathematica_comparison_digest: 2b681dc490a7330d01bd882cd58382b9d63bb8226f22dc3fe99858053a216ad9
+comparison_payload:
+  production_and_controls:
+    production:
+      verdict: CONE_LOCK_CALIBRATED
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: WITNESSED
+      prov_B: WITNESSED
+      dimension_status: CERTIFIED
+      delta_r: 2
+      dim_before: 10
+      dim_after: 8
+      riders: []
+    well_posed:
+      verdict: HALT_ROUTE_A_WELL_POSED
+      route_a_grade: ROUTE_A_WELL_POSED
+      route_a_missing: []
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: NOT_RUN
+      lock_sat: NOT_RUN
+      prov_A: null
+      prov_B: null
+      dimension_status: NOT_RUN
+      delta_r: null
+      dim_before: null
+      dim_after: null
+      riders: []
+    absent:
+      verdict: CONE_LOCK_CALIBRATED
+      route_a_grade: ROUTE_A_ABSENT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: WITNESSED
+      prov_B: WITNESSED
+      dimension_status: CERTIFIED
+      delta_r: 2
+      dim_before: 10
+      dim_after: 8
+      riders: []
+    partial_inventory:
+      verdict: CONE_LOCK_CALIBRATED
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: WITNESSED
+      prov_B: WITNESSED
+      dimension_status: CERTIFIED
+      delta_r: 2
+      dim_before: 10
+      dim_after: 8
+      riders: []
+    forced_lock:
+      verdict: CONE_LOCK_DERIVED
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: ENTAILED
+      prov_B: ENTAILED
+      dimension_status: CERTIFIED
+      delta_r: 0
+      dim_before: 8
+      dim_after: 8
+      riders: []
+    a_only_partial:
+      verdict: CONE_LOCK_PARTIAL(derived=A, calibrated=B)
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: ENTAILED
+      prov_B: WITNESSED
+      dimension_status: CERTIFIED
+      delta_r: 1
+      dim_before: 9
+      dim_after: 8
+      riders: []
+    b_only_partial:
+      verdict: CONE_LOCK_PARTIAL(derived=B, calibrated=A)
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: SAT
+      lock_sat: SAT
+      prov_A: WITNESSED
+      prov_B: ENTAILED
+      dimension_status: CERTIFIED
+      delta_r: 1
+      dim_before: 9
+      dim_after: 8
+      riders: []
+    over_constrained:
+      verdict: NO_GO(sector-ledger)
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_UNCONSTRAINED
+      sector_sat: UNSAT
+      lock_sat: UNSAT
+      prov_A: null
+      prov_B: null
+      dimension_status: NOT_RUN
+      delta_r: null
+      dim_before: null
+      dim_after: null
+      riders: []
+    freedom_tie:
+      verdict: NO_GO(cone-lock)
+      route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+      route_a_missing:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+      freedom_status: FREEDOM_TIED
+      sector_sat: SAT
+      lock_sat: UNSAT
+      prov_A: null
+      prov_B: null
+      dimension_status: NOT_RUN
+      delta_r: null
+      dim_before: null
+      dim_after: null
+      riders: []
+  field_content: FIELD_SCALAR_VECTOR_DEPARTURE
+  det_on_light_cone_under_B: -C_hu**2*k**4
+  Delta_pole_minus_under_B: (B_eff*M_h - K_h*rho_br - sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)
+  Delta_pole_plus_under_B: (B_eff*M_h - K_h*rho_br + sqrt(B_eff**2*M_h**2 - 2*B_eff*K_h*M_h*rho_br + 4*C_hu**2*M_h*rho_br + K_h**2*rho_br**2))/(2*M_h*rho_br)

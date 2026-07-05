@@ -40,14 +40,21 @@ verification agents → user methodology call (derive the emergent constants bef
 >   NOT exact Maxwell.** Able-to-fail: clean→`FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY`, large-`C_hu`→UNSTABLE,
 >   remove-`h`→`FIELD_EXACT_MAXWELL_STRUCTURE`, corrupt→`UNDERDETERMINED`. Spec close (sim-deferred: `a_L`, `C_hu`, contamination
 >   magnitude, `c_E=c_γ`/`λγ`). Artifacts `{directives,tools,reports}/pathA_39_stage4_*`.
-> - **▶ NEXT (session `/compact`-ed here 2026-07-04) = the CONSISTENCY KNIT. Running-start handoff =
->   `notes/consistency_knit_handoff.md` (read first).** (a) speed cone-lock `λγ=c_γ/c_s=1` AND `c_E=c_γ` — DERIVED or CALIBRATED?
->   (`λγ`=`BETA_GENUINE_GAP`; `λγ⁵` in the `pathA_22b` verdict count below; `c_E=c_γ`=retired `η_T=1`; pathA_39 preferred-frame
->   unless `c_E=c_γ`); (b) NG1–NG5 cross-consistency (`directives/pathA_25_*`); (c) assemble the four-sector chain into
->   `research/pde_ledger/`. **FIRST action = SCOPE with Codex (able-to-fail: a NO-GO if the four can't share one param set =
->   first-class falsification) → directive → gauntlet → user gate.** Honest landing (sector): magnetism = a real fourth force + a
->   characterized scalar departure, NOT clean Maxwell. Then task #110 (the charge-coupled "extra scalar",
->   `notes/pathA_39_charge_coupled_scalar_followup.md`). **Committed+pushed: Stages 0-2 `9e1a6075`, Stage 3 `7fc12bab`, Stage 4 `29dcd4fa`.**
+> - **▶ CONSISTENCY KNIT — sub-step (a) cone-lock ✅ EARNED (`pathA_40`) = `CONE_LOCK_CALIBRATED`, `Δr=2`; NEXT = (b) NG5.**
+>   Handoff = `notes/consistency_knit_handoff.md`; scope = `_scratch/consistency_knit_scope_v3.md`.
+>   **(a) DONE:** both locks `λγ=1` (`μ_R/ρ_br=5Kρ⁴/m`) and `c_E=c_γ` (`c_E²=μ_R/ρ_br`) are **CALIBRATED, not derived** (both
+>   `WITNESSED`; `Δr=2` real-locus Krull dim 10→8, MMA `RegionDimension`-confirmed). Pre-pass Route A =
+>   `UNDERDETERMINED_MISSING_NONLINEAR_THROAT` (a forced `μ_R`-as-bulk-defect-integral needs the deferred nonlinear throat = WHERE a future
+>   `λγ` derivation must come from); Route B = closed checked-negative; freedom `FREEDOM_UNCONSTRAINED{C_hu,ρ_br}`. Field content stays
+>   `FIELD_SCALAR_VECTOR_DEPARTURE` (coupled scalar poles OFF-cone `det M|cone=−C_hu²k⁴` → task #110). **Near-vacuous by construction (§0):
+>   the gate's value = checked-negatives + off-cone residual + freedom caveat feeding NG5; falsification power is NG5/#110/held-out, NOT
+>   here.** Gauntlet: scope Codex×3+GLM; sequencing Claude↔Codex→option(iv); directive Codex+**GLM-5.2(opencode)** (BLOCKER = SHARED_CALIBRATION
+>   provenance leak + NITs folded)→Codex-green; dual-engine `ENGINE_AGREE(150)`; tri-review CLEAN (arbiter + `FIDELITY_CLEAN` +
+>   `ADVERSARIAL_SOUND`/6 ablations). Artifacts `{directives,tools,reports}/pathA_40_cone_lock*`.
+>   **(b) NEXT = NG5 `SECOND_MEDIUM_DRIFT`** (re-pose `pathA_25_*` NG1–NG5 on the earned param set — is it ONE medium or several? — and
+>   CERTIFY the `C_hu,ρ_br` freedom pathA_40's NO_GO-non-firing was conditional on; re-run pathA_40 if a tie is found). **(c)** assemble
+>   the chain into `research/pde_ledger/` (resolves the two-`χ_Q` open item). Then task #110. **Committed: Stages 0-2 `9e1a6075`, Stage 3
+>   `7fc12bab`, Stage 4 `29dcd4fa` (pushed); compact-prep `b0ad3540` + pathA_40 (this) local.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN

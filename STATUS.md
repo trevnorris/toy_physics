@@ -11,12 +11,19 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` re-tri-reviewed CLEAN + hardened (interpreted: ONE candidate medium, 4D→3D reduction incomplete); NEXT = task #110 (the extra scalar), then the pde_ledger
+## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` CLEAN+hardened + (task #110) charge-coupled scalar = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED` (pathA_42, tri-reviewed+remediated CLEAN); NEXT = knit sub-piece (c) the `pde_ledger` assembly
 
 > **⏸ (2026-07-05).** Pickup: read this block + `notes/consistency_knit_handoff.md` + memory
-> [[project-brane-existence-defect-structure]]. **NEXT ACTION = task #110** (explore the charge-coupled "extra scalar" from pathA_39
-> Stage-4: does it show up in a way that would clearly BREAK the model? `notes/pathA_39_charge_coupled_scalar_followup.md`), THEN the
-> pde_ledger assembly (knit sub-piece c). **NG5 (`pathA_41`) re-tri-review = DONE + CLEAN (2026-07-05):** fidelity `FIDELITY_CLEAN`,
+> [[project-brane-existence-defect-structure]]. **NEXT ACTION = knit sub-piece (c): assemble the four-sector chain into
+> `research/pde_ledger/`** (resolves the two-`χ_Q` open item). **task #110 (the charge-coupled "extra scalar") = DONE (`pathA_42` =
+> `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`):** the scalar does NOT clearly break the model — `h` is EP-safe on the decoupled floor
+> (CONDITIONAL on `q_h/Q_E` throat universality), radiation is genuinely `SIM_GATED` (exponent-3, `M_h` free — the pathA_38 static
+> Coulomb calibrates via `Q_E`+`N₀`, NOT `K_h`, so no order-one Lorentz-vs-radiation conflict), and the decisive magnitude rides on the
+> deferred throat solve; universality + `u_L` mass-EP + vacuum-Cherenkov + stellar-cooling = throat-solve re-open obligations. Full
+> gauntlet (Codex design-review + GLM-5.2 tertiary + Codex normalization-adjudication, all folded); tri-review CAUGHT 3 stamped/theatrical
+> mechanisms (guard-A theater, fabricated deletion-robustness, stamped exponent) → remediated (guard now a genuinely WIRED firewall
+> reading substrate provenance + scanning the results path; genuine deletion recompute; mechanized dipole/flux exponent) → re-tri-reviewed
+> CLEAN + a final tuple-scan hardening. `ENGINE_AGREE 22`; gate pins nothing → NO NG5/pathA_40 reopen. **NG5 (`pathA_41`) re-tri-review = DONE + CLEAN (2026-07-05):** fidelity `FIDELITY_CLEAN`,
 > adversarial `ADVERSARIAL_CLEAN` (able-to-PASS: verdict reversible under legit route registration, NOT rigged toward drift). Then a
 > hardening fold caught + fixed a real reproducibility bug (tool read its own expected verdict string from a gitignored `_scratch` doc),
 > made location-closure ("no fourth arena") COMPUTED + able-to-fail (proven: a bad production-row location now raises), and honest-ified
@@ -114,10 +121,16 @@ self-consistent parameter set, and can they assemble into the central calibrated
   COMPUTED + able-to-fail (a bad production-row location now RAISES — teeth proven on a fresh spot-check); (3) honest-ified the Dual-Engine
   Split prose (`.wl` extracts lineage/interp/control narration per §7); a fresh spot-check leg = `HARDENING_CLEAN`, `ENGINE_AGREE 211`.
   Artifacts: `{directives,tools,reports}/pathA_41_ng5_second_medium_drift*` (tool no longer depends on `_scratch`).
-- **(c) Assemble the four-sector chain into `research/pde_ledger/`** — after task #110; resolves the two-`χ_Q` open item.
-- **▶ NEXT (post-compact) = task #110: the charge-coupled "extra scalar."** Explore whether the off-cone `h`-branon departure (pathA_39
-  Stage-4 / pathA_40 `Δ_pole∝C_hu²`) shows up in a way that would **clearly BREAK the model** (falsifiable conflict) vs a naturally-hidden
-  departure. `notes/pathA_39_charge_coupled_scalar_followup.md`. THEN the pde_ledger (c).
+- **(task #110) the charge-coupled "extra scalar" = DONE (`pathA_42` = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`).** Does the
+  off-cone `h`-branon departure clearly BREAK the model or is it hidden? ANSWER: neither cleanly — it's MAPPED with the decisive
+  magnitude SIM_GATED (walled on the deferred throat solve; reachability read = `HARD_WALL`, `M_h`/`c_E` un-pinnable now). 5 channels:
+  `h_EP`=EP-safe-on-decoupled-floor (mass-channel; CONDITIONAL on `q_h/Q_E` universality — GLM F1), `radiation`=`SIM_GATED` (exponent-3,
+  `M_h` free; Codex adjudicated `K_h` NOT calibration-pinned → NO order-one conflict), `universality`/`u_L_EP`/`preferred_frame`=`SIM_GATED`
+  variants; Cherenkov (`c_E<c_γ`) + stellar-cooling = re-open obligations. Gauntlet (Codex+GLM-5.2+adjudication) + tri-review that CAUGHT
+  3 stamped mechanisms → remediated (wired guard-A firewall, genuine deletion recompute, mechanized dipole exponent) → re-tri-review CLEAN.
+  `ENGINE_AGREE 22`. Artifacts `{directives,tools,reports}/pathA_42_charge_coupled_scalar*`; `notes/pathA_39_charge_coupled_scalar_followup.md`.
+  Gate pins nothing → NO NG5/pathA_40 reopen.
+- **▶ (c) NEXT = Assemble the four-sector chain into `research/pde_ledger/`** — the knit's final sub-piece; resolves the two-`χ_Q` open item.
 
 ---
 

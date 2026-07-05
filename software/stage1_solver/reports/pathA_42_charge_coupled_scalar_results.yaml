@@ -1,0 +1,568 @@
+schema: pathA_42_charge_coupled_scalar_sympy/v1
+verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+computed_not_hardcoded: true
+five_channel_table:
+- channel: h_EP
+  state: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+  subtags: []
+  adjudication: Mass-channel safe on the decoupled floor only; full decoupled-floor EP safety also needs universality=EARNED_SAFE.
+- channel: radiation
+  state: SIM_GATED
+  subtags:
+  - CHERENKOV_DEFERRED
+  adjudication: Current ledger branch is exponent-3; magnitude remains SIM_GATED on the free h-sector kinetic normalization.
+- channel: universality
+  state: SIM_GATED_REQUIRED_UNIVERSALITY
+  subtags: []
+  adjudication: q_h/Q_E universality is required but not earned from the current b/ell ledger.
+- channel: u_L_EP
+  state: SIM_GATED
+  subtags:
+  - MIXED_SCALAR_EP_RISK
+  adjudication: u_L couples to charge and mass; C_hu mixing transfers mass coupling into charge-sourced eigenmodes.
+- channel: preferred_frame
+  state: SIM_GATED
+  subtags: []
+  adjudication: c_E=c_gamma is calibrated, not earned; large-c_E hiding would carry preferred-frame cost.
+channel_states:
+  h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+  radiation: SIM_GATED
+  universality: SIM_GATED_REQUIRED_UNIVERSALITY
+  u_L_EP: SIM_GATED
+  preferred_frame: SIM_GATED
+subtags:
+  CHERENKOV_DEFERRED: true
+  MIXED_SCALAR_EP_RISK: true
+guard_predicates_production:
+  LAUNDERING_REFUSED: false
+  STABILITY_VIOLATED: false
+ep_adjudication:
+  h_EP_mass_channel: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+  full_decoupled_floor_EP_safety: NOT_EARNED
+  required_conjunction: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR AND universality=EARNED_SAFE
+  mixing_caveat: C_hu*q_h*q_M term reintroduces a mass coupling when mixing is nonzero.
+  unqualified_decoupled_floor_EP_safe_reported: false
+static_exchange_matrix:
+  provenance: dual-engine derivation
+  stiffness_matrix: '[[B_eff, C_hu], [C_hu, K_h]]'
+  determinant: B_eff*K_h - C_hu**2
+  A_qq: (B_eff*q_h**2 - 2*C_hu*q_L*q_h + K_h*q_L**2)/(B_eff*K_h - C_hu**2)
+  A_qm: (B_eff*m_h*q_h - C_hu*m_h*q_L - C_hu*q_M*q_h + K_h*q_L*q_M)/(B_eff*K_h - C_hu**2)
+  A_mm: (B_eff*m_h**2 - 2*C_hu*m_h*q_M + K_h*q_M**2)/(B_eff*K_h - C_hu**2)
+  decoupled_projection:
+    A_qm_with_C_hu_0_and_h_mass_residue_0: q_L*q_M/B_eff
+    mass_residue_zero_projection: true
+  mixed_projection:
+    q_L_0_C_hu_nonzero_q_M_nonzero: -C_hu*q_M*q_h/(B_eff*K_h - C_hu**2)
+    MIXED_SCALAR_EP_RISK: true
+radiation_adjudication:
+  provenance: dual-engine dipole/flux exponent derivation
+  setup: nonrelativistic point-charge dipole; scalar and EM far-zone fields at c_E/c_gamma; scalar flux vs Poynting flux
+  current_ledger_branch: exponent-3 bare-fixed/current branch
+  current_ledger_state: SIM_GATED
+  scalar_power_from_flux: d**2*omega**4*q_h**2/(M_h*c_E**3)
+  em_power_from_flux: Q_E**2*d**2*omega**4/c_gamma**3
+  bare_flux_ratio: c_gamma**3*q_h**2/(M_h*Q_E**2*c_E**3)
+  corrupt_speed_flux_ratio: c_gamma**3*q_h**2/(M_h*Q_E**2*c_E)
+  wrong_normalization_ratio: c_gamma**3*kappa/(Q_E**2*c_E)
+  bare_fixed_exponent: 3
+  pinned_K_h_conditional_exponent: 1
+  pinned_K_h_test_default: false
+  same_cE_cgamma_without_pinned_Kh: SIM_GATED
+  same_cE_cgamma_with_pinned_Kh: FALSIFIABLE_TENSION
+  magnitude: SIM_GATED_BY_GUARD_A_NO_NUMERIC_POWER_RATIO_EMITTED
+  cherenkov_subtag_spelling_guard: CHERENKOV_DEFERRED
+  subtags:
+  - CHERENKOV_DEFERRED
+preferred_frame:
+  state: SIM_GATED
+  cost: Large c_E/c_gamma radiation hiding would trigger PREFERRED_FRAME_TENSION.
+  source: software/stage1_solver/reports/pathA_39_magnetic_force.md:63-65
+u_L_and_mixing_structure:
+  state: SIM_GATED
+  magnitude: SIM_GATED via a_L AND C_hu
+  mixed_scalar_EP_risk: true
+hard_wall:
+  status: HARD_WALL
+  missing_object: h_time_kinetic_parent_action
+  M_h: symbolic/imported calibrated geometry input, not pinned
+  c_E: inserted in dynamic Green operator, not derived
+  K_h: NOT_PINNED_BY_pathA_38_STATIC_COULOMB
+  route_to_reopen: deferred nonlinear throat solve / Route-A
+  no_forward_reopen_triggered: true
+  astrophysical_cosmological_reopen: On throat-solve pinning, check stellar cooling and BBN/CMB bounds for the massless charge-coupled
+    scalar.
+Gate_L_connection:
+  status: EARNED_CONNECTION
+  statement: same embedding-direction family, distinct ledger object; ungapped bending family triggers Gate-L fifth-force
+    failure
+  source: software/stage1_solver/reports/pathA_35_gateL_light.md:132
+guard_A:
+  status: FIRED
+  production:
+    attempted_guarded_magnitude_emission: false
+    guard_predicate: false
+    result: NO_GUARDED_MAGNITUDE_EMITTED
+    serialization_guard_wired: true
+    h_time_kinetic_parent_action: ABSENT
+  negative_fixtures:
+    M_h_from_N0:
+      replacement: M_h:=N0
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.M_h
+      contains_guarded_symbol: true
+      local_earned_parent_action: false
+      h_time_kinetic_parent_action: ABSENT
+    M_h_from_K_parallel:
+      replacement: M_h:=K_parallel
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.M_h
+      contains_guarded_symbol: true
+      local_earned_parent_action: false
+      h_time_kinetic_parent_action: ABSENT
+    c_E_from_c_gamma_Green:
+      replacement: c_E:=c_gamma from Green form
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.c_E
+      contains_guarded_symbol: true
+      local_earned_parent_action: false
+      h_time_kinetic_parent_action: ABSENT
+    K_h_from_N0_cgamma2:
+      replacement: K_h:=N0*c_gamma^2
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.K_h
+      contains_guarded_symbol: true
+      local_earned_parent_action: false
+      h_time_kinetic_parent_action: ABSENT
+    residue_floor_emission:
+      replacement: charge residue floor
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.residue_floor
+      contains_guarded_symbol: true
+      local_earned_parent_action: false
+      h_time_kinetic_parent_action: ABSENT
+  direct_injected_number_refused:
+    result: LAUNDERING_REFUSED guarded_numeric_paths=P_h/P_EM,M_h
+    payload: assembled results dict with numeric P_h/P_EM and M_h
+  forged_local_flag_refused:
+    result: LAUNDERING_REFUSED
+    wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=P_h_over_P_EM
+    local_earned_parent_action: true
+    h_time_kinetic_parent_action: ABSENT
+  scanner_bypass_regressions:
+    tuple_wrapped_guarded_number:
+      injection: tuple-wrapped guarded number under power_ratio
+      result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.power_ratio.0
+    string_embedded_guarded_number:
+      injection: numeric literal embedded in string under power_ratio
+      result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.power_ratio
+  scope_note: Guard A is a denylist scoped to M_h, c_E, K_h, P_h/P_EM, EP magnitude, and residue floor; unrelated new numeric
+    fields are out of scope.
+  output_invariant: Serialization refuses numeric M_h/c_E/K_h/P_h_over_P_EM/EP magnitude without h_time_kinetic_parent_action.
+controls:
+  A:
+    status: FIRED
+    production:
+      attempted_guarded_magnitude_emission: false
+      guard_predicate: false
+      result: NO_GUARDED_MAGNITUDE_EMITTED
+      serialization_guard_wired: true
+      h_time_kinetic_parent_action: ABSENT
+    negative_fixtures:
+      M_h_from_N0:
+        replacement: M_h:=N0
+        result: LAUNDERING_REFUSED
+        wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.M_h
+        contains_guarded_symbol: true
+        local_earned_parent_action: false
+        h_time_kinetic_parent_action: ABSENT
+      M_h_from_K_parallel:
+        replacement: M_h:=K_parallel
+        result: LAUNDERING_REFUSED
+        wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.M_h
+        contains_guarded_symbol: true
+        local_earned_parent_action: false
+        h_time_kinetic_parent_action: ABSENT
+      c_E_from_c_gamma_Green:
+        replacement: c_E:=c_gamma from Green form
+        result: LAUNDERING_REFUSED
+        wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.c_E
+        contains_guarded_symbol: true
+        local_earned_parent_action: false
+        h_time_kinetic_parent_action: ABSENT
+      K_h_from_N0_cgamma2:
+        replacement: K_h:=N0*c_gamma^2
+        result: LAUNDERING_REFUSED
+        wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.K_h
+        contains_guarded_symbol: true
+        local_earned_parent_action: false
+        h_time_kinetic_parent_action: ABSENT
+      residue_floor_emission:
+        replacement: charge residue floor
+        result: LAUNDERING_REFUSED
+        wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.residue_floor
+        contains_guarded_symbol: true
+        local_earned_parent_action: false
+        h_time_kinetic_parent_action: ABSENT
+    direct_injected_number_refused:
+      result: LAUNDERING_REFUSED guarded_numeric_paths=P_h/P_EM,M_h
+      payload: assembled results dict with numeric P_h/P_EM and M_h
+    forged_local_flag_refused:
+      result: LAUNDERING_REFUSED
+      wired_serialization_result: LAUNDERING_REFUSED guarded_numeric_paths=P_h_over_P_EM
+      local_earned_parent_action: true
+      h_time_kinetic_parent_action: ABSENT
+    scanner_bypass_regressions:
+      tuple_wrapped_guarded_number:
+        injection: tuple-wrapped guarded number under power_ratio
+        result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.power_ratio.0
+      string_embedded_guarded_number:
+        injection: numeric literal embedded in string under power_ratio
+        result: LAUNDERING_REFUSED guarded_numeric_paths=assembled_results_fixture.power_ratio
+    scope_note: Guard A is a denylist scoped to M_h, c_E, K_h, P_h/P_EM, EP magnitude, and residue floor; unrelated new numeric
+      fields are out of scope.
+    output_invariant: Serialization refuses numeric M_h/c_E/K_h/P_h_over_P_EM/EP magnitude without h_time_kinetic_parent_action.
+  B:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: FALSIFIABLE_TENSION(channel=h_EP)
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> FALSIFIABLE_TENSION(channel=h_EP)
+    channels:
+      h_EP: FIFTH_FORCE_TRIGGERED
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+    guard_predicates: {}
+    directive_transition: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR -> FIFTH_FORCE_TRIGGERED
+  C:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: q_L=0 with C_hu*q_h*q_M nonzero -> MIXED_SCALAR_EP_RISK
+  D:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: AUDIT_ONLY_NOT_EARNED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: radiation exponent changes under corrupted Green/flux speed
+    baseline_exponent: 3
+    corrupt_exponent: 1
+  E:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: PREFERRED_FRAME_TENSION
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: SIM_GATED -> PREFERRED_FRAME_TENSION; NATURALLY_HIDDEN unreachable
+  F:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: FALSIFIABLE_TENSION(channel=universality)
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> FALSIFIABLE_TENSION(channel=universality)
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: FALSIFIABLE_TENSION
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: SIM_GATED_REQUIRED_UNIVERSALITY -> FALSIFIABLE_TENSION
+  G:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: NO_GO_CONSISTENCY
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> NO_GO_CONSISTENCY
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates:
+      STABILITY_VIOLATED: true
+    directive_transition: strict stability C_hu**2 < B_eff*K_h -> STABILITY_VIOLATED
+  H:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: NO_GO_CONSISTENCY
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> NO_GO_CONSISTENCY
+    channels:
+      h_EP: NO_GO
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: static-Coulomb match perturbed -> h_EP=NO_GO
+  I:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: q_M sign flip -> A_qm and signed A_mm/q_M projection flip
+    local_invariant_transition: MASS_COUPLING_SIGN_POSITIVE -> MASS_COUPLING_SIGN_NEGATIVE
+    A_qm_sign_flip: true
+    A_mm_even_in_qM: true
+    A_mm_signed_projection_flips: true
+    honesty_note: A_mm itself is quadratic and even in q_M; the signed mass-source projection flips.
+  J:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: bare-fixed exponent 3 -> pinned-K_h exponent 1 under wrong normalization fixture
+    bare_fixed_exponent: 3
+    wrong_normalization_exponent: 1
+  K_without_pinned_Kh:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      CHERENKOV_DEFERRED: true
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: c_E=c_gamma without pinned K_h -> radiation=SIM_GATED
+  K:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    recomputed_verdict: FALSIFIABLE_TENSION(channel=radiation)
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> FALSIFIABLE_TENSION(channel=radiation)
+    channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: FALSIFIABLE_TENSION
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+    subtags:
+      MIXED_SCALAR_EP_RISK: true
+    guard_predicates: {}
+    directive_transition: pinned K_h plus c_E=c_gamma -> radiation=FALSIFIABLE_TENSION
+channel_deletion_sensitivity:
+  h_EP:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channel: h_EP
+    baseline_state: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: NO_GO_CONSISTENCY
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> NO_GO_CONSISTENCY
+    changed: true
+    recomputed_channels:
+      h_EP: EARNED_SAFE
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+  radiation:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channel: radiation
+    baseline_state: SIM_GATED
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    changed: false
+    recomputed_channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: EARNED_SAFE
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+  universality:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channel: universality
+    baseline_state: SIM_GATED_REQUIRED_UNIVERSALITY
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    changed: false
+    recomputed_channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: EARNED_SAFE
+      u_L_EP: SIM_GATED
+      preferred_frame: SIM_GATED
+  u_L_EP:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channel: u_L_EP
+    baseline_state: SIM_GATED
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    changed: false
+    recomputed_channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: EARNED_SAFE
+      preferred_frame: SIM_GATED
+  preferred_frame:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channel: preferred_frame
+    baseline_state: SIM_GATED
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    changed: false
+    recomputed_channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: SIM_GATED
+      universality: SIM_GATED_REQUIRED_UNIVERSALITY
+      u_L_EP: SIM_GATED
+      preferred_frame: EARNED_SAFE
+  gated_channels_collective:
+    status: FIRED
+    baseline_verdict: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+    deleted_channels:
+    - radiation
+    - universality
+    - u_L_EP
+    - preferred_frame
+    stubbed_state: EARNED_SAFE
+    recomputed_verdict: NATURALLY_HIDDEN
+    transition: SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED -> NATURALLY_HIDDEN
+    changed: true
+    recomputed_channels:
+      h_EP: EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+      radiation: EARNED_SAFE
+      universality: EARNED_SAFE
+      u_L_EP: EARNED_SAFE
+      preferred_frame: EARNED_SAFE
+dual_engine_core:
+  static_exchange:
+    determinant_check: true
+    A_qq_residual_zero: true
+    A_qm_residual_zero: true
+    A_mm_residual_zero: true
+    decoupled_A_qm_has_no_h_mass_residue: true
+    mixed_qL0_contains_CqhqM: true
+    decoupled_A_mm_density_only: true
+    qM_flip_A_qm: true
+    A_mm_even_but_signed_projection_flips: true
+  radiation:
+    bare_flux_ratio_matches_expected: true
+    wrong_normalization_recomputed: true
+    bare_fixed_exponent: 3
+    pinned_Kh_exponent: 1
+    corrupt_speed_exponent: 1
+    wrong_normalization_exponent: 1
+  stability:
+    bound: C_hu**2 < B_eff*K_h
+    violated_condition: C_hu**2 >= B_eff*K_h
+    strict_slack_symbol: sigma = B_eff*K_h - C_hu**2 > 0
+  projections:
+    source_mass_vector_imported: '[q_M, 0]'
+    h_mass_projection_zero: true
+    fixture_h_projection: m_h
+    grav_even_overlap_imported_zero: true
+substrate:
+  resolved_report_root: software/stage1_solver/reports
+  imports:
+    pathA_39_scalar_admixture_results: software/stage1_solver/reports/pathA_39_scalar_admixture_results.yaml
+    pathA_39_scalar_admixture_screen: software/stage1_solver/reports/pathA_39_scalar_admixture_screen.md
+    pathA_39_magnetic_force: software/stage1_solver/reports/pathA_39_magnetic_force.md
+    pathA_38_results: software/stage1_solver/reports/pathA_38_results.yaml
+    pathA_40_cone_lock: software/stage1_solver/reports/pathA_40_cone_lock.md
+    pathA_35_gateL_light: software/stage1_solver/reports/pathA_35_gateL_light.md
+  facts:
+    source_mass_vector: '[q_M, 0]'
+    grav_even_overlap: '0'
+    h_time_kinetic_parent_action: ABSENT
+    N0_normalization: 8/(3*ell)
+    c_E_operator_status: inserted in dynamic Green operator, not derived
+    M_h_status: symbolic/imported calibrated geometry input, not pinned
+    K_h_static_calibration_status: NOT_PINNED_BY_pathA_38_STATIC_COULOMB
+    cone_lock_status: CONE_LOCK_CALIBRATED_NOT_DERIVED
+    gate_L_connection: same embedding-direction family, distinct ledger object; ungapped bending family triggers Gate-L fifth-force
+      failure
+  provenance_objects:
+    h_time_kinetic_parent_action: null
+  derived_booleans:
+    h_time_kinetic_parent_action_present: false
+  citations:
+    source_mass_vector: software/stage1_solver/reports/pathA_39_scalar_admixture_results.yaml:90-91
+    grav_even_overlap: software/stage1_solver/reports/pathA_38_results.yaml:148
+    c_E_inserted: software/stage1_solver/reports/pathA_38_results.yaml:306
+    N0_static_calibration: software/stage1_solver/reports/pathA_38_results.yaml:285-291
+    M_h_symbolic: software/stage1_solver/reports/pathA_39_scalar_admixture_results.yaml:64
+    preferred_frame: software/stage1_solver/reports/pathA_39_magnetic_force.md:63-65
+    cone_lock_calibrated: software/stage1_solver/reports/pathA_40_cone_lock.md:1-7
+    Gate_L_bending: software/stage1_solver/reports/pathA_35_gateL_light.md:132
+engine_agreement:
+  status: ENGINE_AGREE
+  compared_leaf_count: 22
+  comparison_digest: 514ae51ef466070e18783cc271f8f873336d80fe981104fee59e7e36d37f443e
+  sympy_payload: software/stage1_solver/_scratch/pathA_42_charge_coupled_scalar_sympy.json
+  mathematica_payload: software/stage1_solver/_scratch/pathA_42_charge_coupled_scalar_mathematica.json
+comparison_digest: 514ae51ef466070e18783cc271f8f873336d80fe981104fee59e7e36d37f443e

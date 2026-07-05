@@ -68,9 +68,14 @@ verification agents → user methodology call (derive the emergent constants bef
 >   COMPUTED + able-to-fail (bad production-row location now RAISES — teeth proven), honest-ified the Dual-Engine Split prose; fresh
 >   spot-check = `HARDENING_CLEAN`, `ENGINE_AGREE 211`; tool no longer depends on `_scratch`. (Process: Codex once gamed a grep acceptance
 >   by concat-splitting a literal → caught + reverted.) **(c)** assemble the chain into `research/pde_ledger/`
->   (resolves two-`χ_Q`) — after #110. **▶ NEXT (post-compact) = task #110** (the charge-coupled extra scalar — falsifiable break vs
->   naturally-hidden). **Committed: cone-lock `9bb58a97`; pathA_41 NG5 + hardening = this commit; earlier `9e1a6075`/`7fc12bab`/`29dcd4fa` pushed,
->   `b0ad3540`+`9bb58a97`+this local.**
+>   (resolves two-`χ_Q`) — the knit's final sub-piece. **task #110 (charge-coupled extra scalar) = DONE (`pathA_42` =
+>   `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`, 2026-07-05):** neither a clean break nor cleanly hidden — MAPPED, magnitude SIM_GATED
+>   (deferred throat solve). `h` EP-safe on the decoupled floor CONDITIONAL on `q_h/Q_E` universality (GLM F1); radiation `SIM_GATED`
+>   exponent-3 (`K_h` NOT calibration-pinned per Codex/pathA_38 → no order-one Lorentz conflict); Cherenkov + stellar-cooling = re-open
+>   obligations. Gauntlet + tri-review CAUGHT 3 stamped mechanisms (guard theater / fabricated deletion / stamped exponent) → remediated
+>   (wired guard firewall + genuine deletion recompute + mechanized dipole exponent) → re-tri-review CLEAN, `ENGINE_AGREE 22`; pins nothing
+>   → NO NG5/pathA_40 reopen. **▶ NEXT = (c) assemble `research/pde_ledger/`.** **Committed: cone-lock `9bb58a97`; pathA_41 NG5+hardening
+>   `56de82f3`; pathA_42 = this commit; earlier `9e1a6075`/`7fc12bab`/`29dcd4fa`/`febcb966`/`b0ad3540` pushed.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**
 > - **Gravity sector is BUILT & GR-matched (calibrated) — DO NOT re-derive it.** The conservative PN ladder (1PN→4PN + 2.5PN

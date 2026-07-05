@@ -10,8 +10,8 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐⭐ LIVE STATE (2026-07-04) — ALL 4 SECTORS EARNED; MAGNETISM (`pathA_39`) COMPLETE, 4 of 4 stages. Front door = repo
-> `STATUS.md` ▶ RESUME HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis). NEXT = the consistency knit.**
+> **⭐⭐ LIVE STATE (2026-07-05) — ALL 4 SECTORS EARNED; MAGNETISM (`pathA_39`) COMPLETE, 4 of 4 stages. Front door = repo
+> `STATUS.md` ▶ RESUME HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis). NEXT = (c) the pde_ledger assembly (knit (a)/(b)/#110 DONE).**
 > - **⭐⭐ ALL 4 SECTORS EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`, magnetism `pathA_39`). **Magnetism = the velocity-
 >   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
 >   charge; NOT bulk vorticity = gravitomagnetism).** Setup gauntlet done (resolution v5 `SOUND_AS_A_RESOLUTION`; directive v1).
@@ -40,7 +40,7 @@ verification agents → user methodology call (derive the emergent constants bef
 >   NOT exact Maxwell.** Able-to-fail: clean→`FIELD_TRANSVERSE_EM_PLUS_CLEAN_GRAVITY_DENSITY`, large-`C_hu`→UNSTABLE,
 >   remove-`h`→`FIELD_EXACT_MAXWELL_STRUCTURE`, corrupt→`UNDERDETERMINED`. Spec close (sim-deferred: `a_L`, `C_hu`, contamination
 >   magnitude, `c_E=c_γ`/`λγ`). Artifacts `{directives,tools,reports}/pathA_39_stage4_*`.
-> - **▶ CONSISTENCY KNIT — sub-step (a) cone-lock ✅ EARNED (`pathA_40`) = `CONE_LOCK_CALIBRATED`, `Δr=2`; NEXT = (b) NG5.**
+> - **▶ CONSISTENCY KNIT — sub-steps (a) cone-lock + (b) NG5 + task #110 all DONE; NEXT = (c) the pde_ledger assembly.**
 >   Handoff = `notes/consistency_knit_handoff.md`; scope = `_scratch/consistency_knit_scope_v3.md`.
 >   **(a) DONE:** both locks `λγ=1` (`μ_R/ρ_br=5Kρ⁴/m`) and `c_E=c_γ` (`c_E²=μ_R/ρ_br`) are **CALIBRATED, not derived** (both
 >   `WITNESSED`; `Δr=2` real-locus Krull dim 10→8, MMA `RegionDimension`-confirmed). Pre-pass Route A =
@@ -137,7 +137,7 @@ verification agents → user methodology call (derive the emergent constants bef
 >   same wall as pathA_25). **⭐⭐ NEXT (post-compact) = the C5-WITH-A-THROAT gate:** the longitudinal 'third wave' = the `c_s`
 >   density/gravity mode + (static, around a charge) the ELECTRIC FIELD = brane deformation around a puncture — CHARGE (the throat) is the
 >   missing ingredient, NOT a gauge field. Test whether the E-field + Gauss's law EMERGE from the throat–brane coupling (if so, the forces
->   are CONNECTED = massive win). Detail = `conceptual_foundation.md` §3 v6 + `STATUS.md` + memory
+>   are CONNECTED = massive win). Detail = `conceptual_history.md` (2026-07-03 v6 entry) + `STATUS.md` + memory
 >   `project-brane-existence-defect-structure`. **⭐⭐ SUPERSEDED 2026-07-03b:** the C5-with-a-throat gate (`pathA_37`) was built as an
 >   electric-FLOW gate (Codex-SOUND) but the FLOW framing is RETIRED. Charge is NOT a brane flow/deformation (deformation→wrong energy
 >   `1/r⁶`; one-fluid flow→charge=mass; counterflow→needs a 2nd component the `T=0` condensate lacks in flat 3D — a flat-3D artifact, the

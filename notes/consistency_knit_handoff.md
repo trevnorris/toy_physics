@@ -1,13 +1,12 @@
 # The consistency knit — handoff / post-`/compact` resume note (2026-07-04)
 
-> **⏸ UPDATED 2026-07-04c — sub-pieces (a) + (b) are DONE; this note below is the ORIGINAL scoping (kept as history).** Current state +
+> **⏸ UPDATED 2026-07-04c — sub-pieces (a) + (b) + task #110 all DONE; this note below is the ORIGINAL scoping (kept as history).** Current state +
 > the authoritative resume pointer = `STATUS.md` ▶ RESUME HERE and `decisions/13` §0. In brief: **(a) cone-lock = `CONE_LOCK_CALIBRATED`
-> (`pathA_40`, `9bb58a97`, tri-reviewed EARNED). (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` (`pathA_41`, `453e342f`) — interpreted as
+> (`pathA_40`, `9bb58a97`, tri-reviewed EARNED). (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` (`pathA_41`, `febcb966 → 56de82f3`) — interpreted as
 > ONE candidate medium whose 4D→3D reduction is INCOMPLETE (NOT two substances; no fourth arena); a build-rig was adversarial-caught + a
 > Claude↔Codex framing re-exam corrected the routing (`ρ_br/μ_R`→pending Route-A; GLM "overcount"=red herring, pathA_35 erratum corrected).
 > ✅ re-tri-review of the remediated `pathA_41` = DONE + CLEAN (2026-07-05: fidelity `FIDELITY_CLEAN` + adversarial `ADVERSARIAL_CLEAN`
-> able-to-PASS + hardening fold `HARDENING_CLEAN` — caught a reproducibility bug + made location-closure able-to-fail); pathA_41 BANKED EARNED.** ▶ **NEXT = task #110** (the charge-coupled extra scalar:
-> does it clearly BREAK the model or is it naturally hidden?), THEN **(c)** the `pde_ledger` assembly. Detail = [[project-brane-existence-defect-structure]]
+> able-to-PASS + hardening fold `HARDENING_CLEAN` — caught a reproducibility bug + made location-closure able-to-fail); pathA_41 BANKED EARNED.** task #110 (`pathA_42` = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`) = DONE. ▶ **NEXT = (c)** the `pde_ledger` assembly. Detail = [[project-brane-existence-defect-structure]]
 > UPDATE 2026-07-04c + `_scratch/pathA_41_framing_codex.md`.
 
 **Context:** all 4 force-sectors are now EARNED as independent specs (gravity `pathA_29`+PN, light `pathA_36`, charge

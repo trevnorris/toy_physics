@@ -1,8 +1,8 @@
 # STATUS — where the Path-A program is (single front door)
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
-Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-04**
-(magnetism sector CLOSED — all 4 force-sectors earned; next = the consistency knit).
+Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-05**
+(consistency knit (a) cone-lock + (b) NG5 + task #110 all DONE; next = (c) the `research/pde_ledger/` assembly).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -243,7 +243,7 @@ ladder, NOT one step** — master checklist = `research/pde_ledger/notes/stages/
   tri-review): does the electric field + Gauss's law EMERGE from the throat–brane coupling; is the longitudinal sector the `c_s` gravity
   channel (two speeds, not 3-modes-of-one-field); any longitudinal RADIATION coupling to charge (falsifiable, cf pathA_29). **If it
   works → the forces are CONNECTED, not just coexisting = a massive win.** This SUPERSEDES the pathA_36 vacuum-gauge remediation (vacuum
-  result = documented waypoint). pathA_35 Gate-L + pathA_36 deliverables UNCOMMITTED. Read first: `docs/conceptual_foundation.md` §3 v6
+  result = documented waypoint). pathA_35 Gate-L + pathA_36 deliverables UNCOMMITTED. Read first: `docs/conceptual_history.md` (2026-07-03 v6 entry)
   + §2 v5 + §4; `notes/brane_bulk_handoff.md`; `notes/rung_W_reframe.md`; `reports/pathA_36_c5_phase_potential.md`.
 - **⭐⭐ SUPERSEDED 2026-07-03b — the C5-with-a-throat gate (pathA_37) was BUILT as an electric-FLOW gate, then the FLOW framing was
   RETIRED (charge is NOT a brane flow).** pathA_37 v1–v3 (deformation) → GLM energy-scaling no-go → v4 flow → v5 counterflow (all
@@ -335,7 +335,7 @@ re-founding (history below) and, later, the more fundamental moving-throat PDE p
 
 > **This was the active frontier in 2026-06-23→24; it has since handed off to the moving-throat PDE push (⭐⭐ LATEST, above).** It is
 > recorded here as **history** — its falsification results are first-class and load-bearing for the current picture. `decisions/13` §0
-> top block carries the same "this is the history that led here" framing. Conceptual home: `docs/conceptual_foundation.md` (v3) +
+> top block carries the same "this is the history that led here" framing. Conceptual home: `docs/conceptual_history.md` (version changelog) +
 > `docs/medium_requirements_and_prior_art.md`. Live EM-track ledger: `software/stage1_solver/reports/pathA_25_STATUS.md`.
 
 **Why it started.** Pinning `λγ` exposed that the EM sector had **drifted** from the single-medium concept (canonical EM = a

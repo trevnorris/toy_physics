@@ -317,3 +317,20 @@ Machine-readable ledger: `software/stage1_solver/reports/pathA_35_G0_results.yam
 ## POST-FREEZE COMMENTARY
 
 No post-freeze commentary yet.
+
+---
+
+## ⚠ ERRATUM (2026-07-04, appended by NG5 / `pathA_41` — append-only, no frozen content altered)
+
+**The `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` count (line 1) is NOT inflated by a `ρ_br` overcount — this freeze's count stands.** (An earlier
+draft of this note, based on a GLM tertiary catch, claimed the count was inflated because `ρ_br` here matched a *derived* functional
+`varrho_br[ρ]=∫_layer dn·m·ρ` in `pathA_25`. The `pathA_41` framing adjudication (`_scratch/pathA_41_framing_codex.md`) SUPERSEDES that:
+`pathA_25`'s `varrho_br` belongs to the **CLOSED density-smectic candidate** (`FAIL_NOT_CODIM1`), a *different* structure than this
+active **shear-surface** brane. They are not the same active object; `varrho_br` is `OUT_OF_ACTIVE_NG5`.)
+
+**Corrected finding:** this freeze's `ρ_br` (and `μ_R`) is a **genuine postulated shear-surface brane inertia/modulus with a
+registered-but-unsolved reduction** — the `pathA_40` cone-lock **Route-A** (R3: "derive BOTH `ρ_br` and `μ_R` from one bulk/throat
+integral", currently `ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT`). It is neither B4-derived nor a B4 same-object overcount. So the
+count of 11 is not reduced. **The honest cross-sector drift** (per `pathA_41`) is instead `{ρ_B0, χ_c, C_hu}` — the on-brane compression +
+embedding-mixing parameters whose 4D→3D reduction is not yet registered. Erratum NOTE only; no frozen content / earned physics / dimcheck
+altered. Authoritative adjudication lives in `pathA_41`.

@@ -1,0 +1,2330 @@
+schema: pathA_41_ng5_second_medium_drift_results/v2
+verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+active_irreducible_set:
+- rho_B0
+- chi_c
+- C_hu
+drift_count: 3
+lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+lineage_adjudication:
+  outcome: DIFFERENT
+  lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+  explanation: varrho_br[rho] belongs to closed pathA_25 density-smectic; rho_br is active pathA_35 shear-surface and routes via Route-A.
+  computed_invariants:
+    same_role: false
+    same_dimension: true
+    same_active_object: false
+    residual_multiplier_closed: true
+    varrho_active: false
+    rho_br_active: true
+    varrho_object: pathA_25_closed_density_smectic_varrho_br
+    rho_object: pathA_35_active_shear_surface_rho_br
+  residual_multiplier: UNKNOWN_NOT_COMPARABLE_DIFFERENT_ACTIVE_OBJECTS
+  dimension_derivation:
+    bulk_m_times_rho_dim: M L^-4
+    layer_normal_integral_dn_dim: L
+    varrho_integral_dim: M L^-3
+    surface_inertia_dim_expected: M L^-3
+    varrho_equals_surface_inertia_dim: true
+    rho_br_source_dim: M L^-3
+    rho_br_equals_surface_inertia_dim: true
+    c_E_squared_rho_br_dim: M L^-1 T^-2
+    mu_R_dim: M L^-1 T^-2
+    c_E_squared_rho_br_minus_mu_R_dim_match: true
+interpretation:
+  interpretation: ONE_CANDIDATE_MEDIUM_4D_TO_3D_REDUCTION_INCOMPLETE
+  physical_meaning: 'The drift is not a separate substance; it is three unreduced 3D-brane-surface parameters: compression rho_B0, chi_c and embedding-mixing C_hu.'
+  location_closure:
+    arenas:
+    - 4D bulk
+    - 3D brane surface
+    - throat/embedding seam
+    no_fourth_arena: true
+    fact: Every production row is assigned to one of the three arenas.
+  reduction_status:
+    rho_br: REGISTERED_PENDING(Route-A)
+    mu_R: REGISTERED_PENDING(Route-A)
+    rho_B0: NOT_YET_REGISTERED
+    chi_c: NOT_YET_REGISTERED
+    C_hu: NOT_YET_REGISTERED
+  named_future_reduction_routes:
+  - name: compression-sector 4D->3D reduction
+    targets:
+    - rho_B0
+    - chi_c
+    status: DEFERRED_NOT_REGISTERED
+    description: derive the brane compression amplitude and susceptibility from the 4D bulk/nonlinear brane solve
+  - name: embedding-overlap reduction
+    targets:
+    - C_hu
+    status: DEFERRED_NOT_REGISTERED
+    description: derive the throat density-to-h overlap coefficient from the nonlinear throat/embedding solve
+  reopen_trigger: Re-open NG5 via the section 3.3 forward trigger when either named future route is registered or solved.
+  honest_caveat: The brane is a postulated shear-supporting ordered phase; whether the one medium yields it and whether the three reductions close rather than no-go is genuinely open.
+sim_deferred_rows:
+  rho_br: Route-A
+  mu_R: Route-A
+  c_E: Route-A
+calibrated_rows:
+  Q_E: CALIBRATED_ANCHOR
+  ell: CALIBRATED_GEOMETRY_INPUT
+  b: CALIBRATED_GEOMETRY_INPUT
+  M_h: CALIBRATED_GEOMETRY_INPUT
+forward_reopen_triggers:
+- row: rho_br
+  registered_solve: Route-A
+  trigger: re-adjudicate on solve
+- row: mu_R
+  registered_solve: Route-A
+  trigger: re-adjudicate on solve
+- row: c_E
+  registered_solve: Route-A
+  trigger: re-adjudicate on solve
+origin_ledger:
+- p: rho
+  incidence: base GNLS substrate
+  dims: L^-4
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:286
+  local_status: BASE_SUBSTRATE
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 4D bulk
+  notes: ''
+  route_evaluation: null
+  origin_verdict: BASE_SUBSTRATE
+  classification_reason: accepted_base_or_geometry_substrate
+- p: K
+  incidence: base GNLS EOS substrate
+  dims: M L^18 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:286
+  local_status: BASE_SUBSTRATE
+  earned_equalities:
+  - c_s^2(rho)=5K rho^4/m
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 4D bulk
+  notes: ''
+  route_evaluation: null
+  origin_verdict: BASE_SUBSTRATE
+  classification_reason: accepted_base_or_geometry_substrate
+- p: m
+  incidence: base GNLS constituent mass
+  dims: M
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:286
+  local_status: BASE_SUBSTRATE
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 4D bulk
+  notes: ''
+  route_evaluation: null
+  origin_verdict: BASE_SUBSTRATE
+  classification_reason: accepted_base_or_geometry_substrate
+- p: a
+  incidence: T0 polar substrate length
+  dims: L
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:286
+  local_status: BASE_SUBSTRATE
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 4D bulk
+  notes: ''
+  route_evaluation: null
+  origin_verdict: BASE_SUBSTRATE
+  classification_reason: accepted_base_or_geometry_substrate
+- p: ell_g
+  incidence: pathA_35 confinement width
+  dims: L
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:36
+  local_status: ACCEPTED_GEOMETRY_SUBSTRATE
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: ACCEPTED_GEOMETRY_SUBSTRATE
+  classification_reason: accepted_base_or_geometry_substrate
+- p: g_ell(w)
+  incidence: codim-1 confinement profile
+  dims: L^-1
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:36
+  local_status: ACCEPTED_PROFILE_GIVEN_ell_g
+  earned_equalities:
+  - int dw g_ell(w)=1
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: ACCEPTED_PROFILE_GIVEN_ell_g
+  classification_reason: accepted_base_or_geometry_substrate
+- p: varrho_br[rho]
+  incidence: closed pathA_25 density-smectic layer inertia
+  dims: M L^-3
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:88
+  local_status: PATHA25_CLOSED_DENSITY_SMECTIC_OBJECT
+  earned_equalities:
+  - varrho_br[rho]=int_layer dn m rho
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate, not the active shear-surface rho_br.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: Sigma_n[rho]
+  incidence: closed pathA_25 density-smectic layer support
+  dims: geometric support functional
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:273
+  local_status: PATHA25_CLOSED_DENSITY_SMECTIC_OBJECT
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: delta_Sigma[rho]
+  incidence: closed pathA_25 density-smectic layer measure
+  dims: L^-1
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:273
+  local_status: PATHA25_CLOSED_DENSITY_SMECTIC_OBJECT
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: rho_br
+  incidence: active pathA_35 shear-surface brane inertia
+  dims: M L^-3
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:85
+  local_status: POSTULATED_SHEAR_SURFACE_REDUCTION_TARGET
+  earned_equalities:
+  - c_gamma^2=mu_R/rho_br
+  route_hint: Route-A
+  active_medium_competition: true
+  pathA_40_freedom_relevance: FREEDOM_SIM_DEFERRED{Route-A}
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: rho_br
+    route_name: Route-A
+    valid: true
+    reason: VALID_REGISTERED_ROUTE
+    result_status: REGISTERED_DEFERRED
+    source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+    missing_objects:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    targets:
+    - rho_br
+    - mu_R
+    - c_E
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: true
+      result_status_allowed: true
+      result_status_rejected: false
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+  origin_verdict: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+  classification_reason: valid_registered_deferred_route
+- p: mu_R
+  incidence: active pathA_35 shear-surface modulus
+  dims: M L^-1 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:86
+  local_status: POSTULATED_SHEAR_SURFACE_REDUCTION_TARGET
+  earned_equalities:
+  - c_gamma^2=mu_R/rho_br
+  route_hint: Route-A
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: mu_R
+    route_name: Route-A
+    valid: true
+    reason: VALID_REGISTERED_ROUTE
+    result_status: REGISTERED_DEFERRED
+    source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+    missing_objects:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    targets:
+    - rho_br
+    - mu_R
+    - c_E
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: true
+      result_status_allowed: true
+      result_status_rejected: false
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+  origin_verdict: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+  classification_reason: valid_registered_deferred_route
+- p: c_E
+  incidence: electric throat dynamic Green speed
+  dims: L T^-1
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:101
+  local_status: ROUTE_A_CONE_LOCK_REDUCTION_TARGET
+  earned_equalities:
+  - K_h=M_h c_E^2
+  route_hint: Route-A
+  active_medium_competition: true
+  pathA_40_freedom_relevance: cone-lock L_B freedom relevance
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: c_E
+    route_name: Route-A
+    valid: true
+    reason: VALID_REGISTERED_ROUTE
+    result_status: REGISTERED_DEFERRED
+    source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+    missing_objects:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    targets:
+    - rho_br
+    - mu_R
+    - c_E
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: true
+      result_status_allowed: true
+      result_status_rejected: false
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+  origin_verdict: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+  classification_reason: valid_registered_deferred_route
+- p: c_gamma
+  incidence: light/shear speed
+  dims: L T^-1
+  canonical_source: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:114
+  local_status: DEPENDENT_SPEED
+  earned_equalities:
+  - c_gamma^2=mu_R/rho_br
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency:
+  - rho_br
+  - mu_R
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: c_gamma
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: DEPENDENT
+  classification_reason: computed_dependency_not_independent
+- p: rho_B0
+  incidence: C5 compression density amplitude
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:18
+  local_status: NO_CURRENT_REGISTERED_REDUCTION
+  earned_equalities:
+  - B_eff=rho_B0^2/chi_c
+  route_hint: Future-Compression-4D-to-3D
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: rho_B0
+    route_name: Future-Compression-4D-to-3D
+    valid: false
+    reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+    result_status: PROMISSORY_ONLY
+    source: named_future_reduction_route:not_currently_registered
+    missing_objects:
+    - compression-sector 4D->3D nonlinear brane solve deriving rho_B0 and chi_c
+    targets:
+    - rho_B0
+    - chi_c
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: false
+      result_status_allowed: false
+      result_status_rejected: true
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: Named future route only; not a current registered route.
+  origin_verdict: IRREDUCIBLY_INDEPENDENT
+  classification_reason: no_valid_registered_route_or_anchor
+- p: chi_c
+  incidence: C5 compression susceptibility
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:18
+  local_status: NO_CURRENT_REGISTERED_REDUCTION
+  earned_equalities:
+  - B_eff=rho_B0^2/chi_c
+  route_hint: Future-Compression-4D-to-3D
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: chi_c
+    route_name: Future-Compression-4D-to-3D
+    valid: false
+    reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+    result_status: PROMISSORY_ONLY
+    source: named_future_reduction_route:not_currently_registered
+    missing_objects:
+    - compression-sector 4D->3D nonlinear brane solve deriving rho_B0 and chi_c
+    targets:
+    - rho_B0
+    - chi_c
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: false
+      result_status_allowed: false
+      result_status_rejected: true
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: Named future route only; not a current registered route.
+  origin_verdict: IRREDUCIBLY_INDEPENDENT
+  classification_reason: no_valid_registered_route_or_anchor
+- p: B_eff
+  incidence: derived C5 density modulus
+  dims: M L^-1 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:18
+  local_status: DEPENDENT_ON_COMPRESSION_INPUTS
+  earned_equalities:
+  - B_eff=rho_B0^2/chi_c
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency:
+  - rho_B0
+  - chi_c
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: 3D brane surface
+  notes: ''
+  route_evaluation:
+    param: B_eff
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: DEPENDENT_ON_IRREDUCIBLE
+  classification_reason: computed_dependency_not_independent
+- p: C_hu
+  incidence: embedding h/u_L mixing overlap
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_39_scalar_admixture_screen.md:57
+  local_status: NO_CURRENT_REGISTERED_REDUCTION
+  earned_equalities: []
+  route_hint: Future-Embedding-Overlap
+  active_medium_competition: true
+  pathA_40_freedom_relevance: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: C_hu
+    route_name: Future-Embedding-Overlap
+    valid: false
+    reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+    result_status: PROMISSORY_ONLY
+    source: named_future_reduction_route:not_currently_registered
+    missing_objects:
+    - embedding-overlap nonlinear throat solve deriving C_hu
+    targets:
+    - C_hu
+    checks:
+      mapped_route_exists: true
+      required_fields_present: true
+      missing_required_fields: []
+      named_solve_in_provenance: false
+      result_status_allowed: false
+      result_status_rejected: true
+      finite_listed_missing_objects: true
+      target_identity: true
+      joint_target_identity: true
+      target_blind: true
+      falsifiers_clear: true
+    notes: PathA_39 scans C_hu; no Route-A-like current registered solve exists.
+  origin_verdict: IRREDUCIBLY_INDEPENDENT
+  classification_reason: no_valid_registered_route_or_anchor
+- p: Q_E
+  incidence: electric throat source magnitude
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:30
+  local_status: DECLARED_CALIBRATION_ANCHOR
+  earned_equalities:
+  - q_h=2 Q_E tanh(b/ell)/b
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: Q_E
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: Q_E
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: CALIBRATED_ANCHOR
+  classification_reason: declared_calibration_anchor
+- p: ell
+  incidence: throat/wall profile scale
+  dims: L
+  canonical_source: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:11
+  local_status: CALIBRATED_GEOMETRY_SOURCE_INPUT
+  earned_equalities:
+  - q_h=2 Q_E tanh(b/ell)/b
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: true
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: ell
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: CALIBRATED_GEOMETRY_INPUT
+  classification_reason: declared_shared_geometry_or_normalization_input
+- p: b
+  incidence: compact throat source half-separation/form factor scale
+  dims: L
+  canonical_source: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:11
+  local_status: CALIBRATED_GEOMETRY_SOURCE_INPUT
+  earned_equalities:
+  - q_h=2 Q_E tanh(b/ell)/b
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: true
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: b
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: CALIBRATED_GEOMETRY_INPUT
+  classification_reason: declared_shared_geometry_or_normalization_input
+- p: M_h
+  incidence: h-sector zero-mode normalization/mass coefficient
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:101
+  local_status: CALIBRATED_GEOMETRY_SOURCE_INPUT
+  earned_equalities:
+  - K_h=M_h c_E^2
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: true
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: M_h
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: CALIBRATED_GEOMETRY_INPUT
+  classification_reason: declared_shared_geometry_or_normalization_input
+- p: K_h
+  incidence: h-sector stiffness
+  dims: M L^-1 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:101
+  local_status: DEPENDENT_STIFFNESS
+  earned_equalities:
+  - K_h=M_h c_E^2
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency:
+  - M_h
+  - c_E
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: K_h
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: DEPENDENT
+  classification_reason: computed_dependency_not_independent
+- p: q_h
+  incidence: electric throat source projection
+  dims: source-restored
+  canonical_source: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:11
+  local_status: DEPENDENT_PROJECTION
+  earned_equalities:
+  - q_h=2 Q_E tanh(b/ell)/b
+  route_hint: null
+  active_medium_competition: true
+  pathA_40_freedom_relevance: none
+  dependency:
+  - Q_E
+  - b
+  - ell
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: false
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation:
+    param: q_h
+    route_name: null
+    valid: false
+    reason: NO_REGISTERED_ROUTE_FOR_PARAM
+    result_status: null
+    checks: {}
+  origin_verdict: DEPENDENT
+  classification_reason: computed_dependency_not_independent
+- p: c_L1
+  incidence: pathA_25 density-smectic driver
+  dims: M L^8 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:156
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: c_L2
+  incidence: pathA_25 density-smectic driver
+  dims: M L^10 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:157
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: A_R
+  incidence: pathA_25 density-smectic driver
+  dims: M L^6 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:159
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: k_R
+  incidence: pathA_25 density-smectic driver
+  dims: L^-1
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:160
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: lambda_Cdiv
+  incidence: pathA_25 density-smectic driver
+  dims: M L^3 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:60
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: chi_Cpin
+  incidence: pathA_25 density-smectic driver
+  dims: M L^8 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:164
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: J_Pu
+  incidence: pathA_25 density-smectic driver
+  dims: M L^-1
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:171
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: kappa_Pu
+  incidence: pathA_25 density-smectic driver
+  dims: M L^-1 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_25_G0_freeze.md:172
+  local_status: PATHA25_DRIVER_OUT_OF_ACTIVE_SHEAR_SURFACE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: Closed pathA_25 candidate; active model is pathA_35 shear-surface.
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: lambda_Pu
+  incidence: pathA_35 parity-repaired P-u coupling
+  dims: M L^-1 T^-2
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:38
+  local_status: FROZEN_UNUSED_OUT_OF_ACTIVE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: Omega_w
+  incidence: pathA_35 bare u_w gap scale
+  dims: T^-1
+  canonical_source: software/stage1_solver/reports/pathA_35_G0_freeze.md:38
+  local_status: FROZEN_UNUSED_OUT_OF_ACTIVE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: 3D brane surface
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: lambda_N
+  incidence: pathA_38 wall-internal potential coefficient
+  dims: wall-internal
+  canonical_source: software/stage1_solver/reports/pathA_38_results.yaml:30
+  local_status: WALL_INTERNAL_EXCLUDED_FROM_ACTIVE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: lambda_tau
+  incidence: pathA_38 wall-internal tau mass coefficient
+  dims: wall-internal
+  canonical_source: software/stage1_solver/reports/pathA_38_results.yaml:30
+  local_status: WALL_INTERNAL_EXCLUDED_FROM_ACTIVE_NG5
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: Nu
+  incidence: moving-source normalization
+  dims: source normalization
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:103
+  local_status: SOURCE_NORMALIZATION_OUTSIDE_ACTIVE_ORIGIN_COMPETITION
+  earned_equalities: []
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: a_T
+  incidence: transverse moving-source amplitude
+  dims: source normalization
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:103
+  local_status: SOURCE_NORMALIZATION_OUTSIDE_ACTIVE_ORIGIN_COMPETITION
+  earned_equalities:
+  - q_A^T=Nu*aT*sCharge
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: a_Tp
+  incidence: second transverse moving-source amplitude
+  dims: source normalization
+  canonical_source: software/stage1_solver/reports/pathA_39_stage4_field_classification_results.yaml:106
+  local_status: SOURCE_NORMALIZATION_OUTSIDE_ACTIVE_ORIGIN_COMPETITION
+  earned_equalities:
+  - Stage-4 source vector includes Nu*aTp*sCharge
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+- p: a_L
+  incidence: longitudinal moving-source amplitude
+  dims: source normalization
+  canonical_source: software/stage1_solver/reports/pathA_39_magnetic_force.md:103
+  local_status: SOURCE_NORMALIZATION_OUTSIDE_ACTIVE_ORIGIN_COMPETITION
+  earned_equalities:
+  - q_L=Nu*aL*sCharge
+  route_hint: null
+  active_medium_competition: false
+  pathA_40_freedom_relevance: none
+  dependency: []
+  calibration_anchor: null
+  calibrated_geometry: false
+  out_of_active: true
+  location: throat/embedding seam
+  notes: ''
+  route_evaluation: null
+  origin_verdict: OUT_OF_ACTIVE_NG5
+  classification_reason: closed_pathA_25_or_scope_excluded
+freedom_states:
+  rho_br:
+    state: FREEDOM_SIM_DEFERRED{Route-A}
+    route_evaluation:
+      param: rho_br
+      route_name: Route-A
+      valid: true
+      reason: VALID_REGISTERED_ROUTE
+      result_status: REGISTERED_DEFERRED
+      source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+      missing_objects:
+      - R1
+      - R2
+      - R3
+      - R4
+      - R5
+      targets:
+      - rho_br
+      - mu_R
+      - c_E
+      checks:
+        mapped_route_exists: true
+        required_fields_present: true
+        missing_required_fields: []
+        named_solve_in_provenance: true
+        result_status_allowed: true
+        result_status_rejected: false
+        finite_listed_missing_objects: true
+        target_identity: true
+        joint_target_identity: true
+        target_blind: true
+        falsifiers_clear: true
+      notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+  C_hu:
+    state: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    route_evaluation:
+      param: C_hu
+      route_name: Future-Embedding-Overlap
+      valid: false
+      reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+      result_status: PROMISSORY_ONLY
+      source: named_future_reduction_route:not_currently_registered
+      missing_objects:
+      - embedding-overlap nonlinear throat solve deriving C_hu
+      targets:
+      - C_hu
+      checks:
+        mapped_route_exists: true
+        required_fields_present: true
+        missing_required_fields: []
+        named_solve_in_provenance: false
+        result_status_allowed: false
+        result_status_rejected: true
+        finite_listed_missing_objects: true
+        target_identity: true
+        joint_target_identity: true
+        target_blind: true
+        falsifiers_clear: true
+      notes: PathA_39 scans C_hu; no Route-A-like current registered solve exists.
+route_eval_recorded_for_all_active_rows:
+  status: true
+  active_rows:
+  - rho_br
+  - mu_R
+  - c_E
+  - c_gamma
+  - rho_B0
+  - chi_c
+  - B_eff
+  - C_hu
+  - Q_E
+  - ell
+  - b
+  - M_h
+  - K_h
+  - q_h
+  recorded_rows:
+  - rho_br
+  - mu_R
+  - c_E
+  - c_gamma
+  - rho_B0
+  - chi_c
+  - B_eff
+  - C_hu
+  - Q_E
+  - ell
+  - b
+  - M_h
+  - K_h
+  - q_h
+  missing: []
+  count: 14
+pathA40_nonentailment:
+  compact:
+    verdict: CONE_LOCK_CALIBRATED
+    route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+    route_a_missing:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+    freedom_status: FREEDOM_UNCONSTRAINED
+    sector_sat: SAT
+    lock_sat: SAT
+    prov_A: WITNESSED
+    prov_B: WITNESSED
+    dimension_status: CERTIFIED
+    delta_r: 2
+    dim_before: 10
+    dim_after: 8
+    riders: []
+  lock_A:
+    status: WITNESSED
+    method: exact real non-entailment witness satisfying E and lock != 0
+    remainder: -5*K*rho**4*rho_br + m*mu_R
+    lock_value_at_witness: '5'
+    witness:
+      B_eff: '1'
+      C_hu: 1/2
+      K: '1'
+      K_h: '9'
+      M_h: '1'
+      c_E: '3'
+      chi_c: '4'
+      m: '5'
+      mu_R: '2'
+      rho: '1'
+      rho_B0: '2'
+      rho_br: '1'
+      sigma: 35/4
+  lock_B:
+    status: WITNESSED
+    method: exact real non-entailment witness satisfying E and lock != 0
+    remainder: c_E**2*rho_br - mu_R
+    lock_value_at_witness: '7'
+    witness:
+      B_eff: '1'
+      C_hu: 1/2
+      K: '1'
+      K_h: '9'
+      M_h: '1'
+      c_E: '3'
+      chi_c: '4'
+      m: '5'
+      mu_R: '2'
+      rho: '1'
+      rho_B0: '2'
+      rho_br: '1'
+      sigma: 35/4
+  c_E_squared_rho_br_minus_mu_R_status: WITNESSED
+  c_E_squared_rho_br_minus_mu_R_witness_value: '7'
+controls:
+  AB_delete_registry:
+    source_mutation: blank all registered route source records
+    recomputed_invariant: all RouteEvaluation records for previously covered rows recompute invalid
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_br
+      - mu_R
+      - c_E
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 6
+      sim_deferred: {}
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_CERTIFIED_CURRENT_LEDGER{rho_br}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+  route_blank_Route_A:
+    source_mutation: blank Route-A or a required Route-A field at the source-record level
+    recomputed_invariant:
+      rho_br:
+        param: rho_br
+        route_name: Route-A
+        valid: false
+        reason: ROUTE_BLANKED_OR_ABSENT
+        result_status: null
+        checks:
+          mapped_route_exists: false
+      mu_R:
+        param: mu_R
+        route_name: Route-A
+        valid: false
+        reason: ROUTE_BLANKED_OR_ABSENT
+        result_status: null
+        checks:
+          mapped_route_exists: false
+      c_E:
+        param: c_E
+        route_name: Route-A
+        valid: false
+        reason: ROUTE_BLANKED_OR_ABSENT
+        result_status: null
+        checks:
+          mapped_route_exists: false
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_br
+      - mu_R
+      - c_E
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 6
+      sim_deferred: {}
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_CERTIFIED_CURRENT_LEDGER{rho_br}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+  route_field_blank_Route_A_target_blind:
+    source_mutation: blank Route-A or a required Route-A field at the source-record level
+    recomputed_invariant:
+      rho_br:
+        param: rho_br
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - target_blind
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: true
+          target_identity: true
+          joint_target_identity: true
+          target_blind: false
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+      mu_R:
+        param: mu_R
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - target_blind
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: true
+          target_identity: true
+          joint_target_identity: true
+          target_blind: false
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+      c_E:
+        param: c_E
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - target_blind
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: true
+          target_identity: true
+          joint_target_identity: true
+          target_blind: false
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_br
+      - mu_R
+      - c_E
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 6
+      sim_deferred: {}
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_CERTIFIED_CURRENT_LEDGER{rho_br}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+  route_field_blank_Route_A_missing_objects:
+    source_mutation: blank Route-A or a required Route-A field at the source-record level
+    recomputed_invariant:
+      rho_br:
+        param: rho_br
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects: null
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - missing_objects
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: false
+          target_identity: true
+          joint_target_identity: true
+          target_blind: true
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+      mu_R:
+        param: mu_R
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects: null
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - missing_objects
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: false
+          target_identity: true
+          joint_target_identity: true
+          target_blind: true
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+      c_E:
+        param: c_E
+        route_name: Route-A
+        valid: false
+        reason: MISSING_REQUIRED_ROUTE_FIELD
+        result_status: REGISTERED_DEFERRED
+        source: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+        missing_objects: null
+        targets:
+        - rho_br
+        - mu_R
+        - c_E
+        checks:
+          mapped_route_exists: true
+          required_fields_present: false
+          missing_required_fields:
+          - missing_objects
+          named_solve_in_provenance: true
+          result_status_allowed: true
+          result_status_rejected: false
+          finite_listed_missing_objects: false
+          target_identity: true
+          joint_target_identity: true
+          target_blind: true
+          falsifiers_clear: true
+        notes: R3 explicitly requires common normalization deriving both rho_br and mu_R; R4/R5 would close the cone lock.
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_br
+      - mu_R
+      - c_E
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 6
+      sim_deferred: {}
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_CERTIFIED_CURRENT_LEDGER{rho_br}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+  calibration_ablation_Q_E:
+    source_mutation: remove the declared Q_E calibration-anchor source
+    recomputed_invariant: Q_E has no valid registered route and is no longer a declared anchor
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,Q_E})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      - Q_E
+      drift_count: 4
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,Q_E})
+  irreducible_synthetic:
+    source_mutation: add active synthetic parameter xi_active with no relation or route
+    recomputed_invariant: registered_route_for(xi_active) recomputes NO_REGISTERED_ROUTE_FOR_PARAM
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      - xi_active
+      drift_count: 4
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 15
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})
+  reducible_derived_synthetic:
+    source_mutation: add earned closed relation p_syn=5*K*rho^4/m
+    recomputed_invariant: classifier sees SYNTHETIC_EARNED_RELATION
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 15
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+  contradiction:
+    source_mutation: assert C_hu charge-residue tie, then rerun pathA_40 lock+stability SAT
+    recomputed_invariant:
+      no_go: true
+      verdict: NO_GO(cone-lock)
+      lock_sat_status: UNSAT
+      certificate: The tie plus L_B and K_h=M_h*c_E^2 gives C_hu^2=2 B_eff K_h; stability then gives -(B_eff*K_h+sigma)=0.
+      core:
+      - B_eff*K_h - C_hu^2 - sigma = 0
+      - C_hu^2 - q_h_sq = 0
+      - q_h_sq*rho_br - 2*B_eff*M_h*mu_R = 0
+      - K_h - M_h*c_E^2 = 0
+      - c_E^2*rho_br - mu_R = 0
+      - B_eff,K_h,rho_br,sigma>0
+      compact:
+        verdict: NO_GO(cone-lock)
+        route_a_grade: ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT
+        route_a_missing:
+        - R1
+        - R2
+        - R3
+        - R4
+        - R5
+        route_b_status: ROUTE_B_CLOSED_CHECKED_NEGATIVE
+        freedom_status: FREEDOM_TIED
+        sector_sat: SAT
+        lock_sat: UNSAT
+        prov_A: null
+        prov_B: null
+        dimension_status: NOT_RUN
+        delta_r: null
+        dim_before: null
+        dim_after: null
+        riders: []
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: NO_GO(cone-lock-feedback)
+      active_irreducible: []
+      drift_count: 0
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> NO_GO(cone-lock-feedback)
+  residual_multiplier_ablation:
+    source_mutation: mutate lineage to same active object, then toggle residual multiplier 1 vs Xi_residual
+    recomputed_invariant:
+      same_no_residual:
+        outcome: SAME
+        lineage_finding: OVERCOUNT_OR_SMUGGLE_CONTROL
+        explanation: control-only same active object with no residual multiplier
+        computed_invariants:
+          same_role: true
+          same_dimension: true
+          same_active_object: true
+          residual_multiplier_closed: true
+          varrho_active: true
+          rho_br_active: true
+          varrho_object: same_active_shear_surface_object
+          rho_object: same_active_shear_surface_object
+        residual_multiplier: '1'
+        dimension_derivation:
+          bulk_m_times_rho_dim: M L^-4
+          layer_normal_integral_dn_dim: L
+          varrho_integral_dim: M L^-3
+          surface_inertia_dim_expected: M L^-3
+          varrho_equals_surface_inertia_dim: true
+          rho_br_source_dim: M L^-3
+          rho_br_equals_surface_inertia_dim: true
+          c_E_squared_rho_br_dim: M L^-1 T^-2
+          mu_R_dim: M L^-1 T^-2
+          c_E_squared_rho_br_minus_mu_R_dim_match: true
+      same_with_free_residual:
+        outcome: DIFFERENT
+        lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS_RESIDUAL_MULTIPLIER
+        explanation: same-object source was mutated to carry a free residual multiplier.
+        computed_invariants:
+          same_role: true
+          same_dimension: true
+          same_active_object: true
+          residual_multiplier_closed: false
+          varrho_active: true
+          rho_br_active: true
+          varrho_object: same_active_shear_surface_object
+          rho_object: same_active_shear_surface_object
+        residual_multiplier: Xi_residual
+        dimension_derivation:
+          bulk_m_times_rho_dim: M L^-4
+          layer_normal_integral_dn_dim: L
+          varrho_integral_dim: M L^-3
+          surface_inertia_dim_expected: M L^-3
+          varrho_equals_surface_inertia_dim: true
+          rho_br_source_dim: M L^-3
+          rho_br_equals_surface_inertia_dim: true
+          c_E_squared_rho_br_dim: M L^-1 T^-2
+          mu_R_dim: M L^-1 T^-2
+          c_E_squared_rho_br_minus_mu_R_dim_match: true
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      same_no_residual:
+        verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+        active_irreducible:
+        - rho_B0
+        - chi_c
+        - C_hu
+        drift_count: 3
+        sim_deferred:
+          rho_br: Route-A
+          mu_R: Route-A
+          c_E: Route-A
+        calibrated:
+          Q_E: CALIBRATED_ANCHOR
+          ell: CALIBRATED_GEOMETRY_INPUT
+          b: CALIBRATED_GEOMETRY_INPUT
+          M_h: CALIBRATED_GEOMETRY_INPUT
+        lineage_finding: OVERCOUNT_OR_SMUGGLE_CONTROL
+        lineage_outcome: SAME
+        route_eval_recorded_for_all_active_rows: true
+        route_evaluation_count: 14
+        freedom_states:
+          rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+          C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+      same_with_free_residual:
+        verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+        active_irreducible:
+        - rho_B0
+        - chi_c
+        - C_hu
+        drift_count: 3
+        sim_deferred:
+          rho_br: Route-A
+          mu_R: Route-A
+          c_E: Route-A
+        calibrated:
+          Q_E: CALIBRATED_ANCHOR
+          ell: CALIBRATED_GEOMETRY_INPUT
+          b: CALIBRATED_GEOMETRY_INPUT
+          M_h: CALIBRATED_GEOMETRY_INPUT
+        lineage_finding: DIFFERENT_BRANE_INERTIA_OBJECTS_RESIDUAL_MULTIPLIER
+        lineage_outcome: DIFFERENT
+        route_eval_recorded_for_all_active_rows: true
+        route_evaluation_count: 14
+        freedom_states:
+          rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+          C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: lineage SAME when residual=1; lineage DIFFERENT when residual=Xi_residual
+  route_eval_recorded_for_all_active_rows:
+    source_mutation: production ledger audit only
+    recomputed_invariant:
+      status: true
+      active_rows:
+      - rho_br
+      - mu_R
+      - c_E
+      - c_gamma
+      - rho_B0
+      - chi_c
+      - B_eff
+      - C_hu
+      - Q_E
+      - ell
+      - b
+      - M_h
+      - K_h
+      - q_h
+      recorded_rows:
+      - rho_br
+      - mu_R
+      - c_E
+      - c_gamma
+      - rho_B0
+      - chi_c
+      - B_eff
+      - C_hu
+      - Q_E
+      - ell
+      - b
+      - M_h
+      - K_h
+      - q_h
+      missing: []
+      count: 14
+    fired: true
+    before:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    after:
+      verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      active_irreducible:
+      - rho_B0
+      - chi_c
+      - C_hu
+      drift_count: 3
+      sim_deferred:
+        rho_br: Route-A
+        mu_R: Route-A
+        c_E: Route-A
+      calibrated:
+        Q_E: CALIBRATED_ANCHOR
+        ell: CALIBRATED_GEOMETRY_INPUT
+        b: CALIBRATED_GEOMETRY_INPUT
+        M_h: CALIBRATED_GEOMETRY_INPUT
+      lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+      lineage_outcome: DIFFERENT
+      route_eval_recorded_for_all_active_rows: true
+      route_evaluation_count: 14
+      freedom_states:
+        rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+        C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+    expected_transition: all active production rows carry RouteEvaluation records
+extraction_audit:
+  active_model:
+    status: PATHA35_SHEAR_SURFACE_ACTIVE
+    pathA25_density_route: CLOSED
+    sources:
+    - software/stage1_solver/reports/pathA_25_STATUS.md:24
+    - software/stage1_solver/reports/pathA_25_gateB4_smectic.md:1
+    - software/stage1_solver/reports/pathA_35_G0_freeze.md:38
+  lineage:
+    finding: NO_OVERCOUNT_ROUTE_A_PENDING
+    sources:
+    - software/stage1_solver/reports/pathA_25_G0_freeze.md:88
+    - software/stage1_solver/reports/pathA_35_G0_freeze.md:85
+    - software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+  calibration_sources:
+    Q_E:
+    - software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:30
+    - software/stage1_solver/decisions/09_calibrate_predict_methodology.md:25
+    - software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md:82
+    geometry:
+    - software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:11
+    - software/stage1_solver/reports/pathA_39_magnetic_force.md:101
+engine_agreement:
+  status: ENGINE_AGREE
+  agreement_test: STRUCTURAL_PAYLOAD_EQUALITY
+  structural_payload_equal: true
+  agreement_count: 201
+  sympy_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_41_ng5_second_medium_drift_sympy.json
+  mathematica_payload: /var/projects/toy_physics/software/stage1_solver/_scratch/pathA_41_ng5_second_medium_drift_mathematica.json
+  sympy_comparison_digest: 813cef9ed0320aece752b08463dade3507f5b896ff97a76b45d24b4b7edf4921
+  mathematica_comparison_digest: d16370182edaf7f1a94962c0193c3fbb00df16ace32f4c67f094302d8381a6db
+comparison_payload:
+  production:
+    verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+    active_irreducible:
+    - rho_B0
+    - chi_c
+    - C_hu
+    drift_count: 3
+    sim_deferred:
+      rho_br: Route-A
+      mu_R: Route-A
+      c_E: Route-A
+    calibrated:
+      Q_E: CALIBRATED_ANCHOR
+      ell: CALIBRATED_GEOMETRY_INPUT
+      b: CALIBRATED_GEOMETRY_INPUT
+      M_h: CALIBRATED_GEOMETRY_INPUT
+    lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+    lineage_outcome: DIFFERENT
+    route_eval_recorded_for_all_active_rows: true
+    route_evaluation_count: 14
+    freedom_states:
+      rho_br: FREEDOM_SIM_DEFERRED{Route-A}
+      C_hu: FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+  origin_by_param:
+    rho: BASE_SUBSTRATE
+    K: BASE_SUBSTRATE
+    m: BASE_SUBSTRATE
+    a: BASE_SUBSTRATE
+    ell_g: ACCEPTED_GEOMETRY_SUBSTRATE
+    g_ell(w): ACCEPTED_PROFILE_GIVEN_ell_g
+    varrho_br[rho]: OUT_OF_ACTIVE_NG5
+    Sigma_n[rho]: OUT_OF_ACTIVE_NG5
+    delta_Sigma[rho]: OUT_OF_ACTIVE_NG5
+    rho_br: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    mu_R: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    c_E: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    c_gamma: DEPENDENT
+    rho_B0: IRREDUCIBLY_INDEPENDENT
+    chi_c: IRREDUCIBLY_INDEPENDENT
+    B_eff: DEPENDENT_ON_IRREDUCIBLE
+    C_hu: IRREDUCIBLY_INDEPENDENT
+    Q_E: CALIBRATED_ANCHOR
+    ell: CALIBRATED_GEOMETRY_INPUT
+    b: CALIBRATED_GEOMETRY_INPUT
+    M_h: CALIBRATED_GEOMETRY_INPUT
+    K_h: DEPENDENT
+    q_h: DEPENDENT
+    c_L1: OUT_OF_ACTIVE_NG5
+    c_L2: OUT_OF_ACTIVE_NG5
+    A_R: OUT_OF_ACTIVE_NG5
+    k_R: OUT_OF_ACTIVE_NG5
+    lambda_Cdiv: OUT_OF_ACTIVE_NG5
+    chi_Cpin: OUT_OF_ACTIVE_NG5
+    J_Pu: OUT_OF_ACTIVE_NG5
+    kappa_Pu: OUT_OF_ACTIVE_NG5
+    lambda_Pu: OUT_OF_ACTIVE_NG5
+    Omega_w: OUT_OF_ACTIVE_NG5
+    lambda_N: OUT_OF_ACTIVE_NG5
+    lambda_tau: OUT_OF_ACTIVE_NG5
+    Nu: OUT_OF_ACTIVE_NG5
+    a_T: OUT_OF_ACTIVE_NG5
+    a_Tp: OUT_OF_ACTIVE_NG5
+    a_L: OUT_OF_ACTIVE_NG5
+  route_validity:
+    rho_br:
+      route_name: Route-A
+      valid: true
+      reason: VALID_REGISTERED_ROUTE
+      origin: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    mu_R:
+      route_name: Route-A
+      valid: true
+      reason: VALID_REGISTERED_ROUTE
+      origin: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    c_E:
+      route_name: Route-A
+      valid: true
+      reason: VALID_REGISTERED_ROUTE
+      origin: REDUCIBLE_IN_PRINCIPLE_SIM_DEFERRED
+    c_gamma:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: DEPENDENT
+    rho_B0:
+      route_name: Future-Compression-4D-to-3D
+      valid: false
+      reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+      origin: IRREDUCIBLY_INDEPENDENT
+    chi_c:
+      route_name: Future-Compression-4D-to-3D
+      valid: false
+      reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+      origin: IRREDUCIBLY_INDEPENDENT
+    B_eff:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: DEPENDENT_ON_IRREDUCIBLE
+    C_hu:
+      route_name: Future-Embedding-Overlap
+      valid: false
+      reason: REJECTED_RESULT_STATUS_PROMISSORY_ONLY
+      origin: IRREDUCIBLY_INDEPENDENT
+    Q_E:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: CALIBRATED_ANCHOR
+    ell:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: CALIBRATED_GEOMETRY_INPUT
+    b:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: CALIBRATED_GEOMETRY_INPUT
+    M_h:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: CALIBRATED_GEOMETRY_INPUT
+    K_h:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: DEPENDENT
+    q_h:
+      route_name: null
+      valid: false
+      reason: NO_REGISTERED_ROUTE_FOR_PARAM
+      origin: DEPENDENT
+  lineage:
+    outcome: DIFFERENT
+    lineage_finding: NO_OVERCOUNT_ROUTE_A_PENDING
+    explanation: varrho_br[rho] belongs to closed pathA_25 density-smectic; rho_br is active pathA_35 shear-surface and routes via Route-A.
+    computed_invariants:
+      same_role: false
+      same_dimension: true
+      same_active_object: false
+      residual_multiplier_closed: true
+      varrho_active: false
+      rho_br_active: true
+      varrho_object: pathA_25_closed_density_smectic_varrho_br
+      rho_object: pathA_35_active_shear_surface_rho_br
+    residual_multiplier: UNKNOWN_NOT_COMPARABLE_DIFFERENT_ACTIVE_OBJECTS
+    dimension_derivation:
+      bulk_m_times_rho_dim: M L^-4
+      layer_normal_integral_dn_dim: L
+      varrho_integral_dim: M L^-3
+      surface_inertia_dim_expected: M L^-3
+      varrho_equals_surface_inertia_dim: true
+      rho_br_source_dim: M L^-3
+      rho_br_equals_surface_inertia_dim: true
+      c_E_squared_rho_br_dim: M L^-1 T^-2
+      mu_R_dim: M L^-1 T^-2
+      c_E_squared_rho_br_minus_mu_R_dim_match: true
+  interpretation:
+    interpretation: ONE_CANDIDATE_MEDIUM_4D_TO_3D_REDUCTION_INCOMPLETE
+    physical_meaning: 'The drift is not a separate substance; it is three unreduced 3D-brane-surface parameters: compression rho_B0, chi_c and embedding-mixing C_hu.'
+    location_closure:
+      arenas:
+      - 4D bulk
+      - 3D brane surface
+      - throat/embedding seam
+      no_fourth_arena: true
+      fact: Every production row is assigned to one of the three arenas.
+    reduction_status:
+      rho_br: REGISTERED_PENDING(Route-A)
+      mu_R: REGISTERED_PENDING(Route-A)
+      rho_B0: NOT_YET_REGISTERED
+      chi_c: NOT_YET_REGISTERED
+      C_hu: NOT_YET_REGISTERED
+    named_future_reduction_routes:
+    - name: compression-sector 4D->3D reduction
+      targets:
+      - rho_B0
+      - chi_c
+      status: DEFERRED_NOT_REGISTERED
+      description: derive the brane compression amplitude and susceptibility from the 4D bulk/nonlinear brane solve
+    - name: embedding-overlap reduction
+      targets:
+      - C_hu
+      status: DEFERRED_NOT_REGISTERED
+      description: derive the throat density-to-h overlap coefficient from the nonlinear throat/embedding solve
+    reopen_trigger: Re-open NG5 via the section 3.3 forward trigger when either named future route is registered or solved.
+    honest_caveat: The brane is a postulated shear-supporting ordered phase; whether the one medium yields it and whether the three reductions close rather than no-go is genuinely open.
+  dual_engine_derivations:
+    dimension_and_residual:
+      bulk_m_times_rho_dim: M L^-4
+      layer_normal_integral_dn_dim: L
+      varrho_integral_dim: M L^-3
+      surface_inertia_dim_expected: M L^-3
+      varrho_equals_surface_inertia_dim: true
+      rho_br_source_dim: M L^-3
+      rho_br_equals_surface_inertia_dim: true
+      c_E_squared_rho_br_dim: M L^-1 T^-2
+      mu_R_dim: M L^-1 T^-2
+      c_E_squared_rho_br_minus_mu_R_dim_match: true
+      residual_multiplier: UNKNOWN_NOT_COMPARABLE_DIFFERENT_ACTIVE_OBJECTS
+    pathA40_current_nonentailment: WITNESSED
+    pathA40_current_nonentailment_witness: '7'
+  controls:
+    AB_delete_registry:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+    route_blank_Route_A:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+    route_field_blank_Route_A_target_blind:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+    route_field_blank_Route_A_missing_objects:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_br,mu_R,c_E,rho_B0,chi_c,C_hu})
+    calibration_ablation_Q_E:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,Q_E})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,Q_E})
+    irreducible_synthetic:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu,xi_active})
+    reducible_derived_synthetic:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+    contradiction:
+      fired: true
+      transition: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu}) -> NO_GO(cone-lock-feedback)
+      after_verdict: NO_GO(cone-lock-feedback)
+    residual_multiplier_ablation:
+      fired: true
+      transition: lineage SAME when residual=1; lineage DIFFERENT when residual=Xi_residual
+      after_verdict: null
+    route_eval_recorded_for_all_active_rows:
+      fired: true
+      transition: all active production rows carry RouteEvaluation records
+      after_verdict: SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+source_refs:
+  pathA25_closed: software/stage1_solver/reports/pathA_25_STATUS.md:24
+  pathA25_b4_fail: software/stage1_solver/reports/pathA_25_gateB4_smectic.md:1
+  pathA25_rc_closed: software/stage1_solver/reports/pathA_25_STATUS.md:50
+  pathA25_varrho_prose: software/stage1_solver/reports/pathA_25_G0_freeze.md:88
+  pathA25_varrho_definition: software/stage1_solver/reports/pathA_25_G0_freeze.md:286
+  pathA25_sigma: software/stage1_solver/reports/pathA_25_G0_freeze.md:273
+  pathA25_c_L1: software/stage1_solver/reports/pathA_25_G0_freeze.md:156
+  pathA25_c_L2: software/stage1_solver/reports/pathA_25_G0_freeze.md:157
+  pathA25_A_R: software/stage1_solver/reports/pathA_25_G0_freeze.md:159
+  pathA25_k_R: software/stage1_solver/reports/pathA_25_G0_freeze.md:160
+  pathA25_lambda_Cdiv: software/stage1_solver/reports/pathA_25_G0_freeze.md:60
+  pathA25_chi_Cpin: software/stage1_solver/reports/pathA_25_G0_freeze.md:164
+  pathA25_J_Pu: software/stage1_solver/reports/pathA_25_G0_freeze.md:171
+  pathA25_kappa_Pu: software/stage1_solver/reports/pathA_25_G0_freeze.md:172
+  pathA25_rc_cpin: software/stage1_solver/reports/pathA_25_gateRC_cubic.md:10
+  pathA35_rho_role: software/stage1_solver/reports/pathA_35_G0_freeze.md:38
+  pathA35_rho_constant: software/stage1_solver/reports/pathA_35_G0_freeze.md:85
+  pathA35_mu_constant: software/stage1_solver/reports/pathA_35_G0_freeze.md:86
+  pathA35_inplane_kinetic: software/stage1_solver/reports/pathA_35_G0_freeze.md:205
+  pathA35_ell_g: software/stage1_solver/reports/pathA_35_G0_freeze.md:36
+  pathA36_B_eff: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:18
+  pathA36_cgamma: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:114
+  pathA36_by_tuning: software/stage1_solver/reports/pathA_36_c5_phase_potential.md:23
+  pathA38_qh: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:11
+  pathA38_calibrated_deferred: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md:30
+  pathA38_wall_internal: software/stage1_solver/reports/pathA_38_results.yaml:30
+  pathA39_imports: software/stage1_solver/reports/pathA_39_magnetic_force.md:101
+  pathA39_sim_values: software/stage1_solver/reports/pathA_39_magnetic_force.md:103
+  pathA39_scalar_C_hu: software/stage1_solver/reports/pathA_39_scalar_admixture_screen.md:57
+  pathA39_scalar_no_route: software/stage1_solver/reports/pathA_39_scalar_admixture_screen.md:57
+  pathA39_stage4_a_Tp: software/stage1_solver/reports/pathA_39_stage4_field_classification_results.yaml:106
+  pathA40_route_a: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:7
+  pathA40_freedom: software/stage1_solver/reports/pathA_40_cone_lock_results.yaml:50
+  pathA40_no_go_control: software/stage1_solver/reports/pathA_40_cone_lock.md:49
+  decision09_calibration: software/stage1_solver/decisions/09_calibrate_predict_methodology.md:25
+  decision14_calibration: software/stage1_solver/decisions/14_value_provenance_and_calibration_map.md:82
+  framing_target: software/stage1_solver/_scratch/pathA_41_framing_codex.md:21

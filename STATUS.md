@@ -11,7 +11,13 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 SECTORS EARNED; CONSISTENCY KNIT sub-step (a) cone-lock EARNED = `CONE_LOCK_CALIBRATED`; NEXT = NG5 (sub-step b)
+## ▶ RESUME HERE (2026-07-04) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` (interpreted: ONE candidate medium, 4D→3D reduction incomplete); NEXT = task #110 (the extra scalar), then the pde_ledger
+
+> **⏸ SESSION `/compact`-ed HERE (2026-07-04b).** Pickup: read this block + `notes/consistency_knit_handoff.md` + memory
+> [[project-brane-existence-defect-structure]]. **NEXT ACTION = task #110** (explore the charge-coupled "extra scalar" from pathA_39
+> Stage-4: does it show up in a way that would clearly BREAK the model? `notes/pathA_39_charge_coupled_scalar_followup.md`), THEN the
+> pde_ledger assembly (knit sub-piece c). **Open debt on NG5 (`pathA_41`):** the remediated gate emits the honest verdict but a FULL
+> fresh-agent re-tri-review (fidelity + adversarial) of the REMEDIATED gate is still pending — do it before banking pathA_41 as EARNED.
 
 **⭐⭐ ALL 4 SECTORS EARNED, all from ONE brane+bulk.** Gravity (`pathA_29` + PN ladder), light (`pathA_36`), electric charge
 (`pathA_38` = `THROAT_ELECTRIC_LOCALIZED_COULOMB`, `797f4d88`), and now **MAGNETISM (`pathA_39`, 4/4 stages, sector COMPLETE)** —
@@ -82,14 +88,26 @@ self-consistent parameter set, and can they assemble into the central calibrated
   `pathA_22b`'s `P0·χ_Q·g_mhat²·λγ⁵/g_G=54/5` to the 5th power. Artifacts: `{directives,tools,reports}/pathA_40_cone_lock*`. Full
   gauntlet: scope Codex×3 + GLM `SOUND`; sequencing Claude↔Codex → option (iv); directive Codex + **GLM-5.2 (via opencode)** tertiary
   (1 BLOCKER — the `SHARED_CALIBRATION` provenance leak — + NITs folded) → Codex-to-green.
-- **(b) The NG cross-consistency gauntlet (NG1–NG5) — ▶ NEXT.** Re-pose the `pathA_25_*` NG concepts on the earned four-sector param set,
-  chiefly **NG5 `SECOND_MEDIUM_DRIFT`** (count every independent input across the four sectors — is it genuinely ONE medium, or several
-  in disguise?). **This is where the knit's real falsification power lives** (the cone-lock (a) was near-vacuous by construction). NG5 must
-  also **certify the freedom of `C_hu, ρ_br`** the pathA_40 NO_GO-non-firing was conditional on — if a tie is found, re-run pathA_40.
-  Consumes pathA_40's parameter-freedom caveat list. Same gauntlet: scope with Codex → GLM → directive → dual-engine → tri-review → user gate.
-- **(c) Assemble the four-sector chain into `research/pde_ledger/`** (the calibrated, simulation-ready PDE delivering GR+EM) — after NG5;
-  resolves the two-`χ_Q` open item (`pathA_22b ≈0.712` vs `pathA_33 =1`).
-- **Then follow-up: task #110 (the charge-coupled "extra scalar," the off-cone residual pathA_40 surfaced).**
+- **(b) NG5 `SECOND_MEDIUM_DRIFT` (`pathA_41`) — DONE, honest verdict = `SECOND_MEDIUM_DRIFT{ρ_B0, χ_c, C_hu}`; ⚠ remediated-gate
+  re-tri-review PENDING.** Full gauntlet (scope Codex×2+GLM-5.2 `SOUND`; directive Codex+GLM-5.2 `SOUND`, incl. the forward re-open
+  trigger). The build landed `ONE_MEDIUM_CONDITIONAL`/drift-0 but the fresh **adversarial-with-ablation leg caught it as a RIG**
+  (production origins hardcoded; `registered_route_for` dead code; AB2 deleting the route registry left the verdict unchanged). A
+  Claude↔Codex **framing re-examination** then corrected the routing: `ρ_br,μ_R` → the *pending* Route-A (NOT the *closed* smectic B4;
+  GLM's "overcount" was a red herring conflating two models — see the corrected pathA_35 erratum); the pathA_25 smectic drivers →
+  `OUT_OF_ACTIVE_NG5`; `Q_E`→`CALIBRATED_ANCHOR`, `b/ℓ/M_h`→calibrated geometry. **Honest residual drift = `{ρ_B0, χ_c, C_hu}`** (the
+  on-brane compression + embedding-mixing sector), with **NO registered 4D→3D reduction route yet**. ⭐ **INTERPRETATION (user-agreed,
+  physical):** this is NOT two substances — it is **ONE candidate medium whose 4D-bulk→3D-brane reduction is INCOMPLETE.** Every parameter
+  lives in {4D bulk, 3D brane surface, throat/embedding seam} — **no fourth arena** (location-closure verified). The drift = 3 un-reduced
+  *3D-brane-surface* parameters; `ρ_br/μ_R` reductions are *registered-pending* (Route-A), the drift trio's are *not-yet-registered*.
+  **Named future reduction routes (the concrete work that would flip drift→sim-deferred):** (i) a compression-sector 4D→3D reduction for
+  `ρ_B0,χ_c`; (ii) an embedding-overlap reduction for `C_hu` — both the hard, deferred nonlinear brane/throat solves (could still no-go).
+  The gate was REMEDIATED to emit this (computed origins + `CALIBRATED_ANCHOR` class + the interpretation payload); ⚠ **a full fresh-agent
+  re-tri-review of the remediated gate is still owed before banking pathA_41 EARNED** (arbiter + ablation-recheck done; fidelity+adversarial
+  fresh legs pending). Artifacts: `{directives,tools,reports}/pathA_41_ng5_second_medium_drift*`; framing = `_scratch/pathA_41_framing_codex.md`.
+- **(c) Assemble the four-sector chain into `research/pde_ledger/`** — after task #110; resolves the two-`χ_Q` open item.
+- **▶ NEXT (post-compact) = task #110: the charge-coupled "extra scalar."** Explore whether the off-cone `h`-branon departure (pathA_39
+  Stage-4 / pathA_40 `Δ_pole∝C_hu²`) shows up in a way that would **clearly BREAK the model** (falsifiable conflict) vs a naturally-hidden
+  departure. `notes/pathA_39_charge_coupled_scalar_followup.md`. THEN the pde_ledger (c).
 
 ---
 

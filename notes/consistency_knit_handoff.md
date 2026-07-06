@@ -6,8 +6,10 @@
 > ONE candidate medium whose 4D→3D reduction is INCOMPLETE (NOT two substances; no fourth arena); a build-rig was adversarial-caught + a
 > Claude↔Codex framing re-exam corrected the routing (`ρ_br/μ_R`→pending Route-A; GLM "overcount"=red herring, pathA_35 erratum corrected).
 > ✅ re-tri-review of the remediated `pathA_41` = DONE + CLEAN (2026-07-05: fidelity `FIDELITY_CLEAN` + adversarial `ADVERSARIAL_CLEAN`
-> able-to-PASS + hardening fold `HARDENING_CLEAN` — caught a reproducibility bug + made location-closure able-to-fail); pathA_41 BANKED EARNED.** task #110 (`pathA_42` = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`) = DONE. ▶ **NEXT = (c)** the `pde_ledger` assembly. Detail = [[project-brane-existence-defect-structure]]
-> UPDATE 2026-07-04c + `_scratch/pathA_41_framing_codex.md`.
+> able-to-PASS + hardening fold `HARDENING_CLEAN` — caught a reproducibility bug + made location-closure able-to-fail); pathA_41 BANKED EARNED.** task #110 (`pathA_42` = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`) = DONE. **▶ NEXT (NEW DIRECTION, user 2026-07-05) = REBUILD the ledger FROM
+> SCRATCH at `research/pde_ledger_v2/`** (sector-organized, from the earned work; NOT fold into the old 253-stage ledger). ⭐ **The whole knit + this
+> note are now HISTORY — the authoritative plan is `notes/ledger_v2_rebuild_plan.md` (read it FIRST).** Detail also = [[project-pde-ledger-fold-in-plan]],
+> [[project-brane-existence-defect-structure]]. UPDATE 2026-07-04c + `_scratch/pathA_41_framing_codex.md`.
 
 **Context:** all 4 force-sectors are now EARNED as independent specs (gravity `pathA_29`+PN, light `pathA_36`, charge
 `pathA_38`, magnetism `pathA_39` complete). This note is the running start for the NEXT front — the **consistency knit**:

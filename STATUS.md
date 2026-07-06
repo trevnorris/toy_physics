@@ -2,7 +2,8 @@
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
 Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-05**
-(consistency knit (a) cone-lock + (b) NG5 + task #110 all DONE; next = (c) the `research/pde_ledger/` assembly).
+(consistency knit fully DONE; ⭐ NEW DIRECTION — REBUILD the ledger from scratch at `research/pde_ledger_v2/`; next = Phase A, finish gravity.
+Plan = `notes/ledger_v2_rebuild_plan.md`).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -11,11 +12,23 @@ Updated at every milestone (same moment `software/stage1_solver/decisions/13` §
 
 ---
 
-## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED; KNIT (a) cone-lock EARNED + (b) NG5 = `SECOND_MEDIUM_DRIFT{ρ_B0,χ_c,C_hu}` CLEAN+hardened + (task #110) charge-coupled scalar = `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED` (pathA_42, tri-reviewed+remediated CLEAN); NEXT = knit sub-piece (c) the `pde_ledger` assembly
+## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED + KNIT DONE. ⭐ NEW DIRECTION (user): REBUILD the central ledger FROM SCRATCH (sector-organized `research/pde_ledger_v2/`) from the earned work — NOT fold into the old 253-stage ledger. NEXT = Phase A (finish gravity in `stage1_solver`). ⭐⭐ FULL PLAN = `notes/ledger_v2_rebuild_plan.md` (read it FIRST)
 
-> **⏸ (2026-07-05).** Pickup: read this block + `notes/consistency_knit_handoff.md` + memory
-> [[project-brane-existence-defect-structure]]. **NEXT ACTION = knit sub-piece (c): assemble the four-sector chain into
-> `research/pde_ledger/`** (resolves the two-`χ_Q` open item). **task #110 (the charge-coupled "extra scalar") = DONE (`pathA_42` =
+> **⏸ (2026-07-05).** Pickup: **read `notes/ledger_v2_rebuild_plan.md` FIRST** (complete multi-phase plan + why-rebuild evidence) + memory
+> [[project-pde-ledger-fold-in-plan]] + [[project-brane-existence-defect-structure]]. **⭐ NEW DIRECTION (user 2026-07-05):** do NOT fold the
+> earned sectors into the old 253-stage `research/pde_ledger/` (an aimless-AI-search artifact = ~8 core gravity stages + ~225 non-converged
+> branch-selection search + ~52 EM-import/charge-drift). **REBUILD a fresh, sector-organized ledger at `research/pde_ledger_v2/`** — reuse the
+> old ledger's proven MACHINERY (stage triplet + dual-engine mirror policy + LaTeX build + provenance/runners), carry over only useful CONTENT;
+> the old ledger is later overwritten into git history. **The EM "contradiction" DISSOLVED** (2-agent diagnostic): the old ledger's `S_EM[A]`/`A_w`
+> Maxwell is REPLACEABLE bookkeeping, NOT load-bearing for the quadrupole (which rides the `c_s` density mode; `c⁵` = a GR/λγ units bridge).
+> **▶ NEXT ACTION = Phase A: finish gravity in `software/stage1_solver/`** — (A1) the density-mode ℓ=2 radiative-port gate (the ONE new
+> derivation; retires the `A_w` scaffold, closes the diagnostic sliver; genuinely able-to-fail) via Claude↔Codex scope→gauntlet; (A2) `pathA_21c`
+> SymPy companion; (A3) 2.5PN match-back + characterize the PN corpus. Then **Phase B** build `research/pde_ledger_v2/` (blueprint→machinery copy→
+> assemble), **Phase C** redteam. Est. v2 size ≈ **40–80 stages vs 253**. Sim-deferred guardrail holds (completes the SPEC not the proof; Gate 6
+> deferred; no-go still possible). Superseded: the "fold-in / new-Parts-IX–XII" framing + `notes/consistency_knit_handoff.md` (knit is DONE — history).
+
+<!-- HISTORY (knit complete; superseded by the rebuild direction above) -->
+> **task #110 (the charge-coupled "extra scalar") = DONE (`pathA_42` =
 > `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`):** the scalar does NOT clearly break the model — `h` is EP-safe on the decoupled floor
 > (CONDITIONAL on `q_h/Q_E` throat universality), radiation is genuinely `SIM_GATED` (exponent-3, `M_h` free — the pathA_38 static
 > Coulomb calibrates via `Q_E`+`N₀`, NOT `K_h`, so no order-one Lorentz-vs-radiation conflict), and the decisive magnitude rides on the

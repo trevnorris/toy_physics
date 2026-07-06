@@ -74,7 +74,10 @@ verification agents → user methodology call (derive the emergent constants bef
 >   exponent-3 (`K_h` NOT calibration-pinned per Codex/pathA_38 → no order-one Lorentz conflict); Cherenkov + stellar-cooling = re-open
 >   obligations. Gauntlet + tri-review CAUGHT 3 stamped mechanisms (guard theater / fabricated deletion / stamped exponent) → remediated
 >   (wired guard firewall + genuine deletion recompute + mechanized dipole exponent) → re-tri-review CLEAN, `ENGINE_AGREE 22`; pins nothing
->   → NO NG5/pathA_40 reopen. **▶ NEXT = (c) assemble `research/pde_ledger/`.** **Committed: cone-lock `9bb58a97`; pathA_41 NG5+hardening
+>   → NO NG5/pathA_40 reopen. **▶ NEXT (NEW DIRECTION, user 2026-07-05) = REBUILD the ledger FROM SCRATCH at `research/pde_ledger_v2/`** (sector-organized,
+> from the earned 4 sectors; NOT fold into the old 253-stage ledger = aimless-search artifact; EM `S_EM[A]` scaffold = REPLACEABLE-not-load-bearing per
+> diagnostic). **Phase A = finish gravity in `stage1_solver`** (density-mode ℓ=2 port gate + `pathA_21c` sympy + 2.5PN match-back) → Phase B build v2 →
+> Phase C redteam. ⭐ FULL PLAN = `notes/ledger_v2_rebuild_plan.md`. **Committed: cone-lock `9bb58a97`; pathA_41 NG5+hardening
 >   `56de82f3`; pathA_42 = this commit; earlier `9e1a6075`/`7fc12bab`/`29dcd4fa`/`febcb966`/`b0ad3540` pushed.**
 
 > **⭐ LIVE STATE (2026-06-25) — thin pointer; canonical "you are here" = repo `STATUS.md`.**

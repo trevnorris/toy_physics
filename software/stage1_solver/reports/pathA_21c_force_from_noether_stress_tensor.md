@@ -125,4 +125,8 @@ Guardrail: No observable is both calibrated-to and predicted; knobs < independen
 
 - Dimensional checks: 9 consistent, 0 inconsistent, 9 total.
 - Algebraic checks: 9 consistent, 0 inconsistent, 9 total.
+- Dual-engine: SymPy companion `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py`
+  (added A2, 2026-07-06) independently reproduces the same 9 dimensional + 9 algebraic checks
+  (plus 6 explicit S^2/S^3 surface-integral primitives) and carries a mandatory able-to-fail
+  mutation probe; both engines exit 0 and agree per quantity, with no cross-consumption.
 

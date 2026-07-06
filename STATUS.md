@@ -3,7 +3,8 @@
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
 Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-06**
 (⭐ Phase A1 EARNED = `pathA_43` `DENSITY_PORT_HOSTED` — the ℓ=2 quadrupole port is density-native, EM scaffold retires; caught+remediated
-a rig, re-tri-review + hardening all CLEAN. NEW DIRECTION = REBUILD ledger at `research/pde_ledger_v2/`; next = Phase A A2/A3.
+a rig, re-tri-review + hardening all CLEAN. ✅ A2 DONE = `pathA_21c` dual-engine SymPy companion (`f236ec08`, `FIDELITY_CLEAN`).
+NEW DIRECTION = REBUILD ledger at `research/pde_ledger_v2/`; next = Phase A A3, then Phase B/C.
 Plan = `notes/ledger_v2_rebuild_plan.md`).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
@@ -28,9 +29,14 @@ Plan = `notes/ledger_v2_rebuild_plan.md`).
 > outgoing sign `+i z⁵/27`, `χ_Q=1`. **The old EM `A_w`/`U,W` vector scaffold RETIRES; the diagnostic sliver closes.** Structure/form
 > reduced-closure-earned; magnitude + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Full gauntlet: directive v2 (Codex→GLM→Codex) → executed
 > → tri-review CAUGHT A RIG → remediated → re-tri-review `FIDELITY_CLEAN`+`ADVERSARIAL_CLEAN` (20 novel mutations) → hardening +
-> `HARDENING_CLEAN`. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **▶ REMAINING:** (A2) `pathA_21c` SymPy
-> companion (dual-engine); (A3) 2.5PN match-back — now largely a citation to `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the
-> `K̄₄=4K̄₂²/K̄₀` consistency check `pathA_43` already carries. Then **Phase B** build `research/pde_ledger_v2/` (blueprint→machinery
+> `HARDENING_CLEAN`. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **✅ A2 DONE (2026-07-06) = `pathA_21c`
+> dual-engine (`f236ec08`):** added independent SymPy companion `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py` peering the
+> `.wl` — reproduces all 9 dim + 9 alg checks (drain→1/r² `FORCE_ATTRACTIVE_DERIVED`), derives Ω_d + `⟨n_i n_j⟩=δ_ij/d` from explicit
+> S²/S³ surface integrals + the attractive sign from primitives, no runtime consumption, mandatory able-to-fail mutation probe (7
+> corruptions). Lighter gauntlet: Codex design-review → GLM-5.2 tertiary → Codex re-green (all `DIRECTIVE_CLEAN`) → dual-engine exit 0 →
+> arbiter re-run + fidelity audit `FIDELITY_CLEAN`. **▶ REMAINING: (A3)** 2.5PN match-back — now largely a citation to
+> `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` consistency check `pathA_43` already carries. Then **Phase B**
+> build `research/pde_ledger_v2/` (blueprint→machinery
 > copy→assemble), **Phase C** redteam. Est. v2 size ≈ **40–80 stages vs 253**. Sim-deferred guardrail holds (completes the SPEC not the
 > proof; Gate 6 deferred; no-go still possible). Superseded: "fold-in / new-Parts-IX–XII" + `notes/consistency_knit_handoff.md` (history).
 

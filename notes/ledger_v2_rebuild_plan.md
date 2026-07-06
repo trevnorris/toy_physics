@@ -18,8 +18,15 @@
   `N0` is density-native — a genuine `(q2` wall,`Φ2` bulk-density`)` two-port, provably vector-free, `[N0]=L⁻¹M`, `a⁻⁵`, outgoing sign
   `+i z⁵/27`, `χ_Q=1`; **the EM `A_w`/`U,W` scaffold retires + the diagnostic sliver closes.** Structure reduced-closure-earned;
   magnitude + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Full gauntlet + tri-review CAUGHT A RIG → remediated → re-tri-review + hardening all
-  CLEAN. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **▶ NEXT = A2 (`pathA_21c` SymPy companion) + A3
-  (2.5PN match-back — largely a cite to `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` check pathA_43 carries).**
+  CLEAN. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`.
+- **✅ Phase A, step A2 DONE (2026-07-06) = `pathA_21c` dual-engine SymPy companion (`f236ec08`).** Added
+  `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py` — an independent SymPy engine peering the existing `.wl` (the report had
+  long *claimed* a Python engine that never existed). Reproduces all 9 dim + 9 alg checks (drain→1/r² `FORCE_ATTRACTIVE_DERIVED`),
+  derives Ω_2=4π, Ω_3=2π², `⟨n_i n_j⟩=δ_ij/d` from explicit S²/S³ surface integrals + the attractive sign from primitive orientation
+  conventions, no runtime consumption, mandatory able-to-fail mutation probe (7 corruptions incl. a derived-second-moment corruption).
+  **Lighter gauntlet** (no new verdict): Codex design-review → GLM-5.2 tertiary → Codex re-green (all `DIRECTIVE_CLEAN`) → dual-engine
+  both exit 0 → arbiter re-run + fidelity audit `FIDELITY_CLEAN`. **▶ NEXT = A3 (2.5PN match-back — largely a cite to
+  `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` check pathA_43 carries).**
 - **Estimated v2 size ≈ 40–80 stages** (vs 253) — see §6.
 
 ---
@@ -110,10 +117,17 @@ density/`c_s` mode (extending `pathA_29`'s ℓ=0/1 density-return machinery up t
 (`pathA_21c_force_from_noether_stress_tensor_crosscheck.wl`) — no `_sympy.py`. Add the SymPy side for dual-engine compliance, OR fold the
 force law into a gravity consolidation.
 
-**A3 — 2.5PN match-back + characterize the PN corpus.** Verify the density-mode quadrupole (`54/5`) agrees with the PN ladder's 2.5PN
-coefficient (the "cheapest decisive falsifier"). First send an agent to read the `research/4d_*pn*` `AUDIT_TRACKER`s and pin down exactly
-how much of 1PN→4PN is calibrated vs genuinely derived, so we know what the match proves. **Honest scope:** a full first-principles
-re-derivation of 1PN→4PN from the throat is SIM-DEFERRED (Gate 6); A3 is the reachable consistency check, not a from-scratch 4PN derivation.
+**A3 — 2.5PN match-back (▶ NEXT — the last Phase-A step; the lightest of the three).** Verify the density-mode quadrupole (`54/5`)
+agrees with the PN ladder's 2.5PN coefficient (the "cheapest decisive falsifier"). **⚠️ A3-PREP ALREADY DONE (during A1):** an agent
+characterized the PN corpus — 1PN→4PN is calibrated/GR-matched controlled-reduction with `G` a genuine gap; the 2.5PN sector
+(`research/4d_2_5pn`) is a CONDITIONAL theorem whose SINGLE open item is exactly `Γ̄₅=2G/(5c⁵)` (equivalently `Γ̄₅=9K̄₂^{5/2}/K̄₀^{3/2}`)
+— which `pathA_43` already supplies at reduced-closure (its closure overlay computed `Γ̄₅−2G/(5c⁵)=0` and `K̄₄−4K̄₂²/K̄₀=0`, dual-engine,
+in `reports/pathA_43_*`). So do NOT re-run the corpus-characterization agent. **▶ A3 FIRST ACTION = write the CONSOLIDATION NOTE** (not a
+new derivation): record that `pathA_43`'s density-mode quadrupole reproduces the 2.5PN Burke-Thorne target `Γ̄₅=2G/(5c⁵)` + the
+`K̄₄=4K̄₂²/K̄₀` consistency, citing `research/4d_2_5pn`'s open item; likely a short markdown note under `notes/` or a stage in v2 Part II
+(decide location). Optionally re-verify the two invariants are present in `reports/pathA_43_*` before citing. **Honest scope:** magnitude
+CALIBRATED (`G` genuine gap); a full first-principles 1PN→4PN re-derivation from the throat stays SIM-DEFERRED (Gate 6); A3 is the
+reachable consistency check, not a from-scratch 4PN derivation.
 
 ---
 

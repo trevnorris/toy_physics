@@ -10,8 +10,22 @@ verification agents → user methodology call (derive the emergent constants bef
 
 ## 0. STATUS / NEXT ACTION
 
-> **⭐⭐ LIVE STATE (2026-07-05) — ALL 4 SECTORS EARNED; MAGNETISM (`pathA_39`) COMPLETE, 4 of 4 stages. Front door = repo
-> `STATUS.md` ▶ RESUME HERE; conceptual = `docs/conceptual_foundation.md` ⭐ v8 (+ throat-emphasis). NEXT = (c) the pde_ledger assembly (knit (a)/(b)/#110 DONE).**
+> **⭐⭐ LIVE STATE (2026-07-06) — ALL 4 SECTORS EARNED + KNIT DONE; ⭐ NEW DIRECTION = REBUILD the ledger FROM SCRATCH at
+> `research/pde_ledger_v2/` (NOT fold into the old 253-stage ledger). Front door = repo `STATUS.md` ▶ RESUME HERE; plan =
+> `notes/ledger_v2_rebuild_plan.md` (read FIRST); conceptual = `docs/conceptual_foundation.md` ⭐ v8. ▶ NEXT = Phase A finish gravity
+> in `stage1_solver`: A1 DONE, A2/A3 remaining.**
+> - **⭐ Phase A1 EARNED (`pathA_43` = `DENSITY_PORT_HOSTED`, 2026-07-06).** The ℓ=2 quadrupole radiative-port numerator `N0` is
+>   DENSITY-NATIVE: `N0_den ∝ (η_φ ϖ_q2 + η_q λ_c)²/(λ_c² − ϖ_Φ2 ϖ_q2)²` — a genuine two-port over the physical `(q2` wall [pathA_32]`,
+>   Φ2` bulk-density [pathA_29]`)` modes, provably vector-free (computed taint `{continuity_interface, pathA_29_bulk, pathA_32_wall}`,
+>   structural continuity-moment dependency), `[N0]=L⁻¹M`, `a⁻⁵` slot, outgoing sign `+i z⁵/27`, `χ_Q=1`. **The old EM `A_w`/`U,W`
+>   vector scaffold RETIRES; the diagnostic sliver closes.** Structure/form/vector-freedom reduced-closure-EARNED; magnitude
+>   {`Ξ_Q,η_q,η_φ,λ_c`, `∫Y₂*` moment} + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Feeds the 2.5PN corpus's open item `Γ̄₅=2G/(5c⁵)` +
+>   the invariant `K̄₄=4K̄₂²/K̄₀` (A3). **Gauntlet:** directive v2 (Codex design-review→GLM-5.2→Codex re-green) → executed →
+>   tri-review CAUGHT A RIG (pass-by-construction vector-independence + decorative continuity lineage) → REMEDIATED (computed taint +
+>   host-set guard + real ablation + structural lineage + attack2/attack5 regression controls) → re-tri-review `FIDELITY_CLEAN` +
+>   `ADVERSARIAL_CLEAN` (20 novel mutations) → hardening fold (non-empty-provenance invariant) + `HARDENING_CLEAN` spot-check.
+>   Artifacts: `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. ▶ NEXT = A2 (`pathA_21c` SymPy companion) + A3
+>   (2.5PN match-back, now largely a citation + the `K̄₄=4K̄₂²/K̄₀` consistency check pathA_43 already carries).
 > - **⭐⭐ ALL 4 SECTORS EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`, magnetism `pathA_39`). **Magnetism = the velocity-
 >   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
 >   charge; NOT bulk vorticity = gravitomagnetism).** Setup gauntlet done (resolution v5 `SOUND_AS_A_RESOLUTION`; directive v1).

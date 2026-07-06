@@ -1,8 +1,9 @@
 # STATUS — where the Path-A program is (single front door)
 
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
-Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-05**
-(consistency knit fully DONE; ⭐ NEW DIRECTION — REBUILD the ledger from scratch at `research/pde_ledger_v2/`; next = Phase A, finish gravity.
+Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-06**
+(⭐ Phase A1 EARNED = `pathA_43` `DENSITY_PORT_HOSTED` — the ℓ=2 quadrupole port is density-native, EM scaffold retires; caught+remediated
+a rig, re-tri-review + hardening all CLEAN. NEW DIRECTION = REBUILD ledger at `research/pde_ledger_v2/`; next = Phase A A2/A3.
 Plan = `notes/ledger_v2_rebuild_plan.md`).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
@@ -21,11 +22,17 @@ Plan = `notes/ledger_v2_rebuild_plan.md`).
 > old ledger's proven MACHINERY (stage triplet + dual-engine mirror policy + LaTeX build + provenance/runners), carry over only useful CONTENT;
 > the old ledger is later overwritten into git history. **The EM "contradiction" DISSOLVED** (2-agent diagnostic): the old ledger's `S_EM[A]`/`A_w`
 > Maxwell is REPLACEABLE bookkeeping, NOT load-bearing for the quadrupole (which rides the `c_s` density mode; `c⁵` = a GR/λγ units bridge).
-> **▶ NEXT ACTION = Phase A: finish gravity in `software/stage1_solver/`** — (A1) the density-mode ℓ=2 radiative-port gate (the ONE new
-> derivation; retires the `A_w` scaffold, closes the diagnostic sliver; genuinely able-to-fail) via Claude↔Codex scope→gauntlet; (A2) `pathA_21c`
-> SymPy companion; (A3) 2.5PN match-back + characterize the PN corpus. Then **Phase B** build `research/pde_ledger_v2/` (blueprint→machinery copy→
-> assemble), **Phase C** redteam. Est. v2 size ≈ **40–80 stages vs 253**. Sim-deferred guardrail holds (completes the SPEC not the proof; Gate 6
-> deferred; no-go still possible). Superseded: the "fold-in / new-Parts-IX–XII" framing + `notes/consistency_knit_handoff.md` (knit is DONE — history).
+> **▶ NEXT ACTION = Phase A: finish gravity in `software/stage1_solver/`.** **✅ A1 DONE (2026-07-06) = `pathA_43`
+> `DENSITY_PORT_HOSTED` (EARNED):** the ℓ=2 quadrupole radiative-port numerator `N0` is DENSITY-NATIVE — a genuine `(q2` wall,
+> `Φ2` bulk-density`)` two-port, provably vector-free (computed taint, structural continuity-moment dependency), `[N0]=L⁻¹M`, `a⁻⁵`,
+> outgoing sign `+i z⁵/27`, `χ_Q=1`. **The old EM `A_w`/`U,W` vector scaffold RETIRES; the diagnostic sliver closes.** Structure/form
+> reduced-closure-earned; magnitude + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Full gauntlet: directive v2 (Codex→GLM→Codex) → executed
+> → tri-review CAUGHT A RIG → remediated → re-tri-review `FIDELITY_CLEAN`+`ADVERSARIAL_CLEAN` (20 novel mutations) → hardening +
+> `HARDENING_CLEAN`. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **▶ REMAINING:** (A2) `pathA_21c` SymPy
+> companion (dual-engine); (A3) 2.5PN match-back — now largely a citation to `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the
+> `K̄₄=4K̄₂²/K̄₀` consistency check `pathA_43` already carries. Then **Phase B** build `research/pde_ledger_v2/` (blueprint→machinery
+> copy→assemble), **Phase C** redteam. Est. v2 size ≈ **40–80 stages vs 253**. Sim-deferred guardrail holds (completes the SPEC not the
+> proof; Gate 6 deferred; no-go still possible). Superseded: "fold-in / new-Parts-IX–XII" + `notes/consistency_knit_handoff.md` (history).
 
 <!-- HISTORY (knit complete; superseded by the rebuild direction above) -->
 > **task #110 (the charge-coupled "extra scalar") = DONE (`pathA_42` =

@@ -1,0 +1,66 @@
+PATHA_43_DENSITY_QUADRUPOLE_PORT_SYMPY
+method: SymPy Lagrangian Schur elimination
+verdict: DENSITY_PORT_HOSTED
+N0_den: I25**2*Xi_Q**2*c_s**4*rho*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(a**7*(lambda_c**2 - varpi_Phi2*varpi_q2)**2)
+port_picture: ii two-port(q2,Phi2)
+host_set: I25, Phi2, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, q2, rho, varpi_Phi2, varpi_q2
+taint_set: continuity_interface, pathA_29_bulk, pathA_32_wall
+vector_host_symbols: empty
+continuity_moment_symbol: I25
+continuity_dependency_ok: PASS
+source_graph_symbol_tags:
+  I25: continuity_interface,pathA_32_wall
+  Xi_Q: continuity_interface
+  a: pathA_29_bulk,pathA_32_wall
+  c_s: pathA_29_bulk
+  eta_phi: continuity_interface
+  eta_q: continuity_interface
+  lambda_c: continuity_interface,pathA_29_bulk,pathA_32_wall
+  rho: pathA_29_bulk
+  varpi_Phi2: pathA_29_bulk
+  varpi_q2: pathA_32_wall
+lineage:
+  l0: M0 = Integral(S_leak d3x)
+  l1: D1_i = Integral(x_i*S_leak d3x) + Integral(j_i d3x)
+  l2: Q2_m = Integral(Y2_m_star*S_leak d3x)
+lineage_valid: PASS
+derivation_trace:
+  g_base: I25*Xi_Q*c_s**2*sqrt(rho)/a**(7/2)
+  g_q_den: I25*Xi_Q*c_s**2*eta_q*sqrt(rho)/a**(7/2)
+  g_phi_den: I25*Xi_Q*c_s**2*eta_phi*sqrt(rho)/a**(7/2)
+  P_den: I25*Xi_Q*c_s**2*sqrt(rho)*(eta_phi*varpi_q2 + eta_q*lambda_c)/a**(7/2)
+  Delta_den: -lambda_c**2 + varpi_Phi2*varpi_q2
+  Phi2_response: -I25*Xi_Q*c_s**2*sqrt(rho)*(eta_phi*varpi_q2 + eta_q*lambda_c)/(a**(7/2)*(lambda_c**2 - varpi_Phi2*varpi_q2))
+checks:
+  origin_derivation_ok: PASS
+  nonzero: PASS
+  dimension: PASS
+  a_scaling_provenance_ok: PASS
+  radiative_sign: PASS
+  vector_independence_ok: PASS
+vector_ablation_delta: 0
+scaling:
+  N0_den_a_power: -3
+  P0_physical_a_power: -5
+closure:
+  P0_physical: I25**2*Xi_Q**2*c_s**6*rho*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(D0*a**9*(lambda_c**2 - varpi_Phi2*varpi_q2)**2)
+  Kbar4_residual: 0
+  Gamma5_residual_to_2G_over_5c5: 0
+scope_tags:
+  CALIBRATED: G, 2/5, 54/5
+  SIM_DEFERRED: Xi_Q exact branch magnitude, eta_q, eta_phi, lambda_c literal throat value
+controls:
+  vector_hosted: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=nan; taint_set=vector_port; source_map_complete=PASS; empty_source_symbols=empty
+  relabel_rig: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=(g_qold*r_mix + g_rho*omega_wall**2)**2/((omega_rho*omega_wall - r_mix)**2*(omega_rho*omega_wall + r_mix)**2); taint_set=vector_port; source_map_complete=PASS; empty_source_symbols=empty
+  fake_continuity: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=nan; taint_set=vector_port; source_map_complete=PASS; empty_source_symbols=empty
+  ablation_isolation: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=I25**2*Xi_Q**2*c_s**4*rho*sigma_hidden*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(a**7*(lambda_c**2 - varpi_Phi2*varpi_q2)**2); taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall,vector_port; source_map_complete=PASS; empty_source_symbols=empty
+  attack2_continuity_corruption: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=FAIL; empty_source_symbols=I_wrong2
+  attack5_vector_injection: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=I25**2*Omega_U**2*Xi_Q**2*c_s**4*rho*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(Omega_W**2*a**7*(lambda_c**2 - varpi_Phi2*varpi_q2)**2); taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall,vector_port; source_map_complete=PASS; empty_source_symbols=empty
+  zero_coupling: verdict=FAIL_PORT_VANISHES; ablation_delta=0; taint_set=empty; source_map_complete=PASS; empty_source_symbols=empty
+  dimensional: verdict=FAIL_PORT_MALFORMED(dimensional); ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=PASS; empty_source_symbols=empty
+  sign: verdict=FAIL_PORT_MALFORMED(sign); ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=PASS; empty_source_symbols=empty
+  scaling: verdict=FAIL_PORT_MALFORMED(scaling); ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=PASS; empty_source_symbols=empty
+  deferred_scalar: verdict=PORT_INCONCLUSIVE_SIM_DEFERRED; ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=PASS; empty_source_symbols=empty
+  deferred_scalar_proven_converse: verdict=DENSITY_PORT_HOSTED; ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=PASS; empty_source_symbols=empty
+  free_carrier_dimension_corruption: verdict=DENSITY_PORT_HOSTED; ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall,pathA_34_dimensionless_free_carrier; source_map_complete=PASS; empty_source_symbols=empty
+  provenance_less_rider: verdict=FAIL_NOT_DENSITY_DERIVED; ablation_delta=0; taint_set=continuity_interface,pathA_29_bulk,pathA_32_wall; source_map_complete=FAIL; empty_source_symbols=free_carrier

@@ -14,8 +14,12 @@
   `research/pde_ledger/`. Build a **fresh, sector-organized ledger at `research/pde_ledger_v2/`**, reuse the old ledger's proven
   *machinery*, carry over only useful *content*; the old ledger becomes a reference **quarry** and is later overwritten into git history.
 - **Sequence (3 phases):** **A** finish gravity in `stage1_solver` → **B** build `research/pde_ledger_v2/` → **C** redteam it.
-- **▶ NEXT ACTION = Phase A, step A1:** the density-mode ℓ=2 radiative-port gate (the one genuinely-new derivation). Start with a
-  Claude↔Codex scope of its setup sub-questions (§4), then the full gauntlet.
+- **✅ Phase A, step A1 DONE (2026-07-06) = `pathA_43` `DENSITY_PORT_HOSTED` (EARNED).** The ℓ=2 quadrupole radiative-port numerator
+  `N0` is density-native — a genuine `(q2` wall,`Φ2` bulk-density`)` two-port, provably vector-free, `[N0]=L⁻¹M`, `a⁻⁵`, outgoing sign
+  `+i z⁵/27`, `χ_Q=1`; **the EM `A_w`/`U,W` scaffold retires + the diagnostic sliver closes.** Structure reduced-closure-earned;
+  magnitude + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Full gauntlet + tri-review CAUGHT A RIG → remediated → re-tri-review + hardening all
+  CLEAN. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **▶ NEXT = A2 (`pathA_21c` SymPy companion) + A3
+  (2.5PN match-back — largely a cite to `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` check pathA_43 carries).**
 - **Estimated v2 size ≈ 40–80 stages** (vs 253) — see §6.
 
 ---

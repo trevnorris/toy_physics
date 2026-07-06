@@ -1,0 +1,310 @@
+schema: pathA_43_density_quadrupole_port/v3
+computed_verdict: DENSITY_PORT_HOSTED
+verdict_scope:
+  hosted: "reduced density-port structure, source taint, vector-freedom, continuity dependency, dimensions, a-scaling, DtN sign, and closure overlay"
+  sim_deferred:
+    - "literal Y2* l=2 moment magnitude"
+    - "Xi_Q exact branch magnitude"
+    - eta_q
+    - eta_phi
+    - "lambda_c literal throat value"
+verdict_order_applied:
+  - FAIL_NOT_DENSITY_DERIVED
+  - FAIL_PORT_VANISHES
+  - FAIL_PORT_MALFORMED
+  - DENSITY_PORT_HOSTED
+  - PORT_INCONCLUSIVE_SIM_DEFERRED
+engines:
+  sympy:
+    tool: software/stage1_solver/tools/pathA_43_density_quadrupole_port_sympy.py
+    method: "Lagrangian Schur elimination of the mass-normalized (q2,Phi2) static operator using the full 2x2 inverse"
+    stdout: software/stage1_solver/reports/pathA_43_density_quadrupole_port_sympy.txt
+    exit_status: 0
+  mathematica:
+    tool: software/stage1_solver/tools/pathA_43_density_quadrupole_port.wl
+    method: "Green-function/DtN interface matching with q2 eliminated before Phi2 substitution"
+    stdout: software/stage1_solver/reports/pathA_43_density_quadrupole_port_mathematica.txt
+    exit_status: 0
+  independence:
+    sympy_consumes_mathematica: false
+    mathematica_consumes_sympy: false
+  agreement:
+    verdict: true
+    N0_den_symbolic_residual_zero: true
+    checks_match: true
+    controls_match: true
+hardening:
+  provenance_nonempty_host_invariant: "Every symbol in N0_den.free_symbols must be present in the source map with a non-empty provenance tag set."
+  empty_or_missing_host_behavior: "source_map_complete=false, origin_derivation_ok=false, verdict=FAIL_NOT_DENSITY_DERIVED"
+  folded_in_engines:
+    - sympy
+    - mathematica
+derived_density_port:
+  port_picture: "ii two-port(q2,Phi2)"
+  N0_den: "I25^2*Xi_Q^2*c_s^4*rho*(eta_phi*varpi_q2 + eta_q*lambda_c)^2/(a^7*(lambda_c^2 - varpi_Phi2*varpi_q2)^2)"
+  P_den: "I25*Xi_Q*c_s^2*sqrt(rho)*(eta_phi*varpi_q2 + eta_q*lambda_c)/a^(7/2)"
+  Delta_den: "varpi_q2*varpi_Phi2 - lambda_c^2"
+  g_base: "I25*Xi_Q*c_s^2*sqrt(rho)/a^(7/2)"
+  continuity_moment_symbol: I25
+  continuity_dependency_ok: true
+  host_coordinate_set:
+    - q2
+    - Phi2
+  free_symbol_host_set:
+    - I25
+    - Xi_Q
+    - a
+    - c_s
+    - eta_phi
+    - eta_q
+    - lambda_c
+    - rho
+    - varpi_Phi2
+    - varpi_q2
+  vector_host_symbols: []
+  taint_set:
+    - continuity_interface
+    - pathA_29_bulk
+    - pathA_32_wall
+source_graph:
+  computed_by: "code: union of source tags for symbols in N0_den.free_symbols"
+  source_map_complete: true
+  empty_source_symbols: []
+  missing_source_symbols: []
+  symbol_tags:
+    I25:
+      - continuity_interface
+      - pathA_32_wall
+    Xi_Q:
+      - continuity_interface
+    a:
+      - pathA_29_bulk
+      - pathA_32_wall
+    c_s:
+      - pathA_29_bulk
+    eta_phi:
+      - continuity_interface
+    eta_q:
+      - continuity_interface
+    lambda_c:
+      - continuity_interface
+      - pathA_29_bulk
+      - pathA_32_wall
+    rho:
+      - pathA_29_bulk
+    varpi_Phi2:
+      - pathA_29_bulk
+    varpi_q2:
+      - pathA_32_wall
+  forbidden_vector_symbols_guarded:
+    - A_w
+    - F_muw
+    - Jw
+    - U
+    - W
+    - Omega_U
+    - Omega_W
+    - R_mix
+    - g_U
+    - g_W
+  vector_independence_operation: "substitute/zero every vector-host or vector_port-tainted symbol in the derived N0_den expression and compare"
+  vector_ablation_delta: "0"
+continuity_lineage:
+  operator_id: pathA_29_projected_continuity
+  validation: "structural token check; no hardcoded lineage.valid flag is consumed"
+  lineage_valid: true
+  l0: "M0 = Integral(S_leak d3x)"
+  l1: "D1_i = Integral(x_i*S_leak d3x) + Integral(j_i d3x)"
+  l2: "Q2_m = Integral(Y2_m_star*S_leak d3x)"
+  l2_kernel: "Y2_m_star*S_leak"
+  attack2_behavior: "corrupting l2 makes lineage_valid false and changes the numerator moment symbol before verdicting"
+checks:
+  "0_origin_derivation_ok":
+    result: true
+    continuity_interface_in_computed_taint: true
+    vector_port_taint_absent: true
+    vector_host_symbols_empty: true
+    source_map_complete: true
+    empty_source_symbols_absent: true
+    continuity_dependency_ok: true
+    lineage_valid: true
+  "1_nonzero":
+    result: true
+    certificate: "N0_den is a nonzero square over Delta_den^2 for nonzero I25,Xi_Q,rho and nonsingular Delta_den"
+  "2_dimension":
+    result: true
+    expected: "L^-1 M"
+    computed: "L^-1 M"
+    sourced_dimensions:
+      rho: "M L^-3"
+      I25: "L^(5/2)"
+      c_s: "L T^-1"
+      varpi_q2: "T^-2"
+      varpi_Phi2: "T^-2"
+      lambda_c: "T^-2"
+      Xi_Q: "1"
+      eta_q: "1"
+      eta_phi: "1"
+  "3_a_scaling_provenance_ok":
+    result: true
+    N0_den_a_power: -3
+    P0_physical_a_power: -5
+    provenance:
+      - "g_base carries a^(-7/2) from the structured l=2 continuity/interface projection"
+      - "varpi_q2, varpi_Phi2, and lambda_c carry a^-2 from wall angular stiffness and bulk Helmholtz geometry"
+      - "D0 carries sourced a-power 0 in this reduced closure"
+      - "Xi_Q, eta_q, eta_phi are dimensionless reduced profile ratios; exact magnitudes are SIM_DEFERRED"
+  "4_radiative_sign":
+    result: true
+    outgoing_coeff: "+i*z^5/27"
+    chi_Q: 1
+  "5_vector_independence_ok":
+    result: true
+    vector_host_symbols_empty: true
+    vector_port_taint_absent: true
+    expression_ablation_delta: "0"
+closure_slot:
+  P0_physical: "I25^2*Xi_Q^2*c_s^6*rho*(eta_phi*varpi_q2 + eta_q*lambda_c)^2/(D0*a^9*(lambda_c^2 - varpi_Phi2*varpi_q2)^2)"
+  formula: "P0_physical=(c_s/a)^2*N0_den/D0"
+  a_power: -5
+  mhat0_sq_chi_Q_N_Q: "1 with chi_Q=1, mhat0=1, N_Q=1"
+  calibrated_split:
+    CALIBRATED:
+      - G
+      - "2/5"
+      - "54/5"
+    structurally_computed_here:
+      - "density-port reduced structure"
+      - "source_graph_taint"
+      - "continuity-moment dependency"
+      - "vector independence"
+      - "DtN sign compatibility"
+    SIM_DEFERRED:
+      - "literal Y2* l=2 moment magnitude"
+      - "Xi_Q exact branch magnitude"
+      - eta_q
+      - eta_phi
+      - "lambda_c literal throat value"
+  Kbar_cross_check:
+    Kbar0: "54*G*c_s^5/(5*a^5*c^5)"
+    Kbar2: "6*G*c_s^3/(5*a^3*c^5)"
+    Kbar4: "8*G*c_s/(15*a*c^5)"
+    residual_Kbar4_minus_4Kbar2sq_over_Kbar0: "0"
+    Gamma5_residual_to_2G_over_5c5: "0"
+controls:
+  vector_hosted:
+    mutation: "old vector port P_A=Omega_U^2*g_W+R_mix*g_U"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    taint_set:
+      - vector_port
+  relabel_rig:
+    mutation: "same old vector structure renamed to density-looking symbols with vector_port ancestry retained"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    taint_set:
+      - vector_port
+  fake_continuity:
+    mutation: "vector-equivalent equation with attempted continuity presentation"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    lineage_valid: false
+  ablation_isolation:
+    mutation: "density expression multiplied by sigma_hidden with vector_port ancestry"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    taint_set:
+      - continuity_interface
+      - pathA_29_bulk
+      - pathA_32_wall
+      - vector_port
+  attack2_continuity_corruption:
+    mutation: "Q2_m l=2 continuity moment replaced by a non-continuity object"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    source_map_complete: false
+    empty_source_symbols:
+      - I_wrong2
+    source_mutated_copy_verdict: FAIL_NOT_DENSITY_DERIVED
+  attack5_vector_injection:
+    mutation: "Omega_U/Omega_W injected into g_base before deriving N0_den"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    source_mutated_copy_verdict: FAIL_NOT_DENSITY_DERIVED
+    vector_port_taint_present: true
+  zero_coupling:
+    mutation: "derived continuity coupling g_base set to 0 in the interface condition"
+    recomputed_verdict: FAIL_PORT_VANISHES
+  dimensional:
+    mutation: "sourced I25 dimension corrupted by one L power"
+    recomputed_verdict: "FAIL_PORT_MALFORMED(dimensional)"
+  sign:
+    mutation: "outgoing Hankel branch swapped to incoming"
+    recomputed_verdict: "FAIL_PORT_MALFORMED(sign)"
+  scaling:
+    mutation: "coupling a-power changed from -7/2 to -3 with dimension still passing"
+    recomputed_verdict: "FAIL_PORT_MALFORMED(scaling)"
+    mutated_P0_physical_a_power: -4
+  deferred_scalar:
+    mutation: "route a-power through Xi_deferred with no structural a-independence proof"
+    recomputed_verdict: PORT_INCONCLUSIVE_SIM_DEFERRED
+    non_dodge_table:
+      origin: "decided true"
+      nonzero: "decided true"
+      dimension: "decided true"
+      scaling: "undecidable; deferred object Xi_deferred"
+      sign: "decided true"
+      vector_independence: "decided true"
+  deferred_scalar_proven_converse:
+    mutation: "Xi_deferred supplied as a dimensionless ratio of identical-a-dimension profile integrals"
+    recomputed_verdict: DENSITY_PORT_HOSTED
+  free_carrier_dimension_corruption:
+    mutation: "dimensionless a-neutral free_carrier multiplied into N0_den with explicit pathA_34_dimensionless_free_carrier provenance"
+    recomputed_verdict: DENSITY_PORT_HOSTED
+    source_map_complete: true
+    empty_source_symbols: []
+    taint_set:
+      - continuity_interface
+      - pathA_29_bulk
+      - pathA_32_wall
+      - pathA_34_dimensionless_free_carrier
+  provenance_less_rider:
+    mutation: "same free_carrier multiplied into N0_den with an empty provenance tag set"
+    recomputed_verdict: FAIL_NOT_DENSITY_DERIVED
+    source_map_complete: false
+    empty_source_symbols:
+      - free_carrier
+source_mutation_probes:
+  attack2_sympy_copy:
+    command: "timeout 600 python /tmp/pathA43_attack2_sympy.py"
+    exit_status: 1
+    recomputed_baseline_verdict: FAIL_NOT_DENSITY_DERIVED
+  attack5_sympy_copy:
+    command: "timeout 600 python /tmp/pathA43_attack5_sympy.py"
+    exit_status: 1
+    recomputed_baseline_verdict: FAIL_NOT_DENSITY_DERIVED
+  attack2_mathematica_copy:
+    command: "timeout 600 math -script /tmp/pathA43_attack2.wl"
+    exit_status: 1
+    recomputed_baseline_verdict: FAIL_NOT_DENSITY_DERIVED
+  attack5_mathematica_copy:
+    command: "timeout 600 math -script /tmp/pathA43_attack5.wl"
+    exit_status: 1
+    recomputed_baseline_verdict: FAIL_NOT_DENSITY_DERIVED
+scope_tags:
+  CALIBRATED:
+    - G
+    - "2/5"
+    - "54/5"
+  SIM_DEFERRED:
+    - "literal Y2* l=2 moment magnitude"
+    - "Xi_Q exact branch magnitude"
+    - eta_q
+    - eta_phi
+    - lambda_c
+  structurally_computed:
+    - N0_den
+    - source_graph_taint
+    - continuity_dependency
+    - six_checks
+    - controls
+provenance:
+  directive: software/stage1_solver/directives/pathA_43_density_quadrupole_port.md
+  engine_stdout:
+    - software/stage1_solver/reports/pathA_43_density_quadrupole_port_sympy.txt
+    - software/stage1_solver/reports/pathA_43_density_quadrupole_port_mathematica.txt
+  no_directive_edits_by_gate: true

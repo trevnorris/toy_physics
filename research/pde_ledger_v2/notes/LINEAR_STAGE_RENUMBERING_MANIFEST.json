@@ -1,7 +1,16 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 0,
-  "policy": [],
+  "canonical_stage_count": 1,
+  "policy": [
+    {
+      "build_order_stage": "001",
+      "part": "II",
+      "source_gate": "pathA_21c",
+      "slug": "solid_angle_second_moment_primitives",
+      "final_number": "deferred",
+      "note": "build-order id; final Part-ordered linear renumber deferred to the pre-swap pass"
+    }
+  ],
   "excluded_em_projected_material": [],
   "projected_maxwell_stages": [],
   "audit_policy": {

@@ -1,0 +1,80 @@
+\section{Stage 001: Solid-Angle and Second-Moment Primitives}
+
+\stagefield{Part / anchor}{Part II -- Gravity}
+\claimstatus{\StatusExact}
+\stagefield{Purpose}{Derive the unit-sphere solid angles and normalized
+second moments used by the pathA\_21c matter-stress force assembly.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage001_solid_angle_second_moment_primitives_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage001_solid_angle_second_moment_primitives_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExact. This stage is closed geometry: no profile, normalization, or
+field-equation residual remains inside the stated claims.
+
+\paragraph{Derivation.}
+For \(S^2 \subset \mathbb{R}^3\), take
+\[
+  n(\theta,\phi) =
+  (\cos\theta,\sin\theta\cos\phi,\sin\theta\sin\phi),
+  \qquad
+  dS=\sin\theta\,d\phi\,d\theta .
+\]
+Then \resultanchor{Omega2 solid angle.}
+\[
+  \Omega_2
+  =
+  \int_0^\pi\int_0^{2\pi}\sin\theta\,d\phi\,d\theta
+  =4\pi .
+\]
+With \(n_1=\cos\theta\) and \(n_2=\sin\theta\cos\phi\),
+\resultanchor{S2 second moments.}
+\[
+  \langle n_1^2\rangle_{S^2}
+  =
+  \frac{1}{4\pi}\int_0^\pi\int_0^{2\pi}
+  \cos^2\theta\,\sin\theta\,d\phi\,d\theta
+  =\frac{1}{3},
+  \qquad
+  \langle n_1n_2\rangle_{S^2}=0 .
+\]
+The cross moment vanishes because
+\(\int_0^{2\pi}\cos\phi\,d\phi=0\).
+
+For \(S^3 \subset \mathbb{R}^4\), take
+\[
+  n(\chi,\theta,\phi)=
+  (\cos\chi,\sin\chi\cos\theta,\sin\chi\sin\theta\cos\phi,
+  \sin\chi\sin\theta\sin\phi),
+  \qquad
+  dS=\sin^2\chi\,\sin\theta\,d\phi\,d\theta\,d\chi .
+\]
+Then \resultanchor{Omega3 solid angle.}
+\[
+  \Omega_3
+  =
+  \int_0^\pi\int_0^\pi\int_0^{2\pi}
+  \sin^2\chi\,\sin\theta\,d\phi\,d\theta\,d\chi
+  =2\pi^2 .
+\]
+With \(n_1=\cos\chi\) and \(n_2=\sin\chi\cos\theta\),
+\resultanchor{S3 second moments.}
+\[
+  \langle n_1^2\rangle_{S^3}
+  =
+  \frac{1}{2\pi^2}\int_0^\pi\int_0^\pi\int_0^{2\pi}
+  \cos^2\chi\,\sin^2\chi\,\sin\theta\,
+  d\phi\,d\theta\,d\chi
+  =\frac{1}{4},
+  \qquad
+  \langle n_1n_2\rangle_{S^3}=0 .
+\]
+The cross moment vanishes because
+\(\int_0^\pi\cos\theta\sin\theta\,d\theta=0\).
+
+\paragraph{Physical use.}
+\(\Omega_2=4\pi\) and \(\Omega_3=2\pi^2\) set the reduced \(r^{-2}\)
+and bulk \(R^{-3}\) Gauss normalizations. The second moments give the
+\(\delta_{ij}/d\) angular average used in the convective factor
+\(-(1+1/d)\) and the pressure factor \(1/d\).

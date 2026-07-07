@@ -1,0 +1,47 @@
+project:
+  name: pde_ledger
+  redteam_dir: redteam
+stage_pad: 3
+paths:
+  sympy:
+  - scripts/ledger_stage{N}_*_sympy_audit.py
+  - scripts/ledger_stage{N}_*_sympy_audit_refresh.py
+  mathematica:
+  - mathematica/ledger_stage{N}_*_mathematica_audit.wl
+  sympy_output:
+  - scripts/output/ledger_stage{N}_*_sympy_audit.txt
+  mathematica_output:
+  - mathematica/output/ledger_stage{N}_*_mathematica_audit.txt
+runners:
+  sympy: timeout 600 python3 {script}
+  mathematica: timeout 600 math -script {script}
+stages:
+  start: 1
+  end: 0
+  exclude: []
+batches: []
+checkpoints: []
+limits:
+  max_iterations: 2
+  parallel_audit_max: 10
+  parallel_verify_max: 10
+  fix_parallelism: 1
+codex:
+  chat_wrapper: ~/.claude/hooks/codex-chat/codex-chat
+  sandbox: workspace-write
+  dry_run: false
+status_only_candidates: []
+adversarial:
+  project_name: pde_ledger
+  repo_root: ../..
+  artifact_root: redteam_adversarial
+  codex:
+    chat_wrapper: ~/.claude/hooks/codex-chat/codex-chat
+    sandbox: workspace-write
+  limits:
+    max_iterations: 2
+    phase_a_parallelism_max: 4
+    phase_b_parallelism_max: 2
+    phase_c_parallelism_max: 1
+    defense_parallelism_max: 1
+    math_script_parallelism_max: 2

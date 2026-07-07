@@ -1,0 +1,17 @@
+schema_version: 1
+project_name: pde_ledger
+artifact_root: redteam_adversarial
+created_at: '2026-07-07'
+updated_at: '2026-07-07'
+state_machine:
+- pending
+- scanned
+- provenance_built
+- audit_pending
+- audited
+- defense_pending
+- defended
+- adjudicating
+- verdict_logged
+- blocked
+candidates: {}

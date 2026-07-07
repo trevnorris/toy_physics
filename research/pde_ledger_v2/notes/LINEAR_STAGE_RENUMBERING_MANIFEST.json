@@ -1,0 +1,12 @@
+{
+  "updated": "2026-07-07",
+  "canonical_stage_count": 0,
+  "policy": [],
+  "excluded_em_projected_material": [],
+  "projected_maxwell_stages": [],
+  "audit_policy": {
+    "sympy": "top-level scripts/ledger_stageNNN_* files match paper stage numbers",
+    "mathematica": "top-level mathematica/ledger_stageNNN_* files match paper stage numbers",
+    "transcripts": "regenerate after renumbering rather than trusting renamed output files"
+  }
+}

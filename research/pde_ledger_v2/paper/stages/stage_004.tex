@@ -1,0 +1,66 @@
+\section{Stage 004: GNLS Action and Dimensional Foundation}
+
+\stagefield{Part / anchor}{Part I -- The medium}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Fix the field content and \(\{L,T,M\}\) dimensional
+dictionary of the GNLS parent action, derive the pin null-relation and healing
+scale, and land the base-system verdict \texttt{RETAIN\_L\_T\_M}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage004_gnls_action_dimensional_foundation_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure. The dimensional dictionary, sound-speed and healing anchors,
+pin null-relation, and base-system verdict are exact symbolic results; the honest
+landing carries named residuals (mass non-emergence and the \(\{L,T\}\)-conversion
+gaps), deferred to pathA\_21/22 and not repaired here.
+
+\paragraph{Parent action and field content.}
+The 4D-bulk medium is a GNLS condensate with order parameter \(\psi\), number
+density \(\rho=|\psi|^2\), and EOS \(P=K\rho^5\) (from \(U(\rho)=\tfrac{K}{4}\rho^5\)):
+\[
+  \mathcal{L}\sim i\hbar\,\psi^{*}\partial_t\psi
+  -\frac{\hbar^2}{2m_{\mathrm{GNLS}}}\,|\nabla\psi|^2 - U(\rho).
+\]
+
+\paragraph{Dimensional dictionary (two tiers).}
+\resultanchor{Primitive inputs.} \([\hbar]=ML^{2}T^{-1}\),
+\([m_{\mathrm{GNLS}}]=M\), \([\rho_0]=L^{-4}\) (state datum) --- posted and
+consistency-checked against action usage. \resultanchor{Derived by composition.}
+\([\psi]=L^{-2}\), \([\rho]=L^{-4}\), \([K]=ML^{18}T^{-2}\), forced by action
+homogeneity across all 17 harness checks (14 foundation, including the bulk
+continuity equation, plus 3 \(\{L,T\}\)-representation gates).
+
+\paragraph{Derived anchors.}
+\resultanchor{Sound speed and healing length.}
+\[
+  c_{s0}^{2}=\frac{5K\rho_0^{4}}{m_{\mathrm{GNLS}}},\quad [c_{s0}]=LT^{-1};
+  \qquad
+  h_0=\frac{5K}{4}\rho_0^{4}=\frac{m_{\mathrm{GNLS}}c_{s0}^{2}}{4},\quad
+  \xi_h=\frac{\sqrt{2}\,\hbar}{m_{\mathrm{GNLS}}c_{s0}}.
+\]
+\resultanchor{Pin null-relation.} Four pins
+\(\{a,c_{s0},\hbar,m_{\mathrm{GNLS}}\}\) on three base dimensions give rank~3,
+nullity~1:
+\[
+  a=\frac{\hbar}{m_{\mathrm{GNLS}}c_{s0}},\qquad a/\xi_h=1/\sqrt{2}.
+\]
+
+\paragraph{Verdict.}
+\resultanchor{RETAIN\_L\_T\_M.} Computed from two conjuncts: the
+\(\{L,T\}\)-rejection gate (dropping \(M\) leaves \(\ge 1\) non-dimensionless
+target, needing \(M\)-bearing conversion factors \(LT^{2}M\), \(L^{2}T^{2}M\),
+\(L^{2}T^{2}\)) \emph{and} the mass fork (\(m_{\mathrm{GNLS}}\) explicit of
+dimension \(M\); \(m_{\mathrm{defect}}\) not derived,
+\texttt{INFLOW\_MASS\_SOURCE\_MISSING}). The \(\{L,T\}\) projection is a
+natural-unit representation only, not a base-system change.
+
+\paragraph{Carried residuals (first-class, not repaired).}
+\texttt{INFLOW\_MASS\_SOURCE\_MISSING} (\(m_{\mathrm{defect}}\) emergence deferred
+to pathA\_21; \(\hbar J/c_\gamma^{2}=M\) is dimensional-only),
+\texttt{LT\_R\_norm\_gate\_fails\_without\_new\_conversion\_factor}
+(\texttt{REJECTS\_TRUE\_LT\_BASE}) and the two 4D/3D \(R\)-norm conversion gaps
+(pathA\_22), plus \texttt{A\_PIN\_IS\_BRANCH\_MOMENT\_NOT\_INVARIANT},
+\texttt{EOS\_FROM\_GNLS\_FACTOR}, \texttt{NO\_NET\_ACCRETION\_BC\_UNDERIVED},
+\texttt{M\_TO\_G\_UNIFICATION}, \texttt{SCALE\_MAP\_INPUTS}.

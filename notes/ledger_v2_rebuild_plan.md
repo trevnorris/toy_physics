@@ -16,8 +16,16 @@
 > dual-engine SymPy PASS=84 / Mathematica PASS=86, independent Faddeev–Jackiw route in the `.wl`; `c00323d0`). ALL THREE dual-engine + full
 > tri-review CLEAN (stage003's adversarial leg found 1 nit — transverse headline not EL-derived from `L_T` — remediated → `REVERIFY_CLEAN`).
 > The reshape template is LOCKED and validated on all three shapes: happy-path (001), *consuming* (002), and FAIL-headline / new-Part (003).
-> **▶ NEXT = BATCH Part-by-Part** — finalize each Part's atomic-stage split and **show the user before building that Part** (per-Part user gate);
-> suggested order I medium → II gravity → III light (remaining) → IV charge → V magnetism → VI knit → VII integration (last).
+> **▶ BATCHING Part-by-Part STARTED (2026-07-07).** **Part I (The medium) atomic split FINALIZED + user-approved** (4 stages;
+> `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`): I-1 `ledger_stage004` GNLS action + dimensional foundation (pathA_19,
+> `RETAIN_L_T_M`) → I-2 `ledger_stage005` sound speed + λγ-free (pathA_20, `C_GAMMA_RATIO_UNDERDETERMINED`) → I-3 `ledger_stage006`
+> two-phase χ_B ontology (`ACTION_SPECIFIED_CLASSIFIED`; fresh dim+recovery+no-go audit) → I-4 `ledger_stage007` shear-surface G0 freeze
+> (pathA_35, `T0_SHEAR_FROZEN`+`SECOND_MEDIUM_DRIFT(11)`). **pathA_23_stage0 DROPPED to history** (blueprint §3-vs-§4 reconciled — its
+> MacCullagh menu superseded by the pathA_35 freeze). **✅ I-1 `ledger_stage004` DONE** — Codex directive-review CLEAN (2 rounds) → dual-engine
+> both exit 0 (SymPy 49 / Mathematica 50 PASS, independent `UnitDimensions`/`NullSpace` `.wl` route) → arbiter re-run → full tri-review CLEAN
+> (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, every firewall/pin/verdict tooth fires under real ablation) → committed. **▶ NEXT = I-2
+> `ledger_stage005`** (pathA_20), then I-3, I-4; then Part II (gravity, the swing). Remaining Parts order II → III (remaining) → IV → V → VI →
+> VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 4,
+  "canonical_stage_count": 5,
   "policy": [
     {
       "build_order_stage": "001",
@@ -33,6 +33,14 @@
       "slug": "gnls_action_dimensional_foundation",
       "final_number": "deferred",
       "note": "build-order id (first Part-I stage; built after the pilot, out of Part order); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "005",
+      "part": "I",
+      "source_gate": "pathA_20",
+      "slug": "sound_speed_light_ratio",
+      "final_number": "deferred",
+      "note": "build-order id (second Part-I stage, I-2; pathA_20 + pathA_20b reference-only support; CALIBRATED landing C_GAMMA_RATIO_UNDERDETERMINED); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

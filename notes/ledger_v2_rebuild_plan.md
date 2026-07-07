@@ -21,11 +21,17 @@
 > `RETAIN_L_T_M`) → I-2 `ledger_stage005` sound speed + λγ-free (pathA_20, `C_GAMMA_RATIO_UNDERDETERMINED`) → I-3 `ledger_stage006`
 > two-phase χ_B ontology (`ACTION_SPECIFIED_CLASSIFIED`; fresh dim+recovery+no-go audit) → I-4 `ledger_stage007` shear-surface G0 freeze
 > (pathA_35, `T0_SHEAR_FROZEN`+`SECOND_MEDIUM_DRIFT(11)`). **pathA_23_stage0 DROPPED to history** (blueprint §3-vs-§4 reconciled — its
-> MacCullagh menu superseded by the pathA_35 freeze). **✅ I-1 `ledger_stage004` DONE** — Codex directive-review CLEAN (2 rounds) → dual-engine
-> both exit 0 (SymPy 49 / Mathematica 50 PASS, independent `UnitDimensions`/`NullSpace` `.wl` route) → arbiter re-run → full tri-review CLEAN
-> (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, every firewall/pin/verdict tooth fires under real ablation) → committed. **▶ NEXT = I-2
-> `ledger_stage005`** (pathA_20), then I-3, I-4; then Part II (gravity, the swing). Remaining Parts order II → III (remaining) → IV → V → VI →
-> VII (last).
+> MacCullagh menu superseded by the pathA_35 freeze). **✅ I-1 `ledger_stage004` DONE** (committed `d9544a62`) — Codex directive-review CLEAN
+> (2 rounds) → dual-engine both exit 0 (SymPy 49 / Mathematica 50 PASS, independent `UnitDimensions`/`NullSpace` `.wl` route) → arbiter re-run →
+> full tri-review CLEAN (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`) → committed. **✅ I-2 `ledger_stage005` DONE** — Codex directive-review CLEAN
+> (1 revision round → confirm-pass; folded 3 BLOCKING: dropped harness checks, `√2`-drop ablation defeated by dimensionlessness, `§5 "no solution"`
+> false) → dual-engine both exit 0 (SymPy 80 / Mathematica 81 PASS, independent `D`/`Det`/`Factor`/`Solve`/`Reduce` `.wl` route) → arbiter re-run →
+> full tri-review CLEAN (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, 14-mutation ablation matrix — every tooth GENUINE, verdict computed + reversibly
+> flips to `C_GAMMA_EQUALS_C_S` only with an inserted source equation) → 1 [minor] remediation (6 vacuous `N-N` count-checks → genuine live-counter
+> coverage assertions + `BULK_PRINCIPAL_TRANSVERSE_BRANCH_ESTABLISHED` print) → post-remediation `REVERIFY_CLEAN` → registration at count 5, PDF
+> rebuilt. **▶ NEXT = I-3 `ledger_stage006`** (two-phase χ_B material-state ontology, `ACTION_SPECIFIED_CLASSIFIED` — fresh-authored dim + recovery
+> + θ-as-φ no-go audit), then I-4 `ledger_stage007` (pathA_35 G0 freeze); then Part II (gravity, the swing). Remaining Parts order II → III
+> (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

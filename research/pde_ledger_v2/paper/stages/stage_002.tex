@@ -1,0 +1,64 @@
+\section{Stage 002: Matter-Stress Inter-Defect Force Assembly}
+
+\stagefield{Part / anchor}{Part II -- Gravity}
+\claimstatus{\StatusReduced}
+\stagefield{Purpose}{Assemble the inter-defect force between two drain defects
+from the matter (Noether) stress, earning the bilinear \(Q_1Q_2\) structure,
+the reduced-3D \(r^{-2}\) and bulk-4D \(R^{-3}\) power laws, and the attractive
+like-drain sign, consuming the Stage~001 geometry primitives.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage002_matter_stress_force_assembly_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage002_matter_stress_force_assembly_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusReduced. Three verdict layers are carried from the earned source: the
+leading matter-stress sign \texttt{FORCE\_ATTRACTIVE\_DERIVED} (target-blind);
+the full sign \texttt{SIGN\_RESIDUAL\_QUANTUM\_VCONF\_MAXWELL\_PROFILE} (honest
+residual); acceptance \texttt{PASS\_WITH\_NAMED\_RESIDUALS}. The bilinear
+structure, the power laws, and the attractive sign are earned (form + sign); the
+overall magnitude is a calibration knob; the full sign carries named,
+profile/sim-deferred residuals.
+
+\paragraph{Derivation.}
+The medium obeys \(P=K\rho^5\), \(h=(5K/4)\rho^4\), with the barotropic identity
+\(dP/d\rho=\rho\,(dh/d\rho)\). The matter (Noether) stress in Madelung form is
+\[
+  \Pi_{ij}=m\rho\,v_iv_j+\delta_{ij}P(\rho)+\sigma^{Q}_{ij},
+  \qquad
+  \sigma^{Q}_{ij}=\frac{\hbar^2}{4m}
+  \Big[\frac{(\partial_i\rho)(\partial_j\rho)}{\rho}-\partial_i\partial_j\rho\Big],
+\]
+with the quantum-stress divergence contributing no net far-field force at this
+order. A defect draining flux \(Q\) sets up, by Gauss's law, the inflow
+\[
+  v=-\frac{Q\,\hat n}{\Omega_{d-1}\,r^{\,d-1}},
+\]
+where \(\Omega_2=4\pi\) (\(d=3\)) and \(\Omega_3=2\pi^2\) (\(d=4\)) are the
+Stage~001 solid angles. The Bernoulli cross-pressure of the two overlapping
+inflows is \(\delta P=-m\rho\,(v_1\!\cdot\!v_2)\). Integrating the traction
+\(\Pi_{ij}n_j\) over a control sphere around defect~2 and using the Stage~001
+second moment \(\langle n_in_j\rangle=\delta_{ij}/d\) gives the convective factor
+\(-(1+1/d)\) and the pressure factor \(+1/d\), whose sum is the total flux
+\(-\,mN Q_2 v_1\) (the \(1/d\) pieces cancel). The stationary force
+\(F_{12}=-\oint\Pi_{ij}n_j\,dS\), with defect~1's own inflow substituted, yields
+the two lanes. \resultanchor{Reduced-3D force law.}
+\[
+  F_{12}=-\,\frac{m\,N_3\,Q_1Q_2}{4\pi\,r_{12}^2}\,\hat r_{12}.
+\]
+\resultanchor{Bulk-4D force law.}
+\[
+  F_{12}=-\,\frac{m\,\rho_4\,Q_1Q_2}{2\pi^2\,R_{12}^3}\,\hat R_{12}.
+\]
+\resultanchor{Attractive sign.} Since \(F\propto-Q_1Q_2\), like drains
+(\(Q_1Q_2>0\)) attract and opposite signs repel; the sign is derived from the
+Gauss-drain / Bernoulli / surface-integral chain, not assumed.
+
+\paragraph{Physical use and named residuals.}
+Target-blind, the inter-defect force is bilinear in the drain strengths, falls
+as \(r^{-2}\) (reduced 3D) and \(R^{-3}\) (bulk 4D), and is attractive between
+like drains. Honest scope: the overall normalization
+(\(I_F/\Theta_Q/\text{branch-profile}\)) is a \emph{calibration} knob, not
+derived; and the full sign carries the \texttt{QUANTUM\_STRESS\_FAR\_FIELD},
+\texttt{VCONF\_BODY\_FORCE}, and \texttt{MAXWELL\_Z\_GAUGE\_JEXT} residuals,
+which are profile/sim-deferred and first-class.

@@ -1,3 +1,4 @@
 PASS  ledger_stage001_solid_angle_second_moment_primitives_mathematica_audit  (22s)
+PASS  ledger_stage002_matter_stress_force_assembly_mathematica_audit  (10s)
 
-TOTAL: 1  PASS: 1  FAIL: 0  SKIPPED: 0
+TOTAL: 2  PASS: 2  FAIL: 0  SKIPPED: 0

@@ -214,7 +214,11 @@ rejects). Each fold requires:
    (debt → DERIVED) or *closes* (→ CLOSED-NEG). This is the running seed for Part VII's calibration map + the irreducible
    codimension count, and it doubles as the cross-stage dimensional ledger (the whole-system dim check at Part VII then
    confirms rather than discovers). The register tracks *nominal vs irreducible* knobs relationally — a knob can be a
-   manifestation of others.
+   manifestation of others. **Then Codex-VERIFY the register update (read-only, xhigh) against the stage's scripts/report
+   — dims match, provenance classes honest, and above all NO edge mislabeled (an `IMPOSED` calibration dressed as
+   `DERIVED`/`CODIM-PROVEN` would falsely shrink the irreducible count); fold any findings.** The register is
+   orchestrator-authored prose, so Codex reviews and the orchestrator folds (as with the directive design-review). The
+   verify prompt template is `research/pde_ledger_v2/_scratch/parameter_register_verify_prompt.md`.
 
 **Dual-engine gaps to close during fold:** only the folded Part-I foundations **`pathA_19` and `pathA_20`** are
 `.wl`-only and owe a `_sympy.py`. Everything else carried is already dual-engine (incl. `pathA_28`). `pathA_20b/21/

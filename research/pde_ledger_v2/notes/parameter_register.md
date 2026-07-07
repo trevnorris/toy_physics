@@ -66,13 +66,19 @@ Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 l
 | `a` (pin) | `L` | I-1 (004) | `CONV` | `= ħ/(m_GNLS c_s0)` | pin choice — never free (`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`) |
 | `λγ = c_γ/c_s` | `1` | I-2 (005) | `DERIVED` | `= c_γ/c_s0` | **not independent** — a ratio of `c_γ` and `c_s0` (see edge R3) |
 | `c_γ` (gauge cone) | `L T⁻¹` | I-2 (005), III (003), VI | `FREE-UNREDUCED` | brane: `c_γ²=μ_R/ρ_br`; bulk: `c_γ²=C_B/C_E` | Route A `PENDING`; cone-lock `IMPOSED` `λγ=1` |
-| `C_E, C_B` (gauge metric) | ratio `L²T⁻²` (indiv. pending) | I-2 (005) | `FREE-UNREDUCED` (bulk) | `c_bulk²=C_B/C_E` | brane-zero-mode reduction to `c_γ` `PENDING` |
-| `μ_R` (brane shear) | pending (pathA_36) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
-| `ρ_br` (brane density) | pending (pathA_36) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
-| force-magnitude norm | (normalization) | II (002) | `CALIB` | matched to inter-defect force strength | form earned; magnitude CALIBRATED; `G=GENUINE_BLOCKED` |
+| `c_E` (throat Green speed) | `L T⁻¹` | VI (040/041) | `FREE-UNREDUCED` | throat dynamic Green speed — **distinct from the Maxwell `C_E`** | cone-lock `IMPOSED` `c_E=c_γ` (R8); Route-A registered-deferred |
+| `C_E, C_B` (gauge metric) | `[C_E]=M⁻¹L⁻⁴T²`, `[C_B]=M⁻¹L⁻²` (ratio `L²T⁻²`) | I-2 (005) | `FREE-UNREDUCED` (bulk) | `c_bulk²=C_B/C_E` | brane-zero-mode reduction to `c_γ` `PENDING` |
+| `μ_R` (brane shear) | `M L⁻¹ T⁻²` (stage 003) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
+| `ρ_br` (brane density) | `M L⁻³` (stage 003) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
+| force-magnitude norm | `1` (dimensionless coeff) | II (002) | `CALIB` | matched to inter-defect force strength | form earned; magnitude CALIBRATED; `G=GENUINE_BLOCKED` |
 | `Q_E` (charge mag.) | pending (pathA_38) | IV (038) | `CALIB-ANCHOR` | — | pending pathA_38 reshape |
-| `ρ_B0` | pending (pathA_41) | VI (041) | `FREE-UNREDUCED` | on-brane compression | NG5 route (i) 4D→3D compression `PENDING` |
-| `χ_c` | pending (pathA_41) | VI (041) | `FREE-UNREDUCED` | on-brane compression | NG5 route (i) `PENDING` |
+| `ρ_B0` | `M L⁻³` (stage 003) | III (003), VI (041) | `FREE-UNREDUCED` | on-brane compression; pathA_41 marks active irreducible | NG5 route (i) 4D→3D compression `PENDING` |
+| `χ_c` | `M L⁻⁵ T²` (stage 003) | III (003), VI (041) | `FREE-UNREDUCED` | on-brane compression; pathA_41 marks active irreducible | NG5 route (i) `PENDING` |
+| `B` (brane compression modulus) | `M L⁻¹ T⁻²` (stage 003) | III (003) | `FREE-UNREDUCED` (brane) | longitudinal `(∇·u)²` stiffness | (part of the light-sector departure) |
+| `J` (throat winding/current) | `L² T⁻¹` (stage 003) | III (003) | `ACTION` | enters `C_J=−Jρ_B0` | — |
+| `K_θ` / `κ_phase` | `M L T⁻²` (stage 003) | III (003) | `ACTION` (labeled postulate) | phase-gradient stiffness (sign is the θ-as-φ crux) | carried postulate |
+| `C_J = −J ρ_B0` | `M L⁻¹ T⁻¹` (stage 003) | III (003) | `DERIVED` | `= −J ρ_B0` (sign-sensitive IBP, R15) | DERIVED |
+| `B_eff = ρ_B0²/χ_c` | `M L⁻¹ T⁻²` (stage 003) | III (003) | `DERIVED` | `= ρ_B0²/χ_c` (R16) | DERIVED |
 | `C_hu` | pending (pathA_41) | VI (041) | `FREE-UNREDUCED` | embedding-mixing | NG5 route (ii) embedding-overlap `PENDING` |
 | `α_J` (mass-bridge coeff) | `1` | I-2 (005) | `CANDIDATE` | `m_defect = α_J ħJ/c_γ²` | labeled candidate; not load-bearing |
 | `m_defect` | `M` | — | `GAP` | candidate `ħJ/c_γ² = M` (dimensional-only) | pathA_21 (deferred) |
@@ -93,13 +99,15 @@ Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 l
 | R5 | `c_bulk² = C_B/C_E` (bulk gauge cone) | `DERIVED` (within pathA_20b) | I-2 (005) | bulk gauge cone set by the Maxwell metric ratio |
 | R6 | brane `c_γ` ← bulk `c_bulk` (zero-mode reduction) | `PENDING` | I-2/III | debt: would relate the brane & bulk gauge speeds (`BRANE_ZERO_MODE_REDUCTION_UNDERIVED`) |
 | R7 | `λγ = 1` i.e. `μ_R/ρ_br = 5K ρ0⁴/m` | `IMPOSED` (cone-lock calibration) | VI (040) | a **calibration**, not derived — does not reduce; independence proven by R9 |
-| R8 | `c_E = c_γ` i.e. `c_E² = μ_R/ρ_br` | `IMPOSED` (cone-lock calibration) | VI (040) | a second independent calibration |
+| R8 | `c_E = c_γ` (the **throat Green speed** `c_E`, NOT the Maxwell coeff `C_E`) | `IMPOSED` (cone-lock calibration) | VI (040) | a second independent calibration |
 | R9 | R7 and R8 are **independent** calibrations, `Δr=2` | `CODIM-PROVEN` | VI (040) | Krull/`RegionDimension` count: real-locus dim 10→8. **Hidden multiplicity** — two locks, not one |
 | R10 | Route A: derive `λγ` from a nonlinear-throat `μ_R`-as-bulk-defect integral | `PENDING` | VI (040) | would discharge R7's debt (`λγ` derived, not calibrated); needs the deferred nonlinear throat |
 | R11 | Route B: derive `λγ` via `h≠u_T` / thin-plate over-import | `CLOSED-NEG` | VI (040) | proven **not** a route → `λγ` reducible only via Route A (or stays calibrated) |
 | R12 | NG5 route (i): compression-sector 4D→3D reduction | `PENDING` | VI (041) | would collapse `{ρ_B0, χ_c}` into bulk/brane primitives |
 | R13 | NG5 route (ii): embedding-overlap reduction | `PENDING` | VI (041) | would collapse `C_hu` |
 | R14 | Location-closure: every param ∈ {4D bulk, 3D brane surface, throat seam}; **no fourth arena** | `CODIM-PROVEN` (computed, able-to-fail) | VI (041) | the NG5 "drift" is **un-reduced brane-surface params**, NOT a second substance |
+| R15 | `C_J = −J ρ_B0` | `DERIVED` (sign-sensitive IBP) | III (003) | collapses `C_J` into `{J, ρ_B0}` (stage 003's fidelity upgrade over pathA_36) |
+| R16 | `B_eff = ρ_B0²/χ_c` | `DERIVED` | III (003) | collapses `B_eff` into `{ρ_B0, χ_c}` (the stray-longitudinal stiffness) |
 
 ---
 
@@ -110,11 +118,13 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
 
 - **Genuinely-free medium primitives:** `{ħ, m_GNLS, K, ρ0}` (4), plus the EOS **exponent 5** as an `IMPOSED` structural
   choice.
-- **Already collapsed (proven not free):** `c_s0, ξ_h, h0, a, λγ` (5) — `λγ` in particular is *not* an independent knob,
-  it is `c_γ/c_s0` (R3). This is the pattern the user predicted: apparent knobs that are manifestations of others.
+- **Already collapsed (proven not free):** `c_s0, ξ_h, h0, a, λγ` + the stage-003 derived `C_J=−Jρ_B0` (R15),
+  `B_eff=ρ_B0²/χ_c` (R16) — `λγ` in particular is *not* an independent knob, it is `c_γ/c_s0` (R3). This is the pattern
+  the user predicted: apparent knobs that are manifestations of others.
 - **Free-unreduced with NAMED routes (reduction debt):** the gauge normalization `c_γ` / `(μ_R, ρ_br)` / `(C_B, C_E)`
-  via Route A (R10) + brane-zero-mode (R6); the NG5 trio `{ρ_B0, χ_c, C_hu}` via routes (i)/(ii) (R12/R13). **Every one
-  has a named pending derivation** — none is asserted irreducible.
+  (throat Green speed `c_E` is a *distinct* speed, R8) via Route A (R10) + brane-zero-mode (R6); the brane-longitudinal
+  constants `{B, ρ_B0, χ_c}` (light-sector departure, dims verified stage 003); the NG5 trio `{ρ_B0, χ_c, C_hu}` via
+  routes (i)/(ii) (R12/R13). **Every one has a named pending derivation** — none is asserted irreducible.
 - **Calibrated (tuned):** the force-magnitude normalization (II); `Q_E` (IV). `G` is `GENUINE_BLOCKED`.
 - **CLOSED-NEG so far:** R11 (one λγ route closed) — hardens the picture but does not yet make λγ fully irreducible
   (Route A remains).
@@ -136,3 +146,9 @@ the `DERIVED/IMPOSED/PENDING/CLOSED-NEG/CODIM-PROVEN` flag; (3) update the rollu
 route (debt → DERIVED) or *closes* one (→ CLOSED-NEG), record it — those are the results that move the irreducible count.
 This doc is the seed for Part VII's calibration map + the codimension count; it is not a substitute for the per-stage
 dual-engine dim/able-to-fail checks (those stay in the stage scripts).
+
+**MANDATORY verification (blueprint §5 step 7):** after every update, run a Codex read-only verification of this doc
+against the stage's scripts/report (dims match, provenance classes honest, and — the highest-risk check — NO edge
+mislabeled: an `IMPOSED` calibration dressed as `DERIVED`/`CODIM-PROVEN` would falsely shrink the irreducible count) and
+fold the findings. The register is orchestrator-authored prose, so Codex reviews and the orchestrator folds. Template:
+`_scratch/parameter_register_verify_prompt.md`.

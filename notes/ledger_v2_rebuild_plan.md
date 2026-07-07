@@ -42,7 +42,8 @@
 > construction — NOT a mirror; the pilot `.wl` derives its measure from the Gram determinant on different axes than the `.py`) → self-contained
 > note + card → register (provenance/coverage/manifest; `reviewed_stage_count` bumped only AFTER tri-review) → **update the parameter register
 > `research/pde_ledger_v2/notes/parameter_register.md` (MANDATORY every stage — new knobs+dims+relation edges; feeds Part VII calibration map +
-> irreducible codimension count; blueprint §5 step 7)** → dual-engine both exit 0 → full tri-review (arbiter re-run + fidelity +
+> irreducible codimension count; blueprint §5 step 7) → Codex-VERIFY the register update (read-only, xhigh: dims/classes/edge-flags correct, no
+> IMPOSED-mislabeled-as-DERIVED) → fold** → dual-engine both exit 0 → full tri-review (arbiter re-run + fidelity +
 > adversarial-with-ablation). **Commit convention** (matches old ledger): track sources + PDF +
 > `output/*.txt` transcripts + `_summary.txt`; `*.aux/*.log/*.toc/*.out` gitignored. Numbering: build-order ids now; final Part-ordered linear
 > renumber via the manifest as one deliberate pre-swap pass (never an ad-hoc offset-sweep).

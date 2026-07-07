@@ -1,0 +1,37 @@
+\documentclass[11pt,oneside]{book}
+
+\input{document_setup}
+
+\title{PDE Ledger\\[0.5em]\large Archive Ledger Skeleton}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\hypersetup{pageanchor=false}
+\maketitle
+\hypersetup{pageanchor=true}
+
+\input{frontmatter/00_purpose_scope}
+\input{frontmatter/01_how_to_read}
+\input{frontmatter/02_claim_status_firewall}
+\input{frontmatter/03_notation_firewall}
+\input{frontmatter/04_result_anchor_map}
+\input{frontmatter/05_dependency_map}
+
+\tableofcontents
+
+\mainmatter
+
+\input{main_parts}
+
+\appendix
+
+\input{appendices/reproducibility_map}
+\input{appendices/source_file_index}
+\input{appendices/fit_insertion_index}
+\input{appendices/parameter_provenance_audit}
+\input{appendices/fill_workflow}
+
+\end{document}

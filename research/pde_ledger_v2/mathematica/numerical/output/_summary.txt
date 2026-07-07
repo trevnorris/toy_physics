@@ -1,0 +1,3 @@
+NO_STAGES: nothing to do
+
+TOTAL: 0  PASS: 0  FAIL: 0  SKIPPED: 0  MODE: check

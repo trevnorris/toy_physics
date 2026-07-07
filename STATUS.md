@@ -3,9 +3,10 @@
 **This file is the canonical "you are here."** It is a thin pointer, not a copy — the detail lives in the linked docs.
 Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-06**
 (⭐ Phase A1 EARNED = `pathA_43` `DENSITY_PORT_HOSTED` — the ℓ=2 quadrupole port is density-native, EM scaffold retires; caught+remediated
-a rig, re-tri-review + hardening all CLEAN. ✅ A2 DONE = `pathA_21c` dual-engine SymPy companion (`f236ec08`, `FIDELITY_CLEAN`).
-NEW DIRECTION = REBUILD ledger at `research/pde_ledger_v2/`; next = Phase A A3, then Phase B/C.
-Plan = `notes/ledger_v2_rebuild_plan.md`).
+a rig, re-tri-review + hardening all CLEAN. ✅ A2 DONE = `pathA_21c` dual-engine SymPy companion (`cd039e51`, `FIDELITY_CLEAN`).
+✅ A3 DONE = 2.5PN match-back note + dual-engine verification artifact (`tools/pathA_2_5pn_matchback_*`; full tri-review
+`FIDELITY_CLEAN`+`ADVERSARIAL_CLEAN`) → **Phase A COMPLETE**. NEW DIRECTION = REBUILD ledger at `research/pde_ledger_v2/`;
+next = **Phase B** (build v2), then Phase C (redteam). Plan = `notes/ledger_v2_rebuild_plan.md`).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -14,7 +15,7 @@ Plan = `notes/ledger_v2_rebuild_plan.md`).
 
 ---
 
-## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED + KNIT DONE. ⭐ NEW DIRECTION (user): REBUILD the central ledger FROM SCRATCH (sector-organized `research/pde_ledger_v2/`) from the earned work — NOT fold into the old 253-stage ledger. NEXT = Phase A (finish gravity in `stage1_solver`). ⭐⭐ FULL PLAN = `notes/ledger_v2_rebuild_plan.md` (read it FIRST)
+## ▶ RESUME HERE (2026-07-05) — ⭐⭐ ALL 4 SECTORS EARNED + KNIT DONE. ⭐ NEW DIRECTION (user): REBUILD the central ledger FROM SCRATCH (sector-organized `research/pde_ledger_v2/`) from the earned work — NOT fold into the old 253-stage ledger. ✅ Phase A (finish gravity) COMPLETE; NEXT = Phase B (build `research/pde_ledger_v2/`). ⭐⭐ FULL PLAN = `notes/ledger_v2_rebuild_plan.md` (read it FIRST)
 
 > **⏸ (2026-07-05).** Pickup: **read `notes/ledger_v2_rebuild_plan.md` FIRST** (complete multi-phase plan + why-rebuild evidence) + memory
 > [[project-pde-ledger-fold-in-plan]] + [[project-brane-existence-defect-structure]]. **⭐ NEW DIRECTION (user 2026-07-05):** do NOT fold the
@@ -30,13 +31,19 @@ Plan = `notes/ledger_v2_rebuild_plan.md`).
 > reduced-closure-earned; magnitude + `G/2/5/54/5` CALIBRATED/SIM-DEFERRED. Full gauntlet: directive v2 (Codex→GLM→Codex) → executed
 > → tri-review CAUGHT A RIG → remediated → re-tri-review `FIDELITY_CLEAN`+`ADVERSARIAL_CLEAN` (20 novel mutations) → hardening +
 > `HARDENING_CLEAN`. Artifacts `{directives,tools,reports}/pathA_43_density_quadrupole_port*`. **✅ A2 DONE (2026-07-06) = `pathA_21c`
-> dual-engine (`f236ec08`):** added independent SymPy companion `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py` peering the
+> dual-engine (`cd039e51`):** added independent SymPy companion `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py` peering the
 > `.wl` — reproduces all 9 dim + 9 alg checks (drain→1/r² `FORCE_ATTRACTIVE_DERIVED`), derives Ω_d + `⟨n_i n_j⟩=δ_ij/d` from explicit
 > S²/S³ surface integrals + the attractive sign from primitives, no runtime consumption, mandatory able-to-fail mutation probe (7
 > corruptions). Lighter gauntlet: Codex design-review → GLM-5.2 tertiary → Codex re-green (all `DIRECTIVE_CLEAN`) → dual-engine exit 0 →
-> arbiter re-run + fidelity audit `FIDELITY_CLEAN`. **▶ REMAINING: (A3)** 2.5PN match-back — now largely a citation to
-> `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` consistency check `pathA_43` already carries. Then **Phase B**
-> build `research/pde_ledger_v2/` (blueprint→machinery
+> arbiter re-run + fidelity audit `FIDELITY_CLEAN`. **✅ A3 DONE (2026-07-06) → Phase A COMPLETE:** 2.5PN match-back = consolidation note
+> `notes/pathA_43_2_5pn_matchback.md` (pathA_43's density-mode ℓ=2 port reproduces the 2.5PN Burke–Thorne `Γ̄₅=2G/(5c⁵)` +
+> `K̄₄=4K̄₂²/K̄₀` that `research/4d_2_5pn` left as its single open item) + a dedicated dual-engine verification artifact
+> `tools/pathA_2_5pn_matchback_{sympy.py,.wl}` (independently checks INV1–INV5 — BOTH Γ̄₅ forms → BT incl. the corpus's own
+> `9K̄₂^{5/2}/K̄₀^{3/2}`, the cross-form agreement, the moment invariant, + literal anchors defeating a coherent-rescale rig — with an
+> 11-mutation able-to-fail probe). **Consistency over CALIBRATED moments, NOT a first-principles `Γ̄₅`/`G` derivation**
+> (`G=GENUINE_BLOCKED`; full 1PN→4PN from-throat = SIM-DEFERRED Gate 6). Full gauntlet + **full tri-review (arbiter re-run +
+> `FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`** — ablation proved INV5 load-bearing, caught-by matrix independent-not-computed, baseline gate
+> real). **▶ NEXT = Phase B** build `research/pde_ledger_v2/` (blueprint→machinery
 > copy→assemble), **Phase C** redteam. Est. v2 size ≈ **40–80 stages vs 253**. Sim-deferred guardrail holds (completes the SPEC not the
 > proof; Gate 6 deferred; no-go still possible). Superseded: "fold-in / new-Parts-IX–XII" + `notes/consistency_knit_handoff.md` (history).
 

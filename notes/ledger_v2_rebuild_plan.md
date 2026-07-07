@@ -25,8 +25,17 @@
   derives Ω_2=4π, Ω_3=2π², `⟨n_i n_j⟩=δ_ij/d` from explicit S²/S³ surface integrals + the attractive sign from primitive orientation
   conventions, no runtime consumption, mandatory able-to-fail mutation probe (7 corruptions incl. a derived-second-moment corruption).
   **Lighter gauntlet** (no new verdict): Codex design-review → GLM-5.2 tertiary → Codex re-green (all `DIRECTIVE_CLEAN`) → dual-engine
-  both exit 0 → arbiter re-run + fidelity audit `FIDELITY_CLEAN`. **▶ NEXT = A3 (2.5PN match-back — largely a cite to
-  `research/4d_2_5pn`'s open item `Γ̄₅=2G/(5c⁵)` + the `K̄₄=4K̄₂²/K̄₀` check pathA_43 carries).**
+  both exit 0 → arbiter re-run + fidelity audit `FIDELITY_CLEAN`.
+- **✅ Phase A, step A3 DONE (2026-07-06) → PHASE A COMPLETE = 2.5PN match-back.** Consolidation note
+  `notes/pathA_43_2_5pn_matchback.md` (pathA_43's density-mode ℓ=2 port reproduces the 2.5PN Burke–Thorne `Γ̄₅=2G/(5c⁵)` +
+  `K̄₄=4K̄₂²/K̄₀` that `research/4d_2_5pn` left as its single open item) + a dedicated dual-engine verification artifact
+  `tools/pathA_2_5pn_matchback_{sympy.py,.wl}` (independently checks INV1–INV5 — BOTH Γ̄₅ forms → BT incl. the corpus's own
+  `9K̄₂^{5/2}/K̄₀^{3/2}`, the cross-form agreement, the moment invariant, + literal anchors defeating a coherent-rescale rig — with an
+  11-mutation able-to-fail probe + asserted caught-by matrix). Consistency over CALIBRATED moments, NOT a first-principles
+  `Γ̄₅`/`G` derivation (`G=GENUINE_BLOCKED`; full 1PN→4PN = SIM-DEFERRED). Note gauntlet (Codex→GLM→Codex `NOTE_CLEAN`); script spec
+  gauntlet (Codex design-review CAUGHT a coherent-rescale blind spot → INV5 anchors; GLM `SOUND`; Codex `DIRECTIVE_CLEAN`) →
+  dual-engine exit 0 → **full tri-review: arbiter re-run + `FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`**. **▶ NEXT = Phase B (build
+  `research/pde_ledger_v2/`).**
 - **Estimated v2 size ≈ 40–80 stages** (vs 253) — see §6.
 
 ---
@@ -97,7 +106,10 @@ search sprawl, the charge-probe drift `219–253`.
 
 ---
 
-## 4. Phase A — Finish gravity in `software/stage1_solver/` (▶ NEXT)
+## 4. Phase A — Finish gravity in `software/stage1_solver/` (✅ COMPLETE 2026-07-06)
+
+**✅ Phase A is COMPLETE — A1 (`pathA_43` density port), A2 (`pathA_21c` SymPy companion), A3 (2.5PN match-back) all DONE.**
+▶ NEXT = Phase B (§5). The sub-step detail below is the (now-executed) plan, kept for provenance.
 
 Gravity is ~90% earned (see §3 Part II). Remaining:
 
@@ -117,8 +129,12 @@ density/`c_s` mode (extending `pathA_29`'s ℓ=0/1 density-return machinery up t
 (`pathA_21c_force_from_noether_stress_tensor_crosscheck.wl`) — no `_sympy.py`. Add the SymPy side for dual-engine compliance, OR fold the
 force law into a gravity consolidation.
 
-**A3 — 2.5PN match-back (▶ NEXT — the last Phase-A step; the lightest of the three).** Verify the density-mode quadrupole (`54/5`)
-agrees with the PN ladder's 2.5PN coefficient (the "cheapest decisive falsifier"). **⚠️ A3-PREP ALREADY DONE (during A1):** an agent
+**A3 — 2.5PN match-back ✅ DONE (2026-07-06) → PHASE A COMPLETE.** Delivered as `notes/pathA_43_2_5pn_matchback.md` + the dedicated
+dual-engine verification artifact `tools/pathA_2_5pn_matchback_{sympy.py,.wl}` (full summary + tri-review in the §0 A3 bullet). It grew
+one step beyond a pure note: rather than lean on pathA_43's closure overlay + reviewer arithmetic, it got its own self-contained
+able-to-fail artifact checking INV1–INV5 (both Γ̄₅ forms → BT incl. the corpus's `9K̄₂^{5/2}/K̄₀^{3/2}`, cross-form agreement, the moment
+invariant, coherent-rescale-defeating anchors). The plan below is the (now-executed) reasoning. Verify the density-mode quadrupole
+(`54/5`) agrees with the PN ladder's 2.5PN coefficient (the "cheapest decisive falsifier"). **⚠️ A3-PREP ALREADY DONE (during A1):** an agent
 characterized the PN corpus — 1PN→4PN is calibrated/GR-matched controlled-reduction with `G` a genuine gap; the 2.5PN sector
 (`research/4d_2_5pn`) is a CONDITIONAL theorem whose SINGLE open item is exactly `Γ̄₅=2G/(5c⁵)` (equivalently `Γ̄₅=9K̄₂^{5/2}/K̄₀^{3/2}`)
 — which `pathA_43` already supplies at reduced-closure (its closure overlay computed `Γ̄₅−2G/(5c⁵)=0` and `K̄₄−4K̄₂²/K̄₀=0`, dual-engine,

@@ -12,8 +12,9 @@ verification agents → user methodology call (derive the emergent constants bef
 
 > **⭐⭐ LIVE STATE (2026-07-06) — ALL 4 SECTORS EARNED + KNIT DONE; ⭐ NEW DIRECTION = REBUILD the ledger FROM SCRATCH at
 > `research/pde_ledger_v2/` (NOT fold into the old 253-stage ledger). Front door = repo `STATUS.md` ▶ RESUME HERE; plan =
-> `notes/ledger_v2_rebuild_plan.md` (read FIRST); conceptual = `docs/conceptual_foundation.md` ⭐ v8. ▶ NEXT = Phase A finish gravity
-> in `stage1_solver`: A1+A2 DONE, A3 remaining.**
+> `notes/ledger_v2_rebuild_plan.md` (read FIRST); conceptual = `docs/conceptual_foundation.md` ⭐ v8. ✅ Phase A (finish gravity in
+> `stage1_solver`) COMPLETE — A1+A2+A3 all DONE. ▶ NEXT = Phase B (build `research/pde_ledger_v2/`: blueprint → machinery copy →
+> assemble), then Phase C (redteam).**
 > - **⭐ Phase A1 EARNED (`pathA_43` = `DENSITY_PORT_HOSTED`, 2026-07-06).** The ℓ=2 quadrupole radiative-port numerator `N0` is
 >   DENSITY-NATIVE: `N0_den ∝ (η_φ ϖ_q2 + η_q λ_c)²/(λ_c² − ϖ_Φ2 ϖ_q2)²` — a genuine two-port over the physical `(q2` wall [pathA_32]`,
 >   Φ2` bulk-density [pathA_29]`)` modes, provably vector-free (computed taint `{continuity_interface, pathA_29_bulk, pathA_32_wall}`,
@@ -25,15 +26,26 @@ verification agents → user methodology call (derive the emergent constants bef
 >   host-set guard + real ablation + structural lineage + attack2/attack5 regression controls) → re-tri-review `FIDELITY_CLEAN` +
 >   `ADVERSARIAL_CLEAN` (20 novel mutations) → hardening fold (non-empty-provenance invariant) + `HARDENING_CLEAN` spot-check.
 >   Artifacts: `{directives,tools,reports}/pathA_43_density_quadrupole_port*`.
-> - **✅ Phase A2 DONE (`pathA_21c` dual-engine SymPy companion, `f236ec08`, 2026-07-06).** Added
+> - **✅ Phase A2 DONE (`pathA_21c` dual-engine SymPy companion, `cd039e51`, 2026-07-06).** Added
 >   `tools/pathA_21c_force_from_noether_stress_tensor_sympy.py` — an independent SymPy engine peering the existing `.wl` (the report had
 >   long claimed a Python engine that never existed). Reproduces all 9 dim + 9 alg checks (drain→1/r² `FORCE_ATTRACTIVE_DERIVED`),
 >   derives Ω_2=4π, Ω_3=2π², `⟨n_i n_j⟩=δ_ij/d` from explicit S²/S³ surface integrals + the attractive sign from primitive orientation
 >   conventions, no runtime consumption of the `.wl`, no `expected==actual` tautology, mandatory able-to-fail mutation probe (7
 >   corruptions incl. a derived-second-moment `1/3→1/2` that catches a hardcoded `1/d`). **Lighter gauntlet** (no new verdict): Codex
 >   design-review → GLM-5.2 tertiary → Codex re-green (all `DIRECTIVE_CLEAN`) → dual-engine both exit 0 → arbiter re-run + fidelity
->   audit `FIDELITY_CLEAN` (fresh agent, hand-traced). ▶ NEXT = A3 (2.5PN match-back, now largely a citation + the `K̄₄=4K̄₂²/K̄₀`
->   consistency check pathA_43 already carries).
+>   audit `FIDELITY_CLEAN` (fresh agent, hand-traced).
+> - **✅ Phase A3 DONE = 2.5PN match-back (2026-07-06) — Phase A COMPLETE.** Consolidation note
+>   `notes/pathA_43_2_5pn_matchback.md` (records that pathA_43's density-mode ℓ=2 port reproduces the 2.5PN Burke–Thorne
+>   normalization `Γ̄₅=2G/(5c⁵)` + the invariant `K̄₄=4K̄₂²/K̄₀` that `research/4d_2_5pn` left as its single open item) PLUS a dedicated
+>   dual-engine verification artifact `tools/pathA_2_5pn_matchback_{sympy.py,.wl}`. The script independently checks INV1–INV5 (both
+>   Γ̄₅ forms → BT: pathA_43's `K̄₀a⁵/(27c_s⁵)` AND the corpus's `9K̄₂^{5/2}/K̄₀^{3/2}`; the cross-form agreement; the moment
+>   invariant; + literal anchors defeating a coherent-rescale rig) with an 11-mutation able-to-fail probe + asserted caught-by matrix.
+>   **Honest scope: a consistency check over CALIBRATED moments, NOT a first-principles Γ̄₅/`G` derivation** (`G=GENUINE_BLOCKED`; full
+>   1PN→4PN from-throat = SIM-DEFERRED Gate 6). **Full gauntlet:** note (Codex design-review→GLM-5.2→Codex `NOTE_CLEAN`); script spec
+>   (Codex design-review CAUGHT a real coherent-rescale blind spot → INV5 anchors added; GLM `SOUND`, could not construct a passing
+>   rig; Codex re-green `DIRECTIVE_CLEAN`) → dual-engine both exit 0 → **full tri-review: arbiter re-run + `FIDELITY_CLEAN` +
+>   `ADVERSARIAL_CLEAN`** (ablation proved INV5 load-bearing, the expected caught-by matrix independent-not-computed, and the baseline
+>   gate real). ▶ NEXT = Phase B (build `research/pde_ledger_v2/`).
 > - **⭐⭐ ALL 4 SECTORS EARNED** (gravity `pathA_29`+PN, light `pathA_36`, charge `pathA_38`, magnetism `pathA_39`). **Magnetism = the velocity-
 >   dependent (`O(V)`) part of the pathA_38 4D throat-body interaction — the MOVING version of charge (LIVES IN THE THROAT, like
 >   charge; NOT bulk vorticity = gravitomagnetism).** Setup gauntlet done (resolution v5 `SOUND_AS_A_RESOLUTION`; directive v1).

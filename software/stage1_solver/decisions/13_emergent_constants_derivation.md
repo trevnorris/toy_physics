@@ -14,10 +14,12 @@ verification agents → user methodology call (derive the emergent constants bef
 > SCRATCH at `research/pde_ledger_v2/` (NOT fold into old 253-stage). Front door = repo `STATUS.md` ▶ RESUME HERE; plan =
 > `notes/ledger_v2_rebuild_plan.md` (read FIRST) + `notes/ledger_v2_blueprint.md` (the APPROVED build directive); conceptual =
 > `docs/conceptual_foundation.md` ⭐ v8. **Phase B progress:** B1 blueprint approved+committed (`26a06378`); B2 machinery skeleton
-> (`c4a209ac`, `research/pde_ledger_v2/`); B3 **pilot `ledger_stage001`** (pathA_21c geometry primitives) dual-engine + full tri-review CLEAN,
-> committed (`c9c38e48`) — reshape template LOCKED. **▶ NEXT = `ledger_stage002`** (pathA_21c force assembly + attractive sign) → `pathA_36`
-> FAIL-headline pilot → batch Part-by-Part → Phase C (redteam) → overwrite old ledger via branch `--no-ff` merge. Settled decisions +
-> reshape recipe in `STATUS.md` ▶ RESUME HERE and the blueprint.**
+> (`c4a209ac`, `research/pde_ledger_v2/`); B3 pilot — **`ledger_stage001`** (geometry primitives, `c9c38e48`) AND **`ledger_stage002`**
+> (matter-stress inter-defect force assembly → `FORCE_ATTRACTIVE_DERIVED`; consumes stage001's Ω_d/⟨n_i n_j⟩; magnitude CALIBRATED +
+> `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE` residuals honest; `97144600`) BOTH dual-engine + full tri-review CLEAN — reshape template
+> LOCKED + validated on a *consuming* stage. **▶ NEXT = the `pathA_36` FAIL-headline pilot (pilot stage III.2)** → then batch Part-by-Part →
+> Phase C (redteam) → overwrite old ledger via branch `--no-ff` merge. Settled decisions + reshape recipe in `STATUS.md` ▶ RESUME HERE and
+> the blueprint.**
 > - **⭐ Phase A1 EARNED (`pathA_43` = `DENSITY_PORT_HOSTED`, 2026-07-06).** The ℓ=2 quadrupole radiative-port numerator `N0` is
 >   DENSITY-NATIVE: `N0_den ∝ (η_φ ϖ_q2 + η_q λ_c)²/(λ_c² − ϖ_Φ2 ϖ_q2)²` — a genuine two-port over the physical `(q2` wall [pathA_32]`,
 >   Φ2` bulk-density [pathA_29]`)` modes, provably vector-free (computed taint `{continuity_interface, pathA_29_bulk, pathA_32_wall}`,

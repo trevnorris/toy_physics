@@ -4,9 +4,10 @@
 Updated at every milestone (same moment `software/stage1_solver/decisions/13` §0 is updated). Last update: **2026-07-07**
 (✅ **Phase A COMPLETE** (A1 `pathA_43` density port · A2 `pathA_21c` sympy companion · A3 2.5PN match-back). ▶ **Phase B IN PROGRESS on
 branch `ledger-v2-rebuild`:** B1 blueprint APPROVED+committed (`26a06378`, `notes/ledger_v2_blueprint.md`); B2 machinery skeleton stood up
-(`c4a209ac`, `research/pde_ledger_v2/`); B3 **pilot `ledger_stage001`** (pathA_21c geometry primitives) dual-engine + full tri-review CLEAN +
-committed (`c9c38e48`) — reshape template LOCKED. **▶ NEXT = `ledger_stage002`** (pathA_21c force assembly) → then `pathA_36` FAIL-headline
-pilot → batch. Plan = `notes/ledger_v2_rebuild_plan.md`; blueprint = `notes/ledger_v2_blueprint.md`).
+(`c4a209ac`, `research/pde_ledger_v2/`); B3 pilot — **`ledger_stage001`** (geometry primitives, `c9c38e48`) AND **`ledger_stage002`**
+(pathA_21c force assembly → `FORCE_ATTRACTIVE_DERIVED`, `97144600`) BOTH dual-engine + full tri-review CLEAN + committed. Reshape template
+LOCKED + validated on a *consuming* stage. **▶ NEXT = the `pathA_36` FAIL-headline pilot** (pilot stage III.2) → then batch Part-by-Part.
+Plan = `notes/ledger_v2_rebuild_plan.md`; blueprint = `notes/ledger_v2_blueprint.md`).
 
 > **New to the model / need the physical picture? Read `docs/conceptual_foundation.md` FIRST.** It is the plain-language,
 > native-terms statement of what the medium, the brane, the four sectors (gravity=drain, magnetism=swirl, electric
@@ -15,16 +16,19 @@ pilot → batch. Plan = `notes/ledger_v2_rebuild_plan.md`; blueprint = `notes/le
 
 ---
 
-## ▶ RESUME HERE (2026-07-07) — ✅ Phase A COMPLETE. ▶ Phase B IN PROGRESS on branch `ledger-v2-rebuild`: B1 blueprint + B2 machinery + B3 pilot `ledger_stage001` all DONE + committed (reshape template LOCKED). **NEXT = `ledger_stage002`** (pathA_21c force assembly). ⭐⭐ READ FIRST = `notes/ledger_v2_rebuild_plan.md` + `notes/ledger_v2_blueprint.md`
+## ▶ RESUME HERE (2026-07-07) — ✅ Phase A COMPLETE. ▶ Phase B IN PROGRESS on branch `ledger-v2-rebuild`: B1 blueprint + B2 machinery + B3 pilot `ledger_stage001` AND `ledger_stage002` all DONE + committed (reshape template LOCKED + validated on a consuming stage). **NEXT = the `pathA_36` FAIL-headline pilot (III.2)**. ⭐⭐ READ FIRST = `notes/ledger_v2_rebuild_plan.md` + `notes/ledger_v2_blueprint.md`
 
 > **⏸ (2026-07-07) — Phase B pickup.** On branch **`ledger-v2-rebuild`** (all rebuild work lives here; merges to `master` via a `--no-ff`
 > merge at the very end, with the old-ledger overwrite as the culminating commit). **Read FIRST:** `notes/ledger_v2_rebuild_plan.md`
 > (current-state block up top + §5) and `notes/ledger_v2_blueprint.md` (the APPROVED build directive — carry-over list, reshape spec §5,
 > two-tier verification §6, settled decisions §9). **Progress:** B1 blueprint approved+committed (`26a06378`); B2 machinery skeleton at
-> `research/pde_ledger_v2/` (`c4a209ac`); B3 pilot `ledger_stage001` = solid-angle & second-moment primitives (folded from pathA_21c's geometry
-> slice), dual-engine + **full tri-review CLEAN**, committed (`c9c38e48`) — the reshape template is LOCKED (the committed stage is the exemplar).
-> **▶ NEXT = `ledger_stage002`** = pathA_21c **force assembly + attractive sign** (EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss →
-> `F=−mNQ₁Q₂/4πr²` + 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`), same reshape recipe. Then the `pathA_36` FAIL-headline pilot, then batch
+> `research/pde_ledger_v2/` (`c4a209ac`); B3 pilot — **`ledger_stage001`** = solid-angle & second-moment primitives (`c9c38e48`) AND
+> **`ledger_stage002`** = matter-stress inter-defect force assembly (folded from pathA_21c: EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss →
+> `F=−mNQ₁Q₂/4πr²` + 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`; consumes stage001's Ω_d/⟨n_i n_j⟩, cited-not-re-derived; magnitude CALIBRATED +
+> `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE` residuals honest), `97144600` — BOTH dual-engine + **full tri-review CLEAN** (arbiter +
+> `FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`; the design-review's convective-only-probe catch held up under 7 ablations). The reshape template is
+> LOCKED (both committed stages are exemplars; stage002 additionally exemplifies a *consuming* stage). **▶ NEXT = the `pathA_36` FAIL-headline
+> pilot** (pilot stage III.2 — proves the earned-content-with-characterized-departure representation before batching Parts III/V/VI), then batch
 > Part-by-Part. **Settled decisions (user 2026-07-07):** physics-driven atomic granularity (~45–65 stages); uniform per-stage tri-review, adversarial
 > leg scoped to reshape-integrity; self-contained inline notes; conceptual Part 0; PN cited by DOI; open-items/no-go/calibration registers in
 > Part VII; final overwrite of `research/pde_ledger/` via the branch merge (git history + Zenodo concept-DOI preserve v1; pre-swap push gate).

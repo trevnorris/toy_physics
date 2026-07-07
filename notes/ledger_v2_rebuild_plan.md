@@ -6,12 +6,18 @@
 > **⭐⭐ CURRENT STATE (2026-07-07) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** The approved build directive is
 > **`notes/ledger_v2_blueprint.md`** — read it alongside this plan (carry-over list §3, reshape spec §5, two-tier verification §6, settled
 > decisions §9). **Progress:** B1 blueprint APPROVED+committed (`26a06378`); B2 machinery skeleton at `research/pde_ledger_v2/` (`c4a209ac`);
-> B3 pilot — **`ledger_stage001`** (solid-angle & second-moment primitives, `c9c38e48`) AND **`ledger_stage002`** (matter-stress inter-defect
-> force assembly: EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss → `F=−mNQ₁Q₂/4πr²` + 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`;
-> consumes stage001's Ω_d/⟨n_i n_j⟩ cited-not-re-derived; magnitude CALIBRATED + `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE` residuals
-> honest; `97144600`) BOTH dual-engine + full tri-review CLEAN — the reshape template is LOCKED and now validated on a *consuming* stage
-> (both committed stages are exemplars). **▶ NEXT = the `pathA_36` FAIL-headline pilot** (pilot stage III.2 — proves the
-> earned-content-with-characterized-departure representation), then batch Part-by-Part.
+> **B3 pilot COMPLETE (both pilot stages, decision C):** **`ledger_stage001`** (solid-angle & second-moment primitives, `c9c38e48`),
+> **`ledger_stage002`** (matter-stress inter-defect force assembly: EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss → `F=−mNQ₁Q₂/4πr²` +
+> 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`; consumes stage001's Ω_d/⟨n_i n_j⟩; magnitude CALIBRATED; `97144600`), AND **`ledger_stage003`**
+> (the FAIL-headline pilot: pathA_36 light sector folded into a NEW **Part III** — earned headline = 2 massless transverse photons at
+> `c_γ²=μ_R/ρ_br` (`PASS_TRANSVERSE_UNDISTURBED`, EL-derived from `L_T`); characterized departure = `FAIL_CAUCHY_STRAY_LONGITUDINAL`
+> (Dirac–Bergmann `SECOND_CLASS_PAIR`, one stray longitudinal DOF; Maxwell locus reachable `BY_TUNING` only); **fidelity upgrade** =
+> `C_J=−Jρ_B0` DERIVED via symbolic IBP with a sign-sensitive able-to-fail on `π_θ`, closing pathA_36's asserted-not-derived `FIDELITY_ISSUES`;
+> dual-engine SymPy PASS=84 / Mathematica PASS=86, independent Faddeev–Jackiw route in the `.wl`; `c00323d0`). ALL THREE dual-engine + full
+> tri-review CLEAN (stage003's adversarial leg found 1 nit — transverse headline not EL-derived from `L_T` — remediated → `REVERIFY_CLEAN`).
+> The reshape template is LOCKED and validated on all three shapes: happy-path (001), *consuming* (002), and FAIL-headline / new-Part (003).
+> **▶ NEXT = BATCH Part-by-Part** — finalize each Part's atomic-stage split and **show the user before building that Part** (per-Part user gate);
+> suggested order I medium → II gravity → III light (remaining) → IV charge → V magnetism → VI knit → VII integration (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

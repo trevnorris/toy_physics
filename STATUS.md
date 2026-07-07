@@ -18,7 +18,7 @@ blueprint = `notes/ledger_v2_blueprint.md`).
 
 ---
 
-## ▶ RESUME HERE (2026-07-07) — ✅ Phase A COMPLETE. ▶ Phase B IN PROGRESS on branch `ledger-v2-rebuild`: B1 blueprint + B2 machinery + **B3 pilot COMPLETE** (`ledger_stage001` + `ledger_stage002` + `ledger_stage003` pathA_36 FAIL-headline/new-Part-III, all DONE + tri-review CLEAN + committed; reshape template LOCKED for happy-path + consuming + FAIL-headline). **NEXT = BATCH Part-by-Part** — finalize each Part's atomic-stage split and SHOW THE USER before building that Part (per-Part user gate). ⭐⭐ READ FIRST = `notes/ledger_v2_rebuild_plan.md` + `notes/ledger_v2_blueprint.md`
+## ▶ RESUME HERE (2026-07-07) — ✅ Phase A COMPLETE. ▶ Phase B IN PROGRESS on branch `ledger-v2-rebuild`: B1+B2+**B3 pilot COMPLETE**; **▶ BATCHING Part-by-Part STARTED.** Part I (The medium) atomic split FINALIZED (4 stages I-1..I-4, user-approved 2026-07-07); **I-1 `ledger_stage004` (GNLS action + dimensional foundation, `RETAIN_L_T_M`) DONE — dual-engine (SymPy 49 / Mathematica 50 PASS) + full tri-review CLEAN.** NEXT = I-2 `ledger_stage005` (pathA_20 sound speed + λγ-free knob, `C_GAMMA_RATIO_UNDERDETERMINED`), then I-3 (χ_B ontology) → I-4 (pathA_35 G0 freeze). ⭐⭐ READ FIRST = `notes/ledger_v2_rebuild_plan.md` + `notes/ledger_v2_blueprint.md` + `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`
 
 > **⏸ (2026-07-07) — Phase B pickup.** On branch **`ledger-v2-rebuild`** (all rebuild work lives here; merges to `master` via a `--no-ff`
 > merge at the very end, with the old-ledger overwrite as the culminating commit). **Read FIRST:** `notes/ledger_v2_rebuild_plan.md`

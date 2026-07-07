@@ -117,7 +117,7 @@ folded from `docs/conceptual_foundation.md` so the ledger stands alone (goal 2).
 | Gate row | Source gate(s) | Verdict token | Scope | Notes |
 |---|---|---|---|---|
 | GNLS action + EOS (`P=Kρ⁵`, `c_s²=5Kρ⁴/m`) | pathA_19 (dim foundation) + pathA_20 (c_s) | RETAIN_L_T_M / C_GAMMA_RATIO_UNDERDETERMINED | EARNED (form) + CALIBRATED (λγ) | both `.wl`-only → **owe `_sympy.py`** when folded |
-| Brane/bulk two-phase structure | brane_bulk_ontology + pathA_23_stage0 | ACTION_SPECIFIED_CLASSIFIED | EARNED (structure) | postulated microstructure, labeled |
+| Two-phase material-state ontology (order field χ_B) | `notes/brane_bulk_handoff.md` + `docs/conceptual_foundation.md` | ACTION_SPECIFIED_CLASSIFIED | EARNED (structure) | postulated microstructure, labeled. **RECONCILED 2026-07-07:** `pathA_23_stage0` (EM-native brane-elastic fork) is DROPPED to history per §4 — its MacCullagh menu was superseded by the pathA_35 G0 freeze; the two-phase ontology here is the physically-distinct χ_B material-state closure. Fresh-authored audit (dim + recovery-reduction + θ-as-φ no-go). See `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`. |
 | Order field + shear-surface freeze (LIVE) | pathA_35 (T0_SHEAR_FROZEN) | T0_SHEAR_FROZEN + SECOND_MEDIUM_DRIFT_AT_FREEZE(11) | CALIBRATED (freeze inputs) | LIVE freeze; `pathA_25_G0` density-smectic dimcheck = HISTORY (route closed), not a stage |
 
 ### Part II — Gravity (~20–28 stages)

@@ -3,10 +3,11 @@
 This repo-local index tracks raw derivation-note sources and executable audit
 artifacts for canonical stage files after they are added to the rebuilt ledger.
 
-Current scope: Stages 001-003.
+Current scope: Stages 001-004.
 
 | Stage | Canonical TeX | Note Source | SymPy Audit | Mathematica Audit | Numerical Stress |
 |---|---|---|---|---|---|
 | 001 | paper/stages/stage_001.tex | notes/stages/ledger_stage001_solid_angle_second_moment_primitives.md | scripts/ledger_stage001_solid_angle_second_moment_primitives_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage001_solid_angle_second_moment_primitives_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 002 | paper/stages/stage_002.tex | notes/stages/ledger_stage002_matter_stress_force_assembly.md | scripts/ledger_stage002_matter_stress_force_assembly_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage002_matter_stress_force_assembly_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 003 | paper/stages/stage_003.tex | notes/stages/ledger_stage003_transverse_photons_stray_longitudinal.md | scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage003_transverse_photons_stray_longitudinal_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
+| 004 | paper/stages/stage_004.tex | notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md | scripts/ledger_stage004_gnls_action_dimensional_foundation_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage004_gnls_action_dimensional_foundation_mathematica_audit.wl (+ mathematica/output/*.txt) | — |

@@ -3,6 +3,26 @@
 > **⭐ READ THIS FIRST after `/compact`.** It is the complete plan + the evidence that led to it. Front door = `STATUS.md` ▶ RESUME
 > HERE (thin pointer to here). Memory = [[project-pde-ledger-fold-in-plan]] (same content, condensed) + [[project-brane-existence-defect-structure]].
 
+> **⭐⭐ CURRENT STATE (2026-07-07) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** The approved build directive is
+> **`notes/ledger_v2_blueprint.md`** — read it alongside this plan (carry-over list §3, reshape spec §5, two-tier verification §6, settled
+> decisions §9). **Progress:** B1 blueprint APPROVED+committed (`26a06378`); B2 machinery skeleton at `research/pde_ledger_v2/` (`c4a209ac`);
+> B3 **pilot `ledger_stage001`** (solid-angle & second-moment primitives, folded from pathA_21c's geometry slice) = dual-engine + full
+> tri-review CLEAN, committed (`c9c38e48`) — the reshape template is LOCKED (that committed stage is the exemplar to copy). **▶ NEXT =
+> `ledger_stage002`** = pathA_21c **force assembly + attractive sign** (EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss →
+> `F=−mNQ₁Q₂/4πr²` + 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`). Then the `pathA_36` FAIL-headline pilot, then batch Part-by-Part.
+> **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
+> before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
+> (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch
+> `--no-ff` merge at the very end** (git history + Zenodo concept-DOI preserve v1; pre-swap push gate); clean stem `ledger_stageNNN_{slug}`.
+> Completeness: self-contained inline notes (HARD standard); conceptual **Part 0**; PN cited by DOI; open-items/no-go/calibration **registers**
+> in Part VII. **Reshape recipe (per stage):** strip argparse/compare + file-writing → standalone print-only/assert-zero + raise-on-failure
+> (LOCAL ledger idioms — v2 has no shared helper module) → **re-author the `.wl` as a genuinely independent route** (native `Integrate`, own
+> construction — NOT a mirror; the pilot `.wl` derives its measure from the Gram determinant on different axes than the `.py`) → self-contained
+> note + card → register (provenance/coverage/manifest; `reviewed_stage_count` bumped only AFTER tri-review) → dual-engine both exit 0 → full
+> tri-review (arbiter re-run + fidelity + adversarial-with-ablation). **Commit convention** (matches old ledger): track sources + PDF +
+> `output/*.txt` transcripts + `_summary.txt`; `*.aux/*.log/*.toc/*.out` gitignored. Numbering: build-order ids now; final Part-ordered linear
+> renumber via the manifest as one deliberate pre-swap pass (never an ad-hoc offset-sweep).
+
 ---
 
 ## 0. TL;DR — where we are and what's next

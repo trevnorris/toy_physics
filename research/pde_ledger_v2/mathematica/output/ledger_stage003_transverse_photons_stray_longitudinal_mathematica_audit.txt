@@ -1,0 +1,129 @@
+# Mathematica Audit Output
+# Script: ledger_stage003_transverse_photons_stray_longitudinal_mathematica_audit.wl
+# Date: 2026-07-07T13:49:20-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=======================================================================
+ledger_stage003_transverse_photons_stray_longitudinal Mathematica audit
+=======================================================================
+
+Josephson slaving and C_J IBP sign
+----------------------------------
+PASS  slaved delta_rho_B = -rho_B0 div u
+PASS  time IBP flips theta_dot div(u) coefficient
+PASS  space IBP flips theta div(dot u) coefficient
+PASS  derived C_J = -J*rho_B0
+PASS  time boundary term dropped in ledger
+PASS  space boundary term dropped in ledger
+PASS  sign-sensitive pi_theta = +J*k*rho_B0*u_L
+PASS  C_J sign mutation flips pi_theta residual produced required FAIL (residual = -2*Jsym*ksym*rhoB0*uL)
+
+Transverse earned sector
+------------------------
+PASS  transverse omega^2 = (mu_R/rho_br) k^2
+PASS  c_gamma^2 = mu_R/rho_br
+PASS  theta couplings vanish for transverse modes
+PASS  two transverse physical polarizations
+PASS  transverse modes are massless
+PASS  transverse sector: verdict PASS_TRANSVERSE_UNDISTURBED
+PASS  transverse primitive mu_R->2 mu_R mutation fails c_gamma^2 produced required FAIL (residual = muR/rhoBr)
+
+Longitudinal Faddeev-Jackiw / Dirac chain
+-----------------------------------------
+PASS  p_u = rho_br dot_u_L
+PASS  pi_theta = +J*k*rho_B0*u_L
+PASS  Phi_1 = pi_theta - J*k*rho_B0*u_L
+PASS  Faddeev-Jackiw null constraint matches Dirac secondary
+PASS  Phi_2 = -k(J*p_u*rho_B0 + k*kappa_phase*rho_br*theta)/rho_br
+PASS  {Phi_1,Phi_2} = k^2(J^2 rho_B0^2 + kappa_phase rho_br)/rho_br
+PASS  symplectic matrix has one null direction
+PASS  first-class count = 0
+PASS  second-class count = 2
+PASS  longitudinal physical DOF = (4-2)/2 = 1
+PASS  independent initial data functions = 2
+PASS  constraint classification SECOND_CLASS_PAIR
+PASS  dynamic determinant assembled from Euler-Lagrange matrix
+PASS  stray pole omega^2
+PASS  pole count = 1
+PASS  positive pole residue
+PASS  reduced Hamiltonian bounded
+PASS  baseline headline: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+
+Postulate line:
+  K_theta = -kappa_phase is an explicit conventional phase-stiffness input, not a derivation.
+
+Branch (a), curl-only subcase, and Maxwell locus
+------------------------------------------------
+PASS  branch (a) continuity equation solved in fixed-number sector
+PASS  branch (a) canonical cross coefficient matches derived C_J
+PASS  branch (a) B increment = rho_B0^2/chi_c
+PASS  branch (a) integrated sector: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+PASS  branch (a) proof status
+PASS  curl-only conventional subcase: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  curl-only longitudinal DOF = 1
+PASS  Maxwell-locus square residual K_theta - C_J^2/rho_br
+PASS  Maxwell-locus bracket = 0
+PASS  Maxwell-locus first-class count = 2
+PASS  Maxwell-locus longitudinal DOF = 0
+PASS  Maxwell locus reachable: verdict C5_RESOLVED_MAXWELL_BY_TUNING
+PASS  Maxwell-locus classification
+
+Fourteen source controls
+------------------------
+PASS  1_no_theta: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  2_cauchy_bulk: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+PASS  3_mismatched_positive_K_no_B: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  3_mismatched_K_theta_le_0: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  3_mismatched_positive_K_with_B: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+PASS  3_positive_K_negative_residue: verdict FAIL_GHOST_OR_NEGATIVE_NORM
+PASS  3_B_on_square_locus: verdict FAIL_SECOND_CLASS_NOT_MAXWELL
+PASS  3_epsilon_mismatch: verdict FAIL_TRANSVERSE_DISTURBED
+PASS  3_epsilon_mismatch transverse speed shifts to mu_R/(2 rho_br)
+PASS  4_decoupled_theta_slaved: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  4_decoupled_theta_independent_no_continuity: verdict FAIL_EXTRA_SCALAR_DOF
+PASS  4_decoupled_theta_independent_no_continuity theta kinetic
+PASS  5_transverse: verdict PASS_TRANSVERSE_UNDISTURBED
+PASS  6_provenance_ablation fixed coefficients: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+PASS  6_provenance_ablation free locus: verdict C5_RESOLVED_MAXWELL_BY_TUNING
+PASS  7_compressibility_absent_vs_included absent: verdict FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  7_compressibility_absent_vs_included included: verdict FAIL_CAUCHY_STRAY_LONGITUDINAL
+PASS  8_theta_mass: verdict FAIL_SECOND_CLASS_NOT_MAXWELL
+PASS  reachable-but-unfired grammar tokens are preserved
+
+Dimensional firewall
+--------------------
+PASS  dimension: brane inertia rho_br (partial_t u)^2
+PASS  dimension: MacCullagh curl energy mu_R (curl u)^2
+PASS  dimension: Cauchy bulk term B (div u)^2
+PASS  dimension: Josephson density term J theta_dot delta_rho_B
+PASS  dimension: slaved density rho_B0 div u
+PASS  dimension: signed phase gradient K_theta (grad theta)^2
+PASS  dimension: compressibility delta_rho_B^2/chi_c
+PASS  dimension: theta mass m_theta^2 theta^2
+PASS  dimension: C_J = -J rho_B0
+PASS  dimension: IBP cross C_J partial_t u dot grad theta
+PASS  dimension: electric square velocity piece
+PASS  dimension: electric square mixed piece
+PASS  dimension: electric square gradient piece
+PASS  dimension: Maxwell locus C_J^2 = rho_br K_theta
+PASS  dimension: c_gamma^2 = mu_R/rho_br
+PASS  dimension: branch-a theta kinetic chi_c J^2 theta_dot^2
+PASS  dimension: rho_B0^2/chi_c stiffness increment
+PASS  dimension: transverse omega^2
+PASS  dimension ablation: drop rho_B0 from Josephson cross produced required FAIL (residual = 10)
+PASS  dimension ablation: omit gradient from phase stiffness produced required FAIL (residual = 4)
+PASS  dimension ablation: multiply by chi_c instead of divide produced required FAIL (residual = 120)
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): LIGHT_ON_BRANE_TWO_TRANSVERSE_PHOTONS  (c_gamma^2 = mu_R/rho_br, physical_dof=2)
+  source top-line verdict: FAIL_CAUCHY_STRAY_LONGITUDINAL
+  characterized departure: SECOND_CLASS_PAIR (one stray longitudinal DOF; Maxwell locus reachable BY_TUNING only)
+
+CHECK TALLY: PASS=86 FAIL=0
+OVERALL PASS: Mathematica derived ledger_stage003 light-sector claims exactly
+
+EXIT_CODE: 0

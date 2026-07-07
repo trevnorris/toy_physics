@@ -56,5 +56,6 @@
 Codex xhigh design-review of the reshape directive → fold to CLEAN (no GLM tertiary on Parts I–VI) →
 pre-exec user gate → Codex builds only the two scripts (`--sandbox danger-full-access`, background, `< /dev/null`,
 xhigh) → dual-engine both exit 0 → orchestrator arbiter re-run → full tri-review on fresh agents (arbiter +
-fidelity + adversarial-scoped-to-reshape-integrity, with ablation) → remediate → bump counts → commit + docs/memory
-sync. Orchestrator authors notes/cards/LaTeX/registration; Codex codes.
+fidelity + adversarial-scoped-to-reshape-integrity, with ablation) → remediate → bump counts → **update the parameter
+register (`../parameter_register.md`) — MANDATORY every stage (blueprint §5 step 7)** → commit + docs/memory sync.
+Orchestrator authors notes/cards/LaTeX/registration; Codex codes.

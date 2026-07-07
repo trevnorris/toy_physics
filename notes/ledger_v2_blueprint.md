@@ -208,6 +208,13 @@ rejects). Each fold requires:
    (`notes/stages/{stem}.md`) carries the **full derivation inline** — a reader never has to open a `pathA_*` report
    to follow it. The `pathA_*` report is cited as *provenance*, not as the content. Decimals quarantined to a labeled
    benchmark slice.
+7. **Update the parameter register (`research/pde_ledger_v2/notes/parameter_register.md`) — MANDATORY every stage, never
+   skip.** Add the stage's new parameters (dimension `{L,T,M}` + provenance class) and every new relation edge
+   (`DERIVED`/`IMPOSED`/`PENDING`/`CLOSED-NEG`/`CODIM-PROVEN`); record any reduction route the stage *discharges*
+   (debt → DERIVED) or *closes* (→ CLOSED-NEG). This is the running seed for Part VII's calibration map + the irreducible
+   codimension count, and it doubles as the cross-stage dimensional ledger (the whole-system dim check at Part VII then
+   confirms rather than discovers). The register tracks *nominal vs irreducible* knobs relationally — a knob can be a
+   manifestation of others.
 
 **Dual-engine gaps to close during fold:** only the folded Part-I foundations **`pathA_19` and `pathA_20`** are
 `.wl`-only and owe a `_sympy.py`. Everything else carried is already dual-engine (incl. `pathA_28`). `pathA_20b/21/
@@ -269,7 +276,10 @@ Then batch Part-by-Part; per-batch user gate (sequential audit chunks, [[feedbac
   (`{L/a, ε per ℓ, stability, Z0_ret/Z1_ret selector, a_L, C_hu, M_h/c_E, aT/aL, …}`) + its exact equation + the
   confirming measurement; every characterized departure; every no-go — a permanent falsification-first record.
 - **The calibration map** (Part VII): every postulate/constant labeled; cross-checked against
-  `decisions/14_value_provenance_and_calibration_map.md`.
+  `decisions/14_value_provenance_and_calibration_map.md`. **Running seed = `research/pde_ledger_v2/notes/parameter_register.md`**
+  (the living knobs/dimensions/reductions register, updated every stage per §5 step 7). Part VII's job is the **irreducible
+  codimension count** over it (the `Δr=2` Krull-dimension technique from pathA_40 scaled to the full constraint variety) —
+  nominal knobs minus derived/convention/discharged-reduction = the predictive-surplus denominator.
 
 ---
 

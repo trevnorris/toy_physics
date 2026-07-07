@@ -1,0 +1,78 @@
+\section{Stage 003: Transverse Photon Pair and the Stray Longitudinal Mode}
+
+\stagefield{Part / anchor}{Part III -- Light}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Test whether the shear-surface brane carries light of the
+Maxwell kind. The transverse question earns a clean result -- two massless
+photons at \(c_\gamma^2=\mu_R/\rho_{br}\); the longitudinal question earns a
+characterized departure -- one stray second-class mode where Maxwell has a
+gauge-removed zero, with the tuned Maxwell locus reachable only by tuning.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage003_transverse_photons_stray_longitudinal_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusOpen. FAIL-headline stage: the top-line verdict is a \texttt{FAIL\_*}, but
+the earned content is the headline and the FAIL is the first-class characterized
+landing (no softening). \emph{Earned headline:} the brane carries \emph{light} --
+two massless transverse photons, with (for the first time in the program)
+\(c_\gamma^2=\mu_R/\rho_{br}\); verdict \texttt{PASS\_TRANSVERSE\_UNDISTURBED}.
+\emph{Top-line departure:} \texttt{FAIL\_CAUCHY\_STRAY\_LONGITUDINAL} -- on the
+provenance-fixed single-medium branch the \((\nabla\!\cdot\!u)+\theta\) sector
+carries one stray propagating longitudinal DOF, a Dirac--Bergmann
+\emph{second-class} pair rather than a Maxwell first-class Gauss gauge-removal.
+\emph{Reachability:} the tuned Maxwell locus (\(K_\theta=C_J^2/\rho_{br}\),
+\(B_{\mathrm{eff}}=0\), \(m_\theta^2=0\)) is reachable and emits
+\texttt{C5\_RESOLVED\_MAXWELL\_BY\_TUNING} -- so the FAIL is not hardcoded -- but
+\texttt{BY\_TUNING}, not \texttt{WITH\_PROVENANCE}.
+
+\paragraph{Derivation.}
+The primitive brane Lagrangian (no pre-completed square used as input) is
+\[
+  L=\tfrac12\rho_{br}(\partial_t u)^2-\tfrac12\mu_R(\nabla\times u)^2
+    -\tfrac12 B(\nabla\!\cdot\!u)^2+J(\partial_t\theta)\,\delta\rho_B
+    +\tfrac12 K_\theta(\nabla\theta)^2 .
+\]
+\resultanchor{Transverse (earned).} For a polarization \(\perp\mathbf k\),
+\(\nabla\!\cdot\!u=0\) and the \(\theta\) couplings vanish, so
+\(L_T=\tfrac12\rho_{br}(\partial_t u_T)^2-\tfrac12\mu_R k^2u_T^2\), giving
+\[
+  \omega^2=\frac{\mu_R}{\rho_{br}}\,k^2,\qquad
+  c_\gamma^2=\frac{\mu_R}{\rho_{br}},
+\]
+two polarizations \(\Rightarrow\) \(\mathrm{physical\_dof}=2\), massless. The
+speed is able-to-fail: \(\epsilon=2\rho_{br}\) shifts it to \(\mu_R/(2\rho_{br})\)
+(\texttt{FAIL\_TRANSVERSE\_DISTURBED}).
+\resultanchor{Longitudinal (departure).} Number conservation slaves
+\(\delta\rho_B=-\rho_{B0}\nabla\!\cdot\!u\); integration by parts gives the
+Maxwell-form cross-term with the \emph{derived} sign \(C_J=-J\rho_{B0}\), and the
+finite conjugate-density stiffness the Cauchy modulus
+\(B_{\mathrm{eff}}=\rho_{B0}^2/\chi_c\). Since \(\partial_t\theta\) enters only
+through the first-order cross-term, the momenta are
+\(p_u=\rho_{br}\partial_t u_L\), \(\pi_\theta=Jk\rho_{B0}u_L\), forcing the
+primary constraint \(\Phi_1=\pi_\theta-Jk\rho_{B0}u_L\); preservation gives
+\(\Phi_2=-k(Jp_u\rho_{B0}+k\kappa_{\mathrm{phase}}\rho_{br}\theta)/\rho_{br}\), and
+\[
+  \{\Phi_1,\Phi_2\}=\frac{k^2(J^2\rho_{B0}^2+\kappa_{\mathrm{phase}}\rho_{br})}{\rho_{br}}\neq0
+\]
+\(\Rightarrow\) second-class pair (\(0\) first-class, \(2\) second-class),
+\(N_{\mathrm{phys}}=(4-2)/2=1\). The finite-stiffness pole
+\(\omega^2=k^2\kappa_{\mathrm{phase}}\rho_{B0}^2/[\chi_c(J^2\rho_{B0}^2+\kappa_{\mathrm{phase}}\rho_{br})]\)
+has positive residue and a bounded reduced Hamiltonian: a real stray longitudinal
+mode, not a ghost and not a gauge-removal.
+
+\paragraph{Physical use, fidelity, and the departure.}
+The brane carries light: two transverse photons at \(c_\gamma^2=\mu_R/\rho_{br}\)
+from the medium's own moduli (light \(=\) in-plane brane shear). Honest scope: the
+order-parameter phase \(\theta\) does \emph{not}, on its frozen definitions,
+supply a gauge-removed Maxwell scalar -- it leaves one stray second-class
+longitudinal mode; the obstruction is pinned to the Cauchy modulus
+\(B_{\mathrm{eff}}=\rho_{B0}^2/\chi_c\) plus the conventional phase-gradient sign
+\(K_\theta=-\kappa_{\mathrm{phase}}<0\) (vs the electric sign
+\(K_\theta=C_J^2/\rho_{br}>0\)). Fidelity: the decisive sign \(C_J=-J\rho_{B0}\)
+is \emph{derived} here by an in-script integration by parts (the earned source
+had asserted it), closing that stage's known \texttt{FIDELITY\_ISSUES}; the
+conventional \(K_\theta\) sign is a labeled postulate whose verdict-dependence is
+exercised by the reachable Maxwell-locus control. Resolution of the stray mode is
+calibrated / sim-deferred; \(\mu_R,\rho_{br}\) are calibrated inputs.

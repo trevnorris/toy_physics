@@ -1,4 +1,3 @@
-PASS  ledger_stage001_solid_angle_second_moment_primitives_sympy_audit  (1s)
-PASS  ledger_stage002_matter_stress_force_assembly_sympy_audit  (2s)
+PASS  ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit  (5s)
 
-TOTAL: 2  PASS: 2  FAIL: 0  SKIPPED: 0
+TOTAL: 1  PASS: 1  FAIL: 0  SKIPPED: 0

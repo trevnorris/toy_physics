@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 2,
+  "canonical_stage_count": 3,
   "policy": [
     {
       "build_order_stage": "001",
@@ -17,6 +17,14 @@
       "slug": "matter_stress_force_assembly",
       "final_number": "deferred",
       "note": "build-order id; final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "003",
+      "part": "III",
+      "source_gate": "pathA_36",
+      "slug": "transverse_photons_stray_longitudinal",
+      "final_number": "deferred",
+      "note": "build-order id (FAIL-headline pilot, first Part-III stage; built out of Part order); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

@@ -38,6 +38,9 @@
   dimensionally-audited postulated action (free-energy functional + order-state balance PDE + recovery reduction).
 - **I-2 running-start:** the detailed pathA_20/20b atomic source map (claim-set, scope, carried residuals, reshape notes) is in
   `research/pde_ledger_v2/notes/stage005_pathA20_source_map.md` — read it to author the I-2 directive without re-running discovery.
+- **I-3 running-start:** the χ_B ontology source map (the postulated action + the 3 audit legs {dim, recovery-reduction, θ-as-φ no-go} +
+  labeled postulates + the 10 modeling choices to pin) is in `research/pde_ledger_v2/notes/stage006_chiB_ontology_source_map.md`. ⚠ I-3 is
+  **FRESH-AUTHORED** (no existing script pair) — the directive SPECIFIES the action, it does not extract a harness. Read the source map first.
 
 ## Progress
 
@@ -57,5 +60,6 @@ Codex xhigh design-review of the reshape directive → fold to CLEAN (no GLM ter
 pre-exec user gate → Codex builds only the two scripts (`--sandbox danger-full-access`, background, `< /dev/null`,
 xhigh) → dual-engine both exit 0 → orchestrator arbiter re-run → full tri-review on fresh agents (arbiter +
 fidelity + adversarial-scoped-to-reshape-integrity, with ablation) → remediate → bump counts → **update the parameter
-register (`../parameter_register.md`) — MANDATORY every stage (blueprint §5 step 7)** → commit + docs/memory sync.
+register (`../parameter_register.md`) → Codex-verify the register update → fold — MANDATORY every stage (blueprint §5
+step 7)** → commit + docs/memory sync.
 Orchestrator authors notes/cards/LaTeX/registration; Codex codes.

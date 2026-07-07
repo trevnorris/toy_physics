@@ -1,3 +1,7 @@
-PASS  ledger_stage004_gnls_action_dimensional_foundation_sympy_audit  (1s)
+PASS  ledger_stage001_solid_angle_second_moment_primitives_sympy_audit
+PASS  ledger_stage002_matter_stress_force_assembly_sympy_audit
+PASS  ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit
+PASS  ledger_stage004_gnls_action_dimensional_foundation_sympy_audit
+PASS  ledger_stage005_sound_speed_light_ratio_sympy_audit  (1s)
 
-TOTAL: 1  PASS: 1  FAIL: 0  SKIPPED: 0
+TOTAL: 5  PASS: 5  FAIL: 0  SKIPPED: 4

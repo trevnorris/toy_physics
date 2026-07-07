@@ -1,0 +1,84 @@
+\section{Stage 005: EOS Sound Speed and Light/Sound Ratio as a Free Knob}
+
+\stagefield{Part / anchor}{Part I -- The medium}
+\claimstatus{\StatusReduced}
+\stagefield{Purpose}{Derive the phonon sound speed from the imposed EOS, pin the
+three velocity scales and the \(c=c_\gamma\) wave-sector ceiling, and land the
+light/sound ratio \(\lambda_\gamma=c_\gamma/c_s\) as a free calibration input
+(\texttt{C\_GAMMA\_RATIO\_UNDERDETERMINED}).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage005_sound_speed_light_ratio_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage005_sound_speed_light_ratio_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusReduced. The sound-speed law and the \(c=c_\gamma\) ceiling are exact
+symbolic results \emph{within the imposed EOS closure}; the honest headline is the
+CALIBRATED landing: \(\lambda_\gamma=c_\gamma/c_s\) is \emph{unpinned by the parent
+action} -- a free calibration input, with the tail \((c/c_s)^3=\lambda_\gamma^3\)
+carried symbolic (not set to \(1\)). Consuming stage: it cites
+\texttt{ledger\_stage004} (I-1)'s dictionary and \texttt{EOS\_FROM\_GNLS\_FACTOR}
+handoff (\(h_0,\xi_h\)) and owns the sound-speed derivation I-1 deferred here.
+
+\paragraph{Sound speed from the EOS.}
+From the imposed \(P=K\rho^5\) (\texttt{EOS\_CLOSURE\_IMPOSED}) and the barotropic
+definition, by symbolic differentiation:
+\[
+  c_s^2(\rho)=\frac{1}{m_{\mathrm{GNLS}}}\frac{dP}{d\rho}
+  =\frac{5K\rho^4}{m_{\mathrm{GNLS}}},\quad [c_s]=LT^{-1},\qquad
+  \frac{d\ln c_s}{d\ln\rho}=2 .
+\]
+The factor \(5\) falls out of the derivative. EARNED relative to the imposed EOS.
+
+\paragraph{Three speeds and the \(c=c_\gamma\) ceiling.}
+\resultanchor{Velocity scales.} \(v_b=(\hbar/m_{\mathrm{GNLS}})\nabla\theta\),
+\(c_s\), \(c_\gamma\), each of dimension \(LT^{-1}\) (\(v_b\)'s pin consumed from
+I-1). \resultanchor{Ceiling (derived from the wave sector).} For the trapped mode
+\(\omega=c_\gamma\sqrt{k^2+k_\perp^2}\),
+\[
+  \frac{d\omega}{dk}=\frac{c_\gamma k}{\sqrt{k^2+k_\perp^2}},\qquad
+  c_\gamma^2-\Big(\tfrac{d\omega}{dk}\Big)^2=\frac{c_\gamma^2 k_\perp^2}{k^2+k_\perp^2}\ge 0,
+\]
+strictly positive for \(k_\perp\neq0\): the group speed is bounded by \(c_\gamma\)
+and approaches it. The bound-mode clock \(\omega_0=c_\gamma k_\perp\) gives the
+boosted internal rate \(\omega_0/\gamma\) (time dilation) with no \(E=mc^2\)
+premise.
+
+\paragraph{Coupled principal symbol (pathA\_20b support).}
+On the neutralized homogeneous background the coupled symbol block-diagonalizes:
+the Madelung phonon determinant
+\(\det M=\hbar(\omega^2-c_{s0}^2 k^2)\) with \(c_{s0}^2=5K\rho_0^4/m_{\mathrm{GNLS}}\)
+falling out via \(h'=5K\rho_0^3\), the gauge block
+\(C_E\omega^2-C_B k^2=C_E(\omega^2-c_{\mathrm{bulk}}^2 k^2)\)
+(\(c_{\mathrm{bulk}}^2=C_B/C_E\)), and \(\det P=\det M\cdot P_T^2\). The
+off-diagonal current/London terms are lower order and do not set the cone
+(\texttt{BULK\_PRINCIPAL\_TRANSVERSE\_BRANCH\_ESTABLISHED}); \([c_s]=[c_\gamma]\) is
+labeled \emph{non-evidentiary} for equality.
+
+\paragraph{The free-knob landing and its negative control.}
+\resultanchor{C\_GAMMA\_RATIO\_UNDERDETERMINED.} Computed, not asserted. With
+\(C_E,C_B,K,\rho_0,m_{\mathrm{GNLS}}\) independent, the residual
+\(C_B/C_E-5K\rho_0^4/m_{\mathrm{GNLS}}\) is not identically zero and no source
+equation is present, so
+\(\texttt{forced\_equals\_valid}=\texttt{False}\Rightarrow
+\texttt{FORCED\_EQUALITY\_REJECTED\_WITHOUT\_SOURCE\_EQUATION}\). It is
+\emph{reversible}: inserting the identity \(C_B\to 5K\rho_0^4 C_E/m_{\mathrm{GNLS}}\)
+flips it to \texttt{C\_GAMMA\_EQUALS\_C\_S} -- so \texttt{EQUALS} is reachable only
+via an actually-inserted source equation the action does not supply. Two-layer
+sharpening: bulk \texttt{C\_GAMMA\_BULK\_UNDERDETERMINED}, brane
+\texttt{C\_GAMMA\_RATIO\_STILL\_UNDERDETERMINED}; if \(c_{\mathrm{bulk}}\) is
+\(\rho_0\)-independent then \(\lambda_\gamma\propto\rho_0^{-2}\)
+(\(d\ln\lambda_\gamma/d\ln\rho_0=-2\)).
+
+\paragraph{Carried residuals (first-class, not repaired).}
+\texttt{EOS\_CLOSURE\_IMPOSED}; \texttt{C\_GAMMA\_RATIO\_UNDERDETERMINED};
+\texttt{STATIONARY\_PROFILE\_UNDERDETERMINED\_BY\_BRANCH\_DATA};
+\texttt{NO\_NET\_ACCRETION\_BC\_UNDERIVED}; \texttt{HBAR\_PROVENANCE\_UNDETERMINED};
+\texttt{HBAR\_FREE\_SUBSTRATE\_RELATION\_MISSING};
+\texttt{H\_2PI\_RATE\_CLASSIFICATION\_UNDERDETERMINED};
+\texttt{BULK\_METRIC\_SPEED\_NORMALIZATION\_UNSPECIFIED};
+\texttt{PARENT\_METRIC\_ACOUSTIC\_IDENTIFICATION\_MISSING};
+\texttt{BRANE\_ZERO\_MODE\_REDUCTION\_UNDERIVED};
+\texttt{BRANE\_PHOTON\_CONE\_REQUIRES\_PROFILE}. The mass bridge
+\(\hbar J/c_\gamma^2=M\) is a labeled dimensional candidate only, not a
+\(m_{\mathrm{defect}}\) derivation.

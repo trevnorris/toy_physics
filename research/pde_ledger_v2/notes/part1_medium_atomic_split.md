@@ -42,8 +42,14 @@
 ## Progress
 
 - **I-1 `ledger_stage004` DONE** (committed `d9544a62`) — dual-engine (SymPy 49 / Mathematica 50 PASS) + full tri-review CLEAN
-  (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`). `RETAIN_L_T_M` earned; carried gaps first-class. Registration at count 4.
-- **▶ NEXT = I-2 `ledger_stage005`** (pathA_20; source map above). Then I-3, I-4. Then Part II (gravity, the swing).
+  (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`). `RETAIN_L_T_M` earned; carried gaps first-class.
+- **I-2 `ledger_stage005` DONE** — dual-engine (SymPy 80 / Mathematica 81 PASS) + full tri-review CLEAN (`FIDELITY_CLEAN` +
+  `ADVERSARIAL_CLEAN`, 14-mutation ablation matrix — every tooth genuine, verdict computed + reversible) + post-remediation
+  `REVERIFY_CLEAN`. `C_GAMMA_RATIO_UNDERDETERMINED` — sound speed `c_s²=5Kρ⁴/m` derived from EOS; `c=c_γ` ceiling; `λγ` a free
+  calibration input (reversible to `EQUALS` only with an inserted source equation). Consumes I-1 dictionary + `EOS_FROM_GNLS_FACTOR`.
+  Registration at count 5, PDF rebuilt.
+- **▶ NEXT = I-3 `ledger_stage006`** (two-phase χ_B material-state ontology; fresh-authored dim + recovery + θ-as-φ no-go audit).
+  Then I-4 `ledger_stage007` (pathA_35 G0 freeze). Then Part II (gravity, the swing).
 
 ## Per-stage process (unchanged, calibrated)
 

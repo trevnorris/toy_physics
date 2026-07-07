@@ -1,12 +1,20 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 1,
+  "canonical_stage_count": 2,
   "policy": [
     {
       "build_order_stage": "001",
       "part": "II",
       "source_gate": "pathA_21c",
       "slug": "solid_angle_second_moment_primitives",
+      "final_number": "deferred",
+      "note": "build-order id; final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "002",
+      "part": "II",
+      "source_gate": "pathA_21c",
+      "slug": "matter_stress_force_assembly",
       "final_number": "deferred",
       "note": "build-order id; final Part-ordered linear renumber deferred to the pre-swap pass"
     }

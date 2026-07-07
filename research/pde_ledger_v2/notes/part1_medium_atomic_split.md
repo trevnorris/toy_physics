@@ -36,6 +36,14 @@
   (Part III)** and downstream Part IV — I-4 is its formal home. No conflict; Part I formalizes what the pilot cites.
 - **I-3 vs Part 0 (conceptual prose):** no redundancy. Part 0 = plain-language vision; I-3 = the formalized,
   dimensionally-audited postulated action (free-energy functional + order-state balance PDE + recovery reduction).
+- **I-2 running-start:** the detailed pathA_20/20b atomic source map (claim-set, scope, carried residuals, reshape notes) is in
+  `research/pde_ledger_v2/notes/stage005_pathA20_source_map.md` — read it to author the I-2 directive without re-running discovery.
+
+## Progress
+
+- **I-1 `ledger_stage004` DONE** (committed `d9544a62`) — dual-engine (SymPy 49 / Mathematica 50 PASS) + full tri-review CLEAN
+  (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`). `RETAIN_L_T_M` earned; carried gaps first-class. Registration at count 4.
+- **▶ NEXT = I-2 `ledger_stage005`** (pathA_20; source map above). Then I-3, I-4. Then Part II (gravity, the swing).
 
 ## Per-stage process (unchanged, calibrated)
 

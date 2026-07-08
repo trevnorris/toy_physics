@@ -88,7 +88,16 @@
 > `1−T0(0)=ε0/(1+ε0)`). Register: rows `{d, ε0, ε1}` (slab-family; ε's `FREE-UNREDUCED` on the Gate-6 route) + edge **R24** (Z accounting
 > `DERIVED`-qualified) — `REGISTER_CLEAN` first pass. Registration at count 9, PDF rebuilt.
 > **▶ NEXT = II-B3 `ledger_stage010`** (pathA_29 Check B: the localization `p=2` dsolves on both DC-sink completions + the r⁻⁴
-> counterfactual guard + `classify_dc_sink_gate` + the NOGO warp control + the static-dynamic consistency; completes the pathA_29 fold).
+> counterfactual guard + `classify_dc_sink_gate` + the NOGO warp control + the static-dynamic consistency; the COMPLETING stage of the
+> joint `RETURN_RESIDUAL_PREDICTION` verdict — consumes 009's Check-A component CITED + 008's `p_raw(ℓ2)=5`; completes the pathA_29 fold.
+> ⭐ **Running-start source map READY = `research/pde_ledger_v2/notes/stage010_pathA29_checkB_source_map.md`** — the Check-B slice line
+> refs, the solve mechanics (dsolve-first-then-limit, boundary-SELECTION labeling, static–dynamic consistency kept / trace hashes
+> dropped), 8 reshape trip-ups (incl. the recurring set-then-compare-to-self rig class → dual-site consumed inputs from the start),
+> teeth candidates, register expectation (no new knobs; `k_warp` tracked-not-counted; R19/`W_slab` caveat linkage).
+> ⭐ **Conceptual bank (2026-07-08, `373a4a3c`):** route-(c) physical picture (per-constituent orientable micro-configuration —
+> Phlat-Ball/gimbal image; brane = aligned arrows, bulk = demagnetized-ferromagnet disorder, throat = aligner/de-aligner) banked in
+> `conceptual_foundation.md` §7 #12; **user completeness criterion** = the ledger is NOT complete until ONE clean equation set explains
+> brane AND bulk (Part-VII unified parent action = floor; route (c) hammered late in the ledger — blueprint §8 top tracked item).
 > Remaining Parts order II → III (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot

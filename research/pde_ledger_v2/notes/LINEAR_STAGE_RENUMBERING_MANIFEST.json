@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-08",
-  "canonical_stage_count": 10,
+  "canonical_stage_count": 13,
   "policy": [
     {
       "build_order_stage": "001",
@@ -81,6 +81,30 @@
       "slug": "slab_localization_p2_nogo",
       "final_number": "deferred",
       "note": "build-order id (II-B3; reshape of the Check-B slice of pathA_29_brane_bulk_return_{sympy.py,.wl}; COMPLETES the pathA_29 joint RETURN_RESIDUAL_PREDICTION fold begun at stage 009); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "011",
+      "part": "II",
+      "source_gate": "pathA_30 (Check II-G1a)",
+      "slug": "frozen_reduction_certificate",
+      "final_number": "deferred",
+      "note": "build-order id (II-G1a; reshape of the frozen-reduction slice of pathA_30_dn_unit_test_{sympy.py,.wl}; DtN pole ladder = stage 012); final Part-ordered linear renumber deferred to the pre-swap pass (added 2026-07-08 with stage 013 -- the manifest had lagged coverage at count 10)"
+    },
+    {
+      "build_order_stage": "012",
+      "part": "II",
+      "source_gate": "pathA_30 (Check II-G1b)",
+      "slug": "dtn_pole_ladder_robin",
+      "final_number": "deferred",
+      "note": "build-order id (II-G1b; reshape of the DtN-ladder/Robin slice of pathA_30_dn_unit_test_{sympy.py,.wl}; COMPLETES the joint DN_UNITTEST_BC_DEPENDENT begun at stage 011); final Part-ordered linear renumber deferred to the pre-swap pass (added 2026-07-08 with stage 013)"
+    },
+    {
+      "build_order_stage": "013",
+      "part": "II",
+      "source_gate": "pathA_31 (II-G2a)",
+      "slug": "breathing_harmonic_mk_projection",
+      "final_number": "deferred",
+      "note": "build-order id (II-G2a; reshape of the harmonic-profile + M/K-projection slice of pathA_31_scalar_breathing_{sympy.py,.wl}; the FIRST Part-II CALIBRATED stage, adds 3 counted CALIB knobs {mu_eta,T_w,beta} with K_eta=T_w*beta^2 derived; truncation consistency = stage 014, legacy-Hessian + Hellmann-Feynman force = stage 015); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

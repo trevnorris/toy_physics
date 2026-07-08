@@ -113,10 +113,17 @@
 > witnesses the typed core — directive-permitted, derived route independently guarded) → NO remediation. **Zero new counted knobs**
 > (`α`=Robin cap admittance, control-construction, tracked-not-counted) + edge R28 (D/N boundary IMPOSED → `BC_DEPENDENT`, discharges
 > nothing); `REGISTER_CLEAN`; count 12, PDF 39pp.
-> **▶ NEXT = II-G2a `ledger_stage013`** (pathA_31 `BREATHING_CALIBRATED` 1/3: α_a/α_L harmonic lifts → `M_AB`/`K_AB` by real ∫dw operator
-> projection → the (a,L) collective closure). Consumes stage011/012's frozen throat packet + Helmholtz operator + D/N provenance.
-> pathA_31 trip-up (v1): HF `x−x` + typed flags + gamed threshold — both HF routes independently emitted, flags/threshold COMPUTED.
-> Author a running-start source map before building. Full per-stage detail in STATUS.md ▶ RESUME HERE + `part2_gravity_atomic_split.md` Progress.
+> **✅ II-G2a `ledger_stage013` DONE (2026-07-08) — the FIRST Part-II CALIBRATED stage.** pathA_31 harmonic-profile + M/K-projection
+> reshape (`BREATHING_CALIBRATED` 1/3): DERIVED harmonic-lift profiles + `M_AB`/`K_AB` by real ∫dw operator projection
+> (`forbidden_fit_flags` computed False via free-symbol-name ancestry) + the dynamical-EOM **LHS** (RHS `F_A^(HF)`=015). Clean 3-way cut;
+> `c_S` NOT consumed. ⭐ **Register: FIRST Part-II counted knobs — 3 CALIB `{μ_η, T_w, β}`** (`K_η=T_w β²` DERIVED R29 + R30 throat-reduction
+> debt; `β` counted NOT geometry); `REGISTER_CLEAN`. ⭐ **New review sequence: `Codex→Grok→Codex` bookend** (blueprint §6) — Grok-4.5
+> compute-verify caught a kernel-preserving residual-tooth defect Codex's xhigh pass missed, folded + Codex confirm-pass. Dual-engine
+> SymPy 78 / Mathematica 84; tri-review CLEAN both legs → 1 non-blocking nit (baseline re-integration `X−X`) remediated → `REVERIFY_CLEAN`.
+> Count 13, PDF 41pp (+ fixed a manifest lag: 011/012/013 added). **▶ NEXT = II-G2b `ledger_stage014`** (pathA_31 `BREATHING_CALIBRATED`
+> 2/3: combined-basis generalized eig + β_L0 sweep + N-convergence → the validity window; trip-up = gamed truncation threshold, overlap-floor
+> `o_k≥0.9` COMPUTED; consumes stage013's `M_AB`/`K_AB`). Author a running-start source map before building. Full per-stage detail in
+> STATUS.md ▶ RESUME HERE + `part2_gravity_atomic_split.md` Progress.
 > ⭐ **Conceptual bank (2026-07-08, `373a4a3c`):** route-(c) physical picture (per-constituent orientable micro-configuration —
 > Phlat-Ball/gimbal image; brane = aligned arrows, bulk = demagnetized-ferromagnet disorder, throat = aligner/de-aligner) banked in
 > `conceptual_foundation.md` §7 #12; **user completeness criterion** = the ledger is NOT complete until ONE clean equation set explains

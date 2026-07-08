@@ -234,7 +234,18 @@ note/card + registration + reviews.
 
 - **Parts I–VI (repackaging of already-earned+tri-reviewed physics):**
   - *Pre-exec (lighter):* Claude drafts the reshape directive → **Codex design-review** (xhigh) → fold → Codex
-    confirm. **No GLM tertiary** for a repackaging (no new physics verdict).
+    confirm → **⭐ a FINAL Grok-4.5 headless design-review pass on the same prompt** (added 2026-07-08) → assess/fold →
+    **a Codex confirm-pass on the Grok-folded directive** (final double-check the folds are clean; Codex bookends the
+    review, cf. [[feedback-review-ordering-codex-then-glm]]). **No GLM tertiary** for a repackaging (no new physics verdict). **Why the Grok pass:** Grok runs SymPy to *compute*-verify
+    the math, catching able-to-fail / math defects a reasoning-only review misses — on stage 013 it caught a
+    **kernel-preserving residual-tooth defect** (example mutants that stay in `ker(𝓛₀)` so the "tooth" could never fire)
+    that the Codex xhigh pass passed as `DIRECTIVE_CLEAN`, plus five correct hardening nits (name-based free-symbol
+    membership, a near-vacuous `X≡X` projection identity, an `M_posdef` cut-breach). It is the cheap ($0) compute-verifying
+    second reviewer that closes the reasoning-only blind spot. Invocation:
+    `grok --prompt-file <review_prompt> --cwd <repo> --model grok-4.5 --effort high --permission-mode bypassPermissions
+    --output-format plain > <log>` (headless, read-only; see [[reference-grok-cli-review]]). Grok findings are ASSESSED
+    (independently verify each catch before folding — do not fold blindly), then folded like Codex's; a genuine
+    Codex-vs-Grok disagreement escalates to Claude+Codex ([[feedback-claude-codex-resolve-math]]).
   - *Exec:* dual-engine, **both exit 0** via independent routes.
   - *Post-exec — the MANDATORY tri-review, all three, every reshaped script, never optional*
     ([[feedback-review-agents]]): (1) orchestrator **arbiter re-run** (unchanged scripts), (2) **fidelity audit**
@@ -242,7 +253,8 @@ note/card + registration + reviews.
     transliteration error), (3) **adversarial-with-ablation** (fresh agent). **The adversarial leg is scoped to
     reshape-integrity** — it hunts a reshape-introduced rig (a `.wl` that is secretly a mirror, dropped able-to-fail
     teeth, sneaked-in hardcoding, pass-by-construction), NOT re-litigating the already-earned physics. Uniform across
-    every stage (goal 2). An in-script mutation probe does **not** substitute for leg (3).
+    every stage (goal 2). An in-script mutation probe does **not** substitute for leg (3). *(A Grok compute-verification
+    pass is also worth adding to the post-build tri-review where the math is heavy — optional, evaluate per stage.)*
 - **Part VII (genuinely-new synthesis) + the χ_Q reconciliation:** full new-derivation gauntlet — directive → **Codex
   design-review → GLM-5.2 tertiary → Codex re-green** → dual-engine → full tri-review → user gate.
 

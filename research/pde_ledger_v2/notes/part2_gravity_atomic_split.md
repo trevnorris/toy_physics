@@ -177,8 +177,14 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`, half-shifted pole ladder `ω_n=πc_S(n+½)/L0`, round-trip `R_rt=1`, Robin
   counterfactual + guard, the `tan_argument`/`Z00` dim legs; BC = banked CALIBRATION input → the `BC_DEPENDENT` landing;
   completes the joint `DN_UNITTEST_BC_DEPENDENT`). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin
-  able-to-fail guard + the K-dim tan-arg probe (split-note trip-up). No running-start source map yet — the stage011
-  source map §1/§2 already delineates the 012 slice (`.py` L426→587).
+  able-to-fail guard + the K-dim tan-arg probe (split-note trip-up). ⭐ **Running-start source map READY** =
+  `research/pde_ledger_v2/notes/stage012_pathA30_dtn_ladder_source_map.md` — 012 is a near-PURE bridge-strip (NOT a
+  de-rig like 011): the `.wl` transfer-matrix route ALREADY carries the DtN/pole/Robin/static (strip only
+  `Get`+`sympy*`+`Export`, KEEP L25–48; contrast 011 where L32–48 was excluded). Able-to-fail burden = the Robin
+  falsifier (all 6 guard booleans computed) + the K-dim tan-arg probe; `dtn_matches_target` is a genuine
+  derived-vs-typed comparison and `bc_derivation_emitted=False` is an honest scope flag (NOT a tooth — do not fabricate
+  a BC derivation to force `..._PASS`). Zero new counted knobs (`α` = Robin control, tracked-not-counted like `k_warp`)
+  + edge candidate R28 (D/N boundary IMPOSED, banked calibration → the `BC_DEPENDENT` landing).
 
 ## Per-stage process (unchanged, calibrated)
 

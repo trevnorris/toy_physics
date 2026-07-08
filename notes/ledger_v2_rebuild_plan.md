@@ -102,7 +102,11 @@
 > **▶ NEXT = II-G1b `ledger_stage012`** (pathA_30 DtN pole ladder + Robin falsifier: `dsolve` → D/N determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`,
 > half-shifted pole ladder, `R_rt=1`, Robin counterfactual + guard, `tan_argument`/`Z00` dim legs; BC = banked calibration → the
 > `BC_DEPENDENT` landing; completes the joint verdict). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin able-to-fail guard +
-> the K-dim tan-arg probe. No running-start source map yet — the stage011 source map §1/§2 already delineates the 012 slice (`.py` L426→587).
+> the K-dim tan-arg probe. ⭐ **Running-start source map READY** = `research/pde_ledger_v2/notes/stage012_pathA30_dtn_ladder_source_map.md`
+> — 012 is a near-PURE bridge-strip (NOT a de-rig like 011): the `.wl` transfer-matrix route ALREADY carries the DtN/pole/Robin/static
+> (strip only `Get`+`sympy*`+`Export`, KEEP L25–48). Able-to-fail burden = the Robin falsifier + the K-dim tan-arg probe;
+> `dtn_matches_target` genuine (derived-vs-typed), `bc_derivation_emitted=False` an honest scope flag (not a tooth). Zero new counted
+> knobs (`α`=Robin control) + edge candidate R28 (D/N boundary IMPOSED → the `BC_DEPENDENT` landing; earning `..._PASS` deferred).
 > ⭐ **Conceptual bank (2026-07-08, `373a4a3c`):** route-(c) physical picture (per-constituent orientable micro-configuration —
 > Phlat-Ball/gimbal image; brane = aligned arrows, bulk = demagnetized-ferromagnet disorder, throat = aligner/de-aligner) banked in
 > `conceptual_foundation.md` §7 #12; **user completeness criterion** = the ledger is NOT complete until ONE clean equation set explains

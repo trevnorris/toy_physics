@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 8,
+  "canonical_stage_count": 9,
   "policy": [
     {
       "build_order_stage": "001",
@@ -65,6 +65,14 @@
       "slug": "monopole_dipole_return_spec",
       "final_number": "deferred",
       "note": "build-order id (first new Part-II stage, II-B1; reshape of pathA_28_monopole_{sympy.py,.wl}, constraint-spec); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "009",
+      "part": "II",
+      "source_gate": "pathA_29 (Check A)",
+      "slug": "flat_slab_return_residual",
+      "final_number": "deferred",
+      "note": "build-order id (II-B2; reshape of the Check-A slice of pathA_29_brane_bulk_return_{sympy.py,.wl}; Check B = stage 010); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

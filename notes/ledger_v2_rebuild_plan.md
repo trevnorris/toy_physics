@@ -71,10 +71,25 @@
 > remediated (8 vacuous tally stamps de-counted, recovery observations restored computed, tooth-7 pipeline-routed, assumptions aligned,
 > dead param wired) → fresh-agent `REVERIFY_CLEAN` (tallies independently re-counted 54/57 = 60−8+2 / 63−8+2). Register: ZERO new knobs +
 > edge **R23** (return-cancellation targets, `PENDING` obligation) — `REGISTER_CLEAN` first pass. Registration at count 8, PDF rebuilt.
-> **▶ NEXT = II-B2 `ledger_stage009`** (pathA_29 flat-slab return residual: `T0(0)=1/(ε0+1)`, residual orders p_res=1/3, `Z<0` PREMISE
-> labeling; heaviest reshape class — sever the pathA_29 JSON-digest bridge + its cross-script YAML reads of pathA_28 outputs via the
-> stage002 cited-input pattern, stage008 = the formal home) → 010 (localization p=2 dsolve + NOGO control folded in). Remaining Parts
-> order II → III (remaining) → IV → V → VI → VII (last).
+> **✅ II-B2 `ledger_stage009` DONE (2026-07-08):** pathA_29 **Check-A** reshape (the gate splits 009+010) — `RETURN_RESIDUAL_PREDICTION`
+> printed as the Check-A component + explicit stage010 qualifier (no faked standalone headline). EARNED: `τ=2d/c_S` SOLVED from the
+> Helmholtz basis; DC continuity fractions + both steady balances; the ν-order scan (`ν_ℓ=0`, finite-sink ω⁰ deviation `ε_ℓ/(1+ε_ℓ)`) →
+> **`p_res=1/3` COMPUTED** (the falsifiable bounded monopole/dipole residual tied to drain strength); `Z=−M0·ε0/(1+ε0)` accounting + sign
+> certificate with the v3 premise-vs-accounting labels EXACT (`Z_is_premise=true`); per-channel strict perfect-return limits (strict
+> orders 2/4, `Z→0`) with `strict_ν1` computed DIRECTLY from the ℓ=1 limit (tightened over the source's ν0 reuse). Heaviest
+> bridge-severing: the JSON-digest bridge, the pathA_28 runtime-YAML reads, and ALL SHA-256 trace bookkeeping dead; ZERO file I/O;
+> stage008 kernels consumed via **dual-site** citation-integrity. Dual-engine SymPy 48 / Mathematica 52, CWD-independent. ⚠ **Tri-review
+> CAUGHT A RIG-CLASS DEFECT** (the third catch of this class in the rebuild): the v1 consumed-kernel "citation-integrity" was
+> set-then-compare-to-self — a single-source `27→11` corruption exited 0 (adversarial 16-mutant matrix; fidelity was CLEAN on it — the
+> ablation leg is the one that catches this class) → remediated (dual-site kernels; acceptance = all four one-site corruptions exit 1 in
+> both engines) + 3 nits (T2 stamp de-counted; two tautological dim checks composed; dead code) → fresh-agent **`REVERIFY_CLEAN`** (the
+> killing mutants re-run independently + kernel₁ coverage + dim-composition tooth). `Off[Limit::alimv]` unmasked + shown benign (every
+> silenced limit's result independently asserted). Fidelity ALSO caught a fan-out slip in the split note (`ε0=1−T0(0)` → corrected
+> `1−T0(0)=ε0/(1+ε0)`). Register: rows `{d, ε0, ε1}` (slab-family; ε's `FREE-UNREDUCED` on the Gate-6 route) + edge **R24** (Z accounting
+> `DERIVED`-qualified) — `REGISTER_CLEAN` first pass. Registration at count 9, PDF rebuilt.
+> **▶ NEXT = II-B3 `ledger_stage010`** (pathA_29 Check B: the localization `p=2` dsolves on both DC-sink completions + the r⁻⁴
+> counterfactual guard + `classify_dc_sink_gate` + the NOGO warp control + the static-dynamic consistency; completes the pathA_29 fold).
+> Remaining Parts order II → III (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

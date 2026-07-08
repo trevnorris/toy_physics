@@ -57,8 +57,11 @@ the formal home of `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FRE
 enumerated table in both engines), 008 (pathA_28 monopole/dipole return constraint-spec — **adds NO new knobs**:
 the source moments `M0/D1/Q2` are constructions not parameters (`Q2` = FREE ANCHOR export), the derivative-vertex
 coefficient `η_ℓ` is a recorded `branch_assumption` (tracked, not counted, no dim pinned), and `cancellation_possible`
-is a scope FLAG not a quantity; the stage's obligation is edge R23). Seeded knit params (Part VI, not yet reshaped):
-pathA_40 cone-lock, pathA_41 NG5.
+is a scope FLAG not a quantity; the stage's obligation is edge R23), 009 (pathA_29 Check A flat-slab return
+residual — adds the POSTULATED slab-family parameters `{d, ε0, ε1}` (geometry + DC channel transmissions, NOT
+medium constants) + edge R24 (Z accounting `DERIVED`); the residual prediction is parameterized by `ε_ℓ` with the
+perfect-return limits computed reversible). Seeded knit params (Part VI, not yet reshaped): pathA_40 cone-lock,
+pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
 |---|---|---|---|---|---|
@@ -104,6 +107,8 @@ pathA_40 cone-lock, pathA_41 NG5.
 | `κ_4` (Lifshitz stabilizer) | pending (`M L³T⁻²` expected; used algebraically only in the leg-C probe, no dim check scripted) | I-3 (006) probe symbol | `GAP`/deferred | leg-C Lifshitz probe only (`k*²=−κ_phase/2κ_4`) | tracked, not counted |
 | `M_n` (repair mobility) | `L⁻⁴ T M⁻¹` (dual-engine-verified, P12) | I-3 (006) throat-ontology driver | `GAP`/deferred | `J_repair ~ −M_n ∇μ` (admittance/outlet driver, not a force law) | tracked, not counted |
 | `f_throat`, `f_mix` (placeholders) | dim REQUIREMENT `M L⁻² T⁻²` verified on the placeholder symbols; content undeclared | I-3 (006) action placeholders | `GAP` (`DEFERRED_PLACEHOLDER`) | mouth/wall + mixed-gauge couplings, content deferred | not knobs until given content |
+| `d` (slab spacing) | `L` (stage 009: `[τ]=T` via `τ=2d/c_S` dual-engine) | II-B2 (009) postulated slab | `ACTION` (geometry of the executable flat-slab family — NOT a medium constant) | `τ = 2d/c_S` DERIVED from the Helmholtz basis | the slab family is POSTULATED; the real return geometry = the deferred nonlinear brane↔bulk closure |
+| `ε0, ε1` (DC channel transmissions) | `1` (stage 009, dual-engine) | II-B2 (009) return channels | `FREE-UNREDUCED` (per-channel; independent) | residual prediction `A_res ∝ ε_ℓ/(1+ε_ℓ)`; `Z=−M0·ε0/(1+ε0)` (R24); strict `ε_ℓ→0⁺` = perfect return (prediction vanishes, orders lift to 2/4, Z→0 — COMPUTED reversibility) | named route: the track-3/Gate-6 nonlinear return would derive the transmissions from the medium (the same wall that discharges R23) — `PENDING` |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -152,6 +157,7 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R21 | stage006 χ_B wall supersedes fixed-shape `g_ℓ(w)` as the *material-state* closure; the G0 freeze REMAINS the light-sector *constitutive* freeze | structural (scope split — NOT a reduction; both facts asserted in stage 007) | I-3 (006) / I-4 (007) | `ℓ_g` stays a counted knob of the constitutive freeze; stage003 consumes the frozen `L_Mac` as-is; neither artifact retro-invalidates the other |
 | R22 | `[μ_R] ≠ [μ_R⁽⁴⁾]` (M L⁻¹T⁻² vs M L⁻²T⁻²) + R17 dim-consistency `[μ_R⁽⁴⁾]·L = [μ_R]` | structural (dimensional firewall, dual-engine asserted + able-to-fail — NOT a reduction; R17 remains `PENDING`) | I-4 (007) | the notational firewall: two DISTINCT symbols related only by the `PENDING` R17 projection — prevents a silent conflation that would fake a reduction |
 | R23 | return-cancellation targets `R0(ω)=−M0(ω)`, `R1_i(ω)=−D1_i(ω)` (the moments any brane↔bulk return must cancel) | `PENDING` (constraint-spec obligation — bookkeeping `x−x` identity, NOT a derived cancellation; whether an admissible return delivers it = stages 009/010 + the Gate-6 `Z0_ret/Z1_ret` selector) | II-B1 (008) | the pde-ledger open-item-#9 target made precise; `cancellation_possible` stays a literal scope flag until track-3 decides |
+| R24 | `Z = −M0·ε0/(1+ε0)` (signed local source accounting: channel sum `Z_throat + Z_return`, sign certificate computed) | `DERIVED` (ACCOUNTING within the postulated slab family — collapses `Z` into `{M0, ε0}`; does NOT derive the `Z<0` drain-admissibility PREMISE, which stays `Z_is_premise=true`) | II-B2 (009) | stage009 sharpens open-item #9 (bounded residual `p_res=1/3`, per-channel `ε_ℓ`-contingent) — does NOT close it |
 
 ---
 
@@ -188,6 +194,12 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   parameters — R23 (the return-cancellation targets) is `PENDING` debt for stages 009/010 + Gate-6, `Q2` is exported
   as a FREE ANCHOR (never derived ℓ=2), `η_ℓ` is a recorded branch assumption (tracked, not counted). The frozen
   slice (`G=c=c_s=1`, `K_eos=1/500`, `(a*,L*)`) is benchmark calibration, cited not registered.
+- **Stage 009 (pathA_29 Check A): the slab-family package `{d, ε0, ε1}`, counted honestly.** `d` = postulated
+  executable-family geometry (`ACTION`, not a medium constant); `ε0, ε1` = per-channel DC transmissions,
+  `FREE-UNREDUCED` with the named Gate-6/track-3 route (the nonlinear return would derive them — the same wall as
+  R23's discharge). `Z` collapses into `{M0, ε0}` via R24 (accounting; the `Z<0` premise stays a premise). The
+  falsifiable residual prediction (`p_res=1/3`) is `ε_ℓ`-parameterized with COMPUTED perfect-return reversibility —
+  the prediction is contingent, not baked in.
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

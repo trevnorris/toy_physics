@@ -60,8 +60,11 @@ coefficient `η_ℓ` is a recorded `branch_assumption` (tracked, not counted, no
 is a scope FLAG not a quantity; the stage's obligation is edge R23), 009 (pathA_29 Check A flat-slab return
 residual — adds the POSTULATED slab-family parameters `{d, ε0, ε1}` (geometry + DC channel transmissions, NOT
 medium constants) + edge R24 (Z accounting `DERIVED`); the residual prediction is parameterized by `ε_ℓ` with the
-perfect-return limits computed reversible). Seeded knit params (Part VI, not yet reshaped): pathA_40 cone-lock,
-pathA_41 NG5.
+perfect-return limits computed reversible), 010 (pathA_29 Check B slab localization p=2 + NOGO — the COMPLETING stage
+of the pathA_29 joint verdict; adds **NO new counted knobs**: `k_warp` is a control-construction symbol used ONLY in
+the anti-localizing warp NOGO control (tracked, not counted), and the `1/r²` localization survival on the slab family
+discharges NOTHING — R19/`W_slab` and R23 stay `PENDING`; the stage's contribution is edge R25). Seeded knit params
+(Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
 |---|---|---|---|---|---|
@@ -109,6 +112,7 @@ pathA_41 NG5.
 | `f_throat`, `f_mix` (placeholders) | dim REQUIREMENT `M L⁻² T⁻²` verified on the placeholder symbols; content undeclared | I-3 (006) action placeholders | `GAP` (`DEFERRED_PLACEHOLDER`) | mouth/wall + mixed-gauge couplings, content deferred | not knobs until given content |
 | `d` (slab spacing) | `L` (stage 009: `[τ]=T` via `τ=2d/c_S` dual-engine) | II-B2 (009) postulated slab | `ACTION` (geometry of the executable flat-slab family — NOT a medium constant) | `τ = 2d/c_S` DERIVED from the Helmholtz basis | the slab family is POSTULATED; the real return geometry = the deferred nonlinear brane↔bulk closure |
 | `ε0, ε1` (DC channel transmissions) | `1` (stage 009, dual-engine) | II-B2 (009) return channels | `FREE-UNREDUCED` (per-channel; independent) | residual prediction `A_res ∝ ε_ℓ/(1+ε_ℓ)`; `Z=−M0·ε0/(1+ε0)` (R24); strict `ε_ℓ→0⁺` = perfect return (prediction vanishes, orders lift to 2/4, Z→0 — COMPUTED reversibility) | named route: the track-3/Gate-6 nonlinear return would derive the transmissions from the medium (the same wall that discharges R23) — `PENDING` |
+| `k_warp` (anti-localizing warp scale) | `L⁻¹` (stage 010: `k_warp·w` dimensionless, dual-engine) | II-B3 (010) NOGO control | `CANDIDATE` (control-construction symbol — the delocalizing half-line warp `μ(w)=exp(2·k_warp·w)` used ONLY to prove the classifier able-to-fail) | — | tracked, **not counted** (like the leg-C probe symbols); no medium provenance — it constructs the falsifiable counterexample, not the physics |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -158,6 +162,7 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R22 | `[μ_R] ≠ [μ_R⁽⁴⁾]` (M L⁻¹T⁻² vs M L⁻²T⁻²) + R17 dim-consistency `[μ_R⁽⁴⁾]·L = [μ_R]` | structural (dimensional firewall, dual-engine asserted + able-to-fail — NOT a reduction; R17 remains `PENDING`) | I-4 (007) | the notational firewall: two DISTINCT symbols related only by the `PENDING` R17 projection — prevents a silent conflation that would fake a reduction |
 | R23 | return-cancellation targets `R0(ω)=−M0(ω)`, `R1_i(ω)=−D1_i(ω)` (the moments any brane↔bulk return must cancel) | `PENDING` (constraint-spec obligation — bookkeeping `x−x` identity, NOT a derived cancellation; whether an admissible return delivers it = stages 009/010 + the Gate-6 `Z0_ret/Z1_ret` selector) | II-B1 (008) | the pde-ledger open-item-#9 target made precise; `cancellation_possible` stays a literal scope flag until track-3 decides |
 | R24 | `Z = −M0·ε0/(1+ε0)` (signed local source accounting: channel sum `Z_throat + Z_return`, sign certificate computed) | `DERIVED` (ACCOUNTING within the postulated slab family — collapses `Z` into `{M0, ε0}`; does NOT derive the `Z<0` drain-admissibility PREMISE, which stays `Z_is_premise=true`) | II-B2 (009) | stage009 sharpens open-item #9 (bounded residual `p_res=1/3`, per-channel `ε_ℓ`-contingent) — does NOT close it |
+| R25 | `1/r²` localization survives the finite slab (both DC-sink completions → normalizable `m=0` zero mode → 3D-radial dsolve → `p=2`) | structural (EARNED-WITHIN-FAMILY verdict, dual-engine + able-to-fail via the anti-localizing warp → `p=3` → `RETURN_NOGO`; **NOT a reduction** — discharges NO knob) | II-B3 (010) | completes the pathA_29 joint `RETURN_RESIDUAL_PREDICTION`; explicitly does **not** discharge R19 (`W_slab` slab-width selection) or R23 (return-cancellation targets) — localization on the FAMILY ≠ the family selected by dynamics |
 
 ---
 
@@ -200,6 +205,13 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   R23's discharge). `Z` collapses into `{M0, ε0}` via R24 (accounting; the `Z<0` premise stays a premise). The
   falsifiable residual prediction (`p_res=1/3`) is `ε_ℓ`-parameterized with COMPUTED perfect-return reversibility —
   the prediction is contingent, not baked in.
+- **Stage 010 (pathA_29 Check B): zero new counted knobs — the COMPLETING stage of the pathA_29 fold.** The `1/r²`
+  localization survives the slab (both DC-sink completions → normalizable `m=0` zero mode → `p=2`, edge R25),
+  genuinely able-to-fail (the anti-localizing warp → `p=3` → `RETURN_NOGO`). The only new symbol, `k_warp`
+  (`[k_warp]=L⁻¹`), is a control-construction `CANDIDATE` (tracked, not counted — it builds the falsifiable
+  counterexample, not the physics). R25 is **structural, not a reduction**: the localization discharges no knob and
+  explicitly leaves R19 (`W_slab` slab-width selection) and R23 (return-cancellation targets) `PENDING` — localization
+  on the postulated FAMILY is not the family selected by dynamics.
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

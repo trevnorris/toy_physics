@@ -1,0 +1,81 @@
+\section{Stage 010: Slab Localization \texorpdfstring{\(p=2\)}{p=2} with Reachable NOGO (Check B)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (brane\(\leftrightarrow\)bulk return, Check B; completes the pathA\_29 fold)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Show, on the postulated flat-slab family, that Newtonian
+\(1/r^2\) gravity SURVIVES the finite slab: both admissible DC-sink completions
+carry a normalizable \(m{=}0\) transverse zero mode whose 3D-radial Green
+function gives flow \(\propto 1/r^2\) (\(p=2\)); the anti-localizing warp control
+gives \(p=3\) and the same classifier returns \texttt{RETURN\_NOGO} (the
+able-to-fail companion). This computes Check B and emits the COMPLETED joint
+verdict \texttt{RETURN\_RESIDUAL\_PREDICTION} = (Check A cited, Stage~009)
+\(\wedge\) (Check B computed here).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage010_slab_localization_p2_nogo_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage010_slab_localization_p2_nogo_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} -- exact \emph{within the postulated slab family} (brane
+at \(w=0\), return/absorber at \(w=d\); the geometry is postulated, localization
+is derived on it). The gravity-range (\(1/r^2\)) leg passes inside the localizing
+flat-slab family because both DC-sink completions give \(p=2\); the joint verdict
+\texttt{RETURN\_RESIDUAL\_PREDICTION} is completed here, with \texttt{RETURN\_NOGO}
+genuinely reachable. Open-item \#9 is \emph{sharpened, not closed}: localization
+holding for the FAMILY is not the family being SELECTED by dynamics
+(R19/\(W_{\rm slab}\)); the return-cancellation targets (R23) remain deferred.
+
+\paragraph{The localizing zero mode and \texorpdfstring{\(p=2\)}{p=2}.}
+On \(0\le w\le d\) each admissible completion is a transverse eigenproblem
+\(f''+m^2 f=0\) with a normalizable constant \(m{=}0\) zero mode
+(\(f_0=1/\sqrt{d}\), \(\int_0^d f_0^2\,dw=1\)): the
+\emph{destructuring/absorbing} (compact cell, Neumann) and \emph{Bloch} (q=0
+periodic) cells, with gapped first modes at \(m_1=\pi/d,\,2\pi/d\). The 3D-radial
+zero-mode equation \(g''+(2/r)g'+((\omega/c_s)^2-m^2)g=0\) is solved by genuine
+\texttt{dsolve} (dynamic route: solved first, outgoing spherical branch selected
+via \(C_1/C_2\) -- a boundary SELECTION, normalization = compact overlap \(1/d\)
+-- then \(\omega\to0\)); the limit Green \(1/(4\pi d r)\) gives flow
+\(1/(4\pi d r^2)\) and \emph{extracted} exponent \(p=2\). The static route
+(\(\omega=0\) first) gives the same \(1/(4\pi d r)\) and \(p=2\); the two routes
+agree on both the exponent and the Green (\(dynamic_{\omega\to0}=static\)). The
+massive/gapped solve gives a Yukawa \(e^{-m_1 r}/r\) -- only the \(m{=}0\) zero
+mode sets the far field. Both completions agree \(p_{\rm abs}=p_{\rm bloch}=2\).
+
+\paragraph{Able-to-fail: the counterfactual and the NOGO warp.}
+Multiplying the solved Green by \(r^{-4}\) (\(\to1/r^5\)) yields radial-operator
+residual \(5/(\pi d r^7)\ne0\) -- REJECTED, proving the solve has teeth. The
+mandatory anti-localizing warp \(\mu(w)=e^{2k_{\rm warp}w}\) has a
+\emph{non-normalizable} zero mode (\(\int_0^\infty\to\infty\), computed) and a
+continuum Green \(1/(4\pi r^2)\) giving \(p_{\rm delocalizing}=3\); the same
+classifier returns \texttt{RETURN\_NOGO}. The classifier verdict is a function
+of the computed exponents (and the cited \texttt{quadrupole\_survives}), never a
+stamp; \texttt{RETURN\_NOGO} is reachable if the return delocalizes OR the
+quadrupole channel does not survive.
+
+\paragraph{Consumed (cited, dual-site integrity + exact anchor).}
+From Stage~008: \(p_{\rm raw}(\ell{=}2)=5\Rightarrow\)
+\texttt{quadrupole\_survives} (finite quadrupole order; \(T_2\) not applied,
+\texttt{T2\_applied=false}, no \(\ell{=}2\) recompute). From Stage~009: the
+Check-A component \texttt{A\_residual\_pass=true} (joint-composition print only).
+Register: \emph{zero new counted knobs}; \(k_{\rm warp}\) is a
+control-construction symbol (tracked, not counted); edge R25 (localization
+\(p=2\) EARNED-within-family, able-to-fail via the warp NOGO -- does not
+discharge R19 or R23).
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O -- the source pair's JSON-digest
+bridge and all SHA-256 trace/\texttt{structure\_id}/\texttt{expr\_digest}
+bookkeeping are retired; the \texttt{.wl} solves the radial ODEs, the
+normalizations, the warp divergence, and the classifier natively (own
+\texttt{DSolve} basis, own \texttt{Limit}/\texttt{Integrate}), with an arity
+self-check and no silenced messages. SymPy 71 PASS / Mathematica 81 PASS (81 =
+71 shared + 10 arity self-checks), exit 0, CWD-independent. Eight able-to-fail
+teeth fire. Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (all
+values hand-re-derived; 009/010 boundary clean -- Check-A cited not recomputed)
+and \texttt{ADVERSARIAL\_CLEAN} (22-mutant matrix; a hardcoded-wrong-Green
+mutant confirmed the counterfactual guard is genuine, and the classifier
+genuinely reaches \texttt{RETURN\_NOGO}). The adversarial leg's one substantive
+find -- a \emph{coordinated both-sites} corruption of the Stage-008 citation to
+another finite integer escaped -- was folded to Stage-009 parity by an
+exact-value anchor, and re-verified (\texttt{REVERIFY\_CLEAN}) as the sole gate
+closing that escape.

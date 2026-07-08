@@ -1,0 +1,115 @@
+\section{Stage 011: Frozen-Reduction Certificate \texorpdfstring{(\(L_s\) Helmholtz)}{(Ls Helmholtz)} (Check II-G1a)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (brane\(\leftrightarrow\)bulk return; the frozen-throat longitudinal reduction; opens the pathA\_30 D/N fold, completed by Stage~012)}
+\claimstatus{\StatusReduced}
+\stagefield{Purpose}{Certify that, on the postulated straight finite throat with
+the wall FROZEN (\(R=R_0,\ \eta=0\)) and the matter perturbation left dynamic
+(\(\propto e^{-i\omega t}\)), the reduced longitudinal operator collapses to the
+constant-coefficient Helmholtz resonator operator
+\(L_s\psi = \psi''(s)+(\omega/c_S)^2\psi(s)=0\), with \(c_S^2=5K\rho_*^4/m\) on
+\(s\in[0,L_0]\) (cap \(R_0(L_0)=0\)) --- \emph{produced} by a per-term reduction
+(projection measure plus every intruding coefficient computed with its
+vanishing/deferral condition), NOT typed --- together with the reduction
+certificate: the validity window under which the collapse is exact.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage011_frozen_reduction_certificate_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage011_frozen_reduction_certificate_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusReduced{} --- a controlled reduction with an explicit validity
+certificate. This stage carries the reduction-certificate component of the
+joint pathA\_30 verdict \texttt{DN\_UNITTEST\_BC\_DEPENDENT}; the D/N determinant,
+the DtN \(-(\omega/c_S)\tan(L_0\omega/c_S)\), the half-shifted pole ladder, the
+Robin counterfactual, and the \texttt{BC\_DEPENDENT} landing
+(\(bc\_derivation\_emitted=\text{false}\), a banked calibration input) are
+Stage~012's; the cut is drawn at the general-solution \texttt{dsolve} (never
+called here). The wave speed is \emph{banked} (Part~I edge R1, Stage~005, at the
+straight-reference density \(\rho_*\)), so this stage adds NO reduction of its
+own: its contributions are the two \emph{structural} edges R26 (the validity
+record) and R27 (the \(\xi\neq\ell_c\) firewall), which discharge no knob.
+
+\paragraph{The produced operator (the de-rig).}
+The reduced operator is \emph{assembled} from dimensionally-consistent terms,
+\[
+  L_s \;=\; \psi'' \;+\; M\,\psi' \;+\; N\,\psi \;-\; B\,\frac{\hbar^2}{4m^2c_S^2}\,\psi'''' ,
+\]
+with \(M=\tfrac{d}{ds}\log\sqrt{\gamma_0}\) (\([M]=L^{-1}\)), the
+\(\psi\)-coefficient \(N=(\omega/c_s(s))^2\) with \(c_s(s)^2=5K\rho_0(s)^4/m\)
+(\([N]=L^{-2}\)), and \(B\in\{0,1\}\) the Bogoliubov inclusion flag --- the
+\(k^4\) correction being a genuine \emph{fourth-derivative} intrusion (from the
+identity \(\psi''+(\omega/c_S)^2\psi-(\hbar^2/4m^2c_S^2)\psi''''=0\) for the full
+BdG dispersion), NOT a coefficient shift. The three source checks are replaced
+by genuine computations that can each fail: \texttt{operator\_is\_helmholtz} is
+\(\mathrm{expr\_equal}(L_s-\text{ideal},0)\) on the \emph{assembled} \(L_s\) (not
+two hand-typed twins); \texttt{speed\_is\_cs} is \emph{extracted} from the
+\(\psi\)-coefficient of \(L_s\) (\(=(\omega/c_S)^2\), bulk, not
+wall/healing-renormalized, not literal \texttt{True}); \texttt{domain\_is\_L0} is
+\emph{solved} from the pinch-off \(R_0(s)=0\) on a POSTULATED monotone taper
+\(R_0(s)=R_{\rm mouth}(1-s/L_0)\) (root \(=L_0\), \(R_{\rm mouth}\)-independent;
+a labeled SELECTION, not \texttt{L0==L0}); and
+\texttt{unsuppressed\_operator\_intrusion} is \emph{computed} from the assembly
+(not hardwired \texttt{False}) and gates the verdict.
+
+\paragraph{The reduction certificate (validity window).}
+Under the frozen background (\(\rho_0(s)=\rho_*\), \(\sqrt{\gamma_0}=A_{\perp0}\)
+constant, \(A_{M0}=0\)) every intruding term is computed to vanish or is
+deferred: the projection-measure coefficient \(M=0\); \(\rho_0'=0\Rightarrow
+c_s'=0\Rightarrow N=(\omega/c_S)^2\) (the bulk sound speed); \(\delta V_{\rm
+conf}=0\); the background quantum potential
+\(Q(\rho_0)=-\tfrac{\hbar^2}{2m}\partial_s^2\sqrt{\rho_0}/\sqrt{\rho_0}\) gives
+\(\partial_s Q=0\); and the BdG term is deferred (\(B=0\)) only under
+\(k\xi\ll1\) (\(\xi=\hbar/(mc_s)\)), with smallness witness
+\(\hbar^2k^2/(4m^2c_S^2)=(k\xi/2)^2\). Thus \(L_s\) is const-coefficient
+Helmholtz \emph{conditional on}
+\(\{\rho_0'/\rho_0=0,\ \sqrt{\gamma_0}\ \text{const},\ \delta V_{\rm conf}=0,\
+\nabla Q=0,\ k\xi\ll1\}\) (edge R26); the BdG \(k^4\) term is DEFERRED, not
+dropped unconditionally. The healing length \(\xi=\hbar/(mc_s)\) and the
+confinement length \(\ell_c\) (in \(V_{\rm wall}(\Sigma/\ell_c)\)) are kept as
+DISTINCT symbols (edge R27, the firewall analogous to R22's
+\(\mu_R\neq\mu_R^{(4)}\)); \(\ell_c\) is INERT here (\(\delta V_{\rm conf}=0\)).
+
+\paragraph{Able-to-fail teeth.}
+Eight teeth, mutations on copies: a nonconstant \(\sqrt{\gamma_0}\) makes
+\(M\neq0\); a retained BdG (\(B=1\)) injects the \(\psi''''\) term; a nonuniform
+\(\rho_0(s)\) makes \(N\) \(s\)-dependent (each \(\to\)
+\texttt{FAIL\_OPERATOR\_INTRUSION}); a wall/healing renormalization \(\to\)
+\texttt{FAIL\_WRONG\_SPEED}; a corrupted taper root \(\to\)
+\texttt{FAIL\_WRONG\_DOMAIN}; an \(\ell_c\!\to\!\xi\) conflation trips the
+firewall; a one-site R1 exponent corruption trips the dual-site integrity (a
+coordinated both-site drift is caught by the explicit frozen-export anchor); and
+a corrupt-\([K]\) mutation flips \([c_S^2]\) to \((3,0,-2)\to\)
+\texttt{DN\_UNITTEST\_FAIL\_DIMENSIONAL}. A dedicated witness-path tooth
+(nonzero \(\delta V_{\rm conf}\) with \(M=0,\ N=\text{bulk},\ B=0\)) drives the
+verdict to \texttt{FAIL\_OPERATOR\_INTRUSION} through the intrusion flag alone,
+making the flag independently load-bearing.
+
+\paragraph{Consumed + dimensional leg.}
+The speed law \(c_s^2=5K\rho^4/m_{\rm GNLS}\) is CITED (Part~I edge R1,
+Stage~005) evaluated at \(\rho_*\), integrity-checked dual-site (literal
+\texttt{5*K*rho**4/m} vs.\ the EOS route \(\partial_\rho(K\rho^5)/m\)) plus an
+explicit frozen-export anchor; the EOS exponent-5 closure \(P=K\rho^5\) stays
+\texttt{IMPOSED}. The \(c_S^2\) dimensional leg uses the \([K]=[P]-5[\rho]\)
+chain in four spatial dimensions: \([K]=(18,1,-2)\), \([c_S^2]=(2,0,-2)\) (order
+\(L,M,T\)); the corrupt-\([K]\) probe flips it to \((3,0,-2)\). \(L_0\) (throat
+depth) is POSTULATED \texttt{ACTION}-geometry (like Stage~009's \(d\), not a
+medium constant); zero new counted knobs.
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O --- the source pair's
+scratch-YAML/\texttt{\_sympy\_exprs.wl} export, the Mathematica-YAML re-read, and
+the \texttt{expression\_digest}/\texttt{engine\_agreement} plumbing are retired;
+the \texttt{.wl} derives the certificate, the \(L_s\) assembly, the speed
+extraction, the domain solve, and the dimensional leg natively (own
+\texttt{D}/\texttt{Solve}/\texttt{Coefficient}/\texttt{Simplify}), with an arity
+self-check and no silenced messages; the transfer matrix, if present, is only an
+operator-nature cross-check (no DtN/pole/Robin --- Stage~012). SymPy 61 PASS /
+Mathematica 71 PASS (71 = 61 shared + 8 arity self-checks + 2 native trig-basis
+confirmations), exit 0, CWD-independent. Full tri-review on fresh agents:
+\texttt{FIDELITY\_CLEAN} (all values hand-re-derived; the three booleans confirmed
+genuinely PRODUCED; the 011/012 boundary clean) and \texttt{ADVERSARIAL\_CLEAN}
+(the de-rig proven able-to-fail --- operator via \(M/N/B\), speed via
+renormalization, domain via taper --- and the BdG confirmed a real fourth-order
+term). Three teeth/label nits were remediated (the firewall tooth made genuine,
+a witness-path tooth added so the intrusion flag is independently load-bearing,
+the arity labels corrected) and re-verified \texttt{REVERIFY\_CLEAN}.

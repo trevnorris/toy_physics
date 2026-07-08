@@ -1,0 +1,166 @@
+# Mathematica Audit Output
+# Script: ledger_stage011_frozen_reduction_certificate_mathematica_audit.wl
+# Date: 2026-07-08T13:06:13-06:00
+# Elapsed: 11s
+# Exit code: 0
+# Status: PASS
+#
+
+
+==============================================================
+ledger_stage011_frozen_reduction_certificate Mathematica audit
+==============================================================
+
+Wolfram arity self-check
+------------------------
+PASS  arity buildReductionCase[5 args] returns L_s and cap endpoint
+PASS  arity buildReductionCase optional delta/speed args accepts 7 args
+PASS  arity exprEqual[lhs,rhs] handles two args
+PASS  arity solveCapEndpoint[taper] returns L0
+PASS  arity computeVerdict[5 booleans] returns REDUCTION_CERTIFIED
+PASS  arity r1SiteFromExponent[e] returns exact literal site
+PASS  arity r1EosSiteFromExponent[e] returns exact EOS route
+PASS  arity buildDimensionalBlock[] returns mutation_fires
+
+Frozen background and reduction certificate
+-------------------------------------------
+  POSTULATED geometry: straight finite throat, frozen eta=0, brane/mouth s=0, cap s=L0.
+  POSTULATED fields: rho0(s)=rho_star, A_M0=0, sqrt(gamma0)=A_perp0, matter perturbation exp(-I*omega*t).
+  CITED speed: c_S^2 = 5*K*rho_star^4/m from R1 at rho_star; EOS exponent-5 P=K*rho^5 IMPOSED.
+  M=d_s log sqrt(gamma0) = 0
+PASS  projection measure coefficient M is computed zero
+  rho0grad=d_s rho_star = 0
+PASS  rho0grad is computed zero
+  c_s(s)^2 = (5*K*rhoStar^4)/m
+  N=(omega/c_s(s))^2 = (m*omega^2)/(5*K*rhoStar^4)
+PASS  frozen N equals (omega/c_S)^2 with R1 c_S^2
+  csgrad=d_s sqrt(c_s^2) = 0
+PASS  csgrad is computed zero
+  delta_V_conf witness = 0 (ell_c inert in frozen eta=0 test)
+PASS  delta_V_conf witness is computed zero
+  Q(rho0) = 0; Qgrad=d_s Q = 0
+PASS  Qgrad is computed by differentiation as zero
+  BdG ratio direct = (hbar^2*omega^2)/(100*K^2*rhoStar^8)
+  BdG ratio window form (k*xi/2)^2 = (hbar^2*omega^2)/(100*K^2*rhoStar^8)
+PASS  BdG smallness witness hbar^2*k^2/(4*m^2*c_S^2) equals (k*xi/2)^2
+PASS  baseline BdG inclusion flag B=0 under k*xi<<1 deferral
+
+Produced operator, speed extraction, and domain solve
+-----------------------------------------------------
+  assembled L_s = (m*omega^2*psiHat[s] + 5*K*rhoStar^4*Derivative[2][psiHat][s])/(5*K*rhoStar^4)
+  ideal Helmholtz target = (m*omega^2*psiHat[s] + 5*K*rhoStar^4*Derivative[2][psiHat][s])/(5*K*rhoStar^4)
+  residual L_s - ideal = 0
+PASS  operator_is_helmholtz is produced by L_s assembly
+PASS  assembled L_s minus ideal Helmholtz operator is zero
+PASS  unsuppressed_operator_intrusion is computed false
+PASS  native trig-basis confirmation sin branch satisfies produced operator
+PASS  native trig-basis confirmation cos branch satisfies produced operator
+  ODE artifact: psi''(s) + (omega/c_S)^2 psi(s) = 0
+  extracted psi_hat coefficient = (m*omega^2)/(5*K*rhoStar^4)
+  extracted speed squared omega^2/coeff = (5*K*rhoStar^4)/m
+  bulk c_S^2 trace = (5*K*rhoStar^4)/m
+PASS  extracted psi_hat coefficient equals (omega/c_S)^2
+PASS  extracted speed squared equals bulk R1 c_S^2
+PASS  speed_is_cs is extracted from L_s and csgrad
+  POSTULATED reference taper: R0(s)=R_mouth*(1-s/L0), monotone pinch with R0(0)>0 and R0(L0)=0.
+  solved cap endpoint solve(R0(s)=0,s) = L0
+  domain = [0, L0]
+PASS  domain_is_L0 is solved from the taper root
+PASS  cap endpoint minus L0 is zero
+
+Consumed R1 input with dual-site integrity
+------------------------------------------
+  CITED ledger_stage005 R1 at rho_star; pathA_30 bare m is the stage004 m_GNLS ACTION primitive.
+  site A literal = (5*K*rho^4)/m
+  site B EOS route d(K*rho^5)/d rho / m = (5*K*rho^4)/m
+PASS  R1 site A minus site B equals zero
+PASS  R1 evaluated at rho_star equals c_S^2 bulk
+PASS  explicit frozen-export anchor consumed - 5*K*rho_star^4/m equals zero
+
+Stage011 c_S^2 dimensional leg and corrupt-[K] probe
+----------------------------------------------------
+  dimension order: (L,M,T)
+  [energy] = {2, 1, -2}; [four-volume] = {4, 0, 0}; [P] = {-2, 1, -2}
+  [rho] = {-4, 0, 0}; [K]=[P]-5[rho] = {18, 1, -2}
+  [c_S^2=5*K*rho_star^4/m] = {2, 0, -2}
+PASS  c_S^2 dimensional leg equals (2,0,-2)
+PASS  dimensional_ok for the 011 c_S^2 leg
+  corrupt [K]+(1,0,0) gives [K] = {19, 1, -2}
+  corrupt [c_S^2] = {3, 0, -2} -> DN_UNITTEST_FAIL_DIMENSIONAL
+PASS  corrupt-[K] mutated c_S^2 dimension is exactly (3,0,-2)
+PASS  corrupt-[K] mutation_fires=True
+PASS  self-ablation with mutation gives FAIL_DIMENSIONAL
+PASS  self-ablation without mutation gives REDUCTION_CERTIFIED
+PASS  self-ablation fail_suppressed=True
+
+xi != ell_c firewall and 011 verdict
+------------------------------------
+  xi = hbar/(m*c_s) = hbar/(Sqrt[5]*Sqrt[K*m]*rhoStar^2)
+  ell_c is the confinement length in V_wall(Sigma/ell_c), inert here because delta_V_conf=0.
+PASS  xi and ell_c are distinct symbols and never substituted
+  011 scoped verdict = REDUCTION_CERTIFIED
+PASS  011 verdict is REDUCTION_CERTIFIED
+  DN_UNITTEST_BC_DEPENDENT (JOINT) = (011: REDUCTION_CERTIFIED, computed here) AND (012: D/N ladder + bc_derivation_emitted=False -> BC_DEPENDENT landing, stage 012)
+PASS  operator/speed/domain booleans are all computed true in baseline
+
+Provenance and scope
+--------------------
+  POSTULATED geometry: straight finite throat + frozen eta=0; L0 = ACTION-geometry throat depth, NOT a medium constant; R0(s) taper POSTULATED.
+  CITED-speed: c_S^2=5*K*rho_star^4/m is Part I edge R1 (stage005) evaluated at rho_star; EOS exponent-5 IMPOSED.
+  de-rig: operator PRODUCED by assembly, speed EXTRACTED from L_s, domain SOLVED from the pinch-off; replaces X==X/L0==L0/literal-True checks; the pinch-off domain is a labeled SELECTION.
+  validity-window: L_s is const-coeff Helmholtz conditional on {rho0'/rho0=0, sqrt(gamma0) const, delta_V_conf=0, grad_Q=0, k*xi<<1}; BdG k^4 is DEFERRED, not dropped unconditionally.
+  firewall: xi=hbar/(m*c_s) healing length is distinct from ell_c confinement length; ell_c is INERT here because delta_V_conf=0.
+  split: 011 carries the reduction-certificate component; D/N ladder + Robin + BC_DEPENDENT landing are stage 012; bc_derivation_emitted=False is 012's rung.
+  dropped-bookkeeping: scratch-YAML/_sympy_exprs.wl export, MMA-YAML re-read, expression_digest, and engine_agreement plumbing are stripped.
+  downstream consumers: stage 013 (harmonic beta lift) + stage 017 (calibration input) consume frozen L_s, domain, c_S, and validity window.
+  register note: zero new counted knobs; L0 is POSTULATED ACTION-geometry; ell_c INERT; xi DERIVED; validity record + firewall are structural edge candidates.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): FROZEN_REDUCTION_HELMHOLTZ_CERTIFIED  (frozen wall eta=0 -> L_s assembled from the reduction (projection measure + every intruding coeff computed with its vanishing/deferral condition) -> const-coeff Helmholtz psi''+(omega/c_S)^2 psi=0; c_S^2=5*K*rho_star^4/m bulk; domain [0,L0] solved from the pinch-off R0(L0)=0; validity window {rho0'/rho0=0, sqrt(gamma0) const, delta_V_conf=0, grad_Q=0, k*xi<<1})
+  source top-line verdict: DN_UNITTEST_BC_DEPENDENT  (JOINT; 011 carries the reduction-certificate component REDUCTION_CERTIFIED; the D/N ladder + bc_derivation_emitted=False -> BC_DEPENDENT landing = stage 012)
+  joint composition: DN_UNITTEST_BC_DEPENDENT = (011: REDUCTION_CERTIFIED, computed here) AND (012: D/N pole ladder + Robin + BC_DEPENDENT landing, stage 012)
+  earned (de-rig): operator_is_helmholtz PRODUCED by assembly (not X==X); speed_is_cs EXTRACTED from L_s (not literal True); domain_is_L0 SOLVED from R0(L0)=0 pinch-off (not L0==L0); unsuppressed_operator_intrusion COMPUTED; c_S^2 dim leg (2,0,-2) via [K]=[P]-5[rho] + corrupt-[K] probe fires
+  postulated: straight finite throat, brane s=0, cap s=L0 (R0(L0)=0), rho0=rho_star, A_M0=0, frozen eta=0; L0 = ACTION-geometry throat depth (NOT a medium constant); R0(s) taper postulated
+  cited (R1, stage005, dual-site integrity): c_S^2 = 5*K*rho^4/m evaluated at rho_star; EOS exponent-5 P=K*rho^5 IMPOSED
+  deferred (validity window): BdG k^4 term hbar^2*k^4/(4*m^2), ratio hbar^2*k^2/(4*m^2*c_S^2)=(k*xi/2)^2, deferred only under k*xi<<1
+  firewall: xi=hbar/(m*c_s) (healing length) != ell_c (confinement length) -- distinct symbols; ell_c INERT here (delta_V_conf=0)
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 nonconstant sqrt(gamma0) makes M nonzero produced required FAIL (residual = Derivative[1][AperpMut][s]/AperpMut[s])
+PASS  tooth 1 operator_is_helmholtz boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 1 verdict is FAIL_OPERATOR_INTRUSION
+PASS  tooth 2 retained BdG injects fourth-derivative coefficient is nonzero as required (residual = hbar^2/(20*K*m*rhoStar^4))
+PASS  tooth 2 operator_is_helmholtz boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 2 verdict is FAIL_OPERATOR_INTRUSION
+PASS  tooth 3 nonuniform rho0 makes N-(omega/c_S)^2 nonzero produced required FAIL (residual = (m*omega^2*(-rhoStar^(-4) + (rhoStar + (epsilonRho*rhoStar*s)/L0)^(-4)))/(5*K))
+PASS  tooth 3 operator_is_helmholtz boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 3 verdict is FAIL_OPERATOR_INTRUSION
+PASS  tooth 3b verdict is FAIL_OPERATOR_INTRUSION
+PASS  tooth 3b nonzero delta_V_conf witness makes unsuppressed_operator_intrusion true
+PASS  tooth 3b operator_is_helmholtz stays true because the witness is not in L_s
+PASS  tooth 4 wall/healing speed renormalization makes extracted speed differ from bulk claim produced required FAIL (residual = (-5*deltaWall*(2 + deltaWall)*K*rhoStar^4)/m)
+PASS  tooth 4 speed_is_cs boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 4 verdict is FAIL_WRONG_SPEED
+PASS  tooth 5 corrupt taper root differs from L0 produced required FAIL (residual = L0)
+PASS  tooth 5 domain_is_L0 boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 5 verdict is FAIL_WRONG_DOMAIN
+PASS  tooth 6 ell_c -> xi conflation trips distinct-symbol firewall produced required FAIL (residual = 1)
+PASS  tooth 7 site A exponent 5->4 trips R1 dual-site integrity produced required FAIL (residual = (K*(4 - 5*rho)*rho^3)/m)
+PASS  tooth 7 site B exponent 5->4 trips R1 dual-site integrity produced required FAIL (residual = (K*rho^3*(-4 + 5*rho))/m)
+PASS  tooth 7 site A exponent 5->6 trips R1 dual-site integrity produced required FAIL (residual = (K*rho^4*(-5 + 6*rho))/m)
+PASS  tooth 7 site B exponent 5->6 trips R1 dual-site integrity produced required FAIL (residual = (K*(5 - 6*rho)*rho^4)/m)
+PASS  tooth 7 coordinated both-site exponent drift still trips frozen-export anchor produced required FAIL (residual = (K*rhoStar^4*(-5 + 6*rhoStar))/m)
+PASS  tooth 8 corrupt-[K] probe trips dimensional gate produced required FAIL (residual = 1)
+PASS  tooth 8 corrupt-[K] verdict is FAIL_DIMENSIONAL
+PASS  tooth 8 self-ablation fail_suppressed remains true
+PASS  baseline immutable after teeth: operator residual remains zero
+PASS  baseline immutable after teeth: speed extraction remains bulk
+PASS  baseline immutable after teeth: cap endpoint remains L0
+PASS  baseline immutable after teeth: R1 site integrity remains zero
+PASS  baseline immutable after teeth: clean 011 verdict remains REDUCTION_CERTIFIED
+
+PASS tally: 71; FAIL tally: 0
+OVERALL PASS: Mathematica verified ledger_stage011 frozen reduction certificate exactly
+
+EXIT_CODE: 0

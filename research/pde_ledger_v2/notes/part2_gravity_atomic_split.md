@@ -151,14 +151,34 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   `PENDING`). Registration at count 10. ⚠ Process note: the remediation Codex was killed mid-final-check but the edits
   had landed + passed at repo root; orchestrator cleaned 2 orphaned `.tmp` files + completed the foreign-CWD
   verification. **⭐ pathA_29 fold COMPLETE (stages 009+010).**
-- **▶ NEXT = Cluster A `ledger_stage011`** (II-G1a, pathA_30 frozen-reduction certificate: frozen wall → Helmholtz
-  `ψ''+(ω/c_S)²ψ=0`, `c_S²=5Kρ*⁴/m`, projection measure + certificate). ⭐ **Running-start source map READY** =
-  `research/pde_ledger_v2/notes/stage011_pathA30_frozen_reduction_source_map.md`. ⚠ **Key heads-up:** unlike 009/010
-  (pure bridge-strips), 011 is a **bridge-strip PLUS a de-rig** — three source booleans (`operator_is_helmholtz`
-  X≡X, `speed_is_cs` literal, `domain_is_L0`=L0==L0) are tautologies; the reshape must PRODUCE `L_s` from the
-  reduction, not type it. The `.wl` is ALREADY a genuine transfer-matrix route (strip only its `Get[sympyExprFile]`
-  cross-check bridge; ADD the 011 reduction-certificate content it lacks). Consumes R1 (`c_S²=5Kρ⁴/m`, stage005) at
-  ρ*; zero new counted knobs (`L0` = ACTION-geometry like stage009's `d`).
+- **II-G1a `ledger_stage011` DONE (2026-07-08)** — pathA_30 frozen-reduction certificate reshape **+ a DE-RIG** (the
+  first de-rig since stage007). `FROZEN_REDUCTION_HELMHOLTZ_CERTIFIED` (011 component of the joint
+  `DN_UNITTEST_BC_DEPENDENT`; the D/N ladder + `BC_DEPENDENT` landing = stage012). EARNED: `L_s = ψ''+M·ψ'+N·ψ−B·(ħ²/4m²c_S²)ψ''''`
+  **assembled** from the reduction (projection measure + every intruding coeff computed with its vanishing/deferral
+  condition) → const-coeff Helmholtz `ψ''+(ω/c_S)²ψ=0` on `[0,L0]`; the three source tautologies genuinely
+  **de-rigged** (`operator_is_helmholtz` PRODUCED from the assembly, `speed_is_cs` EXTRACTED from the ψ-coeff,
+  `domain_is_L0` SOLVED from the pinch-off `R0(L0)=0`; `unsuppressed_operator_intrusion` COMPUTED) — each able-to-fail;
+  the BdG `k⁴` term a genuine **4th-order** intrusion (design-review CAUGHT my first draft's coefficient-shift error);
+  validity window `{ρ0'/ρ0=0, √γ0 const, δV_conf=0, ∇Q=0, kξ≪1}`; c_S² dim leg `(2,0,-2)` + corrupt-`[K]` probe; ξ≠ℓ_c
+  firewall. CITED R1 (`c_S²=5Kρ⁴/m`, stage005) at ρ* dual-site + frozen-export anchor; clean 011/012 cut at the
+  `dsolve` (no DtN/pole/Robin here). Zero file I/O (scratch-YAML/`Get`/`sympy*`/digest bridge severed); the `.wl`
+  independent (native `D`/`Solve`/`Coefficient`, own trig-basis cross-check, arity self-check). Dual-engine SymPy 61 /
+  Mathematica 71 (= 61 + 8 arity + 2 trig-basis), CWD-independent. Codex directive design-review caught 3 BLOCKING
+  (BdG operator treatment; dimensionally-safe assembly; R1 dual-site example) → folded → confirm-pass `DIRECTIVE_CLEAN`.
+  Tri-review CLEAN both legs (`FIDELITY_CLEAN` all values hand-re-derived + de-rig confirmed produced; `ADVERSARIAL_CLEAN`
+  14+ mutant matrix — de-rig proven able-to-fail, BdG decisively a 4th-order term, dual-site R1 anchor catches the
+  coordinated-drift escape, no 012 leakage) → 3 teeth/label nits remediated (firewall tooth made genuine — was a vacuous
+  `xi≠xi`; witness-path tooth 3b added → the intrusion flag now independently load-bearing, closing the
+  hardwire-flag-to-False escape; arity labels corrected 6/8→5/7) → fresh-agent `REVERIFY_CLEAN` (both escapes closed).
+  Register: **zero new counted knobs** (`L0`=`ACTION`-geometry like stage009's `d`; `ℓ_c` INERT; `R_mouth` cancels; `ξ`
+  R2-family DERIVED) + structural edges **R26** (frozen-reduction validity record) + **R27** (ξ≠ℓ_c firewall) —
+  discharge NOTHING; `REGISTER_CLEAN` first pass. Registration at count 11.
+- **▶ NEXT = Cluster A `ledger_stage012`** (II-G1b, pathA_30 DtN pole ladder + Robin falsifier: `dsolve` → D/N
+  determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`, half-shifted pole ladder `ω_n=πc_S(n+½)/L0`, round-trip `R_rt=1`, Robin
+  counterfactual + guard, the `tan_argument`/`Z00` dim legs; BC = banked CALIBRATION input → the `BC_DEPENDENT` landing;
+  completes the joint `DN_UNITTEST_BC_DEPENDENT`). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin
+  able-to-fail guard + the K-dim tan-arg probe (split-note trip-up). No running-start source map yet — the stage011
+  source map §1/§2 already delineates the 012 slice (`.py` L426→587).
 
 ## Per-stage process (unchanged, calibrated)
 

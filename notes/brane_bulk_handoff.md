@@ -1,5 +1,17 @@
 # Codex handoff: brane/bulk material-state closure
 
+> **⚠ ERRATUM (2026-07-07, from the `ledger_stage006` dimensional audit — read before using the equations below).**
+> Two formulas in this note are dimensionally defective as written and are PINNED corrected in
+> `research/pde_ledger_v2/` stage 006 (directive P1/P8; both confirmed by independent Codex design review and
+> encoded as firing firewall ablations):
+> 1. **§10 kinetic term:** `½ n|u|²` lacks the constituent mass for a number density `[n] = L⁻⁴`; the consistent
+>    form is `½ m_GNLS n|u|²` (`KINETIC_MASS_FACTOR_PINNED`).
+> 2. **§11 energy ledger:** `P_order = ∫ μ_χ n Γ_B d⁴X` is inhomogeneous under this note's own `μ_χ = δF/δχ_B`
+>    (extra factor `n`); the variationally consistent power is `P_order = ∫ μ_χ D_tχ_B d⁴X`
+>    (`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`).
+> The canonical formalization is `research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md`;
+> this note remains the conceptual source and is otherwise unchanged.
+
 ## 0. Purpose of this handoff
 
 We had a conceptual discussion about whether the brane/bulk model should be built from fine medium constituents rather than only a smooth projection field, and whether the throat drain requires an attractive force or can be pressure/chemical-potential driven.

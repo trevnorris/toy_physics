@@ -52,7 +52,8 @@ whole-system dim check at Part VII then confirms rather than discovers).
 ## Master parameter table
 
 Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 light), 004 (pathA_19 dim foundation),
-005 (pathA_20 sound speed). Seeded knit params (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
+005 (pathA_20 sound speed), 006 (χ_B two-phase ontology — fresh-authored). Seeded knit params (Part VI, not yet
+reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
 |---|---|---|---|---|---|
@@ -83,6 +84,18 @@ Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 l
 | `α_J` (mass-bridge coeff) | `1` | I-2 (005) | `CANDIDATE` | `m_defect = α_J ħJ/c_γ²` | labeled candidate; not load-bearing |
 | `m_defect` | `M` | — | `GAP` | candidate `ħJ/c_γ² = M` (dimensional-only) | pathA_21 (deferred) |
 | flux law `J_crit` | — | I-2 (005) | `GAP` | — | `STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA` (deferred) |
+| `χ_B` (order field) | `1` (∈[0,1]) | I-3 (006) action | `ACTION` (field) | independent scalar OP, **NOT** `\|P_∥\|²` (pin P7 — the rung-W T1-escape) | route (c) composite `χ_B=\|P_∥\|²` = named future gate, high-risk (neighbors falsified: v3 arrows wall, pathA_25, pathA_35); wall is route (a) postulated |
+| `a_B` (double-well) | `M L⁻² T⁻²` | I-3 (006) action | `ACTION` | `f_B=a_B χ_B²(1−χ_B)²`, minima {0,1}, n-independent (P3/P4) | POSTULATED — parent `U(ρ)` is single-well (the wall cannot come from it) |
+| `κ_B` (interface gradient) | `M T⁻²` | I-3 (006) action | `ACTION` | kink width `δ=√(κ_B/2a_B)`, `σ_wall=√(2a_B κ_B)/6` DERIVED from `{a_B,κ_B}` | — |
+| `α_aniso` (P-orientation) | `M L⁻² T⁻²` | I-3 (006), dims-only | `ACTION` | `POSTULATED_ANISOTROPY` (rung_W); P dynamics = I-4 | ingredient chosen for the outcome — no independent mechanical provenance |
+| `Γ_B` (conversion law) | `T⁻¹` | I-3 (006) balance | `ACTION` (law/field) | `Γ_B=Γ_return−Γ_drain`; global-return-constrained `R_0=−M_0, R_1=−D_1` (postulates, not locally asserted) | return/drain closure = deferred (pathA_28/29 lineage) |
+| χ_B-gating structure | — (structural) | I-3 (006) action | `ACTION` (structural choice) | `χ_B f_shear` multiplicative gate (shear only where ordered) | structural 6th member of DRIFT(6) |
+| `μ_R⁽⁴⁾` (4D shear-stiffness density) | `M L⁻² T⁻²` | I-3 (006) shear gate | `FREE-UNREDUCED` | brane `μ_R = ∫χ_B μ_R⁽⁴⁾ dw` (dim-consistent only) | projection edge R17 `PENDING` |
+| `W_slab` (brane slab width) | pending (`L` expected; no audit verifies it — the stage checks only the projection `[W]=L⁻¹`) | I-3 (006) carried limitation | `FREE-UNREDUCED` | bulk-on-both-sides ⇒ kink–antikink slab; double-well selects NO width (kink admission ≠ slab stability) | old `L/a` self-selection item — "requires dynamics", sim-deferred (R19 `PENDING`) |
+| `M_χ` (order mobility), `J_χ` (order transport) | `L²T M⁻¹` / `L⁻³T⁻¹` (both dual-engine-verified: P8 adjunct row; balance-row divergence) | I-3 (006) adjunct rows | `GAP`/deferred | dynamics adjunct (P8), `J_χ=0` default (P9) | tracked, not counted |
+| `κ_4` (Lifshitz stabilizer) | pending (`M L³T⁻²` expected; used algebraically only in the leg-C probe, no dim check scripted) | I-3 (006) probe symbol | `GAP`/deferred | leg-C Lifshitz probe only (`k*²=−κ_phase/2κ_4`) | tracked, not counted |
+| `M_n` (repair mobility) | `L⁻⁴ T M⁻¹` (dual-engine-verified, P12) | I-3 (006) throat-ontology driver | `GAP`/deferred | `J_repair ~ −M_n ∇μ` (admittance/outlet driver, not a force law) | tracked, not counted |
+| `f_throat`, `f_mix` (placeholders) | dim REQUIREMENT `M L⁻² T⁻²` verified on the placeholder symbols; content undeclared | I-3 (006) action placeholders | `GAP` (`DEFERRED_PLACEHOLDER`) | mouth/wall + mixed-gauge couplings, content deferred | not knobs until given content |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -108,6 +121,10 @@ Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 l
 | R14 | Location-closure: every param ∈ {4D bulk, 3D brane surface, throat seam}; **no fourth arena** | `CODIM-PROVEN` (computed, able-to-fail) | VI (041) | the NG5 "drift" is **un-reduced brane-surface params**, NOT a second substance |
 | R15 | `C_J = −J ρ_B0` | `DERIVED` (sign-sensitive IBP) | III (003) | collapses `C_J` into `{J, ρ_B0}` (stage 003's fidelity upgrade over pathA_36) |
 | R16 | `B_eff = ρ_B0²/χ_c` | `DERIVED` | III (003) | collapses `B_eff` into `{ρ_B0, χ_c}` (the stray-longitudinal stiffness) |
+| R17 | brane `μ_R = ∫χ_B μ_R⁽⁴⁾ dw` (shear-gate projection) | `PENDING` | I-3 (006) | debt: would relate the brane shear modulus to the 4D gate density (dim-consistency asserted only) |
+| R18 | θ-as-Maxwell-φ `WITH_PROVENANCE` route | `CLOSED-NEG` | I-3 (006) | the Maxwell locus `K_θ=+J²ρ_B0²/ρ_br, B_eff=0, m_θ²=0` is reachable `BY_TUNING` only; the sole provenance sign-flip (`κ_phase<0`) is a Lifshitz instability = the falsified pathA_25 wall. Hardens the no-go; the θ-branch symbols are NOT admitted as live knobs |
+| R19 | slab-width selection (`W_slab` from dynamics) | `PENDING` | I-3 (006) | debt: kink–antikink slab width not selected by the double-well; = the old `L/a` self-selection item (sim-deferred Gate-6 territory) |
+| R20 | `δ, σ_wall` from `{a_B, κ_B}` | `DERIVED` | I-3 (006) | kink width + surface tension collapse into the well/gradient constants (single-kink admission only — see R19) |
 
 ---
 
@@ -130,7 +147,15 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   (Route A remains).
 - **Hidden multiplicity found:** R9 (`Δr=2`) — the two cone locks are independent, a sobering result the register is
   obligated to record.
-- **GAPs (deferred obligations, not knobs):** `m_defect`, `ħ` provenance, flux `J_crit`.
+- **GAPs (deferred obligations, not knobs):** `m_defect`, `ħ` provenance, flux `J_crit`, the χ_B dynamics adjunct
+  (`M_χ, J_χ`).
+- **The χ_B package (I-3, stage 006) — DRIFT(6), counted honestly:** `{χ_B; a_B; κ_B; α_aniso; Γ_B; gating structure}`
+  are new `ACTION` inputs — **the wall is a postulated field, not a derived structure** (route (a); route (c)
+  `χ_B=|P_∥|²` is a named, high-risk future gate, its neighbors already falsified). `δ`/`σ_wall` collapse into
+  `{a_B, κ_B}` (R20). Two NEW `FREE-UNREDUCED` entries with named routes: `μ_R⁽⁴⁾` (projection R17) and the slab width
+  `W_slab` (R19 — kink admission ≠ slab stability). `ρ_B0, χ_c` appear in BOTH the stage-006 dead θ-branch and the
+  pathA_41 Part-VI drift trio — counted ONCE (Part VI); the θ-branch is dead (`THETA_BRANCH_DEAD_NOT_ADMITTED`) and
+  R18 hardens it `CLOSED-NEG`.
 
 **Reading:** the free-parameter load is real but heavily **provisional** — most of it is reduction debt with named routes
 (all currently `PENDING` on the deferred nonlinear throat), not irreducible freedom. The honest question for Part VII is

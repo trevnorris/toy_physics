@@ -29,9 +29,25 @@
 > full tri-review CLEAN (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, 14-mutation ablation matrix — every tooth GENUINE, verdict computed + reversibly
 > flips to `C_GAMMA_EQUALS_C_S` only with an inserted source equation) → 1 [minor] remediation (6 vacuous `N-N` count-checks → genuine live-counter
 > coverage assertions + `BULK_PRINCIPAL_TRANSVERSE_BRANCH_ESTABLISHED` print) → post-remediation `REVERIFY_CLEAN` → registration at count 5, PDF
-> rebuilt. **▶ NEXT = I-3 `ledger_stage006`** (two-phase χ_B material-state ontology, `ACTION_SPECIFIED_CLASSIFIED` — fresh-authored dim + recovery
-> + θ-as-φ no-go audit), then I-4 `ledger_stage007` (pathA_35 G0 freeze); then Part II (gravity, the swing). Remaining Parts order II → III
-> (remaining) → IV → V → VI → VII (last).
+> rebuilt. **✅ I-3 `ledger_stage006` DONE (2026-07-07)** — the FIRST fresh-authored stage (no prior script pair; directive SPECIFIES the postulated
+> χ_B action, 13 pins P1–P13): Codex directive-review `DIRECTIVE_CLEAN` first pass (all authored math independently confirmed, incl. the two
+> handoff dimensional defects Claude caught — `½n|u|²` missing `m_GNLS`, `P_order=∫μ_χ nΓ_B` inhomogeneous) → dual-engine both exit 0 → tri-review
+> **CAUGHT A RIG** (fidelity: the B2 recovery assert-zero was X≡X — `s_flux_limit` and `s_leak` the identical expression; adversarial PROVED it —
+> identical corruption of BOTH sides survived at exit 0 — plus stamped C4 transverse tokens; 13-mutation matrix, 11 genuine) → remediated (general
+> projected two-source law assembled with live `χ_B/Γ_B/J_χ` profiles + limit substituted in-engine + independently-constructed frozen target;
+> leg-C discriminators wired from the bracket algebra + `m_θ²` made algebraically real in the `.py`; C4 ε-parametrized dispersion derived
+> in-engine; `.py` A2 real derivative expansion; `.wl` B1 self-computed profiles) → fresh-agent **`REVERIFY_CLEAN`** (6-run corruption matrix:
+> frozen-target-only / assembly-only / SAME-corruption-both-sides ALL fail now, both engines; SymPy 110 / Mathematica 108 PASS) →
+> `ACTION_SPECIFIED_CLASSIFIED` + `RECOVERY_REDUCTION_VERIFIED` (frozen stage_243/244 + Gaussian anchor) + θ-as-φ no-go carried (`BY_TUNING` only;
+> Lifshitz sign-flip = the killed pathA_25 wall) + DRIFT(6). Register updated (new rows incl. `W_slab` FREE-UNREDUCED + edges R17–R20) +
+> Codex-verified. **External-feedback fold-ins (user-relayed AI reviews):** the **slab caveat** (bulk-on-both-sides ⇒ kink–antikink slab; the
+> double-well selects NO width; kink admission ≠ slab stability; = the old `L/a` self-selection item) → conceptual_foundation §2 + register R19;
+> the **route-(a)/(c) wall-provenance fork** (wall = postulated field (a); `χ_B=|P_∥|²` composite (c) = named high-risk future gate, neighbors
+> falsified) → conceptual_foundation §7 #12; handoff erratum block added (`notes/brane_bulk_handoff.md` §10/§11 defects, pinned not silently
+> rewritten). Registration at count 6, PDF rebuilt. **▶ NEXT = I-4 `ledger_stage007`** (pathA_35 G0 freeze reshape — running-start source map
+> = `research/pde_ledger_v2/notes/stage007_pathA35_G0_source_map.md`: frozen action + hash mechanics + the "11" + the erratum + 7 reshape
+> trip-ups; the LAST Part-I stage); then the **Part II (gravity) atomic-split USER GATE** (the swing, ~20–28 stages). Remaining Parts order
+> II → III (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

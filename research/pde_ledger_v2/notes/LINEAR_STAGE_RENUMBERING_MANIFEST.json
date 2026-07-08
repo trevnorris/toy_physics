@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 5,
+  "canonical_stage_count": 6,
   "policy": [
     {
       "build_order_stage": "001",
@@ -41,6 +41,14 @@
       "slug": "sound_speed_light_ratio",
       "final_number": "deferred",
       "note": "build-order id (second Part-I stage, I-2; pathA_20 + pathA_20b reference-only support; CALIBRATED landing C_GAMMA_RATIO_UNDERDETERMINED); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "006",
+      "part": "I",
+      "source_gate": "brane_bulk_handoff.md + conceptual_foundation.md + rung_W_reframe.md + pathA_36 (fresh-authored; no prior script pair)",
+      "slug": "two_phase_chiB_ontology",
+      "final_number": "deferred",
+      "note": "build-order id (third Part-I stage; FIRST fresh-authored stage); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

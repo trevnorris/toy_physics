@@ -1,0 +1,116 @@
+\section{Stage 006: Two-Phase Material-State Ontology (Order Field \texorpdfstring{$\chi_B$}{chi\_B})}
+
+\stagefield{Part / anchor}{Part I -- The medium}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Formalize the brane/bulk ontology as a POSTULATED two-phase
+action -- one conserved medium, order field \(\chi_B\in[0,1]\); brane = ordered
+shear-supporting phase, bulk = the same medium de-structured, throat =
+phase-conversion site -- dimensionally classified
+(\texttt{ACTION\_SPECIFIED\_CLASSIFIED}), with the recovery reduction to the
+frozen old-ledger \(S_{\rm leak}\) verified assert-zero and the
+\(\theta\)-as-Maxwell-\(\varphi\) no-go carried able-to-fail.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage006_two_phase_chiB_ontology_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure. \textbf{The wall is made explicit as a postulated field --
+it is NOT derived from the one medium.} Every term of the free-energy functional
+and order-state balance is POSTULATED and labeled (13 pinned modeling choices
+P1--P13); the EARNED content is exact \emph{within that imposed closure}:
+structural-closure identities, single-kink wall admission, and the recovery
+reduction against the frozen firewall. Cross-engine agreement proves consistent
+encoding of the same postulated \(F\), not derivation. Consuming stage: cites
+\texttt{ledger\_stage004} (dictionary, single-well \(U\)),
+\texttt{ledger\_stage005} (\(c_{s0}^2\)), and \texttt{ledger\_stage003}
+(\(c_\gamma^2=\mu_R/\rho_{br}\), \(C_J=-J\rho_{B0}\),
+\(B_{\rm eff}=\rho_{B0}^2/\chi_c\), the second-class\(\Rightarrow\)stray-DOF
+classification rule) with exact-value citation-integrity checks.
+
+\paragraph{The postulated action and balance.}
+\[
+  F=\int d^4X\Big[\tfrac12 m_{\mathrm{GNLS}} n|\mathbf u|^2+U(n)+f_B(\chi_B)
+  +\tfrac{\kappa_B}{2}|\nabla_4\chi_B|^2+\chi_B f_{\rm shear}
+  +f_{\rm throat}+f_{\rm mix}\Big],
+\]
+\[
+  \partial_t n+\nabla_4\!\cdot\!(n\mathbf u)=0,\qquad
+  \partial_t(\chi_B n)+\nabla_4\!\cdot\!(\chi_B n\mathbf u+\mathbf J_\chi)=n\Gamma_B,
+  \quad [\Gamma_B]=T^{-1}.
+\]
+Key pins: kinetic term carries the constituent mass
+(\texttt{KINETIC\_MASS\_FACTOR\_PINNED}; \([n]=L^{-4}\)); double-well
+\(f_B=a_B\chi_B^2(1-\chi_B)^2\) with minima \(\{0,1\}\), \(n\)-independent
+(\texttt{SAME\_DENSITY\_DEGENERACY\_POSTULATED}) -- required because the cited
+\(U(\rho)=(K/4)\rho^5\) is \emph{single}-well; MacCullagh-form shear gate on the
+displacement curl; \(\chi_B\perp P\) (\texttt{POSTULATED\_ANISOTROPY} dims-only);
+\(\mathbf J_\chi=0\) default; global returns \(R_0=-M_0\), \(R_1=-D_1\) printed
+as postulates, not asserted locally; throat = phase-conversion ontology, not a
+solve. Every integrand term audited to \(ML^{-2}T^{-2}\); adjunct rows
+(\(\mu_\chi, M_\chi, P_{\rm order}, M_n\)) dimension-pinned, with the
+energy ledger fixed to the variationally consistent
+\(P_{\rm order}=\int\mu_\chi D_t\chi_B\,d^4X\)
+(\texttt{HANDOFF\_P\_ORDER\_N\_PLACEMENT\_CORRECTED}).
+
+\paragraph{Structural closure and wall admission (EARNED within closure).}
+The advective form \(D_t\chi_B=\Gamma_B-(1/n)\nabla_4\!\cdot\!\mathbf J_\chi\),
+the disorder complement for \(n_D=(1-\chi_B)n\), and the \(\Gamma_B\)-cancelling
+sum reproducing total conservation are derived by real derivative expansion in
+both engines. The static EL equation \(\kappa_B\chi_B''=f_B'\) admits the kink
+\(\chi_B=\tfrac12(1+\tanh(w/2\delta))\) with solved width
+\(\delta=\sqrt{\kappa_B/2a_B}\) and surface tension
+\(\sigma_{\rm wall}=\sqrt{2a_B\kappa_B}/6\), \([\sigma_{\rm wall}]=ML^{-1}T^{-2}\).
+\resultanchor{Slab caveat (carried).} Bulk on both sides makes the brane a finite
+kink--antikink \emph{slab}; the double-well selects no slab width --
+\(W_{\rm slab}\) is an un-earned input mapping onto the old ledger's \(L/a\)
+self-selection item (sim-deferred). Wall admission \(\neq\) slab stability.
+
+\paragraph{Recovery reduction (EARNED within closure; the frozen firewall).}
+Projection with unit-normalized \(W(w)\) and in-engine IBP gives the two-source
+law \(\partial_t\rho_B+\nabla_3\!\cdot\!\mathbf J_B=S_{\rm flux}+S_{\rm convert}\)
+with the general \(\chi_B(w),\Gamma_B(w),J_\chi^w(w)\) computationally live; the
+in-engine limit \(\chi_B\to1,\Gamma_B\to0,\mathbf J_\chi\to0\) reduces it
+assert-zero to the \emph{independently constructed} frozen target
+\(S_{\rm leak}=-[Wj^w]_\partial+\int W'j^w\,dw\), \(j^w=nu^w\)
+(stage\_243), including the stage\_244 Gaussian one-mode closed form
+\(S_{\rm leak}=\sqrt2\,\mu_w\rho_0\mathcal E_0/(2\sqrt\pi\lambda^3)\) re-derived
+by direct integration (\texttt{RECOVERY\_REDUCTION\_VERIFIED}). Conditionality
+computed: \(\chi_B=c\neq1\), \(\Gamma_B\neq0\), \(J_\chi^w\neq0\) each leave
+nonzero computed residuals -- the limit does real work.
+
+\paragraph{The \(\theta\)-as-Maxwell-\(\varphi\) no-go (carried FATAL\_FLAW).}
+A stable order-parameter phase has positive gradient energy
+(\(\kappa_{\rm phase}>0\)) \(\Rightarrow K_\theta=-\kappa_{\rm phase}<0\) in the
+Lagrangian; Maxwell's electric square needs \(K_\theta=C_J^2/\rho_{br}>0\) --
+opposite signs (exact predicate). The constraint bracket
+\(\{\Phi_1,\Phi_2\}=k^2(J^2\rho_{B0}^2+\kappa_{\rm phase}\rho_{br})/\rho_{br}\)
+has its zero locus solved in-engine at exactly \(K_\theta=+J^2\rho_{B0}^2/\rho_{br}\):
+via the consumed stage\_003 rule the provenance branch lands
+\texttt{FAIL\_CAUCHY\_STRAY\_LONGITUDINAL} (finite
+\(B_{\rm eff}=\rho_{B0}^2/\chi_c\)), the \(B_{\rm eff}=0\) branch
+\texttt{FAIL\_C5\_LONGITUDINAL\_ZERO\_MODE}, and the tuned fixture
+(\(K_\theta=J^2\rho_{B0}^2/\rho_{br},B_{\rm eff}=0,m_\theta^2=0\))
+\texttt{C5\_RESOLVED\_MAXWELL\_BY\_TUNING} -- flagged \texttt{BY\_TUNING}, never
+\texttt{WITH\_PROVENANCE} (flag computed from provenance booleans; detunings
+re-fire the pathA\_36 control tokens). The only provenance sign-flip
+(\(\kappa_{\rm phase}<0\)) is a Lifshitz instability,
+\(k_*^2=-\kappa_{\rm phase}/2\kappa_4>0\iff\kappa_{\rm phase}<0\) -- the
+already-killed pathA\_25 wall (\texttt{FAIL\_LIGHT\_STARVED} lineage). The
+transverse sector is untouched: the \(\varepsilon\)-parametrized dispersion
+derived in-engine gives \(\omega^2=(\mu_R/\varepsilon)k^2\);
+\(\varepsilon=\rho_{br}\) reproduces the consumed \(c_\gamma^2\)
+(\texttt{PASS\_TRANSVERSE\_UNDISTURBED}), \(\varepsilon\neq\rho_{br}\) fires
+\texttt{FAIL\_TRANSVERSE\_DISTURBED}. \textbf{This stage does not earn light} --
+the no-go is the point.
+
+\paragraph{Drift and carried items (first-class, not repaired).}
+\texttt{DRIFT(6)} computed: \(\{\chi_B;\,a_B;\,\kappa_B;\,\alpha_{\rm aniso};\,
+\Gamma_B;\,\text{gating structure}\}\) (rung-W reconciliation printed;
+\texttt{THETA\_BRANCH\_DEAD\_NOT\_ADMITTED}; \(\rho_{B0},\chi_c\) cross-referenced
+to the pathA\_41 Part-VI drift trio, not double-counted). Carried:
+\texttt{SECOND\_MEDIUM\_DRIFT} lineage, the slab width \(W_{\rm slab}\), Gate-L
+\(\delta w=u_w\) translation Goldstone (deferred), \(\mathbf J_\chi\neq0\),
+\(f_{\rm throat}/f_{\rm mix}\) placeholders, dynamics/energy-ledger adjunct.
+Two source-prose dimensional defects pinned and ablation-documented (kinetic
+mass factor; \(P_{\rm order}\) \(n\)-placement).

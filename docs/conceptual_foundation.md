@@ -154,6 +154,14 @@ A one-sided "surface of a pond" (medium below, vacuum above) would allow throats
 **So the brane is an interface in the *interior* of the medium, with bulk on both sides** — the ³He A–B interface flavour, not
 the outer surface of a finite body.
 
+> **⭐ Slab caveat (2026-07-07, from the `ledger_stage006` build — do not let "wall admitted" read as "slab stable").** With the
+> material-state closure's `χ_B ∈ [0,1]` double-well (minima at 0 and 1), "bulk on both sides" makes the brane a finite
+> `χ_B = 1` **slab** bounded by `χ_B = 0` bulk above and below — a **kink–antikink pair**, not a single wall. The double-well
+> alone provides **no mechanism selecting the slab width** (kink–antikink pairs generically attract); the width `W_slab` is an
+> un-earned input — the old `Z/W/B_ℓ` profile scale in new clothes — and maps onto the known `L/a` self-selection open item
+> (§7 #11, "requires dynamics", sim-deferred). `ledger_stage006` verifies single-kink *admission* (EL residual + surface tension
+> `σ_wall = √(2a_Bκ_B)/6`) and registers `W_slab` as `FREE-UNREDUCED` in the parameter register.
+
 **The obstacle (honest).** The current medium potential `U(ρ) = (K/4)ρ⁵` is a **single well** — one stable state — so as written
 the medium *cannot* form a wall. That is exactly why the brane currently has to be *put in by hand* (a confinement potential
 `V_conf`, the `w`-profiles `Z/W/B_ℓ`, the `k_w u_w²` restoring term — all *inputs*, not derived). To **derive** the brane, the one
@@ -592,7 +600,17 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
     size/aspect-ratio `L/a` (a named unsolved residual / a frozen input, respectively). The 2026-06-24 candidate force is the
     **trapped-wave pressure + drain backpressure + multi-brane return** (§4, §5) — UNTESTED. **Cheapest existence test = a 4D
     Derrick/virial scaling check** (never run); do it before any big resume — a Derrick obstruction would kill the throat-soliton cheaply.
-12. **Does light's confinement (shear-free bulk) and its 2 polarizations actually fall out (§4)?** The intrinsic-(3+1)D / extrinsic-
+12. **The wall's provenance fork — route (a) vs route (c) (2026-07-07, sharpened by `ledger_stage006`).** The brane is currently
+    **route (a): a postulated order field** — `χ_B` with a postulated double-well, `DRIFT(6)`, honestly labeled
+    (`ACTION_SPECIFIED_CLASSIFIED`; "wall made explicit as a postulated field, NOT derived from the one medium"). The deeper move
+    — **route (c): χ_B as the medium's own orientational order (`χ_B = |P_∥|²`)** — would convert postulate into derivation and
+    kill the drift, but its immediate neighbors are already falsified (the v3 arrows wall, the pathA_25 density-smectic
+    `FAIL_LIGHT_STARVED`, the pathA_35 shear-surface no-go: the recurring killer is ONE coupling doing two jobs — creating the
+    wall AND pinning P — which starves light). The exact composite has never itself been formally gated: a **named, high-risk
+    future gate**, in the same deferred-nonlinear territory as Route A / the NG5 reductions. Until then the four-sector claim is
+    honestly "four sectors from one medium **plus an imposed wall**." (Also the λγ tie-in: earning the wall's moduli from the
+    same dynamics that sets `c_s` is what could make `λγ` a prediction instead of a calibration — register edge R10.)
+13. **Does light's confinement (shear-free bulk) and its 2 polarizations actually fall out (§4)?** The intrinsic-(3+1)D / extrinsic-
     curvature picture *predicts* 2 polarizations + brane confinement for free, and re-frames the old "leak" as curvature, not loss — but
     this must be shown, not asserted (and it must still resolve the C5 longitudinal-mode obstruction at the throat, not in vacuum).
 

@@ -44,10 +44,23 @@
 > double-well selects NO width; kink admission ≠ slab stability; = the old `L/a` self-selection item) → conceptual_foundation §2 + register R19;
 > the **route-(a)/(c) wall-provenance fork** (wall = postulated field (a); `χ_B=|P_∥|²` composite (c) = named high-risk future gate, neighbors
 > falsified) → conceptual_foundation §7 #12; handoff erratum block added (`notes/brane_bulk_handoff.md` §10/§11 defects, pinned not silently
-> rewritten). Registration at count 6, PDF rebuilt. **▶ NEXT = I-4 `ledger_stage007`** (pathA_35 G0 freeze reshape — running-start source map
-> = `research/pde_ledger_v2/notes/stage007_pathA35_G0_source_map.md`: frozen action + hash mechanics + the "11" + the erratum + 7 reshape
-> trip-ups; the LAST Part-I stage); then the **Part II (gravity) atomic-split USER GATE** (the swing, ~20–28 stages). Remaining Parts order
-> II → III (remaining) → IV → V → VI → VII (last).
+> rewritten). Registration at count 6, PDF rebuilt. **✅ I-4 `ledger_stage007` DONE (2026-07-07) → PART I COMPLETE.** Reshape of the
+> `pathA_35_G0_{sympy.py,.wl}` pair (`T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`): Codex directive-review
+> `DIRECTIVE_CLEAN` first pass → build first pass clean — the argparse/`--compare` JSON **payload mirror KILLED** (each engine standalone;
+> the `.wl` re-authored independent: own byte-level fence scanner + `Hash[...,"SHA256"]`, own dim machinery, own generic-`k` projector/rank
+> DOF route), the hardcoded `4/4/1/6/11/8` `ledger()` replaced by a **computed enumeration table** (subcounts + n COMPUTED, verdict BUILT
+> from n, `{ρ_B0,χ_c,C_hu}` anti-absorption guard per the 2026-07-04 erratum), hash fidelity fence-parsed (never fixed offsets) + teeth,
+> DOF=8 rank-computed, `μ_R`≠`μ_R⁽⁴⁾` dimensional firewall (R17 stays PENDING). Dual-engine SymPy 96 / Mathematica 94 PASS, CWD-independent →
+> arbiter re-run 7/7 → tri-review CLEAN (`FIDELITY_CLEAN` coverage-diff no-dropped-check; `ADVERSARIAL_CLEAN` 26-run matrix: byte-inside-block
+> fails vs byte-outside passes, dual-corruption class fails BOTH engines, teeth recompute) → nits remediated (2 inert X≡X DOF checks deleted;
+> drift-table dims made load-bearing + new tooth; short-hash-prefix assert; Route-A token printed). ⚠ Process catch: the remediation session
+> was interrupted mid-edit and left the `.wl` **silently skipping the whole drift section at exit 0** (a Wolfram arity mismatch —
+> `runComputedDriftLedger[]` def vs `[dims]` call = unevaluated expression, no error) — caught by TALLY ARITHMETIC + check-name diff
+> (93→78 ≠ expected 94), repaired, fresh-agent **`REVERIFY_CLEAN`** (mutation evidence incl. the M13 dual-corruption class now failing both).
+> Register updated (rows `λ_Pu`/`Ω_w`/`g_ℓ+ℓ_g`, the 6-postulate structural block, `μ_R`/`ρ_br` re-homed to I-4, edges R21 scope-split +
+> R22 firewall) + Codex-verify **caught R22 `CODIM-PROVEN` as an overclaim** → folded to `structural (NOT a reduction)` + confirm
+> `REGISTER_CLEAN`. Registration at count 7, PDF rebuilt. **▶ NEXT = the Part II (gravity) atomic-split USER GATE** (the swing, ~20–28
+> stages; per-Part split shown before building). Remaining Parts order II → III (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

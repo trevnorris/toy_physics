@@ -67,7 +67,17 @@
   item); two handoff dimensional defects pinned + erratum'd (`KINETIC_MASS_FACTOR_PINNED`,
   `HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`); conceptual_foundation §2 slab caveat + §7 route-(a)/(c) fork recorded.
   Registration at count 6, PDF rebuilt.
-- **▶ NEXT = I-4 `ledger_stage007`** (pathA_35 G0 freeze). Then Part II (gravity, the swing).
+- **I-4 `ledger_stage007` DONE (2026-07-07) → PART I COMPLETE.** Reshape of `pathA_35_G0_{sympy.py,.wl}`:
+  payload mirror killed (independent standalone engines; `.wl` = own fence-scanner/hash/dim/projector-rank routes);
+  the "11" COMPUTED from the enumerated table (4 constants + 1 function + 6 structural postulates; verdict built
+  from computed n; `{ρ_B0,χ_c,C_hu}` anti-absorption guard per the erratum); hash fidelity fence-parsed + teeth;
+  DOF=8 rank-computed; `μ_R`≠`μ_R⁽⁴⁾` firewall (R17 PENDING). Dual-engine SymPy 96 / Mathematica 94 PASS →
+  tri-review CLEAN (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, 26-run matrix) → nits remediated (X≡X pair deleted,
+  table dims load-bearing + tooth, short-hash prefix, Route-A token); an interrupted remediation transiently left
+  the `.wl` silently skipping the drift section at exit 0 (Wolfram arity mismatch = unevaluated call) — caught by
+  tally arithmetic, repaired → `REVERIFY_CLEAN`. Register updated (λ_Pu/Ω_w/g_ℓ+ℓ_g rows, structural block,
+  R21/R22, re-home) + Codex-verified (R22 flag overclaim caught + folded). Registration at count 7, PDF rebuilt.
+- **▶ NEXT = the Part II (gravity) atomic-split USER GATE** (the swing, ~20–28 stages).
 
 ## Per-stage process (unchanged, calibrated)
 

@@ -87,13 +87,22 @@
 > silenced limit's result independently asserted). Fidelity ALSO caught a fan-out slip in the split note (`ε0=1−T0(0)` → corrected
 > `1−T0(0)=ε0/(1+ε0)`). Register: rows `{d, ε0, ε1}` (slab-family; ε's `FREE-UNREDUCED` on the Gate-6 route) + edge **R24** (Z accounting
 > `DERIVED`-qualified) — `REGISTER_CLEAN` first pass. Registration at count 9, PDF rebuilt.
-> **▶ NEXT = II-B3 `ledger_stage010`** (pathA_29 Check B: the localization `p=2` dsolves on both DC-sink completions + the r⁻⁴
-> counterfactual guard + `classify_dc_sink_gate` + the NOGO warp control + the static-dynamic consistency; the COMPLETING stage of the
-> joint `RETURN_RESIDUAL_PREDICTION` verdict — consumes 009's Check-A component CITED + 008's `p_raw(ℓ2)=5`; completes the pathA_29 fold.
-> ⭐ **Running-start source map READY = `research/pde_ledger_v2/notes/stage010_pathA29_checkB_source_map.md`** — the Check-B slice line
-> refs, the solve mechanics (dsolve-first-then-limit, boundary-SELECTION labeling, static–dynamic consistency kept / trace hashes
-> dropped), 8 reshape trip-ups (incl. the recurring set-then-compare-to-self rig class → dual-site consumed inputs from the start),
-> teeth candidates, register expectation (no new knobs; `k_warp` tracked-not-counted; R19/`W_slab` caveat linkage).
+> **✅ II-B3 `ledger_stage010` DONE (2026-07-08):** pathA_29 Check B (`p=2` both DC-sink completions + `RETURN_NOGO` warp control) —
+> completed the pathA_29 joint `RETURN_RESIDUAL_PREDICTION` fold; SymPy 71 / WL 81; tri-review CLEAN → 4 nits (exact-value anchor closing
+> a coordinated-both-sites escape) → `REVERIFY_CLEAN`; edge R25 (localization EARNED-within-family, structural); count 10.
+> **✅ II-G1a `ledger_stage011` DONE (2026-07-08):** pathA_30 frozen-reduction certificate reshape **+ a DE-RIG** (first since stage007) —
+> `FROZEN_REDUCTION_HELMHOLTZ_CERTIFIED` (011 component of the joint `DN_UNITTEST_BC_DEPENDENT`; D/N ladder + `BC_DEPENDENT` landing = 012).
+> `L_s` ASSEMBLED from the reduction → const-coeff Helmholtz `ψ''+(ω/c_S)²ψ=0`; the three source tautologies genuinely de-rigged
+> (`operator_is_helmholtz` PRODUCED, `speed_is_cs` EXTRACTED, `domain_is_L0` SOLVED from the pinch-off, `unsuppressed_operator_intrusion`
+> COMPUTED) — each able-to-fail; BdG `k⁴` a genuine 4th-order intrusion (Codex design-review caught the first-draft coefficient-shift error,
+> 3 BLOCKING → confirm-pass CLEAN); validity window R26 + ξ≠ℓ_c firewall R27; CITED R1 at ρ* dual-site; clean 011/012 cut at the `dsolve`;
+> zero file I/O; SymPy 61 / WL 71; tri-review CLEAN both legs → 3 teeth/label nits (firewall tooth made genuine, witness-path tooth 3b →
+> flag load-bearing, arity labels) → `REVERIFY_CLEAN`; **zero new counted knobs** (`L0`=ACTION-geometry, `ℓ_c` INERT) + structural edges
+> R26/R27; `REGISTER_CLEAN`; count 11, PDF 37pp. Full per-stage detail in STATUS.md ▶ RESUME HERE + `part2_gravity_atomic_split.md` Progress.
+> **▶ NEXT = II-G1b `ledger_stage012`** (pathA_30 DtN pole ladder + Robin falsifier: `dsolve` → D/N determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`,
+> half-shifted pole ladder, `R_rt=1`, Robin counterfactual + guard, `tan_argument`/`Z00` dim legs; BC = banked calibration → the
+> `BC_DEPENDENT` landing; completes the joint verdict). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin able-to-fail guard +
+> the K-dim tan-arg probe. No running-start source map yet — the stage011 source map §1/§2 already delineates the 012 slice (`.py` L426→587).
 > ⭐ **Conceptual bank (2026-07-08, `373a4a3c`):** route-(c) physical picture (per-constituent orientable micro-configuration —
 > Phlat-Ball/gimbal image; brane = aligned arrows, bulk = demagnetized-ferromagnet disorder, throat = aligner/de-aligner) banked in
 > `conceptual_foundation.md` §7 #12; **user completeness criterion** = the ledger is NOT complete until ONE clean equation set explains

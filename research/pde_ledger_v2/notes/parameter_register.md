@@ -63,7 +63,12 @@ medium constants) + edge R24 (Z accounting `DERIVED`); the residual prediction i
 perfect-return limits computed reversible), 010 (pathA_29 Check B slab localization p=2 + NOGO — the COMPLETING stage
 of the pathA_29 joint verdict; adds **NO new counted knobs**: `k_warp` is a control-construction symbol used ONLY in
 the anti-localizing warp NOGO control (tracked, not counted), and the `1/r²` localization survival on the slab family
-discharges NOTHING — R19/`W_slab` and R23 stay `PENDING`; the stage's contribution is edge R25). Seeded knit params
+discharges NOTHING — R19/`W_slab` and R23 stay `PENDING`; the stage's contribution is edge R25), 011 (pathA_30 II-G1a
+frozen-reduction certificate — adds **NO new counted knobs**: `L0` (throat depth) = POSTULATED `ACTION`-geometry
+(tracked, not counted, like stage009's `d`), `ℓ_c` (confinement length) INERT here (`δV_conf=0`; tracked, not counted),
+`R_mouth` cancels out of the pinch-off root (a construction scale), and `ξ=ħ/(m c_s)` is the R2-family healing length
+in the source's no-√2 convention (`DERIVED`, not new); the stage's contributions are edges R26 (frozen-reduction
+validity record) + R27 (`ξ≠ℓ_c` firewall)). Seeded knit params
 (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
@@ -113,6 +118,8 @@ discharges NOTHING — R19/`W_slab` and R23 stay `PENDING`; the stage's contribu
 | `d` (slab spacing) | `L` (stage 009: `[τ]=T` via `τ=2d/c_S` dual-engine) | II-B2 (009) postulated slab | `ACTION` (geometry of the executable flat-slab family — NOT a medium constant) | `τ = 2d/c_S` DERIVED from the Helmholtz basis | the slab family is POSTULATED; the real return geometry = the deferred nonlinear brane↔bulk closure |
 | `ε0, ε1` (DC channel transmissions) | `1` (stage 009, dual-engine) | II-B2 (009) return channels | `FREE-UNREDUCED` (per-channel; independent) | residual prediction `A_res ∝ ε_ℓ/(1+ε_ℓ)`; `Z=−M0·ε0/(1+ε0)` (R24); strict `ε_ℓ→0⁺` = perfect return (prediction vanishes, orders lift to 2/4, Z→0 — COMPUTED reversibility) | named route: the track-3/Gate-6 nonlinear return would derive the transmissions from the medium (the same wall that discharges R23) — `PENDING` |
 | `k_warp` (anti-localizing warp scale) | `L⁻¹` (stage 010: `k_warp·w` dimensionless, dual-engine) | II-B3 (010) NOGO control | `CANDIDATE` (control-construction symbol — the delocalizing half-line warp `μ(w)=exp(2·k_warp·w)` used ONLY to prove the classifier able-to-fail) | — | tracked, **not counted** (like the leg-C probe symbols); no medium provenance — it constructs the falsifiable counterexample, not the physics |
+| `L0` (throat depth) | `L` (stage 011: domain `[0,L0]`, cap `R0(L0)=0`, dual-engine) | II-G1a (011) frozen-reduction domain | `ACTION` (straight-reference throat geometry — NOT a medium constant, like stage009's `d`) | cap endpoint SOLVED from the pinch-off `R0(s)=0` on a POSTULATED monotone taper (`R_mouth` cancels) | tracked, **not counted**; the throat depth's dynamical selection is deferred Gate-6/`W_slab` territory (R19-adjacent) |
+| `ℓ_c` (confinement length) | `L` (stage 011: in `V_wall(Σ/ℓ_c)`; dual-engine `ξ≠ℓ_c` firewall) | II-G1a (011) | `CANDIDATE` (INERT here — `δV_conf=0` in the frozen `η=0` test) | distinct from the healing length `ξ` (edge R27 firewall) | tracked, **not counted**; a live confinement scale only when the wall is un-frozen (Phase-2 variable-coefficient physics) |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -163,6 +170,8 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R23 | return-cancellation targets `R0(ω)=−M0(ω)`, `R1_i(ω)=−D1_i(ω)` (the moments any brane↔bulk return must cancel) | `PENDING` (constraint-spec obligation — bookkeeping `x−x` identity, NOT a derived cancellation; whether an admissible return delivers it = stages 009/010 + the Gate-6 `Z0_ret/Z1_ret` selector) | II-B1 (008) | the pde-ledger open-item-#9 target made precise; `cancellation_possible` stays a literal scope flag until track-3 decides |
 | R24 | `Z = −M0·ε0/(1+ε0)` (signed local source accounting: channel sum `Z_throat + Z_return`, sign certificate computed) | `DERIVED` (ACCOUNTING within the postulated slab family — collapses `Z` into `{M0, ε0}`; does NOT derive the `Z<0` drain-admissibility PREMISE, which stays `Z_is_premise=true`) | II-B2 (009) | stage009 sharpens open-item #9 (bounded residual `p_res=1/3`, per-channel `ε_ℓ`-contingent) — does NOT close it |
 | R25 | `1/r²` localization survives the finite slab (both DC-sink completions → normalizable `m=0` zero mode → 3D-radial dsolve → `p=2`) | structural (EARNED-WITHIN-FAMILY verdict, dual-engine + able-to-fail via the anti-localizing warp → `p=3` → `RETURN_NOGO`; **NOT a reduction** — discharges NO knob) | II-B3 (010) | completes the pathA_29 joint `RETURN_RESIDUAL_PREDICTION`; explicitly does **not** discharge R19 (`W_slab` slab-width selection) or R23 (return-cancellation targets) — localization on the FAMILY ≠ the family selected by dynamics |
+| R26 | frozen-reduction validity record: `L_s ψ = ψ''+(ω/c_S)²ψ` (const-coeff Helmholtz) is EXACT only on the window `{ρ0'/ρ0=0, √γ0 const, δV_conf=0, ∇Q=0, kξ≪1}`; the Bogoliubov `k⁴` term is a DEFERRED fourth-derivative intrusion `−(ħ²/4m²c_S²)ψ''''` | structural (validity certificate, dual-engine + able-to-fail — a surviving intruding term → `FAIL_OPERATOR_INTRUSION`; **NOT a reduction** — discharges NO knob; the speed is banked R1) | II-G1a (011) | records the conditions under which the frozen-throat longitudinal reduction to a Helmholtz resonator holds; the deferred variable-coefficient / BdG terms are Phase-2 physics (not dropped unconditionally) |
+| R27 | `ξ = ħ/(m c_s)` (healing length) ≠ `ℓ_c` (confinement length) — distinct `[L]` symbols, never substituted | structural (dimensional/semantic firewall, dual-engine asserted + able-to-fail; analogous to R22's `μ_R≠μ_R⁽⁴⁾`; **NOT a reduction**) | II-G1a (011) | prevents a silent conflation of the two lengths that would fake a relation; `ℓ_c` INERT here (`δV_conf=0`), `ξ` is R2-family (source's no-√2 convention) |
 
 ---
 
@@ -212,6 +221,15 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   counterexample, not the physics). R25 is **structural, not a reduction**: the localization discharges no knob and
   explicitly leaves R19 (`W_slab` slab-width selection) and R23 (return-cancellation targets) `PENDING` — localization
   on the postulated FAMILY is not the family selected by dynamics.
+- **Stage 011 (pathA_30 Check II-G1a): zero new counted knobs — the frozen-reduction certificate.** The frozen wall
+  (`η=0`) collapses the longitudinal operator to const-coeff Helmholtz `L_s = ψ''+(ω/c_S)²ψ` (edge R26), with the speed
+  BANKED (R1 at `ρ*`, not re-derived) — so the stage adds **no reduction**. New tracked-not-counted symbols: `L0`
+  (throat depth, `ACTION`-geometry like `d`), `ℓ_c` (confinement length, INERT here — `δV_conf=0`); `R_mouth` cancels
+  out of the pinch-off root; `ξ=ħ/(m c_s)` is R2-family (`DERIVED`). The two structural edges — R26 (the validity
+  window: the reduction is exact only under `{ρ0'/ρ0=0, √γ0 const, δV_conf=0, ∇Q=0, kξ≪1}`, the BdG `k⁴` term a
+  DEFERRED 4th-order intrusion) and R27 (the `ξ≠ℓ_c` firewall, analogous to R22) — **discharge nothing**; both are
+  able-to-fail (a surviving intruding term → `FAIL_OPERATOR_INTRUSION`; a conflation → firewall fires). The D/N
+  boundary determination + the `BC_DEPENDENT` landing are stage 012's (banked calibration, `bc_derivation_emitted=False`).
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

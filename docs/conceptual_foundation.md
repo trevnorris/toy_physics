@@ -610,6 +610,18 @@ Honest list of what the picture still owes us. (Concept-level; the math test pla
     future gate**, in the same deferred-nonlinear territory as Route A / the NG5 reductions. Until then the four-sector claim is
     honestly "four sectors from one medium **plus an imposed wall**." (Also the λγ tie-in: earning the wall's moduli from the
     same dynamics that sets `c_s` is what could make `λγ` a prediction instead of a calibration — register edge R10.)
+    **The route-(c) physical picture (user, 2026-07-08 — banked as the intuition the gate will test):** each medium constituent
+    carries an internal orientable micro-configuration (picture a Phlat-Ball / concentric gimbal rings — a structure with distinct
+    folded/unfolded states; formally, the bulk-wide `Pⁱ` "little arrows" with the `(PⁱPⁱ−1)²` soft-unit constraint). **The phase IS
+    the arrows' collective state**: on the brane the configurations are aligned/locked (arrows to the normal) → macroscopic shear
+    rigidity → light; in the bulk the same constituents are individually intact but collectively disordered → zero macroscopic
+    shear — exactly a demagnetized ferromagnet (every atom has a moment; the bar has no field). The throat is the
+    aligner/de-aligner: the drain flow "throws" material hard enough to break alignment (`Γ_B<0` de-structuring — the shock that
+    demagnetizes), the return re-orders (`Γ_B>0`). If route (c) lands, this picture becomes the derivation (χ_B's postulated
+    double-well collapses into arrow physics and the drift shrinks); if it no-goes, the two-field ontology (P + independent χ_B,
+    pin P7) survives and the picture stays a heuristic. **User steer (2026-07-08): hammer at this identification later in the
+    ledger — the ledger is not complete until ONE clean equation set explains brane AND bulk** (the Part-VII unified parent action
+    is the floor; route (c) is the prize above it).
 13. **Does light's confinement (shear-free bulk) and its 2 polarizations actually fall out (§4)?** The intrinsic-(3+1)D / extrinsic-
     curvature picture *predicts* 2 polarizations + brane confinement for free, and re-frames the old "leak" as curvature, not loss — but
     this must be shown, not asserted (and it must still resolve the C5 longitudinal-mode obstruction at the throat, not in vacuum).

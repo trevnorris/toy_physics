@@ -274,6 +274,14 @@ Then batch Part-by-Part; per-batch user gate (sequential audit chunks, [[feedbac
 
 ## 8. Tracked integration items (surfaced now so they aren't lost)
 
+- **⭐ The ledger-completeness criterion (user, 2026-07-08):** *the ledger is not complete until ONE clean equation
+  set explains brane AND bulk.* The Part-VII unified parent action is the floor for this (single functional, every
+  postulated piece labeled); the prize above it is **route (c)** — χ_B as the medium's own orientational order
+  (`χ_B=|P_∥|²`), whose physical picture (per-constituent orientable micro-configuration; brane = aligned phase,
+  bulk = demagnetized-ferromagnet disorder, throat = the aligner/de-aligner) is banked in
+  `docs/conceptual_foundation.md` §7 #12. **User steer: hammer at this identification later in the ledger** —
+  scope it as Part-VII-adjacent work (full new-derivation gauntlet; high-risk, neighbors falsified; a no-go is a
+  first-class result).
 - **χ_Q reconciliation** (Part VII): `pathA_22b ≈0.712` (older minimal-combination context) vs `pathA_33 =1`
   (outgoing-DtN Hankel context) — same name, different computations. Reconcile explicitly; do **not** silently merge.
 - **The registers** (Part VII, completeness standard #4): every sim-dependent quantity

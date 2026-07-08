@@ -1,0 +1,122 @@
+\section{Stage 012: DtN Pole Ladder \texorpdfstring{\& Robin Falsifier (\(Z_{00}=-(\omega/c_S)\tan\))}{and Robin Falsifier} (Check II-G1b)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (brane\(\leftrightarrow\)bulk return; the frozen-throat resonator response; COMPLETES the pathA\_30 D/N fold opened by Stage~011)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{On Stage~011's cited frozen constant-coefficient Helmholtz
+operator \(L_s\psi=\psi''+(\omega/c_S)^2\psi=0\) on \(s\in[0,L_0]\), pose and
+solve the Dirichlet/Neumann boundary-value problem: derive the outward-mouth
+Dirichlet-to-Neumann map \(Z_{00}=-(\omega/c_S)\tan(L_0\omega/c_S)\), its
+half-shifted resonance ladder \(\omega_n=\pi c_S(n+\tfrac12)/L_0\), its
+round-trip \(R_{\rm rt}=1\), and the Robin counterfactual that proves the D/N
+determination is not hardcodable --- landing the joint verdict at
+\texttt{DN\_UNITTEST\_BC\_DEPENDENT} because the boundary condition itself is
+imposed (\(bc\_derivation\_emitted=\text{false}\), a banked calibration input).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage012_dtn_pole_ladder_robin_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage012_dtn_pole_ladder_robin_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the DtN, ladder, round trip, and Robin counterfactual
+are exact algebra \emph{within the imposed-BC closure}. This stage COMPLETES the
+joint pathA\_30 verdict \texttt{DN\_UNITTEST\_BC\_DEPENDENT}: Stage~011 carried
+the reduction-certificate component (\texttt{REDUCTION\_CERTIFIED}), and Stage~012
+adds the D/N ladder plus the \texttt{BC\_DEPENDENT} landing. It is a near-pure
+\emph{bridge-strip} (contrast Stage~011's de-rig): the physics is already
+genuinely computed in the source and the \texttt{.wl} transfer-matrix route
+already carries it, so the reshape severs the scratch-YAML bridge and keeps the
+native content. The operator, domain, and speed are \emph{consumed} from
+Stage~011 (dual-site citation-integrity); the stage opens at the general-solution
+\texttt{dsolve}. Its register contribution is the single \emph{imposed} edge R28
+(the D/N boundary is a banked calibration input), which discharges no knob.
+
+\paragraph{The D/N boundary-value problem and the DtN.}
+The \texttt{dsolve} of the cited \(L_s\) gives
+\(\psi=C_1\sin(\omega s/c_S)+C_2\cos(\omega s/c_S)\). Imposing the Dirichlet
+mouth trace \(\psi(0)=\psi_M\) and the Neumann cap \(\psi'(L_0)=0\), the \(2\times2\)
+coefficient matrix (determinant \(-\omega\cos(L_0\omega/c_S)/c_S\)) is solved by
+\texttt{LUsolve}, and the outward-mouth admittance is
+\[
+  Z_{00} \;=\; -\frac{\partial_s\psi|_0}{\psi|_0} \;=\; -\frac{\omega}{c_S}\,\tan\!\Big(\frac{L_0\omega}{c_S}\Big).
+\]
+\texttt{dtn\_matches\_target} compares this \emph{derived} \(Z_{00}\) (from the
+\texttt{LUsolve}) against the typed target \(-k\tan(kL_0)\) --- a genuine
+derived-vs-typed comparison, not an \(X\equiv X\): perturbing the Neumann RHS
+recomputes the derived DtN and the comparison fails.
+
+\paragraph{Ladder, static limit, round trip.}
+The DtN denominator's \(\cos(L_0\omega/c_S)\) factor gives the pole equation
+\(\cos(L_0\omega/c_S)=0\), whose roots are the \emph{half-shifted} ladder
+\(\omega_n=\pi c_S(n+\tfrac12)/L_0\); \texttt{halfshift} is computed as
+\(pole\_residual=0\). The small-\(\omega\) series
+\(-L_0\omega^2/c_S^2-L_0^3\omega^4/(3c_S^4)+O(\omega^6)\) is the leading static
+compliance (distinct from the DC limit \(\lim_{\omega\to0^+}Z_{00}=0\); no
+separate static solve). With Dirichlet/Neumann reflections \(r_D=-1,\ r_N=+1\),
+the round-trip factor \(-\exp(2iL_0\omega/c_S)\) evaluates to \(R_{\rm rt}=1\)
+(\(\varphi_0=0 \bmod 2\pi\)) on the ladder.
+
+\paragraph{The Robin falsifier.}
+Without a counterfactual the D/N determination is hardcodable. The Robin cap
+\(\partial_s\psi-\alpha\psi=0\) interpolates Neumann (\(\alpha\to0\)) and
+Dirichlet (\(\alpha\to\infty\)); its DtN reads off
+\(robin\_denominator\_core=k\cos(kL_0)-\alpha\sin(kL_0)\). The
+\texttt{counterfactual\_guard} has exactly six members, each a \emph{computed
+residual} (not a stamped truthiness): \texttt{robin\_determinant\_emitted} tied
+to the computed Robin determinant \(robin\_det\equiv-robin\_denominator\_core\);
+\texttt{recovers\_DN\_at\_alpha0} (\(\alpha\to0\) recovers \(-(\omega/c_S)\tan\));
+\texttt{recovers\_DD\_at\_alpha\_inf} (\(\alpha\to\infty\) recovers the D/D DtN
+\(k\cot(kL_0)\)); \texttt{halfshift\_destroyed\_for\_DD} (the D/D denominator
+\(\sin(kL_0)\) gives the \emph{integer} ladder \(\pi c_S j/L_0\), not the
+half-shifted one); \texttt{numeric\_alpha\_distinct} (\(\alpha=2/L_0\) distinct
+from both limits, exact rationals); and \texttt{dtn\_mismatch}. The artifact
+\(dd\_zero\_mode\_removable=1/L_0\) is held out of the guard. Breaking
+\(robin\_denominator\_core\) flips the recomputed \texttt{recovers\_DD\_at\_alpha\_inf}
+and is caught (\(\to\)\texttt{FAIL\_COUNTERFACTUAL}).
+
+\paragraph{Imposed BC (honest scope) and the completed joint verdict.}
+The D/N boundary pair is IMPOSED (\(bc\_provenance=\text{imposed}\)); the explicit
+mouth/cap \(V_{\rm wall}\) gradient derivation is \emph{not} emitted
+(\(bc\_derivation\_emitted=\text{false}\)), so the verdict lands at
+\texttt{DN\_UNITTEST\_BC\_DEPENDENT} rather than \texttt{DN\_UNITTEST\_PASS}
+(edge R28; earning \texttt{PASS} is a deferred upgrade, not fabricated here). The
+012-scoped verdict is a function of the computed rungs (\texttt{FAIL\_DIMENSIONAL}
+\(\to\) \texttt{FAIL\_POLE\_LADDER} \(\to\) \texttt{FAIL\_COUNTERFACTUAL} \(\to\)
+the \texttt{BC\_DEPENDENT} landing), and the joint verdict is printed as
+\texttt{DN\_UNITTEST\_BC\_DEPENDENT} \(=\) (011: \texttt{REDUCTION\_CERTIFIED},
+cited) \(\wedge\) (012: DtN ladder + \texttt{BC\_DEPENDENT} landing, computed
+here), not typed as 012-earned.
+
+\paragraph{Consumed + dimensional leg.}
+The frozen operator \(L_s\), domain \([0,L_0]\), and speed \(c_S\) are CONSUMED
+from Stage~011 with dual-site citation-integrity: for \(L_s\), site~A the typed
+export form and site~B the \emph{null-space reconstruction} from the
+\texttt{dsolve}'d pair \(\{\sin,\cos\}\) (posit \(y''+ay'+by\), solve for
+\((a,b)=(0,(\omega/c_S)^2)\)) --- a genuinely independent construction (a
+\(\sin/\cos\!\to\!\sinh/\cosh\) corruption recovers \(b=-(\omega/c_S)^2\) and
+fires); for \(c_S^2=5K\rho^4/m\) (R1 at \(\rho_*\)), the literal vs the EOS route
+\(\partial_\rho(K\rho^5)/m\). The 012 dimensional legs use the
+\([K]=[P]-5[\rho]\) chain: \([\text{tan\_argument}]=[kL_0]=1\) (dimensionless),
+\([Z_{00}\text{\_prefactor}]=[-k]=L^{-1}\); the corrupt-\([K]\) probe propagates
+\([c_S^2]\to[c_S]\to[k]\), flipping both legs \(\to\)
+\texttt{DN\_UNITTEST\_FAIL\_DIMENSIONAL}. \(\alpha\) (Robin cap admittance,
+\([\alpha]=L^{-1}\)) is a control-construction symbol; zero new counted knobs.
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O --- the source pair's
+scratch-YAML/\texttt{\_sympy\_exprs.wl} export, the Mathematica-YAML re-read, and
+the \texttt{expression\_digest}/\texttt{engine\_agreement} plumbing are retired;
+the \texttt{.wl} KEEPS its transfer-matrix route as the independent engine
+(propagate the mouth state through \(\texttt{transferMatrix}[L_0]\), impose the
+Neumann cap, read \(Z_{00}\) --- a different decomposition from the \texttt{.py}
+\texttt{LUsolve}, computed agreement), preserving its native
+\texttt{robinAlpha0==dtnTransfer}/\texttt{robinAlphaInf==ddTransfer} self-checks,
+with an arity self-check and no load-bearing message silenced. SymPy 84 PASS /
+Mathematica 90 PASS (the \(+6\) = the \texttt{.wl} arity block net of two
+SymPy-only DtN-detail checks), exit 0, CWD-independent. Full tri-review on fresh
+agents: \texttt{FIDELITY\_CLEAN} (all values hand-re-derived; the six-member
+Robin guard each a genuine residual; \texttt{dtn\_matches\_target} genuine
+derived-vs-typed; the \(L_s\) null-space dual-site independent; the
+consume-from-011 boundary clean) and \texttt{ADVERSARIAL\_CLEAN} (16-mutant matrix
+--- the guard un-stampable, the \(\sin/\cos\!\to\!\sinh/\cosh\) corruption fires
+in both engines, even a hardcoded DtN target is caught, all four verdict rungs
+reachable, arity clean). Eight able-to-fail teeth, mutations on copies.

@@ -173,18 +173,37 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   Register: **zero new counted knobs** (`L0`=`ACTION`-geometry like stage009's `d`; `ℓ_c` INERT; `R_mouth` cancels; `ξ`
   R2-family DERIVED) + structural edges **R26** (frozen-reduction validity record) + **R27** (ξ≠ℓ_c firewall) —
   discharge NOTHING; `REGISTER_CLEAN` first pass. Registration at count 11.
-- **▶ NEXT = Cluster A `ledger_stage012`** (II-G1b, pathA_30 DtN pole ladder + Robin falsifier: `dsolve` → D/N
-  determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`, half-shifted pole ladder `ω_n=πc_S(n+½)/L0`, round-trip `R_rt=1`, Robin
-  counterfactual + guard, the `tan_argument`/`Z00` dim legs; BC = banked CALIBRATION input → the `BC_DEPENDENT` landing;
-  completes the joint `DN_UNITTEST_BC_DEPENDENT`). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin
-  able-to-fail guard + the K-dim tan-arg probe (split-note trip-up). ⭐ **Running-start source map READY** =
-  `research/pde_ledger_v2/notes/stage012_pathA30_dtn_ladder_source_map.md` — 012 is a near-PURE bridge-strip (NOT a
-  de-rig like 011): the `.wl` transfer-matrix route ALREADY carries the DtN/pole/Robin/static (strip only
-  `Get`+`sympy*`+`Export`, KEEP L25–48; contrast 011 where L32–48 was excluded). Able-to-fail burden = the Robin
-  falsifier (all 6 guard booleans computed) + the K-dim tan-arg probe; `dtn_matches_target` is a genuine
-  derived-vs-typed comparison and `bc_derivation_emitted=False` is an honest scope flag (NOT a tooth — do not fabricate
-  a BC derivation to force `..._PASS`). Zero new counted knobs (`α` = Robin control, tracked-not-counted like `k_warp`)
-  + edge candidate R28 (D/N boundary IMPOSED, banked calibration → the `BC_DEPENDENT` landing).
+- **II-G1b `ledger_stage012` DONE (2026-07-08)** — pathA_30 DtN pole ladder + Robin falsifier reshape (a near-PURE
+  bridge-strip, NOT a de-rig — contrast 011). **⭐ COMPLETES the joint `DN_UNITTEST_BC_DEPENDENT`** = (011:
+  `REDUCTION_CERTIFIED`, cited) ∧ (012: DtN ladder EARNED + `BC_DEPENDENT` landing, computed here). EARNED: `dsolve` of
+  the cited frozen `L_s` → D/N coeff-matrix `LUsolve` → DtN `Z00=−(ω/c_S)tan(L0ω/c_S)` (`dtn_matches_target` = genuine
+  derived-vs-typed, NOT X≡X); half-shifted ladder `ω_n=πc_S(n+½)/L0` (`halfshift=pole_residual==0` computed); static
+  small-ω series (distinct from `limit=0`); round-trip `R_rt=1`; the **Robin falsifier** — the true 6-member
+  `counterfactual_guard` `{robin_determinant_emitted (hardened to the computed det, not bool(hstr)), recovers_DN_at_alpha0,
+  recovers_DD_at_alpha_inf, halfshift_destroyed_for_DD, numeric_alpha_distinct, dtn_mismatch}`, each a computed residual
+  (`dd_zero_mode_removable`=1/L0 held out as artifact); `tan_argument`/`Z00` dim legs + corrupt-`[K]` (propagates
+  through `[c_S²]→[c_S]→[k]`). CONSUMES stage011's `L_s`/`[0,L0]`/`c_S` dual-site — the `L_s` site B = **null-space
+  reconstruction** from the `dsolve` `{sin,cos}` pair (posit `y''+ay'+by`, solve `(a,b)=(0,(ω/c_S)²)`; a genuinely
+  independent construction, NOT a `k²`-rename — sinh/cosh corruption fires both engines). Zero file I/O; the `.wl` KEEPS
+  its transfer-matrix route as the independent engine (native self-checks `robinAlpha0==dtnTransfer`/`robinAlphaInf==ddTransfer`
+  preserved; DtN cross-check vs the `.py` `LUsolve` computed-not-hardcoded). Dual-engine SymPy 84 / Mathematica 90
+  (+6 = arity block net of 2 SymPy-only DtN-detail checks), CWD-independent. Codex directive design-review caught 3
+  BLOCKING (`L_s` dual-site was a rename → null-space route; wrong guard membership + `robin_determinant_emitted`
+  hardening; §4.1 tooth was a no-op forced-true → break-the-derivation) + 1 nit (§2d series≠limit) → folded → confirm
+  `DIRECTIVE_CLEAN`. Tri-review CLEAN both legs (`FIDELITY_CLEAN` full coverage diff; `ADVERSARIAL_CLEAN` 16-mutant
+  matrix — guard un-stampable SM12, sinh/cosh fires SM2/MM3, hardcoded-target caught SM7, all 4 rungs reachable, arity
+  clean MM2). One documented non-blocking nit (the `.wl`'s `robin_determinant_emitted` witnesses the typed
+  `robinDenominatorCore` — directive-permitted, transfer route has no coeff-matrix det; derived route independently
+  guarded) — no remediation (no rig/vacuous-tooth/escape). Register: **zero new counted knobs** (`α`=Robin cap
+  admittance, `[α]=L⁻¹`, control-construction `CANDIDATE`, tracked-not-counted like `k_warp`) + edge **R28** (D/N
+  boundary IMPOSED → `BC_DEPENDENT`, `IMPOSED`/`PENDING`, discharges NOTHING; deferred discharge = the mouth/cap `V_wall`
+  derivation earning `DN_UNITTEST_PASS`), `REGISTER_CLEAN` first pass. Registration at count 12, PDF rebuilt (39pp).
+  ⭐ **pathA_30 fold COMPLETE (stages 011+012).**
+- **▶ NEXT = Cluster A `ledger_stage013`** (II-G2a, pathA_31 `BREATHING_CALIBRATED` 1/3: α_a/α_L harmonic lifts →
+  `M_AB`/`K_AB` by real ∫dw operator projection → the (a,L) collective closure). Consumes stage011/012's frozen throat
+  packet + Helmholtz operator + D/N provenance. See `notes/part2_gravity_atomic_split.md` row 013 + the pathA_31 (015)
+  trip-up (v1 REJECTED for an HF `x−x` tautology + typed counterfactual flags + gamed threshold — both HF routes
+  independently emitted; flags/threshold COMPUTED). No running-start source map yet — author one before building.
 
 ## Per-stage process (unchanged, calibrated)
 

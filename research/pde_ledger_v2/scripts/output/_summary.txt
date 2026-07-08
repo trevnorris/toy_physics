@@ -1,3 +1,3 @@
-PASS  ledger_stage011_frozen_reduction_certificate_sympy_audit  (4s)
+PASS  ledger_stage012_dtn_pole_ladder_robin_sympy_audit  (29s)
 
 TOTAL: 1  PASS: 1  FAIL: 0  SKIPPED: 0

@@ -68,7 +68,12 @@ frozen-reduction certificate — adds **NO new counted knobs**: `L0` (throat dep
 (tracked, not counted, like stage009's `d`), `ℓ_c` (confinement length) INERT here (`δV_conf=0`; tracked, not counted),
 `R_mouth` cancels out of the pinch-off root (a construction scale), and `ξ=ħ/(m c_s)` is the R2-family healing length
 in the source's no-√2 convention (`DERIVED`, not new); the stage's contributions are edges R26 (frozen-reduction
-validity record) + R27 (`ξ≠ℓ_c` firewall)). Seeded knit params
+validity record) + R27 (`ξ≠ℓ_c` firewall)), 012 (pathA_30 II-G1b DtN pole ladder + Robin falsifier — the COMPLETING
+stage of the joint `DN_UNITTEST_BC_DEPENDENT`; adds **NO new counted knobs**: `α` (Robin cap admittance, `[α]=L⁻¹`) is
+a control-construction symbol used ONLY to build the Robin counterfactual falsifier (tracked, not counted, like
+stage010's `k_warp`); the frozen operator/domain/speed are CONSUMED from stage 011 (not re-derived); the stage's
+contribution is edge R28 (the D/N boundary is IMPOSED → the `BC_DEPENDENT` landing, an `IMPOSED`/`PENDING` obligation,
+NOT a reduction)). Seeded knit params
 (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
@@ -120,6 +125,7 @@ validity record) + R27 (`ξ≠ℓ_c` firewall)). Seeded knit params
 | `k_warp` (anti-localizing warp scale) | `L⁻¹` (stage 010: `k_warp·w` dimensionless, dual-engine) | II-B3 (010) NOGO control | `CANDIDATE` (control-construction symbol — the delocalizing half-line warp `μ(w)=exp(2·k_warp·w)` used ONLY to prove the classifier able-to-fail) | — | tracked, **not counted** (like the leg-C probe symbols); no medium provenance — it constructs the falsifiable counterexample, not the physics |
 | `L0` (throat depth) | `L` (stage 011: domain `[0,L0]`, cap `R0(L0)=0`, dual-engine) | II-G1a (011) frozen-reduction domain | `ACTION` (straight-reference throat geometry — NOT a medium constant, like stage009's `d`) | cap endpoint SOLVED from the pinch-off `R0(s)=0` on a POSTULATED monotone taper (`R_mouth` cancels) | tracked, **not counted**; the throat depth's dynamical selection is deferred Gate-6/`W_slab` territory (R19-adjacent) |
 | `ℓ_c` (confinement length) | `L` (stage 011: in `V_wall(Σ/ℓ_c)`; dual-engine `ξ≠ℓ_c` firewall) | II-G1a (011) | `CANDIDATE` (INERT here — `δV_conf=0` in the frozen `η=0` test) | distinct from the healing length `ξ` (edge R27 firewall) | tracked, **not counted**; a live confinement scale only when the wall is un-frozen (Phase-2 variable-coefficient physics) |
+| `α` (Robin cap admittance) | `L⁻¹` (stage 012: `α·c_S` matches `[ω]=T⁻¹`; dual-engine) | II-G1b (012) Robin counterfactual | `CANDIDATE` (control-construction symbol — the Robin cap `∂ₛψ−αψ=0` used ONLY to build the falsifier that proves the D/N determination is not hardcodable: α→0 recovers D/N, α→∞ recovers D/D, numeric α distinct) | — | tracked, **not counted** (like `k_warp` at stage 010); no medium provenance — it constructs the falsifiable counterfactual, not the physics |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -172,6 +178,7 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R25 | `1/r²` localization survives the finite slab (both DC-sink completions → normalizable `m=0` zero mode → 3D-radial dsolve → `p=2`) | structural (EARNED-WITHIN-FAMILY verdict, dual-engine + able-to-fail via the anti-localizing warp → `p=3` → `RETURN_NOGO`; **NOT a reduction** — discharges NO knob) | II-B3 (010) | completes the pathA_29 joint `RETURN_RESIDUAL_PREDICTION`; explicitly does **not** discharge R19 (`W_slab` slab-width selection) or R23 (return-cancellation targets) — localization on the FAMILY ≠ the family selected by dynamics |
 | R26 | frozen-reduction validity record: `L_s ψ = ψ''+(ω/c_S)²ψ` (const-coeff Helmholtz) is EXACT only on the window `{ρ0'/ρ0=0, √γ0 const, δV_conf=0, ∇Q=0, kξ≪1}`; the Bogoliubov `k⁴` term is a DEFERRED fourth-derivative intrusion `−(ħ²/4m²c_S²)ψ''''` | structural (validity certificate, dual-engine + able-to-fail — a surviving intruding term → `FAIL_OPERATOR_INTRUSION`; **NOT a reduction** — discharges NO knob; the speed is banked R1) | II-G1a (011) | records the conditions under which the frozen-throat longitudinal reduction to a Helmholtz resonator holds; the deferred variable-coefficient / BdG terms are Phase-2 physics (not dropped unconditionally) |
 | R27 | `ξ = ħ/(m c_s)` (healing length) ≠ `ℓ_c` (confinement length) — distinct `[L]` symbols, never substituted | structural (dimensional/semantic firewall, dual-engine asserted + able-to-fail; analogous to R22's `μ_R≠μ_R⁽⁴⁾`; **NOT a reduction**) | II-G1a (011) | prevents a silent conflation of the two lengths that would fake a relation; `ℓ_c` INERT here (`δV_conf=0`), `ξ` is R2-family (source's no-√2 convention) |
+| R28 | the D/N mouth/cap boundary pair (Dirichlet at `s=0`, Neumann at `s=L0`) is IMPOSED, not derived (`bc_provenance=imposed`, `bc_derivation_emitted=False`) → the joint verdict lands at `DN_UNITTEST_BC_DEPENDENT`, not `DN_UNITTEST_PASS` | `IMPOSED`/`PENDING` (banked calibration input, dual-engine + able-to-fail — forcing the flag True reveals the deferred `DN_UNITTEST_PASS`; **NOT a reduction** — discharges NO knob) | II-G1b (012) | the DtN ladder `Z00=−(ω/c_S)tan(L0ω/c_S)` + half-shifted resonances are a DERIVED consequence of the imposed pair (which collapses no knob); the deferred discharge is an explicit mouth/cap `V_wall` gradient derivation that would earn `DN_UNITTEST_PASS` (analogous to R23's constraint-spec obligation) — Gate-6/Phase-2 territory |
 
 ---
 
@@ -230,6 +237,15 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   DEFERRED 4th-order intrusion) and R27 (the `ξ≠ℓ_c` firewall, analogous to R22) — **discharge nothing**; both are
   able-to-fail (a surviving intruding term → `FAIL_OPERATOR_INTRUSION`; a conflation → firewall fires). The D/N
   boundary determination + the `BC_DEPENDENT` landing are stage 012's (banked calibration, `bc_derivation_emitted=False`).
+- **Stage 012 (pathA_30 Check II-G1b): zero new counted knobs — the COMPLETING stage of the pathA_30 fold.** The
+  `dsolve` of stage 011's cited `L_s` → D/N BVP → the DtN `Z00=−(ω/c_S)tan(L0ω/c_S)`, the half-shifted resonance ladder
+  `ω_n=πc_S(n+½)/L0`, `R_rt=1`, and the Robin counterfactual. `α` (Robin cap admittance, `[α]=L⁻¹`) is a
+  control-construction `CANDIDATE` (tracked, not counted — like `k_warp`; it builds the falsifier, not the physics);
+  the operator/domain/speed are CONSUMED from stage 011. R28 is **imposed, not a reduction**: the D/N boundary pair is
+  a banked calibration input (`bc_provenance=imposed`, `bc_derivation_emitted=False`) → the joint verdict lands at
+  `DN_UNITTEST_BC_DEPENDENT`, discharging NO knob; its deferred discharge (an explicit mouth/cap `V_wall` derivation
+  earning `DN_UNITTEST_PASS`) is Gate-6/Phase-2 territory. **Completes the joint `DN_UNITTEST_BC_DEPENDENT` = (011:
+  REDUCTION_CERTIFIED) ∧ (012: DtN ladder + BC_DEPENDENT landing).**
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

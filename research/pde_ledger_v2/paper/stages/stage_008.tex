@@ -1,0 +1,86 @@
+\section{Stage 008: Monopole/Dipole Return Constraint Specification}
+
+\stagefield{Part / anchor}{Part II -- Gravity (first return/radiation stage)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Render the old ledger's open-item \#9 as an exact
+constraint specification: the raw \(\ell=0/1/2\) outgoing \(c_s\)-wave
+amplitudes and radiation orders, and the precise source moments any
+brane\(\leftrightarrow\)bulk return must cancel
+(\texttt{MONOPOLE\_DIPOLE\_RETURN\_CONDITIONAL}). The formal home of the
+targets \(R_0=-M_0\), \(R_{1,i}=-D_{1,i}\) consumed by Stages 009/010
+(pathA\_29) and 022/023 (pathA\_34); register edge R23.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage008_monopole_dipole_return_spec_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusOpen{} -- deliberately. \textbf{This is a verified
+CONSTRAINT-SPECIFICATION, not a falsifiable test of no-monopole-radiation}
+(the source gate's own scope caveat, carried verbatim-class). GR forbids
+monopole/dipole gravitational radiation; the drain breaks brane mass
+conservation, so suppression is conditional on a return that cancels the
+moments below. The cancellation condition is algebraic bookkeeping (an
+\(x-x\) identity, labeled as such in both engines);
+\texttt{cancellation\_possible} is a literal parameter flag printed as
+\emph{SCOPE: parameter, not computed -- track-3 decides}. The falsification
+lives downstream (Stages 009/010; the Gate-6 \(Z_{0,\rm ret}/Z_{1,\rm ret}\)
+selector).
+
+\paragraph{The DtN ladder (earned; scanned, not typed).}
+From spherical Hankel closed forms \(h_\ell=j_\ell+iy_\ell\), both engines
+form \(\Lambda_\ell = k\,h_\ell'/h_\ell|_{z=ka}\), normalize the admittance by
+its static value, and \emph{scan} for the first purely-imaginary
+\(k\)-coefficient:
+\[
+  p_{\rm raw}=1,3,5;\qquad
+  \text{kernels } i\frac{\omega}{c_S}a,\quad
+  i\frac{\omega^3}{c_S^3}\frac{a^3}{2},\quad
+  i\frac{\omega^5}{c_S^5}\frac{a^5}{27},
+\]
+\[
+  A_{\rm raw}^{(\ell 0)}=\frac{iM_0 a\omega}{c_S},\qquad
+  A_{\rm raw}^{(\ell 1)}=\frac{iD_1 a^3\omega^3}{2c_S^3},\qquad
+  A_{\rm raw}^{(\ell 2)}=\frac{iQ_2 a^5\omega^5}{27c_S^5},
+\]
+all symbolically nonzero; steady control \(\lim_{\omega\to0}A^{(\ell0)}=0\);
+dominance \(p(\ell{=}0)<p(\ell{=}2)\) from the scanned powers.
+
+\paragraph{Cancellation targets (bookkeeping, labeled).}
+\(R_0(\omega)=-M_0(\omega)\) with \(M_0=\int_{\rm brane}S_{\rm leak}\,d^3x\)
+(cancels \(O(\omega^1)\)); \(R_{1,i}(\omega)=-D_{1,i}(\omega)\) with
+\(D_{1,i}=\int x_i S_{\rm leak}\,d^3x+\int j_i\,d^3x\) including the carried
+odd wake (cancels \(O(\omega^3)\)). Conditions, not closure. The derivative
+outlet vertex \(g_{W0}=\eta\omega\) is recorded as a
+\texttt{branch\_assumption}, not verdict-bearing. Live-source consistency is
+anchored by direct integration of the frozen Stage-243/244 closed forms
+(\(\int W'j^w dw=-\sqrt2\,\ell_w j_0/4\);
+\(S_{\rm leak}=\sqrt2\,\mu_w\rho_0 E_0/(2\sqrt\pi\lambda^3)\)) with the
+strict-recovery limits computed but \emph{not} taken as a basis;
+Stage~006 owns the recovery-reduction derivation (boundary printed).
+
+\paragraph{Verdict machinery and guards.}
+The verdict is computed from computed booleans plus the literal flag; the
+synthetic control \((\mathrm{True},\mathrm{False},\mathrm{False})\to\)
+\texttt{MONOPOLE\_RADIATION\_UNAVOIDABLE} proves the rung reachable. The nine
+source controls are carried honestly: four computed, five printed as
+declarations (not counted checks), with the source's framing -- guards
+against obvious tautologies, not evidence of suppression-vs-unavoidable.
+Consumed from Stage~005: \(c_s^2=5K\rho^4/m_{\rm GNLS}\) (cited, exact-value
+integrity check \(5\cdot\tfrac{1}{500}\cdot(\sqrt{10})^4=1\)); frozen slice
+\(G=c=c_s=1\), \(K_{\rm eos}=1/500\), \((a^*,L^*)\) exact rationals, cited.
+\(Q_2\) is exported as a \textbf{free anchor} (not derived \(\ell=2\)
+physics) for Stage~026.
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O (the source pair's JSON/YAML
+engine bridge is retired): SymPy 54 PASS / Mathematica 57 PASS (3 = arity
+self-checks), both exit 0, CWD-independent. Eight able-to-fail teeth fire
+(Hankel-form corruption trips the scan; kernel-coefficient, moment-kill,
+bookkeeping-integrity, verdict-machinery, anchor-prefactor, steady-limit,
+consumed-law corruptions). Full tri-review on fresh agents:
+\texttt{FIDELITY\_CLEAN} (coverage-diff, math re-derived by hand) and
+\texttt{ADVERSARIAL\_CLEAN} (14/14 mutation matrix; dual-corruption fails
+both engines; arity scan incl.\ planted-mismatch detection), followed by a
+nit remediation (tally hygiene, restored recovery-slice observations,
+pipeline-routed tooth) re-verified clean.

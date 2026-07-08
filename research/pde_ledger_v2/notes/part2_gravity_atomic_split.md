@@ -108,6 +108,20 @@ support scalars → 018–021 + 022/023 (ℓ=2 map) + 024 (wall mode). 018–021
 54/5 partition → 022 (non-regression) + 027 (closure). 009/010 export the bulk Helmholtz mode + projected-continuity
 operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs the imports in 027/028.
 
+## Progress
+
+- **II-B1 `ledger_stage008` DONE (2026-07-08)** — pathA_28 constraint-spec reshape. `MONOPOLE_DIPOLE_RETURN_CONDITIONAL`
+  with the scope caveat carried verbatim-class (constraint-spec not suppression test; `x−x` bookkeeping labeled;
+  `cancellation_possible` = literal flag printed as such). EARNED: the DtN ladder p=1/3/5 SCANNED (not typed) +
+  kernels + steady limit + dominance + the 243/244 anchors with computed strict-recovery observations. JSON/YAML
+  engine bridge severed both directions; ZERO file I/O. Dual-engine SymPy 54 / Mathematica 57 (3 = arity
+  self-checks), CWD-independent. Tri-review CLEAN (`FIDELITY_CLEAN` hand-verified math; `ADVERSARIAL_CLEAN` 14/14
+  mutation matrix incl. dual-corruption + planted-arity-mismatch detection) → 5 nits remediated (8 vacuous tally
+  stamps de-counted; recovery observations restored computed; tooth 7 pipeline-routed; `real=True` alignment; dead
+  param wired) → `REVERIFY_CLEAN` (tallies independently re-counted 54/57 = 60−8+2 / 63−8+2). Register: zero new
+  knobs + edge R23 (`PENDING` obligation), `REGISTER_CLEAN` first pass. Registration at count 8.
+- **▶ NEXT = II-B2 `ledger_stage009`** (pathA_29 flat-slab return residual).
+
 ## Per-stage process (unchanged, calibrated)
 
 Same as Part I: author reshape directive → Codex xhigh design-review → fold to `DIRECTIVE_CLEAN` (no GLM on

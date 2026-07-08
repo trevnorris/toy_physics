@@ -152,7 +152,13 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   had landed + passed at repo root; orchestrator cleaned 2 orphaned `.tmp` files + completed the foreign-CWD
   verification. **⭐ pathA_29 fold COMPLETE (stages 009+010).**
 - **▶ NEXT = Cluster A `ledger_stage011`** (II-G1a, pathA_30 frozen-reduction certificate: frozen wall → Helmholtz
-  `ψ''+(ω/c_S)²ψ=0`, `c_S²=5Kρ*⁴/m`, projection measure + certificate).
+  `ψ''+(ω/c_S)²ψ=0`, `c_S²=5Kρ*⁴/m`, projection measure + certificate). ⭐ **Running-start source map READY** =
+  `research/pde_ledger_v2/notes/stage011_pathA30_frozen_reduction_source_map.md`. ⚠ **Key heads-up:** unlike 009/010
+  (pure bridge-strips), 011 is a **bridge-strip PLUS a de-rig** — three source booleans (`operator_is_helmholtz`
+  X≡X, `speed_is_cs` literal, `domain_is_L0`=L0==L0) are tautologies; the reshape must PRODUCE `L_s` from the
+  reduction, not type it. The `.wl` is ALREADY a genuine transfer-matrix route (strip only its `Get[sympyExprFile]`
+  cross-check bridge; ADD the 011 reduction-certificate content it lacks). Consumes R1 (`c_S²=5Kρ⁴/m`, stage005) at
+  ρ*; zero new counted knobs (`L0` = ACTION-geometry like stage009's `d`).
 
 ## Per-stage process (unchanged, calibrated)
 

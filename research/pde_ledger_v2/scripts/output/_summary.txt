@@ -4,6 +4,7 @@ PASS  ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit
 PASS  ledger_stage004_gnls_action_dimensional_foundation_sympy_audit
 PASS  ledger_stage005_sound_speed_light_ratio_sympy_audit
 PASS  ledger_stage006_two_phase_chiB_ontology_sympy_audit
-PASS  ledger_stage007_shear_surface_g0_freeze_sympy_audit  (0s)
+PASS  ledger_stage007_shear_surface_g0_freeze_sympy_audit
+PASS  ledger_stage008_monopole_dipole_return_spec_sympy_audit  (14s)
 
-TOTAL: 7  PASS: 7  FAIL: 0  SKIPPED: 6
+TOTAL: 8  PASS: 8  FAIL: 0  SKIPPED: 7

@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 7,
+  "canonical_stage_count": 8,
   "policy": [
     {
       "build_order_stage": "001",
@@ -57,6 +57,14 @@
       "slug": "shear_surface_g0_freeze",
       "final_number": "deferred",
       "note": "build-order id (fourth Part-I stage, I-4 -- Part I COMPLETE; reshape of pathA_35_G0_{sympy.py,.wl}); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "008",
+      "part": "II",
+      "source_gate": "pathA_28",
+      "slug": "monopole_dipole_return_spec",
+      "final_number": "deferred",
+      "note": "build-order id (first new Part-II stage, II-B1; reshape of pathA_28_monopole_{sympy.py,.wl}, constraint-spec); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

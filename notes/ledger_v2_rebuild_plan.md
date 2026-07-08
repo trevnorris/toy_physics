@@ -59,8 +59,22 @@
 > (93→78 ≠ expected 94), repaired, fresh-agent **`REVERIFY_CLEAN`** (mutation evidence incl. the M13 dual-corruption class now failing both).
 > Register updated (rows `λ_Pu`/`Ω_w`/`g_ℓ+ℓ_g`, the 6-postulate structural block, `μ_R`/`ρ_br` re-homed to I-4, edges R21 scope-split +
 > R22 firewall) + Codex-verify **caught R22 `CODIM-PROVEN` as an overclaim** → folded to `structural (NOT a reduction)` + confirm
-> `REGISTER_CLEAN`. Registration at count 7, PDF rebuilt. **▶ NEXT = the Part II (gravity) atomic-split USER GATE** (the swing, ~20–28
-> stages; per-Part split shown before building). Remaining Parts order II → III (remaining) → IV → V → VI → VII (last).
+> `REGISTER_CLEAN`. Registration at count 7, PDF rebuilt. **✅ Part II atomic split FINALIZED (user gate 2026-07-08, `50912c56`): 22 new
+> stages 008–029 + built 001/002 = 24** (`research/pde_ledger_v2/notes/part2_gravity_atomic_split.md`; 3-cluster fan-out; Gate-6 →
+> Part-VII register item; pathA_21c confirmed fully folded in 001/002; all rig-history trip-ups pinned per stage). **✅ II-B1
+> `ledger_stage008` DONE (2026-07-08):** pathA_28 constraint-spec reshape — scope caveat carried verbatim-class (constraint-spec NOT a
+> suppression test; `R0=−M0`/`R1=−D1` labeled `x−x` bookkeeping; `cancellation_possible` printed as a literal flag); EARNED = the SCANNED
+> DtN ladder (p=1/3/5, kernels `i·ak`/`i·a³k³/2`/`i·a⁵k⁵/27`) + steady limit + dominance + the 243/244 anchors with computed
+> strict-recovery observations; the pathA_28 JSON/YAML engine bridge severed BOTH directions (zero file I/O); consumed stage005 law with
+> an exact-value integrity check; dual-engine SymPy 54 / Mathematica 57 (arity self-checks incl.), CWD-independent; tri-review CLEAN
+> (fidelity hand-verified the math; adversarial 14/14 mutation matrix incl. dual-corruption-fails-both + planted-arity detection) → 5 nits
+> remediated (8 vacuous tally stamps de-counted, recovery observations restored computed, tooth-7 pipeline-routed, assumptions aligned,
+> dead param wired) → fresh-agent `REVERIFY_CLEAN` (tallies independently re-counted 54/57 = 60−8+2 / 63−8+2). Register: ZERO new knobs +
+> edge **R23** (return-cancellation targets, `PENDING` obligation) — `REGISTER_CLEAN` first pass. Registration at count 8, PDF rebuilt.
+> **▶ NEXT = II-B2 `ledger_stage009`** (pathA_29 flat-slab return residual: `T0(0)=1/(ε0+1)`, residual orders p_res=1/3, `Z<0` PREMISE
+> labeling; heaviest reshape class — sever the pathA_29 JSON-digest bridge + its cross-script YAML reads of pathA_28 outputs via the
+> stage002 cited-input pattern, stage008 = the formal home) → 010 (localization p=2 dsolve + NOGO control folded in). Remaining Parts
+> order II → III (remaining) → IV → V → VI → VII (last).
 > **Settled design decisions (user 2026-07-07):** (A) physics-driven atomic granularity, ~45–65 stages, per-Part split finalized + shown
 > before building each Part; (B) uniform per-stage tri-review, adversarial leg scoped to **reshape-integrity**; (C) two-stage pilot
 > (`pathA_21c` → `pathA_36`); (D) build in transient `research/pde_ledger_v2/`, final **overwrite of `research/pde_ledger/` via the branch

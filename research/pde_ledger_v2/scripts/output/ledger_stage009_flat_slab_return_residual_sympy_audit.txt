@@ -1,0 +1,151 @@
+# SymPy Audit Output
+# Script: ledger_stage009_flat_slab_return_residual_sympy_audit.py
+# Date: 2026-07-08T01:45:59-06:00
+# Elapsed: 9s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=====================================================
+ledger_stage009_flat_slab_return_residual SymPy audit
+=====================================================
+
+Solved bidirectional Helmholtz round-trip transport
+---------------------------------------------------
+  basis: Phi_l=A_l*exp(I*omega*w/c_s)+B_l*exp(-I*omega*w/c_s)
+  forward phase ratio 0->d = exp(I*d*omega/cS)
+  return phase ratio d->0 = exp(I*d*omega/cS)
+  round-trip phase = exp(2*I*d*omega/cS)
+  tau solved from d(log phase)/domega / I = 2*d/cS
+PASS  exp(I*omega*tau) equals the solved round-trip phase
+PASS  tau solved from the basis equals 2*d/c_S
+
+DC continuity fractions and return transfer
+-------------------------------------------
+  alpha_0 = 1/(epsilon0 + 1); neighbor_0 = epsilon0/(epsilon0 + 1)
+  alpha_1 = 1/(epsilon1 + 1); neighbor_1 = epsilon1/(epsilon1 + 1)
+  T_0(omega) = exp(2*I*d*omega/cS)/(epsilon0 + 1)
+  T_1(omega) = exp(2*I*d*omega/cS)/(epsilon1 + 1)
+PASS  ell=0 DC transfer by limit matches alpha_ell continuity fraction
+    ell=0: Limit[T_l, omega->0] = 1/(epsilon0 + 1)
+PASS  ell=1 DC transfer by limit matches alpha_ell continuity fraction
+    ell=1: Limit[T_l, omega->0] = 1/(epsilon1 + 1)
+PASS  zeroth-moment steady circulation balance M0=alpha0*M0+neighbor0*M0
+PASS  first-moment steady circulation balance D1=alpha1*D1+neighbor1*D1
+
+Consumed from ledger_stage008 (II-B1)
+-------------------------------------
+  cited kernels, exact-value integrity checked:
+    kernel_0 = I*a*omega/cS
+    kernel_1 = I*a**3*omega**3/(2*cS**3)
+    kernel_2 = I*a**5*omega**5/(27*cS**5)
+  independently typed consumed-kernel site:
+    consumed_kernel_0 = I*a*omega/cS
+    consumed_kernel_1 = I*a**3*omega**3/(2*cS**3)
+    consumed_kernel_2 = I*a**5*omega**5/(27*cS**5)
+PASS  consumed kernel_0 matches pipeline kernel_0
+PASS  consumed kernel_1 matches pipeline kernel_1
+PASS  consumed kernel_2 matches pipeline kernel_2
+PASS  all consumed stage008 kernels match independent pipeline kernels
+PASS  ell=0 DC return moment approaches stage008 target as epsilon_l->0
+    ell=0: R_l(0) = -M0/(epsilon0 + 1) -> -M0 as epsilon_l->0
+PASS  ell=1 DC return moment approaches stage008 target as epsilon_l->0
+    ell=1: R_l(0) = -D1/(epsilon1 + 1) -> -D1 as epsilon_l->0
+  T2_applied=false — kernel_2/Q2 INERT, nothing derived at l=2
+
+Bounded residual prediction, Check A
+------------------------------------
+  ell=0: omega-order scan nu_l=ord_omega(1-T_l series) = 0
+PASS  ell=0 finite DC sink leaves omega^0 deviation nu_l=0
+PASS  ell=0 deviation-from-one has a finite DC sink term is nonzero as required (residual = epsilon0/(epsilon0 + 1))
+  ell=1: omega-order scan nu_l=ord_omega(1-T_l series) = 0
+PASS  ell=1 finite DC sink leaves omega^0 deviation nu_l=0
+PASS  ell=1 deviation-from-one has a finite DC sink term is nonzero as required (residual = epsilon1/(epsilon1 + 1))
+  finite DC sink leaves a nonzero deviation-from-one at O(omega^0)
+  R_0(omega) = -M0*exp(2*I*d*omega/cS)/(epsilon0 + 1)
+  R_1(omega) = -D1*exp(2*I*d*omega/cS)/(epsilon1 + 1)
+  A_res(ell0) = kernel_0*M0*(1-T0) = M0*a*omega*(15*I*cS**5*epsilon0 + 30*cS**4*d*omega + 30*I*cS**3*d**2*omega**2 - 20*cS**2*d**3*omega**3 - 10*I*cS*d**4*omega**4 + 4*d**5*omega**5)/(15*cS**6*(epsilon0 + 1))
+  A_res(ell1) = kernel_1*D1*(1-T1) = D1*a**3*omega**3*(15*I*cS**5*epsilon1 + 30*cS**4*d*omega + 30*I*cS**3*d**2*omega**2 - 20*cS**2*d**3*omega**3 - 10*I*cS*d**4*omega**4 + 4*d**5*omega**5)/(30*cS**8*(epsilon1 + 1))
+PASS  p_raw0 is computed from consumed kernel_0 omega order
+PASS  p_raw1 is computed from consumed kernel_1 omega order
+PASS  p_raw2 is computed from consumed kernel_2 omega order
+PASS  computed p_res(ell0)=p_raw0+nu0=1
+PASS  computed p_res(ell1)=p_raw1+nu1=3
+  p_res(ell0) = 1; p_res(ell1) = 3
+  A_strict_pass computed = False
+  A_residual_pass computed = True
+PASS  A_strict_pass is computed False
+PASS  A_residual_pass is computed True
+PASS  Check-A classification follows from computed p_res orders
+  source top-line: RETURN_RESIDUAL_PREDICTION (Check A component computed here; Check B = ledger_stage010)
+  Check A component computed here; Check B localization = ledger_stage010 (zero-mode/radial dsolves, counterfactual guard, DC-sink classifier, NOGO warp, spectra)
+
+Z channel accounting, premise vs accounting
+-------------------------------------------
+  Z_throat = -M0
+  Z_return = M0/(epsilon0 + 1)
+  localized replenishment = 0 (declared)
+  boundary DOF = 0 (declared)
+  Z = -M0*epsilon0/(epsilon0 + 1)
+PASS  Z channel sum reduces to -M0*(1-T0(0))
+PASS  Z accounting formula equals -M0*epsilon0/(1+epsilon0)
+PASS  Z sign certificate -Z*(1+epsilon0)/(M0*epsilon0) equals 1
+  under v3 this is ACCOUNTING; Z<0 (drain admissibility) is the PREMISE (Z_is_premise = true)
+  Z<0 = the drain-admissibility PREMISE (Z_is_premise=true); the formula = ACCOUNTING
+
+Strict perfect-return limits, per channel
+-----------------------------------------
+PASS  epsilon0->0+ strict T0 equals exp(I*omega*tau)
+PASS  epsilon0->0+ strict_nu0 computed independently equals 1
+PASS  epsilon0->0+ strict p_res0 computed as p_raw0+strict_nu0 equals 2
+PASS  epsilon0->0+ Z tends to 0
+PASS  epsilon1->0+ strict_nu1 computed from strict T1 series equals 1
+PASS  epsilon1->0+ strict p_res1 computed as p_raw1+strict_nu1 equals 4
+  ell=0 contingency: residual and Z require epsilon0>0; strict T0=exp(2*I*d*omega/cS), strict_nu0=1, strict_p_res0=2, Z->0
+  ell=1 contingency: residual requires epsilon1>0; strict T1=exp(2*I*d*omega/cS), strict_nu1=1, strict_p_res1=4
+
+Modest dimensional block
+------------------------
+PASS  z=omega*d/c_S is dimensionless
+PASS  [tau]=T from tau=2*d/c_S
+PASS  [Z]=[M0] via -M0*epsilon0/(1+epsilon0)
+PASS  epsilon_l, alpha_l, and T_l are dimensionless by fraction composition
+  z=omega*d/c_S dimensionless; [tau]=T; [Z]=[M0]; epsilon_l, alpha_l, T_l dimensionless.
+
+Provenance and scope
+--------------------
+  postulated geometry: flat finite slab, brane w=0, absorber w=d; response derived on it.
+  premise vs accounting (v3, verbatim-class): Z<0 = the drain-admissibility PREMISE (Z_is_premise=true); Z=-M0*eps0/(1+eps0) = ACCOUNTING.
+  open item #9: sharpened, NOT closed — the deliverable is the falsifiable residual radiation prediction tied to the drain strength; the gravity-range (1/r^2) leg = stage 010.
+  Check-B pointer: radiation/Sommerfeld boundary recorded ac_check_a_only in the source — not a Check-B branch; localization/NOGO/classifier = stage 010.
+  downstream consumers: stage 023 (pathA_34 residuals must match in form/sign/order); stage 024/026 (pathA_43 consumes the Phi2 bulk mode machinery — stage 010's leg — and the projected-continuity operator lineage).
+  dropped bookkeeping: the source's SHA-256 trace ids were build-reproducibility plumbing, replaced by the v2 tri-review protocol.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): RETURN_TRANSFER_DERIVED_RESIDUAL_BOUNDED  (tau=2d/c_S solved; T_l=alpha_l*exp(i*omega*2d/c_s); nu_l=0 computed => p_res=1/3; Z accounting + sign certificate; strict limit reversible)
+  source top-line verdict: RETURN_RESIDUAL_PREDICTION  (Check A component computed here; Check B localization = ledger_stage010)
+  premise vs accounting (v3, verbatim-class): Z<0 = the drain-admissibility PREMISE (Z_is_premise=true); Z=-M0*eps0/(1+eps0) = ACCOUNTING
+  earned: solved round-trip transport; DC continuity fractions + steady balances; bounded residual p_res(l0)=1, p_res(l1)=3 CONTINGENT per-channel on eps0>0 (l=0, Z) and eps1>0 (l=1) — strict limits computed independently: deviations -> O(omega) (strict orders 2/4), Z -> 0
+  postulated: the flat finite slab (brane w=0, absorber w=d)
+  consumed from ledger_stage008 (II-B1): kernels i*a*omega/cS, i*a^3*omega^3/(2*cS^3), i*a^5*omega^5/(27*cS^5) (cited, integrity-checked); kernel_2/Q2 INERT (T2_applied=false, nothing derived at l=2)
+  exports: the falsifiable residual-radiation prediction (drain-strength-tied) -> stage 023; open-item #9 sharpened NOT closed
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 returning-basis sign flip trips tau/phase assert produced required FAIL (residual = 4*d**2/cS**2)
+PASS  tooth 2 alpha0->epsilon0/(1+epsilon0) trips DC fraction and steady balance produced required FAIL (residual = (M0**2 + 1)*(epsilon0 - 1)**2/(epsilon0 + 1)**2)
+PASS  tooth 3 subtracting finite-sink DC term raises nu and trips p_res asserts produced required FAIL (residual = 4)
+PASS  tooth 4 dropping Z_return trips Z reduction assert produced required FAIL (residual = -M0/(epsilon0 + 1))
+PASS  tooth 5 flipping Z sign trips sign certificate produced required FAIL (residual = -2)
+PASS  tooth 6 corrupting strict limit epsilon0->1 trips Z->0/strict_nu0=1 produced required FAIL (residual = (M0**2 + 4)/4)
+PASS  tooth 7 consumed kernel corruption 27->9 trips integrity check produced required FAIL (residual = -4*a**10*omega**10/(729*cS**10))
+PASS  tooth 8 p_res0->0 flips A_residual_pass False and trips classification assert produced required FAIL (residual = 1)
+PASS  baseline immutable after teeth: transport residual unchanged
+PASS  baseline immutable after teeth: kernel integrity unchanged
+PASS  baseline immutable after teeth: classification unchanged
+
+PASS tally: 48; FAIL tally: 0
+OVERALL PASS: SymPy verified ledger_stage009 flat-slab return residual Check A exactly
+
+EXIT_CODE: 0

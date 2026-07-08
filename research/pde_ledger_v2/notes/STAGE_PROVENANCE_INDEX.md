@@ -3,7 +3,7 @@
 This repo-local index tracks raw derivation-note sources and executable audit
 artifacts for canonical stage files after they are added to the rebuilt ledger.
 
-Current scope: Stages 001-008.
+Current scope: Stages 001-009.
 
 | Stage | Canonical TeX | Note Source | SymPy Audit | Mathematica Audit | Numerical Stress |
 |---|---|---|---|---|---|
@@ -15,3 +15,4 @@ Current scope: Stages 001-008.
 | 006 | paper/stages/stage_006.tex | notes/stages/ledger_stage006_two_phase_chiB_ontology.md | scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage006_two_phase_chiB_ontology_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 007 | paper/stages/stage_007.tex | notes/stages/ledger_stage007_shear_surface_g0_freeze.md | scripts/ledger_stage007_shear_surface_g0_freeze_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage007_shear_surface_g0_freeze_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 008 | paper/stages/stage_008.tex | notes/stages/ledger_stage008_monopole_dipole_return_spec.md | scripts/ledger_stage008_monopole_dipole_return_spec_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage008_monopole_dipole_return_spec_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
+| 009 | paper/stages/stage_009.tex | notes/stages/ledger_stage009_flat_slab_return_residual.md | scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage009_flat_slab_return_residual_mathematica_audit.wl (+ mathematica/output/*.txt) | — |

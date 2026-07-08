@@ -5,6 +5,7 @@ PASS  ledger_stage004_gnls_action_dimensional_foundation_mathematica_audit
 PASS  ledger_stage005_sound_speed_light_ratio_mathematica_audit
 PASS  ledger_stage006_two_phase_chiB_ontology_mathematica_audit
 PASS  ledger_stage007_shear_surface_g0_freeze_mathematica_audit
-PASS  ledger_stage008_monopole_dipole_return_spec_mathematica_audit  (14s)
+PASS  ledger_stage008_monopole_dipole_return_spec_mathematica_audit
+PASS  ledger_stage009_flat_slab_return_residual_mathematica_audit  (10s)
 
-TOTAL: 8  PASS: 8  FAIL: 0  SKIPPED: 7
+TOTAL: 9  PASS: 9  FAIL: 0  SKIPPED: 8

@@ -1,0 +1,70 @@
+\section{Stage 009: Flat-Slab Return Residual (Check A)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (brane\(\leftrightarrow\)bulk return, Check A)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Derive, on the postulated flat-slab family, what a finite
+DC-sink brane\(\leftrightarrow\)bulk return actually delivers against the
+Stage-008 cancellation targets: the return transfer
+\(T_\ell(\omega)=\alpha_\ell e^{i\omega\,2d/c_s}\), the bounded residual orders
+\(p_{\rm res}(\ell{=}0)=1\), \(p_{\rm res}(\ell{=}1)=3\), and the signed local
+source accounting \(Z=-M_0\varepsilon_0/(1+\varepsilon_0)\) -- the Check-A
+component of \texttt{RETURN\_RESIDUAL\_PREDICTION} (Check-B localization =
+Stage~010).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage009_flat_slab_return_residual_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage009_flat_slab_return_residual_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} -- exact \emph{within the postulated slab family} (brane
+at \(w=0\), return/absorber at \(w=d\); the geometry is postulated, the return
+response is derived on it). The v3 labeling is carried exactly: \(Z<0\) (drain
+admissibility) is the \textbf{premise} (\texttt{Z\_is\_premise=true}); the
+formula \(Z=-M_0\varepsilon_0/(1+\varepsilon_0)\) is \textbf{accounting}
+(channel sum \(Z_{\rm throat}+Z_{\rm return}\), sign certificate computed).
+Open-item \#9 is \emph{sharpened, not closed}; the headline is printed only as
+the Check-A component with the Stage-010 qualifier.
+
+\paragraph{The derived return response.}
+From the bidirectional Helmholtz basis
+\(\Phi_\ell=A_\ell e^{i\omega w/c_s}+B_\ell e^{-i\omega w/c_s}\), the
+round-trip transit time is \emph{solved} (\(\tau=2d/c_S\), asserted via
+\(e^{i\omega\tau}\equiv\) phase). DC continuity fractions
+\(\alpha_\ell=1/(1+\varepsilon_\ell)\) with independent per-channel
+transmissions \(\varepsilon_0,\varepsilon_1>0\); steady circulation balances
+(\(J_{\rm leak}=J_{\rm return}+J_{\rm neighbor}\), both moments) assert-zero.
+A genuine \(\omega\)-order scan computes
+\(\nu_\ell={\rm ord}_\omega(1-T_\ell)=0\) -- a finite DC sink leaves the
+\(\omega^0\) deviation \(1-T_\ell(0)=\varepsilon_\ell/(1+\varepsilon_\ell)\) --
+so the residual amplitudes
+\(A_{\rm res}=\mathrm{kernel}_\ell\cdot\mathrm{moment}\cdot(1-T_\ell)\) sit at
+\textbf{computed} orders \(p_{\rm res}=p_{\rm raw}+\nu_\ell=1,3\): a
+\emph{bounded monopole/dipole \(c_s\)-radiation residual tied to the drain
+strength} -- the falsifiable departure from GR. The Check-A classification
+booleans are computed from the orders.
+
+\paragraph{Reversibility (per-channel, computed).}
+At \(\varepsilon_0\to0^+\): \(T_0\to e^{i\omega\tau}\), strict
+\(\nu_0=1\Rightarrow p_{\rm res,0}=2\), and \(Z\to0\) (a perfect-return channel
+has no drain). At \(\varepsilon_1\to0^+\): strict \(\nu_1=1\) computed
+\emph{directly from the \(\ell=1\) limit} (the source reused \(\nu_0\); the
+reshape computes it independently) \(\Rightarrow p_{\rm res,1}=4\). The
+prediction is contingent on the transmissions, not baked in. Consumed from
+Stage~008 (cited, dual-site integrity-checked): the three radiation kernels;
+\(Q_2\)/kernel\(_2\) inert (\texttt{T2\_applied=false}). Register: rows
+\(\{d,\varepsilon_0,\varepsilon_1\}\) (slab-family parameters; \(\varepsilon\)'s
+\textsc{free-unreduced} on the Gate-6 route) + edge R24.
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O -- the source pair's JSON-digest
+bridge, its runtime YAML reads of pathA\_28 outputs, and its SHA-256 trace
+bookkeeping are all retired. SymPy 48 PASS / Mathematica 52 PASS, exit 0,
+CWD-independent. Eight able-to-fail teeth fire. Full tri-review on fresh
+agents: \texttt{FIDELITY\_CLEAN} (all values hand-re-derived; 009/010 boundary
+clean); the adversarial leg (16-mutant matrix) \textbf{caught a genuine
+rig-class defect} -- the consumed-kernel citation-integrity block was
+set-then-compare-to-self (a single-source corruption passed) -- remediated to
+dual-site integrity (acceptance: all four one-site corruptions now fail in
+both engines) plus tally-hygiene nits, then re-verified clean. The
+\texttt{Off[Limit::alimv]} suppression was unmasked and shown benign (every
+silenced limit's result independently asserted).

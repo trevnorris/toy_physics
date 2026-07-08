@@ -52,8 +52,9 @@ whole-system dim check at Part VII then confirms rather than discovers).
 ## Master parameter table
 
 Built stages: 001 (pathA_21c primitives), 002 (pathA_21c force), 003 (pathA_36 light), 004 (pathA_19 dim foundation),
-005 (pathA_20 sound speed), 006 (χ_B two-phase ontology — fresh-authored). Seeded knit params (Part VI, not yet
-reshaped): pathA_40 cone-lock, pathA_41 NG5.
+005 (pathA_20 sound speed), 006 (χ_B two-phase ontology — fresh-authored), 007 (pathA_35 G0 shear-surface freeze —
+the formal home of `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`; the 11 computed from the
+enumerated table in both engines). Seeded knit params (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
 |---|---|---|---|---|---|
@@ -69,8 +70,11 @@ reshaped): pathA_40 cone-lock, pathA_41 NG5.
 | `c_γ` (gauge cone) | `L T⁻¹` | I-2 (005), III (003), VI | `FREE-UNREDUCED` | brane: `c_γ²=μ_R/ρ_br`; bulk: `c_γ²=C_B/C_E` | Route A `PENDING`; cone-lock `IMPOSED` `λγ=1` |
 | `c_E` (throat Green speed) | `L T⁻¹` | VI (040/041) | `FREE-UNREDUCED` | throat dynamic Green speed — **distinct from the Maxwell `C_E`** | cone-lock `IMPOSED` `c_E=c_γ` (R8); Route-A registered-deferred |
 | `C_E, C_B` (gauge metric) | `[C_E]=M⁻¹L⁻⁴T²`, `[C_B]=M⁻¹L⁻²` (ratio `L²T⁻²`) | I-2 (005) | `FREE-UNREDUCED` (bulk) | `c_bulk²=C_B/C_E` | brane-zero-mode reduction to `c_γ` `PENDING` |
-| `μ_R` (brane shear) | `M L⁻¹ T⁻²` (stage 003) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
-| `ρ_br` (brane density) | `M L⁻³` (stage 003) | III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br` | Route A `PENDING` |
+| `μ_R` (brane shear) | `M L⁻¹ T⁻²` (stages 003, 007) | **I-4 (007) freeze home**, III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br`; one of the G0 "11" (erratum: count STANDS, no overcount) | Route A `PENDING` (R10, `ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT`); ≠ `μ_R⁽⁴⁾` (R17 `PENDING`) |
+| `ρ_br` (brane density) | `M L⁻³` (stages 003, 007) | **I-4 (007) freeze home**, III (003), VI | `FREE-UNREDUCED` (brane) | `c_γ²=μ_R/ρ_br`; one of the G0 "11" (erratum: NOT pathA_25's `varrho_br[ρ]` — that object is `OUT_OF_ACTIVE_NG5`) | Route A `PENDING` (R10) |
+| `λ_Pu` (parity-repaired P–u coupling) | `M L⁻¹ T⁻²` (stage 007) | I-4 (007) freeze | `ACTION` | `L_Pu = −λ_Pu ϖ_a Ω_uᵃ`, `ϖ_a=(ŵ×P_∥)_a` — the parity-EVEN operator; re-admits the ε-contracted/chiral class T0 excluded + REQUIRES the conceded `ŵ` (structural postulate 5) | one of the G0 "11"; no reduction route named |
+| `Ω_w` (bare u_w gap scale) | `T⁻¹` (stage 007) | I-4 (007) freeze | `ACTION` | `L_uw` gap term `−½ρ_br Ω_w² u_w²` | one of the G0 "11"; no reduction route named |
+| `g_ℓ(w)` + width `ℓ_g` | `[g_ℓ]=L⁻¹`, `[ℓ_g]=L` (stage 007) | I-4 (007) freeze profile | `ACTION` (function: fixed Gaussian shape, ONE width knob) | `g_ℓ=exp(−(w/ℓ_g)²)/(√π ℓ_g)`, `∫g_ℓ dw=1` derived; admitted on locality/minimality grounds ONLY (target-blind G0.2) | one of the G0 "11". **Superseded as the *material-state* wall by stage006's χ_B (R21); REMAINS the constitutive-freeze profile** |
 | force-magnitude norm | `1` (dimensionless coeff) | II (002) | `CALIB` | matched to inter-defect force strength | form earned; magnitude CALIBRATED; `G=GENUINE_BLOCKED` |
 | `Q_E` (charge mag.) | pending (pathA_38) | IV (038) | `CALIB-ANCHOR` | — | pending pathA_38 reshape |
 | `ρ_B0` | `M L⁻³` (stage 003) | III (003), VI (041) | `FREE-UNREDUCED` | on-brane compression; pathA_41 marks active irreducible | NG5 route (i) 4D→3D compression `PENDING` |
@@ -99,6 +103,22 @@ reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
+### The G0 structural-postulate block (I-4, stage 007) — the 6 structural members of the "11"
+
+Structural `ACTION` choices (no dimensions; counted in the freeze's `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` alongside
+the 4 constants `{ρ_br, μ_R, λ_Pu, Ω_w}` + the 1 function `g_ℓ(w; ℓ_g)`; enumeration computed in both engines):
+1. imposed `ŵ` axis + `w=0` surface (conceded-wall);
+2. `uᵃ` = same-medium surface collective, tangentially free-slip (`u̇ᵃ ≠ vᵃ`);
+3. T0 `Pⁱ` reused as the Cosserat micro-rotation reservoir (0 new DOF);
+4. baseline `Pⁱ` spin-wave status = `massless` (alternates `gapped`/`slaved-rigid` named-inactive);
+5. the `ŵ`-dependent parity-EVEN P–u operator (re-admits the ε-contracted/chiral class excluded by T0; requires the
+   conceded `ŵ` — a structural-postulate cost, not a free choice);
+6. no C5 `φ` analog / no longitudinal constraint (the flat-brane DOF=8 carries `φ`=0 — the fact the C5 crux attacks).
+
+New-field content at G0 (`uᵃ` 3 + `u_w` 1 = 4 DOF) is SEPARATE from the 11-input drift count. The T0 couple-stress
+coefficients are KEPT (0 new). Anti-absorption (2026-07-04 erratum): `{ρ_B0, χ_c, C_hu}` are the Part-VI (pathA_41)
+cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engines).
+
 ---
 
 ## Relations & reductions ledger (the edges)
@@ -125,6 +145,8 @@ reshaped): pathA_40 cone-lock, pathA_41 NG5.
 | R18 | θ-as-Maxwell-φ `WITH_PROVENANCE` route | `CLOSED-NEG` | I-3 (006) | the Maxwell locus `K_θ=+J²ρ_B0²/ρ_br, B_eff=0, m_θ²=0` is reachable `BY_TUNING` only; the sole provenance sign-flip (`κ_phase<0`) is a Lifshitz instability = the falsified pathA_25 wall. Hardens the no-go; the θ-branch symbols are NOT admitted as live knobs |
 | R19 | slab-width selection (`W_slab` from dynamics) | `PENDING` | I-3 (006) | debt: kink–antikink slab width not selected by the double-well; = the old `L/a` self-selection item (sim-deferred Gate-6 territory) |
 | R20 | `δ, σ_wall` from `{a_B, κ_B}` | `DERIVED` | I-3 (006) | kink width + surface tension collapse into the well/gradient constants (single-kink admission only — see R19) |
+| R21 | stage006 χ_B wall supersedes fixed-shape `g_ℓ(w)` as the *material-state* closure; the G0 freeze REMAINS the light-sector *constitutive* freeze | structural (scope split — NOT a reduction; both facts asserted in stage 007) | I-3 (006) / I-4 (007) | `ℓ_g` stays a counted knob of the constitutive freeze; stage003 consumes the frozen `L_Mac` as-is; neither artifact retro-invalidates the other |
+| R22 | `[μ_R] ≠ [μ_R⁽⁴⁾]` (M L⁻¹T⁻² vs M L⁻²T⁻²) + R17 dim-consistency `[μ_R⁽⁴⁾]·L = [μ_R]` | structural (dimensional firewall, dual-engine asserted + able-to-fail — NOT a reduction; R17 remains `PENDING`) | I-4 (007) | the notational firewall: two DISTINCT symbols related only by the `PENDING` R17 projection — prevents a silent conflation that would fake a reduction |
 
 ---
 
@@ -156,6 +178,14 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   `W_slab` (R19 — kink admission ≠ slab stability). `ρ_B0, χ_c` appear in BOTH the stage-006 dead θ-branch and the
   pathA_41 Part-VI drift trio — counted ONCE (Part VI); the θ-branch is dead (`THETA_BRANCH_DEAD_NOT_ADMITTED`) and
   R18 hardens it `CLOSED-NEG`.
+
+- **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
+  {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
+  + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive
+  profile) + the 6-postulate structural block. The 2026-07-04 erratum STANDS (no `ρ_br` overcount;
+  `NO_OVERCOUNT_ROUTE_A_PENDING`); the `{ρ_B0, χ_c, C_hu}` trio stays Part-VI (guarded in-engine). R22 hardens the
+  `μ_R`/`μ_R⁽⁴⁾` distinction so R17's debt cannot be silently faked as discharged. Part I is now COMPLETE: every
+  Part-I knob, edge, and debt above is dual-engine-verified where a stage exists.
 
 **Reading:** the free-parameter load is real but heavily **provisional** — most of it is reduction debt with named routes
 (all currently `PENDING` on the deferred nonlinear throat), not irreducible freedom. The honest question for Part VII is

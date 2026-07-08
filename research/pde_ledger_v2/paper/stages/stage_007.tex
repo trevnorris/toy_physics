@@ -1,0 +1,93 @@
+\section{Stage 007: Shear-Surface G0 Freeze (Frozen Medium Action, Drift Ledger, DOF)}
+
+\stagefield{Part / anchor}{Part I -- The medium (closing Part-I stage)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Formal home of the pathA\_35 G0 shear-surface
+\emph{constitutive} freeze: the frozen brane/light action
+(\(L_{\rm Mac}+L_{Pu}+L_{u_w}\) under the Gaussian profile \(g_\ell(w)\)),
+hash-guarded (\texttt{T0\_SHEAR\_FROZEN(d9520d3819c3)}), with the honest drift
+ledger \texttt{SECOND\_MEDIUM\_DRIFT\_AT\_FREEZE(11)} computed from an
+enumerated table and the flat-brane linear DOF\(=8\) rank-computed.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage007_shear_surface_g0_freeze_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage007_shear_surface_g0_freeze_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure. \textbf{The 11 freeze inputs are POSTULATED/CALIBRATED --
+the freeze freezes \emph{terms}, not gate answers.} The EARNED content is exact
+within that declared closure: (i) \emph{freeze fidelity} -- both engines
+re-extract the canonical \texttt{freeze-action} blocks by byte-exact
+fence-parsing (never fixed offsets) and assert SHA-256 equality
+(G0 \texttt{d9520d3819c3f7\ldots}, T0 \texttt{8fa41ac51e88\ldots}
+byte-embedded); (ii) the \emph{flat-brane linear DOF}
+\(=8\) computed from rank/nullity bookkeeping (in-plane \(u^a\)
+curl-transverse 2 + kinetic--curl 1; T0 \(P^i\) tangent 3 + radial 1;
+\(u_w\) 1; C5 \(\varphi\) \textbf{0} -- the absent longitudinal partner the
+later C5 crux attacks); (iii) the \emph{dimensional firewall} over every frozen
+term. This stage computes \textbf{no} gate verdict (Gate-L excluded; exposure
+names carried as prose provenance only) and does \textbf{not} earn light
+(Stage~003 derives the two transverse photons at
+\(c_\gamma^2=\mu_R/\rho_{br}\) from this stage's frozen \(L_{\rm Mac}\)).
+
+\paragraph{The frozen action.}
+Kept (0 new): the GNLS parent action and the T0 polar-OP action (byte-for-byte,
+hash-embedded). Frozen brane blocks under
+\(S_{\rm brane}=\int dt\,d^4X\, g_\ell(w)\,[L_{\rm Mac}+L_{Pu}+L_{u_w}]\):
+\[
+  L_{\rm Mac}=\tfrac12\rho_{br}(\partial_t u^a)^2-\tfrac12\mu_R\,\Omega_u^a\Omega_u^a,
+  \qquad
+  L_{Pu}=-\lambda_{Pu}\,\varpi_a\,\Omega_u^a,\ \ \varpi_a:=(\hat w\times P_\parallel)_a,
+\]
+\[
+  L_{u_w}=\tfrac12\rho_{br}(\partial_t u_w)^2-\tfrac12\rho_{br}\Omega_w^2 u_w^2,
+  \qquad
+  g_\ell(w)=\frac{e^{-(w/\ell_g)^2}}{\sqrt{\pi}\,\ell_g},\ \ \int g_\ell\,dw=1
+  \ \text{(derived)}.
+\]
+Preserved verbatim: \(L_{Pu}\) \emph{re-admits the \(\epsilon\)-contracted/chiral
+class excluded by T0} and requires the conceded axis \(\hat w\) -- a
+structural-postulate cost, not a free choice.
+
+\paragraph{The drift ledger (computed).}
+Both engines enumerate the 11 and \emph{compute} the subcounts and the verdict
+string (the source gate's hardcoded literals are retired): \textbf{4 constants}
+\(\rho_{br}\,[ML^{-3}]\), \(\mu_R\,[ML^{-1}T^{-2}]\),
+\(\lambda_{Pu}\,[ML^{-1}T^{-2}]\), \(\Omega_w\,[T^{-1}]\) (table dims asserted
+against the firewall targets); \textbf{1 function} \(g_\ell(w;\ell_g)\) (fixed
+Gaussian, one width, target-blind admission); \textbf{6 structural postulates}
+(conceded \(\hat w\)+wall; free-slip \(u^a\); \(P^i\) reused as Cosserat
+reservoir; massless spin-wave baseline; the parity-even \(P\)--\(u\) operator;
+no C5 \(\varphi\)). New-field content (\(u^a\) 3 + \(u_w\) 1 = 4 DOF) is counted
+\emph{separately}. \textbf{Erratum (2026-07-04), carried first-class: the 11
+STANDS} -- no \(\rho_{br}\) overcount (pathA\_25's \(\varrho_{br}[\rho]\)
+belongs to the closed density-smectic candidate,
+\texttt{OUT\_OF\_ACTIVE\_NG5}); \(\{\rho_{br},\mu_R\}\) carry the
+registered-pending Route-A reduction
+(\texttt{ROUTE\_A\_UNDERDETERMINED\_MISSING\_NONLINEAR\_THROAT}, register R10);
+the honest cross-sector drift \(\{\rho_{B0},\chi_c,C_{hu}\}\) is a Part-VI
+(pathA\_41) item, guarded in-engine against absorption into the 11.
+
+\paragraph{Supersession and firewalls.}
+Both facts asserted: the Stage~006 \(\chi_B\) wall superseded the fixed-shape
+\(g_\ell(w)\) as the \emph{material-state} closure, while G0 \emph{remains} the
+light-sector \emph{constitutive} freeze (Stage~003 consumes \(L_{\rm Mac}\)
+as-is) -- a scope split (register R21), not a reduction. Notational firewall
+(register R22): \(\mu_R\) (3D brane, \(ML^{-1}T^{-2}\)) and Stage~006's
+\(\mu_R^{(4)}\) (4D density, \(ML^{-2}T^{-2}\)) are asserted dimensionally
+distinct, related only by the \emph{pending} R17 projection
+\(\mu_R=\int\chi_B\,\mu_R^{(4)}dw\) (dim-consistency asserted).
+
+\paragraph{Verification.}
+Dual-engine, independent routes (the source pair's \texttt{--compare} JSON
+payload mirror is retired): SymPy 96 PASS / Mathematica 94 PASS, both exit 0,
+CWD-independent. Able-to-fail teeth all fire: the five source-gate ablations
+(2 dimensional, 3 DOF each recomputing \(7\neq8\)), two hash teeth (in-block
+byte corruption; missing fence), five enumeration teeth (drop entry;
+miscategorize; inject \(\rho_{B0}\); corrupt \(n\) pre-verdict; corrupt table
+dim), and the \(\mu_R\) firewall tooth. Full tri-review on fresh agents:
+arbiter re-run, \texttt{FIDELITY\_CLEAN} (block-by-block coverage diff, no
+dropped check), \texttt{ADVERSARIAL\_CLEAN} (26-run mutation matrix: hash
+genuinely fence-parsed -- one byte inside the block fails, one byte outside
+passes; dual-corruption of both engines fails both; no cross-engine
+comparison anywhere).

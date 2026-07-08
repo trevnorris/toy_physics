@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-07",
-  "canonical_stage_count": 6,
+  "canonical_stage_count": 7,
   "policy": [
     {
       "build_order_stage": "001",
@@ -49,6 +49,14 @@
       "slug": "two_phase_chiB_ontology",
       "final_number": "deferred",
       "note": "build-order id (third Part-I stage; FIRST fresh-authored stage); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "007",
+      "part": "I",
+      "source_gate": "pathA_35 G0",
+      "slug": "shear_surface_g0_freeze",
+      "final_number": "deferred",
+      "note": "build-order id (fourth Part-I stage, I-4 -- Part I COMPLETE; reshape of pathA_35_G0_{sympy.py,.wl}); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

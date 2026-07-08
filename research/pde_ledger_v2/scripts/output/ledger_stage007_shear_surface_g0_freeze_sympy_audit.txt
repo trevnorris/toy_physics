@@ -1,0 +1,203 @@
+# SymPy Audit Output
+# Script: ledger_stage007_shear_surface_g0_freeze_sympy_audit.py
+# Date: 2026-07-07T23:46:14-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+===================================================
+ledger_stage007_shear_surface_g0_freeze SymPy audit
+===================================================
+
+Freeze-fidelity byte audit
+--------------------------
+  T0 report: /var/projects/toy_physics/software/stage1_solver/reports/pathA_24_T0_freeze.md
+  G0 report: /var/projects/toy_physics/software/stage1_solver/reports/pathA_35_G0_freeze.md
+  G0 freeze-action byte range (informative only): 0-based [8110,13311), 1-based 8111-13311, length 5201
+  T0 freeze-action byte range (informative only): 0-based [2739,3875), 1-based 2740-3875, length 1136
+PASS  G0 short hash is prefix of frozen full SHA-256 constant
+PASS  T0 freeze-action SHA-256 matches frozen report
+PASS  G0 freeze-action SHA-256 matches frozen report
+PASS  byte-identical T0 freeze-action block is embedded inside G0 block
+PASS  hash tooth: one-byte in-memory G0 corruption trips SHA-256 mismatch produced required FAIL (residual = 1)
+PASS  hash tooth: nonexistent fence tag trips extractor missing-fence path produced required FAIL (residual = 1)
+
+Dimensional firewall over the full frozen surface
+-------------------------------------------------
+PASS  kept GNLS c_s^2(rho)=5 K rho^4/m
+PASS  kept GNLS U(rho)=(K/4)rho^5
+PASS  kept GNLS quantum pressure (hbar^2/(8 m rho))(partial_i rho)^2
+PASS  kept GNLS bulk kinetic stress scale m rho v_i v_j
+PASS  kept T0 P^i dimensionless
+PASS  kept T0 L_pol kinetic term
+PASS  kept T0 L_pol Frank term
+PASS  kept T0 L_pol radial term
+PASS  kept T0 L_pol all terms homogeneous
+PASS  kept T0 couple-stress inertia m rho a^2
+PASS  kept T0 couple-stress stiffness m rho c_s^2 a^2
+PASS  kept T0 bulk radial scale m rho c_s^2
+PASS  profile ratio w/ell_g is dimensionless
+PASS  profile g_ell(w)=exp(-(w/ell_g)^2)/(sqrt(pi) ell_g)
+PASS  profile measure dw g_ell(w) is dimensionless
+PASS  derived Gaussian normalization integral int g_ell(w) dw = 1
+PASS  target [u^a]=L
+PASS  target [u_w]=L
+PASS  target [rho_br]=M L^-3
+PASS  target [mu_R]=M L^-1 T^-2
+PASS  target [lambda_Pu]=M L^-1 T^-2
+PASS  target [Omega_w]=T^-1
+PASS  target [g_ell]=L^-1
+PASS  target [ell_g]=L
+PASS  L_Mac kinetic rho_br (partial_t u^a)^2
+PASS  L_Mac MacCullagh curl mu_R Omega_u^a Omega_u^a
+PASS  L_Mac homogeneous
+PASS  L_Pu parity-repaired lambda_Pu varpi_a Omega_u^a
+PASS  L_uw kinetic rho_br (partial_t u_w)^2
+PASS  L_uw bare gap rho_br Omega_w^2 u_w^2
+PASS  L_uw homogeneous
+PASS  brane bulk representation g_ell L_Mac kinetic
+PASS  brane bulk representation g_ell L_Mac curl
+PASS  brane bulk representation g_ell L_Pu
+PASS  brane bulk representation g_ell L_uw kinetic
+PASS  brane bulk representation g_ell L_uw gap
+PASS  action measure int dt d^4X bulk_lag
+PASS  action measure int dt d^4X g_ell(w) L_brane
+PASS  projected traction T_wa=m rho v_w v_a
+PASS  projected traction partial_b u_w is dimensionless
+PASS  projected traction slope mixing
+PASS  full projected traction T_na homogeneous
+PASS  dim ablation drop_m_from_T_wa produced required FAIL (residual = 1)
+PASS  dim ablation MacCullagh_without_curl produced required FAIL (residual = 4)
+PASS  linearization O_u rho_br omega^2 term
+PASS  linearization O_u mu_R k^2 term
+PASS  linearization O_u homogeneous
+PASS  target [c_gamma^2=mu_R/rho_br]=L^2 T^-2
+PASS  linearization omega_T^2=c_gamma^2 k^2
+PASS  linearization omega_P^2=c_s^2 k^2
+PASS  linearization P radial gap 2 c_s^2/a^2
+PASS  linearization omega_radial^2 homogeneous
+PASS  linearization omega_uw,bare^2=Omega_w^2
+PASS  linearization Fourier P-u monomial lambda_Pu P k u
+  parity record: direct P_parallel.Omega_u is parity-ODD and excluded.
+  parity record: w_hat.(P_parallel x Omega_u) is parity-EVEN using the conceded normal and is frozen.
+
+Flat-brane linear DOF rank computation
+--------------------------------------
+PASS  curl stiffness rank transverse to k_a is 2
+PASS  curl stiffness nullity is one k-parallel u component
+PASS  reported u^a curl-transverse count is rank-computed
+PASS  reported u^a kinetic-minus-curl count is rank-computed
+PASS  flat-brane total DOF rank-computes to frozen value 8
+PASS  G0.5 breakdown u_transverse reported->computed
+PASS  G0.5 breakdown u_longitudinal reported->computed
+PASS  G0.5 breakdown P_spin_wave reported->computed
+PASS  G0.5 breakdown P_soft_spin_radial reported->computed
+PASS  G0.5 breakdown u_w reported->computed
+PASS  G0.5 breakdown phi reported->computed
+  structural-postulate-6 fact: C5 phi is absent in the active baseline, so phi contributes 0 DOF.
+  rank bookkeeping: {'u_kinetic_rank': 3, 'u_curl_rank': 2, 'u_curl_nullity_within_active_kinetic_space': 1, 'P_tangent_kinetic_rank': 3, 'P_tangent_Frank_rank': 3, 'P_radial_kinetic_rank': 1, 'P_radial_soft_spin_hessian_rank': 1, 'u_w_kinetic_rank': 1, 'u_w_gap_rank': 1, 'phi_kinetic_rank': 0}
+  computed G0.5 counts: {'u_transverse': 2, 'u_longitudinal': 1, 'P_spin_wave': 3, 'P_soft_spin_radial': 1, 'u_w': 1, 'phi': 0}; total=8
+PASS  DOF ablation drop_u_w_gap_term computes total 7
+PASS  DOF ablation drop_u_w_gap_term changes computed total away from 8 produced required FAIL (residual = -1)
+PASS  DOF ablation drop_P_soft_spin_radial_term computes total 7
+PASS  DOF ablation drop_P_soft_spin_radial_term changes computed total away from 8 produced required FAIL (residual = -1)
+PASS  DOF ablation zero_u_longitudinal_component computes total 7
+PASS  DOF ablation zero_u_longitudinal_component changes computed total away from 8 produced required FAIL (residual = -1)
+
+Computed drift ledger enumeration
+---------------------------------
+  Enumerated drift members:
+    - rho_br: constant, [L^-3 M]; surface inertia
+    - mu_R: constant, [L^-1 T^-2 M]; MacCullagh modulus
+    - lambda_Pu: constant, [L^-1 T^-2 M]; parity-repaired P-u coupling
+    - Omega_w: constant, [T^-1]; bare u_w gap scale
+    - g_ell(w): function, [L^-1]; fixed Gaussian shape, ONE width knob ell_g; no free-form profile
+    - imposed `ŵ` axis + `w=0` surface (conceded-wall): structural_postulate; verbatim structural postulate
+    - `uᵃ` same-medium surface collective, tangentially free-slip (`u̇ᵃ ≠ vᵃ`): structural_postulate; verbatim structural postulate
+    - T0 `Pⁱ` reused as the Cosserat micro-rotation reservoir (0 new DOF): structural_postulate; verbatim structural postulate
+    - baseline `Pⁱ` spin-wave status = `massless` (alternates `gapped`/`slaved-rigid` named-inactive): structural_postulate; verbatim structural postulate
+    - the `ŵ`-dependent parity-EVEN P–u operator re-admits the ε-contracted/chiral class excluded by T0 and REQUIRES the conceded axis `ŵ` (a structural-postulate cost, not a free choice; the direct `P_∥·Ω_u` is parity-ODD, excluded): structural_postulate; verbatim structural postulate
+    - no C5 `φ` analog / no longitudinal constraint: structural_postulate; verbatim structural postulate
+PASS  constant subcount computed from enumeration
+PASS  function subcount computed from enumeration
+PASS  structural-postulate subcount computed from enumeration
+PASS  independent new input count n computed from subcounts
+PASS  verdict string built from computed n equals frozen token
+PASS  drift table anti-absorption guard excludes Part-VI trio
+PASS  drift table Dim fields match dimensional-firewall targets
+  computed n = 4+1+6 = 11
+  computed verdict = SECOND_MEDIUM_DRIFT_AT_FREEZE(11)
+PASS  new-field subcount computed separately from field list
+PASS  new-field names are kept out of the 11-input drift table
+  new-field subcount = 4 from u^a (3) + u_w (1), separate from the 11-input drift count.
+PASS  T0 couple-stress coefficients contribute 0 new entries
+  T0 couple-stress coefficients are kept-not-new: m rho a^2; m rho c_s^2 a^2; m rho c_s^2.
+PASS  enumeration tooth: drop one entry gives n=10 and trips drift validation produced required FAIL (residual = 3)
+PASS  enumeration tooth: miscategorize Omega_w trips subcount assertions produced required FAIL (residual = 3)
+PASS  enumeration tooth: inject rho_B0 trips anti-absorption guard produced required FAIL (residual = 5)
+PASS  enumeration tooth: corrupt computed n before verdict assembly trips token equality produced required FAIL (residual = 1)
+PASS  enumeration tooth: corrupt rho_br table Dim trips firewall consistency produced required FAIL (residual = 1)
+PASS  baseline drift table remains valid after copy-mutation teeth
+
+mu_R notational firewall and R17 pending edge
+---------------------------------------------
+  [mu_R] 3D brane modulus = L^-1 T^-2 M
+  [mu_R^(4)] 4D shear-stiffness density = L^-2 T^-2 M
+PASS  [mu_R] != [mu_R^(4)] as exponent triples is nonzero as required (residual = 1)
+PASS  R17 dim consistency [mu_R^(4)]*L = [mu_R]
+  R17 status: PENDING (mu_R = int chi_B mu_R^(4) dw; deferred nonlinear throat/projection).
+PASS  mu_R firewall tooth: forced equality trips distinctness inequality produced required FAIL (residual = 1)
+
+Six structural postulates printed verbatim
+------------------------------------------
+  1. imposed `ŵ` axis + `w=0` surface (conceded-wall)
+  2. `uᵃ` same-medium surface collective, tangentially free-slip (`u̇ᵃ ≠ vᵃ`)
+  3. T0 `Pⁱ` reused as the Cosserat micro-rotation reservoir (0 new DOF)
+  4. baseline `Pⁱ` spin-wave status = `massless` (alternates `gapped`/`slaved-rigid` named-inactive)
+  5. the `ŵ`-dependent parity-EVEN P–u operator re-admits the ε-contracted/chiral class excluded by T0 and REQUIRES the conceded axis `ŵ` (a structural-postulate cost, not a free choice; the direct `P_∥·Ω_u` is parity-ODD, excluded)
+  6. no C5 `φ` analog / no longitudinal constraint
+
+Erratum, supersession, methodology, Gate-L scope, and carried debt
+------------------------------------------------------------------
+  ERRATUM (2026-07-04): the SECOND_MEDIUM_DRIFT_AT_FREEZE(11) count is NOT inflated by a rho_br overcount; this freeze's count STANDS.
+  pathA_25 varrho_br[rho] belongs to the CLOSED density-smectic candidate, FAIL_NOT_CODIM1, OUT_OF_ACTIVE_NG5.
+  This rho_br/mu_R is genuine postulated shear-surface inertia/modulus with registered-pending pathA_40 Route-A reduction.
+  Corroboration token: NO_OVERCOUNT_ROUTE_A_PENDING.
+  Honest cross-sector drift {rho_B0, chi_c, C_hu} is a Part-VI item, not absorbed into the 11.
+
+  Supersession fact 1: stage006 chi_B order-field wall superseded fixed-shape g_ell(w) as the MATERIAL-STATE closure.
+  Supersession fact 2: G0 REMAINS the light-sector CONSTITUTIVE freeze; stage003 consumes L_Mac as-is.
+
+  Methodology: postulating an ingredient is allowed; postulating an outcome is not.
+  Methodology: late ingredient = AD_HOC_RESCUE -> fresh G0; every knob counted; >=2 new inputs => drift reported plainly.
+  Methodology: g(w) admitted on locality/minimality grounds ONLY, target-blind.
+  Methodology anti-impose: G0 freezes TERMS, not gate answers; no bounded-below, traction, or longitudinal-is-gauge claims.
+  Methodology: a clean all-pass is suspicious, so able-to-fail teeth are live.
+
+  Scope: G0 freeze only; no Gate L verdict computed.
+  classification_guard: counts only; no gate verdict, no boundedness, no gauge, no leak claim.
+  Gate-L exposure names are prose provenance only: FAIL_HIDDEN_PROPAGATING_MODE; FAIL_GYROSTAT_NO_CLOSURE; FAIL_NOT_BOUNDED_BELOW; linked FAIL_COUPLE_STRESS_NOGO chain remains able to fire.
+  Gate-L artifacts are not imported; exposure strings are not used as computed predicates.
+
+  Route-A carried debt: {rho_br, mu_R} reduction = Route-A PENDING (R10), ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT, free-unreduced brane constants on the deferred nonlinear throat.
+  Labeled postulated constants registered as knobs: {lambda_Pu, Omega_w, ell_g}.
+
+  Downstream consumers: ledger_stage003 consumes mu_R, rho_br, c_gamma^2=mu_R/rho_br, and frozen L_Mac.
+  Downstream consumers: ledger_stage006 cites c_gamma^2=mu_R/rho_br plus the chi_B/G0 supersession relationship.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): G0_FREEZE_FIDELITY_DOF_DIM_VERIFIED  (freeze-action SHA-256 re-verified incl. T0 embedding; flat-brane DOF=8 rank-computed; dimensional firewall over every frozen term; drift count COMPUTED from the enumerated table)
+  source top-line verdicts: T0_SHEAR_FROZEN(d9520d3819c3) + SECOND_MEDIUM_DRIFT_AT_FREEZE(11)
+  honest landing: the 11 = POSTULATED/CALIBRATED freeze inputs (4 constants {rho_br, mu_R, lambda_Pu, Omega_w} + 1 function g_l(w; l_g) + 6 structural postulates), enumerated + computed — the freeze freezes TERMS, not gate answers
+  erratum (2026-07-04): the 11 STANDS (no rho_br overcount; pathA_25 varrho_br = CLOSED candidate, OUT_OF_ACTIVE_NG5); honest cross-sector drift {rho_B0, chi_c, C_hu} = Part-VI (pathA_41), NOT absorbed here [NO_OVERCOUNT_ROUTE_A_PENDING]
+  supersession: stage006 chi_B wall = the MATERIAL-STATE closure (supersedes fixed-shape g_l(w) as material wall); G0 REMAINS the light-sector CONSTITUTIVE freeze (stage003 consumes L_Mac as-is)
+  notational firewall: mu_R (3D brane, M L^-1 T^-2) != mu_R_4D (4D density, M L^-2 T^-2); related only by PENDING R17 projection
+  Gate-L: EXCLUDED — no gate verdict computed or imported; exposure names printed as provenance only
+  carried: Route-A reduction PENDING (pathA_40, R10) for {rho_br, mu_R}; new postulated constants {lambda_Pu, Omega_w, l_g} registered as knobs
+
+PASS tally: 96; FAIL tally: 0
+OVERALL PASS: SymPy verified ledger_stage007 G0 freeze fidelity, dimensions, DOF, and computed drift
+
+EXIT_CODE: 0

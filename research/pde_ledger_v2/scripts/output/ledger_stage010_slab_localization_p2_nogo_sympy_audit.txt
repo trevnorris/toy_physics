@@ -1,0 +1,181 @@
+# SymPy Audit Output
+# Script: ledger_stage010_slab_localization_p2_nogo_sympy_audit.py
+# Date: 2026-07-08T10:31:43-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=====================================================
+ledger_stage010_slab_localization_p2_nogo SymPy audit
+=====================================================
+
+Consumed inputs with dual-site citation integrity
+-------------------------------------------------
+  ledger_stage008 cited input: p_raw(l2)=5; T2_applied=false, no l=2 physics recomputed here.
+    consumed site p_raw_l2 = 5
+    independent pipeline site p_raw_l2 = 5
+PASS  ledger_stage008 p_raw(l2) consumed minus pipeline equals zero
+PASS  cited p_raw(l2) equals the frozen ledger_stage008 export 5
+PASS  quadrupole_survives derives from finite non-negative integer p_raw(l2)
+PASS  T2_applied=false is enforced for the cited quadrupole input
+  ledger_stage009 cited input: A_residual_pass=True; used only in the joint-composition print.
+    consumed site A_residual_pass = True
+    independent pipeline site A_residual_pass_as_int = 1
+PASS  ledger_stage009 A_residual_pass consumed minus pipeline equals zero
+PASS  Check-A component is cited True
+
+Two DC-sink transverse spectra and normalizable zero modes
+----------------------------------------------------------
+  destructuring_absorbing:
+    f0(w) = 1/sqrt(d); m0 = 0
+    f1(w) = sqrt(2)*cos(pi*w/d)/sqrt(d); m1 = pi/d
+PASS  destructuring_absorbing zero-mode normalization integral equals 1
+PASS  destructuring_absorbing first-mode normalization integral equals 1
+PASS  destructuring_absorbing zero-mode transverse ODE residual f''+m^2 f
+PASS  destructuring_absorbing first-mode transverse ODE residual f''+m^2 f
+PASS  destructuring_absorbing boundary condition f0_prime_0
+PASS  destructuring_absorbing boundary condition f0_prime_d
+PASS  destructuring_absorbing boundary condition f1_prime_0
+PASS  destructuring_absorbing boundary condition f1_prime_d
+  bloch_stack:
+    f0(w) = 1/sqrt(d); m0 = 0
+    f1(w) = sqrt(2)*cos(2*pi*w/d)/sqrt(d); m1 = 2*pi/d
+PASS  bloch_stack zero-mode normalization integral equals 1
+PASS  bloch_stack first-mode normalization integral equals 1
+PASS  bloch_stack zero-mode transverse ODE residual f''+m^2 f
+PASS  bloch_stack first-mode transverse ODE residual f''+m^2 f
+PASS  bloch_stack boundary condition f0_value_periodic
+PASS  bloch_stack boundary condition f0_derivative_periodic
+PASS  bloch_stack boundary condition f1_value_periodic
+PASS  bloch_stack boundary condition f1_derivative_periodic
+  load-bearing fact: both completions have a normalizable constant m=0 transverse zero mode.
+
+Dynamic radial zero-mode route
+------------------------------
+  operator: g''+(2/r)g'+((omega/c_S)^2-m^2)g=0 solved before omega->0
+  dsolve general basis = sqrt(2)*sqrt(cS)*(C1*sin(omega*r/cS) - C2*cos(omega*r/cS))/(sqrt(pi)*sqrt(omega)*r)
+  BOUNDARY SELECTION: outgoing spherical C1/C2 branch; normalization from compact zero-mode overlap 1/d.
+  selected outgoing Green = exp(I*omega*r/cS)/(4*pi*d*r)
+PASS  dynamic selected outgoing branch satisfies the radial operator
+  omega->0 Green limit = 1/(4*pi*d*r)
+  dynamic radial flow -dG/dr = 1/(4*pi*d*r**2)
+PASS  dynamic route large-r exponent p_dynamic=2
+
+Static radial route and static-dynamic consistency
+--------------------------------------------------
+  operator: omega=0 first, g''+(2/r)g'-m^2 g=0 with computed m=0
+  dsolve general basis = (C1*r + C2)/r
+  BOUNDARY SELECTION: C1=0 removes constant branch; C2=1/(4*pi*d) fixes the overlap normalization.
+  selected static Green = 1/(4*pi*d*r)
+PASS  static selected zero-mode branch satisfies the radial operator
+  static radial flow -dG/dr = 1/(4*pi*d*r**2)
+PASS  static route large-r exponent p_static=2
+PASS  dynamic and static exponents agree p_dynamic-p_static=0
+PASS  strong consistency dynamic limit Green minus static Green is identically zero
+
+Massive/gapped Yukawa contrast
+------------------------------
+  destructuring_absorbing: mu=m1=pi/d; dsolve basis = (1 + I)*(C1*sinh(mu_destructuring_absorbing*r) + I*C2*cosh(mu_destructuring_absorbing*r))/(sqrt(pi)*sqrt(mu_destructuring_absorbing)*r)
+    selected decaying Yukawa branch = -I*(1/8 - I/8)*((1 - I)*sinh(pi*r/d) + sqrt(2)*I**(3/2)*cosh(pi*r/d))/(pi*r)
+PASS  destructuring_absorbing gapped mode has mu>0 is nonzero as required (residual = pi/d)
+PASS  destructuring_absorbing selected massive branch satisfies static radial operator
+  bloch_stack: mu=m1=2*pi/d; dsolve basis = (1 + I)*(C1*sinh(mu_bloch_stack*r) + I*C2*cosh(mu_bloch_stack*r))/(sqrt(pi)*sqrt(mu_bloch_stack)*r)
+    selected decaying Yukawa branch = -I*(1/8 - I/8)*((1 - I)*sinh(2*pi*r/d) + sqrt(2)*I**(3/2)*cosh(2*pi*r/d))/(pi*r)
+PASS  bloch_stack gapped mode has mu>0 is nonzero as required (residual = 2*pi/d)
+PASS  bloch_stack selected massive branch satisfies static radial operator
+  gapped modes are Yukawa-suppressed as exp(-m1*r)/r, so only the m=0 zero mode sets the far-field 1/r^2.
+  illustrative, not load-bearing: Green = Z*zero + C*massive with Z=Z cited from Check A and C=C free.
+
+Both completions agree on p=2 and counterfactual wrong falloff is rejected
+--------------------------------------------------------------------------
+  destructuring_absorbing static Green = 1/(4*pi*d*r); p_abs = 2
+  bloch_stack static Green = 1/(4*pi*d*r); p_bloch = 2
+PASS  destructuring_absorbing exponent p_abs=2
+PASS  bloch_stack exponent p_bloch=2
+PASS  both completions agree p_abs-p_bloch=0
+PASS  bloch selected zero-mode branch satisfies the radial operator
+  solved static candidate = 1/(4*pi*d*r)
+  wrong falloff candidate = solved Green * r^-4 = 1/(4*pi*d*r**5)
+PASS  correct static Green residual is zero
+PASS  counterfactual residual equals 5/(pi*d*r^7)
+PASS  counterfactual wrong 1/r^5 falloff residual is nonzero is nonzero as required (residual = 5/(pi*d*r**7))
+
+NOGO warp control and computed classifier
+-----------------------------------------
+  anti-localizing half-line warp: mu(w)=exp(2*k_warp*w), k_warp>0
+  cutoff zero-mode norm integral int_0^W mu(w) dw = (exp(W*k_warp) - 1)*(exp(W*k_warp) + 1)/(2*k_warp)
+PASS  warp zero-mode norm diverges as W->infinity
+  continuum Green integral = 1/(4*pi*r**2)
+  continuum flow -dG/dr = 1/(2*pi*r**3)
+PASS  delocalizing continuum exponent p_delocalizing=3
+PASS  same classifier maps [p_delocalizing] to RETURN_NOGO
+PASS  falloff-tension witness requires p_abs=2
+PASS  falloff-tension witness requires p_delocalizing != 2 is nonzero as required (residual = 1)
+PASS  tension_status is witnessed
+  destructuring branch verdict = RETURN_RESIDUAL_PREDICTION
+  bloch branch verdict = RETURN_RESIDUAL_PREDICTION
+  Check-B headline = RETURN_RESIDUAL_PREDICTION
+PASS  destructuring branch verdict from p_abs is RETURN_RESIDUAL_PREDICTION
+PASS  bloch branch verdict from p_bloch is RETURN_RESIDUAL_PREDICTION
+PASS  Check-B classifier headline from [p_abs,p_bloch] is RETURN_RESIDUAL_PREDICTION
+PASS  quadrupole_survives=False classifier prong returns RETURN_NOGO
+  COMPLETED joint verdict: RETURN_RESIDUAL_PREDICTION = (Check A: A_residual_pass=True, CITED ledger_stage009) AND (Check B: p=2 both completions, computed here)
+  RETURN_NOGO remains reachable if the return delocalizes (warp -> p=3) OR quadrupole_survives=False.
+
+Modest dimensional block
+------------------------
+PASS  z=omega*d/c_S is dimensionless
+PASS  k_warp*w is dimensionless
+PASS  [green_zero_static]=[1/(4*pi*d*r)]=L^-2
+PASS  [radial flow]=L^-1*[Green]=L^-3
+PASS  source radial-flow dim check dim_M0-dim_rho-2*dim_r=[0,1,-1]
+  dimensions ordered M,L,T; no EOS/c_s^2 chain re-derived in stage010.
+
+Provenance and scope
+--------------------
+  postulated slab: flat finite slab, brane w=0, absorber w=d; localization is derived on this family.
+  BOUNDARY SELECTIONS: outgoing-spherical C1/C2 radial branch and 1/(4*pi*d) overlap normalization are selections, not derivations.
+  R19/W_slab caveat: localization holding for the flat-slab FAMILY != the family being SELECTED by dynamics; the slab width d is a postulated register row (stage009), and its selection is the deferred nonlinear return (R19, sim-deferred Gate-6 territory).
+  open-item #9: sharpened, NOT closed - the gravity-range (1/r^2) leg passes inside the localizing flat-slab family because both DC-sink completions give p=2; the return-cancellation targets (R23) remain the deferred obligation.
+  Check-A citation: the joint RETURN_RESIDUAL_PREDICTION is completed here by composing Check B (p=2, computed) with Check A (A_residual_pass=True, cited from ledger_stage009); NOGO reachable.
+  radiation/Sommerfeld boundary provenance: recorded ac_check_a_only in the source - NOT a Check-B branch.
+  dropped bookkeeping: source SHA-256 static/dynamic/per-branch trace ids, structure_id, and expr_digest were build-reproducibility plumbing, replaced by the v2 tri-review protocol.
+  downstream consumers: stage 024/026 (pathA_43 consumes the Phi_l(w,r) bulk Helmholtz zero-mode plus the projected-continuity operator lineage).
+  dropped-trace bookkeeping note: the trace-hash lines are not carried into this print-only stage.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): RETURN_LOCALIZATION_P2_DERIVED_NOGO_REACHABLE  (both DC-sink completions -> normalizable m=0 zero mode -> genuine 3D-radial dsolve -> p=2; static-dynamic consistent; counterfactual r^-4 rejected (residual 5/(pi*d*r^7)); warp control -> p=3 -> RETURN_NOGO)
+  source top-line verdict: RETURN_RESIDUAL_PREDICTION  (COMPLETED here: Check B p=2 computed; Check A component A_residual_pass=True cited from ledger_stage009)
+  joint composition: RETURN_RESIDUAL_PREDICTION = (Check A: bounded residual, A_residual_pass=True, CITED stage009) AND (Check B: p=2 both completions, computed here); RETURN_NOGO reachable if the return delocalizes (warp -> p=3) OR quadrupole_survives=False
+  earned: two normalizable m=0 zero modes (compact-cell + Bloch); dynamic dsolve then omega->0 -> p=2; static solve -> p=2; static-dynamic consistent; massive/gapped Yukawa contrast; both completions agree p=2; counterfactual r^-4 rejected; NOGO warp control p=3; falloff-tension witnessed
+  postulated: the flat finite slab (brane w=0, absorber w=d) [stage009 geometry]
+  boundary selections (NOT derived): outgoing-spherical C1/C2 branch choice; 1/(4*pi*d) overlap normalization
+  consumed (cited, dual-site integrity): ledger_stage008 p_raw(l2)=5 -> quadrupole_survives=True (T2_applied=false, no l=2 recompute); ledger_stage009 Check-A component A_residual_pass=True
+  caveat: localization holds for the FAMILY, not the family selected by dynamics (R19/W_slab); open-item #9 sharpened NOT closed (R23 pending)
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 corrupt counterfactual guard to accept zero residual trips guard assert produced required FAIL (residual = 1)
+PASS  tooth 2 warp flip exp(-2*k_warp*w) trips non-normalizability assert produced required FAIL (residual = 1)
+PASS  tooth 3 radial operator coefficient 2/r->3/r trips selected residual assert produced required FAIL (residual = -1/(4*pi*d*r**3))
+PASS  tooth 4 nonzero m seed trips zero-mode radial guard produced required FAIL (residual = 1)
+PASS  tooth 5 p_bloch->3 trips completion agreement and headline classifier produced required FAIL (residual = 2)
+PASS  tooth 6a classifier maps delocalizing p=3 branch to RETURN_NOGO
+PASS  tooth 6b classifier maps quadrupole_survives=False to RETURN_NOGO
+PASS  tooth 7 corrupt f0_abs=1/sqrt(2*d) trips zero-mode normalization assert produced required FAIL (residual = -1/2)
+PASS  tooth 8a stage008 consumed p_raw(l2) 5->4 trips dual-site integrity produced required FAIL (residual = -1)
+PASS  tooth 8b stage008 pipeline p_raw(l2) 5->4 trips dual-site integrity produced required FAIL (residual = 1)
+PASS  tooth 8c stage009 consumed A_residual_pass True->False trips dual-site integrity produced required FAIL (residual = -1)
+PASS  tooth 8d stage009 pipeline A_residual_pass 1->0 trips dual-site integrity produced required FAIL (residual = 1)
+PASS  tooth 8e non-finite p_raw sentinel would flip quadrupole_survives False
+PASS  baseline immutable after teeth: p_abs remains 2
+PASS  baseline immutable after teeth: p_bloch remains 2
+PASS  baseline immutable after teeth: stage008 integrity remains zero
+PASS  baseline immutable after teeth: stage009 integrity remains zero
+
+PASS tally: 71; FAIL tally: 0
+OVERALL PASS: SymPy verified ledger_stage010 slab localization p=2 with reachable NOGO exactly
+
+EXIT_CODE: 0

@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-07",
-  "canonical_stage_count": 9,
+  "updated": "2026-07-08",
+  "canonical_stage_count": 10,
   "policy": [
     {
       "build_order_stage": "001",
@@ -73,6 +73,14 @@
       "slug": "flat_slab_return_residual",
       "final_number": "deferred",
       "note": "build-order id (II-B2; reshape of the Check-A slice of pathA_29_brane_bulk_return_{sympy.py,.wl}; Check B = stage 010); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "010",
+      "part": "II",
+      "source_gate": "pathA_29 (Check B)",
+      "slug": "slab_localization_p2_nogo",
+      "final_number": "deferred",
+      "note": "build-order id (II-B3; reshape of the Check-B slice of pathA_29_brane_bulk_return_{sympy.py,.wl}; COMPLETES the pathA_29 joint RETURN_RESIDUAL_PREDICTION fold begun at stage 009); final Part-ordered linear renumber deferred to the pre-swap pass"
     }
   ],
   "excluded_em_projected_material": [],

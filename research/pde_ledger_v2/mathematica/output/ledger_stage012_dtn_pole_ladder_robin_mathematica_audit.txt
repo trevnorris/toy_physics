@@ -1,0 +1,206 @@
+# Mathematica Audit Output
+# Script: ledger_stage012_dtn_pole_ladder_robin_mathematica_audit.wl
+# Date: 2026-07-08T14:33:07-06:00
+# Elapsed: 56s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=======================================================
+ledger_stage012_dtn_pole_ladder_robin Mathematica audit
+=======================================================
+
+Wolfram arity self-check
+------------------------
+PASS  arity transferMatrix[ell] returns a 2x2 matrix
+PASS  arity reconstructLsFromPair[pair] returns operator
+PASS  arity counterfactualGuard[3 args] returns six guard members
+PASS  arity counterfactualGuard[4 args] accepts alpha override
+PASS  arity computeVerdict[5 args] returns DN_UNITTEST_BC_DEPENDENT
+PASS  arity r1SiteFromExponent[e] returns exact literal site
+PASS  arity r1EosSiteFromExponent[e] returns exact EOS route
+PASS  arity buildDimensionalBlock[] returns mutation_fires
+
+Consumed stage011 inputs and opening dsolve
+-------------------------------------------
+  CONSUMED-from-011: L_s, c_S, and domain [0,L0] are cited; stage011 reduction/certificate are not recomputed.
+  CITED-speed: c_S^2 = 5*K*rho_star^4/m is R1 at rho_star; EOS exponent-5 P=K*rho^5 IMPOSED; bare m is stage004 m_GNLS.
+  ODE consumed by 012 = (omega^2*psi[s])/cS^2 + Derivative[2][psi][s] == 0
+  DSolve general solution = C[1]*Cos[(omega*s)/cS] + C[2]*Sin[(omega*s)/cS]
+PASS  DSolve solution satisfies cited Helmholtz L_s
+PASS  fundamental sin branch is emitted by DSolve
+PASS  fundamental cos branch is emitted by DSolve
+  R1 site A literal = (5*K*rho^4)/m
+  R1 site B EOS route d(K*rho^5)/d rho / m = (5*K*rho^4)/m
+PASS  c_S^2 R1 site A minus site B equals zero
+PASS  c_S^2 evaluated at rho_star equals consumed speed
+PASS  c_S^2 frozen-export anchor consumed - 5*K*rho_star^4/m equals zero
+  L_s site A export = (omega^2*psiHat[s])/cS^2 + Derivative[2][psiHat][s]
+  L_s site B null-space solve: a = 0, b = omega^2/cS^2
+  L_s site B reconstructed = (omega^2*psiHat[s])/cS^2 + Derivative[2][psiHat][s]
+PASS  L_s null-space reconstruction recovers a=0
+PASS  L_s null-space reconstruction recovers b=(omega/c_S)^2
+PASS  L_s site A minus site B equals zero
+PASS  L_s frozen-export anchor consumed_L_s - (psi''+(omega/c_S)^2 psi) equals zero
+PASS  domain [0,L0] is cited as length L0, not re-solved
+
+Transfer-matrix D/N DtN
+-----------------------
+  transferMatrix[L0] = {{Cos[(L0*omega)/cS], (cS*Sin[(L0*omega)/cS])/omega}, {-((omega*Sin[(L0*omega)/cS])/cS), Cos[(L0*omega)/cS]}}
+  capState = {psiM*Cos[(L0*omega)/cS] + (cS*pM*Sin[(L0*omega)/cS])/omega, pM*Cos[(L0*omega)/cS] - (omega*psiM*Sin[(L0*omega)/cS])/cS}
+  Neumann cap residual = pM*Cos[(L0*omega)/cS] - (omega*psiM*Sin[(L0*omega)/cS])/cS
+  pM from Neumann = (omega*psiM*Tan[(L0*omega)/cS])/cS
+  dtnTransfer = -((omega*Tan[(L0*omega)/cS])/cS); target = -((omega*Tan[(L0*omega)/cS])/cS)
+PASS  transfer-matrix DtN equals -k*tan(k*L0)
+PASS  dtn_matches_target is transfer-derived-vs-typed
+PASS  transfer route agrees with the LUsolve reference expression
+
+Half-shift pole ladder, static series, and round trip
+-----------------------------------------------------
+  transfer denominator full = cS
+  pole denominator = Cos[(L0*omega)/cS]
+PASS  pole denominator is cos(k*L0)
+  pole ladder = (cS*(1/2 + n)*Pi)/L0
+  pole residual after ladder substitution = 0
+PASS  half-shift pole residual is zero
+PASS  halfshift = pole_residual==0 is computed true
+  static small-omega series = SeriesData[omega, 0, {-(L0/cS^2), 0, -1/3*L0^3/cS^4}, 2, 6, 1]
+  static limit omega->0+ = 0
+PASS  static series polynomial matches -L0*omega^2/cS^2 - L0^3*omega^4/(3*cS^4)
+PASS  static DC limit is zero
+PASS  static series is distinguished from the DC limit is nonzero as required (residual = -1/3*(3*cS^2*L0*omega^2 + L0^3*omega^4)/cS^4)
+  Static note: this is the small-omega expansion of the dynamic DtN; no separate static solve is emitted.
+  round_trip = -E^(((2*I)*L0*omega)/cS); on D/N ladder = 1
+PASS  round-trip closes to R_rt=1 on the D/N ladder
+PASS  round_trip_closes is computed true
+  round-trip phase: phi0 = 0 mod 2*pi
+
+Robin counterfactual falsifier
+------------------------------
+  Robin residual = (pM - alpha*psiM)*Cos[(L0*omega)/cS] - ((alpha*cS^2*pM + omega^2*psiM)*Sin[(L0*omega)/cS])/(cS*omega)
+  Robin DtN transfer = (omega*(alpha*cS*Cos[(L0*omega)/cS] + omega*Sin[(L0*omega)/cS]))/(cS*(-(omega*Cos[(L0*omega)/cS]) + alpha*cS*Sin[(L0*omega)/cS]))
+  robin_denominator_core = (omega*Cos[(L0*omega)/cS])/cS - alpha*Sin[(L0*omega)/cS]
+PASS  robin_determinant_emitted is tied to computed denominator core is nonzero as required (residual = (omega*Cos[(L0*omega)/cS])/cS - alpha*Sin[(L0*omega)/cS])
+  alpha->0 branch = -((omega*Tan[(L0*omega)/cS])/cS)
+  alpha->infinity branch = (omega*Cot[(L0*omega)/cS])/cS; D/D transfer = (omega*Cot[(L0*omega)/cS])/cS
+PASS  native alpha0 self-check robinAlpha0==dtnTransfer is kept
+PASS  native alphaInfinity self-check robinAlphaInf==ddTransfer is kept
+PASS  Robin alpha->0 recovers D/N DtN
+PASS  Robin alpha->infinity recovers D/D k*cot(k*L0)
+  D/D half-shift samples = {1, -1, 1, -1}
+  D/D integer-ladder samples = {0, 0, 0, 0}
+  dd_zero_mode_removable artifact = True (not a guard member)
+PASS  D/D zero mode removable limit equals 1/L0
+  numeric alpha = 2/L0; numeric Robin DtN = (omega*(2*cS*Cos[(L0*omega)/cS] + L0*omega*Sin[(L0*omega)/cS]))/(cS*(-(L0*omega*Cos[(L0*omega)/cS]) + 2*cS*Sin[(L0*omega)/cS]))
+PASS  counterfactual_guard has exactly six members
+PASS  counterfactual_guard membership matches source dict L522-L529
+PASS  dd_zero_mode_removable is not verdict-bearing
+  guard[robin_determinant_emitted] = True
+PASS  counterfactual guard member robin_determinant_emitted is computed true
+  guard[recovers_DN_at_alpha0] = True
+PASS  counterfactual guard member recovers_DN_at_alpha0 is computed true
+  guard[recovers_DD_at_alpha_inf] = True
+PASS  counterfactual guard member recovers_DD_at_alpha_inf is computed true
+  guard[halfshift_destroyed_for_DD] = True
+PASS  counterfactual guard member halfshift_destroyed_for_DD is computed true
+  guard[numeric_alpha_distinct] = True
+PASS  counterfactual guard member numeric_alpha_distinct is computed true
+  guard[dtn_mismatch] = True
+PASS  counterfactual guard member dtn_mismatch is computed true
+PASS  all(counterfactual_guard.values()) is true
+
+012 dimensional legs and corrupt-[K] probe
+------------------------------------------
+  dimension order: (L,M,T)
+  [energy] = {2, 1, -2}; [four-volume] = {4, 0, 0}; [P] = {-2, 1, -2}
+  [rho] = {-4, 0, 0}; [K]=[P]-5[rho] = {18, 1, -2}; [alpha] = {-1, 0, 0}
+  propagated [c_S^2] = {2, 0, -2} -> [c_S] = {1, 0, -1} -> [k] = {-1, 0, 0}
+  [tan_argument=k*L0] = {0, 0, 0}; [Z00_prefactor=-k] = {-1, 0, 0}; [Z00] = {-1, 0, 0}
+PASS  tan_argument dimensional leg is dimensionless
+PASS  Z00_prefactor dimensional leg is L^-1
+PASS  Z00 dimensional leg is L^-1
+PASS  dimensional_ok for 012 tan_argument/Z00 legs
+  corrupt [K]+(1,0,0) gives [K] = {19, 1, -2}
+  corrupt propagated [c_S] = {3/2, 0, -1}; [k] = {-3/2, 0, 0}
+  corrupt [tan_argument] = {-1/2, 0, 0}; corrupt [Z00_prefactor] = {-3/2, 0, 0}
+PASS  corrupt-[K] makes tan_argument non-dimensionless produced required FAIL (residual = 1/4)
+PASS  corrupt-[K] makes Z00_prefactor differ from L^-1 produced required FAIL (residual = 1/4)
+PASS  corrupt-[K] mutation_fires=True
+PASS  self-ablation with mutation gives DN_UNITTEST_FAIL_DIMENSIONAL
+PASS  self-ablation without mutation gives clean DN_UNITTEST_BC_DEPENDENT
+PASS  self-ablation fail_suppressed=True
+
+BC provenance, 012 verdict, and joint composition
+-------------------------------------------------
+  bc_provenance = imposed
+  bc_derivation_emitted = False
+  bc_derivation descriptor = <|"bc_type" -> "D-at-mouth / N-at-cap", "mouth_gradient_from_Vconf" -> "not emitted from an explicit V_wall profile in this unit test", "cap_gradient_from_Vconf" -> "not emitted from an explicit V_wall profile in this unit test", "regularity_at_pinchoff" -> "regular cap closure R0(L0)=0 motivates Neumann, but a full asymptotic derivation is not emitted", "mouth_condition" -> "clamp to quasi-static bulk reservoir is imposed for this frozen-wall benchmark, not derived as radiation", "classification_rule" -> "bc_derivation_emitted=false forces DN_UNITTEST_BC_DEPENDENT unless an explicit mouth/cap derivation is later supplied"|>
+PASS  bc_provenance is imposed
+PASS  bc_derivation_emitted is the honest false scope flag
+  012 scoped verdict = DN_UNITTEST_BC_DEPENDENT
+PASS  012 verdict lands at DN_UNITTEST_BC_DEPENDENT
+  DN_UNITTEST_BC_DEPENDENT (JOINT, COMPLETED)
+    = (011: REDUCTION_CERTIFIED, cited from ledger_stage011)
+    AND (012: DtN ladder EARNED + bc_derivation_emitted=False -> BC_DEPENDENT landing, computed here)
+PASS  joint composition cites stage011 REDUCTION_CERTIFIED and computed 012 landing
+
+Provenance and scope
+--------------------
+  CONSUMED-from-011: L_s, domain [0,L0] with cap R0(L0)=0, and c_S are CITED from ledger_stage011 with dual-site integrity; 011 reduction/certificate/de-rig are not recomputed.
+  CITED-speed: c_S^2=5*K*rho_star^4/m is Part I edge R1 (stage005, re-exported by stage011) at rho_star; EOS exponent-5 P=K*rho^5 IMPOSED.
+  IMPOSED-BC: D/N mouth/cap boundary pair is IMPOSED; bc_provenance=imposed and bc_derivation_emitted=False are banked calibration; V_wall derivation is deferred, not fabricated.
+  EARNED: DtN, half-shifted ladder, static small-omega series, round-trip R_rt=1, and Robin counterfactual guard are computed here; dtn_matches_target is derived-vs-typed, not X==X.
+  Robin-falsifier: Robin cap recovers D/N at alpha=0, D/D at alpha->infinity, destroys the half-shift for D/D, and is numerically distinct at alpha=2/L0.
+  control-symbol: alpha is a Robin cap admittance with [alpha]=L^-1, tracked-not-counted like stage010 k_warp; it builds the falsifiable counterfactual, not the physics.
+  split: this stage COMPLETES DN_UNITTEST_BC_DEPENDENT; 011 carried REDUCTION_CERTIFIED, 012 carries the D/N ladder + BC_DEPENDENT landing; DN_UNITTEST_PASS is deferred.
+  dropped-bookkeeping: scratch-YAML/_sympy_exprs.wl write, MMA-YAML re-read, expression_digest, and engine_agreement plumbing are stripped.
+  downstream consumers: stage 013 (harmonic beta lift) + stage 017 (calibration input) consume Z00, the resonance ladder, and BC_DEPENDENT provenance.
+  register note: zero new counted knobs; alpha is tracked-not-counted; L0 already registered in stage011; edge R28 is the imposed D/N boundary calibration obligation.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): DTN_POLE_LADDER_ROBIN_FALSIFIER_EARNED  (dsolve of the cited frozen L_s -> D/N coefficient matrix -> outward-mouth DtN Z00=-(omega/c_S)*tan(L0*omega/c_S); half-shifted pole ladder omega_n=pi*c_S*(n+1/2)/L0; static small-omega series; round-trip R_rt=1; Robin cap counterfactual falsifier, guard = {robin_determinant_emitted, recovers_DN_at_alpha0, recovers_DD_at_alpha_inf, halfshift_destroyed_for_DD, numeric_alpha_distinct, dtn_mismatch}, each a computed residual; tan_argument/Z00 dim legs via [K]=[P]-5[rho] + corrupt-[K] probe)
+  source top-line verdict: DN_UNITTEST_BC_DEPENDENT  (JOINT; 012 COMPLETES it -- adds the D/N ladder + bc_derivation_emitted=False -> BC_DEPENDENT landing to stage 011's cited REDUCTION_CERTIFIED)
+  joint composition (COMPLETED): DN_UNITTEST_BC_DEPENDENT = (011: REDUCTION_CERTIFIED, cited from ledger_stage011) AND (012: DtN ladder EARNED + BC_DEPENDENT landing, computed here)
+  earned: DtN derived via LUsolve (dtn_matches_target = genuine derived-vs-typed comparison, NOT X==X); half-shifted ladder (halfshift = pole_residual==0, COMPUTED); round-trip R_rt=1 (COMPUTED via substitution); Robin guard all booleans COMPUTED; tan_argument/Z00 dim legs (2,0,-2)-consistent + corrupt-[K] probe fires
+  consumed (cited from stage011, dual-site integrity): frozen Helmholtz L_s = psi'' + (omega/c_S)^2 psi on [0,L0]; c_S^2 = 5*K*rho_star^4/m (R1 at rho_star); domain cap R0(L0)=0
+  imposed (banked calibration, edge R28): D/N mouth/cap boundary pair; bc_provenance=imposed; bc_derivation_emitted=False -> BC_DEPENDENT landing; the mouth/cap V_wall gradient derivation earning DN_UNITTEST_PASS is a DEFERRED upgrade (NOT fabricated here)
+  control symbol (tracked, not counted): alpha = Robin cap admittance, [alpha]=L^-1 (like k_warp at stage010)
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 Robin denominator sign flip makes recovers_DD_at_alpha_inf false produced required FAIL (residual = 1)
+PASS  tooth 1 verdict is FAIL_COUNTERFACTUAL
+PASS  tooth 2 mutated Neumann RHS changes derived DtN produced required FAIL (residual = -(Sec[(L0*omega)/cS]/L0))
+PASS  tooth 2 dtn_matches_target flips false produced required FAIL (residual = 1)
+PASS  tooth 2 verdict is FAIL_POLE_LADDER
+PASS  tooth 3 integer ladder does not solve cos(k*L0)=0 produced required FAIL (residual = (-1)^j)
+PASS  tooth 3 halfshift boolean flips false produced required FAIL (residual = 1)
+PASS  tooth 3 verdict is FAIL_POLE_LADDER
+PASS  tooth 4 corrupt r_D/r_N makes round_trip_on_ladder differ from 1 produced required FAIL (residual = -2)
+PASS  tooth 4 round_trip_closes flips false produced required FAIL (residual = 1)
+PASS  tooth 5 broken alpha->infinity path makes recovers_DD_at_alpha_inf false produced required FAIL (residual = 1)
+PASS  tooth 5 verdict is FAIL_COUNTERFACTUAL
+PASS  tooth 6 numeric alpha degeneracy alpha=0 makes distinctness false produced required FAIL (residual = 1)
+PASS  tooth 6 verdict is FAIL_COUNTERFACTUAL
+PASS  tooth 7 c_S^2 site A exponent 5->4 trips R1 dual-site integrity produced required FAIL (residual = (K*(4 - 5*rho)*rho^3)/m)
+PASS  tooth 7 c_S^2 site B exponent 5->4 trips R1 dual-site integrity produced required FAIL (residual = (K*rho^3*(-4 + 5*rho))/m)
+PASS  tooth 7 c_S^2 site A exponent 5->6 trips R1 dual-site integrity produced required FAIL (residual = (K*rho^4*(-5 + 6*rho))/m)
+PASS  tooth 7 c_S^2 site B exponent 5->6 trips R1 dual-site integrity produced required FAIL (residual = (K*(5 - 6*rho)*rho^4)/m)
+PASS  tooth 7 coordinated R1 both-site exponent drift trips frozen-export anchor produced required FAIL (residual = (K*rhoStar^4*(-5 + 6*rhoStar))/m)
+PASS  tooth 7 L_s export sign corruption trips site A/B integrity produced required FAIL (residual = (-2*omega^2*psiHat[s])/cS^2)
+PASS  tooth 7 L_s site-B sinh/cosh corruption trips null-space integrity produced required FAIL (residual = (2*omega^2*psiHat[s])/cS^2)
+PASS  tooth 8 corrupt-[K] probe trips tan_argument dimensional gate produced required FAIL (residual = 1/4)
+PASS  tooth 8 corrupt-[K] probe trips Z00_prefactor dimensional gate produced required FAIL (residual = 1/4)
+PASS  tooth 8 corrupt-[K] verdict is DN_UNITTEST_FAIL_DIMENSIONAL
+PASS  tooth 8 self-ablation fail_suppressed remains true
+PASS  baseline immutable after teeth: DtN still equals target
+PASS  baseline immutable after teeth: halfshift pole residual remains zero
+PASS  baseline immutable after teeth: Robin alpha->infinity still recovers D/D
+PASS  baseline immutable after teeth: L_s site integrity remains zero
+PASS  baseline immutable after teeth: clean 012 verdict remains DN_UNITTEST_BC_DEPENDENT
+
+PASS tally: 90; FAIL tally: 0
+OVERALL PASS: Mathematica verified ledger_stage012 DtN pole ladder + Robin falsifier exactly
+
+EXIT_CODE: 0

@@ -99,14 +99,24 @@
 > zero file I/O; SymPy 61 / WL 71; tri-review CLEAN both legs → 3 teeth/label nits (firewall tooth made genuine, witness-path tooth 3b →
 > flag load-bearing, arity labels) → `REVERIFY_CLEAN`; **zero new counted knobs** (`L0`=ACTION-geometry, `ℓ_c` INERT) + structural edges
 > R26/R27; `REGISTER_CLEAN`; count 11, PDF 37pp. Full per-stage detail in STATUS.md ▶ RESUME HERE + `part2_gravity_atomic_split.md` Progress.
-> **▶ NEXT = II-G1b `ledger_stage012`** (pathA_30 DtN pole ladder + Robin falsifier: `dsolve` → D/N determinant → DtN `−(ω/c_S)tan(L0ω/c_S)`,
-> half-shifted pole ladder, `R_rt=1`, Robin counterfactual + guard, `tan_argument`/`Z00` dim legs; BC = banked calibration → the
-> `BC_DEPENDENT` landing; completes the joint verdict). Consumes stage011's frozen `L_s`/domain/`c_S`; keep the Robin able-to-fail guard +
-> the K-dim tan-arg probe. ⭐ **Running-start source map READY** = `research/pde_ledger_v2/notes/stage012_pathA30_dtn_ladder_source_map.md`
-> — 012 is a near-PURE bridge-strip (NOT a de-rig like 011): the `.wl` transfer-matrix route ALREADY carries the DtN/pole/Robin/static
-> (strip only `Get`+`sympy*`+`Export`, KEEP L25–48). Able-to-fail burden = the Robin falsifier + the K-dim tan-arg probe;
-> `dtn_matches_target` genuine (derived-vs-typed), `bc_derivation_emitted=False` an honest scope flag (not a tooth). Zero new counted
-> knobs (`α`=Robin control) + edge candidate R28 (D/N boundary IMPOSED → the `BC_DEPENDENT` landing; earning `..._PASS` deferred).
+> **✅ II-G1b `ledger_stage012` DONE (2026-07-08) — pathA_30 fold COMPLETE (011+012):** DtN pole ladder + Robin falsifier reshape
+> (near-PURE bridge-strip, NOT a de-rig) **COMPLETES the joint `DN_UNITTEST_BC_DEPENDENT`** = (011: `REDUCTION_CERTIFIED`, cited) ∧
+> (012: DtN ladder EARNED + `BC_DEPENDENT` landing, computed here). EARNED: `dsolve` of the cited `L_s` → D/N `LUsolve` → DtN
+> `Z00=−(ω/c_S)tan(L0ω/c_S)` (`dtn_matches_target` genuine derived-vs-typed — hardcoded target adversarially caught); half-shifted
+> ladder; static series (≠`limit=0`); `R_rt=1`; the Robin falsifier (true 6-member guard, each a computed residual;
+> `robin_determinant_emitted` HARDENED to the computed det not `bool(hstr)`; `dd_zero_mode_removable`=1/L0 held out); `tan_argument`/`Z00`
+> dim legs + corrupt-`[K]`. CONSUMES stage011's `L_s`/`[0,L0]`/`c_S` dual-site — the `L_s` site B = **null-space reconstruction** from
+> the `dsolve` `{sin,cos}` pair (genuinely independent, NOT a `k²`-rename). Zero file I/O; `.wl` KEEPS its transfer-matrix route as the
+> independent engine (DtN cross-check vs `.py` `LUsolve` computed). SymPy 84 / WL 90. Codex directive design-review → 3 BLOCKING
+> (`L_s` rename→null-space; guard membership + hardening; §4.1 no-op tooth→break-the-derivation) + 1 nit → `DIRECTIVE_CLEAN`;
+> tri-review CLEAN both legs (`FIDELITY_CLEAN`; `ADVERSARIAL_CLEAN` 16-mutant) + 1 documented non-blocking nit (`.wl` `robin_determinant_emitted`
+> witnesses the typed core — directive-permitted, derived route independently guarded) → NO remediation. **Zero new counted knobs**
+> (`α`=Robin cap admittance, control-construction, tracked-not-counted) + edge R28 (D/N boundary IMPOSED → `BC_DEPENDENT`, discharges
+> nothing); `REGISTER_CLEAN`; count 12, PDF 39pp.
+> **▶ NEXT = II-G2a `ledger_stage013`** (pathA_31 `BREATHING_CALIBRATED` 1/3: α_a/α_L harmonic lifts → `M_AB`/`K_AB` by real ∫dw operator
+> projection → the (a,L) collective closure). Consumes stage011/012's frozen throat packet + Helmholtz operator + D/N provenance.
+> pathA_31 trip-up (v1): HF `x−x` + typed flags + gamed threshold — both HF routes independently emitted, flags/threshold COMPUTED.
+> Author a running-start source map before building. Full per-stage detail in STATUS.md ▶ RESUME HERE + `part2_gravity_atomic_split.md` Progress.
 > ⭐ **Conceptual bank (2026-07-08, `373a4a3c`):** route-(c) physical picture (per-constituent orientable micro-configuration —
 > Phlat-Ball/gimbal image; brane = aligned arrows, bulk = demagnetized-ferromagnet disorder, throat = aligner/de-aligner) banked in
 > `conceptual_foundation.md` §7 #12; **user completeness criterion** = the ledger is NOT complete until ONE clean equation set explains

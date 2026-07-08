@@ -41,6 +41,10 @@
 - **I-3 running-start:** the χ_B ontology source map (the postulated action + the 3 audit legs {dim, recovery-reduction, θ-as-φ no-go} +
   labeled postulates + the 10 modeling choices to pin) is in `research/pde_ledger_v2/notes/stage006_chiB_ontology_source_map.md`. ⚠ I-3 is
   **FRESH-AUTHORED** (no existing script pair) — the directive SPECIFIES the action, it does not extract a harness. Read the source map first.
+- **I-4 running-start:** the pathA_35 G0 freeze source map (frozen action + hash mechanics + the "11" enumeration + the 2026-07-04 erratum +
+  script-pair anatomy {strip argparse/--compare/JSON payload-mirror} + downstream consumers + 7 reshape trip-ups incl. the HARDCODED-"11"
+  literal and the Gate-L exclusion) is in `research/pde_ledger_v2/notes/stage007_pathA35_G0_source_map.md`. I-4 is a RESHAPE of the existing
+  `pathA_35_G0_{sympy.py,.wl}` pair. Read the source map first. After I-4: Part I COMPLETE → the Part II (gravity) atomic-split user gate.
 
 ## Progress
 
@@ -51,8 +55,19 @@
   `REVERIFY_CLEAN`. `C_GAMMA_RATIO_UNDERDETERMINED` — sound speed `c_s²=5Kρ⁴/m` derived from EOS; `c=c_γ` ceiling; `λγ` a free
   calibration input (reversible to `EQUALS` only with an inserted source equation). Consumes I-1 dictionary + `EOS_FROM_GNLS_FACTOR`.
   Registration at count 5, PDF rebuilt.
-- **▶ NEXT = I-3 `ledger_stage006`** (two-phase χ_B material-state ontology; fresh-authored dim + recovery + θ-as-φ no-go audit).
-  Then I-4 `ledger_stage007` (pathA_35 G0 freeze). Then Part II (gravity, the swing).
+- **I-3 `ledger_stage006` DONE (2026-07-07)** — fresh-authored dual-engine pair (SymPy 110 / Mathematica 108 PASS, both
+  exit 0) + full tri-review: fidelity caught the v1 B2 recovery check as an X≡X tautology (`FIDELITY_ISSUES`);
+  adversarial PROVED it (dual-corruption mutation survived exit 0) + stamped C4 tokens (`ADVERSARIAL_CONCERNS`,
+  13-mutation matrix) → remediated (general projected law assembled live + limit in-engine + independent frozen
+  target; leg-C discriminators wired from algebra + `m_θ²` real in the `.py`; C4 ε-dispersion in-engine; genuineness
+  fixes) → fresh-agent `REVERIFY_CLEAN` (6-run corruption matrix — the dual-corruption class now fails both engines).
+  `ACTION_SPECIFIED_CLASSIFIED` + `RECOVERY_REDUCTION_VERIFIED` (frozen stage_243/244 target + Gaussian anchor) +
+  θ-as-φ no-go carried (`BY_TUNING` only; Lifshitz = pathA_25). DRIFT(6); register updated (R17–R20 incl. the NEW
+  **slab-width caveat** `W_slab` FREE-UNREDUCED — kink admission ≠ slab stability, maps to the L/a self-selection
+  item); two handoff dimensional defects pinned + erratum'd (`KINETIC_MASS_FACTOR_PINNED`,
+  `HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`); conceptual_foundation §2 slab caveat + §7 route-(a)/(c) fork recorded.
+  Registration at count 6, PDF rebuilt.
+- **▶ NEXT = I-4 `ledger_stage007`** (pathA_35 G0 freeze). Then Part II (gravity, the swing).
 
 ## Per-stage process (unchanged, calibrated)
 

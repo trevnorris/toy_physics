@@ -199,16 +199,39 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   boundary IMPOSED → `BC_DEPENDENT`, `IMPOSED`/`PENDING`, discharges NOTHING; deferred discharge = the mouth/cap `V_wall`
   derivation earning `DN_UNITTEST_PASS`), `REGISTER_CLEAN` first pass. Registration at count 12, PDF rebuilt (39pp).
   ⭐ **pathA_30 fold COMPLETE (stages 011+012).**
-- **▶ NEXT = Cluster A `ledger_stage013`** (II-G2a, pathA_31 `BREATHING_CALIBRATED` 1/3: α_a/α_L harmonic lifts →
-  `M_AB`/`K_AB` by real ∫dw operator projection → the (a,L) collective closure). Consumes stage011/012's frozen throat
-  packet + Helmholtz operator + D/N provenance. See `notes/part2_gravity_atomic_split.md` row 013 + the pathA_31 (015)
-  trip-up (v1 REJECTED for an HF `x−x` tautology + typed counterfactual flags + gamed threshold — both HF routes
-  independently emitted; flags/threshold COMPUTED). No running-start source map yet — author one before building.
+- **✅ II-G2a `ledger_stage013` DONE (2026-07-08) — the FIRST Part-II CALIBRATED stage.** pathA_31 harmonic-profile +
+  M/K-projection reshape (`BREATHING_CALIBRATED` component 1/3): DERIVED harmonic-lift profiles `α_a=sinh(L0β−βw)/sinh(L0β)`,
+  `α_L=rAL sinh(βw)/sinh(L0β)` (proven by the `𝓛₀[α]=0` residual); `M_AB`/`K_AB` by real ∫dw operator projection
+  (`K_aa=4πT_wβ/tanh(L0β)`, …, `det K=16π²T_w²β²rAL²`) with `forbidden_fit_flags` computed False via **free-symbol-name**
+  ancestry (`operator_projection_not_static_Hessian` — NOT the legacy static Hessian); the dynamical-EOM **LHS** (RHS
+  `F_A^(HF)` deferred to 015). Clean 3-way cut (L627–679; no 014 truncation, no 015 HF force / legacy Hessian); `c_S` NOT
+  consumed (matter-sector deferred, `kξ≪1`). Consumed the frozen wall packet `{L0=37/20,T_w=1,K_η=1,β=1}` via a dual-site
+  guard with an **anti-tautology** proviso (packet values held as independent `K_eta_cited` datums, NOT re-expanded via
+  the `K_η=T_w β²` alias — else site A collapses to `β−β≡0`). ⭐ **Register: the FIRST Part-II counted knobs — 3 CALIB
+  `{μ_η, T_w, β}`** (frozen-wall constitutive packet), with `K_η=T_w β²` a DERIVED manifestation (R29) + R30 the
+  named-PENDING nonlinear-throat reduction; ⚠ `β` counted NOT dressed as geometry (source: "geometry alone does not
+  derive it"); `r_AL` control-ratio tracked-not-counted. Codex `REGISTER_CLEAN`. **⭐ Directive review used the new
+  Codex→Grok→Codex bookend:** Codex `DIRECTIVE_CLEAN` → Grok-4.5 compute-verify pass CAUGHT a kernel-preserving
+  residual-tooth defect (my §4.1 example mutants stayed in `ker(𝓛₀)`; verified in SymPy) + 5 hardening nits, all folded →
+  Codex confirm-pass (caught 1 dangling `M_posdef` label). Dual-engine SymPy 78 / Mathematica 84, CWD-independent;
+  tri-review CLEAN both legs (`FIDELITY_CLEAN` re-derived all M/K to ~1e-124 via a different path; `ADVERSARIAL_CLEAN`
+  10-ablation matrix all firing, incl. the AB2b non-kernel-residual proof + the AB3b anti-tautology proof) → 1 non-blocking
+  nit remediated (baseline re-integration was value-wise `X−X` → retargeted to the hardcoded closed-forms) → fresh-agent
+  `REVERIFY_CLEAN`. Register at count 13, PDF 41pp. **⚠ Also fixed a manifest lag** (the `LINEAR_STAGE_RENUMBERING_MANIFEST.json`
+  policy array had stalled at 010 — 011/012 were bumped in coverage but never added to the manifest; added 011/012/013).
+- **▶ NEXT = Cluster A `ledger_stage014`** (II-G2b, pathA_31 `BREATHING_CALIBRATED` 2/3: combined-basis generalized eig +
+  β_L0 sweep + N-convergence overlaps → the validity window / order-unity-wall-stiffness caveat). Consumes stage013's
+  `M_AB`/`K_AB`. pathA_31 trip-up (from v1): gamed truncation threshold — the overlap-floor `o_k≥0.9` + β-sweep must be
+  COMPUTED, not gamed. Author a running-start source map first (source `.py` L447–607/L760–809, `.wl` L209–306).
 
 ## Per-stage process (unchanged, calibrated)
 
-Same as Part I: author reshape directive → Codex xhigh design-review → fold to `DIRECTIVE_CLEAN` (no GLM on
-Parts I–VI) → pre-exec USER GATE per stage → Codex builds only the two scripts → dual-engine exit 0 → arbiter
-re-run → tri-review (arbiter + fidelity + adversarial-scoped-to-reshape-integrity with ablation) → remediate →
-counts bump → parameter-register update + Codex-verify → note/card/`\input`/registration → PDF → commit.
-Orchestrator authors notes/cards/LaTeX/registration; Codex codes.
+Same as Part I: author reshape directive → Codex xhigh design-review → fold to `DIRECTIVE_CLEAN` →
+**⭐ FINAL Grok-4.5 headless design-review pass on the same prompt** (added 2026-07-08; no GLM on Parts I–VI, but Grok
+DOES run now — it compute-verifies the math via SymPy and caught a kernel-preserving residual-tooth defect + 5 nits on
+stage013 that Codex's xhigh pass missed) → assess/verify each Grok catch independently → fold → **Codex confirm-pass on
+the Grok-folded directive** (final double-check; Codex bookends) → pre-exec USER GATE per
+stage → Codex builds only the two scripts → dual-engine exit 0 → arbiter re-run → tri-review (arbiter + fidelity +
+adversarial-scoped-to-reshape-integrity with ablation) → remediate → counts bump → parameter-register update +
+Codex-verify → note/card/`\input`/registration → PDF → commit. Orchestrator authors notes/cards/LaTeX/registration;
+Codex codes. Grok invocation + rationale: blueprint §6 + [[reference-grok-cli-review]].

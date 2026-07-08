@@ -1,0 +1,139 @@
+\section{Stage 013: Breathing Harmonic Profiles \texorpdfstring{\& \(M/K\) Operator Projection}{and M/K Operator Projection} (Check II-G2a)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=0\) breathing mode; the \((a,L)\) collective-coordinate closure; the M/K-projection component of the joint \texttt{BREATHING\_CALIBRATED}, with truncation consistency = Stage~014 and the legacy-Hessian + Hellmann--Feynman force = Stage~015)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Reduce the \(\ell=0\) linearized breathing of Gate-1's
+frozen constant-coefficient wall operator
+\(\mathcal{L}_0=\mu_\eta^{-1}(-\partial_w(T_w\partial_w\cdot)+K_\eta\cdot)\) on
+\(w\in[0,L_0]\) to a two-mode collective closure \(Q=(\delta_a,\delta_L)\):
+solve the harmonic-lift profiles \(\alpha_a,\alpha_L\) (from
+\(\mathcal{L}_0\alpha=0\) under the collective BCs), project the wall inertia and
+stiffness onto them by \emph{real \(\int dw\) operator projection} to build the
+mass/stiffness matrices \(M_{AB},K_{AB}\), and assemble the dynamical-EOM
+left-hand side \(M_{AB}\ddot Q^B+K_{AB}Q^B=F_A^{(\mathrm{HF})}\). The first
+Part-II \emph{calibrated} stage: the structure is earned, the wall constants are
+calibration inputs.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage013_breathing_harmonic_mk_projection_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage013_breathing_harmonic_mk_projection_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the harmonic-lift profiles, the \(M_{AB}/K_{AB}\)
+operator projection, and the EOM left-hand side are exact algebra \emph{within
+the calibrated wall closure}. The verdict is the joint \texttt{BREATHING\_CALIBRATED};
+this stage carries its M/K-projection + \((a,L)\)-closure component. It is the
+\textbf{first Part-II calibrated stage}: the gravity-sector algebra was knob-free
+through Stages~008--012, and the calibration enters here with the breathing-mode
+wall response. \emph{The structure is EARNED; the values are CALIBRATED.} The
+frozen throat packet is \emph{consumed} from Gate-1 (Stages~011/012) with
+dual-site citation-integrity; \(c_S\) is \emph{not} consumed (the matter-sector
+\(c_s\)/BdG \(k^4\) is deferred under \(k\xi\ll1\)).
+
+\paragraph{The harmonic-lift profiles.}
+The general solution of \(\mathcal{L}_0\alpha=0\) (\(\Leftrightarrow
+\alpha''-\beta^2\alpha=0\), with \(K_\eta=T_w\beta^2\)) is
+\(\alpha=C_1\sinh(\beta w)+C_2\cosh(\beta w)\). Under the collective BCs,
+\[
+  \alpha_a=\frac{\sinh(L_0\beta-\beta w)}{\sinh(L_0\beta)}\quad(\alpha_a(0)=1,\ \alpha_a(L_0)=0),
+  \qquad
+  \alpha_L=\frac{r_{AL}\sinh(\beta w)}{\sinh(L_0\beta)}\quad(\alpha_L(0)=0,\ \alpha_L(L_0)=r_{AL}).
+\]
+The harmonic-residual assertion
+\(\mathrm{Lop}[\alpha]=(-T_w\alpha''+K_\eta\alpha)/\mu_\eta\equiv0\) (a raise on
+failure) proves the profiles genuinely annihilate the operator. Its able-to-fail
+tooth uses a \emph{non-kernel} corruption (a wrong wavenumber
+\(\sinh(L_0\beta-2\beta w)\) or \(\alpha+1\)) --- a mere rescale or argument
+sign-flip stays in \(\ker(\mathcal{L}_0)\) and leaves the residual \(0\), so it
+would be a non-tooth; the adversarial leg's decisive ablation confirmed a
+kernel-preserving corruption is caught only by the \emph{separate} BC assert.
+
+\paragraph{\texorpdfstring{\(M/K\)}{M/K} by real \texorpdfstring{\(\int dw\)}{int dw} operator projection.}
+With \(\langle f,g\rangle_\mu=4\pi\int_0^{L_0}\mu_\eta fg\,dw\),
+\[
+  M_{AB}=4\pi\!\int_0^{L_0}\!\mu_\eta\,\alpha_A\alpha_B\,dw,
+  \qquad
+  K_{AB}=4\pi\!\int_0^{L_0}\!\big[T_w\,\alpha_A'\alpha_B'+K_\eta\,\alpha_A\alpha_B\big]\,dw,
+\]
+computed by \texttt{sp.integrate} / native \texttt{Integrate}. Closed forms
+(both engines agreeing):
+\(K_{aa}=4\pi T_w\beta/\tanh(L_0\beta)\),
+\(K_{aL}=-4\pi T_w\beta r_{AL}/\sinh(L_0\beta)\),
+\(K_{LL}=4\pi T_w\beta r_{AL}^2/\tanh(L_0\beta)\),
+\(\det K=16\pi^2 T_w^2\beta^2 r_{AL}^2\); and the \(M_{AB}\) forms with
+\([M_{AB}]=M\), \([K_{AB}]=M\,T^{-2}\). The genuineness spine (the anti-``typed
+\(M/K\)'' burden, since one could otherwise type the legacy static Hessian
+\(\{\chi^2\kappa+\sigma_A,-\chi\kappa,\kappa+\sigma_L\}\)) is twofold: (i) an
+\emph{independent re-integration} of the full integrands compared against the
+hardcoded report closed-forms (not against the same projection call --- that
+would be a vacuous \(X\equiv X\)); dropping the \(T_w\alpha'\alpha'\) gradient
+makes it mismatch and fires. (ii) the \texttt{forbidden\_fit\_flags}
+(\texttt{K\_from\_static\_hessian}, \texttt{M\_or\_K\_typed\_from\_legacy\_values},
+\texttt{full\_matrix\_fit}) computed from the \emph{symbol names} of
+\(M_{AB}/K_{AB}\) --- robust to SymPy's assumption-fragility
+(\(\texttt{Symbol('kappa')}\neq\texttt{Symbol('kappa',positive=True)}\), so an
+object-set intersection would silently miss): the names must lie in
+\(\{\mu_\eta,T_w,\beta,L_0,r_{AL},\pi\}\) and contain none of
+\(\{\kappa,\chi,\sigma_A,\sigma_L\}\); typing \(K_{AB}\) from the legacy Hessian
+introduces those names, flips the flag, and is caught in both engines
+(\texttt{K\_AB\_provenance}\(=\)\texttt{operator\_projection\_not\_static\_Hessian}).
+
+\paragraph{The dynamical-EOM left-hand side.}
+The collective EOM LHS is \(M_{AB}\ddot Q^B+K_{AB}Q^B=F_A^{(\mathrm{HF})}\) with
+\(Q=(\delta_a,\delta_L)\), emitted as the two expanded rows. This stage emits the
+LHS and EOM structure only; the right-hand side \(F_A^{(\mathrm{HF})}\) (the
+Hellmann--Feynman force) is a symbolic placeholder filled by Stage~015 (as is the
+HF two-route enforcement, the pathA\_31 v1 rig locus). A native
+\(M_{\det}\to0\) degenerate counterfactual (\(\alpha_a\to0\), recomputed via the
+same projection) is caught by a native \texttt{M\_det}\(\equiv0\) test, not the
+Stage-015 structure gate.
+
+\paragraph{Consumed packet and the anti-tautology guard.}
+The frozen wall packet \(\{L_0=37/20,\ T_w=1,\ K_\eta=1,\ \beta=1\}\) is cited
+from Gate-1 with two independently-corruptible relations: site~A (constitutive)
+\(\beta-\sqrt{K_\eta/T_w}\equiv0\) and site~B (branch)
+\(\beta L_0-37/20\equiv0\) (the branch-determinable \(L/a\)), plus the
+frozen-export anchor. \emph{The packet values are held as independent cited
+datums} (\texttt{K\_eta\_cited}, \(\ldots\)) --- the guard does \emph{not}
+re-expand \(K_\eta\) through the alias \(K_\eta=T_w\beta^2\), which would collapse
+site~A to \(\beta-\beta\equiv0\) (a disguised \(X\equiv X\)); a lone
+\texttt{K\_eta\_cited} corruption genuinely breaks site~A. \(L_0\) is already
+registered (Stage~011, ACTION-geometry) --- not re-counted.
+
+\paragraph{Calibration and register (the first Part-II counted knobs).}
+The wall constitutive packet contributes \textbf{three counted CALIB knobs}
+\(\{\mu_\eta\) (inertia, \(M\,L^{-1}\)), \(T_w\) (tension, \(M\,L\,T^{-2}\)),
+\(\beta\) (inverse-length scale, \(L^{-1}\))\}, with \(K_\eta=T_w\beta^2\) a
+\emph{derived} manifestation (edge R29) --- so three counted, not four.
+\(\beta\) is counted, \emph{not} dressed as geometry: the source is explicit that
+geometry alone does not derive the wall constants, and \(\beta L_0=37/20\) is
+\(\beta_{\text{(calibrated)}}\cdot L_0(=\text{the }L/a\text{ geometry})\), not an
+independent branch-pin of \(\beta\) (the conservative, non-shrinking read).
+\(r_{AL}\) (dimensionless collective BC ratio) is a control-construction symbol,
+tracked but not counted. Edge R30 is the named-pending nonlinear-throat reduction
+that would derive \(\{\mu_\eta,T_w,\beta\}\) from the medium (reduction debt).
+
+\paragraph{Verification.}
+Dual-engine, independent routes, zero file I/O --- the source pair's
+scratch-YAML/\texttt{\_sympy\_exprs.wl} export and the hybrid \texttt{.wl}'s
+\texttt{Get}/\(\texttt{sympy}^\ast\)-cross-check/\texttt{Export} are retired; the
+\texttt{.wl} KEEPS its native \texttt{DSolveValue}+\texttt{Integrate} route but
+its asserts are \emph{re-targeted} to its own native \(M/K\) (Mathematica-native
+\texttt{Csch}/\texttt{Coth} closed forms, algebraically equal to the SymPy
+\(\tanh/\sinh\) forms), with a genuine arity self-check. The 3-way cut is clean:
+no Stage-014 truncation/generalized-eig/\(\beta_{L_0}\)-sweep and no Stage-015
+legacy Hessian / Hellmann--Feynman force / static-dynamic limit is computed.
+SymPy 78 PASS / Mathematica 84 PASS (the \(+6\) = the \texttt{.wl} arity block),
+exit 0, CWD-independent. The directive design-review used the
+Codex\(\to\)Grok\(\to\)Codex bookend; Grok's compute-verification pass caught a
+kernel-preserving residual-tooth defect (folded) plus hardening nits. Full
+tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (every profile/\(M/K\)/det
+independently re-derived via a different normalization path;
+\texttt{expand\_hyperbolic\_args} a math-preserving identity) and
+\texttt{ADVERSARIAL\_CLEAN} (a ten-ablation matrix, all firing: the
+free-symbol-name ancestry, the non-kernel residual tooth, the
+\texttt{K\_eta\_cited} anti-tautology, the native degenerate-\(M_{\det}\) guard,
+the corrupt-\([T_w]\) probe). One non-blocking nit (the baseline re-integration
+was value-wise \(X\equiv X\)) was remediated to compare against the hardcoded
+closed-forms, then \texttt{REVERIFY\_CLEAN}. Six able-to-fail teeth, mutations on
+copies.

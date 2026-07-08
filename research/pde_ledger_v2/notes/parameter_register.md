@@ -73,7 +73,17 @@ stage of the joint `DN_UNITTEST_BC_DEPENDENT`; adds **NO new counted knobs**: `�
 a control-construction symbol used ONLY to build the Robin counterfactual falsifier (tracked, not counted, like
 stage010's `k_warp`); the frozen operator/domain/speed are CONSUMED from stage 011 (not re-derived); the stage's
 contribution is edge R28 (the D/N boundary is IMPOSED → the `BC_DEPENDENT` landing, an `IMPOSED`/`PENDING` obligation,
-NOT a reduction)). Seeded knit params
+NOT a reduction)), **013 (pathA_31 II-G2a breathing harmonic profiles + M/K projection — ⭐ the FIRST Part-II CALIBRATED
+stage: adds 3 counted CALIB knobs `{μ_η, T_w, β}`** (the frozen-throat-wall constitutive packet: wall inertia `μ_η`,
+wall tension `T_w`, wall inverse-length scale `β`), with `K_η = T_w β²` a DERIVED manifestation (edge R29, NOT counted)
+and `r_AL` the dimensionless collective BC ratio (control-construction, tracked-not-counted). ⚠ **`β` is counted, NOT
+dressed as geometry** — the source is explicit that geometry alone does not derive the wall constants
+(`beta_from_R0: "geometry alone does not derive it"`; `calibration_inputs` names the "K_eta/Tw beta scale"), and
+`β·L0 = 37/20` is just `β(calibrated)·L0(=37/20, the stage-011 L/a geometry)`, NOT an independent branch-pin of `β`; the
+EARNED content is the STRUCTURE (harmonic-lift profiles, `M_AB`/`K_AB` by real ∫dw operator projection —
+`forbidden_fit_flags` computed False via free-symbol-name ancestry), the VALUES are calibration → `BREATHING_CALIBRATED`.
+Edge R30 = the named-PENDING nonlinear-throat reduction that would derive the wall response `{μ_η, T_w, β}` from the
+medium (reduction debt). `c_S` NOT consumed (matter-sector deferred, `kξ≪1`)). Seeded knit params
 (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
@@ -126,6 +136,11 @@ NOT a reduction)). Seeded knit params
 | `L0` (throat depth) | `L` (stage 011: domain `[0,L0]`, cap `R0(L0)=0`, dual-engine) | II-G1a (011) frozen-reduction domain | `ACTION` (straight-reference throat geometry — NOT a medium constant, like stage009's `d`) | cap endpoint SOLVED from the pinch-off `R0(s)=0` on a POSTULATED monotone taper (`R_mouth` cancels) | tracked, **not counted**; the throat depth's dynamical selection is deferred Gate-6/`W_slab` territory (R19-adjacent) |
 | `ℓ_c` (confinement length) | `L` (stage 011: in `V_wall(Σ/ℓ_c)`; dual-engine `ξ≠ℓ_c` firewall) | II-G1a (011) | `CANDIDATE` (INERT here — `δV_conf=0` in the frozen `η=0` test) | distinct from the healing length `ξ` (edge R27 firewall) | tracked, **not counted**; a live confinement scale only when the wall is un-frozen (Phase-2 variable-coefficient physics) |
 | `α` (Robin cap admittance) | `L⁻¹` (stage 012: `α·c_S` matches `[ω]=T⁻¹`; dual-engine) | II-G1b (012) Robin counterfactual | `CANDIDATE` (control-construction symbol — the Robin cap `∂ₛψ−αψ=0` used ONLY to build the falsifier that proves the D/N determination is not hardcodable: α→0 recovers D/N, α→∞ recovers D/D, numeric α distinct) | — | tracked, **not counted** (like `k_warp` at stage 010); no medium provenance — it constructs the falsifiable counterfactual, not the physics |
+| `μ_η` (wall inertia) | `M L⁻¹` (stage 013, dual-engine: `[M_AB]=M` via `4π∫μ_η α² dw`) | II-G2a (013) breathing wall packet | `CALIB` (⭐ FIRST Part-II counted knob — the frozen-throat-wall inertia; a tuned constitutive input) | independent calibration input | reduction debt R30 (a nonlinear-throat solve would derive the wall response from the medium) — `PENDING` |
+| `T_w` (wall tension) | `M L T⁻²` (stage 013, dual-engine: enters `K_AB` via `4π∫T_w α'² dw`) | II-G2a (013) breathing wall packet | `CALIB` (⭐ FIRST Part-II counted knob — the frozen-throat-wall tension; a tuned constitutive input) | independent calibration input | reduction debt R30 — `PENDING` |
+| `β` (wall inverse-length scale) | `L⁻¹` (stage 013, dual-engine) | II-G2a (013) breathing wall packet | `CALIB` (counted — the wall constitutive scale, source's "K_eta/Tw beta scale"; ⚠ NOT geometry-derived: `beta_from_R0`="geometry alone does not derive it", and `β·L0=37/20` is just `β·L0(=L/a geom)`, not an independent branch-pin of `β`) | `β=√(K_η/T_w)` — one of the two independent DOF among `{T_w, K_η, β}` (with `T_w`); `K_η` is the derived third (R29) | reduction debt R30 — `PENDING` |
+| `K_η` (wall stiffness) | `M L⁻¹ T⁻²` (stage 013, dual-engine) | II-G2a (013) breathing operator/K-integrands | `DERIVED` | `= T_w β²` (R29 — manifestation of `{T_w, β}`; value `calibration_tied_to_beta_squared_Tw`) | collapses into `{T_w, β}` (R29 `DERIVED`) — **not** independently counted |
+| `r_AL` (collective BC ratio) | `1` (stage 013, dual-engine: `ZERO_DIM`) | II-G2a (013) `α_L` cap normalization | `CANDIDATE` (control-construction — the dimensionless `α_L(L0)=r_AL` collective length-mode ratio) | — | tracked, **not counted** (like `k_warp`/`α`); it parameterizes the collective mode, not the physics |
 
 *Note — stage 001 introduces NO free knobs:* `Ω_2=4π`, `Ω_3=2π²`, `⟨n_i n_j⟩=δ_ij/d` are DERIVED geometric constants.
 
@@ -179,6 +194,8 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R26 | frozen-reduction validity record: `L_s ψ = ψ''+(ω/c_S)²ψ` (const-coeff Helmholtz) is EXACT only on the window `{ρ0'/ρ0=0, √γ0 const, δV_conf=0, ∇Q=0, kξ≪1}`; the Bogoliubov `k⁴` term is a DEFERRED fourth-derivative intrusion `−(ħ²/4m²c_S²)ψ''''` | structural (validity certificate, dual-engine + able-to-fail — a surviving intruding term → `FAIL_OPERATOR_INTRUSION`; **NOT a reduction** — discharges NO knob; the speed is banked R1) | II-G1a (011) | records the conditions under which the frozen-throat longitudinal reduction to a Helmholtz resonator holds; the deferred variable-coefficient / BdG terms are Phase-2 physics (not dropped unconditionally) |
 | R27 | `ξ = ħ/(m c_s)` (healing length) ≠ `ℓ_c` (confinement length) — distinct `[L]` symbols, never substituted | structural (dimensional/semantic firewall, dual-engine asserted + able-to-fail; analogous to R22's `μ_R≠μ_R⁽⁴⁾`; **NOT a reduction**) | II-G1a (011) | prevents a silent conflation of the two lengths that would fake a relation; `ℓ_c` INERT here (`δV_conf=0`), `ξ` is R2-family (source's no-√2 convention) |
 | R28 | the D/N mouth/cap boundary pair (Dirichlet at `s=0`, Neumann at `s=L0`) is IMPOSED, not derived (`bc_provenance=imposed`, `bc_derivation_emitted=False`) → the joint verdict lands at `DN_UNITTEST_BC_DEPENDENT`, not `DN_UNITTEST_PASS` | `IMPOSED`/`PENDING` (banked calibration input, dual-engine + able-to-fail — forcing the flag True reveals the deferred `DN_UNITTEST_PASS`; **NOT a reduction** — discharges NO knob) | II-G1b (012) | the DtN ladder `Z00=−(ω/c_S)tan(L0ω/c_S)` + half-shifted resonances are a DERIVED consequence of the imposed pair (which collapses no knob); the deferred discharge is an explicit mouth/cap `V_wall` gradient derivation that would earn `DN_UNITTEST_PASS` (analogous to R23's constraint-spec obligation) — Gate-6/Phase-2 territory |
+| R29 | `K_η = T_w β²` (wall stiffness = tension × inverse-length-scale²) | `DERIVED` | II-G2a (013) | collapses `K_η` into `{T_w, β}` (a manifestation, `calibration_tied_to_beta_squared_Tw`); so among `{μ_η, T_w, K_η, β}` the counted CALIB set is `{μ_η, T_w, β}` (3), NOT 4 — `K_η` is the derived third of `{T_w, K_η, β}` |
+| R30 | nonlinear-throat reduction of the frozen-wall response `{μ_η, T_w, β}` from the medium | `PENDING` | II-G2a (013) | debt: would derive the calibrated wall constitutive packet (inertia/tension/scale) from the deferred nonlinear throat interior — the same wall as R10/R23's discharge; until then `{μ_η, T_w, β}` are CALIB (tuned in the frozen `G=c=c_s=1` packet `T_w=K_η=1`) |
 
 ---
 
@@ -246,6 +263,22 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   `DN_UNITTEST_BC_DEPENDENT`, discharging NO knob; its deferred discharge (an explicit mouth/cap `V_wall` derivation
   earning `DN_UNITTEST_PASS`) is Gate-6/Phase-2 territory. **Completes the joint `DN_UNITTEST_BC_DEPENDENT` = (011:
   REDUCTION_CERTIFIED) ∧ (012: DtN ladder + BC_DEPENDENT landing).**
+- **⭐ Stage 013 (pathA_31 II-G2a): the FIRST Part-II CALIBRATED stage — adds 3 counted CALIB knobs `{μ_η, T_w, β}`.**
+  The ℓ=0 breathing reduces to a 2-mode collective closure: DERIVED harmonic-lift profiles `α_a, α_L` (proven by the
+  `𝓛₀[α]=0` residual), `M_AB`/`K_AB` by real ∫dw operator projection (`forbidden_fit_flags` computed False via
+  free-symbol-**name** ancestry, `operator_projection_not_static_Hessian` — NOT the legacy static Hessian), and the
+  dynamical-EOM LHS. **The STRUCTURE is EARNED; the VALUES are CALIBRATED** → `BREATHING_CALIBRATED` (the 013 component
+  of the joint 3-stage verdict; 014 = truncation, 015 = legacy-Hessian + HF force). The counted set is the frozen-wall
+  constitutive packet `{μ_η` (inertia, `M L⁻¹`), `T_w` (tension, `M L T⁻²`), `β` (inverse-length scale, `L⁻¹`)}`, with
+  `K_η = T_w β²` a DERIVED manifestation (R29 — so 3 counted, not 4). ⚠ **`β` is counted, NOT dressed as geometry** —
+  the source is explicit that geometry alone does not derive the wall constants, and `β·L0=37/20` is
+  `β(calibrated)·L0(=stage-011 L/a geometry)`, not an independent branch-pin of `β` (the conservative, non-shrinking
+  read; the source-map's earlier "{μ_η,T_w}=2, β geometry" guess did NOT survive the provenance check). `r_AL`
+  (dimensionless collective BC ratio) is a control-construction `CANDIDATE` (tracked, not counted, like `k_warp`/`α`).
+  R30 is the named-PENDING nonlinear-throat reduction that would derive `{μ_η, T_w, β}` from the medium (reduction debt).
+  `c_S` NOT consumed (matter-sector deferred, `kξ≪1`). **These are the first tuned knobs since Part I's `{ħ, m, K, ρ0}`
+  + the brane freeze package — the gravity sector's algebra was knob-free through 008–012; the calibration enters with
+  the breathing-mode wall response.**
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

@@ -1,6 +1,6 @@
 # Mathematica Audit Output
 # Script: ledger_stage008_monopole_dipole_return_spec_mathematica_audit.wl
-# Date: 2026-07-08T00:52:43-06:00
+# Date: 2026-07-08T18:25:29-06:00
 # Elapsed: 14s
 # Exit code: 0
 # Status: PASS
@@ -99,7 +99,7 @@ PASS  guard raw_monopole_present: raw monopole is live in same pipeline
 PASS  guard steady_no_radiation: lim_{omega->0} raw0=0
 PASS  guard quadrupole_survives: scanned p(ell2)=5 and raw2 nonzero
 PASS  guard return_necessity: without nonzero and with exactly zero
-PASS  guard anti_tautology_no_S_leak_zero: M0->0 kills raw0, so shortcut is visible
+    declaration anti_tautology_no_S_leak_zero: M0->0 killing raw0 is pass-by-construction after the raw-amplitude closed-form checks, not a counted able-to-fail tooth.
     declaration anti_tautology_no_S_leak_zero: no S_leak=0 shortcut is used as a verdict basis.
     declaration anti_tautology_no_strict_recovery_basis: ell_w->0 and E0->0 recovery slices are not used as verdict bases.
     observed_but_not_used — the strict-recovery limit exists but is NOT taken as a basis: sleak243|_{ell_w->0} = 0
@@ -128,10 +128,11 @@ PASS  consumed stage005 law exact-value citation-integrity 5*(1/500)*(sqrt(10))^
 
 Modest dimensional block
 ------------------------
-PASS  z=k*a is dimensionless
-PASS  ell=0 kernel structure (a/c_S)^p*omega^p is dimensionless
-PASS  ell=1 kernel structure (a/c_S)^p*omega^p is dimensionless
-PASS  ell=2 kernel structure (a/c_S)^p*omega^p is dimensionless
+  structural note (not counted): z=k*a is dimensionless by k=omega/c_S and [a]=L.
+PASS  ell=0 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  ell=1 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  ell=2 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  dimensional source corruption [a]->L^2 makes actual radiation kernels dimensionful produced required FAIL (residual = 35)
 PASS  scanned ladder powers are strictly increasing
   No dimensions are invented here for M0/D1/Q2; they remain frozen-slice normalized source moments/anchor.
 
@@ -176,7 +177,7 @@ PASS  baseline immutable after copy-mutation teeth: DtN ladder unchanged
 PASS  baseline immutable after copy-mutation teeth: kernels unchanged
 PASS  baseline immutable after copy-mutation teeth: bookkeeping with-target residuals unchanged
 
-PASS tally: 57; FAIL tally: 0
+PASS tally: 56; FAIL tally: 0
 OVERALL PASS: Mathematica verified ledger_stage008 monopole/dipole return constraint spec exactly
 
 EXIT_CODE: 0

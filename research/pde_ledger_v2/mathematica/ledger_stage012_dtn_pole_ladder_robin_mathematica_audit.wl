@@ -111,6 +111,22 @@ expectFail[name_, residual_] := Module[{clean},
 ];
 
 exprEqual[lhs_, rhs_: 0] := TrueQ[FullSimplify[dropConditions[lhs - rhs] == 0]];
+extractTanDataFromDtn[expr_] := Module[{clean, tanTerms, tanTerm},
+  clean = FullSimplify[dropConditions[expr]];
+  tanTerms = DeleteDuplicates[Cases[clean, Tan[arg_] :> Tan[arg], Infinity]];
+  If[Length[tanTerms] =!= 1, raise["expected exactly one Tan factor in derived DtN"]];
+  tanTerm = First[tanTerms];
+  <|
+    "TanTerm" -> tanTerm,
+    "TanArgument" -> FullSimplify[tanTerm[[1]]],
+    "DtnPrefactor" -> FullSimplify[clean/tanTerm]
+  |>
+];
+extractCosPoleDenominatorFromTanTerm[tanTerm_] := Module[{arg},
+  If[Head[tanTerm] =!= Tan, raise["expected Tan factor for pole denominator extraction"]];
+  arg = FullSimplify[tanTerm[[1]]];
+  FullSimplify[Cos[arg]]
+];
 nonzeroQ[expr_] := ! TrueQ[FullSimplify[dropConditions[expr] == 0]];
 boolResidual[condition_] := If[TrueQ[condition], 0, 1];
 verdictResidual[actual_, expected_] := If[actual === expected, 0, 1];
@@ -309,6 +325,7 @@ buildBaseline[] := Module[
     ode, generalSolution, fundamentalPair, r1SiteA, r1SiteB, consumedSpeed,
     lsSiteA, lsRecon, lsSiteB, consumedLs, anchorLs, mouthState, capState,
     neumannResidual, pMFromNeumann, dtnTarget, denominatorFull,
+    tanData, tanArgument, dtnPrefactor,
     poleDenominator, poleLadder, poleResidual, halfshift, staticSeries,
     staticSeriesPoly, staticSeriesTarget, staticLimit, roundTrip,
     roundTripOnLadder, roundTripCloses, robinResidual, pMFromRobin,
@@ -336,9 +353,12 @@ buildBaseline[] := Module[
   pMFromNeumann = FullSimplify[dropConditions[pM /. First[Solve[neumannResidual == 0, pM]]]];
   dtnTransfer = FullSimplify[-pMFromNeumann/psiM];
   dtnTarget = FullSimplify[-k Tan[k L0]];
+  tanData = extractTanDataFromDtn[dtnTransfer];
+  tanArgument = tanData["TanArgument"];
+  dtnPrefactor = tanData["DtnPrefactor"];
   dtnMatchesTarget = exprEqual[dtnTransfer, dtnTarget];
   denominatorFull = Denominator[Together[dtnTransfer]];
-  poleDenominator = FullSimplify[Cos[k L0]];
+  poleDenominator = extractCosPoleDenominatorFromTanTerm[tanData["TanTerm"]];
   poleLadder = FullSimplify[Pi cS (n + 1/2)/L0];
   poleResidual = FullSimplify[poleDenominator /. omega -> poleLadder];
   halfshift = exprEqual[poleResidual, 0];
@@ -398,6 +418,9 @@ buildBaseline[] := Module[
     "PMFromNeumann" -> pMFromNeumann,
     "DtnTransfer" -> dtnTransfer,
     "DtnTarget" -> dtnTarget,
+    "DtnTanTerm" -> tanData["TanTerm"],
+    "TanArgument" -> tanArgument,
+    "DtnPrefactor" -> dtnPrefactor,
     "DtnMatchesTarget" -> dtnMatchesTarget,
     "DenominatorFull" -> denominatorFull,
     "PoleDenominator" -> poleDenominator,
@@ -465,8 +488,8 @@ runOpeningAndConsumedInputs[data_] := Module[{recon},
   expectZero["L_s null-space reconstruction recovers a=0", recon["a"]];
   expectZero["L_s null-space reconstruction recovers b=(omega/c_S)^2", recon["b"] - k^2];
   expectZero["L_s site A minus site B equals zero", data["LsSiteA"] - data["LsSiteB"]];
-  expectZero["L_s frozen-export anchor consumed_L_s - (psi''+(omega/c_S)^2 psi) equals zero", data["ConsumedLs"] - data["AnchorLs"]];
-  expectZero["domain [0,L0] is cited as length L0, not re-solved", L0 - 0 - L0]
+  Print["  structural note: L_s frozen-export alias anchor is de-counted; dual-site null-space integrity above carries the citation check."];
+  Print["  structural note: consumed domain [0,L0] has length L0 by construction; length bookkeeping is de-counted."]
 ];
 
 runTransferDtn[data_] := (
@@ -476,6 +499,8 @@ runTransferDtn[data_] := (
   Print["  Neumann cap residual = ", fmt[data["NeumannResidual"]]];
   Print["  pM from Neumann = ", fmt[data["PMFromNeumann"]]];
   Print["  dtnTransfer = ", fmt[data["DtnTransfer"]], "; target = ", fmt[data["DtnTarget"]]];
+  expectZero["tan_argument extracted from derived DtN is k*L0", data["TanArgument"] - k L0];
+  expectZero["dtn_prefactor extracted from derived DtN is -k", data["DtnPrefactor"] + k];
   expectZero["transfer-matrix DtN equals -k*tan(k*L0)", data["DtnTransfer"] - data["DtnTarget"]];
   expectBool["dtn_matches_target is transfer-derived-vs-typed", data["DtnMatchesTarget"]];
   expectZero["transfer route agrees with the LUsolve reference expression", data["DtnTransfer"] + k Tan[k L0]]

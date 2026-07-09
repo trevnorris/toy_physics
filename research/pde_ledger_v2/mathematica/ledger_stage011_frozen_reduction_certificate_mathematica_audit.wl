@@ -101,6 +101,12 @@ exprEqual[lhs_, rhs_: 0] := TrueQ[FullSimplify[lhs - rhs == 0]];
 nonzeroQ[expr_] := ! TrueQ[FullSimplify[expr == 0]];
 boolResidual[condition_] := If[TrueQ[condition], 0, 1];
 verdictResidual[actual_, expected_] := If[actual === expected, 0, 1];
+applyAssembledLs[operator_, trial_] := FullSimplify[
+  operator /. {
+    HoldPattern[Derivative[order_Integer][psiHat][s]] :> D[trial, {s, order}],
+    psiHat[s] -> trial
+  }
+];
 
 r1SiteFromExponent[exponent_] := FullSimplify[exponent K rho^(exponent - 1)/m];
 r1EosSiteFromExponent[exponent_] := FullSimplify[D[K rho^exponent, rho]/m];
@@ -114,6 +120,8 @@ computeVerdict[dimensionalOk_, unsuppressedOperatorIntrusion_, operatorIsHelmhol
     ! TrueQ[domainIsL0], FAILWRONGDOMAIN,
     True, REDUCTIONCERTIFIED
   ];
+
+xiEllCFirewallOk[xiExpr_] := TrueQ[xiSymbol =!= ellC] && FreeQ[xiExpr, ellC];
 
 solveCapEndpoint[taperExpr_] := Module[{roots},
   roots = s /. Solve[taperExpr == 0, s];
@@ -299,7 +307,7 @@ buildBaseline[] := Module[
     reduction["DomainIsL0"]
   ];
   reduction["Verdict"] = verdict;
-  firewallOk = TrueQ[xiSymbol =!= ellC] && FreeQ[xi, ellC];
+  firewallOk = xiEllCFirewallOk[xi];
   <|
     "Reduction" -> reduction,
     "k" -> k,
@@ -364,8 +372,8 @@ runOperatorAndSpeed[data_] := Module[{red, kOp, trigSinResidual, trigCosResidual
   expectZero["assembled L_s minus ideal Helmholtz operator is zero", red["OperatorResidual"]];
   expectBool["unsuppressed_operator_intrusion is computed false", red["UnsuppressedOperatorIntrusion"] === False];
   kOp = FullSimplify[omega/Sqrt[cSSquaredBulk]];
-  trigSinResidual = FullSimplify[D[Sin[kOp s], {s, 2}] + bulkN Sin[kOp s]];
-  trigCosResidual = FullSimplify[D[Cos[kOp s], {s, 2}] + bulkN Cos[kOp s]];
+  trigSinResidual = applyAssembledLs[red["L_s"], Sin[kOp s]];
+  trigCosResidual = applyAssembledLs[red["L_s"], Cos[kOp s]];
   expectZero["native trig-basis confirmation sin branch satisfies produced operator", trigSinResidual];
   expectZero["native trig-basis confirmation cos branch satisfies produced operator", trigCosResidual];
   Print["  ODE artifact: psi''(s) + (omega/c_S)^2 psi(s) = 0"];
@@ -452,8 +460,9 @@ runAbleToFailTeeth[data_] := Module[
   {
     baseline, measureMut, bdgMut, nonuniformRho0, rhoMut,
     deltaVConfMut,
-    renormalizedSpeedSquared, speedIsCsMut, speedMutVerdict,
-    taperMut, domainMut, xiSymbolConflated, xiConflated,
+    bdgFourthDerivative, baselineBdgFourthDerivativeCoeff,
+    retainedBdgFourthDerivativeCoeff, speedMutVerdict,
+    taperMut, domainMut, xiConflated,
     conflatedFirewallOk, dim
   },
   subheading["Able-to-fail mutation teeth"];
@@ -465,7 +474,17 @@ runAbleToFailTeeth[data_] := Module[
   expectZero["tooth 1 verdict is FAIL_OPERATOR_INTRUSION", verdictResidual[measureMut["Verdict"], FAILOPERATORINTRUSION]];
 
   bdgMut = buildReductionCase[Aperp0, rhoStar, linearTaper, 1, False];
-  expectNonzero["tooth 2 retained BdG injects fourth-derivative coefficient", bdgMut["BdgOperatorCoeff"]];
+  bdgFourthDerivative = D[psiHat[s], {s, 4}];
+  baselineBdgFourthDerivativeCoeff = FullSimplify[Coefficient[Expand[baseline["L_s"]], bdgFourthDerivative]];
+  retainedBdgFourthDerivativeCoeff = FullSimplify[Coefficient[Expand[bdgMut["L_s"]], bdgFourthDerivative]];
+  expectZero[
+    "tooth 2 deferred BdG flag leaves fourth-derivative term absent in baseline",
+    baselineBdgFourthDerivativeCoeff
+  ];
+  expectNonzero[
+    "tooth 2 retained BdG flag injects fourth-derivative term into L_s",
+    retainedBdgFourthDerivativeCoeff
+  ];
   expectFail["tooth 2 operator_is_helmholtz boolean flips false", boolResidual[bdgMut["OperatorIsHelmholtz"]]];
   expectZero["tooth 2 verdict is FAIL_OPERATOR_INTRUSION", verdictResidual[bdgMut["Verdict"], FAILOPERATORINTRUSION]];
 
@@ -489,18 +508,18 @@ runAbleToFailTeeth[data_] := Module[
     boolResidual[deltaVConfMut["OperatorIsHelmholtz"]]
   ];
 
-  renormalizedSpeedSquared = FullSimplify[cSSquaredBulk (1 + deltaWall)^2];
-  speedIsCsMut = exprEqual[baseline["ExtractedSpeedSquared"], renormalizedSpeedSquared];
+  Print["  note: FAIL_WRONG_SPEED is a defensive verdict branch not reachable by real operator corruption; intrusion dominates."];
   speedMutVerdict = computeVerdict[
     True,
     baseline["UnsuppressedOperatorIntrusion"],
     baseline["OperatorIsHelmholtz"],
-    speedIsCsMut,
+    False,
     baseline["DomainIsL0"]
   ];
-  expectFail["tooth 4 wall/healing speed renormalization makes extracted speed differ from bulk claim", baseline["ExtractedSpeedSquared"] - renormalizedSpeedSquared];
-  expectFail["tooth 4 speed_is_cs boolean flips false", boolResidual[speedIsCsMut]];
-  expectZero["tooth 4 verdict is FAIL_WRONG_SPEED", verdictResidual[speedMutVerdict, FAILWRONGSPEED]];
+  expectZero[
+    "compute_verdict logic branch returns FAIL_WRONG_SPEED when only speed_is_cs is false",
+    verdictResidual[speedMutVerdict, FAILWRONGSPEED]
+  ];
 
   taperMut = FullSimplify[Rmouth (1 - s/(2 L0))];
   domainMut = buildReductionCase[Aperp0, rhoStar, taperMut, 0, True];
@@ -508,9 +527,8 @@ runAbleToFailTeeth[data_] := Module[
   expectFail["tooth 5 domain_is_L0 boolean flips false", boolResidual[domainMut["DomainIsL0"]]];
   expectZero["tooth 5 verdict is FAIL_WRONG_DOMAIN", verdictResidual[domainMut["Verdict"], FAILWRONGDOMAIN]];
 
-  xiSymbolConflated = ellC;
-  xiConflated = ellC;
-  conflatedFirewallOk = TrueQ[xiSymbolConflated =!= ellC] && FreeQ[xiConflated, ellC];
+  xiConflated = FullSimplify[data["Xi"] /. hbar -> ellC hbar];
+  conflatedFirewallOk = xiEllCFirewallOk[xiConflated];
   expectFail["tooth 6 ell_c -> xi conflation trips distinct-symbol firewall", boolResidual[conflatedFirewallOk]];
 
   Scan[

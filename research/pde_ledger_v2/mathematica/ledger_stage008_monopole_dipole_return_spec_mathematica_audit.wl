@@ -15,7 +15,7 @@ ClearAll[
   sourceData, rawAmplitudeResidual, conditionWorks, residualWithCorruptReturn,
   runAritySelfCheck, runDtnLadder, runSourcesAndBookkeeping, stageAnchors,
   computeVerdict, runVerdict, runGuards, runFrozenAndConsumedStage005,
-  dimResidualVec, runDimensionalBlock, printScopeAndProvenance,
+  dimResidualVec, expressionDim, kernelDimensionResidual, runDimensionalBlock, printScopeAndProvenance,
   printVerdictLabels, runAbleToFailTeeth, passCount, failCount
 ];
 
@@ -387,7 +387,7 @@ runVerdict[src_] := Module[{rawPresent, works, cancellationPossible, verdict, sy
 ];
 
 runGuards[dtn_, src_, anchors_] := Module[
-  {rawPresent, steadyLimit, m0Kill, recovery243, recovery244, derivativeNotBasis, quadrupoleSurvives, noTrack3BulkKill},
+  {rawPresent, steadyLimit, recovery243, recovery244, derivativeNotBasis, quadrupoleSurvives, noTrack3BulkKill},
   subheading["Nine source-live guards"];
   Print["  These controls do NOT test whether suppression occurs. What they confirm is narrow: the source moments M0/D1 are kept live (no S_leak=0, no strict-recovery basis, no projection-locking that would zero them out by construction). Beyond keeping the source live, the controls pass by construction — they are not able-to-fail probes of the physical question. Treat them as guards against the obvious tautologies, not as evidence of suppression-vs-unavoidable."];
   rawPresent = AllTrue[{0, 1, 2}, nonzeroQ[src["Raw"][#]] &];
@@ -395,7 +395,6 @@ runGuards[dtn_, src_, anchors_] := Module[
     {$Assumptions = a > 0 && cS > 0 && Element[M0, Reals]},
     FullSimplify[Limit[src["Raw"][0], omega -> 0]]
   ];
-  m0Kill = FullSimplify[src["Raw"][0] /. M0 -> 0];
   recovery243 = FullSimplify[anchors["stage243"] /. anchors["ellw"] -> 0];
   recovery244 = FullSimplify[anchors["stage244"] /. anchors["E0"] -> 0];
   derivativeNotBasis = nonzeroQ[src["DerivativeVertex"][0]];
@@ -405,7 +404,7 @@ runGuards[dtn_, src_, anchors_] := Module[
   expectZero["guard steady_no_radiation: lim_{omega->0} raw0=0", steadyLimit];
   expectBool["guard quadrupole_survives: scanned p(ell2)=5 and raw2 nonzero", quadrupoleSurvives];
   expectBool["guard return_necessity: without nonzero and with exactly zero", conditionWorks[src]];
-  expectZero["guard anti_tautology_no_S_leak_zero: M0->0 kills raw0, so shortcut is visible", m0Kill];
+  Print["    declaration anti_tautology_no_S_leak_zero: M0->0 killing raw0 is pass-by-construction after the raw-amplitude closed-form checks, not a counted able-to-fail tooth."];
   Print["    declaration anti_tautology_no_S_leak_zero: no S_leak=0 shortcut is used as a verdict basis."];
   Print["    declaration anti_tautology_no_strict_recovery_basis: ell_w->0 and E0->0 recovery slices are not used as verdict bases."];
   Print["    observed_but_not_used — the strict-recovery limit exists but is NOT taken as a basis: sleak243|_{ell_w->0} = 0"];
@@ -447,25 +446,58 @@ runFrozenAndConsumedStage005[] := Module[
 
 dimResidualVec[actual_, expected_] := FullSimplify[(actual - expected).(actual - expected)];
 
+expressionDim[expr_, symbolDims_] := Module[{e, dims},
+  e = FullSimplify[expr];
+  Which[
+    NumberQ[e] || e === I || e === Pi, {0, 0},
+    KeyExistsQ[symbolDims, e], symbolDims[e],
+    AtomQ[e], raise["missing sourced dimension for symbol " <> ToString[InputForm[e]]],
+    Head[e] === Times, Total[expressionDim[#, symbolDims] & /@ (List @@ e)],
+    Head[e] === Power,
+      If[
+        MatchQ[e[[2]], _Integer | _Rational],
+        e[[2]] expressionDim[e[[1]], symbolDims],
+        raise["non-numeric exponent in dimension walk: " <> ToString[InputForm[e]]]
+      ],
+    Head[e] === Plus,
+      dims = expressionDim[#, symbolDims] & /@ (List @@ e);
+      If[
+        AllTrue[Rest[dims], # === First[dims] &],
+        First[dims],
+        raise["dimensionally inhomogeneous expression: " <> ToString[InputForm[e]]]
+      ],
+    True, raise["unsupported expression in dimension walk: " <> ToString[InputForm[e]]]
+  ]
+];
+
+kernelDimensionResidual[kernel_, symbolDims_] := dimResidualVec[expressionDim[kernel, symbolDims], {0, 0}];
+
 runDimensionalBlock[dtn_] := Module[
-  {zero, dimA, dimK, dimCS, dimOmega, zDim, p, kernelDim},
+  {zero, dimA, dimCS, dimOmega, kernelSymbolDims, corruptKernelSymbolDims, corruptDimResidual},
   subheading["Modest dimensional block"];
   zero = {0, 0};
   dimA = {1, 0};
-  dimK = {-1, 0};
   dimCS = {1, -1};
   dimOmega = {0, -1};
-  zDim = dimK + dimA;
-  expectZero["z=k*a is dimensionless", dimResidualVec[zDim, zero]];
+  kernelSymbolDims = <|a -> dimA, cS -> dimCS, omega -> dimOmega|>;
+  corruptKernelSymbolDims = Join[kernelSymbolDims, <|a -> dimA + {1, 0}|>];
+  Print["  structural note (not counted): z=k*a is dimensionless by k=omega/c_S and [a]=L."];
   Do[
-    p = dtnAt[dtn, ell]["pRaw"];
-    kernelDim = p (dimA - dimCS) + p dimOmega;
     expectZero[
-      "ell=" <> ToString[ell] <> " kernel structure (a/c_S)^p*omega^p is dimensionless",
-      dimResidualVec[kernelDim, zero]
+      "ell=" <> ToString[ell] <> " actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless",
+      kernelDimensionResidual[dtnAt[dtn, ell]["RadiationKernel"], kernelSymbolDims]
     ],
     {ell, {0, 1, 2}}
   ];
+  corruptDimResidual = FullSimplify[
+    Total[
+      Table[
+        kernelDimensionResidual[dtnAt[dtn, ell]["RadiationKernel"], corruptKernelSymbolDims],
+        {ell, {0, 1, 2}}
+      ]
+    ]
+  ];
+  expectFail["dimensional source corruption [a]->L^2 makes actual radiation kernels dimensionful", corruptDimResidual];
   expectBool[
     "scanned ladder powers are strictly increasing",
     dtnAt[dtn, 0]["pRaw"] < dtnAt[dtn, 1]["pRaw"] < dtnAt[dtn, 2]["pRaw"]

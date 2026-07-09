@@ -219,6 +219,16 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   nit remediated (baseline re-integration was value-wise `X−X` → retargeted to the hardcoded closed-forms) → fresh-agent
   `REVERIFY_CLEAN`. Register at count 13, PDF 41pp. **⚠ Also fixed a manifest lag** (the `LINEAR_STAGE_RENUMBERING_MANIFEST.json`
   policy array had stalled at 010 — 011/012 were bumped in coverage but never added to the manifest; added 011/012/013).
+- **⭐⭐ TEETH-HARDENING PASS DONE (2026-07-08, post-013, user-directed).** A Grok per-tooth-ablation backstop of the
+  committed gravity stages 008–012 found ~11 vacuous/weak able-to-fail constructs the original tri-reviews missed (X≡X
+  set-then-compare, dim-tautologies, subsumed/miswired guards) — 009 CLEAN, 013 already hardened. **Falsification-STRENGTH
+  defects, NOT earned-physics errors** (no result rested solely on a vacuous tooth; `.wl`s all genuine independent
+  engines). Codex remediated (make-genuine or honest de-count); fresh-Grok re-verify: 008/010 CLEAN, 011/012 SymPy CLEAN.
+  New tallies 008 53/56 · 010 71/81 · 011 60/70 · 012 82/90. Re-verify also caught 2 WL-only constructs (011 trig, 012
+  pole-denom) → Codex WL follow-up fixed; and 1 Grok FALSE-POSITIVE (012 `halfshift_destroyed_for_DD` is genuine — always
+  verify Grok negatives by reading code). ⭐ Per-tooth ablation now MANDATORY in the tri-review (blueprint §6 +
+  [[feedback-per-tooth-ablation]]). ⚠ OPEN FOLLOW-UP: the `.wl`s were only STATIC-read (2-seat cap) — a dedicated
+  WL-ablation pass over all built stages is a tracked Phase-C-adjacent follow-up.
 - **▶ NEXT = Cluster A `ledger_stage014`** (II-G2b, pathA_31 `BREATHING_CALIBRATED` 2/3: combined-basis generalized eig +
   β_L0 sweep + N-convergence overlaps → the validity window / order-unity-wall-stiffness caveat). Consumes stage013's
   `M_AB`/`K_AB`. pathA_31 trip-up (from v1): gamed truncation threshold — the overlap-floor `o_k≥0.9` + β-sweep must be

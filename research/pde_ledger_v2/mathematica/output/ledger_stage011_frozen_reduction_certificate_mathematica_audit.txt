@@ -1,6 +1,6 @@
 # Mathematica Audit Output
 # Script: ledger_stage011_frozen_reduction_certificate_mathematica_audit.wl
-# Date: 2026-07-08T13:06:13-06:00
+# Date: 2026-07-08T18:45:35-06:00
 # Elapsed: 11s
 # Exit code: 0
 # Status: PASS
@@ -130,7 +130,8 @@ Able-to-fail mutation teeth
 PASS  tooth 1 nonconstant sqrt(gamma0) makes M nonzero produced required FAIL (residual = Derivative[1][AperpMut][s]/AperpMut[s])
 PASS  tooth 1 operator_is_helmholtz boolean flips false produced required FAIL (residual = 1)
 PASS  tooth 1 verdict is FAIL_OPERATOR_INTRUSION
-PASS  tooth 2 retained BdG injects fourth-derivative coefficient is nonzero as required (residual = hbar^2/(20*K*m*rhoStar^4))
+PASS  tooth 2 deferred BdG flag leaves fourth-derivative term absent in baseline
+PASS  tooth 2 retained BdG flag injects fourth-derivative term into L_s is nonzero as required (residual = -1/20*hbar^2/(K*m*rhoStar^4))
 PASS  tooth 2 operator_is_helmholtz boolean flips false produced required FAIL (residual = 1)
 PASS  tooth 2 verdict is FAIL_OPERATOR_INTRUSION
 PASS  tooth 3 nonuniform rho0 makes N-(omega/c_S)^2 nonzero produced required FAIL (residual = (m*omega^2*(-rhoStar^(-4) + (rhoStar + (epsilonRho*rhoStar*s)/L0)^(-4)))/(5*K))
@@ -139,9 +140,8 @@ PASS  tooth 3 verdict is FAIL_OPERATOR_INTRUSION
 PASS  tooth 3b verdict is FAIL_OPERATOR_INTRUSION
 PASS  tooth 3b nonzero delta_V_conf witness makes unsuppressed_operator_intrusion true
 PASS  tooth 3b operator_is_helmholtz stays true because the witness is not in L_s
-PASS  tooth 4 wall/healing speed renormalization makes extracted speed differ from bulk claim produced required FAIL (residual = (-5*deltaWall*(2 + deltaWall)*K*rhoStar^4)/m)
-PASS  tooth 4 speed_is_cs boolean flips false produced required FAIL (residual = 1)
-PASS  tooth 4 verdict is FAIL_WRONG_SPEED
+  note: FAIL_WRONG_SPEED is a defensive verdict branch not reachable by real operator corruption; intrusion dominates.
+PASS  compute_verdict logic branch returns FAIL_WRONG_SPEED when only speed_is_cs is false
 PASS  tooth 5 corrupt taper root differs from L0 produced required FAIL (residual = L0)
 PASS  tooth 5 domain_is_L0 boolean flips false produced required FAIL (residual = 1)
 PASS  tooth 5 verdict is FAIL_WRONG_DOMAIN
@@ -160,7 +160,7 @@ PASS  baseline immutable after teeth: cap endpoint remains L0
 PASS  baseline immutable after teeth: R1 site integrity remains zero
 PASS  baseline immutable after teeth: clean 011 verdict remains REDUCTION_CERTIFIED
 
-PASS tally: 71; FAIL tally: 0
+PASS tally: 70; FAIL tally: 0
 OVERALL PASS: Mathematica verified ledger_stage011 frozen reduction certificate exactly
 
 EXIT_CODE: 0

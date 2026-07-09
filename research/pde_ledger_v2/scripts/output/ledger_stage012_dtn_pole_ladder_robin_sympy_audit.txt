@@ -1,7 +1,7 @@
 # SymPy Audit Output
 # Script: ledger_stage012_dtn_pole_ladder_robin_sympy_audit.py
-# Date: 2026-07-08T14:32:03-06:00
-# Elapsed: 29s
+# Date: 2026-07-08T18:25:13-06:00
+# Elapsed: 30s
 # Exit code: 0
 # Status: PASS
 #
@@ -31,8 +31,8 @@ PASS  c_S^2 frozen-export anchor consumed - 5*K*rho_star^4/m equals zero
 PASS  L_s null-space reconstruction recovers a=0
 PASS  L_s null-space reconstruction recovers b=(omega/c_S)^2
 PASS  L_s site A minus site B equals zero
-PASS  L_s frozen-export anchor consumed_L_s - (psi''+(omega/c_S)^2 psi) equals zero
-PASS  domain [0,L0] is cited as length L0, not re-solved
+  structural note: L_s frozen-export alias anchor is de-counted; dual-site null-space integrity above carries the citation check.
+  structural note: consumed domain [0,L0] = (0, L0); length bookkeeping is de-counted.
 
 D/N BVP coefficient solve and DtN
 ---------------------------------
@@ -52,10 +52,10 @@ PASS  D/N determinant equals -omega*cos(L0*omega/cS)/cS
 PASS  BC-applied solution equals psiM*(sin(k*s)*tan(k*L0)+cos(k*s))
   dtn_raw = -omega*tan(L0*omega/cS)/cS
   dtn target = -omega*tan(L0*omega/cS)/cS
+PASS  tan_argument extracted from derived DtN is k*L0
+PASS  dtn_prefactor extracted from derived DtN is -k
 PASS  DtN derived via LUsolve equals -k*tan(k*L0)
 PASS  dtn_matches_target is genuine derived-vs-typed comparison
-PASS  tan_argument is k*L0
-PASS  dtn_prefactor is -k
 
 Half-shift pole ladder, static series, and round trip
 -----------------------------------------------------
@@ -206,7 +206,7 @@ PASS  baseline immutable after teeth: Robin alpha->infinity still recovers D/D
 PASS  baseline immutable after teeth: L_s site integrity remains zero
 PASS  baseline immutable after teeth: clean 012 verdict remains DN_UNITTEST_BC_DEPENDENT
 
-PASS tally: 84; FAIL tally: 0
+PASS tally: 82; FAIL tally: 0
 OVERALL PASS: SymPy verified ledger_stage012 DtN pole ladder + Robin falsifier exactly
 
 EXIT_CODE: 0

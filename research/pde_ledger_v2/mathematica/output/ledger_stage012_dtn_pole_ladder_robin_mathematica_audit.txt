@@ -1,7 +1,7 @@
 # Mathematica Audit Output
 # Script: ledger_stage012_dtn_pole_ladder_robin_mathematica_audit.wl
-# Date: 2026-07-08T14:33:07-06:00
-# Elapsed: 56s
+# Date: 2026-07-08T18:46:34-06:00
+# Elapsed: 57s
 # Exit code: 0
 # Status: PASS
 #
@@ -42,8 +42,8 @@ PASS  c_S^2 frozen-export anchor consumed - 5*K*rho_star^4/m equals zero
 PASS  L_s null-space reconstruction recovers a=0
 PASS  L_s null-space reconstruction recovers b=(omega/c_S)^2
 PASS  L_s site A minus site B equals zero
-PASS  L_s frozen-export anchor consumed_L_s - (psi''+(omega/c_S)^2 psi) equals zero
-PASS  domain [0,L0] is cited as length L0, not re-solved
+  structural note: L_s frozen-export alias anchor is de-counted; dual-site null-space integrity above carries the citation check.
+  structural note: consumed domain [0,L0] has length L0 by construction; length bookkeeping is de-counted.
 
 Transfer-matrix D/N DtN
 -----------------------
@@ -52,6 +52,8 @@ Transfer-matrix D/N DtN
   Neumann cap residual = pM*Cos[(L0*omega)/cS] - (omega*psiM*Sin[(L0*omega)/cS])/cS
   pM from Neumann = (omega*psiM*Tan[(L0*omega)/cS])/cS
   dtnTransfer = -((omega*Tan[(L0*omega)/cS])/cS); target = -((omega*Tan[(L0*omega)/cS])/cS)
+PASS  tan_argument extracted from derived DtN is k*L0
+PASS  dtn_prefactor extracted from derived DtN is -k
 PASS  transfer-matrix DtN equals -k*tan(k*L0)
 PASS  dtn_matches_target is transfer-derived-vs-typed
 PASS  transfer route agrees with the LUsolve reference expression

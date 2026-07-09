@@ -257,8 +257,10 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   static-dynamic limit; this COMPLETES the joint `BREATHING_CALIBRATED` = 013 ∧ 014 ∧ 015). Consumes 013's `M_AB`/`K_AB` +
   EOM LHS (fills the RHS `F_A^(HF)`). pathA_31 v1 trip-up (015's locus): the HF `x−x` two-route tautology + a typed
   counterfactual — both HF routes must be COMPUTED + independently emitted. Source `.py` = `build_structure_gate` L217–311
-  + the HF force L681–703 + the guard `hf_mismatch`/`F_a` slices; `.wl` = the HF/structure/`egeom` regions. Author a
-  running-start source map first.
+  + the HF force L681–703 + the guard `hf_mismatch`/`F_a` slices; `.wl` = the HF/structure/`egeom` regions (L27/46–50/59–60/62–99).
+  ⭐ **Register question:** the HF drive introduces `Vp0` + live `ell_c` — CONFIRM whether 015 adds a counted CALIB knob
+  (the SECOND calibration-adding stage) or is absorbed. ⭐ **Running-start source map AUTHORED (2026-07-08 /clear prep, line
+  refs verified)** = `research/pde_ledger_v2/notes/stage015_pathA31_structure_hf_source_map.md`.
 
 ## Per-stage process (unchanged, calibrated)
 

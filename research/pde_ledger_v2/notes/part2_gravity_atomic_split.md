@@ -252,15 +252,44 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   Module locals. Register: **zero new counted knobs** (numeric controls `{FLOOR,N_FINAL,N_CONVERGENCE,BETA_L0_SWEEP}`
   tracked-not-counted; wall packet consumed from 013, no double-count) + structural edge R31 (truncation validity window,
   discharges nothing), Codex `REGISTER_CLEAN`. Registration at count 14, PDF rebuilt (43pp).
-- **▶ NEXT = Cluster A `ledger_stage015`** (II-G2c, pathA_31 `BREATHING_CALIBRATED` 3/3: legacy-`E_geom`-Hessian structure
-  recovery + the Hellmann–Feynman force — BOTH routes independently emitted, the v1 `x−x` rig's fix preserved — + the
-  static-dynamic limit; this COMPLETES the joint `BREATHING_CALIBRATED` = 013 ∧ 014 ∧ 015). Consumes 013's `M_AB`/`K_AB` +
-  EOM LHS (fills the RHS `F_A^(HF)`). pathA_31 v1 trip-up (015's locus): the HF `x−x` two-route tautology + a typed
-  counterfactual — both HF routes must be COMPUTED + independently emitted. Source `.py` = `build_structure_gate` L217–311
-  + the HF force L681–703 + the guard `hf_mismatch`/`F_a` slices; `.wl` = the HF/structure/`egeom` regions (L27/46–50/59–60/62–99).
-  ⭐ **Register question:** the HF drive introduces `Vp0` + live `ell_c` — CONFIRM whether 015 adds a counted CALIB knob
-  (the SECOND calibration-adding stage) or is absorbed. ⭐ **Running-start source map AUTHORED (2026-07-08 /clear prep, line
-  refs verified)** = `research/pde_ledger_v2/notes/stage015_pathA31_structure_hf_source_map.md`.
+- **✅ II-G2c `ledger_stage015` DONE (2026-07-08) — pathA_31 `BREATHING_CALIBRATED` 3/3 (legacy-Hessian structure recovery +
+  the Hellmann–Feynman force); COMPLETES the joint `BREATHING_CALIBRATED` = 013 ∧ 014 ∧ 015; the SECOND calibration-adding
+  Part-II stage.** SYMBOLIC / float-free (the inverse of numeric 014). EARNED: (Q1) the legacy-Hessian structure recovery —
+  `H_legacy=hessian(E_geom)` own-built; the CITED 013 `M_AB`/`K_AB` match its structural signature (M pos-def by
+  **exact-identity Sylvester certificates**, K symmetric, `K_aL<0`, rank + zero-pattern) → the `(a,L)` closure RECOVERED not
+  re-postulated (`full_matrix_fit=False`); (Q2) the **Hellmann–Feynman force `F_A^(HF)`** (the RHS 013 deferred) by TWO
+  genuinely-different routes — distributed projection vs Hellmann–Feynman parametric derivative — that AGREE
+  (`hf_force_reduces=True`) with `unsimplified_routes_identical=False` (⭐ the anti-`x−x`, the pathA_31 v1 rig's OTHER locus,
+  ABSENT); (Q3) the static-dynamic limit `Q̈→0 ⇒ K_AB Q = F_A`. ⭐ **The 014↔015 boundary:** the constant profile PASSES 014's
+  overlap but FAILS 015's HF (`hf_mismatch=True`) — the HF is the profile guard the overlap could not supply. Consumed 013's
+  profiles + M/K + packet (dual-site: site A `β·L0=37/20`, site B residual∧BC, + the M/K det-identities **plus off-diagonal
+  sign checks `M_aL>0`/`K_aL<0`** — the det is blind to the off-diagonal sign, a Codex catch) + 014's truncation cert; `c_S`
+  NOT consumed. Bridge severed (the `sympy*` export + `.wl` `checks` cross-read); the `.wl` KEEPS its native HF `Integrate` +
+  Hessian `D` + structure `Det`/`MatrixRank` route (cites profiles + M/K as literals, NOT `DSolveValue`/re-`Integrate`).
+  Dual-engine SymPy 95 / Mathematica 102, CWD-independent. **⭐ Directive review = Codex→Grok→Codex bookend:** Codex 1 BLOCKING
+  (the det-identity was blind to the `M_aL→−M_aL` sign flip — det carries `M_aL²`; added explicit sign checks) → confirm
+  `DIRECTIVE_CLEAN`; **Grok-4.5 compute-verify caught 1 BLOCKING** (`M_aa>0` is NOT float-free dischargeable — `sp.ask` returns
+  `None`, `bool(>0)` raises — so it would silently regress to the vacuous `M_aa−m_aa_positive_form==0` form-equality;
+  required exact-identity positivity certificates + a form-equality prohibition) + 1 nit → Codex final confirm
+  `DIRECTIVE_CLEAN`. Tri-review: `FIDELITY_CLEAN` (hand-verified all 7 certificate identities + every value) +
+  `ADVERSARIAL_ISSUES` — the three central burdens proven genuine by live copy-mutations, but **1 BLOCKING vacuous `x−x`
+  tooth (tooth 4, `expect_fail(compact(F_legacy_a−F_legacy_a)!=0)`, a self-compare) in both engines** + 3 lower-severity
+  literal/scaffolding flags → remediated (make-genuine ×4: tooth 4 reads the real wrong-profile forces, static-dynamic → a
+  genuine `Q̈→0` EOM-residual identity, `full_matrix_fit` → `M_aa≠H_aa`, `structure_from_computed` → firewall-tied; de-count ×2:
+  the typed-twice scaffolding + the bypassing-probe meta-asserts) → fresh-agent `REVERIFY_CLEAN` (coupling meta-test: each
+  remediated construct fires under a mutation of its named object; tallies 99/106→95/102, net −4 from the honest de-counts).
+  **Register: ONE new counted CALIB knob `Vp0/ℓ_c`** (the breathing driving-force scale; `Vp0` + now-live `ℓ_c` its
+  manifestations, `ρ*` consumed; `[Vp0/ℓ_c]=M L⁴ T⁻²` Codex-verified) — the SECOND calibration-adding Part-II stage; legacy
+  `{κ,χ,σ_a,σ_L}` = pattern basis (NOT counted afresh, edge R32); edges R32 (structure recovery) + R33 (confinement-drive
+  reduction debt, sibling of R30). Codex `REGISTER_CLEAN` (1 nit — stale scope line — fixed). Registration at count 15, PDF
+  rebuilt (45pp). ⭐ **pathA_31 fold COMPLETE (stages 013+014+015).**
+- **▶ NEXT = Cluster A `ledger_stage016`** (II-G3a, pathA_32 `ISOTROPY_CALIBRATED` 1/2 — the EARNED slice): the ℓ=2 SO(3)
+  covariance theorem — real ℓ=2 harmonics, angular Gram = I₅, computed `−Δ_S²` eigenvalues `λ_m=6`, the `K₂` angular
+  stiffness. Then 017 (II-G3b) = grouped-P2 lane isotropy (`ISOTROPY_CALIBRATED` 2/2). Per-gate trip-up to pin (from the
+  split's rig-history table): keep the aggregate probe battery intact (neuter-one → aggregate flips); eigenvalues COMPUTED
+  (the `tautology_hash` probe); a dim-mutation on the sourced `T_Ω` must fire `FAIL_DIMENSIONAL`. Consumes 011/012's frozen
+  packet + D/N provenance as calibration input. ⭐ A running-start source map should be authored first (per the calibrated
+  per-stage pipeline).
 
 ## Per-stage process (unchanged, calibrated)
 

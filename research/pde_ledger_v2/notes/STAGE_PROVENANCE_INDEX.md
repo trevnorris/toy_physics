@@ -3,7 +3,7 @@
 This repo-local index tracks raw derivation-note sources and executable audit
 artifacts for canonical stage files after they are added to the rebuilt ledger.
 
-Current scope: Stages 001-014.
+Current scope: Stages 001-015.
 
 | Stage | Canonical TeX | Note Source | SymPy Audit | Mathematica Audit | Numerical Stress |
 |---|---|---|---|---|---|
@@ -21,3 +21,4 @@ Current scope: Stages 001-014.
 | 012 | paper/stages/stage_012.tex | notes/stages/ledger_stage012_dtn_pole_ladder_robin.md | scripts/ledger_stage012_dtn_pole_ladder_robin_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage012_dtn_pole_ladder_robin_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 013 | paper/stages/stage_013.tex | notes/stages/ledger_stage013_breathing_harmonic_mk_projection.md | scripts/ledger_stage013_breathing_harmonic_mk_projection_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage013_breathing_harmonic_mk_projection_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
 | 014 | paper/stages/stage_014.tex | notes/stages/ledger_stage014_breathing_truncation_consistency.md | scripts/ledger_stage014_breathing_truncation_consistency_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage014_breathing_truncation_consistency_mathematica_audit.wl (+ mathematica/output/*.txt) | — |
+| 015 | paper/stages/stage_015.tex | notes/stages/ledger_stage015_breathing_structure_hf_force.md | scripts/ledger_stage015_breathing_structure_hf_force_sympy_audit.py (+ scripts/output/*.txt) | mathematica/ledger_stage015_breathing_structure_hf_force_mathematica_audit.wl (+ mathematica/output/*.txt) | — |

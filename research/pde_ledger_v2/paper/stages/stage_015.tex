@@ -1,0 +1,135 @@
+\section{Stage 015: Legacy-Hessian Structure Recovery \texorpdfstring{\& the Hellmann--Feynman Force}{and the Hellmann-Feynman force} (Check II-G2c)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=0\) breathing mode; the legacy-structure + Hellmann--Feynman-force component of the joint \texttt{BREATHING\_CALIBRATED}, which it \emph{completes} --- with the M/K-projection + \((a,L)\)-EOM-LHS = Stage~013 and the truncation consistency = Stage~014)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Complete the calibrated breathing sector. \textbf{(Q1)} Show
+Stage-013's operator-projected closure \(M_{AB},K_{AB}\) has the same structural
+signature as the legacy static energy Hessian \(H_{\mathrm{legacy}}=\partial^2
+E_{\mathrm{geom}}/\partial Q^2\) (the \((a,L)\) closure \emph{recovered}, not
+re-postulated). \textbf{(Q2)} Supply the EOM driving force \(F_A^{(\mathrm{HF})}\)
+--- the right-hand side Stage~013 deferred --- by \emph{two genuinely different}
+constructions (a distributed source projection and a Hellmann--Feynman parametric
+derivative) that agree only after simplification. Then take the static-dynamic
+limit and land the completed joint verdict.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage015_breathing_structure_hf_force_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage015_breathing_structure_hf_force_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the structure recovery and the Hellmann--Feynman force
+are exact closed-form algebra (\texttt{sp.integrate}/\texttt{FullSimplify};
+\texttt{expect\_zero} residuals, exact rationals \(L_0=37/20\); the symbolic /
+float-free inverse of the numeric Stage~014). The verdict is the joint
+\texttt{BREATHING\_CALIBRATED}; this stage carries its \emph{legacy-structure +
+HF-force} component (3/3) and \textbf{completes} it, filling the EOM RHS
+\(F_A^{(\mathrm{HF})}\). It adds \textbf{one} new counted \texttt{CALIB} knob --- the
+breathing driving-force scale \(V_{p0}/\ell_c\) (with \(V_{p0}\) and the now-live
+\(\ell_c\) its manifestations; \(\rho_\ast\) consumed) --- making it the second
+calibration-adding Part-II stage after Stage~013. Stage-013's profiles and
+\(M_{AB}/K_{AB}\) and Stage-014's truncation certificate are \emph{consumed} with
+dual-site citation-integrity; the legacy constants \(\{\kappa,\chi,\sigma_a,%
+\sigma_L\}\) are the legacy-Hessian pattern basis (not counted afresh); \(c_S\) is
+\emph{not} consumed (matter-sector deferred, \(k\xi\ll1\)).
+
+\paragraph{The legacy energy and its Hessian.}
+With \(E_{\mathrm{geom}}=\tfrac12\kappa(\delta_L-\chi\delta_a)^2+\tfrac12\sigma_a
+\delta_a^2+\tfrac12\sigma_L\delta_L^2\),
+\[
+  H_{\mathrm{legacy}}=\frac{\partial^2 E_{\mathrm{geom}}}{\partial Q^2}
+  =\begin{pmatrix}\chi^2\kappa+\sigma_a & -\chi\kappa\\ -\chi\kappa & \kappa+\sigma_L\end{pmatrix},
+\]
+symmetric, negative off-diagonal (\(-\chi\kappa<0\) for \(\chi,\kappa>0\)),
+\(\det=\kappa\sigma_a+\kappa\chi^2\sigma_L+\sigma_a\sigma_L>0\). The legacy
+constants enter \emph{here}; a firewall echo confirms the cited \(M_{AB}/K_{AB}\)
+free symbols exclude them.
+
+\paragraph{The structure recovery.}
+The gate reads the cited \(M_{AB}/K_{AB}\) and matches the structural signature of
+\(H_{\mathrm{legacy}}\): \(M\) positive-definite by Sylvester --- \(M_{aa}>0\) and
+\(\det M>0\) for \(B=\beta L_0>0\) --- discharged by \emph{exact-identity
+certificates} (not \texttt{is\_positive}, which returns \texttt{None} on the
+transcendentals, and \emph{not} the \(M_{aa}-m_{aa}^{+}\!=\!0\) form-equality, which
+is \(X\!\equiv\!X\) once \(M\) is cited): \(f_1=\sinh B\cosh B-B\) has \(f_1(0)=0\),
+\(f_1'=\cosh2B-1=2\sinh^2 B\ge0\); \(f_2=\sinh^2B-B^2=(\sinh B-B)(\sinh B+B)>0\)
+via \(g=\sinh B-B\), \(g'=\cosh B-1=2\sinh^2(B/2)\). Then \(K\) symmetric,
+\(K_{aL}<0\), \(\operatorname{rank}K=\operatorname{rank}H_{\mathrm{legacy}}=2\), and
+matching zero-pattern give \(K_{\mathrm{structure\ ok}}\);
+\(\mathrm{full\ matrix\ fit}=\)~false (the recovery is structural,
+\(M_{aa}\ne H_{aa}\)). The probes \(M_{aa}\to-M_{aa}\) and \(K_{aL}\to-K_{aL}\) flip
+the gate. \emph{The operator-projected closure has the same structural form as the
+legacy energy Hessian.}
+
+\paragraph{The Hellmann--Feynman force (both routes).}
+With the confinement force density \(\mathrm{src}=\rho_\ast V_{p0}/\ell_c\) and the
+action measure \(4\pi\!\int dw\):
+\[
+  \underbrace{F^{\mathrm{dist}}_A=4\pi\!\int_0^{L_0}\!\mathrm{src}\,\alpha_A\,dw}_{\text{distributed projection}}
+  \;=\;
+  \underbrace{F^{\mathrm{leg}}_A=-4\pi\!\int_0^{L_0}\!\rho_\ast\,\frac{\partial V_{\mathrm{conf}}}{\partial q_A}\Big|_{0}dw}_{\text{Hellmann--Feynman parametric}},
+\]
+\(V_{\mathrm{conf}}=(V_{p0}/\ell_c)(r-R_0(w)-q_a\alpha_a-q_L\alpha_L)\), Route~2 a
+genuine \(\partial/\partial q\) (the double-negative). They agree
+(\(\mathrm{hf\ force\ reduces}=\)~true, \(F^{\mathrm{dist}}_a=4\pi V_{p0}\rho_\ast(\cosh
+L_0\beta-1)/(\beta\ell_c\sinh L_0\beta)\)), yet the \emph{raw} unsimplified trees are
+computed-distinct: \(\mathrm{unsimplified\ routes\ identical}=\)~false
+(\(+4\pi\!\int(+\cdots)\) vs \(-4\pi\!\int(-\cdots)\)). \emph{This is the
+pathA\_31 v1 rejection's other locus --- the HF \(x\!-\!x\) tautology --- emitted here
+as two genuinely different constructions; the verdict rung places the anti-\(x\!-\!x\)
+in the OR: typing Route~2 as a copy of Route~1 trips
+\texttt{BREATHING\_FAIL\_HF\_FORCE}.} This fills the deferred RHS
+\(F_A^{(\mathrm{HF})}\).
+
+\paragraph{Static-dynamic limit and the profile guard.}
+\(\ddot Q\to0\) in \(M_{AB}\ddot Q+K_{AB}Q=F_A\) gives \(K_{AB}Q=F_A\), the static
+\(\partial E_{\mathrm{geom}}/\partial Q=0\) limit (the exact \(\ddot Q\to0\) EOM
+residual identity, not a separate solve). The HF guard rejects both wrong profiles
+(\(\alpha_a\equiv0\): \(F^{\mathrm{dist}}_a=0\); \(\alpha_a\equiv1\):
+\(F^{\mathrm{dist}}_a=4\pi L_0 V_{p0}\rho_\ast/\ell_c\); both \(\ne F^{\mathrm{leg}}_a\),
+so \(\mathrm{hf\ mismatch}=\)~true). \emph{The 014\(\leftrightarrow\)015 boundary:} the
+constant profile \emph{passes} Stage-014's modal overlap but \emph{fails} Stage-015's
+HF --- the Hellmann--Feynman mismatch is the profile guard the overlap could not
+supply (with Stage-013's \(\mathcal{L}_0[\alpha]=0\) residual).
+
+\paragraph{Consumed closure and register.}
+Stage-013's profiles, \(M_{AB}/K_{AB}\), and the frozen packet
+\(\{L_0=37/20,\ \beta=1,\ \beta L_0=37/20\}\) are cited with dual-site integrity:
+site~A the branch anchor \(\beta L_0-37/20\equiv0\); site~B the profiles satisfy
+\emph{both} the harmonic residual \(-\alpha''+\beta^2\alpha=0\) \emph{and} the BC
+values (residual alone misses a kernel-preserving corruption); and the \(M/K\)
+citation covers every entry --- two det-identities for the diagonals, and, because
+\(\det\) carries \(M_{aL}^2\) (blind to an off-diagonal sign flip), explicit sign
+checks \(M_{aL}>0\) (via \(h=B-\tanh B\)) and \(K_{aL}<0\). Register: \textbf{one} new
+counted \texttt{CALIB} knob, the driving-force scale \(V_{p0}/\ell_c\); the legacy
+\(\{\kappa,\chi,\sigma_a,\sigma_L\}\) are the pattern basis (not counted afresh).
+Two structural edges: R32 (the legacy-Hessian structure recovery, discharges
+nothing) and R33 (the confinement-drive reduction debt, a sibling of R30's
+wall-response debt, \texttt{PENDING}).
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's
+\(\texttt{sympy}^\ast\) export and the hybrid \texttt{.wl}'s
+\texttt{Get}/\texttt{checks}/\texttt{Export}/digest are retired; the \texttt{.wl}
+KEEPS its native HF \texttt{Integrate}, Hessian \texttt{D}, and structure
+\texttt{Det}/\texttt{MatrixRank}, re-targeted to its own values, citing the profiles
+and \(M/K\) as native literals (not \texttt{DSolveValue}, not re-\texttt{Integrate})
+and building its own \(H_{\mathrm{legacy}}\), HF routes, and raw-tree anti-\(x\!-\!x\)
+comparison, with an arity self-check. Agreement is transcript-level (the \texttt{.wl}
+\(\tanh(\beta L_0/2)\) form equals the \texttt{.py} \((\cosh L_0\beta-1)/\sinh
+L_0\beta\) via the half-angle identity). The 3-way cut is clean: no Stage-013
+\(\int dw\) projection, no Stage-014 generalized eig. SymPy 95 PASS /
+Mathematica 102 PASS, exit 0, CWD-independent. The directive design-review used the
+Codex\(\to\)Grok\(\to\)Codex bookend (two BLOCKING folds: the det-blind off-diagonal
+sign hole \(M_{aL}\to-M_{aL}\), added explicit sign checks; and the float-free
+positivity-certificate requirement --- \(M_{aa}>0\) is not dischargeable by
+\texttt{is\_positive}, so exact-identity certificates replace the vacuous
+form-equality). Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (an
+independent read hand-verified all seven certificate identities and every value)
+and \texttt{ADVERSARIAL\_ISSUES} --- the three central burdens proven genuine by
+live copy-mutations, but \emph{one} able-to-fail tooth (the HF profile-guard leg)
+was a vacuous \(x\!-\!x\) self-compare in both engines. Remediated to read the real
+wrong-profile forces (with three lower-severity literal/scaffolding flags
+made-genuine or honestly de-counted); a fresh-agent re-verify confirmed
+\texttt{REVERIFY\_CLEAN} via the coupling meta-test (each remediated construct fires
+under a mutation of its named object). Eight able-to-fail teeth, mutations on
+copies.

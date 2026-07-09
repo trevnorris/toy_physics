@@ -3,12 +3,12 @@
 This document is the stage-coverage control sheet for the rebuilt PDE ledger.
 
 ```yaml
-canonical_stage_count: 17
-verified_stage_count: 17
-sympy_audit_count: 17
-mathematica_audit_count: 17
+canonical_stage_count: 18
+verified_stage_count: 18
+sympy_audit_count: 18
+mathematica_audit_count: 18
 numerical_stress_count: 0
-reviewed_stage_count: 17
+reviewed_stage_count: 18
 ```
 
 ## Coverage By Part
@@ -16,14 +16,14 @@ reviewed_stage_count: 17
 | Part | Stage Range | Total | SymPy | Mathematica | Numerical | Review |
 |---|---|---:|---:|---:|---:|---:|
 | I | 004-007 | 4 | 4 | 4 | 0 | 4 |
-| II | 001-002, 008-016 | 11 | 11 | 11 | 0 | 11 |
+| II | 001-002, 008-018 | 13 | 13 | 13 | 0 | 13 |
 | III | 003 | 1 | 1 | 1 | 0 | 1 |
 
 ## Coverage Classes
 
 | Coverage class | Count | Stage ranges |
 |---|---:|---|
-| SymPy + Mathematica | 16 | 001-016 |
+| SymPy + Mathematica | 18 | 001-018 |
 | SymPy only | 0 | none |
 | Mathematica only | 0 | none |
 | No executable audit | 0 | none |

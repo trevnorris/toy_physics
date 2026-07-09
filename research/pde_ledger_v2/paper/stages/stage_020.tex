@@ -1,0 +1,148 @@
+\section{Stage 020: The \texorpdfstring{\(54/5=2\cdot27/5\)}{54/5=2*27/5} Provenance Partition and the CALIBRATED Verdict Label (Check II-G4c)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative sector; the THIRD leg of a four-way split of pathA\_33 --- the \(54/5=2\cdot27/5\) provenance-partition + the CALIBRATED-verdict-label component of the joint \texttt{QUAD\_CALIBRATED}, with the DtN Hankel fingerprint = Stage~018 (done), the squared-denominator prefactor algebra = Stage~019 (done), and the \(\hat\mu_0\)-free dimensional closure = Stage~021 (the completing leg))}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Land the CALIBRATED headline. Show the assembled \(\ell=2\) quadrupole magnitude \(54Gc_s^5/(5a^5c^5)\) decomposes as \(54/5=2\cdot27/5\), with the \(27\) earned (\texttt{derived\_in\_gate}, Stage-018's fingerprint \(1/v_5^z\)) and the \(2/5+G\) calibrated (\texttt{external\_bridge\_input}, the GR Burke--Thorne \(2G/5c^5\), \(G=\)\texttt{GENUINE\_BLOCKED}); a four-way provenance partition classifies the assembled \(54/5\) as \texttt{external\_bridge\_input} (external dominates), so the source-faithful verdict lands \texttt{QUAD\_CALIBRATED} (not \texttt{QUAD\_PASS}) --- driven by provenance, not by \(G\to\lambda G\) invariance.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage020_provenance_partition_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage020_provenance_partition_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- units-bearing but exact symbolic/rational for the earned content:
+the \(a^{-5}\) scaling (exact \(a\)-power via Stage-018's frozen slot), the \(\Gamma_5/\chi_Q\)
+equivalence (\(\texttt{compact}(\ldots)=0\) residuals), the \(54/5=2\cdot27/5\) SymPy rational
+identity (bound to \texttt{target\_rhs}/\texttt{v5\_slot}), and the four-way provenance partition
+(exact class comparison via tag dominance); \texttt{expect\_zero}/\texttt{expect\_bool}/
+\texttt{expect\_fail} residuals, no floats/tolerances in the earned content. The verdict is the
+joint \texttt{QUAD\_CALIBRATED}; this stage carries its \emph{provenance-partition + CALIBRATED-label}
+component (3/4) and lands the joint as \textbf{partial} (018/019 done, 020 earned here; 021 the
+completing leg) --- and it is the leg where the CALIBRATED \emph{classification} is determined. It
+adds \textbf{zero} new counted knobs (a classification slice, like Stages~018/019).
+
+\paragraph{The assembled magnitude and the \texorpdfstring{\(\Gamma_5/\chi_Q\)}{Gamma5/chiQ} equivalence.}
+The \(\ell=2\) quadrupole normalization the gravity sector must match is the Burke--Thorne form
+\[
+  \hat m_0^2 P_0 = \frac{54\,G\,c_s^5}{5\,a^5\,c^5}
+  \quad\Longleftrightarrow\quad
+  \gamma_{\mathrm{quad}}^{\mathrm{eff}} = \frac{2G}{5c^5}.
+\]
+The equivalence is a self-contained algebraic bridge. With \(P_0^{\mathrm{phys}}=(c_s/a)^2(N_0/D_0)\)
+(Stage-019's prefactor) and Stage-018's outgoing \(\chi_Q=+1\), the forward residual
+\[
+  \mathrm{forward}
+  = \frac{54Gc_s^5}{5a^5c^5}\cdot\chi_Q\cdot\frac{a^5}{27c_s^5} - \frac{2G}{5c^5}
+  = \frac{2G(\chi_Q-1)}{5c^5}
+\]
+vanishes \emph{iff} \(\chi_Q=1\) and \(54/27=2\) (the \(27\) is Stage-018's radiative slot
+\(1/v_5^z\)). So the outgoing sign Stage~018 derived is exactly the sign a positive quadrupole
+demands; a wrong \(2/5\to3/5\) breaks the bridge (\texttt{3e}\(\to\)\texttt{FAIL\_EQUIVALENCE}).
+
+\paragraph{The \texorpdfstring{\(54/5=2\cdot27/5\)}{54/5=2*27/5} decomposition (the headline --- a bound SymPy identity).}
+The assembled coefficient factors as
+\[
+  \frac{54}{5} = 2\cdot\frac{27}{5},
+\]
+with the \(27=\)\texttt{derived\_in\_gate} (Stage-018's fingerprint \(1/v_5^z\)) and the \(2/5+G=\)
+\texttt{external\_bridge\_input} (the GR Burke--Thorne \(2G/5c^5\)). This is a SymPy-verified
+rational identity \emph{bound to the stage's own assembled expressions} --- not the source's typed
+string \texttt{"54/5 = 2*27/5"}, and not a bare-literal \(\mathrm{Rational}(54,5)-2\cdot\mathrm{Integer}(27)/5\)
+arithmetic tautology. The magnitudes are extracted:
+\(\mathrm{mag}=\texttt{compact}(\texttt{target\_rhs}/(Gc_s^5/(a^5c^5)))=54/5\) and
+\(27_{\mathrm{slot}}=\texttt{compact}(a^5/(c_s^5\cdot\texttt{v5\_slot}))=27\) (from Stage-018's frozen
+slot \(\texttt{v5\_slot}=a^5/27c_s^5\)), then \(\texttt{compact}(\mathrm{mag}-2\cdot27_{\mathrm{slot}}/5)=0\).
+Mutating \texttt{target\_rhs} (\(54\to55\)) or the identity (\(2\cdot26/5\)) fires the assert.
+
+\paragraph{The \texorpdfstring{\(a^{-5}\)}{a^-5} target scaling.}
+The assembled magnitude carries \(a^{-5}\) as a \emph{derived} consequence of \(a\)-cancellation,
+not a typed target power: the Burke--Thorne coefficient \(2G/5c^5\) is \(a\)-free, and Stage-018's
+radiative slot \(\texttt{v5\_slot}=a^5/27c_s^5\) supplies the \(a^5\), so
+\(\mathrm{derived\_power}=a\text{-power}(\gamma_{\mathrm{target}})-a\text{-power}(\texttt{v5\_slot})=0-5=-5\),
+and the reconstructed \(\gamma_{\mathrm{target}}/(\chi\cdot\texttt{v5\_slot})=\texttt{target\_rhs}\)
+(a-power \(-5\)). The \(a^5\) is typed \emph{once}; the wrong-scaling probe (\(a^5\to a^4\)) fires at
+the assembled residual (\texttt{3c}\(\to\)\texttt{FAIL\_SCALING}). The actual branch \(a\)-scaling
+(from \(N_0/D_0\)) is deferred Gate-6.
+
+\paragraph{The four-way provenance partition and the PROVENANCE-driven verdict.}
+Every quantity is classified from its provenance \emph{tags} by a tag-dominance rule
+\(\texttt{deferred}>\texttt{external}>\texttt{derived}>\texttt{convention}\):
+\(\texttt{fingerprint\_27}\to\texttt{derived\_in\_gate}\),
+\(\texttt{PN\_2\_over\_5}\to\texttt{external\_bridge\_input}\),
+\(G\to\texttt{external\_bridge\_input}\), and the assembled \(54/5\) (mixing the earned \(27\) tag with
+the external \(2/5\) tag) \(\to\texttt{external\_bridge\_input}\) because \emph{external dominates}. The
+020-local verdict then reads the classes with the source-faithful rule
+\[
+  \texttt{if } g\_\mathrm{class}=\texttt{derived}\ \wedge\ \mathrm{mag}\_\mathrm{class}=\texttt{derived}:\ \texttt{QUAD\_PASS};
+  \quad\texttt{else}:\ \texttt{QUAD\_CALIBRATED},
+\]
+so with \(G\) and the assembled \(54/5\) both external, the verdict lands \texttt{QUAD\_CALIBRATED}:
+the PDE delivers the form/branch (the \(27\)), not Newton's \(G\) (\(G=\)\texttt{GENUINE\_BLOCKED}). The
+classifier's dominance rule is proven by a truth-table + key-class + tag-mutation tooth (the source
+\(\texttt{partition\_ok}\) alone is trivially true), and the verdict is proven to \emph{read} provenance
+by a \texttt{QUAD\_PASS} positive control (a coherent all-derived partition) \emph{and} a required mixed
+control (one external, one derived \(\to\) \texttt{QUAD\_CALIBRATED}, the case an inverted rule would
+mislabel).
+
+\paragraph{The verdict is provenance-driven, not \texorpdfstring{\(G\to\lambda G\)}{G->lambda G}-invariance-driven.}
+A separate, non-verdict-driving diagnostic makes the point sharp: \(54/5\) is a pure number, hence
+\(G\)-invariant (\(G\to\lambda_G G\) leaves it unchanged), yet it is \texttt{external\_bridge\_input} by
+provenance. An invariance-only test would \emph{mislabel} the calibrated \(54/5\) as earned
+(\(\texttt{invariance\_only\_trap\_catches\_54\_over\_5}=\texttt{True}\)); the classification is set by
+the provenance tags, and \texttt{3f\_partition\_mislabel} fires \texttt{FAIL\_PROVENANCE\_PARTITION} in
+both directions (\(G\) external\(\to\)derived and \(27\) derived\(\to\)external).
+
+\paragraph{Units-bearing scope (no dimensional-homogeneity gate).}
+Unlike Stage~019 (units-free), Stage~020 is units-bearing --- \(\{c_s,a,c,G\}\) live in the
+scaling/equivalence algebra --- but it does algebra + provenance, \emph{not} the dimensional
+homogeneity gate \([P_0^{\mathrm{phys}}]=1\) (that is Stage-021's). The cut is by operation, enforced by
+a runtime free-symbol allowlist (no \(\hat\mu_0\) symbol; the source's legacy \texttt{gamma\_quad\_eff}
+\(\hat\mu_0\) string is dropped), and a structural no-dimensional-dependency cut (no \texttt{dim\_of} construct; a structural
+assertion that the 020-local verdict's signature/bytecode carries no dim parameter/dependency ---
+the \texttt{.wl} checks its definition arity/text).
+
+\paragraph{Honest scope.}
+Earned classification / calibrated magnitude: 020 earns the \(a^{-5}\) scaling, the \(\Gamma_5/\chi_Q\)
+equivalence, the \(54/5=2\cdot27/5\) decomposition, and the four-way provenance partition; the \(54/5\)
+magnitude and \(G\) are calibrated (\(G=\)\texttt{GENUINE\_BLOCKED}). The \(c^5\) is the GR/\(\lambda_\gamma\)
+units bridge (\(P_0\propto c_s^5/c^5=1/\lambda_\gamma^5\)) --- \(c\) is the light cone \(c_\gamma\) in its
+GR-bridge role, a benchmark carrier, not EM propagation and not a fresh knob. The actual branch
+\(a\)-scaling and the numerical \((D_n,N_n)\) port scalars remain deferred Gate-6. The dimensional closure
+\([P_0^{\mathrm{phys}}]=1\) is Stage-021's.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance, no dual-site:} Stage-018's \(\chi_Q=+1\) and \(27\) (\(=1/v_5^z\)) genuinely enter 020's
+self-contained equivalence bridge (a corrupt cited value breaks \texttt{forward} --- the equivalence tooth
+itself, not a manufactured cross-stage guard); Stage-019's \(P_0=N_0/D_0\) appears only in the \(\Gamma_5\)
+definition, absent from the equivalence \texttt{ok} residual (a \(\{N_0,D_0\}\subseteq\Gamma_5\wedge\notin\)residual
+firewall guards this); Stage-017's D-lanes are the provenance of the abstract port scalars. Register:
+\textbf{zero} new counted knobs; structural edge \textbf{R39} (the \(54/5=2\cdot27/5\) provenance-partition
++ the CALIBRATED-verdict provenance; discharges nothing --- a classification landing, not a reduction).
+\(G=\)\texttt{GENUINE\_BLOCKED}/external (already registered); \(c\) = the \(c_\gamma\) GR-units-bridge (cited
+benchmark); the \(2/5\) = GR bridge; the \(27\) = Stage-018's derived fingerprint. Part-II counted CALIB set
+unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML handoff is
+severed. Unlike Stages~018/019 (which kept the \texttt{.wl}'s already-native blocks), the source \texttt{.wl}
+had \emph{zero} 020 content, so the 020 \texttt{.wl} is a genuinely fresh independent authoring: native
+\texttt{Exponent}/\texttt{Together}/\texttt{Cancel}/\texttt{FullSimplify} for the scaling + the \(\Gamma_5\)
+bridge, native \texttt{Rational}/\texttt{Simplify} for the identity bound to its own \texttt{targetRHS}/
+\texttt{v5Slot}, a native \texttt{Association}-based provenance classifier using a rank-based \texttt{MaximalBy}
+(a genuinely different mechanism from the \texttt{.py} if-chain, same dominance), and \(\texttt{expr}/.\,G\to\lambda_G G\)
+for the g-invariance trap --- no \texttt{Series}, no \texttt{.py} mirroring --- agreeing at the transcript level
+(the \(a^{-5}\), \(\texttt{forward}=0\), the bound \(54/5=2\cdot27/5\), the provenance classes, the CALIBRATED
+verdict with the \texttt{QUAD\_PASS} and mixed controls, both \texttt{3f} directions), with an arity +
+unevaluated-leakage self-check. SymPy 74 PASS / Mathematica 82 PASS, exit 0, CWD-independent. The directive
+design-review used the Codex\(\to\)Grok\(\to\)Codex bookend: Codex folded four blocking genuineness gaps; Grok's
+compute-verify then caught the CALIBRATED verdict-rule \emph{inversion} (the source default is
+\texttt{else}\(\to\)\texttt{QUAD\_CALIBRATED}; the directive had inverted it to \texttt{PASS} unless both
+external --- a shippable rig, fixed by a required mixed control) plus a bare-literal-identity nit; a Codex
+confirm then swept two consistency gaps, all folded to \texttt{DIRECTIVE\_CLEAN}. Full tri-review on fresh
+agents: \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived the \(\Gamma_5\) bridge, the bound
+identity, the classify-provenance dominance, and the g-invariance trap) and \texttt{ADVERSARIAL\_ISSUES}
+(per-tooth ablation: the four key genuineness risks --- the bound identity, the mixed control catching the
+inverted rule, the proven classifier, the genuinely-authored \texttt{.wl} --- all clean; three low-severity
+vacuous/subsumed teeth flagged, all remediated make-genuine with no de-counts --- the structural dimensional
+cut, the \(\{N_0,D_0\}\subseteq\Gamma_5\) before/after firewall, the independently-classified baseline-external
+side --- re-verified \texttt{REVERIFY\_CLEAN} by the coupling meta-test). Symbolic per-tooth ablation, mutations
+on copies.

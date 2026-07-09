@@ -388,17 +388,55 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   live-symbol leak; no regression). Tallies 19/25 → 18/24 (net −1 per engine from the honest tooth-11 de-count). Registration at count 19,
   PDF rebuilt (53pp). ⚠ **Lesson banked:** don't hand Codex a grep-based acceptance it can dodge by string-concatenating a literal (the
   pathA_41 anti-pattern resurfaced — caught by BOTH fresh agents; the genuine units-free enforcement is the runtime free-symbol guard).
-- **▶ NEXT = Cluster A `ledger_stage020`** (II-G4c, pathA_33 `QUAD_CALIBRATED` 3/4 — the `54/5=2·27/5` provenance partition + **the CALIBRATED
-  verdict label**; the leg that LANDS the CALIBRATED headline): `54/5=2·27/5` where the `27` is `derived_in_gate` (018's `v₅ᶻ=1/27`, cited) and
-  the `2·G/5` is labeled `external_bridge_input` (`G=GENUINE_BLOCKED`); the earned-vs-calibrated PROVENANCE partition drives the verdict (NOT
-  `G→λG` invariance alone — the invariance-only trap). Source: `pathA_33_quadrupole_normalization_sympy.py` (the 020 slice = `a_power`/
-  `build_scaling` L276–294 + `build_equivalence` L510–535 + the provenance machinery L538–663 incl. `build_partition` L601–628 with the STRING
-  `decomposition_54_over_5` L622–627 + the g-invariance diagnostic; probes `3c` L813–818, `3e` L837–841, `3f` L846–865) + report :29–30, :36,
-  :39–40. ⭐ **pathA_33 trip-ups 020 OWNS:** the `54/5=2·27/5` STRING label (`.py` L622–627) must be made a SymPy-VERIFIED identity (COMPUTED, not
-  a typed string — sub-agent §8 flagged the source's is a typed string); the `27` stays COMPUTED (018's, cited); `2·G/5` asserted ONLY as
-  labeled `external_bridge_input`; the `3c` typed-target a⁻⁵ scaling is a WEAK bookkeeping tooth to STRENGTHEN. ⭐ Author a running-start source
-  map FIRST (per the calibrated pipeline); the stage018/019 source maps + directives are the pathA_33 4-way-split exemplars (019 = SECOND leg /
-  PARTIAL landing + provenance-only consumption).
+- **✅ II-G4c `ledger_stage020` DONE (2026-07-09) — pathA_33 `QUAD_CALIBRATED` 3/4 (the `54/5=2·27/5` provenance partition + the CALIBRATED
+  verdict label; the THIRD leg — the one that LANDS the CALIBRATED headline).** UNITS-BEARING but exact symbolic/rational for the earned content
+  (a reversal from 019's units-free slice: `{c_s,a,c,G}` live in the ALGEBRA, but 020 does ALGEBRA+PROVENANCE, NOT the dimensional-homogeneity gate
+  `[P₀^phys]=1` which is 021's — the 020/021 cut is by OPERATION). EARNED: the assembled ℓ=2 magnitude `54Gc_s⁵/(5a⁵c⁵)` decomposes as `54/5=2·27/5`
+  — a **SymPy-VERIFIED rational identity BOUND to `target_rhs`/`v5_slot`** (`mag=target_rhs/(G·c_s⁵/(a⁵·c⁵))→54/5`, `27_from_slot=a⁵/(c_s⁵·v5_slot)→27`,
+  `compact(mag−2·27_from_slot/5)==0`), ⭐ NOT the source's typed STRING (`.py` L622–627) NOR a bare-literal `Rational(54,5)−2·27/5` tautology (a
+  Grok/Codex genuineness catch); the `27` is `derived_in_gate` (018's `1/v₅ᶻ`, cited NOT re-derived), the `2/5`+`G` are `external_bridge_input` (GR
+  Burke–Thorne `2G/5c⁵`, `G=GENUINE_BLOCKED`); the a⁻⁵ scaling DERIVED via a-cancellation from 018's frozen `v5_slot` (`a⁵` typed once,
+  `derived_power=a_power(gamma_target)−a_power(v5_slot)=0−5`); the Γ5/χ_Q equivalence `54Gc_s⁵/5a⁵c⁵ ⟺ 2G/5c⁵` closes iff χ=1 ∧ 54/27=2
+  (`forward=2G(χ−1)/5c⁵`). The 4-way PROVENANCE partition (`classify_provenance` tag-dominance `deferred>external>derived>convention`) classifies
+  the assembled `54/5` as `external_bridge_input` (external DOMINATES the mixed tags), so the source-faithful verdict (`both derived→QUAD_PASS;
+  else→QUAD_CALIBRATED`) lands **`QUAD_CALIBRATED` not `QUAD_PASS`**. ⭐ **The verdict is PROVENANCE-driven, NOT `G→λG`-invariance-driven** — a
+  SEPARATE g-invariance diagnostic exposes the invariance-only TRAP (`54/5` is G-invariant yet calibrated → an invariance-only test would MISLABEL
+  it as earned). ⭐ **Register: ZERO new counted knobs** (`G=GENUINE_BLOCKED` already registered; `c`=the `c_γ` GR-units-bridge cited benchmark
+  `P₀∝c_s⁵/c⁵=1/λγ⁵`; `2/5`=GR bridge; `27`=018's derived); new structural edge **R39**; Part-II CALIB set UNCHANGED = 6; Codex `REGISTER_CLEAN`
+  (1 wording fold: the `dimensional_ok`-independence ablation was remediated to a structural signature/bytecode cut). ⭐⭐ **Directive review =
+  Codex→Grok→Codex bookend:** Codex `DIRECTIVE_ISSUES` (4 BLOCKING genuineness gaps — the strengthened-3c duplicated-literal, the trivially-true
+  `partition_ok`, the missing verdict positive control, the unsound no-μ̂₀ mechanism incl. the false "ZERO μ̂₀ refs" claim vs source L525's
+  `gamma_quad_eff` string — + 3 nits) → folded → Codex confirm `DIRECTIVE_CLEAN`; **Grok-4.5 compute-verify CAUGHT the CALIBRATED verdict-rule
+  INVERSION** (the source default is `else→QUAD_CALIBRATED`; the directive had inverted it to `PASS-unless-both-external` — a shippable rig since both
+  endpoint tests still pass) + a bare-literal-identity nit → folded (added a REQUIRED MIXED control one-external→CALIBRATED) → Codex confirm caught 2
+  consistency-sweep gaps (stale bare-literal forms + the mixed control unpropagated) → swept → final Codex confirm `DIRECTIVE_CLEAN`. The `.wl` is a
+  **GENUINELY AUTHORED** independent route (the source `.wl` had ZERO 020 content — native `Exponent`/`Together`/`Cancel`/`FullSimplify` +
+  `Rational`/`Simplify` + a rank-based `MaximalBy` `Association` classifier + `/. G->lambdaG G`, NOT a `.py` mirror, NO `Series`). Consumes 018's
+  χ_Q=+1/`27` (enter the self-contained equivalence bridge) + 019's `P0=N0/D0` (`Gamma5`-definitional-only) + 017's D-lanes as PROVENANCE (no
+  dual-site). Dual-engine SymPy 74 / Mathematica 82, CWD-independent. Tri-review: `FIDELITY_CLEAN` (independent re-derivation of the Γ5 bridge, the
+  bound `54/5=2·27/5`, the classify_provenance dominance, the g-invariance trap; confirmed the `.wl`'s genuinely-different rank-based classifier) +
+  `ADVERSARIAL_ISSUES` (~65 `.py` mutations + 7 native `.wl` mutants; the 4 key genuineness risks — bound identity, MIXED-control-catches-inverted-rule,
+  proven classifier, genuine `.wl` — all CLEAN; **3 LOW-severity vacuous/subsumed teeth** [a near-tautological `dimensional_ok`-independence `f(x)==f(x)`
+  in both engines; a subsumed `P0=N0/D0`-disjoint firewall; a subsumed tag-mutation `≠EXTERNAL` weaker than its `==DERIVED` sibling]) → Codex
+  remediated all 3 make-genuine, **no de-counts** (the structural signature/bytecode dim-cut; the `{N0,D0}⊆Gamma5 ∧ ∉residual` before/after
+  run-before-form; the independently-classified baseline-external "from" side) → fresh-agent `REVERIFY_CLEAN` (coupling meta-test: each fires at its
+  own named assert + goes vacuous when neutered, both engines, no regression). Registration at count 20, PDF rebuilt (56pp). ⚠ Also fixed a
+  coverage/manifest YAML lag (the count fields had stalled at 18 while the tables read 19; brought to 20). ⚠ **Lesson banked:** Grok's compute-verify
+  catches a *rule inversion* that a reasoning-only review + a self-report can miss — a verdict whose two endpoint tests both pass under an inverted
+  default is a shippable rig; pin the default with a MIXED control (the middle case). Committed (see git log).
+- **▶ NEXT = Cluster A `ledger_stage021`** (II-G4d, pathA_33 `QUAD_CALIBRATED` 4/4 — the μ̂₀-free `[P₀^phys]=1` dimensional closure; the COMPLETING
+  leg of the 4-way split, lands the joint `QUAD_CALIBRATED` COMPLETE): the μ̂₀-FREE dimensional gate `[P₀^phys]=(c_s/a)²·(N₀/D₀)` must be
+  dimensionless from sourced `[N₀]=L⁻¹M`, `[D₀]=L⁻¹T⁻²M` (the natural-units-trap catch — the handoff's `P₀=N₀/D₀` silently drops a `(c_s/a)²`) +
+  the drop-normalization (`3d`) and corrupt-`[N₀]` (`3d′`) probes; the μ̂₀ diagnostic stays NON-gate by design (a free carrier, `participates_in_verdict=False`).
+  Source: `pathA_33_quadrupole_normalization_sympy.py` (the 021 slice = the dim engine `DimError`/`dim_*` L297–376 + `SOURCED_N0_DIM`/`SOURCED_D0_DIM`
+  L379–380 + `build_dimensions` L387–507 [`P0_raw=N0/D0` L399, `P0_physical=(c_s/a)²·(N0/D0)` L401, the μ̂₀-free `[P0_phys]` gate + the μ̂₀ diagnostic +
+  drop-norm/corrupt-N0 mutations] + probes `3d` L820–826, `3d′` L828–836) + `.wl` dimensional block L101–174 (KEEP the native route this time — unlike
+  020, the source `.wl` HAS the 021 content) + report :22–25. ⭐ **pathA_33 trip-ups 021 OWNS (the v1 REJECTION locus):** the dim gate must be μ̂₀-FREE
+  and NOT back-solve the free carrier `μ̂₀` to force homogeneity (the v1 tautology); the per-probe `self_ablation` must be a real two-verdict re-run
+  (NOT a constant); the corrupt-`[N₀]` probe `3d′` must fire `FAIL_DIMENSIONAL` while `[G]` does NOT (the natural-units-trap discriminator). ⭐ Author a
+  running-start source map FIRST; the stage018/019/020 source maps + directives are the pathA_33 4-way-split exemplars (020 = THIRD leg / CALIBRATED
+  landing + units-bearing + GENUINELY-AUTHORED-`.wl`; 021 KEEPS the native `.wl` dim block). ⭐ **021 COMPLETES the joint `QUAD_CALIBRATED`** (018∧019∧020∧021)
+  → then Cluster A continues with 022/023 (pathA_34 cross-ℓ).
 
 ## Per-stage process (unchanged, calibrated)
 

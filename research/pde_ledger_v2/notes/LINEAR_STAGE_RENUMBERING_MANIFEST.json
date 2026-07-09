@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-08",
-  "canonical_stage_count": 15,
+  "updated": "2026-07-09",
+  "canonical_stage_count": 16,
   "policy": [
     {
       "build_order_stage": "001",
@@ -121,6 +121,14 @@
       "slug": "breathing_structure_hf_force",
       "final_number": "deferred",
       "note": "build-order id (II-G2c; reshape of the legacy-Hessian structure-recovery + Hellmann-Feynman-force slice of pathA_31_scalar_breathing_{sympy.py,.wl}; SYMBOLIC/float-free (the inverse of numeric stage 014); legacy E_geom Hessian structure recovery -- cited 013 M_AB/K_AB match H_legacy's structural signature (M pos-def by exact-identity Sylvester certificates, K symmetric, K_aL<0, rank+zero-pattern) -> the (a,L) closure RECOVERED not re-postulated; the Hellmann-Feynman force F_A^(HF) (the RHS 013 deferred) by TWO genuinely-different routes -- distributed projection vs Hellmann-Feynman parametric derivative -- that agree with unsimplified_routes_identical=False (the anti-x-x, the pathA_31 v1 rig's other locus); static-dynamic limit; COMPLETES the joint BREATHING_CALIBRATED (component 3/3); adds ONE new counted CALIB knob (the breathing driving-force scale Vp0/ell_c, with Vp0 + now-live ell_c manifestations, rho* consumed -> the SECOND calibration-adding Part-II stage after 013); legacy {kappa,chi,sigmaA,sigmaL} = pattern basis (not counted afresh); edges R32 (structure recovery) + R33 (confinement-drive reduction debt, sibling of R30); M/K projection = stage 013, truncation = stage 014; final Part-ordered linear renumber deferred to the pre-swap pass)"
+    },
+    {
+      "build_order_stage": "016",
+      "part": "II",
+      "source_gate": "pathA_32 (II-G3a)",
+      "slug": "l2_so3_covariance",
+      "final_number": "deferred",
+      "note": "build-order id (II-G3a; reshape of the l=2 SO(3) covariance-theorem slice of pathA_32_grouped_p2_isotropy_{sympy.py,.wl}; the EARNED-FIRST leg of a 2-way split; SYMBOLIC/float-free; the five real l=2 harmonics form one orthonormal SO(3)-irrep (Gram=I5) with a single COMPUTED -Delta_S2 eigenvalue lambda_m=l(l+1)=6 for every m (genuine Laplace-Beltrami + Rayleigh quotient + eigenfunction residual, NOT typed), and the K2 ANGULAR stiffness K2=Ktilde+lambda_m*TomegaTilde uses that computed eigenvalue (the forced_eigenvalue_probe rejects a typed coefficient -> FAIL_NOT_COVARIANT); carries the SO(3) covariance-theorem component 1/2 of the joint ISOTROPY_CALIBRATED, landed as PARTIAL (016 EARNED, 017 PENDING); adds ZERO new counted knobs (a structural covariance edge R34, like 011/012/014); the new symbols T_Omega/TomegaTilde (angular-stiffness density) + beta2(w) (frozen l=2 radial profile) first-appear here but their counting is DEFERRED to stage 017's calibration partition; consumption is PROVENANCE + self-contained dimensional integrity (pathA_32's volume-density/dimensionless-beta2 convention differs from stage 013's line-density/beta=L^-1, so K_eta=T_w*beta^2 does NOT transfer -- a Grok compute-catch), NOT a cross-stage dual-site relation; the source's vacuous k_coeff_equal lambda-lambda=0 self-compare is DE-COUNTED (K2-coefficient computed-ness rides on a residual-on-the-assembled-K2-coefficient + live build_K2(lambdas) + the bare forced probe); c_S NOT consumed; the pathA_32 trip-ups absent (eigenvalues computed via residual + tautology_hash probe; aggregate battery intact neuter-one-flips; sourced-T_Omega dim-mutation fires FAIL_DIMENSIONAL); grouped-P2 lane isotropy + calibration partition + l=2 port-kernel export = stage 017; final Part-ordered linear renumber deferred to the pre-swap pass)"
     }
   ],
   "excluded_em_projected_material": [],

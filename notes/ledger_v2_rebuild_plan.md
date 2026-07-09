@@ -149,6 +149,9 @@
 
 ## 0. TL;DR — where we are and what's next
 
+- **⭐ LIVE STATE (2026-07-09): Phase A ✅ · Phase B ▶ — Part I (medium) COMPLETE (004–007); Part II (gravity) BUILD IN PROGRESS at
+  registration count 16 (008–016 built + tri-review CLEAN + committed); ▶ NEXT = `ledger_stage017` (pathA_32 grouped-P2 lane isotropy,
+  the 2/2 completing leg).** Canonical per-stage detail = `STATUS.md` ▶ RESUME HERE; the phase narrative + evidence below is unchanged.
 - **All 4 force-sectors EARNED + the consistency knit DONE** (cone-lock `pathA_40`, NG5 `pathA_41`, charge-coupled scalar `pathA_42`).
   The four sectors live in `software/stage1_solver/` as `pathA_*` gates; the gravity ladder is `pathA_21c/28/29/30–34` + the separate PN
   corpus `research/4d_*pn*`.

@@ -283,13 +283,35 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   `{κ,χ,σ_a,σ_L}` = pattern basis (NOT counted afresh, edge R32); edges R32 (structure recovery) + R33 (confinement-drive
   reduction debt, sibling of R30). Codex `REGISTER_CLEAN` (1 nit — stale scope line — fixed). Registration at count 15, PDF
   rebuilt (45pp). ⭐ **pathA_31 fold COMPLETE (stages 013+014+015).**
-- **▶ NEXT = Cluster A `ledger_stage016`** (II-G3a, pathA_32 `ISOTROPY_CALIBRATED` 1/2 — the EARNED slice): the ℓ=2 SO(3)
-  covariance theorem — real ℓ=2 harmonics, angular Gram = I₅, computed `−Δ_S²` eigenvalues `λ_m=6`, the `K₂` angular
-  stiffness. Then 017 (II-G3b) = grouped-P2 lane isotropy (`ISOTROPY_CALIBRATED` 2/2). Per-gate trip-up to pin (from the
-  split's rig-history table): keep the aggregate probe battery intact (neuter-one → aggregate flips); eigenvalues COMPUTED
-  (the `tautology_hash` probe); a dim-mutation on the sourced `T_Ω` must fire `FAIL_DIMENSIONAL`. Consumes 011/012's frozen
-  packet + D/N provenance as calibration input. ⭐ A running-start source map should be authored first (per the calibrated
-  per-stage pipeline).
+- **✅ II-G3a `ledger_stage016` DONE (2026-07-09) — pathA_32 `ISOTROPY_CALIBRATED` 1/2 (the ℓ=2 SO(3) covariance theorem; the
+  EARNED-FIRST leg of the 2-way split).** SYMBOLIC/float-free. EARNED: the five real ℓ=2 harmonics form one orthonormal
+  SO(3)-irrep (`Gram=I₅` by genuine S² integrals) with a single COMPUTED `−Δ_S²` eigenvalue `λ_m=ℓ(ℓ+1)=6` for every m
+  (Laplace–Beltrami + Rayleigh + eigenfunction residual, NOT typed), and the K₂ ANGULAR stiffness `K₂=K̃+λ_m·T̃_Ω` uses that
+  computed eigenvalue (the `forced_eigenvalue_probe` rejects a typed coefficient → `FAIL_NOT_COVARIANT`). Lands the joint
+  `ISOTROPY_CALIBRATED` as a PARTIAL component (016 EARNED, 017 PENDING). ⭐ Register: **ZERO new counted knobs** (structural
+  covariance edge R34, like 011/012/014); `T_Ω`/`T̃_Ω` + `β₂(w)` first-appear here but their counting is DEFERRED to 017's
+  calibration partition; Part-II CALIB set unchanged = 4; Codex `REGISTER_CLEAN`. ⚠ The source's vacuous `k_coeff_equal`
+  `λ−λ≡0` self-compare DE-COUNTED (K₂-coefficient computed-ness on a residual-on-the-assembled-K₂-coefficient + live
+  `build_K2(lambdas)` + the bare forced probe). ⭐⭐ Directive review = Codex→Grok→Codex bookend: Codex 2 BLOCKING → folded;
+  **Grok-4.5 compute-verify caught 1 BLOCKING — the volume-vs-line dimensional-convention mismatch** (pathA_32 = VOLUME
+  densities on `a²dwdΩ` / dimensionless `β₂`; stage013 = LINE dims on `4π∫dw` / `β=L⁻¹`; related by `∫a²dΩ`≈L², NOT equal →
+  the cross-stage dual-site `K_η=T_wβ²` is NON-TRANSFERABLE → reframed to provenance + self-contained dimensional integrity)
+  + 5 nits, all folded → Codex final confirm `DIRECTIVE_CLEAN`. The `.wl` is ALREADY a native independent engine (only the
+  scratch-YAML handoff severed). Dual-engine SymPy 82 / Mathematica 91, CWD-independent; tri-review CLEAN (`FIDELITY_CLEAN` +
+  `ADVERSARIAL_CLEAN` per-tooth ablation — all 82 SymPy + 4 native `.wl` ablations fire at their own assert) → 1 low-severity
+  stamped-literal (`participates_in_verdict`) remediated to a computed verdict-propagation check → fresh-agent
+  `REVERIFY_CLEAN`. Registration at count 16, PDF 47pp. ⚠ **Lesson banked:** across a reduction-convention boundary
+  (volume↔line densities, dimensionless↔`L⁻¹` profile), a cross-stage relation or dimension-identity may NOT transfer —
+  cite as PROVENANCE + rely on self-contained dimensional integrity, not a theatrical cross-stage dual-site.
+- **▶ NEXT = Cluster A `ledger_stage017`** (II-G3b, pathA_32 `ISOTROPY_CALIBRATED` 2/2 — the grouped-P2 lane isotropy;
+  COMPLETES the joint): grouped {20,21,22} lanes, **raw-D defects=0 PRIMARY**, normalized u-defects cross-check, the
+  **calibration partition** (resolves the DEFERRED `T_Ω`/`β₂` counting — the KEY 017 register question: do they become
+  counted CALIB knobs?), and **exports the ℓ=2 port kernel** (`K̃`+angular-`K₂`+support scalars+D-lanes) → 018–021 + 022/023 +
+  024. CONSUMES 016's covariance theorem (Gram=I₅, λ_m=6, the K₂ angular-stiffness form) — cite, don't re-derive. The 017
+  slice of the SAME `pathA_32_grouped_p2_isotropy_{sympy.py,.wl}` = `assemble_channel`/`grouped_lanes`/raw-D/normalized-u/
+  calibration-partition + the 6 response probes {pure_prefactor/sector_selective/m_dependent/degenerate_beta/
+  singular_denominator/static_drop_inertia} (017's own aggregate battery). ⭐ Author a running-start source map FIRST (per the
+  calibrated pipeline).
 
 ## Per-stage process (unchanged, calibrated)
 

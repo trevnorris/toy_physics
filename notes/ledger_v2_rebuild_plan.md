@@ -3,19 +3,15 @@
 > **⭐ READ THIS FIRST after `/compact`.** It is the complete plan + the evidence that led to it. Front door = `STATUS.md` ▶ RESUME
 > HERE (thin pointer to here). Memory = [[project-pde-ledger-fold-in-plan]] (same content, condensed) + [[project-brane-existence-defect-structure]].
 
-> **⭐⭐ CURRENT STATE (2026-07-07) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** The approved build directive is
-> **`notes/ledger_v2_blueprint.md`** — read it alongside this plan (carry-over list §3, reshape spec §5, two-tier verification §6, settled
-> decisions §9). **Progress:** B1 blueprint APPROVED+committed (`26a06378`); B2 machinery skeleton at `research/pde_ledger_v2/` (`c4a209ac`);
-> **B3 pilot COMPLETE (both pilot stages, decision C):** **`ledger_stage001`** (solid-angle & second-moment primitives, `c9c38e48`),
-> **`ledger_stage002`** (matter-stress inter-defect force assembly: EOS/Bernoulli/Madelung → −(1+1/d) tractions → Gauss → `F=−mNQ₁Q₂/4πr²` +
-> 4D `R⁻³` lane → `FORCE_ATTRACTIVE_DERIVED`; consumes stage001's Ω_d/⟨n_i n_j⟩; magnitude CALIBRATED; `97144600`), AND **`ledger_stage003`**
-> (the FAIL-headline pilot: pathA_36 light sector folded into a NEW **Part III** — earned headline = 2 massless transverse photons at
-> `c_γ²=μ_R/ρ_br` (`PASS_TRANSVERSE_UNDISTURBED`, EL-derived from `L_T`); characterized departure = `FAIL_CAUCHY_STRAY_LONGITUDINAL`
-> (Dirac–Bergmann `SECOND_CLASS_PAIR`, one stray longitudinal DOF; Maxwell locus reachable `BY_TUNING` only); **fidelity upgrade** =
-> `C_J=−Jρ_B0` DERIVED via symbolic IBP with a sign-sensitive able-to-fail on `π_θ`, closing pathA_36's asserted-not-derived `FIDELITY_ISSUES`;
-> dual-engine SymPy PASS=84 / Mathematica PASS=86, independent Faddeev–Jackiw route in the `.wl`; `c00323d0`). ALL THREE dual-engine + full
-> tri-review CLEAN (stage003's adversarial leg found 1 nit — transverse headline not EL-derived from `L_T` — remediated → `REVERIFY_CLEAN`).
-> The reshape template is LOCKED and validated on all three shapes: happy-path (001), *consuming* (002), and FAIL-headline / new-Part (003).
+> **⭐⭐ CURRENT STATE (2026-07-09) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** B1 blueprint (`26a06378`,
+> **`notes/ledger_v2_blueprint.md`** — the approved build directive: carry-over §3, reshape spec §5, two-tier verification §6, settled
+> decisions §9) + B2 machinery (`c4a209ac`) + the B3 two-stage pilot are all DONE; the reshape template is LOCKED and validated on all three
+> shapes (happy-path 001 / *consuming* 002 / FAIL-headline+new-Part 003). **▶ BATCHING Part-by-Part:** Part I (the medium) ✅ COMPLETE
+> (`ledger_stage004`–`007`); **Part II (gravity) IN PROGRESS at count 19 — built 001/002 + 008–019 done; ▶ NEXT = `ledger_stage020`**
+> (pathA_33 `QUAD_CALIBRATED` 3/4 — the `54/5=2·27/5` provenance partition + the CALIBRATED verdict label).
+> ⭐ **The LIVE per-stage trackers are `STATUS.md` ▶ RESUME HERE (thin) + `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md`
+> Progress + `research/pde_ledger_v2/notes/parameter_register.md`.** This plan doc is the stable multi-phase plan + the evidence that led to
+> it; its per-stage progress log further below is a HISTORICAL record (it lags — do NOT treat it as the live tracker).
 > **▶ BATCHING Part-by-Part STARTED (2026-07-07).** **Part I (The medium) atomic split FINALIZED + user-approved** (4 stages;
 > `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`): I-1 `ledger_stage004` GNLS action + dimensional foundation (pathA_19,
 > `RETAIN_L_T_M`) → I-2 `ledger_stage005` sound speed + λγ-free (pathA_20, `C_GAMMA_RATIO_UNDERDETERMINED`) → I-3 `ledger_stage006`

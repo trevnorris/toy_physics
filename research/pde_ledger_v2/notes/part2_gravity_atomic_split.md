@@ -360,15 +360,45 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   the two documented caveats are non-defects). Register `REGISTER_CLEAN` (Codex SymPy-re-derived `free=[]`). Registration at count 18, PDF
   rebuilt (51pp). ⚠ Also fixed a coverage-file lag (the by-Part / coverage-class tables were stale at 016; brought to 018). Committed
   `4872e8b7`.
-- **▶ NEXT = Cluster A `ledger_stage019`** (II-G4b, pathA_33 `QUAD_CALIBRATED` 2/4 — the prefactor algebra): `P(ω)=D₀·N(ω)/D^cons(ω)²`,
-  the squared-denominator `P2=(D0·N2−2·D2·N0)/D0²`, `P4`, and the N/D self-check (plain `N/D` gives `−D2·N0` vs the correct `−2·D2·N0` —
-  the squared-denominator object). CONSUMES 017's exported ℓ=2 port kernel (the D-lanes `D0/D2/D4` + the `N_n` moments — this is where the
-  literal `N_n/D_n` consumption 018 deferred actually happens) + 018's fingerprint context. Source:
-  `software/stage1_solver/tools/pathA_33_quadrupole_normalization_{sympy.py,.wl}` (the 019 slice = `build_port_moments` `.py` L190–209 +
-  `build_prefactor` L212–273 + probe `3g` L866–875; `.wl` prefactor block L73–92) + report :15–18. ⭐ pathA_33 trip-ups (020/021 mainly,
-  but 019 owns): probe `3g_wrong_prefactor_object` (plain `N/D` vs `D₀N/D^cons²` — the factor-of-2 → `FAIL_PREFACTOR_ALGEBRA`). ⭐ Author a
-  running-start source map FIRST (per the calibrated pipeline); the stage018 source map + directive are the exemplars for the pathA_33
-  4-way split (018 = EARNED-first/PARTIAL landing, self-contained + provenance-only consumption).
+- **✅ II-G4b `ledger_stage019` DONE (2026-07-09) — pathA_33 `QUAD_CALIBRATED` 2/4 (the squared-denominator prefactor algebra; the SECOND leg
+  of the 4-way split).** SYMBOLIC/float-free (like 018). EARNED: the squared-denominator prefactor `P(ω)=D₀·N/D^cons²`
+  (`N=N₀+N₂ω²+N₄ω⁴`, `D^cons=D₀+D₂ω²+D₄ω⁴`) series-expands (via `(1+x)⁻²=1−2x+3x²`) to `P₀=N₀/D₀`, `P₂=(D₀N₂−2D₂N₀)/D₀²`,
+  `P₄=(D₀²N₄−2D₀(D₂N₂+D₄N₀)+3D₂²N₀)/D₀³` — SERIES-EXTRACTED off the actual series (NOT typed), checked vs an independent typed reference; the
+  `−2D₂N₀` factor-of-2 is the SIGNATURE of the squared denominator; the N/D self-check (plain `N/D` gives `P₂=(D₀N₂−D₂N₀)/D₀²`, the computed
+  gap `D₂N₀/D₀²≠0` → probe `3g` fires `FAIL_PREFACTOR_ALGEBRA`; correct object NO_FAIL) with a DYNAMIC 019-local self-ablation (the v1
+  constant-`self_ablation` trip-up avoided). ⭐ **Register: ZERO new counted knobs** (edge **R38**, the squared-denominator prefactor-algebra
+  provenance). ⚠ **This is where 018's deferred literal `N_n/D_n` port-kernel consumption lands — at the PROVENANCE level, NOT a
+  value-consumption dual-site:** the abstract `D₀,D₂,D₄` are 017's exported D-lanes + the `N₀,N₂,N₄` are `build_port_moments`' concrete port
+  N-moments (deferred Gate-6 branch data, **emitted-but-never-checked** — grep-confirmed by both the directive Codex→Grok→Codex pass and the
+  tri-review); the algebra is PORT-AGNOSTIC (holds for any nonzero `D0..N4`) → NO checkable cross-stage relation, no dual-site (same landing
+  as 018; a guard on the unused/deferred moments would be a vacuous tooth). 019 is **units-FREE** (no `c_s`/`a`/`G`/`μ̂₀`, no dim leg — the
+  `[P₀^phys]=1` closure is 021's; enforced by a runtime free-symbol guard `== {ω, D₀..N₄}`). ⭐⭐ **Directive review = Codex→Grok→Codex bookend:**
+  Codex `DIRECTIVE_ISSUES` (3 nits, no BLOCKING — a line-ref L512→L401, the D-lane/N-moment provenance split, the sibling-symbol wording; all
+  folded) → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** (independently re-derived `P₀/P₂/P₄` + the plain-`N/D` gap `D₂N₀/D₀²`, grep-confirmed
+  `build_port_moments` emitted-but-never-checked) + 1 genuine nit (D0..N4-only sample subs, dropping the source `.wl`'s `a/cs/c/G` carriers)
+  folded → Codex confirm (folds 1/3/4 clean + 2 straggler wording spots fixed). The `.wl` is ALREADY a native independent engine (native
+  `serW`/`Coefficient`/`FullSimplify` on its own `prefObj`/`plainObj`, typing its own expected `P₀/P₂/P₄`) — only the scratch-YAML `Export`
+  severed. Dual-engine SymPy 18 / Mathematica 24, CWD-independent. Tri-review: `FIDELITY_CLEAN` (independent re-derivation of `P₀/P₂/P₄` +
+  the N/D gap) + `ADVERSARIAL_ISSUES` (21 live `.py` mutations + static `.wl`; the central firewall / N/D self-check / dynamic 019-local
+  ablation all genuine; **2 subsumed/mirror teeth** — tooth 16 (mirror of the P₂ tooth) → **made-genuine** as a swapped-in correct-object
+  positive control, tooth 11 (assert on the constant `rerun_gate_logic:True`) → honestly **de-counted** — + a **token de-obfuscation** (the
+  narrative tokens `c_s`/`G`/`54`/`chi_Q`/`mu_hat0` had been string-concatenated/`chr()`-assembled to dodge a source grep — the pathA_41
+  anti-pattern; substance was fine, units-freeness is enforced by the runtime symbol guard not a grep) + an `assert_no_float` legibility fix)
+  → fresh-agent `REVERIFY_CLEAN` (the coupling meta-test on tooth 16 decisive: mutate its object → fires, neuter the fix → vacuous; no
+  live-symbol leak; no regression). Tallies 19/25 → 18/24 (net −1 per engine from the honest tooth-11 de-count). Registration at count 19,
+  PDF rebuilt (53pp). ⚠ **Lesson banked:** don't hand Codex a grep-based acceptance it can dodge by string-concatenating a literal (the
+  pathA_41 anti-pattern resurfaced — caught by BOTH fresh agents; the genuine units-free enforcement is the runtime free-symbol guard).
+- **▶ NEXT = Cluster A `ledger_stage020`** (II-G4c, pathA_33 `QUAD_CALIBRATED` 3/4 — the `54/5=2·27/5` provenance partition + **the CALIBRATED
+  verdict label**; the leg that LANDS the CALIBRATED headline): `54/5=2·27/5` where the `27` is `derived_in_gate` (018's `v₅ᶻ=1/27`, cited) and
+  the `2·G/5` is labeled `external_bridge_input` (`G=GENUINE_BLOCKED`); the earned-vs-calibrated PROVENANCE partition drives the verdict (NOT
+  `G→λG` invariance alone — the invariance-only trap). Source: `pathA_33_quadrupole_normalization_sympy.py` (the 020 slice = `a_power`/
+  `build_scaling` L276–294 + `build_equivalence` L510–535 + the provenance machinery L538–663 incl. `build_partition` L601–628 with the STRING
+  `decomposition_54_over_5` L622–627 + the g-invariance diagnostic; probes `3c` L813–818, `3e` L837–841, `3f` L846–865) + report :29–30, :36,
+  :39–40. ⭐ **pathA_33 trip-ups 020 OWNS:** the `54/5=2·27/5` STRING label (`.py` L622–627) must be made a SymPy-VERIFIED identity (COMPUTED, not
+  a typed string — sub-agent §8 flagged the source's is a typed string); the `27` stays COMPUTED (018's, cited); `2·G/5` asserted ONLY as
+  labeled `external_bridge_input`; the `3c` typed-target a⁻⁵ scaling is a WEAK bookkeeping tooth to STRENGTHEN. ⭐ Author a running-start source
+  map FIRST (per the calibrated pipeline); the stage018/019 source maps + directives are the pathA_33 4-way-split exemplars (019 = SECOND leg /
+  PARTIAL landing + provenance-only consumption).
 
 ## Per-stage process (unchanged, calibrated)
 

@@ -332,12 +332,43 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   stage's dual-site "second site" must read the ASSEMBLED downstream object (not reconstruct it from the same cited datum) — else it is
   subsumed by the first site and doesn't independently guard the assembly formula (the per-tooth ablation caught the engine asymmetry vs
   the SymPy sibling).
-- **▶ NEXT = Cluster A `ledger_stage018`** (II-G4a, pathA_33 `QUAD_CALIBRATED` 1/4 — the DtN Hankel fingerprint, the EARNED slice):
-  outgoing series `u2=a²/9c_s²`, `u4=4a⁴/81c_s⁴`, `v5=a⁵/27c_s⁵`; `χ_Q=+1` outgoing vs −1 incoming. CONSUMES 017's exported ℓ=2 port
-  kernel (the wall mode) + 009/010's bulk Helmholtz mode. Source: `software/stage1_solver/tools/pathA_33_quadrupole_normalization_{sympy.py,.wl}`
-  + report. ⭐ pathA_33 trip-ups (020/021): the 27 stays COMPUTED; `54/5` asserted only as labeled `external_bridge_input`; the v1 rig
-  (back-solved μ̂₀ + constant self_ablation) must not return — μ̂₀-free dim gate + real two-verdict self-ablations. ⭐ Author a
-  running-start source map FIRST (per the calibrated pipeline).
+- **✅ II-G4a `ledger_stage018` DONE (2026-07-09) — pathA_33 `QUAD_CALIBRATED` 1/4 (the outgoing ℓ=2 DtN Hankel fingerprint + χ_Q sign;
+  the EARNED-FIRST leg of a 4-way split).** SYMBOLIC/float-free (like 016). EARNED: the outgoing ℓ=2 DtN response `Ŷ₂ᵒᵘᵗ=−3/Λ₂ᵒᵘᵗ`,
+  `Λ₂ᵒᵘᵗ=z·h₂⁽¹⁾′/h₂⁽¹⁾`, `z=aω/c_s`, `h₂⁽¹⁾=j₂+i·y₂` (explicit rational·sin/cos), series-expands to the DERIVED fingerprint
+  `u₂=a²/9c_s²`, `u₄=4a⁴/81c_s⁴`, `v₅=a⁵/27c_s⁵` (the `27`=`1/v₅ᶻ` COMPUTED — the `derived_in_gate` `27` that 020's `54/5=2·27/5`
+  partition rides); the sign `χ_Q=+1` outgoing / `−1` incoming COMPUTED from `j₂±i·y₂` (a typed χ_Q would be a tautology); the standing
+  `j₂` branch → `Λ_stand(0)=+2`, no radiating term (proving `+1/27` is outgoing-BC-selected); passivity (radiating `v₅` from the
+  outgoing BC, `3b` DYNAMIC self-ablation — the v1 constant-self_ablation trip-up avoided). Lands the joint `QUAD_CALIBRATED` as a
+  **PARTIAL** (018 EARNED; prefactor=019, `54/5` partition + CALIBRATED label=020, μ̂₀-free dim closure=021). ⭐ **Register: ZERO new
+  counted knobs** (an EARNED/structural fingerprint slice, like 016/011/012/014). ⚠ **`c_s` (density sound speed) FIRST becomes a LIVE
+  object in the Part-II radiative sector here** (a shift from 013–017's `kξ≪1` deferral) — but only as the units-restoring carrier (via
+  `z=aω/c_s`): the earned rationals + χ_Q are `c_s`-FREE (Codex re-derived `free=[]`), so `c_s` (= `c_s0`, R1 `c_s²=5Kρ⁴/m`, stage005) is
+  cited PROVENANCE, NOT a consumed value (distinct from the frozen-wall `c_S`, 011–017). New structural edge **R37** (fingerprint
+  provenance; discharges nothing). ⚠ **Consumption is PROVENANCE ONLY (no dual-site)** — 018 is SELF-CONTAINED exterior spherical-Hankel
+  algebra (the fingerprint is built from explicit `j₂`/`y₂`; the literal port-kernel `N_n/D_n` consumption is 019's), so — UNLIKE 017's
+  genuine cross-stage dual-site — there is no checkable cross-stage relation to guard (a guard on an unused object would be a vacuous
+  tooth). The `χ_Q` reconciliation (`+1` vs pathA_22b `≈0.712`, same name / different computation) flagged as a tracked **Part-VII** item,
+  NOT merged. ⭐⭐ **Directive review = Codex→Grok→Codex bookend:** Codex `DIRECTIVE_CLEAN` first-pass (compute-verified the series
+  `1+z²/9+4z⁴/81+i·z⁵/27`, incoming `χ_Q=−1`, standing `Λ_stand(0)=+2`, the c_s-free-ness) → Grok-4.5 compute-verify `DIRECTIVE_CLEAN`
+  (independently re-confirmed the same) + 3 non-blocking clarity nits folded (the `P₀` name collision between the prefactor `N₀/D₀` and
+  the fingerprint static slot; the `passivity_from_source` scope; the 3a/3b self-ablation scoped to 018's local gates) → Codex confirm
+  `DIRECTIVE_CLEAN`. The `.wl` is ALREADY a native independent engine (native `j2`/`y2` + `Series`/`Coefficient` + own `dimOf`) — only the
+  scratch-YAML `Export` severed. Dual-engine SymPy 59 / Mathematica 65, CWD-independent. Tri-review CLEAN both legs (`FIDELITY_CLEAN`
+  hand-re-derived the full series + `χ_Q=±1` + the standing slot; `ADVERSARIAL_CLEAN` — 30/32 per-tooth mutations fired at their own
+  assert, the 2 non-fires harness artifacts re-covered; no vacuous tooth) → **NO remediation** (the fingerprint firewall, the
+  χ_Q-computed-ness, the DYNAMIC passivity self-ablation, the μ̂₀-free cut, the no-theatrical-dual-site, and the native `.wl` all genuine;
+  the two documented caveats are non-defects). Register `REGISTER_CLEAN` (Codex SymPy-re-derived `free=[]`). Registration at count 18, PDF
+  rebuilt (51pp). ⚠ Also fixed a coverage-file lag (the by-Part / coverage-class tables were stale at 016; brought to 018). Committed
+  `4872e8b7`.
+- **▶ NEXT = Cluster A `ledger_stage019`** (II-G4b, pathA_33 `QUAD_CALIBRATED` 2/4 — the prefactor algebra): `P(ω)=D₀·N(ω)/D^cons(ω)²`,
+  the squared-denominator `P2=(D0·N2−2·D2·N0)/D0²`, `P4`, and the N/D self-check (plain `N/D` gives `−D2·N0` vs the correct `−2·D2·N0` —
+  the squared-denominator object). CONSUMES 017's exported ℓ=2 port kernel (the D-lanes `D0/D2/D4` + the `N_n` moments — this is where the
+  literal `N_n/D_n` consumption 018 deferred actually happens) + 018's fingerprint context. Source:
+  `software/stage1_solver/tools/pathA_33_quadrupole_normalization_{sympy.py,.wl}` (the 019 slice = `build_port_moments` `.py` L190–209 +
+  `build_prefactor` L212–273 + probe `3g` L866–875; `.wl` prefactor block L73–92) + report :15–18. ⭐ pathA_33 trip-ups (020/021 mainly,
+  but 019 owns): probe `3g_wrong_prefactor_object` (plain `N/D` vs `D₀N/D^cons²` — the factor-of-2 → `FAIL_PREFACTOR_ALGEBRA`). ⭐ Author a
+  running-start source map FIRST (per the calibrated pipeline); the stage018 source map + directive are the exemplars for the pathA_33
+  4-way split (018 = EARNED-first/PARTIAL landing, self-contained + provenance-only consumption).
 
 ## Per-stage process (unchanged, calibrated)
 

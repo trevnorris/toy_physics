@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-08",
-  "canonical_stage_count": 13,
+  "canonical_stage_count": 14,
   "policy": [
     {
       "build_order_stage": "001",
@@ -105,6 +105,14 @@
       "slug": "breathing_harmonic_mk_projection",
       "final_number": "deferred",
       "note": "build-order id (II-G2a; reshape of the harmonic-profile + M/K-projection slice of pathA_31_scalar_breathing_{sympy.py,.wl}; the FIRST Part-II CALIBRATED stage, adds 3 counted CALIB knobs {mu_eta,T_w,beta} with K_eta=T_w*beta^2 derived; truncation consistency = stage 014, legacy-Hessian + Hellmann-Feynman force = stage 015); final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "014",
+      "part": "II",
+      "source_gate": "pathA_31 (II-G2b)",
+      "slug": "breathing_truncation_consistency",
+      "final_number": "deferred",
+      "note": "build-order id (II-G2b; reshape of the truncation-consistency slice of pathA_31_scalar_breathing_{sympy.py,.wl}; the FIRST numeric/float-bearing stage; combined-basis generalized eigenproblem K v=omega^2 M v over {alpha_a,alpha_L,g_1..g_N} + beta_L0 sweep + N-convergence -> the validity window K_eta/T_w<=~2.6; carries the truncation-consistency component 2/3 of the joint BREATHING_CALIBRATED; adds ZERO new counted knobs (numeric truncation controls FLOOR/N_FINAL/N_CONVERGENCE/BETA_L0_SWEEP tracked-not-counted; wall packet consumed from stage 013 via dual-site integrity; edge R31 truncation validity window); M/K projection = stage 013, legacy-Hessian + Hellmann-Feynman force = stage 015; final Part-ordered linear renumber deferred to the pre-swap pass)"
     }
   ],
   "excluded_em_projected_material": [],

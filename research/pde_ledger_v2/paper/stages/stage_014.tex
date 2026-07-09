@@ -1,0 +1,129 @@
+\section{Stage 014: Truncation Consistency \texorpdfstring{--- Combined-Basis Generalized Eigenproblem, \(\beta_{L_0}\) Sweep, and N-Convergence}{-- generalized eigenproblem, beta sweep, N-convergence} (Check II-G2b)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=0\) breathing mode; the truncation-consistency component of the joint \texttt{BREATHING\_CALIBRATED}, with the M/K-projection + \((a,L)\)-closure = Stage~013 and the legacy-Hessian + Hellmann--Feynman force = Stage~015)}
+\claimstatus{\StatusNumerical}
+\stagefield{Purpose}{Certify that Stage-013's two-mode collective closure
+\(Q=(\delta_a,\delta_L)\) is a \emph{faithful} truncation, not an artifact.
+Embed the two collective harmonic-lift profiles \(\alpha_a,\alpha_L\) in a larger
+Galerkin basis \(B=\{\alpha_a,\alpha_L,g_1\ldots g_N\}\) (\(N\) sine lane modes
+\(g_n=\sin((n-\tfrac12)\pi w/L_0)\)), solve the combined-basis generalized
+eigenproblem \(K v=\omega^2 M v\), and measure how much of each of the two lowest
+generalized modes lives in \(\operatorname{span}\{\alpha_a,\alpha_L\}\) --- the
+modal overlaps \(o_1,o_2\) --- across a \(\beta_{L_0}\) sweep and as \(N\to16\).
+The first \emph{numeric / float-bearing} stage of the rebuild.}
+\stagefield{Verification}{SymPy/SciPy audit:
+\StageFile{scripts/ledger_stage014_breathing_truncation_consistency_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage014_breathing_truncation_consistency_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusNumerical{} --- the generalized eigenproblem, the modal overlaps, the
+\(\beta_{L_0}\) validity window, and the N-convergence are numerically computed
+(\texttt{scipy.linalg.eigh}\(+\)\texttt{quad}; \texttt{Eigensystem}\(+\)%
+\texttt{NIntegrate}). The verdict is the joint \texttt{BREATHING\_CALIBRATED};
+this stage carries its \emph{truncation-consistency} component (2/3). It
+\textbf{adds no new counted knobs}: the underlying wall constants
+\(\{\mu_\eta,T_w,K_\eta,\beta\}\) are Stage-013's calibration inputs, and the
+numeric truncation controls are method/tolerance parameters. Stage-013's
+collective profiles and the frozen packet are \emph{consumed} with dual-site
+citation-integrity; \(c_S\) is \emph{not} consumed (matter-sector deferred,
+\(k\xi\ll1\)).
+
+\paragraph{The combined-basis generalized eigenproblem.}
+Over \(B=\{\alpha_a,\alpha_L,g_1\ldots g_N\}\) with normalized \(x=w/L_0\in[0,1]\),
+the mass/stiffness Gram is built by numeric quadrature,
+\(M_{ij}=\int_0^1\phi_i\phi_j\), \(K_{ij}=\int_0^1[\phi_i'\phi_j'+\beta^2\phi_i\phi_j]\),
+rank-deficient rows are dropped, and \(K v=\omega^2 M v\) is solved and sorted
+ascending. The two collective modes \(\alpha_a=\sinh(\beta(1-x))/\sinh\beta\),
+\(\alpha_L=\sinh(\beta x)/\sinh\beta\) are \emph{cited} from Stage~013 (not
+re-derived); the numeric \(2\times2\) collective block equals Stage-013's
+\(M_{AB}/K_{AB}\) only up to the \(4\pi\), \(L_0\)-Jacobian, and \(\mu_\eta\)-weight
+prefactors, which cancel in the generalized eigenproblem and the mass-normalized
+overlaps --- so the seam is guarded via the consumed profiles, \emph{not} a naive
+\(M_{aa}\) equality.
+
+\paragraph{The modal overlaps and the truncation floor.}
+Projecting each of the two lowest generalized eigenvectors onto
+\(\operatorname{span}\{\alpha_a,\alpha_L\}\) via the mass-Gram gives
+\(o_k=\lVert P_\alpha v_k\rVert_M/\lVert v_k\rVert_M\). The certificate is
+\[
+  \mathrm{pass}\iff o_1\ge\mathrm{FLOOR}\ \wedge\ o_2\ge\mathrm{FLOOR}\ \wedge\ \min(\omega_1^2,\omega_2^2)>0,
+  \qquad \mathrm{FLOOR}=0.9,
+\]
+a genuine predicate on the \emph{computed} overlaps. At the physical
+\(\beta_{L_0}=37/20,\ N=16\): \(o_1=0.99311\), \(o_2=0.98776\),
+\(\min(\omega^2)=3.42252\), \(\mathrm{gap}=2.22787\), \(\mathrm{pass}=\)~true. All
+three conjuncts are separately able-to-fail (the \(o_2\) floor, the
+\(\min(\omega^2)>0\) positivity leg, and the window edge).
+
+\paragraph{The computed validity window.}
+Sweeping \(\beta_{L_0}\in\{0.1,\ldots,3.0,5,10,18,30,50\}\) --- \emph{spanning well
+beyond} the pass region (to \(o_1\approx0.27\) at \(\beta_{L_0}=50\)) --- the
+certificate passes for \(\beta_{L_0}\in\{0.1\ldots3.0\}\) and \textbf{fails} for
+\(\beta_{L_0}\ge5\) (\(o_1=0.860<\mathrm{FLOOR}\) already at \(\beta_{L_0}=5\)). The
+window \(\{{\min}{:}0.1,\ {\max}{:}3.0\}\) is \emph{computed} from the passing set;
+it has a real upper edge. The honest caveat: clean two-mode truncation holds only
+for order-unity wall stiffness \(K_\eta/T_w\lesssim2.6\) (the emergent edge, since
+\(\beta^2=K_\eta/T_w\) and \((3/1.85)^2\approx2.63\)) --- an emergent number, not a
+typed criterion. The physical \(\beta_{L_0}=37/20\) is the \emph{cited} Gate-1
+anchor, not the \(\beta\) that maximizes overlap. \emph{The pathA\_31 v1 rejection
+was a gamed truncation threshold; the floor and window here are genuinely computed
+and able-to-fail.}
+
+\paragraph{N-convergence and the counterfactual overlaps.}
+At \(\beta_{L_0}=37/20\), \(o_1\) is stable across \(N\in\{4,8,12,16\}\)
+(\(0.99301\to0.99311\), \(\max|\Delta|\approx10^{-4}\)), \(\mathrm{pass}=\)~true at
+every \(N\) --- so the certificate is not a small-\(N\) artifact (the
+\(\mathrm{mass\ condition}\) growth \(3.1\mathrm{e}3\to1.9\mathrm{e}5\) is a benign
+conditioning effect). Two counterfactual profiles pin the honest scope: the
+\emph{degenerate} \(\alpha_a\equiv0\) collapses the collective span
+(\(\mathrm{rank\ deficient}\), \(o_2=0.2227<\mathrm{FLOOR}\)) and \textbf{fails}
+the floor; the \emph{constant} \(\alpha_a\equiv1\) --- a \emph{wrong} profile ---
+gives \(o_1=1.0,\ o_2=0.9738\ge\mathrm{FLOOR}\) and \textbf{passes} the overlap.
+\emph{The overlap therefore certifies truncation-consistency, not
+profile-correctness}: Stage~014 records that the constant profile passes and does
+\emph{not} claim it is rejected --- its rejection is Stage-015's Hellmann--Feynman
+mismatch (and Stage-013's \(\mathcal{L}_0[\alpha]=0\) residual).
+
+\paragraph{Consumed closure and register.}
+The collective profiles and the frozen packet \(\{L_0=37/20,\ \beta=1,\ \beta
+L_0=37/20\}\) are cited from Stage~013 with two independently-corruptible
+relations: site~A (branch anchor) \(\beta L_0-37/20\equiv0\), reading an
+independent cited datum; and site~B (profile-consumption) the consumed profiles
+satisfy \emph{both} the harmonic residual \(-\alpha''+\beta^2\alpha=0\) \emph{and}
+the collective BC values --- the residual alone misses a kernel-preserving
+corruption (a rescale leaves the residual \(0\) but breaks the BC), so
+residual\(\wedge\)BC are both able-to-fail. Stage~014 adds \textbf{zero new counted
+knobs}: the numeric controls \(\{\mathrm{FLOOR}=0.9,\ N_{\mathrm{final}}=16,\
+N_{\mathrm{conv}},\ \beta_{L_0}\text{-sweep}\}\) are method/tolerance parameters
+(tracked, not counted); the wall packet is consumed from Stage~013 (no
+double-count). One structural edge, R31 (the truncation validity window
+\(K_\eta/T_w\lesssim2.6\)), discharges nothing.
+
+\paragraph{Verification.}
+Dual-engine, independent numeric routes, zero file I/O --- the source pair's
+numeric-WL scratch export and the hybrid \texttt{.wl}'s
+\texttt{Get}/\(\texttt{sympy}^\ast\)-float-diff/\texttt{Export} are retired; the
+\texttt{.wl} KEEPS its native \texttt{NIntegrate}\(+\)\texttt{Eigensystem}
+\texttt{galerkinRow} route but its asserts are \emph{re-targeted} to its own
+computed overlaps, floor, and window (it declares its own sweep grid and the cited
+profile closed forms natively, not via \texttt{DSolveValue}), with a genuine arity
+self-check. Agreement is transcript-level (both engines independently reach the
+same pass-pattern, window, and \(o_k\) to \(\sim10^{-13}\), tighter than the
+\(0.9\) margin). The 3-way cut is clean: no Stage-013 \(\int dw\) projection and no
+Stage-015 Hellmann--Feynman force is computed. SymPy/SciPy 93 PASS /
+Mathematica 100 PASS (the \(+7\) = the \texttt{.wl} arity/leakage block), exit 0,
+CWD-independent. The directive design-review used the Codex\(\to\)Grok\(\to\)Codex
+bookend (three BLOCKING folds: the site-B residual\(\wedge\)BC, the
+\(\min(\omega^2)>0\) tooth, and the N-convergence non-converging ablation; Grok's
+compute-verification independently re-derived every anchor). Full tri-review on
+fresh agents: \texttt{FIDELITY\_CLEAN} (an independent from-scratch Galerkin
+re-derived every value) and \texttt{ADVERSARIAL\_ISSUES} --- the anti-gaming
+floor/window proven clean (23/23 genuine ablations firing), but \emph{two}
+able-to-fail teeth (the constant-passes-overlap honesty leg and the
+degenerate-bypass leg) were vacuous \(x{:=}\mathrm{const};\ \mathrm{expect\_fail}(x)\)
+stamps in both engines. Remediated to a \emph{shared predicate} read by both the
+baseline and the tooth's mutated-copy assertion; a fresh-agent re-verify confirmed
+\texttt{REVERIFY\_CLEAN} via the deciding coupling meta-test (corrupting the shared
+predicate makes the tooth stop firing, so the audit correctly fails). Nine
+able-to-fail teeth, mutations on copies.

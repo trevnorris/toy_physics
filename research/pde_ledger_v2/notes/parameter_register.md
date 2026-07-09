@@ -83,7 +83,14 @@ dressed as geometry** — the source is explicit that geometry alone does not de
 EARNED content is the STRUCTURE (harmonic-lift profiles, `M_AB`/`K_AB` by real ∫dw operator projection —
 `forbidden_fit_flags` computed False via free-symbol-name ancestry), the VALUES are calibration → `BREATHING_CALIBRATED`.
 Edge R30 = the named-PENDING nonlinear-throat reduction that would derive the wall response `{μ_η, T_w, β}` from the
-medium (reduction debt). `c_S` NOT consumed (matter-sector deferred, `kξ≪1`)). Seeded knit params
+medium (reduction debt). `c_S` NOT consumed (matter-sector deferred, `kξ≪1`)), **014 (pathA_31 II-G2b truncation
+consistency — adds NO new counted knobs**: the numeric truncation controls `{FLOOR=0.9 (EPS_TRUNC=0.1), N_FINAL=16,
+N_CONVERGENCE, BETA_L0_SWEEP}` are method/tolerance parameters (tracked, not counted — convergence/solver knobs, not
+physics DOFs; 014 is the FIRST float-bearing stage); the frozen-wall constitutive packet `{μ_η, T_w, β, K_η}` is CONSUMED
+from stage 013 via dual-site citation-integrity (NOT re-counted — no double-count); `c_S` NOT consumed (matter-sector
+deferred, `kξ≪1`); the stage certifies that 013's 2-mode `{α_a, α_L}` truncation captures the low spectrum of the
+combined-basis generalized eigenproblem across a computed window `β_L0∈[0.1,3.0]` ⟺ `K_η/T_w ≲ 2.6`, contributing
+structural edge R31 (the truncation validity window — discharges NOTHING)). Seeded knit params
 (Part VI, not yet reshaped): pathA_40 cone-lock, pathA_41 NG5.
 
 | Param | `[L,T,M]` dim | Enters | Class | Depends on / relation | Reduction route + status |
@@ -196,6 +203,7 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R28 | the D/N mouth/cap boundary pair (Dirichlet at `s=0`, Neumann at `s=L0`) is IMPOSED, not derived (`bc_provenance=imposed`, `bc_derivation_emitted=False`) → the joint verdict lands at `DN_UNITTEST_BC_DEPENDENT`, not `DN_UNITTEST_PASS` | `IMPOSED`/`PENDING` (banked calibration input, dual-engine + able-to-fail — forcing the flag True reveals the deferred `DN_UNITTEST_PASS`; **NOT a reduction** — discharges NO knob) | II-G1b (012) | the DtN ladder `Z00=−(ω/c_S)tan(L0ω/c_S)` + half-shifted resonances are a DERIVED consequence of the imposed pair (which collapses no knob); the deferred discharge is an explicit mouth/cap `V_wall` gradient derivation that would earn `DN_UNITTEST_PASS` (analogous to R23's constraint-spec obligation) — Gate-6/Phase-2 territory |
 | R29 | `K_η = T_w β²` (wall stiffness = tension × inverse-length-scale²) | `DERIVED` | II-G2a (013) | collapses `K_η` into `{T_w, β}` (a manifestation, `calibration_tied_to_beta_squared_Tw`); so among `{μ_η, T_w, K_η, β}` the counted CALIB set is `{μ_η, T_w, β}` (3), NOT 4 — `K_η` is the derived third of `{T_w, K_η, β}` |
 | R30 | nonlinear-throat reduction of the frozen-wall response `{μ_η, T_w, β}` from the medium | `PENDING` | II-G2a (013) | debt: would derive the calibrated wall constitutive packet (inertia/tension/scale) from the deferred nonlinear throat interior — the same wall as R10/R23's discharge; until then `{μ_η, T_w, β}` are CALIB (tuned in the frozen `G=c=c_s=1` packet `T_w=K_η=1`) |
+| R31 | truncation validity window: 013's 2-mode `{α_a, α_L}` collective closure is a clean truncation of the combined-basis generalized eigenproblem `K v=ω²M v` (over `{α_a,α_L,g_1..g_N}`) ONLY for order-unity wall stiffness `K_η/T_w ≲ 2.6` (computed sweep edge — the overlap floor `o_k≥0.9` passes for `β_L0∈[0.1,3.0]`, FAILS for `β_L0≥5`; `o_1=0.99311,o_2=0.98776` at the physical `β_L0=37/20`, N-converged over `N=4/8/12/16`) | structural (validity certificate, dual-engine + able-to-fail — a gamed threshold / an everywhere-pass window is caught, per the pathA_31 v1 rejection scar; ⚠ the modal overlap does NOT guard profile-correctness — `constant_one` PASSES it, so this certifies truncation-consistency NOT profile-correctness (that is 015's HF + 013's residual); **NOT a reduction** — discharges NO knob) | II-G2b (014) | bounds where the calibrated breathing closure (013's `M_AB`/`K_AB`) is trustworthy: sharp walls (`K_η/T_w` large) need >2 modes; the phonon-limit / BdG `k⁴` stays deferred (`kξ≪1`); the 014 numeric controls `{FLOOR, N_FINAL, N_CONVERGENCE, BETA_L0_SWEEP}` are method/tolerance (tracked, not counted) |
 
 ---
 
@@ -279,6 +287,19 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   `c_S` NOT consumed (matter-sector deferred, `kξ≪1`). **These are the first tuned knobs since Part I's `{ħ, m, K, ρ0}`
   + the brane freeze package — the gravity sector's algebra was knob-free through 008–012; the calibration enters with
   the breathing-mode wall response.**
+- **Stage 014 (pathA_31 II-G2b): zero new counted knobs — the truncation-consistency component (2/3) of
+  `BREATHING_CALIBRATED`; the FIRST float-bearing stage.** The combined-basis generalized eigenproblem `K v=ω²M v` over
+  `{α_a,α_L,g_1..g_N}` (013's two collective modes + N sine lane modes) certifies that 013's 2-mode closure captures the
+  two lowest generalized modes to the predeclared overlap floor `o_k≥0.9` (`o_1=0.99311, o_2=0.98776` at the physical
+  `β_L0=37/20`), across a COMPUTED validity window `β_L0∈[0.1,3.0]` (⟺ order-unity wall stiffness `K_η/T_w≲2.6`; genuine
+  FAIL rows at `β_L0≥5`) and N-converged over `N=4/8/12/16` — edge R31. The numeric truncation controls `{FLOOR=0.9
+  (EPS_TRUNC=0.1), N_FINAL=16, N_CONVERGENCE, BETA_L0_SWEEP}` are method/tolerance parameters (tracked, not counted); the
+  wall packet `{μ_η, T_w, β, K_η}` is CONSUMED from stage 013 (dual-site citation-integrity, no double-count); `c_S` NOT
+  consumed. ⚠ **Honest caveat carried (not softened, per falsification-first):** the modal overlap does NOT guard
+  profile-correctness — the `constant_one` (wrong) profile PASSES the overlap (`o_1=1.0, o_2=0.974`); the profile guard is
+  013's `𝓛₀[α]=0` residual + 015's Hellmann–Feynman mismatch. The pathA_31 v1 REJECTION scar (a *gamed* truncation
+  threshold) is ABSENT — the floor + window are genuinely computed and able-to-fail (adversarial per-tooth ablation
+  confirmed; 2 vacuous able-to-fail legs were found + remediated to genuine coupling).
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

@@ -229,10 +229,36 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   verify Grok negatives by reading code). ⭐ Per-tooth ablation now MANDATORY in the tri-review (blueprint §6 +
   [[feedback-per-tooth-ablation]]). ⚠ OPEN FOLLOW-UP: the `.wl`s were only STATIC-read (2-seat cap) — a dedicated
   WL-ablation pass over all built stages is a tracked Phase-C-adjacent follow-up.
-- **▶ NEXT = Cluster A `ledger_stage014`** (II-G2b, pathA_31 `BREATHING_CALIBRATED` 2/3: combined-basis generalized eig +
-  β_L0 sweep + N-convergence overlaps → the validity window / order-unity-wall-stiffness caveat). Consumes stage013's
-  `M_AB`/`K_AB`. pathA_31 trip-up (from v1): gamed truncation threshold — the overlap-floor `o_k≥0.9` + β-sweep must be
-  COMPUTED, not gamed. Author a running-start source map first (source `.py` L447–607/L760–809, `.wl` L209–306).
+- **✅ II-G2b `ledger_stage014` DONE (2026-07-08) — pathA_31 `BREATHING_CALIBRATED` 2/3 (truncation consistency); the
+  FIRST NUMERIC / float-bearing stage.** The combined-basis generalized eigenproblem `K v=ω²M v` over `{α_a,α_L,g_1..g_N}`
+  certifies 013's 2-mode closure captures the two lowest generalized modes to the overlap floor `o_k≥0.9` (`o_1=0.99311,
+  o_2=0.98776` at `β_L0=37/20`), across a COMPUTED validity window `β_L0∈[0.1,3.0]` (⟺ `K_η/T_w≲2.6`; genuine FAIL rows at
+  `β_L0≥5`, sweep spans to 50) and N-converged over `N=4/8/12/16`. ⭐ **The pathA_31 v1 gamed-threshold scar is ABSENT** —
+  floor + window genuinely computed + able-to-fail. ⚠ **Honest caveat carried:** the modal overlap does NOT guard
+  profile-correctness — `constant_one` (wrong profile) PASSES the overlap (`o_1=1.0,o_2=0.974`); the profile guard is 013's
+  residual + 015's HF. Consumed 013's profiles + frozen packet via dual-site integrity (site A `β·L0=37/20` anchor; site B
+  residual∧BC — the residual alone misses kernel-preserving corruptions); the M/K seam guarded via the consumed
+  profiles/packet, NOT a naïve `numeric M_aa==symbolic M_aa` (normalization differs by `4π L0 μ_η`, cancels in eig/overlaps);
+  `c_S` NOT consumed. Bridge severed (numeric-WL scratch export + the `.wl`'s `sympy*`-float diff); the `.wl` KEEPS its
+  native `NIntegrate`+`Eigensystem` route, re-targeted to its OWN floor/window; transcript-level dual-engine agreement.
+  Dual-engine SymPy/SciPy 93 / Mathematica 100, CWD-independent. **⭐ Directive review = Codex→Grok→Codex bookend:** Codex
+  `DIRECTIVE_CLEAN` after 3 BLOCKING + 2 nits folded (site-B residual∧BC, the `min(ω²)>0` tooth, the N-convergence
+  non-converging ablation, the identity-sub-Gram projection tooth, the native cited-closed-form `.wl`), Grok-4.5
+  compute-verify `DIRECTIVE_CLEAN` (all anchors independently re-derived), Codex final confirm `DIRECTIVE_CLEAN`. Tri-review:
+  `FIDELITY_CLEAN` (independent from-scratch Galerkin re-derived every value) + `ADVERSARIAL_ISSUES` — anti-gaming
+  floor/window CLEAN (23/23 genuine ablations) but **2 BLOCKING vacuous able-to-fail teeth (4 & 5, `x:=const; expect_fail(x)`
+  in both engines)**; remediated to a shared predicate on a mutated copy → fresh-agent `REVERIFY_CLEAN` (deciding
+  coupling meta-test: corrupt the predicate → the tooth stops firing → audit fails); a follow-up deleted 3 dead `.wl`
+  Module locals. Register: **zero new counted knobs** (numeric controls `{FLOOR,N_FINAL,N_CONVERGENCE,BETA_L0_SWEEP}`
+  tracked-not-counted; wall packet consumed from 013, no double-count) + structural edge R31 (truncation validity window,
+  discharges nothing), Codex `REGISTER_CLEAN`. Registration at count 14, PDF rebuilt (43pp).
+- **▶ NEXT = Cluster A `ledger_stage015`** (II-G2c, pathA_31 `BREATHING_CALIBRATED` 3/3: legacy-`E_geom`-Hessian structure
+  recovery + the Hellmann–Feynman force — BOTH routes independently emitted, the v1 `x−x` rig's fix preserved — + the
+  static-dynamic limit; this COMPLETES the joint `BREATHING_CALIBRATED` = 013 ∧ 014 ∧ 015). Consumes 013's `M_AB`/`K_AB` +
+  EOM LHS (fills the RHS `F_A^(HF)`). pathA_31 v1 trip-up (015's locus): the HF `x−x` two-route tautology + a typed
+  counterfactual — both HF routes must be COMPUTED + independently emitted. Source `.py` = `build_structure_gate` L217–311
+  + the HF force L681–703 + the guard `hf_mismatch`/`F_a` slices; `.wl` = the HF/structure/`egeom` regions. Author a
+  running-start source map first.
 
 ## Per-stage process (unchanged, calibrated)
 

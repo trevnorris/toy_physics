@@ -1,0 +1,203 @@
+
+================================================
+ledger_stage020_provenance_partition_sympy_audit
+================================================
+Target stem confirmed: ledger_stage020_provenance_partition
+Engine: SymPy exact symbolic/rational algebra and tag-dominance classification; no floats/tolerances; zero file I/O.
+
+Strengthened a⁻⁵ scaling from the frozen 018 v5 slot
+----------------------------------------------------
+  gamma_target = 2*G/(5*c**5)
+  a_power(gamma_target) = 0
+  v5_slot = a**5/(27*c_s**5)
+  a_power(v5_slot) = 5
+  target_from_bridge = 54*G*c_s**5/(5*a**5*c**5)
+  derived_power = a_power(gamma_target) - a_power(v5_slot) = -5
+  a_power(target_from_bridge) = -5 (a⁻⁵)
+  independently assembled target_rhs = 54*G*c_s**5/(5*a**5*c**5)
+PASS  Burke-Thorne gamma_target is a-free
+PASS  frozen v5_slot supplies a-power +5
+PASS  derived bridge power is -5
+PASS  target_from_bridge power equals the derived power
+PASS  bridge reconstruction equals the independently assembled target_rhs
+PASS  3c a^-4 mutation of only the assembled target breaks bridge cancellation produced required FAIL (residual = -54*G*c_s**5*(a - 1)/(5*a**5*c**5))
+PASS  strengthened scaling gate passes
+
+Gamma5/chi_Q equivalence bridge
+-------------------------------
+  P0_physical (019 provenance definition only) = N0*c_s**2/(D0*a**2)
+  Gamma5 DEF = N0*a**3*chi_Q/(27*D0*c_s**3)
+  forward_general = 2*G*(chi_Q - 1)/(5*c**5)
+  forward = 0
+  reverse = 0
+  wrong_reverse (3/5 mutation) = 27*G*c_s**5/(5*a**5*c**5)
+PASS  P0=N0/D0 enters the Gamma5 DEF and is absent from bridge residuals
+PASS  forward general form is 2*G*(chi_Q-1)/(5*c^5)
+PASS  Gamma5 bridge forward=0 for cited chi_Q=+1
+PASS  Gamma5 bridge reverse=0
+PASS  3e wrong_gamma=3*G/(5*c^5) makes wrong_reverse nonzero produced required FAIL (residual = 27*G*c_s**5/(5*a**5*c**5))
+PASS  equivalence gate passes
+
+Expression-bound 54/5 = 2·27/5 decomposition
+--------------------------------------------
+  unit extracted from target_rhs = G*c_s**5/(a**5*c**5)
+  mag = target_rhs/unit = 54/5
+  27_from_slot = a^5/(c_s^5*v5_slot) = 27
+  bound left = 54/5
+  bound right = 2*27_from_slot/5 = 54/5
+  54/5=2·27/5 TRUE bound residual = 0
+PASS  BOUND 54/5=2*27/5 identity from target_rhs and v5_slot
+PASS  bound-identity factor mutation 27_from_slot->27_from_slot-1 fires produced required FAIL (residual = 2/5)
+
+Four-way provenance classifier proof
+------------------------------------
+  dominance order = deferred > external > derived > convention
+  truth-table deferred_over_external: ['gate6_branch_solve', 'external_gr_constant'] -> deferred_branch_data
+PASS  classifier truth-table deferred_over_external -> deferred_branch_data
+  truth-table external_over_derived: ['external_pn_bridge', 'dtn_hankel_expansion'] -> external_bridge_input
+PASS  classifier truth-table external_over_derived -> external_bridge_input
+  truth-table derived_over_convention: ['dtn_radiative_slot', 'unit_choice'] -> derived_in_gate
+PASS  classifier truth-table derived_over_convention -> derived_in_gate
+  truth-table single_deferred: ['gate6_branch_solve'] -> deferred_branch_data
+PASS  classifier truth-table single_deferred -> deferred_branch_data
+  truth-table single_external: ['external_gr_constant'] -> external_bridge_input
+PASS  classifier truth-table single_external -> external_bridge_input
+  truth-table single_derived: ['dtn_radiative_slot'] -> derived_in_gate
+PASS  classifier truth-table single_derived -> derived_in_gate
+  truth-table single_convention: ['unit_choice'] -> convention
+PASS  classifier truth-table single_convention -> convention
+  key class G -> external_bridge_input
+PASS  key provenance class G -> external_bridge_input
+  key class PN_2_over_5 -> external_bridge_input
+PASS  key provenance class PN_2_over_5 -> external_bridge_input
+  key class fingerprint_27 -> derived_in_gate
+PASS  key provenance class fingerprint_27 -> derived_in_gate
+  key class assembled_54_over_5_magnitude -> external_bridge_input
+PASS  key provenance class assembled_54_over_5_magnitude -> external_bridge_input
+  tag mutation assembled magnitude: ['external_pn_bridge', 'dtn_radiative_slot'] -> ['dtn_radiative_slot'] -> derived_in_gate
+PASS  stripping external_pn_bridge drops assembled magnitude to derived_in_gate
+PASS  baseline assembled magnitude class is external_bridge_input before tag stripping
+PASS  classifier truth-table + key classes + tag mutation all pass
+PASS  real emitted partition matches computed classes
+  earned factor class (READ from partition) = derived_in_gate
+  calibrated factor class (READ from partition) = external_bridge_input
+  assembled class (READ from partition) = external_bridge_input
+PASS  27 factor class is read as derived_in_gate
+PASS  2/5 factor class is read as external_bridge_input
+PASS  assembled 54/5 class is read as external_bridge_input
+
+SEPARATE non-verdict-driving G->lambda_G*G diagnostic
+-----------------------------------------------------
+  G: expr=G, g_invariant=False, class=external_bridge_input
+PASS  G-invariance diagnostic for G is False
+  target_2G_over_5c5: expr=2*G/(5*c**5), g_invariant=False, class=external_bridge_input
+PASS  G-invariance diagnostic for target_2G_over_5c5 is False
+  pure_54_over_5: expr=54/5, g_invariant=True, class=external_bridge_input
+PASS  G-invariance diagnostic for pure_54_over_5 is True
+  fingerprint_27: expr=27, g_invariant=True, class=derived_in_gate
+PASS  G-invariance diagnostic for fingerprint_27 is True
+  invariance_only_trap_catches_54_over_5 = True
+PASS  separate invariance-only trap catches G-invariant yet calibrated 54/5
+PASS  provenance verdict remains CALIBRATED independently of the diagnostic
+
+Source-faithful provenance verdict and positive controls
+--------------------------------------------------------
+  real classes: G=external_bridge_input, assembled54/5=external_bridge_input
+  real verdict = QUAD_CALIBRATED
+  QUAD_PASS control classes: G=derived_in_gate, assembled54/5=derived_in_gate; partition_ok=True
+  QUAD_PASS control verdict = QUAD_PASS
+  MIXED control classes: G=external_bridge_input, assembled54/5=derived_in_gate; partition_ok=True
+  MIXED control verdict = QUAD_CALIBRATED
+PASS  real both-external partition lands QUAD_CALIBRATED
+PASS  coherent all-derived control partition is internally consistent
+PASS  coherent all-derived positive control lands QUAD_PASS
+PASS  coherent mixed control partition is internally consistent
+PASS  required MIXED control lands QUAD_CALIBRATED
+PASS  constant-CALIBRATED verdict ablation fails at the QUAD_PASS control produced required FAIL (residual = 1)
+PASS  inverted PASS-unless-both-external rule fails at the MIXED control produced required FAIL (residual = 1)
+
+Probes 3c/3e/3f and DYNAMIC 020-local self-ablations
+----------------------------------------------------
+  3c wrong-scaling residual = -54*G*c_s**5*(a - 1)/(5*a**5*c**5)
+  3c verdict = FAIL_SCALING
+PASS  3c wrong assembled scaling reaches FAIL_SCALING
+PASS  3c correct bridge scaling is NO_FAIL
+  3c scaling_ablation dynamic self-ablation = {'rerun_gate_logic': True, 'with_mutation': 'FAIL_SCALING', 'without_mutation': 'QUAD_CALIBRATED', 'expected_fail': 'FAIL_SCALING', 'fail_suppressed': True}
+PASS  3c scaling_ablation reruns 020-local gate logic
+PASS  3c scaling_ablation dynamic rerun with mutation reaches FAIL_SCALING
+PASS  3c scaling_ablation dynamic rerun without mutation returns QUAD_CALIBRATED
+PASS  3c scaling_ablation self-ablation suppresses the local failure
+  3e wrong_gamma = 3*G/(5*c**5)
+  3e wrong_reverse = 27*G*c_s**5/(5*a**5*c**5)
+  3e verdict = FAIL_EQUIVALENCE
+PASS  3e wrong Gamma bridge reaches FAIL_EQUIVALENCE
+PASS  3e correct Gamma bridge is NO_FAIL
+  3e equivalence_ablation dynamic self-ablation = {'rerun_gate_logic': True, 'with_mutation': 'FAIL_EQUIVALENCE', 'without_mutation': 'QUAD_CALIBRATED', 'expected_fail': 'FAIL_EQUIVALENCE', 'fail_suppressed': True}
+PASS  3e equivalence_ablation reruns 020-local gate logic
+PASS  3e equivalence_ablation dynamic rerun with mutation reaches FAIL_EQUIVALENCE
+PASS  3e equivalence_ablation dynamic rerun without mutation returns QUAD_CALIBRATED
+PASS  3e equivalence_ablation self-ablation suppresses the local failure
+  3f G external->derived: partition_ok=False, verdict=FAIL_PROVENANCE_PARTITION
+  3f fingerprint_27 derived->external: partition_ok=False, verdict=FAIL_PROVENANCE_PARTITION
+PASS  3f G external->derived reaches FAIL_PROVENANCE_PARTITION
+PASS  3f fingerprint_27 derived->external reaches FAIL_PROVENANCE_PARTITION
+PASS  3f aggregate requires BOTH mutation directions to fire
+  3f partition_ablation G external->derived dynamic self-ablation = {'rerun_gate_logic': True, 'with_mutation': 'FAIL_PROVENANCE_PARTITION', 'without_mutation': 'QUAD_CALIBRATED', 'expected_fail': 'FAIL_PROVENANCE_PARTITION', 'fail_suppressed': True}
+PASS  3f partition_ablation G external->derived reruns 020-local gate logic
+PASS  3f partition_ablation G external->derived dynamic rerun with mutation reaches FAIL_PROVENANCE_PARTITION
+PASS  3f partition_ablation G external->derived dynamic rerun without mutation returns QUAD_CALIBRATED
+PASS  3f partition_ablation G external->derived self-ablation suppresses the local failure
+  3f partition_ablation 27 derived->external dynamic self-ablation = {'rerun_gate_logic': True, 'with_mutation': 'FAIL_PROVENANCE_PARTITION', 'without_mutation': 'QUAD_CALIBRATED', 'expected_fail': 'FAIL_PROVENANCE_PARTITION', 'fail_suppressed': True}
+PASS  3f partition_ablation 27 derived->external reruns 020-local gate logic
+PASS  3f partition_ablation 27 derived->external dynamic rerun with mutation reaches FAIL_PROVENANCE_PARTITION
+PASS  3f partition_ablation 27 derived->external dynamic rerun without mutation returns QUAD_CALIBRATED
+PASS  3f partition_ablation 27 derived->external self-ablation suppresses the local failure
+PASS  3f records that G-invariance alone would miss calibrated 54/5
+
+020 scope, provenance-only consumption, and PARTIAL landing
+-----------------------------------------------------------
+  020 gate booleans = {'scaling_ok': True, 'equivalence_ok': True, 'provenance_ok': True}
+  020 scoped verdict = QUAD_CALIBRATED
+PASS  020 scoped verdict lands the CALIBRATED partial component
+  earned symbolic expression count under the NAME allowlist = 40
+  live symbolic names across every earned expression = ['D0', 'G', 'N0', 'a', 'c', 'c_s', 'chi_Q', 'lambda_G']
+PASS  EVERY earned symbolic expression obeys the free-symbol NAME allowlist
+PASS  units-bearing algebra exposes exactly a,c_s,c,G,N0,D0,chi_Q,lambda_G
+  structural dimensional cut: verdict_from_partition parameters = ('scaling_ok', 'equivalence_ok', 'provenance_ok', 'partition'); dim-like dependencies = []
+PASS  020-local verdict has exactly three gate+partition parameters and no dim-like dependency
+  FOUR-WAY SPLIT / THIRD LEG: 020 carries the provenance-partition + CALIBRATED-verdict component 3/4 and lands it as PARTIAL; 018 fingerprint DONE, 019 prefactor DONE, 021 dim closure remaining.
+  CONSUMED-PROVENANCE -- LABELED NON-CHECK: cites 018 chi_Q=+1 and 27 (=1/v5), 019 P0=N0/D0, and 017 l=2 port-kernel D-lanes; NO guard/dual-site.
+  UNITS-BEARING-BUT-NO-DIM-GATE: c_s,a,c,G plus abstract N0,D0, chi_Q, and 27 occur in algebra/provenance only; the homogeneity closure belongs to 021.
+  54/5=2*27/5-COMPUTED / PROVENANCE-PARTITION: bound symbolic residual, computed factor classes, provenance-driven verdict; the separate invariance trap is non-driving.
+  STRENGTHENED-a^-5 / 3f-BOTH-DIRECTIONS: -5 flows from the frozen v5 slot; both G external->derived and 27 derived->external fire.
+  EARNED-vs-CALIBRATED scope: scaling, bridge, identity, classifier and verdict rule are earned; 54/5 and G are calibrated; actual branch scaling and numerical port scalars are Gate-6 deferred.
+  dropped-bookkeeping: scratch-YAML agreement handoff and report/feed writers are absent; tri-review plus the independent Wolfram route and transcript agreement replace them.
+  register note: likely zero new counted knobs; registration decides the structural edge and confirms the G/c bridge accounting.
+  QUAD_CALIBRATED (3/4) — the 54/5=2·27/5 provenance partition + the CALIBRATED verdict label EARNED (PARTIAL)
+    = the a⁻⁵ target scaling (DERIVED via equivalence a-cancellation, not a typed target power)
+    AND the Gamma5/chi_Q equivalence (forward=0, reverse=0; closes iff chi=1 and 54/27=2)
+    AND the bound 54/5=2*27/5 identity with 27 derived_in_gate and 2/5 external_bridge_input
+    AND the four-way provenance dominance that makes assembled 54/5 external_bridge_input -> QUAD_CALIBRATED.
+  REMAINING: fingerprint=018 (DONE); prefactor algebra=019 (DONE); the mu_hat0-free [P0^phys]=1 dim closure=021 (COMPLETING leg).
+  CAVEATS: actual branch a-scaling from N0/D0 and numerical (D_n,N_n) port scalars are Gate-6 deferred; 54/5 and G are calibrated (G=GENUINE_BLOCKED).
+  CONSUMES (PROVENANCE only): 018 chi_Q=+1 and 27; 019 P0=N0/D0 in the Gamma5 DEF; 017 port-kernel D-lanes; no dual-site.
+  EXPORTS: partition + CALIBRATED label + Gamma5/chi_Q equivalence + a^-5 scaling -> 021 + 022 + 027; no file artifact is written.
+  reduction certificate: FROZEN-INPUT 018 chi_Q/27, 019 P0 definition, 017 port provenance, and GR G/c/2/5 bridge; COMPUTED scaling/equivalence/bound identity/partition/trap/verdict; DEFERRED actual branch scaling and numerical port data.
+
+Verdict labels:
+---------------
+  ledger earned-label (NOT a source verdict token): PROVENANCE_PARTITION_CALIBRATED  (the assembled quadrupole magnitude 54/5 decomposes as 54/5 = 2*27/5 [SymPy-verified rational identity]; the 27 is derived_in_gate [018's fingerprint 1/v5], the 2/5 + G are external_bridge_input [GR Burke-Thorne 2G/5c^5, G=GENUINE_BLOCKED]; a 4-way provenance partition [dominance deferred>external>derived>convention] classifies the assembled 54/5 as external_bridge_input, so the verdict lands QUAD_CALIBRATED not QUAD_PASS -- PROVENANCE-driven, NOT G->lambda*G invariance [the separate g-invariance diagnostic exposes the invariance-only trap: 54/5 is G-invariant yet calibrated])
+  source top-line verdict: QUAD_CALIBRATED  (JOINT 4-stage; 020 carries the 54/5=2*27/5 provenance-partition + the CALIBRATED verdict label component 3/4 and lands the token as a PARTIAL)
+  joint composition (020 = the THIRD leg; 018/019 DONE, 021 remaining): QUAD_CALIBRATED = (018: outgoing DtN Hankel fingerprint + chi_Q sign)[EARNED, PARTIAL, DONE] AND (019: squared-denominator prefactor algebra)[EARNED, PARTIAL, DONE] AND (020: 54/5=2*27/5 provenance partition + the CALIBRATED verdict label)[EARNED here, PARTIAL] AND (021: mu_hat0-free [P0^phys]=1 dim closure)[the COMPLETING leg]
+  earned (the partition + bridge + scaling): the a^-5 target scaling (DERIVED via the equivalence a-cancellation, not a typed target power); the Gamma5/chi_Q equivalence 54*G*c_s^5/(5*a^5*c^5) <=> 2*G/(5*c^5) (closes iff chi=1 and 54/27=2); the 54/5=2*27/5 SymPy identity; the 4-way provenance partition (assembled 54/5 = external_bridge_input, external dominates); the CALIBRATED verdict (provenance-driven, NOT G-invariance)
+  earned (able-to-fail): 3c_wrong_scaling (STRENGTHENED -- a^5->a^4 breaks the equivalence a-cancellation -> FAIL_SCALING); 3e_equivalence_break (2/5->3/5 -> FAIL_EQUIVALENCE); 3f_partition_mislabel (BOTH directions: G external->derived AND 27 derived->external -> FAIL_PROVENANCE_PARTITION), each with a DYNAMIC 020-local self-ablation (re-run, NOT a constant, NOT the joint base_verdict)
+  calibrated / deferred (NOT 020): the fingerprint (018, DONE); the prefactor algebra (019, DONE); the mu_hat0-free dim closure (021); the 54/5 magnitude + G (external_bridge_input, G=GENUINE_BLOCKED); the ACTUAL branch a-scaling + the numerical (D_n,N_n) port scalars (Gate-6 sim-deferred, report :49)
+  consumed (PROVENANCE only -- NO guard/dual-site): 018's chi_Q=+1 + the 27 (=1/v5) [enter 020's self-contained equivalence bridge] + 019's P0=N0/D0 [Gamma5 def] + 017's l=2 port kernel D-lanes; NO mu_hat0/dim gate
+  exports: the 54/5=2*27/5 partition + the CALIBRATED label + the Gamma5/chi_Q equivalence + the a^-5 scaling => 021 (dim closure completes the joint) + 022 (non-regression) + 027 (pathA_43 closure)
+  new symbols first-appearing (020): none new-counted (G=GENUINE_BLOCKED/external_bridge_input, already in the register; c=GR/PN light-speed bridge = c_gamma role, cited benchmark; the 2/5=GR bridge; the 27=018's derived fingerprint); units-bearing (c_s/a/c/G live) but NO dim gate; no counted knobs expected (an EARNED classification slice, like 018/019)
+
+=======
+Tallies
+=======
+TALLY sympy: 74 pass + 0 fail = 74 checks
+OVERALL PASS

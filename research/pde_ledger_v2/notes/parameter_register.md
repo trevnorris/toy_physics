@@ -318,6 +318,30 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   per-tooth ablation confirmed genuine; 1 vacuous HF-guard leg + 3 literal/scaffolding flags were found + remediated
   make-genuine/de-count). `c_S` NOT consumed. **⇒ Part-II counted CALIB set is now `{μ_η, T_w, β}` (013) + `{Vp0/ℓ_c}` (015)
   = 4** (with `K_η=T_wβ²` R29-derived; the legacy constants + `Vp0`/`ℓ_c` individually + `r_AL` tracked-not-counted).
+- **⭐ Stage 016 (pathA_32 II-G3a): ZERO new counted knobs — the EARNED ℓ=2 SO(3) covariance theorem (the EARNED-FIRST
+  leg of a 2-way split; component 1/2 of the joint `ISOTROPY_CALIBRATED`).** The five real ℓ=2 harmonics form one
+  orthonormal SO(3)-irrep (`Gram=I₅`) with a single COMPUTED `−Δ_S²` eigenvalue `λ_m=ℓ(ℓ+1)=6` for every m (genuine
+  Laplace–Beltrami + Rayleigh quotient + eigenfunction residual), and the K₂ **angular** stiffness `K₂=K̃+λ_m·T̃_Ω` uses
+  that COMPUTED eigenvalue (the `forced_eigenvalue_probe` rejects a typed coefficient → `FAIL_NOT_COVARIANT`). The
+  covariance theorem is **pure angular math** — it introduces **NO calibration** (like 011/012/014, a structural-edge
+  stage). New tracked-not-counted symbols FIRST-APPEARING here but with **counting DEFERRED to 017's calibration partition**:
+  `T_Ω`/`T̃_Ω` (the angular-stiffness density used in K₂ + the dim check) and `β₂(w)` (the frozen ℓ=2 radial profile) — 016
+  uses them but does NOT count them (⚠ do not pre-empt 017's partition). ⚠ **The consumption is PROVENANCE + self-contained
+  dimensional integrity, NOT a cross-stage relation:** pathA_32 uses a VOLUME-density / dimensionless-`β₂` convention on
+  the measure `a²·dw·dΩ` (`[μ_η]=M L⁻³`, `[T_w]=M L⁻¹ T⁻²`, `[K_η]=M L⁻³ T⁻²`, `[T_Ω]=M L⁻³ T⁻²`) DIFFERENT from stage
+  013's line-density / `β=L⁻¹` convention on `4π∫dw` (where `K_η=T_w β²` holds) — related by an `∫a²dΩ`≈L² bridge, NOT
+  equal (a Grok compute-catch). So `μ_η`/`T_w` are cited as the same PHYSICAL wall constants counted at 013 (provenance,
+  not a checkable relation), and the genuine able-to-fail integrity is pathA_32's OWN `[M₂]=M`/`[K₂]=M T⁻²` consistency
+  with a one-dimension corruption of ANY sourced density (`[μ_η]/[T_w]/[K_η]/[T_Ω]`) firing `FAIL_DIMENSIONAL`. `c_S`
+  NOT consumed (angular structure speed-free). New structural edge **R34** (the ℓ=2 SO(3) covariance provenance: five
+  real harmonics = one SO(3)-irrep with `λ_m=6`; the K₂ angular stiffness uses the computed eigenvalue — discharges
+  NOTHING, earned angular structure not a reduction). ⭐ The pathA_32 v1 trip-ups are ABSENT: the eigenvalues are COMPUTED
+  (residual + `tautology_hash_collision` probe), the aggregate probe battery is intact (neuter-one flips), the sourced-`T_Ω`
+  dim-mutation fires `FAIL_DIMENSIONAL`; the source's vacuous `k_coeff_equal` `λ−λ≡0` self-compare is DE-COUNTED (the K₂-
+  coefficient computed-ness rides on a residual-on-the-assembled-K₂-coefficient + live `build_K2(lambdas)` binding + the
+  bare forced probe). Adversarial per-tooth ablation confirmed genuine; 1 vacuous stamped-literal (`participates_in_verdict`)
+  was found + remediated to a computed verdict-propagation check (fresh-agent `REVERIFY_CLEAN`). **⇒ Part-II counted CALIB
+  set UNCHANGED at `{μ_η, T_w, β}` (013) + `{Vp0/ℓ_c}` (015) = 4** (016 adds zero; `T_Ω`/`β₂` deferred to 017).
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

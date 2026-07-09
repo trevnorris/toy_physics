@@ -1,0 +1,118 @@
+\section{Stage 016: The \texorpdfstring{\(\ell=2\)}{l=2} SO(3) Covariance Theorem (Check II-G3a)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) sector; the EARNED-FIRST leg of a two-way split of pathA\_32 --- the SO(3) covariance-theorem component of the joint \texttt{ISOTROPY\_CALIBRATED}, with the grouped-P2 lane isotropy + the calibration partition = Stage~017)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Earn the \(\ell=2\) angular structure the grouped-lane isotropy rides. Show the five real \(\ell=2\) harmonics form one orthonormal SO(3)-irrep (\(\mathrm{Gram}=I_5\)) with a single \emph{computed} \(-\Delta_{S^2}\) eigenvalue \(\lambda_m=\ell(\ell+1)=6\) for every \(m\) (Laplace--Beltrami + Rayleigh quotient + eigenfunction residual), and that the \(K_2\) \emph{angular} stiffness \(K_2=\tilde K+\lambda_m\tilde T_\Omega\) uses that computed eigenvalue. Land the joint verdict as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage016_l2_so3_covariance_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage016_l2_so3_covariance_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the covariance theorem is exact symbolic algebra
+(genuine \(S^2\)-integral Gram, the real \(-\Delta_{S^2}\) operator, Rayleigh
+quotients, eigenfunction residuals, exact \(\{L,M,T\}\) dimension vectors;
+\texttt{expect\_zero}/\texttt{expect\_bool} residuals, no \texttt{scipy}/\texttt{numpy}/
+floats/tolerances). The verdict is the joint \texttt{ISOTROPY\_CALIBRATED}; this stage
+carries its \emph{SO(3) covariance-theorem} component (1/2, the EARNED slice) and lands
+the joint as \textbf{partial} (016 earned, 017 pending) --- not complete. It adds
+\textbf{zero} new counted knobs (a structural covariance edge, like Stages~011/012/014);
+the new symbols first appearing here --- \(T_\Omega/\tilde T_\Omega\) (the angular-stiffness
+density) and \(\beta_2(w)\) (the frozen \(\ell=2\) radial profile) --- have their counting
+\emph{deferred} to Stage-017's calibration partition. \(c_S\) is \emph{not} consumed
+(the angular structure is speed-free).
+
+\paragraph{The real basis and orthonormality.}
+The five real \(\ell=2\) harmonics
+\(Y_{20}=\sqrt{5/16\pi}\,(3\cos^2\theta-1)\),
+\(Y_{21c}=-\sqrt{15/4\pi}\,\sin\theta\cos\theta\cos\phi\),
+\(Y_{21s}\) (\(\cos\phi\to\sin\phi\)),
+\(Y_{22c}=\sqrt{15/16\pi}\,\sin^2\theta\cos2\phi\),
+\(Y_{22s}\) (\(\cos2\phi\to\sin2\phi\)) are orthonormal on the sphere:
+\[
+  \mathrm{Gram}_{ij}=\int_{S^2} Y_i Y_j\,d\Omega
+  =\int_0^\pi\!\!\int_0^{2\pi} Y_i Y_j\,\sin\theta\,d\phi\,d\theta=\delta_{ij},
+  \qquad \mathrm{Gram}=I_5.
+\]
+This is a computed integral --- a wrongly-normalized harmonic breaks
+\(\mathrm{gram\ is\ identity}\) and drives \texttt{covariant} to
+\texttt{FAIL\_NOT\_COVARIANT}.
+
+\paragraph{The computed eigenvalue (the crux).}
+With the real Laplace--Beltrami operator
+\(-\Delta_{S^2}f=-[(1/\sin\theta)\partial_\theta(\sin\theta\,\partial_\theta f)+(1/\sin^2\theta)\partial_\phi^2 f]\),
+two independent computations certify \(\lambda_m\) is \emph{computed}, not typed: the
+Rayleigh quotient \(\lambda_m=\int Y_m(-\Delta_{S^2})Y_m\,d\Omega/\int Y_m^2\,d\Omega=6\)
+for every \(m\), \emph{and} the eigenfunction residual
+\((-\Delta_{S^2})Y_m-\lambda_m Y_m=0\) (proving each \(Y_m\) is a genuine eigenfunction).
+So \(\lambda_m=\ell(\ell+1)=6\) is the same across all five \(m\): the \(\ell=2\) sector
+is one \(5\)-dimensional SO(3)-irrep with a single eigenvalue --- the angular degeneracy
+that \emph{is} the covariance.
+
+\paragraph{The \texorpdfstring{\(K_2\)}{K2} angular stiffness.}
+The angular stiffness \(K_2=\tilde K+\lambda_m\tilde T_\Omega\) (with \(M_2=\tilde M\))
+is assembled with the \emph{live} computed eigenvalue (\texttt{build\_K2(lambdas)}, not a
+typed \(6\)). Its computed-ness is able-to-fail through a residual on the assembled
+coefficient (\((-\Delta_{S^2})Y-(\mathrm{coeff\ in\ }K_2)\,Y=0\), which a wrong typed
+coefficient breaks) \emph{and} the \emph{bare} \(\mathrm{forced\ eigenvalue\ probe}\)
+(coefficient \(2\ne6\Rightarrow\texttt{FAIL\_NOT\_COVARIANT}\)). \emph{The source's
+\(k_{\mathrm{coeff\ equal}}\) self-compare \(\lambda-\lambda\equiv0\) is vacuous and is
+de-counted}; its role is carried by these two genuine checks.
+
+\paragraph{Angular dimensional consistency.}
+On pathA\_32's own convention --- volume densities on the wall measure
+\(dV=a^2\,dw\,d\Omega\) (dimension \(L^3\)), \(\beta_2\) dimensionless, \(\beta_2'=L^{-1}\),
+\([\mu_\eta]=M L^{-3}\), \([T_w]=M L^{-1}T^{-2}\), \([K_\eta]=[T_\Omega]=M L^{-3}T^{-2}\)
+--- one finds \([M_2]=M\), each \(K_2\) term \(M T^{-2}\), \([K_2/M_2]=T^{-2}\). The
+dimensions are \emph{sourced} from the density integrals (not back-solved). Corrupting the
+sourced \([T_\Omega]\) (and \(\tilde T_\Omega\)) by one power of \(L\) makes the \(K_2\)
+sum inhomogeneous \(\Rightarrow\texttt{FAIL\_DIMENSIONAL}\); the same holds for a one-power
+corruption of \([\mu_\eta]\), \([T_w]\), or \([K_\eta]\).
+
+\paragraph{The able-to-fail battery.}
+The scoped verdict runs 016's gates only (dimensional, covariant, tautology, able-to-fail;
+017's stability/denominator/lane/dynamic gates are not computed here). The aggregate battery
+is 016's three probes --- \(\mathrm{wrong\ eigenvalue}\) (coeff \(2\ne6\Rightarrow\)
+\texttt{FAIL\_NOT\_COVARIANT}), \(\mathrm{tautology\ hash\ collision}\) (identical harmonic
+inputs \(\Rightarrow\) non-distinct SHA-256 hashes \(\Rightarrow\) \texttt{FAIL\_TAUTOLOGICAL}),
+and \(\mathrm{dimensional\ corrupt\ }T_\Omega\) (\(\Rightarrow\)\texttt{FAIL\_DIMENSIONAL}) ---
+each a computed conjunction of (its mutation fires its verdict) \(\wedge\) (its self-ablation
+suppresses); \emph{neutering any one flips the aggregate false}.
+
+\paragraph{Honest scope.}
+Angular earned / radial calibrated: 016 derives the angular structure, but the radial profile
+\(\beta_2(w)\) and the radial/support scalars remain frozen calibration inputs (not derived
+from the Gate-1 \(R_0\) support equation) --- which is \emph{why} the joint is
+\texttt{ISOTROPY\_CALIBRATED} rather than \texttt{ISOTROPY\_PASS}; the calibration partition
+is Stage-017's. The \(54/5\) quadrupole normalization, outgoing odd-\(N\) coefficients, and
+the solved nonlinear branch (\(G=\)\texttt{GENUINE\_BLOCKED}) are deferred Gate 4/5/6 work.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance, not a cross-stage relation:} pathA\_32's volume-density / dimensionless-\(\beta_2\)
+convention differs from Stage-013's line-density / \(\beta=L^{-1}\) convention (related by an
+\(\int a^2 d\Omega\approx L^2\) bridge, not equal), so the Stage-013 relation \(K_\eta=T_w\beta^2\)
+does \emph{not} transfer. Hence \(\mu_\eta,T_w\) are cited as the same physical wall constants
+counted at Stage~013 (provenance), the frozen radial reference and the Gate-1 D/N boundary
+(Stage~012 R28) are cited, and the genuine able-to-fail integrity is pathA\_32's \emph{own}
+\([M_2]=M\)/\([K_2]=M T^{-2}\) dimensional consistency. Register: \textbf{zero} new counted
+knobs; the new \(T_\Omega/\beta_2\) counting is deferred to Stage~017; structural edge
+\textbf{R34} (the \(\ell=2\) SO(3) covariance provenance --- five real harmonics = one
+SO(3)-irrep with \(\lambda_m=6\); discharges nothing).
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML
+engine-agreement handoff is severed; the \texttt{.wl} KEEPS its native \texttt{Integrate}/
+\texttt{D}/\texttt{Hash} route (its own \texttt{dimOf}/\texttt{scopedVerdict}), not a mirror,
+agreeing at the transcript level (\(\mathrm{Gram}=I_5\), \(\lambda_m=6\), the three probe
+verdicts, the 016 aggregate), with an arity self-check. SymPy 82 PASS / Mathematica 91 PASS,
+exit 0, CWD-independent. The directive design-review used the Codex\(\to\)Grok\(\to\)Codex
+bookend; the Grok compute-verify pass caught the volume-vs-line dimensional-convention mismatch
+(the cross-stage dual-site was non-transferable \(\to\) reframed to provenance + self-contained
+integrity), and strengthened the \(k_{\mathrm{coeff\ equal}}\) de-count to a residual on the
+assembled \(K_2\) coefficient. Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (an
+independent read hand-re-derived the harmonics, the Laplace--Beltrami operator, all Rayleigh
+\(\lambda=6\) with zero residuals, and the full \(L/M/T\) dim walk) and \texttt{ADVERSARIAL\_CLEAN}
+(per-tooth ablation: all 82 SymPy checks + 4 native \texttt{.wl} ablations fired at their own
+assert) --- with one low-severity stamped literal (\(\mathrm{participates\ in\ verdict}\))
+remediated to a computed verdict-propagation check; a fresh-agent \texttt{REVERIFY\_CLEAN}
+confirmed it fires under its own ablation. Symbolic per-tooth ablation, mutations on copies.

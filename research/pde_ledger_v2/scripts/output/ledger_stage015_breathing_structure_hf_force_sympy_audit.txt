@@ -1,0 +1,198 @@
+# SymPy Audit Output
+# Script: ledger_stage015_breathing_structure_hf_force_sympy_audit.py
+# Date: 2026-07-08T22:20:52-06:00
+# Elapsed: 157s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================
+ledger_stage015_breathing_structure_hf_force SymPy audit
+========================================================
+
+CONSUMED-from-013/014 citation integrity
+----------------------------------------
+  CONSUMED-from-013: profiles alpha_a,alpha_L; operator-projected M_AB/K_AB; frozen packet {L0=37/20,beta=1,beta*L0=37/20}.
+  CONSUMED-from-014: truncation certificate beta_L0 in [0.1,3.0] / K_eta/Tw <= ~2.6; cited only, no eigensolve here.
+  Site A reads betaL0_cited as an independently corruptible cited datum, not local beta*L0.
+PASS  site A consumed packet site_A_betaL0_anchor
+PASS  site A consumed packet site_A_packet_product
+PASS  site A consumed packet anchor_L0
+PASS  site A consumed packet anchor_beta
+PASS  site A clean packet passes
+PASS  site A betaL0_cited-only corruption is non-vacuous produced required FAIL (residual = 1)
+  Site B verifies cited profile residual AND endpoint BCs; it does not solve the BVP.
+PASS  site B profile residual_alpha_a
+PASS  site B profile residual_alpha_L
+PASS  site B profile bc_alpha_a_0
+PASS  site B profile bc_alpha_a_L0
+PASS  site B profile bc_alpha_L_0
+PASS  site B profile bc_alpha_L_L0
+PASS  site B residual-and-BC guard passes cited profiles
+PASS  kernel-preserving corruption has zero residual but wrong BC
+PASS  kernel-preserving profile corruption breaks site B BC leg produced required FAIL (residual = 1)
+PASS  non-kernel profile corruption breaks site B residual leg produced required FAIL (residual = 1)
+  Consumed M/K det-identities plus off-diagonal sign checks cover every cited entry, including det-blind sign flips.
+PASS  consumed det(M) identity vs independent 013 closed form
+PASS  consumed det(K) identity vs independent 013 closed form
+PASS  consumed M_aL > 0 via B-tanh(B) certificate
+PASS  consumed K_aL < 0 via -1/sinh(B) certificate
+PASS  consumed M/K citation integrity clean baseline passes
+PASS  M_aa diagonal corruption breaks det(M) identity produced required FAIL (residual = 4*pi**2*muEta**2*rAL**2*(L0**2*beta**2 - L0*beta*sinh(2*L0*beta) + sinh(L0*beta)**4 + sinh(L0*beta)**2)/(beta**2*sinh(L0*beta)**4))
+PASS  M_LL diagonal corruption breaks det(M) identity produced required FAIL (residual = 4*pi**2*muEta**2*rAL**2*(L0**2*beta**2 - L0*beta*sinh(2*L0*beta) + sinh(L0*beta)**4 + sinh(L0*beta)**2)/(beta**2*sinh(L0*beta)**4))
+PASS  M_aL magnitude corruption breaks det(M) identity produced required FAIL (residual = -6*pi**2*muEta**2*rAL**2*(L0**2*beta**2*cosh(2*L0*beta) + L0**2*beta**2 - 2*L0*beta*sinh(2*L0*beta) + cosh(2*L0*beta) - 1)/(beta**2*sinh(L0*beta)**4))
+PASS  M_aL sign flip leaves det(M) identity blind as expected
+PASS  M_aL sign flip breaks the explicit M_aL>0 check produced required FAIL (residual = 1)
+PASS  K_aa diagonal corruption breaks det(K) identity produced required FAIL (residual = 16*pi**2*Tw**2*beta**2*rAL**2/tanh(L0*beta)**2)
+PASS  K_LL diagonal corruption breaks det(K) identity produced required FAIL (residual = 16*pi**2*Tw**2*beta**2*rAL**2/tanh(L0*beta)**2)
+PASS  K_aL magnitude corruption breaks det(K) identity produced required FAIL (residual = -48*pi**2*Tw**2*beta**2*rAL**2/sinh(L0*beta)**2)
+PASS  K_aL sign flip breaks explicit K_aL<0 check produced required FAIL (residual = 1)
+
+Legacy E_geom and own-built H_legacy
+------------------------------------
+  E_geom =  (chi**2*delta_a**2*kappa - 2*chi*delta_L*delta_a*kappa + delta_L**2*kappa + delta_L**2*sigmaL + delta_a**2*sigmaA)/2
+  H_legacy =  Matrix([
+[chi**2*kappa + sigmaA,     -chi*kappa],
+[           -chi*kappa, kappa + sigmaL]])
+PASS  H_legacy entry/det aa
+PASS  H_legacy entry/det aL
+PASS  H_legacy entry/det LL
+PASS  H_legacy entry/det det
+PASS  legacy_symmetric
+PASS  legacy_offdiag_negative certificate: H_aL=-chi*kappa with chi,kappa>0
+PASS  legacy_det_positive certificate uses positive-term form
+  LEGACY-CONSTANT boundary: {kappa,chi,sigmaA,sigmaL} enter only here; 013 M/K free symbols =  ['L0', 'Tw', 'beta', 'muEta', 'rAL']
+PASS  013 M/K free-symbol firewall excludes 015 legacy constants
+PASS  legacy-Hessian tooth: dropping sigmaA support term breaks H_aa produced required FAIL (residual = -sigmaA)
+PASS  legacy-Hessian tooth: dropping chi cross coupling breaks H_aL produced required FAIL (residual = chi*kappa)
+
+EARNED-STRUCTURE-RECOVERY
+-------------------------
+  Structure gate compares cited 013 M/K against own-built H_legacy: M pos-def; K symmetric; K_aL<0; rank and zero-pattern match.
+  Positivity method: exact identities f1'=2*sinh(B)^2, f2=(sinh(B)-B)(sinh(B)+B), M_aL via h=B-tanh(B); no ask/is_positive and no M[i,j]-same-form positivity tooth.
+PASS  positivity certificate identity f1_at_0
+PASS  positivity certificate identity f1_prime_square
+PASS  positivity certificate identity g_at_0
+PASS  positivity certificate identity g_prime_square
+PASS  positivity certificate identity f2_factorization
+PASS  positivity certificate identity h_at_0
+PASS  positivity certificate identity h_prime_square
+PASS  entry-to-certificate residual M_aa_core_is_f1
+PASS  entry-to-certificate residual det_M_core_is_f2
+PASS  entry-to-certificate residual M_aL_core_is_h
+PASS  entry-to-certificate residual K_aL_negative_core
+PASS  M_posdef via exact Sylvester certificates
+PASS  K_symmetric
+PASS  K_offdiag_negative via cited K_aL sign certificate
+PASS  K_rank==rank(H_legacy)==2
+PASS  zero_pattern(K)==zero_pattern(H_legacy)
+PASS  K_structure_ok
+PASS  structure_from_computed_matrices: cited M/K free_symbols exclude legacy {kappa,chi,sigmaA,sigmaL}
+PASS  recovery is structural not full entrywise fit: M_aa != H_legacy_aa is nonzero as required (residual = -(2*pi*L0*beta*muEta/sinh(L0*beta)**2 + beta*chi**2*kappa + beta*sigmaA - 2*pi*muEta/tanh(L0*beta))/beta)
+  K_zero_pattern =  ((False, False), (False, False)) ; legacy_zero_pattern =  ((False, False), (False, False))
+  structure_from_computed_matrices=True; full_matrix_fit=False.
+PASS  probe M_aa -> -M_aa flips M_posdef false
+PASS  probe K_aL -> -K_aL flips K_offdiag_negative false
+PASS  probe K_aL -> -K_aL flips K_structure_ok false
+PASS  structure entry tooth: corrupt M_aa sign fails M_posdef produced required FAIL (residual = 1)
+PASS  structure entry tooth: corrupt K_aL sign fails K_structure_ok produced required FAIL (residual = 1)
+PASS  structure entry tooth: H_legacy offdiag mutation breaks zero-pattern match produced required FAIL (residual = 1)
+
+HF-TWO-ROUTE-GENUINENESS
+------------------------
+  source_density =  Vp0*rhoStar/ellC ; measure is action 4*pi*int dw, not mu_eta-weighted.
+  Distributed unsimplified F_a raw tree:
+     4*pi*Integral(Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)), (w, 0, L0))
+  Legacy/HF unsimplified F_a raw tree:
+     -4*pi*Integral(-Vp0*rhoStar*sinh(L0*beta - beta*w)/(ellC*sinh(L0*beta)), (w, 0, L0))
+  Distributed simplified: F_a=4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta)); F_L=4*pi*Vp0*rAL*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+  Legacy simplified: F_a=4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta)); F_L=4*pi*Vp0*rAL*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+PASS  F_dist_a closed form
+PASS  F_legacy_a closed form
+PASS  F_dist_L closed form
+PASS  F_legacy_L closed form
+PASS  HF route difference F_a
+PASS  HF route difference F_L
+PASS  hf_force_reduces=True
+PASS  unsimplified_routes_identical computed False
+  tooth 1a typed-twice setup: unsimplified_routes_identical=True scaffolding is de-counted; verdict tooth follows.
+PASS  tooth 1a typed-twice Route 2 trips BREATHING_FAIL_HF_FORCE
+PASS  tooth 2 corrupt one HF route breaks hf_force_reduces produced required FAIL (residual = 1)
+PASS  tooth 2 corrupt one route trips BREATHING_FAIL_HF_FORCE
+
+static-dynamic-limit
+--------------------
+  Qddot -> 0 in the same M_AB Qddot + K_AB Q = F_A system gives K_AB Q = F_A.
+  After the legacy-pattern comparison this is the static dE_geom/dQ=0 limit; no separate static solve is fabricated.
+PASS  static_limit_consistent: Qddot->0 EOM residual equals K*Q-F
+  separate_static_solve=False (scope note only; no counted literal tooth).
+
+HF-PROFILE-GUARD / 014<->015 boundary
+-------------------------------------
+  Degenerate alpha_a=0: wrong_zero_F_a =  0
+  Constant alpha_a=1: wrong_const_F_a =  4*pi*L0*Vp0*rhoStar/ellC
+  Frozen correct legacy force F_a =  4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta))
+  014<->015 boundary: constant_one overlap_passes=True in 014, but hf_mismatch=True here; HF is the profile guard the overlap could not supply.
+PASS  wrong_zero_F_a is native zero integral
+PASS  wrong_const_F_a is 4*pi*L0*Vp0*rhoStar/ellC
+PASS  degenerate hf_mismatch=True
+PASS  constant hf_mismatch=True
+PASS  constant profile passed 014 overlap but fails 015 HF
+PASS  HF guard reads a real object: degenerate wrong_zero_F_a genuinely differs from frozen legacy force is nonzero as required (residual = -4*pi*Vp0*rhoStar*(cosh(L0*beta) - 1)/(beta*ellC*sinh(L0*beta)))
+PASS  HF guard reads a real object: constant wrong_const_F_a genuinely differs from frozen legacy force is nonzero as required (residual = 4*pi*Vp0*rhoStar*(L0*beta - 1/tanh(L0*beta) + 1/sinh(L0*beta))/(beta*ellC))
+
+015 scoped landing and joint composition
+----------------------------------------
+  015 scoped verdict =  BREATHING_CALIBRATED
+PASS  015 component lands at BREATHING_CALIBRATED
+PASS  STRUCTURE rung passes
+PASS  HF rung passes with anti-x-x guard
+PASS  HF guard rejects both wrong profiles
+  BREATHING_CALIBRATED (JOINT, 3-stage) -- COMPLETE
+    = (013: harmonic profiles + M/K operator-projection + (a,L) EOM LHS)[done, cited]
+    AND (014: truncation consistency)[done, cited]
+    AND (015: legacy-Hessian structure recovery + Hellmann-Feynman force + static-dynamic limit)[computed here]
+  RHS FILLED: the EOM M_AB Qddot + K_AB Q = F_A^(HF) now has F_A^(HF)=4*pi*int (rhoStar*Vp0/ellC)*alpha_A dw.
+  CALIBRATED <= {muEta,Tw,beta} (013) [+ the HF drive scale rhoStar*Vp0/ellC -- register question, not decided here].
+  CAVEATS: HF is the profile guard the overlap could not supply; {kappa,chi,sigmaA,sigmaL} are the legacy-Hessian pattern basis; BdG k^4 deferred.
+
+Provenance and scope
+--------------------
+  CONSUMED-from-013/014: stage013 profiles alpha_a,alpha_L + operator-projected M_AB/K_AB + frozen packet are cited with dual-site integrity; stage014 window beta_L0 in [0.1,3.0] / K_eta/Tw<=~2.6 is cited; no sibling recomputation.
+  no-c_S: 015 is speed-free (static structure + static force); matter-sector c_s/BdG k^4 is deferred under k*xi << 1 (phonon_limit_caveat).
+  LEGACY-CONSTANT boundary: {kappa,chi,sigmaA,sigmaL} enter HERE as E_geom parameters and are absent from 013 M/K.
+  EARNED-STRUCTURE-RECOVERY: own-built H_legacy plus genuine structural match of cited M/K; recovered, not re-postulated; full_matrix_fit=False.
+  HF-TWO-ROUTE-GENUINENESS: distributed projection vs Hellmann-Feynman parametric derivative; hf_force_reduces=True and unsimplified_routes_identical=False.
+  HF-PROFILE-GUARD: degenerate and constant wrong profiles have hf_mismatch=True; constant_one passed 014 overlap but fails 015 HF.
+  static-dynamic-limit: Qddot->0 in the same dynamical closure gives K_AB Q = F_A and the static dE_geom/dQ=0 limit; no separate static solve.
+  3-way-split-COMPLETING: 015 is component 3/3 and completes BREATHING_CALIBRATED; the RHS F_A^(HF) deferred by 013 is filled here.
+  dropped-bookkeeping: scratch-WL exports, sympy* comparisons, expression_digest, engine_agreement, YAML/JSON plumbing, and report writers are stripped.
+  downstream consumers: stages 022/023 consume the completed ell=0 (a,L) breathing closure.
+  register note: 015 introduces Vp0 and makes ell_c live through rhoStar*Vp0/ellC; whether that force scale is a counted CALIB knob is intentionally left to registration.
+PASS  no c_S/cS live symbol appears in 015 symbolic content
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): BREATHING_STRUCTURE_HF_FORCE_EARNED  (legacy-Hessian structure recovery: own-built H_legacy=hessian(E_geom); the CITED 013 M_AB/K_AB match its structural signature (M pos-def by Sylvester; K symmetric; K_aL<0 <=> H_legacy off-diagonal -chi*kappa<0 for chi>0; rank(K)=rank(H_legacy)=2; zero-pattern match) => the (a,L) operator-projected closure is RECOVERED not re-postulated; the Hellmann-Feynman force F_A^(HF) derived by TWO genuinely-different routes -- distributed projection F_dist=4pi int (rho*Vp0/ellC) alpha_A dw vs Hellmann-Feynman parametric F_legacy=-4pi int rho* dV_conf/dq_A|0 dw -- that AGREE (hf_force_reduces=True) with unsimplified_routes_identical=False (the anti-x-x: raw trees differ); the HF REJECTS the wrong profiles (hf_mismatch=True for alpha_a=0 and alpha_a=1) -- the constant profile passed 014's overlap but fails 015's HF)
+  source top-line verdict: BREATHING_CALIBRATED  (JOINT 3-stage; 015 carries the legacy-structure + HF-force component 3/3 and COMPLETES the joint)
+  joint composition (COMPLETE): BREATHING_CALIBRATED = (013: harmonic profiles + M/K operator-projection + (a,L) EOM LHS)[done] AND (014: truncation consistency)[done] AND (015: legacy-Hessian structure recovery + Hellmann-Feynman force + static-dynamic limit)[here] ; the EOM RHS F_A^(HF) 013 deferred is filled here
+  earned (structure): H_legacy own-built; the cited 013 M/K match its structural signature (genuine pos-def/symmetric/negative-offdiagonal/rank/zero-pattern comparisons, NOT X==X on cited literals); the two probes (M_aa->-M_aa, K_aL->-K_aL) flip the gate
+  earned (HF force): both routes genuinely different constructions agreeing after simplification; unsimplified_routes_identical computed False (anti-x-x); corrupting one route breaks hf_force_reduces
+  calibrated (values): the wall constants {mu_eta,Tw,beta} are stage-013 calibration inputs; the HF drive scale rho*Vp0/ellC is the section-6 register question (likely a new CALIB force-scale -- confirm at registration) -> BREATHING_CALIBRATED not ..._PASS
+  carried caveats (015's own, honest): the HF is the profile guard the overlap could not supply (constant_one PASSES 014's overlap, FAILS 015's HF); {kappa,chi,sigmaA,sigmaL} are the legacy-Hessian pattern basis (a re-parameterization of the calibrated set; structural recovery not full numeric fit, full_matrix_fit=False); BdG k^4 matter-sector deferred (k*xi<<1)
+  consumed (cited from stage013/014, dual-site integrity): collective profiles alpha_a,alpha_L; operator-projected M_AB/K_AB; frozen packet L0=37/20, beta=1, beta*L0=37/20; 014 truncation certificate (window beta_L0 in [0.1,3.0], K_eta/Tw<=~2.6); c_S NOT consumed (matter-sector deferred)
+  new symbols (015): legacy {kappa,chi,sigmaA,sigmaL} (E_geom parameterization; ABSENT from 013's M/K); HF drive Vp0 (confinement slope) + ell_c LIVE (delta_V_conf != 0 here; INERT at 011) + rho* (frozen density, consumed)
+
+Baseline immutability after copy mutations
+------------------------------------------
+PASS  baseline M_posdef remains true
+PASS  baseline K_structure_ok remains true
+PASS  baseline hf_force_reduces remains true
+PASS  baseline unsimplified_routes_identical remains false
+PASS  baseline M/K citation integrity remains true
+PASS  baseline clean 015 verdict remains BREATHING_CALIBRATED
+
+PASS tally: 95; FAIL tally: 0; TOTAL = 95 + 0 = 95
+OVERALL PASS: SymPy verified ledger_stage015 breathing structure recovery + Hellmann-Feynman force exactly
+
+EXIT_CODE: 0

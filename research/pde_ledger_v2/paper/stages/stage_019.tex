@@ -1,0 +1,123 @@
+\section{Stage 019: The Squared-Denominator Prefactor Algebra \texorpdfstring{\(P(\omega)=D_0N/D^{\mathrm{cons}\,2}\)}{P=D0 N/Dcons^2} (Check II-G4b)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative sector; the SECOND leg of a four-way split of pathA\_33 --- the squared-denominator prefactor-algebra component of the joint \texttt{QUAD\_CALIBRATED}, with the DtN Hankel fingerprint = Stage~018 (done), the \(54/5=2\cdot27/5\) provenance partition + the CALIBRATED label = Stage~020, and the \(\hat\mu_0\)-free dimensional closure = Stage~021)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Earn the prefactor structure the quadrupole normalization rides. Show the squared-denominator prefactor \(P(\omega)=D_0\,N(\omega)/D^{\mathrm{cons}}(\omega)^2\), \(N=N_0+N_2\omega^2+N_4\omega^4\), \(D^{\mathrm{cons}}=D_0+D_2\omega^2+D_4\omega^4\), Taylor-expands about \(\omega=0\) to \(P_0=N_0/D_0\), \(P_2=(D_0N_2-2D_2N_0)/D_0^2\), \(P_4=(D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0)/D_0^3\) --- with the \(-2D_2N_0\) factor-of-2 the signature of the squared denominator (plain \(N/D\) gives only \(-D_2N_0\), provably wrong). Land the joint verdict as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage019_prefactor_algebra_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage019_prefactor_algebra_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the prefactor algebra is exact symbolic: the coefficients are
+exact rational functions of the abstract port scalars, read off a symbolic
+\(\texttt{series}(\ldots)\) of \(D_0N/D^{\mathrm{cons}\,2}\) (\texttt{expect\_zero}/
+\texttt{expect\_bool}/\texttt{expect\_fail} residuals, no \texttt{scipy}/\texttt{numpy}/
+floats; the light integer sample substitution is a transcript-level cross-check only). The
+verdict is the joint \texttt{QUAD\_CALIBRATED}; this stage carries its
+\emph{squared-denominator prefactor-algebra} component (2/4) and lands the joint as
+\textbf{partial} (018 done, 019 earned here; 020/021 pending) --- not complete. It adds
+\textbf{zero} new counted knobs (an EARNED/structural prefactor-algebra slice, like
+Stages~018/016/011/012/014); the abstract \(D_0,D_2,D_4\) are Stage-017's exported D-lanes
+and the \(N_0,N_2,N_4\) are the deferred port \(N\)-moments, cited as provenance, not
+consumed values.
+
+\paragraph{The squared-denominator prefactor object.}
+The port numerator and the conservative (``consumption'') denominator are
+\[
+  N(\omega)=N_0+N_2\omega^2+N_4\omega^4,
+  \qquad
+  D^{\mathrm{cons}}(\omega)=D_0+D_2\omega^2+D_4\omega^4,
+\]
+and the prefactor is the \emph{squared}-denominator object
+\[
+  P(\omega)=\frac{D_0\,N(\omega)}{D^{\mathrm{cons}}(\omega)^2}
+  \qquad(\text{not the plain } N/D).
+\]
+The \(D_n\) are Stage-017's exported \(\ell=2\) port-kernel D-lanes and the \(N_n\) are the
+concrete port \(N\)-moments of \texttt{build\_port\_moments}; here they are carried as
+abstract, port-agnostic symbols --- the algebra below holds for \emph{any} nonzero
+\(D_0\ldots N_4\), so no port value is consumed (the numerical \((D_n,N_n)\) are deferred
+Gate-6 branch data).
+
+\paragraph{The prefactor algebra (the EARNED headline).}
+Expanding \(P(\omega)\) about \(\omega=0\) and reading the coefficients off the actual series,
+\[
+  P_0=\frac{N_0}{D_0},\quad
+  P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},\quad
+  P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\]
+The \(-2D_2N_0\) term is the \emph{signature} of the squared denominator: it arises only from
+the \(-2x\) term of \((1+x)^{-2}\) with \(x=(D_2/D_0)\omega^2+(D_4/D_0)\omega^4\). The
+coefficients are \(\operatorname{coeff}(\omega,n)\) off the \emph{actual} symbolic series of
+\(D_0N/D^{\mathrm{cons}\,2}\) --- with the object and its series emitted --- and are checked
+against an \emph{independent} typed reference (a genuine derive-then-check that could
+disagree), not hardcoded and compared. Mutating the object (e.g.\ to plain \(N/D\), or
+perturbing a \(D_n/N_n\) power) changes the extracted coefficient and fires exactly that
+coefficient's \texttt{expect\_fail}; a swapped-in \emph{correct} object flips the
+discriminator to true --- a genuine positive control.
+
+\paragraph{The \texorpdfstring{\(N/D\)}{N/D} self-check.}
+The plain (non-squared) object exposes the factor of two directly: \(N/D^{\mathrm{cons}}\)
+series-expands to \(P_2^{\mathrm{plain}}=(D_0N_2-D_2N_0)/D_0^2\), so the computed gap
+\[
+  P_2^{\mathrm{plain}}-P_2=\frac{D_2N_0}{D_0^2}\ne0,
+\]
+i.e.\ \(-D_2N_0\) versus the correct \(-2D_2N_0\). The gap is \emph{computed} (not asserted);
+the counterfactual probe \texttt{3g\_wrong\_prefactor\_object} replaces \(D_0N/D^{\mathrm{cons}\,2}\)
+with plain \(N/D\), so \(\texttt{plain\_equals\_correct\_P2}=\texttt{False}\) and the probe fires
+\texttt{FAIL\_PREFACTOR\_ALGEBRA}, while the correct object does \emph{not} fire. Its
+self-ablation is a genuine \emph{dynamic} re-run of an 019-local verdict gate (the prefactor
+match \(\wedge\) the \(N/D\) self-check; \(\mathrm{with}\ne\mathrm{without}\), never a
+constant, and never the joint \texttt{base\_verdict}) --- the pathA\_33 v1 trip-up avoided.
+
+\paragraph{Provenance-only consumption and units-free scope.}
+This is where Stage-018's deferred literal \(N_n/D_n\) port-kernel consumption lands --- at
+the \emph{provenance} level, not a value-consumption dual-site. Because the algebra is
+port-agnostic and \texttt{build\_port\_moments} is emitted-but-never-checked (deferred Gate-6
+branch data), there is no checkable cross-stage relation to guard: Stage-017's D-lanes, the
+concrete \(N\)-moments, and Stage-018's fingerprint context are cited as narrative provenance
+with no guard/dual-site on any of them (the same provenance-only landing as Stage~018; a
+guard on the unused/deferred moments would be a vacuous tooth). The stage is \emph{units-free}:
+it introduces no \(c_s/a/G/\hat\mu_0\) and has no dimensional leg (the \(\hat\mu_0\)-free
+\([P_0^{\mathrm{phys}}]=1\) closure is Stage-021's). A runtime free-symbol guard asserts the
+earned expressions' symbols are exactly \(\{\omega,D_0,D_2,D_4,N_0,N_2,N_4\}\).
+
+\paragraph{Honest scope.}
+Earned prefactor structure / calibrated magnitude: 019 derives the port-agnostic algebra
+(\(P_0,P_2,P_4\) and the \(N/D\) factor-of-two self-check), but the \(54/5=2\cdot27/5\)
+normalization magnitude and \(G\) are calibrated (\(G=\)\texttt{GENUINE\_BLOCKED}), landed at
+Stage~020, and the numerical port scalars \((D_n,N_n)\) from the solved nonlinear branch
+remain deferred Gate-6 work. The DtN fingerprint is Stage~018; the \(\hat\mu_0\)-free
+dimensional closure is Stage~021.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance only, no dual-site:} the abstract \(D_0,D_2,D_4\) are Stage-017's exported
+D-lanes and the \(N_0,N_2,N_4\) are \texttt{build\_port\_moments}' concrete port \(N\)-moments
+(deferred Gate-6, asserted against nothing); Stage-018's fingerprint context is a narrative
+cite. Register: \textbf{zero} new counted knobs; structural edge \textbf{R38} (the
+squared-denominator prefactor-algebra provenance --- \(P_0=N_0/D_0\),
+\(P_2=(D_0N_2-2D_2N_0)/D_0^2\), \(P_4=(D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0)/D_0^3\) with the
+\(-2D_2N_0\) factor-of-2 the squared-denominator signature; discharges nothing). Part-II
+counted CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) +
+\(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML
+handoff is severed; the \texttt{.wl} KEEPS its native \texttt{serW}/\texttt{Coefficient}/
+\texttt{FullSimplify} route on its own \(P(\omega)\)/plain objects (typing its own expected
+\(P_0/P_2/P_4\)), not a mirror, agreeing at the transcript level (the series-extracted
+coefficients, the plain \(P_2=(D_0N_2-D_2N_0)/D_0^2\), and \texttt{plainEqualsCorrectP2=False}),
+with an arity + unevaluated-leakage self-check. SymPy 18 PASS / Mathematica 24 PASS, exit 0,
+CWD-independent. The directive design-review used the Codex\(\to\)Grok\(\to\)Codex bookend (both
+engines compute-verified the series \(N_0/D_0+(D_0N_2-2D_2N_0)\omega^2/D_0^2+\cdots\), the plain
+\(N/D\) gap \(D_2N_0/D_0^2\), and the emitted-but-never-checked reading of
+\texttt{build\_port\_moments}; four nits folded --- a line-ref fix, the D-lane/\(N\)-moment
+split, the sibling-symbol wording, and the D0..N4-only sample substitutions). Full tri-review on
+fresh agents: \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived \(P_0/P_2/P_4\) and
+the \(N/D\) gap \(D_2N_0/D_0^2\)) and \texttt{ADVERSARIAL\_ISSUES} (per-tooth ablation: the
+central firewall, N/D self-check, and dynamic 019-local ablation all genuine; two subsumed/mirror
+teeth flagged --- one made-genuine as a swapped-in correct-object positive control, one
+honestly de-counted --- plus a de-obfuscation of narrative tokens and a legibility fix, all
+re-verified \texttt{REVERIFY\_CLEAN} by the coupling meta-test). Symbolic per-tooth ablation,
+mutations on copies.

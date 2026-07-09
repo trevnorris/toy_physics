@@ -16,14 +16,14 @@ reviewed_stage_count: 18
 | Part | Stage Range | Total | SymPy | Mathematica | Numerical | Review |
 |---|---|---:|---:|---:|---:|---:|
 | I | 004-007 | 4 | 4 | 4 | 0 | 4 |
-| II | 001-002, 008-018 | 13 | 13 | 13 | 0 | 13 |
+| II | 001-002, 008-019 | 14 | 14 | 14 | 0 | 14 |
 | III | 003 | 1 | 1 | 1 | 0 | 1 |
 
 ## Coverage Classes
 
 | Coverage class | Count | Stage ranges |
 |---|---:|---|
-| SymPy + Mathematica | 18 | 001-018 |
+| SymPy + Mathematica | 19 | 001-019 |
 | SymPy only | 0 | none |
 | Mathematica only | 0 | none |
 | No executable audit | 0 | none |

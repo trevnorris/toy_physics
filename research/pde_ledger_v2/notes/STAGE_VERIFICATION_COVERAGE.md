@@ -3,12 +3,12 @@
 This document is the stage-coverage control sheet for the rebuilt PDE ledger.
 
 ```yaml
-canonical_stage_count: 16
-verified_stage_count: 16
-sympy_audit_count: 16
-mathematica_audit_count: 16
+canonical_stage_count: 17
+verified_stage_count: 17
+sympy_audit_count: 17
+mathematica_audit_count: 17
 numerical_stress_count: 0
-reviewed_stage_count: 16
+reviewed_stage_count: 17
 ```
 
 ## Coverage By Part

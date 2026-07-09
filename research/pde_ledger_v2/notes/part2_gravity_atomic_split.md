@@ -303,15 +303,41 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   `REVERIFY_CLEAN`. Registration at count 16, PDF 47pp. ⚠ **Lesson banked:** across a reduction-convention boundary
   (volume↔line densities, dimensionless↔`L⁻¹` profile), a cross-stage relation or dimension-identity may NOT transfer —
   cite as PROVENANCE + rely on self-contained dimensional integrity, not a theatrical cross-stage dual-site.
-- **▶ NEXT = Cluster A `ledger_stage017`** (II-G3b, pathA_32 `ISOTROPY_CALIBRATED` 2/2 — the grouped-P2 lane isotropy;
-  COMPLETES the joint): grouped {20,21,22} lanes, **raw-D defects=0 PRIMARY**, normalized u-defects cross-check, the
-  **calibration partition** (resolves the DEFERRED `T_Ω`/`β₂` counting — the KEY 017 register question: do they become
-  counted CALIB knobs?), and **exports the ℓ=2 port kernel** (`K̃`+angular-`K₂`+support scalars+D-lanes) → 018–021 + 022/023 +
-  024. CONSUMES 016's covariance theorem (Gram=I₅, λ_m=6, the K₂ angular-stiffness form) — cite, don't re-derive. The 017
-  slice of the SAME `pathA_32_grouped_p2_isotropy_{sympy.py,.wl}` = `assemble_channel`/`grouped_lanes`/raw-D/normalized-u/
-  calibration-partition + the 6 response probes {pure_prefactor/sector_selective/m_dependent/degenerate_beta/
-  singular_denominator/static_drop_inertia} (017's own aggregate battery). ⭐ Author a running-start source map FIRST (per the
-  calibrated pipeline).
+- **✅ II-G3b `ledger_stage017` DONE (2026-07-09) — pathA_32 `ISOTROPY_CALIBRATED` 2/2 (the grouped-P2 lane isotropy; the
+  COMPLETING leg); ⭐ pathA_32 fold COMPLETE (016+017); the THIRD calibration-adding Part-II stage.** MIXED symbolic+numeric. The
+  grouped {20,21,22} ℓ=2 lanes — assembled from 016's CONSUMED covariance (`λ_m=6`, `K₂=K̃+λ_m·T̃_Ω`, Gram-diagonal `c_self=1`) via a
+  **GENUINE cross-stage dual-site** (same pathA_32 convention → a one-site `λ`/K₂-form corruption is CHECKABLE + fires; the coordinated
+  escape closed by a single-`Y20` `(−Δ_S²)Y=λY` echo; ⚠ **the λ-dimensionless trap** — `λ:6→4` is dim-silent, window-positive, AND
+  leaves raw-D isotropy incidentally unbroken (all-lanes λ=4 keeps raw-D=0) → an EXPLICIT integrity check, NOT an incidental gate) —
+  respond ISOTROPICALLY: **raw-D defects=0 PRIMARY** ∧ normalized-u defects=0 CROSS-CHECK (a pure-prefactor anisotropy MOVES raw-D but
+  leaves normalized-u zero → raw-D decisive). The 6-probe aggregate battery {pure_prefactor/sector_selective/m_dependent/
+  degenerate_beta/singular_denominator/static_drop_inertia} (neuter-one flips; ⚠ the 3 anisotropy probes' forced verdict is
+  vacuous-by-design → load rides the computed move-flags only). Joint `verdict_from_gates` lands `ISOTROPY_CALIBRATED` COMPLETE
+  (016∧017). ⭐ **Register: 2 new counted CALIB knobs `{T_Ω, β₂}`** (the ℓ=2 angular-stiffness density + the frozen ℓ=2 radial profile —
+  both calibrated NOT derived from the Gate-1 R0 support equation, edge R36 = the `ISOTROPY_PASS` target); `M̃/K̃/T̃_Ω` = DERIVED
+  manifestations `∫density·β₂²` (edge R35); the port-kernel support/Maxwell scalars `{B̃,Z̃}` tracked/downstream-pinned (isotropy
+  value-independent of them; Z̃ Maxwell couplings pin 018–024); `μ_η/T_w` provenance (013; `K_η=T_wβ²` R29 non-transferable); R34
+  backfilled into the edges table; Part-II CALIB set → 6; Codex `REGISTER_CLEAN`. ⭐⭐ **Directive review = Codex→Grok→Codex bookend:**
+  Codex `DIRECTIVE_CLEAN` first-pass → **Grok-4.5 compute-verify caught 1 BLOCKING** (§5 EXCLUDE wrongly stripped the harmonics/`intS2`
+  infrastructure 017 needs for its anisotropy coefficients + the echo) + 2 nits (export coeff pinned `K̃+6·T̃_Ω`; the anisotropy probes'
+  vacuous forced-verdict flagged), all folded → Codex confirm `DIRECTIVE_CLEAN` (Grok compute-confirmed all math incl. all-lanes-λ=4-keeps-raw-D=0).
+  Consumes 016 via the genuine dual-site; `c_S` NOT consumed. **The `.wl` is ALREADY a native independent engine** (only the scratch-YAML
+  severed). Dual-engine SymPy 118 / Mathematica 127, CWD-independent. Tri-review: `FIDELITY_CLEAN` (independent re-derivation of the
+  anisotropy coeffs {2/7,1/7,−2/7}, the Y20 echo, the pure_prefactor discriminator, the six probe verdicts) + `ADVERSARIAL_ISSUES` (42
+  per-tooth ablations, 41 firing at their own assert) → **1 finding: the `.wl` Site-B (K₂-form) dual-site tooth was SUBSUMED** (reconstructed
+  K₂ from `lambdaByChannel` instead of reading the assembled lane, so an assembly-formula corruption fired only downstream) → **Codex
+  remediated** (rewired to read the assembled K₂, mirroring SymPy, + matching assembly-formula ablation teeth both engines) → fresh-agent
+  `REVERIFY_CLEAN` (coupling meta-test: the fixed tooth fires at its own named assert on an assembly-formula corruption both engines,
+  neutering the fix makes it vacuous; no regression). Registration at count 17, PDF rebuilt (49pp). ⚠ **Lesson banked:** a consuming
+  stage's dual-site "second site" must read the ASSEMBLED downstream object (not reconstruct it from the same cited datum) — else it is
+  subsumed by the first site and doesn't independently guard the assembly formula (the per-tooth ablation caught the engine asymmetry vs
+  the SymPy sibling).
+- **▶ NEXT = Cluster A `ledger_stage018`** (II-G4a, pathA_33 `QUAD_CALIBRATED` 1/4 — the DtN Hankel fingerprint, the EARNED slice):
+  outgoing series `u2=a²/9c_s²`, `u4=4a⁴/81c_s⁴`, `v5=a⁵/27c_s⁵`; `χ_Q=+1` outgoing vs −1 incoming. CONSUMES 017's exported ℓ=2 port
+  kernel (the wall mode) + 009/010's bulk Helmholtz mode. Source: `software/stage1_solver/tools/pathA_33_quadrupole_normalization_{sympy.py,.wl}`
+  + report. ⭐ pathA_33 trip-ups (020/021): the 27 stays COMPUTED; `54/5` asserted only as labeled `external_bridge_input`; the v1 rig
+  (back-solved μ̂₀ + constant self_ablation) must not return — μ̂₀-free dim gate + real two-verdict self-ablations. ⭐ Author a
+  running-start source map FIRST (per the calibrated pipeline).
 
 ## Per-stage process (unchanged, calibrated)
 

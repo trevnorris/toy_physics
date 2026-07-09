@@ -36,6 +36,30 @@ imposed relation (a calibration or postulate that makes two knobs look like one)
 | `CANDIDATE` | labeled candidate, not yet load-bearing | tracked, not counted |
 | `GAP` | a *missing* derivation (not a knob) — a deferred obligation | tracked, not counted |
 
+### ⭐ Two kinds of "free": declared universal constants vs reduction debt (user, 2026-07-09)
+The irreducible set is NOT monolithic — split it into two first-class lists, because they score differently:
+- **(a) DECLARED universal constants** — irreducible *by design*, and honest (every theory bottoms out in free constants:
+  GR has `G`(+`Λ`), the SM ~19–26). Candidates = the medium primitives `{ħ, m_GNLS, K, ρ0}`. ⭐ **The scoring question for
+  these is NOT "why isn't it derived" — it is "does the analog need FEWER fundamental constants than the target GR+EM need?"**
+  If ~4 medium constants reproduce GR+EM structure across four sectors, that is the headline win, not a liability. ⚠ *Declaring*
+  a constant fundamental is a MODELING DECISION (a user call), distinct from bookkeeping: e.g. do we accept `ħ` as fundamental,
+  or keep chasing `HBAR_FREE_SUBSTRATE_RELATION_MISSING`? (Even the current primitives carry open GAPs — `ħ` provenance, `m`
+  emergence — so "which do we declare fundamental vs keep reducing" is itself an open checkpoint decision.)
+- **(b) REDUCTION-DEBT tunings** — `CALIB`/`FREE-UNREDUCED` knobs that are stand-ins for math/sim not yet done (the frozen-wall/
+  throat packet `{μ_η,T_w,β,Vp0/ℓ_c,T_Ω,β₂}` via R30/R33/R36 — all siblings of the ONE deferred throat-interior solve; the NG5
+  drift `{ρ_B0,χ_c,C_hu}` via R12/R13). **This is where the "too many knobs" risk actually lives.** ⭐ The sim is `not-yet` not
+  `never` (user, 2026-07-09): the ledger is being built *sim-READY* precisely so that when solver tractability + model capability
+  catch up, these convert CALIB→DERIVED in one stroke — they are placeholders with a known address, not dead ends.
+- **⭐ The sharpest health metric is NOT "how many knobs" — it is "how many irreducible knobs have NO named reduction route"**
+  (pure irreducible freedom that eats predictive surplus and cannot improve), vs debt-with-a-route (honest, pending). Track the
+  route-less subset explicitly (currently `{ρ_B0,χ_c,C_hu}` has no *registered* reduction — the real liability — vs the throat
+  packet which has R30).
+- **⭐ MIDWAY KNOB AUDIT — scheduled checkpoint (user, 2026-07-09): run AFTER the entire Part-II gravity sector closes** (NOT now,
+  NOT deferred to Part VII). A dry-run of the Part-VII codimension technique (pathA_40 `Δr=2`, scaled) over Parts I–II + a tally
+  of held-out predictions vs the *irreducible* (route-less) count + the (a)/(b) split above — turning "are we accumulating too many
+  knobs" into a number early enough to course-correct or hit a clean no-go. (Also: at that checkpoint, list every value that
+  genuinely CANNOT be derived — the declared universal constants — separately from the derivable-with-more-math/sim debt.)
+
 ### Relation-status flags (edges)
 `DERIVED` (proven) · `CODIM-PROVEN` (independence/dependence established by a dimension count) · `IMPOSED` (a
 calibration/postulate — a tuning, does **not** reduce) · `PENDING` (named route, unexecuted = debt) · `CLOSED-NEG`

@@ -1,0 +1,117 @@
+\section{Stage 018: The Outgoing \texorpdfstring{\(\ell=2\)}{l=2} DtN Hankel Fingerprint and \texorpdfstring{\(\chi_Q\)}{chi\_Q} Sign (Check II-G4a)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative sector; the EARNED-FIRST leg of a four-way split of pathA\_33 --- the outgoing DtN Hankel-fingerprint + \(\chi_Q\)-sign component of the joint \texttt{QUAD\_CALIBRATED}, with the prefactor algebra = Stage~019, the \(54/5=2\cdot27/5\) provenance partition + the CALIBRATED label = Stage~020, and the \(\hat\mu_0\)-free dimensional closure = Stage~021)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Earn the exterior-wave radiative signature the quadrupole normalization rides. Show the outgoing \(\ell=2\) DtN response \(\hat Y_2^{\mathrm{out}}(z)=-3/\Lambda_2^{\mathrm{out}}(z)\), \(\Lambda_2^{\mathrm{out}}=z\,h_2^{(1)\prime}/h_2^{(1)}\), \(z=a\omega/c_s\), yields the DERIVED rational fingerprint \(u_2=a^2/9c_s^2\), \(u_4=4a^4/81c_s^4\), \(v_5=a^5/27c_s^5\) (the \(27\) computed from \(v_5^z=1/27\)), and the sign \(\chi_Q=+1\) outgoing / \(-1\) incoming computed from \(j_2\pm i\,y_2\). Land the joint verdict as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage018_dtn_hankel_fingerprint_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage018_dtn_hankel_fingerprint_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the fingerprint is exact symbolic algebra (the outgoing
+\(\ell=2\) spherical-Hankel logarithmic derivative and its small-frequency series are
+exact expansions; \texttt{expect\_zero}/\texttt{expect\_bool}/\texttt{expect\_fail}
+residuals, no \texttt{scipy}/\texttt{numpy}/floats/tolerances). The verdict is the joint
+\texttt{QUAD\_CALIBRATED}; this stage carries its \emph{outgoing-fingerprint + \(\chi_Q\)-sign}
+component (1/4, the EARNED-FIRST slice) and lands the joint as \textbf{partial} (018 earned;
+019/020/021 pending) --- not complete. It adds \textbf{zero} new counted knobs (an
+EARNED/structural fingerprint slice, like Stages~016/011/012/014); \(c_s\) is a units
+carrier only (the earned rationals and \(\chi_Q\) are \(c_s\)-free), cited from Stage-005
+R1 as provenance, not a consumed value.
+
+\paragraph{The outgoing DtN log-derivative.}
+The exterior \(\ell=2\) outgoing solution is the spherical Hankel function
+\(h_2^{(1)}(z)=j_2(z)+i\,y_2(z)\), \(z=a\omega/c_s\), with
+\(j_2=(3/z^3-1/z)\sin z-(3/z^2)\cos z\),
+\(y_2=(1/z-3/z^3)\cos z-(3/z^2)\sin z\) built from explicit rational\(\cdot\sin/\cos\)
+(no stored artifact). The DtN eigenvalue and normalized response are
+\[
+  \Lambda_2^{\mathrm{out}}(z)=z\,\frac{h_2^{(1)\prime}(z)}{h_2^{(1)}(z)},
+  \qquad
+  \hat Y_2^{\mathrm{out}}(z)=-\frac{3}{\Lambda_2^{\mathrm{out}}(z)},
+\]
+where \(-3=-(\ell+1)\) for \(\ell=2\) is the outgoing static DtN slot (self-derived).
+This is self-contained exterior-wave algebra: it does \emph{not} consume the interior
+port kernel (that enters Stage-019's prefactor).
+
+\paragraph{The fingerprint (the EARNED headline).}
+Expanding \(\hat Y_2^{\mathrm{out}}\) about \(z=0\),
+\[
+  \hat Y_2^{\mathrm{out}}(z)=1+\tfrac19 z^2+\tfrac{4}{81} z^4+i\,\tfrac1{27} z^5+O(z^6),
+\]
+so \(u_2^z=1/9\), \(u_4^z=4/81\), \(v_5^z=1/27\) (the odd \(z^1,z^3\) vanish; the \(z^5\)
+term is purely imaginary --- the radiating part, \(\operatorname{coeff}(z,5)/i\)).
+Restoring units through \(z=a\omega/c_s\):
+\(u_2=a^2/9c_s^2\), \(u_4=4a^4/81c_s^4\), \(v_5=a^5/27c_s^5\). The \(27\) is EARNED as
+\(1/v_5^z\) --- the radiative-slot denominator, series-derived, \emph{not} a typed literal
+(this is the \texttt{derived\_in\_gate} \(27\) that Stage-020's \(54/5=2\cdot27/5\) partition
+rides). The coefficients are read off the \emph{actual} symbolic series of
+\(-3/(z\,h_2^{(1)\prime}/h_2^{(1)})\) with \(h_2^{(1)}\)/\(\Lambda_2^{\mathrm{out}}\)/\(\hat Y_2^{\mathrm{out}}\)
+emitted --- not hardcoded and compared. Perturbing the typed target
+(\(u_2^z\) expected \(1/9\to1/8\)) fires the assert, and mutating the \emph{derivation}
+(\(h\cdot(1+z^4)\to u_4^z=112/81\), leaving \(u_2^z,v_5^z\)) fires exactly that coefficient's
+\texttt{expect\_fail} --- a genuine per-coefficient firewall.
+
+\paragraph{The \texorpdfstring{\(\chi_Q\)}{chi\_Q} sign.}
+Against the canonical radiative slot \(a^5/(27c_s^5)\),
+\(\chi_Q=v_5/(a^5/27c_s^5)=+1\) outgoing (\(h_2^{(1)}\)) and \(-1\) incoming
+(\(h_2^{(2)}=j_2-i\,y_2\)); the sign \emph{emerges} from \(j_2\pm i\,y_2\) (the \(z^5\)
+coefficient flips), never a typed \(+1\). The standing branch \(j_2\) gives
+\(\Lambda_{\mathrm{stand}}(0)=+2\) (\(=+\ell\), not the outgoing \(-3\)),
+\(\hat Y_{\mathrm{stand}}(0)=-3/2\ne1\), and no radiating term --- proving the \(+1/27\)
+rational is outgoing-BC-selected, not universal.
+
+\paragraph{Passivity and the units-restored dim leg.}
+The radiating \(v_5\omega^5\) arises from the genuine outgoing BC: the imposed-dissipation
+probe replaces it with a phenomenological sink and is rejected (\texttt{FAIL\_NOT\_OUTGOING})
+by source-label provenance, with a genuine \emph{dynamic} self-ablation re-run
+(\(\mathrm{with}\ne\mathrm{without}\), not a constant --- the pathA\_33 v1 trip-up avoided);
+the static\(\leftrightarrow\)dynamic consistency is the fingerprint's own static slot
+\(\hat Y_2^{\mathrm{out}}(\omega\to0)=1\) (\emph{not} the prefactor \(P_0=N_0/D_0\), which is
+019's). The units-restored dim leg runs on the real physical coefficients
+(\([u_2]=T^2\), \([u_4]=T^4\), \([v_5]=T^5\), with \([a]=L\), \([c_s]=LT^{-1}\)); corrupting
+an \(a/c_s\) power fires \texttt{FAIL\_DIMENSIONAL}. This is \emph{not} the \(\hat\mu_0\)-free
+\([P_0^{\mathrm{phys}}]=1\) gate (that is 021's) --- the 018 slice contains no
+\(\hat\mu_0/N_0/D_0/P_0/\)\texttt{build\_dimensions} construct, keeping the back-solved-\(\hat\mu_0\)
+v1 rig out.
+
+\paragraph{Honest scope.}
+Earned exterior-wave signature / calibrated magnitude: 018 derives the fingerprint shape
+(\(1/9,4/81,1/27\)) and the \(\chi_Q=+1\) sign, but the \(54/5\) normalization magnitude and
+\(G\) are calibrated (\(G=\)\texttt{GENUINE\_BLOCKED}), landed at Stage~020; the prefactor
+algebra is Stage~019; the \(\hat\mu_0\)-free dimensional closure is Stage~021. The
+actual-branch \(a\)-scaling and the numerical port scalars \(N_n/D_n\) are deferred Gate
+4/5/6 work. The \(\chi_Q\) reconciliation (pathA\_33 \(+1\) vs pathA\_22b \(\approx0.712\) ---
+same name, different computations) is a tracked Part-VII item, not merged here.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance only, no dual-site:} 018 is self-contained exterior-wave algebra, so ---
+unlike Stage-017's genuine cross-stage dual-site --- there is no checkable relation to guard.
+017's \(\ell=2\) port kernel (the interior wall mode; literal \(N_n/D_n=019\)'s), 009/010's
+bulk Helmholtz mode, and \(c_s\) (Stage-005 R1) are cited as narrative provenance with no
+guard on any object the fingerprint never uses; \(c_s\) is an inert units carrier, and \(c_S\)
+(the frozen-wall speed) is not a live symbol here. Register: \textbf{zero} new counted knobs;
+structural edge \textbf{R37} (the outgoing-DtN \(\ell=2\) Hankel-fingerprint provenance ---
+\(u_2=a^2/9c_s^2\), \(u_4=4a^4/81c_s^4\), \(v_5=a^5/27c_s^5\) with the \(27\) computed from
+\(v_5^z\), and \(\chi_Q=+1\) outgoing / \(-1\) incoming; discharges nothing). Part-II counted
+CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) +
+\(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML
+handoff is severed; the \texttt{.wl} KEEPS its native \(j_2\)/\(y_2\)/\texttt{Series}/
+\texttt{Coefficient} route (its own \texttt{dimOf}), not a mirror, agreeing at the transcript
+level (\(\Lambda_2^{\mathrm{out}}\)/\(\hat Y_2^{\mathrm{out}}\), the derived
+\(u_2^z=1/9\)/\(u_4^z=4/81\)/\(v_5^z=1/27\), \(\chi_Q=+1\)/incoming \(-1\), the standing static
+slot, the PARTIAL landing), with an arity + unevaluated-leakage self-check. SymPy 59 PASS /
+Mathematica 65 PASS, exit 0, CWD-independent. The directive design-review used the
+Codex\(\to\)Grok\(\to\)Codex bookend (both engines compute-verified the series
+\(1+z^2/9+4z^4/81+i\,z^5/27\), the incoming \(\chi_Q=-1\), and the standing
+\(\Lambda_{\mathrm{stand}}(0)=+2\); three non-blocking clarity nits folded --- the \(P_0\)
+name collision, the passivity scope, the 3a/3b self-ablation scoping). Full tri-review on fresh
+agents: \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived \(j_2\)/\(y_2\),
+\(\Lambda_2^{\mathrm{out}}\), \(\hat Y_2^{\mathrm{out}}\), the full series, \(\chi_Q=\pm1\), the
+standing slot) and \texttt{ADVERSARIAL\_CLEAN} (per-tooth ablation: 30/32 targeted mutations
+fired at their own assert, the 2 non-fires harness artifacts re-covered by corrected runs; no
+vacuous tooth) --- no remediation required. Symbolic per-tooth ablation, mutations on copies.

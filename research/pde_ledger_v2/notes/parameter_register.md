@@ -99,7 +99,7 @@ structural edge R31 (the truncation validity window — discharges NOTHING)). Se
 | `m_GNLS` | `M` | I-1 (004) action | `ACTION` | — | `m_defect` emergence = `GAP` (`INFLOW_MASS_SOURCE_MISSING`) |
 | `K` (EOS) | `M L¹⁸ T⁻²` | I-1 (004), I-2 (005) | `ACTION` | — | EOS **exponent 5** is `IMPOSED` (`EOS_CLOSURE_IMPOSED`) |
 | `ρ0` | `L⁻⁴` | I-1 (004) state datum | `ACTION` (state) | — | chosen asymptotic 4D-bulk number density |
-| `c_s0` | `L T⁻¹` | I-1/I-2 | `DERIVED` | `= √(5K ρ0⁴/m_GNLS)` | DERIVED from `{K, ρ0, m_GNLS}` |
+| `c_s0` | `L T⁻¹` | I-1/I-2; **LIVE units carrier at II-G4a (018)** | `DERIVED` | `= √(5K ρ0⁴/m_GNLS)` | DERIVED from `{K, ρ0, m_GNLS}` (R1); ⚠ at 018 it is the units-restoring symbol in the fingerprint physical coeffs (`z=aω/c_s`) — cited PROVENANCE, NOT a consumed value (the earned rationals + χ_Q are `c_s`-free); distinct from the frozen-wall `c_S` (011–017) |
 | `ξ_h` | `L` | I-1 (004) | `DERIVED` | `= √2 ħ/(m_GNLS c_s0)` | DERIVED (core balance) |
 | `h0` | `M L² T⁻²` | I-1 (004) | `DERIVED` | `= (m_GNLS c_s0²)/4` | DERIVED (`EOS_FROM_GNLS_FACTOR`) |
 | `a` (pin) | `L` | I-1 (004) | `CONV` | `= ħ/(m_GNLS c_s0)` | pin choice — never free (`A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT`) |
@@ -215,6 +215,7 @@ cross-sector drift — NEVER absorbed into the 11 (guard asserted in both engine
 | R34 | ℓ=2 SO(3) covariance provenance: the five real ℓ=2 harmonics form one orthonormal SO(3)-irrep (`Gram=I₅`) with a single COMPUTED `−Δ_S²` eigenvalue `λ_m=ℓ(ℓ+1)=6` for every m (Laplace–Beltrami + Rayleigh + eigenfunction residual); the K₂ angular stiffness `K₂=K̃+λ_m·T̃_Ω` uses that computed eigenvalue | structural (covariance theorem, dual-engine + able-to-fail — the `forced_eigenvalue_probe` rejects a typed coefficient → `FAIL_NOT_COVARIANT`; **NOT a reduction** — earned angular structure, discharges NO knob) | II-G3a (016) | the earned angular content the grouped-lane isotropy (017) rides; (backfilled into the edges table 2026-07-09 — was recorded in the stage-016 rollup prose only) |
 | R35 | ℓ=2 radial-scalar reduction: the grouped-lane scalars **= ∫ density·β₂² dV** — `M̃=∫μ_η β₂²`, `K̃=∫[T_w β₂'²+K_η β₂²]`, `T̃_Ω=∫T_Ω β₂²` (pathA_32 VOLUME-density convention on `a²dwdΩ`) | `DERIVED` (radial reductions — collapse `M̃/K̃/T̃_Ω` into the densities `{μ_η, T_w/K_η, T_Ω}` × the frozen profile `β₂`; the ℓ=2 analogue of R29's `K_η=T_wβ²` manifestation pattern; dual-engine dim-verified `[M̃]=M`, `[K̃]=[T̃_Ω]=M T⁻²`) | II-G3b (017) | so the counted ℓ=2 CALIB inputs are the underlying `{T_Ω, β₂}` (+ 013's `{μ_η,T_w}`, `K_η`=R29), NOT the reduced scalars — avoids double-counting the port kernel |
 | R36 | Gate-1 `R0`-support-equation derivation of the ℓ=2 frozen calibration `{β₂(w), T_Ω}` from the straight-reference throat `R0(w)` | `PENDING` (the `ISOTROPY_PASS` target — the source verdict ladder requires `β₂` derived from `R0` AND `T_Ω` derived, not free-calibrated; until then `{β₂, T_Ω}` are `CALIB` → `ISOTROPY_CALIBRATED`, report :5; **NOT yet a reduction** — discharges NO knob until earned) | II-G3b (017) | the debt that would flip `ISOTROPY_CALIBRATED → ISOTROPY_PASS`; a sibling of R30/R33's deferred-interior debts but at the ℓ=2 support-equation level (the frozen wall profile + radial/support scalars, not the nonlinear throat) |
+| R37 | outgoing-DtN ℓ=2 Hankel-fingerprint provenance: `Ŷ₂ᵒᵘᵗ=−3/Λ₂ᵒᵘᵗ`, `Λ₂ᵒᵘᵗ=z·h₂⁽¹⁾′/h₂⁽¹⁾`, `z=aω/c_s`, `h₂⁽¹⁾=j₂+i·y₂`, series-expands to the DERIVED fingerprint `u₂=a²/9c_s²`, `u₄=4a⁴/81c_s⁴`, `v₅=a⁵/27c_s⁵` (the `27` = `1/v₅ᶻ` COMPUTED) + the sign `χ_Q=+1` outgoing / `−1` incoming (from `j₂±i·y₂`) + the standing-branch contrast (`Λ_stand(0)=+2`, no radiating term) | structural (fingerprint provenance, dual-engine + able-to-fail — a mutated Hankel derivation flips a coefficient, an incoming branch flips χ_Q, a corrupt `a`/`c_s` power fires the units-dim leg; **NOT a reduction** — earned exterior-wave structure, discharges NO knob; like R34 for 016's covariance theorem) | II-G4a (018) | the earned exterior radiative signature the quadrupole normalization (019–021) rides; ⚠ `c_s` is a **units carrier** (R1-`DERIVED`, cited PROVENANCE), NOT a consumed value — the earned rationals + `χ_Q` are `c_s`-free; the port scalars `N_n/D_n` are 019's deferred branch data; the `χ_Q` reconciliation with pathA_22b (`≈0.712`, same name / different computation) is a tracked **Part-VII** item (blueprint §8), NOT merged here |
 
 ---
 
@@ -373,6 +374,21 @@ technique scaled up). Do **not** assert an irreducible number before then. Curre
   counted CALIB set is now `{μ_η, T_w, β}` (013) + `{Vp0/ℓ_c}` (015) + `{T_Ω, β₂}` (017) = 6** (+ the ℓ=2 port-kernel `{B̃, Z̃}` support
   scalars tracked/downstream-pinned; `M̃/K̃/T̃_Ω` R35-manifestations; `K_η` R29-derived). ⭐ **pathA_32 fold COMPLETE (stages 016+017);
   the joint `ISOTROPY_CALIBRATED` EARNED+CALIBRATED.**
+- **⭐ Stage 018 (pathA_33 II-G4a): ZERO new counted knobs — the outgoing ℓ=2 DtN Hankel-fingerprint slice (the EARNED-FIRST leg of a
+  4-way split; component 1/4 of the joint `QUAD_CALIBRATED`).** The outgoing ℓ=2 DtN response `Ŷ₂ᵒᵘᵗ=−3/Λ₂ᵒᵘᵗ`, `Λ₂ᵒᵘᵗ=z·h₂⁽¹⁾′/h₂⁽¹⁾`,
+  `z=aω/c_s`, series-expands to the DERIVED fingerprint `u₂=a²/9c_s², u₄=4a⁴/81c_s⁴, v₅=a⁵/27c_s⁵` (the `27`=`1/v₅ᶻ` COMPUTED — the
+  `derived_in_gate` `27` that stage 020's `54/5=2·27/5` partition rides), with the sign `χ_Q=+1` outgoing / `−1` incoming COMPUTED from
+  `j₂±i·y₂` (a typed `χ_Q` would be a tautology) and the standing `j₂` contrast (`Λ_stand(0)=+2`, no radiating term). ⚠ **`c_s` (the density
+  sound speed) FIRST becomes a LIVE object in the Part-II gravity radiative sector here** (a physical shift from 013–017's `kξ≪1`
+  matter-mode deferral) — but only as the **units-restoring carrier** in the physical coefficients (via `z=aω/c_s`): the earned rationals +
+  `χ_Q` are `c_s`-FREE, so 018 does NOT consume the VALUE of `c_s`; it is `c_s0` from R1 (`c_s²=5Kρ⁴/m`, stage005), cited PROVENANCE, NOT a
+  new knob (and distinct from the frozen-wall `c_S` of 011–017). New structural edge **R37** (the outgoing-DtN ℓ=2 Hankel-fingerprint
+  provenance — discharges NOTHING, like R34/R26). ⚠ **The consumption is PROVENANCE ONLY (no dual-site)** — 018 is SELF-CONTAINED exterior
+  spherical-Hankel algebra (the fingerprint is built from explicit `j₂`/`y₂`; the literal port-kernel `N_n/D_n` consumption is stage 019's),
+  so — UNLIKE 017's genuine cross-stage dual-site — there is no checkable cross-stage relation to guard (a guard on an unused object would be
+  a vacuous tooth). The `χ_Q` reconciliation (`+1` vs pathA_22b's `≈0.712`) is flagged as a Part-VII item, NOT merged. **⇒ Part-II counted
+  CALIB set UNCHANGED at `{μ_η, T_w, β}` (013) + `{Vp0/ℓ_c}` (015) + `{T_Ω, β₂}` (017) = 6** (018 adds zero; the prefactor algebra = 019,
+  the `54/5` magnitude + `G=GENUINE_BLOCKED` = 020, the μ̂₀-free dim closure = 021).
 - **The G0 freeze package (I-4, stage 007) — the "11", counted honestly (computed in-engine):** 4 constants
   {`ρ_br`, `μ_R` (rows above, re-homed to I-4; Route-A R10 `PENDING`), `λ_Pu`, `Ω_w` (new `ACTION`, no routes named)}
   + 1 function `g_ℓ(w; ℓ_g)` (new `ACTION`; R21 scope split — superseded as material wall, retained as constitutive

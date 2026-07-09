@@ -1,0 +1,146 @@
+# SymPy Audit Output
+# Script: ledger_stage018_dtn_hankel_fingerprint_sympy_audit.py
+# Date: 2026-07-09T09:57:07-06:00
+# Elapsed: 20s
+# Exit code: 0
+# Status: PASS
+#
+
+
+==================================================
+ledger_stage018_dtn_hankel_fingerprint_sympy_audit
+==================================================
+Target stem confirmed: ledger_stage018_dtn_hankel_fingerprint
+Engine: SymPy exact symbolic spherical-Hankel series; no floats/tolerances; zero file I/O.
+
+Outgoing DtN Hankel fingerprint derived from the branch
+-------------------------------------------------------
+  h2^(1)(z) is built from explicit spherical j2 + i*y2 rational sin/cos expressions.
+  h2^(1) series = I*(21*z**10 - 160*I*z**9 - 1050*z**8 + 5760*I*z**7 + 25200*z**6 - 80640*I*z**5 - 151200*z**4 - 604800*z**2 - 3628800)/(1209600*z**3)
+  Lambda_2^out(z) = z*h2'(z)/h2(z)
+  Lambda_2^out series = -(2*z**6 - 3*I*z**5 - 3*z**4 - 9*z**2 + 81)/27
+  Yhat_2^out(z) = -3/Lambda_2^out(z)
+  Yhat_2^out series through z^5 = I*(3*z**5 - 4*I*z**4 - 9*I*z**2 - 81*I)/81
+  Coefficients are read from that series by coeff(z,n); the typed targets are independent references.
+  derived u2_z = 1/9
+PASS  outgoing derived u2_z matches independent target
+  derived u4_z = 4/81
+PASS  outgoing derived u4_z matches independent target
+  derived v5_z = 1/27
+PASS  outgoing derived v5_z matches independent target
+  derived u2 = a**2/(9*c_s**2)
+PASS  outgoing derived u2 matches independent target
+  derived u4 = 4*a**4/(81*c_s**4)
+PASS  outgoing derived u4 matches independent target
+  derived v5 = a**5/(27*c_s**5)
+PASS  outgoing derived v5 matches independent target
+PASS  computed radiative denominator 1/v5_z equals 27
+  exact sample at a=3, c_s=2 = {'a': '3', 'c_s': '2', 'u2': '1/4', 'u4': '1/4', 'v5': '9/32'}
+
+chi sign from outgoing/incoming Hankel branches and standing contrast
+---------------------------------------------------------------------
+  outgoing v5_z = 1/27; incoming v5_z = -1/27
+  computed chi_Q outgoing = 1; incoming = -1
+PASS  chi_Q computed from outgoing v5 physical slot is +1
+PASS  incoming v5_z + outgoing v5_z = 0
+PASS  incoming computed chi_Q is -1
+PASS  incoming even u2_z unchanged
+PASS  incoming even u4_z unchanged
+PASS  using incoming branch as outgoing chi check fires produced required FAIL (residual = -2)
+  standing Lambda series = -(2*z**6 + 77*z**4 + 4851*z**2 - 67914)/33957
+  standing Yhat series = -(11*z**4 + 126*z**2 + 1764)/1176
+PASS  standing branch Lambda_static is +2
+PASS  standing branch Yhat_static is -3/2
+PASS  standing branch has no radiating v5_z
+PASS  standing static slot differs from outgoing normalized static slot produced required FAIL (residual = -5/2)
+
+Passivity and the two 018 fingerprint probes
+--------------------------------------------
+  passivity source = dtn_hankel1; imaginary v5 nonzero = True
+PASS  outgoing branch passivity gate is genuine outgoing with nonzero v5
+PASS  outgoing static slot is the DC limit of the same response
+PASS  3a incoming verdict is FAIL_FINGERPRINT
+PASS  3a standing verdict is FAIL_FINGERPRINT
+PASS  3a incoming predicted change is computed
+PASS  3a standing predicted change is computed
+PASS  3a dynamic self-ablation with mutation is FAIL_FINGERPRINT
+PASS  3a dynamic self-ablation without mutation returns earned verdict
+PASS  3a self-ablation suppresses the failure
+  3b mutated source = phenomenological_inserted_sink; inserted v5_z = 1/27
+PASS  3b inserted sink is not a genuine outgoing source
+PASS  3b removing outgoing BC removes imaginary v5
+PASS  3b imposed dissipation verdict is FAIL_NOT_OUTGOING
+PASS  3b dynamic self-ablation with mutation is FAIL_NOT_OUTGOING
+PASS  3b dynamic self-ablation without mutation returns earned verdict
+PASS  3b outgoing_ablation is a rerun, not a constant label
+
+Units-restored physical coefficient dimensions only
+---------------------------------------------------
+  dimension order = (L,M,T); [a]=L, [c_s]=L*T^-1.
+  computed dimensions = {'u2': 'T^2', 'u4': 'T^4', 'v5': 'T^5'}
+PASS  physical u2 has dimension T^2
+PASS  physical u4 has dimension T^4
+PASS  physical v5 has dimension T^5
+PASS  baseline coefficient dimensional leg passes
+  corrupted u2 expression = a**2/(9*c_s**3); dimension = L^-1 T^3
+PASS  corrupting the c_s power in u2 breaks the T^2 dimension produced required FAIL (residual = 2)
+PASS  units corruption reaches FAIL_DIMENSIONAL
+PASS  units dynamic self-ablation with mutation is FAIL_DIMENSIONAL
+PASS  units dynamic self-ablation without mutation returns earned verdict
+PASS  units self-ablation suppresses the failure
+
+Per-tooth ablations on copies
+-----------------------------
+PASS  u2 derivation copy changes u2_z so its own coefficient assert fires produced required FAIL (residual = 2/3)
+  u4-only derivation copy coefficients = u2z 1/9, u4z 112/81, v5z 1/27
+PASS  u4-only copy leaves u2_z unchanged
+PASS  u4-only copy breaks exactly the u4_z coefficient assert produced required FAIL (residual = 4/3)
+PASS  u4-only copy leaves v5_z unchanged
+PASS  v5-only copy leaves u2_z unchanged
+PASS  v5-only copy leaves u4_z unchanged
+PASS  v5-only copy changes v5_z so its own coefficient assert fires produced required FAIL (residual = 5/3)
+PASS  incoming branch mutation flips chi sign tooth produced required FAIL (residual = -2)
+PASS  incoming branch reaches FAIL_FINGERPRINT
+PASS  imposed sink reaches FAIL_NOT_OUTGOING
+PASS  units dim tooth reaches FAIL_DIMENSIONAL
+PASS  baseline immutable after teeth: outgoing u2_z still 1/9
+PASS  baseline immutable after teeth: outgoing u4_z still 4/81
+PASS  baseline immutable after teeth: outgoing v5_z still 1/27
+
+018 scope, provenance-only consumption, and structural exclusions
+-----------------------------------------------------------------
+  018 gate booleans = {'fingerprint_ok': True, 'outgoing_ok': True, 'dimensional_ok': True, 'able_to_fail_ok': True}
+  018 scoped verdict = DTN_HANKEL_FINGERPRINT_EARNED
+PASS  018 scoped verdict lands the earned partial component
+  QUAD_CALIBRATED (1/4) -- outgoing l=2 DtN Hankel fingerprint EARNED (PARTIAL)
+    = u2=a^2/(9*c_s^2), u4=4*a^4/(81*c_s^4), v5=a^5/(27*c_s^5), derived from Yhat=-3/Lambda.
+    AND chi_Q=+1 outgoing / -1 incoming from j2 +/- i*y2, with standing j2 carrying no radiating term.
+  REMAINING: prefactor algebra = 019; normalization partition plus calibrated label = 020; dim closure = 021.
+  CAVEATS: c_s is a units carrier, not a consumed value; branch scalar numerics remain sim-deferred; chi reconciliation is Part-VII.
+  CONSUMES (PROVENANCE only): 017 l=2 port kernel + 009/010 bulk mode + stage005 R1 identity for the c_s units symbol.
+  EXPORTS: outgoing fingerprint and chi sign to 019/020 plus later non-regression and closure stages; no file artifact is written.
+  live symbolic names in this slice = ['a', 'c_s', 'z']
+PASS  only z, a, c_s are live symbols in the fingerprint slice
+PASS  frozen-wall speed symbol is not live
+PASS  no prefactor/dim-closure carrier helper or symbol names are live
+  dropped-bookkeeping: scratch YAML, report writers, engine-agreement files, and cross-reads are absent.
+  register note: likely zero new counted knobs; c_s is R1-provenance units carrier; structural edge is for the outgoing DtN fingerprint.
+
+Verdict labels
+--------------
+  ledger earned-label (NOT a source verdict token): DTN_HANKEL_FINGERPRINT_EARNED
+  source top-line verdict: QUAD_CALIBRATED (JOINT 4-stage; 018 carries the outgoing-fingerprint + chi-sign component as PARTIAL)
+  joint composition: 018 outgoing DtN Hankel fingerprint + 019 prefactor + 020 normalization partition/calibrated label + 021 dim closure
+  earned fingerprint: u2z=1/9, u4z=4/81, v5z=1/27 from coeff(z,n) of Yhat=-3/Lambda; 27 = 1/v5z is computed.
+  earned sign: chi_Q=+1 outgoing and -1 incoming from j2 +/- i*y2; standing j2 has Lambda_static=+2 and no radiating term.
+  earned able-to-fail: wrong-BC and imposed-sink probes each carry dynamic with/without mutation verdicts.
+  calibrated/deferred outside 018: prefactor algebra, normalization magnitude/label, and the full dimensional closure.
+  consumed framing: provenance-only; no guard on port kernel, bulk mode, or c_s value; only c_s units appear in the dim leg.
+
+=======
+Tallies
+=======
+TALLY sympy: 59 pass + 0 fail = 59 checks
+OVERALL PASS
+
+EXIT_CODE: 0

@@ -1,0 +1,233 @@
+# Mathematica Audit Output
+# Script: ledger_stage014_breathing_truncation_consistency_mathematica_audit.wl
+# Date: 2026-07-08T20:10:33-06:00
+# Elapsed: 26s
+# Exit code: 0
+# Status: PASS
+#
+
+
+==========================================================================
+ledger_stage014_breathing_truncation_consistency Mathematica numeric audit
+==========================================================================
+
+Consumed stage013 closure, dual-site integrity
+----------------------------------------------
+  CONSUMED-from-013: alpha_a, alpha_L harmonic-lift profiles plus frozen packet {L0=37/20, beta=1, beta*L0=37/20}.
+  Site A branch anchor reads betaL0Cited as an independently corruptible cited datum, not the sweep variable.
+  Site B verifies the cited closed forms by residual AND BC values; it does not solve the BVP here.
+  r_AL=1 is the representative numeric point; the overlap is normalization-invariant in r_AL.
+  no-c_S: 014 is speed-free; matter-sector c_s/BdG k^4 is deferred under k*xi << 1 (phonon_limit_caveat).
+PASS  consumed packet site_A_branch_anchor == 0
+PASS  consumed packet site_A_packet_product == 0
+PASS  consumed packet anchor_L0 == 0
+PASS  consumed packet anchor_beta == 0
+PASS  consumed packet clean baseline passes site A and frozen anchor
+PASS  betaL0Cited-only corruption breaks site A: guard is non-vacuous produced required FAIL
+PASS  L0Cited-only corruption breaks packet product site produced required FAIL
+PASS  profile site B residual_alpha_a == 0
+PASS  profile site B residual_alpha_L == 0
+PASS  profile site B bc_alpha_a_0 == 0
+PASS  profile site B bc_alpha_a_1 == 0
+PASS  profile site B bc_alpha_L_0 == 0
+PASS  profile site B bc_alpha_L_1 == 0
+PASS  profile site B residual-and-BC guard passes cited alpha_a,alpha_L
+PASS  kernel-preserving profile corruption has zero residual but wrong BC
+PASS  kernel-preserving profile corruption breaks site B BC leg produced required FAIL
+PASS  non-kernel profile corruption breaks site B residual leg produced required FAIL
+PASS  no c_S/cS live symbol appears in consumed 014 content
+
+Wolfram arity self-check and unevaluated-leakage scan
+-----------------------------------------------------
+PASS  arity profileFunctions[2 args] returns funcs/ders
+PASS  arity galerkinRow[3 args] returns numeric overlap association
+PASS  arity galerkinRowWithProjection[4 args] returns identity-subgram mutant
+PASS  arity computeWindow[1 arg] returns beta window
+PASS  arity profileSiteBResiduals[2 args] returns residual+BC legs
+PASS  arity compute014Verdict[2 args] returns BREATHING_CALIBRATED
+PASS  unevaluated-leakage scan finds no held numerical calls in baseline data
+
+Combined basis and generalized eigenproblem
+-------------------------------------------
+  CITE stage013 profiles: alpha_a(x)=sinh(beta*(1-x))/sinh(beta), alpha_L(x)=sinh(beta*x)/sinh(beta) with r_AL=1.
+  IMPOSED g-lane basis: g_n(w)=sin((n-1/2)*pi*w/L0), n=1,2,... with BCs g(0)=0 and T_w*g'(L0)=0.
+  Combined basis B={alpha_a, alpha_L, g_1..g_N}; here N=16 so basis size=18.
+  Numeric Gram on x in [0,1]: M_ij=int phi_i phi_j dx, K_ij=int (phi_i' phi_j' + beta_L0^2 phi_i phi_j) dx.
+  Rank-deficient rows are dropped before solving K v = omega^2 M v; eigenvalues are sorted ascending.
+  013->014 M/K seam: the 2x2 block is the same operator/profile block up to 4*pi/L0/mu_eta prefactors, which cancel in eig/overlap; no raw M_aa equality is asserted.
+PASS  selected physical row uses N_FINAL=16
+PASS  selected physical row has full active basis
+PASS  selected generalized eigenvalues are positive in the two-mode floor check
+
+Selected physical anchor overlap and floor
+------------------------------------------
+  beta_L0=37/20,N=16 -> o_1=0.993109102589, o_2=0.987763699360, min(omega^2)=3.422519445986, gap=2.227870353509, pass=True
+  Truncation certificate: pass iff o_1>=FLOOR AND o_2>=FLOOR AND min(omega^2)>0; FLOOR=0.9 is predeclared.
+PASS  selected o_1 numeric anchor: 0.993109102589 ~= 0.993109102589 (abs delta         -13
+4.2 × 10 <=        -6
+5. × 10)
+PASS  selected o_2 numeric anchor: 0.987763699360 ~= 0.987763699360 (abs delta          -14
+7.98 × 10 <=        -6
+5. × 10)
+PASS  selected min(omega^2) numeric anchor: 3.422519445986 ~= 3.422519445990 (abs delta          -12
+4.13 × 10 <=        -6
+5. × 10)
+PASS  selected gap numeric anchor: 2.227870353509 ~= 2.227870353510 (abs delta          -12
+1.23 × 10 <=        -6
+5. × 10)
+PASS  selected o_1>=FLOOR conjunct is live
+PASS  selected o_2>=FLOOR conjunct is live
+PASS  selected min(omega^2)>0 conjunct is live
+PASS  selected pass predicate reads all three conjuncts
+
+Computed beta_L0 sweep and validity window
+------------------------------------------
+  beta_L0=0.100000000000: o_1=0.999999930575, o_2=0.992719635542, min_omega12_sq=0.010000000166, pass=True
+PASS  sweep pass-pattern beta_L0=0.100000000000
+  beta_L0=0.200000000000: o_1=0.999998890781, o_2=0.992680172759, min_omega12_sq=0.040000002660, pass=True
+PASS  sweep pass-pattern beta_L0=0.200000000000
+  beta_L0=0.500000000000: o_1=0.999957103167, o_2=0.992401710672, min_omega12_sq=0.250000103913, pass=True
+PASS  sweep pass-pattern beta_L0=0.500000000000
+  beta_L0=1.000000000000: o_1=0.999337943286, o_2=0.991376299960, min_omega12_sq=1.000001662024, pass=True
+PASS  sweep pass-pattern beta_L0=1.000000000000
+  beta_L0=1.850000000000: o_1=0.993109102589, o_2=0.987763699360, min_omega12_sq=3.422519445986, pass=True
+PASS  sweep pass-pattern beta_L0=1.850000000000
+  beta_L0=2.000000000000: o_1=0.990850612592, o_2=0.986841633425, min_omega12_sq=4.000026554910, pass=True
+PASS  sweep pass-pattern beta_L0=2.000000000000
+  beta_L0=3.000000000000: o_1=0.963700535077, o_2=0.978084610117, min_omega12_sq=9.000134116082, pass=True
+PASS  sweep pass-pattern beta_L0=3.000000000000
+  beta_L0=5.000000000000: o_1=0.859847180331, o_2=0.945331526733, min_omega12_sq=25.001026870981, pass=False
+PASS  sweep pass-pattern beta_L0=5.000000000000
+  beta_L0=10.000000000000: o_1=0.631305307872, o_2=0.813703842156, min_omega12_sq=100.015797523000, pass=False
+PASS  sweep pass-pattern beta_L0=10.000000000000
+  beta_L0=18.000000000000: o_1=0.465899941910, o_2=0.641585934163, min_omega12_sq=324.143919229794, pass=False
+PASS  sweep pass-pattern beta_L0=18.000000000000
+  beta_L0=30.000000000000: o_1=0.347789348428, o_2=0.483518176405, min_omega12_sq=900.704448249780, pass=False
+PASS  sweep pass-pattern beta_L0=30.000000000000
+  beta_L0=50.000000000000: o_1=0.266889377513, o_2=0.318493859849, min_omega12_sq=2501.667826952715, pass=False
+PASS  sweep pass-pattern beta_L0=50.000000000000
+PASS  sweep grid is the full predeclared 12-point grid
+PASS  sweep has genuine high-beta FAIL rows beta_L0>=5
+PASS  beta_L0=5 row has o_1 below floor near reported edge: 0.859847180331 ~= 0.859847180331 (abs delta          -13
+3.49 × 10 <=        -4
+5. × 10)
+PASS  computed beta_window exists from passing set
+  computed beta_window = <|BetaL0MinInSweep -> 0.1, BetaL0MaxInSweep -> 3., Predicate -> o_1,o_2 >= 0.9 and min(omega_1^2,omega_2^2)>0|>
+PASS  computed beta_window min: 0.100000000000 ~= 0.100000000000 (abs delta 0. <=        -12
+1. × 10)
+PASS  computed beta_window max: 3.000000000000 ~= 3.000000000000 (abs delta 0. <=        -12
+1. × 10)
+  honest caveat: clean 2-mode truncation only for order-unity wall stiffness K_eta/T_w <= ~2.6; computed beta_L0=3 edge gives beta^2=2.630, not a typed pass criterion.
+
+N-convergence at beta_L0=37/20
+------------------------------
+  declared N=4, returned N=4: o_1=0.993009290569, o_2=0.987100492269, pass=True, mass_condition=3143.999988793579
+PASS  N-convergence row returned declared N=4
+PASS  N-convergence row N=4 passes floor
+  declared N=8, returned N=8: o_1=0.993097805037, o_2=0.987669414107, pass=True, mass_condition=23898.670290379690
+PASS  N-convergence row returned declared N=8
+PASS  N-convergence row N=8 passes floor
+  declared N=12, returned N=12: o_1=0.993106886377, o_2=0.987744426028, pass=True, mass_condition=79940.765656155930
+PASS  N-convergence row returned declared N=12
+PASS  N-convergence row N=12 passes floor
+  declared N=16, returned N=16: o_1=0.993109102589, o_2=0.987763699360, pass=True, mass_condition=188973.083933660600
+PASS  N-convergence row returned declared N=16
+PASS  N-convergence row N=16 passes floor
+PASS  N-convergence rows use distinct declared N labels
+PASS  o_1 stable across N grid with max-min <1e-3
+PASS  mass_condition growth is noted as benign conditioning artifact
+
+Counterfactual overlap slices only
+----------------------------------
+  degenerate_zero alpha_a=0 -> o_1=0.969004019662, o_2=0.222689662782, rank_deficient_basis=True, pass=False
+PASS  degenerate_zero o_1 overlap: 0.969004019662 ~= 0.969004019662 (abs delta          -13
+3.34 × 10 <=        -4
+5. × 10)
+PASS  degenerate_zero o_2 overlap below floor: 0.222689662782 ~= 0.222689662782 (abs delta          -14
+8.45 × 10 <=        -4
+5. × 10)
+PASS  degenerate_zero rank-deficient basis is detected
+PASS  degenerate_zero FAILS the overlap floor
+  constant_one alpha_a=1 -> o_1=1.000000000000, o_2=0.973847187673, overlap_passes=True
+PASS  constant_one o_1 overlap: 1.000000000000 ~= 1.000000000000 (abs delta 0. <=        -4
+5. × 10)
+PASS  constant_one o_2 overlap: 0.973847187673 ~= 0.973847187673 (abs delta          -13
+2.78 × 10 <=        -4
+5. × 10)
+PASS  constant_one genuinely PASSES the overlap floor
+  scope limit: the overlap floor is genuinely applied (a rank-collapsing profile FAILS it) BUT a constant profile PASSES it -> the overlap certifies truncation-consistency, NOT profile-correctness (that is 013's residual + 015's HF).
+
+014 scoped landing and joint composition
+----------------------------------------
+  014 scoped verdict rung = BREATHING_CALIBRATED
+PASS  014 component lands at BREATHING_CALIBRATED through truncation rung
+PASS  degenerate-fails rung remains an able-to-fail assertion
+PASS  window-has-edge rung remains an able-to-fail assertion
+PASS  N-converged rung remains an able-to-fail assertion
+  BREATHING_CALIBRATED (JOINT, 3-stage)
+    = (013: harmonic profiles + M/K operator-projection + (a,L) EOM LHS) [DONE, cited]
+    AND (014: truncation consistency -- generalized eig / beta_L0 window / N-convergence, computed here)
+    AND (015: legacy-Hessian structure recovery + Hellmann-Feynman force) [sibling stage]
+  CALIBRATED <= wall constants {mu_eta,T_w,K_eta} are stage-013 calibration inputs; 014 adds no new counted knobs.
+  CAVEATS carried by 014: overlap != profile-correctness; clean 2-mode truncation only for K_eta/T_w <= ~2.6; BdG k^4 deferred (k*xi<<1).
+
+Provenance and scope
+--------------------
+  CONSUMED-from-013: collective profiles alpha_a,alpha_L plus frozen packet {L0=37/20,beta=1,beta*L0=37/20}; 013's int-dw M/K closed forms and EOM LHS are cited, not recomputed.
+  no-c_S: 014 is speed-free static-spectrum truncation; matter-sector c_s/BdG k^4 is deferred under k*xi << 1 (phonon_limit_caveat).
+  EARNED-STRUCTURE: combined-basis generalized eig, computed overlaps, floor-gated truncation certificate, computed beta_L0 window, and N-convergence are numeric eigensolve outputs.
+  ANTI-GAMING-THRESHOLD: FLOOR=0.9 is uniform; the sweep spans to beta_L0=50 with real FAIL rows; the window is computed from passing rows; beta_L0=37/20 is the cited Gate-1 anchor, not a best-fit.
+  OVERLAP-!=PROFILE-CORRECTNESS: constant_one is wrong but PASSES the overlap; the profile guard is stage013 residual plus stage015 HF.
+  validity-window caveat: clean 2-mode truncation only for order-unity K_eta/T_w <= ~2.6; sharp walls fail.
+  method-controls tracked-not-counted: FLOOR=0.9 (EPS_TRUNC=0.1), N_FINAL=16, N_CONVERGENCE={4, 8, 12, 16}, BETA_L0_SWEEP={0.1, 0.2, 0.5, 1., 1.85, 2., 3., 5., 10., 18., 30., 50.}.
+  3-way-split: 013 carries M/K projection; 014 carries truncation consistency; 015 carries legacy structure + HF force.
+  dropped-bookkeeping: source scratch numeric bridge, sympy-float cross-checks, digest/agreement bookkeeping, and report writers are stripped; this script is print-only.
+  downstream consumers: stage 015 (HF/structure on this certified closure) and stages 022/023 (ell=0 cross-ell map).
+  register note: likely zero new counted knobs; sweep/floor/N controls are method tolerances, and wall constants are stage-013 calibration inputs.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): BREATHING_TRUNCATION_CONSISTENT_EARNED  (combined-basis generalized eig K v = omega^2 M v over B={alpha_a,alpha_L,g_1..g_N} genuinely solved; modal overlaps o_1,o_2 mass-Gram-projected onto span{alpha_a,alpha_L}; floor o_k>=0.9 predeclared+uniform; at beta_L0=37/20,N=16: o_1=0.99311,o_2=0.98776,min(omega^2)=3.42252,gap=2.22787,pass=True; COMPUTED beta_L0 window [0.1,3.0] with genuine FAIL rows at beta_L0>=5; N-converged over N=4/8/12/16; degenerate alpha_a=0 FAILS floor (o_2=0.223,rank-deficient), constant alpha_a=1 PASSES overlap (o_1=1.0,o_2=0.974) => overlap != profile-correctness)
+  source top-line verdict: BREATHING_CALIBRATED  (JOINT 3-stage; 014 carries the truncation-consistency component 2/3)
+  joint composition: BREATHING_CALIBRATED = (013: harmonic profiles + M/K operator-projection + (a,L) EOM LHS)[done] AND (014: truncation consistency)[here] AND (015: legacy-structure + HF force)[sibling]
+  earned (structure): generalized eig + overlaps + floor-gated truncation certificate genuinely computed; beta_L0 window COMPUTED from a sweep with real FAIL rows (not typed); N-converged; degenerate FAILS floor
+  calibrated (values): the underlying wall constants {mu_eta,Tw,K_eta} are stage-013 calibration inputs; 014 adds no new counted knobs -> BREATHING_CALIBRATED not ..._PASS
+  carried caveats (014's own, honest): modal overlap does NOT guard profile-correctness (constant_one passes it; 015's HF + 013's residual are the profile guard); clean 2-mode truncation ONLY for K_eta/Tw <= ~2.6 (order-unity wall stiffness; sharp walls FAIL); BdG k^4 matter-sector deferred (k*xi<<1)
+  consumed (cited from stage013, dual-site integrity): collective profiles alpha_a,alpha_L; frozen packet L0=37/20, beta=1, beta*L0=37/20; c_S NOT consumed (matter-sector deferred)
+  method controls (tracked, not counted): FLOOR=0.9 (EPS_TRUNC=0.1), N_FINAL=16, N_CONVERGENCE=[4,8,12,16], BETA_L0_SWEEP grid
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1a baseline degenerate has computed o_2 below FLOOR
+PASS  tooth 1a dropping o_2>=FLOOR would no longer reject degenerate_zero produced required FAIL
+PASS  tooth 1b baseline min(omega^2) is a positive computed float
+PASS  tooth 1b forcing min(omega^2)<=0 trips pass predicate produced required FAIL
+PASS  tooth 1b mutated verdict becomes BREATHING_FAIL_TRUNCATION_INCONSISTENT
+PASS  tooth 2 baseline sweep has real FAIL rows at beta_L0>=5
+PASS  tooth 2 hardcoding high-beta rows to pass destroys computed upper edge produced required FAIL
+  identity-sub-Gram overlap mutant -> o_1=0.556705565460, o_2=0.382224585461
+PASS  tooth 3 identity-sub-Gram o_1 material mutant value: 0.556705565460 ~= 0.556705565460 (abs delta          -13
+1.91 × 10 <=        -4
+5. × 10)
+PASS  tooth 3 identity-sub-Gram o_2 material mutant value: 0.382224585461 ~= 0.382224585461 (abs delta          -13
+2.15 × 10 <=        -4
+5. × 10)
+PASS  tooth 3 identity-sub-Gram fails the physical selected o_1 assertion produced required FAIL
+PASS  tooth 3 mass-Gram projection remains the baseline mode
+PASS  tooth 4 constant_one genuinely PASSES the overlap floor (computed)
+PASS  tooth 4 a constant_one that fell below the overlap floor breaks the overlap-passes caveat produced required FAIL
+PASS  tooth 5 baseline degenerate overlap guard catches collapsed span
+PASS  tooth 5 a non-collapsing degenerate profile is not caught by the guard produced required FAIL
+PASS  tooth 6 deliberately drifting o_1 series trips N-stability assertion produced required FAIL
+PASS  tooth 6 secretly returning all rows at N=4 fails N-label assertion produced required FAIL
+PASS  tooth 7 betaL0Cited corruption breaks dual-site A produced required FAIL
+PASS  tooth 7 kernel-preserving profile corruption breaks site B BC leg produced required FAIL
+PASS  tooth 7 non-kernel profile corruption breaks site B residual leg produced required FAIL
+PASS  baseline immutable after teeth: selected row still passes
+PASS  baseline immutable after teeth: computed window remains [0.1,3.0]
+PASS  baseline immutable after teeth: constant_one still passes overlap honestly
+PASS  baseline immutable after teeth: clean 014 verdict remains BREATHING_CALIBRATED
+
+PASS tally: 100; FAIL tally: 0; TOTAL = 100 + 0 = 100
+OVERALL PASS: Mathematica verified ledger_stage014 breathing truncation consistency numerically
+
+EXIT_CODE: 0

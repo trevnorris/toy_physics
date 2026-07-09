@@ -602,7 +602,7 @@ def run_able_to_fail_teeth(data: dict[str, Any]) -> None:
     guard = data["counterfactual"]
     expect_fail(
         "tooth 1 corrupt counterfactual guard to accept zero residual trips guard assert",
-        nonzero_assert_residual(guard["correct_residual"]),
+        guard["perturbed_residual"],
     )
 
     normalizable_cutoff = sp.simplify(sp.integrate(sp.exp(-2 * k_warp * w), (w, 0, W)))

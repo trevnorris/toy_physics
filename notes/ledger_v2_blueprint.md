@@ -253,8 +253,18 @@ note/card + registration + reviews.
     transliteration error), (3) **adversarial-with-ablation** (fresh agent). **The adversarial leg is scoped to
     reshape-integrity** — it hunts a reshape-introduced rig (a `.wl` that is secretly a mirror, dropped able-to-fail
     teeth, sneaked-in hardcoding, pass-by-construction), NOT re-litigating the already-earned physics. Uniform across
-    every stage (goal 2). An in-script mutation probe does **not** substitute for leg (3). *(A Grok compute-verification
-    pass is also worth adding to the post-build tri-review where the math is heavy — optional, evaluate per stage.)*
+    every stage (goal 2). An in-script mutation probe does **not** substitute for leg (3). **⭐ PER-TOOTH ABLATION
+    (mandatory, added 2026-07-08):** the adversarial leg must ablate **EVERY** able-to-fail check individually — mutate the
+    specific object that check names and confirm the script exits 1 **AT that check's own assert** (not merely an adjacent
+    one), including the *mundane* bookkeeping/dim/anchor/guard asserts, not just the interesting physics teeth. This is the
+    durable catch for the vacuous-tooth class a physics-teeth-focused mutation matrix MISSES: `X≡X`/set-then-compare
+    (`x:=expr; expect_zero(x−expr)`), dim-tautologies (a form dimensionless for *any* input, never reading the computed
+    object), and subsumed/miswired guards (bad case caught upstream, or wired to the clean residual). A Grok backstop
+    (per-tooth ablation) found ~11 such constructs across committed stages 008/010/011/012 that the original tri-reviews
+    passed — remediated (make-genuine or honestly de-count). *(A Grok compute-verification pass — its per-tooth ablation
+    is exactly this leg's method — is worth adding to the post-build tri-review where the math is heavy; see
+    [[feedback-grok-final-review-pass]].)* **Guiding principle: a check that cannot fail is worse than no check — it
+    launders confidence.**
 - **Part VII (genuinely-new synthesis) + the χ_Q reconciliation:** full new-derivation gauntlet — directive → **Codex
   design-review → GLM-5.2 tertiary → Codex re-green** → dual-engine → full tri-review → user gate.
 

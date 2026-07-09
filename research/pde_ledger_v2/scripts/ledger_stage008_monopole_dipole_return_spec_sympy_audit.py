@@ -10,7 +10,7 @@ in-memory mutation teeth.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Mapping
 
 import sympy as sp
 
@@ -409,7 +409,6 @@ def run_guards(dtn: dict[int, dict[str, sp.Expr | int]], src: dict[str, dict[int
     print("  These controls do NOT test whether suppression occurs. What they confirm is narrow: the source moments M0/D1 are kept live (no S_leak=0, no strict-recovery basis, no projection-locking that would zero them out by construction). Beyond keeping the source live, the controls pass by construction — they are not able-to-fail probes of the physical question. Treat them as guards against the obvious tautologies, not as evidence of suppression-vs-unavoidable.")
     raw_present = all(nonzero(src["raw"][ell]) for ell in (0, 1, 2))
     steady_limit = sp.simplify(sp.limit(src["raw"][0], omega, 0))
-    m0_kill = sp.simplify(src["raw"][0].subs(M0, 0))
     recovery_243 = sp.simplify(anchors["stage243"].subs(anchors["ellw"], 0))
     recovery_244 = sp.simplify(anchors["stage244"].subs(anchors["E0"], 0))
     derivative_not_basis = nonzero(src["derivative_vertex"][0])
@@ -420,7 +419,7 @@ def run_guards(dtn: dict[int, dict[str, sp.Expr | int]], src: dict[str, dict[int
     expect_zero("guard steady_no_radiation: lim_{omega->0} raw0=0", steady_limit)
     expect_bool("guard quadrupole_survives: scanned p(ell2)=5 and raw2 nonzero", quadrupole_survives)
     expect_bool("guard return_necessity: without nonzero and with exactly zero", condition_works(src))
-    expect_zero("guard anti_tautology_no_S_leak_zero: M0->0 kills raw0, so shortcut is visible", m0_kill)
+    print("    declaration anti_tautology_no_S_leak_zero: M0->0 killing raw0 is pass-by-construction after the raw-amplitude closed-form checks, not a counted able-to-fail tooth.")
     print("    declaration anti_tautology_no_S_leak_zero: no S_leak=0 shortcut is used as a verdict basis.")
     print("    declaration anti_tautology_no_strict_recovery_basis: ell_w->0 and E0->0 recovery slices are not used as verdict bases.")
     print("    observed_but_not_used — the strict-recovery limit exists but is NOT taken as a basis: sleak243|_{ell_w->0} = 0")
@@ -491,17 +490,55 @@ def dim_residual(actual: Dim, expected: Dim) -> sp.Expr:
     return sp.simplify(sum((have - want) ** 2 for have, want in zip(actual.components(), expected.components())))
 
 
+def expression_dim(expr: sp.Expr | int, symbol_dims: Mapping[sp.Symbol, Dim]) -> Dim:
+    clean = sp.sympify(expr)
+    if clean.is_number:
+        return DIMENSIONLESS
+    if clean in symbol_dims:
+        return symbol_dims[clean]
+    if isinstance(clean, sp.Symbol):
+        raise AuditFailure(f"missing sourced dimension for symbol {clean}")
+    if clean.is_Mul:
+        out = DIMENSIONLESS
+        for factor in clean.args:
+            out = out * expression_dim(factor, symbol_dims)
+        return out
+    if clean.is_Pow:
+        base, exponent = clean.as_base_exp()
+        if not exponent.is_number:
+            raise AuditFailure(f"non-numeric exponent in dimension walk: {clean}")
+        return expression_dim(base, symbol_dims) ** sp.Rational(exponent)
+    if clean.is_Add:
+        term_dims = [expression_dim(term, symbol_dims) for term in clean.args]
+        if all(dim.components() == term_dims[0].components() for dim in term_dims[1:]):
+            return term_dims[0]
+        raise AuditFailure(f"dimensionally inhomogeneous expression: {clean}")
+    raise AuditFailure(f"unsupported expression in dimension walk: {clean}")
+
+
+def kernel_dimension_residual(kernel: sp.Expr, symbol_dims: Mapping[sp.Symbol, Dim]) -> sp.Expr:
+    return dim_residual(expression_dim(kernel, symbol_dims), DIMENSIONLESS)
+
+
 def run_dimensional_block(dtn: dict[int, dict[str, sp.Expr | int]]) -> None:
     subbanner("Modest dimensional block")
-    wave_number = LENGTH**-1
     sound_speed = LENGTH / TIME
     angular_frequency = TIME**-1
-    z_dim = wave_number * LENGTH
-    expect_zero("z=k*a is dimensionless", dim_residual(z_dim, DIMENSIONLESS))
+    kernel_symbol_dims = {a: LENGTH, cS: sound_speed, omega: angular_frequency}
+    corrupt_kernel_symbol_dims = {**kernel_symbol_dims, a: LENGTH**2}
+    print("  structural note (not counted): z=k*a is dimensionless by k=omega/c_S and [a]=L.")
     for ell in (0, 1, 2):
-        p = sp.Integer(dtn[ell]["p_raw"])
-        kernel_dim = ((LENGTH / sound_speed) ** p) * (angular_frequency**p)
-        expect_zero(f"ell={ell} kernel structure (a/c_S)^p*omega^p is dimensionless", dim_residual(kernel_dim, DIMENSIONLESS))
+        expect_zero(
+            f"ell={ell} actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless",
+            kernel_dimension_residual(sp.sympify(dtn[ell]["radiation_kernel"]), kernel_symbol_dims),
+        )
+    corrupt_dim_residual = sp.simplify(
+        sum(
+            kernel_dimension_residual(sp.sympify(dtn[ell]["radiation_kernel"]), corrupt_kernel_symbol_dims)
+            for ell in (0, 1, 2)
+        )
+    )
+    expect_fail("dimensional source corruption [a]->L^2 makes actual radiation kernels dimensionful", corrupt_dim_residual)
     expect_bool(
         "scanned ladder powers are strictly increasing",
         int(dtn[0]["p_raw"]) < int(dtn[1]["p_raw"]) < int(dtn[2]["p_raw"]),

@@ -541,7 +541,7 @@ runAbleToFailTeeth[data_] := Module[
   {guard, normalizableCutoff, normalizableLimit, pBlochMutated, mutatedHeadline, f0AbsCorrupt},
   subheading["Able-to-fail mutation teeth"];
   guard = data["Counterfactual"];
-  expectFail["tooth 1 corrupt counterfactual guard to accept zero residual trips guard assert", nonzeroAssertResidual[guard["CorrectResidual"]]];
+  expectFail["tooth 1 corrupt counterfactual guard to accept zero residual trips guard assert", guard["PerturbedResidual"]];
   normalizableCutoff = FullSimplify[Integrate[Exp[-2 kWarp w], {w, 0, W}, Assumptions -> kWarp > 0 && W > 0]];
   normalizableLimit = FullSimplify[Limit[normalizableCutoff, W -> Infinity, Assumptions -> kWarp > 0]];
   expectFail["tooth 2 warp flip exp(-2*k_warp*w) trips non-normalizability assert", boolResidual[normalizableLimit === Infinity]];

@@ -159,6 +159,19 @@ def expr_equal(lhs: sp.Expr | int, rhs: sp.Expr | int = 0) -> bool:
     return compact_expr(lhs - rhs) == 0
 
 
+def extract_tan_data_from_dtn(expr: sp.Expr) -> dict[str, sp.Expr]:
+    clean = compact_expr(expr)
+    tan_terms = sorted(clean.atoms(sp.tan), key=sp.sstr)
+    if len(tan_terms) != 1:
+        raise AuditFailure(f"expected exactly one tan factor in derived DtN, found {len(tan_terms)}: {fmt(clean)}")
+    tan_term = tan_terms[0]
+    return {
+        "tan_term": tan_term,
+        "tan_argument": compact_expr(tan_term.args[0]),
+        "dtn_prefactor": compact_expr(clean / tan_term),
+    }
+
+
 def nonzero_q(expr: sp.Expr | int) -> bool:
     return compact_expr(expr) != 0
 
@@ -311,7 +324,7 @@ def compute_012_verdict(
     return DN_UNITTEST_PASS
 
 
-def build_dtn_case(*, cap_rhs: sp.Expr = sp.Integer(0)) -> dict[str, Any]:
+def build_dtn_case(*, cap_rhs: sp.Expr = sp.Integer(0), require_dtn_tan: bool = True) -> dict[str, Any]:
     ode = sp.Eq(sp.diff(psi(s), s, 2) + k**2 * psi(s), 0)
     dsolve_solution = compact_expr(sp.dsolve(ode).rhs)
     constants = sorted(
@@ -343,8 +356,13 @@ def build_dtn_case(*, cap_rhs: sp.Expr = sp.Integer(0)) -> dict[str, Any]:
     dtn_sincos = sp.cancel(sp.together(dtn_raw_unsimplified))
     dtn = compact_expr(dtn_raw)
     dtn_target = compact_expr(-k * sp.tan(k * L0))
-    tan_argument = compact_expr(k * L0)
-    dtn_prefactor = compact_expr(-k)
+    dtn_tan_data: dict[str, Any]
+    if require_dtn_tan:
+        dtn_tan_data = extract_tan_data_from_dtn(dtn)
+    else:
+        dtn_tan_data = {"tan_term": None, "tan_argument": None, "dtn_prefactor": None}
+    tan_argument = dtn_tan_data["tan_argument"]
+    dtn_prefactor = dtn_tan_data["dtn_prefactor"]
     dtn_matches_target = expr_equal(dtn, dtn_target)
 
     denominator_full = compact_expr(sp.fraction(sp.together(dtn_sincos))[1])
@@ -387,6 +405,7 @@ def build_dtn_case(*, cap_rhs: sp.Expr = sp.Integer(0)) -> dict[str, Any]:
         "dtn_sincos": dtn_sincos,
         "dtn": dtn,
         "dtn_target": dtn_target,
+        "dtn_tan_term": dtn_tan_data["tan_term"],
         "tan_argument": tan_argument,
         "dtn_prefactor": dtn_prefactor,
         "dtn_matches_target": dtn_matches_target,
@@ -699,8 +718,8 @@ def run_opening_and_consumed_inputs(data: dict[str, Any]) -> None:
     expect_zero("L_s null-space reconstruction recovers a=0", recon["a"])
     expect_zero("L_s null-space reconstruction recovers b=(omega/c_S)^2", recon["b"] - k**2)
     expect_zero("L_s site A minus site B equals zero", consumed["Ls_site_a"] - consumed["Ls_site_b"])
-    expect_zero("L_s frozen-export anchor consumed_L_s - (psi''+(omega/c_S)^2 psi) equals zero", consumed["consumed_Ls"] - consumed["anchor_Ls"])
-    expect_zero("domain [0,L0] is cited as length L0, not re-solved", consumed["domain"][1] - consumed["domain"][0] - L0)
+    print("  structural note: L_s frozen-export alias anchor is de-counted; dual-site null-space integrity above carries the citation check.")
+    print(f"  structural note: consumed domain [0,L0] = {fmt(consumed['domain'])}; length bookkeeping is de-counted.")
 
 
 def run_dn_dtn(data: dict[str, Any]) -> None:
@@ -719,10 +738,10 @@ def run_dn_dtn(data: dict[str, Any]) -> None:
     )
     print(f"  dtn_raw = {fmt(dtn['dtn_raw'])}")
     print(f"  dtn target = {fmt(dtn['dtn_target'])}")
+    expect_zero("tan_argument extracted from derived DtN is k*L0", dtn["tan_argument"] - k * L0)
+    expect_zero("dtn_prefactor extracted from derived DtN is -k", dtn["dtn_prefactor"] + k)
     expect_zero("DtN derived via LUsolve equals -k*tan(k*L0)", dtn["dtn"] - dtn["dtn_target"])
     expect_bool("dtn_matches_target is genuine derived-vs-typed comparison", dtn["dtn_matches_target"])
-    expect_zero("tan_argument is k*L0", dtn["tan_argument"] - k * L0)
-    expect_zero("dtn_prefactor is -k", dtn["dtn_prefactor"] + k)
 
 
 def run_pole_static_roundtrip(data: dict[str, Any]) -> None:
@@ -876,7 +895,7 @@ def run_able_to_fail_teeth(data: dict[str, Any]) -> None:
         ),
     )
 
-    dtn_mut = build_dtn_case(cap_rhs=psiM / L0)
+    dtn_mut = build_dtn_case(cap_rhs=psiM / L0, require_dtn_tan=False)
     expect_fail("tooth 2 mutated Neumann RHS changes derived DtN", dtn_mut["dtn"] - dtn["dtn_target"])
     expect_fail("tooth 2 dtn_matches_target flips false", bool_residual(dtn_mut["dtn_matches_target"]))
     expect_zero(

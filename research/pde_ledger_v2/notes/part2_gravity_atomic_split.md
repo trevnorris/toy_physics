@@ -493,17 +493,55 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   error a design-review missed — an able-to-fail mutant "outgoing→incoming" that is INERT for the leading pole (both Hankel branches share the `z^{−(ℓ+1)}`
   singular behavior; only the imaginary sign flips), so `Λ_static` needs a POLE-ORDER mutant `h_mut=z·h`; the proof a normalization tooth is able-to-fail is a
   mutant that shifts the pole ORDER, not the radiation branch.
-- **▶ NEXT = Cluster A `ledger_stage023`** (II-G5b, pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 2/2 — the nullspace-underdetermination departure that DELIVERS the
-  FAIL + COMPLETES the joint): the genuine native nullspace (dim-8, return-nullity-2), the residuals-vs-pathA_29 (`A0/A1`, `ε_eff`), the `Z0_ret/Z1_ret` untouched →
-  the Gate-6 selector need, + the selector-equation control → `CROSS_L_RESIDUAL_PREDICTION` (making the gate able-to-fail). Source:
-  `software/stage1_solver/tools/pathA_34_cross_l_unification_{sympy.py,.wl}` (the 023 slice = `build_transfers` L361–461, `build_residuals` L464–508,
-  `GENERATOR_DOFS`/`build_rank_audit` L511–699, `selector_equations`/`selector_provenance` L306–358, `build_provenance` L899–970 the FAIL_TAUTOLOGICAL firewall,
-  `base_verdict`/`run_gate` L1008–1079; the dimensional checker L702–896 + probes R1/3a/3b/3c/3d/3f/3g/3h). ⚠ **The pathA_34 v1 REJECTION locus is 023's (part2
-  L90–92):** the DEFAULT verdict is PASS — `UNDERDETERMINED` must be EARNED from a GENUINELY-COMPUTED native nullspace (the v1 was tri-review-REJECTED for a
-  rigged-to-UNDERDETERMINED zero-padded-constraint + flag-driven probes + a headline-only `.wl`); back-solving `ε_eff`/`Z` from residuals is FORBIDDEN (the
-  `FAIL_TAUTOLOGICAL` firewall). ⭐ Author a running-start source map FIRST (023 CONSUMES 022's exported ℓ=0/1 radiative coeffs `{1, 1/2}` → the `A0/A1` residual
-  amplitudes; cite 008's `R0=−M0`/`R1=−D1` targets + 009/010's return channels + pathA_29's `Z_is_premise`). This COMPLETES the pathA_34 fold (022∧023); then
-  Cluster C (024–029, the density port + 2.5PN match-back + PN DOI-cite), then the scheduled MIDWAY KNOB AUDIT after the Part-II gravity sector closes.
+- **✅ II-G5b `ledger_stage023` DONE (2026-07-10) — pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 2/2 (the native nullspace underdetermination departure — the
+  COMPLETING, FAIL-DELIVERING leg); ⭐ pathA_34 fold COMPLETE (022∧023); ⭐⭐ CLOSES the Gate-1–5 gravity ladder.** SYMBOLIC/exact/float-free. EARNED: over **11
+  genuine generator dofs** `[OmegaU,OmegaW,Rmix,gU,gW,D0,K0c,K_eta,T_Omega,Z0_ret,Z1_ret]` the collected Gate-5 named constraints `{P0_raw, K0c, K_eta+2·T_Omega}`
+  have constraint-Jacobian rank **3** (a GENUINE `sp.Matrix(rows).rank()` on symbolic `diff` rows / constructive `NullSpace` — **NO zero-padding, NO hardcoded 8/2**;
+  the v1 REJECTION locus repaired) → native nullspace dim **8** → return-augmented rank **5** → **return-moving nullity 2**: the return admittances `{Z0_ret, Z1_ret}`
+  survive every constraint (with explicit unit-vector witnesses that preserve every constraint yet move `T0/T1`; `Z_is_premise=True`, pathA_29) →
+  `FAIL_UNDERDETERMINED_NOT_PREDICTIVE`. The **counterfactual** selector `{Z0_ret=K0c, Z1_ret=K_eta+2·T_Omega}` collapses the return-moving nullity 2→0 (native nullity
+  8→6, rank 3→5) → `CROSS_L_RESIDUAL_PREDICTION` — the able-to-fail witness (the DEFAULT verdict is the predictive token, so the FAIL is EARNED from the computed
+  return-moving nullity, NOT baked). The `A0/A1` scalar/dipole residuals FORWARD-consume 022's `{1,1/2}` (`A_ℓ=i·v_ℓ·(aω/c_s)^{2ℓ+1}·{M0|D1}·(1−T_ℓ)`, `ε_ℓ=Z_ℓ/K_ℓ`
+  FORWARD not back-solved), checked vs the INDEPENDENT pathA_29 form (`expected_A1`'s `2c_s³` encodes the consumed `1/2` → corrupt `v1`→`A1_form` fires); the
+  stage021-machinery dim gate (`[A0]=(0,1,−1)`, `[A1]=(1,1,−1)`, `[P0_physical]=(0,0,0)`; sourced-`[M0]`→`FAIL_DIMENSIONAL`, free-carrier `q_free`→`NO_FAIL`); the
+  strengthened `FAIL_TAUTOLOGICAL` firewall (`class_matches_computed`; `ε_eff` magnitude classed `deferred_branch_data`; the NEW `emit_epsilon_magnitude_as_derived`
+  mutation → `FAIL_TAUTOLOGICAL`) forbids the ε_eff/Z back-solve. The joint ladder DROPS the `quad_regression` rung (022 owns Gate-4, consumed `quad_regression=False`
+  provenance — 023 does NOT rebuild the fingerprint core / probe 3e) + removes the inert `able_to_fail_bad`. Prints `AUDIT_STATUS=PASS` (script/teeth, exit 0) distinct
+  from `PHYSICS_VERDICT=FAIL_UNDERDETERMINED_NOT_PREDICTIVE (2/2, COMPLETING)` (the earned characterized-FAIL — the stage003/pathA_36 pattern). ⭐ **Register: ZERO new
+  counted CALIB knobs (set stays 6); `Z0_ret/Z1_ret` add zero new free dofs (aliases); `K0c/K1` add COUNTED `FREE-UNREDUCED` PENDING reduction-debt** — `Z0_ret/Z1_ret` = COORDINATE ALIASES of the existing `ε0/ε1` FREE-UNREDUCED debt (register L165; no double-count, no new dof);
+  ⚠ `K0c` + the ℓ=1 sector `{K_eta,T_Omega}` (via `K1=K_eta+2·T_Omega`) = pathA_34-convention effective ℓ=0/1 stiffnesses, **`FREE-UNREDUCED` `PENDING` scalar-reduction — COUNTED as debt** (per the register rule pending debt stays counted until DERIVED; NOT `DERIVED`, NOT `CALIB`; dims `M T⁻²`≠013 `M L⁻¹T⁻²`/017
+  `M L⁻³T⁻²` — the stage016 volume-vs-line convention trap); `q_free/eta_null/gain0/gain1` control-construction tracked-not-counted; new obligation edge **R42** (the
+  cross-ℓ nullspace departure + the sharpened Gate-6 obligation: Gate 6 must supply 2 independent return equations — SHARPENS the `ε0/ε1` R24-family debt, adds no
+  dofs); Part-II CALIB set UNCHANGED = 6; Codex `REGISTER_CLEAN` (pending Codex-verify at commit). ⚠ Consumption: stage022's `{1,1/2}` (CHECKABLE derive-vs-typed →
+  `A0/A1`); the pathA_29 residual form (009/010); `Z_is_premise`; 008's `M0/D1/R0/R1`; 017's `P0_raw`; 013/017 (context for `K0c/K1`); `c_s`(R1)/`a`(CONV) = PROVENANCE.
+  ⭐⭐ **The `.wl` is RE-AUTHORED independent** via a constructive `NullSpace` route (`Length[NullSpace[Jbase]]=8`, `MatrixRank[basis·Gᵀ]=2`,
+  `Greturn·NullSpace[Jselector]=0`) — materially different from the `.py`'s `augRank−rank0` (mirror-policy screen; like 020/022, UNLIKE 018/019/021's keep-native).
+  ⭐⭐ **Directive review = Codex→Grok→Codex bookend (⭐ the v1 REJECTION locus, the SHARPEST in Part II):** Codex design-review **7 BLOCKING** folded (the `.wl` decisive
+  RE-AUTHOR; ⚠ the **"selector collapses the RETURN-MOVING nullity, not the nullity" math fix** [native nullity 8→6 not 0] + corrected isolated ablation teeth; the
+  counterfactual-witness-not-proven-Gate-6-selector relabel; the provenance-cut fix [022's `{1,1/2}`=`cited_earned_input` + `assert_not_derive` rewired to the
+  023-derived forward T0/T1 map + `gate4_prefactor` tag dropped]; the strengthened firewall [`emit_epsilon` tooth + de-counted `rerun_gate_logic` + fixed
+  `able_to_fail_bad`]; the **K0c/K1 PENDING-not-DERIVED** register correction; the **Z0_ret/Z1_ret aliases-not-new-dofs** register correction) → Codex confirm-pass 5
+  BLOCKING + 2 nits → final-confirm 2 BLOCKING + 1 nit (all consistency-sweep gaps) → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** (independent SymPy confirmed rank
+  3/nullity 8/return-moving 2, the selector flip with native nullity 8→6, `A1−expected_A1=0` iff `v1=1/2`, the dims, the `K0c/K1` dim-conflict + `Z_ret` alias
+  conventions; validated the `.wl` constructive route incl. `Greturn·Nsel=0` a genuine identity; 1 honest-scope note folded — raw nullity 8 includes `K0c/K1`
+  self-constraint bookkeeping, verdict rides return-moving 2) → closing Codex confirm. Dual-engine SymPy 116/Mathematica 123 → **111/117** (net −5/−6 from honest
+  de-counts). Tri-review: `FIDELITY_CLEAN` (independent SymPy re-derivation of the rank audit, selector flip, `A0/A1`+`v1=1/2` consumption, dims — faithful, genuine
+  rank not zero-padded, no ε back-solve, materially-different constructive `.wl`) + `ADVERSARIAL_CLEAN` (per-tooth ablation matrix, 15 mutations both engines —
+  hardcoding-the-rank/zero-padding/faking-the-`.wl`-basis all FAIL, the 4 KEY anti-rig properties CONFIRMED; **4 non-blocking de-count nits** → Codex remediated 2
+  make-genuine [witness-preservation recomputes each Jacobian-row dot product from the stored witness; neutralized-mutation uses a cache-distinct inert context +
+  independence check] + 2 de-count [provenance-documentation → labeled PROVENANCE prints; the T/ε identity → a SELF-CONSISTENCY check] → fresh-agent `REVERIFY_CLEAN`
+  coupling meta-test, no regression). Exit 0, CWD-independent (repo root AND `/tmp`), zero file I/O. Registration at count 23, PDF rebuilt. ⚠ **Lesson banked:** the
+  bookend caught a directive-level MATH error (the selector collapses the *return-moving* nullity to 0, NOT the full native nullity — which goes 8→6) + a register
+  over-claim (K0c/K1 "DERIVED" was unsupported — the pathA_34-convention dims `(0,1,−2)` don't match 013/017, the stage016 volume-vs-line trap recurring) + a
+  double-count (Z0_ret/Z1_ret are the *same* ε0/ε1 freedoms, aliased) — three directive-level errors the Codex→Grok→Codex bookend caught before the build.
+- **▶ NEXT = Cluster C `ledger_stage024`** (II-P1, pathA_43 `DENSITY_PORT_HOSTED` 1/4 — the ℓ=2 quadrupole radiative-port numerator `N0_den` as a DENSITY-NATIVE
+  two-port over `(q2` wall, `Φ2` bulk-density`)` via Schur-elim / Green-DtN; consumes 029/010's bulk mode + 032/017's wall mode; the OLD EM `A_w`/`U,W` vector
+  scaffold RETIRES). Source: `software/stage1_solver/tools/pathA_43_density_quadrupole_port_{sympy.py,.wl}` (already contract-clean — no argparse/JSON/reads, the
+  LIGHTEST reshape; the work is decomposition + preserving the anti-rig mechanisms = the COMPUTED taint/host-set guard + the lineage token-check, 024/025/026's — see
+  the per-gate trip-ups L93). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector
+  CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out
+  vs irreducible-route-less tally). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). This stage is DENSITY-PORT (pathA_43), a DIFFERENT
+  source family from pathA_30–34 (contract-clean, no scratch-YAML bridge) — see the reshape-cost map L78–79.
 
 ## Per-stage process (unchanged, calibrated)
 

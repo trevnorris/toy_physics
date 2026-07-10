@@ -1,0 +1,152 @@
+\section{Stage 023: The Native Nullspace Underdetermination Departure (Check II-G5b)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat cross-\(\ell\) return sector; the COMPLETING, FAIL-delivering leg of a two-way split of pathA\_34 --- Stage~022 earned the cross-\(\ell\) \(-(\ell+1)/\Lambda_\ell\) fingerprints + the Gate-4 non-regression (the EARNED-FIRST 1/2), and this stage builds the native nullspace underdetermination that \emph{delivers} the joint \texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE} (2/2)). This COMPLETES the pathA\_34 fold (022\(\wedge\)023) and closes the Gate-1--5 gravity ladder; the only remaining gravity item, Gate~6 (the nonlinear return-selector), is sim-deferred (a Part-VII open-item, R42).}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Certify that the linear Gate-5 return law is genuinely underdetermined: over 11 genuine generator dofs \([\Omega_U,\Omega_W,R_{\mathrm{mix}},g_U,g_W,D_0,K_{0c},K_\eta,T_\Omega,Z_0^{\mathrm{ret}},Z_1^{\mathrm{ret}}]\) the three collected named constraints \(\{P_0^{\mathrm{raw}},K_{0c},K_\eta+2T_\Omega\}\) have Jacobian rank 3 \(\Rightarrow\) native nullspace dimension 8, and augmenting with the return-transfer gradients \(\{\partial T_0,\partial T_1\}\) gives return-augmented rank 5 \(\Rightarrow\) \emph{return-moving nullity 2}: the return admittances \(\{Z_0^{\mathrm{ret}},Z_1^{\mathrm{ret}}\}\) survive every collected constraint (\(Z\) is a pathA\_29 premise) \(\Rightarrow\) \texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE}; and that a derived counterfactual selector collapses the return-moving nullity to 0 \(\Rightarrow\) \texttt{CROSS\_L\_RESIDUAL\_PREDICTION} (the able-to-fail witness).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage023_nullspace_underdetermination_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage023_nullspace_underdetermination_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusOpen. FAIL-headline stage (cf.\ Stage~003 = earned transverse photons + the characterized \texttt{FAIL\_CAUCHY}
+departure): the top-line verdict is a \texttt{FAIL\_*}, but the earned content --- a genuinely-computed native nullspace and the
+able-to-fail selector control --- is the headline, and the FAIL is the first-class characterized landing (no softening). The
+computation is exact symbolic, float-free: the constraint Jacobian, its rank/nullspace, the return-transfer gradients, the
+\(A_0/A_1\) residuals, and the \((L,M,T)\)-triple dimensional algebra are exact \texttt{sympy} (\texttt{sp.Matrix(rows).rank()})
+/ native Wolfram (\texttt{NullSpace}, \texttt{MatrixRank}) computations; \texttt{expect\_zero}/\texttt{expect\_bool}/\texttt{expect\_fail}
+residuals, no floats/tolerances. It adds \textbf{zero} new counted CALIB knobs (the set stays 6) and \(Z_0^{\mathrm{ret}}/Z_1^{\mathrm{ret}}\) add zero new free dofs (aliases of the existing \(\varepsilon_0/\varepsilon_1\) debt); the effective \(\ell=0/1\) stiffnesses \(K_{0c}/K_1\) add \emph{counted} \texttt{FREE-UNREDUCED} \texttt{PENDING} reduction-debt.
+
+\paragraph{Two distinct labels, both printed.}
+The script emits a script/teeth status separately from the earned physics verdict:
+\[
+\begin{array}{l}
+\texttt{AUDIT\_STATUS=PASS}\quad\text{(the script ran, all teeth fired, exit 0)}\\
+\texttt{PHYSICS\_VERDICT=FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE (2/2, COMPLETING)}\quad\text{(the earned characterized-FAIL result)}
+\end{array}
+\]
+The script PASSES (exit 0) by correctly \emph{computing} the earned FAIL --- the FAIL is the earned physics, not an execution
+failure.
+
+\paragraph{The native nullspace (a genuine rank, not a rigged construction).}
+The three collected named constraints are the \(\ell=2\) port kernel
+\(P_0^{\mathrm{raw}}=(\Omega_U^2 g_W+R_{\mathrm{mix}}g_U)^2/(\Omega_U^2\Omega_W^2-R_{\mathrm{mix}}^2)^2/D_0\) (handoff \S10.2--10.3),
+the \(\ell=0\) collective stiffness \(K_{0c}\) (\S8.2 / Gate-2), and the \(\ell=1\) harmonic stiffness \(K_1=K_\eta+2T_\Omega\)
+(\S9.4). Their Jacobian \(J\) over the 11 dofs has
+\[
+\operatorname{rank}(J)=3\ \ (\text{a genuine }\texttt{sp.Matrix(rows).rank()}\text{ on symbolic }\partial\text{-rows --- no zero-padding, no hardcoded }8/2),\qquad
+\dim\ker=11-3=8.
+\]
+Augmenting \(J\) with the return-transfer gradients \(\partial T_0,\partial T_1\) --- where \(T_\ell=K_\ell/(K_\ell+Z_\ell^{\mathrm{ret}})\)
+is the DC return transmission --- gives
+\[
+\operatorname{rank}(J\cup\{\partial T_0,\partial T_1\})=5,\qquad
+\texttt{return\_moving\_nullity}=5-3=2\ \Rightarrow\ \texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE}.
+\]
+The two return admittances \(\{Z_0^{\mathrm{ret}},Z_1^{\mathrm{ret}}\}\) are untouched by every collected constraint
+(\(\partial c/\partial Z_\ell^{\mathrm{ret}}=0\)) yet move \(T_0/T_1\); this is witnessed constructively --- the unit vectors
+\(e_{Z_0^{\mathrm{ret}}},e_{Z_1^{\mathrm{ret}}}\) each lie in the constraint nullspace yet give
+\(\Delta T_0=-K_{0c}/(K_{0c}+Z_0^{\mathrm{ret}})^2\neq0\) and \(\Delta T_1=-(K_\eta+2T_\Omega)/(\cdots)^2\neq0\). Why the return
+survives: pathA\_29 records \(Z\) as a \emph{premise} (\texttt{Z\_is\_premise=True}, \texttt{boundary\_dof=none}) --- the linear
+theory supplies no equation to fix it.
+
+\paragraph{The counterfactual selector control (the able-to-fail).}
+Adding the two selector rows \(\{Z_0^{\mathrm{ret}}=K_{0c},\ Z_1^{\mathrm{ret}}=K_\eta+2T_\Omega\}\) raises the constraint rank
+\(3\to5\) (native nullity \(8\to6\)) and makes \(T_0=T_1=1/2\) (constants, zero gradient), so \texttt{return\_moving\_nullity}\(:2\to0\)
+and the verdict flips to \texttt{CROSS\_L\_RESIDUAL\_PREDICTION}. Because \texttt{base\_verdict} defaults to the predictive token
+and returns the FAIL only when the computed return-moving nullity exceeds 0, \textbf{the FAIL is earned from the computed nullity,
+not baked}. \(\{Z_0^{\mathrm{ret}}=K_{0c},Z_1^{\mathrm{ret}}=K_\eta+2T_\Omega\}\) is a \emph{counterfactual rank-collapse witness}
+(\texttt{derived\_from\_named\_pde=False}, \texttt{control\_only=True}), \emph{not} a proven Gate-6 selector; the earned export is
+the \emph{need} --- Gate~6 must supply two independent equations fixing the two return directions (or an equivalent return law).
+
+\paragraph{The \texorpdfstring{\(A_0/A_1\)}{A0/A1} residuals (forward-built; consuming Stage-022's \texorpdfstring{\(\{1,1/2\}\)}{{1,1/2}}).}
+The \(\ell=0/1\) return residual amplitudes are the cross-\(\ell\)/port continuation of Stage~009's
+\texttt{RETURN\_RESIDUAL\_PREDICTION} (\(A_{\mathrm{res}}\propto\varepsilon_\ell/(1+\varepsilon_\ell)\)), built \emph{forward}
+from Stage~022's earned coefficients \(v_0=1,\ v_1=1/2\) and the transmission \((1-T_\ell)\):
+\[
+A_0=i\,v_0\,(a\omega/c_s)\,M_0\,(1-T_0),\qquad A_1=i\,v_1\,(a\omega/c_s)^3\,D_1\,(1-T_1),\qquad \varepsilon_\ell=Z_\ell^{\mathrm{ret}}/K_\ell,
+\]
+with \(1-T_\ell=\varepsilon_\ell/(1+\varepsilon_\ell)\) \emph{forward} from the transfer definition --- never back-solved from a
+residual. They are checked against the \emph{independent} pathA\_29 form
+\(\mathrm{expected}\,A_0=i\,a\omega M_0\varepsilon_0/(c_s(1+\varepsilon_0))\),
+\(\mathrm{expected}\,A_1=i\,a^3\omega^3 D_1\varepsilon_1/(2c_s^3(1+\varepsilon_1))\), and \(A_0-\mathrm{expected}\,A_0=0\),
+\(A_1-\mathrm{expected}\,A_1=0\) at orders \(\omega^1,\omega^3\). The consumption is checkable:
+\(A_1-\mathrm{expected}\,A_1=i(a^3\omega^3/c_s^3)D_1(\varepsilon_1/(1+\varepsilon_1))(v_1-1/2)\), zero iff \(v_1=1/2\) --- the
+\(2c_s^3\) encodes the consumed \(1/2\), so corrupting \(v_1\) (\(1/2\to1/3\)) fires the \(A_1\) form residual. The residual class
+(form/sign/order) is earned; the magnitude is deferred because the nullspace leaves \(\varepsilon_{\mathrm{eff}}\) free.
+
+\paragraph{The dimensional gate and the anti-back-solve firewall.}
+A recursive \((L,M,T)\)-triple \texttt{dim\_of} (raising on a sum-mismatch) certifies, from the sourced dims, \([A_0]=(0,1,-1)\),
+\([A_1]=(1,1,-1)\), \([T_\ell]=[\varepsilon_\ell]=[P_0^{\mathrm{phys}}]=(0,0,0)\) with \([P_0^{\mathrm{phys}}]=(c_s/a)^2[P_0^{\mathrm{raw}}]\);
+corrupting a sourced dim (\([M_0]\)) fires \texttt{FAIL\_DIMENSIONAL} while the unconstrained free carrier \(q_{\mathrm{free}}\)
+gives \texttt{NO\_FAIL} (the free-carrier-independence control). The \texttt{FAIL\_TAUTOLOGICAL} firewall classes the
+\(\varepsilon_{\mathrm{eff}}\) magnitude \texttt{deferred\_branch\_data} while underdetermined (so emitting it as derived is
+forbidden); a dedicated \texttt{emit\_epsilon\_magnitude\_as\_derived} mutation (and \texttt{assert\_not\_derive} on the
+genuinely-023-derived forward \(T_0/T_1\) map) fire \texttt{FAIL\_TAUTOLOGICAL} --- the guard against the v1 rejection's
+\(\varepsilon_{\mathrm{eff}}/Z\) back-solve.
+
+\paragraph{Honest scope.}
+The FAIL is the earned physics: the genuinely-computed native nullspace (dim 8 / return-moving nullity 2) shows the linear theory
+cannot pin the \(\ell=0/1\) return; Gate~6's nonlinear closure (sim-deferred) must supply two independent return equations (or an
+equivalent return law). The raw nullity 8 is partly bookkeeping --- two of the three constraints (\(K_{0c},K_1\)) self-pin their
+own stiffness, so \(P_0^{\mathrm{raw}}\) alone gives rank 1 / nullity 10, but the return-moving nullity is still 2; the
+verdict-bearing quantity is \texttt{return\_moving\_nullity}, the raw nullity a reported diagnostic. The residual \emph{class}
+(form/sign/order) is earned; the \emph{magnitude} is deferred (\(\varepsilon_{\mathrm{eff}}\) left free), never back-solved.
+
+\paragraph{Consumed closure and register.}
+Two checkable relations: Stage-022's \(\{1,1/2\}\) (corrupting the cited \(v_1\) fires \(A_1\)) and the pathA\_29 residual form
+(Stage~009/010, \(A_{\mathrm{res}}\propto\varepsilon_\ell/(1+\varepsilon_\ell)\), from which \(\mathrm{expected}\,A_0/A_1\) is
+built independently). \emph{Provenance (cited, not re-derived):} pathA\_29's \texttt{Z\_is\_premise}; Stage~008's \(R_0=-M_0\) /
+\(R_1=-D_1\) targets and the \(M_0/D_1\) moments; Stage~017's port kernel \(P_0^{\mathrm{raw}}\); Stage~013/017 as context for the
+effective stiffnesses; and \(c_s\) (Stage~005 R1 \(c_s^2=5K\rho^4/m\)) as the units symbol in \(z=a\omega/c_s\) (distinct from the
+frozen-wall \(c_S\), 011--017). Register: \textbf{zero} new counted CALIB knobs (set stays 6); \(Z_0^{\mathrm{ret}}/Z_1^{\mathrm{ret}}\)
+add \textbf{zero} new free dofs; but \(K_{0c}/K_1\) add \emph{counted} \texttt{FREE-UNREDUCED} \texttt{PENDING} reduction-debt. The return admittances
+\(\{Z_0^{\mathrm{ret}},Z_1^{\mathrm{ret}}\}\) are coordinate \emph{aliases} of the existing \(\varepsilon_0/\varepsilon_1\)
+\texttt{FREE-UNREDUCED} debt (\(\varepsilon_\ell=Z_\ell^{\mathrm{ret}}/K_\ell\) invertible --- no double-count, no new dof); the effective
+stiffnesses \(K_{0c}\) and the \(\ell=1\) sector \(\{K_\eta,T_\Omega\}\) (via \(K_1=K_\eta+2T_\Omega\), dims \(M T^{-2}\)) are
+\texttt{FREE-UNREDUCED} \texttt{PENDING} scalar-reduction \emph{counted as reduction debt} (pending debt stays counted until derived), \emph{not} \texttt{DERIVED}, not \texttt{CALIB}
+--- their dims do not match registered Stage~013 \(K_\eta=T_w\beta^2\) (\(M L^{-1}T^{-2}\)) or Stage~017 \(T_\Omega\)
+(\(M L^{-3}T^{-2}\)), which Stage~017 records as non-transferable across the volume-vs-line convention (the Stage-016 lesson), so
+they are not identified with the raw densities (an explicit scalar-reduction to the wall packet would discharge the debt). New structural/obligation edge \textbf{R42} (the cross-\(\ell\) nullspace
+underdetermination departure + the sharpened Gate-6 return-selector obligation; it sharpens the existing \(\varepsilon_0/\varepsilon_1\)
+R24-family debt and adds no free dofs). Part-II counted CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) +
+\(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017) = 6. This stage completes the pathA\_34 fold (022\(\wedge\)023) and
+closes the Gate-1--5 gravity ladder.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML handoff is severed. The \texttt{.wl} is
+a genuinely independent route, \emph{re-authored} (the source \texttt{rankAuditFor} block was structurally parallel to the
+\texttt{.py}'s \texttt{augRank}\(-\)\texttt{rank0}, so it was discarded per the mirror-policy screen): it proves the nullspace
+constructively --- \(\texttt{Length[NullSpace}[J_{\mathrm{base}}]]=8\), \(\texttt{MatrixRank}[\mathrm{basis}\cdot\mathrm{Greturn}^{\!\top}]=2\),
+the explicit \(Z_\ell^{\mathrm{ret}}\) unit directions lie in \(\texttt{NullSpace}[J_{\mathrm{base}}]\), and (with the selector)
+\(\texttt{Length[NullSpace}[J_{\mathrm{sel}}]]=6\) with the original return gradients giving
+\(\mathrm{Greturn}\cdot\texttt{NullSpace}[J_{\mathrm{sel}}]^{\!\top}=0\) --- a materially different algorithm from the \texttt{.py}
+rank-subtraction. Agreement is transcript-level (\texttt{native\_nullspace\_dimension=8}, \texttt{return\_moving\_nullity=2},
+\texttt{baseline\_verdict}\(=\)\texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE}, \texttt{selector\_control\_verdict}\(=\)\texttt{CROSS\_L\_RESIDUAL\_PREDICTION},
+the \(A_0/A_1\) residual-zero, the dim gate, and the probe tokens); SymPy 111 PASS / Mathematica 117 PASS, exit 0, CWD-independent.
+The directive design-review used the Codex\(\to\)Grok\(\to\)Codex bookend on the pathA\_34 v1 rejection locus (the sharpest in
+Part~II --- v1 was rejected for a rigged zero-padded nullity, flag-driven probes, and a headline-only \texttt{.wl}): Codex folded
+seven blocking findings (the \texttt{.wl} decisive re-author; the ``selector collapses the return-moving nullity, not the
+nullity'' math fix --- native nullity \(8\to6\), rank \(3\to5\) --- with corrected isolated ablation teeth; the
+counterfactual-witness-not-proven-selector relabel; the provenance-cut fix --- \(\{1,1/2\}\) as \texttt{cited\_earned\_input},
+\texttt{assert\_not\_derive} rewired to the 023-derived \(T_0/T_1\) map, the \texttt{gate4\_prefactor} tag dropped; the
+strengthened firewall --- the \texttt{emit\_epsilon} tooth, the de-counted \texttt{rerun\_gate\_logic}, the fixed
+\texttt{able\_to\_fail\_bad}; the \(K_{0c}/K_1\) \texttt{PENDING}-not-\texttt{DERIVED} register correction (dims \((0,1,-2)\neq\)
+013/017 --- the Stage-016 convention trap); and the \(Z_0^{\mathrm{ret}}/Z_1^{\mathrm{ret}}\) aliases-not-new-dofs register
+correction), with confirm-passes folding the consistency-sweep gaps. A Grok-4.5 compute-verify returned \texttt{DIRECTIVE\_CLEAN},
+independently confirming (with its own SymPy) the rank/nullity/return-moving, the selector flip, \(A_1-\mathrm{expected}\,A_1=0\)
+iff \(v_1=1/2\), the dims, the register conventions, and the \texttt{.wl} constructive identity, plus one honest-scope note (the
+raw nullity 8 includes \(K_{0c}/K_1\) self-constraint bookkeeping; the verdict rides return-moving 2); a closing Codex confirm
+closed the bookend. Full tri-review on fresh agents (arbiter re-run reproduced the build SymPy 116 / Mathematica 123, exit 0,
+CWD-independent): \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived the rank audit, the selector flip, the \(A_0/A_1\)
+forward-build + the \(v_1=1/2\) consumption, and the dims --- all faithful, genuine rank not zero-padded, no \(\varepsilon\)
+back-solve, a materially-different constructive \texttt{.wl}) and \texttt{ADVERSARIAL\_CLEAN} (per-tooth ablation, 15 mutations
+across both engines: hardcoding the rank, zero-padding the Jacobian, and faking the \texttt{.wl} \texttt{NullSpace} basis all make
+the audit FAIL; the four KEY anti-rig properties confirmed; four non-blocking de-count nits). Codex remediated two make-genuine
+(the witness-preservation assert recomputes each Jacobian-row dot product from the stored witness vector; the neutralized-mutation
+meta-test uses a cache-distinct inert context with an independence check) and two honest de-counts (the provenance/premise
+documentation asserts \(\to\) labeled prints; the \(T/\varepsilon\) identity \(\to\) a self-consistency check), re-verified
+\texttt{REVERIFY\_CLEAN} by the coupling meta-test (each made-genuine tooth fires under a mutation of its object and goes vacuous
+when neutered; no regression, both engines). Tallies 116/123 \(\to\) 111/117 (net \(-5/-6\) per engine from the honest
+de-counts). Symbolic per-tooth ablation, mutations on copies. With this stage the pathA\_34 fold is complete (022\(\wedge\)023)
+and the Gate-1--5 gravity ladder is closed.

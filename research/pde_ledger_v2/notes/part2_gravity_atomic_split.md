@@ -424,19 +424,50 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   coverage/manifest YAML lag (the count fields had stalled at 18 while the tables read 19; brought to 20). ⚠ **Lesson banked:** Grok's compute-verify
   catches a *rule inversion* that a reasoning-only review + a self-report can miss — a verdict whose two endpoint tests both pass under an inverted
   default is a shippable rig; pin the default with a MIXED control (the middle case). Committed (see git log).
-- **▶ NEXT = Cluster A `ledger_stage021`** (II-G4d, pathA_33 `QUAD_CALIBRATED` 4/4 — the μ̂₀-free `[P₀^phys]=1` dimensional closure; the COMPLETING
-  leg of the 4-way split, lands the joint `QUAD_CALIBRATED` COMPLETE): the μ̂₀-FREE dimensional gate `[P₀^phys]=(c_s/a)²·(N₀/D₀)` must be
-  dimensionless from sourced `[N₀]=L⁻¹M`, `[D₀]=L⁻¹T⁻²M` (the natural-units-trap catch — the handoff's `P₀=N₀/D₀` silently drops a `(c_s/a)²`) +
-  the drop-normalization (`3d`) and corrupt-`[N₀]` (`3d′`) probes; the μ̂₀ diagnostic stays NON-gate by design (a free carrier, `participates_in_verdict=False`).
-  Source: `pathA_33_quadrupole_normalization_sympy.py` (the 021 slice = the dim engine `DimError`/`dim_*` L297–376 + `SOURCED_N0_DIM`/`SOURCED_D0_DIM`
-  L379–380 + `build_dimensions` L387–507 [`P0_raw=N0/D0` L399, `P0_physical=(c_s/a)²·(N0/D0)` L401, the μ̂₀-free `[P0_phys]` gate + the μ̂₀ diagnostic +
-  drop-norm/corrupt-N0 mutations] + probes `3d` L820–826, `3d′` L828–836) + `.wl` dimensional block L101–174 (KEEP the native route this time — unlike
-  020, the source `.wl` HAS the 021 content) + report :22–25. ⭐ **pathA_33 trip-ups 021 OWNS (the v1 REJECTION locus):** the dim gate must be μ̂₀-FREE
-  and NOT back-solve the free carrier `μ̂₀` to force homogeneity (the v1 tautology); the per-probe `self_ablation` must be a real two-verdict re-run
-  (NOT a constant); the corrupt-`[N₀]` probe `3d′` must fire `FAIL_DIMENSIONAL` while `[G]` does NOT (the natural-units-trap discriminator). ⭐ Author a
-  running-start source map FIRST; the stage018/019/020 source maps + directives are the pathA_33 4-way-split exemplars (020 = THIRD leg / CALIBRATED
-  landing + units-bearing + GENUINELY-AUTHORED-`.wl`; 021 KEEPS the native `.wl` dim block). ⭐ **021 COMPLETES the joint `QUAD_CALIBRATED`** (018∧019∧020∧021)
-  → then Cluster A continues with 022/023 (pathA_34 cross-ℓ).
+- **✅ II-G4d `ledger_stage021` DONE (2026-07-09) — pathA_33 `QUAD_CALIBRATED` 4/4 (the μ̂₀-free `[P₀^phys]=1` dimensional closure; the FOURTH,
+  COMPLETING leg — LANDS the joint `QUAD_CALIBRATED` COMPLETE); ⭐ pathA_33 fold COMPLETE (018∧019∧020∧021).** EXACT symbolic `(L,M,T)`-triple
+  dimensional-vector algebra, float-free. EARNED: the μ̂₀-FREE gate `dimensional_ok=(dim_of(P₀^phys)==ZERO_DIM)` — `P₀^phys=(c_s/a)²·(N₀/D₀)` is
+  dimensionless from the SOURCED port dims `[N₀]=L⁻¹M`, `[D₀]=L⁻¹T⁻²M` (`[P₀_raw]=T²`, `[(c_s/a)²]=T⁻²`, `[P₀^phys]=1`); the natural-units trap (the
+  handoff `P₀=N₀/D₀` drops `(c_s/a)²`) is CAUGHT (`3d` `FAIL_DIMENSIONAL`); the corrupt-dim SCOPE truth-table {`[N₀]`:FAIL, `[D₀]`:FAIL, `[G]`:NO_FAIL,
+  `[c_s]`:FAIL, correct:NO_FAIL} — corrupt-`[N₀]`→`[P₀^phys]=(1,−1,0)` (the `(c_s/a)²` factor REMAINS, NOT `−[D₀]`), corrupt-`[G]` NO_FAIL (`G∉free_symbols`,
+  a scope diagnostic). ⭐ **The decisive anti-v1 tooth** (the v1 REJECTION locus): the μ̂₀ back-solve is a TAUTOLOGY (re-solving `[μ̂₀]` keeps
+  `homogeneity_pass=True` under EVERY corruption → fires on nothing), correctly DEMOTED to a non-verdict diagnostic — so the μ̂₀-free gate's `[N₀]/[D₀]/[c_s]`
+  FAIL rows are what reject it (a computed read-set exclusion + a wired back-solve mutant re-run per corruption, all-NO_FAIL). The `Yhat` dimensionless
+  check wrapped in a structured `try_dim_of`/`Catch` (a corrupt ω-power fires the NAMED assert, not an uncaught `DimError`); the `3d`/`3d′` self-ablations
+  DYNAMIC 021-local re-runs (`rerun_gate_logic` derived from the actual re-run). ⭐ **Register: ZERO new counted knobs** (μ̂₀ = free-carrier NON-verdict
+  diagnostic; the SOURCED port dims `[N₀]`=pathA_43 density-port numerator / `[D₀]`=carried reduced static conservative denominator `D₀=K−B₀−Z₀` = dimensional
+  PROVENANCE; `c`/`G` already registered) + structural edge **R40**; Part-II CALIB set UNCHANGED = 6; Codex `REGISTER_CLEAN`. ⭐ **021 IS units-bearing AND
+  does the `[·]` dim-homogeneity gate** — the OTHER half of the 020/021 operation-level cut (020 did algebra+provenance, 021 does dimensions), the ONLY
+  pathA_33 leg with a dimensional gate. Consumption is PROVENANCE (the sourced port dims genuinely ENTER the gate so the corrupt-`[N₀]` tooth is genuine;
+  018's `u₂/u₄/v₅` a local frozen fixture for `Yhat`; 019's `P0=N0/D0` enters `P0_raw`; 020's `target_rhs` the μ̂₀ diagnostic's rhs — NO dual-site). ⚠
+  **COMPLETE ≠ PASS:** the joint token STAYS `QUAD_CALIBRATED` (calibrated; 020's provenance + `G=GENUINE_BLOCKED`). ⭐⭐ **Directive review = Codex→Grok→Codex
+  bookend: Codex CAUGHT 6 BLOCKING** — most notably the ORIGINALLY-PROPOSED corrupt-`[G]` anti-v1 discriminator was BACKWARDS (a back-solved μ̂₀ gate re-solves
+  `mu_dim` after every mutation → fires on NOTHING, so it is the μ̂₀-free gate's `[N₀]/[D₀]/[c_s]` FAIL rows that reject it, NOT `[G]`); + the corrupt-`[N₀]`
+  dim `(1,−1,0)` not `−[D₀]`; the self-containment local fixture (`build_dimensions`/`YhatPhysical` referenced 018's `u2/u4/v5`); the `[D₀]` provenance; the
+  `homogeneityPass`-in-the-`.wl`-guard; the `Yhat` structured-catch — all folded → Codex confirm (1 residual dim-label) → **Grok-4.5 compute-verify
+  `DIRECTIVE_CLEAN`** (SymPy-confirmed the μ̂₀-free gate dims + the corrupt-dim truth-table + the back-solve-is-a-tautology crux + the `Yhat` catch;
+  reproduced the contrast that the original framing held only for a PINNED μ̂₀) → final Codex confirm `DIRECTIVE_CLEAN`. The `.wl` KEEPS its native dim block
+  L101–174 (like 018/019, unlike 020 — a `Which`-based `dimOf` + native `rawDims` Association + `Series`-free dim algebra; severs only YAML, REMOVES the
+  018/019 blocks, replaces `Yhat` coeffs with local `u*Sourced`, ADDS the corrupt-`[G]` control + DYNAMIC self-ablation, `yhatOk` split out of the guard).
+  Dual-engine SymPy 42 / Mathematica 50, CWD-independent. Tri-review: `FIDELITY_CLEAN` (independent hand re-derivation of the μ̂₀-free gate dims, the corrupt-dim
+  truth-table, the back-solve-tautology table; no 018/019/020 leakage; genuine independent `.wl`) + `ADVERSARIAL_ISSUES` (42 `.py` per-tooth ablations + 6 live
+  `.wl` mutations; the two KEY teeth — anti-v1 read-set/wired-mutant + corrupt-`[G]` scope control — GENUINE; 5 LOW-severity stamped/subsumed teeth) → Codex
+  remediated 2 make-genuine (`rerun_gate_logic` derived from the actual re-run; `participates_in_verdict` derived from the computed read-set) + 3 de-count (the
+  QUAD-landing literal==literal tautology + two subsumed aggregate summaries, retained as labeled prints) → fresh-agent `REVERIFY_CLEAN` (coupling meta-test:
+  each make-genuine tooth fires under a mutation of its object + goes vacuous when neutered, both engines; the de-counts keep per-row/per-mutant coverage; no
+  KEY-tooth/earned-logic regression). Tallies 45/53 → 42/50 (net −3/engine from the honest de-counts). Registration at count 21, PDF rebuilt (59pp). ⚠ Also
+  refreshed 3 prior stages' (016/019/020) committed output transcripts to the runner-header convention (they had been committed by direct-run, lacking the
+  `# Date`/`EXIT_CODE` stamp; both engine summaries now show 21 pass). ⚠ **Lesson banked:** the Codex design-review caught a directive-level REASONING error
+  (the anti-v1 discriminator was backwards — corrupt-`[G]` fires a *pinned*-μ̂₀ gate, but the v1 rig RE-SOLVES μ̂₀ so it fires on nothing); the discriminator
+  that a gate is genuinely able-to-fail is which corruptions MAKE IT FIRE, not a single negative control. Committed (see git log).
+- **▶ NEXT = Cluster A `ledger_stage022`** (II-G5a, pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 1/2 — the cross-ℓ fingerprints + the Gate-4 non-regression):
+  the outgoing `−(ℓ+1)/Λ_ℓ` fingerprints for ℓ=0,1,2 (`ω¹`/`ω³`/`ω⁵`) + the quadrupole non-regression (cites the now-COMPLETE pathA_33 `QUAD_CALIBRATED`).
+  Source: `software/stage1_solver/tools/pathA_34_cross_l_unification_{sympy.py,.wl}`. ⚠ **pathA_34 trip-ups 022/023 OWN (the v1 REJECTION locus, part2 L90–92):**
+  the DEFAULT verdict is PASS — `UNDERDETERMINED` must be EARNED from a genuinely-computed native nullspace (the v1 rigged-to-UNDERDETERMINED zero-padded-constraint
+  history is 023's); back-solving `ε_eff`/`Z` from residuals is forbidden (`FAIL_TAUTOLOGICAL` firewall). 022 is the cross-ℓ fingerprint + non-regression slice
+  (the nullspace underdetermination departure is 023). ⭐ Author a running-start source map FIRST (the stage018/022 pattern — an EARNED-first cross-ℓ slice; cite
+  the completed pathA_33 fold + 008's raw amplitudes + 009/010's bulk mode). Then Cluster A continues with 023 (pathA_34 2/2) → then Cluster C (024–029, the
+  density port + PN caps).
 
 ## Per-stage process (unchanged, calibrated)
 

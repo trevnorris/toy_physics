@@ -1,0 +1,135 @@
+\section{Stage 021: The \texorpdfstring{\(\hat\mu_0\)}{mu0}-free \texorpdfstring{\([P_0^{\mathrm{phys}}]=1\)}{[P0phys]=1} Dimensional Closure (Check II-G4d)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative sector; the FOURTH, completing leg of a four-way split of pathA\_33 --- the \(\hat\mu_0\)-free \([P_0^{\mathrm{phys}}]=1\) dimensional-closure component of the joint \texttt{QUAD\_CALIBRATED}, with the DtN Hankel fingerprint = Stage~018 (done), the squared-denominator prefactor algebra = Stage~019 (done), and the \(54/5=2\cdot27/5\) provenance partition + the CALIBRATED verdict label = Stage~020 (done))}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Complete the joint \texttt{QUAD\_CALIBRATED}. Certify the assembled \(\ell=2\) quadrupole prefactor \(P_0^{\mathrm{phys}}=(c_s/a)^2(N_0/D_0)\) is dimensionless from the sourced port dimensions \([N_0]=L^{-1}M\), \([D_0]=L^{-1}T^{-2}M\) --- a \(\hat\mu_0\)-FREE gate that catches the natural-units trap (the handoff's \(P_0=N_0/D_0\) silently drops \((c_s/a)^2\)) and reads the sourced port dimensions (corrupt-\([N_0]\) fires \texttt{FAIL\_DIMENSIONAL}) rather than a back-solved free carrier \(\hat\mu_0\) (corrupt-\([G]\) does not fire).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage021_dimensional_closure_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage021_dimensional_closure_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact symbolic \((L,M,T)\)-triple dimensional-vector algebra, float-free:
+the \(\hat\mu_0\)-free gate (\(\texttt{dim\_of}(P_0^{\mathrm{phys}})=\texttt{ZERO\_DIM}\)), the
+natural-units-trap catch (dropping the frequency normalization leaves \(T^2\neq1\)), the corrupt-dim
+scope truth-table, and the anti-v1 back-solve-tautology demotion; \texttt{expect\_zero}/
+\texttt{expect\_bool}/\texttt{expect\_fail} residuals, no floats/tolerances. The verdict is the joint
+\texttt{QUAD\_CALIBRATED}; this stage carries its \emph{dimensional-closure} component (4/4) and lands
+the joint \textbf{complete} (018/019/020 done, 021 earned here). It adds \textbf{zero} new counted knobs
+(a dimensional-closure slice, like Stages~018/019/020). \(\hat\mu_0\) is a free-carrier non-verdict
+diagnostic, not a counted knob.
+
+\paragraph{The \texorpdfstring{\(\hat\mu_0\)}{mu0}-free \texorpdfstring{\([P_0^{\mathrm{phys}}]=1\)}{[P0phys]=1} gate.}
+With the sourced port dimensions \([N_0]=L^{-1}M\) (the density/continuity-port numerator) and
+\([D_0]=L^{-1}T^{-2}M\) (the carried reduced static conservative denominator \(D_0=K-B_0-Z_0\)), and the
+frequency normalization \((c_s/a)^2\),
+\[
+  [P_0^{\mathrm{raw}}]=[N_0/D_0]=T^2,\qquad
+  [(c_s/a)^2]=T^{-2},\qquad
+  [P_0^{\mathrm{phys}}]=[(c_s/a)^2N_0/D_0]=1,
+\]
+so \(\texttt{dimensional\_ok}=\texttt{True}\). The verdict-bearing check is
+\(\texttt{dimensional\_ok}=(\texttt{dim\_of}(P_0^{\mathrm{phys}})=\texttt{ZERO\_DIM})\) --- a computed
+\((L,M,T)\)-triple equality reading the sourced dims, not a typed \texttt{"1"}. Crucially \(\hat\mu_0\) does
+\emph{not} enter the verdict: it is absent from \texttt{raw\_symbol\_dims} (the gate's dimension map), and
+the verdict's computed read-set excludes \(\hat\mu_0\)/\(\mu_{\mathrm{dim}}\)/\texttt{homogeneity\_pass}.
+
+\paragraph{The natural-units-trap catch (the dimensional milestone).}
+The handoff's \(P_0=N_0/D_0\) silently drops the \((c_s/a)^2\) frequency-normalization factor (a
+natural-units artifact where \(c_s/a\) was set to \(1\)). The gate catches it: \([P_0^{\mathrm{raw}}]=T^2\neq1\),
+so the \texttt{3d} drop-normalization probe fires \texttt{FAIL\_DIMENSIONAL}. The frequency normalization is
+required for \([P_0^{\mathrm{phys}}]=1\).
+
+\paragraph{The corrupt-dim scope truth-table.}
+The \(\hat\mu_0\)-free gate fires precisely on the dims that enter \(P_0^{\mathrm{phys}}\):
+\[
+\begin{array}{llll}
+  \text{corrupt } [N_0]\to0 & [P_0^{\mathrm{raw}}]=(1,-1,2), & [P_0^{\mathrm{phys}}]=(1,-1,0)=L\,M^{-1}\neq1 & \to \texttt{FAIL\_DIMENSIONAL}\ (\texttt{3d}')\\
+  \text{corrupt } [D_0]\to0 & & [P_0^{\mathrm{phys}}]=(-1,1,-2)\neq1 & \to \texttt{FAIL\_DIMENSIONAL}\\
+  \text{corrupt } [c_s]\to0 & & [P_0^{\mathrm{phys}}]=(-2,0,2)\neq1 & \to \texttt{FAIL\_DIMENSIONAL}\\
+  \text{corrupt } [G]\to0 & & [P_0^{\mathrm{phys}}]=1\ \text{still}\ (G\notin\text{free}) & \to \texttt{NO\_FAIL}\ \text{(scope)}\\
+  \text{correct} & & [P_0^{\mathrm{phys}}]=1 & \to \texttt{NO\_FAIL}
+\end{array}
+\]
+The corrupt-\([N_0]\) result is \([P_0^{\mathrm{phys}}]=(1,-1,0)\) --- the \((c_s/a)^2\) factor \emph{remains}
+(it is not \(-[D_0]=(1,-1,2)\), which is \([P_0^{\mathrm{raw}}]\)). The gate is G-independent; the corrupt-\([G]\)
+row is a dependency-scope diagnostic, asserted via the runtime test \(G\notin\texttt{free\_symbols}(P_0^{\mathrm{phys}})\).
+
+\paragraph{The \texorpdfstring{\(\hat\mu_0\)}{mu0} homogeneity diagnostic is NON-verdict --- the anti-v1 discriminator.}
+The full closure \(\hat m_0^2 P_0 = 54Gc_s^5/(5a^5c^5)\) can be made dimensionally homogeneous by back-solving
+the free carrier \([\hat\mu_0]=L^{-1}T^{-1}M^{-1/2}\) from \((\texttt{rhs\_dim}-\texttt{p0\_dim})/2\), giving
+\([\mathrm{lhs}]=[\mathrm{rhs}]=L^{-2}T^{-2}M^{-1}\), \(\texttt{homogeneity\_pass}=\texttt{True}\). This is a
+\emph{tautology}: re-solving \([\hat\mu_0]\) after \emph{any} corruption keeps \(\texttt{homogeneity\_pass}=\texttt{True}\)
+(the back-solve absorbs the change), so it can never fail --- exactly the v1-rejected rig, correctly demoted here to a
+labelled diagnostic (\(\texttt{participates\_in\_verdict}=\texttt{False}\), computed from the verdict read-set). The
+decisive anti-v1 tooth is two-part: (a)~a computed read-set assertion that the verdict excludes
+\(\hat\mu_0\)/\(\mu_{\mathrm{dim}}\)/\texttt{homogeneity\_pass} (and \(\hat\mu_0\notin\texttt{raw\_symbol\_dims}\)), and
+(b)~a deliberately-wired mutant verdict = the back-solved \texttt{homogeneity\_pass}, re-run over all four corruptions and
+shown to stay \texttt{NO\_FAIL} on all of them --- proving it is vacuous, so the real verdict must be the \(\hat\mu_0\)-free
+\([P_0^{\mathrm{phys}}]=\texttt{ZERO}\) gate (which fires on three of the four). The gate's \([N_0]/[D_0]/[c_s]\) FAIL rows,
+not the \([G]\) row, are what reject the all-\texttt{NO\_FAIL} back-solved gate.
+
+\paragraph{The \texorpdfstring{\(\hat Y\)}{Yhat} dimensionless check.}
+The outgoing physical expansion \(\hat Y = 1 + u_2\omega^2 + u_4\omega^4 + i\,v_5\omega^5\) with Stage-018's frozen
+fingerprint \(u_2=a^2/9c_s^2\), \(u_4=4a^4/81c_s^4\), \(v_5=a^5/27c_s^5\) (a provenance-frozen local fixture, not the
+Stage-018 machinery) is dimensionless (each term \(T^2\cdot T^{-2}=1\), etc.), so \([\hat Y]=1\). The check is wrapped in a
+structured \(\texttt{try\_dim\_of}\)/\texttt{Catch} so a corrupted \(\omega\)-power (\(u_2\omega^3\)) fires the named
+\(\hat Y\)-dimensionless assert (a caught mismatch), not an uncaught \texttt{DimError} that would bypass the tooth.
+
+\paragraph{The completing landing.}
+Stage 021 lands the joint \texttt{QUAD\_CALIBRATED} \textbf{complete} (018 fingerprint \(\wedge\) 019 prefactor \(\wedge\)
+020 provenance-partition + CALIBRATED \(\wedge\) 021 dim closure). \textbf{Complete \(\neq\) pass}: the joint token stays
+\texttt{QUAD\_CALIBRATED} (calibrated, not \texttt{QUAD\_PASS}) --- Stage~020 already determined the CALIBRATED
+classification and \(G=\)\texttt{GENUINE\_BLOCKED}; 021 supplies the dimensional closure that makes the assembled magnitude
+dimensionally sound, but does not flip the verdict. The PDE delivers the form/branch (the \(27\) fingerprint + the
+dimensionally-sound closure), not Newton's \(G\).
+
+\paragraph{Honest scope.}
+Earned closure / calibrated magnitude: 021 earns the \(\hat\mu_0\)-free \([P_0^{\mathrm{phys}}]=1\) closure, the
+natural-units-trap catch, and the corrupt-\([N_0]\)/\([G]\) discriminator (the gate reads the sourced port dims, not a
+back-solved \(\hat\mu_0\)); the \(54/5\) magnitude and \(G\) are calibrated (\(G=\)\texttt{GENUINE\_BLOCKED}). 021 is the other
+half of the 020/021 operation-level cut --- Stage~020 did algebra + provenance, Stage~021 does the \([\,\cdot\,]\)
+dimensional-homogeneity gate, the only pathA\_33 leg with a dimensional gate. The sourced port dims \([N_0]=L^{-1}M\)
+(pathA\_43 density-port numerator) and \([D_0]=L^{-1}T^{-2}M\) (the carried reduced static conservative denominator) are
+sourced dimensional inputs (Cluster~C stages 024/027 + pathA\_34 not yet built in build order); they genuinely enter the gate
+(so the corrupt-\([N_0]\) tooth is genuine), but 021 does not re-derive them. The actual branch \(a\)-scaling and the
+numerical \((D_n,N_n)\) port scalars remain deferred Gate-6.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance, no dual-site:} the sourced port dims (pathA\_43 numerator + the carried conservative denominator),
+Stage-018's \(u_2/u_4/v_5\) (a local frozen fixture for the \(\hat Y\) check, not \texttt{build\_fingerprint}), Stage-019's
+\(P_0=N_0/D_0\) (entering \(P_0^{\mathrm{raw}}\)), and Stage-020's assembled \texttt{target\_rhs} (the \(\hat\mu_0\)
+diagnostic's rhs only). The sourced port dims genuinely enter the \(\hat\mu_0\)-free gate (the corrupt-\([N_0]\) probe is the
+genuine able-to-fail tooth). Register: \textbf{zero} new counted knobs; structural edge \textbf{R40} (the \(\hat\mu_0\)-free
+\([P_0^{\mathrm{phys}}]=1\) dimensional closure; discharges nothing --- a dimensional-consistency closure, not a reduction;
+records that 021 completes the joint \texttt{QUAD\_CALIBRATED}, which stays CALIBRATED not PASS). \(\hat\mu_0\) is a
+free-carrier non-verdict diagnostic; the sourced port dims are dimensional provenance; \(c\)/\(G\) are already registered.
+Part-II counted CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) +
+\(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML handoff is severed. Like
+Stages~018/019 (and unlike Stage~020's fresh authoring), the source \texttt{.wl} has the 021 dimensional block, so the 021
+\texttt{.wl} keeps its native, already-independent Wolfram dimensional-vector engine (a \texttt{Which}-based \texttt{dimOf}
+over \texttt{Times}/\texttt{Power}/\texttt{Plus}, native \(\langle|\ldots|\rangle\) \texttt{rawDims}, \texttt{Series}-free
+dimension algebra) and severs only the YAML machinery; the Stage-018 fingerprint (\(j_2\)/\(y_2\)) and Stage-019 prefactor
+blocks are removed and the \(\hat Y\) coefficients become local \texttt{u2Sourced}/\texttt{u4Sourced}/\texttt{v5Sourced}
+fixtures. It adds (the source \texttt{.wl} lacked both) the corrupt-\([G]\)-does-not-fire scope control and the dynamic
+021-local self-ablation; the \texttt{.wl}'s local pass-guard uses a split-out \texttt{yhatOk} and excludes
+\texttt{homogeneityPass} (a print-only diagnostic), with an arity + unevaluated-leakage self-check. Agreement is at the
+transcript level (\([P_0^{\mathrm{raw}}]=T^2\), \([(c_s/a)^2]=T^{-2}\), \([P_0^{\mathrm{phys}}]=1\), \(\texttt{3d}/\texttt{3d}'\)
+\texttt{FAIL\_DIMENSIONAL}, corrupt-\([G]\) \texttt{NO\_FAIL}, \(\texttt{homogeneity\_pass}=\texttt{True}\) diagnostic). SymPy 42
+PASS / Mathematica 50 PASS, exit 0, CWD-independent. The directive design-review used the Codex\(\to\)Grok\(\to\)Codex
+bookend: Codex folded six blocking findings --- most notably that the originally-proposed corrupt-\([G]\) anti-v1
+discriminator was \emph{backwards} (a back-solved \(\hat\mu_0\) gate re-solves \(\mu_{\mathrm{dim}}\) after every mutation, so
+it fires on nothing, and it is the \(\hat\mu_0\)-free gate's \([N_0]/[D_0]/[c_s]\) FAIL rows that reject it) --- then a Grok
+compute-verify pass independently confirmed the \(\hat\mu_0\)-free gate dims, the corrupt-dim truth-table, the
+back-solve-is-a-tautology crux, and the \(\hat Y\)/structured-catch, and a final Codex confirm closed it to
+\texttt{DIRECTIVE\_CLEAN}. Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived the
+\(\hat\mu_0\)-free gate dims, the corrupt-dim truth-table, and the back-solve-tautology table, confirming no 018/019/020
+leakage and a genuine independent \texttt{.wl}) and \texttt{ADVERSARIAL\_ISSUES} (per-tooth ablation: the two key teeth --- the
+anti-v1 read-set/wired-mutant and the corrupt-\([G]\) scope control --- genuine; five low-severity stamped/subsumed teeth
+flagged, remediated two make-genuine (\texttt{rerun\_gate\_logic} derived from the actual re-run, \texttt{participates\_in\_verdict}
+derived from the computed read-set) and three de-count (the QUAD-landing tautology and two subsumed summaries retained as
+labeled prints) --- re-verified \texttt{REVERIFY\_CLEAN} by the coupling meta-test, tallies 45/53\(\to\)42/50 from the honest
+de-counts). Symbolic per-tooth ablation, mutations on copies.

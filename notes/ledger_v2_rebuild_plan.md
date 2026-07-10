@@ -7,8 +7,9 @@
 > **`notes/ledger_v2_blueprint.md`** — the approved build directive: carry-over §3, reshape spec §5, two-tier verification §6, settled
 > decisions §9) + B2 machinery (`c4a209ac`) + the B3 two-stage pilot are all DONE; the reshape template is LOCKED and validated on all three
 > shapes (happy-path 001 / *consuming* 002 / FAIL-headline+new-Part 003). **▶ BATCHING Part-by-Part:** Part I (the medium) ✅ COMPLETE
-> (`ledger_stage004`–`007`); **Part II (gravity) IN PROGRESS at count 19 — built 001/002 + 008–019 done; ▶ NEXT = `ledger_stage020`**
-> (pathA_33 `QUAD_CALIBRATED` 3/4 — the `54/5=2·27/5` provenance partition + the CALIBRATED verdict label).
+> (`ledger_stage004`–`007`); **Part II (gravity) IN PROGRESS at count 21 — built 001/002 + 008–021 done; ▶ NEXT = `ledger_stage022`**
+> (pathA_34 cross-ℓ, `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 1/2). ⭐ **The pathA_33 `QUAD_CALIBRATED` fold is COMPLETE** (018∧019∧020∧021;
+> the joint stays CALIBRATED not PASS, `G=GENUINE_BLOCKED`).
 > ⭐ **The LIVE per-stage trackers are `STATUS.md` ▶ RESUME HERE (thin) + `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md`
 > Progress + `research/pde_ledger_v2/notes/parameter_register.md`.** This plan doc is the stable multi-phase plan + the evidence that led to
 > it; its per-stage progress log further below is a HISTORICAL record (it lags — do NOT treat it as the live tracker).

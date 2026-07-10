@@ -6,6 +6,18 @@ PASS  ledger_stage005_sound_speed_light_ratio_mathematica_audit
 PASS  ledger_stage006_two_phase_chiB_ontology_mathematica_audit
 PASS  ledger_stage007_shear_surface_g0_freeze_mathematica_audit
 PASS  ledger_stage008_monopole_dipole_return_spec_mathematica_audit
-PASS  ledger_stage009_flat_slab_return_residual_mathematica_audit  (10s)
+PASS  ledger_stage009_flat_slab_return_residual_mathematica_audit
+PASS  ledger_stage010_slab_localization_p2_nogo_mathematica_audit
+PASS  ledger_stage011_frozen_reduction_certificate_mathematica_audit
+PASS  ledger_stage012_dtn_pole_ladder_robin_mathematica_audit
+PASS  ledger_stage013_breathing_harmonic_mk_projection_mathematica_audit
+PASS  ledger_stage014_breathing_truncation_consistency_mathematica_audit
+PASS  ledger_stage015_breathing_structure_hf_force_mathematica_audit
+PASS  ledger_stage016_l2_so3_covariance_mathematica_audit  (62s)
+PASS  ledger_stage017_grouped_p2_lane_isotropy_mathematica_audit
+PASS  ledger_stage018_dtn_hankel_fingerprint_mathematica_audit
+PASS  ledger_stage019_prefactor_algebra_mathematica_audit  (11s)
+PASS  ledger_stage020_provenance_partition_mathematica_audit  (11s)
+PASS  ledger_stage021_dimensional_closure_mathematica_audit
 
-TOTAL: 9  PASS: 9  FAIL: 0  SKIPPED: 8
+TOTAL: 21  PASS: 21  FAIL: 0  SKIPPED: 18

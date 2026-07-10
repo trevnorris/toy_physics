@@ -1,0 +1,144 @@
+# Mathematica Audit Output
+# Script: ledger_stage021_dimensional_closure_mathematica_audit.wl
+# Date: 2026-07-09T18:44:37-06:00
+# Elapsed: 10s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=====================================================
+ledger_stage021_dimensional_closure_mathematica_audit
+=====================================================
+Target stem confirmed: ledger_stage021_dimensional_closure
+Engine: native Wolfram Which-based exact (L,M,T) dimension algebra; no floats/tolerances; zero file I/O.
+
+Mu-hat0-free physical P0 dimensional gate
+-----------------------------------------
+  [P₀_raw]=T²
+  [(c_s/a)²]=T⁻²
+  [P₀^phys]=1
+  dimensional_ok=True (COMPUTED by dimOf)
+  dimension symbols actually read = {a, cs, D0, N0}
+  verdict read-set = {a, cs, D0, dimensionalOk, N0, p0Dim}
+  dimensional_gate_depends_on_mu_hat0=False
+PASS  sourced [N0] is exactly (-1,1,0) in (L,M,T) order
+PASS  sourced [D0] is exactly (-1,1,-2) in (L,M,T) order
+PASS  computed [P0_raw] is T^2
+PASS  computed [(c_s/a)^2] is T^-2
+PASS  computed [P0_physical] is dimensionless
+PASS  dimensional_ok is computed True from [P0_physical]
+PASS  muHat0 is absent from the raw gate dimension map
+PASS  runtime gate trace reads exactly a,cs,N0,D0
+PASS  computed dimensional gate does not depend on muHat0
+
+Yhat dimensionless check with structured DimError catch
+-------------------------------------------------------
+  local stage018 fixture = <|u2 -> a^2/(9*cs^2), u4 -> (4*a^4)/(81*cs^4), v5 -> a^5/(27*cs^5)|>
+  Yhat structured result = <|Status -> OK, Dimension -> {0, 0, 0}, Error -> None|>
+  Yhat omega-power mutant structured result = <|Status -> DIM_ERROR, Dimension -> Missing[DimError], Error -> dimension mismatch in sum|>
+PASS  Yhat dimensionless named assert consumes structured status and computed dimension
+PASS  Yhat dimensionless named assert catches u2*omega^3 sum mismatch produced required FAIL (residual = 1)
+
+Corrupt-dimension scope truth-table and 3d/3d-prime probes
+----------------------------------------------------------
+  corrupt_N0: [P₀_raw]=L T² M⁻¹; [P₀^phys]=L M⁻¹; vector(L,M,T)=(1,-1,0); FAIL_DIMENSIONAL
+PASS  truth-table corrupt_N0 reaches FAIL_DIMENSIONAL at its own assert
+  corrupt_D0: [P₀_raw]=L⁻¹ M; [P₀^phys]=L⁻¹ T⁻² M; vector(L,M,T)=(-1,1,-2); FAIL_DIMENSIONAL
+PASS  truth-table corrupt_D0 reaches FAIL_DIMENSIONAL at its own assert
+  corrupt_G: [P₀_raw]=T²; [P₀^phys]=1; vector(L,M,T)=(0,0,0); NO_FAIL
+PASS  truth-table corrupt_G reaches NO_FAIL at its own assert
+  corrupt_c_s: [P₀_raw]=T²; [P₀^phys]=L⁻² T²; vector(L,M,T)=(-2,0,2); FAIL_DIMENSIONAL
+PASS  truth-table corrupt_c_s reaches FAIL_DIMENSIONAL at its own assert
+  correct: [P₀_raw]=T²; [P₀^phys]=1; vector(L,M,T)=(0,0,0); NO_FAIL
+PASS  truth-table correct reaches NO_FAIL at its own assert
+PASS  corrupt-N0 keeps normalization: [P0_raw]=(1,-1,2)
+PASS  corrupt-N0 keeps normalization: [P0_physical]=(1,-1,0)
+  free symbols in P0Physical = {a, cs, D0, N0}
+PASS  dependency-scope control computes G absent from P0Physical
+  SUMMARY (not counted): full corrupt-dim truth-table observed={FAIL_DIMENSIONAL, FAIL_DIMENSIONAL, NO_FAIL, FAIL_DIMENSIONAL, NO_FAIL}; expected={FAIL_DIMENSIONAL, FAIL_DIMENSIONAL, NO_FAIL, FAIL_DIMENSIONAL, NO_FAIL}; matches=True
+  3d_dimensional_break: drop (c_s/a)² -> FAIL_DIMENSIONAL
+  3d self_ablation = <|RerunGateLogic -> True, VerdictTrace -> {{{0, 0, 2}, FAIL_DIMENSIONAL}, {{0, 0, 0}, DIMENSIONAL_OK}}, WithMutation -> FAIL_DIMENSIONAL, WithoutMutation -> DIMENSIONAL_OK, ExpectedFail -> FAIL_DIMENSIONAL, FailSuppressed -> True|>
+  3d_prime_corrupt_port_dimension: corrupt [N₀] -> FAIL_DIMENSIONAL
+  3d_prime self_ablation = <|RerunGateLogic -> True, VerdictTrace -> {{{1, -1, 0}, FAIL_DIMENSIONAL}, {{0, 0, 0}, DIMENSIONAL_OK}}, WithMutation -> FAIL_DIMENSIONAL, WithoutMutation -> DIMENSIONAL_OK, ExpectedFail -> FAIL_DIMENSIONAL, FailSuppressed -> True|>
+  corrupt [G] dependency-scope control -> NO_FAIL
+PASS  drop-frequency-normalization mutation fires
+PASS  3d drop normalization reaches FAIL_DIMENSIONAL
+PASS  corrupt-N0 dimension mutation fires
+PASS  3d-prime corrupt port dimension reaches FAIL_DIMENSIONAL
+PASS  native corrupt-G control remains NO_FAIL
+PASS  3d self-ablation dynamically reruns 021-local gate logic
+PASS  3d dynamic rerun with mutation is FAIL_DIMENSIONAL
+PASS  3d dynamic rerun without mutation is DIMENSIONAL_OK
+PASS  3d dynamic self-ablation changes the local verdict
+PASS  3d-prime self-ablation dynamically reruns 021-local gate logic
+PASS  3d-prime dynamic rerun with mutation is FAIL_DIMENSIONAL
+PASS  3d-prime dynamic rerun without mutation is DIMENSIONAL_OK
+PASS  3d-prime dynamic self-ablation changes the local verdict
+
+Decisive anti-v1 read-set tooth and non-verdict mu_hat0 diagnostic
+------------------------------------------------------------------
+  real verdict read-set = {a, cs, D0, dimensionalOk, N0, p0Dim}
+  [mu_hat0]=L⁻¹ T⁻¹ M⁻¹ᐟ²
+  [lhs]=L⁻² T⁻² M⁻¹
+  [rhs]=L⁻² T⁻² M⁻¹
+  homogeneity_pass=True DIAGNOSTIC
+  participates_in_verdict=False
+PASS  computed real verdict read-set excludes muHat0/muDim/homogeneityPass
+PASS  real verdict read-set contains dimensionalOk and its computed p0Dim input
+PASS  back-solved muHat0 has dimension (-1,-1/2,-1)
+PASS  muHat0 homogeneity diagnostic computes True
+PASS  muHat0 homogeneity diagnostic is explicitly non-verdict
+  wired back-solve mutant corrupt_N0: homogeneity_pass=True -> NO_FAIL
+PASS  wired back-solve mutant stays NO_FAIL under corrupt_N0
+  wired back-solve mutant corrupt_D0: homogeneity_pass=True -> NO_FAIL
+PASS  wired back-solve mutant stays NO_FAIL under corrupt_D0
+  wired back-solve mutant corrupt_G: homogeneity_pass=True -> NO_FAIL
+PASS  wired back-solve mutant stays NO_FAIL under corrupt_G
+  wired back-solve mutant corrupt_c_s: homogeneity_pass=True -> NO_FAIL
+PASS  wired back-solve mutant stays NO_FAIL under corrupt_c_s
+PASS  anti-v1 demotion policy rejects wiring homogeneityPass/muDim into the verdict produced required FAIL (residual = 2)
+  SUMMARY (not counted): real mu-free gate fail count=3; wired back-solve mutant fail count=0
+
+Wolfram arity self-check and unevaluated-leakage scan
+-----------------------------------------------------
+PASS  arity dimOf[expr,dims] returns a three-vector
+PASS  arity tryDimOf[expr,dims] returns structured DIM_ERROR
+PASS  arity gateData[expr,dims] returns computed DimensionalOk
+PASS  arity scopedDimensionalVerdict[gate] returns DIMENSIONAL_OK
+PASS  arity dynamicDimensionalAblation[baselineExpr,baselineDims,mutatedExpr,mutatedDims] changes verdicts
+PASS  arity backSolveMutant[p0,target,dims] returns a tautological True
+PASS  no unevaluated dimensional helper call remains in computed outputs
+
+021 scope, provenance-only consumption, and COMPLETING landing
+--------------------------------------------------------------
+PASS  021-local pass guard excludes homogeneityPass and passes its dimensional teeth
+  CONSUMES (PROVENANCE only): [N₀]=L⁻¹M from the density/continuity-port numerator; it genuinely enters the checked gate.
+  CONSUMES (PROVENANCE only): [D₀]=L⁻¹T⁻²M from the carried reduced static conservative denominator D₀=K−B₀−Z₀.
+  CONSUMES (PROVENANCE only): stage018 u₂/u₄/v₅ as local u2Sourced/u4Sourced/v5Sourced; no fingerprint block.
+  CONSUMES (PROVENANCE only): stage019 P0=N0/D0 defines P₀_raw; no prefactor block.
+  CONSUMES (PROVENANCE only): stage020 target_rhs enters only the non-verdict mu_hat0 diagnostic.
+  018 fingerprint DONE; 019 prefactor DONE; 020 provenance partition + CALIBRATED classification DONE.
+  QUAD_CALIBRATED (4/4) -- mu_hat0-free [P₀^phys]=1 dimensional closure EARNED (COMPLETING)
+  joint QUAD_CALIBRATED COMPLETE = 018 DONE ∧ 019 DONE ∧ 020 DONE ∧ 021 dimensional closure EARNED.
+  COMPLETE != PASS: token remains QUAD_CALIBRATED, not QUAD_PASS; 020 has G=GENUINE_BLOCKED.
+  EXPORTS: completed Gate-4 dimensional closure to 022/027 and the Part-VII dimensional firewall.
+  dropped-bookkeeping: scratch YAML, reports, feed writers, engine cross-reads, and all file I/O are absent.
+
+Verdict labels
+--------------
+  ledger local gate label: DIMENSIONAL_OK (mu_hat0-free [P0_phys]=1 from sourced [N0]/[D0] and [(c_s/a)^2])
+  source top-line verdict: QUAD_CALIBRATED (JOINT 4-stage; 021 is the COMPLETING 4/4 leg)
+  joint composition: 018 fingerprint [DONE] AND 019 prefactor [DONE] AND 020 provenance partition + CALIBRATED classification [DONE] AND 021 dimensional closure [EARNED here] => COMPLETE
+  COMPLETE != PASS: the joint token remains QUAD_CALIBRATED, not QUAD_PASS (020 provenance; G=GENUINE_BLOCKED)
+  earned dimensional gate: [P0_raw]=T^2, [(c_s/a)^2]=T^-2, [P0_phys]=1; mu_hat0 is absent from rawDims and the verdict read-set
+  earned able-to-fail: 3d drop normalization and 3d-prime corrupt [N0] reach FAIL_DIMENSIONAL with DYNAMIC 021-local self-ablations; corrupt [G] is NO_FAIL scope control
+  diagnostic only: back-solved [mu_hat0] and homogeneity_pass=True participate_in_verdict=False; the wired back-solve mutant is all-NO_FAIL and rejected as vacuous
+
+=======
+Tallies
+=======
+TALLY mathematica: 50 pass + 0 fail = 50 checks
+OVERALL PASS
+
+EXIT_CODE: 0

@@ -460,14 +460,50 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   `# Date`/`EXIT_CODE` stamp; both engine summaries now show 21 pass). ⚠ **Lesson banked:** the Codex design-review caught a directive-level REASONING error
   (the anti-v1 discriminator was backwards — corrupt-`[G]` fires a *pinned*-μ̂₀ gate, but the v1 rig RE-SOLVES μ̂₀ so it fires on nothing); the discriminator
   that a gate is genuinely able-to-fail is which corruptions MAKE IT FIRE, not a single negative control. Committed (see git log).
-- **▶ NEXT = Cluster A `ledger_stage022`** (II-G5a, pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 1/2 — the cross-ℓ fingerprints + the Gate-4 non-regression):
-  the outgoing `−(ℓ+1)/Λ_ℓ` fingerprints for ℓ=0,1,2 (`ω¹`/`ω³`/`ω⁵`) + the quadrupole non-regression (cites the now-COMPLETE pathA_33 `QUAD_CALIBRATED`).
-  Source: `software/stage1_solver/tools/pathA_34_cross_l_unification_{sympy.py,.wl}`. ⚠ **pathA_34 trip-ups 022/023 OWN (the v1 REJECTION locus, part2 L90–92):**
-  the DEFAULT verdict is PASS — `UNDERDETERMINED` must be EARNED from a genuinely-computed native nullspace (the v1 rigged-to-UNDERDETERMINED zero-padded-constraint
-  history is 023's); back-solving `ε_eff`/`Z` from residuals is forbidden (`FAIL_TAUTOLOGICAL` firewall). 022 is the cross-ℓ fingerprint + non-regression slice
-  (the nullspace underdetermination departure is 023). ⭐ Author a running-start source map FIRST (the stage018/022 pattern — an EARNED-first cross-ℓ slice; cite
-  the completed pathA_33 fold + 008's raw amplitudes + 009/010's bulk mode). Then Cluster A continues with 023 (pathA_34 2/2) → then Cluster C (024–029, the
-  density port + PN caps).
+- **✅ II-G5a `ledger_stage022` DONE (2026-07-10) — pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 1/2 (the cross-ℓ `−(ℓ+1)/Λ_ℓ` fingerprints + the Gate-4
+  non-regression; the EARNED-FIRST leg of the pathA_34 2-way split).** SYMBOLIC/float-free/z-space (like 018, generalized cross-ℓ). EARNED: for ℓ=0,1,2 the
+  outgoing DtN `Ŷ_ℓᵒᵘᵗ=−(ℓ+1)/Λ_ℓ` series-expands to the DERIVED radiative fingerprint `{1, 1/2, 1/27}` at orders `{ω¹, ω³, ω⁵}` (COMPUTED from the spherical
+  Hankel, derive-vs-typed); the static slot `Λ_static=−(ℓ+1)` DERIVED from the Hankel log-derivative (`lam_series.coeff(z,0)`, NOT the source's hand-set-numerator
+  X≡X — de-rigged); the radiative order verified by SCANNING the imaginary series for its first nonzero power + all-lower-vanish (NOT the source's dodgeable
+  preselected-`2ℓ+1`-nonzero check — a `+i·z` corruption dodges it, the scan catches it); the incoming branch flips ONLY the radiative sign (the genuine sign
+  tooth); the ℓ=2 leg (`−3/Λ₂`) reproduces the completed pathA_33 quadrupole `{u₂=1/9, u₄=4/81, v₅=1/27}` (the Gate-4 non-regression, derive-vs-typed vs 018's
+  independently-earned literals — NO subsumed X≡X; per-slot u₂/u₄/v₅ mutants since `3e` flips only v₅). ⭐ **Two distinct verdicts printed:**
+  `LOCAL_AUDIT_VERDICT=CROSS_L_FINGERPRINT_OK` (the exit-0 gate; read-set = `{cross_l_fingerprints, ell2_non_regression}` provably EXCLUDES any
+  nullspace/`base_verdict`, a computed read-tracking guard) + `JOINT_LANDING_LABEL (PARTIAL): FAIL_UNDERDETERMINED_NOT_PREDICTIVE (1/2)` (a printed string). 022 is
+  the earned half of a gate that ultimately fails (cf. stage003); the DEFAULT-verdict-is-PASS trip-up avoided (022 owns NO nullspace + does NOT back-solve
+  `ε_eff`/`Z` — the `FAIL_TAUTOLOGICAL` firewall preserved for 023). ⭐ **Register: ZERO new counted knobs** + edge **R41** (the cross-ℓ fingerprint + non-regression
+  provenance; discharges nothing); `c_s`=R1 units-carrier provenance, `a`=`CONV`; ⚠ the ℓ=0/1 stiffnesses `K0c`/`K_eta+2·T_Omega` + `Z0_ret`/`Z1_ret` are **023's**,
+  NOT counted; `static=1`+`χ_Q=1` de-counted diagnostics (subsumed by `Λ_static` / by `v₅`); Part-II CALIB set UNCHANGED = 6; Codex `REGISTER_CLEAN`. **Consumption:**
+  stage018's `{u₂,u₄,v₅}` the one CHECKABLE derive-vs-typed non-regression; 019/020/021 + the completed joint + 008's amplitudes + 009/010's bulk mode + `c_s` (R1) =
+  PROVENANCE (no dual-site); z-space only (NO units-restored dim leg — 023's). ⭐⭐ **The `.wl` is RE-AUTHORED independent** via built-in `SphericalHankelH1`/`H2` +
+  `SeriesCoefficient` (the source `.wl`'s transliterated `branchData` DISCARDED per the mirror-policy screen — UNLIKE 018/019/021's keep-native; 020-style
+  genuine-authoring). ⭐⭐ **Directive review = Codex→Grok→Codex bookend:** Codex 5 BLOCKING folded (the `.wl` re-authoring; the de-rigged `Λ_static`+scanned-order;
+  the ℓ=2 double-count + χ_Q subsumption + per-slot mutants; the Earned/Deferred SUBSET framing + explicit LOCAL/JOINT output; the checkable-consumption = stage018
+  fingerprint) → **Codex confirm-pass caught a directive-level REASONING error** — the proposed `Λ_static` ablation "outgoing→incoming" is INERT (both branches give
+  `−(ℓ+1)`), so the mutant must be a POLE-ORDER corruption `h_mut=z·h`, and `static=1` de-counted → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** (SymPy-confirmed the
+  cross-ℓ series, the pole-order-vs-inert mutant, the scan-vs-preselect counterexample, the χ_Q subsumption identity, the u₂/u₄ isolation) → final Codex confirm
+  `DIRECTIVE_CLEAN`. Dual-engine SymPy 56 / Mathematica 65, CWD-independent. Tri-review: `FIDELITY_CLEAN` (independent re-derivation of the fingerprints, the
+  pole-order-vs-inert `Λ_static` mutant, the scan-vs-preselect order, the χ_Q subsumption, the per-slot isolation — all COMPUTED, no 019/023 leak, genuine built-in
+  `.wl`) + `ADVERSARIAL_ISSUES` (both confirm-pass catches HELD live-proven; all core physics teeth genuine; 2 LOW-severity redundancy teeth — F1 the `3e`
+  `rerun_gate_logic` constant-`len(trace)==2`, F2 the read-set-excludes tooth subsumed by the exact-equality tooth) → Codex remediated F1 make-genuine (compare the
+  two traced verdicts) + F2 honest de-count (a diagnostic; the exact-equality tooth retains the guard) + 2 `.wl` nits (a symbol typo + `IncomingLowerRealUnchanged`
+  mutation-aware parity) → fresh-agent `REVERIFY_CLEAN` (coupling meta-test: F1 fires when the ablation is neutered + goes vacuous when the fix is reverted; F2's
+  retained exact-equality tooth fires on a wired forbidden read; no regression, both engines exit 0 at repo root AND `/tmp`). Tallies 56/65 → **55/64** (net −1 per
+  engine from the honest F2 de-count). Registration at count 22, PDF rebuilt (61pp). ⚠ **Lesson banked:** the Codex confirm-pass caught a directive-level reasoning
+  error a design-review missed — an able-to-fail mutant "outgoing→incoming" that is INERT for the leading pole (both Hankel branches share the `z^{−(ℓ+1)}`
+  singular behavior; only the imaginary sign flips), so `Λ_static` needs a POLE-ORDER mutant `h_mut=z·h`; the proof a normalization tooth is able-to-fail is a
+  mutant that shifts the pole ORDER, not the radiation branch.
+- **▶ NEXT = Cluster A `ledger_stage023`** (II-G5b, pathA_34 `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 2/2 — the nullspace-underdetermination departure that DELIVERS the
+  FAIL + COMPLETES the joint): the genuine native nullspace (dim-8, return-nullity-2), the residuals-vs-pathA_29 (`A0/A1`, `ε_eff`), the `Z0_ret/Z1_ret` untouched →
+  the Gate-6 selector need, + the selector-equation control → `CROSS_L_RESIDUAL_PREDICTION` (making the gate able-to-fail). Source:
+  `software/stage1_solver/tools/pathA_34_cross_l_unification_{sympy.py,.wl}` (the 023 slice = `build_transfers` L361–461, `build_residuals` L464–508,
+  `GENERATOR_DOFS`/`build_rank_audit` L511–699, `selector_equations`/`selector_provenance` L306–358, `build_provenance` L899–970 the FAIL_TAUTOLOGICAL firewall,
+  `base_verdict`/`run_gate` L1008–1079; the dimensional checker L702–896 + probes R1/3a/3b/3c/3d/3f/3g/3h). ⚠ **The pathA_34 v1 REJECTION locus is 023's (part2
+  L90–92):** the DEFAULT verdict is PASS — `UNDERDETERMINED` must be EARNED from a GENUINELY-COMPUTED native nullspace (the v1 was tri-review-REJECTED for a
+  rigged-to-UNDERDETERMINED zero-padded-constraint + flag-driven probes + a headline-only `.wl`); back-solving `ε_eff`/`Z` from residuals is FORBIDDEN (the
+  `FAIL_TAUTOLOGICAL` firewall). ⭐ Author a running-start source map FIRST (023 CONSUMES 022's exported ℓ=0/1 radiative coeffs `{1, 1/2}` → the `A0/A1` residual
+  amplitudes; cite 008's `R0=−M0`/`R1=−D1` targets + 009/010's return channels + pathA_29's `Z_is_premise`). This COMPLETES the pathA_34 fold (022∧023); then
+  Cluster C (024–029, the density port + 2.5PN match-back + PN DOI-cite), then the scheduled MIDWAY KNOB AUDIT after the Part-II gravity sector closes.
 
 ## Per-stage process (unchanged, calibrated)
 

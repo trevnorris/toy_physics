@@ -1,0 +1,146 @@
+\section{Stage 024: The Density-Native \texorpdfstring{\(\ell=2\)}{l=2} Quadrupole Two-Port Derivation (Check II-P1)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative-port sector, Cluster C; the EARNED-FIRST derivation leg of a four-way split of pathA\_43 --- the density-native \(\ell=2\) quadrupole two-port derivation component of the joint \texttt{DENSITY\_PORT\_HOSTED}, with the COMPUTED vector-freedom taint = Stage~025, the continuity-moment lineage token-check = Stage~026, and the able-to-fail port checks + closure overlay (the COMPLETING leg) = Stage~027)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Earn the density-native coupling STRUCTURE the quadrupole port rides. Show the reduced \(\ell=2\) two-port over \((q_2\) wall, \(\Phi_2\) bulk-density\()\), with static operator \(M=\bigl(\begin{smallmatrix}\varpi_{q_2}&-\lambda_c\\-\lambda_c&\varpi_{\Phi_2}\end{smallmatrix}\bigr)\) and source \(g_{\mathrm{base}}(\eta_q,\eta_\phi)\), \(g_{\mathrm{base}}=\sqrt{\rho_{\mathrm{eff}}}\,c_s^2 I_{25}\Xi_Q/a^{7/2}\), yields the load-bearing Phi\(_2\)-response \((M^{-1}\mathrm{source})[\Phi_2]=P_{\mathrm{den}}/\Delta\) and the port numerator \(N_{0,\mathrm{den}}=P_{\mathrm{den}}^2/\Delta^2=I_{25}^2\Xi_Q^2 c_s^4\rho_{\mathrm{eff}}(\eta_\phi\varpi_{q_2}+\eta_q\lambda_c)^2/(a^7(\lambda_c^2-\varpi_{\Phi_2}\varpi_{q_2})^2)\), density-hosted and vector-free. Export \(N_{0,\mathrm{den}}\); land the joint verdict as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage024_density_port_derivation_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage024_density_port_derivation_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- the derivation is exact symbolic algebra (the 2\(\times\)2
+static-operator inverse and the resulting rational port numerator are exact
+\texttt{Matrix.inv()}/\texttt{Solve} algebra; \texttt{expect\_zero}/\texttt{expect\_bool}
+residuals, no \texttt{scipy}/\texttt{numpy}/floats/tolerances). The verdict is the joint
+\texttt{DENSITY\_PORT\_HOSTED}; this stage carries its \emph{density-native two-port
+derivation} component (1/4, the EARNED-FIRST slice) and lands the joint as \textbf{partial}
+(024 earned; 025/026/027 pending) --- not complete. \resultanchor{\texttt{DENSITY\_TWO\_PORT\_DERIVED}.}
+The LOCAL audit verdict (exit-0 gate): \(N_{0,\mathrm{den}}\) is genuinely built from the
+inverse/elimination, the factorization cross-check holds, the \(\Delta\ne0\) guard + the
+coupling-vanishes + the density-only host-set teeth fire, and the two routes agree. It adds
+\textbf{zero} new counted knobs (a DERIVATION/structure slice, like Stages~018/016/022); the
+operator entries \(\varpi_{q_2}/\varpi_{\Phi_2}/\lambda_c\), the moment \(I_{25}\), \(\Xi_Q\),
+\(\eta_{q}/\eta_{\phi}\), and \(\rho_{\mathrm{eff}}\) are SIM\_DEFERRED/GAP tracked-not-counted.
+
+\paragraph{The density two-port operator.}
+The reduced, mass-normalized static Lagrangian of the \(\ell=2\) sector is a symmetric 2\(\times\)2
+quadratic form over \((q_2,\Phi_2)\) (the wall angular amplitude and the bulk-density amplitude),
+driven by a continuity/interface source:
+\[
+  M=\begin{pmatrix}\varpi_{q_2} & -\lambda_c\\ -\lambda_c & \varpi_{\Phi_2}\end{pmatrix},
+  \qquad
+  (g_q,g_\phi)=g_{\mathrm{base}}(\eta_q,\eta_\phi),
+  \quad
+  g_{\mathrm{base}}=\frac{\sqrt{\rho_{\mathrm{eff}}}\,c_s^2\,I_{25}\,\Xi_Q}{a^{7/2}},
+\]
+with a negative off-diagonal \(-\lambda_c\) (the wall\(\leftrightarrow\)bulk mixing). The operator
+entries are abstract symbols whose literal throat values are SIM\_DEFERRED --- the two-port
+structure holds for any admissible \(\varpi_{q_2},\varpi_{\Phi_2},\lambda_c\). This is the
+\(\ell=2\) continuation of the consumed bulk mode (009/010) and wall mode (016/017).
+
+\paragraph{The port numerator (the EARNED headline).}
+The radiative amplitude is the \(\Phi_2\) component of the inverted response. With determinant
+\(\Delta\) and adjugate\(\cdot\)source numerator \(P_{\mathrm{den}}\),
+\[
+  \Delta=\varpi_{q_2}\varpi_{\Phi_2}-\lambda_c^2,\qquad
+  P_{\mathrm{den}}=\varpi_{q_2}g_\phi+\lambda_c g_q,\qquad
+  (M^{-1}\mathrm{source})[\Phi_2]=\frac{P_{\mathrm{den}}}{\Delta},
+\]
+\[
+  N_{0,\mathrm{den}}=\Bigl(\tfrac{P_{\mathrm{den}}}{\Delta}\Bigr)^2
+  =\frac{I_{25}^2\,\Xi_Q^2\,c_s^4\,\rho_{\mathrm{eff}}\,(\eta_\phi\varpi_{q_2}+\eta_q\lambda_c)^2}
+        {a^7\,(\lambda_c^2-\varpi_{\Phi_2}\varpi_{q_2})^2}.
+\]
+The host-set is \(\subset\{q_2,\Phi_2,c_s,a,\rho_{\mathrm{eff}},I_{25},\Xi_Q,\eta_q,\eta_\phi,
+\varpi_{q_2},\varpi_{\Phi_2},\lambda_c\}\) and contains \emph{none} of the retired vector
+symbols \(\{A_w,F_{\mu w},J^w,U,W,\Omega_U,\Omega_W,R_{\mathrm{mix}},g_U,g_W\}\).
+\(N_{0,\mathrm{den}}\) is computed via \texttt{Matrix.inv()} (SymPy) / \texttt{Solve}+eliminate
+(WL), not typed.
+
+\paragraph{The load-bearing inverse and the two routes.}
+The two engines derive the same \(N_{0,\mathrm{den}}\) by materially different algorithms: SymPy
+takes the full \texttt{static\_operator.inv()} and reads \(\mathrm{response}=(M^{-1}\mathrm{source})[\Phi_2]\);
+Mathematica keeps a native Green-DtN elimination --- solve the wall row for \(q_2\)
+(\(q_2\to(\lambda_c\Phi_2+g_q)/\varpi_{q_2}\)), substitute into the bulk row, \texttt{Solve} the
+reduced scalar interface equation, then square. In the current pathA\_43 source the SymPy inverse
+was \emph{decorative} (\(N_{0,\mathrm{den}}\) assembled from a typed \(P_{\mathrm{den}}^2/\Delta^2\));
+the reshape makes it LOAD-BEARING --- \(N_{0,\mathrm{den}}=\texttt{make\_N0}(\mathrm{response})\)
+with \(\texttt{make\_N0}(r):=r^2\), so the dataflow is \(\mathrm{response}\to N_{0,\mathrm{den}}\),
+with \(P_{\mathrm{den}}/\Delta\) retained only as the trace form guarded by the factorization
+cross-check \(\operatorname{compact}(\mathrm{response}-P_{\mathrm{den}}/\Delta)=0\). Because a
+typed \(P_{\mathrm{den}}^2/\Delta^2\) passes the cross-check and prints an identical transcript, a
+code-read cannot catch a decorative inverse; the enforcement is the RUNTIME dataflow probe
+\(\texttt{make\_N0}(\mathrm{response}+\delta_{\mathrm{probe}})\ne\texttt{make\_N0}(\mathrm{response})\),
+which fires on a response-independent builder (the analog of Stage-023's genuine
+\texttt{Matrix.rank()}). The two-route agreement is the ARBITER's oracle ---
+\(\operatorname{simplify}(N_{0,\mathrm{den}}^{\mathrm{py}}-N_{0,\mathrm{den}}^{\mathrm{wl}})=0\),
+canonical not raw-string --- neither engine reads the other.
+
+\paragraph{Nonsingular guard, coupling boundary, host-set.}
+The inversion is defined only where \(\Delta=\varpi_{q_2}\varpi_{\Phi_2}-\lambda_c^2\ne0\)
+(positivity of the entries does not imply it: \(\lambda_c^2=\varpi_{q_2}\varpi_{\Phi_2}\) is
+admissible), so a named \(\Delta\ne0\) guard runs before the inversion/\texttt{Solve} in both
+engines, with a singular control (\(\lambda_c^2\to\varpi_{q_2}\varpi_{\Phi_2}\)) that fails at that
+guard; the stronger \(\Delta>0\) stability reading is SIM\_DEFERRED, not gated. The derivation
+boundary is the coupling: \(g_{\mathrm{base}}\to0\Rightarrow N_{0,\mathrm{den}}=0\) COMPUTED (the
+zero-control recomputes with \(g_{\mathrm{base}}=0\) and yields exactly \(0\)), while baseline
+\(N_{0,\mathrm{den}}\ne0\). The density-only host-set is a manifest-construction check
+(\(N_{0,\mathrm{den}}.\texttt{free\_symbols}\subset\) the density set, \(\cap\) the vector set
+\(=\emptyset\)), not the computed taint graph (that is 025's). Per-tooth ablation: teeth A (inverse
+factorization + dataflow probe), B (\(\Delta\ne0\) guard), C (coupling-vanishes, two named asserts),
+D (density-only host-set), E (\texttt{.wl} arity + unevaluated-leakage) each fire at their own assert.
+
+\paragraph{Honest scope.}
+Earned structure / SIM\_DEFERRED magnitude: 024 derives the reduced coupling STRUCTURE (the
+two-port form, its host-set, the inverse/elimination), but the literal magnitudes (\(I_{25}\),
+\(\Xi_Q\), \(\eta_q\), \(\eta_\phi\), the \(\lambda_c\) throat value) are SIM\_DEFERRED, and \(G\),
+\(2/5\), \(54/5\) are calibrated (\(G=\)\texttt{GENUINE\_BLOCKED}) --- the \(54/5\) partition +
+closure overlay + PN match-back are Stages~027/028, not 024. \(c_s\) is the density/sound (ripple)
+speed --- the analog ``speed of light'' of the gravitational sector (Stage-005 R1) --- and \(a\) is
+the \texttt{CONV} pin. \(\rho_{\mathrm{eff}}\) is the effective reduced-3D \emph{mass} density
+(\([M L^{-3}]\)) that mass-normalizes \((q_2,\Phi_2)\); it is \emph{not} Stage-005's \(\rho_0\) (a 4D
+number density \([L^{-4}]\)), and the reduction \(\rho_{\mathrm{eff}}\leftarrow\{\rho_0,m,\text{geometry}\}\)
+is SIM\_DEFERRED/GAP.
+
+\paragraph{Consumed closure and register.}
+\emph{Provenance only, no cross-stage dual-site:} 024's genuineness check is intra-stage (the two
+routes + the load-bearing factorization cross-check). The \texttt{physical\_relations} trace
+exhibits \(\varpi_{q_2}=K_2/M_2=(c_s/a)^2\kappa_q\) (pathA\_32 wall; 016/017), \(\varpi_{\Phi_2}=(c_s/a)^2(6+(ma)^2)\)
+(pathA\_29 bulk, \(6=\ell(\ell+1)\); 009/010/016), and \(\lambda_c=(c_s/a)^2\hat\lambda_Q\) (projected
+continuity/interface); the COMPUTED taint-set proof that these tags are genuine is 025's. \(I_{25}\)
+is a typed \(\ell=2\) continuity-moment input (lineage validated in Stage~026, a forward ref).
+Register: \textbf{zero} new counted knobs; \(\varpi_{q_2}/\varpi_{\Phi_2}/\lambda_c\),
+\(I_{25}/\Xi_Q/\eta_q/\eta_\phi\), and \(\rho_{\mathrm{eff}}\) are SIM\_DEFERRED/GAP tracked-not-counted;
+structural edge \textbf{R43} (the density-native \(\ell=2\) two-port algebraic derivation provenance,
+scoped to 024's algebra --- \emph{not} ``the vector scaffold retired,'' which is the joint result
+proven by 025/027; discharges nothing). Symbol dims recorded as provenance
+(\([I_{25}]=L^{5/2}\), \([c_s]=LT^{-1}\), \([\rho_{\mathrm{eff}}]=ML^{-3}\), \([a]=L\),
+\([\varpi_{q_2}]=[\varpi_{\Phi_2}]=[\lambda_c]=T^{-2}\), \([\eta_q]=[\eta_\phi]=[\Xi_Q]=1\Rightarrow
+[N_{0,\mathrm{den}}]=L^{-1}M\)); the units-restored dim CHECK is 027's. Part-II counted CALIB set
+unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017)
+= 6. \(N_{0,\mathrm{den}}\) is exported to 025 (taint) / 026 (\(I_{25}\in\)\texttt{free\_symbols}) /
+027 (dimension, a-scaling, sign, closure).
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- pathA\_43 was already contract-clean (no
+\texttt{Export}/\texttt{Put}/\texttt{Import}; the \texttt{results.yaml} was written by an external
+orchestrator), so the reshape ``sever the bridge'' step is a no-op (the lightest reshape in Part II);
+the work was decomposition + the genuineness upgrade + the LOCAL/PARTIAL framing. The \texttt{.wl}
+KEEPS its native Green-DtN \texttt{Solve}+eliminate-\(q_2\) route (its own \texttt{clean}/\texttt{fmt},
+not a mirror), agreeing at the transcript level (\(N_{0,\mathrm{den}}\) canonical factored, the
+\(\Phi_2\)-response \(=P_{\mathrm{den}}/\Delta\), the \(\Delta\ne0\) guard status, the
+\texttt{physical\_relations} provenance, the density-only host-set, the LOCAL verdict, the JOINT
+PARTIAL), with an arity + Module-result-shape + unevaluated-leakage self-check. SymPy 7 PASS /
+Mathematica 10 PASS, both exit 0, CWD-independent (repo root + \texttt{/tmp}). The directive
+design-review used the Codex\(\to\)Grok\(\to\)Codex bookend (a Codex xhigh pass folded 4 BLOCKING ---
+the \(\Delta\ne0\) guard + singular control, the \(\rho\to\rho_{\mathrm{eff}}\) mis-provenance
+correction, the per-tooth independent-oracle restructure, R43 scoped to 024's algebra; a confirm-pass
+folded 2 further BLOCKING --- tooth A's runtime dataflow probe and tooth C's two named asserts; both
+engines compute-verified \(N_{0,\mathrm{den}}\), \(\mathrm{response}\equiv P_{\mathrm{den}}/\Delta\),
+\([N_{0,\mathrm{den}}]=L^{-1}M\), and the a-powers \(-3\to-5\)). Full tri-review on fresh agents:
+\texttt{FIDELITY\_CLEAN} (an independent read re-derived \(N_{0,\mathrm{den}}\) by a third
+\texttt{linsolve} route, diff \(=0\)) and \texttt{ADVERSARIAL\_CLEAN} (per-tooth ablation: every tooth
+A--E fired at its own named assert, the decorative-inverse rig caught at runtime by the
+\(\delta_{\mathrm{probe}}\) in both engines; no vacuous tooth) --- zero remediation required, the
+contract-clean lightest-reshape stage. Symbolic per-tooth ablation, mutations on copies.

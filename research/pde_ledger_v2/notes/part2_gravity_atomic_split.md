@@ -534,14 +534,42 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   bookend caught a directive-level MATH error (the selector collapses the *return-moving* nullity to 0, NOT the full native nullity — which goes 8→6) + a register
   over-claim (K0c/K1 "DERIVED" was unsupported — the pathA_34-convention dims `(0,1,−2)` don't match 013/017, the stage016 volume-vs-line trap recurring) + a
   double-count (Z0_ret/Z1_ret are the *same* ε0/ε1 freedoms, aliased) — three directive-level errors the Codex→Grok→Codex bookend caught before the build.
-- **▶ NEXT = Cluster C `ledger_stage024`** (II-P1, pathA_43 `DENSITY_PORT_HOSTED` 1/4 — the ℓ=2 quadrupole radiative-port numerator `N0_den` as a DENSITY-NATIVE
-  two-port over `(q2` wall, `Φ2` bulk-density`)` via Schur-elim / Green-DtN; consumes 029/010's bulk mode + 032/017's wall mode; the OLD EM `A_w`/`U,W` vector
-  scaffold RETIRES). Source: `software/stage1_solver/tools/pathA_43_density_quadrupole_port_{sympy.py,.wl}` (already contract-clean — no argparse/JSON/reads, the
-  LIGHTEST reshape; the work is decomposition + preserving the anti-rig mechanisms = the COMPUTED taint/host-set guard + the lineage token-check, 024/025/026's — see
-  the per-gate trip-ups L93). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector
-  CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out
-  vs irreducible-route-less tally). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). This stage is DENSITY-PORT (pathA_43), a DIFFERENT
-  source family from pathA_30–34 (contract-clean, no scratch-YAML bridge) — see the reshape-cost map L78–79.
+- **✅ II-P1 `ledger_stage024` DONE (2026-07-10) — pathA_43 `DENSITY_PORT_HOSTED` 1/4 (the density-native ℓ=2 quadrupole two-port DERIVATION; the EARNED-FIRST
+  leg of the pathA_43 4-way split; ⭐ Cluster C OPENS).** SYMBOLIC/exact/float-free. EARNED: the moving throat's ℓ=2 coupling to the outgoing quadrupole `c_s`
+  wave is a genuine density two-port over `(q₂` wall, `Φ₂` bulk-density`)` — the 2×2 static operator `M=[[ϖ_q2,−λ_c],[−λ_c,ϖ_Φ2]]` + source
+  `(g_q,g_φ)=g_base·(η_q,η_φ)`, `g_base=√rho_eff·c_s²·I25·Ξ_Q/a^(7/2)`, inverts to the Φ₂-response `=(M⁻¹·source)[Φ₂]=P_den/Δ` → the port numerator
+  **`N0_den=response²=I25²·Ξ_Q²·c_s⁴·rho_eff·(η_φ·ϖ_q2+η_q·λ_c)²/(a⁷·(λ_c²−ϖ_Φ2·ϖ_q2)²)`**, host-set density-only (retiring the EM `A_w`/`U,W` vector scaffold —
+  EXHIBITED here, PROVEN vector-free at 025). ⭐ **The genuineness UPGRADE (the #1 acceptance):** the current pathA_43 source's SymPy inverse was DECORATIVE
+  (`N0_den` typed `P_den²/Δ²`, L441–442, the inverse `response` L439 unused); the reshape makes it LOAD-BEARING — `N0_den=make_N0(response)` built from
+  `Matrix.inv()`, with a **RUNTIME `delta_probe` dataflow probe** `make_N0(response+δ)≠make_N0(response)` that FIRES on a decorative typed `P_den²/Δ²` (caught in
+  both engines by the adversarial leg). Two independent routes AGREE algebraically (SymPy full `Matrix.inv()` vs Wolfram **KEEP-NATIVE** Green-DtN eliminate-q2
+  `qRule`→`phiEq`→`Solve[Φ₂]`; the arbiter oracle `simplify(N0_den_py−N0_den_wl)=0`, canonical not raw-string). Teeth A (inverse/factorization cross-check +
+  dataflow probe), B (`Δ≠0` nonsingular guard + singular control `λ_c²→ϖ_q2·ϖ_Φ2`), C (coupling-vanishes: baseline `N0_den≠0` + zero-control
+  `N0_den|_{g_base=0}=0`), D (density-only host-set), E (`.wl` arity/leakage). LOCAL `DENSITY_TWO_PORT_DERIVED` (exit 0) + printed JOINT PARTIAL
+  `DENSITY_PORT_HOSTED (1/4)`; 024 does NOT own the joint (lands at 027). ⭐ **Register: ZERO new counted CALIB knobs (Part-II set stays 6)** — `ϖ_q2`/`ϖ_Φ2` =
+  DERIVED manifestations (017 wall scalars + bulk-Helmholtz geometry), `λ_c`/`I25`/`Ξ_Q`/`η_q`/`η_φ`/`rho_eff` = SIM_DEFERRED/GAP tracked-not-counted; ⚠ `rho_eff`
+  (effective reduced-3D MASS density `[M L⁻³]`) is **NOT** stage005's `ρ0` (4D NUMBER density `[L⁻⁴]`) — a Codex-bookend catch; new structural edge **R43** (the
+  two-port derivation provenance, scoped to 024's algebra, discharges nothing); `[N0_den]=L⁻¹M` recorded as PROVENANCE (the dim CHECK is 027's); Codex
+  `REGISTER_CLEAN`. ⚠ Consumption PROVENANCE: 009/010+016 (`ϖ_Φ2`), 016/017 (`ϖ_q2`, `K₂`), the projected-continuity operator+`I25` (lineage→**026**), 005
+  (`c_s²`)+`a` (CONV). ⭐⭐ **Directive review = Codex→Grok→Codex bookend:** Codex design-review **4 BLOCKING** folded (the `Δ≠0` nonsingular guard; the `rho→rho_eff`
+  mis-provenance; the teeth-need-independent-ORACLES restructure [merged inverse/factorization tooth, the two-route agreement → the ARBITER's oracle, `.wl`
+  independence → the transliteration review]; the R43 scope over-claim) → Codex confirm-pass **2 more BLOCKING** folded (the RUNTIME dataflow probe; tooth C's two
+  named asserts) → Codex confirm#2 GREEN (2 nits) → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** (SymPy-confirmed the `N0_den` formula, `response≡P_den/Δ`,
+  `[N0_den]=L⁻¹M`, a-powers −3→−5) + 3 nits folded. ⚠ **The closing Codex final-confirm was KILLED twice by a codex-0.144.0 crash bug** (fixed by the user's
+  0.144.1 update mid-session) — substance dual-cleared (Grok CLEAN + Codex confirm#2 GREEN), the 3 trivial nit-folds self-verified. Dual-engine SymPy 7 /
+  Mathematica 10, CWD-independent (repo root AND `/tmp`), zero file I/O. Tri-review CLEAN both legs (`FIDELITY_CLEAN` — `N0_den` re-derived by a THIRD `linsolve`
+  route, diff=0 + `ADVERSARIAL_CLEAN` — every tooth A–E fired at its own named assert under per-tooth ablation; the decorative-inverse rig CAUGHT at runtime; no
+  vacuous tooth) → **ZERO remediation** (the CONTRACT-CLEAN lightest reshape in Part II — no bridge to sever; the work was DECOMPOSITION + the genuineness upgrade;
+  like 018/012). Registration at count 24, PDF rebuilt (67pp). ⚠ **Lesson banked:** the Codex bookend caught that a "the result changed" tooth is NOT an
+  able-to-fail assert — the inverse-is-load-bearing needs an ORACLE (the factorization cross-check + a RUNTIME dataflow probe that catches a decorative typed
+  replacement); and a source mass-density (`rho`, `M L⁻³`) is NOT the medium's number density (`ρ0`, `L⁻⁴`) — do not alias across a reduction pathA_29 never supplies.
+- **▶ NEXT = Cluster C `ledger_stage025`** (II-P2, pathA_43 `DENSITY_PORT_HOSTED` 2/4 — the vector-freedom taint: the COMPUTED ancestry/taint over
+  `N0_den.free_symbols` + the `source_map_complete`/host-set guard + the expression-level vector-independence ablation; consumes 024's exported `N0_den`). ⚠
+  **the COMPUTED taint + host-set guard are THE earned anti-rig mechanisms (two caught rigs live in pathA_43's history, per-gate trip-ups L93) — never collapse to
+  name-checks or flags** (the pathA_43 slice = `source_tag_map`/`taint_for_expr`/`source_graph_for_expr`/`vector_ablated_expr` `.py` L335–389; the `VECTOR_SYMBOLS`
+  guard + `BASE_SOURCE_TAGS`). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN
+  match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB
+  AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
 
 ## Per-stage process (unchanged, calibrated)
 

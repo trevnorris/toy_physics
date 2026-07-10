@@ -1,0 +1,74 @@
+# Mathematica Audit Output
+# Script: ledger_stage024_density_port_derivation_mathematica_audit.wl
+# Date: 2026-07-10T14:48:40-06:00
+# Elapsed: 11s
+# Exit code: 0
+# Status: PASS
+#
+
+
+=========================================================
+ledger_stage024_density_port_derivation_mathematica_audit
+=========================================================
+Target stem confirmed: ledger_stage024_density_port_derivation
+Engine: exact Wolfram Green-DtN elimination; zero file I/O.
+
+E. Wolfram arity scan
+---------------------
+PASS  E definition/call arity scan matches densityExpression, makeN0, and guardNonsingular
+PASS  B Delta!=0 nonsingular guard before Solve (baseline)
+PASS  E densityExpression Module call evaluates to the complete result association
+
+A. elimination factorization and response-to-N0 dataflow
+--------------------------------------------------------
+PASS  A eliminated response equals independent P_den/Delta oracle
+PASS  A make_N0 runtime dataflow probe reads its response argument
+
+C. coupling-vanishes boundary
+-----------------------------
+PASS  C baseline N0_den is nonzero for symbolic nonzero coupling
+PASS  B Delta!=0 nonsingular guard before Solve (g_base=0 control)
+PASS  C zero-control N0_den|g_base=0 is computed zero
+
+D. density-only host set
+------------------------
+PASS  D N0_den host-set membership is density-only and vector-free
+
+E. Wolfram unevaluated-leakage transcript scan
+----------------------------------------------
+PASS  E no unevaluated authored helper or Solve leakage remains in transcript objects
+
+Derived density two-port transcript
+-----------------------------------
+port_picture: ii two-port(q2,Phi2)
+method: Wolfram Green-DtN eliminate-q2 then Solve Phi2
+static_operator: {{varpi_q2, -lambda_c}, {-lambda_c, varpi_Phi2}}
+g_base: c_s^2*I25*Sqrt[rho_eff/a^7]*Xi_Q
+Phi2_response: -((c_s^2*I25*Sqrt[rho_eff]*(eta_q*lambda_c + eta_phi*varpi_q2)*Xi_Q)/(a^(7/2)*(lambda_c^2 - varpi_Phi2*varpi_q2)))
+Delta_den: -lambda_c^2 + varpi_Phi2*varpi_q2
+P_den: c_s^2*I25*Sqrt[rho_eff/a^7]*(eta_q*lambda_c + eta_phi*varpi_q2)*Xi_Q
+N0_den (canonical factored): (c_s^4*I25^2*rho_eff*(eta_q*lambda_c + eta_phi*varpi_q2)^2*Xi_Q^2)/(a^7*(lambda_c^2 - varpi_Phi2*varpi_q2)^2)
+Delta!=0 guard status: PASS (checked before each Solve)
+density-only host-set: {q2, Phi2, c_s, a, rho_eff, I25, Xi_Q, eta_q, eta_phi, varpi_q2, varpi_Phi2, lambda_c}
+N0_den live symbols: {a, c_s, eta_phi, eta_q, I25, lambda_c, rho_eff, varpi_Phi2, varpi_q2, Xi_Q}
+
+physical_relations provenance
+-----------------------------
+varpi_q2 <- pathA_32 wall: K2/M2 = (c_s/a)^2*kappa_q from the wall angular l=2 operator (stages016/017)
+varpi_Phi2 <- pathA_29 bulk: (c_s/a)^2*(6+(m*a)^2) from the bulk Helmholtz l=2 mode (stages009/010/016)
+lambda_c <- projected continuity/interface: (c_s/a)^2*lambda_hat_Q
+I25: typed l=2 continuity-moment input; lineage validation is forward-referenced to stage026
+rho_eff: effective reduced-3D mass density; its literal reduction is SIM_DEFERRED/GAP and it is not stage005 rho0
+
+Verdict labels
+--------------
+LOCAL_AUDIT_VERDICT: DENSITY_TWO_PORT_DERIVED
+JOINT_LANDING_LABEL (PARTIAL): DENSITY_PORT_HOSTED (1/4, DERIVATION — the density-native two-port N0_den; 025 = vector-freedom taint, 026 = continuity lineage, 027 = port checks + closure)
+
+=======
+Tallies
+=======
+TALLY mathematica: 10 pass + 0 fail = 10 checks
+OVERALL PASS
+
+EXIT_CODE: 0

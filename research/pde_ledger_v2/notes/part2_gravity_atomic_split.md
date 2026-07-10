@@ -563,13 +563,43 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   like 018/012). Registration at count 24, PDF rebuilt (67pp). ⚠ **Lesson banked:** the Codex bookend caught that a "the result changed" tooth is NOT an
   able-to-fail assert — the inverse-is-load-bearing needs an ORACLE (the factorization cross-check + a RUNTIME dataflow probe that catches a decorative typed
   replacement); and a source mass-density (`rho`, `M L⁻³`) is NOT the medium's number density (`ρ0`, `L⁻⁴`) — do not alias across a reduction pathA_29 never supplies.
-- **▶ NEXT = Cluster C `ledger_stage025`** (II-P2, pathA_43 `DENSITY_PORT_HOSTED` 2/4 — the vector-freedom taint: the COMPUTED ancestry/taint over
-  `N0_den.free_symbols` + the `source_map_complete`/host-set guard + the expression-level vector-independence ablation; consumes 024's exported `N0_den`). ⚠
-  **the COMPUTED taint + host-set guard are THE earned anti-rig mechanisms (two caught rigs live in pathA_43's history, per-gate trip-ups L93) — never collapse to
-  name-checks or flags** (the pathA_43 slice = `source_tag_map`/`taint_for_expr`/`source_graph_for_expr`/`vector_ablated_expr` `.py` L335–389; the `VECTOR_SYMBOLS`
-  guard + `BASE_SOURCE_TAGS`). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN
-  match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB
-  AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
+- **✅ II-P2 `ledger_stage025` DONE (2026-07-10) — pathA_43 `DENSITY_PORT_HOSTED` 2/4 (the density-port VECTOR-FREEDOM taint PROOF; the ANTI-RIG PROOF leg).**
+  SYMBOLIC/exact set-algebra/float-free. EARNED: consumes 024's exported `N0_den` and PROVES it computationally VECTOR-FREE — the COMPUTED provenance taint over
+  `N0_den.free_symbols` (the UNION of the reshaped `BASE_SOURCE_TAGS`) = EXACTLY `{continuity_interface, pathA_29_bulk, pathA_32_wall}` (P1 `baseline_ancestry_ok`)
+  ∧ `source_map_complete` ∧ `vector_host_symbols=∅` ∧ `vector_port∉taint` (P2 `vector_free`) → the retired EM `A_w`/`U,W` scaffold cannot be hiding in `N0_den`.
+  ⭐⭐ **The decisive gate is the COMPUTED taint over provenance TAGS, NOT a name-check** — the relabel rig `{omega_wall,…,g_qold}` + the hidden-vector `N0_den·σ_hidden`
+  are density-LOOKING symbols NOT in `VECTOR_SYMBOLS` but tagged `vector_port` (a `∩VECTOR_SYMBOLS` name-check MISSES them, the tag-taint CATCHES them); the two
+  caught pathA_43 rigs (per-gate trip-ups L93) NEVER reintroduced. LOCAL `DENSITY_PORT_VECTOR_FREE` (exit 0, ⚠ CONDITIONAL on the cited `moment_valid=True` — a typed
+  forward ref 026 earns) + printed JOINT PARTIAL `DENSITY_PORT_HOSTED (2/4)`; 025 does NOT own the joint (lands at 027). ⭐ **Register: ZERO new counted CALIB knobs
+  (set stays 6)** — 025 introduces NO new physical symbols (the vector/relabel/free-carrier symbols are CONTROL fixtures tracked-not-counted); no new dims
+  (`[N0_den]=L⁻¹M` is 027's); new structural edge **R44** (records ONLY the vector-freedom conjunct — the scaffold RETIREMENT is the JOINT 025∧027 result, 027 records
+  it). Consumption PROVENANCE: 024's `N0_den` (the SUBJECT, checkable host-contract `free_symbols==HOST_CONTRACT`), 026's `moment_valid` (typed forward ref), the
+  density symbols' provenance tags (024 `physical_relations` + 005 `c_s` + `a` CONV). ⭐⭐ **The `.wl` is RE-AUTHORED independent** (native directed
+  `Graph`/`VertexOutComponent` reachability for the decisive taint + `D[expr,v]` differentiation for the ablation witness; NOT the source's `Variables`+`Lookup`+`Union`
+  transliteration; UNLIKE 024's keep-native, like 020/022/023's re-author). ⭐⭐ **Directive review = Codex→Grok→Codex bookend:** Codex xhigh 5 BLOCKING folded (⭐ the
+  expression ablation is LOGICALLY SUBSUMED by the taint-set gate → reframed to a de-counted redundant WITNESS, the COMPUTED taint-set identity + `source_map_complete`
+  the decisive gate [relabel/hidden caught by the taint-set gate, NOT by ablating the singular `P²/Δ²` rational]; the P1/P2 predicate split [the 4-tag properly-tagged
+  carrier passes the general P2 not the exact-3-tag P1]; R44 records only the vector-freedom conjunct; the cite-the-factored-`N0_den` consumption; tooth H split into a
+  review-acceptance + two runtime scanners) + 2 nits → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** (SymPy-confirmed the subsumption, the relabel/hidden `vector_port`
+  taint vs the name-check ∅, the 4-tag reversibility control, the `source_map_complete` halves) + 3 nits → Codex confirm-pass 4 consistency-sweep BLOCKING gaps folded
+  (derive-vs-typed leftovers; `fake_continuity` half-fold; the global rig-routing summaries; the 12-vs-10 contract ambiguity) → Codex final re-confirm `DIRECTIVE_CLEAN`.
+  Dual-engine SymPy 18 / Mathematica 18, CWD-independent (repo root AND `/tmp`), zero file I/O. Tri-review CLEAN both legs (`FIDELITY_CLEAN` [re-derived `N0_den` from
+  024's 2×2 inverse, diff=0; tag-map faithfulness with the 024 renames, P1/P2 separation, the de-counted witness, the genuine independent `.wl`] + `ADVERSARIAL_CLEAN`
+  [per-tooth ablation BOTH engines: every rig fired at its OWN named META assert + went vacuous when neutered; the decisive name-check-dodge proved the tag-taint
+  load-bearing]) → 2 [minor] non-blocking de-counts (a subsumed `<=DENSITY_HOST_UNIVERSE`; a masked `moment_valid`, tally 20→18) → fresh-agent `REVERIFY_CLEAN` (the diff
+  is exactly the 2 de-counts; spot-ablations no regression — name-check downgrade fires META A/B, corrupt `N0_den` fires tooth I, injected `vector_port` fires P1+P2).
+  Registration at count 25, PDF 70pp. ⚠ **Lesson banked:** the Codex bookend caught that an expression-level ablation is LOGICALLY SUBSUMED by the taint-set gate (it
+  cannot independently fail once P2 holds — a subsumed guard) → the honest framing makes the COMPUTED taint-set the decisive gate and the ablation a de-counted witness;
+  and the two-predicate split (exact-baseline vs general) is needed so a legitimately-provenanced extra tag (the pathA_34 dimensionless free carrier) passes without
+  false-failing the exact ancestry identity.
+- **▶ NEXT = Cluster C `ledger_stage026`** (II-P3, pathA_43 `DENSITY_PORT_HOSTED` 3/4 — the **continuity lineage**: the ℓ0(M0)→ℓ1(D1)→ℓ2(`∫Y₂*S_leak`) moment
+  ancestry via pathA_29's projected-continuity operator; the token-check is COMPUTED, NEVER a flag — this is where the cited `moment_valid` 025 consumed is EARNED,
+  and where **Rig 2** [the self-asserted `continuity_interface` tag — a devious executor writes a NEW equation ≡ the vector port, tags it `continuity_interface`, wires
+  it as `N0`'s ancestor] is the anti-rig to pin; the validator checks structural TOKENS not a shared `valid` flag). The pathA_43 slice = `continuity_lineage_valid`/
+  `lineage_for`/`continuity_moment_symbol`/the `I25`-vs-`I_wrong2` gate/`continuity_dependency_ok` + the `fake_continuity`/`attack2_continuity_corruption` controls
+  (`.py` L192–197, 305–332, 392–417, 585–592). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port
+  024–027 + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register
+  §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
 
 ## Per-stage process (unchanged, calibrated)
 

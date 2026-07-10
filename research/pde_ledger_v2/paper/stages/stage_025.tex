@@ -1,0 +1,117 @@
+\section{Stage 025: The Density-Port Vector-Freedom Taint Proof (Check II-P2)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative-port sector, Cluster C; the ANTI-RIG PROOF leg of a four-way split of pathA\_43 --- the vector-freedom taint proof component of the joint \texttt{DENSITY\_PORT\_HOSTED}, with the density two-port DERIVATION = Stage~024, the continuity-moment lineage token-check = Stage~026, and the able-to-fail port checks + closure overlay (the COMPLETING leg) = Stage~027)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Prove Stage-024's exported \(\ell=2\) density-port numerator \(N_{0,\mathrm{den}}\) is computationally VECTOR-FREE --- that it cannot hide a disguised copy of the retired EM vector port \(P_A=\Omega_U^2 g_W+R_{\mathrm{mix}}g_U\). Compute the provenance taint over \(N_{0,\mathrm{den}}.\texttt{free\_symbols}\) via a fixed tag map and show it equals exactly the density ancestry \(\{\texttt{continuity\_interface},\texttt{pathA\_29\_bulk},\texttt{pathA\_32\_wall}\}\) with \(\texttt{vector\_port}\notin\) it, source-map complete, and no vector-host symbol. The decisive check is the COMPUTED taint over provenance TAGS --- never a name-check --- which catches density-LOOKING relabels a name-check misses. Export the vector-freedom verdict; land the joint as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage025_vector_freedom_taint_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage025_vector_freedom_taint_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact symbolic set-algebra (the taint is a union of provenance tags
+over the actual \(N_{0,\mathrm{den}}.\texttt{free\_symbols}\); \texttt{expect\_bool} residuals, no
+\texttt{scipy}/\texttt{numpy}/floats/tolerances). The verdict is the joint \texttt{DENSITY\_PORT\_HOSTED};
+this stage carries its \emph{vector-freedom taint proof} component (2/4) and lands the joint as
+\textbf{partial} (024/025 earned; 026/027 pending) --- not complete.
+\resultanchor{\texttt{DENSITY\_PORT\_VECTOR\_FREE}.} The LOCAL audit verdict (exit-0 gate, CONDITIONAL
+on the cited \(\texttt{moment\_valid}=\text{True}\) that Stage~026 earns): the computed taint is exactly
+the three density tags (P1), and source-map completeness \(\wedge\) no vector-host \(\wedge\)
+\(\texttt{vector\_port}\notin\text{taint}\) (P2). It adds \textbf{zero} new counted knobs (a proof/taint
+slice, like Stages~018/016/022); the vector/relabel/free-carrier symbols are control fixtures,
+tracked-not-counted.
+
+\paragraph{The subject and the consumption oracle.}
+Stage 025 CITES Stage-024's factored export (it does not re-derive the inverse --- that would blur the
+024/025 cut):
+\[
+  N_{0,\mathrm{den}}=\frac{I_{25}^2\,\Xi_Q^2\,c_s^4\,\rho_{\mathrm{eff}}\,(\eta_\phi\varpi_{q_2}+\eta_q\lambda_c)^2}
+        {a^7\,(\lambda_c^2-\varpi_{\Phi_2}\varpi_{q_2})^2}.
+\]
+The consumption-integrity oracle computes \(N_{0,\mathrm{den}}.\texttt{free\_symbols}\) off the actual
+cited expression and asserts it equals the exported 10-symbol host contract
+\(\{a,c_s,\rho_{\mathrm{eff}},I_{25},\Xi_Q,\eta_q,\eta_\phi,\varpi_{q_2},\varpi_{\Phi_2},\lambda_c\}\)
+(the coordinate hosts \(q_2,\Phi_2\) are projected out of the numerator --- they extend the
+\emph{allowable} density-host universe to 12 but are not in \(N_{0,\mathrm{den}}.\texttt{free\_symbols}\)).
+A dropped/renamed symbol breaks the contract (tooth~I).
+
+\paragraph{The computed taint and the two separated predicates.}
+Each symbol carries a fixed provenance tag set (faithful to the pathA\_43 source with the 024 renames):
+\(c_s,\rho_{\mathrm{eff}},\varpi_{\Phi_2}\to\{\texttt{pathA\_29\_bulk}\}\);
+\(\varpi_{q_2}\to\{\texttt{pathA\_32\_wall}\}\);
+\(\Xi_Q,\eta_q,\eta_\phi\to\{\texttt{continuity\_interface}\}\);
+\(a\to\{\texttt{pathA\_29\_bulk},\texttt{pathA\_32\_wall}\}\);
+\(\lambda_c\to\) all three; \(I_{25}\to\{\texttt{continuity\_interface},\texttt{pathA\_32\_wall}\}\)
+(installed from \(\texttt{moment\_valid}\)); the vector, relabel, and \(\sigma_{\mathrm{hidden}}\) symbols
+\(\to\{\texttt{vector\_port}\}\); \(\texttt{free\_carrier}\to\emptyset\). The taint is COMPUTED --- the
+union of \(\texttt{tag\_map}[s]\) over \(s\in N_{0,\mathrm{den}}.\texttt{free\_symbols}\) --- not typed.
+Two predicates are separated: \textbf{P1} \(\texttt{baseline\_ancestry\_ok}\) (the genuine numerator's
+taint equals \emph{exactly} the three density tags, baseline only) and \textbf{P2}
+\(\texttt{vector\_free}\) (\(\texttt{source\_map\_complete}\wedge\texttt{vector\_host\_symbols}=\emptyset
+\wedge\texttt{vector\_port}\notin\text{taint}\)). \(N_{0,\mathrm{den}}\) satisfies both;
+\(\texttt{LOCAL}=\text{P1}\wedge\text{P2}\wedge\texttt{moment\_valid}\).
+
+\paragraph{Why the taint is over TAGS (the two caught rigs), and the de-counted witness.}
+The pathA\_43 history holds two rigs a name-check would pass by fiat: (Rig~1) a density-LOOKING two-port
+built from \(\{\omega_{\mathrm{wall}},\omega_\rho,r_{\mathrm{mix}},g_\rho,g_{q,\mathrm{old}}\}\) --- symbols
+not in \texttt{VECTOR\_SYMBOLS} but tagged \texttt{vector\_port}; and the hidden-vector rig
+\(N_{0,\mathrm{den}}\cdot\sigma_{\mathrm{hidden}}\) (\(\sigma_{\mathrm{hidden}}\) tagged \texttt{vector\_port},
+not in the name set). A \(\texttt{free\_symbols}\cap\texttt{VECTOR\_SYMBOLS}\) name-check passes both; the
+COMPUTED taint catches them (\(\texttt{vector\_port}\in\text{taint}\)). The expression-level ablation
+(substitute vector-tainted symbols \(\to0\), compare) is RETAINED as a printed witness but is
+\emph{de-counted}: once P2 holds the ablation set is empty so it cannot independently fail (a subsumed
+guard; also \(\texttt{nan}\) on the singular \(P^2/\Delta^2\) vector-port fixtures). The decisive gate is
+the taint-set (P1/P2) + \(\texttt{source\_map\_complete}\). (The self-asserted-\texttt{continuity\_interface}-tag
+rig, ``Rig~2,'' is Stage-026's lineage token-check; 025 cites \(\texttt{moment\_valid}\).)
+
+\paragraph{The able-to-fail battery (per-tooth ablation, coupling meta-test).}
+Each rig fires at its OWN named assert and goes vacuous when neutered: A relabel and B hidden-vector via
+the \emph{computed-taint} assert (a name-check misses them --- the anti-fiat core); C vector-injection and
+G raw-vector-port via the \emph{vector-host} assert; D provenance-less and E missing-symbol via the two
+halves (empty / missing) of \emph{source-map completeness}; F tagged-carrier PASSES P2 with a legitimate
+four-tag taint (not the exact-three-tag P1) and FLIPS to fail when its tag is neutered (the reversibility
+control); I subject-integrity via the exact host-contract assert; and the two \texttt{.wl} runtime scanners
+(a call-arity mismatch, a leaked unevaluated authored-helper head). The adversarial re-review proved the
+decisive property load-bearing: downgrading the machinery to a name-check fires the relabel/hidden asserts
+in both engines.
+
+\paragraph{Honest scope, consumed, register.}
+025 proves the vector-freedom STRUCTURE, CONDITIONAL on Stage~026 earning \(\texttt{moment\_valid}\); the
+EM \(A_w/U,W\) scaffold RETIREMENT is the joint \(025\wedge026\wedge027\) result, recorded at Stage~027
+(if 027 fails dimension/scaling/sign/closure, the port has not displaced the scaffold). Magnitudes
+(\(\Xi_Q,\lambda_c,\rho_{\mathrm{eff}}\) throat values; \(G,2/5,54/5\)) are SIM\_DEFERRED/CALIBRATED
+downstream. \emph{Consumed:} Stage-024's \(N_{0,\mathrm{den}}\) (the subject; the checkable host contract)
++ Stage-026's \(\texttt{moment\_valid}\) (typed forward ref) + the density symbols' provenance tags
+(024's \texttt{physical\_relations} + Stage-005 \(c_s\) + \(a\) \texttt{CONV}). Register: \textbf{zero} new
+counted knobs; new structural edge \textbf{R44} --- the density-port vector-freedom PROOF (the computed
+taint = the density ancestry, source-map complete, no vector host), recording only the vector-freedom
+\emph{conjunct} (the retirement is the joint 025/027 result, 027 records it); discharges nothing, like
+R43/R41/R39. No new dims (the \([N_{0,\mathrm{den}}]=L^{-1}M\) check is 027's). Part-II counted CALIB set
+unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017)
+= 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- pathA\_43 was already contract-clean, so the
+reshape ``sever the bridge'' step is a no-op; the work was decomposition + the \texttt{.wl} RE-AUTHOR + the
+LOCAL/PARTIAL framing. \emph{Unlike Stage~024 (which kept its \texttt{.wl} native for the derivation lane),
+Stage~025 RE-AUTHORS its \texttt{.wl}}: the source \texttt{.wl} taint machinery was a transliteration of the
+\texttt{.py}, so the mirror policy required a genuinely independent computation --- the decisive taint +
+source-map completeness use a native directed \texttt{Graph} of \(\texttt{DirectedEdge}[\text{``sym:''}\to\text{``tag:''}]\)
++ \texttt{VertexOutComponent} reachability (not \texttt{Variables}+\texttt{Lookup}+\texttt{Union}), and the
+ablation witness uses \(D[\text{expr},v]\) partial-derivative independence. Transcript-level agreement, neither
+engine reading the other. SymPy 18 PASS / Mathematica 18 PASS, both exit 0, CWD-independent (repo root +
+\texttt{/tmp}). The directive review used the Codex\(\to\)Grok\(\to\)Codex bookend (a Codex xhigh pass folded
+5 BLOCKING --- most importantly that the expression ablation is logically subsumed by the taint-set gate,
+reframed to a de-counted witness with the computed taint-set identity + source-map completeness the decisive
+gate; the two-predicate P1/P2 split; R44 recording only the vector-freedom conjunct; the cite-the-factored
+consumption; the tooth-H split into a review-acceptance and two runtime scanners --- then Grok-4.5
+compute-verified the subsumption, the relabel/hidden taint vs the name-check, and the reversibility control
+\texttt{DIRECTIVE\_CLEAN}, a Codex confirm-pass folded 4 consistency-sweep gaps, and a Codex final re-confirm
+returned \texttt{DIRECTIVE\_CLEAN}). Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (an independent
+read re-derived \(N_{0,\mathrm{den}}\) from Stage-024's \(2\times2\) inverse, diff \(=0\); confirmed the tag
+map, the P1/P2 separation, the de-counted witness, the genuine independent \texttt{.wl}) and
+\texttt{ADVERSARIAL\_CLEAN} (per-tooth ablation on both engines; the name-check-dodge test proved the tag-taint
+load-bearing) --- two \textbf{[minor]} non-blocking checks that could not independently fail (a subsumed
+universe-membership assert; a masked \(\texttt{moment\_valid}\) assert) were de-counted to labeled diagnostic
+prints (tally \(20\to18\) per engine, no other check touched), then fresh-agent \texttt{REVERIFY\_CLEAN}.
+Symbolic per-tooth ablation, mutations on copies.

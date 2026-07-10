@@ -1,0 +1,84 @@
+# SymPy Audit Output
+# Script: ledger_stage025_vector_freedom_taint_sympy_audit.py
+# Date: 2026-07-10T16:24:29-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================
+ledger_stage025_vector_freedom_taint_sympy_audit
+================================================
+Target stem confirmed: ledger_stage025_vector_freedom_taint
+Engine: computed SymPy provenance taint over actual free_symbols; zero file I/O.
+
+I. cited stage024 subject-integrity contract
+--------------------------------------------
+PASS  I cited N0_den live-symbol contract equals stage024's exact 10-symbol export
+DIAGNOSTIC (not counted): density-host metadata structural relationship: DENSITY_HOST_UNIVERSE minus HOST_CONTRACT = {Phi2, q2} (10-vs-12)
+
+P1/P2. computed provenance-taint proof
+--------------------------------------
+PASS  P1 baseline_ancestry_ok has exactly the three density tags
+PASS  P2 source_map_complete has no missing or empty provenance
+PASS  P2 vector_host_symbols is empty
+PASS  P2 computed taint excludes vector_port
+PASS  P2 vector_free combines completeness, hosts, and computed taint
+DIAGNOSTIC (not counted): moment_valid=True is a typed forward reference cited from stage026; the LOCAL verdict is conditional on it
+
+A-I. routed rig assertions and coupling meta-tests
+--------------------------------------------------
+PASS  META A relabel_rig routed assertion fires and neutering stops it
+RIG A relabel_rig: CAUGHT at A relabel_rig computed-taint assert: vector_port absent; neutralized=PASS
+PASS  META B hidden_vector routed assertion fires and neutering stops it
+RIG B hidden_vector: CAUGHT at B hidden_vector computed-taint assert: vector_port absent; neutralized=PASS
+PASS  META C vector_injection routed assertion fires and neutering stops it
+RIG C vector_injection: CAUGHT at C vector_injection vector-host assert: vector_host_symbols empty; neutralized=PASS
+PASS  META D provenance_less_rider routed assertion fires and neutering stops it
+RIG D provenance_less_rider: CAUGHT at D provenance_less_rider source_map_complete assert; neutralized=PASS
+PASS  META E missing_symbol routed assertion fires and neutering stops it
+RIG E missing_symbol: CAUGHT at E missing_symbol source_map_complete assert; neutralized=PASS
+PASS  F tagged_carrier passes P2 with four tags and flips when tag is neutered
+RIG F tagged_carrier: PASS P2; taint={continuity_interface, pathA_29_bulk, pathA_32_wall, pathA_34_dimensionless_free_carrier}; tag-neutered=FLIP at F tagged_carrier source_map_complete flip assert
+PASS  META G raw_vector_port routed assertion fires and neutering stops it
+RIG G raw_vector_port: CAUGHT at G raw_vector_port vector-host assert: vector_host_symbols empty; neutralized=PASS
+PASS  META H' arity_scanner routed assertion fires and neutering stops it
+RIG H' arity_scanner: CAUGHT at H' definition/call arity scanner assert; neutralized=PASS
+PASS  META H' leakage_scanner routed assertion fires and neutering stops it
+RIG H' leakage_scanner: CAUGHT at H' unevaluated-leakage transcript scanner assert; neutralized=PASS
+PASS  META I subject_integrity routed assertion fires and neutering stops it
+RIG I subject_integrity: CAUGHT at I subject_integrity exact host-contract assert; neutralized=PASS
+PASS  H' actual transcript has no unevaluated authored-helper leakage
+PASS  LOCAL DENSITY_PORT_VECTOR_FREE = P1 and P2
+
+Computed density-port vector-freedom transcript
+-----------------------------------------------
+consumes: stage024 N0_den (cited canonical factored export)
+N0_den (canonical factored): I25**2*Xi_Q**2*c_s**4*rho_eff*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(a**7*(lambda_c**2 - varpi_Phi2*varpi_q2)**2)
+N0_den live symbols: {I25, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, rho_eff, varpi_Phi2, varpi_q2}
+host contract (10): {I25, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, rho_eff, varpi_Phi2, varpi_q2}
+allowable density-host universe (12): {I25, Phi2, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, q2, rho_eff, varpi_Phi2, varpi_q2}
+computed taint set: {continuity_interface, pathA_29_bulk, pathA_32_wall}
+missing_source_symbols: {}
+empty_source_symbols: {}
+vector_host_symbols: {}
+source_map_complete: True
+baseline_ancestry_ok (P1): True
+vector_free (P2): True
+ablation delta (redundant witness only): 0
+ablation witness invariant: True (de-counted)
+moment_valid: True (typed forward reference; LOCAL verdict is conditional until stage026 discharges it)
+
+Verdict labels
+--------------
+LOCAL_AUDIT_VERDICT: DENSITY_PORT_VECTOR_FREE
+JOINT_LANDING_LABEL (PARTIAL): DENSITY_PORT_HOSTED (2/4, VECTOR-FREEDOM — N0_den is computationally vector-free; 024 = derivation, 026 = continuity lineage, 027 = port checks + closure)
+
+=======
+Tallies
+=======
+TALLY sympy: 18 pass + 0 fail = 18 checks
+OVERALL PASS
+
+EXIT_CODE: 0

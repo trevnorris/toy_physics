@@ -1,0 +1,133 @@
+\section{Stage 022: The Cross-\texorpdfstring{\(\ell\)}{l} \texorpdfstring{\(-(\ell+1)/\Lambda_\ell\)}{-(l+1)/Lambda_l} Fingerprints + the Gate-4 Non-Regression (Check II-G5a)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat cross-\(\ell\) radiative sector; the EARNED-FIRST leg of a two-way split of pathA\_34 --- the cross-\(\ell\) outgoing DtN \(-(\ell+1)/\Lambda_\ell\) fingerprints (\(\ell=0,1,2\)) + the Gate-4 quadrupole non-regression component (1/2) of the joint \texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE}). The native nullspace underdetermination departure --- dim-8 / return-nullity-2, the residuals vs pathA\_29, the \(Z_{0}^{\mathrm{ret}}/Z_{1}^{\mathrm{ret}}\) Gate-6 selector need --- that \emph{delivers} the FAIL is Stage~023 (II-G5b).}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Generalize Stage~018's \(\ell=2\)-only DtN Hankel fingerprint across \(\ell\): certify that the outgoing DtN responses \(\hat Y_\ell^{\mathrm{out}}=-(\ell+1)/\Lambda_\ell\) for \(\ell=0,1,2\) --- computed from the spherical Hankel \(h_\ell\) --- series-expand to the radiative fingerprint \(\{1,\,1/2,\,1/27\}\) at leading orders \(\{\omega^1,\omega^3,\omega^5\}\), with the static-DtN slot \(\Lambda_\ell(z\to0)=-(\ell+1)\) derived from the Hankel logarithmic derivative and the radiative order verified by scanning; and that the \(\ell=2\) leg reproduces the completed pathA\_33 quadrupole fingerprint \(\{u_2,u_4,v_5\}=\{1/9,4/81,1/27\}\) (the Gate-4 non-regression --- the cross-\(\ell\) generalization does not regress the earned quadrupole).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage022_cross_l_fingerprints_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage022_cross_l_fingerprints_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact symbolic, float-free, dimensionless \(z\)-space (\(z=a\omega/c_s\)): the cross-\(\ell\)
+spherical-Hankel logarithmic derivatives and their small-frequency series are exact \texttt{sympy.series} / native
+\texttt{Series} expansions; \texttt{bool\_zero}/\texttt{expect\_bool}/\texttt{expect\_fail} residuals, no floats/tolerances,
+no units-restoration leg. The verdict is the joint \texttt{FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE}; this stage carries its
+\emph{fingerprint + non-regression} component (1/2) and lands it as an \textbf{EARNED-FIRST PARTIAL} (022 earned; 023 pending
+and it is 023 that delivers the FAIL). It adds \textbf{zero} new counted knobs (an earned exterior-wave signature slice, like
+Stages~016/018). \(c_s\) is an R1-derived units carrier, not a counted knob; the \(\ell=0/1\) stiffnesses and the return
+admittances \(Z_{0}^{\mathrm{ret}}/Z_{1}^{\mathrm{ret}}\) are Stage~023's, not counted here.
+
+\paragraph{Two distinct verdicts, both printed.}
+The script emits an \emph{022-local} exit-0 gate and, separately, the joint physics label:
+\[
+\begin{array}{l}
+\texttt{LOCAL\_AUDIT\_VERDICT: CROSS\_L\_FINGERPRINT\_OK}\quad\text{(fingerprints + non-regression; the exit-0 gate)}\\
+\texttt{JOINT\_LANDING\_LABEL (PARTIAL; FAIL not evaluated by 022): FAIL\_UNDERDETERMINED\_NOT\_PREDICTIVE (1/2)}
+\end{array}
+\]
+022's script passes (exit 0) --- the earned content is correct and every tooth fires; the FAIL token is the joint gate's
+physics label carried as a 1/2 partial. 022 is the earned half of a gate that ultimately fails (cf.\ Stage~003 = earned
+transverse photons + the characterized \texttt{FAIL\_CAUCHY} departure). The 022-local verdict's computed read-set is exactly
+\(\{\texttt{cross\_l\_fingerprints},\texttt{ell2\_non\_regression}\}\) and provably excludes any nullspace / return /
+\texttt{base\_verdict} object (none is built here) --- so the default-verdict-is-PASS trip-up is avoided: 022 does not compute
+or print a FAIL from any rigged mechanism.
+
+\paragraph{The cross-\texorpdfstring{\(\ell\)}{l} outgoing DtN fingerprints (the earned headline).}
+For each \(\ell\) the exterior outgoing solution is the spherical Hankel function of the first kind \(h_\ell^{(1)}=j_\ell+i\,y_\ell\)
+(\(z=a\omega/c_s\)); the normalized radiative response is \(\hat Y_\ell^{\mathrm{out}}(z)=-(\ell+1)/\Lambda_\ell(z)\) with
+\(\Lambda_\ell(z)=z\,h_\ell^{(1)\prime}/h_\ell^{(1)}\). Series-expanding about \(z=0\),
+\[
+\begin{array}{lll}
+\ell=0: & \hat Y_0 = 1 + i\,z + \cdots & \Rightarrow\ \texttt{radiative\_coeff}=1\ \text{at order}\ \omega^1,\\
+\ell=1: & \hat Y_1 = 1 + \tfrac12 z^2 + i\,\tfrac12 z^3 + \cdots & \Rightarrow\ \texttt{radiative\_coeff}=1/2\ \text{at order}\ \omega^3,\\
+\ell=2: & \hat Y_2 = 1 + \tfrac19 z^2 + \tfrac{4}{81} z^4 + i\,\tfrac{1}{27} z^5 + \cdots & \Rightarrow\ \texttt{radiative\_coeff}=1/27\ \text{at order}\ \omega^5.
+\end{array}
+\]
+The leading radiative coefficient is \(\{1,1/2,1/27\}\) at order \(2\ell+1=\{\omega^1,\omega^3,\omega^5\}\), extracted as the
+imaginary coefficient \(\texttt{coeff}(z,2\ell+1)/i\) and checked derive-vs-typed --- the derived side is the actual series of
+\(-(\ell+1)/(z\,h'/h)\), emitted, not hardcoded. The static-DtN slot \(\Lambda_\ell(z\to0)=-(\ell+1)\) is \emph{derived} from
+the Hankel logarithmic derivative (\(h_\ell\sim z^{-(\ell+1)}\) as \(z\to0\)), read off \(\texttt{lam\_series.coeff}(z,0)\) ---
+not the hand-set numerator (the source's set-then-compare is de-rigged). The radiative order is verified by \emph{scanning}
+the imaginary series for its first nonzero power and asserting all lower imaginary coefficients vanish (not the source's
+dodgeable ``preselected \(2\ell+1\) coefficient is nonzero'': a \(+i\,z\) corruption of the \(\ell=2\) series leaves \(z^5\)
+nonzero yet the true leading imaginary order becomes \(1\); the scan catches it). The static value \(\hat Y_\ell(0)=1\) is a
+de-counted printed diagnostic (\(=-(\ell+1)/\Lambda_{\mathrm{static}}\), subsumed by the derived \(\Lambda_{\mathrm{static}}\)).
+
+\paragraph{The incoming-sign-flip (the genuine sign tooth).}
+The incoming branch \(h_\ell^{(2)}=j_\ell-i\,y_\ell\) flips \emph{only} the radiative (imaginary) sign --- \texttt{radiative\_coeff}
+\(\to\{-1,-1/2,-1/27\}\) with every lower real coefficient unchanged (\(\texttt{bool\_zero}(\mathrm{incoming}+\mathrm{outgoing})=0\)).
+This computed sign-flip is the genuine sign content. The \(\chi_Q=\texttt{radiative\_coeff}/(\text{canonical slot})=+1\)
+equality is a de-counted printed diagnostic --- algebraically subsumed by the \(\ell=2\) non-regression
+(\(27v_5-1\equiv27(v_5-1/27)\)), so once the \(\ell=2\) slot passes \(\chi_Q=1\) is automatic; not an independent tooth.
+
+\paragraph{The Gate-4 quadrupole non-regression.}
+The \(\ell=2\) leg (\(-(\ell+1)/\Lambda_\ell|_{\ell=2}=-3/\Lambda_2\)) reproduces Stage~018's earned quadrupole fingerprint
+\(u_2=1/9,\ u_4=4/81,\ v_5=1/27\). This is a derive-vs-typed non-regression: 022 re-derives the \(\ell=2\) tuple from its own
+Hankel and checks it against Stage~018's independently-earned typed literals (not a same-machinery reconstruction of the typed
+side --- no subsumed \(X\equiv X\)). The cross-\(\ell\) \(-(\ell+1)\) normalization gives the right \(-3\) at \(\ell=2\), so the
+general machinery does not regress the quadrupole. Each of \(u_2,u_4,v_5\) has its own coefficient-isolating mutant (the
+\texttt{3e} incoming mutation flips only \(v_5\), so \(u_2/u_4\) need their own derivation-copy mutants --- the Stage~018
+pattern); breaking the \(\ell=2\) branch to incoming fires \texttt{FAIL\_QUAD\_REGRESSION}, whose self-ablation is a dynamic
+two-verdict re-run (\(\mathrm{with}\neq\mathrm{without}\)) re-scoped to the 022-local verdict.
+
+\paragraph{Honest scope.}
+Earned cross-\(\ell\) signature + non-regression / the FAIL is 023's: 022 derives the outgoing cross-\(\ell\) fingerprints and
+the Gate-4 quadrupole non-regression --- the report's earned fingerprint / raw-order / Gate-4 subset. The rest of the report's
+earned content (the residual form/sign/order, conditional on a positive bounded branch) plus the FAIL-delivering native
+nullspace underdetermination (dim-8 / return-nullity-2, \(\epsilon_{\mathrm{eff}}\) left free at the linear Gate-5 level) and
+the deferred scalar/dipole magnitude/nonzero prediction belong to Stage~023. The joint FAIL is deferred to 023, not evaluated
+here (the \texttt{JOINT\_LANDING\_LABEL} is a printed string; 022 builds no nullspace and does not back-solve
+\(\epsilon_{\mathrm{eff}}/Z\) --- the \texttt{FAIL\_TAUTOLOGICAL} firewall, 023's, is not reintroduced). The fingerprints are
+dimensionless \(z\)-space rationals; the \(z=a\omega/c_s\) units realization and the residual dimensional gate are 023's. The
+\(Z_{0}^{\mathrm{ret}}/Z_{1}^{\mathrm{ret}}\) selector (the first concrete Gate-6 input) is the deferred nonlinear solve ---
+023's characterized departure.
+
+\paragraph{Consumed closure and register.}
+The one \emph{checkable} consumption is Stage-018's fingerprint \(\{u_2,u_4,v_5\}=\{1/9,4/81,1/27\}\), which 022's re-derived
+\(\ell=2\) fingerprint reproduces (a per-slot / \texttt{3e}-tooth-backed derive-vs-typed non-regression; the second site is
+Stage-018's independently-earned literal, not a same-machinery reconstruction). \emph{Provenance / context (cited, not
+re-derived):} Stage~019/020/021 + the completed pathA\_33 \texttt{QUAD\_CALIBRATED} joint (the prefactor \(P(\omega)=D_0
+N/D_{\mathrm{cons}}^2\), the \(54/5\) magnitude, the \(\hat\mu_0\)-free dimensional closure); Stage~008's raw \(\ell=0,1,2\)
+outgoing amplitudes; Stage~009/010's bulk Helmholtz mode; and \(c_s\) (the density sound speed, Stage~005 R1
+\(c_s^2=5K\rho^4/m\)) as the units symbol in \(z=a\omega/c_s\) (distinct from the frozen-wall Helmholtz speed \(c_S\),
+011--017). Register: \textbf{zero} new counted knobs; structural edge \textbf{R41} (the cross-\(\ell\) outgoing-DtN
+\(-(\ell+1)/\Lambda_\ell\) fingerprint provenance --- the \(\ell=0,1,2\) radiative signature \(\{1,1/2,1/27\}\) at
+\(\{\omega^1,\omega^3,\omega^5\}\) with \(\Lambda_{\mathrm{static}}=-(\ell+1)\) derived + the scanned order, plus the Gate-4
+quadrupole non-regression reproducing the Stage-018 fingerprint component of the now-completed pathA\_33 fold; discharges
+nothing --- earned exterior-wave structure + a consistency non-regression, not a reduction). Part-II counted CALIB set
+unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- the source pair's scratch-YAML handoff is severed. The \texttt{.wl}
+is a genuinely independent route, \emph{re-authored} (not a kept transliteration): it uses Wolfram's built-in
+\texttt{SphericalHankelH1}/\texttt{SphericalHankelH2} + \texttt{SeriesCoefficient} --- a materially different construction from
+the \texttt{.py}'s hand-built \(\sin\)/\(\cos\) \(j_\ell\)/\(y_\ell\) + \texttt{Series}/\texttt{Coefficient} (the source
+\texttt{.wl}'s \texttt{branchData} was a near-transliteration of the \texttt{.py} \texttt{dtn\_branch}, so it was discarded ---
+the mirror-policy transliteration screen). Agreement is at the transcript level (the derived \(\{1,1/2,1/27\}\) at
+\(\{\omega^1,\omega^3,\omega^5\}\), \(\Lambda_{\mathrm{static}}=\{-1,-2,-3\}\) with \(h_{\mathrm{mut}}=z\,h\) firing each and
+\(H1\leftrightarrow H2\) shown inert, the scanned order, the \(\ell=2\) non-regression, the per-slot mutants, the incoming
+sign-flip, and \texttt{3e}\(\to\)\texttt{FAIL\_QUAD\_REGRESSION}); SymPy 55 PASS / Mathematica 64 PASS, exit 0, CWD-independent.
+The directive design-review used the Codex\(\to\)Grok\(\to\)Codex bookend: Codex folded five blocking findings (the \texttt{.wl}
+must be re-authored independent, not the transliterated \texttt{branchData}; the normalization and raw-order teeth must be
+genuinely derived --- a \(\Lambda_{\mathrm{static}}\) from the log-derivative + a coefficient scan replacing the source's
+\(X\equiv X\) set-then-compare and preselected-order check; the \(\ell=2\) tuple was double-counted and \(\chi_Q\) was
+subsumed, so the duplicate was removed, \(\chi_Q\) de-counted, and per-slot \(u_2/u_4\) mutants added; the earned/deferred
+partition is a subset relation with an explicit local/joint output; the checkable consumption is Stage-018's fingerprint), then
+a Codex confirm-pass caught a further directive-level reasoning error (the proposed \(\Lambda_{\mathrm{static}}\) ablation
+``outgoing\(\to\)incoming'' is \emph{inert} --- both branches give \(-(\ell+1)\) --- so the mutant must be a pole-order
+corruption \(h_{\mathrm{mut}}=z\,h\); and \(\Lambda_{\mathrm{static}}\)'s subsumed \(\hat Y_\ell(0)=1\) is de-counted). A
+Grok-4.5 compute-verify of the folded directive returned \texttt{DIRECTIVE\_CLEAN}, independently confirming the cross-\(\ell\)
+series, the pole-order-vs-inert mutant, the scan-vs-preselect counterexample, the \(\chi_Q\) subsumption identity, and the
+\(u_2/u_4\) isolation; a final Codex confirm closed the bookend. Full tri-review on fresh agents (arbiter re-run reproduced
+the build SymPy 56 / Mathematica 65, exit 0, CWD-independent): \texttt{FIDELITY\_CLEAN} (an independent read hand-re-derived the
+cross-\(\ell\) fingerprints, the pole-order \(\Lambda_{\mathrm{static}}\) mutant vs the inert branch swap, the scan-vs-preselect
+order, the \(\chi_Q\) subsumption, and the per-slot isolation --- all computed not stamped, no 019/023 leakage, a genuine
+built-in-\texttt{SphericalHankelH1} \texttt{.wl}) and \texttt{ADVERSARIAL\_ISSUES} (both confirm-pass reasoning catches held
+live-proven, all core physics teeth genuine; two low-severity redundancy teeth --- a vacuous \(\texttt{3e}\)
+\texttt{rerun\_gate\_logic} constant-length check and a subsumed read-set-exclusion tooth --- were remediated, the first
+make-genuine [compare the two traced verdicts] and the second an honest de-count [the adjacent exact-equality tooth retains the
+guard], plus two \texttt{.wl} nits [a symbol typo and a mutation-aware parity fix]), re-verified \texttt{REVERIFY\_CLEAN} by the
+coupling meta-test (each remediated construct fires under a mutation of its object and goes vacuous when neutered; no regression,
+both engines). Tallies 56/65 \(\to\) 55/64 (net \(-1\) per engine from the honest de-count). Symbolic per-tooth ablation,
+mutations on copies.

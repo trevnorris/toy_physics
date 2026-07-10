@@ -1,3 +1,11 @@
+# Mathematica Audit Output
+# Script: ledger_stage016_l2_so3_covariance_mathematica_audit.wl
+# Date: 2026-07-09T18:49:07-06:00
+# Elapsed: 62s
+# Exit code: 0
+# Status: PASS
+#
+
 
 ===================================================
 ledger_stage016_l2_so3_covariance_mathematica_audit
@@ -174,3 +182,5 @@ Tallies
 =======
 TALLY mathematica: 91 pass + 0 fail = 91 checks
 OVERALL PASS
+
+EXIT_CODE: 0

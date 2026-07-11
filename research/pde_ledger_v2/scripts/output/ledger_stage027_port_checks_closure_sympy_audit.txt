@@ -1,0 +1,145 @@
+# SymPy Audit Output
+# Script: ledger_stage027_port_checks_closure_sympy_audit.py
+# Date: 2026-07-10T20:24:44-06:00
+# Elapsed: 9s
+# Exit code: 0
+# Status: PASS
+#
+
+
+===============================================
+ledger_stage027_port_checks_closure_sympy_audit
+===============================================
+Target stem confirmed: ledger_stage027_port_checks_closure
+Engine: exact SymPy runtime checks over cited exports; no floats; zero file I/O.
+
+I. consumed sibling exports and subject-integrity oracle
+--------------------------------------------------------
+PASS  SUBJECT-INTEGRITY cited N0_den free_symbols equals exact 10-symbol HOST_CONTRACT
+PASS  ASSEMBLY consumed 025 exact baseline taint set and atomic vector facts
+PASS  ASSEMBLY consumed 026 atomic moment_valid, validated_I25, and lineage_valid facts
+
+Six port checks and independent closure residuals
+-------------------------------------------------
+PASS  DIM [N0_den] == (-1,1,0) = L^-1 M
+PASS  SCALE P0_physical a-power == -5
+PASS  SIGN outgoing j2+i*y2 gives coeff/i == 1/27 and chi_Q=+1
+PASS  NONZERO cited density port is nonzero
+PASS  CLOSURE Kbar4-4*Kbar2^2/Kbar0 standalone residual
+PASS  CLOSURE Gamma5-2*G/(5*c^5) standalone residual
+PASS  POSITIVE assembled joint lands DENSITY_PORT_HOSTED
+
+Per-control verdicts and routed per-tooth ablations
+---------------------------------------------------
+PASS  CONTROL dimensional computed verdict == FAIL_PORT_MALFORMED(dimensional)
+CONTROL dimensional: FAIL_PORT_MALFORMED(dimensional)
+PASS  CONTROL corrupt_G_scope computed verdict == DENSITY_PORT_HOSTED
+CONTROL corrupt_G_scope: DENSITY_PORT_HOSTED
+PASS  CONTROL scaling computed verdict == FAIL_PORT_MALFORMED(scaling)
+CONTROL scaling: FAIL_PORT_MALFORMED(scaling)
+PASS  CONTROL sign computed verdict == FAIL_PORT_MALFORMED(sign)
+CONTROL sign: FAIL_PORT_MALFORMED(sign)
+PASS  CONTROL zero_coupling computed verdict == FAIL_PORT_VANISHES
+CONTROL zero_coupling: FAIL_PORT_VANISHES
+PASS  CONTROL zero_no_or computed verdict == FAIL_NOT_DENSITY_DERIVED
+CONTROL zero_no_or: FAIL_NOT_DENSITY_DERIVED
+PASS  CONTROL deferred_scalar computed verdict == PORT_INCONCLUSIVE_SIM_DEFERRED
+CONTROL deferred_scalar: PORT_INCONCLUSIVE_SIM_DEFERRED
+PASS  CONTROL deferred_scalar_proven_converse computed verdict == DENSITY_PORT_HOSTED
+CONTROL deferred_scalar_proven_converse: DENSITY_PORT_HOSTED
+PASS  CONTROL closure_kbar4 computed verdict == PORT_INCONCLUSIVE_SIM_DEFERRED
+CONTROL closure_kbar4: PORT_INCONCLUSIVE_SIM_DEFERRED
+PASS  CONTROL closure_gamma5 computed verdict == PORT_INCONCLUSIVE_SIM_DEFERRED
+CONTROL closure_gamma5: PORT_INCONCLUSIVE_SIM_DEFERRED
+PASS  SCALE single-tag isolation keeps dim_ok True and only scaling_wrong fires
+PASS  NONZERO OR-arm meta flips zero_coupling FAIL_PORT_VANISHES to FAIL_NOT_DENSITY_DERIVED
+PASS  CLOSURE isolated Kbar4 mutation leaves Gamma5 residual zero
+PASS  CLOSURE isolated Gamma5 mutation leaves Kbar4 residual zero
+PASS  META DIM dimensional routed assertion fires and neutering stops it
+RIG DIM dimensional: FAIL_PORT_MALFORMED(dimensional) at DIM [N0_den]=L^-1 M named assert; neutralized=PASS
+PASS  META SCALE scaling-single-tag routed assertion fires and neutering stops it
+RIG SCALE scaling-single-tag: FAIL_PORT_MALFORMED(scaling) at SCALE p0_power=-5 named assert; neutralized=PASS
+PASS  META SIGN incoming routed assertion fires and neutering stops it
+RIG SIGN incoming: FAIL_PORT_MALFORMED(sign) at SIGN outgoing coeff/i=1/27 named assert; neutralized=PASS
+PASS  META NONZERO zero_coupling routed assertion fires and neutering stops it
+RIG NONZERO zero_coupling: FAIL_PORT_VANISHES at NONZERO N0_den!=0 named assert; neutralized=PASS
+PASS  META DEFERRED uncertified routed assertion fires and neutering stops it
+RIG DEFERRED uncertified: PORT_INCONCLUSIVE_SIM_DEFERRED at DEFERRED scaling-decidable named assert; neutralized=PASS
+PASS  META CLOSURE Kbar4 isolated routed assertion fires and neutering stops it
+RIG CLOSURE Kbar4 isolated: PORT_INCONCLUSIVE_SIM_DEFERRED at CLOSURE Kbar4 standalone named assert; neutralized=PASS
+PASS  META CLOSURE Gamma5 isolated routed assertion fires and neutering stops it
+RIG CLOSURE Gamma5 isolated: PORT_INCONCLUSIVE_SIM_DEFERRED at CLOSURE Gamma5 standalone named assert; neutralized=PASS
+PASS  ASSEMBLY continuity_interface computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY continuity_interface routed assertion fires and neutering stops it
+RIG ASSEMBLY continuity_interface: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY continuity_interface origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY vector_port computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY vector_port routed assertion fires and neutering stops it
+RIG ASSEMBLY vector_port: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY vector_port origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY vector_host_symbols computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY vector_host_symbols routed assertion fires and neutering stops it
+RIG ASSEMBLY vector_host_symbols: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY vector_host_symbols origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY source_map_complete computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY source_map_complete routed assertion fires and neutering stops it
+RIG ASSEMBLY source_map_complete: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY source_map_complete origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY vector_free computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY vector_free routed assertion fires and neutering stops it
+RIG ASSEMBLY vector_free: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY vector_free origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY moment_valid computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY moment_valid routed assertion fires and neutering stops it
+RIG ASSEMBLY moment_valid: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY moment_valid origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY validated_I25 computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY validated_I25 routed assertion fires and neutering stops it
+RIG ASSEMBLY validated_I25: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY validated_I25 origin_ok named assert; neutralized=PASS
+PASS  ASSEMBLY lineage_valid computed verdict == FAIL_NOT_DENSITY_DERIVED
+PASS  META ASSEMBLY lineage_valid routed assertion fires and neutering stops it
+RIG ASSEMBLY lineage_valid: FAIL_NOT_DENSITY_DERIVED at ASSEMBLY lineage_valid origin_ok named assert; neutralized=PASS
+PASS  META ASSEMBLY OR-arm routed assertion fires and neutering stops it
+RIG ASSEMBLY OR-arm: FAIL_PORT_VANISHES->FAIL_NOT_DENSITY_DERIVED at ASSEMBLY zero-coupling subject-binding OR-arm named assert; neutralized=PASS
+PASS  SUBJECT-INTEGRITY foreign replacement preserves dimension and a-power
+PASS  META SUBJECT-INTEGRITY routed assertion fires and neutering stops it
+RIG SUBJECT-INTEGRITY: CONTRACT_REJECTED_ONLY at SUBJECT-INTEGRITY exact host-contract named assert; neutralized=PASS
+PASS  POSITIVE baseline hosts and corruption of any of six checks flips the joint
+RIG POSITIVE: DENSITY_PORT_HOSTED; any-check-corruption=FLIP
+PASS  META RETIREMENT-CONDITIONAL routed assertion fires and neutering stops it
+RIG RETIREMENT-CONDITIONAL: NOT_RECORDED_ON_FAIL at RETIREMENT recorded only with hosted joint named assert; neutralized=PASS
+PASS  META ARITY scanner routed assertion fires and neutering stops it
+RIG ARITY scanner: SCANNER_CAUGHT at ARITY definition/call scanner named assert; neutralized=PASS
+PASS  META LEAKAGE scanner routed assertion fires and neutering stops it
+RIG LEAKAGE scanner: SCANNER_CAUGHT at LEAKAGE unevaluated-helper scanner named assert; neutralized=PASS
+PASS  LEAKAGE actual transcript is helper-free
+
+Stage027 checks + closure transcript
+------------------------------------
+consumes stage024 N0_den (canonical factored): I25**2*Xi_Q**2*c_s**4*rho_eff*(eta_phi*varpi_q2 + eta_q*lambda_c)**2/(a**7*(lambda_c**2 - varpi_Phi2*varpi_q2)**2)
+N0_den free_symbols: {I25, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, rho_eff, varpi_Phi2, varpi_q2}
+HOST_CONTRACT (10): {I25, Xi_Q, a, c_s, eta_phi, eta_q, lambda_c, rho_eff, varpi_Phi2, varpi_q2}
+free_symbols == contract: True
+consumed stage025 atomics: tags={continuity_interface, pathA_29_bulk, pathA_32_wall}; vector_port_not_in_tags=True; vector_host_symbols={}; source_map_complete=True; vector_free(P2)=True
+consumed stage026 atomics: moment_valid=True; validated_I25=I25; lineage_certificate=PASS; lineage_valid=True
+dimension tuple convention: (L,M,T)
+CHECK DIM: [N0_den]=(-1, 1, 0) = L^-1 M; dim_ok=True
+CHECK SCALE: P0_physical=(c_s/a)^2*N0_den/D0
+CHECK SCALE: p0_power=-5; scaling_ok=True
+CHECK SIGN: outgoing j2+i*y2 coeff/i=1/27; chi_Q=+1; sign_ok=True
+CHECK NONZERO: nonzero_ok=True
+CHECK DEFERRED: uncertified->PORT_INCONCLUSIVE_SIM_DEFERRED; proven converse->DENSITY_PORT_HOSTED
+CHECK CLOSURE: Kbar4-4*Kbar2^2/Kbar0=0
+CHECK CLOSURE: Gamma5-2*G/(5*c^5)=0
+EXPORT Kbar moments: {Kbar0=54*G*c_s**5/(5*a**5*c**5), Kbar2=6*G*c_s**3/(5*a**3*c**5), Kbar4=8*G*c_s/(15*a*c**5), Gamma5=2*G/(5*c**5)}
+
+Joint-owning verdict and completion
+-----------------------------------
+LOCAL_AUDIT_VERDICT: DENSITY_PORT_HOSTED (CALIBRATED)
+JOINT_VERDICT_OWNED_BY_027: DENSITY_PORT_HOSTED (CALIBRATED, not PASS)
+scope: STRUCTURE hosted; magnitude SIM_DEFERRED; G=GENUINE_BLOCKED
+provenance: 27=derived_in_gate; 54/5 and Gamma5=external_bridge_input
+RETIREMENT_RECORD: EM A_w/U,W scaffold RETIRES; pathA_43 diagnostic sliver CLOSES (conditional=True)
+COMPLETION: pathA_43 4-way split COMPLETE = 024 derivation AND 025 vector-freedom AND 026 lineage AND 027 checks+closure
+
+=======
+Tallies
+=======
+TALLY sympy: 55 pass + 0 fail = 55 checks
+OVERALL PASS
+
+EXIT_CODE: 0

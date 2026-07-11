@@ -633,18 +633,61 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   EXACT lexical tokens, the 024-inverse-load-bearing analog) and the token ALPHABET is load-bearing (bare `WordCharacter` excludes `_` → false-fails the genuine
   lineage, a Grok compute catch); and the "de-counted witness" scope must be pinned to the exact subsumed conjunct, not the whole predicate, once a sibling arm becomes
   a mandatory tooth. ⭐ **pathA_43 3 of 4 legs COMPLETE (024∧025∧026); the joint `DENSITY_PORT_HOSTED` LANDS at 027.**
-- **▶ NEXT = Cluster C `ledger_stage027`** (II-P4, pathA_43 `DENSITY_PORT_HOSTED` 4/4 — the **port checks + closure**, the COMPLETING leg that LANDS the joint). Content
-  = the **6 able-to-fail port checks** (`[N0_den]=L⁻¹M` dim; a⁻⁵ scaling via `P0_phys=(c_s/a)²·N0_den/D0`; the outgoing DtN sign `+i z⁵/27`; χ_Q=1; nonzero-port; the
-  `deferred_scalar` SIM-inconclusive branch) + the **K̄ closure slot** (⚠ the A3 boundary — SHARED with 028's 2.5PN match-back, marked shared NOT double-counted). ⭐ **027
-  OWNS the joint verdict**: it ASSEMBLES the full `origin_ok`/`DENSITY_PORT_HOSTED` from the 025 (vector-freedom) + 026 (continuity-lineage) certificates + its OWN
-  dim/scaling/sign/closure, and **records the EM `A_w`/`U,W` scaffold RETIREMENT with the completed joint** (⚠ if 027 FAILS dim/scaling/sign/closure the density port has
-  NOT displaced the scaffold — R43/R44 explicitly deferred the retirement to this joint; the joint token stays CALIBRATED not PASS, `G=GENUINE_BLOCKED`, 020's
-  provenance). The pathA_43 `027` slice = `dtn_sign`/the dim engine (`dim_of`/`scale_power`/`BASE_DIMS`/`BASE_A_POWERS`)/`closure_overlay`/`evaluate`/`assert_gate` + the
-  `zero_coupling`/`dimensional`/`sign`/`scaling`/`deferred_scalar` controls (`.py` — the 027 remnant after the 024/025/026 slices are carved out). CONSUMES: 024's
-  `N0_den` (subject) + 018's `χ_Q=1`/`+i z⁵/27` fingerprint + 021's μ̂₀-free `[P0_phys]=1` dim machinery (cite, do NOT re-derive) + 025's vector-freedom verdict + 026's
-  `moment_valid`/lineage certificate. ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN
-  match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB AUDIT" —
-  the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
+- **✅ II-P4 `ledger_stage027` DONE (2026-07-10) — pathA_43 `DENSITY_PORT_HOSTED` 4/4 (the port CHECKS + CLOSURE — the COMPLETING leg that OWNS the joint); ⭐⭐ pathA_43
+  fold COMPLETE (024∧025∧026∧027); the EM `A_w`/`U,W` vector scaffold RETIRES; the diagnostic sliver CLOSES.** EXACT symbolic dimension-vector `(L,M,T)` algebra +
+  spherical-Hankel series + exact rationals, float-free. EARNED: the 6 able-to-fail port checks over 024's cited `N0_den` — **DIM** `[N0_den]=(−1,1,0)=L⁻¹M` (⭐ the dim
+  CHECK LANDS here dual-engine — was PROVENANCE-only at 024; ⚠ `(L,M,T)` tuple convention ≠ the register header's `[L,T,M]`, a cross-convention transfer trap [the
+  stage016 lesson]; the μ̂₀-free 021 discipline: reads SOURCED port dims not a back-solved carrier, corrupt-`[N₀]`→`FAIL_PORT_MALFORMED(dimensional)`, corrupt-`[G]` NO_FAIL
+  since `G∉free_symbols` a genuine scope re-run) ∧ **SCALE** `P0_physical=(c_s/a)²·N0_den/D0` a-power `−5` (021's μ̂₀-free `[P0_phys]=1` machinery; ⭐ the a-power
+  dim-COMPENSATION — the `scaling` control a-power −3 puts `I_wrong2`(2,0,0)+`g_base∝a⁻³` which DELIBERATELY compensates in the L-slot [`2−3=5/2−7/2=−1`] so `dim_ok` STAYS
+  True and ONLY `scaling_wrong` fires → single-tag `FAIL_PORT_MALFORMED(scaling)`; the scaling fixture built by SPECIALIZING the cited factored `N0_den`, NOT re-running
+  the inverse) ∧ **SIGN** the outgoing DtN `+i z⁵/27` χ_Q=+1 (`coeff(z⁵)/i==1/27` COMPUTED from `ŷ₂=−3/(z·h₂'/h₂)`, `h₂=j₂+i·y₂`; incoming→`−1/27` χ_Q=−1→`FAIL_PORT_MALFORMED(sign)`;
+  018's fingerprint, not a typed χ_Q) ∧ **NONZERO** (`zero_coupling`→`FAIL_PORT_VANISHES` via the 027-LOCAL subject-binding OR-arm) ∧ the **DEFERRED** SIM-inconclusive
+  branch (`deferred_uncertified`→`PORT_INCONCLUSIVE_SIM_DEFERRED`, `proven_deferred`→`DENSITY_PORT_HOSTED`, BOTH fire — honest) + the **K̄ CLOSURE** `K̄₄−4K̄₂²/K̄₀=0` ∧
+  `Γ̄₅−2G/(5c⁵)=0` (both STANDALONE asserts + isolated post-construction `K̄₄+δ₄`/`Γ̄₅+δΓ` mutations, NOT `K̄₀` which enters both; the A3 2.5PN Burke–Thorne CONSISTENCY
+  SHARED with 028, NOT a `Γ̄₅`/`G` derivation). ⭐ **027 OWNS the joint** (the stage023 pattern, UNLIKE the PARTIAL legs 024/025/026): ASSEMBLES
+  `origin_ok`/`DENSITY_PORT_HOSTED` from 025's ATOMIC vector-freedom facts (tags incl `continuity_interface`, `vector_port∉tags`, `vector_host_symbols=∅`,
+  `source_map_complete`, `vector_free`) + 026's ATOMIC continuity-lineage facts (`moment_valid`, validated `I25`, `lineage_valid` — NOT the flat
+  `continuity_dependency_ok`) + its OWN 6 checks + the **027-LOCAL subject binding** (`subject_binding=(port_moment∈N0_den.free_symbols)∨(N0_den=0∧coupling_zero)`;
+  `port_moment` tracks the CURRENT fixture moment [`I25` baseline / `I_wrong2` under scaling — NOT 026 re-earning]; the OR-arm SUPERSEDES the source's outer
+  `vanished_continuity_coupling` — the meta-test disable-arm-2→`zero_coupling` flips `FAIL_PORT_VANISHES→FAIL_NOT_DENSITY_DERIVED` proves it load-bearing), and **RECORDS
+  the EM `A_w`/`U,W` vector-scaffold RETIREMENT with the completed joint** (⚠ CONDITIONAL — R43/R44 deferred it here; a FAIL/inconclusive does NOT record it). ⚠⚠ **COMPLETE
+  ≠ PASS: the joint stays CALIBRATED not PASS** (`G=GENUINE_BLOCKED`, 020's provenance; `54/5`/`Γ̄₅`=`external_bridge_input`, the `27`=018's `derived_in_gate`; magnitude
+  SIM_DEFERRED, only the STRUCTURE hosted). ⭐ **Register: ZERO new counted CALIB knobs (set stays 6)** — the K̄ moments = calibrated functions of `{G,c_s,a,c}`; `c`=GR-bridge
+  benchmark, `D0`=reduced denominator dimensional PROVENANCE from 021, `Xi_deferred`/`I_wrong2` control-scars tracked-not-counted; new structural edge **R46** (checks +
+  closure + joint landing + the scaffold-retirement record; discharges NOTHING) + ⭐ upgrades the `N0_den` row (the `[N0_den]=L⁻¹M` dim CHECK now LANDS at 027);
+  Codex-verify `REGISTER_CLEAN` first pass. Consumption PROVENANCE: 024's `N0_den` (checkable host-contract) + 025/026's certificates + 018's DtN fingerprint + 021's
+  μ̂₀-free dim machinery + 020's `54/5`/`G=GENUINE_BLOCKED` + 005 `c_s` + `a`/`c`/`G`/`D0`. ⭐⭐ **The `.wl` is RE-AUTHORED independent** (native
+  `SphericalHankelH1`/`H2`+`SeriesCoefficient` DtN, unit-monomial/weight-rescaling dims, dimensionless ratio-invariant closure, `SelectFirst`/`Association` verdict
+  dispatch; the source `.wl` 027 slice is a one-for-one transliteration → the 018/021 keep-native precedent does NOT transfer; like 020/022/023/025/026's re-author).
+  Dual-engine SymPy 55 / Mathematica 55, CWD-independent (repo root AND `/tmp`), zero file I/O. ⭐⭐ **Directive review = Codex→Grok→Codex bookend caught issues at EVERY
+  leg:** Codex xhigh **4 BLOCKING** folded (the certificate mis-scoping + the masked vanished-coupling OR-arm → the 027-LOCAL subject binding; the SUBJECT-INTEGRITY
+  host-contract tooth; re-author ALL verdict-bearing `.wl`; the isolated post-construction K̄₄/Γ̄₅ closure mutations) → **Grok-4.5 compute-verify 1 BLOCKING** (⭐ the
+  hardcoded `validated_I25` subject binding BREAKS the `scaling` control — under a-power −3 the port's moment is `I_wrong2`; fix binds the current-fixture `port_moment`) +
+  2 nits [the certificate tags are over the baseline not live-retainted; `vector_independence_ok` is not a 025 export] → Codex confirm-pass **3 BLOCKING** (consistency-sweep
+  gaps: a stale `validated_I25`, a §2(d) contradiction of the OR-arm fold, the `origin_ok` formulas omitting `∧ vector_free`) + 2 nits → Codex final-confirm 1 nit →
+  `DIRECTIVE_CLEAN`. Tri-review CLEAN both legs (`FIDELITY_CLEAN` [independent re-derivation: `N0_den` from 024's 2×2 inverse diff=0, the DtN `±1/27` via SymPy's own
+  `jn`/`yn`, both K̄ residuals=0, the scaling single-tag; coverage-diff no dropped check; the `.wl` genuinely independent function-by-function; consumption matches
+  024/025/026's actual exports] + `ADVERSARIAL_CLEAN` [full per-tooth ablation matrix on BOTH engines — every tooth fired at its OWN named assert AND went vacuous when
+  neutered; the OR-arm meta-test, single-tag scaling, both isolated closure residuals, each atomic-certificate corruption, the SUBJECT-INTEGRITY tooth, the conditional
+  retirement all confirmed load-bearing; no vacuous/subsumed/tautological/stamped construct]) → **ZERO remediation** (the clean contract-clean stage came through both legs
+  clean, like 024). Registration at count 27, PDF rebuilt (74pp). ⚠ Also refreshed stage024's committed SymPy transcript (it lacked the runner's `EXIT_CODE:` footer — a
+  pre-existing bookkeeping gap from its own commit, stage024 itself passes 7/7). ⚠ **Lesson banked:** the Grok compute-verify caught that a subject-binding membership must
+  track the CURRENT fixture moment (`I_wrong2` under the scaling control), not a hardcoded baseline symbol — a hardcoded `validated_I25` wrongly lands
+  `FAIL_NOT_DENSITY_DERIVED` where the scaling verdict `FAIL_PORT_MALFORMED(scaling)` is wanted; and the source `.wl` dim/DtN slice being one-for-one ports means the
+  018/021 keep-native precedent does NOT transfer across gates. ⭐ **pathA_43 4-way split COMPLETE (024∧025∧026∧027); the density-native ℓ=2 radiative port is HOSTED
+  (structure earned, vector-free, continuity-lineaged, well-formed, closure-consistent); the EM vector scaffold RETIRES; the magnitude stays CALIBRATED.**
+- **▶ NEXT = Cluster C `ledger_stage028`** (II-P5, the **2.5PN match-back** — `pathA_2_5pn_matchback`, consistency over CALIBRATED moments). Content = INV1–INV5 (both `Γ̄₅`
+  forms → Burke–Thorne `Γ̄₅=2G/(5c⁵)` incl. the corpus's own `9K̄₂^{5/2}/K̄₀^{3/2}`, the cross-form agreement, the moment invariant `K̄₄=4K̄₂²/K̄₀`, + the **INV5 literal
+  anchors** defeating a coherent-rescale rig) + the **11-mutation able-to-fail matrix**; `G=GENUINE_BLOCKED` carried (consistency, NOT a first-principles `Γ̄₅`/`G`
+  derivation — the full 1PN→4PN from-throat = SIM-DEFERRED Gate 6). ⚠ **The A3 boundary:** 028 CONSUMES 027's exported K̄ moments `{K̄₀,K̄₂,K̄₄,Γ̄₅}` — 027's closure is the
+  two-residual CONSISTENCY (the A3 SLOT), 028 is the FULL match-back (SHARED, not double-counted; do NOT rebuild the port derivation). ⚠ per-gate trip-up **L95**: the
+  **INV5 literal anchors are the anti-rig teeth vs the coherent-rescale mutation — never dedupe them against the closure values**. Sources (already CONTRACT-CLEAN — a
+  light reshape, like 024/pathA_43): `software/stage1_solver/notes/pathA_43_2_5pn_matchback.md` (the consolidation note) + `tools/pathA_2_5pn_matchback_{sympy.py,.wl}` (the
+  dedicated dual-engine artifact independently checking INV1–INV5 + the 11-mutation probe + the asserted caught-by matrix). ⭐ Author a running-start source map FIRST. Then
+  **029** (PN corpus DOI-cite — a THIN cite-only Part-II stage note: paper/DOI/imported-result/scope per corpus entry, NO scripts, NO re-derivation). ⭐ **Cluster C = 024–029**
+  (density port 024–027 DONE + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT**
+  (parameter_register §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
 
 ## Per-stage process (unchanged, calibrated)
 

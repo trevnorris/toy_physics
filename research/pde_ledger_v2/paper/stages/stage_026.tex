@@ -1,0 +1,129 @@
+\section{Stage 026: The Continuity-Lineage Token-Check (Check II-P3)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative-port sector, Cluster C; the CONTINUITY-LINEAGE leg of a four-way split of pathA\_43 --- the continuity-moment lineage validation component of the joint \texttt{DENSITY\_PORT\_HOSTED}, with the density two-port DERIVATION = Stage~024, the vector-freedom taint proof = Stage~025, and the able-to-fail port checks + closure overlay (the COMPLETING leg) = Stage~027)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Prove the \(\ell=2\) moment \(I_{25}\) that sources Stage-024's density-port numerator \(N_{0,\mathrm{den}}\) is a genuine \(\int Y_2^{*}S_{\mathrm{leak}}\) continuity moment DESCENDED from pathA\_29's projected-continuity operator (the same operator that produced pathA\_28's \(\ell=0\) \(M_0\) and \(\ell=1\) \(D_1\)), not a self-asserted / relabeled tag. Validate the \(\ell_0\!\to\!\ell_1\!\to\!\ell_2\) ancestry by a COMPUTED exact lexical-token check over the moment strings (never a self-asserted flag, never raw substring), and earn the genuine moment symbol via the \(I_{25}\)-vs-\(I_{\mathrm{wrong2}}\) gate. This DISCHARGES two forward references: it earns \(\texttt{moment\_valid}=\text{True}\) (consumed by Stage~025) and validates \(I_{25}\)'s lineage (cited by Stage~024). Land the joint as a partial component.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage026_continuity_lineage_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage026_continuity_lineage_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact symbolic lexical-token set-algebra (the lineage gate is an exact-token
+subset over the \(\ell_0\!\to\!\ell_1\!\to\!\ell_2\) moment strings; the earning gate is a symbol-identity
+distinction; \texttt{expect\_bool} residuals, no \texttt{scipy}/\texttt{numpy}/floats/tolerances). The verdict
+is the joint \texttt{DENSITY\_PORT\_HOSTED}; this stage carries its \emph{continuity-lineage validation}
+component (3/4) and lands the joint as \textbf{partial} (024/025/026 earned; 027 pending) --- not complete.
+\resultanchor{\texttt{CONTINUITY\_LINEAGE\_EARNED}.} The LOCAL audit verdict (exit-0 gate) \(=G_1\wedge G_2\):
+the lineage exact-token check holds and the earning gate returns \((I_{25},\texttt{moment\_valid}=\text{True})\).
+It adds \textbf{zero} new counted knobs (a lineage/proof slice, like Stages~018/016/022/024/025);
+\(I_{25}\) is already tracked (SIM\_DEFERRED magnitude) and \(I_{\mathrm{wrong2}}\) is a control-scar,
+tracked-not-counted.
+
+\paragraph{The subject and the \(\ell_0\!\to\!\ell_1\!\to\!\ell_2\) lineage.}
+Stage 026 CITES Stage-024's factored export (it does not re-derive the inverse --- that would blur the
+024/026 cut); the consumption-integrity oracle (tooth~I) computes \(N_{0,\mathrm{den}}.\texttt{free\_symbols}\)
+off the actual cited expression and asserts it equals the exported 10-symbol host contract
+\(\{a,c_s,\rho_{\mathrm{eff}},I_{25},\Xi_Q,\eta_q,\eta_\phi,\varpi_{q_2},\varpi_{\Phi_2},\lambda_c\}\) --- with
+\(I_{25}\) the external factor (dropping it removes \(I_{25}\); dropping \(\eta_q\lambda_c\) removes only
+\(\eta_q\), \(\lambda_c\) surviving in the denominator). The lineage is the structured record that \(I_{25}\)
+descends from pathA\_29's operator: operator id \(\texttt{pathA\_29\_projected\_continuity}\); \(\ell_0\)
+\(M_0=\int S_{\mathrm{leak}}\,d^3x\) (pathA\_28 mass rate, target \(R_0=-M_0\)); \(\ell_1\)
+\(D_{1,i}=\int x_i S_{\mathrm{leak}}\,d^3x+\int j_i\,d^3x\) (pathA\_28 dipole rate, target \(R_1=-D_1\));
+\(\ell_2\) \(Q_{2,m}=\int Y_2^{*}S_{\mathrm{leak}}\,d^3x\) (the \(\ell=2\) continuation, reduced value
+\(I_{25}\)); kernel \(Y_2^{*}S_{\mathrm{leak}}\). The \(\ell_0/\ell_1\) tokens are pathA\_28's exported moments
+(Stage~008) and the operator is pathA\_29's (Stage~009/010) --- provenance; 026 verifies the lineage
+\emph{exhibits} them, it does not rebuild them.
+
+\paragraph{The two decisive gates: exact tokens (\(G_1\)) and the earning gate (\(G_2\)).}
+\(G_1\) \(\texttt{continuity\_lineage\_valid}\) computes \(\texttt{operator\_id}=\texttt{pathA\_29\_projected\_continuity}\)
+and, per ancestry level, that the required token \emph{set} is a subset of the string's actual token set
+(\(\ell_0\supseteq\{M_0,\texttt{Integral},S_{\mathrm{leak}},d3x\}\), etc.). This UPGRADES the source's raw
+substring \(\texttt{contains\_all}\), which a token-STUFFED forgery
+(\(\texttt{NOT\_M0}\supset M_0\), \(\texttt{FakeIntegral}\supset\texttt{Integral}\),
+\(\texttt{S\_leakage}\supset S_{\mathrm{leak}}\), \(\texttt{d3xyz}\supset d3x\)) defeats. The token alphabet is
+LOAD-BEARING --- identifier tokens \([\texttt{A-Za-z0-9\_}]+\) (Python \(\texttt{\textbackslash w}\);
+Mathematica \(\texttt{StringCases}[s,(\texttt{WordCharacter}\,|\,\text{``\_''})..]\), \emph{not} bare
+\(\texttt{WordCharacter}..\), which excludes \(\_\) and would fragment the genuine tokens
+\(S_{\mathrm{leak}}/Y_2^{*}/D_{1,i}\) and false-fail the lineage). \(G_2\) \(\texttt{continuity\_moment\_symbol}\)
+is source-faithful: \(\texttt{moment\_valid}\equiv\texttt{lineage\_valid}\);
+\(\texttt{earned\_moment}=I_{25}\) iff \((\texttt{lineage\_valid}\wedge\texttt{a\_power}=-7/2)\) else
+\(I_{\mathrm{wrong2}}\). An invalid lineage substitutes the \emph{different} symbol \(I_{\mathrm{wrong2}}\)
+(dimension \((2,0,0)\neq I_{25}\)'s \(L^{5/2}\)) into the port --- so a mis-lineaged port is a different
+object, which is what makes the token-check matter. \(G_1\wedge G_2\) earn the two forward-referenced outputs;
+026 uses the \(-7/2\) baseline only (the wrong-power scaling verdict is 027's).
+
+\paragraph{Why the check is over tokens, never a flag (Rig~2), and the de-counted witness.}
+The pathA\_43 history holds \textbf{Rig~2} --- a self-asserted \texttt{continuity\_interface} tag: a devious
+executor writes a new equation \(\equiv\) the retired vector port \(P_A=\Omega_U^2 g_W+R_{\mathrm{mix}}g_U\),
+tags it \texttt{continuity\_interface}, and wires it as \(N_0\)'s ancestor. The validator must reject it by
+exhibited structural TOKENS, not a shared \texttt{valid} flag. Since the source lineage dicts have no
+\texttt{valid} field, the rig battery self-enforces this: every negative lineage carries a DECOY
+\(\texttt{valid}=\text{True}\) + a self-asserted \texttt{continuity\_interface} claim and is passed through the
+SAME validator; a coupling meta-test (substitute a flag-only validator) makes the decoy-flagged negatives
+wrongly pass, so the audit fails --- the exact-token check is proven load-bearing. The first-arm dependency
+witness \(\texttt{earned\_moment}\in N_{0,\mathrm{den}}.\texttt{free\_symbols}\) is a de-counted printed
+witness (subsumed by \(G_1\) + the contract oracle --- no non-subsumed mutation exists; the drop-\(I_{25}\)
+mutation routes to tooth~I); the second OR-arm \((N_{0,\mathrm{den}}=0\wedge\texttt{coupling\_zero})\) is the
+mandatory tooth~G.
+
+\paragraph{The able-to-fail battery (per-tooth ablation, coupling meta-test).}
+Each rig fires at its OWN named assert and goes vacuous when neutered: A \texttt{fake\_continuity} and B
+\texttt{attack2} (correct id + garbage \(\ell_2\)) via the \(G_1\) lineage-gate assert; C the per-level
+exact-token ablations (operator id / \(\ell_0\) / \(\ell_1\) / \(\ell_2\)-kernel, each independently
+load-bearing) plus the token-stuffing forgery (passes a substring check, fails the exact-token check ---
+reverting to substring makes it wrongly pass, the genuineness-upgrade meta-test); D the earning gate
+(neuter the substitution so a corrupted lineage wrongly earns \(I_{25}\)); F the baseline-valid positive
+(passes, flips to fail on any token corruption); G(i--iv) the four isolated vanished-coupling probes on
+synthetic \((\texttt{expr},\texttt{coupling\_zero})\) inputs (isolated from tooth~I's fixed \(N_{0,\mathrm{den}}\));
+I subject-integrity via the exact host-contract assert (drop \(I_{25}^2\) / drop \(\eta_q\lambda_c\) / replace
+\(\rho_{\mathrm{eff}}\)); and the two \texttt{.wl} runtime scanners (a call-arity mismatch, a leaked
+unevaluated authored-helper head). The adversarial re-review proved the decisive properties load-bearing:
+reverting to substring makes the stuffing forgery pass, a flag-only validator makes the decoy negatives pass,
+and bare-\texttt{WordCharacter} false-fails the genuine lineage.
+
+\paragraph{Honest scope, consumed, register.}
+026 validates the LINEAGE (that \(I_{25}\) is a genuine \(\int Y_2^{*}S_{\mathrm{leak}}\) \(\ell=2\) continuity
+moment); the literal moment value (\(I_{25},\Xi_Q,\hat\lambda_Q,\rho_{\mathrm{eff}}\) throat values) remains
+SIM\_DEFERRED, and \(G,2/5,54/5\) are CALIBRATED (027). The joint \texttt{DENSITY\_PORT\_HOSTED} and the EM
+\(A_w/U,W\) scaffold retirement land at Stage~027, which also ASSEMBLES the full \(\texttt{origin\_ok}\) from
+the 025 + 026 certificates --- 026 asserts only the lineage predicates + the baseline dependency witness, not
+\texttt{tags} / \texttt{source\_map\_complete} (025's) or a full \texttt{origin\_ok} (027's). \emph{Consumed:}
+Stage-024's \(N_{0,\mathrm{den}}\) (the subject; the checkable host contract; \(\rho\equiv\rho_{\mathrm{eff}}\))
++ Stage-008's \(M_0/D_1\) (the \(\ell_0/\ell_1\) ancestor moments) + Stage-009/010's projected-continuity
+operator + Stage-005 \(c_s\) + \(a\) \texttt{CONV} --- all provenance. Register: \textbf{zero} new counted
+knobs; new structural edge \textbf{R45} --- the density-port continuity-lineage validation (\(I_{25}\) a
+genuine \(\int Y_2^{*}S_{\mathrm{leak}}\) moment descended from pathA\_29's operator, computed over the exact
+lexical tokens + the earning gate), scoped as validation of the cited lineage certificate (not a re-derivation
+of the upstream operator); discharges nothing at the knob level, like R43/R44. It discharges two forward
+references: the \(I_{25}\) row's ``lineage \(\to\) 026'' note (now validated; magnitude stays SIM\_DEFERRED)
+and Stage-025's conditional \(\texttt{moment\_valid}=\text{True}\). No new dims (the \([N_{0,\mathrm{den}}]=L^{-1}M\)
+check is 027's). Part-II counted CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015)
++ \(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- pathA\_43 was already contract-clean, so the reshape
+``sever the bridge'' step is a no-op; the work was decomposition + the exact-token genuineness UPGRADE + the
+\texttt{.wl} RE-AUTHOR + the LOCAL/PARTIAL framing. \emph{Like Stage~025 (and unlike Stage~024's keep-native
+derivation lane), Stage~026 RE-AUTHORS its \texttt{.wl}}: the source \texttt{.wl} lineage machinery was a
+transliteration of the \texttt{.py}, so the mirror policy required a genuinely independent computation --- the
+decisive gates use a native \(\texttt{Graph}+\texttt{FindPath}+\texttt{FoldList}\) \(\ell_0\!\to\!\ell_1\!\to\!\ell_2\)
+ancestry walk whose terminal \(\ell_2\) node produces the earned moment \(I_{25}\) only after the full walk
+validates (with \(\texttt{StringCases}[s,(\texttt{WordCharacter}\,|\,\text{``\_''})..]\) + \texttt{SubsetQ}
+exact-token subsets), materially different from the \texttt{.py}'s flat token-set conjunction. Transcript-level
+agreement, neither engine reading the other. SymPy 27 PASS / Mathematica 27 PASS, both exit 0, CWD-independent
+(repo root + \texttt{/tmp}). The directive review used the Codex\(\to\)Grok\(\to\)Codex bookend, which caught a
+directive-level error at every leg: a Codex xhigh pass folded 5 BLOCKING (the substring\(\to\)exact-token
+upgrade; the decoy-flag self-enforcement; the subsumed dependency binding \(\to\) de-counted witness; the
+source-faithful \(\texttt{moment\_valid}\equiv\texttt{lineage\_valid}\) semantics; the \texttt{continuity\_interface}\(\in\)tags
+removal), a Grok-4.5 compute-verify pass caught 1 BLOCKING (the load-bearing \([\texttt{A-Za-z0-9\_}]+\) token
+alphabet), a Codex confirm-pass caught 1 BLOCKING (mandatory tooth~G) + 2 nits, a Codex final-confirm caught 1
+BLOCKING (scoping the de-count to the first-arm witness), and a Codex final re-confirm returned
+\texttt{DIRECTIVE\_CLEAN}. Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} (an independent read
+re-derived \(N_{0,\mathrm{den}}\) from Stage-024's \(2\times2\) inverse, diff \(=0\); verified the exact-token
+tokenizer, the source-faithful \(G_2\), no leakage, and the genuine independent \texttt{.wl}) and
+\texttt{ADVERSARIAL\_CLEAN} (per-tooth ablation on both engines --- 22 mutations, each fired at its own assert;
+the three decisive proofs held) --- one \textbf{[minor]} non-blocking subsumed tally
+(\(\texttt{baseline continuity\_dependency\_ok is True}\)) was de-counted to a labeled diagnostic print
+(tally \(28\to27\) per engine, no other check touched), then fresh-agent \texttt{REVERIFY\_CLEAN}.
+Symbolic per-tooth ablation, mutations on copies.

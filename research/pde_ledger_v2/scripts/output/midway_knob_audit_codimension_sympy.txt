@@ -1,0 +1,11 @@
+BLOCK  CASE      dim_before  dim_after  Delta
+M      baseline          10          5      5
+M      C-M1              10          6      4
+M      C-M2              10          5      5
+M      C-M3              10          4      6
+Wchi   baseline          10          7      3
+Wchi   C-W1              10          8      2
+Wchi   C-W2              10          6      4
+NOTE: beta_2(w) is a PROFILE and the R35 radial-scalar reductions {Mtilde,Ktilde,Ttilde_Omega}=Integral[density*beta_2^2] are integral functionals, not polynomializable; they are outside this computed check and remain reasoned-tally only.
+COMPARISON_PAYLOAD: {"M":{"baseline":{"dim_before":10,"dim_after":5,"Delta":5},"C-M1":{"dim_before":10,"dim_after":6,"Delta":4},"C-M2":{"dim_before":10,"dim_after":5,"Delta":5},"C-M3":{"dim_before":10,"dim_after":4,"Delta":6}},"Wchi":{"baseline":{"dim_before":10,"dim_after":7,"Delta":3},"C-W1":{"dim_before":10,"dim_after":8,"Delta":2},"C-W2":{"dim_before":10,"dim_after":6,"Delta":4}}}
+MIDWAY_CODIM_CHECK: CONSISTENT

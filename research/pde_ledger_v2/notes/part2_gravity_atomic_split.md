@@ -592,14 +592,59 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   cannot independently fail once P2 holds — a subsumed guard) → the honest framing makes the COMPUTED taint-set the decisive gate and the ablation a de-counted witness;
   and the two-predicate split (exact-baseline vs general) is needed so a legitimately-provenanced extra tag (the pathA_34 dimensionless free carrier) passes without
   false-failing the exact ancestry identity.
-- **▶ NEXT = Cluster C `ledger_stage026`** (II-P3, pathA_43 `DENSITY_PORT_HOSTED` 3/4 — the **continuity lineage**: the ℓ0(M0)→ℓ1(D1)→ℓ2(`∫Y₂*S_leak`) moment
-  ancestry via pathA_29's projected-continuity operator; the token-check is COMPUTED, NEVER a flag — this is where the cited `moment_valid` 025 consumed is EARNED,
-  and where **Rig 2** [the self-asserted `continuity_interface` tag — a devious executor writes a NEW equation ≡ the vector port, tags it `continuity_interface`, wires
-  it as `N0`'s ancestor] is the anti-rig to pin; the validator checks structural TOKENS not a shared `valid` flag). The pathA_43 slice = `continuity_lineage_valid`/
-  `lineage_for`/`continuity_moment_symbol`/the `I25`-vs-`I_wrong2` gate/`continuity_dependency_ok` + the `fake_continuity`/`attack2_continuity_corruption` controls
-  (`.py` L192–197, 305–332, 392–417, 585–592). ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port
-  024–027 + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register
-  §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
+- **✅ II-P3 `ledger_stage026` DONE (2026-07-10) — pathA_43 `DENSITY_PORT_HOSTED` 3/4 (the continuity-lineage token-check; the leg that DISCHARGES two forward
+  references).** EXACT symbolic lexical-token set-algebra (float-free). EARNED: the ℓ=2 moment `I25` sourcing 024's `N0_den` is a genuine `∫Y₂*·S_leak` continuity
+  moment DESCENDED from pathA_29's projected-continuity operator (the SAME that produced pathA_28's ℓ0 `M0=∫S_leak` / ℓ1 `D1_i=∫x_i S_leak+∫j_i`), via two decisive
+  COMPUTED gates: **G1** `continuity_lineage_valid` — `operator_id==pathA_29_projected_continuity` ∧ the ℓ0→ℓ1→ℓ2 structural tokens present as EXACT lexical tokens
+  (required token-SET ⊆ the string's actual token set, alphabet `[A-Za-z0-9_]+`; ⚠ `_`/digits INTERIOR — Mathematica `(WordCharacter|"_")..` NOT bare `WordCharacter`
+  which would fragment `S_leak`/`Y2_m_star` and false-fail the lineage, a Grok compute-verify catch; ⭐ the genuineness UPGRADE over the source's raw-substring
+  `contains_all` which a token-STUFFED forgery `NOT_M0`/`FakeIntegral`/`S_leakage`/`d3xyz` defeats; NEVER a self-asserted `valid` flag); **G2** the `I25`-vs-`I_wrong2`
+  earning gate — `moment_valid≡lineage_valid`, `earned_moment=I25 iff (lineage_valid ∧ a_power==−7/2) else I_wrong2` (dim `[I25]=L^(5/2)`≠`[I_wrong2]=(2,0,0)`, so an
+  invalid lineage flows the WRONG symbol into the port). ⭐ **DISCHARGES two forward references:** EARNS `moment_valid=True` (025's R44 LOCAL was CONDITIONAL on it) +
+  validates `I25`'s lineage (024 CITED `I25` typed; the register `I25` row's "lineage → 026" forward ref DISCHARGED — magnitude stays SIM_DEFERRED). The anti-rig
+  PINNED = **Rig 2** (a self-asserted `continuity_interface` tag on a relabeled vector formula — every negative carries a DECOY `valid=True` passed through the SAME
+  validator [the source dicts have no `valid` field]; a flag-only validator wrongly passes them → the audit's coupling meta-test FAILS). The first-arm dependency
+  witness `earned_moment∈N0_den.free_symbols` is a DE-COUNTED subsumed witness (drop-`I25`→tooth I), the OR-arm `(N0_den=0 ∧ coupling_zero)` a mandatory tooth G
+  (4 isolated synthetic probes). LOCAL `CONTINUITY_LINEAGE_EARNED`=G1∧G2 (exit 0) + printed JOINT PARTIAL `DENSITY_PORT_HOSTED (3/4)`; 026 does NOT own the joint (027).
+  ⭐ **Register: ZERO new counted CALIB knobs (set stays 6)** — `I25` already tracked (SIM_DEFERRED magnitude), `I_wrong2` a control-scar tracked-not-counted (like
+  stage023's `q_free`); no new dims (`[N0_den]=L⁻¹M`/`[I25]=L^(5/2)` are 027's/024's); new structural edge **R45** scoped as VALIDATION of the cited lineage certificate
+  (NOT a re-derivation of the upstream 008/009/010 operator); ⚠ 026 does NOT compute `tags`/`source_map_complete` (025's) or a full `origin_ok` (027 assembles it from
+  the 025+026 certificates). Consumption PROVENANCE: 024's `N0_den` (cited factored form; the consumption-integrity oracle asserts `free_symbols==the 10-symbol
+  HOST_CONTRACT`; `rho`=`rho_eff`) + 008's `M0`/`D1` ancestor moments + 009/010's projected-continuity operator + 005 `c_s` + `a` CONV. ⭐⭐ **The `.wl` is
+  RE-AUTHORED independent** via a native `Graph`/`FindPath`/`FoldList` ℓ0→ℓ1→ℓ2 ancestry walk whose terminal ℓ2 node PRODUCES the earned moment `I25` only after the
+  full walk validates (with `StringCases[(WordCharacter|"_")..]`+`SubsetQ` exact-token subsets) — NOT the source `.wl`'s `StringContainsQ`+`If` transliteration (like
+  020/022/023/025's re-author, UNLIKE 024/018/019/021's keep-native). ⭐⭐ **Directive review = Codex→Grok→Codex bookend — caught a BLOCKING at EVERY leg** (the sharpest
+  bookend since stage023): Codex xhigh **5 BLOCKING** folded (the substring→EXACT-token genuineness upgrade + a required token-stuffing control; the decoy-`valid=True`
+  + same-validator self-enforcement + coupling meta-test [the source dicts have no `valid` field, so "a flag-read accepts these" was imprecise]; the dependency binding
+  is LOGICALLY SUBSUMED → de-counted witness + drop-`I25`→tooth I; source-faithful `moment_valid≡lineage_valid` [a valid lineage + wrong a-power → `(I_wrong2,
+  moment_valid=True)`, 027's scaling]; the `continuity_interface∈tags` conjunct is 025's tag machinery + not lineage-unique → removed from 026, `origin_ok` assembly →
+  027) → **Grok-4.5 compute-verify 1 BLOCKING** (⭐ the exact-token ALPHABET is load-bearing — bare Mathematica `WordCharacter` EXCLUDES `_` → fragments the genuine
+  tokens → false-fails the lineage; pinned `[A-Za-z0-9_]+` / `(WordCharacter|"_")..`; a compute-level catch a reasoning-only review misses) → Codex confirm-pass **1
+  BLOCKING** (tooth G left optional → made MANDATORY with 4 isolated probes) + 2 nits (tooth-I `I25²`-vs-`η_q·λ_c` mutation; stale banner) → Codex final-confirm **1
+  BLOCKING** (the whole-predicate de-count contradicted the now-mandatory tooth G → scoped the de-count to the first-arm witness only) → Codex final-confirm v5
+  `DIRECTIVE_CLEAN`. Dual-engine SymPy 27 / Mathematica 27, CWD-independent (repo root AND `/tmp`), zero file I/O. Tri-review CLEAN both legs (`FIDELITY_CLEAN` —
+  `N0_den` re-derived from 024's 2×2 inverse diff=0, the exact-token tokenizer verified [genuine intact, stuffed rejected, `NOT_M0` not split], source-faithful G2, no
+  024/025/027 leakage, the genuine independent `.wl`; `ADVERSARIAL_CLEAN` — 22 per-tooth mutations both engines, each fired at its OWN named assert + went vacuous when
+  neutered; the three decisive proofs held: substring-revert→stuffing wrongly passes, flag-only validator→decoy-negatives wrongly pass, bare-`WordCharacter`→genuine
+  lineage breaks) → **1 [minor] de-count** (the subsumed `baseline continuity_dependency_ok is True` tally → print-only, 28→27 per engine) → fresh-agent
+  `REVERIFY_CLEAN` (the diff is exactly the de-count; the earned teeth unchanged + still able-to-fail; both engines 27/27). Registration at count 26, PDF rebuilt (72pp);
+  register-verify `REGISTER_CLEAN` (caught + fixed a pre-existing stale "scope: 001-015" line in the provenance index). ⚠ **Lesson banked:** the bookend caught a
+  directive-level error at EVERY leg — most notably the source's `contains_all` is raw SUBSTRING (a token-stuffed forgery defeats it → the reshape must UPGRADE to
+  EXACT lexical tokens, the 024-inverse-load-bearing analog) and the token ALPHABET is load-bearing (bare `WordCharacter` excludes `_` → false-fails the genuine
+  lineage, a Grok compute catch); and the "de-counted witness" scope must be pinned to the exact subsumed conjunct, not the whole predicate, once a sibling arm becomes
+  a mandatory tooth. ⭐ **pathA_43 3 of 4 legs COMPLETE (024∧025∧026); the joint `DENSITY_PORT_HOSTED` LANDS at 027.**
+- **▶ NEXT = Cluster C `ledger_stage027`** (II-P4, pathA_43 `DENSITY_PORT_HOSTED` 4/4 — the **port checks + closure**, the COMPLETING leg that LANDS the joint). Content
+  = the **6 able-to-fail port checks** (`[N0_den]=L⁻¹M` dim; a⁻⁵ scaling via `P0_phys=(c_s/a)²·N0_den/D0`; the outgoing DtN sign `+i z⁵/27`; χ_Q=1; nonzero-port; the
+  `deferred_scalar` SIM-inconclusive branch) + the **K̄ closure slot** (⚠ the A3 boundary — SHARED with 028's 2.5PN match-back, marked shared NOT double-counted). ⭐ **027
+  OWNS the joint verdict**: it ASSEMBLES the full `origin_ok`/`DENSITY_PORT_HOSTED` from the 025 (vector-freedom) + 026 (continuity-lineage) certificates + its OWN
+  dim/scaling/sign/closure, and **records the EM `A_w`/`U,W` scaffold RETIREMENT with the completed joint** (⚠ if 027 FAILS dim/scaling/sign/closure the density port has
+  NOT displaced the scaffold — R43/R44 explicitly deferred the retirement to this joint; the joint token stays CALIBRATED not PASS, `G=GENUINE_BLOCKED`, 020's
+  provenance). The pathA_43 `027` slice = `dtn_sign`/the dim engine (`dim_of`/`scale_power`/`BASE_DIMS`/`BASE_A_POWERS`)/`closure_overlay`/`evaluate`/`assert_gate` + the
+  `zero_coupling`/`dimensional`/`sign`/`scaling`/`deferred_scalar` controls (`.py` — the 027 remnant after the 024/025/026 slices are carved out). CONSUMES: 024's
+  `N0_den` (subject) + 018's `χ_Q=1`/`+i z⁵/27` fingerprint + 021's μ̂₀-free `[P0_phys]=1` dim machinery (cite, do NOT re-derive) + 025's vector-freedom verdict + 026's
+  `moment_valid`/lineage certificate. ⭐ Author a running-start source map FIRST (per the calibrated pipeline). ⭐ **Cluster C = 024–029** (density port 024–027 + 2.5PN
+  match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT** (parameter_register §"MIDWAY KNOB AUDIT" —
+  the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
 
 ## Per-stage process (unchanged, calibrated)
 

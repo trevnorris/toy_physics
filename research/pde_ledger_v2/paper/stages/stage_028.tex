@@ -1,0 +1,73 @@
+\section{Stage 028: The 2.5PN Burke--Thorne Match-Back (Check II-P5)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative-port sector, Cluster C; the CONSISTENCY cap of the pathA\_43 density-port fold --- the 2.5PN Burke--Thorne match-back over the port's calibrated closure moments, with the density two-port DERIVATION = Stage~024, the vector-freedom taint proof = Stage~025, the continuity-lineage token-check = Stage~026, and the port checks + closure = Stage~027)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Verify --- dual-engine, exact-rational, able-to-fail --- that the density-mode \(\ell=2\) port's CALIBRATED closure moments \(\{\bar K_0,\bar K_2,\bar K_4\}\) reproduce the 2.5PN Burke--Thorne normalization \(\bar\Gamma_5=2G/(5c^5)\) and the moment invariant \(\bar K_4=4\bar K_2^2/\bar K_0\) that the separate audited corpus \texttt{research/4d\_2\_5pn} left as its single open item. Five invariants INV1--INV5 (each reduced to \(0\)) + an 11-mutation caught-by matrix, over \(\bar K_0=54Gc_s^5/(5a^5c^5)\), \(\bar K_2=6Gc_s^3/(5a^3c^5)\), \(\bar K_4=8Gc_s/(15ac^5)\).}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage028_2_5pn_matchback_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage028_2_5pn_matchback_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact-rational residuals in moment/\(z\)-space (\texttt{expect\_zero}/\texttt{expect\_bool},
+a no-float guard over raw and reduced residuals; no \texttt{scipy}/\texttt{numpy}/floats/tolerances). The verdict is the
+LOCAL consistency gate \texttt{MATCHBACK\_CONSISTENT} (baseline all-zero \(\wedge\) every one of the 11 mutation caught-by
+rows \(=\) expected \(\wedge\) no-float). \resultanchor{\texttt{MATCHBACK\_CONSISTENT}.} \(\bigstar\bigstar\) There is
+\textbf{no} \texttt{FAIL\_*}/\texttt{PASS} PHYSICS token --- this is a CONSISTENCY artifact. \textbf{CALIBRATED consistency,
+NOT a first-principles \(\bar\Gamma_5\)/\(G\) derivation}: the \(\bar K\) moments are hardcoded calibrated closure inputs
+(\(G=\)\texttt{GENUINE\_BLOCKED}, 020's provenance; \(54/5\) and \(\bar\Gamma_5=\)external\_bridge\_input, the \(27=\)018's
+derived\_in\_gate); the full 1PN\(\to\)4PN from-throat re-derivation stays SIM-DEFERRED (Gate 6). It adds \textbf{zero} new
+counted knobs and caps the pathA\_43 density-port fold (024\(\wedge\)025\(\wedge\)026\(\wedge\)027\(\wedge\)028).
+
+\paragraph{The corpus open item and the five invariants.}
+\texttt{research/4d\_2\_5pn} reduced the 2.5PN sector to one scalar normalization \(\hat m_0^2\Gamma_5=2G/(5c^5)\) (equivalently
+\(\bar K_4\bar K_0=4\bar K_2^2\) and \(\bar\Gamma_5=9\bar K_2^{5/2}/\bar K_0^{3/2}\)) and left it open. Stage 028 checks:
+\textbf{INV1} \(\bar K_4\bar K_0-4\bar K_2^2=0\) (the corpus moment invariant; \(4\bar K_2^2/\bar K_0=(8/15)Gc_s/(ac^5)=\bar
+K_4\)); \textbf{INV2} \(\bar K_0 a^5/(27c_s^5)-2G/(5c^5)=0\) (the pathA\_43 form \(\to\) Burke--Thorne; \(\bar\Gamma_5=54G/
+(5\cdot27\,c^5)=2G/(5c^5)\), the \(/27\) = 018's earned density-Hankel fingerprint); \textbf{INV3}
+\(9\bar K_2^{5/2}/\bar K_0^{3/2}-2G/(5c^5)=0\) (the corpus's OWN form \(\to\) BT; \(9\,(6/5)^{5/2}/(54/5)^{3/2}=2/5\) via the
+\(\sqrt6\) cancellation with \(54=9\cdot6\)) --- \(\bigstar\) 028's genuinely-new tie-out that Stage~027's closure does not
+carry; \textbf{INV4} \(\text{path\_form}-\text{corpus\_form}=0\) (\(\bigstar\) a REDUNDANT diagnostic \(\equiv\) INV2\(-\)INV3,
+not an independent tooth); \textbf{INV5} the eight INDEPENDENT literal anchors \(\{54/5,6/5,8/15,2/5,27,9,5/2,3/2\}\).
+
+\paragraph{The A3 boundary and the coherent-rescale anti-rig.}
+INV1 and INV2 ARE Stage-027's two port-closure residuals re-expressed (INV1 \(=\) 027-residual-1 \(\times\bar K_0\); INV2
+\(=\) 027-residual-2 exactly) --- the A3 SLOT Stage~027 OWNS (R46), SHARED not double-counted; INV3/INV4/INV5 and the
+coherent-rescale matrix are 028's additions (R47). 028 CONSUMES 027's K\(\)-moments as PROVENANCE (restated locally,
+self-contained; an authoring-time A3 fidelity comparison confirms they equal 027's \texttt{closure\_overlay} exports --- a
+stale-citation guard, not a runtime tie). \(\bigstar\bigstar\) \textbf{The anti-rig:} the INV5 anchor literals are 028's OWN
+independently-restated constants, computed nowhere from the moment coefficients --- they are the \emph{only} residuals that
+catch the coherent-rescale mutation \(\{\bar K_0,\bar K_2,\bar K_4,\text{BT}\}\times2\) (which passes INV1--INV4 by
+scale-covariance). Dedupe them and the rig passes silently (the per-gate trip-up).
+
+\paragraph{The able-to-fail battery (per-tooth ablation).}
+The GENUINE independent EXIT-1 teeth = the 11 caught-by row assertions (row 1 = coherent-rescale \(\to\) the four INV5
+anchors only; row 2 = the coupled mutation \(\to\) \(\{\)INV2,INV3,INV5\_K0,INV5\_K2,INV5\_K4\(\}\); rows 3--11 = the nine
+single-parameter mutations) + the no-float guard --- each ablated actual-side (the mutation fixture / a residual
+construction, the \texttt{EXPECTED\_CAUGHT\_BY} oracle held immutable) to EXIT 1 at its own named assert, with a coupling
+meta-test (neuter the planted drift \(\to\) the expected failure disappears \(\to\) the harness fails). The
+\texttt{.wl}-independence + honest-scope are review/acceptance gates (not EXIT-1 teeth); baseline-all-zero, the
+\texttt{actual}-non-empty check, and INV4 (\(\equiv\) INV2\(-\)INV3) are de-counted (retained for fidelity/transcript).
+
+\paragraph{Consumed, register.}
+\emph{Consumed:} Stage-027's \(\bar K\) moments \(\{\bar K_0,\bar K_2,\bar K_4,\bar\Gamma_5\}\) (the A3 SLOT, INV1/INV2
+SHARED with R46) + Stage-018's \(27\) fingerprint + Stage-020's \(54/5\)/\(G=\)\texttt{GENUINE\_BLOCKED} + the corpus's own
+form \(9\bar K_2^{5/2}/\bar K_0^{3/2}\) (\texttt{4d\_2\_5pn.tex:469}, INV3, imported) + \(c\)/\(a\) --- all provenance, zero
+file I/O. Register: \textbf{zero} new counted knobs, zero new dims; new structural edge \textbf{R47} --- the full 2.5PN
+Burke--Thorne match-back consistency, SHARED with R46 (the port-closure consistency counted once; 028 adds INV3/INV4/INV5 +
+the coherent-rescale matrix). Part-II counted CALIB set unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)
+(015) + \(\{T_\Omega,\beta_2\}\)(017) = 6.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- pathA\_2\_5pn\_matchback was already contract-clean, so the
+reshape ``sever the bridge'' step is a no-op; the work was rename + LOCAL-ledger idioms + the A3 provenance citation + the
+honest-scope framing + the \texttt{.wl} RE-AUTHOR. \emph{Like Stages~025/026/027, Stage~028 RE-AUTHORS its \texttt{.wl}}: the
+source \texttt{.wl} was a transliteration of the \texttt{.py}, so the mirror policy required genuinely independent routes ---
+INV1 via a \texttt{GroebnerBasis} polynomial-identity test; INV2--INV5 via \texttt{PossibleZeroQ} over positive-domain
+\texttt{Refine}/\texttt{PowerExpand}; the mutations replace complete moment expressions directly (no coefficient/config
+pipeline); the caught-by rows via \texttt{Pick}; machine-real detection via \(\texttt{FreeQ}[\ldots,\texttt{\_Real}]\).
+Transcript-level agreement, neither engine reading the other. SymPy 12 / Mathematica 12 counted EXIT-1 teeth, both exit 0,
+CWD-independent (repo root + \texttt{/tmp}, byte-identical transcripts). The directive review used the
+Codex\(\to\)Grok\(\to\)Codex bookend, which caught issues at every leg (Codex 2 BLOCKING + 2 nits \(\to\) Grok-4.5
+compute-verify \texttt{DIRECTIVE\_CLEAN} \(\to\) Codex confirm 2 BLOCKING + 1 nit \(\to\) final-confirm 1 BLOCKING \(\to\)
+\texttt{DIRECTIVE\_CLEAN}). Full tri-review on fresh agents: \texttt{FIDELITY\_CLEAN} + \texttt{ADVERSARIAL\_CLEAN}.

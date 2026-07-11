@@ -677,17 +677,48 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   `FAIL_NOT_DENSITY_DERIVED` where the scaling verdict `FAIL_PORT_MALFORMED(scaling)` is wanted; and the source `.wl` dim/DtN slice being one-for-one ports means the
   018/021 keep-native precedent does NOT transfer across gates. ⭐ **pathA_43 4-way split COMPLETE (024∧025∧026∧027); the density-native ℓ=2 radiative port is HOSTED
   (structure earned, vector-free, continuity-lineaged, well-formed, closure-consistent); the EM vector scaffold RETIRES; the magnitude stays CALIBRATED.**
-- **▶ NEXT = Cluster C `ledger_stage028`** (II-P5, the **2.5PN match-back** — `pathA_2_5pn_matchback`, consistency over CALIBRATED moments). Content = INV1–INV5 (both `Γ̄₅`
-  forms → Burke–Thorne `Γ̄₅=2G/(5c⁵)` incl. the corpus's own `9K̄₂^{5/2}/K̄₀^{3/2}`, the cross-form agreement, the moment invariant `K̄₄=4K̄₂²/K̄₀`, + the **INV5 literal
-  anchors** defeating a coherent-rescale rig) + the **11-mutation able-to-fail matrix**; `G=GENUINE_BLOCKED` carried (consistency, NOT a first-principles `Γ̄₅`/`G`
-  derivation — the full 1PN→4PN from-throat = SIM-DEFERRED Gate 6). ⚠ **The A3 boundary:** 028 CONSUMES 027's exported K̄ moments `{K̄₀,K̄₂,K̄₄,Γ̄₅}` — 027's closure is the
-  two-residual CONSISTENCY (the A3 SLOT), 028 is the FULL match-back (SHARED, not double-counted; do NOT rebuild the port derivation). ⚠ per-gate trip-up **L95**: the
-  **INV5 literal anchors are the anti-rig teeth vs the coherent-rescale mutation — never dedupe them against the closure values**. Sources (already CONTRACT-CLEAN — a
-  light reshape, like 024/pathA_43): `software/stage1_solver/notes/pathA_43_2_5pn_matchback.md` (the consolidation note) + `tools/pathA_2_5pn_matchback_{sympy.py,.wl}` (the
-  dedicated dual-engine artifact independently checking INV1–INV5 + the 11-mutation probe + the asserted caught-by matrix). ⭐ Author a running-start source map FIRST. Then
-  **029** (PN corpus DOI-cite — a THIN cite-only Part-II stage note: paper/DOI/imported-result/scope per corpus entry, NO scripts, NO re-derivation). ⭐ **Cluster C = 024–029**
-  (density port 024–027 DONE + 2.5PN match-back 028 + PN DOI-cite 029); after Cluster C the Part-II gravity sector CLOSES → the scheduled **MIDWAY KNOB AUDIT**
-  (parameter_register §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally).
+- **✅ II-P5 `ledger_stage028` DONE (2026-07-10) — the 2.5PN Burke–Thorne match-back (`pathA_2_5pn_matchback`, consistency over CALIBRATED moments); the CONSISTENCY CAP of
+  the pathA_43 density-port fold (024∧025∧026∧027∧028); the LAST COMPUTED Part-II gravity stage.** Exact-rational (moment/z-space residuals; a no-float guard). Verifies the
+  density-mode ℓ=2 port's CALIBRATED closure moments `{K̄₀=54Gc_s⁵/(5a⁵c⁵),K̄₂=6Gc_s³/(5a³c⁵),K̄₄=8Gc_s/(15ac⁵)}` reproduce the 2.5PN Burke–Thorne normalization `Γ̄₅=2G/(5c⁵)` +
+  the moment invariant `K̄₄=4K̄₂²/K̄₀` that `research/4d_2_5pn` left as its single open item, via **INV1–INV5** (all → 0 dual-engine: INV1 `K̄₄K̄₀−4K̄₂²`; INV2 the pathA_43 form
+  `K̄₀a⁵/(27c_s⁵)→BT` [the `/27` = 018's earned density-Hankel fingerprint]; INV3 the corpus's OWN form `9K̄₂^{5/2}/K̄₀^{3/2}→BT` [the `√6` cancellation `9·(6/5)^{5/2}/(54/5)^{3/2}=2/5`
+  with `54=9·6`]; INV4 cross-form `path−corpus` [⚠ ≡ INV2−INV3 IDENTICALLY, a REDUNDANT diagnostic NOT an independent tooth]; INV5 the 8 INDEPENDENT literal anchors
+  `{54/5,6/5,8/15,2/5,27,9,5/2,3/2}`) + the **11-mutation caught-by matrix**. **NO `FAIL_*`/`PASS` PHYSICS token** — `LOCAL_AUDIT_VERDICT=MATCHBACK_CONSISTENT`. ⚠⚠ **CALIBRATED
+  consistency, NOT a first-principles `Γ̄₅`/`G` derivation** (the K̄ moments = hardcoded calibrated closure inputs; `G=GENUINE_BLOCKED`, 020's provenance; `54/5`/`Γ̄₅`=`external_bridge_input`,
+  the `27`=018's `derived_in_gate`; full 1PN→4PN from-throat = SIM-DEFERRED Gate 6). ⭐⭐ **The coherent-rescale anti-rig (the L95 trip-up, adversarially proven load-bearing):** the
+  INV5 literal anchors are 028's OWN independently-restated constants (`ANCHOR_*`, `.py` L163–170 / `.wl` L105–112), NEVER deduped against the closure moments — the ONLY residuals
+  catching the coherent-rescale mutation `{K̄₀,K̄₂,K̄₄,BT}×2` (which passes INV1–INV4 by scale-covariance); DEDUPING them → the coherent-rescale row goes EMPTY → the row's
+  `actual==expected` assert EXITS 1 in BOTH engines. ⚠ **The A3 boundary:** INV1/INV2 ARE 027's two port-closure residuals re-expressed (INV1 = R46-res-1 × K̄₀, INV2 = R46-res-2),
+  **SHARED with R46 — counted ONCE**; 028 ADDS INV3/INV4/INV5 + the coherent-rescale matrix (edge **R47**). CONSUMES 027's K̄ moments as PROVENANCE (restated locally; an
+  authoring-time **A3 fidelity comparison** confirms 028's restated moments = 027's `closure_overlay` exports — a stale-citation guard, NOT a runtime tie) + 018's `27` + 020's
+  `54/5`/`G=GENUINE_BLOCKED` + the corpus form (`4d_2_5pn.tex:469`) + `c`/`a`; zero file I/O. ⭐ **Register: ZERO new counted CALIB knobs (set stays 6) + ZERO new dims** (the
+  corpus `9`/`5/2`/`3/2` = imported form literals, the INV5 anchors = 028's independent constants — NOT knobs); edge **R47** (the full match-back consistency, SHARED with R46,
+  discharges nothing); Codex-verify `REGISTER_CLEAN` first pass. ⭐⭐ **The `.wl` is RE-AUTHORED independent** (INV1 via `GroebnerBasis` polynomial-identity, INV2–INV5 via
+  `PossibleZeroQ`/`Refine`/`PowerExpand`, the caught-by matrix via `Pick`, machine-real via `FreeQ[…,_Real]`; NOT the source's config-dict/`FullSimplify[Cancel[Together]]` transliteration
+  — like 020/022/023/025/026/027's re-author). Dual-engine SymPy 12 / Mathematica 12 counted EXIT-1 teeth (the 11 caught-by rows + no-float; 14 diagnostics), CWD-independent (repo
+  root AND `/tmp`, byte-identical transcripts), zero file I/O. **Directive Codex→Grok→Codex bookend caught issues at EVERY leg** (Codex 2 BLOCKING + 2 nits [subsumed teeth
+  baseline-all-zero/`actual`-non-empty/INV4≡INV2−INV3; the in-script 11-mutation matrix is EXIT-0 not the adversarial EXIT-1 ablation + coupling meta-test; consumption reword + the
+  post-build A3 fidelity comparison; the consolidation-note path + file lengths] → **Grok-4.5 compute-verify `DIRECTIVE_CLEAN`** [SymPy-confirmed the coherent-rescale caught only by
+  the 4 INV5 anchors, the forbidden-dedupe rig passing, INV1=027-res-1×K̄₀ + INV2=027-res-2, all 12 BASE residuals=0 incl. the corpus fractional-power reduction, INV4≡INV2−INV3] →
+  Codex confirm 2 BLOCKING + 1 nit [teeth-list consistency: the `.wl`-independence + honest-scope are review GATES not EXIT-1 teeth, coherent-rescale is row 1 not a separate tooth;
+  the mandatory source map still carried the stale v1 teeth protocol] → final-confirm 1 BLOCKING [2 stale source-map headline spots] → `DIRECTIVE_CLEAN`). Tri-review CLEAN both legs
+  (arbiter re-run reproduced both engines + `FIDELITY_CLEAN` [INV1–INV5 faithful, all 12 baseline residuals=0 incl. INV3 fractional-power; caught-by matrix faithful no mutation
+  dropped; A3 fidelity genuine not a self-compare; `.wl` independent; no math-flags] + `ADVERSARIAL_CLEAN` [the decisive coherent-rescale dedupe LOAD-BEARING; all 11 caught-by rows
+  fire at their OWN assert + the coupling meta-test holds universally; the caught-by matrix genuinely runtime-computed; the `.wl` not a mirror; the de-counted set genuinely
+  non-load-bearing — INV4 has no isolated knob; all 12 counted teeth load-bearing; no reshape rig]) → **ZERO remediation** (the contract-clean lightest-reshape stage came through both
+  legs clean, like 024/027). Registration at count 28, PDF rebuilt (76pp). ⚠ **Lesson banked:** the in-script mutation matrix runs at EXIT 0 — it is NOT a substitute for the
+  adversarial per-tooth EXIT-1 ablation (blueprint §6); the `.wl`-independence + honest-scope are review/acceptance GATES not ablatable EXIT-1 residual teeth; a redundant diagnostic
+  with no isolated knob (INV4 ≡ INV2−INV3) must be honestly de-counted; and when the directive folds, the MANDATORY source map (a build input) must be kept in sync. ⭐ **pathA_43
+  density-port fold COMPLETE (024∧025∧026∧027∧028); the last COMPUTED gate of the Part-II gravity sector.**
+- **▶ NEXT = Cluster C `ledger_stage029`** (II-P6, the **PN corpus DOI-cite** — a THIN cite-only Part-II stage note, **NO scripts, NO re-derivation**). Content = per corpus entry:
+  paper / Zenodo DOI / imported-result / scope, for the 1PN→4PN + 2.5PN ladder (`research/4d_{1pn_full,1pn_bridge,2pn,2_5pn,3pn,4pn}` + `research/1pn_orbital_dynamics`; the DOIs are
+  in each `.tex` bibliography / the top-level `README.md`). It is a derivation-chain dependency the imports in 027/028 lean on (the PN match-back cites this corpus by DOI, per
+  completeness standard #3 — cited not inlined), so it needs visible in-Part provenance (a stage NOTE + a paper card, but no `scripts/`/`mathematica/` audit — the coverage row must
+  reflect a CITE-only stage, NOT a dual-engine one). ⭐ Author a running-start source map FIRST (confirm the Zenodo DOIs in the corpus `.tex` bibliographies before citing). ⭐
+  **Cluster C = 024–029** (density port 024–027 DONE + 2.5PN match-back 028 DONE + PN DOI-cite 029); after 029 the **Part-II gravity sector CLOSES → the scheduled MIDWAY KNOB AUDIT**
+  (`parameter_register.md` §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally + the (a) declared-universal-
+  constants / (b) reduction-debt split). ⚠ **029 is a NEW stage-note SHAPE** (cite-only, no scripts) — the coverage/manifest bookkeeping differs from the dual-engine stages; confirm
+  the coverage row + the manifest `final_number` handling for a script-less stage at authoring.
 
 ## Per-stage process (unchanged, calibrated)
 

@@ -3,13 +3,15 @@
 > **⭐ READ THIS FIRST after `/compact`.** It is the complete plan + the evidence that led to it. Front door = `STATUS.md` ▶ RESUME
 > HERE (thin pointer to here). Memory = [[project-pde-ledger-fold-in-plan]] (same content, condensed) + [[project-brane-existence-defect-structure]].
 
-> **⭐⭐ CURRENT STATE (2026-07-09) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** B1 blueprint (`26a06378`,
+> **⭐⭐ CURRENT STATE (2026-07-10) — Phase A COMPLETE; Phase B IN PROGRESS on branch `ledger-v2-rebuild`.** B1 blueprint (`26a06378`,
 > **`notes/ledger_v2_blueprint.md`** — the approved build directive: carry-over §3, reshape spec §5, two-tier verification §6, settled
 > decisions §9) + B2 machinery (`c4a209ac`) + the B3 two-stage pilot are all DONE; the reshape template is LOCKED and validated on all three
 > shapes (happy-path 001 / *consuming* 002 / FAIL-headline+new-Part 003). **▶ BATCHING Part-by-Part:** Part I (the medium) ✅ COMPLETE
-> (`ledger_stage004`–`007`); **Part II (gravity) IN PROGRESS at count 21 — built 001/002 + 008–021 done; ▶ NEXT = `ledger_stage022`**
-> (pathA_34 cross-ℓ, `FAIL_UNDERDETERMINED_NOT_PREDICTIVE` 1/2). ⭐ **The pathA_33 `QUAD_CALIBRATED` fold is COMPLETE** (018∧019∧020∧021;
-> the joint stays CALIBRATED not PASS, `G=GENUINE_BLOCKED`).
+> (`ledger_stage004`–`007`); **⭐⭐ Part II (gravity) ✅ COMPLETE at count 29 — built 001/002 + 008–029 done; the entire Part-II gravity
+> sector CLOSES; ▶ NEXT = the scheduled MIDWAY KNOB AUDIT** (the pathA_40 `Δr=2` codimension dry-run over Parts I–II + held-out vs
+> irreducible-route-less tally + the (a)/(b) split). Cluster C (024–029) COMPLETE: the pathA_43 density port (024–027,
+> `DENSITY_PORT_HOSTED`, CALIBRATED not PASS, `G=GENUINE_BLOCKED`) + the 2.5PN Burke–Thorne match-back (028, `MATCHBACK_CONSISTENT`) +
+> the PN corpus DOI-cite (029, the CITE-only provenance cap, R48; the FIRST cite-only stage). Edges through R48, PDF 78pp, CALIB set 6.
 > ⭐ **The LIVE per-stage trackers are `STATUS.md` ▶ RESUME HERE (thin) + `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md`
 > Progress + `research/pde_ledger_v2/notes/parameter_register.md`.** This plan doc is the stable multi-phase plan + the evidence that led to
 > it; its per-stage progress log further below is a HISTORICAL record (it lags — do NOT treat it as the live tracker).

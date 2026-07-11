@@ -710,15 +710,46 @@ operator → 024/026. 024–027 export N0_den + K̄ moments → 028. 029 backs t
   adversarial per-tooth EXIT-1 ablation (blueprint §6); the `.wl`-independence + honest-scope are review/acceptance GATES not ablatable EXIT-1 residual teeth; a redundant diagnostic
   with no isolated knob (INV4 ≡ INV2−INV3) must be honestly de-counted; and when the directive folds, the MANDATORY source map (a build input) must be kept in sync. ⭐ **pathA_43
   density-port fold COMPLETE (024∧025∧026∧027∧028); the last COMPUTED gate of the Part-II gravity sector.**
-- **▶ NEXT = Cluster C `ledger_stage029`** (II-P6, the **PN corpus DOI-cite** — a THIN cite-only Part-II stage note, **NO scripts, NO re-derivation**). Content = per corpus entry:
-  paper / Zenodo DOI / imported-result / scope, for the 1PN→4PN + 2.5PN ladder (`research/4d_{1pn_full,1pn_bridge,2pn,2_5pn,3pn,4pn}` + `research/1pn_orbital_dynamics`; the DOIs are
-  in each `.tex` bibliography / the top-level `README.md`). It is a derivation-chain dependency the imports in 027/028 lean on (the PN match-back cites this corpus by DOI, per
-  completeness standard #3 — cited not inlined), so it needs visible in-Part provenance (a stage NOTE + a paper card, but no `scripts/`/`mathematica/` audit — the coverage row must
-  reflect a CITE-only stage, NOT a dual-engine one). ⭐ Author a running-start source map FIRST (confirm the Zenodo DOIs in the corpus `.tex` bibliographies before citing). ⭐
-  **Cluster C = 024–029** (density port 024–027 DONE + 2.5PN match-back 028 DONE + PN DOI-cite 029); after 029 the **Part-II gravity sector CLOSES → the scheduled MIDWAY KNOB AUDIT**
-  (`parameter_register.md` §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II + the held-out vs irreducible-route-less tally + the (a) declared-universal-
-  constants / (b) reduction-debt split). ⚠ **029 is a NEW stage-note SHAPE** (cite-only, no scripts) — the coverage/manifest bookkeeping differs from the dual-engine stages; confirm
-  the coverage row + the manifest `final_number` handling for a script-less stage at authoring.
+- **✅ II-P6 `ledger_stage029` DONE (2026-07-10) — the PN corpus DOI-cite; the CITE-only provenance cap; Cluster C (024–029) + the ENTIRE Part-II gravity sector COMPLETE.**
+  ⚠⚠ A NEW STAGE SHAPE — **cite-only: NO `scripts/`/`mathematica/`, NO dual-engine, NO re-derivation, NO able-to-fail teeth.** Records the audited external 1PN→4PN + 2.5PN ladder —
+  the 7 Zenodo-DOI'd papers `research/{1pn_orbital_dynamics=19449058, 4d_1pn_bridge=19449653, 4d_1pn_full=19450102, 4d_2pn=19450284, 4d_2_5pn=19492270, 4d_3pn=19501724, 4d_4pn=19561056}`
+  (all 7 titles AGREE with the README, the SOLE authoritative DOI source; ⚠ NONE self-declares its DOI in source — the two 4D 1PN papers cite only the foundational Action root
+  `19449589` — so the note states the README-authoritative / not-source-cross-validated provenance honestly) — by exact DOI so the by-DOI imports in 020 (`54/5`, `external_bridge_input`)
+  + 027/028 (the 2.5PN Burke–Thorne match-back, corpus form `9K̄₂^{5/2}/K̄₀^{3/2}` at `4d_2_5pn.tex:471–473` [028's blanket `:469` TIGHTENED here, no 028 edit], normalization
+  `Γ̄₅=2G/(5c⁵)` at `:60/:797/:822`) have visible in-Part provenance (completeness standard #3, cited not inlined). ⚠⚠ **Does NOT re-derive/re-audit any PN result** (that audit lives in
+  the 7 papers); LOCAL landing `PN_CORPUS_CITED` (a documentation landing, NO `FAIL_*`/`PASS`, NO computed object). ZERO new counted knobs + ZERO new dims; provenance edge **R48**
+  (external-corpus provenance, discharges nothing; ⚠ the corpus's OWN coefficients `{κ_ρ,κ_add,κ_PV,λ_ρ,μ_{ρ,3},…}` are the papers' calibrations NOT ledger knobs — a
+  MIDWAY-KNOB-AUDIT `external_bridge_input` datum). ⭐ **The FIRST "No executable audit" coverage-class stage** — the cite-only bookkeeping: `canonical`/`reviewed`→**29**,
+  `sympy`/`mathematica`/`verified`→**28** (`verified` stops at 28, 029 is documentary-reviewed not executable-verified), a new "No executable audit | 1 | 029" class row, manifest
+  `build_order_stage` "029". ⚠ **The 029 registration also RECONCILED a stage028 lag** (028 had bumped only `canonical`/`reviewed`→28, leaving the audit trio at 27 though 028 is
+  dual-engine; trio corrected 27→28 + the provenance-index scope 001-027→001-029). Deliverables = the self-contained note + the paper card (`\claimstatus{\StatusText{Cited (External
+  Corpus)}}`; ⭐ the DOIs in a VISIBLE `\stagefield{Corpus provenance}` field + itemized list — NOT the hidden `\stagefield{Verification}` which `macros.tex` `\showstageverificationfalse`
+  OMITS from the PDF, a Codex-caught render trap; NO `\StageFile{scripts/…}`; NO verdict `\resultanchor`) + the `\input` in `stage_appendix_part02.tex` + registration; PDF 78pp (all 8
+  DOIs render, confirmed via `pdftotext`). **⭐ ADAPTED PROCESS (user-gated 2026-07-10): a doc-fidelity / DOI-verification gauntlet, NOT the script-shaped dual-engine +
+  per-tooth-ablation pipeline.** Directive Codex→Grok→Codex DOC-FIDELITY bookend caught executor-facing catches at EVERY leg (Codex 5 BLOCKING + 3 nits [Stage 033 nonexistent→020;
+  `μ_{ρ,3}` tuple; the mandated `StatusText{Cited}`; ⭐ the DOIs must be in a VISIBLE field not the render-suppressed `Verification`; the `build_order_stage` key; 16-not-17 README
+  bullets; two 4D 1PN papers; the `κ_PV`-fixed-by-matching caveat] → Grok-4.5 `DIRECTIVE_CLEAN` [independently re-verified 7/7 title→DOI AGREE, 0/7 self-declare, the 2.5PN line-map
+  exact, 16 README bullets, the 028-lag + target counts] + 1 anaphora nit → Codex confirm 1 BLOCKING [half-applied `build_order_stage`] + 2 source-map syncs → final-confirm 1 BLOCKING
+  [JSON-example validity] → `DIRECTIVE_CLEAN`). Adapted tri-review (fresh agents, citation-integrity, NO code audit, NO per-tooth ablation): `FIDELITY_CLEAN` [7/7 DOIs/titles/
+  headline-results + the 2.5PN line-map re-verified against the primary sources] + `ADVERSARIAL_CLEAN` [all 6 citation-integrity axes — DOI-swap, over-claim, dishonest-provenance, the
+  visible-field render trap, registration counts, line-map precision — actively probed clean] + Codex register-verify `REGISTER_CLEAN` (after 2 wording nits: the provenance-index 029
+  row normalized to 6 cells; "results re-verified"→"headline-result attributions cross-checked for document fidelity, no PN physics re-verified"). ⭐ **Cluster C (024–029) COMPLETE +
+  the entire Part-II gravity sector CLOSES → the scheduled MIDWAY KNOB AUDIT** (`parameter_register.md` §"MIDWAY KNOB AUDIT" — the pathA_40 `Δr=2` codimension dry-run over Parts I–II +
+  the held-out vs irreducible-route-less tally + the (a) declared-universal-constants / (b) reduction-debt split). ⭐ **Lesson banked (cite-only stage shape):** the calibrated pipeline
+  is script-shaped (dual-engine exit 0 + per-tooth EXIT-1 ablation) — for a cite-only stage it adapts to a doc-fidelity gauntlet (Codex→Grok→Codex on DOI/title/scope + a
+  citation-integrity tri-review); the coverage row is CITE-only ("No executable audit"), `verified` counts executable stages only; and the LaTeX `\showstageverificationfalse`
+  render-trap means DOI provenance must NOT live in a `Verification` field.
+
+## ▶ NEXT (Part-II gravity sector CLOSED) — the scheduled MIDWAY KNOB AUDIT
+
+**The Part-II gravity sector is COMPLETE (008–029; Cluster C 024–029 closed).** ▶ NEXT = the **MIDWAY KNOB AUDIT**
+(`parameter_register.md` §"MIDWAY KNOB AUDIT", user-scheduled 2026-07-09 to run AFTER the Part-II gravity sector closes —
+NOT deferred to Part VII): a dry-run of the Part-VII codimension technique (the pathA_40 `Δr=2` Krull-dimension count,
+scaled) over Parts I–II + a tally of held-out predictions vs the *irreducible* (route-less) knob count + the (a)
+declared-universal-constants / (b) reduction-debt split (list every value that genuinely CANNOT be derived, separate from
+the derivable-with-more-math/sim debt). Turns "are we accumulating too many knobs" into a number early enough to
+course-correct or hit a clean no-go. After the audit, the build continues per the blueprint order (Part III light already
+piloted as `ledger_stage003`; Parts IV charge / V magnetism / VI knit / VII integration remain).
 
 ## Per-stage process (unchanged, calibrated)
 

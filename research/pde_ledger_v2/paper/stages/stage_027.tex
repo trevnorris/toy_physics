@@ -1,0 +1,99 @@
+\section{Stage 027: The Density-Port Checks + Closure (Check II-P4)}
+
+\stagefield{Part / anchor}{Part II -- Gravity (the frozen-throat \(\ell=2\) radiative-port sector, Cluster C; the COMPLETING leg of a four-way split of pathA\_43 --- the port checks + closure component that OWNS the joint \texttt{DENSITY\_PORT\_HOSTED}, with the density two-port DERIVATION = Stage~024, the vector-freedom taint proof = Stage~025, and the continuity-lineage token-check = Stage~026)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Run the six able-to-fail port checks + the \(\bar K\) closure over the density-port numerator \(N_{0,\mathrm{den}}\) (derived at Stage~024, proven vector-free at Stage~025, continuity-lineaged at Stage~026): the dimension \([N_{0,\mathrm{den}}]=L^{-1}M\), the \(a^{-5}\) scaling \(P_0^{\mathrm{phys}}=(c_s/a)^2 N_{0,\mathrm{den}}/D_0\) with a-power \(-5\), the outgoing DtN sign \(+i\,z^5/27\) (\(\chi_Q=+1\)), a nonzero port, the \texttt{deferred\_scalar} SIM-inconclusive branch, and the \(\bar K\) closure (\(\bar K_4-4\bar K_2^2/\bar K_0=0\), \(\bar\Gamma_5-2G/(5c^5)=0\)). Assemble the joint \(\texttt{origin\_ok}\)/\texttt{DENSITY\_PORT\_HOSTED} from the 025 (vector-freedom) + 026 (continuity-lineage) certificates + these checks + a 027-local subject binding, and record the EM \(A_w/U,W\) vector-scaffold retirement with the completed joint.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage027_port_checks_closure_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage027_port_checks_closure_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure{} --- exact symbolic dimension-vector \((L,M,T)\) algebra, spherical-Hankel series, and exact
+rationals (\texttt{expect\_bool}/\texttt{expect\_zero} residuals, no \texttt{scipy}/\texttt{numpy}/floats/tolerances).
+The verdict is the joint \texttt{DENSITY\_PORT\_HOSTED}, which \textbf{this stage OWNS} (the completing leg; the
+Stage-023 pattern, unlike the partial legs 024/025/026). \resultanchor{\texttt{DENSITY\_PORT\_HOSTED}.}
+\(\bigstar\bigstar\) \textbf{COMPLETE \(\neq\) PASS: the joint stays CALIBRATED not PASS} --- \(G=\)\texttt{GENUINE\_BLOCKED}
+(020's provenance; \(54/5\) and \(\bar\Gamma_5=\)external\_bridge\_input, the \(27=\)018's derived\_in\_gate); the
+magnitude is SIM\_DEFERRED, only the STRUCTURE is hosted. It adds \textbf{zero} new counted knobs (a checks+closure/proof
+slice) and completes the pathA\_43 density-port fold (024\(\wedge\)025\(\wedge\)026\(\wedge\)027).
+
+\paragraph{The subject and the six checks.}
+Stage 027 CITES Stage-024's factored export (it does not re-run the inverse); the consumption-integrity oracle computes
+\(N_{0,\mathrm{den}}.\texttt{free\_symbols}\) off the actual cited expression and asserts it equals the 10-symbol host
+contract \(\{a,c_s,\rho_{\mathrm{eff}},I_{25},\Xi_Q,\eta_q,\eta_\phi,\varpi_{q_2},\varpi_{\Phi_2},\lambda_c\}\)
+(\(\{q_2,\Phi_2\}\) are coordinate metadata, not in the numerator). The six checks: (1) \textbf{DIM}
+\([N_{0,\mathrm{den}}]=(-1,1,0)=L^{-1}M\) in the \((L,M,T)\) tuple convention (via the \(\texttt{dim\_of}\)/\texttt{BASE\_DIMS}
+engine; \(\bigstar\) the \((L,M,T)\) order differs from the register header's \([L,T,M]\), a cross-convention transfer trap;
+\(\mu\)-free discipline: corrupt-\([N_0]\) fires, corrupt-\([G]\) is NO\_FAIL since \(G\notin\texttt{free\_symbols}\)).
+(2) \textbf{SCALE} \(P_0^{\mathrm{phys}}=(c_s/a)^2 N_{0,\mathrm{den}}/D_0\) has a-power \(-5\); \(\bigstar\) the \texttt{scaling}
+control (a-power \(-3\), moment \(I_{\mathrm{wrong2}}\) dim \((2,0,0)\)) compensates in the L-slot
+(\(2-3=5/2-7/2=-1\)) so \(\texttt{dim\_ok}\) stays True and \emph{only} \(\texttt{scaling\_wrong}\) fires ---
+\texttt{FAIL\_PORT\_MALFORMED(scaling)} single-tag. (3) \textbf{SIGN} the outgoing \(+i\,z^5/27\): \(\texttt{coeff}(z^5)/i=1/27\)
+(\(\chi_Q=+1\)), computed from \(\hat y_2=-3/(z\,h_2'/h_2)\) with \(h_2=j_2+i y_2\); incoming \(\to -1/27\)
+(\(\chi_Q=-1\)) \(\to\) \texttt{FAIL\_PORT\_MALFORMED(sign)}. (4) \textbf{NONZERO} \(N_{0,\mathrm{den}}\neq0\); \texttt{zero\_coupling}
+\(\to\) \texttt{FAIL\_PORT\_VANISHES}. (5) \textbf{DEFERRED} the honest SIM-inconclusive branch: uncertified \(\to\)
+\texttt{PORT\_INCONCLUSIVE\_SIM\_DEFERRED}, proven converse \(\to\) \texttt{DENSITY\_PORT\_HOSTED}. (6) \textbf{CLOSURE}
+\(\bar K_4-4\bar K_2^2/\bar K_0=0\) and \(\bar\Gamma_5-2G/(5c^5)=0\) (both standalone), with \(\bar K_0=54Gc_s^5/(5a^5c^5)\),
+\(\bar K_2=6Gc_s^3/(5a^3c^5)\), \(\bar K_4=8Gc_s/(15ac^5)\), \(\bar\Gamma_5=\bar K_0 a^5/(27c_s^5)=2G/(5c^5)\)
+(Burke--Thorne). The closure is the A3 2.5PN CONSISTENCY, SHARED with Stage~028's full match-back (marked shared, not
+double-counted); it is a consistency over the CALIBRATED moments, not a first-principles \(\bar\Gamma_5\)/\(G\) derivation.
+
+\paragraph{The joint assembly (027 OWNS the joint) and the conditional retirement.}
+027 CONSUMES the ATOMIC sibling facts (not a sibling's de-counted composite predicate): 025's taint set (\(\to
+\texttt{continuity\_interface}\in\texttt{tags}\wedge\texttt{vector\_port}\notin\texttt{tags}\)), \(\neg\texttt{vector\_host\_symbols}\),
+\texttt{source\_map\_complete}, the \texttt{vector\_free} (P2) certificate (tags are \emph{025's}, over the baseline
+\(N_{0,\mathrm{den}}\), not live-retainted); and 026's \(\texttt{moment\_valid}=\text{True}\), the validated \(I_{25}\),
+\(\texttt{lineage\_valid}\). It assembles the 027-LOCAL subject binding \(\texttt{subject\_binding}=(\texttt{port\_moment}\in
+N_{0,\mathrm{den}}.\texttt{free\_symbols})\vee(N_{0,\mathrm{den}}=0\wedge\texttt{coupling\_zero})\) --- \(\bigstar\) the
+vanished-coupling OR-arm is 027-owned (it supersedes the source's outer \(\texttt{vanished\_continuity\_coupling}\)), and
+\(\texttt{port\_moment}\) tracks the current fixture (\(I_{25}\) at baseline, \(I_{\mathrm{wrong2}}\) under scaling --- not
+026 re-earning). Then \(\texttt{origin\_ok}=(\texttt{continuity\_interface}\in\texttt{tags})\wedge(\texttt{vector\_port}\notin
+\texttt{tags})\wedge(\neg\texttt{vector\_host\_symbols})\wedge\texttt{source\_map\_complete}\wedge\texttt{vector\_free}\wedge
+(\texttt{lineage\_valid}\wedge\texttt{moment\_valid})\wedge\texttt{subject\_binding}\), and the verdict chain yields
+\texttt{DENSITY\_PORT\_HOSTED} on all-true incl closure. With the landed joint, 027 records the EM \(A_w/U,W\)
+vector-scaffold RETIREMENT + the pathA\_43 diagnostic sliver CLOSED --- \(\bigstar\) CONDITIONAL (R43/R44 deferred it here;
+a FAIL/inconclusive does not record it; the port has not displaced the scaffold).
+
+\paragraph{The able-to-fail battery (per-tooth ablation, coupling meta-test).}
+Each tooth fires at its OWN named assert and goes vacuous when neutered (verified by the adversarial per-tooth ablation
+matrix on both engines, no vacuous/subsumed/tautological construct): DIM (corrupt \([N_0]\); corrupt-\([G]\) NO\_FAIL a
+genuine scope re-run); SCALE (a-power \(-3\) \(\to\) single-tag); SIGN (incoming \(\to -1/27\)); NONZERO (\texttt{zero\_coupling}
+\(\to\) \texttt{FAIL\_PORT\_VANISHES}) + the OR-arm meta-test (disable arm 2 \(\to\) flips to
+\texttt{FAIL\_NOT\_DENSITY\_DERIVED}); CLOSURE (isolated post-construction \(\bar K_4+\delta_4\) / \(\bar\Gamma_5+\delta_\Gamma\),
+not \(\bar K_0\); a standalone \(\bar\Gamma_5\) assert added --- the source gated it only via \(\texttt{closure\_ok}\));
+DEFERRED (both directions); ASSEMBLY (each of the seven atomic sibling facts corrupted separately \(\to\) its own
+\(\texttt{origin\_ok}\) assert; \(\wedge\)\texttt{vector\_free} genuine); SUBJECT-INTEGRITY (a same-dimension/a-power foreign
+symbol \(\to\) only the host-contract assert); POSITIVE (baseline hosted, corrupt any of six checks \(\to\) flips);
+RETIREMENT-CONDITIONAL (force a FAIL \(\to\) not recorded); and the \texttt{.wl} arity/leakage runtime scanners.
+
+\paragraph{Consumed, register.}
+\emph{Consumed:} Stage-024's \(N_{0,\mathrm{den}}\) (the subject; the checkable host contract; \(\rho\equiv\rho_{\mathrm{eff}}\))
++ Stage-025's atomic vector-freedom facts + Stage-026's atomic continuity-lineage facts + Stage-018's DtN fingerprint (the
+sign gate) + Stage-021's \(\mu\)-free dim machinery (cited) + Stage-020's \(54/5\)/\(G=\)\texttt{GENUINE\_BLOCKED} (the
+closure magnitude, cited) + Stage-005 \(c_s\) + \(a\)/\(c\)/\(G\)/\(D_0\) --- all provenance. Register: \textbf{zero} new
+counted knobs; new structural edge \textbf{R46} --- the density-port checks + closure + the joint landing + the
+scaffold-retirement record (discharges nothing at the knob level, like R43/R44/R45). It upgrades the \(N_{0,\mathrm{den}}\)
+row --- the \([N_{0,\mathrm{den}}]=L^{-1}M\) dim CHECK now LANDS here (was provenance-only at 024). Part-II counted CALIB set
+unchanged at \(\{\mu_\eta,T_w,\beta\}\)(013) + \(\{V_{p0}/\ell_c\}\)(015) + \(\{T_\Omega,\beta_2\}\)(017) = 6. Exports the
+completed joint + the \(\bar K\) moments \(\{\bar K_0,\bar K_2,\bar K_4,\bar\Gamma_5\}\) to Stage~028.
+
+\paragraph{Verification.}
+Dual-engine, independent symbolic routes, zero file I/O --- pathA\_43 was already contract-clean, so the reshape ``sever the
+bridge'' step is a no-op; the work was decomposition + the joint-owning verdict framing + the \texttt{.wl} RE-AUTHOR.
+\emph{Like Stages~025/026 (and unlike Stage~024's keep-native lane), Stage~027 RE-AUTHORS its \texttt{.wl}}: the source
+\texttt{.wl} 027 slice is a transliteration of the \texttt{.py}, so the mirror policy required genuinely independent routes ---
+the DtN via native \(\texttt{SphericalHankelH1}/\texttt{H2}+\texttt{SeriesCoefficient}\); the dimension/scaling via
+unit-monomial / weight-rescaling + \texttt{Exponent}; the closure via dimensionless ratio invariants with
+\texttt{Together}/\texttt{Cancel}; the verdict via an ordered \texttt{SelectFirst}/\texttt{Association} dispatch.
+Transcript-level agreement, neither engine reading the other. SymPy 55 PASS / Mathematica 55 PASS, both exit 0,
+CWD-independent (repo root + \texttt{/tmp}). The directive review used the Codex\(\to\)Grok\(\to\)Codex bookend, which caught
+issues at every leg: a Codex xhigh pass folded 4 BLOCKING (the certificate mis-scoping + the masked vanished-coupling OR-arm
+\(\to\) 027-local subject binding; the SUBJECT-INTEGRITY tooth; re-authoring all verdict-bearing \texttt{.wl}; isolated
+\(\bar K_4/\bar\Gamma_5\) mutations), a Grok-4.5 compute-verify pass caught 1 BLOCKING (the hardcoded \(I_{25}\) subject
+binding broke the scaling control \(\to\) the current-fixture \(\texttt{port\_moment}\)) + 2 nits, a Codex confirm-pass caught
+3 BLOCKING consistency-sweep gaps, and a Codex final-confirm returned \texttt{DIRECTIVE\_CLEAN}. Full tri-review on fresh
+agents: \texttt{FIDELITY\_CLEAN} (independent re-derivation of \(N_{0,\mathrm{den}}\) from the \(2\times2\) inverse, the DtN
+\(\pm1/27\) via SymPy's own \(j_n\)/\(y_n\), both \(\bar K\) residuals \(=0\), the scaling single-tag; the \texttt{.wl}
+genuinely independent; the consumption matching the sibling exports) and \texttt{ADVERSARIAL\_CLEAN} (the full per-tooth
+ablation matrix, every tooth load-bearing, no vacuous construct) --- \textbf{zero remediation}.

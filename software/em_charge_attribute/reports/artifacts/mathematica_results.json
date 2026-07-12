@@ -1,0 +1,126 @@
+{
+	"schema":"emergent_em_mathematica\/v1",
+	"engine":"WolframLanguage",
+	"mapping":{
+		"charge_spectrum":[
+			-2,
+			-1,
+			0,
+			1,
+			2
+		],
+		"link_pair":[
+			1,
+			-1,
+			0,
+			0,
+			0,
+			0
+		],
+		"path_endpoint_charge":[
+			1,
+			0,
+			0,
+			-1,
+			0,
+			0
+		],
+		"closed_loop_divergence":[
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		],
+		"gauge_loop_invariant":true,
+		"continuity":true,
+		"uv_global_u1_broken":true
+	},
+	"embedding":{
+		"throat_embedding":true
+	},
+	"response":{
+		"maxwell_density_sign":1,
+		"maxwell_current_sign":-1,
+		"scalar_density_sign":-1,
+		"scalar_current_channels":0,
+		"scalar_verdict":"FAIL_SCALAR_SINGLE_SIGN",
+		"net_moving_like_charge_sign":1
+	},
+	"controls":{
+		"ring_off_propagating":false,
+		"ring_off_result":"NO_PROPAGATING_PHOTON",
+		"higgs_massive":true,
+		"defects_condensed_result":"HIGGS_PHOTON_MASSIVE"
+	},
+	"firewall":{
+		"photon_modes":2,
+		"force_exponent":2,
+		"flux_quantized":true
+	},
+	"single_kernel":{
+		"single_kernel":true,
+		"independent_scalar_channels":0
+	},
+	"ablations":[
+		{
+			"name":"fractional_vertex_charge",
+			"status":"TRIPPED",
+			"reason":"integer-charge guard rejected fractional q"
+		},
+		{
+			"name":"noncompact_flux",
+			"status":"TRIPPED",
+			"reason":"flux guard rejected noncompact A"
+		},
+		{
+			"name":"longitudinal_mode_retained",
+			"status":"TRIPPED",
+			"reason":"mode guard rejected three polarizations"
+		},
+		{
+			"name":"four_spatial_dimensions",
+			"status":"TRIPPED",
+			"reason":"falloff guard rejected 1\/r^3 force"
+		},
+		{
+			"name":"bare_z2_charge",
+			"status":"TRIPPED",
+			"reason":"embedding guard rejected bare Z2 as additive charge"
+		},
+		{
+			"name":"undressed_endpoint",
+			"status":"TRIPPED",
+			"reason":"embedding guard rejected missing flux dressing"
+		},
+		{
+			"name":"hand_imported_matter_u1",
+			"status":"TRIPPED",
+			"reason":"embedding guard rejected imported matter U1"
+		},
+		{
+			"name":"non_gauss_hopping",
+			"status":"TRIPPED",
+			"reason":"embedding guard rejected non-Gauss hopping"
+		},
+		{
+			"name":"second_scalar_kernel",
+			"status":"TRIPPED",
+			"reason":"single-kernel guard rejected scalar density mediator"
+		},
+		{
+			"name":"scalar_spurious_repulsion",
+			"status":"TRIPPED",
+			"reason":"scalar guard rejected repulsive sign"
+		},
+		{
+			"name":"scalar_fake_magnetic_channel",
+			"status":"TRIPPED",
+			"reason":"scalar guard rejected transverse-current channel"
+		}
+	],
+	"all_ablations_tripped":true,
+	"algebra_status":"PASS",
+	"phase_existence_scope":"CITED_NOT_COMPUTED"
+}

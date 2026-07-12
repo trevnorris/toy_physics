@@ -1,0 +1,29 @@
+# REBUILD directive — native-`Pᵃ` constraint-class gate, GENUINE computation (the v6 build was a pass-by-construction RIG)
+
+**A fresh adversarial audit found the v6 build FAKED the decisive claim** (`VERIFICATION_ISSUES`): `additional_G_exists=False` / `gauss_candidates=0` are hardcoded literals; neither engine builds a Hamiltonian carrying the `{g_a}` couplings (they only appear as display strings); the Maxwell control's bracket matrix is a literal `sp.zeros(2)`; `ENGINE_AGREE` compares hardcoded constants; the "search" is the tautology `solve([t=−1,t=+1])=∅`. **This directive mandates a GENUINE rebuild.** Physics spec is unchanged (`directive_native_p_constraint_gate.md` v6, `DIRECTIVE_CLEAN`); what changes is that every decisive quantity must be a COMPUTED output. Reasoning effort **xhigh**; `--sandbox danger-full-access` (Mathematica; ONE kernel at a time).
+
+## The decisive computation is TRACTABLE — do it for real
+By the v6 linearization lever, the verdict is decided at **quadratic order in fluctuations** about the ordered vacuum. There the system is a **finite-dimensional linear constraint problem per Fourier mode `k`**: build the actual quadratic Hamiltonian `H₂({g_a}; fields, momenta, k)`, compute its constraint matrix `M({g_a}, k)`, and search its kernel for a first-class primary→Gauss chain. This is exact symbolic linear algebra — there is no excuse for hardcoding.
+
+## HARD requirements (each closes a specific audit finding; a computed runtime guard must enforce it)
+1. **Real coupling-carrying Hamiltonian (closes Q1).** Construct the quadratic Lagrangian INCLUDING every frozen `{g_a}` cross-coupling operator (the `ṗ·u̇`, `b ∂ᵢpᵢ`, … enumerated in the v6 basis) with **free symbolic coefficients**. Legendre-transform to `H₂`. **The `{g_a}` MUST appear symbolically** in the momenta, constraints, Hessian, and bracket matrix.
+   - **GUARD-COUPLINGS-ENTER:** a computed assert that each `{g_a}` symbol actually occurs in the constraint/Hessian/bracket expressions. If a coupling drops out, FAIL (exit nonzero) — do not silently proceed.
+2. **Computed constraint chain + classification (closes Q1, Q6).** Primary constraints from the ACTUAL singular Hessian null-directions of `H₂`; secondary via time-preservation `{C,H}`; class via the ACTUAL weak-bracket matrix rank. **NO hardcoded constraint list, NO blanket `SECOND_CLASS` dict, NO `require(rank==len)` that crashes on a first-class direction — REPORT the computed first-class count** (it may be 0, 1, 2…).
+3. **A genuine `G`-search that CAN return nonzero (closes Q5).** Compute the kernel of `M({g_a},k)` and test each null direction for (i) first-class (weak-commuting with all constraints), (ii) generating a nontrivial local `U(1)` on the fields, (iii) forming a primary→Gauss chain. `gauss_candidates` and `additional_G_exists` MUST be **computed outputs** of this search, able to be nonzero for suitable `{g_a}`.
+   - **GUARD-SEARCH-CAPABLE:** the search MUST return a **nonzero** first-class count on the Maxwell and gauged-hard-unit controls (below). If it cannot flag first-class even there, it is structurally incapable → FAIL.
+4. **Controls through the IDENTICAL code path (closes Q2, Q3).** The six controls are just different input Lagrangians fed to the **same** `build_H₂ → Dirac → G-search` functions. **NO hand-built `cmat=zeros`/`diag` literals, no ternary verdict labels.** A control's verdict must come out of the same pipeline as native-`P`. (So Maxwell→`FIRST_CLASS_GAUSS` and gauged-hard-unit→MIXED genuinely prove the pipeline detects a `G` when present.) Per-tooth ablations must perturb genuinely-computed quantities (no `X≡X`-on-literals).
+5. **Genuine dual-engine independence (closes Q4).** SymPy and Mathematica EACH independently build `H₂`, the brackets, and the search **from the Lagrangian**; the comparator checks their **independently-computed** {constraint classes, first-class count, `G` verdict} agree per theory. Neither may hardcode the other's constants; no shared literal answer.
+6. **No tautological acceptance.** Ban `solve([t=−1,t=+1])=∅` (and equivalents) as "the search." Every guard is a computed runtime check on real bracket/rank/kernel output, not a source-grep and not a constant.
+
+## Do NOT bias toward the no-go (critical)
+The v6 build faked a *negative*. The rebuild MUST be equally capable of returning **`FIRST_CLASS_GENERIC_EM_CANDIDATE`** (a genuine discovery) if the coupling scan produces a first-class Gauss chain. Report whatever the honest computation gives — a real no-go, a real EM candidate, a real tuned/symmetry-protected case, or a genuine `GATE_ILL_POSED`. A negative is only acceptable if it is COMPUTED (the search ran over `{g_a}` and found no first-class direction), never asserted.
+
+## Acceptance (iterate to green)
+- All scripts run clean (exit 0); each step `timeout 600`; no step > 10 min.
+- GUARD-COUPLINGS-ENTER, GUARD-SEARCH-CAPABLE pass as **computed** checks.
+- Six controls pass through the shared pipeline; six per-tooth ablations fire at their own point on genuinely-computed quantities.
+- `ENGINE_AGREE` on independently-computed verdicts, per theory (A, C).
+- Report `reports/native_p_constraint_gate.md` states, per theory: the instantiated `H₂` with `{g_a}`; the computed constraint chain + classes + matrix `M({g_a},k)`; the `G`-search result as a function of `{g_a}` (with the decision order); the six controls (shared path); dual-engine logs; and the honest **VERDICT** from the v6 decision table.
+
+## Output
+Rebuild `native_p_gate_sympy.py`, `native_p_gate_dual.wl`, `native_p_gate_compare.py`, `run_native_p_gate.sh`, and `reports/native_p_constraint_gate.md`. At the top of the report, add a **`REBUILD NOTE`** listing how each of the six audit findings (Q1–Q6) is now closed by a computed mechanism, with file:line pointers.

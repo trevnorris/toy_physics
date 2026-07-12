@@ -1,0 +1,21 @@
+# Critical review — "EM as a decoupled charge-attribute" reframe (toy 4D superfluid analog)
+
+You are a critical, adversarial reviewer with deep **condensed-matter + gauge-theory + analog-gravity** knowledge. READ-ONLY. **Falsification is the goal — a fundamental incompatibility you can prove is a first-class result. Do NOT rubber-stamp.** Use real physics and cite real results (spin ice, `U(1)` quantum spin liquids, ³He/Volovik, supersolids, compact-QED confinement, monopole proliferation, RK points, etc.).
+
+## The problem this reframe is trying to solve
+A toy program: one compressible superfluid in 4+1D; brane (3D space) + bulk; `±w` "throats" = particles. Gravity = compression/flow (works, analog). Light = brane shear. Multiple unanimous multi-AI panels established a **computed no-go** for building EM from the medium's *collective mechanical modes*: the gauge "lock" either forces `B_eff→0` (which kills gravity's density mode) or stays *second-class*, and once light's shear is banned for EM only *scalars* remain → like-charge **attraction** + **no magnetism** = "a second attractive scalar, not electromagnetism."
+
+## The reframe under review
+`docs/em_charge_attribute_requirements.md` — read it in full. Core move: **EM lives on a separate constituent *charge-attribute* (an internal DOF), decoupled from the *density* that gives gravity** — as real matter carries gravity on *mass* and EM on *charge*. Claim: because mass ≠ charge, the density is `U(1)`-neutral **by construction**, so EM's gauge structure no longer fights gravity, and the `B_eff→0` killer *does not apply*. The remaining crux (requirement **B**) is a **first-class Gauss law on the charge-attribute**, which needs a **frustrated lattice** (ice-rule/parton) — and the doc frames the target as a **"triple"**: superflow (gravity) + frustrated lattice + first-class emergent gauge (EM) in one medium, where each *pair* is realized in a real system (³He, spin ice, supersolid) but the *triple* is (claimed) unearned-not-impossible.
+
+Companion context: `docs/em_gravity_native_ontology.md` (the broader ontology), `docs/em_gravity_mined_verdicts.md` (banked prior verdicts).
+
+## Attack these — #3 is the one we most need drilled
+1. **Is requirement C actually free?** Does putting EM on a decoupled charge-attribute *genuinely* remove the gravity-conflict, or is there a hidden re-coupling to the density? (In the model the charge sources are **throats = `±w` density defects** — so the "charge" sits on a *density* structure. Does that re-introduce a density coupling and re-open `B_eff`? This is the sharpest threat to the "free decoupling" claim.)
+2. **Is the "each pair exists, the triple is unearned-not-impossible" framing correct**, or is there a *fundamental* reason the triple cannot exist?
+3. **DRILL sub-question 2 (the crux):** Is there a **known theorem or mechanism by which superfluid *softness* — gapless phonons, a flowing/"floppy" lattice — *necessarily destroys* a coexisting frustrated-lattice first-class emergent `U(1)`** (via monopole proliferation, instanton condensation, or confinement, à la Polyakov compact QED)? Or can the emergent gauge and the superflow coexist/protect each other? Is the lattice's *dynamical softness* (it flows) fatal to the ice-rule constraint that the Gauss law needs, or tolerable? This is the make-or-break physics question — give your best real-physics answer both ways and your lean.
+4. **Is requirement A (postulating the charge-attribute) a legitimate analog move**, or does it hollow out the result — i.e., is "EM emerges from a postulated charge-attribute" just importing EM one level down rather than deriving it? Where is the line between a legitimate analog and circular assumption?
+5. **The single cheapest decisive test** of sub-question 2, and **anything obvious we are missing** — a mode not counted, a constraint that can't be satisfied, a known no-go theorem that applies.
+
+## Output
+Terse. Per-item verdict on #1–#5 with real-physics citations. Then a one-line verdict: is the charge-attribute reframe **{genuine-target / conditional-needs-X / hidden-fundamental-no-go / circular-hollow}**? Then the single most important thing to compute or research next to settle sub-question 2. Do not hedge; cite specifics. Your entire final message is the deliverable.

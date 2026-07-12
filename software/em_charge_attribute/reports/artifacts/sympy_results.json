@@ -1,0 +1,135 @@
+{
+  "ablations": [
+    {
+      "name": "bare_z2_charge",
+      "reason": "FAIL_CHARGE_POSTULATED: bare +/-w is only Z2, not additive divergence charge",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "undressed_endpoint",
+      "reason": "FAIL_CHARGE_POSTULATED: an isolated endpoint lacks its electric-flux string",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "hand_imported_matter_u1",
+      "reason": "FAIL_CHARGE_POSTULATED: a UV matter U(1) was imported",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "non_gauss_hopping",
+      "reason": "FAIL_CHARGE_POSTULATED: throat motion lacks a Gauss-preserving microscopic hop",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "scalar_spurious_repulsion",
+      "reason": "scalar guard rejected a spuriously repulsive density channel",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "scalar_fake_magnetic_channel",
+      "reason": "scalar guard rejected a fabricated transverse-current channel",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "fractional_vertex_charge",
+      "reason": "integer-charge firewall rejected fractional vertex charge",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "noncompact_flux",
+      "reason": "flux-quantization firewall rejected noncompact A",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "longitudinal_mode_retained",
+      "reason": "mode-count firewall expected 2 transverse modes, got 3",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "four_spatial_dimensions",
+      "reason": "falloff firewall expected 1/r^2 force, got 1/r^3",
+      "status": "TRIPPED"
+    },
+    {
+      "name": "second_scalar_kernel",
+      "reason": "single-kernel firewall rejected an independent scalar Coulomb channel",
+      "status": "TRIPPED"
+    }
+  ],
+  "algebra_status": "PASS",
+  "all_ablations_tripped": true,
+  "controls": {
+    "baseline_dispersion": "omega^2=U*K*|k|^2",
+    "defects_condensed_result": "HIGGS_PHOTON_MASSIVE",
+    "higgs_massive": true,
+    "ring_off_propagating": false,
+    "ring_off_result": "NO_PROPAGATING_PHOTON"
+  },
+  "embedding": {
+    "additivity_source": "oriented divergence sum, not the bare Z2 label",
+    "duality_frame": "throat = electric gauge defect; compact-U(1) magnetic monopole is distinct",
+    "elementary_identification": "+w := q=+1 endpoint; -w := q=-1 endpoint",
+    "single_throat_requires": "boundary/infinity dressing; closed lattice uses neutral pairs",
+    "throat_embedding": true
+  },
+  "engine": "SymPy",
+  "firewall": {
+    "dimensions_consistent": true,
+    "flux_quantized": true,
+    "force_exponent": 2,
+    "green_3d": "1/(4*pi*r)",
+    "photon_modes": 2
+  },
+  "mapping": {
+    "charge_spectrum": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "closed_loop_divergence": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "continuity": true,
+    "gauge_loop_invariant": true,
+    "link_pair": [
+      1,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "path_endpoint_charge": [
+      1,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "uv_global_u1_broken": true
+  },
+  "phase_existence_scope": "CITED_NOT_COMPUTED",
+  "response": {
+    "maxwell_current_sign": -1,
+    "maxwell_density_sign": 1,
+    "net_moving_like_charge_sign": 1,
+    "scalar_current_channels": 0,
+    "scalar_density_sign": -1,
+    "scalar_effective": "-g**2*rho**2/(2*k2)",
+    "scalar_verdict": "FAIL_SCALAR_SINGLE_SIGN",
+    "shared_maxwell_denominator": "k2"
+  },
+  "schema": "emergent_em_sympy/v1",
+  "single_kernel": {
+    "independent_scalar_channels": 0,
+    "single_kernel": true
+  }
+}

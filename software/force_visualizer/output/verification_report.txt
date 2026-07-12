@@ -1,0 +1,94 @@
+FORCE VISUALIZER NUMERIC VERIFICATION REPORT
+Physics source: existing force_visualizer.physics core only; rendering: none.
+PARAMETER BLOCK
+All quantities use deterministic visualization units.
+  [CALIBRATED-MAGNITUDE] c_s=1.0000000000e+01 length_unit/time_unit
+  [CALIBRATED-MAGNITUDE] lambda_gamma=1.0000000000e+00 1
+  [DERIVED-FORM] c_gamma=1.0000000000e+01 length_unit/time_unit
+  [CALIBRATED-MAGNITUDE] rho_br=1.0000000000e+00 density_unit
+  [CALIBRATED-MAGNITUDE] mu_R=1.0000000000e+02 modulus_unit
+  [CALIBRATED-MAGNITUDE] c_E=1.0000000000e+01 length_unit/time_unit
+  [FREE-UNREDUCED] rho_B0=1.0000000000e+00 density_unit
+  [FREE-UNREDUCED] chi_c=4.0000000000e+00 susceptibility_unit
+  [FREE-UNREDUCED] C_hu=1.0000000000e-01 coupling_unit
+  [DERIVED-FORM] B_eff=2.5000000000e-01 modulus_unit
+  [CALIBRATED-MAGNITUDE] G=1.0000000000e+00 length_unit^3/(mass_unit*time_unit^2)
+  [CALIBRATED-MAGNITUDE] Q_E=2.0000000000e+00 charge_unit
+  [CALIBRATED-MAGNITUDE] aT=1.0000000000e+00 amplitude_unit
+  [CALIBRATED-MAGNITUDE] aL=2.2360679775e-02 amplitude_unit
+  [CALIBRATED-MAGNITUDE] N_u=1.0000000000e+00 normalization_unit
+  [CALIBRATED-MAGNITUDE] ell=8.0000000000e-01 length_unit
+  [CALIBRATED-MAGNITUDE] mouth_half_width_b=4.0000000000e-01 length_unit
+  [CALIBRATED-MAGNITUDE] M_h=1.0000000000e+00 inertia_unit
+  [DERIVED-FORM] N0=3.3333333333e+00 1/length_unit
+  [DERIVED-FORM] yukawa_mass=2.1650635095e+00 1/length_unit
+  [CALIBRATED-MAGNITUDE] yukawa_fraction=2.0000000000e-01 1
+  [CALIBRATED-MAGNITUDE] epsilon0=2.0000000000e-01 1
+  [CALIBRATED-MAGNITUDE] epsilon1=2.0000000000e-01 1
+  [CALIBRATED-MAGNITUDE] radiation_length_a=5.0000000000e-01 length_unit
+  [CALIBRATED-MAGNITUDE] J_phase=5.0000000000e-01 phase_coupling_unit
+  [CALIBRATED-MAGNITUDE] kappa_phase=1.0000000000e+00 phase_stiffness_unit
+  [CALIBRATED-MAGNITUDE] longitudinal_display_fraction=2.2000000000e-01 1
+  [CALIBRATED-MAGNITUDE] radiation_reaction_benchmark_scale=1.0000000000e+00 1
+
+GRAVITY
+  orbit setup: masses=(1.00, 0.20) mass_unit; a=3.00 length_unit; e=0.25; N=5 periods; samples/period=1800
+  sampled 0PN state at t=1.49018824e+02 time_unit: r=(+2.25000000e+00, +1.42038645e-09) length_unit; v=(-5.04072636e-10, +8.16496581e-01) length_unit/time_unit
+  [✓] 0PN relative total-energy drift: measured=2.31502317e-12 1; expected=0.00000000e+00 1; tolerance<=1.0e-09 1
+  [✓] 1PN perihelion precession/orbit: measured=7.89944047e-02 rad/orbit; expected=8.04247719e-02 rad/orbit; tolerance=3.5%
+  optional 2.5PN inspiral-rate check: not included; the native normalization is GENUINE_BLOCKED and the configured scale is a CALIBRATED benchmark.
+  [✓] gravity drain-field direction: sample=(+2.00000000e+00, +1.00000000e+00) length_unit; measured=(-1.78885438e-01, -8.94427191e-02) field_unit; toward-mass alignment=1.00000000e+00; expected=1.00000000e+00
+
+LIGHT
+  dispersion omega(k), measured from finite-difference time evolution:
+    [✓] k=1.00000000e+00 1/length_unit: measured=9.99990550e+00 1/time_unit; expected(c_gamma*k)=1.00000000e+01 1/time_unit; tolerance=0.04%
+    [✓] k=2.00000000e+00 1/length_unit: measured=1.99992439e+01 1/time_unit; expected(c_gamma*k)=2.00000000e+01 1/time_unit; tolerance=0.04%
+    [✓] k=3.00000000e+00 1/length_unit: measured=2.99974488e+01 1/time_unit; expected(c_gamma*k)=3.00000000e+01 1/time_unit; tolerance=0.04%
+    [✓] k=4.00000000e+00 1/length_unit: measured=3.99939503e+01 1/time_unit; expected(c_gamma*k)=4.00000000e+01 1/time_unit; tolerance=0.04%
+  [✓] transverse polarization count: measured=2 modes; expected=2 modes; max(k dot epsilon)=1.06076588e-16 1/length_unit
+  [✓] lensing deflection (positive impact bends toward mass): measured=-1.59614148e-02 rad; expected=-1.60000000e-02 rad; expected_sign=negative; tolerance=2%
+
+CHARGE
+  like-pair force samples:
+    R=7.50000000e-01 length_unit; measured |F|=9.06343971e-01 force_unit
+    R=1.00000000e+00 length_unit; measured |F|=5.09818484e-01 force_unit
+    R=2.00000000e+00 length_unit; measured |F|=1.27454621e-01 force_unit
+    R=4.00000000e+00 length_unit; measured |F|=3.18636552e-02 force_unit
+  [✓] fitted force exponent p: measured=2.00000000e+00 1; expected=2.00000000e+00 1
+  [✓] like-pair radial sign: measured_force=+5.09818484e-01 force_unit, measured_sign=+1; expected_sign=+1 (repel)
+  [✓] unlike-pair radial sign: measured_force=-5.09818484e-01 force_unit, measured_sign=-1; expected_sign=-1 (attract)
+  [✓] electric-field directions at +x: positive-source E=(+5.09818484e-01, +0.00000000e+00) field_unit (expected away, +x); negative-source E=(-5.09818484e-01, +0.00000000e+00) field_unit (expected toward, -x)
+
+MAGNETISM
+  parallel-current force samples (scalar included):
+    R=8.00000000e-01 length_unit; measured |F|=7.46038796e-04 force_unit
+    R=1.25000000e+00 length_unit; measured |F|=3.05577491e-04 force_unit
+    R=2.00000000e+00 length_unit; measured |F|=1.19366207e-04 force_unit
+    R=3.50000000e+00 length_unit; measured |F|=3.89767208e-05 force_unit
+    R=6.00000000e+00 length_unit; measured |F|=1.32629119e-05 force_unit
+  [✓] fitted force exponent p: measured=2.00000000e+00 1; expected=2.00000000e+00 1
+  [✓] parallel-current radial sign: measured_force=-1.19366207e-04 force_unit, measured_sign=-1; expected_sign=-1 (attract)
+  [✓] antiparallel-current radial sign: measured_force=+1.19366207e-04 force_unit, measured_sign=+1; expected_sign=+1 (repel)
+  [✓] scalar-admixture contribution: measured_magnitude=1.98943679e-05 force_unit; measured_ratio=2.00000000e-01 1; expected_ratio=2.00000000e-01 1
+  [✓] magnetic-field circulation at +x: forward-current B=(+0.00000000e+00, +4.77464829e-04) field_unit (expected +y); reverse-current B=(+0.00000000e+00, -4.77464829e-04) field_unit (expected -y)
+
+CHARACTERIZED DEPARTURES
+  gravity [RETURN_RESIDUAL_PREDICTION] evaluation omega=2.10818511e-01 1/time_unit, source_moment=1.00000000e+00:
+    [DERIVED-FORM] monopole residual law proportional to a*(omega/c_s)*M0*epsilon0/(1+epsilon0)
+    [CALIBRATED-MAGNITUDE] monopole residual amplitude=1.75682092e-03 amplitude_unit
+    [DERIVED-FORM] dipole residual law proportional to a^3*(omega/c_s)^3*D1*epsilon1/[2*(1+epsilon1)]
+    [CALIBRATED-MAGNITUDE] dipole residual amplitude=9.76011624e-08 amplitude_unit
+    [CALIBRATED-MAGNITUDE] bounded drain factor=1.66666667e-01 1
+  light [FAIL_CAUCHY_STRAY_LONGITUDINAL]:
+    [DERIVED-FORM] stray-longitudinal presence=1.00000000e+00 mode
+    [DERIVED-FORM] longitudinal speed=4.47213595e-01 length_unit/time_unit
+    [CALIBRATED-MAGNITUDE] display fraction=2.20000000e-01 1
+  charge [YUKAWA_PARTNER_CORRECTION] at R=8.00000000e-01 length_unit:
+    [DERIVED-FORM] Yukawa mass gap=2.16506351e+00 1/length_unit
+    [CALIBRATED-MAGNITUDE] Yukawa force correction=7.70077194e-02 force_unit; fraction_of_Coulomb=9.66715449e-02 1
+  magnetism [FIELD_SCALAR_VECTOR_DEPARTURE] at R=2.00000000e+00 length_unit:
+    [DERIVED-FORM] scalar-current force contribution=1.98943679e-05 force_unit
+    [CALIBRATED-MAGNITUDE] scalar/transverse ratio=2.00000000e-01 1
+    [CALIBRATED-MAGNITUDE] preferred-frame residual=0.00000000e+00 length_unit^2/time_unit^2 (zero by calibrated c_E=c_gamma default)
+
+SUMMARY: 18 checks passed of 18 total.

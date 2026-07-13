@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import math
 import re
@@ -168,6 +169,38 @@ def parsed_source_contains(source_text: str, probe: str) -> bool:
 
 
 def source_completeness(data: dict[str, Any], attacks: dict[str, str]) -> dict[str, Any]:
+    policy = data["operative_action_decision"]
+    decision_rel = policy["source_file"]
+    decision_text = (ROOT / decision_rel).read_text()
+    require(policy["id"] == "decision_16_retire_brane_polar_field" and policy["status"] == "OPERATIVE" and
+            decision_rel == "software/stage1_solver/decisions/16_retire_brane_polar_field.md",
+            "SOURCE_COMPLETENESS", "Decision 16 is not the operative action policy")
+    citation_matches: list[str] = []
+    for fragment in policy["required_source_fragments"]:
+        require(parsed_source_contains(decision_text, fragment),
+                "SOURCE_COMPLETENESS", f"Decision 16 citation mismatch: {fragment}")
+        citation_matches.append(fragment)
+
+    expected_ids = set(policy["expected_action_term_ids"])
+    retired_ids = set(policy["retired_action_term_ids"])
+    retired_symbols = set(policy["retired_expression_symbols"])
+    assembled_ids = [row["id"] for row in data["action_terms"]]
+    require(len(assembled_ids) == len(set(assembled_ids)),
+            "SOURCE_COMPLETENESS", "duplicate assembled action id")
+    for term in data["action_terms"]:
+        expression_symbols = set(re.findall(r"[A-Za-z_][A-Za-z_0-9]*", term["expression"]))
+        intrusion = term["id"] in retired_ids or bool(expression_symbols & retired_symbols)
+        if intrusion:
+            require(term.get("decision_citation") == decision_rel,
+                    "SOURCE_COMPLETENESS",
+                    f"retired P term lacks Decision 16 citation: {term['id']}")
+            require(False, "SOURCE_COMPLETENESS",
+                    f"retired P term cannot be assembled under Decision 16: {term['id']}")
+    missing = sorted(expected_ids - set(assembled_ids))
+    unexpected = sorted(set(assembled_ids) - expected_ids)
+    require(not missing, "SOURCE_COMPLETENESS", f"missing P-retired whitelisted terms {missing}")
+    require(not unexpected, "SOURCE_COMPLETENESS", f"unexpected assembled terms {unexpected}")
+
     cache: dict[str, str] = {}
     matched: list[dict[str, str]] = []
     for term in data["action_terms"]:
@@ -178,8 +211,8 @@ def source_completeness(data: dict[str, Any], attacks: dict[str, str]) -> dict[s
                 "SOURCE_COMPLETENESS", f"parsed source mismatch {term['id']}")
         matched.append({"id": term["id"], "source_file": rel, "source_fragment": term["source_contains"]})
 
-    # Load the immutable action blocks and derive their additive monomials from
-    # the source bytes.  No expected term table is embedded in this script.
+    # Load the legacy immutable blocks. Their P records are now negative
+    # retirement evidence, not members of the operative assembled action.
     t0_text = (ROOT / "software/stage1_solver/reports/pathA_24_T0_freeze.md").read_text()
     g0_text = (ROOT / "software/stage1_solver/reports/pathA_35_G0_freeze.md").read_text()
     t0 = extract_fence(t0_text, "freeze-action")
@@ -195,33 +228,28 @@ def source_completeness(data: dict[str, Any], attacks: dict[str, str]) -> dict[s
             break
         if in_pol and re.match(r"^[+-]?\s*\(1/[24]\) m rho", line):
             polar_lines.append(line.lstrip("+- ").rstrip("."))
-    action_fragments = [row["source_contains"].lstrip("+- ").rstrip(".") for row in data["action_terms"]]
-    for fragment in polar_lines:
-        fragment_tokens = math_tokens(fragment)
-        require(any(fragment_tokens == math_tokens(action) for action in action_fragments),
-                "SOURCE_COMPLETENESS", f"missing source monomial {fragment}")
+    require(len(polar_lines) == 3, "SOURCE_COMPLETENESS", "legacy T0 polar manifest changed")
 
-    # The G0 block explicitly carries the parent quantum-pressure term and all
-    # three brane blocks.  Definitions are discovered from the fence itself.
+    # The G0 block explicitly carries the parent quantum-pressure term and the
+    # brane blocks. Definitions are discovered from the fence itself; L_Pu is
+    # separated into the Decision-16-retired evidence set.
     g0_records = [math_tokens(line) for line in g0.splitlines()]
     discovered_definitions = sorted({record[0] for record in g0_records
                                      if len(record) > 1 and record[1] == ":=" and
                                      (record[0] == "QP" or record[0].startswith("L_"))})
     require(len(discovered_definitions) >= 4, "SOURCE_COMPLETENESS", "source parser missed G0 action definitions")
-    ids = {row["id"] for row in data["action_terms"]}
-    # Membership follows source-derived monomial count/shape; deletion of any
-    # polar term makes the source-to-assembly cover non-surjective.
-    polar_assembled = [row for row in data["action_terms"] if row["id"].startswith("polar_")]
-    require(len(polar_assembled) == len(polar_lines), "SOURCE_COMPLETENESS", "T0 polar monomial coverage")
     # These mandatory records are discovered in the immutable G0 fence itself.
     # Comparing their parsed token trees catches deletion of the exact R1 terms
     # even when the remaining YAML rows still point at valid source text.
-    mandatory_g0 = []
+    discovered_g0_records = []
     for raw in g0.splitlines():
         line = raw.strip().lstrip("+- ").rstrip(".")
         if ("QP :=" in line or "mu_R Omega_u^a Omega_u^a" in line or
                 line.startswith("L_Pu :=")):
-            mandatory_g0.append(line)
+            discovered_g0_records.append(line)
+    retired_g0 = [line for line in discovered_g0_records if line.startswith("L_Pu :=")]
+    mandatory_g0 = [line for line in discovered_g0_records if not line.startswith("L_Pu :=")]
+    require(len(retired_g0) == 1, "SOURCE_COMPLETENESS", "legacy L_Pu retirement record changed")
     assembled_fragments = [row["source_contains"] for row in data["action_terms"]]
     for fragment in mandatory_g0:
         expected = math_tokens(fragment)
@@ -233,10 +261,19 @@ def source_completeness(data: dict[str, Any], attacks: dict[str, str]) -> dict[s
     return {
         "loaded_files": sorted(cache),
         "matched_assembled_terms": matched,
-        "source_derived_polar_monomials": polar_lines,
+        "operative_decision_citation": {
+            "id": policy["id"], "status": policy["status"], "source_file": decision_rel,
+            "sha256": hashlib.sha256(decision_text.encode()).hexdigest(),
+            "matched_source_fragments": citation_matches,
+        },
+        "expected_p_retired_action_ids": sorted(expected_ids),
+        "retired_action_ids": sorted(retired_ids),
+        "retired_parameter_rows": list(policy["retired_parameter_rows"]),
+        "legacy_retired_t0_polar_monomials": polar_lines,
         "source_derived_g0_definitions": discovered_definitions,
         "source_derived_mandatory_g0_records": mandatory_g0,
-        "assembled_ids": sorted(ids),
+        "source_derived_retired_g0_records": retired_g0,
+        "assembled_ids": sorted(assembled_ids),
     }
 
 
@@ -256,16 +293,10 @@ def dimensional_firewall(data: dict[str, Any]) -> list[dict[str, Any]]:
         ("wall_double_well", dims["aB"]),
         ("wall_gradient", dadd(dims["kappaB"], dscale(GRAD, 2))),
         ("wall_shear_gate", dims["muR4"]),
-        ("wall_anisotropy", dims["alphaAniso"]),
     ]
-    cs2 = (2, -2, 0)
     rows.extend([
-        ("polar_kinetic", dadd(dims["m_GNLS"], N, dscale(L, 2), dscale(TINV, 2))),
-        ("polar_gradient", dadd(dims["m_GNLS"], N, cs2, dscale(L, 2), dscale(GRAD, 2))),
-        ("polar_quartic", dadd(dims["m_GNLS"], N, cs2)),
         ("brane_shear_kinetic", dadd(dscale(dims["ellg"], -1), dims["rhoBr"], dscale(dadd(L, TINV), 2))),
         ("brane_shear_gradient", dadd(dscale(dims["ellg"], -1), dims["muR"])),
-        ("Pu_coupling", dadd(dscale(dims["ellg"], -1), dims["lambdaPu"])),
         ("uw_kinetic", dadd(dscale(dims["ellg"], -1), dims["rhoBr"], dscale(dadd(L, TINV), 2))),
         ("uw_gap", dadd(dscale(dims["ellg"], -1), dims["rhoBr"], dscale(dims["OmegaW"], 2), dscale(L, 2))),
         ("h_kinetic", dadd(dims["Mh"], dscale(dims["cE"], -2), dscale(TINV, 2))),
@@ -356,9 +387,8 @@ def sphere_area(d: int) -> sp.Expr:
 
 ACTION_PRIMITIVES = (
     "n", "theta_t", "v2", "n_grad2", "chiB", "chi_grad2",
-    "ud_curl2", "Pnormal2", "f_throat", "f_mix", "DtP2",
-    "P_grad2", "P2", "g_ell", "u_t2", "u_curl2", "Pt",
-    "u_curl", "uw_t2", "uw", "h_t2", "h_grad2",
+    "ud_curl2", "f_throat", "f_mix", "g_ell", "u_t2",
+    "u_curl2", "uw_t2", "uw", "h_t2", "h_grad2",
 )
 
 
@@ -394,9 +424,9 @@ def derive_channel_operator(data: dict[str, Any], values: dict[str, sp.Expr],
     hbar, m, rho, K = (values[x] for x in ("hbar", "m_GNLS", "rho_inf", "K_EOS"))
     r = sp.Symbol("r", positive=True)
     eps = sp.Symbol("epsilon", real=True)
-    dn, theta, chi, Pt, Pr, uT, uw, h = sp.symbols("dn theta chi Pt Pr uT uw h", real=True)
-    dn_r, theta_r, chi_r, Pt_r, Pr_r, u_curl, h_r = sp.symbols(
-        "dn_r theta_r chi_r Pt_r Pr_r u_curl h_r", real=True)
+    dn, theta, chi, uT, uw, h = sp.symbols("dn theta chi uT uw h", real=True)
+    dn_r, theta_r, chi_r, u_curl, h_r = sp.symbols(
+        "dn_r theta_r chi_r u_curl h_r", real=True)
     drain_gradient = sp.simplify(-values["mdot"] / (hbar * rho * sphere_area(d)) * r ** (1 - d))
     static_subs = {
         p["n"]: rho + eps * dn,
@@ -406,17 +436,11 @@ def derive_channel_operator(data: dict[str, Any], values: dict[str, sp.Expr],
         p["chiB"]: eps * chi,
         p["chi_grad2"]: eps**2 * chi_r**2,
         p["ud_curl2"]: 0,
-        p["Pnormal2"]: 0,
         p["f_throat"]: 0,
         p["f_mix"]: 0,
-        p["DtP2"]: 0,
-        p["P_grad2"]: eps**2 * (Pt_r**2 + Pr_r**2),
-        p["P2"]: (1 + eps * Pr) ** 2 + eps**2 * Pt**2,
         p["g_ell"]: 1,
         p["u_t2"]: 0,
         p["u_curl2"]: eps**2 * u_curl**2,
-        p["Pt"]: eps * Pt,
-        p["u_curl"]: eps * u_curl,
         p["uw_t2"]: 0,
         p["uw"]: eps * uw,
         p["h_t2"]: 0,
@@ -427,8 +451,8 @@ def derive_channel_operator(data: dict[str, Any], values: dict[str, sp.Expr],
         expanded = sp.series(expr.subs(static_subs), eps, 0, 3).removeO().expand()
         quadratic_by_term[term_id] = sp.simplify(expanded.coeff(eps, 2))
     quadratic = sp.simplify(sum(quadratic_by_term.values()))
-    fields = [dn, theta, chi, Pt, Pr, uT, uw, h]
-    gradients = [dn_r, theta_r, chi_r, Pt_r, Pr_r, u_curl, h_r]
+    fields = [dn, theta, chi, uT, uw, h]
+    gradients = [dn_r, theta_r, chi_r, u_curl, h_r]
     curvature = sp.simplify(sp.hessian(quadratic, fields))
     gradient = sp.simplify(sp.hessian(quadratic, gradients))
     mixed = sp.Matrix([[sp.simplify(sp.diff(quadratic, f, g)) for g in gradients] for f in fields])
@@ -439,25 +463,20 @@ def derive_channel_operator(data: dict[str, Any], values: dict[str, sp.Expr],
          "gradient": gradient[2, 2], "curvature": curvature[2, 2]},
         {"id": "bound_phase", "field": "theta", "dimension": d, "ell": 0,
          "gradient": gradient[1, 1], "curvature": curvature[1, 1], "continuity": True},
-        {"id": "polar_tangent", "field": "P_tangent", "dimension": d, "ell": 0,
-         "gradient": gradient[3, 3], "curvature": curvature[3, 3]},
-        {"id": "polar_radial", "field": "P_radial", "dimension": d, "ell": 0,
-         "gradient": gradient[4, 4], "curvature": curvature[4, 4]},
         {"id": "brane_shear", "field": "u_transverse", "dimension": db, "ell": 1,
-         "gradient": gradient[5, 5], "curvature": sp.Integer(0), "brane_profile": "g_ell(w)"},
+         "gradient": gradient[3, 3], "curvature": sp.Integer(0), "brane_profile": "g_ell(w)"},
         {"id": "uw", "field": "u_w", "dimension": db, "ell": 0,
-         "gradient": sp.Integer(0), "curvature": curvature[6, 6],
+         "gradient": sp.Integer(0), "curvature": curvature[4, 4],
          "algebraic": True},
         {"id": "h", "field": "h", "dimension": d, "ell": 0,
-         "gradient": gradient[6, 6], "curvature": curvature[7, 7], "open_coefficients": ["Mh", "cE"]},
+         "gradient": gradient[4, 4], "curvature": curvature[5, 5], "open_coefficients": ["Mh", "cE"]},
     ]
     operator_entries = {
         "density_gradient": gradient[0, 0], "density_EOS_curvature": curvature[0, 0],
         "phase_gradient": gradient[1, 1], "wall_gradient": gradient[2, 2],
-        "wall_well_curvature": curvature[2, 2], "polar_tangent_gradient": gradient[3, 3],
-        "polar_radial_curvature": curvature[4, 4], "shear_curl": gradient[5, 5],
-        "Pu_cross": mixed[3, 5], "uw_curvature": curvature[6, 6],
-        "h_gradient": gradient[6, 6], "drain_density_phase": mixed[0, 1],
+        "wall_well_curvature": curvature[2, 2], "shear_curl": gradient[3, 3],
+        "uw_curvature": curvature[4, 4], "h_gradient": gradient[4, 4],
+        "drain_density_phase": mixed[0, 1],
     }
     return {
         "channels": channel_rows,
@@ -477,28 +496,13 @@ def derive_channels(data: dict[str, Any], values: dict[str, sp.Expr]) -> list[di
     return derive_channel_operator(data, values)["channels"]
 
 
-def coupled_indicial_analysis(data: dict[str, Any], values: dict[str, sp.Expr],
-                              operator: dict[str, Any]) -> dict[str, Any]:
-    """Eliminate the bulk P half-spaces and test the actual P--u Hessian."""
+def coupled_indicial_analysis(data: dict[str, Any], operator: dict[str, Any]) -> dict[str, Any]:
+    """Check the surviving drain-induced density--phase degree mixing."""
     d = len(data["ambient"]["coordinates"])
     nu = sp.Symbol("nu", real=True)
     drain_diag_degree = -nu - 2
     drain_cross_degree = -nu - d
     drain_degree_difference = sp.simplify(drain_cross_degree - drain_diag_degree)
-    k, w, P0 = sp.symbols("k w P0", positive=True)
-    AP = sp.simplify(operator["entries"]["polar_tangent_gradient"])
-    mu = sp.simplify(operator["entries"]["shear_curl"])
-    lam = sp.simplify(operator["entries"]["Pu_cross"])
-    profile = P0 * sp.exp(-k * w)
-    half_energy = sp.integrate(AP * (sp.diff(profile, w) ** 2 + k**2 * profile**2) / 2,
-                               (w, 0, sp.oo))
-    two_sided_energy = sp.simplify(2 * half_energy)
-    surface_stiffness = sp.simplify(sp.diff(two_sided_energy, P0, 2))
-    coupled_hessian = sp.Matrix([[surface_stiffness, lam * k], [lam * k, mu * k**2]])
-    determinant = sp.factor(coupled_hessian.det())
-    witness_k = sp.simplify(lam**2 / (4 * AP * mu))
-    witness_det = sp.factor(determinant.subs(k, witness_k))
-    unstable = numeric_sign(witness_det) == -1
     return {
         "density_phase": {
             "cross_coefficient": str(operator["entries"]["drain_density_phase"]),
@@ -508,18 +512,7 @@ def coupled_indicial_analysis(data: dict[str, Any], values: dict[str, sp.Expr],
             "leading_exponents_shifted": not bool(d > 2),
             "computed_conclusion": "SUBLEADING_FOR_D_GT_2",
         },
-        "Pu": {
-            "bulk_profile_solve": "P(k,w)=P0*exp(-k*abs(w))",
-            "two_sided_bulk_energy": str(two_sided_energy),
-            "surface_stiffness": str(surface_stiffness),
-            "hessian": [[str(x) for x in row] for row in coupled_hessian.tolist()],
-            "determinant": str(determinant),
-            "witness_k": str(witness_k),
-            "witness_determinant": str(witness_det),
-            "classification": "UNSTABLE_HELICAL" if unstable else "NONNEGATIVE",
-            "dependencies": sorted(str(s) for s in (AP.free_symbols | mu.free_symbols | lam.free_symbols)),
-        },
-        "changes_scalar_channel_verdict": unstable,
+        "changes_scalar_channel_verdict": False,
     }
 
 
@@ -527,7 +520,6 @@ def action_term_removal_probes(data: dict[str, Any], values: dict[str, sp.Expr],
                                base_operator: dict[str, Any]) -> dict[str, Any]:
     targets = {
         "quantum_pressure": "density_gradient",
-        "Pu_coupling": "Pu_cross",
         "brane_shear_gradient": "shear_curl",
     }
     output: dict[str, Any] = {}
@@ -679,7 +671,7 @@ def zero_mode_operator(data: dict[str, Any], values: dict[str, sp.Expr], attacks
     require(residual == 0, "ZERO_MODE", str(residual))
     return {
         "branch": "force_balance",
-        "operator_object": "D_E=(-A_n Laplacian+U''(n0)) on delta_n, plus translated throat-source block; analogous Hessian/balance blocks for chiB,P,u,h and endpoint traces",
+        "operator_object": "D_E=(-A_n Laplacian+U''(n0)) on delta_n, plus translated throat-source block; analogous Hessian/balance blocks for chiB,u,h and endpoint traces",
         "density_balance_expression": str(-A * lap(n0) + Up - source),
         "density_source_expression": str(source),
         "right_zero_mode": str(z),
@@ -753,7 +745,6 @@ def radial_profiles(data: dict[str, Any], values: dict[str, sp.Expr]) -> dict[st
     hbar, m, rho, K = (mp_float(values[x], values) for x in ("hbar", "m_GNLS", "rho_inf", "K_EOS"))
     kd = math.sqrt(abs(20 * m * K * rho**4 / hbar**2))
     kw = math.sqrt(abs(2 * mp_float(values["aB"], values) / mp_float(values["kappaB"], values)))
-    kr = math.sqrt(2) / a
 
     def gap_profile(k: float, order: float) -> tuple[Callable[[float], float], Callable[[float], float]]:
         power = 1 - d / 2
@@ -765,20 +756,10 @@ def radial_profiles(data: dict[str, Any], values: dict[str, sp.Expr]) -> dict[st
 
     density, density_d = gap_profile(kd, d / 2 - 1)
     wall, wall_d = gap_profile(kw, d / 2 - 1)
-    polar_radial, polar_radial_d = gap_profile(kr, d / 2 - 1)
-    bulk_power = d - 2
-    response_power = d - 1
-    brane_power = len(data["ambient"]["brane_coordinates"])
-
     return {
         "density": density, "density_d": density_d,
         "wall": wall, "wall_d": wall_d,
-        "polar_radial": polar_radial, "polar_radial_d": polar_radial_d,
-        "massless_bulk": lambda r: (a / r) ** (d - 2),
-        "massless_bulk_d": lambda r: -bulk_power * a**bulk_power * r ** (-bulk_power - 1),
         "response_bulk": lambda r: (a / r) ** (d - 1),
-        "massless_brane_l1": lambda r: (a / r) ** brane_power,
-        "massless_brane_l1_d": lambda r: -brane_power * a**brane_power * r ** (-brane_power - 1),
     }
 
 
@@ -827,16 +808,12 @@ def compute_moments(data: dict[str, Any], values: dict[str, sp.Expr], responses:
     unit_tilt_grad = Sd / d * tilt_nu**2 * a ** (d - 2) / (2 * tilt_nu - d + 2)
     unit_gap_grad_density = Sd / d * quad_gap(lambda r: r ** (d - 1) * profiles["density_d"](r) ** 2, a)
     unit_gap_grad_wall = Sd / d * quad_gap(lambda r: r ** (d - 1) * profiles["wall_d"](r) ** 2, a)
-    unit_gap_grad_pr = Sd / d * quad_gap(lambda r: r ** (d - 1) * profiles["polar_radial_d"](r) ** 2, a)
     unit_gap_l2_density = Sd / d * quad_gap(lambda r: r ** (d - 1) * profiles["density"](r) ** 2, a)
     unit_gap_l2_wall = Sd / d * quad_gap(lambda r: r ** (d - 1) * profiles["wall"](r) ** 2, a)
     unit_tilt_l2 = Sd * a**d / (2 * tilt_nu - d)
     unit_response_l2 = Sd * a**d / (d - 2)
     unit_brane_grad = Sb / db * brane_nu**2 * a ** (db - 2) / (2 * brane_nu - db + 2)
     unit_brane_l2 = Sb * a**db / (2 * brane_nu - db)
-    unit_pu_cross = Sb / db * quad_inf(
-        lambda r: r ** (db - 1) * profiles["massless_bulk"](r) *
-        (-profiles["massless_brane_l1_d"](r)), a)
 
     # The odd first-order/cross angular moment is evaluated rather than asserted.
     theta = sp.Symbol("theta", real=True)
@@ -846,7 +823,6 @@ def compute_moments(data: dict[str, Any], values: dict[str, sp.Expr], responses:
     moments_out: dict[str, Any] = {}
     moments_expr: dict[str, dict[str, sp.Expr]] = {}
     tilt_phase = traces["tilt_phase"]
-    tilt_polar = traces["tilt_polar"]
     tilt_shear = traces["tilt_shear"]
     tilt_h = traces["tilt_h"]
     for ep in ENDPOINTS:
@@ -861,10 +837,6 @@ def compute_moments(data: dict[str, Any], values: dict[str, sp.Expr], responses:
         U_XX = sp.Float(unit_brane_grad, 14) * (traces["shear_transverse"] + beta) ** 2
         U_XP = sp.Float(unit_brane_l2, 14) * (traces["shear_transverse"] + beta) * tilt_shear
         U_PP = sp.Float(unit_brane_l2, 14) * tilt_shear**2
-        P_XX = (sp.Float(unit_massless_grad, 14) * traces["polar_tangent"]**2
-                + sp.Float(unit_gap_grad_pr, 14) * traces["polar_radial"]**2)
-        P_XP = sp.Integer(0) * traces["polar_tangent"] * tilt_polar
-        P_PP = sp.Float(unit_tilt_l2, 14) * tilt_polar**2
         H_XX = sp.Float(unit_massless_grad, 14) * traces["h_scalar"]**2
         H_XP = sp.Integer(0) * traces["h_scalar"] * tilt_h
         H_PP = sp.Float(unit_tilt_l2, 14) * tilt_h**2
@@ -872,16 +844,12 @@ def compute_moments(data: dict[str, Any], values: dict[str, sp.Expr], responses:
             "B_X": sp.Integer(0), "B_p": sp.Integer(0), "B_Xp": sp.Integer(0),
             "N_UU": N_UU, "N_UW": N_UW, "N_WW": N_WW,
             "U_XX": sp.expand(U_XX), "U_XP": sp.expand(U_XP), "U_PP": sp.expand(U_PP),
-            "P_XX": sp.expand(P_XX), "P_XP": sp.expand(P_XP), "P_PP": sp.expand(P_PP),
             "H_XX": sp.expand(H_XX), "H_XP": sp.expand(H_XP), "H_PP": sp.expand(H_PP),
             "I_density_grad": sp.Float(unit_gap_grad_density, 14) * traces["density_delta"]**2,
             "I_density_l2": sp.Float(unit_gap_l2_density, 14) * traces["density_delta"]**2,
             "I_wall_grad": sp.Float(unit_gap_grad_wall, 14) * traces["wall_delta"]**2,
             "I_wall_l2": sp.Float(unit_gap_l2_wall, 14) * traces["wall_delta"]**2,
-            "I_polar_grad": sp.Float(unit_tilt_grad, 14) * tilt_polar**2,
-            "I_polar_quartic": sp.Float(unit_tilt_l2, 14) * tilt_polar**2,
             "I_shear_grad": sp.Float(unit_brane_grad, 14) * tilt_shear**2,
-            "I_Pu_cross": sp.Float(unit_pu_cross, 14) * tilt_polar * tilt_shear,
             "I_h_grad": sp.Float(unit_tilt_grad, 14) * tilt_h**2,
         }
         moments_expr[ep] = rows
@@ -910,10 +878,10 @@ def term_map(expr: sp.Expr) -> list[dict[str, Any]]:
 def build_effective_action(data: dict[str, Any], symbols: dict[str, sp.Symbol],
                            moments: dict[str, dict[str, sp.Expr]], attacks: dict[str, str]) -> tuple[dict[str, Any], dict[str, str], list[dict[str, Any]], dict[str, dict[str, sp.Expr]]]:
     V, pd, p = sp.symbols("V pd p", real=True)
-    hbar, m, rhoBr, a, Mh, cE = (symbols[x] for x in ("hbar", "m_GNLS", "rhoBr", "a", "Mh", "cE"))
+    hbar, m, rhoBr, Mh, cE = (symbols[x] for x in ("hbar", "m_GNLS", "rhoBr", "Mh", "cE"))
     rho = symbols["rho_inf"]
     symbolic_values = {name: symbol for name, symbol in symbols.items() if name != "a"}
-    symbolic_values["a"] = a
+    symbolic_values["a"] = symbols["a"]
     assembled = assemble_action_terms(data, symbolic_values)
     operator = derive_channel_operator(data, symbolic_values, assembled)
     primitive = assembled["primitives"]
@@ -930,19 +898,16 @@ def build_effective_action(data: dict[str, Any], symbols: dict[str, sp.Symbol],
         GVV_terms = {
             "bulk_flow_kinetic": m * z["N_UU"],
             "brane_shear_kinetic": rhoBr * z["U_XX"],
-            "polar_kinetic": m * a**2 * z["P_XX"],
             "h_kinetic": Mh * z["H_XX"] / cE**2,
         }
         GVP_terms = {
             "bulk_flow_kinetic": m * z["N_UW"],
             "brane_shear_kinetic": rhoBr * z["U_XP"],
-            "polar_kinetic": m * a**2 * z["P_XP"],
             "h_kinetic": Mh * z["H_XP"] / cE**2,
         }
         GPP_terms = {
             "bulk_flow_kinetic": m * z["N_WW"],
             "brane_shear_kinetic": rhoBr * z["U_PP"],
-            "polar_kinetic": m * a**2 * z["P_PP"],
             "h_kinetic": Mh * z["H_PP"] / cE**2,
         }
         KPP_terms = {
@@ -950,10 +915,7 @@ def build_effective_action(data: dict[str, Any], symbols: dict[str, sp.Symbol],
             "bulk_EOS": operator["entries"]["density_EOS_curvature"] * z["I_density_l2"],
             "wall_gradient": operator["entries"]["wall_gradient"] * z["I_wall_grad"],
             "wall_double_well": operator["entries"]["wall_well_curvature"] * z["I_wall_l2"],
-            "polar_gradient": operator["entries"]["polar_tangent_gradient"] * z["I_polar_grad"],
-            "polar_quartic": operator["curvature_hessian"][3, 3] * z["I_polar_quartic"],
             "brane_shear_gradient": operator["entries"]["shear_curl"] * z["I_shear_grad"],
-            "Pu_coupling": 2 * operator["entries"]["Pu_cross"] * z["I_Pu_cross"],
             "h_gradient": operator["entries"]["h_gradient"] * z["I_h_grad"],
         }
         GVV, GVP, GPP, KPP = map(lambda table: sp.expand(sum(table.values())), (GVV_terms, GVP_terms, GPP_terms, KPP_terms))
@@ -974,8 +936,6 @@ def build_effective_action(data: dict[str, Any], symbols: dict[str, sp.Symbol],
         term_contributions["bulk_berry"] = sp.expand(-berry_coeff * z["B_X"] * V + berry_coeff * z["B_p"] * pd - berry_coeff * z["B_Xp"] * p * V)
         flow_coeff = sp.simplify(sp.diff(action["bulk_flow_kinetic"], primitive["v2"]) / primitive["n"])
         term_contributions["bulk_flow_kinetic"] = sp.expand(flow_coeff * (z["N_UU"] * V**2 + 2 * z["N_UW"] * V * pd + z["N_WW"] * pd**2))
-        polar_kin_coeff = sp.simplify(sp.diff(action["polar_kinetic"], primitive["DtP2"]) / primitive["n"])
-        term_contributions["polar_kinetic"] = sp.expand(polar_kin_coeff * (z["P_XX"] * V**2 + 2 * z["P_XP"] * V * pd + z["P_PP"] * pd**2))
         shear_kin_coeff = sp.simplify(sp.diff(action["brane_shear_kinetic"], primitive["u_t2"]).subs(primitive["g_ell"], 1))
         term_contributions["brane_shear_kinetic"] = sp.expand(shear_kin_coeff * (z["U_XX"] * V**2 + 2 * z["U_XP"] * V * pd + z["U_PP"] * pd**2))
         h_kin_coeff = sp.simplify(sp.diff(action["h_kinetic"], primitive["h_t2"]))
@@ -1139,27 +1099,24 @@ def parity_check(data: dict[str, Any]) -> dict[str, Any]:
             "asymmetric_control_tag": one_sided}
 
 
-def classify(tails: list[dict[str, Any]], values: dict[str, sp.Expr],
-             coupled: dict[str, Any] | None = None) -> tuple[str, dict[str, Any]]:
+def classify(tails: list[dict[str, Any]], values: dict[str, sp.Expr]) -> tuple[str, dict[str, Any]]:
     tachyons = [row["id"] for row in tails if row["classification"] == "TACHYONIC"]
     unresolved = sorted({dep for row in tails if row["classification"] == "UNRESOLVED" for dep in row["dependencies"]})
     nonnormal = [row["id"] for row in tails if row["normalizable"] is False and row["classification"] != "TACHYONIC"]
     kinetic = {"density": values["hbar"]**2 / (4 * values["m_GNLS"] * values["rho_inf"]),
-               "wall": values["kappaB"], "polar": values["m_GNLS"] * values["rho_inf"],
-               "shear": values["rhoBr"], "h": values["Mh"] / values["cE"]**2}
+               "wall": values["kappaB"], "shear": values["rhoBr"],
+               "h": values["Mh"] / values["cE"]**2}
     kinetic_signs = {name: numeric_sign(expr) for name, expr in kinetic.items()}
     unresolved += sorted(str(s) for name, expr in kinetic.items() if kinetic_signs[name] is None for s in expr.free_symbols)
     unstable_kinetic = [name for name, sign in kinetic_signs.items() if sign == -1]
     if unresolved:
         leaves = ",".join(sorted(set(unresolved)))
         return f"U1_BASE_UNRESOLVED({leaves})", {"unresolved_leaves": sorted(set(unresolved)), "kinetic_signs": kinetic_signs}
-    coupled_unstable = bool(coupled and coupled["Pu"]["classification"] == "UNSTABLE_HELICAL")
-    if tachyons or unstable_kinetic or coupled_unstable:
-        modes_list = tachyons + unstable_kinetic + (["Pu_coupled_helical"] if coupled_unstable else [])
+    if tachyons or unstable_kinetic:
+        modes_list = tachyons + unstable_kinetic
         modes = ",".join(modes_list)
         return f"U1_BASE_UNSTABLE({modes})", {"tachyonic_channels": tachyons,
                 "negative_kinetic_channels": unstable_kinetic,
-                "coupled_instability": coupled["Pu"] if coupled_unstable else None,
                 "kinetic_signs": kinetic_signs}
     if nonnormal:
         return f"U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:{','.join(nonnormal)})", {"nonnormalizable_channels": nonnormal, "kinetic_signs": kinetic_signs}
@@ -1172,8 +1129,8 @@ def light_outcome(data: dict[str, Any], attacks: dict[str, str]) -> str:
     assembled = assemble_action_terms(data, values)
     operator = derive_channel_operator(data, values, assembled)
     tails = [solve_tail(ch, attacks) for ch in operator["channels"]]
-    coupled = coupled_indicial_analysis(data, values, operator)
-    return classify(tails, values, coupled)[0]
+    coupled_indicial_analysis(data, operator)
+    return classify(tails, values)[0]
 
 
 def build(data: dict[str, Any], attacks: dict[str, str], fixtures: dict[str, Any], include_reachability: bool = True) -> dict[str, Any]:
@@ -1190,7 +1147,7 @@ def build(data: dict[str, Any], attacks: dict[str, str], fixtures: dict[str, Any
     operator = derive_channel_operator(data, values, assembled)
     channels = operator["channels"]
     tails = [solve_tail(row, attacks) for row in channels]
-    coupled = coupled_indicial_analysis(data, values, operator)
+    coupled = coupled_indicial_analysis(data, operator)
     removal_probes = action_term_removal_probes(data, values, operator)
     phase = phase_normalization(data, values)
     zero_mode = zero_mode_operator(data, values, attacks)
@@ -1200,7 +1157,7 @@ def build(data: dict[str, Any], attacks: dict[str, str], fixtures: dict[str, Any
     endpoint_rows, reconstruction, ancestry, term_contributions = build_effective_action(data, symbols, moment_expr, attacks)
     channel_rows, graph = graph_and_channels(data, symbols, term_contributions, attacks)
     parity = parity_check(data)
-    verdict, decision = classify(tails, values, coupled)
+    verdict, decision = classify(tails, values)
     reachability: dict[str, str] = {}
     if include_reachability:
         case_names = list(fixtures["outcome_cases"])

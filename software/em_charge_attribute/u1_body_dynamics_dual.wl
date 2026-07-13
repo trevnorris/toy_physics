@@ -87,6 +87,30 @@ parsedSourceContains[source_String, probe_String] := Module[{needle = mathTokens
   If[needle === {}, Return[False]]; records = mathTokens /@ StringSplit[source, {"\r\n", "\n"}];
   AnyTrue[records, Length[#] >= Length[needle] && MemberQ[Partition[#, Length[needle], 1], needle] &]
 ];
+policy = data["operative_action_decision"];
+decisionRel = policy["source_file"];
+decisionPath = FileNameJoin[{root, decisionRel}];
+decisionText = Import[decisionPath, "Text"];
+require[policy["id"] === "decision_16_retire_brane_polar_field" && policy["status"] === "OPERATIVE" &&
+  decisionRel === "software/stage1_solver/decisions/16_retire_brane_polar_field.md",
+  "SOURCE_COMPLETENESS", "Decision 16 is not the operative action policy"];
+citationMatches = {};
+Do[require[parsedSourceContains[decisionText, fragment], "SOURCE_COMPLETENESS", "Decision 16 citation mismatch: " <> fragment];
+  AppendTo[citationMatches, fragment], {fragment, policy["required_source_fragments"]}];
+expectedIds = Sort[policy["expected_action_term_ids"]]; retiredIds = policy["retired_action_term_ids"];
+retiredSymbols = policy["retired_expression_symbols"]; assembledIds = data["action_terms"][[All, "id"]];
+require[DuplicateFreeQ[assembledIds], "SOURCE_COMPLETENESS", "duplicate assembled action id"];
+Do[exprSymbols = StringCases[term["expression"], RegularExpression["[A-Za-z_][A-Za-z_0-9]*"]];
+  intrusion = MemberQ[retiredIds, term["id"]] || Intersection[exprSymbols, retiredSymbols] =!= {};
+  If[intrusion,
+    require[Lookup[term, "decision_citation", ""] === decisionRel, "SOURCE_COMPLETENESS",
+      "retired P term lacks Decision 16 citation: " <> term["id"]];
+    require[False, "SOURCE_COMPLETENESS", "retired P term cannot be assembled under Decision 16: " <> term["id"]]],
+  {term, data["action_terms"]}];
+missingIds = Complement[expectedIds, assembledIds]; unexpectedIds = Complement[assembledIds, expectedIds];
+require[missingIds === {}, "SOURCE_COMPLETENESS", "missing P-retired whitelisted terms " <> ToString[missingIds, InputForm]];
+require[unexpectedIds === {}, "SOURCE_COMPLETENESS", "unexpected assembled terms " <> ToString[unexpectedIds, InputForm]];
+
 sourceCache = <||>; matchedTerms = {};
 Do[
   rel = term["source_file"];
@@ -103,22 +127,30 @@ startPol = First@FirstPosition[t0Lines, "L_pol ="];
 stopPol = First@FirstPosition[t0Lines, x_String /; StringStartsQ[x, "Frozen extended"]];
 polarLines = StringTrim[StringTrim[#, {"+", "-", " "}], "."] & /@
   Select[t0Lines[[startPol + 1 ;; stopPol - 1]], StringMatchQ[#, ("+" | "-" | "") ~~ Whitespace ... ~~ "(1/" ~~ ("2" | "4") ~~ ") m rho" ~~ __] &];
-polarAssembled = Select[data["action_terms"], StringStartsQ[#["id"], "polar_"] &];
-require[Length[polarAssembled] === Length[polarLines], "SOURCE_COMPLETENESS", "T0 polar monomial coverage"];
+require[Length[polarLines] === 3, "SOURCE_COMPLETENESS", "legacy T0 polar manifest changed"];
 g0Records = mathTokens /@ StringSplit[g0, "\n"];
 g0Definitions = Sort@DeleteDuplicates@Cases[g0Records, rec_List /; Length[rec] > 1 && rec[[2]] === ":=" && (rec[[1]] === "QP" || StringStartsQ[rec[[1]], "L_"]) :> rec[[1]]];
 require[Length[g0Definitions] >= 4, "SOURCE_COMPLETENESS", "G0 definitions"];
-mandatoryG0 = StringTrim[StringTrim[#, {"+", "-", " "}], "."] & /@
+discoveredG0Records = StringTrim[StringTrim[#, {"+", "-", " "}], "."] & /@
   Select[StringSplit[g0, "\n"], StringContainsQ[#, "QP :="] || StringContainsQ[#, "mu_R Omega_u^a Omega_u^a"] || StringStartsQ[StringTrim[#], "L_Pu :="] &];
+retiredG0 = Select[discoveredG0Records, StringContainsQ[#, "L_Pu :="] &];
+mandatoryG0 = Select[discoveredG0Records, ! StringContainsQ[#, "L_Pu :="] &];
+require[Length[retiredG0] === 1, "SOURCE_COMPLETENESS", "legacy L_Pu retirement record changed"];
 assembledFragments = data["action_terms"][[All, "source_contains"]];
 Do[expected = mathTokens[fragment];
   require[AnyTrue[assembledFragments, candidate |-> Module[{got = mathTokens[candidate]},
       Length[expected] >= Length[got] && MemberQ[Partition[expected, Length[got], 1], got]]],
     "SOURCE_COMPLETENESS", "missing immutable G0 record " <> fragment], {fragment, mandatoryG0}];
 sourceCompleteness = <|"loaded_files" -> Sort[Keys[sourceCache]], "matched_assembled_terms" -> matchedTerms,
-  "source_derived_polar_monomials" -> polarLines, "source_derived_g0_definitions" -> g0Definitions,
+  "operative_decision_citation" -> <|"id" -> policy["id"], "status" -> policy["status"],
+    "source_file" -> decisionRel, "sha256" -> FileHash[decisionPath, "SHA256", "HexString"],
+    "matched_source_fragments" -> citationMatches|>,
+  "expected_p_retired_action_ids" -> expectedIds, "retired_action_ids" -> Sort[retiredIds],
+  "retired_parameter_rows" -> policy["retired_parameter_rows"],
+  "legacy_retired_t0_polar_monomials" -> polarLines, "source_derived_g0_definitions" -> g0Definitions,
   "source_derived_mandatory_g0_records" -> mandatoryG0,
-  "assembled_ids" -> Sort[data["action_terms"][[All, "id"]]]|>;
+  "source_derived_retired_g0_records" -> retiredG0,
+  "assembled_ids" -> Sort[assembledIds]|>;
 
 dadd[args__List] := Total[{args}]; dscale[d_List, n_Integer] := n d;
 Ldim = {1, 0, 0}; tinv = {0, -1, 0}; grad = {-1, 0, 0}; nd = coeffDims["rho_inf"]; vel = {1, -1, 0}; targetDim = {-2, -2, 1};
@@ -128,13 +160,8 @@ dimRows = {
   "quantum_pressure" -> dadd[dscale[coeffDims["hbar"], 2], dscale[coeffDims["m_GNLS"], -1], dscale[nd, -1], dscale[dadd[nd, grad], 2]],
   "bulk_EOS" -> dadd[coeffDims["K_EOS"], dscale[nd, 5]], "wall_double_well" -> coeffDims["aB"],
   "wall_gradient" -> dadd[coeffDims["kappaB"], dscale[grad, 2]], "wall_shear_gate" -> coeffDims["muR4"],
-  "wall_anisotropy" -> coeffDims["alphaAniso"],
-  "polar_kinetic" -> dadd[coeffDims["m_GNLS"], nd, dscale[Ldim, 2], dscale[tinv, 2]],
-  "polar_gradient" -> dadd[coeffDims["m_GNLS"], nd, {2, -2, 0}, dscale[Ldim, 2], dscale[grad, 2]],
-  "polar_quartic" -> dadd[coeffDims["m_GNLS"], nd, {2, -2, 0}],
   "brane_shear_kinetic" -> dadd[dscale[coeffDims["ellg"], -1], coeffDims["rhoBr"], dscale[dadd[Ldim, tinv], 2]],
   "brane_shear_gradient" -> dadd[dscale[coeffDims["ellg"], -1], coeffDims["muR"]],
-  "Pu_coupling" -> dadd[dscale[coeffDims["ellg"], -1], coeffDims["lambdaPu"]],
   "uw_kinetic" -> dadd[dscale[coeffDims["ellg"], -1], coeffDims["rhoBr"], dscale[dadd[Ldim, tinv], 2]],
   "uw_gap" -> dadd[dscale[coeffDims["ellg"], -1], coeffDims["rhoBr"], dscale[coeffDims["OmegaW"], 2], dscale[Ldim, 2]],
   "h_kinetic" -> dadd[coeffDims["Mh"], dscale[coeffDims["cE"], -2], dscale[tinv, 2]],
@@ -182,9 +209,8 @@ signOf[expr_] := Module[{e = FullSimplify[expr], syms, unresolved},
   If[unresolved =!= {}, Missing["OpenSign"], Sign[N[e /. Thread[syms -> 1]]]]
 ];
 
-actionPrimitiveNames = {"n", "theta_t", "v2", "n_grad2", "chiB", "chi_grad2", "ud_curl2", "Pnormal2",
-  "f_throat", "f_mix", "DtP2", "P_grad2", "P2", "g_ell", "u_t2", "u_curl2", "Pt", "u_curl",
-  "uw_t2", "uw", "h_t2", "h_grad2"};
+actionPrimitiveNames = {"n", "theta_t", "v2", "n_grad2", "chiB", "chi_grad2", "ud_curl2",
+  "f_throat", "f_mix", "g_ell", "u_t2", "u_curl2", "uw_t2", "uw", "h_t2", "h_grad2"};
 actionPrimitive = Association@Table[name -> Symbol["u1AP" <> StringReplace[name, "_" -> "ZZ"]], {name, actionPrimitiveNames}];
 actionPrimitiveReverse = AssociationThread[Values[actionPrimitive], Keys[actionPrimitive]];
 actionDependencyName[s_Symbol] := Lookup[actionPrimitiveReverse, s, externalName[s]];
@@ -206,65 +232,50 @@ assembleAction[localData_] := Module[{v, cs, parse, terms},
       Cases[{#2}, s_Symbol /; KeyExistsQ[externalNames, s] || KeyExistsQ[actionPrimitiveReverse, s], Infinity]]] &, terms]|>
 ];
 
-deriveOperator[localData_] := Module[{v, asm, terms, d, db, r, eps, dn, theta, chi, pt, pr, ut, uwf, hh,
-    dnr, thetar, chir, ptr, prr, ucurl, hr, drain, rules, quadBy, quad, fields, gradients, curv, gradH, mixed, ch},
+deriveOperator[localData_] := Module[{v, asm, terms, d, db, r, eps, dn, theta, chi, ut, uwf, hh,
+    dnr, thetar, chir, ucurl, hr, drain, rules, quadBy, quad, fields, gradients, curv, gradH, mixed, ch},
   v = Association@KeyValueMap[#1 -> parseValue[#2["value"]] &, localData["coefficients"]]; asm = assembleAction[localData]; terms = asm["terms"];
   v["a"] = parseValue[localData["geometry"]["a"]["value"]];
   d = Length[localData["ambient"]["coordinates"]]; db = Length[localData["ambient"]["brane_coordinates"]];
-  Clear[r, eps, dn, theta, chi, pt, pr, ut, uwf, hh, dnr, thetar, chir, ptr, prr, ucurl, hr];
+  Clear[r, eps, dn, theta, chi, ut, uwf, hh, dnr, thetar, chir, ucurl, hr];
   drain = -v["mdot"]/(v["hbar"] v["rho_inf"] sphereArea[d]) r^(1 - d);
   rules = {actionPrimitive["n"] -> v["rho_inf"] + eps dn, actionPrimitive["theta_t"] -> 0,
     actionPrimitive["v2"] -> (v["hbar"]/v["m_GNLS"])^2 (drain + eps thetar)^2,
     actionPrimitive["n_grad2"] -> eps^2 dnr^2, actionPrimitive["chiB"] -> eps chi,
     actionPrimitive["chi_grad2"] -> eps^2 chir^2, actionPrimitive["ud_curl2"] -> 0,
-    actionPrimitive["Pnormal2"] -> 0, actionPrimitive["f_throat"] -> 0, actionPrimitive["f_mix"] -> 0,
-    actionPrimitive["DtP2"] -> 0, actionPrimitive["P_grad2"] -> eps^2 (ptr^2 + prr^2),
-    actionPrimitive["P2"] -> (1 + eps pr)^2 + eps^2 pt^2, actionPrimitive["g_ell"] -> 1,
+    actionPrimitive["f_throat"] -> 0, actionPrimitive["f_mix"] -> 0, actionPrimitive["g_ell"] -> 1,
     actionPrimitive["u_t2"] -> 0, actionPrimitive["u_curl2"] -> eps^2 ucurl^2,
-    actionPrimitive["Pt"] -> eps pt, actionPrimitive["u_curl"] -> eps ucurl,
     actionPrimitive["uw_t2"] -> 0, actionPrimitive["uw"] -> eps uwf,
     actionPrimitive["h_t2"] -> 0, actionPrimitive["h_grad2"] -> eps^2 hr^2};
   quadBy = Association@KeyValueMap[#1 -> FullSimplify[Coefficient[Normal@Series[#2 /. rules, {eps, 0, 2}], eps, 2]] &, terms];
-  quad = FullSimplify[Total[Values[quadBy]]]; fields = {dn, theta, chi, pt, pr, ut, uwf, hh}; gradients = {dnr, thetar, chir, ptr, prr, ucurl, hr};
+  quad = FullSimplify[Total[Values[quadBy]]]; fields = {dn, theta, chi, ut, uwf, hh}; gradients = {dnr, thetar, chir, ucurl, hr};
   curv = Table[FullSimplify[D[quad, fields[[i]], fields[[j]]]], {i, Length[fields]}, {j, Length[fields]}];
   gradH = Table[FullSimplify[D[quad, gradients[[i]], gradients[[j]]]], {i, Length[gradients]}, {j, Length[gradients]}];
   mixed = Table[FullSimplify[D[quad, fields[[i]], gradients[[j]]]], {i, Length[fields]}, {j, Length[gradients]}];
   ch = {<|"id" -> "density_EOS", "field" -> "delta_n", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[1, 1]], "curvature" -> curv[[1, 1]]|>,
     <|"id" -> "wall_chiB", "field" -> "delta_chiB", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[3, 3]], "curvature" -> curv[[3, 3]]|>,
     <|"id" -> "bound_phase", "field" -> "theta", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[2, 2]], "curvature" -> curv[[2, 2]], "continuity" -> True|>,
-    <|"id" -> "polar_tangent", "field" -> "P_tangent", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[4, 4]], "curvature" -> curv[[4, 4]]|>,
-    <|"id" -> "polar_radial", "field" -> "P_radial", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[5, 5]], "curvature" -> curv[[5, 5]]|>,
-    <|"id" -> "brane_shear", "field" -> "u_transverse", "dimension" -> db, "ell" -> 1, "gradient" -> gradH[[6, 6]], "curvature" -> 0, "brane_profile" -> "g_ell(w)"|>,
-    <|"id" -> "uw", "field" -> "u_w", "dimension" -> db, "ell" -> 0, "gradient" -> 0, "curvature" -> curv[[7, 7]], "algebraic" -> True|>,
-    <|"id" -> "h", "field" -> "h", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[7, 7]], "curvature" -> curv[[8, 8]], "open_coefficients" -> {"Mh", "cE"}|>};
+    <|"id" -> "brane_shear", "field" -> "u_transverse", "dimension" -> db, "ell" -> 1, "gradient" -> gradH[[4, 4]], "curvature" -> 0, "brane_profile" -> "g_ell(w)"|>,
+    <|"id" -> "uw", "field" -> "u_w", "dimension" -> db, "ell" -> 0, "gradient" -> 0, "curvature" -> curv[[5, 5]], "algebraic" -> True|>,
+    <|"id" -> "h", "field" -> "h", "dimension" -> d, "ell" -> 0, "gradient" -> gradH[[5, 5]], "curvature" -> curv[[6, 6]], "open_coefficients" -> {"Mh", "cE"}|>};
   <|"channels" -> ch, "quadratic_expression" -> quad, "quadratic_by_term" -> quadBy,
     "field_order" -> (ToString[#, InputForm] & /@ fields), "gradient_order" -> (ToString[#, InputForm] & /@ gradients),
     "curvature_hessian" -> curv, "gradient_hessian" -> gradH, "mixed_hessian" -> mixed, "drain_gradient" -> drain,
     "entries" -> <|"density_gradient" -> gradH[[1, 1]], "density_EOS_curvature" -> curv[[1, 1]],
       "phase_gradient" -> gradH[[2, 2]], "wall_gradient" -> gradH[[3, 3]], "wall_well_curvature" -> curv[[3, 3]],
-      "polar_tangent_gradient" -> gradH[[4, 4]], "polar_radial_curvature" -> curv[[5, 5]], "shear_curl" -> gradH[[6, 6]],
-      "Pu_cross" -> mixed[[4, 6]], "uw_curvature" -> curv[[7, 7]], "h_gradient" -> gradH[[7, 7]],
+      "shear_curl" -> gradH[[4, 4]], "uw_curvature" -> curv[[5, 5]], "h_gradient" -> gradH[[5, 5]],
       "drain_density_phase" -> mixed[[1, 2]]|>|>
 ];
 
 deriveChannels[localData_] := deriveOperator[localData]["channels"];
 
-coupledAnalysis[localData_, op_] := Module[{d, nu, diagDegree, crossDegree, k, w, p0, ap, mu, lam, profile, halfE, twoE, surfaceK, mat, det, witness, witnessDet, unstable, deps},
-  d = Length[localData["ambient"]["coordinates"]]; Clear[nu, k, w, p0]; diagDegree = -nu - 2; crossDegree = -nu - d;
-  ap = op["entries"]["polar_tangent_gradient"]; mu = op["entries"]["shear_curl"]; lam = op["entries"]["Pu_cross"];
-  profile = p0 Exp[-k w]; halfE = Assuming[k > 0, Integrate[ap (D[profile, w]^2 + k^2 profile^2)/2, {w, 0, Infinity}]];
-  twoE = FullSimplify[2 halfE, k > 0]; surfaceK = FullSimplify[D[twoE, {p0, 2}], k > 0]; mat = {{surfaceK, lam k}, {lam k, mu k^2}};
-  det = Factor[Det[mat]]; witness = FullSimplify[lam^2/(4 ap mu)]; witnessDet = Factor[det /. k -> witness]; unstable = TrueQ[signOf[witnessDet] === -1];
-  deps = Sort[DeleteDuplicates[externalName /@ Cases[{ap, mu, lam}, s_Symbol /; KeyExistsQ[externalNames, s], Infinity]]];
+coupledAnalysis[localData_, op_] := Module[{d, nu, diagDegree, crossDegree},
+  d = Length[localData["ambient"]["coordinates"]]; Clear[nu]; diagDegree = -nu - 2; crossDegree = -nu - d;
   <|"density_phase" -> <|"cross_coefficient" -> ToString[op["entries"]["drain_density_phase"], InputForm],
       "diagonal_degree" -> ToString[diagDegree, InputForm], "cross_degree" -> ToString[crossDegree, InputForm],
       "degree_difference" -> ToString[FullSimplify[crossDegree - diagDegree], InputForm], "leading_exponents_shifted" -> ! TrueQ[d > 2],
       "computed_conclusion" -> "SUBLEADING_FOR_D_GT_2"|>,
-    "Pu" -> <|"bulk_profile_solve" -> "P(k,w)=P0*exp(-k*abs(w))", "two_sided_bulk_energy" -> ToString[twoE, InputForm],
-      "surface_stiffness" -> ToString[surfaceK, InputForm], "hessian" -> Map[ToString[#, InputForm] &, mat, {2}],
-      "determinant" -> ToString[det, InputForm], "witness_k" -> ToString[witness, InputForm],
-      "witness_determinant" -> ToString[witnessDet, InputForm], "classification" -> If[unstable, "UNSTABLE_HELICAL", "NONNEGATIVE"], "dependencies" -> deps|>,
-    "changes_scalar_channel_verdict" -> unstable|>
+    "changes_scalar_channel_verdict" -> False|>
 ];
 
 solveTail[ch_] := Module[{r, ff, d = ch["dimension"], ell = ch["ell"], A = ch["gradient"], B = ch["curvature"],
@@ -318,18 +329,17 @@ solveTail[ch_] := Module[{r, ff, d = ch["dimension"], ell = ch["ell"], A = ch["g
 ];
 
 earlyOutcomeClass[localTails_, localData_, localCoupled_] := Module[
-  {tach, unresolved, nonnormal, v, kinetic, signs, unstableK, leaves, coupledUnstable},
+  {tach, unresolved, nonnormal, v, kinetic, signs, unstableK, leaves},
   tach = Select[localTails, #["classification"] === "TACHYONIC" &][[All, "id"]];
   unresolved = Flatten[Select[localTails, #["classification"] === "UNRESOLVED" &][[All, "dependencies"]]];
   nonnormal = Select[localTails, TrueQ[#["normalizable"] === False] && #["classification"] =!= "TACHYONIC" &][[All, "id"]];
   v = Association@KeyValueMap[#1 -> parseValue[#2["value"]] &, localData["coefficients"]];
   kinetic = <|"density" -> v["hbar"]^2/(4 v["m_GNLS"] v["rho_inf"]), "wall" -> v["kappaB"],
-    "polar" -> v["m_GNLS"] v["rho_inf"], "shear" -> v["rhoBr"], "h" -> v["Mh"]/v["cE"]^2|>;
+    "shear" -> v["rhoBr"], "h" -> v["Mh"]/v["cE"]^2|>;
   signs = Association@KeyValueMap[#1 -> signOf[#2] &, kinetic];
   leaves = Join[unresolved, Flatten@KeyValueMap[If[MissingQ[#2], externalName /@ Cases[kinetic[#1], s_Symbol /; KeyExistsQ[externalNames, s], Infinity], {}] &, signs]] // DeleteDuplicates;
   If[leaves =!= {}, Return["U1_BASE_UNRESOLVED"]]; unstableK = Keys@Select[signs, # === -1 &];
-  coupledUnstable = TrueQ[localCoupled["Pu"]["classification"] === "UNSTABLE_HELICAL"];
-  If[tach =!= {} || unstableK =!= {} || coupledUnstable, Return["U1_BASE_UNSTABLE"]];
+  If[tach =!= {} || unstableK =!= {}, Return["U1_BASE_UNSTABLE"]];
   If[nonnormal =!= {}, "U1_BASE_ILL_POSED", "U1_BASE_OK"]
 ];
 
@@ -343,7 +353,7 @@ earlyLightOutcome[ops_] := Module[{savedData = data, savedAttacks = attacks, loc
 
 assembledAction = assembleAction[data]; channelOperator = deriveOperator[data]; channels = channelOperator["channels"];
 coupled = coupledAnalysis[data, channelOperator];
-removalTargets = <|"quantum_pressure" -> "density_gradient", "Pu_coupling" -> "Pu_cross", "brane_shear_gradient" -> "shear_curl"|>;
+removalTargets = <|"quantum_pressure" -> "density_gradient", "brane_shear_gradient" -> "shear_curl"|>;
 removalProbes = <||>;
 Do[altered = ReplacePart[data, "action_terms" -> Select[data["action_terms"], #["id"] =!= termId &]];
   removedOperator = deriveOperator[altered]; beforeEntry = FullSimplify[channelOperator["entries"][entry]];
@@ -417,7 +427,7 @@ require[balance === 0, "BASE_BALANCE", balance]; zmode = -D[n0, coords[[1]]];
 If[Lookup[attacks, "translation_mode", ""] === "add_base_profile", zmode = zmode + n0];
 chemSecond = D[coeffValues["K_EOS"] nn^5/4, {nn, 2}] /. nn -> n0; sourceZ = -D[source, coords[[1]]];
 zeroResidual = Factor[Expand[-Aden lap[zmode] + chemSecond zmode - sourceZ]]; require[zeroResidual === 0, "ZERO_MODE", zeroResidual];
-linearizedBalance = <|"branch" -> "force_balance", "operator_object" -> "D_E=(-A_n Laplacian+U''(n0)) plus translated throat-source and chiB/P/u/h/trace blocks",
+linearizedBalance = <|"branch" -> "force_balance", "operator_object" -> "D_E=(-A_n Laplacian+U''(n0)) plus translated throat-source and chiB/u/h/trace blocks",
   "density_balance_expression" -> ToString[balance, InputForm], "density_source_expression" -> ToString[source, InputForm],
   "right_zero_mode" -> ToString[zmode, InputForm], "substitution_residual" -> ToString[zeroResidual, InputForm], "operator_available" -> True|>;
 Print["PROGRESS:ZERO_MODE"];
@@ -452,9 +462,9 @@ Print["PROGRESS:ENDPOINTS"];
 (* Evaluated exterior radial/angular moments. *)
 toNumber[x_] := N[x /. Thread[Cases[x, s_Symbol /; KeyExistsQ[externalNames, s] && KeyExistsQ[coeffConstraints, externalName[s]], Infinity] -> 1]];
 kd = Sqrt[Abs[20 toNumber[coeffValues["m_GNLS"] coeffValues["K_EOS"] coeffValues["rho_inf"]^4/coeffValues["hbar"]^2]]];
-kw = Sqrt[Abs[2 toNumber[coeffValues["aB"]/coeffValues["kappaB"]]]]; kr = Sqrt[2]/N[aValue];
+kw = Sqrt[Abs[2 toNumber[coeffValues["aB"]/coeffValues["kappaB"]]]];
 gapQ[k_, ord_][x_?NumericQ] := x^(1 - d/2) BesselK[ord, k x]/(aValue^(1 - d/2) BesselK[ord, k aValue]);
-densityQ[x_?NumericQ] := gapQ[kd, d/2 - 1][x]; wallQ[x_?NumericQ] := gapQ[kw, d/2 - 1][x]; radialPQ[x_?NumericQ] := gapQ[kr, d/2 - 1][x];
+densityQ[x_?NumericQ] := gapQ[kd, d/2 - 1][x]; wallQ[x_?NumericQ] := gapQ[kw, d/2 - 1][x];
 responseQ[x_?NumericQ] := (aValue/x)^(d - 1);
 measurePower = d - 1; If[Lookup[attacks, "radial_measure", ""] === "drop_jacobian_power", measurePower--];
 Sd = N[sphereArea[d]]; db = Length[data["ambient"]["brane_coordinates"]]; Sb = N[sphereArea[db]];
@@ -465,12 +475,10 @@ bulkNu = d - 2; tiltNu = d - 1; braneNu = db;
 unitMasslessGrad = Sd/d bulkNu^2 aValue^(d - 2)/(2 bulkNu - d + 2);
 unitTiltGrad = Sd/d tiltNu^2 aValue^(d - 2)/(2 tiltNu - d + 2);
 unitGapGrad[qfun_] := Sd/d NIntegrate[x^(d - 1) Derivative[1][qfun][x]^2, {x, aValue, 40 aValue}, WorkingPrecision -> 25, AccuracyGoal -> 12];
-unitGapDensity = unitGapGrad[densityQ]; unitGapWall = unitGapGrad[wallQ]; unitGapPR = unitGapGrad[radialPQ];
+unitGapDensity = unitGapGrad[densityQ]; unitGapWall = unitGapGrad[wallQ];
 unitGapL2[qfun_] := Sd/d NIntegrate[x^(d - 1) qfun[x]^2, {x, aValue, 40 aValue}, WorkingPrecision -> 25, AccuracyGoal -> 12];
 unitGapL2Density = unitGapL2[densityQ]; unitGapL2Wall = unitGapL2[wallQ];
 unitTiltL2 = Sd aValue^d/(2 tiltNu - d); unitBraneGrad = Sb/db braneNu^2 aValue^(db - 2)/(2 braneNu - db + 2); unitBraneL2 = Sb aValue^db/(2 braneNu - db);
-unitPuCross = Sb/db NIntegrate[x^(db - 1) (aValue/x)^(d - 2) braneNu aValue^braneNu x^(-braneNu - 1),
-  {x, aValue, Infinity}, WorkingPrecision -> 25, AccuracyGoal -> 12];
 Clear[theta]; oddAngular = Integrate[Cos[theta] Sin[theta]^(d - 2), {theta, 0, Pi}]; require[oddAngular === 0, "MOMENT_INTEGRALS", oddAngular];
 
 traceSyms = Association@KeyValueMap[#1 -> safeSymbol[#1] &, data["core_traces"]];
@@ -490,18 +498,13 @@ Do[
     "U_XX" -> Expand[SetPrecision[unitBraneGrad, 15] (traceSyms["shear_transverse"] + beta)^2],
     "U_XP" -> Expand[SetPrecision[unitBraneL2, 15] (traceSyms["shear_transverse"] + beta) traceSyms["tilt_shear"]],
     "U_PP" -> Expand[SetPrecision[unitBraneL2, 15] traceSyms["tilt_shear"]^2],
-    "P_XX" -> Expand[SetPrecision[unitMasslessGrad, 15] traceSyms["polar_tangent"]^2 + SetPrecision[unitGapPR, 15] traceSyms["polar_radial"]^2],
-    "P_XP" -> 0, "P_PP" -> Expand[SetPrecision[unitTiltL2, 15] traceSyms["tilt_polar"]^2],
     "H_XX" -> Expand[SetPrecision[unitMasslessGrad, 15] traceSyms["h_scalar"]^2], "H_XP" -> 0,
     "H_PP" -> Expand[SetPrecision[unitTiltL2, 15] traceSyms["tilt_h"]^2],
     "I_density_grad" -> SetPrecision[unitGapDensity, 15] traceSyms["density_delta"]^2,
     "I_density_l2" -> SetPrecision[unitGapL2Density, 15] traceSyms["density_delta"]^2,
     "I_wall_grad" -> SetPrecision[unitGapWall, 15] traceSyms["wall_delta"]^2,
     "I_wall_l2" -> SetPrecision[unitGapL2Wall, 15] traceSyms["wall_delta"]^2,
-    "I_polar_grad" -> SetPrecision[unitTiltGrad, 15] traceSyms["tilt_polar"]^2,
-    "I_polar_quartic" -> SetPrecision[unitTiltL2, 15] traceSyms["tilt_polar"]^2,
     "I_shear_grad" -> SetPrecision[unitBraneGrad, 15] traceSyms["tilt_shear"]^2,
-    "I_Pu_cross" -> SetPrecision[unitPuCross, 15] traceSyms["tilt_polar"] traceSyms["tilt_shear"],
     "I_h_grad" -> SetPrecision[unitTiltGrad, 15] traceSyms["tilt_h"]^2|>;
   momentExpr[ep] = rows;
   momentRows[ep] = Association@KeyValueMap[#1 -> <|"expression" -> ToString[#2, InputForm],
@@ -525,22 +528,19 @@ Do[symbolicData = ReplacePart[symbolicData, {Key["coefficients"], Key[name], Key
 symbolicData = ReplacePart[symbolicData, {Key["geometry"], Key["a"], Key["value"]} -> "a"];
 symbolicAssembled = assembleAction[symbolicData]; symbolicOperator = deriveOperator[symbolicData]; symbolicAction = symbolicAssembled["terms"];
 Clear[V, pd, p]; endpointActions = <||>; reconstruction = <||>; ancestry = {}; termContributionsAll = <||>;
-Do[z = momentExpr[ep]; hbarS = coeffSymbols["hbar"]; mS = coeffSymbols["m_GNLS"]; rhoBrS = coeffSymbols["rhoBr"]; aS = safeSymbol["a"]; mhS = coeffSymbols["Mh"]; cES = coeffSymbols["cE"];
+Do[z = momentExpr[ep]; hbarS = coeffSymbols["hbar"]; mS = coeffSymbols["m_GNLS"]; rhoBrS = coeffSymbols["rhoBr"]; mhS = coeffSymbols["Mh"]; cES = coeffSymbols["cE"];
   ax = hbarS z["B_X"]; ap = -hbarS z["B_p"]; cxp = hbarS z["B_Xp"];
   gvvTerms = <|"bulk_flow_kinetic" -> mS z["N_UU"], "brane_shear_kinetic" -> rhoBrS z["U_XX"],
-    "polar_kinetic" -> mS aS^2 z["P_XX"], "h_kinetic" -> mhS z["H_XX"]/cES^2|>;
+    "h_kinetic" -> mhS z["H_XX"]/cES^2|>;
   gvpTerms = <|"bulk_flow_kinetic" -> mS z["N_UW"], "brane_shear_kinetic" -> rhoBrS z["U_XP"],
-    "polar_kinetic" -> mS aS^2 z["P_XP"], "h_kinetic" -> mhS z["H_XP"]/cES^2|>;
+    "h_kinetic" -> mhS z["H_XP"]/cES^2|>;
   gppTerms = <|"bulk_flow_kinetic" -> mS z["N_WW"], "brane_shear_kinetic" -> rhoBrS z["U_PP"],
-    "polar_kinetic" -> mS aS^2 z["P_PP"], "h_kinetic" -> mhS z["H_PP"]/cES^2|>;
+    "h_kinetic" -> mhS z["H_PP"]/cES^2|>;
   kppTerms = <|"quantum_pressure" -> symbolicOperator["entries"]["density_gradient"] z["I_density_grad"],
     "bulk_EOS" -> symbolicOperator["entries"]["density_EOS_curvature"] z["I_density_l2"],
     "wall_gradient" -> symbolicOperator["entries"]["wall_gradient"] z["I_wall_grad"],
     "wall_double_well" -> symbolicOperator["entries"]["wall_well_curvature"] z["I_wall_l2"],
-    "polar_gradient" -> symbolicOperator["entries"]["polar_tangent_gradient"] z["I_polar_grad"],
-    "polar_quartic" -> symbolicOperator["curvature_hessian"][[4, 4]] z["I_polar_quartic"],
     "brane_shear_gradient" -> symbolicOperator["entries"]["shear_curl"] z["I_shear_grad"],
-    "Pu_coupling" -> 2 symbolicOperator["entries"]["Pu_cross"] z["I_Pu_cross"],
     "h_gradient" -> symbolicOperator["entries"]["h_gradient"] z["I_h_grad"]|>;
   gvv = Expand[Total[Values[gvvTerms]]]; gvp = Expand[Total[Values[gvpTerms]]]; gpp = Expand[Total[Values[gppTerms]]]; kpp = Expand[Total[Values[kppTerms]]];
   claimedParts = <|"AX" -> ax V, "AP" -> ap pd, "CXP" -> cxp p V, "GVV" -> gvv V^2/2, "GVP" -> gvp V pd, "GPP" -> gpp pd^2/2, "KPP" -> -kpp p^2/2|>;
@@ -551,8 +551,6 @@ Do[z = momentExpr[ep]; hbarS = coeffSymbols["hbar"]; mS = coeffSymbols["m_GNLS"]
   termContributions["bulk_berry"] = Expand[-berryCoeff z["B_X"] V + berryCoeff z["B_p"] pd - berryCoeff z["B_Xp"] p V];
   flowCoeff = FullSimplify[D[symbolicAction["bulk_flow_kinetic"], actionPrimitive["v2"]]/actionPrimitive["n"]];
   termContributions["bulk_flow_kinetic"] = Expand[flowCoeff (z["N_UU"] V^2 + 2 z["N_UW"] V pd + z["N_WW"] pd^2)];
-  polarKinCoeff = FullSimplify[D[symbolicAction["polar_kinetic"], actionPrimitive["DtP2"]]/actionPrimitive["n"]];
-  termContributions["polar_kinetic"] = Expand[polarKinCoeff (z["P_XX"] V^2 + 2 z["P_XP"] V pd + z["P_PP"] pd^2)];
   shearKinCoeff = FullSimplify[D[symbolicAction["brane_shear_kinetic"], actionPrimitive["u_t2"]] /. actionPrimitive["g_ell"] -> 1];
   termContributions["brane_shear_kinetic"] = Expand[shearKinCoeff (z["U_XX"] V^2 + 2 z["U_XP"] V pd + z["U_PP"] pd^2)];
   hKinCoeff = FullSimplify[D[symbolicAction["h_kinetic"], actionPrimitive["h_t2"]]];
@@ -633,22 +631,21 @@ require[oneSidedTag === "ONE_SIDED_ASYMMETRY_MAP", "PARITY", oneSidedTag];
 parity = <|"body_conjugation_residual" -> ToString[parityResidual, InputForm], "embedding_tag" -> "BODY_CONJUGATION_ONLY",
   "symmetric_tag" -> symTag, "asymmetric_control_tag" -> oneSidedTag|>;
 
-classify[localTails_, localData_, localCoupled_] := Module[{tach, unresolved, nonnormal, v, kinetic, signs, unstableK, leaves, coupledUnstable, modes},
+classify[localTails_, localData_, localCoupled_] := Module[{tach, unresolved, nonnormal, v, kinetic, signs, unstableK, leaves, modes},
   tach = Select[localTails, #["classification"] === "TACHYONIC" &][[All, "id"]];
   unresolved = Flatten[Select[localTails, #["classification"] === "UNRESOLVED" &][[All, "dependencies"]]];
   nonnormal = Select[localTails, TrueQ[#["normalizable"] === False] && #["classification"] =!= "TACHYONIC" &][[All, "id"]];
   v = Association@KeyValueMap[#1 -> parseValue[#2["value"]] &, localData["coefficients"]];
   kinetic = <|"density" -> v["hbar"]^2/(4 v["m_GNLS"] v["rho_inf"]), "wall" -> v["kappaB"],
-    "polar" -> v["m_GNLS"] v["rho_inf"], "shear" -> v["rhoBr"], "h" -> v["Mh"]/v["cE"]^2|>;
+    "shear" -> v["rhoBr"], "h" -> v["Mh"]/v["cE"]^2|>;
   signs = Association@KeyValueMap[#1 -> signOf[#2] &, kinetic];
   leaves = Join[unresolved, Flatten@KeyValueMap[If[MissingQ[#2], externalName /@ Cases[kinetic[#1], s_Symbol /; KeyExistsQ[externalNames, s], Infinity], {}] &, signs]] // DeleteDuplicates // Sort;
   If[leaves =!= {}, Return[{"U1_BASE_UNRESOLVED(" <> StringRiffle[leaves, ","] <> ")", <|"unresolved_leaves" -> leaves, "kinetic_signs" -> signs|>}]];
   unstableK = Keys@Select[signs, # === -1 &];
-  coupledUnstable = TrueQ[localCoupled["Pu"]["classification"] === "UNSTABLE_HELICAL"];
-  If[tach =!= {} || unstableK =!= {} || coupledUnstable,
-    modes = Join[tach, unstableK, If[coupledUnstable, {"Pu_coupled_helical"}, {}]];
+  If[tach =!= {} || unstableK =!= {},
+    modes = Join[tach, unstableK];
     Return[{"U1_BASE_UNSTABLE(" <> StringRiffle[modes, ","] <> ")", <|"tachyonic_channels" -> tach,
-      "negative_kinetic_channels" -> unstableK, "coupled_instability" -> If[coupledUnstable, localCoupled["Pu"], Null], "kinetic_signs" -> signs|>}]];
+      "negative_kinetic_channels" -> unstableK, "kinetic_signs" -> signs|>}]];
   If[nonnormal =!= {}, Return[{"U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:" <> StringRiffle[nonnormal, ","] <> ")", <|"nonnormalizable_channels" -> nonnormal, "kinetic_signs" -> signs|>}]];
   {"U1_BASE_OK", <|"kinetic_signs" -> signs|>}
 ];

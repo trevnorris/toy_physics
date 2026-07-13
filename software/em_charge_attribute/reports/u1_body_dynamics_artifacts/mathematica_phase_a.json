@@ -3,54 +3,31 @@
 	"phase":"A",
 	"schema_version":"U1_PHASE_A_FIELD_INPUTS_V2",
 	"axis1":"COMPUTATION_VALID",
-	"axis2":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
+	"axis2":"U1_BASE_OK",
 	"decision_evidence":{
-		"tachyonic_channels":[],
-		"negative_kinetic_channels":[],
-		"coupled_instability":{
-			"bulk_profile_solve":"P(k,w)=P0*exp(-k*abs(w))",
-			"two_sided_bulk_energy":"5*k$39862*p0$39862^2",
-			"surface_stiffness":"10*k$39862",
-			"hessian":[
-				[
-					"10*k$39862",
-					"k$39862\/10"
-				],
-				[
-					"k$39862\/10",
-					"(5*k$39862^2)\/4"
-				]
-			],
-			"determinant":"(k$39862^2*(-1 + 1250*k$39862))\/100",
-			"witness_k":"1\/2500",
-			"witness_determinant":"-1\/1250000000",
-			"classification":"UNSTABLE_HELICAL",
-			"dependencies":[]
-		},
 		"kinetic_signs":{
 			"density":1,
 			"wall":1,
-			"polar":1,
 			"shear":1,
 			"h":1
 		}
 	},
 	"cells":{
-		"E1:symmetric_postulate":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E1:one_sided_pathA29":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E2:symmetric_postulate":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E2:one_sided_pathA29":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E3:symmetric_postulate":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E3:one_sided_pathA29":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E4:symmetric_postulate":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E4:one_sided_pathA29":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E5:symmetric_postulate":"U1_BASE_UNSTABLE(Pu_coupled_helical)",
-		"E5:one_sided_pathA29":"U1_BASE_UNSTABLE(Pu_coupled_helical)"
+		"E1:symmetric_postulate":"U1_BASE_OK",
+		"E1:one_sided_pathA29":"U1_BASE_OK",
+		"E2:symmetric_postulate":"U1_BASE_OK",
+		"E2:one_sided_pathA29":"U1_BASE_OK",
+		"E3:symmetric_postulate":"U1_BASE_OK",
+		"E3:one_sided_pathA29":"U1_BASE_OK",
+		"E4:symmetric_postulate":"U1_BASE_OK",
+		"E4:one_sided_pathA29":"U1_BASE_OK",
+		"E5:symmetric_postulate":"U1_BASE_OK",
+		"E5:one_sided_pathA29":"U1_BASE_OK"
 	},
 	"gates":{
 		"G1":"PASS",
 		"G2":"PASS",
-		"G3":"CLASSIFIED_BY_AXIS2",
+		"G3":"PASS",
 		"G4":"NOT_RUN(phase_B)",
 		"G5":"PASS",
 		"G6":"PASS_ENDPOINT_MAP_REPORTED",
@@ -93,7 +70,6 @@
 			],
 			"arguments":[
 				"density_trace",
-				"polar_trace",
 				"h_trace",
 				"phase_flux_trace",
 				"wall_side"
@@ -170,7 +146,7 @@
 				"action_force_density"
 			],
 			"symmetry_class":"R_W_COVARIANT",
-			"source":"GNLS_wall_polar_shear_h_action"
+			"source":"GNLS_wall_shear_h_action"
 		},
 		{
 			"id":"E4_shear_lock",
@@ -332,21 +308,6 @@
 			"constraint":"positive"
 		},
 		{
-			"id":"alphaAniso",
-			"status":"WHITELIST_SOURCED",
-			"root_type":"ACTION_COEFFICIENT",
-			"domain":"coefficient",
-			"dimensions":[
-				-2,
-				-2,
-				1
-			],
-			"arguments":[],
-			"symmetry_class":"R_W_EVEN",
-			"source":"ledger_stage006",
-			"constraint":"nonnegative"
-		},
-		{
 			"id":"rhoBr",
 			"status":"WHITELIST_SOURCED",
 			"root_type":"ACTION_COEFFICIENT",
@@ -375,21 +336,6 @@
 			"symmetry_class":"R_W_EVEN",
 			"source":"ledger_stage007",
 			"constraint":"positive"
-		},
-		{
-			"id":"lambdaPu",
-			"status":"WHITELIST_SOURCED",
-			"root_type":"ACTION_COEFFICIENT",
-			"domain":"coefficient",
-			"dimensions":[
-				-1,
-				-2,
-				1
-			],
-			"arguments":[],
-			"symmetry_class":"R_W_EVEN",
-			"source":"ledger_stage007",
-			"constraint":"real"
 		},
 		{
 			"id":"OmegaW",
@@ -501,7 +447,6 @@
 		"loaded_files":[
 			"research\/pde_ledger_v2\/notes\/stages\/ledger_stage004_gnls_action_dimensional_foundation.md",
 			"research\/pde_ledger_v2\/notes\/stages\/ledger_stage006_two_phase_chiB_ontology.md",
-			"software\/stage1_solver\/reports\/pathA_24_T0_freeze.md",
 			"software\/stage1_solver\/reports\/pathA_35_G0_freeze.md",
 			"software\/stage1_solver\/reports\/pathA_38_throat_body_electric_localization.md"
 		],
@@ -542,11 +487,6 @@
 				"source_fragment":"chi_B f_shear"
 			},
 			{
-				"id":"wall_anisotropy",
-				"source_file":"research\/pde_ledger_v2\/notes\/stages\/ledger_stage006_two_phase_chiB_ontology.md",
-				"source_fragment":"alpha_aniso chi_B (P·w_hat)^2"
-			},
-			{
 				"id":"throat_source",
 				"source_file":"research\/pde_ledger_v2\/notes\/stages\/ledger_stage006_two_phase_chiB_ontology.md",
 				"source_fragment":"f_throat"
@@ -557,21 +497,6 @@
 				"source_fragment":"f_mix"
 			},
 			{
-				"id":"polar_kinetic",
-				"source_file":"software\/stage1_solver\/reports\/pathA_24_T0_freeze.md",
-				"source_fragment":"(1\/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)"
-			},
-			{
-				"id":"polar_gradient",
-				"source_file":"software\/stage1_solver\/reports\/pathA_24_T0_freeze.md",
-				"source_fragment":"(1\/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)"
-			},
-			{
-				"id":"polar_quartic",
-				"source_file":"software\/stage1_solver\/reports\/pathA_24_T0_freeze.md",
-				"source_fragment":"(1\/4) m rho c_s^2(rho) (P^i P^i - 1)^2"
-			},
-			{
 				"id":"brane_shear_kinetic",
 				"source_file":"software\/stage1_solver\/reports\/pathA_35_G0_freeze.md",
 				"source_fragment":"(1\/2) rho_br (partial_t u^a)(partial_t u^a)"
@@ -580,11 +505,6 @@
 				"id":"brane_shear_gradient",
 				"source_file":"software\/stage1_solver\/reports\/pathA_35_G0_freeze.md",
 				"source_fragment":"(1\/2) mu_R Omega_u^a Omega_u^a"
-			},
-			{
-				"id":"Pu_coupling",
-				"source_file":"software\/stage1_solver\/reports\/pathA_35_G0_freeze.md",
-				"source_fragment":"L_Pu := - lambda_Pu varpi_a Omega_u^a"
 			},
 			{
 				"id":"uw_kinetic",
@@ -607,7 +527,49 @@
 				"source_fragment":"radial branch"
 			}
 		],
-		"source_derived_polar_monomials":[
+		"operative_decision_citation":{
+			"id":"decision_16_retire_brane_polar_field",
+			"status":"OPERATIVE",
+			"source_file":"software\/stage1_solver\/decisions\/16_retire_brane_polar_field.md",
+			"sha256":"7683c9e8b747b49b80974b58967e455581f02035587db52ed6bf8673c9663e87",
+			"matched_source_fragments":[
+				"Status: OPERATIVE for all EM-analog\/U1+ work",
+				"removed from the frozen brane action as an independent dynamical field",
+				"together with its couplings (`λ_Pu` twist–shear, `αAniso` easy-plane wall term) and T0 polar coefficients"
+			]
+		},
+		"expected_p_retired_action_ids":[
+			"brane_shear_gradient",
+			"brane_shear_kinetic",
+			"bulk_berry",
+			"bulk_EOS",
+			"bulk_flow_kinetic",
+			"h_gradient",
+			"h_kinetic",
+			"quantum_pressure",
+			"throat_source",
+			"uw_gap",
+			"uw_kinetic",
+			"wall_double_well",
+			"wall_gradient",
+			"wall_mix",
+			"wall_shear_gate"
+		],
+		"retired_action_ids":[
+			"polar_gradient",
+			"polar_kinetic",
+			"polar_quartic",
+			"Pu_coupling",
+			"wall_anisotropy"
+		],
+		"retired_parameter_rows":[
+			"lambdaPu",
+			"alphaAniso",
+			"T0_polar_kinetic",
+			"T0_polar_gradient",
+			"T0_polar_quartic"
+		],
+		"legacy_retired_t0_polar_monomials":[
 			"(1\/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)",
 			" (1\/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)",
 			" (1\/4) m rho c_s^2(rho) (P^i P^i - 1)^2"
@@ -620,7 +582,9 @@
 		],
 		"source_derived_mandatory_g0_records":[
 			"   QP := (hbar^2\/(8 m rho)) (partial_i rho)(partial_i rho)",
-			"     - (1\/2) mu_R Omega_u^a Omega_u^a",
+			"     - (1\/2) mu_R Omega_u^a Omega_u^a"
+		],
+		"source_derived_retired_g0_records":[
 			"   L_Pu := - lambda_Pu varpi_a Omega_u^a"
 		],
 		"assembled_ids":[
@@ -631,15 +595,10 @@
 			"bulk_flow_kinetic",
 			"h_gradient",
 			"h_kinetic",
-			"polar_gradient",
-			"polar_kinetic",
-			"polar_quartic",
-			"Pu_coupling",
 			"quantum_pressure",
 			"throat_source",
 			"uw_gap",
 			"uw_kinetic",
-			"wall_anisotropy",
 			"wall_double_well",
 			"wall_gradient",
 			"wall_mix",
@@ -704,38 +663,6 @@
 			]
 		},
 		{
-			"expression":"wall_anisotropy",
-			"computed_dimensions_LTM":[
-				-2,
-				-2,
-				1
-			]
-		},
-		{
-			"expression":"polar_kinetic",
-			"computed_dimensions_LTM":[
-				-2,
-				-2,
-				1
-			]
-		},
-		{
-			"expression":"polar_gradient",
-			"computed_dimensions_LTM":[
-				-2,
-				-2,
-				1
-			]
-		},
-		{
-			"expression":"polar_quartic",
-			"computed_dimensions_LTM":[
-				-2,
-				-2,
-				1
-			]
-		},
-		{
 			"expression":"brane_shear_kinetic",
 			"computed_dimensions_LTM":[
 				-2,
@@ -745,14 +672,6 @@
 		},
 		{
 			"expression":"brane_shear_gradient",
-			"computed_dimensions_LTM":[
-				-2,
-				-2,
-				1
-			]
-		},
-		{
-			"expression":"Pu_coupling",
 			"computed_dimensions_LTM":[
 				-2,
 				-2,
@@ -838,15 +757,10 @@
 			"wall_double_well":"(3*(1 - u1APchiB)^2*u1APchiB^2)\/2",
 			"wall_gradient":"u1APchiZZgrad2",
 			"wall_shear_gate":"(3*u1APchiB*u1APudZZcurl2)\/5",
-			"wall_anisotropy":"(u1APchiB*u1APPnormal2)\/5",
 			"throat_source":"u1APfZZthroat",
 			"wall_mix":"u1APfZZmix",
-			"polar_kinetic":"(u1APDtP2*u1APn)\/2",
-			"polar_gradient":"(5*u1APn*u1APPZZgrad2)\/2",
-			"polar_quartic":"(5*u1APn*(-1 + u1APP2)^2)\/4",
 			"brane_shear_kinetic":"(2*u1APgZZell*u1APuZZt2)\/3",
 			"brane_shear_gradient":"(5*u1APgZZell*u1APuZZcurl2)\/8",
-			"Pu_coupling":"(u1APgZZell*u1APPt*u1APuZZcurl)\/10",
 			"uw_kinetic":"(2*u1APgZZell*u1APuwZZt2)\/3",
 			"uw_gap":"(98*u1APgZZell*u1APuw^2)\/75",
 			"h_kinetic":"(u1APhZZt2*u1Mh)\/(2*u1cE^2)",
@@ -878,27 +792,11 @@
 				"chiB",
 				"ud_curl2"
 			],
-			"wall_anisotropy":[
-				"chiB",
-				"Pnormal2"
-			],
 			"throat_source":[
 				"f_throat"
 			],
 			"wall_mix":[
 				"f_mix"
-			],
-			"polar_kinetic":[
-				"DtP2",
-				"n"
-			],
-			"polar_gradient":[
-				"n",
-				"P_grad2"
-			],
-			"polar_quartic":[
-				"n",
-				"P2"
 			],
 			"brane_shear_kinetic":[
 				"g_ell",
@@ -907,11 +805,6 @@
 			"brane_shear_gradient":[
 				"g_ell",
 				"u_curl2"
-			],
-			"Pu_coupling":[
-				"g_ell",
-				"Pt",
-				"u_curl"
 			],
 			"uw_kinetic":[
 				"g_ell",
@@ -931,56 +824,45 @@
 				"Mh"
 			]
 		},
-		"total_expression":"(3*(1 - u1APchiB)^2*u1APchiB^2)\/2 + u1APchiZZgrad2 + u1APfZZmix + u1APfZZthroat + (u1APDtP2*u1APn)\/2 + u1APn^5\/4 + u1APnZZgrad2\/(8*u1APn) + (5*u1APn*(-1 + u1APP2)^2)\/4 + (u1APchiB*u1APPnormal2)\/5 + (5*u1APn*u1APPZZgrad2)\/2 - u1APn*u1APthetaZZt + (3*u1APchiB*u1APudZZcurl2)\/5 + (98*u1APgZZell*u1APuw^2)\/75 + (2*u1APgZZell*u1APuwZZt2)\/3 + (u1APgZZell*u1APPt*u1APuZZcurl)\/10 + (5*u1APgZZell*u1APuZZcurl2)\/8 + (2*u1APgZZell*u1APuZZt2)\/3 + (u1APn*u1APv2)\/2 + (u1APhZZgrad2*u1Mh)\/2 + (u1APhZZt2*u1Mh)\/(2*u1cE^2)"
+		"total_expression":"(3*(1 - u1APchiB)^2*u1APchiB^2)\/2 + u1APchiZZgrad2 + u1APfZZmix + u1APfZZthroat + u1APn^5\/4 + u1APnZZgrad2\/(8*u1APn) - u1APn*u1APthetaZZt + (3*u1APchiB*u1APudZZcurl2)\/5 + (98*u1APgZZell*u1APuw^2)\/75 + (2*u1APgZZell*u1APuwZZt2)\/3 + (5*u1APgZZell*u1APuZZcurl2)\/8 + (2*u1APgZZell*u1APuZZt2)\/3 + (u1APn*u1APv2)\/2 + (u1APhZZgrad2*u1Mh)\/2 + (u1APhZZt2*u1Mh)\/(2*u1cE^2)"
 	},
 	"linearized_channel_operator":{
 		"field_order":[
-			"dn$34407",
-			"theta$34407",
-			"chi$34407",
-			"pt$34407",
-			"pr$34407",
-			"ut$34407",
-			"uwf$34407",
-			"hh$34407"
+			"dn$34445",
+			"theta$34445",
+			"chi$34445",
+			"ut$34445",
+			"uwf$34445",
+			"hh$34445"
 		],
 		"gradient_order":[
-			"dnr$34407",
-			"thetar$34407",
-			"chir$34407",
-			"ptr$34407",
-			"prr$34407",
-			"ucurl$34407",
-			"hr$34407"
+			"dnr$34445",
+			"thetar$34445",
+			"chir$34445",
+			"ucurl$34445",
+			"hr$34445"
 		],
-		"quadratic_expression":"chir$34407^2 + (3*chi$34407^2)\/2 + dnr$34407^2\/8 + (5*dn$34407^2)\/2 + 5*pr$34407^2 + (5*(prr$34407^2 + ptr$34407^2))\/2 + (thetar$34407*(-(dn$34407\/(Pi^2*r$34407^3)) + 8*thetar$34407))\/16 + (hr$34407^2*u1Mh)\/2 + (pt$34407*ucurl$34407)\/10 + (5*ucurl$34407^2)\/8 + (98*uwf$34407^2)\/75",
+		"quadratic_expression":"chir$34445^2 + (3*chi$34445^2)\/2 + dnr$34445^2\/8 + (5*dn$34445^2)\/2 - (dn$34445*thetar$34445)\/(16*Pi^2*r$34445^3) + (4*thetar$34445^2 + 4*hr$34445^2*u1Mh + 5*ucurl$34445^2)\/8 + (98*uwf$34445^2)\/75",
 		"quadratic_by_action_term":{
 			"bulk_berry":"0",
-			"bulk_flow_kinetic":"(thetar$34407*(-(dn$34407\/(Pi^2*r$34407^3)) + 8*thetar$34407))\/16",
-			"quantum_pressure":"dnr$34407^2\/8",
-			"bulk_EOS":"(5*dn$34407^2)\/2",
-			"wall_double_well":"(3*chi$34407^2)\/2",
-			"wall_gradient":"chir$34407^2",
+			"bulk_flow_kinetic":"(thetar$34445*(-(dn$34445\/(Pi^2*r$34445^3)) + 8*thetar$34445))\/16",
+			"quantum_pressure":"dnr$34445^2\/8",
+			"bulk_EOS":"(5*dn$34445^2)\/2",
+			"wall_double_well":"(3*chi$34445^2)\/2",
+			"wall_gradient":"chir$34445^2",
 			"wall_shear_gate":"0",
-			"wall_anisotropy":"0",
 			"throat_source":"0",
 			"wall_mix":"0",
-			"polar_kinetic":"0",
-			"polar_gradient":"(5*(prr$34407^2 + ptr$34407^2))\/2",
-			"polar_quartic":"5*pr$34407^2",
 			"brane_shear_kinetic":"0",
-			"brane_shear_gradient":"(5*ucurl$34407^2)\/8",
-			"Pu_coupling":"(pt$34407*ucurl$34407)\/10",
+			"brane_shear_gradient":"(5*ucurl$34445^2)\/8",
 			"uw_kinetic":"0",
-			"uw_gap":"(98*uwf$34407^2)\/75",
+			"uw_gap":"(98*uwf$34445^2)\/75",
 			"h_kinetic":"0",
-			"h_gradient":"(hr$34407^2*u1Mh)\/2"
+			"h_gradient":"(hr$34445^2*u1Mh)\/2"
 		},
 		"gradient_hessian":[
 			[
 				"1\/4",
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -991,8 +873,6 @@
 				"1",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
@@ -1000,31 +880,9 @@
 				"0",
 				"2",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
-				"0",
-				"0",
-				"0",
-				"5",
-				"0",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"5",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1032,8 +890,6 @@
 				"0"
 			],
 			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1048,13 +904,9 @@
 				"0",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1068,8 +920,6 @@
 				"3",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
@@ -1078,33 +928,9 @@
 				"0",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"10",
-				"0",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1118,15 +944,18 @@
 				"0",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			]
 		],
 		"mixed_hessian":[
 			[
 				"0",
-				"-1\/16*1\/(Pi^2*r$34407^3)",
+				"-1\/16*1\/(Pi^2*r$34445^3)",
+				"0",
+				"0",
+				"0"
+			],
+			[
 				"0",
 				"0",
 				"0",
@@ -1138,31 +967,9 @@
 				"0",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"1\/10",
-				"0"
-			],
-			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1174,22 +981,9 @@
 				"0",
 				"0",
 				"0",
-				"0",
-				"0",
 				"0"
 			],
 			[
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0",
-				"0"
-			],
-			[
-				"0",
-				"0",
 				"0",
 				"0",
 				"0",
@@ -1203,13 +997,10 @@
 			"phase_gradient":"1",
 			"wall_gradient":"2",
 			"wall_well_curvature":"3",
-			"polar_tangent_gradient":"5",
-			"polar_radial_curvature":"10",
 			"shear_curl":"5\/4",
-			"Pu_cross":"1\/10",
 			"uw_curvature":"196\/75",
 			"h_gradient":"u1Mh",
-			"drain_density_phase":"-1\/16*1\/(Pi^2*r$34407^3)"
+			"drain_density_phase":"-1\/16*1\/(Pi^2*r$34445^3)"
 		}
 	},
 	"action_term_removal_probes":{
@@ -1218,14 +1009,6 @@
 			"before":"1\/4",
 			"after_removal":"0",
 			"computed_delta":"1\/4",
-			"operator_changed":true,
-			"source_completeness_gate":"FAIL_IF_REMOVED"
-		},
-		"Pu_coupling":{
-			"operator_entry":"Pu_cross",
-			"before":"1\/10",
-			"after_removal":"0",
-			"computed_delta":"1\/10",
 			"operator_changed":true,
 			"source_completeness_gate":"FAIL_IF_REMOVED"
 		},
@@ -1240,41 +1023,21 @@
 	},
 	"coupled_indicial_analysis":{
 		"density_phase":{
-			"cross_coefficient":"-1\/16*1\/(Pi^2*r$34407^3)",
-			"diagonal_degree":"-2 - nu$39862",
-			"cross_degree":"-4 - nu$39862",
+			"cross_coefficient":"-1\/16*1\/(Pi^2*r$34445^3)",
+			"diagonal_degree":"-2 - nu$36788",
+			"cross_degree":"-4 - nu$36788",
 			"degree_difference":"-2",
 			"leading_exponents_shifted":false,
 			"computed_conclusion":"SUBLEADING_FOR_D_GT_2"
 		},
-		"Pu":{
-			"bulk_profile_solve":"P(k,w)=P0*exp(-k*abs(w))",
-			"two_sided_bulk_energy":"5*k$39862*p0$39862^2",
-			"surface_stiffness":"10*k$39862",
-			"hessian":[
-				[
-					"10*k$39862",
-					"k$39862\/10"
-				],
-				[
-					"k$39862\/10",
-					"(5*k$39862^2)\/4"
-				]
-			],
-			"determinant":"(k$39862^2*(-1 + 1250*k$39862))\/100",
-			"witness_k":"1\/2500",
-			"witness_determinant":"-1\/1250000000",
-			"classification":"UNSTABLE_HELICAL",
-			"dependencies":[]
-		},
-		"changes_scalar_channel_verdict":true
+		"changes_scalar_channel_verdict":false
 	},
 	"tail_channels":[
 		{
 			"id":"density_EOS",
 			"field":"delta_n",
 			"radial_dimension":4,
-			"equation":"-5*ff$54301[r$54301] + ((3*Derivative[1][ff$54301][r$54301])\/r$54301 + Derivative[2][ff$54301][r$54301])\/4 == 0",
+			"equation":"-5*ff$40704[r$40704] + ((3*Derivative[1][ff$40704][r$40704])\/r$40704 + Derivative[2][ff$40704][r$40704])\/4 == 0",
 			"solved_general_form":"r^(1-d\/2)[C_I I_order(gap r)+C_K K_order(gap r)]",
 			"large_r_characteristic_roots":[
 				"-2*Sqrt[5]",
@@ -1294,7 +1057,7 @@
 			"id":"wall_chiB",
 			"field":"delta_chiB",
 			"radial_dimension":4,
-			"equation":"-3*ff$54398[r$54398] + 2*((3*Derivative[1][ff$54398][r$54398])\/r$54398 + Derivative[2][ff$54398][r$54398]) == 0",
+			"equation":"-3*ff$40808[r$40808] + 2*((3*Derivative[1][ff$40808][r$40808])\/r$40808 + Derivative[2][ff$40808][r$40808]) == 0",
 			"solved_general_form":"r^(1-d\/2)[C_I I_order(gap r)+C_K K_order(gap r)]",
 			"large_r_characteristic_roots":[
 				"-Sqrt[3\/2]",
@@ -1314,7 +1077,7 @@
 			"id":"bound_phase",
 			"field":"theta",
 			"radial_dimension":4,
-			"equation":"(3*Derivative[1][ff$54466][r$54466])\/r$54466 + Derivative[2][ff$54466][r$54466] == 0",
+			"equation":"(3*Derivative[1][ff$40876][r$40876])\/r$40876 + Derivative[2][ff$40876][r$40876] == 0",
 			"solved_general_form":"C_grow r^ell+C_decay r^-nu",
 			"indicial_equation":"0",
 			"indicial_roots":[
@@ -1327,46 +1090,6 @@
 			"solution_residual":"0",
 			"zero_mode_norm_integral":"2\/R^2",
 			"zero_mode_norm_value":2.0,
-			"normalizable":true,
-			"dependencies":[]
-		},
-		{
-			"id":"polar_tangent",
-			"field":"P_tangent",
-			"radial_dimension":4,
-			"equation":"5*((3*Derivative[1][ff$55115][r$55115])\/r$55115 + Derivative[2][ff$55115][r$55115]) == 0",
-			"solved_general_form":"C_grow r^ell+C_decay r^-nu",
-			"indicial_equation":"0",
-			"indicial_roots":[
-				"0",
-				"2"
-			],
-			"classification":"POWER_LAW",
-			"decay_exponent":"2",
-			"gap_squared":"0",
-			"solution_residual":"0",
-			"zero_mode_norm_integral":"2\/R^2",
-			"zero_mode_norm_value":2.0,
-			"normalizable":true,
-			"dependencies":[]
-		},
-		{
-			"id":"polar_radial",
-			"field":"P_radial",
-			"radial_dimension":4,
-			"equation":"-10*ff$55741[r$55741] + 5*((3*Derivative[1][ff$55741][r$55741])\/r$55741 + Derivative[2][ff$55741][r$55741]) == 0",
-			"solved_general_form":"r^(1-d\/2)[C_I I_order(gap r)+C_K K_order(gap r)]",
-			"large_r_characteristic_roots":[
-				"-Sqrt[2]",
-				"Sqrt[2]"
-			],
-			"classification":"EXPONENTIAL_GAP",
-			"decay_exponent":null,
-			"gap_squared":"2",
-			"gap":"Sqrt[2]",
-			"solution_residual":"0",
-			"zero_mode_norm_integral":"radial BesselK translated norm",
-			"zero_mode_norm_value":0.23897142051083914,
 			"normalizable":true,
 			"dependencies":[]
 		},
@@ -1374,7 +1097,7 @@
 			"id":"brane_shear",
 			"field":"u_transverse",
 			"radial_dimension":3,
-			"equation":"(5*((-2*ff$55809[r$55809])\/r$55809^2 + (2*Derivative[1][ff$55809][r$55809])\/r$55809 + Derivative[2][ff$55809][r$55809]))\/4 == 0",
+			"equation":"(5*((-2*ff$41572[r$41572])\/r$41572^2 + (2*Derivative[1][ff$41572][r$41572])\/r$41572 + Derivative[2][ff$41572][r$41572]))\/4 == 0",
 			"solved_general_form":"C_grow r^ell+C_decay r^-nu",
 			"indicial_equation":"0",
 			"indicial_roots":[
@@ -1394,7 +1117,7 @@
 			"id":"uw",
 			"field":"u_w",
 			"radial_dimension":3,
-			"equation":"(196*ff$56451[r$56451])\/75 == 0",
+			"equation":"(196*ff$42212[r$42212])\/75 == 0",
 			"solved_general_form":"f(r)=0 outside the collar",
 			"classification":"ALGEBRAIC_GAP",
 			"decay_exponent":null,
@@ -1409,7 +1132,7 @@
 			"id":"h",
 			"field":"h",
 			"radial_dimension":4,
-			"equation":"u1Mh*((3*Derivative[1][ff$56452][r$56452])\/r$56452 + Derivative[2][ff$56452][r$56452]) == 0",
+			"equation":"u1Mh*((3*Derivative[1][ff$42213][r$42213])\/r$42213 + Derivative[2][ff$42213][r$42213]) == 0",
 			"solved_general_form":"C_grow r^ell+C_decay r^-nu",
 			"indicial_equation":"0",
 			"indicial_roots":[
@@ -1438,7 +1161,7 @@
 	},
 	"linearized_force_balance":{
 		"branch":"force_balance",
-		"operator_object":"D_E=(-A_n Laplacian+U''(n0)) plus translated throat-source and chiB\/P\/u\/h\/trace blocks",
+		"operator_object":"D_E=(-A_n Laplacian+U''(n0)) plus translated throat-source and chiB\/u\/h\/trace blocks",
 		"density_balance_expression":"0",
 		"density_source_expression":"(5*(1 + E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)\/5)^4)\/4 + ((2*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2) - 4*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)*xx[1]^2)\/5 + (2*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2) - 4*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)*xx[2]^2)\/5 + (2*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2) - 4*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)*xx[3]^2)\/5 + (2*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2) - 4*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)*xx[4]^2)\/5)\/4",
 		"right_zero_mode":"(2*E^(-xx[1]^2 - xx[2]^2 - xx[3]^2 - xx[4]^2)*xx[1])\/5",
@@ -1446,7 +1169,7 @@
 		"operator_available":true
 	},
 	"zero_mode_quotient":{
-		"computed_channel_norm_sum":7.982194044008287,
+		"computed_channel_norm_sum":5.743222623497448,
 		"gram":"z1^2 + z2^2",
 		"gram_inverse":"(z1^2 + z2^2)^(-1)",
 		"projector":"{{1 - z1^2\/(z1^2 + z2^2), -((z1*z2)\/(z1^2 + z2^2))}, {-((z1*z2)\/(z1^2 + z2^2)), 1 - z2^2\/(z1^2 + z2^2)}}",
@@ -1719,26 +1442,6 @@
 					"tilt_shear"
 				]
 			},
-			"P_XX":{
-				"expression":"11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2",
-				"production_value":0.7363068218184257,
-				"dependencies":[
-					"polar_radial",
-					"polar_tangent"
-				]
-			},
-			"P_XP":{
-				"expression":"0",
-				"production_value":0.0,
-				"dependencies":[]
-			},
-			"P_PP":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"H_XX":{
 				"expression":"9.86960440108935799230494012590497732162`15.*u1hZZscalar^2",
 				"production_value":0.20142049798141548,
@@ -1786,32 +1489,10 @@
 					"wall_delta"
 				]
 			},
-			"I_polar_grad":{
-				"expression":"11.10330495122552818543226749170571565628`15.*u1tiltZZpolar^2",
-				"production_value":0.17348913986289888,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
-			"I_polar_quartic":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"I_shear_grad":{
 				"expression":"7.53982236861550347839511232450604438782`15.*u1tiltZZshear^2",
 				"production_value":6.231258155880581e-2,
 				"dependencies":[
-					"tilt_shear"
-				]
-			},
-			"I_Pu_cross":{
-				"expression":"4.18879020478639052527114472468383610249`15.*u1tiltZZpolar*u1tiltZZshear",
-				"production_value":4.759988869075444e-2,
-				"dependencies":[
-					"tilt_polar",
 					"tilt_shear"
 				]
 			},
@@ -1887,26 +1568,6 @@
 					"tilt_shear"
 				]
 			},
-			"P_XX":{
-				"expression":"11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2",
-				"production_value":0.7363068218184257,
-				"dependencies":[
-					"polar_radial",
-					"polar_tangent"
-				]
-			},
-			"P_XP":{
-				"expression":"0",
-				"production_value":0.0,
-				"dependencies":[]
-			},
-			"P_PP":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"H_XX":{
 				"expression":"9.86960440108935799230494012590497732162`15.*u1hZZscalar^2",
 				"production_value":0.20142049798141548,
@@ -1954,32 +1615,10 @@
 					"wall_delta"
 				]
 			},
-			"I_polar_grad":{
-				"expression":"11.10330495122552818543226749170571565628`15.*u1tiltZZpolar^2",
-				"production_value":0.17348913986289888,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
-			"I_polar_quartic":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"I_shear_grad":{
 				"expression":"7.53982236861550347839511232450604438782`15.*u1tiltZZshear^2",
 				"production_value":6.231258155880581e-2,
 				"dependencies":[
-					"tilt_shear"
-				]
-			},
-			"I_Pu_cross":{
-				"expression":"4.18879020478639052527114472468383610249`15.*u1tiltZZpolar*u1tiltZZshear",
-				"production_value":4.759988869075444e-2,
-				"dependencies":[
-					"tilt_polar",
 					"tilt_shear"
 				]
 			},
@@ -2048,26 +1687,6 @@
 					"tilt_shear"
 				]
 			},
-			"P_XX":{
-				"expression":"11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2",
-				"production_value":0.7363068218184257,
-				"dependencies":[
-					"polar_radial",
-					"polar_tangent"
-				]
-			},
-			"P_XP":{
-				"expression":"0",
-				"production_value":0.0,
-				"dependencies":[]
-			},
-			"P_PP":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"H_XX":{
 				"expression":"9.86960440108935799230494012590497732162`15.*u1hZZscalar^2",
 				"production_value":0.20142049798141548,
@@ -2115,32 +1734,10 @@
 					"wall_delta"
 				]
 			},
-			"I_polar_grad":{
-				"expression":"11.10330495122552818543226749170571565628`15.*u1tiltZZpolar^2",
-				"production_value":0.17348913986289888,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
-			"I_polar_quartic":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"I_shear_grad":{
 				"expression":"7.53982236861550347839511232450604438782`15.*u1tiltZZshear^2",
 				"production_value":6.231258155880581e-2,
 				"dependencies":[
-					"tilt_shear"
-				]
-			},
-			"I_Pu_cross":{
-				"expression":"4.18879020478639052527114472468383610249`15.*u1tiltZZpolar*u1tiltZZshear",
-				"production_value":4.759988869075444e-2,
-				"dependencies":[
-					"tilt_polar",
 					"tilt_shear"
 				]
 			},
@@ -2209,26 +1806,6 @@
 					"tilt_shear"
 				]
 			},
-			"P_XX":{
-				"expression":"11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2",
-				"production_value":0.7363068218184257,
-				"dependencies":[
-					"polar_radial",
-					"polar_tangent"
-				]
-			},
-			"P_XP":{
-				"expression":"0",
-				"production_value":0.0,
-				"dependencies":[]
-			},
-			"P_PP":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"H_XX":{
 				"expression":"9.86960440108935799230494012590497732162`15.*u1hZZscalar^2",
 				"production_value":0.20142049798141548,
@@ -2276,32 +1853,10 @@
 					"wall_delta"
 				]
 			},
-			"I_polar_grad":{
-				"expression":"11.10330495122552818543226749170571565628`15.*u1tiltZZpolar^2",
-				"production_value":0.17348913986289888,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
-			"I_polar_quartic":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"I_shear_grad":{
 				"expression":"7.53982236861550347839511232450604438782`15.*u1tiltZZshear^2",
 				"production_value":6.231258155880581e-2,
 				"dependencies":[
-					"tilt_shear"
-				]
-			},
-			"I_Pu_cross":{
-				"expression":"4.18879020478639052527114472468383610249`15.*u1tiltZZpolar*u1tiltZZshear",
-				"production_value":4.759988869075444e-2,
-				"dependencies":[
-					"tilt_polar",
 					"tilt_shear"
 				]
 			},
@@ -2377,26 +1932,6 @@
 					"tilt_shear"
 				]
 			},
-			"P_XX":{
-				"expression":"11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2",
-				"production_value":0.7363068218184257,
-				"dependencies":[
-					"polar_radial",
-					"polar_tangent"
-				]
-			},
-			"P_XP":{
-				"expression":"0",
-				"production_value":0.0,
-				"dependencies":[]
-			},
-			"P_PP":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"H_XX":{
 				"expression":"9.86960440108935799230494012590497732162`15.*u1hZZscalar^2",
 				"production_value":0.20142049798141548,
@@ -2444,32 +1979,10 @@
 					"wall_delta"
 				]
 			},
-			"I_polar_grad":{
-				"expression":"11.10330495122552818543226749170571565628`15.*u1tiltZZpolar^2",
-				"production_value":0.17348913986289888,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
-			"I_polar_quartic":{
-				"expression":"9.86960440108935799230494012590497732162`15.*u1tiltZZpolar^2",
-				"production_value":0.15421256876702122,
-				"dependencies":[
-					"tilt_polar"
-				]
-			},
 			"I_shear_grad":{
 				"expression":"7.53982236861550347839511232450604438782`15.*u1tiltZZshear^2",
 				"production_value":6.231258155880581e-2,
 				"dependencies":[
-					"tilt_shear"
-				]
-			},
-			"I_Pu_cross":{
-				"expression":"4.18879020478639052527114472468383610249`15.*u1tiltZZpolar*u1tiltZZshear",
-				"production_value":4.759988869075444e-2,
-				"dependencies":[
-					"tilt_polar",
 					"tilt_shear"
 				]
 			},
@@ -2484,45 +1997,8 @@
 	},
 	"endpoint_effective_actions":{
 		"E1":{
-			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 - 27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
+			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 4.93480220054467899615247006295248866081`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 			"canonical_terms":[
-				{
-					"coefficient":-2.775826237806382e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"p":2,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"pd":2,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":5.97282733751704,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2,
-						"V":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2,
-						"V":2
-					}
-				},
 				{
 					"coefficient":-1.8385199296072086,
 					"powers":{
@@ -2604,15 +2080,6 @@
 					}
 				},
 				{
-					"coefficient":-4.1887902047863905,
-					"powers":{
-						"lambdaPu":1,
-						"p":2,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				},
-				{
 					"coefficient":9.869604401089358,
 					"powers":{
 						"m_GNLS":1,
@@ -2690,15 +2157,10 @@
 				"wall_double_well":"-1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2",
 				"wall_gradient":"-5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2",
 				"wall_shear_gate":"0",
-				"wall_anisotropy":"0",
 				"throat_source":"0",
 				"wall_mix":"0",
-				"polar_kinetic":"4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2",
-				"polar_gradient":"-27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-				"polar_quartic":"0",
 				"brane_shear_kinetic":"2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 				"brane_shear_gradient":"-3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2",
-				"Pu_coupling":"-4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
 				"uw_kinetic":"0",
 				"uw_gap":"0",
 				"h_kinetic":"(4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2",
@@ -2721,24 +2183,8 @@
 					"dependencies":[]
 				},
 				"GVV":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
 					"canonical_terms":[
-						{
-							"coefficient":1.194565467503408e1,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_radial":2
-							}
-						},
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_tangent":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -2770,14 +2216,11 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"h_scalar",
 						"m_GNLS",
 						"Mh",
-						"polar_radial",
-						"polar_tangent",
 						"rhoBr",
 						"rho_inf",
 						"shear_transverse"
@@ -2822,16 +2265,8 @@
 					]
 				},
 				"GPP":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
 					"canonical_terms":[
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -2865,7 +2300,6 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"m_GNLS",
@@ -2874,22 +2308,12 @@
 						"rho_inf",
 						"tilt_h",
 						"tilt_phase",
-						"tilt_polar",
 						"tilt_shear"
 					]
 				},
 				"KPP":{
-					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 + 8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
+					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
 					"canonical_terms":[
-						{
-							"coefficient":5.551652475612764e1,
-							"powers":{
-								"a":2,
-								"K_EOS":1,
-								"rho_inf":5,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":3.677039859214417,
 							"powers":{
@@ -2922,14 +2346,6 @@
 							}
 						},
 						{
-							"coefficient":8.377580409572781,
-							"powers":{
-								"lambdaPu":1,
-								"tilt_polar":1,
-								"tilt_shear":1
-							}
-						},
-						{
 							"coefficient":1.1103304951225528e1,
 							"powers":{
 								"Mh":1,
@@ -2945,74 +2361,34 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"aB",
 						"density_delta",
 						"hbar",
 						"kappaB",
 						"K_EOS",
-						"lambdaPu",
 						"m_GNLS",
 						"Mh",
 						"muR",
 						"rho_inf",
 						"tilt_h",
-						"tilt_polar",
 						"tilt_shear",
 						"wall_delta"
 					]
 				}
 			},
 			"canonical_momenta":{
-				"P_X":"2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*V + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
-				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
+				"P_X":"2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*V + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
+				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
 			},
 			"generalized_force":{
-				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 55.5165247561276409271613374585285782814`15.*p*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 8.37758040957278105054228944936767220497`15.*p*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
+				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
 				"definition":"-<delta S_action\/delta Phi,partial Phi\/partial p>-surface variation"
 			},
 			"E4_virtual_work":"STRUCTURAL_ZERO"
 		},
 		"E2":{
-			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 - 27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 0.57498505812856304242330907072755508125`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 2.46740110027233949807623503147624433041`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 0.28749252906428152121165453536377754062`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2 + 1.2337005501361697490381175157381221652`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
+			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 0.57498505812856304242330907072755508125`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 2.46740110027233949807623503147624433041`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 0.28749252906428152121165453536377754062`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 1.2337005501361697490381175157381221652`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 			"canonical_terms":[
-				{
-					"coefficient":-2.775826237806382e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"p":2,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"pd":2,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":5.97282733751704,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2,
-						"V":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2,
-						"V":2
-					}
-				},
 				{
 					"coefficient":-1.8385199296072086,
 					"powers":{
@@ -3094,15 +2470,6 @@
 					}
 				},
 				{
-					"coefficient":-4.1887902047863905,
-					"powers":{
-						"lambdaPu":1,
-						"p":2,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				},
-				{
 					"coefficient":2.4674011002723395,
 					"powers":{
 						"m_GNLS":1,
@@ -3180,15 +2547,10 @@
 				"wall_double_well":"-1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2",
 				"wall_gradient":"-5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2",
 				"wall_shear_gate":"0",
-				"wall_anisotropy":"0",
 				"throat_source":"0",
 				"wall_mix":"0",
-				"polar_kinetic":"4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2",
-				"polar_gradient":"-27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-				"polar_quartic":"0",
 				"brane_shear_kinetic":"2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 				"brane_shear_gradient":"-3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2",
-				"Pu_coupling":"-4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
 				"uw_kinetic":"0",
 				"uw_gap":"0",
 				"h_kinetic":"(4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2",
@@ -3211,24 +2573,8 @@
 					"dependencies":[]
 				},
 				"GVV":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2 + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
 					"canonical_terms":[
-						{
-							"coefficient":1.194565467503408e1,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_radial":2
-							}
-						},
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_tangent":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -3260,14 +2606,11 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"h_scalar",
 						"m_GNLS",
 						"Mh",
-						"polar_radial",
-						"polar_tangent",
 						"rhoBr",
 						"rho_inf",
 						"shear_transverse"
@@ -3312,16 +2655,8 @@
 					]
 				},
 				"GPP":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
 					"canonical_terms":[
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -3355,7 +2690,6 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"m_GNLS",
@@ -3364,22 +2698,12 @@
 						"rho_inf",
 						"tilt_h",
 						"tilt_phase",
-						"tilt_polar",
 						"tilt_shear"
 					]
 				},
 				"KPP":{
-					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 + 8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
+					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
 					"canonical_terms":[
-						{
-							"coefficient":5.551652475612764e1,
-							"powers":{
-								"a":2,
-								"K_EOS":1,
-								"rho_inf":5,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":3.677039859214417,
 							"powers":{
@@ -3412,14 +2736,6 @@
 							}
 						},
 						{
-							"coefficient":8.377580409572781,
-							"powers":{
-								"lambdaPu":1,
-								"tilt_polar":1,
-								"tilt_shear":1
-							}
-						},
-						{
 							"coefficient":1.1103304951225528e1,
 							"powers":{
 								"Mh":1,
@@ -3435,74 +2751,34 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"aB",
 						"density_delta",
 						"hbar",
 						"kappaB",
 						"K_EOS",
-						"lambdaPu",
 						"m_GNLS",
 						"Mh",
 						"muR",
 						"rho_inf",
 						"tilt_h",
-						"tilt_polar",
 						"tilt_shear",
 						"wall_delta"
 					]
 				}
 			},
 			"canonical_momenta":{
-				"P_X":"0.57498505812856304242330907072755508125`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 2.46740110027233949807623503147624433041`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS*V + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
-				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
+				"P_X":"0.57498505812856304242330907072755508125`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 2.46740110027233949807623503147624433041`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS*V + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
+				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 0.57498505812856304242330907072755508125`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 2.46740110027233949807623503147624433041`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
 			},
 			"generalized_force":{
-				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 55.5165247561276409271613374585285782814`15.*p*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 8.37758040957278105054228944936767220497`15.*p*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
+				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
 				"definition":"-<delta S_action\/delta Phi,partial Phi\/partial p>-surface variation"
 			},
 			"E4_virtual_work":"STRUCTURAL_ZERO"
 		},
 		"E3":{
-			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 - 27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
+			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 			"canonical_terms":[
-				{
-					"coefficient":-2.775826237806382e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"p":2,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"pd":2,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":5.97282733751704,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2,
-						"V":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2,
-						"V":2
-					}
-				},
 				{
 					"coefficient":-1.8385199296072086,
 					"powers":{
@@ -3563,15 +2839,6 @@
 						"kappaB":1,
 						"p":2,
 						"wall_delta":2
-					}
-				},
-				{
-					"coefficient":-4.1887902047863905,
-					"powers":{
-						"lambdaPu":1,
-						"p":2,
-						"tilt_polar":1,
-						"tilt_shear":1
 					}
 				},
 				{
@@ -3634,15 +2901,10 @@
 				"wall_double_well":"-1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2",
 				"wall_gradient":"-5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2",
 				"wall_shear_gate":"0",
-				"wall_anisotropy":"0",
 				"throat_source":"0",
 				"wall_mix":"0",
-				"polar_kinetic":"4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2",
-				"polar_gradient":"-27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-				"polar_quartic":"0",
 				"brane_shear_kinetic":"2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 				"brane_shear_gradient":"-3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2",
-				"Pu_coupling":"-4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
 				"uw_kinetic":"0",
 				"uw_gap":"0",
 				"h_kinetic":"(4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2",
@@ -3665,24 +2927,8 @@
 					"dependencies":[]
 				},
 				"GVV":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
 					"canonical_terms":[
-						{
-							"coefficient":1.194565467503408e1,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_radial":2
-							}
-						},
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_tangent":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -3700,13 +2946,9 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"h_scalar",
-						"m_GNLS",
 						"Mh",
-						"polar_radial",
-						"polar_tangent",
 						"rhoBr",
 						"shear_transverse"
 					]
@@ -3730,16 +2972,8 @@
 					]
 				},
 				"GPP":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
 					"canonical_terms":[
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -3773,7 +3007,6 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"m_GNLS",
@@ -3782,22 +3015,12 @@
 						"rho_inf",
 						"tilt_h",
 						"tilt_phase",
-						"tilt_polar",
 						"tilt_shear"
 					]
 				},
 				"KPP":{
-					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 + 8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
+					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
 					"canonical_terms":[
-						{
-							"coefficient":5.551652475612764e1,
-							"powers":{
-								"a":2,
-								"K_EOS":1,
-								"rho_inf":5,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":3.677039859214417,
 							"powers":{
@@ -3830,14 +3053,6 @@
 							}
 						},
 						{
-							"coefficient":8.377580409572781,
-							"powers":{
-								"lambdaPu":1,
-								"tilt_polar":1,
-								"tilt_shear":1
-							}
-						},
-						{
 							"coefficient":1.1103304951225528e1,
 							"powers":{
 								"Mh":1,
@@ -3853,74 +3068,34 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"aB",
 						"density_delta",
 						"hbar",
 						"kappaB",
 						"K_EOS",
-						"lambdaPu",
 						"m_GNLS",
 						"Mh",
 						"muR",
 						"rho_inf",
 						"tilt_h",
-						"tilt_polar",
 						"tilt_shear",
 						"wall_delta"
 					]
 				}
 			},
 			"canonical_momenta":{
-				"P_X":"4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
-				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
+				"P_X":"4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
+				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
 			},
 			"generalized_force":{
-				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 55.5165247561276409271613374585285782814`15.*p*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 8.37758040957278105054228944936767220497`15.*p*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
+				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
 				"definition":"-<delta S_action\/delta Phi,partial Phi\/partial p>-surface variation"
 			},
 			"E4_virtual_work":"STRUCTURAL_ZERO"
 		},
 		"E4":{
-			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 - 27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*V^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
+			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*V^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 			"canonical_terms":[
-				{
-					"coefficient":-2.775826237806382e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"p":2,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"pd":2,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":5.97282733751704,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2,
-						"V":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2,
-						"V":2
-					}
-				},
 				{
 					"coefficient":-1.8385199296072086,
 					"powers":{
@@ -3981,15 +3156,6 @@
 						"kappaB":1,
 						"p":2,
 						"wall_delta":2
-					}
-				},
-				{
-					"coefficient":-4.1887902047863905,
-					"powers":{
-						"lambdaPu":1,
-						"p":2,
-						"tilt_polar":1,
-						"tilt_shear":1
 					}
 				},
 				{
@@ -4076,15 +3242,10 @@
 				"wall_double_well":"-1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2",
 				"wall_gradient":"-5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2",
 				"wall_shear_gate":"0",
-				"wall_anisotropy":"0",
 				"throat_source":"0",
 				"wall_mix":"0",
-				"polar_kinetic":"4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2",
-				"polar_gradient":"-27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-				"polar_quartic":"0",
 				"brane_shear_kinetic":"2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + 3.76991118430775173919755616225302219391`15.*u1rhoBr*V^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 				"brane_shear_gradient":"-3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2",
-				"Pu_coupling":"-4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
 				"uw_kinetic":"0",
 				"uw_gap":"0",
 				"h_kinetic":"(4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2",
@@ -4107,24 +3268,8 @@
 					"dependencies":[]
 				},
 				"GVV":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr + 15.07964473723100695679022464901208877563`15.*u1rhoBr*u1shearZZtransverse + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr + 15.07964473723100695679022464901208877563`15.*u1rhoBr*u1shearZZtransverse + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
 					"canonical_terms":[
-						{
-							"coefficient":1.194565467503408e1,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_radial":2
-							}
-						},
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_tangent":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -4155,13 +3300,9 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"h_scalar",
-						"m_GNLS",
 						"Mh",
-						"polar_radial",
-						"polar_tangent",
 						"rhoBr",
 						"shear_transverse"
 					]
@@ -4192,16 +3333,8 @@
 					]
 				},
 				"GPP":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
 					"canonical_terms":[
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -4235,7 +3368,6 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"m_GNLS",
@@ -4244,22 +3376,12 @@
 						"rho_inf",
 						"tilt_h",
 						"tilt_phase",
-						"tilt_polar",
 						"tilt_shear"
 					]
 				},
 				"KPP":{
-					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 + 8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
+					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
 					"canonical_terms":[
-						{
-							"coefficient":5.551652475612764e1,
-							"powers":{
-								"a":2,
-								"K_EOS":1,
-								"rho_inf":5,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":3.677039859214417,
 							"powers":{
@@ -4292,14 +3414,6 @@
 							}
 						},
 						{
-							"coefficient":8.377580409572781,
-							"powers":{
-								"lambdaPu":1,
-								"tilt_polar":1,
-								"tilt_shear":1
-							}
-						},
-						{
 							"coefficient":1.1103304951225528e1,
 							"powers":{
 								"Mh":1,
@@ -4315,74 +3429,34 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"aB",
 						"density_delta",
 						"hbar",
 						"kappaB",
 						"K_EOS",
-						"lambdaPu",
 						"m_GNLS",
 						"Mh",
 						"muR",
 						"rho_inf",
 						"tilt_h",
-						"tilt_polar",
 						"tilt_shear",
 						"wall_delta"
 					]
 				}
 			},
 			"canonical_momenta":{
-				"P_X":"4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*V + 15.07964473723100695679022464901208877563`15.*u1rhoBr*u1shearZZtransverse*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
-				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
+				"P_X":"4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 7.53982236861550347839511232450604438782`15.*u1rhoBr*V + 15.07964473723100695679022464901208877563`15.*u1rhoBr*u1shearZZtransverse*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
+				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
 			},
 			"generalized_force":{
-				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 55.5165247561276409271613374585285782814`15.*p*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 8.37758040957278105054228944936767220497`15.*p*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
+				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
 				"definition":"-<delta S_action\/delta Phi,partial Phi\/partial p>-surface variation"
 			},
 			"E4_virtual_work":"delta W=lambda_A*(delta V_A-C_A[delta uT_dot])=0 on allowed variations"
 		},
 		"E5":{
-			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 - 27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 1.34163180229998043232105449836429518958`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 5.75726923396879216217788174011123677095`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 0.45785847221348538563337574150527534248`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2 + 1.96478235762427034106070567321256492977`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
+			"L_eff":"(-2.36498864298243161030654846399556845427`15.*p^2*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 1.36158464648971438970548319957742933184`15.*p^2*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 5.55165247561276409271613374585285782814`15.*p^2*u1Mh*u1tiltZZh^2 + (4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + 1.1499701162571260848466181414551101625`15.*pd^2*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 4.93480220054467899615247006295248866081`15.*pd^2*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 - 3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2 + 2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 - 1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2 - 5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2 + 1.34163180229998043232105449836429518958`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 5.75726923396879216217788174011123677095`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2 + 0.45785847221348538563337574150527534248`15.*u1densityZZdelta*u1mZZGNLS*V^2 + 1.96478235762427034106070567321256492977`15.*u1mZZGNLS*u1rhoZZinf*V^2 + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 			"canonical_terms":[
-				{
-					"coefficient":-2.775826237806382e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"p":2,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"pd":2,
-						"tilt_polar":2
-					}
-				},
-				{
-					"coefficient":5.97282733751704,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2,
-						"V":2
-					}
-				},
-				{
-					"coefficient":4.934802200544679,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2,
-						"V":2
-					}
-				},
 				{
 					"coefficient":-1.8385199296072086,
 					"powers":{
@@ -4464,15 +3538,6 @@
 					}
 				},
 				{
-					"coefficient":-4.1887902047863905,
-					"powers":{
-						"lambdaPu":1,
-						"p":2,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				},
-				{
 					"coefficient":5.757269233968792,
 					"powers":{
 						"m_GNLS":1,
@@ -4550,15 +3615,10 @@
 				"wall_double_well":"-1.8385199296072085584086153176031075418`15.*p^2*u1aB*u1wallZZdelta^2",
 				"wall_gradient":"-5.78156129341714830616183462552726268768`15.*p^2*u1kappaB*u1wallZZdelta^2",
 				"wall_shear_gate":"0",
-				"wall_anisotropy":"0",
 				"throat_source":"0",
 				"wall_mix":"0",
-				"polar_kinetic":"4.93480220054467899615247006295248866081`15.*pd^2*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 5.97282733751703975855207318090833723545`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V^2 + 4.93480220054467899615247006295248866081`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V^2",
-				"polar_gradient":"-27.7582623780638204635806687292642891407`15.*p^2*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-				"polar_quartic":"0",
 				"brane_shear_kinetic":"2.09439510239319526263557236234191805124`15.*pd^2*u1rhoBr*u1tiltZZshear^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V + 3.76991118430775173919755616225302219391`15.*u1rhoBr*u1shearZZtransverse^2*V^2",
 				"brane_shear_gradient":"-3.76991118430775173919755616225302219391`15.*p^2*u1muR*u1tiltZZshear^2",
-				"Pu_coupling":"-4.18879020478639052527114472468383610249`15.*p^2*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
 				"uw_kinetic":"0",
 				"uw_gap":"0",
 				"h_kinetic":"(4.93480220054467899615247006295248866081`15.*pd^2*u1Mh*u1tiltZZh^2)\/u1cE^2 + (4.93480220054467899615247006295248866081`15.*u1hZZscalar^2*u1Mh*V^2)\/u1cE^2",
@@ -4581,24 +3641,8 @@
 					"dependencies":[]
 				},
 				"GVV":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 0.91571694442697077126675148301055068495`15.*u1densityZZdelta*u1mZZGNLS + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2 + 3.92956471524854068212141134642512985954`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh)\/u1cE^2 + 0.91571694442697077126675148301055068495`15.*u1densityZZdelta*u1mZZGNLS + 3.92956471524854068212141134642512985954`15.*u1mZZGNLS*u1rhoZZinf + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2",
 					"canonical_terms":[
-						{
-							"coefficient":1.194565467503408e1,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_radial":2
-							}
-						},
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"polar_tangent":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -4630,14 +3674,11 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"h_scalar",
 						"m_GNLS",
 						"Mh",
-						"polar_radial",
-						"polar_tangent",
 						"rhoBr",
 						"rho_inf",
 						"shear_transverse"
@@ -4682,16 +3723,8 @@
 					]
 				},
 				"GPP":{
-					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
+					"expression":"(9.86960440108935799230494012590497732162`15.*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1tiltZZshear^2",
 					"canonical_terms":[
-						{
-							"coefficient":9.869604401089358,
-							"powers":{
-								"a":2,
-								"m_GNLS":1,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":9.869604401089358,
 							"powers":{
@@ -4725,7 +3758,6 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"cE",
 						"density_delta",
 						"m_GNLS",
@@ -4734,22 +3766,12 @@
 						"rho_inf",
 						"tilt_h",
 						"tilt_phase",
-						"tilt_polar",
 						"tilt_shear"
 					]
 				},
 				"KPP":{
-					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 + 8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
+					"expression":"(4.72997728596486322061309692799113690853`15.*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) + 2.72316929297942877941096639915485866368`15.*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 + 11.10330495122552818543226749170571565628`15.*u1Mh*u1tiltZZh^2 + 7.53982236861550347839511232450604438782`15.*u1muR*u1tiltZZshear^2 + 3.6770398592144171168172306352062150836`15.*u1aB*u1wallZZdelta^2 + 11.56312258683429661232366925105452537537`15.*u1kappaB*u1wallZZdelta^2",
 					"canonical_terms":[
-						{
-							"coefficient":5.551652475612764e1,
-							"powers":{
-								"a":2,
-								"K_EOS":1,
-								"rho_inf":5,
-								"tilt_polar":2
-							}
-						},
 						{
 							"coefficient":3.677039859214417,
 							"powers":{
@@ -4782,14 +3804,6 @@
 							}
 						},
 						{
-							"coefficient":8.377580409572781,
-							"powers":{
-								"lambdaPu":1,
-								"tilt_polar":1,
-								"tilt_shear":1
-							}
-						},
-						{
 							"coefficient":1.1103304951225528e1,
 							"powers":{
 								"Mh":1,
@@ -4805,30 +3819,27 @@
 						}
 					],
 					"dependencies":[
-						"a",
 						"aB",
 						"density_delta",
 						"hbar",
 						"kappaB",
 						"K_EOS",
-						"lambdaPu",
 						"m_GNLS",
 						"Mh",
 						"muR",
 						"rho_inf",
 						"tilt_h",
-						"tilt_polar",
 						"tilt_shear",
 						"wall_delta"
 					]
 				}
 			},
 			"canonical_momenta":{
-				"P_X":"1.34163180229998043232105449836429518958`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 5.75726923396879216217788174011123677095`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 0.91571694442697077126675148301055068495`15.*u1densityZZdelta*u1mZZGNLS*V + 11.9456546750340795171041463618166744709`15.*u1a^2*u1mZZGNLS*u1polarZZradial^2*V + 9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1polarZZtangent^2*V + 3.92956471524854068212141134642512985953`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
-				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1a^2*u1mZZGNLS*u1tiltZZpolar^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 1.34163180229998043232105449836429518958`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 5.75726923396879216217788174011123677095`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
+				"P_X":"1.34163180229998043232105449836429518958`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase + 5.75726923396879216217788174011123677095`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1shearZZtransverse*u1tiltZZshear + (9.86960440108935799230494012590497732162`15.*u1hZZscalar^2*u1Mh*V)\/u1cE^2 + 0.91571694442697077126675148301055068495`15.*u1densityZZdelta*u1mZZGNLS*V + 3.92956471524854068212141134642512985953`15.*u1mZZGNLS*u1rhoZZinf*V + 7.53982236861550347839511232450604438782`15.*u1rhoBr*u1shearZZtransverse^2*V",
+				"P_p":"(9.86960440108935799230494012590497732162`15.*pd*u1Mh*u1tiltZZh^2)\/u1cE^2 + 2.29994023251425216969323628291022032499`15.*pd*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase^2 + 9.86960440108935799230494012590497732162`15.*pd*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase^2 + 4.18879020478639052527114472468383610249`15.*pd*u1rhoBr*u1tiltZZshear^2 + 1.34163180229998043232105449836429518958`15.*u1densityZZdelta*u1mZZGNLS*u1tiltZZphase*V + 5.75726923396879216217788174011123677095`15.*u1mZZGNLS*u1rhoZZinf*u1tiltZZphase*V + 4.18879020478639052527114472468383610249`15.*u1rhoBr*u1shearZZtransverse*u1tiltZZshear*V"
 			},
 			"generalized_force":{
-				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 55.5165247561276409271613374585285782814`15.*p*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2 - 8.37758040957278105054228944936767220497`15.*p*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
+				"Q_p_var":"(-4.72997728596486322061309692799113690853`15.*p*u1densityZZdelta^2*u1hbar^2)\/(u1mZZGNLS*u1rhoZZinf) - 2.72316929297942877941096639915485866368`15.*p*u1densityZZdelta^2*u1KZZEOS*u1rhoZZinf^3 - 11.10330495122552818543226749170571565628`15.*p*u1Mh*u1tiltZZh^2 - 7.53982236861550347839511232450604438782`15.*p*u1muR*u1tiltZZshear^2 - 3.6770398592144171168172306352062150836`15.*p*u1aB*u1wallZZdelta^2 - 11.56312258683429661232366925105452537537`15.*p*u1kappaB*u1wallZZdelta^2",
 				"definition":"-<delta S_action\/delta Phi,partial Phi\/partial p>-surface variation"
 			},
 			"E4_virtual_work":"STRUCTURAL_ZERO"
@@ -4935,15 +3946,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -4978,67 +3984,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E1",
-			"structure":"GVV.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"removal_delta":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"before_monomials":[
-				{
-					"coefficient":1.194565467503408e1,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2
-					}
-				},
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5074,15 +4023,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5126,15 +4070,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5170,15 +4109,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5222,15 +4156,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5265,59 +4194,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E1",
-			"structure":"GPP.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"removal_delta":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5353,15 +4233,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5399,14 +4274,9 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5442,15 +4312,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5486,15 +4351,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_mix",
 				"wall_shear_gate"
@@ -5529,60 +4389,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E1",
-			"structure":"KPP.polar_gradient",
-			"ancestor":"polar_gradient",
-			"contribution":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"removal_delta":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":5.551652475612764e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
 				"wall_shear_gate"
@@ -5616,59 +4426,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E1",
-			"structure":"KPP.Pu_coupling",
-			"ancestor":"Pu_coupling",
-			"contribution":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"removal_delta":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"before_monomials":[
-				{
-					"coefficient":8.377580409572781,
-					"powers":{
-						"lambdaPu":1,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5703,15 +4464,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5753,15 +4509,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5796,67 +4547,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E2",
-			"structure":"GVV.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"removal_delta":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"before_monomials":[
-				{
-					"coefficient":1.194565467503408e1,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2
-					}
-				},
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5892,15 +4586,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5944,15 +4633,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -5988,15 +4672,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6040,15 +4719,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6083,59 +4757,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E2",
-			"structure":"GPP.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"removal_delta":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6171,15 +4796,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6217,14 +4837,9 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6260,15 +4875,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6304,15 +4914,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_mix",
 				"wall_shear_gate"
@@ -6347,60 +4952,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E2",
-			"structure":"KPP.polar_gradient",
-			"ancestor":"polar_gradient",
-			"contribution":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"removal_delta":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":5.551652475612764e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
 				"wall_shear_gate"
@@ -6434,59 +4989,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E2",
-			"structure":"KPP.Pu_coupling",
-			"ancestor":"Pu_coupling",
-			"contribution":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"removal_delta":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"before_monomials":[
-				{
-					"coefficient":8.377580409572781,
-					"powers":{
-						"lambdaPu":1,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6521,15 +5027,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6564,67 +5065,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E3",
-			"structure":"GVV.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"removal_delta":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"before_monomials":[
-				{
-					"coefficient":1.194565467503408e1,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2
-					}
-				},
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6660,15 +5104,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6704,15 +5143,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6756,15 +5190,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6799,59 +5228,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E3",
-			"structure":"GPP.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"removal_delta":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6887,15 +5267,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6933,14 +5308,9 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -6976,15 +5346,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7020,15 +5385,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_mix",
 				"wall_shear_gate"
@@ -7063,60 +5423,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E3",
-			"structure":"KPP.polar_gradient",
-			"ancestor":"polar_gradient",
-			"contribution":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"removal_delta":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":5.551652475612764e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
 				"wall_shear_gate"
@@ -7150,59 +5460,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E3",
-			"structure":"KPP.Pu_coupling",
-			"ancestor":"Pu_coupling",
-			"contribution":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"removal_delta":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"before_monomials":[
-				{
-					"coefficient":8.377580409572781,
-					"powers":{
-						"lambdaPu":1,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7237,15 +5498,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7293,67 +5549,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E4",
-			"structure":"GVV.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"removal_delta":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"before_monomials":[
-				{
-					"coefficient":1.194565467503408e1,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2
-					}
-				},
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7389,15 +5588,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7440,15 +5634,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7492,15 +5681,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7535,59 +5719,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E4",
-			"structure":"GPP.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"removal_delta":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7623,15 +5758,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7669,14 +5799,9 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7712,15 +5837,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7756,15 +5876,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_mix",
 				"wall_shear_gate"
@@ -7799,60 +5914,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E4",
-			"structure":"KPP.polar_gradient",
-			"ancestor":"polar_gradient",
-			"contribution":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"removal_delta":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":5.551652475612764e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
 				"wall_shear_gate"
@@ -7886,59 +5951,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E4",
-			"structure":"KPP.Pu_coupling",
-			"ancestor":"Pu_coupling",
-			"contribution":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"removal_delta":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"before_monomials":[
-				{
-					"coefficient":8.377580409572781,
-					"powers":{
-						"lambdaPu":1,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -7973,15 +5989,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8023,15 +6034,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8066,67 +6072,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E5",
-			"structure":"GVV.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"removal_delta":"u1a^2*u1mZZGNLS*(11.9456546750340795171041463618166744709`15.*u1polarZZradial^2 + 9.86960440108935799230494012590497732162`15.*u1polarZZtangent^2)",
-			"before_monomials":[
-				{
-					"coefficient":1.194565467503408e1,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_radial":2
-					}
-				},
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"polar_tangent":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8162,15 +6111,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8214,15 +6158,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8258,15 +6197,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8310,15 +6244,10 @@
 				"bulk_EOS",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8353,59 +6282,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E5",
-			"structure":"GPP.polar_kinetic",
-			"ancestor":"polar_kinetic",
-			"contribution":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"removal_delta":"9.86960440108935799230494012590497732162`15.*u1a^2*u1mZZGNLS*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":9.869604401089358,
-					"powers":{
-						"a":2,
-						"m_GNLS":1,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8441,15 +6321,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_gradient",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8487,14 +6362,9 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8530,15 +6400,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8574,15 +6439,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_mix",
 				"wall_shear_gate"
@@ -8617,60 +6477,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E5",
-			"structure":"KPP.polar_gradient",
-			"ancestor":"polar_gradient",
-			"contribution":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"removal_delta":"55.5165247561276409271613374585285782814`15.*u1a^2*u1KZZEOS*u1rhoZZinf^5*u1tiltZZpolar^2",
-			"before_monomials":[
-				{
-					"coefficient":5.551652475612764e1,
-					"powers":{
-						"a":2,
-						"K_EOS":1,
-						"rho_inf":5,
-						"tilt_polar":2
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
 				"wall_shear_gate"
@@ -8704,59 +6514,10 @@
 				"bulk_flow_kinetic",
 				"h_gradient",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
-				"wall_double_well",
-				"wall_gradient",
-				"wall_mix",
-				"wall_shear_gate"
-			],
-			"origin_mutation_changes_expression":true,
-			"native_padding_ablation_destroys_structure":true,
-			"open_remainder":false
-		},
-		{
-			"endpoint":"E5",
-			"structure":"KPP.Pu_coupling",
-			"ancestor":"Pu_coupling",
-			"contribution":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"removal_delta":"8.37758040957278105054228944936767220497`15.*u1lambdaPu*u1tiltZZpolar*u1tiltZZshear",
-			"before_monomials":[
-				{
-					"coefficient":8.377580409572781,
-					"powers":{
-						"lambdaPu":1,
-						"tilt_polar":1,
-						"tilt_shear":1
-					}
-				}
-			],
-			"after_removal_monomials":[],
-			"classification_before":"NONZERO_NATIVE_STRUCTURE",
-			"classification_after_removal":"ABSENT",
-			"remove_then_rederive_action_ids":[
-				"brane_shear_gradient",
-				"brane_shear_kinetic",
-				"bulk_berry",
-				"bulk_EOS",
-				"bulk_flow_kinetic",
-				"h_gradient",
-				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"quantum_pressure",
-				"throat_source",
-				"uw_gap",
-				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8791,15 +6552,10 @@
 				"bulk_EOS",
 				"bulk_flow_kinetic",
 				"h_kinetic",
-				"polar_gradient",
-				"polar_kinetic",
-				"polar_quartic",
-				"Pu_coupling",
 				"quantum_pressure",
 				"throat_source",
 				"uw_gap",
 				"uw_kinetic",
-				"wall_anisotropy",
 				"wall_double_well",
 				"wall_gradient",
 				"wall_mix",
@@ -8848,11 +6604,6 @@
 				"expression":"chiB*muR4*ud_curl2\/2"
 			},
 			{
-				"id":"wall_anisotropy",
-				"type":"ACTION",
-				"expression":"alphaAniso*chiB*Pnormal2"
-			},
-			{
 				"id":"throat_source",
 				"type":"ACTION",
 				"expression":"f_throat"
@@ -8863,21 +6614,6 @@
 				"expression":"f_mix"
 			},
 			{
-				"id":"polar_kinetic",
-				"type":"ACTION",
-				"expression":"m_GNLS*n*a^2*DtP2\/2"
-			},
-			{
-				"id":"polar_gradient",
-				"type":"ACTION",
-				"expression":"m_GNLS*n*cs2*a^2*P_grad2\/2"
-			},
-			{
-				"id":"polar_quartic",
-				"type":"ACTION",
-				"expression":"m_GNLS*n*cs2*(P2-1)^2\/4"
-			},
-			{
 				"id":"brane_shear_kinetic",
 				"type":"ACTION",
 				"expression":"g_ell*rhoBr*u_t2\/2"
@@ -8886,11 +6622,6 @@
 				"id":"brane_shear_gradient",
 				"type":"ACTION",
 				"expression":"g_ell*muR*u_curl2\/2"
-			},
-			{
-				"id":"Pu_coupling",
-				"type":"ACTION",
-				"expression":"g_ell*lambdaPu*Pt*u_curl"
 			},
 			{
 				"id":"uw_kinetic",
@@ -9051,30 +6782,6 @@
 				"generalized_force"
 			],
 			[
-				"polar_gradient",
-				"D_E"
-			],
-			[
-				"polar_gradient",
-				"L_eff"
-			],
-			[
-				"polar_kinetic",
-				"L_eff"
-			],
-			[
-				"polar_quartic",
-				"D_E"
-			],
-			[
-				"Pu_coupling",
-				"D_E"
-			],
-			[
-				"Pu_coupling",
-				"L_eff"
-			],
-			[
 				"quantum_pressure",
 				"D_E"
 			],
@@ -9135,25 +6842,11 @@
 				"kappaB"
 			],
 			"D_E:wall_shear_gate":[],
-			"D_E:wall_anisotropy":[],
 			"D_E:throat_source":[],
 			"D_E:wall_mix":[],
-			"D_E:polar_kinetic":[],
-			"D_E:polar_gradient":[
-				"a",
-				"K_EOS",
-				"rho_inf"
-			],
-			"D_E:polar_quartic":[
-				"K_EOS",
-				"rho_inf"
-			],
 			"D_E:brane_shear_kinetic":[],
 			"D_E:brane_shear_gradient":[
 				"muR"
-			],
-			"D_E:Pu_coupling":[
-				"lambdaPu"
 			],
 			"D_E:uw_kinetic":[],
 			"D_E:uw_gap":[
@@ -9191,23 +6884,8 @@
 				"wall_delta"
 			],
 			"L_eff:wall_shear_gate":[],
-			"L_eff:wall_anisotropy":[],
 			"L_eff:throat_source":[],
 			"L_eff:wall_mix":[],
-			"L_eff:polar_kinetic":[
-				"a",
-				"m_GNLS",
-				"polar_radial",
-				"polar_tangent",
-				"tilt_polar"
-			],
-			"L_eff:polar_gradient":[
-				"a",
-				"K_EOS",
-				"rho_inf",
-				"tilt_polar"
-			],
-			"L_eff:polar_quartic":[],
 			"L_eff:brane_shear_kinetic":[
 				"rhoBr",
 				"shear_transverse",
@@ -9215,11 +6893,6 @@
 			],
 			"L_eff:brane_shear_gradient":[
 				"muR",
-				"tilt_shear"
-			],
-			"L_eff:Pu_coupling":[
-				"lambdaPu",
-				"tilt_polar",
 				"tilt_shear"
 			],
 			"L_eff:uw_kinetic":[],
@@ -9248,8 +6921,8 @@
 	},
 	"verdict_reachability":{
 		"gapped_and_localized":"U1_BASE_OK",
-		"fat_tail":"U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:bound_phase,polar_tangent,h)",
-		"unstable_eos":"U1_BASE_UNSTABLE(density_EOS,Pu_coupled_helical)",
+		"fat_tail":"U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:bound_phase,h)",
+		"unstable_eos":"U1_BASE_UNSTABLE(density_EOS)",
 		"open_h_sign":"U1_BASE_UNRESOLVED(cE,Mh)"
 	},
 	"E4_reduced_virtual_work":{

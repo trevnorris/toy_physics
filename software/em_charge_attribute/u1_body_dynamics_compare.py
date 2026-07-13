@@ -92,10 +92,25 @@ def compare(sym: dict[str, Any], math_artifact: dict[str, Any]) -> list[str]:
     math_source = {(row["id"], row["source_file"], row["source_fragment"])
                    for row in math_artifact["source_action_completeness"]["matched_assembled_terms"]}
     require(sym_source == math_source, "ENGINE_DEPENDENCIES", "source-derived action surface")
-    require(len(sym["source_action_completeness"]["source_derived_polar_monomials"]) == 3 ==
-            len(math_artifact["source_action_completeness"]["source_derived_polar_monomials"]),
-            "ENGINE_CANONICAL", "polar source manifest")
-    checks.append("stage-note action manifests and assembled coverage")
+    ss, ms = sym["source_action_completeness"], math_artifact["source_action_completeness"]
+    require(ss["operative_decision_citation"] == ms["operative_decision_citation"] and
+            ss["operative_decision_citation"]["id"] == "decision_16_retire_brane_polar_field" and
+            ss["operative_decision_citation"]["status"] == "OPERATIVE" and
+            ss["operative_decision_citation"]["source_file"] ==
+            "software/stage1_solver/decisions/16_retire_brane_polar_field.md",
+            "ENGINE_CANONICAL", "Decision 16 operative citation")
+    require(set(ss["expected_p_retired_action_ids"]) == set(ms["expected_p_retired_action_ids"]) ==
+            set(ss["assembled_ids"]) == set(ms["assembled_ids"]) and len(ss["assembled_ids"]) == 15,
+            "ENGINE_DEPENDENCIES", "exact P-retired action cover")
+    require(len(ss["legacy_retired_t0_polar_monomials"]) == 3 ==
+            len(ms["legacy_retired_t0_polar_monomials"]),
+            "ENGINE_CANONICAL", "retired T0 source manifest")
+    retired_parameters = set(ss["retired_parameter_rows"])
+    declared_ids = {row["id"] for row in sym["declared_inputs"]}
+    require({"lambdaPu", "alphaAniso"}.isdisjoint(declared_ids) and
+            {"lambdaPu", "alphaAniso"} <= retired_parameters,
+            "ENGINE_DEPENDENCIES", "retired knobs absent from live input ledger")
+    checks.append("Decision-16 citation, stage-note manifests, and exact P-retired action coverage")
 
     s_action, m_action = sym["assembled_action"], math_artifact["assembled_action"]
     require(set(s_action["term_expressions"]) == set(m_action["term_expressions"]),
@@ -104,14 +119,17 @@ def compare(sym: dict[str, Any], math_artifact: dict[str, Any]) -> list[str]:
             {key: set(value) for key, value in m_action["term_dependencies"].items()},
             "ENGINE_DEPENDENCIES", "parsed action free-symbol dependencies")
     require(len(sym["source_action_completeness"]["source_derived_mandatory_g0_records"]) ==
-            len(math_artifact["source_action_completeness"]["source_derived_mandatory_g0_records"]) == 3,
-            "ENGINE_CANONICAL", "R1 immutable source manifest")
-    for term_id in ("quantum_pressure", "Pu_coupling", "brane_shear_gradient"):
+            len(math_artifact["source_action_completeness"]["source_derived_mandatory_g0_records"]) == 2,
+            "ENGINE_CANONICAL", "active G0 source manifest")
+    require(len(sym["source_action_completeness"]["source_derived_retired_g0_records"]) ==
+            len(math_artifact["source_action_completeness"]["source_derived_retired_g0_records"]) == 1,
+            "ENGINE_CANONICAL", "retired G0 source manifest")
+    for term_id in ("quantum_pressure", "brane_shear_gradient"):
         sr = sym["action_term_removal_probes"][term_id]
         mr = math_artifact["action_term_removal_probes"][term_id]
         require(sr["operator_entry"] == mr["operator_entry"] and sr["operator_changed"] and mr["operator_changed"],
                 "ENGINE_DEPENDENCIES", f"action removal reaches operator {term_id}")
-    checks.append("parsed action expressions and three remove/re-derive source probes")
+    checks.append("parsed action expressions and two active remove/re-derive source probes")
 
     sdim = {row["expression"]: tuple(row["computed_dimensions_LTM"]) for row in sym["dimensional_firewall"]}
     mdim = {row["expression"]: tuple(row["computed_dimensions_LTM"]) for row in math_artifact["dimensional_firewall"]}
@@ -132,7 +150,8 @@ def compare(sym: dict[str, Any], math_artifact: dict[str, Any]) -> list[str]:
 
     stails = {row["id"]: row for row in sym["tail_channels"]}
     mtails = {row["id"]: row for row in math_artifact["tail_channels"]}
-    require(set(stails) == set(mtails), "ENGINE_DEPENDENCIES", "tail channel set")
+    require(set(stails) == set(mtails) and len(stails) == 6,
+            "ENGINE_DEPENDENCIES", "six-channel P-retired tail set")
     for name in stails:
         srow, mrow = stails[name], mtails[name]
         for key in ("classification", "decay_exponent", "gap_squared", "normalizable"):
@@ -150,21 +169,16 @@ def compare(sym: dict[str, Any], math_artifact: dict[str, Any]) -> list[str]:
     sop, mop = sym["linearized_channel_operator"], math_artifact["linearized_channel_operator"]
     require(set(sop["entries"]) == set(mop["entries"]), "ENGINE_DEPENDENCIES", "operator entry set")
     for key in ("density_gradient", "density_EOS_curvature", "phase_gradient", "wall_gradient",
-                "wall_well_curvature", "polar_tangent_gradient", "polar_radial_curvature",
-                "shear_curl", "Pu_cross", "uw_curvature"):
+                "wall_well_curvature", "shear_curl", "uw_curvature"):
         require(math.isclose(numeric_string(sop["entries"][key]), numeric_string(mop["entries"][key]),
                              rel_tol=1e-12, abs_tol=1e-12), "ENGINE_CANONICAL", f"operator entry {key}")
     sc, mc = sym["coupled_indicial_analysis"], math_artifact["coupled_indicial_analysis"]
-    require(sc["Pu"]["classification"] == mc["Pu"]["classification"] and
-            sc["changes_scalar_channel_verdict"] == mc["changes_scalar_channel_verdict"],
-            "ENGINE_CANONICAL", "coupled P-u class")
-    require(math.isclose(numeric_string(sc["Pu"]["witness_k"]), numeric_string(mc["Pu"]["witness_k"]),
-                         rel_tol=1e-12, abs_tol=1e-12) and
-            math.isclose(numeric_string(sc["Pu"]["witness_determinant"]), numeric_string(mc["Pu"]["witness_determinant"]),
-                         rel_tol=1e-12, abs_tol=1e-12), "ENGINE_CANONICAL", "coupled P-u witness")
+    require(sc["changes_scalar_channel_verdict"] is False and
+            mc["changes_scalar_channel_verdict"] is False,
+            "ENGINE_CANONICAL", "density-phase coupled class")
     require(sc["density_phase"]["degree_difference"] == mc["density_phase"]["degree_difference"] == "-2",
             "ENGINE_CANONICAL", "drain density-phase degree analysis")
-    checks.append("action-derived operator Hessians and coupled indicial/degree verdict")
+    checks.append("action-derived operator Hessians and density-phase indicial/degree verdict")
 
     require(sym["phase_flux_normalization"]["normalization_residual"] ==
             math_artifact["phase_flux_normalization"]["normalization_residual"] == "0",
@@ -271,17 +285,20 @@ def table(headers: list[str], rows: list[list[Any]]) -> list[str]:
 
 
 def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str, dict[str, str]], input_sha: str) -> str:
+    citation = sym["source_action_completeness"]["operative_decision_citation"]
     lines = [
-        "# U1 throat-body dynamics — Phase A remediation",
+        "# U1 throat-body dynamics — Decision-16 OPERATIVE Phase-A baseline",
         "",
         f"Input SHA-256: `{input_sha}`. Phase A Axis 1 is **`{sym['axis1']}`** and Axis 2 is **`{sym['axis2']}`**.",
-        "This report halts after spec 7.0/7.1. Phase B and Phase C are `NOT_RUN(upstream)` by process. The R1 coupled analysis changes the former scalar-only physics verdict, and that changed verdict is reported without repair toward the earlier target.",
+        f"Baseline status is **`{citation['status']}`** under `{citation['id']}`. This report halts after spec 7.0/7.1; Phase B and Phase C are `NOT_RUN(upstream)` by process.",
         "",
         "## Frozen setup and honest scope",
         "",
         "The medium-rest lab frame, co-moving steady family, co-moving `Omega_c`, ambient-subtracted exterior-ball IR scheme, fixed `mdot`, and future `C_mdot` ownership of acceleration-like outer flux were declared before residual evaluation. The family is an action-derived exterior solution joined at `r=a` to field-level core traces through the typed throat surface functional. This is a collective-coordinate/effective-action computation, not a nonlinear throat simulation.",
         "",
-        "No production input contains a tail exponent, eigenvalue sign, class boolean, or verdict. `Mh` and `cE` remain symbolic positive OPEN action coefficients; no collective-coordinate or multipole functional is an OPEN leaf.",
+        "No production input contains a tail exponent, eigenvalue sign, class boolean, or verdict. `Mh` and `cE` remain symbolic positive OPEN action coefficients; no collective-coordinate or multipole functional is an OPEN leaf. The independent brane polar field, its traces, and its action knobs are absent from the operative input.",
+        "",
+        "Retained finding (historical, not part of the operative action): commit `a5c079eb` established the long-wavelength helical instability of the now-retired massless-P plus `lambdaPu` baseline. Decision 16 retains that result as evidence for retirement.",
         "",
         "## 7.0 — declared-input ledger",
         "",
@@ -291,11 +308,12 @@ def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str,
                    for row in sym["declared_inputs"]]
     lines += table(["root", "status", "type", "domain", "[L,T,M]", "arguments", "symmetry", "source"], ledger_rows)
     lines += ["", "### Action source completeness", "",
-              "Both engines loaded the cited stage-note files, parsed every executable action expression, and parsed the T0/G0 action blocks. The assembled source cover contains the GNLS Berry/flow/EOS terms, Madelung quantum pressure, wall well/gradient/shear/anisotropy and typed throat/mix functionals, all three T0 polar terms, all MacCullagh/P–u/`u_w` terms, and the OPEN `h` kinetic/gradient normalization.", ""]
+              f"Both engines loaded `{citation['source_file']}`, verified its SHA-256 `{citation['sha256']}`, parsed all three required Decision-16 fragments, and confirmed status `OPERATIVE`. They also loaded every cited stage-note file and parsed every executable action expression.", "",
+              "The exact P-retired cover has 15 terms: GNLS Berry/flow/EOS, Madelung quantum pressure, wall well/gradient/shear and typed throat/mix functionals, MacCullagh shear plus `u_w`, and the OPEN `h` kinetic/gradient normalization. The legacy three-term T0 polar block and `L_Pu` are parsed only as retired evidence; they are not assembled.", ""]
     source_rows = [[row["id"], row["source_file"], f"`{row['source_fragment']}`"]
                    for row in sym["source_action_completeness"]["matched_assembled_terms"]]
     lines += table(["assembled term", "loaded source", "parsed source fragment"], source_rows)
-    lines += ["", "The mandatory pieces omitted by the first build are present. The immutable source manifest independently discovers quantum pressure, the MacCullagh shear gradient, and `L_Pu`; deleting any of the three changes its derived operator entry, and their joint SOURCE_COMPLETENESS ablation fails before classification.",
+    lines += ["", "SOURCE_COMPLETENESS compares the assembled IDs to the exact Decision-16 P-retired cover. It fails on any missing live term, any unexpected term, and any P-sector expression. A reintroduced P term without an explicit Decision-16 citation fails at the citation check; even a cited P term remains forbidden from the operative assembly. The production removal probes independently show that quantum pressure and the MacCullagh shear gradient reach their derived operator entries.",
               "", "### Inline dimensions, IR, and G9 declaration", ""]
     lines += table(["constructed expression", "computed [L,T,M]"],
                    [[row["expression"], tuple(row["computed_dimensions_LTM"])] for row in sym["dimensional_firewall"]])
@@ -309,7 +327,7 @@ def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str,
               "", "## 7.1 — far-field solve that decides G1", "",
               "For a bulk channel of radial dimension `d` and harmonic number `ell`, both engines construct and solve",
               "", "```text", "A_c [f''+(d-1)f'/r-ell(ell+d-2)f/r^2] - B_c f = 0.", "```", "",
-              "`B_density=e''(rho_inf)` is differentiated in-engine from `K rho^5/4`, giving `5 K rho_inf^3`; `B_chi` and the radial-polar Hessian are likewise differentiated from their potentials. The translated norm uses the full measure: `S_(d-1) integral r^(d-1) |f'|^2 dr`. For the brane shear channel the four-dimensional measure factorizes as `d^3x g_ell(w)^2 dw`, so its reported radial dimension is three while the `w` integral is finite.", ""]
+              "`B_density=e''(rho_inf)` is differentiated in-engine from `K rho^5/4`, giving `5 K rho_inf^3`; `B_chi` is likewise differentiated from the wall potential. The translated norm uses the full measure: `S_(d-1) integral r^(d-1) |f'|^2 dr`. For the brane shear channel the four-dimensional measure factorizes as `d^3x g_ell(w)^2 dw`, so its reported radial dimension is three while the `w` integral is finite.", ""]
     tail_rows = []
     for row in sym["tail_channels"]:
         tail_rows.append([row["id"], row["radial_dimension"], row["equation"], row["classification"],
@@ -318,13 +336,8 @@ def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str,
                           row["normalizable"]])
     lines += table(["channel", "d", "solved radial equation", "tail class", "nu or gap", "translated norm", "value at R=a=1", "normalizable"], tail_rows)
     coupled = sym["coupled_indicial_analysis"]
-    lines += ["", "### R1 coupled operator result", "",
-              "The displayed scalar channel rows remain the diagonal solves, but the verdict is taken from the full action-derived block. The drain background produces a density–phase mixed Hessian; its radial degree is two powers below the phase diagonal in `d=4`, so the computed indicial degree test leaves the scalar decay exponents unchanged.", "",
-              "For the localized P–u term, each engine independently solves the bulk polar half-space profile and substitutes it back into the quadratic action. The resulting surface Hessian is", "", "```text",
-              str(coupled["Pu"]["hessian"]),
-              f"det = {coupled['Pu']['determinant']}",
-              f"witness k = {coupled['Pu']['witness_k']}; det(witness) = {coupled['Pu']['witness_determinant']}", "```", "",
-              f"Its computed class is **`{coupled['Pu']['classification']}`**. Thus the normalizable translational scalar tails still exist, but the declared homogeneous base has a negative long-wavelength coupled mode and Axis 2 changes honestly to **`{sym['axis2']}`**.", "",
+    lines += ["", "### Surviving coupled operator result", "",
+              f"The drain background produces a density–phase mixed Hessian. Its radial degree differs from the phase diagonal by `{coupled['density_phase']['degree_difference']}` in `d=4`; both engines compute `{coupled['density_phase']['computed_conclusion']}`, so it does not change the scalar tail classes or the six-channel verdict. There is no P–u block in the operative operator.", "",
               f"The bound-flow phase is selected from the solved continuity family by the `mdot` surface normalization; its computed normalization residual is `{sym['phase_flux_normalization']['normalization_residual']}`. No exponent is supplied in YAML.",
               "", "### Force-balance operator and quotient", "", "```text",
               sym["linearized_force_balance"]["operator_object"],
@@ -350,16 +363,16 @@ def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str,
     for ep in ENDPOINTS:
         coeff = sym["endpoint_effective_actions"][ep]["coefficients"]
         lines.append(f"- `{ep}`: `G_VV={coeff['GVV']['expression']}`; `G_Vp={coeff['GVP']['expression']}`; `G_pp={coeff['GPP']['expression']}`; `K_pp={coeff['KPP']['expression']}`.")
-    lines += ["", "Direct differentiation computes both canonical momenta and `Q_p`. Reconstruction independently iterates over the parsed action expressions, substitutes the rigid field embedding, performs the moment reductions, and compares that sum with the claimed coefficient form; the residual is zero for E1–E5. `K_pp` now includes the action-derived EOS Hessian, wall-well Hessian, and P–u cross term. E4 multiplier reaction and E5 Rayleigh loss remain outside `L_eff` in their typed channels.",
+    lines += ["", "Direct differentiation computes both canonical momenta and `Q_p`. Reconstruction independently iterates over the parsed action expressions, substitutes the rigid field embedding, performs the moment reductions, and compares that sum with the claimed coefficient form; the residual is zero for E1–E5. `K_pp` contains the surviving action-derived density, wall, shear, and `h` stiffness terms and no retired P contribution. E4 multiplier reaction and E5 Rayleigh loss remain outside `L_eff` in their typed channels.",
               "", "## Gates and able-to-fail evidence", ""]
     lines += table(["gate", "production result"], [[key, value] for key, value in sym["gates"].items()])
-    lines += ["", "G1 passes because every diagonal translated tail is normalizable, while G2 passes because the displayed norms and reduced coefficients are finite in the predeclared ambient-subtracted exterior scheme. G3 is `CLASSIFIED_BY_AXIS2`: the computed P–u determinant supplies the negative internal-mode witness. G5 passes with body-only, symmetric-postulate, and one-sided-asymmetry tags kept distinct.",
+    lines += ["", f"G1 passes because all six translated tails are normalizable, while G2 passes because the displayed norms and reduced coefficients are finite in the predeclared ambient-subtracted exterior scheme. G3 is `{sym['gates']['G3']}` from the computed Axis-2 verdict. G5 passes with body-only, symmetric-postulate, and one-sided-asymmetry tags kept distinct.",
               "", "### Per-tooth object ablations", ""]
     lines += table(["tooth", "SymPy", "Mathematica"], [[tooth, row["SymPy"], row["Mathematica"]] for tooth, row in ablations.items()])
     lines += ["", "Comparator mutations independently perturb one canonical coefficient and inject a symbol into one canonical monomial; they fail `ENGINE_CANONICAL` and `ENGINE_DEPENDENCIES` respectively.",
               "", "### Outcome reachability through field data", ""]
     lines += table(["fixture", "computed outcome"], [[key, value] for key, value in sym["verdict_reachability"].items()])
-    lines += ["", "These controls use the same radial solver/classifier. The fat-tail fixture changes the spatial field domain, the unstable fixture changes the EOS action coefficient, and the unresolved fixture removes the positivity stratum of the OPEN `h` coefficient; none supplies an outcome token.",
+    lines += ["", "These controls use the same radial solver/classifier. The fat-tail fixture changes the spatial field domain, the unstable fixture changes the EOS action coefficient, and the unresolved fixture removes the positivity stratum of the OPEN `h` coefficient; none supplies an outcome token or restores a P field.",
               "", "## Dual-engine agreement", ""]
     lines += [f"- `{item}`" for item in agreement]
     lines += ["", "Agreement is on source-derived action coverage, solved ODE residuals, norm values, endpoint BVP coefficients, evaluated moments, canonical additive monomials, and dependency sets extracted from those monomials—not on copied verdict strings.",
@@ -371,11 +384,20 @@ def build_report(sym: dict[str, Any], agreement: list[str], ablations: dict[str,
               "", f"Parity tags: embedding `{sym['parity']['embedding_tag']}`, symmetric background `{sym['parity']['symmetric_tag']}`, one-sided control `{sym['parity']['asymmetric_control_tag']}`.",
               "", "## Verdict and Phase-A halt", "",
               f"- Axis 1: **`{sym['axis1']}`**.", f"- Axis 2: **`{sym['axis2']}`** in all E1–E5 Phase-A cells.",
-              "- The result is conditional on the declared positive coefficient stratum and the field-level core/surface family; the controls show the classifier does not force OK.",
+              "- Decision-16 baseline status: **`OPERATIVE`**; six channels are present and the independent brane P sector is absent.",
+              "- The result is conditional on the declared positive coefficient stratum and the field-level core/surface family; the controls show the classifier can still return unstable, unresolved, and ill-posed outcomes.",
               "- Phase B: `NOT_RUN(upstream)`.", "- Phase C: `NOT_RUN(upstream)`.", "",
               "## Proposed parameter-register rows/edges (not applied)", "",
               "Proposed OPEN rows: `Mh`, `cE`, `mdot`, `gammaSigma`, `tangentDtN`, `sleeve_core_trace`, `geon_core_bundle`, `throat_surface_functional`, `outer_surface_functional`, `E4_shear_lock`, `E5_rayleigh`, and `return_closure`, with the domains/dimensions/arguments/symmetries in the ledger above.", "",
-              "Proposed edges: `(hbar,m,rho_inf,K_EOS)->density D_E`; `(aB,kappaB)->chiB D_E`; `(m,rho_inf,K_EOS,a)->P D_E`; `(rhoBr,muR,ellg)->u D_E`; `(Mh,cE)->h D_E`; `core traces+surface functional->balanced exterior family`; `endpoint trace systems->N_**,U_**`; `ACTION moments->L_eff`; `E4_shear_lock->F_constraint`; `E5_rayleigh->F_Rayleigh`; `return_closure->F_flux`.", "",
+              "Retired-row proposal:", ""]
+    lines += table(["row/knob", "proposed status", "disposition"], [
+        ["lambdaPu", "RETIRED_DECISION_16", "remove the twist–shear coupling row"],
+        ["alphaAniso", "RETIRED_DECISION_16", "remove the easy-plane wall row"],
+        ["T0_polar_kinetic", "RETIRED_WITH_P_SECTOR", "remove inherited polar kinetic normalization"],
+        ["T0_polar_gradient", "RETIRED_WITH_P_SECTOR", "remove inherited polar gradient normalization"],
+        ["T0_polar_quartic", "RETIRED_WITH_P_SECTOR", "remove inherited polar quartic normalization"],
+    ])
+    lines += ["", "Proposed live edges: `(hbar,m,rho_inf,K_EOS)->density D_E`; `(aB,kappaB)->chiB D_E`; `(rhoBr,muR,ellg)->u D_E`; `(Mh,cE)->h D_E`; `core traces+surface functional->balanced exterior family`; `endpoint trace systems->N_**,U_**`; `ACTION moments->L_eff`; `E4_shear_lock->F_constraint`; `E5_rayleigh->F_Rayleigh`; `return_closure->F_flux`. There is no live P edge.", "",
               "**HALT: Phase A is complete; no Phase-B computation is included.**", ""]
     return "\n".join(lines)
 
@@ -388,13 +410,30 @@ def build_results(sym: dict[str, Any], agreement: list[str], ablations: dict[str
         (row["fluid_coefficients"]["normal"], row["fluid_coefficients"]["tangent"], row["shear_coefficient"])
         for row in sym["endpoint_responses"].values()
     }
+    proposal = {
+        "status": "PROPOSED_NOT_APPLIED_LEDGER_PAUSED",
+        "live_open_rows": ["Mh", "cE", "mdot", "gammaSigma", "tangentDtN", "sleeve_core_trace",
+                           "geon_core_bundle", "throat_surface_functional", "outer_surface_functional",
+                           "E4_shear_lock", "E5_rayleigh", "return_closure"],
+        "retired_rows": [
+            {"id": "lambdaPu", "status": "RETIRED_DECISION_16", "kind": "independent_coupling"},
+            {"id": "alphaAniso", "status": "RETIRED_DECISION_16", "kind": "independent_wall_anisotropy"},
+            {"id": "T0_polar_kinetic", "status": "RETIRED_WITH_P_SECTOR", "kind": "inherited_action_normalization"},
+            {"id": "T0_polar_gradient", "status": "RETIRED_WITH_P_SECTOR", "kind": "inherited_action_normalization"},
+            {"id": "T0_polar_quartic", "status": "RETIRED_WITH_P_SECTOR", "kind": "inherited_action_normalization"},
+        ],
+        "live_edges": ["density_D_E", "chiB_D_E", "u_D_E", "h_D_E", "core_to_balanced_exterior",
+                       "endpoint_to_moments", "action_moments_to_L_eff", "E4_to_constraint_force",
+                       "E5_to_Rayleigh_force", "return_to_flux_force"],
+        "retired_edges": ["P_D_E", "P_u_cross_block"],
+    }
     summary_lines = [
         f"U1 PHASE {sym['phase']} SUMMARY — HALT AFTER THIS PHASE",
         f"Axis 1: {sym['axis1']}",
         f"Axis 2: {sym['axis2']}",
-        "Scalar tails: " + ", ".join(f"{key}={value}" for key, value in sorted(tail_classes.items())),
-        f"R1 coupled P-u: {sym['coupled_indicial_analysis']['Pu']['classification']} at det={sym['coupled_indicial_analysis']['Pu']['witness_determinant']}",
-        f"R1 drain cross: degree shift {sym['coupled_indicial_analysis']['density_phase']['degree_difference']} (subleading)",
+        f"Operative baseline: Decision 16 P-retired; channels={len(sym['tail_channels'])}",
+        "Retained finding: a5c079eb instability applies to the retired P+lambdaPu baseline",
+        "Tail classes: " + ", ".join(f"{key}={value}" for key, value in sorted(tail_classes.items())),
         f"Endpoint response map: {len(response_signatures)}/{len(sym['endpoint_responses'])} distinct solved signatures",
         f"Dual engine: ENGINE_AGREE checks={len(agreement)}",
         f"Ablations: {len(ablations)} per engine + {len(COMPARATOR_TEETH)} comparator teeth",
@@ -402,6 +441,9 @@ def build_results(sym: dict[str, Any], agreement: list[str], ablations: dict[str
     ]
     return {
         "schema_version": "U1_BODY_DYNAMICS_RESULTS_V3", "phase": "A", "halt_after_phase": True,
+        "baseline_status": "OPERATIVE", "expected_channels": 6,
+        "operative_decision": sym["source_action_completeness"]["operative_decision_citation"],
+        "retained_finding": {"commit": "a5c079eb", "scope": "instability of retired massless-P plus lambdaPu baseline"},
         "input_sha256": input_sha, "axis_1": sym["axis1"], "axis_2": sym["axis2"],
         "cells": sym["cells"], "gates": sym["gates"], "base_configuration": sym["base_configuration"],
         "declared_inputs": sym["declared_inputs"], "source_action_completeness": sym["source_action_completeness"],
@@ -417,7 +459,8 @@ def build_results(sym: dict[str, Any], agreement: list[str], ablations: dict[str
         "E4_reduced_virtual_work": sym["E4_reduced_virtual_work"], "per_structure_ancestry": sym["per_structure_ancestry"],
         "provenance_graph": sym["provenance_graph"], "parity": sym["parity"],
         "outcome_reachability": sym["verdict_reachability"], "dual_engine": {"status": "ENGINE_AGREE", "checks": agreement},
-        "ablations": ablations, "partition": sym["partition"], "downstream": sym["downstream"], "honest_scope": sym["honest_scope"],
+        "ablations": ablations, "proposed_parameter_register": proposal,
+        "partition": sym["partition"], "downstream": sym["downstream"], "honest_scope": sym["honest_scope"],
         "summary_lines": summary_lines,
     }
 

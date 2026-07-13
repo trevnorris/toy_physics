@@ -1,26 +1,40 @@
 schema_version: U1_BODY_DYNAMICS_RESULTS_V3
 phase: A
 halt_after_phase: true
-input_sha256: c55acef7564261eb881ddf841328ffb23ca6720620ef68c72571840e50723bce
+baseline_status: OPERATIVE
+expected_channels: 6
+operative_decision: &id001
+  id: decision_16_retire_brane_polar_field
+  matched_source_fragments:
+  - 'Status: OPERATIVE for all EM-analog/U1+ work'
+  - removed from the frozen brane action as an independent dynamical field
+  - together with its couplings (`λ_Pu` twist–shear, `αAniso` easy-plane wall term) and T0 polar coefficients
+  sha256: 7683c9e8b747b49b80974b58967e455581f02035587db52ed6bf8673c9663e87
+  source_file: software/stage1_solver/decisions/16_retire_brane_polar_field.md
+  status: OPERATIVE
+retained_finding:
+  commit: a5c079eb
+  scope: instability of retired massless-P plus lambdaPu baseline
+input_sha256: eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee
 axis_1: COMPUTATION_VALID
-axis_2: U1_BASE_UNSTABLE(Pu_coupled_helical)
+axis_2: U1_BASE_OK
 cells:
-  E1:one_sided_pathA29: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E1:symmetric_postulate: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E2:one_sided_pathA29: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E2:symmetric_postulate: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E3:one_sided_pathA29: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E3:symmetric_postulate: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E4:one_sided_pathA29: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E4:symmetric_postulate: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E5:one_sided_pathA29: U1_BASE_UNSTABLE(Pu_coupled_helical)
-  E5:symmetric_postulate: U1_BASE_UNSTABLE(Pu_coupled_helical)
+  E1:one_sided_pathA29: U1_BASE_OK
+  E1:symmetric_postulate: U1_BASE_OK
+  E2:one_sided_pathA29: U1_BASE_OK
+  E2:symmetric_postulate: U1_BASE_OK
+  E3:one_sided_pathA29: U1_BASE_OK
+  E3:symmetric_postulate: U1_BASE_OK
+  E4:one_sided_pathA29: U1_BASE_OK
+  E4:symmetric_postulate: U1_BASE_OK
+  E5:one_sided_pathA29: U1_BASE_OK
+  E5:symmetric_postulate: U1_BASE_OK
 gates:
   G1: PASS
   G10: NOT_RUN(phase_C)
   G11: NOT_RUN(phase_C)
   G2: PASS
-  G3: CLASSIFIED_BY_AXIS2
+  G3: PASS
   G4: NOT_RUN(phase_B)
   G5: PASS
   G6: PASS_ENDPOINT_MAP_REPORTED
@@ -53,7 +67,6 @@ declared_inputs:
   symmetry_class: BODY_CONJUGATE_SCALAR
 - arguments:
   - density_trace
-  - polar_trace
   - h_trace
   - phase_flux_trace
   - wall_side
@@ -119,7 +132,7 @@ declared_inputs:
   domain: fields_on_time_x_Omega_c
   id: native_momentum
   root_type: BALANCE
-  source: GNLS_wall_polar_shear_h_action
+  source: GNLS_wall_shear_h_action
   status: WHITELIST_SOURCED
   symmetry_class: R_W_COVARIANT
 - arguments:
@@ -249,18 +262,6 @@ declared_inputs:
   status: WHITELIST_SOURCED
   symmetry_class: R_W_EVEN
 - arguments: []
-  constraint: nonnegative
-  dimensions:
-  - -2
-  - -2
-  - 1
-  domain: coefficient
-  id: alphaAniso
-  root_type: ACTION_COEFFICIENT
-  source: ledger_stage006
-  status: WHITELIST_SOURCED
-  symmetry_class: R_W_EVEN
-- arguments: []
   constraint: positive
   dimensions:
   - -3
@@ -280,18 +281,6 @@ declared_inputs:
   - 1
   domain: coefficient
   id: muR
-  root_type: ACTION_COEFFICIENT
-  source: ledger_stage007
-  status: WHITELIST_SOURCED
-  symmetry_class: R_W_EVEN
-- arguments: []
-  constraint: real
-  dimensions:
-  - -1
-  - -2
-  - 1
-  domain: coefficient
-  id: lambdaPu
   root_type: ACTION_COEFFICIENT
   source: ledger_stage007
   status: WHITELIST_SOURCED
@@ -382,7 +371,6 @@ declared_inputs:
   symmetry_class: R_W_EVEN
 source_action_completeness:
   assembled_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -390,22 +378,37 @@ source_action_completeness:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
+  expected_p_retired_action_ids:
+  - brane_shear_gradient
+  - brane_shear_kinetic
+  - bulk_EOS
+  - bulk_berry
+  - bulk_flow_kinetic
+  - h_gradient
+  - h_kinetic
+  - quantum_pressure
+  - throat_source
+  - uw_gap
+  - uw_kinetic
+  - wall_double_well
+  - wall_gradient
+  - wall_mix
+  - wall_shear_gate
+  legacy_retired_t0_polar_monomials:
+  - (1/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)
+  - (1/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)
+  - (1/4) m rho c_s^2(rho) (P^i P^i - 1)^2
   loaded_files:
   - research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md
   - research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
-  - software/stage1_solver/reports/pathA_24_T0_freeze.md
   - software/stage1_solver/reports/pathA_35_G0_freeze.md
   - software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md
   matched_assembled_terms:
@@ -430,33 +433,18 @@ source_action_completeness:
   - id: wall_shear_gate
     source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
     source_fragment: chi_B f_shear
-  - id: wall_anisotropy
-    source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
-    source_fragment: alpha_aniso chi_B (P·w_hat)^2
   - id: throat_source
     source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
     source_fragment: f_throat
   - id: wall_mix
     source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
     source_fragment: f_mix
-  - id: polar_kinetic
-    source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md
-    source_fragment: (1/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)
-  - id: polar_gradient
-    source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md
-    source_fragment: (1/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)
-  - id: polar_quartic
-    source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md
-    source_fragment: (1/4) m rho c_s^2(rho) (P^i P^i - 1)^2
   - id: brane_shear_kinetic
     source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md
     source_fragment: (1/2) rho_br (partial_t u^a)(partial_t u^a)
   - id: brane_shear_gradient
     source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md
     source_fragment: (1/2) mu_R Omega_u^a Omega_u^a
-  - id: Pu_coupling
-    source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md
-    source_fragment: L_Pu := - lambda_Pu varpi_a Omega_u^a
   - id: uw_kinetic
     source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md
     source_fragment: (1/2) rho_br (partial_t u_w)^2
@@ -469,6 +457,19 @@ source_action_completeness:
   - id: h_gradient
     source_file: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md
     source_fragment: radial branch
+  operative_decision_citation: *id001
+  retired_action_ids:
+  - Pu_coupling
+  - polar_gradient
+  - polar_kinetic
+  - polar_quartic
+  - wall_anisotropy
+  retired_parameter_rows:
+  - lambdaPu
+  - alphaAniso
+  - T0_polar_kinetic
+  - T0_polar_gradient
+  - T0_polar_quartic
   source_derived_g0_definitions:
   - L_Mac
   - L_Pu
@@ -477,11 +478,8 @@ source_action_completeness:
   source_derived_mandatory_g0_records:
   - QP := (hbar^2/(8 m rho)) (partial_i rho)(partial_i rho)
   - (1/2) mu_R Omega_u^a Omega_u^a
+  source_derived_retired_g0_records:
   - L_Pu := - lambda_Pu varpi_a Omega_u^a
-  source_derived_polar_monomials:
-  - (1/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)
-  - (1/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)
-  - (1/4) m rho c_s^2(rho) (P^i P^i - 1)^2
 dimensional_firewall:
 - computed_dimensions_LTM:
   - -2
@@ -522,37 +520,12 @@ dimensional_firewall:
   - -2
   - -2
   - 1
-  expression: wall_anisotropy
-- computed_dimensions_LTM:
-  - -2
-  - -2
-  - 1
-  expression: polar_kinetic
-- computed_dimensions_LTM:
-  - -2
-  - -2
-  - 1
-  expression: polar_gradient
-- computed_dimensions_LTM:
-  - -2
-  - -2
-  - 1
-  expression: polar_quartic
-- computed_dimensions_LTM:
-  - -2
-  - -2
-  - 1
   expression: brane_shear_kinetic
 - computed_dimensions_LTM:
   - -2
   - -2
   - 1
   expression: brane_shear_gradient
-- computed_dimensions_LTM:
-  - -2
-  - -2
-  - 1
-  expression: Pu_coupling
 - computed_dimensions_LTM:
   - -2
   - -2
@@ -595,10 +568,6 @@ ir_scheme:
   surface_core_owner: throat_surface_functional
 assembled_action:
   term_dependencies:
-    Pu_coupling:
-    - Pt
-    - g_ell
-    - u_curl
     brane_shear_gradient:
     - g_ell
     - u_curl2
@@ -620,15 +589,6 @@ assembled_action:
     - Mh
     - cE
     - h_t2
-    polar_gradient:
-    - P_grad2
-    - n
-    polar_kinetic:
-    - DtP2
-    - n
-    polar_quartic:
-    - P2
-    - n
     quantum_pressure:
     - n
     - n_grad2
@@ -640,9 +600,6 @@ assembled_action:
     uw_kinetic:
     - g_ell
     - uw_t2
-    wall_anisotropy:
-    - Pnormal2
-    - chiB
     wall_double_well:
     - chiB
     wall_gradient:
@@ -653,7 +610,6 @@ assembled_action:
     - chiB
     - ud_curl2
   term_expressions:
-    Pu_coupling: Pt*g_ell*u_curl/10
     brane_shear_gradient: 5*g_ell*u_curl2/8
     brane_shear_kinetic: 2*g_ell*u_t2/3
     bulk_EOS: n**5/4
@@ -661,21 +617,16 @@ assembled_action:
     bulk_flow_kinetic: n*v2/2
     h_gradient: Mh*h_grad2/2
     h_kinetic: Mh*h_t2/(2*cE**2)
-    polar_gradient: 5*P_grad2*n/2
-    polar_kinetic: DtP2*n/2
-    polar_quartic: 5*n*(P2 - 1)**2/4
     quantum_pressure: n_grad2/(8*n)
     throat_source: f_throat
     uw_gap: 98*g_ell*uw**2/75
     uw_kinetic: 2*g_ell*uw_t2/3
-    wall_anisotropy: Pnormal2*chiB/5
     wall_double_well: 3*chiB**2*(1 - chiB)**2/2
     wall_gradient: chi_grad2
     wall_mix: f_mix
     wall_shear_gate: 3*chiB*ud_curl2/5
-  total_expression: DtP2*n/2 + Mh*h_grad2/2 + Mh*h_t2/(2*cE**2) + 5*P_grad2*n/2 + Pnormal2*chiB/5 + Pt*g_ell*u_curl/10 + 3*chiB**2*(1 - chiB)**2/2
-    + 3*chiB*ud_curl2/5 + chi_grad2 + f_mix + f_throat + 5*g_ell*u_curl2/8 + 2*g_ell*u_t2/3 + 98*g_ell*uw**2/75 + 2*g_ell*uw_t2/3 + n**5/4 - n*theta_t
-    + n*v2/2 + 5*n*(P2 - 1)**2/4 + n_grad2/(8*n)
+  total_expression: Mh*h_grad2/2 + Mh*h_t2/(2*cE**2) + 3*chiB**2*(1 - chiB)**2/2 + 3*chiB*ud_curl2/5 + chi_grad2 + f_mix + f_throat + 5*g_ell*u_curl2/8
+    + 2*g_ell*u_t2/3 + 98*g_ell*uw**2/75 + 2*g_ell*uw_t2/3 + n**5/4 - n*theta_t + n*v2/2 + n_grad2/(8*n)
 linearized_channel_operator:
   curvature_hessian:
   - - '5'
@@ -684,11 +635,7 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
@@ -700,35 +647,13 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
     - '0'
     - '0'
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '10'
-    - '0'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
@@ -740,17 +665,12 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   entries:
-    Pu_cross: 1/10
     density_EOS_curvature: '5'
     density_gradient: 1/4
     drain_density_phase: -1/(16*pi**2*r**3)
     h_gradient: Mh
     phase_gradient: '1'
-    polar_radial_curvature: '10'
-    polar_tangent_gradient: '5'
     shear_curl: 5/4
     uw_curvature: 196/75
     wall_gradient: '2'
@@ -759,8 +679,6 @@ linearized_channel_operator:
   - dn
   - theta
   - chi
-  - Pt
-  - Pr
   - uT
   - uw
   - h
@@ -770,12 +688,8 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
     - '1'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
@@ -784,25 +698,7 @@ linearized_channel_operator:
     - '2'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
-    - '0'
-    - '0'
-    - '5'
-    - '0'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '5'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - 5/4
@@ -811,15 +707,11 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
     - Mh
   gradient_order:
   - dn_r
   - theta_r
   - chi_r
-  - Pt_r
-  - Pr_r
   - u_curl
   - h_r
   mixed_hessian:
@@ -828,18 +720,7 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
@@ -849,18 +730,7 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - 1/10
-    - '0'
   - - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-    - '0'
-  - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
@@ -870,17 +740,12 @@ linearized_channel_operator:
     - '0'
     - '0'
     - '0'
-    - '0'
-    - '0'
   - - '0'
-    - '0'
-    - '0'
     - '0'
     - '0'
     - '0'
     - '0'
   quadratic_by_action_term:
-    Pu_coupling: Pt*u_curl/10
     brane_shear_gradient: 5*u_curl**2/8
     brane_shear_kinetic: '0'
     bulk_EOS: 5*dn**2/2
@@ -888,28 +753,17 @@ linearized_channel_operator:
     bulk_flow_kinetic: -dn*theta_r/(16*pi**2*r**3) + theta_r**2/2
     h_gradient: Mh*h_r**2/2
     h_kinetic: '0'
-    polar_gradient: 5*Pr_r**2/2 + 5*Pt_r**2/2
-    polar_kinetic: '0'
-    polar_quartic: 5*Pr**2
     quantum_pressure: dn_r**2/8
     throat_source: '0'
     uw_gap: 98*uw**2/75
     uw_kinetic: '0'
-    wall_anisotropy: '0'
     wall_double_well: 3*chi**2/2
     wall_gradient: chi_r**2
     wall_mix: '0'
     wall_shear_gate: '0'
-  quadratic_expression: (-dn*theta_r/16 + pi**2*r**3*(600*Mh*h_r**2 + 6000*Pr**2 + 3000*Pr_r**2 + 120*Pt*u_curl + 3000*Pt_r**2 + 1800*chi**2 +
-    1200*chi_r**2 + 3000*dn**2 + 150*dn_r**2 + 600*theta_r**2 + 750*u_curl**2 + 1568*uw**2)/1200)/(pi**2*r**3)
+  quadratic_expression: Mh*h_r**2/2 + 3*chi**2/2 + chi_r**2 + 5*dn**2/2 - dn*theta_r/(16*pi**2*r**3) + dn_r**2/8 + theta_r**2/2 + 5*u_curl**2/8
+    + 98*uw**2/75
 action_term_removal_probes:
-  Pu_coupling:
-    after_removal: '0'
-    before: 1/10
-    computed_delta: 1/10
-    operator_changed: true
-    operator_entry: Pu_cross
-    source_completeness_gate: FAIL_IF_REMOVED
   brane_shear_gradient:
     after_removal: '0'
     before: 5/4
@@ -925,21 +779,7 @@ action_term_removal_probes:
     operator_entry: density_gradient
     source_completeness_gate: FAIL_IF_REMOVED
 coupled_indicial_analysis:
-  Pu:
-    bulk_profile_solve: P(k,w)=P0*exp(-k*abs(w))
-    classification: UNSTABLE_HELICAL
-    dependencies: []
-    determinant: k**2*(1250*k - 1)/100
-    hessian:
-    - - 10*k
-      - k/10
-    - - k/10
-      - 5*k**2/4
-    surface_stiffness: 10*k
-    two_sided_bulk_energy: 5*P0**2*k
-    witness_determinant: -1/1250000000
-    witness_k: 1/2500
-  changes_scalar_channel_verdict: true
+  changes_scalar_channel_verdict: false
   density_phase:
     computed_conclusion: SUBLEADING_FOR_D_GT_2
     cross_coefficient: -1/(16*pi**2*r**3)
@@ -1021,40 +861,6 @@ tail_channels:
 - classification: POWER_LAW
   decay_exponent: '2'
   dependencies: []
-  equation: Eq(5*Derivative(f(r), (r, 2)) + 15*Derivative(f(r), r)/r, 0)
-  field: P_tangent
-  gap_squared: '0'
-  id: polar_tangent
-  indicial_equation: nu**2 - 2*nu
-  indicial_roots:
-  - '0'
-  - '2'
-  normalizable: true
-  radial_dimension: 4
-  solution_residual: '0'
-  solved_general_form: C_grow*r^0+C_decay*r^(-2)
-  zero_mode_norm_integral: 2/R**2
-  zero_mode_norm_value: 2.0
-- classification: EXPONENTIAL_GAP
-  decay_exponent: null
-  dependencies: []
-  equation: Eq(-10*f(r) + 5*Derivative(f(r), (r, 2)) + 15*Derivative(f(r), r)/r, 0)
-  field: P_radial
-  gap: sqrt(2)
-  gap_squared: '2'
-  id: polar_radial
-  large_r_characteristic_roots:
-  - -sqrt(2)
-  - sqrt(2)
-  normalizable: true
-  radial_dimension: 4
-  solution_residual: '0'
-  solved_general_form: r^(1-d/2)[C_I I_1(gap*r)+C_K K_1(gap*r)]
-  zero_mode_norm_integral: Integral[1,inf] r^3 (d/dr(r^-1.0 K_1(gap*r)))^2 dr
-  zero_mode_norm_value: 0.23897142051083883
-- classification: POWER_LAW
-  decay_exponent: '2'
-  dependencies: []
   equation: Eq(5*Derivative(f(r), (r, 2))/4 + 5*Derivative(f(r), r)/(2*r) - 5*f(r)/(2*r**2), 0)
   field: u_transverse
   gap_squared: '0'
@@ -1116,7 +922,7 @@ linearized_force_balance:
   density_source_expression: ((5*exp(x0**2 + x1**2 + x2**2 + x3**2) + 1)**4*exp(x0**2 + x1**2 + x2**2 + x3**2) + 100*(-x0**2 - x1**2 - x2**2 -
     x3**2 + 2)*exp(4*x0**2 + 4*x1**2 + 4*x2**2 + 4*x3**2))*exp(-5*x0**2 - 5*x1**2 - 5*x2**2 - 5*x3**2)/500
   operator_available: true
-  operator_object: D_E=(-A_n Laplacian+U''(n0)) on delta_n, plus translated throat-source block; analogous Hessian/balance blocks for chiB,P,u,h
+  operator_object: D_E=(-A_n Laplacian+U''(n0)) on delta_n, plus translated throat-source block; analogous Hessian/balance blocks for chiB,u,h
     and endpoint traces
   right_zero_mode: 2*x0*exp(-x0**2 - x1**2 - x2**2 - x3**2)/5
   substitution_residual: '0'
@@ -1124,7 +930,7 @@ zero_mode_quotient:
   Q_times_Z:
   - '0'
   - '0'
-  computed_channel_norm_sum: 7.982194044008285
+  computed_channel_norm_sum: 5.743222623497447
   gram: z1**2 + z2**2
   gram_inverse: 1/(z1**2 + z2**2)
   moduli_fixing: <Ztilde_A,eta>_IR=0
@@ -1294,12 +1100,6 @@ evaluated_moments:
       - h_scalar
       expression: 9.8696044010894*h_scalar**2
       production_value: 0.20142049798141554
-    I_Pu_cross:
-      dependencies:
-      - tilt_polar
-      - tilt_shear
-      expression: 4.1887902047864*tilt_polar*tilt_shear
-      production_value: 0.04759988869075447
     I_density_grad:
       dependencies:
       - density_delta
@@ -1315,16 +1115,6 @@ evaluated_moments:
       - tilt_h
       expression: 11.103304951226*tilt_h**2
       production_value: 0.07710628438351058
-    I_polar_grad:
-      dependencies:
-      - tilt_polar
-      expression: 11.103304951226*tilt_polar**2
-      production_value: 0.17348913986289882
-    I_polar_quartic:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
     I_shear_grad:
       dependencies:
       - tilt_shear
@@ -1360,21 +1150,6 @@ evaluated_moments:
       - tilt_phase
       expression: 2.2999402325143*density_delta*tilt_phase**2 + 9.8696044010894*rho_inf*tilt_phase**2
       production_value: 0.1275258326863236
-    P_PP:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
-    P_XP:
-      dependencies: []
-      expression: '0'
-      production_value: 0.0
-    P_XX:
-      dependencies:
-      - polar_radial
-      - polar_tangent
-      expression: 11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2
-      production_value: 0.736306821818425
     U_PP:
       dependencies:
       - tilt_shear
@@ -1418,12 +1193,6 @@ evaluated_moments:
       - h_scalar
       expression: 9.8696044010894*h_scalar**2
       production_value: 0.20142049798141554
-    I_Pu_cross:
-      dependencies:
-      - tilt_polar
-      - tilt_shear
-      expression: 4.1887902047864*tilt_polar*tilt_shear
-      production_value: 0.04759988869075447
     I_density_grad:
       dependencies:
       - density_delta
@@ -1439,16 +1208,6 @@ evaluated_moments:
       - tilt_h
       expression: 11.103304951226*tilt_h**2
       production_value: 0.07710628438351058
-    I_polar_grad:
-      dependencies:
-      - tilt_polar
-      expression: 11.103304951226*tilt_polar**2
-      production_value: 0.17348913986289882
-    I_polar_quartic:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
     I_shear_grad:
       dependencies:
       - tilt_shear
@@ -1484,21 +1243,6 @@ evaluated_moments:
       - tilt_phase
       expression: 2.2999402325143*density_delta*tilt_phase**2 + 9.8696044010894*rho_inf*tilt_phase**2
       production_value: 0.1275258326863236
-    P_PP:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
-    P_XP:
-      dependencies: []
-      expression: '0'
-      production_value: 0.0
-    P_XX:
-      dependencies:
-      - polar_radial
-      - polar_tangent
-      expression: 11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2
-      production_value: 0.736306821818425
     U_PP:
       dependencies:
       - tilt_shear
@@ -1542,12 +1286,6 @@ evaluated_moments:
       - h_scalar
       expression: 9.8696044010894*h_scalar**2
       production_value: 0.20142049798141554
-    I_Pu_cross:
-      dependencies:
-      - tilt_polar
-      - tilt_shear
-      expression: 4.1887902047864*tilt_polar*tilt_shear
-      production_value: 0.04759988869075447
     I_density_grad:
       dependencies:
       - density_delta
@@ -1563,16 +1301,6 @@ evaluated_moments:
       - tilt_h
       expression: 11.103304951226*tilt_h**2
       production_value: 0.07710628438351058
-    I_polar_grad:
-      dependencies:
-      - tilt_polar
-      expression: 11.103304951226*tilt_polar**2
-      production_value: 0.17348913986289882
-    I_polar_quartic:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
     I_shear_grad:
       dependencies:
       - tilt_shear
@@ -1603,21 +1331,6 @@ evaluated_moments:
       - tilt_phase
       expression: 2.2999402325143*density_delta*tilt_phase**2 + 9.8696044010894*rho_inf*tilt_phase**2
       production_value: 0.1275258326863236
-    P_PP:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
-    P_XP:
-      dependencies: []
-      expression: '0'
-      production_value: 0.0
-    P_XX:
-      dependencies:
-      - polar_radial
-      - polar_tangent
-      expression: 11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2
-      production_value: 0.736306821818425
     U_PP:
       dependencies:
       - tilt_shear
@@ -1661,12 +1374,6 @@ evaluated_moments:
       - h_scalar
       expression: 9.8696044010894*h_scalar**2
       production_value: 0.20142049798141554
-    I_Pu_cross:
-      dependencies:
-      - tilt_polar
-      - tilt_shear
-      expression: 4.1887902047864*tilt_polar*tilt_shear
-      production_value: 0.04759988869075447
     I_density_grad:
       dependencies:
       - density_delta
@@ -1682,16 +1389,6 @@ evaluated_moments:
       - tilt_h
       expression: 11.103304951226*tilt_h**2
       production_value: 0.07710628438351058
-    I_polar_grad:
-      dependencies:
-      - tilt_polar
-      expression: 11.103304951226*tilt_polar**2
-      production_value: 0.17348913986289882
-    I_polar_quartic:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
     I_shear_grad:
       dependencies:
       - tilt_shear
@@ -1722,21 +1419,6 @@ evaluated_moments:
       - tilt_phase
       expression: 2.2999402325143*density_delta*tilt_phase**2 + 9.8696044010894*rho_inf*tilt_phase**2
       production_value: 0.1275258326863236
-    P_PP:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
-    P_XP:
-      dependencies: []
-      expression: '0'
-      production_value: 0.0
-    P_XX:
-      dependencies:
-      - polar_radial
-      - polar_tangent
-      expression: 11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2
-      production_value: 0.736306821818425
     U_PP:
       dependencies:
       - tilt_shear
@@ -1780,12 +1462,6 @@ evaluated_moments:
       - h_scalar
       expression: 9.8696044010894*h_scalar**2
       production_value: 0.20142049798141554
-    I_Pu_cross:
-      dependencies:
-      - tilt_polar
-      - tilt_shear
-      expression: 4.1887902047864*tilt_polar*tilt_shear
-      production_value: 0.04759988869075447
     I_density_grad:
       dependencies:
       - density_delta
@@ -1801,16 +1477,6 @@ evaluated_moments:
       - tilt_h
       expression: 11.103304951226*tilt_h**2
       production_value: 0.07710628438351058
-    I_polar_grad:
-      dependencies:
-      - tilt_polar
-      expression: 11.103304951226*tilt_polar**2
-      production_value: 0.17348913986289882
-    I_polar_quartic:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
     I_shear_grad:
       dependencies:
       - tilt_shear
@@ -1846,21 +1512,6 @@ evaluated_moments:
       - tilt_phase
       expression: 2.2999402325143*density_delta*tilt_phase**2 + 9.8696044010894*rho_inf*tilt_phase**2
       production_value: 0.1275258326863236
-    P_PP:
-      dependencies:
-      - tilt_polar
-      expression: 9.8696044010894*tilt_polar**2
-      production_value: 0.15421256876702127
-    P_XP:
-      dependencies: []
-      expression: '0'
-      production_value: 0.0
-    P_XX:
-      dependencies:
-      - polar_radial
-      - polar_tangent
-      expression: 11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2
-      production_value: 0.736306821818425
     U_PP:
       dependencies:
       - tilt_shear
@@ -1880,28 +1531,19 @@ evaluated_moments:
 endpoint_effective_actions:
   E1:
     E4_virtual_work: STRUCTURAL_ZERO
-    L_eff: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2 - 1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2
-      - 5.5516524756128*Mh*p**2*tilt_h**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2
-      + 1.1499701162571*V**2*density_delta*m_GNLS + 4.9348022005447*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 2.2999402325143*V*density_delta*m_GNLS*pd*tilt_phase
-      + 9.8696044010894*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
+    L_eff: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 - 5.5516524756128*Mh*p**2*tilt_h**2
+      + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 1.1499701162571*V**2*density_delta*m_GNLS + 4.9348022005447*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2
+      + 2.2999402325143*V*density_delta*m_GNLS*pd*tilt_phase + 9.8696044010894*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear
       - 1.8385199296072*aB*p**2*wall_delta**2 - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf) + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2
-      - 5.7815612934171*kappaB*p**2*wall_delta**2 - 4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
-      - 3.7699111843078*muR*p**2*tilt_shear**2 + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
+      - 5.7815612934171*kappaB*p**2*wall_delta**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2 - 3.7699111843078*muR*p**2*tilt_shear**2
+      + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
     canonical_momenta:
-      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 11.945654675034*V*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*V*a**2*m_GNLS*polar_tangent**2
-        + 2.2999402325143*V*density_delta*m_GNLS + 9.8696044010894*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2 + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase
-        + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
+      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 2.2999402325143*V*density_delta*m_GNLS + 9.8696044010894*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2
+        + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
       P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 2.2999402325143*V*density_delta*m_GNLS*tilt_phase + 9.8696044010894*V*m_GNLS*rho_inf*tilt_phase
-        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 9.8696044010894*a**2*m_GNLS*pd*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2
-        + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
+        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2
+        + 4.1887902047864*pd*rhoBr*tilt_shear**2
     canonical_terms:
-    - coefficient: -27.75826237806382
-      powers:
-        K_EOS: 1
-        a: 2
-        p: 2
-        rho_inf: 5
-        tilt_polar: 2
     - coefficient: -1.3615846464897174
       powers:
         K_EOS: 1
@@ -1946,18 +1588,6 @@ endpoint_effective_actions:
         rhoBr: 1
         shear_transverse: 1
         tilt_shear: 1
-    - coefficient: 5.972827337516996
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_radial: 2
-    - coefficient: 4.934802200544681
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_tangent: 2
     - coefficient: 1.1499701162571263
       powers:
         V: 2
@@ -1973,12 +1603,6 @@ endpoint_effective_actions:
         V: 2
         rhoBr: 1
         shear_transverse: 2
-    - coefficient: 4.934802200544681
-      powers:
-        a: 2
-        m_GNLS: 1
-        pd: 2
-        tilt_polar: 2
     - coefficient: -1.8385199296072123
       powers:
         aB: 1
@@ -2002,12 +1626,6 @@ endpoint_effective_actions:
         kappaB: 1
         p: 2
         wall_delta: 2
-    - coefficient: -4.188790204786393
-      powers:
-        lambdaPu: 1
-        p: 2
-        tilt_polar: 1
-        tilt_shear: 1
     - coefficient: 4.934802200544681
       powers:
         m_GNLS: 1
@@ -2044,11 +1662,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             tilt_h: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            tilt_polar: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -2065,7 +1678,6 @@ endpoint_effective_actions:
             tilt_shear: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - m_GNLS
@@ -2073,10 +1685,9 @@ endpoint_effective_actions:
         - rho_inf
         - tilt_h
         - tilt_phase
-        - tilt_polar
         - tilt_shear
-        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 9.8696044010894*a**2*m_GNLS*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2
-          + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2
+        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2
+          + 4.1887902047864*rhoBr*tilt_shear**2
       GVP:
         canonical_terms:
         - coefficient: 2.2999402325142526
@@ -2110,16 +1721,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             h_scalar: 2
-        - coefficient: 11.945654675033992
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_radial: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_tangent: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -2134,26 +1735,16 @@ endpoint_effective_actions:
             shear_transverse: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - h_scalar
         - m_GNLS
-        - polar_radial
-        - polar_tangent
         - rhoBr
         - rho_inf
         - shear_transverse
-        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 11.945654675034*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*a**2*m_GNLS*polar_tangent**2
-          + 2.2999402325143*density_delta*m_GNLS + 9.8696044010894*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 2.2999402325143*density_delta*m_GNLS + 9.8696044010894*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
       KPP:
         canonical_terms:
-        - coefficient: 55.51652475612764
-          powers:
-            K_EOS: 1
-            a: 2
-            rho_inf: 5
-            tilt_polar: 2
         - coefficient: 2.723169292979435
           powers:
             K_EOS: 1
@@ -2177,11 +1768,6 @@ endpoint_effective_actions:
           powers:
             kappaB: 1
             wall_delta: 2
-        - coefficient: 8.377580409572786
-          powers:
-            lambdaPu: 1
-            tilt_polar: 1
-            tilt_shear: 1
         - coefficient: 7.5398223686155035
           powers:
             muR: 1
@@ -2189,29 +1775,23 @@ endpoint_effective_actions:
         dependencies:
         - K_EOS
         - Mh
-        - a
         - aB
         - density_delta
         - hbar
         - kappaB
-        - lambdaPu
         - m_GNLS
         - muR
         - rho_inf
         - tilt_h
-        - tilt_polar
         - tilt_shear
         - wall_delta
-        expression: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2 + 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2
-          + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2
-          + 8.3775804095728*lambdaPu*tilt_polar*tilt_shear + 7.5398223686155*muR*tilt_shear**2
+        expression: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
+          + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2
     generalized_force:
-      Q_p_var: -55.516524756128*K_EOS*a**2*p*rho_inf**5*tilt_polar**2 - 2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2
-        - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf) - 11.563122586834*kappaB*p*wall_delta**2
-        - 8.3775804095728*lambdaPu*p*tilt_polar*tilt_shear - 7.5398223686155*muR*p*tilt_shear**2
+      Q_p_var: -2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2 - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf)
+        - 11.563122586834*kappaB*p*wall_delta**2 - 7.5398223686155*muR*p*tilt_shear**2
       definition: -<delta S_action/delta Phi,partial Phi/partial p>-surface variation
     rigid_embedding_term_contributions:
-      Pu_coupling: -4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
       brane_shear_gradient: -3.7699111843078*muR*p**2*tilt_shear**2
       brane_shear_kinetic: 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
       bulk_EOS: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3
@@ -2220,42 +1800,29 @@ endpoint_effective_actions:
         + 9.8696044010894*V*m_GNLS*pd*rho_inf*tilt_phase + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
       h_gradient: -5.5516524756128*Mh*p**2*tilt_h**2
       h_kinetic: 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2
-      polar_gradient: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2
-      polar_kinetic: 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2 + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
-      polar_quartic: '0'
       quantum_pressure: -2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
       throat_source: '0'
       uw_gap: '0'
       uw_kinetic: '0'
-      wall_anisotropy: '0'
       wall_double_well: -1.8385199296072*aB*p**2*wall_delta**2
       wall_gradient: -5.7815612934171*kappaB*p**2*wall_delta**2
       wall_mix: '0'
       wall_shear_gate: '0'
   E2:
     E4_virtual_work: STRUCTURAL_ZERO
-    L_eff: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2 - 1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2
-      - 5.5516524756128*Mh*p**2*tilt_h**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2
-      + 0.28749252906428*V**2*density_delta*m_GNLS + 1.2337005501362*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 0.57498505812856*V*density_delta*m_GNLS*pd*tilt_phase
-      + 2.4674011002723*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
+    L_eff: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 - 5.5516524756128*Mh*p**2*tilt_h**2
+      + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 0.28749252906428*V**2*density_delta*m_GNLS + 1.2337005501362*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2
+      + 0.57498505812856*V*density_delta*m_GNLS*pd*tilt_phase + 2.4674011002723*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear
       - 1.8385199296072*aB*p**2*wall_delta**2 - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf) + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2
-      - 5.7815612934171*kappaB*p**2*wall_delta**2 - 4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
-      - 3.7699111843078*muR*p**2*tilt_shear**2 + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
+      - 5.7815612934171*kappaB*p**2*wall_delta**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2 - 3.7699111843078*muR*p**2*tilt_shear**2
+      + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
     canonical_momenta:
-      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 11.945654675034*V*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*V*a**2*m_GNLS*polar_tangent**2
-        + 0.57498505812856*V*density_delta*m_GNLS + 2.4674011002723*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2 + 0.57498505812856*density_delta*m_GNLS*pd*tilt_phase
-        + 2.4674011002723*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
+      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 0.57498505812856*V*density_delta*m_GNLS + 2.4674011002723*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2
+        + 0.57498505812856*density_delta*m_GNLS*pd*tilt_phase + 2.4674011002723*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
       P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 0.57498505812856*V*density_delta*m_GNLS*tilt_phase + 2.4674011002723*V*m_GNLS*rho_inf*tilt_phase
-        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 9.8696044010894*a**2*m_GNLS*pd*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2
-        + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
+        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2
+        + 4.1887902047864*pd*rhoBr*tilt_shear**2
     canonical_terms:
-    - coefficient: -27.75826237806382
-      powers:
-        K_EOS: 1
-        a: 2
-        p: 2
-        rho_inf: 5
-        tilt_polar: 2
     - coefficient: -1.3615846464897174
       powers:
         K_EOS: 1
@@ -2300,18 +1867,6 @@ endpoint_effective_actions:
         rhoBr: 1
         shear_transverse: 1
         tilt_shear: 1
-    - coefficient: 5.972827337516996
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_radial: 2
-    - coefficient: 4.934802200544681
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_tangent: 2
     - coefficient: 0.2874925290642816
       powers:
         V: 2
@@ -2327,12 +1882,6 @@ endpoint_effective_actions:
         V: 2
         rhoBr: 1
         shear_transverse: 2
-    - coefficient: 4.934802200544681
-      powers:
-        a: 2
-        m_GNLS: 1
-        pd: 2
-        tilt_polar: 2
     - coefficient: -1.8385199296072123
       powers:
         aB: 1
@@ -2356,12 +1905,6 @@ endpoint_effective_actions:
         kappaB: 1
         p: 2
         wall_delta: 2
-    - coefficient: -4.188790204786393
-      powers:
-        lambdaPu: 1
-        p: 2
-        tilt_polar: 1
-        tilt_shear: 1
     - coefficient: 4.934802200544681
       powers:
         m_GNLS: 1
@@ -2398,11 +1941,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             tilt_h: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            tilt_polar: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -2419,7 +1957,6 @@ endpoint_effective_actions:
             tilt_shear: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - m_GNLS
@@ -2427,10 +1964,9 @@ endpoint_effective_actions:
         - rho_inf
         - tilt_h
         - tilt_phase
-        - tilt_polar
         - tilt_shear
-        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 9.8696044010894*a**2*m_GNLS*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2
-          + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2
+        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2
+          + 4.1887902047864*rhoBr*tilt_shear**2
       GVP:
         canonical_terms:
         - coefficient: 0.5749850581285632
@@ -2464,16 +2000,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             h_scalar: 2
-        - coefficient: 11.945654675033992
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_radial: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_tangent: 2
         - coefficient: 0.5749850581285632
           powers:
             density_delta: 1
@@ -2488,26 +2014,16 @@ endpoint_effective_actions:
             shear_transverse: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - h_scalar
         - m_GNLS
-        - polar_radial
-        - polar_tangent
         - rhoBr
         - rho_inf
         - shear_transverse
-        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 11.945654675034*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*a**2*m_GNLS*polar_tangent**2
-          + 0.57498505812856*density_delta*m_GNLS + 2.4674011002723*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 0.57498505812856*density_delta*m_GNLS + 2.4674011002723*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
       KPP:
         canonical_terms:
-        - coefficient: 55.51652475612764
-          powers:
-            K_EOS: 1
-            a: 2
-            rho_inf: 5
-            tilt_polar: 2
         - coefficient: 2.723169292979435
           powers:
             K_EOS: 1
@@ -2531,11 +2047,6 @@ endpoint_effective_actions:
           powers:
             kappaB: 1
             wall_delta: 2
-        - coefficient: 8.377580409572786
-          powers:
-            lambdaPu: 1
-            tilt_polar: 1
-            tilt_shear: 1
         - coefficient: 7.5398223686155035
           powers:
             muR: 1
@@ -2543,29 +2054,23 @@ endpoint_effective_actions:
         dependencies:
         - K_EOS
         - Mh
-        - a
         - aB
         - density_delta
         - hbar
         - kappaB
-        - lambdaPu
         - m_GNLS
         - muR
         - rho_inf
         - tilt_h
-        - tilt_polar
         - tilt_shear
         - wall_delta
-        expression: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2 + 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2
-          + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2
-          + 8.3775804095728*lambdaPu*tilt_polar*tilt_shear + 7.5398223686155*muR*tilt_shear**2
+        expression: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
+          + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2
     generalized_force:
-      Q_p_var: -55.516524756128*K_EOS*a**2*p*rho_inf**5*tilt_polar**2 - 2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2
-        - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf) - 11.563122586834*kappaB*p*wall_delta**2
-        - 8.3775804095728*lambdaPu*p*tilt_polar*tilt_shear - 7.5398223686155*muR*p*tilt_shear**2
+      Q_p_var: -2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2 - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf)
+        - 11.563122586834*kappaB*p*wall_delta**2 - 7.5398223686155*muR*p*tilt_shear**2
       definition: -<delta S_action/delta Phi,partial Phi/partial p>-surface variation
     rigid_embedding_term_contributions:
-      Pu_coupling: -4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
       brane_shear_gradient: -3.7699111843078*muR*p**2*tilt_shear**2
       brane_shear_kinetic: 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
       bulk_EOS: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3
@@ -2574,39 +2079,26 @@ endpoint_effective_actions:
         + 2.4674011002723*V*m_GNLS*pd*rho_inf*tilt_phase + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
       h_gradient: -5.5516524756128*Mh*p**2*tilt_h**2
       h_kinetic: 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2
-      polar_gradient: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2
-      polar_kinetic: 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2 + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
-      polar_quartic: '0'
       quantum_pressure: -2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
       throat_source: '0'
       uw_gap: '0'
       uw_kinetic: '0'
-      wall_anisotropy: '0'
       wall_double_well: -1.8385199296072*aB*p**2*wall_delta**2
       wall_gradient: -5.7815612934171*kappaB*p**2*wall_delta**2
       wall_mix: '0'
       wall_shear_gate: '0'
   E3:
     E4_virtual_work: STRUCTURAL_ZERO
-    L_eff: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2 - 1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2
-      - 5.5516524756128*Mh*p**2*tilt_h**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2
-      + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
+    L_eff: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 - 5.5516524756128*Mh*p**2*tilt_h**2
+      + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear
       - 1.8385199296072*aB*p**2*wall_delta**2 - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf) + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2
-      - 5.7815612934171*kappaB*p**2*wall_delta**2 - 4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
-      - 3.7699111843078*muR*p**2*tilt_shear**2 + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
+      - 5.7815612934171*kappaB*p**2*wall_delta**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2 - 3.7699111843078*muR*p**2*tilt_shear**2
+      + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
     canonical_momenta:
-      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 11.945654675034*V*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*V*a**2*m_GNLS*polar_tangent**2
-        + 7.5398223686155*V*rhoBr*shear_transverse**2 + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
-      P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 9.8696044010894*a**2*m_GNLS*pd*tilt_polar**2
-        + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
+      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 7.5398223686155*V*rhoBr*shear_transverse**2 + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
+      P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2
+        + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
     canonical_terms:
-    - coefficient: -27.75826237806382
-      powers:
-        K_EOS: 1
-        a: 2
-        p: 2
-        rho_inf: 5
-        tilt_polar: 2
     - coefficient: -1.3615846464897174
       powers:
         K_EOS: 1
@@ -2637,29 +2129,11 @@ endpoint_effective_actions:
         rhoBr: 1
         shear_transverse: 1
         tilt_shear: 1
-    - coefficient: 5.972827337516996
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_radial: 2
-    - coefficient: 4.934802200544681
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_tangent: 2
     - coefficient: 3.7699111843077517
       powers:
         V: 2
         rhoBr: 1
         shear_transverse: 2
-    - coefficient: 4.934802200544681
-      powers:
-        a: 2
-        m_GNLS: 1
-        pd: 2
-        tilt_polar: 2
     - coefficient: -1.8385199296072123
       powers:
         aB: 1
@@ -2683,12 +2157,6 @@ endpoint_effective_actions:
         kappaB: 1
         p: 2
         wall_delta: 2
-    - coefficient: -4.188790204786393
-      powers:
-        lambdaPu: 1
-        p: 2
-        tilt_polar: 1
-        tilt_shear: 1
     - coefficient: 4.934802200544681
       powers:
         m_GNLS: 1
@@ -2725,11 +2193,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             tilt_h: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            tilt_polar: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -2746,7 +2209,6 @@ endpoint_effective_actions:
             tilt_shear: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - m_GNLS
@@ -2754,10 +2216,9 @@ endpoint_effective_actions:
         - rho_inf
         - tilt_h
         - tilt_phase
-        - tilt_polar
         - tilt_shear
-        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 9.8696044010894*a**2*m_GNLS*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2
-          + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2
+        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2
+          + 4.1887902047864*rhoBr*tilt_shear**2
       GVP:
         canonical_terms:
         - coefficient: 4.188790204786393
@@ -2777,40 +2238,19 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             h_scalar: 2
-        - coefficient: 11.945654675033992
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_radial: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_tangent: 2
         - coefficient: 7.5398223686155035
           powers:
             rhoBr: 1
             shear_transverse: 2
         dependencies:
         - Mh
-        - a
         - cE
         - h_scalar
-        - m_GNLS
-        - polar_radial
-        - polar_tangent
         - rhoBr
         - shear_transverse
-        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 11.945654675034*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*a**2*m_GNLS*polar_tangent**2
-          + 7.5398223686155*rhoBr*shear_transverse**2
+        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 7.5398223686155*rhoBr*shear_transverse**2
       KPP:
         canonical_terms:
-        - coefficient: 55.51652475612764
-          powers:
-            K_EOS: 1
-            a: 2
-            rho_inf: 5
-            tilt_polar: 2
         - coefficient: 2.723169292979435
           powers:
             K_EOS: 1
@@ -2834,11 +2274,6 @@ endpoint_effective_actions:
           powers:
             kappaB: 1
             wall_delta: 2
-        - coefficient: 8.377580409572786
-          powers:
-            lambdaPu: 1
-            tilt_polar: 1
-            tilt_shear: 1
         - coefficient: 7.5398223686155035
           powers:
             muR: 1
@@ -2846,29 +2281,23 @@ endpoint_effective_actions:
         dependencies:
         - K_EOS
         - Mh
-        - a
         - aB
         - density_delta
         - hbar
         - kappaB
-        - lambdaPu
         - m_GNLS
         - muR
         - rho_inf
         - tilt_h
-        - tilt_polar
         - tilt_shear
         - wall_delta
-        expression: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2 + 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2
-          + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2
-          + 8.3775804095728*lambdaPu*tilt_polar*tilt_shear + 7.5398223686155*muR*tilt_shear**2
+        expression: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
+          + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2
     generalized_force:
-      Q_p_var: -55.516524756128*K_EOS*a**2*p*rho_inf**5*tilt_polar**2 - 2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2
-        - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf) - 11.563122586834*kappaB*p*wall_delta**2
-        - 8.3775804095728*lambdaPu*p*tilt_polar*tilt_shear - 7.5398223686155*muR*p*tilt_shear**2
+      Q_p_var: -2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2 - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf)
+        - 11.563122586834*kappaB*p*wall_delta**2 - 7.5398223686155*muR*p*tilt_shear**2
       definition: -<delta S_action/delta Phi,partial Phi/partial p>-surface variation
     rigid_embedding_term_contributions:
-      Pu_coupling: -4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
       brane_shear_gradient: -3.7699111843078*muR*p**2*tilt_shear**2
       brane_shear_kinetic: 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
       bulk_EOS: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3
@@ -2876,41 +2305,27 @@ endpoint_effective_actions:
       bulk_flow_kinetic: 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
       h_gradient: -5.5516524756128*Mh*p**2*tilt_h**2
       h_kinetic: 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2
-      polar_gradient: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2
-      polar_kinetic: 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2 + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
-      polar_quartic: '0'
       quantum_pressure: -2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
       throat_source: '0'
       uw_gap: '0'
       uw_kinetic: '0'
-      wall_anisotropy: '0'
       wall_double_well: -1.8385199296072*aB*p**2*wall_delta**2
       wall_gradient: -5.7815612934171*kappaB*p**2*wall_delta**2
       wall_mix: '0'
       wall_shear_gate: '0'
   E4:
     E4_virtual_work: delta W=lambda_A*(delta V_A-C_A[delta uT_dot])=0 on allowed variations
-    L_eff: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2 - 1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2
-      - 5.5516524756128*Mh*p**2*tilt_h**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2
-      + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 7.5398223686155*V**2*rhoBr*shear_transverse + 3.7699111843078*V**2*rhoBr + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear
-      + 4.1887902047864*V*pd*rhoBr*tilt_shear + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2 - 1.8385199296072*aB*p**2*wall_delta**2 - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
-      + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 - 5.7815612934171*kappaB*p**2*wall_delta**2 - 4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
+    L_eff: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 - 5.5516524756128*Mh*p**2*tilt_h**2
+      + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 7.5398223686155*V**2*rhoBr*shear_transverse
+      + 3.7699111843078*V**2*rhoBr + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.1887902047864*V*pd*rhoBr*tilt_shear - 1.8385199296072*aB*p**2*wall_delta**2
+      - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf) + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 - 5.7815612934171*kappaB*p**2*wall_delta**2
       + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2 - 3.7699111843078*muR*p**2*tilt_shear**2 + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
     canonical_momenta:
-      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 11.945654675034*V*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*V*a**2*m_GNLS*polar_tangent**2
-        + 7.5398223686155*V*rhoBr*shear_transverse**2 + 15.079644737231*V*rhoBr*shear_transverse + 7.5398223686155*V*rhoBr + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
-        + 4.1887902047864*pd*rhoBr*tilt_shear
+      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 7.5398223686155*V*rhoBr*shear_transverse**2 + 15.079644737231*V*rhoBr*shear_transverse + 7.5398223686155*V*rhoBr
+        + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear + 4.1887902047864*pd*rhoBr*tilt_shear
       P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 4.1887902047864*V*rhoBr*tilt_shear +
-        9.8696044010894*a**2*m_GNLS*pd*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2
-        + 4.1887902047864*pd*rhoBr*tilt_shear**2
+        2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
     canonical_terms:
-    - coefficient: -27.75826237806382
-      powers:
-        K_EOS: 1
-        a: 2
-        p: 2
-        rho_inf: 5
-        tilt_polar: 2
     - coefficient: -1.3615846464897174
       powers:
         K_EOS: 1
@@ -2947,18 +2362,6 @@ endpoint_effective_actions:
         pd: 1
         rhoBr: 1
         tilt_shear: 1
-    - coefficient: 5.972827337516996
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_radial: 2
-    - coefficient: 4.934802200544681
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_tangent: 2
     - coefficient: 3.7699111843077517
       powers:
         V: 2
@@ -2973,12 +2376,6 @@ endpoint_effective_actions:
         V: 2
         rhoBr: 1
         shear_transverse: 2
-    - coefficient: 4.934802200544681
-      powers:
-        a: 2
-        m_GNLS: 1
-        pd: 2
-        tilt_polar: 2
     - coefficient: -1.8385199296072123
       powers:
         aB: 1
@@ -3002,12 +2399,6 @@ endpoint_effective_actions:
         kappaB: 1
         p: 2
         wall_delta: 2
-    - coefficient: -4.188790204786393
-      powers:
-        lambdaPu: 1
-        p: 2
-        tilt_polar: 1
-        tilt_shear: 1
     - coefficient: 4.934802200544681
       powers:
         m_GNLS: 1
@@ -3044,11 +2435,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             tilt_h: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            tilt_polar: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -3065,7 +2451,6 @@ endpoint_effective_actions:
             tilt_shear: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - m_GNLS
@@ -3073,10 +2458,9 @@ endpoint_effective_actions:
         - rho_inf
         - tilt_h
         - tilt_phase
-        - tilt_polar
         - tilt_shear
-        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 9.8696044010894*a**2*m_GNLS*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2
-          + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2
+        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2
+          + 4.1887902047864*rhoBr*tilt_shear**2
       GVP:
         canonical_terms:
         - coefficient: 4.188790204786393
@@ -3100,16 +2484,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             h_scalar: 2
-        - coefficient: 11.945654675033992
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_radial: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_tangent: 2
         - coefficient: 7.5398223686155035
           powers:
             rhoBr: 1
@@ -3123,24 +2497,14 @@ endpoint_effective_actions:
             shear_transverse: 2
         dependencies:
         - Mh
-        - a
         - cE
         - h_scalar
-        - m_GNLS
-        - polar_radial
-        - polar_tangent
         - rhoBr
         - shear_transverse
-        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 11.945654675034*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*a**2*m_GNLS*polar_tangent**2
-          + 7.5398223686155*rhoBr*shear_transverse**2 + 15.079644737231*rhoBr*shear_transverse + 7.5398223686155*rhoBr
+        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 7.5398223686155*rhoBr*shear_transverse**2 + 15.079644737231*rhoBr*shear_transverse
+          + 7.5398223686155*rhoBr
       KPP:
         canonical_terms:
-        - coefficient: 55.51652475612764
-          powers:
-            K_EOS: 1
-            a: 2
-            rho_inf: 5
-            tilt_polar: 2
         - coefficient: 2.723169292979435
           powers:
             K_EOS: 1
@@ -3164,11 +2528,6 @@ endpoint_effective_actions:
           powers:
             kappaB: 1
             wall_delta: 2
-        - coefficient: 8.377580409572786
-          powers:
-            lambdaPu: 1
-            tilt_polar: 1
-            tilt_shear: 1
         - coefficient: 7.5398223686155035
           powers:
             muR: 1
@@ -3176,29 +2535,23 @@ endpoint_effective_actions:
         dependencies:
         - K_EOS
         - Mh
-        - a
         - aB
         - density_delta
         - hbar
         - kappaB
-        - lambdaPu
         - m_GNLS
         - muR
         - rho_inf
         - tilt_h
-        - tilt_polar
         - tilt_shear
         - wall_delta
-        expression: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2 + 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2
-          + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2
-          + 8.3775804095728*lambdaPu*tilt_polar*tilt_shear + 7.5398223686155*muR*tilt_shear**2
+        expression: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
+          + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2
     generalized_force:
-      Q_p_var: -55.516524756128*K_EOS*a**2*p*rho_inf**5*tilt_polar**2 - 2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2
-        - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf) - 11.563122586834*kappaB*p*wall_delta**2
-        - 8.3775804095728*lambdaPu*p*tilt_polar*tilt_shear - 7.5398223686155*muR*p*tilt_shear**2
+      Q_p_var: -2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2 - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf)
+        - 11.563122586834*kappaB*p*wall_delta**2 - 7.5398223686155*muR*p*tilt_shear**2
       definition: -<delta S_action/delta Phi,partial Phi/partial p>-surface variation
     rigid_embedding_term_contributions:
-      Pu_coupling: -4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
       brane_shear_gradient: -3.7699111843078*muR*p**2*tilt_shear**2
       brane_shear_kinetic: 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 7.5398223686155*V**2*rhoBr*shear_transverse + 3.7699111843078*V**2*rhoBr
         + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.1887902047864*V*pd*rhoBr*tilt_shear + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
@@ -3207,42 +2560,29 @@ endpoint_effective_actions:
       bulk_flow_kinetic: 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
       h_gradient: -5.5516524756128*Mh*p**2*tilt_h**2
       h_kinetic: 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2
-      polar_gradient: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2
-      polar_kinetic: 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2 + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
-      polar_quartic: '0'
       quantum_pressure: -2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
       throat_source: '0'
       uw_gap: '0'
       uw_kinetic: '0'
-      wall_anisotropy: '0'
       wall_double_well: -1.8385199296072*aB*p**2*wall_delta**2
       wall_gradient: -5.7815612934171*kappaB*p**2*wall_delta**2
       wall_mix: '0'
       wall_shear_gate: '0'
   E5:
     E4_virtual_work: STRUCTURAL_ZERO
-    L_eff: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2 - 1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2
-      - 5.5516524756128*Mh*p**2*tilt_h**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2
-      + 0.45785847221349*V**2*density_delta*m_GNLS + 1.9647823576243*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 1.3416318023*V*density_delta*m_GNLS*pd*tilt_phase
-      + 5.7572692339688*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
+    L_eff: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3 + 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 - 5.5516524756128*Mh*p**2*tilt_h**2
+      + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2 + 0.45785847221349*V**2*density_delta*m_GNLS + 1.9647823576243*V**2*m_GNLS*rho_inf + 3.7699111843078*V**2*rhoBr*shear_transverse**2
+      + 1.3416318023*V*density_delta*m_GNLS*pd*tilt_phase + 5.7572692339688*V*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear
       - 1.8385199296072*aB*p**2*wall_delta**2 - 2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf) + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2
-      - 5.7815612934171*kappaB*p**2*wall_delta**2 - 4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
-      - 3.7699111843078*muR*p**2*tilt_shear**2 + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
+      - 5.7815612934171*kappaB*p**2*wall_delta**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2 - 3.7699111843078*muR*p**2*tilt_shear**2
+      + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
     canonical_momenta:
-      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 11.945654675034*V*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*V*a**2*m_GNLS*polar_tangent**2
-        + 0.91571694442697*V*density_delta*m_GNLS + 3.9295647152485*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2 + 1.3416318023*density_delta*m_GNLS*pd*tilt_phase
-        + 5.7572692339688*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
+      P_X: 9.8696044010894*Mh*V*h_scalar**2/cE**2 + 0.91571694442697*V*density_delta*m_GNLS + 3.9295647152485*V*m_GNLS*rho_inf + 7.5398223686155*V*rhoBr*shear_transverse**2
+        + 1.3416318023*density_delta*m_GNLS*pd*tilt_phase + 5.7572692339688*m_GNLS*pd*rho_inf*tilt_phase + 4.1887902047864*pd*rhoBr*shear_transverse*tilt_shear
       P_p: 9.8696044010894*Mh*pd*tilt_h**2/cE**2 + 1.3416318023*V*density_delta*m_GNLS*tilt_phase + 5.7572692339688*V*m_GNLS*rho_inf*tilt_phase
-        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 9.8696044010894*a**2*m_GNLS*pd*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2
-        + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2 + 4.1887902047864*pd*rhoBr*tilt_shear**2
+        + 4.1887902047864*V*rhoBr*shear_transverse*tilt_shear + 2.2999402325143*density_delta*m_GNLS*pd*tilt_phase**2 + 9.8696044010894*m_GNLS*pd*rho_inf*tilt_phase**2
+        + 4.1887902047864*pd*rhoBr*tilt_shear**2
     canonical_terms:
-    - coefficient: -27.75826237806382
-      powers:
-        K_EOS: 1
-        a: 2
-        p: 2
-        rho_inf: 5
-        tilt_polar: 2
     - coefficient: -1.3615846464897174
       powers:
         K_EOS: 1
@@ -3287,18 +2627,6 @@ endpoint_effective_actions:
         rhoBr: 1
         shear_transverse: 1
         tilt_shear: 1
-    - coefficient: 5.972827337516996
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_radial: 2
-    - coefficient: 4.934802200544681
-      powers:
-        V: 2
-        a: 2
-        m_GNLS: 1
-        polar_tangent: 2
     - coefficient: 0.4578584722134855
       powers:
         V: 2
@@ -3314,12 +2642,6 @@ endpoint_effective_actions:
         V: 2
         rhoBr: 1
         shear_transverse: 2
-    - coefficient: 4.934802200544681
-      powers:
-        a: 2
-        m_GNLS: 1
-        pd: 2
-        tilt_polar: 2
     - coefficient: -1.8385199296072123
       powers:
         aB: 1
@@ -3343,12 +2665,6 @@ endpoint_effective_actions:
         kappaB: 1
         p: 2
         wall_delta: 2
-    - coefficient: -4.188790204786393
-      powers:
-        lambdaPu: 1
-        p: 2
-        tilt_polar: 1
-        tilt_shear: 1
     - coefficient: 4.934802200544681
       powers:
         m_GNLS: 1
@@ -3385,11 +2701,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             tilt_h: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            tilt_polar: 2
         - coefficient: 2.2999402325142526
           powers:
             density_delta: 1
@@ -3406,7 +2717,6 @@ endpoint_effective_actions:
             tilt_shear: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - m_GNLS
@@ -3414,10 +2724,9 @@ endpoint_effective_actions:
         - rho_inf
         - tilt_h
         - tilt_phase
-        - tilt_polar
         - tilt_shear
-        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 9.8696044010894*a**2*m_GNLS*tilt_polar**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2
-          + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2
+        expression: 9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2
+          + 4.1887902047864*rhoBr*tilt_shear**2
       GVP:
         canonical_terms:
         - coefficient: 1.3416318022999807
@@ -3451,16 +2760,6 @@ endpoint_effective_actions:
             Mh: 1
             cE: -2
             h_scalar: 2
-        - coefficient: 11.945654675033992
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_radial: 2
-        - coefficient: 9.869604401089362
-          powers:
-            a: 2
-            m_GNLS: 1
-            polar_tangent: 2
         - coefficient: 0.915716944426971
           powers:
             density_delta: 1
@@ -3475,26 +2774,16 @@ endpoint_effective_actions:
             shear_transverse: 2
         dependencies:
         - Mh
-        - a
         - cE
         - density_delta
         - h_scalar
         - m_GNLS
-        - polar_radial
-        - polar_tangent
         - rhoBr
         - rho_inf
         - shear_transverse
-        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 11.945654675034*a**2*m_GNLS*polar_radial**2 + 9.8696044010894*a**2*m_GNLS*polar_tangent**2
-          + 0.91571694442697*density_delta*m_GNLS + 3.9295647152485*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+        expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 0.91571694442697*density_delta*m_GNLS + 3.9295647152485*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
       KPP:
         canonical_terms:
-        - coefficient: 55.51652475612764
-          powers:
-            K_EOS: 1
-            a: 2
-            rho_inf: 5
-            tilt_polar: 2
         - coefficient: 2.723169292979435
           powers:
             K_EOS: 1
@@ -3518,11 +2807,6 @@ endpoint_effective_actions:
           powers:
             kappaB: 1
             wall_delta: 2
-        - coefficient: 8.377580409572786
-          powers:
-            lambdaPu: 1
-            tilt_polar: 1
-            tilt_shear: 1
         - coefficient: 7.5398223686155035
           powers:
             muR: 1
@@ -3530,29 +2814,23 @@ endpoint_effective_actions:
         dependencies:
         - K_EOS
         - Mh
-        - a
         - aB
         - density_delta
         - hbar
         - kappaB
-        - lambdaPu
         - m_GNLS
         - muR
         - rho_inf
         - tilt_h
-        - tilt_polar
         - tilt_shear
         - wall_delta
-        expression: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2 + 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2
-          + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2
-          + 8.3775804095728*lambdaPu*tilt_polar*tilt_shear + 7.5398223686155*muR*tilt_shear**2
+        expression: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
+          + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2
     generalized_force:
-      Q_p_var: -55.516524756128*K_EOS*a**2*p*rho_inf**5*tilt_polar**2 - 2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2
-        - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf) - 11.563122586834*kappaB*p*wall_delta**2
-        - 8.3775804095728*lambdaPu*p*tilt_polar*tilt_shear - 7.5398223686155*muR*p*tilt_shear**2
+      Q_p_var: -2.7231692929794*K_EOS*density_delta**2*p*rho_inf**3 - 11.103304951226*Mh*p*tilt_h**2 - 3.6770398592144*aB*p*wall_delta**2 - 4.7299772859649*density_delta**2*hbar**2*p/(m_GNLS*rho_inf)
+        - 11.563122586834*kappaB*p*wall_delta**2 - 7.5398223686155*muR*p*tilt_shear**2
       definition: -<delta S_action/delta Phi,partial Phi/partial p>-surface variation
     rigid_embedding_term_contributions:
-      Pu_coupling: -4.1887902047864*lambdaPu*p**2*tilt_polar*tilt_shear
       brane_shear_gradient: -3.7699111843078*muR*p**2*tilt_shear**2
       brane_shear_kinetic: 3.7699111843078*V**2*rhoBr*shear_transverse**2 + 4.1887902047864*V*pd*rhoBr*shear_transverse*tilt_shear + 2.0943951023932*pd**2*rhoBr*tilt_shear**2
       bulk_EOS: -1.3615846464897*K_EOS*density_delta**2*p**2*rho_inf**3
@@ -3561,14 +2839,10 @@ endpoint_effective_actions:
         + 5.7572692339688*V*m_GNLS*pd*rho_inf*tilt_phase + 1.1499701162571*density_delta*m_GNLS*pd**2*tilt_phase**2 + 4.9348022005447*m_GNLS*pd**2*rho_inf*tilt_phase**2
       h_gradient: -5.5516524756128*Mh*p**2*tilt_h**2
       h_kinetic: 4.9348022005447*Mh*V**2*h_scalar**2/cE**2 + 4.9348022005447*Mh*pd**2*tilt_h**2/cE**2
-      polar_gradient: -27.758262378064*K_EOS*a**2*p**2*rho_inf**5*tilt_polar**2
-      polar_kinetic: 5.972827337517*V**2*a**2*m_GNLS*polar_radial**2 + 4.9348022005447*V**2*a**2*m_GNLS*polar_tangent**2 + 4.9348022005447*a**2*m_GNLS*pd**2*tilt_polar**2
-      polar_quartic: '0'
       quantum_pressure: -2.3649886429824*density_delta**2*hbar**2*p**2/(m_GNLS*rho_inf)
       throat_source: '0'
       uw_gap: '0'
       uw_kinetic: '0'
-      wall_anisotropy: '0'
       wall_double_well: -1.8385199296072*aB*p**2*wall_delta**2
       wall_gradient: -5.7815612934171*kappaB*p**2*wall_delta**2
       wall_mix: '0'
@@ -3647,21 +2921,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -3683,68 +2952,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*rhoBr*shear_transverse**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GVV.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 11.945654675033992
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_radial: 2
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_tangent: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  endpoint: E1
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GVV.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -3762,21 +2984,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*h_scalar**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -3804,21 +3021,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -3841,21 +3053,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*shear_transverse*tilt_shear
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -3883,21 +3090,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase**2*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -3919,63 +3121,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GPP.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  endpoint: E1
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GPP.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -3993,21 +3153,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*tilt_h**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4031,7 +3186,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4039,13 +3193,9 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4068,21 +3218,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4104,7 +3249,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.563122586834*kappaB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4112,14 +3256,10 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_mix
   - wall_shear_gate
@@ -4140,7 +3280,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 3.6770398592144*aB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4148,56 +3287,14 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.wall_double_well
-- after_removal_monomials: []
-  ancestor: polar_gradient
-  before_monomials:
-  - coefficient: 55.51652475612764
-    powers:
-      K_EOS: 1
-      a: 2
-      rho_inf: 5
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  endpoint: E1
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.polar_gradient
 - after_removal_monomials: []
   ancestor: brane_shear_gradient
   before_monomials:
@@ -4214,63 +3311,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*muR*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.brane_shear_gradient
-- after_removal_monomials: []
-  ancestor: Pu_coupling
-  before_monomials:
-  - coefficient: 8.377580409572786
-    powers:
-      lambdaPu: 1
-      tilt_polar: 1
-      tilt_shear: 1
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  endpoint: E1
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  remove_then_rederive_action_ids:
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.Pu_coupling
 - after_removal_monomials: []
   ancestor: h_gradient
   before_monomials:
@@ -4287,21 +3342,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.103304951226*Mh*tilt_h**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4327,21 +3377,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*(0.57498505812856*density_delta + 2.4674011002723*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4363,68 +3408,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*rhoBr*shear_transverse**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GVV.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 11.945654675033992
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_radial: 2
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_tangent: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  endpoint: E2
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GVV.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -4442,21 +3440,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*h_scalar**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4484,21 +3477,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase*(0.57498505812856*density_delta + 2.4674011002723*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4521,21 +3509,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*shear_transverse*tilt_shear
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4563,21 +3546,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase**2*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4599,63 +3577,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GPP.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  endpoint: E2
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GPP.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -4673,21 +3609,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*tilt_h**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4711,7 +3642,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4719,13 +3649,9 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4748,21 +3674,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -4784,7 +3705,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.563122586834*kappaB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4792,14 +3712,10 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_mix
   - wall_shear_gate
@@ -4820,7 +3736,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 3.6770398592144*aB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -4828,56 +3743,14 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.wall_double_well
-- after_removal_monomials: []
-  ancestor: polar_gradient
-  before_monomials:
-  - coefficient: 55.51652475612764
-    powers:
-      K_EOS: 1
-      a: 2
-      rho_inf: 5
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  endpoint: E2
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.polar_gradient
 - after_removal_monomials: []
   ancestor: brane_shear_gradient
   before_monomials:
@@ -4894,63 +3767,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*muR*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.brane_shear_gradient
-- after_removal_monomials: []
-  ancestor: Pu_coupling
-  before_monomials:
-  - coefficient: 8.377580409572786
-    powers:
-      lambdaPu: 1
-      tilt_polar: 1
-      tilt_shear: 1
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  endpoint: E2
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  remove_then_rederive_action_ids:
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.Pu_coupling
 - after_removal_monomials: []
   ancestor: h_gradient
   before_monomials:
@@ -4967,21 +3798,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.103304951226*Mh*tilt_h**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5003,68 +3829,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*rhoBr*shear_transverse**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GVV.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 11.945654675033992
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_radial: 2
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_tangent: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  endpoint: E3
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GVV.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -5082,21 +3861,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*h_scalar**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5119,21 +3893,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*shear_transverse*tilt_shear
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5161,21 +3930,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase**2*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5197,63 +3961,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GPP.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  endpoint: E3
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GPP.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -5271,21 +3993,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*tilt_h**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5309,7 +4026,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -5317,13 +4033,9 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5346,21 +4058,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5382,7 +4089,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.563122586834*kappaB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -5390,14 +4096,10 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_mix
   - wall_shear_gate
@@ -5418,7 +4120,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 3.6770398592144*aB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -5426,56 +4127,14 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.wall_double_well
-- after_removal_monomials: []
-  ancestor: polar_gradient
-  before_monomials:
-  - coefficient: 55.51652475612764
-    powers:
-      K_EOS: 1
-      a: 2
-      rho_inf: 5
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  endpoint: E3
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.polar_gradient
 - after_removal_monomials: []
   ancestor: brane_shear_gradient
   before_monomials:
@@ -5492,63 +4151,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*muR*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.brane_shear_gradient
-- after_removal_monomials: []
-  ancestor: Pu_coupling
-  before_monomials:
-  - coefficient: 8.377580409572786
-    powers:
-      lambdaPu: 1
-      tilt_polar: 1
-      tilt_shear: 1
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  endpoint: E3
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  remove_then_rederive_action_ids:
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.Pu_coupling
 - after_removal_monomials: []
   ancestor: h_gradient
   before_monomials:
@@ -5565,21 +4182,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.103304951226*Mh*tilt_h**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5608,68 +4220,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: rhoBr*(7.5398223686155*shear_transverse**2 + 15.079644737231*shear_transverse + 7.5398223686155)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GVV.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 11.945654675033992
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_radial: 2
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_tangent: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  endpoint: E4
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GVV.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -5687,21 +4252,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*h_scalar**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5728,21 +4288,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear*(shear_transverse + 1)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5770,21 +4325,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase**2*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5806,63 +4356,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GPP.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  endpoint: E4
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GPP.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -5880,21 +4388,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*tilt_h**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5918,7 +4421,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -5926,13 +4428,9 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5955,21 +4453,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -5991,7 +4484,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.563122586834*kappaB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -5999,14 +4491,10 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_mix
   - wall_shear_gate
@@ -6027,7 +4515,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 3.6770398592144*aB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -6035,56 +4522,14 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.wall_double_well
-- after_removal_monomials: []
-  ancestor: polar_gradient
-  before_monomials:
-  - coefficient: 55.51652475612764
-    powers:
-      K_EOS: 1
-      a: 2
-      rho_inf: 5
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  endpoint: E4
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.polar_gradient
 - after_removal_monomials: []
   ancestor: brane_shear_gradient
   before_monomials:
@@ -6101,63 +4546,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*muR*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.brane_shear_gradient
-- after_removal_monomials: []
-  ancestor: Pu_coupling
-  before_monomials:
-  - coefficient: 8.377580409572786
-    powers:
-      lambdaPu: 1
-      tilt_polar: 1
-      tilt_shear: 1
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  endpoint: E4
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  remove_then_rederive_action_ids:
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.Pu_coupling
 - after_removal_monomials: []
   ancestor: h_gradient
   before_monomials:
@@ -6174,21 +4577,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.103304951226*Mh*tilt_h**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6214,21 +4612,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*(0.91571694442697*density_delta + 3.9295647152485*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6250,68 +4643,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*rhoBr*shear_transverse**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GVV.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 11.945654675033992
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_radial: 2
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      polar_tangent: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  endpoint: E5
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: a**2*m_GNLS*(11.945654675034*polar_radial**2 + 9.8696044010894*polar_tangent**2)
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GVV.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -6329,21 +4675,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*h_scalar**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6371,21 +4712,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase*(1.3416318023*density_delta + 5.7572692339688*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6408,21 +4744,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*shear_transverse*tilt_shear
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6450,21 +4781,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: m_GNLS*tilt_phase**2*(2.2999402325143*density_delta + 9.8696044010894*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6486,63 +4812,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.1887902047864*rhoBr*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: GPP.brane_shear_kinetic
-- after_removal_monomials: []
-  ancestor: polar_kinetic
-  before_monomials:
-  - coefficient: 9.869604401089362
-    powers:
-      a: 2
-      m_GNLS: 1
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  endpoint: E5
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 9.8696044010894*a**2*m_GNLS*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: GPP.polar_kinetic
 - after_removal_monomials: []
   ancestor: h_kinetic
   before_monomials:
@@ -6560,21 +4844,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 9.8696044010894*Mh*tilt_h**2/cE**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6598,7 +4877,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf)
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -6606,13 +4884,9 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6635,21 +4909,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 2.7231692929794*K_EOS*density_delta**2*rho_inf**3
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6671,7 +4940,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.563122586834*kappaB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -6679,14 +4947,10 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_mix
   - wall_shear_gate
@@ -6707,7 +4971,6 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 3.6770398592144*aB*wall_delta**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
@@ -6715,56 +4978,14 @@ per_structure_ancestry:
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.wall_double_well
-- after_removal_monomials: []
-  ancestor: polar_gradient
-  before_monomials:
-  - coefficient: 55.51652475612764
-    powers:
-      K_EOS: 1
-      a: 2
-      rho_inf: 5
-      tilt_polar: 2
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  endpoint: E5
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 55.516524756128*K_EOS*a**2*rho_inf**5*tilt_polar**2
-  remove_then_rederive_action_ids:
-  - Pu_coupling
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.polar_gradient
 - after_removal_monomials: []
   ancestor: brane_shear_gradient
   before_monomials:
@@ -6781,63 +5002,21 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 7.5398223686155*muR*tilt_shear**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_gradient
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
   - wall_shear_gate
   structure: KPP.brane_shear_gradient
-- after_removal_monomials: []
-  ancestor: Pu_coupling
-  before_monomials:
-  - coefficient: 8.377580409572786
-    powers:
-      lambdaPu: 1
-      tilt_polar: 1
-      tilt_shear: 1
-  classification_after_removal: ABSENT
-  classification_before: NONZERO_NATIVE_STRUCTURE
-  contribution: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  endpoint: E5
-  native_padding_ablation_destroys_structure: true
-  open_remainder: false
-  origin_mutation_changes_expression: true
-  removal_delta: 8.3775804095728*lambdaPu*tilt_polar*tilt_shear
-  remove_then_rederive_action_ids:
-  - brane_shear_gradient
-  - brane_shear_kinetic
-  - bulk_EOS
-  - bulk_berry
-  - bulk_flow_kinetic
-  - h_gradient
-  - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
-  - quantum_pressure
-  - throat_source
-  - uw_gap
-  - uw_kinetic
-  - wall_anisotropy
-  - wall_double_well
-  - wall_gradient
-  - wall_mix
-  - wall_shear_gate
-  structure: KPP.Pu_coupling
 - after_removal_monomials: []
   ancestor: h_gradient
   before_monomials:
@@ -6854,21 +5033,16 @@ per_structure_ancestry:
   origin_mutation_changes_expression: true
   removal_delta: 11.103304951226*Mh*tilt_h**2
   remove_then_rederive_action_ids:
-  - Pu_coupling
   - brane_shear_gradient
   - brane_shear_kinetic
   - bulk_EOS
   - bulk_berry
   - bulk_flow_kinetic
   - h_kinetic
-  - polar_gradient
-  - polar_kinetic
-  - polar_quartic
   - quantum_pressure
   - throat_source
   - uw_gap
   - uw_kinetic
-  - wall_anisotropy
   - wall_double_well
   - wall_gradient
   - wall_mix
@@ -6886,10 +5060,6 @@ provenance_graph:
     - generalized_force
   - - L_eff
     - generalized_force
-  - - Pu_coupling
-    - D_E
-  - - Pu_coupling
-    - L_eff
   - - base_family
     - D_E
   - - brane_shear_gradient
@@ -6922,14 +5092,6 @@ provenance_graph:
     - base_family
   - - native_momentum
     - generalized_force
-  - - polar_gradient
-    - D_E
-  - - polar_gradient
-    - L_eff
-  - - polar_kinetic
-    - L_eff
-  - - polar_quartic
-    - D_E
   - - quantum_pressure
     - D_E
   - - quantum_pressure
@@ -6949,10 +5111,6 @@ provenance_graph:
   - - wall_gradient
     - L_eff
   expression_dependency_sets:
-    D_E:Pu_coupling:
-    - Pt
-    - lambdaPu
-    - u_curl
     D_E:brane_shear_gradient:
     - muR
     - u_curl
@@ -6974,17 +5132,6 @@ provenance_graph:
     - Mh
     - h_r
     D_E:h_kinetic: []
-    D_E:polar_gradient:
-    - K_EOS
-    - Pr_r
-    - Pt_r
-    - a
-    - rho_inf
-    D_E:polar_kinetic: []
-    D_E:polar_quartic:
-    - K_EOS
-    - Pr
-    - rho_inf
     D_E:quantum_pressure:
     - dn_r
     - hbar
@@ -6996,7 +5143,6 @@ provenance_graph:
     - rhoBr
     - uw
     D_E:uw_kinetic: []
-    D_E:wall_anisotropy: []
     D_E:wall_double_well:
     - aB
     - chi
@@ -7005,11 +5151,6 @@ provenance_graph:
     - kappaB
     D_E:wall_mix: []
     D_E:wall_shear_gate: []
-    L_eff:Pu_coupling:
-    - lambdaPu
-    - p
-    - tilt_polar
-    - tilt_shear
     L_eff:brane_shear_gradient:
     - muR
     - p
@@ -7044,21 +5185,6 @@ provenance_graph:
     - h_scalar
     - pd
     - tilt_h
-    L_eff:polar_gradient:
-    - K_EOS
-    - a
-    - p
-    - rho_inf
-    - tilt_polar
-    L_eff:polar_kinetic:
-    - V
-    - a
-    - m_GNLS
-    - pd
-    - polar_radial
-    - polar_tangent
-    - tilt_polar
-    L_eff:polar_quartic: []
     L_eff:quantum_pressure:
     - density_delta
     - hbar
@@ -7068,7 +5194,6 @@ provenance_graph:
     L_eff:throat_source: []
     L_eff:uw_gap: []
     L_eff:uw_kinetic: []
-    L_eff:wall_anisotropy: []
     L_eff:wall_double_well:
     - aB
     - p
@@ -7102,32 +5227,17 @@ provenance_graph:
   - expression: chiB*muR4*ud_curl2/2
     id: wall_shear_gate
     type: ACTION
-  - expression: alphaAniso*chiB*Pnormal2
-    id: wall_anisotropy
-    type: ACTION
   - expression: f_throat
     id: throat_source
     type: ACTION
   - expression: f_mix
     id: wall_mix
     type: ACTION
-  - expression: m_GNLS*n*a^2*DtP2/2
-    id: polar_kinetic
-    type: ACTION
-  - expression: m_GNLS*n*cs2*a^2*P_grad2/2
-    id: polar_gradient
-    type: ACTION
-  - expression: m_GNLS*n*cs2*(P2-1)^2/4
-    id: polar_quartic
-    type: ACTION
   - expression: g_ell*rhoBr*u_t2/2
     id: brane_shear_kinetic
     type: ACTION
   - expression: g_ell*muR*u_curl2/2
     id: brane_shear_gradient
-    type: ACTION
-  - expression: g_ell*lambdaPu*Pt*u_curl
-    id: Pu_coupling
     type: ACTION
   - expression: g_ell*rhoBr*uw_t2/2
     id: uw_kinetic
@@ -7175,25 +5285,25 @@ parity:
   embedding_tag: BODY_CONJUGATION_ONLY
   symmetric_tag: BODY_PLUS_AMBIENT_POSTULATE
 outcome_reachability:
-  fat_tail: U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:bound_phase,polar_tangent,h)
+  fat_tail: U1_BASE_ILL_POSED(NO_NORMALIZABLE_ZERO_MODE:bound_phase,h)
   gapped_and_localized: U1_BASE_OK
   open_h_sign: U1_BASE_UNRESOLVED(Mh,cE)
-  unstable_eos: U1_BASE_UNSTABLE(density_EOS,Pu_coupled_helical)
+  unstable_eos: U1_BASE_UNSTABLE(density_EOS)
 dual_engine:
   status: ENGINE_AGREE
   checks:
   - axis verdicts derived identically
-  - stage-note action manifests and assembled coverage
-  - parsed action expressions and three remove/re-derive source probes
-  - 20 inline dimensional constructions
+  - Decision-16 citation, stage-note manifests, and exact P-retired action coverage
+  - parsed action expressions and two active remove/re-derive source probes
+  - 15 inline dimensional constructions
   - continuity and momentum co-moving reductions
-  - 8 solved radial channels, residuals, and translated norms
-  - action-derived operator Hessians and coupled indicial/degree verdict
+  - 6 solved radial channels, residuals, and translated norms
+  - action-derived operator Hessians and density-phase indicial/degree verdict
   - force-balance operator, translated source block, Gram/projector algebra
   - five solved endpoint responses and all evaluated reduced moments
   - canonical L_eff coefficient monomials and expression-derived dependency sets
   - substitution reconstruction and no-double-count channel partition
-  - 86 per-structure ancestry/native-padding ablations
+  - 66 per-structure ancestry/native-padding ablations
   - three-way parity tags and four data-driven outcome classes
 ablations:
   INPUT_LEDGER:
@@ -7256,6 +5366,51 @@ ablations:
   OUTCOME_REACHABILITY:
     SymPy: EXIT_1@ASSERT_FAIL:OUTCOME_REACHABILITY
     Mathematica: EXIT_1@ASSERT_FAIL:OUTCOME_REACHABILITY
+proposed_parameter_register:
+  status: PROPOSED_NOT_APPLIED_LEDGER_PAUSED
+  live_open_rows:
+  - Mh
+  - cE
+  - mdot
+  - gammaSigma
+  - tangentDtN
+  - sleeve_core_trace
+  - geon_core_bundle
+  - throat_surface_functional
+  - outer_surface_functional
+  - E4_shear_lock
+  - E5_rayleigh
+  - return_closure
+  retired_rows:
+  - id: lambdaPu
+    status: RETIRED_DECISION_16
+    kind: independent_coupling
+  - id: alphaAniso
+    status: RETIRED_DECISION_16
+    kind: independent_wall_anisotropy
+  - id: T0_polar_kinetic
+    status: RETIRED_WITH_P_SECTOR
+    kind: inherited_action_normalization
+  - id: T0_polar_gradient
+    status: RETIRED_WITH_P_SECTOR
+    kind: inherited_action_normalization
+  - id: T0_polar_quartic
+    status: RETIRED_WITH_P_SECTOR
+    kind: inherited_action_normalization
+  live_edges:
+  - density_D_E
+  - chiB_D_E
+  - u_D_E
+  - h_D_E
+  - core_to_balanced_exterior
+  - endpoint_to_moments
+  - action_moments_to_L_eff
+  - E4_to_constraint_force
+  - E5_to_Rayleigh_force
+  - return_to_flux_force
+  retired_edges:
+  - P_D_E
+  - P_u_cross_block
 partition:
   E1_reaction_owner: variational_holonomic_surface
   acceleration_like_outer_flux_owner: future_C_mdot
@@ -7267,10 +5422,10 @@ honest_scope: collective-coordinate/effective-action Phase A only; exterior anal
 summary_lines:
 - U1 PHASE A SUMMARY — HALT AFTER THIS PHASE
 - 'Axis 1: COMPUTATION_VALID'
-- 'Axis 2: U1_BASE_UNSTABLE(Pu_coupled_helical)'
-- 'Scalar tails: ALGEBRAIC_GAP=1, EXPONENTIAL_GAP=3, POWER_LAW=4'
-- 'R1 coupled P-u: UNSTABLE_HELICAL at det=-1/1250000000'
-- 'R1 drain cross: degree shift -2 (subleading)'
+- 'Axis 2: U1_BASE_OK'
+- 'Operative baseline: Decision 16 P-retired; channels=6'
+- 'Retained finding: a5c079eb instability applies to the retired P+lambdaPu baseline'
+- 'Tail classes: ALGEBRAIC_GAP=1, EXPONENTIAL_GAP=2, POWER_LAW=3'
 - 'Endpoint response map: 5/5 distinct solved signatures'
 - 'Dual engine: ENGINE_AGREE checks=13'
 - 'Ablations: 20 per engine + 2 comparator teeth'

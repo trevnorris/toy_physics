@@ -26,10 +26,8 @@ coefficients:
   aB: {value: 3/2, dimensions: [-2, -2, 1], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage006}
   kappaB: {value: 2, dimensions: [0, -2, 1], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage006}
   muR4: {value: 6/5, dimensions: [-2, -2, 1], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage006}
-  alphaAniso: {value: 1/5, dimensions: [-2, -2, 1], status: WHITELIST_SOURCED, constraint: nonnegative, source: ledger_stage006}
   rhoBr: {value: 4/3, dimensions: [-3, 0, 1], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage007}
   muR: {value: 5/4, dimensions: [-1, -2, 1], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage007}
-  lambdaPu: {value: 1/10, dimensions: [-1, -2, 1], status: WHITELIST_SOURCED, constraint: real, source: ledger_stage007}
   OmegaW: {value: 7/5, dimensions: [0, -1, 0], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage007}
   ellg: {value: 3/4, dimensions: [1, 0, 0], status: WHITELIST_SOURCED, constraint: positive, source: ledger_stage007}
   Mh: {value: Mh, dimensions: [0, -2, 1], status: OPEN_INPUT, constraint: positive, source: pathA_38_dynamic_normalization_open}
@@ -52,7 +50,7 @@ field_records:
     root_type: PRIMITIVE_OPEN
     domain: field_trace_bundle_on_Sigma
     dimensions: [0, 0, 0]
-    arguments: [density_trace, polar_trace, h_trace, phase_flux_trace, wall_side]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
     symmetry_class: BODY_CONJUGATE_BUNDLE
     source: spec_7_0_geon_profile_open
   - id: throat_surface_functional
@@ -86,7 +84,7 @@ field_records:
     dimensions: [-3, -2, 1]
     arguments: [momentum_density_field, native_stress_tensor, action_force_density]
     symmetry_class: R_W_COVARIANT
-    source: GNLS_wall_polar_shear_h_action
+    source: GNLS_wall_shear_h_action
   - id: E4_shear_lock
     status: OPEN_INPUT
     root_type: CONSTRAINT
@@ -112,8 +110,45 @@ field_records:
     symmetry_class: AMBIENT_BRANCH_COVARIANT
     source: pathA_29_open_return
 
-# These are the terms assembled by both engines.  Completeness is checked by
-# loading and parsing the cited stage-note/freeze sources, not against a list in code.
+# Decision 16 is OPERATIVE for this pipeline even though the formal ledger-v2
+# amendment is banked while that ledger is paused.  Both engines load and parse
+# this citation, enforce the exact P-retired cover, and reject any P-sector
+# expression before assembling the action.
+operative_action_decision:
+  id: decision_16_retire_brane_polar_field
+  status: OPERATIVE
+  source_file: software/stage1_solver/decisions/16_retire_brane_polar_field.md
+  required_source_fragments:
+    - "Status: OPERATIVE for all EM-analog/U1+ work"
+    - "removed from the frozen brane action as an independent dynamical field"
+    - "together with its couplings (`λ_Pu` twist–shear, `αAniso` easy-plane wall term) and T0 polar coefficients"
+  expected_action_term_ids:
+    - bulk_berry
+    - bulk_flow_kinetic
+    - quantum_pressure
+    - bulk_EOS
+    - wall_double_well
+    - wall_gradient
+    - wall_shear_gate
+    - throat_source
+    - wall_mix
+    - brane_shear_kinetic
+    - brane_shear_gradient
+    - uw_kinetic
+    - uw_gap
+    - h_kinetic
+    - h_gradient
+  retired_action_term_ids:
+    - wall_anisotropy
+    - polar_kinetic
+    - polar_gradient
+    - polar_quartic
+    - Pu_coupling
+  retired_expression_symbols: [alphaAniso, Pnormal2, DtP2, P_grad2, P2, lambdaPu, Pt]
+  retired_parameter_rows: [lambdaPu, alphaAniso, T0_polar_kinetic, T0_polar_gradient, T0_polar_quartic]
+
+# These are the terms assembled by both engines. Completeness is checked by
+# loading/parsing every cited source plus the operative Decision-16 policy.
 action_terms:
   # Executable scalar-invariant action records.  Both engines parse these,
   # substitute the ambient/background fields, and differentiate the assembled
@@ -125,15 +160,10 @@ action_terms:
   - {id: wall_double_well, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "f_B(chi_B) = a_B chi_B^2 (1-chi_B)^2", expression: "aB*chiB^2*(1-chiB)^2"}
   - {id: wall_gradient, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "(kappa_B/2)|grad_4 chi_B|^2", expression: "kappaB*chi_grad2/2"}
   - {id: wall_shear_gate, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "chi_B f_shear", expression: "chiB*muR4*ud_curl2/2"}
-  - {id: wall_anisotropy, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "alpha_aniso chi_B (P·w_hat)^2", expression: "alphaAniso*chiB*Pnormal2"}
   - {id: throat_source, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "f_throat", expression: "f_throat", support: core_surface}
   - {id: wall_mix, root_type: ACTION, source_file: research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md, source_contains: "f_mix", expression: "f_mix", support: core_surface}
-  - {id: polar_kinetic, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md, source_contains: "(1/2) m rho a^2 (D_t^v P^i)(D_t^v P^i)", expression: "m_GNLS*n*a^2*DtP2/2"}
-  - {id: polar_gradient, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md, source_contains: "(1/2) m rho c_s^2(rho) a^2 (partial_j P^i)(partial_j P^i)", expression: "m_GNLS*n*cs2*a^2*P_grad2/2"}
-  - {id: polar_quartic, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_24_T0_freeze.md, source_contains: "(1/4) m rho c_s^2(rho) (P^i P^i - 1)^2", expression: "m_GNLS*n*cs2*(P2-1)^2/4"}
   - {id: brane_shear_kinetic, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "(1/2) rho_br (partial_t u^a)(partial_t u^a)", expression: "g_ell*rhoBr*u_t2/2"}
   - {id: brane_shear_gradient, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "(1/2) mu_R Omega_u^a Omega_u^a", expression: "g_ell*muR*u_curl2/2"}
-  - {id: Pu_coupling, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "L_Pu := - lambda_Pu varpi_a Omega_u^a", expression: "g_ell*lambdaPu*Pt*u_curl"}
   - {id: uw_kinetic, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "(1/2) rho_br (partial_t u_w)^2", expression: "g_ell*rhoBr*uw_t2/2"}
   - {id: uw_gap, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "(1/2) rho_br Omega_w^2 u_w^2", expression: "g_ell*rhoBr*OmegaW^2*uw^2/2"}
   - {id: h_kinetic, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md, source_contains: "dynamic", expression: "Mh*h_t2/(2*cE^2)", status: OPEN_INPUT}
@@ -142,12 +172,9 @@ action_terms:
 core_traces:
   density_delta: {value: 1/5, field: number_density, surface: Sigma}
   wall_delta: {value: 1/3, field: chiB, surface: Sigma}
-  polar_tangent: {value: 1/4, field: P_tangent, surface: Sigma}
-  polar_radial: {value: 1/10, field: P_radial, surface: Sigma}
   shear_transverse: {value: 1/6, field: u_transverse, surface: collar}
   h_scalar: {value: 1/7, field: h, surface: Sigma}
   tilt_phase: {value: 1/9, field: phase_tilt_mode, surface: Sigma}
-  tilt_polar: {value: 1/8, field: polar_tilt_mode, surface: Sigma}
   tilt_shear: {value: 1/11, field: shear_tilt_mode, surface: collar}
   tilt_h: {value: 1/12, field: h_tilt_mode, surface: Sigma}
 

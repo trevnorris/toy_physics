@@ -3,11 +3,10 @@ schema_version: U1_PHASE_A_FIXTURES_V2
 # Outcome controls alter field/action data and traverse the production classifier.
 outcome_cases:
   gapped_and_localized:
-    - {op: set, path: coefficients.lambdaPu.value, value: 0}
+    - {op: set, path: coefficients.K_EOS.value, value: 1}
   fat_tail:
     - {op: set, path: ambient.coordinates, value: [x, y]}
     - {op: set, path: ambient.brane_coordinates, value: [x, y]}
-    - {op: set, path: coefficients.lambdaPu.value, value: 0}
   unstable_eos:
     - {op: set, path: coefficients.K_EOS.value, value: -1}
     - {op: set, path: coefficients.K_EOS.constraint, value: real}
@@ -22,8 +21,8 @@ mutations:
       value: {id: forbidden_collective_leaf, status: OPEN_INPUT, root_type: PRIMITIVE_OPEN, domain: collective_coordinate_functional, dimensions: [0, 0, 0], arguments: [X, p], symmetry_class: UNDECLARED, source: adversarial_fixture}
   SOURCE_COMPLETENESS:
     - {op: delete_by_id, path: action_terms, id: quantum_pressure}
-    - {op: delete_by_id, path: action_terms, id: Pu_coupling}
     - {op: delete_by_id, path: action_terms, id: brane_shear_gradient}
+    - {op: append, path: action_terms, value: {id: Pu_coupling, root_type: ACTION, source_file: software/stage1_solver/reports/pathA_35_G0_freeze.md, source_contains: "L_Pu := - lambda_Pu varpi_a Omega_u^a", expression: "g_ell*lambdaPu*Pt*u_curl"}}
   DIMENSIONAL:
     - {op: set, path: coefficients.kappaB.dimensions, value: [1, -2, 1]}
   COMOVING_CONTINUITY:

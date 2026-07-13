@@ -1,0 +1,36 @@
+# Gravity+light as the earned floor — can EM *also* come, via a bulk-phase ice-rule lattice? (a `does-there-exist` consistency / no-go probe)
+
+**Status: CONSISTENCY PROBE — 2026-07-12.** The model's question is existential/calibration: **does there EXIST a single self-consistent superfluid analog that supports gravity + light AND electromagnetism at once?** We now hold a strong, earned *starting point* (gravity+light) and work **backwards**: fix gravity+light, ask what the medium must *additionally* be for EM to come too, and whether that additional demand is **compatible** with what we already have or forces a **NO-GO** between two requirements. A computed no-go between requirements is a **first-class, welcome** outcome (falsification is the goal). Postulate structure freely; the test is internal consistency. Companions: `em_medium_first_generative_plan.md` (the native-`P` gate that closed the continuum route), `em_charge_attribute_requirements.md`, `conceptual_foundation.md`, `em_gravity_native_ontology.md`. Tags: **[EARNED] / [COMPUTED] / [POSTULATE] / [OPEN] / [TENSION] / [GRAVEYARD]**.
+
+---
+
+## 1. The earned floor (be honest about the achievement — it stands on its own)
+One brane **continuum** compressible superfluid already delivers a self-consistent, calibrated **gravity + light** analog:
+- **Gravity** = the throat drain (one-way inflow `v_r`); `1/r²` via a normalizable finite-slab zero mode. **[EARNED]** — PN ladder 1PN→4PN + 2.5PN GR-matched (calibrated); `pathA_29` localization. Characterized departure: an unavoidable breathing-drain monopole `c_s`-wave.
+- **Light** = brane in-plane **rotational-elastic (MacCullagh)** shear — exactly **2 transverse photons** at `c_γ`, curl-only (no spurious 3rd longitudinal). **[EARNED-mode]** — `pathA_36`. Confined to the brane because the **bulk is shear-free** (no transverse mode to accept the wave → evanescent → total reflection). The from-scratch "structured wall that produces this stiffness" is the open route-c; the *property* is demonstrated.
+
+This is substantial in its own right, **independent of whether EM ever comes.** It is the floor we refuse to break.
+
+## 2. Why the single-substance EM route must go through the BULK phase (what's already settled)
+The native-`P` constraint-class gate (dual-engine, unanimously verified) **computed** that the brane **continuum orientational order is second-class** — it cannot host an exact-Maxwell first-class compact `U(1)`. So exact EM **cannot** come from the same continuum DOF that gives light. The one remaining *single-substance* route:
+
+> **[POSTULATE] The medium PHASE-CHANGES on entering the bulk (through the throat) into a *frustrated ice-rule lattice* phase that hosts a deconfined compact `U(1)`; the throat = the ice-rule *defect* = the charge (`±w` = puncture direction); magnetism = its current part.** One substance, two phases, EM living at the phase boundary. A phase transition is exactly how one substance crosses property classes (water↔ice), so "continuum here / lattice there" is *not* a valid objection — but the *specific* pairing (superfluid ↔ ice-rule lattice as two phases of one medium) is the **unearned "triple"** (each pair — supersolid; spin-ice — is real; the triple is not established).
+
+## 3. Requirements the ONE bulk phase must satisfy SIMULTANEOUSLY (the able-to-fail set)
+For `does-there-exist` = YES, a *single* bulk phase must do ALL of:
+- **R1 — Frustrated ice-rule lattice → deconfined compact `U(1)` (3+1D Coulomb phase).** Not a plain crystal (no gauge structure), not featureless disorder (`[GRAVEYARD]`: disorder ≠ a constrained phase).
+- **R2 — Charge = the ice-rule defect (the throat):** integer/quantized, `±w` sign, dual sign, brane-localized `1/r²` Coulomb; magnetism = the moving-defect current part (emergent `j·A`, not `j=qv`).
+- **R3 — Gauge-neutral to the density/gravity sector** (the mass-superfluid cannot Higgs the emergent photon).
+- **R4 — Gravity's drain still flows through it.** The bulk must remain the sink the brane drains into (flow-through-a-lattice), consistent with the PN ladder — a *rigid* lattice that blocks the drain breaks gravity.
+- **R5 — Light stays confined (does NOT leak into the bulk).** A lattice generically carries **transverse (shear) acoustic phonons**; brane light *is* shear; if they couple, total-reflection confinement fails and light radiates into the bulk. The shear-free bulk gave confinement **for free**; a lattice bulk must **earn** it.
+- **R6 — Mode-count consistency:** the emergent EM photon (2 transverse) vs brane light (2 transverse) — must be *distinct and non-double-counted* where the phases meet.
+- **R7 — A consistent, stable phase interface:** the brane-continuum ↔ bulk-ice-lattice transition (throat de-structuring out, `S_leakage` return re-ordering) must be a real stable interface, not a contradiction.
+
+## 4. The sharp tensions — where a NO-GO most likely hides (attack these)
+- **⭐ T-LIGHT-LEAK (R5 vs R1) — the crux.** The ice-rule lattice's own **elastic shear phonons** threaten to accept brane light. Candidate outs, each of which must be *earned*: (i) a **kinematic waveguide/total-internal-reflection** condition — if the bulk transverse sound speed `c_bulk^shear > c_γ`, brane light sits *below the bulk shear cone* → evanescent in the bulk → confined (checkable: `c_bulk^shear/c_γ > 1` with no resonant channel); (ii) a **gap** in the bulk transverse-elastic sector at `c_γ` (but crystal acoustic phonons are gapless Goldstones — hard); (iii) a **symmetry/representation mismatch** forbidding brane-MacCullagh ↔ bulk-elastic coupling. **Is there a structure that is elastically shear-blocking to light YET ice-rule-constrained for EM YET flowing for gravity — or is that a three-way no-go** (echoing the brane's own #1 three-way no-win: {light-OP} × {stable wall} × {emergent-`w`} = at most 2 of 3)?
+- **T-FLOW-vs-LATTICE (R4 vs R1).** A rigid lattice resists the drain; a draining flow melts the lattice. Supersolids flow *and* crystallize — but a *frustrated ice-rule* supersolid that *also* sustains the gravitational drain is unearned.
+- **T-MODE-COUNT (R6).** Two sets of 2 transverse modes (brane light + emergent photon) in adjacent/overlapping regions — genuine overcount, or cleanly separated by the phase boundary?
+- **T-CONFINEMENT-PHASE (R1 vs R3).** The compact `U(1)` must be *deconfined* (Coulomb) AND its charged defects (throats) must not condense/Higgs it — while those same throats are the gravity drains. Coexistence of "throat as gravity sink" and "throat as un-condensed gauge charge" must hold.
+
+## 5. The ask (panel)
+**Does any pair of {R1…R7} constitute a NO-GO — mutually incompatible in *any* postulated structure?** Attack **T-light-leak** hardest (is `c_bulk^shear > c_γ` or a representation mismatch a real, simultaneously-satisfiable out, or does the ice-rule/flow requirement force a gapless shear channel that leaks light?). If it survives, name the **survival condition X** (the concrete property set threading all seven) and the **cheapest decisive test** (the analog of the native-`P` gate for this bulk-phase question). If it dies, say **which two requirements** are the no-go and why. Kill it *before* we invest in building the bulk-phase gate.

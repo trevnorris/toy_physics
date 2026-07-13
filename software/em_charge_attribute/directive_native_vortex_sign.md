@@ -1,0 +1,33 @@
+# Directive (v2) — Native two-throat magnetism SIGN: is it Ampère "like currents attract," a native departure (repel / co-rotate), or UNDETERMINED by the (underived) throat–shear coupling?
+
+**The concrete question that started the EM reconsideration.** The `force_visualizer` sim shows two parallel currents (like-circulation swirls) **attracting** — the correct *EM* sign. But `pathA_39` obtained it by **importing** an EM current source (`j=sV`) + Maxwell exchange (ghost control: `μ_R→−μ_R` flips it → a *stability choice*, not a prediction). **v2 folds the Codex design-review** (`DIRECTIVE_NEEDS_FIXES`, 8 fixes). Its central correction: **the sign is set by the throat–shear coupling ("roll vs slip"), which `em_gravity_native_ontology.md §9` leaves OPEN** — so the gate must compute the sign *as a function of that coupling*, not assume generic point-vortex dynamics (that would be a fresh import). Requirement + acceptance; Codex designs the route. Effort **xhigh**.
+
+## Goal (one line)
+From the medium's native moving-throat dynamics — the throat's *derived* induced flow, the Magnus/Berry transverse force, and core inertia — compute, **as a function of the (open) native throat–shear coupling `ζ` (roll↔slip)**, the two distinct `O(V²)` observables for two like-`±w`, like-velocity throats (parallel-current geometry): **(i) the radial force** (the Ampère axis: attract vs repel) and **(ii) the free relative trajectory** (the vortex axis: co-rotate / co-translate / spiral). Decide whether the model **determines** a sign, or whether it is **contingent on `ζ`** (→ `NATIVE_COUPLING_UNDERIVED`, with the map). **Importing `j=sV` or asserting a Maxwell exchange sign is banned; the source must be a derived functional of the native coefficients.**
+
+## Frozen native setup (Codex fixes #1,#2)
+- Two throats at `r₁,r₂`, velocities `V₁,V₂` (`V₁∥V₂`, like `±w`). Build the interaction from: the **derived induced flow** of a moving throat, the **Magnus/Berry** transverse force, **core inertia** `M_core` (finite), and the **native throat–shear coupling `ζ` as a FREE parameter** spanning roll (no-slip) ↔ slip, because the ontology leaves it open. If `ζ` cannot be given a native functional form at all → `INCONCLUSIVE: NATIVE_COUPLING_UNDERIVED`.
+- The magnetic object is **`O(V²)` (bilinear in `V₁V₂`)** — it vanishes at `V=0`. Report **two separate observables** (never conflate): the radial generalized force at fixed parallel geometry (Ampère), and the free relative trajectory `Ṙ, R̈`, angular rate (vortex). They can coexist.
+- Keep distinct from **gravitomagnetism** (the even, weak mass-flow swirl) — that is NOT this object.
+
+## What you must COMPUTE (requirement, not route)
+1. The two-throat collective-coordinate action / EOM from derived-flow + Magnus/Berry + inertia, carrying `ζ, M_core` symbolically.
+2. Observable (i) the radial force and (ii) the relative trajectory, **each as a function of `ζ` (and `M_core`)**.
+3. The map `ζ → {ATTRACT/REPEL} × {CO_ROTATE/CO_TRANSLATE/SPIRAL}`; whether any physical requirement (stability, no-slip boundary, finite energy) **pins `ζ`** to a sign, or leaves it open.
+
+## Able-to-fail acceptance (MANDATORY — anti-fake, per the `pathA_39` + native-`P` RIG lessons)
+- **Anti-import as PROVENANCE (fix #7):** the magnetic-force expression must have a **closed dependency graph rooted only in the native action/flow coefficients** (`ρ`, `κ`, `ζ`, `M_core`, …). Two computed guards: **native-coupling ablation (`ζ→0`) must give a ZERO magnetic term** (proving the term comes from the coupling); and an **adversarially injected Maxwell/current-source node must be REJECTED** by the provenance check. No source-grep.
+- **Two-formulation agreement (fix #8):** the result from **action variation** must agree with the **flow/Magnus force** formulation (an independent cross-check beyond SymPy↔Mathematica).
+- **Controls, corrected (fixes #3,#4,#5,#6) — run through the same pipeline:**
+  - **Massless-core limit `M_core→0`:** vortex–antivortex → **co-translating dipole**; two like vortices → **co-rotation** (ideal 2D point-vortex answers, recovered only in this limit). Finite-`M_core` behavior tested **separately**.
+  - **Magnus reference:** a **pinned vortex** (or imposed relative velocity) in a uniform flow → the known **transverse Magnus force sign** (a free massless vortex merely advects — do NOT use that as the fixture).
+  - **Null-coupling** (`ζ=0`) → no magnetic term. **Opposite-current** geometry → the sign-flipped result.
+  - **Do NOT fixture the static like-charge sign** — the electric sign is itself open (no-lock scalar limit *attracts*); report the static sign as a **simultaneous computed output**, not an acceptance gate.
+  - **Ghost/mutation controls with PRESCRIBED expected observables:** reversing **both** circulations leaves `κ₁κ₂` (hence the radial force) **invariant** while flipping co-rotation handedness; reversing **one** turns co-rotation into dipole translation; an independent `ζ`- or Magnus-sign flip is a labeled *mutation* test only if that coefficient is independently variable.
+- **Per-tooth ablation**; **dual engine** (SymPy + independent Mathematica), `ENGINE_AGREE`.
+
+## Honest scope
+Collective-coordinate / effective two-body dynamics (NOT a full nonlinear throat sim), and **explicitly conditional on the native throat–shear coupling `ζ`, which the ontology leaves OPEN.** The most likely honest outcome is a **parametric map + `NATIVE_COUPLING_UNDERIVED`** — which itself resolves the sim anomaly (it shows the model does not currently *determine* the magnetism sign; `pathA_39` imported it). A departure from Ampère (repel/co-rotate) on the physically-selected `ζ` is a first-class **FALSIFIER** — welcome, not softened.
+
+## Output → VERDICT
+`software/em_charge_attribute/reports/native_vortex_sign.md`: the frozen setup; the action/EOM; observables (i) & (ii) as functions of `ζ, M_core`; the `ζ→sign` map + whether any physical requirement pins `ζ`; the provenance graph + `ζ→0` ablation + injected-node rejection; the two-formulation agreement; all controls; dual-engine logs; honest scope. **VERDICT (define ATTRACT/REPEL via the radial observable, CO_ROTATE/CO_TRANSLATE/SPIRAL via the angular observable):** `NATIVE_LIKE_CURRENTS_ATTRACT` / `NATIVE_LIKE_SWIRLS_REPEL` / `NATIVE_CO_ROTATE_NO_AMPERE` / `NATIVE_MIXED_SPIRAL` / `SIGN_CONTINGENT_ON_ζ` / `INCONCLUSIVE: NATIVE_COUPLING_UNDERIVED` — with reason codes for `ZERO / OSCILLATORY / UNSTABLE / PARAMETER_DEPENDENT`.

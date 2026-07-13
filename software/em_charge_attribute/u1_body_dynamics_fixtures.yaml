@@ -1,0 +1,66 @@
+schema_version: U1_PHASE_A_FIXTURES_V2
+
+# Outcome controls alter field/action data and traverse the production classifier.
+outcome_cases:
+  gapped_and_localized:
+    - {op: set, path: coefficients.lambdaPu.value, value: 0}
+  fat_tail:
+    - {op: set, path: ambient.coordinates, value: [x, y]}
+    - {op: set, path: ambient.brane_coordinates, value: [x, y]}
+    - {op: set, path: coefficients.lambdaPu.value, value: 0}
+  unstable_eos:
+    - {op: set, path: coefficients.K_EOS.value, value: -1}
+    - {op: set, path: coefficients.K_EOS.constraint, value: real}
+  open_h_sign:
+    - {op: set, path: coefficients.Mh.constraint, value: real}
+
+# Guard ablations break the mathematical object guarded by the named check.
+mutations:
+  INPUT_LEDGER:
+    - op: append
+      path: field_records
+      value: {id: forbidden_collective_leaf, status: OPEN_INPUT, root_type: PRIMITIVE_OPEN, domain: collective_coordinate_functional, dimensions: [0, 0, 0], arguments: [X, p], symmetry_class: UNDECLARED, source: adversarial_fixture}
+  SOURCE_COMPLETENESS:
+    - {op: delete_by_id, path: action_terms, id: quantum_pressure}
+    - {op: delete_by_id, path: action_terms, id: Pu_coupling}
+    - {op: delete_by_id, path: action_terms, id: brane_shear_gradient}
+  DIMENSIONAL:
+    - {op: set, path: coefficients.kappaB.dimensions, value: [1, -2, 1]}
+  COMOVING_CONTINUITY:
+    - {op: set, path: kinematics.coordinate_map.displacement_coefficient, value: 1}
+  COMOVING_MOMENTUM:
+    - {op: set, path: kinematics.momentum_flux.convective_coefficient, value: 1}
+  BASE_BALANCE:
+    - {op: derived_attack, target: source_profile_after_balance, value: add_core_trace}
+  TAIL_ODE:
+    - {op: derived_attack, target: density_tail_solution, value: add_constant}
+  ZERO_MODE:
+    - {op: derived_attack, target: translation_mode, value: add_base_profile}
+  PROJECTOR:
+    - {op: derived_attack, target: gram_inverse, value: double}
+  ENDPOINT_RESPONSE:
+    - {op: set, path: endpoints.E1.trace_system.matrix, value: [[1, 1, 0], [1, 1, 0], [0, 1, 1]]}
+  MOMENT_INTEGRALS:
+    - {op: derived_attack, target: radial_measure, value: drop_jacobian_power}
+  RECONSTRUCTION:
+    - {op: derived_attack, target: claimed_L_eff, value: drop_quantum_pressure}
+  CANONICAL_VARIATION:
+    - {op: derived_attack, target: claimed_canonical_momentum, value: drop_cross_term}
+  CHANNEL_UNIQUENESS:
+    - {op: append, path: endpoints.E1.channels.var, value: outer_control_flux}
+  TYPED_DATAFLOW:
+    - {op: derived_attack, target: provenance_edge, value: native_continuity_to_L_eff}
+  PROVENANCE_FORBIDDEN:
+    - {op: derived_attack, target: provenance_expression, value: point_current}
+  ANCESTRY:
+    - {op: derived_attack, target: claimed_structure, value: open_only_inertia}
+  NATIVE_PADDING:
+    - {op: derived_attack, target: native_padding_structure, value: open_plus_native}
+  PARITY:
+    - {op: set, path: parity_cases.one_sided_pathA29.background_map, value: {w: "-w"}}
+  OUTCOME_REACHABILITY:
+    - {op: derived_attack, target: outcome_case, value: remove_fat_tail}
+  ENGINE_CANONICAL:
+    - {op: derived_attack, target: comparator_canonical_term, value: perturb_E1_GVV}
+  ENGINE_DEPENDENCIES:
+    - {op: derived_attack, target: comparator_dependency_term, value: inject_forbidden_symbol}

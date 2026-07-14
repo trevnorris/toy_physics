@@ -1,0 +1,136 @@
+schema_version: U1_PHASE_B1_MUTATION_CORE_BATCH_V3
+status: PASS
+batch_index: 3
+batch_count: 5
+baseline_digests:
+  SymPy: fc52e9a999c00c8e421a9e6392e44b99f3d4417dff90ee302cacdb15bf566f0a
+  Mathematica: 462ef2fe821aa9399374b7491c1f17cf559cc88bf0c019e8ee30a0413869b223
+cases:
+- id: F1_wrong_angular_gram
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: K7_planted_separation_detector
+  kind: engine_input_or_source
+  expected_assert: B1_R3
+  guarded_path:
+  - berry
+  - separation_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R4_constraint_operator_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R4
+  guarded_path:
+  - E4
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R6_witness_control_parity_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R6
+  guarded_path:
+  - reachability_analysis
+  - finite_bound_controls
+  - even_witness_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_typed_report_binding
+  kind: comparator_artifact
+  expected_assert: B1_C_REPORT_SCHEMA
+  guarded_path:
+  - report_claim_bindings
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_REPORT_SCHEMA
+  status: PASS
+- id: K4_stamped_pullback_residual
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - berry
+  - production_pullback_coverage
+  - 0
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+metamorphic_controls: []

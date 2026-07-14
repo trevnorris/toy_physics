@@ -1,0 +1,217 @@
+schema_version: U1_PHASE_B1_EXTERNAL_FIXTURES_V3
+
+# These operations are applied only to temporary input/source/artifact copies
+# by u1_body_mechanics_mutations.py.  Production engines and the comparator do
+# not receive a mutation name and have no attack-aware branches.
+engine_mutations:
+  - id: R1_drop_bulk_flow_source
+    expected_assert: B1_R1
+    target: phase_input
+    operation: {op: delete_by_id, path: [action_terms], id: bulk_flow_kinetic}
+    guarded_path: [source_contract]
+  - id: F1_wrong_radial_dimension
+    expected_assert: B1_R1
+    target: phase_artifact
+    operation: {op: set_by_id, path: [tail_channels], id: density_EOS, field: radial_dimension, value: 5}
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: F1_wrong_profile_exponent
+    expected_assert: B1_R1
+    target: phase_artifact
+    operation: {op: set_by_id, path: [tail_channels], id: brane_shear, field: indicial_roots, value: [-1, 3]}
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: F1_wrong_angular_gram
+    expected_assert: B1_R1
+    target: engine_source
+    source_replacements:
+      SymPy:
+        old: "return sp.simplify(sphere_area(dimension) * total)"
+        new: "return sp.simplify(2 * sphere_area(dimension) * total)"
+      Mathematica:
+        old: "FullSimplify[sphereArea[d]coefficient numerator/denominator]];"
+        new: "FullSimplify[2 sphereArea[d]coefficient numerator/denominator]];"
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: F1_wrong_normalization
+    expected_assert: B1_R1
+    target: engine_source
+    source_replacements:
+      SymPy:
+        old: "profile = (lower / r) ** exponent"
+        new: "profile = 2 * (lower / r) ** exponent"
+      Mathematica:
+        old: "profile=(lowerF/rF)^exponent;jacobian=Table[profile(ct KroneckerDelta[alpha,i]+(cn-ct)nvec[[alpha]]nvec[[i]]),{alpha,dField},{i,3}];weight=bulkWeightF;"
+        new: "profile=2(lowerF/rF)^exponent;jacobian=Table[profile(ct KroneckerDelta[alpha,i]+(cn-ct)nvec[[alpha]]nvec[[i]]),{alpha,dField},{i,3}];weight=bulkWeightF;"
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: F1_perturbed_core_trace
+    expected_assert: B1_R1
+    target: phase_input
+    operation: {op: set, path: [core_traces, shear_transverse, value], value: 1/5}
+    guarded_path: [source_contract, core_traces_sha256]
+  - id: F1_perturbed_bessel_gap_order
+    expected_assert: B1_R1
+    target: phase_artifact
+    operation: {op: set_by_id, path: [tail_channels], id: density_EOS, field: gap, value: "3*sqrt(5)"}
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: F1_perturbed_support_bound
+    expected_assert: B1_R1
+    target: engine_source
+    source_replacements:
+      SymPy:
+        old: "lower = numeric_values[\"a\"]"
+        new: "lower = 2 * numeric_values[\"a\"]"
+      Mathematica:
+        old: "lowerF = parse[phaseInput[\"geometry\"][\"a\"][\"value\"]];"
+        new: "lowerF = 2 parse[phaseInput[\"geometry\"][\"a\"][\"value\"]];"
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", M_XX_p0_known]
+  - id: K7_planted_separation_detector
+    expected_assert: B1_R3
+    target: mechanics_input
+    operation: {op: set, path: [berry_separation, planted_control_expression], value: rho_inf}
+    guarded_path: [berry, separation_control]
+  - id: K9_angular_production_phase_profile
+    expected_assert: B1_R3
+    target: phase_artifact
+    operation: {op: set, path: [phase_flux_normalization, selected_phase], value: "cos(phi)/(32*pi**2*r**2)"}
+    guarded_path: [berry, production_phase_parse_guard]
+  - id: R2_signed_bulk_berry
+    expected_assert: B1_R2
+    target: phase_input
+    operation: {op: set_by_id, path: [action_terms], id: bulk_berry, field: expression, value: "hbar*n*theta_t"}
+    guarded_path: [g4_control]
+    required_observation: sigma_changes
+  - id: R2_routeA_surface_omission
+    expected_assert: B1_R2
+    target: mechanics_input
+    operation: {op: delete_value, path: [berry_pullback_selection, include_surface_terms], value: partial_Omega_c}
+    guarded_path: [berry, route_A]
+    required_observation: route_equivalence_nonzero
+  - id: R3_routeB_quotient_omission
+    expected_assert: B1_R3
+    target: mechanics_input
+    operation: {op: set, path: [berry_pullback_selection, apply_zero_mode_quotient], value: false}
+    guarded_path: [berry, route_B]
+    required_observation: route_equivalence_nonzero
+  - id: R4_constraint_operator_mutation
+    expected_assert: B1_R4
+    target: mechanics_input
+    operation: {op: set, path: [e4_collar_scheme, constraint_functional, expression], value: "V_i+udot_collar_i"}
+    guarded_path: [E4]
+  - id: R4_moduli_lift_mutation
+    expected_assert: B1_R4
+    target: mechanics_input
+    operation: {op: set, path: [e4_collar_scheme, moduli_fixing, p_to_collar_cross_lift], value: 1}
+    guarded_path: [E4, J_physical_lift]
+  - id: R5_delete_rayleigh_density
+    expected_assert: B1_R5
+    target: mechanics_input
+    operation: {op: set, path: [endpoint_functionals, E5, rayleigh_integrand], value: "0"}
+    guarded_path: [E5]
+  - id: R6_empty_declared_selection_table
+    expected_assert: B1_R6
+    target: mechanics_input
+    operation: {op: set, path: [tensor_selection_rules], value: {}}
+    guarded_path: [reachability_analysis]
+  - id: R6_empty_control_parity_mutation
+    expected_assert: B1_R6
+    target: mechanics_input
+    operation: {op: set_by_id, path: [finite_bound_controls], id: parity_empty_control, field: body_conjugation_parity, value: even}
+    guarded_path: [reachability_analysis, finite_bound_controls, parity_empty_control]
+  - id: R6_witness_control_parity_mutation
+    expected_assert: B1_R6
+    target: mechanics_input
+    operation: {op: set_by_id, path: [finite_bound_controls], id: even_witness_control, field: body_conjugation_parity, value: odd}
+    guarded_path: [reachability_analysis, finite_bound_controls, even_witness_control]
+  - id: R7_drop_one_sided_embedding_factor
+    expected_assert: B1_R7
+    target: mechanics_input
+    operation: {op: set, path: [ambient_branches, one_sided_pathA29, embedding_factor], value: "1"}
+    guarded_path: [indexed_cells]
+  - id: R7_covariant_inventory_mutation
+    expected_assert: B1_R7
+    target: mechanics_input
+    operation: {op: delete_value, path: [covariant_inventory, symmetric_basis], value: p_i_p_j}
+    guarded_path: [derived_congruence]
+  - id: R8_wrong_tilt_coordinate_dimension
+    expected_assert: B1_R8
+    target: mechanics_input
+    operation: {op: set, path: [indexed_coordinates, coordinate_dimensions, p], value: [1, 0, 0]}
+    guarded_path: [dimensions]
+  - id: R9_collapse_engine_representations
+    expected_assert: B1_R9
+    target: mechanics_input
+    operation: {op: copy, from: [derivation_representations, Mathematica], path: [derivation_representations, SymPy]}
+    guarded_path: [checks, B1_R9]
+
+metamorphic_controls:
+  - id: O0_physical_winding_reversal
+    operations:
+      - {op: set, path: [g4_control, phase_parameters, k_control], value: -1}
+      - {op: set, path: [g4_control, k_expected], value: -1}
+    parity: {k: -1, Gamma: -1, epsilon: 1, Omega: -1, F: -1, sigma: 1}
+  - id: O1_joint_orientation_relabel
+    operations:
+      - {op: set, path: [g4_control, contour_orientation, sign], value: -1}
+      - {op: set, path: [g4_control, epsilon_xy], value: -1}
+      - {op: set, path: [g4_control, k_expected], value: -1}
+    parity: {k: -1, Gamma: -1, epsilon: -1, Omega: 1, F: 1, sigma: 1}
+
+comparator_mutations:
+  - id: C_engine_math_MXX
+    expected_assert: B1_C_ENGINE_MATH
+    target: math_artifact
+    operation: {op: add, path: [indexed_cells, "E1|one_sided_pathA29", M_XX_p0_known, 0, 0, 0, coefficient], value: 0.125}
+    guarded_path: [indexed_cells, "E1|one_sided_pathA29", M_XX_p0_known]
+  - id: C_record_headline
+    expected_assert: B1_C_RECORD_MAP
+    target: sympy_artifact
+    operation: {op: set, path: [cells, "E1|one_sided_pathA29|all_admissible_open_functionals", headline, status], value: OK}
+    guarded_path: [cells, "E1|one_sided_pathA29|all_admissible_open_functionals", headline]
+  - id: C_phase_A_payload
+    expected_assert: B1_C_PHASE_A
+    target: phase_artifact
+    operation: {op: set, path: [axis2], value: MUTATED_PHASE_A_AXIS}
+    guarded_path: [axis2]
+  - id: C_typed_report_binding
+    expected_assert: B1_C_REPORT_SCHEMA
+    target: sympy_artifact
+    operation: {op: set, path: [report_claim_bindings, 0, schema_path], value: source_contract.not_a_real_digest}
+    guarded_path: [report_claim_bindings]
+  - id: C_structural_zero_reachability_tamper
+    expected_assert: B1_C_RECORD_MAP
+    target: sympy_artifact
+    operation: {op: set, path: [reachability_analysis, finite_bound_controls, parity_empty_control, classification], value: NONZERO_WITNESS}
+    guarded_path: [reachability_analysis, finite_bound_controls, parity_empty_control]
+  - id: C_input_liveness_role_tamper
+    expected_assert: B1_C_INPUT_LIVENESS
+    target: sympy_artifact
+    operation: {op: set, path: [input_liveness, rows, 0, typed_role], value: ""}
+    guarded_path: [input_liveness, rows, 0]
+  - id: K1_reintroduce_self_evaluated_zero
+    expected_assert: B1_C_ENGINE_MATH
+    target: sympy_artifact
+    operation: {op: set, path: [indexed_cells, "E1|symmetric_postulate", native_tilt_slice_constraints, M_Xp_native, evaluated_residual], value: []}
+    guarded_path: [indexed_cells, "E1|symmetric_postulate", native_tilt_slice_constraints, M_Xp_native]
+  - id: K2_missing_leaf_consistency_tamper
+    expected_assert: B1_C_ENGINE_MATH
+    target: sympy_artifact
+    operation: {op: delete_value, path: [indexed_profile_missing_leaves], value: indexed_density_tilt_profile}
+    guarded_path: [indexed_profile_missing_leaves]
+  - id: K4_stamped_pullback_residual
+    expected_assert: B1_C_ENGINE_MATH
+    target: sympy_artifact
+    operation: {op: set, path: [berry, production_pullback_coverage, 0, pullback_residual], value: [[[], [{coefficient: 1, powers: {}}]], [[{coefficient: -1, powers: {}}], []]]}
+    guarded_path: [berry, production_pullback_coverage, 0]
+  - id: K5_sheet_area_residual_tamper
+    expected_assert: B1_C_ENGINE_MATH
+    target: sympy_artifact
+    operation: {op: set, path: [g4_control, total_to_per_area_residual], value: [[[], [{coefficient: 1, powers: {}}]], [[{coefficient: -1, powers: {}}], []]]}
+    guarded_path: [g4_control, total_to_per_area_residual]
+  - id: K7_overlap_detector_tamper
+    expected_assert: B1_C_ENGINE_MATH
+    target: sympy_artifact
+    operation: {op: set, path: [berry, separation_control, detector_fires], value: false}
+    guarded_path: [berry, separation_control]
+  - id: K8_provenance_edge_tamper
+    expected_assert: B1_C_RECORD_MAP
+    target: sympy_artifact
+    operation: {op: delete_value, path: [provenance_graph, edges], value: [bulk_flow_kinetic, "field_tangent:bulk_velocity_response"]}
+    guarded_path: [provenance_graph, edges]

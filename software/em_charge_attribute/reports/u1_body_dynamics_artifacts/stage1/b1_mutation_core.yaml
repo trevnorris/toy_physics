@@ -1,0 +1,827 @@
+schema_version: U1_PHASE_B1_MUTATION_CORE_V3
+status: PASS
+production_executables_mutation_unaware: true
+sentinel_rejected: true
+covered_assertions:
+- B1_C_ENGINE_MATH
+- B1_C_INPUT_LIVENESS
+- B1_C_PHASE_A
+- B1_C_RECORD_MAP
+- B1_C_REPORT_SCHEMA
+- B1_R1
+- B1_R2
+- B1_R3
+- B1_R4
+- B1_R5
+- B1_R6
+- B1_R7
+- B1_R8
+- B1_R9
+baseline_digests:
+  SymPy: fc52e9a999c00c8e421a9e6392e44b99f3d4417dff90ee302cacdb15bf566f0a
+  Mathematica: 462ef2fe821aa9399374b7491c1f17cf559cc88bf0c019e8ee30a0413869b223
+cases:
+- id: R1_drop_bulk_flow_source
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - source_contract
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: F1_perturbed_core_trace
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - source_contract
+  - core_traces_sha256
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R2_signed_bulk_berry
+  kind: engine_input_or_source
+  expected_assert: B1_R2
+  guarded_path:
+  - g4_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: sigma_changes
+      baseline_sigma: '-1'
+      mutated_sigma: '1'
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: sigma_changes
+      baseline_sigma: '-1'
+      mutated_sigma: '1'
+    status: PASS
+  status: PASS
+- id: R5_delete_rayleigh_density
+  kind: engine_input_or_source
+  expected_assert: B1_R5
+  guarded_path:
+  - E5
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R5
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R5
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R7_covariant_inventory_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R7
+  guarded_path:
+  - derived_congruence
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_engine_math_MXX
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - indexed_cells
+  - E1|one_sided_pathA29
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: C_input_liveness_role_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_INPUT_LIVENESS
+  guarded_path:
+  - input_liveness
+  - rows
+  - 0
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_INPUT_LIVENESS
+  status: PASS
+- id: K7_overlap_detector_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - berry
+  - separation_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: F1_wrong_radial_dimension
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: F1_perturbed_bessel_gap_order
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R2_routeA_surface_omission
+  kind: engine_input_or_source
+  expected_assert: B1_R2
+  guarded_path:
+  - berry
+  - route_A
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: cd3e5c04cb3a856c219ee43c2f573b4f0e38b627c7bf922ea33a47f9fe071e42
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: cd3e5c04cb3a856c219ee43c2f573b4f0e38b627c7bf922ea33a47f9fe071e42
+    status: PASS
+  status: PASS
+- id: R6_empty_declared_selection_table
+  kind: engine_input_or_source
+  expected_assert: B1_R6
+  guarded_path:
+  - reachability_analysis
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R8_wrong_tilt_coordinate_dimension
+  kind: engine_input_or_source
+  expected_assert: B1_R8
+  guarded_path:
+  - dimensions
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R8
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R8
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_record_headline
+  kind: comparator_artifact
+  expected_assert: B1_C_RECORD_MAP
+  guarded_path:
+  - cells
+  - E1|one_sided_pathA29|all_admissible_open_functionals
+  - headline
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_RECORD_MAP
+  status: PASS
+- id: K1_reintroduce_self_evaluated_zero
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - native_tilt_slice_constraints
+  - M_Xp_native
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: K8_provenance_edge_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_RECORD_MAP
+  guarded_path:
+  - provenance_graph
+  - edges
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_RECORD_MAP
+  status: PASS
+- id: F1_wrong_profile_exponent
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: F1_perturbed_support_bound
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R3_routeB_quotient_omission
+  kind: engine_input_or_source
+  expected_assert: B1_R3
+  guarded_path:
+  - berry
+  - route_B
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: 3f859315d9362910bf3d2c3ca96e2871ee45c6db1b5e3b19aa4e65d99c6f2f3e
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: 3f859315d9362910bf3d2c3ca96e2871ee45c6db1b5e3b19aa4e65d99c6f2f3e
+    status: PASS
+  status: PASS
+- id: R6_empty_control_parity_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R6
+  guarded_path:
+  - reachability_analysis
+  - finite_bound_controls
+  - parity_empty_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R9_collapse_engine_representations
+  kind: engine_input_or_source
+  expected_assert: B1_R9
+  guarded_path:
+  - checks
+  - B1_R9
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R9
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R9
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_phase_A_payload
+  kind: comparator_artifact
+  expected_assert: B1_C_PHASE_A
+  guarded_path:
+  - axis2
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_PHASE_A
+  status: PASS
+- id: K2_missing_leaf_consistency_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - indexed_profile_missing_leaves
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: F1_wrong_angular_gram
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: K7_planted_separation_detector
+  kind: engine_input_or_source
+  expected_assert: B1_R3
+  guarded_path:
+  - berry
+  - separation_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R4_constraint_operator_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R4
+  guarded_path:
+  - E4
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R6_witness_control_parity_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R6
+  guarded_path:
+  - reachability_analysis
+  - finite_bound_controls
+  - even_witness_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_typed_report_binding
+  kind: comparator_artifact
+  expected_assert: B1_C_REPORT_SCHEMA
+  guarded_path:
+  - report_claim_bindings
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_REPORT_SCHEMA
+  status: PASS
+- id: K4_stamped_pullback_residual
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - berry
+  - production_pullback_coverage
+  - 0
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: F1_wrong_normalization
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: K9_angular_production_phase_profile
+  kind: engine_input_or_source
+  expected_assert: B1_R3
+  guarded_path:
+  - berry
+  - production_phase_parse_guard
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R4_moduli_lift_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R4
+  guarded_path:
+  - E4
+  - J_physical_lift
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R4
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R7_drop_one_sided_embedding_factor
+  kind: engine_input_or_source
+  expected_assert: B1_R7
+  guarded_path:
+  - indexed_cells
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_structural_zero_reachability_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_RECORD_MAP
+  guarded_path:
+  - reachability_analysis
+  - finite_bound_controls
+  - parity_empty_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_RECORD_MAP
+  status: PASS
+- id: K5_sheet_area_residual_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - g4_control
+  - total_to_per_area_residual
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+metamorphic_controls:
+- id: O0_physical_winding_reversal
+  expected_parity:
+    k: -1
+    Gamma: -1
+    epsilon: 1
+    Omega: -1
+    F: -1
+    sigma: 1
+  engine_results:
+  - engine: SymPy
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  - engine: Mathematica
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  status: PASS
+- id: O1_joint_orientation_relabel
+  expected_parity:
+    k: -1
+    Gamma: -1
+    epsilon: -1
+    Omega: 1
+    F: 1
+    sigma: 1
+  engine_results:
+  - engine: SymPy
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  - engine: Mathematica
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  status: PASS
+source_batches: 5

@@ -1,0 +1,480 @@
+schema_version: U1_PHASE_B1_STAGE1_COMPLETE_V3
+status: STAGE1_COMPLETE_AWAITING_ORCHESTRATOR_APPROVAL
+staged_exit_code: 42
+final_b1_outputs_emitted: false
+engine_agreement_checks:
+- per-field d_f angular Gram contractions, isotropy, scalar regression, and native GVP/GPP residuals
+- endpoint variation solves plus E4 action-first Hessian/J lift and E5 root-deletion solve
+- 42 traversal-derived OPEN-root dispositions and two exercised finite controls
+- route-separated Berry DAGs with 10 production pullback cells and a real quotient
+- G4 sheet-area reduction, k=1 signed control, sigma=-1, and production k=0
+- units restored on real expressions and derived-coefficient symmetry-block congruence
+- component records, closure absence, provenance, and all-UNRESOLVED map reaggregated
+- typed input roles/sinks cover all 346 declared scalar leaves
+- independent SymPy/Wolfram Phase-A protection and nonshared representations
+artifact_sha256:
+  sympy_phase_b1: b7845a2606bbb5f838fe33561865122cfe966969185bd6bc37c5251b124074ba
+  mathematica_phase_b1: 16252e2fe708e018d790760e8db42291086b7035a851a8eda51122ac89bea220
+  sympy_phase_a: 10f404f0a01b61a1c717597d201088566189326e1f63c72c2633e6392adbc1b1
+digest_gate:
+  baseline: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69
+  sympy: b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+  wolfram: b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+  comparator: b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+  agreement: true
+semantic_diff_gate: &id001
+  rows:
+  - path: endpoint_coefficients.E1.GVV.3.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  - path: endpoint_coefficients.E2.GVV.3.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  - path: endpoint_coefficients.E3.GVV.1.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  - path: endpoint_coefficients.E4.GVV.1.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  - path: endpoint_coefficients.E4.GVV.2.coefficient
+    old: '15.079644737231'
+    new: '16.755160819146'
+  - path: endpoint_coefficients.E4.GVV.3.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  - path: endpoint_coefficients.E5.GVV.3.coefficient
+    old: '7.539822368616'
+    new: '8.377580409573'
+  allowed_prefixes:
+  - endpoint_coefficients.E1.GVV
+  - endpoint_coefficients.E2.GVV
+  - endpoint_coefficients.E3.GVV
+  - endpoint_coefficients.E4.GVV
+  - endpoint_coefficients.E5.GVV
+  restricted_to_correction_closure: true
+phase_a_acceptance_recheck:
+  SymPy: &id002
+    verdict: U1_BASE_OK
+    decision:
+      kinetic_signs:
+        density: 1
+        wall: 1
+        shear: 1
+        h: 1
+    tails_digest: 00d3a4ef3c17a1a876055dff1c2f609f3c9934e08f14551c14d905078ebde430
+    classifier_source_sha256: 44eede074d2b112fa0ddf9c4f5e47a7ae698130dca84c75fb480d31405b85073
+  Mathematica:
+    verdict: U1_BASE_OK
+    kinetic_constraints_positive: true
+    tails_digest: ed0fd7aa98958a260fe5a99a8be9d8ae8d956d2db6992887df524f2e2f4915ce
+    classifier: independent Wolfram condition partition
+correction_finding:
+  name: PHASE_A_MOMENT_CORRECTION(brane_shear)
+  authoritative_chain:
+  - shear_operator_harmonic_decomposition
+  - tail_channels.brane_shear.nu=2
+  - core_traces.shear_transverse
+  - endpoint_responses.*.shear_coefficient
+  construction: u_a=A*(a/r)^2*n_a; integral sum_a partial_i(u_a) partial_j(u_a)
+  old_unit_gradient: 12*pi/5
+  new_unit_gradient: 8*pi/3
+  old_unit_gradient_numeric: 7.5398223686155035
+  new_unit_gradient_numeric: 8.377580409572783
+  error_provenance: Phase-A unit_brane_grad set brane_nu=db=3 instead of the verified decaying root nu=2
+  corrected_moment_rows:
+  - path: evaluated_moments.E1.U_XX
+    endpoint: E1
+    old:
+      dependencies:
+      - shear_transverse
+      expression: 7.5398223686155*shear_transverse**2
+      production_value: 0.20943951023931953
+    new:
+      dependencies:
+      - shear_transverse
+      expression: 8*pi*shear_transverse**2/3
+      production_value: 0.23271056693257727
+    delta_at_production: 0.02327105669325774
+  - path: evaluated_moments.E2.U_XX
+    endpoint: E2
+    old:
+      dependencies:
+      - shear_transverse
+      expression: 7.5398223686155*shear_transverse**2
+      production_value: 0.20943951023931953
+    new:
+      dependencies:
+      - shear_transverse
+      expression: 8*pi*shear_transverse**2/3
+      production_value: 0.23271056693257727
+    delta_at_production: 0.02327105669325774
+  - path: evaluated_moments.E3.U_XX
+    endpoint: E3
+    old:
+      dependencies:
+      - shear_transverse
+      expression: 7.5398223686155*shear_transverse**2
+      production_value: 0.20943951023931953
+    new:
+      dependencies:
+      - shear_transverse
+      expression: 8*pi*shear_transverse**2/3
+      production_value: 0.23271056693257727
+    delta_at_production: 0.02327105669325774
+  - path: evaluated_moments.E4.U_XX
+    endpoint: E4
+    old:
+      dependencies:
+      - shear_transverse
+      expression: 7.5398223686155*shear_transverse**2 + 15.079644737231*shear_transverse + 7.5398223686155
+      production_value: 10.262536001726659
+    new:
+      dependencies:
+      - shear_transverse
+      expression: 8*pi*shear_transverse**2/3 + 16*pi*shear_transverse/3 + 8*pi/3
+      production_value: 11.402817779696287
+    delta_at_production: 1.1402817779696282
+  - path: evaluated_moments.E5.U_XX
+    endpoint: E5
+    old:
+      dependencies:
+      - shear_transverse
+      expression: 7.5398223686155*shear_transverse**2
+      production_value: 0.20943951023931953
+    new:
+      dependencies:
+      - shear_transverse
+      expression: 8*pi*shear_transverse**2/3
+      production_value: 0.23271056693257727
+    delta_at_production: 0.02327105669325774
+  corrected_downstream_coefficients:
+  - path: endpoint_effective_actions.E1.coefficients.GVV
+    endpoint: E1
+    old:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 2.2999402325142526
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 9.869604401089362
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 2.2999402325143*density_delta*m_GNLS + 9.8696044010894*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+    new:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 2.2999402325142526
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 9.869604401089362
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010893615*Mh*h_scalar**2/cE**2 + 2.2999402325142526*density_delta*m_GNLS + 9.8696044010893615*m_GNLS*rho_inf + 4*pi*rhoBr*shear_transverse**2/15 + 7.5398223686155035*rhoBr*shear_transverse**2
+    delta_expression: 4*pi*rhoBr*shear_transverse**2/15
+  - path: endpoint_effective_actions.E2.coefficients.GVV
+    endpoint: E2
+    old:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 0.5749850581285632
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 2.4674011002723404
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 0.57498505812856*density_delta*m_GNLS + 2.4674011002723*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+    new:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 0.5749850581285632
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 2.4674011002723404
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010893615*Mh*h_scalar**2/cE**2 + 0.57498505812856315*density_delta*m_GNLS + 2.4674011002723404*m_GNLS*rho_inf + 4*pi*rhoBr*shear_transverse**2/15 + 7.5398223686155035*rhoBr*shear_transverse**2
+    delta_expression: 4*pi*rhoBr*shear_transverse**2/15
+  - path: endpoint_effective_actions.E3.coefficients.GVV
+    endpoint: E3
+    old:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - h_scalar
+      - rhoBr
+      - shear_transverse
+      expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 7.5398223686155*rhoBr*shear_transverse**2
+    new:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - h_scalar
+      - rhoBr
+      - shear_transverse
+      expression: 9.8696044010893615*Mh*h_scalar**2/cE**2 + 4*pi*rhoBr*shear_transverse**2/15 + 7.5398223686155035*rhoBr*shear_transverse**2
+    delta_expression: 4*pi*rhoBr*shear_transverse**2/15
+  - path: endpoint_effective_actions.E4.coefficients.GVV
+    endpoint: E4
+    old:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+      - coefficient: 15.079644737231007
+        powers:
+          rhoBr: 1
+          shear_transverse: 1
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - h_scalar
+      - rhoBr
+      - shear_transverse
+      expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 7.5398223686155*rhoBr*shear_transverse**2 + 15.079644737231*rhoBr*shear_transverse + 7.5398223686155*rhoBr
+    new:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+      - coefficient: 16.755160819145562
+        powers:
+          rhoBr: 1
+          shear_transverse: 1
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - h_scalar
+      - rhoBr
+      - shear_transverse
+      expression: 9.8696044010893615*Mh*h_scalar**2/cE**2 + 4*pi*rhoBr*shear_transverse**2/15 + 7.5398223686155035*rhoBr*shear_transverse**2 + 8*pi*rhoBr*shear_transverse/15 + 15.079644737231007*rhoBr*shear_transverse + 4*pi*rhoBr/15
+        + 7.5398223686155035*rhoBr
+    delta_expression: 4*pi*rhoBr*shear_transverse**2/15 + 8*pi*rhoBr*shear_transverse/15 + 4*pi*rhoBr/15
+  - path: endpoint_effective_actions.E5.coefficients.GVV
+    endpoint: E5
+    old:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 0.915716944426971
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 3.929564715248546
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 7.5398223686155035
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010894*Mh*h_scalar**2/cE**2 + 0.91571694442697*density_delta*m_GNLS + 3.9295647152485*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2
+    new:
+      canonical_terms:
+      - coefficient: 9.869604401089362
+        powers:
+          Mh: 1
+          cE: -2
+          h_scalar: 2
+      - coefficient: 0.915716944426971
+        powers:
+          density_delta: 1
+          m_GNLS: 1
+      - coefficient: 3.929564715248546
+        powers:
+          m_GNLS: 1
+          rho_inf: 1
+      - coefficient: 8.377580409572781
+        powers:
+          rhoBr: 1
+          shear_transverse: 2
+      dependencies:
+      - Mh
+      - cE
+      - density_delta
+      - h_scalar
+      - m_GNLS
+      - rhoBr
+      - rho_inf
+      - shear_transverse
+      expression: 9.8696044010893615*Mh*h_scalar**2/cE**2 + 0.91571694442697105*density_delta*m_GNLS + 3.9295647152485458*m_GNLS*rho_inf + 4*pi*rhoBr*shear_transverse**2/15 + 7.5398223686155035*rhoBr*shear_transverse**2
+    delta_expression: 4*pi*rhoBr*shear_transverse**2/15
+  corrected_row_paths:
+  - evaluated_moments.E1.U_XX
+  - evaluated_moments.E2.U_XX
+  - evaluated_moments.E3.U_XX
+  - evaluated_moments.E4.U_XX
+  - evaluated_moments.E5.U_XX
+  - endpoint_effective_actions.E1.coefficients.GVV
+  - endpoint_effective_actions.E2.coefficients.GVV
+  - endpoint_effective_actions.E3.coefficients.GVV
+  - endpoint_effective_actions.E4.coefficients.GVV
+  - endpoint_effective_actions.E5.coefficients.GVV
+  tilt_profile_rows:
+    disposition: UNCHANGED;UNRESOLVED(tilt_profile)
+    paths:
+    - evaluated_moments.E1.U_XP
+    - evaluated_moments.E1.U_PP
+    - evaluated_moments.E1.I_shear_grad
+    - evaluated_moments.E2.U_XP
+    - evaluated_moments.E2.U_PP
+    - evaluated_moments.E2.I_shear_grad
+    - evaluated_moments.E3.U_XP
+    - evaluated_moments.E3.U_PP
+    - evaluated_moments.E3.I_shear_grad
+    - evaluated_moments.E4.U_XP
+    - evaluated_moments.E4.U_PP
+    - evaluated_moments.E4.I_shear_grad
+    - evaluated_moments.E5.U_XP
+    - evaluated_moments.E5.U_PP
+    - evaluated_moments.E5.I_shear_grad
+    byte_semantics_unchanged: true
+  payload_normalization:
+    version: u1_phase_a_payload_v2_fixed_decimal_12
+    recipe: sorted JSON keys; decision reduced to id/sha256/status; action_ids sorted; coefficient floats rendered fixed decimal(12); monomial powers sorted
+  baseline_digest:
+    expected: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69
+    declared: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69
+    computed_legacy: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69
+    gate: true
+  amended_payload_sha256: b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+  semantic_diff: *id001
+  phase_a_acceptance_recheck: *id002
+stage1_summary:
+- '1. PHASE_A_MOMENT_CORRECTION(brane_shear): unit gradient 7.539822368616 -> 8.377580409573.'
+- '2. Authority: shear operator/harmonic decomposition -> verified nu=2 tail -> core trace -> endpoint response.'
+- '3. Corrected moments (5): evaluated_moments.E1.U_XX, evaluated_moments.E2.U_XX, evaluated_moments.E3.U_XX, evaluated_moments.E4.U_XX, evaluated_moments.E5.U_XX.'
+- '4. Corrected downstream coefficients (5): endpoint_effective_actions.E1.coefficients.GVV, endpoint_effective_actions.E2.coefficients.GVV, endpoint_effective_actions.E3.coefficients.GVV, endpoint_effective_actions.E4.coefficients.GVV,
+  endpoint_effective_actions.E5.coefficients.GVV.'
+- '5. Tilt rows: UNCHANGED;UNRESOLVED(tilt_profile); unchanged=true.'
+- '6. Semantic diff: 7 scalar changes; correction-closure-only=true.'
+- '7. Baseline digest gate: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69; SymPy/Wolfram gates passed.'
+- '8. Amended digest gate: SymPy=Wolfram=comparator=b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d.'
+- '9. Phase-A acceptance re-check: SymPy=U1_BASE_OK; Wolfram=U1_BASE_OK.'
+- '10. Forward M_XX channels: bulk_flow unchanged; h unchanged; uw=0; brane E1 0.209439510239->0.232710566933, E4 10.262536001727->11.402817779696; quadrature error=0.'
+resume_validation_sha256: b3911cf814f2133afe1a20f4b2c079a53b6bff4eb863582a7620999d3766a96c

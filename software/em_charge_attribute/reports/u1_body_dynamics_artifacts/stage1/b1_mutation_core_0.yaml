@@ -1,0 +1,204 @@
+schema_version: U1_PHASE_B1_MUTATION_CORE_BATCH_V3
+status: PASS
+batch_index: 0
+batch_count: 5
+baseline_digests:
+  SymPy: fc52e9a999c00c8e421a9e6392e44b99f3d4417dff90ee302cacdb15bf566f0a
+  Mathematica: 462ef2fe821aa9399374b7491c1f17cf559cc88bf0c019e8ee30a0413869b223
+cases:
+- id: R1_drop_bulk_flow_source
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - source_contract
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: F1_perturbed_core_trace
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - source_contract
+  - core_traces_sha256
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R2_signed_bulk_berry
+  kind: engine_input_or_source
+  expected_assert: B1_R2
+  guarded_path:
+  - g4_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: sigma_changes
+      baseline_sigma: '-1'
+      mutated_sigma: '1'
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R2
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: sigma_changes
+      baseline_sigma: '-1'
+      mutated_sigma: '1'
+    status: PASS
+  status: PASS
+- id: R5_delete_rayleigh_density
+  kind: engine_input_or_source
+  expected_assert: B1_R5
+  guarded_path:
+  - E5
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R5
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R5
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R7_covariant_inventory_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R7
+  guarded_path:
+  - derived_congruence
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R7
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_engine_math_MXX
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - indexed_cells
+  - E1|one_sided_pathA29
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+- id: C_input_liveness_role_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_INPUT_LIVENESS
+  guarded_path:
+  - input_liveness
+  - rows
+  - 0
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_INPUT_LIVENESS
+  status: PASS
+- id: K7_overlap_detector_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - berry
+  - separation_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+metamorphic_controls:
+- id: O0_physical_winding_reversal
+  expected_parity:
+    k: -1
+    Gamma: -1
+    epsilon: 1
+    Omega: -1
+    F: -1
+    sigma: 1
+  engine_results:
+  - engine: SymPy
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  - engine: Mathematica
+    exit_code: 0
+    parity_checks:
+      k: true
+      Gamma: true
+      epsilon: true
+      Omega: true
+      F: true
+      sigma: true
+    status: PASS
+  status: PASS

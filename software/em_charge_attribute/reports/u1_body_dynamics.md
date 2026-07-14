@@ -187,6 +187,11 @@ L_eff = A_X V + A_p pdot + C_Xp p V + G_VV V^2/2 + G_Vp V pdot + G_pp pdot^2/2 -
 - `E4`: `G_VV=9.8696044010894*Mh*h_scalar**2/cE**2 + 7.5398223686155*rhoBr*shear_transverse**2 + 15.079644737231*rhoBr*shear_transverse + 7.5398223686155*rhoBr`; `G_Vp=4.1887902047864*rhoBr*shear_transverse*tilt_shear + 4.1887902047864*rhoBr*tilt_shear`; `G_pp=9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2`; `K_pp=2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2`.
 - `E5`: `G_VV=9.8696044010894*Mh*h_scalar**2/cE**2 + 0.91571694442697*density_delta*m_GNLS + 3.9295647152485*m_GNLS*rho_inf + 7.5398223686155*rhoBr*shear_transverse**2`; `G_Vp=1.3416318023*density_delta*m_GNLS*tilt_phase + 5.7572692339688*m_GNLS*rho_inf*tilt_phase + 4.1887902047864*rhoBr*shear_transverse*tilt_shear`; `G_pp=9.8696044010894*Mh*tilt_h**2/cE**2 + 2.2999402325143*density_delta*m_GNLS*tilt_phase**2 + 9.8696044010894*m_GNLS*rho_inf*tilt_phase**2 + 4.1887902047864*rhoBr*tilt_shear**2`; `K_pp=2.7231692929794*K_EOS*density_delta**2*rho_inf**3 + 11.103304951226*Mh*tilt_h**2 + 3.6770398592144*aB*wall_delta**2 + 4.7299772859649*density_delta**2*hbar**2/(m_GNLS*rho_inf) + 11.563122586834*kappaB*wall_delta**2 + 7.5398223686155*muR*tilt_shear**2`.
 
+
+
+<!-- PHASE_A_MOMENT_CORRECTION_NOTE_START -->
+**Phase-A amendment note (surfaced by Phase B1):** the `G_VV` rows immediately above display the frozen pre-amendment brane-shear unit coefficient `12π/5` (`7.539822368616`). `PHASE_A_MOMENT_CORRECTION(brane_shear)` corrects the governed `U_XX → G_VV` chain to `8π/3` (`8.377580409573`). The separately undetermined `U_XP`, `U_PP`, and `I_shear_grad` tilt-profile rows remain frozen/`UNRESOLVED(tilt_profile)`. Payload digest: `a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69` → `b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d`.
+<!-- PHASE_A_MOMENT_CORRECTION_NOTE_END -->
 Direct differentiation computes both canonical momenta and `Q_p`. Reconstruction independently iterates over the parsed action expressions, substitutes the rigid field embedding, performs the moment reductions, and compares that sum with the claimed coefficient form; the residual is zero for E1–E5. `K_pp` contains the surviving action-derived density, wall, shear, and `h` stiffness terms and no retired P contribution. E4 multiplier reaction and E5 Rayleigh loss remain outside `L_eff` in their typed channels.
 
 ## Gates and able-to-fail evidence
@@ -301,4 +306,113 @@ Retired-row proposal:
 Proposed live edges: `(hbar,m,rho_inf,K_EOS)->density D_E`; `(aB,kappaB)->chiB D_E`; `(rhoBr,muR,ellg)->u D_E`; `(Mh,cE)->h D_E`; `core traces+surface functional->balanced exterior family`; `endpoint trace systems->N_**,U_**`; `ACTION moments->L_eff`; `E4_shear_lock->F_constraint`; `E5_rayleigh->F_Rayleigh`; `return_closure->F_flux`. There is no live P edge.
 
 **HALT: Phase A is complete; no Phase-B computation is included.**
+---
 
+## Phase B1 — indexed mechanics remediation 3
+
+The independently recomputed Phase-A payload is `a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69` and remains protected. [claim `phase_a_digest` → `source_contract.phase_a_payload_sha256`; recompute `sha256(normalized_phase_a_payload)`]
+
+### Phase-A amendment carried into B1
+
+`PHASE_A_MOMENT_CORRECTION(brane_shear)` changes the brane-shear unit gradient `12π/5 → 8π/3` (`7.539822368616` → `8.377580409573`). The normalized Phase-A payload digest moves `a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69` → `b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d`.
+
+The correction closure contains exactly 10 paths: `evaluated_moments.E1.U_XX`, `evaluated_moments.E2.U_XX`, `evaluated_moments.E3.U_XX`, `evaluated_moments.E4.U_XX`, `evaluated_moments.E5.U_XX`, `endpoint_effective_actions.E1.coefficients.GVV`, `endpoint_effective_actions.E2.coefficients.GVV`, `endpoint_effective_actions.E3.coefficients.GVV`, `endpoint_effective_actions.E4.coefficients.GVV`, `endpoint_effective_actions.E5.coefficients.GVV`.
+
+Tilt-profile rows are frozen as `UNCHANGED;UNRESOLVED(tilt_profile)`; byte semantics unchanged = `true`.
+
+### Derived positive content and honest exits
+
+The manifest contains 7 typed field routes and 2 surface variations. It distinguishes rigid-advection from endpoint-response tangents and carries each field-local radial dimension and measure. [claim `field_manifest` → `field_manifest.fields`; recompute `join(indexed_routes,phase_a.tail_channels)`]
+
+Failed indexed-tangent lookups emit 8 leaves: `indexed_density_tilt_profile, indexed_flow_tilt_response, indexed_h_tilt_profile, indexed_phase_tilt_profile, indexed_shear_tilt_profile, indexed_sleeve_surface_normal_profile, indexed_sleeve_tilt_profile, indexed_uw_tilt_profile`. [claim `emitted_leaves` → `indexed_profile_missing_leaves`; recompute `failed_phase_a_indexed_tangent_lookups`]
+
+All 10 endpoint/ambient cells emit a derived isotropic `M_XX(p=0)`, zero reconstruction residual, a binding scalar regression, and executable conditional native-slice residuals for `M_Xp`/`M_pp`. [claim `scalar_regression` → `scalar_regression`; recompute `eV.T*M_XX*eV-GVV`] [claim `native_slice_constraints` → `indexed_cells`; recompute `native_MXp/Mpp_projection-minus-GVP/GPP`]
+
+The authoritative component aggregation is `{'UNRESOLVED': 10}`; no missing indexed or OPEN remainder was promoted to a value. [claim `mechanics_map` → `mechanics_map`; recompute `aggregate(cells.component_findings)`] [claim `cell_count` → `cells`; recompute `active_endpoint-ambient-stratum_product`]
+
+| endpoint | computed source | headline | intrinsic Ω |
+| --- | --- | --- | --- |
+| E1 | E1 | UNRESOLVED | ZERO_COMPUTED |
+| E2 | E2 | UNRESOLVED | ZERO_COMPUTED |
+| E3 | E3 | UNRESOLVED | ZERO_COMPUTED |
+| E4 | E3 | UNRESOLVED | ZERO_COMPUTED |
+| E5 | E2 | UNRESOLVED | ZERO_COMPUTED |
+
+### Traversal, dimensions, and congruence
+
+Expression/root traversal produces 42 OPEN root/block records. The shared finite generator yields an empty control (`STRUCTURAL_ZERO`) and a witness control (`NONZERO_WITNESS`). [claim `open_reachability` → `open_root_reachability`; recompute `typed_ledger-union-traversal`] [claim `finite_controls` → `reachability_analysis.finite_bound_controls`; recompute `same_generator_parity_filter`]
+
+Units were restored termwise on the emitted expressions; computed dimension sets are `{'L_translation': [[2, -2, 1]], 'L_native_Xp_slice': [[2, -2, 1]], 'L_native_pp_slice': [[2, -2, 1]], 'M_XX': [[0, 0, 1]], 'M_Xp_native_slice': [[1, 0, 1]], 'M_pp_native_slice': [[2, 0, 1]], 'Omega_XX_control': [[-2, -1, 1]]}`. [claim `dimensions` → `dimensions.records`; recompute `termwise_units_restoration`]
+
+The produced blocks reduce by exact transverse/longitudinal congruence to 6 conditional pivots; the full signature remains unresolved because their coefficients contain emitted remainders. [claim `derived_congruence` → `derived_congruence`; recompute `produced_blocks-to-covariant-coefficients`]
+
+### Berry/G4 and endpoint machinery
+
+The two traversal-derived Berry DAGs cover 10 production cells and agree after the executed zero-mode quotient. Production winding is `0`. [claim `berry_coverage` → `berry.production_pullback_coverage`; recompute `production_cells-cross-ambient_branches`]
+
+The control contour gives `k=1` and downstream `sigma=-1`; the consumed sheet area leaves a zero total-to-per-area residual. [claim `g4_winding` → `g4_control.computed_winding`; recompute `contour_integral/(2*pi)`] [claim `g4_sigma` → `g4_control.computed_sigma`; recompute `Omega_xy/(rho_mass*Gamma*epsilon_xy)`] [claim `sheet_area` → `g4_control.total_to_per_area_residual`; recompute `Omega_total/sheet_cell_area-Omega_per_area`]
+
+E4 emits its pre-constraint action before differentiating `M_aug`; every stored Hessian residual is zero and `J` comes from the constraint/moduli equations. [claim `e4_action_hessian` → `E4.M_aug_hessian_residual`; recompute `hessian(preconstraint_extended_action)-M_aug`]
+
+E5 consumes and deletes root `E5_rayleigh`, then re-solves to the computed E2 conservative response. [claim `e5_root` → `E5.root_deleted_conservative_solution`; recompute `delete(rayleigh_root)-and-resolve`]
+
+### Records, gates, and halt
+
+Return closure is absent by graph reachability, not by declaration. [claim `closure_absence` → `provenance_graph.global_return_closure_absence`; recompute `reachability(return_closure,mechanics_targets)`]
+
+| gate | computed status |
+| --- | --- |
+| G1 | INHERITED_PHASE_A_REPRODUCED |
+| G2 | KNOWN_COEFFICIENTS_FINITE;FULL_REMAINDERS_UNRESOLVED |
+| G3 | DERIVED_BLOCK_CONGRUENCE;FULL_SIGNATURE_UNRESOLVED |
+| G4 | PASS |
+| G5 | KNOWN_M_AND_OMEGA_COVARIANT;FULL_REMAINDERS_UNRESOLVED |
+| G6 | ENDPOINT_MAP_COMPUTED |
+| G7 | NOT_RUN(phase_B2) |
+| G8 | NOT_RUN(phase_C) |
+| G9 | NOT_RUN(phase_B2) |
+| G10 | NOT_RUN(phase_C) |
+| G11 | NOT_RUN(phase_C) |
+
+Gate rows and candidate ownership are artifact-backed. [claim `gate_statuses` → `gate_evidence`; recompute `engine_check-derived-gates`] [claim `partition` → `partition_ledger`; recompute `computed-candidate-ownership`]
+
+The external unchanged-executable gauntlet passed 35 focused mutation cases, 2 metamorphic controls, and 346 per-key liveness cases. [typed mutation artifact `mechanics_mutations`]
+
+The engines agree on 9 independently recomputed groups: per-field d_f angular Gram contractions, isotropy, scalar regression, and native GVP/GPP residuals; endpoint variation solves plus E4 action-first Hessian/J lift and E5 root-deletion solve; 42 traversal-derived OPEN-root dispositions and two exercised finite controls; route-separated Berry DAGs with 10 production pullback cells and a real quotient; G4 sheet-area reduction, k=1 signed control, sigma=-1, and production k=0; units restored on real expressions and derived-coefficient symmetry-block congruence; component records, closure absence, provenance, and all-UNRESOLVED map reaggregated; typed input roles/sinks cover all 346 declared scalar leaves; independent SymPy/Wolfram Phase-A protection and nonshared representations. [typed agreement artifact `mechanics_dual_engine`]
+
+### Known residual constructs
+
+These residual constructs remain explicit and are not accepted silently or presented as independently eliminated:
+
+| construct | bound artifact field | comparator-side backstop |
+| --- | --- | --- |
+| sheet_area_X_minus_X_residual | symplectic_mechanics.g4_control.total_to_per_area_residual | B1_C_ENGINE_MATH recomputes/nonzero-checks sheet_cell_area and requires the emitted residual matrix to vanish |
+| hand_typed_provenance_edge_atoms | mechanics_provenance_graph.edges | B1_C_RECORD_MAP rebuilds the exact edge union from contraction, reachability, Berry, E4, and E5 records |
+| oracle_ban_stamps | indexed_mechanics.cells.*.field_contraction_integrals.*.{oracle_ancestry_forbidden,oracle_paths_consumed} | B1_C_ENGINE_MATH requires both engines' stamps and separately compares every forward-derived contraction tensor and quadrature tooth |
+
+### Typed report-claim bindings
+
+| claim | schema path | type | recomputation |
+| --- | --- | --- | --- |
+| phase_a_digest | source_contract.phase_a_payload_sha256 | sha256 | sha256(normalized_phase_a_payload) |
+| field_manifest | field_manifest.fields | per_field_manifest | join(indexed_routes,phase_a.tail_channels) |
+| emitted_leaves | indexed_profile_missing_leaves | derived_string_set | failed_phase_a_indexed_tangent_lookups |
+| scalar_regression | scalar_regression | residual_mapping | eV.T*M_XX*eV-GVV |
+| native_slice_constraints | indexed_cells | conditional_residual_mapping | native_MXp/Mpp_projection-minus-GVP/GPP |
+| g4_winding | g4_control.computed_winding | sympy_expression | contour_integral/(2*pi) |
+| g4_sigma | g4_control.computed_sigma | sympy_expression | Omega_xy/(rho_mass*Gamma*epsilon_xy) |
+| sheet_area | g4_control.total_to_per_area_residual | canonical_matrix | Omega_total/sheet_cell_area-Omega_per_area |
+| berry_coverage | berry.production_pullback_coverage | cell_selection | production_cells-cross-ambient_branches |
+| e4_action_hessian | E4.M_aug_hessian_residual | canonical_matrix | hessian(preconstraint_extended_action)-M_aug |
+| open_reachability | open_root_reachability | generator_records | typed_ledger-union-traversal |
+| finite_controls | reachability_analysis.finite_bound_controls | emptiness_and_witness_records | same_generator_parity_filter |
+| cell_count | cells | mapping_length | active_endpoint-ambient-stratum_product |
+| dimensions | dimensions.records | computed_dimension_records | termwise_units_restoration |
+| derived_congruence | derived_congruence | block_congruence | produced_blocks-to-covariant-coefficients |
+| mechanics_map | mechanics_map | component_aggregate_map | aggregate(cells.component_findings) |
+| closure_absence | provenance_graph.global_return_closure_absence | graph_predicate | reachability(return_closure,mechanics_targets) |
+| e5_root | E5.root_deleted_conservative_solution | root_ablation_solve | delete(rayleigh_root)-and-resolve |
+| gate_statuses | gate_evidence | gate_mapping | engine_check-derived-gates |
+| partition | partition_ledger | ownership_ledger | computed-candidate-ownership |
+
+Axis 1 is `COMPUTATION_VALID`; every mechanics cell remains honestly `UNRESOLVED`. B2 and Phase C remain `NOT_RUN(phase)`. [claim `mechanics_map` → `mechanics_map`; recompute `aggregate(cells.component_findings)`] [claim `partition` → `partition_ledger`; recompute `computed-candidate-ownership`]

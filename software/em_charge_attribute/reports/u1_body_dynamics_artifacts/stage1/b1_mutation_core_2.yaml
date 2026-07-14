@@ -1,0 +1,164 @@
+schema_version: U1_PHASE_B1_MUTATION_CORE_BATCH_V3
+status: PASS
+batch_index: 2
+batch_count: 5
+baseline_digests:
+  SymPy: fc52e9a999c00c8e421a9e6392e44b99f3d4417dff90ee302cacdb15bf566f0a
+  Mathematica: 462ef2fe821aa9399374b7491c1f17cf559cc88bf0c019e8ee30a0413869b223
+cases:
+- id: F1_wrong_profile_exponent
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: F1_perturbed_support_bound
+  kind: engine_input_or_source
+  expected_assert: B1_R1
+  guarded_path:
+  - indexed_cells
+  - E1|symmetric_postulate
+  - M_XX_p0_known
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R1
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R3_routeB_quotient_omission
+  kind: engine_input_or_source
+  expected_assert: B1_R3
+  guarded_path:
+  - berry
+  - route_B
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: 3f859315d9362910bf3d2c3ca96e2871ee45c6db1b5e3b19aa4e65d99c6f2f3e
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R3
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: route_equivalence_nonzero
+      residual_digest: 3f859315d9362910bf3d2c3ca96e2871ee45c6db1b5e3b19aa4e65d99c6f2f3e
+    status: PASS
+  status: PASS
+- id: R6_empty_control_parity_mutation
+  kind: engine_input_or_source
+  expected_assert: B1_R6
+  guarded_path:
+  - reachability_analysis
+  - finite_bound_controls
+  - parity_empty_control
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R6
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: R9_collapse_engine_representations
+  kind: engine_input_or_source
+  expected_assert: B1_R9
+  guarded_path:
+  - checks
+  - B1_R9
+  guarded_digest_changed: true
+  assertion_fired: true
+  engine_results:
+  - engine: SymPy
+    exit_code: 1
+    asserted: B1_R9
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  - engine: Mathematica
+    exit_code: 1
+    asserted: B1_R9
+    guarded_digest_changed: true
+    required_observation_passed: true
+    observation:
+      kind: guard_digest_only
+    status: PASS
+  status: PASS
+- id: C_phase_A_payload
+  kind: comparator_artifact
+  expected_assert: B1_C_PHASE_A
+  guarded_path:
+  - axis2
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_PHASE_A
+  status: PASS
+- id: K2_missing_leaf_consistency_tamper
+  kind: comparator_artifact
+  expected_assert: B1_C_ENGINE_MATH
+  guarded_path:
+  - indexed_profile_missing_leaves
+  guarded_digest_changed: true
+  assertion_fired: true
+  exit_code: 1
+  asserted: B1_C_ENGINE_MATH
+  status: PASS
+metamorphic_controls: []

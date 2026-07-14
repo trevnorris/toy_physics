@@ -1,0 +1,20 @@
+status: ENGINE_AGREE
+checks:
+- per-field d_f angular Gram contractions, isotropy, scalar regression, and native
+  GVP/GPP residuals
+- endpoint variation solves plus E4 action-first Hessian/J lift and E5 root-deletion
+  solve
+- 42 traversal-derived OPEN-root dispositions and two exercised finite controls
+- route-separated Berry DAGs with 10 production pullback cells and a real quotient
+- G4 sheet-area reduction, k=1 signed control, sigma=-1, and production k=0
+- units restored on real expressions and derived-coefficient symmetry-block congruence
+- component records, closure absence, provenance, and all-UNRESOLVED map reaggregated
+- typed input roles/sinks cover all 346 declared scalar leaves
+- independent SymPy/Wolfram Phase-A protection and nonshared representations
+comparator_checks:
+  B1_C_ENGINE_MATH: PASS
+  B1_C_RECORD_MAP: PASS
+  B1_C_PHASE_A: PASS
+  B1_C_REPORT_SCHEMA: PASS
+  B1_C_INPUT_LIVENESS: PASS
+mechanics_map_rederived_from_both_records: true

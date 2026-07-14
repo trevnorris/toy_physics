@@ -1,0 +1,271 @@
+schema_version: U1_PHASE_B1_MECHANICS_INPUTS_V3
+directive_version: 8
+spec_version: 3.1
+phase: B1
+
+derivation_representations:
+  SymPy: direct_per_field_embedding_substitution_then_velocity_differentiation
+  Mathematica: field_tangent_jacobian_and_termwise_gram_pullback
+  shared_reduced_formulas: false
+
+# This file contains field/geometry/operator declarations only.  It contains no
+# cell verdict, signature, zero/nonzero flag, or precomputed tensor entry.
+substrate:
+  phase_a_input: software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  sympy_artifact: software/em_charge_attribute/reports/u1_body_dynamics_artifacts/sympy_phase_a.json
+  mathematica_artifact: software/em_charge_attribute/reports/u1_body_dynamics_artifacts/mathematica_phase_a.json
+  operative_decision: software/stage1_solver/decisions/16_retire_brane_polar_field.md
+
+indexed_coordinates:
+  spatial_indices: [x, y, z]
+  coordinate_order: [X_x, X_y, X_z, p_x, p_y, p_z]
+  velocity_order: [V_x, V_y, V_z, pd_x, pd_y, pd_z]
+  p_slice: off_shell_free
+  coordinate_dimensions:
+    X: [1, 0, 0]
+    p: [0, 0, 0]
+  nondimensionalization:
+    translation_length: a
+    tilt_length: a
+
+# This is a routing declaration, not a profile/tangent table.  Each manifest
+# row is completed from the named Phase-A artifact records.  In particular no
+# missing-leaf name and no tensor coefficient is declared here.
+indexed_embedding:
+  lab_to_body_map: "y_i=x_i-X_i(t)"
+  translation_rule: "dPhi/dX_i=-partial_i Phi_0"
+  fields:
+    - {id: number_density, action_symbol: n, phase_a_channel: density_EOS, support: bulk, tangent_class: rigid_advected, amplitude: density_delta}
+    - {id: bulk_phase, action_symbol: theta, phase_a_channel: bound_phase, support: bulk, tangent_class: rigid_advected, profile_path: phase_flux_normalization.selected_phase}
+    - {id: bulk_velocity_response, action_symbol: v, phase_a_channel: bound_phase, support: bulk, tangent_class: endpoint_velocity_response, kinetic_action: bulk_flow_kinetic}
+    - {id: wall_chiB, action_symbol: chiB, phase_a_channel: wall_chiB, support: bulk, tangent_class: rigid_advected, amplitude: wall_delta}
+    - {id: brane_shear, action_symbol: u, phase_a_channel: brane_shear, support: brane, tangent_class: endpoint_velocity_response, kinetic_action: brane_shear_kinetic}
+    - {id: brane_normal, action_symbol: uw, phase_a_channel: uw, support: brane, tangent_class: endpoint_velocity_response, kinetic_action: uw_kinetic}
+    - {id: h_field, action_symbol: h, phase_a_channel: h, support: bulk, tangent_class: rigid_advected, amplitude: h_scalar, kinetic_action: h_kinetic}
+  surfaces:
+    - {id: Sigma, support: brane, X_variation: translated_surface, phase_a_tilt_lookup: indexed_surface_variations.Sigma}
+    - {id: partial_Omega_c, support: bulk, X_variation: co_moving_control_surface, phase_a_tilt_lookup: zero_by_fixed_control_surface}
+
+covariant_inventory:
+  vectors: [p]
+  symmetric_basis: [delta_ij, p_i_p_j]
+  antisymmetric_basis: [epsilon_ijk_p_k]
+  generic_projection_point: [1, 2, 3]
+  zero_limit_direction: [1, 0, 0]
+
+# Frozen before tensor construction and read only after the indexed production
+# object has been built.  The runtime graph forbids ancestry from this node.
+scalar_regression_projection:
+  dependency_role: comparator_only
+  V_unit: [1, 0, 0]
+  pd_unit: [1, 0, 0]
+  p_unit: [0, 1, 0]
+  indexed_tilt_length: a
+  checked_ambient: symmetric_postulate
+
+ambient_branches:
+  symmetric_postulate:
+    embedding_factor: "1"
+    parity_tag: BODY_PLUS_AMBIENT_POSTULATE
+  one_sided_pathA29:
+    embedding_factor: "1+s*eta_asym"
+    eta_asym: 1/10
+    wall_side_domain: [-1, 1]
+    parity_tag: ONE_SIDED_ASYMMETRY_MAP
+
+open_strata:
+  - id: all_admissible_open_functionals
+    predicate: "Eq(1,1)"
+
+# The boundary response is assembled from this operator energy and the
+# endpoint field functionals below.  No endpoint matrix or solved response is
+# supplied.
+boundary_operator:
+  trace_fields: [normal, tangent, shear]
+  normal_DtN: "m_GNLS*rho_inf"
+  tangent_DtN: "tangentDtN"
+  shear_DtN: "2*muR/a"
+  action_ancestors: [bulk_flow_kinetic, brane_shear_gradient]
+
+endpoint_functionals:
+  E1:
+    boundary_class: holonomic_BC
+    variational_class: holonomic_field_BC
+    essential: {normal: 1, tangent: 1}
+    natural: [shear]
+    primitive_id: E1_impermeable_no_slip
+  E2:
+    boundary_class: holonomic_BC
+    variational_class: holonomic_field_BC
+    essential: {normal: 1}
+    natural: [tangent, shear]
+    primitive_id: E2_impermeable_free_slip
+  E3:
+    boundary_class: holonomic_BC
+    variational_class: bulk_action
+    essential: {}
+    natural: [normal, tangent, shear]
+    primitive_id: E3_permeable_texture
+  E4:
+    boundary_class: constraint
+    variational_class: nonholonomic_constraint
+    essential: {}
+    natural: [normal, tangent, shear]
+    primitive_id: E4_preconstraint_bulk
+  E5:
+    boundary_class: Rayleigh
+    variational_class: Rayleigh
+    essential: {normal: 1}
+    natural: [tangent, shear]
+    primitive_id: E5_action_only_bare
+    rayleigh_root: E5_rayleigh
+    rayleigh_integrand: "gammaSigma*(v_tangent-V_tangent)^2/2"
+    rayleigh_surface: Sigma
+
+e4_collar_scheme:
+  formulation: operator_level_Dirichlet_to_Neumann
+  action_ancestors: [brane_shear_kinetic, brane_shear_gradient]
+  radial_dimension: 3
+  harmonic_degree: 1
+  radial_domain: "a<=r<infinity"
+  boundary_trace: {field: u_T, radius: a, value: u_collar}
+  ir_condition: {limit: infinity, value: 0, select: decaying_root}
+  moduli_fixing: {growing_mode_coefficient: 0, p_to_collar_cross_lift: 0}
+  constraint_functional: {expression: "V_i-udot_collar_i", equals: 0}
+  collective_trace_map: identity
+
+berry_pullback_selection:
+  dependency_role: selection_only
+  production_cells:
+    holonomic_BC: [E1, E2, E3]
+    constraint: [E4]
+    Rayleigh: [E5]
+  ambient_branches: [symmetric_postulate, one_sided_pathA29]
+  include_surface_terms: [Sigma, partial_Omega_c]
+  apply_zero_mode_quotient: true
+
+g4_control:
+  spatial_dimension: 4
+  transverse_plane: [x, y]
+  sheet_directions: [z, w]
+  epsilon_xy: 1
+  contour_orientation:
+    sign: 1
+  core_density_profile: "rho_inf*(1-exp(-r^2/xi_core^2))"
+  phase_profile: "k_control*atan2(y,x)"
+  phase_parameters: {k_control: 1}
+  xi_core_over_a: 1/3
+  k_expected: 1
+  sheet_geometry:
+    coordinates: [z, w]
+    bounds: [[0, a], [0, a]]
+    induced_metric: [[1, 0], [0, 1]]
+  ir_prescription: ambient_subtracted_exterior_ball
+  ambient_flow_cases:
+    rest: [0, 0]
+    moving: [1/7, -1/5]
+
+berry_separation:
+  shared_raw_input_whitelist: [a, hbar, rho_inf]
+  planted_control_expression: "a*rho_inf"
+
+# These declarations complete live deferred ACTION/profile roots at the field
+# level.  Remainder coefficients are generated by the engines; none is input.
+open_action_functionals:
+  - id: sleeve_core_trace
+    root_type: PROFILE
+    domain: scalar_field_trace_on_Sigma
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [scalar, covector_normal, scalar_wall_side]
+    body_conjugation_parity: even
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+  - id: geon_core_bundle
+    root_type: PROFILE
+    domain: field_trace_bundle_on_Sigma
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    argument_index_structure: [scalar, scalar, covector_phase_flux, scalar_wall_side]
+    body_conjugation_parity: mixed
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+  - id: throat_surface_functional
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [field_bundle, covector_normal, rank2_induced_metric]
+    body_conjugation_parity: even
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+  - id: outer_surface_functional
+    root_type: ACTION
+    domain: field_functional_on_partial_Omega_c
+    arguments: [field_traces, outward_normal, ambient_branch]
+    symmetry_class: AMBIENT_BRANCH_COVARIANT
+    argument_index_structure: [field_bundle, covector_normal, ambient_branch]
+    body_conjugation_parity: branch_covariant
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+  - id: throat_source
+    primitive: f_throat
+    root_type: ACTION
+    domain: local_field_functional_on_core_surface
+    arguments: [chiB, number_density, phase, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [scalar, scalar, scalar, rank2_induced_metric]
+    body_conjugation_parity: even
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+  - id: wall_mix
+    primitive: f_mix
+    root_type: ACTION
+    domain: local_mixed_field_functional_on_core_surface
+    arguments: [chiB, number_density, phase, shear_trace]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [scalar, scalar, scalar, vector_shear_trace]
+    body_conjugation_parity: even
+    derivative_order_bound: null
+    admissible_orders: [quadratic_even, first_order]
+
+# These are validation controls, not production roots.  They are fed through
+# the same parity/symmetry/generator construction as production roots and are
+# attached to isolated control blocks before classification.
+finite_bound_controls:
+  - id: parity_empty_control
+    root_type: ACTION_CONTROL
+    domain: local_scalar_control_functional
+    arguments: [scalar_control]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [scalar]
+    body_conjugation_parity: odd
+    derivative_order_bound: 0
+    admissible_orders: [quadratic_even]
+    target_block: M_XX
+  - id: even_witness_control
+    root_type: ACTION_CONTROL
+    domain: local_scalar_control_functional
+    arguments: [scalar_control]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    argument_index_structure: [scalar]
+    body_conjugation_parity: even
+    derivative_order_bound: 0
+    admissible_orders: [quadratic_even]
+    target_block: M_XX
+
+tensor_selection_rules:
+  quadratic_even:
+    symmetric_blocks: [M_XX, M_Xp_symmetric, M_pp]
+    antisymmetric_blocks: [M_Xp_antisymmetric]
+  first_order:
+    antisymmetric_blocks: [Omega_XX_texture, Omega_Xp, Omega_pp]
+
+partition:
+  owner_enum: [M, C_mdot_pending]
+  outer_control_flux_owner: C_mdot_pending
+  terminal_state: partition_open_pending_B2
+
+phase_a_protection:
+  normalized_payload_sha256: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69
+  core_traces_sha256: 7ab6a1254b1056957a6233e014d32a0d0e1ad1e2559066f7899709d07237acb0

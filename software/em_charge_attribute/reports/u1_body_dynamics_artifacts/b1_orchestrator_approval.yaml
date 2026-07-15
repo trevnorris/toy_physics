@@ -1,0 +1,143 @@
+# U1 Phase B1 — orchestrator approval certificate (root of trust for Phase B2+)
+#
+# Records the approval that concluded Phase B1: the stage-1 amendment HALT
+# (exit 42, PHASE_A_MOMENT_CORRECTION(brane_shear) 12pi/5 -> 8pi/3) was
+# reviewed and approved by the orchestrator on 2026-07-14 under the user's
+# standing authorization ("work through the physics and math; no conceptual
+# calls" — a computed, triple-confirmed numeric correction with full amendment
+# discipline qualifies); stage 2 (--resume-stage2) then ran to exit 0 and the
+# final B1 outputs were emitted, 4-leg verified, and committed.
+#
+# stage1_complete.yaml intentionally retains its permanent HALT-record status
+# STAGE1_COMPLETE_AWAITING_ORCHESTRATOR_APPROVAL; THIS file is the approval.
+# Downstream phases (B2+) verify their B1 substrate against the digests below
+# at startup and completion.
+schema_version: U1_PHASE_B1_ORCHESTRATOR_APPROVAL_V1
+status: APPROVED
+approved_on: 2026-07-14
+approved_by: orchestrator (Claude session e96264f6, standing user authorization of 2026-07-14)
+stage2_evidence: reports/u1_body_dynamics_artifacts/stage1/stage2_comparator.log (B1_COMPARATOR ENGINE_AGREE checks=9 cells=10 - comparator agreement; the runner exit 0 was observed by the orchestrator at approval time but is not separately recorded in that log; the B2 startup TARGETED replay is a semantic regression check on representative objects - full-substrate protection comes from the manifests, snapshots, and immutable-commit anchoring)
+git_commit: ef934360b031bef54b37ca96d5c73cb10b0d15fd
+verification: 4-leg (arbiter clean 156/156 byte-identical; adversarial REFUTED(1->fixed); Grok FINDINGS(1->fixed); fidelity FINDINGS(5->fixed))
+# Structured evidence fields (schema-checkable). stage2 runner exit 0 was
+# orchestrator-observed at approval time; leg evidence lived in the gitignored
+# _scratch/ working area (ephemeral) - statuses are the orchestrator's
+# attestation, backed by the committed artifacts where noted:
+stage2_runner_exit_code: 0
+stage2_runner_evidence: orchestrator-observed (not separately logged; the comparator log at stage1/stage2_comparator.log is certificate-pinned but gitignored - absent from the approval commit)
+verification_legs:
+  - {leg: arbiter, status: CLEAN, evidence: 156/156 byte-identical re-run, evidence_location: _scratch (ephemeral)}
+  - {leg: adversarial_recompute, status: REFUTED_1_FIXED_THEN_CLEAN, evidence_location: _scratch (ephemeral)}
+  - {leg: fidelity, status: FINDINGS_5_FIXED_THEN_CLEAN, evidence_location: _scratch (ephemeral)}
+  - {leg: grok, status: FINDINGS_1_FIXED_THEN_CLEAN, evidence_location: _scratch (ephemeral)}
+phase_a_amended_payload_sha256: b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+phase_a_baseline_transition: a32c25f4325671d280b54df6c51abd9b25008ef5e6008b98972bac1ed81f7e69 -> b23993cca80dc3e6a790abcf68c1af63aa804fc47b06b153b9f224ccf27f899d
+partition_ledger_state: partition_open_pending_B2
+core_traces_sha256: 7ab6a1254b1056957a6233e014d32a0d0e1ad1e2559066f7899709d07237acb0
+# Toolchain the approved B1 run executed under. INFORMATIONAL ONLY (diagnostic
+# context for a replay failure): the trust gates are the manifests, snapshots,
+# and immutable-commit anchoring plus a TARGETED B2-startup semantic replay of
+# representative B1 objects - not version-string equality.
+approved_toolchain:
+  python: 3.10.12
+  sympy: 1.14.0
+  pyyaml: 6.0.3
+  wolframscript: 1.14.0
+# Verified at B2 startup AND completion; additionally cross-checked against the
+# immutable commit ef934360b031bef54b37ca96d5c73cb10b0d15fd for paths committed
+# there. Three manifests, distinct roles (paths relative to software/em_charge_attribute/;
+# a leading // marks a path relative to the REPOSITORY ROOT):
+#  - protected_artifact_sha256: byte-frozen B1 EVIDENCE (outputs incl. run logs).
+#    Verified file-vs-manifest at B2 startup and completion. Not part of the
+#    runtime read-closure comparison. The MUTABLE aggregates
+#    reports/u1_body_dynamics{_results.yaml,.md} are NOT byte-frozen (B2 must
+#    fold new sections into them); their B1 content is protected via the
+#    b1_final_*_snapshot files pinned below - B2's gates assert the aggregates'
+#    B1 sections remain identical to the snapshots.
+#  - substrate_reference_sha256: approved substrate NOT in the live runtime
+#    closure (byte-checked; excluded from closure set-equality).
+#  - runtime_dependency_sha256: the COMPLETE dependency manifest of the
+#    original B1 pipeline (completeness established from the actual B1 run at
+#    certificate authoring). It serves BYTE PROTECTION of the whole pipeline.
+#    The B2-startup TARGETED replay is checked by CONTAINMENT, per the B2
+#    directive section 1.1(b): with Obs_B1 = the observed closure of the
+#    targeted replay and W_pure = paths actually opened for writing EXCLUDING
+#    any path read before its first create/truncate,
+#      (Obs_B1 - W_pure) subset-of
+#        (P union S union runtime_dependency_sha256 union mutable_aggregate)
+#    with first-use digest equality against the pinned entry for every read
+#    (mutable_aggregate = the two aggregates reports/u1_body_dynamics
+#    {_results.yaml,.md}, which the stage-2 comparator legitimately READS;
+#    their first-use content is authenticated against the pinned B1 snapshots
+#    via the containment semantics, not a fixed hash); an unpinned read fails. (Exact equality is NOT required - the targeted
+#    replay intentionally reads a subset. B2 production reads form Obs_B2,
+#    checked against the separate orchestrator-approved stage-0 manifest.)
+protected_artifact_sha256:
+  reports/u1_body_dynamics_artifacts/b1_final_report_snapshot.md: dca1f5b8bad60ba7bac1f5fdba658865bd986eac420d38b87586c5aa3f77c308
+  reports/u1_body_dynamics_artifacts/mathematica_phase_a.json: 2505037a36e07be1a4a1dbfa91b670300b5ce5224558c029eef64ff99f14671f
+  reports/u1_body_dynamics_artifacts/stage1/b1_engine_agreement.yaml: bac8530c2c58a004766940e8b125ad64ee8507df7656abc971da2e6e8c056a32
+  reports/u1_body_dynamics_artifacts/stage1/b1_liveness_0.yaml: 7c6cba8c6d0e40189a688ca16131fd7823870ff87f0931424142926367917fc9
+  reports/u1_body_dynamics_artifacts/stage1/b1_liveness_1.yaml: 703fdbb7abed92b34de0cfd85714fb3d705669fca2329af96f5a48566369ecc4
+  reports/u1_body_dynamics_artifacts/stage1/b1_liveness_2.yaml: ba3c2cc61d9ad9e2e3adfbe4dc143764eaf9233b524a3785913370477cf8b3e9
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core.yaml: ec259c19d252cc0e3802eee5af3e7ae3b1bd2fd2cb41fab525a9842f0f846dc0
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core_0.yaml: fe0c07bcea91fff5c90d9953d9f9f0f7df72bd79ca49974130966f2d8218ae4d
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core_1.yaml: 48362473134b87d2a03353211816512346e24fc80a1d9e787e0acbe2f278f5f5
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core_2.yaml: 68478a0f835895228c40476c0579f597b8cbce43cf14604fb9d4e3a41cec14c8
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core_3.yaml: 001e2f94633850cc73c708cf194da7198e5288f294ddaba98be332866f5f764b
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_core_4.yaml: 4634fd74cd6be263f0c0514e6785b11db2771de510a5738f0400045525190e2a
+  reports/u1_body_dynamics_artifacts/stage1/b1_mutation_results.yaml: aa1cfc5d3429c4acd2624fb467d677363c7f71d03afea64f02e519f251d4d586
+  reports/u1_body_dynamics_artifacts/stage1/comparator.log: bd97825f2ed9df07506309a1dd4e6109b1ee3f45d74b354c087d77c636715040
+  reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_a.json: 2505037a36e07be1a4a1dbfa91b670300b5ce5224558c029eef64ff99f14671f
+  reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_a.log: 64365c0c79876205960245be5b282238fa0a45c7c0e18497adaa04492e86bd26
+  reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_b1.log: bb0cfe805537c3c863b41937d58f2eac79ebb1bd4db3a04150b0768b1be508d1
+  reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_b1.yaml: 16252e2fe708e018d790760e8db42291086b7035a851a8eda51122ac89bea220
+  reports/u1_body_dynamics_artifacts/stage1/mutations.log: 1a71d2604c7865cb4ed3d36ed4584b60c967113b19bf5bf1b5d7751dc90f9e56
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core.log: 504abd8cef1d59a45b85e7c47eab0b0a99c565786a7f823f3e64d61a9eb60e71
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core_0.log: c808c390bba303c22ec3313282b385de475efefdaab77c0e305c3574ba5999d7
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core_1.log: 013dd5b73b122f9f0f6d81c910475a984d45e70bbfa3f6a4d86b6a8e9123a3ea
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core_2.log: 09f218c6d50f4afcc84dd16df736b30e10b7f02eac21935a5ebbf17334bfde89
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core_3.log: 549c789f6b9a1974cabc6ef7770287b6f4f5fdce78591ab34e0f1824f95b4cb1
+  reports/u1_body_dynamics_artifacts/stage1/mutations_core_4.log: a272fce319e47e67e8a67319c6aa388809b36619c4b1e8e7c7078434372cbdf9
+  reports/u1_body_dynamics_artifacts/stage1/mutations_liveness_0.log: 81143371568f7cc0e54d1795289d9653bd86023bb84a32216793f0721c308eaf
+  reports/u1_body_dynamics_artifacts/stage1/mutations_liveness_1.log: 5a1bc2c9ac0cc1f9d72b535b13c593c0ac330c849ae39d5995e238702e8a8853
+  reports/u1_body_dynamics_artifacts/stage1/mutations_liveness_2.log: e3e57b2dd28e28558af44d7458e3a8c3b6652266e6881bcefaa6ecb609288d64
+  reports/u1_body_dynamics_artifacts/stage1/phase_a_amendment_agreement.yaml: 4a248dd37a032bdda3958ac32eb6e9ca331a26d1f9ec7478bd9d9179bd51235c
+  reports/u1_body_dynamics_artifacts/stage1/stage1_complete.yaml: ac433d7bd15bd82b01db8e797ec28465c5b77b2bb4b8c8d661f90575d94f4480
+  reports/u1_body_dynamics_artifacts/stage1/stage2_comparator.log: a2ffdf913cd80b8daa00dbd86f74c850ca8b18f05249e5879f517b4ccb9c1048
+  reports/u1_body_dynamics_artifacts/stage1/sympy_phase_a.json: 10f404f0a01b61a1c717597d201088566189326e1f63c72c2633e6392adbc1b1
+  reports/u1_body_dynamics_artifacts/stage1/sympy_phase_a.log: 0928a82cc1afcfbb2bfc91d455797ba0966be3f7f0bba5f5ff1402dedfbbb472
+  reports/u1_body_dynamics_artifacts/stage1/sympy_phase_b1.log: e602a7e4c4a8b4eb318f9136d4cecb6c0c0168b76b7b9b84d1899e255b21e17b
+  reports/u1_body_dynamics_artifacts/stage1/sympy_phase_b1.yaml: b7845a2606bbb5f838fe33561865122cfe966969185bd6bc37c5251b124074ba
+  reports/u1_body_dynamics_artifacts/sympy_phase_a.json: 10f404f0a01b61a1c717597d201088566189326e1f63c72c2633e6392adbc1b1
+  reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml: 3e2b2f559754fc73712e3a02543cc4f23d629599321af49930e566feaeb1ae1f
+runtime_dependency_sha256:
+  //research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md: 3553b0bea9598dbb91e6ea260e1a8b3e8bd843c41a20f06869169d43b82bcd0d
+  //research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md: 8e13de128dfa59aad2a56007b39485bf2b2e9c5d12ffe551525da43b2207f71f
+  //software/stage1_solver/decisions/16_retire_brane_polar_field.md: 7683c9e8b747b49b80974b58967e455581f02035587db52ed6bf8673c9663e87
+  //software/stage1_solver/reports/pathA_24_T0_freeze.md: b289cb0beebdc6b02e7d826eba06454b2424b6b90984bf43ebbb962941500dc1
+  //software/stage1_solver/reports/pathA_35_G0_freeze.md: e64b4c7f686180615ed80b4db63c05a5be08d55470dfd19b7c5d6655712eb3ea
+  //software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md: 7cbe065d7571a6dcc5bfcd0d767dd917c2cd47e18d9adfc3e417e45b4c8806fa
+  run_u1_body_dynamics.sh: 583fa8029ea487949a087162095f0e8b50e985a25ee947634b8cc589a7b8ca27
+  u1_body_dynamics_dual.wl: 44d3558f0e770853a0e506f13edbe4dd8cac827481df64db0b6d3ed8ff573cc0
+  u1_body_dynamics_fixtures.yaml: 290454fc21804f7f93412a7e7b1d880fa6577fbaf4a36a2fb0717aca8372076f
+  u1_body_dynamics_inputs.yaml: eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee
+  u1_body_dynamics_sympy.py: 44eede074d2b112fa0ddf9c4f5e47a7ae698130dca84c75fb480d31405b85073
+  u1_body_mechanics_compare.py: 08e5dcb1953a4c3bcc05b8d9d7fc8740a5f8c4bbba656a2213282f89911aeed8
+  u1_body_mechanics_dual.wl: deec7ba45b5eac087ceda1b7f9e2761bd6adaa0c9673d609258bd4332fb0abb1
+  u1_body_mechanics_fixtures.yaml: 82ebb2990fa0115331adc174d96150ccca11515f8a6108165954f2be02034097
+  u1_body_mechanics_inputs.yaml: 6bb2ebe8ecf72ec59efba0f4d1929f97684b2c90f9e56857bc36f25d8d89e826
+  u1_body_mechanics_mutations.py: 754831c05bd5d04f87b497a5f3610ae859839f127035a1629a765d619b76d4d3
+  u1_body_mechanics_sympy.py: a196c5de385a5bd41feb352ecbb0b65b4a8238c1a696b204eff430719f8170b7
+  //docs/em_u1_body_definition.md: 7c34894eb5de630e969b863f9a14ad5b80fb73c627f2fa11c1363c1df529e247
+  //docs/development_pipeline.md: b25b6d139b37a5872c9bb18e54ddce766a42f76b4de36024a540af71db5ee9f6
+  directive_u1_body_dynamics.md: 8d7ccf607a605edc86a82cf5530750fa8ab47f5b497e78d334a2968c4b425a54
+  directive_u1_body_dynamics_rebuild.md: 9327e4d56af27b945d1e43c1368d1958d674b48d28e49a613d8fe05f9e12c3e6
+  directive_u1_phaseA_remediation.md: c382e7cf25c5a0f999cec9588fd17435711fcdd2352330e9569caf99fb7864b2
+  directive_u1_phaseB_mechanics.md: 89de75fdd418ac8f3278009c14d39e9b0c87bfb513fd3026c363f9bea2101880
+  directive_u1_phaseB_rebuild.md: 678aedf63519ee407f8ae4895e8313506e3a7eb059e347b11ebd8f79bd4c0bfc
+  directive_u1_phaseB_remediation2.md: a295b7f34f23d4d305053267169ad89ccfcb9fc4c53521c684d9eb37719e9160
+  directive_u1_phaseB_remediation3.md: 6719c56611941d8e67cec8d43849970fcf8ceacb4099d77cbfe2c2974e7a15c8
+# Approved substrate NOT in the live runtime closure (Phase-A verification-era
+# comparator; byte-checked at startup/completion, excluded from closure equality):
+substrate_reference_sha256:
+  u1_body_dynamics_compare.py: c30009ca97cdbc44f3591c5aa307cb14126a6e93c5b7d507da582993f4504b34

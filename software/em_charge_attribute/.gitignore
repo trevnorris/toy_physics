@@ -1,0 +1,8 @@
+# Generated U1 Phase B2 stage-0 build artifacts — regenerable pipeline outputs.
+# NOT committed (per repo policy: commit source, not regenerable outputs).
+# The approved artifact's digests are recorded in the commit message that pins them:
+#   stage0_contract.yaml sha256, stage0_semantic_sha256, environment-closure digest, Obs_B2 digest.
+reports/u1_body_dynamics_artifacts/stage_b2_0_intake_radiative_contract/
+
+# Build/run pidfiles
+*.pid

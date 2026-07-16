@@ -1,0 +1,86 @@
+schema_version: U1_PHASE_B2_V47A_OBLIGATION_SCHEMA_V2
+directive_version: 47a
+status: FROZEN_BEFORE_STAGE0_EVALUATION
+
+# This is the independently frozen schema from which both engines expand the
+# minimum floor.  It contains categories and products, never live DAG output.
+axes:
+  endpoint: [E1, E2, E3, E4, E5]
+  parity: [one_sided_pathA29, symmetric_postulate]
+  closure: [body_mass_growth, sleeve_exit, return_path]
+  open_stratum: [all_admissible_open_functionals]
+  p_slice: [p=0, p_free, p=p_star_deferred_to_phase_C]
+  motion: [steady, accelerating]
+  g9_sector: [mass, momentum, energy]
+  deferred_gate: [G8, G10, G11]
+
+fixed_products:
+  - variational_translation_census_40
+  - inherited_OPEN_action_root_dispositions
+  - flux_translation_acceleration_census
+  - X_p_acceleration_remainder_report
+  - partition_reconstruction_residual
+  - two_route_reconstruction_residual
+  - source_to_term_incidence_residual
+  - stage0_mass_current
+  - stage0_momentum_current
+  - stage0_energy_current
+  - generated_operator_inventory
+  - generated_endpoint_branch_inventory
+  - mode_coverage_residual
+  - total_radiative_mass_current
+  - total_radiative_Noether_energy_flux
+  - total_radiative_Noether_momentum_flux
+  - total_F_rad
+  - total_K_rad
+  - total_work_storage_flux_identity
+  - K_total
+  - K_self_field
+  - five_channel_kernel_decomposition
+  - channel_remainders_E_ch
+  - aggregate_truncation_verdict
+  - drain_radiation_splitter
+
+expanded_products:
+  - {name: C_mdot_acceleration_block, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: C_mdot_velocity_block, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: pdot_generalized_velocity_remainder, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: X_p_acceleration_remainder_cell, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: variational_translation_census_cell, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: inherited_OPEN_action_root_disposition_cell, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: flux_translation_acceleration_census_cell, axes: [endpoint, parity, closure, open_stratum]}
+  - {name: per_cell_resolvent_identity, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: per_cell_known_nonzero_control, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: branch_Noether_energy_residue, axes: [operator_branch, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: branch_Noether_momentum_residue, axes: [operator_branch, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: F_rad, axes: [operator_branch, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: K_rad, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: branch_work_storage_flux_identity, axes: [operator_branch, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: radiative_mass_current, axes: [operator_branch, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: branch_pair_interference, axes: [unordered_operator_pair, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_Noether_energy_residue, axes: [unordered_operator_pair, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_Noether_momentum_residue, axes: [unordered_operator_pair, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_F_rad, axes: [unordered_operator_pair, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_K_rad, axes: [unordered_operator_pair, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_work_storage_flux_identity, axes: [unordered_operator_pair, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: pair_radiative_mass_current, axes: [unordered_operator_pair, motion, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: G2_record, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: G5_record, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: G6_record, axes: [operator_branch, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: G7_record, axes: [endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: G9_record, axes: [g9_sector, endpoint, parity, closure, open_stratum, p_slice]}
+  - {name: NOT_RUN_phase_C, axes: [deferred_gate]}
+
+required_category_coverage:
+  per_branch: [branch_Noether_energy_residue, branch_Noether_momentum_residue, F_rad, K_rad, branch_work_storage_flux_identity, radiative_mass_current]
+  per_unordered_pair: [branch_pair_interference, pair_Noether_energy_residue, pair_Noether_momentum_residue, pair_F_rad, pair_K_rad, pair_work_storage_flux_identity, pair_radiative_mass_current]
+  splitters: [drain_radiation_splitter]
+  currents: [stage0_mass_current, stage0_momentum_current, stage0_energy_current]
+  balances: [G9_record]
+
+fixture_only_g9_tolerance:
+  production_consulted: false
+  scale: 1
+  norm: max_abs_component
+  absolute_bound: 1/100
+  exceed_fixture_multiplier: 2

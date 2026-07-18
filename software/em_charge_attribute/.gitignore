@@ -13,3 +13,7 @@ reports/u1_body_dynamics_artifacts/stage_b2_1_intake_radiative_production/
 # Generated U1 Phase C stage-0 approval bundle — ratified by its semantic
 # contract digest and regenerated only before the exit-42 approval HALT.
 reports/u1_body_dynamics_artifacts/stage_c_0_tilt_coupling_contract/
+
+# Generated U1 Phase C PRODUCTION artifacts — regenerable via --production with the
+# commit-msg anchors; semantic digests pinned in the wrap-commit message.
+reports/u1_body_dynamics_artifacts/stage_c_1_tilt_coupling_production/

@@ -64,7 +64,7 @@ def main() -> int:
             mutation_path = Path(__file__).resolve().parents[2] / mutation_path
         require(sha256_file(mutation_path) == contract["dual_engine_evidence"]["mutations"]["sha256"], "B2_A1_PROTECTED_REWRITE", "stage0 mutation evidence digest")
         mutations = load_yaml(mutation_path)
-        rewrite = [row for row in mutations["cases"] if row["id"] == "PROTECTED_REWRITE_tooth"]
+        rewrite = [row for row in mutations["cases"] if row["id"] == "trace_semantics::relative_dirfd_protected_rewrite"]
         require(len(rewrite) == 1 and rewrite[0]["killed_at_own_assert"] and rewrite[0]["expected_assert"] == "B2_A1_PROTECTED_REWRITE", "B2_A1_PROTECTED_REWRITE", "must-fire mid-run path swap")
         require(merger["status"] == "PASS" and merger["B1_results_semantic_containment"] and merger["B1_markdown_prefix_byte_identical"], "B2_A1_MERGER", "aggregate containment")
         dump_yaml(a.output, {

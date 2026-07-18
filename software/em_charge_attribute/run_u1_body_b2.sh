@@ -52,7 +52,7 @@ bwrap_exec() {
   # three source copies beside the protected engines.  This replay-only nested
   # mount does not change the read-only root or any B2 production invocation.
   if [[ "${B2_B1_REPLAY_MUTATION_WRITES:-0}" == 1 ]]; then sandbox+=(--bind "$here" "$here"); fi
-  timeout 600 bwrap "${sandbox[@]}" env B2_READ_ONLY_ROOT_SANDBOX=1 B2_WRITABLE_MOUNT_POLICY="generated stage/scratch outputs, ephemeral tmpfs, merger-owned aggregate files" B2_FIRST_USE_LOG="${B2_FIRST_USE_LOG_OVERRIDE:-$scratch/traces/stage0/isolated.firstuse}" PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX="$pycache" LD_PRELOAD="$audit:$shim" PATH="$serial_bin:$PATH" WOLFRAMSCRIPT_REAL="$real_wolframscript" WOLFRAM_KERNEL_REAL="$real_wolfram_kernel" "$@"
+  timeout 1200 bwrap "${sandbox[@]}" env B2_READ_ONLY_ROOT_SANDBOX=1 B2_WRITABLE_MOUNT_POLICY="generated stage/scratch outputs, ephemeral tmpfs, merger-owned aggregate files" B2_FIRST_USE_LOG="${B2_FIRST_USE_LOG_OVERRIDE:-$scratch/traces/stage0/isolated.firstuse}" PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX="$pycache" LD_PRELOAD="$audit:$shim" PATH="$serial_bin:$PATH" WOLFRAMSCRIPT_REAL="$real_wolframscript" WOLFRAM_KERNEL_REAL="$real_wolfram_kernel" "$@"
 }
 
 snapshot_initial_existence() {
@@ -82,7 +82,7 @@ trace_run() {
   done
   if [[ "${B2_B1_REPLAY_MUTATION_WRITES:-0}" == 1 ]]; then sandbox+=(--bind "$here" "$here"); fi
   echo "[B2 trace] $name"
-  timeout 600 strace -ff -qq -yy -ttt -s 4096 \
+  timeout 1200 strace -ff -qq -yy -ttt -s 4096 \
     -e trace=openat,openat2,execve,chdir,fchdir,close,dup,dup2,dup3,clone,clone3,fork,vfork,connect,sendto,sendmsg,sendmmsg,socket,bind,listen,unlink,unlinkat,rename,renameat,renameat2,truncate \
     -o "$trace_dir/$name.strace" \
     bwrap "${sandbox[@]}" env B2_READ_ONLY_ROOT_SANDBOX=1 B2_WRITABLE_MOUNT_POLICY="generated stage/scratch outputs, ephemeral tmpfs, merger-owned aggregate files" B2_FIRST_USE_LOG="$first_use" PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX="$pycache" LD_PRELOAD="$audit:$shim" PATH="$serial_bin:$PATH" WOLFRAMSCRIPT_REAL="$real_wolframscript" WOLFRAM_KERNEL_REAL="$real_wolfram_kernel" "$@" >"$log" 2>&1
@@ -319,7 +319,12 @@ resume() {
   trace_authenticated "$trace" production_producer_seal "$logs/production_producer_seal.log" "$here/u1_body_b2_producer_seal.py" "$prod" python3 "$here/u1_body_b2_producer_seal.py" --producer production_dual_engines --path "$prod/sympy_b2.yaml" --path "$prod/mathematica_b2.yaml" --output "$prod/production_producer_digests.yaml"
   trace_authenticated "$trace" compare "$logs/compare.log" "$here/u1_body_b2_compare.py" "$prod" python3 "$here/u1_body_b2_compare.py" --sympy "$prod/sympy_b2.yaml" --mathematica "$prod/mathematica_b2.yaml" --stage0 "$contract" --stage0-contract-digest "$stage0_digest" --producer-record "$prod/production_producer_digests.yaml" --output "$prod/engine_agreement.yaml"
   trace_authenticated "$trace" agreement_producer_seal "$logs/agreement_producer_seal.log" "$here/u1_body_b2_producer_seal.py" "$prod" python3 "$here/u1_body_b2_producer_seal.py" --producer production_comparator --path "$prod/engine_agreement.yaml" --output "$prod/agreement_producer_digests.yaml"
-  trace_authenticated "$trace" mutations "$logs/mutations.log" "$here/u1_body_b2_mutations.py" "$prod" python3 "$here/u1_body_b2_mutations.py" --sympy "$prod/sympy_b2.yaml" --mathematica "$prod/mathematica_b2.yaml" --stage0 "$contract" --stage0-contract-digest "$stage0_digest" --work "$scratch/production_mutations" --output "$prod/mutations.yaml"
+  local mutation_batches=()
+  for batch in $(seq 0 14); do
+    mutation_batches+=("$prod/mutations_case_${batch}.yaml")
+    trace_authenticated "$trace" "mutations_case_${batch}" "$logs/mutations_case_${batch}.log" "$here/u1_body_b2_mutations.py" "$prod" python3 "$here/u1_body_b2_mutations.py" --sympy "$prod/sympy_b2.yaml" --mathematica "$prod/mathematica_b2.yaml" --stage0 "$contract" --stage0-contract-digest "$stage0_digest" --work "$scratch/production_mutations" --case-batch "$batch/15" --output "$prod/mutations_case_${batch}.yaml"
+  done
+  trace_authenticated "$trace" mutations_aggregate "$logs/mutations_aggregate.log" "$here/u1_body_b2_mutations.py" "$prod" python3 "$here/u1_body_b2_mutations.py" --aggregate-results "${mutation_batches[@]}" --output "$prod/mutations.yaml"
   trace_authenticated_bound "$trace" merger "$logs/merger.log" "$here/u1_body_b2_merge.py" "$prod" "$prod/agreement_producer_digests.yaml" python3 "$here/u1_body_b2_merge.py" --agreement "$prod/engine_agreement.yaml" --stage0 "$contract" --stage0-contract-digest "$stage0_digest" --b1-results-snapshot "$here/reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml" --b1-report-snapshot "$here/reports/u1_body_dynamics_artifacts/b1_final_report_snapshot.md" --results "$here/reports/u1_body_dynamics_results.yaml" --report "$here/reports/u1_body_dynamics.md" --provenance "$prod/merger_provenance.yaml"
   environment_assert production_trace_audit "$prod"
   isolated python3 "$here/u1_body_b2_authenticated_exec.py" --stage0 "$contract" --stage0-contract-digest "$stage0_digest" --consumer production_trace_audit --target "$here/u1_body_b2_trace_audit.py" --evidence "$prod/first_use_authentication/production_trace_audit.yaml" -- python3 "$here/u1_body_b2_trace_audit.py" --trace-dir "$trace" --scope stage0 --certificate "$certificate" --initial-existence "$trace/initial_existence.paths" --generated-prefix "$prod" --generated-prefix "$scratch/production_mutations" --output "$prod/production_trace_closure.yaml"

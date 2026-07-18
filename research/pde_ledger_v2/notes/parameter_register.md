@@ -743,3 +743,35 @@ against the stage's scripts/report (dims match, provenance classes honest, and �
 mislabeled: an `IMPOSED` calibration dressed as `DERIVED`/`CODIM-PROVEN` would falsely shrink the irreducible count) and
 fold the findings. The register is orchestrator-authored prose, so Codex reviews and the orchestrator folds. Template:
 `_scratch/parameter_register_verify_prompt.md`.
+
+---
+
+## EM-track / U1 Phase C rows (2026-07-18; orchestrator-applied from the stage-0 builder proposals)
+
+**Context.** U1 Phase C stage-0 (directive `software/em_charge_attribute/directive_u1_phaseC_tilt_coupling.md` v7, anchor
+`377eab17`) proposes the **eight indexed tilt-profile ingredients** — the exact B1 `emitted_indexed_leaves=8` set whose
+absence produced B1's 10/10 UNRESOLVED and B2's `tilt_profile`-blocked cells — as **`GAP_OPEN_FIELD_PROFILE` rows**:
+field-level OPEN inputs (domains are field configurations on `Ω_c`/`Σ`; the collective coordinate `p` is NOT in any input
+domain, per the directive's §0.6 typed-dataflow ban on answer-shaped inputs). Applied per the
+propose→orchestrator-apply→read-only-verify protocol; source = the stage-0 artifact
+`software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage_c_0_tilt_coupling_contract/parameter_register_proposals.yaml`
+(`register_modified_by_builder: false` verified). **All eight are reduction debt** (class GAP/OPEN — counted free), with
+ONE shared named discharge route: the **native tilted-sleeve boundary-value solve**, which is gated on the U2 boundary
+operator `𝔅` / post-mouth closure (the tilt question and the boundary-operator question are the same question).
+
+| Row | dims (L,T,M) | domain |
+|---|---|---|
+| `indexed_density_tilt_profile` | (−4, 0, 0) | scalar density tangent on `Ω_c` |
+| `indexed_flow_tilt_response` | (1, −1, 0) | vector velocity tangent on `Ω_c` |
+| `indexed_h_tilt_profile` | (0, 0, 0) | scalar `h` tangent on `Ω_c` |
+| `indexed_phase_tilt_profile` | (0, 0, 0) | scalar phase tangent on `Ω_c` |
+| `indexed_shear_tilt_profile` | (1, 0, 0) | brane displacement tangent on `Ω_c` |
+| `indexed_sleeve_surface_normal_profile` | (0, 0, 0) | normal variation on `Σ` |
+| `indexed_sleeve_tilt_profile` | (0, 0, 0) | `χ`-field tangent on `Ω_c` |
+| `indexed_uw_tilt_profile` | (1, 0, 0) | normal displacement tangent on `Ω_c` |
+
+Common attributes (all eight): embedding use `δΦ(y) = p_i · profile_i(y; endpoint, ambient)`; symmetry class
+TO_BE_COMPUTED (body conjugation + ambient branch — computed in production, never assumed); `counts_as_derived: false`.
+**Edge R49 (PENDING):** all eight ↦ discharged by the native tilted-sleeve BVP solve (U2-gated); until then they are
+counted debt, and any Phase-C output whose entire content descends from them lands `UNRESOLVED(named leaves)` per the
+directive's anti-padding rule. (These rows live on the EM/U1 track; no built v2 stage is touched. Ledger remains paused.)

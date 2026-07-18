@@ -416,3 +416,11 @@ These residual constructs remain explicit and are not accepted silently or prese
 | partition | partition_ledger | ownership_ledger | computed-candidate-ownership |
 
 Axis 1 is `COMPUTATION_VALID`; every mechanics cell remains honestly `UNRESOLVED`. B2 and Phase C remain `NOT_RUN(phase)`. [claim `mechanics_map` → `mechanics_map`; recompute `aggregate(cells.component_findings)`] [claim `partition` → `partition_ledger`; recompute `computed-candidate-ownership`]
+
+## Phase B2 — Intake response and radiative residues
+
+- Status: `PASS_WITH_HONEST_OUTCOMES`
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+- Phase-C gates: `NOT_RUN(phase_C)`

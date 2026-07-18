@@ -6,3 +6,6 @@ reports/u1_body_dynamics_artifacts/stage_b2_0_intake_radiative_contract/
 
 # Build/run pidfiles
 *.pid
+
+# Generated U1 Phase B2 PRODUCTION artifacts — regenerable via --resume; digests pinned in commit messages.
+reports/u1_body_dynamics_artifacts/stage_b2_1_intake_radiative_production/

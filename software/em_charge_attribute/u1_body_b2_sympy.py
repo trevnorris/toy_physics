@@ -39,7 +39,52 @@ def route_g9(sector: str, residual_zero: bool, determined: bool, energy_independ
 
 
 def full_residual(sector: str, balance: dict[str, Any]) -> dict[str, Any]:
-    """Consume the v47a canonical-term schema and recompute its signed sum."""
+    """Consume the v48 balance schema and recompute its signed sum when available."""
+    if "canonical_terms" not in balance:
+        typed_roots = balance.get("route_B_authenticated_typed_roots")
+        require(isinstance(typed_roots, dict), "B2_PROD_G9_WITNESS", f"{sector}:typed roots")
+        require(
+            "complete_signed_expression" in typed_roots and typed_roots["complete_signed_expression"] is None,
+            "B2_PROD_G9_WITNESS",
+            f"{sector}:absent canonical terms require null complete signed expression",
+        )
+        missing_laws = balance.get("missing_native_current_laws")
+        route_b_missing = typed_roots.get("missing_data")
+        require(
+            isinstance(missing_laws, list) and isinstance(route_b_missing, list),
+            "B2_PROD_G9_WITNESS",
+            f"{sector}:absent canonical terms require auditable source lists",
+        )
+        causes = sorted(set(missing_laws) | set(route_b_missing))
+        require(bool(causes), "B2_PROD_G9_WITNESS", f"{sector}:absent canonical terms require non-empty cause union")
+        if sector == "energy":
+            require(
+                "return_energy_closure" in causes,
+                "B2_PROD_G9_WITNESS",
+                "energy:Route B must witness return_energy_closure",
+            )
+        return {
+            "sector": sector,
+            "derivation": "independently witness that no complete signed balance expression is structurally available",
+            "full_residual_terms": [],
+            "computed_full_residual": None,
+            "energy_return_leaf_derivative": None,
+            "missing_native_current_laws": missing_laws,
+            "unavailability_witness": {
+                "predicate": "canonical_terms_absent && complete_signed_expression_is_null && union_nonempty",
+                "canonical_terms_present": False,
+                "complete_signed_expression": typed_roots["complete_signed_expression"],
+                "missing_native_current_laws": missing_laws,
+                "route_B_missing_data": route_b_missing,
+                "named_missing_functionals": causes,
+            },
+            "verdict": f"UNRESOLVED({','.join(causes)})",
+            "causes": causes,
+            "residual_identically_zero": False,
+            "all_terms_determined": False,
+            "return_energy_structurally_independent": False if sector == "energy" else None,
+        }
+
     terms: list[dict[str, Any]] = []
     expression = sp.Integer(0)
     for assignment in balance["canonical_terms"]:
@@ -76,8 +121,8 @@ def full_residual(sector: str, balance: dict[str, Any]) -> dict[str, Any]:
 def residue_status(operator: dict[str, Any]) -> str:
     table = {
         "gnls_density_phase": "UNRESOLVED(sleeve_core_trace)",
-        "wall_chi_static": "ZERO(no_frequency_kinetic_term)",
-        "wall_shear_gated": "ZERO(no_frequency_kinetic_term)",
+        # Contract evidence: the merged wall_chi_u_coupled inventory row has time_order: 0.
+        "wall_chi_u_coupled": "ZERO(no_frequency_kinetic_term)",
         "throat_source_open": "UNRESOLVED(throat_source)",
         "wall_mix_open": "UNRESOLVED(wall_mix)",
         "brane_shear_transverse": "UNRESOLVED(tilt_profile)",
@@ -150,14 +195,19 @@ def build(input_path: Path, stage0_path: Path, stage0_digest: str) -> dict[str, 
     input_key = rel_repo(input_path)
     require(input_key in manifest, "B2_A1_OBS_B2_EXACT", f"input not manifested: {input_key}")
     config, input_auth = load_yaml_authenticated(input_path, manifest[input_key], "production_sympy:input")
-    b1_path = Path(__file__).parent / "reports/u1_body_dynamics_artifacts/stage1/sympy_phase_b1.yaml"
+    # NOTE: .resolve() is required. Under authenticated_exec the runner content-pins this
+    # script and re-execs it as /proc/self/fd/<fd>, so __file__ is that /proc path; without
+    # .resolve() the parent is /proc/self/fd and the repo-relative key/containment checks fail.
+    # .resolve() follows the descriptor symlink back to the real repo file. (Bugfix 2026-07-16:
+    # first-ever run of the resume() production path; hash change re-sealed into the stage-0 manifest.)
+    b1_path = Path(__file__).resolve().parent / "reports/u1_body_dynamics_artifacts/stage1/sympy_phase_b1.yaml"
     b1_key = rel_repo(b1_path)
     require(b1_key in manifest, "B2_A1_OBS_B2_EXACT", f"B1 leaf not manifested: {b1_key}")
     b1, b1_auth = load_yaml_authenticated(b1_path, manifest[b1_key], "production_sympy:B1_partition_ledger")
 
     frozen = stage0["frozen_data"]
     operators = frozen["native_operator_inventory"]
-    require(len(operators) == 9, "B2_PROD_OPERATOR_COVERAGE", "nine committed native sectors")
+    require(len(operators) == 8, "B2_PROD_OPERATOR_COVERAGE", "eight committed native sectors")
     ancestry = {ancestor for row in operators for ancestor in row.get("action_ancestry", [])}
     require(not (ancestry & FORBIDDEN), "B2_PROD_NATIVE_ANCESTRY", "forbidden imported ancestry")
     balances = frozen["integrated_balance_identities"]["sectors"]

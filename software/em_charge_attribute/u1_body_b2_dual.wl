@@ -36,7 +36,7 @@ b1Pair = heldImport[b1Path, manifest[b1Key], "production_wolfram:B1_partition_le
 
 frozen = stage0["frozen_data"];
 ops = frozen["native_operator_inventory"];
-req[Length[ops] === 9, "B2_PROD_OPERATOR_COVERAGE", "nine committed native sectors"];
+req[Length[ops] === 8, "B2_PROD_OPERATOR_COVERAGE", "eight committed native sectors"];
 req[Length[b1["partition_ledger"]["records"]] === 41, "B2_PROD_LEDGER", "41-record frozen ledger"];
 
 routeG9[sector_, residualZero_, determined_, energyIndependent_, missingLaws_: {}] := Module[{exact, causes},
@@ -47,7 +47,28 @@ routeG9[sector_, residualZero_, determined_, energyIndependent_, missingLaws_: {
     "residual_identically_zero" -> residualZero, "all_terms_determined" -> determined, "return_energy_structurally_independent" -> energyIndependent|>
 ];
 
-fullResidual[sector_, balance_] := Module[{rows, expression, normal, determined, derivative, independent, routed},
+fullResidual[sector_, balance_] := Module[{rows, expression, normal, determined, derivative, independent, routed, typedRoots, missingLaws, routeBMissing, causes},
+  If[!KeyExistsQ[balance, "canonical_terms"],
+    typedRoots = Lookup[balance, "route_B_authenticated_typed_roots", Missing["NotAvailable"]];
+    req[AssociationQ[typedRoots], "B2_PROD_G9_WITNESS", sector <> ":typed roots"];
+    req[KeyExistsQ[typedRoots, "complete_signed_expression"] && typedRoots["complete_signed_expression"] === Null,
+      "B2_PROD_G9_WITNESS", sector <> ":absent canonical terms require null complete signed expression"];
+    missingLaws = Lookup[balance, "missing_native_current_laws", Missing["NotAvailable"]];
+    routeBMissing = Lookup[typedRoots, "missing_data", Missing["NotAvailable"]];
+    req[ListQ[missingLaws] && ListQ[routeBMissing], "B2_PROD_G9_WITNESS", sector <> ":absent canonical terms require auditable source lists"];
+    causes = Sort[DeleteDuplicates[Join[missingLaws, routeBMissing]]];
+    req[Length[causes] > 0, "B2_PROD_G9_WITNESS", sector <> ":absent canonical terms require non-empty cause union"];
+    If[sector === "energy", req[MemberQ[causes, "return_energy_closure"], "B2_PROD_G9_WITNESS", "energy:Route B must witness return_energy_closure"]];
+    Return[<|"sector" -> sector, "derivation" -> "independently witness that no complete signed balance expression is structurally available",
+      "full_residual_terms" -> {}, "computed_full_residual" -> Null, "energy_return_leaf_derivative" -> Null,
+      "missing_native_current_laws" -> missingLaws,
+      "unavailability_witness" -> <|"predicate" -> "canonical_terms_absent && complete_signed_expression_is_null && union_nonempty",
+        "canonical_terms_present" -> False, "complete_signed_expression" -> typedRoots["complete_signed_expression"],
+        "missing_native_current_laws" -> missingLaws, "route_B_missing_data" -> routeBMissing, "named_missing_functionals" -> causes|>,
+      "verdict" -> "UNRESOLVED(" <> StringRiffle[causes, ","] <> ")", "causes" -> causes,
+      "residual_identically_zero" -> False, "all_terms_determined" -> False,
+      "return_energy_structurally_independent" -> If[sector === "energy", False, Null]|>]
+  ];
   rows = Map[Function[a, Module[{components, term}, components = ToExpression /@ a["canonical_symbol_components"]; term = Expand[Total[components]];
       <|"channel" -> a["channel"], "source_root" -> a["source_root"], "native_integrated_term" -> a["term_components"],
         "canonical_symbol_components" -> a["canonical_symbol_components"], "symbolic_term" -> ToString[term, InputForm], "determined" -> TrueQ[a["determined"]]|>]], balance["canonical_terms"]];
@@ -63,8 +84,9 @@ fullResidual[sector_, balance_] := Module[{rows, expression, normal, determined,
 balances = frozen["integrated_balance_identities"]["sectors"];
 g9 = AssociationMap[fullResidual[#, balances[#]] &, {"mass", "momentum", "energy"}];
 
-statusTable = <|"gnls_density_phase" -> "UNRESOLVED(sleeve_core_trace)", "wall_chi_static" -> "ZERO(no_frequency_kinetic_term)",
-  "wall_shear_gated" -> "ZERO(no_frequency_kinetic_term)", "throat_source_open" -> "UNRESOLVED(throat_source)", "wall_mix_open" -> "UNRESOLVED(wall_mix)",
+(* Contract evidence: the merged wall_chi_u_coupled inventory row has time_order: 0. *)
+statusTable = <|"gnls_density_phase" -> "UNRESOLVED(sleeve_core_trace)", "wall_chi_u_coupled" -> "ZERO(no_frequency_kinetic_term)",
+  "throat_source_open" -> "UNRESOLVED(throat_source)", "wall_mix_open" -> "UNRESOLVED(wall_mix)",
   "brane_shear_transverse" -> "UNRESOLVED(tilt_profile)", "brane_normal_local" -> "ZERO(no_propagating_support)",
   "h_scalar" -> "UNRESOLVED(geon_core_bundle)", "geon_open" -> "UNRESOLVED(geon_core_bundle)"|>;
 req[Sort[Keys[statusTable]] === Sort[Lookup[ops, "id"]], "B2_PROD_OPERATOR_COVERAGE", "residue classifier coverage"];
@@ -99,6 +121,12 @@ radiation = <|"trajectory_representation" -> frozen["trajectory_representation"]
   "interference" -> "UNRESOLVED(native_branch_inputs)", "K_self_field" -> "UNRESOLVED(native_branch_inputs)", "K_total" -> "UNRESOLVED(native_branch_inputs)",
   "totals" -> AssociationMap["UNRESOLVED(native_branch_inputs)" &, {"Noether_flux", "F_rad", "K_rad", "work_storage_flux_identity", "radiative_mass_current"}], "forbidden_ancestry_guard" -> "PASS"|>;
 
+codePointLess[left_, right_] := Module[{a = ToCharacterCode[left, "Unicode"], b = ToCharacterCode[right, "Unicode"], n, difference},
+  n = Min[Length[a], Length[b]];
+  difference = FirstPosition[MapThread[Unequal, {Take[a, n], Take[b, n]}], True];
+  If[MissingQ[difference], Length[a] < Length[b], a[[difference[[1]]]] < b[[difference[[1]]]]]
+];
+
 typedDAG[floor_] := Module[{nodes, add, prefix, producer}, nodes = <|"report_headline" -> <|"type" -> "sink", "depends_on" -> {}|>|>;
   add[product_, producer_] := (AssociateTo[nodes, product -> <|"type" -> "obligation_product", "producer" -> producer, "depends_on" -> {}|>]; nodes["report_headline", "depends_on"] = Append[nodes["report_headline", "depends_on"], product]);
   Do[prefix = First[StringSplit[product, "|", 2]];
@@ -107,7 +135,7 @@ typedDAG[floor_] := Module[{nodes, add, prefix, producer}, nodes = <|"report_hea
       StringStartsQ[prefix, "NOT_RUN_"], "phase_C", StringStartsQ[prefix, "stage0_"], "stage0_evidence",
       MemberQ[{"generated_operator_inventory", "generated_endpoint_branch_inventory", "mode_coverage_residual", "total_radiative_mass_current", "total_radiative_Noether_energy_flux", "total_radiative_Noether_momentum_flux", "total_F_rad", "total_K_rad", "total_work_storage_flux_identity", "K_total", "K_self_field"}, prefix], "radiation", True, "partition_or_status"];
     add[product, producer], {product, floor["expanded_records"]}];
-  nodes["report_headline", "depends_on"] = Sort[nodes["report_headline", "depends_on"]]; <|"root" -> "report_headline", "nodes" -> nodes|>
+  nodes["report_headline", "depends_on"] = Sort[nodes["report_headline", "depends_on"], codePointLess]; <|"root" -> "report_headline", "nodes" -> nodes|>
 ];
 
 result = <|"schema_version" -> "U1_PHASE_B2_PRODUCTION_ENGINE_V3", "engine" -> "Mathematica",
@@ -117,5 +145,7 @@ result = <|"schema_version" -> "U1_PHASE_B2_PRODUCTION_ENGINE_V3", "engine" -> "
   "grid" -> <|"cell_count" -> Length[cells], "cells" -> cells|>, "operator_inventory" -> ops, "partition" -> partition, "radiation" -> radiation,
   "phase_C" -> <|"G8" -> "NOT_RUN(phase_C)", "G10" -> "NOT_RUN(phase_C)", "G11" -> "NOT_RUN(phase_C)"|>, "typed_dag" -> typedDAG[frozen["minimum_obligation_manifest"]]|>;
 result["sink_digest"] = Hash[ExportString[KeySort[result[[{"grid", "operator_inventory", "partition", "radiation", "phase_C", "typed_dag"}]]], "RawJSON", "Compact" -> True], "SHA256", "HexString"];
-CreateDirectory[DirectoryName[output], CreateIntermediateDirectories -> True]; Export[output, result, "RawJSON", "Compact" -> False];
+If[!DirectoryQ[DirectoryName[output]], CreateDirectory[DirectoryName[output], CreateIntermediateDirectories -> True]];
+(* Compact RawJSON remains strict-YAML-loadable; pretty RawJSON emits forbidden tab indentation. *)
+Export[output, result, "RawJSON", "Compact" -> True];
 Print["B2_MATHEMATICA: COMPLETE_WITH_HONEST_OUTCOMES cells=" <> ToString[Length[cells]]];

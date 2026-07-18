@@ -7,6 +7,7 @@ import argparse
 import ast
 import hashlib
 import os
+import re
 import subprocess
 import sys
 import time
@@ -571,6 +572,12 @@ def validate_sources(repo: Path) -> int:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
     required = [
         source / "u1_phaseC_stage0_dual.wl",
+        source / "u1_phaseC_production_sympy.py",
+        source / "u1_phaseC_production_dual.wl",
+        source / "u1_phaseC_production_compare.py",
+        source / "u1_phaseC_production_mutations.py",
+        source / "u1_phaseC_production_runner.py",
+        source / "u1_phaseC_production_a9.py",
         source / "run_u1_body_phaseC.sh",
         Path("/usr/local/Wolfram/Wolfram/15.0/Executables/WolframKernel"),
         Path("/usr/bin/bwrap"),
@@ -579,19 +586,51 @@ def validate_sources(repo: Path) -> int:
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
         raise StageFailure(f"runner prerequisites missing: {missing}")
-    print(f"PHASEC_RUNNER_VALID sources={len(python_files) + 2} stages=12")
+    print(f"PHASEC_RUNNER_VALID sources={len(python_files) + 3} stage0_stages=12 production_stages=10")
     return 0
+
+
+def assert_production_launcher_at_anchor(repo: Path, anchor: str, path: Path) -> None:
+    resolved = path.resolve()
+    rel = resolved.relative_to(repo).as_posix()
+    result = subprocess.run(
+        ["git", "cat-file", "blob", f"{anchor}:{rel}"],
+        cwd=repo,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if result.returncode != 0:
+        raise StageFailure(f"ASSERT_EVALUATED_CODE_CLOSURE production launcher absent from anchor: {rel}")
+    if hashlib.sha256(resolved.read_bytes()).digest() != hashlib.sha256(result.stdout).digest():
+        raise StageFailure(f"ASSERT_EXECUTED_BYTES_MATCH_ANCHOR production launcher differs: {rel}")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", default=str(Path(__file__).resolve().parents[2]))
     parser.add_argument("--startup-contract-commit")
+    parser.add_argument("--stage0-contract-digest")
     parser.add_argument("--stage0", action="store_true")
+    parser.add_argument("--production", action="store_true")
+    parser.add_argument(
+        "--production-a9-preflight",
+        choices=("arbiter", "fidelity", "adversarial_recompute", "read_only_review"),
+    )
+    parser.add_argument("--a9-output")
+    parser.add_argument("--production-self-probe", action="store_true")
     parser.add_argument("--validate-only", action="store_true")
     parser.add_argument("--self-probe", action="store_true")
     args = parser.parse_args()
     repo = Path(args.repo).resolve()
+    if args.production_self_probe:
+        os.execv(
+            "/usr/bin/python3",
+            [
+                "/usr/bin/python3", "-I",
+                str(repo / "software/em_charge_attribute/u1_phaseC_production_runner.py"),
+                "--repo", str(repo), "--self-probe",
+            ],
+        )
     if args.self_probe:
         output = repo / SCRATCH_REL / "runner_shell_probe.yaml"
         dump_yaml(
@@ -607,8 +646,72 @@ def main() -> int:
         return 0
     if args.validate_only:
         return validate_sources(repo)
+    if args.production_a9_preflight:
+        if not args.startup_contract_commit or not args.stage0_contract_digest:
+            parser.error("A9 preflight requires both orchestrator-supplied anchor and stage0 digest")
+        if not re.fullmatch(r"[0-9a-f]{40}", args.startup_contract_commit) or args.startup_contract_commit == "HEAD":
+            raise StageFailure("A9 production anchor must be a full orchestrator-supplied commit, never HEAD")
+        resolved = subprocess.run(
+            ["git", "rev-parse", f"{args.startup_contract_commit}^{{commit}}"],
+            cwd=repo,
+            check=True,
+            stdout=subprocess.PIPE,
+            text=True,
+        ).stdout.strip()
+        if resolved != args.startup_contract_commit:
+            raise StageFailure("A9 production anchor did not resolve identically")
+        source = repo / "software/em_charge_attribute"
+        a9_script = source / "u1_phaseC_production_a9.py"
+        for path in (Path(__file__), source / "run_u1_body_phaseC.sh", a9_script):
+            assert_production_launcher_at_anchor(repo, resolved, path)
+        output = args.a9_output or str(
+            source / "reports/u1_body_dynamics_artifacts/stage_c_1_tilt_coupling_production"
+            / f"a9_preflight_{args.production_a9_preflight}.yaml"
+        )
+        os.execv(
+            "/usr/bin/python3",
+            [
+                "/usr/bin/python3", "-I", str(a9_script), "--repo", str(repo),
+                "--leg", args.production_a9_preflight,
+                "--startup-contract-commit", resolved,
+                "--stage0-contract-digest", args.stage0_contract_digest,
+                "--output", output,
+            ],
+        )
+    if args.stage0 and args.production:
+        parser.error("choose exactly one of --stage0 or --production")
+    if args.production:
+        if not args.startup_contract_commit:
+            parser.error("--production requires orchestrator-supplied --startup-contract-commit")
+        if not args.stage0_contract_digest:
+            parser.error("--production requires orchestrator-supplied --stage0-contract-digest")
+        if not re.fullmatch(r"[0-9a-f]{40}", args.startup_contract_commit) or args.startup_contract_commit == "HEAD":
+            raise StageFailure("production anchor must be a full orchestrator-supplied commit, never HEAD")
+        resolved = subprocess.run(
+            ["git", "rev-parse", f"{args.startup_contract_commit}^{{commit}}"],
+            cwd=repo,
+            check=True,
+            stdout=subprocess.PIPE,
+            text=True,
+        ).stdout.strip()
+        if resolved != args.startup_contract_commit:
+            raise StageFailure("production anchor did not resolve identically")
+        source = repo / "software/em_charge_attribute"
+        for path in (
+            Path(__file__), source / "run_u1_body_phaseC.sh",
+            source / "u1_phaseC_production_runner.py",
+        ):
+            assert_production_launcher_at_anchor(repo, resolved, path)
+        os.execv(
+            "/usr/bin/python3",
+            [
+                "/usr/bin/python3", "-I", str(source / "u1_phaseC_production_runner.py"),
+                "--repo", str(repo), "--startup-contract-commit", resolved,
+                "--stage0-contract-digest", args.stage0_contract_digest,
+            ],
+        )
     if not args.stage0:
-        parser.error("this build runner requires --stage0")
+        parser.error("this build runner requires --stage0 or --production")
     if not args.startup_contract_commit:
         parser.error("--startup-contract-commit is orchestrator-supplied and required")
     resolved = subprocess.run(

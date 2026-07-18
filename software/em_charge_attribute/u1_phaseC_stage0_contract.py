@@ -286,10 +286,17 @@ def build_reconciliation(
 ) -> dict[str, Any]:
     pins = {row["role"]: row["sha256"] for row in pin_table["records"]}
     slot_ids = {row["slot_id"] for row in slots}
-    blocker = "tilt:indexed_sleeve_tilt_profile"
+    tilt_slots = sorted(
+        (slot_id for slot_id in slot_ids if slot_id.startswith("tilt:")),
+        key=str.casefold,
+    )
     if mutation == "ASSERT_RECONCILIATION_BLOCKER_SLOT":
-        blocker = "tilt:missing_fixture"
-    require(blocker in slot_ids, "ASSERT_RECONCILIATION_BLOCKER_SLOT", "missing tilt blocker")
+        tilt_slots[-1] = "tilt:missing_fixture"
+    require(
+        len(tilt_slots) == 8 and all(slot_id in slot_ids for slot_id in tilt_slots),
+        "ASSERT_RECONCILIATION_BLOCKER_SLOT",
+        "missing ratified tilt blocker set",
+    )
     records: list[dict[str, Any]] = []
     for expected_id in sorted(expected_ids):
         category, upstream = expected_id.split("|", 1)
@@ -297,24 +304,24 @@ def build_reconciliation(
             artifact = pins["B1_final_results"]
             frozen = "UNRESOLVED(tilt_profile)"
             routing = "PHASE_C_WITNESS_UNRESOLVED"
-            witness = f"witness:{blocker}"
+            witness_references = [f"witness:tilt:{upstream}"]
             new_witness = False
         elif category == "B2_TILT_PATH":
             artifact = pins["B2_sympy_production"]
             frozen = "UNRESOLVED(tilt_profile)"
             routing = "PHASE_C_WITNESS_UNRESOLVED"
-            witness = f"witness:{blocker}"
+            witness_references = [f"witness:{slot_id}" for slot_id in tilt_slots]
             new_witness = False
         else:
             artifact = pins["B2_sealed_stage0_contract"]
             frozen = "p=p_star_deferred_to_phase_C"
             if upstream.startswith("G9_record|"):
                 routing = "PRESERVED_G9_EXACT_REFERENCE"
-                witness = None
+                witness_references = []
                 new_witness = False
             else:
                 routing = "PHASE_C_WITNESS_UNRESOLVED"
-                witness = f"witness:{blocker}"
+                witness_references = [f"witness:{slot_id}" for slot_id in tilt_slots]
                 new_witness = False
         records.append(
             {
@@ -323,15 +330,36 @@ def build_reconciliation(
                 "canonical_upstream_id_or_schema_path": upstream,
                 "frozen_upstream_disposition_verbatim": frozen,
                 "phase_C_stage0_routing": routing,
-                "witness_reference": witness,
+                "witness_references": witness_references,
                 "new_witness_minted": new_witness,
                 "upstream_record_modified": False,
             }
         )
+    if mutation == "ASSERT_RECONCILIATION_WITNESS_REFERENCES":
+        records[0]["witness_references"] = ["witness:tilt:indexed_sleeve_tilt_profile"]
+    expected_tilt_witnesses = [f"witness:{slot_id}" for slot_id in tilt_slots]
+    require(
+        all(
+            row["witness_references"]
+            == (
+                []
+                if row["phase_C_stage0_routing"] == "PRESERVED_G9_EXACT_REFERENCE"
+                else [
+                    "witness:tilt:"
+                    + row["successor_key"].split("|", 1)[1]
+                ]
+                if row["successor_key"].startswith("B1_LEAF|")
+                else expected_tilt_witnesses
+            )
+            for row in records
+        ),
+        "ASSERT_RECONCILIATION_WITNESS_REFERENCES",
+        "stage-0 reconciliation witness references are not datum-correct",
+    )
     record_ids = [row["successor_key"] for row in records]
     counts = Counter(row.split("|", 1)[0] for row in record_ids)
     return {
-        "schema_version": "U1_PHASE_C_RECONCILIATION_INVENTORY_V1",
+        "schema_version": "U1_PHASE_C_RECONCILIATION_INVENTORY_V2",
         "generation": "mechanical frozen B1/B2 walk; immutable overlay only",
         "expected_ids": sorted(expected_ids),
         "records": records,

@@ -216,7 +216,7 @@ def generate_summary(
             "",
             f"Mutation teeth: {mutation_count}; zero vacuous cases; both DERIVED anti-dodge teeth and "
             "all 56 derivability-class canaries fired through the real comparator at "
-            "stage0_unresolved_refuted, and all 58 guarded-property-absent controls survived.",
+            "stage0_unresolved_refuted, and every guarded-property-absent control survived.",
             "",
             "## Standards",
             "",
@@ -355,6 +355,17 @@ def main() -> int:
             [*common_compare, "--mutation", assert_id],
             "comparator_per_require",
         )
+    amendment_comparator_asserts = (
+        "ASSERT_RADIATION_CENSUS_COVERAGE",
+        "ASSERT_G8_ENTRY_WITNESS_SLOTS",
+    )
+    for assert_id in amendment_comparator_asserts:
+        expected_survival(
+            control_records,
+            [*common_compare, "--control-assert", assert_id],
+            "amendment_defect_absent_control",
+            assert_id,
+        )
     for mode, case in (
         ("overwrite", "overwrite_DERIVED"),
         ("first_construction", "first_time_construction"),
@@ -414,6 +425,7 @@ def main() -> int:
         "ASSERT_PIN_B1_TERMINAL",
         "ASSERT_PIN_B2_DISPOSITIONS",
         "ASSERT_RECONCILIATION_BLOCKER_SLOT",
+        "ASSERT_RECONCILIATION_WITNESS_REFERENCES",
         "ASSERT_ENV_MOUNT_IDENTITY",
         "ASSERT_WOLFRAM_SEAT_LIMIT",
         "ASSERT_ENV_PYTHON_SANITIZED",
@@ -430,6 +442,16 @@ def main() -> int:
             [*contract_base, "--output-dir", str(case_out), "--mutation", assert_id],
             "contract_per_require",
         )
+    expected_survival(
+        control_records,
+        [
+            *contract_base,
+            "--output-dir",
+            str(scratch / "contract_controls" / "reconciliation_witness_references"),
+        ],
+        "amendment_defect_absent_control",
+        "ASSERT_RECONCILIATION_WITNESS_REFERENCES",
+    )
     expected_death(
         records,
         "ASSERT_CONTRACT_ARGUMENTS",
@@ -740,6 +762,9 @@ def main() -> int:
             "typed_sink_wolfram": "DIED_AT_OWN_ASSERT",
             "dimensional_ablation": "DIED_AT_OWN_ASSERT",
             "G8_nonfloor_omission": "DIED_AT_OWN_ASSERT",
+            "radiation_census_coverage": "DIED_AT_OWN_ASSERT_AND_CONTROL_SURVIVED",
+            "G8_entry_witness_slot_resolution": "DIED_AT_OWN_ASSERT_AND_CONTROL_SURVIVED",
+            "reconciliation_witness_references": "DIED_AT_OWN_ASSERT_AND_CONTROL_SURVIVED",
         },
         "standards": {
             "S1_traceable_cause_tags": "PASS",
@@ -754,7 +779,7 @@ def main() -> int:
     if (
         campaign["vacuous_case_count"]
         or campaign["mutation_noop_count"]
-        or len(control_records) != len(unresolved) + 2
+        or len(control_records) != len(unresolved) + 5
         or any(
             row["status"] != "GUARDED_PROPERTY_ABSENT_REAL_COMPARATOR_SURVIVED"
             for row in control_records

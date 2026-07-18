@@ -3,7 +3,7 @@
 ClearAll["Global`*"];
 
 schema = "U1_PHASE_C_PRODUCTION_ENGINE_V1";
-ratifiedDigest = "83233baabd7f8e27c88d130b911691e76d01d5797da8eeb32c90bbae111ec95a";
+ratifiedDigest = "e632a8d6729d0a1b3a4ade883c28f6b21f7a29fea566318cdd6fefec8c15d0da";
 mediators = {"h", "u_T", "u_L", "wall_chi"};
 endpoints = {"E1", "E2", "E3", "E4", "E5"};
 ambients = {"one_sided_pathA29", "symmetric_postulate"};
@@ -38,6 +38,14 @@ parityBranchMap[ambient_String] := If[ambient == "one_sided_pathA29",
   "P_one_sided[O]=P_body[O]+A_slab[O]; A_slab is retained as an OPEN-dependent asymmetry functional",
   "P_symmetric[O]=P_body[O]+R_w[P_body[O]] under the declared ambient postulate"];
 endpointSlot[endpoint_String] := Which[endpoint == "E4", {"endpoint:E4_constraint_data"}, endpoint == "E5", {"endpoint:E5_Rayleigh_data"}, True, {}];
+endpointOpenLeafApplicable[slotId_String, endpoint_String] := Module[
+  {native = Last[StringSplit[slotId, ":", 2]]},
+  Which[
+    native == "E4_shear_lock", endpoint == "E4",
+    MemberQ[{"E5_rayleigh", "gammaSigma", "tangentDtN"}, native], endpoint == "E5",
+    True, True
+  ]
+];
 ratifiedUnresolvedCandidates[slotAssociation_Association, candidates_List] := Module[{candidateIds = canonicalSort[candidates]},
   require[And @@ (KeyExistsQ[slotAssociation, #] & /@ candidateIds),
     "dependency candidate is absent from the ratified availability table"];
@@ -50,7 +58,8 @@ mappedUnresolvedDependencies[slotAssociation_Association, endpoint_String, ambie
    endpointCandidates = endpointSlot[endpoint]},
   canonicalSort[KeyValueMap[
     If[#2["disposition"] == "UNRESOLVED" && (
-        StringStartsQ[#1, "tilt:"] || StringStartsQ[#1, "open_leaf:"] ||
+        StringStartsQ[#1, "tilt:"] ||
+        (StringStartsQ[#1, "open_leaf:"] && endpointOpenLeafApplicable[#1, endpoint]) ||
         #2["category"] == "7.5a_surface" || #1 == greenSlot || MemberQ[endpointCandidates, #1] ||
         TrueQ[includeCoupling] && (StringStartsQ[#1, "J:"] || StringStartsQ[#1, "deltaO:"] || #1 == multipoleSlot)),
       #1, Nothing] &, slotAssociation]]
@@ -71,6 +80,56 @@ sourceApplicable[source_String, endpoint_String] := Which[
   source == "input:E4_shear_lock", endpoint == "E4",
   source == "input:E5_rayleigh", endpoint == "E5",
   True, True
+];
+sourceOpenLeafEdges[source_String] := Lookup[<|
+  "action:h_gradient" -> {"open_leaf:Mh"},
+  "action:h_kinetic" -> {"open_leaf:Mh", "open_leaf:cE"},
+  "action:throat_source" -> {"open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional"},
+  "action:wall_mix" -> {"open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional"},
+  "input:outer_surface_functional" -> {"open_leaf:outer_surface_functional"},
+  "input:native_momentum" -> {"open_leaf:mdot"},
+  "input:return_closure" -> {"open_leaf:mdot", "open_leaf:return_closure"},
+  "input:E4_shear_lock" -> {"open_leaf:E4_shear_lock"},
+  "input:E5_rayleigh" -> {"open_leaf:E5_rayleigh", "open_leaf:gammaSigma", "open_leaf:tangentDtN"},
+  "radiation:geon_open" -> {"open_leaf:geon_core_bundle"},
+  "radiation:throat_source_open" -> {"open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional"},
+  "radiation:wall_mix_open" -> {"open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional"}
+|>, source, {}];
+typedRootWalkDependencies[slotAssociation_Association, forceRows_List, couplingRows_List,
+    tiltProfile_Association, jRows_List, deltaRows_List, endpoint_String, ambient_String,
+    closure_String, includeCoupling_] := Module[
+  {dependencies = tiltProfile["unresolved_slots"], rootRows, activeRows, rootIds,
+   sourceId, candidateIds},
+  rootRows = If[TrueQ[includeCoupling], couplingRows, forceRows];
+  activeRows = Select[rootRows, sourceApplicable[#1["source_id"], endpoint] &];
+  rootIds = canonicalSort[#1["source_id"] & /@ activeRows];
+  dependencies = Join[dependencies, Flatten[sourceOpenLeafEdges /@ rootIds]];
+  Do[
+    sourceId = row["source_id"];
+    If[TrueQ[includeCoupling],
+      If[MemberQ[{"action:throat_source", "action:wall_mix"}, sourceId],
+        AppendTo[dependencies, "domain:Sigma_boundary_data"]];
+      If[MemberQ[{"input:outer_surface_functional", "input:native_momentum", "input:return_closure"}, sourceId],
+        AppendTo[dependencies, "domain:partial_Omega_c_boundary_data"]],
+      If[row["support"] == "Sigma", AppendTo[dependencies, "domain:Sigma_boundary_data"]];
+      If[row["support"] == "partial_Omega_c", AppendTo[dependencies, "domain:partial_Omega_c_boundary_data"]]
+    ];
+    If[sourceId == "input:E4_shear_lock", AppendTo[dependencies, "endpoint:E4_constraint_data"]];
+    If[sourceId == "input:E5_rayleigh", AppendTo[dependencies, "endpoint:E5_Rayleigh_data"]],
+    {row, activeRows}
+  ];
+  If[AnyTrue[rootIds, StringStartsQ[#, "radiation:"] &],
+    AppendTo[dependencies, "green_domain:" <> ambient <> ":" <> closure]];
+  If[TrueQ[includeCoupling],
+    dependencies = Join[dependencies,
+      Flatten[#1["functional"]["unresolved_slots"] & /@ jRows],
+      Flatten[#1["functional"]["unresolved_slots"] & /@ deltaRows],
+      {"multipole_domain:" <> ambient <> ":" <> closure}]
+  ];
+  candidateIds = canonicalSort[dependencies];
+  require[And @@ (KeyExistsQ[slotAssociation, #] & /@ candidateIds),
+    "typed-root dependency candidate is absent from ratified availability table"];
+  {canonicalSort[Select[candidateIds, slotAssociation[#]["disposition"] == "UNRESOLVED" &]], rootIds}
 ];
 cellKey[endpoint_, ambient_, closure_, stratum_] := <|
   "endpoint" -> endpoint, "ambient_branch" -> ambient, "closure_branch" -> closure,
@@ -219,9 +278,9 @@ tiltFormalism = <|
 
 Print["PHASEC_WOLFRAM_PROGRESS production_tilt_grid"];
 tiltCells = Flatten[Table[
-  dynamicAncestrySlots = ratifiedUnresolvedCandidates[slots,
-    Join[{"green_domain:" <> ambient <> ":" <> closure}, endpointSlot[endpoint]]];
-  ancestryDependencies = canonicalSort[Join[tiltSlots, openSlots, surfaceSlots, dynamicAncestrySlots]];
+  ancestryWalk = typedRootWalkDependencies[slots, forceEntries, {},
+    tiltFormalism["profile_family"], {}, {}, endpoint, ambient, closure, False];
+  ancestryDependencies = ancestryWalk[[1]]; ancestryRootIds = ancestryWalk[[2]];
   mappedDependencies = mappedUnresolvedDependencies[slots, endpoint, ambient, closure, False];
   key = cellKey[endpoint, ambient, closure, stratum];
   <|
@@ -229,7 +288,10 @@ tiltCells = Flatten[Table[
     "availability" -> namedUnresolved[ancestryDependencies, "UNRESOLVED"],
     "physics_status" -> namedUnresolved[ancestryDependencies, "TILT_UNRESOLVED"],
     "computed_typed_ancestry_unresolved_slots" -> Identity /@ ancestryDependencies,
+    "computed_typed_ancestry_root_ids" -> Identity /@ ancestryRootIds,
+    "typed_ancestry_generator" -> "actual_defining_object_typed_root_walk_v1",
     "dependency_map_slots" -> Identity /@ mappedDependencies,
+    "dependency_map_generator" -> "availability_taxonomy_filter_v1",
     "dependency_exact_set_equal" -> (ancestryDependencies === mappedDependencies),
     "parity" -> <|
       "transformation" -> "p_i -> p_i under body conjugation only if all T_Ai transformations close",
@@ -298,7 +360,11 @@ endpointVirtualWork = Table[
   pair = endpointDescriptions[endpoint];
   deps = endpointSlot[endpoint]; If[MemberQ[{"E1", "E2"}, endpoint], deps = surfaceSlots];
   <|"endpoint" -> endpoint, "channel" -> pair[[1]], "explicit_virtual_work_or_variation" -> pair[[2]],
-    "availability" -> If[deps === {}, <|"enum" -> "DERIVED_STRUCTURAL_FORM"|>, namedUnresolved[deps, "UNRESOLVED"]],
+    "availability" -> If[deps === {}, <|
+      "enum" -> "DERIVED",
+      "value_digest" -> "05d621d79e7b0229cb6f44deced23430932e7e0f0e2dde4a21efab2873b5c8b5",
+      "dual_engine_comparison_id" -> "DUAL_ENGINE:7.5c:E3_STRUCTURAL_FORM"|>,
+      namedUnresolved[deps, "UNRESOLVED"]],
     "structural_zeros" -> <|"constraint" -> (endpoint =!= "E4"), "Rayleigh" -> (endpoint =!= "E5")|>,
     "dimensions_restored" -> "virtual work/action; derived generalized force has L^1 T^-2 M^1"|>,
   {endpoint, endpoints}
@@ -328,10 +394,9 @@ totalResponse = <|
 
 Print["PHASEC_WOLFRAM_PROGRESS production_coupling_grid"];
 couplingCells = Flatten[Table[
-  dynamicAncestrySlots = ratifiedUnresolvedCandidates[slots, Join[{
-    "green_domain:" <> ambient <> ":" <> closure,
-    "multipole_domain:" <> ambient <> ":" <> closure}, endpointSlot[endpoint]]];
-  ancestryDependencies = canonicalSort[Join[tiltSlots, openSlots, surfaceSlots, jSlots, deltaSlots, dynamicAncestrySlots]];
+  ancestryWalk = typedRootWalkDependencies[slots, forceEntries, couplingEntries,
+    tiltFormalism["profile_family"], jRecords, deltaRecords, endpoint, ambient, closure, True];
+  ancestryDependencies = ancestryWalk[[1]]; ancestryRootIds = ancestryWalk[[2]];
   mappedDependencies = mappedUnresolvedDependencies[slots, endpoint, ambient, closure, True];
   key = cellKey[endpoint, ambient, closure, stratum];
   <|"cell_id" -> "mediator=" <> mediator <> "|" <> cellId[key], "mediator" -> mediator, "key" -> key,
@@ -340,7 +405,10 @@ couplingCells = Flatten[Table[
     "off_shell_in_p_status" -> namedUnresolved[ancestryDependencies, "UNRESOLVED"],
     "physics_status" -> namedUnresolved[ancestryDependencies, "UNRESOLVED"],
     "computed_typed_ancestry_unresolved_slots" -> Identity /@ ancestryDependencies,
+    "computed_typed_ancestry_root_ids" -> Identity /@ ancestryRootIds,
+    "typed_ancestry_generator" -> "actual_defining_object_typed_root_walk_v1",
     "dependency_map_slots" -> Identity /@ mappedDependencies,
+    "dependency_map_generator" -> "availability_taxonomy_filter_v1",
     "dependency_exact_set_equal" -> (ancestryDependencies === mappedDependencies),
     "s_parity" -> <|"mass_channel" -> "UNRESOLVED", "charge_channel" -> "UNRESOLVED",
       "authority_tag" -> authorityTag[ambient], "branch_map" -> parityBranchMap[ambient]|>,

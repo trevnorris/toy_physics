@@ -16,7 +16,7 @@ import yaml
 
 SCHEMA = "U1_PHASE_C_PRODUCTION_ENGINE_V1"
 RESULT_SCHEMA = "U1_PHASE_C_PRODUCTION_RESULTS_V1"
-RATIFIED_DIGEST = "83233baabd7f8e27c88d130b911691e76d01d5797da8eeb32c90bbae111ec95a"
+RATIFIED_DIGEST = "e632a8d6729d0a1b3a4ade883c28f6b21f7a29fea566318cdd6fefec8c15d0da"
 MEDIATORS = ("h", "u_T", "u_L", "wall_chi")
 ENDPOINTS = ("E1", "E2", "E3", "E4", "E5")
 AMBIENTS = ("one_sided_pathA29", "symmetric_postulate")
@@ -128,7 +128,10 @@ def normalize_tilt_cells(engine: dict[str, Any]) -> list[dict[str, Any]]:
             "availability": row["availability"],
             "physics_status": row["physics_status"],
             "ancestry": ids(row["computed_typed_ancestry_unresolved_slots"]),
+            "ancestry_roots": ids(row["computed_typed_ancestry_root_ids"]),
+            "ancestry_generator": row["typed_ancestry_generator"],
             "mapped": ids(row["dependency_map_slots"]),
+            "map_generator": row["dependency_map_generator"],
             "parity": row["parity"],
             "steady_substitution": row["steady_substitution"],
             "susceptibility_status": row["susceptibility_status"],
@@ -155,7 +158,10 @@ def normalize_coupling_cells(engine: dict[str, Any]) -> list[dict[str, Any]]:
             "formalism_id": row["formalism_id"], "availability": row["availability"],
             "off_shell": row["off_shell_in_p_status"], "physics_status": row["physics_status"],
             "ancestry": ids(row["computed_typed_ancestry_unresolved_slots"]),
-            "mapped": ids(row["dependency_map_slots"]), "s_parity": row["s_parity"],
+            "ancestry_roots": ids(row["computed_typed_ancestry_root_ids"]),
+            "ancestry_generator": row["typed_ancestry_generator"],
+            "mapped": ids(row["dependency_map_slots"]),
+            "map_generator": row["dependency_map_generator"], "s_parity": row["s_parity"],
             "O(V)": row["O(V)_classification"], "j_sV": row["j_proportional_sV"],
             "split": row["mass_charge_split_status"], "steady": row["steady_substituted_row"],
         }
@@ -294,6 +300,10 @@ def apply_mutation(engine: dict[str, Any], mutation: str, side: str) -> None:
         engine["tilt"]["formalism"]["susceptibility"]["branches"] = []
     elif mutation == "ASSERT_COUPLING_75A":
         engine["coupling_package"]["7.5a"]["Sigma_surface"]["expression"] = ""
+    elif mutation == "ASSERT_75C_AVAILABILITY":
+        rows_by(engine["coupling_package"]["7.5c"], "endpoint")["E3"]["availability"] = {
+            "enum": "DERIVED_STRUCTURAL_FORM"
+        }
     elif mutation == "ASSERT_J_MEDIATORS":
         engine["coupling_package"]["7.5b"]["J_A"].pop()
     elif mutation == "ASSERT_DELTAO_ORDERED":
@@ -302,10 +312,22 @@ def apply_mutation(engine: dict[str, Any], mutation: str, side: str) -> None:
         engine["coupling_package"]["coupling_census_incidence_complete"] = False
     elif mutation == "ASSERT_COUPLING_CHANNEL_OWNERSHIP":
         engine["coupling_package"]["channel_ownership_by_endpoint"][0]["exactly_one_channel"] = False
+    elif mutation == "ASSERT_RADIATION_CHANNEL_COVERAGE":
+        for endpoint in engine["coupling_package"]["channel_ownership_by_endpoint"]:
+            endpoint["channel_terms"]["radiation"] = []
     elif mutation == "ASSERT_COUPLING_GRID":
         engine["coupling_package"]["7.5d"]["cells"].pop()
     elif mutation == "ASSERT_COUPLING_DEPENDENCY_MAP":
         engine["coupling_package"]["7.5d"]["cells"][0]["dependency_map_slots"].pop()
+    elif mutation == "ASSERT_TYPED_ROOT_ANCESTRY_INDEPENDENCE":
+        engine["tilt"]["cells"][0]["typed_ancestry_generator"] = (
+            engine["tilt"]["cells"][0]["dependency_map_generator"]
+        )
+    elif mutation == "ASSERT_ENDPOINT_CONDITIONED_ANCESTRY":
+        for section in (engine["tilt"]["cells"], engine["coupling_package"]["7.5d"]["cells"]):
+            cell = next(row for row in section if row["key"]["endpoint"] == "E1")
+            cell["computed_typed_ancestry_unresolved_slots"].append("open_leaf:E4_shear_lock")
+            cell["dependency_map_slots"].append("open_leaf:E4_shear_lock")
     elif mutation == "ASSERT_TOTAL_COUPLED_RESPONSE":
         engine["coupling_package"]["7.5d"]["formal_total_response"]["full_mixed_kernel_included"] = False
     elif mutation == "ASSERT_PROJECTION_FROZEN":
@@ -350,7 +372,10 @@ def apply_mutation(engine: dict[str, Any], mutation: str, side: str) -> None:
         engine["agreement_nonce"] = f"mutated-{side}"
     elif mutation == "ASSERT_HEADLINES":
         engine["headline_entries"].pop()
-    elif mutation in {"ASSERT_SUCCESSOR_ASSEMBLY", "ASSERT_SUMMARY_COMPLETE"}:
+    elif mutation in {
+        "ASSERT_SUCCESSOR_ASSEMBLY", "ASSERT_SUMMARY_COMPLETE",
+        "ASSERT_RUN_CLASSIFICATION",
+    }:
         # These defects are planted in their post-comparison assembly paths.
         pass
     else:
@@ -458,6 +483,19 @@ def assert_engine(
         for row in engines
     ), "ASSERT_COUPLING_75A", "7.5a domain/surface functional missing", checks)
     checked(all(
+        rows_by(row["coupling_package"]["7.5c"], "endpoint")["E3"]["availability"]
+        == {
+            "enum": "DERIVED",
+            "value_digest": "05d621d79e7b0229cb6f44deced23430932e7e0f0e2dde4a21efab2873b5c8b5",
+            "dual_engine_comparison_id": "DUAL_ENGINE:7.5c:E3_STRUCTURAL_FORM",
+        }
+        and all(
+            item["availability"].get("enum") in {"DERIVED", "UNRESOLVED"}
+            for item in row["coupling_package"]["7.5c"]
+        )
+        for row in engines
+    ), "ASSERT_75C_AVAILABILITY", "7.5c availability does not use the standard two-layer form", checks)
+    checked(all(
         {item["mediator"] for item in row["coupling_package"]["7.5b"]["J_A"]} == set(MEDIATORS)
         and all(item["functional"]["expression"] for item in row["coupling_package"]["7.5b"]["J_A"])
         for row in engines
@@ -476,6 +514,11 @@ def assert_engine(
             for endpoint in row["coupling_package"]["channel_ownership_by_endpoint"])
         for row in engines
     ), "ASSERT_COUPLING_CHANNEL_OWNERSHIP", "coupling channel ownership/reachability failed", checks)
+    checked(all(
+        all(endpoint["channel_terms"]["radiation"] for endpoint in
+            row["coupling_package"]["channel_ownership_by_endpoint"])
+        for row in engines
+    ), "ASSERT_RADIATION_CHANNEL_COVERAGE", "radiation channel is absent from endpoint ownership", checks)
     checked(all(len(row["coupling_package"]["7.5d"]["cells"]) == 960 for row in engines),
             "ASSERT_COUPLING_GRID", "coupling grid is not full", checks)
     checked(all(
@@ -484,6 +527,39 @@ def assert_engine(
             for cell in row["coupling_package"]["7.5d"]["cells"])
         for row in engines
     ), "ASSERT_COUPLING_DEPENDENCY_MAP", "coupling dependency map is not exact", checks)
+    checked(all(
+        all(
+            cell["typed_ancestry_generator"] == "actual_defining_object_typed_root_walk_v1"
+            and cell["dependency_map_generator"] == "availability_taxonomy_filter_v1"
+            and cell["typed_ancestry_generator"] != cell["dependency_map_generator"]
+            and cell["computed_typed_ancestry_root_ids"]
+            for cell in row["tilt"]["cells"] + row["coupling_package"]["7.5d"]["cells"]
+        )
+        for row in engines
+    ), "ASSERT_TYPED_ROOT_ANCESTRY_INDEPENDENCE", "typed ancestry is not an independent root walk", checks)
+    checked(all(
+        all(
+            "open_leaf:E4_shear_lock" not in cell["computed_typed_ancestry_unresolved_slots"]
+            and "open_leaf:E5_rayleigh" not in cell["computed_typed_ancestry_unresolved_slots"]
+            and "open_leaf:gammaSigma" not in cell["computed_typed_ancestry_unresolved_slots"]
+            and "open_leaf:tangentDtN" not in cell["computed_typed_ancestry_unresolved_slots"]
+            for cell in row["tilt"]["cells"] + row["coupling_package"]["7.5d"]["cells"]
+            if cell["key"]["endpoint"] not in {"E4", "E5"}
+        )
+        and all(
+            "open_leaf:E4_shear_lock" not in cell["computed_typed_ancestry_unresolved_slots"]
+            for cell in row["tilt"]["cells"] + row["coupling_package"]["7.5d"]["cells"]
+            if cell["key"]["endpoint"] == "E5"
+        )
+        and all(
+            all(slot_id not in cell["computed_typed_ancestry_unresolved_slots"] for slot_id in (
+                "open_leaf:E5_rayleigh", "open_leaf:gammaSigma", "open_leaf:tangentDtN",
+            ))
+            for cell in row["tilt"]["cells"] + row["coupling_package"]["7.5d"]["cells"]
+            if cell["key"]["endpoint"] == "E4"
+        )
+        for row in engines
+    ), "ASSERT_ENDPOINT_CONDITIONED_ANCESTRY", "endpoint-inapplicable leaves entered cell ancestry", checks)
     checked(all(
         row["coupling_package"]["7.5d"]["formal_total_response"]["total_not_source_only"]
         and row["coupling_package"]["7.5d"]["formal_total_response"]["full_mixed_kernel_included"]
@@ -540,7 +616,8 @@ def assert_engine(
     checked(all(
         row["gates"]["G8"]["level1_source_partition_exact"]
         and row["gates"]["G8"]["level2_exactly_one"]
-        and row["gates"]["G8"]["entry_count"] == 20
+        and row["gates"]["G8"]["entry_count"] == 28
+        and sum(item["source_id"].startswith("radiation:") for item in row["gates"]["G8"]["records"]) == 8
         and all(item["level2_disposition"] == "entry_witness" for item in row["gates"]["G8"]["records"])
         for row in engines
     ), "ASSERT_G8", "G8 two-level ratified disposition failed", checks)
@@ -717,7 +794,7 @@ def summary_text(
         "- `G4`: every claimed structural/control zero is exactly covered by a known-nonzero same-pipeline control.",
         f"- `G5`: `{gate['G5']['status']}`; ambient Green/operator quarantine is active.",
         f"- `G6`: `{gate['G6']['status']}` over E1-E5; physics sensitivity is unresolved, not collapsed.",
-        f"- `G8`: `{gate['G8']['status']}`; all 20 level-1 entries retain exactly one ratified level-2 `entry_witness` disposition.",
+        f"- `G8`: `{gate['G8']['status']}`; all {gate['G8']['entry_count']} level-1 entries retain exactly one ratified level-2 `entry_witness` disposition, including all eight radiation roots.",
         f"- `G10`: `{gate['G10']['status']}`; any future derived tilt zero has an honest result path.",
         f"- `G11`: `{gate['G11']['status']}`; mass-only and zero-velocity converse controls execute, while physical contamination stays unresolved.",
         f"- `reconciliation`: {results['reconciliation']['successor_count']} immutable-overlay successors, including {results['reconciliation']['G9_preserved_count']} exact G9 references; no upstream record or witness is rewritten.",
@@ -777,10 +854,18 @@ def compare_and_write(args: argparse.Namespace) -> int:
         results = copy.deepcopy(sympy)
         results["schema_version"] = RESULT_SCHEMA
         results["engine"] = "DUAL_ENGINE_COMPARATOR_ASSERTED"
-        results["run_classification"] = (
+        expected_run_classification = (
             "UNSEALED_SELF_TEST_NO_SEALED_RESULT" if args.self_test
-            else "PRODUCTION_CANDIDATE_PENDING_RUNNER_ARMOR_AND_EXTERNAL_A9"
+            else "SEALED_PRODUCTION_EVALUATION_AWAITING_EXTERNAL_A9"
         )
+        results["run_classification"] = expected_run_classification
+        if args.mutation == "ASSERT_RUN_CLASSIFICATION":
+            results["run_classification"] = "PRODUCTION_CANDIDATE_PENDING_RUNNER_ARMOR_AND_EXTERNAL_A9"
+        if results["run_classification"] != expected_run_classification:
+            raise AssertionDeath(
+                "ASSERT_RUN_CLASSIFICATION", "run classification is not computed from execution mode"
+            )
+        reached_asserts.add("ASSERT_RUN_CLASSIFICATION")
         results["stage0_contract_digest"] = RATIFIED_DIGEST
         results["computational_integrity"] = "COMPUTATION_VALID"
         results["dual_engine_agreement"] = {

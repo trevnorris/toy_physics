@@ -22,7 +22,7 @@ import yaml
 
 
 SCHEMA = "U1_PHASE_C_PRODUCTION_ENGINE_V1"
-RATIFIED_DIGEST = "83233baabd7f8e27c88d130b911691e76d01d5797da8eeb32c90bbae111ec95a"
+RATIFIED_DIGEST = "e632a8d6729d0a1b3a4ade883c28f6b21f7a29fea566318cdd6fefec8c15d0da"
 MEDIATORS = ("h", "u_T", "u_L", "wall_chi")
 ENDPOINTS = ("E1", "E2", "E3", "E4", "E5")
 AMBIENTS = ("one_sided_pathA29", "symmetric_postulate")
@@ -149,6 +149,7 @@ def mapped_unresolved_dependencies(
         if row["disposition"] == "UNRESOLVED" and (
             slot_id.startswith("tilt:")
             or slot_id.startswith("open_leaf:")
+            and endpoint_open_leaf_applicable(slot_id, endpoint)
             or row["category"] == "7.5a_surface"
             or slot_id == green_slot
             or slot_id in endpoint_candidates
@@ -159,6 +160,15 @@ def mapped_unresolved_dependencies(
             )
         )
     )
+
+
+def endpoint_open_leaf_applicable(slot_id: str, endpoint: str) -> bool:
+    native = slot_id.split(":", 1)[-1]
+    if native == "E4_shear_lock":
+        return endpoint == "E4"
+    if native in {"E5_rayleigh", "gammaSigma", "tangentDtN"}:
+        return endpoint == "E5"
+    return True
 
 
 def endpoint_applicable(term_id: str, endpoint: str) -> bool:
@@ -187,6 +197,101 @@ def source_applicable(source_id: str, endpoint: str) -> bool:
     if source_id == "input:E5_rayleigh":
         return endpoint == "E5"
     return True
+
+
+def source_open_leaf_edges(source_id: str) -> list[str]:
+    """Typed root-to-leaf edges from actual native defining objects."""
+    edges = {
+        "action:h_gradient": ["open_leaf:Mh"],
+        "action:h_kinetic": ["open_leaf:Mh", "open_leaf:cE"],
+        "action:throat_source": [
+            "open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional",
+        ],
+        "action:wall_mix": [
+            "open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional",
+        ],
+        "input:outer_surface_functional": ["open_leaf:outer_surface_functional"],
+        "input:native_momentum": ["open_leaf:mdot"],
+        "input:return_closure": ["open_leaf:mdot", "open_leaf:return_closure"],
+        "input:E4_shear_lock": ["open_leaf:E4_shear_lock"],
+        "input:E5_rayleigh": [
+            "open_leaf:E5_rayleigh", "open_leaf:gammaSigma", "open_leaf:tangentDtN",
+        ],
+        "radiation:geon_open": ["open_leaf:geon_core_bundle"],
+        "radiation:throat_source_open": [
+            "open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional",
+        ],
+        "radiation:wall_mix_open": [
+            "open_leaf:sleeve_core_trace", "open_leaf:throat_surface_functional",
+        ],
+    }
+    return edges.get(source_id, [])
+
+
+def typed_root_walk_dependencies(
+    slots: dict[str, dict[str, Any]],
+    force_entries: list[dict[str, Any]],
+    coupling_entries: list[dict[str, Any]],
+    tilt_profile_record: dict[str, Any],
+    j_records: list[dict[str, Any]],
+    delta_records: list[dict[str, Any]],
+    endpoint: str,
+    ambient: str,
+    closure: str,
+    include_coupling: bool,
+) -> tuple[list[str], list[str]]:
+    """Walk actual defining objects and census roots to ratified slots.
+
+    This route never selects slots by availability category or identifier
+    prefix.  Those operations are confined to ``mapped_unresolved_dependencies``.
+    """
+    dependencies = list(tilt_profile_record["unresolved_slots"])
+    root_rows = coupling_entries if include_coupling else force_entries
+    active_rows = [
+        row for row in root_rows
+        if source_applicable(row["source_id"], endpoint)
+    ]
+    root_ids = canonical_ids(row["source_id"] for row in active_rows)
+    dependencies.extend(
+        slot_id for source_id in root_ids for slot_id in source_open_leaf_edges(source_id)
+    )
+    for row in active_rows:
+        source_id = row["source_id"]
+        if include_coupling:
+            if source_id in {"action:throat_source", "action:wall_mix"}:
+                dependencies.append("domain:Sigma_boundary_data")
+            if source_id in {
+                "input:outer_surface_functional", "input:native_momentum",
+                "input:return_closure",
+            }:
+                dependencies.append("domain:partial_Omega_c_boundary_data")
+        else:
+            if row["support"] == "Sigma":
+                dependencies.append("domain:Sigma_boundary_data")
+            if row["support"] == "partial_Omega_c":
+                dependencies.append("domain:partial_Omega_c_boundary_data")
+        if source_id == "input:E4_shear_lock":
+            dependencies.append("endpoint:E4_constraint_data")
+        if source_id == "input:E5_rayleigh":
+            dependencies.append("endpoint:E5_Rayleigh_data")
+    if any(source_id.startswith("radiation:") for source_id in root_ids):
+        dependencies.append(f"green_domain:{ambient}:{closure}")
+    if include_coupling:
+        dependencies.extend(
+            slot_id
+            for row in j_records
+            for slot_id in row["functional"]["unresolved_slots"]
+        )
+        dependencies.extend(
+            slot_id
+            for row in delta_records
+            for slot_id in row["functional"]["unresolved_slots"]
+        )
+        dependencies.append(f"multipole_domain:{ambient}:{closure}")
+    return (
+        ratified_unresolved_candidates(slots, dependencies),
+        root_ids,
+    )
 
 
 def named_unresolved(slots: list[str], enum: str) -> dict[str, Any]:
@@ -537,12 +642,17 @@ def build(repo: Path, bundle_dir: Path, supplied_digest: str, self_test: bool) -
     for endpoint in ENDPOINTS:
         for ambient in AMBIENTS:
             for closure in CLOSURES:
-                dynamic_ancestry_slots = ratified_unresolved_candidates(
+                ancestry_dependencies, ancestry_root_ids = typed_root_walk_dependencies(
                     slots,
-                    [f"green_domain:{ambient}:{closure}"] + endpoint_slot(endpoint),
-                )
-                ancestry_dependencies = canonical_ids(
-                    tilt_slots + open_slots + surface_slots + dynamic_ancestry_slots
+                    force_entries,
+                    [],
+                    tilt_formalism["profile_family"],
+                    [],
+                    [],
+                    endpoint,
+                    ambient,
+                    closure,
+                    include_coupling=False,
                 )
                 mapped_dependencies = mapped_unresolved_dependencies(
                     slots, endpoint, ambient, closure, include_coupling=False
@@ -556,7 +666,10 @@ def build(repo: Path, bundle_dir: Path, supplied_digest: str, self_test: bool) -
                         "availability": named_unresolved(ancestry_dependencies, "UNRESOLVED"),
                         "physics_status": named_unresolved(ancestry_dependencies, "TILT_UNRESOLVED"),
                         "computed_typed_ancestry_unresolved_slots": list(ancestry_dependencies),
+                        "computed_typed_ancestry_root_ids": list(ancestry_root_ids),
+                        "typed_ancestry_generator": "actual_defining_object_typed_root_walk_v1",
                         "dependency_map_slots": list(mapped_dependencies),
+                        "dependency_map_generator": "availability_taxonomy_filter_v1",
                         "dependency_exact_set_equal": ancestry_dependencies == mapped_dependencies,
                         "parity": {
                             "transformation": "p_i -> p_i under body conjugation only if all T_Ai transformations close",
@@ -672,7 +785,15 @@ def build(repo: Path, bundle_dir: Path, supplied_digest: str, self_test: bool) -
             "endpoint": endpoint,
             "channel": channel,
             "explicit_virtual_work_or_variation": expression,
-            "availability": named_unresolved(deps, "UNRESOLVED") if deps else {"enum": "DERIVED_STRUCTURAL_FORM"},
+            "availability": (
+                named_unresolved(deps, "UNRESOLVED")
+                if deps
+                else {
+                    "enum": "DERIVED",
+                    "value_digest": "05d621d79e7b0229cb6f44deced23430932e7e0f0e2dde4a21efab2873b5c8b5",
+                    "dual_engine_comparison_id": "DUAL_ENGINE:7.5c:E3_STRUCTURAL_FORM",
+                }
+            ),
             "structural_zeros": {
                 "constraint": endpoint not in {"E4"},
                 "Rayleigh": endpoint != "E5",
@@ -707,14 +828,17 @@ def build(repo: Path, bundle_dir: Path, supplied_digest: str, self_test: bool) -
     for endpoint in ENDPOINTS:
         for ambient in AMBIENTS:
             for closure in CLOSURES:
-                dynamic_ancestry_slots = ratified_unresolved_candidates(slots, [
-                    f"green_domain:{ambient}:{closure}",
-                    f"multipole_domain:{ambient}:{closure}",
-                    *endpoint_slot(endpoint),
-                ])
-                ancestry_dependencies = canonical_ids(
-                    tilt_slots + open_slots + surface_slots + j_slots + delta_slots
-                    + dynamic_ancestry_slots
+                ancestry_dependencies, ancestry_root_ids = typed_root_walk_dependencies(
+                    slots,
+                    force_entries,
+                    coupling_entries,
+                    tilt_formalism["profile_family"],
+                    j_records,
+                    delta_records,
+                    endpoint,
+                    ambient,
+                    closure,
+                    include_coupling=True,
                 )
                 mapped_dependencies = mapped_unresolved_dependencies(
                     slots, endpoint, ambient, closure, include_coupling=True
@@ -732,7 +856,10 @@ def build(repo: Path, bundle_dir: Path, supplied_digest: str, self_test: bool) -
                             "off_shell_in_p_status": named_unresolved(ancestry_dependencies, "UNRESOLVED"),
                             "physics_status": named_unresolved(ancestry_dependencies, "UNRESOLVED"),
                             "computed_typed_ancestry_unresolved_slots": list(ancestry_dependencies),
+                            "computed_typed_ancestry_root_ids": list(ancestry_root_ids),
+                            "typed_ancestry_generator": "actual_defining_object_typed_root_walk_v1",
                             "dependency_map_slots": list(mapped_dependencies),
+                            "dependency_map_generator": "availability_taxonomy_filter_v1",
                             "dependency_exact_set_equal": ancestry_dependencies == mapped_dependencies,
                             "s_parity": {
                                 "mass_channel": "UNRESOLVED",

@@ -16,7 +16,7 @@ from typing import Any
 import yaml
 
 
-RATIFIED_DIGEST = "83233baabd7f8e27c88d130b911691e76d01d5797da8eeb32c90bbae111ec95a"
+RATIFIED_DIGEST = "e632a8d6729d0a1b3a4ade883c28f6b21f7a29fea566318cdd6fefec8c15d0da"
 STAGE0_ANCHOR = "377eab17a4babc12847450956dc55fe3e16d33da"
 COMPONENT_FILES = {
     "availability_slots": "availability_slots.yaml",
@@ -229,7 +229,11 @@ def main() -> int:
             "comparator_per_require_both_engine_artifacts",
         )
 
-    dedicated_output_guards = ("ASSERT_SUCCESSOR_ASSEMBLY", "ASSERT_SUMMARY_COMPLETE")
+    dedicated_output_guards = (
+        "ASSERT_SUCCESSOR_ASSEMBLY",
+        "ASSERT_SUMMARY_COMPLETE",
+        "ASSERT_RUN_CLASSIFICATION",
+    )
     guard_base = [
         *compare_base, "--self-test",
         "--summary-output", str(scratch / "mutation_guard_summary.md"),

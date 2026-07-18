@@ -39,6 +39,16 @@ EXPECTED_FLOOR = {
     "outer_surface_flux_return",
     "wall_chi_modes",
 }
+EXPECTED_RADIATION_ROOTS = {
+    "radiation:brane_normal_local",
+    "radiation:brane_shear_transverse",
+    "radiation:geon_open",
+    "radiation:gnls_density_phase",
+    "radiation:h_scalar",
+    "radiation:throat_source_open",
+    "radiation:wall_chi_u_coupled",
+    "radiation:wall_mix_open",
+}
 ALLOWED_KINDS = {
     "nonuniqueness/solvability failure",
     "absence of any typed producer in the complete authority census",
@@ -653,6 +663,38 @@ def apply_mutation(sympy: dict[str, Any], wolfram: dict[str, Any], mutation: str
         ]["generator_provenance"]["route"]
     elif mutation == "ASSERT_G8_INVENTORY_AGREE":
         s["g8_ablation_inventory"]["entries"][0]["floor_tags"] = ["MUTATED"]
+    elif mutation == "ASSERT_RADIATION_CENSUS_COVERAGE":
+        for engine in (s, w):
+            coupling = engine["coupling_source_census"]
+            coupling["sources"] = [
+                row for row in coupling["sources"]
+                if not row["source_id"].startswith("radiation:")
+            ]
+            coupling["entries"] = [
+                row for row in coupling["entries"]
+                if not row["source_id"].startswith("radiation:")
+            ]
+            coupling["expected_entries"] = [
+                value for value in coupling["expected_entries"]
+                if ":radiation:" not in value
+            ]
+            coupling["reachable_entries"] = [
+                value for value in coupling["reachable_entries"]
+                if ":radiation:" not in value
+            ]
+            coupling["coverage_checks"]["source_ids"] = [
+                value for value in coupling["coverage_checks"]["source_ids"]
+                if not value.startswith("radiation:")
+            ]
+            inventory = engine["g8_ablation_inventory"]
+            inventory["entries"] = [
+                row for row in inventory["entries"]
+                if not row["source_id"].startswith("radiation:")
+            ]
+            inventory["floor_coverage"] = {
+                floor: [value for value in values if not value.startswith("radiation:")]
+                for floor, values in inventory["floor_coverage"].items()
+            }
     elif mutation == "ASSERT_G8_FLOOR":
         s["g8_ablation_inventory"]["floor_coverage"]["common_drain"] = []
         w["g8_ablation_inventory"]["floor_coverage"]["common_drain"] = []
@@ -686,6 +728,11 @@ def apply_mutation(sympy: dict[str, Any], wolfram: dict[str, Any], mutation: str
         w["g8_ablation_inventory"]["entries"][0]["level2_disposition"] = "none"
         s["g8_ablation_inventory"]["coverage_checks"]["level2_exactly_one_disposition"] = False
         w["g8_ablation_inventory"]["coverage_checks"]["level2_exactly_one_disposition"] = False
+    elif mutation == "ASSERT_G8_ENTRY_WITNESS_SLOTS":
+        for engine in (s, w):
+            by_key(engine["g8_ablation_inventory"]["entries"], "source_id")[
+                "input:native_momentum"
+            ]["entry_witness_slot"] = "open_leaf:native_momentum"
     elif mutation == "ASSERT_SLOT_TAXONOMY":
         s["availability_slots"] = [
             row for row in s["availability_slots"] if row["slot_id"] != "deltaO:h:u_T"
@@ -1000,6 +1047,24 @@ def compare(
         "ASSERT_G8_INVENTORY_AGREE",
         "independent engine G8 inventories disagree",
     )
+    radiation_roots = {
+        root_id for root_id in typed_s if root_id.startswith("radiation:")
+    }
+    checked(
+        radiation_roots == EXPECTED_RADIATION_ROOTS
+        and {
+            row["source_id"] for row in coupling_s["sources"]
+            if row["source_id"].startswith("radiation:")
+        }
+        == EXPECTED_RADIATION_ROOTS
+        and {
+            row["source_id"] for row in g8_s["entries"]
+            if row["source_id"].startswith("radiation:")
+        }
+        == EXPECTED_RADIATION_ROOTS,
+        "ASSERT_RADIATION_CENSUS_COVERAGE",
+        "radiation typed roots are not covered by both independent coupling/G8 walks",
+    )
     routes = {
         force_s["generator_provenance"]["route"],
         coupling_s["generator_provenance"]["route"],
@@ -1060,6 +1125,26 @@ def compare(
         and sum(row["category"] == "declared_OPEN_leaf" for row in slots_s.values()) == 12,
         "ASSERT_SLOT_TAXONOMY",
         f"slot taxonomy malformed: {dict(categories)}",
+    )
+    checked(
+        all(
+            row["level2_disposition"] != "entry_witness"
+            or (
+                row.get("entry_witness_slot") in raw_slots_s
+                and raw_slots_s[row["entry_witness_slot"]]["disposition"] == "UNRESOLVED"
+            )
+            for row in g8_s["entries"]
+        )
+        and all(
+            row["level2_disposition"] != "entry_witness"
+            or (
+                row.get("entry_witness_slot") in raw_slots_w
+                and raw_slots_w[row["entry_witness_slot"]]["disposition"] == "UNRESOLVED"
+            )
+            for row in g8_w["entries"]
+        ),
+        "ASSERT_G8_ENTRY_WITNESS_SLOTS",
+        "G8 entry witness does not resolve to a ratified UNRESOLVED availability slot",
     )
     checked(
         engine_route_certificates_valid(sympy, wolfram, repo),
@@ -1396,6 +1481,7 @@ def main() -> int:
     )
     parser.add_argument("--canary-slot")
     parser.add_argument("--canary-control")
+    parser.add_argument("--control-assert")
     parser.add_argument("--list-asserts", action="store_true")
     args = parser.parse_args()
     sympy_path = Path(args.sympy).resolve()
@@ -1428,14 +1514,20 @@ def main() -> int:
                 f"canary control unexpectedly contains a passing candidate:{args.canary_control}",
             )
         checks = compare(sympy, wolfram, repo, args.mutation)
+        if args.control_assert:
+            require(
+                args.control_assert in {row["assert_id"] for row in checks},
+                "MUTATION_NOOP",
+                f"defect-absent control did not reach:{args.control_assert}",
+            )
     except AssertionDeath as death:
         print(f"ASSERTION_FAILED {death.assert_id}: {death.detail}", file=sys.stderr)
         return 1
     if args.mutation:
         print("MUTATION_NOOP", file=sys.stderr)
         return 3
-    if args.anti_dodge_control or args.canary_control:
-        control = args.anti_dodge_control or args.canary_control
+    if args.anti_dodge_control or args.canary_control or args.control_assert:
+        control = args.anti_dodge_control or args.canary_control or args.control_assert
         print(f"PHASEC_REAL_COMPARATOR_GUARD_ABSENT control={control}")
         return 0
     if args.list_asserts:

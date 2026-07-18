@@ -405,6 +405,42 @@ def g8_endpoint_incidence(row: dict[str, Any]) -> list[str]:
     return []
 
 
+def coupling_radiation_incidence(operator: dict[str, Any]) -> list[str]:
+    """Coupling-census walk over the B2 operator family declaration."""
+    native = operator["id"]
+    if native in {"geon_open", "throat_source_open", "wall_mix_open"}:
+        return list(MEDIATORS)
+    family = operator["family"]
+    if family == "h":
+        return ["h"]
+    if family == "u_T":
+        return ["u_T"]
+    if family == "u_L":
+        return ["u_L"]
+    if family == "wall_chi/u_d":
+        return ["u_T", "wall_chi"]
+    if family == "wall_chi":
+        return ["wall_chi"]
+    return list(MEDIATORS)
+
+
+def g8_radiation_incidence(operator: dict[str, Any]) -> list[str]:
+    """Independent G8 walk over B2 field-block tokens, not family labels."""
+    fields = set(operator.get("field_block", []))
+    if fields & {"geon_core_bundle", "native_throat_fields", "native_mixed_fields"}:
+        return list(MEDIATORS)
+    out: set[str] = set()
+    if "h" in fields:
+        out.add("h")
+    if fields & {"u_T", "u_d_transverse"}:
+        out.add("u_T")
+    if fields & {"delta_n", "theta"}:
+        out.add("u_L")
+    if fields & {"u_w", "delta_chiB", "u_d_transverse"}:
+        out.add("wall_chi")
+    return sorted(out) or list(MEDIATORS)
+
+
 def build_typed_roots(
     phase_a: dict[str, Any], b1: dict[str, Any], b2_contract: dict[str, Any]
 ) -> list[dict[str, Any]]:
@@ -594,7 +630,7 @@ def build_force_census(
 
 
 def coupling_sources(
-    phase_a: dict[str, Any], derivation: dict[str, Any]
+    phase_a: dict[str, Any], b2_contract: dict[str, Any], derivation: dict[str, Any]
 ) -> list[dict[str, Any]]:
     records = action_record_map(derivation)
     out: list[dict[str, Any]] = []
@@ -644,13 +680,25 @@ def coupling_sources(
             },
         ]
     )
+    for operator in sorted(
+        b2_contract["frozen_data"]["native_operator_inventory"],
+        key=lambda row: row["id"],
+    ):
+        out.append(
+            {
+                "source_id": f"radiation:{operator['id']}",
+                "mediators": coupling_radiation_incidence(operator),
+                "components": ["7.5d"],
+                "routing": "witness",
+            }
+        )
     return sorted(out, key=lambda row: row["source_id"])
 
 
 def build_coupling_census(
     phase_a: dict[str, Any], b2_contract: dict[str, Any], derivation: dict[str, Any]
 ) -> dict[str, Any]:
-    sources = coupling_sources(phase_a, derivation)
+    sources = coupling_sources(phase_a, b2_contract, derivation)
     expected: list[str] = []
     entries: list[dict[str, Any]] = []
     for source in sources:
@@ -674,6 +722,7 @@ def build_coupling_census(
             "route": "coupling_walk_from_B2_second_variation_field_incidence",
             "source_fields": [
                 "B2.complete_action_second_variation",
+                "B2.native_operator_inventory.family",
                 "PhaseA.action_terms",
                 "Stage3.operator_parity_basis",
             ],
@@ -719,7 +768,8 @@ def floor_tags(source_id: str, mediators: list[str]) -> list[str]:
 
 
 def build_g8_inventory(
-    phase_a: dict[str, Any], b1: dict[str, Any], coupling: dict[str, Any]
+    phase_a: dict[str, Any], b1: dict[str, Any], b2_contract: dict[str, Any],
+    coupling: dict[str, Any]
 ) -> dict[str, Any]:
     """Third walk: raw Phase-A roots plus endpoint field records.
 
@@ -750,13 +800,40 @@ def build_g8_inventory(
             continue
         native = row["id"]
         source_id = f"input:{native}"
+        witness_slot = (
+            f"open_leaf:{native}"
+            if row["status"] == "OPEN_INPUT"
+            else "domain:partial_Omega_c_boundary_data"
+        )
         entries.append(
             {
                 "source_id": source_id,
                 "mediators": mediators,
                 "floor_tags": floor_tags(source_id, mediators),
                 "level2_disposition": "entry_witness",
-                "entry_witness_slot": f"open_leaf:{native}",
+                "entry_witness_slot": witness_slot,
+            }
+        )
+    radiation_witness_slots = {
+        "geon_open": "open_leaf:geon_core_bundle",
+        "throat_source_open": "open_leaf:throat_surface_functional",
+        "wall_mix_open": "domain:Sigma_boundary_data",
+    }
+    for operator in sorted(
+        b2_contract["frozen_data"]["native_operator_inventory"],
+        key=lambda row: row["id"],
+    ):
+        source_id = f"radiation:{operator['id']}"
+        mediators = g8_radiation_incidence(operator)
+        entries.append(
+            {
+                "source_id": source_id,
+                "mediators": mediators,
+                "floor_tags": floor_tags(source_id, mediators),
+                "level2_disposition": "entry_witness",
+                "entry_witness_slot": radiation_witness_slots.get(
+                    operator["id"], "tilt:indexed_sleeve_tilt_profile"
+                ),
             }
         )
     entries.sort(key=lambda row: row["source_id"])
@@ -768,11 +845,20 @@ def build_g8_inventory(
     }
     return {
         "generator_provenance": {
-            "route": "independent_G8_walk_from_raw_PhaseA_action_and_endpoint_records",
-            "source_fields": ["PhaseA.action_terms", "B1.declared_inputs"],
+            "route": "independent_G8_walk_from_raw_PhaseA_action_endpoint_and_B2_field_blocks",
+            "source_fields": [
+                "PhaseA.action_terms", "B1.declared_inputs",
+                "B2.native_operator_inventory.field_block",
+            ],
             "not_derived_from": ["force_term_census", "coupling_source_census"],
-            "incidence_implementation": "raw_expression_token_walk+typed_endpoint_metadata_walk",
-            "shared_input_whitelist": ["PhaseA.action_terms", "B1.declared_inputs"],
+            "incidence_implementation": (
+                "raw_expression_token_walk+typed_endpoint_metadata_walk+"
+                "radiation_field_block_token_walk"
+            ),
+            "shared_input_whitelist": [
+                "PhaseA.action_terms", "B1.declared_inputs",
+                "B2.native_operator_inventory",
+            ],
         },
         "entries": entries,
         "certified_nonentries": [],
@@ -1526,7 +1612,7 @@ def main() -> int:
     hessian_challenge = hessian_challenge_from_raw_action(phase_a["action_terms"])
     force = build_force_census(phase_a, b1, b2_contract, derivation)
     coupling = build_coupling_census(phase_a, b2_contract, derivation)
-    g8 = build_g8_inventory(phase_a, b1, coupling)
+    g8 = build_g8_inventory(phase_a, b1, b2_contract, coupling)
     slots = build_slots(
         phase_a,
         b1,

@@ -294,6 +294,31 @@ g8EndpointIncidence[row_Association] := Module[
   ]
 ];
 
+couplingRadiationIncidence[operator_Association] := Module[
+  {native = operator["id"], family = operator["family"]},
+  If[MemberQ[{"geon_open", "throat_source_open", "wall_mix_open"}, native], Return[mediators]];
+  Which[
+    family == "h", {"h"},
+    family == "u_T", {"u_T"},
+    family == "u_L", {"u_L"},
+    family == "wall_chi/u_d", {"u_T", "wall_chi"},
+    family == "wall_chi", {"wall_chi"},
+    True, mediators
+  ]
+];
+
+g8RadiationIncidence[operator_Association] := Module[
+  {fields = Lookup[operator, "field_block", {}], out = {}},
+  If[Intersection[fields, {"geon_core_bundle", "native_throat_fields", "native_mixed_fields"}] =!= {},
+    Return[mediators]];
+  If[MemberQ[fields, "h"], AppendTo[out, "h"]];
+  If[Intersection[fields, {"u_T", "u_d_transverse"}] =!= {}, AppendTo[out, "u_T"]];
+  If[Intersection[fields, {"delta_n", "theta"}] =!= {}, AppendTo[out, "u_L"]];
+  If[Intersection[fields, {"u_w", "delta_chiB", "u_d_transverse"}] =!= {},
+    AppendTo[out, "wall_chi"]];
+  If[out === {}, mediators, Sort[DeleteDuplicates[out]]]
+];
+
 buildTypedRoots[phaseA_, b1_, b2Contract_] := Module[{roots = {}},
   Do[AppendTo[roots, <|
     "id" -> "action:" <> term["id"], "native_id" -> term["id"],
@@ -394,7 +419,8 @@ buildForceCensus[phaseA_, b1_, b2Contract_, derivation_] := Module[
   |>
 ];
 
-couplingSources[phaseA_, derivation_] := Module[{records = recordMap[derivation], out = {}, med},
+couplingSources[phaseA_, b2Contract_, derivation_] := Module[
+  {records = recordMap[derivation], out = {}, med},
   Do[
     med = mediatorIncidence[records[term["id"]]];
     If[med =!= {}, AppendTo[out, <|
@@ -413,11 +439,16 @@ couplingSources[phaseA_, derivation_] := Module[{records = recordMap[derivation]
     <|"source_id" -> "input:E5_rayleigh", "mediators" -> {"u_T", "wall_chi"},
       "components" -> {"7.5c", "7.5d"}, "routing" -> "witness"|>
   }];
+  Do[AppendTo[out, <|
+      "source_id" -> "radiation:" <> operator["id"],
+      "mediators" -> couplingRadiationIncidence[operator],
+      "components" -> {"7.5d"}, "routing" -> "witness"|>],
+    {operator, SortBy[b2Contract["frozen_data"]["native_operator_inventory"], #1["id"] &]}];
   SortBy[out, #["source_id"] &]
 ];
 
 buildCouplingCensus[phaseA_, b2Contract_, derivation_] := Module[
-  {sources = couplingSources[phaseA, derivation], expected = {}, entries = {}, entryId, orderedDelta, sourceIds},
+  {sources = couplingSources[phaseA, b2Contract, derivation], expected = {}, entries = {}, entryId, orderedDelta, sourceIds},
   Do[
     Do[
       entryId = "coupling:" <> source["source_id"] <> ":" <> mediator;
@@ -434,7 +465,8 @@ buildCouplingCensus[phaseA_, b2Contract_, derivation_] := Module[
   <|
     "generator_provenance" -> <|
       "route" -> "coupling_walk_from_B2_second_variation_field_incidence",
-      "source_fields" -> {"B2.complete_action_second_variation", "PhaseA.action_terms", "Stage3.operator_parity_basis"},
+      "source_fields" -> {"B2.complete_action_second_variation", "B2.native_operator_inventory.family",
+        "PhaseA.action_terms", "Stage3.operator_parity_basis"},
       "not_derived_from" -> {"force_term_census", "G8_inventory"}|>,
     "sources" -> sources, "entries" -> entries, "ordered_deltaO_entries" -> orderedDelta,
     "expected_entries" -> Sort[expected], "reachable_entries" -> Sort[#["entry_id"] & /@ entries],
@@ -458,9 +490,9 @@ floorTags[sourceId_String, med_List] := Module[{tags = {}, native = Last[StringS
   Sort[DeleteDuplicates[tags]]
 ];
 
-buildG8Inventory[phaseA_, b1_, coupling_] := Module[
+buildG8Inventory[phaseA_, b1_, b2Contract_, coupling_] := Module[
   {entries = {}, med, sourceId, endpointTypes, native, g8Sources,
-   couplingSourcesSet, floorCoverage},
+   couplingSourcesSet, floorCoverage, witnessSlot, radiationWitnessSlots},
   Do[
     med = g8MediatorIncidenceFromRawExpression[term];
     If[med =!= {}, sourceId = "action:" <> term["id"];
@@ -476,15 +508,31 @@ buildG8Inventory[phaseA_, b1_, coupling_] := Module[
       med = g8EndpointIncidence[row];
       If[med =!= {},
         native = row["id"]; sourceId = "input:" <> native;
-      AppendTo[entries, <|
-        "source_id" -> sourceId, "mediators" -> med,
-        "floor_tags" -> floorTags[sourceId, med],
-        "level2_disposition" -> "entry_witness",
-          "entry_witness_slot" -> "open_leaf:" <> native|>]
+        witnessSlot = If[row["status"] == "OPEN_INPUT", "open_leaf:" <> native,
+          "domain:partial_Omega_c_boundary_data"];
+        AppendTo[entries, <|
+          "source_id" -> sourceId, "mediators" -> med,
+          "floor_tags" -> floorTags[sourceId, med],
+          "level2_disposition" -> "entry_witness",
+          "entry_witness_slot" -> witnessSlot|>]
       ]
     ],
     {row, SortBy[b1["declared_inputs"], #["id"] &]}
   ];
+  radiationWitnessSlots = <|
+    "geon_open" -> "open_leaf:geon_core_bundle",
+    "throat_source_open" -> "open_leaf:throat_surface_functional",
+    "wall_mix_open" -> "domain:Sigma_boundary_data"|>;
+  Do[
+    sourceId = "radiation:" <> operator["id"];
+    med = g8RadiationIncidence[operator];
+    AppendTo[entries, <|
+      "source_id" -> sourceId, "mediators" -> med,
+      "floor_tags" -> floorTags[sourceId, med],
+      "level2_disposition" -> "entry_witness",
+      "entry_witness_slot" -> Lookup[radiationWitnessSlots, operator["id"],
+        "tilt:indexed_sleeve_tilt_profile"]|>],
+    {operator, SortBy[b2Contract["frozen_data"]["native_operator_inventory"], #1["id"] &]}];
   entries = SortBy[entries, #["source_id"] &];
   g8Sources = Sort[#["source_id"] & /@ entries];
   couplingSourcesSet = Sort[coupling["coverage_checks"]["source_ids"]];
@@ -493,12 +541,14 @@ buildG8Inventory[phaseA_, b1_, coupling_] := Module[
     {floor, g8Floor}];
   <|
     "generator_provenance" -> <|
-      "route" -> "independent_G8_walk_from_raw_PhaseA_action_and_endpoint_records",
-      "source_fields" -> {"PhaseA.action_terms", "B1.declared_inputs"},
+      "route" -> "independent_G8_walk_from_raw_PhaseA_action_endpoint_and_B2_field_blocks",
+      "source_fields" -> {"PhaseA.action_terms", "B1.declared_inputs",
+        "B2.native_operator_inventory.field_block"},
       "not_derived_from" -> {"force_term_census", "coupling_source_census"},
       "incidence_implementation" ->
-        "raw_expression_token_walk+typed_endpoint_metadata_walk",
-      "shared_input_whitelist" -> {"PhaseA.action_terms", "B1.declared_inputs"}|>,
+        "raw_expression_token_walk+typed_endpoint_metadata_walk+radiation_field_block_token_walk",
+      "shared_input_whitelist" -> {"PhaseA.action_terms", "B1.declared_inputs",
+        "B2.native_operator_inventory"}|>,
     "entries" -> entries, "certified_nonentries" -> {}, "witnessed_nonentries" -> {},
     "floor_coverage" -> floorCoverage,
     "coverage_checks" -> <|
@@ -959,7 +1009,7 @@ derivation = actionDerivation[phaseA["action_terms"]];
 hessianChallenge = hessianChallengeFromRawAction[phaseA["action_terms"]];
 force = buildForceCensus[phaseA, b1, b2Contract, derivation];
 coupling = buildCouplingCensus[phaseA, b2Contract, derivation];
-g8 = buildG8Inventory[phaseA, b1, coupling];
+g8 = buildG8Inventory[phaseA, b1, b2Contract, coupling];
 measurementContext = <|
   "phase_a" -> phaseA, "b1" -> b1, "b2_contract" -> b2Contract,
   "stage3" -> stage3, "derivation" -> derivation,

@@ -8,6 +8,7 @@ import copy
 import hashlib
 import json
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
@@ -1011,6 +1012,7 @@ def campaign_probe(document: dict[str, Any], bundle: dict[str, Any], output: Pat
     view = document["semantic_view"]
     catalog = mutation_catalog(view)
     records = []
+    started = time.monotonic()
     for item in catalog:
         mutation = item["mutation_id"]
         expected = item["expected_assert_id"]
@@ -1068,6 +1070,14 @@ def campaign_probe(document: dict[str, Any], bundle: dict[str, Any], output: Pat
         except AssertionDeath as failure:
             checked(failure.assert_id == expected, "ASSERT_MUTATION_OWN_ASSERT", f"{mutation} died at {failure.assert_id}, expected {expected}")
             records.append({**item, "status": "DIED_AT_OWN_ASSERT", "observed_assert_id": failure.assert_id})
+            completed = len(records)
+            if completed == 1 or completed % 10 == 0 or completed == len(catalog):
+                elapsed = int(time.monotonic() - started)
+                print(
+                    f"U2_MUTATION_CAMPAIGN_LIVE_PROGRESS elapsed={elapsed}s "
+                    f"tooth={completed}/{len(catalog)}",
+                    flush=True,
+                )
         else:
             raise AssertionDeath("ASSERT_MUTATION_SURVIVAL", f"mutation survived: {mutation}")
     result = {

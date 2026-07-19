@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -42,9 +43,39 @@ def command_digest(command: list[str]) -> str:
     return hashlib.sha256(json.dumps(command, separators=(",", ":")).encode()).hexdigest()
 
 
-def run(command: list[str], timeout: int = 600) -> tuple[subprocess.CompletedProcess[str], float]:
+def run(
+    command: list[str], timeout: int = 600, relay_live_progress: bool = False,
+) -> tuple[subprocess.CompletedProcess[str], float]:
     started = time.monotonic()
-    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout)
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1,
+    )
+    stdout: list[str] = []
+    stderr: list[str] = []
+
+    def drain(stream: Any, chunks: list[str], relay: bool) -> None:
+        for line in iter(stream.readline, ""):
+            chunks.append(line)
+            if relay and "LIVE_PROGRESS" in line:
+                print(line, end="", flush=True)
+        stream.close()
+
+    readers = (
+        threading.Thread(target=drain, args=(process.stdout, stdout, relay_live_progress), daemon=True),
+        threading.Thread(target=drain, args=(process.stderr, stderr, False), daemon=True),
+    )
+    for reader in readers:
+        reader.start()
+    try:
+        process.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.wait()
+        raise
+    finally:
+        for reader in readers:
+            reader.join()
+    result = subprocess.CompletedProcess(command, process.returncode, "".join(stdout), "".join(stderr))
     return result, time.monotonic() - started
 
 
@@ -63,8 +94,10 @@ def require_death(command: list[str], assert_id: str, mutation_id: str) -> dict[
     }
 
 
-def require_survival(command: list[str], control_id: str) -> dict[str, Any]:
-    result, elapsed = run(command)
+def require_survival(
+    command: list[str], control_id: str, relay_live_progress: bool = False,
+) -> dict[str, Any]:
+    result, elapsed = run(command, relay_live_progress=relay_live_progress)
     combined = result.stdout + result.stderr
     if result.returncode != 0 or "ASSERTION_FAILED" in combined or "MUTATION_NOOP" in combined:
         raise CampaignFailure(f"control {control_id} failed: rc={result.returncode} {combined[-1000:]}")
@@ -107,7 +140,9 @@ def main() -> int:
         "--wolfram", str(Path(args.wolfram).resolve()), "--bundle-dir", str(Path(args.bundle_dir).resolve()),
         "--campaign-probe", "--campaign-output", str(probe),
     ]
-    probe_control = require_survival(probe_command, "CONTROL_COMPARATOR_MUTATION_PROBE")
+    probe_control = require_survival(
+        probe_command, "CONTROL_COMPARATOR_MUTATION_PROBE", relay_live_progress=True,
+    )
     campaign = load_yaml(probe)
     if campaign["status"] != "PASS" or campaign["vacuous_case_count"] or campaign["mutation_noop_count"]:
         raise CampaignFailure("comparator mutation probe is not green/nonvacuous")

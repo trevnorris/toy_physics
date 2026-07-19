@@ -201,11 +201,47 @@ def ast_contains_op(node: dict[str, Any], operation: str) -> bool:
     )
 
 
+def contains_solved_payload(value: Any) -> bool:
+    if isinstance(value, dict):
+        if value.get("payload_kind") in {"SOLVED_PROFILE", "RESPONSE_COEFFICIENT", "EIGENPAIR"}:
+            return True
+        return any(contains_solved_payload(child) for child in value.values())
+    if isinstance(value, list):
+        return any(contains_solved_payload(child) for child in value)
+    return False
+
+
+def scalar_values(value: Any) -> set[Any]:
+    if isinstance(value, dict):
+        return set().union(*(scalar_values(child) for child in value.values())) if value else set()
+    if isinstance(value, list):
+        return set().union(*(scalar_values(child) for child in value)) if value else set()
+    return {value} if isinstance(value, (str, int, float, bool, type(None))) else set()
+
+
+def expected_branch_census(candidate: dict[str, Any], ambient: str) -> list[dict[str, Any]]:
+    return [
+        {
+            "constituent": "canonical_boundary_condition", "candidate_id": candidate["candidate_id"],
+            "canonical_operator_signature": candidate["canonical_signature"],
+        },
+        {
+            "constituent": "typed_free_data", "references": [f"tilt:{value}" for value in sorted(TILT_TYPES)],
+            "availability": "UNRESOLVED", "domain": "tilted_sleeve_exterior",
+            "dimensions": "inherited_exactly_from_R49_ledger",
+        },
+        {"constituent": "unevaluated_residual_or_variational_form", "required_terms": ["bulk_euler_lagrange_residual"]},
+        {"constituent": "zero_mode_treatment", "required_terms": ["translation_zero_mode"]},
+        {"constituent": "well_posedness_classification", "value": "UNRESOLVED(committed_structure_only)"},
+        {"constituent": "asymptotic_matching_conditions", "ambient": ambient, "required_terms": ["outer_matching_condition"]},
+    ]
+
+
 def expected_template_terms(inputs: dict[str, Any]) -> list[dict[str, str]]:
     return [
         *({"term_id": f"residual:{value}", "kind": "residual"} for value in inputs["static_field_equations"]),
         *({"term_id": f"boundary:{value}", "kind": "boundary"} for value in inputs["canonical_operator_witness"]),
-        *({"term_id": f"zero-mode:{value}", "kind": "zero-mode"} for value in inputs["typed_free_data_ledger"]),
+        *({"term_id": f"zero-mode:{value}", "kind": "zero-mode"} for value in inputs["zero_mode_ledger"]),
         *({"term_id": f"asymptotic-matching:{value}", "kind": "asymptotic-matching"} for value in inputs["ambient_branch"]),
     ]
 
@@ -245,7 +281,7 @@ def standard_predicate(standard_id: str, semantic: dict[str, Any]) -> bool:
         "S-3": lambda: len({tuple(tuple(value for value in matrix_row) for matrix_row in row["positive_fixture"]["matrix"]) for row in routes}) >= 6 and all(row["positive_fixture"]["nondegenerate_norm_squared"] > 0 for row in routes),
         "S-4": lambda: semantic["dimensional_firewall"]["base_pass"] and semantic["dimensional_firewall"]["ablation_fired"],
         "S-5": lambda: all(row["tooth_id"] == f"STANDARD_TOOTH:{row['standard_id']}" for row in semantic["standard_bindings"]),
-        "S-6": lambda: len(semantic["template_contract"]["semantic_schema"]) == 6 and len(semantic["guard_fixtures"]["template"]["expected_term_census"]) == 4,
+        "S-6": lambda: len(semantic["template_contract"]["semantic_schema"]) == 8 and len(semantic["guard_fixtures"]["template"]["expected_term_census"]) == 4,
         "P-1": lambda: all(row.get("witness_id") == f"witness:{row['slot_id']}" for row in unresolved),
         "P-2": lambda: semantic["candidate_inventory"]["mixture_generator_A"] == semantic["candidate_inventory"]["mixture_generator_B"] and all(row["generator_A"] == row["generator_B"] for row in semantic["obligation_censuses"].values()),
         "P-3": lambda: "nonholonomic" in semantic["obligation_censuses"]["E4"]["native_root_class"] and "rayleigh" in semantic["obligation_censuses"]["E5"]["native_root_class"],
@@ -341,6 +377,15 @@ def mutation_catalog(semantic: dict[str, Any]) -> list[dict[str, str]]:
         ("CLOSURE_INTEGRITY_LAUNDERING", "ASSERT_CLOSURE_GATE"),
         ("CLOSURE_INTEGRITY_TO_PHYSICS_REFUSAL", "ASSERT_CLOSURE_PROPAGATION"),
         ("TOOTH_TEMPLATE_SCHEMA", "ASSERT_TEMPLATE_SCHEMA"),
+        ("TEMPLATE_STRATUM_BVP_NONIDENTICAL", "ASSERT_TEMPLATE_STRATUM_BVP_EQUIVALENCE"),
+        ("CONDITIONAL_TEMPLATE_TAG_STRIP", "ASSERT_CONDITIONAL_TEMPLATE_TAGS"),
+        ("CONDITIONAL_TEMPLATE_OPEN_DATA_TAG_STRIP", "ASSERT_CONDITIONAL_TEMPLATE_TAGS"),
+        ("CONDITIONAL_TEMPLATE_ADMISSIBILITY_ASSERTION", "ASSERT_CONDITIONAL_TEMPLATE_NO_CLAIMS"),
+        ("CONDITIONAL_TEMPLATE_EXCLUSION_ANCESTRY", "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY"),
+        ("CONDITIONAL_TEMPLATE_LABEL_FREE_INCOMPATIBILITY", "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY"),
+        ("CONDITIONAL_TEMPLATE_TAG_SOLVED_PAYLOAD", "ASSERT_TEMPLATE_NO_SOLVE"),
+        ("CONDITIONAL_TEMPLATE_TAG_REACHABLE", "ASSERT_CONDITIONAL_TEMPLATE_METADATA_UNREACHABLE"),
+        ("TOOTH_V11_PHYSICS_RECORD_REFERENCE", "ASSERT_V11_PHYSICS_RECORD_REFERENCE"),
         ("TEMPLATE_REMOVE_RESIDUAL_TERM", "ASSERT_TEMPLATE_TERM_INCIDENCE"),
         ("TEMPLATE_ZERO_BOUNDARY_TERM", "ASSERT_TEMPLATE_TERM_INCIDENCE"),
         ("TEMPLATE_REMOVE_ZERO_MODE_TERM", "ASSERT_TEMPLATE_TERM_INCIDENCE"),
@@ -571,6 +616,37 @@ def apply_mutation(
                 fixture["dependent_record"] = {"integrity": "COMPUTATION_VALID", "physics": "PROMOTION_UNRESOLVED(closure_refusal)"}
     elif mutation == "TOOTH_TEMPLATE_SCHEMA":
         for value in both: value["template_contract"]["semantic_schema"].pop()
+    elif mutation == "TEMPLATE_STRATUM_BVP_NONIDENTICAL":
+        for value in both:
+            proof = value["template_contract"]["branch_equivalence_proofs"][0]
+            proof["per_stratum_censuses"][0]["constituent_census"][0]["canonical_operator_signature"] = ["mutated_operator"]
+    elif mutation in {"CONDITIONAL_TEMPLATE_TAG_STRIP", "CONDITIONAL_TEMPLATE_OPEN_DATA_TAG_STRIP"}:
+        for value in both:
+            key = "branch_conditionality_tag" if mutation == "CONDITIONAL_TEMPLATE_TAG_STRIP" else "open_data_conditionality_tag"
+            value["guard_fixtures"]["template"]["template_record"]["constituents"].pop(key)
+    elif mutation == "CONDITIONAL_TEMPLATE_ADMISSIBILITY_ASSERTION":
+        for value in both:
+            value["guard_fixtures"]["template"]["template_record"]["branch_admissibility_claim"] = True
+    elif mutation in {"CONDITIONAL_TEMPLATE_EXCLUSION_ANCESTRY", "CONDITIONAL_TEMPLATE_LABEL_FREE_INCOMPATIBILITY"}:
+        operation = "complement" if mutation.endswith("EXCLUSION_ANCESTRY") else "incompatible"
+        for value in both:
+            dag = value["guard_fixtures"]["template"]["template_record"]["posing_proof_dag"]
+            dag["normalized_inference_content"] = {
+                "op": "positive_join", "args": [{"op": operation, "args": []}],
+            }
+            dag["claimed_constructors"] = ["POSITIVE_DERIVATION"]
+    elif mutation == "CONDITIONAL_TEMPLATE_TAG_SOLVED_PAYLOAD":
+        for value in both:
+            tag = value["guard_fixtures"]["template"]["template_record"]["constituents"]["open_data_conditionality_tag"]
+            tag["payload_kind"] = "RESPONSE_COEFFICIENT"
+    elif mutation == "CONDITIONAL_TEMPLATE_TAG_REACHABLE":
+        for value in both:
+            record = value["guard_fixtures"]["template"]["template_record"]
+            metadata_id = record["constituents"]["branch_conditionality_tag"]["metadata_id"]
+            record["posing_proof_dag"]["normalized_inference_content"]["args"].append({"op": "root", "id": metadata_id})
+    elif mutation == "TOOTH_V11_PHYSICS_RECORD_REFERENCE":
+        for value in both:
+            value["physics_record_invariance_contract"]["U2_V11_PHYSICS_RECORD_SET_DIGEST"] = "0" * 64
     elif mutation.startswith("TEMPLATE_") and mutation != "TEMPLATE_HIDDEN_SOLVED_PAYLOAD":
         key = {
             "TEMPLATE_REMOVE_RESIDUAL_TERM": "residual", "TEMPLATE_ZERO_BOUNDARY_TERM": "boundary",
@@ -758,6 +834,39 @@ def run_checks(sympy: dict[str, Any], wolfram: dict[str, Any]) -> str:
     contexts = grid["promotion_contexts"]
     require(len(contexts) == 16 and all({row["candidate_id"] for row in context["candidate_cell_mappings"]} == set(axis) and len(context["candidate_cell_mappings"]) == len(axis) for context in contexts), "ASSERT_PROMOTION_CONTEXT_COVERAGE", "promotion common-refinement coverage failed")
 
+    invariant = semantic["physics_record_invariance_contract"]
+    universe = invariant["record_id_universe"]
+    expected_nonclosure_ids = set()
+    for cell_id in expected_cells:
+        expected_nonclosure_ids.update({
+            f"candidate_disposition:{cell_id}", f"ensemble_level_1:{cell_id}",
+            f"ensemble_level_2:{cell_id}", f"topology_gate:{cell_id}",
+            f"host:{cell_id}", f"return_closure:{cell_id}",
+        })
+    expected_nonclosure_ids.update(f"promotion:{row['promotion_key']}" for row in contexts)
+    universe_set = set(universe)
+    require(
+        invariant["U2_V11_PHYSICS_RECORD_SET_DIGEST"] == "d70bf6bee368aa4383defa3a904af71eb083fe1eea34ab02444af73243b4de7a"
+        and invariant["v11_provenance"] == {
+            "source_path": "software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production/production_results.yaml",
+            "source_sha256": "1832c490ede0c14a94963543a7db12e6e3e2a4fcc3c4f65f958436072f92f56e",
+            "ratified_stage0_digest": "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4",
+            "production_anchor": "53529bf1729811f5ae9faa429cf836507469569b", "wrap_anchor": "5ceebb24",
+        }
+        and invariant["record_count"] == len(universe) == len(universe_set) == 992
+        and expected_nonclosure_ids <= universe_set
+        and len(universe_set - expected_nonclosure_ids) == 112
+        and all(value.startswith("closure:") for value in universe_set - expected_nonclosure_ids)
+        and invariant["record_class_counts"] == {
+            "candidate_disposition": 144, "closure_adjudication": 112,
+            "ensemble_level_1": 144, "ensemble_level_2": 144, "host_location": 144,
+            "promotion": 16, "return_closure_ownership": 144, "topology_gate": 144,
+        }
+        and invariant["candidate_universe_digest"] == candidates["candidate_universe_digest"]
+        and invariant["stage0_role"] == "freeze_reference_only_live_v12_comparison_is_production_timed",
+        "ASSERT_V11_PHYSICS_RECORD_REFERENCE", "v11 record projection/digest/universe/provenance is not frozen exactly",
+    )
+
     inventory = semantic["route_fixture_inventory"]
     require(inventory["generated_preproduction"] and inventory["executed_route_match_rule"].startswith("production_route_set_exactly"), "ASSERT_ROUTE_INVENTORY_PREPRODUCTION", "route inventory not frozen preproduction")
     route_rows = inventory["route_records"]
@@ -890,12 +999,77 @@ def run_checks(sympy: dict[str, Any], wolfram: dict[str, Any]) -> str:
         "ASSERT_CLOSURE_PROPAGATION", "closure integrity failure laundered into physics refusal",
     )
     template = semantic["template_contract"]
-    require(len(template["semantic_schema"]) == 6 and len(template["R49_exact_unresolved_reference_ids"]) == 8 and template["dependent_fields_unbound"], "ASSERT_TEMPLATE_SCHEMA", "template semantic schema incomplete")
+    allowed_template = set(template["conditional_template_posing_allowed_constructors"])
+    banned_template = set(template["conditional_template_posing_banned_constructors"])
+    require(
+        len(template["semantic_schema"]) == 8 and len(template["R49_exact_unresolved_reference_ids"]) == 8
+        and template["dependent_fields_unbound"]
+        and allowed_template == {"ROOT_REFERENCE", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE", "POSTULATE_BRANCH"}
+        and allowed_template.isdisjoint(banned_template)
+        and allowed_template | banned_template == set(grammar)
+        and template["constructor_partition_exhaustive_default_deny"],
+        "ASSERT_TEMPLATE_SCHEMA", "template semantic schema/constructor partition incomplete",
+    )
+    proof_by_branch = by_id(template["branch_equivalence_proofs"], "template_branch_id")
+    expected_template_branches = {
+        f"U2:{candidate}:{ambient}" for candidate in axis if candidate != "OTHER"
+        for ambient in ("one_sided_pathA29", "two_sided_R_w_postulate")
+    }
+    candidate_by_id = by_id(candidates["candidate_records"], "candidate_id")
+    require(set(proof_by_branch) == expected_template_branches and len(proof_by_branch) == 16, "ASSERT_TEMPLATE_STRATUM_BVP_EQUIVALENCE", "template branch proof coverage differs")
+    for proof in proof_by_branch.values():
+        expected_census = expected_branch_census(candidate_by_id[proof["candidate_id"]], proof["ambient"])
+        recomputed_digests = [digest(row["constituent_census"]) for row in proof["per_stratum_censuses"]]
+        require(
+            proof["proof_timing"] == "pre-production_symbolic_only"
+            and not proof["produced_adjudication_objects_used"]
+            and set(proof["active_strata"]) == TILT_TYPES
+            and len(proof["per_stratum_censuses"]) == 8
+            and all(row["constituent_census"] == expected_census for row in proof["per_stratum_censuses"])
+            and recomputed_digests == [row["census_sha256"] for row in proof["per_stratum_censuses"]]
+            and len(set(recomputed_digests)) == proof["distinct_census_digest_count"] == 1
+            and proof["identical_BVP_across_strata"],
+            "ASSERT_TEMPLATE_STRATUM_BVP_EQUIVALENCE", f"non-identical posed BVP across {proof['template_branch_id']}",
+        )
     template_fixture = guard_fixtures["template"]
     expected_terms = expected_template_terms(template_fixture["committed_inputs"])
     reachable_terms = walk_template_terms(template_fixture["template_record"]["symbolic_ast"])
     require(expected_terms == template_fixture["expected_term_census"] and set(map(digest, expected_terms)) == set(map(digest, reachable_terms)), "ASSERT_TEMPLATE_TERM_INCIDENCE", "real posed-template term census/incidence missing or zeroed")
-    require(not ast_contains_op(template_fixture["template_record"]["symbolic_ast"], "solve") and template_fixture["template_record"]["evaluation_state"] == "UNEVALUATED" and template["posing_not_solving"] and template["forbidden_ancestry_constructors"] == ["SOLVE_EVALUATION_RESULT"], "ASSERT_TEMPLATE_NO_SOLVE", "hidden solved content in actual template AST")
+    conditional = template_fixture["template_record"]
+    constituents = conditional["constituents"]
+    branch_tag = constituents.get("branch_conditionality_tag", {})
+    open_tag = constituents.get("open_data_conditionality_tag", {})
+    require(
+        conditional["conditional"] and conditional["eligibility_disposition"] == "UNRESOLVED"
+        and branch_tag.get("tag") == "CONDITIONAL_ON_BRANCH(E1)" and branch_tag.get("candidate_id") == "E1"
+        and open_tag.get("unresolved_reference_ids") == ["witness:host_location:E1"]
+        and all(not tag.get("evidential") and not tag.get("posing_DAG_reachable") for tag in (branch_tag, open_tag)),
+        "ASSERT_CONDITIONAL_TEMPLATE_TAGS", "conditional template tags absent/evidential/reachable",
+    )
+    require(
+        not conditional["branch_admissibility_claim"] and not conditional["branch_selection_claim"],
+        "ASSERT_CONDITIONAL_TEMPLATE_NO_CLAIMS", "conditional template asserted admissibility/selection",
+    )
+    posing_dag = conditional["posing_proof_dag"]
+    computed_posing = classify_content(posing_dag["normalized_inference_content"])
+    require(
+        computed_posing <= allowed_template and computed_posing == set(posing_dag["claimed_constructors"])
+        and not conditional["excluded_record_references"] and not conditional["complement_record_references"]
+        and "POSTULATE_BRANCH" not in computed_posing,
+        "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY", "conditional posing ancestry contains banned normalized content",
+    )
+    metadata_ids = {branch_tag["metadata_id"], open_tag["metadata_id"]}
+    require(
+        metadata_ids.isdisjoint(scalar_values(posing_dag["normalized_inference_content"]))
+        and metadata_ids.isdisjoint(scalar_values(conditional["symbolic_ast"])),
+        "ASSERT_CONDITIONAL_TEMPLATE_METADATA_UNREACHABLE", "conditional metadata reached BC/residual posing DAG",
+    )
+    require(
+        not ast_contains_op(conditional["symbolic_ast"], "solve")
+        and not contains_solved_payload(constituents)
+        and conditional["evaluation_state"] == "UNEVALUATED" and template["posing_not_solving"],
+        "ASSERT_TEMPLATE_NO_SOLVE", "hidden solved content in template AST or conditionality tag",
+    )
     ownership = semantic["return_closure_ownership"]
     require(not ownership["U2_owned"] and ownership["preserved_terminal"] == "UNRESOLVED(return_closure)", "ASSERT_RETURN_CLOSURE_NONOWNERSHIP", "U2 consumed return closure")
 

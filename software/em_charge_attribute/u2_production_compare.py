@@ -15,7 +15,7 @@ from typing import Any, Iterable
 import yaml
 
 
-RATIFIED_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
+RATIFIED_DIGEST = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b"
 SOURCE = Path(__file__).resolve().parent
 if str(SOURCE) not in sys.path:
     sys.path.insert(0, str(SOURCE))
@@ -72,6 +72,56 @@ def canonical_bytes(value: Any) -> bytes:
 
 def digest(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def arbiter_physics_record_projection(document: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    context_fields = ("cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum")
+    disposition_fields = (
+        *context_fields, "native_root_class", "integrity", "expected_dependencies", "used_dependencies",
+        "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability",
+    )
+    for cell in document["cell_records"]:
+        context = {key: cell[key] for key in context_fields}
+        rows.extend((
+            {"record_id": f"candidate_disposition:{cell['cell_id']}", "record_class": "candidate_disposition", "payload": {key: cell[key] for key in disposition_fields}},
+            {"record_id": cell["ensemble"]["level_1"]["record_id"], "record_class": "ensemble_level_1", "payload": {**context, **cell["ensemble"]["level_1"]}},
+            {"record_id": cell["ensemble"]["level_2"]["record_id"], "record_class": "ensemble_level_2", "payload": {**context, "applicability": cell["ensemble"]["applicability"], **cell["ensemble"]["level_2"]}},
+            {"record_id": cell["topology_gate"]["record_id"], "record_class": "topology_gate", "payload": cell["topology_gate"]},
+            {"record_id": cell["host_location"]["record_id"], "record_class": "host_location", "payload": cell["host_location"]},
+            {"record_id": cell["return_closure_ownership"]["record_id"], "record_class": "return_closure_ownership", "payload": cell["return_closure_ownership"]},
+        ))
+    rows.extend({"record_id": row["record_id"], "record_class": "closure_adjudication", "payload": row} for row in document["closure_records"])
+    rows.extend({"record_id": row["record_id"], "record_class": "promotion", "payload": row} for row in document["promotion_records"])
+    return sorted(rows, key=lambda row: (row["record_id"].casefold(), row["record_id"]))
+
+
+def contains_solved_payload(value: Any) -> bool:
+    if isinstance(value, dict):
+        if value.get("payload_kind") in {"SOLVED_PROFILE", "RESPONSE_COEFFICIENT", "EIGENPAIR"}:
+            return True
+        return any(contains_solved_payload(child) for child in value.values())
+    if isinstance(value, list):
+        return any(contains_solved_payload(child) for child in value)
+    return False
+
+
+def scalar_values(value: Any) -> set[Any]:
+    if isinstance(value, dict):
+        return set().union(*(scalar_values(child) for child in value.values())) if value else set()
+    if isinstance(value, list):
+        return set().union(*(scalar_values(child) for child in value)) if value else set()
+    return {value} if isinstance(value, (str, int, float, bool, type(None))) else set()
+
+
+def walk_template_terms(node: dict[str, Any]) -> list[dict[str, str]]:
+    rows = []
+    if node.get("op") == "term" and node.get("coefficient") != 0:
+        rows.append({"term_id": node["term_id"], "kind": node["kind"]})
+    for child in node.get("args", []):
+        if isinstance(child, dict):
+            rows.extend(walk_template_terms(child))
+    return rows
 
 
 def ids(values: Iterable[str]) -> list[str]:
@@ -378,6 +428,8 @@ def validate_engine_document(
         "obligation_residual_classifier_v1", "frozen_evidence_state_classifier_v1",
         "frozen_disposition_precedence_v1", "frozen_topology_aggregate_v1",
         "frozen_cross_level_ensemble_v1", "frozen_promotion_evaluator_v1",
+        "branch_template_eligibility_v12", "conditional_posed_template_v12",
+        "physics_record_projection_invariance_v12",
     }
     checked({row["semantic_route_id"] for row in registry} == expected_routes, "ASSERT_ENGINE_ROUTE_REGISTRY", "semantic route registry incomplete", checks)
     checked(all(row["exists"] and row["executed"] and row["engine_local_function"] for row in registry), "ASSERT_ENGINE_ROUTE_REGISTRY", "engine-local route absent/unexecuted", checks)
@@ -392,6 +444,7 @@ def validate_semantic(
     grid_doc = bundle["dependency_grid_inventory"]
     obligation_doc = bundle["obligation_censuses"]["censuses"]
     route_doc = bundle["route_fixture_inventory"]
+    contracts = bundle["closure_template_contracts"]
     availability = by_id(bundle["availability_slots"]["slots"], "slot_id")
     taxonomy_roots = set(bundle["evidence_taxonomy"]["source_census"]["source_ids"])
     checked(view["stage0_binding"]["equal"] and view["stage0_binding"]["supplied_digest"] == RATIFIED_DIGEST == view["stage0_binding"]["recomputed_component_digest"], "ASSERT_STAGE0_BINDING", "stage-0 digest not bound", checks)
@@ -404,6 +457,11 @@ def validate_semantic(
         and axes["candidate_universe_digest"] == candidate_doc["candidate_universe_digest"],
         "ASSERT_AXES", "production axes differ from ratified inventory", checks,
     )
+    pin = contracts["physics_record_invariance_contract"]
+    projected = arbiter_physics_record_projection(view)
+    projected_digest = digest(projected)
+    projected_universe = [row["record_id"] for row in projected]
+    declared_invariance = view["physics_record_invariance"]
 
     frozen_routes = by_id(route_doc["route_records"], "route_id")
     routes = by_id(view["route_controls"], "route_id")
@@ -564,9 +622,128 @@ def validate_semantic(
             checked(witness["executed"] and witness["construct_B_star_attempted"] and witness["measured_rank"] == 0 and witness["challenge_outcome"] == "CONSTRUCTIVE_FAIL", "ASSERT_NO_FORCING_WITNESS", f"no-forcing witness invalid {key}")
         checked(not promotion["exclusion_records_referenced"] and not promotion["survivor_or_complement_objects_referenced"] and not promotion["stability_roots_referenced"], "ASSERT_PROMOTION_ANCESTRY", f"selection-from-exclusion/stability ancestry {key}")
 
-    eligible = [cell_id for cell_id, cell in cells.items() if cell["integrity"] == "COMPUTATION_VALID" and cell["disposition"]["kind"] == "ADMISSIBLE" and cell["candidate_id"] != "OTHER"]
-    templates = view["posed_BVP_templates"]
-    checked(not eligible and not templates, "ASSERT_TEMPLATE_ELIGIBILITY", "template set differs from valid+ADMISSIBLE set", checks)
+    derived_eligibility = []
+    for candidate in axes["candidate_axis"]:
+        for ambient in axes["ambient_branches"]:
+            branch_cells = [row for row in cells.values() if row["candidate_id"] == candidate and row["ambient"] == ambient]
+            integrities = ids(row["integrity"] for row in branch_cells)
+            dispositions = ids(row["disposition"]["kind"] for row in branch_cells if row["integrity"] == "COMPUTATION_VALID")
+            if candidate == "OTHER":
+                eligible, reason = False, "catch_all_OTHER_has_no_defining_operator"
+            elif not branch_cells:
+                eligible, reason = False, "no_stratum_cells"
+            elif integrities != ["COMPUTATION_VALID"]:
+                eligible, reason = False, "integrity_stratum_cell_present"
+            elif "EXCLUDED" in dispositions:
+                eligible, reason = False, "EXCLUDED_stratum_cell_present"
+            elif len(dispositions) != 1:
+                eligible, reason = False, "heterogeneous_stratum_dispositions"
+            elif dispositions[0] not in {"ADMISSIBLE", "UNRESOLVED"}:
+                eligible, reason = False, "disposition_class_not_template_eligible"
+            else:
+                eligible, reason = True, None
+            derived_eligibility.append({
+                "template_branch_id": f"U2:{candidate}:{ambient}", "candidate_id": candidate, "ambient": ambient,
+                "stratum_cell_ids": ids(row["cell_id"] for row in branch_cells), "stratum_count": len(branch_cells),
+                "integrity_classes": integrities, "disposition_classes": dispositions,
+                "template_eligible": eligible, "eligibility_class": dispositions[0] if eligible else None,
+                "ineligibility_reason": reason,
+            })
+    eligibility_rows = view["template_eligibility_branches"]
+    eligible_branch_ids = {row["template_branch_id"] for row in derived_eligibility if row["template_eligible"]}
+    templates = by_id(view["posed_BVP_templates"], "stable_branch_id")
+    checked(
+        eligibility_rows == derived_eligibility and len(eligible_branch_ids) == 16
+        and set(templates) == eligible_branch_ids
+        and all(row["candidate_id"] != "OTHER" for row in eligibility_rows if row["template_eligible"])
+        and all(cell["template_eligible"] == (f"U2:{cell['candidate_id']}:{cell['ambient']}" in eligible_branch_ids) for cell in cells.values()),
+        "ASSERT_TEMPLATE_ELIGIBILITY", "branch eligibility and emitted-template sets differ", checks,
+    )
+
+    template_contract = contracts["template"]
+    proof_by_branch = by_id(template_contract["branch_equivalence_proofs"], "template_branch_id")
+    allowed_posing = set(template_contract["conditional_template_posing_allowed_constructors"])
+    r49_ids = template_contract["R49_exact_unresolved_reference_ids"]
+    for branch_id, template in templates.items():
+        branch_cells = [cells[value] for value in template["source_stratum_cell_ids"]]
+        proof = proof_by_branch[branch_id]
+        checked(
+            proof["identical_BVP_across_strata"] and proof["distinct_census_digest_count"] == 1
+            and proof["proof_timing"] == "pre-production_symbolic_only"
+            and not proof["produced_adjudication_objects_used"]
+            and ids(row["stratum"] for row in branch_cells) == ids(proof["active_strata"])
+            and all(digest(row["constituent_census"]) == row["census_sha256"] for row in proof["per_stratum_censuses"])
+            and len({row["census_sha256"] for row in proof["per_stratum_censuses"]}) == 1,
+            "ASSERT_TEMPLATE_STRATUM_BVP_EQUIVALENCE", f"invalid branch collapse {branch_id}", checks,
+        )
+        disposition = template["eligibility_disposition"]
+        conditional = disposition == "UNRESOLVED"
+        expected_missing_ids = ids(
+            datum for cell in branch_cells
+            for datum in (cell["disposition"]["named_datum"], cell["disposition"]["stratum_datum"])
+        ) if conditional else []
+        constituents = template["constituents"]
+        typed_free_data = constituents["typed_free_data"]
+        checked(
+            template["integrity"] == "COMPUTATION_VALID" and template["physics"] == "POSED_BVP_TEMPLATE"
+            and template["conditional"] == conditional and template["dependent_fields_unbound"]
+            and template["evaluation_state"] == "UNEVALUATED"
+            and [row["reference_id"] for row in typed_free_data] == r49_ids
+            and all(row["availability"] == "UNRESOLVED" and row["domain"] and row["dimensions"] for row in typed_free_data),
+            "ASSERT_TEMPLATE_NO_SOLVED_CONTENT", f"template schema/free-data invalid {branch_id}", checks,
+        )
+        if conditional:
+            branch_tag = constituents.get("branch_conditionality_tag", {})
+            open_tag = constituents.get("open_data_conditionality_tag", {})
+            checked(
+                branch_tag.get("tag") == f"CONDITIONAL_ON_BRANCH({template['candidate_id']})"
+                and branch_tag.get("candidate_id") == template["candidate_id"]
+                and open_tag.get("unresolved_missing_datum_ids") == expected_missing_ids
+                and all(not tag.get("evidential") and not tag.get("posing_DAG_reachable") for tag in (branch_tag, open_tag)),
+                "ASSERT_CONDITIONAL_TEMPLATE_TAGS", f"conditional tags missing/evidential/reachable {branch_id}", checks,
+            )
+        else:
+            checked(
+                "branch_conditionality_tag" not in constituents and "open_data_conditionality_tag" not in constituents,
+                "ASSERT_CONDITIONAL_TEMPLATE_TAGS", f"unconditional template carries conditional tags {branch_id}", checks,
+            )
+        checked(
+            not template["branch_admissibility_claim"] and not template["branch_selection_claim"],
+            "ASSERT_CONDITIONAL_TEMPLATE_NO_CLAIMS", f"template asserts admissibility/selection {branch_id}", checks,
+        )
+        posing = template["posing_proof_dag"]
+        computed_posing = set(frozen_classify_inference_content(posing["normalized_inference_content"]))
+        checked(
+            computed_posing == set(posing["constructors"]) and computed_posing <= allowed_posing
+            and not template["excluded_record_references"] and not template["complement_record_references"]
+            and ("POSTULATE_BRANCH" in computed_posing) == (template["ambient"] == "two_sided_R_w_postulate"),
+            "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY", f"banned normalized posing content {branch_id}", checks,
+        )
+        metadata_ids = {
+            constituents["branch_conditionality_tag"]["metadata_id"],
+            constituents["open_data_conditionality_tag"]["metadata_id"],
+        } if conditional else set()
+        checked(
+            metadata_ids.isdisjoint(scalar_values(posing["normalized_inference_content"]))
+            and metadata_ids.isdisjoint(scalar_values(template["symbolic_ast"])),
+            "ASSERT_CONDITIONAL_TEMPLATE_METADATA_UNREACHABLE", f"conditional metadata reached posing DAG {branch_id}", checks,
+        )
+        expected_terms = [
+            {"term_id": "residual:bulk_euler_lagrange_residual", "kind": "residual"},
+            {"term_id": f"boundary:canonical_operator:{template['candidate_id']}", "kind": "boundary"},
+            {"term_id": "zero-mode:translation_zero_mode", "kind": "zero-mode"},
+            {"term_id": f"asymptotic-matching:{template['ambient']}", "kind": "asymptotic-matching"},
+        ]
+        checked(
+            template["expected_term_census"] == expected_terms
+            and walk_template_terms(template["symbolic_ast"]) == expected_terms,
+            "ASSERT_TEMPLATE_TERM_INCIDENCE", f"template term census/incidence incomplete {branch_id}", checks,
+        )
+        checked(
+            not contains_solved_payload(constituents)
+            and "SOLVE_EVALUATION_RESULT" not in computed_posing,
+            "ASSERT_TEMPLATE_NO_SOLVED_CONTENT", f"solved payload reachable {branch_id}", checks,
+        )
 
     fixtures = view["guard_fixtures"]
     template_fixture = fixtures["template"]
@@ -594,6 +771,18 @@ def validate_semantic(
     checked(
         view["headlines"]["integrity_failures"] == 0,
         "ASSERT_BANKING_ZERO_INTEGRITY", "headline integrity aggregate is nonzero", checks,
+    )
+    checked(
+        projected_digest == pin["U2_V11_PHYSICS_RECORD_SET_DIGEST"]
+        == declared_invariance["reference_digest"] == declared_invariance["live_v12_digest"]
+        and projected_universe == pin["record_id_universe"] == declared_invariance["record_id_universe"]
+        and len(projected) == declared_invariance["record_count"] == pin["record_count"] == 992
+        and axes["candidate_universe_digest"] == pin["candidate_universe_digest"]
+        and declared_invariance["candidate_universe_digest_unchanged"]
+        and declared_invariance["equal"]
+        and declared_invariance["comparison_timing"] == "after_all_records_emitted_before_banking"
+        and declared_invariance["comparison_predicate"] == pin["comparison_predicate"],
+        "ASSERT_PHYSICS_RECORD_INVARIANCE", "live v12 projected physics records differ from frozen v11 pin", checks,
     )
 
 
@@ -634,6 +823,15 @@ def mutation_catalog(view: dict[str, Any]) -> list[dict[str, str]]:
         "PROMOTION_CANDIDATE_UNIVERSE": "ASSERT_PROMOTION_CANDIDATE_UNIVERSE",
         "NO_FORCING_WITNESS": "ASSERT_NO_FORCING_WITNESS", "PROMOTION_EXCLUSION": "ASSERT_PROMOTION_ANCESTRY",
         "TEMPLATE_EXTRA": "ASSERT_TEMPLATE_ELIGIBILITY", "TEMPLATE_SOLVED": "ASSERT_TEMPLATE_NO_SOLVED_CONTENT",
+        "TEMPLATE_ELIGIBILITY_FLIP": "ASSERT_TEMPLATE_ELIGIBILITY",
+        "CONDITIONAL_TEMPLATE_TAG_STRIP": "ASSERT_CONDITIONAL_TEMPLATE_TAGS",
+        "CONDITIONAL_TEMPLATE_OPEN_DATA_TAG_STRIP": "ASSERT_CONDITIONAL_TEMPLATE_TAGS",
+        "CONDITIONAL_TEMPLATE_ADMISSIBILITY_ASSERTION": "ASSERT_CONDITIONAL_TEMPLATE_NO_CLAIMS",
+        "CONDITIONAL_TEMPLATE_EXCLUSION_ANCESTRY": "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY",
+        "CONDITIONAL_TEMPLATE_LABEL_FREE_INCOMPATIBILITY": "ASSERT_CONDITIONAL_TEMPLATE_ANCESTRY",
+        "CONDITIONAL_TEMPLATE_TAG_SOLVED_PAYLOAD": "ASSERT_TEMPLATE_NO_SOLVED_CONTENT",
+        "CONDITIONAL_TEMPLATE_TAG_REACHABLE": "ASSERT_CONDITIONAL_TEMPLATE_METADATA_UNREACHABLE",
+        "PHYSICS_RECORD_INVARIANCE": "ASSERT_PHYSICS_RECORD_INVARIANCE",
         "TEMPLATE_TERM_RESIDUAL": "ASSERT_TEMPLATE_TERM_INCIDENCE", "TEMPLATE_TERM_BOUNDARY": "ASSERT_TEMPLATE_TERM_INCIDENCE",
         "TEMPLATE_TERM_ZERO_MODE": "ASSERT_TEMPLATE_TERM_INCIDENCE", "TEMPLATE_TERM_ASYMPTOTIC": "ASSERT_TEMPLATE_TERM_INCIDENCE",
         "STABILITY_DAG": "ASSERT_PROGRAM_WIDE_STABILITY_BAN", "CONCEALED_ELIMINATION": "ASSERT_TYPED_ANCESTRY",
@@ -736,8 +934,37 @@ def apply_mutation(view: dict[str, Any], mutation: str) -> None:
         elif mutation == "PROMOTION_CANDIDATE_UNIVERSE": changed = True; promotion["candidate_universe_digest"] = "stale"
         elif mutation == "NO_FORCING_WITNESS": changed = True; promotion["no_forcing_witness"]["executed"] = False
         elif mutation == "PROMOTION_EXCLUSION": changed = True; promotion["exclusion_records_referenced"] = ["excluded:E2"]
-        elif mutation == "TEMPLATE_EXTRA": changed = True; view["posed_BVP_templates"].append({"record_id": "template:illegal"})
+        elif mutation == "TEMPLATE_EXTRA":
+            changed = True
+            extra = copy.deepcopy(view["posed_BVP_templates"][0])
+            extra.update({"record_id": "template:illegal", "stable_branch_id": "U2:illegal:ambient"})
+            view["posed_BVP_templates"].append(extra)
         elif mutation == "TEMPLATE_SOLVED": changed = True; view["guard_fixtures"]["template"]["solve_evaluation_node_reachable"] = True
+        elif mutation == "TEMPLATE_ELIGIBILITY_FLIP": changed = True; view["template_eligibility_branches"][0]["template_eligible"] = False
+        elif mutation in {"CONDITIONAL_TEMPLATE_TAG_STRIP", "CONDITIONAL_TEMPLATE_OPEN_DATA_TAG_STRIP"}:
+            changed = True
+            key = "branch_conditionality_tag" if mutation == "CONDITIONAL_TEMPLATE_TAG_STRIP" else "open_data_conditionality_tag"
+            view["posed_BVP_templates"][0]["constituents"].pop(key)
+        elif mutation == "CONDITIONAL_TEMPLATE_ADMISSIBILITY_ASSERTION":
+            changed = True; view["posed_BVP_templates"][0]["branch_admissibility_claim"] = True
+        elif mutation in {"CONDITIONAL_TEMPLATE_EXCLUSION_ANCESTRY", "CONDITIONAL_TEMPLATE_LABEL_FREE_INCOMPATIBILITY"}:
+            changed = True
+            template = view["posed_BVP_templates"][0]
+            operation = "complement" if mutation.endswith("EXCLUSION_ANCESTRY") else "incompatible"
+            template["posing_proof_dag"]["normalized_inference_content"] = {
+                "op": "positive_join", "args": [{"op": operation, "args": []}],
+            }
+            template["posing_proof_dag"]["constructors"] = ["POSITIVE_DERIVATION"]
+        elif mutation == "CONDITIONAL_TEMPLATE_TAG_SOLVED_PAYLOAD":
+            changed = True
+            view["posed_BVP_templates"][0]["constituents"]["open_data_conditionality_tag"]["payload_kind"] = "RESPONSE_COEFFICIENT"
+        elif mutation == "CONDITIONAL_TEMPLATE_TAG_REACHABLE":
+            changed = True
+            template = view["posed_BVP_templates"][0]
+            metadata_id = template["constituents"]["branch_conditionality_tag"]["metadata_id"]
+            template["posing_proof_dag"]["normalized_inference_content"]["args"].append({"op": "root", "id": metadata_id})
+        elif mutation == "PHYSICS_RECORD_INVARIANCE":
+            changed = True; view["physics_record_invariance"]["live_v12_digest"] = "0" * 64
         elif mutation.startswith("TEMPLATE_TERM_"):
             index = {"TEMPLATE_TERM_RESIDUAL": 0, "TEMPLATE_TERM_BOUNDARY": 1, "TEMPLATE_TERM_ZERO_MODE": 2, "TEMPLATE_TERM_ASYMPTOTIC": 3}[mutation]
             changed = True; view["guard_fixtures"]["template"]["emitted_terms"].pop(index)
@@ -880,6 +1107,9 @@ def a9_coverage(view: dict[str, Any]) -> dict[str, Any]:
         rows.append({"object_id": promotion["record_id"], "category": "promotion", "recompute_route": "promotion_record"})
     for template in view["posed_BVP_templates"]:
         rows.append({"object_id": template["record_id"], "category": "posed_BVP_template", "recompute_route": "template_record"})
+        rows.append({"object_id": f"conditional_contract:{template['record_id']}", "category": "conditional_template_contract", "recompute_route": "normalized_template_contract_guard"})
+        rows.append({"object_id": f"stratum_equivalence:{template['stable_branch_id']}", "category": "template_stratum_equivalence_proof", "recompute_route": "stage0_symbolic_constituent_census"})
+    rows.append({"object_id": "physics_record_invariance:v11_to_v12", "category": "physics_record_invariance_guard", "recompute_route": "independent_v11_and_v12_projection"})
     object_ids = [row["object_id"] for row in rows]
     counts = dict(sorted(Counter(row["category"] for row in rows).items()))
     zero_cardinality_scopes = {
@@ -895,7 +1125,6 @@ def a9_coverage(view: dict[str, Any]) -> dict[str, Any]:
         "closure_certificate": sum(
             row["physics"]["kind"] == "CLOSURE_CERTIFIED" for row in view["closure_records"]
         ),
-        "posed_BVP_template": len(view["posed_BVP_templates"]),
     }
     return {
         "object_ids": object_ids, "object_count": len(object_ids), "coverage_map": rows,
@@ -923,8 +1152,9 @@ def summary_text(view: dict[str, Any]) -> str:
         f"- Topology gate: `{h['topology_gate']}`; pair-annihilation field: `{h['pair_annihilation']}`.",
         f"- Closure adjudications: `{h['closure_adjudications']}`.",
         f"- Promotions: `{h['promotion_outcomes']}`.",
-        f"- Posed-BVP templates: `{h['posed_template_count']}` (the exact COMPUTATION_VALID + ADMISSIBLE eligible set is empty).", "",
-        "All 144 cells are `COMPUTATION_VALID`. Each `UNRESOLVED` record names candidate-specific missing static structure and its active OPEN stratum, and carries an executed constructive challenge. No endpoint is selected or excluded by complement, and no BVP is solved.", "",
+        f"- Posed-BVP templates: `{h['posed_template_count']}` conditional branch templates (8 operator-bearing candidates × 2 ambients); catch-all `OTHER` is named-open with no template.",
+        f"- Physics-record invariance: `{view['physics_record_invariance']['equal']}`; live/reference digest `{view['physics_record_invariance']['live_v12_digest']}`.", "",
+        "All 144 cells are `COMPUTATION_VALID` and remain `UNRESOLVED`. Each record names candidate-specific missing static structure and its active OPEN stratum, and carries an executed constructive challenge. The templates pose, but do not solve, the 16 operator-bearing branch BVPs and assert neither admissibility nor selection.", "",
         "The local mouth classifications are mechanically refused as final positive ensemble claims because host location remains under-specified. The final level-1 record therefore preserves the forcing evidence as a typed closure refusal rather than laundering it into a positive claim.", "",
         "The dynamical-selection/stability question and return closure remain downstream deferrals and are computed-unreachable from U2 verdicts.", "",
     ]
@@ -940,6 +1170,7 @@ def compare_and_write(args: argparse.Namespace) -> int:
             "candidate_inventory": "candidate_inventory.yaml", "dependency_grid_inventory": "dependency_grid_inventory.yaml",
             "obligation_censuses": "obligation_censuses.yaml", "route_fixture_inventory": "route_fixture_inventory.yaml",
             "evidence_taxonomy": "evidence_taxonomy.yaml", "availability_slots": "availability_slots.yaml",
+            "closure_template_contracts": "closure_template_contracts.yaml",
         }.items()
     }
     if args.campaign_probe:

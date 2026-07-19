@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -19,8 +20,7 @@ from typing import Any
 import yaml
 
 
-RATIFIED_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
-STAGE0_ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
+RATIFIED_DIGEST = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b"
 LEGS = ("arbiter", "fidelity", "adversarial_recompute", "read_only_review")
 EXPECTED_CATEGORIES = {
     "candidate_disposition": 144,
@@ -29,6 +29,10 @@ EXPECTED_CATEGORIES = {
     "ensemble_level_2": 144,
     "host_location": 144,
     "promotion": 16,
+    "posed_BVP_template": 16,
+    "conditional_template_contract": 16,
+    "template_stratum_equivalence_proof": 16,
+    "physics_record_invariance_guard": 1,
     "return_closure_ownership": 144,
     "same_route_fixture_control": 144,
     "topology_gate": 144,
@@ -38,7 +42,6 @@ EXPECTED_ZERO_SCOPES = {
     "positive_witness": 0,
     "selection_forcing_proof": 0,
     "closure_certificate": 0,
-    "posed_BVP_template": 0,
 }
 
 
@@ -63,6 +66,34 @@ def dump_yaml(path: Path, value: Any) -> None:
     )
 
 
+def canonical_digest(value: Any) -> str:
+    return hashlib.sha256(json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+    ).encode("utf-8")).hexdigest()
+
+
+def independent_physics_projection(document: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    context_fields = ("cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum")
+    disposition_fields = (
+        *context_fields, "native_root_class", "integrity", "expected_dependencies", "used_dependencies",
+        "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability",
+    )
+    for cell in document["cell_records"]:
+        context = {key: cell[key] for key in context_fields}
+        rows.extend((
+            {"record_id": f"candidate_disposition:{cell['cell_id']}", "record_class": "candidate_disposition", "payload": {key: cell[key] for key in disposition_fields}},
+            {"record_id": cell["ensemble"]["level_1"]["record_id"], "record_class": "ensemble_level_1", "payload": {**context, **cell["ensemble"]["level_1"]}},
+            {"record_id": cell["ensemble"]["level_2"]["record_id"], "record_class": "ensemble_level_2", "payload": {**context, "applicability": cell["ensemble"]["applicability"], **cell["ensemble"]["level_2"]}},
+            {"record_id": cell["topology_gate"]["record_id"], "record_class": "topology_gate", "payload": cell["topology_gate"]},
+            {"record_id": cell["host_location"]["record_id"], "record_class": "host_location", "payload": cell["host_location"]},
+            {"record_id": cell["return_closure_ownership"]["record_id"], "record_class": "return_closure_ownership", "payload": cell["return_closure_ownership"]},
+        ))
+    rows.extend({"record_id": row["record_id"], "record_class": "closure_adjudication", "payload": row} for row in document["closure_records"])
+    rows.extend({"record_id": row["record_id"], "record_class": "promotion", "payload": row} for row in document["promotion_records"])
+    return sorted(rows, key=lambda row: (row["record_id"].casefold(), row["record_id"]))
+
+
 def assert_anchored(repo: Path, anchor: str, path: Path) -> str:
     try:
         rel = path.resolve().relative_to(repo).as_posix()
@@ -79,7 +110,7 @@ def assert_anchored(repo: Path, anchor: str, path: Path) -> str:
     return rel
 
 
-def reassert_stage0(repo: Path, source: Path, stage0: Path, digest: str) -> None:
+def reassert_stage0(repo: Path, source: Path, stage0: Path, anchor: str, digest: str) -> None:
     runtime = source / "_scratch/u2_production/a9_runtime"
     for path in (runtime, runtime / "wolfram_userbase/Licensing", runtime / "wolfram_base"):
         path.mkdir(parents=True, exist_ok=True)
@@ -88,7 +119,7 @@ def reassert_stage0(repo: Path, source: Path, stage0: Path, digest: str) -> None
     verify_command = [
         "/usr/bin/python3", "-I", str(source / "u2_stage0_contract.py"),
         "--repo", str(repo), "--output-dir", str(stage0),
-        "--startup-contract-commit", STAGE0_ANCHOR, "--verify",
+        "--startup-contract-commit", anchor, "--verify",
         "--expected-digest", digest, "--recompute-environment",
     ]
     launched = [
@@ -153,7 +184,7 @@ def main() -> int:
     repo = Path(args.repo).resolve()
     source = repo / "software/em_charge_attribute"
     stage0 = source / "reports/u2_boundary_adjudication_artifacts/stage_0_contract"
-    production = source / "reports/u2_boundary_adjudication_artifacts/stage_1_production"
+    production = source / "reports/u2_boundary_adjudication_artifacts/stage_1_production_v12"
     anchor = args.startup_contract_commit
     if not re.fullmatch(r"[0-9a-f]{40}", anchor) or anchor == "HEAD":
         raise PreflightFailure("STARTUP_CONTRACT_COMMIT must be a full orchestrator-supplied commit")
@@ -181,10 +212,25 @@ def main() -> int:
             source / "u2_containment.py",
         )
     ]
-    reassert_stage0(repo, source, stage0, args.stage0_contract_digest)
+    reassert_stage0(repo, source, stage0, anchor, args.stage0_contract_digest)
     results = load_yaml(production / "production_results.yaml")
     if results["stage0_contract_digest"] != RATIFIED_DIGEST:
         raise PreflightFailure("production result is not bound to the ratified stage-0 digest")
+    invariant_contract = load_yaml(stage0 / "closure_template_contracts.yaml")["physics_record_invariance_contract"]
+    v11_results = load_yaml(source / "reports/u2_boundary_adjudication_artifacts/stage_1_production/production_results.yaml")
+    v11_projection = independent_physics_projection(v11_results)
+    v12_projection = independent_physics_projection(results)
+    v11_digest = canonical_digest(v11_projection); v12_digest = canonical_digest(v12_projection)
+    if not (
+        v11_digest == v12_digest == invariant_contract["U2_V11_PHYSICS_RECORD_SET_DIGEST"]
+        and [row["record_id"] for row in v11_projection]
+        == [row["record_id"] for row in v12_projection]
+        == invariant_contract["record_id_universe"]
+        and results["axes"]["candidate_universe_digest"]
+        == v11_results["axes"]["candidate_universe_digest"]
+        == invariant_contract["candidate_universe_digest"]
+    ):
+        raise PreflightFailure("delta-A9 independently reconstructed v11/v12 projections differ")
     object_count, categories = validate_coverage(results)
     record = {
         "schema_version": "U2_A9_EXTERNAL_LEG_PREFLIGHT_V1",
@@ -204,6 +250,12 @@ def main() -> int:
         "coverage_granularity": "EVERY_OBJECT_INDIVIDUAL",
         "zero_cardinality_required_scopes": EXPECTED_ZERO_SCOPES,
         "coverage_exact": True,
+        "delta_A9_physics_record_invariance": {
+            "v11_projection_digest": v11_digest, "v12_projection_digest": v12_digest,
+            "pinned_digest": invariant_contract["U2_V11_PHYSICS_RECORD_SET_DIGEST"],
+            "record_count": len(v12_projection), "record_id_universe_exact": True,
+            "candidate_universe_digest_unchanged": True, "equal": True,
+        },
         "external_leg_pass_claimed": False,
         "external_leg_result_owner": "orchestrator/fresh external verifier",
     }

@@ -18,7 +18,6 @@ from typing import Any
 import yaml
 
 
-STARTUP_ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
 SUCCESS_HALT = 42
 ARTIFACT_REL = Path("software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_0_contract")
 SCRATCH_REL = Path("software/em_charge_attribute/_scratch/u2_stage0")
@@ -265,7 +264,7 @@ class Runner:
         for stage in first_stages: closure_base.extend(["--trace", str(self.trace_path(stage))])
         self.run_stage(
             "05_preliminary_closure", self.python_command(
-                "u2_code_closure_guard.py", *closure_base, "--stage0-precommit", "--output", str(preliminary_closure),
+                "u2_code_closure_guard.py", *closure_base, "--output", str(preliminary_closure),
             ), [preliminary_closure], self.stage_producers("u2_code_closure_guard.py"),
             inputs=[self.artifact / "environment_identity.yaml", *[self.trace_path(stage) for stage in first_stages]],
         )
@@ -286,6 +285,7 @@ class Runner:
         self.run_stage(
             "07_mutation_campaign", self.python_command(
                 "u2_stage0_mutations.py", "--repo", str(self.repo), "--scratch", str(mutation_scratch),
+                "--startup-contract-commit", self.anchor,
                 "--sympy", str(sympy), "--wolfram", str(wolfram), "--agreement", str(agreement),
                 "--bundle-dir", str(self.artifact), "--closure", str(preliminary_closure),
                 "--containment", str(containment),
@@ -306,7 +306,7 @@ class Runner:
             final_closure_args.extend(["--trace", str(self.trace_path(stage))])
         self.run_stage(
             "09_final_closure", self.python_command(
-                "u2_code_closure_guard.py", *final_closure_args, "--stage0-precommit", "--output", str(closure),
+                "u2_code_closure_guard.py", *final_closure_args, "--output", str(closure),
             ), [closure], self.stage_producers("u2_code_closure_guard.py"),
             inputs=[self.artifact / "environment_identity.yaml", *[self.trace_path(stage) for stage in (*measured_stages, "06_process_tree_containment", "08_mutation_closure_probe")]],
         )
@@ -429,7 +429,7 @@ def main() -> int:
         for path in (Path(__file__), source / "run_u2_boundary_adjudication.sh", a9_script):
             assert_production_launcher_at_anchor(repo, resolved, path)
         output = args.a9_output or str(
-            source / "reports/u2_boundary_adjudication_artifacts/stage_1_production"
+            source / "reports/u2_boundary_adjudication_artifacts/stage_1_production_v12"
             / f"a9_preflight_{args.production_a9_preflight}.yaml"
         )
         os.execv(
@@ -469,8 +469,10 @@ def main() -> int:
         ["git", "rev-parse", f"{args.startup_contract_commit}^{{commit}}"], cwd=repo,
         check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
     ).stdout.strip()
-    if resolved != args.startup_contract_commit or resolved != STARTUP_ANCHOR:
-        raise StageFailure(f"stage-0 anchor mismatch supplied={args.startup_contract_commit} resolved={resolved} required={STARTUP_ANCHOR}")
+    if resolved != args.startup_contract_commit:
+        raise StageFailure(
+            f"stage-0 anchor did not resolve identically supplied={args.startup_contract_commit} resolved={resolved}"
+        )
     return Runner(repo, resolved).run()
 
 

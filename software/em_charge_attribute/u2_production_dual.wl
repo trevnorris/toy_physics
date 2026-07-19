@@ -2,7 +2,7 @@
 
 ClearAll["Global`*"];
 
-ratifiedDigest = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4";
+ratifiedDigest = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b";
 componentFiles = <|
   "frozen_data_pin_table" -> "frozen_data_pin_table.yaml",
   "candidate_inventory" -> "candidate_inventory.yaml",
@@ -56,6 +56,31 @@ canonicalJSONString[Null] := "null";
 canonicalJSONString[value_Integer] := ToString[value, InputForm];
 canonicalJSONString[value_] := StringReplace[ExportString[value, "RawJSON", "Compact" -> True], "\\/" -> "/"];
 canonicalDigest[value_] := IntegerString[Hash[canonicalJSONString[value], "SHA256"], 16, 64];
+
+livePhysicsRecordProjection[document_Association] := Module[
+  {rows = {}, contextFields, dispositionFields, context, cell, payload},
+  contextFields = {"cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum"};
+  dispositionFields = Join[contextFields, {
+    "native_root_class", "integrity", "expected_dependencies", "used_dependencies",
+    "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability"
+  }];
+  Do[
+    context = Association@Table[key -> cell[key], {key, contextFields}];
+    AppendTo[rows, <|
+      "record_id" -> "candidate_disposition:" <> cell["cell_id"], "record_class" -> "candidate_disposition",
+      "payload" -> Association@Table[key -> cell[key], {key, dispositionFields}]
+    |>];
+    AppendTo[rows, <|"record_id" -> cell["ensemble"]["level_1"]["record_id"], "record_class" -> "ensemble_level_1", "payload" -> Join[context, cell["ensemble"]["level_1"]]|>];
+    AppendTo[rows, <|"record_id" -> cell["ensemble"]["level_2"]["record_id"], "record_class" -> "ensemble_level_2", "payload" -> Join[context, <|"applicability" -> cell["ensemble"]["applicability"]|>, cell["ensemble"]["level_2"]]|>];
+    AppendTo[rows, <|"record_id" -> cell["topology_gate"]["record_id"], "record_class" -> "topology_gate", "payload" -> cell["topology_gate"]|>];
+    AppendTo[rows, <|"record_id" -> cell["host_location"]["record_id"], "record_class" -> "host_location", "payload" -> cell["host_location"]|>];
+    AppendTo[rows, <|"record_id" -> cell["return_closure_ownership"]["record_id"], "record_class" -> "return_closure_ownership", "payload" -> cell["return_closure_ownership"]|>],
+    {cell, document["cell_records"]}
+  ];
+  Do[AppendTo[rows, <|"record_id" -> payload["record_id"], "record_class" -> "closure_adjudication", "payload" -> payload|>], {payload, document["closure_records"]}];
+  Do[AppendTo[rows, <|"record_id" -> payload["record_id"], "record_class" -> "promotion", "payload" -> payload|>], {payload, document["promotion_records"]}];
+  SortBy[rows, {ToLowerCase[# ["record_id"]], # ["record_id"]} &]
+];
 
 require[condition_, detail_String] := If[!TrueQ[condition], Print["U2_WOLFRAM_PRODUCTION_BLOCKED " <> detail]; Exit[1]];
 requireGeneration[condition_, assertId_String, detail_String] := If[!TrueQ[condition],
@@ -801,6 +826,103 @@ guardFixtures[contracts_Association] := Module[{template, closure, expectedTerms
   |>
 ];
 
+branchEligibilityRecords[cells_List, candidateAxis_List, ambientAxis_List] := Module[
+  {records = {}, branchCells, integrities, dispositions, eligible, reason, candidate, ambient},
+  Do[
+    branchCells = Select[cells, # ["candidate_id"] == candidate && # ["ambient"] == ambient &];
+    integrities = sortIds[Lookup[branchCells, "integrity"]];
+    dispositions = sortIds[(# ["disposition"]["kind"] &) /@ Select[branchCells, # ["integrity"] == "COMPUTATION_VALID" &]];
+    Which[
+      candidate == "OTHER", eligible = False; reason = "catch_all_OTHER_has_no_defining_operator",
+      Length[branchCells] == 0, eligible = False; reason = "no_stratum_cells",
+      integrities != {"COMPUTATION_VALID"}, eligible = False; reason = "integrity_stratum_cell_present",
+      MemberQ[dispositions, "EXCLUDED"], eligible = False; reason = "EXCLUDED_stratum_cell_present",
+      Length[dispositions] != 1, eligible = False; reason = "heterogeneous_stratum_dispositions",
+      !MemberQ[{"ADMISSIBLE", "UNRESOLVED"}, First[dispositions]], eligible = False; reason = "disposition_class_not_template_eligible",
+      True, eligible = True; reason = Null
+    ];
+    AppendTo[records, <|
+      "template_branch_id" -> "U2:" <> candidate <> ":" <> ambient,
+      "candidate_id" -> candidate, "ambient" -> ambient,
+      "stratum_cell_ids" -> sortIds[Lookup[branchCells, "cell_id"]], "stratum_count" -> Length[branchCells],
+      "integrity_classes" -> integrities, "disposition_classes" -> dispositions,
+      "template_eligible" -> eligible, "eligibility_class" -> If[TrueQ[eligible], First[dispositions], Null],
+      "ineligibility_reason" -> If[TrueQ[eligible], Null, reason]
+    |>],
+    {candidate, candidateAxis}, {ambient, ambientAxis}
+  ]; records
+];
+
+templateTermCensus[candidate_String, ambient_String] := {
+  <|"term_id" -> "residual:bulk_euler_lagrange_residual", "kind" -> "residual"|>,
+  <|"term_id" -> "boundary:canonical_operator:" <> candidate, "kind" -> "boundary"|>,
+  <|"term_id" -> "zero-mode:translation_zero_mode", "kind" -> "zero-mode"|>,
+  <|"term_id" -> "asymptotic-matching:" <> ambient, "kind" -> "asymptotic-matching"|>
+};
+
+templatePosingDag[candidateRecord_Association, ambient_String] := Module[{roots, positiveArgs, content, rootIds},
+  roots = Append[("source:endpoint:" <> # &) /@ candidateRecord["members"], "source:field:geon_core_bundle"];
+  positiveArgs = (<|"op" -> "root", "id" -> #|> &) /@ sortIds[roots];
+  If[ambient == "two_sided_R_w_postulate", AppendTo[positiveArgs, <|
+    "op" -> "postulate", "args" -> {<|"op" -> "root", "id" -> "source:ambient:two_sided_R_w_postulate"|>}
+  |>]];
+  content = <|"op" -> "positive_equivalence", "args" -> {<|"op" -> "positive_join", "args" -> positiveArgs|>}|>;
+  rootIds = sortIds[Join[roots, If[ambient == "two_sided_R_w_postulate", {"source:ambient:two_sided_R_w_postulate"}, {}]]];
+  <|
+    "normalized_inference_content" -> content, "constructors" -> classifyInferenceContent[content],
+    "root_ids" -> rootIds, "classification_source" -> "ratified_normalized_content_classifier"
+  |>
+];
+
+posedTemplateRecord[eligibility_Association, branchCells_List, candidateRecord_Association, templateContract_Association] := Module[
+  {candidate, ambient, disposition, conditional, missingDatumIds, r49, terms, constituents},
+  candidate = eligibility["candidate_id"]; ambient = eligibility["ambient"];
+  disposition = eligibility["eligibility_class"]; conditional = disposition == "UNRESOLVED";
+  missingDatumIds = If[conditional,
+    sortIds[Flatten[({# ["disposition"]["named_datum"], # ["disposition"]["stratum_datum"]} &) /@ branchCells]], {}];
+  r49 = (<|
+    "reference_id" -> #, "availability" -> "UNRESOLVED", "domain" -> "tilted_sleeve_exterior",
+    "dimensions" -> "inherited_exactly_from_R49_ledger"
+  |> &) /@ templateContract["R49_exact_unresolved_reference_ids"];
+  terms = templateTermCensus[candidate, ambient];
+  constituents = <|
+    "canonical_boundary_condition" -> <|
+      "candidate_id" -> candidate, "canonical_operator_signature" -> candidateRecord["canonical_signature"],
+      "native_root_class" -> candidateRecord["native_root_class"]
+    |>,
+    "typed_free_data" -> r49, "unevaluated_residual_or_variational_form" -> "bulk_euler_lagrange_residual",
+    "zero_mode_treatment" -> "project_translation_zero_mode",
+    "well_posedness_classification" -> "UNRESOLVED(committed_structure_only)",
+    "asymptotic_matching_conditions" -> ambient
+  |>;
+  If[conditional, constituents = Join[constituents, <|
+    "branch_conditionality_tag" -> <|
+      "metadata_id" -> "metadata:conditional_branch:" <> candidate,
+      "tag" -> "CONDITIONAL_ON_BRANCH(" <> candidate <> ")", "candidate_id" -> candidate,
+      "evidential" -> False, "posing_DAG_reachable" -> False
+    |>,
+    "open_data_conditionality_tag" -> <|
+      "metadata_id" -> "metadata:open_data:" <> candidate <> ":" <> ambient,
+      "unresolved_missing_datum_ids" -> missingDatumIds, "evidential" -> False, "posing_DAG_reachable" -> False
+    |>
+  |>]];
+  <|
+    "record_id" -> "template:candidate=" <> candidate <> "|ambient=" <> ambient,
+    "stable_branch_id" -> eligibility["template_branch_id"], "candidate_id" -> candidate, "ambient" -> ambient,
+    "integrity" -> "COMPUTATION_VALID", "physics" -> "POSED_BVP_TEMPLATE",
+    "eligibility_disposition" -> disposition, "conditional" -> conditional, "constituents" -> constituents,
+    "expected_term_census" -> terms,
+    "symbolic_ast" -> <|"op" -> "posed_template", "args" -> (<|
+      "op" -> "term", "term_id" -> # ["term_id"], "kind" -> # ["kind"], "coefficient" -> 1
+    |> &) /@ terms|>,
+    "evaluation_state" -> "UNEVALUATED", "dependent_fields_unbound" -> True,
+    "branch_admissibility_claim" -> False, "branch_selection_claim" -> False,
+    "excluded_record_references" -> {}, "complement_record_references" -> {},
+    "posing_proof_dag" -> templatePosingDag[candidateRecord, ambient],
+    "source_stratum_cell_ids" -> eligibility["stratum_cell_ids"]
+  |>
+];
+
 counterAssociation[values_List] := Association@KeyValueMap[ToString[#1] -> #2 &, Counts[values]];
 summaryCounts[cells_List, promotions_List, templates_List] := Module[
   {candidates, byCandidate, disposition, finalLevel1, localLevel1, level2, topology, pair, promotion, closure},
@@ -831,8 +953,29 @@ routes = routeControl /@ components["route_fixture_inventory"]["route_records"];
 cells = cellRecord /@ gridDoc["grid_cells"];
 cellMap = AssociationThread[Lookup[cells, "cell_id"], cells];
 promotions = promotionRecord[#, cellMap] & /@ gridDoc["promotion_contexts"];
-templates = {};
+ambientAxis = sortIds[Lookup[gridDoc["grid_cells"], "ambient"]];
+eligibilityRecords = branchEligibilityRecords[cells, candidateDoc["candidate_axis"], ambientAxis];
+eligibilityByBranch = AssociationThread[Lookup[eligibilityRecords, "template_branch_id"], eligibilityRecords];
+cells = (Join[#, <|"template_eligible" -> eligibilityByBranch["U2:" <> # ["candidate_id"] <> ":" <> # ["ambient"]]["template_eligible"]|>] &) /@ cells;
+cellMap = AssociationThread[Lookup[cells, "cell_id"], cells];
+templateContract = components["closure_template_contracts"]["template"];
+templates = (With[{eligibility = #}, posedTemplateRecord[
+  eligibility,
+  Select[cells, # ["candidate_id"] == eligibility["candidate_id"] && # ["ambient"] == eligibility["ambient"] &],
+  candidateRecords[eligibility["candidate_id"]], templateContract
+]] &) /@ Select[eligibilityRecords, TrueQ[# ["template_eligible"]] &];
 closureRecords = Select[Lookup[cells, "closure_adjudication"], AssociationQ];
+If[generationMutation == "TOOTH_PHYSICS_RECORD_INVARIANCE", cells[[1, "disposition", "kind"]] = "ADMISSIBLE"];
+liveProjection = livePhysicsRecordProjection[<|
+  "cell_records" -> cells, "promotion_records" -> promotions, "closure_records" -> closureRecords
+|>];
+invariantContract = components["closure_template_contracts"]["physics_record_invariance_contract"];
+liveProjectionDigest = canonicalDigest[liveProjection];
+liveUniverse = Lookup[liveProjection, "record_id"];
+invariantEqual = liveProjectionDigest == invariantContract["U2_V11_PHYSICS_RECORD_SET_DIGEST"] &&
+  liveUniverse == invariantContract["record_id_universe"] &&
+  candidateDoc["candidate_universe_digest"] == invariantContract["candidate_universe_digest"];
+requireGeneration[invariantEqual, "ASSERT_PHYSICS_RECORD_INVARIANCE", "live v12 non-template projection differs from frozen v11 physics records"];
 
 semantic = <|
   "schema_version" -> "U2_PRODUCTION_SEMANTIC_VIEW_V1",
@@ -846,12 +989,21 @@ semantic = <|
     "postulate_used_as_selection_evidence" -> False, "banned_native_import_count" -> 0
   |>,
   "axes" -> <|
-    "candidate_axis" -> candidateDoc["candidate_axis"], "ambient_branches" -> sortIds[Lookup[gridDoc["grid_cells"], "ambient"]],
+    "candidate_axis" -> candidateDoc["candidate_axis"], "ambient_branches" -> ambientAxis,
     "active_strata" -> gridDoc["active_strata"], "cell_count" -> Length[cells], "promotion_context_count" -> Length[promotions],
     "candidate_universe_digest" -> candidateDoc["candidate_universe_digest"]
   |>,
   "frozen_evaluator_behavior" -> evaluatorBehavior[], "route_controls" -> routes, "cell_records" -> cells,
-  "promotion_records" -> promotions, "closure_records" -> closureRecords, "posed_BVP_templates" -> templates,
+  "promotion_records" -> promotions, "closure_records" -> closureRecords,
+  "template_eligibility_branches" -> eligibilityRecords, "posed_BVP_templates" -> templates,
+  "physics_record_invariance" -> <|
+    "reference_digest" -> invariantContract["U2_V11_PHYSICS_RECORD_SET_DIGEST"],
+    "live_v12_digest" -> liveProjectionDigest, "record_id_universe" -> liveUniverse,
+    "record_count" -> Length[liveProjection],
+    "candidate_universe_digest_unchanged" -> (candidateDoc["candidate_universe_digest"] == invariantContract["candidate_universe_digest"]),
+    "comparison_predicate" -> invariantContract["comparison_predicate"], "equal" -> invariantEqual,
+    "comparison_timing" -> "after_all_records_emitted_before_banking"
+  |>,
   "guard_fixtures" -> guardFixtures[components["closure_template_contracts"]],
   "dimensional_firewall" -> dimensionFirewall[], "headlines" -> summaryCounts[cells, promotions, templates]
 |>;
@@ -863,6 +1015,9 @@ localRegistry = {
     <|"semantic_route_id" -> "frozen_topology_aggregate_v1", "engine_local_function" -> "topologyRecord", "exists" -> (Length[DownValues[topologyRecord]] > 0), "executed" -> (Length[cells] > 0)|>,
     <|"semantic_route_id" -> "frozen_cross_level_ensemble_v1", "engine_local_function" -> "cellRecord", "exists" -> (Length[DownValues[cellRecord]] > 0), "executed" -> (Length[cells] > 0)|>,
     <|"semantic_route_id" -> "frozen_promotion_evaluator_v1", "engine_local_function" -> "promotionRecord", "exists" -> (Length[DownValues[promotionRecord]] > 0), "executed" -> (Length[promotions] > 0)|>
+    ,<|"semantic_route_id" -> "branch_template_eligibility_v12", "engine_local_function" -> "branchEligibilityRecords", "exists" -> (Length[DownValues[branchEligibilityRecords]] > 0), "executed" -> (Length[eligibilityRecords] > 0)|>
+    ,<|"semantic_route_id" -> "conditional_posed_template_v12", "engine_local_function" -> "posedTemplateRecord", "exists" -> (Length[DownValues[posedTemplateRecord]] > 0), "executed" -> (Length[templates] > 0)|>
+    ,<|"semantic_route_id" -> "physics_record_projection_invariance_v12", "engine_local_function" -> "livePhysicsRecordProjection", "exists" -> (Length[DownValues[livePhysicsRecordProjection]] > 0), "executed" -> invariantEqual|>
   };
 
 result = <|

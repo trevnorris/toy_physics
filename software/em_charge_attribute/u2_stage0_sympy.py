@@ -37,6 +37,13 @@ TILT_TYPES = (
     "indexed_sleeve_tilt_profile",
     "indexed_uw_tilt_profile",
 )
+V11_PRODUCTION_REL = (
+    "software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/"
+    "stage_1_production/production_results.yaml"
+)
+V11_STAGE0_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
+V11_PRODUCTION_ANCHOR = "53529bf1729811f5ae9faa429cf836507469569b"
+V11_WRAP_ANCHOR = "5ceebb24"
 
 call_counts: Counter[str] = Counter()
 
@@ -66,6 +73,104 @@ def canonical_bytes(value: Any) -> bytes:
 
 def digest(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def physics_record_projection(document: dict[str, Any]) -> list[dict[str, Any]]:
+    """Project the exact v11 non-template physics-record universe.
+
+    The source schema nests several independently identified records inside a
+    cell.  This projection makes those record identities explicit and omits the
+    cell's template_eligible field and every posed-template collection.
+    """
+    rows: list[dict[str, Any]] = []
+    context_fields = ("cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum")
+    disposition_fields = (
+        *context_fields, "native_root_class", "integrity", "expected_dependencies",
+        "used_dependencies", "obligation_evidence", "disposition",
+        "disposition_evaluator_landing", "unavailability",
+    )
+    for cell in document["cell_records"]:
+        context = {key: cell[key] for key in context_fields}
+        rows.extend((
+            {
+                "record_id": f"candidate_disposition:{cell['cell_id']}",
+                "record_class": "candidate_disposition",
+                "payload": {key: cell[key] for key in disposition_fields},
+            },
+            {
+                "record_id": cell["ensemble"]["level_1"]["record_id"],
+                "record_class": "ensemble_level_1",
+                "payload": {**context, **cell["ensemble"]["level_1"]},
+            },
+            {
+                "record_id": cell["ensemble"]["level_2"]["record_id"],
+                "record_class": "ensemble_level_2",
+                "payload": {
+                    **context, "applicability": cell["ensemble"]["applicability"],
+                    **cell["ensemble"]["level_2"],
+                },
+            },
+            {
+                "record_id": cell["topology_gate"]["record_id"],
+                "record_class": "topology_gate", "payload": cell["topology_gate"],
+            },
+            {
+                "record_id": cell["host_location"]["record_id"],
+                "record_class": "host_location", "payload": cell["host_location"],
+            },
+            {
+                "record_id": cell["return_closure_ownership"]["record_id"],
+                "record_class": "return_closure_ownership",
+                "payload": cell["return_closure_ownership"],
+            },
+        ))
+    rows.extend({
+        "record_id": row["record_id"], "record_class": "closure_adjudication", "payload": row,
+    } for row in document["closure_records"])
+    rows.extend({
+        "record_id": row["record_id"], "record_class": "promotion", "payload": row,
+    } for row in document["promotion_records"])
+    return sorted(rows, key=lambda row: (row["record_id"].casefold(), row["record_id"]))
+
+
+def physics_record_invariance_contract(repo: Path) -> dict[str, Any]:
+    source_path = repo / V11_PRODUCTION_REL
+    source = load_yaml(source_path)
+    projection = physics_record_projection(source)
+    class_counts = dict(sorted(Counter(row["record_class"] for row in projection).items()))
+    return {
+        "schema_version": "U2_V11_PHYSICS_RECORD_INVARIANCE_V1",
+        "U2_V11_PHYSICS_RECORD_SET_DIGEST": digest(projection),
+        "record_id_universe": [row["record_id"] for row in projection],
+        "record_count": len(projection), "record_class_counts": class_counts,
+        "canonical_projection": {
+            "serialization": "UTF-8 canonical JSON; object keys lexicographically sorted; separators comma/colon; ensure_ascii=false",
+            "row_order": "record_id casefold then record_id codepoint",
+            "cell_context_fields": ["cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum"],
+            "candidate_disposition_fields": [
+                "cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum",
+                "native_root_class", "integrity", "expected_dependencies", "used_dependencies",
+                "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability",
+            ],
+            "record_classes": [
+                "candidate_disposition", "promotion", "ensemble_level_1", "ensemble_level_2",
+                "topology_gate", "host_location", "closure_adjudication", "return_closure_ownership",
+            ],
+            "stripped_fields": ["template_eligible", "posed_BVP_templates", "template", "template_*"],
+        },
+        "comparison_predicate": (
+            "record_id_universe_exact_set_and_unique AND canonical_projected_rows_SHA256_equals_"
+            "U2_V11_PHYSICS_RECORD_SET_DIGEST"
+        ),
+        "v11_provenance": {
+            "source_path": V11_PRODUCTION_REL,
+            "source_sha256": hashlib.sha256(source_path.read_bytes()).hexdigest(),
+            "ratified_stage0_digest": V11_STAGE0_DIGEST,
+            "production_anchor": V11_PRODUCTION_ANCHOR, "wrap_anchor": V11_WRAP_ANCHOR,
+        },
+        "candidate_universe_digest": source["axes"]["candidate_universe_digest"],
+        "stage0_role": "freeze_reference_only_live_v12_comparison_is_production_timed",
+    }
 
 
 def sort_ids(values):
@@ -1168,14 +1273,86 @@ def route_inventory(candidates: list[str], obligations: dict[str, Any]) -> list[
     return rows
 
 
-def template_contract() -> dict[str, Any]:
+def template_bvp_constituent_census(
+    candidate_record: dict[str, Any], ambient: str,
+) -> list[dict[str, Any]]:
+    """Symbolic-only BVP census; deliberately independent of active stratum."""
+    return [
+        {
+            "constituent": "canonical_boundary_condition",
+            "candidate_id": candidate_record["candidate_id"],
+            "canonical_operator_signature": candidate_record["canonical_signature"],
+        },
+        {
+            "constituent": "typed_free_data",
+            "references": [f"tilt:{value}" for value in TILT_TYPES],
+            "availability": "UNRESOLVED", "domain": "tilted_sleeve_exterior",
+            "dimensions": "inherited_exactly_from_R49_ledger",
+        },
+        {
+            "constituent": "unevaluated_residual_or_variational_form",
+            "required_terms": ["bulk_euler_lagrange_residual"],
+        },
+        {"constituent": "zero_mode_treatment", "required_terms": ["translation_zero_mode"]},
+        {"constituent": "well_posedness_classification", "value": "UNRESOLVED(committed_structure_only)"},
+        {
+            "constituent": "asymptotic_matching_conditions", "ambient": ambient,
+            "required_terms": ["outer_matching_condition"],
+        },
+    ]
+
+
+def template_branch_equivalence_proofs(
+    candidate_records: list[dict[str, Any]], active_strata: list[str],
+) -> list[dict[str, Any]]:
+    operator_records = [row for row in candidate_records if row["candidate_id"] != "OTHER"]
+    proofs = []
+    for candidate_record in operator_records:
+        for ambient in AMBIENTS:
+            per_stratum = [{
+                "stratum": stratum,
+                "constituent_census": template_bvp_constituent_census(candidate_record, ambient),
+                "census_sha256": digest(template_bvp_constituent_census(candidate_record, ambient)),
+            } for stratum in active_strata]
+            proofs.append({
+                "template_branch_id": f"U2:{candidate_record['candidate_id']}:{ambient}",
+                "candidate_id": candidate_record["candidate_id"], "ambient": ambient,
+                "proof_timing": "pre-production_symbolic_only",
+                "active_strata": list(active_strata), "per_stratum_censuses": per_stratum,
+                "distinct_census_digest_count": len({row["census_sha256"] for row in per_stratum}),
+                "identical_BVP_across_strata": len({row["census_sha256"] for row in per_stratum}) == 1,
+                "produced_adjudication_objects_used": False,
+            })
+    return proofs
+
+
+def template_contract(
+    candidate_records: list[dict[str, Any]], active_strata: list[str],
+) -> dict[str, Any]:
+    grammar = [
+        "ROOT_REFERENCE", "STATIC_COMMITTED_FORCING", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE",
+        "INCOMPATIBILITY", "NEGATIVE_CANDIDATE_MEMBERSHIP", "CASE_ELIMINATION",
+        "COMPLEMENT_SURVIVOR_COUNT", "EXCLUSION_VERDICT", "POSTULATE_BRANCH",
+        "STABILITY_DYNAMICAL_CLASS", "SOLVE_EVALUATION_RESULT", "SYMBOLIC_EQUIVALENCE_COLLAPSE",
+        "UNAVAILABILITY_WITNESS", "DERIVABILITY_CHALLENGE", "EVIDENCE_STATE_CLASSIFICATION",
+    ]
+    allowed = ["ROOT_REFERENCE", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE", "POSTULATE_BRANCH"]
     return {
-        "eligible_record_predicate": "integrity==COMPUTATION_VALID and disposition==ADMISSIBLE and candidate!=OTHER",
+        "eligible_record_predicate": (
+            "candidate!=OTHER and branch_has_at_least_one_stratum and all_integrity==COMPUTATION_VALID "
+            "and homogeneous_disposition in {ADMISSIBLE,UNRESOLVED}"
+        ),
+        "template_key": "candidate_id x ambient (strata collapsed only by identical_BVP proof)",
         "semantic_schema": [
             "canonical_boundary_condition", "typed_free_data", "unevaluated_residual_or_variational_form",
             "zero_mode_treatment", "well_posedness_classification", "asymptotic_matching_conditions",
+            "branch_conditionality_tag", "open_data_conditionality_tag",
         ],
-        "forbidden_ancestry_constructors": ["SOLVE_EVALUATION_RESULT"],
+        "conditional_template_posing_allowed_constructors": allowed,
+        "conditional_template_posing_banned_constructors": [value for value in grammar if value not in allowed],
+        "constructor_partition_exhaustive_default_deny": True,
+        "postulate_branch_constructor_allowed_ambient_only": "two_sided_R_w_postulate",
+        "forbidden_ancestry_constructors": [value for value in grammar if value not in allowed],
         "dependent_fields_unbound": True,
         "R49_exact_unresolved_reference_ids": [f"tilt:{value}" for value in TILT_TYPES],
         "term_census_generator_inputs": [
@@ -1184,6 +1361,8 @@ def template_contract() -> dict[str, Any]:
         "required_term_kinds": ["residual", "boundary", "zero-mode", "asymptotic-matching"],
         "per_term_remove_and_zero_teeth_required": True,
         "posing_not_solving": True,
+        "conditional_tags_non_evidential_and_posing_DAG_unreachable": True,
+        "branch_equivalence_proofs": template_branch_equivalence_proofs(candidate_records, active_strata),
     }
 
 
@@ -1208,7 +1387,8 @@ def template_guard_fixture() -> dict[str, Any]:
         "static_field_equations": ["bulk_euler_lagrange_residual"],
         "canonical_operator_witness": ["Sigma_boundary_operator"],
         "ambient_branch": ["outer_matching_condition"],
-        "typed_free_data_ledger": ["translation_zero_mode"],
+        "typed_free_data_ledger": [f"tilt:{value}" for value in TILT_TYPES],
+        "zero_mode_ledger": ["translation_zero_mode"],
     }
     expected_terms = [
         {"term_id": "residual:bulk_euler_lagrange_residual", "kind": "residual"},
@@ -1224,17 +1404,44 @@ def template_guard_fixture() -> dict[str, Any]:
             "integrity": "COMPUTATION_VALID", "physics": "POSED_BVP_TEMPLATE",
             "constituents": {
                 "canonical_boundary_condition": "Sigma_boundary_operator",
-                "typed_free_data": ["translation_zero_mode"],
+                "typed_free_data": [{
+                    "reference_id": f"tilt:{value}", "availability": "UNRESOLVED",
+                    "domain": "tilted_sleeve_exterior", "dimensions": "inherited_exactly_from_R49_ledger",
+                } for value in TILT_TYPES],
                 "unevaluated_residual_or_variational_form": "bulk_euler_lagrange_residual",
                 "zero_mode_treatment": "project_translation_zero_mode",
                 "well_posedness_classification": "UNRESOLVED(committed_structure_only)",
                 "asymptotic_matching_conditions": "outer_matching_condition",
+                "branch_conditionality_tag": {
+                    "metadata_id": "metadata:conditional_branch:E1",
+                    "tag": "CONDITIONAL_ON_BRANCH(E1)", "candidate_id": "E1",
+                    "evidential": False, "posing_DAG_reachable": False,
+                },
+                "open_data_conditionality_tag": {
+                    "metadata_id": "metadata:open_data:E1:one_sided_pathA29",
+                    "unresolved_reference_ids": ["witness:host_location:E1"],
+                    "evidential": False, "posing_DAG_reachable": False,
+                },
             },
             "symbolic_ast": {"op": "posed_template", "args": [
                 {"op": "term", "term_id": row["term_id"], "kind": row["kind"], "coefficient": 1}
                 for row in expected_terms
             ]},
             "evaluation_state": "UNEVALUATED",
+            "eligibility_disposition": "UNRESOLVED", "conditional": True,
+            "branch_admissibility_claim": False, "branch_selection_claim": False,
+            "excluded_record_references": [], "complement_record_references": [],
+            "posing_proof_dag": {
+                "normalized_inference_content": {
+                    "op": "positive_equivalence", "args": [{
+                        "op": "positive_join", "args": [
+                            {"op": "root", "id": "source:endpoint:E1"},
+                            {"op": "root", "id": "source:field:geon_core_bundle"},
+                        ],
+                    }],
+                },
+                "claimed_constructors": ["ROOT_REFERENCE", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE"],
+            },
         },
     }
 
@@ -1478,7 +1685,9 @@ def build(repo: Path) -> dict[str, Any]:
             "UNRESOLVED": sum(row["availability_outcome"] == "UNRESOLVED" for row in slots),
             "integrity_failures": 0,
         },
-        "closure_contract": closure_contract(), "template_contract": template_contract(),
+        "closure_contract": closure_contract(),
+        "template_contract": template_contract(candidate_records, active_strata),
+        "physics_record_invariance_contract": physics_record_invariance_contract(repo),
         "guard_fixtures": {
             **guard_fixture_records(),
             "closure": closure_guard_fixture(),

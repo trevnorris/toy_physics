@@ -8,4 +8,8 @@ if [[ "${1:-}" == "--shell-probe" ]]; then
   exec /usr/bin/python3 -I "$runner" --repo "$repo_root" --self-probe
 fi
 
+if [[ "${1:-}" == "--production-shell-probe" ]]; then
+  exec /usr/bin/python3 -I "$runner" --repo "$repo_root" --production-self-probe
+fi
+
 exec /usr/bin/python3 -I "$runner" --repo "$repo_root" "$@"

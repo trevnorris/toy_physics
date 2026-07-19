@@ -17,8 +17,7 @@ from typing import Any
 import yaml
 
 
-RATIFIED_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
-STAGE0_ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
+RATIFIED_DIGEST = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b"
 
 
 class CampaignFailure(RuntimeError):
@@ -89,6 +88,15 @@ def main() -> int:
     parser.add_argument("--closure-probe", action="store_true")
     args = parser.parse_args()
     repo = Path(args.repo).resolve(); source = repo / "software/em_charge_attribute"
+    anchor = args.startup_contract_commit
+    if not re.fullmatch(r"[0-9a-f]{40}", anchor or "") or anchor == "HEAD":
+        raise CampaignFailure("production mutation campaign requires full orchestrator anchor, never HEAD")
+    resolved = subprocess.run(
+        ["git", "rev-parse", f"{anchor}^{{commit}}"], cwd=repo,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+    )
+    if resolved.returncode != 0 or resolved.stdout.strip() != anchor:
+        raise CampaignFailure("production mutation campaign anchor did not resolve identically")
     scratch = Path(args.scratch).resolve(); scratch.mkdir(parents=True, exist_ok=True)
     comparator = source / "u2_production_compare.py"
     probe = scratch / "comparator_mutation_probe.yaml"
@@ -122,6 +130,7 @@ def main() -> int:
         ("TOOTH_NO_PAIRING_CERTIFICATE_GENERATION", "ASSERT_NO_PAIRING_CERTIFICATE_GENERATION"),
         ("TOOTH_CLOSURE_CENSUS_GENERATION", "ASSERT_CLOSURE_CENSUS_GENERATION"),
         ("TOOTH_CLOSURE_TOTAL_GENERATION", "ASSERT_CLOSURE_TOTAL_GENERATION"),
+        ("TOOTH_PHYSICS_RECORD_INVARIANCE", "ASSERT_PHYSICS_RECORD_INVARIANCE"),
     )
     for mutation_id, assert_id in generation_teeth:
         armor_records.append(require_death(
@@ -172,7 +181,7 @@ def main() -> int:
         ]
     verify_clean = [*verify_prefix, *python_prefix,
         str(source / "u2_stage0_contract.py"), "--repo", str(repo),
-        "--output-dir", str(Path(args.bundle_dir).resolve()), "--startup-contract-commit", STAGE0_ANCHOR,
+        "--output-dir", str(Path(args.bundle_dir).resolve()), "--startup-contract-commit", anchor,
         "--verify", "--expected-digest", RATIFIED_DIGEST, "--recompute-environment",
     ]
     armor_controls.append(require_survival(verify_clean, "CONTROL_PRODUCTION_STAGE0_AND_ENVIRONMENT"))
@@ -195,9 +204,6 @@ def main() -> int:
     ))
 
     if not args.dry_run:
-        anchor = args.startup_contract_commit
-        if not anchor or not re.fullmatch(r"[0-9a-f]{40}", anchor) or anchor == "HEAD":
-            raise CampaignFailure("production mutation campaign requires full orchestrator anchor")
         helper = scratch / "generated_helper.py"
         altered: Path | None = None
         try:

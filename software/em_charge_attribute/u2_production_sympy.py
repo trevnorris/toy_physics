@@ -20,7 +20,7 @@ import sympy as sp
 import yaml
 
 
-RATIFIED_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
+RATIFIED_DIGEST = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b"
 STAGE0_COMPONENTS = {
     "frozen_data_pin_table": "frozen_data_pin_table.yaml",
     "candidate_inventory": "candidate_inventory.yaml",
@@ -89,6 +89,30 @@ def canonical_bytes(value: Any) -> bytes:
 
 def digest(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def live_physics_record_projection(document: dict[str, Any]) -> list[dict[str, Any]]:
+    """Independently realize the stage-0-frozen non-template projection."""
+    rows: list[dict[str, Any]] = []
+    context_fields = ("cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum")
+    disposition_fields = (
+        *context_fields, "native_root_class", "integrity", "expected_dependencies",
+        "used_dependencies", "obligation_evidence", "disposition",
+        "disposition_evaluator_landing", "unavailability",
+    )
+    for cell in document["cell_records"]:
+        context = {key: cell[key] for key in context_fields}
+        rows.extend((
+            {"record_id": f"candidate_disposition:{cell['cell_id']}", "record_class": "candidate_disposition", "payload": {key: cell[key] for key in disposition_fields}},
+            {"record_id": cell["ensemble"]["level_1"]["record_id"], "record_class": "ensemble_level_1", "payload": {**context, **cell["ensemble"]["level_1"]}},
+            {"record_id": cell["ensemble"]["level_2"]["record_id"], "record_class": "ensemble_level_2", "payload": {**context, "applicability": cell["ensemble"]["applicability"], **cell["ensemble"]["level_2"]}},
+            {"record_id": cell["topology_gate"]["record_id"], "record_class": "topology_gate", "payload": cell["topology_gate"]},
+            {"record_id": cell["host_location"]["record_id"], "record_class": "host_location", "payload": cell["host_location"]},
+            {"record_id": cell["return_closure_ownership"]["record_id"], "record_class": "return_closure_ownership", "payload": cell["return_closure_ownership"]},
+        ))
+    rows.extend({"record_id": row["record_id"], "record_class": "closure_adjudication", "payload": row} for row in document["closure_records"])
+    rows.extend({"record_id": row["record_id"], "record_class": "promotion", "payload": row} for row in document["promotion_records"])
+    return sorted(rows, key=lambda row: (row["record_id"].casefold(), row["record_id"]))
 
 
 def ids(values: Iterable[str]) -> list[str]:
@@ -1175,6 +1199,137 @@ def guard_fixtures(contracts: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def branch_eligibility_records(
+    cells: list[dict[str, Any]], candidate_axis: list[str], ambients: list[str],
+) -> list[dict[str, Any]]:
+    records = []
+    for candidate in candidate_axis:
+        for ambient in ambients:
+            branch_cells = [
+                row for row in cells
+                if row["candidate_id"] == candidate and row["ambient"] == ambient
+            ]
+            integrities = ids(row["integrity"] for row in branch_cells)
+            dispositions = ids(
+                row["disposition"]["kind"] for row in branch_cells
+                if row["integrity"] == "COMPUTATION_VALID"
+            )
+            if candidate == "OTHER":
+                eligible, reason = False, "catch_all_OTHER_has_no_defining_operator"
+            elif not branch_cells:
+                eligible, reason = False, "no_stratum_cells"
+            elif integrities != ["COMPUTATION_VALID"]:
+                eligible, reason = False, "integrity_stratum_cell_present"
+            elif "EXCLUDED" in dispositions:
+                eligible, reason = False, "EXCLUDED_stratum_cell_present"
+            elif len(dispositions) != 1:
+                eligible, reason = False, "heterogeneous_stratum_dispositions"
+            elif dispositions[0] not in {"ADMISSIBLE", "UNRESOLVED"}:
+                eligible, reason = False, "disposition_class_not_template_eligible"
+            else:
+                eligible, reason = True, f"homogeneous_{dispositions[0]}"
+            records.append({
+                "template_branch_id": f"U2:{candidate}:{ambient}",
+                "candidate_id": candidate, "ambient": ambient,
+                "stratum_cell_ids": ids(row["cell_id"] for row in branch_cells),
+                "stratum_count": len(branch_cells), "integrity_classes": integrities,
+                "disposition_classes": dispositions, "template_eligible": eligible,
+                "eligibility_class": dispositions[0] if eligible else None,
+                "ineligibility_reason": None if eligible else reason,
+            })
+    return records
+
+
+def template_term_census(candidate: str, ambient: str) -> list[dict[str, str]]:
+    return [
+        {"term_id": "residual:bulk_euler_lagrange_residual", "kind": "residual"},
+        {"term_id": f"boundary:canonical_operator:{candidate}", "kind": "boundary"},
+        {"term_id": "zero-mode:translation_zero_mode", "kind": "zero-mode"},
+        {"term_id": f"asymptotic-matching:{ambient}", "kind": "asymptotic-matching"},
+    ]
+
+
+def template_posing_dag(candidate_record: dict[str, Any], ambient: str) -> dict[str, Any]:
+    roots = [f"source:endpoint:{value}" for value in candidate_record["members"]]
+    roots.append("source:field:geon_core_bundle")
+    positive_args: list[dict[str, Any]] = [{"op": "root", "id": value} for value in ids(roots)]
+    if ambient == "two_sided_R_w_postulate":
+        positive_args.append({
+            "op": "postulate", "args": [{"op": "root", "id": "source:ambient:two_sided_R_w_postulate"}],
+        })
+    content = {
+        "op": "positive_equivalence",
+        "args": [{"op": "positive_join", "args": positive_args}],
+    }
+    root_ids = ids(
+        [*roots] + (["source:ambient:two_sided_R_w_postulate"] if ambient == "two_sided_R_w_postulate" else [])
+    )
+    return {
+        "normalized_inference_content": content,
+        "constructors": frozen_classify_inference_content(content), "root_ids": root_ids,
+        "classification_source": "ratified_normalized_content_classifier",
+    }
+
+
+def posed_template_record(
+    eligibility: dict[str, Any], branch_cells: list[dict[str, Any]],
+    candidate_record: dict[str, Any], template_contract: dict[str, Any],
+) -> dict[str, Any]:
+    candidate = eligibility["candidate_id"]; ambient = eligibility["ambient"]
+    disposition = eligibility["eligibility_class"]
+    conditional = disposition == "UNRESOLVED"
+    missing_datum_ids = ids(
+        datum for cell in branch_cells
+        for datum in (cell["disposition"]["named_datum"], cell["disposition"]["stratum_datum"])
+    ) if conditional else []
+    r49 = [{
+        "reference_id": reference_id, "availability": "UNRESOLVED",
+        "domain": "tilted_sleeve_exterior", "dimensions": "inherited_exactly_from_R49_ledger",
+    } for reference_id in template_contract["R49_exact_unresolved_reference_ids"]]
+    terms = template_term_census(candidate, ambient)
+    constituents: dict[str, Any] = {
+        "canonical_boundary_condition": {
+            "candidate_id": candidate, "canonical_operator_signature": candidate_record["canonical_signature"],
+            "native_root_class": candidate_record["native_root_class"],
+        },
+        "typed_free_data": r49,
+        "unevaluated_residual_or_variational_form": "bulk_euler_lagrange_residual",
+        "zero_mode_treatment": "project_translation_zero_mode",
+        "well_posedness_classification": "UNRESOLVED(committed_structure_only)",
+        "asymptotic_matching_conditions": ambient,
+    }
+    if conditional:
+        constituents.update({
+            "branch_conditionality_tag": {
+                "metadata_id": f"metadata:conditional_branch:{candidate}",
+                "tag": f"CONDITIONAL_ON_BRANCH({candidate})", "candidate_id": candidate,
+                "evidential": False, "posing_DAG_reachable": False,
+            },
+            "open_data_conditionality_tag": {
+                "metadata_id": f"metadata:open_data:{candidate}:{ambient}",
+                "unresolved_missing_datum_ids": missing_datum_ids,
+                "evidential": False, "posing_DAG_reachable": False,
+            },
+        })
+    return {
+        "record_id": f"template:candidate={candidate}|ambient={ambient}",
+        "stable_branch_id": eligibility["template_branch_id"],
+        "candidate_id": candidate, "ambient": ambient, "integrity": "COMPUTATION_VALID",
+        "physics": "POSED_BVP_TEMPLATE", "eligibility_disposition": disposition,
+        "conditional": conditional, "constituents": constituents,
+        "expected_term_census": terms,
+        "symbolic_ast": {"op": "posed_template", "args": [
+            {"op": "term", "term_id": row["term_id"], "kind": row["kind"], "coefficient": 1}
+            for row in terms
+        ]},
+        "evaluation_state": "UNEVALUATED", "dependent_fields_unbound": True,
+        "branch_admissibility_claim": False, "branch_selection_claim": False,
+        "excluded_record_references": [], "complement_record_references": [],
+        "posing_proof_dag": template_posing_dag(candidate_record, ambient),
+        "source_stratum_cell_ids": eligibility["stratum_cell_ids"],
+    }
+
+
 def summary_counts(cells: list[dict[str, Any]], promotions: list[dict[str, Any]], templates: list[dict[str, Any]]) -> dict[str, Any]:
     disposition = Counter(row["disposition"]["kind"] for row in cells)
     by_candidate: dict[str, dict[str, int]] = {}
@@ -1240,8 +1395,40 @@ def build(
         promotion_record(row, cell_map, candidates_doc["candidate_universe_digest"])
         for row in grid_doc["promotion_contexts"]
     ]
-    templates: list[dict[str, Any]] = []
+    ambients = ids(row["ambient"] for row in grid_doc["grid_cells"])
+    eligibility_records = branch_eligibility_records(cells, candidates_doc["candidate_axis"], ambients)
+    eligibility_by_branch = {row["template_branch_id"]: row for row in eligibility_records}
+    for cell in cells:
+        cell["template_eligible"] = eligibility_by_branch[
+            f"U2:{cell['candidate_id']}:{cell['ambient']}"
+        ]["template_eligible"]
+    template_contract = components["closure_template_contracts"]["template"]
+    templates = [
+        posed_template_record(
+            eligibility,
+            [row for row in cells if row["candidate_id"] == eligibility["candidate_id"] and row["ambient"] == eligibility["ambient"]],
+            candidate_records[eligibility["candidate_id"]], template_contract,
+        )
+        for eligibility in eligibility_records if eligibility["template_eligible"]
+    ]
     closure_records = [row["closure_adjudication"] for row in cells if row["closure_adjudication"]]
+    if generation_mutation == "TOOTH_PHYSICS_RECORD_INVARIANCE":
+        cells[0]["disposition"]["kind"] = "ADMISSIBLE"
+    projection = live_physics_record_projection({
+        "cell_records": cells, "promotion_records": promotions, "closure_records": closure_records,
+    })
+    invariant_contract = components["closure_template_contracts"]["physics_record_invariance_contract"]
+    live_projection_digest = digest(projection)
+    live_universe = [row["record_id"] for row in projection]
+    invariant_equal = (
+        live_projection_digest == invariant_contract["U2_V11_PHYSICS_RECORD_SET_DIGEST"]
+        and live_universe == invariant_contract["record_id_universe"]
+        and candidates_doc["candidate_universe_digest"] == invariant_contract["candidate_universe_digest"]
+    )
+    require_generation(
+        invariant_equal, "ASSERT_PHYSICS_RECORD_INVARIANCE",
+        "live v12 non-template projection differs from frozen v11 physics records",
+    )
     semantic = {
         "schema_version": "U2_PRODUCTION_SEMANTIC_VIEW_V1",
         "stage0_binding": {
@@ -1260,7 +1447,7 @@ def build(
         },
         "axes": {
             "candidate_axis": candidates_doc["candidate_axis"],
-            "ambient_branches": ids(row["ambient"] for row in grid_doc["grid_cells"]),
+            "ambient_branches": ambients,
             "active_strata": grid_doc["active_strata"],
             "cell_count": len(cells),
             "promotion_context_count": len(promotions),
@@ -1271,7 +1458,16 @@ def build(
         "cell_records": cells,
         "promotion_records": promotions,
         "closure_records": closure_records,
+        "template_eligibility_branches": eligibility_records,
         "posed_BVP_templates": templates,
+        "physics_record_invariance": {
+            "reference_digest": invariant_contract["U2_V11_PHYSICS_RECORD_SET_DIGEST"],
+            "live_v12_digest": live_projection_digest, "record_id_universe": live_universe,
+            "record_count": len(projection),
+            "candidate_universe_digest_unchanged": candidates_doc["candidate_universe_digest"] == invariant_contract["candidate_universe_digest"],
+            "comparison_predicate": invariant_contract["comparison_predicate"],
+            "equal": invariant_equal, "comparison_timing": "after_all_records_emitted_before_banking",
+        },
         "guard_fixtures": guard_fixtures(components["closure_template_contracts"]),
         "dimensional_firewall": dimension_firewall(),
         "headlines": summary_counts(cells, promotions, templates),
@@ -1283,6 +1479,9 @@ def build(
         ("frozen_topology_aggregate_v1", "topology_record", bool(cells)),
         ("frozen_cross_level_ensemble_v1", "cell_record", bool(cells)),
         ("frozen_promotion_evaluator_v1", "promotion_record", bool(promotions)),
+        ("branch_template_eligibility_v12", "branch_eligibility_records", bool(eligibility_records)),
+        ("conditional_posed_template_v12", "posed_template_record", bool(templates)),
+        ("physics_record_projection_invariance_v12", "live_physics_record_projection", invariant_equal),
     )
     registry = [{
         "semantic_route_id": route_id,
@@ -1315,6 +1514,7 @@ def main() -> int:
         "TOOTH_NO_PAIRING_CERTIFICATE_GENERATION",
         "TOOTH_CLOSURE_CENSUS_GENERATION",
         "TOOTH_CLOSURE_TOTAL_GENERATION",
+        "TOOTH_PHYSICS_RECORD_INVARIANCE",
     ))
     args = parser.parse_args()
     try:

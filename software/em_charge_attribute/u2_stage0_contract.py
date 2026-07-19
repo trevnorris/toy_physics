@@ -19,7 +19,9 @@ import sympy
 import yaml
 
 
-STARTUP_ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
+DIRECTIVE_PROVENANCE_COMMIT = "aca0623f5e90e55fbdb0947f9ea722a52b0839a0"
+V11_PHYSICS_RECORD_SET_DIGEST = "d70bf6bee368aa4383defa3a904af71eb083fe1eea34ab02444af73243b4de7a"
+V11_PRODUCTION_RESULTS_SHA256 = "1832c490ede0c14a94963543a7db12e6e3e2a4fcc3c4f65f958436072f92f56e"
 PHASEC_ANCHOR = "21ec07f7a4f2814fa7ca642ded7ebd353671578b"
 PHASEC_STAGE0_DIGEST = "e632a8d6729d0a1b3a4ade883c28f6b21f7a29fea566318cdd6fefec8c15d0da"
 B2_CONTRACT_DIGEST = "8b8ee113d9a8342ac11f23e7959e05c323cc89a81b7c298af85f646b6e42a9e7"
@@ -90,31 +92,32 @@ def pin_specs() -> list[tuple[str, str, str | None]]:
     phasec1 = "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage_c_1_tilt_coupling_production"
     b2_0 = "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage_b2_0_intake_radiative_contract"
     b2_1 = "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage_b2_1_intake_radiative_production"
+    directive_lineage = DIRECTIVE_PROVENANCE_COMMIT
     return [
-        ("governing_U2_directive", "software/em_charge_attribute/directive_u2_boundary_adjudication.md", STARTUP_ANCHOR),
-        ("program_handoff_sixteen_standards", "docs/em_analog_next_phase_handoff.md", STARTUP_ANCHOR),
-        ("governing_spec_v3_1", "docs/em_u1_body_definition.md", STARTUP_ANCHOR),
-        ("phaseC_normative_directive_v7", "software/em_charge_attribute/directive_u1_phaseC_tilt_coupling.md", STARTUP_ANCHOR),
-        ("B2_witness_contract_v48", "software/em_charge_attribute/directive_u1_phaseB2_intake_radiative.md", STARTUP_ANCHOR),
-        ("parent_U1_dynamics_directive", "software/em_charge_attribute/directive_u1_body_dynamics.md", STARTUP_ANCHOR),
-        ("decision_16", "software/stage1_solver/decisions/16_retire_brane_polar_field.md", STARTUP_ANCHOR),
-        ("decision_17", "software/stage1_solver/decisions/17_trust_apparatus_trim.md", STARTUP_ANCHOR),
-        ("ensemble_topology_rubric", "docs/em_phaseC_force_decomposition.md", STARTUP_ANCHOR),
-        ("frozen_7_0_declarations", "software/em_charge_attribute/u1_body_dynamics_inputs.yaml", STARTUP_ANCHOR),
-        ("phase_A_amendment", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/phase_a_amendment_agreement.yaml", STARTUP_ANCHOR),
-        ("phase_A_sympy_payload", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/sympy_phase_a.json", STARTUP_ANCHOR),
-        ("phase_A_wolfram_payload", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_a.json", STARTUP_ANCHOR),
-        ("B1_approval", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_orchestrator_approval.yaml", STARTUP_ANCHOR),
-        ("B1_final_results", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml", STARTUP_ANCHOR),
-        ("B1_final_report", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_report_snapshot.md", STARTUP_ANCHOR),
-        ("B1_mechanics_inputs", "software/em_charge_attribute/u1_body_mechanics_inputs.yaml", STARTUP_ANCHOR),
+        ("governing_U2_directive", "software/em_charge_attribute/directive_u2_boundary_adjudication.md", directive_lineage),
+        ("program_handoff_sixteen_standards", "docs/em_analog_next_phase_handoff.md", directive_lineage),
+        ("governing_spec_v3_1", "docs/em_u1_body_definition.md", directive_lineage),
+        ("phaseC_normative_directive_v7", "software/em_charge_attribute/directive_u1_phaseC_tilt_coupling.md", directive_lineage),
+        ("B2_witness_contract_v48", "software/em_charge_attribute/directive_u1_phaseB2_intake_radiative.md", directive_lineage),
+        ("parent_U1_dynamics_directive", "software/em_charge_attribute/directive_u1_body_dynamics.md", directive_lineage),
+        ("decision_16", "software/stage1_solver/decisions/16_retire_brane_polar_field.md", directive_lineage),
+        ("decision_17", "software/stage1_solver/decisions/17_trust_apparatus_trim.md", directive_lineage),
+        ("ensemble_topology_rubric", "docs/em_phaseC_force_decomposition.md", directive_lineage),
+        ("frozen_7_0_declarations", "software/em_charge_attribute/u1_body_dynamics_inputs.yaml", directive_lineage),
+        ("phase_A_amendment", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/phase_a_amendment_agreement.yaml", directive_lineage),
+        ("phase_A_sympy_payload", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/sympy_phase_a.json", directive_lineage),
+        ("phase_A_wolfram_payload", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/mathematica_phase_a.json", directive_lineage),
+        ("B1_approval", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_orchestrator_approval.yaml", directive_lineage),
+        ("B1_final_results", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml", directive_lineage),
+        ("B1_final_report", "software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_report_snapshot.md", directive_lineage),
+        ("B1_mechanics_inputs", "software/em_charge_attribute/u1_body_mechanics_inputs.yaml", directive_lineage),
         ("B2_sealed_stage0_contract", f"{b2_0}/stage0_contract.yaml", None),
         ("B2_stage0_engine_agreement", f"{b2_0}/stage0_engine_agreement.yaml", None),
         ("B2_sympy_production", f"{b2_1}/sympy_b2.yaml", None),
         ("B2_wolfram_production", f"{b2_1}/mathematica_b2.yaml", None),
         ("B2_engine_agreement", f"{b2_1}/engine_agreement.yaml", None),
         ("B2_completion_gate", f"{b2_1}/completion_gate.yaml", None),
-        ("B2_production_aggregate", "software/em_charge_attribute/reports/u1_body_dynamics_results.yaml", STARTUP_ANCHOR),
+        ("B2_production_aggregate", "software/em_charge_attribute/reports/u1_body_dynamics_results.yaml", directive_lineage),
         ("phaseC_stage0_contract", f"{phasec0}/stage0_contract.yaml", None),
         ("phaseC_stage0_bundle", f"{phasec0}/stage0_bundle.yaml", None),
         ("phaseC_stage0_approval_halt", f"{phasec0}/orchestrator_approval_halt.yaml", None),
@@ -123,15 +126,20 @@ def pin_specs() -> list[tuple[str, str, str | None]]:
         ("phaseC_production_results", f"{phasec1}/production_results.yaml", None),
         ("phaseC_production_agreement", f"{phasec1}/production_engine_agreement.yaml", None),
         ("phaseC_production_terminal", f"{phasec1}/production_terminal.yaml", None),
-        ("pathA29_one_sided_report", "software/stage1_solver/reports/pathA_29_brane_bulk_return.md", STARTUP_ANCHOR),
-        ("pathA29_one_sided_results", "software/stage1_solver/reports/pathA_29_results.yaml", STARTUP_ANCHOR),
-        ("pathA38_h_report", "software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md", STARTUP_ANCHOR),
-        ("pathA38_h_results", "software/stage1_solver/reports/pathA_38_results.yaml", STARTUP_ANCHOR),
-        ("pathA39_stage3_report", "software/stage1_solver/reports/pathA_39_stage3_operator_parity.md", STARTUP_ANCHOR),
-        ("pathA39_stage3_results", "software/stage1_solver/reports/pathA_39_stage3_operator_parity_results.yaml", STARTUP_ANCHOR),
-        ("native_action_stage004", "research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md", STARTUP_ANCHOR),
-        ("native_action_stage006", "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md", STARTUP_ANCHOR),
-        ("parameter_register_read_only", "research/pde_ledger_v2/notes/parameter_register.md", STARTUP_ANCHOR),
+        (
+            "U2_v11_production_physics_record_reference",
+            "software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production/production_results.yaml",
+            None,
+        ),
+        ("pathA29_one_sided_report", "software/stage1_solver/reports/pathA_29_brane_bulk_return.md", directive_lineage),
+        ("pathA29_one_sided_results", "software/stage1_solver/reports/pathA_29_results.yaml", directive_lineage),
+        ("pathA38_h_report", "software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md", directive_lineage),
+        ("pathA38_h_results", "software/stage1_solver/reports/pathA_38_results.yaml", directive_lineage),
+        ("pathA39_stage3_report", "software/stage1_solver/reports/pathA_39_stage3_operator_parity.md", directive_lineage),
+        ("pathA39_stage3_results", "software/stage1_solver/reports/pathA_39_stage3_operator_parity_results.yaml", directive_lineage),
+        ("native_action_stage004", "research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md", directive_lineage),
+        ("native_action_stage006", "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md", directive_lineage),
+        ("parameter_register_read_only", "research/pde_ledger_v2/notes/parameter_register.md", directive_lineage),
     ]
 
 
@@ -181,6 +189,12 @@ def build_pin_table(repo: Path, mutation: str | None = None) -> dict[str, Any]:
     if mutation == "TOOTH_PHASEC_TERMINAL_PIN":
         phasec1["status"] = "MUTATED"
     require(phasec1["status"] == "SUCCESS_STOP" and phasec1["exit_code"] == 0 and phasec1["stage0_contract_digest"] == PHASEC_STAGE0_DIGEST, "ASSERT_PHASEC_TERMINAL_PIN", "Phase-C production terminal changed")
+    if mutation == "TOOTH_V11_PHYSICS_RECORD_REFERENCE":
+        by_role["U2_v11_production_physics_record_reference"]["sha256"] = "0" * 64
+    require(
+        by_role["U2_v11_production_physics_record_reference"]["sha256"] == V11_PRODUCTION_RESULTS_SHA256,
+        "ASSERT_V11_PHYSICS_RECORD_REFERENCE", "v11 U2 production source changed",
+    )
     return {
         "schema_version": "U2_FROZEN_DATA_PIN_TABLE_V1", "record_count": len(records),
         "records": records,
@@ -193,6 +207,11 @@ def build_pin_table(repo: Path, mutation: str | None = None) -> dict[str, Any]:
             "PhaseC_anchor": PHASEC_ANCHOR,
             "PhaseC_stage0_digest": PHASEC_STAGE0_DIGEST,
             "PhaseC_production_status": "SUCCESS_STOP",
+            "U2_v11_physics_record_set_digest": V11_PHYSICS_RECORD_SET_DIGEST,
+            "U2_v11_production_results_sha256": V11_PRODUCTION_RESULTS_SHA256,
+            "U2_v11_ratified_stage0_digest": "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4",
+            "U2_v11_production_anchor": "53529bf1729811f5ae9faa429cf836507469569b",
+            "U2_v11_wrap_anchor": "5ceebb24",
         },
         "mutation_policy": "pinned data changes are amendments, never repins",
     }
@@ -309,22 +328,26 @@ def environment_identity(mutation: str | None = None) -> dict[str, Any]:
     }
 
 
-def closure_policy(repo: Path, anchor: str, environment: dict[str, Any]) -> dict[str, Any]:
+def closure_policy(repo: Path, environment: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": "U2_EVALUATED_CODE_CLOSURE_POLICY_V1",
-        "stage0_governing_anchor": anchor,
-        "stage0_builder_code_state": "PRECOMMIT_PENDING_ORCHESTRATOR_COMMIT",
+        "stage0_governing_anchor_source": "orchestrator_supplied_STARTUP_CONTRACT_COMMIT_never_HEAD",
+        "concrete_anchor_recorded_in": [
+            "stage0_bundle.yaml", "stage0_contract.yaml", "evaluated_code_closure_evidence.yaml",
+            "runner_state.yaml", "stage_run_records.yaml",
+        ],
+        "stage0_builder_code_state": "ORCHESTRATOR_SUPPLIED_CODE_STACK_COMMIT",
         "production_anchor_source": "orchestrator_supplied_STARTUP_CONTRACT_COMMIT_never_HEAD",
         "complete_evaluated_closure": [
             "scripts", "imported_Python_modules", "native_extensions", "Wolfram_packages_and_init_files",
             "plugins", "dynamic_source",
         ],
-        "first_use_rule": "trace-discovered task code bytes equal anchor blob before production evaluation",
-        "stage0_precommit_exception": "anchor-absent direct process entrypoints only; imported/generated helpers never exempt",
+        "first_use_rule": "trace-discovered task code bytes equal the launch-supplied anchor blob during stage0 and production",
+        "stage0_precommit_exception": "inactive in sealed stage0; authoring-only anchor-absent direct-entrypoint mode retained by the guard",
         "external_code_allowed_only_under_roots": [row["path"] for row in environment["declared_read_only_toolchain_roots"]],
         "writable_code_origins_rejected": [str(repo / "software/em_charge_attribute/_scratch"), "/tmp", "user-site", "Wolfram-init"],
         "dual_placement_helper_teeth": ["generated_helper_repository_scratch", "generated_helper_external_tmp"],
-        "production_ready_condition": "orchestrator commits all U2 scripts and supplies that commit as anchor",
+        "production_ready_condition": "orchestrator supplies the commit containing the exact production code stack",
         "script_manifest_present": False, "reseal_ceremony_present": False,
     }
 
@@ -456,7 +479,7 @@ def obligation_manifest(components_without_manifest: dict[str, Any], agreement: 
 def contract_mutation_catalog() -> list[dict[str, str]]:
     base = [
         ("TOOTH_STARTUP_ANCHOR_SUPPLIED", "ASSERT_STARTUP_ANCHOR_SUPPLIED"),
-        ("TOOTH_STARTUP_ANCHOR", "ASSERT_STARTUP_ANCHOR_VALUE"),
+        ("TOOTH_STARTUP_ANCHOR_NEVER_HEAD", "ASSERT_STARTUP_ANCHOR_NEVER_HEAD"),
         ("TOOTH_GIT_ANCHOR_RESOLUTION", "ASSERT_GIT_ANCHOR_RESOLUTION"),
         ("TOOTH_PIN_INPUT_EXISTS", "ASSERT_PIN_INPUT_EXISTS"),
         ("TOOTH_PIN_LINEAGE", "ASSERT_PIN_LINEAGE"),
@@ -465,6 +488,7 @@ def contract_mutation_catalog() -> list[dict[str, str]]:
         ("TOOTH_B1_TERMINAL_PIN", "ASSERT_B1_TERMINAL_PIN"),
         ("TOOTH_PHASEC_DIGEST_PIN", "ASSERT_PHASEC_DIGEST_PIN"),
         ("TOOTH_PHASEC_TERMINAL_PIN", "ASSERT_PHASEC_TERMINAL_PIN"),
+        ("TOOTH_V11_PHYSICS_RECORD_REFERENCE", "ASSERT_V11_PHYSICS_RECORD_REFERENCE"),
         ("TOOTH_ENGINE_AGREEMENT_INPUT", "ASSERT_ENGINE_AGREEMENT_INPUT"),
         ("TOOTH_PRODUCER_MAP", "ASSERT_PRODUCER_MAP"),
         ("TOOTH_OBLIGATION_MANIFEST", "ASSERT_OBLIGATION_MANIFEST"),
@@ -476,6 +500,7 @@ def contract_mutation_catalog() -> list[dict[str, str]]:
         ("TOOTH_PARAMETER_REGISTER", "ASSERT_PARAMETER_REGISTER_UNCHANGED"),
         ("TOOTH_EXPECTED_DIGEST", "ASSERT_EXPECTED_DIGEST_SUPPLIED"),
         ("TOOTH_STAGE0_CONTRACT_DIGEST", "ASSERT_STAGE0_CONTRACT_DIGEST"),
+        ("TOOTH_RECORDED_STARTUP_ANCHOR", "ASSERT_RECORDED_STARTUP_ANCHOR"),
         ("TOOTH_VERIFY_PIN_TABLE", "ASSERT_VERIFY_PIN_TABLE"),
         ("TOOTH_APPROVAL_EXIT", "ASSERT_APPROVAL_EXIT_42"),
         ("TOOTH_CONTRACT_ZERO_INTEGRITY", "ASSERT_CONTRACT_ZERO_INTEGRITY"),
@@ -486,9 +511,9 @@ def contract_mutation_catalog() -> list[dict[str, str]]:
 
 
 def validate_anchor(repo: Path, anchor: str, mutation: str | None = None) -> None:
-    require(bool(re.fullmatch(r"[0-9a-f]{40}", anchor or "")) and anchor != "HEAD", "ASSERT_STARTUP_ANCHOR_SUPPLIED", "full orchestrator-supplied anchor required")
-    value = "0" * 40 if mutation == "TOOTH_STARTUP_ANCHOR" else anchor
-    require(value == STARTUP_ANCHOR, "ASSERT_STARTUP_ANCHOR_VALUE", f"stage0 anchor must be {STARTUP_ANCHOR}")
+    value = "HEAD" if mutation == "TOOTH_STARTUP_ANCHOR_NEVER_HEAD" else anchor
+    require(value != "HEAD", "ASSERT_STARTUP_ANCHOR_NEVER_HEAD", "HEAD is not an allowed startup anchor")
+    require(bool(re.fullmatch(r"[0-9a-f]{40}", value or "")), "ASSERT_STARTUP_ANCHOR_SUPPLIED", "full orchestrator-supplied anchor required")
     resolved = git(repo, "rev-parse", f"{anchor}^{{commit}}").stdout.strip()
     if mutation == "TOOTH_GIT_ANCHOR_RESOLUTION":
         resolved = "0" * 40
@@ -539,11 +564,12 @@ def assemble(args: argparse.Namespace) -> int:
             "template": semantic["template_contract"], "return_closure_ownership": semantic["return_closure_ownership"],
             "closure_guard_fixture": semantic["guard_fixtures"]["closure"],
             "template_guard_fixture": semantic["guard_fixtures"]["template"],
+            "physics_record_invariance_contract": semantic["physics_record_invariance_contract"],
         },
         "environment_identity": environment,
         "standard_bindings": {"schema_version": "U2_STANDARD_BINDINGS_V1", "bindings": semantic["standard_bindings"]},
         "producer_map": producer,
-        "evaluated_code_closure_policy": closure_policy(repo, args.startup_contract_commit, environment),
+        "evaluated_code_closure_policy": closure_policy(repo, environment),
         "parameter_register_proposals": proposals,
     }
     if args.mutation == "TOOTH_OBLIGATION_MANIFEST":
@@ -559,7 +585,9 @@ def assemble(args: argparse.Namespace) -> int:
     bundle = {
         "schema_version": "U2_STAGE0_BUNDLE_V1",
         "canonicalization": "UTF-8 sorted-key compact JSON over parsed YAML values",
-        "startup_contract_commit": args.startup_contract_commit, "component_count": len(components),
+        "startup_contract_commit": args.startup_contract_commit,
+        "directive_provenance_commit": DIRECTIVE_PROVENANCE_COMMIT,
+        "component_count": len(components),
         "components": [{
             "name": name, "path": COMPONENT_FILES[name], "semantic_sha256": component_digests[name],
             "file_sha256": sha256_path(out / COMPONENT_FILES[name]),
@@ -573,6 +601,7 @@ def assemble(args: argparse.Namespace) -> int:
         "schema_version": "U2_STAGE0_CONTRACT_V1", "phase": "U2_STAGE0",
         "status": "AWAITING_ORCHESTRATOR_APPROVAL", "required_exit_code": 42,
         "startup_contract_commit": args.startup_contract_commit,
+        "directive_provenance_commit": DIRECTIVE_PROVENANCE_COMMIT,
         "stage0_contract_digest": bundle_digest, "bundle_index_sha256": sha256_path(out / "stage0_bundle.yaml"),
         "engine_agreement_sha256": sha256_path(Path(args.agreement)), "component_semantic_sha256": component_digests,
         "candidate_universe_digest": semantic["candidate_inventory"]["candidate_universe_digest"],
@@ -583,6 +612,8 @@ def assemble(args: argparse.Namespace) -> int:
             "raw_ragged_cardinality": semantic["grid_inventory"]["raw_ragged_cardinality"],
             "collapsed_cardinality": semantic["grid_inventory"]["collapsed_cardinality"],
             "promotion_contexts": semantic["grid_inventory"]["promotion_context_count"],
+            "template_branch_equivalence_proofs": len(semantic["template_contract"]["branch_equivalence_proofs"]),
+            "expected_conditional_templates_on_v11_landing": 16,
         },
         "availability_summary": semantic["availability_summary"],
         "vocabulary_summary": {
@@ -597,6 +628,7 @@ def assemble(args: argparse.Namespace) -> int:
         },
         "approval_requests": [
             "ratify the U2 frozen-data pin table and complete stage-0 bundle",
+            "ratify the v11 992-record non-template projection digest and 16 branch identical-BVP proofs",
             "adjudicate the generated three-family candidate universe and unresolved residual OTHER branch",
             "commit reviewed U2 scripts and supply the production STARTUP_CONTRACT_COMMIT",
             "supply STAGE0_CONTRACT_DIGEST unchanged at production resume",
@@ -621,6 +653,28 @@ def verify(args: argparse.Namespace) -> int:
     actual = digest(components)
     expected = "0" * 64 if args.mutation == "TOOTH_STAGE0_CONTRACT_DIGEST" else args.expected_digest
     require(actual == expected, "ASSERT_STAGE0_CONTRACT_DIGEST", f"expected {expected}, recomputed {actual}")
+    bundle_index = load_yaml(out / "stage0_bundle.yaml")
+    contract = load_yaml(out / "stage0_contract.yaml")
+    recorded_bundle_anchor = bundle_index.get("startup_contract_commit")
+    recorded_contract_anchor = contract.get("startup_contract_commit")
+    if args.mutation == "TOOTH_RECORDED_STARTUP_ANCHOR":
+        recorded_contract_anchor = "0" * 40
+    require(
+        recorded_bundle_anchor == recorded_contract_anchor
+        and bool(re.fullmatch(r"[0-9a-f]{40}", recorded_bundle_anchor or ""))
+        and recorded_bundle_anchor != "HEAD",
+        "ASSERT_RECORDED_STARTUP_ANCHOR", "stage0 bundle/contract do not record one full concrete startup anchor",
+    )
+    recorded_resolved = git(repo, "rev-parse", f"{recorded_bundle_anchor}^{{commit}}").stdout.strip()
+    require(
+        recorded_resolved == recorded_bundle_anchor,
+        "ASSERT_RECORDED_STARTUP_ANCHOR", "recorded stage0 startup anchor did not resolve identically",
+    )
+    require(
+        bundle_index.get("stage0_contract_digest") == contract.get("stage0_contract_digest") == actual
+        and contract.get("bundle_index_sha256") == sha256_path(out / "stage0_bundle.yaml"),
+        "ASSERT_STAGE0_CONTRACT_DIGEST", "stage0 index/contract binding differs from recomputed components",
+    )
     live_pins = build_pin_table(repo, args.mutation)
     if args.mutation == "TOOTH_VERIFY_PIN_TABLE": live_pins["records"][0]["sha256"] = "0" * 64
     require(live_pins == components["frozen_data_pin_table"], "ASSERT_VERIFY_PIN_TABLE", "live pin table differs from bundled pins")
@@ -628,7 +682,6 @@ def verify(args: argparse.Namespace) -> int:
         live_environment = environment_identity(args.mutation)
         if args.mutation == "TOOTH_ENVIRONMENT_IDENTITY": live_environment["python"]["version"] = "mutated"
         require(live_environment == components["environment_identity"], "ASSERT_ENVIRONMENT_IDENTITY", "environment/toolchain identity changed")
-    contract = load_yaml(out / "stage0_contract.yaml")
     required_exit = 0 if args.mutation == "TOOTH_APPROVAL_EXIT" else contract["required_exit_code"]
     require(required_exit == 42, "ASSERT_APPROVAL_EXIT_42", "contract approval exit changed")
     integrity = 1 if args.mutation == "TOOTH_CONTRACT_ZERO_INTEGRITY" else components["availability_slots"]["summary"]["integrity_failures"]

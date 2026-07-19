@@ -44,6 +44,79 @@ canonicalJSONString[Null] := "null";
 canonicalJSONString[value_Integer] := ToString[value, InputForm];
 canonicalJSONString[value_] := StringReplace[ExportString[value, "RawJSON", "Compact" -> True], "\\/" -> "/"];
 canonicalDigest[value_] := IntegerString[Hash[canonicalJSONString[value], "SHA256"], 16, 64];
+v11ProductionRel = "software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production/production_results.yaml";
+v11Stage0Digest = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4";
+v11ProductionAnchor = "53529bf1729811f5ae9faa429cf836507469569b";
+v11WrapAnchor = "5ceebb24";
+
+physicsRecordProjection[document_Association] := Module[
+  {rows = {}, contextFields, dispositionFields, context, cell, payload},
+  contextFields = {"cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum"};
+  dispositionFields = Join[contextFields, {
+    "native_root_class", "integrity", "expected_dependencies", "used_dependencies",
+    "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability"
+  }];
+  Do[
+    context = Association@Table[key -> cell[key], {key, contextFields}];
+    AppendTo[rows, <|
+      "record_id" -> "candidate_disposition:" <> cell["cell_id"],
+      "record_class" -> "candidate_disposition",
+      "payload" -> Association@Table[key -> cell[key], {key, dispositionFields}]
+    |>];
+    AppendTo[rows, <|
+      "record_id" -> cell["ensemble"]["level_1"]["record_id"], "record_class" -> "ensemble_level_1",
+      "payload" -> Join[context, cell["ensemble"]["level_1"]]
+    |>];
+    AppendTo[rows, <|
+      "record_id" -> cell["ensemble"]["level_2"]["record_id"], "record_class" -> "ensemble_level_2",
+      "payload" -> Join[context, <|"applicability" -> cell["ensemble"]["applicability"]|>, cell["ensemble"]["level_2"]]
+    |>];
+    AppendTo[rows, <|"record_id" -> cell["topology_gate"]["record_id"], "record_class" -> "topology_gate", "payload" -> cell["topology_gate"]|>];
+    AppendTo[rows, <|"record_id" -> cell["host_location"]["record_id"], "record_class" -> "host_location", "payload" -> cell["host_location"]|>];
+    AppendTo[rows, <|
+      "record_id" -> cell["return_closure_ownership"]["record_id"], "record_class" -> "return_closure_ownership",
+      "payload" -> cell["return_closure_ownership"]
+    |>],
+    {cell, document["cell_records"]}
+  ];
+  Do[AppendTo[rows, <|"record_id" -> payload["record_id"], "record_class" -> "closure_adjudication", "payload" -> payload|>], {payload, document["closure_records"]}];
+  Do[AppendTo[rows, <|"record_id" -> payload["record_id"], "record_class" -> "promotion", "payload" -> payload|>], {payload, document["promotion_records"]}];
+  SortBy[rows, {ToLowerCase[# ["record_id"]], # ["record_id"]} &]
+];
+
+physicsRecordInvarianceContract[] := Module[{sourcePath, source, projection, classCounts},
+  sourcePath = FileNameJoin[{repo, v11ProductionRel}];
+  source = loadYaml[sourcePath]; projection = physicsRecordProjection[source];
+  classCounts = Association@KeyValueMap[#1 -> #2 &, KeySort[Counts[Lookup[projection, "record_class"]]]];
+  <|
+    "schema_version" -> "U2_V11_PHYSICS_RECORD_INVARIANCE_V1",
+    "U2_V11_PHYSICS_RECORD_SET_DIGEST" -> canonicalDigest[projection],
+    "record_id_universe" -> Lookup[projection, "record_id"], "record_count" -> Length[projection],
+    "record_class_counts" -> classCounts,
+    "canonical_projection" -> <|
+      "serialization" -> "UTF-8 canonical JSON; object keys lexicographically sorted; separators comma/colon; ensure_ascii=false",
+      "row_order" -> "record_id casefold then record_id codepoint",
+      "cell_context_fields" -> {"cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum"},
+      "candidate_disposition_fields" -> {
+        "cell_id", "stable_branch_id", "candidate_id", "ambient", "stratum", "native_root_class", "integrity",
+        "expected_dependencies", "used_dependencies", "obligation_evidence", "disposition", "disposition_evaluator_landing", "unavailability"
+      },
+      "record_classes" -> {
+        "candidate_disposition", "promotion", "ensemble_level_1", "ensemble_level_2", "topology_gate",
+        "host_location", "closure_adjudication", "return_closure_ownership"
+      },
+      "stripped_fields" -> {"template_eligible", "posed_BVP_templates", "template", "template_*"}
+    |>,
+    "comparison_predicate" -> "record_id_universe_exact_set_and_unique AND canonical_projected_rows_SHA256_equals_U2_V11_PHYSICS_RECORD_SET_DIGEST",
+    "v11_provenance" -> <|
+      "source_path" -> v11ProductionRel,
+      "source_sha256" -> IntegerString[FileHash[sourcePath, "SHA256"], 16, 64],
+      "ratified_stage0_digest" -> v11Stage0Digest, "production_anchor" -> v11ProductionAnchor, "wrap_anchor" -> v11WrapAnchor
+    |>,
+    "candidate_universe_digest" -> source["axes"]["candidate_universe_digest"],
+    "stage0_role" -> "freeze_reference_only_live_v12_comparison_is_production_timed"
+  |>
+];
 familyFromCandidate[id_String] := StringDrop[StringDrop[id, 8], -1];
 
 membersFor[id_String] := Lookup[
@@ -784,20 +857,68 @@ routeInventory[candidates_List, obligations_Association] := Module[
   rows
 ];
 
-templateContract[] := <|
-  "eligible_record_predicate" -> "integrity==COMPUTATION_VALID and disposition==ADMISSIBLE and candidate!=OTHER",
+templateBVPConstituentCensus[candidateRecord_Association, ambient_String] := {
+  <|
+    "constituent" -> "canonical_boundary_condition", "candidate_id" -> candidateRecord["candidate_id"],
+    "canonical_operator_signature" -> candidateRecord["canonical_signature"]
+  |>,
+  <|
+    "constituent" -> "typed_free_data", "references" -> (("tilt:" <> #) & /@ tiltTypes),
+    "availability" -> "UNRESOLVED", "domain" -> "tilted_sleeve_exterior",
+    "dimensions" -> "inherited_exactly_from_R49_ledger"
+  |>,
+  <|"constituent" -> "unevaluated_residual_or_variational_form", "required_terms" -> {"bulk_euler_lagrange_residual"}|>,
+  <|"constituent" -> "zero_mode_treatment", "required_terms" -> {"translation_zero_mode"}|>,
+  <|"constituent" -> "well_posedness_classification", "value" -> "UNRESOLVED(committed_structure_only)"|>,
+  <|"constituent" -> "asymptotic_matching_conditions", "ambient" -> ambient, "required_terms" -> {"outer_matching_condition"}|>
+};
+
+templateBranchEquivalenceProofs[candidateRecords_List, activeStrata_List] := Module[
+  {operatorRecords, proofs = {}, perStratum, census, candidateRecord, ambient},
+  operatorRecords = Select[candidateRecords, # ["candidate_id"] != "OTHER" &];
+  Do[
+    perStratum = Table[
+      census = templateBVPConstituentCensus[candidateRecord, ambient];
+      <|"stratum" -> stratum, "constituent_census" -> census, "census_sha256" -> canonicalDigest[census]|>,
+      {stratum, activeStrata}
+    ];
+    AppendTo[proofs, <|
+      "template_branch_id" -> "U2:" <> candidateRecord["candidate_id"] <> ":" <> ambient,
+      "candidate_id" -> candidateRecord["candidate_id"], "ambient" -> ambient,
+      "proof_timing" -> "pre-production_symbolic_only", "active_strata" -> activeStrata,
+      "per_stratum_censuses" -> perStratum,
+      "distinct_census_digest_count" -> Length[DeleteDuplicates[Lookup[perStratum, "census_sha256"]]],
+      "identical_BVP_across_strata" -> (Length[DeleteDuplicates[Lookup[perStratum, "census_sha256"]]] == 1),
+      "produced_adjudication_objects_used" -> False
+    |>],
+    {candidateRecord, operatorRecords}, {ambient, ambients}
+  ]; proofs
+];
+
+templateContract[candidateRecords_List, activeStrata_List] := Module[{allowed},
+  allowed = {"ROOT_REFERENCE", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE", "POSTULATE_BRANCH"};
+  <|
+  "eligible_record_predicate" -> "candidate!=OTHER and branch_has_at_least_one_stratum and all_integrity==COMPUTATION_VALID and homogeneous_disposition in {ADMISSIBLE,UNRESOLVED}",
+  "template_key" -> "candidate_id x ambient (strata collapsed only by identical_BVP proof)",
   "semantic_schema" -> {
     "canonical_boundary_condition", "typed_free_data", "unevaluated_residual_or_variational_form",
-    "zero_mode_treatment", "well_posedness_classification", "asymptotic_matching_conditions"
+    "zero_mode_treatment", "well_posedness_classification", "asymptotic_matching_conditions",
+    "branch_conditionality_tag", "open_data_conditionality_tag"
   },
-  "forbidden_ancestry_constructors" -> {"SOLVE_EVALUATION_RESULT"}, "dependent_fields_unbound" -> True,
+  "conditional_template_posing_allowed_constructors" -> allowed,
+  "conditional_template_posing_banned_constructors" -> Select[grammar, !MemberQ[allowed, #] &],
+  "constructor_partition_exhaustive_default_deny" -> True,
+  "postulate_branch_constructor_allowed_ambient_only" -> "two_sided_R_w_postulate",
+  "forbidden_ancestry_constructors" -> Select[grammar, !MemberQ[allowed, #] &], "dependent_fields_unbound" -> True,
   "R49_exact_unresolved_reference_ids" -> (("tilt:" <> #) & /@ tiltTypes),
   "term_census_generator_inputs" -> {
     "committed_static_field_equations", "canonical_operator_witness", "ambient_branch", "typed_free_data_ledger"
   },
   "required_term_kinds" -> {"residual", "boundary", "zero-mode", "asymptotic-matching"},
-  "per_term_remove_and_zero_teeth_required" -> True, "posing_not_solving" -> True
-|>;
+  "per_term_remove_and_zero_teeth_required" -> True, "posing_not_solving" -> True,
+  "conditional_tags_non_evidential_and_posing_DAG_unreachable" -> True,
+  "branch_equivalence_proofs" -> templateBranchEquivalenceProofs[candidateRecords, activeStrata]
+|>];
 
 closureContract[] := <|
   "gated_claim_inventory_generator" -> "committed_forcing_and_consequence_schema_walk",
@@ -814,7 +935,8 @@ templateGuardFixture[] := Module[{committedInputs, expectedTerms},
   committedInputs = <|
     "static_field_equations" -> {"bulk_euler_lagrange_residual"},
     "canonical_operator_witness" -> {"Sigma_boundary_operator"},
-    "ambient_branch" -> {"outer_matching_condition"}, "typed_free_data_ledger" -> {"translation_zero_mode"}
+    "ambient_branch" -> {"outer_matching_condition"},
+    "typed_free_data_ledger" -> (("tilt:" <> #) & /@ tiltTypes), "zero_mode_ledger" -> {"translation_zero_mode"}
   |>;
   expectedTerms = {
     <|"term_id" -> "residual:bulk_euler_lagrange_residual", "kind" -> "residual"|>,
@@ -826,14 +948,42 @@ templateGuardFixture[] := Module[{committedInputs, expectedTerms},
     "expected_term_census" -> expectedTerms,
     "template_record" -> <|"integrity" -> "COMPUTATION_VALID", "physics" -> "POSED_BVP_TEMPLATE",
       "constituents" -> <|
-        "canonical_boundary_condition" -> "Sigma_boundary_operator", "typed_free_data" -> {"translation_zero_mode"},
+        "canonical_boundary_condition" -> "Sigma_boundary_operator",
+        "typed_free_data" -> (<|
+          "reference_id" -> "tilt:" <> #, "availability" -> "UNRESOLVED",
+          "domain" -> "tilted_sleeve_exterior", "dimensions" -> "inherited_exactly_from_R49_ledger"
+        |> & /@ tiltTypes),
         "unevaluated_residual_or_variational_form" -> "bulk_euler_lagrange_residual",
         "zero_mode_treatment" -> "project_translation_zero_mode",
         "well_posedness_classification" -> "UNRESOLVED(committed_structure_only)",
-        "asymptotic_matching_conditions" -> "outer_matching_condition"|>,
+        "asymptotic_matching_conditions" -> "outer_matching_condition",
+        "branch_conditionality_tag" -> <|
+          "metadata_id" -> "metadata:conditional_branch:E1",
+          "tag" -> "CONDITIONAL_ON_BRANCH(E1)", "candidate_id" -> "E1", "evidential" -> False, "posing_DAG_reachable" -> False
+        |>,
+        "open_data_conditionality_tag" -> <|
+          "metadata_id" -> "metadata:open_data:E1:one_sided_pathA29",
+          "unresolved_reference_ids" -> {"witness:host_location:E1"}, "evidential" -> False, "posing_DAG_reachable" -> False
+        |>
+      |>,
       "symbolic_ast" -> <|"op" -> "posed_template", "args" -> Table[
         <|"op" -> "term", "term_id" -> row["term_id"], "kind" -> row["kind"], "coefficient" -> 1|>,
-        {row, expectedTerms}]|>, "evaluation_state" -> "UNEVALUATED"|>
+        {row, expectedTerms}]|>, "evaluation_state" -> "UNEVALUATED",
+      "eligibility_disposition" -> "UNRESOLVED", "conditional" -> True,
+      "branch_admissibility_claim" -> False, "branch_selection_claim" -> False,
+      "excluded_record_references" -> {}, "complement_record_references" -> {},
+      "posing_proof_dag" -> <|
+        "normalized_inference_content" -> <|
+          "op" -> "positive_equivalence", "args" -> {<|
+            "op" -> "positive_join", "args" -> {
+              <|"op" -> "root", "id" -> "source:endpoint:E1"|>,
+              <|"op" -> "root", "id" -> "source:field:geon_core_bundle"|>
+            }
+          |>}
+        |>,
+        "claimed_constructors" -> {"ROOT_REFERENCE", "POSITIVE_DERIVATION", "POSITIVE_EQUIVALENCE"}
+      |>
+    |>
   |>
 ];
 
@@ -1044,7 +1194,8 @@ semantic = <|
     "total" -> Length[slots], "DERIVED" -> Count[Lookup[slots, "availability_outcome"], "DERIVED"],
     "UNRESOLVED" -> Count[Lookup[slots, "availability_outcome"], "UNRESOLVED"], "integrity_failures" -> 0
   |>,
-  "closure_contract" -> closureContract[], "template_contract" -> templateContract[],
+  "closure_contract" -> closureContract[], "template_contract" -> templateContract[candidateRecords, activeStrata],
+  "physics_record_invariance_contract" -> physicsRecordInvarianceContract[],
   "guard_fixtures" -> Join[guardFixtureRecords[], <|"closure" -> closureGuardFixture[], "template" -> templateGuardFixture[]|>],
   "return_closure_ownership" -> <|
     "owner" -> "downstream_flux_path", "U2_owned" -> False, "preserved_terminal" -> "UNRESOLVED(return_closure)",

@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -16,7 +17,6 @@ from typing import Any
 import yaml
 
 
-ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
 COMPONENT_FILES = {
     "frozen_data_pin_table": "frozen_data_pin_table.yaml",
     "candidate_inventory": "candidate_inventory.yaml",
@@ -225,7 +225,10 @@ def summary_values(bundle: Path, closure_path: Path, containment_path: Path, cam
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    for name in ("repo", "scratch", "sympy", "wolfram", "agreement", "bundle_dir", "closure", "containment", "output", "summary_output"):
+    for name in (
+        "repo", "scratch", "sympy", "wolfram", "agreement", "bundle_dir", "closure",
+        "containment", "output", "summary_output", "startup_contract_commit",
+    ):
         parser.add_argument(f"--{name.replace('_', '-')}")
     parser.add_argument("--summary-probe"); parser.add_argument("--summary-only", action="store_true")
     parser.add_argument("--mutation"); parser.add_argument("--quick", action="store_true")
@@ -241,13 +244,19 @@ def main() -> int:
         Path(args.summary_output).write_text(summary, encoding="utf-8")
         print("U2_SUMMARY_REFRESH_PASS"); return 0
 
-    required = ("repo", "scratch", "sympy", "wolfram", "agreement", "bundle_dir", "closure", "containment", "output", "summary_output")
+    required = (
+        "repo", "scratch", "sympy", "wolfram", "agreement", "bundle_dir", "closure",
+        "containment", "output", "summary_output", "startup_contract_commit",
+    )
     if any(not getattr(args, name) for name in required): parser.error("missing campaign arguments")
     repo = Path(args.repo).resolve(); scratch = Path(args.scratch).resolve(); scratch.mkdir(parents=True, exist_ok=True)
     sympy_path = Path(args.sympy).resolve(); wolfram_path = Path(args.wolfram).resolve()
     agreement_path = Path(args.agreement).resolve(); bundle = Path(args.bundle_dir).resolve()
     closure_path = Path(args.closure).resolve(); containment_path = Path(args.containment).resolve()
     source = repo / "software/em_charge_attribute"; python = "/usr/bin/python3"
+    anchor = args.startup_contract_commit
+    if not re.fullmatch(r"[0-9a-f]{40}", anchor or "") or anchor == "HEAD":
+        parser.error("--startup-contract-commit must be a full orchestrator-supplied commit, never HEAD")
     comparator = source / "u2_stage0_compare.py"; contract_script = source / "u2_stage0_contract.py"
     closure_guard = source / "u2_code_closure_guard.py"; containment_guard = source / "u2_containment.py"
     agreement = load_yaml(agreement_path); contract = load_yaml(bundle / "stage0_contract.yaml")
@@ -279,16 +288,16 @@ def main() -> int:
 
     contract_base = [
         python, "-I", str(contract_script), "--repo", str(repo),
-        "--startup-contract-commit", ANCHOR, "--sympy", str(sympy_path), "--agreement", str(agreement_path),
+        "--startup-contract-commit", anchor, "--sympy", str(sympy_path), "--agreement", str(agreement_path),
     ]
     verify_base = [
         python, "-I", str(contract_script), "--repo", str(repo), "--output-dir", str(bundle),
-        "--startup-contract-commit", ANCHOR, "--verify", "--expected-digest", contract_digest,
+        "--startup-contract-commit", anchor, "--verify", "--expected-digest", contract_digest,
     ]
     contract_catalog = contract["mutation_catalog"]
     if args.quick: contract_catalog = contract_catalog[:4]
     assemble_only = {
-        "TOOTH_STARTUP_ANCHOR", "TOOTH_GIT_ANCHOR_RESOLUTION", "TOOTH_PIN_INPUT_EXISTS", "TOOTH_PIN_LINEAGE",
+        "TOOTH_STARTUP_ANCHOR_NEVER_HEAD", "TOOTH_GIT_ANCHOR_RESOLUTION", "TOOTH_PIN_INPUT_EXISTS", "TOOTH_PIN_LINEAGE",
         "TOOTH_B2_CONTRACT_PIN", "TOOTH_PHASE_A_LINEAGE", "TOOTH_B1_TERMINAL_PIN", "TOOTH_PHASEC_DIGEST_PIN",
         "TOOTH_PHASEC_TERMINAL_PIN", "TOOTH_ENGINE_AGREEMENT_INPUT", "TOOTH_PRODUCER_MAP",
         "TOOTH_OBLIGATION_MANIFEST", "TOOTH_ENV_PYTHON_SANITIZED", "TOOTH_WOLFRAM_SEAT_LIMIT",
@@ -299,11 +308,11 @@ def main() -> int:
         mutation_id = row["mutation_id"]; assert_id = row["expected_assert_id"]
         case_dir = scratch / "contract_mutants" / f"{index:03d}"
         if mutation_id == "TOOTH_STARTUP_ANCHOR_SUPPLIED":
-            mutant = [*contract_base]; mutant[mutant.index(ANCHOR)] = ANCHOR[:8]
+            mutant = [*contract_base]; mutant[mutant.index(anchor)] = anchor[:8]
             mutant += ["--output-dir", str(case_dir)]
             control = [*contract_base, "--output-dir", str(shared_contract_control_dir)]
         elif mutation_id == "TOOTH_CONTRACT_ARGUMENTS":
-            mutant = [python, "-I", str(contract_script), "--repo", str(repo), "--startup-contract-commit", ANCHOR, "--output-dir", str(case_dir)]
+            mutant = [python, "-I", str(contract_script), "--repo", str(repo), "--startup-contract-commit", anchor, "--output-dir", str(case_dir)]
             control = [*contract_base, "--output-dir", str(shared_contract_control_dir)]
         elif mutation_id == "TOOTH_EXPECTED_DIGEST":
             mutant = [value for value in verify_base if value not in ("--expected-digest", contract_digest)]
@@ -320,7 +329,7 @@ def main() -> int:
         expected_survival(controls, mutation_id, control, "contract_and_bundle_per_require")
 
     environment = bundle / "environment_identity.yaml"
-    closure_base = [python, "-I", str(closure_guard), "--repo", str(repo), "--anchor", ANCHOR, "--environment", str(environment)]
+    closure_base = [python, "-I", str(closure_guard), "--repo", str(repo), "--anchor", anchor, "--environment", str(environment)]
     anchored_rel = "software/em_charge_attribute/directive_u2_boundary_adjudication.md"
     anchored_path = repo / anchored_rel
     closure_control = [*closure_base, "--probe-code-path", str(anchored_path), "--logical-repo-path", anchored_rel]

@@ -25,10 +25,9 @@ os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 sys.dont_write_bytecode = True
 
 
-RATIFIED_DIGEST = "9eff1b0c49e89007aea1008cb6712b0ea495168d101ce43ddce1cffaf68749c4"
-STAGE0_ANCHOR = "323b222846e2a9062330d2f25dd9cd28c57c7800"
+RATIFIED_DIGEST = "b01a1821e908589c3698512bbb9aff874b721af6dcbfa1c3b8b1f8d33119b32b"
 STAGE0_REL = Path("software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_0_contract")
-PRODUCTION_REL = Path("software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production")
+PRODUCTION_REL = Path("software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production_v12")
 SCRATCH_REL = Path("software/em_charge_attribute/_scratch/u2_production")
 STAGES = (
     "00_runner_shell_probe", "01_sympy_production", "02_wolfram_production",
@@ -223,7 +222,7 @@ class ProductionRunner:
         command = [
             "/usr/bin/python3", "-I", "-B", str(self.source / "u2_stage0_contract.py"),
             "--repo", str(self.repo), "--output-dir", str(self.stage0),
-            "--startup-contract-commit", STAGE0_ANCHOR, "--verify",
+            "--startup-contract-commit", self.anchor, "--verify",
             "--expected-digest", self.stage0_digest, "--recompute-environment",
         ]
         code, output, elapsed = self.execute(f"preflight_{stage}", command, trace, 600)

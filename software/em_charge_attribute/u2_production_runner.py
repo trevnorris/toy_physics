@@ -201,18 +201,46 @@ class ProductionRunner:
         log = self.scratch / "logs" / f"{stage}.log"
         launched = self.traced(command, trace) if trace else self.sandbox(command)
         started = time.monotonic()
-        with log.open("wb") as handle:
+        with log.open("wb") as handle, log.open("rb") as live_reader:
             process = subprocess.Popen(launched, cwd=self.repo, stdout=handle, stderr=subprocess.STDOUT)
             next_marker = started + 20
+            live_pending = b""
+            live_tooth = "0/508"
+
+            def relay_child_progress() -> None:
+                nonlocal live_pending, live_tooth
+                live_pending += live_reader.read()
+                while b"\n" in live_pending:
+                    line, live_pending = live_pending.split(b"\n", 1)
+                    decoded = line.decode("utf-8", errors="replace")
+                    if "LIVE_PROGRESS" in decoded:
+                        tooth = re.search(r"\btooth=(\d+/508)\b", decoded)
+                        if tooth:
+                            live_tooth = tooth.group(1)
+                        print(decoded, flush=True)
+
             while process.poll() is None:
                 elapsed = time.monotonic() - started
                 if elapsed > timeout:
                     process.kill(); process.wait()
                     raise RunnerFailure(f"stage {stage} exceeded {timeout}s; reformulation required")
+                if live:
+                    relay_child_progress()
                 if live and time.monotonic() >= next_marker:
-                    print(f"U2_WOLFRAM_LIVE_PROGRESS stage={stage} elapsed={elapsed:.1f}s", flush=True)
+                    if stage == "04_mutation_campaign":
+                        print(
+                            f"U2_MUTATION_CAMPAIGN_LIVE_PROGRESS stage={stage} "
+                            f"elapsed={int(elapsed)}s tooth={live_tooth}",
+                            flush=True,
+                        )
+                    else:
+                        print(f"U2_WOLFRAM_LIVE_PROGRESS stage={stage} elapsed={elapsed:.1f}s", flush=True)
                     next_marker += 20
                 time.sleep(0.25)
+            if live:
+                relay_child_progress()
+                if live_pending and b"LIVE_PROGRESS" in live_pending:
+                    print(live_pending.decode("utf-8", errors="replace"), flush=True)
         elapsed = time.monotonic() - started
         return process.returncode, log.read_text(encoding="utf-8", errors="replace"), elapsed
 
@@ -353,7 +381,7 @@ class ProductionRunner:
             ), [mutations], self.stage_producers(
                 "u2_production_mutations.py", "u2_production_compare.py", "u2_production_sympy.py",
                 "u2_stage0_sympy.py", "u2_stage0_contract.py", "u2_code_closure_guard.py", "u2_containment.py",
-            ), inputs=[sympy, wolfram, agreement], outer_trace=False,
+            ), inputs=[sympy, wolfram, agreement], timeout=1200, live=True, outer_trace=False,
         )
         self.run_stage(
             "04b_mutation_closure_probe", self.python("u2_production_mutations.py", "--closure-probe"),

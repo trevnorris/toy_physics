@@ -1,0 +1,164 @@
+\section{Stage 031: Puncture-Deflection Mechanism --- Field Identity, Mouth Source, Exterior \(1/R^2\) Form}
+
+\stagefield{Part / anchor}{Part IV -- Charge (IV-2; the EARNED-mechanism stage of the 4-stage split)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{The puncture-deflection \emph{mechanism} that dresses the
+static charge substrate of Stage~030: the field identity \(\xi_w=\ell h\); the
+orientation-odd mouth source that makes the charge sign the \(\pm w\) \(\mathbb{Z}_2\)
+orientation; the exterior stationary field \(h(r)=h_A a/r\); the full
+completed-square response matrix \(m\); and the target-blind neutral far-field
+shell \(A=m_{gg}C\). It stops at the EARNED, target-blind structure --- WHICH
+boundary-condition class holds, and hence the force \emph{sign}, is
+Stage~032's \texttt{R1\_REQUIRED(bc\_selection)}. A reshape of the
+puncture-deflection source build
+(\StageFile{software/em_charge_attribute/puncture_deflection_electric_sign_result.md}
++ \texttt{check.\{py,wl\}}) with several genuine new builds --- the full
+bare-mouth reconstruction, the independent generic \(I_+>0\) certification, the
+exterior derivation, and the full response matrix. Surviving verdict token
+\texttt{THROAT\_H\_SOURCE\_1\_OVER\_R2}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusExactClosure{} --- EARNED, target-blind, and exact-symbolic \emph{within}
+the postulated G0 closure. \textbf{What is EARNED} (given the postulated G0 action
+and \(r_\Sigma\) profile class): the field identity \(\xi_w=\ell h\) and the
+reduced coupling \(g_{\chi h}=J_m/\ell\); the annulus normalization
+\(\int\eta=1\); \(f_0(0)=1/\ell\) evaluated (not assigned) from the actual
+profile; the orientation projection \(Q_\chi=s\) through the odd kernel
+\emph{and} the generic \(I_+>0\) reflection-dominance certification (not
+\(N_\chi/N_\chi\)); the nonzero bare forcing \(-g_{\chi h}s\); the exterior
+\(h(r)=h_A a/r\) with positive holding curvature; the full response matrix \(m\)
+(\(\kappa\), \(Z\), \(m_{uu}\), \(m_{ug}\), \(m_{gg}\), \(\det m\), star witness)
+with \(m_{gg}\ge0\)/\(\det m\ge0\) earned via \(z_g^2\); the self-response
+\(S_{gg}\); and the units-restored \([L,T,M]\) firewall over every mechanism
+primitive. The \(1/R^2\) falloff and the \(s_1s_2\) product of the far-field
+shell are target-blind EARNED. \textbf{POSTULATED} (first-class): the bounded
+frozen \(r_{\Sigma,+}\in(0,1]\) representative with the \(+w\) sleeve of frozen
+length \(L_s\) is a labeled postulate \emph{completing} G0's already-postulated
+\(r_\Sigma\) class (no new knob class); strict \(z_g>0\) is a POSTULATED
+Robin-admissibility witness (\(z_g=1\) at G0). \textbf{DEFERRED to Stage~032}
+(\texttt{R1\_REQUIRED(bc\_selection)}): the class numerator \(C\) that fixes the
+force sign, the four BC-ensemble coefficients, \(\texttt{internal\_inconsistency}=\)none,
+the sealed \(23040\)-cell landing, and the \(Q_E\)/magnitude re-home.
+Ledger-local earned label:
+\texttt{PUNCTURE\_DEFLECTION\_MECHANISM\_TARGET\_BLIND}.
+
+\paragraph{The field identity and the bare-mouth source (EARNED).}
+The normal embedding displacement is the reduced scalar, \(\xi_w=\ell h\)
+(\([\xi_w]=L\), \([h]=1\); \texttt{PASS\_FIELD\_IDENTITY}); with \(f_0(0)=1/\ell\)
+(consumed from Stage~030) the live coupling reduces \(-J_m Q_\chi H\to-g_{\chi h}
+Q_\chi h\), \(g_{\chi h}=J_m/\ell\). The bare mouth source is reconstructed
+piece-by-piece: the actual annular kernel
+\(\eta_i=3\cdot\mathbf{1}_A/[4\pi((a+\ell)^3-a^3)]\) integrates to \(1\)
+(\texttt{PASS\_ETA\_ANNULUS\_NORMALIZATION}); \(f_0(0)=1/\ell\) is evaluated from
+\(f_0=1/[\ell\cosh^2(w/\ell)]\), the tooth also protecting the \(\mathrm{sech}^2\)
+curvature (\texttt{PASS\_F0\_MOUTH\_VALUE\_EVALUATED}); \(g_{\chi h}=J_m/\ell\ne0\)
+(\texttt{PASS\_REDUCED\_COUPLING\_NONZERO}). The orientation projection
+\(Q_\chi=s\) is proved in two parts. \emph{(a)}~With the odd kernel
+\(o_\ell(w)=w\,e^{-w^2/(2\ell^2)}/(\sqrt{2\pi}\,\ell^3)\), the even \(r_{bg}\), and
+the body reflection \(r_{\Sigma,-}(w)=r_{\Sigma,+}(-w)\), one gets \(I_-=-I_+\),
+so \(Q_+=+1\), \(Q_-=-1\) as ratios (\texttt{PASS\_REFLECTION\_ANTISYMMETRY},
+\texttt{PASS\_Q\_CHI\_ORIENTATION}). \emph{(b)}~Oddness alone does not give
+\(I_+\ne0\); with a bounded peak-normalized \(r_{\Sigma,+}\in(0,1]\) carrying a
+one-sided sleeve \(L_s\), the reflected denominator difference
+\(2\sinh(2w/\ell)\sinh(L_s/\ell)>0\) and \(D(w)-D(-w)=(r_+-r_-)(r_++r_-)>0\) for
+\(w>0\) give
+\[
+  I_+=\int_{w>0}o_\ell(w)\,[D(w)-D(-w)]\,dw>0
+\]
+\emph{parameter-generically} (\texttt{PASS\_I\_PLUS\_REFLECTION\_DOMINANCE}), so
+\(N_\chi=I_+\ne0\) is certified before any division
+(\texttt{PASS\_N\_CHI\_NONZERO\_GUARD}) and \(Q_\chi=s\) follows. The
+one-sidedness is load-bearing: an even deformation, \(L_s=0\), or a \(-w\) sleeve
+each drive \(I_+\) to \(0\) or \(<0\) at their own asserts, and a non-generic
+family triggers the \texttt{STAGE031\_STOP: I\_plus\_not\_generic} anti-rescue
+guard. Varying the live mouth functional yields the \(h\)-Euler density
+\(\eta_i(k_m h-g_{\chi h}s_i)\) (\(k_m=K_m/\ell^2\)) with nonzero bare component
+\(-g_{\chi h}s\) (\texttt{PASS\_BARE\_FORCING\_LIVE\_VARIATION}).
+
+\paragraph{Exterior solution and the named core-gap fact (EARNED).}
+The exterior stationary field (3D radial Euler, decaying branch, \(h(a)=h_A\)) is
+\(h(r)=h_A a/r\) with \(E_{\rm ext}=2\pi\kappa a h_A^2\), where \(\kappa>0\) is the
+exterior \(h\)-gradient stiffness (a generic positive constant in the 031 exterior
+block, \emph{not} identified with \(D/B_{\rm eff}\)), and the holding curvature
+\(4\pi\kappa a>0\) is positive (\texttt{PASS\_EXTERIOR\_ONE\_OVER\_R},
+\texttt{PASS\_POSITIVE\_HOLDING\_CURVATURE}). A nonzero signed \(h_A\) is \emph{not}
+stationary for the core-less energy (only \(h_A=0\) is): this is exported as the
+named neutral fact \texttt{NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}
+(\texttt{PASS\_NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}), consumed by Stage~032; 031
+claims no guaranteed-nonzero interaction.
+
+\paragraph{The full completed-square response \(m\) (EARNED; consumes 030's \(D\)).}
+With \(b=B_{\rm eff}\), \(c=C_{hu}\), \(D=bK_h-c^2\): the response Robin scale
+\(\kappa=D/b\),
+\(Z=\bigl[\begin{smallmatrix}1&0\\-(c/b)z_b&z_g\end{smallmatrix}\bigr]\) (typed;
+lower-left \([\cdot]=L\)), \(m=Z^\top\mathrm{diag}(b^{-1},\kappa^{-1})Z\), giving
+\[
+  m_{uu}=\frac{D+c^2z_b^2}{bD},\quad m_{ug}=-\frac{c z_b z_g}{D},\quad
+  m_{gg}=\frac{b z_g^2}{D},\quad \det m=\frac{z_g^2}{D}.
+\]
+At the star \((b,K_h,c,z_b,z_g)=(2,1,\tfrac12,1,1)\), \(D_*=7/4\) (consumed from
+030) and \(m_*=\tfrac17\bigl[\begin{smallmatrix}4&-2\\-2&8\end{smallmatrix}\bigr]\)
+--- note \(m_{uu}=K_h/D=4/7\ne1/b\), while \(m_{ug}=-c/D=-2/7\) and
+\(m_{gg}=b/D=8/7\) (\texttt{PASS\_RESPONSE\_STAR\_WITNESS}). Positivity is honest:
+\(m_{gg}\ge0\)/\(\det m\ge0\) are EARNED via \(z_g^2\) given \(B_{\rm eff}>0\),
+\(D>0\) (\texttt{PASS\_M\_GG\_NONNEGATIVE}); strict \(z_g>0\) is a POSTULATED
+Robin-admissibility witness (\texttt{PASS\_Z\_G\_POSTULATED\_WITNESS}). The
+self-response \(S_{gg}=\langle\eta,L_h^{-1}\eta\rangle\) has an explicit
+positive-definite quadratic-form definition (\texttt{PASS\_S\_GG\_SELF\_RESPONSE}),
+\([S_{gg}]=E^{-1}\).
+
+\paragraph{The target-blind far-field shell and the units firewall (EARNED).}
+The two-throat interaction has the FORM \(U=s_1s_2A/(4\pi R)\),
+\(F=s_1s_2A/(4\pi R^2)\), \(A=m_{gg}C\), \([A]=EL\), \([C]=E^2\)
+(\texttt{PASS\_NEUTRAL\_FAR\_FIELD\_FORM}): the \(1/R^2\) falloff, the \(s_1s_2\)
+product, and \([A]=EL\) are target-blind EARNED; the class-dependent numerator
+\(C\) is \emph{not} specified and \emph{no} sign is picked --- an
+allowed/conditional leading form, possibly with zero coefficient
+(\texttt{PASS\_ALLOWED\_ZERO\_COEFFICIENT}); a nonzero amplitude needs the
+deferred core holder. The complete mechanism dimensional firewall
+(21~\texttt{PASS\_UNITS\_*}) checks every primitive units-restored and
+able-to-fail: \([\xi_w]=L\), \([h]=[h_A]=1\), \([K_m]=ML^4T^{-2}\),
+\([J_m]=ML^3T^{-2}\), \([k_m]=[g_{\chi h}]=E\), \([\eta]=L^{-3}\),
+\([o_\ell]=L^{-2}\), \([N_\chi]=L^{-1}\), \([m_{uu}]=L^3/E\), \([m_{ug}]=L^2/E\),
+\([m_{gg}]=L/E\), \([\kappa]=E/L\), \([Z_{21}]=L\), \([\det m]=M^{-2}T^4\),
+\([S_{gg}]=E^{-1}\), \([C]=E^2\), \([A]=EL\), \([U]=E\), \([F]=E/L\), with live
+chains \(k_m=K_m/\ell^2\), \(g_{\chi h}=J_m/\ell\),
+\(N_\chi=\int\eta\,\int o_\ell\), \(A=m_{gg}C\), \(U=A/R\), \(F=A/R^2\).
+
+\paragraph{Scope, deferrals, and first-class departures (recorded honestly).}
+(1)~EARNED within the postulated G0 closure; the whole G0-v0 closure stays a
+labeled postulate (Stage~030). (2)~The bounded \(r_{\Sigma,+}\) representative
+(with frozen sleeve \(L_s\)) is a \texttt{[POSTULATE]} completing G0's
+\(r_\Sigma\) class --- no new knob class; the generic \(I_+>0\) certification is
+structural to the one-sidedness, not to the magnitude. (3)~Strict \(z_g>0\) is
+POSTULATED; \(m_{gg}\ge0\)/\(\det m\ge0\) are earned via \(z_g^2\). (4)~The SIGN
+R1 (the class numerator \(C\), the four BC ensembles,
+\(\texttt{internal\_inconsistency}\), the \(23040\)-cell landing, the R1 verdict)
+and the magnitude re-home (\(Q_E\); \(c_a,c_\xi\) unbounded at tier-A) are
+Stage~032; a guaranteed-nonzero amplitude needs the sim-deferred core holder
+(\texttt{NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes:
+\textbf{SymPy 50 PASS / Mathematica 50 PASS}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]} on failure), no argparse harness,
+no JSON/YAML payload, zero file-I/O between engines; float-/machine-real-free
+payload throughout. The \texttt{.wl} is not a transliteration: it reorders the
+derivation (native response matrix/\texttt{Inverse} first, then \texttt{DSolve}
+for \(h(r)=h_A a/r\), then the native \texttt{Integrate} mouth route last) and
+uses native Wolfram machinery for the annulus/\(\eta\) normalization, the
+certified \(I_+\) sleeve integral, and \(N_\chi\). \textbf{50 per-tooth
+ablations, each \texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch
+\texttt{LEDGER\_STAGE031\_MUTATION}): a primitive mutation for every folded
+predicate, including the SEPARATED norm/normalization teeth (\(\int\eta\) vs the
+\(N_\chi=0\) pre-division guard vs the generic \(I_+>0\) certification), the
+one-sidedness load-bearing teeth (even-deformation, \(L_s=0\), \(-w\)-sleeve), the
+per-entry response teeth, the exterior teeth, the neutral-shell teeth, and the
+complete units firewall; no vacuous or \(X\equiv X\) tooth. \textbf{Tri-review
+CLEAN:} fidelity + adversarial fresh-agent review CLEAN. Verdict
+\texttt{THROAT\_H\_SOURCE\_1\_OVER\_R2}, earned label
+\texttt{PUNCTURE\_DEFLECTION\_MECHANISM\_TARGET\_BLIND}.

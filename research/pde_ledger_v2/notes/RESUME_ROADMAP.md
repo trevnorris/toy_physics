@@ -17,9 +17,14 @@
   remediation + reverify, register-verify CLEAN). **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
   EARNED target-blind) ✅ DONE + committed `bba61c82`** (dual-engine 50/50, tri-review CLEAN ZERO remediation; the build
   honestly hit the `I₊≠0` STOP-gate → user chose OPTION A, reflection-dominance `I₊>0` Grok-B compute-verified; the 36-tooth
-  source-to-stage manifest + deliverables fidelity-verify 7→CLEAN). ▶ **NEXT = 032 (IV-3, four
-  BC ensembles + 23040-cell landing → `R1_REQUIRED(bc_selection)`)** directive carved (`_scratch/stage032_reshape_directive.md`);
-  **033 (IV-4, `NATIVE_P_NO_EMERGENT_GAUSS`)** pending. Plan: `part4_charge_atomic_split.md` (progress log at bottom).
+  source-to-stage manifest + deliverables fidelity-verify 7→CLEAN). **032 (IV-3, four BC ensembles + sealed
+  23040-cell landing → `R1_REQUIRED(bc_selection)`) ✅ DONE + committed `11253849`** (dual-engine 57/57, 58 mutations; the
+  four DECIDED conditional `A_X` consuming 031's `m_gg`/`S_gg`, strict signs CONDITIONAL on the nondegenerate witness,
+  `internal_inconsistency=none`, sealed §4 ladder digest `7627417a…`; tri-review CLEAN → a **manifest-hardening remediation**
+  [pinned counts 22/12/10 + manifest digest `e2cfd11b…` + `MANIFEST_MISDISPOSITION` ablation] → fresh-agent re-verify CLEAN;
+  deliverables fidelity-verify 5→CLEAN; `Q_E` re-homed pathA_38 → `R1_REQUIRED(magnitude)`). ▶ **NEXT = 033 (IV-4,
+  `NATIVE_P_NO_EMERGENT_GAUSS`)** — LIGHT reshape of `native_p_gate_*`; author its directive fresh, then bookend + build. Plan:
+  `part4_charge_atomic_split.md` (progress log at bottom).
 - **Not started:** Parts **V (magnetism)**, **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
@@ -67,17 +72,23 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 **Part III (light) ✅ DONE (2026-07-22)** = stage003 alone, re-scoped under the surviving-solution standing rule (§1); the `pathA_35` couple-stress no-go → failures-paper backlog. The Parts I/II graveyard-cleanup landed + committed (`327fcc7e`).
 
-▶ **NEXT FRONT = Part IV (charge) stage 032 (IV-3).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
+▶ **NEXT FRONT = Part IV (charge) stage 033 (IV-4).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
 2026-07-22 morning; `part4_charge_atomic_split.md`); **stage 030 (IV-1) DONE + committed `122afe36`**; **stage 031 (IV-2,
-puncture-deflection MECHANISM) DONE + committed `bba61c82`** — verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED); the build
-honestly hit the `I₊≠0` STOP-gate (source leaves `r_{Σ,+}` abstract) → user chose OPTION A (complete the G0 postulate,
-reflection-dominance `I₊>0` Grok-B compute-verified structural) → dual-engine 50/50, tri-review CLEAN, 36-tooth manifest, no
-silently-dropped source claim. **⭐ NEXT = 032 (IV-3) = the four BC ensembles + the sealed 23040-cell landing →
-`R1_REQUIRED(bc_selection)`** (consumes 031's `m`/`m_gg`/`S_gg` + the neutral shell `A=m_gg C` + the named fact
-`NONZERO_HA_REQUIRES_CORE_HOLDER`; directive carved at `_scratch/stage032_reshape_directive.md` — rerun its Codex→Grok→Codex
-bookend, then build). ⚠ 032's tautology trap = `LANDING_OWNERSHIP` (mutate an UPSTREAM fact, not the computed summary) + the
-committed digest `7627417a…`; strict force signs CONDITIONAL on a nondegenerate response. Then **033 (IV-4) =
-`NATIVE_P_NO_EMERGENT_GAUSS`** (LIGHT reshape of `native_p_gate_*`). Then V (magnetism) per §3, then
+puncture-deflection MECHANISM) DONE + committed `bba61c82`** (`THROAT_H_SOURCE_1_OVER_R2`, EARNED; the build honestly hit the
+`I₊≠0` STOP-gate → OPTION A reflection-dominance `I₊>0` Grok-verified); **stage 032 (IV-3, four BC ensembles + sealed
+23040-cell landing) DONE + committed `11253849`** — verdict **`R1_REQUIRED(bc_selection)`** (the electric sign is NEITHER
+earned NOR calibrated): the four DECIDED conditional `A_X` (`A_V=m_ggφ²/S_gg²` repel / `A_J=−m_gg(j+g)²` attract /
+`A_M=m_gg(q²−g²)` indefinite / `A_MIXED` spans, consuming 031's `m_gg`/`S_gg`, strict signs CONDITIONAL on the nondegenerate
+witness), `internal_inconsistency=none`, sealed §4 ladder (digest `7627417a…`, first-match `bc_selection`); dual-engine 57/57
++ 58 mutations; tri-review CLEAN → **manifest-hardening remediation** (pinned counts 22/12/10 + manifest digest `e2cfd11b…` +
+`MANIFEST_MISDISPOSITION`) → fresh-agent re-verify CLEAN; deliverables fidelity-verify 5→CLEAN; `Q_E` re-homed pathA_38 →
+`R1_REQUIRED(magnitude)`; register edges R62–R65. **⭐ NEXT = 033 (IV-4) = `NATIVE_P_NO_EMERGENT_GAUSS`** (the
+characterized-departure; exact U(1)/Maxwell Gauss proven non-native — "EM is NOT exact Maxwell") — LIGHT reshape of
+`software/em_charge_attribute/reports/native_p_constraint_gate.md` + `native_p_gate_{sympy.py,dual.wl}`; author its directive
+fresh, run the Codex→Grok→Codex bookend, then build (six able-to-fail controls anchor it). Then V (magnetism) per §3, then
 VI, then VII. Resolve the two parked knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
-Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.** Build authorization:
-memory `project-part4-build-authorization` (halt + surface on any real issue).
+Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**
+⚠ **Infra note (2026-07-22):** `Bash run_in_background` codex jobs are intermittently harness-reaped (SIGKILL to the group);
+launch long/danger-full-access codex **detached via `setsid`** + a bounded foreground poll on the done-marker (the read-only
+bookend legs usually survive `run_in_background`, but not always). Watch the ACTUAL launcher/`codex exec` PID, not the `setsid`
+wrapper PID (which exits after forking → false "dead").

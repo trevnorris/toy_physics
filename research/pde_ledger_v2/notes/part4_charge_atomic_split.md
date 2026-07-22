@@ -225,11 +225,26 @@ self-contained note + TeX card + registration → commit + docs/memory sync. Orc
   manifest — no silently-dropped source claim**) + card + register rows/edges **R54–R61** + coverage (canonical 31, audited
   30) + PDF (84pp); deliverables fidelity-verify `7→CLEAN` (caught a `κ`-overclaim: the exterior stiffness is a GENERIC `κ`,
   NOT `D/B_eff`; `z_g`/`z_b` opaque not DERIVED). ⚠ The `Q_χ=s`/`N_χ/N_χ` trap was defeated by the certified `I₊>0`.
-- **032 (IV-3, ensembles + R1 LANDING — 4-stage)** — ◐ **directive carved** (`_scratch/stage032_reshape_directive.md`):
-  the four DECIDED conditional coefficients `A_V/A_J/A_M/A_MIXED` (consuming 031's `m_gg`/`S_gg` + the neutral shell + the
-  named core-gap fact), **strict signs CONDITIONAL on a nondegenerate response**, the MIXED three-regime admissibility, the
-  sealed **23040-cell** §4 landing ladder + `LANDING_OWNERSHIP` (mutate an UPSTREAM fact, not the computed summary) + the
-  committed digest literal `7627417a…` → `R1_REQUIRED(bc_selection)` (magnitude/MIXED-param/variant = SEPARATE downstream R1
-  debts). Owns `internal_inconsistency=none` (Q-AMEND) + the `Q_E`/magnitude re-home. ⚠ The landing-ownership tautology trap
-  lives here. Bookend runs after 031 builds.
-- **033 (IV-4)** — ⬜ pending (`NATIVE_P_NO_EMERGENT_GAUSS`, LIGHT reshape of `native_p_gate_*`; after 031/032).
+- **032 (IV-3, ensembles + R1 LANDING — 4-stage)** — ✅ **DONE + committed `11253849`** (verdict
+  **`R1_REQUIRED(bc_selection)`** — the electric SIGN is NEITHER earned NOR calibrated). Owns: the four DECIDED conditional
+  coefficients `A_V=m_ggφ²/S_gg²` (repel) / `A_J=−m_gg(j+g)²` (attract) / `A_M=m_gg(q²−g²)` (indefinite) / `A_MIXED` (spans),
+  consuming 031's `m_gg`/`S_gg` + the neutral shell by CITATION; **strict signs CONDITIONAL on the nondegenerate witness**
+  (weak in general, all vanish at `z_g=0`); the MIXED three-regime admissibility; `internal_inconsistency=none` (Q-AMEND);
+  the sealed **23040-cell** §4 landing ladder (digest `7627417a…`, first-match `bc_selection`, before variant/tier/magnitude)
+  + genuine `LANDING_OWNERSHIP` (mutates an UPSTREAM Q-BC fact + re-adjudicates to a named different landing — passes the 030
+  X≡X test); co-blocker `R1_REQUIRED(magnitude)`; the `Q_E`/magnitude re-home (pathA_38 → puncture-deflection). **Bookend:**
+  Codex `SOUND` (pass-1, zero fixes; reran both 031 engines 50/50) → Grok compute-verify `CLEAN` (SymPy-verified the four
+  `A_X`, MIXED regimes, ladder order, `23040=2⁹·3²·5`) → Codex `BUILD_READY`. **Build:** dual-engine SymPy 57 / Mathematica
+  57 (independent Solve/Reduce + native exhaustive table), both exit 0, 58 mutations all fire; arbiter re-run CLEAN;
+  **tri-review CLEAN both legs** (fidelity + adversarial 57/57, `LANDING_OWNERSHIP` genuine). **⭐ Both legs flagged the same
+  weak spot** — the mandatory source-to-stage manifest tooth pinned coverage/ids/dispositions but NOT the per-disposition
+  counts or the manifest digest (a count-preserving mis-disposition would slip) → **manifest-hardening remediation** (pin
+  counts 22/12/10 + manifest digest `e2cfd11b…` over the sorted `(id,disposition,owner)` triples, both engines agree; add the
+  count-preserving `MANIFEST_MISDISPOSITION` ablation) → arbiter + **fresh-agent re-verify CLEAN** (58/58, both engines agree
+  on both digests). Deliverables authored (delegated to a clean-context agent, then Codex fidelity-verify `5→CLEAN` — caught
+  prosified owner tokens, a stale `C`/`Q_E` classification, an edge-range typo, "zero remediation" wording; all folded).
+  Register edges **R62–R65**; coverage canonical 31→32; PDF 86pp. ⚠ Infra: the remediation codex build was launched
+  **detached via `setsid`** after two `run_in_background` reaps — watch the real launcher PID, not the `setsid` wrapper.
+- **033 (IV-4)** — ⬜ **NEXT** (`NATIVE_P_NO_EMERGENT_GAUSS`, the characterized departure "EM is NOT exact Maxwell"; LIGHT
+  reshape of `software/em_charge_attribute/reports/native_p_constraint_gate.md` + `native_p_gate_{sympy.py,dual.wl}`; author
+  its directive fresh, run the Codex→Grok→Codex bookend, then build; six able-to-fail controls anchor it).

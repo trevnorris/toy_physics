@@ -75,7 +75,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 - **stage 004** — GNLS parent action + dimensional foundation. **EARNED (dim foundation).** Fixes `{L,T,M}` base + field dictionary (17 checks); mass is an explicit constant (not emergent). `[ψ]=L⁻²`, `[K]=ML¹⁸T⁻²`; `ξ_h=√2ħ/(mc_s0)`; `h0=mc_s0²/4`. → `research/pde_ledger_v2/notes/stages/ledger_stage004_gnls_action_dimensional_foundation.md` (+ `scripts/…_sympy_audit.py`, `mathematica/…_mathematica_audit.wl`). *Open:* parent action & `m_GNLS` POSTULATED; `m_defect` NOT emergent (`INFLOW_MASS_SOURCE_MISSING`).
 - **stage 005** — EOS sound speed + light/sound ratio. **EARNED (within imposed EOS), CALIBRATED landing.** `c_s²=5Kρ⁴/m` (factor 5 derived); `c=c_γ` ceiling. The **free-unreduced quantity is `c_γ`** (ultimately `{μ_R,ρ_br}`); the *ratio* `λ_γ=c_γ/c_s` is DERIVED, and only the *constraint* `λ_γ=1` is a calibrated cone lock (`pathA_40`). A reversible negative control proves `c_γ` is unpinned by the parent action (`C_GAMMA_RATIO_UNDERDETERMINED`). → `…/ledger_stage005_sound_speed_light_ratio.md`. *Open:* EOS `P=Kρ⁵` IMPOSED; `c_γ` numeric undetermined; `ħ` provenance a gap.
 - **stage 006** — Two-phase material-state ontology (`χ_B`). **`ACTION_SPECIFIED_CLASSIFIED` (postulated functional).** Two-phase free energy + order-balance PDE (13 pins); single-kink wall admission; recovery reduction to the old `S_leak` law (assert-zero). → `…/ledger_stage006_two_phase_chiB_ontology.md`. *Open/departure:* **whole two-phase split POSTULATED** (parent `U(ρ)` is single-well); **θ-as-Maxwell-φ = FATAL_FLAW** (wrong-sign stiffness; Maxwell only `BY_TUNING`); slab width `W_slab` FREE-UNREDUCED. `α_aniso` **retired by Decision 16** (amendment landed 2026-07-21; stage006 operative `DRIFT(6)→DRIFT(5)`).
-- **stage 007** — Shear-surface G0 freeze (frozen brane/light action). **EARNED (freeze fidelity + historical DOF=8 / operative DOF=4 + dim firewall), POSTULATED/CALIBRATED landing.** Hash-guarded frozen MacCullagh shear + P–u coupling + `u_w` gap; honest "second-medium drift = 11". `c_γ²=μ_R/ρ_br`. → `…/ledger_stage007_shear_surface_g0_freeze.md`. *Open:* the "11" = 4 constants {ρ_br, μ_R, λ_Pu, Ω_w} + `g_ℓ` + 6 postulates; `μ_R/ρ_br` Route-A reduction PENDING (R10); the `P`-machinery here was **retired by Decision 16** (amendment landed 2026-07-21): the freeze-as-run "11"/DOF=8 STANDS as the immutable historical tier, but the operative post-D16 layer is DOF=4, drift 7 (`POST_D16_DRIFT(7)`), `λ_Pu` retired — a −5 route-less reduction.
+- **stage 007** — Shear-surface G0 freeze (frozen brane/light action). **EARNED (freeze fidelity + operative DOF=4 + dim firewall), POSTULATED/CALIBRATED landing.** Hash-guarded frozen MacCullagh shear + `u_w` gap; operative **`POST_D16_DRIFT(7)`** = 3 constants {ρ_br, μ_R, Ω_w} + `g_ℓ` + 3 postulates. `c_γ²=μ_R/ρ_br`. → `…/ledger_stage007_shear_surface_g0_freeze.md`. *Open:* `μ_R/ρ_br` Route-A reduction PENDING (R10). A polar-field `P` substructure was tried as a light-stiffness source and **retired (Decision 16)** → failures-paper backlog (a −5 route-less reduction); the historical freeze-as-run tier (DOF=8, drift 11) is retained in the audit script as verification provenance.
 
 ### 3.2 Gravity — Part II ✅ built (stages 001–002, 008–029), tri-reviewed, sector CLOSED
 
@@ -91,15 +91,15 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Gravity's held-out surplus:** the bounded ℓ=0/1 `ε_ℓ/(1+ε_ℓ)` residual (THE falsifier — GR/Birkhoff forbid it), the ℓ=2 rational fingerprint `1/9,4/81,1/27` + `χ_Q=+1`, the cross-ℓ fingerprint `{1, 1/2, 1/27}` at `{ω¹,ω³,ω⁵}`. **NOT held-out (calibrated/external):** `G`, `54/5`, `2/5`, force-norm, and the Gate-2/3 wall packet `{μ_η,T_w,β,Vp0/ℓ_c,T_Ω,β₂}`.
 
-### 3.3 Light — Part III 🌱 seeded only (pilot stage003)
+### 3.3 Light — Part III ✅ DONE = stage003 (re-scoped 2026-07-22, surviving-solution rule)
 
-*Light = in-plane MacCullagh shear of the brane; two transverse photons. Least affected by the EM reconsideration — it IS the shared transverse sector, and it establishes the `u_T`/`c_γ` foundation magnetism reuses.*
+*Light = in-plane MacCullagh shear of the brane; two transverse photons. The shared transverse sector — it establishes the `u_T`/`c_γ` foundation magnetism reuses. Under the surviving-solution rule Part III is stage003 alone; the `pathA_35` couple-stress no-go (retired-`P` post-mortem) → failures-paper backlog.*
 
-- **pathA_35 gate L** — couple-stress no-go. **DEPARTURE (`FAIL_COUPLE_STRESS_NOGO`).** Light's shear stiffness `μ_R` **cannot** be sourced from a polar-field `P` substructure (live `P`→hidden spin-waves/unbounded; gapped→nonzero residual; slaved→degraded provenance). Feeds `c_γ²=μ_R/ρ_br` forward. → `software/stage1_solver/reports/pathA_35_gateL_light.md` (+ freeze `pathA_35_G0_freeze.md`). *This is the direct evidence behind Decision 16.* `μ_R` is honestly a POSTULATED modulus.
+- **pathA_35 gate L** — `μ_R` is a postulated modulus; a `P`-substructure derivation was tried and failed (`FAIL_COUPLE_STRESS_NOGO`, Decision 16) → failures-paper backlog (`research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`). Feeds `c_γ²=μ_R/ρ_br` forward. → `software/stage1_solver/reports/pathA_35_gateL_light.md` (+ freeze `pathA_35_G0_freeze.md`).
 - **pathA_36** — C5 phase-potential derivation. **EARNED (2 transverse photons) + DEPARTURE.** Two massless photons at `c_γ²=μ_R/ρ_br` (`PASS_TRANSVERSE_UNDISTURBED`, able-to-fail); longitudinal half → **`FAIL_CAUCHY_STRAY_LONGITUDINAL`**: a Dirac–Bergmann **second-class** pair (one propagating stray longitudinal DOF), NOT Maxwell's first-class Gauss. Maxwell locus reachable `BY_TUNING` only. → `…/pathA_36_c5_phase_potential.md`.
-- **stage 003 (seed)** — transverse photons + stray longitudinal (the in-ledger FAIL-headline pilot). **seeded (CHARACTERIZED-DEPARTURE).** Re-derives pathA_36 in-ledger, closing its fidelity gap (the Josephson sign `C_J=−Jρ_B0` derived in-script, not hardcoded). → `research/pde_ledger_v2/notes/stages/ledger_stage003_transverse_photons_stray_longitudinal.md`. ⚠ its "Next step" cites a stale `c_L²=B_eff/ρ_br` cone-pair — superseded (see §2).
+- **stage 003** — transverse photons + stray longitudinal (**the surviving light sector; DONE**, dual-engine + tri-reviewed). **CHARACTERIZED-DEPARTURE.** Re-derives pathA_36 in-ledger, closing its fidelity gap (the Josephson sign `C_J=−Jρ_B0` derived in-script, not hardcoded); `μ_R` a postulated modulus. → `research/pde_ledger_v2/notes/stages/ledger_stage003_transverse_photons_stray_longitudinal.md`.
 
-**Still to build:** `part3_light_atomic_split.md` (absent) → per-Part gate → ~4–6 stages from pathA_35+36+seed.
+**Part III complete** = stage003 (the surviving light result). Split: `part3_light_atomic_split.md` (re-scoped, DONE). The `pathA_35` couple-stress no-go → failures-paper backlog Exclusion 1 (not a ledger stage).
 
 ### 3.4 Charge — Part IV ⬜ not started (built + verified off-ledger)
 
@@ -107,7 +107,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 - **puncture-deflection electric-sign** — **R1_REQUIRED(bc_selection).** A ±w puncture bends the brane (`ξ_w=ℓh`), sourcing `h` via `g_χh`; the far-field two-body force `F_X=s₁s₂A_X/4πR²` is **target-blind** but its **sign is not invariant across admissible boundary-condition ensembles**: `A_V` neutral-**positive** (repel), `A_J=−m_gg(j+g)²` **negative** (attract), `A_M=m_gg(q²−g²)` **indefinite** (rides free `q/g`). So §4 fires `bc_selection`. → `software/em_charge_attribute/puncture_deflection_electric_sign_result.md` (+ `directive_…md`, `…_check.py/.wl`, independent recompute). Verified: dual-engine + 4-leg + Grok. **The sign is neither earned NOR calibrated — the formal result is R1** (the informal "calibratable sign" is a user framing, not the build's verdict).
 - **G0 shared minimal closure card v0** — **DRAFT v0 POSTULATED closure.** Fixes parent physics once (bulk Madelung, wall `r_B`, localized `H`+PT zero mode, `χ↔h` coupling, `M_h/K_h/C_hu` with `C_hu²<B_eff K_h`); only the sleeve-contact operator `𝔅` varies (E2/E3). → `software/em_charge_attribute/g0_closure_card_v0.md` (+ scope). *Postdates Part I; duplicates its bulk/wall/scalar structure → Part VII must de-dup, NOT additive-merge.*
-- **Superseded predecessors:** leftover-scalar `u_L`-clamp (sign = a calibrated knob; `NO_NATIVE_CLAMP`) → `…/leftover_scalar_electric_sign_result.md`; defect/antidefect wall-healing → `docs/em_phaseC_force_decomposition.md`; **pathA_38** throat-body Coulomb (`THROAT_ELECTRIC_LOCALIZED_COULOMB`, the *old* Part-IV anchor) → `software/stage1_solver/reports/pathA_38_throat_body_electric_localization.md`.
+- **Superseded charge routes** (leftover-scalar `u_L`-clamp, defect/antidefect wall-healing, the old pathA_38 throat-body Coulomb anchor) → failures-paper backlog (`research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`).
 - **DEPARTURE — `NATIVE_P_NO_EMERGENT_GAUSS`:** exact U(1)/Maxwell Gauss proven **non-native** (Dirac–Bergmann second-class at quadratic order; no first-class chain). → `software/em_charge_attribute/reports/native_p_constraint_gate.md`.
 
 **Resolving the R1:** only the sim-deferred **nonlinear throat/core solve** (`s↦h_A` boundary functional/barrier) can pin the class, force a holder, and (upside) deliver `q>g`.
@@ -129,7 +129,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 *The knit VERIFIES "one medium, all emergent" instead of asserting it: shared cones? one irreducible parameter set with no smuggled second substance? does the propagating scalar stay consistent?*
 
 - **pathA_40 — cone-lock.** **CALIBRATED-LOCK (`Δr=2`), to-RE-ADJUDICATE.** Neither Lorentz/Maxwell lock is derived on the earned ledger; both are calibrated: **(A) `λ_γ=1`** ⟺ `μ_R/ρ_br=5Kρ⁴/m`, **(B) `c_E=c_γ`** ⟺ `c_E²ρ_br=μ_R`. ⚠ The newer G0 card + magnetism build do **NOT** establish these — no committed cone lock — so Part VI must re-adjudicate. → `software/stage1_solver/reports/pathA_40_cone_lock.md`.
-- **pathA_41 — NG5 second-medium drift.** **INCOMPLETE (`SECOND_MEDIUM_DRIFT`).** The one-medium claim doesn't fully close: `{ρ_B0, χ_c, C_hu}` remain irreducibly independent (unreduced brane-surface/embedding parameters — NOT a separate substance; `no_fourth_arena=True`). `{ρ_br, μ_R, c_E}` reducible-in-principle (throat solve). *This is where the knit's real falsification power lives — the cone-lock is near-vacuous; NG5 is the decisive reducibility test.* → `…/pathA_41_ng5_second_medium_drift.md`. (Note: pathA_41's drift is this NG5 trio `{ρ_B0,χ_c,C_hu}` — distinct from the stage007 `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`, whose "11" was contested by an earlier GLM catch but is now RESOLVED — the count STANDS, no `ρ_br` overcount, dual-engine + anti-absorption-guarded per `parameter_register.md` + stage007.)
+- **pathA_41 — NG5 second-medium drift.** **INCOMPLETE (`SECOND_MEDIUM_DRIFT`).** The one-medium claim doesn't fully close: `{ρ_B0, χ_c, C_hu}` remain irreducibly independent (unreduced brane-surface/embedding parameters — NOT a separate substance; `no_fourth_arena=True`). `{ρ_br, μ_R, c_E}` reducible-in-principle (throat solve). *This is where the knit's real falsification power lives — the cone-lock is near-vacuous; NG5 is the decisive reducibility test.* → `…/pathA_41_ng5_second_medium_drift.md`. (Note: pathA_41's drift is this NG5 trio `{ρ_B0,χ_c,C_hu}` — distinct from the stage007 freeze drift (operative `POST_D16_DRIFT(7)`); two different drift concepts, anti-absorption-guarded so the trio is never absorbed into the freeze count.)
 - **pathA_42 — charge-coupled scalar map.** **INCOMPLETE / SIM-GATED (`SCALAR_DEPARTURE_MAPPED`).** The propagating `h`-scalar doesn't clearly break the model, but its break-risk magnitude is sim-gated: `h_EP` earned-safe on the decoupled floor; radiation/universality/`u_L_EP`/preferred-frame all `SIM_GATED`. Sharp trade-off: `c_E→∞` non-radiating but preferred-frame; `c_E=c_γ` Lorentz-invariant but a real radiating extra scalar. → `…/pathA_42_charge_coupled_scalar.md`.
 
 ### 3.7 Integration — Part VII ⬜ not started (the literal deliverable)
@@ -158,8 +158,7 @@ Gets the full new-derivation gauntlet + GLM tertiary + user gate.
 - EM is **NOT exact Maxwell** — `NATIVE_P_NO_EMERGENT_GAUSS` (exact U(1) proven non-native);
 - the **stray longitudinal DOF** — `FAIL_CAUCHY_STRAY_LONGITUDINAL` (second-class, not first-class Gauss);
 - `b_T=∇×u_T` is **time-reversal EVEN** vs Maxwell's T-odd `B`;
-- a real **radiating extra scalar** `h` (accelerating charge radiates scalar waves);
-- light's stiffness `μ_R` **cannot** come from `P` substructure — `FAIL_COUPLE_STRESS_NOGO`.
+- a real **radiating extra scalar** `h` (accelerating charge radiates scalar waves).
 
 **Unresolved (R1) — the shared throat solve is the crux:**
 - electric **sign** `R1_REQUIRED(bc_selection)`; magnetic sign inherits it;
@@ -182,27 +181,24 @@ Central equation-set rebuild at `research/pde_ledger_v2/` (branch `ledger-v2-reb
 | 0 | Conceptual | scaffolding-only (placeholder `.tex`) |
 | I | Medium | ✅ built (004–007), tri-reviewed |
 | II | Gravity | ✅ built (001–002, 008–029), CLOSED |
-| III | Light | 🌱 seeded (pilot 003); atomic-split unwritten |
+| III | Light | ✅ DONE = stage003 (re-scoped 2026-07-22, surviving-solution rule) |
 | IV | Charge | ⬜ not started (build verified off-ledger) |
 | V | Magnetism | ⬜ not started (build verified off-ledger) |
 | VI | Knit | ⬜ not started (gates 40/41/42 need reshape) |
 | VII | Integration | ⬜ not started |
 
-**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ the Decision-16 Part-I amendment LANDED (2026-07-21) → author `part3_light_atomic_split.md` → per-Part user gate → build Part III. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
+**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ Parts I–III DONE (III re-scoped to stage003 under the surviving-solution rule) → **author `part4_charge_atomic_split.md`** (re-scope onto the puncture-deflection build) → per-Part user gate → build Part IV. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
 
 ### 5.1 Ledger completion manifest — exactly what math folds into each remaining Part, and where it lives
 
-*Everything below is verified to resolve on disk (2026-07-21). **Already folded:** Parts I+II = ledger stages 001–002 + 004–029, source = the §3.1/§3.2 pathA reports + PN corpus (stage003 is the Part III seed, folded into III — not I/II). This manifest covers the REMAINING Parts III–VII.*
+*Verified to resolve on disk. **Already done:** Parts I+II+III = ledger stages 001–029 (source = the §3.1/§3.2 pathA reports + PN corpus; Part III = stage003 alone, the surviving light sector, re-scoped 2026-07-22). This manifest covers the REMAINING Parts IV–VII (the Part III entry below is retained as DONE for reference).*
 
 **Reshape tiers (the per-gate cost of bringing a script into the ledger's print-only/assert-zero/independent-`.wl` contract):**
 - **FULL** — the `pathA_*` tools carry an `argparse --compare` + JSON/YAML payload harness and a payload-mirror `.wl`; folding = strip the harness → print-only/assert-zero/exit-nonzero, AND re-author the `.wl` as a genuinely independent route.
 - **LIGHT** — the `software/em_charge_attribute/` EM builds are already assert-heavy (only minor harness); folding = wrap into the 6-artifact stage form + confirm the `.wl` is an independent route.
 
-**Part III — Light** → author `research/pde_ledger_v2/notes/part3_light_atomic_split.md` → ~4–6 stages (built from/after the in-ledger seed `ledger_stage003`).
-- Source math: `software/stage1_solver/reports/pathA_35_gateL_light.md`, `…/pathA_35_G0_freeze.md`, `…/pathA_36_c5_phase_potential.md`
-- Scripts (FULL reshape): `software/stage1_solver/tools/pathA_35_gateL_sympy.py` · `…/pathA_35_gateL.wl`; `…/pathA_35_G0_sympy.py` · `…/pathA_35_G0.wl`; `…/pathA_36_c5_sympy.py` · `…/pathA_36_c5.wl`
-- Already in-ledger: `research/pde_ledger_v2/scripts/ledger_stage003_transverse_photons_stray_longitudinal_sympy_audit.py` · `research/pde_ledger_v2/mathematica/ledger_stage003_transverse_photons_stray_longitudinal_mathematica_audit.wl`
-- Owed: fold both departures (`FAIL_COUPLE_STRESS_NOGO`, `FAIL_CAUCHY_STRAY_LONGITUDINAL`) first-class; carry `c_γ²=μ_R/ρ_br` forward as the `u_T` foundation Part V reuses.
+**Part III — Light** ✅ **DONE = stage003** (re-scoped 2026-07-22, surviving-solution rule). The surviving light sector is the single built stage `ledger_stage003` (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, earned 2 transverse photons at `c_γ²=μ_R/ρ_br`, `μ_R` postulated) — `research/pde_ledger_v2/scripts/…_sympy_audit.py` · `…/mathematica/…_audit.wl`, split `part3_light_atomic_split.md`.
+- The `pathA_35` gateL couple-stress no-go (`FAIL_COUPLE_STRESS_NOGO`, retired-`P` post-mortem) is **NOT a ledger stage** → failures-paper backlog Exclusion 1. `c_γ²=μ_R/ρ_br` is the `u_T`/`c_γ` foundation Part V reuses.
 
 **Part IV — Charge** → author `…/part4_charge_atomic_split.md` → ~3–4 stages.
 - Source math: `software/em_charge_attribute/puncture_deflection_electric_sign_result.md`, `…/g0_closure_card_v0.md`, `…/reports/native_p_constraint_gate.md`
@@ -227,15 +223,13 @@ Central equation-set rebuild at `research/pde_ledger_v2/` (branch `ledger-v2-reb
 
 ## 6. Known staleness / to-reconcile (don't be misled)
 
-- **Decision 16 — its Part-I amendment has LANDED (2026-07-21).** `software/stage1_solver/decisions/16_retire_brane_polar_field.md` is **decided and operative** (it retires the brane polar field `P` — the "little arrows" — plus `λ_Pu` + `α_aniso`); the formal ledger amendment is now applied — stage006/007 audit scripts + `parameter_register.md` are amended (operative DOF=4, drift 7 `POST_D16_DRIFT(7)`, stage006 `DRIFT(5)`; `λ_Pu`+`α_aniso` retired; audit scripts pass — stage006 SymPy 121/Math 119, stage007 SymPy 142/Math 140). The historical freeze-as-run "11"/DOF=8 record STANDS immutable. The amendment (a definite **−5** route-less knob REDUCTION) marks the blueprint's `χ_B=|P_∥|²` route OBSOLETE-as-carried **unless a new T0 freeze is authorized** (it remains a live, high-risk route-(c) future gate in the knob audit — one whose collapse would clear ~half of the postulated-structure liability — not a dead end). Evidence: every `P` payoff failed independently (charge no-Gauss, light couple-stress no-go, wall falsified, and an active `INSTABILITY_CONFIRMED_STRUCTURAL` for any `λ_Pu≠0`).
+- **Decision 16 (P-retirement) has LANDED (2026-07-21)** — operative and folded into the ledger (stage006/007 audit scripts + `parameter_register.md`): a definite **−5** route-less reduction (operative DOF=4, `POST_D16_DRIFT(7)`, stage006 `DRIFT(5)`; `λ_Pu`+`α_aniso` retired; the historical freeze-as-run "11"/DOF=8 record STANDS immutable). The `χ_B=|P_∥|²` route (c) is obsolete-as-carried unless a new T0 freeze is authorized (a live, high-risk future gate whose collapse would clear ~half of the postulated-structure liability). Full decision + failed-payoff evidence: `software/stage1_solver/decisions/16_retire_brane_polar_field.md`; retired-`P` post-mortems → `research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`.
 - **Blueprint Parts IV/V scope is stale by design** — scoped on `pathA_38`/`pathA_39` before the EM reconsideration; `pathA_39` rests on the barred `j∝sV`. Re-scope onto the puncture-deflection + moving-throat builds.
 - **Blueprint Part-VI cone-lock framing is stale** — it records pathA_40 as a settled `CONE_LOCK_CALIBRATED`; the newer builds don't establish the locks → it's a *to-re-adjudicate*.
 - **χ_Q reconciliation** (`0.712` vs `1`) — live Part-VII debt.
 - **G0 card is DRAFT v0** — un-reconciled with Part I; de-dup at Part VII, not additive-merge.
-- **stage003 "Next step"** cites a superseded `c_L²=B_eff/ρ_br` cone-pair — don't carry verbatim.
 - **The old 253-stage `research/pde_ledger/`** is a SUPERSEDED quarry — cite the v2 Part-II stages + pathA reports as the earned source, not it.
 
-*(Resolved, no longer a to-reconcile: the stage007 `drift=11` count was contested but STANDS — no `ρ_br` overcount; see §3.6.)*
 
 ---
 

@@ -135,33 +135,12 @@ candidate for the Layer-2 computed check.
 
 ---
 
-## 2. Provisional partition (pre-provenance-re-audit — ⚠ SUPERSEDED by §2.6)
+## 2. Provisional partition — ⚠ SUPERSEDED by §2.6
 
-> ⚠ **The buckets/counts below are the Chunk-1 provisional pass. The provenance re-audit (§2.6) corrected several:
-> `C_E/C_B`→(c), `W_slab`→(c), `d`→(b), `K1`→2 dirs, +G0-structural-6→(c), ±`M̃/K̃/T̃_Ω`, ±`{B̃,Z̃}`. Cite §2.6 for the
-> final range, not this section.**
-
-
-> These are the Layer-1 hand counts. Layer 2 (computed RegionDimension per block) certifies the DERIVED collapses are
-> genuine independent cuts and probes block W for hidden multiplicity; the Codex/Grok pass audits the provenance labels.
-> **Final numbers land only after both.**
-
-**(a) DECLARED universal constants (irreducible by design):** `{ħ, m_GNLS, K, ρ0}` = **4** (each with an open
-declare-vs-reduce GAP flag).
-
-**(b) REDUCTION-DEBT (route-ful — a concrete deferred computation):** the throat packet `{μ_η, T_w, β, Vp0/ℓ_c,
-T_Ω, β₂}` (6) + `{μ_R, ρ_br, C_E, C_B}` (4) + `{μ_R⁽⁴⁾, W_slab}` (2) + `{ε0, ε1, K0c, K1}` (4) ≈ **16** — dominated by
-the ONE nonlinear-throat solve (throat packet + Route-A) and the Gate-6 return closure. Honest, pending, "not-yet not never."
-
-**(c) POSTULATED STRUCTURE (route-less liability):** the χ_B DRIFT(5) `{χ_B, a_B, κ_B, Γ_B, gating}` (5; `α_aniso`
-retired by Decision 16) + `{Ω_w, g_ℓ}` (2; `λ_Pu` retired by Decision 16) + `{d, EOS-exp-5}` (2) ≈ **9** — the wall +
-the imposed structural choices, no concrete route.
-
-**Calibrated magnitudes:** force-magnitude norm (1); `G` = `GENUINE_BLOCKED` (not counted as a set-knob).
-
-**Route-less irreducible subset (tally #2 denominator, Parts I–II):** the **(c)** set ≈ **9** (post-Decision-16) + the
-force-magnitude tuning ≈ **10**. (The NG5 trio `{ρ_B0, χ_c, C_hu}` is the *canonical* route-less liability but is Part-III/VI — a
-forward-note, adds ~3 when those Parts build.)
+> The Chunk-1 provisional (a)/(b)/(c)/route-less hand-count that stood here was **SUPERSEDED by the provenance
+> re-audit in §2.6** (which corrected several buckets: `C_E/C_B`→(c), `W_slab`→(c), `d`→(b), `K1`→2 dirs,
+> +G0-structural-3→(c), ±`M̃/K̃/T̃_Ω`, ±`{B̃,Z̃}`). **Cite §2.6 for the corrected tallies + the final range**, not this
+> section. The held-out-predictions list + design-intent frame below stand.
 
 **Held-out (target-blind) predictions earned over Parts I–II** (tally #2 numerator, to be firmed up next chunk):
 1. `p=2` → `1/r²` Newtonian gravity FORM survives the finite slab (pathA_29 / stage 010; counterfactual-guarded).

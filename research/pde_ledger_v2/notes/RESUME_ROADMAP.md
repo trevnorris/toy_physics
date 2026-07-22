@@ -11,11 +11,13 @@
 ## 1. Where we are (the resume point)
 
 - **DONE + tri-reviewed:** **Part I — Medium** (stages 004–007); **Part II — Gravity** (stages 001–002, 008–029; sector CLOSED at 029); **Part III — Light = stage003 alone** (the surviving light sector; re-scoped 2026-07-22, see §7); the **Midway Knob Audit** (Parts I–II codimension dry-run). ⚠ **Part 0 (conceptual)** is only frontmatter SCAFFOLDING (placeholder `.tex`), NOT written content — remaining work, not done.
-- **Part IV (charge) IN PROGRESS** (2026-07-22, overnight autonomous build): split plan RATIFIED (3 stages 030/031/032,
-  bookend CLEAN); **stage 030 (IV-1, electric scalar + localized-H closure) DONE + committed `122afe36`** (dual-engine
-  16/16, tri-review CLEAN through a remediation + reverify, register-verify CLEAN). ▶ **031 (IV-2, puncture-deflection →
-  `R1_REQUIRED(bc_selection)`)** directive authored + under Codex review; **032 (IV-3, `NATIVE_P_NO_EMERGENT_GAUSS`)**
-  pending. Plan: `part4_charge_atomic_split.md` (progress log at bottom).
+- **Part IV (charge) IN PROGRESS** — **4-stage split** (user decision 2026-07-22 morning, re-granularized from the overnight
+  3-stage to match gravity's EARNED-vs-landing idiom; 031 splits mechanism/EARNED from the R1 sign landing). **stage 030
+  (IV-1, electric scalar + localized-H closure) DONE + committed `122afe36`** (dual-engine 16/16, tri-review CLEAN through a
+  remediation + reverify, register-verify CLEAN). ▶ **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
+  EARNED target-blind)** directive re-carved (`_scratch/stage031_reshape_directive.md`), bookend to rerun; **032 (IV-3, four
+  BC ensembles + 23040-cell landing → `R1_REQUIRED(bc_selection)`)** directive carved (`_scratch/stage032_reshape_directive.md`);
+  **033 (IV-4, `NATIVE_P_NO_EMERGENT_GAUSS`)** pending. Plan: `part4_charge_atomic_split.md` (progress log at bottom).
 - **Not started:** Parts **V (magnetism)**, **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
@@ -63,13 +65,17 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 **Part III (light) ✅ DONE (2026-07-22)** = stage003 alone, re-scoped under the surviving-solution standing rule (§1); the `pathA_35` couple-stress no-go → failures-paper backlog. The Parts I/II graveyard-cleanup landed + committed (`327fcc7e`).
 
-▶ **NEXT FRONT = Part IV (charge) stage 031 (IV-2).** ✅ Split plan RATIFIED (3 stages; `part4_charge_atomic_split.md`)
-and **stage 030 (IV-1) DONE + committed `122afe36`**. **031 = puncture-deflection** (`software/em_charge_attribute/puncture_deflection_electric_sign_result.md`
-— `ξ_w=ℓh`, the mouth `χ↔h` source, the `h`-mediated `1/R²`, the honest terminal `R1_REQUIRED(bc_selection)`): its
-reshape directive is authored (`_scratch/stage031_reshape_directive.md`) and under the Codex→Grok→Codex bookend. ⚠ **031
-carries a NEW build:** the FULL able-to-fail bare-mouth-source reconstruction (∫η=1, f₀(0) from profile, `g_χh=J_m/ℓ`,
-`Q_χ=s` computed) — the source puncture engine only *assigns* `f₀(0)=1/ℓ` (binding requirement from 030's tri-review).
-Then **032 (IV-3) = `NATIVE_P_NO_EMERGENT_GAUSS`** (LIGHT reshape of `native_p_gate_*`). Then V (magnetism) per §3, then
+▶ **NEXT FRONT = Part IV (charge) stage 031 (IV-2).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
+2026-07-22 morning; `part4_charge_atomic_split.md`) and **stage 030 (IV-1) DONE + committed `122afe36`**. **031 =
+puncture-deflection MECHANISM** (`software/em_charge_attribute/puncture_deflection_electric_sign_result.md` — `ξ_w=ℓh`, the
+mouth `χ↔h` source `Q_χ=s`, the exterior `h(r)=h_A a/r`, the completed-square response matrix `m`, and the target-blind
+EARNED far-field FORM `1/R²`·`s₁s₂`): verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED). Directive re-carved to mechanism-only
+(`_scratch/stage031_reshape_directive.md`); the Codex→Grok→Codex bookend reruns on it. ⚠ **031 carries a NEW build:** the
+FULL able-to-fail bare-mouth-source reconstruction (∫η=1, f₀(0) from profile, `g_χh=J_m/ℓ`, `Q_χ=s` computed through the ODD
+kernel — not `N_χ/N_χ`) — the source engine only *assigns* `f₀(0)=1/ℓ` (binding requirement from 030's tri-review).
+Then **032 (IV-3) = the four BC ensembles + the sealed 23040-cell landing → `R1_REQUIRED(bc_selection)`** (consumes 031's
+`m`/`m_gg`/`S_gg`; directive carved at `_scratch/stage032_reshape_directive.md`). Then **033 (IV-4) =
+`NATIVE_P_NO_EMERGENT_GAUSS`** (LIGHT reshape of `native_p_gate_*`). Then V (magnetism) per §3, then
 VI, then VII. Resolve the two parked knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.** Build authorization:
 memory `project-part4-build-authorization` (halt + surface on any real issue).

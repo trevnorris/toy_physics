@@ -1,9 +1,16 @@
 # Conceptual Foundation — what each part of the model physically IS
 
-**Read this FIRST.** This is the canonical plain-language statement of the model's physical vision — what the medium, the
-brane, the four force-sectors, and the particle/defect actually *are*, in the model's **own native terms**. It exists so the
-conceptual picture is never lost between work sessions and never has to be re-explained from scratch. It is a **living document**:
-update it whenever the conceptual picture sharpens. It is deliberately separate from the math/derivation/verdict machinery
+> ## ⚠ SUPERSEDED — historical vision doc. Do NOT use for current model state.
+> **The living conceptual doc is now [`docs/model_map.md`](model_map.md).** That map carries the current one-medium
+> throughline PLUS the per-sector derivation atlas and the honest earned-vs-calibrated-vs-R1-vs-departure ledger — all
+> cross-checked against the committed sources (Codex ×3 + a GLM coherence pass, 2026-07-21). This file predates the EM
+> reconsideration (puncture-deflection charge, moving-throat magnetism, Decision 16 retiring the brane polar field `P`),
+> so its EM/vision framing is **stale and can re-confuse**. Nothing here is deleted — the text below is preserved as the
+> historical vision statement. For the current model, read the map.
+
+**(Historical intro follows.)** This was the canonical plain-language statement of the model's physical vision — what the medium, the
+brane, the four force-sectors, and the particle/defect actually *are*, in the model's **own native terms**. It existed so the
+conceptual picture was never lost between work sessions. It is deliberately separate from the math/derivation/verdict machinery
 (those live in `software/stage1_solver/decisions/*`, the `pathA_*` directives, and `STATUS.md`).
 
 **Derivation ladder + dated history: `docs/conceptual_history.md`.** This doc is the *vision*. The version-by-version changelog,

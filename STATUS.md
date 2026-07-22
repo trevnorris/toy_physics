@@ -449,7 +449,8 @@ orchestrator arbiter re-run + transliteration-fidelity audit + adversarial revie
 
 | You want… | Look here |
 |---|---|
-| **The conceptual vision — what the medium / brane / 4 sectors / defect physically ARE (read first)** | `docs/conceptual_foundation.md` |
+| **⭐⭐ THE MODEL MAP — conceptual throughline + per-sector derivation atlas + honest earned/calibrated/R1/departure ledger + glossary (the "hold the whole model in your head" doc; read first)** | `docs/model_map.md` |
+| The conceptual vision — plain-language "what each part physically IS" (⚠ SUPERSEDED/historical — predates the EM reconsideration; use the model map above) | `docs/conceptual_foundation.md` |
 | **⭐⭐ The master development plan — ALL sectors → "simulation-ready" (the full scope; read for "what's left")** | `docs/development_plan.md` |
 | **⭐ How we work — the dev pipeline / review gauntlet (read before running ANY gate)** | `docs/development_pipeline.md` |
 | **⭐ The gravity arm — moving-throat PDE ~6-gate master checklist** | `research/pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md` |

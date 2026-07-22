@@ -119,3 +119,6 @@ research/**/_scratch/
 *.feather
 *.tar.gz
 *.tgz
+
+# session review scratch (prompts + codex/glm outputs) — never track
+docs/_scratch/

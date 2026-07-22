@@ -18,6 +18,17 @@ import sympy as sp
 PASS_COUNT = 0
 FAIL_COUNT = 0
 
+EXPECTED_POST_D16_DRIFT_TOKEN = "DRIFT(5)"
+PRE_D16_DRIFT_MEMBERS = (
+    "chi_B",
+    "a_B",
+    "kappa_B",
+    "alpha_aniso",
+    "Gamma_B",
+    "gating structure",
+)
+RETIRED_D16_DRIFT_MEMBERS = frozenset({"alpha_aniso"})
+
 
 class AuditFailure(AssertionError):
     pass
@@ -167,6 +178,18 @@ def homogeneity_residual(terms: dict[str, Dim]) -> sp.Expr:
 
 
 @dataclass(frozen=True)
+class A1Term:
+    dim: Dim
+    symbols: frozenset[str]
+
+
+def operative_a1_absence_residual(terms: dict[str, A1Term]) -> sp.Integer:
+    live_symbols = set().union(*(term.symbols for term in terms.values()))
+    retired_is_present = "alpha_aniso" in live_symbols or any("alpha_aniso" in label for label in terms)
+    return sp.Integer(1 if retired_is_present else 0)
+
+
+@dataclass(frozen=True)
 class Symbols:
     chi: sp.Symbol
     c: sp.Symbol
@@ -248,7 +271,7 @@ def print_pin_block() -> None:
         ("P4", "POSTULATED", "SAME_DENSITY_DEGENERACY_POSTULATED: f_B is n-independent and f_B(n,0)=f_B(n,1)=0."),
         ("P5", "POSTULATED", "gradient/interface term (kappa_B/2)*|grad_4 chi_B|^2 with [kappa_B]=M T^-2."),
         ("P6", "POSTULATED", "shear gate chi_B*f_shear with displacement u_d distinct from velocity u; brane mu_R projection is dim-consistent only here."),
-        ("P7", "POSTULATED", "chi_B independent scalar OP, NOT |P_parallel|^2; POSTULATED_ANISOTROPY alpha_aniso*chi_B*(P.w_hat)^2 dims only."),
+        ("P7", "POSTULATED", "chi_B is THE wall order parameter: a postulated independent scalar field, NOT currently built as |P_parallel|^2. Decision 16 retires alpha_aniso and the carried P field. FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ remains named high-risk/Part-VII-adjacent and requires a NEW T0 freeze; obsolete as a carried route, not foreclosed."),
         ("P8", "POSTULATED ADJUNCT", "D_t chi_B=-M_chi*mu_chi+Gamma_B; HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED: P_order=int mu_chi*D_t chi_B d4X."),
         ("P9", "POSTULATED DEFAULT", "J_chi=0 default; J_chi!=0 deferred with dim row only."),
         ("P10", "CONVENTION", "recovery target is frozen old-ledger S_leak with j^w=n*u^w and unit-normalized W, [W]=L^-1."),
@@ -301,7 +324,7 @@ def run_consumed_citation_checks(s: Symbols) -> tuple[sp.Expr, sp.Expr, sp.Expr]
 
 
 def run_leg_a_dimensions() -> None:
-    subbanner("Leg A1 dimensional audit: POSTULATED action and adjunct rows")
+    subbanner("Leg A1 dimensional audit: OPERATIVE post-Decision-16 action and adjunct rows")
     chi = DIMENSIONLESS
     n = RHO4
     u_velocity = VELOCITY
@@ -310,24 +333,39 @@ def run_leg_a_dimensions() -> None:
     kappa_b = MASS / (TIME**2)
     a_b = F_DENSITY_4D
     mu_R_4d = F_DENSITY_4D
-    alpha_aniso = F_DENSITY_4D
     f_throat = F_DENSITY_4D
     f_mix = F_DENSITY_4D
-    P_direction = DIMENSIONLESS
 
     terms = {
-        "POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2": M_GNLS * n * (u_velocity**2),
-        "CITED I-1 U(n)=(K/4)*n^5": K_EOS * (n**5),
-        "POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2": a_b,
-        "POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2": kappa_b * ((grad4 * chi) ** 2),
-        "POSTULATED P6 chi_B*f_shear": chi * mu_R_4d * ((grad4 * u_displacement) ** 2),
-        "POSTULATED P7 alpha_aniso*chi_B*(P.w_hat)^2": alpha_aniso * chi * (P_direction**2),
-        "DEFERRED_PLACEHOLDER f_throat": f_throat,
-        "DEFERRED_PLACEHOLDER f_mix": f_mix,
+        "POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2": A1Term(M_GNLS * n * (u_velocity**2), frozenset({"m_GNLS", "n", "u"})),
+        "CITED I-1 U(n)=(K/4)*n^5": A1Term(K_EOS * (n**5), frozenset({"K", "n"})),
+        "POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2": A1Term(a_b, frozenset({"a_B", "chi_B"})),
+        "POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2": A1Term(kappa_b * ((grad4 * chi) ** 2), frozenset({"kappa_B", "chi_B"})),
+        "POSTULATED P6 chi_B*f_shear": A1Term(chi * mu_R_4d * ((grad4 * u_displacement) ** 2), frozenset({"chi_B", "mu_R^(4)", "u"})),
+        "DEFERRED_PLACEHOLDER f_throat": A1Term(f_throat, frozenset({"f_throat"})),
+        "DEFERRED_PLACEHOLDER f_mix": A1Term(f_mix, frozenset({"f_mix"})),
     }
-    for name, dim in terms.items():
-        expect_dim(f"{name} has 4D free-energy-density dim M L^-2 T^-2", dim, F_DENSITY_4D)
-    expect_zero("POSTULATED F integrand homogeneity", homogeneity_residual(terms))
+    for name, term in terms.items():
+        expect_dim(f"{name} has 4D free-energy-density dim M L^-2 T^-2", term.dim, F_DENSITY_4D)
+    expect_zero("POSTULATED operative F integrand homogeneity", homogeneity_residual({name: term.dim for name, term in terms.items()}))
+    expect_zero("Decision-16 operative A1 surface excludes retired symbol alpha_aniso", operative_a1_absence_residual(terms))
+
+    print("  RETIRED-HISTORICAL (not in operative A1): alpha_aniso*chi_B*(P.w_hat)^2 had [alpha_aniso]=M L^-2 T^-2; retired with P by Decision 16, not by a dimensional defect.")
+    expect_dim(
+        "RETIRED-HISTORICAL P7 alpha_aniso*chi_B*(P.w_hat)^2 was dimensionally homogeneous",
+        F_DENSITY_4D * chi * (DIMENSIONLESS**2),
+        F_DENSITY_4D,
+    )
+    reinjected_terms = dict(terms)
+    reinjected_terms["REINJECTED alpha_aniso*chi_B*(P.w_hat)^2"] = A1Term(
+        F_DENSITY_4D * chi * (DIMENSIONLESS**2),
+        frozenset({"alpha_aniso", "chi_B", "P", "w_hat"}),
+    )
+    expect_fail(
+        "Decision-16 A1 tooth: re-inject alpha_aniso term trips operative retired-symbol absence",
+        operative_a1_absence_residual(reinjected_terms),
+    )
+    expect_zero("Decision-16 baseline operative A1 surface remains alpha_aniso-free after copy mutation", operative_a1_absence_residual(terms))
 
     pde_terms = {
         "partial_t(chi_B*n)": chi * n / TIME,
@@ -754,6 +792,31 @@ def run_ablations(consumed_c_j: sp.Expr, consumed_b_eff: sp.Expr, consumed_c_s0_
     expect_zero("baseline consumed c_s0^2 still live after ablations", consumed_c_s0_sq - 5 * K * rho0**4 / m_gnls)
 
 
+def drift_partition_residual(
+    pre_d16: tuple[str, ...],
+    operative: tuple[str, ...],
+    retired: tuple[str, ...],
+    *,
+    verdict_n_delta: int = 0,
+) -> sp.Expr:
+    pre_set = set(pre_d16)
+    operative_set = set(operative)
+    retired_set = set(retired)
+    residual = sp.Integer(0)
+    residual += len(pre_d16) - len(pre_set)
+    residual += len(operative) - len(operative_set)
+    residual += len(retired) - len(retired_set)
+    residual += sp.Integer(0 if retired_set == set(RETIRED_D16_DRIFT_MEMBERS) else 1)
+    residual += sp.Integer(0 if operative_set.isdisjoint(retired_set) else 1)
+    residual += sp.Integer(0 if operative_set | retired_set == pre_set else 1)
+    residual += sp.Integer(0 if operative_set == pre_set - set(RETIRED_D16_DRIFT_MEMBERS) else 1)
+    n = len(operative)
+    residual += (n - (len(pre_d16) - len(RETIRED_D16_DRIFT_MEMBERS))) ** 2
+    token = f"DRIFT({n + verdict_n_delta})"
+    residual += sp.Integer(0 if token == EXPECTED_POST_D16_DRIFT_TOKEN else 1)
+    return sp.simplify(residual)
+
+
 def print_carried_tokens_and_drift() -> None:
     subbanner("Carried tokens, deferred items, and computed drift")
     print("  carried no-go tokens verbatim: FAIL_CAUCHY_STRAY_LONGITUDINAL; FAIL_C5_LONGITUDINAL_ZERO_MODE; C5_RESOLVED_MAXWELL_BY_TUNING (BY_TUNING, not WITH_PROVENANCE).")
@@ -762,10 +825,31 @@ def print_carried_tokens_and_drift() -> None:
     print("  THETA_BRANCH_DEAD_NOT_ADMITTED: theta,J,rho_B0,K_theta/kappa_phase,chi_c,B are not live knobs of this stage.")
     print("  DEFERRED: Gate-L delta w=u_w translation-Goldstone hazard; J_chi!=0; f_throat/f_mix; dynamics adjunct.")
     print("  POSTULATED GLOBAL RETURNS: R_0=-M_0, R_1=-D_1 (not locally asserted).")
-    knobs = ("chi_B", "a_B", "kappa_B", "alpha_aniso", "Gamma_B", "gating structure")
-    expect_zero("COMPUTED DRIFT tally has six live chi_B inputs", len(knobs) - 6)
-    print(f"  DRIFT({len(knobs)}) computed {{{'; '.join(knobs)}}}.")
-    print("  rung_W:140 reconciliation: rung_W counts a two-constant generic well plus no Gamma_B; this stage uses one-constant [0,1] well plus live Gamma_B, same total 6.")
+    pre_d16 = PRE_D16_DRIFT_MEMBERS
+    retired = tuple(member for member in pre_d16 if member in RETIRED_D16_DRIFT_MEMBERS)
+    operative = tuple(member for member in pre_d16 if member not in RETIRED_D16_DRIFT_MEMBERS)
+    n = len(operative)
+    token = f"DRIFT({n})"
+    expect_zero("pre-Decision-16 drift enumeration computes six members", len(pre_d16) - 6)
+    expect_zero("Decision-16 retired drift complement is exactly {alpha_aniso}", 0 if set(retired) == set(RETIRED_D16_DRIFT_MEMBERS) else 1)
+    expect_zero("operative drift is the set partition pre_D16_DRIFT6 minus {alpha_aniso}", drift_partition_residual(pre_d16, operative, retired))
+    expect_zero("COMPUTED operative DRIFT tally has five live chi_B inputs", n - 5)
+    expect_zero("operative DRIFT token is built from computed n", 0 if token == EXPECTED_POST_D16_DRIFT_TOKEN else 1)
+    print("  pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5).")
+    print(f"  {token} computed {{{'; '.join(operative)}}}.")
+    print("  rung_W:140 pre-D16 reconciliation recorded six; Decision 16 removes only alpha_aniso, leaving the operative five-member chi_B package.")
+
+    reinjected = operative + ("alpha_aniso",)
+    expect_zero("Decision-16 drift reinjection fixture computes n=6", len(reinjected) - 6)
+    expect_fail(
+        "Decision-16 drift tooth: re-inject alpha_aniso trips operative DRIFT(5) partition",
+        drift_partition_residual(pre_d16, reinjected, retired),
+    )
+    expect_fail(
+        "Decision-16 drift tooth: corrupt computed n before token assembly trips DRIFT(5) equality",
+        drift_partition_residual(pre_d16, operative, retired, verdict_n_delta=1),
+    )
+    expect_zero("Decision-16 baseline drift partition remains valid after copy mutations", drift_partition_residual(pre_d16, operative, retired))
 
 
 def print_verdict_labels() -> None:
@@ -775,9 +859,10 @@ def print_verdict_labels() -> None:
     print("  headline: ACTION_SPECIFIED_CLASSIFIED   (structure; POSTULATED microstructure, all terms labeled)")
     print("  recovery sub-verdict (EARNED rel. to the imposed chi_B split + declared W): RECOVERY_REDUCTION_VERIFIED   (target = frozen stage_243/244 S_leak, incl. the Gaussian one-mode anchor)")
     print("  carried no-go: FAIL_CAUCHY_STRAY_LONGITUDINAL (finite B_eff) / FAIL_C5_LONGITUDINAL_ZERO_MODE (B_eff=0); positive control C5_RESOLVED_MAXWELL_BY_TUNING flagged BY_TUNING NOT WITH_PROVENANCE; the only provenance sign-flip = Lifshitz (pathA_25 wall, killed)")
-    print("  drift: DRIFT(6) computed {chi_B; a_B; kappa_B; alpha_aniso; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift")
+    print("  drift: pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift")
     print("  consumed: ledger_stage004 {L,T,M}+U(rho) single-well; ledger_stage005 c_s0^2=5*K*rho0^4/m_GNLS; ledger_stage003 c_gamma^2=mu_R/rho_br, C_J=-J*rho_B0, B_eff=rho_B0^2/chi_c, second-class classification rule")
-    print("  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, POSTULATED_ANISOTROPY, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)")
+    print("  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, Decision-16-retired historical alpha_aniso, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)")
+    print("  P7 live reframe: chi_B is THE postulated wall OP, not currently |P_parallel|^2; FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ is high-risk/Part-VII-adjacent and requires a NEW T0 freeze (not foreclosed)")
     print("  honest scope: does NOT earn light; dynamics/energy ledger = labeled adjunct; wall-translation Goldstone + J_chi + f_throat/f_mix DEFERRED")
 
 

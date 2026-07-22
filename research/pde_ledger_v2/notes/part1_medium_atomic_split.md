@@ -14,7 +14,17 @@
 | **004** | **I-1** GNLS parent action + dimensional foundation | `pathA_19` | `RETAIN_L_T_M` | EARNED: [L][T][M] dictionary (17 algebraic checks), derived `c_s0`, `ξ_h=√2·ħ/(m·c_s0)`, pin null relation `a=ħ/(m·c_s0)`; POSTULATED: parent action, `m_GNLS=M`; **labeled non-derivation:** `m_defect` NOT emergent (`INFLOW_MASS_SOURCE_MISSING`) | SymPy logic already exists+passes in the shared harness `src/stage1_solver/dimensional_check.py` (`run_patha19_foundation`, `--patha19-foundation`); reshape **extracts** it to a standalone `_sympy_audit.py` + re-authors an independent `.wl` |
 | **005** | **I-2** EOS sound speed + light/sound ratio as a free knob | `pathA_20` (`pathA_20b` reference-only) | `C_GAMMA_RATIO_UNDERDETERMINED` | EARNED: `c_s²=5Kρ⁴/m` (rel. to EOS), `c=c_γ` wave-sector ceiling, three velocity scales; POSTULATED: EOS `P=Kρ⁵`; **CALIBRATED: `λγ=c_γ/c_s` unpinned (free), `λγ³` tail carried** | SymPy in harness (`run_patha20_velocity_constants`, `--patha20-velocity`); extract standalone `_sympy_audit.py` + independent `.wl`; optional able-to-fail teeth = pathA_20b forced-equality negative control |
 | **006** | **I-3** Two-phase material-state ontology (order field `χ_B`) | Item A: `notes/brane_bulk_handoff.md` + `docs/conceptual_foundation.md` | `ACTION_SPECIFIED_CLASSIFIED` (structure) | POSTULATED (labeled): one conserved medium, two phases, `χ_B∈[0,1]`, order-state balance (`Γ_B` drain/return), throat=phase-conversion, χ_B gates shear/light; EARNED: recovery reduction (χ_B=1,Γ_B=0 → old projected-leakage law); NO-GO: `θ`-as-Maxwell-`φ` = FATAL_FLAW (carried dead-end) | **fresh-authored** dual-engine audit (prose-sourced; no existing pair). Scope (user-approved): dimensional homogeneity + recovery reduction (assert-zero) + `θ`-as-`φ` no-go (able-to-fail) |
-| **007** | **I-4** Shear-surface G0 freeze — frozen medium action + drift ledger + DOF | `pathA_35` G0 | `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` | KEPT: GNLS + T0 polar-OP; POSTULATED/CALIBRATED: the "11" (4 constants {ρ_br, μ_R, λ_Pu, Ω_w} + 1 function g_ℓ + 6 structural postulates); EARNED: flat-brane linear DOF=8 (dual-engine, able-to-fail), dimensional firewall | reshape existing dual-engine pair (`pathA_35_G0_sympy.py` + `pathA_35_G0.wl`, ENGINE_AGREE). Carry the 2026-07-04 erratum: the "11" STANDS; irreducible cross-sector drift `{ρ_B0,χ_c,C_hu}` is a Part-VI (pathA_41) item |
+| **007** | **I-4** Shear-surface G0 freeze — frozen medium action + drift ledger + DOF | `pathA_35` G0 | `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` | KEPT: GNLS + T0 polar-OP; POSTULATED/CALIBRATED: the "11" (4 constants {ρ_br, μ_R, λ_Pu, Ω_w} + 1 function g_ℓ + 6 structural postulates); EARNED: flat-brane linear DOF=8 (dual-engine, able-to-fail), dimensional firewall | reshape existing dual-engine pair (`pathA_35_G0_sympy.py` + `pathA_35_G0.wl`, ENGINE_AGREE). Carry the 2026-07-04 erratum: the "11" STANDS; irreducible cross-sector drift `{ρ_B0,χ_c,C_hu}` is a Part-VI (pathA_41) item. ⚠ **Decision-16 operative** (see the amendment note below): the "11"→7 / DOF 8→4 (`λ_Pu` + T0-polar + postulates 3/4/5 retired); the "11"/DOF=8 stay as the immutable freeze-as-run record |
+
+> **⭐ Decision-16 amendment (2026-07-21 — LANDED).** The stage-006/007 numbers in the table above and the Progress log
+> below are the **historical freeze-as-run** record and STAND as an immutable hash-anchored tier
+> (`T0_SHEAR_FROZEN(d9520d3819c3)`, `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`, flat-brane DOF=8). Decision 16
+> (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`) retires the brane polar field `P` together with
+> `λ_Pu`, `α_aniso`, and the 3 `P`-machinery postulates (T0 P-reuse, massless spin-wave, parity-even P–u) → the
+> **operative post-D16** numbers are **stage007 DOF=4**, **operative drift `POST_D16_DRIFT(7)`** (11→7), and **stage006
+> operative `DRIFT(5)`** (6→5, drop `α_aniso`) — a definite **−5** route-less ACTION-input reduction. Amended audit
+> scripts pass (stage006 SymPy 121 / Mathematica 119; stage007 SymPy 142 / Mathematica 140). History is NOT rewritten;
+> the operative layer is the computed delta on top of the retained freeze record.
 
 ## Settled decisions (user, 2026-07-07)
 
@@ -62,7 +72,8 @@
   target; leg-C discriminators wired from algebra + `m_θ²` real in the `.py`; C4 ε-dispersion in-engine; genuineness
   fixes) → fresh-agent `REVERIFY_CLEAN` (6-run corruption matrix — the dual-corruption class now fails both engines).
   `ACTION_SPECIFIED_CLASSIFIED` + `RECOVERY_REDUCTION_VERIFIED` (frozen stage_243/244 target + Gaussian anchor) +
-  θ-as-φ no-go carried (`BY_TUNING` only; Lifshitz = pathA_25). DRIFT(6); register updated (R17–R20 incl. the NEW
+  θ-as-φ no-go carried (`BY_TUNING` only; Lifshitz = pathA_25). DRIFT(6) [⚠ Decision-16 operative: `DRIFT(5)`, `α_aniso`
+  retired — see the amendment note above]; register updated (R17–R20 incl. the NEW
   **slab-width caveat** `W_slab` FREE-UNREDUCED — kink admission ≠ slab stability, maps to the L/a self-selection
   item); two handoff dimensional defects pinned + erratum'd (`KINETIC_MASS_FACTOR_PINNED`,
   `HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`); conceptual_foundation §2 slab caveat + §7 route-(a)/(c) fork recorded.
@@ -71,7 +82,8 @@
   payload mirror killed (independent standalone engines; `.wl` = own fence-scanner/hash/dim/projector-rank routes);
   the "11" COMPUTED from the enumerated table (4 constants + 1 function + 6 structural postulates; verdict built
   from computed n; `{ρ_B0,χ_c,C_hu}` anti-absorption guard per the erratum); hash fidelity fence-parsed + teeth;
-  DOF=8 rank-computed; `μ_R`≠`μ_R⁽⁴⁾` firewall (R17 PENDING). Dual-engine SymPy 96 / Mathematica 94 PASS →
+  DOF=8 rank-computed [⚠ Decision-16 operative: drift 11→7, DOF 8→4, `λ_Pu` + T0-polar + postulates 3/4/5 retired — see
+  the amendment note above]; `μ_R`≠`μ_R⁽⁴⁾` firewall (R17 PENDING). Dual-engine SymPy 96 / Mathematica 94 PASS →
   tri-review CLEAN (`FIDELITY_CLEAN` + `ADVERSARIAL_CLEAN`, 26-run matrix) → nits remediated (X≡X pair deleted,
   table dims load-bearing + tooth, short-hash prefix, Route-A token); an interrupted remediation transiently left
   the `.wl` silently skipping the drift section at exit 0 (Wolfram arity mismatch = unevaluated call) — caught by

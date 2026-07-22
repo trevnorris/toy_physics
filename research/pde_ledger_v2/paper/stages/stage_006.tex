@@ -27,6 +27,10 @@ encoding of the same postulated \(F\), not derivation. Consuming stage: cites
 (\(c_\gamma^2=\mu_R/\rho_{br}\), \(C_J=-J\rho_{B0}\),
 \(B_{\rm eff}=\rho_{B0}^2/\chi_c\), the second-class\(\Rightarrow\)stray-DOF
 classification rule) with exact-value citation-integrity checks.
+\emph{Decision~16 (2026-07-21)} retires the sole \(P\)-dependent piece --- the
+\(\alpha_{\rm aniso}\) anisotropy --- from the live A1 surface and the drift
+(operative \texttt{DRIFT(5)}\(=\)pre-D16 \texttt{DRIFT(6)}\(\setminus\{\alpha_{\rm aniso}\}\));
+SymPy 121 / Mathematica 119 PASS post-amendment.
 
 \paragraph{The postulated action and balance.}
 \[
@@ -44,7 +48,8 @@ Key pins: kinetic term carries the constituent mass
 \(f_B=a_B\chi_B^2(1-\chi_B)^2\) with minima \(\{0,1\}\), \(n\)-independent
 (\texttt{SAME\_DENSITY\_DEGENERACY\_POSTULATED}) -- required because the cited
 \(U(\rho)=(K/4)\rho^5\) is \emph{single}-well; MacCullagh-form shear gate on the
-displacement curl; \(\chi_B\perp P\) (\texttt{POSTULATED\_ANISOTROPY} dims-only);
+displacement curl; \(\chi_B\) is \emph{the} postulated wall order parameter (the
+\(\alpha_{\rm aniso}\chi_B(P\cdot\hat w)^2\) anisotropy is \textbf{retired by Decision~16});
 \(\mathbf J_\chi=0\) default; global returns \(R_0=-M_0\), \(R_1=-D_1\) printed
 as postulates, not asserted locally; throat = phase-conversion ontology, not a
 solve. Every integrand term audited to \(ML^{-2}T^{-2}\); adjunct rows
@@ -105,8 +110,9 @@ derived in-engine gives \(\omega^2=(\mu_R/\varepsilon)k^2\);
 the no-go is the point.
 
 \paragraph{Drift and carried items (first-class, not repaired).}
-\texttt{DRIFT(6)} computed: \(\{\chi_B;\,a_B;\,\kappa_B;\,\alpha_{\rm aniso};\,
-\Gamma_B;\,\text{gating structure}\}\) (rung-W reconciliation printed;
+Operative \texttt{DRIFT(5)} computed \(=\)pre-D16 \texttt{DRIFT(6)}\(\setminus\{\alpha_{\rm aniso}\}\):
+\(\{\chi_B;\,a_B;\,\kappa_B;\,\Gamma_B;\,\text{gating structure}\}\) (\(\alpha_{\rm aniso}\)
+retired by Decision~16; rung-W reconciliation printed;
 \texttt{THETA\_BRANCH\_DEAD\_NOT\_ADMITTED}; \(\rho_{B0},\chi_c\) cross-referenced
 to the pathA\_41 Part-VI drift trio, not double-counted). Carried:
 \texttt{SECOND\_MEDIUM\_DRIFT} lineage, the slab width \(W_{\rm slab}\), Gate-L

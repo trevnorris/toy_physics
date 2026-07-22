@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: ledger_stage006_two_phase_chiB_ontology_sympy_audit.py
-# Date: 2026-07-07T21:11:16-06:00
-# Elapsed: 9s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ===================================================
 ledger_stage006_two_phase_chiB_ontology SymPy audit
@@ -19,7 +11,7 @@ Pinned postulated modeling choices P1-P13
   P4  POSTULATED: SAME_DENSITY_DEGENERACY_POSTULATED: f_B is n-independent and f_B(n,0)=f_B(n,1)=0.
   P5  POSTULATED: gradient/interface term (kappa_B/2)*|grad_4 chi_B|^2 with [kappa_B]=M T^-2.
   P6  POSTULATED: shear gate chi_B*f_shear with displacement u_d distinct from velocity u; brane mu_R projection is dim-consistent only here.
-  P7  POSTULATED: chi_B independent scalar OP, NOT |P_parallel|^2; POSTULATED_ANISOTROPY alpha_aniso*chi_B*(P.w_hat)^2 dims only.
+  P7  POSTULATED: chi_B is THE wall order parameter: a postulated independent scalar field, NOT currently built as |P_parallel|^2. Decision 16 retires alpha_aniso and the carried P field. FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ remains named high-risk/Part-VII-adjacent and requires a NEW T0 freeze; obsolete as a carried route, not foreclosed.
   P8  POSTULATED ADJUNCT: D_t chi_B=-M_chi*mu_chi+Gamma_B; HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED: P_order=int mu_chi*D_t chi_B d4X.
   P9  POSTULATED DEFAULT: J_chi=0 default; J_chi!=0 deferred with dim row only.
   P10  CONVENTION: recovery target is frozen old-ledger S_leak with j^w=n*u^w and unit-normalized W, [W]=L^-1.
@@ -50,17 +42,21 @@ PASS  CITED stage003 [chi_c]=M L^-5 T^2
 PASS  CITED stage003 [B]=M L^-1 T^-2
 PASS  CITED stage003 [c_gamma^2]=L^2 T^-2
 
-Leg A1 dimensional audit: POSTULATED action and adjunct rows
-------------------------------------------------------------
+Leg A1 dimensional audit: OPERATIVE post-Decision-16 action and adjunct rows
+----------------------------------------------------------------------------
 PASS  POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2 has 4D free-energy-density dim M L^-2 T^-2
 PASS  CITED I-1 U(n)=(K/4)*n^5 has 4D free-energy-density dim M L^-2 T^-2
 PASS  POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2 has 4D free-energy-density dim M L^-2 T^-2
 PASS  POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2 has 4D free-energy-density dim M L^-2 T^-2
 PASS  POSTULATED P6 chi_B*f_shear has 4D free-energy-density dim M L^-2 T^-2
-PASS  POSTULATED P7 alpha_aniso*chi_B*(P.w_hat)^2 has 4D free-energy-density dim M L^-2 T^-2
 PASS  DEFERRED_PLACEHOLDER f_throat has 4D free-energy-density dim M L^-2 T^-2
 PASS  DEFERRED_PLACEHOLDER f_mix has 4D free-energy-density dim M L^-2 T^-2
-PASS  POSTULATED F integrand homogeneity
+PASS  POSTULATED operative F integrand homogeneity
+PASS  Decision-16 operative A1 surface excludes retired symbol alpha_aniso
+  RETIRED-HISTORICAL (not in operative A1): alpha_aniso*chi_B*(P.w_hat)^2 had [alpha_aniso]=M L^-2 T^-2; retired with P by Decision 16, not by a dimensional defect.
+PASS  RETIRED-HISTORICAL P7 alpha_aniso*chi_B*(P.w_hat)^2 was dimensionally homogeneous
+PASS  Decision-16 A1 tooth: re-inject alpha_aniso term trips operative retired-symbol absence produced required FAIL (residual = 1)
+PASS  Decision-16 baseline operative A1 surface remains alpha_aniso-free after copy mutation
 PASS  POSTULATED balance row [partial_t(chi_B*n)]=L^-4 T^-1
 PASS  POSTULATED balance row [div_4(chi_B*n*u)]=L^-4 T^-1
 PASS  POSTULATED balance row [div_4 J_chi]=L^-4 T^-1
@@ -171,21 +167,31 @@ Carried tokens, deferred items, and computed drift
   THETA_BRANCH_DEAD_NOT_ADMITTED: theta,J,rho_B0,K_theta/kappa_phase,chi_c,B are not live knobs of this stage.
   DEFERRED: Gate-L delta w=u_w translation-Goldstone hazard; J_chi!=0; f_throat/f_mix; dynamics adjunct.
   POSTULATED GLOBAL RETURNS: R_0=-M_0, R_1=-D_1 (not locally asserted).
-PASS  COMPUTED DRIFT tally has six live chi_B inputs
-  DRIFT(6) computed {chi_B; a_B; kappa_B; alpha_aniso; Gamma_B; gating structure}.
-  rung_W:140 reconciliation: rung_W counts a two-constant generic well plus no Gamma_B; this stage uses one-constant [0,1] well plus live Gamma_B, same total 6.
+PASS  pre-Decision-16 drift enumeration computes six members
+PASS  Decision-16 retired drift complement is exactly {alpha_aniso}
+PASS  operative drift is the set partition pre_D16_DRIFT6 minus {alpha_aniso}
+PASS  COMPUTED operative DRIFT tally has five live chi_B inputs
+PASS  operative DRIFT token is built from computed n
+  pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5).
+  DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}.
+  rung_W:140 pre-D16 reconciliation recorded six; Decision 16 removes only alpha_aniso, leaving the operative five-member chi_B package.
+PASS  Decision-16 drift reinjection fixture computes n=6
+PASS  Decision-16 drift tooth: re-inject alpha_aniso trips operative DRIFT(5) partition produced required FAIL (residual = 4)
+PASS  Decision-16 drift tooth: corrupt computed n before token assembly trips DRIFT(5) equality produced required FAIL (residual = 1)
+PASS  Decision-16 baseline drift partition remains valid after copy mutations
 
 Verdict labels:
   ledger earned-label (NOT a source verdict token): CHI_B_ACTION_CLASSIFIED_RECOVERY_VERIFIED  (postulated two-phase chi_B action dimensionally classified; wall admitted; recovery reduction to the frozen S_leak assert-zero; theta-as-phi no-go carried)
   headline: ACTION_SPECIFIED_CLASSIFIED   (structure; POSTULATED microstructure, all terms labeled)
   recovery sub-verdict (EARNED rel. to the imposed chi_B split + declared W): RECOVERY_REDUCTION_VERIFIED   (target = frozen stage_243/244 S_leak, incl. the Gaussian one-mode anchor)
   carried no-go: FAIL_CAUCHY_STRAY_LONGITUDINAL (finite B_eff) / FAIL_C5_LONGITUDINAL_ZERO_MODE (B_eff=0); positive control C5_RESOLVED_MAXWELL_BY_TUNING flagged BY_TUNING NOT WITH_PROVENANCE; the only provenance sign-flip = Lifshitz (pathA_25 wall, killed)
-  drift: DRIFT(6) computed {chi_B; a_B; kappa_B; alpha_aniso; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift
+  drift: pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift
   consumed: ledger_stage004 {L,T,M}+U(rho) single-well; ledger_stage005 c_s0^2=5*K*rho0^4/m_GNLS; ledger_stage003 c_gamma^2=mu_R/rho_br, C_J=-J*rho_B0, B_eff=rho_B0^2/chi_c, second-class classification rule
-  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, POSTULATED_ANISOTROPY, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)
+  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, Decision-16-retired historical alpha_aniso, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)
+  P7 live reframe: chi_B is THE postulated wall OP, not currently |P_parallel|^2; FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ is high-risk/Part-VII-adjacent and requires a NEW T0 freeze (not foreclosed)
   honest scope: does NOT earn light; dynamics/energy ledger = labeled adjunct; wall-translation Goldstone + J_chi + f_throat/f_mix DEFERRED
 
-PASS tally: 110; FAIL tally: 0
+PASS tally: 121; FAIL tally: 0
 OVERALL PASS: SymPy classified ledger_stage006 chi_B ontology and recovery/no-go checks exactly
 
 EXIT_CODE: 0

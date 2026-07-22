@@ -50,13 +50,19 @@ the earned transverse `PASS_TRANSVERSE_UNDISTURBED`. The derivation below is
 inlined so a reader never needs to open that report.
 
 Frozen input (provenance string, not a runtime dependency):
-`T0_SHEAR_FROZEN(d9520d3819c3)` -- the pathA_35 G0 shear-surface freeze. From it
+`T0_SHEAR_FROZEN(d9520d3819c3)` -- the pathA_35 G0 shear-surface freeze (the
+historical freeze-as-run hash `d9520d3819c3`, retained immutable; the operative
+post-Decision-16 subset drops the brane polar field `P` and its `λ_Pu`/T0-polar
+terms, leaving exactly the MacCullagh shear sector this stage consumes). From it
 this stage re-postulates: brane inertia `1/2 rho_br (d_t u)^2`, the MacCullagh
 curl-only potential `1/2 mu_R (curl u)^2`, the frozen `c_gamma^2 = mu_R/rho_br`,
 the split of `u` about the in-plane wavevector `k` into two transverse
-polarizations and one longitudinal, and the gapped `u_w` / slaved-rigid `P`
-sectors. These are inputs here, re-postulated in the primitive Lagrangian, not
-imported numerically.
+polarizations and one longitudinal, and the gapped `u_w` sector. (The
+"slaved-rigid `P`" sector is **RETIRED by Decision 16** --
+`software/stage1_solver/decisions/16_retire_brane_polar_field.md` retires the
+brane polar field `P`; the executable derivation here is UNCHANGED and never used
+`P` -- `physical_dof = 2` follows from `L_Mac` alone.) These are inputs here,
+re-postulated in the primitive Lagrangian, not imported numerically.
 
 Fidelity note (why this is the FAIL-headline pilot): in the source engines the
 decisive Josephson cross-term sign `C_J = -J rho_B0` was ASSERTED as a hardcoded

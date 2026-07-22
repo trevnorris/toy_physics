@@ -11,6 +11,7 @@ ClearAll[
   expectNonzero, expectFail, dim, dimVec, dimString, dimAdd, dimNeg,
   dimSub, dimScale, dimPow, dimResidual, expectDim, homResidual,
   algebraicZero, boundaryJump, assembleProjectedTwoSource,
+  operativeA1AbsenceResidual, driftPartitionResidual,
   printPins, runConsumed, runLegADimensions, runLegAClosure, runLegAWall,
   runLegBProjection, runLegBRecovery, tokenFromDiscriminators, runLegC,
   runAblations, printCarriedAndDrift, printVerdictLabels, passCount, failCount
@@ -18,6 +19,10 @@ ClearAll[
 
 passCount = 0;
 failCount = 0;
+
+expectedPostD16DriftToken = "DRIFT(5)";
+preD16DriftMembers = {"chi_B", "a_B", "kappa_B", "alpha_aniso", "Gamma_B", "gating structure"};
+retiredD16DriftMembers = {"alpha_aniso"};
 
 heading[text_] := (
   Print[""];
@@ -117,6 +122,13 @@ homResidual[terms_Association] := Module[{vals, ref},
   FullSimplify[Total[dimResidual[#, ref] & /@ Rest[vals]]]
 ];
 
+operativeA1AbsenceResidual[terms_Association] := If[
+  MemberQ[Flatten[Lookup[Values[terms], "Symbols", {}]], "alpha_aniso"] ||
+    AnyTrue[Keys[terms], StringContainsQ[#, "alpha_aniso"] &],
+  1,
+  0
+];
+
 algebraicZero[expr_, assumptions_: True] := TrueQ[FullSimplify[expr == 0, assumptions]];
 
 boundaryJump[expr_, var_, assumptions_: True] := FullSimplify[
@@ -157,7 +169,7 @@ printPins[] := (
   Print["  P4  POSTULATED: SAME_DENSITY_DEGENERACY_POSTULATED: f_B is n-independent and f_B(n,0)=f_B(n,1)=0."];
   Print["  P5  POSTULATED: gradient/interface term (kappa_B/2)*|grad_4 chi_B|^2 with [kappa_B]=M T^-2."];
   Print["  P6  POSTULATED: shear gate chi_B*f_shear with displacement u_d distinct from velocity u; brane mu_R projection is dim-consistent only here."];
-  Print["  P7  POSTULATED: chi_B independent scalar OP, NOT |P_parallel|^2; POSTULATED_ANISOTROPY alpha_aniso*chi_B*(P.w_hat)^2 dims only."];
+  Print["  P7  POSTULATED: chi_B is THE wall order parameter: a postulated independent scalar field, NOT currently built as |P_parallel|^2. Decision 16 retires alpha_aniso and the carried P field. FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ remains named high-risk/Part-VII-adjacent and requires a NEW T0 freeze; obsolete as a carried route, not foreclosed."];
   Print["  P8  POSTULATED ADJUNCT: D_t chi_B=-M_chi*mu_chi+Gamma_B; HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED: P_order=int mu_chi*D_t chi_B d4X."];
   Print["  P9  POSTULATED DEFAULT: J_chi=0 default; J_chi!=0 deferred with dim row only."];
   Print["  P10 CONVENTION: recovery target is frozen old-ledger S_leak with j^w=n*u^w and unit-normalized W, [W]=L^-1."];
@@ -208,34 +220,44 @@ runConsumed[] := Module[
 
 runLegADimensions[] := Module[
   {
-    chi, nDim, grad4, kappaB, aB, muR4, alphaAniso, fThroat, fMix,
-    pDirection, terms, pdeTerms, muChi, MChi, POrder, MN, numberMu, W,
-    rhoBProjected, SLeak, muRProjected
+    chi, nDim, grad4, kappaB, aB, muR4, fThroat, fMix,
+    terms, reinjectedTerms, pdeTerms, muChi, MChi, POrder, MN, numberMu,
+    W, rhoBProjected, SLeak, muRProjected
   },
-  subheading["Leg A1 dimensional audit: POSTULATED action and adjunct rows"];
+  subheading["Leg A1 dimensional audit: OPERATIVE post-Decision-16 action and adjunct rows"];
   chi = zeroD;
   nDim = rho4D;
   grad4 = dimScale[-1, ell];
   kappaB = dimSub[massD, dimScale[2, timeD]];
   aB = fDensity4D;
   muR4 = fDensity4D;
-  alphaAniso = fDensity4D;
   fThroat = fDensity4D;
   fMix = fDensity4D;
-  pDirection = zeroD;
 
   terms = <|
-    "POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2" -> dimAdd[mGnlsD, nDim, dimScale[2, velocityD]],
-    "CITED I-1 U(n)=(K/4)*n^5" -> dimAdd[kEosD, dimScale[5, nDim]],
-    "POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2" -> aB,
-    "POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2" -> dimAdd[kappaB, dimScale[2, dimAdd[grad4, chi]]],
-    "POSTULATED P6 chi_B*f_shear" -> dimAdd[chi, muR4, dimScale[2, dimAdd[grad4, ell]]],
-    "POSTULATED P7 alpha_aniso*chi_B*(P.w_hat)^2" -> dimAdd[alphaAniso, chi, dimScale[2, pDirection]],
-    "DEFERRED_PLACEHOLDER f_throat" -> fThroat,
-    "DEFERRED_PLACEHOLDER f_mix" -> fMix
+    "POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2" -> <|"Dim" -> dimAdd[mGnlsD, nDim, dimScale[2, velocityD]], "Symbols" -> {"m_GNLS", "n", "u"}|>,
+    "CITED I-1 U(n)=(K/4)*n^5" -> <|"Dim" -> dimAdd[kEosD, dimScale[5, nDim]], "Symbols" -> {"K", "n"}|>,
+    "POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2" -> <|"Dim" -> aB, "Symbols" -> {"a_B", "chi_B"}|>,
+    "POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2" -> <|"Dim" -> dimAdd[kappaB, dimScale[2, dimAdd[grad4, chi]]], "Symbols" -> {"kappa_B", "chi_B"}|>,
+    "POSTULATED P6 chi_B*f_shear" -> <|"Dim" -> dimAdd[chi, muR4, dimScale[2, dimAdd[grad4, ell]]], "Symbols" -> {"chi_B", "mu_R^(4)", "u"}|>,
+    "DEFERRED_PLACEHOLDER f_throat" -> <|"Dim" -> fThroat, "Symbols" -> {"f_throat"}|>,
+    "DEFERRED_PLACEHOLDER f_mix" -> <|"Dim" -> fMix, "Symbols" -> {"f_mix"}|>
   |>;
-  KeyValueMap[Function[{name, d}, expectDim[name <> " has 4D free-energy-density dim M L^-2 T^-2", d, fDensity4D]], terms];
-  expectZero["POSTULATED F integrand homogeneity", homResidual[terms]];
+  KeyValueMap[Function[{name, term}, expectDim[name <> " has 4D free-energy-density dim M L^-2 T^-2", term["Dim"], fDensity4D]], terms];
+  expectZero[
+    "POSTULATED operative F integrand homogeneity",
+    homResidual[AssociationThread[Keys[terms], Lookup[Values[terms], "Dim"]]]
+  ];
+  expectZero["Decision-16 operative A1 surface excludes retired symbol alpha_aniso", operativeA1AbsenceResidual[terms]];
+
+  Print["  RETIRED-HISTORICAL (not in operative A1): alpha_aniso*chi_B*(P.w_hat)^2 had [alpha_aniso]=M L^-2 T^-2; retired with P by Decision 16, not by a dimensional defect."];
+  expectDim["RETIRED-HISTORICAL P7 alpha_aniso*chi_B*(P.w_hat)^2 was dimensionally homogeneous", fDensity4D, fDensity4D];
+  reinjectedTerms = Append[
+    terms,
+    "REINJECTED alpha_aniso*chi_B*(P.w_hat)^2" -> <|"Dim" -> fDensity4D, "Symbols" -> {"alpha_aniso", "chi_B", "P", "w_hat"}|>
+  ];
+  expectFail["Decision-16 A1 tooth: re-inject alpha_aniso term trips operative retired-symbol absence", operativeA1AbsenceResidual[reinjectedTerms]];
+  expectZero["Decision-16 baseline operative A1 surface remains alpha_aniso-free after copy mutation", operativeA1AbsenceResidual[terms]];
 
   pdeTerms = <|
     "partial_t(chi_B*n)" -> dimSub[dimAdd[chi, nDim], timeD],
@@ -567,7 +589,27 @@ runAblations[consumed_Association] := (
   expectZero["baseline consumed c_s0^2 still live after ablations", consumed["CS0Sq"] - 5 kEOSsym rho0sym^4/mGNLSsym]
 );
 
-printCarriedAndDrift[] := Module[{knobs},
+driftPartitionResidual[pre_, operative_, retired_, verdictNDelta_: 0] := Module[
+  {preSet, operativeSet, retiredSet, residual, n, token},
+  preSet = Union[pre];
+  operativeSet = Union[operative];
+  retiredSet = Union[retired];
+  residual = 0;
+  residual += If[DuplicateFreeQ[pre], 0, 1];
+  residual += If[DuplicateFreeQ[operative], 0, 1];
+  residual += If[DuplicateFreeQ[retired], 0, 1];
+  residual += If[retiredSet === Union[retiredD16DriftMembers], 0, 1];
+  residual += If[Intersection[operativeSet, retiredSet] === {}, 0, 1];
+  residual += If[Union[operativeSet, retiredSet] === preSet, 0, 1];
+  residual += If[operativeSet === Complement[preSet, retiredD16DriftMembers], 0, 1];
+  n = Length[operative];
+  residual += (n - (Length[pre] - Length[retiredD16DriftMembers]))^2;
+  token = "DRIFT(" <> ToString[n + verdictNDelta] <> ")";
+  residual += If[token === expectedPostD16DriftToken, 0, 1];
+  FullSimplify[residual]
+];
+
+printCarriedAndDrift[] := Module[{preD16, retired, operative, n, token, reinjected},
   subheading["Carried tokens, deferred items, and computed drift"];
   Print["  carried no-go tokens verbatim: FAIL_CAUCHY_STRAY_LONGITUDINAL; FAIL_C5_LONGITUDINAL_ZERO_MODE; C5_RESOLVED_MAXWELL_BY_TUNING (BY_TUNING, not WITH_PROVENANCE)."];
   Print["  pathA_25 lineage carried: FAIL_LIGHT_STARVED finite-k wall/smectic sign-flip route."];
@@ -575,10 +617,25 @@ printCarriedAndDrift[] := Module[{knobs},
   Print["  THETA_BRANCH_DEAD_NOT_ADMITTED: theta,J,rho_B0,K_theta/kappa_phase,chi_c,B are not live knobs of this stage."];
   Print["  DEFERRED: Gate-L delta w=u_w translation-Goldstone hazard; J_chi!=0; f_throat/f_mix; dynamics adjunct."];
   Print["  POSTULATED GLOBAL RETURNS: R_0=-M_0, R_1=-D_1 (not locally asserted)."];
-  knobs = {"chi_B", "a_B", "kappa_B", "alpha_aniso", "Gamma_B", "gating structure"};
-  expectZero["COMPUTED DRIFT tally has six live chi_B inputs", Length[knobs] - 6];
-  Print["  DRIFT(", Length[knobs], ") computed {", StringRiffle[knobs, "; "], "}."];
-  Print["  rung_W:140 reconciliation: rung_W counts a two-constant generic well plus no Gamma_B; this stage uses one-constant [0,1] well plus live Gamma_B, same total 6."]
+  preD16 = preD16DriftMembers;
+  retired = Select[preD16, MemberQ[retiredD16DriftMembers, #] &];
+  operative = Select[preD16, ! MemberQ[retiredD16DriftMembers, #] &];
+  n = Length[operative];
+  token = "DRIFT(" <> ToString[n] <> ")";
+  expectZero["pre-Decision-16 drift enumeration computes six members", Length[preD16] - 6];
+  expectZero["Decision-16 retired drift complement is exactly {alpha_aniso}", If[Union[retired] === Union[retiredD16DriftMembers], 0, 1]];
+  expectZero["operative drift is the set partition pre_D16_DRIFT6 minus {alpha_aniso}", driftPartitionResidual[preD16, operative, retired]];
+  expectZero["COMPUTED operative DRIFT tally has five live chi_B inputs", n - 5];
+  expectZero["operative DRIFT token is built from computed n", If[token === expectedPostD16DriftToken, 0, 1]];
+  Print["  pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5)."];
+  Print["  ", token, " computed {", StringRiffle[operative, "; "], "}."];
+  Print["  rung_W:140 pre-D16 reconciliation recorded six; Decision 16 removes only alpha_aniso, leaving the operative five-member chi_B package."];
+
+  reinjected = Append[operative, "alpha_aniso"];
+  expectZero["Decision-16 drift reinjection fixture computes n=6", Length[reinjected] - 6];
+  expectFail["Decision-16 drift tooth: re-inject alpha_aniso trips operative DRIFT(5) partition", driftPartitionResidual[preD16, reinjected, retired]];
+  expectFail["Decision-16 drift tooth: corrupt computed n before token assembly trips DRIFT(5) equality", driftPartitionResidual[preD16, operative, retired, 1]];
+  expectZero["Decision-16 baseline drift partition remains valid after copy mutations", driftPartitionResidual[preD16, operative, retired]]
 ];
 
 printVerdictLabels[] := (
@@ -588,9 +645,10 @@ printVerdictLabels[] := (
   Print["  headline: ACTION_SPECIFIED_CLASSIFIED   (structure; POSTULATED microstructure, all terms labeled)"];
   Print["  recovery sub-verdict (EARNED rel. to the imposed chi_B split + declared W): RECOVERY_REDUCTION_VERIFIED   (target = frozen stage_243/244 S_leak, incl. the Gaussian one-mode anchor)"];
   Print["  carried no-go: FAIL_CAUCHY_STRAY_LONGITUDINAL (finite B_eff) / FAIL_C5_LONGITUDINAL_ZERO_MODE (B_eff=0); positive control C5_RESOLVED_MAXWELL_BY_TUNING flagged BY_TUNING NOT WITH_PROVENANCE; the only provenance sign-flip = Lifshitz (pathA_25 wall, killed)"];
-  Print["  drift: DRIFT(6) computed {chi_B; a_B; kappa_B; alpha_aniso; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift"];
+  Print["  drift: pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift"];
   Print["  consumed: ledger_stage004 {L,T,M}+U(rho) single-well; ledger_stage005 c_s0^2=5*K*rho0^4/m_GNLS; ledger_stage003 c_gamma^2=mu_R/rho_br, C_J=-J*rho_B0, B_eff=rho_B0^2/chi_c, second-class classification rule"];
-  Print["  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, POSTULATED_ANISOTROPY, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)"];
+  Print["  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, Decision-16-retired historical alpha_aniso, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)"];
+  Print["  P7 live reframe: chi_B is THE postulated wall OP, not currently |P_parallel|^2; FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ is high-risk/Part-VII-adjacent and requires a NEW T0 freeze (not foreclosed)"];
   Print["  honest scope: does NOT earn light; dynamics/energy ledger = labeled adjunct; wall-translation Goldstone + J_chi + f_throat/f_mix DEFERRED"]
 );
 

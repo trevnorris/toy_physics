@@ -185,7 +185,10 @@ folded from `docs/conceptual_foundation.md` so the ledger stands alone (goal 2).
   `pathA_20b/21/21b/22a/22b` are reference-only. `pathA_23` (EM-native), `pathA_24` (little-arrows), `pathA_25`
   density-smectic route-closure (incl. its `G0_DIMCHECK_PASS` — the LIVE order-field freeze is `pathA_35`'s
   `T0_SHEAR_FROZEN`, **not** `pathA_25`), `pathA_26` (drain Derrick), `pathA_37` (retired flow-gate) all stay as
-  **history** (`docs/conceptual_history.md`), not stages.
+  **history** (`docs/conceptual_history.md`), not stages. ⚠ **`pathA_24` (little-arrows) = the brane polar field `P`,
+  now formally RETIRED by Decision 16** (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`, landed
+  2026-07-21) — `P`, `λ_Pu` (+ postulates 3/4/5) drop from the stage007 G0 frozen action, and `α_aniso` from the stage006 `χ_B` action; the `χ_B=|P_∥|²` route is a named high-risk future gate,
+  obsolete-as-carried (§8).
 
 ---
 
@@ -301,9 +304,12 @@ Then batch Part-by-Part; per-batch user gate (sequential audit chunks, [[feedbac
   postulated piece labeled); the prize above it is **route (c)** — χ_B as the medium's own orientational order
   (`χ_B=|P_∥|²`), whose physical picture (per-constituent orientable micro-configuration; brane = aligned phase,
   bulk = demagnetized-ferromagnet disorder, throat = the aligner/de-aligner) is banked in
-  `docs/conceptual_foundation.md` §7 #12. **User steer: hammer at this identification later in the ledger** —
-  scope it as Part-VII-adjacent work (full new-derivation gauntlet; high-risk, neighbors falsified; a no-go is a
-  first-class result).
+  `docs/conceptual_foundation.md` §7 #12. ⚠ **Decision-16 status (2026-07-21):** the brane polar field `P` is retired
+  from the frozen action (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`), so `χ_B=|P_∥|²` is now
+  **OBSOLETE as a currently-carried route** — it may re-enter ONLY through a NEW T0-level freeze with its own gauntlet
+  (it is obsolete-as-carried, NOT foreclosed). **User steer preserved: hammer at this identification later in the
+  ledger** — it stays a NAMED high-risk Part-VII-adjacent future gate (full new-derivation gauntlet; high-risk,
+  neighbors falsified; a no-go is a first-class result).
 - **χ_Q reconciliation** (Part VII): `pathA_22b ≈0.712` (older minimal-combination context) vs `pathA_33 =1`
   (outgoing-DtN Hankel context) — same name, different computations. Reconcile explicitly; do **not** silently merge.
 - **The registers** (Part VII, completeness standard #4): every sim-dependent quantity

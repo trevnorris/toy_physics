@@ -2,8 +2,8 @@
 
    Standalone, print-only, no arguments, no exports.  This route uses a native
    byte scanner over BinaryReadList data, exponent associations in {L,T,M},
-   a projector/rank DOF construction, and native Count/Association tallies for
-   the drift enumeration.
+   native Association set partitions, projector/NullSpace rank constructions,
+   and Count/GroupBy tallies for the historical and operative enumerations.
 *)
 
 ClearAll[
@@ -11,10 +11,12 @@ ClearAll[
   expectNonzero, expectFail, dim, dimVector, dimFromVector, dimAdd, dimMul,
   dimSub, dimDiv, dimPow, dimResidual, expectDim, dimString, homResidual,
   readReportBytes, extractFenceBytes, hashBytes, hashResidual, byteContainsQ,
-  missingFenceResidual, runFreezeFidelity, runDimensionalFirewall,
-  checkSameDims, computeFlatBraneDof, runFlatBraneDof, structuralPostulates,
-  driftTable, categoryCounts, driftExpectedN, setResidual, driftResidual,
-  driftDimResidual,
+  missingFenceResidual, runFreezeFidelity, historicalActionSummands,
+  actionPartitionResidual, runPostD16ActionPartition, runDimensionalFirewall,
+  checkSameDims, computeFlatBraneDof, runFlatBraneDof, computePostD16Dof,
+  runPostD16Dof, structuralPostulates, driftTable, categoryCounts,
+  driftExpectedN, setResidual, historicalDriftResidual,
+  postD16DriftResidual, driftDimResidual,
   runComputedDriftLedger, distinctnessFailureResidual, runMuRFirewall,
   printStructuralPostulates, printProvenanceBlocks, printVerdictLabels,
   passCount, failCount
@@ -141,6 +143,11 @@ expectedG0Hash = "d9520d3819c3f718290f9d0be57138c07d5bf02d2237106478e17b6a1e389a
 expectedG0Short = "d9520d3819c3";
 expectedDriftToken = "SECOND_MEDIUM_DRIFT_AT_FREEZE(11)";
 expectedFreezeToken = "T0_SHEAR_FROZEN(" <> expectedG0Short <> ")";
+expectedPostD16ActionToken = "POST_D16_ACTION{S_GNLS,gL_Mac,gL_uw}_OF(" <> expectedG0Short <> ")";
+expectedPostD16DriftToken = "POST_D16_DRIFT(7)";
+historicalActionNames = {"S_GNLS", "L_pol", "gL_Mac", "gL_Pu", "gL_uw"};
+retiredActionNames = {"L_pol", "gL_Pu"};
+postD16ActionNames = {"S_GNLS", "gL_Mac", "gL_uw"};
 driftDimTargets = <|
   "rho_br" -> "rho_br",
   "mu_R" -> "mu_R",
@@ -195,7 +202,7 @@ missingFenceResidual[] := Module[{result},
 ];
 
 runFreezeFidelity[] := Module[{t0, g0, corrupted},
-  subheading["Freeze-fidelity byte audit"];
+  subheading["HISTORICAL freeze (pre-Decision-16, freeze-as-run): fidelity byte audit"];
   t0 = extractFenceBytes[t0Report, "freeze-action"];
   g0 = extractFenceBytes[g0Report, "freeze-action"];
   Print["  T0 report: ", t0["Path"]];
@@ -220,6 +227,61 @@ runFreezeFidelity[] := Module[{t0, g0, corrupted},
   {t0, g0}
 ];
 
+historicalActionSummands[] := <|
+  "S_GNLS" -> HoldComplete[sGnlsExisting],
+  "L_pol" -> HoldComplete[
+    (1/2) mSym rhoSym aSym^2 dtPSq -
+    (1/2) mSym rhoSym csSq aSym^2 gradPSq -
+    (1/4) mSym rhoSym csSq radialPSq
+  ],
+  "gL_Mac" -> HoldComplete[gEll ((1/2) rhoBrSym dtUSq - (1/2) muRSym omegaUSq)],
+  "gL_Pu" -> HoldComplete[-gEll lambdaPuSym varpiDotOmegaU],
+  "gL_uw" -> HoldComplete[gEll ((1/2) rhoBrSym dtUwSq - (1/2) rhoBrSym omegaWSym^2 uwSq)]
+|>;
+
+actionPartitionResidual[historical_Association, operative_Association, retired_Association] := Module[
+  {historicalKeys, operativeKeys, retiredKeys, residual},
+  historicalKeys = Keys[historical];
+  operativeKeys = Keys[operative];
+  retiredKeys = Keys[retired];
+  residual = 0;
+  residual += If[historicalKeys === historicalActionNames, 0, 1];
+  residual += If[Sort[retiredKeys] === Sort[retiredActionNames], 0, 1];
+  residual += If[Intersection[operativeKeys, retiredKeys] === {}, 0, 1];
+  residual += If[Sort[Union[operativeKeys, retiredKeys]] === Sort[historicalKeys], 0, 1];
+  residual += If[Sort[operativeKeys] === Sort[Complement[historicalKeys, retiredActionNames]], 0, 1];
+  residual += If[Intersection[operativeKeys, retiredActionNames] === {}, 0, 1];
+  Do[residual += If[SameQ[operative[key], historical[key]], 0, 1], {key, Intersection[operativeKeys, historicalKeys]}];
+  Do[residual += If[SameQ[retired[key], historical[key]], 0, 1], {key, Intersection[retiredKeys, historicalKeys]}];
+  residual
+];
+
+runPostD16ActionPartition[] := Module[
+  {historical, retired, operative, token, altered, movedRetired, droppedSurvivor},
+  subheading["OPERATIVE post-Decision-16 action: native symbolic summand set partition"];
+  historical = historicalActionSummands[];
+  retired = KeyTake[historical, retiredActionNames];
+  operative = KeyDrop[historical, retiredActionNames];
+  expectZero["historical symbolic action summands match the five-summand frozen S_G0 grammar", If[Keys[historical] === historicalActionNames, 0, 1]];
+  expectZero["post-D16 operative and retired action sets form an exact disjoint partition", actionPartitionResidual[historical, operative, retired]];
+  expectZero["post-D16 operative action names are exactly the ordered survivor set", If[Keys[operative] === postD16ActionNames, 0, 1]];
+  token = "POST_D16_ACTION{" <> StringRiffle[Keys[operative], ","] <> "}_OF(" <> expectedG0Short <> ")";
+  expectZero["post-D16 action token is assembled from computed survivor names and historical hash", If[token === expectedPostD16ActionToken, 0, 1]];
+  Print["  historical summands = {", StringRiffle[Keys[historical], ","], "}"];
+  Print["  retired complement = {", StringRiffle[Keys[retired], ","], "}"];
+  Print["  operative token = ", token];
+  Print["  Route A is a symbolic action-summand partition over the immutable hash anchor; no byte-substring surgery is performed."];
+
+  altered = Join[operative, <|"gL_Mac" -> HoldComplete[gEll lMacHistorical + deltaSurvivorMutation]|>];
+  expectFail["action-partition tooth: alter survivor gL_Mac trips definition fidelity", actionPartitionResidual[historical, altered, retired]];
+  movedRetired = Join[operative, KeyTake[retired, {"L_pol"}]];
+  expectFail["action-partition tooth: move retired L_pol into operative set trips disjointness and absence", actionPartitionResidual[historical, movedRetired, retired]];
+  droppedSurvivor = KeyDrop[operative, {"gL_uw"}];
+  expectFail["action-partition tooth: drop survivor gL_uw trips union-equals-historical", actionPartitionResidual[historical, droppedSurvivor, retired]];
+  expectZero["baseline action partition remains valid after copy-mutation teeth", actionPartitionResidual[historical, operative, retired]];
+  operative
+];
+
 checkSameDims[name_, terms_Association, expected_] := (
   KeyValueMap[expectDim[name <> " part " <> #1, #2, expected] &, terms];
   expectZero[name <> " homogeneous", homResidual[terms]]
@@ -234,7 +296,7 @@ runDimensionalFirewall[] := Module[
     dDtu, dcurlu, duw, dDtuw, dvarpi, macKin, macCurl, puTerm,
     uwKin, uwGap, twa, slope, stressSlope, opRho, opMu, cGammaSq
   },
-  subheading["Dimensional firewall over the full frozen surface"];
+  subheading["Dimensional firewalls: OPERATIVE live surface + RETIRED-HISTORICAL P surface"];
   Z = dim[0, 0, 0]; L = dim[1, 0, 0]; T = dim[0, 1, 0]; M = dim[0, 0, 1];
   bulkLag = dimDiv[M, dimAdd[dimPow[L, 2], dimPow[T, 2]]];
   braneLag = dimDiv[M, dimAdd[L, dimPow[T, 2]]];
@@ -252,33 +314,35 @@ runDimensionalFirewall[] := Module[
   drhoBr = dimAdd[M, dimPow[L, -3]];
   dmuR = braneLag; dlambdaPu = braneLag; dOmegaW = domega;
 
+  Print["  OPERATIVE LIVE firewall: kept GNLS parent, L_Mac, L_uw, g_ell, projected traction, O_u, c_gamma^2, and omega_uw,bare^2."];
   dcs2 = dimDiv[dimAdd[dK, dimMul[4, drho]], dm];
-  expectDim["kept GNLS c_s^2(rho)=5 K rho^4/m", dcs2, dimDiv[dimPow[L, 2], dimPow[T, 2]]];
-  expectDim["kept GNLS U(rho)=(K/4)rho^5", dimAdd[dK, dimMul[5, drho]], bulkLag];
+  expectDim["OPERATIVE kept GNLS c_s^2(rho)=5 K rho^4/m", dcs2, dimDiv[dimPow[L, 2], dimPow[T, 2]]];
+  expectDim["OPERATIVE kept GNLS U(rho)=(K/4)rho^5", dimAdd[dK, dimMul[5, drho]], bulkLag];
   expectDim[
-    "kept GNLS quantum pressure (hbar^2/(8 m rho))(partial_i rho)^2",
+    "OPERATIVE kept GNLS quantum pressure (hbar^2/(8 m rho))(partial_i rho)^2",
     dimAdd[dimMul[2, dhbar], dimMul[-1, dm], dimMul[-1, drho], dimMul[2, dimAdd[dgrad, drho]]],
     bulkLag
   ];
-  expectDim["kept GNLS bulk kinetic stress scale m rho v_i v_j", dimAdd[dm, drho, dimMul[2, dv]], stress];
+  expectDim["OPERATIVE kept GNLS bulk kinetic stress scale m rho v_i v_j", dimAdd[dm, drho, dimMul[2, dv]], stress];
 
+  Print["  RETIRED-HISTORICAL firewall: L_pol and inherited P-sector coefficients remain dimensionally audited as freeze-as-run records."];
   dDtP = ddt;
   dgradP = dimAdd[dgrad, dP];
-  expectDim["kept T0 P^i dimensionless", dP, Z];
-  expectDim["kept T0 L_pol kinetic term", dimAdd[dm, drho, dimMul[2, da], dimMul[2, dDtP]], bulkLag];
-  expectDim["kept T0 L_pol Frank term", dimAdd[dm, drho, dcs2, dimMul[2, da], dimMul[2, dgradP]], bulkLag];
-  expectDim["kept T0 L_pol radial term", dimAdd[dm, drho, dcs2], bulkLag];
+  expectDim["RETIRED-HISTORICAL T0 P^i dimensionless", dP, Z];
+  expectDim["RETIRED-HISTORICAL T0 L_pol kinetic term", dimAdd[dm, drho, dimMul[2, da], dimMul[2, dDtP]], bulkLag];
+  expectDim["RETIRED-HISTORICAL T0 L_pol Frank term", dimAdd[dm, drho, dcs2, dimMul[2, da], dimMul[2, dgradP]], bulkLag];
+  expectDim["RETIRED-HISTORICAL T0 L_pol radial term", dimAdd[dm, drho, dcs2], bulkLag];
   expectZero[
-    "kept T0 L_pol all terms homogeneous",
+    "RETIRED-HISTORICAL T0 L_pol all terms homogeneous",
     homResidual[<|
       "P_kinetic" -> dimAdd[dm, drho, dimMul[2, da], dimMul[2, dDtP]],
       "P_Frank" -> dimAdd[dm, drho, dcs2, dimMul[2, da], dimMul[2, dgradP]],
       "P_radial" -> dimAdd[dm, drho, dcs2]
     |>]
   ];
-  expectDim["kept T0 couple-stress inertia m rho a^2", dimAdd[dm, drho, dimMul[2, da]], dimAdd[M, dimPow[L, -2]]];
-  expectDim["kept T0 couple-stress stiffness m rho c_s^2 a^2", dimAdd[dm, drho, dcs2, dimMul[2, da]], dimDiv[M, dimPow[T, 2]]];
-  expectDim["kept T0 bulk radial scale m rho c_s^2", dimAdd[dm, drho, dcs2], bulkLag];
+  expectDim["RETIRED-HISTORICAL T0 couple-stress inertia m rho a^2", dimAdd[dm, drho, dimMul[2, da]], dimAdd[M, dimPow[L, -2]]];
+  expectDim["RETIRED-HISTORICAL T0 couple-stress stiffness m rho c_s^2 a^2", dimAdd[dm, drho, dcs2, dimMul[2, da]], dimDiv[M, dimPow[T, 2]]];
+  expectDim["RETIRED-HISTORICAL T0 bulk radial scale m rho c_s^2", dimAdd[dm, drho, dcs2], bulkLag];
 
   expectDim["profile ratio w/ell_g is dimensionless", dimDiv[dw, dellG], Z];
   expectDim["profile g_ell(w)=exp(-(w/ell_g)^2)/(sqrt(pi) ell_g)", dg, dimPow[L, -1]];
@@ -297,7 +361,7 @@ runDimensionalFirewall[] := Module[
   expectDim["target [u_w]=L", duw, L];
   expectDim["target [rho_br]=M L^-3", drhoBr, dimAdd[M, dimPow[L, -3]]];
   expectDim["target [mu_R]=M L^-1 T^-2", dmuR, braneLag];
-  expectDim["target [lambda_Pu]=M L^-1 T^-2", dlambdaPu, braneLag];
+  expectDim["RETIRED-HISTORICAL target [lambda_Pu]=M L^-1 T^-2", dlambdaPu, braneLag];
   expectDim["target [Omega_w]=T^-1", dOmegaW, dimPow[T, -1]];
   expectDim["target [g_ell]=L^-1", dg, dimPow[L, -1]];
   expectDim["target [ell_g]=L", dellG, L];
@@ -308,7 +372,7 @@ runDimensionalFirewall[] := Module[
   expectDim["L_Mac MacCullagh curl mu_R Omega_u^a Omega_u^a", macCurl, braneLag];
   expectZero["L_Mac homogeneous", homResidual[<|"kinetic" -> macKin, "curl" -> macCurl|>]];
   puTerm = dimAdd[dlambdaPu, dvarpi, dcurlu];
-  expectDim["L_Pu parity-repaired lambda_Pu varpi_a Omega_u^a", puTerm, braneLag];
+  expectDim["RETIRED-HISTORICAL L_Pu parity-repaired lambda_Pu varpi_a Omega_u^a", puTerm, braneLag];
   uwKin = dimAdd[drhoBr, dimMul[2, dDtuw]];
   uwGap = dimAdd[drhoBr, dimMul[2, dOmegaW], dimMul[2, duw]];
   expectDim["L_uw kinetic rho_br (partial_t u_w)^2", uwKin, braneLag];
@@ -316,15 +380,15 @@ runDimensionalFirewall[] := Module[
   expectZero["L_uw homogeneous", homResidual[<|"kinetic" -> uwKin, "gap" -> uwGap|>]];
 
   KeyValueMap[
-    expectDim["brane bulk representation " <> #1, dimAdd[dg, #2], bulkLag] &,
+    expectDim["OPERATIVE brane bulk representation " <> #1, dimAdd[dg, #2], bulkLag] &,
     <|
       "g_ell L_Mac kinetic" -> macKin,
       "g_ell L_Mac curl" -> macCurl,
-      "g_ell L_Pu" -> puTerm,
       "g_ell L_uw kinetic" -> uwKin,
       "g_ell L_uw gap" -> uwGap
     |>
   ];
+  expectDim["RETIRED-HISTORICAL brane bulk representation g_ell L_Pu", dimAdd[dg, puTerm], bulkLag];
 
   expectDim["action measure int dt d^4X bulk_lag", dimAdd[ddtMeasure, dd4x, bulkLag], actionDim];
   expectDim["action measure int dt d^4X g_ell(w) L_brane", dimAdd[ddtMeasure, dd4x, dg, braneLag], actionDim];
@@ -342,23 +406,24 @@ runDimensionalFirewall[] := Module[
 
   opRho = dimAdd[drhoBr, dimMul[2, domega]];
   opMu = dimAdd[dmuR, dimMul[2, dk]];
-  expectDim["linearization O_u rho_br omega^2 term", opRho, eomUOp];
-  expectDim["linearization O_u mu_R k^2 term", opMu, eomUOp];
-  expectZero["linearization O_u homogeneous", homResidual[<|"rho_br omega^2" -> opRho, "mu_R k^2" -> opMu|>]];
+  expectDim["OPERATIVE linearization O_u rho_br omega^2 term", opRho, eomUOp];
+  expectDim["OPERATIVE linearization O_u mu_R k^2 term", opMu, eomUOp];
+  expectZero["OPERATIVE linearization O_u homogeneous", homResidual[<|"rho_br omega^2" -> opRho, "mu_R k^2" -> opMu|>]];
   cGammaSq = dimDiv[dmuR, drhoBr];
-  expectDim["target [c_gamma^2=mu_R/rho_br]=L^2 T^-2", cGammaSq, dimDiv[dimPow[L, 2], dimPow[T, 2]]];
-  expectDim["linearization omega_T^2=c_gamma^2 k^2", dimAdd[cGammaSq, dimMul[2, dk]], dimPow[T, -2]];
-  expectDim["linearization omega_P^2=c_s^2 k^2", dimAdd[dcs2, dimMul[2, dk]], dimPow[T, -2]];
-  expectDim["linearization P radial gap 2 c_s^2/a^2", dimSub[dcs2, dimMul[2, da]], dimPow[T, -2]];
+  expectDim["OPERATIVE target [c_gamma^2=mu_R/rho_br]=L^2 T^-2", cGammaSq, dimDiv[dimPow[L, 2], dimPow[T, 2]]];
+  expectDim["OPERATIVE linearization omega_T^2=c_gamma^2 k^2", dimAdd[cGammaSq, dimMul[2, dk]], dimPow[T, -2]];
+  expectDim["OPERATIVE linearization omega_uw,bare^2=Omega_w^2", dimMul[2, dOmegaW], dimPow[T, -2]];
+  Print["  RETIRED-HISTORICAL linearization block: omega_P^2 and omega_radial^2 are audited only as removed P-sector modes, never as live survivors."];
+  expectDim["RETIRED-HISTORICAL linearization omega_P^2=c_s^2 k^2", dimAdd[dcs2, dimMul[2, dk]], dimPow[T, -2]];
+  expectDim["RETIRED-HISTORICAL linearization P radial gap 2 c_s^2/a^2", dimSub[dcs2, dimMul[2, da]], dimPow[T, -2]];
   expectZero[
-    "linearization omega_radial^2 homogeneous",
+    "RETIRED-HISTORICAL linearization omega_radial^2 homogeneous",
     homResidual[<|"c_s^2 k^2" -> dimAdd[dcs2, dimMul[2, dk]], "2 c_s^2/a^2" -> dimSub[dcs2, dimMul[2, da]]|>]
   ];
-  expectDim["linearization omega_uw,bare^2=Omega_w^2", dimMul[2, dOmegaW], dimPow[T, -2]];
-  expectDim["linearization Fourier P-u monomial lambda_Pu P k u", dimAdd[dlambdaPu, dP, dk, du], braneLag];
+  expectDim["RETIRED-HISTORICAL linearization Fourier P-u monomial lambda_Pu P k u", dimAdd[dlambdaPu, dP, dk, du], braneLag];
 
-  Print["  parity record: direct P_parallel.Omega_u is parity-ODD and excluded."];
-  Print["  parity record: w_hat.(P_parallel x Omega_u) is parity-EVEN using the conceded normal and is frozen."];
+  Print["  retired-historical parity record: direct P_parallel.Omega_u was parity-ODD and excluded."];
+  Print["  retired-historical parity record: w_hat.(P_parallel x Omega_u) was parity-EVEN and frozen before Decision 16 retired the P-u block."];
 
   <|
     "P" -> dP,
@@ -445,8 +510,8 @@ computeFlatBraneDof[opts_Association] := Module[
   |>
 ];
 
-runFlatBraneDof[] := Module[{computed, reportedCounts, expected, mutations, name, mutated},
-  subheading["Flat-brane linear DOF rank computation"];
+runFlatBraneDof[] := Module[{computed, reportedCounts, expected, pMutated},
+  subheading["HISTORICAL freeze-as-run flat-brane DOF rank computation"];
   computed = computeFlatBraneDof[<||>];
   reportedCounts = computed["Counts"];
   expectZero["projector curl stiffness rank transverse to generic k_a is 2", computed["Bookkeeping"]["u_curl_rank"] - 2];
@@ -458,32 +523,109 @@ runFlatBraneDof[] := Module[{computed, reportedCounts, expected, mutations, name
   Print["  rank bookkeeping: ", ToString[InputForm[computed["Bookkeeping"]]]];
   Print["  computed G0.5 counts: ", ToString[InputForm[reportedCounts]], "; total=", computed["Total"]];
 
-  mutations = {
-    {"drop_u_w_gap_term", computeFlatBraneDof[<|"u_w_gap_present" -> False|>]},
-    {"drop_P_soft_spin_radial_term", computeFlatBraneDof[<|"p_radial_present" -> False|>]},
-    {"zero_u_longitudinal_component", computeFlatBraneDof[<|"remove_u_longitudinal" -> True|>]}
+  pMutated = computeFlatBraneDof[<|"p_radial_present" -> False|>];
+  expectZero["HISTORICAL DOF ablation drop_P_soft_spin_radial_term computes total 7", pMutated["Total"] - 7];
+  expectFail["HISTORICAL DOF ablation drop_P_soft_spin_radial_term changes computed total away from 8", pMutated["Total"] - computed["Total"]];
+  expectFail["historical-integrity tooth: freeze-as-run DOF cannot be falsified downward to operative 4", computed["Total"] - 4];
+  computed
+];
+
+computePostD16Dof[opts_Association] := Module[
+  {
+    removeLongitudinal, uWGapPresent, uWKineticPresent, phiPresent, pReinject,
+    kVec, k2, pLong, pTrans, uKinetic, curlForm, uKineticRank, uCurlRank,
+    uNullSpaceDimension, uCurlNullity, uWKineticRank, uWGapRank, phiRank,
+    pRank, counts
+  },
+  removeLongitudinal = Lookup[opts, "remove_u_longitudinal", False];
+  uWKineticPresent = Lookup[opts, "u_w_kinetic_present", True];
+  uWGapPresent = Lookup[opts, "u_w_gap_present", True];
+  phiPresent = Lookup[opts, "phi_present", False];
+  pReinject = Lookup[opts, "p_reinject_form", None];
+  kVec = {1, 2, 3};
+  k2 = kVec.kVec;
+  pLong = Outer[Times, kVec, kVec]/k2;
+  pTrans = IdentityMatrix[3] - pLong;
+  uKinetic = If[TrueQ[removeLongitudinal], pTrans, IdentityMatrix[3]];
+  curlForm = FullSimplify[uKinetic . (k2 pTrans) . uKinetic];
+  uKineticRank = MatrixRank[uKinetic];
+  uCurlRank = MatrixRank[curlForm];
+  uNullSpaceDimension = Length[NullSpace[curlForm]];
+  uCurlNullity = uKineticRank - uCurlRank;
+  If[uCurlNullity < 0, raise["operative u curl rank exceeds active kinetic rank"]];
+  uWKineticRank = MatrixRank[{{If[TrueQ[uWKineticPresent], 1, 0]}}];
+  uWGapRank = MatrixRank[{{If[TrueQ[uWGapPresent], 1, 0]}}];
+  phiRank = MatrixRank[{{If[TrueQ[phiPresent], 1, 0]}}];
+  pRank = If[pReinject === None, 0, MatrixRank[pReinject]];
+  counts = <|
+    "u_transverse" -> uCurlRank,
+    "u_longitudinal" -> uCurlNullity,
+    "u_w" -> Min[uWKineticRank, uWGapRank],
+    "phi" -> phiRank,
+    "reinjected_P" -> pRank
+  |>;
+  <|
+    "Counts" -> counts,
+    "Total" -> Total[Values[counts]],
+    "Bookkeeping" -> <|
+      "u_kinetic_rank" -> uKineticRank,
+      "u_curl_rank" -> uCurlRank,
+      "ambient_curl_nullspace_dimension" -> uNullSpaceDimension,
+      "u_curl_nullity_within_active_kinetic_space" -> uCurlNullity,
+      "u_w_kinetic_rank" -> uWKineticRank,
+      "u_w_gap_rank" -> uWGapRank,
+      "phi_rank" -> phiRank,
+      "reinjected_P_rank" -> pRank
+    |>
+  |>
+];
+
+runPostD16Dof[] := Module[
+  {computed, expected, operativeTarget, oneMode, fullBlock, survivorMutations},
+  subheading["OPERATIVE post-Decision-16 flat-brane DOF rank computation (P field removed)"];
+  computed = computePostD16Dof[<||>];
+  expected = <|"u_transverse" -> 2, "u_longitudinal" -> 1, "u_w" -> 1, "phi" -> 0, "reinjected_P" -> 0|>;
+  KeyValueMap[expectZero["post-D16 breakdown " <> #1 <> " reported->rank-computed", computed["Counts"][#1] - #2] &, expected];
+  operativeTarget = Total[Values[expected]];
+  expectZero["post-D16 operative DOF rank-computes to 4", computed["Total"] - operativeTarget];
+  expectZero["post-D16 computed target is the required operative DOF=4", operativeTarget - 4];
+  Print["  operative rank bookkeeping: ", ToString[InputForm[computed["Bookkeeping"]]]];
+  Print["  operative counts: ", ToString[InputForm[computed["Counts"]]], "; operative DOF=", computed["Total"]];
+  Print["  removed P block = historical tangent 3 + radial 1 = 4 DOF; historical 8 -> operative 4."];
+
+  oneMode = computePostD16Dof[<|"p_reinject_form" -> IdentityMatrix[1]|>];
+  expectZero["operative DOF tooth fixture: re-inject one retired P mode computes 5", oneMode["Total"] - 5];
+  expectFail["operative DOF tooth: one retired P mode changes operative total away from 4", oneMode["Total"] - computed["Total"]];
+  fullBlock = computePostD16Dof[<|"p_reinject_form" -> IdentityMatrix[4]|>];
+  expectZero["operative DOF tooth fixture: re-inject full retired P block computes 8", fullBlock["Total"] - 8];
+  expectFail["operative DOF tooth: full retired P block changes operative total away from 4", fullBlock["Total"] - computed["Total"]];
+
+  survivorMutations = {
+    {"drop_u_w_gap_term", computePostD16Dof[<|"u_w_gap_present" -> False|>]},
+    {"zero_u_longitudinal_component", computePostD16Dof[<|"remove_u_longitudinal" -> True|>]}
   };
   Do[
-    name = mutation[[1]];
-    mutated = mutation[[2]];
-    expectZero["DOF ablation " <> name <> " computes total 7", mutated["Total"] - 7];
-    expectFail["DOF ablation " <> name <> " changes computed total away from 8", mutated["Total"] - computed["Total"]],
-    {mutation, mutations}
+    expectZero["OPERATIVE DOF ablation " <> mutation[[1]] <> " computes total 3", mutation[[2]]["Total"] - 3];
+    expectFail["OPERATIVE DOF ablation " <> mutation[[1]] <> " changes computed total away from 4", mutation[[2]]["Total"] - computed["Total"]],
+    {mutation, survivorMutations}
   ];
+  expectZero["baseline operative DOF remains 4 after copy-mutation teeth", computed["Total"] - 4];
   computed
 ];
 
 structuralPostulates[] := {
-  "imposed `ŵ` axis + `w=0` surface (conceded-wall)",
-  "`uᵃ` same-medium surface collective, tangentially free-slip (`u̇ᵃ ≠ vᵃ`)",
-  "T0 `Pⁱ` reused as the Cosserat micro-rotation reservoir (0 new DOF)",
-  "baseline `Pⁱ` spin-wave status = `massless` (alternates `gapped`/`slaved-rigid` named-inactive)",
-  "the `ŵ`-dependent parity-EVEN P–u operator re-admits the ε-contracted/chiral class excluded by T0 and REQUIRES the conceded axis `ŵ` (a structural-postulate cost, not a free choice; the direct `P_∥·Ω_u` is parity-ODD, excluded)",
-  "no C5 `φ` analog / no longitudinal constraint"
+  <|"Key" -> "postulate_1", "Text" -> "imposed `ŵ` axis + `w=0` surface (conceded-wall)"|>,
+  <|"Key" -> "postulate_2", "Text" -> "`uᵃ` same-medium surface collective, tangentially free-slip (`u̇ᵃ ≠ vᵃ`)"|>,
+  <|"Key" -> "postulate_3", "Text" -> "T0 `Pⁱ` reused as the Cosserat micro-rotation reservoir (0 new DOF)"|>,
+  <|"Key" -> "postulate_4", "Text" -> "baseline `Pⁱ` spin-wave status = `massless` (alternates `gapped`/`slaved-rigid` named-inactive)"|>,
+  <|"Key" -> "postulate_5", "Text" -> "the `ŵ`-dependent parity-EVEN P–u operator re-admits the ε-contracted/chiral class excluded by T0 and REQUIRES the conceded axis `ŵ` (a structural-postulate cost, not a free choice; the direct `P_∥·Ω_u` is parity-ODD, excluded)"|>,
+  <|"Key" -> "postulate_6", "Text" -> "no C5 `φ` analog / no longitudinal constraint"|>
 };
 
-constantNames = {"rho_br", "mu_R", "lambda_Pu", "Omega_w"};
-functionNames = {"g_ell(w)"};
+constantKeys = {"rho_br", "mu_R", "lambda_Pu", "Omega_w"};
+functionKeys = {"g_ell"};
+historicalPostulateKeys = Lookup[structuralPostulates[], "Key"];
+retiredDriftKeys = {"lambda_Pu", "postulate_3", "postulate_4", "postulate_5"};
 antiAbsorptionNames = {"rho_B0", "chi_c", "C_hu"};
 validCategories = {"constant", "function", "structural_postulate"};
 
@@ -492,13 +634,13 @@ driftTable[] := Module[{L, T, M, posts},
   posts = structuralPostulates[];
   Join[
     {
-      <|"Name" -> "rho_br", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -3]], "Note" -> "surface inertia"|>,
-      <|"Name" -> "mu_R", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -1], dimPow[T, -2]], "Note" -> "MacCullagh modulus"|>,
-      <|"Name" -> "lambda_Pu", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -1], dimPow[T, -2]], "Note" -> "parity-repaired P-u coupling"|>,
-      <|"Name" -> "Omega_w", "Category" -> "constant", "Dim" -> dimPow[T, -1], "Note" -> "bare u_w gap scale"|>,
-      <|"Name" -> "g_ell(w)", "Category" -> "function", "Dim" -> dimPow[L, -1], "Note" -> "fixed Gaussian shape, ONE width knob ell_g; no free-form profile"|>
+      <|"Key" -> "rho_br", "Name" -> "rho_br", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -3]], "Note" -> "surface inertia"|>,
+      <|"Key" -> "mu_R", "Name" -> "mu_R", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -1], dimPow[T, -2]], "Note" -> "MacCullagh modulus"|>,
+      <|"Key" -> "lambda_Pu", "Name" -> "lambda_Pu", "Category" -> "constant", "Dim" -> dimAdd[M, dimPow[L, -1], dimPow[T, -2]], "Note" -> "parity-repaired P-u coupling"|>,
+      <|"Key" -> "Omega_w", "Name" -> "Omega_w", "Category" -> "constant", "Dim" -> dimPow[T, -1], "Note" -> "bare u_w gap scale"|>,
+      <|"Key" -> "g_ell", "Name" -> "g_ell(w)", "Category" -> "function", "Dim" -> dimPow[L, -1], "Note" -> "fixed Gaussian shape, ONE width knob ell_g; no free-form profile"|>
     },
-    (<|"Name" -> #, "Category" -> "structural_postulate", "Note" -> "verbatim structural postulate"|> &) /@ posts
+    (<|"Key" -> #["Key"], "Name" -> #["Text"], "Category" -> "structural_postulate", "Note" -> "verbatim historical structural postulate"|> &) /@ posts
   ]
 ];
 
@@ -506,20 +648,24 @@ categoryCounts[table_] := Counts[Lookup[table, "Category"]];
 driftExpectedN[] := ToExpression[StringSplit[expectedDriftToken, {"(", ")"}][[2]]];
 setResidual[actual_, expected_] := If[Sort[actual] === Sort[expected], 0, 1];
 
-driftResidual[table_, verdictNDelta_: 0] := Module[
-  {counts, names, categories, residual, n, verdict, constantActual, functionActual},
+historicalDriftResidual[table_, verdictNDelta_: 0] := Module[
+  {counts, keys, names, categories, residual, n, verdict, constantActual, functionActual, postulateActual},
   counts = categoryCounts[table];
+  keys = Lookup[table, "Key"];
   names = Lookup[table, "Name"];
   categories = Lookup[table, "Category"];
-  constantActual = Lookup[Select[table, #["Category"] === "constant" &], "Name"];
-  functionActual = Lookup[Select[table, #["Category"] === "function" &], "Name"];
+  constantActual = Lookup[Select[table, #["Category"] === "constant" &], "Key"];
+  functionActual = Lookup[Select[table, #["Category"] === "function" &], "Key"];
+  postulateActual = Lookup[Select[table, #["Category"] === "structural_postulate" &], "Key"];
   residual = 0;
+  residual += If[DuplicateFreeQ[keys], 0, 1];
   residual += If[Complement[categories, validCategories] === {}, 0, 1];
-  residual += (Lookup[counts, "constant", 0] - Length[constantNames])^2;
-  residual += (Lookup[counts, "function", 0] - Length[functionNames])^2;
+  residual += (Lookup[counts, "constant", 0] - Length[constantKeys])^2;
+  residual += (Lookup[counts, "function", 0] - Length[functionKeys])^2;
   residual += (Lookup[counts, "structural_postulate", 0] - Length[structuralPostulates[]])^2;
-  residual += setResidual[constantActual, constantNames];
-  residual += setResidual[functionActual, functionNames];
+  residual += setResidual[constantActual, constantKeys];
+  residual += setResidual[functionActual, functionKeys];
+  residual += setResidual[postulateActual, historicalPostulateKeys];
   residual += If[Intersection[names, antiAbsorptionNames] === {}, 0, 1];
   n = Total[Lookup[counts, validCategories, 0]];
   residual += (n - driftExpectedN[])^2;
@@ -528,10 +674,51 @@ driftResidual[table_, verdictNDelta_: 0] := Module[
   FullSimplify[residual]
 ];
 
+postD16DriftResidual[historical_, operative_, retired_, verdictNDelta_: 0] := Module[
+  {
+    historicalMap, operativeMap, retiredMap, historicalKeys, operativeKeys,
+    retiredKeys, expectedOperativeKeys, expectedEntries, expectedGroups,
+    operativeGroups, categories, names, residual, n, verdict
+  },
+  historicalMap = AssociationThread[Lookup[historical, "Key"], historical];
+  operativeMap = AssociationThread[Lookup[operative, "Key"], operative];
+  retiredMap = AssociationThread[Lookup[retired, "Key"], retired];
+  historicalKeys = Keys[historicalMap];
+  operativeKeys = Keys[operativeMap];
+  retiredKeys = Keys[retiredMap];
+  expectedOperativeKeys = Complement[historicalKeys, retiredDriftKeys];
+  expectedEntries = Lookup[historicalMap, expectedOperativeKeys];
+  expectedGroups = GroupBy[expectedEntries, #["Category"] &, Length];
+  operativeGroups = GroupBy[operative, #["Category"] &, Length];
+  categories = Lookup[operative, "Category"];
+  names = Lookup[operative, "Name"];
+  residual = 0;
+  residual += If[DuplicateFreeQ[Lookup[historical, "Key"]], 0, 1];
+  residual += If[DuplicateFreeQ[Lookup[operative, "Key"]], 0, 1];
+  residual += If[DuplicateFreeQ[Lookup[retired, "Key"]], 0, 1];
+  residual += If[Complement[categories, validCategories] === {}, 0, 1];
+  residual += setResidual[retiredKeys, retiredDriftKeys];
+  residual += If[Intersection[operativeKeys, retiredKeys] === {}, 0, 1];
+  residual += setResidual[Union[operativeKeys, retiredKeys], historicalKeys];
+  residual += setResidual[operativeKeys, expectedOperativeKeys];
+  Do[residual += If[SameQ[operativeMap[key], historicalMap[key]], 0, 1], {key, Intersection[operativeKeys, historicalKeys]}];
+  Do[residual += If[SameQ[retiredMap[key], historicalMap[key]], 0, 1], {key, Intersection[retiredKeys, historicalKeys]}];
+  Do[
+    residual += (Lookup[operativeGroups, category, 0] - Lookup[expectedGroups, category, 0])^2,
+    {category, validCategories}
+  ];
+  residual += If[Intersection[names, antiAbsorptionNames] === {}, 0, 1];
+  n = Total[Lookup[operativeGroups, validCategories, 0]];
+  residual += (n - Length[expectedOperativeKeys])^2;
+  verdict = "POST_D16_DRIFT(" <> ToString[n + verdictNDelta] <> ")";
+  residual += If[verdict === expectedPostD16DriftToken, 0, 1];
+  FullSimplify[residual]
+];
+
 driftDimResidual[table_, dims_] := Module[{residual, targetKey},
   residual = 0;
   Do[
-    If[MemberQ[Join[constantNames, functionNames], entry["Name"]],
+    If[MemberQ[{"constant", "function"}, entry["Category"]],
       targetKey = Lookup[driftDimTargets, entry["Name"], None];
       residual += If[
         targetKey === None || ! KeyExistsQ[entry, "Dim"] || ! KeyExistsQ[dims, targetKey],
@@ -548,9 +735,13 @@ runComputedDriftLedger[dims_] := Module[
   {
     table, counts, constantSubcount, functionSubcount, structuralSubcount,
     n, verdict, fields, fieldSubcount, keptT0, t0NewCount, dropped,
-    miscategorized, injected, dimCorrupted
+    miscategorized, injected, dimCorrupted, retired, operative, operativeGroups,
+    expectedOperative, expectedGroups, operativeN, operativeVerdict, note,
+    lambdaEntry, lambdaLeftLive, postLeftLive, sameCardinalitySwap,
+    operativeInjected, operativeDropped, operativeMiscategorized,
+    operativeDimCorrupted
   },
-  subheading["Computed drift ledger enumeration"];
+  subheading["HISTORICAL freeze-as-run drift ledger enumeration"];
   table = driftTable[];
   counts = categoryCounts[table];
   constantSubcount = Lookup[counts, "constant", 0];
@@ -567,13 +758,13 @@ runComputedDriftLedger[dims_] := Module[
     ],
     {entry, table}
   ];
-  expectZero["constant subcount computed from enumeration", constantSubcount - Length[constantNames]];
-  expectZero["function subcount computed from enumeration", functionSubcount - Length[functionNames]];
-  expectZero["structural-postulate subcount computed from enumeration", structuralSubcount - Length[structuralPostulates[]]];
+  expectZero["historical constant subcount computed from enumeration", constantSubcount - Length[constantKeys]];
+  expectZero["historical function subcount computed from enumeration", functionSubcount - Length[functionKeys]];
+  expectZero["historical structural-postulate subcount computed from enumeration", structuralSubcount - Length[structuralPostulates[]]];
   expectZero["independent new input count n computed from subcounts", n - driftExpectedN[]];
   expectZero["verdict string built from computed n equals frozen token", If[verdict === expectedDriftToken, 0, 1]];
-  expectZero["drift table anti-absorption guard excludes Part-VI trio", driftResidual[table]];
-  expectZero["drift table Dim fields match dimensional-firewall targets", driftDimResidual[table, dims]];
+  expectZero["historical drift table anti-absorption and exact-enumeration guard", historicalDriftResidual[table]];
+  expectZero["historical drift table Dim fields match dimensional-firewall targets", driftDimResidual[table, dims]];
   Print["  computed n = ", constantSubcount, "+", functionSubcount, "+", structuralSubcount, " = ", n];
   Print["  computed verdict = ", verdict];
 
@@ -596,21 +787,86 @@ runComputedDriftLedger[dims_] := Module[
   Print["  T0 couple-stress coefficients are kept-not-new: m rho a^2; m rho c_s^2 a^2; m rho c_s^2."];
 
   dropped = Most[table];
-  expectFail["enumeration tooth: drop one entry gives n=10 and trips drift validation", driftResidual[dropped]];
+  expectFail["HISTORICAL enumeration tooth: drop one entry gives n=10 and trips drift validation", historicalDriftResidual[dropped]];
   miscategorized = (If[#["Name"] === "Omega_w", Join[KeyDrop[#, "Category"], <|"Category" -> "structural_postulate"|>], #] &) /@ table;
-  expectFail["enumeration tooth: miscategorize Omega_w trips subcount assertions", driftResidual[miscategorized]];
-  injected = Append[table, <|"Name" -> "rho_B0", "Category" -> "constant", "Dim" -> table[[1, "Dim"]], "Note" -> "forbidden Part-VI injection"|>];
-  expectFail["enumeration tooth: inject rho_B0 trips anti-absorption guard", driftResidual[injected]];
-  expectFail["enumeration tooth: corrupt computed n before verdict assembly trips token equality", driftResidual[table, 1]];
+  expectFail["HISTORICAL enumeration tooth: miscategorize Omega_w trips subcount assertions", historicalDriftResidual[miscategorized]];
+  injected = Append[table, <|"Key" -> "rho_B0", "Name" -> "rho_B0", "Category" -> "constant", "Dim" -> table[[1, "Dim"]], "Note" -> "forbidden Part-VI injection"|>];
+  expectFail["HISTORICAL enumeration tooth: inject rho_B0 trips anti-absorption guard", historicalDriftResidual[injected]];
+  expectFail["HISTORICAL enumeration tooth: corrupt computed n before verdict assembly trips token equality", historicalDriftResidual[table, 1]];
   dimCorrupted = (If[#["Name"] === "rho_br", Join[KeyDrop[#, "Dim"], <|"Dim" -> dimAdd[#["Dim"], dim[1, 0, 0]]|>], #] &) /@ table;
-  expectFail["enumeration tooth: corrupt rho_br table Dim trips firewall consistency", driftDimResidual[dimCorrupted, dims]];
-  expectZero["baseline drift table remains valid after copy-mutation teeth", driftResidual[table]];
-  table
+  expectFail["HISTORICAL enumeration tooth: corrupt rho_br table Dim trips firewall consistency", driftDimResidual[dimCorrupted, dims]];
+  expectFail["historical-integrity tooth: freeze-as-run drift cannot be falsified downward to 7", n - 7];
+  expectZero["baseline historical drift table remains valid after copy-mutation teeth", historicalDriftResidual[table]];
+
+  subheading["OPERATIVE post-Decision-16 drift derived as historical minus exact retired set"];
+  retired = Select[table, MemberQ[retiredDriftKeys, #["Key"]] &];
+  operative = Select[table, ! MemberQ[retiredDriftKeys, #["Key"]] &];
+  operativeGroups = GroupBy[operative, #["Category"] &, Length];
+  expectedOperative = Select[table, ! MemberQ[retiredDriftKeys, #["Key"]] &];
+  expectedGroups = GroupBy[expectedOperative, #["Category"] &, Length];
+  operativeN = Total[Lookup[operativeGroups, validCategories, 0]];
+  operativeVerdict = "POST_D16_DRIFT(" <> ToString[operativeN] <> ")";
+  Print["  Enumerated operative survivors:"];
+  Do[
+    note = If[
+      entry["Key"] === "postulate_1",
+      "live annotation softened: intrinsic retained wall normal and w=0 geometry; no longer an extra axis conceded for the retired P-u operator",
+      entry["Note"]
+    ];
+    Print[
+      "    - ", entry["Key"], ": ", entry["Name"], ": ", entry["Category"],
+      If[KeyExistsQ[entry, "Dim"], ", [" <> dimString[entry["Dim"]] <> "]", ""],
+      "; ", note
+    ],
+    {entry, operative}
+  ];
+  Print["  Postulate-(1) adjudication: RETAIN the wall-normal geometry, but soften 'conceded-wall' to intrinsic wall normal because L_Pu is gone; this changes annotation, not membership or count."];
+  Print["  exact retired keys = {", StringRiffle[Lookup[retired, "Key"], ", "], "}"];
+  Do[
+    expectZero[
+      "post-D16 " <> category <> " subcount computed from survivor enumeration",
+      Lookup[operativeGroups, category, 0] - Lookup[expectedGroups, category, 0]
+    ],
+    {category, validCategories}
+  ];
+  expectZero["post-D16 operative n computes as 3 constants + 1 function + 3 structural postulates", operativeN - 7];
+  expectZero["post-D16 drift is exact historical-minus-retired set partition", postD16DriftResidual[table, operative, retired]];
+  expectZero["post-D16 drift table Dim fields match live firewall survivors", driftDimResidual[operative, dims]];
+  expectZero["post-D16 verdict string built from computed n", If[operativeVerdict === expectedPostD16DriftToken, 0, 1]];
+  Print["  computed n = ", Lookup[operativeGroups, "constant", 0], "+", Lookup[operativeGroups, "function", 0], "+", Lookup[operativeGroups, "structural_postulate", 0], " = ", operativeN];
+  Print["  computed operative verdict = ", operativeVerdict];
+
+  lambdaEntry = First[Select[retired, #["Key"] === "lambda_Pu" &]];
+  lambdaLeftLive = Append[operative, lambdaEntry];
+  expectZero["post-D16 drift tooth fixture: leave lambda_Pu live computes n=8", Length[lambdaLeftLive] - 8];
+  expectFail["post-D16 drift tooth: leave lambda_Pu live trips DRIFT(7)", postD16DriftResidual[table, lambdaLeftLive, retired]];
+  Do[
+    postLeftLive = Append[operative, First[Select[retired, #["Key"] === postKey &]]];
+    expectZero["post-D16 drift tooth fixture: leave " <> postKey <> " live computes n=8", Length[postLeftLive] - 8];
+    expectFail["post-D16 drift tooth: leave " <> postKey <> " live trips DRIFT(7)", postD16DriftResidual[table, postLeftLive, retired]],
+    {postKey, {"postulate_3", "postulate_4", "postulate_5"}}
+  ];
+  sameCardinalitySwap = Append[Select[operative, #["Key"] =!= "Omega_w" &], lambdaEntry];
+  expectZero["post-D16 drift swap fixture retains cardinality n=7", Length[sameCardinalitySwap] - 7];
+  expectFail["post-D16 drift tooth: same-cardinality Omega_w/lambda_Pu swap trips exact set partition", postD16DriftResidual[table, sameCardinalitySwap, retired]];
+  operativeInjected = Append[operative, <|"Key" -> "rho_B0", "Name" -> "rho_B0", "Category" -> "constant", "Dim" -> table[[1, "Dim"]], "Note" -> "forbidden Part-VI injection"|>];
+  expectFail["post-D16 drift tooth: inject rho_B0 trips operative anti-absorption guard", postD16DriftResidual[table, operativeInjected, retired]];
+  expectFail["post-D16 drift tooth: corrupt n before token assembly trips POST_D16_DRIFT equality", postD16DriftResidual[table, operative, retired, 1]];
+
+  operativeDropped = Most[operative];
+  expectZero["OPERATIVE enumeration tooth fixture: drop one survivor computes n=6", Length[operativeDropped] - 6];
+  expectFail["OPERATIVE enumeration tooth: drop one survivor trips n=7 and set partition", postD16DriftResidual[table, operativeDropped, retired]];
+  operativeMiscategorized = (If[#["Key"] === "Omega_w", Join[KeyDrop[#, "Category"], <|"Category" -> "structural_postulate"|>], #] &) /@ operative;
+  expectFail["OPERATIVE enumeration tooth: miscategorize Omega_w trips survivor subcount", postD16DriftResidual[table, operativeMiscategorized, retired]];
+  operativeDimCorrupted = (If[#["Key"] === "rho_br", Join[KeyDrop[#, "Dim"], <|"Dim" -> dimAdd[#["Dim"], dim[1, 0, 0]]|>], #] &) /@ operative;
+  expectFail["OPERATIVE enumeration tooth: corrupt rho_br table Dim trips live firewall consistency", driftDimResidual[operativeDimCorrupted, dims]];
+  expectZero["baseline post-D16 drift remains valid after copy-mutation teeth", postD16DriftResidual[table, operative, retired]];
+  {table, operative}
 ];
 
 distinctnessFailureResidual[muR_, muR4D_] := If[dimResidual[muR, muR4D] === 0, 1, 0];
 
-runMuRFirewall[dims_] := Module[{muR, muR4D, L},
+runMuRFirewall[dims_] := Module[{muR, muR4D, L, forcedEqualDims},
   subheading["mu_R notational firewall and R17 pending edge"];
   L = dim[1, 0, 0];
   muR = dims["mu_R"];
@@ -620,12 +876,21 @@ runMuRFirewall[dims_] := Module[{muR, muR4D, L},
   expectNonzero["[mu_R] != [mu_R^(4)] as exponent triples", dimResidual[muR, muR4D]];
   expectDim["R17 dim consistency [mu_R^(4)]*L = [mu_R]", dimAdd[muR4D, L], muR];
   Print["  R17 status: PENDING (mu_R = int chi_B mu_R^(4) dw; deferred nonlinear throat/projection)."];
-  expectFail["mu_R firewall tooth: forced equality trips distinctness inequality", distinctnessFailureResidual[muR, muR]]
+  forcedEqualDims = Association[dims];
+  forcedEqualDims["mu_R_4D"] = forcedEqualDims["mu_R"];
+  expectFail[
+    "mu_R firewall tooth: forced equality trips distinctness inequality",
+    distinctnessFailureResidual[forcedEqualDims["mu_R"], forcedEqualDims["mu_R_4D"]]
+  ]
 ];
 
 printStructuralPostulates[] := (
-  subheading["Six structural postulates printed verbatim"];
-  Do[Print["  ", i, ". ", structuralPostulates[][[i]]], {i, Length[structuralPostulates[]]}]
+  subheading["HISTORICAL six structural postulates printed verbatim"];
+  Do[
+    Print["  ", i, ". ", structuralPostulates[][[i, "Key"]], ": ", structuralPostulates[][[i, "Text"]]],
+    {i, Length[structuralPostulates[]]}
+  ];
+  Print["  OPERATIVE survivors: postulate_1 (intrinsic wall-normal annotation), postulate_2, postulate_6; postulates 3/4/5 retired with P."]
 );
 
 printProvenanceBlocks[] := (
@@ -634,7 +899,7 @@ printProvenanceBlocks[] := (
   Print["  pathA_25 varrho_br[rho] belongs to the CLOSED density-smectic candidate, FAIL_NOT_CODIM1, OUT_OF_ACTIVE_NG5."];
   Print["  This rho_br/mu_R is genuine postulated shear-surface inertia/modulus with registered-pending pathA_40 Route-A reduction."];
   Print["  Corroboration token: NO_OVERCOUNT_ROUTE_A_PENDING."];
-  Print["  Honest cross-sector drift {rho_B0, chi_c, C_hu} is a Part-VI item, not absorbed into the 11."];
+  Print["  Honest cross-sector drift {rho_B0, chi_c, C_hu} is a Part-VI item, not absorbed into the historical 11 or operative 7."];
   Print[""];
   Print["  Supersession fact 1: stage006 chi_B order-field wall superseded fixed-shape g_ell(w) as the MATERIAL-STATE closure."];
   Print["  Supersession fact 2: G0 REMAINS the light-sector CONSTITUTIVE freeze; stage003 consumes L_Mac as-is."];
@@ -651,7 +916,7 @@ printProvenanceBlocks[] := (
   Print["  Gate-L artifacts are not imported; exposure strings are not used as computed predicates."];
   Print[""];
   Print["  Route-A carried debt: {rho_br, mu_R} reduction = Route-A PENDING (R10), ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT, free-unreduced brane constants on the deferred nonlinear throat."];
-  Print["  Labeled postulated constants registered as knobs: {lambda_Pu, Omega_w, ell_g}."];
+  Print["  Historical labeled postulated constants: {lambda_Pu, Omega_w, ell_g}; Decision 16 retires lambda_Pu, leaving live {Omega_w, ell_g} alongside survivor {rho_br, mu_R}."];
   Print[""];
   Print["  Downstream consumers: ledger_stage003 consumes mu_R, rho_br, c_gamma^2=mu_R/rho_br, and frozen L_Mac."];
   Print["  Downstream consumers: ledger_stage006 cites c_gamma^2=mu_R/rho_br plus the chi_B/G0 supersession relationship."]
@@ -660,22 +925,27 @@ printProvenanceBlocks[] := (
 printVerdictLabels[] := (
   Print[""];
   Print["Verdict labels:"];
-  Print["  ledger earned-label (NOT a source verdict token): G0_FREEZE_FIDELITY_DOF_DIM_VERIFIED  (freeze-action SHA-256 re-verified incl. T0 embedding; flat-brane DOF=8 rank-computed; dimensional firewall over every frozen term; drift count COMPUTED from the enumerated table)"];
-  Print["  source top-line verdicts: ", expectedFreezeToken, " + ", expectedDriftToken];
-  Print["  honest landing: the 11 = POSTULATED/CALIBRATED freeze inputs (4 constants {rho_br, mu_R, lambda_Pu, Omega_w} + 1 function g_l(w; l_g) + 6 structural postulates), enumerated + computed — the freeze freezes TERMS, not gate answers"];
-  Print["  erratum (2026-07-04): the 11 STANDS (no rho_br overcount; pathA_25 varrho_br = CLOSED candidate, OUT_OF_ACTIVE_NG5); honest cross-sector drift {rho_B0, chi_c, C_hu} = Part-VI (pathA_41), NOT absorbed here [NO_OVERCOUNT_ROUTE_A_PENDING]"];
+  Print["  ledger earned-label (NOT a source verdict token): G0_FREEZE_FIDELITY_PLUS_POST_D16_LAYER_VERIFIED  (historical hash/DOF/drift preserved; operative action partition, DOF, drift, and tiered firewall computed)"];
+  Print["  HISTORICAL freeze-as-run immutable: ", expectedFreezeToken, " + ", expectedDriftToken, " + historical DOF=8"];
+  Print["  OPERATIVE post-Decision-16 live: ", expectedPostD16ActionToken, " + ", expectedPostD16DriftToken, " + operative DOF=4"];
+  Print["  operative action core token: POST_D16_ACTION{S_GNLS,gL_Mac,gL_uw}; exact partition of historical summands with retired complement {L_pol,gL_Pu}"];
+  Print["  historical landing: 11 = 4 constants {rho_br, mu_R, lambda_Pu, Omega_w} + 1 function g_l(w; l_g) + 6 structural postulates; operative 7 = 3 constants {rho_br,mu_R,Omega_w} + 1 function + survivor postulates {1,2,6}"];
+  Print["  erratum (2026-07-04): historical 11 STANDS; operative 7 is Decision-16 retirement, not an overcount correction; {rho_B0, chi_c, C_hu} remains Part-VI and is excluded from both tables [NO_OVERCOUNT_ROUTE_A_PENDING]"];
+  Print["  DECISION16_PROVENANCE retired={L_pol,L_Pu,lambda_Pu,postulates_3/4/5}; reason=P_RETIRED_ALL_PAYOFFS_FAILED_PLUS_LIFSHITZ_INSTABILITY"];
   Print["  supersession: stage006 chi_B wall = the MATERIAL-STATE closure (supersedes fixed-shape g_l(w) as material wall); G0 REMAINS the light-sector CONSTITUTIVE freeze (stage003 consumes L_Mac as-is)"];
   Print["  notational firewall: mu_R (3D brane, M L^-1 T^-2) != mu_R_4D (4D density, M L^-2 T^-2); related only by PENDING R17 projection"];
   Print["  Gate-L: EXCLUDED — no gate verdict computed or imported; exposure names printed as provenance only"];
-  Print["  carried: Route-A reduction PENDING (pathA_40, R10) for {rho_br, mu_R}; new postulated constants {lambda_Pu, Omega_w, l_g} registered as knobs"]
+  Print["  carried: Route-A reduction PENDING (pathA_40, R10) for {rho_br, mu_R}; live postulated Omega_w and l_g remain; lambda_Pu is retired-historical"]
 );
 
 Module[{ok, dims},
   heading["ledger_stage007_shear_surface_g0_freeze Mathematica audit"];
   ok = Catch[
     runFreezeFidelity[];
+    runPostD16ActionPartition[];
     dims = runDimensionalFirewall[];
     runFlatBraneDof[];
+    runPostD16Dof[];
     runComputedDriftLedger[dims];
     runMuRFirewall[dims];
     printStructuralPostulates[];
@@ -689,7 +959,7 @@ Module[{ok, dims},
   Print[""];
   Print["PASS tally: ", passCount, "; FAIL tally: ", failCount];
   If[TrueQ[ok],
-    Print["OVERALL PASS: Mathematica verified ledger_stage007 G0 freeze fidelity, dimensions, DOF, and computed drift"];
+    Print["OVERALL PASS: Mathematica verified historical stage007 freeze fidelity plus the computed post-Decision-16 operative layer"];
     Exit[0],
     Print["OVERALL FAIL: Mathematica stage007 audit did not close"];
     Exit[1]

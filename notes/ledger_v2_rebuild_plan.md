@@ -15,6 +15,16 @@
 > ⭐ **The LIVE per-stage trackers are `STATUS.md` ▶ RESUME HERE (thin) + `research/pde_ledger_v2/notes/part2_gravity_atomic_split.md`
 > Progress + `research/pde_ledger_v2/notes/parameter_register.md`.** This plan doc is the stable multi-phase plan + the evidence that led to
 > it; its per-stage progress log further below is a HISTORICAL record (it lags — do NOT treat it as the live tracker).
+> **⭐⭐ DECISION-16 AMENDMENT LOG (2026-07-21 — LANDED).** The brane polar field `P` (the "little arrows") is retired from
+> Part I per `software/stage1_solver/decisions/16_retire_brane_polar_field.md`. **Retired:** `{L_pol, L_Pu, λ_Pu,
+> α_aniso, postulates 3/4/5 of the stage007 G0 freeze}`. **Route A (two-tier: historical + operative):** the historical
+> G0 freeze record is RETAINED immutable (`SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`, DOF=8 = the freeze-as-run tier); the
+> retirement is a computed operative layer — **stage007 operative DOF 8→4, operative drift 11→7 (`POST_D16_DRIFT(7)`);
+> stage006 operative `DRIFT(6)→DRIFT(5)`** — a definite **−5** route-less ACTION-input reduction (`α_aniso` + `λ_Pu` +
+> the 3 postulates). **Amended audit scripts pass:** stage006 SymPy 121 / Mathematica 119; stage007 SymPy 142 /
+> Mathematica 140 (all exit 0). The `χ_B=|P_∥|²` route (c) stays a NAMED high-risk Part-VII-adjacent future gate
+> requiring a NEW T0 freeze (obsolete-as-carried, NOT foreclosed). The historical stage006/007 build-log entries below
+> are NOT rewritten — this is the operative delta on top of them.
 > **▶ BATCHING Part-by-Part STARTED (2026-07-07).** **Part I (The medium) atomic split FINALIZED + user-approved** (4 stages;
 > `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`): I-1 `ledger_stage004` GNLS action + dimensional foundation (pathA_19,
 > `RETAIN_L_T_M`) → I-2 `ledger_stage005` sound speed + λγ-free (pathA_20, `C_GAMMA_RATIO_UNDERDETERMINED`) → I-3 `ledger_stage006`

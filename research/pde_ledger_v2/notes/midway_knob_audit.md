@@ -3,7 +3,17 @@
 > **Status: COMPLETE (midway checkpoint). Layer-2 computed codimension check DONE + arbiter-verified; the Codex+Grok
 > provenance re-audit DONE + reconciled; a Codex confirm-pass on the folded note landed `CONFIRM_ISSUES(1)` (a sub-split
 > arithmetic fix, folded → now coherent). Corrected tallies + verdict in §2.6. Two items await the user: the C1/C2
-> counting-convention decision (picks a point in ~39–48) + the R35-label refinement in the register.**
+> counting-convention decision (picks a point in ~34–43, post-Decision-16) + the R35-label refinement in the register.**
+>
+> **⭐ Decision-16 amendment (2026-07-21 — LANDED).** The brane polar field `P` is retired
+> (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`), removing `α_aniso`, `λ_Pu`, and the 3 `P`-machinery
+> structural postulates (T0 P-reuse, massless spin-wave, parity-even P–u) = a **definite −5 route-less ACTION-input
+> reduction**. All counts below are shifted accordingly: irreducible total ~39–48 → **~34–43**; route-less liability
+> ~20–26 → **~15–21**; (c) postulated structure 19–25 → **14–20**; structural members 10 → **7**; continuous route-less
+> params 10–16 → **8–14**. This −5 is the DEFINITE delta; the two parked counting-convention decisions still set the
+> final point-in-range at Part VII. (Route A: the historical `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` / DOF=8 freeze record is
+> RETAINED immutable as the freeze-as-run tier; these are the operative post-D16 numbers — `POST_D16_DRIFT(7)`, operative
+> DOF=4, stage006 operative `DRIFT(5)`.)
 > User-scheduled (2026-07-09) to run AFTER the Part-II gravity sector closes (done: count 29). This is a MIDWAY
 > checkpoint over the BUILT stages only — NOT the final Part-VII count. Turns "are we accumulating too many knobs"
 > into a number early enough to course-correct or hit a clean no-go (a bad number is a first-class result).
@@ -74,20 +84,20 @@ is the (a)/(b)/(c) bucket for **counted** items; DERIVED/CONV rows are shown as 
 | `C_E, C_B` (bulk gauge metric) | ✅ | **(b)** | R6 brane-zero-mode reduction PENDING (`BRANE_ZERO_MODE_REDUCTION_UNDERIVED`) — ⚠ borderline-concrete |
 | `μ_R⁽⁴⁾` (4D shear density) | ✅ | **(b)** | R17 projection `μ_R=∫χ_B μ_R⁽⁴⁾dw` PENDING (concrete integral); R22 firewall guards the ≠ |
 | `W_slab` (slab width) | ✅ | **(b)** ⚠thin | R19 PENDING (kink admission ≠ slab stability; "requires dynamics", sim-deferred) — flagged un-earned by conceptual_foundation |
-| `λ_Pu` (parity-repaired P–u) | ✅ | **(c)** | one of the G0 "11"; **no reduction route named** → route-less |
+| `λ_Pu` (parity-repaired P–u) | ⊘ RETIRED | ~~(c)~~ | **RETIRED by Decision 16** (P–u twist coupling goes with the retired polar field `P`); was one of the G0 "11", drops from the operative count |
 | `Ω_w` (u_w gap scale) | ✅ | **(c)** | one of the G0 "11"; **no reduction route named** → route-less |
 | `g_ℓ(w; ℓ_g)` (freeze profile, 1 width knob) | ✅ | **(c)** | one of the G0 "11"; R21 scope-split; no route → route-less |
 | `c_γ` (gauge cone) | (see M) | — | `= c_s·λγ`; the free thing is `c_γ`; cone-locks R7/R8 are **Part VI** (out of scope) |
 
-### Block χ — the χ_B wall package (I-3, stage 006) — DRIFT(6)
+### Block χ — the χ_B wall package (I-3, stage 006) — DRIFT(6) historical → **DRIFT(5) operative** (Decision 16 retires `α_aniso`)
 | Param | Counted? | Class | Route / status |
 |---|---|---|---|
 | `χ_B` (order field) | ✅ | **(c)** | route (a) postulated; route (c) `χ_B=\|P_∥\|²` = high-risk future gate (neighbors falsified) → route-less |
 | `a_B` (double-well) | ✅ | **(c)** | POSTULATED (parent `U(ρ)` single-well — wall cannot come from it) |
 | `κ_B` (interface gradient) | ✅ | **(c)** | POSTULATED |
-| `α_aniso` (P-orientation) | ✅ | **(c)** | POSTULATED_ANISOTROPY (chosen for the outcome; no independent provenance) |
+| `α_aniso` (P-orientation) | ⊘ RETIRED | ~~(c)~~ | **RETIRED by Decision 16** (P-orientation easy-plane term goes with the retired polar field `P`); drops the operative count `DRIFT(6)→DRIFT(5)` |
 | `Γ_B` (conversion law) | ✅ | **(c)** | POSTULATED law; return/drain closure deferred |
-| χ_B-gating structure | ✅ | **(c)** | structural 6th member of DRIFT(6) |
+| χ_B-gating structure | ✅ | **(c)** | structural 5th member of DRIFT(5) operative (was the 6th of DRIFT(6), `α_aniso` retired) |
 | `δ, σ_wall` | ✗ collapsed | DERIVED | R20 → into `{a_B, κ_B}` (single-kink admission only) |
 
 ### Block W — the frozen-wall throat packet (II, stages 013/015/017)
@@ -143,13 +153,14 @@ declare-vs-reduce GAP flag).
 T_Ω, β₂}` (6) + `{μ_R, ρ_br, C_E, C_B}` (4) + `{μ_R⁽⁴⁾, W_slab}` (2) + `{ε0, ε1, K0c, K1}` (4) ≈ **16** — dominated by
 the ONE nonlinear-throat solve (throat packet + Route-A) and the Gate-6 return closure. Honest, pending, "not-yet not never."
 
-**(c) POSTULATED STRUCTURE (route-less liability):** the χ_B DRIFT(6) `{χ_B, a_B, κ_B, α_aniso, Γ_B, gating}` (6) +
-`{λ_Pu, Ω_w, g_ℓ}` (3) + `{d, EOS-exp-5}` (2) ≈ **11** — the wall + the imposed structural choices, no concrete route.
+**(c) POSTULATED STRUCTURE (route-less liability):** the χ_B DRIFT(5) `{χ_B, a_B, κ_B, Γ_B, gating}` (5; `α_aniso`
+retired by Decision 16) + `{Ω_w, g_ℓ}` (2; `λ_Pu` retired by Decision 16) + `{d, EOS-exp-5}` (2) ≈ **9** — the wall +
+the imposed structural choices, no concrete route.
 
 **Calibrated magnitudes:** force-magnitude norm (1); `G` = `GENUINE_BLOCKED` (not counted as a set-knob).
 
-**Route-less irreducible subset (tally #2 denominator, Parts I–II):** the **(c)** set ≈ **11** + the force-magnitude
-tuning ≈ **12**. (The NG5 trio `{ρ_B0, χ_c, C_hu}` is the *canonical* route-less liability but is Part-III/VI — a
+**Route-less irreducible subset (tally #2 denominator, Parts I–II):** the **(c)** set ≈ **9** (post-Decision-16) + the
+force-magnitude tuning ≈ **10**. (The NG5 trio `{ρ_B0, χ_c, C_hu}` is the *canonical* route-less liability but is Part-III/VI — a
 forward-note, adds ~3 when those Parts build.)
 
 **Held-out (target-blind) predictions earned over Parts I–II** (tally #2 numerator, to be firmed up next chunk):
@@ -167,7 +178,7 @@ forward-note, adds ~3 when those Parts build.)
 ⚠ **Honest caveat (falsification-first):** items 1–9 are **FORM / SIGN / rational-fingerprint** matches — the
 **magnitudes** (`G`, the assembled `54/5`, the `2/5`) are **CALIBRATED / external_bridge_input**, NOT held-out. Item
 10 is a prediction, not yet a confirmed match. So the *honest* held-out count is a handful of target-blind structural
-matches + one departure — to be adjudicated against the ~12 route-less irreducible knobs next chunk. If route-less ≳
+matches + one departure — to be adjudicated against the ~10 route-less irreducible knobs (post-Decision-16) next chunk. If route-less ≳
 held-out, that is the sober midway signal (reported flatly, per the model's own falsification-first stance).
 
 **⭐ Design-intent frame (from `docs/conceptual_foundation.md`, per user steer):** the model does **not** claim
@@ -219,9 +230,11 @@ R29, R24, and the stage-024 two-port inverse **all compute-verified to 0** — n
 shrink. The catches are counting/classification, folded below. Reviews: `_scratch/midway_provenance_{codex,grok}.log`.
 
 ### Folded (uncontested — both engines, or register-backed)
-- **G0 structural-6 → (c)** [Grok BLOCKING]: `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` includes 6 structural postulates
-  (imposed ŵ axis + w=0 surface; free-slip uᵃ; T0 P-reuse; massless spin-wave; parity-even P–u; no-C5-φ) — peers of the
-  `χ_B`-gating structure already counted (c). I'd omitted them while counting their peers. **(c) +6 route-less.**
+- **G0 structural-3 → (c)** [Grok BLOCKING; **−3 by Decision 16**]: `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` originally included
+  6 structural postulates (imposed ŵ axis + w=0 surface; free-slip uᵃ; ~~T0 P-reuse; massless spin-wave; parity-even P–u~~;
+  no-C5-φ) — peers of the `χ_B`-gating structure already counted (c). I'd omitted them while counting their peers. **Decision 16
+  retires the 3 `P`-machinery postulates** (T0 P-reuse, massless spin-wave, parity-even P–u), leaving 3. **(c) +3 route-less**
+  (operative; was +6 historical/freeze-as-run).
 - **K1 → two directions** [Codex C3, register row 166]: `K_eta`/`T_Omega` are separate generator dirs; `K1` is their
   manifestation → count 2 not 1. **(b) +1.**
 - **`C_E, C_B` → (c)** [Codex C4 / Grok #3]: R6 (brane-zero-mode) names a direction with no concrete equation →
@@ -257,19 +270,20 @@ clarification of R35's status (DERIVED-in-form vs PENDING-debt) as a follow-up.
 |---|---:|---:|
 | (a) declared-universal | 4 | 4 |
 | (b) reduction-debt (concrete route) | 15 | 18 (+`M̃/K̃/T̃_Ω`) |
-| (c) postulated structure (route-less) | 19 | 25 (+`{B̃,Z̃}`) |
+| (c) postulated structure (route-less) | 14 | 20 (+`{B̃,Z̃}`) |
 | force-mag (route-less CALIB) | 1 | 1 |
-| **Irreducible total** | **~39** | **~48** |
-| **Route-less liability (tally #2)** | **~20** | **~26** |
+| **Irreducible total** | **~34** | **~43** |
+| **Route-less liability (tally #2)** | **~15** | **~21** |
 
-**⭐ The route-less set (register-methodology = 20 = (c) 19 + force-mag 1) is NOT one kind of thing — sub-split it 10 + 10:**
-- **(c-struct) = 10 discrete STRUCTURAL postulates** — the χ_B wall's field/law/gating (`χ_B`, `Γ_B`, gating structure) +
-  the **G0 structural-6** + the imposed EOS-exponent-5. These are *modeling choices*, not continuous tuning knobs — they do
+**⭐ The route-less set (register-methodology = 15 = (c) 14 + force-mag 1, post-Decision-16) is NOT one kind of thing — sub-split it 7 + 8:**
+- **(c-struct) = 7 discrete STRUCTURAL postulates** — the χ_B wall's field/law/gating (`χ_B`, `Γ_B`, gating structure) +
+  the **G0 structural-3** (Decision 16 retired the 3 `P`-machinery postulates: T0 P-reuse, massless spin-wave, parity-even
+  P–u) + the imposed EOS-exponent-5. These are *modeling choices*, not continuous tuning knobs — they do
   **not** live in a continuous codimension variety (the RegionDimension technique does not apply to them).
-- **(c-param) = 10 continuous route-less parameters** — `{a_B, κ_B, α_aniso, λ_Pu, Ω_w, g_ℓ-width, C_E, C_B, W_slab}` (9,
-  inside (c)) **+ force-mag** (1, tallied separately) — the genuine continuous predictive-surplus-eaters. The strict reading
-  adds `{B̃,Z̃}` (+6) here → **~16**, taking route-less to 26.
-- **Reconciles:** register 10 (c-struct) + 10 (c-param) = **20**; strict 10 + 16 = **26** — matching the tally table.
+- **(c-param) = 8 continuous route-less parameters** — `{a_B, κ_B, Ω_w, g_ℓ-width, C_E, C_B, W_slab}` (7,
+  inside (c); `α_aniso`+`λ_Pu` retired by Decision 16) **+ force-mag** (1, tallied separately) — the genuine continuous
+  predictive-surplus-eaters. The strict reading adds `{B̃,Z̃}` (+6) here → **~14**, taking route-less to 21.
+- **Reconciles:** register 7 (c-struct) + 8 (c-param) = **15**; strict 7 + 14 = **21** — matching the tally table.
 
 ### ⭐ Verdict — the plain-number answer
 **Held-out target-blind surplus (tally #2 numerator):** ~6–7 structural matches (`1/r²` exponent, attractive sign, the
@@ -278,15 +292,18 @@ factor-of-2) + **1 falsifiable departure** (monopole/dipole residual `∝ε0`). 
 `2/5`, `Γ̄₅`) are calibrated/external — NOT held-out (both engines confirm the note does not over-claim these).
 
 **Are we accumulating too many knobs at the Parts-I–II midway?**
-- **Route-less liability (~20–26) ≫ held-out surplus (~6–7)** — robust across both readings; the un-earned load dominates.
-- **The composition is the real story — route-less splits ~50/50:** **10 discrete STRUCTURAL postulates** (the postulated
-  χ_B wall's field/law/gating + the G0 shear-surface freeze — exactly what `conceptual_foundation.md` names "the most
-  imposed, least derived part") and **10 continuous route-less parameters** (~16 strict, with `{B̃,Z̃}`).
+- **Route-less liability (~15–21, post-Decision-16) ≫ held-out surplus (~6–7)** — robust across both readings; the
+  un-earned load still dominates the earned surplus (though the margin narrows after the `P` retirement).
+- **The composition is the real story — route-less splits ~7/8:** **7 discrete STRUCTURAL postulates** (the postulated
+  χ_B wall's field/law/gating + the G0 shear-surface freeze, now `P`-retired — exactly what `conceptual_foundation.md`
+  names "the most imposed, least derived part") and **8 continuous route-less parameters** (~14 strict, with `{B̃,Z̃}`).
 - **⭐ Even discounting the discrete postulates** (arguably not codimension-countable), the **continuous route-less tunings
-  alone (~10, or ~16 strict) already exceed the held-out surplus (~6–7)** — so it is not merely a "structural postulate"
+  alone (~8, or ~14 strict) already exceed the held-out surplus (~6–7)** — so it is not merely a "structural postulate"
   artifact: the genuine continuous-knob load out-runs the earned predictive surplus at this midway.
 - **Most of the (b) debt (~15–18) is honest, route-ful** — the throat-interior solve + the Gate-6 return closure,
-  "not-yet not never"; it converts CALIB→DERIVED in one stroke if the deferred solves land.
+  "not-yet not never"; it converts CALIB→DERIVED in one stroke if the deferred solves land. ⚠ **Post-Decision-16 the
+  route-less liability (~15–21) no longer clearly EXCEEDS the route-ful debt (~15–18) — the two are now comparable**
+  (before the `P` retirement, route-less ~20–26 clearly dominated it).
 
 **⇒ The midway number is sobering but diagnostic, NOT a no-go.** The liability concentrates in (1) the *postulated wall +
 freeze* — where route (c) `χ_B=|P_∥|²` is the named high-risk gate that would collapse ~half of (c-struct) — and (2) the
@@ -304,14 +321,15 @@ throat/moment reductions (R30/R33/R35/R36), or the analog stays "four sectors fr
   counting-convention bracket. Corrected tallies + verdict landed.
 - ⏭ **Two open items (both for the user):** (1) the **C1/C2 methodology decision** — do un-executed (`M̃/K̃/T̃_Ω`, R35) /
   downstream-deferred (`{B̃,Z̃}`) reductions count as discharged collapses or as counted debt? This picks a point in the
-  ~39–48 range and is a genuine Part-VII convention. (2) the **R35-label refinement** — whether to reclassify R35 in the
+  ~34–43 range (post-Decision-16) and is a genuine Part-VII convention. (2) the **R35-label refinement** — whether to reclassify R35 in the
   register from DERIVED to DERIVED-in-form/PENDING-debt (a Codex-agreed edit, not done unilaterally).
 - ⏭ **Optional closing bookend leg:** a Codex confirm-pass on the folded note (the folds are orchestrator prose over two
   surfaced-not-hidden disputes, so this is a lower-risk final check).
 
 > **⏸ PAUSE POINT (2026-07-11):** Both audit layers DONE + verified. Layer 1 (inventory) user-approved; Layer 2 (computed
 > codimension check) dual-engine arbiter-verified; the provenance re-audit reconciled (Codex+Grok) + a Codex confirm-pass
-> (one sub-split arithmetic fix folded) → corrected range + verdict in §2.6. **Headline: route-less liability ~20–26 ≫
-> held-out surplus ~6–7 (sobering but diagnostic) — split ~50/50 discrete structural postulates (the postulated wall + G0
-> freeze) vs continuous route-less params; the continuous half alone (~10–16) already out-runs the held-out surplus.**
+> (one sub-split arithmetic fix folded) → corrected range + verdict in §2.6. **Headline (post-Decision-16 −5): route-less
+> liability ~15–21 ≫ held-out surplus ~6–7 (sobering but diagnostic; now comparable to the route-ful debt ~15–18) — split
+> ~7 discrete structural postulates (the postulated wall + G0 freeze, `P`-retired) vs ~8 continuous route-less params; the
+> continuous half alone (~8–14) already out-runs the held-out surplus.**
 > Resume = the two user items above.

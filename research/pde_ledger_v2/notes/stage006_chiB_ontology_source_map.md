@@ -8,6 +8,8 @@
 > action" — so the directive must SPECIFY the action/postulates to encode (§1 below), not point at a report's checks.
 > **Headline verdict:** `ACTION_SPECIFIED_CLASSIFIED` (structure). **Scope (user-approved, `part1_medium_atomic_split.md:16,27`):**
 > dimensional homogeneity + recovery reduction (assert-zero) + θ-as-Maxwell-φ no-go (able-to-fail). Does NOT earn light.
+> **⚠ AMENDED 2026-07-21 (Decision 16):** the ledger stage has since retired `α_aniso` (the one `P`-dependent piece,
+> pin P7) → operative `DRIFT(5)`. See the stage note's read-first Decision-16 banner.
 
 ## File inventory (READ-ONLY prose sources — content inlined into the note by the orchestrator)
 - `notes/brane_bulk_handoff.md` — the χ_B closure: density split, conservation, order-state balance PDE, projected law, energy ledger, Task-A postulate list.

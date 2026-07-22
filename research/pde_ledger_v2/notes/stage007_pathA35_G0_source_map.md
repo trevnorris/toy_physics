@@ -8,6 +8,10 @@
 > (~645 lines) + `pathA_35_G0.wl` (~501 lines), `ENGINE_AGREE`.
 > **Headline verdicts (verbatim):** `T0_SHEAR_FROZEN(d9520d3819c3)` + `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)`.
 > Full frozen-action SHA-256: `d9520d3819c3f718290f9d0be57138c07d5bf02d2237106478e17b6a1e389ac3`.
+> **⚠ AMENDED 2026-07-21 (Decision 16):** the ledger stage has since retired the polar field `P` — `L_pol`, `L_Pu`,
+> `λ_Pu`, and structural postulates 3/4/5. The freeze + verdicts here are the immutable HISTORICAL tier (still
+> hash-verified, 11/DOF=8 STAND); the operative post-D16 stage carries DOF=4 and `POST_D16_DRIFT(7)`. See the stage
+> note's read-first Decision-16 layer.
 
 ## File inventory
 - **Freeze report (the authoritative source):** `software/stage1_solver/reports/pathA_35_G0_freeze.md` (17 KB) —

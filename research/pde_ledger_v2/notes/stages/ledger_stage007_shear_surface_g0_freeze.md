@@ -1,6 +1,51 @@
 # ledger_stage007_shear_surface_g0_freeze
 
+## ⚠ Decision-16 amendment (2026-07-21) — the P-retirement layer (READ FIRST)
+
+Decision 16 (user, 2026-07-13; `software/stage1_solver/decisions/16_retire_brane_polar_field.md`) retires the brane
+polar field `P` and its couplings — `L_pol` (the T0 polar-OP block), `L_Pu` (the parity-even P–u coupling), the
+constant `λ_Pu`, and structural postulates 3/4/5 — from the frozen medium action. Every `P` payoff failed
+independently (charge `NATIVE_P_NO_EMERGENT_GAUSS`; light `pathA_35 FAIL_COUPLE_STRESS_NOGO`, and `pathA_36` derives
+both photons with **no** `P` sector; the polar-vector wall self-localization falsified, `pathA_24` T1), and the frozen
+massless-`P`+`λ_Pu` baseline is structurally unstable — a long-wavelength helical Lifshitz mode
+`det = k²(2 A_P μ_R k − λ_Pu²) < 0` for any `λ_Pu ≠ 0` (`INSTABILITY_CONFIRMED_STRUCTURAL`, the pre-registered
+`pathA_35` G0.3 `FAIL_NOT_BOUNDED_BELOW` exposure firing; retained finding, commit `a5c079eb`).
+
+**Route A — the freeze is retained; retirement is a computed layer, not a re-freeze.** This stage now carries TWO
+tiers (both computed in both engines):
+
+- **HISTORICAL (freeze-as-run, immutable).** The G0 freeze is **unchanged on disk**; both engines still fence-parse
+  and SHA-256-verify the frozen `d9520d3819c3` block (T0 `8fa41ac51e88` byte-embedded) against the untouched reports,
+  and still compute the freeze's honest cost *as run* — `SECOND_MEDIUM_DRIFT_AT_FREEZE(11)` and **DOF = 8**. History
+  is **not** falsified downward: a dedicated tooth fires if anyone tries to compute the historical drift as 7 or the
+  historical DOF as 4. The freeze is the anchor the instability finding is *about* (Decision 16 §Scope); re-introducing
+  orientational order would need a **new T0 freeze** with its own gauntlet — not un-retiring this.
+- **OPERATIVE (post-Decision-16, live).** The medium's live Part-I action is the retired subset, computed as an exact
+  **action-summand set partition** of the historical summands:
+  `operative {S_GNLS, gL_Mac, gL_uw}` ⊎ `retired {L_pol, gL_Pu}` == `historical {S_GNLS, L_pol, gL_Mac, gL_Pu, gL_uw}`
+  (token `POST_D16_ACTION{S_GNLS,gL_Mac,gL_uw}_OF(d9520d3819c3)`; a symbolic partition over the immutable hash anchor,
+  **no byte-substring surgery**). Operative **DOF = 4** (the removed `Pⁱ` block = tangent 3 + radial 1 = 4 takes
+  8 → 4), and operative **`POST_D16_DRIFT(7)`** derived as `historical ∖ {λ_Pu, postulates 3/4/5}` = 3 constants
+  `{ρ_br, μ_R, Ω_w}` + 1 function `g_ℓ` + 3 postulates `{1, 2, 6}`. Postulate (1)'s annotation softens to "intrinsic
+  wall normal" (no longer an axis conceded *for* `L_Pu`); its membership and count are unchanged.
+
+Retirement is **able-to-fail**: action-summand partition teeth (mutate a survivor / admit a retired term / drop a
+survivor), operative-DOF teeth (one reinjected `Pⁱ` mode → 5, full block → 8), operative-drift teeth (leave `λ_Pu` → 8,
+leave a retired postulate → 8, a same-cardinality `Ω_w`↔`λ_Pu` swap → set-partition failure at unchanged count), the
+rebased survivor drift-enumeration teeth, and the historical-integrity teeth. **Untouched:** `c_γ² = μ_R/ρ_br`,
+`L_Mac`, `L_uw`, `g_ℓ`, `{ρ_br, μ_R, Ω_w, ℓ_g}`, and the R10 Route-A reduction; Part III/light consumes `L_Mac` as-is
+(no `P` sector). The **`χ_B = |P_∥|²` route (c) is NOT dead** — it stays a named, high-risk, Part-VII-adjacent future
+gate needing a new T0 freeze (obsolete-as-carried, not foreclosed). Provenance stamp:
+`DECISION16_PROVENANCE retired={L_pol,L_Pu,λ_Pu,postulates_3/4/5}; reason=P_RETIRED_ALL_PAYOFFS_FAILED_PLUS_LIFSHITZ_INSTABILITY`.
+
+Ledger earned-label for the amended stage: `G0_FREEZE_FIDELITY_PLUS_POST_D16_LAYER_VERIFIED`. Dual-engine after the
+amendment: **SymPy 142 PASS / Mathematica 140 PASS**, both exit 0, CWD-independent.
+
 ## Status
+
+> ⚠ **Amended by Decision 16 (2026-07-21) — see the P-retirement layer above.** The text below describes the
+> HISTORICAL freeze-as-run (the immutable tier); the OPERATIVE live action drops `L_pol`/`L_Pu`/`λ_Pu` + postulates
+> 3/4/5 (DOF 8 → 4, drift 11 → 7).
 
 **Part I — The medium. I-4 (build-order 007; the LAST Part-I stage).** Reshape of the existing dual-engine gate
 `pathA_35` **G0** (the shear-surface brane/light-sector **constitutive freeze**). Source headline verdicts, carried
@@ -32,25 +77,33 @@ Part-I closing statement of what the medium's brane sector *costs*.
 
 ## The frozen action (canonical block content; hash-guarded)
 
-**Kept (0 new inputs):** the GNLS parent action (I-1/I-2) and the T0 polar-OP action, byte-for-byte from
-`pathA_24_T0_freeze.md` (T0 block hash `8fa41ac51e88…`, embedded in the G0 block):
+The historical freeze declares **five action summands** `{S_GNLS, L_pol, gL_Mac, gL_Pu, gL_uw}`. Decision 16 retires
+`{L_pol, gL_Pu}` (the `P`-dependent complement); the **operative** action is `{S_GNLS, gL_Mac, gL_uw}` (each summand
+labeled ⟨operative⟩ / ⟨retired⟩ below). The byte-level SHA-256 anchor is unchanged — the partition is symbolic.
+
+**⟨historical, kept 0 new⟩** the GNLS parent action `S_GNLS` (I-1/I-2) — ⟨operative, SURVIVES⟩.
+
+**⟨RETIRED by Decision 16⟩** the T0 polar-OP action `L_pol`, byte-for-byte from `pathA_24_T0_freeze.md` (T0 block hash
+`8fa41ac51e88…`, byte-embedded in the G0 block; still hash-verified as a *historical* record, dim-audited as a
+retired-historical term — it *was* dimensionally homogeneous, gone by decision not defect):
 
 ```
-L_pol = ½ m ρ a² (D_t^v Pⁱ)² − ½ m ρ c_s² a² (∂_j Pⁱ)² − ¼ m ρ c_s² (PⁱPⁱ−1)²
+L_pol = ½ m ρ a² (D_t^v Pⁱ)² − ½ m ρ c_s² a² (∂_j Pⁱ)² − ¼ m ρ c_s² (PⁱPⁱ−1)²          ⟨RETIRED⟩
 ```
 
 **Frozen brane/light blocks** (`S_brane = ∫ dt d⁴X g_ℓ(w) [L_Mac + L_Pu + L_uw]`):
 
 ```
-L_Mac = ½ ρ_br (∂_t uᵃ)² − ½ μ_R Ω_uᵃ Ω_uᵃ          (MacCullagh rotational shear; Ω_u = ∇_∥×u)
-L_Pu  = −λ_Pu ϖ_a Ω_uᵃ,   ϖ_a := (ŵ×P_∥)_a           (parity-EVEN P–u coupling)
-L_uw  = ½ ρ_br (∂_t u_w)² − ½ ρ_br Ω_w² u_w²          (the u_w gap)
-g_ℓ(w) = exp(−(w/ℓ_g)²)/(√π ℓ_g),   ∫ g_ℓ dw = 1      (fixed Gaussian profile, one width ℓ_g)
+L_Mac = ½ ρ_br (∂_t uᵃ)² − ½ μ_R Ω_uᵃ Ω_uᵃ          (MacCullagh rotational shear; Ω_u = ∇_∥×u)   ⟨operative⟩
+L_Pu  = −λ_Pu ϖ_a Ω_uᵃ,   ϖ_a := (ŵ×P_∥)_a           (parity-EVEN P–u coupling)                    ⟨RETIRED⟩
+L_uw  = ½ ρ_br (∂_t u_w)² − ½ ρ_br Ω_w² u_w²          (the u_w gap)                                  ⟨operative⟩
+g_ℓ(w) = exp(−(w/ℓ_g)²)/(√π ℓ_g),   ∫ g_ℓ dw = 1      (fixed Gaussian profile, one width ℓ_g)        ⟨operative⟩
 ```
 
-⚠ Preserved verbatim from the freeze report: the `L_Pu` operator "re-admits the ε-contracted/chiral class excluded
-by T0" and REQUIRES the conceded axis `ŵ` — a structural-postulate **cost**, not a free choice (the direct
-`P_∥·Ω_u` is parity-ODD, excluded).
+⚠ Preserved verbatim from the freeze report (now a **retired-historical parity record**): the `L_Pu` operator
+"re-admits the ε-contracted/chiral class excluded by T0" and REQUIRED the conceded axis `ŵ` — a structural-postulate
+cost, not a free choice (the direct `P_∥·Ω_u` is parity-ODD, excluded). With `L_Pu` retired, the operative `ŵ` is just
+the **intrinsic wall normal** (postulate 1, annotation softened; no longer a concession *for* the P–u operator).
 
 ## Freeze fidelity (EARNED)
 
@@ -77,12 +130,17 @@ coverage-diffed, nothing dropped): kept GNLS (`c_s²=5Kρ⁴/m`, `U=(K/4)ρ⁵`,
 `L_pol` (each term `M L⁻² T⁻²`, the 4D action density; `Pⁱ` dimensionless), the kept T0 couple-stress coefficients
 (labeled kept, 0 new), profile + measure (with `∫g_ℓ dw = 1` genuinely integrated in both engines), the three brane
 blocks (each term `M L⁻¹ T⁻²`, the 3D surface density; `g_ℓ·[brane]` restores the 4D density), the action measures,
-the full projected traction `T_na` including `T_wa = mρ v_w v_a`, and the G0.5 linearization quantities
-(`O_u`, `c_γ² = μ_R/ρ_br` at `L² T⁻²`, `ω_P²`, `ω_radial²`, `ω_uw²`).
+the full projected traction `T_na` including `T_wa = mρ v_w v_a`, and the G0.5 linearization mode frequencies.
 
-Targets: `Pⁱ` dimensionless · `uᵃ, u_w` = `L` · `ρ_br` = `M L⁻³` · `μ_R, λ_Pu` = `M L⁻¹ T⁻²` · `Ω_w` = `T⁻¹` ·
-`g_ℓ` = `L⁻¹` · `ℓ_g` = `L`. Teeth (both fired in the source gate and re-fire here): `drop_m_from_T_wa`,
-`MacCullagh_without_curl`.
+**Post-Decision-16 firewall split:** the **operative live** surface audits only the survivors — kept GNLS, `L_Mac`,
+`L_uw`, `g_ℓ`, `T_na`, `O_u`, `c_γ² = μ_R/ρ_br`, and the surviving mode `ω_uw,bare² = Ω_w²`. The `P`-sector terms
+(`L_pol`, `L_Pu`, `λ_Pu`, and the mode frequencies **`ω_P²` and `ω_radial²` — both retired P-modes**, freeze report
+:251 / :252–253) stay dim-audited but only as **retired-historical** freeze-as-run records, never live-checked as
+survivors.
+
+Targets: `Pⁱ` dimensionless (retired) · `uᵃ, u_w` = `L` · `ρ_br` = `M L⁻³` · `μ_R` = `M L⁻¹ T⁻²` · `λ_Pu` =
+`M L⁻¹ T⁻²` (retired) · `Ω_w` = `T⁻¹` · `g_ℓ` = `L⁻¹` · `ℓ_g` = `L`. Teeth (both fired in the source gate and re-fire
+here): `drop_m_from_T_wa`, `MacCullagh_without_curl`.
 
 **Notational firewall (register edge R22):** this stage's `μ_R` (3D brane modulus, `M L⁻¹ T⁻²`) and stage006's
 `μ_R⁽⁴⁾` (4D shear-stiffness density, `M L⁻² T⁻²`) are asserted **dimensionally distinct** (a computed
@@ -100,6 +158,13 @@ printed plainly: it is the fact the later C5 crux attacks (stage006's θ-as-φ n
 Teeth: `drop_u_w_gap_term`, `drop_P_soft_spin_radial_term`, `zero_u_longitudinal_component` — each recomputes
 total 7 ≠ 8. The new-field content at G0 (`uᵃ` 3 + `u_w` 1 = 4 DOF) is computed separately from an enumerated field
 list and kept **out** of the 11-input drift count.
+
+**Operative post-Decision-16 DOF = 4** (rank-computed on the retired field set, `Pⁱ` removed): `uᵃ` curl-transverse 2
++ kinetic−curl 1 + `u_w` 1 + `φ` 0 = 4; the removed `Pⁱ` block (tangent 3 + radial 1 = 4) is exactly what takes
+historical 8 → operative 4. Operative teeth: reinject one `Pⁱ` mode → 5, the full `Pⁱ` block → 8, and the survivor
+ablations `drop_u_w_gap_term` / `zero_u_longitudinal_component` → 3 (each ≠ 4). The `drop_P_soft_spin_radial_term`
+ablation stays HISTORICAL-only (no operative analogue — `P` is gone); a historical-integrity tooth blocks falsifying
+DOF=8 down to 4.
 
 ## The drift ledger: the 11, computed (POSTULATED/CALIBRATED — the honest landing)
 
@@ -126,6 +191,14 @@ verdict-string equality fires; corrupt a table dim → the dim-consistency asser
 confirmed the checks are anchored to in-engine derivations and the frozen token (dual-corruption of both engines
 fails both) — no cross-engine comparison anywhere; the old `--compare` payload mirror is dead.
 
+**Operative post-Decision-16 drift `POST_D16_DRIFT(7)`** — derived (not merely recounted) as the exact set partition
+`historical ∖ {λ_Pu, postulates 3/4/5}` = 3 constants `{ρ_br, μ_R, Ω_w}` + 1 function `g_ℓ` + 3 survivor postulates
+`{1, 2, 6}` (postulate 1's annotation softened to "intrinsic wall normal"). Operative teeth: leave `λ_Pu` live → n=8;
+leave any retired postulate → n=8; a **same-cardinality** `Ω_w`↔`λ_Pu` swap keeps n=7 but **fails the set-partition
+assert**; the rebased survivor teeth (drop a survivor → n=6, miscategorize `Ω_w`, corrupt `ρ_br` table-dim); inject
+`ρ_B0` → operative anti-absorption; corrupt n → token equality. The historical 11 stays computed; a
+historical-integrity tooth blocks falsifying it down to 7.
+
 ## The 2026-07-04 erratum (carried first-class) + anti-absorption
 
 **The 11 STANDS — no `ρ_br` overcount.** An earlier GLM-based claim that `ρ_br` duplicated pathA_25's derived
@@ -134,8 +207,9 @@ density-smectic candidate (`FAIL_NOT_CODIM1`), `OUT_OF_ACTIVE_NG5` — a differe
 shear-surface brane. This `ρ_br`/`μ_R` is genuine postulated shear-surface inertia/modulus with a
 **registered-pending pathA_40 Route-A reduction** (`ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT`; register
 edge R10; corroboration token `NO_OVERCOUNT_ROUTE_A_PENDING`). **The honest cross-sector drift (per pathA_41) is
-`{ρ_B0, χ_c, C_hu}` — a Part-VI item, never absorbed into the 11** (guarded in-engine by the anti-absorption
-assert).
+`{ρ_B0, χ_c, C_hu}` — a Part-VI item, never absorbed into the historical 11 _or_ the operative 7** (guarded in-engine
+by the anti-absorption assert on both tables). The historical 11 STANDS as the freeze-as-run cost; the operative 7 is
+the Decision-16 retirement, **not** an overcount correction.
 
 ## Supersession (both facts, exactly)
 
@@ -157,23 +231,31 @@ a Part-III matter).
 
 ## Downstream consumers (load-bearing exports)
 
-- **`ledger_stage003` (Part III, light):** consumes `μ_R`, `ρ_br`, `c_γ² = μ_R/ρ_br`, and the frozen `L_Mac` as its
-  starting Lagrangian; cites `T0_SHEAR_FROZEN(d9520d3819c3)`. This stage is the token's formal home.
+- **`ledger_stage003` (Part III, light):** consumes `μ_R`, `ρ_br`, `c_γ² = μ_R/ρ_br`, and the frozen `L_Mac` — all
+  **operative survivors**, so light is unaffected by the P-retirement (`pathA_36` derives both photons with no `P`
+  sector). It cites the historical `T0_SHEAR_FROZEN(d9520d3819c3)` **and** the operative subset
+  `POST_D16_ACTION{S_GNLS,gL_Mac,gL_uw}`. This stage is the token's formal home.
 - **`ledger_stage006` (I-3):** cites `c_γ² = μ_R/ρ_br` and the supersession relationship above; its `μ_R⁽⁴⁾` is
   R17-related, R22-distinct.
-- **Parameter register:** rows `λ_Pu`, `Ω_w`, `g_ℓ`/`ℓ_g` added; the 6-postulate structural block recorded;
-  `μ_R`/`ρ_br` provenance re-homed to I-4 (stage-003 dim-verification attribution kept); edges R21 (scope split)
-  and R22 (dimensional distinctness) added.
+- **Parameter register:** rows `Ω_w`, `g_ℓ`/`ℓ_g` live; `λ_Pu` **retired** (Decision 16); the structural block
+  reduced to survivor postulates `{1,2,6}`; `μ_R`/`ρ_br` provenance re-homed to I-4 (stage-003 dim-verification
+  attribution kept); edges R21 (scope split) and R22 (dimensional distinctness) retained.
 
 ## Verification
 
+- **⭐ Decision-16 amendment (2026-07-21):** the P-retirement layer applied per
+  `_scratch/decision16_amendment_directive.md` (directive cleared the Codex→Grok→Codex bookend — Codex
+  `DIRECTIVE_SOUND`, Grok `GROK_COMPUTE_CLEAN`). Dual-engine after the amendment: **SymPy 142 PASS / Mathematica
+  140 PASS**, both exit 0, CWD-independent; the four tracked transcripts regenerated under `scripts/output/` +
+  `mathematica/output/`. ⏳ Fresh-agent tri-review of the amended scripts + docs is the next gate. The original-build
+  record below is retained.
 - **Reshape (blueprint §5):** argparse/`--compare`/JSON payload-mirror stripped; each engine standalone,
   print-only, in-process asserts, no file writes (file READS of the two canonical freeze reports only, paths
   resolved from the script location — verified from a foreign CWD); float-free symbolic payload; the `.wl`
   re-authored as a genuinely independent route (own fence scanner, own dim machinery, own projector/rank DOF
   construction, own enumeration tallies).
-- **Dual-engine:** SymPy audit **96 PASS / 0 FAIL**, exit 0 · Mathematica audit **94 PASS / 0 FAIL**, exit 0 (both
-  from repo root and from a foreign CWD); runner transcripts under `scripts/output/` + `mathematica/output/`.
+- **Dual-engine (original build):** SymPy audit **96 PASS / 0 FAIL**, exit 0 · Mathematica audit **94 PASS / 0
+  FAIL**, exit 0 (both from repo root and from a foreign CWD). Superseded by the amendment tallies above.
 - **Tri-review (fresh agents):** orchestrator arbiter re-run via the runners (7/7 PASS both engines);
   **`FIDELITY_CLEAN`** (block-by-block coverage diff vs the source `build_dimension_payload` — no dropped check, no
   changed target; all dims independently reconfirmed); **`ADVERSARIAL_CLEAN`** (26-run mutation matrix:
@@ -192,4 +274,7 @@ a Part-III matter).
 - Methodology: `software/stage1_solver/directives/pathA_35_shear_surface_brane_gates.md` (§1, G0.2, §7, §10).
 - Reshape directive + tri-review artifacts: `research/pde_ledger_v2/_scratch/ledger_stage007_*` +
   `_scratch/adv_stage007/`.
+- **Decision-16 amendment:** `software/stage1_solver/decisions/16_retire_brane_polar_field.md` (the decision) +
+  `research/pde_ledger_v2/_scratch/decision16_amendment_directive.md` (the amendment directive + Codex/Grok review
+  trail).
 - Source map: `research/pde_ledger_v2/notes/stage007_pathA35_G0_source_map.md`.

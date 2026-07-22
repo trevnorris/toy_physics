@@ -1,0 +1,205 @@
+\section{Stage 030: Electric Scalar Block + Localized-H Closure}
+
+\stagefield{Part / anchor}{Part IV -- Charge (IV-1; first Part-IV stage)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Formal ledger home of the charge sector's distinct
+electric scalar: a genuinely \emph{localized} parent field \(H\) on the brane,
+its unique \emph{gapless} propagating mode \(h\), and the \emph{stable}
+two-field \((u_L,h)\) kernel it couples to. This stage is the static
+\emph{substrate} the charge sector stands on --- it contains no force, no sign,
+and no mouth source. It is a \textbf{LIGHT-with-scoping} reshape of the
+electric-scalar subset of the monolithic G0 closure checker
+(\StageFile{software/em_charge_attribute/g0_closure_card_v0_checks.py} /
+\texttt{.wl}, source card \texttt{g0\_closure\_card\_v0.md} \S\S2.3--2.4);
+surviving verdict token \texttt{ELECTRIC\_SCALAR\_CLOSURE\_STATIC}. Every
+predicate is a \emph{static prerequisite} for the assembled Green mode, not a
+solved assertion of it --- the assembled one-/two-body/far-field claims are Part
+VII, and the mouth source is Stage~031.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage030_electric_scalar_localized_h_closure_mathematica_audit.wl}.}
+
+\paragraph{Status.}
+\StatusExactClosure. \textbf{The entire G0-v0 closure is a labeled
+\texttt{DRAFT v0} POSTULATED closure --- the choice of P\"oschl--Teller
+operator, the \(R_w\)-odd parity representation of \(\{H,h,u_L\}\), and every
+numeric witness value are postulates, not derivations.} What is \textbf{EARNED}
+(exact within that declared closure) is that, \emph{given} this action, the
+static prerequisites hold: the nonnegative parent operator \(O_\perp=A^\dagger
+A\); the unique normalizable \emph{zero} mode \(f_0\) below a positive continuum
+gap \(4/\ell^2\); the zero-mode norm, projection, and idempotence; the three
+reduction identities; static kernel positivity \(D>0\) with two positive
+squared wave speeds; reduced-\(h\) masslessness \(Q_s(0,0)=0\); conservative
+Hessian symmetry; and the units-restored \([L,T,M]\) dimensional homogeneity of
+every electric-scalar-block term. Ledger-local earned label (not a source
+token): \texttt{ELECTRIC\_SCALAR\_STATIC\_PREREQUISITES\_VERIFIED}. Charge is
+the static \(\pm w\) throat --- a particle punctures the brane into \(\pm w\),
+the bend is the geometric field \(\xi_w=\ell\,h\), and \(h\) is the localized
+zero mode assembled here; the puncture-deflection \emph{mechanism} (the mouth
+\(\chi\leftrightarrow h\) source, the \(1/R^2\) force, the honest
+\texttt{R1\_REQUIRED(bc\_selection)} landing) is Stage~031, which \emph{dresses}
+this substrate.
+
+\paragraph{The localized parent \(H\) and its P\"oschl--Teller operator (EARNED spectral structure).}
+The distinct electric scalar is a parent field \(H(x,w,t)\) of dimension
+\(L^{-1}\) living in \(y=(x,w)\in\mathbb{R}^3\times\mathbb{R}\), with transverse
+operator and action
+\[
+  O_\perp=-\partial_w^2+\frac{4-6\,\mathrm{sech}^2(w/\ell)}{\ell^2},\qquad
+  S_H=\tfrac12\!\int\! dt\,d^4y\,\bigl\{\,2M_4(\partial_t H)^2
+     -2K_4\bigl[\,|\nabla_x H|^2+H\,O_\perp H\,\bigr]\bigr\}.
+\]
+With the superpotential \(A=\partial_w+2\tanh(w/\ell)/\ell\) both engines verify
+term-by-term that \(O_\perp=A^\dagger A\) with \(A^\dagger=-\partial_w+2\tanh(w/\ell)/\ell\)
+(\texttt{PASS\_TRANSVERSE\_FACTORIZATION}), so \(O_\perp\ge0\). Direct
+substitution gives the zero mode \(O_\perp f_0=0\), \(f_0(w)=1/[\ell\cosh^2(w/\ell)]\)
+(\texttt{PASS\_PARENT\_TRANSVERSE\_ZERO\_EIGENVALUE}). Because \(O_\perp=A^\dagger A\),
+the zero mode is exactly \(\ker A\); \(Af=0\) is a \emph{first-order} ODE with a
+one-dimensional solution space, and the engines confirm the integrating-factor
+solution's ratio to \(f_0\) is \(w\)-independent (\(=\ell\)) with finite positive
+\(L^2\) norm, so \(\ker A=\mathrm{span}\{f_0\}\) is the \emph{unique}
+normalizable zero mode (\texttt{PASS\_UNIQUE\_NORMALIZABLE\_KERNEL}). As
+\(w\to\pm\infty\) the potential \(\to 4/\ell^2\) (symbolic \texttt{limit} both
+directions), so the continuum threshold is \(4/\ell^2>0\) and the zero mode sits
+a \emph{positive gap} below it (\texttt{PASS\_POSITIVE\_CONTINUUM\_GAP}).
+\emph{Scope (no over-claim):} the engines claim a unique normalizable zero mode
+below a continuum starting at \(4/\ell^2\); they do not enumerate the full
+spectrum (this \(s=2\) well additionally supports one excited bound state at
+\(3/\ell^2\), an analytic PT aside neither computed nor relied on here).
+
+\paragraph{The zero-mode reduction and its relations (EARNED; the two \(c_E\)-teeth are genuinely able-to-fail).}
+With the parent inner weight \(2\) fixed by \(S_H\), the closed-form norm is
+\(N_0=\int dw\,2f_0^2=8/(3\ell)>0\) (\texttt{PASS\_ZERO\_MODE\_NORM}). Writing
+\(H=f_0 h+H_\perp\) with \(\int dw\,2f_0 H_\perp=0\), the reduced mode is the
+normalized zero-mode projection \(h=P_0H:=N_0^{-1}\!\int dw\,2f_0 H\), for which
+the engines verify \(P_0 f_0=1\), \(P_0(f_0 h)=h\), and idempotence
+\(P_0^2=P_0\), with \([h]=1\) (\texttt{PASS\_NORMALIZED\_ZERO\_MODE\_PROJECTION}).
+The zero-mode reduction of \(S_H\) yields, each as its own dual-engine
+predicate, the reduced inertia \(M_h=N_0 M_4\) (\texttt{PASS\_REDUCED\_H\_INERTIA},
+witness \(M_h^*=1\)) and stiffness \(K_h=N_0 K_4\)
+(\texttt{PASS\_REDUCED\_H\_STIFFNESS}, \(K_h^*=1\)), with physical positivity
+\(M_4 N_0>0\) (\texttt{PASS\_PHYSICAL\_H\_NORM}). \textbf{On the two
+\(c_E\)-relation teeth (not tautological):} the \emph{value} relations
+\(K_4=M_4 c_E^2\) and \(K_h=M_h c_E^2\) are \emph{definitional} (\(\{M_4,c_E\}\)
+are inputs, so \(K_4\) is \emph{defined} as \(M_4 c_E^2\)); a value
+self-comparison would be a vacuous \(X\equiv X\). So the teeth verify their
+genuine production-live content instead:
+\texttt{PASS\_PARENT\_STIFFNESS\_DIMENSIONAL\_CONSISTENCY} checks
+\([M_4 c_E^2]=[K_4]\) (fails under a \([K_4]\) dimension mutation), and
+\texttt{PASS\_REDUCED\_SPEED\_PRESERVATION} checks that the \emph{separately}
+reduced ratio is speed-preserving, \(c_E^2=K_h/M_h=K_4/M_4\), so an inconsistent
+reduction (e.g.\ \(K_h=N_0^2K_4\)) makes \(K_h/M_h=160/3\ne1\) and the tooth
+fires on a \emph{real} error. \emph{Dependency direction:} \(M_4\) (a postulated
+\texttt{ACTION} primitive) and \(c_E\) (input) are the free data;
+\(K_4=M_4 c_E^2\), \(M_h=N_0 M_4\), \(K_h=N_0 K_4=M_h c_E^2\) are all
+\textbf{derived}; the reduced normalization \(M_h^*=1\) is a \texttt{CONV} choice
+imposed \emph{on} \(M_4\).
+
+\paragraph{The coupled \((u_L,h)\) scalar block --- two INDEPENDENT positivity facts (EARNED).}
+After eliminating the brane phase \(\theta_B\) (its Schur shift absorbed into
+\(A_{\rm eff}=\rho_{br}+C_J^2/\kappa_{\rm phase}\)), the reduced scalar action has
+inertia matrix \(M=\mathrm{diag}(A_{\rm eff},M_h)\) and stiffness
+\(K=\bigl[\begin{smallmatrix}B_{\rm eff}&C_{hu}\\C_{hu}&K_h\end{smallmatrix}\bigr]\).
+The stage splits kernel health into two teeth that are \emph{genuinely
+independent} in both engines. (a)~\emph{Sylvester positivity}
+(\texttt{PASS\_STABILITY}): \(B_{\rm eff}>0\) and \(D=B_{\rm eff}K_h-C_{hu}^2>0\)
+(physical \([D]=M^2T^{-4}\)), confirmed by SymPy \texttt{is\_positive\_definite}
+/ Wolfram \texttt{PositiveDefiniteMatrixQ}+\texttt{Eigenvalues}. (b)~\emph{Positive
+generalized wave speeds} (\texttt{PASS\_POSITIVE\_GENERALIZED\_WAVE\_SPEEDS}): the
+squared characteristic speeds \(z=c^2/c_E^2\) solve \(\det(K-zM)=0\); in the
+explicitly-normalized star units (\(M^*=I\), \(B_{\rm eff}^*=2\), \(K_h^*=1\),
+\(C_{hu}^*=1/2\)),
+\[
+  \det(K^*-z^*M^*)=z^{*2}-3z^*+\tfrac74,\qquad
+  z^*_\pm=c^{*2}_\pm=\frac{3\pm\sqrt2}{2}>0,
+\]
+so both coupled modes propagate. The two facts are independent: \(D\) depends on
+\(K\) only, while the speeds depend on both \(K\) and \(M\); the (b)-tooth
+mutates the inertia (\(A_{\rm eff}^*:1\to2\)), which \emph{keeps} the Sylvester
+margin \(D^*=7/4\) intact yet \emph{changes} the roots --- driving (b) to exit~1
+at its own assert while (a) stays green, so the roots check is not a corollary of
+the margin. (The physical \(\det(K-zM)\) is dimensionful and is never equated to
+the numeric polynomial --- the determinant is stated only through the star form.)
+
+\paragraph{Reduced-\(h\) masslessness and conservative Hessian symmetry (EARNED).}
+The time-dependent quadratic operator
+\(Q_s(\omega,k)=\bigl[\begin{smallmatrix}A_{\rm eff}\omega^2-B_{\rm eff}k^2 & -C_{hu}k^2\\ -C_{hu}k^2 & M_h\omega^2-K_h k^2\end{smallmatrix}\bigr]\)
+satisfies \(Q_s(0,0)=0\) at star values --- there is \emph{no} \(k^0h^2\) term
+(no bare \(h\) mass), the static prerequisite against
+\texttt{FAIL\_PINNED\_BRANON}/\texttt{FAIL\_YUKAWA}
+(\texttt{PASS\_REDUCED\_H\_MASSLESSNESS}; the tooth reinstates a \(k^0h^2\)
+coefficient and \(Q_s(0,0)\ne0\) fires). The gradient-energy Hessian of the
+\((u_L,h)\) block equals the displayed Euler operator and is symmetric,
+\(\bigl[\begin{smallmatrix}2&1/2\\1/2&1\end{smallmatrix}\bigr]=\)~its transpose
+(\texttt{PASS\_CONSERVATIVE\_HESSIAN\_SYMMETRY}, the action-derived integrability
+prerequisite; the tooth desymmetrizes the cross coefficient
+\(1/2\to3/4\)).
+
+\paragraph{Dimensional firewall (EARNED --- units-restored \([L,T,M]\)).}
+Every electric-scalar-block term is checked exponent-triple homogeneous, units
+restored, able-to-fail: the four-dimensional parent-\(H\) terms
+\(\{H_{\rm kin},H_{\rm grad},H_{\rm pot}\}\) target the \emph{bulk} density
+\(E/L^4\), the three-dimensional reduced terms
+\(\{u_{\rm kin},u_{\rm stiff},h_{\rm kin},h_{\rm stiff},\mathrm{mix}\}\) the
+\emph{brane} density \(E/L^3\), with \([H]=L^{-1}\), \([u_L]=L\), \([h]=1\),
+\([M_4]=M\), \([K_4]=E\), \([A_{\rm eff}]=ML^{-3}\), \([B_{\rm eff}]=ML^{-1}T^{-2}\),
+\([M_h]=ML^{-1}\), \([K_h]=MLT^{-2}\), \([C_{hu}]=MT^{-2}\), \([c_E]=LT^{-1}\).
+The \(\mathrm{mix}\)-term tooth corrupts \([C_{hu}]\) (\(MT^{-2}\to MT^{-1}\)) and
+the homogeneity residual fires. (The mouth Robin/source-term dimensions travel
+with the mouth source in Stage~031, not here.)
+
+\paragraph{Scope, deferrals, and first-class departures (recorded honestly).}
+(1)~The whole G0-v0 closure is a \textbf{POSTULATED \texttt{DRAFT v0} closure} ---
+every witness (\(M_4^*,c_E^*,B_{\rm eff}^*,C_{hu}^*,\dots\)), the P\"oschl--Teller
+operator, and the parity representation are labeled postulates; what is earned is
+that, given this action, \S\S1--5 hold. (2)~The \textbf{mouth SOURCE mechanism is
+DEFERRED to Stage~031}: \texttt{PASS\_BARE\_MOUTH\_SOURCE} (the orientation-odd
+\(\chi\leftrightarrow h\) mouth functional, \(f_0(0)=1/\ell\), the nonzero
+projected source) is not folded here; Stage~031 must own a \emph{full
+able-to-fail} reconstruction of it. (3)~\textbf{Out-of-scope, UNDISCHARGED
+cross-sector G0 predicates (Part VII de-dup obligation):} the source checker is
+monolithic across all seven G0 gates; Stage~030 folds \emph{only} the charge-new
+electric-scalar subset. The remaining G0 predicates
+(\texttt{PASS\_PLANAR\_WALL\_FACTORIZATION}, the bulk-witness/Fourier-Hessian
+group, the drain-normalization/controller group) are \textbf{not} re-folded and
+\textbf{not} already covered by the built Part-I/II stages (those verify
+physically-adjacent but \emph{different} facts) --- they are
+\texttt{OUT-OF-SCOPE / UNDISCHARGED CROSS-SECTOR G0 PREDICATE}, reconciled as a
+Part~VII G0-vs-Part-I de-dup. (4)~\textbf{Excluded assembled claims \(\to\) Part
+VII:} the assembled one-body and two-body/far-field claims (constrained
+Hessians, the dressed \(1/R\) monopole, pair-force integrability) are solved-response
+objects for Part~VII, not discharged here. (5)~\textbf{\(c_E\) has no committed
+cone lock:} \(c_E\) is the electric sector's first dimensional entry and is
+\texttt{FREE-UNREDUCED}; \(c_s/c_E=2\) was chosen expressly to avoid imposing a
+cone lock, and its relation to \(c_\gamma/c_s\) is re-adjudicated in Part~VI
+(\texttt{pathA\_40}, \texttt{PENDING}).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes:
+\textbf{SymPy 16 PASS / Mathematica 16 PASS}. Standalone, print-only,
+assert-zero (\texttt{raise SystemExit(1)} / \texttt{Exit[1]} on failure), no
+argparse harness, no JSON/YAML payload, zero file-I/O between engines. The
+\texttt{.wl} is not a transliteration: it reorders the derivation (native matrix
+route first) and uses native Wolfram machinery where the \texttt{.py} uses SymPy
+--- \texttt{Integrate} for \(N_0\), \texttt{DSolve} (counting one integration
+constant) for the \(\ker A\) uniqueness, \texttt{Limit} for the \(4/\ell^2\)
+threshold, and \texttt{PositiveDefiniteMatrixQ}/\texttt{CharacteristicPolynomial}/\texttt{Eigenvalues}
+for the coupled kernel. \textbf{16 per-tooth ablations, each
+\texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch \texttt{LEDGER\_STAGE030\_MUTATION}):
+a card-primitive mutation for every folded predicate --- including the two
+\emph{distinct} kernel teeth (\(C_{hu}^*\) fires the margin \texttt{PASS\_STABILITY};
+inertia \(A_{\rm eff}^*\) fires the roots
+\texttt{PASS\_POSITIVE\_GENERALIZED\_WAVE\_SPEEDS}), the genuine reduction teeth
+(the \([K_4]\) dimension mutation and the \(K_h=N_0K_4\to N_0^2K_4\)
+reduction-inconsistency mutation), the norm/projection/inertia mutations, the
+spectral teeth (factorization coefficient, \(f_0\) power, potential asymptote
+\(\to\) gap), and the mundane \([C_{hu}]\) dimension tooth. Out-of-scope
+predicates carry no teeth (dropped, not silently green); the payload is
+float-free throughout (machine-\texttt{Float} atoms raise). \textbf{Tri-review
+CLEAN:} \texttt{FIDELITY\_CLEAN} + \texttt{ADVERSARIAL\_CONCERNS(2)} \(\to\)
+remediated \(\to\) fresh-agent \texttt{REVERIFY\_CLEAN} --- the pre-commit
+adversarial re-verify replaced two originally-tautological \(c_E\)-relation value
+self-checks with the genuine
+\texttt{PASS\_PARENT\_STIFFNESS\_DIMENSIONAL\_CONSISTENCY} +
+\texttt{PASS\_REDUCED\_SPEED\_PRESERVATION} teeth above.

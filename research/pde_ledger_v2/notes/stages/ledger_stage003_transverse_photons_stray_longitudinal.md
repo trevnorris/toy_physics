@@ -332,8 +332,6 @@ Characterized departures -- first-class, not softened:
 
 ## Next step
 
-Part III continues with the couple-stress `pathA_35` gateL light-on-the-brane
-structure (`FAIL_COUPLE_STRESS_NOGO`, same earned "brane carries light" content).
-The stray-longitudinal / second-class sector derived here is the substrate the
-magnetism sector (`pathA_39`) and the cone-lock knit (`pathA_40`,
-`c_gamma^2 = mu_R/rho_br` vs `c_L^2 = B_eff/rho_br`) consume downstream.
+Light-sector surviving result complete; `mu_R` is postulated;
+`c_gamma^2 = mu_R/rho_br` is the `u_T`/`c_gamma` foundation Part V (magnetism)
+reuses.

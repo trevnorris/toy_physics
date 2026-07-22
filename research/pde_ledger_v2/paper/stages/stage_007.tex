@@ -3,98 +3,89 @@
 \stagefield{Part / anchor}{Part I -- The medium (closing Part-I stage)}
 \claimstatus{\StatusExactClosure}
 \stagefield{Purpose}{Formal home of the pathA\_35 G0 shear-surface
-\emph{constitutive} freeze, amended by Decision~16 (P-retirement).
-\emph{Historical} freeze-as-run: the frozen brane/light action
-(\(L_{\rm Mac}+L_{Pu}+L_{u_w}\) under \(g_\ell(w)\)), hash-guarded
-(\texttt{T0\_SHEAR\_FROZEN(d9520d3819c3)}), drift
-\texttt{SECOND\_MEDIUM\_DRIFT\_AT\_FREEZE(11)}, DOF\(=8\). \emph{Operative}
-post-D16: the retained subset \(\{L_{\rm Mac},L_{u_w}\}\) under \(g_\ell\) (the
-retired complement is \(\{L_{\rm pol},L_{Pu}\}\)),
-\texttt{POST\_D16\_DRIFT(7)}, DOF\(=4\) --- both tiers computed.}
+\emph{constitutive} freeze, amended by Decision~16 (P-retirement). Operative
+frozen action \(\{S_{\rm GNLS},L_{\rm Mac},L_{u_w}\}\) under \(g_\ell(w)\),
+hash-guarded (\texttt{T0\_SHEAR\_FROZEN(d9520d3819c3)}),
+\texttt{POST\_D16\_DRIFT(7)}, DOF\(=4\), \(c_\gamma^2=\mu_R/\rho_{br}\); the
+retired \(P\)-complement \(\{L_{\rm pol},L_{Pu},\lambda_{Pu}\}\) is byte-embedded
+in the frozen block as a hash-verified historical record only.}
 \stagefield{Verification}{SymPy audit:
 \StageFile{scripts/ledger_stage007_shear_surface_g0_freeze_sympy_audit.py}.
 Mathematica audit:
 \StageFile{mathematica/ledger_stage007_shear_surface_g0_freeze_mathematica_audit.wl}.}
 
 \paragraph{Status.}
-\StatusExactClosure. \textbf{The 11 freeze inputs are POSTULATED/CALIBRATED --
-the freeze freezes \emph{terms}, not gate answers.} The EARNED content is exact
-within that declared closure: (i) \emph{freeze fidelity} -- both engines
-re-extract the canonical \texttt{freeze-action} blocks by byte-exact
-fence-parsing (never fixed offsets) and assert SHA-256 equality
+\StatusExactClosure. \textbf{The operative \texttt{POST\_D16\_DRIFT(7)} inputs are
+POSTULATED/CALIBRATED -- the freeze freezes \emph{terms}, not gate answers.} The
+EARNED content is exact within that declared closure: (i) \emph{freeze fidelity}
+-- both engines re-extract the canonical \texttt{freeze-action} blocks by
+byte-exact fence-parsing (never fixed offsets) and assert SHA-256 equality
 (G0 \texttt{d9520d3819c3f7\ldots}, T0 \texttt{8fa41ac51e88\ldots}
-byte-embedded); (ii) the \emph{flat-brane linear DOF}
-\(=8\) computed from rank/nullity bookkeeping (in-plane \(u^a\)
-curl-transverse 2 + kinetic--curl 1; T0 \(P^i\) tangent 3 + radial 1;
-\(u_w\) 1; C5 \(\varphi\) \textbf{0} -- the absent longitudinal partner the
-later C5 crux attacks); (iii) the \emph{dimensional firewall} over every frozen
-term. This stage computes \textbf{no} gate verdict (Gate-L excluded; exposure
-names carried as prose provenance only) and does \textbf{not} earn light
-(Stage~003 derives the two transverse photons at
-\(c_\gamma^2=\mu_R/\rho_{br}\) from this stage's frozen \(L_{\rm Mac}\)).
+byte-embedded); (ii) the \emph{operative flat-brane linear DOF}
+\(=4\) computed from rank/nullity bookkeeping (in-plane \(u^a\)
+curl-transverse 2 + kinetic--curl 1; \(u_w\) 1; C5 \(\varphi\) \textbf{0} -- the
+absent longitudinal partner the later C5 crux attacks); (iii) the
+\emph{dimensional firewall} over every operative frozen term. This stage computes
+\textbf{no} gate verdict (Gate-L excluded; exposure names carried as prose
+provenance only) and does \textbf{not} earn light (Stage~003 derives the two
+transverse photons at \(c_\gamma^2=\mu_R/\rho_{br}\) from this stage's frozen
+\(L_{\rm Mac}\)). \emph{(The audit script additionally computes the historical
+freeze-as-run tier --- \texttt{DOF=8},
+\texttt{SECOND\_MEDIUM\_DRIFT\_AT\_FREEZE(11)} --- as verification provenance; not
+reproduced here.)}
 
 \paragraph{Decision~16 amendment (P-retirement, 2026-07-21).}
 Decision~16 retires the brane polar field \(P\) and its couplings ---
 \(L_{\rm pol}\), \(L_{Pu}\), \(\lambda_{Pu}\), and structural postulates 3/4/5
---- because every \(P\) payoff failed independently and the massless-\(P\)+\(\lambda_{Pu}\)
-baseline is Lifshitz-unstable (\texttt{INSTABILITY\_CONFIRMED\_STRUCTURAL}).
-\textbf{Route~A:} the freeze is retained as an immutable hash-anchored record
-(the historical tier still SHA-256-verifies against the unchanged reports;
-history is not falsified downward), and the retirement is a \emph{computed}
-layer --- an exact action-summand set partition
-\(\{S_{\rm GNLS},gL_{\rm Mac},gL_{u_w}\}\uplus\{L_{\rm pol},gL_{Pu}\}=\)historical
-(token \texttt{POST\_D16\_ACTION\{S\_GNLS,gL\_Mac,gL\_uw\}\_OF(d9520d3819c3)}),
-operative DOF\(=4\) (removed \(P^i\) block \(=3+1\)), and
-\texttt{POST\_D16\_DRIFT(7)}\(=\)historical\(\setminus\{\lambda_{Pu},\text{post }3/4/5\}\)
-(3 constants \(\{\rho_{br},\mu_R,\Omega_w\}\) + \(g_\ell\) + survivor postulates
-\(\{1,2,6\}\); postulate 1's annotation softened to ``intrinsic wall normal'').
-\(c_\gamma^2=\mu_R/\rho_{br}\), \(L_{\rm Mac}\), \(L_{u_w}\), \(g_\ell\), and the
-R10 reduction are untouched; \(\chi_B=|P_\parallel|^2\) (route (c)) stays a named
-high-risk future gate needing a new T0 freeze, not foreclosed.
+--- as a light-stiffness source that was tried and failed (analysis in the
+failures-paper backlog). The freeze block is unchanged on disk and both engines
+still SHA-256-verify it (the retirement is a symbolic action-summand set partition
+over the immutable hash anchor, no byte surgery; token
+\texttt{POST\_D16\_ACTION\{S\_GNLS,gL\_Mac,gL\_uw\}\_OF(d9520d3819c3)}), so the
+historical freeze-as-run record stands. Operative action
+\(\{S_{\rm GNLS},L_{\rm Mac},L_{u_w}\}\) under \(g_\ell\), DOF\(=4\),
+\texttt{POST\_D16\_DRIFT(7)} (3 constants \(\{\rho_{br},\mu_R,\Omega_w\}\) +
+\(g_\ell\) + survivor postulates \(\{1,2,6\}\); postulate 1's annotation softened
+to ``intrinsic wall normal''). \(c_\gamma^2=\mu_R/\rho_{br}\), \(L_{\rm Mac}\),
+\(L_{u_w}\), \(g_\ell\), and the R10 reduction are untouched;
+\(\chi_B=|P_\parallel|^2\) (route (c)) stays a named high-risk future gate needing
+a new T0 freeze, not foreclosed.
 
-\paragraph{The frozen action (historical; \(\{L_{\rm pol},L_{Pu}\}\) retired by Decision~16).}
-Kept operative (0 new): the GNLS parent action \(S_{\rm GNLS}\). \emph{Retired}
-(Decision~16): the T0 polar-OP action \(L_{\rm pol}\) (byte-for-byte,
-hash-embedded --- still a hash-verified historical record). Frozen brane blocks under
-\(S_{\rm brane}=\int dt\,d^4X\, g_\ell(w)\,[L_{\rm Mac}+L_{Pu}+L_{u_w}]\):
+\paragraph{The frozen action (operative; \(\{L_{\rm pol},L_{Pu},\lambda_{Pu}\}\) retired by Decision~16).}
+Kept operative (0 new): the GNLS parent action \(S_{\rm GNLS}\). The retired
+\(P\)-complement (\(L_{\rm pol}\), \(L_{Pu}\)) stays byte-embedded in the frozen
+block as a hash-verified historical record only (analysis in the failures-paper
+backlog). Operative brane blocks under
+\(S_{\rm brane}=\int dt\,d^4X\, g_\ell(w)\,[L_{\rm Mac}+L_{u_w}]\):
 \[
   L_{\rm Mac}=\tfrac12\rho_{br}(\partial_t u^a)^2-\tfrac12\mu_R\,\Omega_u^a\Omega_u^a,
   \qquad
-  L_{Pu}=-\lambda_{Pu}\,\varpi_a\,\Omega_u^a,\ \ \varpi_a:=(\hat w\times P_\parallel)_a,
+  L_{u_w}=\tfrac12\rho_{br}(\partial_t u_w)^2-\tfrac12\rho_{br}\Omega_w^2 u_w^2,
 \]
 \[
-  L_{u_w}=\tfrac12\rho_{br}(\partial_t u_w)^2-\tfrac12\rho_{br}\Omega_w^2 u_w^2,
-  \qquad
   g_\ell(w)=\frac{e^{-(w/\ell_g)^2}}{\sqrt{\pi}\,\ell_g},\ \ \int g_\ell\,dw=1
   \ \text{(derived)}.
 \]
-Preserved verbatim: \(L_{Pu}\) \emph{re-admits the \(\epsilon\)-contracted/chiral
-class excluded by T0} and requires the conceded axis \(\hat w\) -- a
-structural-postulate cost, not a free choice.
+The operative \(\hat w\) is the intrinsic wall normal (postulate 1, softened; no
+longer a concession \emph{for} the retired \(P\)--\(u\) operator).
 
 \paragraph{The drift ledger (computed).}
-Both engines enumerate the 11 and \emph{compute} the subcounts and the verdict
-string (the source gate's hardcoded literals are retired): \textbf{4 constants}
-\(\rho_{br}\,[ML^{-3}]\), \(\mu_R\,[ML^{-1}T^{-2}]\),
-\(\lambda_{Pu}\,[ML^{-1}T^{-2}]\), \(\Omega_w\,[T^{-1}]\) (table dims asserted
-against the firewall targets); \textbf{1 function} \(g_\ell(w;\ell_g)\) (fixed
-Gaussian, one width, target-blind admission); \textbf{6 structural postulates}
-(conceded \(\hat w\)+wall; free-slip \(u^a\); \(P^i\) reused as Cosserat
-reservoir; massless spin-wave baseline; the parity-even \(P\)--\(u\) operator;
-no C5 \(\varphi\)). New-field content (\(u^a\) 3 + \(u_w\) 1 = 4 DOF) is counted
-\emph{separately}. \textbf{Operative post-D16:} \texttt{POST\_D16\_DRIFT(7)}
-\(=\)historical\(\setminus\{\lambda_{Pu},\text{postulates }3/4/5\}\) --- 3
-constants \(\{\rho_{br},\mu_R,\Omega_w\}\) + \(g_\ell\) + survivor postulates
-\(\{1,2,6\}\) (a set partition, not a recount; a same-cardinality
-\(\Omega_w\)/\(\lambda_{Pu}\) swap fails the partition assert).
-\textbf{Erratum (2026-07-04), carried first-class: the historical 11
-STANDS} -- no \(\rho_{br}\) overcount (pathA\_25's \(\varrho_{br}[\rho]\)
-belongs to the closed density-smectic candidate,
-\texttt{OUT\_OF\_ACTIVE\_NG5}); \(\{\rho_{br},\mu_R\}\) carry the
-registered-pending Route-A reduction
+Both engines \emph{compute} the operative subcounts and the verdict string (the
+source gate's hardcoded literals are retired): \texttt{POST\_D16\_DRIFT(7)} =
+\textbf{3 constants} \(\rho_{br}\,[ML^{-3}]\), \(\mu_R\,[ML^{-1}T^{-2}]\),
+\(\Omega_w\,[T^{-1}]\) (table dims asserted against the firewall targets) +
+\textbf{1 function} \(g_\ell(w;\ell_g)\) (fixed Gaussian, one width, target-blind
+admission) + \textbf{3 survivor structural postulates} \(\{1,2,6\}\) (conceded
+\(\hat w\)+wall; free-slip \(u^a\); no C5 \(\varphi\)) --- derived as the set
+partition historical\(\setminus\{\lambda_{Pu},\text{postulates }3/4/5\}\) (not a
+recount; a same-cardinality \(\Omega_w\)/\(\lambda_{Pu}\) swap fails the partition
+assert). New-field content (\(u^a\) 3 + \(u_w\) 1 = 4 DOF) is counted
+\emph{separately}. \textbf{Anti-absorption (2026-07-04 erratum residue):}
+\(\{\rho_{br},\mu_R\}\) are genuine postulated shear-surface inertia/modulus
+carrying the registered-pending Route-A reduction
 (\texttt{ROUTE\_A\_UNDERDETERMINED\_MISSING\_NONLINEAR\_THROAT}, register R10);
-the honest cross-sector drift \(\{\rho_{B0},\chi_c,C_{hu}\}\) is a Part-VI
-(pathA\_41) item, guarded in-engine against absorption into the 11.
+the cross-sector drift \(\{\rho_{B0},\chi_c,C_{hu}\}\) is a Part-VI (pathA\_41)
+item, guarded in-engine against absorption here.
 
 \paragraph{Supersession and firewalls.}
 Both facts asserted: the Stage~006 \(\chi_B\) wall superseded the fixed-shape
@@ -110,13 +101,11 @@ distinct, related only by the \emph{pending} R17 projection
 Dual-engine, independent routes. After the Decision~16 amendment (2026-07-21):
 \textbf{SymPy 142 PASS / Mathematica 140 PASS}, both exit 0, CWD-independent
 (the amendment directive cleared the Codex\(\to\)Grok\(\to\)Codex bookend ---
-\texttt{DIRECTIVE\_SOUND} + \texttt{GROK\_COMPUTE\_CLEAN}). Able-to-fail teeth
-fire on both tiers: historical hash teeth, historical DOF/drift ablations, the
-historical-integrity tooth (freeze-as-run cannot be falsified down to \(4\)/\(7\)),
-the action-summand partition teeth, operative-DOF teeth (one \(P^i\) mode
-\(\to5\), full block \(\to8\); survivor ablations \(\to3\)), the operative-drift
-set-partition and same-cardinality-swap teeth, the rebased survivor
-drift-enumeration teeth, and the \(\mu_R\) firewall tooth. \emph{Fresh-agent
-tri-review of the amended scripts+docs is the next gate.} (Original
-pre-amendment build: SymPy 96 / Mathematica 94, tri-review
-\texttt{FIDELITY\_CLEAN}+\texttt{ADVERSARIAL\_CLEAN}, 26-run matrix.)
+\texttt{DIRECTIVE\_SOUND} + \texttt{GROK\_COMPUTE\_CLEAN}). Able-to-fail teeth:
+the hash fence-parse teeth, the action-summand partition teeth, operative-DOF
+teeth (one \(P^i\) mode \(\to5\), full block \(\to8\); survivor ablations
+\(\to3\)), the operative-drift set-partition and same-cardinality-swap teeth, and
+the \(\mu_R\) firewall tooth. \emph{Fresh-agent tri-review of the amended
+scripts+docs is the next gate.} (Original pre-amendment build: SymPy 96 /
+Mathematica 94, tri-review \texttt{FIDELITY\_CLEAN}+\texttt{ADVERSARIAL\_CLEAN},
+26-run matrix.)

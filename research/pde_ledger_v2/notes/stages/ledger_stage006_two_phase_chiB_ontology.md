@@ -2,16 +2,14 @@
 
 ## ⚠ Decision-16 amendment (2026-07-21) — α_aniso retired
 
-Decision 16 (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`) retires the brane polar field `P`.
-stage006's only `P`-dependent piece is the easy-plane anisotropy `α_aniso χ_B (P·ŵ)²` (pin P7) — it is **retired**:
-removed from the live A1 dimensional surface (its absence asserted, with a reinjection tooth) and from the drift
-enumeration, so **operative `DRIFT(5)`** = `{χ_B, a_B, κ_B, Γ_B, gating}`, derived as `pre_D16_DRIFT(6) ∖ {α_aniso}`
-(a set partition — not a bare recount). `α_aniso` is kept only as a **retired-historical** record (it *was*
-dimensionally homogeneous — gone by decision, not defect). Pin P7 is reframed: `χ_B` is simply **the** postulated wall
-order parameter (route (a)), NOT currently built as `|P_∥|²`; and `χ_B = |P_∥|²` (route (c)) stays a NAMED, high-risk,
-Part-VII-adjacent **future gate** requiring a new T0 freeze (obsolete-as-carried, not foreclosed). Nothing else in the
-stage changes (the recovery reduction, the θ-as-Maxwell-φ no-go, C1–C4, all other teeth stand). Dual-engine after the
-amendment: **SymPy 121 PASS / Mathematica 119 PASS**, both exit 0.
+`α_aniso` (the easy-plane anisotropy `α_aniso χ_B (P·ŵ)²`, pin P7) was retired with the polar field `P` (Decision 16,
+`software/stage1_solver/decisions/16_retire_brane_polar_field.md`; → failures-paper backlog): removed from the live A1
+dimensional surface (its absence asserted, with a reinjection tooth) and from the drift, so **operative `DRIFT(5)`** =
+`{χ_B, a_B, κ_B, Γ_B, gating}`. Pin P7 is reframed: `χ_B` is simply **the** postulated wall order parameter (route
+(a)), NOT built as `|P_∥|²`; `χ_B = |P_∥|²` (route (c)) stays a named, high-risk, Part-VII-adjacent future gate needing
+a new T0 freeze (obsolete-as-carried, not foreclosed). Everything else stands (the recovery reduction, the
+θ-as-Maxwell-φ no-go, C1–C4, all other teeth). Dual-engine after the amendment: **SymPy 121 PASS / Mathematica 119
+PASS**, both exit 0.
 
 ## Status
 
@@ -98,7 +96,7 @@ re-ordering (return). Total material is conserved; brane-ORDER is not.
 | P4 | **`SAME_DENSITY_DEGENERACY_POSTULATED`** — `f_B` is n-independent, `f_B(n,0) = f_B(n,1) = 0` (asserted). A density-split (liquid–vapor) interface is rejected as the brane: no shear ⇒ no light (the pathA_25 lesson). |
 | P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
 | P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
-| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT currently built as `|P_par|^2`. (Historically framed as `chi_B ⊥ P`, the load-bearing "wall creation and P-orientation are separate couplings" assumption; with `P` retired by Decision 16 there is no separate polar field, so `chi_B` simply stands alone.) The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED (Decision 16)** — kept only as a retired-historical dim record, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
+| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 → failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
 | P8 | Dynamics = labeled adjunct: `D_t chi_B = -M_chi mu_chi + Gamma_B`, `mu_chi = δF/δchi_B` (`M L^-2 T^-2`), `[M_chi] = L^2 T M^-1`. Energy ledger pinned to the variationally consistent `P_order = ∫ mu_chi D_t chi_B d^4X` (= `M L^2 T^-3`, power). **`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`** (see Corrections). |
 | P9 | `J_chi = 0` default (simplest advective closure); `J_chi ≠ 0` deferred, `[J_chi] = L^-3 T^-1`. |
 | P10 | Recovery target = the **frozen canonical OLD-ledger** `S_leak` (stage_243/244.tex), with `j^w ≡ n u^w` and unit-normalized `W(w)`: `[W] = L^-1`, `∫W dw = 1`. NOT the handoff restatement (which would be circular). |
@@ -254,12 +252,11 @@ CONSUMES that rule and OWNS what the χ_B ontology itself fixes:
 ## Drift, consumed inputs, carried tokens
 
 **Operative `DRIFT(5)`, computed from the enumerated list:** `{chi_B (field); a_B; kappa_B;
-Gamma_B (conversion law); the chi_B-gating structural choice}` — derived as the set partition
-`pre_D16_DRIFT(6) ∖ {alpha_aniso}` (the retired anisotropy is the only removed member; teeth: re-inject
-`alpha_aniso` → computed n=6 fires the `DRIFT==5` partition; corrupt n → token equality fires).
+Gamma_B (conversion law); the chi_B-gating structural choice}` (`alpha_aniso` retired with `P`, Decision 16 →
+failures-paper backlog; teeth: re-inject `alpha_aniso` → computed n=6 ≠ 5 fires; corrupt n → token equality fires).
 Reconciliation vs `rung_W_reframe.md:140` printed in-script (rung_W counts a
 2-constant generic well + no `Gamma_B`; the P3 one-constant `[0,1]` well + the
-live conversion law lands on the same **pre-D16 6**; Decision 16 removes only `alpha_aniso` → the operative 5). `M_chi`/`J_chi` are deferred adjuncts,
+live conversion law reconcile to the operative `DRIFT(5)`). `M_chi`/`J_chi` are deferred adjuncts,
 not live knobs. Dead θ-branch symbols (`theta, J, rho_B0, K_theta/kappa_phase,
 chi_c, B`) are NOT admitted as live knobs (`THETA_BRANCH_DEAD_NOT_ADMITTED`).
 Cross-reference: `rho_B0, chi_c` already appear in pathA_41's Part-VI drift trio

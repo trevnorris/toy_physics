@@ -118,7 +118,7 @@ folded from `docs/conceptual_foundation.md` so the ledger stands alone (goal 2).
 |---|---|---|---|---|
 | GNLS action + EOS (`P=Kρ⁵`, `c_s²=5Kρ⁴/m`) | pathA_19 (dim foundation) + pathA_20 (c_s) | RETAIN_L_T_M / C_GAMMA_RATIO_UNDERDETERMINED | EARNED (form) + CALIBRATED (λγ) | both `.wl`-only → **owe `_sympy.py`** when folded |
 | Two-phase material-state ontology (order field χ_B) | `notes/brane_bulk_handoff.md` + `docs/conceptual_foundation.md` | ACTION_SPECIFIED_CLASSIFIED | EARNED (structure) | postulated microstructure, labeled. **RECONCILED 2026-07-07:** `pathA_23_stage0` (EM-native brane-elastic fork) is DROPPED to history per §4 — its MacCullagh menu was superseded by the pathA_35 G0 freeze; the two-phase ontology here is the physically-distinct χ_B material-state closure. Fresh-authored audit (dim + recovery-reduction + θ-as-φ no-go). See `research/pde_ledger_v2/notes/part1_medium_atomic_split.md`. |
-| Order field + shear-surface freeze (LIVE) | pathA_35 (T0_SHEAR_FROZEN) | T0_SHEAR_FROZEN + SECOND_MEDIUM_DRIFT_AT_FREEZE(11) | CALIBRATED (freeze inputs) | LIVE freeze; `pathA_25_G0` density-smectic dimcheck = HISTORY (route closed), not a stage |
+| Order field + shear-surface freeze | pathA_35 (T0_SHEAR_FROZEN) | T0_SHEAR_FROZEN + POST_D16_DRIFT(7) | CALIBRATED (operative freeze inputs; DOF=4) | operative freeze `{S_GNLS,gL_Mac,gL_uw}`; the retired-`P` `L_pol`/`L_Pu`/`λ_Pu` + the historical `DRIFT(11)`/DOF=8 tier are retained in the audit script as verification provenance (→ failures backlog); `pathA_25_G0` density-smectic dimcheck = HISTORY |
 
 ### Part II — Gravity (~20–28 stages)
 | Gate row | Source gate | Verdict token | Scope | Reshape / notes |
@@ -136,24 +136,22 @@ folded from `docs/conceptual_foundation.md` so the ledger stands alone (goal 2).
 | PN ladder match-**CITE** (1PN→4PN + 2.5PN) | `research/4d_*pn*` (DOI'd papers) | (audited external corpus) | CITE-only | **no re-derivation**; cite by DOI (README) |
 | Gate 6 — branch realization | (the sim) | — | **SIM-DEFERRED** | CITED reconnaissance; the wall |
 
-### Part III — Light (~4–6 stages)
+### Part III — Light (DONE = stage003, re-scoped 2026-07-22)
+Re-scoped under the "surviving-solution only" rule: Part III = the surviving light sector = **stage003 alone** (built).
 | Gate row | Source gate | Verdict token | Scope | Notes |
 |---|---|---|---|---|
-| Light on the shear-surface brane (couple-stress structure) | pathA_35 gateL | FAIL_COUPLE_STRESS_NOGO | CHARACTERIZED-DEPARTURE | earned: brane carries light |
-| `c_γ²=μ_R/ρ_br`, 2 transverse photons | pathA_36 | FAIL_CAUCHY_STRAY_LONGITUDINAL | EARNED (2 photons) + CHARACTERIZED-DEPARTURE (stray longitudinal) | dual-engine |
+| `c_γ²=μ_R/ρ_br`, 2 transverse photons + stray longitudinal | pathA_36 → stage003 | FAIL_CAUCHY_STRAY_LONGITUDINAL (earned PASS_TRANSVERSE_UNDISTURBED) | EARNED (2 photons; `μ_R` postulated) + CHARACTERIZED-DEPARTURE (stray longitudinal) | **DONE** (dual-engine, tri-reviewed) |
+| ~~Light on the brane (couple-stress no-go)~~ | ~~pathA_35 gateL~~ | ~~FAIL_COUPLE_STRESS_NOGO~~ | — | **DROPPED from ledger** (retired-`P` post-mortem) → failures-paper backlog Exclusion 1 |
 
 ### Part IV — Charge (~2–3 stages)
 | Gate row | Source gate | Verdict token | Scope | Notes |
 |---|---|---|---|---|
-| Throat-body electric `1/r²` localized Coulomb, `±w` sign, Goldstone `h` | pathA_38 | THROAT_ELECTRIC_LOCALIZED_COULOMB | EARNED (`p=2` localization, sign) + CALIBRATED (`Q_E`) + SIM-DEFERRED (parity/compactness) | dual-engine |
+| ⚠ SUPERSEDED — re-scoped onto the puncture-deflection build | — | — | — | the old pathA_38 `THROAT_ELECTRIC_LOCALIZED_COULOMB` anchor is superseded (see `model_map.md` §3.4/§6 + the EM builds); old route → failures-paper backlog |
 
 ### Part V — Magnetism (~6–8 stages)
 | Gate row | Source gate | Verdict token | Scope | Notes |
 |---|---|---|---|---|
-| Scalar-admixture screen (stage 0/1) | pathA_39_stage01 | FAIL_OBSERVABLE_SCALAR_ADMIXTURE | CHARACTERIZED-DEPARTURE + SIM-DEFERRED | robust import-forced `h` floor (exact isolated Maxwell excluded) + density-admixture upgrade rests on sim-deferred `a_L≠0`/`q_L` |
-| Magnetic force (stage 2) | pathA_39_magnetic | MAGNETIC_FORCE_DERIVED | EARNED (sign) + SIM-DEFERRED (`aT/aL`) | dual-engine |
-| Operator parity under motion (stage 3) | pathA_39_stage3 | FAIL_UNPROTECTED_OPERATOR_PARITY_MIXING | CHARACTERIZED-DEPARTURE | dual-engine |
-| Field-coupling classification (stage 4) | pathA_39_stage4 | primary=FIELD_SCALAR_VECTOR_DEPARTURE (flags: scalar_sector_stable, density_charge_coupled, operator_parity_contamination) | EARNED (DOF count) + CHARACTERIZED-DEPARTURE | dual-engine; sector close |
+| ⚠ SUPERSEDED — re-scoped onto the moving-throat build | — | — | — | the old pathA_39 `j∝sV` scope is superseded (see `model_map.md` §3.5/§6 + the EM builds); old route → failures-paper backlog |
 
 ### Part VI — The knit (~4–6 stages)
 | Gate row | Source gate | Verdict token | Scope | Notes |
@@ -176,19 +174,15 @@ folded from `docs/conceptual_foundation.md` so the ledger stands alone (goal 2).
 
 ## 4. What is DROPPED (quarry for stray lemmas only)
 
-- **EM import `004–020`** (17 stages) — the fundamental projected-Maxwell block; superseded (our EM is emergent, NOT
-  exact Maxwell; the `S_EM[A]` scaffold is replaceable bookkeeping — diagnostic-confirmed).
 - **The ~225-stage branch-selection/optimization SEARCH tail** — non-terminating Gate-6 reconnaissance; its converged
   result is the sim-deferred citation (Part II), not the search.
 - **Charge-probe drift `219–253`** (35 stages).
-- **Superseded pathA foundations** — only `pathA_19`/`pathA_20` are carried (Part-I dim/velocity foundation);
-  `pathA_20b/21/21b/22a/22b` are reference-only. `pathA_23` (EM-native), `pathA_24` (little-arrows), `pathA_25`
-  density-smectic route-closure (incl. its `G0_DIMCHECK_PASS` — the LIVE order-field freeze is `pathA_35`'s
-  `T0_SHEAR_FROZEN`, **not** `pathA_25`), `pathA_26` (drain Derrick), `pathA_37` (retired flow-gate) all stay as
-  **history** (`docs/conceptual_history.md`), not stages. ⚠ **`pathA_24` (little-arrows) = the brane polar field `P`,
-  now formally RETIRED by Decision 16** (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`, landed
-  2026-07-21) — `P`, `λ_Pu` (+ postulates 3/4/5) drop from the stage007 G0 frozen action, and `α_aniso` from the stage006 `χ_B` action; the `χ_B=|P_∥|²` route is a named high-risk future gate,
-  obsolete-as-carried (§8).
+- **Superseded pathA foundations + the EM-import `004–020` block** — only `pathA_19`/`pathA_20` are carried (Part-I
+  dim/velocity foundation); the projected-Maxwell EM-import block (replaceable bookkeeping — our EM is emergent, not
+  exact Maxwell) and `pathA_20b/21/21b/22a/22b/23/24/25/26/37` are reference-only history
+  (`docs/conceptual_history.md`), not stages. `pathA_24` (little-arrows) = the brane polar field `P`, RETIRED by
+  Decision 16 (§8; retired-`P` post-mortems → the failures-paper backlog
+  `research/pde_ledger_v2/notes/ledger_exclusions_failures_paper_backlog.md`).
 
 ---
 
@@ -301,15 +295,9 @@ Then batch Part-by-Part; per-batch user gate (sequential audit chunks, [[feedbac
 
 - **⭐ The ledger-completeness criterion (user, 2026-07-08):** *the ledger is not complete until ONE clean equation
   set explains brane AND bulk.* The Part-VII unified parent action is the floor for this (single functional, every
-  postulated piece labeled); the prize above it is **route (c)** — χ_B as the medium's own orientational order
-  (`χ_B=|P_∥|²`), whose physical picture (per-constituent orientable micro-configuration; brane = aligned phase,
-  bulk = demagnetized-ferromagnet disorder, throat = the aligner/de-aligner) is banked in
-  `docs/conceptual_foundation.md` §7 #12. ⚠ **Decision-16 status (2026-07-21):** the brane polar field `P` is retired
-  from the frozen action (`software/stage1_solver/decisions/16_retire_brane_polar_field.md`), so `χ_B=|P_∥|²` is now
-  **OBSOLETE as a currently-carried route** — it may re-enter ONLY through a NEW T0-level freeze with its own gauntlet
-  (it is obsolete-as-carried, NOT foreclosed). **User steer preserved: hammer at this identification later in the
-  ledger** — it stays a NAMED high-risk Part-VII-adjacent future gate (full new-derivation gauntlet; high-risk,
-  neighbors falsified; a no-go is a first-class result).
+  postulated piece labeled). ⚠ `χ_B` is postulated (route (a)); the route-(c) identification `χ_B=|P_∥|²` is
+  obsolete-as-carried since Decision 16 retired the polar field `P` — it stays a NAMED, high-risk, Part-VII-adjacent
+  future gate needing a new T0 freeze (user steer: hammer at it later; a no-go is a first-class result).
 - **χ_Q reconciliation** (Part VII): `pathA_22b ≈0.712` (older minimal-combination context) vs `pathA_33 =1`
   (outgoing-DtN Hankel context) — same name, different computations. Reconcile explicitly; do **not** silently merge.
 - **The registers** (Part VII, completeness standard #4): every sim-dependent quantity

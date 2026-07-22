@@ -247,6 +247,6 @@ Named residuals -- first-class, not softened:
 
 ## Next step
 
-Stage003 (Part-II gravity return): the brane<->bulk return that shows the `r^-2`
-law survives the finite slab, together with its falsifiable return-residual
+Part-II gravity return (stage 008 onward): the brane<->bulk return that shows the
+`r^-2` law survives the finite slab, together with its falsifiable return-residual
 radiation (`pathA_29`).

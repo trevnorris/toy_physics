@@ -1,0 +1,165 @@
+\section{Stage 032: Puncture-Deflection Charge --- BC Ensembles, the Force Sign, and the Honest \texttt{R1\_REQUIRED(bc\_selection)} Landing}
+
+\stagefield{Part / anchor}{Part IV -- Charge (IV-3; the R1-LANDING stage of the 4-stage split)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{The R1-landing half of the puncture-deflection charge gate.
+Stage~031 earned the target-blind far-field STRUCTURE (\(F_X=s_1s_2A_X/4\pi R^2\),
+\(A=m_{gg}C\)); Stage~032 owns the four boundary-condition ensembles that fix the
+force \emph{sign}, shows the committed bare model does not select among them, and
+lands the honest terminal \texttt{R1\_REQUIRED(bc\_selection)}. It selects the
+class numerator \(C\) per admissible mouth BC class (the four \(A_X\)),
+characterizes the MIXED three-regime admissibility, verifies
+\(\texttt{internal\_inconsistency}=\)none (Q-AMEND consistency), runs the sealed
+\(23040\)-cell \S4 landing ladder recomputed from typed upstream facts, and
+re-homes \(Q_E\)/charge-magnitude as the co-blocker \texttt{R1\_REQUIRED(magnitude)}.
+A reshape of the \S4 landing table + the Q-BC/Q-AMEND/Q-COMBINE/Q-MAG blocks of the
+puncture-deflection source build
+(\StageFile{software/em_charge_attribute/puncture_deflection_electric_sign_result.md}
++ \texttt{check.\{py,wl\}} + \texttt{independent\_recompute.py}). Consumes Stage~031's
+\(\{m,m_{gg},\det m,S_{gg},A=m_{gg}C,1/R^2,\texttt{NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}\}\)
+and Stage~030's \(\{D,D_*=7/4\}\) by citation --- no mechanism re-derived.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage032_electric_sign_bc_ensembles_landing_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- an honest R1 landing, \emph{not} an exact closure. The electric
+SIGN is \texttt{R1\_REQUIRED(bc\_selection)}: \textbf{neither EARNED nor
+CALIBRATED}. \textbf{DECIDED} (not R1): the four coefficient formulas
+\(A_V/A_J/A_M/A_{\mathrm{MIXED}}\) \emph{given a class}, and the coupling
+\(g=g_{\chi h}\) (consumed from 031). \textbf{R1} (deferred): the class SELECTION
+among \(\{V,M,J,\mathrm{MIXED}\}\) and the ensemble data \(\{\phi,q,j,\lambda\}\).
+The strict signs \(A_V>0\) (repel), \(A_J<0\) (attract), and the strict MIXED
+regimes are CONDITIONAL on a nondegenerate response (\(m_{gg}>0\) at the
+\(z_g\ne0\) witness, \(S_{gg}>0\), nonzero magnitudes); weak (\(\ge0\)/\(\le0\)) in
+general; at \(z_g=0\) every \(A_X\) vanishes. The \textbf{magnitude}
+(\texttt{R1\_REQUIRED(magnitude)}; \(c_a,c_\xi\) unbounded at tier-A) and the
+\textbf{variant / MIXED-parameter / REPLACE-vs-ADD} selections are SEPARATE
+downstream R1 debts --- not part of the sign-class R1 and not resolved by picking a
+class. \(\texttt{internal\_inconsistency}=\)none (charge coexists with gravity;
+owned + verified here). Resolver: the SIM-DEFERRED nonlinear parent-throat boundary
+functional / barrier / map \(s\mapsto h_A\) (a sibling of gravity's R10/R30/R33).
+
+\paragraph{The four DECIDED conditional ensembles (consuming 031's \(m_{gg}\), \(S_{gg}\)).}
+Selecting the class numerator \(C\) per admissible mouth BC class, reshaped through
+031's two-mouth response \emph{without} reconstructing the response matrix or its
+\(1/R^2\) mechanism (the ownership firewall \texttt{PASS\_SCOPE\_FIREWALL} rejects
+any such re-derivation):
+\[
+  A_V=\frac{m_{gg}\phi^2}{S_{gg}^2},\quad
+  A_J=-m_{gg}(j+g)^2,\quad
+  A_M=m_{gg}(q^2-g^2),\quad
+  A_{\mathrm{MIXED}}=m_{gg}\!\left[(1-2\lambda)q^2-2\lambda qg-g^2\right].
+\]
+On a nondegenerate response (\texttt{PASS\_A\_V\_FORMULA},
+\texttt{PASS\_A\_J\_FORMULA}, \texttt{PASS\_A\_M\_FORMULA},
+\texttt{PASS\_A\_MIXED\_FORMULA}): V (Dirichlet) repels (\(A_V>0\)), J
+(fixed-source) attracts (\(A_J<0\)), M (fixed-monopole) is INDEFINITE
+(\(\mathrm{sgn}(q^2-g^2)\); \texttt{PASS\_A\_M\_INDEFINITE}), and MIXED spans. The
+weak certificates \(A_V\ge0\), \(A_J\le0\) hold generally
+(\texttt{PASS\_WEAK\_SIGNS\_GENERAL}); the strict signs hold only at the labelled
+witness (\texttt{PASS\_STRICT\_SIGNS\_NONDEGENERATE\_WITNESS}); at \(z_g=0\) all
+\(A_X=0\) and no strict assert is raised
+(\texttt{PASS\_DEGENERATE\_Z\_G\_ZERO}). Typing: \(\texttt{coefficients}=\)DECIDED,
+\(\texttt{bc\_selection}=\texttt{magnitude}=\texttt{mixed\_parameters}=\texttt{variant}=\)R1
+(\texttt{PASS\_DECIDED\_CONDITIONAL\_TYPING}).
+
+\paragraph{MIXED three-regime admissibility.}
+\(A_{\mathrm{MIXED}}\) interpolates between the endpoints \(A_M\) (\(\lambda=0\))
+and \(-m_{gg}(q+g)^2\) (\(\lambda=1\)), with the algebraic zero
+\(\lambda_*=(q-g)/2q\) (\texttt{PASS\_MIXED\_ENDPOINTS},
+\texttt{PASS\_MIXED\_INTERIOR\_ZERO}). ``Spans'' means over the FULL combined
+parameter-and-magnitude domain, NOT for every fixed \(q/g\): for \(q>g\),
+\(\lambda_*\in(0,\tfrac12)\) admissible so positive/null/negative all occur; for
+\(q=g\), the zero is only at \(\lambda=0\), negative in the interior; for \(q<g\),
+\(\lambda_*<0\) inadmissible so MIXED stays negative on \([0,1]\)
+(\texttt{PASS\_MIXED\_REGIME\_Q\_GT\_G}, \texttt{PASS\_MIXED\_REGIME\_Q\_EQ\_G},
+\texttt{PASS\_MIXED\_REGIME\_Q\_LT\_G}, \texttt{PASS\_MIXED\_FULL\_DOMAIN\_SPANS}).
+
+\paragraph{Internal consistency, typed Q-BC, and Q-COMBINE.}
+The two admissible amendments --- REPLACE (re-types the existing \(h\)-source BC,
+no new rows) and ADD (keeps the source + one core \(h\)-holding row) --- both scope
+\(S_{\mathrm{hold}}\) to \(r_B-\tfrac12\) only and preserve the 13
+\texttt{[POSTULATE]} zero rows, so the Q-AMEND sector map is empty
+\(\Rightarrow\texttt{internal\_inconsistency}=\)none
+(\texttt{PASS\_AMEND\_REPLACE}, \texttt{PASS\_AMEND\_ADD},
+\texttt{PASS\_ZERO\_LEDGER\_13}, \texttt{PASS\_S\_HOLD\_SCOPE},
+\texttt{PASS\_INTERNAL\_INCONSISTENCY\_NONE}). The committed model's actual evidence
+(admissible variation, but the missing parent-throat/boundary closure
+\texttt{NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}) classifies to
+\(\texttt{UNDETERMINED\_ANALYTICALLY}\), the four controls resolving to
+\(\{\)FIXED\_SOURCE, DIRICHLET\_VALUE, FIXED\_MONOPOLE, MIXED\(\}\)
+(\texttt{PASS\_BC\_ACTUAL\_CLASSIFIER}, the four \texttt{PASS\_BC\_*\_CONTROL},
+\texttt{PASS\_ADMISSIBLE\_CLASSES}). The REPLACE and ADD per-class totals differ, the
+realization is \texttt{variant\_unresolved}, held-\(h\) work is not double-counted,
+and the class\(\times\)variant outcomes are not all equal \(\Rightarrow
+\texttt{outcome\_not\_invariant}\) (\texttt{PASS\_REPLACE\_TOTALS},
+\texttt{PASS\_ADD\_TOTALS}, \texttt{PASS\_VARIANT\_UNRESOLVED},
+\texttt{PASS\_NO\_DOUBLE\_COUNT}, \texttt{PASS\_OUTCOME\_NOT\_INVARIANT}). \(Q_E\)/
+magnitude is re-homed as \texttt{R1\_REQUIRED(magnitude)} with all four Q-MAG hooks
+NO/UNDETERMINED (\texttt{PASS\_MAGNITUDE\_FREE\_FACTOR}, the four
+\texttt{PASS\_QMAG\_*\_HOOK}, \texttt{PASS\_MAGNITUDE\_COBLOCKER}).
+
+\paragraph{The sealed \(23040\)-cell landing \(\Rightarrow\) \texttt{R1\_REQUIRED(bc\_selection)}.}
+The exhaustive typed grid (\(5\times6\times6\times4\times2\times2\times2^3=23040\)
+cells) is classified by a first-matching-predicate ladder, cross-checked against an
+independent declarative oracle on every cell (\texttt{PASS\_VERDICT\_TOTALITY}), and
+serialized to the committed digest
+\texttt{7627417ace0f99a17187a90efa2523ca9b68df8b64f7960d38be2dc6f553ac49}
+(\texttt{PASS\_TRUTH\_TABLE\_TOTAL}, \texttt{PASS\_TRUTH\_TABLE\_COUNTS},
+\texttt{PASS\_TRUTH\_TABLE\_DIGEST}). The class gap fires BEFORE the
+variant/MIXED-parameter/tier/magnitude gaps (\texttt{PASS\_VERDICT\_PRECEDENCE}), so
+the production tuple (\(\texttt{qbc}=\texttt{UNDETERMINED\_ANALYTICALLY}\), not all
+classes agree) lands at the FIRST match \texttt{R1\_REQUIRED(bc\_selection)}
+(\texttt{PASS\_PRODUCTION\_LANDING}). The landing is RECOMPUTED from typed neutral
+upstream facts and compared against a fresh adjudication --- an injected landing
+token is rejected and a named alternative (\(\texttt{qbc}\to\)FIXED\_SOURCE)
+re-lands at \texttt{R1\_REQUIRED(sign\_and\_magnitude)}\(\ne\) the production token
+(\texttt{PASS\_LANDING\_OWNERSHIP}, \texttt{PASS\_TYPED\_NEUTRAL\_FACTS},
+\texttt{PASS\_TARGET\_BLINDNESS}). Units restored and able-to-fail:
+\([A]=EL=ML^3T^{-2}\), \([U]=E\), \([F]=EL^{-1}\)
+(\texttt{PASS\_UNITS\_A/U/F}); range controls certify the invariance classifier
+(\texttt{PASS\_RANGE\_SIGN\_FLIP/ZERO\_TOUCH/SUBDOMINANT}).
+
+\paragraph{Scope, deferrals, and first-class departures (recorded honestly).}
+(1)~The SIGN is \texttt{R1\_REQUIRED(bc\_selection)} --- the committed bare model
+(G0 + U2-unresolved \(\mathfrak{B}\) + \(S_{\mathrm{hold}}\) scoped to \(r_B-\tfrac12\))
+does not determine the mouth boundary operator, so it selects no class and picks no
+sign. (2)~The strict signs are CONDITIONAL on a nondegenerate response; weak in
+general; all \(A_X\) vanish at \(z_g=0\). (3)~The magnitude
+(\texttt{R1\_REQUIRED(magnitude)}; \(c_a,c_\xi\) unbounded at tier-A) co-blocks; the
+variant/MIXED-parameter/REPLACE-vs-ADD selections are further SEPARATE R1 debts.
+(4)~The resolver is the SIM-DEFERRED nonlinear parent-throat map \(s\mapsto h_A\)
+(sibling of R10/R30/R33); a guaranteed-nonzero amplitude needs the same core holder
+(\texttt{NONZERO\_HA\_REQUIRES\_CORE\_HOLDER}). (5)~\(\texttt{internal\_inconsistency}=\)none
+is a positive structural fact.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes:
+\textbf{SymPy 57 PASS / Mathematica 57 PASS}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]} on failure), no argparse harness,
+no JSON/YAML payload, zero file-I/O between engines; float-/machine-real-free
+payload throughout. Verdict token \texttt{R1\_REQUIRED(bc\_selection)}; co-blocker
+\texttt{R1\_REQUIRED(magnitude)}; \(\texttt{INTERNAL\_INCONSISTENCY}=\)none. The
+\texttt{.wl} is not a transliteration: native \texttt{Solve}/\texttt{Reduce} for the
+ensemble coefficients + the MIXED zero + the three-regime split, an independent
+native construction of the exhaustive \(23040\)-cell landing table + SHA-256 digest,
+and an independent landing-ladder evaluation over the typed facts; both engines
+compute the truth-table digest, the \(44\)-entry manifest partition
+(\(\{22,12,10\}\), digest
+\texttt{e2cfd11b41cdd3d95111f25215b16e917b1ce0a9623929619338a1a83fa81014}), and the
+production landing at RUNTIME and agree. \textbf{58 mutations total, each
+\texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch \texttt{LEDGER\_STAGE032\_MUTATION}):
+the 57 teeth (every folded predicate --- the four \(A_X\), the weak/strict/degenerate
+sign typing, the MIXED endpoints/interior-zero/three-regime teeth, the
+Q-AMEND/Q-BC/Q-COMBINE/Q-MAG blocks, the range controls, the units firewall, the
+exhaustive total/counts/digest, the precedence + production landing, the
+upstream-relanding ownership tooth, target-blindness, and the \(44\)-entry manifest)
+plus \texttt{MANIFEST\_MISDISPOSITION}; the landing tooth mutates an UPSTREAM fact
+and re-lands on a NAMED DIFFERENT \S4 landing, never the computed summary (the 030
+\(X\equiv X\) lesson); no vacuous or subsumed tooth. \textbf{Tri-review CLEAN:}
+fidelity + adversarial fresh-agent review CLEAN; directive Codex\(\to\)Grok\(\to\)Codex
+bookend + build + fresh-agent re-verify all CLEAN; manifest-hardening
+remediation followed by CLEAN re-verification. Verdict token
+\texttt{R1\_REQUIRED(bc\_selection)}.

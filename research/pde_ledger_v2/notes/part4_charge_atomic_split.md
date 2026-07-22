@@ -208,7 +208,7 @@ self-contained note + TeX card + registration → commit + docs/memory sync. Orc
 - **⚠ Binding requirement carried to 031:** stage 031 must own a FULL able-to-fail `PASS_BARE_MOUTH_SOURCE` reconstruction
   (∫η=1, f₀(0) from the actual profile, J_m→g_χh, `Q_χ=s`, nonzero projected source) — the puncture engine currently
   assigns f₀(0)=1/ℓ directly, so 031's reshape must add the genuine reconstruction (else the predicate falls through).
-- **031 (IV-2, MECHANISM/EARNED — 4-stage)** — ✅ **DONE + committed `4e8b7b94`** (verdict `THROAT_H_SOURCE_1_OVER_R2`,
+- **031 (IV-2, MECHANISM/EARNED — 4-stage)** — ✅ **DONE + committed `bba61c82`** (verdict `THROAT_H_SOURCE_1_OVER_R2`,
   EARNED within the postulated G0 closure). Owns: field identity `ξ_w=ℓh`; the FULL bare-mouth reconstruction (odd-kernel
   `o_ℓ` + reflection `I₋=−I₊` + the **independent generic `I₊>0` REFLECTION-DOMINANCE certification** so `Q_χ=s` is PROVED
   not `N_χ/N_χ`; the live bare forcing); exterior `h(r)=h_A a/r` + the exported `NONZERO_HA_REQUIRES_CORE_HOLDER`; the FULL

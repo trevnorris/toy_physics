@@ -15,7 +15,7 @@
   3-stage to match gravity's EARNED-vs-landing idiom; 031 splits mechanism/EARNED from the R1 sign landing). **stage 030
   (IV-1, electric scalar + localized-H closure) DONE + committed `122afe36`** (dual-engine 16/16, tri-review CLEAN through a
   remediation + reverify, register-verify CLEAN). **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
-  EARNED target-blind) ✅ DONE + committed `4e8b7b94`** (dual-engine 50/50, tri-review CLEAN ZERO remediation; the build
+  EARNED target-blind) ✅ DONE + committed `bba61c82`** (dual-engine 50/50, tri-review CLEAN ZERO remediation; the build
   honestly hit the `I₊≠0` STOP-gate → user chose OPTION A, reflection-dominance `I₊>0` Grok-B compute-verified; the 36-tooth
   source-to-stage manifest + deliverables fidelity-verify 7→CLEAN). ▶ **NEXT = 032 (IV-3, four
   BC ensembles + 23040-cell landing → `R1_REQUIRED(bc_selection)`)** directive carved (`_scratch/stage032_reshape_directive.md`);
@@ -69,7 +69,7 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 ▶ **NEXT FRONT = Part IV (charge) stage 032 (IV-3).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
 2026-07-22 morning; `part4_charge_atomic_split.md`); **stage 030 (IV-1) DONE + committed `122afe36`**; **stage 031 (IV-2,
-puncture-deflection MECHANISM) DONE + committed `4e8b7b94`** — verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED); the build
+puncture-deflection MECHANISM) DONE + committed `bba61c82`** — verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED); the build
 honestly hit the `I₊≠0` STOP-gate (source leaves `r_{Σ,+}` abstract) → user chose OPTION A (complete the G0 postulate,
 reflection-dominance `I₊>0` Grok-B compute-verified structural) → dual-engine 50/50, tri-review CLEAN, 36-tooth manifest, no
 silently-dropped source claim. **⭐ NEXT = 032 (IV-3) = the four BC ensembles + the sealed 23040-cell landing →

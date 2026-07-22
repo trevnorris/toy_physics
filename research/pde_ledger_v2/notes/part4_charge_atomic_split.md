@@ -182,9 +182,18 @@ be re-split without disturbing gravity/light.
   (unique ker(A)+`4/ℓ²` gap), `N₀=8/(3ℓ)`, `h=P₀H`, `M_h=N₀M₄`/`K₄=M₄c_E²`/`K_h=M_h c_E²`, split kernel
   `D*=7/4`+`c_±*²=(3±√2)/2`, `Q_s(0,0)=0`, Hessian symmetry, scalar-block dims. Bulk/wall/drain = out-of-scope
   UNDISCHARGED cross-sector G0 (Part VII de-dup). Deliverables: note + card + Part-IV appendix + register rows/edges
-  (R50–R53) + coverage (canonical 30, audited 29) + PDF (82pp). Register Codex-verify: **CLEAN**. Committed.
+  (R50–R53) + coverage (canonical 30, audited 29) + PDF (82pp). Register Codex-verify: **CLEAN**. **Committed `122afe36`.**
 - **⚠ Binding requirement carried to 031:** stage 031 must own a FULL able-to-fail `PASS_BARE_MOUTH_SOURCE` reconstruction
   (∫η=1, f₀(0) from the actual profile, J_m→g_χh, `Q_χ=s`, nonzero projected source) — the puncture engine currently
   assigns f₀(0)=1/ℓ directly, so 031's reshape must add the genuine reconstruction (else the predicate falls through).
-- **031 (IV-2)** — ⬜ pending (after 030 lands).
-- **032 (IV-3)** — ⬜ pending.
+- **031 (IV-2)** — ◐ **directive authored + reviewed + folded (v2), ready to resume the bookend.** Directive =
+  `_scratch/stage031_reshape_directive.md`. Codex design-review returned `NEEDS_FIXES(5_blocking)` — ALL FOLDED: (1) mouth
+  reconstruction now requires the odd-kernel `o_ℓ` + reflection proof `I₋=−I₊`/`Q_±=±1`/`N_χ≠0` (so `Q_χ=s` is PROVED not
+  `N_χ/N_χ`) + the nonzero BARE forcing `−g_χh s` (the affine term isn't everywhere nonzero); (2) a mandatory
+  source-to-stage predicate manifest (every source tooth preserved/replaced/scoped-out); (3) the landing tooth must mutate
+  an UPSTREAM fact + recompute + assert a different landing (not flip the computed summary) + pin the digest literal
+  `7627417a…`; (4) MIXED three-regime admissibility; (5) ensemble-data dims (`[φ]=[λ]=1`, `[q]=[j]=[g]=E`, `[S_gg]=E⁻¹`).
+  ▶ **STILL OWED (next session):** the rest of the bookend — Codex confirm → Grok compute-verify → final Codex confirm —
+  THEN Codex build (dual-engine + the NEW mouth reconstruction) → tri-review → finalize → commit. ⚠ Watch for tautology
+  traps (the `Q_χ=s`/`N_χ/N_χ` and landing-ownership risks are the 030-lesson analogues here).
+- **032 (IV-3)** — ⬜ pending (`NATIVE_P_NO_EMERGENT_GAUSS`, LIGHT reshape of `native_p_gate_*`; after 031).

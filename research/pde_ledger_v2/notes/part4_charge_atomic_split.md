@@ -32,7 +32,7 @@ mode of a localized parent field `H`; a mouth functional sources it orientation-
 sign = the ±w orientation** — Z₂-topological, NOT additive. Two throats interact through `h` with a far-field
 `F = s₁s₂ A/4πR²` (the `h`-mediated `1/R²`). The **falloff structure and `s₁s₂` form are target-blind EARNED** (the
 magnitude normalization is a separate **R1-deferred** open item — an unbounded core factor `c_a`,`c_ξ` at tier-A), but
-the **sign is not invariant across the admissible mouth boundary-condition ensembles** (V repel / J attract / M indefinite),
+the **sign is not invariant across the admissible mouth boundary-condition ensembles** (on a nondegenerate response: V repel / J attract / M indefinite),
 and the committed bare model does not select one → the honest terminal landing is **`R1_REQUIRED(bc_selection)`**
 (neither earned NOR calibrated; needs the sim-deferred nonlinear throat/core solve). Charge coexists with gravity on the
 same brane (`internal_inconsistency = none`, computed). And exact U(1)/Maxwell Gauss is proven **non-native**
@@ -56,7 +56,7 @@ genuinely independent route).
 | Build id | Stage | Source build + scripts | Headline verdict token | Scope | Reshape / notes |
 |---|---|---|---|---|---|
 | **030** | **IV-1** Electric scalar block + localized-`H` closure | `g0_closure_card_v0.md` §§2.3–2.4 + `g0_closure_card_v0_checks.{py,wl}` | class-(1) static PASS bundle (`PASS_LOCALIZED_H_NORM`, `PASS_REDUCED_H_INERTIA`, `PASS_STABILITY`, `PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS`, `PASS_DIMENSIONAL_HOMOGENEITY`) | **EARNED** (static prerequisites of the charge substrate): the reduced `(u_L,h)` action `S_Lh`; the parent `H` Pöschl–Teller operator `O_⊥=A†A≥0` with **one** gapless localized zero mode `f₀=1/[ℓcosh²(w/ℓ)]`, `N₀=8/(3ℓ)`, `h=P₀H`; `M_h=N₀M₄`, `K_h=N₀K₄=M_h c_E²`; the positive coupled kernel `D=B_eff K_h−C_hu²>0` (`[D]=M²T⁻⁴`) with **dimensionless witness** `D_*=7/4` and `c_±²=(3±√2)/2>0`; dim firewall. **POSTULATED** (labeled): the whole G0-v0 closure is a DRAFT-v0 postulated closure. | LIGHT. ⚠ **Fold only the charge-NEW electric-scalar sector**; the shared bulk/wall/phase pieces (`ρ,θ,r_B`) DUPLICATE Part I → cite as provenance, **de-dup DEFERRED to Part VII** (reconcile, not additive-merge). IV-1 ends at the G0 kernel stability + witness `D_*=7/4`; the response matrix `m`/`m_gg`/`z_g`/`det m` are IV-2 (puncture-deflection) objects. |
-| **031** | **IV-2** Puncture-deflection: field identity → `1/R²` force → `R1_REQUIRED(bc_selection)` | `puncture_deflection_electric_sign_result.md` (all Q-blocks + App A–E) + `puncture_deflection_electric_sign_check.{py,wl}` + `puncture_deflection_electric_sign_independent_recompute.py` | **`R1_REQUIRED(bc_selection)`** | **EARNED (target-blind structure):** field identity `ξ_w=ℓh`; live coupling reduction `−J_m Q_χ H → −g_χh Q_χ h` (since `f₀(0)=1/ℓ`); the orientation-odd mouth source `η_i(k_m h − g_χh s_i)`, `Q_χ[r_Σ,s_i]=s_i` ⇒ **charge sign = ±w Z₂ orientation**; exterior `h(r)=h_A a/r` (positive holding curvature `4π(D/B_eff)a`) ⇒ the `h`-mediated `1/R` potential / `1/R²` force with the `s₁s₂` product form. The completed-square response matrix `m` (from the puncture-deflection build) gives the pair coupling `m_gg=B_eff z_g²/D` with the Robin escape factor `z_g>0` and `det m=z_g²/D>0`. **R1 (sign):** the four admissible BC classes give **decided conditional** coefficients `A_V=m_ggφ²/S_gg²>0` (repel), `A_J=−m_gg(j+g)²<0` (attract), `A_M=m_gg(q²−g²)` (indefinite), `A_MIXED=m_gg[(1−2λ)q²−2λqg−g²]` (spans); the committed bare model (G0 + U2-unresolved `𝔅` + S_hold scoped to `r_B−½`) does not select the class ⇒ `outcome_not_invariant` ⇒ terminal **`R1_REQUIRED(bc_selection)`** — the sign is **neither EARNED nor CALIBRATED**. `internal_inconsistency = none`. Co-blocker: `R1_REQUIRED(magnitude)` (`c_a`,`c_ξ` core normalizations unbounded at tier-A). | LIGHT. The whole self-contained puncture-deflection gate (one script pair). Carry the sealed **23040-cell** exhaustive §4 landing table as the able-to-fail backbone (first-matching-predicate ladder → the production tuple lands `R1_REQUIRED(bc_selection)`). |
+| **031** | **IV-2** Puncture-deflection: field identity → `1/R²` force → `R1_REQUIRED(bc_selection)` | `puncture_deflection_electric_sign_result.md` (all Q-blocks + App A–E) + `puncture_deflection_electric_sign_check.{py,wl}` + `puncture_deflection_electric_sign_independent_recompute.py` | **`R1_REQUIRED(bc_selection)`** | **EARNED (target-blind structure):** field identity `ξ_w=ℓh`; live coupling reduction `−J_m Q_χ H → −g_χh Q_χ h` (since `f₀(0)=1/ℓ`); the orientation-odd mouth source `η_i(k_m h − g_χh s_i)`, `Q_χ[r_Σ,s_i]=s_i` ⇒ **charge sign = ±w Z₂ orientation**; exterior `h(r)=h_A a/r` (positive holding curvature `4π(D/B_eff)a`) ⇒ the `h`-mediated `1/R` potential / `1/R²` force with the `s₁s₂` product form. The completed-square response matrix `m` (from the puncture-deflection build) gives the pair coupling `m_gg=B_eff z_g²/D` with the Robin escape factor `z_g>0` and `det m=z_g²/D>0`. **R1 (sign):** the four admissible BC classes give **decided conditional** coefficients (strict signs hold on a nondegenerate response `m_gg>0`/`S_gg>0`; weak in general) `A_V=m_ggφ²/S_gg²≥0` (repel; `>0` at the witness), `A_J=−m_gg(j+g)²≤0` (attract; `<0` at the witness), `A_M=m_gg(q²−g²)` (indefinite), `A_MIXED=m_gg[(1−2λ)q²−2λqg−g²]` (spans); the committed bare model (G0 + U2-unresolved `𝔅` + S_hold scoped to `r_B−½`) does not select the class ⇒ `outcome_not_invariant` ⇒ terminal **`R1_REQUIRED(bc_selection)`** — the sign is **neither EARNED nor CALIBRATED**. `internal_inconsistency = none`. Co-blocker: `R1_REQUIRED(magnitude)` (`c_a`,`c_ξ` core normalizations unbounded at tier-A). | LIGHT. The whole self-contained puncture-deflection gate (one script pair). Carry the sealed **23040-cell** exhaustive §4 landing table as the able-to-fail backbone (first-matching-predicate ladder → the production tuple lands `R1_REQUIRED(bc_selection)`). |
 | **032** | **IV-3** `NATIVE_P_NO_EMERGENT_GAUSS` (the characterized departure) | `reports/native_p_constraint_gate.md` + `native_p_gate_sympy.py` + `native_p_gate_dual.wl` (+ `native_p_gate_compare.py`) | **`NATIVE_P_NO_EMERGENT_GAUSS`** | **CHARACTERIZED-DEPARTURE (first-class):** the genuine Dirac–Bergmann constraint-class gate — at quadratic order native-`P` theories A and C both have **FC=0** (every constraint second-class; PB rank 8 / 12, no first-class Gauss chain); the tuned rank-drop strata that carry FC directions have a **zero Gauss descendant** (`DESCENDANT_ZERO`, hardening guard PASS). Exact U(1)/Maxwell Gauss is **non-native** → "EM is NOT exact Maxwell." ⚠ **Scope (carry honestly, does not weaken the verdict):** the regular open kinetic stratum is *fully symbolic* (FC=0 for all retained couplings); the non-common tuned rank-drop locus is *argued + fixed-seed scanned* (6 representative points per theory, 12 total across A+C), NOT an exhaustive symbolic stratification — any hypothetical missed measure-zero Gauss stratum would be a TUNED/inverse-design artifact, so the physical no-go (native `P` does not *generically* host emergent EM) is decisive independently. | LIGHT. Six able-to-fail controls anchor it (Maxwell→`FIRST_CLASS_GAUSS`, gauged-hard-unit→`MIXED`, nonconserved-current→`INCONSISTENT_PRESERVATION`, Coulomb-gauge→`SECOND_CLASS_NO_LOCAL_GAUGE`, global-U(1)→`GLOBAL_CHARGE_NO_LOCAL_GAUSS`, bare-σ→`SECOND_CLASS_RADIAL_NO_GAUSS`) + per-tooth ablation (`FIRED_AT_OWN_ASSERT`). |
 
 **Net RECOMMENDED Part IV = 3 stages (030–032).** Build ids continue the global build-order sequence (Part III's
@@ -90,7 +90,7 @@ and mis-read "a self-contained gate stays one stage" — a self-contained gate (
 *derivation* has separable steps (pathA_30/32/43 each split despite being one source). The extra reshape cost is cheap
 here because 031/032 are not yet built. **Boundary:** 031 owns the mechanism (field identity `ξ_w=ℓh`, the full
 bare-mouth reconstruction `Q_χ=s`, exterior `h(r)=h_A a/r` → the `1/R²` `s₁s₂` structure, the completed-square response
-matrix `m`/`m_gg`/`z_g`/`det m`); 032 consumes 031's `m`/`m_gg`/`A_X` shells and owns the four BC ensembles + the sealed
+matrix `m`/`m_gg`/`z_g`/`det m`); 032 consumes 031's `m`/`m_gg`/`S_gg` + the neutral shell `A=m_gg C` and owns the four BC ensembles + the sealed
 23040-cell landing → `R1_REQUIRED(bc_selection)`.
 
 ---
@@ -107,7 +107,8 @@ Exclusion 2 — carried as one-line "superseded predecessor" pointers only):
 
 ⚠ **The parameter register's `Q_E` row currently reads "pending (pathA_38)"** — Part IV must **re-home** it to the
 surviving puncture-deflection build (as `R1_REQUIRED(magnitude)` reduction-debt, NOT a clean CALIB anchor), and note
-`pathA_38` → backlog. This is a register-hygiene edit the IV-2 register update carries.
+`pathA_38` → backlog. This is a register-hygiene edit the **IV-3/032** register update carries (the `Q_E`/magnitude re-home
+is 032's under the 4-stage split, alongside the `A_X`/ensemble/`internal_inconsistency` landing rows).
 
 ---
 
@@ -133,13 +134,15 @@ order). Full dual-engine-verified dims land in the per-stage `parameter_register
 | `J_m` (mouth source) | `M L³ T⁻²` (`E·L`, G0 `(3,-2,1)`) | IV-2 (031) | `ACTION` | reduced `g_χh=J_m/ℓ`, `[g_χh]=E=M L² T⁻²` (a **decided** committed coupling, NOT R1) |
 | `N_χ` (orientation-projection norm) | `L⁻¹` | IV-2 (031) | `DERIVED`/`CONV` | `Q_χ[r_Σ,s]=s` (the Z₂ orientation → sign) |
 | `D = B_eff K_h − C_hu²` (physical kernel det-block) | `M² T⁻⁴` | IV-1 (witness) → IV-2 (response) | `DERIVED` | dimensionless **witness** `D_*=7/4` (`c_±²=(3±√2)/2`); the positive-definiteness is IV-1, the response objects below are IV-2 |
-| `z_g` (Robin escape factor) | `1` | IV-2 (031) | `DERIVED` | `z_g=1−k_m⟨η,L_h⁻¹η⟩>0`; G0 witness `z_g=1` |
+| `z_g` (Robin escape factor) | `1` | IV-2 (031) | formula `DERIVED`; strict `z_g>0` **POSTULATED** (Robin-admissibility witness `z_g=1`) unless independently proved | `z_g=1−k_m⟨η,L_h⁻¹η⟩`; the source only sets a positive symbol (Codex finding 3) |
 | `m_gg = B_eff z_g²/D` (pair coupling) | `M⁻¹ L⁻¹ T²` | IV-2 (031) | `DERIVED` | the two-body response amplitude |
-| `det m = z_g²/D` | `M⁻² T⁴` | IV-2 (031) | `DERIVED` | `>0` (positive response) |
-| `A_V/A_M/A_J/A_MIXED` (force coefficients) | `[A]=EL=M L³ T⁻²` (result:178) | IV-2 (031) | `DERIVED` (**decided** conditional formulas) | computed given a class: `A_V=m_ggφ²/S_gg²`, `A_M=m_gg(q²−g²)`, `A_J=−m_gg(j+g)²`, `A_MIXED=m_gg[(1−2λ)q²−2λqg−g²]` — NOT R1; the R1 is only WHICH class holds |
-| BC-class selection + ensemble data `{φ, q, j, λ}` | — | IV-2 (031) | **R1-deferred (`bc_selection`)** | the *selection* among V/M/J/MIXED is the R1 (`outcome_not_invariant`); `{φ,q,j,λ}` parameterize the unselected classes — tracked, not counted |
+| `det m = z_g²/D` | `M⁻² T⁴` | IV-2 (031) | formula `DERIVED`; **`≥0` earned** (via `z_g²`, `D>0`); strict `>0` only at the `z_g≠0` witness (POSTULATED) | positive response at the admissible Robin witness |
+| the class numerator `C` (`A=m_gg·C`) + `A_V/A_M/A_J/A_MIXED` | `[C]=E²`; `[A]=EL=M L³ T⁻²` (result:178) | **IV-3 (032)** | `DERIVED` (**decided** conditional formulas) | ⭐ 4-stage split: 031 emits the NEUTRAL shell `A=m_gg·C` (EARNED); **032 selects `C`** per class `A_V=m_ggφ²/S_gg²`, `A_M=m_gg(q²−g²)`, `A_J=−m_gg(j+g)²`, `A_MIXED=…` — NOT R1; the **sign** R1 is only WHICH class holds (strict signs CONDITIONAL on a nondegenerate response); magnitude + MIXED-param/variant are SEPARATE downstream R1 debts |
+| `S_gg` (self-response) | `E⁻¹=M⁻¹L⁻²T²` | IV-2 (031) | `DERIVED` **only with explicit definition + tooth**, else `POSTULATED` | enters 032's `A_V`; the source only introduces it as a positive symbol — 031 must DEFINE it or label it POSTULATED (Codex finding 3) |
+| BC-class selection + ensemble data `{φ, q, j, λ}` | `[φ]=[λ]=1`, `[q]=[j]=E` | **IV-3 (032)** | **R1-deferred (`bc_selection`)** | the *selection* among V/M/J/MIXED is the R1 (`outcome_not_invariant`); `{φ,q,j,λ}` parameterize the unselected classes — tracked, not counted |
+| `internal_inconsistency = none` (Q-AMEND) | — | **IV-3 (032)** | computed | charge coexists with gravity; owned + verified at 032 (from Q-AMEND consistency), NOT 031 |
 | `s_i = ±1` (Z₂ orientation charge) | `1` | IV-2 (031) | `CONV`/structural (topological, **not a tuned knob**) | charge sign; ±w orientation, not additive |
-| `Q_E` / charge-magnitude | pending | IV-2 (031) re-home | **R1-deferred (`magnitude`)** | **re-home from pathA_38** → puncture-deflection; `c_a`,`c_ξ` unbounded at tier-A |
+| `Q_E` / charge-magnitude | pending | **IV-3 (032)** re-home | **R1-deferred (`magnitude`)** | **re-home from pathA_38** → puncture-deflection; `c_a`,`c_ξ` unbounded at tier-A |
 
 New reduction-debt edges the register gains (proposed): the electric **sign** `bc_selection` and **magnitude**
 normalization both discharge under the **shared sim-deferred nonlinear throat/core solve** (the same interior solve that
@@ -205,18 +208,28 @@ self-contained note + TeX card + registration → commit + docs/memory sync. Orc
 - **⚠ Binding requirement carried to 031:** stage 031 must own a FULL able-to-fail `PASS_BARE_MOUTH_SOURCE` reconstruction
   (∫η=1, f₀(0) from the actual profile, J_m→g_χh, `Q_χ=s`, nonzero projected source) — the puncture engine currently
   assigns f₀(0)=1/ℓ directly, so 031's reshape must add the genuine reconstruction (else the predicate falls through).
-- **031 (IV-2, MECHANISM/EARNED — re-carved 4-stage)** — ◐ **directive being re-carved from the old whole-gate v2.** The
-  earlier whole-gate v2 directive (`_scratch/stage031_reshape_directive.md`, Codex `NEEDS_FIXES(5_blocking)` ALL FOLDED)
-  is being split: 031 KEEPS the mechanism — field identity `ξ_w=ℓh`, the FULL bare-mouth reconstruction (odd-kernel `o_ℓ`
-  + reflection proof `I₋=−I₊`/`Q_±=±1`/`N_χ≠0` so `Q_χ=s` is PROVED not `N_χ/N_χ`, + the nonzero BARE forcing `−g_χh s`),
-  exterior `h(r)=h_A a/r` → the `1/R²` `s₁s₂` structure, and the completed-square response matrix `m`/`m_gg`/`z_g`/`det m`
-  — folded findings (1)(2 mechanism subset)(5 mechanism dims). Verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED, target-blind).
-  ▶ **OWED:** finish carving the two directives → rerun the Codex→Grok→Codex bookend on 031 (mechanism) → build → tri-review
-  → commit. ⚠ Watch the `Q_χ=s`/`N_χ/N_χ` tautology trap (the 030-lesson analogue lives in THIS stage's mouth source).
-- **032 (IV-3, ensembles + R1 LANDING — re-carved 4-stage)** — ⬜ directive to author from the whole-gate v2's landing half:
-  the four DECIDED conditional coefficients `A_V/A_J/A_M/A_MIXED` (consuming 031's `m_gg`), the MIXED three-regime
-  admissibility, the sealed **23040-cell** §4 landing ladder + `LANDING_OWNERSHIP` (recompute from typed upstream facts,
-  mutate an UPSTREAM fact not the computed summary) + the committed digest literal `7627417a…` → `R1_REQUIRED(bc_selection)`;
-  folded findings (3 landing-ownership)(4 MIXED). Re-home `Q_E`/magnitude here. ⚠ The landing-ownership tautology trap lives
-  in THIS stage. Rerun the bookend when authored.
+- **031 (IV-2, MECHANISM/EARNED — 4-stage)** — ✅ **DONE + committed `4e8b7b94`** (verdict `THROAT_H_SOURCE_1_OVER_R2`,
+  EARNED within the postulated G0 closure). Owns: field identity `ξ_w=ℓh`; the FULL bare-mouth reconstruction (odd-kernel
+  `o_ℓ` + reflection `I₋=−I₊` + the **independent generic `I₊>0` REFLECTION-DOMINANCE certification** so `Q_χ=s` is PROVED
+  not `N_χ/N_χ`; the live bare forcing); exterior `h(r)=h_A a/r` + the exported `NONZERO_HA_REQUIRES_CORE_HOLDER`; the FULL
+  response matrix `m` (heterogeneous dims, star `m_uu=K_h/D=4/7`); the target-blind neutral far-field shell `A=m_gg C`.
+  **Directive bookend:** Codex `FIXES_NEEDED(6)+4nits` → confirm chain 6→2→1→CLEAN → Grok compute-verify CLEAN → `BUILD_READY`.
+  **⭐ Build-1 HONESTLY HIT the `I₊≠0` STOP-gate** (the source leaves `r_{Σ,+}` an abstract `[POSTULATE]`; the source build's
+  `Q_χ=s` rested on an uncertified step); STOP triple-confirmed. **User chose OPTION A** (complete the G0 postulate): a
+  bounded, PEAK-NORMALIZED `r_{Σ,+}∈(0,1]` one-sided-sleeve representative (frozen `L_s`; NO new knob class) + certify `I₊>0`
+  generically by **REFLECTION DOMINANCE** (`D(w)≥D(−w)` for `w>0` ⇒ `I₊=∫_{w>0}o_ℓ[D(w)−D(−w)]>0`, structural not tuned;
+  even-deformation/`L_s=0`/`−w`-sleeve = load-bearing teeth; `STAGE031_STOP: I_plus_not_generic` anti-rescue fallback). Option
+  A **Grok-B compute-verified CLEAN** (certificate structural; the boundedness FAIL fixed via peak-normalization). Rebuilt
+  green: dual-engine SymPy 50 / Mathematica 50, both exit 0; **tri-review CLEAN both legs** (50/50 mutations fire, `I₊>0`
+  parameter-generic, `N_χ/N_χ` defeated), ZERO remediation. Deliverables: note (with the full **36-tooth source-to-stage
+  manifest — no silently-dropped source claim**) + card + register rows/edges **R54–R61** + coverage (canonical 31, audited
+  30) + PDF (84pp); deliverables fidelity-verify `7→CLEAN` (caught a `κ`-overclaim: the exterior stiffness is a GENERIC `κ`,
+  NOT `D/B_eff`; `z_g`/`z_b` opaque not DERIVED). ⚠ The `Q_χ=s`/`N_χ/N_χ` trap was defeated by the certified `I₊>0`.
+- **032 (IV-3, ensembles + R1 LANDING — 4-stage)** — ◐ **directive carved** (`_scratch/stage032_reshape_directive.md`):
+  the four DECIDED conditional coefficients `A_V/A_J/A_M/A_MIXED` (consuming 031's `m_gg`/`S_gg` + the neutral shell + the
+  named core-gap fact), **strict signs CONDITIONAL on a nondegenerate response**, the MIXED three-regime admissibility, the
+  sealed **23040-cell** §4 landing ladder + `LANDING_OWNERSHIP` (mutate an UPSTREAM fact, not the computed summary) + the
+  committed digest literal `7627417a…` → `R1_REQUIRED(bc_selection)` (magnitude/MIXED-param/variant = SEPARATE downstream R1
+  debts). Owns `internal_inconsistency=none` (Q-AMEND) + the `Q_E`/magnitude re-home. ⚠ The landing-ownership tautology trap
+  lives here. Bookend runs after 031 builds.
 - **033 (IV-4)** — ⬜ pending (`NATIVE_P_NO_EMERGENT_GAUSS`, LIGHT reshape of `native_p_gate_*`; after 031/032).

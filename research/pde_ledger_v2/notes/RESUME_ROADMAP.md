@@ -14,8 +14,10 @@
 - **Part IV (charge) IN PROGRESS** — **4-stage split** (user decision 2026-07-22 morning, re-granularized from the overnight
   3-stage to match gravity's EARNED-vs-landing idiom; 031 splits mechanism/EARNED from the R1 sign landing). **stage 030
   (IV-1, electric scalar + localized-H closure) DONE + committed `122afe36`** (dual-engine 16/16, tri-review CLEAN through a
-  remediation + reverify, register-verify CLEAN). ▶ **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
-  EARNED target-blind)** directive re-carved (`_scratch/stage031_reshape_directive.md`), bookend to rerun; **032 (IV-3, four
+  remediation + reverify, register-verify CLEAN). **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
+  EARNED target-blind) ✅ DONE + committed `4e8b7b94`** (dual-engine 50/50, tri-review CLEAN ZERO remediation; the build
+  honestly hit the `I₊≠0` STOP-gate → user chose OPTION A, reflection-dominance `I₊>0` Grok-B compute-verified; the 36-tooth
+  source-to-stage manifest + deliverables fidelity-verify 7→CLEAN). ▶ **NEXT = 032 (IV-3, four
   BC ensembles + 23040-cell landing → `R1_REQUIRED(bc_selection)`)** directive carved (`_scratch/stage032_reshape_directive.md`);
   **033 (IV-4, `NATIVE_P_NO_EMERGENT_GAUSS`)** pending. Plan: `part4_charge_atomic_split.md` (progress log at bottom).
 - **Not started:** Parts **V (magnetism)**, **VI (knit)**, **VII (integration)**.
@@ -65,16 +67,16 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 **Part III (light) ✅ DONE (2026-07-22)** = stage003 alone, re-scoped under the surviving-solution standing rule (§1); the `pathA_35` couple-stress no-go → failures-paper backlog. The Parts I/II graveyard-cleanup landed + committed (`327fcc7e`).
 
-▶ **NEXT FRONT = Part IV (charge) stage 031 (IV-2).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
-2026-07-22 morning; `part4_charge_atomic_split.md`) and **stage 030 (IV-1) DONE + committed `122afe36`**. **031 =
-puncture-deflection MECHANISM** (`software/em_charge_attribute/puncture_deflection_electric_sign_result.md` — `ξ_w=ℓh`, the
-mouth `χ↔h` source `Q_χ=s`, the exterior `h(r)=h_A a/r`, the completed-square response matrix `m`, and the target-blind
-EARNED far-field FORM `1/R²`·`s₁s₂`): verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED). Directive re-carved to mechanism-only
-(`_scratch/stage031_reshape_directive.md`); the Codex→Grok→Codex bookend reruns on it. ⚠ **031 carries a NEW build:** the
-FULL able-to-fail bare-mouth-source reconstruction (∫η=1, f₀(0) from profile, `g_χh=J_m/ℓ`, `Q_χ=s` computed through the ODD
-kernel — not `N_χ/N_χ`) — the source engine only *assigns* `f₀(0)=1/ℓ` (binding requirement from 030's tri-review).
-Then **032 (IV-3) = the four BC ensembles + the sealed 23040-cell landing → `R1_REQUIRED(bc_selection)`** (consumes 031's
-`m`/`m_gg`/`S_gg`; directive carved at `_scratch/stage032_reshape_directive.md`). Then **033 (IV-4) =
+▶ **NEXT FRONT = Part IV (charge) stage 032 (IV-3).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
+2026-07-22 morning; `part4_charge_atomic_split.md`); **stage 030 (IV-1) DONE + committed `122afe36`**; **stage 031 (IV-2,
+puncture-deflection MECHANISM) DONE + committed `4e8b7b94`** — verdict `THROAT_H_SOURCE_1_OVER_R2` (EARNED); the build
+honestly hit the `I₊≠0` STOP-gate (source leaves `r_{Σ,+}` abstract) → user chose OPTION A (complete the G0 postulate,
+reflection-dominance `I₊>0` Grok-B compute-verified structural) → dual-engine 50/50, tri-review CLEAN, 36-tooth manifest, no
+silently-dropped source claim. **⭐ NEXT = 032 (IV-3) = the four BC ensembles + the sealed 23040-cell landing →
+`R1_REQUIRED(bc_selection)`** (consumes 031's `m`/`m_gg`/`S_gg` + the neutral shell `A=m_gg C` + the named fact
+`NONZERO_HA_REQUIRES_CORE_HOLDER`; directive carved at `_scratch/stage032_reshape_directive.md` — rerun its Codex→Grok→Codex
+bookend, then build). ⚠ 032's tautology trap = `LANDING_OWNERSHIP` (mutate an UPSTREAM fact, not the computed summary) + the
+committed digest `7627417a…`; strict force signs CONDITIONAL on a nondegenerate response. Then **033 (IV-4) =
 `NATIVE_P_NO_EMERGENT_GAUSS`** (LIGHT reshape of `native_p_gate_*`). Then V (magnetism) per §3, then
 VI, then VII. Resolve the two parked knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.** Build authorization:

@@ -26,8 +26,9 @@ Ledger-local earned-label (NOT a source verdict token): `ELECTRIC_SCALAR_STATIC_
 This stage lays the **substrate** the charge sector is built on; it does **not** contain a force, a
 sign, or a mouth source. Charge = the static ±w throat: a particle punctures the brane into `±w`, the
 bend is the geometric field `ξ_w = ℓ h`, and `h` is the localized zero mode assembled here. The
-puncture-deflection **mechanism** (the mouth `χ↔h` source, the `1/R²` force, and the honest
-`R1_REQUIRED(bc_selection)` landing) is stage 031, which *dresses* this substrate.
+puncture-deflection **mechanism** (the mouth `χ↔h` source, the exterior `1/R²` far-field FORM) is
+stage 031, and the four BC ensembles + the honest `R1_REQUIRED(bc_selection)` landing are stage 032
+(4-stage split, 2026-07-22) — both *dress* this substrate.
 
 ## Purpose
 
@@ -308,10 +309,12 @@ No IMPOSED/CALIB value is dressed as DERIVED; consumption ≠ derivation of the 
 
 ## Downstream consumers
 
-- **`ledger_stage031` (IV-2, puncture-deflection):** consumes `f₀` (with `f₀(0) = 1/ℓ`), `N₀`, `h = P₀H`,
-  the reduced kernel `S_Lh`, and the positive block `D` (its witness `D* = 7/4` and the response objects
-  `z_g`, `m_gg = B_eff z_g²/D`, `det m = z_g²/D` are IV-2 objects). Stage 031 adds the mouth `χ↔h` source
-  and the exterior `h(r) = h_A a/r` ⇒ the `1/R²` force, landing `R1_REQUIRED(bc_selection)`.
+- **`ledger_stage031` (IV-2, puncture-deflection MECHANISM):** consumes `f₀` (with `f₀(0) = 1/ℓ`), `N₀`,
+  `h = P₀H`, the reduced kernel `S_Lh`, and the positive block `D` (its witness `D* = 7/4` and the response
+  objects `z_g`, `m_gg = B_eff z_g²/D`, `det m = z_g²/D` are IV-2 objects). Stage 031 adds the mouth `χ↔h`
+  source and the exterior `h(r) = h_A a/r` ⇒ the target-blind EARNED far-field FORM (verdict
+  `THROAT_H_SOURCE_1_OVER_R2`). *(4-stage split, 2026-07-22: the `R1_REQUIRED(bc_selection)` sign landing is
+  the SEPARATE **stage 032**, which consumes 031's `m`/`m_gg`/`S_gg` + the far-field shell.)*
 - **Parameter register:** rows added/re-homed as in the label section above; `c_E` seeded here (no cone
   lock, Part VI re-adjudicates); `B_eff` consumed (stage003 R16), not re-counted; `C_hu` gets its first
   built dim verification here.

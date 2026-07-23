@@ -1,0 +1,158 @@
+\section{Stage 036: The Route-A Maxwell--Darwin Reference Kernel (Boost of the Electric Interaction) --- \texttt{MAXWELL\_DARWIN\_REFERENCE}}
+
+\stagefield{Part / anchor}{Part V -- Magnetism (V-3; the THIRD stage of the 6-stage split -- the Route-A Maxwell--Darwin reference kernel)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Record, as an EARNED (tier-A conditional) reference-kernel
+result, what far field the moving \(\pm w\) throat produces along the boost
+route. Route A boosts the electric interaction \(U_E=s_1s_2A_E/4\pi R\):
+inverse-Fourier-transforming the Coulomb-gauge transverse projector
+\(P^T_{ij}=\delta_{ij}-k_ik_j/k^2\) over \(k^2\) reconstructs the Maxwell--Darwin
+transverse Darwin kernel
+\(\mathcal F^{-1}[P^T_{ij}/k^2]=\delta_{ij}/4\pi R-\mathcal F^{-1}[k_ik_j/k^4]
+=(\delta_{ij}+n_in_j)/8\pi R\equiv I_{ij}(R)\) (from twice-differentiating the
+radial seed \(\mathcal F^{-1}[k^{-4}]=-R/8\pi\)), and Lorentz-completing the
+electric anchor gives the general independent-velocity interaction
+\(U_A=(s_1s_2A_E/4\pi R)[1-(D_V+A_V)/2c_\gamma^2]+O(v^4/c_\gamma^4)\), with
+\(D_V=\mathbf V_1\!\cdot\!\mathbf V_2\), \(A_V=(\mathbf V_1\!\cdot\!\mathbf n)
+(\mathbf V_2\!\cdot\!\mathbf n)\), \(\mathbf n=(\mathbf X_2-\mathbf X_1)/R\).
+Route A is a \emph{boost of the electric interaction}, so the kernel and anchor
+INHERIT the electric \(A_E\) \texttt{R1\_REQUIRED(bc\_selection)} (sign +
+normalization unselected) --- the scope is EARNED (reference kernel) but
+\texttt{tier\_A\_conditional}. The imported \(A_E\) (Part~IV, R63) and \(c_\gamma\)
+(Part~III / Stage~003) are CITED --- \emph{not} earned by 036, \emph{not}
+re-counted; the magnetism-NEW content is exactly \(\{\text{the transverse Darwin
+reference kernel, the Lorentz-completed }O(v^2/c_\gamma^2)\text{ anchor}\}\).
+Surviving verdict token \texttt{MAXWELL\_DARWIN\_REFERENCE}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage036_route_a_maxwell_darwin_reference_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage036_route_a_maxwell_darwin_reference_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusExactClosure{} --- \textbf{EARNED} (reference kernel, target-blind) and
+exact-symbolic, at \texttt{tier\_A\_conditional}. What is EARNED: the inverse-FT
+reconstruction is an exact target-blind derivation of the Maxwell-consistent
+transverse Darwin kernel, and the Lorentz-completion is exact through
+\(O(v^2/c_\gamma^2)\). It is \emph{conditional} because Route A boosts the
+electric interaction, so the kernel and anchor INHERIT the electric \(A_E\)
+\texttt{R1\_REQUIRED(bc\_selection)} (sign + normalization unselected; Stage~032,
+R63) --- the structure is exact, the overall coefficient rides the open \(A_E\).
+Hence EARNED-but-conditional, \emph{not} GAPS-CLOSED. It is \emph{not} a knob,
+\emph{not} a reduction/codimension edge, and it does \textbf{not} shrink the
+irreducible count (it rides \(A_E\) + \(c_\gamma\), introducing no new knob).
+\textbf{036 produces the reference ONLY} --- the direct route (Route B), the
+structural comparison, and the boost-consistency / emergent-Lorentz result (the
+two routes matching) are Stage~037 (V-4), stated so a reader never reads 036 as
+claiming emergent Lorentz. Ledger-local earned label
+\texttt{MAXWELL\_DARWIN\_REFERENCE} at \texttt{tier\_A\_conditional}.
+
+\paragraph{The transverse Darwin kernel (\texttt{BOOST\_PROJECTOR}).}
+The Coulomb-gauge transverse projector \(P^T_{ij}(k)=\delta_{ij}-k_ik_j/k^2\)
+divided by \(k^2\) inverse-Fourier-transforms to the transverse Darwin kernel:
+\[
+  \mathcal F^{-1}\!\left[\frac{P^T_{ij}}{k^2}\right]
+  =\frac{\delta_{ij}}{4\pi R}-\mathcal F^{-1}\!\left[\frac{k_ik_j}{k^4}\right]
+  =\frac{\delta_{ij}+n_in_j}{8\pi R}\equiv I_{ij}(R),
+\]
+obtained from the radial seed \(\mathcal F^{-1}[k^{-4}]=-R/8\pi\) via
+\(\mathcal F^{-1}[k_ik_j/k^4]=-\partial_i\partial_j(-R/8\pi)
+=(\delta_{ij}-n_in_j)/8\pi R\), with \(\mathbf n=(\mathbf X_2-\mathbf X_1)/R\),
+\(R=|\mathbf X_2-\mathbf X_1|\). This is the Maxwell-consistent (Coulomb-gauge /
+Darwin) reference kernel. It is certified as a component-wise zero-difference
+object (reconstructed \(\texttt{transverse}[i,j]\) minus \((\delta_{ij}+n_in_j)/8\pi R\)
+symbolically zero, with \(n_z^2=1-n_x^2-n_y^2\)); the coefficient \(1/8\pi\) and
+the transverse \((\delta_{ij}+n_in_j)\) structure are both load-bearing.
+
+\paragraph{The Lorentz-completed anchor (\texttt{BOOST\_GENERAL\_VELOCITIES}).}
+Contracting the kernel with the independent velocities gives
+\(\mathbf V_1^{\mathsf T}I\,\mathbf V_2=(D_V+A_V)/8\pi R\), so the
+\(O(v^2/c_\gamma^2)\) interaction piece is
+\(U_{A,2}=-s_1s_2A_E(D_V+A_V)/(8\pi c_\gamma^2R)\) (the build's
+\texttt{EXPECTED\_A2}), and
+\[
+  U_A=\frac{s_1s_2A_E}{4\pi R}\!\left[1-\frac{D_V+A_V}{2c_\gamma^2}\right]
+      +O(v^4/c_\gamma^4),
+\]
+\[
+  \mathbf F_{A,2}=\frac{s_1s_2A_E}{8\pi c_\gamma^2R^2}
+    \!\left[(\mathbf V_2\!\cdot\!\mathbf n)\mathbf V_1
+     +(\mathbf V_1\!\cdot\!\mathbf n)\mathbf V_2-(D_V+3A_V)\mathbf n\right],\quad
+  F_{A,2,r}=-\frac{s_1s_2A_E(D_V+A_V)}{8\pi c_\gamma^2R^2}.
+\]
+Certified as a symbolic zero-difference \(\texttt{route\_a\_u}-\texttt{EXPECTED\_A2}=0\);
+the anchor, force, and radial expressions are reproduced and dimension-checked.
+
+\paragraph{The order structure (\texttt{BOOST\_NEXT\_ORDER}).}
+The \(O(1)\) and \(O(v^2/c_\gamma^2)\) orders are explicit; the next term
+\(O(v^4/c_\gamma^4)\) is \emph{named but NOT computed} --- the anchor's velocity
+order is exactly 2, the next order an honest R1-adjacent remainder (owned
+downstream at 038's higher-order hook). Certified as a runtime order object
+\(\texttt{velocity\_order}==2\); the mutation raises the claimed order to 4 to
+prove the tooth pins the honest truncation.
+
+\paragraph{Why \texttt{MAXWELL\_DARWIN\_REFERENCE}, tier-A conditional.}
+The kernel is fully reconstructed in tensor form and the Lorentz-completion is
+exact through \(O(v^2/c_\gamma^2)\), but the overall coefficient rides the electric
+\(A_E\), which carries \texttt{R1\_REQUIRED(bc\_selection)}. Hence
+\texttt{MAXWELL\_DARWIN\_REFERENCE} at \texttt{tier\_A\_conditional}. \textbf{The
+open electric \(A_E\) R1 is a scope tag, not a certification failure} --- production
+is \texttt{MAXWELL\_DARWIN\_REFERENCE} REGARDLESS of the open \(A_E\); an unresolved
+coefficient is not a broken kernel, so it must \emph{not} re-derive to the
+\texttt{MAXWELL\_DARWIN\_REFERENCE\_UNCERTIFIED} alternate.
+
+\paragraph{Cite-not-count discipline, dimensions (\texttt{UNITS\_RESTORED}).}
+Units RESTORED, able-to-fail, free-carrier-independent: \([I_{ij}]=L^{-1}\),
+\([A_E]=EL=ML^3T^{-2}\), \([c_\gamma^2]=L^2T^{-2}\), \([\mathbf V]=LT^{-1}\),
+\([D_V]=[A_V]=L^2T^{-2}\), \([R]=L\), \([U_A]=E=ML^2T^{-2}\),
+\([\mathbf F_{A,2}]=EL^{-1}=MLT^{-2}\), \([s]=1\), and each velocity order is
+dimensionless bookkeeping. \(A_E\) (Part~IV, R63) and \(c_\gamma\) (Stage~003) are
+CITED --- re-instantiated for the dual-engine check but \emph{not} re-derived,
+\emph{not} re-counted (de-dup deferred to Part~VII); the reference kernel introduces
+NO new irreducible knob (it rides the electric \(A_E\) R1 + the shared
+\(c_\gamma\)), and the \(O(v^4/c_\gamma^4)\) remainder is not a new knob.
+
+\paragraph{Source-to-stage manifest.}
+No silently-dropped source claim: every source tooth of the 35-tooth
+\texttt{TOOTH\_ORDER} (commit \texttt{53cf049f}) partitions
+\(\{\texttt{PRESERVED }2,\ \texttt{REPLACED\_BY\_STRONGER }4,\ \texttt{SCOPED\_OUT }29\}\)
+(35 total), manifest digest (SHA-256)
+\texttt{f8b1569834c1c5cfd404fee4fba7bc49d3d7263f332e551270ad499fd3585cac},
+computed at runtime in both engines and agreed
+(\texttt{SOURCE\_TO\_STAGE\_MANIFEST}; dropping one row fires it). The 29
+SCOPED\_OUT teeth are the V-1/V-2 (done) and V-4/V-5 source claims, each named
+literally by owner stage (Stages~034/035 done; 037/038 --- no wildcard families,
+\texttt{BOOST\_COMMON\_VELOCITY} placed in 037); V-6 (039) owns no source tooth.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes: \textbf{SymPy 8 teeth /
+Mathematica 8 teeth}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no JSON/YAML
+payload, zero file-I/O between engines. The SymPy route is a Poisson-seed Hessian
+reconstruction (the seed \(-R/8\pi\) fixed by \(\nabla^2(\text{seed}\cdot r)=-1/4\pi R\),
+then the kernel by the Cartesian Hessian \(-\partial_i\partial_j\)); the \texttt{.wl}
+is materially INDEPENDENT of \emph{both} the stage \texttt{.py} and the source
+\texttt{check.wl} (no seeded Hessian) --- an analytically-continued Riesz transform
+\(\mathcal F^{-1}[k^{-2\alpha}]=\Gamma(3/2-\alpha)R^{2\alpha-3}/(4^\alpha\pi^{3/2}\Gamma(\alpha))\)
+at \(\alpha=2\), genuine Schwinger/Gaussian momentum integrals, and a
+parallel/perpendicular velocity decomposition (no dual-engine disagreement).
+Per-tooth ablation (env switch \texttt{LEDGER\_STAGE036\_MUTATION}): all 8 teeth's
+mutations \texttt{FIRED\_AT\_OWN\_ASSERT} per engine (16 across both engines). The
+verdict tooth mutates a \emph{computed} object --- it DOUBLES the computed kernel
+(\(\texttt{verdict\_kernel}=2\cdot\texttt{KERNEL\_AT\_R}\)), recomputes the projector
+residuals, and RE-DERIVES the authored stage-local token
+\texttt{MAXWELL\_DARWIN\_REFERENCE\_UNCERTIFIED} (three negative controls ---
+projector / anchor / order --- test the else-branch; the open electric \(A_E\) R1
+still yields \texttt{MAXWELL\_DARWIN\_REFERENCE} at \texttt{tier\_A\_conditional},
+never the alternate --- the 030 \(X\equiv X\) lesson). \textbf{Tri-review: fidelity
+and adversarial CONVERGED on 2 NITs --- both can't-fail conjuncts (a
+\texttt{NEXT\_UNCOMPUTED\_ORDER==4} literal \(4==4\) ANDed into
+\texttt{BOOST\_NEXT\_ORDER}; the \texttt{dimension\_firewall} inventory
+\texttt{len==len} guard, \(13==13\)/\(29==29\)) --- both REMEDIATED (removed;
+\texttt{BOOST\_NEXT\_ORDER} still fires via the \((0,2)\)/\texttt{claimed\_order}/\(\varepsilon^4\)
+order objects, \texttt{UNITS\_RESTORED} still fires via the dimension residuals;
+manifest digest unchanged) \(\to\) CLEAN}, with one documented non-blocking note
+(verified-safe): \texttt{BOOST\_GENERAL\_VELOCITIES} bundles the
+force-derivation / component / radial residuals under one compound mutation (the
+directive's permissive scope). Arbiter re-runs reproduce the tokens and the
+manifest digest. Verdict \texttt{MAXWELL\_DARWIN\_REFERENCE} at
+\texttt{tier\_A\_conditional}.

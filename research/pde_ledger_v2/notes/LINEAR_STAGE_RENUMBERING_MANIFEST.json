@@ -1,6 +1,6 @@
 {
   "updated": "2026-07-23",
-  "canonical_stage_count": 40,
+  "canonical_stage_count": 41,
   "policy": [
     {
       "build_order_stage": "001",
@@ -313,6 +313,14 @@
       "slug": "b_t_time_reversal_even_departure",
       "final_number": "deferred",
       "note": "build-order id (V-6; the SIXTH and FINAL Part-V / magnetism stage, the CHARACTERIZED-DEPARTURE cluster of the 6-stage Part-V split (user decision 2026-07-22 RATIFIED), CLOSING the magnetism sector; surviving verdict token B_TIME_REVERSAL_EVEN. Records, first-class (never softened), the CHARACTERIZED-DEPARTURE of the magnetism sector within the postulated G0 closure: the candidate magnetic field b_T=curl u_T is time-reversal EVEN + axial, whereas a real Maxwell B is T-ODD -- a concrete not-exact-Maxwell prediction, the magnetic twin of 033's NATIVE_P_NO_EMERGENT_GAUSS ('EM is NOT exact Maxwell'); b_T is correctly AXIAL, and magnetism requires the throat's active-drain time-arrow tau_d (the full time-reverse maps drain->source). Scope class CHARACTERIZED-DEPARTURE (first-class): cites 035's parity census (PARITY_TIME_REVERSAL + PARITY_ROTATION) and authors its own b_T-axial + T-even-vs-Maxwell-T-odd asserts; NOT a knob, NOT a reduction/codimension edge, does NOT shrink the irreducible count. Departure gate ONLY: it characterizes the b_T parity that 035 recorded RAW; the sign/magnitude R1 landing is 038's, the action row / source / far-field routes are 034-037. Dual-engine SymPy 10 / Mathematica 10, both exit 0, print-only assert-zero, zero file-I/O between engines; the .wl is a genuinely INDEPENDENT route (native ReplaceAll + Cross/Det + FoldList, distinct from the .py). All 20 per-tooth mutations FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is non-tautological (re-derives to a NAMED different verdict under mutation, the 030 X==X lesson); NO can't-fail conjuncts (hardened build). Directive Codex->Grok->Codex bookend; build + arbiter re-run; tri-review recorded transparently (falsification-first): FIDELITY + ADVERSARIAL CLEAN, ZERO remediation; Codex deliverables-fidelity-verify 9-folded -> CLEAN. Cites stage 035's parity census + stage003's u_T by CITATION (no re-count); consumes NOTHING numeric from 030-034/036-038. Deliverables note + card (Part-V appendix input) + register edge R73 (the b_T=curl u_T T-even departure, DEPARTURE, discharges NO knob, NOT a reduction); Part V COMPLETE; final Part-ordered linear renumber deferred to the pre-swap pass"
+    },
+    {
+      "build_order_stage": "040",
+      "part": "VI",
+      "source_gate": "pathA_40 (software/stage1_solver/reports/pathA_40_cone_lock.md)",
+      "slug": "cone_lock_readjudication",
+      "final_number": "deferred",
+      "note": "build-order id (VI-1; the SECOND-BUILT Part-VI / knit stage of the 3-stage Part-VI split (user decision 2026-07-23 RATIFIED, build order 041->040->042 with NG5 first); surviving verdict token CONE_LOCK_CALIBRATED. Records, first-class, that the committed model imposes NO cone lock: the two locks lambda_gamma=1 (mu_R/rho_br=5 K rho^4/m) and c_E=c_gamma (c_E^2 rho_br=mu_R) are AVAILABLE calibration choices the committed model does NOT impose (both WITNESSED, Delta_r=2 codimension dim 10->8, values 5/7), CALIBRATED/UNCOMMITTED and genuinely able-to-fail (forced_lock -> CONE_LOCK_DERIVED; two NO_GO controls); r_cone=9/2 != 1 (R71) stays the open handle and c_E=c_gamma is NOT settled. Dual-engine SymPy 28 / Mathematica 28, both exit 0, print-only assert-zero, zero file-I/O between engines; the .wl is a genuinely INDEPENDENT route (native Resolve/RegionDimension/CAD, distinct from the .py Groebner/Krull). Directive Codex->Grok->Codex bookend GREEN (Grok compute-verified the numbers); tri-review CLEAN, ZERO remediation; deliverables fidelity-verify reconciled the seeded R7/R8 (IMPOSED -> CALIBRATED/UNCOMMITTED). Consumes the pathA_40 report by CITATION. Deliverables note + card (Part-VI appendix input, paper/appendices/stage_appendix_part06.tex) + register rows R78-R80 added + R7/R8 reconciled + rows 133/134 + legend updated (all discharge NO knob; Delta_r=2 is a Part-VII codimension DIAGNOSTIC). Part VI IN PROGRESS (2/3); next = stage 042 (VI-3, charge-coupled scalar); final Part-ordered linear renumber deferred to the pre-swap pass"
     },
     {
       "build_order_stage": "041",

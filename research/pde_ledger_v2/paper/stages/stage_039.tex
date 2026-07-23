@@ -1,0 +1,178 @@
+\section{Stage 039: The \texorpdfstring{$b_T=\nabla\times u_T$}{b\_T = curl u\_T} Time-Reversal-EVEN Departure --- the Characterized Departure \texttt{B\_TIME\_REVERSAL\_EVEN}}
+
+\stagefield{Part / anchor}{Part V -- Magnetism (V-6; the SIXTH and FINAL stage of the 6-stage split -- the characterized parity departure the magnetism sector carries)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Record, as a first-class characterized departure, that the
+model's candidate magnetic field \(b_T=\nabla\times u_T\) departs from exact
+Maxwell in its time-reversal parity: \(b_T\) is time-reversal \textbf{EVEN} (and
+axial), whereas a physical Maxwell \(B\) is time-reversal \textbf{ODD} (and axial).
+The parity is DERIVED from \(u_T\)'s via the curl-parity map --- the curl maps a
+\emph{polar} vector to an \emph{axial} vector and \emph{preserves} time-reversal
+parity, so \(u_T=(-1,-1,+1,\text{polar\_vector})\) (035's census,
+\texttt{PARITY\_ROTATION}/\texttt{PARITY\_TIME\_REVERSAL}) gives
+\(b_T=(-1,-1,+1,\text{axial\_vector})\). Against the Maxwell benchmark
+\(\{\text{time\_reversal}:-1,\ \text{rotation}:\text{axial\_vector}\}\) the two DIFFER in the
+time-reversal axis ONLY (\(b_T\) is correctly axial, like a real \(B\)), so the
+departure is a genuine T-parity effect, not a rotation artifact. The T-even parity
+is a consequence of the throat's active-drain time-arrow \(\tau_d\) (T-odd; 034 /
+R68) through the source \(J_T=q_T s\eta V\) (a passive T-even throat supplies no
+\(O(V)\) moving row). The magnetic twin of the charge-sector departure
+\texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS} (033 / R66) and the sibling of the
+light-sector departure \texttt{FAIL\_CAUCHY\_STRAY\_LONGITUDINAL} (Stage~003 /
+pathA\_36). The parity is DECIDED at 035; 039 CHARACTERIZES the departure (the
+Maxwell comparison + self-consistency), it does NOT re-derive the census. Reads out
+as: \textbf{``magnetism is NOT exact Maxwell.''} Verdict token
+\texttt{B\_TIME\_REVERSAL\_EVEN}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage039_b_t_time_reversal_even_departure_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage039_b_t_time_reversal_even_departure_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- a \textbf{CHARACTERIZED-DEPARTURE, recorded first-class}: a
+load-bearing prediction, NEVER softened, NEVER rescued. It is \emph{not} an exact
+closure, and equally it is \emph{not} a bug, \emph{not} a knob, \emph{not} a
+reduction, and \emph{not} an R1 deferral --- it discharges no knob and \textbf{does
+not shrink the irreducible count} (the honest departure ledger, model map \S4).
+Verdict token \texttt{B\_TIME\_REVERSAL\_EVEN} (both engines, both exit~0). The
+departure is DECIDED at the parity level while the sector \emph{magnitude/sign}
+remains R1 (038 / R72, \(q_T\) / R67, \(A_E\) / R63) --- the two live on orthogonal
+axes. This is the parity-census-level departure only (the analog of 033's quadratic
+Stage-1 gate): 039 does not execute an all-orders dynamical non-Maxwell proof, does
+not re-adjudicate the 038 landing, and does not resolve the electric/magnetic sign or
+magnitude.
+
+\paragraph{The curl-parity derivation (\texttt{B\_T\_AXIAL\_T\_EVEN}).}
+\(b_T=\nabla\times u_T\) is a spatial curl of the physical brane displacement
+\(u_T\). The curl maps polar \(\to\) axial and preserves T-parity. From 035's census,
+\(u_T=(R_w,P_w,T,\text{rotation})=(-1,-1,+1,\text{polar\_vector})\); applying the
+curl-parity map derives
+\[
+  b_T=\nabla\times u_T=(-1,-1,+1,\text{axial\_vector})\qquad(\text{axial}+\text{T-even}),
+\]
+matching 035's cited census. This is a DERIVED object, not a stored duplicate (the
+030 \(X\equiv X\) ban): the \(b_T\) side is obtained by transforming \(u_T\)'s tuple
+through the curl map, then checked against the census (corrupting the map ---
+curl preserves polar, or curl flips T-parity --- makes the derived \(b_T\) diverge
+and fires). Cites 035's \texttt{PARITY\_ROTATION} + \texttt{PARITY\_TIME\_REVERSAL};
+does not re-run them.
+
+\paragraph{The Maxwell comparison + the departure (\texttt{MAXWELL\_B\_T\_ODD\_DEPARTURE}, \texttt{DEPARTURE\_LOCALIZED\_TO\_T}).}
+A physical Maxwell \(B\) is time-reversal ODD and rotation axial --- the benchmark
+\(\{\text{time\_reversal}:-1,\ \text{rotation}:\text{axial\_vector}\}\) (no
+model-specific \(R_w\)/\(P_w\); the comparison runs over exactly
+\(\{\text{time\_reversal},\text{rotation}\}\)). The model's \(b_T\) is T-EVEN
+(\(+1\)); the two DIFFER,
+\(\texttt{departure\_holds}=(b_T^{T}\neq \text{Maxwell }B^{T})=(+1\neq-1)=\)True.
+BOTH sides are corruptible (the \(b_T\) side via the curl map / a \(u_T\) flip; the
+Maxwell benchmark side in this tooth's own ablation set to T-even) --- no bare
+\(b_T^{T}=+1\) literal. The mismatch is LOCALIZED to the time-reversal axis:
+\(b_T\)'s rotation parity (axial) AGREES with Maxwell \(B\), so the computed
+disagreement-set over \(\{\text{time\_reversal},\text{rotation}\}\) is exactly
+\(\{\text{time\_reversal}\}\) --- a genuine T-parity effect, not a rotation artifact
+(making \(b_T\) polar gains \(\text{rotation}\) in the set and fires).
+
+\paragraph{Magnetism requires the active-drain time-arrow (\texttt{ACTIVE\_DRAIN\_TIME\_ARROW\_REQUIRED}).}
+The T-even parity of \(b_T\) is a consequence of the throat being an \emph{active
+drain} with a time-arrow \(\tau_d\) (T-odd; 034 / R68). A passive T-even throat would
+not supply the \(O(V)\) moving row. The census fixes the T-parity propagation chain,
+computed by composing the \(\pm1\) T-parities:
+\[
+  \tau_d(-1)\to q_T=\lambda_T\tau_d(-1)\to J_T=q_T s\eta V\ (\text{odd}\cdot\text{even}\cdot\text{odd}=+1)
+  \to u_T(+1)\to b_T=\nabla\times u_T(+1).
+\]
+So \(b_T\) inherits its T-even parity from the active drain's T-odd arrow through the
+source. The tooth asserts the chain closes on \(b_T^{T}=+1\) \emph{given \(\tau_d\)
+T-odd} (not a stored literal); making \(\tau_d\) T-even (a passive throat) re-derives
+\(b_T\) T-odd and fires. Cites 034 / R68 + 035 \texttt{PARITY\_TIME\_REVERSAL}.
+
+\paragraph{Internal self-consistency (\texttt{DEPARTURE\_SELF\_CONSISTENT}).}
+\(b_T\)'s T-even parity is reached by two independent derivations that must AGREE ---
+the curl-inheritance path (from \(u_T\)) and the active-drain source-propagation path
+(\(\tau_d\to\cdots\to b_T\)), both \(+1\), an internal cross-check analogous to 038's
+\texttt{adjudicate == oracle}. And the parity-DECIDED departure is orthogonal to the
+sector landing: the departure's decided-axis set \(\{\text{time\_reversal}\}\) is
+DISJOINT from the cited R72 unresolved-axis set \(\{\text{sign},\text{magnitude}\}\),
+so the T-even departure neither asserts nor contradicts
+\texttt{R1\_REQUIRED(electric\_bc\_selection)}. BOTH sub-objects are independently
+able-to-fail --- evidenced by the separate computed \texttt{path\_only}/\texttt{axis\_only}
+diagnostics under ONE \texttt{DEPARTURE\_SELF\_CONSISTENT} env-switch (corrupt one derivation
+path \(\Rightarrow\) paths disagree; inject \(\text{time\_reversal}\) into the R72 set
+\(\Rightarrow\) the sets intersect) --- a genuine computed two-path agreement +
+set-disjointness, NOT a self-set framing flag.
+
+\paragraph{Scope + the departure boundary (recorded honestly).}
+039 CHARACTERIZES the departure; the \(b_T\) parity FACTS are DECIDED at 035 and
+recorded RAW there (039 cites, does not re-derive, re-adjudicate, or re-count
+\(u_T\)/\(\tau_d\)/\(q_T\)/\(b_T\)/the census; de-dup deferred to Part~VII).
+\textbf{039 is DISTINCT from 038's post-resolution cell}: 038's truth table contains a
+\texttt{MAGNETISM\_DEPARTURE\_CHARACTERIZED} landing (6 cells), reached only when
+\(\texttt{anchor}=\)closed \(\wedge\ \texttt{comparison}=\)routes\_differ --- a
+post-anchor-resolution cell, NOT 038's production landing
+(\texttt{R1\_REQUIRED(electric\_bc\_selection)}); 039's \texttt{B\_TIME\_REVERSAL\_EVEN}
+is the actual characterization. \textbf{This COMPLETES Part~V}: 034 (action row) $\to$
+035 (native source + census) $\to$ 036/037 (the two blind routes + boost-consistency)
+$\to$ 038 (sealed terminal R1 landing) $\to$ 039 (the first-class characterized
+departure).
+
+\paragraph{Source-to-stage manifest.}
+039 owns NO source-build tooth --- it REUSES 035's parity results and authors its own
+NEW \(b_T\) T-even departure assertions, cited-not-owned. Every source tooth of the
+35-tooth \texttt{TOOTH\_ORDER} (\texttt{magnetism\_moving\_throat\_check.\{py,wl\}},
+commit \texttt{53cf049f}) partitions
+\(\{\texttt{CITED }2,\ \texttt{SCOPED\_OUT }30,\ \text{build-global }3\}=35\) (same
+partition both engines; the 30 scoped-out teeth named literally by owner stage). The
+two CITED teeth are \texttt{PARITY\_TIME\_REVERSAL} (\(u_T\) T-even) +
+\texttt{PARITY\_ROTATION} (\(b_T\) axial). This \(35\) is DISTINCT from the \textbf{10
+EXECUTABLE} stage teeth (5 authored departure + 3 build-global +
+\texttt{VERDICT\_REDERIVATION} + \texttt{SOURCE\_TO\_STAGE\_MANIFEST}).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent implementations: \textbf{SymPy 10
+teeth / Mathematica 10 teeth} (\texttt{B\_T\_AXIAL\_T\_EVEN},
+\texttt{MAXWELL\_B\_T\_ODD\_DEPARTURE}, \texttt{DEPARTURE\_LOCALIZED\_TO\_T},
+\texttt{ACTIVE\_DRAIN\_TIME\_ARROW\_REQUIRED}, \texttt{DEPARTURE\_SELF\_CONSISTENT},
+\texttt{TARGET\_BLINDNESS}, \texttt{DUAL\_ENGINE\_TERMS}, \texttt{UNITS\_RESTORED},
+\texttt{VERDICT\_REDERIVATION}, \texttt{SOURCE\_TO\_STAGE\_MANIFEST}). Standalone,
+print-only, assert-zero (\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse
+harness, no JSON/YAML payload, zero file-I/O between engines; float-/machine-real-free
+integer-parity payload. Each engine derives \(b_T\)'s parity through the curl map,
+compares against the Maxwell benchmark, propagates the active-drain chain, and reaches
+\texttt{B\_TIME\_REVERSAL\_EVEN} on its own --- no dual-engine disagreement. \textbf{The
+\texttt{.wl} is genuinely independent for fixed parity integers}: the parity RESULT is
+correctly the SAME in both engines (that agreement IS the cross-engine check);
+independence lives in the derivation \emph{organization} --- the \texttt{.py}'s
+per-axis curl \emph{operator dictionary} + \(\pm1\) chain multiplication vs the
+\texttt{.wl}'s named-key \texttt{ReplaceAll} curl rules + \texttt{Cross}/\texttt{Det}
+improper-rotation classifier (\((Qa)\times(Qb)=\det(Q)\,Q(a\times b)\)) +
+\texttt{FoldList} parity propagation (NOT a port of the \texttt{.py} NOR the source
+\texttt{.wl}'s index-extraction parity checks; the fixed-parity-logic
+independence-nuance CONFIRMED at the Codex\(\to\)Grok\(\to\)Codex bookend). \textbf{20
+mutations total, each \texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch
+\texttt{LEDGER\_STAGE039\_MUTATION}): all 10 teeth per engine. \textbf{NO can't-fail
+conjuncts} --- \texttt{B\_T\_AXIAL\_T\_EVEN} derives \(b_T\) through the curl map,
+\texttt{MAXWELL\_B\_T\_ODD\_DEPARTURE} enforces the inequality against the named Maxwell
+benchmark (both sides corruptible), \texttt{ACTIVE\_DRAIN\_TIME\_ARROW\_REQUIRED}
+composes the \(\pm1\) chain, \texttt{DEPARTURE\_SELF\_CONSISTENT} is a genuine
+two-path cross-check + set-disjointness (not a self-set framing flag). \textbf{The
+verdict tooth is non-tautological} --- it mutates a COMPUTED parity object (flip \(u_T\)
+T-parity \(\Rightarrow b_T=\text{curl}(u_T)\) re-derives T-ODD; or the \(\tau_d\)-chain
+flip) and re-derives the AUTHORED stage-local counterfactual
+\texttt{COUNTERFACTUAL\_B\_TIME\_REVERSAL\_ODD\_MAXWELL\_CONSISTENT} (emitted ONLY under
+mutation, a formal non-physical hypothetical --- the model only ever produces \(b_T\)
+T-even; the counterfactual token FLAGGED for + CONFIRMED at the bookend). \textbf{Tri-review
+CLEAN:} fidelity CLEAN (the curl map genuinely derives \(b_T\) axial + T-even; the
+Maxwell benchmark correctly T-odd + axial; the disagreement set exactly
+\(\{\text{time\_reversal}\}\)) + adversarial CLEAN (every tooth fires at its own assert;
+the \texttt{.wl} confirmed independent of both the stage \texttt{.py} and the source
+\texttt{.wl}); \textbf{ZERO remediation}. Three documented non-blocking notes
+(verified-safe): (1) \texttt{MAXWELL\_B\_T\_ODD\_DEPARTURE} and
+(2)~\texttt{DEPARTURE\_SELF\_CONSISTENT} each bundle their sub-conjuncts under one
+env-switch (minor granularity vs ``ablate separately''), but each conjunct is
+independently able-to-fail (the computed \texttt{b\_side}/\texttt{maxwell\_side} and
+\texttt{path\_only}/\texttt{axis\_only} diagnostics); (3)
+\texttt{DEPARTURE\_SELF\_CONSISTENT} conjunct-2 (\texttt{decided\_axes} disjoint from
+R72's \(\{\text{sign},\text{magnitude}\}\)) is always-true in production but able-to-fail
+via corrupting the cited R72 benchmark set --- legitimate, like the Maxwell-benchmark
+side. Arbiter re-runs reproduce the derived parities and the verdict token. Verdict
+token \texttt{B\_TIME\_REVERSAL\_EVEN}.

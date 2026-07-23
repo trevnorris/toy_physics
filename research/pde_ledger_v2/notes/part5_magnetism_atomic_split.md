@@ -6,8 +6,9 @@
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** ✅ **037 (V-4, THE SECTOR CRUX) DONE + committed `c8780f00`** (see the Progress log at the bottom) → per-stage
-> pre-execution gate on **038 (V-5)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
+> **Next:** ✅ **038 (V-5, the SEALED §4 first-match 1152-cell landing) DONE + committed `177d25d7`** (see the Progress log at the
+> bottom) → per-stage pre-execution gate on **039 (V-6, the FINAL Part-V stage)** → Codex→Grok→Codex directive → build. Per-stage
+> builds proceed under the autonomy mode set at ratification.
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -294,3 +295,26 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
   the co-blocker `R1_REQUIRED(direct_moving_throat)` originates here). ▶ **NEXT = stage 038 (V-5)** — the SEALED §4 first-match
   1152-cell landing → the magnetic sign/magnitude inherit the electric R1, verdict `R1_REQUIRED(electric_bc_selection)` + 4
   co-blockers.
+- **038 (V-5, the SEALED §4 first-match 1152-cell landing → the magnetic sign/magnitude inherit the electric R1 — R1-landing)** —
+  ✅ **DONE + committed `177d25d7`** (verdict **`R1_REQUIRED(electric_bc_selection)`** + 4 co-blockers
+  **`R1_REQUIRED(direct_moving_throat)`** · **`R1_REQUIRED(magnitude)`** · **`R1_REQUIRED(consistency)`**). Records, as the
+  **R1-landing** of the magnetism sector within the postulated G0 closure, the terminal SEALED §4 landing — a **total first-match
+  precedence** adjudication over the **1152-cell** truth table (`4×3×4×3×2×2×2`) whose production tuple's first match is terminal
+  **`R1_REQUIRED(electric_bc_selection)`**; the complete blocker collector then emits **all four** honest R1 rows
+  (`electric_bc_selection` primary · `direct_moving_throat` · `magnitude` · `consistency`) ⇒ the magnetic **sign + magnitude are
+  neither independently earned nor calibrated — they INHERIT the electric R1** (informally "doubly-R1": it needs the throat solve
+  AND the electric bc selection). Emergent Lorentz is **`UNDETERMINED`** (`HOOK_LORENTZ` — the `δ_BA=0` ∧ `r_cone=1` ∧
+  closed-higher-orders conjunction is not met on committed data), and the active-flux `F_flux` (`O(V₁V₂)`) + full-force
+  integrability is R1 (`ACTIVE_FLUX_CAVEAT`). **Scope class R1-LANDING:** the landing consumes 037's comparison/ratios
+  `{r_BA, δ_BA, r_cone, ΔU}` (`QMAG_R1`) + 035/036's source/kernel by CITATION; NOT a knob, NOT a reduction, does NOT shrink the
+  irreducible count. **Landing gate ONLY:** the `b_T` T-even departure is deferred to 039 (the FINAL Part-V stage).
+  **Verification:** dual-engine SymPy 10 / Mathematica 10, both exit 0, **IDENTICAL runtime-computed cross-engine digest
+  `983556935e…`** (the `.wl` a genuinely INDEPENDENT mixed-radix + `FirstCase` + `ByteArray` route — the digest is the production
+  value, NOT a literal in the code); manifest source-to-stage partition `{PRESERVED 5, REPLACED 27, SCOPED_OUT 3}=35`; all 20
+  mutations FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is non-tautological (re-derives the build-native landings, the
+  030 X≡X lesson); ⛔ **NO can't-fail conjuncts** (hardened build). Directive Codex→Grok→Codex bookend (Codex(7)→Grok SOUND→
+  confirm); build + arbiter re-run; **tri-review (falsification-first): FIDELITY CLEAN (hand-traced first-match cascade) +
+  ADVERSARIAL CLEAN, ZERO remediation** (documented verified-safe NITs only); Codex deliverables-fidelity-verify **14-folded →
+  CLEAN**. Deliverables note + card (Part-V appendix input) + register edge **R72** (the SEALED §4 landing, R1-LANDING, no new
+  knob). ▶ **NEXT = stage 039 (V-6, the FINAL Part-V stage)** — the `b_T=∇×u_T` time-reversal-EVEN departure `B_TIME_REVERSAL_EVEN`
+  (the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS`, "EM is not exact Maxwell"), CHARACTERIZED-DEPARTURE, first-class.

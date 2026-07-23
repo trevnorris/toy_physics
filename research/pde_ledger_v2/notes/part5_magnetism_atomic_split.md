@@ -6,8 +6,8 @@
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** ✅ **036 (V-3) DONE + committed `df045a74`** (see the Progress log at the bottom) → per-stage pre-execution gate on
-> **037 (V-4)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
+> **Next:** ✅ **037 (V-4, THE SECTOR CRUX) DONE + committed `c8780f00`** (see the Progress log at the bottom) → per-stage
+> pre-execution gate on **038 (V-5)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -267,3 +267,30 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
   (Maxwell–Darwin kernel `I_ij`+anchor `U_A`, DERIVED `[L⁻¹]`, tier-A conditional on `A_E`, no new knob). ▶ **NEXT = stage 037
   (V-4)** — Route B (the direct moving-throat shear, computed BLIND) + the boost-consistency structural COMPARISON + the ratios
   (`r_BA`, `δ_BA`, `r_cone`), verdict `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)`.
+- **037 (V-4, THE SECTOR CRUX — Route B the direct moving-throat shear computed BLIND + the boost-consistency structural COMPARISON
+  + the ratios — EARNED structural relation)** — ✅ **DONE + committed `c8780f00`** (verdict **`BOOST_STRUCTURAL_RELATION_HOLDS`**
+  + co-blocker **`R1_REQUIRED(direct_moving_throat)`**). ⭐ **The Part-V crux.** Records, as an EARNED target-blind
+  structural-relation result within the postulated G0 closure, that a direct moving-throat calculation computed **BLIND** to
+  Route A (`foreign_payload=None`, built FIRST in the source code to guarantee blindness; carries `{q_T,μ_R}`, no `A_E`) —
+  `U_B=−s₁s₂q_T²(D_V+A_V)/8πμ_R R` — **INDEPENDENTLY reproduces Route A's (036) transverse Darwin tensor STRUCTURE + `R⁻¹/R⁻²`
+  FALLOFF + `O(V₁V₂)` VELOCITY ORDER**, so the boost-consistency / emergent-Lorentz structural relation **HOLDS — the model's
+  magnetism structurally IS the boost of its electricity**. Only the coefficient **ratio `r_BA=q_T²/(ρ_br·A_E)`** is open — an
+  **unresolved OUTPUT** riding the R1 throat normalization `q_T` + the R1 electric coefficient `A_E` (tagged `QMAG_R1`); emergent
+  Lorentz is **NOT** claimed (that needs `δ_BA=r_BA−1=0` AND cone `r_cone=c_E²/c_γ²=1` AND closed higher orders → deferred to 038
+  `HOOK_LORENTZ`). **Scope class EARNED (structural relation, target-blind):** the ratio EXPRESSIONS `r_BA`/`δ_BA`/`r_cone`+`ΔU`
+  are DECIDED (the comparison reuses BOTH routes), their VALUES unresolved; NOT a knob, NOT a reduction, does NOT shrink the
+  irreducible count. Route B's own magnitude co-blocker **`R1_REQUIRED(direct_moving_throat)` ORIGINATES in this stage**.
+  **Crux gate ONLY:** the SEALED §4 first-match 1152-cell landing (verdict `R1_REQUIRED(electric_bc_selection)` + 4 co-blockers)
+  is deferred to 038, the `b_T` T-even departure to 039. **Verification:** dual-engine SymPy 16 / Mathematica 16, both exit 0
+  (the `.wl` a genuinely INDEPENDENT NullSpace + trace-norm + normal-projector route, distinct from BOTH the `.py` AND the source
+  `.wl`); manifest digest `3c88849c…`, source-to-stage partition `{PRESERVED 2, REPLACED 12, SCOPED_OUT 21}=35`; all 32
+  mutations FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is non-tautological (re-derives to the authored stage-local
+  `BOOST_STRUCTURAL_RELATION_UNCERTIFIED`, the 030 X≡X lesson); ⛔ **NO can't-fail conjuncts** (hardened build). Directive
+  Codex→Grok→Codex bookend (Codex(1)→Grok(1)→confirm CLEAN); build + arbiter re-run; **tri-review (falsification-first):
+  FIDELITY + ADVERSARIAL CLEAN, ZERO remediation** (documented verified-safe NITs only); Codex deliverables-fidelity-verify
+  **10-folded (incl. the `c_E`→Part IV attribution) → CLEAN**. Consumes 036's Route-A kernel/anchor `{I_ij,U_A}` + 035's native
+  source `{J_T}` + stage003 `{c_γ,μ_R,ρ_br}` + Part-IV `{A_E}` by CITATION (no re-count). Deliverables note + card (Part-V
+  appendix input) + register edge **R71** (the ratios `r_BA`/`δ_BA`/`r_cone`+`ΔU`, DERIVED expressions / R1-valued, no new knob;
+  the co-blocker `R1_REQUIRED(direct_moving_throat)` originates here). ▶ **NEXT = stage 038 (V-5)** — the SEALED §4 first-match
+  1152-cell landing → the magnetic sign/magnitude inherit the electric R1, verdict `R1_REQUIRED(electric_bc_selection)` + 4
+  co-blockers.

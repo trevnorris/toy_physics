@@ -1,0 +1,165 @@
+\section{Stage 035: The Native Moving-Throat Source Law and Parity Census --- \texttt{CONVECTION\_LIKE\_CONDITIONAL}}
+
+\stagefield{Part / anchor}{Part V -- Magnetism (V-2; the SECOND stage of the 6-stage split -- the native source law + parity census)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Record, as an EARNED source-law + parity result, what
+current the moving \(\pm w\) throat sources. Translating the actual signed dent
+\(\sigma_i=s_i\eta_a(\mathbf x-\mathbf X_i(t))\) under local continuity
+\(\partial_t\sigma_i+\nabla\!\cdot\!(\sigma_i\mathbf V_i)=0\) fixes the unique
+isotropic local flux coefficient \(\alpha=1\), yielding the native source
+\(\mathbf I_i=s_i\eta_a\mathbf V_i\),
+\(\mathbf J_{T,i}=q_T\mathbf I_i=q_T s_i\eta_a\mathbf V_i\) with
+\(q_T=\lambda_T\tau_d\). The source is DERIVED from continuity, \emph{not}
+imported from the barred \(j\propto sV\)/pathA\_39 current
+(\texttt{SOURCE\_NOT\_IMPORTED} enforces free-symbol disjointness from the barred
+amplitudes \(\{N_u,a_T,a'_T,a_L,q_A^T,q_L\}\)). Because \(q_T\) is unfixed (R1),
+the compact limit is \texttt{CONVECTION\_LIKE\_CONDITIONAL}. The stage also
+derives the 24-cell parity census of \(\{s,\mathbf V,\tau_d/q_T,\mathbf J_T,
+\mathbf u_T,\mathbf b_T\}\) under \(R_w\)/\(P_w\)/rotation/time-reversal. The
+imported \(q_T\), \(\tau_d\), \(u_T\), \(\eta_a\) are CITED from Stage~034 /
+Stage~003 --- \emph{not} earned by 035, \emph{not} re-counted; the magnetism-NEW
+content is exactly \(\{\text{the continuity-derived source law, the parity
+census}\}\). Surviving verdict token \texttt{CONVECTION\_LIKE\_CONDITIONAL}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage035_native_source_convection_conditional_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage035_native_source_convection_conditional_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusExactClosure{} --- \textbf{EARNED} (source law + parity census,
+target-blind) and exact-symbolic. What is EARNED: signed-dent continuity fixes
+the unique isotropic flux coefficient \(\alpha=1\) and yields the native
+convective source, and the parity census is a target-blind structural fact. This
+is a \textbf{CurrentIdentity CLASSIFICATION} (the source-identity token), \emph{not}
+a sealed landing --- the sealed 1152-cell first-match landing
+(\texttt{R1\_REQUIRED(electric\_bc\_selection)} + co-blockers) is Stage~038 (V-5).
+It is \emph{not} a knob, \emph{not} a reduction/codimension edge, and it does
+\textbf{not} shrink the irreducible count. It carries \emph{no} electric
+branch/sign; the source's MAGNITUDE rides the unfixed \(q_T\) (R67), which is
+exactly why the classification is \emph{conditional}. Ledger-local earned label
+\texttt{CONVECTION\_LIKE\_CONDITIONAL}.
+
+\paragraph{The signed-dent continuity translation (\texttt{SOURCE\_TRANSLATION\_CONTINUITY}).}
+The \(\pm w\) throat is a finite signed dent
+\(\sigma_i=s_i\eta_a(\mathbf x-\mathbf X_i(t))\) rigidly translating with
+\(\mathbf X_i(t)=\mathbf X_i(0)+\mathbf V_i t\) (\(\int\eta_a=1\)). The
+translation-derivative identity is
+\(\partial_t\sigma_i=-\mathbf V_i\!\cdot\!\nabla\sigma_i\), so imposing continuity
+with a candidate isotropic local flux \(\alpha\sigma_i\mathbf V_i\) leaves
+\[
+  \partial_t\sigma_i+\nabla\!\cdot\!(\alpha\sigma_i\mathbf V_i)
+  =(\alpha-1)\sum_k V_{i,k}\,\partial_{x_k}\sigma_i,
+\]
+which vanishes for arbitrary translating profiles \emph{only} at
+\(\boxed{\alpha=1}\) (the unique root of the continuity-residual object). The
+unique local flux is the convective flux \(\sigma_i\mathbf V_i\) --- no free flux
+coefficient.
+
+\paragraph{The native source law (\texttt{SOURCE\_BASIS}, \texttt{SOURCE\_NOT\_IMPORTED}).}
+With \(\alpha=1\) fixed,
+\[
+  \mathbf I_i=s_i\eta_a\mathbf V_i,\qquad
+  \mathbf J_{T,i}=q_T\mathbf I_i=q_T s_i\eta_a\mathbf V_i,\qquad
+  q_T=\lambda_T\tau_d,
+\]
+the exact current appearing in Stage~034's coupling
+\(q_T\sum_i s_i\eta_a\mathbf V_i\!\cdot\!\mathbf u_T\), here \emph{derived} from
+continuity rather than posited. It reduces component-wise to precisely this
+continuity-flux basis (not a doubled/rescaled/ansatz basis). The native source
+\textbf{REPLACES} the barred \(j\propto sV\)/pathA\_39 current, enforced at runtime
+as a computed \textbf{free-symbol-disjointness} object: the free-symbol set of the
+computed source vector is disjoint from the barred markers
+\(\{N_u,a_T,a'_T,a_L,q_A^T,q_L\}\) --- a real free-symbol intersection, \emph{not}
+a source grep (no string-concat/\texttt{chr()} dodge defeats it). This is the
+surviving-solution discipline: the ledger shows the native source clean; the
+barred pathA\_39 scope goes to the failures-paper backlog.
+
+\paragraph{The 24-cell parity census (\texttt{PARITY\_RW}, \texttt{PARITY\_PW}, \texttt{PARITY\_ROTATION}, \texttt{PARITY\_TIME\_REVERSAL}).}
+A target-blind structural fact --- six objects \(\times\) four discrete columns,
+computed as invariants of the derived source/field:
+\[
+  \begin{array}{l|cccc}
+    \text{object} & R_w & P_w & \text{rotation} & \text{T}\\\hline
+    s\ (\pm w) & \text{odd} & \text{odd} & \text{scalar} & \text{even}\\
+    \mathbf V & \text{even} & \text{even} & \text{polar} & \text{odd}\\
+    \tau_d,\,q_T & \text{even} & \text{even} & \text{scalar} & \text{odd}\\
+    \mathbf J_T=q_T s\eta_a\mathbf V & \text{odd} & \text{odd} & \text{polar} & \text{even}\\
+    \mathbf u_T & \text{odd} & \text{odd} & \text{polar} & \text{even}\\
+    \mathbf b_T=\nabla\!\times\!\mathbf u_T & \text{odd} & \text{odd} & \text{axial} & \text{even}
+  \end{array}
+\]
+so \(\mathbf J_T,\mathbf u_T\) are \(R_w\)- and \(P_w\)-odd, \(\mathbf u_T\) is
+polar while \(\mathbf b_T\) is axial (curl of polar), and \(\tau_d,\mathbf V\) are
+T-odd while \(\mathbf J_T,\mathbf u_T\) are T-even. \textbf{\(P_w\) denotes a
+\(w\)-type reflection of the transverse coordinate}, NOT ordinary spatial parity
+\(\mathbf x\to-\mathbf x\); under that reading the \(s\), \(\nabla\), and
+\(\mathbf b_T\) assignments are self-consistent. \textbf{\(\mathbf b_T\)'s axial +
+T-even parity is recorded RAW here}; its interpretation as the "not exact Maxwell"
+DEPARTURE (\texttt{B\_TIME\_REVERSAL\_EVEN}; a physical Maxwell \(\mathbf B\) is
+T-odd) is Stage~039 (V-6), \emph{not} here.
+
+\paragraph{Why \texttt{CONVECTION\_LIKE\_CONDITIONAL}.}
+The source is fully DERIVED in tensor form --- a profile-smeared \(s\mathbf V\) ---
+but its magnitude is conditional on \(q_T=\lambda_T\tau_d\), which rides the R1
+nonlinear moving-throat solve and is \emph{not} fixed. Hence
+\texttt{CONVECTION\_LIKE\_CONDITIONAL}: convection-like tensor form, magnitude
+conditional on the unfixed \(q_T\). An unresolved magnitude is \emph{not} an
+unresolved source basis --- it does not demote the source-identity token.
+
+\paragraph{Cite-not-count discipline, dimensions (\texttt{UNITS\_RESTORED}).}
+Units RESTORED, able-to-fail, free-carrier-independent:
+\([\sigma]=[\eta_a]=L^{-3}\), \([\mathbf V]=LT^{-1}\), \([q_T]=MT^{-1}\),
+\([\mathbf I]=L^{-2}T^{-1}\), \([\mathbf J_T]=ML^{-2}T^{-2}\), \([u_T]=L\),
+\([b_T]=1\), and \(J_T=q_T s\eta_a V\) closes
+(\(MT^{-1}\cdot L^{-3}\cdot LT^{-1}=ML^{-2}T^{-2}\)); each parity assignment is
+dimensionless/structural. \(q_T=\lambda_T\tau_d\), \(\tau_d\), \(u_T\), \(\eta_a\)
+are CITED from Stage~034 (R67/R68) / Stage~003 --- re-instantiated for the
+dual-engine check but \emph{not} re-derived, \emph{not} re-counted (de-dup deferred
+to Part VII); the source law introduces NO new irreducible knob (its only free
+magnitude is R67 \(q_T\)), and the census does not shrink the irreducible count.
+
+\paragraph{Source-to-stage manifest.}
+No silently-dropped source claim: every source tooth of the 35-tooth
+\texttt{TOOTH\_ORDER} (commit \texttt{53cf049f}) partitions
+\(\{\texttt{PRESERVED }8,\ \texttt{REPLACED\_BY\_STRONGER }2,\ \texttt{SCOPED\_OUT }25\}\)
+(35 total), manifest digest (SHA-256)
+\texttt{d85de3d8f6b7d615900c8ead24f1589eed3c681e74cf546adb999f2cc7fa5b36}, computed
+at runtime in both engines and agreed (\texttt{SOURCE\_TO\_STAGE\_MANIFEST};
+dropping one row fires it). The 25 SCOPED\_OUT teeth are the V-1 (done) and
+V-3\dots V-5 source claims, each named literally by owner stage
+(Stages~034/036--038 --- no wildcard families); V-6 (039) owns no source tooth
+(it reuses 035's parity results).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes: \textbf{SymPy 12 teeth /
+Mathematica 12 teeth}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no JSON/YAML
+payload, zero file-I/O between engines. The SymPy route builds the continuity
+residual via the abstract translation identity
+\(\partial_t\sigma=-\mathbf V\!\cdot\!\nabla\sigma\) and \texttt{sp.solve}s for
+\(\alpha\); the \texttt{.wl} is INDEPENDENT --- an explicit normalized Gaussian
+mouth profile with time-dependent centers, native \texttt{D[,t]}/\texttt{Div} +
+\texttt{Reduce} for \(\alpha\), operator-generated parity transforms, and
+\texttt{Det}/\texttt{Cross} polar--axial classification (no dual-engine
+disagreement). Per-tooth ablation (env switch \texttt{LEDGER\_STAGE035\_MUTATION}):
+all 12 mutations \texttt{FIRED\_AT\_OWN\_ASSERT} per engine;
+\texttt{SOURCE\_NOT\_IMPORTED} fires when a code-native barred symbol (\texttt{Nu})
+is injected into the computed source's free-symbol set (a computed intersection,
+not a grep). The verdict tooth mutates a \emph{computed} object
+(\texttt{flux\_coefficient}=2 \(\to\) nonzero continuity residual) so the pipeline
+RE-DERIVES the build-native token \texttt{R1\_SOURCE\_BASIS} (a census flip
+re-derives \texttt{PARITY\_INCONSISTENT}; an unresolved magnitude still yields
+\texttt{CONVECTION\_LIKE\_CONDITIONAL}, never the literal --- the 030
+\(X\equiv X\) lesson). \textbf{Tri-review: fidelity found 2 NITs --- both can't-fail
+code (a guaranteed-true \texttt{structural\_cells\_ok}/\texttt{ParityStructural}
+conjunct ANDed into \texttt{UNITS\_RESTORED}; a vestigial \texttt{deriveVerdict}
+dead branch in the \texttt{.wl}) --- both REMEDIATED (removed; \texttt{UNITS\_RESTORED}
+now asserts only the able-to-fail dimension-equality and its mutation still fires;
+manifest digest unchanged) \(\to\) CLEAN; adversarial CLEAN with 3 documented
+non-blocking notes} (verified-safe): (i)~the census INPUT rows \(s\)/\(\mathbf V\)/\(\tau_d\)
+are fixed generators while DERIVED rows \(\mathbf J_T\)/\(\mathbf u_T\)/\(\mathbf b_T\)
+are propagated + mutation-tested --- the \(u_T\)-polar sub-conjunct is
+true-by-construction (the Stage-034 transversality class); (ii)~compound teeth carry
+one mutation covering sub-checks (the directive's permissive scope); (iii)~a
+cosmetic ablation-string label in the manifest tooth. Arbiter re-runs reproduce the
+tokens and the manifest digest. Verdict \texttt{CONVECTION\_LIKE\_CONDITIONAL}.

@@ -124,7 +124,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Build status (IV+V):** re-scoped onto these builds (the blueprint's pathA_38/39 scope is superseded — `pathA_39` rested on the barred `j∝sV`). **Part IV ✅ COMPLETE** (030–033); **Part V ✅ COMPLETE** (6-stage split ratified; 034 ✅ / 035 ✅ / 036 ✅ / 037 ✅ / 038 ✅ / 039 ✅ done). Both `part{4,5}_*_atomic_split.md` authored + ratified. ▶ NEXT front = Part VI (the knit).
 
-### 3.6 Knit — Part VI ⬜ not started (gates pathA_40/41/42 exist, need reshape + re-adjudication)
+### 3.6 Knit — Part VI ◐ NEXT (DRAFT split `part6_knit_atomic_split.md` authored 2026-07-23; per-Part gate + fresh read of pathA_40/41/42 pending. Gates need reshape + RE-ADJUDICATION — the cone-lock is now UNSUPPORTED: G0/magnetism don't establish `λ_γ=1`/`c_E=c_γ`, and Part V left `c_E=c_γ?` open via `r_cone`)
 
 *The knit VERIFIES "one medium, all emergent" instead of asserting it: shared cones? one irreducible parameter set with no smuggled second substance? does the propagating scalar stay consistent?*
 

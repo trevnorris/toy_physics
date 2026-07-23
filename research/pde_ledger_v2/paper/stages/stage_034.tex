@@ -1,0 +1,144 @@
+\section{Stage 034: The Moving-Throat Transverse-Vector Action Row --- \texttt{TRANSVERSE\_MOVE\_ACTION\_ROW}}
+
+\stagefield{Part / anchor}{Part V -- Magnetism (V-1; the FIRST stage of the 6-stage split -- the moving-throat action row)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Record, as an EARNED action-structure result, that magnetism
+enters the ledger as a clean \((G0+\delta)\) transverse-vector amendment.
+Importing the pathA\_36 transverse row into a G0 that has \emph{no} \(u_T\), and
+supplying the one finite-profile moving-defect coupling
+\(q_T\sum_i s_i\eta_a(x-X_i)\mathbf V_i\!\cdot\!\mathbf u_T\), gives a well-formed,
+stable row: the transverse dispersion \(\omega^2=c_\gamma^2 k^2\), a
+positive-definite transverse Hessian (two polarizations, no ghost/tachyon), and
+\emph{no} pre-existing G0 row changed
+(\texttt{internal\_inconsistency}\,=\,none). The imported row
+(\(u_T\) kinetic/gradient, \(c_\gamma^2=\mu_R/\rho_{\rm br}\)) is CITED from
+Stage~003 / pathA\_36 --- \emph{not} earned by 034, \emph{not} re-counted; the
+magnetism-NEW content is exactly \(\{\text{moving coupling},q_T,\tau_d\}\). Surviving
+verdict token \texttt{TRANSVERSE\_MOVE\_ACTION\_ROW}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage034_transverse_move_action_row_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage034_transverse_move_action_row_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusExactClosure{} --- \textbf{EARNED} (action row; \emph{imports} pathA\_36) and
+exact-symbolic \emph{within} the postulated G0 closure. What is EARNED (given the
+postulated G0 action and the imported transverse row): the row composes into a
+consistent, stable, non-damaging \((G0+\delta)\) amendment ---
+\texttt{internal\_inconsistency}\,=\,none. It is \emph{not} a knob, \emph{not} a
+reduction/codimension edge, and it does \textbf{not} shrink the irreducible count.
+It carries \emph{no} electric branch/sign: the moving row inherits the electric
+sector's open \(A_E\), and \(q_T\)'s value is the sim-deferred nonlinear-throat R1.
+This is the FIRST Part-V stage --- the \emph{action-row gate only}; the native
+source law, the parity census, both far-field routes, the boost-consistency
+comparison, the sealed landing, and the \(b_T\) T-even departure are downstream
+(Stages~035--039) and are \emph{not} claimed here. Ledger-local earned label
+\texttt{TRANSVERSE\_MOVE\_ACTION\_ROW}.
+
+\paragraph{The imported row and the transverse dispersion (\texttt{ACTION\_KINETIC}).}
+G0-v0 contains \emph{no} transverse shear DOF \(u_T\). The kinetic\,+\,gradient row
+\(\tfrac12\rho_{\rm br}|\dot{\mathbf u}_T|^2-\tfrac12\mu_R|\nabla\!\times\!\mathbf u_T|^2\)
+(with \(\nabla\!\cdot\!\mathbf u_T=0\)) is \textbf{imported verbatim from Stage~003 /
+pathA\_36}; the tooth checks the import is faithfully instantiated, \emph{not} that
+034 earns it. For a divergence-free field
+\(\nabla\!\times\!\nabla\!\times\!\mathbf u_T=-\nabla^2\mathbf u_T\), so the free
+Euler--Lagrange equation \(\rho_{\rm br}\ddot{\mathbf u}_T=\mu_R\nabla^2\mathbf u_T\)
+gives, for the two \(\mathbf k\!\cdot\!\boldsymbol\varepsilon=0\) transverse
+polarizations,
+\[
+  \rho_{\rm br}\,\omega^2=\mu_R\,k^2
+  \;\Longrightarrow\;
+  \omega^2=\frac{\mu_R}{\rho_{\rm br}}\,k^2=c_\gamma^2k^2,
+  \qquad c_\gamma^2=\frac{\mu_R}{\rho_{\rm br}}.
+\]
+
+\paragraph{The magnetism-NEW moving coupling (\texttt{ACTION\_COUPLING}).}
+The one term 034 supplies is the finite-profile moving-defect coupling
+\(q_T\sum_i s_i\eta_a(\mathbf x-\mathbf X_i)\,\mathbf V_i\!\cdot\!\mathbf u_T\) with
+\(q_T=\lambda_T\tau_d\), where \(s_i=\pm1\) is the \(\pm w\) orientation (charge
+sign), \(\eta_a\) the normalized mouth profile (\(\int\eta_a=1\)), \(\mathbf V_i\)
+the throat velocity, and \(\tau_d\) the active drain's time-arrow. It is a proper
+current\(\cdot\)field source (per-defect current \(\mathbf J_{T,i}=q_T s_i\eta_a\mathbf V_i\)),
+linear in \(\mathbf u_T\), and \textbf{target-blind} --- it carries only \(q_T\), no
+electric \(A_E\), no \(q/g\) knob, no downstream sign/landing token.
+
+\paragraph{Stability, no G0 damage, well-formedness (\texttt{ACTION\_STABILITY}, \texttt{G0\_DAMAGE}, \texttt{LEDGER\_READY\_ROW}).}
+Stability is a \emph{computed} positivity object: per transverse component the
+kinetic Hessian is \(\rho_{\rm br}I\) and the Fourier gradient Hessian is
+\(\mu_R k^2 P^T\), so with \(\rho_{\rm br},\mu_R>0\) both are
+positive-(semi)definite on the two-dimensional transverse subspace --- two
+propagating polarizations, no ghost (kinetic PD), no tachyon (\(\omega^2\ge0\)). The
+amendment, computed as a diff/overlap over the parsed G0 row set, touches
+\emph{only} the absent transverse DOF and the finite-profile moving coupling; every
+declared-zero G0 entry (scalar, drain, return \(F_{\rm flux}\), wall \(r_B\), geon,
+\dots) is byte-for-byte unchanged \(\Rightarrow\)
+\texttt{internal\_inconsistency}\,=\,none. \textbf{The active \(F_{\rm flux}\) ledger
+is NOT silently absorbed} into this conservative row --- it is named untouched and
+deferred (its \(O(V_1V_2)\) contribution is R1, Stage~038 / Part VII). The row is a
+well-formed \((G0+\delta)\) amendment: variational, local, and linear in
+\(\mathbf u_T\):
+\[
+  S_{T+\mathrm{move}}=\int dt\,d^3x\left[
+    \tfrac{\rho_{\rm br}}2|\dot{\mathbf u}_T|^2
+    -\tfrac{\mu_R}2|\nabla\!\times\!\mathbf u_T|^2
+    +q_T\sum_i s_i\eta_a(\mathbf x-\mathbf X_i)\mathbf V_i\!\cdot\!\mathbf u_T
+  \right],\quad \nabla\!\cdot\!\mathbf u_T=0.
+\]
+
+\paragraph{The dimensional identity (\texttt{FIELD\_IDENTITY\_UNITS}).}
+Units RESTORED, able-to-fail. The preregistered field is the shear
+\emph{displacement} \(u_T\) (\([u_T]=L\)); the curl candidate
+\(\mathbf b_T=\nabla\!\times\!\mathbf u_T\) is \emph{dimensionless} (its
+parity/departure is Stage~039, not here). The eight dimensions
+\([u_T]=L\), \([\dot{\mathbf u}_T]=LT^{-1}\), \([\nabla\!\times\!\mathbf u_T]=1\),
+\([\rho_{\rm br}]=ML^{-3}\), \([\mu_R]=ML^{-1}T^{-2}\,(=EL^{-3})\),
+\([q_T]=MT^{-1}\), \([\eta_a]=L^{-3}\), \([b_T]=1\) make each action density term
+\(EL^{-3}\) (e.g.\ \(q_T s\eta_a\mathbf V\!\cdot\!\mathbf u_T\):
+\(MT^{-1}\cdot L^{-3}\cdot LT^{-1}\cdot L=ML^{-1}T^{-2}=EL^{-3}\)), so
+\([S_{T+\mathrm{move}}]=[E\!\cdot\!T]\) (action).
+
+\paragraph{Import-vs-earn discipline (\texttt{GUARD\_IMPORT\_VS\_EARN}).}
+A computed anti-overclaim accounting object enforces
+\(\texttt{earned\_new\_terms}=\{\text{moving coupling}\}\) and
+\(\texttt{imported\_terms}\supseteq\{u_T\text{ kinetic},\,\text{gradient},\,c_\gamma\}\):
+the imported pathA\_36 row is TAGGED provenance, not counted as a 034 earn (\(\{u_T,
+\mu_R,c_\gamma,\rho_{\rm br}\}\) not re-added to the irreducible set; de-dup deferred
+to Part VII). Mutating the accounting to claim the kinetic row as a 034 earn fires
+the guard.
+
+\paragraph{Source-to-stage manifest.}
+No silently-dropped source claim: every source tooth of the 35-tooth
+\texttt{TOOTH\_ORDER} (commit \texttt{53cf049f}) partitions
+\(\{\texttt{PRESERVED }1,\ \texttt{REPLACED\_BY\_STRONGER }8,\ \texttt{SCOPED\_OUT }26\}\)
+(35 total), manifest digest (SHA-256)
+\texttt{4343bd60cd974f653a0a8ac2eeced6c7aca15b1831c81be20bd358f449c454af}, computed
+at runtime in both engines and agreed (\texttt{SOURCE\_TO\_STAGE\_MANIFEST}; dropping
+one row fires it). The 26 SCOPED\_OUT teeth are the V-2\dots V-5 source claims, each
+named literally by owner stage (Stages~035--038 --- no wildcard families).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes: \textbf{SymPy 12 teeth /
+Mathematica 12 teeth}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no JSON/YAML
+payload, zero file-I/O between engines. The SymPy route checks transverse stability
+via explicit kinetic/gradient Hessians + a generalized-eigenvalue dispersion; the
+\texttt{.wl} is INDEPENDENT --- a \texttt{NullSpace} transverse Fourier basis,
+\texttt{CoefficientArrays} quadratic forms, \texttt{PositiveDefiniteMatrixQ}, and
+native dispersion solves; each engine decomposes its OWN action density (no
+dual-engine disagreement). Per-tooth ablation (env switch
+\texttt{LEDGER\_STAGE034\_MUTATION}): all 12 mutations \texttt{FIRED\_AT\_OWN\_ASSERT}
+per engine; the verdict tooth mutates a \emph{computed} object (\(\rho_{\rm br}\)
+sign \(\to\) non-PD Hessian) so the pipeline RE-DERIVES the named token
+\texttt{ROW\_UNSTABLE} (never the \texttt{TRANSVERSE\_MOVE\_ACTION\_ROW} literal ---
+the 030 \(X\equiv X\) lesson), and \texttt{GUARD\_IMPORT\_VS\_EARN} fires when the
+imported row is claimed as a 034 earn. \textbf{Tri-review: fidelity found 1 NIT (a
+dead \(X\equiv X\) clause in the \texttt{.wl} \texttt{dimensionObject}) --- REMEDIATED
+(dimensions now computed via logarithmic derivatives of the \texttt{.wl}'s
+independently-rescaled density/action; its \texttt{FIELD\_IDENTITY\_UNITS} mutation
+now fires) \(\to\) CLEAN; adversarial CLEAN with 2 documented non-blocking coverage
+notes} (verified-safe): (i)~two \texttt{ACTION\_KINETIC} sub-conjuncts are
+true-by-construction (orthogonal basis / \texttt{NullSpace}) but ride a genuinely
+able-to-fail coefficient/dispersion assert; (ii)~compound teeth carry one mutation
+covering their sub-checks, within the directive's permissive per-tooth scope.
+Arbiter re-runs reproduce the tokens and the manifest digest. Verdict
+\texttt{TRANSVERSE\_MOVE\_ACTION\_ROW}, \texttt{internal\_inconsistency}\,=\,none.

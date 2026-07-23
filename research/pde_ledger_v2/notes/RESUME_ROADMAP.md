@@ -97,8 +97,12 @@ mirror was RE-AUTHORED independent [`Solve`/`Reduce[ForAll]`]; six controls; tri
 notes documented; deliverables 3→CLEAN; register R66 = DEPARTURE, discharges NO knob, NOT a reduction — does not shrink the
 irreducible count). **⭐ NEXT = Part V (magnetism)** per §3 — the moving throat: re-scope onto
 `software/em_charge_attribute/magnetism_moving_throat_result.md` (`S_{T+move}` transverse-vector row + native `J_T=q_T sηV` +
-the structural boost-relation + terminal `R1_REQUIRED(electric_bc_selection)` + the `b_T` T-even departure) → author
-`part5_magnetism_atomic_split.md` → per-Part user gate → build. Then VI (knit), then VII (integration). Resolve the two parked
+the structural boost-relation + terminal `R1_REQUIRED(electric_bc_selection)` + the `b_T` T-even departure). **✅ Split plan
+RATIFIED 2026-07-22 as a 6-stage split** (`part5_magnetism_atomic_split.md`; stages 034–039 = V-1 action row `TRANSVERSE_MOVE_ACTION_ROW`
+/ V-2 native source `CONVECTION_LIKE_CONDITIONAL` / V-3 Route A `MAXWELL_DARWIN_REFERENCE` / V-4 Route B+comparison
+`BOOST_STRUCTURAL_RELATION_HOLDS` / V-5 SEALED landing `R1_REQUIRED(electric_bc_selection)` / V-6 `B_TIME_REVERSAL_EVEN`
+departure; 35-tooth allocation build-faithful) → **NEXT = per-stage gate on 034** → Codex→Grok→Codex → build. Then VI (knit),
+then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**
 ⚠ **Infra note (2026-07-22):** `Bash run_in_background` codex jobs are intermittently harness-reaped (SIGKILL to the group);

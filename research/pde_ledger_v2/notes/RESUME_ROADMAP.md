@@ -11,7 +11,7 @@
 ## 1. Where we are (the resume point)
 
 - **DONE + tri-reviewed:** **Part I — Medium** (stages 004–007); **Part II — Gravity** (stages 001–002, 008–029; sector CLOSED at 029); **Part III — Light = stage003 alone** (the surviving light sector; re-scoped 2026-07-22, see §7); the **Midway Knob Audit** (Parts I–II codimension dry-run). ⚠ **Part 0 (conceptual)** is only frontmatter SCAFFOLDING (placeholder `.tex`), NOT written content — remaining work, not done.
-- **Part IV (charge) IN PROGRESS** — **4-stage split** (user decision 2026-07-22 morning, re-granularized from the overnight
+- **Part IV (charge) ✅ COMPLETE (all 4 stages 030–033)** — **4-stage split** (user decision 2026-07-22 morning, re-granularized from the overnight
   3-stage to match gravity's EARNED-vs-landing idiom; 031 splits mechanism/EARNED from the R1 sign landing). **stage 030
   (IV-1, electric scalar + localized-H closure) DONE + committed `122afe36`** (dual-engine 16/16, tri-review CLEAN through a
   remediation + reverify, register-verify CLEAN). **031 (IV-2, puncture-deflection MECHANISM → `THROAT_H_SOURCE_1_OVER_R2`,
@@ -22,9 +22,17 @@
   four DECIDED conditional `A_X` consuming 031's `m_gg`/`S_gg`, strict signs CONDITIONAL on the nondegenerate witness,
   `internal_inconsistency=none`, sealed §4 ladder digest `7627417a…`; tri-review CLEAN → a **manifest-hardening remediation**
   [pinned counts 22/12/10 + manifest digest `e2cfd11b…` + `MANIFEST_MISDISPOSITION` ablation] → fresh-agent re-verify CLEAN;
-  deliverables fidelity-verify 5→CLEAN; `Q_E` re-homed pathA_38 → `R1_REQUIRED(magnitude)`). ▶ **NEXT = 033 (IV-4,
-  `NATIVE_P_NO_EMERGENT_GAUSS`)** — LIGHT reshape of `native_p_gate_*`; author its directive fresh, then bookend + build. Plan:
-  `part4_charge_atomic_split.md` (progress log at bottom).
+  deliverables fidelity-verify 5→CLEAN; `Q_E` re-homed pathA_38 → `R1_REQUIRED(magnitude)`). **033 (IV-4,
+  `NATIVE_P_NO_EMERGENT_GAUSS` — the characterized departure "EM is NOT exact Maxwell") ✅ DONE + committed `391da099`**
+  (dual-engine 33/33; FC=0 both native families A/C, tuned FC directions have a ZERO Gauss descendant so the no-go follows
+  from `additional_G_exists=False`; the source `.wl` mirror was RE-AUTHORED independent [`Solve`/`Reduce[ForAll]` common-null];
+  six controls; tri-review CLEAN + 2 non-blocking robustness notes documented [`HONEST_TUNED_SCOPE` framing-tooth redundant
+  with `BOUNDARY_SCAN`/`RANDOMIZED_SWEEP`/`SIGNATURE`; SymPy dual-path verified-safe]; deliverables 3→CLEAN; register R66 =
+  DEPARTURE, discharges NO knob, NOT a reduction). Plan: `part4_charge_atomic_split.md`. ▶ **NEXT = Part V (magnetism)** — the
+  moving throat (per §3): re-scope onto `software/em_charge_attribute/magnetism_moving_throat_result.md` (`S_{T+move}`
+  transverse-vector row, native `J_T=q_T sηV`, structural boost-relation, terminal `R1_REQUIRED(electric_bc_selection)`, the
+  `b_T` T-even departure) → author `part5_magnetism_atomic_split.md` → per-Part user gate → build. Then VI (knit), VII
+  (integration).
 - **Not started:** Parts **V (magnetism)**, **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
@@ -72,7 +80,7 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 **Part III (light) ✅ DONE (2026-07-22)** = stage003 alone, re-scoped under the surviving-solution standing rule (§1); the `pathA_35` couple-stress no-go → failures-paper backlog. The Parts I/II graveyard-cleanup landed + committed (`327fcc7e`).
 
-▶ **NEXT FRONT = Part IV (charge) stage 033 (IV-4).** ✅ Split plan RATIFIED as a **4-stage split** (user decision
+▶ **NEXT FRONT = Part V (magnetism)** — Part IV (charge) is ✅ COMPLETE (all 4 stages 030–033). ✅ Split plan RATIFIED as a **4-stage split** (user decision
 2026-07-22 morning; `part4_charge_atomic_split.md`); **stage 030 (IV-1) DONE + committed `122afe36`**; **stage 031 (IV-2,
 puncture-deflection MECHANISM) DONE + committed `bba61c82`** (`THROAT_H_SOURCE_1_OVER_R2`, EARNED; the build honestly hit the
 `I₊≠0` STOP-gate → OPTION A reflection-dominance `I₊>0` Grok-verified); **stage 032 (IV-3, four BC ensembles + sealed
@@ -82,11 +90,16 @@ earned NOR calibrated): the four DECIDED conditional `A_X` (`A_V=m_ggφ²/S_gg²
 witness), `internal_inconsistency=none`, sealed §4 ladder (digest `7627417a…`, first-match `bc_selection`); dual-engine 57/57
 + 58 mutations; tri-review CLEAN → **manifest-hardening remediation** (pinned counts 22/12/10 + manifest digest `e2cfd11b…` +
 `MANIFEST_MISDISPOSITION`) → fresh-agent re-verify CLEAN; deliverables fidelity-verify 5→CLEAN; `Q_E` re-homed pathA_38 →
-`R1_REQUIRED(magnitude)`; register edges R62–R65. **⭐ NEXT = 033 (IV-4) = `NATIVE_P_NO_EMERGENT_GAUSS`** (the
-characterized-departure; exact U(1)/Maxwell Gauss proven non-native — "EM is NOT exact Maxwell") — LIGHT reshape of
-`software/em_charge_attribute/reports/native_p_constraint_gate.md` + `native_p_gate_{sympy.py,dual.wl}`; author its directive
-fresh, run the Codex→Grok→Codex bookend, then build (six able-to-fail controls anchor it). Then V (magnetism) per §3, then
-VI, then VII. Resolve the two parked knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
+`R1_REQUIRED(magnitude)`; register edges R62–R65. **stage 033 (IV-4) = `NATIVE_P_NO_EMERGENT_GAUSS` ✅ DONE + committed
+`391da099`** (the characterized departure "EM is NOT exact Maxwell"; dual-engine 33/33; FC=0 both native families A/C, the
+tuned FC directions have a ZERO Gauss descendant so the no-go follows from `additional_G_exists=False`; the source `.wl`
+mirror was RE-AUTHORED independent [`Solve`/`Reduce[ForAll]`]; six controls; tri-review CLEAN + 2 non-blocking robustness
+notes documented; deliverables 3→CLEAN; register R66 = DEPARTURE, discharges NO knob, NOT a reduction — does not shrink the
+irreducible count). **⭐ NEXT = Part V (magnetism)** per §3 — the moving throat: re-scope onto
+`software/em_charge_attribute/magnetism_moving_throat_result.md` (`S_{T+move}` transverse-vector row + native `J_T=q_T sηV` +
+the structural boost-relation + terminal `R1_REQUIRED(electric_bc_selection)` + the `b_T` T-even departure) → author
+`part5_magnetism_atomic_split.md` → per-Part user gate → build. Then VI (knit), then VII (integration). Resolve the two parked
+knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**
 ⚠ **Infra note (2026-07-22):** `Bash run_in_background` codex jobs are intermittently harness-reaped (SIGKILL to the group);
 launch long/danger-full-access codex **detached via `setsid`** + a bounded foreground poll on the done-marker (the read-only

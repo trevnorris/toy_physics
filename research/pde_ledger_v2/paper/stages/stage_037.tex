@@ -1,0 +1,223 @@
+\section{Stage 037: Route B (Direct Moving-Throat Shear, Blind) + the Boost-Consistency Structural Relation --- \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS}}
+
+\stagefield{Part / anchor}{Part V -- Magnetism (V-4; the FOURTH stage of the 6-stage split -- the SECTOR CRUX: Route B (direct, blind) + the boost-consistency structural comparison + the coefficient ratios)}
+\claimstatus{\StatusExactClosure}
+\stagefield{Purpose}{Record, as an EARNED (structural relation,
+target-blind) result, that the \emph{direct} moving-throat shear ---
+computed BLIND to the boost route --- independently reproduces the boost
+route's tensor structure, falloff, and velocity order, so the
+boost-consistency structural relation HOLDS. From the native source
+\(J_{T,i}=q_Ts_i\eta_aV_i\) (035) and the pathA\_36 transverse Euler
+equation, the most general isotropic \(R^{-1}\) tensor ansatz
+\(G_{ij}=(a\delta_{ij}+bn_in_j)/R\) is fixed WITHOUT any Route-A input by
+\(b=a\) (transversality) and \(3a+b=2/(4\pi\mu_R)\) (two-polarization
+trace) \(\Rightarrow G_{ij}=(\delta_{ij}+n_in_j)/(8\pi\mu_R R)\), giving
+\(U_B=-s_1s_2q_T^2(D_V+A_V)/(8\pi\mu_R R)\),
+\(\mathbf F_B=(s_1s_2q_T^2/8\pi\mu_R R^2)[(\mathbf V_2\!\cdot\!\mathbf n)
+\mathbf V_1+(\mathbf V_1\!\cdot\!\mathbf n)\mathbf V_2-(D_V+3A_V)\mathbf n]\),
+\(F_{B,r}=-s_1s_2q_T^2(D_V+A_V)/(8\pi\mu_R R^2)\), with \(D_V=\mathbf V_1
+\!\cdot\!\mathbf V_2\), \(A_V=(\mathbf V_1\!\cdot\!\mathbf n)(\mathbf V_2
+\!\cdot\!\mathbf n)\), \(\mathbf n=(\mathbf X_2-\mathbf X_1)/R\),
+\(R=|\mathbf X_2-\mathbf X_1|\). Route B is \(O(V_1V_2)\), \(U\!\sim\!R^{-1}\),
+\(F\!\sim\!R^{-2}\), carries only \(\{q_T,\mu_R\}\) (never \(A_E\)), and
+is produced FIRST in the build (\texttt{foreign\_payload=None}, before
+Route A). Dividing out each route's scalar prefactor, the two kernels are
+IDENTICAL (\(U_A/(-s_1s_2A_E/c_\gamma^2)\) and
+\(U_B/(-s_1s_2q_T^2/\mu_R)\) both reduce to \((D_V+A_V)/8\pi R\)):
+tensor structure, falloff, and velocity order all AGREE \(\Rightarrow\)
+the boost-consistency structural relation HOLDS --- \emph{magnetism
+structurally IS the boost of electricity, at the structural level}. Only
+the coefficient ratio \(r_{BA}=q_T^2/(\rho_{\rm br}A_E)\) is open (an
+unresolved output riding the R1 \(q_T\) + R1 electric \(A_E\)). Route A's
+kernel/\(U_{A,2}\) (036, R70), \(A_E\) (Part~IV, R63), \(c_\gamma\)/\(\mu_R\)/\(\rho_{\rm br}\) (Part~III), \(c_E\) (Part~IV), \(q_T\) (034,
+R67), and the 035 source law are CITED --- \emph{not} earned by 037,
+\emph{not} re-counted; the magnetism-NEW content is exactly \(\{\text{the
+blind direct-shear kernel, the structural comparison, the ratio
+expressions } r_{BA}/\delta_{BA}/r_{\rm cone}/\Delta U\}\). Surviving
+verdict token \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS}; co-blocker
+emitted here \texttt{R1\_REQUIRED(direct\_moving\_throat)}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage037_route_b_boost_structural_relation_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage037_route_b_boost_structural_relation_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusExactClosure{} --- \textbf{EARNED} (structural relation,
+target-blind) and exact-symbolic. What is EARNED: two \emph{independent}
+routes (the boost route A of 036, cited; the direct route B of 037, built
+BLIND) reproduce the same transverse Darwin tensor structure, the same
+\(R^{-2}\) falloff, and the same \(O(V_1V_2)\) velocity order --- a
+target-blind structural PASS (the comparison divides out the open
+coefficients). The magnitude \emph{ratio} \(r_{BA}\) is the sole open
+quantity: its value rides the R1 \(q_T\) (034, R67, the sim-deferred
+nonlinear moving-throat solve) and the R1 electric \(A_E\) (032, R63,
+\texttt{R1\_REQUIRED(bc\_selection)}) --- a DECIDED expression, R1-valued.
+Hence EARNED structural relation with the co-blocker
+\texttt{R1\_REQUIRED(direct\_moving\_throat)} (Route B's own magnitude
+carries \(q_T\)), \emph{not} GAPS-CLOSED. It is \emph{not} a knob,
+\emph{not} a reduction/codimension edge, and does \textbf{not} shrink the
+irreducible count (it rides \(q_T\)+\(A_E\), introducing no new knob).
+\textbf{037 produces the STRUCTURAL agreement + the ratio expressions +
+the \texttt{QMAG\_R1} tag ONLY} --- emergent Lorentz is \emph{not} claimed
+(it needs \(\delta_{BA}=0\)+\(r_{\rm cone}=1\)+the \(O(v^4/c_\gamma^4)\)
+orders closed, deferred to 038's \texttt{HOOK\_LORENTZ}), and the SEALED
+\S4 first-match 1152-cell landing (\texttt{R1\_REQUIRED(electric\_bc\_selection)}
++ the four co-blockers) is Stage~038 (V-5), stated so a reader never reads
+037 as claiming emergent Lorentz or emitting the terminal landing.
+Ledger-local earned label \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS}.
+
+\paragraph{Route B --- the blind direct-shear kernel (\texttt{DIRECT\_SOURCE} / \texttt{DIRECT\_PROJECTOR}).}
+From the native source \(J_{T,i}=q_Ts_i\eta_aV_i\) (035) and the pathA\_36
+transverse Euler equation, the most general isotropic \(R^{-1}\) tensor
+\(G_{ij}=(a\delta_{ij}+bn_in_j)/R\) is fixed by two constraints solved
+\emph{without any Route-A input}: transversality gives \(b=a\), the
+two-polarization trace gives \(3a+b=2/(4\pi\mu_R)\), so \(a=b=1/(8\pi\mu_R)\)
+and
+\[
+  G_{ij}=\frac{\delta_{ij}+n_in_j}{8\pi\mu_R R}\equiv\frac{I_{ij}(R)}{\mu_R}
+\]
+--- the same transverse tensor \(I_{ij}\) as Route A's kernel, carrying an
+extra \(1/\mu_R\) (\(G^B=I_{ij}/\mu_R\); \(I_{ij}\) contains no \(A_E\)).
+Contracting with the independent velocities,
+\[
+  U_B=-\frac{s_1s_2q_T^2}{8\pi\mu_R R}(D_V+A_V),\quad
+  \mathbf F_B=\frac{s_1s_2q_T^2}{8\pi\mu_R R^2}
+    \!\left[(\mathbf V_2\!\cdot\!\mathbf n)\mathbf V_1
+     +(\mathbf V_1\!\cdot\!\mathbf n)\mathbf V_2-(D_V+3A_V)\mathbf n\right],\quad
+  F_{B,r}=-\frac{s_1s_2q_T^2(D_V+A_V)}{8\pi\mu_R R^2}.
+\]
+It is certified as a component-wise zero-difference against
+\((\delta_{ij}+n_in_j)/(8\pi\mu_R R)\) (transversality \(b=a\)
+load-bearing, the primary object the verdict re-derives from) and a
+symbolic zero-difference \(\texttt{ROUTE\_B.interaction}-\texttt{EXPECTED\_B2}=0\).
+\(U_B\)/\(F_B\)/\(F_{B,r}\) carry \(q_T\) --- so the co-blocker
+\texttt{R1\_REQUIRED(direct\_moving\_throat)} originates here.
+
+\paragraph{Blindness (\texttt{ROUTE\_INDEPENDENCE}).}
+Route B is produced FIRST (\texttt{foreign\_payload=None}, build ordinal
+before Route A); its dependency record is exactly \(\{\texttt{Q\_CURRENT.source},
+\texttt{pathA36.transverse\_EOM}, \texttt{direct\_transverse\_tensor\_ansatz}\}\),
+name \texttt{B\_DIRECT}. \texttt{ROUTE\_INDEPENDENCE} is a
+dependency-tag / free-symbol-disjointness / execution-order object ---
+\textbf{not} equality of any copied value (a value match would not catch
+an ancestry violation). The illicit-copy mutation injects
+\texttt{foreign\_payload=ROUTE\_A} (rescaling Route A by
+\(q_T^2c_\gamma^2/A_E\), a factor \(\mu_R\) above Route B), appends the
+\texttt{ILLICIT\_ROUTE\_A\_READ} tag, and the object detects the tag.
+\textbf{Presentational note:} the ledger PRESENTS Route A (036) before
+Route B (037), but the build COMPUTES Route B FIRST, blind, precisely to
+guarantee blindness --- presentation order \(\neq\) computation order, so
+a reader never reads ``B saw A.''
+
+\paragraph{The structural comparison --- the boost-consistency relation HOLDS (\texttt{COMPARE\_COMPUTED}).}
+Dividing out each route's scalar prefactor, the two kernels are identical:
+\(U_A/(-s_1s_2A_E/c_\gamma^2)\) and \(U_B/(-s_1s_2q_T^2/\mu_R)\) both
+reduce to \((D_V+A_V)/8\pi R\). Tensor structure, falloff (\(R^{-2}\)),
+and velocity order (\(O(V_1V_2)\)) all AGREE \(\Rightarrow\) the
+boost-consistency structural relation HOLDS. \texttt{COMPARE\_COMPUTED}
+owns \emph{only} the load-bearing prefactor-stripped tensor
+structural-agreement (a zero-difference); the falloff/order agreement is
+separately owned by \texttt{DIRECT\_FALLOFF}/\texttt{DIRECT\_VELOCITY\_ORDER}
+(computed from the actual \(F_B\)/\(U_B\), matching the cited Route-A
+powers) --- \emph{not} re-\texttt{AND}ed as an always-true \(2{=}2\)
+literal (the 035 can't-fail lesson).
+
+\paragraph{The coefficient ratios (\texttt{DELTA\_RATIO} / \texttt{CONE\_RATIO} / \texttt{QMAG\_R1}).}
+\[
+  r_{BA}=\frac{U_B}{U_{A,2}}=\frac{q_T^2c_\gamma^2}{\mu_R A_E}
+        =\frac{q_T^2}{\rho_{\rm br}A_E},\quad
+  \delta_{BA}=r_{BA}-1,\quad
+  r_{\rm cone}=\frac{c_E^2}{c_\gamma^2}=\frac{c_E^2\rho_{\rm br}}{\mu_R},\quad
+  \Delta U=-\frac{s_1s_2A_E}{8\pi c_\gamma^2R}(r_{BA}-1)(D_V+A_V).
+\]
+DECIDED expressions, R1-valued: their values ride the R1 \(q_T\) (R67) +
+the R1 \(A_E\) (R63), so the census \(q_T/\sqrt{\rho_{\rm br}|A_E|}\) is an
+unresolved output (\texttt{R1(magnitude)}, \texttt{route\_B\_R1},
+\texttt{relative\_sign\_anchor\_conditional}), not a declared calibration
+and not a knob; \(r_{\rm cone}\) also rides the open cone lock
+\(c_E{=}c_\gamma?\) (Part~VI pathA\_40). The equal-velocity cross-check
+\(F_r/F_{E,r}=1-v^2/(2c_\gamma^2)+O(v^4)\) (\texttt{BOOST\_COMMON\_VELOCITY})
+is a Route-A/electric-anchor ratio, allocated to the comparison stage.
+
+\paragraph{Why \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS}, with a co-blocker.}
+The two independent routes match in tensor structure / falloff / velocity
+order (target-blind), so the verdict is
+\texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS}; Route B's own magnitude and
+the ratio \(r_{BA}\) ride the R1 \(q_T\)+\(A_E\), so 037 emits the
+co-blocker \texttt{R1\_REQUIRED(direct\_moving\_throat)}. \textbf{The
+unresolved magnitude ratio is a scope tag, not a certification failure}
+--- production is \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS} REGARDLESS of
+the open \(q_T\)/\(A_E\); an unresolved coefficient ratio is not a broken
+structure, so it must \emph{not} re-derive to the
+\texttt{BOOST\_STRUCTURAL\_RELATION\_UNCERTIFIED} alternate.
+
+\paragraph{Cite-not-count discipline, dimensions (\texttt{UNITS\_RESTORED}).}
+Units RESTORED, able-to-fail, free-carrier-independent: \([q_T]=MT^{-1}\),
+\([\mu_R]=ML^{-1}T^{-2}\), \([\rho_{\rm br}]=ML^{-3}\), \([A_E]=EL=ML^3T^{-2}\),
+\([c_\gamma^2]=[c_E^2]=L^2T^{-2}\), \([\mathbf V]=LT^{-1}\),
+\([D_V]=[A_V]=L^2T^{-2}\), \([R]=L\), \([G^B_{ij}]=M^{-1}T^2\),
+\([U_B]=E=ML^2T^{-2}\), \([\mathbf F_B]=EL^{-1}=MLT^{-2}\),
+\([r_{BA}]=[\delta_{BA}]=[r_{\rm cone}]=1\), \([s]=1\). Route A's
+kernel/\(U_{A,2}\) (036, R70), \(A_E\) (Part~IV, R63), \(c_\gamma\)/\(\mu_R\)/\(\rho_{\rm br}\)/\(c_E\) (Stage~003 / Part~IV), \(q_T\) (034,
+R67), and the 035 source law are CITED --- re-instantiated for the
+dual-engine check but \emph{not} re-derived, \emph{not} re-counted
+(de-dup deferred to Part~VII); the structural relation introduces NO new
+irreducible knob (it rides \(q_T\)+\(A_E\)+\(c_E\)/\(c_\gamma\)), and the
+\(O(v^4/c_\gamma^4)\)/active-\(F_{\rm flux}\) remainders are owned at 038,
+not new knobs.
+
+\paragraph{Source-to-stage manifest.}
+No silently-dropped source claim: every source tooth of the 35-tooth
+\texttt{TOOTH\_ORDER} (commit \texttt{53cf049f}) partitions
+\(\{\texttt{PRESERVED }2,\ \texttt{REPLACED\_BY\_STRONGER }12,\ \texttt{SCOPED\_OUT }21\}\)
+(35 total), manifest digest (SHA-256)
+\texttt{3c88849c5f4f5b7fe05c0d06c59004acccf8c6e85f6823b0e839c41174c8adf4},
+computed at runtime in both engines and agreed
+(\texttt{SOURCE\_TO\_STAGE\_MANIFEST}; dropping one row fires it). The 21
+SCOPED\_OUT teeth are the V-1/V-2 (done), V-3 (036, cited), and V-5 (038)
+source claims, each named literally by owner stage (no wildcard families,
+\texttt{BOOST\_COMMON\_VELOCITY} placed in 037); V-6 (039) owns no source
+tooth.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes: \textbf{SymPy 16
+teeth / Mathematica 16 teeth}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no
+JSON/YAML payload, zero file-I/O between engines. The SymPy route solves
+the divergence-free + trace constraints as an \texttt{sp.solve} linear
+system for \((a,b)\) and derives the force by \texttt{sp.diff} of the
+coordinate potential; the \texttt{.wl} is materially INDEPENDENT of
+\emph{both} the stage \texttt{.py} and the source \texttt{check.wl} (whose
+\texttt{deriveRouteB} uses the same \texttt{Solve} two-equation method) ---
+a Cartesian-divergence \(\to\) \texttt{NullSpace} \(\to\) trace-norm kernel,
+normal-projector force geometry, mixed velocity Hessians, and
+\texttt{Coefficient}-extracted ratios (no dual-engine disagreement).
+Per-tooth ablation (env switch \texttt{LEDGER\_STAGE037\_MUTATION}): all 16
+teeth's mutations \texttt{FIRED\_AT\_OWN\_ASSERT} per engine (32 across both
+engines). \textbf{NO can't-fail conjuncts were added} --- the source's
+dead conjuncts (\texttt{DIRECT\_EXCHANGE\_SIGN} bare \(\texttt{direct\_sign}{=}{-}1\);
+\texttt{COMPARE\_COMPUTED} always-true \(\texttt{falloff}{=}2\)/\(\texttt{order}{=}2\))
+were all re-authored to computed objects (a computed sign object; the
+tensor-only prefactor-stripped agreement, with falloff/order owned by
+\texttt{DIRECT\_FALLOFF}/\texttt{DIRECT\_VELOCITY\_ORDER}). The verdict tooth
+mutates \emph{computed} objects (transversality \(b\neq a\), \(D_V\)
+injection, force \(\div R\), order-collapse, injected Route-A dependency)
+and RE-DERIVES the authored stage-local token
+\texttt{BOOST\_STRUCTURAL\_RELATION\_UNCERTIFIED} (covering
+kernel/structural-agreement/independence failures under one
+``could-not-certify'' semantics --- not a literal flip, not a \S4 landing,
+not a physical Maxwell departure; the open \(q_T\)/\(A_E\) R1 still yields
+\texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS} + the co-blocker, never the
+alternate --- the 030 \(X\equiv X\) lesson). \textbf{Tri-review: fidelity
+CLEAN} (one documented latent-fragility NIT, not triggered --- the manifest
+SHA-256 tuple-sort vs string-sort canonicalization could diverge only if
+one tooth-id were a prefix of another; none is, so digests match)
+\textbf{and adversarial CLEAN} (three documented non-blocking NITs,
+verified-safe: \texttt{QMAG\_R1} is a directive-sanctioned enum
+status-toggle, still able-to-fail; compound-bundled teeth each channel
+individually able-to-fail; \texttt{route\_B\_R1}/\texttt{relative\_sign\_anchor\_conditional}/the
+co-blocker are printed scope-tag OUTPUTS, no dedicated ablation),
+\textbf{with ZERO remediation} (the hardened build prevented can't-fail
+conjuncts up front). Arbiter re-runs reproduce the tokens and the manifest
+digest. Verdict \texttt{BOOST\_STRUCTURAL\_RELATION\_HOLDS} with the
+co-blocker \texttt{R1\_REQUIRED(direct\_moving\_throat)}.

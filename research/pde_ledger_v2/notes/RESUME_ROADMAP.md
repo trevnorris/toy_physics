@@ -30,8 +30,9 @@
   with `BOUNDARY_SCAN`/`RANDOMIZED_SWEEP`/`SIGNATURE`; SymPy dual-path verified-safe]; deliverables 3→CLEAN; register R66 =
   DEPARTURE, discharges NO knob, NOT a reduction). Plan: `part4_charge_atomic_split.md`.
 - **Part V (magnetism) STARTED (2026-07-22)** — the 6-stage split (034–039) RATIFIED; **stage 034 (V-1, transverse-vector
-  action row → `TRANSVERSE_MOVE_ACTION_ROW`) ✅ DONE + committed `109070da`** (EARNED action row; ▶ NEXT = 035, see §7). **Not
-  started:** Parts **VI (knit)**, **VII (integration)**.
+  action row → `TRANSVERSE_MOVE_ACTION_ROW`) ✅ DONE + committed `109070da`** (EARNED action row); **stage 035 (V-2, native
+  moving-throat source `J_T=q_T sηV` from defect-continuity + parity census → `CONVECTION_LIKE_CONDITIONAL`) ✅ DONE +
+  committed `b55a7a65`** (EARNED source law; ▶ NEXT = 036, see §7). **Not started:** Parts **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
 
@@ -106,9 +107,18 @@ magnetism-NEW content = `{moving coupling, q_T, τ_d}`), positive-definite trans
 12/12 (independent `.wl` NullSpace-Fourier route), all 12 mutations fire, verdict tooth non-tautological; tri-review
 FIDELITY 1 NIT (`.wl` X≡X) remediated → clean + ADVERSARIAL clean + 2 documented non-blocking notes; register edges R67
 (`q_T`, FREE-UNREDUCED/R1, split from the electric `bc_selection`) + R68 (`τ_d`, structural/postulated); sign/magnitude
-deferred to the R1 landing (038), the `b_T` departure to 039. **⭐ NEXT = per-stage gate on 035 (Part V-2)** — the native
-source law `J_T=q_T sηV` from defect-continuity + the parity census, verdict `CONVECTION_LIKE_CONDITIONAL` → Codex→Grok→Codex
-→ build. Then VI (knit),
+deferred to the R1 landing (038), the `b_T` departure to 039. **stage 035 (V-2, native moving-throat source law) ✅ DONE +
+committed `b55a7a65`** — verdict **`CONVECTION_LIKE_CONDITIONAL`** (a CurrentIdentity classification, NOT a landing): the
+signed-dent continuity `∂_tσ+∇·(σV)=0` fixes the unique flux coefficient α=1 ⇒ the native source `J_{T,i}=q_T s_i η_a V_i`,
+REPLACING the barred `j∝sV`/pathA_39 (enforced by the surviving-solution `SOURCE_NOT_IMPORTED` guard), plus the 24-cell
+parity census over `{s,V,τ_d,q_T,J_T,u_T,b_T}`; `q_T` unfixed (R1) ⇒ the current identity is conditional; `b_T=∇×u_T`
+axial+T-even recorded RAW → departure characterization deferred to 039; consumes 034's `{q_T,τ_d,u_T,η_a}` cited/not-re-counted;
+dual-engine 12/12 (independent `.wl` Gaussian `D`/`Div`/`Reduce` route), all 12 mutations fire, verdict tooth non-tautological
+(`flux_coefficient=2`→`R1_SOURCE_BASIS`), manifest digest `d85de3d8…`; tri-review FIDELITY 2 NITs remediated → clean +
+ADVERSARIAL clean + 3 documented non-blocking notes; deliverables-fidelity-verify 5→CLEAN; register edge R69 (`J_T`, DERIVED
+`[ML⁻²T⁻²]`, conditional on R67, no new knob). **⭐ NEXT = per-stage gate on 036 (Part V-3)** — Route A, the Maxwell–Darwin
+reference kernel `(δ_ij+n_in_j)/8πR` from boosting the electric interaction, verdict `MAXWELL_DARWIN_REFERENCE` →
+Codex→Grok→Codex → build. Then VI (knit),
 then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**

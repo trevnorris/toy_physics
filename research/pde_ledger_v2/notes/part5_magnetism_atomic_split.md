@@ -6,8 +6,8 @@
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** ✅ **034 (V-1) DONE + committed `109070da`** (see the Progress log at the bottom) → per-stage pre-execution gate on
-> **035 (V-2)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
+> **Next:** ✅ **035 (V-2) DONE + committed `b55a7a65`** (see the Progress log at the bottom) → per-stage pre-execution gate on
+> **036 (V-3)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -221,3 +221,24 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
   split from the electric `bc_selection` — the sim-deferred throat normalization) + **R68** (`τ_d`, the active-drain time-arrow,
   structural / postulated). ▶ **NEXT = stage 035 (V-2)** — the native source law `J_T=q_T sηV` from defect-continuity + the
   parity census, verdict `CONVECTION_LIKE_CONDITIONAL`.
+- **035 (V-2, native moving-throat source `J_T=q_T sηV` from defect-continuity + parity census — EARNED source law)** — ✅
+  **DONE + committed `b55a7a65`** (verdict **`CONVECTION_LIKE_CONDITIONAL`** — a CurrentIdentity classification, NOT a
+  landing). Records, as an EARNED target-blind source-law result, that the signed-dent continuity `∂_tσ+∇·(σV)=0` fixes the
+  **UNIQUE** flux coefficient `α=1` ⇒ the native moving-throat source `J_{T,i}=q_T s_i η_a V_i`, derived from
+  defect-continuity — it **REPLACES** the superseded barred `j∝sV` / pathA_39 (the surviving-solution `SOURCE_NOT_IMPORTED`
+  guard enforces that the source is native, never imported) — together with the **24-cell parity census** over
+  `{s, V, τ_d, q_T, J_T, u_T, b_T}`. The throat charge `q_T` is unfixed (R1), so the current identity is CONDITIONAL:
+  **`CONVECTION_LIKE_CONDITIONAL`**. **Scope class EARNED (source law, target-blind):** consumes 034's `{q_T, τ_d, u_T, η_a}`
+  by CITATION (cited, NOT re-counted); NOT a knob, NOT a reduction, does NOT shrink the irreducible count. The
+  `b_T=∇×u_T` axial + T-even parity is recorded **RAW** here (its departure characterization "not exact Maxwell" is deferred
+  to 039). **Source-law gate ONLY:** Route A (036), Route B + comparison (037), the sign/magnitude R1 landing (038), and the
+  `b_T` departure (039) are all downstream. **Verification:** dual-engine SymPy 12 / Mathematica 12, both exit 0 (SymPy
+  abstract-translation + `sp.solve` for the flux coefficient; the `.wl` a genuinely INDEPENDENT Gaussian route —
+  `D`/`Div`/`Reduce` continuity solve + operator-parity + `Det`/`Cross`); manifest digest `d85de3d8…`; all 12 per-tooth
+  mutations FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is non-tautological (`flux_coefficient=2` re-derives to
+  `R1_SOURCE_BASIS`, the 030 X≡X lesson). Directive Codex→Grok→Codex bookend clean; build + arbiter re-run; **tri-review
+  (falsification-first): FIDELITY 2 NITs** (a can't-fail structural conjunct + a vestigial `.wl` branch) **REMEDIATED →
+  clean**, **ADVERSARIAL clean + 3 documented non-blocking notes**; Codex deliverables-fidelity-verify **5 → CLEAN**.
+  Deliverables note + card (Part-V appendix input) + register edge **R69** (`J_T=q_T sηV`, DERIVED `[ML⁻²T⁻²]`, conditional
+  on R67's `q_T`, no new knob). ▶ **NEXT = stage 036 (V-3)** — Route A, the Maxwell–Darwin reference kernel
+  `(δ_ij+n_in_j)/8πR` from boosting the electric interaction, verdict `MAXWELL_DARWIN_REFERENCE`.

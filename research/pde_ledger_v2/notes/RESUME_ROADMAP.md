@@ -38,8 +38,11 @@
   the direct moving-throat shear computed BLIND + the boost-consistency structural COMPARISON + the ratios →
   `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)`) ✅ DONE + committed `c8780f00`** (EARNED
   structural relation, target-blind — Route B reproduces Route A's tensor structure + falloff + velocity order ⇒ magnetism
-  structurally IS the boost of electricity; only the ratio `r_BA=q_T²/(ρ_br·A_E)` is open; ▶ NEXT = 038, see §7). **Not
-  started:** Parts **VI (knit)**, **VII (integration)**.
+  structurally IS the boost of electricity; only the ratio `r_BA=q_T²/(ρ_br·A_E)` is open); **stage 038 (V-5, the SEALED §4
+  first-match 1152-cell landing → `R1_REQUIRED(electric_bc_selection)` + 4 co-blockers) ✅ DONE + committed `177d25d7`**
+  (R1-landing — the production tuple lands terminal `R1_REQUIRED(electric_bc_selection)`, the blocker collector emits all four
+  honest R1 rows ⇒ the magnetic sign/magnitude INHERIT the electric R1 [doubly-R1], emergent Lorentz `UNDETERMINED`; ▶ NEXT = 039
+  the FINAL Part-V stage, see §7). **Not started:** Parts **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
 
@@ -149,10 +152,21 @@ emergent Lorentz is NOT claimed (needs `δ_BA=0`+`r_cone=1`+closed orders → 03
 `3c88849c…`, partition `{2,12,21}=35`, all 32 mutations fire, verdict tooth non-tautological (→
 `BOOST_STRUCTURAL_RELATION_UNCERTIFIED`), ⛔ NO can't-fail conjuncts (hardened build); directive bookend Codex(1)→Grok(1)→
 confirm CLEAN; tri-review fidelity+adversarial CLEAN, ZERO remediation (documented verified-safe NITs only); deliverables-verify
-10-folded (incl. `c_E`→Part IV attribution) → CLEAN; register edge R71 = the ratios DERIVED/R1-valued, no new knob. **⭐ NEXT =
-per-stage gate on 038 (Part V-5)** — the SEALED §4 first-match 1152-cell landing → the magnetic sign/magnitude inherit the
-electric R1, verdict `R1_REQUIRED(electric_bc_selection)` + 4 co-blockers → Codex→Grok→Codex → build. Then 039, then VI (knit),
-then VII (integration). Resolve the two parked
+10-folded (incl. `c_E`→Part IV attribution) → CLEAN; register edge R71 = the ratios DERIVED/R1-valued, no new knob. **stage 038 (V-5, the SEALED §4 first-match 1152-cell landing) ✅
+DONE + committed `177d25d7`** — verdict **`R1_REQUIRED(electric_bc_selection)`** + 4 co-blockers
+**`R1_REQUIRED(direct_moving_throat)`**/**`R1_REQUIRED(magnitude)`**/**`R1_REQUIRED(consistency)`** (R1-LANDING): a total
+first-match precedence adjudication over the 1152-cell truth table (`4×3×4×3×2×2×2`) whose production tuple lands terminal
+`R1_REQUIRED(electric_bc_selection)`; the complete blocker collector emits all four honest R1 rows ⇒ the magnetic sign/magnitude
+are neither independently earned nor calibrated — they INHERIT the electric R1 (doubly-R1); emergent Lorentz is `UNDETERMINED`
+(`HOOK_LORENTZ`) and the active-flux `F_flux` + full-force integrability is R1 (`ACTIVE_FLUX_CAVEAT`); consumes 037's ratios
+`{r_BA,δ_BA,r_cone,ΔU}` + 035/036's source/kernel by CITATION, no new knob; dual-engine 10/10, IDENTICAL runtime-computed
+cross-engine digest `983556935e…` (independent `.wl` mixed-radix/FirstCase/ByteArray route), partition `{5,27,3}=35`, all 20
+mutations fire, verdict tooth non-tautological (re-derives the build-native landings), ⛔ NO can't-fail conjuncts; directive
+bookend Codex(7)→Grok SOUND→confirm; tri-review fidelity (hand-traced first-match cascade)+adversarial CLEAN, ZERO remediation;
+deliverables-verify 14-folded → CLEAN; register edge R72 = the SEALED §4 landing, R1-LANDING, no new knob. **⭐ NEXT =
+per-stage gate on 039 (Part V-6, the FINAL Part-V stage)** — the `b_T=∇×u_T` time-reversal-EVEN departure `B_TIME_REVERSAL_EVEN`
+(the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS`, "EM is not exact Maxwell"), CHARACTERIZED-DEPARTURE →
+Codex→Grok→Codex → build. Then VI (knit), then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**
 ⚠ **Infra note (2026-07-22):** `Bash run_in_background` codex jobs are intermittently harness-reaped (SIGKILL to the group);

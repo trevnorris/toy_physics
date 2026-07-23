@@ -1,12 +1,21 @@
-# Part VI — The knit: atomic-stage split (DRAFT — per-Part gate + fresh read PENDING)
+# Part VI — The knit: atomic-stage split (✅ RATIFIED 2026-07-23 — 3 stages, build order 041→040→042, autonomous per stage)
 
-> **⚠ STATUS: DRAFT proposal, NOT ratified.** Authored 2026-07-23 right after Part V (magnetism) COMPLETE, from the
-> `ledger_v2_blueprint.md` §156 Part-VI row + `RESUME_ROADMAP.md` §3.6/§4/§5 + `docs/model_map.md` §3.6 + the **fresh Part-V
-> results** (the cone question `r_cone` is now OPEN from stages 037/038). **The per-Part user gate + a FRESH read of the three
-> source reports** (`software/stage1_solver/reports/pathA_40_cone_lock.md`, `…pathA_41_ng5_second_medium_drift.md`,
-> `…pathA_42_charge_coupled_scalar.md`) **+ their scripts** will finalize the exact stage boundaries, verdict tokens, register
-> rows, and the reshape/re-authoring cost. Treat the table below as a starting proposal (exactly as `part5_magnetism_atomic_split.md`
-> was drafted-then-refined-then-ratified). Do NOT build any Part VI stage until this plan is ratified at the gate.
+> **✅ RATIFIED at the per-Part gate (user, 2026-07-23):** **(1)** the **3-stage split** — 040 cone-lock re-adjudication /
+> 041 NG5 second-medium / 042 charge-coupled scalar — the Part VII synthesis-handoff folds into the 042 note + register (NO 4th
+> capstone; cone-lock NOT split). **(2)** **Build order = 041 → 040 → 042** (NG5 built FIRST so its `C_hu`-freedom certification
+> is available to the cone-lock's conditionality; stage IDs stay topic-aligned to the `pathA_4{0,1,2}` sources — 040=cone-lock,
+> 041=NG5, 042=scalar — only the *build sequence* is NG5→cone-lock→scalar). **(3)** **Autonomy = autonomous to commit, per
+> stage** (the Part-V mode: full pipeline per stage → commit + tracker sync, surface only genuine blockers; per-stage
+> pre-execution gate WAIVED). Register rows continue after R73 in build order (041's facts get the earlier R-numbers).
+>
+> **⚠ STATUS (pre-ratification history): REFINED after the fresh read (2026-07-23); per-Part gate was PENDING.** Authored 2026-07-23 right
+> after Part V (magnetism) COMPLETE, from the `ledger_v2_blueprint.md` §156 Part-VI row + `RESUME_ROADMAP.md` §3.6/§4/§5 +
+> `docs/model_map.md` §3.6 + the **fresh Part-V results** (the cone question `r_cone` is now OPEN from stages 037/038). **The
+> FRESH read of the three source reports** (`software/stage1_solver/reports/pathA_4{0,1,2}_*.md` + their `_results.yaml` + the
+> `.py`/`.wl` tools) **is now COMPLETE** (three independent agents, 2026-07-23) — see **§ FRESH-READ FINDINGS & REFINEMENTS**
+> at the bottom, which SUPERSEDES specific claims in the draft body where noted (esp. the cone-lock is NOT "near-vacuous"; the
+> reshape cost is LOWER than Parts IV/V — all three `.wl` are already genuine independent re-derivations). The **per-Part user
+> gate** remains outstanding. Do NOT build any Part VI stage until this plan is ratified at the gate.
 >
 > **⭐ KEY subtlety — Part VI is a RE-ADJUDICATION, not just a reshape.** Parts IV/V re-scoped onto NEW builds
 > (puncture-deflection, magnetism-moving-throat). Part VI carries the OLDER `pathA_40/41/42` reports, whose STATUS has SHIFTED
@@ -31,11 +40,14 @@ single-medium claim now that all four far-field sectors exist on one shared fiel
 2. **One irreducible parameter set with no smuggled second substance?** (pathA_41) — the decisive reducibility test.
 3. **Does the propagating scalar stay consistent?** (pathA_42) — the charge-coupled `h`-scalar's break-risk.
 
-This is where the knit's **real falsification power** lives (RESUME §3.6): the cone-lock is near-vacuous (it's just naming
-calibration inputs), but **NG5 (pathA_41) is the decisive reducibility test** — it's the one that could expose a smuggled
-second substance. None of the three is expected to cleanly "all work"; the honest outputs are a **no committed cone lock**, a
-**characterized incomplete-reduction departure** (irreducible `{ρ_B0, χ_c, C_hu}`, but `no_fourth_arena=True`), and a
-**sim-gated scalar departure**.
+This is where the knit's **real falsification power** lives (RESUME §3.6): ⚠ **all three gates are genuinely able-to-fail**
+(the fresh read corrected the draft's "near-vacuous" read of the cone-lock — its `forced_lock` control flips it to
+`CONE_LOCK_DERIVED` and over-constraint fires `NO_GO`; its production verdict is CALIBRATED because the committed model
+genuinely admits lock-violating witnesses, NOT because the tooth can't fail). **NG5 (pathA_41) is the decisive reducibility
+test** — the one that could expose a smuggled second substance. None of the three is expected to cleanly "all work"; the honest
+outputs are a **no committed cone lock** (`Δr=2`), a **characterized incomplete-reduction departure** (irreducible
+`{ρ_B0, χ_c, C_hu}`, `no_fourth_arena=True` **at the labelling level** — NOT a dynamical no-second-substance proof, see the
+caveat below), and a **sim-gated scalar departure**.
 
 ---
 
@@ -154,3 +166,106 @@ busy-poll — see `feedback_subagent_marathon_infra`); Grok may be usage-limited
    old `CONE_LOCK_CALIBRATED` as-if-settled); confirm the NG5 + scalar tokens against the actual reports at the fresh read.
 4. **Reshape cost** — do pathA_40/41/42 have existing dual-engine scripts, and are the `.wl` mirrors needing re-authoring?
    (Fresh-read task; likely yes, like pathA_38/39.)
+
+---
+
+## § FRESH-READ FINDINGS & REFINEMENTS (2026-07-23 — three independent agents; SUPERSEDES the draft body where noted)
+
+Three fresh-read agents each read one gate's `.md` + `_results.yaml` + `.py` + `.wl` in full. Net: **the 3-stage split holds; the
+draft's stage boundaries + tokens are confirmed; two draft framings are CORRECTED, and several concrete reshape requirements +
+new facts are added.** The single biggest finding: **all three `.wl` are already GENUINE independent re-derivations** (not
+compare-mirrors) ⇒ Part VI is a LIGHTER reshape than Parts IV/V (no from-scratch `.wl` re-authoring).
+
+### Confirmed verdict tokens (verbatim from the yaml)
+- **040 (cone-lock):** `CONE_LOCK_CALIBRATED`; `atomic_riders: []`, `delta_r: 2`; both locks `provenance: WITNESSED` with nonzero
+  `lock_value_at_witness` (A=5, B=7); Route A `ROUTE_A_UNDERDETERMINED_MISSING_NONLINEAR_THROAT`, Route B
+  `ROUTE_B_CLOSED_CHECKED_NEGATIVE`.
+- **041 (NG5):** `SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})`; `drift_count: 3`; `no_fourth_arena: true`;
+  lineage `NO_OVERCOUNT_ROUTE_A_PENDING`; `ENGINE_AGREE` over 211 quantities. Trio confirmed EXACTLY `{ρ_B0, χ_c, C_hu}`; the
+  `.wl` hard-asserts the set membership.
+- **042 (scalar):** `SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED`; five-channel table — `h_EP`=`EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR`
+  (mass channel ONLY; full EP `NOT_EARNED`), `radiation`/`universality`/`u_L_EP`/`preferred_frame` all `SIM_GATED`; radiation
+  magnitude `SIM_GATED_BY_GUARD_A_NO_NUMERIC_POWER_RATIO_EMITTED`.
+
+### ⚠ CORRECTION 1 — the cone-lock (040) is NOT "near-vacuous"; it is genuinely able-to-fail
+The `forced_lock` synthetic-throat-bridge control flips the verdict to `CONE_LOCK_DERIVED` (`Δr=0`, both locks `ENTAILED`);
+`over_constrained`→`NO_GO(sector-ledger)`; `freedom_tie`→`NO_GO(cone-lock)`. Production reads CALIBRATED because the committed
+model **genuinely admits solutions where each lock fails** (the `WITNESSED` non-entailment witnesses, lock values 5 and 7), not
+because the tooth is a tautology. Re-adjudication verdict STANDS ("no committed cone lock, `Δr=2` calibration inputs"), but the
+framing is "a genuine calibration-vs-derivation adjudication whose production answer is *calibrated*," NOT "vacuous."
+
+### ⚠ CORRECTION 2 — `no_fourth_arena=True` (041) is a LABELLING closure, not a dynamical no-second-substance proof
+The criterion (`location_closure`): every production row's `location` ∈ `ARENAS={"4D bulk","3D brane surface","throat/embedding
+seam"}` ⇒ `no_fourth_arena = (no offending rows)`. It IS able-to-fail (a control injecting a `location="unassigned"` row flips
+it True→False). BUT locations are hand-assigned per row, and the three arenas are all **declared facets of the one medium** — so
+this certifies "no parameter *needed* a fourth-arena label," NOT that the one medium dynamically yields the brane. The gate's own
+`honest_caveat` concedes "whether the one medium yields the brane is genuinely open." ⭐ **Ledger framing (carry it, do not
+soften):** the knit VERIFIES "one medium" at the **labelling/bookkeeping level** (no fourth arena, irreducible residue is
+parameters-on-the-one-medium not a second substance) and hands the **dynamical brane-genesis closure to the deferred throat/
+embedding solve** (Part VII names it). This is the honest scope of the knit's "one medium, all emergent" claim.
+
+### Reshape cost — LOWER than Parts IV/V (all three `.wl` already independent)
+Every gate's `.wl` re-derives its results from its OWN primitives (`Resolve[Exists/ForAll]`, `RegionDimension`, `FullSimplify`,
+own hardcoded numerics) and reads the SymPy JSON **only for the final `canon[payload]=!=canon[sympyPayload]` equality gate**.
+So MATHEMATICA_MIRROR_POLICY's "genuinely independent route" is already satisfied at the physics level. The reshape is therefore
+the standard blueprint-§5 harness-strip, NOT a from-scratch re-derivation: **(a)** strip the cross-engine JSON payload-read so
+each engine is standalone print-only/assert-zero with ZERO file-I/O between engines (agreement checked by the orchestrator, per
+the ledger contract); **(b)** the per-gate weakness fixes below; **(c)** the 6-artifact deliverables. Confirm exact effort at
+per-stage directive authoring.
+
+### Per-gate reshape REQUIREMENTS (concrete, from the fresh read)
+- **040 (cone-lock):** (i) the source `require_token` guards are grep-style / dodgeable → replace with real computed guards
+  (per the "grep acceptance is dodgeable" rule); (ii) three field-overlay strings are hardcoded literals in the `.wl` payload
+  (lines ~269-270) even though the `.wl` independently derives + asserts them (~250-259) — keep the derivation, drop/compute the
+  literal; (iii) give lock A (`λ_γ=1`) and lock B (`c_E=c_γ`) their own tooth/verdict facet and explicitly wire lock B to Part
+  V's open `r_cone` (R71); (iv) carry two inherited open items: **`OPEN_110`** (even under lock B the mixed scalar–vector poles
+  sit off-cone ∝`C_hu²`; on-cone `det M|cone = −C_hu²k⁴`; cone-coincident only if `C_hu=0`) and the **conditionality** that
+  040's non-`NO_GO` verdict depends on `{C_hu, ρ_br}` freedom that **041 must certify** (041 certifies `C_hu`
+  `FREEDOM_CERTIFIED_CURRENT_LEDGER`; `ρ_br` only `FREEDOM_SIM_DEFERRED`) ⇒ **build/order 041's freedom result available to 040**.
+- **041 (NG5):** (i) ⭐ **ADD the explicit anti-absorption guard tooth** — the fresh read found **NO existing guard**
+  distinguishing the NG5 `drift_count:3` from the `stage007` freeze `POST_D16_DRIFT(7)`; today they are kept apart only by
+  siloing (separate gate/own count). The local `NO_OVERCOUNT_ROUTE_A_PENDING` tooth guards brane-inertia double-counting
+  (pathA_25 `varrho_br` vs pathA_35 `rho_br`), a DIFFERENT concept. The ledger stage must add a computed guard asserting the NG5
+  trio is disjoint from the freeze count; (ii) in the `.py`, control `fired` booleans are reported but NOT individually asserted
+  (only `contradiction` + production-closure raise; the hard `fail[]` teeth live in the `.wl`) → make each control individually
+  assert `fired==True` (per-tooth-ablation standard); (iii) carry the **`Q_E` near-miss**: control `calibration_ablation_Q_E`
+  shows `Q_E` flips to `IRREDUCIBLY_INDEPENDENT` (drift→**4**) if the anchor declaration is removed — a fourth irreducible held
+  off the count by a *calibration declaration*; surface it for Part VII's count; (iv) carry the labelling-closure caveat
+  (Correction 2) + `C_hu` certified-free vs `ρ_br` sim-deferred.
+- **042 (scalar):** (i) carry the two REACHABLE conditional falsifiers (control F `universality` + control K `radiation`
+  with pinned `K_h` → `FALSIFIABLE_TENSION`) — the departure is able-to-fail once `K_h` is pinned, NOT permanently sim-gated;
+  (ii) `NATURALLY_HIDDEN` is defined but UNREACHABLE in production (the model does NOT get to claim the scalar is naturally
+  hidden) — record as an honest non-escape; (iii) Guard-A is a **denylist** (only `M_h`/`c_E`/`K_h`/`P_h/P_EM`/EP-magnitude/
+  residue-floor guarded) → document as a scoped limitation, not a universal no-number guarantee; (iv) cross-link
+  `Gate_L_connection=EARNED_CONNECTION` (same embedding-direction family as light — an ungapped bending family would trip the
+  Gate-L fifth-force failure); (v) note no astro/cosmo bound is applied yet (deferred stellar-cooling / BBN-CMB note).
+
+### Gate-decision recommendations (now firm, post-fresh-read)
+1. **Cone-lock split → NO, keep as ONE stage (040).** Locks A and B share one gate, one `CONE_LOCK_CALIBRATED` verdict, one
+   `Δr=2` computation, and symmetric machinery (both `WITNESSED`, each contributes `Δr=1`); splitting would duplicate the shared
+   engine. Give each lock its own tooth/verdict facet WITHIN 040 (reshape req 040-iii). Lock B is the Part-V-reopened one
+   (`r_cone`); lock A (light↔gravity-phonon) is an untouched separate calibration.
+2. **Knit-synthesis capstone → DEFER the synthesis to Part VII, but 042's note/register HANDS OFF a clean statement.** The
+   cross-gate bookkeeping the fresh read surfaced (irreducible residue 3, or 4-if-`Q_E`-undeclared; reducible-deferred
+   `{ρ_br,μ_R,c_E}` via the shared throat solve; no committed cone lock `Δr=2`; `OPEN_110`; the scalar sim-gate) is exactly
+   Part VII's unified-count job (RESUME §4). So Part VI stays at **3 executable stages**; the handoff is a synthesis subsection
+   in the 042 note + register rows, NOT a 4th stage. (If the gate prefers an explicit artifact, the alternative is a small
+   **documentary VI-4** — cite-only, no dual-engine, like stage029 PN-cite — collecting the three verdicts + the reduction-debt/
+   irreducible-count statement. Recommendation: fold into 042 + register; add VI-4 only if you want it separately citable.)
+3. **Reshape cost → confirmed LIGHT** (all three `.wl` already independent; harness-strip + weakness fixes + deliverables).
+4. **Build ids 040/041/042** confirmed (Part V ended 039). ⚠ **Build ORDER:** do **041 before or alongside 040** so 041's
+   `{C_hu,ρ_br}` freedom certification is available to 040's conditionality (reshape req 040-iv). Recommend **041 → 040 → 042**,
+   OR keep 040→041→042 numerically but have 040 cite 041's freedom result as a forward-reference resolved at 041. Flag at gate.
+
+### Register preview — refined (rows continue after R73; Part VII assigns final numbers)
+- cone locks `λ_γ=1`, `c_E=c_γ` → **CALIBRATED/UNCOMMITTED** (`Δr=2`, both `WITNESSED`) + inherited **`OPEN_110`** (`C_hu²`
+  off-cone) — discharges no knob.
+- NG5 irreducible trio `{ρ_B0, χ_c, C_hu}` → **IRREDUCIBLE**, `no_fourth_arena=True` (labelling-level), `drift_count=3`
+  (**4 if `Q_E` anchor undeclared** — record the near-miss); **anti-absorption guard vs `POST_D16_DRIFT(7)`** (newly ADDED tooth).
+- `{ρ_br, μ_R, c_E}` → **reducible-in-principle** (Route-A `REGISTERED_DEFERRED`, shared throat/cone-lock solve).
+- charge-coupled scalar → **DEPARTURE + SIM-DEFERRED** (magnitude); two reachable conditional falsifiers; `NATURALLY_HIDDEN`
+  unreachable; Guard-A denylist scope-note; `Gate_L` earned-connection cross-link.
+
+Net: Part VI adds little NEW knob content — it CHARACTERIZES the knit honestly (no committed cone lock; a labelling-level
+one-medium closure with an irreducible 3-param residue that is NOT a second substance; a sim-gated scalar departure) and hands
+Part VII a clean irreducible-count + reduction-debt statement. **The 3-stage split is ratification-ready.**

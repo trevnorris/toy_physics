@@ -6,8 +6,8 @@
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** per-stage pre-execution gate on **034 (V-1)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under
-> the autonomy mode set at ratification.
+> **Next:** ✅ **034 (V-1) DONE + committed `109070da`** (see the Progress log at the bottom) → per-stage pre-execution gate on
+> **035 (V-2)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -196,3 +196,28 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
    above. (Build-time detail; the gate just ratifies the boundaries.)
 4. **Then:** ratify → per-stage pre-execution gate on stage 034 → Codex→Grok→Codex directive → build. Await the user's
    autonomy mode for the per-stage builds.
+
+---
+
+## Progress log
+- **2026-07-22 — split plan RATIFIED (6 stages 034–039)** at the per-Part gate; all six kept separate (the three granularity
+  calls resolved to KEEP SEPARATE); verdict tokens/stage boundaries/register dims/35-tooth allocation build-faithful.
+- **034 (V-1, transverse-vector action row — EARNED action row)** — ✅ **DONE + committed `109070da`** (verdict
+  **`TRANSVERSE_MOVE_ACTION_ROW`**, `internal_inconsistency=none`). Records, as an EARNED action-structure result within the
+  postulated G0 closure, that magnetism = the MOVING ±w throat enters the ledger as a clean `(G0+δ)` transverse-vector
+  amendment: the row `S_{T+move}=∫[½ρ_br|u̇_T|²−½μ_R|∇×u_T|²+q_T Σ sᵢ η_a Vᵢ·u_T]`, `∇·u_T=0`, `c_γ²=μ_R/ρ_br`,
+  `q_T=λ_T τ_d`; **positive-definite transverse Hessian** (two polarizations, `ω²=c_γ²k²`, no ghost/tachyon) and **no
+  pre-existing G0 row changed** (`F_flux` untouched). **Scope class EARNED (action row) / IMPORTS:** the `u_T` kinetic/gradient
+  row + `c_γ²=μ_R/ρ_br` are IMPORTED from Part III / stage003 / pathA_36 — **cited, NOT re-counted** (de-dup deferred to Part
+  VII); the magnetism-NEW content of 034 is EXACTLY `{the moving coupling, q_T, τ_d}`. **Action-row gate ONLY:** the sign +
+  magnitude are deferred to the R1 landing (038), the `b_T` parity/departure to 039; source-from-continuity + parity census
+  (035) and both far-field routes (036–037) are downstream. **Verification:** dual-engine SymPy 12 / Mathematica 12, both
+  exit 0 (SymPy explicit-Hessian route; the `.wl` a genuinely INDEPENDENT NullSpace-Fourier + `CoefficientArrays` +
+  `PositiveDefiniteMatrixQ` route); all 12 per-tooth mutations FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is
+  non-tautological (re-derives to `ROW_UNSTABLE` under a mutated Hessian, the 030 X≡X lesson). Directive Codex→Grok→Codex
+  bookend clean; build + arbiter re-run; **tri-review (falsification-first): FIDELITY 1 NIT** (a `.wl` X≡X `dimensionObject`
+  self-compare) **REMEDIATED → clean**, **ADVERSARIAL clean + 2 documented non-blocking notes**; Codex deliverables-fidelity-verify
+  **SOUND**. Deliverables note + card (Part-V appendix input) + register edges **R67** (`q_T=λ_T τ_d`, FREE-UNREDUCED / R1,
+  split from the electric `bc_selection` — the sim-deferred throat normalization) + **R68** (`τ_d`, the active-drain time-arrow,
+  structural / postulated). ▶ **NEXT = stage 035 (V-2)** — the native source law `J_T=q_T sηV` from defect-continuity + the
+  parity census, verdict `CONVECTION_LIKE_CONDITIONAL`.

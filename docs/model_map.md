@@ -112,7 +112,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Resolving the R1:** only the sim-deferred **nonlinear throat/core solve** (`s↦h_A` boundary functional/barrier) can pin the class, force a holder, and (upside) deliver `q>g`.
 
-### 3.5 Magnetism — Part V ◐ NEXT (built off-ledger, commit 53cf049f; ✅ 6-stage split `part5_magnetism_atomic_split.md` RATIFIED 2026-07-22 — stages 034–039; NEXT = per-stage gate on 034)
+### 3.5 Magnetism — Part V ◐ STARTED (built off-ledger, commit 53cf049f; ✅ 6-stage split `part5_magnetism_atomic_split.md` RATIFIED 2026-07-22 — stages 034–039; ✅ stage 034 (V-1) DONE + committed `109070da` (`TRANSVERSE_MOVE_ACTION_ROW`, EARNED action row); NEXT = per-stage gate on 035)
 
 *Magnetism = the moving ±w throat (the electric twin). Two independent far-field derivations; their COMPARISON is the boost-consistency / emergent-Lorentz result.*
 
@@ -183,11 +183,11 @@ Central equation-set rebuild at `research/pde_ledger_v2/` (branch `ledger-v2-reb
 | II | Gravity | ✅ built (001–002, 008–029), CLOSED |
 | III | Light | ✅ DONE = stage003 (re-scoped 2026-07-22, surviving-solution rule) |
 | IV | Charge | ✅ COMPLETE — in-ledger (030–033, 2026-07-22) |
-| V | Magnetism | ◐ NEXT — build verified off-ledger (53cf049f); DRAFT split authored, per-Part gate pending |
+| V | Magnetism | ◐ STARTED — split RATIFIED (034–039); stage 034 (V-1) DONE + committed `109070da`; NEXT = 035 |
 | VI | Knit | ⬜ not started (gates 40/41/42 need reshape) |
 | VII | Integration | ⬜ not started |
 
-**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ Parts I–IV DONE (**Part IV charge COMPLETE 2026-07-22, stages 030–033**: 030 electric-scalar closure / 031 puncture-deflection mechanism EARNED / 032 `R1_REQUIRED(bc_selection)` / 033 `NATIVE_P_NO_EMERGENT_GAUSS` departure) → **Part V (magnetism)**: DRAFT split `part5_magnetism_atomic_split.md` authored → **per-Part user gate** → build. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
+**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ Parts I–IV DONE (**Part IV charge COMPLETE 2026-07-22, stages 030–033**: 030 electric-scalar closure / 031 puncture-deflection mechanism EARNED / 032 `R1_REQUIRED(bc_selection)` / 033 `NATIVE_P_NO_EMERGENT_GAUSS` departure) → **Part V (magnetism) STARTED**: 6-stage split `part5_magnetism_atomic_split.md` RATIFIED; stage 034 (V-1, `TRANSVERSE_MOVE_ACTION_ROW`) DONE + committed `109070da`; NEXT = per-stage gate on 035. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
 
 ### 5.1 Ledger completion manifest — exactly what math folds into each remaining Part, and where it lives
 

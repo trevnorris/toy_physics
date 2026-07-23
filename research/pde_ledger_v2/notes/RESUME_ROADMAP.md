@@ -29,7 +29,7 @@
   six controls; tri-review CLEAN + 2 non-blocking robustness notes documented [`HONEST_TUNED_SCOPE` framing-tooth redundant
   with `BOUNDARY_SCAN`/`RANDOMIZED_SWEEP`/`SIGNATURE`; SymPy dual-path verified-safe]; deliverables 3→CLEAN; register R66 =
   DEPARTURE, discharges NO knob, NOT a reduction). Plan: `part4_charge_atomic_split.md`.
-- **Part V (magnetism) STARTED (2026-07-22)** — the 6-stage split (034–039) RATIFIED; **stage 034 (V-1, transverse-vector
+- **Part V (magnetism) ✅ COMPLETE (all 6 stages 034–039, 2026-07-23)** — the 6-stage split RATIFIED; **stage 034 (V-1, transverse-vector
   action row → `TRANSVERSE_MOVE_ACTION_ROW`) ✅ DONE + committed `109070da`** (EARNED action row); **stage 035 (V-2, native
   moving-throat source `J_T=q_T sηV` from defect-continuity + parity census → `CONVECTION_LIKE_CONDITIONAL`) ✅ DONE +
   committed `b55a7a65`** (EARNED source law); **stage 036 (V-3, Route A the Maxwell–Darwin reference kernel
@@ -41,8 +41,11 @@
   structurally IS the boost of electricity; only the ratio `r_BA=q_T²/(ρ_br·A_E)` is open); **stage 038 (V-5, the SEALED §4
   first-match 1152-cell landing → `R1_REQUIRED(electric_bc_selection)` + 4 co-blockers) ✅ DONE + committed `177d25d7`**
   (R1-landing — the production tuple lands terminal `R1_REQUIRED(electric_bc_selection)`, the blocker collector emits all four
-  honest R1 rows ⇒ the magnetic sign/magnitude INHERIT the electric R1 [doubly-R1], emergent Lorentz `UNDETERMINED`; ▶ NEXT = 039
-  the FINAL Part-V stage, see §7). **Not started:** Parts **VI (knit)**, **VII (integration)**.
+  honest R1 rows ⇒ the magnetic sign/magnitude INHERIT the electric R1 [doubly-R1], emergent Lorentz `UNDETERMINED`); **stage 039
+  (V-6, the `b_T=∇×u_T` time-reversal-EVEN departure → `B_TIME_REVERSAL_EVEN`, the FINAL Part-V stage) ✅ DONE + committed
+  `63f28258`** (CHARACTERIZED-DEPARTURE, first-class — `b_T=∇×u_T` is T-EVEN + axial vs Maxwell's T-odd `B`, the magnetic twin
+  of 033's `NATIVE_P_NO_EMERGENT_GAUSS` "EM is not exact Maxwell"; requires the active-drain time-arrow `τ_d`; dual-engine 10/10,
+  register R73 = DEPARTURE, no knob). ▶ NEXT = **Part VI (the knit)**, see §7. **Not started:** Parts **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
 
@@ -89,7 +92,7 @@ Each **executable derivation stage** = the 6-artifact unit (note `ledger_stageNN
 
 **Part III (light) ✅ DONE (2026-07-22)** = stage003 alone, re-scoped under the surviving-solution standing rule (§1); the `pathA_35` couple-stress no-go → failures-paper backlog. The Parts I/II graveyard-cleanup landed + committed (`327fcc7e`).
 
-▶ **NEXT FRONT = Part V (magnetism)** — Part IV (charge) is ✅ COMPLETE (all 4 stages 030–033). ✅ Split plan RATIFIED as a **4-stage split** (user decision
+▶ **NEXT FRONT = Part VI (the knit)** — Parts IV (charge) AND V (magnetism) are ✅ COMPLETE (charge 030–033; magnetism 034–039). ✅ Split plan RATIFIED as a **4-stage split** (user decision
 2026-07-22 morning; `part4_charge_atomic_split.md`); **stage 030 (IV-1) DONE + committed `122afe36`**; **stage 031 (IV-2,
 puncture-deflection MECHANISM) DONE + committed `bba61c82`** (`THROAT_H_SOURCE_1_OVER_R2`, EARNED; the build honestly hit the
 `I₊≠0` STOP-gate → OPTION A reflection-dominance `I₊>0` Grok-verified); **stage 032 (IV-3, four BC ensembles + sealed
@@ -163,10 +166,18 @@ are neither independently earned nor calibrated — they INHERIT the electric R1
 cross-engine digest `983556935e…` (independent `.wl` mixed-radix/FirstCase/ByteArray route), partition `{5,27,3}=35`, all 20
 mutations fire, verdict tooth non-tautological (re-derives the build-native landings), ⛔ NO can't-fail conjuncts; directive
 bookend Codex(7)→Grok SOUND→confirm; tri-review fidelity (hand-traced first-match cascade)+adversarial CLEAN, ZERO remediation;
-deliverables-verify 14-folded → CLEAN; register edge R72 = the SEALED §4 landing, R1-LANDING, no new knob. **⭐ NEXT =
-per-stage gate on 039 (Part V-6, the FINAL Part-V stage)** — the `b_T=∇×u_T` time-reversal-EVEN departure `B_TIME_REVERSAL_EVEN`
-(the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS`, "EM is not exact Maxwell"), CHARACTERIZED-DEPARTURE →
-Codex→Grok→Codex → build. Then VI (knit), then VII (integration). Resolve the two parked
+deliverables-verify 14-folded → CLEAN; register edge R72 = the SEALED §4 landing, R1-LANDING, no new knob. **stage 039 (V-6,
+the FINAL Part-V stage) ✅ DONE + committed `63f28258`** — verdict **`B_TIME_REVERSAL_EVEN`** (CHARACTERIZED-DEPARTURE,
+first-class): the candidate field `b_T=∇×u_T` is time-reversal **EVEN** + axial, whereas a real Maxwell `B` is T-**odd** — a
+concrete not-exact-Maxwell prediction, the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS` ("EM is not exact Maxwell");
+magnetism requires the throat's active-drain time-arrow `τ_d`; cites 035's parity census + authors its own b_T-axial +
+T-even-vs-Maxwell-T-odd asserts; dual-engine 10/10 (independent `.wl` ReplaceAll/Cross-Det/FoldList route), all 20 mutations
+fire, verdict tooth non-tautological, ⛔ NO can't-fail conjuncts; tri-review fidelity+adversarial CLEAN, ZERO remediation;
+deliverables-verify 9-folded → CLEAN; register edge R73 = DEPARTURE, discharges NO knob, NOT a reduction. **✅ PART V
+(MAGNETISM) COMPLETE** (034 `109070da` / 035 `b55a7a65` / 036 `df045a74` / 037 `c8780f00` / 038 `177d25d7` / 039 `63f28258`).
+**⭐ NEXT = Part VI (the knit)** — carry AND re-adjudicate `pathA_40` (cone-lock; no committed `c_E=c_γ` lock, the magnetism
+build left `c_E=c_γ?` open via `r_cone`), `pathA_41` (second-medium / NG5 drift), `pathA_42` (charge-coupled scalar), per §4/§3.6
+→ author `part6_knit_atomic_split.md` → per-Part gate → build. Then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**
 ⚠ **Infra note (2026-07-22):** `Bash run_in_background` codex jobs are intermittently harness-reaped (SIGKILL to the group);

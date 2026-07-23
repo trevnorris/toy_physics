@@ -1,14 +1,18 @@
-# Part V — Magnetism: atomic-stage split (✅ RATIFIED — 6-stage split, 2026-07-22)
+# Part V — Magnetism: atomic-stage split (✅ COMPLETE — 6-stage split, 2026-07-22/23)
 
-> **✅ STATUS: RATIFIED at the per-Part gate (2026-07-22) — all SIX stages 034–039 as tabled.** First drafted 2026-07-22 from
+> **✅ STATUS: PART V (MAGNETISM) COMPLETE (2026-07-23) — all SIX stages 034–039 BUILT + committed** (034 `109070da` / 035
+> `b55a7a65` / 036 `df045a74` / 037 `c8780f00` / 038 `177d25d7` / 039 `63f28258`). See the **✅ PART V COMPLETE** summary block
+> at the bottom of the Progress log. ▶ NEXT front = **Part VI (the knit)**.
+>
+> **✅ RATIFIED at the per-Part gate (2026-07-22) — all SIX stages 034–039 as tabled.** First drafted 2026-07-22 from
 > the RESUME_ROADMAP §3 re-scope + memories; then **REFINED against a FRESH read of the magnetism build**
 > (`magnetism_moving_throat_result.md` + a tooth-inventory audit of `magnetism_moving_throat_check.{py,wl}`, commit `53cf049f`);
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** ✅ **038 (V-5, the SEALED §4 first-match 1152-cell landing) DONE + committed `177d25d7`** (see the Progress log at the
-> bottom) → per-stage pre-execution gate on **039 (V-6, the FINAL Part-V stage)** → Codex→Grok→Codex directive → build. Per-stage
-> builds proceed under the autonomy mode set at ratification.
+> **Next:** ✅ **039 (V-6, the `b_T` time-EVEN departure `B_TIME_REVERSAL_EVEN`) DONE + committed `63f28258` — the FINAL Part-V
+> stage; PART V COMPLETE** (see the Progress log at the bottom). ▶ NEXT front = **Part VI (the knit)** (carry + re-adjudicate
+> pathA_40/41/42; per `RESUME_ROADMAP.md` §4/§3.6), then Part VII (integration).
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -318,3 +322,30 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
   CLEAN**. Deliverables note + card (Part-V appendix input) + register edge **R72** (the SEALED §4 landing, R1-LANDING, no new
   knob). ▶ **NEXT = stage 039 (V-6, the FINAL Part-V stage)** — the `b_T=∇×u_T` time-reversal-EVEN departure `B_TIME_REVERSAL_EVEN`
   (the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS`, "EM is not exact Maxwell"), CHARACTERIZED-DEPARTURE, first-class.
+- **039 (V-6, the `b_T=∇×u_T` time-reversal-EVEN departure "not exact Maxwell" — CHARACTERIZED-DEPARTURE, first-class; the FINAL
+  Part-V stage)** — ✅ **DONE + committed `63f28258`** (verdict **`B_TIME_REVERSAL_EVEN`**). Records, as the first-class
+  **CHARACTERIZED-DEPARTURE** of the magnetism sector within the postulated G0 closure, that the candidate magnetic field
+  **`b_T=∇×u_T` is time-reversal EVEN** + axial — whereas a real Maxwell `B` is T-**odd** — a concrete not-exact-Maxwell
+  prediction, the magnetic twin of 033's `NATIVE_P_NO_EMERGENT_GAUSS` ("EM is NOT exact Maxwell"); `b_T` is correctly **axial**,
+  and magnetism requires the throat's **active-drain time-arrow `τ_d`** (the full time-reverse maps drain→source). **Scope class
+  CHARACTERIZED-DEPARTURE (first-class, never softened):** cites 035's parity census (`PARITY_TIME_REVERSAL` + `PARITY_ROTATION`)
+  and authors its own `b_T`-axial + T-even-vs-Maxwell-T-odd asserts; NOT a knob, NOT a reduction/codimension edge, does NOT shrink
+  the irreducible count. **Departure gate ONLY:** it characterizes the `b_T` parity that 035 recorded RAW — the sign/magnitude R1
+  landing is 038's, the action row / source / routes are 034–037. **Verification:** dual-engine SymPy 10 / Mathematica 10, both
+  exit 0 (the `.wl` a genuinely INDEPENDENT `ReplaceAll` / `Cross`-`Det` / `FoldList` route); all 20 per-tooth mutations
+  FIRED_AT_OWN_ASSERT in each engine; the verdict tooth is non-tautological; ⛔ **NO can't-fail conjuncts** (hardened build).
+  Directive Codex→Grok→Codex bookend; build + arbiter re-run; **tri-review (falsification-first): FIDELITY + ADVERSARIAL CLEAN,
+  ZERO remediation**; Codex deliverables-fidelity-verify **9-folded → CLEAN**. Deliverables note + card (Part-V appendix input) +
+  register edge **R73** (the `b_T=∇×u_T` T-even departure, DEPARTURE — no knob, not a reduction). ⭐ **039 COMPLETES Part V
+  (magnetism).**
+- **✅ PART V (MAGNETISM) COMPLETE** (034 `109070da` / 035 `b55a7a65` / 036 `df045a74` / 037 `c8780f00` / 038 `177d25d7` / 039
+  `63f28258`). The surviving magnetism sector: magnetism = the MOVING ±w throat (the electric twin in motion); the native source
+  `J_T=q_T sηV` is defect-continuity-DERIVED (REPLACING the barred `j∝sV`); Route B (blind) reproduces Route A's transverse
+  Darwin tensor structure + `R⁻¹/R⁻²` falloff + `O(V₁V₂)` velocity order ⇒ the boost-consistency structural relation HOLDS
+  (**the model's magnetism structurally IS the boost of its electricity**); the magnetic **SIGN + magnitude are
+  `R1_REQUIRED(electric_bc_selection)`** (+ co-blockers `direct_moving_throat`/`magnitude`/`consistency` — neither earned nor
+  calibrated; they INHERIT the electric R1); and `b_T=∇×u_T` is time-reversal EVEN (`B_TIME_REVERSAL_EVEN`, a first-class "not
+  exact Maxwell" departure, the magnetic twin of 033). ▶ NEXT front = **Part VI (the knit)** — carry + re-adjudicate `pathA_40`
+  (cone-lock, no committed `c_E=c_γ` lock / `r_cone`), `pathA_41` (NG5 second-medium drift), `pathA_42` (charge-coupled scalar),
+  per `RESUME_ROADMAP.md` §4/§3.6; then Part VII (integration). The two parked knob-audit decisions (RESUME §2) resolve
+  before/at Part VII.

@@ -3,12 +3,12 @@
 This document is the stage-coverage control sheet for the rebuilt PDE ledger.
 
 ```yaml
-canonical_stage_count: 36
-verified_stage_count: 35
-sympy_audit_count: 35
-mathematica_audit_count: 35
+canonical_stage_count: 37
+verified_stage_count: 36
+sympy_audit_count: 36
+mathematica_audit_count: 36
 numerical_stress_count: 0
-reviewed_stage_count: 36
+reviewed_stage_count: 37
 ```
 
 > **Stage 029 (PN corpus DOI-cite) is CITE-only** — a documentary provenance stage with **no executable audit**
@@ -27,13 +27,13 @@ reviewed_stage_count: 36
 | II | 001-002, 008-029 | 24 | 23 | 23 | 0 | 24 |
 | III | 003 | 1 | 1 | 1 | 0 | 1 |
 | IV | 030-033 | 4 | 4 | 4 | 0 | 4 |
-| V | 034-036 | 3 | 3 | 3 | 0 | 3 |
+| V | 034-037 | 4 | 4 | 4 | 0 | 4 |
 
 ## Coverage Classes
 
 | Coverage class | Count | Stage ranges |
 |---|---:|---|
-| SymPy + Mathematica | 35 | 001-028, 030-036 |
+| SymPy + Mathematica | 36 | 001-028, 030-037 |
 | SymPy only | 0 | none |
 | Mathematica only | 0 | none |
 | No executable audit | 1 | 029 |

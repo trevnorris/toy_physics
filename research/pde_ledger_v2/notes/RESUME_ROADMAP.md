@@ -34,8 +34,12 @@
   moving-throat source `J_T=q_T sηV` from defect-continuity + parity census → `CONVECTION_LIKE_CONDITIONAL`) ✅ DONE +
   committed `b55a7a65`** (EARNED source law); **stage 036 (V-3, Route A the Maxwell–Darwin reference kernel
   `(δ_ij+n_in_j)/8πR` from boosting the electric interaction → `MAXWELL_DARWIN_REFERENCE`) ✅ DONE + committed `df045a74`**
-  (EARNED reference kernel, tier-A conditional — inherits the electric `A_E` R1; ▶ NEXT = 037, see §7). **Not started:** Parts
-  **VI (knit)**, **VII (integration)**.
+  (EARNED reference kernel, tier-A conditional — inherits the electric `A_E` R1); **stage 037 (V-4, THE SECTOR CRUX — Route B
+  the direct moving-throat shear computed BLIND + the boost-consistency structural COMPARISON + the ratios →
+  `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)`) ✅ DONE + committed `c8780f00`** (EARNED
+  structural relation, target-blind — Route B reproduces Route A's tensor structure + falloff + velocity order ⇒ magnetism
+  structurally IS the boost of electricity; only the ratio `r_BA=q_T²/(ρ_br·A_E)` is open; ▶ NEXT = 038, see §7). **Not
+  started:** Parts **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
 
@@ -131,10 +135,23 @@ coefficient rides the electric `A_E` (`R1_REQUIRED(bc_selection)`) + `c_γ` (Rou
 `MAXWELL_DARWIN_REFERENCE_UNCERTIFIED`); directive Codex(2)→Grok SOUND→Codex confirm; tri-review fidelity+adversarial
 converged on 2 can't-fail NITs (`4==4` order-literal + `len==len` firewall guard) remediated → clean + 1 documented
 compound-tooth note; deliverables-fidelity-verify 3→CLEAN; register edge R70 (Maxwell–Darwin kernel `I_ij`+anchor `U_A`,
-DERIVED `[L⁻¹]`, tier-A conditional on `A_E`, no new knob). **⭐ NEXT = per-stage gate on 037 (Part V-4)** — Route B (the
-direct moving-throat shear, computed BLIND) + the boost-consistency structural COMPARISON + the ratios (`r_BA`, `δ_BA`,
-`r_cone`), verdict `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)` → Codex→Grok→Codex →
-build. Then 038–039, then VI (knit),
+DERIVED `[L⁻¹]`, tier-A conditional on `A_E`, no new knob). **stage 037 (V-4, THE SECTOR CRUX — Route B the direct
+moving-throat shear computed BLIND + the boost-consistency structural COMPARISON + the ratios) ✅ DONE + committed `c8780f00`**
+— verdict **`BOOST_STRUCTURAL_RELATION_HOLDS`** + co-blocker **`R1_REQUIRED(direct_moving_throat)`** (EARNED structural
+relation, target-blind): a direct moving-throat calc computed BLIND to Route A (`foreign_payload=None`, built FIRST for
+blindness; carries `{q_T,μ_R}`, no `A_E`) — `U_B=−s₁s₂q_T²(D_V+A_V)/8πμ_R R` — INDEPENDENTLY reproduces Route A's (036)
+transverse Darwin tensor structure + `R⁻¹/R⁻²` falloff + `O(V₁V₂)` velocity order ⇒ the boost-consistency / emergent-Lorentz
+structural relation HOLDS — **the model's magnetism structurally IS the boost of its electricity**; only the coefficient
+ratio `r_BA=q_T²/(ρ_br·A_E)` is open (an unresolved OUTPUT riding the R1 `q_T` + the R1 electric `A_E`, `QMAG_R1`), and
+emergent Lorentz is NOT claimed (needs `δ_BA=0`+`r_cone=1`+closed orders → 038 `HOOK_LORENTZ`); the co-blocker
+`R1_REQUIRED(direct_moving_throat)` originates here; the SEALED §4 1152-cell landing is deferred to 038; dual-engine 16/16
+(independent `.wl` NullSpace/trace-norm/normal-projector route distinct from BOTH `.py` and source `.wl`), manifest digest
+`3c88849c…`, partition `{2,12,21}=35`, all 32 mutations fire, verdict tooth non-tautological (→
+`BOOST_STRUCTURAL_RELATION_UNCERTIFIED`), ⛔ NO can't-fail conjuncts (hardened build); directive bookend Codex(1)→Grok(1)→
+confirm CLEAN; tri-review fidelity+adversarial CLEAN, ZERO remediation (documented verified-safe NITs only); deliverables-verify
+10-folded (incl. `c_E`→Part IV attribution) → CLEAN; register edge R71 = the ratios DERIVED/R1-valued, no new knob. **⭐ NEXT =
+per-stage gate on 038 (Part V-5)** — the SEALED §4 first-match 1152-cell landing → the magnetic sign/magnitude inherit the
+electric R1, verdict `R1_REQUIRED(electric_bc_selection)` + 4 co-blockers → Codex→Grok→Codex → build. Then 039, then VI (knit),
 then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**

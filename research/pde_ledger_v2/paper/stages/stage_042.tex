@@ -1,0 +1,217 @@
+\section{Stage 042: The Charge-Coupled Scalar Consistency Map --- the \texttt{SCALAR\_DEPARTURE\_MAPPED\_MAGNITUDE\_SIM\_GATED} Departure (a First-Class Characterized Departure, Break-Risk Magnitude SIM-GATED with Several REACHABLE Falsifiers; the Part-VI Capstone)}
+
+\stagefield{Part / anchor}{Part VI -- The knit (VI-3; the THIRD and FINAL stage of the 3-stage split, built LAST in the 041$\to$040$\to$042 order -- the charge-coupled scalar consistency map AND the Part-VI capstone carrying the Part~VII synthesis handoff)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Record, as a first-class CHARACTERIZED
+DEPARTURE, that the propagating charge-coupled \(h\)-scalar (the electric
+sector's admixture partner) does \emph{not} cleanly break the single-medium
+model, but its break-risk MAGNITUDE is \textbf{SIM-GATED} because the free
+\(h\)-sector kinetic normalization (\(M_h\), \(K_h\), \(c_E\)) is not pinned on
+the current ledger. The gate builds the static \(2\times2\) charge/mass exchange,
+the radiation dipole speed-scaling, and a \textbf{five-channel consistency
+adjudication}, and assembles the headline verdict by a first-match rule from the
+five COMPUTED channel states:
+\texttt{h\_EP}=\texttt{EARNED\_SAFE\_MASS\_CHANNEL\_ON\_DECOUPLED\_FLOOR}
+(\textbf{mass channel ONLY}; full decoupled-floor EP safety \texttt{NOT\_EARNED},
+additionally needing \texttt{universality=EARNED\_SAFE}); \texttt{radiation}
+(subtag \texttt{CHERENKOV\_DEFERRED}), \texttt{universality}
+(\texttt{SIM\_GATED\_REQUIRED\_UNIVERSALITY}), \texttt{u\_L\_EP} (subtag
+\texttt{MIXED\_SCALAR\_EP\_RISK}), and \texttt{preferred\_frame} all
+\texttt{SIM\_GATED} (radiation magnitude
+\texttt{SIM\_GATED\_BY\_GUARD\_A\_NO\_NUMERIC\_POWER\_RATIO\_EMITTED}). The sharp
+\(c_E\) trade-off: \(c_E\to\infty\) \(\Rightarrow\) non-radiating but
+preferred-frame; \(c_E{=}c_\gamma\) \(\Rightarrow\) a real RADIATING extra scalar
+and \textbf{NECESSARY-not-sufficient for Lorentz determination} (NOT
+``Lorentz-invariant'': without a pinned \(K_h\) radiation stays \texttt{SIM\_GATED},
+and full determination also needs \(\delta_{BA}{=}0\), \(r_{\rm cone}{=}1\),
+closed higher orders, matched flux --- Part~V \texttt{HOOK\_LORENTZ}
+\texttt{UNDETERMINED}). Mapped \(+\) sim-gated, NOT resolved. Verdict token
+\texttt{SCALAR\_DEPARTURE\_MAPPED\_MAGNITUDE\_SIM\_GATED}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage042_charge_coupled_scalar_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage042_charge_coupled_scalar_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- a \textbf{CHARACTERIZED-DEPARTURE + SIM-DEFERRED (magnitude)},
+recorded first-class (the departure ledger, \texttt{docs/model\_map.md}~\S4),
+\emph{not} an exact closure. The scalar does NOT cleanly break the model, but its
+break-risk magnitude is SIM-GATED with \textbf{several REACHABLE falsifiers} once
+\(K_h\) is pinned. It is \textbf{mapped \(+\) sim-gated, NOT resolved} --- NEVER
+softened into ``the scalar is fine / naturally hidden,'' NEVER inflated into ``a
+resolved radiating scalar'' or ``Lorentz-invariant.'' It \textbf{discharges no
+knob} and adds a departure row, NOT a reduction edge; the sim-gated magnitude (the
+numeric \(P_h/P_{\rm EM}\), the radiation power ratio) is exactly what Guard~A
+REFUSES to emit without the parent kinetic action --- SIM-GATED, not computed.
+\textbf{DECIDED} (not R1): the static \(2\times2\) exchange, the five-channel
+adjudication, the first-match verdict, Guard~A, the twelve controls, and the
+deletion-sensitivity --- STRUCTURAL, dimensionless facts. \textbf{OPEN} (handed to
+Part~VII): the throat/embedding solve that would pin \(\{M_h,c_E,K_h\}\) and
+reopen the sim-gated channels, and the not-yet-applied astrophysical/cosmological
+(stellar-cooling, BBN/CMB) bounds. This is an \emph{open}, characterized departure
+--- \StatusOpen{} --- not an exact closure.
+
+\paragraph{The static \(2\times2\) exchange + the radiation speed-scaling (\texttt{STATIC\_DETERMINANT}, \texttt{A\_QQ/A\_QM/A\_MM\_RESIDUAL}, \texttt{DECOUPLED\_*}, \texttt{MIXED\_QL0\_EP\_RISK\_TERM}, \texttt{RADIATION\_*}, \texttt{STABILITY\_BOUND}).}
+The stiffness
+\(S{=}\bigl[\begin{smallmatrix}B_{\rm eff}&C_{hu}\\C_{hu}&K_h\end{smallmatrix}\bigr]\),
+\(\det{=}B_{\rm eff}K_h-C_{hu}^2\); the sourced quadratic forms \(A_{qq}{=}jq\cdot
+S^{-1}jq\), \(A_{qm}{=}jq\cdot S^{-1}jm\), \(A_{mm}{=}jm\cdot S^{-1}jm\)
+(\(jq{=}[q_L,q_h]\), \(jm{=}[q_M,m_h]\)) equal the ratified closed forms, each
+residual (matrix/solve route \(-\) typed form) factoring to zero. The decoupled
+floor \(A_{qm}|_{C_{hu}{=}0,m_h{=}0}{=}q_Lq_M/B_{\rm eff}\) (NO h-mass residue);
+the mixed \(A_{qm}|_{q_L{=}0,m_h{=}0}{=}-C_{hu}q_hq_M/\det\) (the
+\texttt{MIXED\_SCALAR\_EP\_RISK} generator); the h-mass projection
+\([0,1]\cdot[q_M,0]{=}0\) (\(\texttt{grav\_even\_overlap}{=}0\), the Gate-L
+cross-link content); strict stability \(\det{=}B_{\rm eff}K_h-C_{hu}^2{>}0\). The
+radiation dipole ratio \((q_h^2/(M_hQ_E^2))(c_\gamma/c_E)^3\) has \(c_E\)-exponent
+\(\mathbf{3}\) bare-fixed (the current branch), \(\mathbf{1}\) pinned-\(K_h\)
+(under \(M_h{\to}K_h/c_E^2\)), \(\mathbf{1}\) corrupt-speed (\(\neq3\)),
+\(\mathbf{1}\) wrong-norm (the discriminator \(\text{wrong}{=}1\wedge\text{bare}{=}3
+\wedge\text{wrong}{\neq}\text{bare}\)) --- so \texttt{radiation} sits on the
+bare-fixed exponent-3 branch and is \texttt{SIM\_GATED}, NOT the exponent-1
+radiating branch.
+
+\paragraph{The five-channel adjudication + the first-match verdict (\texttt{CHANNEL\_*}, \texttt{SUBTAGS}, \texttt{EP\_ADJUDICATION}, \texttt{PRODUCTION\_VERDICT}, \texttt{VERDICT\_REDERIVATION}).}
+The five channel states are COMPUTED from the input-fact ledger (a mutation flips
+exactly one channel), the subtags computed
+(\(\texttt{CHERENKOV\_DEFERRED}{=}(\texttt{radiation}{==}\texttt{SIM\_GATED})\),
+\texttt{MIXED\_SCALAR\_EP\_RISK} from the nonzero \(q_L{=}0\) term). The EP
+adjudication records the honesty fact: \texttt{h\_EP} is earned-safe for the MASS
+CHANNEL ONLY, full decoupled-floor EP safety is \texttt{NOT\_EARNED} (required
+conjunction
+\(\texttt{EARNED\_SAFE\_MASS\_CHANNEL\_ON\_DECOUPLED\_FLOOR}\wedge\texttt{universality=EARNED\_SAFE}\)),
+and the unqualified-EP-safe flag is \texttt{False} --- the gate NEVER reports an
+unqualified ``decoupled-floor EP safe.'' \texttt{PRODUCTION\_VERDICT}
+\texttt{SCALAR\_DEPARTURE\_MAPPED\_MAGNITUDE\_SIM\_GATED} is ASSEMBLED by the
+load-bearing first-match order \texttt{NO\_GO\_CONSISTENCY} (any channel
+\texttt{NO\_GO} or any guard predicate) \(\succ\)
+\texttt{FALSIFIABLE\_TENSION(channel=\ldots)} (fixed order
+\texttt{h\_EP,radiation,universality,u\_L\_EP}) \(\succ\) \texttt{MAPPED}
+(\texttt{h\_EP} safe \(\wedge\) any gated/cost channel) \(\succ\)
+\texttt{NATURALLY\_HIDDEN} (all four gated \texttt{EARNED\_SAFE}) --- NOT a stored
+literal. \texttt{VERDICT\_REDERIVATION} mutates a COMPUTED input and re-derives the
+NAMED build-native verdict per the source five-branch logic, including composite
+precedence witnesses (B+G \(\Rightarrow\) \texttt{NO\_GO\_CONSISTENCY} wins over
+the \texttt{h\_EP} tension; B+K+F \(\Rightarrow\)
+\texttt{FALSIFIABLE\_TENSION(channel=h\_EP,radiation,universality)}) and the
+positive-direction \texttt{NATURALLY\_HIDDEN} witness (all four gated channels
+stubbed \texttt{EARNED\_SAFE}) --- proving \texttt{MAPPED} is a genuine first-match
+output, not a foregone conclusion.
+
+\paragraph{Guard~A --- the scoped laundering-refusal denylist (\texttt{GUARD\_A\_*}).}
+Production emits NO numeric scalar magnitude (\(P_h/P_{\rm EM}\), \(M_h\), \(c_E\),
+\(K_h\), EP magnitude, residue floor) because the parent time-kinetic action
+\texttt{h\_time\_kinetic\_parent\_action} is \texttt{ABSENT} (result
+\texttt{NO\_GUARDED\_MAGNITUDE\_EMITTED}). Guard~A refuses every laundering
+fixture: the five replacement fixtures (asserted as the COMPLETE five-result
+refusal vector), the direct injection, the two scanner-bypass regressions
+(tuple-wrapped \(+\) string-embedded, a two-component vector), and --- the crux ---
+the FORGED-FLAG tooth asserts \textbf{BOTH} directions: a forged LOCAL
+\texttt{earned\_parent\_action} flag does NOT unlock emission (still
+\texttt{LAUNDERING\_REFUSED}), while a GENUINE substrate provenance object
+(\(\{\texttt{status}{:}\texttt{EARNED},\texttt{source}{:}\ldots\}\)) DOES allow the
+numeric --- proving the guard is a provenance-gate, not a permanent refusal.
+\textbf{Guard~A is a DENYLIST scoped to
+\(\{M_h,c_E,K_h,P_h/P_{\rm EM},\text{EP-magnitude},\text{residue-floor}\}\)}: an
+UNRELATED new numeric field PASSES THROUGH (\texttt{GUARD\_A\_SCOPE\_DENYLIST})
+--- documented as a scoped limitation, NOT a universal ``no number can ever leak''
+guarantee.
+
+\paragraph{The controls, the FIVE reachable falsifiers, and \texttt{NATURALLY\_HIDDEN} (\texttt{CTRL\_*}, \texttt{REACHABLE\_FALSIFIERS}, \texttt{LORENTZ\_NECESSARY\_NOT\_SUFFICIENT}, \texttt{DELETION\_*}).}
+Each of the eleven \texttt{CTRL\_*} teeth recomputes the channels \(+\) verdict
+under a perturbed input-fact ledger and asserts the NAMED transition (source
+control \(A\) IS Guard~A, folded above --- all 12 source controls accounted).
+\texttt{REACHABLE\_FALSIFIERS} asserts the EXACT set
+\(\{\)B\(\to\)\texttt{FALSIFIABLE\_TENSION(channel=h\_EP)},
+F\(\to\)\texttt{FALSIFIABLE\_TENSION(channel=universality)},
+K\(\to\)\texttt{FALSIFIABLE\_TENSION(channel=radiation)}
+(pinned \(K_h\) \(+\) \(c_E{=}c_\gamma\)),
+G\(\to\)\texttt{NO\_GO\_CONSISTENCY},
+H\(\to\)\texttt{NO\_GO\_CONSISTENCY}\(\}\) AND that
+\(\{\)C,D,E,I,J,K\_without\_pinned\_Kh\(\}\) do NOT escalate (stay \texttt{MAPPED}) --- the
+honest ``several REACHABLE falsifiers, NOT permanently sim-gated'' statement (the
+correction to the earlier ``only two falsifiers'' read).
+\texttt{LORENTZ\_NECESSARY\_NOT\_SUFFICIENT} asserts \(c_E{=}c_\gamma\) alone
+leaves \texttt{radiation} \texttt{SIM\_GATED} without a pinned \(K_h\)
+(\texttt{CTRL\_K\_WITHOUT\_PINNED\_KH}). The deletion-sensitivity: stubbing
+\texttt{h\_EP}\(\to\)\texttt{EARNED\_SAFE} flips the verdict to
+\texttt{NO\_GO\_CONSISTENCY} (the load-bearing pillar); each gated channel
+individually leaves it UNCHANGED; stubbing all four collectively reaches
+\texttt{NATURALLY\_HIDDEN} --- the ONLY route, proving \texttt{NATURALLY\_HIDDEN}
+is \textbf{DEFINED but UNREACHABLE in production} (an honest non-escape: the model
+does NOT get to claim the scalar is naturally hidden).
+
+\paragraph{The Part~VI$\to$VII synthesis handoff (the capstone).}
+042 is the FINAL Part-VI stage, so it carries the cross-gate handoff. Part~VI
+VERIFIED ``one medium, all emergent'' at the \textbf{bookkeeping/labelling level}
+--- \emph{neither} ``one medium proven'' \emph{nor} ``second substance found.''
+The unified irreducible-count \(+\) reduction-debt statement: the irreducible trio
+\(\{\rho_{B0},\chi_c,C_{hu}\}=\mathbf{3}\) (or \(\mathbf{4}\) if the \texttt{Q\_E}
+anchor is undeclared, 041's near-miss); the reducible-in-principle
+\(\{\rho_{\rm br},\mu_R,c_E\}\) discharged ONLY by the SIM-DEFERRED shared
+throat/embedding solve (the SAME solve as the gravity/electric/magnetism R1s,
+de-dup deferred to Part~VII, counted ONCE); the carried opens \texttt{OPEN\_110}
+(the \(C_{hu}^2\) off-cone item, 040), no committed cone lock (\(\Delta r{=}2\)
+codimension diagnostic, 040), and this stage's scalar sim-gate; the 2 parked
+knob-audit decisions (RESUME~\S2 --- C1/C2 counting convention \(+\) R35 label)
+resolve at Part~VII, informed by 041's count. The central OPEN reduction debt is
+\textbf{dynamical brane-genesis} --- whether the ONE medium dynamically yields the
+brane --- handed to the deferred throat solve.
+
+\paragraph{Scope, deferrals, and accounting (recorded honestly).}
+(1)~042 \textbf{discharges NO knob}; it adds a CHARACTERIZED-DEPARTURE
+\(+\) SIM-DEFERRED (magnitude) row, NOT a reduction edge; the sim-gated magnitude
+is NOT computed. (2)~The throat/embedding solve that would pin
+\(\{M_h,c_E,K_h\}\) and reopen the sim-gated channels is \textbf{SIM-DEFERRED}
+(Part~VII's central reduction debt); 042 NAMES the \texttt{HARD\_WALL} reopen
+route \(+\) the not-yet-applied astro/cosmo bounds, it does not perform the solve
+or apply a bound. (3)~The cone-lock re-adjudication (stage 040) is CITED
+(\texttt{CONE\_LOCK\_CALIBRATED\_NOT\_DERIVED}, \(r_{\rm cone}\) open) as the
+reason \texttt{preferred\_frame} stays \texttt{SIM\_GATED} and \(c_E{=}c_\gamma\)
+is necessary-not-sufficient. (4)~The NG5 trio (stage 041) is CITED for the
+Part~VII count only. (5)~\texttt{Gate\_L\_connection=EARNED\_CONNECTION} (the
+h-scalar in the SAME embedding-direction family as light) is a PRINTED cross-link.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent implementations:
+\textbf{SymPy 49 teeth / Mathematica 49 teeth} (the physics core
+\texttt{STATIC\_DETERMINANT}\ldots\texttt{STABILITY\_BOUND}, the five
+\texttt{CHANNEL\_*} \(+\) \texttt{SUBTAGS} \(+\) \texttt{EP\_ADJUDICATION} \(+\)
+\texttt{PRODUCTION\_VERDICT}, the six \texttt{GUARD\_A\_*}, the eleven
+\texttt{CTRL\_*}, the three \texttt{DELETION\_*}, \texttt{REACHABLE\_FALSIFIERS},
+\texttt{LORENTZ\_NECESSARY\_NOT\_SUFFICIENT}, \texttt{DIMENSION\_HOMOGENEITY},
+\texttt{DUAL\_ENGINE\_TERMS}, \texttt{VERDICT\_REDERIVATION},
+\texttt{SOURCE\_TO\_STAGE\_MANIFEST}). Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no
+JSON/YAML payload, zero file-I/O between engines; each engine computes its own five
+channel states / verdict / Guard-A refusals / controls / deletion outcomes and
+reaches \texttt{SCALAR\_DEPARTURE\_MAPPED\_MAGNITUDE\_SIM\_GATED} on its own
+(cross-engine agreement is the orchestrator arbiter re-run, NOT an in-script
+compare). \textbf{The \texttt{.wl} is genuinely independent for an
+adjudication-layer stage}: the \texttt{.py}'s \texttt{stiffness.inv()} \(+\)
+\texttt{degree(den)$-$degree(num)} \(+\) \texttt{Ledger}-dataclass
+\texttt{if/elif} cascade \(+\) recursive path-walk vs the \texttt{.wl}'s
+materially distinct \textbf{\texttt{LinearSolve}/adjugate} exchange,
+\textbf{\texttt{Exponent}\(+\)log-derivative \texttt{Limit}} radiation exponents,
+\textbf{ordered rule/\texttt{FirstCase} table} \(+\) set-membership
+(\texttt{MemberQ}/\texttt{SubsetQ}) verdict assembly, and \textbf{\texttt{Cases}/\texttt{Position}
+denylist walk} for Guard~A --- NO retained hardcode of the verdict /
+channel-states / control-outcomes, NO \texttt{.py} cross-read; a transliteration
+screen CONFIRMED genuine re-derivation of both the stage \texttt{.py} and the
+source \texttt{.wl} (the adjudication-layer independence scoping CONFIRMED at the
+Codex\(\to\)Grok\(\to\)Codex bookend). Source-to-stage manifest: same partition
+both engines over the \(53\)-predicate source universe
+\(\{\)preserved-folded \(45\), replaced-by-stronger \(1\), scoped-out \(7\)\(\}\),
+\(+\)~newly-added \(6\) (stage-only), DISTINCT from the \(49\) executable teeth.
+\textbf{Each tooth \texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch
+\texttt{LEDGER\_STAGE042\_MUTATION}): all 49 teeth per engine. \textbf{NO can't-fail
+conjuncts} --- the verdict, the five channel states, the three \(A_{\bullet\bullet}\)
+residuals, the four radiation exponents, the Guard-A refusals, the five-falsifier
+verdicts, and the three deletion outcomes are COMPUTED from the real objects (the
+required shape \(\texttt{computed\_actual}==\texttt{fixed\_ratified\_expected}\),
+never \(\texttt{stored}==\texttt{stored}\)); Guard~A's fixtures are each genuine
+able-to-fail teeth (a forged/injected numeric is REFUSED, with a real positive
+control). \textbf{Tri-review CLEAN, ZERO remediation:} arbiter re-run (both engines
+clean, mutations fire) \(+\) \textbf{FIDELITY\_CLEAN} (all 9 items PASS) \(+\)
+\textbf{ABLATION\_CLEAN} (49/49 both engines fire at their own assert). Verdict
+token \texttt{SCALAR\_DEPARTURE\_MAPPED\_MAGNITUDE\_SIM\_GATED}.

@@ -6,8 +6,8 @@
 > then **ratified by the user** (kept all six — the three granularity calls resolved to KEEP SEPARATE: action row / source /
 > Route A / Route B+comparison / landing / departure). Verdict tokens, stage boundaries, register dims, and the **35-tooth →
 > stage allocation** are build-faithful.
-> **Next:** ✅ **035 (V-2) DONE + committed `b55a7a65`** (see the Progress log at the bottom) → per-stage pre-execution gate on
-> **036 (V-3)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
+> **Next:** ✅ **036 (V-3) DONE + committed `df045a74`** (see the Progress log at the bottom) → per-stage pre-execution gate on
+> **037 (V-4)** → Codex→Grok→Codex directive → build. Per-stage builds proceed under the autonomy mode set at ratification.
 >
 > **Fresh-read corrections folded in:** (1) V-2 token is the build's own `CONVECTION_LIKE_CONDITIONAL` (native source earned in
 > *tensor form*, conditional because `q_T` is unfixed) — not the earn-gloss `NATIVE_J_T_FROM_CONTINUITY`; (2) V-6 token is the
@@ -242,3 +242,28 @@ TeX card + registration → deliverables fidelity-verify (agent-authored + Codex
   Deliverables note + card (Part-V appendix input) + register edge **R69** (`J_T=q_T sηV`, DERIVED `[ML⁻²T⁻²]`, conditional
   on R67's `q_T`, no new knob). ▶ **NEXT = stage 036 (V-3)** — Route A, the Maxwell–Darwin reference kernel
   `(δ_ij+n_in_j)/8πR` from boosting the electric interaction, verdict `MAXWELL_DARWIN_REFERENCE`.
+- **036 (V-3, Route A — the Maxwell–Darwin reference kernel from boosting the electric interaction — EARNED reference kernel)**
+  — ✅ **DONE + committed `df045a74`** (verdict **`MAXWELL_DARWIN_REFERENCE`** — tier-A CONDITIONAL, inherits the electric
+  `A_E` R1). Records, as an EARNED reference-kernel result within the postulated G0 closure, that boosting the electric
+  interaction `U_E=s₁s₂A_E/4πR` reconstructs the **transverse Darwin kernel** `I_ij=(δ_ij+n_in_j)/8πR` (the inverse-FT of the
+  Coulomb-gauge transverse projector `P^T_ij/k²`, from twice-differentiating the radial seed `F⁻¹[k⁻⁴]=−R/8π`) together with
+  the **Lorentz-completed `O(v²/c_γ²)` anchor** `U_A=(s₁s₂A_E/4πR)[1−(D_V+A_V)/2c_γ²]+O(v⁴/c_γ⁴)` (`D_V=V₁·V₂`,
+  `A_V=(V₁·n)(V₂·n)`, `n=(X₂−X₁)/R`), for independent `(V₁,V₂)`. This is the **Maxwell-consistent REFERENCE the direct route
+  (037) is tested against — 036 does NOT itself claim boost-consistency** (that needs BOTH routes + the comparison, stage 037).
+  **Scope class EARNED (reference kernel):** tier-A **CONDITIONAL** because the kernel STRUCTURE is exact but the overall
+  coefficient rides the electric `A_E` (`R1_REQUIRED(bc_selection)`, sign+normalization unselected) + `c_γ` (stage003) —
+  Route A never touches `J_T` (R69); it boosts the electric interaction. NOT a knob, NOT a reduction (register edge **R70** =
+  DERIVED boost-of-electric kernel, rides `A_E`+`c_γ`, no new knob). **Reference-kernel gate ONLY:** the direct moving-throat
+  route (Route B), the boost-consistency structural COMPARISON, the ratios, the sign/magnitude R1 landing (038), and the `b_T`
+  departure (039) are all downstream. **Verification:** dual-engine SymPy 8 / Mathematica 8, both exit 0 (SymPy Poisson-seed
+  Hessian route; the `.wl` a genuinely INDEPENDENT Riesz-continuation + Schwinger momentum-integral + perp/parallel
+  decomposition route — distinct from BOTH the `.py` AND the source `.wl`, no seeded Hessian); manifest digest `f8b15698…`,
+  source-to-stage partition `{PRESERVED 2, REPLACED 4, SCOPED-OUT 29}=35`; all 16 per-tooth mutations FIRED_AT_OWN_ASSERT; the
+  verdict tooth is non-tautological (doubling the computed kernel re-derives the authored stage-local
+  `MAXWELL_DARWIN_REFERENCE_UNCERTIFIED`, the 030 X≡X lesson). Directive Codex→Grok→Codex bookend (Codex(2)→Grok SOUND→Codex
+  confirm); build + arbiter re-run; **tri-review (falsification-first): FIDELITY + ADVERSARIAL converged on 2 can't-fail NITs**
+  (a `4==4` order-literal + a `len==len` firewall guard) **→ both REMEDIATED → clean + 1 documented compound-tooth note**;
+  Codex deliverables-fidelity-verify **3 → CLEAN**. Deliverables note + card (Part-V appendix input) + register edge **R70**
+  (Maxwell–Darwin kernel `I_ij`+anchor `U_A`, DERIVED `[L⁻¹]`, tier-A conditional on `A_E`, no new knob). ▶ **NEXT = stage 037
+  (V-4)** — Route B (the direct moving-throat shear, computed BLIND) + the boost-consistency structural COMPARISON + the ratios
+  (`r_BA`, `δ_BA`, `r_cone`), verdict `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)`.

@@ -32,7 +32,10 @@
 - **Part V (magnetism) STARTED (2026-07-22)** — the 6-stage split (034–039) RATIFIED; **stage 034 (V-1, transverse-vector
   action row → `TRANSVERSE_MOVE_ACTION_ROW`) ✅ DONE + committed `109070da`** (EARNED action row); **stage 035 (V-2, native
   moving-throat source `J_T=q_T sηV` from defect-continuity + parity census → `CONVECTION_LIKE_CONDITIONAL`) ✅ DONE +
-  committed `b55a7a65`** (EARNED source law; ▶ NEXT = 036, see §7). **Not started:** Parts **VI (knit)**, **VII (integration)**.
+  committed `b55a7a65`** (EARNED source law); **stage 036 (V-3, Route A the Maxwell–Darwin reference kernel
+  `(δ_ij+n_in_j)/8πR` from boosting the electric interaction → `MAXWELL_DARWIN_REFERENCE`) ✅ DONE + committed `df045a74`**
+  (EARNED reference kernel, tier-A conditional — inherits the electric `A_E` R1; ▶ NEXT = 037, see §7). **Not started:** Parts
+  **VI (knit)**, **VII (integration)**.
 - **⭐ STANDING RULE (user, 2026-07-22): the ledger shows the SURVIVING solution only** — discarded/retired-approach post-mortems go to the failures-paper backlog (`notes/ledger_exclusions_failures_paper_backlog.md`), NOT the ledger. Applied: Part III dropped the `pathA_35` couple-stress no-go (retired-`P`) → stage003 alone; a graveyard-cleanup of Parts I/II landed + committed (`327fcc7e`) — trimmed to operative-only, gravity came back clean. Apply this rule to every future Part. See memory `feedback_ledger_surviving_solution_only`.
 - **The pause is over.** The rebuild was PAUSED for the EM reconsideration. That track is now **RESOLVED**: the **electric** sector (`puncture_deflection_electric_sign`, landed `R1_REQUIRED(bc_selection)`) and the **magnetism** sector (`magnetism_moving_throat`, landed `R1_REQUIRED(electric_bc_selection)`, commit `53cf049f`) are both BUILT + VERIFIED → next front = **Part IV**. ✅ Decision-16 (`P`-retirement) LANDED + folded (operative DOF=4 / drift 7; historical tier retained in the audit script as verification).
 
@@ -116,9 +119,22 @@ axial+T-even recorded RAW → departure characterization deferred to 039; consum
 dual-engine 12/12 (independent `.wl` Gaussian `D`/`Div`/`Reduce` route), all 12 mutations fire, verdict tooth non-tautological
 (`flux_coefficient=2`→`R1_SOURCE_BASIS`), manifest digest `d85de3d8…`; tri-review FIDELITY 2 NITs remediated → clean +
 ADVERSARIAL clean + 3 documented non-blocking notes; deliverables-fidelity-verify 5→CLEAN; register edge R69 (`J_T`, DERIVED
-`[ML⁻²T⁻²]`, conditional on R67, no new knob). **⭐ NEXT = per-stage gate on 036 (Part V-3)** — Route A, the Maxwell–Darwin
-reference kernel `(δ_ij+n_in_j)/8πR` from boosting the electric interaction, verdict `MAXWELL_DARWIN_REFERENCE` →
-Codex→Grok→Codex → build. Then VI (knit),
+`[ML⁻²T⁻²]`, conditional on R67, no new knob). **stage 036 (V-3, Route A the Maxwell–Darwin reference kernel) ✅ DONE +
+committed `df045a74`** — verdict **`MAXWELL_DARWIN_REFERENCE`** (EARNED reference kernel, tier-A CONDITIONAL — inherits the
+electric `A_E` R1): boosting the electric interaction `U_E=s₁s₂A_E/4πR` reconstructs the transverse Darwin kernel
+`I_ij=(δ_ij+n_in_j)/8πR` (inverse-FT of the Coulomb-gauge transverse projector `P^T_ij/k²`) + the Lorentz-completed
+`O(v²/c_γ²)` anchor `U_A=(s₁s₂A_E/4πR)[1−(D_V+A_V)/2c_γ²]`; the Maxwell-consistent REFERENCE the direct route (037) is tested
+against — 036 does NOT itself claim boost-consistency; tier-A conditional because the kernel STRUCTURE is exact but the
+coefficient rides the electric `A_E` (`R1_REQUIRED(bc_selection)`) + `c_γ` (Route A never touches `J_T`); dual-engine 8/8
+(independent `.wl` Riesz-continuation + Schwinger route, distinct from BOTH `.py` and source `.wl`), manifest digest
+`f8b15698…`, partition `{2,4,29}=35`, all 16 mutations fire, verdict tooth non-tautological (doubling the kernel →
+`MAXWELL_DARWIN_REFERENCE_UNCERTIFIED`); directive Codex(2)→Grok SOUND→Codex confirm; tri-review fidelity+adversarial
+converged on 2 can't-fail NITs (`4==4` order-literal + `len==len` firewall guard) remediated → clean + 1 documented
+compound-tooth note; deliverables-fidelity-verify 3→CLEAN; register edge R70 (Maxwell–Darwin kernel `I_ij`+anchor `U_A`,
+DERIVED `[L⁻¹]`, tier-A conditional on `A_E`, no new knob). **⭐ NEXT = per-stage gate on 037 (Part V-4)** — Route B (the
+direct moving-throat shear, computed BLIND) + the boost-consistency structural COMPARISON + the ratios (`r_BA`, `δ_BA`,
+`r_cone`), verdict `BOOST_STRUCTURAL_RELATION_HOLDS` + co-blocker `R1_REQUIRED(direct_moving_throat)` → Codex→Grok→Codex →
+build. Then 038–039, then VI (knit),
 then VII (integration). Resolve the two parked
 knob-audit decisions (§2) before Part VII. Superseded charge routes stay in backlog
 Exclusion 2 (do NOT fold). **Apply the surviving-solution rule (§1) from the start of every Part.**

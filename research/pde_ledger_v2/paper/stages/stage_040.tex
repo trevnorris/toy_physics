@@ -1,0 +1,224 @@
+\section{Stage 040: The Cone-Lock Re-adjudication --- the \texttt{CONE\_LOCK\_CALIBRATED} Verdict (NO Committed Cone Lock; the Two Locks \texttt{lambda\_gamma=1} / \texttt{c\_E=c\_gamma} are AVAILABLE Calibration Choices, \texttt{Delta\_r=2})}
+
+\stagefield{Part / anchor}{Part VI -- The knit (VI-1; the FIRST stage of the 3-stage split by stage id, built SECOND in the 041$\to$040$\to$042 order -- the cone-lock re-adjudication: are the shared-cone locks EARNED or AVAILABLE calibration choices?)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Record, as a first-class CALIBRATED /
+UNCOMMITTED result, that the two calibrated cone locks that would make the four
+far-field sectors (gravity, light, charge, magnetism) share a single
+characteristic cone are \textbf{AVAILABLE calibration choices, NOT earned
+facts}. The locks are \textbf{Lock A} \(\lambda_\gamma{=}1\ \Leftrightarrow\)
+light cone \(=\) gravity-phonon cone \(\Leftrightarrow L_A{:}\ m\,\mu_R-5K\rho^4\rho_{\rm br}{=}0\)
+and \textbf{Lock B} \(c_E{=}c_\gamma\ \Leftrightarrow\) electric cone \(=\) light
+cone \(\Leftrightarrow L_B{:}\ c_E^2\rho_{\rm br}-\mu_R{=}0\ \Leftrightarrow r_{\rm cone}{=}1\).
+The honest answer is that NEITHER lock is derived on the earned ledger: both are
+calibration INPUTS with codimension \(\Delta r{=}2\), and the committed model
+GENUINELY ADMITS solutions where each lock FAILS --- each is a \texttt{WITNESSED}
+non-entailment (witness values \(L_A{=}5\), \(L_B{=}7\); equivalently
+\(r_{\rm cone}{=}9/2\neq1\) at the lock-B witness). The exact verdict token
+\texttt{CONE\_LOCK\_CALIBRATED} STANDS as computed
+(\(\Delta r{=}2\), \(\texttt{dim\_before}{=}10\to\texttt{dim\_after}{=}8\), both
+locks \texttt{WITNESSED}, \(\texttt{atomic\_riders}{=}()\), Route A
+\texttt{ROUTE\_A\_UNDERDETERMINED\_MISSING\_NONLINEAR\_THROAT}, Route B
+\texttt{ROUTE\_B\_CLOSED\_CHECKED\_NEGATIVE}, freedom
+\texttt{FREEDOM\_UNCONSTRAINED\{C\_hu,rho\_br\}}), but its INTERPRETATION is
+re-adjudicated to the honest ``NO committed cone lock'': the G0 card + the
+magnetism build do NOT establish \(\lambda_\gamma{=}1\) or \(c_E{=}c_\gamma\);
+\(c_s/c_E{=}2\) was CHOSEN expressly to avoid forcing one; and Part V's
+\(r_{\rm cone}\) left \(c_E{=}c_\gamma?\) OPEN. The gate is GENUINELY
+ABLE-TO-FAIL --- the \texttt{forced\_lock} control flips it to
+\texttt{CONE\_LOCK\_DERIVED} (\(\Delta r{=}0\)), \texttt{over\_constrained} to
+\texttt{NO\_GO(sector-ledger)}, \texttt{freedom\_tie} to
+\texttt{NO\_GO(cone-lock)}. Load-bearing for Part~VII's codimension count.
+Verdict token \texttt{CONE\_LOCK\_CALIBRATED}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage040_cone_lock_readjudication_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage040_cone_lock_readjudication_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- a \textbf{CALIBRATED / UNCOMMITTED} result, \emph{not} an exact
+closure. The exact token \texttt{CONE\_LOCK\_CALIBRATED} is COMPUTED, but the two
+cone locks are \textbf{AVAILABLE calibration choices, NEVER dressed as earned};
+\(c_E{=}c_\gamma\) is \textbf{NEVER asserted settled} --- \(r_{\rm cone}\)
+(Part~V, R71) is the OPEN handle. It \textbf{discharges no knob}, and the
+\(\Delta r{=}2\) is a codimension DIAGNOSTIC for Part~VII, NOT a discharged
+reduction (an \texttt{IMPOSED}/uncommitted lock dressed as \texttt{DERIVED} would
+falsely SHRINK the irreducible count). \textbf{DECIDED} (not R1): the two
+\texttt{WITNESSED} lock provenances, the \(\Delta r{=}2\) codimension
+(\(10\to8\)), the field overlay \(\det M|_{\rm cone}{=}-C_{hu}^2k^4\), and the
+eight-control falsifiability --- STRUCTURAL, dimensionless facts.
+\(\lambda_\gamma{=}c_\gamma/c_s\) is a DERIVED ratio, NOT a free knob (the free
+content is \(c_\gamma\), ultimately \(\{\mu_R,\rho_{\rm br}\}\), and \(c_E\)).
+\textbf{OPEN} (handed to Part~VII): the nonlinear throat solve that would supply
+Route A's missing \(\{R1..R5\}\) and potentially DERIVE the locks;
+\texttt{OPEN\_110} (the mixed scalar--vector cone-coincidence \(\propto C_{hu}^2\),
+coincident only if \(C_{hu}{=}0\)); and whether \(c_E{=}c_\gamma\). This is an
+\emph{open}, calibrated/uncommitted result --- \StatusOpen{} --- not an exact
+closure.
+
+\paragraph{The two cone locks + the algebraic adjudication (\texttt{ROUTE\_A\_GRADE}, \texttt{ROUTE\_B\_STATUS}, \texttt{FREEDOM\_STATUS}, \texttt{SECTOR\_SAT}, \texttt{LOCK\_SAT}, \texttt{PRODUCTION\_VERDICT}).}
+The gate computes the prepass grades from the source-fact inventory: Route~A
+\texttt{ROUTE\_A\_UNDERDETERMINED\_MISSING\_NONLINEAR\_THROAT}
+(\(\texttt{missing}{=}\{R1..R5\}\)), Route~B
+\texttt{ROUTE\_B\_CLOSED\_CHECKED\_NEGATIVE} (\(h\) and \(u_T\) distinct Stage-4
+DOF), freedom \texttt{FREEDOM\_UNCONSTRAINED\{C\_hu,rho\_br\}}. The sector ledger
+\(E\) (without the locks) is \texttt{SAT} by an exact positive witness against the
+polynomial equalities \(+\) strict stability slack \(\sigma>0\)
+(\texttt{SECTOR\_SAT}); \(E\) PLUS the two locks is also \texttt{SAT}
+(\texttt{LOCK\_SAT}). \texttt{PRODUCTION\_VERDICT} is the first-match
+\(\texttt{decide}(\texttt{provA}{=}\texttt{WITNESSED},\texttt{provB}{=}\texttt{WITNESSED},\Delta r{=}2)\)
+ASSEMBLED from computed inputs (NOT a stored literal), the whole
+\texttt{decide}-output PAIR asserted equal to the fixed ratified pair
+\((\texttt{CONE\_LOCK\_CALIBRATED},())\) --- \(\texttt{computed}==\texttt{fixed}\),
+not a \([\,]{==}[\,]\) self-compare; the nonempty-rider path is exercised by the
+A-provenance-inconclusive case inside \texttt{VERDICT\_REDERIVATION}
+(\(\Rightarrow\)\texttt{CONE\_LOCK\_PROVENANCE\_INCONCLUSIVE} with
+\(\texttt{atomic\_riders}{=}[\texttt{ENTAILMENT\_INCONCLUSIVE(L\_A)}]\)).
+
+\paragraph{The two per-lock \texttt{WITNESSED} provenance facets + the \(r_{\rm cone}\) wire (\texttt{PROVENANCE\_LOCK\_A}, \texttt{LOCK\_A\_WITNESS\_VALUE}, \texttt{PROVENANCE\_LOCK\_B}, \texttt{LOCK\_B\_WITNESS\_VALUE}).}
+Each lock has its OWN provenance facet --- the load-bearing requirement that
+neither is earned. \textbf{Lock A} (\(\lambda_\gamma{=}1\Leftrightarrow L_A\)) is
+\texttt{WITNESSED}: the Groebner remainder of \(L_A\) modulo the sector ideal is
+NONZERO and a real non-entailment witness satisfies \(E\) with \(L_A\neq0\); at
+the witness, \(L_A{=}m\,\mu_R-5K\rho^4\rho_{\rm br}{=}5\) (COMPUTED, asserted
+\(==5\)) --- an untouched separate calibration (light \(\leftrightarrow\)
+gravity-phonon), NOT the Part-V one. \textbf{Lock B}
+(\(c_E{=}c_\gamma\Leftrightarrow L_B\Leftrightarrow r_{\rm cone}{=}1\)) is
+\texttt{WITNESSED} and \textbf{wired to Part~V's \(r_{\rm cone}\) (R71)}:
+\(L_B{=}c_E^2\rho_{\rm br}-\mu_R{=}\mu_R(r_{\rm cone}-1)\) with
+\(r_{\rm cone}{=}c_E^2/c_\gamma^2{=}c_E^2\rho_{\rm br}/\mu_R\); at the witness,
+\(L_B{=}7\) and \(r_{\rm cone}{=}9/2\neq1\) (COMPUTED, asserted \(L_B{==}7\),
+\(r_{\rm cone}{==}9/2\)) --- the electric cone is NOT pinned to the light cone,
+the concrete evidence \(c_E{=}c_\gamma\) is uncommitted. R71 is CITED (printed, no
+cross-read). A witness value of \(0\) does NOT establish entailment; entailment is
+decided ONLY by the Groebner remainder-zero (\(.py\)) / universal
+\texttt{Resolve[ForAll]} (\(.wl\)) route.
+
+\paragraph{The codimension \(\Delta r{=}2\) + the field overlay + \texttt{OPEN\_110} (\texttt{DELTA\_R}, \texttt{FIELD\_OVERLAY\_DET\_ON\_CONE}, \texttt{FIELD\_OVERLAY\_POLES}, \texttt{OPEN\_110\_CARRY}).}
+The cone-lock codimension is \(\Delta r{=}\texttt{dim\_before}-\texttt{dim\_after}{=}10-8{=}2\)
+(Groebner grevlex Krull dimension in \(.py\), CAD
+\texttt{RegionDimension[ImplicitRegion]} in \(.wl\); asserted
+\(\texttt{computed }\Delta r{==}2\) with separate \(\texttt{dim\_before}{==}10\),
+\(\texttt{dim\_after}{==}8\) guards, NOT an \(X{\equiv}X\) self-check) --- the
+HIDDEN MULTIPLICITY result: two INDEPENDENT locks, not one. The coupled
+scalar--vector determinant
+\(\det M{=}(\rho_{\rm br}\omega^2{-}B_{\rm eff}k^2)(M_h\omega^2{-}K_h k^2)-C_{hu}^2k^4\)
+reduces on the light cone
+(\(\omega^2{\to}(\mu_R/\rho_{\rm br})k^2\), \(K_h{\to}M_h\mu_R/\rho_{\rm br}\)) to
+exactly \(-C_{hu}^2k^4\) (\texttt{FIELD\_OVERLAY\_DET\_ON\_CONE}), and the two mixed
+poles compute to their closed forms (\texttt{FIELD\_OVERLAY\_POLES}, the
+discriminant carrying \(4C_{hu}^2M_h\rho_{\rm br}\)) --- the \(.wl\)'s three source
+payload literals DELETED and re-derived (the req-(ii) fix). \textbf{The \(c_\gamma\)
+guard is DIRECT}: the \(-C_{hu}^2k^4\) residual also arises at the competing
+diagonal cone \(q{=}B_{\rm eff}/\rho_{\rm br}\), so the cone value is independently
+CERTIFIED against the shear relation \(\rho_{\rm br}q{=}\mu_R\) (a sub-assert; the
+competing-cone mutation passes the det-residual but FAILS the shear relation and
+fires). \texttt{OPEN\_110} (inherited, carried): \(\det M|_{\rm cone}{=}-C_{hu}^2k^4\)
+vanishes iff \(C_{hu}{=}0\) --- the mixed poles sit OFF the cone \(\propto C_{hu}^2\),
+cone-coincident ONLY if \(C_{hu}{=}0\) (computed coincidence set exactly
+\(\{C_{hu}{=}0\}\)), status
+\texttt{OFF\_CONE\_under\_AB\_proportional\_to\_C\_hu\_squared\_OPEN\_110}.
+
+\paragraph{The freedom conditionality + the earned/calibrated partition (\texttt{CONDITIONALITY\_FREEDOM}, \texttt{EARNED\_VS\_CALIBRATED\_PARTITION}).}
+040's non-\texttt{NO\_GO} verdict is CONDITIONAL on \(\{C_{hu},\rho_{\rm br}\}\)
+being free: \texttt{CONDITIONALITY\_FREEDOM} asserts the two-branch dependence
+(under \texttt{FREEDOM\_UNCONSTRAINED} \(\to\)\texttt{CONE\_LOCK\_CALIBRATED};
+under a \texttt{freedom\_tie} \(\to\)\texttt{NO\_GO(cone-lock)}) --- the verdict is
+a genuine FUNCTION of the freedom status. \textbf{It CITES built stage-041's
+\texttt{FREEDOM\_CERTIFIED\_CURRENT\_LEDGER\{C\_hu\}}} (commit \texttt{c663d4a3},
+PRINTED provenance, no cross-read) as backing for the \(C_{hu}\) leg; \textbf{but
+\(\rho_{\rm br}\) stays \texttt{FREEDOM\_SIM\_DEFERRED} per 041, so 041 does NOT
+fully discharge 040's condition} --- 040 remains EXPLICITLY CONDITIONAL on the
+sim-deferred \(\rho_{\rm br}\). \texttt{EARNED\_VS\_CALIBRATED\_PARTITION} repairs
+the source bug (\texttt{ledger.earned\_equalities} WRONGLY listed the unearned
+\(L_A\)/\(L_B\)): the earned set
+\(\{c_s^2{=}5K\rho^4/m,\ c_\gamma^2{=}\mu_R/\rho_{\rm br},\
+B_{\rm eff}{=}\rho_{B0}^2/\chi_c,\ K_h{=}M_h c_E^2,\
+B_{\rm eff}K_h-C_{hu}^2{=}\sigma\}\) and the calibrated set \(\{L_A,L_B\}\) are
+DISJOINT, tied to provenance by the per-lock BICONDITIONAL
+\((L_i\in\texttt{earned})\Leftrightarrow(\texttt{prov}_i{=}\texttt{ENTAILED})\) AND
+\((L_i\in\texttt{calibrated})\Leftrightarrow(\texttt{prov}_i{=}\texttt{WITNESSED})\)
+--- verified able-to-fail in BOTH directions (the \texttt{forced\_lock}
+\texttt{ENTAILED} case puts both locks in \texttt{earned}).
+
+\paragraph{The eight falsifiability controls (\texttt{CTRL\_*}, \texttt{VERDICT\_REDERIVATION}).}
+The eight controls are the positive/negative-direction falsifiability --- WHAT
+MAKES THE GATE NOT VACUOUS. Each is an individually-asserted computed tooth; the
+two that SHARE the production verdict (\texttt{CTRL\_ABSENT},
+\texttt{CTRL\_PARTIAL\_INVENTORY}) assert the distinctive COMPUTED TUPLE
+(Route-A grade, missing-set, verdict, \(\Delta r\)), not the verdict alone.
+\textbf{\texttt{CTRL\_FORCED\_LOCK}} (the KEY control) --- a target-blind synthetic
+throat bridge (\(\mu_R{=}\rho_{\rm br}\tau\), \(c_E^2{=}\tau\),
+\(m\tau{=}5K\rho^4\)) makes BOTH locks \texttt{ENTAILED} and flips the verdict to
+\texttt{CONE\_LOCK\_DERIVED} (\(\Delta r{=}0\)), proving the gate genuinely CAN
+derive the locks; \texttt{CTRL\_A\_ONLY\_PARTIAL} /
+\texttt{CTRL\_B\_ONLY\_PARTIAL} give \texttt{CONE\_LOCK\_PARTIAL} (\(\Delta r{=}1\));
+\texttt{CTRL\_OVER\_CONSTRAINED} \(\to\)\texttt{NO\_GO(sector-ledger)} (sector
+\texttt{UNSAT}); \texttt{CTRL\_FREEDOM\_TIE} \(\to\)\texttt{NO\_GO(cone-lock)}
+(\(E{+}\)locks \texttt{UNSAT}); \texttt{CTRL\_WELL\_POSED}
+\(\to\)\texttt{HALT\_ROUTE\_A\_WELL\_POSED}. \texttt{VERDICT\_REDERIVATION} mutates
+a COMPUTED input (a constructed source-fact set fed to \texttt{decide}), NOT the
+final token, and re-derives a NAMED build-native verdict per the source's own
+branch table --- so \texttt{CONE\_LOCK\_CALIBRATED} is a genuine first-match
+output, not a foregone conclusion; 040 needs NO authored stage-local alternate
+token.
+
+\paragraph{Scope, deferrals, and accounting (recorded honestly).}
+(1)~040 \textbf{discharges NO knob}; the cone locks are CALIBRATED / UNCOMMITTED
+(\(\Delta r{=}2\), both \texttt{WITNESSED}), NOT \texttt{DERIVED}, NOT a codim
+reduction --- the \(\Delta r{=}2\) is a codimension DIAGNOSTIC for Part~VII.
+(2)~The nonlinear throat solve that would supply \(\{R1..R5\}\) and potentially
+DERIVE the locks is \textbf{SIM-DEFERRED} (Part~VII's central reduction debt --- the
+SAME shared throat solve as gravity/electric/magnetism R1s); 040 NAMES it as the
+reason neither lock is earned. (3)~The Part-V magnetism \(r_{\rm cone}\) closure
+(\(r_{\rm cone}{=}1\Leftrightarrow c_E{=}c_\gamma\)) is OPEN --- 040 CITES R71 as
+evidence lock B is uncommitted, it does not close the cone. (4)~\texttt{OPEN\_110}
+is CARRIED as an inherited open item, NOT resolved. (5)~The NG5 reducibility (stage
+041, built first) and the charge-coupled scalar (stage 042) are CITED / deferred;
+040 CITES only 041's \(C_{hu}\)-freedom certification.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent implementations:
+\textbf{SymPy 28 teeth / Mathematica 28 teeth}
+(\texttt{ROUTE\_A\_GRADE}, \texttt{ROUTE\_B\_STATUS}, \texttt{FREEDOM\_STATUS},
+\texttt{SECTOR\_SAT}, \texttt{LOCK\_SAT}, \texttt{PROVENANCE\_LOCK\_A},
+\texttt{LOCK\_A\_WITNESS\_VALUE}, \texttt{PROVENANCE\_LOCK\_B},
+\texttt{LOCK\_B\_WITNESS\_VALUE}, \texttt{DELTA\_R}, \texttt{PRODUCTION\_VERDICT},
+\texttt{FIELD\_OVERLAY\_DET\_ON\_CONE}, \texttt{FIELD\_OVERLAY\_POLES},
+\texttt{OPEN\_110\_CARRY}, \texttt{EARNED\_VS\_CALIBRATED\_PARTITION},
+\texttt{CONDITIONALITY\_FREEDOM}, the 8 \texttt{CTRL\_*} teeth,
+\texttt{VERDICT\_REDERIVATION}, \texttt{DIMENSION\_HOMOGENEITY},
+\texttt{DUAL\_ENGINE\_TERMS}, \texttt{SOURCE\_TO\_STAGE\_MANIFEST}). Standalone,
+print-only, assert-zero (\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no
+argparse harness, no JSON/YAML payload, zero file-I/O between engines; each engine
+builds its own source-fact inventory, computes its own verdict / \(\Delta r\) /
+lock provenances / lock values / freedom / field overlay, and reaches
+\texttt{CONE\_LOCK\_CALIBRATED} on its own (cross-engine agreement is the
+orchestrator arbiter re-run, NOT an in-script compare). \textbf{The \texttt{.wl} is
+genuinely independent for a symbolic stage}: the \texttt{.py}'s Groebner grevlex
+Krull dimension \(+\) exact-witness \(+\) Groebner remainder-zero route vs the
+\texttt{.wl}'s CAD \texttt{RegionDimension[ImplicitRegion]} \(+\)
+\texttt{Resolve[Exists/ForAll]} \(+\) \texttt{FindInstance} \(+\)
+\texttt{FullSimplify}/\texttt{Solve} route --- materially distinct routes to
+\(\Delta r{=}2\) and the \texttt{WITNESSED} provenances, NOT a line-port of either
+the stage \texttt{.py} or the source \texttt{.wl}; the \texttt{.wl}'s three source
+field-overlay literals COMPUTED, no retained hardcode / grep-scan / cross-read
+(CONFIRMED at the Codex\(\to\)Grok\(\to\)Codex bookend via a side-by-side
+transliteration screen). Source-to-stage manifest: same partition both engines over
+the \(22\)-predicate source universe \(\{\)preserved-folded \(18\),
+replaced-by-stronger \(1\), scoped-out \(3\)\(\}\), DISTINCT from the \(28\)
+executable teeth (\(+4\) newly-added, stage-only); BOTH the source-predicate count
+\(==22\) and the registry size \(==28\) asserted computationally
+(\(\texttt{computed}==\texttt{fixed}\)). \textbf{56 mutations total, each
+\texttt{FIRED\_AT\_OWN\_ASSERT}} (env switch \texttt{LEDGER\_STAGE040\_MUTATION}):
+all 28 teeth per engine. \textbf{NO can't-fail conjuncts} --- the verdict,
+\(\Delta r\), the two lock provenances, the two witness-values (\(5\)/\(7\)), the
+freedom status, the field overlay, the earned/calibrated partition, and every
+control verdict are COMPUTED from the real algebraic objects (the required shape
+\(\texttt{computed\_actual}==\texttt{fixed\_ratified\_expected}\), never
+\(\texttt{stored}==\texttt{stored}\)); the shear guard is genuine (the
+competing-cone mutation passes the det-residual but fails the shear relation).
+\textbf{Tri-review CLEAN, ZERO remediation:} arbiter re-run (both engines clean,
+mutations fire) \(+\) \textbf{FIDELITY\_CLEAN} (all 10 items PASS) \(+\)
+\textbf{ABLATION\_CLEAN} (28/28 both engines fire at their own assert). Verdict
+token \texttt{CONE\_LOCK\_CALIBRATED}.

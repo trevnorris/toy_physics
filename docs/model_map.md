@@ -101,7 +101,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Part III complete** = stage003 (the surviving light result). Split: `part3_light_atomic_split.md` (re-scoped, DONE). The `pathA_35` couple-stress no-go → failures-paper backlog Exclusion 1 (not a ledger stage).
 
-### 3.4 Charge — Part IV ⬜ not started (built + verified off-ledger)
+### 3.4 Charge — Part IV ✅ COMPLETE (in-ledger, stages 030–033, 2026-07-22)
 
 *Charge = the static ±w throat (puncture-deflection): the puncture bends the brane into ±w; sign = ±w orientation (Z₂). Coexists with gravity on the same brane (`internal_inconsistency=none`, computed).*
 
@@ -112,7 +112,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Resolving the R1:** only the sim-deferred **nonlinear throat/core solve** (`s↦h_A` boundary functional/barrier) can pin the class, force a holder, and (upside) deliver `q>g`.
 
-### 3.5 Magnetism — Part V ⬜ not started (built + verified off-ledger, commit 53cf049f)
+### 3.5 Magnetism — Part V ◐ NEXT (built off-ledger, commit 53cf049f; DRAFT split `part5_magnetism_atomic_split.md` authored, per-Part gate pending)
 
 *Magnetism = the moving ±w throat (the electric twin). Two independent far-field derivations; their COMPARISON is the boost-consistency / emergent-Lorentz result.*
 
@@ -182,12 +182,12 @@ Central equation-set rebuild at `research/pde_ledger_v2/` (branch `ledger-v2-reb
 | I | Medium | ✅ built (004–007), tri-reviewed |
 | II | Gravity | ✅ built (001–002, 008–029), CLOSED |
 | III | Light | ✅ DONE = stage003 (re-scoped 2026-07-22, surviving-solution rule) |
-| IV | Charge | ⬜ not started (build verified off-ledger) |
-| V | Magnetism | ⬜ not started (build verified off-ledger) |
+| IV | Charge | ✅ COMPLETE — in-ledger (030–033, 2026-07-22) |
+| V | Magnetism | ◐ NEXT — build verified off-ledger (53cf049f); DRAFT split authored, per-Part gate pending |
 | VI | Knit | ⬜ not started (gates 40/41/42 need reshape) |
 | VII | Integration | ⬜ not started |
 
-**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ Parts I–III DONE (III re-scoped to stage003 under the surviving-solution rule) → **author `part4_charge_atomic_split.md`** (re-scope onto the puncture-deflection build) → per-Part user gate → build Part IV. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
+**Build order:** III → IV → V → VI → VII. **Immediate next:** ✅ Parts I–IV DONE (**Part IV charge COMPLETE 2026-07-22, stages 030–033**: 030 electric-scalar closure / 031 puncture-deflection mechanism EARNED / 032 `R1_REQUIRED(bc_selection)` / 033 `NATIVE_P_NO_EMERGENT_GAUSS` departure) → **Part V (magnetism)**: DRAFT split `part5_magnetism_atomic_split.md` authored → **per-Part user gate** → build. Each executable stage = the 6-artifact unit (note · TeX card · SymPy audit · independent Mathematica audit · source map · register entry), dual-engine both exit 0, per-stage Codex→Grok→Codex + tri-review, two user gates (per-Part + per-stage). Full detail: `research/pde_ledger_v2/notes/RESUME_ROADMAP.md`.
 
 ### 5.1 Ledger completion manifest — exactly what math folds into each remaining Part, and where it lives
 
@@ -200,7 +200,7 @@ Central equation-set rebuild at `research/pde_ledger_v2/` (branch `ledger-v2-reb
 **Part III — Light** ✅ **DONE = stage003** (re-scoped 2026-07-22, surviving-solution rule). The surviving light sector is the single built stage `ledger_stage003` (`FAIL_CAUCHY_STRAY_LONGITUDINAL`, earned 2 transverse photons at `c_γ²=μ_R/ρ_br`, `μ_R` postulated) — `research/pde_ledger_v2/scripts/…_sympy_audit.py` · `…/mathematica/…_audit.wl`, split `part3_light_atomic_split.md`.
 - The `pathA_35` gateL couple-stress no-go (`FAIL_COUPLE_STRESS_NOGO`, retired-`P` post-mortem) is **NOT a ledger stage** → failures-paper backlog Exclusion 1. `c_γ²=μ_R/ρ_br` is the `u_T`/`c_γ` foundation Part V reuses.
 
-**Part IV — Charge** → author `…/part4_charge_atomic_split.md` → ~3–4 stages.
+**Part IV — Charge** ✅ **DONE** (4-stage split 030–033, 2026-07-22; `part4_charge_atomic_split.md`). Below = what was folded.
 - Source math: `software/em_charge_attribute/puncture_deflection_electric_sign_result.md`, `…/g0_closure_card_v0.md`, `…/reports/native_p_constraint_gate.md`
 - Scripts (LIGHT reshape): `software/em_charge_attribute/puncture_deflection_electric_sign_check.py` · `…_check.wl` (+ `…_independent_recompute.py`); `…/g0_closure_card_v0_checks.py` · `…_checks.wl`; `…/native_p_gate_sympy.py` · `…/native_p_gate_dual.wl`
 - Owed: fold the `(u_L,h)` block + `ξ_w=ℓh` + h-mediated `1/R²`; carry `R1_REQUIRED(bc_selection)` (sign unresolved) + the `NATIVE_P_NO_EMERGENT_GAUSS` departure; **G0-vs-Part-I de-dup is deferred to Part VII** (reconcile, not additive-merge).

@@ -245,6 +245,33 @@ self-contained note + TeX card + registration → commit + docs/memory sync. Orc
   prosified owner tokens, a stale `C`/`Q_E` classification, an edge-range typo, "zero remediation" wording; all folded).
   Register edges **R62–R65**; coverage canonical 31→32; PDF 86pp. ⚠ Infra: the remediation codex build was launched
   **detached via `setsid`** after two `run_in_background` reaps — watch the real launcher PID, not the `setsid` wrapper.
-- **033 (IV-4)** — ⬜ **NEXT** (`NATIVE_P_NO_EMERGENT_GAUSS`, the characterized departure "EM is NOT exact Maxwell"; LIGHT
-  reshape of `software/em_charge_attribute/reports/native_p_constraint_gate.md` + `native_p_gate_{sympy.py,dual.wl}`; author
-  its directive fresh, run the Codex→Grok→Codex bookend, then build; six able-to-fail controls anchor it).
+- **033 (IV-4, native-P departure — 4-stage)** — ✅ **DONE + committed `391da099`** (verdict
+  **`NATIVE_P_NO_EMERGENT_GAUSS`** — the first-class CHARACTERIZED-DEPARTURE "EM is NOT exact Maxwell"). Exact U(1)/Maxwell
+  Gauss is non-native to the P-field medium: at quadratic order native families A `{g_tA,g_sA,g_dA,g_bA}` (Hessian 8/2, 8
+  constraints, PB rank 8/FC 0/SC 8) and C `{g_tC,g_sC,g_dC}` (7/4, 12 constraints, rank 12/FC 0/SC 12) are ALL second-class;
+  det `(ρ_u−g_t²)³`, sole degeneracy `g_t²=ρ_u`. **The crux:** the tuned common-null points DO develop FC=2, but those
+  directions have a **ZERO Gauss descendant** (`DESCENDANT_ZERO`) — so the no-go follows from `additional_G_exists=False` (no
+  `∝k` Gauss candidate), NOT from an absence of FC directions. Six able-to-fail controls (maxwell→`FIRST_CLASS_GAUSS`,
+  gauged-hard-unit→`MIXED`, bare-σ→`SECOND_CLASS_RADIAL_NO_GAUSS`, nonconserved→`INCONSISTENT_PRESERVATION`,
+  Coulomb-gauge→`SECOND_CLASS_NO_LOCAL_GAUGE`, global-U(1)→`GLOBAL_CHARGE_NO_LOCAL_GAUSS`) prove the search is capable.
+  Honest scope: symbolic OPEN stratum decisive (FC=0 all retained couplings) + tuned locus ARGUED+SCANNED (6-point boundary +
+  12-total sweep, seeds A=260713/C=260715), NOT exhaustive (missed stratum ⇒ TUNED/inverse-design only ⇒ generic no-go
+  stays). **Directive bookend:** Codex `NEEDS_FIXES(2B+2N)` → agent-folded → confirm `NEEDS_FIXES(1)` → fixed → Grok
+  compute-verify CLEAN → `BUILD_READY`. **⭐ The source `.wl` was a MIRROR** (hardcoded the tuning the `.py` solves) — caught
+  by the directive review; the stage `.wl` was **RE-AUTHORED** as a genuinely independent route (native
+  `Solve`/`Reduce[ForAll]` common-null + its own six native control ablations). **Build:** dual-engine SymPy 33 / Mathematica
+  33, both exit 0; verdict for A and C; the verdict tooth re-derives to `FIRST_CLASS_GENERIC_EM_CANDIDATE` under mutation
+  (non-tautological, BOTH engines). **Tri-review CLEAN + adversarial CONCERNS(2)** — both non-blocking robustness smells with
+  NO coverage gap (`HONEST_TUNED_SCOPE` framing-tooth is redundant with the computed-data `BOUNDARY_SCAN`/`RANDOMIZED_SWEEP`/
+  `SIGNATURE` teeth; the SymPy dual-path is adversarial-verified-safe) → DOCUMENTED, not remediated (a principled split from
+  the 032 manifest, which was a sole-guard gap). Source-to-stage manifest 51 rows (33 PRESERVED / 15 REPLACED_BY_STRONGER / 3
+  SCOPED_OUT), SHA256 `6b191e77…` (both engines agree — already stronger than 032: pins order+counts+digest). Deliverables
+  authored (delegated to a clean-context agent, then Codex fidelity-verify **3→CLEAN** — caught `½λ̇²`→`½ḃ²`, the
+  "no first-class direction"→"no Gauss candidate" crux, and a manifest-partition prose error). Register edge **R66** = the
+  DEPARTURE (discharges NO knob, NOT a reduction/codim — does not shrink the irreducible count) + a departure-support
+  structural row + pathA_36 cross-ref; coverage canonical 32→33, Part IV row `030-033`; PDF 89pp.
+- **✅ PART IV (CHARGE) COMPLETE** (030 `122afe36` / 031 `bba61c82` / 032 `11253849` / 033 `391da099`). The surviving charge
+  sector: charge = the static ±w throat; `Q_χ=s` (topological, reflection-dominance `I₊>0`); `h`-mediated `1/R²` structure
+  EARNED target-blind; the SIGN is `R1_REQUIRED(bc_selection)` (neither earned nor calibrated); the magnitude is
+  `R1_REQUIRED(magnitude)`; exact Maxwell Gauss proven non-native (`NATIVE_P_NO_EMERGENT_GAUSS`, first-class departure). ▶ NEXT
+  front = **Part V (magnetism)** (the moving throat; per `RESUME_ROADMAP.md` §3/§7).

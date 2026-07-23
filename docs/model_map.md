@@ -112,7 +112,7 @@ Status tokens: **EARNED** (target-blind, within stated postulates) · **CALIBRAT
 
 **Resolving the R1:** only the sim-deferred **nonlinear throat/core solve** (`s↦h_A` boundary functional/barrier) can pin the class, force a holder, and (upside) deliver `q>g`.
 
-### 3.5 Magnetism — Part V ◐ NEXT (built off-ledger, commit 53cf049f; DRAFT split `part5_magnetism_atomic_split.md` authored, per-Part gate pending)
+### 3.5 Magnetism — Part V ◐ NEXT (built off-ledger, commit 53cf049f; ✅ 6-stage split `part5_magnetism_atomic_split.md` RATIFIED 2026-07-22 — stages 034–039; NEXT = per-stage gate on 034)
 
 *Magnetism = the moving ±w throat (the electric twin). Two independent far-field derivations; their COMPARISON is the boost-consistency / emergent-Lorentz result.*
 

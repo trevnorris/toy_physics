@@ -1,0 +1,175 @@
+\section{Stage 033: Native \texorpdfstring{$P$}{P} Has No Emergent Maxwell Gauss Law --- the Characterized Departure \texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS}}
+
+\stagefield{Part / anchor}{Part IV -- Charge (IV-4; the LAST stage of the 4-stage split -- the native-\(P\) departure)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Record, as a first-class characterized departure, that the
+medium's own \(P\)-field content \(\{p=P_\parallel,u,s,b,\dots\}\) cannot host
+exact U(1)/Maxwell electromagnetism as a native gauge structure. At quadratic
+order the two native families THEORY-A and THEORY-C are Dirac--Bergmann
+all-second-class (FC = 0; no first-class Gauss chain), and the tuned rank-drop
+strata that carry first-class directions have a zero Gauss descendant
+(\texttt{DESCENDANT\_ZERO}). Six able-to-fail controls anchor the machinery.
+Complementary to the throat-charge mechanism of Stages~030--032 (this is the
+candidate \emph{self-hosting} electric theory, not the throat); the charge-sector
+twin of the light-sector departure \texttt{FAIL\_CAUCHY\_STRAY\_LONGITUDINAL}
+(Stage~003 / pathA\_36). Consumes \emph{nothing} numeric from 030/031/032.
+Reads out as: \textbf{``EM is NOT exact Maxwell.''}}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage033_native_p_no_emergent_gauss_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage033_native_p_no_emergent_gauss_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- a \textbf{CHARACTERIZED-DEPARTURE, recorded first-class}: a
+load-bearing no-go, NEVER softened, NEVER rescued. It is \emph{not} an exact
+closure, and equally it is \emph{not} a knob, \emph{not} a reduction, and
+\emph{not} an R1 deferral --- it discharges no knob and \textbf{does not shrink the
+irreducible count} (the honest departure ledger, model map \S4). Verdict token
+\texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS} (both A and C, both engines, both exit~0).
+The named able-to-fail alternates the verdict would have re-derived to, had a
+first-class Gauss chain been found, are
+\texttt{FIRST\_CLASS\_GENERIC\_EM\_CANDIDATE} (from the symbolic open stratum) and
+\texttt{FIRST\_CLASS\_TUNED\_INVERSE\_DESIGN} (from the tuned locus). This is the
+quadratic Stage-1 constraint gate only: compactness, quantization, deconfinement,
+and native \(\pm w\) current supply remain downstream and are \emph{not} claimed.
+
+\paragraph{The shared pipeline and the two native families.}
+Each native family is supplied as a quadratic Lagrangian in the medium's own
+fields and reduced through the identical pipeline
+\[
+  \text{input }L \;\to\; \text{Legendre (primaries from Hessian nulls)}
+  \;\to\; \text{Dirac closure} \;\to\; \text{PB-kernel first-class / Gauss search.}
+\]
+THEORY-A carries \(\{p_{1\text{--}3},u_{1\text{--}3},s,\lambda,\sigma,b\}\) with
+retained couplings \(\{g_{tA},g_{sA},g_{dA},g_{bA}\}\); THEORY-C carries the same
+plus a multiplier \(\xi\) with couplings \(\{g_{tC},g_{sC},g_{dC}\}\). A first-class
+Gauss generator would appear as a nonzero first-class count in the weak
+Poisson-bracket matrix \emph{and} a first-class primary whose Hamiltonian
+descendant is a \(\propto k\) (Gauss-shaped) spatial action.
+
+\paragraph{The quadratic FC = 0 result (both families, exact).}
+On the regular open kinetic stratum, for all retained couplings
+(\texttt{PASS\_THEORY\_A\_SIGNATURE}, \texttt{PASS\_THEORY\_C\_SIGNATURE};
+\texttt{PASS\_GUARD\_COUPLINGS\_ENTER\_A/C}):
+\[
+  \begin{aligned}
+  \text{THEORY-A:}\;&\text{Hessian }8/2,\;\;8\text{ constraints stages }[0,0,1,1,2,2,3,3],\;
+    \text{all second-class};\\
+   &\text{weak PB matrix rank }8,\;\text{FC }0,\;\text{SC }8,\;\text{gauss cand. }0.\\
+  \text{THEORY-C:}\;&\text{Hessian }7/4,\;\;12\text{ constraints stages }[0,0,0,0,1,1,1,1,2,2,3,3],\;
+    \text{all second-class};\\
+   &\text{weak PB matrix rank }12,\;\text{FC }0,\;\text{SC }12,\;\text{gauss cand. }0.
+  \end{aligned}
+\]
+Every native coupling provably survives into the momentum-map / Hessian /
+constraints / PB matrix (\texttt{GUARD-COUPLINGS-ENTER} PASS). The physical
+kinetic-Hessian determinant factors, in both families, as
+\(\det H_{\mathrm{phys}}=(\rho_u-g_t^2)^3\) (per component \(\rho_u-g_t^2\);
+\texttt{PASS\_KINETIC\_HESSIAN\_DETERMINANT}), so the \emph{only} additional
+kinetic degeneracy is the tuned locus \(g_t^2=\rho_u\). (The signature's
+\(\mathrm{FC}=n_{\mathrm{constraints}}-\mathrm{rank}\) element is a
+true-by-construction rank--nullity identity; the load-bearing signature elements
+are the counts and classes, mutated by \texttt{PASS\_THEORY\_\{A,C\}\_SIGNATURE}.)
+
+\paragraph{The \texttt{DESCENDANT\_ZERO} hardening guard on the tuned locus.}
+On \(g_t^2=\rho_u\) the Hessian nullity rises (A: \(2\to5\), C: \(4\to7\)) and
+first-class directions can appear. The potential-null residual is solved
+\emph{symbolically} (not hardcoded) for both signs \(g_t=\pm1\); within the argued
+boundary partition + scanned representatives the common Hessian/potential-null
+locus is the observed FC\,=\,2 stratum. For every rejected first-class primary both
+engines compute the descendant \(\{\mathrm{primary},H_2\}\) and its field action
+and certify it \texttt{DESCENDANT\_ZERO} (identically \(0\)) or non-gradient
+(\texttt{PASS\_HARDENING\_DESCENDANT\_A/C}, \texttt{PASS\_PRIMARY\_FC\_ACCOUNTING\_A/C}):
+\textbf{FC-bearing strata checked = 2, rejected directions checked = 4} per family,
+\emph{all} \texttt{DESCENDANT\_ZERO} (\(\texttt{descendant\_zero}=\)True,
+\(\texttt{secondary\_action\_non\_gradient}=\)True); accounting
+\(\texttt{primary\_fc}=\texttt{rejected}+\texttt{candidates}\) with candidates \(=0\).
+The guard fails the run if any rejected direction instead hides a nonzero
+\(\propto k\) Gauss descendant --- a tuned FC direction cannot masquerade as an
+emergent Gauss law.
+
+\paragraph{The six able-to-fail controls.}
+Each control is an input Lagrangian through the \emph{same} pipeline, with its own
+\texttt{FIRED\_AT\_OWN\_ASSERT} ablation (token / FC / SC / Gauss cand. / Hessian
+nullity):
+
+\begin{center}
+\begin{tabular}{llrrrr}
+\hline
+Control & Expected class token & FC & SC & G & null \\
+\hline
+maxwell & \texttt{FIRST\_CLASS\_GAUSS} & 2 & 0 & 1 & 1 \\
+gauged hard unit & \texttt{MIXED} & 2 & 4 & 1 & 2 \\
+bare O(4) hard sigma & \texttt{SECOND\_CLASS\_RADIAL\_NO\_GAUSS} & 0 & 4 & 0 & 1 \\
+nonconserved current & \texttt{INCONSISTENT\_PRESERVATION} & 2 & 0 & 1 & 1 \\
+Coulomb-gauge Maxwell & \texttt{SECOND\_CLASS\_NO\_LOCAL\_GAUGE} & 0 & 8 & 0 & 3 \\
+global U(1) complex scalar & \texttt{GLOBAL\_CHARGE\_NO\_LOCAL\_GAUSS} & 0 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+Maxwell and the gauged-hard-unit control yield nonzero Gauss candidates
+(\texttt{GUARD-SEARCH-CAPABLE} PASS --- the search finds a real Gauss chain when one
+exists, so its absence for native A/C is meaningful). Control~4's Gauss
+preservation carries the explicit continuity defect
+\(-\,nc_{j1}-2\,nc_{j2}-3\,nc_{j3}+nc_{\rho\text{-}dot}\), nonzero without a
+conservation rule \(\Rightarrow\) \texttt{INCONSISTENT\_PRESERVATION}.
+
+\paragraph{Honest scope (does NOT weaken the verdict).}
+(a)~\textbf{Decisive:} the fully-symbolic open kinetic stratum --- FC = 0 for A and
+C for \emph{all} retained couplings. (b)~\textbf{Argued + fixed-seed scanned:} the
+tuned \(g_t^2=\rho_u\) locus, \emph{not} an exhaustive stratification --- a 6-point
+semidefinite-boundary scan per family (2 signs \(\times\)
+\{generic semidefinite, first rank-drop non-common, common Hessian/potential-null
+locus\}; the common-null representative is the FC = 2 one, all gauss cand. \(0\))
+\emph{and} a fixed-seed randomized rank-drop sweep of 6 points per family, 12 total
+(seeds A\,=\,\texttt{260713}, C\,=\,\texttt{260715}; per-sign split \(3+3\); all
+FC = 0). Pinned are the seed, sign split, cardinality, and decisive per-point
+signatures (\(\texttt{FC}=0,\ \texttt{gauss}=0,\ \texttt{additional\_G}=\)False),
+\emph{not} the sampled coordinates
+(\texttt{PASS\_HONEST\_TUNED\_SCOPE}). Any missed measure-zero first-class stratum
+would be a \texttt{TUNED\_INVERSE\_DESIGN} artifact, so the generic no-go stays
+decisive; the scan is not promoted to an exhaustive classification (no
+unqualified-exhaustiveness ``only''). With FC = 0 for both families the audit
+records \texttt{BRANCH\_2\_QUADRATIC\_ABSENCE}
+(\texttt{PASS\_DECISION\_ORDER\_BRANCH2}): a regular nonlinear gauge identity would
+have a nontrivial leading linearization, so the quadratic absence is decisive; 033
+records the quadratic verdict, not an all-orders proof. The verdict is re-derived
+from the computed searches (\texttt{PASS\_VERDICT\_TOTALITY}) --- feeding a genuine
+first-class Maxwell search through the open path re-derives
+\texttt{FIRST\_CLASS\_GENERIC\_EM\_CANDIDATE} (the tooth reads the computed result,
+not the literal).
+
+\paragraph{Source-to-stage manifest.}
+No silently-dropped source claim: every source tooth / Q-claim partitions
+\(\{\texttt{PRESERVED }33,\ \texttt{REPLACED\_BY\_STRONGER }15,\ \texttt{SCOPED\_OUT }3\}\)
+(51 total), manifest digest (SHA-256)
+\texttt{6b191e77fefe24c9000445f01e4e2c6154ab1bb9b15bb40a6d1515dc463a7e9d}, computed
+at runtime in both engines and agreed (\texttt{PASS\_SOURCE\_PREDICATE\_MANIFEST};
+dropping one row fires it). The \(\texttt{argparse}\) harness, all JSON writing, and
+the cross-engine file comparator are SCOPED\_OUT (print-only / zero-file-I/O /
+independent-tokens contract).
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, genuinely independent routes: \textbf{SymPy 33 teeth /
+Mathematica 33 teeth}. Standalone, print-only, assert-zero
+(\texttt{raise SystemExit(1)} / \texttt{Exit[1]}), no argparse harness, no
+JSON/YAML payload, zero file-I/O between engines; float-/machine-real-free payload
+throughout. The \texttt{.wl} is RE-AUTHORED (not a mirror): native
+\texttt{Solve}/\texttt{Reduce[ForAll]} common-null derivation, native
+\texttt{NullSpace}/\texttt{Inverse}/\texttt{Det}/\texttt{MatrixRank}, and its own
+six per-tooth control ablations. Per-tooth ablation (env switch
+\texttt{LEDGER\_STAGE033\_MUTATION}): every folded predicate fires at its own
+assert, the six control ablations \texttt{FIRED\_AT\_OWN\_ASSERT} in both engines,
+and the verdict tooth re-derives from a mutated \emph{computed} search input to a
+NAMED different verdict (never the \texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS} literal).
+\textbf{Tri-review (falsification-first, recorded transparently): fidelity CLEAN;
+adversarial CONCERNS(2) + a fidelity NIT --- all verified non-blocking, no coverage
+gap.} (i)~\texttt{PASS\_HONEST\_TUNED\_SCOPE} is a framing/summary tooth (its
+mutation flips a self-set flag) whose substantive content is genuinely enforced by
+the boundary-scan / randomized-sweep / signature teeth --- redundant, not a gap.
+(ii)~the SymPy \texttt{focused\_mutation\_probe} path re-derives from the same
+pipeline objects as the clean run --- a verified-safe structural smell, no hidden
+vacuity. (iii)~the \(\mathrm{FC}=n_{\mathrm{constraints}}-\mathrm{rank}\) signature
+element is a true-by-construction identity; the real FC/SC/count guards are the
+other signature elements. Arbiter re-runs reproduce the tokens and the manifest
+digest. Verdict token \texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS}.

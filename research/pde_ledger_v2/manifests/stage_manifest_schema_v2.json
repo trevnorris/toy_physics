@@ -1,0 +1,2103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fluidspacetime.com/schemas/stage-manifest/v2.1.json",
+  "title": "StageManifest v2.1",
+  "description": "Machine-readable interface for one ledger stage. Quantity ownership, named dimensions with source tuples, typed claim payloads, import-completeness metadata, lifecycle census events, provenance evidence, and optional C7 executable bindings are normative.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "stage_id",
+    "title",
+    "part",
+    "status_token",
+    "symbols",
+    "claims",
+    "consumes",
+    "exports",
+    "knobs",
+    "verification",
+    "extraction"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.1"
+    },
+    "stage_id": {
+      "$ref": "#/$defs/stage_id"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "part": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "symbols": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/symbol"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "consumes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/consumption"
+      }
+    },
+    "exports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/export"
+      }
+    },
+    "knobs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/knob"
+      }
+    },
+    "departures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/departure"
+      }
+    },
+    "verification": {
+      "$ref": "#/$defs/verification"
+    },
+    "extraction": {
+      "$ref": "#/$defs/extraction"
+    }
+  },
+  "$defs": {
+    "stage_id": {
+      "type": "string",
+      "pattern": "^stage[0-9]{3}$"
+    },
+    "rational": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "description": "An exact rational exponent. Rational exponents are supported so sqrt and other rational-power dimensional rules remain exact."
+    },
+    "dim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "L": {
+          "$ref": "#/$defs/rational"
+        },
+        "M": {
+          "$ref": "#/$defs/rational"
+        },
+        "T": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "description": "Authoritative named dimension map. An absent L, M, or T key means exponent zero."
+    },
+    "dim_source_order": {
+      "enum": [
+        "LMT",
+        "LTM",
+        "MLT",
+        "MTL",
+        "TLM",
+        "TML"
+      ]
+    },
+    "dim_source": {
+      "type": "object",
+      "required": [
+        "script_path",
+        "locus"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "script_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locus": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "dim_source_tuple": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/rational"
+        },
+        {
+          "$ref": "#/$defs/rational"
+        },
+        {
+          "$ref": "#/$defs/rational"
+        }
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "Raw positional exponent vector exactly as printed at dim_source. The checker recovers its order from the source script; dim_source_order is an assertion, not an input to recovery."
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64}|sha512:[0-9a-f]{128}|[0-9a-f]{40}|[0-9a-f]{64}|[0-9a-f]{128})$"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "locus",
+        "source_digest",
+        "engine",
+        "method"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locus": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A line range, predicate name, or stable object id."
+        },
+        "source_digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "engine": {
+          "enum": [
+            "sympy",
+            "mathematica",
+            "prose"
+          ]
+        },
+        "method": {
+          "enum": [
+            "script_asserted",
+            "derived_from_relation",
+            "prose_only"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "method": {
+                "const": "prose_only"
+              }
+            },
+            "required": [
+              "method"
+            ]
+          },
+          "then": {
+            "properties": {
+              "engine": {
+                "const": "prose"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "quantity_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)+$"
+    },
+    "symbol_name": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "local_claim_ref": {
+      "type": "string",
+      "pattern": "^here/[a-z][a-z0-9_]*$"
+    },
+    "external_claim_ref": {
+      "type": "string",
+      "pattern": "^stage[0-9]{3}/[a-z][a-z0-9_]*$"
+    },
+    "claim_ref": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/local_claim_ref"
+        },
+        {
+          "$ref": "#/$defs/external_claim_ref"
+        }
+      ]
+    },
+    "expr": {
+      "type": "object",
+      "required": [
+        "sympy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sympy": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical exact SymPy form. Implicit multiplication and float atoms are forbidden."
+        },
+        "latex": {
+          "type": "string"
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "required": [
+        "domain",
+        "codomain"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/dim"
+          }
+        },
+        "codomain": {
+          "$ref": "#/$defs/dim"
+        }
+      }
+    },
+    "alias_declaration": {
+      "type": "object",
+      "required": [
+        "group",
+        "quantity_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "group": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]*$"
+        },
+        "quantity_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/quantity_id"
+          }
+        }
+      },
+      "description": "Required by C1 on every same-name collision between distinct quantity_ids."
+    },
+    "symbol": {
+      "type": "object",
+      "required": [
+        "name",
+        "parse_alias",
+        "quantity_id",
+        "definition_ref",
+        "dim",
+        "dim_source_order",
+        "dim_source",
+        "dim_source_tuple",
+        "role",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/symbol_name"
+        },
+        "parse_alias": {
+          "$ref": "#/$defs/symbol_name"
+        },
+        "quantity_id": {
+          "$ref": "#/$defs/quantity_id"
+        },
+        "definition_ref": {
+          "$ref": "#/$defs/claim_ref"
+        },
+        "latex": {
+          "type": "string"
+        },
+        "dim": {
+          "$ref": "#/$defs/dim"
+        },
+        "dim_source_order": {
+          "$ref": "#/$defs/dim_source_order"
+        },
+        "dim_source": {
+          "$ref": "#/$defs/dim_source"
+        },
+        "dim_source_tuple": {
+          "$ref": "#/$defs/dim_source_tuple"
+        },
+        "assumptions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "positive",
+              "nonnegative",
+              "nonzero",
+              "real",
+              "integer"
+            ]
+          }
+        },
+        "role": {
+          "enum": [
+            "primitive",
+            "derived",
+            "convention",
+            "field",
+            "function",
+            "operator",
+            "index"
+          ]
+        },
+        "signature": {
+          "$ref": "#/$defs/signature"
+        },
+        "alias": {
+          "$ref": "#/$defs/alias_declaration"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "relation_payload": {
+      "type": "object",
+      "required": [
+        "lhs",
+        "rhs",
+        "relation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "lhs": {
+          "$ref": "#/$defs/expr"
+        },
+        "rhs": {
+          "$ref": "#/$defs/expr"
+        },
+        "relation": {
+          "enum": [
+            "eq",
+            "le",
+            "lt",
+            "ge",
+            "gt",
+            "defines"
+          ]
+        }
+      }
+    },
+    "operator_identity_payload": {
+      "type": "object",
+      "required": [
+        "operator",
+        "acts_on",
+        "definition",
+        "signature"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acts_on": {
+          "$ref": "#/$defs/symbol_name"
+        },
+        "definition": {
+          "$ref": "#/$defs/expr"
+        },
+        "signature": {
+          "$ref": "#/$defs/signature"
+        }
+      }
+    },
+    "spectrum_payload": {
+      "type": "object",
+      "required": [
+        "operator",
+        "kernel_symbol",
+        "kernel",
+        "eigenvalue",
+        "gap",
+        "multiplicity"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kernel_symbol": {
+          "$ref": "#/$defs/symbol_name",
+          "description": "Stage-local parse alias bound by the kernel expression. This makes spectrum definition_ref binding mechanical."
+        },
+        "kernel": {
+          "$ref": "#/$defs/expr"
+        },
+        "eigenvalue": {
+          "$ref": "#/$defs/expr"
+        },
+        "gap": {
+          "$ref": "#/$defs/expr"
+        },
+        "multiplicity": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "adjudication_payload": {
+      "type": "object",
+      "required": [
+        "domain_cardinality",
+        "precedence",
+        "outcome_token"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "domain_cardinality": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "precedence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "outcome_token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "oracle_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]+$"
+        },
+        "bucket_counts": {
+          "type": "object",
+          "minProperties": 1,
+          "patternProperties": {
+            "^[A-Za-z][A-Za-z0-9_.-]*$": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "description": "When present, the checker requires the values to sum to domain_cardinality."
+        },
+        "axes": {
+          "type": "object",
+          "minProperties": 1,
+          "patternProperties": {
+            "^[A-Za-z][A-Za-z0-9_.-]*$": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false,
+          "description": "Axis cardinalities. When present, the checker requires their product to equal domain_cardinality."
+        }
+      }
+    },
+    "convention_axis_choice": {
+      "type": "object",
+      "required": [
+        "token",
+        "low_delta",
+        "high_delta"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "low_delta": {
+          "type": "integer"
+        },
+        "high_delta": {
+          "type": "integer"
+        }
+      }
+    },
+    "convention_axis": {
+      "type": "object",
+      "required": [
+        "axis_id",
+        "choices"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "axis_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]*$"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/convention_axis_choice"
+          }
+        }
+      }
+    },
+    "range_endpoint": {
+      "type": "object",
+      "required": [
+        "low",
+        "high"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "low": {
+          "type": "integer"
+        },
+        "high": {
+          "type": "integer"
+        }
+      }
+    },
+    "record_range_payload": {
+      "type": "object",
+      "required": [
+        "low",
+        "high",
+        "spread",
+        "convention_axes",
+        "components"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "low": {
+          "type": "integer"
+        },
+        "high": {
+          "type": "integer"
+        },
+        "spread": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "convention_axes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/convention_axis"
+          },
+          "description": "Deterministic branches. Sum component endpoints, add each Cartesian choice's low/high deltas, then take the minimum low and maximum high; spread must be high-low."
+        },
+        "components": {
+          "type": "object",
+          "minProperties": 1,
+          "patternProperties": {
+            "^[a-z][a-z0-9_]*$": {
+              "$ref": "#/$defs/range_endpoint"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "set_cardinality_payload": {
+      "type": "object",
+      "required": [
+        "set_label",
+        "count"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "set_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "elements": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "token_payload": {
+      "type": "object",
+      "required": [
+        "token",
+        "meaning"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "typed_payload": {
+      "type": "object",
+      "required": [
+        "payload_kind",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "payload_kind": {
+          "enum": [
+            "relation",
+            "operator_identity",
+            "spectrum",
+            "adjudication",
+            "record_range",
+            "set_cardinality",
+            "token"
+          ]
+        },
+        "payload": {}
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "relation"
+            },
+            "payload": {
+              "$ref": "#/$defs/relation_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "operator_identity"
+            },
+            "payload": {
+              "$ref": "#/$defs/operator_identity_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "spectrum"
+            },
+            "payload": {
+              "$ref": "#/$defs/spectrum_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "adjudication"
+            },
+            "payload": {
+              "$ref": "#/$defs/adjudication_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "record_range"
+            },
+            "payload": {
+              "$ref": "#/$defs/record_range_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "set_cardinality"
+            },
+            "payload": {
+              "$ref": "#/$defs/set_cardinality_payload"
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload_kind": {
+              "const": "token"
+            },
+            "payload": {
+              "$ref": "#/$defs/token_payload"
+            }
+          }
+        }
+      ]
+    },
+    "domain_spec": {
+      "type": "object",
+      "required": [
+        "variables",
+        "predicate"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "variables": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/symbol_name"
+          }
+        },
+        "predicate": {
+          "$ref": "#/$defs/expr"
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "required": [
+        "op",
+        "operands"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "op": {
+          "enum": [
+            "all",
+            "any",
+            "not",
+            "xor",
+            "domain"
+          ]
+        },
+        "operands": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/claim_ref"
+              },
+              {
+                "$ref": "#/$defs/condition"
+              },
+              {
+                "$ref": "#/$defs/domain_spec"
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "not"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "operands": {
+                "maxItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "xor"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "operands": {
+                "minItems": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    "genesis_record_ref": {
+      "type": "object",
+      "required": [
+        "path",
+        "commit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,40}$"
+        }
+      }
+    },
+    "genesis_evidence": {
+      "type": "object",
+      "required": [
+        "record_ref",
+        "date",
+        "record_span",
+        "predates"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_ref": {
+          "$ref": "#/$defs/genesis_record_ref"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "record_span": {
+          "type": "string",
+          "minLength": 1
+        },
+        "predates": {
+          "$ref": "#/$defs/claim_ref"
+        }
+      }
+    },
+    "genesis": {
+      "type": "object",
+      "required": [
+        "introduced",
+        "origin"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "introduced": {
+          "type": "string",
+          "format": "date"
+        },
+        "origin": {
+          "enum": [
+            "independent",
+            "coordinated",
+            "target_matched",
+            "unknown"
+          ]
+        },
+        "coordinated_with": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/claim_ref"
+          }
+        },
+        "evidence": {
+          "$ref": "#/$defs/genesis_evidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "independent"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "enum": [
+                  "coordinated",
+                  "target_matched"
+                ]
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "required": [
+              "coordinated_with"
+            ]
+          }
+        }
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "status",
+        "payload_kind",
+        "payload",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/claim_id"
+        },
+        "kind": {
+          "enum": [
+            "identity",
+            "operator_identity",
+            "inequality",
+            "spectral",
+            "dimensional",
+            "reduction",
+            "nogo",
+            "adjudication",
+            "range",
+            "set",
+            "convention"
+          ]
+        },
+        "status": {
+          "enum": [
+            "POSTULATED",
+            "EARNED",
+            "DERIVED",
+            "CONV",
+            "CALIBRATED",
+            "R1_REQUIRED",
+            "DEFERRED",
+            "RETIRED",
+            "FATAL_FLAW"
+          ]
+        },
+        "payload_kind": {
+          "enum": [
+            "relation",
+            "operator_identity",
+            "spectrum",
+            "adjudication",
+            "record_range",
+            "set_cardinality",
+            "token"
+          ]
+        },
+        "payload": {},
+        "expected_dim": {
+          "$ref": "#/$defs/dim"
+        },
+        "holds_within": {
+          "$ref": "#/$defs/condition"
+        },
+        "genesis": {
+          "$ref": "#/$defs/genesis"
+        },
+        "discharged_by": {
+          "$ref": "#/$defs/external_claim_ref"
+        },
+        "retired_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "relation"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/relation_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "operator_identity"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/operator_identity_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "spectrum"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/spectrum_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "adjudication"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/adjudication_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "record_range"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/record_range_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "set_cardinality"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/set_cardinality_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payload_kind": {
+                "const": "token"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/token_payload"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "identity"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "relation"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "operator_identity"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "operator_identity"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "inequality"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "relation"
+              },
+              "payload": {
+                "properties": {
+                  "relation": {
+                    "enum": [
+                      "le",
+                      "lt",
+                      "ge",
+                      "gt"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "spectral"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "spectrum"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "dimensional"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "expected_dim"
+            ],
+            "properties": {
+              "payload_kind": {
+                "const": "relation"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "reduction"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "enum": [
+                  "relation",
+                  "set_cardinality"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "nogo"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "enum": [
+                  "relation",
+                  "adjudication",
+                  "token"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "adjudication"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "adjudication"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "range"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "record_range"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "set"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "const": "set_cardinality"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "convention"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload_kind": {
+                "enum": [
+                  "relation",
+                  "token"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "POSTULATED",
+                  "CONV",
+                  "CALIBRATED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "genesis"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "RETIRED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "retired_by"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "dimensional"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "expected_dim"
+            ]
+          }
+        }
+      ]
+    },
+    "substitution": {
+      "type": "object",
+      "required": [
+        "lhs",
+        "rhs",
+        "backed_by"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "lhs": {
+          "$ref": "#/$defs/expr"
+        },
+        "rhs": {
+          "$ref": "#/$defs/expr"
+        },
+        "backed_by": {
+          "$ref": "#/$defs/external_claim_ref"
+        }
+      }
+    },
+    "c7_expect": {
+      "type": "object",
+      "required": [
+        "injection_point",
+        "facet_used",
+        "expected_first_failure"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "injection_point": {
+          "type": "string",
+          "minLength": 1
+        },
+        "facet_used": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_first_failure": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "consumption": {
+      "type": "object",
+      "required": [
+        "ref",
+        "check",
+        "substitutions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "$ref": "#/$defs/external_claim_ref"
+        },
+        "as_consumed": {
+          "$ref": "#/$defs/typed_payload"
+        },
+        "as_consumed_dim": {
+          "$ref": "#/$defs/dim"
+        },
+        "check": {
+          "enum": [
+            "cas_equivalence",
+            "implication",
+            "specialization",
+            "value_equal",
+            "dim_equal",
+            "token_match",
+            "spectrum_match",
+            "range_match",
+            "adjudication_match",
+            "set_match",
+            "opaque_quantity_match"
+          ]
+        },
+        "substitutions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/substitution"
+          }
+        },
+        "specialization": {
+          "const": true
+        },
+        "domain": {
+          "$ref": "#/$defs/domain_spec"
+        },
+        "c7_expect": {
+          "$ref": "#/$defs/c7_expect"
+        },
+        "producer_quantity_id": {
+          "$ref": "#/$defs/quantity_id"
+        },
+        "producer_source_digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "dim_equal"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "required": [
+              "as_consumed_dim"
+            ],
+            "not": {
+              "required": [
+                "as_consumed"
+              ]
+            }
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "check": {
+                  "const": "opaque_quantity_match"
+                }
+              },
+              "required": [
+                "check"
+              ]
+            },
+            "then": {
+              "required": [
+                "producer_quantity_id",
+                "producer_source_digest"
+              ],
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "as_consumed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "as_consumed_dim"
+                    ]
+                  }
+                ]
+              }
+            },
+            "else": {
+              "required": [
+                "as_consumed"
+              ],
+              "not": {
+                "required": [
+                  "as_consumed_dim"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "spectrum_match"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "properties": {
+              "as_consumed": {
+                "properties": {
+                  "payload_kind": {
+                    "const": "spectrum"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "range_match"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "properties": {
+              "as_consumed": {
+                "properties": {
+                  "payload_kind": {
+                    "const": "record_range"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "adjudication_match"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "properties": {
+              "as_consumed": {
+                "properties": {
+                  "payload_kind": {
+                    "const": "adjudication"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "set_match"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "properties": {
+              "as_consumed": {
+                "properties": {
+                  "payload_kind": {
+                    "const": "set_cardinality"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "token_match"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "properties": {
+              "as_consumed": {
+                "properties": {
+                  "payload_kind": {
+                    "const": "token"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "check": {
+                "const": "specialization"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          },
+          "then": {
+            "required": [
+              "specialization",
+              "domain"
+            ]
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "specialization"
+                  ]
+                },
+                {
+                  "required": [
+                    "domain"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "c7_binding": {
+      "type": "object",
+      "required": [
+        "producing_primitive",
+        "mutation_env",
+        "mutation_command",
+        "exported_facet"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "producing_primitive": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mutation_env": {
+          "type": "string",
+          "pattern": "^[A-Z_][A-Z0-9_]*$"
+        },
+        "mutation_command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exported_facet": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "export": {
+      "type": "object",
+      "required": [
+        "claim_id",
+        "source_digest"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "$ref": "#/$defs/claim_id"
+        },
+        "source_digest": {
+          "$ref": "#/$defs/digest",
+          "description": "Digest pin for the exported claim's source evidence; required by opaque_quantity_match."
+        },
+        "c7_binding": {
+          "$ref": "#/$defs/c7_binding"
+        }
+      }
+    },
+    "count_effect": {
+      "type": "object",
+      "required": [
+        "low",
+        "high"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "low": {
+          "type": "integer"
+        },
+        "high": {
+          "type": "integer"
+        }
+      }
+    },
+    "knob": {
+      "type": "object",
+      "required": [
+        "knob_id",
+        "symbol",
+        "registry_row",
+        "action",
+        "origin",
+        "effective_stage",
+        "count_effect",
+        "count_category",
+        "pending",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "knob_id": {
+          "type": "string",
+          "pattern": "^k\\.[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+        },
+        "symbol": {
+          "$ref": "#/$defs/symbol_name"
+        },
+        "registry_row": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+        },
+        "action": {
+          "enum": [
+            "introduced",
+            "inherited",
+            "retired",
+            "discharged"
+          ]
+        },
+        "origin": {
+          "$ref": "#/$defs/claim_ref"
+        },
+        "effective_stage": {
+          "$ref": "#/$defs/stage_id"
+        },
+        "count_effect": {
+          "$ref": "#/$defs/count_effect"
+        },
+        "count_category": {
+          "enum": [
+            "base",
+            "route_ful_debt",
+            "route_less_structure",
+            "force_mag",
+            "discrete_postulate"
+          ]
+        },
+        "pending": {
+          "type": "boolean"
+        },
+        "discharge_evidence": {
+          "$ref": "#/$defs/claim_ref"
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "discharged"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "discharge_evidence"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "discharge_evidence"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "departure": {
+      "type": "object",
+      "required": [
+        "token",
+        "kind",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "characterized_departure",
+            "deferral",
+            "fatal_flaw",
+            "hook"
+          ]
+        },
+        "resolved_by": {
+          "$ref": "#/$defs/external_claim_ref"
+        },
+        "claim_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/claim_ref"
+          }
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "tooth": {
+      "type": "object",
+      "required": [
+        "predicate",
+        "mutation",
+        "claim_ids",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mutation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/claim_id"
+          }
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "sympy_script",
+        "mathematica_script",
+        "teeth"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sympy_script": {
+          "type": "string"
+        },
+        "mathematica_script": {
+          "type": "string"
+        },
+        "teeth": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tooth"
+          }
+        }
+      }
+    },
+    "source_digest": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "source_digest"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "extraction_report": {
+      "type": "object",
+      "required": [
+        "ungrounded",
+        "provisional_consumes",
+        "prose_script_mismatches",
+        "judgment_calls"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ungrounded": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "provisional_consumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/external_claim_ref"
+          }
+        },
+        "prose_script_mismatches": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "judgment_calls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "required": [
+        "report",
+        "source_digests"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "report": {
+          "$ref": "#/$defs/extraction_report"
+        },
+        "source_digests": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source_digest"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": "2.1",
+  "stage_id": "stage031",
+  "title": "Spectrum handoff with ownership and C7 metadata (v2.1 excerpt)",
+  "part": "Part IV -- Charge",
+  "status_token": "PUNCTURE_DEFLECTION_IDENTITY_SOURCE",
+  "symbols": [
+    {
+      "name": "f0",
+      "parse_alias": "f0",
+      "quantity_id": "q.charge.transverse_zero_mode",
+      "definition_ref": "stage030/zero_mode",
+      "latex": "f_0",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass and run_units LENGTH**-1 entries, lines 140-168 and 553-578"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_F0_MOUTH_VALUE_EVALUATED lines 214-225",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "handoff_status",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "token",
+      "payload": {
+        "token": "ZERO_MODE_HANDOFF_LIVE",
+        "meaning": "The stage030 zero-mode spectrum is consumed by stage031."
+      },
+      "genesis": {
+        "introduced": "2026-07-24",
+        "origin": "unknown",
+        "note": "Example-only status token; it is not a physics assertion."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "CONSUMES_STAGE030 output line 604",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "consumes": [
+    {
+      "ref": "stage030/zero_mode",
+      "as_consumed": {
+        "payload_kind": "spectrum",
+        "payload": {
+          "operator": "O_perp",
+          "kernel_symbol": "f0",
+          "kernel": {
+            "sympy": "f0"
+          },
+          "eigenvalue": {
+            "sympy": "0"
+          },
+          "gap": {
+            "sympy": "4"
+          },
+          "multiplicity": 1
+        }
+      },
+      "check": "spectrum_match",
+      "substitutions": [],
+      "c7_expect": {
+        "injection_point": "f0_test",
+        "facet_used": "zero-mode kernel and positive continuum gap",
+        "expected_first_failure": "PASS_F0_MOUTH_VALUE_EVALUATED"
+      }
+    }
+  ],
+  "exports": [
+    {
+      "claim_id": "handoff_status",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "c7_binding": {
+        "producing_primitive": "q.charge.transverse_zero_mode",
+        "mutation_env": "LEDGER_STAGE031_MUTATION",
+        "mutation_command": "python3 scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "exported_facet": "stage031 zero-mode handoff status"
+      }
+    }
+  ],
+  "knobs": [],
+  "departures": [],
+  "verification": {
+    "sympy_script": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+    "mathematica_script": "mathematica/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.wl",
+    "teeth": [
+      {
+        "predicate": "PASS_F0_MOUTH_VALUE_EVALUATED",
+        "mutation": "f0_power:2->1",
+        "claim_ids": [
+          "handoff_status"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_F0_MOUTH_VALUE_EVALUATED lines 214-225",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      }
+    ]
+  },
+  "extraction": {
+    "report": {
+      "ungrounded": [],
+      "provisional_consumes": [],
+      "prose_script_mismatches": [],
+      "judgment_calls": [
+        "This schema example intentionally contains an external stage030 ownership reference; composite resolution requires the re-extracted producer."
+      ]
+    },
+    "source_digests": [
+      {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+      }
+    ]
+  }
+}

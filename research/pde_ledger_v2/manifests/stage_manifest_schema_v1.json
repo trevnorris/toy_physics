@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fluidspacetime.com/schemas/stage-manifest/v1.json",
+  "title": "StageManifest",
+  "description": "Machine-readable interface for one ledger stage. Extracted from the stage LaTeX + audit scripts; consumed by the composite build (checks C1-C8, see MANIFEST_README).",
+  "type": "object",
+  "required": ["schema_version", "stage_id", "title", "part", "status_token", "symbols", "claims", "consumes", "exports", "knobs", "verification"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "stage_id": {
+      "type": "string",
+      "pattern": "^stage[0-9]{3}$",
+      "description": "Stable stage identifier, e.g. stage030. Namespace root for claim_refs."
+    },
+    "title": { "type": "string" },
+    "part": { "type": "string", "description": "Ledger part anchor, e.g. 'Part IV -- Charge (IV-1)'." },
+    "status_token": {
+      "type": "string",
+      "description": "The stage's terminal verdict token, verbatim, e.g. ELECTRIC_SCALAR_CLOSURE_STATIC or R1_REQUIRED(bc_selection)."
+    },
+    "symbols": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/symbol" },
+      "description": "Every free symbol appearing in any expression in this manifest. Local names must not collide with another stage's symbol unless defined_in points there (check C1)."
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" },
+      "description": "All postulates, conventions, earned/derived identities, no-gos, and adjudications the stage asserts."
+    },
+    "consumes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/consumption" },
+      "description": "Upstream claims this stage uses. Each is CAS-diffed against the producer (check C2). Using an upstream result without a consumes entry is the decorative-dependency failure mode."
+    },
+    "exports": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_id" },
+      "description": "Claim ids downstream stages may consume. Consuming a non-exported claim is a build error (check C3)."
+    },
+    "knobs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knob" },
+      "description": "Free-parameter drift accounting. The composite knob census sums these against the global registry (check C5)."
+    },
+    "departures": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/departure" },
+      "description": "Characterized departures and carried deferrals, by token."
+    },
+    "verification": { "$ref": "#/$defs/verification" }
+  },
+  "$defs": {
+    "dim": {
+      "type": "array",
+      "prefixItems": [
+        { "$ref": "#/$defs/rational" },
+        { "$ref": "#/$defs/rational" },
+        { "$ref": "#/$defs/rational" }
+      ],
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "(L, M, T) exponent triple as exact rationals -- the ordering used by the ledger's dual-engine audit scripts (their BASE_DIMS convention). Base units: length L = [\"1\",\"0\",\"0\"], mass M = [\"0\",\"1\",\"0\"], time T = [\"0\",\"0\",\"1\"]. Disambiguating example: a_B = M L^-2 T^-2 = [\"-2\",\"1\",\"-2\"]. Dimensionless is [\"0\",\"0\",\"0\"]. NOTE: parameter_register.md's header prints [L,T,M]; manifests standardize on the verified scripts' (L,M,T). See manifests/DIM_ORDER_DECISION.md."
+    },
+    "rational": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(/[0-9]+)?$"
+    },
+    "symbol": {
+      "type": "object",
+      "required": ["name", "dim", "defined_in"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+          "description": "SymPy-parseable identifier. One name, one meaning, across the whole ledger."
+        },
+        "latex": { "type": "string" },
+        "dim": { "$ref": "#/$defs/dim" },
+        "assumptions": {
+          "type": "array",
+          "items": { "enum": ["positive", "nonnegative", "nonzero", "real", "integer"] }
+        },
+        "defined_in": {
+          "type": "string",
+          "pattern": "^(here|stage[0-9]{3})$",
+          "description": "'here' if this stage introduces the symbol; otherwise the defining stage. A symbol used here but defined elsewhere MUST have a matching consumes entry for its defining claim."
+        },
+        "role": { "enum": ["primitive", "derived", "convention", "field", "operator", "index"] }
+      }
+    },
+    "expr": {
+      "type": "object",
+      "required": ["sympy"],
+      "additionalProperties": false,
+      "properties": {
+        "sympy": {
+          "type": "string",
+          "description": "Canonical form. Must parse under sympy_parser with the manifest symbol table as local_dict, no implicit multiplication, exact rationals only (float atoms are a build error). Function whitelist in MANIFEST_README."
+        },
+        "latex": { "type": "string", "description": "Human mirror only; never authoritative." }
+      }
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Stable slug, unique within the stage."
+    },
+    "claim_ref": {
+      "type": "string",
+      "pattern": "^stage[0-9]{3}/[a-z][a-z0-9_]*$",
+      "description": "Cross-stage reference: stageNNN/claim_id."
+    },
+    "claim": {
+      "type": "object",
+      "required": ["id", "kind", "status", "statement"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/claim_id" },
+        "kind": {
+          "enum": ["identity", "operator_identity", "inequality", "spectral", "dimensional", "reduction", "nogo", "adjudication", "convention"]
+        },
+        "status": {
+          "enum": ["POSTULATED", "EARNED", "DERIVED", "CONV", "CALIBRATED", "R1_REQUIRED", "DEFERRED", "RETIRED", "FATAL_FLAW"],
+          "description": "EARNED/DERIVED claims are exact within holds_within. CALIBRATED marks target-matched values (analog-sufficiency legitimate, never blind evidence)."
+        },
+        "statement": {
+          "type": "object",
+          "required": ["lhs", "rhs", "relation"],
+          "additionalProperties": false,
+          "properties": {
+            "lhs": { "$ref": "#/$defs/expr" },
+            "rhs": { "$ref": "#/$defs/expr" },
+            "relation": { "enum": ["eq", "le", "lt", "ge", "gt", "defines"] }
+          }
+        },
+        "holds_within": {
+          "type": "array",
+          "items": { "anyOf": [ { "$ref": "#/$defs/claim_id" }, { "$ref": "#/$defs/claim_ref" } ] },
+          "description": "The closure(s) conditioning this claim. An EARNED claim with empty holds_within asserts unconditional validity -- rare; the extractor should treat it as suspicious."
+        },
+        "genesis": {
+          "$ref": "#/$defs/genesis",
+          "description": "REQUIRED when status is POSTULATED, CONV, or CALIBRATED (enforced by check C8)."
+        },
+        "discharged_by": {
+          "$ref": "#/$defs/claim_ref",
+          "description": "If a later stage converts this postulate to a theorem, the deriving claim. Discharge changes downstream citations, not this claim's own status history."
+        },
+        "retired_by": {
+          "type": "string",
+          "description": "Decision reference for RETIRED claims, e.g. 'Decision 16 (2026-07-21)'."
+        },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "enum": ["POSTULATED", "CONV", "CALIBRATED"] } } },
+          "then": { "required": ["genesis"] }
+        }
+      ]
+    },
+    "genesis": {
+      "type": "object",
+      "required": ["introduced", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "introduced": { "type": "string", "format": "date" },
+        "origin": {
+          "enum": ["independent", "coordinated", "target_matched", "unknown"],
+          "description": "independent: written without knowledge of the structure that later derives/matches it. coordinated: chosen to fit an already-known structure. target_matched: chosen to reproduce a known physical value. unknown: predates genesis tracking. 'unknown' is honest; a false 'independent' is the one lie this system exists to prevent."
+        },
+        "coordinated_with": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/claim_ref" }
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "consumption": {
+      "type": "object",
+      "required": ["ref", "as_consumed", "check"],
+      "additionalProperties": false,
+      "properties": {
+        "ref": { "$ref": "#/$defs/claim_ref" },
+        "as_consumed": {
+          "$ref": "#/$defs/expr",
+          "description": "The expression as this stage uses it. Check C2 asserts CAS-equivalence with the producer's statement -- symbolic simplify-to-zero, never string match."
+        },
+        "check": { "enum": ["cas_equivalence", "value_equal", "dim_equal", "token_match"] },
+        "note": { "type": "string" }
+      }
+    },
+    "knob": {
+      "type": "object",
+      "required": ["symbol", "action"],
+      "additionalProperties": false,
+      "properties": {
+        "symbol": { "type": "string" },
+        "action": {
+          "enum": ["introduced", "inherited", "retired", "discharged"],
+          "description": "introduced: new freedom enters here. inherited: cited from upstream, not double-counted. retired: removed by decision. discharged: converted from free to derived (e.g. K4 free -> wall-fixed)."
+        },
+        "cross_ref": { "anyOf": [ { "$ref": "#/$defs/claim_ref" }, { "$ref": "#/$defs/claim_id" } ] },
+        "note": { "type": "string" }
+      }
+    },
+    "departure": {
+      "type": "object",
+      "required": ["token", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "token": { "type": "string", "description": "Verbatim, e.g. B_TIME_REVERSAL_EVEN, SECOND_MEDIUM_DRIFT." },
+        "kind": { "enum": ["characterized_departure", "deferral", "fatal_flaw", "hook"] },
+        "resolved_by": { "$ref": "#/$defs/claim_ref" },
+        "claim_refs": { "type": "array", "items": { "anyOf": [ { "$ref": "#/$defs/claim_id" }, { "$ref": "#/$defs/claim_ref" } ] } },
+        "note": { "type": "string" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["sympy_script", "mathematica_script", "teeth"],
+      "additionalProperties": false,
+      "properties": {
+        "sympy_script": { "type": "string" },
+        "mathematica_script": { "type": "string" },
+        "teeth": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["predicate", "mutation", "claim_ids"],
+            "additionalProperties": false,
+            "properties": {
+              "predicate": { "type": "string", "description": "PASS_* token, verbatim." },
+              "mutation": { "type": "string", "description": "Mutation env value that must make this predicate FIRE_AT_OWN_ASSERT." },
+              "claim_ids": { "type": "array", "items": { "$ref": "#/$defs/claim_id" } }
+            }
+          },
+          "description": "Per-stage teeth, mapped to the claims they defend. Cross-stage teeth (check C7) are generated by the composite build from the consumes graph, not listed here."
+        }
+      }
+    }
+  }
+}

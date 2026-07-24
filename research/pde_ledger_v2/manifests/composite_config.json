@@ -1,0 +1,10 @@
+{
+  "schema_version": "2.1",
+  "parameter_register": {
+    "path": "notes/parameter_register.md",
+    "sha256": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+    "format": "markdown_master_table"
+  },
+  "range_claim_ref": "stage043/count_range",
+  "closed_slice": false
+}

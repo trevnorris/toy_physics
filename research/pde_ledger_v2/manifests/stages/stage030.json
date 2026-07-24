@@ -2320,7 +2320,13 @@
     },
     {
       "claim_id": "zero_mode",
-      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "c7_binding": {
+        "producing_primitive": "q.charge.transverse_zero_mode",
+        "mutation_env": "C7_FACET",
+        "mutation_command": "python3 manifests/mutators/c7_stage030_zero_mode.py",
+        "exported_facet": "zero_mode_kernel_power"
+      }
     },
     {
       "claim_id": "zero_mode_form",

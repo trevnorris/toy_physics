@@ -2846,6 +2846,11 @@
       },
       "check": "spectrum_match",
       "substitutions": [],
+      "c7_expect": {
+        "injection_point": "f0_kernel_exponent_at_mouth",
+        "facet_used": "zero_mode_kernel_power",
+        "expected_first_failure": "PASS_F0_MOUTH_VALUE_EVALUATED"
+      },
       "note": "The sech^2 zero-mode profile of O_perp (eigenvalue 0, gap 4/ell^2); f0_mouth_value re-evaluates f0(0)=1/ell. Operator O_perp owned by stage030/declare_o_perp (consumed separately)."
     },
     {

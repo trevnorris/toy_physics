@@ -1,0 +1,64 @@
+PROGRESS MATHEMATICA STAGE036 SCHWINGER INTEGRALS START
+PROGRESS MATHEMATICA STAGE036 SCHWINGER INTEGRALS COMPLETE
+ledger_stage036_route_a_maxwell_darwin_reference Mathematica audit
+ROUTE=Riesz analytic continuation + direct Schwinger/Gaussian k-space moments + perpendicular/parallel anchor
+INDEPENDENCE=no seeded Hessian; no Cartesian potential differentiation
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+PROGRESS MATHEMATICA STAGE036 ASSERTIONS START
+
+Inverse-FT transverse projector from Riesz/Schwinger momentum moments
+---------------------------------------------------------------------
+PASS  BOOST_PROJECTOR
+      Riesz F^-1[k^-4]=-R/(8*pi); Schwinger moments=1/(8*pi*R),1/(8*pi*R^3)
+      I_ij=(delta_ij+n_i*n_j)/(8*pi*R), nine component residuals zero
+
+Independent-velocity anchor by perpendicular/parallel decomposition
+-------------------------------------------------------------------
+PASS  BOOST_GENERAL_VELOCITIES
+      D_V=V1.V2; A_V=(V1.n)(V2.n)
+      U_A=(s1*s2*A_E/(4*pi*R))*(1-(D_V+A_V)/(2*c_gamma^2))
+      F_A2=(s1*s2*A_E/(8*pi*c_gamma^2*R^2))*[(V2.n)V1+(V1.n)V2-(D_V+3A_V)n]
+      F_A2,r=-s1*s2*A_E*(D_V+A_V)/(8*pi*c_gamma^2*R^2)
+
+Explicit computed orders and named uncomputed remainder
+-------------------------------------------------------
+PASS  BOOST_NEXT_ORDER
+      explicit=O(1)+O(v^2/c_gamma^2); next_uncomputed=O(v^4/c_gamma^4)
+
+Build-global reference-only dependency and term coverage
+--------------------------------------------------------
+PASS  TARGET_BLINDNESS
+      reference depends on cited A_E,c_gamma only; no Route-B/comparison/ratio/landing input
+PASS  DUAL_ENGINE_TERMS
+      TERM_INVENTORY=darwin_kernel_9_components,electric_U0,route_A_U2,full_anchor_UA,force_A2_3_components,radial_force_A2,velocity_orders_0_2_next_4,dimension_firewall,verdict_precedence
+
+Whole-stage restored-unit firewall on live expressions
+------------------------------------------------------
+PASS  UNITS_RESTORED
+      [I_ij]=L^-1; [A_E]=M L^3 T^-2; [c_gamma^2]=L^2 T^-2
+      [D_V]=[A_V]=L^2 T^-2; [U_A]=M L^2 T^-2; [F_A2]=M L T^-2
+
+Verdict re-derived from projector, anchor, and order objects
+------------------------------------------------------------
+      REDERIVED_TOKEN=MAXWELL_DARWIN_REFERENCE
+PASS  VERDICT_REDERIVATION
+      FAILURE_TOKEN=MAXWELL_DARWIN_REFERENCE_UNCERTIFIED
+      OPEN_ELECTRIC_R1=R1_REQUIRED(bc_selection) is a scope tag, not a certification failure
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      entries=35; partition=<|PRESERVED -> 2, REPLACED_BY_STRONGER -> 4, SCOPED_OUT -> 29|>; scoped_out=29; digest=f8b1569834c1c5cfd404fee4fba7bc49d3d7263f332e551270ad499fd3585cac
+      IN_SCOPE=BOOST_PROJECTOR,BOOST_GENERAL_VELOCITIES,BOOST_NEXT_ORDER,UNITS_RESTORED,TARGET_BLINDNESS,DUAL_ENGINE_TERMS
+      SCOPED_OUT=SOURCE_TRANSLATION_CONTINUITY,SOURCE_NOT_IMPORTED,SOURCE_BASIS,PARITY_RW,PARITY_PW,PARITY_ROTATION,PARITY_TIME_REVERSAL,FIELD_IDENTITY_UNITS,ACTION_KINETIC,ACTION_COUPLING,ACTION_STABILITY,G0_DAMAGE,ROUTE_INDEPENDENCE,BOOST_COMMON_VELOCITY,DIRECT_SOURCE,DIRECT_PROJECTOR,DIRECT_EXCHANGE_SIGN,DIRECT_FALLOFF,DIRECT_VELOCITY_ORDER,COMPARE_COMPUTED,DELTA_RATIO,CONE_RATIO,QMAG_R1,ACTIVE_FLUX_CAVEAT,HOOK_LORENTZ,LEDGER_READY_ROW,TRUTH_TOTALITY,TRUTH_PRECEDENCE,LANDING_OWNERSHIP
+
+REFERENCE_ONLY=Route-A electric boost; Route-B/comparison/ratios deferred to stage037
+PROVENANCE=A_E carries R1_REQUIRED(bc_selection); c_gamma cited from stage003
+SCOPE=EARNED reference kernel at tier_A_conditional; electric sector not re-derived
+REMAINDER=O(v^4/c_gamma^4) named but not computed
+VERDICT_TOKEN: MAXWELL_DARWIN_REFERENCE
+PROGRESS MATHEMATICA STAGE036 COMPLETE
+
+TOOTH_COUNT=8
+PASS tally: 8; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached MAXWELL_DARWIN_REFERENCE

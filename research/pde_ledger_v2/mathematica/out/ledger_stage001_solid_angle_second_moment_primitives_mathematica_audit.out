@@ -1,0 +1,28 @@
+
+======================================================================
+ledger_stage001_solid_angle_second_moment_primitives Mathematica audit
+======================================================================
+
+Baseline exact residuals
+------------------------
+PASS  Omega_2 from native S2 Integrate
+PASS  <n1^2>_S2 native normalized moment
+PASS  <n1 n2>_S2 native normalized moment
+PASS  Omega_3 from native S3 Integrate
+PASS  <n1^2>_S3 native normalized moment
+PASS  <n1 n2>_S3 native normalized moment
+
+Able-to-fail mutation probe
+---------------------------
+FAIL  Omega_2 from native S2 Integrate: residual = 2*Pi
+PASS  mutation probe: perturb Omega_2 target 4 Pi -> 2 Pi produced the required FAIL
+FAIL  Omega_3 from native S3 Integrate: residual = -2*Pi^2
+PASS  mutation probe: perturb Omega_3 target 2 Pi^2 -> 4 Pi^2 produced the required FAIL
+FAIL  <n1^2>_S2 native normalized moment: residual = -1/6
+PASS  mutation probe: perturb S2 <n1^2> target 1/3 -> 1/2 produced the required FAIL
+FAIL  <n1^2>_S3 native normalized moment: residual = -1/4
+PASS  mutation probe: perturb S3 <n1^2> target 1/4 -> 1/2 produced the required FAIL
+FAIL  <n1 n2>_S2 native normalized moment: residual = -1/5
+PASS  mutation probe: cross-moment control: perturb S2 <n1 n2> target 0 -> 1/5 produced the required FAIL
+
+OVERALL PASS: Mathematica derived all stage001 geometry primitives exactly

@@ -1,0 +1,70 @@
+ledger_stage034_transverse_move_action_row Mathematica audit
+ROUTE=NullSpace transverse basis + Fourier CoefficientArrays + PositiveDefiniteMatrixQ dispersion
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+PROGRESS MATHEMATICA STAGE034 START
+
+Imported pathA_36 transverse row: native Fourier forms and two polarizations
+----------------------------------------------------------------------------
+PASS  ACTION_KINETIC
+      imported provenance=stage003/pathA_36; omega^2=(mu_R/rho_br) k^2; polarizations=2
+PROGRESS MATHEMATICA ACTION_KINETIC COMPLETE
+
+Magnetism-new finite-profile moving coupling
+--------------------------------------------
+PASS  ACTION_COUPLING
+      earned_new=moving_coupling; q_T=lambda_T*tau_d; integral eta_a d^3x=1
+PROGRESS MATHEMATICA ACTION_COUPLING COMPLETE
+
+Fourier dispersion and native positive-definite forms
+-----------------------------------------------------
+PASS  ACTION_STABILITY
+      PositiveDefiniteMatrixQ kinetic=True; gradient=True; no_ghost; no_tachyon
+PROGRESS MATHEMATICA ACTION_STABILITY COMPLETE
+
+Parsed G0 row diff and active-flux preservation
+-----------------------------------------------
+PASS  G0_DAMAGE
+      scalar/drain/return_F_flux/wall_r_B/geon/declared-zero rows unchanged
+      active F_flux=untouched,deferred(V-5/Part-VII)
+
+Local variational G0+delta row
+------------------------------
+PASS  LEDGER_READY_ROW
+      one local density; linear current.field source; imported+new pieces variational
+
+Field identity and restored units via formal rescaling
+------------------------------------------------------
+PASS  FIELD_IDENTITY_UNITS
+      [u_T]=L; [u_dot_T]=L/T; [curl u_T]=[b_T]=1; [S]=E*T
+
+Provenance accounting and build-global guards
+---------------------------------------------
+PASS  GUARD_IMPORT_VS_EARN
+      earned_new_terms={moving_coupling}; imported=stage003/pathA_36
+PASS  TARGET_BLINDNESS
+      no A_E; no electric q/g knob; no downstream sign/landing token
+PASS  DUAL_ENGINE_TERMS
+      TERM_INVENTORY=c_gamma_relation,moving_coupling,q_T_relation,transverse_constraint,u_T_gradient,u_T_kinetic
+PASS  UNITS_RESTORED
+      whole action density=[E L^-3]; dt d^3x density=[E T]
+
+Computed verdict re-derivation
+------------------------------
+PASS  VERDICT_REDERIVATION
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      entries=35; partition=<|PRESERVED -> 1, REPLACED_BY_STRONGER -> 8, SCOPED_OUT -> 26|>; deferred=26; digest=4343bd60cd974f653a0a8ac2eeced6c7aca15b1831c81be20bd358f449c454af
+
+ACTION_ROW=S_T+move:int dt d^3x [rho_br/2 |u_dot_T|^2 - mu_R/2 |curl u_T|^2 + q_T sum_i s_i eta_a V_i.u_T]
+TRANSVERSE_CONSTRAINT=div u_T=0; POLARIZATIONS=2
+C_GAMMA_SQUARED=mu_R/rho_br
+Q_T=lambda_T*tau_d
+PROVENANCE=stage003/pathA_36 imported-not-earned
+internal_inconsistency=none
+VERDICT_TOKEN: TRANSVERSE_MOVE_ACTION_ROW
+
+TOOTH_COUNT=12
+PASS tally: 12; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached TRANSVERSE_MOVE_ACTION_ROW

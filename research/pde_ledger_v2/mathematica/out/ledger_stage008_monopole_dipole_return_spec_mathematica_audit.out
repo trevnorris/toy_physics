@@ -1,0 +1,173 @@
+
+=============================================================
+ledger_stage008_monopole_dipole_return_spec Mathematica audit
+=============================================================
+
+Wolfram arity self-check
+------------------------
+PASS  arity hankelComponents[ell,z,corrupt] returns a pair
+PASS  arity radiatingPower[y,max] returns {power,coefficient}
+PASS  arity computeVerdict[raw,works,possible] returns a label
+
+Earned outgoing Hankel DtN ladder
+---------------------------------
+  ell=0: h_ell = ((-I)*Cos[z12] + Sin[z12])/z12
+    Lambda_ell series = (I*(I + a*k))/a
+    static-normalized admittance = 1 + I*a*k - a^2*k^2 - I*a^3*k^3 + a^4*k^4 + I*a^5*k^5 - a^6*k^6
+    coefficient-scan first radiation phase: p_raw=1, coeff=a
+PASS  ell=0 scanned p_raw and radiation-phase coefficient match ladder
+PASS  ell=0 kernel is i*(omega/c_S)^p times scanned coefficient
+  ell=1: h_ell = -((E^(I*z15)*(I + z15))/z15^2)
+    Lambda_ell series = (-2 + a^2*k^2 + I*a^3*k^3 - a^4*k^4 - I*a^5*k^5 + a^6*k^6)/a
+    static-normalized admittance = (8 + 4*a^2*k^2 + (4*I)*a^3*k^3 - 2*a^4*k^4 - a^6*k^6)/8
+    coefficient-scan first radiation phase: p_raw=3, coeff=a^3/2
+PASS  ell=1 scanned p_raw and radiation-phase coefficient match ladder
+PASS  ell=1 kernel is i*(omega/c_S)^p times scanned coefficient
+  ell=2: h_ell = (I*E^(I*z16)*(-3 + (3*I)*z16 + z16^2))/z16^3
+    Lambda_ell series = -1/27*(81 - 9*a^2*k^2 - 3*a^4*k^4 - (3*I)*a^5*k^5 + 2*a^6*k^6)/a
+    static-normalized admittance = (729 + 81*a^2*k^2 + 36*a^4*k^4 + (27*I)*a^5*k^5 - 11*a^6*k^6)/729
+    coefficient-scan first radiation phase: p_raw=5, coeff=a^5/27
+PASS  ell=2 scanned p_raw and radiation-phase coefficient match ladder
+PASS  ell=2 kernel is i*(omega/c_S)^p times scanned coefficient
+PASS  DtN ladder residual p=1/3/5 and coefficients a,a^3/2,a^5/27
+PASS  radiation kernels match i*a*w/cS, i*a^3*w^3/(2*cS^3), i*a^5*w^5/(27*cS^5)
+
+Raw amplitudes and return-target bookkeeping
+--------------------------------------------
+  Moment definitions printed as target definitions:
+    M0(omega)=int_brane S_leak(omega,x) d^3x
+    D1_i(omega)=int_brane x_i S_leak(omega,x) d^3x + int_brane j_i(omega,x) d^3x, including the carried odd wake
+    Q2 is a FREE ANCHOR symbol for the downstream quadrupole consumer, not derived ell=2 physics here
+  ell=0: A_raw = kernel*M0 = (I*a*M0*omega)/cS
+PASS  ell=0 raw amplitude is present is nonzero as required (residual = (I*a*M0*omega)/cS)
+  ell=1: A_raw = kernel*D1 = ((I/2)*a^3*D1*omega^3)/cS^3
+PASS  ell=1 raw amplitude is present is nonzero as required (residual = ((I/2)*a^3*D1*omega^3)/cS^3)
+  ell=2: A_raw = kernel*Q2 = ((I/27)*a^5*omega^5*Q2)/cS^5
+PASS  ell=2 raw amplitude is present is nonzero as required (residual = ((I/27)*a^5*omega^5*Q2)/cS^5)
+PASS  raw amplitude closed forms match report lines 17-19
+  Residual label: x−x bookkeeping identity, NOT an earned cancellation result
+    ell=0 without return: (I*a*M0*omega)/cS
+    ell=0 with target return: 0
+PASS  ell=0 residual without return condition is nonzero is nonzero as required (residual = (I*a*M0*omega)/cS)
+PASS  ell=0 residual with bookkeeping target is exactly zero
+    ell=1 without return: ((I/2)*a^3*D1*omega^3)/cS^3
+    ell=1 with target return: 0
+PASS  ell=1 residual without return condition is nonzero is nonzero as required (residual = ((I/2)*a^3*D1*omega^3)/cS^3)
+PASS  ell=1 residual with bookkeeping target is exactly zero
+  Required targets: R0(omega)=-M0(omega); R1_i(omega)=-D1_i(omega)
+  Raw-vs-vertex note: derivative outlet vertex g_W0(omega)=eta*omega is branch_assumption; two vertices add eta^2*omega^2 and are NOT verdict-bearing.
+    derivative-vertex branch ell=0: (I*a*eta0^2*M0*omega^3)/cS
+PASS  branch_assumption derivative-vertex ell=0 remains nonzero is nonzero as required (residual = (I*a*eta0^2*M0*omega^3)/cS)
+    derivative-vertex branch ell=1: ((I/2)*a^3*D1*eta1^2*omega^5)/cS^3
+PASS  branch_assumption derivative-vertex ell=1 remains nonzero is nonzero as required (residual = ((I/2)*a^3*D1*eta1^2*omega^5)/cS^3)
+PASS  steady control lim_{omega->0} raw monopole amplitude is zero
+PASS  dominance p(ell0)<p(ell2) from scanned powers
+
+Stage-243/244 S_leak anchors by direct integration
+--------------------------------------------------
+  stage-243 direct integral int W' j^w dw = -1/2*(ellw*j0)/Sqrt[2]
+  stage-244 direct integral S_leak = (E0*muW*rho0)/(lambda^3*Sqrt[2*Pi])
+  ledger_stage006 (I-3) OWNS the recovery-reduction derivation of the projected law; here the two closed forms serve only as live-source consistency anchors.
+PASS  stage-243 anchor equals -sqrt(2)*ell_w*j0/4
+PASS  stage-244 anchor equals sqrt(2)*mu_w*rho0*E0/(2*sqrt(pi)*lambda^3)
+PASS  stage-243 leakage lane is symbolically nonzero before recovery shortcut is nonzero as required (residual = -1/2*(ellw*j0)/Sqrt[2])
+PASS  stage-244 leakage lane is symbolically nonzero before recovery shortcut is nonzero as required (residual = (E0*muW*rho0)/(lambda^3*Sqrt[2*Pi]))
+
+Computed verdict with honest literal flag
+-----------------------------------------
+  raw_present computed from amplitudes = True
+  condition_works computed from residual pair = True
+  SCOPE: parameter, not computed — track-3 decides: cancellation_possible=True
+  baseline verdict = MONOPOLE_DIPOLE_RETURN_CONDITIONAL
+  synthetic no-return control = MONOPOLE_RADIATION_UNAVOIDABLE
+PASS  baseline computed verdict is MONOPOLE_DIPOLE_RETURN_CONDITIONAL
+PASS  synthetic (True,False,False) reaches MONOPOLE_RADIATION_UNAVOIDABLE
+PASS  INCONCLUSIVE verdict rung remains reachable
+
+Nine source-live guards
+-----------------------
+  These controls do NOT test whether suppression occurs. What they confirm is narrow: the source moments M0/D1 are kept live (no S_leak=0, no strict-recovery basis, no projection-locking that would zero them out by construction). Beyond keeping the source live, the controls pass by construction — they are not able-to-fail probes of the physical question. Treat them as guards against the obvious tautologies, not as evidence of suppression-vs-unavoidable.
+PASS  guard raw_monopole_present: raw monopole is live in same pipeline
+PASS  guard steady_no_radiation: lim_{omega->0} raw0=0
+PASS  guard quadrupole_survives: scanned p(ell2)=5 and raw2 nonzero
+PASS  guard return_necessity: without nonzero and with exactly zero
+    declaration anti_tautology_no_S_leak_zero: M0->0 killing raw0 is pass-by-construction after the raw-amplitude closed-form checks, not a counted able-to-fail tooth.
+    declaration anti_tautology_no_S_leak_zero: no S_leak=0 shortcut is used as a verdict basis.
+    declaration anti_tautology_no_strict_recovery_basis: ell_w->0 and E0->0 recovery slices are not used as verdict bases.
+    observed_but_not_used — the strict-recovery limit exists but is NOT taken as a basis: sleak243|_{ell_w->0} = 0
+PASS  observed_but_not_used strict-recovery slice sleak243|_{ell_w->0}=0
+    observed_but_not_used — the strict-recovery limit exists but is NOT taken as a basis: sleak244|_{E0->0} = 0
+PASS  observed_but_not_used strict-recovery slice sleak244|_{E0->0}=0
+    declaration anti_tautology_no_projection_locking: M0 and D1 stay unconstrained source moments.
+PASS  guard anti_tautology_derivative_vertex_not_basis: branch nonzero but not verdict-bearing
+PASS  guard anti_tautology_no_track3_bulk_kill: without-return residuals stay nonzero
+    declaration anti_tautology_no_track3_bulk_kill: no track-3 bulk return kill is imported here.
+
+Frozen slice and consumed ledger_stage005 law
+---------------------------------------------
+  Frozen slice (CALIBRATED, exact): G=c=c_s=1; K_eos=1/500; rho=sqrt(10); (a*,L*)=(4731/2500,18121/10000)
+  Consumed from ledger_stage005 (I-2)
+    cited symbolic law: c_s^2 = 5*K*rho^4/m_GNLS
+    no EOS re-derivation is performed in stage008; this is citation integrity only.
+    frozen slice (CALIBRATED, cited): G=1
+    frozen slice (CALIBRATED, cited): c=1
+    frozen slice (CALIBRATED, cited): c_s=1
+    frozen slice (CALIBRATED, cited): K_eos=1/500
+PASS  frozen rho=sqrt(10) symbolic exact
+    frozen slice (CALIBRATED, cited): a*=4731/2500
+    frozen slice (CALIBRATED, cited): L*=18121/10000
+PASS  consumed stage005 law exact-value citation-integrity 5*(1/500)*(sqrt(10))^4/1 - 1
+
+Modest dimensional block
+------------------------
+  structural note (not counted): z=k*a is dimensionless by k=omega/c_S and [a]=L.
+PASS  ell=0 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  ell=1 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  ell=2 actual radiation_kernel dimension from sourced a,c_S,omega is dimensionless
+PASS  dimensional source corruption [a]->L^2 makes actual radiation kernels dimensionful produced required FAIL (residual = 35)
+PASS  scanned ladder powers are strictly increasing
+  No dimensions are invented here for M0/D1/Q2; they remain frozen-slice normalized source moments/anchor.
+
+Scope caveat and provenance
+---------------------------
+  This is a VERIFIED CONSTRAINT-SPECIFICATION, not a falsifiable test of no-monopole-radiation. What is verified-solid: the raw ell=0/1/2 outgoing amplitudes and their radiation orders, and the exact moments/orders at which any brane<->bulk return must cancel. What this report does NOT establish: that monopole/dipole radiation is suppressed or unavoidable.
+  The cancellation condition (R0=-M0, R1=-D1) is the algebraic bookkeeping of what the return must cancel. Its symbolic derivation is an identity (x - x), not a deep load-bearing result.
+  The UNAVOIDABLE rung is NOT decidable in-scope: cancellation_possible is a parameter (a literal flag), not a computed quantity. Deciding suppression-vs-unavoidable requires the track-3 brane<->bulk return, which is out of scope here.
+  The real falsification lives in track 3: whether an admissible return can actually deliver R0=-M0, R1=-D1. This audit only specifies the target it must hit.
+
+  Exports:
+    R0=-M0 and R1=-D1 targets + raw amplitudes/kernels -> ledger stages 009/010 (pathA_29) and 022/023 (pathA_34).
+    Q2 = FREE ANCHOR (not derived ell=2 physics) -> ledger stage 026.
+  Provenance:
+    DtN/outgoing expansions cite reuse of research/4d_2_5pn spherical-Hankel machinery; stage029 is the later formal DOI-cite home.
+    M0/D1 are this gate's own constructions consistent with old-ledger Part-VIII projected continuity, NOT verbatim Part-VIII objects.
+    ledger_stage006 (I-3) OWNS the recovery-reduction derivation of the projected law; stage008 uses stage-243/244 only as live-source consistency anchors.
+    Raw-vs-vertex: derivative outlet vertex is branch_assumption, recorded but not used for the verdict.
+    consumed from ledger_stage005 (I-2): c_s^2 = 5*K*rho^4/m_GNLS (cited, integrity-checked)
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): DTN_LADDER_DERIVED_RETURN_TARGETS_SPECIFIED  (p_raw=1/3/5 scanned from the Hankel DtN series; raw amplitudes nonzero; cancellation targets bookkept)
+  source top-line verdict: MONOPOLE_DIPOLE_RETURN_CONDITIONAL
+  honest scope (verbatim-class): VERIFIED CONSTRAINT-SPECIFICATION, not a falsifiable suppression test; R0=-M0 / R1=-D1 is x-x bookkeeping; cancellation_possible is a literal parameter flag (track-3 decides)
+  earned: DtN ladder p=1/3/5 + kernels i*ak, i*a^3k^3/2, i*a^5k^5/27; steady limit; dominance ordering; stage-243/244 S_leak anchors (live-source consistency)
+  exports: R0=-M0, R1=-D1 targets -> stages 009/010/022/023; Q2 = FREE ANCHOR (not derived l=2) -> stage 026
+  guards: 9 carried (computed where they compute; declarations printed as declarations; pass-by-construction framing kept)
+  frozen slice (CALIBRATED, cited): G=c=c_s=1; K_eos=1/500; (a*,L*)=(4731/2500,18121/10000)
+  consumed from ledger_stage005 (I-2): c_s^2 = 5*K*rho^4/m_GNLS (cited, integrity-checked)
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 hankel-form corruption changes scanned ladder produced required FAIL (residual = 4 + (a - a^3)^2/4)
+PASS  tooth 2 kernel coefficient corruption a^5/27 -> a^5/9 trips kernel assert produced required FAIL (residual = (-4*a^10*omega^10)/(729*cS^10))
+PASS  tooth 3 M0->0 kills raw monopole and trips nonzero assert produced required FAIL (residual = 1)
+PASS  tooth 4 R0->-2*M0 breaks x-x bookkeeping identity produced required FAIL (residual = -((a^2*M0^2*omega^2)/cS^2))
+PASS  tooth 5 verdict machinery corruption falls to INCONCLUSIVE and trips baseline equality produced required FAIL (residual = 1)
+PASS  tooth 6 stage-244 prefactor corruption trips anchor assert produced required FAIL (residual = -((E0*muW*rho0)/(lambda^3*Sqrt[2*Pi])))
+PASS  tooth 7 steady-limit corruption strips omega from scanned kernel0 and trips limit assert produced required FAIL (residual = (I*a*M0)/cS)
+PASS  tooth 8 consumed-law corruption 5*K*rho^4 -> 4*K*rho^3 trips citation integrity produced required FAIL (residual = -1 + (2*Sqrt[2/5])/5)
+PASS  baseline immutable after copy-mutation teeth: DtN ladder unchanged
+PASS  baseline immutable after copy-mutation teeth: kernels unchanged
+PASS  baseline immutable after copy-mutation teeth: bookkeeping with-target residuals unchanged
+
+PASS tally: 56; FAIL tally: 0
+OVERALL PASS: Mathematica verified ledger_stage008 monopole/dipole return constraint spec exactly

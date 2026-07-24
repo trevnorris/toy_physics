@@ -1,0 +1,112 @@
+
+====================================================================
+ledger_stage004_gnls_action_dimensional_foundation Mathematica audit
+====================================================================
+
+Two-tier dictionary derivation
+------------------------------
+Primitive inputs (posted through UnitDimensions):
+  [hbar] = L^2 T^-1 M  PRIMITIVE INPUT
+  [m_GNLS] = M  PRIMITIVE INPUT
+  [rho0] = L^-4  PRIMITIVE INPUT
+Derived-by-composition dimensions:
+  [psi] = L^-2  from kinetic density Solve
+  [rho] = L^-4  from psi^2
+  [K] = L^18 T^-2 M  from EOS density
+  [c_s0] = L T^-1  from 5*K*rho0^4/m_GNLS
+  [h0] = L^2 T^-2 M  from (5K/4)*rho0^4
+  [xi_h] = L  from core balance
+PASS  primitive hbar used as action in kinetic density
+PASS  primitive m_GNLS used in Madelung velocity hbar/(m*L)
+PASS  primitive rho0 checked against derived rho=psi^2
+PASS  [psi] derived from action-density equation matches sqrt(rho0)
+PASS  [K] derived from EOS matches m*c_s0^2/rho0^4 target
+PASS  [c_s0] derived from sound-speed composition
+PASS  [h0] EOS scale matches m_GNLS*c_s0^2
+PASS  [xi_h] core-balance dimension
+
+Sound-speed and healing algebra
+-------------------------------
+PASS  algebraic sound-speed law c_s0^2=5*K*rho0^4/m_GNLS
+PASS  GNLS core balance h0=(5K/4)*rho0^4=(m_GNLS*c_s0^2)/4
+PASS  healing length xi_h=sqrt(2)*hbar/(m_GNLS*c_s0)
+
+Pin null-relation
+-----------------
+PASS  pin matrix rank is 3
+PASS  four pins on three bases leave nullity 1
+PASS  pin RowReduce has three pivot rows
+PASS  pin null vector is a*c_s0*hbar^-1*m_GNLS
+PASS  derived pin relation a*c_s0*m_GNLS/hbar is dimensionless
+PASS  derived pin relation a=hbar/(m_GNLS*c_s0)
+PASS  raw four pins give a/xi_h=1/sqrt(2)
+  A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT: a is a branch collective moment, not a base invariant.
+
+Harness-mapped 17 dimensional checks
+------------------------------------
+PASS  pathA_19_F2: 4D-bulk closed-3-surface number flux J_bulk
+PASS  pathA_19_F2: 3D-brane reduced 2-sphere number flux J_brane
+PASS  pathA_19_F2: 4D-bulk volumetric flux Q_vol=rho^-1 J
+PASS  pathA_19_F2: 3D-brane volumetric flux Q_vol=rho_3^-1 J
+PASS  pathA_19_F2: constituent mass flux m_GNLS*J
+PASS  pathA_19_F1: conditional defect rest-frequency conversion hbar*J/c_gamma^2
+PASS  pathA_19_F2: bulk continuity equation
+PASS  pathA_19_F3: sound-speed law 5*K*rho^4/m
+PASS  pathA_19_F3: EOS enthalpy scale h0=(m_GNLS*c_s0^2)/4
+PASS  pathA_19_F3: GNLS healing length sqrt(hbar^2/(2*m_GNLS*h0))
+PASS  pathA_19_F3: parent GNLS Lagrangian density terms
+PASS  pathA_19_F3: spatial gauge minimal-coupling dimension q*A_i/hbar
+PASS  pathA_19_F3: localized Maxwell sector with explicit c factors
+PASS  pathA_19_F3: wall action density before dt*dw integration
+PASS  pathA_19_LT_representation: local GNLS terms after projecting m_GNLS to dimensionless
+PASS  pathA_19_LT_representation: local Maxwell terms after M projection
+PASS  pathA_19_LT_representation: local wall terms after M projection
+PASS  harness check count is 14 foundation + 3 LT representation
+  hbar*J/c_gamma^2 = M check above is dimensional-only, not a mass derivation.
+
+Carried flagged residual gates
+------------------------------
+  formal_4D_R_norm_target_not_dimensionless_without_conversion: actual L^-1 T^-2 M^-1; factor needed L T^2 M
+PASS  formal_4D_R_norm_target_not_dimensionless_without_conversion remains non-dimensionless after M drop is nonzero as required (residual = 5)
+PASS  formal_4D_R_norm_target_not_dimensionless_without_conversion exact conversion factor
+  observed_3D_GR_target_not_dimensionless_without_conversion: actual L^-2 T^-2 M^-1; factor needed L^2 T^2 M
+PASS  observed_3D_GR_target_not_dimensionless_without_conversion remains non-dimensionless after M drop is nonzero as required (residual = 8)
+PASS  observed_3D_GR_target_not_dimensionless_without_conversion exact conversion factor
+  LT_R_norm_gate_fails_without_new_conversion_factor: actual L^-2 T^-2; factor needed L^2 T^2
+PASS  LT_R_norm_gate_fails_without_new_conversion_factor remains non-dimensionless after M drop is nonzero as required (residual = 8)
+PASS  LT_R_norm_gate_fails_without_new_conversion_factor exact conversion factor
+
+Mass fork and computed verdict
+------------------------------
+  m_defect_derived_here=False
+  INFLOW_MASS_SOURCE_MISSING: m_defect is NOT emergent at this foundation gate.
+  hbar*J/c_gamma^2 = M is a dimensional conversion only, not a mass theorem.
+PASS  computed verdict is RETAIN_L_T_M
+PASS  verdict flips if LT residual gates are counterfactually repaired
+PASS  verdict flips if m_defect_derived_here=True
+
+Able-to-fail dimensional firewall
+---------------------------------
+PASS  drop hbar from kinetic term breaks GNLS density homogeneity produced required FAIL (residual = 12)
+PASS  wrong K exponent M L^17 T^-2 breaks EOS density produced required FAIL (residual = 1)
+PASS  drop rho0^4 from c_s0^2=5*K*rho0^4/m_GNLS breaks velocity dimension produced required FAIL (residual = 64)
+PASS  pin corruption by dropping c_s0 pin changes nullity
+PASS  pin corruption c_s0 dimensionless breaks a=hbar/(m_GNLS*c_s0) produced required FAIL (residual = 2)
+
+Carried gaps printed as provenance
+----------------------------------
+  A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT: a is branch geometry, not a base invariant.
+  EOS_FROM_GNLS_FACTOR: h0=(m_GNLS*c_s0^2)/4 and xi_h=sqrt(2)*hbar/(m_GNLS*c_s0) carried to pathA_20.
+  NO_NET_ACCRETION_BC_UNDERIVED: no-net-accretion is a boundary condition, not derived here.
+  M_TO_G_UNIFICATION: defect-mass/back-reaction relation is deferred to pathA_21.
+  SCALE_MAP_INPUTS: pathA_22 consumes J, a(branch), rho0, K, m_GNLS, hbar, 3D-reduction factors.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): DIMENSIONAL_FOUNDATION_LTM_RETAINED  (base {L,T,M}; a=hbar/(m*c_s0); xi_h=sqrt(2)*hbar/(m*c_s0))
+  source top-line verdict: RETAIN_L_T_M   (PASS_WITH_NAMED_RESIDUALS)
+  labeled non-derivation (carried gap): m_defect NOT emergent -- INFLOW_MASS_SOURCE_MISSING (m_defect_derived_here=False)
+  carried residuals: LT_R_norm_gate_fails_without_new_conversion_factor (REJECTS_TRUE_LT_BASE); formal_4D_R_norm_target_not_dimensionless_without_conversion; observed_3D_GR_target_not_dimensionless_without_conversion
+  carried forward (provenance, §3c): A_PIN_IS_BRANCH_MOMENT_NOT_INVARIANT; EOS_FROM_GNLS_FACTOR; NO_NET_ACCRETION_BC_UNDERIVED; M_TO_G_UNIFICATION; SCALE_MAP_INPUTS
+
+PASS tally: 50; FAIL tally: 0
+OVERALL PASS: Mathematica derived ledger_stage004 GNLS dimensional foundation exactly

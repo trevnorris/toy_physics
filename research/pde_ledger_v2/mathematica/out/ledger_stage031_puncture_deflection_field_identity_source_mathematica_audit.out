@@ -1,0 +1,79 @@
+ledger_stage031_puncture_deflection_field_identity_source Mathematica audit
+CONSUMES_STAGE030={f0,f0(0)=1/ell,N0=8/(3ell),h=P0H,S_Lh,D,D*=7/4}
+CONSUMES_STAGE003_030={B_eff,C_hu}
+
+Full completed-square response via native matrix inverse
+--------------------------------------------------------
+PASS  PASS_KAPPA_REDUCTION
+PASS  PASS_Z_B_WIRING
+PASS  PASS_RESPONSE_M_UU
+PASS  PASS_RESPONSE_M_UG
+PASS  PASS_RESPONSE_M_GG
+PASS  PASS_RESPONSE_SYMMETRY
+PASS  PASS_RESPONSE_DETERMINANT
+PASS  PASS_Z_G_POSTULATED_WITNESS
+PASS  PASS_M_GG_NONNEGATIVE
+PASS  PASS_RESPONSE_STAR_WITNESS
+PASS  PASS_S_GG_SELF_RESPONSE
+      native m=Transpose[Z].Inverse[diag(b,kappa)].Z; z_g>0 witness POSTULATED
+
+Exterior stationary solution via DSolve and neutral shell
+---------------------------------------------------------
+PASS  PASS_EXTERIOR_ONE_OVER_R
+PASS  PASS_POSITIVE_HOLDING_CURVATURE
+PASS  PASS_NONZERO_HA_REQUIRES_CORE_HOLDER
+PASS  PASS_NEUTRAL_FAR_FIELD_FORM
+PASS  PASS_ALLOWED_ZERO_COEFFICIENT
+      NONZERO_HA_REQUIRES_CORE_HOLDER
+      A=m_gg*C, [C]=E^2: neutral shell; no numerator and no sign selected
+
+Bare mouth reconstruction and option-A reflection dominance
+-----------------------------------------------------------
+PASS  PASS_FIELD_IDENTITY
+PASS  PASS_ETA_ANNULUS_NORMALIZATION
+PASS  PASS_F0_MOUTH_VALUE_EVALUATED
+PASS  PASS_REDUCED_COUPLING_NONZERO
+PASS  PASS_BOUNDED_PLUS_SLEEVE
+PASS  PASS_REFLECTION_ANTISYMMETRY
+PASS  PASS_I_PLUS_REFLECTION_DOMINANCE
+PASS  PASS_I_PLUS_EVEN_DEFORMATION_CONTROL
+PASS  PASS_I_PLUS_ZERO_SLEEVE_CONTROL
+PASS  PASS_I_PLUS_NEGATIVE_SLEEVE_CONTROL
+PROGRESS: native Integrate for certified I_plus sleeve integral
+PASS  PASS_N_CHI_NONZERO_GUARD
+PASS  PASS_Q_CHI_ORIENTATION
+PASS  PASS_BARE_FORCING_LIVE_VARIATION
+      option-A result: N_chi=I_plus>0; (Q_+,Q_-)=(+1,-1); bare source=-g_chih*s
+
+Complete mechanism dimensional firewall [L,T,M]
+-----------------------------------------------
+PASS  PASS_UNITS_XI_W
+PASS  PASS_UNITS_H
+PASS  PASS_UNITS_H_A
+PASS  PASS_UNITS_K_M
+PASS  PASS_UNITS_J_M
+PASS  PASS_UNITS_K_M_REDUCED
+PASS  PASS_UNITS_G_CHIH
+PASS  PASS_UNITS_ETA
+PASS  PASS_UNITS_ODD_KERNEL
+PASS  PASS_UNITS_N_CHI
+PASS  PASS_UNITS_M_UU
+PASS  PASS_UNITS_M_UG
+PASS  PASS_UNITS_M_GG
+PASS  PASS_UNITS_KAPPA
+PASS  PASS_UNITS_ESCAPE_MATRIX
+PASS  PASS_UNITS_DET_M
+PASS  PASS_UNITS_S_GG
+PASS  PASS_UNITS_SHELL_C
+PASS  PASS_UNITS_SHELL_A
+PASS  PASS_UNITS_U
+PASS  PASS_UNITS_F
+      live chains: k_m=K_m/ell^2; g=J_m/ell; N_chi=int eta dx int o dw; A=m_gg C; U=A/R; F=A/R^2
+
+SCOPE: stage031 earned mechanism and target-blind conditional leading form only.
+DEFERRED_TO_STAGE032: BC-class numerator C, force sign, ensembles, internal_inconsistency, R1 landing.
+VERDICT_TOKEN: THROAT_H_SOURCE_1_OVER_R2
+EARNED_LABEL: PUNCTURE_DEFLECTION_MECHANISM_TARGET_BLIND
+
+PASS tally: 50; FAIL tally: 0
+OVERALL PASS: Mathematica verified stage031 puncture-deflection field identity and source mechanism

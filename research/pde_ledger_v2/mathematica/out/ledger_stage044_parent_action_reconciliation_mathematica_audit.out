@@ -1,0 +1,47 @@
+ledger_stage044_parent_action_reconciliation Mathematica audit
+ROUTE=Reduce/Solve wall classification + DSolveValue kernel + Eigenvalues generalized speeds + exact Integrate + status/incidence manifests
+VERDICT_DERIVATION=DOCUMENTED_FIRST_MATCH
+
+A-B. Static wall reconciliation and wall Hessian
+------------------------------------------------
+PASS  A_WALL_STATIC_ENERGY_DEDUP
+PASS  B_WALL_HESSIAN_ZERO_MODE
+
+C-E. Localized scalar, wave speeds, and stability
+-------------------------------------------------
+PASS  C1_CHARGE_FACTORIZATION_ZERO_MODE
+PASS  C2_CHARGE_ZERO_MODE_NORM
+PASS  D1_BULK_SOUND_SPEED
+PASS  D2_SCALAR_WAVE_SPEEDS
+PASS  D3_LIGHT_WAVE_SPEED
+PASS  E1_SCALAR_SYLVESTER
+PASS  E2_WALL_MINIMA
+PASS  E3_TRANSVERSE_GAP
+
+F-H. Units, conservative continuity, and drain provenance
+---------------------------------------------------------
+PASS  F_DIMENSIONAL_HOMOGENEITY
+PASS  G_SOURCE_FREE_CONTINUITY
+PASS  H_DRAIN_PROVENANCE
+
+I-L. Retirement, field union, open status, and action incidence
+---------------------------------------------------------------
+PASS  I_P_RETIREMENT
+PASS  J_FIELD_UNION_SCHUR
+PASS  K1_DEFERRED_GATE_COMPLETENESS
+PASS  K2_DRAFT_OPEN_ACTION
+PASS  L_ACTION_INCIDENCE
+
+M. Provenance/status binding and prospective register handoff
+-------------------------------------------------------------
+PASS  M_PROVENANCE_STATUS_BINDING
+
+Reproduction. First-match verdict and canonical object
+------------------------------------------------------
+PASS  REPRODUCTION
+
+CANONICAL_JSON={"P_retirement":{"net_routeless":"-5 == -4(s007 drift) -1(s006 drift)","stage006_drift":"6->5","stage007_DOF":"8->4","stage007_action_operative":["S_GNLS","gL_Mac","gL_uw"],"stage007_action_retired":["L_pol","gL_Pu"],"stage007_drift":"11->7"},"S_assembled_extra":["S_brane_light","S_move_magnetism_moving_coupling"],"S_cons_G0_summands":["S_bulk","S_chi","S_scalar","S_mouth","S_hold","S_geon_const"],"Z_chi_count_consequence":"SHIFTS_CONTINUOUS_[40,49]->[41,50] (043-rule; both endpoints +1; spread 9 unchanged); committed re-count DEFERRED_046 (may substitute dissipative M_chi)","closed_action":false,"conservative_continuity":"SOURCE_FREE","drain_equivalence":"UNRESOLVED","drain_interfaces":"TWO_NONVARIATIONAL_NAMED","drain_selection":"DEFERRED_045_AND_USER_GATE","drain_types":{"g0_S_drain":"total_rho_sink_plus_remote_return","part_I_Gamma_B":"internal_order_conversion_total_n_conserved"},"field_set_parent":["rho","theta","r_B==chi_B","H","u_L","u_T(divfree)","u_w","lambda_Sigma(aux)"],"field_set_reduced":["rho","theta","r_B==chi_B","u_L","h","u_T(divfree)","u_w","lambda_Sigma(aux)"],"g0_card":"DRAFT_V0","g_ell":"SCOPE_SPLIT_R21_NOT_MERGED","gravitomagnetism":"BOOST_OF_GRAVITOELECTRIC_FLOW(PN-ladder-covered; honest asymmetry: gravity matches GR incl GM, EM departs Maxwell); prose-only in 044","light_gating":"g_ell_LOCALIZED; chi_B_projection R17 PENDING (distinct, not double-counted)","new_draft_knob":{"Z_chi":"POSTULATE_inertial_normalization_no_reduction_route (G0 DRAFT-v0)"},"scalar_branch":"REDUCED_S_Lh | PARENT_S_H_plus_S_u_plus_S_mix (exclusive)","stability":"POSITIVE_DEFINITE(B_eff>0 AND D_star=7/4>0; wall minima {0,1}; Omega_w^2>=0)","theta_B":"ELIMINATED_SCHUR_into_A_eff","throat_solve":"SIM_DEFERRED_CENTRAL_DEBT","verdict":"PARENT_ACTION_ASSEMBLED_AT_COMPLETENESS_FLOOR","wall_dedup":"STATIC_WALL_ENERGY_IDENTITY(r_B==chi_B; kappa_chi==kappa_B; lambda_chi==4*a_B => ell==delta, sigma matches); FULL_FUNCTIONALS_DIFFER(inertial Z_chi vs dissipative M_chi)","wall_factorization":"L_chi_2ndVar/kappa_chi == A_chi_dag A_chi (annihilates r0')","wave_speeds":{"D_star":1.75,"c_gamma_sq":"mu_R/rho_br","c_pm_sq":[0.7928932188,2.2071067812],"c_s0_sq":"5*K*rho0^4/m"}}
+VERDICT_FILE=/var/projects/toy_physics/research/pde_ledger_v2/_scratch/stage044/verdict_wl.json
+TOOTH_COUNT=20
+PASS tally: 20; FAIL tally: 0
+OVERALL PASS: Mathematica stage044 parent-action reconciliation

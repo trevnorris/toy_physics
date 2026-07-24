@@ -1,0 +1,55 @@
+ledger_stage043_irreducible_count_range Mathematica audit
+ROUTE=Association/GroupBy/Counts/Select/Tally partition + CAD RegionDimension[ImplicitRegion]
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+DIMENSIONAL_HOMOGENEITY=N/A_INTEGER_COUNT_STAGE
+
+A. Parts-I--II buckets and continuous endpoints
+-----------------------------------------------
+PASS  BUCKET_PARTITION
+PASS  LOW_ENDPOINT
+PASS  HIGH_ENDPOINT
+PASS  RANGE_SPREAD_IS_C1_PLUS_C2
+PASS  BASE_CONTINUOUS_27_36
+PASS  E_CONTINUOUS_IS_13
+
+B. OPEN convention contributors
+-------------------------------
+PASS  C1_ATTRIBUTION
+PASS  C2_ATTRIBUTION
+PASS  CONVENTION_OPEN_NOT_IMPOSED
+
+C. Debt, discrete, and out-of-scope accounting
+----------------------------------------------
+PASS  REDUCTION_DEBT_COUNTED_ONCE
+PASS  R49_OUT_OF_SCOPE
+PASS  DISCRETE_POSTULATE_COUNT
+
+D. Scoped delta-r independence diagnostic
+-----------------------------------------
+PASS  DELTA_R_INDEPENDENCE
+PASS  DELTA_R_IS_DIAGNOSTIC_NOT_SUBTRACTION
+
+E. R35, provenance, manifest, and local engine inventory
+--------------------------------------------------------
+PASS  R35_DERIVED_IN_FORM_PLUS_RIDER
+PASS  KNOB_PROVENANCE_WELL_FORMED
+PASS  REGISTER_TO_COUNT_MANIFEST
+PASS  DUAL_ENGINE_TERMS
+
+F. Assembled range and full rederivation
+----------------------------------------
+PASS  IRREDUCIBLE_COUNT_RANGE
+PASS  COUNT_RANGE_REDERIVATION
+
+IRREDUCIBLE_COUNT_RANGE={"continuous_codimension":[40,49],"base_continuous":[27,36],"E_continuous":13,"discrete_postulate_count":11,"convention":"OPEN","spread":9,"C1_cardinality":3,"C2_cardinality":6,"delta_r_independence":"CONFIRMED_IN_TESTED_M_AND_WCHI_BLOCKS","Q_E_undeclared":"TOTAL_NEUTRAL_ROUTELESS_SHIFT_3_to_4","R49_parallel_track":"OUT_OF_BUILT_V2_SCOPE"}
+RAW_PARTS_I_II=[34,43]; BASE_CONTINUOUS=[27,36]; E_CONTINUOUS=13
+CONTINUOUS_CODIMENSION=[40,49]; SPREAD=9; C1=3; C2=6
+DISCRETE_POSTULATE_COUNT=11 (=7+4); NOT_IN_CONTINUOUS_VARIETY
+REDUCTION_DEBT_COUNTED_ONCE={mu_R,rho_br,c_E,q_T,Q_E}
+R49_PARALLEL_TRACK=OUT_OF_BUILT_V2_SCOPE; PROFILE_DEBT=8_to_9
+Q_E_UNDECLARED=TOTAL_NEUTRAL_ROUTELESS_SHIFT_3_to_4
+K_THETA_KAPPA_PHASE_AS_TWO_SENSITIVITY=[41,50]
+DELTA_R_SCOPE=CONFIRMED_IN_TESTED_M_AND_WCHI_BLOCKS; M:(10,5,5)->(10,4,6); Wchi:(10,7,3)->(10,6,4)
+TOOTH_COUNT=20
+PASS tally: 20; FAIL tally: 0
+OVERALL PASS: Mathematica independently assembled the count range

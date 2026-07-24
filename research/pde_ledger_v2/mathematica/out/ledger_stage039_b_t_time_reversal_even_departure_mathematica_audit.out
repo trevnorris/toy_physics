@@ -1,0 +1,61 @@
+ledger_stage039_b_t_time_reversal_even_departure Mathematica audit
+ROUTE=named-key ReplaceAll curl + Cross/Det classifier + FoldList parity chain
+INDEPENDENCE=no parity tuple indices; no source-.wl tuple checks; no source text scan
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+
+Cited census -> rule-based curl inheritance
+-------------------------------------------
+PASS  B_T_AXIAL_T_EVEN
+      b_T=(-1,-1,+1,axial_vector), derived from u_T=(-1,-1,+1,polar_vector)
+
+Typed Maxwell-B comparison over exactly {T, rotation}
+-----------------------------------------------------
+PASS  MAXWELL_B_T_ODD_DEPARTURE
+      b_T is T-even; Maxwell B is T-odd; departure=True
+PASS  DEPARTURE_LOCALIZED_TO_T
+      rotation=axial agrees; disagreement={time_reversal}
+
+Active-drain tau_d time-arrow propagation
+-----------------------------------------
+PASS  ACTIVE_DRAIN_TIME_ARROW_REQUIRED
+      tau_d(-1)->q_T(-1)->J_T(+1)->u_T(+1)->b_T(+1)
+      passive T-even throat: no O(V) moving row
+PASS  DEPARTURE_SELF_CONSISTENT
+      curl-path T == tau-chain T; {time_reversal} disjoint {sign,magnitude}
+      separate ablations: path={False,True}; R72-axis injection={True,False}
+
+Build-global structural, local-inventory, and unit firewalls
+------------------------------------------------------------
+PASS  TARGET_BLINDNESS
+      held-symbol plus core-DownValues graph; no source text scan
+PASS  DUAL_ENGINE_TERMS
+      local terms=derived b_T,Maxwell B,departure,T-axis,active-drain chain,verdict
+PASS  UNITS_RESTORED
+      [curl u_T]=L^-1*L=1=[b_T]
+
+Computed verdict re-derivation table
+------------------------------------
+PASS  VERDICT_REDERIVATION
+      production verdict re-derived from b_T/Maxwell parity objects
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      source_manifest=35; cited=2; scoped_out=30; build_global_replaced_by_stronger=3
+      CITED=PARITY_ROTATION,PARITY_TIME_REVERSAL
+      SCOPED_OUT=FIELD_IDENTITY_UNITS,ACTION_KINETIC,ACTION_COUPLING,ACTION_STABILITY,G0_DAMAGE,LEDGER_READY_ROW,SOURCE_TRANSLATION_CONTINUITY,SOURCE_NOT_IMPORTED,SOURCE_BASIS,PARITY_RW,PARITY_PW,BOOST_PROJECTOR,BOOST_GENERAL_VELOCITIES,BOOST_NEXT_ORDER,DIRECT_SOURCE,DIRECT_PROJECTOR,DIRECT_EXCHANGE_SIGN,DIRECT_FALLOFF,DIRECT_VELOCITY_ORDER,ROUTE_INDEPENDENCE,BOOST_COMMON_VELOCITY,COMPARE_COMPUTED,DELTA_RATIO,CONE_RATIO,QMAG_R1,TRUTH_TOTALITY,TRUTH_PRECEDENCE,LANDING_OWNERSHIP,ACTIVE_FLUX_CAVEAT,HOOK_LORENTZ
+      STAGE_NATIVE_AUTHORED=B_T_AXIAL_T_EVEN,MAXWELL_B_T_ODD_DEPARTURE,DEPARTURE_LOCALIZED_TO_T,ACTIVE_DRAIN_TIME_ARROW_REQUIRED,DEPARTURE_SELF_CONSISTENT
+
+VERDICT_TOKEN=B_TIME_REVERSAL_EVEN
+SCOPE_CLASS=CHARACTERIZED-DEPARTURE
+FRAMING=FIRST_CLASS_LOAD_BEARING_NOT_EXACT_MAXWELL
+NOT_A_BUG=TRUE; NOT_R1=TRUE; NEVER_SOFTENED=TRUE
+MAXWELL_COMPARISON_DOMAIN=time_reversal,rotation
+R72_CITED=R1_REQUIRED(electric_bc_selection)
+R72_ORTHOGONAL_AXES=sign,magnitude
+STAGE038_POST_RESOLUTION_TOKEN_REEMITTED=FALSE
+SIBLING_DEPARTURES=NATIVE_P_NO_EMERGENT_GAUSS,FAIL_CAUCHY_STRAY_LONGITUDINAL
+
+TOOTH_COUNT=10
+PASS tally: 10; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached B_TIME_REVERSAL_EVEN

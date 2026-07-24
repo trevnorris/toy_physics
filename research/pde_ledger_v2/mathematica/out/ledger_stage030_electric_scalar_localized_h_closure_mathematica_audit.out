@@ -1,0 +1,53 @@
+
+=====================================================================
+ledger_stage030_electric_scalar_localized_h_closure Mathematica audit
+=====================================================================
+
+Coupled (u_L,h) kernel via Wolfram positive-definiteness and spectrum
+---------------------------------------------------------------------
+PASS  PASS_STABILITY
+PASS  PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS
+      native kernel route: PositiveDefiniteMatrixQ / CharacteristicPolynomial / Eigenvalues
+
+Integrated zero-mode projection and reduction relations
+-------------------------------------------------------
+PASS  PASS_ZERO_MODE_NORM
+PASS  PASS_NORMALIZED_ZERO_MODE_PROJECTION
+PASS  PASS_PHYSICAL_H_NORM
+PASS  PASS_REDUCED_H_INERTIA
+PASS  PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY
+PASS  PASS_REDUCED_SPEED_PRESERVATION
+PASS  PASS_REDUCED_H_STIFFNESS
+      Integrate route: N0*=160/3, M4*=K4*=3/160, M_h*=K_h*=c_E*=1
+
+Localized parent H via operator action, DSolve, and Limit
+---------------------------------------------------------
+PASS  PASS_TRANSVERSE_FACTORIZATION
+      O_perp=A^dagger A>=0 with A=d/dw+2 tanh(w/ell)/ell
+PASS  PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE
+PASS  PASS_UNIQUE_NORMALIZABLE_KERNEL
+      DSolve gives one integration constant and ker(A)=span{f0}
+PASS  PASS_POSITIVE_CONTINUUM_GAP
+      unique normalizable zero mode lies below continuum threshold 4/ell^2>0
+
+Reduced masslessness and action-Hessian symmetry
+------------------------------------------------
+PASS  PASS_REDUCED_H_MASSLESSNESS
+PASS  PASS_CONSERVATIVE_HESSIAN_SYMMETRY
+
+Units-restored electric-scalar dimensional firewall [L,T,M]
+-----------------------------------------------------------
+PASS  PASS_DIMENSIONAL_HOMOGENEITY
+      checked terms={H_kin,H_grad,H_pot,u_kin,u_stiff,h_kin,h_stiff,mix}
+
+Scope and verdict
+-----------------
+SCOPE: static algebraic prerequisites of the charge electric-scalar sector only.
+  DEFERRED: mouth SOURCE mechanism -> stage031.
+  EXCLUDED: assembled one-body/two-body/far-field claims -> Part VII.
+  OUT-OF-SCOPE / UNDISCHARGED CROSS-SECTOR G0 PREDICATE (Part VII de-dup obligation):
+    planar-wall factorization; bulk U/Fourier/phase predicates; drain kernel/controllers.
+VERDICT_TOKEN: ELECTRIC_SCALAR_CLOSURE_STATIC
+
+PASS tally: 16; FAIL tally: 0
+OVERALL PASS: Mathematica verified stage030 electric-scalar localized-H static closure

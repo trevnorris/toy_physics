@@ -44,12 +44,30 @@ The orchestrator (Claude) must NOT populate manifests inline — that absorbs ev
   (`engine: sympy`, actually re-run by the checker) + the `.wl` as a digest-pinned
   companion pointer (as stage030 does). So the ≤2 Mathematica-seat cap does NOT bind
   extraction → fanout runs at ~5.
-- ⚠ FACT: there are **44 `.wl`, 0 `.out`** — the assumed saved-Mathematica-output does
-  NOT exist on disk. DECISION (user, pending): (a) cite the `.wl` digest only [cap ~5,
-  simplest, matches stage030]; or (b) a ONE-TIME ≤2-seat-capped batch
-  (`math -script X.wl > X.out` ×44, ~1h Mathematica) to produce durable, digest-pinnable
-  saved dual-engine evidence [stronger; realizes the original intent; NOT blocking].
-  The ≤2 cap binds ONLY if we run (b).
+- ✅ RESOLVED (2026-07-24): the user chose **(b)** and it's DONE — a 2-seat-capped batch
+  (`_scratch/run_math_batch.sh`) re-ran all 44 `.wl` → `mathematica/out/*.out`, committed
+  `7f6d9481` (436K; all 43 stage audits `OVERALL PASS`, midway `CONSISTENT`, zero errors).
+  These are the pinnable dual-engine evidence. **Follow-on (fold into #27 evidence pass):**
+  update the manifests to CITE the `.out` (path + sha256 digest) alongside the sympy audit;
+  a stage's Mathematica leg is then trusted from the saved `.out` while its `.wl` digest is
+  unchanged. (`.out` are un-ignored via a `.gitignore` negation; the repo `*.out` rule is
+  for LaTeX artifacts.)
+
+## Export-completeness (RECOMMENDATION banked 2026-07-24 — awaiting user confirm)
+The pilot's systematic under-export (031 didn't export `S_gg` → 032 fell to opaque `C_V`;
+030 lacked `O_perp` → had to be added) is a CURATION bug: extractors treated `exports` as
+a highlight reel, but downstream cites intermediate results + quantity definitions, not just
+headlines. **RECOMMENDED FIX — make it mechanical, not editorial: a stage exports EVERY
+operative claim AND every ownership (`declare_*`) claim; only retired/superseded/departed
+claims stay unexported.** Rationale: in a derivation ledger every result is legitimately
+citable (an intermediate lemma is exactly what a downstream stage should cite rather than
+re-derive); it eliminates the whole under-export failure class deterministically on the first
+pass (vs a brittle demand-driven reconciliation pass); export-list size is free; and the
+`NON_EXPORTED_CLAIM` guard survives where it matters (citing a RETIRED/departed claim is still
+a real error → still caught). Lands as: (1) protocol rule-7 clarification ("export EVERY
+operative + ownership claim; only retired/departed stay internal"); (2) retroactive complete
+re-export of 030/031/032 in #27 → 031 exports `S_gg` → 032 drops the opaque `C_V`; (3) fanout
+default so extractors export-complete from the start (zero under-export stops).
 
 ## Sequencing (do NOT reorder)
 1. **Pilot FIRST** (030/031/032/006/043 + one real 030→031→032 C7 mutation) — shakes out

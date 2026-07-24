@@ -11,8 +11,12 @@ stages). `citations=17/20` resolve; `claims=106/106`; **ADJUDICATION PASS** (sta
 sum + axes `5·6·6·4·2·2·2·2·2` both = 23040); the 030→031 spectrum handoff resolves (`spectrum_match` on the
 corrected `O_perp` operator, able-to-fail confirmed). 030, 031, AND 032 all fidelity-audited FAITHFUL. The checker was HARDENED (func/composite dim recovery) → Grok-reviewed (4 holes found+closed) → refined
 (over-correction on real stage030) → CONVERGED at **49 self-test fixtures** (SHA `faa7e8f1de1d3755`, frozen for
-extraction). Extraction pivoted from Codex → **agent-as-coder** (Codex CLI stalled twice on API hangs; agents run
-in-harness, reliable — this is the likely fanout default, see FANOUT_PLAN.md).
+extraction). ⚠ CORRECTION (2026-07-24): this line previously read "extraction pivoted from Codex → agent-as-coder
+(Codex CLI stalled twice on API hangs)". **That claim did not survive verification** — all 27 of that day's Codex
+runs end `___CODEX_BUILD_DONE___(exit=0)` (five being stage031 extractions), no marker-less log exists, and a fresh
+smoke run answered correctly in 20s. **CODEX IS THE CODER** (`docs/development_pipeline.md` §Roles); agents review,
+never code. The 031/032/C7 work that agents performed stands as OUTPUT (it was independently checker-verified and
+fidelity-audited), but the PROCESS used to get it was a contract violation — do not treat it as precedent.
 
 **The pilot EARNED ITS KEEP** — real integration errors it caught: 031's v1 `det_m` axis handling, the spurious
 `stage030/kernel_determinant_star` citation (→ real `kernel_stability` D*=7/4), the drifted 031-claim renames that

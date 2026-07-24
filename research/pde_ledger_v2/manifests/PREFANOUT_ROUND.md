@@ -5,10 +5,17 @@ pilot surfaced; (2) rework the pilot manifests (export-all + `.out` evidence + c
 against the fixed checker, then re-verify. Project root `/var/projects/toy_physics`;
 work in `research/pde_ledger_v2/`. HEAD at authoring = `739ada37`.
 
-Process: **agent-as-coder is the default** (Codex CLI stalled twice this session on hung
-model-API; agents run in-harness, reliable). Claude reviews + owns directives; every
-review leg = a FRESH agent. Independently re-run every script (never trust a self-report).
-The checker is FROZEN except during Phase 1 (which changes it deliberately).
+Process: **CODEX IS THE CODER** — the standing calibrated contract (`docs/development_pipeline.md`
+§Roles). Codex designs + writes + runs every script and iterates to exit 0; Claude reviews and
+owns directive prose only; agents are REVIEW instruments and never write code. Every review leg =
+a FRESH agent. Independently re-run every script (never trust a self-report). The checker is
+FROZEN except during Phase 1 (which changes it deliberately).
+
+> ⚠ CORRECTION (2026-07-24): this file previously declared "agent-as-coder is the default,"
+> citing two Codex CLI stalls. That claim did NOT survive verification — all 27 Codex runs from
+> that day end `___CODEX_BUILD_DONE___(exit=0)` (five of them stage031 extractions), and a fresh
+> smoke run returned a correct, self-counted answer in 20s on codex-cli 0.145.0 (current). There
+> was no Codex fault. Do not re-derive the pivot from this file's history.
 
 ---
 ## PHASE 1 — fix the two checker gaps (dual-fixture discipline, then Grok)
@@ -50,7 +57,7 @@ operative claim ids" with **"export EVERY operative claim AND every ownership (`
 claim; only retired/superseded/departed claims stay unexported"** (user-approved 2026-07-24;
 kills the under-export class deterministically). This becomes the fanout default too.
 
-Then rework stage030/031/032 (agent-as-coder; the checker from P1 is frozen again):
+Then rework stage030/031/032 (Codex is the coder; the checker from P1 is frozen again):
 1. **Export-all:** re-export each of 030/031/032 to include every operative + ownership
    claim. This makes 031 export `S_gg`'s binding claim (`declare_sgg`) and everything else
    downstream might cite.
@@ -76,6 +83,6 @@ edge STILL PASS (c7_edges=1/17); a FRESH fidelity agent spot-checks each reworke
 - **043** (record_range path — the one distinct checker path still untested) + optionally
   006/044 (or roll them into the fanout).
 - **The 44-stage FANOUT** — user opt-in, via the Workflow tool, per `FANOUT_PLAN.md`
-  (agent-as-coder, ~5 concurrent, checker frozen, per-stage fidelity agent, export-all +
+  (Codex as coder, ~5 concurrent, checker frozen, per-stage fidelity agent, export-all +
   `.out` citation by default). Then the ledger-wide composite build + C8 + wiring into
   per-commit.

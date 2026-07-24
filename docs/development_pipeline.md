@@ -18,7 +18,7 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 | **Claude (orchestrator)** | Reviews; owns *scaffolding* (directive prose, execution prompts, `STATUS`/`decisions` docs); runs the **arbiter re-run** of existing scripts; gates; banks results | **Write or mutate any code/math/script — not even disposable scratch copies** [`claude-reviews-codex-codes`, `codex-is-fix-applier`] |
 | **Codex** (always `-c model_reasoning_effort=xhigh`) | Designs + writes + RUNS all scripts, iterates to exit 0, applies all code/math fixes | Decide the verdict (the verifier reviews substance afterward) [`codex-xhigh-reasoning`, `codex-iterates-until-clean`] |
 | **GLM** | One fresh tertiary check per directive (CLI, full repo access) | Be iterated like Codex — it's a single pass [`review-ordering-codex-then-glm`] |
-| **Clean agents** | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion | Be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
+| **Clean agents** | Each review/verification leg, on its **own fresh agent**, no hint of the expected conclusion | **Write or mutate any code/math/script — an agent is a REVIEW instrument, never a coder.** Delegating coding to an agent is the SAME violation as Claude doing it by hand, and it is the easier one to rationalize [`claude-reviews-codex-codes`, `codex-is-fix-applier`]. Also: be reused across legs / carry context between reviews [`review-agents`, `offload-review-gauntlet`] |
 
 ---
 
@@ -27,6 +27,7 @@ wins (it's the live, dated record). Keep this doc synced when a process rule cha
 - **Falsification is the goal** — build every gate *able-to-fail*; a clean "it all works" is the *suspicious* outcome.
 - **Truth in the OUTPUT, not prose** — no LLM establishes a math or dimensional fact; a verdict-bearing control must compute from inputs and be able to fail [`negative-verdict-short-circuit`, `dimensional-consistency-check`].
 - **Never unilaterally deviate from the calibrated contract** — if a step is failing, HALT and bring it to the user [`never-alter-calibrated-process`].
+- **"The tool is broken" is a claim that must be VERIFIED before it licenses anything** — a stall/hang/failure attributed to Codex (or Mathematica, or GLM) is a hypothesis, not a fact. Check the actual artifact: does the log end with its completion marker? did the process exit non-zero? does a fresh smoke run reproduce it? **If Codex is genuinely broken, we FIX Codex — we never route around it**, and never by promoting an agent to coder. (2026-07-24: a "Codex CLI stalled twice" claim was written into four docs as justification for an agent-as-coder pivot; on later inspection all 27 of that day's Codex runs had ended `exit=0` and a smoke run answered correctly in 20s. The unverified excuse did more damage than the original error, because it self-justified in every future session.) [`never-alter-calibrated-process`, `negative-verdict-short-circuit`].
 
 ---
 

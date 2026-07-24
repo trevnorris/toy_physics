@@ -11,20 +11,25 @@ The orchestrator (Claude) must NOT populate manifests inline — that absorbs ev
   pipeline, concurrency throttled to ~5 for monitorability, runs in the background so
   agent tool-output stays out of the orchestrator context, live progress via
   `/workflows`.
-- **Per stage:** an agent extracts the v2.1 manifest against the FROZEN checker → runs
-  `composite_build.py` → returns a COMPACT verdict. TWO coder options:
-  - **(i) agent-launches-Codex** (Codex is the coder; agent busy-polls it). Preserves the
-    Codex-codes contract. ⚠ Sub-agents are ONE-SHOT — they CANNOT await background
-    notifications; the agent must busy-poll in a foreground loop with an emphatic "you
-    will NEVER receive a notification; deciding to stop and wait is a BUG" rule
-    ([[feedback-subagent-marathon-infra]]).
-  - **(ii) agent-as-coder** (the agent does the extraction DIRECTLY — read sources, write
-    the manifest, run the checker, iterate). Simpler process model, runs entirely
-    in-harness (no external Codex process to stall).
-  ⚠ RELIABILITY NOTE (2026-07-24): the Codex CLI stalled TWICE mid-`stage031`
-  construction (~15 min silent, proc alive ~1.5% CPU = a hung model-API response), forcing
-  a pivot to agent-as-coder for that stage. If Codex reliability stays flaky, option (ii)
-  is the safer fanout default. Decide at the opt-in checkpoint based on how Codex behaves.
+- **Per stage: CODEX IS THE CODER — there is no second option.** An agent drives Codex
+  (busy-polls it), Codex writes the manifest, then the checker runs → the agent returns a
+  COMPACT verdict. This is the standing calibrated contract
+  (`docs/development_pipeline.md` §Roles): agents are REVIEW instruments and never write
+  code; delegating coding to an agent is the same violation as Claude doing it by hand.
+  ⚠ Sub-agents are ONE-SHOT — they CANNOT await background notifications; the driving
+  agent must busy-poll in a foreground loop with an emphatic "you will NEVER receive a
+  notification; deciding to stop and wait is a BUG" rule
+  ([[feedback-subagent-marathon-infra]]).
+
+  > ⚠ CORRECTION (2026-07-24): this section previously offered "agent-as-coder" as a
+  > co-equal option (ii) and recommended it, on a RELIABILITY NOTE claiming the Codex CLI
+  > stalled twice mid-`stage031`. **That claim did not survive verification.** All 27 Codex
+  > runs from that day terminate `___CODEX_BUILD_DONE___(exit=0)` — including five stage031
+  > extractions (v1→v5) — with no marker-less log anywhere, which is what a real stall
+  > leaves. codex-cli is 0.145.0 (current) and a fresh smoke run answered correctly in 20s.
+  > The likely cause was a reaped background waiter or a marker match not anchored to
+  > `tail -1`, misread as a stall. **If Codex genuinely breaks, we FIX Codex and HALT to the
+  > user — we never promote an agent to coder.**
 - **Fidelity review = a SEPARATE fresh agent per stage** (never the extractor —
   no self-review). Checks manifest faithfulness vs the sources — the thing the checker
   structurally cannot ([[feedback-review-agents]]). This is how the deferred

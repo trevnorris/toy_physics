@@ -1,0 +1,61 @@
+ledger_stage040_cone_lock_readjudication Mathematica audit
+ROUTE=Resolve Exists/ForAll + FindInstance + CAD RegionDimension[ImplicitRegion] + FullSimplify/Solve
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+
+Computed production inventory and algebra
+-----------------------------------------
+PASS  ROUTE_A_GRADE
+PASS  ROUTE_B_STATUS
+PASS  FREEDOM_STATUS
+PASS  SECTOR_SAT
+PASS  LOCK_SAT
+PASS  PROVENANCE_LOCK_A
+PASS  LOCK_A_WITNESS_VALUE
+PASS  PROVENANCE_LOCK_B
+PASS  LOCK_B_WITNESS_VALUE
+PASS  DELTA_R
+PASS  PRODUCTION_VERDICT
+
+Computed field overlay and OPEN_110
+-----------------------------------
+PASS  FIELD_OVERLAY_DET_ON_CONE
+PASS  FIELD_OVERLAY_POLES
+PASS  OPEN_110_CARRY
+
+Earned/calibrated partition and freedom conditionality
+------------------------------------------------------
+PASS  EARNED_VS_CALIBRATED_PARTITION
+PASS  CONDITIONALITY_FREEDOM
+
+Individually computed falsifiability controls
+---------------------------------------------
+PASS  CTRL_WELL_POSED
+PASS  CTRL_ABSENT
+PASS  CTRL_PARTIAL_INVENTORY
+PASS  CTRL_FORCED_LOCK
+PASS  CTRL_A_ONLY_PARTIAL
+PASS  CTRL_B_ONLY_PARTIAL
+PASS  CTRL_OVER_CONSTRAINED
+PASS  CTRL_FREEDOM_TIE
+
+Verdict table, dimensions, local inventory, and manifest
+--------------------------------------------------------
+PASS  VERDICT_REDERIVATION
+PASS  DIMENSION_HOMOGENEITY
+PASS  DUAL_ENGINE_TERMS
+PASS  SOURCE_TO_STAGE_MANIFEST
+
+VERDICT=CONE_LOCK_CALIBRATED
+INTERPRETATION=CALIBRATED/UNCOMMITTED; NO committed cone lock; both locks are available calibration choices, not earned facts
+DIMENSION=10->8; delta_r=2
+LOCK_PROVENANCE=L_A:WITNESSED@5;L_B:WITNESSED@7
+R_CONE=OPEN_R71; witness=9/2; c_E=c_gamma is NOT settled
+OPEN_110=OFF_CONE_under_AB_proportional_to_C_hu_squared_OPEN_110
+CONDITIONAL_PROVENANCE=FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu} [stage041 citation only];FREEDOM_SIM_DEFERRED{rho_br}; no stage041 cross-read
+ROUTE_A_DEBT=REGISTERED_DEFERRED nonlinear throat solve missing {R1,R2,R3,R4,R5}
+SOURCE_PREDICATE_TOTAL=22
+EXECUTABLE_TOOTH_TOTAL=28
+
+TOOTH_COUNT=28
+PASS tally: 28; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached CONE_LOCK_CALIBRATED

@@ -1,0 +1,193 @@
+
+=========================================================
+ledger_stage006_two_phase_chiB_ontology Mathematica audit
+=========================================================
+
+Pinned postulated modeling choices P1-P13
+-----------------------------------------
+  P1  POSTULATED: n(X,t)=total conserved 4D constituent number density [n]=L^-4; KINETIC_MASS_FACTOR_PINNED: kinetic term is 1/2*m_GNLS*n*|u|^2.
+  P2  POSTULATED: chi_B dimensionless in [0,1]; chi_B=1 brane-ordered, chi_B=0 bulk-like; n_B=chi_B*n.
+  P3  POSTULATED: f_B(chi_B)=a_B*chi_B^2*(1-chi_B)^2, a_B>0, minima {0,1}; new double-well input because cited U(rho) is single-well.
+  P4  POSTULATED: SAME_DENSITY_DEGENERACY_POSTULATED: f_B is n-independent and f_B(n,0)=f_B(n,1)=0.
+  P5  POSTULATED: gradient/interface term (kappa_B/2)*|grad_4 chi_B|^2 with [kappa_B]=M T^-2.
+  P6  POSTULATED: shear gate chi_B*f_shear with displacement u_d distinct from velocity u; brane mu_R projection is dim-consistent only here.
+  P7  POSTULATED: chi_B is THE wall order parameter: a postulated independent scalar field, NOT currently built as |P_parallel|^2. Decision 16 retires alpha_aniso and the carried P field. FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ remains named high-risk/Part-VII-adjacent and requires a NEW T0 freeze; obsolete as a carried route, not foreclosed.
+  P8  POSTULATED ADJUNCT: D_t chi_B=-M_chi*mu_chi+Gamma_B; HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED: P_order=int mu_chi*D_t chi_B d4X.
+  P9  POSTULATED DEFAULT: J_chi=0 default; J_chi!=0 deferred with dim row only.
+  P10 CONVENTION: recovery target is frozen old-ledger S_leak with j^w=n*u^w and unit-normalized W, [W]=L^-1.
+  P11 POSTULATED GLOBAL: global returns R_0=-M_0 and R_1=-D_1 printed here, NOT locally asserted.
+  P12 POSTULATED ONTOLOGY: throat=phase-conversion admittance/outlet driven by stress/mu gradients, NOT pairwise suction; Gate-L delta w=u_w DEFERRED.
+  P13 CONVENTION: free-energy +1/2*kappa_phase*(grad theta)^2 maps to Lagrangian K_theta=-kappa_phase; Maxwell needs K_theta=C_J^2/rho_br>0.
+
+Consumed citations and exact-value integrity checks
+---------------------------------------------------
+  CITED ledger_stage004 (I-1): {L,T,M}; [n]=[rho0]=L^-4; [m_GNLS]=M; [K]=M L^18 T^-2; [hbar]=M L^2 T^-1; U(rho)=(K/4)*rho^5 single-well.
+  CITED ledger_stage005 (I-2): c_s0^2=5*K*rho0^4/m_GNLS.
+  CITED ledger_stage003 (III): c_gamma^2=mu_R/rho_br; C_J=-J*rho_B0; B_eff=rho_B0^2/chi_c; second-class classification rule.
+PASS  CITED exact-value check C_J+J*rho_B0=0
+PASS  CITED exact-value check B_eff-rho_B0^2/chi_c=0
+PASS  CITED exact-value check c_s0^2-5*K*rho0^4/m_GNLS=0
+PASS  CITED stage004 [n]=L^-4
+PASS  CITED stage004 [m_GNLS]=M
+PASS  CITED stage004 [K]=M L^18 T^-2
+PASS  CITED stage004 [hbar]=M L^2 T^-1
+PASS  CITED stage005 [c_s0^2]=L^2 T^-2
+PASS  CITED stage003 [mu_R]=M L^-1 T^-2
+PASS  CITED stage003 [rho_br]=M L^-3
+PASS  CITED stage003 [rho_B0]=M L^-3
+PASS  CITED stage003 [J]=L^2 T^-1
+PASS  CITED stage003 [C_J]=M L^-1 T^-1
+PASS  CITED stage003 [K_theta]=M L T^-2
+PASS  CITED stage003 [chi_c]=M L^-5 T^2
+PASS  CITED stage003 [B]=M L^-1 T^-2
+PASS  CITED stage003 [c_gamma^2]=L^2 T^-2
+
+Leg A1 dimensional audit: OPERATIVE post-Decision-16 action and adjunct rows
+----------------------------------------------------------------------------
+PASS  POSTULATED P1 kinetic 1/2*m_GNLS*n*|u|^2 has 4D free-energy-density dim M L^-2 T^-2
+PASS  CITED I-1 U(n)=(K/4)*n^5 has 4D free-energy-density dim M L^-2 T^-2
+PASS  POSTULATED P3 f_B=a_B*chi_B^2*(1-chi_B)^2 has 4D free-energy-density dim M L^-2 T^-2
+PASS  POSTULATED P5 (kappa_B/2)*|grad_4 chi_B|^2 has 4D free-energy-density dim M L^-2 T^-2
+PASS  POSTULATED P6 chi_B*f_shear has 4D free-energy-density dim M L^-2 T^-2
+PASS  DEFERRED_PLACEHOLDER f_throat has 4D free-energy-density dim M L^-2 T^-2
+PASS  DEFERRED_PLACEHOLDER f_mix has 4D free-energy-density dim M L^-2 T^-2
+PASS  POSTULATED operative F integrand homogeneity
+PASS  Decision-16 operative A1 surface excludes retired symbol alpha_aniso
+  RETIRED-HISTORICAL (not in operative A1): alpha_aniso*chi_B*(P.w_hat)^2 had [alpha_aniso]=M L^-2 T^-2; retired with P by Decision 16, not by a dimensional defect.
+PASS  RETIRED-HISTORICAL P7 alpha_aniso*chi_B*(P.w_hat)^2 was dimensionally homogeneous
+PASS  Decision-16 A1 tooth: re-inject alpha_aniso term trips operative retired-symbol absence produced required FAIL (residual = 1)
+PASS  Decision-16 baseline operative A1 surface remains alpha_aniso-free after copy mutation
+PASS  POSTULATED balance row [partial_t(chi_B*n)]=L^-4 T^-1
+PASS  POSTULATED balance row [div_4(chi_B*n*u)]=L^-4 T^-1
+PASS  POSTULATED balance row [div_4 J_chi]=L^-4 T^-1
+PASS  POSTULATED balance row [n*Gamma_B]=L^-4 T^-1
+PASS  POSTULATED balance PDE homogeneity implies [Gamma_B]=T^-1
+PASS  POSTULATED ADJUNCT [mu_chi]=M L^-2 T^-2
+PASS  POSTULATED ADJUNCT [M_chi]=L^2 T M^-1
+PASS  POSTULATED ADJUNCT P_order=int mu_chi*D_t chi_B d4X = M L^2 T^-3
+PASS  POSTULATED P12 [M_n]=L^-4 T M^-1
+PASS  POSTULATED P12 J_repair=-M_n*grad(mu) gives L^-3 T^-1
+PASS  CONVENTION P10 [W]=L^-1
+PASS  CONVENTION P10 projected [rho_B]=int W*chi_B*n dw = L^-4
+PASS  CONVENTION P10 [S_leak]=L^-4 T^-1
+PASS  POSTULATED/PENDING P6 int chi_B*mu_R^(4) dw has brane [mu_R]=M L^-1 T^-2
+
+Leg A2 structural-closure identities via formal functions (EARNED)
+------------------------------------------------------------------
+PASS  EARNED advective form D_t chi_B=Gamma_B-(1/n)div J_chi
+PASS  EARNED disorder complement is total minus order residual
+PASS  EARNED order+disorder sum reproduces total conservation with Gamma_B cancelling
+PASS  EARNED order balance is genuinely sourced by n*Gamma_B is nonzero as required (residual = -nfun[x$16545, w$16545, t$16545])
+
+Leg A3 wall admission by DSolve/substitution (EARNED relative to P3/P5)
+-----------------------------------------------------------------------
+PASS  EARNED DSolve logistic profile equals 1/(1+Exp[-w/delta])
+PASS  EARNED kink width solved from kappa_B*chi''=f_B'
+PASS  EARNED kink EL residual vanishes by substitution
+PASS  EARNED sigma_wall exact closed form
+PASS  EARNED [sigma_wall]=M L^-1 T^-2
+
+Leg B1 projected two-source law on independent hyperbolic profile family (EARNED)
+---------------------------------------------------------------------------------
+PASS  EARNED IBP identity hyperbolic family: -int W*Q' = S_flux
+PASS  Leg-B ablation hyperbolic family: flip W' sign breaks IBP identity produced required FAIL (residual = (-8*A$50338)/(15*lambda$50338))
+PASS  EARNED hyperbolic family: W' contribution is not accidentally zero is nonzero as required (residual = (-4*A$50338)/(15*lambda$50338))
+
+Leg B2/B3 recovery reduction and frozen Gaussian anchor (EARNED)
+----------------------------------------------------------------
+PASS  EARNED B2 general chi_B/Gamma_B/J_chi projected order-balance IBP identity
+PASS  EARNED B2 general chi_B profile is live in S_flux is nonzero as required (residual = (-16*n0$83951*u0$83951)/(105*lambda$83951))
+PASS  EARNED B2 general Gamma_B profile is live in S_convert is nonzero as required (residual = (8*n0$83951)/15)
+PASS  EARNED B2 general J_chi^w profile is live in S_flux is nonzero as required (residual = -4/(15*lambda$83951))
+PASS  FROZEN stage_243 S_leak target equals independent closed form on B2 profile
+PASS  EARNED recovery reduction at chi_B=1,Gamma_B=0,J_chi=0 against frozen stage_243 S_leak
+PASS  Leg-B conditionality chi_B=c residual computes to (c-1)*S_leak
+PASS  Leg-B conditionality chi_B=c!=1 leaves (c-1)*S_leak residual is nonzero as required (residual = (-4*(-1 + cConst)*n0$83951*u0$83951)/(15*lambda$83951))
+PASS  Leg-B conditionality Gamma_B residual computes to S_convert integral
+PASS  Leg-B conditionality Gamma_B!=0 leaves computed S_convert residual is nonzero as required (residual = (8*gammaAmp$83951*n0$83951)/15)
+PASS  Leg-B conditionality J_chi^w residual computes to its flux terms
+PASS  Leg-B conditionality J_chi^w!=0 leaves computed flux residual is nonzero as required (residual = (-4*jchiAmp$83951)/(15*lambda$83951))
+PASS  Leg-B ablation corrupt frozen S_leak transcription alone breaks B2 reduction produced required FAIL (residual = (-2*n0$83951*u0$83951)/(15*lambda$83951))
+PASS  Leg-B ablation corrupt general assembly alone breaks B2 reduction produced required FAIL (residual = (2*n0$83951*u0$83951)/(15*lambda$83951))
+PASS  EARNED stage_244 Gaussian one-mode S_leak direct integration
+PASS  Leg-B ablation corrupt Gaussian phi lambda^2 vs lambda^3 mismatches stage_244 produced required FAIL (residual = (E0$83951*(-1 + lambda$83951)*muW$83951*rho0$83951)/(lambda$83951^3*Sqrt[2*Pi]))
+
+Leg C theta-as-Maxwell-phi no-go via longitudinal determinant (OWNED predicates, CONSUMED rule)
+-----------------------------------------------------------------------------------------------
+PASS  OWNED C1 stable kappa_phase>0 gives K_theta=-kappa_phase<0
+PASS  OWNED C1 Maxwell K_theta=C_J^2/rho_br>0
+PASS  OWNED C1 sign-lock predicates are OPPOSITE
+PASS  OWNED C1 [kappa_phase]=[K_theta]=M L T^-2
+PASS  OWNED C2 determinant coefficient for curl-only longitudinal block includes m_theta^2
+PASS  OWNED C2 bracket-equivalent includes mTheta2 algebraically
+PASS  OWNED C2 bracket-equivalent k^2*(J^2*rho_B0^2+kappa_phase*rho_br)/rho_br
+PASS  OWNED C2 provenance branch bracket-equivalent is nonzero is nonzero as required (residual = ksym^2*(kappaPhase + (Jsym^2*rhoB0^2)/rhoBr))
+PASS  OWNED C2 zero locus solved by Solve: K_theta=+J^2*rho_B0^2/rho_br
+PASS  OWNED C2 determinant degeneracy gives same Maxwell locus
+PASS  OWNED C2 determinant mode structure gives finite provenance longitudinal pole
+PASS  OWNED C2 tuned Maxwell fixture determinant coefficient computes to zero
+PASS  CONSUMED classification emits FAIL_CAUCHY_STRAY_LONGITUDINAL on provenance branch
+PASS  CONSUMED classification emits FAIL_C5_LONGITUDINAL_ZERO_MODE when B_eff=0
+PASS  CONSUMED classification emits C5_RESOLVED_MAXWELL_BY_TUNING on tuned fixture
+PASS  OWNED provenance flag is BY_TUNING NOT WITH_PROVENANCE
+PASS  Leg-C detuning K_theta off locus re-fires FAIL_C5_LONGITUDINAL_ZERO_MODE
+PASS  Leg-C detuning B_eff!=0 on locus re-fires FAIL_SECOND_CLASS_NOT_MAXWELL
+PASS  Leg-C detuning m_theta^2!=0 on locus re-fires FAIL_SECOND_CLASS_NOT_MAXWELL
+PASS  Leg-C provenance-flag counterfactual flips BY_TUNING to WITH_PROVENANCE
+PASS  OWNED C3 Lifshitz finite-k minimum k_star^2=-kappa_phase/(2*kappa4)
+PASS  OWNED C3 k_star^2>0 iff kappa_phase<0
+PASS  OWNED C3 kappa_phase>0 gives k_star^2<0
+PASS  CITED pathA_25 k_Rstar^2=40*K*m*rho0^4/hbar^2 has L^-2
+PASS  CONSUMED C4 transverse dispersion from L_T gives omega^2=(mu_R/epsilon)*k^2
+PASS  CONSUMED C4 transverse baseline speed equals consumed c_gamma^2=mu_R/rho_br
+PASS  CONSUMED C4 epsilon!=rho_br fixture shifts transverse speed to mu_R/(2*rho_br)
+PASS  CONSUMED C4 baseline emits PASS_TRANSVERSE_UNDISTURBED
+PASS  CONSUMED C4 epsilon!=rho_br emits FAIL_TRANSVERSE_DISTURBED
+
+Able-to-fail firewall ablations
+-------------------------------
+PASS  Leg-A ablation drop m_GNLS from kinetic term breaks F-density homogeneity produced required FAIL (residual = 1)
+PASS  Leg-A ablation kappa_B*chi_B^2 no-gradient breaks F-density homogeneity produced required FAIL (residual = 4)
+PASS  Leg-A ablation Gamma_B in place of n*Gamma_B breaks balance source dim produced required FAIL (residual = 16)
+PASS  Leg-A ablation handoff P_order=int mu_chi*n*Gamma_B d4X is inhomogeneous produced required FAIL (residual = 16)
+PASS  Consuming ablation B_eff multiply-vs-divide breaks citation integrity produced required FAIL (residual = ((-1 + chiC^2)*rhoB0^2)/chiC)
+PASS  Consuming ablation C_J sign +J*rho_B0 breaks citation integrity produced required FAIL (residual = 2*Jsym*rhoB0)
+PASS  Consuming ablation c_s0^2 coefficient 4 breaks citation integrity produced required FAIL (residual = -((kEOSsym*rho0sym^4)/mGNLSsym))
+PASS  baseline consumed C_J still live after ablations
+PASS  baseline consumed B_eff still live after ablations
+PASS  baseline consumed c_s0^2 still live after ablations
+
+Carried tokens, deferred items, and computed drift
+--------------------------------------------------
+  carried no-go tokens verbatim: FAIL_CAUCHY_STRAY_LONGITUDINAL; FAIL_C5_LONGITUDINAL_ZERO_MODE; C5_RESOLVED_MAXWELL_BY_TUNING (BY_TUNING, not WITH_PROVENANCE).
+  pathA_25 lineage carried: FAIL_LIGHT_STARVED finite-k wall/smectic sign-flip route.
+  SECOND_MEDIUM_DRIFT lineage note: chi_B package is Part-I drift; rho_B0 and chi_c also appear in pathA_41 Part-VI drift trio, cross-reference only.
+  THETA_BRANCH_DEAD_NOT_ADMITTED: theta,J,rho_B0,K_theta/kappa_phase,chi_c,B are not live knobs of this stage.
+  DEFERRED: Gate-L delta w=u_w translation-Goldstone hazard; J_chi!=0; f_throat/f_mix; dynamics adjunct.
+  POSTULATED GLOBAL RETURNS: R_0=-M_0, R_1=-D_1 (not locally asserted).
+PASS  pre-Decision-16 drift enumeration computes six members
+PASS  Decision-16 retired drift complement is exactly {alpha_aniso}
+PASS  operative drift is the set partition pre_D16_DRIFT6 minus {alpha_aniso}
+PASS  COMPUTED operative DRIFT tally has five live chi_B inputs
+PASS  operative DRIFT token is built from computed n
+  pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5).
+  DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}.
+  rung_W:140 pre-D16 reconciliation recorded six; Decision 16 removes only alpha_aniso, leaving the operative five-member chi_B package.
+PASS  Decision-16 drift reinjection fixture computes n=6
+PASS  Decision-16 drift tooth: re-inject alpha_aniso trips operative DRIFT(5) partition produced required FAIL (residual = 4)
+PASS  Decision-16 drift tooth: corrupt computed n before token assembly trips DRIFT(5) equality produced required FAIL (residual = 1)
+PASS  Decision-16 baseline drift partition remains valid after copy mutations
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): CHI_B_ACTION_CLASSIFIED_RECOVERY_VERIFIED  (postulated two-phase chi_B action dimensionally classified; wall admitted; recovery reduction to the frozen S_leak assert-zero; theta-as-phi no-go carried)
+  headline: ACTION_SPECIFIED_CLASSIFIED   (structure; POSTULATED microstructure, all terms labeled)
+  recovery sub-verdict (EARNED rel. to the imposed chi_B split + declared W): RECOVERY_REDUCTION_VERIFIED   (target = frozen stage_243/244 S_leak, incl. the Gaussian one-mode anchor)
+  carried no-go: FAIL_CAUCHY_STRAY_LONGITUDINAL (finite B_eff) / FAIL_C5_LONGITUDINAL_ZERO_MODE (B_eff=0); positive control C5_RESOLVED_MAXWELL_BY_TUNING flagged BY_TUNING NOT WITH_PROVENANCE; the only provenance sign-flip = Lifshitz (pathA_25 wall, killed)
+  drift: pre-D16: DRIFT(6) incl. alpha_aniso -> operative: DRIFT(5) computed {chi_B; a_B; kappa_B; Gamma_B; gating structure}; THETA_BRANCH_DEAD_NOT_ADMITTED; cross-ref rho_B0, chi_c in pathA_41 Part-VI drift
+  consumed: ledger_stage004 {L,T,M}+U(rho) single-well; ledger_stage005 c_s0^2=5*K*rho0^4/m_GNLS; ledger_stage003 c_gamma^2=mu_R/rho_br, C_J=-J*rho_B0, B_eff=rho_B0^2/chi_c, second-class classification rule
+  labeled postulates: P1..P13 (incl. KINETIC_MASS_FACTOR_PINNED, SAME_DENSITY_DEGENERACY_POSTULATED, Decision-16-retired historical alpha_aniso, HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED, global-return R_0=-M_0,R_1=-D_1 NOT locally asserted, throat=phase-conversion ontology)
+  P7 live reframe: chi_B is THE postulated wall OP, not currently |P_parallel|^2; FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ is high-risk/Part-VII-adjacent and requires a NEW T0 freeze (not foreclosed)
+  honest scope: does NOT earn light; dynamics/energy ledger = labeled adjunct; wall-translation Goldstone + J_chi + f_throat/f_mix DEFERRED
+
+PASS tally: 119; FAIL tally: 0
+OVERALL PASS: Mathematica classified ledger_stage006 chi_B ontology and recovery/no-go checks exactly

@@ -1,0 +1,191 @@
+
+==================================================================
+ledger_stage013_breathing_harmonic_mk_projection Mathematica audit
+==================================================================
+
+Wolfram arity self-check
+------------------------
+PASS  arity makeIntegrands[3 args] returns M/K integrands
+PASS  arity projectFromProfiles[3 args] returns projected matrices
+PASS  arity packetResiduals[assoc] returns dual sites
+PASS  arity computeVerdict[1 arg] returns BREATHING_CALIBRATED
+PASS  arity buildDimensionalBlock[projection] returns mutation_fires
+PASS  arity degenerateMassGuard[2 args] catches alpha_a=0
+
+Operator, ell=0 restriction, collective BCs, and harmonic profiles
+------------------------------------------------------------------
+  CONSUMED/POSTULATED operator: Lop[alpha] = muEta^(-1)*(-d_w(Tw*d_w alpha) + K_eta*alpha) on w in [0,L0].
+  Alias for projection only: K_eta = Tw*beta^2; beta = sqrt(K_eta/Tw) is the cited wall-packet relation.
+  Notation guard: domain length is L0; operator applications are named Lop_alpha_a and Lop_alpha_L.
+  ell=0 restriction: Y00=1/(2*sqrt(pi)); int_S2 Y00^2 dOmega=1; eta(w,t)=eta_00(w,t)*Y00; T_Omega drops because ell*(ell+1)=0.
+  Inner product: <f,g>_mu = 4*pi*int_0^L0 muEta*f*g dw.
+  IMPOSED collective BCs: alpha_a(0)=1, alpha_a(L0)=0; alpha_L(0)=0, alpha_L(L0)=rAL.
+  General solution form = C1*Sinh[beta*w] + C2*Cosh[beta*w].
+  DSolveValue alpha_a = Csch[beta*L0]*Sinh[beta*(L0 - w)]
+  DSolveValue alpha_L = rAL*Csch[beta*L0]*Sinh[beta*w]
+PASS  alpha_a equals reported harmonic-lift profile
+PASS  alpha_L equals reported harmonic-lift profile
+PASS  Lop_alpha_a harmonic residual is zero
+PASS  Lop_alpha_L harmonic residual is zero
+PASS  BC alpha_a(0)=1
+PASS  BC alpha_a(L0)=0
+PASS  BC alpha_L(0)=0
+PASS  BC alpha_L(L0)=rAL
+
+M_AB/K_AB by native int-dw operator projection
+----------------------------------------------
+  M integrands:
+    aa: muEta*Csch[beta*L0]^2*Sinh[beta*(L0 - w)]^2
+    aL: muEta*rAL*Csch[beta*L0]^2*Sinh[beta*(L0 - w)]*Sinh[beta*w]
+    LL: muEta*rAL^2*Csch[beta*L0]^2*Sinh[beta*w]^2
+  K integrands:
+    aa: beta^2*Tw*Cosh[2*beta*(L0 - w)]*Csch[beta*L0]^2
+    aL: -(beta^2*rAL*Tw*Cosh[beta*(L0 - 2*w)]*Csch[beta*L0]^2)
+    LL: beta^2*rAL^2*Tw*Cosh[2*beta*w]*Csch[beta*L0]^2
+  M_AB = <|"aa" -> (muEta*Pi*Csch[beta*L0]^2*(-2*beta*L0 + Sinh[2*beta*L0]))/beta, "aL" -> (2*muEta*Pi*rAL*(-1 + beta*L0*Coth[beta*L0])*Csch[beta*L0])/beta, "LL" -> (muEta*Pi*rAL^2*Csch[beta*L0]^2*(-2*beta*L0 + Sinh[2*beta*L0]))/beta|>
+  K_AB = <|"aa" -> 4*beta*Pi*Tw*Coth[beta*L0], "aL" -> -4*beta*Pi*rAL*Tw*Csch[beta*L0], "LL" -> 4*beta*Pi*rAL^2*Tw*Coth[beta*L0]|>
+  det(M) = (-4*muEta^2*Pi^2*rAL^2*(-1 + beta^2*L0^2*Csch[beta*L0]^2))/beta^2
+  det(K) = 16*beta^2*Pi^2*rAL^2*Tw^2
+PASS  M_aa matches report closed form
+PASS  K_aa matches report closed form
+PASS  M_aL matches report closed form
+PASS  K_aL matches report closed form
+PASS  M_LL matches report closed form
+PASS  K_LL matches report closed form
+PASS  det(M) matches report closed form
+PASS  det(K) matches 16*pi^2*Tw^2*beta^2*rAL^2
+PASS  independent full-integrand re-integration residual
+PASS  independent full-integrand re-integration residual
+PASS  independent full-integrand re-integration residual
+PASS  independent full-integrand re-integration residual
+PASS  independent full-integrand re-integration residual
+PASS  independent full-integrand re-integration residual
+PASS  independent re-integration comparison is not a self-identity stamp
+  free-symbol names in M/K = {beta, L0, muEta, rAL, Tw}
+  allowed names = {L0, beta, muEta, Tw, rAL}
+  forbidden_fit_flags = <|K_from_static_hessian -> False, M_or_K_typed_from_legacy_values -> False, full_matrix_fit -> False|>
+PASS  M/K free-symbol names are a subset of allowed projection names
+PASS  forbidden_fit_flags[K_from_static_hessian] computed false
+PASS  forbidden_fit_flags[M_or_K_typed_from_legacy_values] computed false
+PASS  forbidden_fit_flags[full_matrix_fit] computed false
+  K_AB_provenance = "operator_projection_not_static_Hessian"
+
+Dynamical EOM LHS only
+----------------------
+  Q = (delta_a, delta_L); Qddot = (delta_a_ddot, delta_L_ddot).
+  EOM structure: M_AB*Qddot^B + K_AB*Q^B = F_A^(HF).
+  RHS placeholders: F_a_HF, F_L_HF are deferred to stage 015; no Hellmann-Feynman force is computed here.
+  row a LHS = (2*Pi*Csch[beta*L0]*(-(rAL*(deltaLddot*muEta + 2*beta^2*deltaL*Tw)) + (deltaAddot*muEta + 2*beta^2*deltaA*Tw)*Cosh[beta*L0] + beta*L0*muEta*(-deltaAddot + deltaLddot*rAL*Cosh[beta*L0])*Csch[beta*L0]))/beta = F_a_HF
+  row L LHS = (2*Pi*rAL*Csch[beta*L0]*(-(deltaAddot*muEta) - 2*beta^2*deltaA*Tw + rAL*(deltaLddot*muEta + 2*beta^2*deltaL*Tw)*Cosh[beta*L0] + beta*L0*muEta*(-(deltaLddot*rAL) + deltaAddot*Cosh[beta*L0])*Csch[beta*L0]))/beta = F_L_HF
+PASS  EOM has exactly two LHS rows
+PASS  EOM RHS is symbolic placeholder only
+
+013 dimensional legs and corrupt-[Tw] probe
+-------------------------------------------
+  dimension order: (L,M,T)
+  sourced dims: L0=(1,0,0), beta=(-1,0,0), muEta=(-1,1,0), Tw=(1,1,-2), rAL=(0,0,0)
+  derived dim: K_eta=Tw*beta^2 = (-1,1,-2)
+  [M_AB] entries = <|aa -> M, aL -> M, LL -> M|>
+  [K_AB] entries = <|aa -> M T^-2, aL -> M T^-2, LL -> M T^-2|>
+  [M_AB] shared = {0, 1, 0}; [K_AB] shared = {0, 1, -2}; [K/M] = {0, 0, -2}
+PASS  M_AB shared dimension is M
+PASS  K_AB shared dimension is M*T^-2
+PASS  K/M ratio dimension is T^-2
+PASS  dimensional_ok for 013 M/K legs
+  corrupt [Tw]+(1,0,0) gives [Tw] = {2, 1, -2}
+  corrupt [K_AB] shared = {1, 1, -2}; corrupt [K/M] = {1, 0, -2}
+PASS  corrupt-[Tw] shifts K_AB away from M*T^-2 produced required FAIL (residual = 1)
+PASS  corrupt-[Tw] shifts K/M away from T^-2 produced required FAIL (residual = 1)
+PASS  corrupt-[Tw] mutation_fires=True
+PASS  self-ablation with mutation gives BREATHING_FAIL_DIMENSIONAL
+PASS  self-ablation without mutation gives BREATHING_CALIBRATED
+PASS  self-ablation fail_suppressed=True
+
+Consumed Gate-1 frozen packet, dual-site integrity
+--------------------------------------------------
+  CONSUMED packet anchor: (L0,Tw,K_eta,beta)=(37/20,1,1,1).
+  Site A constitutive: betaCited - Sqrt[kEtaCited/TwCited] = 0.
+  Site B geometric/branch: betaCited*L0Cited - 37/20 = 0.
+  Anti-tautology: kEtaCited is an independent cited datum for the guard, not the local alias kEta=Tw*beta^2.
+PASS  consumed packet site_A_constitutive
+PASS  consumed packet site_B_branch
+PASS  consumed packet anchor_L0
+PASS  consumed packet anchor_Tw
+PASS  consumed packet anchor_kEta
+PASS  consumed packet anchor_beta
+PASS  consumed packet clean baseline passes both sites and frozen anchor
+PASS  K_eta_cited-only corruption breaks site A: guard is non-vacuous produced required FAIL (residual = 1 - Sqrt[2])
+PASS  Tw_cited-only corruption breaks site A produced required FAIL (residual = 1 - 1/Sqrt[2])
+PASS  L0_cited-only corruption breaks site B produced required FAIL (residual = 1/20)
+PASS  branch-anchor corruption breaks site B produced required FAIL (residual = -1/20)
+
+Native degenerate M_det -> 0 guard slice
+----------------------------------------
+  Degenerate copy: alpha_a -> 0; alpha_L unchanged; M recomputed by the same int-dw projection.
+  degenerate M_det = 0
+PASS  degenerate alpha_a=0 recompute gives M_det=0
+PASS  native degenerate non-degeneracy test catches M_det==0
+PASS  baseline M_det is not identically zero is nonzero as required (residual = (-4*muEta^2*Pi^2*rAL^2*(-1 + beta^2*L0^2*Csch[beta*L0]^2))/beta^2)
+PASS  tooth 6 bypassing native M_det==0 guard leaves degenerate case uncaught produced required FAIL (residual = 1)
+
+013 scoped landing and joint composition
+----------------------------------------
+  013 scoped verdict = BREATHING_CALIBRATED
+PASS  013 component lands at BREATHING_CALIBRATED
+  BREATHING_CALIBRATED (JOINT, 3-stage)
+    = (013: harmonic-lift profiles + M_AB/K_AB by int-dw operator projection + (a,L) EOM LHS, computed here)
+    AND (014: truncation consistency -- generalized eig / beta_L0 sweep / N-convergence) [sibling stage]
+    AND (015: legacy-Hessian structure recovery + Hellmann-Feynman force) [sibling stage]
+  CALIBRATED <= wall constants {muEta, Tw, K_eta} are calibration inputs; structure is EARNED, values are CALIBRATED.
+PASS  joint composition cites 014 and 015 as siblings, not recomputed here
+
+Provenance and scope
+--------------------
+  CONSUMED-from-Gate-1: domain [0,L0] with cap R0(L0)=0, frozen packet {L0=37/20,Tw=1,K_eta=1,beta=1}, and ell=0 restriction are cited from stages 011/012 with dual-site integrity.
+  no-c_S: 013 is speed-free; matter-sector c_s/BdG k^4 is deferred under k*xi << 1 (phonon_limit_caveat).
+  EARNED-STRUCTURE: profiles are derived harmonic lifts proven by Lop[alpha]=0; M_AB/K_AB are real int-dw operator projections; EOM LHS is assembled here.
+  FIRST-CALIBRATION: muEta and Tw are CALIBRATION inputs; K_eta=Tw*beta^2 is a manifestation; beta=sqrt(K_eta/Tw) with beta*L0=37/20 is branch-determinable, but geometry alone does NOT derive the wall constants.
+  control-ratio: rAL is the dimensionless alpha_L cap ratio, tracked and not counted.
+  3-way-split: 013 carries M/K projection + (a,L) closure; 014 carries truncation consistency; 015 carries legacy structure + HF force.
+  RHS-deferred: F_A^(HF) is stage 015's Hellmann-Feynman force; 013 emits only M_AB*Qddot+K_AB*Q.
+  dropped-bookkeeping: scratch-YAML/_sympy_exprs.wl export, MMA-YAML re-read, expression_digest, and engine_agreement plumbing are stripped.
+  downstream consumers: stage 014 consumes M_AB/K_AB for generalized eig; stages 022/023 consume the ell=0 (a,L) closure.
+  register note: FIRST Part-II calibration knobs are likely {muEta,Tw}; K_eta is a manifestation, beta and L0 are branch/geometric tracked quantities, and rAL is tracked-not-counted.
+PASS  no c_S/cS live symbol appears in 013 symbolic content
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): BREATHING_HARMONIC_MK_PROJECTION_EARNED  (harmonic-lift profiles alpha_a=sinh(L0*beta-beta*w)/sinh(L0*beta), alpha_L=rAL*sinh(beta*w)/sinh(L0*beta), proven by Lop[alpha]=0; M_AB=4*pi*int mu_eta*alpha_A*alpha_B dw and K_AB=4*pi*int [Tw*alpha_A'*alpha_B'+K_eta*alpha_A*alpha_B] dw by real sp.integrate operator projection, NOT the legacy static Hessian (forbidden_fit_flags computed False via free-symbol ancestry, K_AB_provenance=operator_projection_not_static_Hessian); dynamical-EOM LHS M_AB*Qddot+K_AB*Q with Q=(delta_a,delta_L); [M_AB]=M, [K_AB]=M*T^-2, [K/M]=T^-2 dim legs + corrupt-[Tw] probe)
+  source top-line verdict: BREATHING_CALIBRATED  (JOINT 3-stage; 013 carries the M/K-projection + (a,L)-closure component)
+  joint composition: BREATHING_CALIBRATED = (013: harmonic profiles + M/K operator-projection + (a,L) EOM LHS, computed here) AND (014: truncation consistency) AND (015: legacy-structure + HF force)
+  earned (structure): profiles DERIVED as harmonic lifts (residual Lop[alpha]=0); M_AB/K_AB DERIVED by int-dw operator projection (forbidden_fit_flags computed False, provenance operator_projection_not_static_Hessian); EOM LHS assembled; dim legs consistent + corrupt-[Tw] probe fires
+  calibrated (values): mu_eta, Tw calibration inputs; K_eta=Tw*beta^2 manifestation; beta=sqrt(K_eta/Tw), beta*L0=37/20 branch-determinable; geometry alone does NOT derive the wall constants -> BREATHING_CALIBRATED not ..._PASS
+  consumed (cited from Gate-1 stage011/012, dual-site integrity): domain [0,L0] (cap R0(L0)=0); frozen wall packet L0=37/20, Tw=1, K_eta=1, beta=1 (K_eta=Tw*beta^2, beta*L0=37/20); ell=0 restriction Y00=1/(2*sqrt(pi)); c_S NOT consumed (matter-sector deferred, k*xi<<1)
+  control ratio (tracked, not counted): rAL = alpha_L cap ratio, [rAL]=1
+  RHS deferred to stage 015: F_A^(HF) Hellmann-Feynman force (013 emits the EOM LHS only)
+
+Able-to-fail mutation teeth
+---------------------------
+PASS  tooth 1 non-kernel wrong-wavenumber profile trips harmonic residual produced required FAIL (residual = (-3*beta^2*Tw*Csch[beta*L0]*Sinh[beta*(L0 - 2*w)])/muEta)
+PASS  tooth 2 name-based ancestry catches legacy symbols
+PASS  tooth 2 typed legacy K flips K_from_static_hessian flag
+PASS  tooth 2 typed legacy K flips M_or_K_typed_from_legacy_values flag
+PASS  tooth 2 typed legacy K flips full_matrix_fit flag via unallowed names
+PASS  tooth 3 dropping Tw*alpha_prime*alpha_prime makes independent K re-integration mismatch produced required FAIL (residual = 1)
+PASS  tooth 3 corrupted K_aa differs from emitted full-operator K_aa produced required FAIL (residual = -(beta*Pi*Tw*Csch[beta*L0]^2*(2*beta*L0 + Sinh[2*beta*L0])))
+PASS  tooth 4 corrupt-[Tw] probe trips K_AB dimensional leg produced required FAIL (residual = 1)
+PASS  tooth 4 corrupt-[Tw] probe trips K/M dimensional leg produced required FAIL (residual = 1)
+PASS  tooth 4 corrupt-[Tw] verdict is BREATHING_FAIL_DIMENSIONAL
+PASS  tooth 4 self-ablation fail_suppressed remains true
+PASS  tooth 5 K_eta_cited corruption trips packet site A produced required FAIL (residual = 1 - Sqrt[2])
+PASS  tooth 5 Tw_cited corruption trips packet site A produced required FAIL (residual = 1 - 1/Sqrt[2])
+PASS  tooth 5 L0_cited corruption trips packet site B produced required FAIL (residual = 1/20)
+PASS  tooth 5 branch-anchor corruption trips packet site B produced required FAIL (residual = -1/20)
+PASS  tooth 6 bypassed native M_det guard fails to catch degenerate profile produced required FAIL (residual = 1)
+PASS  tooth 6 baseline degenerate copy still has M_det=0
+PASS  baseline immutable after teeth: Lop_alpha_a remains zero
+PASS  baseline immutable after teeth: independent full-integrand re-integration still matches
+PASS  baseline immutable after teeth: forbidden flags remain all false
+PASS  baseline immutable after teeth: clean 013 verdict remains BREATHING_CALIBRATED
+
+PASS tally: 84; FAIL tally: 0; TOTAL = 84 + 0 = 84
+OVERALL PASS: Mathematica verified ledger_stage013 breathing harmonic profiles + M/K projection exactly

@@ -1,0 +1,100 @@
+ledger_stage042_charge_coupled_scalar Mathematica audit
+ROUTE=LinearSolve exchange + logarithmic-cE Limit falloff + ordered FirstCase channel tables + set-membership verdict + Position/Cases Guard-A walk
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+
+Static exchange and source projections
+--------------------------------------
+PASS  STATIC_DETERMINANT
+PASS  A_QQ_RESIDUAL
+PASS  A_QM_RESIDUAL
+PASS  A_MM_RESIDUAL
+PASS  DECOUPLED_A_QM_NO_H_MASS
+PASS  MIXED_QL0_EP_RISK_TERM
+PASS  DECOUPLED_A_MM_DENSITY
+PASS  QM_FLIP_A_QM_ODD
+PASS  A_MM_EVEN_SIGNED_FLIP
+PASS  H_MASS_PROJECTION
+
+Radiation speed scaling and strict stability
+--------------------------------------------
+PASS  RADIATION_BARE_RATIO
+PASS  RADIATION_BARE_EXPONENT
+PASS  RADIATION_PINNED_EXPONENT
+PASS  RADIATION_WRONG_NORM_DISCRIMINATES
+PASS  STABILITY_BOUND
+
+Five computed channels, subtags, and production verdict
+-------------------------------------------------------
+PASS  CHANNEL_H_EP
+PASS  CHANNEL_RADIATION
+PASS  CHANNEL_UNIVERSALITY
+PASS  CHANNEL_UL_EP
+PASS  CHANNEL_PREFERRED_FRAME
+PASS  SUBTAGS
+PASS  EP_ADJUDICATION
+PASS  PRODUCTION_VERDICT
+
+Guard A scoped laundering-refusal denylist
+------------------------------------------
+PASS  GUARD_A_PRODUCTION
+PASS  GUARD_A_NEGATIVE_FIXTURES
+PASS  GUARD_A_DIRECT_INJECTION
+PASS  GUARD_A_FORGED_FLAG
+PASS  GUARD_A_BYPASS_REGRESSIONS
+PASS  GUARD_A_SCOPE_DENYLIST
+
+Twelve source controls (A is Guard A; B through K recomputed)
+-------------------------------------------------------------
+PASS  CTRL_B
+PASS  CTRL_C
+PASS  CTRL_D
+PASS  CTRL_E
+PASS  CTRL_F
+PASS  CTRL_G
+PASS  CTRL_H
+PASS  CTRL_I
+PASS  CTRL_J
+PASS  CTRL_K_WITHOUT_PINNED_KH
+PASS  CTRL_K
+
+Deletion sensitivity and reachable falsifiers
+---------------------------------------------
+PASS  DELETION_H_EP_PILLAR
+PASS  DELETION_GATED_INDIVIDUAL_STABLE
+PASS  DELETION_COLLECTIVE_NATURALLY_HIDDEN
+PASS  REACHABLE_FALSIFIERS
+PASS  LORENTZ_NECESSARY_NOT_SUFFICIENT
+
+Build-global guards and first-match witness table
+-------------------------------------------------
+PASS  DIMENSION_HOMOGENEITY
+PASS  DUAL_ENGINE_TERMS
+PASS  VERDICT_REDERIVATION
+
+Bounded source-to-stage predicate manifest
+------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+PASS  SOURCE_TO_STAGE_MANIFEST
+
+VERDICT=SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED
+CHANNEL_h_EP=EARNED_SAFE_MASS_CHANNEL_ON_DECOUPLED_FLOOR
+CHANNEL_radiation=SIM_GATED
+CHANNEL_universality=SIM_GATED_REQUIRED_UNIVERSALITY
+CHANNEL_u_L_EP=SIM_GATED
+CHANNEL_preferred_frame=SIM_GATED
+EP_ADJUDICATION=mass-channel-only; full-decoupled-floor-EP=NOT_EARNED; unqualified-safe-report=False
+RADIATION_EXPONENTS=bare:3;pinned:1;corrupt:1;wrong_norm:1
+RADIATION_MAGNITUDE=SIM_GATED_BY_GUARD_A_NO_NUMERIC_POWER_RATIO_EMITTED
+REACHABLE_FALSIFIERS=B->FALSIFIABLE_TENSION(channel=h_EP),F->FALSIFIABLE_TENSION(channel=universality),G->NO_GO_CONSISTENCY,H->NO_GO_CONSISTENCY,K->FALSIFIABLE_TENSION(channel=radiation)
+NATURALLY_HIDDEN=DEFINED_BUT_UNREACHABLE_IN_PRODUCTION;collective-four-channel-earned-stub-only
+LORENTZ=c_E=c_gamma_NECESSARY_NOT_SUFFICIENT;real-radiating-extra-scalar;magnitude-remains-SIM_GATED-without-pinned-K_h
+GUARD_A_SCOPE=DENYLIST_ONLY:{M_h,c_E,K_h,P_h/P_EM,EP-magnitude,residue-floor};unrelated-numeric-fields-pass
+GATE_L_CONNECTION=EARNED_CONNECTION;same-embedding-direction-family-as-light
+HARD_WALL=deferred-throat-embedding-solve-pins-{M_h,c_E,K_h};on-pinning-check-stellar-cooling-and-BBN/CMB
+FRAMING=FIRST-CLASS_CHARACTERIZED_DEPARTURE;MAPPED+SIM-GATED_NOT_RESOLVED;several-reachable-falsifiers
+SOURCE_PREDICATE_TOTAL=53
+EXECUTABLE_TOOTH_TOTAL=49
+
+TOOTH_COUNT=49
+PASS tally: 50; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached SCALAR_DEPARTURE_MAPPED_MAGNITUDE_SIM_GATED

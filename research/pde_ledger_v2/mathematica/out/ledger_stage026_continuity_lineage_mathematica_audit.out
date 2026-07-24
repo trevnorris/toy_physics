@@ -1,0 +1,107 @@
+
+====================================================
+ledger_stage026_continuity_lineage_mathematica_audit
+====================================================
+Target stem confirmed: ledger_stage026_continuity_lineage
+Engine: Wolfram exact-token Graph ancestry traversal with terminal l2 moment production; zero file I/O.
+
+I. cited stage024 consumption-integrity contract
+------------------------------------------------
+PASS  I cited N0_den free_symbols equals stage024 exact 10-symbol host contract
+
+G1/G2. exact-token ancestry and moment earning
+----------------------------------------------
+PASS  G1 genuine CONTINUITY_L* identifier tokens survive intact
+PASS  G1 token-stuffing passes raw substring but fails exact lexical tokens
+PASS  G1 baseline continuity_lineage_valid is computed True
+PASS  G2 baseline earns exactly (I25, moment_valid=True)
+PASS  G2 corrupted lineage earns exactly (I_wrong2, moment_valid=False)
+DE-COUNTED diagnostic: baseline continuity_dependency_ok is True = True
+
+A-D/F. lineage rigs and coupling meta-tests
+-------------------------------------------
+PASS  META A fake_continuity routed assertion fires and neutering stops it
+RIG A fake_continuity: FAIL_NOT_DENSITY_DERIVED at A fake_continuity G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA A fake_continuity: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META B attack2 routed assertion fires and neutering stops it
+RIG B attack2: FAIL_NOT_DENSITY_DERIVED at B attack2 G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA B attack2: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META C operator_id routed assertion fires and neutering stops it
+RIG C operator_id: FAIL_NOT_DENSITY_DERIVED at C operator_id G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA C operator_id: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META C l0_token routed assertion fires and neutering stops it
+RIG C l0_token: FAIL_NOT_DENSITY_DERIVED at C l0_token G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA C l0_token: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META C l1_token routed assertion fires and neutering stops it
+RIG C l1_token: FAIL_NOT_DENSITY_DERIVED at C l1_token G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA C l1_token: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META C l2_kernel_token routed assertion fires and neutering stops it
+RIG C l2_kernel_token: FAIL_NOT_DENSITY_DERIVED at C l2_kernel_token G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA C l2_kernel_token: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META C token_stuffing routed assertion fires and neutering stops it
+RIG C token_stuffing: FAIL_NOT_DENSITY_DERIVED at C token_stuffing G1 exact-token lineage-gate assert; neutralized=PASS
+RIG DATA C token_stuffing: continuity_lineage_valid=False; earned_moment=I_wrong2; moment_valid=False; decoy_valid=True; self_asserted_continuity_interface=True
+PASS  META D earning_gate routed assertion fires and neutering stops it
+RIG D earning_gate: FAIL_NOT_DENSITY_DERIVED at D earning gate distinguishes I25 from I_wrong2 assert; neutralized=PASS
+PASS  META META flag_only_validator routed assertion fires and neutering stops it
+RIG META flag_only_validator: FAIL_NOT_DENSITY_DERIVED at META flag-only validator rejects every decoy-negative assert; neutralized=PASS
+PASS  F baseline-valid positive and ancestry-corruption flip assert
+RIG F baseline_positive: PASS; corrupt-any-token=FLIP to FAIL_NOT_DENSITY_DERIVED
+
+G. isolated vanished-coupling OR-arm probes
+-------------------------------------------
+PASS  G(i) expr=0 and coupling_zero=True passes via arm 2
+PASS  G(ii) expr=0 and coupling_zero=False fails
+PASS  G(iii) nonzero expr missing earned moment fails despite coupling_zero=True
+PASS  META G arm2_meta routed assertion fires and neutering stops it
+RIG G arm2_meta: FAIL_NOT_DENSITY_DERIVED at G(iv) neutered vanished-coupling arm makes probe (i) fail assert; neutralized=PASS
+
+I. consumption-integrity mutations
+----------------------------------
+PASS  META I drop_external_I25_squared routed assertion fires and neutering stops it
+RIG I drop_external_I25_squared: CONTRACT_REJECTED at I drop_external_I25_squared exact host-contract assert; neutralized=PASS
+PASS  META I drop_eta_q_lambda_c_term routed assertion fires and neutering stops it
+RIG I drop_eta_q_lambda_c_term: CONTRACT_REJECTED at I drop_eta_q_lambda_c_term exact host-contract assert; neutralized=PASS
+PASS  META I replace_rho_eff routed assertion fires and neutering stops it
+RIG I replace_rho_eff: CONTRACT_REJECTED at I replace_rho_eff exact host-contract assert; neutralized=PASS
+
+H'. runtime arity and unevaluated-leakage scanners
+--------------------------------------------------
+PASS  META H' arity_scanner routed assertion fires and neutering stops it
+RIG H' arity_scanner: SCANNER_CAUGHT at H' definition/call arity scanner assert; neutralized=PASS
+PASS  META H' leakage_scanner routed assertion fires and neutering stops it
+RIG H' leakage_scanner: SCANNER_CAUGHT at H' unevaluated-leakage transcript scanner assert; neutralized=PASS
+PASS  H' actual transcript has no unevaluated authored-helper leakage
+E DE-COUNTED witness: earned_moment in N0_den.free_symbols = True (printed, not tallied)
+PASS  LOCAL CONTINUITY_LINEAGE_EARNED = G1 and G2
+
+Computed continuity-lineage transcript
+--------------------------------------
+consumes: stage024 N0_den (cited canonical factored export)
+N0_den (canonical factored): (c_s^4*I25^2*rho_eff*(eta_q*lambda_c + eta_phi*varpi_q2)^2*Xi_Q^2)/(a^7*(lambda_c^2 - varpi_Phi2*varpi_q2)^2)
+N0_den free_symbols: {a, c_s, eta_phi, eta_q, I25, lambda_c, rho_eff, varpi_Phi2, varpi_q2, Xi_Q}
+host contract (10): {a, c_s, eta_phi, eta_q, I25, lambda_c, rho_eff, varpi_Phi2, varpi_q2, Xi_Q}
+free_symbols == contract: True
+lineage dict: {operator_id: pathA_29_projected_continuity, l0: M0 = Integral(S_leak d3x), l1: D1_i = Integral(x_i*S_leak d3x) + Integral(j_i d3x), l2: Q2_m = Integral(Y2_m_star*S_leak d3x), l2_kernel: Y2_m_star*S_leak}
+exact tokens l0: {d3x, Integral, M0, S_leak}
+exact tokens l1: {D1_i, d3x, Integral, j_i, S_leak, x_i}
+exact tokens l2: {d3x, Integral, Q2_m, S_leak, Y2_m_star}
+exact tokens l2_kernel: {S_leak, Y2_m_star}
+stuffed l0 exact tokens: {d3xyz, FakeIntegral, NOT_M0, S_leakage}
+tokenizer: StringCases[s, (WordCharacter | "_")..]
+continuity_lineage_valid=True (computed exact tokens; decoy flags ignored)
+earned (earned_moment=I25, moment_valid=True)
+continuity_dependency_ok=True
+E dependency membership witness (de-counted): True
+exports: moment_valid=True; validated_I25=I25; lineage_certificate=PASS
+
+Verdict labels
+--------------
+LOCAL_AUDIT_VERDICT: CONTINUITY_LINEAGE_EARNED
+JOINT_LANDING_LABEL (PARTIAL): DENSITY_PORT_HOSTED (3/4, CONTINUITY LINEAGE — I25 is a genuine ∫Y₂*·S_leak ℓ=2 continuity moment descended from pathA_29's operator; earns moment_valid; 024 = derivation, 025 = vector-freedom, 027 = port checks + closure)
+
+=======
+Tallies
+=======
+TALLY mathematica: 27 pass + 0 fail = 27 checks
+OVERALL PASS

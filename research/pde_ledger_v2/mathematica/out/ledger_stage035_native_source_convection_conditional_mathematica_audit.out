@@ -1,0 +1,76 @@
+ledger_stage035_native_source_convection_conditional Mathematica audit
+ROUTE=explicit Gaussian D+Div+Reduce + operator-generated census + Det/Cross classification
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+PROGRESS MATHEMATICA STAGE035 START
+
+Signed-dent Gaussian continuity and unique isotropic flux via Reduce
+--------------------------------------------------------------------
+PASS  SOURCE_TRANSLATION_CONTINUITY
+      sigma_i=s_i*Gaussian(x-X_i(t)); residual=(alpha-1) V.Grad[sigma_i]
+      Reduce gives unique alpha=1; alpha=2 control is nonzero
+PROGRESS MATHEMATICA CONTINUITY COMPLETE
+
+Surviving-solution free-symbol guard
+------------------------------------
+PASS  SOURCE_NOT_IMPORTED
+      BARRED_MAPPING=N_u->Nu,a_T->aT,a'_T->aTp,a_L->aL,q_A^T->q_A_T,q_L->q_L
+      native source REPLACES barred j~sV/pathA_39; no barred amplitude imported
+
+Continuity-derived tensor source basis
+--------------------------------------
+PASS  SOURCE_BASIS
+      I_i=s_i*eta_a(x-X_i)*V_i
+      J_T,i=q_T*I_i=q_T*s_i*eta_a(x-X_i)*V_i; q_T=lambda_T*tau_d
+
+Operator-generated 24-cell parity census
+----------------------------------------
+PASS  PARITY_RW
+PASS  PARITY_PW
+PASS  PARITY_ROTATION
+PASS  PARITY_TIME_REVERSAL
+      s: R_w=-1, P_w=-1, rotation=scalar, T=+1
+      V: R_w=+1, P_w=+1, rotation=polar_vector, T=-1
+      tau_d/q_T: R_w=+1, P_w=+1, rotation=scalar, T=-1
+      J_T: R_w=-1, P_w=-1, rotation=polar_vector, T=+1
+      u_T: R_w=-1, P_w=-1, rotation=polar_vector, T=+1
+      b_T: R_w=-1, P_w=-1, rotation=axial_vector, T=+1
+      P_w denotes a w-type reflection of the transverse coordinate, NOT ordinary x->-x parity
+      b_T axial and T-even are RAW census facts; departure interpretation is deferred to stage039
+PROGRESS MATHEMATICA PARITY CENSUS COMPLETE
+
+Build-global target blindness and canonical term coverage
+---------------------------------------------------------
+PASS  TARGET_BLINDNESS
+      no electric A_E; no q/g knob; no downstream comparison/landing/sign token
+PASS  DUAL_ENGINE_TERMS
+      TERM_INVENTORY=signed_density,translation_time_derivative,isotropic_flux_divergence,continuity_residual,unique_alpha,native_flux_I,native_source_J_T,q_T_relation,parity_census_24_cells,P_w_w_reflection_caveat,dimension_firewall,verdict_precedence
+
+Whole-stage restored-unit firewall via formal rescaling
+-------------------------------------------------------
+PASS  UNITS_RESTORED
+      [sigma]=[eta_a]=L^-3; [I]=L^-2 T^-1; [q_T]=M T^-1
+      [J_T]=M L^-2 T^-2; [V]=L T^-1; [u_T]=L; [b_T]=1
+
+Build-native verdict precedence from computed upstream objects
+--------------------------------------------------------------
+PASS  VERDICT_REDERIVATION
+      SOURCE_FAILURE_TOKEN=R1_SOURCE_BASIS
+      CENSUS_FAILURE_TOKEN=PARITY_INCONSISTENT
+      R1_MAGNITUDE_IDENTITY_TOKEN=CONVECTION_LIKE_CONDITIONAL
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      entries=35; partition=<|PRESERVED -> 8, REPLACED_BY_STRONGER -> 2, SCOPED_OUT -> 25|>; scoped_out=25; digest=d85de3d8f6b7d615900c8ead24f1589eed3c681e74cf546adb999f2cc7fa5b36
+      SCOPED_OUT=FIELD_IDENTITY_UNITS,ACTION_KINETIC,ACTION_COUPLING,ACTION_STABILITY,G0_DAMAGE,ROUTE_INDEPENDENCE,BOOST_PROJECTOR,BOOST_GENERAL_VELOCITIES,BOOST_NEXT_ORDER,BOOST_COMMON_VELOCITY,DIRECT_SOURCE,DIRECT_PROJECTOR,DIRECT_EXCHANGE_SIGN,DIRECT_FALLOFF,DIRECT_VELOCITY_ORDER,COMPARE_COMPUTED,DELTA_RATIO,CONE_RATIO,QMAG_R1,ACTIVE_FLUX_CAVEAT,HOOK_LORENTZ,LEDGER_READY_ROW,TRUTH_TOTALITY,TRUTH_PRECEDENCE,LANDING_OWNERSHIP
+
+SOURCE_LAW=I_i=s_i*eta_a(x-X_i)*V_i; J_T,i=q_T*I_i
+Q_T=lambda_T*tau_d; MAGNITUDE=R1(magnitude)
+PROVENANCE=q_T,tau_d,u_T,eta_a cited from stage034/stage003; not re-derived or re-counted
+SCOPE=source law + raw parity census only; action/routes/landing/departure deferred
+VERDICT_TOKEN: CONVECTION_LIKE_CONDITIONAL
+PROGRESS MATHEMATICA STAGE035 COMPLETE
+
+TOOTH_COUNT=12
+PASS tally: 12; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached CONVECTION_LIKE_CONDITIONAL

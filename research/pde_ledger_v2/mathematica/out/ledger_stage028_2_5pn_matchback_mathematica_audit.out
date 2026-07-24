@@ -1,0 +1,132 @@
+
+=================================================
+ledger_stage028_2_5pn_matchback_mathematica_audit
+=================================================
+Target stem confirmed: ledger_stage028_2_5pn_matchback
+Engine: Wolfram Groebner/PossibleZeroQ direct-expression route; no floats; zero file I/O.
+
+PROVENANCE and A3 boundary
+--------------------------
+Kbar0,Kbar2,Kbar4 are CALIBRATED closure inputs restated from upstream stage027; moments are not derived here.
+External calibrated literals: 2/5, 54/5, and G; G=GENUINE_BLOCKED; Gamma5/G is not derived here.
+The pathA_43 denominator 27 is the upstream-EARNED density-Hankel fingerprint imported from stage018.
+Corpus form 9*Kbar2^(5/2)/Kbar0^(3/2) is imported from 4d_2_5pn.tex:469, not re-derived.
+Runtime isolation: no peer Get/Run, no report/source/note/_scratch reads, no writes; zero file I/O.
+A3 BOUNDARY: INV1/INV2 are SHARED re-expressions of stage027 closure (R46).
+A3 BOUNDARY: INV3/INV4/INV5 and the coherent-rescale matrix are stage028 content.
+A3 BOUNDARY: INV4 == INV2-INV3 identically; retained as a redundant diagnostic, not an independent tooth.
+RESTATED stage027 closure_overlay moments:
+  Kbar0=(54*c_s^5*G)/(5*a^5*c^5)
+  Kbar2=(6*c_s^3*G)/(5*a^3*c^5)
+  Kbar4=(8*c_s*G)/(15*a*c^5)
+  Gamma5=Kbar0*a^5/(27*c_s^5)=(2*G)/(5*c^5)
+  A3_FIDELITY: restated literals match stage027 closure_overlay (authoring-time comparison).
+
+Baseline exact-rational residuals and zero tests
+------------------------------------------------
+BASELINE RESIDUAL VECTOR:
+  [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=0, INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+BASELINE ZERO TESTS:
+  [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=True, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+PASS  ZERO-TEST INV1_moment_invariant == 0
+PASS  ZERO-TEST INV2_pathA43_form_to_BT == 0
+PASS  ZERO-TEST INV3_corpus_form_to_BT == 0
+PASS  ZERO-TEST INV4_redundant_cross_form == 0
+PASS  ZERO-TEST INV5_Kbar0_coeff_54_5 == 0
+PASS  ZERO-TEST INV5_Kbar2_coeff_6_5 == 0
+PASS  ZERO-TEST INV5_Kbar4_coeff_8_15 == 0
+PASS  ZERO-TEST INV5_BT_coeff_2_5 == 0
+PASS  ZERO-TEST INV5_pathA43_denominator_27 == 0
+PASS  ZERO-TEST INV5_corpus_factor_9 == 0
+PASS  ZERO-TEST INV5_exp_Kbar2_5_2 == 0
+PASS  ZERO-TEST INV5_exp_Kbar0_3_2 == 0
+BASELINE ALL-ZERO: PASS (aggregate positive; DE-COUNTED)
+
+Runtime-computed mutation residuals
+-----------------------------------
+MUTATION coherent_scale_all_moments_and_BT_x2:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=0, INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=54/5, INV5_Kbar2_coeff_6_5=6/5, INV5_Kbar4_coeff_8_15=8/15, INV5_BT_coeff_2_5=2/5, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=True, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=False, INV5_Kbar2_coeff_6_5=False, INV5_Kbar4_coeff_8_15=False, INV5_BT_coeff_2_5=False, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15, INV5_BT_coeff_2_5]
+MUTATION coupled_moments_x2_BT_fixed:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=(2*G)/(5*c^5), INV3_corpus_form_to_BT=(2*G)/(5*c^5), INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=54/5, INV5_Kbar2_coeff_6_5=6/5, INV5_Kbar4_coeff_8_15=8/15, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=False, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=False, INV5_Kbar2_coeff_6_5=False, INV5_Kbar4_coeff_8_15=False, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15]
+MUTATION Kbar4_coeff_8_15_to_8_14:
+  residuals: [INV1_moment_invariant=(72*c_s^6*G^2)/(175*a^6*c^10), INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=0, INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=4/105, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=False, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=True, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=False, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV1_moment_invariant, INV5_Kbar4_coeff_8_15]
+MUTATION Kbar4_sign_flip:
+  residuals: [INV1_moment_invariant=(-288*c_s^6*G^2)/(25*a^6*c^10), INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=0, INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=-16/15, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=False, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=True, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=False, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV1_moment_invariant, INV5_Kbar4_coeff_8_15]
+MUTATION Kbar2_coeff_6_5_to_7_5:
+  residuals: [INV1_moment_invariant=(-52*c_s^6*G^2)/(25*a^6*c^10), INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=((-216 + 49*Sqrt[42])*G)/(540*c^5), INV4_redundant_cross_form=-1/540*((-216 + 49*Sqrt[42])*G)/c^5, INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=1/5, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=False, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=False, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV1_moment_invariant, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar2_coeff_6_5]
+MUTATION Kbar0_coeff_54_5_to_55_5:
+  residuals: [INV1_moment_invariant=(8*c_s^6*G^2)/(75*a^6*c^10), INV2_pathA43_form_to_BT=G/(135*c^5), INV3_corpus_form_to_BT=(2*(-3025 + 162*Sqrt[330])*G)/(15125*c^5), INV4_redundant_cross_form=-1/408375*((-166375 + 8748*Sqrt[330])*G)/c^5, INV5_Kbar0_coeff_54_5=1/5, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=False, INV2_pathA43_form_to_BT=False, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=False, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV1_moment_invariant, INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar0_coeff_54_5]
+MUTATION pathA43_denominator_27_to_26:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=G/(65*c^5), INV3_corpus_form_to_BT=0, INV4_redundant_cross_form=G/(65*c^5), INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=-1, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=False, INV3_corpus_form_to_BT=True, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=False, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV2_pathA43_form_to_BT, INV4_redundant_cross_form, INV5_pathA43_denominator_27]
+MUTATION corpus_factor_9_to_8:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=(-2*G)/(45*c^5), INV4_redundant_cross_form=(2*G)/(45*c^5), INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=-1, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=False, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_corpus_factor_9]
+MUTATION exp_Kbar2_5_2_to_3_2:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=(5*a^3*c^5 - 6*c_s^3*G)/(15*c^5*c_s^3), INV4_redundant_cross_form=-1/15*(5*a^3*c^5 - 6*c_s^3*G)/(c^5*c_s^3), INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=-1, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=False, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar2_5_2]
+MUTATION exp_Kbar0_3_2_to_1:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=0, INV3_corpus_form_to_BT=(-2*(5*a^(5/2)*c^(5/2) - 3*Sqrt[30]*c_s^(5/2)*Sqrt[G])*G)/(25*a^(5/2)*c^(15/2)), INV4_redundant_cross_form=(2*(5*a^(5/2)*c^(5/2) - 3*Sqrt[30]*c_s^(5/2)*Sqrt[G])*G)/(25*a^(5/2)*c^(15/2)), INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=0, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=-1/2]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=True, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=False, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=True, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=False]
+  caught_by: [INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar0_3_2]
+MUTATION BT_coeff_2_5_to_3_5:
+  residuals: [INV1_moment_invariant=0, INV2_pathA43_form_to_BT=-1/5*G/c^5, INV3_corpus_form_to_BT=-1/5*G/c^5, INV4_redundant_cross_form=0, INV5_Kbar0_coeff_54_5=0, INV5_Kbar2_coeff_6_5=0, INV5_Kbar4_coeff_8_15=0, INV5_BT_coeff_2_5=1/5, INV5_pathA43_denominator_27=0, INV5_corpus_factor_9=0, INV5_exp_Kbar2_5_2=0, INV5_exp_Kbar0_3_2=0]
+  zero_tests: [INV1_moment_invariant=True, INV2_pathA43_form_to_BT=False, INV3_corpus_form_to_BT=False, INV4_redundant_cross_form=True, INV5_Kbar0_coeff_54_5=True, INV5_Kbar2_coeff_6_5=True, INV5_Kbar4_coeff_8_15=True, INV5_BT_coeff_2_5=False, INV5_pathA43_denominator_27=True, INV5_corpus_factor_9=True, INV5_exp_Kbar2_5_2=True, INV5_exp_Kbar0_3_2=True]
+  caught_by: [INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_BT_coeff_2_5]
+
+Immutable EXPECTED caught-by matrix
+-----------------------------------
+ROW coherent_scale_all_moments_and_BT_x2: expected=[INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15, INV5_BT_coeff_2_5] actual=[INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15, INV5_BT_coeff_2_5]
+PASS  ROW coherent_scale_all_moments_and_BT_x2 actual == EXPECTED_CAUGHT_BY
+ROW coupled_moments_x2_BT_fixed: expected=[INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15] actual=[INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_Kbar0_coeff_54_5, INV5_Kbar2_coeff_6_5, INV5_Kbar4_coeff_8_15]
+PASS  ROW coupled_moments_x2_BT_fixed actual == EXPECTED_CAUGHT_BY
+ROW Kbar4_coeff_8_15_to_8_14: expected=[INV1_moment_invariant, INV5_Kbar4_coeff_8_15] actual=[INV1_moment_invariant, INV5_Kbar4_coeff_8_15]
+PASS  ROW Kbar4_coeff_8_15_to_8_14 actual == EXPECTED_CAUGHT_BY
+ROW Kbar4_sign_flip: expected=[INV1_moment_invariant, INV5_Kbar4_coeff_8_15] actual=[INV1_moment_invariant, INV5_Kbar4_coeff_8_15]
+PASS  ROW Kbar4_sign_flip actual == EXPECTED_CAUGHT_BY
+ROW Kbar2_coeff_6_5_to_7_5: expected=[INV1_moment_invariant, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar2_coeff_6_5] actual=[INV1_moment_invariant, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar2_coeff_6_5]
+PASS  ROW Kbar2_coeff_6_5_to_7_5 actual == EXPECTED_CAUGHT_BY
+ROW Kbar0_coeff_54_5_to_55_5: expected=[INV1_moment_invariant, INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar0_coeff_54_5] actual=[INV1_moment_invariant, INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_Kbar0_coeff_54_5]
+PASS  ROW Kbar0_coeff_54_5_to_55_5 actual == EXPECTED_CAUGHT_BY
+ROW pathA43_denominator_27_to_26: expected=[INV2_pathA43_form_to_BT, INV4_redundant_cross_form, INV5_pathA43_denominator_27] actual=[INV2_pathA43_form_to_BT, INV4_redundant_cross_form, INV5_pathA43_denominator_27]
+PASS  ROW pathA43_denominator_27_to_26 actual == EXPECTED_CAUGHT_BY
+ROW corpus_factor_9_to_8: expected=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_corpus_factor_9] actual=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_corpus_factor_9]
+PASS  ROW corpus_factor_9_to_8 actual == EXPECTED_CAUGHT_BY
+ROW exp_Kbar2_5_2_to_3_2: expected=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar2_5_2] actual=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar2_5_2]
+PASS  ROW exp_Kbar2_5_2_to_3_2 actual == EXPECTED_CAUGHT_BY
+ROW exp_Kbar0_3_2_to_1: expected=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar0_3_2] actual=[INV3_corpus_form_to_BT, INV4_redundant_cross_form, INV5_exp_Kbar0_3_2]
+PASS  ROW exp_Kbar0_3_2_to_1 actual == EXPECTED_CAUGHT_BY
+ROW BT_coeff_2_5_to_3_5: expected=[INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_BT_coeff_2_5] actual=[INV2_pathA43_form_to_BT, INV3_corpus_form_to_BT, INV5_BT_coeff_2_5]
+PASS  ROW BT_coeff_2_5_to_3_5 actual == EXPECTED_CAUGHT_BY
+MUTATION PROBE: PASS (11 runtime-computed rows)
+PASS  ARITY every verdict-bearing re-authored helper matches its held call
+PASS  LEAKAGE transcript has no unevaluated authored helper or zero-test kernel
+PASS  NO-FLOAT exact-rational guard over raw and reduced residuals
+NO-FLOAT GUARD: PASS
+
+LOCAL calibrated-consistency verdict
+------------------------------------
+LOCAL_AUDIT_VERDICT: MATCHBACK_CONSISTENT
+scope: CALIBRATED consistency over closure moments; G=GENUINE_BLOCKED.
+scope: NOT a first-principles Gamma5/G derivation; full 1PN->4PN from-throat is SIM-DEFERRED Gate 6.
+
+=======
+Tallies
+=======
+TALLY mathematica: 12 pass + 0 fail = 12 independent EXIT-1 teeth; diagnostics=14 pass + 0 fail
+OVERALL PASS

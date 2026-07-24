@@ -1,0 +1,134 @@
+
+======================================================
+ledger_stage022_cross_l_fingerprints_mathematica_audit
+======================================================
+Target stem confirmed: ledger_stage022_cross_l_fingerprints
+Engine: genuinely re-authored Wolfram built-in SphericalHankelH1/H2 + SeriesCoefficient route; no floats/tolerances; zero file I/O.
+
+Cross-ell outgoing DtN fingerprints (computed in z-space)
+---------------------------------------------------------
+  Wolfram route: built-in SphericalHankelH1/H2 with direct SeriesCoefficient extraction.
+  Lambda_ell=z*h_ell'/h_ell; Yhat_ell=-(ell+1)/Lambda_ell; no hand-built trigonometric branch record is used.
+  ell=0: radiative_coeff = 1 at omega^1 (z^1); Lambda_static = -1; static = 1 DIAGNOSTIC; first_nonzero_imag_order = 1 (SCANNED); incoming-flips-sign = True
+PASS  ell=0 derived radiative_coeff matches typed cross-ell target
+PASS  ell=0 Lambda_static derived from Hankel log-derivative is -(ell+1)
+PASS  ell=0 scanned first nonzero imaginary power is 2*ell+1
+PASS  ell=0 every lower imaginary coefficient vanishes
+PASS  ell=0 incoming radiative coefficient flips only the sign
+PASS  ell=0 incoming lower real coefficients equal outgoing
+  ell=1: radiative_coeff = 1/2 at omega^3 (z^3); Lambda_static = -2; static = 1 DIAGNOSTIC; first_nonzero_imag_order = 3 (SCANNED); incoming-flips-sign = True
+PASS  ell=1 derived radiative_coeff matches typed cross-ell target
+PASS  ell=1 Lambda_static derived from Hankel log-derivative is -(ell+1)
+PASS  ell=1 scanned first nonzero imaginary power is 2*ell+1
+PASS  ell=1 every lower imaginary coefficient vanishes
+PASS  ell=1 incoming radiative coefficient flips only the sign
+PASS  ell=1 incoming lower real coefficients equal outgoing
+  ell=2: radiative_coeff = 1/27 at omega^5 (z^5); Lambda_static = -3; static = 1 DIAGNOSTIC; first_nonzero_imag_order = 5 (SCANNED); incoming-flips-sign = True
+PASS  ell=2 derived radiative_coeff matches typed cross-ell target
+PASS  ell=2 Lambda_static derived from Hankel log-derivative is -(ell+1)
+PASS  ell=2 scanned first nonzero imaginary power is 2*ell+1
+PASS  ell=2 every lower imaginary coefficient vanishes
+PASS  ell=2 incoming radiative coefficient flips only the sign
+PASS  ell=2 incoming lower real coefficients equal outgoing
+  static=1 is a de-counted diagnostic derived from -(ell+1)/Lambda_static; it is not a verdict tooth.
+  chi_Q = 27*v5_z = 1 DIAGNOSTIC (de-counted because it is algebraically subsumed by v5_z=1/27).
+
+Gate-4 ell=2 non-regression against stage018 typed fingerprint
+--------------------------------------------------------------
+  CHECKABLE consumption: stage018 independently earned the typed z-space tuple.
+  ell=2 derived tuple: u2_z=1/9, u4_z=4/81, v5_z=1/27
+PASS  ell=2 derived u2_z matches stage018 earned typed 1/9
+PASS  ell=2 derived u4_z matches stage018 earned typed 4/81
+PASS  ell=2 derived v5_z matches stage018 earned typed 1/27
+  chi_Q = 1 DIAGNOSTIC only; the v5_z equality owns this content.
+
+Per-tooth derivation-copy ablations
+-----------------------------------
+PASS  ell=0 radiative derivation copy fires its own coefficient assert produced required FAIL (residual = 1)
+PASS  ell=0 pole-order h_mut=z*h fires the derived Lambda_static assert produced required FAIL (residual = 1)
+PASS  ell=0 H1-to-H2 is inert for Lambda_static (not its mutant)
+PASS  ell=0 outgoing-to-incoming mutation fires sign-flip tooth produced required FAIL (residual = -2)
+PASS  ell=1 radiative derivation copy fires its own coefficient assert produced required FAIL (residual = 3/2)
+PASS  ell=1 pole-order h_mut=z*h fires the derived Lambda_static assert produced required FAIL (residual = 1)
+PASS  ell=1 H1-to-H2 is inert for Lambda_static (not its mutant)
+PASS  ell=1 outgoing-to-incoming mutation fires sign-flip tooth produced required FAIL (residual = -1)
+PASS  ell=2 radiative derivation copy fires its own coefficient assert produced required FAIL (residual = 5/3)
+PASS  ell=2 pole-order h_mut=z*h fires the derived Lambda_static assert produced required FAIL (residual = 1)
+PASS  ell=2 H1-to-H2 is inert for Lambda_static (not its mutant)
+PASS  ell=2 outgoing-to-incoming mutation fires sign-flip tooth produced required FAIL (residual = -2/27)
+  +I*z lower-order Hankel-copy mutation: first_nonzero_imag_order=1
+PASS  ell=2 +I*z corruption fires the SCANNED radiative-order assert produced required FAIL (residual = -4)
+PASS  ell=2 +I*z corruption makes a lower imaginary coefficient nonzero
+  u2_z-only copy tuple = {u2_z:7/9, u4_z:4/81, v5_z:1/27}
+PASS  ell=2 u2_z-only derivation copy fires its own non-regression assert produced required FAIL (residual = 2/3)
+PASS  ell=2 u2_z-only copy leaves u4_z unchanged
+PASS  ell=2 u2_z-only copy leaves v5_z unchanged
+  u4_z-only copy tuple = {u2_z:1/9, u4_z:112/81, v5_z:1/27}
+PASS  ell=2 u4_z-only derivation copy fires its own non-regression assert produced required FAIL (residual = 4/3)
+PASS  ell=2 u4_z-only copy leaves u2_z unchanged
+PASS  ell=2 u4_z-only copy leaves v5_z unchanged
+  v5_z-only copy tuple = {u2_z:1/9, u4_z:4/81, v5_z:46/27}
+PASS  ell=2 v5_z-only derivation copy fires its own non-regression assert produced required FAIL (residual = 5/3)
+PASS  ell=2 v5_z-only copy leaves u2_z unchanged
+PASS  ell=2 v5_z-only copy leaves u4_z unchanged
+
+022-local verdict, read-set, and 3e dynamic self-ablation
+---------------------------------------------------------
+  baseline gate values = <|cross_l_fingerprints -> True, ell2_non_regression -> True|>
+  computed LOCAL_AUDIT_VERDICT read-set = {cross_l_fingerprints, ell2_non_regression}
+PASS  LOCAL_AUDIT_VERDICT reads exactly fingerprints plus ell=2 non-regression
+  LOCAL_AUDIT_VERDICT read-set excludes nullspace/return/base_verdict objects = True DIAGNOSTIC (de-counted; the exact read-set equality tooth owns this content).
+PASS  baseline 022-local verdict is CROSS_L_FINGERPRINT_OK
+PASS  corrupting an ell=1 fingerprint derivation reaches FAIL_FINGERPRINT
+  3e_break_gate4: incoming ell=2 gives v5_z=-1/27 -> FAIL_QUAD_REGRESSION
+PASS  3e incoming ell=2 reaches FAIL_QUAD_REGRESSION
+  3e self_ablation = <|RerunGateLogic -> True, VerdictTrace -> {{incoming, FAIL_QUAD_REGRESSION}, {outgoing, CROSS_L_FINGERPRINT_OK}}, WithMutation -> FAIL_QUAD_REGRESSION, WithoutMutation -> CROSS_L_FINGERPRINT_OK, ExpectedFail -> FAIL_QUAD_REGRESSION, FailSuppressed -> True|>
+PASS  3e self-ablation dynamically reruns 022-local gate logic
+PASS  3e dynamic rerun with mutation is FAIL_QUAD_REGRESSION
+PASS  3e dynamic rerun without mutation is CROSS_L_FINGERPRINT_OK
+PASS  3e dynamic self-ablation changes the local verdict
+PASS  neutering 3e is detected as not able to fail
+
+Wolfram arity self-check and unevaluated-leakage scan
+-----------------------------------------------------
+PASS  arity responseCoefficient[ell,sense,mutation,power] returns v5 numerator I/27
+PASS  arity lambdaCoefficient[ell,sense,mutation,power] returns Lambda_static -3
+PASS  arity fingerprintAudit[mutationEll] returns Matches/Ok
+PASS  arity gate4Audit[break,mutation] returns Derived/Matches/Ok
+PASS  arity localAuditVerdict[fingerprint,nonRegression] returns local OK
+PASS  arity dynamicGate4Ablation[break] changes verdicts
+PASS  definition/call arity scan finds localAuditVerdict has exactly two arguments
+PASS  no unevaluated authored helper or SeriesCoefficient call remains in computed outputs
+
+022 scope and PROVENANCE consumption
+------------------------------------
+  live symbolic names in computed fingerprint expressions = {z}
+PASS  computed fingerprint algebra is dimensionless z-space only
+PASS  no source branch record, 019 prefactor, or 023 transfer/residual/nullspace helper is built
+PASS  independent Wolfram route owns built-in H1/H2 definitions
+  z=a*omega/c_s is a provenance dictionary only; no units-restored dimensional leg is built in 022.
+  CHECKABLE: stage018 typed {u2_z=1/9,u4_z=4/81,v5_z=1/27} is the non-regression reference.
+  PROVENANCE: stage019/stage020/stage021 and the completed pathA_33 QUAD_CALIBRATED joint are cited DONE, not re-derived.
+  PROVENANCE: stage008 raw ell=0/1/2 amplitudes; stage009/stage010 bulk Helmholtz mode.
+  PROVENANCE: stage005 R1 supplies the c_s units symbol (distinct from frozen-wall c_S); no c_s value is consumed.
+  EXCLUDED/DEFERRED TO 023: residual form/sign/order, return/nullspace/selector departure, and magnitude/nonzero prediction.
+  dropped-bookkeeping: YAML/report writers, cross-engine scratch files, and all file I/O are absent.
+
+Verdict labels:
+---------------
+  ledger local exit-0 verdict: CROSS_L_FINGERPRINT_OK
+  joint landing label (EARNED-first PARTIAL; FAIL not evaluated by 022): FAIL_UNDERDETERMINED_NOT_PREDICTIVE (1/2)
+  earned here: computed cross-ell radiative coefficients/orders/Lambda_static plus the stage018 Gate-4 tuple non-regression.
+  earned able-to-fail: per-ell coefficient, pole-order, scanned-order, sign-flip, per-slot Gate-4, and dynamic 3e teeth.
+  de-counted diagnostics: static=1 and chi_Q=1; neither participates in the 022-local verdict.
+  remaining earned + FAIL-delivering/deferred content: residual form/sign/order and native nullspace/magnitude work belong to 023.
+
+LOCAL_AUDIT_VERDICT: CROSS_L_FINGERPRINT_OK
+JOINT_LANDING_LABEL (PARTIAL; FAIL not evaluated by 022):
+  FAIL_UNDERDETERMINED_NOT_PREDICTIVE (1/2)
+
+=======
+Tallies
+=======
+TALLY mathematica: 64 pass + 0 fail = 64 checks
+OVERALL PASS

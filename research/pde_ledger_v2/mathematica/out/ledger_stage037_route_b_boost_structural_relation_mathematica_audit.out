@@ -1,0 +1,95 @@
+PROGRESS MATHEMATICA STAGE037 NULLSPACE KERNEL START
+PROGRESS MATHEMATICA STAGE037 NULLSPACE KERNEL COMPLETE
+ledger_stage037_route_b_boost_structural_relation Mathematica audit
+ROUTE=Cartesian divergence NullSpace + trace normalization + normal-projector force + mixed velocity Hessians
+INDEPENDENCE=no ansatz Solve; no Cartesian coordinate-potential D; no direct U_B/U_A quotient
+BLIND_BUILD=Route B instantiated before cited Route A
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+PROGRESS MATHEMATICA STAGE037 ASSERTIONS START
+
+Blind NullSpace tensor construction and direct source/force reconstruction
+--------------------------------------------------------------------------
+PASS  DIRECT_SOURCE
+      U_B=-s1*s2*q_T^2*(D_V+A_V)/(8*pi*mu_R*R)
+      F_B=(s1*s2*q_T^2/(8*pi*mu_R*R^2))*[(V2.n)V1+(V1.n)V2-(D_V+3*A_V)n]
+      F_B,r=-s1*s2*q_T^2*(D_V+A_V)/(8*pi*mu_R*R^2)
+PASS  DIRECT_PROJECTOR
+      divergence operator row={-1, 1}; NullSpace shape={1, 1}
+      trace normalization gives coefficients={1/(8*Pi), 1/(8*Pi)}; G_B,ij=(delta_ij+n_i*n_j)/(8*pi*mu_R*R)
+
+Computed sign, falloff, and velocity-order objects
+--------------------------------------------------
+PASS  DIRECT_EXCHANGE_SIGN
+      computed parallel/antiparallel interaction signs={-1, 1}
+PASS  DIRECT_FALLOFF
+      computed U power=R^-1; computed F power=R^-2
+PASS  DIRECT_VELOCITY_ORDER
+      computed velocity degrees={2}; O(V1*V2)
+
+Dependency-tag, ancestry-symbol, and execution-order blindness
+--------------------------------------------------------------
+PASS  ROUTE_INDEPENDENCE
+      foreign_payload=None; production build order=ROUTE_B then ROUTE_A
+      dependencies=InputForm[{Q_CURRENT.source, pathA36.transverse_EOM, direct_transverse_tensor_ansatz}]
+
+Route-A/electric equal-velocity cross-check
+-------------------------------------------
+PASS  BOOST_COMMON_VELOCITY
+      F_A2,r/F_E,r=-(V1.V2)/(2*c_gamma^2), using Route A + electric anchor only
+      equal v: F_r/F_E,r=1-v^2/(2*c_gamma^2)+O(v^4)
+
+Mixed-Hessian prefactor-stripped tensor comparison
+--------------------------------------------------
+PASS  COMPARE_COMPUTED
+      mixed velocity Hessians strip each scalar prefactor and agree component-by-component
+      tensor structure agrees; computed Route-B falloff/order match cited Route A
+
+Coefficient-extracted delta, cone, and potential-difference ratios
+------------------------------------------------------------------
+PASS  DELTA_RATIO
+      r_BA=q_T^2*c_gamma^2/(mu_R*A_E)=q_T^2/(rho_br*A_E)
+      delta_BA=r_BA-1; Delta_U=-(s1*s2*A_E/(8*pi*c_gamma^2*R))*delta_BA*(D_V+A_V)
+PASS  CONE_RATIO
+      r_cone=c_E^2/c_gamma^2=c_E^2*rho_br/mu_R (OPEN)
+PASS  QMAG_R1
+      magnitude=R1(magnitude); comparison=route_B_R1; relative_sign=relative_sign_anchor_conditional
+
+Build-global runtime scope, dual-term, and unit firewalls
+---------------------------------------------------------
+PASS  TARGET_BLINDNESS
+      no SEALED section-4 landing channel; pathA_39 markers absent from Route B
+      A_E enters only the cited comparison/ratio lane
+PASS  DUAL_ENGINE_TERMS
+      TERM_INVENTORY=routeB_kernel00,routeB_kernel01,routeB_U2,routeB_Fr,routeA_U2_cited,ratio_BA,delta_BA,cone_ratio,Delta_U
+      every listed term is checked by exact symbolic residual, never by text
+PASS  UNITS_RESTORED
+      [q_T]=M*T^-1; [mu_R]=M*L^-1*T^-2; [rho_br]=M*L^-3
+      [G_B]=M^-1*T^2; [U_B]=E; [F_B]=E/L; [r_BA]=[delta_BA]=[r_cone]=1
+
+Verdict re-derived from computed certification objects
+------------------------------------------------------
+      REDERIVED_TOKEN=BOOST_STRUCTURAL_RELATION_HOLDS
+PASS  VERDICT_REDERIVATION
+      FAILURE_TOKEN=BOOST_STRUCTURAL_RELATION_UNCERTIFIED
+      unresolved q_T/A_E magnitude does not enter structural certification
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      entries=35; partition=<|PRESERVED -> 2, REPLACED_BY_STRONGER -> 12, SCOPED_OUT -> 21|>; scoped_out=21; digest=3c88849c5f4f5b7fe05c0d06c59004acccf8c6e85f6823b0e839c41174c8adf4
+      IN_SCOPE=ROUTE_INDEPENDENCE,BOOST_COMMON_VELOCITY,DIRECT_SOURCE,DIRECT_PROJECTOR,DIRECT_EXCHANGE_SIGN,DIRECT_FALLOFF,DIRECT_VELOCITY_ORDER,COMPARE_COMPUTED,DELTA_RATIO,CONE_RATIO,QMAG_R1,UNITS_RESTORED,TARGET_BLINDNESS,DUAL_ENGINE_TERMS
+      SCOPED_OUT=SOURCE_TRANSLATION_CONTINUITY,SOURCE_NOT_IMPORTED,SOURCE_BASIS,PARITY_RW,PARITY_PW,PARITY_ROTATION,PARITY_TIME_REVERSAL,FIELD_IDENTITY_UNITS,ACTION_KINETIC,ACTION_COUPLING,ACTION_STABILITY,G0_DAMAGE,BOOST_PROJECTOR,BOOST_GENERAL_VELOCITIES,BOOST_NEXT_ORDER,ACTIVE_FLUX_CAVEAT,HOOK_LORENTZ,LEDGER_READY_ROW,TRUTH_TOTALITY,TRUTH_PRECEDENCE,LANDING_OWNERSHIP
+
+BUILD_ORDER=Route B first with foreign_payload=None; Route A cited afterward
+STRUCTURAL_AGREEMENT=tensor + R^-2 falloff + O(V1*V2) velocity order
+RATIO_STATUS=DECIDED expressions; R1-valued through q_T and A_E
+COMPARISON_FACT=route_B_R1
+RELATIVE_SIGN_FACT=relative_sign_anchor_conditional
+COBLOCKER=R1_REQUIRED(direct_moving_throat)
+STAGE038_BOUNDARY=no SEALED section-4 landing is adjudicated here
+VERDICT_TOKEN: BOOST_STRUCTURAL_RELATION_HOLDS
+PROGRESS MATHEMATICA STAGE037 COMPLETE
+
+TOOTH_COUNT=16
+PASS tally: 16; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached BOOST_STRUCTURAL_RELATION_HOLDS

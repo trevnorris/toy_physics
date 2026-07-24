@@ -1,0 +1,101 @@
+
+===================================================
+ledger_stage019_prefactor_algebra_mathematica_audit
+===================================================
+Target stem confirmed: ledger_stage019_prefactor_algebra
+Engine: native Wolfram exact Series/Coefficient/FullSimplify derivation; no floats/tolerances; zero file I/O.
+
+Squared-denominator object and series-extracted coefficients
+------------------------------------------------------------
+  N(omega) = N0 + N2*omega^2 + N4*omega^4
+  Dcons(omega) = D0 + D2*omega^2 + D4*omega^4
+  correctObj = (D0*(N0 + N2*omega^2 + N4*omega^4))/(D0 + D2*omega^2 + D4*omega^4)^2
+  correctSeries = (-4*D2^3*N0*omega^6 + 3*D0*D2*omega^4*(D2*N0 + (2*D4*N0 + D2*N2)*omega^2) + D0^3*(N0 + N2*omega^2 + N4*omega^4) - 2*D0^2*(D2*N0*omega^2 + (D4*N0 + D2*N2)*omega^4 + (D4*N2 + D2*N4)*omega^6))/D0^4
+  P0/P2/P4 below are read by Coefficient[correctSeries,omega,n]; targets are independent typed references.
+  P0(series-extracted) = N0/D0
+PASS  series-extracted P0 matches independent expected P0
+  P2(series-extracted) = (-2*D2*N0 + D0*N2)/D0^2
+PASS  series-extracted P2 matches independent expected P2
+  P4(series-extracted) = (3*D2^2*N0 - 2*D0*D4*N0 - 2*D0*D2*N2 + D0^2*N4)/D0^3
+PASS  series-extracted P4 matches independent expected P4
+  exact sample controls (D0,D2,D4,N0,N2,N4 only) = {D0 -> 19, D2 -> 23, D4 -> 29, N0 -> 11, N2 -> 13, N4 -> 17}
+  exact sample values (transcript only, non-tooth) = <|P0 -> 11/19, P2 -> -259/361, P4 -> 110/6859, plainP2 -> -6/361, plainMinusCorrectP2 -> 253/361|>
+
+Plain N/D factor-of-2 discriminator
+-----------------------------------
+  plainObj = (N0 + N2*omega^2 + N4*omega^4)/(D0 + D2*omega^2 + D4*omega^4)
+  plainSeries = (-(D2^3*N0*omega^6) + D0*D2*omega^4*(D2*N0 + (2*D4*N0 + D2*N2)*omega^2) + D0^3*(N0 + N2*omega^2 + N4*omega^4) - D0^2*(D2*N0*omega^2 + (D4*N0 + D2*N2)*omega^4 + (D4*N2 + D2*N4)*omega^6))/D0^4
+  plainP2(series-extracted) = (-(D2*N0) + D0*N2)/D0^2
+  differencePlainMinusCorrectP2(computed) = (D2*N0)/D0^2
+  plainEqualsCorrectP2 = False
+PASS  plain N/D P2 is series-extracted with the single D2*N0 term
+PASS  computed plain-minus-correct P2 is D2*N0/D0^2
+PASS  plainEqualsCorrectP2 is False (squared-denominator factor-of-2 detected)
+
+Probe 3g wrong-prefactor object and dynamic 019-local self-ablation
+-------------------------------------------------------------------
+  3g mutated object = (N0 + N2*omega^2 + N4*omega^4)/(D0 + D2*omega^2 + D4*omega^4)
+  3g plainEqualsCorrectP2 = False
+  3g wrong-object verdict = FAIL_PREFACTOR_ALGEBRA
+  3g correct-object verdict = NO_FAIL
+  3g dynamic self-ablation = <|RerunGateLogic -> True, WithMutation -> FAIL_PREFACTOR_ALGEBRA, WithoutMutation -> PREFACTOR_ALGEBRA_EARNED, ExpectedFail -> FAIL_PREFACTOR_ALGEBRA, FailSuppressed -> True|>
+PASS  3g plain N/D reaches FAIL_PREFACTOR_ALGEBRA
+PASS  3g correct squared-denominator object is NO_FAIL
+PASS  3g dynamic rerun with plain-N/D mutation fails locally
+PASS  3g dynamic rerun without mutation returns the earned local verdict
+PASS  3g self-ablation suppresses the failure
+
+Per-tooth derivation ablations on independent series copies
+-----------------------------------------------------------
+PASS  P0 derivation copy changes its own series-extracted coefficient produced required FAIL (residual = 1)
+PASS  P2 derivation copy changes its own series-extracted coefficient produced required FAIL (residual = 1)
+PASS  P4 derivation copy changes its own series-extracted coefficient produced required FAIL (residual = 1)
+PASS  N/D discriminator comparison flips True when its plain control is replaced by the correct object
+PASS  baseline remains immutable after derivation-copy ablations
+
+Wolfram arity self-check and unevaluated-leakage scan
+-----------------------------------------------------
+PASS  arity serW[expr,order] returns the requested omega^2 coefficient
+PASS  arity extractCoefficients[obj] returns P0/P2/P4 keys
+PASS  arity scopedVerdict[prefactorOk,ndSelfCheckOk] returns earned label
+PASS  arity dynamicAblation[baseline,mutated,selfCheck] returns changed verdicts
+PASS  no unevaluated SeriesData remains in emitted series
+PASS  no unevaluated Series/Coefficient/FullSimplify call remains
+
+019 scope, provenance-only consumption, and PARTIAL landing
+-----------------------------------------------------------
+  019 gate booleans = <|prefactor_match -> True, N_over_D_self_check -> True|>
+  019 scoped verdict = PREFACTOR_ALGEBRA_EARNED
+PASS  019 scoped verdict lands the earned partial component
+  live symbolic names in the earned slice = {D0, D2, D4, N0, N2, N4, omega}
+PASS  earned algebra has exactly omega and D0..N4 as live symbols
+  QUAD_CALIBRATED (2/4) -- squared-denominator prefactor algebra EARNED (PARTIAL)
+    = P0=N0/D0, P2=(D0*N2-2*D2*N0)/D0^2, P4=(D0^2*N4-2*D0*(D2*N2+D4*N0)+3*D2^2*N0)/D0^3.
+    SERIES-EXTRACTED from P(omega)=D0*N/Dcons^2; the factor-of-2 is the squared-denominator signature.
+    AND plain N/D reaches FAIL_PREFACTOR_ALGEBRA while the correct object is NO_FAIL.
+  REMAINING: fingerprint = 018 (DONE); magnitude partition plus calibrated label = 020; dimension closure = 021.
+  CAVEATS: D-lane and N-moment numerical branch scalars remain symbolic/Gate-6 deferred; the magnitude is calibrated in 020.
+  CONSUMES (PROVENANCE only): 017 D-lanes + deferred port N-moments + 018 fingerprint context; no guard/dual-site.
+  EXPORTS: the series-extracted prefactor algebra and N/D self-check to 020/021 and 027; no file artifact is written.
+  PORT-MOMENTS PROVENANCE EXPORT -- LABELED NON-CHECK: concrete N-moments are deferred Gate-6 branch data, asserted against nothing.
+  reduction certificate: FROZEN-INPUT symbolic D_n lanes and outgoing port-moment inputs/N_n; COMPUTED P0/P2/P4 plus N/D self-check; DEFERRED numerical branch scalars.
+  dropped-bookkeeping: scratch-YAML agreement handoff and report/feed writers are absent; agreement is transcript-level.
+  register note: likely zero new counted knobs; registration decides the structural edge.
+
+Verdict labels
+--------------
+  ledger earned-label (NOT a source verdict token): PREFACTOR_ALGEBRA_EARNED  (the squared-denominator prefactor P(omega)=D0*N(omega)/Dcons(omega)^2, N=N0+N2*omega^2+N4*omega^4, Dcons=D0+D2*omega^2+D4*omega^4, series-expands to the coefficients P0=N0/D0, P2=(D0*N2-2*D2*N0)/D0^2, P4=(D0^2*N4-2*D0*(D2*N2+D4*N0)+3*D2^2*N0)/D0^3 -- SERIES-EXTRACTED, NOT typed; the -2*D2*N0 factor-of-2 is the squared-denominator signature (plain N/D gives only -D2*N0, provably wrong -> FAIL_PREFACTOR_ALGEBRA))
+  source top-line verdict: QUAD_CALIBRATED  (JOINT 4-stage; 019 carries the squared-denominator prefactor-algebra component 2/4 and lands the token as a PARTIAL)
+  joint composition (019 = the SECOND leg; 018 DONE, 020/021 remaining): QUAD_CALIBRATED = (018: outgoing DtN Hankel fingerprint + chi_Q sign)[EARNED, PARTIAL, DONE] AND (019: squared-denominator prefactor algebra P(omega)=D0*N/Dcons^2)[EARNED here, PARTIAL] AND (020: 54/5=2*27/5 provenance partition + the CALIBRATED label, G=GENUINE_BLOCKED) AND (021: mu_hat0-free [P0_phys]=1 dim closure)
+  earned (the prefactor algebra): P0=N0/D0, P2=(D0*N2-2*D2*N0)/D0^2, P4=(D0^2*N4-2*D0*(D2*N2+D4*N0)+3*D2^2*N0)/D0^3 SERIES-EXTRACTED from P(omega)=D0*N/Dcons^2 (NOT typed); the N/D self-check (plain N/D gives -D2*N0 vs the correct -2*D2*N0 -> FAIL_PREFACTOR_ALGEBRA; the correct object does NOT fire)
+  earned (able-to-fail): 3g_wrong_prefactor_object (plain N/D -> missing factor of 2 -> FAIL_PREFACTOR_ALGEBRA; correct object NO_FAIL), with a DYNAMIC self-ablation (re-run, NOT a constant); the prefactor coefficients are SERIES-EXTRACTED off the actual series (not a hardcode-and-compare, the section-4 firewall)
+  calibrated / deferred (NOT 019): the fingerprint (018, DONE); the 54/5=2*27/5 magnitude + G (020, external_bridge_input, G=GENUINE_BLOCKED); the mu_hat0-free dim closure (021); the numerical (D_n,N_n) port scalars (Gate-6 sim-deferred, report :49)
+  consumed (PROVENANCE only -- NO guard/dual-site; abstract port-agnostic algebra): 017's l=2 port kernel (D-lanes D0/D2/D4 + {Btilde,Ztilde}, carried as abstract symbols) + build_port_moments' concrete N-moments (deferred Gate-6 branch data, asserted-against-nothing) + 018's fingerprint context; NO c_s/a/G/mu_hat0
+  exports (the prefactor algebra): P0=N0/D0 (-> 021's [P0_phys]=1 dim closure) + P2/P4 + the N/D self-check (-> 020's 54/5=2*27/5 partition context) => 020/021 + 027 (pathA_43 closure)
+  new symbols first-appearing (019): none new-counted (the D0/D2/D4 are 017's exported D-lanes + the N0/N2/N4 are build_port_moments' deferred Gate-6 port N-moments, NOT new knobs); no units symbol (units-free abstract algebra); no counted knobs expected (an EARNED prefactor-algebra slice, like 018)
+
+=======
+Tallies
+=======
+TALLY mathematica: 24 pass + 0 fail = 24 checks
+OVERALL PASS

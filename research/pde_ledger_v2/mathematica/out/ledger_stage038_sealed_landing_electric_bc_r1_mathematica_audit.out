@@ -1,0 +1,66 @@
+ledger_stage038_sealed_landing_electric_bc_r1 Mathematica audit
+ROUTE=mixed-radix ordinal stream + declarative FirstCase precedence + key/open-reason oracle + UTF-8 ByteArray SHA256
+INDEPENDENCE=no Tuples; no nested-If adjudicator; no source-file text scan
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+PROGRESS MATHEMATICA STAGE038 ENUMERATION START
+
+SEALED section-4 exhaustive truth table
+---------------------------------------
+PASS  TRUTH_TOTALITY
+      cells=1152; expected_product=1152; digest=983556935e50f12670fef24f17a23c048e295ddf0b6952aa0bd1618e9f179619
+PROGRESS MATHEMATICA STAGE038 ENUMERATION COMPLETE
+PASS  TRUTH_PRECEDENCE
+      production_first_match=R1_REQUIRED(electric_bc_selection)
+PASS  LANDING_OWNERSHIP
+      blockers=R1_REQUIRED(electric_bc_selection) | R1_REQUIRED(direct_moving_throat) | R1_REQUIRED(magnitude) | R1_REQUIRED(consistency)
+
+Honest active-flux and Lorentz hooks
+------------------------------------
+PASS  ACTIVE_FLUX_CAVEAT
+      F_flux=separate R1 O(V1*V2) remainder; full integrability=R1
+PASS  HOOK_LORENTZ
+      emergent_lorentz=UNDETERMINED; locks=(delta_BA,r_cone,higher_orders,active_flux)
+
+Build-global structural, local-inventory, and unit firewalls
+------------------------------------------------------------
+PASS  TARGET_BLINDNESS
+      landing assignment lives only in SEALED section 4; the held-DownValues visitor restricts exactly four non-R1 substrings
+PASS  DUAL_ENGINE_TERMS
+      local_terms=landing-count map,digest,landing,blockers,delta_BA,r_cone,hook conditions
+PASS  UNITS_RESTORED
+      [A_E]=E*L; [q_T]=M*T^-1; [r_BA]=[delta_BA]=[r_cone]=1; [c_gamma^2]=[c_E^2]=L^2*T^-2
+
+Build-native verdict re-derivation table
+----------------------------------------
+      REDERIVED_LANDINGS=R1_REQUIRED(electric_bc_selection) | NO_GO(sector) | R1_REQUIRED(direct_moving_throat) | MAGNETISM_CONSISTENT_FREE_MAGNITUDE(R1) | MAGNETISM_LORENTZ_CONSISTENT | R1_REQUIRED(consistency)
+PASS  VERDICT_REDERIVATION
+
+Canonical source-to-stage predicate manifest
+--------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+      source_manifest=35; in_scope=5; scoped_out=27; build_global=3
+      SCOPED_OUT=FIELD_IDENTITY_UNITS,ACTION_KINETIC,ACTION_COUPLING,ACTION_STABILITY,G0_DAMAGE,LEDGER_READY_ROW,SOURCE_TRANSLATION_CONTINUITY,SOURCE_NOT_IMPORTED,SOURCE_BASIS,PARITY_RW,PARITY_PW,PARITY_ROTATION,PARITY_TIME_REVERSAL,BOOST_PROJECTOR,BOOST_GENERAL_VELOCITIES,BOOST_NEXT_ORDER,DIRECT_SOURCE,DIRECT_PROJECTOR,DIRECT_EXCHANGE_SIGN,DIRECT_FALLOFF,DIRECT_VELOCITY_ORDER,ROUTE_INDEPENDENCE,BOOST_COMMON_VELOCITY,COMPARE_COMPUTED,DELTA_RATIO,CONE_RATIO,QMAG_R1
+
+LANDING=R1_REQUIRED(electric_bc_selection)
+BLOCKERS=R1_REQUIRED(electric_bc_selection) | R1_REQUIRED(direct_moving_throat) | R1_REQUIRED(magnitude) | R1_REQUIRED(consistency)
+TRUTH_CELLS=1152
+TRUTH_DIGEST=983556935e50f12670fef24f17a23c048e295ddf0b6952aa0bd1618e9f179619
+LANDING_COUNT[AMENDMENT_EXCLUDED(routes_leading_conflict)]=12
+LANDING_COUNT[AMENDMENT_EXCLUDED(wrong_relative_sign)]=12
+LANDING_COUNT[MAGNETISM_CONSISTENT_FREE_MAGNITUDE(R1)]=3
+LANDING_COUNT[MAGNETISM_DEPARTURE_CHARACTERIZED]=6
+LANDING_COUNT[MAGNETISM_LORENTZ_CONSISTENT]=3
+LANDING_COUNT[NO_GO(sector)]=576
+LANDING_COUNT[R1_REQUIRED(consistency)]=60
+LANDING_COUNT[R1_REQUIRED(direct_moving_throat)]=144
+LANDING_COUNT[R1_REQUIRED(electric_bc_selection)]=288
+LANDING_COUNT[R1_REQUIRED(magnitude)]=48
+DEFENSIVE_UNCLASSIFIED=0
+HOOK_ACTIVE_FLUX=R1_UNMATCHED_O(V1*V2)
+HOOK_LORENTZ=UNDETERMINED
+STAGE039_BOUNDARY=departure characterization is not this terminal verdict
+PROGRESS MATHEMATICA STAGE038 COMPLETE
+
+TOOTH_COUNT=10
+PASS tally: 10; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached R1_REQUIRED(electric_bc_selection)

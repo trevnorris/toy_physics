@@ -1,0 +1,72 @@
+ledger_stage041_ng5_second_medium_reducibility Mathematica audit
+ROUTE=GroupBy origin categories + Select set partitions + SubsetQ route targets + FirstCase resolution
+FILE_IO=none; CROSS_ENGINE_COMPARE=none
+
+Computed production origin and RouteEvaluation ledgers
+------------------------------------------------------
+PASS  ORIGIN_CLASSIFICATION
+PASS  FULL_ORIGIN_LEDGER
+PASS  FULL_ROUTE_EVALUATION_LEDGER
+
+Production verdict, count, freedom, locations, and lineage
+----------------------------------------------------------
+PASS  PRODUCTION_VERDICT
+PASS  DRIFT_COUNT
+PASS  FREEDOM_STATE_RHO_BR
+PASS  FREEDOM_STATE_C_HU
+PASS  LOCATION_CLOSURE
+PASS  ARENA_LABELS
+PASS  LINEAGE_FINDING
+PASS  REDUCTION_STATUS
+PASS  ANTI_ABSORPTION_DRIFT_SIDE
+
+Individually asserted controls
+------------------------------
+PASS  CTRL_AB_DELETE_REGISTRY
+PASS  CTRL_ROUTE_BLANK_ROUTE_A
+PASS  CTRL_ROUTE_FIELD_BLANK_TARGET_BLIND
+PASS  CTRL_ROUTE_FIELD_BLANK_MISSING_OBJECTS
+PASS  CTRL_ROUTE_CONJUNCT_REQUIRED_FIELDS_PRESENT
+PASS  CTRL_ROUTE_CONJUNCT_NAMED_SOLVE_IN_PROVENANCE
+PASS  CTRL_ROUTE_CONJUNCT_RESULT_STATUS_ALLOWED
+PASS  CTRL_ROUTE_CONJUNCT_FINITE_LISTED_MISSING_OBJECTS
+PASS  CTRL_ROUTE_CONJUNCT_TARGET_IDENTITY
+PASS  CTRL_ROUTE_CONJUNCT_JOINT_TARGET_IDENTITY
+PASS  CTRL_ROUTE_CONJUNCT_TARGET_BLIND
+PASS  CTRL_ROUTE_CONJUNCT_FALSIFIERS_CLEAR
+PASS  CTRL_CALIBRATION_ABLATION_Q_E
+PASS  CTRL_IRREDUCIBLE_SYNTHETIC
+PASS  CTRL_REDUCIBLE_DERIVED_SYNTHETIC
+PASS  CTRL_CONTRADICTION
+PASS  CTRL_ROUTE_EVAL_RECORDED
+PASS  CTRL_RESIDUAL_MULTIPLIER_ABLATION
+PASS  CTRL_LOCATION_CLOSURE_OUT_OF_ARENA
+
+Build-global dimensions, local inventory, and verdict table
+-----------------------------------------------------------
+PASS  DIMENSION_HOMOGENEITY
+PASS  DUAL_ENGINE_TERMS
+PASS  VERDICT_REDERIVATION
+
+Bounded source-to-stage predicate manifest
+------------------------------------------
+PASS  SOURCE_TO_STAGE_MANIFEST
+
+VERDICT=SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})
+ACTIVE_IRREDUCIBLE={rho_B0,chi_c,C_hu}
+DRIFT_COUNT=3
+FREEDOM_STATES=FREEDOM_SIM_DEFERRED{Route-A};FREEDOM_CERTIFIED_CURRENT_LEDGER{C_hu}
+NO_FOURTH_ARENA=True
+LINEAGE=NO_OVERCOUNT_ROUTE_A_PENDING
+POST_D16_DRIFT_TOKEN=POST_D16_DRIFT(7)
+ANTI_ABSORPTION_DRIFT_SIDE=DISJOINT
+PHYSICAL_MEANING_FROM_ARENA_MAP=3D brane surface: rho_B0,chi_c; throat/embedding seam: C_hu
+Q_E_NEAR_MISS=without calibration anchor, active_irreducible={rho_B0,chi_c,C_hu,Q_E}; drift_count=4
+HONEST_CAVEAT=bookkeeping/labelling closure only; dynamical brane-genesis remains open and is handed to the deferred throat/embedding solve
+FRAMING=CHARACTERIZED-DEPARTURE; no_fourth_arena is labelling-level
+SOURCE_PREDICATE_TOTAL=37
+EXECUTABLE_TOOTH_TOTAL=35
+
+TOOTH_COUNT=35
+PASS tally: 35; FAIL tally: 0
+OVERALL PASS: Mathematica independently reached SECOND_MEDIUM_DRIFT(active_irreducible={rho_B0,chi_c,C_hu})

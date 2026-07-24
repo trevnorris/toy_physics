@@ -1,0 +1,173 @@
+
+=========================================================
+ledger_stage005_sound_speed_light_ratio Mathematica audit
+=========================================================
+
+S1 owned sound-speed derivation from imposed EOS
+------------------------------------------------
+  EOS_CLOSURE_IMPOSED: P=K*rho^5 is postulated; this stage derives c_s relative to that EOS.
+PASS  S1 native D[K*rho^5,rho]/m_GNLS gives 5*K*rho^4/m_GNLS
+PASS  S1 native D[Log[c_s],Log[rho]] state slope
+
+Harness-mapped pathA_20 dimensional surface
+-------------------------------------------
+PASS  pathA_20_S1 dim c_s^2=5*K*rho^4/m_GNLS
+PASS  pathA_20_S1 dim c_s=sqrt(5*K*rho^4/m_GNLS)
+PASS  pathA_20_S1_S2 stationary quantum-Bernoulli additive terms
+PASS  pathA_20_S2 bulk continuity equation with v_b
+PASS  pathA_20_S2 dim Madelung background velocity v_b=(hbar/m_GNLS)*grad(theta)
+PASS  pathA_20_S2 dim photon/gauge-wave speed c_gamma
+PASS  pathA_20_S2 massless gauge-wave dispersion omega^2=c_gamma^2*k^2
+PASS  pathA_20_S2 trapped-mode dispersion omega^2=c_gamma^2*(k_parallel^2+k_perp^2)
+PASS  pathA_20_S2 dim trapped-mode group velocity d omega/dk
+PASS  pathA_20_S2 dim ratio c_gamma/c_s
+PASS  pathA_20_S2 dim tail factor (c/c_s)^3 with c=c_gamma
+PASS  pathA_20_S2b dim 4D-bulk candidate sonic number flux rho_* c_s,* A_3,*
+PASS  pathA_20_S2b dim 3D-brane candidate sonic number flux rho_3,* c_s,* A_2,*
+PASS  pathA_20_S2b dim background pressure P0=K*rho0^5
+PASS  pathA_20_S3 consumed dim pin relation hbar=m_GNLS*c_s0*a
+PASS  pathA_20_S3 consumed dim healing relation hbar=m_GNLS*c_s0*xi_h/sqrt(2)
+PASS  pathA_20_S3 dim circulation kappa=int v_b dl
+PASS  pathA_20_S3 dim phase-momentum exchange p=hbar*grad(theta)
+PASS  pathA_20_S3 dim quantum pressure Q=-hbar^2/(2m)*laplacian(sqrt(rho))/sqrt(rho)
+PASS  pathA_20_S2_S3 dim candidate mass bridge hbar*J/c_gamma^2
+PASS  pathA_20_S2_S3 dim cycle-rate bridge h*J_nu/c_gamma^2
+PASS  pathA_20 harness dimensional check count is 21
+  STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA: dimensions do not solve the stationary profile.
+  HBAR_PROVENANCE_UNDETERMINED: hbar remains an explicit action/PDE coefficient.
+  HBAR_FREE_SUBSTRATE_RELATION_MISSING: hbar=m_GNLS*c_s0*a is a pin rearrangement, not an hbar-emergence proof.
+  H_2PI_RATE_CLASSIFICATION_UNDERDETERMINED: h and hbar share dimensions; the 2*pi placement is deferred.
+  candidate-only: m_defect=alpha_J*hbar*J/c_gamma^2 does not collapse M and does not derive alpha_J.
+
+S2 c=c_gamma wave-sector ceiling
+--------------------------------
+PASS  S2 native D trapped-mode group velocity
+PASS  S2 native group-velocity bound residual
+PASS  S2 Reduce/Simplify proves c_gamma^2-(domega/dk)^2>=0 for kperp>=0
+PASS  S2 trapped k_perp>0 branch has strictly positive group-velocity gap
+PASS  S2 degenerate k_perp=0 free wave reaches c_gamma ceiling
+  Assumption: k_perp>0 gives a trapped mode strictly below c_gamma; k_perp=0 is the free c_gamma wave.
+PASS  S2 bound-mode clock along x=v*t advances at omega0/gamma
+  EARNED: c=c_gamma is read from the wave-sector ceiling; no E=m_defect*c_gamma^2 premise is used.
+  NON-EVIDENTIARY: [c_s]=[c_gamma] is a dimensional match only; it is not evidence for c_gamma=c_s.
+
+S2b conditional nozzle algebra and lambda tail
+----------------------------------------------
+PASS  pathA_20 algebra conditional ideal no-Q/no-V sonic c_s,* / c_s0
+PASS  pathA_20 algebra conditional ideal no-Q/no-V sonic rho_* / rho0
+PASS  pathA_20 algebra conditional ideal no-Q/no-V flux factor Jcrit/(rho0*c_s0*A*)
+PASS  pathA_20 algebra tail factor with lambda_gamma=c_gamma/c_s
+PASS  pathA_20 harness algebraic check count is 5
+  CONDITIONAL_NOT_ACCEPTED_AS_BRANCH_LAW: nozzle factors are recorded, not accepted as the branch law.
+  STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA and NO_NET_ACCRETION_BC_UNDERIVED are carried forward.
+
+S3 role catalog provenance
+--------------------------
+  circulation kappa=int v_b dl=h*n/m_GNLS; phase momentum p=hbar*grad(theta); quantum pressure Q checked above.
+  mass-bridge candidate-only: hbar*J/c_gamma^2 and h*J_nu/c_gamma^2 are dimensional candidates only.
+
+Consumed from ledger_stage004 (I-1)
+-----------------------------------
+  CITED, NOT RE-DERIVED: dictionary {L,T,M}; a=hbar/(m_GNLS*c_s0); xi_h=sqrt(2)*hbar/(m_GNLS*c_s0); h0=(m_GNLS*c_s0^2)/4.
+  EOS_FROM_GNLS_FACTOR: exact values are checked only as citation-integrity against I-2-derived c_s0.
+PASS  stage004 consumed dim [a]=L
+PASS  stage004 consumed dim [xi_h]=L
+PASS  stage004 consumed dim [h0]=[m_GNLS*c_s0^2]
+PASS  stage004 citation integrity h0-(m_GNLS*c_s0^2)/4
+PASS  stage004 citation integrity xi_h-sqrt(2)*hbar/(m_GNLS*c_s0)
+
+Harness-mapped pathA_20b dimensional surface
+--------------------------------------------
+PASS  pathA_20b_L2 dim phonon sound speed c_s0=sqrt(5*K*rho0^4/m_GNLS)
+PASS  pathA_20b_L1_L2 dim Maxwell principal speed squared C_B/C_E
+PASS  pathA_20b_L2 dim gauge speed c_gamma=sqrt(C_B/C_E)
+PASS  pathA_20b_L3 dim conditional bulk ratio c_bulk/c_s0
+PASS  pathA_20b_L4 dim tail factor lambda_gamma^3=(c_gamma/c_s)^3
+PASS  pathA_20b_L1b Maxwell transverse principal operator terms
+PASS  pathA_20b_L2 transverse gauge dispersion omega^2=(C_B/C_E)*k^2
+PASS  pathA_20b_L2 phonon acoustic dispersion omega^2=c_s0^2*k^2
+PASS  pathA_20b_L1 dim background charge density J_psi0^0=q_star*rho0
+PASS  pathA_20b_L1b linearized spatial current variation terms
+PASS  pathA_20b_L1 source coupling dimensions A_M delta J^M
+PASS  pathA_20b harness dimensional check count is 11
+  LEGAL_WITH_EXPLICIT_NEUTRALIZING_EXTERNAL_SOURCE: J_tot0^M=J_psi0^M+J_ext0^M=0 makes the Maxwell background 0=0.
+  LOWER-ORDER: current/London/source-coupling terms do not set the cone; the transverse principal field-strength operator does.
+
+L1b-L2 native determinant and dispersion algebra
+------------------------------------------------
+PASS  L2 h'(rho0)=5*K*rho0^3 from native D
+PASS  L2 c_s0^2=rho0*h'(rho0)/m_GNLS reproduces S1 background
+PASS  pathA_20b algebra phonon determinant gives hbar*(omega^2-c_s0^2*k^2)
+PASS  pathA_20b algebra transverse gauge operator gives c_bulk^2=C_B/C_E
+PASS  pathA_20b algebra block coupled characteristic determinant P_ph*P_T^2
+  VANISHES_ON_HOMOGENEOUS_NEUTRALIZED_BACKGROUND: off-diagonal principal terms vanish in the neutralized homogeneous background.
+PASS  L2 phonon dispersion read off by Solve as omega^2=c_s0^2*k^2
+PASS  L2 gauge dispersion read off by Solve as omega^2=c_bulk^2*k^2
+  source status: BULK_PRINCIPAL_TRANSVERSE_BRANCH_ESTABLISHED
+  Bogoliubov k^4 quantum-pressure correction is dispersive and does not set the cone.
+PASS  pathA_20b algebra conditional rho0 slope d ln lambda_gamma / d ln rho0
+PASS  pathA_20b algebra standing-wave tail remains lambda_gamma^3
+
+CALIBRATED landing and negative control
+---------------------------------------
+PASS  pathA_20 lambda tail carried as lambda_gamma^3
+PASS  lambda_gamma is dimensionless
+PASS  lambda_gamma^3 tail is dimensionless
+PASS  lambda_gamma^3 tail is not reduced to 1 is nonzero as required (residual = -1 + lambdaGamma^3)
+  C_GAMMA_RATIO_UNDERDETERMINED: lambda_gamma=c_gamma/c_s is a FREE calibration input.
+  REJECTED: c_gamma=c_s from shared dimensions or legacy weak-field prose.
+  C_GAMMA_BULK_UNDERDETERMINED: BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED.
+  C_GAMMA_RATIO_STILL_UNDERDETERMINED: BRANE_ZERO_MODE_REDUCTION_UNDERIVED; BRANE_PHOTON_CONE_REQUIRES_PROFILE.
+PASS  pathA_20b conditional bulk ratio c_bulk/c_s0 is dimensionless
+  conditional bulk ratio carried symbolically: Sqrt[(cB*mGNLS)/(cE*kEos)]/(Sqrt[5]*rho0^2)
+PASS  negative control independent-symbol residual C_B/C_E-5*K*rho0^4/m_GNLS is nonzero as required (residual = cB/cE - (5*kEos*rho0^4)/mGNLS)
+PASS  negative control forced_equals_valid is False without source equation
+PASS  negative control baseline verdict is C_GAMMA_RATIO_UNDERDETERMINED
+  FORCED_EQUALITY_REJECTED_WITHOUT_SOURCE_EQUATION
+PASS  pathA_20b harness algebraic check count is 7
+
+Negative-control reversibility able-to-PASS
+-------------------------------------------
+PASS  reversibility inserted source equation C_B->5*K*rho0^4*C_E/m_GNLS zeros residual
+PASS  reversibility control residual becomes zero
+PASS  reversibility forced_equals_valid flips True with inserted source equation
+PASS  reversibility verdict flips to C_GAMMA_EQUALS_C_S
+  C_GAMMA_EQUALS_C_S is reachable only in the counterfactual branch with an inserted source equation.
+
+Able-to-fail dimensional and derivation firewall
+------------------------------------------------
+PASS  ablation corrupt EOS exponent P=K*rho^4 breaks [c_s] produced required FAIL (residual = 4)
+PASS  ablation corrupt EOS exponent P=K*rho^4 breaks log-slope=2 produced required FAIL (residual = -1/2)
+PASS  ablation drop m_GNLS from c_s^2 breaks velocity dimension produced required FAIL (residual = 1/4)
+PASS  ablation corrupt phonon block missing k^2 breaks determinant factorization produced required FAIL (residual = (5*hbar*kEos*(-1 + kSq)*rho0^4)/mGNLS)
+PASS  ablation corrupt consumed xi_h by dropping sqrt(2) breaks citation integrity produced required FAIL (residual = -(((-1 + Sqrt[2])*hbar)/(Sqrt[5]*Sqrt[kEos*mGNLS]*rho0^2)))
+PASS  ablation corrupt consumed h0 wrong 1/4 breaks citation integrity produced required FAIL (residual = (5*kEos*rho0^4)/4)
+PASS  baseline consumed handoff still live after ablations
+
+Carried residuals printed verbatim as provenance
+------------------------------------------------
+  EOS_CLOSURE_IMPOSED: CARRIED_FORWARD.
+  C_GAMMA_RATIO_UNDERDETERMINED: BLOCKS_NUMERIC_C_GAMMA_OVER_C_S.
+  STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA: FLUX_LAW_VERDICT.
+  NO_NET_ACCRETION_BC_UNDERIVED: CARRIED_FORWARD.
+  HBAR_PROVENANCE_UNDETERMINED: S3 verdict.
+  HBAR_FREE_SUBSTRATE_RELATION_MISSING: BLOCKS_HBAR_EMERGENT.
+  H_2PI_RATE_CLASSIFICATION_UNDERDETERMINED: CARRIED_FORWARD.
+  BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED: BULK_VERDICT_RESIDUAL.
+  PARENT_METRIC_ACOUSTIC_IDENTIFICATION_MISSING: BLOCKS_BULK_EQUALS_C_S.
+  BRANE_ZERO_MODE_REDUCTION_UNDERIVED: BRANE_VERDICT_RESIDUAL.
+  BRANE_PHOTON_CONE_REQUIRES_PROFILE: BRANE_SUB_RESIDUAL.
+  mass-bridge candidate-only: m_defect=alpha_J*hbar*J/c_gamma^2 is dimensional, not derived.
+  anti-tautology caveat: hbar=m_GNLS*c_s0*a is a pin rearrangement unless a is fixed by an hbar-free substrate relation.
+
+Verdict labels:
+  ledger earned-label (NOT a source verdict token): EOS_SOUND_SPEED_DERIVED_LIGHT_RATIO_FREE  (c_s^2=5*K*rho^4/m_GNLS from P=K*rho^5; c=c_gamma wave-sector ceiling; lambda_gamma=c_gamma/c_s FREE)
+  source top-line verdict: C_GAMMA_RATIO_UNDERDETERMINED   (PASS_WITH_NAMED_RESIDUALS)
+  calibrated landing (honest): lambda_gamma=c_gamma/c_s UNPINNED by the parent action -- free calibration input; tail (c/c_s)^3=lambda_gamma^3 carried (NOT set to 1)
+  pathA_20b sharpening: bulk C_GAMMA_BULK_UNDERDETERMINED; brane C_GAMMA_RATIO_STILL_UNDERDETERMINED; negative control FORCED_EQUALITY_REJECTED_WITHOUT_SOURCE_EQUATION (reversible to C_GAMMA_EQUALS_C_S only with an inserted source equation)
+  labeled non-derivation (candidate only): m_defect=alpha_J*hbar*J/c_gamma^2 -- dimensional candidate, NOT a mass derivation
+  consumed from ledger_stage004 (I-1) [EOS_FROM_GNLS_FACTOR]: dictionary {L,T,M}; a=hbar/(m_GNLS*c_s0); xi_h=sqrt(2)*hbar/(m_GNLS*c_s0); h0=(m_GNLS*c_s0^2)/4
+  carried residuals: EOS_CLOSURE_IMPOSED; STATIONARY_PROFILE_UNDERDETERMINED_BY_BRANCH_DATA; NO_NET_ACCRETION_BC_UNDERIVED; HBAR_PROVENANCE_UNDETERMINED; HBAR_FREE_SUBSTRATE_RELATION_MISSING; H_2PI_RATE_CLASSIFICATION_UNDERDETERMINED; BULK_METRIC_SPEED_NORMALIZATION_UNSPECIFIED; PARENT_METRIC_ACOUSTIC_IDENTIFICATION_MISSING; BRANE_ZERO_MODE_REDUCTION_UNDERIVED; BRANE_PHOTON_CONE_REQUIRES_PROFILE
+
+PASS tally: 81; FAIL tally: 0
+OVERALL PASS: Mathematica derived ledger_stage005 EOS sound speed and light/sound ratio exactly

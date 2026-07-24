@@ -1,0 +1,160 @@
+\section{Stage 044: The Conservative Parent Action, Assembled at the Completeness Floor --- the \texttt{PARENT\_ACTION\_ASSEMBLED\_AT\_COMPLETENESS\_FLOOR} Synthesis (the Two-Object Action \(S_{\rm cons}^{G0}\subset S_{\rm assembled}\), the Static \(r_B\!\equiv\!\chi_B\) Wall Reconciliation, and the Two NAMED Non-Variational Drain Interfaces; the Part-VII Spine)}
+
+\stagefield{Part / anchor}{Part VII -- Integration (VII-2a; the SPINE stage -- a genuinely-NEW synthesis, not a reshape: there is no \texttt{pathA\_44} source gate. It assembles Parts~I--VI (medium/gravity, wall, light, charge, magnetism) into ONE conservative parent action over ONE field set, reconciles the two historical wall descriptions (G0-card \(r_B\) \(\leftrightarrow\) Part-I \(\chi_B\)) at the static wall-energy level, and NAMES the two candidate non-variational drain interfaces --- at the structure / completeness-floor level only)}
+\claimstatus{\StatusOpen}
+\stagefield{Purpose}{Assemble and internally-verify the conservative parent
+action as TWO nested objects (kept DISTINCT): \textbf{(1)}~\(S_{\rm
+cons}^{G0}=S_{\rm bulk}+S_\chi+S_{\rm scalar}+S_{\rm mouth}+S_{\rm hold}+S_{\rm
+geon,const}\) (the G0 card's six conservative summands), and \textbf{(2)}~the FULL
+parent action \(S_{\rm assembled}=S_{\rm cons}^{G0}+S_{\rm brane}[\text{light}]+S_{\rm
+move}[\text{magnetism moving coupling, counted ONCE}]\), with \(S_{\rm scalar}\) the
+EXCLUSIVE reduced \(S_{Lh}\) XOR parent \(S_H+S_u+S_{\rm mix}\). RECONCILE the wall
+\(r_B\equiv\chi_B\) at the STATIC WALL-ENERGY level (map \(\kappa_\chi\equiv\kappa_B\),
+\(\lambda_\chi=4a_B\Rightarrow\ell=\delta\), \(\sigma_\chi=\sigma_{\rm wall}\), minima
+\(\{0,1\}\)) --- the FULL functionals DIFFER (inertial \(\tfrac12 Z_\chi\dot r_B^2\) vs
+Part-I dissipative gradient-flow). NAME both non-variational drain interfaces
+(Part-I \(\Gamma_B\) internal order-conversion / G0 \(S_{\rm drain}\) total-\(\rho\)
+sink+return) and record their equivalence UNRESOLVED, selection DEFERRED. Verdict
+token \texttt{PARENT\_ACTION\_ASSEMBLED\_AT\_COMPLETENESS\_FLOOR}.}
+\stagefield{Verification}{SymPy audit:
+\StageFile{scripts/ledger_stage044_parent_action_reconciliation_sympy_audit.py}.
+Mathematica audit:
+\StageFile{mathematica/ledger_stage044_parent_action_reconciliation_mathematica_audit.wl}.}
+
+\paragraph{Claim status.}
+\StatusOpen{} --- a \textbf{conservative-parent-action STRUCTURE assembled at the
+completeness floor, NOT a closure}. Scope class: \textbf{SYNTHESIS}, dual-engine.
+044 assembles the structure and verifies its internal consistency; it does \textbf{NOT}
+close the action, does \textbf{NOT} select or equate the drain, and does \textbf{NOT}
+perform any two-body / far-field / throat solve. \textbf{Honesty guardrails (NEVER
+softened, NEVER inflated):} \(\texttt{closed\_action}=\texttt{false}\) (the closed
+unified action awaits the shared throat solve,
+\(\texttt{throat\_solve}=\texttt{SIM\_DEFERRED\_CENTRAL\_DEBT}\));
+\(\texttt{g0\_card}=\texttt{DRAFT\_V0}\) (the G0 closure card is postulated, not a
+ratified stage; many gates DEFERRED); \(\texttt{drain\_equivalence}=\texttt{UNRESOLVED}\)
+and \(\texttt{drain\_selection}=\texttt{DEFERRED\_045\_AND\_USER\_GATE}\) (044 makes NO
+drain decision --- the genuine drain-placement mini-gate is the USER's, at 045);
+\(Z_\chi\) is an unearned inertial \texttt{[POSTULATE]} with no reduction route (the
+reconciliation is NOT a ``no new knobs'' stage). The verdict is NEITHER ``one medium
+proven'' NOR ``second substance found'': it is an internally-consistent conservative
+parent-action structure with the drain equivalence UNRESOLVED and the closure
+sim-deferred.
+
+\paragraph{The assembled two-object action + field-set union (\texttt{S\_cons\_G0\_summands}, \texttt{S\_assembled\_extra}, \texttt{scalar\_branch}, \texttt{field\_set\_*}, \texttt{theta\_B}).}
+\(S_{\rm cons}^{G0}=\{S_{\rm bulk},S_\chi,S_{\rm scalar},S_{\rm mouth},S_{\rm
+hold},S_{\rm geon,const}\}\); \(S_{\rm assembled}\) adds \(S_{\rm brane}[\text{light}]\)
+(the \(g_\ell\)-LOCALIZED MacCullagh transverse shear \(+\) gapped \(u_w\), light speed
+\(c_\gamma^2=\mu_R/\rho_{\rm br}\)) \(+\) \(S_{\rm move}\) (the ONE new magnetism
+conservative term \(q_T\sum_i s_i\eta_a V_i\!\cdot\!u_T\), \(\nabla\!\cdot\!u_T=0\),
+counted ONCE; the kinetic/gradient rows are the imported \(L_{\rm Mac}\), cited).
+\(S_{\rm scalar}\) is the reduced \(S_{Lh}\) XOR the parent triple
+\(S_H+S_u+S_{\rm mix}\) (EXCLUSIVE, never summed). \(S_{\rm hold}=-\int\!dt\int_{\Gamma_\Sigma}\!d^3A\,\lambda_\Sigma(r_B-\tfrac12)\)
+pins \(r_B=\tfrac12\); \(\lambda_\Sigma\) is a non-propagating auxiliary (in the
+variational inventory, EXCLUDED from the physical DOF count); the ambient piece is
+written \(\Gamma_\Sigma^{\rm amb}\) (notation firewall vs Part-I's \(\Gamma_B\)). The
+brane phase \(\theta_B\) is ELIMINATED by Schur into \(A_{\rm
+eff}=\rho_{\rm br}+C_J^2/\kappa_{\rm phase}\) --- DISTINCT from the RETAINED Madelung
+flow phase \(\theta\). Branch-dependent field sets: PARENT \(\{\rho,\theta,r_B\equiv
+\chi_B,H,u_L,u_T(\text{divfree}),u_w,\lambda_\Sigma(\text{aux})\}\); REDUCED
+\(\{\rho,\theta,r_B\equiv\chi_B,u_L,h,u_T(\text{divfree}),u_w,\lambda_\Sigma(\text{aux})\}\).
+
+\paragraph{The wall static-energy reconciliation (\texttt{wall\_dedup}, \texttt{wall\_factorization}, \texttt{g\_ell}, \texttt{light\_gating}).}
+Under \(r_B\equiv\chi_B\), \(\kappa_\chi\equiv\kappa_B\), \(\lambda_\chi=4a_B\):
+\(\ell=\sqrt{2\kappa_\chi/\lambda_\chi}=\sqrt{\kappa_\chi/2a_B}=\delta\),
+\(\sigma_\chi=\kappa_\chi/(6\ell)=\sqrt{2a_B\kappa_B}/6=\sigma_{\rm wall}\), coincident
+minima \(\{0,1\}\), and the STATIC WALL-ENERGY densities are equal
+(\(\texttt{wall\_dedup}=\texttt{STATIC\_WALL\_ENERGY\_IDENTITY}\)). \textbf{Scoped to
+the static wall energy}: the FULL functionals DIFFER
+(\(\texttt{FULL\_FUNCTIONALS\_DIFFER}\)) --- G0's \(S_\chi\) is INERTIAL
+(\(\tfrac12 Z_\chi\dot r_B^2\)), Part~I supplies a free energy \(+\) DISSIPATIVE
+adjunct \(D_t\chi_B=-M_\chi\mu_\chi(+\Gamma_B)\); NOT a full-Lagrangian identity. This
+is (a)~the exact static-energy dedup PLUS (b)~a \textbf{SCOPE-SPLIT for \(g_\ell\)}: the
+Gaussian localization envelope is NOT merged/removed; \(\chi_B\) supersedes only
+\(g_\ell\)'s material-state-closure role (register edge \texttt{R21}, a scope split, NOT
+a reduction), while \(g_\ell\) PERSISTS as the light-brane envelope in \(S_{\rm brane}\)
+(\(\texttt{g\_ell}=\texttt{SCOPE\_SPLIT\_R21\_NOT\_MERGED}\)). The dynamic
+\(\chi_B\)-gating is the DISTINCT stage006 term (\(\mu_R=\int\chi_B\mu_R^{(4)}dw\), edge
+\texttt{R17} PENDING) --- NOT double-counted. Operator factorizations:
+\(L_\chi^{(2)}/\kappa_\chi=A_\chi^\dagger A_\chi\) annihilates \(r_0'\);
+\(O_\perp=A^\dagger A\), \(O_\perp f_0=0\), \(f_0=1/[\ell\cosh^2(w/\ell)]\),
+\(N_0=8/(3\ell)\) (\(L_\chi^{(2)}\) is the Hessian, NOT the full \(L_\chi\)).
+
+\paragraph{The two NAMED non-variational drain interfaces --- adjudicate NEITHER (\texttt{conservative\_continuity}, \texttt{drain\_interfaces}, \texttt{drain\_types}, \texttt{drain\_equivalence}, \texttt{drain\_selection}).}
+\(S_{\rm assembled}\) is source-free: \(\delta S/\delta\theta\Rightarrow
+\partial_t\rho+\nabla\!\cdot\!(\rho v)=0\)
+(\(\texttt{conservative\_continuity}=\texttt{SOURCE\_FREE}\)) --- the conservative action
+contains NEITHER drain. Both candidates are non-variational, DIFFERENT balance-law
+objects: Part-I \(\Gamma_B\) (\texttt{internal\_order\_conversion\_total\_n\_conserved};
+\(\partial_t(\chi_B n)+\nabla_4\!\cdot\!(\cdots)=n\Gamma_B\), dim \(T^{-1}\), total \(n\)
+conserved) and G0 \(S_{\rm drain}\)
+(\texttt{total\_rho\_sink\_plus\_remote\_return}; ``deliberately non-variational,''
+charge-EVEN). No holonomic map between them is supplied, and \(S_{\rm hold}\) does NOT
+toggle between them (the ``option~(c) regime toggle'' claim is WITHDRAWN). 044 records
+\(\texttt{drain\_interfaces}=\texttt{TWO\_NONVARIATIONAL\_NAMED}\),
+\(\texttt{drain\_equivalence}=\texttt{UNRESOLVED}\),
+\(\texttt{drain\_selection}=\texttt{DEFERRED\_045\_AND\_USER\_GATE}\) --- \textbf{044
+selects NO drain}.
+
+\paragraph{The four P-retirement manifests, the wave speeds, and stability (\texttt{P\_retirement}, \texttt{wave\_speeds}, \texttt{stability}).}
+Decision-16 retired the brane polar field \(P\) (\texttt{INSTABILITY\_CONFIRMED\_STRUCTURAL});
+the bookkeeping is FOUR disjoint, category-clean, computed manifests: stage007 action
+operative \(\{S_{\rm GNLS},gL_{\rm Mac},gL_{uw}\}\) vs retired \(\{L_{\rm pol},gL_{\rm
+Pu}\}\); stage007 DOF \(8\to4\); stage007 drift \(11\to7\); stage006 drift \(6\to5\);
+net route-less \(-5=-4(\text{s007 drift})-1(\text{s006 drift})\) --- \textbf{in the DRIFT
+counts, NOT the DOF count}. Three distinctly-attributed wave speeds:
+\(c_{s0}^2=5K\rho_0^4/m\) (bulk), \(c_\pm^2=(3\pm\sqrt2)/2=\{0.7929,2.2071\}\) in units
+\(c_E^2\) (scalar block, roots of \(\det(K-zM)=0\)), \(c_\gamma^2=\mu_R/\rho_{\rm br}\)
+(light import). Stability is \texttt{POSITIVE\_DEFINITE} via \textbf{Sylvester}
+(\(B_{\rm eff}>0\) AND \(D_\star=B_{\rm eff}K_h-C_{hu}^2=7/4>0\); wall minima
+\(\{0,1\}\); \(\Omega_w^2\ge0\)). Whole-system units-restored \([L,T,M]\)
+dimensional-homogeneity PASSES (free-carrier-independent).
+
+\paragraph{The \(Z_\chi\) new DRAFT-v0 knob \(+\) its count consequence, and the gravitomagnetism prose pointer (\texttt{new\_draft\_knob}, \texttt{Z\_chi\_count\_consequence}, \texttt{gravitomagnetism}).}
+The conservative (inertial) wall needs \(Z_\chi\), which the G0 card declares
+\texttt{[POSTULATE]} with NO reduction route (the register has \(a_B,\kappa_B\) and the
+DISSIPATIVE \(M_\chi\), but no \(Z_\chi\)); it is NOT absorbable by rescaling \(r_B\)
+(the well minima \(\{0,1\}\) pin the field normalization). 044 records it as a NEW
+DRAFT-v0 action input (\(\texttt{new\_draft\_knob}=\{Z_\chi:\text{POSTULATE, no
+reduction route}\}\)). \textbf{Count consequence (NOT ``unaffected''):} by 043's OWN
+rule \(Z_\chi\) shifts the continuous codimension range \([40,49]\to[41,50]\) (both
+endpoints \(+1\); spread \(9\) unchanged), recorded as the count-reconciliation
+sensitivity edge \texttt{R97}; the committed re-count is DEFERRED to 046 (which may
+find \(Z_\chi\) SUBSTITUTES for the dissipative \(M_\chi\)). This PARALLELS 043's R92
+\(K_\theta/\kappa_{\rm phase}\)-as-2-DOF \(+1\) sensitivity (also \(\to[41,50]\)) --- TWO
+INDEPENDENT \(+1\) sources, each deferred to 046; the \([40,49]\) 043 headline STANDS as
+the committed Parts-I--VI count until 046. Gravitomagnetism is a \textbf{PROSE POINTER
+ONLY} (NO register row --- 047's job): frame-dragging / Lense--Thirring is the boost of
+the gravitoelectric flow, reproduced by the audited GR-matched 1PN--4PN ladder
+(\texttt{research/4d\_*pn*}); the ``B-analog \(=\) boost of the E-analog'' structure holds
+on BOTH forces. \textbf{Honest asymmetry:} gravity matches GR CLEANLY (incl.
+gravitomagnetism, through 4PN); EM genuinely DEPARTS exact Maxwell
+(\texttt{NATIVE\_P\_NO\_EMERGENT\_GAUSS}/033, \(b_T\) T-even/039) --- the gravitomagnetic
+side is BETTER-covered.
+
+\paragraph{Verification.}
+Dual-engine, both exit~0, \textbf{SymPy 20 teeth / Mathematica 20 teeth} (materially
+independent), the canonical-ordered-JSON verdict byte-identical across engines
+(\(\mathbf{2196}\) bytes). Teeth: \texttt{A\_WALL\_STATIC\_ENERGY\_DEDUP},
+\texttt{B\_WALL\_HESSIAN\_ZERO\_MODE}, \texttt{C1\_CHARGE\_FACTORIZATION\_ZERO\_MODE},
+\texttt{C2\_CHARGE\_ZERO\_MODE\_NORM}, \texttt{D1\_BULK\_SOUND\_SPEED},
+\texttt{D2\_SCALAR\_WAVE\_SPEEDS}, \texttt{D3\_LIGHT\_WAVE\_SPEED},
+\texttt{E1\_SCALAR\_SYLVESTER}, \texttt{E2\_WALL\_MINIMA}, \texttt{E3\_TRANSVERSE\_GAP},
+\texttt{F\_DIMENSIONAL\_HOMOGENEITY}, \texttt{G\_SOURCE\_FREE\_CONTINUITY},
+\texttt{H\_DRAIN\_PROVENANCE}, \texttt{I\_P\_RETIREMENT}, \texttt{J\_FIELD\_UNION\_SCHUR},
+\texttt{K1\_DEFERRED\_GATE\_COMPLETENESS}, \texttt{K2\_DRAFT\_OPEN\_ACTION},
+\texttt{L\_ACTION\_INCIDENCE}, \texttt{M\_PROVENANCE\_STATUS\_BINDING},
+\texttt{REPRODUCTION}. The verdict is COMPUTED via a documented first-match (never a
+stored literal); the runner byte-compares the two emitted JSON files.
+\textbf{Per-tooth ablation \(\mathbf{43/43}\) fired across BOTH engines} (env switch
+\texttt{LEDGER\_STAGE044\_MUTATION}, each firing \texttt{FIRED\_AT\_OWN\_ASSERT}); tooth
+K uses the resolve-ALL (not drop-one) mutation for \texttt{closed\_action}; tooth L
+fires on a DELETED summand; every verdict field maps to a producing tooth. The
+directive passed the Codex\(\to\)Grok\(\to\)Codex bookend GREEN (Grok reproduced all 6
+numeric identities); the tri-review was FIDELITY CLEAN, with 3 flagged can't-fail
+sub-conjuncts all FIXED (\(\Rightarrow\) ZERO can't-fail conjuncts). \textbf{ONE
+non-blocking robustness note:} a subset of ELEMENTARY teeth (B/D1/E2/G) \(+\) the data
+manifests (H--M) are \texttt{.wl}\(\leftrightarrow\)\texttt{.py} transliterations
+(CAS-engine diversity still cross-checks them; the HARD teeth C1/C2/D2/E1 ARE
+method-independent via DSolve/Integrate/Eigenvalues/Reduce; method-diversity is
+inherent-impossible for provenance manifests) --- disclosed, not hidden. GLM-5.2
+tertiary: NOT yet run, HELD for the user's explicit confirm.

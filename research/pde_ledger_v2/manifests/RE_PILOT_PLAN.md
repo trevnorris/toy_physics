@@ -4,6 +4,55 @@
 > step: re-extract the two pilot slices under schema v2.1 and run the real checker. READ-FIRST next session,
 > then `manifests/EXTRACTION_PROTOCOL.md` + `manifests/MANIFEST_README.md` + `manifests/stage_manifest_schema_v2.json`.
 
+## ⭐ RE-PILOT PROGRESS (2026-07-24, this session — read this first)
+**MILESTONE ACHIEVED + independently verified:** stages 030, 031, 032 extracted to v2.1; the 3-stage
+`{030,031,032}` composite build is CLEAN (exit 0, headline PARTIAL — all findings honest edges into unextracted
+stages). `citations=17/20` resolve; `claims=106/106`; **ADJUDICATION PASS** (stage032 23040-cell grid: buckets
+sum + axes `5·6·6·4·2·2·2·2·2` both = 23040); the 030→031 spectrum handoff resolves (`spectrum_match` on the
+corrected `O_perp` operator, able-to-fail confirmed). 030 + 031 fidelity-audited FAITHFUL (031 audit pending on
+032). The checker was HARDENED (func/composite dim recovery) → Grok-reviewed (4 holes found+closed) → refined
+(over-correction on real stage030) → CONVERGED at **49 self-test fixtures** (SHA `faa7e8f1de1d3755`, frozen for
+extraction). Extraction pivoted from Codex → **agent-as-coder** (Codex CLI stalled twice on API hangs; agents run
+in-harness, reliable — this is the likely fanout default, see FANOUT_PLAN.md).
+
+**The pilot EARNED ITS KEEP** — real integration errors it caught: 031's v1 `det_m` axis handling, the spurious
+`stage030/kernel_determinant_star` citation (→ real `kernel_stability` D*=7/4), the drifted 031-claim renames that
+032's v1 consumes still pointed at.
+
+**SYSTEMATIC FINDINGS (fold into #27 / the fanout approach — USER input wanted on #2):**
+1. **Checker gaps to fix in ONE consolidated round (#27) before fanout:** (a) `dimension_of` doesn't treat sympy
+   `pi`/NumberSymbol as dimensionless → π in a dim expr = `DIMENSION_RULE_UNSUPPORTED` (stage031 worked around with
+   a `declare_pi` dimensionless local symbol); (b) dim-recovery requires a live `Dim` class → stage032's script uses
+   BARE TUPLES (`dim_E=(2,-2,1)`) so its C4 certificate had to BORROW stage031's script (values right, mis-anchored).
+   Fix both + able-to-fail fixtures; keep all 49 fixtures + real 030/031/032 passing; then re-anchor 032 dims + drop
+   the declare_pi workaround.
+2. **Systematic UNDER-EXPORT:** stages don't export every claim a downstream stage cites (030 lacked `O_perp` — added;
+   031 lacks `S_gg`/`declare_sgg` etc. → 032 fell back to opaque citations + an `A_V=m_gg·C_V` opaque form vs the note's
+   `m_gg·φ²/S_gg²`). The fanout likely needs an EXPORT-COMPLETENESS pass (a stage exports every claim downstream cites).
+   ⚠ This is a design choice affecting all 44 stages — confirm the approach with the user at the fanout opt-in.
+
+**REMAINING pilot work:** the real 030→031→032 **C7 mutation** (task #23, the capstone anti-rederivation proof —
+manifests currently have `c7_edges=0/17`, no C7 metadata; author an HONEST mutator + add c7_binding/c7_expect to one
+clean edge, e.g. 030→031 `zero_mode`);
+
+> **⭐ C7 EXECUTION RECIPE (contract read from `composite_build.py:1870-1946`, committed `30a432e9`):** The harness
+> covers an edge when the producer export has `c7_binding{producing_primitive, mutation_env, mutation_command,
+> exported_facet}` AND the consumer consume has `c7_expect{injection_point, facet_used, expected_first_failure}` AND
+> `facet_used == exported_facet`. It runs `mutation_command` as a subprocess with `env[mutation_env]=exported_facet`,
+> and reads the LAST stdout line as JSON `{consumer_stage: tooth_or_"PASS"}`. Verdicts: consumer `"PASS"` →
+> `DECORATIVE_DEPENDENCY` FAIL; `!= expected_first_failure` → `WRONG_FIRST_FAILURE` FAIL; `== expected_first_failure`
+> → PASS. Any OTHER loaded stage firing → `UNDECLARED_DEPENDENCY` FAIL. `expected_first_failure` MUST be a tooth in the
+> consumer's `verification.teeth`. **HONESTY (non-negotiable):** the mutator must ACTUALLY perturb the facet + COMPUTE
+> the downstream tooth outcome, never hardcode the tooth. Concrete plan for the 030→031 `zero_mode` edge: mutator
+> reads `C7_FACET`, perturbs f0's power 2→1 (`f0=1/(ell*cosh(w/ell))`), computes the residual
+> `-diff(f0,w,2)+V_H*f0` in sympy (≠0 ⇒ the zero-mode property genuinely breaks), and emits
+> `{"stage031": "<the 031 tooth whose assertion consumes the zero mode>"}` iff the residual is nonzero, else PASS.
+> Then add the c7 metadata to 030's `zero_mode` export + 031's `zero_mode` consume, run the checker → that edge's C7
+> goes PASS; also prove a `--decorative` variant (ignores the facet, prints PASS) → `DECORATIVE_DEPENDENCY` FAIL, per
+> the self-test fixtures at `composite_build.py:3536-3548`. Do this in a FRESH context (it's the subtlest piece). 043 (record_range path — the one distinct checker path still untested) + 006/044
+(lower marginal value — candidates for early fanout instead); the #27 checker round; commit. cleanup list: stage031
+`declare_pi` + its `det_m` extraction-report narrative (v1 was `[L,M,T]` order, not an error).
+
 ## What exists (committed `e849e303`, all under `research/pde_ledger_v2/manifests/`)
 - `stage_manifest_schema_v2.json` — schema **v2.1** (`schema_version` const "2.1"). The per-stage machine interface.
 - `composite_build.py` (~100KB) — the checker: IMPORT-COMPLETENESS + C1–C6 + the **C7 mutation harness**.

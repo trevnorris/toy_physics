@@ -1,0 +1,1996 @@
+{
+  "schema_version": "2.1",
+  "stage_id": "stage032",
+  "title": "Puncture-Deflection Charge -- BC Ensembles, the Force Sign, and the Honest R1_REQUIRED(bc_selection) Landing",
+  "part": "Part IV -- Charge (IV-3)",
+  "status_token": "R1_REQUIRED(bc_selection)",
+  "symbols": [
+    {
+      "name": "m_gg",
+      "parse_alias": "m_gg",
+      "quantity_id": "q.charge.response_gg",
+      "definition_ref": "stage031/response_m_gg",
+      "dim": {
+        "L": "-1",
+        "M": "-1",
+        "T": "2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "response_m_gg: m_gg = B_eff*z_g**2/D (consumed opaquely)",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "A_V",
+      "parse_alias": "A_V",
+      "quantity_id": "q.charge.v_coefficient",
+      "definition_ref": "here/a_v_coefficient",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "A_V = mgg*phi**2/sgg**2 (line 286); PASS_A_V_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "A_J",
+      "parse_alias": "A_J",
+      "quantity_id": "q.charge.j_coefficient",
+      "definition_ref": "here/a_j_coefficient",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "A_J = -mgg*(j+g)**2 (line 287); PASS_A_J_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "A_M",
+      "parse_alias": "A_M",
+      "quantity_id": "q.charge.m_coefficient",
+      "definition_ref": "here/a_m_coefficient",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "A_M = mgg*(q**2-g**2) (line 288); PASS_A_M_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "A_MIXED",
+      "parse_alias": "A_MIXED",
+      "quantity_id": "q.charge.mixed_coefficient",
+      "definition_ref": "here/a_mixed_coefficient",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "A_MIXED = mgg*((1-2*lam)*q**2-2*lam*q*g-g**2) (line 289); PASS_A_MIXED_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "C_V",
+      "parse_alias": "C_V",
+      "quantity_id": "q.charge.v_class_numerator",
+      "definition_ref": "here/declare_c_v",
+      "dim": {
+        "L": "4",
+        "M": "2",
+        "T": "-4"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units"
+      },
+      "dim_source_tuple": [
+        "4",
+        "-4",
+        "2"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "V/Dirichlet class numerator phi**2/S_gg**2 (opaque; S_gg binding claim declare_sgg not exported by stage031)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "j",
+      "parse_alias": "j",
+      "quantity_id": "q.charge.ensemble_source_j",
+      "definition_ref": "here/declare_j",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "phi, j = sp.symbols('phi j', real=True) (line 266)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "q",
+      "parse_alias": "q",
+      "quantity_id": "q.charge.ensemble_monopole_q",
+      "definition_ref": "here/declare_q",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "q, g = sp.symbols('q g', positive=True, real=True) (line 267)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "g",
+      "parse_alias": "g",
+      "quantity_id": "q.charge.committed_coupling",
+      "definition_ref": "here/declare_g",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "q, g = sp.symbols('q g', positive=True, real=True) (line 267); prose-identified with 031 g_chih",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "lam",
+      "parse_alias": "lam",
+      "quantity_id": "q.charge.mixed_weight",
+      "definition_ref": "here/declare_lam",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "lam = sp.Symbol('lambda', real=True) (line 268)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "name": "lam_star",
+      "parse_alias": "lam_star",
+      "quantity_id": "q.charge.mixed_interior_zero",
+      "definition_ref": "here/mixed_interior_zero",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "MIXED_ROOT = factor(solve(Eq(A_MIXED/mgg,0), lam)[0]) (line 291); PASS_MIXED_INTERIOR_ZERO",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "declare_c_v",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "C_V"
+        },
+        "rhs": {
+          "sympy": "C_V"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Opaque V/Dirichlet class numerator [E^2] = phi^2/S_gg^2; declared opaque because S_gg's binding claim stage031/declare_sgg is NOT exported by stage031, so S_gg cannot be referenced symbolically."
+      },
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol C_V.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "V/Dirichlet numerator, run_ensembles A_V line 286",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_j",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "j"
+        },
+        "rhs": {
+          "sympy": "j"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Fixed-source ensemble datum j, dimension ENERGY."
+      },
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol j.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "phi, j = sp.symbols (line 266)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_q",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "q"
+        },
+        "rhs": {
+          "sympy": "q"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Fixed-monopole ensemble datum q, dimension ENERGY."
+      },
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol q.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "q, g = sp.symbols (line 267)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_g",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "g"
+        },
+        "rhs": {
+          "sympy": "g"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Committed coupling g (prose-identified with 031 g_chih = J_m/ell); used as a bare positive-real ENERGY symbol, NOT symbolically tied to 031 machinery."
+      },
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol g.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "q, g = sp.symbols (line 267)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_lam",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "lam"
+        },
+        "rhs": {
+          "sympy": "lam"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "MIXED interpolation weight lambda, dimensionless."
+      },
+      "note": "Ownership-only declaration of the stage032-local ensemble symbol lam.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "lam = sp.Symbol('lambda', real=True) (line 268)",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_v_coefficient",
+      "kind": "dimensional",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_V"
+        },
+        "rhs": {
+          "sympy": "m_gg*C_V"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage031/neutral_shell_amplitude"
+        ]
+      },
+      "note": "V/DIRICHLET_VALUE decided-given-class coefficient A_V = m_gg*C_V with the opaque [E^2] numerator C_V = phi^2/S_gg^2 (reshape of the source V-ensemble through 031's symmetric self/cross response; the audit proves derived_A_V == A_V = m_gg*phi**2/S_gg**2). Written as m_gg*C_V because S_gg's binding claim stage031/declare_sgg is not exported (see extraction report). [A_V]=EL; repel at the nondegenerate witness (A_V>0).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_A_V_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_j_coefficient",
+      "kind": "dimensional",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_J"
+        },
+        "rhs": {
+          "sympy": "-m_gg*(j + g)**2"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage031/neutral_shell_amplitude"
+        ]
+      },
+      "note": "J/FIXED_SOURCE decided-given-class coefficient. The fixed-source functional m_gg(j+g)^2 - 2(j+g)*m_gg(j+g) factors to -m_gg(j+g)^2 (derived_A_J == A_J). [A_J]=EL; attract at the witness (A_J<0). g is prose-identified with 031's committed coupling g_chih.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_A_J_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_m_coefficient",
+      "kind": "dimensional",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_M"
+        },
+        "rhs": {
+          "sympy": "m_gg*(q**2 - g**2)"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage031/neutral_shell_amplitude"
+        ]
+      },
+      "note": "M/FIXED_MONOPOLE decided-given-class coefficient. Same-field source/reservoir work m_gg(q+g)^2 - 2g*m_gg(q+g) factors to m_gg(q^2-g^2) (derived_A_M == A_M). INDEFINITE: sign follows sgn(q^2-g^2) (PASS_A_M_INDEFINITE). [A_M]=EL.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_A_M_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_mixed_coefficient",
+      "kind": "dimensional",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_MIXED"
+        },
+        "rhs": {
+          "sympy": "m_gg*((1 - 2*lam)*q**2 - 2*lam*q*g - g**2)"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage031/neutral_shell_amplitude"
+        ]
+      },
+      "note": "MIXED/imposed-Robin decided-given-class coefficient with interpolation weight lam ([lam]=1). m_gg(q+g)^2 - 2(g+lam*q)*m_gg(q+g) factors to this (derived_A_MIXED == A_MIXED). [A_MIXED]=EL. Spans over the FULL combined parameter-and-magnitude domain.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_A_MIXED_FORMULA",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "mixed_interior_zero",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "lam_star"
+        },
+        "rhs": {
+          "sympy": "(q - g)/(2*q)"
+        },
+        "relation": "eq"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/a_mixed_coefficient"
+        ]
+      },
+      "note": "A_MIXED = 0 <=> lam_star = (q-g)/(2q) (the single algebraic interior zero). Endpoints lam=0 -> A_M, lam=1 -> -m_gg(q+g)^2. Three admissibility regimes over q,g>0, 0<=lam<=1 (q>g: lam_star in (0,1/2), +/null/- all occur; q=g: zero only at lam=0; q<g: lam_star<0 inadmissible, stays negative). Teeth PASS_MIXED_ENDPOINTS/INTERIOR_ZERO/REGIME_Q_GT_G/REGIME_Q_EQ_G/REGIME_Q_LT_G/FULL_DOMAIN_SPANS.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_MIXED_INTERIOR_ZERO / PASS_MIXED_ENDPOINTS",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_v_sign",
+      "kind": "inequality",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_V"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "ge"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/a_v_coefficient"
+        ]
+      },
+      "note": "WEAK certificate A_V >= 0, general (m_gg>=0, S_gg>0, phi real; symbolic ask). STRICT A_V > 0 (repel) only at the labelled NON-DEGENERATE z_g!=0 witness (m_gg=8/7, S_gg=2, phi=3) with strict_sign_context ACTIVE; at z_g=0 (m_gg=0) A_V vanishes and no strict assert is raised. Teeth PASS_WEAK_SIGNS_GENERAL, PASS_STRICT_SIGNS_NONDEGENERATE_WITNESS, PASS_DEGENERATE_Z_G_ZERO.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_WEAK_SIGNS_GENERAL / PASS_STRICT_SIGNS_NONDEGENERATE_WITNESS",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "a_j_sign",
+      "kind": "inequality",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_J"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "le"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/a_j_coefficient"
+        ]
+      },
+      "note": "WEAK certificate A_J <= 0, general (m_gg>=0). STRICT A_J < 0 (attract) only at the nondegenerate z_g!=0 witness (j=2, g=1) with strict_sign_context ACTIVE; vanishes at z_g=0. Same three teeth as a_v_sign.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_WEAK_SIGNS_GENERAL",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "decided_conditional_typing",
+      "kind": "adjudication",
+      "status": "DERIVED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 5,
+        "precedence": [
+          "DECIDED_given_class",
+          "R1_REQUIRED"
+        ],
+        "outcome_token": "DECIDED_given_class",
+        "bucket_counts": {
+          "decided_given_class": 1,
+          "r1_required": 4
+        }
+      },
+      "note": "Type register over the 5 selection items {coefficients, bc_selection, magnitude, mixed_parameters, variant}: coefficients=DECIDED_given_class (1); bc_selection/magnitude/mixed_parameters/variant=R1_REQUIRED (4). The four A_X and the coupling g=g_chih are DECIDED; the class SELECTION among {V,M,J,MIXED} and the ensemble data {phi,q,j,lam} are R1_REQUIRED. Mis-typing the class selection as DECIDED fires PASS_DECIDED_CONDITIONAL_TYPING.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_DECIDED_CONDITIONAL_TYPING",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "internal_inconsistency_none",
+      "kind": "adjudication",
+      "status": "EARNED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 4,
+        "precedence": [
+          "consistent_sector",
+          "inconsistency_sector"
+        ],
+        "outcome_token": "none",
+        "bucket_counts": {
+          "consistent_sector": 4
+        }
+      },
+      "note": "POSITIVE structural fact (charge coexists with gravity): the EMPTY Q-AMEND sector map over the 4 candidate sectors {replace_ledger, add_ledger, S_hold, zero_ledger}. REPLACE (new_rows=0) and ADD (one core h-holding row) both keep S_hold scoped to 'r_B-1/2 only' and preserve the 13 [POSTULATE] zero rows -> empty sector tuple -> none. Teeth PASS_AMEND_REPLACE/ADD, PASS_ZERO_LEDGER_13, PASS_S_HOLD_SCOPE, PASS_INTERNAL_INCONSISTENCY_NONE. S_hold enters ONLY as the string scope label; its frozen r_B=1/2 form is never plugged into any algebra here.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_INTERNAL_INCONSISTENCY_NONE",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "qbc_undetermined",
+      "kind": "adjudication",
+      "status": "DERIVED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 5,
+        "precedence": [
+          "DIRICHLET_VALUE",
+          "FIXED_MONOPOLE",
+          "MIXED",
+          "FIXED_SOURCE",
+          "UNDETERMINED_ANALYTICALLY"
+        ],
+        "outcome_token": "UNDETERMINED_ANALYTICALLY",
+        "bucket_counts": {
+          "undetermined_analytically": 1,
+          "dirichlet_value": 1,
+          "fixed_monopole": 1,
+          "fixed_source": 1,
+          "mixed": 1
+        }
+      },
+      "note": "The committed model's ACTUAL evidence (admissible variation present, missing parent-throat/boundary closure NONZERO_HA_REQUIRES_CORE_HOLDER consumed from 031) classifies to UNDETERMINED_ANALYTICALLY. Proved able-to-fail by the four controls that DO determine a class (free->FIXED_SOURCE, imposed value->DIRICHLET_VALUE, imposed conormal->FIXED_MONOPOLE, imposed relation->MIXED). Admissible class set exactly {DIRICHLET_VALUE, FIXED_MONOPOLE, FIXED_SOURCE, MIXED} (4). domain_cardinality 5 = actual + 4 controls. Teeth PASS_BC_ACTUAL_CLASSIFIER, the four PASS_BC_*_CONTROL, PASS_ADMISSIBLE_CLASSES.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_BC_ACTUAL_CLASSIFIER / PASS_ADMISSIBLE_CLASSES",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "production_landing",
+      "kind": "adjudication",
+      "status": "R1_REQUIRED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 23040,
+        "precedence": [
+          "NO_GO(sector)",
+          "SIGN_EARNED",
+          "R1_REQUIRED(magnitude)",
+          "MECHANISM_FALSIFIED(wrong_sign)",
+          "MECHANISM_FALSIFIED(wrong_range)",
+          "R1_REQUIRED(subleading)",
+          "R1_REQUIRED(bc_selection)",
+          "R1_REQUIRED(mixed_bc_parameters)",
+          "R1_REQUIRED(variant_selection)",
+          "R1_REQUIRED(sign_and_magnitude)"
+        ],
+        "outcome_token": "R1_REQUIRED(bc_selection)",
+        "bucket_counts": {
+          "no_go_sector": 11520,
+          "r1_variant_selection": 3840,
+          "r1_sign_and_magnitude": 2856,
+          "r1_bc_selection": 1152,
+          "r1_mixed_bc_parameters": 1152,
+          "mechanism_falsified_wrong_range": 1008,
+          "mechanism_falsified_wrong_sign": 504,
+          "r1_subleading": 504,
+          "sign_earned": 252,
+          "r1_magnitude": 252
+        },
+        "axes": {
+          "bc_class": 5,
+          "replace_outcome": 6,
+          "add_outcome": 6,
+          "variant": 4,
+          "magnitude": 2,
+          "tier": 2,
+          "internal": 2,
+          "all_classes_agree": 2,
+          "mixed_range_invariant": 2
+        },
+        "oracle_digest": "7627417ace0f99a17187a90efa2523ca9b68df8b64f7960d38be2dc6f553ac49"
+      },
+      "note": "Verbatim terminal token R1_REQUIRED(bc_selection). First-matching predicate of the sealed EXHAUSTIVE typed grid (5 BC x 6 replace x 6 add x 4 variant x 2 magnitude x 2 tier x 2^3 booleans = 23040 cells), every cell classified with adjudicate == declarative_oracle, serialized to the committed digest. Production tuple: qbc=UNDETERMINED_ANALYTICALLY, replace=add=outcome_not_invariant, variant=variant_unresolved, magnitude=magnitude_free_factor, tier=tier_A_conditional, internal=False, all_classes_agree=False -> first match R1_REQUIRED(bc_selection). The class gap fires BEFORE variant/mixed/tier/magnitude (PASS_VERDICT_PRECEDENCE). Recomputed from typed neutral upstream facts vs a fresh adjudication; injected landing token rejected; named alt (qbc->FIXED_SOURCE) re-lands R1_REQUIRED(sign_and_magnitude). Teeth PASS_VERDICT_TOTALITY/PRECEDENCE, PASS_TRUTH_TABLE_TOTAL/COUNTS/DIGEST, PASS_LANDING_OWNERSHIP, PASS_PRODUCTION_LANDING, PASS_TARGET_BLINDNESS, PASS_TYPED_NEUTRAL_FACTS, PASS_OUTCOME_NOT_INVARIANT, PASS_VARIANT_UNRESOLVED, PASS_REPLACE_TOTALS, PASS_ADD_TOTALS, PASS_NO_DOUBLE_COUNT, PASS_RANGE_SIGN_FLIP/ZERO_TOUCH/SUBDOMINANT.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_PRODUCTION_LANDING / PASS_TRUTH_TABLE_DIGEST",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "magnitude_coblocker",
+      "kind": "adjudication",
+      "status": "R1_REQUIRED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 4,
+        "precedence": [
+          "R1_REQUIRED(magnitude)"
+        ],
+        "outcome_token": "R1_REQUIRED(magnitude)",
+        "bucket_counts": {
+          "negative_hook": 2,
+          "undetermined_hook": 2
+        }
+      },
+      "note": "Q_E / charge-magnitude RE-HOMED from pathA_38 into the puncture-deflection build as the deferred co-blocker R1_REQUIRED(magnitude). The magnitude carries the unbounded free factors {c_a, c_xi} (magnitude_free_factor) at tier-A; far-field truncation O(a/R). Four Q-MAG hooks: density=NO, modulus=NO (2 negative); radial_monopole=UNDETERMINED, close_range=UNDETERMINED (2 undetermined). Both the sign (bc_selection) and the magnitude discharge only under the shared sim-deferred throat solve. Teeth PASS_MAGNITUDE_FREE_FACTOR, the four PASS_QMAG_*_HOOK, PASS_MAGNITUDE_COBLOCKER.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_MAGNITUDE_COBLOCKER",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "source_predicate_manifest",
+      "kind": "adjudication",
+      "status": "DERIVED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 44,
+        "precedence": [
+          "PRESERVED",
+          "REPLACED_BY_STRONGER",
+          "SCOPED_OUT"
+        ],
+        "outcome_token": "complete",
+        "bucket_counts": {
+          "preserved": 22,
+          "replaced_by_stronger": 12,
+          "scoped_out": 10
+        },
+        "oracle_digest": "e2cfd11b41cdd3d95111f25215b16e917b1ce0a9623929619338a1a83fa81014"
+      },
+      "note": "Completeness certificate: no silently-dropped source claim. The 36 atomic source teeth of puncture_deflection_electric_sign_check.py plus 8 Q-block/App-A-E extras (44 entries) each land as PRESERVED (22), REPLACED_BY_STRONGER (12), or SCOPED_OUT (10) -- a disjoint + exhaustive partition. Teeth PASS_SOURCE_PREDICATE_MANIFEST, MANIFEST_MISDISPOSITION.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_SOURCE_PREDICATE_MANIFEST",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "consumed_bundle_firewall",
+      "kind": "nogo",
+      "status": "DERIVED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "forbidden",
+        "meaning": "Re-deriving the stage031 response matrix / 1/R^2 structure / mouth mechanism into stage032 ownership is REJECTED (OWNED_STAGE032 disjoint from FORBIDDEN_REDERIVATIONS). The bundle {m_gg=B_eff*z_g^2/D, det m=z_g^2/D, S_gg, A=m_gg*C, 1/R^2, NONZERO_HA_REQUIRES_CORE_HOLDER} and stage030's {D, D*=7/4} are CONSUMED by CITATION only. [A]=EL, [U]=E, [F]=E/L are inherited from the cited stage031 far-field claims."
+      },
+      "note": "Ownership firewall. Teeth PASS_STAGE031_CONSUMED_INPUTS, PASS_STAGE030_TRANSITIVE_D_WITNESS, PASS_SCOPE_FIREWALL, PASS_NONZERO_HA_REQUIRES_CORE_HOLDER, PASS_UNITS_A, PASS_UNITS_U, PASS_UNITS_F.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_STAGE031_CONSUMED_INPUTS / PASS_SCOPE_FIREWALL",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "consumes": [
+    {
+      "ref": "stage031/response_m_gg",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.response_gg",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 pair_coupling_m_gg -> response_m_gg. Pair-coupling amplitude m_gg (producer m_gg=B_eff*z_g^2/D); enters all four A_X. Opaque: scope firewall forbids re-deriving its formula."
+    },
+    {
+      "ref": "stage031/response_det",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.response_determinant",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 response_determinant -> response_det. Response determinant det m=z_g^2/D, cited as a bundle member; not re-derived (pure citation)."
+    },
+    {
+      "ref": "stage031/neutral_shell_amplitude",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.shell_amplitude",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 neutral_far_field_shell -> neutral_shell_amplitude. The neutral far-field shell amplitude A=m_gg*C ([A]=EL). CHECK CHANGED from v1 cas_equivalence(m_gg*C) to opaque_quantity_match because C's binding claim stage031/declare_c is NOT exported (C unreferenceable)."
+    },
+    {
+      "ref": "stage031/nonzero_ha_core_holder",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.coreless_stationary",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 nonzero_ha_requires_core_holder -> nonzero_ha_core_holder. Named neutral fact (coreless_stationary_hA=0): a nonzero signed h_A needs the sim-deferred core holder; missing-closure premise driving qbc_undetermined."
+    },
+    {
+      "ref": "stage031/far_field_force",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.pair_force",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 far_field_falloff -> far_field_force (the 1/R^2 form F=s1*s2*A/(4*pi*R^2)). Cites the target-blind 1/R^2 falloff + [F]=E/L. Opaque because the s_1,s_2,pi,R factors are owned by non-exported stage031 claims (declare_s1/s2/pi/r_big)."
+    },
+    {
+      "ref": "stage031/far_field_potential",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.pair_potential",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "sibling of far_field_falloff for the pair potential U=s1*s2*A/(4*pi*R) ([U]=E). Cites the 1/R form + [U]=E; not re-derived (scope firewall)."
+    },
+    {
+      "ref": "stage031/reduced_coupling",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.reduced_mouth_coupling",
+      "producer_source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+      "note": "v1 committed_coupling_g_chi_h -> reduced_coupling. Cites 031's DECIDED committed coupling g_chih=J_m/ell (!=0). JUDGMENT CALL: stage032's g (name 'g', positive real) is a stage032-LOCAL symbol prose-identified with g_chih; this is a name-level citation of the DECIDED coupling, not a load-bearing symbolic substitution."
+    },
+    {
+      "ref": "stage030/kernel_determinant",
+      "check": "opaque_quantity_match",
+      "substitutions": [],
+      "producer_quantity_id": "q.charge.kernel_determinant",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "note": "v1 stage030/kernel_determinant_d -> stage030/kernel_determinant. Transitive (through 031): the kernel determinant D (M^2 T^-4); its dimensionless witness D*=7/4 is asserted in consumed_bundle_firewall (PASS_STAGE030_TRANSITIVE_D_WITNESS)."
+    }
+  ],
+  "exports": [
+    {
+      "claim_id": "a_v_coefficient",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "a_j_coefficient",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "a_m_coefficient",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "a_mixed_coefficient",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "mixed_interior_zero",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "decided_conditional_typing",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "internal_inconsistency_none",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "qbc_undetermined",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "production_landing",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    },
+    {
+      "claim_id": "magnitude_coblocker",
+      "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+    }
+  ],
+  "knobs": [
+    {
+      "knob_id": "k.charge.q_magnitude",
+      "symbol": "Q_E",
+      "registry_row": "Q_E",
+      "action": "introduced",
+      "origin": "here/magnitude_coblocker",
+      "effective_stage": "stage032",
+      "count_effect": {
+        "low": 0,
+        "high": 1
+      },
+      "count_category": "force_mag",
+      "pending": true,
+      "note": "Q_E / charge-magnitude re-homed from pathA_38 into the puncture-deflection build (register edge R65); the R1_REQUIRED(magnitude) co-blocker carrying the two unbounded core normalizations {c_a, c_xi} (magnitude_free_factor) at tier-A. FREE-UNREDUCED, R1-deferred; discharges only under the shared sim-deferred throat solve. Exact count semantics (near-miss, held off the irreducible count by a calibration declaration) defer to Part VII/stage043-044.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_MAGNITUDE_FREE_FACTOR / PASS_MAGNITUDE_COBLOCKER",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "departures": [
+    {
+      "token": "R1_REQUIRED(bc_selection)",
+      "kind": "deferral",
+      "claim_refs": [
+        "here/production_landing"
+      ],
+      "note": "The electric force SIGN -- NEITHER EARNED NOR CALIBRATED. The committed bare model (G0 + U2-unresolved boundary operator + S_hold scoped to r_B-1/2) does not determine the mouth boundary operator, so it does not select among {V,M,J,MIXED}. Resolver = the SIM-DEFERRED nonlinear parent-throat boundary functional / barrier / map s->h_A (sibling of gravity's R10/R30/R33); a guaranteed-nonzero amplitude needs the same core holder (NONZERO_HA_REQUIRES_CORE_HOLDER, R61).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_PRODUCTION_LANDING",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "token": "R1_REQUIRED(magnitude)",
+      "kind": "deferral",
+      "claim_refs": [
+        "here/magnitude_coblocker"
+      ],
+      "note": "Charge-magnitude co-blocker; {c_a, c_xi} unbounded at tier-A; far-field truncation O(a/R). Co-blocks the sign; both discharge under the shared sim-deferred throat solve. Register edge R65.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_PRODUCTION_LANDING",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "token": "R1_REQUIRED(variant_selection)",
+      "kind": "deferral",
+      "claim_refs": [
+        "here/production_landing"
+      ],
+      "note": "SEPARATE downstream R1 debt (the REPLACE-vs-ADD realization is variant_unresolved) -- NOT part of the sign-class R1. Grid count 3840.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_PRODUCTION_LANDING",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "token": "R1_REQUIRED(mixed_bc_parameters)",
+      "kind": "deferral",
+      "claim_refs": [
+        "here/production_landing"
+      ],
+      "note": "SEPARATE downstream R1 debt (the MIXED lambda/{q,g} parameter selection) -- NOT part of the sign-class R1. Grid count 1152.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "locus": "PASS_PRODUCTION_LANDING",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "verification": {
+    "sympy_script": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+    "mathematica_script": "mathematica/ledger_stage032_electric_sign_bc_ensembles_landing_mathematica_audit.wl",
+    "teeth": [
+      {
+        "predicate": "PASS_STAGE031_CONSUMED_INPUTS",
+        "mutation": "remove consumed S_gg from the stage031 citation bundle",
+        "claim_ids": [
+          "consumed_bundle_firewall"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_STAGE031_CONSUMED_INPUTS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_STAGE030_TRANSITIVE_D_WITNESS",
+        "mutation": "D*=7/4 -> 5/4",
+        "claim_ids": [
+          "consumed_bundle_firewall"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_STAGE030_TRANSITIVE_D_WITNESS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_SCOPE_FIREWALL",
+        "mutation": "inject response-matrix re-derivation into stage032 ownership",
+        "claim_ids": [
+          "consumed_bundle_firewall"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_SCOPE_FIREWALL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+        "mutation": "drop the named stage031 core-holder fact",
+        "claim_ids": [
+          "consumed_bundle_firewall",
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_A_V_FORMULA",
+        "mutation": "A_V gains an extra m_gg*phi^2 term",
+        "claim_ids": [
+          "a_v_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_A_V_FORMULA",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_A_J_FORMULA",
+        "mutation": "A_J sign is flipped",
+        "claim_ids": [
+          "a_j_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_A_J_FORMULA",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_A_M_FORMULA",
+        "mutation": "omit the held-h g^2 subtraction",
+        "claim_ids": [
+          "a_m_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_A_M_FORMULA",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_A_MIXED_FORMULA",
+        "mutation": "omit the mixed q*g term",
+        "claim_ids": [
+          "a_mixed_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_A_MIXED_FORMULA",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_WEAK_SIGNS_GENERAL",
+        "mutation": "assert the opposite weak sign certificate",
+        "claim_ids": [
+          "a_v_sign",
+          "a_j_sign"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_WEAK_SIGNS_GENERAL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_STRICT_SIGNS_NONDEGENERATE_WITNESS",
+        "mutation": "set the nonzero phi witness to zero",
+        "claim_ids": [
+          "a_v_sign",
+          "a_j_sign"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_STRICT_SIGNS_NONDEGENERATE_WITNESS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_DEGENERATE_Z_G_ZERO",
+        "mutation": "replace the degenerate z_g=0 witness by z_g=1",
+        "claim_ids": [
+          "a_v_sign",
+          "a_j_sign"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_DEGENERATE_Z_G_ZERO",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_A_M_INDEFINITE",
+        "mutation": "replace the q<g witness by q>g",
+        "claim_ids": [
+          "a_m_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_A_M_INDEFINITE",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_ENDPOINTS",
+        "mutation": "evaluate the second endpoint at lambda=0",
+        "claim_ids": [
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_ENDPOINTS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_INTERIOR_ZERO",
+        "mutation": "shift lambda* by 1/2",
+        "claim_ids": [
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_INTERIOR_ZERO",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_REGIME_Q_GT_G",
+        "mutation": "remove the positive q>g sample",
+        "claim_ids": [
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_REGIME_Q_GT_G",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_REGIME_Q_EQ_G",
+        "mutation": "move the q=g zero from lambda=0",
+        "claim_ids": [
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_REGIME_Q_EQ_G",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_REGIME_Q_LT_G",
+        "mutation": "use a positive algebraic root for q<g",
+        "claim_ids": [
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_REGIME_Q_LT_G",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MIXED_FULL_DOMAIN_SPANS",
+        "mutation": "claim every fixed q/g spans all signs",
+        "claim_ids": [
+          "a_mixed_coefficient",
+          "mixed_interior_zero"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MIXED_FULL_DOMAIN_SPANS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_DECIDED_CONDITIONAL_TYPING",
+        "mutation": "mis-type class selection as DECIDED",
+        "claim_ids": [
+          "decided_conditional_typing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_DECIDED_CONDITIONAL_TYPING",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_AMEND_REPLACE",
+        "mutation": "give REPLACE an illegal new row",
+        "claim_ids": [
+          "internal_inconsistency_none"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_AMEND_REPLACE",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_AMEND_ADD",
+        "mutation": "give ADD a second new row",
+        "claim_ids": [
+          "internal_inconsistency_none"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_AMEND_ADD",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ZERO_LEDGER_13",
+        "mutation": "drop one preserved zero row",
+        "claim_ids": [
+          "internal_inconsistency_none"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_ZERO_LEDGER_13",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_S_HOLD_SCOPE",
+        "mutation": "extend S_hold to h",
+        "claim_ids": [
+          "internal_inconsistency_none"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_S_HOLD_SCOPE",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_INTERNAL_INCONSISTENCY_NONE",
+        "mutation": "inject a Q-AMEND inconsistency sector",
+        "claim_ids": [
+          "internal_inconsistency_none"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_INTERNAL_INCONSISTENCY_NONE",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BC_ACTUAL_CLASSIFIER",
+        "mutation": "remove the actual missing-closure premise",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_BC_ACTUAL_CLASSIFIER",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BC_FREE_CONTROL",
+        "mutation": "turn the free control into imposed value",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_BC_FREE_CONTROL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BC_VALUE_CONTROL",
+        "mutation": "remove the imposed value premise",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_BC_VALUE_CONTROL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BC_MONOPOLE_CONTROL",
+        "mutation": "remove the imposed conormal premise",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_BC_MONOPOLE_CONTROL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BC_MIXED_CONTROL",
+        "mutation": "remove the imposed mixed relation",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_BC_MIXED_CONTROL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ADMISSIBLE_CLASSES",
+        "mutation": "drop MIXED from the admissible class set",
+        "claim_ids": [
+          "qbc_undetermined"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_ADMISSIBLE_CLASSES",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REPLACE_TOTALS",
+        "mutation": "add g^2 to the REPLACE monopole total",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_REPLACE_TOTALS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ADD_TOTALS",
+        "mutation": "collapse the ADD monopole total to q^2",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_ADD_TOTALS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_VARIANT_UNRESOLVED",
+        "mutation": "select the replace realization",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_VARIANT_UNRESOLVED",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_NO_DOUBLE_COUNT",
+        "mutation": "double-count held-h work",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_NO_DOUBLE_COUNT",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_OUTCOME_NOT_INVARIANT",
+        "mutation": "force all class/variant outcomes positive",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_OUTCOME_NOT_INVARIANT",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MAGNITUDE_FREE_FACTOR",
+        "mutation": "hide c_xi from the magnitude census",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MAGNITUDE_FREE_FACTOR",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_QMAG_DENSITY_HOOK",
+        "mutation": "claim a local density prediction",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_QMAG_DENSITY_HOOK",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_QMAG_MONOPOLE_HOOK",
+        "mutation": "claim a decided radial monopole",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_QMAG_MONOPOLE_HOOK",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_QMAG_MODULUS_HOOK",
+        "mutation": "claim universal quantization",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_QMAG_MODULUS_HOOK",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_QMAG_CLOSE_RANGE_HOOK",
+        "mutation": "claim the close-range hook is decided",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_QMAG_CLOSE_RANGE_HOOK",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_MAGNITUDE_COBLOCKER",
+        "mutation": "replace the magnitude co-blocker",
+        "claim_ids": [
+          "magnitude_coblocker"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_MAGNITUDE_COBLOCKER",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RANGE_SIGN_FLIP",
+        "mutation": "classify a sign flip as constant",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_RANGE_SIGN_FLIP",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RANGE_ZERO_TOUCH",
+        "mutation": "classify a zero touch as constant",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_RANGE_ZERO_TOUCH",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RANGE_SUBDOMINANT",
+        "mutation": "erase the derived subdominant bound",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_RANGE_SUBDOMINANT",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_A",
+        "mutation": "[A]=E L -> E",
+        "claim_ids": [
+          "a_v_coefficient",
+          "a_j_coefficient",
+          "a_m_coefficient",
+          "a_mixed_coefficient"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_UNITS_A",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_U",
+        "mutation": "[U]=E -> E L",
+        "claim_ids": [
+          "consumed_bundle_firewall"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_UNITS_U",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_F",
+        "mutation": "[F]=E/L -> E",
+        "claim_ids": [
+          "consumed_bundle_firewall"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_UNITS_F",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_TYPED_NEUTRAL_FACTS",
+        "mutation": "inject a landing token into upstream facts",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_TYPED_NEUTRAL_FACTS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_VERDICT_TOTALITY",
+        "mutation": "mark one exhaustive row unclassified",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_VERDICT_TOTALITY",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_VERDICT_PRECEDENCE",
+        "mutation": "route the class gap before unconditional invariance",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_VERDICT_PRECEDENCE",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_TRUTH_TABLE_TOTAL",
+        "mutation": "increment the exhaustive cell total",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_TRUTH_TABLE_TOTAL",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_TRUTH_TABLE_COUNTS",
+        "mutation": "increment the bc-selection grouped count",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_TRUTH_TABLE_COUNTS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_TRUTH_TABLE_DIGEST",
+        "mutation": "corrupt the first serialized exhaustive row",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_TRUTH_TABLE_DIGEST",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_LANDING_OWNERSHIP",
+        "mutation": "flip upstream Q-BC to FIXED_SOURCE and freshly re-land",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_LANDING_OWNERSHIP",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_PRODUCTION_LANDING",
+        "mutation": "flip the production Q-BC before adjudication",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_PRODUCTION_LANDING",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_TARGET_BLINDNESS",
+        "mutation": "inject SIGN_EARNED into an upstream token",
+        "claim_ids": [
+          "production_landing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_TARGET_BLINDNESS",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_SOURCE_PREDICATE_MANIFEST",
+        "mutation": "drop one source claim from the partition",
+        "claim_ids": [
+          "source_predicate_manifest"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "PASS_SOURCE_PREDICATE_MANIFEST",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "MANIFEST_MISDISPOSITION",
+        "mutation": "flip AMEND_REPLACE from PRESERVED to SCOPED_OUT while retaining all 44 identifiers",
+        "claim_ids": [
+          "source_predicate_manifest"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+          "locus": "MANIFEST_MISDISPOSITION",
+          "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      }
+    ]
+  },
+  "extraction": {
+    "report": {
+      "ungrounded": [
+        "S_gg (q.charge.self_response) is owned by stage031/declare_sgg which is NOT in stage031.exports (only the inequality s_gg_self_response, which does not bind S_gg, is exported); S_gg is therefore not symbolically referenceable. Folded opaquely into the stage032-local V-class numerator C_V = phi^2/S_gg^2. The v1 self_response_s_gg consume is DROPPED.",
+        "stage031 quantities C (declare_c, DEFERRED), s_1 (declare_s1), s_2 (declare_s2), pi (declare_pi), R (declare_r_big) are all owned by NON-exported binding claims and are unreferenceable; consequently the explicit far-field formulas U=s1*s2*A/(4*pi*R) and F=s1*s2*A/(4*pi*R^2) are NOT re-stated in stage032 (also barred by the scope firewall) and U/F are cited opaquely from far_field_potential/force."
+      ],
+      "provisional_consumes": [],
+      "prose_script_mismatches": [
+        "Note/register write A_V = m_gg*phi^2/S_gg^2 explicitly; the manifest writes A_V = m_gg*C_V with an opaque [E^2] numerator C_V because S_gg cannot be symbolically imported (declare_sgg unexported). The script's PASS_A_V_FORMULA still verifies the full phi^2/S_gg^2 form.",
+        "The stage032 audit script exposes NO live Dim class (dims are bare exponent tuples dim_L=(1,0,0), dim_E=(2,-2,1) in a local function), while DIM_ORDER_DECISION and the extraction protocol assume stage032 has its own recoverable Dim/run_units."
+      ],
+      "judgment_calls": [
+        "CHECKER-SCHEMA GAP: because the stage032 script has no live Dim class, the frozen C4 source-certificate cannot be recovered from it. Every stage032 symbol's dim_source is anchored to the stage031 audit script (LTM Dim class; defines ONE/LENGTH/ENERGY and ENERGY*LENGTH/ENERGY**2/LENGTH/ENERGY), which is the SAME [L,T,M] convention DIM_ORDER_DECISION records for stage032. Dims/order/tuples recover correctly; only the certificate script_path is borrowed. Recommended real fix (out of write-scope): add a Dim class to the stage032 audit script.",
+        "PI/known-gap workaround was NOT needed: no pi appears in any stage032 dimensional expression (the 4*pi/R factors live only in the unreferenceable, non-re-stated far-field formulas), so no declare_pi symbol was added.",
+        "g is a stage032-LOCAL positive-real ENERGY symbol (name 'g'); prose-identified with 031's g_chih (real, nonzero) but NOT unified (different name + assumptions, so no C1 collision); reduced_coupling is cited as the DECIDED-coupling provenance, not a symbolic substitution.",
+        "The four A_X coefficient claims are typed 'dimensional' (expected_dim EL) so PASS_UNITS_A and PASS_A_*_FORMULA share a home; PASS_UNITS_U/PASS_UNITS_F attach to consumed_bundle_firewall (U/F cited from stage031, not re-derived).",
+        "The six adjudication claims carry bucket_counts (and production_landing also axes) that reconcile to domain_cardinality: production_landing 23040 (buckets sum, axes 5*6*6*4*2*2*2*2*2 product), decided_conditional_typing 5, internal_inconsistency_none 4, qbc_undetermined 5, magnitude_coblocker 4, source_predicate_manifest 44.",
+        "The knob census declares exactly one knob (registry_row 'Q_E', R65) because 'Q_E' is the only stage032-owned register row of knob kind; C ('C'), A_X, {phi,q,j,lam} and internal_inconsistency=none register rows classify non_knob (DERIVED/R1-tracked)."
+      ]
+    },
+    "source_digests": [
+      {
+        "source_path": "scripts/ledger_stage032_electric_sign_bc_ensembles_landing_sympy_audit.py",
+        "source_digest": "a6d2b2edaf497b2afa7b51ee87be57e42c7d93f21899a468dd84da77632c1804"
+      },
+      {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+      },
+      {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+      },
+      {
+        "source_path": "notes/stages/ledger_stage032_electric_sign_bc_ensembles_landing.md",
+        "source_digest": "e20d839159bb5acd2b523c6db35d3fb139ea21328b0ed0217bfaba0a7a418ac9"
+      },
+      {
+        "source_path": "paper/stages/stage_032.tex",
+        "source_digest": "1d844d16bb904e7b37435a7ea7a121c4aa4853c233df7f8575fcb349f031fa52"
+      },
+      {
+        "source_path": "mathematica/ledger_stage032_electric_sign_bc_ensembles_landing_mathematica_audit.wl",
+        "source_digest": "4af16d95fe02a66667bb5a6f739cf61f5ebb7177a60de5c4a2f2bcc2dae2b828"
+      }
+    ]
+  }
+}

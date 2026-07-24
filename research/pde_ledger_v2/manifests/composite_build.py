@@ -15,6 +15,7 @@ import argparse
 import ast
 import copy
 import hashlib
+import importlib.util
 import itertools
 import json
 import os
@@ -52,6 +53,7 @@ CHECK_NAMES = (
     "C5",
     "C6",
     "C7",
+    "C8",
 )
 BAD_STATUSES = {"FAIL", "UNSUPPORTED"}
 STATUS_PRIORITY = {"SKIPPED": -1, "PASS": 0, "PARTIAL": 1, "UNSUPPORTED": 2, "FAIL": 3}
@@ -76,6 +78,9 @@ FUNCTION_NAMES = {
     "oo": sp.oo,
     "pi": sp.pi,
 }
+LIVE_DIM_RECOVERY_CACHE: dict[
+    tuple[Path, str, str, tuple[str, ...]], dict[str, Any]
+] = {}
 
 
 @dataclass
@@ -143,6 +148,272 @@ class CompositeReport:
 
 class UnsupportedExpression(Exception):
     pass
+
+
+def _live_dim_recovery(
+    path: Path, order: str, extra_expressions: Sequence[str] = ()
+) -> dict[str, Any]:
+    """Import ``path`` and evaluate source dimension algebra with its live Dim.
+
+    This function runs only in the dedicated recovery subprocess.  AST
+    validation limits evaluation to names, exact integer literals, containers,
+    ``Dim(...)``, and the operators whose semantics must come from the audit
+    script's own objects.
+    """
+
+    tree = ast.parse(path.read_text())
+    module_name = f"_composite_dim_source_{hashlib.sha256(str(path).encode()).hexdigest()[:16]}"
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    if spec is None or spec.loader is None:
+        raise UnsupportedExpression(f"cannot import dim source {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    sys.path.insert(0, str(path.parent))
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.path.pop(0)
+
+    dim_type = getattr(module, "Dim", None)
+    if not isinstance(dim_type, type):
+        raise UnsupportedExpression(f"{path} does not expose a live Dim class")
+
+    records: dict[str, set[tuple[str, str, str]]] = defaultdict(set)
+    binding_counts: dict[str, int] = defaultdict(int)
+    binding_expressions: dict[str, list[str]] = defaultdict(list)
+    unsupported: set[str] = set()
+    expression_envs: list[dict[str, Any]] = []
+
+    def vector(value: Any) -> tuple[str, str, str] | None:
+        if not isinstance(value, dim_type):
+            return None
+        try:
+            raw = tuple(getattr(value, axis.lower()) for axis in order)
+        except (AttributeError, TypeError) as exc:
+            raise UnsupportedExpression(
+                f"live Dim value does not expose {order} components: {exc}"
+            ) from exc
+        if len(raw) != 3:
+            raise UnsupportedExpression(f"live Dim value has {len(raw)} components")
+        rendered = tuple(str(item) for item in raw)
+        try:
+            tuple(Fraction(item) for item in rendered)
+        except (ValueError, ZeroDivisionError) as exc:
+            raise UnsupportedExpression(
+                f"live Dim components are not exact rationals: {rendered}"
+            ) from exc
+        return rendered  # type: ignore[return-value]
+
+    def add_tuple_record(
+        name: str,
+        recovered: tuple[str, str, str],
+        scope: str,
+        expression: str,
+    ) -> None:
+        records[name].add(recovered)
+        records[f"{scope}.{name}"].add(recovered)
+        binding_counts[name] += 1
+        binding_counts[f"{scope}.{name}"] += 1
+        binding_expressions[name].append(expression)
+        binding_expressions[f"{scope}.{name}"].append(expression)
+
+    def add_record(name: str, value: Any, scope: str, expression: str) -> None:
+        recovered = vector(value)
+        if recovered is not None:
+            add_tuple_record(name, recovered, scope, expression)
+
+    def exact_integer(node: ast.AST) -> bool:
+        try:
+            value = ast.literal_eval(node)
+        except (TypeError, ValueError):
+            return False
+        return isinstance(value, int) and not isinstance(value, bool)
+
+    def admitted(node: ast.AST) -> bool:
+        if isinstance(node, ast.Name):
+            return True
+        if isinstance(node, ast.Constant):
+            return isinstance(node.value, (int, str)) and not isinstance(node.value, bool)
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            return admitted(node.operand)
+        if isinstance(node, ast.BinOp) and isinstance(
+            node.op, (ast.Add, ast.Sub, ast.Mult, ast.Div, ast.Pow)
+        ):
+            return admitted(node.left) and admitted(node.right) and (
+                not isinstance(node.op, ast.Pow) or exact_integer(node.right)
+            )
+        if isinstance(node, ast.Call):
+            return (
+                isinstance(node.func, ast.Name)
+                and node.func.id == "Dim"
+                and not node.keywords
+                and len(node.args) in {0, 3}
+                and all(admitted(arg) for arg in node.args)
+            )
+        if isinstance(node, (ast.Tuple, ast.List, ast.Set)):
+            return all(admitted(item) for item in node.elts)
+        if isinstance(node, ast.Dict):
+            return all(
+                key is not None
+                and admitted(key)
+                and admitted(value)
+                for key, value in zip(node.keys, node.values)
+            )
+        return False
+
+    def references_live_dim(node: ast.AST, env: Mapping[str, Any]) -> bool:
+        if any(
+            isinstance(child, ast.Call)
+            and isinstance(child.func, ast.Name)
+            and child.func.id == "Dim"
+            for child in ast.walk(node)
+        ):
+            return True
+        return any(
+            isinstance(child, ast.Name) and vector(env.get(child.id)) is not None
+            for child in ast.walk(node)
+        )
+
+    def assignments(scope_node: ast.AST) -> list[ast.Assign | ast.AnnAssign]:
+        found: list[ast.Assign | ast.AnnAssign] = []
+
+        class AssignmentVisitor(ast.NodeVisitor):
+            def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+                if node is scope_node:
+                    self.generic_visit(node)
+
+            def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
+                if node is scope_node:
+                    self.generic_visit(node)
+
+            def visit_ClassDef(self, node: ast.ClassDef) -> None:
+                return
+
+            def visit_Lambda(self, node: ast.Lambda) -> None:
+                return
+
+            def visit_Assign(self, node: ast.Assign) -> None:
+                found.append(node)
+
+            def visit_AnnAssign(self, node: ast.AnnAssign) -> None:
+                found.append(node)
+
+        visitor = AssignmentVisitor()
+        if isinstance(scope_node, ast.Module):
+            for statement in scope_node.body:
+                if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                    continue
+                visitor.visit(statement)
+        else:
+            visitor.visit(scope_node)
+        return sorted(found, key=lambda item: (item.lineno, item.col_offset))
+
+    def target_names(node: ast.Assign | ast.AnnAssign) -> list[str]:
+        targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+        return [target.id for target in targets if isinstance(target, ast.Name)]
+
+    def evaluate_scope(
+        scope_node: ast.AST,
+        scope: str,
+        inherited_dim_env: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        env = dict(vars(module))
+        trusted_dim_env = dict(inherited_dim_env)
+        for node in assignments(scope_node):
+            names = target_names(node)
+            if not names or node.value is None:
+                continue
+            if not admitted(node.value):
+                if references_live_dim(node.value, env):
+                    unsupported.update(names)
+                    unsupported.update(f"{scope}.{name}" for name in names)
+                continue
+            try:
+                value = eval(
+                    compile(ast.Expression(node.value), str(path), "eval"),
+                    {"__builtins__": {}},
+                    env,
+                )
+            except Exception:
+                if references_live_dim(node.value, env):
+                    unsupported.update(names)
+                    unsupported.update(f"{scope}.{name}" for name in names)
+                continue
+            for child in ast.walk(node.value):
+                if not admitted(child):
+                    continue
+                try:
+                    child_value = eval(
+                        compile(ast.Expression(child), str(path), "eval"),
+                        {"__builtins__": {}},
+                        env,
+                    )
+                except Exception:
+                    continue
+                recovered_child = vector(child_value)
+                if recovered_child is not None:
+                    records[f"expr:{ast.unparse(child)}"].add(recovered_child)
+            expression = ast.unparse(node.value)
+            for name in names:
+                env[name] = value
+                add_record(name, value, scope, expression)
+                if vector(value) is not None:
+                    trusted_dim_env[name] = value
+        expression_envs.append(trusted_dim_env)
+        return trusted_dim_env
+
+    # Only AST assignments to a direct Name target create recoverable bindings.
+    # Importing the module supplies the live Dim class/operator semantics, but a
+    # runtime attribute or a nested container label is not dimensional algebra
+    # provenance for a manifest symbol.
+    module_dim_env = evaluate_scope(tree, "module", {"Dim": dim_type})
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            evaluate_scope(node, node.name, module_dim_env)
+    for source in extra_expressions:
+        try:
+            expression = ast.parse(source, mode="eval").body
+        except SyntaxError:
+            unsupported.add(f"expr:{source}")
+            continue
+        canonical_key = f"expr:{ast.unparse(expression)}"
+        if not admitted(expression):
+            unsupported.add(canonical_key)
+            continue
+        recovered_values: set[tuple[str, str, str]] = set()
+        for env in expression_envs:
+            try:
+                value = eval(
+                    compile(ast.Expression(expression), str(path), "eval"),
+                    {"__builtins__": {}},
+                    env,
+                )
+            except Exception:
+                continue
+            recovered = vector(value)
+            if recovered is not None:
+                recovered_values.add(recovered)
+        if not recovered_values:
+            unsupported.add(canonical_key)
+            continue
+        records[canonical_key].update(recovered_values)
+
+    resolved = {
+        name: list(next(iter(values)))
+        for name, values in records.items()
+        if len(values) == 1
+    }
+    ambiguous = sorted(name for name, values in records.items() if len(values) > 1)
+    return {
+        "tuples": resolved,
+        "unsupported": sorted(unsupported),
+        "ambiguous": ambiguous,
+        "binding_counts": dict(sorted(binding_counts.items())),
+        "binding_expressions": {
+            name: expressions
+            for name, expressions in sorted(binding_expressions.items())
+        },
+    }
 
 
 def stage_number(stage_id: str) -> int:
@@ -224,6 +495,51 @@ def all_evidence_objects(value: Any) -> Iterator[dict[str, Any]]:
             yield from all_evidence_objects(child)
 
 
+def locus_dimension_expression(locus: str) -> str | None:
+    match = re.search(
+        r"\bdimension expression\s+(.+?)"
+        r"(?=\s+in\s+[A-Za-z_][A-Za-z0-9_]*|\s*;|,\s*lines?\b|$)",
+        locus,
+        re.I,
+    )
+    if match is None:
+        return None
+    source = match.group(1).strip()
+    try:
+        return ast.unparse(ast.parse(source, mode="eval").body)
+    except SyntaxError as exc:
+        raise UnsupportedExpression(
+            f"invalid dimension expression named by locus: {source}"
+        ) from exc
+
+
+def locus_assignment_anchors(locus: str) -> list[tuple[str, str | None]]:
+    matches = list(
+        re.finditer(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*=(?!=)", locus)
+    )
+    anchors: list[tuple[str, str | None]] = []
+    for index, match in enumerate(matches):
+        tail = locus[match.end() :]
+        ends = [len(tail)]
+        semicolon = tail.find(";")
+        if semicolon >= 0:
+            ends.append(semicolon)
+        lines = re.search(r",\s*lines?\b", tail, re.I)
+        if lines is not None:
+            ends.append(lines.start())
+        if index + 1 < len(matches):
+            ends.append(matches[index + 1].start() - match.end())
+        raw_expression = tail[: min(ends)].strip().rstrip(",").strip()
+        try:
+            expression = ast.unparse(
+                ast.parse(raw_expression, mode="eval").body
+            )
+        except SyntaxError:
+            expression = None
+        anchors.append((match.group(1), expression))
+    return anchors
+
+
 class CompositeChecker:
     def __init__(
         self,
@@ -238,7 +554,9 @@ class CompositeChecker:
         self.config = config
         self.schema = schema or json.loads(SCHEMA_PATH.read_text())
         self.roots = list(roots or (PROJECT_ROOT, PROJECT_ROOT.parent.parent, Path.cwd()))
-        self.closed_slice = config.get("closed_slice", False) if closed_slice is None else closed_slice
+        config_override = True if config.get("closed_slice") is True else None
+        self.closed_slice_override = config_override if closed_slice is None else closed_slice
+        self.closed_slice = False
         self.results = {name: CheckResult(name) for name in CHECK_NAMES}
         self.coverage = Coverage()
         self.stages: dict[str, dict[str, Any]] = {}
@@ -248,6 +566,12 @@ class CompositeChecker:
         self.symbols_by_stage_alias: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
         self.owners: dict[str, tuple[str, str, str]] = {}
         self.parse_cache: dict[tuple[str, str], sp.Expr] = {}
+        self.dim_recovery_unsupported: dict[Path, set[str]] = {}
+        self.dim_recovery_ambiguous: dict[Path, set[str]] = {}
+        self.dim_recovery_binding_counts: dict[Path, dict[str, int]] = {}
+        self.dim_recovery_binding_expressions: dict[
+            Path, dict[str, list[str]]
+        ] = {}
 
     def run(self) -> CompositeReport:
         self.check_schema()
@@ -264,6 +588,11 @@ class CompositeChecker:
             )
             return CompositeReport(self.results, self.coverage)
         self.build_indexes()
+        self.closed_slice = (
+            self.infer_closed_slice()
+            if self.closed_slice_override is None
+            else self.closed_slice_override
+        )
         self.check_evidence()
         self.check_adjudications()
         self.check_import_completeness()
@@ -278,9 +607,71 @@ class CompositeChecker:
             self.mark_skipped(("C7",), "C3 failed; C7 was not run")
         else:
             self.check_c7()
+        self.check_c8()
         self.coverage.total_claims = sum(len(m.get("claims", [])) for m in self.manifests)
         self.coverage.checked_claims = self.coverage.total_claims
         return CompositeReport(self.results, self.coverage)
+
+    @staticmethod
+    def referenced_stage(current_stage: str | None, ref: Any) -> str | None:
+        if not isinstance(ref, str):
+            return None
+        if ref.startswith("here/"):
+            return current_stage
+        match = re.match(r"^(stage[0-9]{3})(?:/|$)", ref)
+        return match.group(1) if match else None
+
+    def required_producer_stages(self) -> set[str]:
+        required: set[str] = set()
+
+        def add_ref(current_stage: str | None, ref: Any) -> None:
+            producer = self.referenced_stage(current_stage, ref)
+            if producer is not None:
+                required.add(producer)
+
+        add_ref(None, self.config.get("range_claim_ref"))
+        for stage_id, manifest in self.stages.items():
+            for symbol in manifest.get("symbols", []):
+                add_ref(stage_id, symbol.get("definition_ref"))
+            for consume in manifest.get("consumes", []):
+                add_ref(stage_id, consume.get("ref"))
+                for substitution in consume.get("substitutions", []):
+                    add_ref(stage_id, substitution.get("backed_by"))
+            for knob in manifest.get("knobs", []):
+                add_ref(stage_id, knob.get("origin"))
+                add_ref(stage_id, knob.get("effective_stage"))
+                add_ref(stage_id, knob.get("discharge_evidence"))
+            for claim in manifest.get("claims", []):
+                genesis = claim.get("genesis")
+                if isinstance(genesis, dict):
+                    evidence = genesis.get("evidence")
+                    if isinstance(evidence, dict):
+                        add_ref(stage_id, evidence.get("predates"))
+                    for ref in genesis.get("coordinated_with", []):
+                        add_ref(stage_id, ref)
+                add_ref(stage_id, claim.get("discharged_by"))
+        return required
+
+    def infer_closed_slice(self) -> bool:
+        loaded_numbers = {stage_number(stage_id) for stage_id in self.stages}
+        plausible_whole = bool(loaded_numbers) and loaded_numbers == set(
+            range(1, max(loaded_numbers) + 1)
+        )
+        return (
+            plausible_whole
+            and self.required_producer_stages() <= set(self.stages)
+        )
+
+    def unresolved_reference_status(self, current_stage: str | None, ref: Any) -> str:
+        producer = self.referenced_stage(current_stage, ref)
+        if (
+            not self.closed_slice
+            and producer is not None
+            and producer != current_stage
+            and producer not in self.stages
+        ):
+            return "PARTIAL"
+        return "FAIL"
 
     def mark_skipped(self, names: Iterable[str], detail: str) -> None:
         for name in names:
@@ -825,7 +1216,7 @@ class CompositeChecker:
                 self.coverage.total_citations += 1
                 if not producer:
                     self.coverage.unresolved_producers += 1
-                    status = "FAIL" if self.closed_slice else "PARTIAL"
+                    status = self.unresolved_reference_status(stage_id, ref)
                     result.add(status, "ABSENT_PRODUCER", f"{stage_id}:{ref}")
                     continue
                 self.coverage.resolved_citations += 1
@@ -896,56 +1287,118 @@ class CompositeChecker:
             return self.dimension_of(stage_id, expr.args[0])
         raise UnsupportedExpression(f"dimension rule missing for {type(expr).__name__}: {expr}")
 
-    def recover_dim_order_and_tuples(self, path: Path) -> tuple[str, dict[str, tuple[Fraction, ...]]]:
+    def recover_dim_order_and_tuples(
+        self, path: Path, extra_expressions: Sequence[str] = ()
+    ) -> tuple[str, dict[str, tuple[Fraction, ...]]]:
         try:
             tree = ast.parse(path.read_text())
         except Exception as exc:
             raise UnsupportedExpression(f"cannot parse dim source {path}: {exc}") from exc
-        field_order: str | None = None
-        doc_order: str | None = None
-        tuples: dict[str, tuple[Fraction, ...]] = {}
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ClassDef) and node.name == "Dim":
-                fields = [
-                    child.target.id.upper()
-                    for child in node.body
-                    if isinstance(child, ast.AnnAssign)
-                    and isinstance(child.target, ast.Name)
-                    and child.target.id.lower() in {"l", "m", "t"}
-                ]
-                if len(fields) >= 3:
-                    field_order = "".join(fields[:3])
-                for child in node.body:
-                    if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)) and child.name == "__init__":
-                        args = [arg.arg.upper() for arg in child.args.args if arg.arg != "self"]
-                        args = [arg for arg in args if arg in {"L", "M", "T"}]
-                        if len(args) >= 3:
-                            field_order = "".join(args[:3])
-                doc = ast.get_docstring(node) or ""
-                match = re.search(r"\[\s*([LMT])\s*,\s*([LMT])\s*,\s*([LMT])\s*\]", doc, re.I)
-                if match:
-                    doc_order = "".join(group.upper() for group in match.groups())
-            if isinstance(node, (ast.Assign, ast.AnnAssign)):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                value = node.value
-                if (
-                    isinstance(value, ast.Call)
-                    and isinstance(value.func, ast.Name)
-                    and value.func.id == "Dim"
-                    and len(value.args) == 3
-                ):
-                    try:
-                        raw = tuple(Fraction(ast.literal_eval(arg)) for arg in value.args)
-                    except Exception:
-                        continue
-                    for target in targets:
-                        if isinstance(target, ast.Name):
-                            tuples[target.id] = raw
-        if field_order and doc_order and field_order != doc_order:
-            raise UnsupportedExpression(f"Dim field/doc order conflict: {field_order}!={doc_order}")
-        order = field_order or doc_order
+        field_orders: set[str] = set()
+        init_orders: set[str] = set()
+        doc_orders: set[str] = set()
+        for child in ast.walk(tree):
+            if not isinstance(child, ast.ClassDef) or child.name != "Dim":
+                continue
+            fields = [
+                item.target.id.upper()
+                for item in child.body
+                if isinstance(item, ast.AnnAssign)
+                and isinstance(item.target, ast.Name)
+                and item.target.id.lower() in {"l", "m", "t"}
+            ]
+            if len(fields) >= 3:
+                field_orders.add("".join(fields[:3]))
+            for item in child.body:
+                if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)) and item.name == "__init__":
+                    args = [arg.arg.upper() for arg in item.args.args if arg.arg != "self"]
+                    args = [arg for arg in args if arg in {"L", "M", "T"}]
+                    if len(args) >= 3:
+                        init_orders.add("".join(args[:3]))
+            doc = ast.get_docstring(child) or ""
+            match = re.search(
+                r"[\[\{\(]\s*([LMT])\s*,\s*([LMT])\s*,\s*([LMT])\s*[\]\}\)]",
+                doc,
+                re.I,
+            )
+            if match:
+                doc_orders.add("".join(group.upper() for group in match.groups()))
+
+        structural_orders = field_orders | init_orders | doc_orders
+        if len(structural_orders) > 1:
+            raise UnsupportedExpression(
+                "Dim field/doc/init order conflict: "
+                f"fields={sorted(field_orders)}, init={sorted(init_orders)}, "
+                f"doc={sorted(doc_orders)}"
+            )
+        order = next(iter(structural_orders), None)
         if order not in {"LMT", "LTM", "MLT", "MTL", "TLM", "TML"}:
             raise UnsupportedExpression("Dim order not recoverable from source structure")
+        canonical_expressions = tuple(sorted(set(extra_expressions)))
+        cache_key = (path.resolve(), hash_file(path), order, canonical_expressions)
+        payload = LIVE_DIM_RECOVERY_CACHE.get(cache_key)
+        if payload is None:
+            command = [
+                sys.executable,
+                str(Path(__file__).resolve()),
+                "--recover-dims",
+                str(path),
+                "--dim-order",
+                order,
+            ]
+            for expression in canonical_expressions:
+                command.extend(("--dim-expression", expression))
+            try:
+                completed = subprocess.run(
+                    command,
+                    cwd=path.parent,
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=30,
+                )
+            except (OSError, subprocess.TimeoutExpired) as exc:
+                raise UnsupportedExpression(f"live Dim recovery failed for {path}: {exc}") from exc
+            marker = "DIM_RECOVERY_JSON="
+            payload_line = next(
+                (
+                    line[len(marker) :]
+                    for line in reversed(completed.stdout.splitlines())
+                    if line.startswith(marker)
+                ),
+                None,
+            )
+            if completed.returncode != 0 or payload_line is None:
+                detail = completed.stderr.strip() or completed.stdout.strip()
+                raise UnsupportedExpression(
+                    f"live Dim recovery failed for {path}: exit={completed.returncode}: {detail}"
+                )
+            try:
+                payload = json.loads(payload_line)
+            except json.JSONDecodeError as exc:
+                raise UnsupportedExpression(
+                    f"invalid live Dim recovery JSON for {path}: {exc}"
+                ) from exc
+            LIVE_DIM_RECOVERY_CACHE[cache_key] = payload
+        try:
+            tuples = {
+                name: tuple(Fraction(value) for value in raw)
+                for name, raw in payload["tuples"].items()
+            }
+            self.dim_recovery_unsupported[path] = set(payload.get("unsupported", []))
+            self.dim_recovery_ambiguous[path] = set(payload.get("ambiguous", []))
+            self.dim_recovery_binding_counts[path] = {
+                name: int(count)
+                for name, count in payload.get("binding_counts", {}).items()
+            }
+            self.dim_recovery_binding_expressions[path] = {
+                name: [str(expression) for expression in expressions]
+                for name, expressions in payload.get(
+                    "binding_expressions", {}
+                ).items()
+            }
+        except (KeyError, TypeError, ValueError) as exc:
+            raise UnsupportedExpression(f"invalid live Dim recovery payload for {path}: {exc}") from exc
         return order, tuples
 
     def check_c4(self) -> None:
@@ -989,9 +1442,9 @@ class CompositeChecker:
                     )
                     continue
                 try:
-                    recovered_order, tuples = source_cache.setdefault(
-                        path, self.recover_dim_order_and_tuples(path)
-                    )
+                    if path not in source_cache:
+                        source_cache[path] = self.recover_dim_order_and_tuples(path)
+                    recovered_order, tuples = source_cache[path]
                     declared_order = symbol.get("dim_source_order")
                     if recovered_order != declared_order:
                         result.add(
@@ -1001,19 +1454,115 @@ class CompositeChecker:
                         )
                     declared_tuple = tuple(Fraction(value) for value in symbol.get("dim_source_tuple", []))
                     locus = source.get("locus", "")
-                    candidates = [
-                        symbol.get("parse_alias"),
-                        symbol.get("name"),
-                        *re.findall(r"[A-Za-z_][A-Za-z0-9_]*", locus),
-                    ]
-                    target = next((name for name in candidates if name in tuples), None)
-                    if not target:
-                        raise UnsupportedExpression(f"raw Dim tuple not found at locus {locus}")
-                    if tuples[target] != declared_tuple:
+                    alias = symbol.get("parse_alias")
+                    name = symbol.get("name")
+                    locus_tokens = re.findall(r"[A-Za-z_][A-Za-z0-9_]*", locus)
+                    unsupported_names = self.dim_recovery_unsupported.get(path, set())
+                    ambiguous_names = self.dim_recovery_ambiguous.get(path, set())
+                    binding_counts = self.dim_recovery_binding_counts.get(path, {})
+                    binding_expressions = self.dim_recovery_binding_expressions.get(
+                        path, {}
+                    )
+
+                    def binding_keys(target: str) -> list[str]:
+                        scoped = [
+                            f"{scope}.{target}"
+                            for scope in locus_tokens
+                            if f"{scope}.{target}" in binding_counts
+                        ]
+                        return list(dict.fromkeys(scoped + [target]))
+
+                    def resolve_binding(
+                        target: str, expected_expression: str | None = None
+                    ) -> tuple[Fraction, ...] | None:
+                        for key in binding_keys(target):
+                            count = binding_counts.get(key, 0)
+                            if count == 0:
+                                continue
+                            if count != 1:
+                                raise UnsupportedExpression(
+                                    f"ambiguous real Name assignments for {key}"
+                                )
+                            if key in unsupported_names or key in ambiguous_names:
+                                raise UnsupportedExpression(
+                                    f"live Dim assignment unsupported or ambiguous for {key}"
+                                )
+                            if expected_expression is not None and binding_expressions.get(
+                                key
+                            ) != [expected_expression]:
+                                continue
+                            if key not in tuples:
+                                raise UnsupportedExpression(
+                                    f"real Name assignment {key} is not Dim-valued"
+                                )
+                            return tuples[key]
+                        return None
+
+                    source_tuple: tuple[Fraction, ...] | None
+                    expression_source = locus_dimension_expression(locus)
+                    if expression_source is not None:
+                        expression_key = "expr:" + expression_source
+                        if expression_key not in tuples:
+                            _, expression_tuples = self.recover_dim_order_and_tuples(
+                                path, (expression_source,)
+                            )
+                            tuples.update(expression_tuples)
+                            unsupported_names = self.dim_recovery_unsupported.get(
+                                path, set()
+                            )
+                            ambiguous_names = self.dim_recovery_ambiguous.get(
+                                path, set()
+                            )
+                        if (
+                            expression_key in unsupported_names
+                            or expression_key in ambiguous_names
+                            or expression_key not in tuples
+                        ):
+                            raise UnsupportedExpression(
+                                "locus-anchored dimension expression is absent, "
+                                f"unsupported, or ambiguous: {expression_source}"
+                            )
+                        source_tuple = tuples[expression_key]
+                    else:
+                        assignment_anchors = locus_assignment_anchors(locus)
+                        if assignment_anchors:
+                            anchored: list[tuple[Fraction, ...]] = []
+                            for target_name, expected_expression in assignment_anchors:
+                                if expected_expression is None:
+                                    continue
+                                recovered = resolve_binding(
+                                    target_name, expected_expression
+                                )
+                                if recovered is not None:
+                                    anchored.append(recovered)
+                            if len(anchored) != 1:
+                                raise UnsupportedExpression(
+                                    "locus assignment does not resolve to exactly "
+                                    f"one real Dim-valued Name binding: {locus}"
+                                )
+                            source_tuple = anchored[0]
+                        else:
+                            source_tuple = None
+                            fallback_targets = [
+                                target
+                                for target in (alias, name)
+                                if isinstance(target, str)
+                            ]
+                            for target_name in dict.fromkeys(fallback_targets):
+                                recovered = resolve_binding(target_name)
+                                if recovered is not None:
+                                    source_tuple = recovered
+                                    break
+                            if source_tuple is None:
+                                raise UnsupportedExpression(
+                                    "bare alias does not resolve to a unique real "
+                                    f"Dim-valued Name assignment at locus {locus}"
+                                )
+                    if source_tuple != declared_tuple:
                         result.add(
                             "FAIL",
                             "DIM_SOURCE_TUPLE_MISMATCH",
-                            f"{stage_id}:{symbol.get('parse_alias')}: source {tuples[target]}, declared {declared_tuple}",
+                            f"{stage_id}:{symbol.get('parse_alias')}: source {source_tuple}, declared {declared_tuple}",
                         )
                     transposed = {axis: value for axis, value in zip(recovered_order, declared_tuple)}
                     named = tuple(transposed[axis] for axis in "LMT")
@@ -1028,12 +1577,38 @@ class CompositeChecker:
                         "UNSUPPORTED", "DIM_SOURCE_UNSUPPORTED", f"{stage_id}:{symbol.get('parse_alias')}: {exc}"
                     )
 
-    def registry_rows(self, path: Path, format_name: str) -> set[str]:
+    @staticmethod
+    def registry_owner(enters: str) -> str | None:
+        explicit_owner = re.search(
+            r"\bOWNED\s+by\b.*?\bstage\s*([0-9]{3})\b",
+            enters,
+            re.I,
+        )
+        if explicit_owner is not None:
+            return f"stage{explicit_owner.group(1)}"
+        explicit_stage = re.search(r"\bstage\s*([0-9]{3})\b", enters, re.I)
+        if explicit_stage is not None:
+            return f"stage{explicit_stage.group(1)}"
+        parenthesized = re.search(r"\([^)]*?\b([0-9]{3})\b", enters)
+        if parenthesized is not None:
+            return f"stage{parenthesized.group(1)}"
+        return None
+
+    def registry_rows_and_owners(
+        self, path: Path, format_name: str
+    ) -> tuple[set[str], dict[str, str | None], dict[str, str | None]]:
         lines = path.read_text().splitlines()
         if format_name == "plain":
-            return {line.strip() for line in lines if line.strip() and not line.lstrip().startswith("#")}
+            rows = {
+                line.strip()
+                for line in lines
+                if line.strip() and not line.lstrip().startswith("#")
+            }
+            return rows, {row: None for row in rows}, {row: None for row in rows}
         if format_name == "markdown_master_table":
             rows: set[str] = set()
+            owners: dict[str, str | None] = {}
+            row_classes: dict[str, str | None] = {}
             in_table = False
             for line in lines:
                 if line.startswith("| Param |"):
@@ -1046,12 +1621,70 @@ class CompositeChecker:
                         break
                     continue
                 if in_table:
-                    first = line.split("|", 2)[1]
+                    cells = line.split("|")
+                    if len(cells) < 4:
+                        continue
+                    first = cells[1]
                     tokens = re.findall(r"`([^`]+)`", first)
                     if tokens:
-                        rows.add(tokens[0])
-            return rows
+                        row = tokens[0]
+                        rows.add(row)
+                        owners[row] = self.registry_owner(cells[3])
+                        row_classes[row] = cells[4].strip() if len(cells) > 4 else None
+            return rows, owners, row_classes
         raise ValueError(f"unknown parameter register format {format_name}")
+
+    def registry_rows(self, path: Path, format_name: str) -> set[str]:
+        rows, _, _ = self.registry_rows_and_owners(path, format_name)
+        return rows
+
+    @staticmethod
+    def registry_row_kind(row_class: str | None) -> str:
+        """Classify a register row for the knob-lifecycle census."""
+
+        if row_class is None:
+            return "knob"
+        if "~~" in row_class:
+            return "non_knob"
+        upper = row_class.upper()
+        markers: list[tuple[int, str]] = []
+        for token, kind in (
+            ("GAP", "pending"),
+            ("DERIVED", "non_knob"),
+            ("CANDIDATE", "non_knob"),
+            ("CONV", "non_knob"),
+            ("ACTION", "knob"),
+            ("FREE-UNREDUCED", "knob"),
+            ("CALIB", "knob"),
+            ("IMPOSED", "knob"),
+        ):
+            match = re.search(rf"\b{re.escape(token)}\b", upper)
+            if match is not None:
+                markers.append((match.start(), kind))
+        if not markers:
+            return "non_knob"
+        _, kind = min(markers)
+        if kind == "pending":
+            return "pending"
+        if kind == "knob":
+            return "knob"
+        return "non_knob"
+
+    def row_is_loaded_non_parameter_symbol(
+        self, row: str, owner: str | None
+    ) -> bool:
+        if owner not in self.stages:
+            return False
+        non_parameter_roles = {"field", "function", "operator", "index"}
+        for symbol in self.stages[owner].get("symbols", []):
+            identifiers = {
+                symbol.get("name"),
+                symbol.get("parse_alias"),
+                symbol.get("latex"),
+            }
+            if row in identifiers and symbol.get("role") in non_parameter_roles:
+                return True
+        return False
 
     def evaluate_record_range(self, payload: Mapping[str, Any]) -> tuple[int, int, int]:
         base_low = sum(component["low"] for component in payload.get("components", {}).values())
@@ -1081,7 +1714,9 @@ class CompositeChecker:
             )
             return
         try:
-            rows = self.registry_rows(path, register.get("format", "plain"))
+            rows, row_owners, row_classes = self.registry_rows_and_owners(
+                path, register.get("format", "plain")
+            )
         except ValueError as exc:
             result.add("UNSUPPORTED", "REGISTER_FORMAT", str(exc))
             return
@@ -1091,8 +1726,37 @@ class CompositeChecker:
             for knob in manifest.get("knobs", []):
                 events.append((stage_number(stage_id), stage_id, knob))
                 categories[knob.get("registry_row")].add(knob.get("count_category"))
-        for row in sorted(rows - set(categories)):
-            result.add("FAIL", "UNCLASSIFIED_REGISTER_ROW", row)
+        unclassified = sorted(rows - set(categories))
+        if unclassified:
+            pending_rows: list[str] = []
+            for row in unclassified:
+                owner = row_owners.get(row)
+                row_kind = self.registry_row_kind(row_classes.get(row))
+                if row_kind == "non_knob":
+                    continue
+                if row_kind == "pending":
+                    pending_rows.append(row)
+                elif self.row_is_loaded_non_parameter_symbol(row, owner):
+                    continue
+                elif row_classes.get(row) is not None and (
+                    owner is None or owner not in self.stages
+                ):
+                    pending_rows.append(row)
+                elif (
+                    not self.closed_slice
+                    and owner is not None
+                    and owner not in self.stages
+                ):
+                    pending_rows.append(row)
+                else:
+                    detail = row if owner is None else f"{row}:owner={owner}"
+                    result.add("FAIL", "UNCLASSIFIED_REGISTER_ROW", detail)
+            if pending_rows:
+                result.add(
+                    "PARTIAL",
+                    "REGISTER_COVERAGE_PARTIAL",
+                    f"{len(pending_rows)} knob/GAP register rows await classification or their owning stages",
+                )
         for row in sorted(set(categories) - rows):
             result.add("FAIL", "UNKNOWN_REGISTER_ROW", row)
         for row, values in categories.items():
@@ -1114,7 +1778,15 @@ class CompositeChecker:
             kid = knob.get("knob_id")
             action = knob.get("action")
             if action == "inherited" and not prior_by_knob.get(kid):
-                result.add("FAIL", "ORPHAN_INHERIT", f"{stage_id}:{kid}")
+                origin = knob.get("origin")
+                if self.unresolved_reference_status(stage_id, origin) == "PARTIAL":
+                    result.add(
+                        "PARTIAL",
+                        "LIFECYCLE_PRODUCER_UNEXTRACTED",
+                        f"{stage_id}:{kid}:{self.referenced_stage(stage_id, origin)}",
+                    )
+                else:
+                    result.add("FAIL", "ORPHAN_INHERIT", f"{stage_id}:{kid}")
             if action == "inherited" and knob.get("count_effect") != {"low": 0, "high": 0}:
                 result.add("FAIL", "INHERIT_DOUBLE_COUNT", f"{stage_id}:{kid}")
             if knob.get("pending") and action != "inherited":
@@ -1143,7 +1815,7 @@ class CompositeChecker:
         range_ref = self.config.get("range_claim_ref")
         range_claim = self.claims.get(range_ref)
         if not range_claim:
-            status = "FAIL" if self.closed_slice else "PARTIAL"
+            status = self.unresolved_reference_status(None, range_ref)
             result.add(status, "RANGE_CLAIM_UNRESOLVED", str(range_ref))
             return
         if range_claim.get("payload_kind") != "record_range":
@@ -1271,6 +1943,88 @@ class CompositeChecker:
                         "FAIL",
                         "UNDECLARED_DEPENDENCY",
                         f"{stage_id} fired {actual} under undeclared {ref}:{binding['exported_facet']}",
+                    )
+
+    def check_c8(self) -> None:
+        result = self.results["C8"]
+        genesis_statuses = {"POSTULATED", "CONV", "CALIBRATED"}
+        for stage_id, manifest in self.stages.items():
+            for claim in manifest.get("claims", []):
+                cid = claim.get("id")
+                ref = claim_ref(stage_id, cid)
+                status = claim.get("status")
+                genesis = claim.get("genesis")
+                if status in genesis_statuses and not isinstance(genesis, dict):
+                    result.add("FAIL", "GENESIS_MISSING", ref)
+                    continue
+                if not isinstance(genesis, dict):
+                    continue
+                origin = genesis.get("origin")
+                if origin == "independent":
+                    evidence = genesis.get("evidence")
+                    if not isinstance(evidence, dict):
+                        result.add("FAIL", "INDEPENDENCE_EVIDENCE_MISSING", ref)
+                        continue
+                    predates = evidence.get("predates")
+                    normalized_predates = (
+                        predates.replace("here/", f"{stage_id}/")
+                        if isinstance(predates, str)
+                        else ""
+                    )
+                    if normalized_predates not in self.claims:
+                        outcome = self.unresolved_reference_status(stage_id, predates)
+                        result.add(
+                            outcome,
+                            "GENESIS_PREDATES_UNRESOLVED",
+                            f"{ref}:{predates}",
+                        )
+                    record_date = evidence.get("date")
+                    introduced = genesis.get("introduced")
+                    if (
+                        isinstance(record_date, str)
+                        and isinstance(introduced, str)
+                        and record_date >= introduced
+                    ):
+                        result.add(
+                            "FAIL",
+                            "GENESIS_DATE_NOT_PRIOR",
+                            f"{ref}:{record_date}>={introduced}",
+                        )
+                if origin in {"coordinated", "target_matched"}:
+                    for coordinated_ref in genesis.get("coordinated_with", []):
+                        normalized = coordinated_ref.replace(
+                            "here/", f"{stage_id}/"
+                        )
+                        if normalized not in self.claims:
+                            outcome = self.unresolved_reference_status(
+                                stage_id, coordinated_ref
+                            )
+                            result.add(
+                                outcome,
+                                "GENESIS_COORDINATION_UNRESOLVED",
+                                f"{ref}:{coordinated_ref}",
+                            )
+                discharged_by = claim.get("discharged_by")
+                if not isinstance(discharged_by, str):
+                    continue
+                discharge = self.claims.get(discharged_by)
+                if discharge is None:
+                    outcome = self.unresolved_reference_status(stage_id, discharged_by)
+                    result.add(
+                        outcome,
+                        "DISCHARGE_REF_UNRESOLVED",
+                        f"{ref}:{discharged_by}",
+                    )
+                    continue
+                discharge_stage = discharged_by.split("/", 1)[0]
+                if (
+                    stage_number(discharge_stage) <= stage_number(stage_id)
+                    or discharge.get("status") != "DERIVED"
+                ):
+                    result.add(
+                        "FAIL",
+                        "INVALID_DISCHARGE_DIRECTION",
+                        f"{ref}:{discharged_by}",
                     )
 
 
@@ -1434,6 +2188,16 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
         "    l: int = 0\n"
         "    t: int = 0\n"
         "    m: int = 0\n"
+        "    def __add__(self, other): return Dim(self.l+other.l, self.t+other.t, self.m+other.m)\n"
+        "    def __sub__(self, other): return Dim(self.l-other.l, self.t-other.t, self.m-other.m)\n"
+        "    def __mul__(self, other): return Dim(self.l+other.l, self.t+other.t, self.m+other.m)\n"
+        "    def __truediv__(self, other): return Dim(self.l-other.l, self.t-other.t, self.m-other.m)\n"
+        "    def __pow__(self, power): return Dim(power*self.l, power*self.t, power*self.m)\n"
+        "ONE = Dim()\n"
+        "LENGTH = Dim(1, 0, 0)\n"
+        "TIME = Dim(0, 1, 0)\n"
+        "MASS = Dim(0, 0, 1)\n"
+        "ENERGY = MASS * LENGTH**2 / TIME**2\n"
         "x = Dim(0, 0, 0)\n"
         "x3 = Dim(1, 0, 0)\n"
         "a_B = Dim(-2, -2, 1)\n"
@@ -1442,6 +2206,16 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
         "f0 = Dim(-1, 0, 0)\n"
         "y = Dim(0, 0, 0)\n"
         "z = Dim(0, 0, 0)\n"
+        "def dim_factory(value): return value\n"
+        "def run_units():\n"
+        "    K_m = ENERGY * LENGTH**2\n"
+        "    K_decoy = Dim(4, -2, 1)\n"
+        "    m_uu = LENGTH**3 / ENERGY\n"
+        "    A = ENERGY * LENGTH\n"
+        "    bad = dim_factory(LENGTH)\n"
+        "    dims = {'PASS_UNITS_K_M': ('dim_Km', K_m, K_m)}\n"
+        "def container_only():\n"
+        "    dims = {'container_K_m': ('label', LENGTH)}\n"
     )
     source_digest = hash_file(source)
     register = root / "parameter_register.txt"
@@ -1524,6 +2298,16 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
             raw=("-1", "0", "0"),
             role="field",
         ),
+        _self_test_symbol(
+            source,
+            source_digest,
+            name="K_m",
+            alias="K_m",
+            qid="q.core.k_m",
+            definition="here/define_km",
+            dim={"L": "4", "M": "1", "T": "-2"},
+            raw=("4", "-2", "1"),
+        ),
     ]
     spectrum = {
         "operator": "x",
@@ -1554,6 +2338,9 @@ def _build_self_test_fixture(root: Path) -> tuple[list[dict[str, Any]], dict[str
         _self_test_claim(source, source_digest, "define_ell", payload=_relation_payload("ell", "ell", "defines")),
         _self_test_claim(
             source, source_digest, "define_area", payload=_relation_payload("area", "ell**2", "defines")
+        ),
+        _self_test_claim(
+            source, source_digest, "define_km", payload=_relation_payload("K_m", "K_m", "defines")
         ),
         _self_test_claim(
             source,
@@ -1882,13 +2669,18 @@ def run_self_test() -> int:
         root = Path(tmp)
         baseline_manifests, baseline_config, paths = _build_self_test_fixture(root)
 
-        def execute(manifests: list[dict[str, Any]], config: dict[str, Any]) -> CompositeReport:
+        def execute(
+            manifests: list[dict[str, Any]],
+            config: dict[str, Any],
+            *,
+            closed_slice: bool | None = True,
+        ) -> CompositeReport:
             return CompositeChecker(
                 manifests,
                 config,
                 schema=schema,
                 roots=(root, PROJECT_ROOT, PROJECT_ROOT.parent.parent),
-                closed_slice=True,
+                closed_slice=closed_slice,
             ).run()
 
         clean = execute(copy.deepcopy(baseline_manifests), copy.deepcopy(baseline_config))
@@ -2030,6 +2822,207 @@ def run_self_test() -> int:
                 if s["parse_alias"] == "a_B"
             ).__setitem__("dim_source_order", "LMT"),
         )
+
+        case(
+            "C4 function-scoped composite live Dim tuple",
+            "C4",
+            "FAIL",
+            "DIM_SOURCE_TUPLE_MISMATCH",
+            lambda m, c: next(
+                s
+                for s in next(x for x in m if x["stage_id"] == "stage001")["symbols"]
+                if s["parse_alias"] == "K_m"
+            ).__setitem__("dim_source_tuple", ["4", "1", "-2"]),
+        )
+
+        def unsupported_dim_source(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            stage3 = next(x for x in manifests if x["stage_id"] == "stage003")
+            stage3["symbols"].append(
+                _self_test_symbol(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    name="bad",
+                    alias="bad",
+                    qid="q.unsupported.bad",
+                    definition="here/define_bad",
+                    dim={"L": "1"},
+                    raw=("1", "0", "0"),
+                )
+            )
+            stage3["claims"].append(
+                _self_test_claim(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    "define_bad",
+                    payload=_relation_payload("bad", "bad", "defines"),
+                )
+            )
+
+        case(
+            "C4 unsupported live Dim operation raises",
+            "C4",
+            "UNSUPPORTED",
+            "DIM_SOURCE_UNSUPPORTED",
+            unsupported_dim_source,
+        )
+
+        def container_label_only(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            stage3 = next(
+                manifest
+                for manifest in manifests
+                if manifest["stage_id"] == "stage003"
+            )
+            symbol = _self_test_symbol(
+                Path(paths["source"]),
+                paths["source_digest"],
+                name="container_K_m",
+                alias="container_K_m",
+                qid="q.unsupported.container_k_m",
+                definition="here/define_container_k_m",
+                dim={"L": "1"},
+                raw=("1", "0", "0"),
+            )
+            symbol["dim_source"]["locus"] = (
+                "container_only: container label container_K_m"
+            )
+            stage3["symbols"].append(symbol)
+            stage3["claims"].append(
+                _self_test_claim(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    "define_container_k_m",
+                    payload=_relation_payload(
+                        "container_K_m", "container_K_m", "defines"
+                    ),
+                )
+            )
+
+        case(
+            "C4 container label is not a Dim binding",
+            "C4",
+            "UNSUPPORTED",
+            "DIM_SOURCE_UNSUPPORTED",
+            container_label_only,
+        )
+
+        def decoy_assignment(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            stage3 = next(
+                manifest
+                for manifest in manifests
+                if manifest["stage_id"] == "stage003"
+            )
+            symbol = _self_test_symbol(
+                Path(paths["source"]),
+                paths["source_digest"],
+                name="K_decoy",
+                alias="K_decoy",
+                qid="q.unsupported.k_decoy",
+                definition="here/define_k_decoy",
+                dim={"L": "4", "M": "1", "T": "-2"},
+                raw=("4", "-2", "1"),
+            )
+            symbol["dim_source"]["locus"] = (
+                "run_units: K_decoy = ENERGY * LENGTH**2"
+            )
+            stage3["symbols"].append(symbol)
+            stage3["claims"].append(
+                _self_test_claim(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    "define_k_decoy",
+                    payload=_relation_payload(
+                        "K_decoy", "K_decoy", "defines"
+                    ),
+                )
+            )
+
+        case(
+            "C4 decoy literal cannot impersonate locus assignment",
+            "C4",
+            "UNSUPPORTED",
+            "DIM_SOURCE_UNSUPPORTED",
+            decoy_assignment,
+        )
+
+        case(
+            "C4 failed locus expression cannot fall through to alias",
+            "C4",
+            "UNSUPPORTED",
+            "DIM_SOURCE_UNSUPPORTED",
+            lambda m, c: next(
+                s
+                for s in next(
+                    x for x in m if x["stage_id"] == "stage001"
+                )["symbols"]
+                if s["parse_alias"] == "K_m"
+            )["dim_source"].__setitem__(
+                "locus", "dimension expression MISSING"
+            ),
+        )
+
+        def legitimate_composite_expression(
+            manifests: list[dict[str, Any]], _: dict[str, Any]
+        ) -> None:
+            stage3 = next(
+                manifest
+                for manifest in manifests
+                if manifest["stage_id"] == "stage003"
+            )
+            symbol = _self_test_symbol(
+                Path(paths["source"]),
+                paths["source_digest"],
+                name="inverse_area",
+                alias="inverse_area",
+                qid="q.legitimate.inverse_area",
+                definition="here/define_inverse_area",
+                dim={"L": "-2"},
+                raw=("-2", "0", "0"),
+            )
+            symbol["dim_source"]["locus"] = (
+                "dimension expression LENGTH**-2 in run_units"
+            )
+            stage3["symbols"].append(symbol)
+            stage3["claims"].append(
+                _self_test_claim(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    "define_inverse_area",
+                    payload=_relation_payload(
+                        "inverse_area", "inverse_area", "defines"
+                    ),
+                )
+            )
+
+        total += 1
+        composite_manifests = copy.deepcopy(baseline_manifests)
+        composite_config = copy.deepcopy(baseline_config)
+        legitimate_composite_expression(composite_manifests, composite_config)
+        composite_report = execute(composite_manifests, composite_config)
+        if composite_report.headline == "PASS" and all(
+            result.status == "PASS"
+            for result in composite_report.results.values()
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] C4 legitimate composite expression without named assignment | "
+                "target=C4 | clean=PASS planted=PASS"
+            )
+        else:
+            failures.append(
+                "C4 legitimate composite expression: "
+                f"headline={composite_report.headline}, "
+                f"statuses={ {name: result.status for name, result in composite_report.results.items()} }, "
+                f"issues={[(issue.code, issue.detail) for issue in composite_report.results['C4'].issues]}"
+            )
+            lines.append(
+                "[FAIL] C4 legitimate composite expression without named assignment"
+            )
 
         case(
             "C2 spectrum kernel mutation",
@@ -2212,6 +3205,185 @@ def run_self_test() -> int:
             unclassified,
         )
 
+        def owned_register_config(
+            filename: str,
+            extra_row: str,
+            owner: str | None,
+            row_class: str = "ACTION",
+        ) -> dict[str, Any]:
+            register = root / filename
+            enters = f"synthetic ({owner})" if owner is not None else "—"
+            register.write_text(
+                "| Param | `[L,T,M]` dim | Enters | Class | Depends | Route |\n"
+                "|---|---|---|---|---|---|\n"
+                "| `row_a` | `1` | I-1 (001) | `ACTION` | — | — |\n"
+                "| `row_b` | `1` | I-2 (002) | `ACTION` | — | — |\n"
+                f"| `{extra_row}` | `1` | {enters} | `{row_class}` | — | — |\n"
+            )
+            config = copy.deepcopy(baseline_config)
+            config["parameter_register"] = {
+                "path": str(register),
+                "sha256": hash_file(register),
+                "format": "markdown_master_table",
+            }
+            config["closed_slice"] = False
+            return config
+
+        total += 1
+        loaded_owner_config = owned_register_config(
+            "loaded_owner_register.md", "row_extra", "001"
+        )
+        loaded_owner_report = execute(
+            copy.deepcopy(baseline_manifests),
+            loaded_owner_config,
+            closed_slice=False,
+        )
+        loaded_owner_codes = {
+            issue.code for issue in loaded_owner_report.results["C5"].issues
+        }
+        if (
+            loaded_owner_report.headline == "FAIL"
+            and loaded_owner_report.results["C5"].status == "FAIL"
+            and "UNCLASSIFIED_REGISTER_ROW" in loaded_owner_codes
+            and "REGISTER_COVERAGE_PARTIAL" not in loaded_owner_codes
+            and all(
+                result.status == "PASS"
+                for name, result in loaded_owner_report.results.items()
+                if name != "C5"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] open internal register gap owned by loaded stage | "
+                "target=C5 | clean=PASS planted=FAIL | "
+                "code=UNCLASSIFIED_REGISTER_ROW"
+            )
+        else:
+            failures.append(
+                "open internal register gap: "
+                f"headline={loaded_owner_report.headline}, "
+                f"statuses={ {name: result.status for name, result in loaded_owner_report.results.items()} }, "
+                f"codes={sorted(loaded_owner_codes)}"
+            )
+            lines.append("[FAIL] open internal register gap owned by loaded stage")
+
+        total += 1
+        pending_owner_config = owned_register_config(
+            "pending_owner_register.md", "row_pending", "999"
+        )
+        pending_owner_report = execute(
+            copy.deepcopy(baseline_manifests),
+            pending_owner_config,
+            closed_slice=False,
+        )
+        pending_owner_codes = {
+            issue.code for issue in pending_owner_report.results["C5"].issues
+        }
+        if (
+            pending_owner_report.headline == "PARTIAL"
+            and pending_owner_report.results["C5"].status == "PARTIAL"
+            and "REGISTER_COVERAGE_PARTIAL" in pending_owner_codes
+            and "UNCLASSIFIED_REGISTER_ROW" not in pending_owner_codes
+            and all(
+                result.status == "PASS"
+                for name, result in pending_owner_report.results.items()
+                if name != "C5"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] open pending register row owned by unloaded stage | "
+                "target=C5 | clean=PASS planted=PARTIAL | "
+                "code=REGISTER_COVERAGE_PARTIAL"
+            )
+        else:
+            failures.append(
+                "open pending register row: "
+                f"headline={pending_owner_report.headline}, "
+                f"statuses={ {name: result.status for name, result in pending_owner_report.results.items()} }, "
+                f"codes={sorted(pending_owner_codes)}"
+            )
+            lines.append("[FAIL] open pending register row owned by unloaded stage")
+
+        total += 1
+        derived_owner_config = owned_register_config(
+            "derived_owner_register.md",
+            "row_derived",
+            "001",
+            "DERIVED",
+        )
+        derived_owner_report = execute(
+            copy.deepcopy(baseline_manifests),
+            derived_owner_config,
+            closed_slice=False,
+        )
+        derived_owner_codes = {
+            issue.code for issue in derived_owner_report.results["C5"].issues
+        }
+        if (
+            derived_owner_report.headline == "PASS"
+            and derived_owner_report.results["C5"].status == "PASS"
+            and "UNCLASSIFIED_REGISTER_ROW" not in derived_owner_codes
+            and all(
+                result.status == "PASS"
+                for result in derived_owner_report.results.values()
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] derived non-knob row owned by loaded stage | "
+                "target=C5 | clean=PASS planted=PASS"
+            )
+        else:
+            failures.append(
+                "derived non-knob register row: "
+                f"headline={derived_owner_report.headline}, "
+                f"statuses={ {name: result.status for name, result in derived_owner_report.results.items()} }, "
+                f"codes={sorted(derived_owner_codes)}"
+            )
+            lines.append("[FAIL] derived non-knob row owned by loaded stage")
+
+        total += 1
+        gap_config = owned_register_config(
+            "gap_register.md",
+            "m_defect",
+            None,
+            "GAP",
+        )
+        gap_report = execute(
+            copy.deepcopy(baseline_manifests),
+            gap_config,
+            closed_slice=False,
+        )
+        gap_codes = {
+            issue.code for issue in gap_report.results["C5"].issues
+        }
+        if (
+            gap_report.headline == "PARTIAL"
+            and gap_report.results["C5"].status == "PARTIAL"
+            and "REGISTER_COVERAGE_PARTIAL" in gap_codes
+            and "UNCLASSIFIED_REGISTER_ROW" not in gap_codes
+            and all(
+                result.status == "PASS"
+                for name, result in gap_report.results.items()
+                if name != "C5"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] unattributable GAP register row stays pending | "
+                "target=C5 | clean=PASS planted=PARTIAL | "
+                "code=REGISTER_COVERAGE_PARTIAL"
+            )
+        else:
+            failures.append(
+                "unattributable GAP register row: "
+                f"headline={gap_report.headline}, "
+                f"statuses={ {name: result.status for name, result in gap_report.results.items()} }, "
+                f"codes={sorted(gap_codes)}"
+            )
+            lines.append("[FAIL] unattributable GAP register row stays pending")
+
         case(
             "C5 orphan inherit",
             "C5",
@@ -2377,6 +3549,279 @@ def run_self_test() -> int:
             ),
         )
 
+        def dangling_consumer(ref: str) -> dict[str, Any]:
+            manifest = _self_test_manifest(
+                Path(paths["source"]),
+                paths["source_digest"],
+                "stage004",
+                [],
+                [
+                    _self_test_claim(
+                        Path(paths["source"]),
+                        paths["source_digest"],
+                        "stage4_identity",
+                    )
+                ],
+            )
+            manifest["consumes"] = [
+                {
+                    "ref": ref,
+                    "as_consumed": _typed_relation("1", "1"),
+                    "check": "cas_equivalence",
+                    "substitutions": [],
+                }
+            ]
+            return manifest
+
+        auto_config = copy.deepcopy(baseline_config)
+        auto_config["closed_slice"] = False
+        auto_clean = execute(
+            copy.deepcopy(baseline_manifests),
+            copy.deepcopy(auto_config),
+            closed_slice=None,
+        )
+
+        total += 1
+        lone_stage = copy.deepcopy(
+            next(
+                manifest
+                for manifest in baseline_manifests
+                if manifest["stage_id"] == "stage003"
+            )
+        )
+        lone_stage["consumes"] = []
+        lone_stage["claims"].append(
+            _self_test_claim(
+                Path(paths["source"]),
+                paths["source_digest"],
+                "local_count_range",
+                kind="range",
+                status="EARNED",
+                payload_kind="record_range",
+                payload={
+                    "low": 0,
+                    "high": 0,
+                    "spread": 0,
+                    "convention_axes": [
+                        {
+                            "axis_id": "baseline",
+                            "choices": [
+                                {
+                                    "token": "default",
+                                    "low_delta": 0,
+                                    "high_delta": 0,
+                                }
+                            ],
+                        }
+                    ],
+                    "components": {
+                        "empty": {"low": 0, "high": 0}
+                    },
+                },
+            )
+        )
+        lone_config = copy.deepcopy(pending_owner_config)
+        lone_config["range_claim_ref"] = "stage003/local_count_range"
+        lone_config["closed_slice"] = False
+        lone_report = execute(
+            [lone_stage],
+            lone_config,
+            closed_slice=None,
+        )
+        lone_codes = {
+            issue.code for issue in lone_report.results["C5"].issues
+        }
+        if (
+            lone_report.headline == "PARTIAL"
+            and lone_report.results["C5"].status == "PARTIAL"
+            and "REGISTER_COVERAGE_PARTIAL" in lone_codes
+            and "UNCLASSIFIED_REGISTER_ROW" not in lone_codes
+            and all(
+                result.status == "PASS"
+                for name, result in lone_report.results.items()
+                if name != "C5"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] ref-empty incomplete slice stays auto-open | target=C5 | "
+                "clean=PASS planted=PARTIAL | code=REGISTER_COVERAGE_PARTIAL"
+            )
+        else:
+            failures.append(
+                "ref-empty incomplete slice: "
+                f"headline={lone_report.headline}, "
+                f"statuses={ {name: result.status for name, result in lone_report.results.items()} }, "
+                f"codes={sorted(lone_codes)}"
+            )
+            lines.append("[FAIL] ref-empty incomplete slice stays auto-open")
+
+        total += 1
+        explicit_open_manifests = copy.deepcopy(baseline_manifests)
+        explicit_open_manifests.append(dangling_consumer("stage999/missing_claim"))
+        explicit_open = execute(
+            explicit_open_manifests,
+            copy.deepcopy(auto_config),
+            closed_slice=False,
+        )
+        explicit_open_codes = {
+            issue.code for issue in explicit_open.results["C3"].issues
+        }
+        if (
+            auto_clean.headline == "PASS"
+            and explicit_open.headline == "PARTIAL"
+            and explicit_open.results["C3"].status == "PARTIAL"
+            and "ABSENT_PRODUCER" in explicit_open_codes
+            and all(
+                result.status == "PASS"
+                for name, result in explicit_open.results.items()
+                if name != "C3"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] open cross-stage dangling reference | target=C3 | "
+                "clean=PASS planted=PARTIAL | code=ABSENT_PRODUCER"
+            )
+        else:
+            failures.append(
+                "open cross-stage dangling reference: "
+                f"clean={auto_clean.headline}, planted={explicit_open.headline}, "
+                f"statuses={{name: result.status for name, result in explicit_open.results.items()}}, "
+                f"codes={sorted(explicit_open_codes)}"
+            )
+            lines.append("[FAIL] open cross-stage dangling reference")
+
+        total += 1
+        explicit_open_internal = copy.deepcopy(baseline_manifests)
+        _find_claim(
+            explicit_open_internal, "stage002", "define_y"
+        )["payload"]["rhs"]["sympy"] = "x*ell"
+        open_internal = execute(
+            explicit_open_internal,
+            copy.deepcopy(auto_config),
+            closed_slice=False,
+        )
+        open_internal_codes = {
+            issue.code for issue in open_internal.results["C4"].issues
+        }
+        if (
+            auto_clean.headline == "PASS"
+            and open_internal.headline == "FAIL"
+            and open_internal.results["C4"].status == "FAIL"
+            and "DIMENSIONAL_INHOMOGENEITY" in open_internal_codes
+            and all(
+                result.status == "PASS"
+                for name, result in open_internal.results.items()
+                if name != "C4"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] open internal dimensional defect | target=C4 | "
+                "clean=PASS planted=FAIL | code=DIMENSIONAL_INHOMOGENEITY"
+            )
+        else:
+            failures.append(
+                "open internal dimensional defect: "
+                f"clean={auto_clean.headline}, planted={open_internal.headline}, "
+                f"statuses={ {name: result.status for name, result in open_internal.results.items()} }, "
+                f"codes={sorted(open_internal_codes)}"
+            )
+            lines.append("[FAIL] open internal dimensional defect")
+
+        producer = _self_test_manifest(
+            Path(paths["source"]),
+            paths["source_digest"],
+            "stage005",
+            [],
+            [
+                _self_test_claim(
+                    Path(paths["source"]),
+                    paths["source_digest"],
+                    "producer_placeholder",
+                )
+            ],
+        )
+        auto_complete_manifests = copy.deepcopy(baseline_manifests)
+        auto_complete_manifests.extend(
+            [dangling_consumer("stage005/missing_claim"), producer]
+        )
+
+        total += 1
+        auto_complete = execute(
+            copy.deepcopy(auto_complete_manifests),
+            copy.deepcopy(auto_config),
+            closed_slice=None,
+        )
+        auto_complete_codes = {
+            issue.code for issue in auto_complete.results["C3"].issues
+        }
+        if (
+            auto_clean.headline == "PASS"
+            and auto_complete.headline == "FAIL"
+            and auto_complete.results["C3"].status == "FAIL"
+            and auto_complete.results["C7"].status == "SKIPPED"
+            and "ABSENT_PRODUCER" in auto_complete_codes
+            and all(
+                result.status == "PASS"
+                for name, result in auto_complete.results.items()
+                if name not in {"C3", "C7"}
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] auto-closed complete producer set | target=C3 | "
+                "clean=PASS planted=FAIL | code=ABSENT_PRODUCER"
+            )
+        else:
+            failures.append(
+                "auto-closed complete producer set: "
+                f"clean={auto_clean.headline}, planted={auto_complete.headline}, "
+                f"statuses={ {name: result.status for name, result in auto_complete.results.items()} }, "
+                f"codes={sorted(auto_complete_codes)}"
+            )
+            lines.append("[FAIL] auto-closed complete producer set")
+
+        total += 1
+        auto_incomplete_manifests = [
+            manifest
+            for manifest in copy.deepcopy(auto_complete_manifests)
+            if manifest["stage_id"] != "stage005"
+        ]
+        auto_incomplete = execute(
+            auto_incomplete_manifests,
+            copy.deepcopy(auto_config),
+            closed_slice=None,
+        )
+        auto_incomplete_codes = {
+            issue.code for issue in auto_incomplete.results["C3"].issues
+        }
+        if (
+            auto_clean.headline == "PASS"
+            and auto_incomplete.headline == "PARTIAL"
+            and auto_incomplete.results["C3"].status == "PARTIAL"
+            and "ABSENT_PRODUCER" in auto_incomplete_codes
+            and all(
+                result.status == "PASS"
+                for name, result in auto_incomplete.results.items()
+                if name != "C3"
+            )
+        ):
+            passed += 1
+            lines.append(
+                "[PASS] auto-open incomplete producer set | target=C3 | "
+                "clean=PASS planted=PARTIAL | code=ABSENT_PRODUCER"
+            )
+        else:
+            failures.append(
+                "auto-open incomplete producer set: "
+                f"clean={auto_clean.headline}, planted={auto_incomplete.headline}, "
+                f"statuses={ {name: result.status for name, result in auto_incomplete.results.items()} }, "
+                f"codes={sorted(auto_incomplete_codes)}"
+            )
+            lines.append("[FAIL] auto-open incomplete producer set")
+
         total += 1
         example = load_json(Path(__file__).with_name("examples") / "stage_manifest_v2_example.json")
         errors = list(Draft202012Validator(schema).iter_errors(example))
@@ -2401,8 +3846,41 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--manifest-dir", type=Path, default=DEFAULT_MANIFEST_DIR)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
-    parser.add_argument("--closed-slice", action="store_true")
+    slice_group = parser.add_mutually_exclusive_group()
+    slice_group.add_argument("--closed-slice", action="store_true")
+    slice_group.add_argument(
+        "--open-slice",
+        action="store_true",
+        help="explicitly treat unresolved external producer stages as an open slice",
+    )
+    parser.add_argument("--recover-dims", type=Path, help=argparse.SUPPRESS)
+    parser.add_argument(
+        "--dim-order",
+        choices=("LMT", "LTM", "MLT", "MTL", "TLM", "TML"),
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "--dim-expression",
+        action="append",
+        default=[],
+        help=argparse.SUPPRESS,
+    )
     args = parser.parse_args(argv)
+    if args.recover_dims is not None:
+        if args.dim_order is None:
+            print("--recover-dims requires --dim-order", file=sys.stderr)
+            return 2
+        try:
+            payload = _live_dim_recovery(
+                args.recover_dims.resolve(),
+                args.dim_order,
+                args.dim_expression,
+            )
+        except Exception as exc:
+            print(f"DIM RECOVERY FAIL: {exc}", file=sys.stderr)
+            return 2
+        print("DIM_RECOVERY_JSON=" + json.dumps(payload, sort_keys=True))
+        return 0
     if args.self_test:
         return run_self_test()
 
@@ -2418,11 +3896,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("\n".join(f"LOAD FAIL: {error}" for error in load_errors), file=sys.stderr)
         return 1
     config = load_json(args.config)
+    closed_slice_override = True if args.closed_slice else False if args.open_slice else None
     report = CompositeChecker(
         manifests,
         config,
         roots=(PROJECT_ROOT, PROJECT_ROOT.parent.parent, Path.cwd()),
-        closed_slice=args.closed_slice or config.get("closed_slice", False),
+        closed_slice=closed_slice_override,
     ).run()
     text = render_report(report)
     args.report.parent.mkdir(parents=True, exist_ok=True)

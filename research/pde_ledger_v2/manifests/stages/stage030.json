@@ -1,0 +1,2899 @@
+{
+  "schema_version": "2.1",
+  "stage_id": "stage030",
+  "title": "Electric Scalar Block + Localized-H Closure",
+  "part": "Part IV -- Charge (IV-1)",
+  "status_token": "ELECTRIC_SCALAR_CLOSURE_STATIC",
+  "symbols": [
+    {
+      "name": "w",
+      "parse_alias": "w",
+      "quantity_id": "q.coordinate.transverse_w",
+      "definition_ref": "here/declare_w",
+      "latex": "w",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "ell",
+      "parse_alias": "ell",
+      "quantity_id": "q.charge.pt_length",
+      "definition_ref": "here/declare_ell",
+      "latex": "\\ell",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "x",
+      "parse_alias": "x",
+      "quantity_id": "q.coordinate.brane_x",
+      "definition_ref": "here/declare_x",
+      "latex": "x",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "t",
+      "parse_alias": "t",
+      "quantity_id": "q.coordinate.time",
+      "definition_ref": "here/declare_t",
+      "latex": "t",
+      "dim": {
+        "T": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; TIME = Dim(0,1,0), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "1",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; TIME = Dim(0,1,0), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "V_H",
+      "parse_alias": "V_H",
+      "quantity_id": "q.charge.pt_potential",
+      "definition_ref": "here/pt_operator",
+      "latex": "V_H",
+      "dim": {
+        "L": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; parent potential dimension expression LENGTH**-2 in run_spectral_structure"
+      },
+      "dim_source_tuple": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "function",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; parent potential dimension expression LENGTH**-2 in run_spectral_structure",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "1"
+          }
+        ],
+        "codomain": {
+          "L": "-2"
+        }
+      }
+    },
+    {
+      "name": "O_perp",
+      "parse_alias": "O_perp",
+      "quantity_id": "q.charge.transverse_operator",
+      "definition_ref": "here/declare_o_perp",
+      "latex": "O_{\\perp}",
+      "dim": {
+        "L": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "dimension expression LENGTH**-2; Dim dataclass [L,T,M] and zero_residual = -diff(f0,w,2) + potential*f0, lines 171-207 and 262-265"
+      },
+      "dim_source_tuple": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "operator",
+      "signature": {
+        "domain": [
+          {
+            "L": "-1"
+          }
+        ],
+        "codomain": {
+          "L": "-3"
+        }
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_spectral_structure: zero_residual = -diff(f0,w,2) + potential*f0, lines 262-265",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "psi",
+      "parse_alias": "psi",
+      "quantity_id": "q.charge.transverse_probe",
+      "definition_ref": "here/transverse_factorization",
+      "latex": "\\psi",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "function",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "1"
+          }
+        ],
+        "codomain": {}
+      }
+    },
+    {
+      "name": "f0",
+      "parse_alias": "f0",
+      "quantity_id": "q.charge.transverse_zero_mode",
+      "definition_ref": "here/zero_mode",
+      "latex": "f_0",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_H = LENGTH**-1, lines 204-210"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "function",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_H = LENGTH**-1, lines 204-210",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "1"
+          }
+        ],
+        "codomain": {
+          "L": "-1"
+        }
+      }
+    },
+    {
+      "name": "H",
+      "parse_alias": "H",
+      "quantity_id": "q.charge.parent_scalar",
+      "definition_ref": "here/declare_h_parent",
+      "latex": "H",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_H = LENGTH**-1, lines 204-210"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_H = LENGTH**-1, lines 204-210",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "uL",
+      "parse_alias": "uL",
+      "quantity_id": "q.brane.longitudinal_displacement",
+      "definition_ref": "here/declare_ul",
+      "latex": "u_L",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_u = LENGTH, lines 204-211"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_u = LENGTH, lines 204-211",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "h",
+      "parse_alias": "h",
+      "quantity_id": "q.charge.reduced_scalar",
+      "definition_ref": "here/normalized_projection",
+      "latex": "h",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_h = ONE, lines 204-211"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_h = ONE, lines 204-211",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "N0",
+      "parse_alias": "N0",
+      "quantity_id": "q.charge.zero_mode_norm",
+      "definition_ref": "here/zero_mode_norm",
+      "latex": "N_0",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_N0 = LENGTH**-1, lines 204-212"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_N0 = LENGTH**-1, lines 204-212",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "M4",
+      "parse_alias": "M4",
+      "quantity_id": "q.charge.parent_inertia",
+      "definition_ref": "here/declare_m4",
+      "latex": "M_4",
+      "dim": {
+        "M": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_M4 = MASS, lines 204-214"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_M4 = MASS, lines 204-214",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "cE",
+      "parse_alias": "cE",
+      "quantity_id": "q.charge.electric_speed",
+      "definition_ref": "here/declare_ce",
+      "latex": "c_E",
+      "dim": {
+        "L": "1",
+        "T": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_CE = VELOCITY, lines 204-223"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-1",
+        "0"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_CE = VELOCITY, lines 204-223",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "K4",
+      "parse_alias": "K4",
+      "quantity_id": "q.charge.parent_stiffness",
+      "definition_ref": "here/k4_definition",
+      "latex": "K_4",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_K4 = ENERGY, lines 204-214"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_K4 = ENERGY, lines 204-214",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "M_h",
+      "parse_alias": "M_h",
+      "quantity_id": "q.charge.reduced_inertia",
+      "definition_ref": "here/reduced_inertia",
+      "latex": "M_h",
+      "dim": {
+        "L": "-1",
+        "M": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_MH = Dim(-1,0,1), lines 215-219"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_MH = Dim(-1,0,1), lines 215-219",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "K_h",
+      "parse_alias": "K_h",
+      "quantity_id": "q.charge.reduced_stiffness",
+      "definition_ref": "here/reduced_stiffness",
+      "latex": "K_h",
+      "dim": {
+        "L": "1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_KH = Dim(1,-2,1), lines 215-219"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_KH = Dim(1,-2,1), lines 215-219",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "A_eff",
+      "parse_alias": "A_eff",
+      "quantity_id": "q.brane.effective_inertia",
+      "definition_ref": "stage003/brane_inertia",
+      "latex": "A_{\\rm eff}",
+      "dim": {
+        "L": "-3",
+        "M": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_AEFF = Dim(-3,0,1), lines 214-219"
+      },
+      "dim_source_tuple": [
+        "-3",
+        "0",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_AEFF = Dim(-3,0,1), lines 214-219",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "B_eff",
+      "parse_alias": "B_eff",
+      "quantity_id": "q.brane.effective_stiffness",
+      "definition_ref": "stage003/b_eff_definition",
+      "latex": "B_{\\rm eff}",
+      "dim": {
+        "L": "-1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_BEFF = Dim(-1,-2,1), lines 214-219"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_BEFF = Dim(-1,-2,1), lines 214-219",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "C_hu",
+      "parse_alias": "C_hu",
+      "quantity_id": "q.charge.embedding_mixing",
+      "definition_ref": "here/declare_chu",
+      "latex": "C_{hu}",
+      "dim": {
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_CHU = Dim(0,-2,1), lines 214-220"
+      },
+      "dim_source_tuple": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_CHU = Dim(0,-2,1), lines 214-220",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "D",
+      "parse_alias": "D",
+      "quantity_id": "q.charge.kernel_determinant",
+      "definition_ref": "here/kernel_determinant",
+      "latex": "D",
+      "dim": {
+        "M": "2",
+        "T": "-4"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_D = Dim(0,-4,2), lines 220-224"
+      },
+      "dim_source_tuple": [
+        "0",
+        "-4",
+        "2"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; DIM_D = Dim(0,-4,2), lines 220-224",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "H0",
+      "parse_alias": "H0",
+      "quantity_id": "q.charge.zero_mode_amplitude",
+      "definition_ref": "here/declare_h0",
+      "latex": "H_0",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "z_star",
+      "parse_alias": "z_star",
+      "quantity_id": "q.charge.wave_speed_squared_star",
+      "definition_ref": "here/wave_speeds",
+      "latex": "z^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "gradU",
+      "parse_alias": "gradU",
+      "quantity_id": "q.audit.grad_u_placeholder",
+      "definition_ref": "here/declare_gradu",
+      "latex": "\\nabla u_L",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "gradH",
+      "parse_alias": "gradH",
+      "quantity_id": "q.audit.grad_h_placeholder",
+      "definition_ref": "here/declare_gradh",
+      "latex": "\\nabla h",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "reduced_h_mass_star",
+      "parse_alias": "reduced_h_mass_star",
+      "quantity_id": "q.charge.reduced_mass_star",
+      "definition_ref": "here/reduced_masslessness",
+      "latex": "m_{h}^{*2}",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "parent_inner_weight",
+      "parse_alias": "parent_inner_weight",
+      "quantity_id": "q.charge.parent_inner_weight",
+      "definition_ref": "here/parent_inner_weight",
+      "latex": "\\varpi_H",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "ell_star",
+      "parse_alias": "ell_star",
+      "quantity_id": "q.charge.pt_length_star",
+      "definition_ref": "here/ell_ratio",
+      "latex": "\\ell^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "M4_star",
+      "parse_alias": "M4_star",
+      "quantity_id": "q.charge.parent_inertia_star",
+      "definition_ref": "here/m4_star",
+      "latex": "M_4^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "cE_star",
+      "parse_alias": "cE_star",
+      "quantity_id": "q.charge.electric_speed_star",
+      "definition_ref": "here/ce_star",
+      "latex": "c_E^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "B_eff_star",
+      "parse_alias": "B_eff_star",
+      "quantity_id": "q.brane.effective_stiffness_star",
+      "definition_ref": "here/beff_star",
+      "latex": "B_{\\rm eff}^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "C_hu_star",
+      "parse_alias": "C_hu_star",
+      "quantity_id": "q.charge.embedding_mixing_star",
+      "definition_ref": "here/chu_star",
+      "latex": "C_{hu}^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "A_eff_star",
+      "parse_alias": "A_eff_star",
+      "quantity_id": "q.brane.effective_inertia_star",
+      "definition_ref": "here/aeff_star",
+      "latex": "A_{\\rm eff}^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "Mh_star",
+      "parse_alias": "Mh_star",
+      "quantity_id": "q.charge.reduced_inertia_star",
+      "definition_ref": "here/mh_normalization",
+      "latex": "M_h^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "pt_operator",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "V_H(w)",
+          "latex": "V_H(w)"
+        },
+        "rhs": {
+          "sympy": "(4 - 6/cosh(w/ell)**2)/ell**2",
+          "latex": "(4-6\\,\\mathrm{sech}^2(w/\\ell))/\\ell^2"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Reflection-even Poeschl-Teller potential of the transverse operator O_perp = -d^2/dw^2 + V_H; the full DRAFT v0 postulated closure (g0_closure_card_v0.md sec 2.3-2.4, drafted 2026-07-20; folded into the ledger 2026-07-22). Includes the R_w-odd parity representation of {H,h,u_L}. No dated record establishes independence -> origin unknown."
+      },
+      "note": "The PT-operator choice is a labeled DRAFT v0 postulate, not a derivation. What is EARNED is that, given O_perp, the sec 1-5 prerequisites hold.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_TRANSVERSE_FACTORIZATION",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "transverse_factorization",
+      "kind": "operator_identity",
+      "status": "EARNED",
+      "payload_kind": "operator_identity",
+      "payload": {
+        "operator": "psi",
+        "acts_on": "psi",
+        "definition": {
+          "sympy": "-Derivative(Derivative(psi(w), w) + (2*tanh(w/ell)/ell)*psi(w), w) + (2*tanh(w/ell)/ell)*(Derivative(psi(w), w) + (2*tanh(w/ell)/ell)*psi(w)) - (-Derivative(psi(w), (w, 2)) + ((4 - 6/cosh(w/ell)**2)/ell**2)*psi(w))"
+        },
+        "signature": {
+          "domain": [
+            {
+              "L": "1"
+            }
+          ],
+          "codomain": {
+            "L": "-2"
+          }
+        }
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator"
+        ]
+      },
+      "note": "O_perp = A_dagger A >= 0 with A = d/dw + 2 tanh(w/ell)/ell and A_dagger = -d/dw + 2 tanh(w/ell)/ell, verified term-by-term on a generic probe psi; so <A psi, A psi> >= 0.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_TRANSVERSE_FACTORIZATION",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_o_perp",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "O_perp(f0(w))"
+        },
+        "rhs": {
+          "sympy": "-Derivative(f0(w), (w, 2)) + V_H(w)*f0(w)"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration for the postulated transverse operator O_perp = -d^2/dw^2 + V_H; no dated record establishes independence."
+      },
+      "note": "O_perp is the transverse differential operator -d^2/dw^2 + V_H. Its action on f0 is what has eigenvalue zero; V_H alone is only the multiplicative potential.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_spectral_structure: zero_residual = -diff(f0,w,2) + potential*f0, lines 262-265",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "id": "zero_mode",
+      "kind": "spectral",
+      "status": "EARNED",
+      "payload_kind": "spectrum",
+      "payload": {
+        "operator": "O_perp",
+        "kernel_symbol": "f0",
+        "kernel": {
+          "sympy": "1/(ell*cosh(w/ell)**2)"
+        },
+        "eigenvalue": {
+          "sympy": "0"
+        },
+        "gap": {
+          "sympy": "4/ell**2"
+        },
+        "multiplicity": 1
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator"
+        ]
+      },
+      "note": "O_perp f0 = 0 (zero eigenvalue) for f0(w) = 1/(ell cosh^2(w/ell)); f0(0)=1/ell (consumed by stage031).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "zero_mode_form",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "f0(w)"
+        },
+        "rhs": {
+          "sympy": "1/(ell*cosh(w/ell)**2)",
+          "latex": "\\ell^{-1}\\mathrm{sech}^2(w/\\ell)"
+        },
+        "relation": "eq"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator"
+        ]
+      },
+      "note": "Closed form of the unique normalizable zero mode; f0(0)=1/ell.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "unique_kernel",
+      "kind": "spectral",
+      "status": "EARNED",
+      "payload_kind": "spectrum",
+      "payload": {
+        "operator": "O_perp",
+        "kernel_symbol": "f0",
+        "kernel": {
+          "sympy": "1/(ell*cosh(w/ell)**2)"
+        },
+        "eigenvalue": {
+          "sympy": "0"
+        },
+        "gap": {
+          "sympy": "4/ell**2"
+        },
+        "multiplicity": 1
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator"
+        ]
+      },
+      "note": "A f0 = 0: the first-order kernel equation has a one-dimensional solution space, so ker A = span{f0}. The integrating-factor solution's ratio to f0 is w-independent (=ell) with finite positive L^2 norm -> f0 is the unique normalizable zero mode.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_UNIQUE_NORMALIZABLE_KERNEL",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "continuum_gap",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "4/ell**2"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator"
+        ]
+      },
+      "note": "V_H -> 4/ell^2 as w -> +/- infinity (symbolic limit both directions); the continuum threshold 4/ell^2 > 0 and the zero mode sits a positive gap below it. PT aside (not verified here): the s=2 well also supports one excited bound state at 3/ell^2.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_POSITIVE_CONTINUUM_GAP",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "parent_inner_weight",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "parent_inner_weight"
+        },
+        "rhs": {
+          "sympy": "2"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "The parent inner-product / action weight 2 in S_H (S_H = (1/2) int dt d4y {2 M4 (d_t H)^2 - 2 K4 [ |grad_x H|^2 + H O_perp H ]}); fixes N0 and the projection. Part of the DRAFT v0 postulated closure."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_ZERO_MODE_NORM",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "zero_mode_norm",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "N0"
+        },
+        "rhs": {
+          "sympy": "8/(3*ell)"
+        },
+        "relation": "eq"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/pt_operator",
+          "here/parent_inner_weight"
+        ]
+      },
+      "note": "N0 = Integral(2*(1/(ell*cosh(w/ell)**2))**2, (w, -oo, oo)) = 8/(3*ell) > 0 (closed-form Integrate/integrate). Weight 2 fixed by S_H.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_ZERO_MODE_NORM",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "normalized_projection",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "h"
+        },
+        "rhs": {
+          "sympy": "Integral(2*f0(w)*H, (w, -oo, oo))/N0"
+        },
+        "relation": "defines"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/zero_mode_norm",
+          "here/parent_inner_weight"
+        ]
+      },
+      "note": "h = P0 H := N0^-1 int dw 2 f0 H; verified P0 f0 = 1, P0(f0 h) = h (here H = H0 f0 -> P0 H = H0), and idempotence P0^2 = P0. [h] = 1 dimensionless.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_NORMALIZED_ZERO_MODE_PROJECTION",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "physical_h_norm",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "M4*N0"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/zero_mode_norm"
+        ]
+      },
+      "note": "Physical H-norm positivity M4 N0 > 0 (M4, N0 both positive), with [M4 N0] = [M_h] = M L^-1. The tooth flips M4* sign so the positivity fires.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_PHYSICAL_H_NORM",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "k4_definition",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "K4"
+        },
+        "rhs": {
+          "sympy": "M4*cE**2"
+        },
+        "relation": "defines"
+      },
+      "note": "Dependency direction: {M4 (ACTION input), cE (input)} free -> K4 derived. [M4 cE^2] = [K4] = M L^2 T^-2 is PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY (the value relation is definitional; the tooth mutates the declared [K4]).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "reduced_inertia",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "M_h"
+        },
+        "rhs": {
+          "sympy": "N0*M4"
+        },
+        "relation": "defines"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/zero_mode_norm"
+        ]
+      },
+      "note": "Zero-mode reduction of S_H; [M_h] = M L^-1; witness M_h* = 1 is a CONV imposed ON M4 (not a reduction of M_h).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_REDUCED_H_INERTIA",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "reduced_stiffness",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "K_h"
+        },
+        "rhs": {
+          "sympy": "N0*K4"
+        },
+        "relation": "defines"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/zero_mode_norm",
+          "here/k4_definition"
+        ]
+      },
+      "note": "K_h = N0 K4 = M_h cE^2; [K_h] = M L T^-2; witness K_h* = 1.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_REDUCED_H_STIFFNESS",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "speed_preservation",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "(N0*M4*cE**2)/(N0*M4)"
+        },
+        "rhs": {
+          "sympy": "cE**2"
+        },
+        "relation": "eq"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/reduced_inertia",
+          "here/reduced_stiffness",
+          "here/k4_definition"
+        ]
+      },
+      "note": "c_E^2 = K_h/M_h = (N0 K4)/(N0 M4) = K4/M4; N0 cancels -> the reduction is speed-preserving. An inconsistent reduction K_h = N0^2 K4 gives K_h/M_h = 160/3 != 1 (the PASS_REDUCED_SPEED_PRESERVATION tooth).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_REDUCED_SPEED_PRESERVATION",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "kernel_determinant",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "D"
+        },
+        "rhs": {
+          "sympy": "B_eff*K_h - C_hu**2"
+        },
+        "relation": "defines"
+      },
+      "note": "Sylvester/Schur determinant of the stiffness K = [[B_eff, C_hu],[C_hu, K_h]]; D > 0 => static stability. [D] = M^2 T^-4 forces [B_eff K_h] = [C_hu^2] = [D], hence [C_hu] = M T^-2.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_STABILITY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "kernel_stability",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "2*1 - Rational(1,2)**2"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/kernel_determinant",
+          "here/beff_star",
+          "here/chu_star"
+        ]
+      },
+      "note": "Star Sylvester margin D* = B_eff* K_h* - C_hu*^2 = 2*1 - (1/2)^2 = 7/4 > 0; K* = [[2,1/2],[1/2,1]] positive-definite (SymPy is_positive_definite / Wolfram PositiveDefiniteMatrixQ). The physical [D] = M^2 T^-4 is kept distinct from the number 7/4.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_STABILITY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "wave_speeds",
+      "kind": "spectral",
+      "status": "EARNED",
+      "payload_kind": "spectrum",
+      "payload": {
+        "operator": "D",
+        "kernel_symbol": "z_star",
+        "kernel": {
+          "sympy": "z_star**2 - 3*z_star + Rational(7,4)"
+        },
+        "eigenvalue": {
+          "sympy": "(3 - sqrt(2))/2"
+        },
+        "gap": {
+          "sympy": "sqrt(2)"
+        },
+        "multiplicity": 2
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/beff_star",
+          "here/chu_star",
+          "here/aeff_star",
+          "here/mh_normalization"
+        ]
+      },
+      "note": "In star units M* = I (A_eff* = M_h* = 1), K* = [[2,1/2],[1/2,1]]: det(K* - z* M*) = z*^2 - 3 z* + 7/4, roots z*_pm = c_pm*^2 = (3 +/- sqrt(2))/2 > 0 (both squared speeds positive). The A_eff*: 1->2 tooth changes the roots while D* = 7/4 is unchanged (stability and speeds are independent facts).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "reduced_masslessness",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "reduced_h_mass_star"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "eq"
+      },
+      "note": "Q_s(0,0) = 0: the reduced action S_Lh carries no k^0 h^2 term (no bare h mass) -> the static prerequisite against FAIL_PINNED_BRANON / FAIL_YUKAWA. The tooth reinstates a k^0 h^2 coefficient (0 -> 1) so Q_s(0,0) != 0 fires.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_REDUCED_H_MASSLESSNESS",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "hessian_symmetry",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "Derivative(gradU**2 + Rational(1,2)*gradH**2 + Rational(1,2)*gradU*gradH, gradU, gradH)"
+        },
+        "rhs": {
+          "sympy": "Rational(1,2)"
+        },
+        "relation": "eq"
+      },
+      "note": "The gradient-energy Hessian of |grad u_L|^2 + (1/2)|grad h|^2 + (1/2) grad u_L . grad h equals [[2,1/2],[1/2,1]], symmetric = the displayed Euler operator (action-derived integrability). gradU, gradH are dimensionless structural placeholders. The tooth desymmetrizes the displayed cross coefficient 1/2 -> 3/4.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_CONSERVATIVE_HESSIAN_SYMMETRY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "firewall_bulk",
+      "kind": "dimensional",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "M4*Derivative(H, t)**2"
+        },
+        "rhs": {
+          "sympy": "K4*Derivative(H, x)**2"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "-2",
+        "M": "1",
+        "T": "-2"
+      },
+      "note": "DIMENSIONAL claim (dims-only): the parent-H kinetic term M4 (d_t H)^2 and gradient term K4 (grad_x H)^2 (and H_pot = K4 H O_perp H) all target the bulk density E/L^4. Grounds [H]=L^-1, [M4]=M, [K4]=E. Units-restored [L,T,M] firewall in the script -> transposed here to (L,M,T).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_DIMENSIONAL_HOMOGENEITY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "firewall_brane",
+      "kind": "dimensional",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_eff*Derivative(uL, t)**2"
+        },
+        "rhs": {
+          "sympy": "C_hu*Derivative(uL, x)*Derivative(h, x)"
+        },
+        "relation": "eq"
+      },
+      "expected_dim": {
+        "L": "-1",
+        "M": "1",
+        "T": "-2"
+      },
+      "note": "DIMENSIONAL claim (dims-only): the reduced u_kin term A_eff (d_t u_L)^2 and the mix term C_hu grad u_L . grad h both target the brane density E/L^3. Grounds [A_eff]=M L^-3, [C_hu]=M T^-2, [u_L]=L, [h]=1. The PASS_DIMENSIONAL_HOMOGENEITY tooth corrupts [C_hu] (M T^-2 -> M T^-1) and the homogeneity residual fires.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "PASS_DIMENSIONAL_HOMOGENEITY",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "ell_ratio",
+      "kind": "convention",
+      "status": "CALIBRATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "ell_star"
+        },
+        "rhs": {
+          "sympy": "Rational(1,20)"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "ell_star = ell/a = 1/20 is an IMPOSED/CALIB frozen handoff scale (only the unit pin a is CONV). Part of the DRAFT v0 closure; no dated record establishes independence."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "ell_star = Rational(1,20), run_norm_projection_and_relations",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "m4_star",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "M4_star"
+        },
+        "rhs": {
+          "sympy": "Rational(3,160)"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "M4* = 3/160 numeric witness of the ACTION input M4 (DRAFT v0). K4* = M4* since c_E* = 1. Consistent with M_h* = N0* M4* = (160/3)(3/160) = 1 (the CONV normalization)."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "base_m4_star = Rational(3,160), run_norm_projection_and_relations",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "ce_star",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "cE_star"
+        },
+        "rhs": {
+          "sympy": "1"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "c_E* = 1 numeric witness. c_E has no committed cone lock; c_s/c_E = 2 was chosen expressly to avoid one (Part VI / pathA_40 re-adjudicates)."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "c_e_star = Integer(1), run_norm_projection_and_relations",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "beff_star",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "B_eff_star"
+        },
+        "rhs": {
+          "sympy": "2"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "B_eff* = 2 is an IMPOSED tuning of the CONSUMED B_eff (stage003 R16, B_eff = rho_B0^2/chi_c). Consumption of the parameter identity/dimension does NOT make the numeric witness derived."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "b_eff_star = Integer(2), run_coupled_kernel",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "chu_star",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "C_hu_star"
+        },
+        "rhs": {
+          "sympy": "Rational(1,2)"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "C_hu* = 1/2 IMPOSED embedding-mixing witness. C_hu itself is FREE-UNREDUCED; stage030 is its first built dual-engine dimensional verification ([C_hu] = M T^-2)."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "c_hu_star = Rational(1,2), run_coupled_kernel",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "aeff_star",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A_eff_star"
+        },
+        "rhs": {
+          "sympy": "1"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "A_eff* = 1 IMPOSED witness => M* = I. The A_eff = rho_br + C_J^2/kappa_phase relation (Schur elimination of theta_B) is asserted DERIVED in the note/register but is NOT exercised by the audit script; the partition rho_br/A_eff = 3/4, (C_J^2/kappa_phase)/A_eff = 1/4 is [POSTULATE]/IMPOSED."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "a_eff_star = Integer(1), run_coupled_kernel",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "mh_normalization",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "Mh_star"
+        },
+        "rhs": {
+          "sympy": "1"
+        },
+        "relation": "defines"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "M_h* = 1 is a CONV normalization imposed ON M4 (not a reduction of M_h). With N0* = 160/3 this pins M4* = 3/160."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "m_h_star = Integer(1), run_coupled_kernel",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "n0_star",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "Rational(8,3)/Rational(1,20)"
+        },
+        "rhs": {
+          "sympy": "Rational(160,3)"
+        },
+        "relation": "eq"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/zero_mode_norm",
+          "here/ell_ratio"
+        ]
+      },
+      "note": "N0* = 8/(3 ell*) = 8/(3*(1/20)) = 160/3 (in units of a^-1). Collapses N0 into the profile scale {ell} (register edge R53).",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "n0_star = canonical_n0.subs(ell, ell_star)",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "declare_w",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "w"
+        },
+        "rhs": {
+          "sympy": "w"
+        },
+        "relation": "defines"
+      },
+      "note": "The transverse coordinate used by the stage030 audit.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_spectral_structure: w declared positive and real",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_ell",
+      "kind": "convention",
+      "status": "CALIBRATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "ell"
+        },
+        "rhs": {
+          "sympy": "ell"
+        },
+        "relation": "defines"
+      },
+      "note": "The physical PT/healing length; its ratio ell/a is calibrated by ell_ratio.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_spectral_structure: ell declared positive and real",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_x",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "x"
+        },
+        "rhs": {
+          "sympy": "x"
+        },
+        "relation": "defines"
+      },
+      "note": "A brane spatial coordinate used in the units-restored firewall.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_dimensional_firewall: LENGTH measure",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_t",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "t"
+        },
+        "rhs": {
+          "sympy": "t"
+        },
+        "relation": "defines"
+      },
+      "note": "The time coordinate used in the units-restored firewall.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_dimensional_firewall: TIME measure",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_h_parent",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "H"
+        },
+        "rhs": {
+          "sympy": "H"
+        },
+        "relation": "defines"
+      },
+      "note": "The parent electric scalar in the DRAFT-v0 PT action.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_dimensional_firewall: DIM_H and H parent terms",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_ul",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "uL"
+        },
+        "rhs": {
+          "sympy": "uL"
+        },
+        "relation": "defines"
+      },
+      "note": "The longitudinal brane displacement in the DRAFT-v0 scalar block.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_dimensional_firewall: DIM_u and u terms",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_h0",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "H0"
+        },
+        "rhs": {
+          "sympy": "H0"
+        },
+        "relation": "defines"
+      },
+      "note": "The dimensionless audit amplitude used to exercise the zero-mode projection.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_norm_projection_and_relations: amplitude = symbols('H0')",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_m4",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "M4"
+        },
+        "rhs": {
+          "sympy": "M4"
+        },
+        "relation": "defines"
+      },
+      "note": "The parent-H action inertia input.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_norm_projection_and_relations: base_m4_star and DIM_M4",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_ce",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "cE"
+        },
+        "rhs": {
+          "sympy": "cE"
+        },
+        "relation": "defines"
+      },
+      "note": "The free-unreduced electric-sector speed input.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_norm_projection_and_relations: c_e_star and DIM_CE",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_chu",
+      "kind": "identity",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "C_hu"
+        },
+        "rhs": {
+          "sympy": "C_hu"
+        },
+        "relation": "defines"
+      },
+      "note": "The free-unreduced embedding-mixing input.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_coupled_kernel and run_dimensional_firewall: DIM_CHU",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_gradu",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "gradU"
+        },
+        "rhs": {
+          "sympy": "gradU"
+        },
+        "relation": "defines"
+      },
+      "note": "Dimensionless structural placeholder for the u_L gradient.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_masslessness_and_hessian: grad_u structural placeholder",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    },
+    {
+      "id": "declare_gradh",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "gradH"
+        },
+        "rhs": {
+          "sympy": "gradH"
+        },
+        "relation": "defines"
+      },
+      "note": "Dimensionless structural placeholder for the h gradient.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "run_masslessness_and_hessian: grad_h structural placeholder",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-20",
+        "origin": "unknown",
+        "note": "Ownership-only declaration extracted from the stage note, audit symbol/dimension block, and parameter register; it asserts no independent value."
+      }
+    }
+  ],
+  "consumes": [
+    {
+      "ref": "stage003/b_eff_definition",
+      "as_consumed_dim": {
+        "L": "-1",
+        "M": "1",
+        "T": "-2"
+      },
+      "check": "dim_equal",
+      "substitutions": [],
+      "note": "R16 dimension-only use of B_eff = rho_B0**2/chi_c. The producer claim id remains provisional until stage003 is extracted."
+    },
+    {
+      "ref": "stage003/brane_inertia",
+      "as_consumed_dim": {
+        "L": "-3",
+        "M": "1"
+      },
+      "check": "dim_equal",
+      "substitutions": [],
+      "note": "Dimension-only use of the prose/register relation A_eff = rho_br + C_J**2/kappa_phase. The producer claim id remains provisional until stage003 is extracted."
+    }
+  ],
+  "exports": [
+    {
+      "claim_id": "pt_operator",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "transverse_factorization",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_o_perp",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "zero_mode",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "zero_mode_form",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "unique_kernel",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "continuum_gap",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "zero_mode_norm",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "normalized_projection",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "physical_h_norm",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "k4_definition",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "reduced_inertia",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "reduced_stiffness",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "speed_preservation",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "kernel_determinant",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "kernel_stability",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "wave_speeds",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "reduced_masslessness",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "hessian_symmetry",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "firewall_bulk",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "firewall_brane",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "n0_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_w",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_ell",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_chu",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    }
+  ],
+  "knobs": [
+    {
+      "knob_id": "k.charge.parent_inertia",
+      "symbol": "M4",
+      "registry_row": "M₄",
+      "action": "introduced",
+      "origin": "here/k4_definition",
+      "effective_stage": "stage030",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "ACTION input; parent-H inertia coefficient in S_H. One of the two free data of the reduced (u_L,h) block with c_E.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `M₄` (parent inertia coupling), lines 196 and R50.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "knob_id": "k.charge.electric_speed",
+      "symbol": "cE",
+      "registry_row": "c_E",
+      "action": "introduced",
+      "origin": "here/k4_definition",
+      "effective_stage": "stage030",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "FREE-UNREDUCED input; the electric-sector speed (K4 = M4 c_E^2). NO committed cone lock at 030 (c_s/c_E = 2 chosen to avoid one); cone relation re-adjudicated Part VI / pathA_40, PENDING.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `c_E` (throat Green / electric speed), line 135.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "knob_id": "k.charge.pt_length_ratio",
+      "symbol": "ell",
+      "registry_row": "ℓ",
+      "action": "introduced",
+      "origin": "here/ell_ratio",
+      "effective_stage": "stage030",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "The length ratio ell/a = 1/20 is IMPOSED/CALIB (frozen handoff scale); only the unit pin a is CONV. First electric-sector localized scale.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `ℓ` (embedding / PT healing length), line 200.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "knob_id": "k.charge.embedding_mixing",
+      "symbol": "C_hu",
+      "registry_row": "C_hu",
+      "action": "introduced",
+      "origin": "here/kernel_determinant",
+      "effective_stage": "stage030",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "FREE-UNREDUCED embedding-mixing coefficient; stage030 is its FIRST built dual-engine dimensional verification ([C_hu] = M T^-2). NG5 route (ii) embedding-overlap = Part VI / pathA_41, PENDING.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `C_hu` (embedding-mixing), line 151.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "knob_id": "k.brane.effective_stiffness",
+      "symbol": "B_eff",
+      "registry_row": "B_eff = ρ_B0²/χ_c",
+      "action": "inherited",
+      "origin": "stage003/b_eff_definition",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 0,
+        "high": 0
+      },
+      "count_category": "route_ful_debt",
+      "pending": false,
+      "note": "R16, B_eff = rho_B0^2/chi_c CONSUMED from stage003 (do-not-re-count). Star witness B_eff* = 2 is an IMPOSED tuning. PROVISIONAL cross_ref.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `B_eff = ρ_B0²/χ_c`, line 150.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "knob_id": "k.brane.effective_inertia",
+      "symbol": "A_eff",
+      "registry_row": "A_eff = ρ_br + C_J²/κ_phase",
+      "action": "inherited",
+      "origin": "stage003/brane_inertia",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 0,
+        "high": 0
+      },
+      "count_category": "route_ful_debt",
+      "pending": false,
+      "note": "III-inherited; A_eff = rho_br + C_J^2/kappa_phase (function of registered {rho_br, C_J, kappa_phase}). The relation is asserted DERIVED in prose but NOT script-verified; witness A_eff* = 1 and the 3/4:1/4 partition are IMPOSED. PROVISIONAL cross_ref.",
+      "evidence": {
+        "source_path": "notes/parameter_register.md",
+        "locus": "Master parameter row `A_eff = ρ_br + C_J²/κ_phase`, line 201.",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    }
+  ],
+  "departures": [
+    {
+      "token": "G0_V0_DRAFT_POSTULATED_CLOSURE",
+      "kind": "hook",
+      "evidence": {
+        "source_path": "notes/stages/ledger_stage030_electric_scalar_localized_h_closure.md",
+        "locus": "Status and Scope departure 1",
+        "source_digest": "caa45c9e27e7d53f83402779094c1cf75b10c4562292a131fcbbc99081a82665",
+        "engine": "prose",
+        "method": "prose_only"
+      },
+      "claim_refs": [
+        "here/pt_operator",
+        "here/parent_inner_weight",
+        "here/ell_ratio",
+        "here/m4_star",
+        "here/ce_star",
+        "here/beff_star",
+        "here/chu_star",
+        "here/aeff_star",
+        "here/mh_normalization"
+      ],
+      "note": "The entire G0-v0 closure -- the Poeschl-Teller operator choice, the R_w-odd parity representation of {H,h,u_L}, and every numeric witness value -- is a labeled DRAFT v0 POSTULATED closure, not a derivation. What is EARNED is that, given this action, the sec 1-5 static prerequisites hold."
+    },
+    {
+      "token": "MOUTH_SOURCE_DEFERRED_031",
+      "kind": "deferral",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "print_scope_and_verdict: DEFERRED mouth SOURCE mechanism",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "resolved_by": "stage031/bare_mouth_source",
+      "note": "Script scope line 'DEFERRED: mouth SOURCE mechanism -> stage031.' PASS_BARE_MOUTH_SOURCE (orientation-odd chi<->h mouth functional eta_i(k_m h - g_chih s_i), Q_chi = s_i, f0(0)=1/ell, nonzero projected source) is NOT folded here; stage031 must own a full able-to-fail reconstruction. PROVISIONAL resolved_by claim_id."
+    },
+    {
+      "token": "C_E_NO_COMMITTED_CONE_LOCK",
+      "kind": "deferral",
+      "evidence": {
+        "source_path": "notes/stages/ledger_stage030_electric_scalar_localized_h_closure.md",
+        "locus": "Scope departure 5 and parameter-ledger labels",
+        "source_digest": "caa45c9e27e7d53f83402779094c1cf75b10c4562292a131fcbbc99081a82665",
+        "engine": "prose",
+        "method": "prose_only"
+      },
+      "claim_refs": [
+        "here/ce_star"
+      ],
+      "note": "c_E is the electric sector's first dimensional entry and is FREE-UNREDUCED; c_s/c_E = 2 chosen expressly to avoid imposing a cone lock. Its relation to c_gamma/c_s is re-adjudicated in Part VI (pathA_40), PENDING."
+    },
+    {
+      "token": "ASSEMBLED_CLAIMS_EXCLUDED_PART_VII",
+      "kind": "deferral",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "print_scope_and_verdict: EXCLUDED assembled claims",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "note": "Script scope line 'EXCLUDED: assembled one-body/two-body/far-field claims -> Part VII.' Ghost-free constrained Hessians, the dressed 1/R monopole, and pair-force integrability are solved-response objects for Part VII, not discharged here."
+    },
+    {
+      "token": "OUT_OF_SCOPE_UNDISCHARGED_CROSS_SECTOR_G0_PREDICATE",
+      "kind": "deferral",
+      "evidence": {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "locus": "print_scope_and_verdict: OUT-OF-SCOPE predicates",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "note": "Verbatim script token. The source checker is monolithic across all seven G0 gates; stage030 folds ONLY the charge-new electric-scalar subset. Remaining, NOT-re-folded and NOT-Part-I/II-covered predicates: PASS_PLANAR_WALL_FACTORIZATION; PASS_BULK_U_SECOND_DERIVATIVE / PASS_BULK_FOURIER_DENSITY_HESSIAN / PASS_PHASE_CONSTANT_MODE_QUOTIENT; PASS_DRAIN_KERNEL_NORMALIZATIONS / PASS_DRAIN_MASS/MOMENTUM/ENERGY_CONTROLLER. Reconciliation = a Part VII G0-vs-Part-I de-dup obligation."
+    }
+  ],
+  "verification": {
+    "sympy_script": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+    "mathematica_script": "mathematica/ledger_stage030_electric_scalar_localized_h_closure_mathematica_audit.wl",
+    "teeth": [
+      {
+        "predicate": "PASS_TRANSVERSE_FACTORIZATION",
+        "mutation": "factor_A_coefficient: 2 -> 3",
+        "claim_ids": [
+          "transverse_factorization",
+          "pt_operator"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_TRANSVERSE_FACTORIZATION] and PASS_TRANSVERSE_FACTORIZATION assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE",
+        "mutation": "f0_power: 2 -> 1",
+        "claim_ids": [
+          "zero_mode",
+          "zero_mode_form"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE] and PASS_PARENT_TRANSVERSE_ZERO_EIGENVALUE assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNIQUE_NORMALIZABLE_KERNEL",
+        "mutation": "kernel_derivative_coefficient: 1 -> 2",
+        "claim_ids": [
+          "unique_kernel"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_UNIQUE_NORMALIZABLE_KERNEL] and PASS_UNIQUE_NORMALIZABLE_KERNEL assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_POSITIVE_CONTINUUM_GAP",
+        "mutation": "V_asymptote_coefficient: 4 -> 0",
+        "claim_ids": [
+          "continuum_gap"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_POSITIVE_CONTINUUM_GAP] and PASS_POSITIVE_CONTINUUM_GAP assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ZERO_MODE_NORM",
+        "mutation": "norm_inner_weight: 2 -> 3",
+        "claim_ids": [
+          "zero_mode_norm",
+          "parent_inner_weight"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_ZERO_MODE_NORM] and PASS_ZERO_MODE_NORM assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_NORMALIZED_ZERO_MODE_PROJECTION",
+        "mutation": "projection_inner_weight: 2 -> 3",
+        "claim_ids": [
+          "normalized_projection"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_NORMALIZED_ZERO_MODE_PROJECTION] and PASS_NORMALIZED_ZERO_MODE_PROJECTION assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_PHYSICAL_H_NORM",
+        "mutation": "physical_M4_star: 3/160 -> -3/160",
+        "claim_ids": [
+          "physical_h_norm"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_PHYSICAL_H_NORM] and PASS_PHYSICAL_H_NORM assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REDUCED_H_INERTIA",
+        "mutation": "inertia_M4_star: 3/160 -> 3/320",
+        "claim_ids": [
+          "reduced_inertia"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_REDUCED_H_INERTIA] and PASS_REDUCED_H_INERTIA assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY",
+        "mutation": "parent_K4_dimension: M L^2 T^-2 -> M L T^-2",
+        "claim_ids": [
+          "k4_definition"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY] and PASS_PARENT_STIFFNESS_DIMENSIONAL_CONSISTENCY assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REDUCED_H_STIFFNESS",
+        "mutation": "declared_Kh_star: 1 -> 2",
+        "claim_ids": [
+          "reduced_stiffness"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_REDUCED_H_STIFFNESS] and PASS_REDUCED_H_STIFFNESS assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REDUCED_SPEED_PRESERVATION",
+        "mutation": "speed_Kh_N0_power: 1 -> 2 (N0 K4 -> N0^2 K4)",
+        "claim_ids": [
+          "speed_preservation"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_REDUCED_SPEED_PRESERVATION] and PASS_REDUCED_SPEED_PRESERVATION assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_STABILITY",
+        "mutation": "stability_Chu_star: 1/2 -> 2",
+        "claim_ids": [
+          "kernel_stability",
+          "kernel_determinant"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_STABILITY] and PASS_STABILITY assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS",
+        "mutation": "wave_Aeff_star: 1 -> 2",
+        "claim_ids": [
+          "wave_speeds"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS] and PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REDUCED_H_MASSLESSNESS",
+        "mutation": "reduced_h_mass_star: 0 -> 1",
+        "claim_ids": [
+          "reduced_masslessness"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_REDUCED_H_MASSLESSNESS] and PASS_REDUCED_H_MASSLESSNESS assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_CONSERVATIVE_HESSIAN_SYMMETRY",
+        "mutation": "u_equation_cross_star: 1/2 -> 3/4",
+        "claim_ids": [
+          "hessian_symmetry"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_CONSERVATIVE_HESSIAN_SYMMETRY] and PASS_CONSERVATIVE_HESSIAN_SYMMETRY assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_DIMENSIONAL_HOMOGENEITY",
+        "mutation": "firewall_Chu_dimension: M T^-2 -> M T^-1",
+        "claim_ids": [
+          "firewall_brane",
+          "firewall_bulk"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+          "locus": "ABLATIONS[PASS_DIMENSIONAL_HOMOGENEITY] and PASS_DIMENSIONAL_HOMOGENEITY assertion",
+          "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      }
+    ]
+  },
+  "extraction": {
+    "report": {
+      "ungrounded": [],
+      "provisional_consumes": [
+        "stage003/b_eff_definition",
+        "stage003/brane_inertia"
+      ],
+      "prose_script_mismatches": [
+        "A_eff = rho_br + C_J**2/kappa_phase is DERIVED in the note/register but not exercised by either stage030 audit; stage030 consumes only its upstream dimension.",
+        "The paper card's status paragraph still places the honest R1 sign landing in stage031, while the ratified stage note assigns BC/sign selection to stage032 and the audit defers only the mouth SOURCE to stage031."
+      ],
+      "judgment_calls": [
+        "The wave-speed spectral payload records the two exact generalized eigenvalues as multiplicity 2, lower eigenvalue (3-sqrt(2))/2, and separation sqrt(2).",
+        "The dimensional firewall writes field derivatives as Derivative(H,t), Derivative(H,x), and analogous scalar atoms because one schema signature cannot express a field callable over both L and T domains.",
+        "Stage030 source dimensions use LTM. Several raw tuples are expressed indirectly through LENGTH/TIME/MASS/ONE; the manifest records their exact evaluated tuples.",
+        "Ownership-only self-binding relations are emitted for source-declared primitive/index/placeholder quantities; they bind identity without asserting an independent value.",
+        "C7 binding metadata is omitted because the sources supply only stage-local predicate ablations, not an executable cross-stage mutation runner.",
+        "The single-stage C5 result remains PARTIAL: 106 register rows, the two stage003 lifecycle producers, and stage043/count_range await extraction."
+      ]
+    },
+    "source_digests": [
+      {
+        "source_path": "notes/stages/ledger_stage030_electric_scalar_localized_h_closure.md",
+        "source_digest": "caa45c9e27e7d53f83402779094c1cf75b10c4562292a131fcbbc99081a82665"
+      },
+      {
+        "source_path": "paper/stages/stage_030.tex",
+        "source_digest": "12df8fbc674443b275c350dbddc761e92021a172a70bddc391b4a82c6d3fac6d"
+      },
+      {
+        "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
+        "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+      },
+      {
+        "source_path": "mathematica/ledger_stage030_electric_scalar_localized_h_closure_mathematica_audit.wl",
+        "source_digest": "d6d076a03e496454b623a0e3f17f75cd13b1e67cd2b7987c2900f96fd8dc476e"
+      },
+      {
+        "source_path": "notes/parameter_register.md",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1"
+      }
+    ]
+  }
+}

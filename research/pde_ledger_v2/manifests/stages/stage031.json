@@ -1,0 +1,3855 @@
+{
+  "schema_version": "2.1",
+  "stage_id": "stage031",
+  "title": "Puncture-Deflection Mechanism -- Field Identity, Mouth Source, Exterior 1/R^2 Form",
+  "part": "Part IV -- Charge (IV-2)",
+  "status_token": "THROAT_H_SOURCE_1_OVER_R2",
+  "symbols": [
+    {
+      "name": "ell",
+      "parse_alias": "ell",
+      "quantity_id": "q.charge.pt_length",
+      "definition_ref": "stage030/declare_ell",
+      "latex": "\\ell",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "w",
+      "parse_alias": "w",
+      "quantity_id": "q.coordinate.transverse_w",
+      "definition_ref": "stage030/declare_w",
+      "latex": "w",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "h",
+      "parse_alias": "h",
+      "quantity_id": "q.charge.reduced_scalar",
+      "definition_ref": "stage030/normalized_projection",
+      "latex": "h",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "C_hu",
+      "parse_alias": "C_hu",
+      "quantity_id": "q.charge.embedding_mixing",
+      "definition_ref": "stage030/declare_chu",
+      "latex": "C_{hu}",
+      "dim": {
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**2 in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**2 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "K_h",
+      "parse_alias": "K_h",
+      "quantity_id": "q.charge.reduced_stiffness",
+      "definition_ref": "stage030/reduced_stiffness",
+      "latex": "K_h",
+      "dim": {
+        "L": "1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "D",
+      "parse_alias": "D",
+      "quantity_id": "q.charge.kernel_determinant",
+      "definition_ref": "stage030/kernel_determinant",
+      "latex": "D",
+      "dim": {
+        "M": "2",
+        "T": "-4"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2/LENGTH**4 in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "-4",
+        "2"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2/LENGTH**4 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "f0",
+      "parse_alias": "f0",
+      "quantity_id": "q.charge.transverse_zero_mode",
+      "definition_ref": "stage030/zero_mode",
+      "latex": "f_0",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "function",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "1"
+          }
+        ],
+        "codomain": {
+          "L": "-1"
+        }
+      }
+    },
+    {
+      "name": "O_perp",
+      "parse_alias": "O_perp",
+      "quantity_id": "q.charge.transverse_operator",
+      "definition_ref": "stage030/declare_o_perp",
+      "latex": "O_{\\perp}",
+      "dim": {
+        "L": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-2 in run_units"
+      },
+      "dim_source_tuple": [
+        "-2",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "operator",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-2 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "-1"
+          }
+        ],
+        "codomain": {
+          "L": "-3"
+        }
+      }
+    },
+    {
+      "name": "B_eff",
+      "parse_alias": "B_eff",
+      "quantity_id": "q.brane.effective_stiffness",
+      "definition_ref": "stage003/b_eff_definition",
+      "latex": "B_{\\rm eff}",
+      "dim": {
+        "L": "-1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**3 in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH**3 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "xi_w",
+      "parse_alias": "xi_w",
+      "quantity_id": "q.charge.embedding_displacement",
+      "definition_ref": "here/field_identity",
+      "latex": "\\xi_w",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "a",
+      "parse_alias": "a",
+      "quantity_id": "q.throat.mouth_radius",
+      "definition_ref": "here/declare_a",
+      "latex": "a",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "rho",
+      "parse_alias": "rho",
+      "quantity_id": "q.coordinate.radial_rho",
+      "definition_ref": "here/declare_rho",
+      "latex": "\\rho",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "r",
+      "parse_alias": "r",
+      "quantity_id": "q.coordinate.exterior_radius",
+      "definition_ref": "here/declare_r",
+      "latex": "r",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "R",
+      "parse_alias": "R",
+      "quantity_id": "q.throat.pair_separation",
+      "definition_ref": "here/declare_r_big",
+      "latex": "R",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "W_B",
+      "parse_alias": "W_B",
+      "quantity_id": "q.throat.slab_width",
+      "definition_ref": "here/declare_wb",
+      "latex": "W_B",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "L_s",
+      "parse_alias": "L_s",
+      "quantity_id": "q.throat.sleeve_length",
+      "definition_ref": "here/declare_ls",
+      "latex": "L_s",
+      "dim": {
+        "L": "1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "K_m",
+      "parse_alias": "K_m",
+      "quantity_id": "q.charge.mouth_impedance",
+      "definition_ref": "here/declare_km",
+      "latex": "K_m",
+      "dim": {
+        "L": "4",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH**2 in run_units"
+      },
+      "dim_source_tuple": [
+        "4",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH**2 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "J_m",
+      "parse_alias": "J_m",
+      "quantity_id": "q.charge.mouth_coupling",
+      "definition_ref": "here/declare_jm",
+      "latex": "J_m",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "k_m",
+      "parse_alias": "k_m",
+      "quantity_id": "q.charge.reduced_mouth_impedance",
+      "definition_ref": "here/reduced_mouth_impedance",
+      "latex": "k_m",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "g_chih",
+      "parse_alias": "g_chih",
+      "quantity_id": "q.charge.reduced_mouth_coupling",
+      "definition_ref": "here/reduced_coupling",
+      "latex": "g_{\\chi h}",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real",
+        "nonzero"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "s",
+      "parse_alias": "s",
+      "quantity_id": "q.charge.orientation_sign",
+      "definition_ref": "here/declare_s",
+      "latex": "s",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real",
+        "nonzero"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "Q_chi",
+      "parse_alias": "Q_chi",
+      "quantity_id": "q.charge.orientation_projection",
+      "definition_ref": "here/orientation_projection",
+      "latex": "Q_\\chi",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "N_chi",
+      "parse_alias": "N_chi",
+      "quantity_id": "q.charge.orientation_norm",
+      "definition_ref": "here/declare_nchi",
+      "latex": "N_\\chi",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "f0_mouth",
+      "parse_alias": "f0_mouth",
+      "quantity_id": "q.charge.mouth_zero_mode_value",
+      "definition_ref": "here/f0_mouth_value",
+      "latex": "f_0(0)",
+      "dim": {
+        "L": "-1"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**-1 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "bare_source",
+      "parse_alias": "bare_source",
+      "quantity_id": "q.charge.bare_mouth_source",
+      "definition_ref": "here/bare_forcing",
+      "latex": "-g_{\\chi h}s",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "r_sigma_plus",
+      "parse_alias": "r_sigma_plus",
+      "quantity_id": "q.throat.bounded_profile",
+      "definition_ref": "here/bounded_representative",
+      "latex": "r_{\\Sigma,+}",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "z_b",
+      "parse_alias": "z_b",
+      "quantity_id": "q.charge.long_escape_factor",
+      "definition_ref": "here/declare_zb",
+      "latex": "z_b",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "z_g",
+      "parse_alias": "z_g",
+      "quantity_id": "q.charge.robin_escape_factor",
+      "definition_ref": "here/declare_zg",
+      "latex": "z_g",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "kappa",
+      "parse_alias": "kappa",
+      "quantity_id": "q.charge.response_robin_scale",
+      "definition_ref": "here/kappa_reduction",
+      "latex": "\\kappa",
+      "dim": {
+        "L": "1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "kappa_ext",
+      "parse_alias": "kappa_ext",
+      "quantity_id": "q.charge.exterior_stiffness",
+      "definition_ref": "here/declare_kappa_ext",
+      "latex": "\\kappa_{\\rm ext}",
+      "dim": {
+        "L": "1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "m_uu",
+      "parse_alias": "m_uu",
+      "quantity_id": "q.charge.response_uu",
+      "definition_ref": "here/response_m_uu",
+      "latex": "m_{uu}",
+      "dim": {
+        "L": "1",
+        "M": "-1",
+        "T": "2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**3/ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**3/ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "m_ug",
+      "parse_alias": "m_ug",
+      "quantity_id": "q.charge.response_ug",
+      "definition_ref": "here/response_m_ug",
+      "latex": "m_{ug}",
+      "dim": {
+        "M": "-1",
+        "T": "2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**2/ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH**2/ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "m_gg",
+      "parse_alias": "m_gg",
+      "quantity_id": "q.charge.response_gg",
+      "definition_ref": "here/response_m_gg",
+      "latex": "m_{gg}",
+      "dim": {
+        "L": "-1",
+        "M": "-1",
+        "T": "2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "-1",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression LENGTH/ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "det_m",
+      "parse_alias": "det_m",
+      "quantity_id": "q.charge.response_determinant",
+      "definition_ref": "here/response_det",
+      "latex": "\\det m",
+      "dim": {
+        "M": "-2",
+        "T": "4"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression MASS**-2*TIME**4 in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "4",
+        "-2"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression MASS**-2*TIME**4 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "m_gg_star",
+      "parse_alias": "m_gg_star",
+      "quantity_id": "q.charge.response_gg_star",
+      "definition_ref": "here/star_witness",
+      "latex": "m_{gg}^*",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "S_gg",
+      "parse_alias": "S_gg",
+      "quantity_id": "q.charge.self_response",
+      "definition_ref": "here/declare_sgg",
+      "latex": "S_{gg}",
+      "dim": {
+        "L": "-2",
+        "M": "-1",
+        "T": "2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**-1 in run_units"
+      },
+      "dim_source_tuple": [
+        "-2",
+        "2",
+        "-1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**-1 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "h_A",
+      "parse_alias": "h_A",
+      "quantity_id": "q.charge.mouth_datum",
+      "definition_ref": "here/declare_ha",
+      "latex": "h_A",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "h_ext",
+      "parse_alias": "h_ext",
+      "quantity_id": "q.charge.exterior_field",
+      "definition_ref": "here/exterior_field",
+      "latex": "h(r)",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "field",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "signature": {
+        "domain": [
+          {
+            "L": "1"
+          }
+        ],
+        "codomain": {}
+      }
+    },
+    {
+      "name": "E_ext",
+      "parse_alias": "E_ext",
+      "quantity_id": "q.charge.exterior_energy",
+      "definition_ref": "here/exterior_energy",
+      "latex": "E_{\\rm ext}",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "coreless_stationary_hA",
+      "parse_alias": "coreless_stationary_hA",
+      "quantity_id": "q.charge.coreless_stationary",
+      "definition_ref": "here/nonzero_ha_core_holder",
+      "latex": "h_A^{\\rm coreless}",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "A",
+      "parse_alias": "A",
+      "quantity_id": "q.charge.shell_amplitude",
+      "definition_ref": "here/neutral_shell_amplitude",
+      "latex": "A",
+      "dim": {
+        "L": "3",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "3",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY*LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "C",
+      "parse_alias": "C",
+      "quantity_id": "q.charge.class_numerator",
+      "definition_ref": "here/declare_c",
+      "latex": "C",
+      "dim": {
+        "L": "4",
+        "M": "2",
+        "T": "-4"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units"
+      },
+      "dim_source_tuple": [
+        "4",
+        "-4",
+        "2"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "primitive",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY**2 in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "U",
+      "parse_alias": "U",
+      "quantity_id": "q.charge.pair_potential",
+      "definition_ref": "here/far_field_potential",
+      "latex": "U",
+      "dim": {
+        "L": "2",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units"
+      },
+      "dim_source_tuple": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "F",
+      "parse_alias": "F",
+      "quantity_id": "q.charge.pair_force",
+      "definition_ref": "here/far_field_force",
+      "latex": "F",
+      "dim": {
+        "L": "1",
+        "M": "1",
+        "T": "-2"
+      },
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units"
+      },
+      "dim_source_tuple": [
+        "1",
+        "-2",
+        "1"
+      ],
+      "assumptions": [
+        "real"
+      ],
+      "role": "derived",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ENERGY/LENGTH in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "s_1",
+      "parse_alias": "s_1",
+      "quantity_id": "q.charge.orientation_sign_one",
+      "definition_ref": "here/declare_s1",
+      "latex": "s_1",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real",
+        "nonzero"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "s_2",
+      "parse_alias": "s_2",
+      "quantity_id": "q.charge.orientation_sign_two",
+      "definition_ref": "here/declare_s2",
+      "latex": "s_2",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "real",
+        "nonzero"
+      ],
+      "role": "index",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    },
+    {
+      "name": "pi",
+      "parse_alias": "pi",
+      "quantity_id": "q.math.pi",
+      "definition_ref": "here/declare_pi",
+      "latex": "\\pi",
+      "dim": {},
+      "dim_source_order": "LTM",
+      "dim_source": {
+        "script_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units"
+      },
+      "dim_source_tuple": [
+        "0",
+        "0",
+        "0"
+      ],
+      "assumptions": [
+        "positive",
+        "real"
+      ],
+      "role": "convention",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "Dim dataclass [L,T,M]; dimension expression ONE in run_units",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "declare_a",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "a"
+        },
+        "rhs": {
+          "sympy": "a"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration a",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Mouth annulus inner radius a; frozen G0 geometry datum."
+      },
+      "note": "Ownership declaration binding a."
+    },
+    {
+      "id": "declare_rho",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "rho"
+        },
+        "rhs": {
+          "sympy": "rho"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration rho",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Radial integration coordinate rho on the mouth annulus."
+      },
+      "note": "Ownership declaration binding rho."
+    },
+    {
+      "id": "declare_r",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "r"
+        },
+        "rhs": {
+          "sympy": "r"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration r",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Exterior radial coordinate r (r>=a) for the stationary field."
+      },
+      "note": "Ownership declaration binding r."
+    },
+    {
+      "id": "declare_r_big",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "R"
+        },
+        "rhs": {
+          "sympy": "R"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration R",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Two-throat centre separation R for the far-field potential."
+      },
+      "note": "Ownership declaration binding R."
+    },
+    {
+      "id": "declare_wb",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "W_B"
+        },
+        "rhs": {
+          "sympy": "W_B"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration W_B",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "G0 slab width W_B (bare even background)."
+      },
+      "note": "Ownership declaration binding W_B."
+    },
+    {
+      "id": "declare_ls",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "L_s"
+        },
+        "rhs": {
+          "sympy": "L_s"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration L_s",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Frozen +w sleeve length L_s (>0); one-sidedness is load-bearing."
+      },
+      "note": "Ownership declaration binding L_s."
+    },
+    {
+      "id": "declare_km",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "K_m"
+        },
+        "rhs": {
+          "sympy": "K_m"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration K_m",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Mouth Robin impedance ACTION coefficient (register row K_m); numeric witness NOT derived."
+      },
+      "note": "Ownership declaration binding K_m."
+    },
+    {
+      "id": "declare_jm",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "J_m"
+        },
+        "rhs": {
+          "sympy": "J_m"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration J_m",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Mouth linear source ACTION coefficient (register row J_m); numeric witness NOT derived."
+      },
+      "note": "Ownership declaration binding J_m."
+    },
+    {
+      "id": "declare_s",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "s"
+        },
+        "rhs": {
+          "sympy": "s"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration s",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Z2 orientation sign s=+/-1 (topological charge sign), not a tuned knob."
+      },
+      "note": "Ownership declaration binding s."
+    },
+    {
+      "id": "declare_zb",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "z_b"
+        },
+        "rhs": {
+          "sympy": "z_b"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration z_b",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Opaque longitudinal escape factor z_b; 031 carries it opaque (wiring-verified only)."
+      },
+      "note": "Ownership declaration binding z_b."
+    },
+    {
+      "id": "declare_zg",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "z_g"
+        },
+        "rhs": {
+          "sympy": "z_g"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration z_g",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Opaque Robin escape factor z_g; strict positivity is the separate z_g_witness postulate."
+      },
+      "note": "Ownership declaration binding z_g."
+    },
+    {
+      "id": "declare_kappa_ext",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "kappa_ext"
+        },
+        "rhs": {
+          "sympy": "kappa_ext"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration kappa_ext",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Generic positive exterior h-gradient stiffness kappa_ext; NOT identified with D/B_eff."
+      },
+      "note": "Ownership declaration binding kappa_ext."
+    },
+    {
+      "id": "declare_c",
+      "kind": "convention",
+      "status": "DEFERRED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "C"
+        },
+        "rhs": {
+          "sympy": "C"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration C",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "note": "Class numerator C ([C]=E^2); NOT selected in 031 (deferred to stage032 per BC class)."
+    },
+    {
+      "id": "declare_s1",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "s_1"
+        },
+        "rhs": {
+          "sympy": "s_1"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration s_1",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "First-throat Z2 orientation sign s_1."
+      },
+      "note": "Ownership declaration binding s_1."
+    },
+    {
+      "id": "declare_s2",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "s_2"
+        },
+        "rhs": {
+          "sympy": "s_2"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration s_2",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "Second-throat Z2 orientation sign s_2."
+      },
+      "note": "Ownership declaration binding s_2."
+    },
+    {
+      "id": "declare_pi",
+      "kind": "convention",
+      "status": "CONV",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "pi"
+        },
+        "rhs": {
+          "sympy": "pi"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration pi",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "unknown",
+        "note": "The dimensionless circle constant pi declared as a stage-local symbol so the frozen checker's dimension_of can dimension the 4*pi/2*pi/sqrt(2*pi) normalization factors it whitelists for parsing but does not handle as a NumberSymbol; pi is dimensionless."
+      },
+      "note": "pi is the dimensionless circle constant; declared as a symbol only to bridge the frozen checker's dimension_of gap on sympy NumberSymbol pi."
+    },
+    {
+      "id": "declare_nchi",
+      "kind": "convention",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "N_chi"
+        },
+        "rhs": {
+          "sympy": "N_chi"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration N_chi",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "note": "Ownership declaration for the orientation-projection norm N_chi=I_+ (magnitude EARNED in n_chi_positive)."
+    },
+    {
+      "id": "declare_sgg",
+      "kind": "convention",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "S_gg"
+        },
+        "rhs": {
+          "sympy": "S_gg"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration S_gg",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "note": "Ownership declaration for the Galerkin self-response S_gg=<eta,L_h^-1 eta>."
+    },
+    {
+      "id": "declare_ha",
+      "kind": "convention",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "h_A"
+        },
+        "rhs": {
+          "sympy": "h_A"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "stage031 symbol declaration h_A",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "derived_from_relation"
+      },
+      "note": "Ownership declaration for the held mouth datum h_A=P0*H|_A=xi_w|_A/ell (register R-row DERIVED datum)."
+    },
+    {
+      "id": "bounded_representative",
+      "kind": "convention",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "r_sigma_plus",
+          "latex": "r_{\\Sigma,+}(w)"
+        },
+        "rhs": {
+          "sympy": "(1 + cosh((W_B + L_s)/ell))/(cosh((2*w - L_s)/ell) + cosh((W_B + L_s)/ell))"
+        },
+        "relation": "defines"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_BOUNDED_PLUS_SLEEVE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "coordinated",
+        "coordinated_with": [
+          "stage030/pt_operator"
+        ],
+        "note": "Option-A reflection-dominance bounded peak-normalized +w-sleeve representative in (0,1], completing G0's postulated r_Sigma class; center=L_s/2, halfspan=(W_B+L_s)/2. NO new knob class."
+      },
+      "note": "[POSTULATE] completing G0 r_Sigma class. Bare slab (L_s=0) gives even D, I_plus=0; one-sidedness load-bearing (STAGE031_STOP anti-rescue guard)."
+    },
+    {
+      "id": "z_g_witness",
+      "kind": "inequality",
+      "status": "POSTULATED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "z_g"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_Z_G_POSTULATED_WITNESS",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "genesis": {
+        "introduced": "2026-07-22",
+        "origin": "coordinated",
+        "coordinated_with": [
+          "stage030/pt_operator"
+        ],
+        "note": "POSTULATED Robin-admissibility witness 0<z_g<=1 with z_g=1 at G0; carried opaque, no z_g=1-k_m*S_gg reduction verified."
+      },
+      "note": "Strict z_g>0 (hence strict m_gg>0/det m>0) is POSTULATED; non-strict m_gg>=0/det m>=0 EARNED via z_g^2 (m_gg_nonnegative)."
+    },
+    {
+      "id": "field_identity",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "xi_w",
+          "latex": "\\xi_w"
+        },
+        "rhs": {
+          "sympy": "ell*h",
+          "latex": "\\ell h"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_FIELD_IDENTITY",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Normal embedding displacement of the punctured brane IS the reduced scalar; [xi_w]=L,[h]=1. Register edge R54."
+    },
+    {
+      "id": "reduced_mouth_impedance",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "k_m"
+        },
+        "rhs": {
+          "sympy": "K_m/ell**2"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_UNITS_K_M_REDUCED",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Reduced Robin impedance in the h-Euler term eta_i*(k_m*h - g_chih*s_i). Register edge R55."
+    },
+    {
+      "id": "reduced_coupling",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "g_chih",
+          "latex": "g_{\\chi h}"
+        },
+        "rhs": {
+          "sympy": "J_m/ell"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_REDUCED_COUPLING_NONZERO",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Since f0(0)=1/ell the live coupling reduces -J_m*Q_chi*H -> -g_chih*Q_chi*h. g_chih!=0 a DECIDED committed coupling, NOT the sign R1. Register edge R56."
+    },
+    {
+      "id": "eta_normalization",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "Integral(4*pi*rho**2*(3/(4*pi*((a + ell)**3 - a**3))), (rho, a, a + ell))",
+          "latex": "\\int_A \\eta\\, d^3x"
+        },
+        "rhs": {
+          "sympy": "1"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_ETA_ANNULUS_NORMALIZATION",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Annular kernel eta_i=3/(4*pi*((a+ell)^3-a^3)) integrates to 1 over the mouth annulus by native radial integration; [eta]=L^-3."
+    },
+    {
+      "id": "f0_mouth_value",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "f0_mouth",
+          "latex": "f_0(0)"
+        },
+        "rhs": {
+          "sympy": "1/ell"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_F0_MOUTH_VALUE_EVALUATED",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "f0(0)=1/ell EVALUATED (not assigned) from f0=1/(ell*cosh(w/ell)^2); the tooth also protects the sech^2 shape via curvature at w=0. Consumes stage030 f0."
+    },
+    {
+      "id": "reflection_antisymmetry",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "-w*exp(-w**2/(2*ell**2))/(sqrt(2*pi)*ell**3)",
+          "latex": "o_\\ell(-w)"
+        },
+        "rhs": {
+          "sympy": "-(w*exp(-w**2/(2*ell**2))/(sqrt(2*pi)*ell**3))",
+          "latex": "-o_\\ell(w)"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_REFLECTION_ANTISYMMETRY",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Odd kernel o_ell(w)=w*exp(-w^2/(2 ell^2))/(sqrt(2 pi) ell^3) satisfies o_ell(-w)=-o_ell(w); with even r_bg and r_Sigma-(w)=r_Sigma+(-w) gives I_minus=-I_plus, hence Q_+=+1,Q_-=-1. [o_ell]=L^-2."
+    },
+    {
+      "id": "n_chi_positive",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "N_chi",
+          "latex": "N_\\chi = I_+"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_I_PLUS_REFLECTION_DOMINANCE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/bounded_representative"
+        ]
+      },
+      "note": "Generic reflection-dominance certification: N_chi=I_plus=int_{w>0} o_ell(w)[D(w)-D(-w)]dw>0 parameter-generically, den(-w)-den(w)=2 sinh(2w/ell) sinh(L_s/ell)>0. Certified BEFORE division. Positive orientation SIGN is a labelled CONVENTION; positive MAGNITUDE is EARNED. Register edge R57."
+    },
+    {
+      "id": "orientation_projection",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "Q_chi",
+          "latex": "Q_\\chi"
+        },
+        "rhs": {
+          "sympy": "s"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_Q_CHI_ORIENTATION",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "here/reflection_antisymmetry",
+          "here/n_chi_positive",
+          "here/bounded_representative"
+        ]
+      },
+      "note": "Q_chi=I_s/N_chi=s (Q_+=+1,Q_-=-1): charge SIGN is the +/-w Z2 orientation. Proved from odd-kernel antisymmetry AND generic I_plus>0 certification."
+    },
+    {
+      "id": "bare_forcing",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "bare_source",
+          "latex": "\\text{bare source}"
+        },
+        "rhs": {
+          "sympy": "-g_chih*s"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_BARE_FORCING_LIVE_VARIATION",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Varying the reduced mouth functional gives h-Euler density eta_i*(k_m*h - g_chih*s_i); integrated amplitude k_m*h - g_chih*s, bare (h=0) component -g_chih*s != 0. From live functional-to-Euler wiring."
+    },
+    {
+      "id": "exterior_field",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "h_ext(r)",
+          "latex": "h(r)"
+        },
+        "rhs": {
+          "sympy": "h_A*a/r"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_EXTERIOR_ONE_OVER_R",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Exterior stationary field (3D radial Euler d/dr(r^2 dh/dr)=0, decaying, h(a)=h_A) is h(r)=h_A*a/r -- the h-mediated 1/R potential. h_A=P0*H|_A=xi_w|_A/ell, [h_A]=1."
+    },
+    {
+      "id": "exterior_energy",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "E_ext",
+          "latex": "E_{\\rm ext}"
+        },
+        "rhs": {
+          "sympy": "2*pi*kappa_ext*a*h_A**2"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_POSITIVE_HOLDING_CURVATURE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Exterior holding energy with kappa_ext>0 a GENERIC positive exterior h-gradient stiffness -- NOT identified with kappa=D/B_eff. Holding curvature 4*pi*kappa_ext*a>0."
+    },
+    {
+      "id": "holding_curvature",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "4*pi*kappa_ext*a"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_POSITIVE_HOLDING_CURVATURE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Positive holding curvature of E_ext in h_A (a>0, kappa_ext>0)."
+    },
+    {
+      "id": "nonzero_ha_core_holder",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "coreless_stationary_hA",
+          "latex": "h_A^{\\rm coreless}"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Named neutral fact NONZERO_HA_REQUIRES_CORE_HOLDER: the ONLY stationary point of the core-less exterior energy 2*pi*kappa_ext*a*(h_A-shift)^2 at shift=0 is h_A=0. A guaranteed-nonzero far-field amplitude requires the deferred core holder. Exported; consumed by stage032. Register edge R61."
+    },
+    {
+      "id": "kappa_reduction",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "kappa",
+          "latex": "\\kappa"
+        },
+        "rhs": {
+          "sympy": "D/B_eff"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_KAPPA_REDUCTION",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Response Robin scale kappa=D/b (b=B_eff), escape-normalized in m=Z^T diag(b^-1,kappa^-1) Z. Distinct from kappa_ext. Consumes stage030 D. Register edge R58."
+    },
+    {
+      "id": "response_m_uu",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "m_uu",
+          "latex": "m_{uu}"
+        },
+        "rhs": {
+          "sympy": "(D + C_hu**2*z_b**2)/(B_eff*D)"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_RESPONSE_M_UU",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Completed-square response entry, m=Z^T diag(b^-1,kappa^-1) Z with Z=[[1,0],[-(C_hu/B_eff)*z_b, z_g]]. m_uu=1/b only when C_hu*z_b=0. Z_21=-(C_hu/B_eff)*z_b has [Z_21]=L. z_b carried opaque."
+    },
+    {
+      "id": "response_m_ug",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "m_ug",
+          "latex": "m_{ug}"
+        },
+        "rhs": {
+          "sympy": "-C_hu*z_b*z_g/D"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_RESPONSE_M_UG",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Off-diagonal completed-square response entry; m symmetric (m=m^T)."
+    },
+    {
+      "id": "response_m_gg",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "m_gg",
+          "latex": "m_{gg}"
+        },
+        "rhs": {
+          "sympy": "B_eff*z_g**2/D"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_RESPONSE_M_GG",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Pair-coupling response amplitude, [m_gg]=L/E. Register edge R59. Consumed by stage032 BC ensembles."
+    },
+    {
+      "id": "response_det",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "det_m",
+          "latex": "\\det m"
+        },
+        "rhs": {
+          "sympy": "z_g**2/D"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_RESPONSE_DETERMINANT",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Response determinant, [det m]=M^-2 T^4. Register edge R59."
+    },
+    {
+      "id": "m_gg_nonnegative",
+      "kind": "inequality",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "m_gg"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "ge"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_M_GG_NONNEGATIVE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator",
+          "here/response_m_gg"
+        ]
+      },
+      "note": "m_gg>=0 (and det m>=0) EARNED via z_g^2 given B_eff>0, D>0. Strict m_gg>0/det m>0 only at the POSTULATED z_g witness. All response amplitudes vanish at z_g=0."
+    },
+    {
+      "id": "star_witness",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "m_gg_star",
+          "latex": "m_{gg}^*"
+        },
+        "rhs": {
+          "sympy": "Rational(8,7)"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_RESPONSE_STAR_WITNESS",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator",
+          "here/response_m_gg"
+        ]
+      },
+      "note": "Numeric witness at (B_eff,K_h,C_hu,z_b,z_g)=(2,1,1/2,1,1): D*=7/4 (consumed from stage030/kernel_stability), m*=(1/7)[[4,-2],[-2,8]], so m_gg*=B_eff/D=8/7, m_uu*=K_h/D=4/7, m_ug*=-C_hu/D=-2/7. Dimensionless witness kept DISTINCT from physical response dims."
+    },
+    {
+      "id": "s_gg_self_response",
+      "kind": "inequality",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "S_gg",
+          "latex": "S_{gg}"
+        },
+        "rhs": {
+          "sympy": "0"
+        },
+        "relation": "gt"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_S_GG_SELF_RESPONSE",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator"
+        ]
+      },
+      "note": "Self-response S_gg=<eta,L_h^-1 eta> via explicit Galerkin quadratic form; positive for positive L_h (DERIVED). [S_gg]=E^-1. Enters stage032 Dirichlet coefficient."
+    },
+    {
+      "id": "neutral_shell_amplitude",
+      "kind": "identity",
+      "status": "DERIVED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "A",
+          "latex": "A"
+        },
+        "rhs": {
+          "sympy": "m_gg*C"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_NEUTRAL_FAR_FIELD_FORM",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator",
+          "here/response_m_gg"
+        ]
+      },
+      "note": "Neutral far-field shell amplitude, [A]=E*L, with C an unspecified real class numerator [C]=E^2. Register edge R60. The class numerator C (which fixes force SIGN) is NOT specified, NO sign picked -- allowed/conditional leading form (U|_{C=0}=0 admissible). Nonzero amplitude requires the deferred core holder. Consumed by stage032."
+    },
+    {
+      "id": "far_field_potential",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "U",
+          "latex": "U"
+        },
+        "rhs": {
+          "sympy": "s_1*s_2*A/(4*pi*R)"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_NEUTRAL_FAR_FIELD_FORM",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator",
+          "here/neutral_shell_amplitude"
+        ]
+      },
+      "note": "Two-throat interaction potential; 1/R form and s_1*s_2 product (bilinear response + orientation-odd source) are target-blind EARNED. [U]=E."
+    },
+    {
+      "id": "far_field_force",
+      "kind": "identity",
+      "status": "EARNED",
+      "payload_kind": "relation",
+      "payload": {
+        "lhs": {
+          "sympy": "F",
+          "latex": "F"
+        },
+        "rhs": {
+          "sympy": "s_1*s_2*A/(4*pi*R**2)"
+        },
+        "relation": "eq"
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_NEUTRAL_FAR_FIELD_FORM",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      },
+      "holds_within": {
+        "op": "all",
+        "operands": [
+          "stage030/pt_operator",
+          "here/neutral_shell_amplitude"
+        ]
+      },
+      "note": "Far-field force F=-dU/dR; 1/R^2 falloff and s_1*s_2 product are target-blind EARNED. [F]=E/L."
+    }
+  ],
+  "consumes": [
+    {
+      "ref": "stage030/zero_mode",
+      "as_consumed": {
+        "payload_kind": "spectrum",
+        "payload": {
+          "operator": "O_perp",
+          "kernel_symbol": "f0",
+          "kernel": {
+            "sympy": "1/(ell*cosh(w/ell)**2)",
+            "latex": "\\ell^{-1}\\mathrm{sech}^2(w/\\ell)"
+          },
+          "eigenvalue": {
+            "sympy": "0"
+          },
+          "gap": {
+            "sympy": "4/ell**2"
+          },
+          "multiplicity": 1
+        }
+      },
+      "check": "spectrum_match",
+      "substitutions": [],
+      "note": "The sech^2 zero-mode profile of O_perp (eigenvalue 0, gap 4/ell^2); f0_mouth_value re-evaluates f0(0)=1/ell. Operator O_perp owned by stage030/declare_o_perp (consumed separately)."
+    },
+    {
+      "ref": "stage030/kernel_determinant",
+      "as_consumed": {
+        "payload_kind": "relation",
+        "payload": {
+          "lhs": {
+            "sympy": "D",
+            "latex": "D"
+          },
+          "rhs": {
+            "sympy": "B_eff*K_h - C_hu**2",
+            "latex": "B_{\\rm eff}K_h-C_{hu}^2"
+          },
+          "relation": "eq"
+        }
+      },
+      "check": "cas_equivalence",
+      "substitutions": [],
+      "note": "The (u_L,h) static-block Schur/Sylvester determinant; provides {B_eff,C_hu,K_h,D}. 031 re-forms D=B_eff*K_h-C_hu^2 in its response objects. B_eff originates at stage003; C_hu/K_h at stage030."
+    },
+    {
+      "ref": "stage030/kernel_stability",
+      "as_consumed": {
+        "payload_kind": "relation",
+        "payload": {
+          "lhs": {
+            "sympy": "2*1 - Rational(1,2)**2",
+            "latex": "D_*=B_{\\rm eff}K_h-C_{hu}^2|_{\\star}"
+          },
+          "rhs": {
+            "sympy": "0",
+            "latex": "0"
+          },
+          "relation": "gt"
+        }
+      },
+      "check": "value_equal",
+      "substitutions": [],
+      "note": "The dimensionless star value D*=2*1-(1/2)^2=7/4 consumed from stage030/kernel_stability (the D>0 static-stability producer; there is NO kernel_determinant_star claim). Used in star_witness; kept DISTINCT from the physical D dim (M^2 T^-4)."
+    },
+    {
+      "ref": "stage030/declare_o_perp",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.charge.transverse_operator",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the O_perp transverse operator (O_perp=-d^2/dw^2+V_H) named by this stage's zero_mode spectrum_match operator field (import-completeness for O_perp)."
+    },
+    {
+      "ref": "stage030/normalized_projection",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.charge.reduced_scalar",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the reduced scalar h (h=<2 f0 H>/N0) used in field_identity (xi_w=ell*h); consumed opaquely (H,N0 are stage030-internal)."
+    },
+    {
+      "ref": "stage030/declare_ell",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.charge.pt_length",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the PT length ell used throughout stage031 (import-completeness)."
+    },
+    {
+      "ref": "stage030/declare_chu",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.charge.embedding_mixing",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the embedding-mixing coefficient C_hu used in kappa/response m."
+    },
+    {
+      "ref": "stage030/reduced_stiffness",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.charge.reduced_stiffness",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the reduced stiffness K_h used in the kernel_determinant consume (D=B_eff*K_h-C_hu^2)."
+    },
+    {
+      "ref": "stage030/declare_w",
+      "check": "opaque_quantity_match",
+      "producer_quantity_id": "q.coordinate.transverse_w",
+      "producer_source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
+      "substitutions": [],
+      "note": "Owner of the transverse coordinate w used in bounded_representative and reflection_antisymmetry (local-resolution declare per directive)."
+    },
+    {
+      "ref": "stage003/b_eff_definition",
+      "check": "dim_equal",
+      "as_consumed_dim": {
+        "L": "-1",
+        "M": "1",
+        "T": "-2"
+      },
+      "substitutions": [],
+      "note": "PROVISIONAL: B_eff owned by stage003 (NOT yet extracted) -> honest ABSENT_PRODUCER/PARTIAL. Used in kappa/response m. dim_equal mirrors stage030's own stage003 consumes; do not fake."
+    }
+  ],
+  "exports": [
+    {
+      "claim_id": "field_identity",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "reduced_mouth_impedance",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "reduced_coupling",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "f0_mouth_value",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "orientation_projection",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "n_chi_positive",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "bare_forcing",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "exterior_field",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "exterior_energy",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "nonzero_ha_core_holder",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "kappa_reduction",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "response_m_uu",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "response_m_ug",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "response_m_gg",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "response_det",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "m_gg_nonnegative",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "star_witness",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "s_gg_self_response",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "neutral_shell_amplitude",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "far_field_potential",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    },
+    {
+      "claim_id": "far_field_force",
+      "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+    }
+  ],
+  "knobs": [
+    {
+      "knob_id": "k.charge.mouth_impedance",
+      "symbol": "K_m",
+      "registry_row": "K_m",
+      "action": "introduced",
+      "origin": "here/reduced_mouth_impedance",
+      "effective_stage": "stage031",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Mouth Robin impedance ACTION coefficient (register row K_m); reduces to k_m=K_m/ell^2 (edge R55). Numeric witness NOT derived.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_UNITS_K_M",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.charge.mouth_coupling",
+      "symbol": "J_m",
+      "registry_row": "J_m",
+      "action": "introduced",
+      "origin": "here/reduced_coupling",
+      "effective_stage": "stage031",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Mouth linear source ACTION coefficient (register row J_m); reduces to g_chih=J_m/ell (edge R56). g_chih!=0 a DECIDED committed coupling, NOT the sign R1. Numeric witness NOT derived.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_UNITS_J_M",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "departures": [
+    {
+      "token": "NONZERO_HA_REQUIRES_CORE_HOLDER",
+      "kind": "deferral",
+      "claim_refs": [
+        "here/nonzero_ha_core_holder"
+      ],
+      "note": "A nonzero signed h_A is NOT stationary for the core-less exterior energy; a guaranteed-nonzero far-field amplitude requires the sim-deferred core holder (nonlinear throat solve; sibling of R10/R30/R33, register R61). Exported to and consumed by stage032. 031 claims no guaranteed-nonzero interaction.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "token": "R1_REQUIRED(bc_selection)",
+      "kind": "deferral",
+      "resolved_by": "stage032/bc_ensemble_landing",
+      "claim_refs": [
+        "here/neutral_shell_amplitude"
+      ],
+      "note": "The class-dependent numerator C fixing the force SIGN, the four BC-ensemble coefficients, internal_inconsistency, the sealed landing, and the Q_E/magnitude re-home are DEFERRED to stage032. 031 emits the neutral shell A=m_gg*C and picks NO sign.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "locus": "PASS_ALLOWED_ZERO_COEFFICIENT",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "verification": {
+    "sympy_script": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+    "mathematica_script": "mathematica/ledger_stage031_puncture_deflection_field_identity_source_mathematica_audit.wl",
+    "teeth": [
+      {
+        "predicate": "PASS_FIELD_IDENTITY",
+        "mutation": "xi_power",
+        "claim_ids": [
+          "field_identity"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_FIELD_IDENTITY",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ETA_ANNULUS_NORMALIZATION",
+        "mutation": "eta_numerator",
+        "claim_ids": [
+          "eta_normalization"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_ETA_ANNULUS_NORMALIZATION",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_F0_MOUTH_VALUE_EVALUATED",
+        "mutation": "f0_power",
+        "claim_ids": [
+          "f0_mouth_value"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_F0_MOUTH_VALUE_EVALUATED",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REDUCED_COUPLING_NONZERO",
+        "mutation": "Jm_witness",
+        "claim_ids": [
+          "reduced_coupling"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_REDUCED_COUPLING_NONZERO",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BOUNDED_PLUS_SLEEVE",
+        "mutation": "peak_factor",
+        "claim_ids": [
+          "bounded_representative"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_BOUNDED_PLUS_SLEEVE",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_REFLECTION_ANTISYMMETRY",
+        "mutation": "reflect_body",
+        "claim_ids": [
+          "reflection_antisymmetry",
+          "orientation_projection"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_REFLECTION_ANTISYMMETRY",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_I_PLUS_REFLECTION_DOMINANCE",
+        "mutation": "dominance_sign",
+        "claim_ids": [
+          "n_chi_positive"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_I_PLUS_REFLECTION_DOMINANCE",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_I_PLUS_EVEN_DEFORMATION_CONTROL",
+        "mutation": "even_control_odd_part",
+        "claim_ids": [
+          "n_chi_positive"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_I_PLUS_EVEN_DEFORMATION_CONTROL",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_I_PLUS_ZERO_SLEEVE_CONTROL",
+        "mutation": "zero_sleeve",
+        "claim_ids": [
+          "n_chi_positive",
+          "bounded_representative"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_I_PLUS_ZERO_SLEEVE_CONTROL",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_I_PLUS_NEGATIVE_SLEEVE_CONTROL",
+        "mutation": "negative_control",
+        "claim_ids": [
+          "n_chi_positive"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_I_PLUS_NEGATIVE_SLEEVE_CONTROL",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_N_CHI_NONZERO_GUARD",
+        "mutation": "nchi_guard",
+        "claim_ids": [
+          "n_chi_positive",
+          "orientation_projection"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_N_CHI_NONZERO_GUARD",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_Q_CHI_ORIENTATION",
+        "mutation": "projection_parity",
+        "claim_ids": [
+          "orientation_projection"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_Q_CHI_ORIENTATION",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_BARE_FORCING_LIVE_VARIATION",
+        "mutation": "mouth_quadratic_factor",
+        "claim_ids": [
+          "bare_forcing"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_BARE_FORCING_LIVE_VARIATION",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_EXTERIOR_ONE_OVER_R",
+        "mutation": "radial_dimension",
+        "claim_ids": [
+          "exterior_field"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_EXTERIOR_ONE_OVER_R",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_POSITIVE_HOLDING_CURVATURE",
+        "mutation": "curvature_sign",
+        "claim_ids": [
+          "exterior_energy",
+          "holding_curvature"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_POSITIVE_HOLDING_CURVATURE",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+        "mutation": "coreless_shift",
+        "claim_ids": [
+          "nonzero_ha_core_holder"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_NONZERO_HA_REQUIRES_CORE_HOLDER",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_KAPPA_REDUCTION",
+        "mutation": "kappa_factor",
+        "claim_ids": [
+          "kappa_reduction"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_KAPPA_REDUCTION",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_Z_B_WIRING",
+        "mutation": "zb_factor",
+        "claim_ids": [
+          "response_m_uu"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_Z_B_WIRING",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_M_UU",
+        "mutation": "muu_extra",
+        "claim_ids": [
+          "response_m_uu"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_M_UU",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_M_UG",
+        "mutation": "mug_sign",
+        "claim_ids": [
+          "response_m_ug"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_M_UG",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_M_GG",
+        "mutation": "mgg_factor",
+        "claim_ids": [
+          "response_m_gg"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_M_GG",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_SYMMETRY",
+        "mutation": "symmetry_skew",
+        "claim_ids": [
+          "response_m_ug"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_SYMMETRY",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_DETERMINANT",
+        "mutation": "det_factor",
+        "claim_ids": [
+          "response_det"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_DETERMINANT",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_Z_G_POSTULATED_WITNESS",
+        "mutation": "zg_witness",
+        "claim_ids": [
+          "z_g_witness"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_Z_G_POSTULATED_WITNESS",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_M_GG_NONNEGATIVE",
+        "mutation": "mgg_square",
+        "claim_ids": [
+          "m_gg_nonnegative"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_M_GG_NONNEGATIVE",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_RESPONSE_STAR_WITNESS",
+        "mutation": "star_zb",
+        "claim_ids": [
+          "star_witness"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_RESPONSE_STAR_WITNESS",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_S_GG_SELF_RESPONSE",
+        "mutation": "green_sign",
+        "claim_ids": [
+          "s_gg_self_response"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_S_GG_SELF_RESPONSE",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_NEUTRAL_FAR_FIELD_FORM",
+        "mutation": "potential_power",
+        "claim_ids": [
+          "neutral_shell_amplitude",
+          "far_field_potential",
+          "far_field_force"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_NEUTRAL_FAR_FIELD_FORM",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_ALLOWED_ZERO_COEFFICIENT",
+        "mutation": "zero_C",
+        "claim_ids": [
+          "neutral_shell_amplitude"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_ALLOWED_ZERO_COEFFICIENT",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_XI_W",
+        "mutation": "dim_xi",
+        "claim_ids": [
+          "field_identity"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_XI_W",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_H",
+        "mutation": "dim_h",
+        "claim_ids": [
+          "field_identity"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_H",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_H_A",
+        "mutation": "dim_hA",
+        "claim_ids": [
+          "exterior_field",
+          "exterior_energy"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_H_A",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_K_M",
+        "mutation": "dim_Km",
+        "claim_ids": [
+          "reduced_mouth_impedance"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_K_M",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_J_M",
+        "mutation": "dim_Jm",
+        "claim_ids": [
+          "reduced_coupling"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_J_M",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_K_M_REDUCED",
+        "mutation": "dim_km",
+        "claim_ids": [
+          "reduced_mouth_impedance"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_K_M_REDUCED",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_G_CHIH",
+        "mutation": "dim_g",
+        "claim_ids": [
+          "reduced_coupling"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_G_CHIH",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_ETA",
+        "mutation": "dim_eta",
+        "claim_ids": [
+          "eta_normalization"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_ETA",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_ODD_KERNEL",
+        "mutation": "dim_o",
+        "claim_ids": [
+          "reflection_antisymmetry"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_ODD_KERNEL",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_N_CHI",
+        "mutation": "dim_nchi",
+        "claim_ids": [
+          "n_chi_positive"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_N_CHI",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_M_UU",
+        "mutation": "dim_muu",
+        "claim_ids": [
+          "response_m_uu"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_M_UU",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_M_UG",
+        "mutation": "dim_mug",
+        "claim_ids": [
+          "response_m_ug"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_M_UG",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_M_GG",
+        "mutation": "dim_mgg",
+        "claim_ids": [
+          "response_m_gg"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_M_GG",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_KAPPA",
+        "mutation": "dim_kappa",
+        "claim_ids": [
+          "kappa_reduction"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_KAPPA",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_ESCAPE_MATRIX",
+        "mutation": "dim_Z21",
+        "claim_ids": [
+          "response_m_uu"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_ESCAPE_MATRIX",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_DET_M",
+        "mutation": "dim_detm",
+        "claim_ids": [
+          "response_det"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_DET_M",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_S_GG",
+        "mutation": "dim_sgg",
+        "claim_ids": [
+          "s_gg_self_response"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_S_GG",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_SHELL_C",
+        "mutation": "dim_C",
+        "claim_ids": [
+          "neutral_shell_amplitude"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_SHELL_C",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_SHELL_A",
+        "mutation": "dim_A",
+        "claim_ids": [
+          "neutral_shell_amplitude"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_SHELL_A",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_U",
+        "mutation": "dim_U",
+        "claim_ids": [
+          "far_field_potential"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_U",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "PASS_UNITS_F",
+        "mutation": "dim_F",
+        "claim_ids": [
+          "far_field_force"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+          "locus": "PASS_UNITS_F",
+          "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      }
+    ]
+  },
+  "extraction": {
+    "report": {
+      "ungrounded": [],
+      "provisional_consumes": [
+        "stage003/b_eff_definition"
+      ],
+      "prose_script_mismatches": [
+        "v1 det_m dim was M^2 T^-4; corrected to M^-2 T^4 per run_units PASS_UNITS_DET_M and response_det (z_g^2/D).",
+        "v1 cited nonexistent stage030/kernel_determinant_star for D*=7/4; retargeted to stage030/kernel_stability (value_equal, D*=2*1-(1/2)^2=7/4)."
+      ],
+      "judgment_calls": [
+        "Dropped the unused D_star symbol; D*=7/4 is consumed as a numeric value_equal on stage030/kernel_stability (no payload references D_star).",
+        "Added O_perp symbol owned by stage030/declare_o_perp so the zero_mode spectrum_match operator field is import-complete.",
+        "Shared upstream quantities (ell,w,h,C_hu,K_h,D,f0,O_perp,B_eff) consumed via opaque_quantity_match / cas_equivalence for import-completeness; B_eff pinned to the stage030 re-export digest pending stage003 extraction (provisional).",
+        "holds_within and genesis coordination anchored to stage030/pt_operator (the real static-closure postulate) in place of v1's non-claim token stage030/electric_scalar_closure_static.",
+        "nonzero_ha_core_holder retyped from adjudication to identity/relation (eq, coreless_stationary_hA=0) so it binds its quantity.",
+        "CHECKER GAP (frozen composite_build.py faa7e8f1): dimension_of does NOT handle sympy NumberSymbol pi (pi.is_Number is False) although pi is parse-whitelisted in FUNCTION_NAMES; any claim with 4*pi/2*pi/sqrt(2*pi) hit DIMENSION_RULE_UNSUPPORTED in C4. Worked around faithfully by declaring pi as a dimensionless stage-local symbol (declare_pi), preserving every exact pi-bearing expression. Not patched; reported."
+      ]
+    },
+    "source_digests": [
+      {
+        "source_path": "scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py",
+        "source_digest": "cf307ac1ca5ee790565d7480a7d41e52056f9de9643f1ae19317756697124f1d"
+      }
+    ]
+  }
+}

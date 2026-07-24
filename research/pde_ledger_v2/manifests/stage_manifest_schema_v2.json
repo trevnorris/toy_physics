@@ -1862,7 +1862,8 @@
         },
         "registry_row": {
           "type": "string",
-          "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+          "minLength": 1,
+          "description": "Exact first-cell token recovered from the configured register. Unicode symbols and relation-form row labels are permitted because the live markdown register uses both."
         },
         "action": {
           "enum": [

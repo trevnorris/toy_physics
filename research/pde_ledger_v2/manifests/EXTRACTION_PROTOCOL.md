@@ -82,8 +82,17 @@ Do not infer a fact that the sources do not supply.
    quantity. Cite opaque quantities with `opaque_quantity_match`, the producer
    `quantity_id`, and its export `source_digest`.
 
-7. **Exports and C7.** Export only local operative claim ids and pin each
-   export to its source evidence digest. `c7_binding` and `c7_expect` are
+7. **Exports and C7.** **Export-complete (mandatory, user-approved 2026-07-24):**
+   export EVERY operative claim AND every ownership (`declare_*`) claim of the
+   stage; only retired, superseded, or departed claims stay unexported. Exports
+   are NOT a curated highlight reel — downstream stages legitimately cite
+   intermediate lemmas and quantity definitions, and a stage that under-exports
+   forces its consumers into opaque citations or re-derivation. (The 030/031/032
+   pilot proved the failure mode: 031 did not export `S_gg`, so 032 fell back to
+   an opaque `C_V`.) Export-list size is free; the `NON_EXPORTED_CLAIM` guard
+   still bites where it matters, because citing a RETIRED or departed claim
+   remains a real error. Pin each export to its source evidence digest.
+   `c7_binding` and `c7_expect` are
    optional until a real mutation exists. When present, the export binding
    carries its producing symbol/knob id, mutation env, executable mutation
    command, and exported semantic facet; the consume expectation carries the

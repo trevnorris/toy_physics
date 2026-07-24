@@ -9,8 +9,7 @@
 `{030,031,032}` composite build is CLEAN (exit 0, headline PARTIAL — all findings honest edges into unextracted
 stages). `citations=17/20` resolve; `claims=106/106`; **ADJUDICATION PASS** (stage032 23040-cell grid: buckets
 sum + axes `5·6·6·4·2·2·2·2·2` both = 23040); the 030→031 spectrum handoff resolves (`spectrum_match` on the
-corrected `O_perp` operator, able-to-fail confirmed). 030 + 031 fidelity-audited FAITHFUL (031 audit pending on
-032). The checker was HARDENED (func/composite dim recovery) → Grok-reviewed (4 holes found+closed) → refined
+corrected `O_perp` operator, able-to-fail confirmed). 030, 031, AND 032 all fidelity-audited FAITHFUL. The checker was HARDENED (func/composite dim recovery) → Grok-reviewed (4 holes found+closed) → refined
 (over-correction on real stage030) → CONVERGED at **49 self-test fixtures** (SHA `faa7e8f1de1d3755`, frozen for
 extraction). Extraction pivoted from Codex → **agent-as-coder** (Codex CLI stalled twice on API hangs; agents run
 in-harness, reliable — this is the likely fanout default, see FANOUT_PLAN.md).
@@ -26,10 +25,11 @@ in-harness, reliable — this is the likely fanout default, see FANOUT_PLAN.md).
    BARE TUPLES (`dim_E=(2,-2,1)`) so its C4 certificate had to BORROW stage031's script (values right, mis-anchored).
    Fix both + able-to-fail fixtures; keep all 49 fixtures + real 030/031/032 passing; then re-anchor 032 dims + drop
    the declare_pi workaround.
-2. **Systematic UNDER-EXPORT:** stages don't export every claim a downstream stage cites (030 lacked `O_perp` — added;
-   031 lacks `S_gg`/`declare_sgg` etc. → 032 fell back to opaque citations + an `A_V=m_gg·C_V` opaque form vs the note's
-   `m_gg·φ²/S_gg²`). The fanout likely needs an EXPORT-COMPLETENESS pass (a stage exports every claim downstream cites).
-   ⚠ This is a design choice affecting all 44 stages — confirm the approach with the user at the fanout opt-in.
+2. **Systematic UNDER-EXPORT → ✅ EXPORT-ALL APPROVED (user, 2026-07-24):** a stage exports EVERY operative + ownership
+   (`declare_*`) claim; only retired/departed stay internal. Implemented in #27 (protocol rule-7 + retroactive complete
+   re-export of 030/031/032 → 031 exports `S_gg` → 032 drops the opaque `C_V` for the real `m_gg·φ²/S_gg²`). Fanout default.
+3. **Mathematica `.out` evidence → ✅ DONE (option b):** all 44 `.wl` re-run → `mathematica/out/*.out` committed `7f6d9481`
+   (all 43 stages OVERALL PASS, zero errors); manifests CITE the `.out` digests in #27 (needs a small schema field).
 
 **C7 CAPSTONE ✅ DONE + committed `acfe3c7b`:** the real 030→031 `zero_mode` C7 mutation is proven — an HONEST,
 genuinely-computing mutator (`manifests/mutators/c7_stage030_zero_mode.py`: perturbs f0 power 2→1, sympy-computes the
@@ -37,9 +37,14 @@ genuinely-computing mutator (`manifests/mutators/c7_stage030_zero_mode.py`: pert
 (`c7_edges=1/17`); flipping to `--decorative` → `DECORATIVE_DEPENDENCY` FAIL (independently verified, then restored).
 The anti-rederivation guarantee has TEETH on real stages. **THE PILOT'S CORE PROOF IS COMPLETE.**
 
-**REMAINING (fanout-prep, lower priority):**
+**▶ NEXT DIRECTIVE (fanout-prep) = `manifests/PREFANOUT_ROUND.md` (#27)** — Phase 1: fix the two checker gaps (π
+dimensionless + bare-tuple dim recovery) + a small schema `.out`-evidence field, dual-fixture discipline, Grok pass.
+Phase 2: protocol rule-7 export-all + retroactive complete re-export of 030/031/032 (un-opaque 032's `A_V`, re-anchor
+032 dims, drop stage031 `declare_pi`, fix the det_m narrative, cite `.out` digests), re-verify (C7 edge still PASS +
+fresh fidelity). THEN 043 → the 44-stage fanout (Workflow, user opt-in). Commits so far this thread:
+`b13c535e`(030/031/032+checker) `acfe3c7b`(C7) `7f6d9481`(44 `.out`) `739ada37`(fanout-plan docs).
 
-> **⭐ C7 EXECUTION RECIPE (contract read from `composite_build.py:1870-1946`, committed `30a432e9`):** The harness
+> **⭐ C7 EXECUTION RECIPE (DONE — historical reference; contract from `composite_build.py:1870-1946`):** The harness
 > covers an edge when the producer export has `c7_binding{producing_primitive, mutation_env, mutation_command,
 > exported_facet}` AND the consumer consume has `c7_expect{injection_point, facet_used, expected_first_failure}` AND
 > `facet_used == exported_facet`. It runs `mutation_command` as a subprocess with `env[mutation_env]=exported_facet`,

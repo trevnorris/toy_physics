@@ -53,7 +53,7 @@ The orchestrator (Claude) must NOT populate manifests inline — that absorbs ev
   unchanged. (`.out` are un-ignored via a `.gitignore` negation; the repo `*.out` rule is
   for LaTeX artifacts.)
 
-## Export-completeness (RECOMMENDATION banked 2026-07-24 — awaiting user confirm)
+## Export-completeness (✅ APPROVED by user 2026-07-24 — implement in #27 `PREFANOUT_ROUND.md`)
 The pilot's systematic under-export (031 didn't export `S_gg` → 032 fell to opaque `C_V`;
 030 lacked `O_perp` → had to be added) is a CURATION bug: extractors treated `exports` as
 a highlight reel, but downstream cites intermediate results + quantity definitions, not just

@@ -31,9 +31,13 @@ in-harness, reliable — this is the likely fanout default, see FANOUT_PLAN.md).
    `m_gg·φ²/S_gg²`). The fanout likely needs an EXPORT-COMPLETENESS pass (a stage exports every claim downstream cites).
    ⚠ This is a design choice affecting all 44 stages — confirm the approach with the user at the fanout opt-in.
 
-**REMAINING pilot work:** the real 030→031→032 **C7 mutation** (task #23, the capstone anti-rederivation proof —
-manifests currently have `c7_edges=0/17`, no C7 metadata; author an HONEST mutator + add c7_binding/c7_expect to one
-clean edge, e.g. 030→031 `zero_mode`);
+**C7 CAPSTONE ✅ DONE + committed `acfe3c7b`:** the real 030→031 `zero_mode` C7 mutation is proven — an HONEST,
+genuinely-computing mutator (`manifests/mutators/c7_stage030_zero_mode.py`: perturbs f0 power 2→1, sympy-computes the
+`-f0''+V_H·f0` residual, emits the `PASS_F0_MOUTH_VALUE_EVALUATED` tooth ONLY when residual≠0) → C7 edge PASS
+(`c7_edges=1/17`); flipping to `--decorative` → `DECORATIVE_DEPENDENCY` FAIL (independently verified, then restored).
+The anti-rederivation guarantee has TEETH on real stages. **THE PILOT'S CORE PROOF IS COMPLETE.**
+
+**REMAINING (fanout-prep, lower priority):**
 
 > **⭐ C7 EXECUTION RECIPE (contract read from `composite_build.py:1870-1946`, committed `30a432e9`):** The harness
 > covers an edge when the producer export has `c7_binding{producing_primitive, mutation_env, mutation_command,

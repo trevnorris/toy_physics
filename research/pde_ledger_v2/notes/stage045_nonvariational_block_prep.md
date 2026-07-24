@@ -14,33 +14,34 @@ identities + dimensional homogeneity) + prose (on the BC taxonomy). Foundational
 tertiary**. ⚠ The G0 card is DRAFT-v0 → 045 assembles at the **structure / completeness-floor level only** (no committed closed
 action; the shared throat solve stays SIM-DEFERRED).
 
-## ⭐ THE DRAIN-PLACEMENT MINI-GATE (the USER's decision — deferred from 044; resolve BEFORE authoring the 045 directive)
-Stage 044 named TWO candidate **non-variational** drain interfaces, proved `S_assembled` source-free, and left
-`drain_equivalence=UNRESOLVED`, `drain_selection=DEFERRED_045_AND_USER_GATE`. **045 must surface the drain-placement to the user
-as a short mini-gate before building** — it is a genuine physics/ontology call (like the Part VI cone-lock). The options:
+## ⭐ THE DRAIN-PLACEMENT — DECIDED by the user (2026-07-24): the drain is the DYNAMICAL wall, NOT a frozen wall
+Stage 044 named TWO candidate **non-variational** drain interfaces, proved `S_assembled` source-free, and left the selection to
+045. **The user has now RULED OUT the frozen-wall drain** (2026-07-24, hard-flagged: *"the drain cannot be a frozen wall — several
+instances where we tried to freeze the wall and it screwed up all the calculations"*; this is the standing "NOTHING is static"
+principle — see memory `project_model_mechanics_corrections` §1/§1a). So the committed non-variational drain is:
 
-- **(a) Part-I `Γ_B` order-conversion drain** (dynamical-wall regime): `∂_t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B`,
-  `Γ_B = Γ_return − Γ_drain`, dim `T⁻¹`. An INTERNAL order-conversion at the throat (ordered↔disordered material). **Total `n`
-  (mass) is conserved exactly** — nothing leaves the medium; the throat CONVERTS phase (pin P12: phase-conversion, NOT suction).
-- **(b) G0-card `S_drain` ρ-mass-sink + remote return** (frozen-wall regime — the G0 DRAFT-v0 choice; card §6): local sink
-  `S_drain = −Σ_i Γ_0 D_i` (bump at `x=X_i`, `w=s_i a/2` body-side, width `a/4`) + a remote even-parity return
-  `S_leakage = (Σ_i Γ_0) R_0` (at `w=±2L`) on TOTAL-`ρ` continuity `∂_tρ + ∇·(ρv) = S_drain + S_leakage`; charge-EVEN;
-  dim `L⁻⁴T⁻¹`, `Γ_0*=10⁻³`. Mass is LOCALLY removed at the throat, GLOBALLY returned at the IR boundary (exact global closure).
-- **(c) both as regimes** — (b) = the frozen-Σ static reduction of (a). ⚠ 044/Codex established these are DIFFERENT balance-law
-  objects (internal-conversion vs sink+return); the reduction mapping is **NOT currently supplied**. Choosing (c) makes 045
-  DERIVE that projection/reduction (real work; possibly a clean reduction, possibly a NO-GO if they don't reconcile).
+- **✅ (a) Part-I `Γ_B` order-conversion drain — THE COMMITTED CHOICE** (DYNAMICAL wall): `∂_t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n
+  Γ_B`, `Γ_B = Γ_return − Γ_drain`, dim `T⁻¹`. An INTERNAL order-conversion at the throat (the DYNAMICAL wall converting
+  ordered↔disordered material; pin P12: phase-conversion, NOT suction). The wall stays dynamical — no freeze.
+- **❌ (b) G0-card `S_drain` ρ-mass-sink + remote return — RULED OUT** (frozen-wall regime; card §6 freezes `r_B` via `S_hold`
+  and sinks `ρ`). This is the exact frozen-wall shortcut the user rules out. `S_drain = −Σ_i Γ_0 D_i` + `S_leakage = (Σ_iΓ_0)R_0`.
+- **(c) both as regimes** — MOOT for the committed drain (its frozen-Σ half is (b), which is out). If a static reduction is ever
+  wanted it must be DERIVED as the `ω→0` limit of the dynamical (a), never posed as an independent frozen solve.
 
-**⭐ My recommendation to bring to the gate = (b), with the honest caveats**, because: (i) 045 builds the non-variational
-complement of the **G0-card** conservative action `S_cons^G0`, and the G0 card §6 IS the (b) machinery already specified
-(`S_drain`/`S_leakage`/`f`/`w`/`I_ret`/`P_ret` + BCs + force partition) — the concretely-buildable path; (ii) (b) matches the
-user's "drain = the arrow of time" insight (`τ_d` T-odd, information lost at the throat — an irreversible sink, not a reversible
-internal conversion); (iii) it keeps 045 consistent with what 044 assembled. **(a)** would re-derive the block from Part I's
-`Γ_B` (less specified, and re-opens the wall dynamics 044 froze); **(c)** is the most ambitious (derive the (a)→(b) reduction —
-could be its own able-to-fail result). ⚠ **Do NOT pre-decide — present all three + the recommendation and let the user choose
-at the mini-gate.** The choice determines what the committed non-variational block is built on.
+**⭐ Consequence for the 045 build (do NOT just transcribe the G0 card §6 — it is frozen-wall-premised):** the drain SOURCE is
+the dynamical `Γ_B` order-conversion (Part-I native), NOT the G0 `S_drain=−ΣΓ_0 D_i` ρ-sink. The G0 card §6 provides the
+STRUCTURE to reuse — the finite-rank `I_ret`/`P_ret` return controllers, the `f`/`w` balances, the `𝔅`/mouth/collar/IR BCs, the
+`F_var+F_flux+F_𝔅+F_rad` partition, the global-closure form — but the return/BC machinery must be **re-hosted on the dynamical
+wall** (the return balances the `Γ_B` order-conversion, not a ρ-mass-sink). ⚠ Also verify at the read: 044's `S_hold`
+(mid-surface GEOMETRIC pin, NOT a full freeze — 044 kept the wall inertial/dynamical) does not reintroduce a partial freeze that
+trips the same failure mode; if it does, flag it. **At the 045 gate this is now a CONFIRM, not an open mini-gate** — briefly
+confirm (a) with the user + the re-hosting scope, then build. (`τ_d` T-odd / "drain = arrow of time" still holds — the DYNAMICAL
+order-conversion is itself irreversible via the drain, so no frozen sink is needed for the arrow.)
 
-## What 045 BUILDS (the non-variational block — on the drain the user selects)
-- **`S_drain` / `S_leakage`** — the mass-sink + global-return sources on the `ρ`-continuity (from the selected interface).
+## What 045 BUILDS (the non-variational block — RE-HOSTED on the DYNAMICAL `Γ_B` drain, option (a))
+- **The drain/return sources** — the DYNAMICAL `Γ_B` order-conversion (`Γ_B = Γ_return − Γ_drain`) as the non-variational RHS on
+  the wall-order balance `∂_t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B`. ⚠ NOT the G0 frozen-wall ρ-sink `S_drain = −Σ_i Γ_0 D_i` +
+  `S_leakage` (that is RULED OUT; the G0 §6 sink/leakage/return STRUCTURE is a reference to adapt, not the drain to build).
 - **The finite-rank return controllers `I_ret` / `P_ret`** — projectors enforcing EXACT global mass / momentum / energy closure
   despite the local sink.
 - **The momentum `f_drain` / `f_leakage` and the energy `w_drain` / `w_leakage`** balances (non-Hamiltonian controller cells).
@@ -75,18 +76,23 @@ one-liner is still **047's** job; 045 flags it in prose. Keep the honest asymmet
 EM departs Maxwell).
 
 ## Fresh-read sources for the 045 gate (read before authoring the directive)
-1. `software/em_charge_attribute/g0_closure_card_v0.md` **§6** (the `S_drain`/`S_leakage`/`f`/`w` + controllers `I_ret`/`P_ret`
-   + the BC structure + the force partition) — the PRIMARY source for option (b) + the machinery. Note it is DRAFT-v0.
-2. `docs/two_throat_simulation_handoff_spec.md` — READ-FIRST for the **`𝔅` BCs** (the 16-branch `𝔅` boundary-condition
+1. **Part I's `Γ_B` order-balance (stages 006/007)** — ⭐ THE COMMITTED DRAIN SOURCE (option (a), dynamical wall): the
+   `∂_t(χ_B n)+∇·(χ_B n u+J_χ)=n Γ_B` order-conversion + `Γ_return`/`Γ_drain`. Read FIRST — 045's drain is re-hosted here.
+2. `software/em_charge_attribute/g0_closure_card_v0.md` **§6** (the `S_drain`/`S_leakage`/`f`/`w` + controllers `I_ret`/`P_ret`
+   + the BC structure + the force partition) — a STRUCTURE reference ONLY (its drain is the RULED-OUT frozen-wall ρ-sink; reuse
+   the controller/BC/force-partition FORM, re-hosted on the dynamical `Γ_B`). DRAFT-v0.
+3. `docs/two_throat_simulation_handoff_spec.md` — READ-FIRST for the **`𝔅` BCs** (the 16-branch `𝔅` boundary-condition
    taxonomy + the R1→R4 ladder; partially-closed, NO closed action). The mouth-Robin/collar-Kirchhoff/IR-return BCs live here.
-3. The **044 stage note** `notes/stages/ledger_stage044_parent_action_reconciliation.md` (what interfaces 044 NAMED + handed to
-   045; the source-free `S_assembled`; the `F_var` piece from `−δS_hold/δX_i`).
-4. Part I's `Γ_B` order-balance (stages 006/007) — the option-(a) drain (if the user leans (a) or (c)).
+4. The **044 stage note** `notes/stages/ledger_stage044_parent_action_reconciliation.md` (what interfaces 044 NAMED + handed to
+   045; the source-free `S_assembled`; the `F_var` piece from `−δS_hold/δX_i`; ⚠ verify `S_hold` is only a mid-surface pin,
+   not a partial freeze — see the frozen-wall rule).
 5. `research/pde_ledger_v2/notes/parameter_register.md` — the drain/return knobs already registered (`Γ_B` line 159; any
    `Γ_0`/`R_0`/controller rows); 045's new register rows start at **R98** (044 ended at R97).
 
 ## Process (full new-derivation gauntlet + GLM tertiary — 045 is foundational)
-Author directive → **Codex→Grok→Codex bookend** → **drain-placement USER MINI-GATE** → build (dual-engine, both exit 0,
+Author directive → **Codex→Grok→Codex bookend** → **drain-placement CONFIRM** (option (a) dynamical `Γ_B` is DECIDED — the
+frozen-wall (b) is ruled out; briefly confirm the re-hosting scope + the `S_hold`-not-a-partial-freeze check with the user, NOT
+a full open mini-gate) → build (dual-engine, both exit 0,
 per-tooth ablation, independent `.wl`) → arbiter re-run → fresh-agent tri-review (fidelity + adversarial per-tooth +
 transliteration screen) → **GLM-5.2 tertiary** → deliverables (note + `\StatusOpen` card into the Part-VII appendix + register
 rows after R97) → deliverables fidelity-verify firewall → PDF rebuild → commit + tracker/memory sync.

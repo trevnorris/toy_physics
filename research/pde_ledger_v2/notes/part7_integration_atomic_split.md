@@ -102,6 +102,18 @@ early to bank a quick dual-engine win. 046/047/048 assemble from the spine.
   `R65` (`Q_E` re-home) — TWO edges, not one; the magnetism **`q_T`** = `R67` AND **`r_BA`/`r_cone`/`δ_BA`** = `R71` — also two
   edges. Additional still-open R1s (draft omitted): `R10`/`R30` (gravity throat wall response), `R33` (confinement drive),
   the `R42`-family (Gate-6 return selector), `R79` (`OPEN_110` cone-coincidence) — ALL discharge via the one throat solve.
+- **⭐ Gravitomagnetism POINTER — earmark for 044/045 (unified equation set) + 047 (registers/model_map)** (user-raised 2026-07-23):
+  gravitomagnetism (frame-dragging / Lense–Thirring) is NOT a missing sector — it is the **velocity/boost part of the gravity sector**,
+  already reproduced by the audited GR-matched **1PN→4PN ladder** (`research/4d_*pn*`: the `g_{0i}` / `v`-dependent EOM terms). It needs
+  NO new derivation stage (redundant — "surviving-solution only"); it needs an EXPLICIT **pointer** so the coverage is legible. ⭐ The
+  unification highlight to make VISIBLE: the model's **"B-analog = boost of the E-analog" structure holds on BOTH forces** — magnetism =
+  boost of the electric ±w throat (Part V, `BOOST_STRUCTURAL_RELATION_HOLDS`); **gravitomagnetism = boost of the gravitoelectric
+  drain/return flow** (static mass → moving/rotating mass). **In 044/045:** flag the gravitomagnetic (velocity-dependent flow) terms in
+  the gravity sector of the unified equation set. **In 047:** a one-line register/model_map pointer — "frame-dragging = gravitomagnetism =
+  boost of the gravitoelectric flow, reproduced by the PN ladder, the gravity twin of magnetism-as-boost." ⚠ **Record the honest
+  asymmetry:** gravity matches GR CLEANLY (incl. gravitomagnetism, through 4PN), whereas EM genuinely DEPARTS from exact Maxwell
+  (`NATIVE_P_NO_EMERGENT_GAUSS` 033, the `b_T` T-even 039) — so the gravitomagnetic side is BETTER covered than the EM magnetic side;
+  state that plainly, do NOT imply perfect force-symmetry.
 
 ---
 

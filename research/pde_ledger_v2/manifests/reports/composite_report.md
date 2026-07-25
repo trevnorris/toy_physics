@@ -1,8 +1,8 @@
 # Composite manifest report
 
-Headline: **PARTIAL**
+Headline: **FAIL**
 
-Coverage: `citations=18/21 claims=105/105 unresolved_producers=3 c7_edges=1/18 closure=stage030,stage031,stage032 mathematica_outputs_checked=3`
+Coverage: `citations=18/21 claims=121/121 unresolved_producers=3 c7_edges=1/18 closure=stage030,stage031,stage032,stage043 mathematica_outputs_checked=4`
 
 Dimensional consistency scope: Verifies manifest-internal dimensional algebra: relation homogeneity, declared-vs-recovered agreement for symbols whose dimensions are recoverable from the stage's audit script, and cross-stage agreement of shared quantities. It does NOT independently certify that a stage's dimensions are physically correct — that is owned by the stage's dual-engine unit audit.
 
@@ -13,6 +13,7 @@ Declared dimensional bases (legacy omission is reported as the implicit `LMT [L,
 | stage030 | `LMT [L, M, T]` |
 | stage031 | `LMT [L, M, T]` |
 | stage032 | `LMT [L, M, T]` |
+| stage043 | `LMT [L, M, T]` |
 
 | Check | Outcome |
 |---|---|
@@ -24,7 +25,7 @@ Declared dimensional bases (legacy omission is reported as the implicit `LMT [L,
 | C2 | PASS |
 | C3 | PARTIAL |
 | DIMENSIONAL_CONSISTENCY | PASS |
-| C5 | PARTIAL |
+| C5 | FAIL |
 | C6 | PASS |
 | C7 | PARTIAL |
 | C8 | PASS |
@@ -67,10 +68,10 @@ No findings.
 
 ## C5
 
-- `REGISTER_COVERAGE_PARTIAL` — 44 knob/GAP register rows await classification or their owning stages
+- `REGISTER_COVERAGE_PARTIAL` — 13 knob/GAP register rows await classification or their owning stages
 - `LIFECYCLE_PRODUCER_UNEXTRACTED` — stage030:k.brane.effective_inertia:stage003
 - `LIFECYCLE_PRODUCER_UNEXTRACTED` — stage030:k.brane.effective_stiffness:stage003
-- `RANGE_CLAIM_UNRESOLVED` — stage043/count_range
+- `RANGE_ENDPOINT_DRIFT` — census (39, 49, 10) != stage043/count_range (40, 49, 9)
 
 ## C6
 

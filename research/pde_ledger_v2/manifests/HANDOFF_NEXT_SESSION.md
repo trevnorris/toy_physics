@@ -44,8 +44,39 @@ would have failed. **Each needs a decision, most need work.**
    *Partial relief found at stage043:* `symbols` may be EMPTY (schema has no `minItems`), so a stage
    with no dimensional content can declare `symbols: []`. That does NOT help a stage that has real
    quantities but no dimension machinery in its script.
-   **Proposed escape hatch (Codex): an explicit `not_recoverable_from_source` status that yields
-   visible coverage and PARTIAL, instead of forcing invented loci. NEEDS A DECISION.**
+
+   ⭐ **USER DECISION (2026-07-25) — FIX THE CORPUS, NOT THE CHECK.** An earlier proposal here was an
+   escape-hatch status (`not_recoverable_from_source`). **REJECTED, correctly:** it weakens the check
+   because the corpus is inconvenient, when the corpus is what is actually wrong. Thirteen different
+   dimension idioms across 43 scripts IS drift; the checker was reporting it accurately.
+   **THE PLAN: a single shared dimension-declaration module, imported by every audit script.**
+   Had this existed from the start, the whole class would have been caught immediately.
+   What it buys beyond the bug fix:
+   - **Deletes fragile checker machinery** — `BARE_TUPLE_DIM_ORDER_BY_SHA256`, the AST bare-tuple
+     recovery, the live module-execution path, and the per-script order registry all exist ONLY to
+     reverse-engineer dims out of inconsistent idioms. One import ⇒ one recovery path.
+   - **May un-do the C4 compromise.** Dimensional certification was scoped to consistency-only
+     BECAUSE identity→dimension resolved 0/92 symbols — there was no per-quantity binding to look
+     up. A module keyed by quantity identity is precisely the missing structure. Re-evaluate the
+     scope decision AFTER the module exists (do not assume it restores full certification; do not
+     assume it cannot).
+   - **stage038 (4 axes: M,L,T,E-charge) and stage042 (stiffness,length,time with fractional
+     exponents) become DECLARED rather than discovered.**
+   Honest costs / risks, all manageable but none skippable:
+   - **Digest cascade:** every manifest pins its script's `source_digest`; touching 43 scripts
+     invalidates those pins in all 4 existing manifests → re-pin. (The Mathematica `.out` evidence
+     is unaffected — Python changes do not alter it.)
+   - **The refactor MUST be behaviour-preserving, and that is testable:** every audit still exits 0
+     with an IDENTICAL PASS count. A changed dimension VALUE is a regression, not a refactor.
+   - **`ACTIVE_MUTATION` coupling:** every script reads it at module scope and the C7/ablation
+     harnesses depend on that; the shared import must not disturb it.
+   - **Not every script needs dims.** stage043 legitimately has none (integer-count stage). The
+     survey must separate "no dimensional content" from "dimensional content, no machinery".
+   - **This is ON THE CRITICAL PATH** — it must precede the fanout, or 41 manifests get extracted
+     against the broken state and need redoing.
+   Sequence: survey all 43 → design the module (multiple bases, exact rationals) → refactor with
+   identical-PASS-count as the gate → re-pin digests → simplify the checker to the single recovery
+   path → re-evaluate the C4 scope → fanout.
 2. **`infer_closed_slice` can never close.** It requires a continuous `1..max` stage range, but
    **stage029 has no audit script and will have no manifest**. So a full-ledger run stays
    permanently open and silently downgrades every closed-ledger FAIL to PARTIAL. Options: a
@@ -137,9 +168,20 @@ Two defaults that emerged from stage043 and should apply to every fanout stage:
 ## 6. IMMEDIATE NEXT STEPS
 
 1. Commit stage043 once its fidelity leg reports (running at handoff time).
-2. **Decide blockers §2.1 and §2.2** (recovery escape hatch; stage029/closed-slice). These gate the
-   fanout and are user decisions.
-3. Clear §2.3–§2.7 in ONE serialized pre-fanout checker round, then re-freeze and record the sha.
+2. ✅ **BOTH §2 DECISIONS ARE MADE (user, 2026-07-25) — execute them, do not re-open:**
+   - **§2.1 → build the shared dimension-declaration module and refactor all 43 audit scripts onto
+     it.** Do NOT add an escape-hatch status. Start with the SURVEY (which stages have real
+     dimensional content vs none), because it sizes everything downstream.
+   - **§2.2 → replace continuity inference with an explicit canonical stage inventory** in
+     `composite_config.json` (digest-pinned). This also resolves §2.6: a reference to a stage NOT in
+     the inventory becomes a hard FAIL (typo), while "in the inventory, not yet extracted" stays
+     PARTIAL. Give stage029 a real manifest too, but do not make closedness depend on it.
+   - Other agreed opinions: §2.3 move the bare-tuple registry OUT of checker code into a
+     digest-pinned data file (mostly moot once §2.1 lands); §2.4 fixture by USAGE — prioritise
+     `TOKEN_DRIFT`, `SET_DRIFT`, `ADJUDICATION_DRIFT`, `MULTIPLY_CLASSIFIED_ROW`, not all 42;
+     §2.5 ENFORCE export-completeness mechanically; §2.7 emit an ADVISORY (not FAIL) for tautological
+     `cas_equivalence` so the report shows how many citations are actually protective.
+3. Clear the remaining §2 items in ONE serialized pre-fanout checker round, then re-freeze + record sha.
 4. Optionally extract 006 (Codex's original slice-A recommendation) as a second no-C7 shakedown.
 5. **Then the 44-stage fanout** — user opt-in, Workflow tool, per `FANOUT_PLAN.md`, Codex as coder,
    checker FROZEN, per-stage fidelity agent, export-all + `.out` citation + real loci + expected-

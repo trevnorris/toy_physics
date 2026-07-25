@@ -1,4 +1,17 @@
-# Integration-test fanout plan (BANKED 2026-07-24, user-approved)
+# Integration-test fanout plan — ⛔ SUPERSEDED / CANCELLED (2026-07-25)
+
+> ⛔ **THE PARALLEL FANOUT IS CANCELLED.** Plan of record is now
+> **`manifests/LEDGER_WIDE_PLAN.md`** — sequential, stage-by-stage, preceded by a ledger-wide
+> dimension-unification pass.
+> **Why:** a shared dimension-declaration module makes parallel extraction *actively wrong* (every
+> stage writes one file — the `composite_build.py` race, moved from tooling into content), and
+> sequential extraction in stage order builds the causal graph bottom-up so `ABSENT_PRODUCER`
+> means "typo" immediately instead of everything sitting PARTIAL until the end. A Grok pre-freeze
+> review also found the fanout would have failed outright: dimension recovery covers ~16 of 43
+> scripts while the schema requires it for all, and `infer_closed_slice` can never close because
+> stage029 has no audit script.
+> Retained below for its still-valid parts: delegation/token-lean reasoning, the Mathematica
+> evidence decision, and the export-completeness rationale.
 
 How the remaining ~38 stage manifests get extracted AFTER the pilot, keeping the
 checker frozen. Runs only on explicit user opt-in (given for the Workflow approach).

@@ -1,7 +1,17 @@
 # Integration-test thread — HANDOFF (written 2026-07-25, pre-compact)
 
-⭐ **READ THIS FIRST**, then `docs/development_pipeline.md` (the process — substantially expanded
-this session), then `manifests/FANOUT_PLAN.md`. Do NOT read vision docs; they re-confuse.
+⭐ **READ THIS FIRST**, then **`manifests/LEDGER_WIDE_PLAN.md`** (the PLAN OF RECORD — sequential
+stage-by-stage work preceded by a ledger-wide dimension-unification pass), then
+`docs/development_pipeline.md` (the process — substantially expanded this session).
+⛔ `manifests/FANOUT_PLAN.md` is SUPERSEDED — the parallel fanout is CANCELLED.
+Do NOT read vision docs; they re-confuse.
+
+**Operating model for the whole run: Claude is a THIN CONDUCTOR.** Agents return ≤10-line VERDICTS
+(full reports to disk, read only on a negative verdict); the orchestrator independently re-runs the
+acceptance commands and greps for the specific line. Detail is caught by a correctly-scoped
+reviewer, not by orchestrator attention — *you are your agents, as long as they are loaded up
+correctly*. Holding one long session keeps process continuity STRUCTURAL rather than dependent on
+docs surviving compaction. Details in `LEDGER_WIDE_PLAN.md` §1.
 
 Branch `ledger-v2-rebuild`. All work below is COMMITTED unless stated.
 

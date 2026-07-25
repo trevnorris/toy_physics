@@ -1,0 +1,1575 @@
+{
+  "schema_version": "2.1",
+  "stage_id": "stage043",
+  "title": "The Model's Irreducible Codimension Count, Reported as a Range",
+  "part": "Part VII -- Integration (VII-1)",
+  "status_token": "IRREDUCIBLE_COUNT_RANGE",
+  "symbols": [],
+  "claims": [
+    {
+      "id": "count_range",
+      "kind": "range",
+      "status": "EARNED",
+      "payload_kind": "record_range",
+      "payload": {
+        "low": 40,
+        "high": 49,
+        "spread": 9,
+        "convention_axes": [
+          {
+            "axis_id": "joint_low_strict_convention",
+            "choices": [
+              {
+                "token": "LOW_REGISTER_METHODOLOGY",
+                "low_delta": 0,
+                "high_delta": -9
+              },
+              {
+                "token": "STRICT_C1_PLUS_C2",
+                "low_delta": 9,
+                "high_delta": 0
+              }
+            ]
+          }
+        ],
+        "components": {
+          "base_continuous": {
+            "low": 27,
+            "high": 36
+          },
+          "e_continuous": {
+            "low": 13,
+            "high": 13
+          }
+        }
+      },
+      "note": "One joint source-supported LOW/strict axis selects the two computed branches: [27,36] + 13 gives the endpoint envelope [40,49]. LOW applies {0,-9} to select [40,40]; strict C1+C2 applies {+9,0} to select [49,49]. This is not the forbidden dummy-axis encoding and does not invent independent C1/C2 branches.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "assemble_range / run_assertions: IRREDUCIBLE_COUNT_RANGE",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "discrete_postulate_count",
+      "kind": "set",
+      "status": "EARNED",
+      "payload_kind": "set_cardinality",
+      "payload": {
+        "set_label": "DISCRETE_STRUCTURAL_POSTULATES_SEPARATE_FROM_CONTINUOUS_VARIETY",
+        "count": 11,
+        "elements": [
+          "REG:disc:EOS_exponent_5",
+          "REG:disc:chi_B_field",
+          "REG:disc:Gamma_B_law",
+          "REG:disc:chi_B_gating",
+          "REG:disc:G0_postulate_1_axis_surface",
+          "REG:disc:G0_postulate_2_free_slip",
+          "REG:disc:G0_postulate_6_no_C5_phi",
+          "REG:disc:D1:H_existence_and_Poschl_Teller_law",
+          "REG:disc:D2:s_i_Z2_topology",
+          "REG:disc:D3:R63_mouth_BC_class",
+          "REG:disc:D4:R68_tau_d_time_arrow"
+        ]
+      },
+      "note": "Frozen separate count 11 = 7 Parts-I--II plus 4 Parts-III--VI. These labels are not components of count_range and do not enter the continuous variety.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "run_assertions: DISCRETE_POSTULATE_COUNT",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "register_to_count_manifest",
+      "kind": "adjudication",
+      "status": "EARNED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 152,
+        "precedence": [
+          "continuous_counted_irreducible",
+          "reduction_debt_counted_once",
+          "derived_not_counted",
+          "calibrated_external_bridge_not_counted",
+          "departure_no_knob",
+          "convention",
+          "discrete_structural_postulate",
+          "extension_convention_open",
+          "parallel_track_out_of_scope",
+          "structural_no_knob"
+        ],
+        "outcome_token": "REGISTER_TO_COUNT_MANIFEST",
+        "bucket_counts": {
+          "continuous_counted_irreducible": 22,
+          "reduction_debt_counted_once": 18,
+          "derived_not_counted": 40,
+          "calibrated_external_bridge_not_counted": 10,
+          "departure_no_knob": 4,
+          "convention": 2,
+          "discrete_structural_postulate": 11,
+          "extension_convention_open": 9,
+          "parallel_track_out_of_scope": 8,
+          "structural_no_knob": 28
+        }
+      },
+      "note": "The audit's ten mutually exclusive categories sum to the asserted 152-row bounded census. The v2.1 lifecycle projection is documented in extraction.report; categories that are not live knobs remain census buckets rather than fabricated lifecycle events.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "STATUS_TO_CATEGORY / EXPECTED_CATEGORY_COUNTS / manifest_state",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "bucket_partition",
+      "kind": "adjudication",
+      "status": "EARNED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 43,
+        "precedence": [
+          "a",
+          "b",
+          "c",
+          "force_mag",
+          "C1",
+          "C2"
+        ],
+        "outcome_token": "BUCKET_PARTITION",
+        "bucket_counts": {
+          "a": 4,
+          "b": 15,
+          "c": 14,
+          "force_mag": 1,
+          "C1": 3,
+          "C2": 6
+        }
+      },
+      "note": "The disjoint Parts-I--II partition gives raw LOW 4+15+14+1=34 and strict HIGH 34+3+6=43.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "bucket_partition_state / run_assertions: BUCKET_PARTITION",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "e_continuous_partition",
+      "kind": "adjudication",
+      "status": "EARNED",
+      "payload_kind": "adjudication",
+      "payload": {
+        "domain_cardinality": 13,
+        "precedence": [
+          "Part_III",
+          "Part_IV",
+          "Part_V",
+          "Part_VI"
+        ],
+        "outcome_token": "E_CONTINUOUS_IS_13",
+        "bucket_counts": {
+          "Part_III": 5,
+          "Part_IV": 7,
+          "Part_V": 1,
+          "Part_VI": 0
+        }
+      },
+      "note": "Parts III--VI add 5+7+1+0=13 to both continuous endpoints.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "derive_count_state / run_assertions: E_CONTINUOUS_IS_13",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "c1_contributors",
+      "kind": "set",
+      "status": "EARNED",
+      "payload_kind": "set_cardinality",
+      "payload": {
+        "set_label": "C1_FROZEN_UNBOUND_RADIAL_SCALARS",
+        "count": 3,
+        "elements": [
+          "REG:C1:Mtilde",
+          "REG:C1:Ktilde",
+          "REG:C1:Ttilde_Omega"
+        ]
+      },
+      "note": "R35 remains DERIVED-in-form with the moment integral unexecuted; C1 is the route-ful +3 strict contributor.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "_c1_ids / run_assertions: C1_ATTRIBUTION",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "c2_contributors",
+      "kind": "set",
+      "status": "EARNED",
+      "payload_kind": "set_cardinality",
+      "payload": {
+        "set_label": "C2_DOWNSTREAM_DEFERRED_PORT_KERNEL_SCALARS",
+        "count": 6,
+        "elements": [
+          "REG:C2:Btilde0",
+          "REG:C2:Btilde2",
+          "REG:C2:Btilde4",
+          "REG:C2:Ztilde0",
+          "REG:C2:Ztilde2",
+          "REG:C2:Ztilde4"
+        ]
+      },
+      "note": "The two shorthand labels Btilde/Ztilde denote six distinct route-less support scalars; C2 is the +6 strict contributor.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "_c2_specs / run_assertions: C2_ATTRIBUTION",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "reduction_debt_counted_once",
+      "kind": "set",
+      "status": "EARNED",
+      "payload_kind": "set_cardinality",
+      "payload": {
+        "set_label": "NAMED_BASE_E_DEDUP_REDUCTION_DEBT",
+        "count": 5,
+        "elements": [
+          "REG:b:mu_R",
+          "REG:b:rho_br",
+          "REG:E:IV:c_E",
+          "REG:E:IV:Q_E",
+          "REG:E:V:q_T"
+        ]
+      },
+      "note": "These named members occur exactly once in the continuous assembly. The complete route-ful debt role is [18,21]: base b=15 plus E debt {c_E,q_T,Q_E}=3, plus C1=3 only at strict HIGH.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "run_assertions: REDUCTION_DEBT_COUNTED_ONCE",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "r49_parallel_track",
+      "kind": "set",
+      "status": "EARNED",
+      "payload_kind": "set_cardinality",
+      "payload": {
+        "set_label": "R49_PARALLEL_TRACK_OUT_OF_BUILT_V2_SCOPE",
+        "count": 8,
+        "elements": [
+          "REG:R49:profile_E0",
+          "REG:R49:profile_E1",
+          "REG:R49:profile_E2",
+          "REG:R49:profile_E3",
+          "REG:R49:profile_B0",
+          "REG:R49:profile_B1",
+          "REG:R49:profile_B2",
+          "REG:R49:profile_B3"
+        ]
+      },
+      "note": "The eight R49 profiles are a separate paused parallel-track debt line and have no overlap with either continuous endpoint.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "derive_r49_scope / run_assertions: R49_OUT_OF_SCOPE",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "delta_r_independence",
+      "kind": "nogo",
+      "status": "EARNED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "CONFIRMED_IN_TESTED_M_AND_WCHI_BLOCKS",
+        "meaning": "Scoped diagnostic only: M (10,5,5) -> forced (10,4,6) and Wchi (10,7,3) -> forced (10,6,4). It covers neither block R nor Parts-III--VI, cross-block coincidences, or discrete labels; it discharges no knob and is not subtracted from the count."
+      },
+      "note": "The exact positive-witness Groebner/Krull calculation detects both forced dependencies and leaves the partition count unchanged.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "delta_diagnostic / run_assertions: DELTA_R_INDEPENDENCE",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "r35_reconciliation",
+      "kind": "convention",
+      "status": "EARNED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "R35_DERIVED_IN_FORM_PLUS_RIDER",
+        "meaning": "R35 keeps label DERIVED-in-form and carries the C1 bracket-contributor rider; stage043 does not flip it to PENDING-debt or impose the strict endpoint."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "run_assertions: R35_DERIVED_IN_FORM_PLUS_RIDER",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "convention_open",
+      "kind": "convention",
+      "status": "EARNED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "OPEN",
+        "meaning": "Neither LOW nor strict C1+C2 counting convention is imposed; the headline remains a range with low less than high."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "derive_convention / run_assertions: CONVENTION_OPEN_NOT_IMPOSED",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "q_e_sensitivity",
+      "kind": "convention",
+      "status": "EARNED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "TOTAL_NEUTRAL_ROUTELESS_SHIFT_3_to_4",
+        "meaning": "If the Q_E calibration anchor is undeclared, the route-less split moves from 3 to 4, but Q_E is already counted once as debt so the total continuous range is unchanged."
+      },
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "derive_qe_sensitivity",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "id": "ktheta_two_dof_sensitivity",
+      "kind": "convention",
+      "status": "DEFERRED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "K_THETA_KAPPA_PHASE_AS_TWO_SENSITIVITY_[41,50]",
+        "meaning": "The live register treats K_theta/kappa_phase as one knob. If they are two distinct degrees of freedom, Part III becomes 6 and the continuous range becomes [41,50]; this is printed, not folded into the headline."
+      },
+      "evidence": {
+        "source_path": "notes/stages/ledger_stage043_irreducible_count_range.md",
+        "locus": "§12 The recorded sensitivities: K_theta/kappa_phase-as-2-DOF",
+        "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "id": "discrete_count_sensitivities",
+      "kind": "convention",
+      "status": "DEFERRED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "DISCRETE_11_TO_12_SENSITIVITIES_FROZEN_OUT",
+        "meaning": "Either minting the light MacCullagh transverse-shear law-form as a registered postulate or splitting D1 into H field-existence and operator-law-form would raise 11 to 12; both are frozen out and neither changes the continuous headline."
+      },
+      "evidence": {
+        "source_path": "notes/stages/ledger_stage043_irreducible_count_range.md",
+        "locus": "§12 The recorded sensitivities: discrete-count sensitivities",
+        "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    },
+    {
+      "id": "counting_rule",
+      "kind": "convention",
+      "status": "EARNED",
+      "payload_kind": "token",
+      "payload": {
+        "token": "COUNT_NOMINAL_MINUS_DERIVED_EXECUTED_MINUS_CONV_MINUS_EXTERNAL_BRIDGE",
+        "meaning": "A knob is removed only when DERIVED and EXECUTED. Pending route-ful debt and imposed calibrations remain counted once; a characterized departure adds no knob."
+      },
+      "evidence": {
+        "source_path": "notes/stages/ledger_stage043_irreducible_count_range.md",
+        "locus": "§ The coherent counting rule",
+        "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19",
+        "engine": "prose",
+        "method": "prose_only"
+      }
+    }
+  ],
+  "consumes": [],
+  "exports": [
+    {
+      "claim_id": "count_range",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "discrete_postulate_count",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "register_to_count_manifest",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "bucket_partition",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "e_continuous_partition",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "c1_contributors",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "c2_contributors",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "reduction_debt_counted_once",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "r49_parallel_track",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "delta_r_independence",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "r35_reconciliation",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "convention_open",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "q_e_sensitivity",
+      "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+    },
+    {
+      "claim_id": "ktheta_two_dof_sensitivity",
+      "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19"
+    },
+    {
+      "claim_id": "discrete_count_sensitivities",
+      "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19"
+    },
+    {
+      "claim_id": "counting_rule",
+      "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19"
+    }
+  ],
+  "knobs": [
+    {
+      "knob_id": "k.medium.hbar",
+      "symbol": "hbar",
+      "registry_row": "ħ",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage004",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Retrospective stage043 classification of REG:a:hbar; the effective stage is historical and this event does not assert a new stage043 knob.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:a:hbar",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.medium.gnls_mass",
+      "symbol": "m_GNLS",
+      "registry_row": "m_GNLS",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage004",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Retrospective classification of REG:a:m_GNLS.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:a:m_GNLS",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.medium.eos_k",
+      "symbol": "K_EOS",
+      "registry_row": "K",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage004",
+      "count_effect": {
+        "low": 2,
+        "high": 2
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Audited aggregate of REG:a:K_EOS (1) and the separately audited force-magnitude norm (1). The latter master-table first cell is plain text rather than a backtick token and is not C5-addressable as its own registry_row; this is disclosed in extraction.report and is not an identification of the two quantities.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:a:K_EOS / REG:force:force_magnitude_norm",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.medium.background_density",
+      "symbol": "rho0",
+      "registry_row": "ρ0",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage004",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "Retrospective classification of REG:a:rho0.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:a:rho0",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.brane.shear",
+      "symbol": "mu_R",
+      "registry_row": "μ_R",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage007",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:mu_R; pending route-ful debt stays counted once.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:mu_R",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.brane.density",
+      "symbol": "rho_br",
+      "registry_row": "ρ_br",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage007",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:rho_br; pending route-ful debt stays counted once.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:rho_br",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.shear_density_4d",
+      "symbol": "mu_R_4D",
+      "registry_row": "μ_R⁽⁴⁾",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:mu_R_4D; projection route R17 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:mu_R_4D",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.slab.spacing",
+      "symbol": "d_slab",
+      "registry_row": "d",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage009",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:d_slab in the audit's route-ful bucket.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:d_slab",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.inertia",
+      "symbol": "mu_eta",
+      "registry_row": "μ_η",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage013",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:mu_eta; R30 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:mu_eta",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.tension",
+      "symbol": "T_w",
+      "registry_row": "T_w",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage013",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:T_w; R30 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:T_w",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.inverse_length",
+      "symbol": "beta",
+      "registry_row": "β",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage013",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:beta; R30 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:beta",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.confinement_drive",
+      "symbol": "Vp0_over_lc",
+      "registry_row": "Vp0/ℓ_c",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage015",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:Vp0_over_lc; R33 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:Vp0_over_lc",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.angular_stiffness",
+      "symbol": "T_Omega",
+      "registry_row": "T_Ω",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage017",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:T_Omega; R36 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:T_Omega",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.l2_profile",
+      "symbol": "beta2_profile",
+      "registry_row": "β₂(w)",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage017",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:b:beta2_profile; R36 remains pending.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:beta2_profile",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.return.dc_transmissions",
+      "symbol": "epsilon0_epsilon1",
+      "registry_row": "ε0, ε1",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage009",
+      "count_effect": {
+        "low": 2,
+        "high": 2
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "One register row aggregates the two independently counted audit facts REG:b:epsilon0 and REG:b:epsilon1.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:epsilon0 / REG:b:epsilon1",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.collective.effective_stiffness_sector",
+      "symbol": "K0c_sector",
+      "registry_row": "K0c",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage023",
+      "count_effect": {
+        "low": 3,
+        "high": 3
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "The single master row aggregates audit facts REG:b:K0c, REG:b:K1_eta_direction, and REG:b:K1_TOmega_direction.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:b:K0c / REG:b:K1_eta_direction / REG:b:K1_TOmega_direction",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.double_well",
+      "symbol": "a_B",
+      "registry_row": "a_B",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:c:a_B.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:a_B",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.interface_gradient",
+      "symbol": "kappa_B",
+      "registry_row": "κ_B",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:c:kappa_B.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:kappa_B",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.light.bare_gap",
+      "symbol": "Omega_w",
+      "registry_row": "Ω_w",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage007",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:c:Omega_w.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:Omega_w",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.light.profile_width",
+      "symbol": "g_l_width",
+      "registry_row": "g_ℓ(w)",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage007",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:c:g_l_width; the register row is the fixed-shape function plus its one width knob.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:g_l_width",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.gauge.metric_pair",
+      "symbol": "C_E_C_B",
+      "registry_row": "C_E, C_B",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage005",
+      "count_effect": {
+        "low": 2,
+        "high": 2
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "One register row aggregates audit facts REG:c:C_E and REG:c:C_B.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:C_E / REG:c:C_B",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.slab_width",
+      "symbol": "W_slab",
+      "registry_row": "W_slab",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:c:W_slab.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:c:W_slab",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.order_field_postulate",
+      "symbol": "chi_B",
+      "registry_row": "χ_B",
+      "action": "introduced",
+      "origin": "here/discrete_postulate_count",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 0,
+        "high": 0
+      },
+      "count_category": "discrete_postulate",
+      "pending": false,
+      "note": "The χ_B field-existence postulate is one of the seven Parts-I--II discrete items and is excluded from the continuous range.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:disc:chi_B_field",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.conversion_law_postulate",
+      "symbol": "Gamma_B",
+      "registry_row": "Γ_B",
+      "action": "introduced",
+      "origin": "here/discrete_postulate_count",
+      "effective_stage": "stage006",
+      "count_effect": {
+        "low": 0,
+        "high": 0
+      },
+      "count_category": "discrete_postulate",
+      "pending": false,
+      "note": "The Γ_B law-form postulate is separate from the continuous variety.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:disc:Gamma_B_law",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.charge.parent_scalar_postulate",
+      "symbol": "H",
+      "registry_row": "H",
+      "action": "introduced",
+      "origin": "here/discrete_postulate_count",
+      "effective_stage": "stage030",
+      "count_effect": {
+        "low": 0,
+        "high": 0
+      },
+      "count_category": "discrete_postulate",
+      "pending": false,
+      "note": "D1 combines H parent-scalar existence and the Poschl--Teller law-form as one frozen discrete structural postulate; its magnitudes are separate continuous knobs already classified by stage030.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:disc:D1:H_existence_and_Poschl_Teller_law",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.brane.compression_density",
+      "symbol": "rho_B0",
+      "registry_row": "ρ_B0",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:E:III:rho_B0, one of the five Part-III extension items.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:III:rho_B0",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.brane.compressibility",
+      "symbol": "chi_c",
+      "registry_row": "χ_c",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:E:III:chi_c, one of the five Part-III extension items.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:III:chi_c",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.brane.compression_modulus",
+      "symbol": "B",
+      "registry_row": "B",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_less_structure",
+      "pending": false,
+      "note": "REG:E:III:B, one of the five Part-III extension items.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:III:B",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.throat.current",
+      "symbol": "J",
+      "registry_row": "J",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "REG:E:III:J, one of the five Part-III extension items.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:III:J",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.phase.stiffness",
+      "symbol": "K_theta",
+      "registry_row": "K_θ",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage003",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "base",
+      "pending": false,
+      "note": "REG:E:III:K_theta_over_kappa_phase is counted as one register knob; its two-DOF sensitivity is a separate claim.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:III:K_theta_over_kappa_phase",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.magnetism.drain_coupling",
+      "symbol": "q_T",
+      "registry_row": "q_T = λ_T τ_d",
+      "action": "introduced",
+      "origin": "here/register_to_count_manifest",
+      "effective_stage": "stage034",
+      "count_effect": {
+        "low": 1,
+        "high": 1
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "REG:E:V:q_T; counted once as pending route-ful debt.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "MANIFEST_FACTS: REG:E:V:q_T",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.c1_open_contributors",
+      "symbol": "C1",
+      "registry_row": "M̃, K̃, T̃_Ω",
+      "action": "introduced",
+      "origin": "here/c1_contributors",
+      "effective_stage": "stage017",
+      "count_effect": {
+        "low": 0,
+        "high": 3
+      },
+      "count_category": "route_ful_debt",
+      "pending": true,
+      "note": "One register row aggregates the three C1 audit facts. It is a historical convention-open classification, not a stage043 knob introduction.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "_c1_ids / MANIFEST_FACTS C1 rows",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    },
+    {
+      "knob_id": "k.wall.c2_open_contributors",
+      "symbol": "C2",
+      "registry_row": "{B̃0,B̃2,B̃4}",
+      "action": "introduced",
+      "origin": "here/c2_contributors",
+      "effective_stage": "stage017",
+      "count_effect": {
+        "low": 0,
+        "high": 6
+      },
+      "count_category": "route_less_structure",
+      "pending": true,
+      "note": "The master row names Btilde support and Ztilde mixed/Maxwell scalars together; the audit expands the two shorthands to six C2 facts.",
+      "evidence": {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "locus": "_c2_specs / MANIFEST_FACTS C2 rows",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+        "engine": "sympy",
+        "method": "script_asserted"
+      }
+    }
+  ],
+  "departures": [],
+  "verification": {
+    "sympy_script": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+    "mathematica_script": "mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl",
+    "mathematica_output": {
+      "path": "mathematica/out/ledger_stage043_irreducible_count_range_mathematica_audit.out",
+      "sha256": "18cf107d2a8cb92f34982744f1aeef0b10fccb16f5c1a9e1f3cb7b9b82bba2ab"
+    },
+    "teeth": [
+      {
+        "predicate": "BUCKET_PARTITION",
+        "mutation": "double-list REG:a:hbar in the private (b) bucket",
+        "claim_ids": [
+          "bucket_partition",
+          "register_to_count_manifest"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: BUCKET_PARTITION",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "LOW_ENDPOINT",
+        "mutation": "drop REG:a:hbar from the private low bucket membership",
+        "claim_ids": [
+          "count_range",
+          "bucket_partition"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: LOW_ENDPOINT",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "HIGH_ENDPOINT",
+        "mutation": "drop REG:C2:Btilde0 from the private strict supplement",
+        "claim_ids": [
+          "count_range",
+          "c2_contributors"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: HIGH_ENDPOINT",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "RANGE_SPREAD_IS_C1_PLUS_C2",
+        "mutation": "drop one C1 member only from the private attribution count",
+        "claim_ids": [
+          "count_range",
+          "c1_contributors",
+          "c2_contributors"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: RANGE_SPREAD_IS_C1_PLUS_C2",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "BASE_CONTINUOUS_27_36",
+        "mutation": "reclassify the EOS-exponent-5 pull-out as structural-no-knob",
+        "claim_ids": [
+          "count_range",
+          "discrete_postulate_count"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: BASE_CONTINUOUS_27_36",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "E_CONTINUOUS_IS_13",
+        "mutation": "remove rho_B0 from the private Parts-III--VI extension",
+        "claim_ids": [
+          "count_range",
+          "e_continuous_partition"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: E_CONTINUOUS_IS_13",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "C1_ATTRIBUTION",
+        "mutation": "remove Mtilde from the private C1 contributor set",
+        "claim_ids": [
+          "c1_contributors",
+          "r35_reconciliation"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: C1_ATTRIBUTION",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "C2_ATTRIBUTION",
+        "mutation": "count the two shorthand labels instead of six support scalars",
+        "claim_ids": [
+          "c2_contributors"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: C2_ATTRIBUTION",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "CONVENTION_OPEN_NOT_IMPOSED",
+        "mutation": "collapse the private reported range to its high endpoint",
+        "claim_ids": [
+          "count_range",
+          "convention_open"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: CONVENTION_OPEN_NOT_IMPOSED",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "REDUCTION_DEBT_COUNTED_ONCE",
+        "mutation": "exclude mu_R from the private continuous assembly",
+        "claim_ids": [
+          "reduction_debt_counted_once",
+          "counting_rule"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: REDUCTION_DEBT_COUNTED_ONCE",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "R49_OUT_OF_SCOPE",
+        "mutation": "fold one R49 field profile into the private continuous assembly",
+        "claim_ids": [
+          "r49_parallel_track",
+          "count_range"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: R49_OUT_OF_SCOPE",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "DISCRETE_POSTULATE_COUNT",
+        "mutation": "drop D1 from the private discrete-postulate itemization",
+        "claim_ids": [
+          "discrete_postulate_count"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: DISCRETE_POSTULATE_COUNT",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "DELTA_R_INDEPENDENCE",
+        "mutation": "inject K=rho0 and mu_eta=T_w into the private baseline blocks",
+        "claim_ids": [
+          "delta_r_independence"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: DELTA_R_INDEPENDENCE",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "DELTA_R_IS_DIAGNOSTIC_NOT_SUBTRACTION",
+        "mutation": "subtract the tested delta-r diagnostic from the private count",
+        "claim_ids": [
+          "delta_r_independence",
+          "count_range"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: DELTA_R_IS_DIAGNOSTIC_NOT_SUBTRACTION",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "R35_DERIVED_IN_FORM_PLUS_RIDER",
+        "mutation": "flip the private R35 label to PENDING-debt",
+        "claim_ids": [
+          "r35_reconciliation",
+          "c1_contributors"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: R35_DERIVED_IN_FORM_PLUS_RIDER",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "KNOB_PROVENANCE_WELL_FORMED",
+        "mutation": "slip derived c_s0 into the private counted set",
+        "claim_ids": [
+          "register_to_count_manifest",
+          "counting_rule"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: KNOB_PROVENANCE_WELL_FORMED",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "REGISTER_TO_COUNT_MANIFEST",
+        "mutation": "mis-scope hbar as DERIVED against its fixed ratified category",
+        "claim_ids": [
+          "register_to_count_manifest"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: REGISTER_TO_COUNT_MANIFEST",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "DUAL_ENGINE_TERMS",
+        "mutation": "drop the locally computed spread from the canonical inventory",
+        "claim_ids": [
+          "count_range",
+          "bucket_partition",
+          "e_continuous_partition",
+          "discrete_postulate_count",
+          "reduction_debt_counted_once",
+          "q_e_sensitivity",
+          "delta_r_independence"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: DUAL_ENGINE_TERMS",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "IRREDUCIBLE_COUNT_RANGE",
+        "mutation": "corrupt the assembled object's private spread field",
+        "claim_ids": [
+          "count_range",
+          "convention_open",
+          "q_e_sensitivity",
+          "r49_parallel_track"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: IRREDUCIBLE_COUNT_RANGE",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      },
+      {
+        "predicate": "COUNT_RANGE_REDERIVATION",
+        "mutation": "drop hbar from a private source bucket and re-run the full pipeline",
+        "claim_ids": [
+          "count_range",
+          "bucket_partition",
+          "register_to_count_manifest"
+        ],
+        "evidence": {
+          "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+          "locus": "TOOTH_ORDER / ABLATION_DESCRIPTIONS / run_assertions: COUNT_RANGE_REDERIVATION",
+          "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68",
+          "engine": "sympy",
+          "method": "script_asserted"
+        }
+      }
+    ]
+  },
+  "extraction": {
+    "report": {
+      "ungrounded": [
+        "The parameter register's master-table row `force-magnitude norm` has no backticked first-cell token, so the frozen C5 parser does not expose it as a legal registry_row. Its audited {1,1} effect is transparently aggregated with the K event's audited {1,1} effect, yielding K's {2,2}; this is not an identification of the two quantities.",
+        "The stage043 sources give historical register rows/effective stages but no v2.1 origin claim ids for unextracted owners. Retrospective lifecycle events therefore point origin to here/register_to_count_manifest (or the local discrete/C1/C2 census claim), the executed source of the classification, not a claim that stage043 physically introduced those knobs."
+      ],
+      "provisional_consumes": [],
+      "prose_script_mismatches": [
+        "Cross-stage mismatch: stage032 classifies Q_E as force_mag with count_effect {low:0,high:1}; stage043's audit classifies the same Q_E as route-ful debt counted in both endpoints. Exact-once lifecycle partitioning keeps the stage032 event and emits no second Q_E event, so the composite census is [39,49] (spread 10) while stage043's range is [40,49] (spread 9). The stage043 census reading is better supported by the current rule: pending route-ful debt stays counted.",
+        "K_theta/kappa_phase-as-two -> [41,50] and the two discrete 11->12 sensitivities are recorded in prose (and the continuous sensitivity is printed) but are not defended by dedicated executable teeth; their claims remain DEFERRED/prose_only.",
+        "The live register compresses some engine-level atoms into one first-cell row (epsilon0/epsilon1, K0c plus two K1 directions, C_E/C_B, C1, and C2); lifecycle count_effect records the audit's atom cardinality while registry_row preserves the register's exact first-cell token."
+      ],
+      "judgment_calls": [
+        "Expected-claim inventory and representation: continuous range -> count_range; separate discrete 11 -> discrete_postulate_count; ten-category census -> register_to_count_manifest; raw buckets and extension itemization -> bucket_partition/e_continuous_partition; C1/C2 -> c1_contributors/c2_contributors; counted-once debt -> reduction_debt_counted_once; R49 -> r49_parallel_track; scoped diagnostic -> delta_r_independence; R35 -> r35_reconciliation; OPEN/counting rule and all three sensitivity families -> convention_open/counting_rule/q_e_sensitivity/ktheta_two_dof_sensitivity/discrete_count_sensitivities.",
+        "No symbol objects are emitted: the script has no physical dimension machinery and explicitly declares dimensional homogeneity N/A for this integer-count stage.",
+        "The record_range keeps real components base_continuous=[27,36] and E_continuous=[13,13]. One joint LOW/strict axis uses endpoint-selection deltas LOW={0,-9}, STRICT={+9,0}; it yields only [40,40] and [49,49], avoids unsupported independent C1/C2 branches, and is not a dummy axis.",
+        "Ten-to-five mapping and the actual part-specific tie-break: Parts I-II follow the script's explicit raw-tally buckets, so bucket (a) universal/action maps to base, bucket (b) and C1 map to route_ful_debt, and bucket (c) and C2 map to route_less_structure; this is why register-class ACTION rows a_B, kappa_B, Omega_w, and g_l_width remain route_less_structure. Part III has no script a/b/c subdivision: its MANIFEST_FACTS group all five extension items as FREE-UNREDUCED-ROUTELESS only for the extension arithmetic, so the parameter register's per-row status supplies the finer category tie-break there; register ACTION rows J and K_theta/kappa_phase map to base, while register FREE-UNREDUCED rows rho_B0, chi_c, and B map to route_less_structure. Force magnitude maps to force_mag at the census level; discrete maps to discrete_postulate. Derived, external-bridge, departure, convention, R49, and structural categories remain zero-effect census claims rather than fabricated knob events. This category disclosure changes no count_effect or C5 total.",
+        "Global exact-once partition: already-classified M4, c_E, ell, C_hu, K_m, J_m, B_eff, A_eff, and Q_E rows are omitted from stage043 knobs. In particular no second Q_E category or compensating {low:+1,high:0} event is authored.",
+        "The stage043 retrospective introduced actions carry their source-record effective_stage; they classify historical first occurrences and do not assert that stage043 minted a new knob.",
+        "All 16 operative claims are exported. No c7_binding/c7_expect is present because no stage043 cross-stage mutator exists."
+      ]
+    },
+    "source_digests": [
+      {
+        "source_path": "notes/stages/ledger_stage043_irreducible_count_range.md",
+        "source_digest": "d6eed660fe148c7f97091180a19442d2f0a2710481386029169d9d72ab834e19"
+      },
+      {
+        "source_path": "paper/stages/stage_043.tex",
+        "source_digest": "b660c6d931e65098cb37cc0048951e9698ce15893723714e128358886e606a7c"
+      },
+      {
+        "source_path": "scripts/ledger_stage043_irreducible_count_range_sympy_audit.py",
+        "source_digest": "f30087583620984f249b34f1602b488b70592d60ab2d89265fc59ceca0f86f68"
+      },
+      {
+        "source_path": "mathematica/ledger_stage043_irreducible_count_range_mathematica_audit.wl",
+        "source_digest": "2ebc942e342b7a997843d8fca0bbea1ca58f2a1f89dba200c50f2596454b9196"
+      },
+      {
+        "source_path": "mathematica/out/ledger_stage043_irreducible_count_range_mathematica_audit.out",
+        "source_digest": "18cf107d2a8cb92f34982744f1aeef0b10fccb16f5c1a9e1f3cb7b9b82bba2ab"
+      },
+      {
+        "source_path": "notes/parameter_register.md",
+        "source_digest": "ab3f2c8a03da6d11d6231b621783613f4084fe308569da1421f53d31d939a3c1"
+      }
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 # Composite manifest report
 
-Headline: **FAIL**
+Headline: **PARTIAL**
 
-Coverage: `citations=17/20 claims=106/106 unresolved_producers=3 c7_edges=1/17 closure=stage030,stage031,stage032 mathematica_outputs_checked=0`
+Coverage: `citations=18/21 claims=105/105 unresolved_producers=3 c7_edges=1/18 closure=stage030,stage031,stage032 mathematica_outputs_checked=3`
 
 Dimensional consistency scope: Verifies manifest-internal dimensional algebra: relation homogeneity, declared-vs-recovered agreement for symbols whose dimensions are recoverable from the stage's audit script, and cross-stage agreement of shared quantities. It does NOT independently certify that a stage's dimensions are physically correct — that is owned by the stage's dual-engine unit audit.
 
@@ -23,7 +23,7 @@ Declared dimensional bases (legacy omission is reported as the implicit `LMT [L,
 | C1 | PASS |
 | C2 | PASS |
 | C3 | PARTIAL |
-| DIMENSIONAL_CONSISTENCY | FAIL |
+| DIMENSIONAL_CONSISTENCY | PASS |
 | C5 | PARTIAL |
 | C6 | PASS |
 | C7 | PARTIAL |
@@ -63,7 +63,7 @@ No findings.
 
 Verifies manifest-internal dimensional algebra: relation homogeneity, declared-vs-recovered agreement for symbols whose dimensions are recoverable from the stage's audit script, and cross-stage agreement of shared quantities. It does NOT independently certify that a stage's dimensions are physically correct — that is owned by the stage's dual-engine unit audit.
 
-- `DIM_SOURCE_NOT_REGISTERED` — stage032:scripts/ledger_stage031_puncture_deflection_field_identity_source_sympy_audit.py
+No findings.
 
 ## C5
 
@@ -78,7 +78,7 @@ No findings.
 
 ## C7
 
-- `C7_EDGE_UNCOVERED` — 1/17 edges have executable C7 metadata
+- `C7_EDGE_UNCOVERED` — 1/18 edges have executable C7 metadata
 
 ## C8
 

@@ -17,7 +17,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+        "locus": "run_spectral_structure: w, ell = sp.symbols(\"w ell\", positive=True, real=True), line 240; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -49,7 +49,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+        "locus": "run_spectral_structure: w, ell = sp.symbols(\"w ell\", positive=True, real=True), line 240; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
@@ -81,15 +81,12 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; LENGTH = Dim(1,0,0), lines 171-207"
+        "locus": "module: LENGTH = Dim(1, 0, 0), line 202; no source-level x binding; dimension expression LENGTH"
       },
       "dim_source_tuple": [
         "1",
         "0",
         "0"
-      ],
-      "assumptions": [
-        "real"
       ],
       "role": "index",
       "evidence": {
@@ -112,15 +109,12 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; TIME = Dim(0,1,0), lines 171-207"
+        "locus": "module: TIME = Dim(0, 1, 0), line 203; no source-level t binding; dimension expression TIME"
       },
       "dim_source_tuple": [
         "0",
         "1",
         "0"
-      ],
-      "assumptions": [
-        "real"
       ],
       "role": "index",
       "evidence": {
@@ -143,7 +137,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; parent potential dimension expression LENGTH**-2 in run_spectral_structure"
+        "locus": "run_spectral_structure: potential = (4 - 6/cosh(w/ell)**2)/ell**2, line 242; dimension expression LENGTH**-2"
       },
       "dim_source_tuple": [
         "-2",
@@ -156,7 +150,7 @@
       "role": "function",
       "evidence": {
         "source_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; parent potential dimension expression LENGTH**-2 in run_spectral_structure",
+        "locus": "run_spectral_structure: potential = (4 - 6/cosh(w/ell)**2)/ell**2, line 242",
         "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2",
         "engine": "sympy",
         "method": "derived_from_relation"
@@ -184,7 +178,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "dimension expression LENGTH**-2; Dim dataclass [L,T,M] and zero_residual = -diff(f0,w,2) + potential*f0, lines 171-207 and 262-265"
+        "locus": "run_spectral_structure: zero_residual = -diff(f0,w,2) + potential*f0, lines 262-265; dimension expression LENGTH**-2"
       },
       "dim_source_tuple": [
         "-2",
@@ -223,7 +217,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_spectral_structure: probe = Function(\"probe\")(w), line 241; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -713,7 +707,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: amplitude = symbols(\"H0\", real=True), line 346; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -742,7 +736,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_coupled_kernel: z_star = symbols(\"z_star\", real=True), line 504; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -771,7 +765,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_masslessness_and_hessian: grad_u, grad_h = symbols(\"grad_u grad_h\", real=True), line 556; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -800,7 +794,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_masslessness_and_hessian: grad_u, grad_h = symbols(\"grad_u grad_h\", real=True), line 556; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -829,7 +823,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_masslessness_and_hessian: reduced_h_mass_star = primitive(PASS_REDUCED_H_MASSLESSNESS, ..., 0), lines 537-539; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -858,7 +852,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: norm_weight = primitive(PASS_ZERO_MODE_NORM, ..., 2), lines 330-332; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -887,7 +881,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: ell_star = Rational(1, 20), line 368; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -916,7 +910,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: base_m4_star = Rational(3, 160), line 370; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -945,7 +939,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: c_e_star = Integer(1), line 401; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -974,7 +968,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_coupled_kernel: b_eff_star = Integer(2), line 465; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1003,7 +997,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_coupled_kernel: c_hu_star = Rational(1, 2), line 499; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1032,7 +1026,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_coupled_kernel: a_eff_star = primitive(PASS_POSITIVE_GENERALIZED_WAVE_SPEEDS, ..., 1), lines 493-497; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1061,7 +1055,7 @@
       "dim_source_order": "LTM",
       "dim_source": {
         "script_path": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
-        "locus": "Dim dataclass [L,T,M]; ONE = Dim(), lines 171-207"
+        "locus": "run_norm_projection_and_relations: mh_declared_star = Integer(1), line 387; dimension expression ONE"
       },
       "dim_source_tuple": [
         "0",
@@ -1118,7 +1112,7 @@
       "status": "EARNED",
       "payload_kind": "operator_identity",
       "payload": {
-        "operator": "psi",
+        "operator": "O_perp",
         "acts_on": "psi",
         "definition": {
           "sympy": "-Derivative(Derivative(psi(w), w) + (2*tanh(w/ell)/ell)*psi(w), w) + (2*tanh(w/ell)/ell)*(Derivative(psi(w), w) + (2*tanh(w/ell)/ell)*psi(w)) - (-Derivative(psi(w), (w, 2)) + ((4 - 6/cosh(w/ell)**2)/ell**2)*psi(w))"
@@ -1593,7 +1587,7 @@
       "status": "EARNED",
       "payload_kind": "spectrum",
       "payload": {
-        "operator": "D",
+        "operator": "z_star**2 - 3*z_star + Rational(7,4)",
         "kernel_symbol": "z_star",
         "kernel": {
           "sympy": "z_star**2 - 3*z_star + Rational(7,4)"
@@ -2411,6 +2405,74 @@
     {
       "claim_id": "declare_chu",
       "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "parent_inner_weight",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "ell_ratio",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "m4_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "ce_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "beff_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "chu_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "aeff_star",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "mh_normalization",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_x",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_t",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_h_parent",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_ul",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_h0",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_m4",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_ce",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_gradu",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
+    },
+    {
+      "claim_id": "declare_gradh",
+      "source_digest": "8588f2a764a95e1b573a1395d3e10177925b6c8d0538960b68ffec4efd7a7fb2"
     }
   ],
   "knobs": [
@@ -2621,12 +2683,16 @@
         "engine": "sympy",
         "method": "script_asserted"
       },
-      "note": "Verbatim script token. The source checker is monolithic across all seven G0 gates; stage030 folds ONLY the charge-new electric-scalar subset. Remaining, NOT-re-folded and NOT-Part-I/II-covered predicates: PASS_PLANAR_WALL_FACTORIZATION; PASS_BULK_U_SECOND_DERIVATIVE / PASS_BULK_FOURIER_DENSITY_HESSIAN / PASS_PHASE_CONSTANT_MODE_QUOTIENT; PASS_DRAIN_KERNEL_NORMALIZATIONS / PASS_DRAIN_MASS/MOMENTUM/ENERGY_CONTROLLER. Reconciliation = a Part VII G0-vs-Part-I de-dup obligation."
+      "note": "Manifest-normalized token for the script's spaced/hyphenated OUT-OF-SCOPE / UNDISCHARGED CROSS-SECTOR G0 PREDICATE label. The enumerated PASS_* predicates below come from the stage note, not verbatim script output. The source checker is monolithic across all seven G0 gates; stage030 folds ONLY the charge-new electric-scalar subset. Remaining, NOT-re-folded and NOT-Part-I/II-covered predicates: PASS_PLANAR_WALL_FACTORIZATION; PASS_BULK_U_SECOND_DERIVATIVE / PASS_BULK_FOURIER_DENSITY_HESSIAN / PASS_PHASE_CONSTANT_MODE_QUOTIENT; PASS_DRAIN_KERNEL_NORMALIZATIONS / PASS_DRAIN_MASS/MOMENTUM/ENERGY_CONTROLLER. Reconciliation = a Part VII G0-vs-Part-I de-dup obligation."
     }
   ],
   "verification": {
     "sympy_script": "scripts/ledger_stage030_electric_scalar_localized_h_closure_sympy_audit.py",
     "mathematica_script": "mathematica/ledger_stage030_electric_scalar_localized_h_closure_mathematica_audit.wl",
+    "mathematica_output": {
+      "path": "mathematica/out/ledger_stage030_electric_scalar_localized_h_closure_mathematica_audit.out",
+      "sha256": "87fc8be638ced37b8ad4499b1ffe1d66fef39cc7689702c247f62dc36fbae0cf"
+    },
     "teeth": [
       {
         "predicate": "PASS_TRANSVERSE_FACTORIZATION",
@@ -2861,21 +2927,26 @@
   },
   "extraction": {
     "report": {
-      "ungrounded": [],
+      "ungrounded": [
+        "DIMENSION LOCUS GAP (§0b): x has no source-level symbol binding in the stage030 audit. Its manifest [L] tuple is anchored only to the audit's real module assignment LENGTH = Dim(1, 0, 0); no x-specific locus is claimed.",
+        "DIMENSION LOCUS GAP (§0b): t has no source-level symbol binding in the stage030 audit. Its manifest [T] tuple is anchored only to the audit's real module assignment TIME = Dim(0, 1, 0); no t-specific locus is claimed."
+      ],
       "provisional_consumes": [
         "stage003/b_eff_definition",
         "stage003/brane_inertia"
       ],
       "prose_script_mismatches": [
         "A_eff = rho_br + C_J**2/kappa_phase is DERIVED in the note/register but not exercised by either stage030 audit; stage030 consumes only its upstream dimension.",
-        "The paper card's status paragraph still places the honest R1 sign landing in stage031, while the ratified stage note assigns BC/sign selection to stage032 and the audit defers only the mouth SOURCE to stage031."
+        "The paper card's status paragraph still places the honest R1 sign landing in stage031, while the ratified stage note assigns BC/sign selection to stage032 and the audit defers only the mouth SOURCE to stage031.",
+        "DIMENSION LOCUS GAP (§0b): 17 survey-invalid loci were replaced with real module/function pointers. V_H and O_perp are grounded by run_spectral_structure; the dimensionless probe/star/placeholder entries point to their real assignments plus module ONE rather than pretending the script binds their dimensions directly."
       ],
       "judgment_calls": [
         "The wave-speed spectral payload records the two exact generalized eigenvalues as multiplicity 2, lower eigenvalue (3-sqrt(2))/2, and separation sqrt(2).",
         "The dimensional firewall writes field derivatives as Derivative(H,t), Derivative(H,x), and analogous scalar atoms because one schema signature cannot express a field callable over both L and T domains.",
         "Stage030 source dimensions use LTM. Several raw tuples are expressed indirectly through LENGTH/TIME/MASS/ONE; the manifest records their exact evaluated tuples.",
         "Ownership-only self-binding relations are emitted for source-declared primitive/index/placeholder quantities; they bind identity without asserting an independent value.",
-        "C7 binding metadata is omitted because the sources supply only stage-local predicate ablations, not an executable cross-stage mutation runner.",
+        "Export-completeness now exports all 42 operative and ownership claims; the 17 newly exported claims are parent_inner_weight, ell_ratio, m4_star, ce_star, beff_star, chu_star, aeff_star, mh_normalization, declare_x, declare_t, declare_h_parent, declare_ul, declare_h0, declare_m4, declare_ce, declare_gradu, and declare_gradh.",
+        "A facet-responsive C7 binding is present on exports[zero_mode]: C7_FACET=zero_mode_kernel_power runs manifests/mutators/c7_stage030_zero_mode.py and targets stage031/PASS_F0_MOUTH_VALUE_EVALUATED; the remaining source teeth are stage-local predicate ablations.",
         "The single-stage C5 result remains PARTIAL: 106 register rows, the two stage003 lifecycle producers, and stage043/count_range await extraction."
       ]
     },
